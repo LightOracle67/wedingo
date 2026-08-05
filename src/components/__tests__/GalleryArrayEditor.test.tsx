@@ -69,6 +69,35 @@ describe("GalleryArrayEditor", () => {
     expect(slots).toHaveLength(10);
   });
 
+  it("loads images without position, description or name using fallbacks", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img1", url: "https://example.com/1.jpg" },
+      { id: "img2", url: "https://example.com/2.jpg", position: 5 },
+    ] as Partial<GalleryImage>[]);
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    const firstSlot = await screen.findByText("#1");
+    expect(firstSlot).toBeInTheDocument();
+    expect(mockLoadGallery).toHaveBeenCalled();
+  });
+
+  it("stays in loading state when uploading without an invite token", async () => {
+    render(<GalleryArrayEditor inviteToken="" t={t} />);
+    expect(document.querySelector(".page-loading")).toBeInTheDocument();
+  });
+
+  it("clears a description via blur", async () => {
+    mockLoadGallery.mockResolvedValue([
+      { id: "img1", url: "https://example.com/1.jpg", description: "Desc", originalName: "a.jpg", originalSize: 10, position: 0 },
+    ] as Partial<GalleryImage>[]);
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    const input = await screen.findByDisplayValue("Desc");
+    fireEvent.change(input, { target: { value: "" } });
+    fireEvent.blur(input);
+    await waitFor(() => {
+      expect(mockUpdateGalleryDescription).toHaveBeenCalledWith("test-token", "img1", "");
+    });
+  });
+
   it("shows upload label for each empty slot", async () => {
     render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
     const labels = await screen.findAllByText("setup.galleryUploadLabel");

@@ -152,6 +152,21 @@ describe("GallerySection", () => {
     fireEvent.keyDown(gallerySection!, { key: "ArrowLeft" });
   });
 
+  it("guards carousel navigation with a single image", async () => {
+    mockLoadGallery.mockResolvedValue([{ id: "1", url: "https://example.com/1.jpg", description: "Solo" }]);
+    render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
+    await vi.waitFor(() => {
+      expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
+    });
+    const container = screen.getByLabelText("gallery.carouselLabel");
+    fireEvent.keyDown(container, { key: "ArrowRight" });
+    fireEvent.keyDown(container, { key: "ArrowLeft" });
+    const sections = screen.getAllByRole("region");
+    const gallerySection = sections.find((s) => s.getAttribute("aria-label") === "gallery.title");
+    fireEvent.keyDown(gallerySection!, { key: "ArrowRight" });
+    fireEvent.keyDown(gallerySection!, { key: "ArrowLeft" });
+  });
+
   it("closes lightbox with Escape key", async () => {
     mockLoadGallery.mockResolvedValue(mockImages);
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);

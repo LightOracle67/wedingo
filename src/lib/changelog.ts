@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.49.0",
+    date: "2026-08-05",
+    changes: [
+      "CALIDAD: cobertura de tests ampliada — 1753 → 1784 tests; branches 90.2% → 91.4%, statements 94.3% → 94.5%, lines 96.0% → 96.1%",
+      "TESTS: ramas nuevas en useRsvp (caché RSVP, prefill de acompañante sin campos, ramas else de prefill, companionCount no numérico, campos sin índice), useSetupAuth (generateNewToken con/sin token, borrado de token antiguo), ConfigContext (reload con bankInfo, imagen data: migrada a configImages, borrado cancelado, secciones desactivadas), RsvpSection (formulario mínimo), HeroSection (countdown a cero/indefinido), PublicInvitation (JSON-LD sin año, rsvp sin duplicar), AttendanceTab (fechas, badges, entradas indefinidas), GalleryArrayEditor (imágenes sin metadatos, blur vacío), CoverSectionForm (fondo/esquina sobredimensionados), DataTab (RSVP sin token, doc inexistente), GallerySection (navegación con 1 imagen), image-utils (imagen pequeña sin reducción)",
+      "CALIDAD: corregido el aislamiento de tests de ConfigContext (reseteo de mockSafeGetItem entre tests)",
+    ],
+  },
+  {
     version: "2.48.0",
     date: "2026-08-05",
     changes: [

@@ -330,4 +330,43 @@ describe("DataTab", () => {
     await vi.waitFor(() => expect(screen.getByText("superadmin.data.exportBtn")).toBeInTheDocument());
     expect(screen.getByText("2")).toBeDefined();
   });
+
+  it("counts only rsvp docs that carry an invite token", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+      }
+      if (ref === "rsvp-responses-group") {
+        return Promise.resolve({ docs: [
+          { id: "r1", data: () => ({ inviteToken: "t1" }) },
+          { id: "r2", data: () => ({ attendance: "yes" }) },
+        ] });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.data.exportBtn")).toBeInTheDocument());
+    expect(screen.getByText("1")).toBeDefined();
+  });
+
+  it("exports an invitation whose document does not exist", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    mockGetDoc.mockImplementation(() => Promise.resolve({ exists: () => false }));
+    mockDownloadJson.mockImplementation(() => {});
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.data.selectAll")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.data.selectAll"));
+    await vi.waitFor(() => {
+      const exportBtn = screen.queryByText((text) => text.includes("superadmin.data.exportSelectedBtn"));
+      if (exportBtn) fireEvent.click(exportBtn);
+    });
+    await vi.waitFor(() => {
+      expect(mockDownloadJson).toHaveBeenCalled();
+    });
+  });
 });

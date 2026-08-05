@@ -159,6 +159,22 @@ describe("compressImageTransparent", () => {
     expect(result).toContain("data:image/webp");
   });
 
+  it("does not downscale a small PNG (no reduction paths)", async () => {
+    const file = makeFile("image/png", 10 * 1024);
+    const promise = compressImage(file);
+    imgInstance!.onload?.();
+    const result = await promise;
+    expect(result).toContain("data:image");
+  });
+
+  it("keeps a small transparent image without reducing quality", async () => {
+    const file = makeFile("image/png", 10 * 1024);
+    const promise = compressImageTransparent(file);
+    imgInstance!.onload?.();
+    const result = await promise;
+    expect(result).toContain("data:image");
+  });
+
   it("reduces quality when the image exceeds the target size", async () => {
     // Una cadena grande para forzar estimatedBytes > TARGET_BYTES.
     const bigData = "data:image/webp;base64," + "A".repeat(600 * 1024);

@@ -280,6 +280,26 @@ describe("PublicInvitation", () => {
     expect(scripts.length).toBe(1);
   });
 
+  it("skips schema JSON-LD when the wedding year is missing", () => {
+    mockUseAppValue.config.firstName = "Test";
+    mockUseAppValue.config.weddingYear = "";
+    render(<PublicInvitation />);
+    const scripts = document.head.querySelectorAll('script[type="application/ld+json"]');
+    expect(scripts.length).toBe(0);
+    mockUseAppValue.config.weddingYear = "2025";
+  });
+
+  it("keeps a single rsvp section in admin mode when already present", () => {
+    mockUseAppValue.config.sectionOrder = "hero,rsvp,details";
+    mockUseAppValue.config.hiddenSections = "";
+    mockUseAppValue.config.firstName = "Test";
+    mockUseAppValue.config.secondName = "User";
+    render(<PublicInvitation />);
+    expect(screen.getAllByTestId("section-rsvp")).toHaveLength(1);
+    mockUseAppValue.config.sectionOrder = "";
+    mockUseAppValue.config.hiddenSections = "gifts,accommodation,gallery,rsvp";
+  });
+
   it("renders all 8 sections when visibleOrder includes them", async () => {
     mockUseAppValue.config.hiddenSections = "";
     mockUseAppValue.config.sectionOrder = "hero,details,info,story,gifts,accommodation,gallery,rsvp";

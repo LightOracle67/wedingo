@@ -760,4 +760,26 @@ describe("useSetupAuth", () => {
       expect(result.current.isAdminTokenLoggedIn).toBe(true);
     });
   });
+
+  describe("generateNewToken edge cases", () => {
+    it("returns a token without an invite token", async () => {
+      const { result } = setup({ inviteToken: "" });
+      let token = "";
+      await act(async () => {
+        token = await result.current.generateNewToken();
+      });
+      expect(token).toBeTruthy();
+      expect(mockSafeSetItem).not.toHaveBeenCalled();
+    });
+
+    it("deletes the old token record when regenerating", async () => {
+      mockGenerateSetupToken.mockReturnValue("brand-new-token");
+      const { result } = setup();
+      await act(async () => {
+        await result.current.generateNewToken("old-token-123");
+      });
+      expect(mockDeleteSetupTokenRecord).toHaveBeenCalledWith("old-token-123");
+      expect(mockCreateSetupTokenRecord).toHaveBeenCalled();
+    });
+  });
 });

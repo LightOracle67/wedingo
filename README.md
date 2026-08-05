@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.48.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.48.0)  
+**Versión actual:** [v2.49.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.49.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,8 +12,8 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 1732 tests, 143 test files |
-| Cobertura | 94.1% statements / 90.0% branches / 93.8% functions / 95.9% lines |
+| Tests | 1784 tests, 143 test files |
+| Cobertura | 94.5% statements / 91.4% branches / 93.9% functions / 96.1% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
 | `any` en source | 0 |
@@ -281,6 +281,7 @@ Hitos principales:
 | v2.47.0 | 2026-08-05 | Modo de visualización de mapas por área (iframe / solo nombre / oculto) en boda, transporte y alojamiento |
 | v2.47.1 | 2026-08-05 | Título de la sección de invitados: "Horario de la celebración" → "Itinerario" (es/en) |
 | v2.48.0 | 2026-08-05 | Secciones sin contenido ocultas en la invitación + auto-desactivación al guardar con aviso; menú oculto en RSVP si no hay platos |
+| v2.49.0 | 2026-08-05 | Cobertura de tests ampliada (1784 tests, branches 91.4%, statements 94.5%) |
 
 ---
 

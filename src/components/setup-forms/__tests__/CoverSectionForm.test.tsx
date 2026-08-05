@@ -425,6 +425,26 @@ describe("CoverSectionForm", () => {
     });
   });
 
+  it("rejects an oversized background image", async () => {
+    render(<CoverSectionForm />);
+    const input = document.getElementById("backgroundImage") as HTMLInputElement;
+    const big = new File([new ArrayBuffer(21 * 1024 * 1024)], "bg.png", { type: "image/png" });
+    fireEvent.change(input, { target: { files: [big] } });
+    await vi.waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.errorFileSize");
+    });
+  });
+
+  it("rejects an oversized corner decoration", async () => {
+    render(<CoverSectionForm />);
+    const input = document.getElementById("cornerDecoration") as HTMLInputElement;
+    const big = new File([new ArrayBuffer(1024 * 1024 + 1)], "corner.png", { type: "image/png" });
+    fireEvent.change(input, { target: { files: [big] } });
+    await vi.waitFor(() => {
+      expect(mockAddToast).toHaveBeenCalledWith("error", "setup.errorFileSize");
+    });
+  });
+
   it("uploads a corner decoration and stores the config ref", async () => {
     render(<CoverSectionForm />);
     const input = document.getElementById("cornerDecoration") as HTMLInputElement;

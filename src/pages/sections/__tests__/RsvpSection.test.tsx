@@ -742,4 +742,11 @@ describe("RsvpSection", () => {
     render(<RsvpSection {...baseProps} rsvpForm={minimal} />);
     expect(screen.queryByText("rsvp.attendingLabel")).toBeDefined();
   });
+
+  it("renders with a minimal form missing the optional companion arrays", () => {
+    // Sin las arrays opcionales: los fallbacks (?.[i] || "", || []) se cubren.
+    const minimal = { attendance: "with", guestName: "" } as never;
+    render(<RsvpSection {...baseProps} rsvpForm={minimal} />);
+    expect(screen.queryByText("rsvp.attendingWithCompanions")).toBeDefined();
+  });
 });

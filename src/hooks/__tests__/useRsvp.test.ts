@@ -51,8 +51,9 @@ vi.mock("../../lib/rsvp-utils", () => ({
 }));
 
 // Mock de storage: sin caché real para mantener los tests deterministas.
+const mockSafeGetItem = vi.hoisted(() => vi.fn(() => null));
 vi.mock("../../lib/storage", () => ({
-  safeGetItem: vi.fn(() => null),
+  safeGetItem: mockSafeGetItem,
   safeSetItem: vi.fn(),
 }));
 
@@ -87,6 +88,7 @@ describe("useRsvp", () => {
     mockDocIdCounter = 0;
     mockDeleteDoc.mockResolvedValue(undefined);
     mockGetDocs.mockResolvedValue({ docs: [], forEach: vi.fn() });
+    mockSafeGetItem.mockImplementation(() => null);
     mockDoc.mockImplementation((_col?: unknown, id?: string) =>
       id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` },
     );
@@ -1122,6 +1124,117 @@ describe("useRsvp", () => {
       expect(main!.companionTransportTimes).toEqual([""]);
       expect(main!.companionTransportPlaces).toEqual([""]);
       expect(main!.companionAllergiesOther).toEqual([""]);
+    });
+  });
+
+  describe("edge coverage", () => {
+    it("ignores a malformed RSVP cache", async () => {
+      mockSafeGetItem.mockReturnValueOnce(JSON.stringify({ cachedAt: Date.now() }) as never);
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries).toHaveLength(0);
+      });
+    });
+
+    it("uses the cached entries when the cache is valid", async () => {
+      mockSafeGetItem.mockReturnValueOnce(
+        JSON.stringify({ entries: [{ id: "c1", guestName: "Cached", attendance: "yes" }], cachedAt: Date.now() }) as never,
+      );
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries).toHaveLength(1);
+      });
+      expect(mockGetDocs).not.toHaveBeenCalled();
+    });
+
+    it("clamps a non-numeric companionCount to zero", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(Array.isArray(result.current.rsvpForm.companionNames)).toBe(true);
+      });
+      act(() => result.current.updateRsvpField("companionCount", "abc"));
+      expect(result.current.rsvpForm.companionCount).toBe(0);
+    });
+
+    it("handles companion field names without a numeric index", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(Array.isArray(result.current.rsvpForm.companionNames)).toBe(true);
+      });
+      act(() => result.current.updateRsvpField("companionNames[]", "Sin índice"));
+      expect(result.current.rsvpForm.companionNames[0]).toBe("Sin índice");
+    });
+
+    it("does nothing when deleting an empty list", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await act(async () => {
+        await result.current.handleDeleteRsvpEntries([]);
+      });
+      expect(mockWriteBatch).not.toHaveBeenCalled();
+    });
+
+    it("prefills a companion with missing optional fields using fallbacks", async () => {
+      mockParseDietaryInfo.mockReturnValue({ mealChoice: "", dietarySelection: [], dietaryOther: "" });
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [
+          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
+          { id: "c1", data: () => ({ rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes", submittedAt: "2024-01-02" }) },
+        ],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
+      });
+      act(() => result.current.updateRsvpField("guestName", "Bob Carlos Jones"));
+      await waitFor(() => {
+        expect(result.current.rsvpForm.menuSelection).toBe("");
+      });
+      expect(result.current.rsvpForm.transportMode).toBe("own");
+      expect(result.current.rsvpForm.transportChoice).toBe("own");
+    });
+
+    it("hits the prefill else branch when the same companion name is typed again", async () => {
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [
+          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
+          { id: "c1", data: () => ({ rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes", submittedAt: "2024-01-02" }) },
+        ],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
+      });
+      act(() => result.current.updateRsvpField("guestName", "Bob Carlos Jones"));
+      await waitFor(() => {
+        expect(result.current.alreadySubmittedEntry?.id).toBe("c1");
+      });
+      act(() => result.current.updateRsvpField("guestName", "bob carlos jones"));
+      await waitFor(() => {
+        expect(result.current.alreadySubmittedEntry?.id).toBe("c1");
+      });
+    });
+
+    it("hits the main prefill else branch when the same name is typed again", async () => {
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [
+          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
+        ],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
+      });
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
+      await waitFor(() => {
+        expect(result.current.alreadySubmittedEntry?.id).toBe("m1");
+      });
+      act(() => result.current.updateRsvpField("guestName", "alice maría smith"));
+      await waitFor(() => {
+        expect(result.current.alreadySubmittedEntry?.id).toBe("m1");
+      });
     });
   });
 });

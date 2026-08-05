@@ -17,6 +17,8 @@ const mockSetSaveMessage = vi.hoisted(() => vi.fn());
 const mockSetDoc = vi.hoisted(() => vi.fn());
 const mockUpdateDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 const mockResolveAllConfigImages = vi.hoisted(() => vi.fn(() => Promise.resolve({})));
+const mockDecrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
+const mockSaveConfigImage = vi.hoisted(() => vi.fn((_t: string, id: string, _v: string) => Promise.resolve("__cfgimg:" + id)));
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 vi.mock("react-router", () => ({ useLocation: () => mockLocation, useNavigate: () => vi.fn() }));
@@ -37,12 +39,12 @@ vi.mock("../../lib/image-store", () => ({
   resolveAllConfigImages: mockResolveAllConfigImages,
   deleteAllConfigImages: vi.fn(() => Promise.resolve()),
   isConfigImageRef: vi.fn(() => false),
-  saveConfigImage: vi.fn((_t, id, _v) => Promise.resolve("__cfgimg:" + id)),
+  saveConfigImage: mockSaveConfigImage,
 }));
 vi.mock("../../lib/music-store", () => ({ loadAudio: mockLoadAudio }));
 vi.mock("../../lib/sessionVars", () => ({ clearSession: vi.fn() }));
 vi.mock("../../lib/storage", () => ({ safeSetItem: mockSafeSetItem, safeGetItem: mockSafeGetItem, safeRemoveItem: vi.fn() }));
-vi.mock("../../lib/crypto-utils", () => ({ encrypt: vi.fn((s: string) => Promise.resolve(s)), decrypt: vi.fn((s: string) => Promise.resolve(s)) }));
+vi.mock("../../lib/crypto-utils", () => ({ encrypt: vi.fn((s: string) => Promise.resolve(s)), decrypt: mockDecrypt }));
 vi.mock("../../lib/error-utils", () => ({ getFirestoreErrorMessage: vi.fn(() => "error") }));
 
 import { ConfigProvider } from "../ConfigContext";
@@ -272,6 +274,20 @@ describe("ConfigProvider", () => {
     mockLocation.pathname = "/test";
   });
 
+  it("does not delete the invitation when confirmation is cancelled", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValue({
+      exists: () => true,
+      data: () => ({ firstName: "Fresh", secondName: "Pair" }),
+    });
+    window.confirm = vi.fn(() => false);
+    mockUpdateDoc.mockClear();
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    fireEvent.click(screen.getByTestId("ss_delete"));
+    mockLocation.pathname = "/test";
+  });
+
   it("tracks a visit when cookies are accepted on a public route", async () => {
     mockLocation.pathname = "/abcdefghij";
     mockSafeGetItem.mockImplementation((key: unknown) => {
@@ -404,6 +420,54 @@ describe("ConfigProvider", () => {
     vi.spyOn(sessionStorage, "removeItem").mockImplementation(removeSpy);
     render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
     await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    mockLocation.pathname = "/test";
+  });
+
+  it("reload decrypts bankInfo and removes cached audio without audio", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValue({ exists: () => true, data: () => ({ firstName: "First", secondName: "Load", bankInfo: "enc", _visits: 1 }) });
+    mockLoadAudio.mockResolvedValue(null as never);
+    const removeSpy = vi.fn();
+    vi.spyOn(sessionStorage, "removeItem").mockImplementation(removeSpy);
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    fireEvent.click(screen.getByTestId("ss_reload"));
+    await vi.waitFor(() => {
+      expect(mockDecrypt).toHaveBeenCalledWith("enc", "abcdefghij");
+    });
+    mockLocation.pathname = "/test";
+  });
+
+  it("migrates a data-URL image to configImages on save", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValue({
+      exists: () => true,
+      data: () => ({
+        _visits: 0,
+        firstName: "John", secondName: "Jane",
+        theme: "golden",
+        sectionOrder: "hero,details,info,story,gifts,accommodation,gallery,rsvp",
+        weddingDay: "15", weddingMonth: "enero", weddingYear: "2026",
+        weddingHour: "18", weddingMinute: "30",
+        weddingSiteURL: "https://www.google.com/maps/place/Madrid",
+        storyText: "Historia", giftsInfo: "Regalos",
+        weddingDressCode: "Formal",
+        accommodationURL: "https://www.google.com/maps/place/Hotel",
+        transportEnabled: "bus",
+        couplePhoto: "data:image/png;base64,xxxx",
+      }),
+    });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    let written: Record<string, unknown> = {};
+    mockSetDoc.mockImplementationOnce(((_ref: unknown, data: Record<string, unknown>) => {
+      written = { ...data };
+      return Promise.resolve();
+    }) as never);
+    fireEvent.click(screen.getByTestId("ss_save"));
+    await vi.waitFor(() => {
+      expect(written.couplePhoto).toBe("__cfgimg:couplePhoto");
+    });
     mockLocation.pathname = "/test";
   });
 

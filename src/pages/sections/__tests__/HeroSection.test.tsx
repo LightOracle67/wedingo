@@ -74,10 +74,32 @@ describe("HeroSection", () => {
         {...baseProps}
         countdown={{ years: 0, months: 2, days: 15, expired: false }}
         couplePhoto=""
-      />,
+      />
     );
     expect(screen.getByText(/countdown\.month/)).toBeDefined();
     expect(screen.getByText(/countdown\.day/)).toBeDefined();
+  });
+
+  it("handles a zeroed non-expired countdown", () => {
+    render(
+      <HeroSection
+        {...baseProps}
+        countdown={{ years: 0, months: 0, days: 0, expired: false }}
+        couplePhoto=""
+      />
+    );
+    expect(screen.getByText(/countdown\./)).toBeDefined();
+  });
+
+  it("handles countdown units that are undefined", () => {
+    render(
+      <HeroSection
+        {...baseProps}
+        countdown={{ years: undefined as unknown as number, months: undefined as unknown as number, days: 0, expired: false }}
+        couplePhoto=""
+      />
+    );
+    expect(screen.getByText(/countdown\./)).toBeDefined();
   });
 
   it("truncates at the first zero unit", () => {

@@ -558,4 +558,49 @@ describe("AttendanceTab", () => {
     );
     expect(screen.getAllByText("Alice").length).toBeGreaterThan(0);
   });
+
+  it("formats long birth dates and empty ones", () => {
+    const entries = [
+      { id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-01", birthDate: "2024-01-01T12:00:00Z" },
+      { id: "2", guestName: "Bob", attendance: "no" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-02", birthDate: "" },
+    ];
+    render(
+      <AttendanceTab
+        searchQuery="" setSearchQuery={vi.fn()} attendanceFilter="all" setAttendanceFilter={vi.fn()}
+        filteredEntries={entries as never} rsvpEntries={entries as never}
+        exportPdf={vi.fn()} formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()} handleDeleteRsvpEntries={vi.fn()}
+      />
+    );
+    expect(screen.getAllByText("Alice").length).toBeGreaterThan(0);
+  });
+
+  it("renders rows when rsvpEntries is undefined", () => {
+    render(
+      <AttendanceTab
+        searchQuery="" setSearchQuery={vi.fn()} attendanceFilter="all" setAttendanceFilter={vi.fn()}
+        filteredEntries={undefined as never} rsvpEntries={undefined as never}
+        exportPdf={vi.fn()} formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()} handleDeleteRsvpEntries={vi.fn()}
+      />
+    );
+    expect(screen.getByText("attendance.noResults")).toBeDefined();
+  });
+
+  it("renders health consent badge and companion without mainGuestName", () => {
+    const entries = [
+      { id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-01", healthConsent: true, mealChoice: "carne" },
+      { id: "2", guestName: "Bob", attendance: "yes" as const, rsvpType: "companion" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-02" },
+    ];
+    render(
+      <AttendanceTab
+        searchQuery="" setSearchQuery={vi.fn()} attendanceFilter="all" setAttendanceFilter={vi.fn()}
+        filteredEntries={entries as never} rsvpEntries={entries as never}
+        exportPdf={vi.fn()} formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()} handleDeleteRsvpEntries={vi.fn()}
+      />
+    );
+    expect(screen.getByText("attendance.consentHealth")).toBeDefined();
+    expect(screen.getAllByText("—").length).toBeGreaterThan(0);
+  });
 });
