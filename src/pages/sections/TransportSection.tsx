@@ -14,7 +14,7 @@ const TransportSection = memo(function TransportSection({
   style, className,
   transportEnabled = "none",
   transportDepartures = "",
-  mapView, staticMap,
+  mapView, staticMap, transportMapMode,
   cornerDecoration,
 }: {
   style?: React.CSSProperties;
@@ -23,9 +23,13 @@ const TransportSection = memo(function TransportSection({
   transportDepartures?: string;
   mapView?: string;
   staticMap?: boolean;
+  transportMapMode?: string;
   cornerDecoration?: string;
 }) {
   const { t } = useTranslation();
+  // Modo de visualización del mapa de las salidas: iframe (por defecto),
+  // solo nombre de la ubicación u oculto.
+  const mapMode = transportMapMode === "name" || transportMapMode === "hidden" ? transportMapMode : "iframe";
 
   let departures: Departure[] = [];
   try {
@@ -64,6 +68,9 @@ const TransportSection = memo(function TransportSection({
                   {departures.map((dep, i) => {
                     const valid = isValidGoogleMapsUrl(dep.url);
                     const placeName = valid ? extractPlaceNameFromUrl(dep.url) : "";
+                    const showMap = mapMode === "iframe" && valid;
+                    const showDeparture = mapMode !== "hidden";
+                    if (!showDeparture) return null;
                     return (
                       <div key={i}>
                         {dep.time ? (
@@ -74,7 +81,7 @@ const TransportSection = memo(function TransportSection({
                         {placeName ? (
                           <p className="story-note" style={{ marginTop: "0.15rem" }}>{placeName}</p>
                         ) : null}
-                        {valid ? (
+                        {showMap ? (
                           <>
                             <MapEmbed mapUrl={dep.url} mapView={mapView || "roadmap"} staticMap={staticMap === true} height={220} />
                             <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>

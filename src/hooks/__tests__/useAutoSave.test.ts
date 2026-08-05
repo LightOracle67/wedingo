@@ -54,6 +54,9 @@ const sampleConfig: InvitationConfig = {
   weddingSiteURL: "",
   weddingMapView: "roadmap",
   weddingMapStatic: "false",
+  detailsMapMode: "iframe",
+  transportMapMode: "iframe",
+  accommodationMapMode: "iframe",
   transportEnabled: "none",
   transportDepartures: "",
   

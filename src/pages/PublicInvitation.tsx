@@ -257,6 +257,7 @@ export default function PublicInvitation() {
       weddingSiteURL: config.weddingSiteURL,
       mapView: config.weddingMapView,
       staticMap: config.weddingMapStatic === "true",
+      detailsMapMode: config.detailsMapMode,
       cornerDecoration: config.cornerDecoration,
     },
     transport: {
@@ -264,6 +265,7 @@ export default function PublicInvitation() {
       transportDepartures: config.transportDepartures,
       mapView: config.weddingMapView,
       staticMap: config.weddingMapStatic === "true",
+      transportMapMode: config.transportMapMode,
       cornerDecoration: config.cornerDecoration,
     },
     info: {
@@ -286,6 +288,7 @@ export default function PublicInvitation() {
       accommodationURL: config.accommodationURL,
       mapView: config.weddingMapView,
       staticMap: config.weddingMapStatic === "true",
+      accommodationMapMode: config.accommodationMapMode,
       cornerDecoration: config.cornerDecoration,
     },
     gallery: {
@@ -313,6 +316,7 @@ export default function PublicInvitation() {
     formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink, config.weddingSiteURL,
     config.weddingMapView, config.weddingMapStatic,
+    config.detailsMapMode, config.transportMapMode, config.accommodationMapMode,
     config.transportEnabled, config.transportDepartures,
   ]);
 

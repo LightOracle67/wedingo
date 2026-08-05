@@ -8,7 +8,7 @@ const DetailsSection = memo(function DetailsSection({
   style, className,
   formattedDate, formattedTime, hasLocationData, locationDescription,
   calendarLink,
-  weddingSiteURL, mapView, staticMap,
+  weddingSiteURL, mapView, staticMap, detailsMapMode,
   cornerDecoration,
 }: {
   style?: React.CSSProperties;
@@ -21,9 +21,12 @@ const DetailsSection = memo(function DetailsSection({
   weddingSiteURL?: string;
   mapView?: string;
   staticMap?: boolean;
+  detailsMapMode?: string;
   cornerDecoration?: string;
 }) {
   const { t } = useTranslation();
+  // Modo de visualización del mapa: iframe (por defecto), solo nombre u oculto.
+  const mapMode = detailsMapMode === "name" || detailsMapMode === "hidden" ? detailsMapMode : "iframe";
   return (
     <section
       data-story-section="details"
@@ -56,21 +59,25 @@ const DetailsSection = memo(function DetailsSection({
 
           <div className="story-divider" />
 
-          <p className="story-eyebrow" style={{ fontSize: "0.82rem" }}>{t("details.locationLabel")}</p>
-          {hasLocationData ? (
-            <p className="story-copy">{locationDescription}</p>
-          ) : (
-            <p className="story-copy">{t("details.placePending")}</p>
-          )}
-
-          {weddingSiteURL && isValidGoogleMapsUrl(weddingSiteURL) ? (
+          {mapMode !== "hidden" ? (
             <>
-              <MapEmbed mapUrl={weddingSiteURL} mapView={mapView || "roadmap"} staticMap={staticMap === true} />
-              <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
-                <a className="setup-button setup-button--ghost setup-button--compact" href={weddingSiteURL} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
-                  {t("details.viewGoogleMaps")}
-                </a>
-              </div>
+              <p className="story-eyebrow" style={{ fontSize: "0.82rem" }}>{t("details.locationLabel")}</p>
+              {hasLocationData ? (
+                <p className="story-copy">{locationDescription}</p>
+              ) : (
+                <p className="story-copy">{t("details.placePending")}</p>
+              )}
+
+              {mapMode === "iframe" && weddingSiteURL && isValidGoogleMapsUrl(weddingSiteURL) ? (
+                <>
+                  <MapEmbed mapUrl={weddingSiteURL} mapView={mapView || "roadmap"} staticMap={staticMap === true} />
+                  <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
+                    <a className="setup-button setup-button--ghost setup-button--compact" href={weddingSiteURL} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+                      {t("details.viewGoogleMaps")}
+                    </a>
+                  </div>
+                </>
+              ) : null}
             </>
           ) : null}
         </div>

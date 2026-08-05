@@ -137,6 +137,19 @@ export default function GuestsSectionForm({ prefix = "" }) {
           </p>
         ) : null;
       })() : null}
+      <label className="setup-label" htmlFor={id("accommodationMapMode")} style={{ marginTop: "0.6rem" }}>{t("setup.mapModeLabel")}</label>
+      <select
+        id={id("accommodationMapMode")}
+        className="setup-input"
+        value={formData.accommodationMapMode || "iframe"}
+        onChange={(e) => updateFormField("accommodationMapMode", e.target.value)}
+        aria-describedby={id("accommodationMapModeHint")}
+      >
+        <option value="iframe">{t("setup.mapModeIframe")}</option>
+        <option value="name">{t("setup.mapModeName")}</option>
+        <option value="hidden">{t("setup.mapModeHidden")}</option>
+      </select>
+      <p className="setup-help" id={id("accommodationMapModeHint")}>{t("setup.mapModeHint")}</p>
     </>
   );
 }

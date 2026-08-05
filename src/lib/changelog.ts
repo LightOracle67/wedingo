@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.47.0",
+    date: "2026-08-05",
+    changes: [
+      "FEAT: modo de visualización de los mapas de Google — cada área con iframe (mapa de la boda, salidas de transporte y alojamiento) tiene su propio dropdown en el setup: mostrar el iframe completo (por defecto), mostrar solo el nombre de la ubicación u ocultar el mapa",
+      "FEAT: nuevos campos detailsMapMode / transportMapMode / accommodationMapMode (valores iframe|name|hidden) en el esquema, normalize (whitelist con default iframe), codec y reglas de Firestore",
+    ],
+  },
+  {
     version: "2.46.2",
     date: "2026-08-05",
     changes: [

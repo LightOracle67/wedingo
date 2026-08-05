@@ -235,4 +235,11 @@ describe("normalizeConfig", () => {
     const parsed = JSON.parse(result.transportDepartures);
     expect(parsed).toEqual([{ type: "taxi", time: "", url: "" }, { type: "bus", time: "10:00", url: "" }]);
   });
+
+  it("normalizes the map display modes and defaults to iframe", () => {
+    const result = normalizeConfig({ detailsMapMode: "name", transportMapMode: "hidden", accommodationMapMode: "bogus" });
+    expect(result.detailsMapMode).toBe("name");
+    expect(result.transportMapMode).toBe("hidden");
+    expect(result.accommodationMapMode).toBe("iframe");
+  });
 });

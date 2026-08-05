@@ -94,10 +94,9 @@ describe("DateSectionForm", () => {
 
   it("renders month options", () => {
     render(<DateSectionForm />);
-    const select = screen.getByLabelText("setup.monthLabel");
+    const select = screen.getByLabelText("setup.monthLabel") as HTMLSelectElement;
     expect(select).toBeDefined();
-    const options = screen.getAllByRole("option");
-    expect(options.length).toBe(8);
+    expect(select.options.length).toBe(5);
   });
 
   it("calls handleDayChange on day input change", () => {
@@ -223,6 +222,12 @@ describe("DateSectionForm", () => {
     mockFormData.weddingMapStatic = "true";
     render(<DateSectionForm />);
     expect(screen.getByText("setup.mapStaticHint")).toBeDefined();
+  });
+
+  it("updates the detailsMapMode dropdown", () => {
+    render(<DateSectionForm />);
+    fireEvent.change(screen.getByLabelText("setup.mapModeLabel"), { target: { value: "name" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("detailsMapMode", "name");
   });
 
   it("renders site URL input", () => {

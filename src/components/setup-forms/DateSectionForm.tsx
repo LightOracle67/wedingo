@@ -130,6 +130,21 @@ export default function DateSectionForm({ prefix = "" }) {
           </select>
           <p className="setup-help" id={id("mapViewHint")}>{t("setup.mapViewHint")}</p>
         </div>
+        <div>
+          <label className="setup-label" htmlFor={id("detailsMapMode")}>{t("setup.mapModeLabel")}</label>
+          <select
+            id={id("detailsMapMode")}
+            className="setup-input"
+            value={formData.detailsMapMode || "iframe"}
+            onChange={(e) => updateFormField("detailsMapMode", e.target.value)}
+            aria-describedby={id("mapModeHint")}
+          >
+            <option value="iframe">{t("setup.mapModeIframe")}</option>
+            <option value="name">{t("setup.mapModeName")}</option>
+            <option value="hidden">{t("setup.mapModeHidden")}</option>
+          </select>
+          <p className="setup-help" id={id("mapModeHint")}>{t("setup.mapModeHint")}</p>
+        </div>
         <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginTop: "1.5rem" }}>
           <input
             id={id("weddingMapStatic")}

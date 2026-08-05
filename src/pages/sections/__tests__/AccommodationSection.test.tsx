@@ -43,4 +43,32 @@ describe("AccommodationSection", () => {
     expect(screen.getByText("accommodation.pending")).toBeDefined();
     expect(screen.queryByTestId("map-embed")).toBeNull();
   });
+
+  it("shows only the place name when accommodationMapMode is 'name'", () => {
+    render(
+      <AccommodationSection
+        className="test-class"
+        style={{}}
+        accommodationURL="https://www.google.com/maps/place/Hotel+Sol/@40.41,-3.70,17z"
+        accommodationMapMode="name"
+      />,
+    );
+    expect(screen.getByText("Hotel Sol")).toBeDefined();
+    expect(screen.queryByTestId("map-embed")).toBeNull();
+    expect(screen.queryByText("details.viewGoogleMaps")).toBeNull();
+  });
+
+  it("hides the accommodation map when accommodationMapMode is 'hidden'", () => {
+    render(
+      <AccommodationSection
+        className="test-class"
+        style={{}}
+        accommodationURL="https://www.google.com/maps/place/Hotel+Sol/@40.41,-3.70,17z"
+        accommodationMapMode="hidden"
+      />,
+    );
+    expect(screen.queryByText("Hotel Sol")).toBeNull();
+    expect(screen.queryByTestId("map-embed")).toBeNull();
+    expect(screen.getByText("accommodation.pending")).toBeDefined();
+  });
 });

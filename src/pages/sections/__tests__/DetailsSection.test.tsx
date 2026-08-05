@@ -114,4 +114,29 @@ describe("DetailsSection", () => {
     expect(screen.queryByText("details.viewGoogleMaps")).toBeNull();
     expect(screen.queryByTestId("wedding-map")).toBeNull();
   });
+
+  it("shows only the location name when detailsMapMode is 'name'", () => {
+    render(
+      <DetailsSection
+        {...baseProps}
+        detailsMapMode="name"
+      />,
+    );
+    expect(screen.getByText("Madrid")).toBeDefined();
+    expect(screen.queryByTestId("wedding-map")).toBeNull();
+    expect(screen.queryByText("details.viewGoogleMaps")).toBeNull();
+  });
+
+  it("hides the location block when detailsMapMode is 'hidden'", () => {
+    render(
+      <DetailsSection
+        {...baseProps}
+        detailsMapMode="hidden"
+      />,
+    );
+    expect(screen.queryByText("details.locationLabel")).toBeNull();
+    expect(screen.queryByText("Madrid")).toBeNull();
+    expect(screen.queryByTestId("wedding-map")).toBeNull();
+    expect(screen.queryByText("details.viewGoogleMaps")).toBeNull();
+  });
 });

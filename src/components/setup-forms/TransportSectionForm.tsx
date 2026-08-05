@@ -83,6 +83,21 @@ export default function TransportSectionForm({ prefix = "" }) {
       {enabled !== "none" ? (
         <>
           <div className="story-divider" />
+          <label className="setup-label" htmlFor={id("transportMapMode")}>{t("setup.mapModeLabel")}</label>
+          <select
+            id={id("transportMapMode")}
+            className="setup-input"
+            value={formData.transportMapMode || "iframe"}
+            onChange={(e) => updateFormField("transportMapMode", e.target.value)}
+            aria-describedby={id("transportMapModeHint")}
+          >
+            <option value="iframe">{t("setup.mapModeIframe")}</option>
+            <option value="name">{t("setup.mapModeName")}</option>
+            <option value="hidden">{t("setup.mapModeHidden")}</option>
+          </select>
+          <p className="setup-help" id={id("transportMapModeHint")}>{t("setup.mapModeHint")}</p>
+
+          <div className="story-divider" />
           <p className="setup-label">{t("setup.transportDeparturesLabel")}</p>
           <p className="setup-help">{t("setup.transportDeparturesHint")}</p>
 

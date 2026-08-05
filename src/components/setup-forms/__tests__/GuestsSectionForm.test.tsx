@@ -131,6 +131,12 @@ describe("GuestsSectionForm", () => {
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCodeCustom", "");
   });
 
+  it("updates the accommodationMapMode dropdown", () => {
+    render(<GuestsSectionForm />);
+    fireEvent.change(screen.getByLabelText("setup.mapModeLabel"), { target: { value: "name" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("accommodationMapMode", "name");
+  });
+
   it("renders menu dish editors when menu is enabled", () => {
     mockFormData.menuEnabled = "true";
     render(<GuestsSectionForm />);

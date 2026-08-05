@@ -1,5 +1,11 @@
 import { STORY_SECTION_ORDER, THEME_VALUES, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT, MAX_MENU_DISHES, MAX_MENU_DISH_TEXT, MENU_DISH_ORDERS } from "./constants";
 
+/** Modos de visualización del mapa (iframe por defecto). */
+const MAP_MODES = new Set(["iframe", "name", "hidden"]);
+function normalizeMapMode(value: unknown): string {
+  return typeof value === "string" && MAP_MODES.has(value) ? value : "iframe";
+}
+
 function normalizeMenuDishes(value: unknown): string {
   if (typeof value !== "string" || !value.trim()) return "";
   try {
@@ -119,4 +125,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   weddingSiteURL: s(value?.weddingSiteURL ?? value?.weddingMapUrl),
   weddingMapView: ["roadmap","satellite","hybrid"].includes(s(value?.weddingMapView)) ? s(value?.weddingMapView) : "roadmap",
   weddingMapStatic: s(value?.weddingMapStatic) === "true" ? "true" : "false",
+  detailsMapMode: normalizeMapMode(value?.detailsMapMode),
+  transportMapMode: normalizeMapMode(value?.transportMapMode),
+  accommodationMapMode: normalizeMapMode(value?.accommodationMapMode),
 });

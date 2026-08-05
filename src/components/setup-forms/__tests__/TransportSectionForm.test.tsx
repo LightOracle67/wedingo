@@ -185,4 +185,11 @@ describe("TransportSectionForm departures flow", () => {
     fireEvent.change(urlInput, { target: { value: "https://evil.example.com/x" } });
     expect(screen.getByText("setup.mapUrlInvalid")).toBeDefined();
   });
+
+  it("updates the transportMapMode dropdown", () => {
+    renderForm();
+    fireEvent.change(screen.getByLabelText("setup.transportEnabledLabel"), { target: { value: "bus" } });
+    fireEvent.change(screen.getByLabelText("setup.mapModeLabel"), { target: { value: "hidden" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("transportMapMode", "hidden");
+  });
 });
