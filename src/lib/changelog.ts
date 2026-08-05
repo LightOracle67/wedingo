@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.47.1",
+    date: "2026-08-05",
+    changes: [
+      "I18N: título de la sección 'Sobre los invitados' — 'Horario de la celebración' pasa a 'Itinerario' (es) / 'Itinerary' (en)",
+    ],
+  },
+  {
     version: "2.47.0",
     date: "2026-08-05",
     changes: [

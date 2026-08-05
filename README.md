@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.47.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.47.0)  
+**Versión actual:** [v2.47.1](https://github.com/LightOracle67/wedingo/releases/tag/v2.47.1)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -279,6 +279,7 @@ Hitos principales:
 | v2.46.1 | 2026-08-05 | Fix subida de imágenes: target ajustado a 700KB y guarda de 1MB para no superar el límite de Firestore |
 | v2.46.2 | 2026-08-05 | Subida de imágenes: compresión a 1920px/450KB + reintentos ante fallos transitorios de red |
 | v2.47.0 | 2026-08-05 | Modo de visualización de mapas por área (iframe / solo nombre / oculto) en boda, transporte y alojamiento |
+| v2.47.1 | 2026-08-05 | Título de la sección de invitados: "Horario de la celebración" → "Itinerario" (es/en) |
 
 ---
 
