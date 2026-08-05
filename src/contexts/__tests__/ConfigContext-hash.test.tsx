@@ -323,6 +323,22 @@ describe("ConfigProvider", () => {
     mockLocation.pathname = "/test";
   });
 
+  it("does not crash when tracking a visit fails", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockSafeGetItem.mockImplementation((key: unknown) => {
+      if (String(key) === "wedin_cookie_consent") return "accepted";
+      return null;
+    });
+    mockUpdateDoc.mockRejectedValueOnce(new Error("net"));
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "A", secondName: "B", _visits: 3 }),
+    });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    mockLocation.pathname = "/test";
+  });
+
   it("hydrates cached images into the config", async () => {
     mockLocation.pathname = "/abcdefghij";
     mockSafeGetItem.mockImplementation((key: unknown) => {

@@ -198,6 +198,35 @@ describe("useSetupAuth", () => {
       expect(result.current.isTokenVerified).toBe(true);
     });
 
+    it("creates the invite when it does not exist during login", async () => {
+      mockGetDoc.mockImplementation(async (ref: unknown) => {
+        if (String(ref).startsWith("token-ref-")) {
+          return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };
+        }
+        return { exists: () => true, data: () => ({ _activeSetupToken: "valid-token" }) };
+      });
+      const setSpy = vi.fn();
+      mockRunTransaction.mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
+        const transaction = {
+          get: vi.fn().mockResolvedValue({ exists: () => false }),
+          set: setSpy,
+          update: vi.fn(),
+        };
+        await cb(transaction);
+        return Promise.resolve();
+      });
+
+      const { result } = setup();
+      act(() => result.current.setSetupTokenInput("valid-token"));
+
+      await act(async () => {
+        await result.current.handleTokenLogin();
+      });
+
+      expect(setSpy).toHaveBeenCalled();
+      expect(result.current.isTokenVerified).toBe(true);
+    });
+
     it("logs in successfully with valid token", async () => {
       mockGetDoc.mockImplementation(async (ref: unknown) => {
         if (String(ref).startsWith("token-ref-")) {
