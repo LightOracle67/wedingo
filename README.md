@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.51.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.51.0)  
+**Versión actual:** [v2.52.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.52.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,8 +12,8 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 1801 tests, 143 test files |
-| Cobertura | 94.7% statements / 92.2% branches / 94.1% functions / 96.2% lines |
+| Tests | 1805 tests, 143 test files |
+| Cobertura | 94.8% statements / 92.3% branches / 94.1% functions / 96.3% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
 | `any` en source | 0 |
@@ -284,6 +284,7 @@ Hitos principales:
 | v2.49.0 | 2026-08-05 | Cobertura de tests ampliada (1784 tests, branches 91.4%, statements 94.5%) |
 | v2.50.0 | 2026-08-05 | Cobertura ampliada (1787 tests, branches 91.8%) + umbrales del gate a 94/91/93/96 |
 | v2.51.0 | 2026-08-05 | Cobertura ampliada (1801 tests, branches 92.2%, functions 94.1%) |
+| v2.52.0 | 2026-08-05 | Cobertura ampliada (1805 tests, branches 92.3%, statements 94.8%) |
 
 ---
 

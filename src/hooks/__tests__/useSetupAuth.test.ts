@@ -590,12 +590,27 @@ describe("useSetupAuth", () => {
 
     it("handles a missing Firestore document during restoration", async () => {
       mockGetSession.mockReturnValue({ type: "setup", identifier: "ghost-user" });
-      mockGetDoc.mockResolvedValueOnce({ exists: () => false });
+      mockGetDoc.mockResolvedValueOnce({ exists: () => false, data: () => ({}) });
 
       setup();
 
       await waitFor(() => {
         expect(mockGetDoc).toHaveBeenCalled();
+      });
+      expect(mockClearSession).toHaveBeenCalled();
+    });
+
+    it("restores a valid session from a Firestore timestamp expiry", async () => {
+      mockGetSession.mockReturnValue({ type: "setup", identifier: "ts-user" });
+      mockGetDoc.mockResolvedValueOnce({
+        exists: () => true,
+        data: () => ({ activeSession: true, sessionExpiresAt: { toDate: () => new Date(Date.now() + 3600000) } }),
+      });
+
+      setup();
+
+      await waitFor(() => {
+        expect(mockClearSession).not.toHaveBeenCalled();
       });
     });
 

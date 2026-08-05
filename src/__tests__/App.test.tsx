@@ -848,6 +848,20 @@ describe("App", () => {
     expect(logError).toHaveBeenCalled();
   });
 
+  it("logs a window error using the message when error is absent", async () => {
+    const { logError } = await import("../lib/error-utils");
+    mockUseApp.mockReturnValue({ ...baseUseApp });
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    window.dispatchEvent(new ErrorEvent("error", { message: "plain message" }));
+    expect(logError).toHaveBeenCalledWith("plain message", "global");
+  });
+
   it("handles unhandledrejection event via logError", async () => {
     const { logError } = await import("../lib/error-utils");
     mockUseApp.mockReturnValue({ ...baseUseApp });

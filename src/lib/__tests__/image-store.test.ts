@@ -429,6 +429,21 @@ describe("image-store", () => {
       await expect(resolveConfigImageField("token", "__cfgimg:couplePhoto")).resolves.toBe("data:image/jpeg;base64,decoded");
     });
 
+    it("resolveConfigImageField returns undefined when the ref has no doc", async () => {
+      vi.mocked(firestore.getDoc).mockResolvedValueOnce({ exists: () => false } as never);
+      await expect(resolveConfigImageField("token", "__cfgimg:couplePhoto")).resolves.toBeUndefined();
+    });
+
+    it("resolveAllConfigImages skips refs without a doc", async () => {
+      vi.mocked(firestore.getDoc).mockResolvedValueOnce({ exists: () => false } as never);
+      const result = await resolveAllConfigImages("token", {
+        couplePhoto: "__cfgimg:couplePhoto",
+        customSeal: "data:image/png;base64,y",
+      });
+      expect(result.couplePhoto).toBeUndefined();
+      expect(result.customSeal).toBeUndefined();
+    });
+
     it("resolveAllConfigImages only resolves refs", async () => {
       vi.mocked(firestore.getDoc).mockResolvedValueOnce({
         exists: () => true,
