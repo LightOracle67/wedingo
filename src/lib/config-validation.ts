@@ -124,9 +124,6 @@ export function validateConfigForSave(
     // Si se elige una opción predefinida, el texto personalizado se descarta.
     sanitized.weddingDressCodeCustom = "";
   }
-  if (sanitized.weddingSchedule && sanitized.weddingSchedule.length > MAX_LONG_TEXT_LENGTH) {
-    return { sanitized, hiddenSet, errorKey: "errors.scheduleTooLong" };
-  }
   if (sanitized.weddingScheduleEvents) {
     // normalizeConfig garantiza un array JSON válido y acotado; solo se
     // valida aquí el formato de la hora de cada evento.

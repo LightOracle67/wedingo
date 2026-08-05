@@ -79,7 +79,6 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   weddingYear: s(value?.weddingYear),
   weddingHour: s(value?.weddingHour),
   weddingMinute: s(value?.weddingMinute),
-  weddingSchedule: s(value?.weddingSchedule),
   weddingScheduleEvents: normalizeScheduleEvents(value?.weddingScheduleEvents),
   weddingDressCode: s(value?.weddingDressCode),
   weddingDressCodeCustom: s(value?.weddingDressCodeCustom),

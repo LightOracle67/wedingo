@@ -75,7 +75,6 @@ function SaveSetupConsumer() {
       <button data-testid="ss_usernameLong" onClick={() => ctx.updateFormField("adminUsername", "a".repeat(51))}>UL</button>
       <button data-testid="ss_musicUrl" onClick={() => ctx.updateFormField("musicUrl", "data:audio/mp3;base64,xxx")}>MU</button>
       <button data-testid="ss_inviteMsg" onClick={() => ctx.updateFormField("inviteMessage", "x".repeat(2500))}>IM</button>
-      <button data-testid="ss_wedSchedule" onClick={() => ctx.updateFormField("weddingSchedule", "x".repeat(2500))}>WS</button>
       <button data-testid="ss_storyText" onClick={() => ctx.updateFormField("storyText", "x".repeat(2500))}>ST</button>
       <button data-testid="ss_giftsInfo" onClick={() => ctx.updateFormField("giftsInfo", "x".repeat(2500))}>GI</button>
       <button data-testid="ss_accommodationInfo" onClick={() => ctx.updateFormField("accommodationInfo", "x".repeat(2500))}>AI</button>
@@ -134,31 +133,6 @@ describe("ConfigProvider", () => {
     fireEvent.click(screen.getByTestId("ss_save"));
     await waitFor(() => {
       expect(mockSetSaveError).toHaveBeenCalledWith("errors.messageTooLong");
-    });
-    mockSetSaveError.mockClear();
-    mockLocation.pathname = "/test";
-  });
-
-  it("handleSaveSetup validates wedding schedule too long", async () => {
-    mockLocation.pathname = "/abcdefghij";
-    mockGetDoc.mockResolvedValueOnce({
-      exists: () => true,
-      data: () => ({ _visits: 0 }),
-    });
-    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
-    await waitFor(() => expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"));
-    fireEvent.click(screen.getByTestId("ss_stored"));
-    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
-    fireEvent.click(screen.getByTestId("ss_first"));
-    fireEvent.click(screen.getByTestId("ss_second"));
-    fireEvent.click(screen.getByTestId("ss_theme"));
-    fireEvent.click(screen.getByTestId("ss_order"));
-    fireEvent.click(screen.getByTestId("ss_gp1"));
-    fireEvent.click(screen.getByTestId("ss_gp2"));
-    fireEvent.click(screen.getByTestId("ss_wedSchedule"));
-    fireEvent.click(screen.getByTestId("ss_save"));
-    await waitFor(() => {
-      expect(mockSetSaveError).toHaveBeenCalledWith("errors.scheduleTooLong");
     });
     mockSetSaveError.mockClear();
     mockLocation.pathname = "/test";

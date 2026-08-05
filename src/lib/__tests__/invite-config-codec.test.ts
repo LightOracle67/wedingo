@@ -27,7 +27,6 @@ const CONFIG_WITH_ALL = {
   weddingYear: "2026",
   weddingHour: "18",
   weddingMinute: "30",
-  weddingSchedule: "Tarde",
   weddingDressCode: "Formal",
   theme: "forest",
   sectionOrder: "hero,rsvp",

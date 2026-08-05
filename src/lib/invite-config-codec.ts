@@ -3,7 +3,7 @@ const INVITE_KEY_MAP = {
   wp: "weddingPlace", su: "weddingSiteURL", mv: "weddingMapView", ms: "weddingMapStatic", te: "transportEnabled", td: "transportDepartures",
   dd: "weddingDay", mm: "weddingMonth", yy: "weddingYear",
   hh: "weddingHour", mi: "weddingMinute",
-  sc: "weddingSchedule", se: "weddingScheduleEvents", dc: "weddingDressCode", dx: "weddingDressCodeCustom",
+  sc: "weddingScheduleEvents", dc: "weddingDressCode", dx: "weddingDressCodeCustom",
   th: "theme", so: "sectionOrder", hs: "hiddenSections",
   st: "storyText", gi: "giftsInfo",
   ai: "accommodationInfo", am: "accommodationURL", kp: "kidsPolicy",

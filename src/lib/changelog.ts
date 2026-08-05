@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.45.0",
+    date: "2026-08-05",
+    changes: [
+      "CLEANUP: eliminado el soporte legacy del horario — el campo weddingSchedule (texto libre) ya no se usa en la app: la sección Info solo renderiza el itinerario desde weddingScheduleEvents y se oculta si no hay eventos",
+      "CLEANUP: retirado weddingSchedule del esquema (types, defaultConfig, normalize-config, config-validation, codec), del formulario (DateSectionForm ya no siembra eventos desde el texto legacy) y de las reglas de Firestore; añadido al script de limpieza de campos legacy para la BBDD",
+      "UX: si el itinerario no se ha configurado, la sección de horario no se muestra en la invitación (antes mostraba 'El horario se compartirá próximamente')",
+      "I18N: eliminadas las claves sin uso schedulePending y scheduleTooLong de es/en",
+    ],
+  },
+  {
     version: "2.44.2",
     date: "2026-08-05",
     changes: [

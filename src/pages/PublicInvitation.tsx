@@ -267,7 +267,6 @@ export default function PublicInvitation() {
       cornerDecoration: config.cornerDecoration,
     },
     info: {
-      weddingSchedule: config.weddingSchedule,
       weddingScheduleEvents: config.weddingScheduleEvents,
       weddingDressCode: config.weddingDressCode,
       weddingDressCodeCustom: config.weddingDressCodeCustom,
@@ -305,7 +304,7 @@ export default function PublicInvitation() {
     },
   }), [
     config.firstName, config.secondName, config.inviteMessage,
-    config.weddingSchedule, config.weddingScheduleEvents, config.weddingDressCode, config.weddingDressCodeCustom,
+    config.weddingScheduleEvents, config.weddingDressCode, config.weddingDressCodeCustom,
     config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationURL,
     config.godparent1, config.godparent2, inviteToken,
     config.couplePhoto, config.bankInfo, config.menuEnabled,

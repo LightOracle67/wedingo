@@ -63,7 +63,6 @@ service cloud.firestore {
         && (!data.keys().hasAny(['storyText']) || isValidLongText(data.storyText))
         && (!data.keys().hasAny(['giftsInfo']) || isValidLongText(data.giftsInfo))
         && (!data.keys().hasAny(['accommodationInfo']) || isValidLongText(data.accommodationInfo))
-        && (!data.keys().hasAny(['weddingSchedule']) || isValidLongText(data.weddingSchedule))
         && (!data.keys().hasAny(['menuTexto']) || isValidLongText(data.menuTexto))
         && (!data.keys().hasAny(['kidsPolicy']) || isValidLongText(data.kidsPolicy))
         && (!data.keys().hasAny(['weddingDressCode']) || (data.weddingDressCode is string && data.weddingDressCode.size() <= 100 && isSafeText(data.weddingDressCode)))

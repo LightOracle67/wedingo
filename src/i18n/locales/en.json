@@ -79,7 +79,6 @@
   "info": {
     "sectionLabel": "About the guests",
     "scheduleTitle": "Wedding schedule",
-    "schedulePending": "The detailed schedule will be shared with all guests soon.",
     "dressCodeLabel": "Dress code",
     "dressCodeTitle": "Suggested attire",
     "dressCodePending": "The dress code will be communicated later.",
@@ -590,7 +589,6 @@
     "messageTooLong": "The invitation message cannot exceed 500 characters.",
     "dressCodeCustomRequired": "If you choose 'Other' as the dress code, please write a custom message.",
     "dressCodeCustomTooLong": "The custom dress code message cannot exceed {{max}} characters.",
-    "scheduleTooLong": "The schedule cannot exceed 2000 characters.",
     "scheduleEventsInvalid": "The schedule cannot have more than 10 events.",
     "scheduleEventTimeInvalid": "An itinerary event time is invalid.",
     "scheduleEventTextTooLong": "An event description cannot exceed 60 characters.",

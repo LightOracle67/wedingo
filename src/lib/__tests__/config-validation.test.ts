@@ -155,11 +155,6 @@ describe("validateConfigForSave", () => {
     expect(result.errorKey).toBe("errors.messageTooLong");
   });
 
-  it("rejects an overlong schedule", () => {
-    const result = validateConfigForSave(validConfig({ weddingSchedule: "x".repeat(2001) }), true, 2030);
-    expect(result.errorKey).toBe("errors.scheduleTooLong");
-  });
-
   it("rejects an overlong story text", () => {
     const result = validateConfigForSave(validConfig({ storyText: "x".repeat(2001) }), true, 2030);
     expect(result.errorKey).toBe("errors.storyTooLong");

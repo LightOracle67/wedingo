@@ -29,7 +29,6 @@ const mockFormData = vi.hoisted(() => ({
   weddingMinute: "",
   weddingDay: "",
   weddingYear: "",
-  weddingSchedule: "",
   weddingScheduleEvents: "",
   weddingMapStatic: "",
 }));
@@ -60,7 +59,6 @@ describe("DateSectionForm", () => {
     mockFormData.weddingSiteURL = "";
     mockFormData.weddingHour = "";
     mockFormData.weddingMinute = "";
-    mockFormData.weddingSchedule = "";
     mockFormData.weddingScheduleEvents = "";
   });
 
@@ -157,17 +155,6 @@ describe("DateSectionForm", () => {
     render(<DateSectionForm />);
     expect(screen.getAllByLabelText("setup.scheduleEventTimeLabel")).toHaveLength(10);
     expect(screen.getByText("setup.scheduleMaxEvents")).toBeDefined();
-  });
-
-  it("seeds events from legacy schedule lines", () => {
-    mockFormData.weddingSchedule = "18:00 Recepción de invitados\nCeremonia a las 19";
-    mockFormData.weddingScheduleEvents = "";
-    render(<DateSectionForm />);
-    const times = screen.getAllByLabelText("setup.scheduleEventTimeLabel") as HTMLInputElement[];
-    const texts = screen.getAllByLabelText("setup.scheduleEventTextLabel") as HTMLInputElement[];
-    expect(times[0]!.value).toBe("18:00");
-    expect(texts[0]!.value).toBe("Recepción de invitados");
-    expect(texts[1]!.value).toBe("Ceremonia a las 19");
   });
 
   it("edits a schedule event time field", () => {

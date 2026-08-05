@@ -10,7 +10,8 @@ const mockUseAppValue = vi.hoisted(() => ({
     weddingDay: "15", weddingMonth: "enero", weddingYear: "2025",
     weddingHour: "14", weddingMinute: "30", weddingPlace: "Madrid",
     weddingSiteURL: "https://maps.google.com/maps/place/Madrid",
-    weddingSchedule: "", weddingDressCode: "", kidsPolicy: "",
+    weddingScheduleEvents: "",
+    weddingDressCode: "", kidsPolicy: "",
     storyText: "", giftsInfo: "", bankInfo: "",
     musicFile: "", musicUrl: "", menuEnabled: "", menuCarne: "", menuPescado: "",
     menuVegano: "", menuPostre: "", menuTexto: "",
@@ -185,11 +186,11 @@ describe("PublicInvitation", () => {
   });
 
   it("renders with schedule and dress code info", () => {
-    mockUseAppValue.config.weddingSchedule = "Ceremony at 4pm\nReception at 6pm";
+    mockUseAppValue.config.weddingScheduleEvents = JSON.stringify([{ time: "16:00", text: "Ceremony" }]);
     mockUseAppValue.config.weddingDressCode = "Formal";
     mockUseAppValue.config.kidsPolicy = "Welcome";
     expect(() => render(<PublicInvitation />)).not.toThrow();
-    mockUseAppValue.config.weddingSchedule = "";
+    mockUseAppValue.config.weddingScheduleEvents = "";
     mockUseAppValue.config.weddingDressCode = "";
     mockUseAppValue.config.kidsPolicy = "";
   });

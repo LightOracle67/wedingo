@@ -17,6 +17,7 @@ const APPLY = process.argv.includes("--apply");
 const LEGACY_FIELDS = [
   "transportInfo", "menuTexto", "menuCarne", "menuPescado", "menuVegano",
   "menuPostre", "musicUrl", "accommodationInfo", "menuHeadcounts", "_activeSetupToken",
+  "weddingSchedule",
 ];
 
 const config = JSON.parse(readFileSync(resolve(os.homedir(), ".config/configstore/firebase-tools.json"), "utf8"));

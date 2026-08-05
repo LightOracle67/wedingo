@@ -77,7 +77,7 @@ const payload = {
   weddingMapView: "roadmap", weddingMapStatic: "false",
   weddingDay: "15", weddingMonth: "junio", weddingYear: "2026",
   weddingHour: "18", weddingMinute: "30",
-  weddingSchedule: "", weddingScheduleEvents: "", weddingDressCode: "", weddingDressCodeCustom: "",
+  weddingScheduleEvents: "", weddingDressCode: "", weddingDressCodeCustom: "",
   theme: "golden", couplePhoto: "", backgroundImage: "", customSeal: "", cornerDecoration: "",
   sectionOrder: "hero,details,transport,info,story,gallery,gifts,accommodation,rsvp",
   hiddenSections: "", storyText: "", giftsInfo: "", bankInfo: "",

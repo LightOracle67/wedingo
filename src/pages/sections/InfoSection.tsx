@@ -9,7 +9,7 @@ interface ScheduleEvent {
   text: string;
 }
 
-const InfoSection = memo(function InfoSection({ style, className, weddingSchedule, weddingScheduleEvents, weddingDressCode, weddingDressCodeCustom, kidsPolicy, cornerDecoration }: { style?: React.CSSProperties; className?: string; weddingSchedule?: string; weddingScheduleEvents?: string; weddingDressCode?: string; weddingDressCodeCustom?: string; kidsPolicy?: string; cornerDecoration?: string }) {
+const InfoSection = memo(function InfoSection({ style, className, weddingScheduleEvents, weddingDressCode, weddingDressCodeCustom, kidsPolicy, cornerDecoration }: { style?: React.CSSProperties; className?: string; weddingScheduleEvents?: string; weddingDressCode?: string; weddingDressCodeCustom?: string; kidsPolicy?: string; cornerDecoration?: string }) {
   const { t } = useTranslation();
   const kidsLabel = kidsPolicy && KNOWN_KIDS.has(kidsPolicy) ? t("kidsPolicy.options." + kidsPolicy) : kidsPolicy;
 
@@ -29,9 +29,6 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
     return [];
   })();
 
-  const legacyLines = events.length === 0
-    ? (weddingSchedule || "").split("\n").filter(Boolean)
-    : [];
   return (
     <section
       data-story-section="info"
@@ -41,44 +38,22 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
       <div className="story-card-wrap">
         <CornerDecorations src={cornerDecoration} />
         <div className="story-card story-panel story-card--info w-full text-center">
-          <>
-          <p className="story-eyebrow">{t("info.sectionLabel")}</p>
-          <h2 className="story-title">{t("info.scheduleTitle")}</h2>
           {events.length > 0 ? (
-            <div className="mt-4 space-y-1 text-left">
-              {events.map((ev, i) => (
-                <div key={i} className="flex gap-3 items-baseline">
-                  {ev.time ? (
-                    <span className="shrink-0 font-semibold text-boda-texto tabular-nums">{ev.time}</span>
-                  ) : null}
-                  <span className="text-boda-texto/80">{ev.text}</span>
-                </div>
-              ))}
-            </div>
-          ) : legacyLines.length > 0 ? (
-            <div className="mt-4 space-y-1 text-left">
-              {legacyLines.map((line: string, i: number) => {
-                const timeMatch = line.match(/^(\d{1,2}:\d{2})\s*(.*)/);
-                return (
+            <>
+              <p className="story-eyebrow">{t("info.sectionLabel")}</p>
+              <h2 className="story-title">{t("info.scheduleTitle")}</h2>
+              <div className="mt-4 space-y-1 text-left">
+                {events.map((ev, i) => (
                   <div key={i} className="flex gap-3 items-baseline">
-                    {timeMatch ? (
-                      <>
-                        <span className="shrink-0 font-semibold text-boda-texto tabular-nums">{timeMatch[1]}</span>
-                        <span className="text-boda-texto/80">{timeMatch[2]}</span>
-                      </>
-                    ) : (
-                      <span className="text-boda-texto/80">{line}</span>
-                    )}
+                    {ev.time ? (
+                      <span className="shrink-0 font-semibold text-boda-texto tabular-nums">{ev.time}</span>
+                    ) : null}
+                    <span className="text-boda-texto/80">{ev.text}</span>
                   </div>
-                );
-              })}
-            </div>
-          ) : (
-            <p className="story-copy" style={{ fontStyle: "italic" }}>
-              {t("info.schedulePending")}
-            </p>
-          )}
-        </>
+                ))}
+              </div>
+            </>
+          ) : null}
         <>
           <div className="story-divider" />
           <p className="story-eyebrow">{t("info.dressCodeLabel")}</p>

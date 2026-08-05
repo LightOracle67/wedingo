@@ -57,7 +57,6 @@ const sampleConfig: InvitationConfig = {
   transportEnabled: "none",
   transportDepartures: "",
   
-  weddingSchedule: "",
   weddingScheduleEvents: "",
   weddingDressCode: "",
   weddingDressCodeCustom: "",

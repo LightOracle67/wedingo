@@ -15,7 +15,6 @@ const FULL_CONFIG = {
   weddingYear: "  2026  ",
   weddingHour: "  18  ",
   weddingMinute: "  30  ",
-  weddingSchedule: "  Tarde  ",
   weddingDressCode: "  Formal  ",
   theme: "  forest  ",
   backgroundImage: "  /path/to/img.jpg  ",

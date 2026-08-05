@@ -55,8 +55,6 @@ export default function DateSectionForm({ prefix = "" }) {
     ? `${String(hourNum).padStart(2, "0")}:${String(minuteNum).padStart(2, "0")}`
     : "";
 
-  const hasStoredScheduleEvents = (formData.weddingScheduleEvents || "").trim().length > 0;
-
   const scheduleEvents: ScheduleEvent[] = (() => {
     try {
       const parsed = JSON.parse(formData.weddingScheduleEvents || "");
@@ -72,43 +70,27 @@ export default function DateSectionForm({ prefix = "" }) {
     }
   })();
 
-  const legacyEvents: ScheduleEvent[] = useMemo(() => {
-    if (hasStoredScheduleEvents) return [];
-    return (formData.weddingSchedule || "")
-      .split("\n")
-      .filter(Boolean)
-      .map((line: string) => {
-        const match = line.match(/^(\d{1,2}:\d{2})\s*(.*)$/);
-        if (match) return { time: match[1]!.padStart(5, "0"), text: match[2]!.trim() };
-        return { time: "", text: line.trim() };
-      })
-      .slice(0, MAX_SCHEDULE_EVENTS);
-  }, [formData.weddingSchedule, hasStoredScheduleEvents]);
-
   const setScheduleEvents = useCallback((next: ScheduleEvent[]) => {
     updateFormField("weddingScheduleEvents", JSON.stringify(next.slice(0, MAX_SCHEDULE_EVENTS)));
   }, [updateFormField]);
 
   const addScheduleEvent = useCallback(() => {
-    const current = scheduleEvents.length > 0 ? scheduleEvents : legacyEvents;
-    if (current.length >= MAX_SCHEDULE_EVENTS) return;
-    setScheduleEvents([...current, { time: "", text: "" }]);
-  }, [scheduleEvents, legacyEvents, setScheduleEvents]);
+    if (scheduleEvents.length >= MAX_SCHEDULE_EVENTS) return;
+    setScheduleEvents([...scheduleEvents, { time: "", text: "" }]);
+  }, [scheduleEvents, setScheduleEvents]);
 
   const handleScheduleEventField = useCallback((index: number, field: "time" | "text") =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const current = scheduleEvents.length > 0 ? scheduleEvents : legacyEvents;
-      const next = [...current];
+      const next = [...scheduleEvents];
       next[index] = { ...(next[index] ?? { time: "", text: "" }), [field]: e.target.value };
       setScheduleEvents(next);
-    }, [scheduleEvents, legacyEvents, setScheduleEvents]);
+    }, [scheduleEvents, setScheduleEvents]);
 
   const removeScheduleEvent = useCallback((index: number) => {
-    const current = scheduleEvents.length > 0 ? scheduleEvents : legacyEvents;
-    setScheduleEvents(current.filter((_, i) => i !== index));
-  }, [scheduleEvents, legacyEvents, setScheduleEvents]);
+    setScheduleEvents(scheduleEvents.filter((_, i) => i !== index));
+  }, [scheduleEvents, setScheduleEvents]);
 
-  const visibleScheduleEvents = scheduleEvents.length > 0 ? scheduleEvents : legacyEvents;
+  const visibleScheduleEvents = scheduleEvents;
 
   return (
     <>
