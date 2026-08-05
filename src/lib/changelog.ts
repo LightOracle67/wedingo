@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.43.2",
+    date: "2026-08-05",
+    changes: [
+      "UX/I18N: mensaje de bienvenida de la sección Detalles — cuando hay hora, ahora dice 'La celebración dará comienzo a las {{time}}. Te esperamos en la ubicación señalada abajo.' (es/en); eliminada la variante que repetía el lugar en el mensaje con hora (welcomeWithPlaceTime)",
+      "CALIDAD: test determinista de token-utils con vi.stubGlobal (la asignación directa a crypto.getRandomValues fallaba en silencio y hacía fluctuar el gate de cobertura) y test de DetailsSection para el caso ubicación sin hora",
+    ],
+  },
+  {
     version: "2.43.1",
     date: "2026-08-05",
     changes: [

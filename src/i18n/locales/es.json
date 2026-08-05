@@ -71,13 +71,12 @@
     "timeLabel": "Hora de la celebración: {{time}}",
     "timePending": "Horario por confirmar",
     "placePending": "El lugar de la celebración aparecerá aquí.",
-    "welcomeWithTime": "Te esperamos a las {{time}} para celebrar este momento tan especial. El lugar se anunciará próximamente.",
+    "welcomeWithTime": "La celebración dará comienzo a las {{time}}. Te esperamos en la ubicación señalada abajo.",
     "welcomeWithoutTime": "Te esperamos para celebrar este momento tan especial. El lugar y la hora se anunciarán próximamente.",
     "transport": "Transporte",
     "addToCalendar": "Añadir al calendario",
     "viewGoogleMaps": "Ver en Google Maps",
     "locationLabel": "Ubicación",
-    "welcomeWithPlaceTime": "Te esperamos en {{place}} a las {{time}} para celebrar este momento tan especial.",
     "welcomeWithPlace": "Te esperamos en {{place}} para celebrar este momento tan especial. La hora se anunciará próximamente."
   },
   "info": {

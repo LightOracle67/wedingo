@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.43.1](https://github.com/LightOracle67/wedingo/releases/tag/v2.43.1)  
+**Versión actual:** [v2.43.2](https://github.com/LightOracle67/wedingo/releases/tag/v2.43.2)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -269,6 +269,7 @@ Hitos principales:
 | v2.42.0 | 2026-08-04 | Auditoría y limpieza de código legacy: módulos muertos eliminados, campos legacy de configuración y sus fallbacks, tests de reglas al esquema RSVP por invitación |
 | v2.43.0 | 2026-08-05 | Cobertura al 90%+ en los 4 umbrales (94.1/90.0/93.8/95.9), ~180 tests nuevos, gate de cobertura a 90/90/90/90 y limpieza de ramas inalcanzables |
 | v2.43.1 | 2026-08-05 | Fix recuperación de imágenes (reintentos ante fallos de red) + script de migración a refs `__cfgimg` (doc de invitación de 527KB → 1.7KB) + fix del hint del itinerario `{{max}}` |
+| v2.43.2 | 2026-08-05 | Mensaje de bienvenida de Detalles con hora ('La celebración dará comienzo a las XX:XX...') y eliminada la variante que repetía el lugar con la hora |
 
 ---
 

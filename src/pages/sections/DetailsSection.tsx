@@ -75,12 +75,10 @@ const DetailsSection = memo(function DetailsSection({
           ) : null}
 
           <p className="story-note" style={{ marginTop: "0.4rem" }}>
-            {hasLocationData && locationDescription
-              ? formattedTime
-                ? t("details.welcomeWithPlaceTime", { place: locationDescription, time: formattedTime })
-                : t("details.welcomeWithPlace", { place: locationDescription })
-              : formattedTime
-                ? t("details.welcomeWithTime", { time: formattedTime })
+            {formattedTime
+              ? t("details.welcomeWithTime", { time: formattedTime })
+              : hasLocationData && locationDescription
+                ? t("details.welcomeWithPlace", { place: locationDescription })
                 : t("details.welcomeWithoutTime")}
           </p>
         </div>
