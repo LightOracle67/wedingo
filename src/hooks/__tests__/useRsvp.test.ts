@@ -365,6 +365,20 @@ describe("useRsvp", () => {
       expect(result.current.rsvpForm.guestName).toBe("");
     });
 
+    it("creates the rsvp counter when it does not exist", async () => {
+      mockGetDoc.mockResolvedValueOnce({ exists: () => false } as never);
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      setupForm(result);
+
+      await act(async () => {
+        result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      });
+
+      await waitFor(() => {
+        expect(mockSetDoc).toHaveBeenCalledWith(expect.anything(), { count: 0 });
+      });
+    });
+
     it("submits with companion data when attending with companions", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
