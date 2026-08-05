@@ -36,13 +36,14 @@ describe("GallerySection", () => {
     expect(screen.getByText("gallery.title")).toBeDefined();
   });
 
-  it("renders empty state when no images", async () => {
+  it("hides the section when there are no images", async () => {
     mockLoadGallery.mockResolvedValue([]);
 
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
-      expect(screen.getByText("gallery.empty")).toBeDefined();
+      expect(screen.queryByText("gallery.title")).toBeNull();
     });
+    expect(screen.queryByText("gallery.empty")).toBeNull();
   });
 
   it("does not load gallery without inviteToken", async () => {

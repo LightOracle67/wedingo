@@ -594,6 +594,7 @@
     "messageTooLong": "El mensaje de invitación no puede superar los 500 caracteres.",
     "dressCodeCustomRequired": "Si eliges 'Otro' como código de vestimenta, escribe un mensaje personalizado.",
     "dressCodeCustomTooLong": "El mensaje personalizado del código de vestimenta no puede superar los {{max}} caracteres.",
+    "sectionsDeactivated": "Se han desactivado las secciones sin contenido: {{sections}}.",
     "scheduleEventsInvalid": "El itinerario no puede tener más de 10 eventos.",
     "scheduleEventTimeInvalid": "La hora de un evento del itinerario no es válida.",
     "scheduleEventTextTooLong": "El texto de un evento no puede superar los 60 caracteres.",

@@ -11,7 +11,7 @@ const mockUseAppValue = vi.hoisted(() => ({
     weddingHour: "14", weddingMinute: "30", weddingPlace: "Madrid",
     weddingSiteURL: "https://maps.google.com/maps/place/Madrid",
     weddingScheduleEvents: "",
-    weddingDressCode: "", kidsPolicy: "",
+    weddingDressCode: "", kidsPolicy: "", accommodationURL: "",
     storyText: "", giftsInfo: "", bankInfo: "",
     musicFile: "", musicUrl: "", menuEnabled: "", menuCarne: "", menuPescado: "",
     menuVegano: "", menuPostre: "", menuTexto: "",
@@ -47,6 +47,10 @@ vi.mock("react-router", () => ({
 
 vi.mock("../../contexts", () => ({
   useApp: () => mockUseAppValue,
+}));
+
+vi.mock("../../lib/image-store", () => ({
+  loadGallery: vi.fn(() => Promise.resolve([{ id: "1", url: "https://example.com/1.jpg", description: "" }])),
 }));
 
 vi.mock("../../components/ErrorBoundary", () => ({
@@ -281,6 +285,10 @@ describe("PublicInvitation", () => {
     mockUseAppValue.config.sectionOrder = "hero,details,info,story,gifts,accommodation,gallery,rsvp";
     mockUseAppValue.config.firstName = "Test";
     mockUseAppValue.config.secondName = "User";
+    mockUseAppValue.config.storyText = "Historia";
+    mockUseAppValue.config.giftsInfo = "Regalos";
+    mockUseAppValue.config.accommodationURL = "https://www.google.com/maps/place/Hotel";
+    mockUseAppValue.config.weddingDressCode = "Formal";
     render(<PublicInvitation />);
     expect(await screen.findByTestId("section-gifts")).toBeDefined();
     expect(await screen.findByTestId("section-accommodation")).toBeDefined();
@@ -288,6 +296,10 @@ describe("PublicInvitation", () => {
     expect(await screen.findByTestId("section-rsvp")).toBeDefined();
     mockUseAppValue.config.hiddenSections = "gifts,accommodation,gallery,rsvp";
     mockUseAppValue.config.sectionOrder = "";
+    mockUseAppValue.config.storyText = "";
+    mockUseAppValue.config.giftsInfo = "";
+    mockUseAppValue.config.accommodationURL = "";
+    mockUseAppValue.config.weddingDressCode = "";
   });
 
   it("filters hidden sections when not invite mode", async () => {
@@ -309,6 +321,8 @@ describe("PublicInvitation", () => {
     mockUseAppValue.config.hiddenSections = "";
     mockUseAppValue.config.firstName = "Test";
     mockUseAppValue.config.secondName = "User";
+    mockUseAppValue.config.giftsInfo = "Regalos";
+    mockUseAppValue.config.accommodationURL = "https://www.google.com/maps/place/Hotel";
     render(<PublicInvitation />);
     expect(await screen.findByTestId("section-rsvp")).toBeDefined();
     expect(await screen.findByTestId("section-gallery")).toBeDefined();
@@ -316,6 +330,8 @@ describe("PublicInvitation", () => {
     expect(await screen.findByTestId("section-gifts")).toBeDefined();
     mockUseAppValue.config.sectionOrder = "";
     mockUseAppValue.config.hiddenSections = "gifts,accommodation,gallery,rsvp";
+    mockUseAppValue.config.giftsInfo = "";
+    mockUseAppValue.config.accommodationURL = "";
   });
 
   it("hides rsvp section when no names and not invite mode", () => {
@@ -329,5 +345,22 @@ describe("PublicInvitation", () => {
     mockUseAppValue.config.secondName = "User";
     mockUseAppValue.config.sectionOrder = "";
     mockUseAppValue.config.hiddenSections = "gifts,accommodation,gallery,rsvp";
+  });
+
+  it("hides sections without content even when present in the order", async () => {
+    mockUseAppValue.config.hiddenSections = "";
+    mockUseAppValue.config.sectionOrder = "hero,details,gifts,accommodation,rsvp";
+    mockUseAppValue.config.firstName = "Test";
+    mockUseAppValue.config.secondName = "User";
+    mockUseAppValue.config.giftsInfo = "";
+    mockUseAppValue.config.accommodationURL = "https://www.google.com/maps/place/Hotel";
+    render(<PublicInvitation />);
+    await vi.waitFor(() => {
+      expect(screen.queryByTestId("section-gifts")).toBeNull();
+      expect(screen.getByTestId("section-accommodation")).toBeDefined();
+    });
+    mockUseAppValue.config.sectionOrder = "";
+    mockUseAppValue.config.hiddenSections = "gifts,accommodation,gallery,rsvp";
+    mockUseAppValue.config.accommodationURL = "";
   });
 });

@@ -249,18 +249,8 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   }
 
   if (!images.length) {
-    return (
-      <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style} role="region" aria-label={t("gallery.title")}>
-        <div className="story-card-wrap" style={{ width: "min(90%, 56rem)" }}>
-          <CornerDecorations src={cornerDecoration} />
-          <div className="story-card story-panel story-card--info w-full text-center" style={{ maxWidth: "min(100%, 56rem)" }}>
-            <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
-            <h2 className="story-title">{t("gallery.title")}</h2>
-            <p className="story-copy mt-4" style={{ fontStyle: "italic" }}>{t("gallery.empty")}</p>
-          </div>
-        </div>
-      </section>
-    );
+    // Sin imágenes: se oculta la sección completa en la invitación.
+    return null;
   }
 
   // ═══════════════════════════════════════════════════════

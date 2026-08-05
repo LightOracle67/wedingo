@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.48.0",
+    date: "2026-08-05",
+    changes: [
+      "FEAT: las secciones sin contenido se ocultan en la invitación aunque estén en el orden de secciones (sectionHasContent en section-utils): detalle sin fecha/lugar, info sin horario/vestimenta/política, historia vacía, regalos sin texto/IBAN, alojamiento sin URL, transporte desactivado y galería sin imágenes",
+      "FEAT: el menú no se muestra en el RSVP si no hay platos configurados (ya no aparecía con hasStructuredMenu/menuTextoDishes vacíos); se confirma que el menú no aparece en ninguna otra sección",
+      "FEAT: al guardar, las secciones habilitadas sin contenido se desactivan automáticamente (se añaden a hiddenSections) y se muestra un mensaje informativo (errors.sectionsDeactivated) indicando cuáles",
+      "CALIDAD: aislamiento de tests de ConfigContext (reseteo de mockSafeGetItem y sesión entre tests)",
+    ],
+  },
+  {
     version: "2.47.1",
     date: "2026-08-05",
     changes: [

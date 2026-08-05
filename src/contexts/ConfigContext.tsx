@@ -10,6 +10,7 @@ import {
 } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
 import { validateConfigForSave } from "../lib/config-validation";
+import { sectionHasContent } from "../lib/section-utils";
 import type { InvitationConfig } from "../types";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { deleteGallery } from "../lib/image-store";
@@ -278,6 +279,21 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     }
 
     const payload = { ...defaultConfig, ...sanitized } as InvitationConfig;
+
+    // Desactiva automáticamente las secciones habilitadas sin contenido:
+    // se añaden a hiddenSections (mantiene válido el orden) y se informa.
+    const orderSections = (formData.sectionOrder || "").split(",").filter(Boolean);
+    const alreadyHidden = new Set((formData.hiddenSections || "").split(",").filter(Boolean));
+    const emptyEnabled = orderSections.filter((s) => !alreadyHidden.has(s) && !sectionHasContent(s, formData));
+
+    let deactivatedMsg: string | null = null;
+    if (emptyEnabled.length > 0) {
+      const nextHidden = [...alreadyHidden, ...emptyEnabled].join(",");
+      payload.hiddenSections = nextHidden;
+      updateFormField("hiddenSections", nextHidden);
+      deactivatedMsg = t("errors.sectionsDeactivated", { sections: emptyEnabled.join(", ") });
+    }
+
     if (hiddenSet.has("details") && hasStoredConfig) {
       payload.weddingDay = config.weddingDay;
       payload.weddingMonth = config.weddingMonth;
@@ -326,7 +342,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
       for (const cb of onFirstSaveCallbacksRef.current) cb();
 
-      setSaveMessage(t("errors.configSaved"));
+      setSaveMessage(deactivatedMsg || t("errors.configSaved"));
     } catch (e) {
       console.error("[app]", "[ConfigProvider]", "save error", { error: e });
       setSaveError(getFirestoreErrorMessage(e, t));
@@ -334,7 +350,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
       isSavingRef.current = false;
     }
-  }, [hasStoredConfig, formData, maxAllowedYear, inviteToken, config, autoSaveTimerRef, isSavingRef, t, setSaveError, setSaveMessage]);
+  }, [hasStoredConfig, formData, maxAllowedYear, inviteToken, config, autoSaveTimerRef, isSavingRef, t, setSaveError, setSaveMessage, updateFormField]);
 
   const handleDeleteInvitation = useCallback(async () => {
 

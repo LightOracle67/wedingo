@@ -25,7 +25,7 @@ import { useStoryNavigation } from "../hooks/useStoryNavigation";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
-import { parseSectionOrder } from "../lib/section-utils";
+import { parseSectionOrder, sectionHasContent } from "../lib/section-utils";
 
 // ─── Assets ──────────────────────────────────────────────
 import eucalyptusSrc from "../assets/eucalyptus.webp";
@@ -123,9 +123,12 @@ export default function PublicInvitation() {
       if (!isInviteMode) {
         filtered = filtered.filter((s: string) => !hiddenSet.has(s));
       }
+      // Oculta las secciones sin contenido configurado (aunque estén en el
+      // orden) para no mostrar secciones vacías al invitado.
+      filtered = filtered.filter((s: string) => sectionHasContent(s, config));
       return filtered;
     },
-    [sectionOrder, showRsvp, hiddenSet, isInviteMode],
+    [sectionOrder, showRsvp, hiddenSet, isInviteMode, config],
   );
 
   // ─── Navegación entre secciones (hook extraído) ─────────

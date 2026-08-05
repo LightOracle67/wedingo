@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 
@@ -87,12 +87,28 @@ function SaveSetupConsumer() {
   );
 }
 
+beforeEach(() => {
+  sessionStorage.clear();
+  mockSafeGetItem.mockReset();
+  mockSafeGetItem.mockImplementation(() => null);
+});
+
 describe("ConfigProvider", () => {
   it("handleSaveSetup requires at least one menu option when menu enabled", async () => {
     mockLocation.pathname = "/abcdefghij";
     mockGetDoc.mockResolvedValueOnce({
       exists: () => true,
-      data: () => ({ _visits: 0 }),
+      data: () => ({
+        _visits: 0,
+        weddingDay: "15", weddingMonth: "enero", weddingYear: "2026",
+        weddingHour: "18", weddingMinute: "30",
+        weddingSiteURL: "https://www.google.com/maps/place/Madrid",
+        storyText: "Historia",
+        giftsInfo: "Regalos",
+        weddingDressCode: "Formal",
+        accommodationURL: "https://www.google.com/maps/place/Hotel",
+        transportEnabled: "bus",
+      }),
     });
     render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
     await waitFor(() => expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"));
@@ -117,7 +133,17 @@ describe("ConfigProvider", () => {
     mockLocation.pathname = "/abcdefghij";
     mockGetDoc.mockResolvedValueOnce({
       exists: () => true,
-      data: () => ({ _visits: 0 }),
+      data: () => ({
+        _visits: 0,
+        weddingDay: "15", weddingMonth: "enero", weddingYear: "2026",
+        weddingHour: "18", weddingMinute: "30",
+        weddingSiteURL: "https://www.google.com/maps/place/Madrid",
+        storyText: "Historia",
+        giftsInfo: "Regalos",
+        weddingDressCode: "Formal",
+        accommodationURL: "https://www.google.com/maps/place/Hotel",
+        transportEnabled: "bus",
+      }),
     });
     render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
     await waitFor(() => expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"));
@@ -142,7 +168,17 @@ describe("ConfigProvider", () => {
     mockLocation.pathname = "/abcdefghij";
     mockGetDoc.mockResolvedValueOnce({
       exists: () => true,
-      data: () => ({ _visits: 0 }),
+      data: () => ({
+        _visits: 0,
+        weddingDay: "15", weddingMonth: "enero", weddingYear: "2026",
+        weddingHour: "18", weddingMinute: "30",
+        weddingSiteURL: "https://www.google.com/maps/place/Madrid",
+        storyText: "Historia",
+        giftsInfo: "Regalos",
+        weddingDressCode: "Formal",
+        accommodationURL: "https://www.google.com/maps/place/Hotel",
+        transportEnabled: "bus",
+      }),
     });
     render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
     await waitFor(() => expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"));
@@ -302,7 +338,16 @@ describe("ConfigProvider", () => {
     mockLocation.pathname = "/abcdefghij";
     mockGetDoc.mockResolvedValue({
       exists: () => true,
-      data: () => ({ _visits: 0 }),
+      data: () => ({
+        _visits: 0,
+        weddingDay: "15", weddingMonth: "enero", weddingYear: "2026",
+        weddingHour: "18", weddingMinute: "30",
+        weddingSiteURL: "https://www.google.com/maps/place/Madrid",
+        storyText: "Historia", giftsInfo: "Regalos",
+        weddingDressCode: "Formal", weddingScheduleEvents: "",
+        accommodationURL: "https://www.google.com/maps/place/Hotel",
+        transportEnabled: "bus",
+      }),
     });
     render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
     await waitFor(() => expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"));
@@ -317,6 +362,36 @@ describe("ConfigProvider", () => {
     fireEvent.click(screen.getByTestId("ss_save"));
     await vi.waitFor(() => {
       expect(mockSetSaveMessage).toHaveBeenCalledWith("errors.configSaved");
+    });
+    mockLocation.pathname = "/test";
+  });
+
+  it("deactivates enabled sections without content on save and informs", async () => {
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValue({
+      exists: () => true,
+      data: () => ({
+        _visits: 0,
+        weddingDay: "15", weddingMonth: "enero", weddingYear: "2026",
+        weddingHour: "18", weddingMinute: "30",
+        weddingSiteURL: "https://www.google.com/maps/place/Madrid",
+        storyText: "", giftsInfo: "", weddingDressCode: "",
+        accommodationURL: "", transportEnabled: "none",
+      }),
+    });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"));
+    fireEvent.click(screen.getByTestId("ss_stored"));
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    fireEvent.click(screen.getByTestId("ss_first"));
+    fireEvent.click(screen.getByTestId("ss_second"));
+    fireEvent.click(screen.getByTestId("ss_theme"));
+    fireEvent.click(screen.getByTestId("ss_order"));
+    fireEvent.click(screen.getByTestId("ss_gp1"));
+    fireEvent.click(screen.getByTestId("ss_gp2"));
+    fireEvent.click(screen.getByTestId("ss_save"));
+    await vi.waitFor(() => {
+      expect(mockSetSaveMessage).toHaveBeenCalledWith(expect.stringContaining("errors.sectionsDeactivated"));
     });
     mockLocation.pathname = "/test";
   });
