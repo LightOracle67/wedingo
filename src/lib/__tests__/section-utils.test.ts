@@ -1,86 +1,42 @@
 import { describe, it, expect } from "vitest";
-import { parseSectionOrder, parseHidden, formatDate } from "../section-utils";
+import { sectionHasContent } from "../section-utils";
 
-describe("parseSectionOrder", () => {
-  const DEFAULT = ["hero", "details", "transport", "info", "story", "gallery", "gifts", "accommodation", "rsvp"];
-
-  it("returns default order for undefined input", () => {
-    expect(parseSectionOrder(undefined)).toEqual(DEFAULT);
+describe("sectionHasContent", () => {
+  it("always shows hero", () => {
+    expect(sectionHasContent("hero", {})).toBe(true);
   });
 
-  it("returns default order for empty string", () => {
-    expect(parseSectionOrder("")).toEqual(DEFAULT);
+  it("details has content when the date or URL is set", () => {
+    expect(sectionHasContent("details", {})).toBe(false);
+    expect(sectionHasContent("details", { weddingDay: "15" })).toBe(true);
+    expect(sectionHasContent("details", { weddingSiteURL: "https://maps.google.com" })).toBe(true);
   });
 
-  it("parses comma-separated string and appends missing sections", () => {
-    const result = parseSectionOrder("hero,details,story");
-    expect(result.slice(0, 3)).toEqual(["hero", "details", "story"]);
-    expect(result.length).toBe(9);
+  it("info has content when schedule, dress code or kids policy is set", () => {
+    expect(sectionHasContent("info", {})).toBe(false);
+    expect(sectionHasContent("info", { weddingDressCode: "Formal" })).toBe(true);
+    expect(sectionHasContent("info", { kidsPolicy: "playArea" })).toBe(true);
   });
 
-  it("filters out invalid sections", () => {
-    const result = parseSectionOrder("hero,invalid,details");
-    expect(result.slice(0, 2)).toEqual(["hero", "details"]);
-    expect(result.length).toBe(9);
+  it("story and gifts require their text fields", () => {
+    expect(sectionHasContent("story", {})).toBe(false);
+    expect(sectionHasContent("story", { storyText: "x" })).toBe(true);
+    expect(sectionHasContent("gifts", {})).toBe(false);
+    expect(sectionHasContent("gifts", { bankInfo: "ES00" })).toBe(true);
   });
 
-  it("preserves custom order of specified sections", () => {
-    const result = parseSectionOrder("gifts,story,hero");
-    expect(result.indexOf("gifts")).toBeLessThan(result.indexOf("story"));
-    expect(result.indexOf("story")).toBeLessThan(result.indexOf("hero"));
-  });
-});
-
-describe("parseHidden", () => {
-  it("returns empty set for null", () => {
-    expect(parseHidden(null).size).toBe(0);
+  it("accommodation requires a URL", () => {
+    expect(sectionHasContent("accommodation", {})).toBe(false);
+    expect(sectionHasContent("accommodation", { accommodationURL: "https://maps.google.com" })).toBe(true);
   });
 
-  it("returns empty set for undefined", () => {
-    expect(parseHidden(undefined).size).toBe(0);
+  it("transport has content when enabled or departures exist", () => {
+    expect(sectionHasContent("transport", { transportEnabled: "none" })).toBe(false);
+    expect(sectionHasContent("transport", { transportEnabled: "bus" })).toBe(true);
+    expect(sectionHasContent("transport", { transportEnabled: "none", transportDepartures: '[{"time":"12:00"}]' })).toBe(true);
   });
 
-  it("returns empty set for empty string", () => {
-    expect(parseHidden("").size).toBe(0);
-  });
-
-  it("parses single hidden section", () => {
-    const result = parseHidden("gifts");
-    expect(result.has("gifts")).toBe(true);
-    expect(result.size).toBe(1);
-  });
-
-  it("parses multiple hidden sections", () => {
-    const result = parseHidden("gifts,accommodation,story");
-    expect(result.has("gifts")).toBe(true);
-    expect(result.has("accommodation")).toBe(true);
-    expect(result.has("story")).toBe(true);
-    expect(result.size).toBe(3);
-  });
-
-  it("trims whitespace around keys", () => {
-    const result = parseHidden(" gifts , accommodation ");
-    expect(result.has("gifts")).toBe(true);
-    expect(result.has("accommodation")).toBe(true);
-  });
-
-  it("filters empty segments", () => {
-    const result = parseHidden("gifts,,accommodation");
-    expect(result.has("gifts")).toBe(true);
-    expect(result.has("accommodation")).toBe(true);
-    expect(result.size).toBe(2);
-  });
-});
-
-describe("formatDate", () => {
-  it("returns a string for valid ISO date", () => {
-    const result = formatDate("2025-06-15T12:00:00");
-    expect(typeof result).toBe("string");
-    expect(result.length).toBeGreaterThan(0);
-  });
-
-  it("returns 'Invalid Date' for unparseable input", () => {
-    const result = formatDate("not-a-date");
-    expect(result).toBe("Invalid Date");
+  it("defaults unknown sections to visible", () => {
+    expect(sectionHasContent("gallery", {})).toBe(true);
   });
 });

@@ -1147,6 +1147,30 @@ describe("useRsvp", () => {
       expect(mockGetDocs).not.toHaveBeenCalled();
     });
 
+    it("ignores an expired cache even with entries", async () => {
+      mockSafeGetItem.mockReturnValueOnce(
+        JSON.stringify({ entries: [{ id: "c1", guestName: "Cached", attendance: "yes" }], cachedAt: 0 }) as never,
+      );
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries).toHaveLength(0);
+      });
+      expect(mockGetDocs).toHaveBeenCalled();
+    });
+
+    it("hydrates entries without guestName or attendance using fallbacks", async () => {
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [{ id: "x1", data: () => ({ rsvpType: "main", submittedAt: "2024-01-01" }) }],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries).toHaveLength(1);
+      });
+      expect(result.current.rsvpEntries[0]!.guestName).toBe("");
+      expect(result.current.rsvpEntries[0]!.attendance).toBe("no");
+    });
+
     it("clamps a non-numeric companionCount to zero", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
       await waitFor(() => {
@@ -1163,6 +1187,21 @@ describe("useRsvp", () => {
       });
       act(() => result.current.updateRsvpField("companionNames[]", "Sin índice"));
       expect(result.current.rsvpForm.companionNames[0]).toBe("Sin índice");
+    });
+
+    it("handles all companion field setters without a numeric index", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(Array.isArray(result.current.rsvpForm.companionMenus)).toBe(true);
+      });
+      act(() => result.current.updateRsvpField("companionMenus[]", "carne"));
+      act(() => result.current.updateRsvpField("companionAllergies[]", ["sin gluten"]));
+      act(() => result.current.updateRsvpField("companionTransportChoices[]", "1"));
+      act(() => result.current.updateRsvpField("companionTransportModes[]", "taxi"));
+      act(() => result.current.updateRsvpField("companionTransportTimes[]", "12:00"));
+      act(() => result.current.updateRsvpField("companionTransportPlaces[]", "Plaza"));
+      expect(result.current.rsvpForm.companionMenus[0]).toBe("carne");
+      expect(result.current.rsvpForm.companionTransportModes[0]).toBe("taxi");
     });
 
     it("does nothing when deleting an empty list", async () => {
@@ -1235,6 +1274,28 @@ describe("useRsvp", () => {
       await waitFor(() => {
         expect(result.current.alreadySubmittedEntry?.id).toBe("m1");
       });
+    });
+
+    it("prefills companion arrays using fallbacks when optional fields are missing", async () => {
+      mockGetDocs.mockResolvedValueOnce({
+        docs: [
+          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", companionNames: ["Bob Carlos Jones"], submittedAt: "2024-01-01" }) },
+          { id: "c1", data: () => ({ rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes", submittedAt: "2024-01-02" }) },
+        ],
+        forEach: vi.fn(),
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      await waitFor(() => {
+        expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
+      });
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
+      await waitFor(() => {
+        expect(result.current.rsvpForm.companionCount).toBe(1);
+      });
+      expect(result.current.rsvpForm.companionBirthDates).toEqual([""]);
+      expect(result.current.rsvpForm.companionParentalConsents).toEqual([false]);
+      expect(result.current.rsvpForm.companionHealthConsents).toEqual([false]);
+      expect(result.current.rsvpForm.companionTransportChoices).toEqual([""]);
     });
   });
 });

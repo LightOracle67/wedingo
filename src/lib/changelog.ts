@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.50.0",
+    date: "2026-08-05",
+    changes: [
+      "CALIDAD: cobertura ampliada — 1787 tests; branches 91.4% → 91.8%, statements 94.5% → 94.6%",
+      "TESTS: ramas nuevas en useRsvp (caché expirada, entradas sin nombre/asistencia, prefill de acompañantes sin campos, campos sin índice), RsvpSection (menú completo, select de salida con modo bus), section-utils (unit), MapEmbed (URL embed), MenuDishEditor (JSON no-array, plato sin texto), config-validation (salida sin url), GalleryArrayEditor, HeroSection, DataTab y más",
+      "GATE: umbrales de cobertura subidos a 94/91/93/96 para fijar la mejora",
+    ],
+  },
+  {
     version: "2.49.0",
     date: "2026-08-05",
     changes: [

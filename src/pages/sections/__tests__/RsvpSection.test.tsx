@@ -634,6 +634,21 @@ describe("RsvpSection", () => {
     expect(updateRsvpField).toHaveBeenCalledWith("transportPlace", "Plaza Mayor");
   });
 
+  it("shows the departure select when the mode is already bus", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "bus", transportChoice: "0" }}
+        transportEnabled="bus"
+        transportDepartures={JSON.stringify([{ type: "bus", time: "12:00", url: "" }])}
+      />,
+    );
+    const select = screen.getByLabelText("rsvp.transportDepartureLabel") as HTMLSelectElement;
+    expect(select).toBeDefined();
+    fireEvent.change(select, { target: { value: "0" } });
+    expect(updateRsvpField).toHaveBeenCalledWith("transportChoice", "0");
+  });
+
   it("does not require parental consent for guests aged 14 or older", () => {
     const props = { ...baseProps, computeAge: vi.fn(() => 20) };
     render(<RsvpSection {...props} rsvpForm={{ ...baseForm, attendance: "alone", birthDate: "2000-01-01" }} />);
@@ -708,6 +723,22 @@ describe("RsvpSection", () => {
     );
     expect(screen.queryByText("rsvp.menuCarne")).toBeNull();
     expect(screen.queryByText("rsvp.menuPescado")).toBeNull();
+    expect(screen.getByText("rsvp.menuVegano")).toBeDefined();
+  });
+
+  it("renders all menu options when every dish type is configured", () => {
+    render(
+      <RsvpSection
+        {...baseProps}
+        menuEnabled
+        menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
+        menuPescadoDishes={JSON.stringify([{ order: "primero", text: "Merluza" }])}
+        menuVeganoDishes={JSON.stringify([{ order: "primero", text: "Hummus" }])}
+        rsvpForm={{ ...baseForm, attendance: "alone" }}
+      />,
+    );
+    expect(screen.getByText("rsvp.menuCarne")).toBeDefined();
+    expect(screen.getByText("rsvp.menuPescado")).toBeDefined();
     expect(screen.getByText("rsvp.menuVegano")).toBeDefined();
   });
 

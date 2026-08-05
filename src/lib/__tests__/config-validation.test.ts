@@ -214,6 +214,12 @@ describe("validateConfigForSave", () => {
     expect(result.errorKey).toBeNull();
   });
 
+  it("accepts a transport departure without a url", () => {
+    const dep = JSON.stringify([{ type: "bus", time: "12:00" }]);
+    const result = validateConfigForSave(validConfig({ transportDepartures: dep }), true, 2030);
+    expect(result.errorKey).toBeNull();
+  });
+
   it("requires a custom message when the dress code is 'Otro'", () => {
     const result = validateConfigForSave(validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "" }), true, 2030);
     expect(result.errorKey).toBe("errors.dressCodeCustomRequired");

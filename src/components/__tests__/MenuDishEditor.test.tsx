@@ -33,6 +33,17 @@ describe("MenuDishEditor", () => {
     expect(screen.queryByRole("combobox")).toBeNull();
   });
 
+  it("returns empty for JSON that is not an array", () => {
+    render(<MenuDishEditor value='{"a":1}' onChange={vi.fn()} idBase="menu" />);
+    expect(screen.queryByRole("combobox")).toBeNull();
+  });
+
+  it("normalizes dishes with non-string text", () => {
+    const onChange = vi.fn();
+    render(<MenuDishEditor value='[{"order":"entrante","text":42},{"order":"primero","text":"Solomillo"}]' onChange={onChange} idBase="menu" />);
+    expect(screen.getByDisplayValue("Solomillo")).toBeDefined();
+  });
+
   it("calls onChange with updated JSON when editing text", () => {
     const onChange = vi.fn();
     render(<MenuDishEditor value={dishJson} onChange={onChange} idBase="menu" />);
