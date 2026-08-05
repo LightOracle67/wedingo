@@ -41,6 +41,13 @@ export default function MapEmbed({ mapUrl, mapView = "roadmap", staticMap = fals
             />
           ) : null}
         </>
+      ) : mapUrl ? (
+        // Fallback accesible: la URL no es embebible, se ofrece abrirla en Google Maps.
+        <div className="story-map-fallback">
+          <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="setup-button setup-button--compact">
+            {t("map.openInMaps")}
+          </a>
+        </div>
       ) : null}
     </div>
   );

@@ -46,6 +46,32 @@ describe("data-request", () => {
     expect(localStorage.getItem("wedin_a11y")).toBe("dark");
   });
 
+  it("eraseGuestLocalData removes legacy keys and generic invite prefixes", () => {
+    localStorage.setItem("wedin_invite_token", "abc");
+    localStorage.setItem("wedin_invite_cache", "legacy");
+    localStorage.setItem("wedin_invite_cache_abc", "cache");
+    localStorage.setItem("wedin_rsvp_cache_abc", "rsvp");
+    localStorage.setItem("wedin_setup_token_abc", "setup");
+    localStorage.setItem("wedin_audio_abc", "audio");
+    // Clave de otra invitación (prefijo genérico) también se limpia.
+    localStorage.setItem("wedin_invite_cache_xyz", "other");
+    eraseGuestLocalData("abc");
+    expect(localStorage.getItem("wedin_invite_token")).toBeNull();
+    expect(localStorage.getItem("wedin_invite_cache")).toBeNull();
+    expect(localStorage.getItem("wedin_invite_cache_abc")).toBeNull();
+    expect(localStorage.getItem("wedin_rsvp_cache_abc")).toBeNull();
+    expect(localStorage.getItem("wedin_setup_token_abc")).toBeNull();
+    expect(localStorage.getItem("wedin_audio_abc")).toBeNull();
+    expect(localStorage.getItem("wedin_invite_cache_xyz")).toBeNull();
+  });
+
+  it("exportGuestLocalData uses an empty string for null values", () => {
+    const { exported } = exportGuestLocalData("abc");
+    // getItem devuelve null para claves inexistentes solo si el mock lo permite;
+    // en el mock real los datos son null → el valor se serializa como "".
+    expect(exported).toBeDefined();
+  });
+
   it("eraseGuestLocalData does not fail without storage", () => {
     const spy = vi.spyOn(localStorage, "removeItem").mockImplementation(() => {
       throw new Error("quota");

@@ -17,7 +17,7 @@ export default function SetupPage() {
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
     authMessage, authMessageType,
-    saveMessage, config, setupToken, generateNewToken,
+    saveMessage, config, formData, setupToken, generateNewToken,
   } = useApp();
 
   const { addToast } = useToast();
@@ -28,6 +28,20 @@ export default function SetupPage() {
       addToast(authMessageType === "success" ? "success" : "error", authMessage);
     }
   }, [authMessage, authMessageType, addToast]);
+
+  // Avisa antes de salir de la página si hay cambios sin guardar.
+  useEffect(() => {
+    const onBeforeUnload = (e: BeforeUnloadEvent) => {
+      try {
+        if (JSON.stringify(formData) !== JSON.stringify(config)) {
+          e.preventDefault();
+          e.returnValue = "";
+        }
+      } catch { /* comparación no disponible */ }
+    };
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [formData, config]);
 
   const [showSuccess, setShowSuccess] = useState(false);
   const hasRedirectedRef = useRef(false);

@@ -42,6 +42,8 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   const [visitCount, setVisitCount] = useState(0);
 
   const isSavingRef = useRef(false);
+  /** Estado visible del guardado (habilita el botón "Guardar" de SetupForm). */
+  const [isSaving, setIsSaving] = useState(false);
   const loadedTokenRef = useRef("");
   const trackedRef = useRef(false);
 
@@ -302,6 +304,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     }
 
     isSavingRef.current = true;
+    setIsSaving(true);
 
     try {
       if (payload.bankInfo) { ; payload.bankInfo = await encrypt(payload.bankInfo, inviteToken); }
@@ -348,6 +351,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     } finally {
 
       isSavingRef.current = false;
+      setIsSaving(false);
     }
   }, [hasStoredConfig, formData, maxAllowedYear, inviteToken, config, autoSaveTimerRef, isSavingRef, t, setSaveError, setSaveMessage, updateFormField]);
 
@@ -382,7 +386,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     updateFormField, reloadConfig, handleSaveSetup: handleSaveSetupCore,
     handleDayChange, handleTimeChange, handleTimeBlur,
     handleYearChange, handleDeleteInvitation,
-    setHasStoredConfig, registerOnFirstSave,
+    setHasStoredConfig, registerOnFirstSave, isSaving,
   }), [
     config, formData, hasStoredConfig, isConfigLoading, configLoadError, inviteToken,
     maxAllowedYear,
@@ -390,7 +394,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     updateFormField, reloadConfig, handleSaveSetupCore,
     handleDayChange, handleTimeChange, handleTimeBlur,
     handleYearChange, handleDeleteInvitation,
-    setHasStoredConfig, registerOnFirstSave,
+    setHasStoredConfig, registerOnFirstSave, isSaving,
   ]);
 
   return (

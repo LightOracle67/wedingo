@@ -33,6 +33,7 @@ describe("useConfig", () => {
       handleDeleteInvitation: async () => {},
       setHasStoredConfig: () => {},
       registerOnFirstSave: () => {},
+      isSaving: false,
     };
     const wrapper = ({ children }: { children: React.ReactNode }) => (
       <ConfigContext.Provider value={value}>{children}</ConfigContext.Provider>

@@ -189,10 +189,9 @@ export default function LandingPage() {
       setTokenLoginUsername(username);
       setIsTokenVerified(true);
 
-      try {
-        const cred = new PasswordCredential({ id: username, password: normalized, name: username });
-        navigator.credentials.store(cred);
-      } catch {}
+      // NOTA: el token de setup NO se guarda en el Credential Manager del
+      // navegador: es una credencial de tipo bearer que concede sesión de
+      // admin y no debe replicarse/sincronizarse por el sistema operativo.
       navigate(`/${target}`);
     } catch (err) {
       console.error("[app]", "[LandingPage]", "login verify failed", { error: err });

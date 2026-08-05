@@ -9053,7 +9053,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "mapUrlInvalid": "La URL del mapa de la ubicación no es válida. Usa el botón de mapa para insertar un enlace de Google Maps."
   },
   "superadmin": {
     "tabs": {
@@ -14917,5 +14918,8 @@
     "eraseConfirm": "Se eliminarán los datos guardados en este navegador (sesión, caché de la invitación y consentimiento de cookies). ¿Continuar?",
     "eraseDone": "Se eliminaron {{count}} elementos de este navegador.",
     "serverNote": "Tu confirmación de asistencia (RSVP) se puede retirar desde el formulario de la invitación. Para solicitar la eliminación de cualquier otro dato, escribe a adriancl2001@gmail.com indicando tu nombre y la invitación."
+  },
+  "map": {
+    "openInMaps": "Abrir en Google Maps"
   }
 }

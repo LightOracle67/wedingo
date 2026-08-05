@@ -5,6 +5,7 @@ import { invitationDocRef } from "../lib/firebase";
 import { normalizeConfig } from "../lib/utils";
 import { encrypt } from "../lib/crypto-utils";
 import { getFirestoreErrorMessage } from "../lib/error-utils";
+import { isValidGoogleMapsUrl } from "../lib/geo-utils";
 import type { InvitationConfig } from "../types";
 
 export function useAutoSave(
@@ -23,8 +24,19 @@ export function useAutoSave(
     if (isSavingRef?.current || autoSavingRef.current) return null;
     autoSavingRef.current = true;
     if (isSavingRef) isSavingRef.current = true;
-    const payload = normalizeConfig(data);
     try {
+      // El autosave NO debe persistir configuraciones que rompan la
+      // invitación pública: nombres vacíos (hero vacío) o una URL de mapa
+      // inválida (mapa muerto). El resto se valida en el guardado manual.
+      if (!data.firstName?.trim() || !data.secondName?.trim()) {
+        if (onSaveMessage) onSaveMessage(t("errors.bothNamesRequired"));
+        return null;
+      }
+      if (data.weddingSiteURL && !isValidGoogleMapsUrl(data.weddingSiteURL)) {
+        if (onSaveMessage) onSaveMessage(t("errors.mapUrlInvalid"));
+        return null;
+      }
+      const payload = normalizeConfig(data);
       // Migra las imágenes data-URL a la subcolección configImages (refs
       // __cfgimg:) como hace el guardado manual. Guardarlas inline infla el
       // documento hasta el límite de 1MB y rompe couplePhoto (blob cifrado

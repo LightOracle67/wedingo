@@ -1,14 +1,12 @@
 export const generateSetupToken = () => {
   const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   const alphabetLen = alphabet.length;
-  const maxValid = 256 - (256 % alphabetLen);
   const needed = 32;
-  const bytes = new Uint8Array(needed * 2);
+  // alphabetLen (32) divide 256, por lo que byte % alphabetLen es uniforme
+  // y no se requiere rejection-sampling.
+  const bytes = new Uint8Array(needed);
   crypto.getRandomValues(bytes);
-  const rawToken = Array.from(bytes, (byte) => {
-    if (byte < maxValid) return alphabet[byte % alphabetLen];
-    return "";
-  }).filter(Boolean).join("").slice(0, needed);
+  const rawToken = Array.from(bytes, (byte) => alphabet[byte % alphabetLen]).join("").slice(0, needed);
   const token = rawToken.match(/.{1,4}/g)?.join("-") ?? rawToken;
 
   return token;

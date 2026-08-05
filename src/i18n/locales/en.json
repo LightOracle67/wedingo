@@ -31,7 +31,8 @@
     "visible": "Visible",
     "hidden": "Hidden",
     "version": "v{{version}}",
-    "remove": "Remove"
+    "remove": "Remove",
+    "saving": "Saving…"
   },
   "landing": {
     "title": "Wedingo — Wedding invitations",
@@ -641,7 +642,8 @@
     "menuDishOrderInvalid": "A dish course is not valid.",
     "menuDishTextTooLong": "A dish text cannot exceed 200 characters.",
     "generic": "Something went wrong. Please try again.",
-    "restoreFailed": "Could not restore the backup."
+    "restoreFailed": "Could not restore the backup.",
+    "mapUrlInvalid": "The location map URL is not valid. Use the map button to insert a Google Maps link."
   },
   "superadmin": {
     "tabs": {
@@ -1059,7 +1061,8 @@
     "menuChangeConfirm": "There are {{count}} menu confirmations. Are you sure you want to change the menu?"
   },
   "map": {
-    "embedTitle": "Location map"
+    "embedTitle": "Location map",
+    "openInMaps": "Open in Google Maps"
   },
   "dataRequest": {
     "title": "My data & privacy",

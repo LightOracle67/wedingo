@@ -95,10 +95,16 @@ service cloud.firestore {
       allow update: if isValidInvitationWrite(request.resource.data)
         && (isSuperAdmin() || hasActiveSession(tokenId));
       /* Incremento de contador de visitas: cualquiera puede incrementar
-         _visits, pero solo con un valor entero no negativo. */
+         _visits, pero solo en pasos razonables (máx +10 por request) para
+         evitar inflar el contador de forma arbitraria. El cliente usa
+         increment(1), así que no se rompe. */
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['_visits'])
         && request.resource.data._visits is int
-        && request.resource.data._visits >= 0;
+        && request.resource.data._visits >= 0
+        && (resource.data.keys().hasAny(['_visits'])
+          ? (request.resource.data._visits >= resource.data._visits
+            && request.resource.data._visits <= resource.data._visits + 10)
+          : request.resource.data._visits <= 10);
       /* Creación/renovación de sesión: exige prueba de conocimiento del
          token de setup (hash con registro en setupTokens). El token legacy
          `_activeSetupToken` ya NO se acepta: era legible públicamente y
@@ -166,10 +172,15 @@ service cloud.firestore {
     match /setupTokens/{hashId} {
       allow get: if true;
       allow list: if false;
+      /* El alta inicial crea el registro antes de que exista la invitación;
+         las rotaciones se hacen con sesión activa. Se exige un formato de
+         invitación estricto (10 caracteres alfanuméricos, como genera la app)
+         para limitar el spam de registros de tokens hacia invitaciones
+         inexistentes. */
       allow create: if isValidTokenHash(hashId)
         && request.resource.data.keys().hasOnly(['inviteToken', 'createdAt'])
         && request.resource.data.inviteToken is string
-        && request.resource.data.inviteToken.size() <= 40
+        && request.resource.data.inviteToken.matches('^[A-Za-z0-9]{10}$')
         && (!exists(/databases/$(database)/documents/invitations/$(request.resource.data.inviteToken))
           || hasActiveSession(request.resource.data.inviteToken)
           || isSuperAdmin());

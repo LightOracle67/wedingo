@@ -11,7 +11,7 @@ import CookieConsent from "./components/CookieConsent";
 import DataRequestModal from "./components/DataRequestModal";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
-import { useFocusTrap } from "./hooks/useFocusTrap";
+import { useFocusTrap, useEscapeKey } from "./hooks/useFocusTrap";
 
 const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ku", "ckb", "dv"]);
 const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
@@ -55,6 +55,8 @@ function AppShell() {
   // Trampa de foco del menú móvil: mientras está abierto, el teclado no
   // puede tabular hacia el contenido detrás del overlay.
   const navOverlayRef = useFocusTrap<HTMLDivElement>(navOpen);
+  // Escape cierra el menú móvil (patrón de diálogo accesible).
+  useEscapeKey(() => setNavOpen(false), navOpen);
 
   useEffect(() => {
 

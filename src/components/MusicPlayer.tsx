@@ -85,7 +85,7 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: { musicUrl?: string 
 
       <div className={`music-player__card${open ? " music-player__card--open" : ""}`}>
         <span className="music-player__track">{name}</span>
-        {error ? <span className="music-player__status">{t("music.loadError")}</span> : null}
+        {error ? <span className="music-player__status" role="alert">{t("music.loadError")}</span> : null}
         <div className="music-player__controls">
           <button type="button" className={`music-player__play${playing ? " music-player__play--active" : ""}`} onClick={toggleMusic} disabled={loading || !hasMusic} aria-label={playing ? t("music.pause") : t("music.play")}>
             {loading ? <span className="music-player__spinner" /> : playing ? <span>⏸</span> : <span>▶</span>}

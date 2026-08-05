@@ -90,9 +90,14 @@ describe("compressImage", () => {
   it("uses the fast path for a small JPEG", async () => {
     const file = makeFile("image/jpeg", 100);
     const FakeReader = class {
-      result = "data:image/jpeg;base64,FAST";
+      result: string | ArrayBuffer = "data:image/jpeg;base64,FAST";
       onload: (() => void) | null = null;
       readAsDataURL() {
+        this.onload?.();
+      }
+      readAsArrayBuffer() {
+        // Magic bytes JPEG (FF D8 FF) para validar el fast path.
+        this.result = new Uint8Array([0xff, 0xd8, 0xff]).buffer;
         this.onload?.();
       }
     };
@@ -101,6 +106,30 @@ describe("compressImage", () => {
     const promise = compressImage(file);
     imgInstance?.onload?.();
     await expect(promise).resolves.toBe("data:image/jpeg;base64,FAST");
+    vi.unstubAllGlobals();
+  });
+
+  it("falls back to the canvas path when a JPEG lacks valid magic bytes", async () => {
+    const file = makeFile("image/jpeg", 100);
+    const FakeReader = class {
+      result: string | ArrayBuffer = "data:image/png;base64,SLOW";
+      onload: (() => void) | null = null;
+      readAsDataURL() {
+        this.onload?.();
+      }
+      readAsArrayBuffer() {
+        // No es JPEG: no debe tomar el fast path.
+        this.result = new Uint8Array([0x47, 0x49, 0x46]).buffer;
+        this.onload?.();
+      }
+    };
+    vi.stubGlobal("FileReader", FakeReader);
+    installCanvasMocks();
+    installImageMock(() => {});
+    const promise = compressImage(file);
+    imgInstance?.onload?.();
+    // Al no superar la validación de magic bytes se re-codifica en canvas.
+    await expect(promise).resolves.toContain("data:image/webp");
     vi.unstubAllGlobals();
   });
 

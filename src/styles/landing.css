@@ -21,3 +21,14 @@
     opacity: 1;
   }
 }
+
+/* Fallback de mapa no embebible: enlace centrado en lugar de caja vacía. */
+.story-map-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  border: 1px solid var(--invite-shell-border);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--invite-shell-bg) 70%, transparent);
+}

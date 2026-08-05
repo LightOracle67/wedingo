@@ -158,6 +158,12 @@ export function validateConfigForSave(
   if (sanitized.accommodationURL && !isValidGoogleMapsUrl(sanitized.accommodationURL)) {
     return { sanitized, hiddenSet, errorKey: "errors.accommodationUrlInvalid" };
   }
+  // URL de mapa del lugar de la boda: si se rellena debe ser una URL de
+  // Google Maps válida (de lo contrario el mapa nunca se muestra y el admin
+  // cree que todo se guardó bien).
+  if (sanitized.weddingSiteURL && !isValidGoogleMapsUrl(sanitized.weddingSiteURL)) {
+    return { sanitized, hiddenSet, errorKey: "errors.mapUrlInvalid" };
+  }
 
   return { sanitized, hiddenSet, errorKey: null };
 }

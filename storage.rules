@@ -3,19 +3,28 @@ service firebase.storage {
   match /b/{bucket}/o {
     match /invitations/{token}/{allPaths=**} {
       /* El acceso a Storage exige una sesión de admin activa y no expirada
-         en Firestore. Ya no basta con request.auth != null para que una
-         cuenta de correo genérica no pueda acceder a invitaciones ajenas. */
+         en Firestore o ser el superadmin (que limpia archivos de invitaciones
+         expiradas, sin sesión activa). Ya no basta con request.auth != null
+         para que una cuenta de correo genérica no acceda a invitaciones
+         ajenas. */
       function hasActiveSession() {
         return firestore.exists(/databases/(default)/documents/invitations/$(token))
           && firestore.get(/databases/(default)/documents/invitations/$(token)).data.activeSession is timestamp
           && firestore.get(/databases/(default)/documents/invitations/$(token)).data.sessionExpiresAt is timestamp
           && firestore.get(/databases/(default)/documents/invitations/$(token)).data.sessionExpiresAt > request.time;
       }
-      allow read: if hasActiveSession();
-      allow write: if hasActiveSession()
+      function isSuperAdmin() {
+        return request.auth != null
+          && request.auth.token.email in ['adriancl2001@gmail.com'];
+      }
+      /* La app no escribe nunca en Storage (las imágenes van como base64 en
+         Firestore); Storage solo lo usa el superadmin para limpiar archivos
+         huérfanos. La escritura queda restringida al superadmin. */
+      allow read: if isSuperAdmin() || hasActiveSession();
+      allow write: if isSuperAdmin()
         && request.resource.size < 20 * 1024 * 1024
         && request.resource.contentType.matches('image/.*');
-      allow delete: if hasActiveSession();
+      allow delete: if isSuperAdmin() || hasActiveSession();
     }
   }
 }

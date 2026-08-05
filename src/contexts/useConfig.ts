@@ -23,6 +23,8 @@ export interface ConfigContextValue {
   handleDeleteInvitation: () => Promise<void>;
   setHasStoredConfig: (v: boolean) => void;
   registerOnFirstSave: (cb: () => void) => void;
+  /** Indica si hay un guardado manual en curso (habilita el botón Guardar). */
+  isSaving: boolean;
 }
 
 export const ConfigContext = createContext<ConfigContextValue | null>(null);

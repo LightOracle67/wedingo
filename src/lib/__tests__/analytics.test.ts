@@ -115,4 +115,54 @@ describe("analytics", () => {
 
     vi.unstubAllEnvs();
   });
+
+  it("grantAnalyticsConsent is a no-op without consent", async () => {
+    vi.resetModules();
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_FIREBASE_MEASUREMENT_ID", "G-XXXXXXXX");
+
+    const { grantAnalyticsConsent } = await import("../analytics");
+    // Sin consentimiento la función no hace nada (y no inicializa analytics).
+    grantAnalyticsConsent();
+    await vi.waitFor(() => expect(mockLogEvent).not.toHaveBeenCalled());
+
+    vi.unstubAllEnvs();
+  });
+
+  it("initializes analytics only once for repeated events", async () => {
+    grantConsent();
+    mockIsSupported.mockResolvedValue(true);
+    vi.resetModules();
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_FIREBASE_MEASUREMENT_ID", "G-XXXXXXXX");
+
+    const { trackEvent: trackTwice } = await import("../analytics");
+    trackTwice("first", {});
+    await vi.waitFor(() => {
+      expect(mockLogEvent).toHaveBeenCalledWith(expect.any(Object), "first", {});
+    });
+    // Segundo evento: la instancia ya está inicializada (memoizada).
+    trackTwice("second", {});
+    await vi.waitFor(() => {
+      expect(mockLogEvent).toHaveBeenCalledWith(expect.any(Object), "second", {});
+    });
+
+    vi.unstubAllEnvs();
+  });
+
+  it("does not log when analytics is not supported", async () => {
+    grantConsent();
+    mockIsSupported.mockResolvedValue(false);
+    vi.resetModules();
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_FIREBASE_MEASUREMENT_ID", "G-XXXXXXXX");
+
+    const { trackEvent: trackUnsupported } = await import("../analytics");
+    trackUnsupported("event", {});
+    await vi.waitFor(() => {
+      expect(mockLogEvent).not.toHaveBeenCalled();
+    });
+
+    vi.unstubAllEnvs();
+  });
 });

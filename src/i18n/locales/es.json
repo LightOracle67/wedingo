@@ -31,7 +31,8 @@
     "delete": "Eliminar",
     "copied": "¡Copiado!",
     "version": "v{{version}}",
-    "remove": "Eliminar"
+    "remove": "Eliminar",
+    "saving": "Guardando…"
   },
   "landing": {
     "title": "Wedingo — Invitaciones de boda",
@@ -641,7 +642,8 @@
     "menuDishOrderInvalid": "El orden de un plato no es válido.",
     "menuDishTextTooLong": "El texto de un plato no puede superar los 200 caracteres.",
     "generic": "Algo salió mal. Inténtalo de nuevo.",
-    "restoreFailed": "No se pudo restaurar la copia de seguridad."
+    "restoreFailed": "No se pudo restaurar la copia de seguridad.",
+    "mapUrlInvalid": "La URL del mapa de la ubicación no es válida. Usa el botón de mapa para insertar un enlace de Google Maps."
   },
   "superadmin": {
     "tabs": {
@@ -1060,7 +1062,8 @@
     "menuChangeConfirm": "Hay {{count}} confirmaciones con menú. ¿Seguro que quieres cambiar el menú?"
   },
   "map": {
-    "embedTitle": "Mapa de la ubicación"
+    "embedTitle": "Mapa de la ubicación",
+    "openInMaps": "Abrir en Google Maps"
   },
   "dataRequest": {
     "title": "Mis datos y privacidad",

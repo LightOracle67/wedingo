@@ -57,6 +57,7 @@ export default function SetupForm({ prefix = "" }) {
   const {
     formData, updateFormField, handleSaveSetup,
     saveMessage, saveError, isTokenVerified, isRestoringSession, hasStoredConfig, setLegalModal,
+    isSaving,
   } = useApp();
   const { addToast } = useToast();
 
@@ -209,8 +210,8 @@ export default function SetupForm({ prefix = "" }) {
       {/* ── Botón de guardar ── */}
       
       <div className="setup-actions setup-actions--sticky" style={{ background: 0, WebkitBackdropFilter: "unset" }}>
-        <button className="setup-button" type="submit" disabled={!hasStoredConfig && !tokenAcknowledged}>
-          {t("common.save")}
+        <button className="setup-button" type="submit" disabled={(!hasStoredConfig && !tokenAcknowledged) || isSaving}>
+          {isSaving ? t("common.saving") : t("common.save")}
         </button>
       </div>
     </form>

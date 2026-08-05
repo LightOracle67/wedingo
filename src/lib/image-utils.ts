@@ -102,17 +102,33 @@ export const compressImage = async (file: File, maxDimension = MAX_IMAGE_DIMENSI
 
   const img = await loadImage(file);
 
-  // Fast path: JPEG ya pequeño y con dimensiones razonables
+  // Fast path: JPEG ya pequeño y con dimensiones razonables.
+  // Se comprueba el magic bytes JPEG (FF D8 FF) porque file.type lo envía el
+  // cliente y no es fiable; el contenido se vuelve a validar en canvas en el
+  // camino lento si no pasa.
   if (file.size <= targetBytes && file.type === "image/jpeg"
-      && img.width <= maxDimension && img.height <= maxDimension) {
-    URL.revokeObjectURL(img.src);
-
-    return new Promise((resolve, reject) => {
+      && img.width <= maxDimension && img.height <= maxDimension
+      && file.slice(0, 3).size === 3) {
+    const isJpeg = await new Promise<boolean>((resolve) => {
+      const probe = file.slice(0, 3);
       const reader = new FileReader();
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const bytes = new Uint8Array(reader.result as ArrayBuffer);
+        resolve(bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff);
+      };
+      reader.onerror = () => resolve(false);
+      reader.readAsArrayBuffer(probe);
     });
+    if (isJpeg) {
+      URL.revokeObjectURL(img.src);
+
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
   }
 
   let { width, height } = img;

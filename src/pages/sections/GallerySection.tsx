@@ -159,10 +159,12 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
       if (e.key === "Escape") closeLightbox();
       if (e.key === "ArrowLeft") lightboxPrev();
       if (e.key === "ArrowRight") lightboxNext();
+      if (e.key === "Home") setLightboxIndex(0);
+      if (e.key === "End") setLightboxIndex(images.length - 1);
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [lightboxIndex, closeLightbox, lightboxPrev, lightboxNext]);
+  }, [lightboxIndex, closeLightbox, lightboxPrev, lightboxNext, images.length]);
 
   // ── Navegación manual con fade ────────────────────────
 

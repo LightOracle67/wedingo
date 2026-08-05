@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.65.0",
+    date: "2026-08-06",
+    changes: [
+      "SEGURIDAD: storage.rules — escritura solo superadmin y superadmin incluido en read/delete (la limpieza ya no falla en silencio); cota de _visits (+10 por request); setupTokens con formato estricto del token",
+      "SEGURIDAD: el token de setup ya no se guarda en el gestor de contraseñas del navegador; los JPEGs se validan por magic bytes antes del fast path",
+      "FIX: el autosave ya no persiste configuraciones rotas (nombres vacíos o URL de mapa inválida) y la URL del mapa del lugar ahora se valida",
+      "UX: aviso al salir con cambios sin guardar, indicador de guardado en el botón, Home/End en el lightbox, error de música anunciado, fallback de mapa con enlace, Escape cierra el menú móvil",
+      "CALIDAD: tests nuevos (magic bytes, analytics, data-request) y código muerto eliminado en token-utils",
+    ],
+  },
+  {
     version: "2.64.0",
     date: "2026-08-06",
     changes: [
