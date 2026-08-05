@@ -44,6 +44,13 @@ describe("MenuDishEditor", () => {
     expect(screen.getByDisplayValue("Solomillo")).toBeDefined();
   });
 
+  it("falls back to 'otro' for an unknown dish order", () => {
+    const onChange = vi.fn();
+    render(<MenuDishEditor value='[{"order":"desayuno","text":"Tostadas"}]' onChange={onChange} idBase="menu" />);
+    const select = screen.getByRole("combobox") as HTMLSelectElement;
+    expect(select.value).toBe("otro");
+  });
+
   it("calls onChange with updated JSON when editing text", () => {
     const onChange = vi.fn();
     render(<MenuDishEditor value={dishJson} onChange={onChange} idBase="menu" />);

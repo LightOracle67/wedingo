@@ -175,6 +175,16 @@ describe("compressImageTransparent", () => {
     expect(result).toContain("data:image");
   });
 
+  it("downscales only the oversized dimension", async () => {
+    const file = makeFile("image/png", 500 * 1024);
+    const promise = compressImageTransparent(file);
+    imgInstance!.width = 100;
+    imgInstance!.height = 3000;
+    imgInstance!.onload?.();
+    const result = await promise;
+    expect(result).toContain("data:image");
+  });
+
   it("reduces quality when the image exceeds the target size", async () => {
     // Una cadena grande para forzar estimatedBytes > TARGET_BYTES.
     const bigData = "data:image/webp;base64," + "A".repeat(600 * 1024);

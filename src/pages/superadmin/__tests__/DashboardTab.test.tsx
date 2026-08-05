@@ -136,6 +136,25 @@ describe("DashboardTab", () => {
     expect(screen.getByText("superadmin.cleanButton")).toBeDefined();
   });
 
+  it("uses January and day 1 as fallbacks for an invalid wedding date", async () => {
+    const { getDocs } = await import("firebase/firestore");
+    const getDocsMock = vi.mocked(getDocs);
+    const now = new Date();
+    const threeYearsAgo = new Date(now.getFullYear() - 3, 0, 1);
+    const year = threeYearsAgo.getFullYear();
+    getDocsMock.mockResolvedValue({
+      docs: [
+        { id: "inv1", data: () => ({ weddingYear: String(year), weddingMonth: "mes-invalido", weddingDay: "abc" }) },
+      ],
+    } as never);
+
+    render(<DashboardTab />);
+
+    await waitFor(() => {
+      expect(screen.getByText("superadmin.expiredInvitations")).toBeDefined();
+    });
+  });
+
   it("does not show expired section when no expired invitations", async () => {
     const { getDocs } = await import("firebase/firestore");
     const getDocsMock = vi.mocked(getDocs);

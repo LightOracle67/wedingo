@@ -313,6 +313,24 @@ describe("DataTab", () => {
     expect(mockAddToast).not.toHaveBeenCalledWith("success", expect.any(String));
   });
 
+  it("deleteAll proceeds when confirmation is accepted", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    window.confirm = vi.fn(() => true);
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.data.deleteAllBtn")).toBeInTheDocument());
+    const input = screen.getByPlaceholderText("superadmin.data.confirmPlaceholder");
+    fireEvent.change(input, { target: { value: "ELIMINAR" } });
+    fireEvent.click(screen.getByText("superadmin.data.deleteAllBtn"));
+    await vi.waitFor(() => {
+      expect(mockWriteBatch).toHaveBeenCalled();
+    });
+  });
+
   it("computes rsvp counts from the responses group", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {

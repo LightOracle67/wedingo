@@ -563,6 +563,7 @@ describe("AttendanceTab", () => {
     const entries = [
       { id: "1", guestName: "Alice", attendance: "yes" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-01", birthDate: "2024-01-01T12:00:00Z" },
       { id: "2", guestName: "Bob", attendance: "no" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-02", birthDate: "" },
+      { id: "3", guestName: "Carlos", attendance: "no" as const, companions: 0, dietaryInfo: "", submittedAt: "2024-01-03" },
     ];
     render(
       <AttendanceTab
