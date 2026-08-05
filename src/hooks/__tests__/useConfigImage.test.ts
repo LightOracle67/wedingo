@@ -24,10 +24,12 @@ describe("useConfigImage", () => {
     expect(mocks.getConfigImage).not.toHaveBeenCalled();
   });
 
-  it("passes through a plain (non-ref) value", () => {
+  it("passes through a plain (non-ref) value", async () => {
     mocks.isConfigImageRef.mockReturnValue(false);
     const { result } = renderHook(() => useConfigImage("token", "https://img.example/photo.jpg"));
-    expect(result.current).toBe("https://img.example/photo.jpg");
+    await waitFor(() => {
+      expect(result.current).toBe("https://img.example/photo.jpg");
+    });
     expect(mocks.getConfigImage).not.toHaveBeenCalled();
   });
 

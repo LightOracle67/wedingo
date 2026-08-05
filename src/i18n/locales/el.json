@@ -165,7 +165,8 @@
     "headcountHint": "Πόσα άτομα για κάθε επιλογή ({{total}} σύνολο)",
     "guestNamesLabel": "Ονόματα καλεσμένων",
     "guestNamesHint": "Γράψτε το όνομα και το επώνυμο κάθε συνοδού (μέγ. {{count}})",
-    "guestNamesPlaceholder": "Όνομα1 Επώνυμο1, Όνομα2 Επώνυμο2..."
+    "guestNamesPlaceholder": "Όνομα1 Επώνυμο1, Όνομα2 Επώνυμο2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Φόρτωση πρόσκλησης…",

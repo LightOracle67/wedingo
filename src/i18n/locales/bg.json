@@ -165,7 +165,8 @@
     "headcountHint": "Колко хора за всяка опция (общо {{total}})",
     "guestNamesLabel": "Имена на гостите",
     "guestNamesHint": "Напишете първото и фамилното име на всеки спътник (макс. {{count}})",
-    "guestNamesPlaceholder": "Име1 Фамилия1, Име2 Фамилия2..."
+    "guestNamesPlaceholder": "Име1 Фамилия1, Име2 Фамилия2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Зареждане на поканата…",

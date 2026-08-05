@@ -165,7 +165,8 @@
     "headcountHint": "كم عدد الأشخاص لكل خيار (إجمالي {{total}})",
     "guestNamesLabel": "أسماء الضيوف",
     "guestNamesHint": "اكتب الاسم الأول والأخير لكل رفيق (الحد الأقصى {{count}})",
-    "guestNamesPlaceholder": "الاسم 1 اللقب 1، الاسم 2 اللقب 2..."
+    "guestNamesPlaceholder": "الاسم 1 اللقب 1، الاسم 2 اللقب 2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "جارٍ تحميل الدعوة...",

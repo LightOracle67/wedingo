@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 interface UseRsvpSubmitOptions {
   token: string;
@@ -17,9 +17,13 @@ export function useRsvpSubmit({ token: _token, onSubmit, validate }: UseRsvpSubm
 
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  // Candado de re-entrada: dos clics rápidos en el mismo tick pasarían el
+  // guard por estado (closure stale); el ref descarta el segundo submit.
+  const lockRef = useRef(false);
 
   const handleSubmit = useCallback(async (data: Record<string, unknown>) => {
 
+    if (lockRef.current) return false;
     if (validate) {
       const error = validate(data);
       if (error) {
@@ -29,6 +33,7 @@ export function useRsvpSubmit({ token: _token, onSubmit, validate }: UseRsvpSubm
       }
 
     }
+    lockRef.current = true;
     setSubmitting(true);
     setSubmitError(null);
     try {
@@ -41,6 +46,7 @@ export function useRsvpSubmit({ token: _token, onSubmit, validate }: UseRsvpSubm
       setSubmitError(message);
       return false;
     } finally {
+      lockRef.current = false;
       setSubmitting(false);
     }
   }, [onSubmit, validate]);

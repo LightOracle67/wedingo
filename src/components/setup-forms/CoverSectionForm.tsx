@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../../lib/constants";
-import { uploadImage, saveConfigImage, deleteConfigImage } from "../../lib/image-store";
 import { compressImageTransparent, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES } from "../../lib/image-utils";
 import { useConfigImage } from "../../hooks/useConfigImage";
 import ThemePicker from "../ThemePicker";
@@ -28,6 +27,8 @@ export default function CoverSectionForm({ prefix = "" }) {
   const id = (name: string) => `${prefix}${name}`;
 
   const uploadConfigImage = useCallback(async (imageId: string, file: File, onProgress?: (p: number) => void) => {
+    // image-store se importa aquí para no arrastrarlo al bundle inicial.
+    const { uploadImage, saveConfigImage } = await import("../../lib/image-store");
     // couplePhoto es una imagen protagonista: se comprime en alta calidad.
     const { dataUrl } = await uploadImage(inviteToken, file, onProgress, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES);
     return await saveConfigImage(inviteToken, imageId, dataUrl);
@@ -56,7 +57,8 @@ export default function CoverSectionForm({ prefix = "" }) {
     if (input) input.value = "";
   }, [updateFormField, startUploadToast, addToast, t, uploadConfigImage]);
 
-  const handleRemovePhoto = useCallback(() => {
+  const handleRemovePhoto = useCallback(async () => {
+    const { deleteConfigImage } = await import("../../lib/image-store");
     deleteConfigImage(inviteToken, "couplePhoto").catch(() => {});
     updateFormField("couplePhoto", "");
   }, [inviteToken, updateFormField]);
@@ -192,7 +194,7 @@ export default function CoverSectionForm({ prefix = "" }) {
             <p className="setup-help setup-help--tight">{t("setup.customSealHint")}</p>
           </div>
           {formData.customSeal ? (
-            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => { deleteConfigImage(inviteToken, "customSeal").catch(() => {}); updateFormField("customSeal", ""); }}>{t("setup.remove")}</button>
+            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "customSeal").catch(() => {}); updateFormField("customSeal", ""); }}>{t("setup.remove")}</button>
           ) : null}
         </div>
         {formData.customSeal ? (
@@ -214,7 +216,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           if (file.size > 1024 * 1024) { ; addToast("error", t("setup.errorFileSize")); return; }
           try {
             const dataUrl = await compressImageTransparent(file);
-            const ref = await saveConfigImage(inviteToken, "customSeal", dataUrl);
+            const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "customSeal", dataUrl);
             updateFormField("customSeal", ref);
 
           } catch (err) { console.error("[app]", "[CoverSectionForm]", "customSeal error:", err); addToast("error", t("setup.photoUploadFailed")); }
@@ -231,7 +233,7 @@ export default function CoverSectionForm({ prefix = "" }) {
             <p className="setup-help setup-help--tight">{t("setup.backgroundHint")}</p>
           </div>
           {formData.backgroundImage ? (
-            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => { deleteConfigImage(inviteToken, "backgroundImage").catch(() => {}); updateFormField("backgroundImage", ""); }}>{t("setup.remove")}</button>
+            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "backgroundImage").catch(() => {}); updateFormField("backgroundImage", ""); }}>{t("setup.remove")}</button>
           ) : null}
         </div>
 
@@ -253,7 +255,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           if (file.size > MAX_UPLOAD_SIZE_BYTES) { ; addToast("error", t("setup.errorFileSize")); return; }
           try {
             const dataUrl = await compressImageTransparent(file, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES);
-            const ref = await saveConfigImage(inviteToken, "backgroundImage", dataUrl);
+            const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "backgroundImage", dataUrl);
             updateFormField("backgroundImage", ref);
 
           } catch (err) { console.error("[app]", "[CoverSectionForm]", "backgroundImage error:", err); addToast("error", t("setup.photoUploadFailed")); }
@@ -269,7 +271,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         <div className="setup-background-panel__header">
           <span className="setup-label setup-label--tight" style={{ fontSize: "0.8rem" }}>{t("setup.cornerDecorationLabel")}</span>
           {(formData as Record<string, unknown>).cornerDecoration ? (
-            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => { deleteConfigImage(inviteToken, "cornerDecoration").catch(() => {}); updateFormField("cornerDecoration", ""); }} style={{ fontSize: "0.7rem" }}>{t("setup.remove")}</button>
+            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "cornerDecoration").catch(() => {}); updateFormField("cornerDecoration", ""); }} style={{ fontSize: "0.7rem" }}>{t("setup.remove")}</button>
           ) : null}
         </div>
         {(formData as Record<string, unknown>).cornerDecoration ? (
@@ -289,7 +291,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           if (file.size > 1024 * 1024) { ; addToast("error", t("setup.errorFileSize")); return; }
           try {
             const dataUrl = await compressImageTransparent(file);
-            const ref = await saveConfigImage(inviteToken, "cornerDecoration", dataUrl);
+            const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "cornerDecoration", dataUrl);
             updateFormField("cornerDecoration", ref);
 
           } catch (err) { console.error("[app]", "[CoverSectionForm]", "cornerDecoration error:", err); addToast("error", t("setup.photoUploadFailed")); }

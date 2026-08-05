@@ -45,6 +45,9 @@ interface RsvpSectionProps {
   isRsvpSubmitting?: boolean;
   hasSubmitted?: boolean;
   alreadySubmittedEntry?: unknown;
+  /** Error de red al cargar las respuestas (botón "Reintentar" del invitado). */
+  rsvpLoadError?: boolean;
+  retryLoadRsvp?: () => void;
   updateRsvpField: (field: string, value: string | boolean | number | string[] | string[][] | boolean[]) => void;
   handleRsvpSubmit: (e: React.FormEvent) => void;
   handleDeleteRsvp: () => void;
@@ -62,6 +65,7 @@ interface RsvpSectionProps {
 const RsvpSection = memo(function RsvpSection({
   style, className,
   rsvpForm, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
+  rsvpLoadError, retryLoadRsvp,
   updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, menuEnabled,
   menuCarneDishes, menuPescadoDishes, menuVeganoDishes, menuTextoDishes,
   transportEnabled, transportDepartures, computeAge, cornerDecoration,
@@ -226,7 +230,7 @@ const RsvpSection = memo(function RsvpSection({
           </div>
         ) : null}
 
-        <form className="rsvp-form" onSubmit={handleRsvpSubmit} noValidate>
+        <form className="rsvp-form" onSubmit={handleRsvpSubmit} noValidate aria-busy={isRsvpSubmitting}>
           <label className="setup-label" htmlFor="rsvpName">{t("rsvp.nameLabel")} *</label>
           <input id="rsvpName" className="setup-input" value={rsvpForm.guestName} onChange={handleNameChange} placeholder={t("rsvp.namePlaceholder")} autoComplete="off" required maxLength={120} />
           <p className="setup-help" style={{ marginTop: "0.2rem" }}>{t("rsvp.nameHint")}</p>
@@ -292,7 +296,7 @@ const RsvpSection = memo(function RsvpSection({
               {Array.from({ length: rsvpForm.companionCount }, (_, i) => (
                 <div key={i} className="rsvp-attendee-card">
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.5rem" }}>
-                    <h4 style={{ margin: 0 }}>{t("rsvp.companionHeading", { number: i + 1 })}</h4>
+                    <h3 style={{ margin: 0 }}>{t("rsvp.companionHeading", { number: i + 1 })}</h3>
                     {i > 0 && (
                       <button type="button" className="rsvp-remove-btn" aria-label={t("common.remove")}
                         onClick={() => updateRsvpField("companionCount", rsvpForm.companionCount - 1)}
@@ -544,6 +548,16 @@ const RsvpSection = memo(function RsvpSection({
         </form>
 
         {rsvpMessage ? <p className="rsvp-feedback" aria-live="polite">{rsvpMessage}</p> : null}
+
+        {/* Error de red al cargar las respuestas: el invitado puede reintentar. */}
+        {rsvpLoadError ? (
+          <div className="rsvp-feedback rsvp-feedback--error" role="alert">
+            <p style={{ margin: "0 0 0.5rem" }}>{t("rsvp.loadError")}</p>
+            <button type="button" className="setup-button setup-button--compact" onClick={retryLoadRsvp}>
+              {t("common.retry")}
+            </button>
+          </div>
+        ) : null}
         </div>
       </div>
     </section>

@@ -183,7 +183,8 @@
     "headcountHint": "Hvor mange personer for hver mulighed ({{total}} i alt)",
     "guestNamesLabel": "Gæstenavne",
     "guestNamesHint": "Skriv for- og efternavnet på hver ledsager (maks. {{count}})",
-    "guestNamesPlaceholder": "Navn1 Efternavn1, Navn2 Efternavn2..."
+    "guestNamesPlaceholder": "Navn1 Efternavn1, Navn2 Efternavn2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Indlæser invitation…",

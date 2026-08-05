@@ -236,11 +236,13 @@ describe("CoverSectionForm", () => {
     expect(screen.getByText("setup.remove")).toBeDefined();
   });
 
-  it("calls updateFormField with empty string on remove photo click", () => {
+  it("calls updateFormField with empty string on remove photo click", async () => {
     mockFormData.couplePhoto = "https://example.com/photo.jpg";
     render(<CoverSectionForm />);
     fireEvent.click(screen.getByText("setup.remove"));
-    expect(mockUpdateFormField).toHaveBeenCalledWith("couplePhoto", "");
+    await vi.waitFor(() => {
+      expect(mockUpdateFormField).toHaveBeenCalledWith("couplePhoto", "");
+    });
   });
 
   it("renders replace image link when couplePhoto is set", () => {

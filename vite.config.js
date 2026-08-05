@@ -46,11 +46,23 @@ function pwaPrecache() {
     closeBundle() {
       const root = process.cwd();
       const assetsDir = join(root, "dist", "assets");
+      // Códigos de idioma emitidos por i18n: sus chunks NO se precachean
+      // (solo se descarga el idioma detectado bajo demanda).
+      const langCodes = new Set(
+        readdirSync(join(root, "src", "i18n", "locales"))
+          .filter((file) => file.endsWith(".json"))
+          .map((file) => file.replace(".json", "")),
+      );
       let assets = [];
       try {
         assets = readdirSync(assetsDir)
           .filter((file) => /\.(js|css|woff2?)$/.test(file))
           .sort()
+          .filter((file) => {
+            const langMatch = file.match(/^([a-z]{2,4})-[A-Za-z0-9_-]{8,}\.js$/);
+            // Excluye los 100 chunks de idioma del precache del service worker.
+            return !(langMatch && langCodes.has(langMatch[1]));
+          })
           .map((file) => `/assets/${file}`);
       } catch {
         // Sin directorio de assets el SW se deja con la lista vacía.

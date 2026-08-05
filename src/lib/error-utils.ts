@@ -1,3 +1,5 @@
+import { hasAnalyticsConsent } from "./storage";
+
 const SENTRY_DSN = import.meta.env.VITE_SENTRY_DSN || "";
 
 export function getFirestoreErrorMessage(error: unknown, t?: (key: string) => string): string {
@@ -24,7 +26,7 @@ export function logError(error: unknown, context?: string) {
     console.error(`[${context || "App"}]`, message, stack);
   }
   
-  if (SENTRY_DSN) {
+  if (SENTRY_DSN && hasAnalyticsConsent()) {
     try {
       fetch(SENTRY_DSN, {
         method: "POST",

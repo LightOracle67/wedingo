@@ -165,7 +165,8 @@
     "headcountHint": "প্রতিটি বিকল্পের জন্য কতজন লোক ({{total}} মোট)",
     "guestNamesLabel": "অতিথির নাম",
     "guestNamesHint": "প্রতিটি সঙ্গীর প্রথম এবং শেষ নাম লিখুন (সর্বোচ্চ {{count}})",
-    "guestNamesPlaceholder": "নাম1 উপাধি1, নাম2 উপাধি2..."
+    "guestNamesPlaceholder": "নাম1 উপাধি1, নাম2 উপাধি2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "আমন্ত্রণ লোড হচ্ছে…",

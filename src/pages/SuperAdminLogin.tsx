@@ -58,7 +58,7 @@ export default function SuperAdminLogin() {
           </div>
         </header>
 
-        <form className="setup-form" action="#" onSubmit={handleSubmit}>
+        <form className="setup-form" action="#" onSubmit={handleSubmit} aria-busy={submitting}>
           <label className="setup-label" htmlFor="superadminEmail">
             {t("superadmin.emailLabel")}
           </label>

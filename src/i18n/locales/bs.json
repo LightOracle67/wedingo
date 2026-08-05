@@ -203,7 +203,8 @@
     "headcountHint": "Koliko ljudi za svaku opciju ({{total}} ukupno)",
     "guestNamesLabel": "Imena gostiju",
     "guestNamesHint": "Napišite ime i prezime svakog pratioca (maks. {{count}})",
-    "guestNamesPlaceholder": "Ime1 Prezime1, Ime2 Prezime2..."
+    "guestNamesPlaceholder": "Ime1 Prezime1, Ime2 Prezime2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Učitavanje pozivnice…",

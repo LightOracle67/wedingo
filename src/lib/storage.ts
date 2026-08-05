@@ -13,6 +13,30 @@ export function hasStorageConsent() {
   }
 }
 
+/**
+ * Indica si el visitante ha aceptado la estadística de visitas (analytics).
+ * Se respeta el consentimiento de cookies (RGPD/LGPD/CCPA): sin el
+ * consentimiento "accepted" con analytics activado no se recogen datos.
+ * Vive aquí (módulo ligero, sin Firebase) para que Sentry y Analytics lo
+ * consulten sin arrastrar el bundle de firebase.
+ */
+export function hasAnalyticsConsent(): boolean {
+  try {
+    const consent = localStorage.getItem(STORAGE_CONSENT_KEY);
+    if (consent !== "accepted") return false;
+    const prefs = localStorage.getItem(STORAGE_KEYS.cookiePrefs);
+    if (!prefs) return true;
+    try {
+      const parsed = JSON.parse(prefs) as { analytics?: boolean };
+      return parsed.analytics !== false;
+    } catch {
+      return true;
+    }
+  } catch {
+    return false;
+  }
+}
+
 export function safeSetItem(key: string, value: string, storage: Storage = localStorage) {
   if (storage === localStorage && !hasStorageConsent()) {
 

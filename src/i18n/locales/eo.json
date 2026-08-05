@@ -165,7 +165,8 @@
     "headcountHint": "Kiom da homoj por ĉiu opcio ({{totale}} entute)",
     "guestNamesLabel": "Gastnomoj",
     "guestNamesHint": "Skribu la unuan kaj familian nomon de ĉiu kunulo (maksimume {{kalkulo}})",
-    "guestNamesPlaceholder": "Nomo1 Familia nomo1, Nomo2 Familia nomo2..."
+    "guestNamesPlaceholder": "Nomo1 Familia nomo1, Nomo2 Familia nomo2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Ŝarĝante inviton…",

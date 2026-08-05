@@ -165,7 +165,8 @@
     "headcountHint": "Wie viele Personen für jede Option ({{total}} insgesamt)",
     "guestNamesLabel": "Gastnamen",
     "guestNamesHint": "Schreiben Sie den Vor- und Nachnamen jedes Begleiters (max. {{count}})",
-    "guestNamesPlaceholder": "Name1 Nachname1, Name2 Nachname2..."
+    "guestNamesPlaceholder": "Name1 Nachname1, Name2 Nachname2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Einladung wird geladen…",

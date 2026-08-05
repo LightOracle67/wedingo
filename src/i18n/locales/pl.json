@@ -524,7 +524,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Ładowanie zaproszenia...",

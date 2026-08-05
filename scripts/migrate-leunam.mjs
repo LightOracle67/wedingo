@@ -22,9 +22,9 @@
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
-import { readFileSync, writeFileSync, unlinkSync } from "node:fs";
+
 import { createHash } from "node:crypto";
-import os from "node:os";
+import { setupFirebaseAdc } from "./lib/firebase-adc.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
@@ -37,36 +37,13 @@ const INVITE = args.find((a) => !a.startsWith("--")) || "leunam";
 const sha256 = (s) => createHash("sha256").update(s).digest("hex");
 
 // ── Credencial: refresh token del CLI ya logueado (ADC) ───────────────
-const config = JSON.parse(
-  readFileSync(resolve(os.homedir(), ".config/configstore/firebase-tools.json"), "utf8"),
-);
-const refreshToken = config.tokens?.refresh_token;
-if (!refreshToken) {
-  console.error("❌ No hay refresh token en ~/.config/configstore/firebase-tools.json");
-  process.exit(1);
-}
-
-// Fichero temporal de Application Default Credentials (se elimina al salir).
-const adcPath = resolve(os.tmpdir(), `wedingo-adc-${process.pid}.json`);
-writeFileSync(
-  adcPath,
-  JSON.stringify({
-    type: "authorized_user",
-    client_id: "563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com",
-    client_secret: "j9iVZfS8kkCEFUPaAeJV0sAi",
-    refresh_token: refreshToken,
-  }),
-);
-
 try {
-  process.env.GOOGLE_APPLICATION_CREDENTIALS = adcPath;
+  setupFirebaseAdc();
   admin.initializeApp({ projectId: "wedingo-6c26a" });
 } catch (err) {
   console.error("❌ No se pudo inicializar firebase-admin:", err.message);
-  try { unlinkSync(adcPath); } catch { /* noop */ }
   process.exit(1);
 }
-// Limpieza del fichero ADC temporal al salir del proceso.
 process.on("exit", () => { try { unlinkSync(adcPath); } catch { /* noop */ } });
 const db = admin.firestore();
 const Delete = admin.firestore.FieldValue.delete();

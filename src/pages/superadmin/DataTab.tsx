@@ -345,6 +345,7 @@ export default function DataTab() {
           className="setup-button setup-button--danger"
           onClick={deleteAll}
           disabled={busy || confirmText !== CONFIRM_WORD}
+          aria-busy={busy}
         >
           {busy ? t("common.loading") : t("superadmin.data.deleteAllBtn")}
         </button>

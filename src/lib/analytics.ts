@@ -13,7 +13,7 @@
 import type { FirebaseApp } from "firebase/app";
 import type { Analytics } from "firebase/analytics";
 import { app } from "./firebase";
-import { STORAGE_KEYS } from "./storage-keys";
+import { hasAnalyticsConsent as hasConsent } from "./storage";
 
 /** ID de medición de Google Analytics. */
 const MEASUREMENT_ID = import.meta.env.VITE_FIREBASE_MEASUREMENT_ID;
@@ -29,20 +29,7 @@ let initStarted = false;
  * consentimiento "accepted" con analytics activado no se recogen datos.
  */
 export function hasAnalyticsConsent(): boolean {
-  try {
-    const consent = localStorage.getItem(STORAGE_KEYS.cookieConsent);
-    if (consent !== "accepted") return false;
-    const prefs = localStorage.getItem(STORAGE_KEYS.cookiePrefs);
-    if (!prefs) return true;
-    try {
-      const parsed = JSON.parse(prefs) as { analytics?: boolean };
-      return parsed.analytics !== false;
-    } catch {
-      return true;
-    }
-  } catch {
-    return false;
-  }
+  return hasConsent();
 }
 
 /**

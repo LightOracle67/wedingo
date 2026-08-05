@@ -13,7 +13,6 @@ import { validateConfigForSave } from "../lib/config-validation";
 import { sectionHasContent } from "../lib/section-utils";
 import type { InvitationConfig } from "../types";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
-import { deleteGallery } from "../lib/image-store";
 import { clearSession } from "../lib/sessionVars";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 import { STORAGE_KEYS } from "../lib/storage-keys";
@@ -360,8 +359,8 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       const snap = await getDocs(rsvpByInviteRef(inviteToken));
       const batch = writeBatch(db);
       snap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
+      const { deleteGallery, deleteAllConfigImages } = await import("../lib/image-store");
       await deleteGallery(inviteToken);
-      const { deleteAllConfigImages } = await import("../lib/image-store");
       await deleteAllConfigImages(inviteToken);
       batch.delete(doc(db, "rsvpResponses", inviteToken));
       batch.delete(invitationDocRef(inviteToken));

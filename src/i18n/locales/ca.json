@@ -222,7 +222,8 @@
     "headcountHint": "Quantes persones per a cada opció ({{total}} total)",
     "guestNamesLabel": "Noms de convidats",
     "guestNamesHint": "Escriu el nom i els cognoms de cada company ({{count}} màxim)",
-    "guestNamesPlaceholder": "Nom1 Cognoms1, Nom2 Cognoms2..."
+    "guestNamesPlaceholder": "Nom1 Cognoms1, Nom2 Cognoms2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Carregant invitació…",

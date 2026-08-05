@@ -13,6 +13,16 @@ vi.mock("@sentry/react", () => ({
 describe("sentry", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    // Consentimiento de analítica aceptado (Sentry se gatea por él).
+    Object.defineProperty(globalThis, "localStorage", {
+      value: {
+        getItem: (k: string) => (k === "wedin_cookie_consent" ? "accepted" : k === "wedin_cookie_prefs" ? '{"necessary":true,"analytics":true}' : null),
+        setItem: () => {},
+        removeItem: () => {},
+        clear: () => {},
+      },
+      configurable: true,
+    });
   });
 
   afterEach(() => {
@@ -23,6 +33,21 @@ describe("sentry", () => {
   it("does not init in non-production without a DSN", async () => {
     vi.stubEnv("PROD", false);
     vi.stubEnv("VITE_SENTRY_DSN", "");
+    vi.resetModules();
+    await import("../sentry");
+    expect(mockInit).not.toHaveBeenCalled();
+  });
+
+  it("does not init without analytics consent (RGPD)", async () => {
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_SENTRY_DSN", "https://dsn");
+    // Sin consentimiento: localStorage devuelve null.
+    Object.defineProperty(globalThis, "localStorage", {
+      value: { getItem: () => null, setItem: () => {}, removeItem: () => {}, clear: () => {} },
+      configurable: true,
+    });
+    const idleCallback = vi.fn((cb: () => void) => { cb(); return 0; });
+    vi.stubGlobal("requestIdleCallback", idleCallback);
     vi.resetModules();
     await import("../sentry");
     expect(mockInit).not.toHaveBeenCalled();

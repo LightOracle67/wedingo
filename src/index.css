@@ -1,23 +1,62 @@
 @import "tailwindcss";
-/* Las fuentes de Google se cargan mediante <link> en index.html
-   (preload + stylesheet) para no bloquear el primer render. */
+/* Tipografías autoalojadas en /fonts (sin peticiones a Google Fonts):
+   no se envía la IP del visitante a Google antes del consentimiento
+   (criterio CNIL/GDPR sobre Google Fonts). */
 
 @font-face {
   font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 400;
   font-display: swap;
-  src: local("Playfair Display");
+  src: url("/fonts/PlayfairDisplay-normal-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/PlayfairDisplay-italic-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/PlayfairDisplay-normal-700.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "Lora";
+  font-style: normal;
+  font-weight: 400;
   font-display: swap;
-  src: local("Lora");
+  src: url("/fonts/Lora-normal-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lora";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Lora-italic-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Lora";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Lora-normal-700.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "Great Vibes";
+  font-style: normal;
+  font-weight: 400;
   font-display: swap;
-  src: local("Great Vibes");
+  src: url("/fonts/GreatVibes-normal-400.woff2") format("woff2");
 }
 
 @font-face {
@@ -1790,6 +1829,12 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   color: var(--invite-title-color);
   font-size: 1rem;
   line-height: 1.55;
+}
+
+/* Error de carga de RSVP visible para el invitado (borde/acento rojizo). */
+.rsvp-feedback--error {
+  border-color: rgba(224, 96, 96, 0.65);
+  color: var(--invite-title-color);
 }
 
 @media (max-width: 640px) {

@@ -165,7 +165,8 @@
     "headcountHint": "ለእያንዳንዱ አማራጭ ስንት ሰዎች ({{total}} አጠቃላይ)",
     "guestNamesLabel": "የእንግዳ ስሞች",
     "guestNamesHint": "የእያንዳንዱን ጓደኛ የመጀመሪያ እና የመጨረሻ ስም ይፃፉ (ከፍተኛ {{count}})",
-    "guestNamesPlaceholder": "ስም1 የአያት ስም1፣ ስም2 የአያት ስም2..."
+    "guestNamesPlaceholder": "ስም1 የአያት ስም1፣ ስም2 የአያት ስም2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "ግብዣ በመጫን ላይ...",

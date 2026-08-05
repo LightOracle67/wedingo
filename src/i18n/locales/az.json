@@ -165,7 +165,8 @@
     "headcountHint": "Hər seçim üçün neçə nəfər (cəmi {{total}})",
     "guestNamesLabel": "Qonaq adları",
     "guestNamesHint": "Hər bir yoldaşın adını və soyadını yazın (maksimum {{count}})",
-    "guestNamesPlaceholder": "Ad1 Soyad1, Ad2 Soyad2..."
+    "guestNamesPlaceholder": "Ad1 Soyad1, Ad2 Soyad2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Dəvətnamə yüklənir...",

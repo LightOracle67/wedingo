@@ -9,6 +9,8 @@ export type RsvpValue = Pick<
   | "isRsvpSubmitting"
   | "hasSubmitted"
   | "alreadySubmittedEntry"
+  | "rsvpLoadError"
+  | "retryLoadRsvp"
   | "DIETARY_OPTIONS"
   | "updateRsvpField"
   | "handleRsvpSubmit"

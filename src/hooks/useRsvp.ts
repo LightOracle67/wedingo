@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { writeBatch, deleteDoc, doc, getDoc, setDoc, getDocs, serverTimestamp } from "firebase/firestore";
 import { db, rsvpByInviteRef, rsvpResponseRef } from "../lib/firebase";
@@ -117,7 +117,17 @@ export function useRsvp(
   const [rsvpMessage, setRsvpMessage] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [alreadySubmittedEntry, setAlreadySubmittedEntry] = useState<RsvpEntryData | null>(null);
+  /** Error de red al cargar las respuestas (visible para el invitado). */
+  const [rsvpLoadError, setRsvpLoadError] = useState(false);
+  /** Contador para forzar la re-hidratación (botón "Reintentar" del invitado). */
+  const [hydrateTick, setHydrateTick] = useState(0);
   const prefillRef = useRef<string | null>(null);
+
+  /** Vuelve a cargar las respuestas RSVP tras un fallo de red. */
+  const retryLoadRsvp = useCallback(() => {
+    setRsvpLoadError(false);
+    setHydrateTick((t) => t + 1);
+  }, []);
 
   useEffect(() => {
 
@@ -252,6 +262,7 @@ export function useRsvp(
         console.error("[app]", "[useRsvp]", "hydrate error", { error: err });
         if (!cancelled) {
           setRsvpEntries([]);
+          setRsvpLoadError(true);
           setAdminMessageType("error");
           setAdminMessage(t("rsvp.saveError"));
         }
@@ -261,7 +272,7 @@ export function useRsvp(
     return () => {
       cancelled = true;
     };
-  }, [inviteToken, t, setAdminMessage, setAdminMessageType]);
+  }, [inviteToken, t, setAdminMessage, setAdminMessageType, hydrateTick]);
 
   useEffect(() => {
     const name = rsvpForm.guestName.trim().toLowerCase();
@@ -723,11 +734,19 @@ export function useRsvp(
     }
   }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
-  return {
+  // Memoizado: un objeto literal nuevo en cada render invalidaba el value del
+  // AppContext (que depende de este objeto) y re-renderizaba a todos los
+  // consumidores de useApp() con cada tecla del formulario RSVP.
+  return useMemo(() => ({
     rsvpEntries, rsvpForm, rsvpMessage: feedbackMessage, isRsvpSubmitting, hasSubmitted,
-    alreadySubmittedEntry,
+    alreadySubmittedEntry, rsvpLoadError, retryLoadRsvp,
     updateRsvpField, handleRsvpSubmit, handleDeleteRsvpEntries, handleClearRsvpEntries, handleDeleteRsvp,
     DIETARY_OPTIONS,
     setRsvpMessage, setRsvpForm, computeAge,
-  };
+  }), [
+    rsvpEntries, rsvpForm, feedbackMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
+    rsvpLoadError, retryLoadRsvp,
+    updateRsvpField, handleRsvpSubmit, handleDeleteRsvpEntries, handleClearRsvpEntries, handleDeleteRsvp,
+    setRsvpMessage, setRsvpForm,
+  ]);
 }

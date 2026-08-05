@@ -86,6 +86,7 @@ export default function PublicInvitation() {
   const {
     config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink,
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
+    rsvpLoadError, retryLoadRsvp,
 
     handleRsvpSubmit, updateRsvpField, handleDeleteRsvp,
     isAdminTokenLoggedIn,
@@ -354,6 +355,8 @@ export default function PublicInvitation() {
     isRsvpSubmitting,
     hasSubmitted,
     alreadySubmittedEntry,
+    rsvpLoadError,
+    retryLoadRsvp,
     updateRsvpField,
     handleRsvpSubmit,
     handleDeleteRsvp,
@@ -361,6 +364,7 @@ export default function PublicInvitation() {
     computeAge,
   }), [
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
+    rsvpLoadError, retryLoadRsvp,
     updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, DIETARY_OPTIONS, computeAge,
   ]);
 

@@ -51,6 +51,16 @@ describe("getFirestoreErrorMessage", () => {
 describe("logError", () => {
   beforeEach(() => {
     vi.restoreAllMocks();
+    // Consentimiento de analítica: el fetch a Sentry está gateado por él.
+    Object.defineProperty(globalThis, "localStorage", {
+      value: {
+        getItem: (k: string) => (k === "wedin_cookie_consent" ? "accepted" : k === "wedin_cookie_prefs" ? '{"analytics":true}' : null),
+        setItem: () => {},
+        removeItem: () => {},
+        clear: () => {},
+      },
+      configurable: true,
+    });
   });
 
   it("logs an Error to console.error in DEV", () => {

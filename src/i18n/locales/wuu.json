@@ -784,7 +784,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "加载请柬中…",

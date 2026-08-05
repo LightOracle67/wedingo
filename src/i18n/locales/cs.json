@@ -190,7 +190,8 @@
     "headcountHint": "Kolik lidí pro každou možnost (celkem {{total}})",
     "guestNamesLabel": "Jména hostů",
     "guestNamesHint": "Napište jméno a příjmení každé doprovodné reklamy (max. {{count}})",
-    "guestNamesPlaceholder": "Jméno1 Příjmení1, Jméno2 Příjmení2..."
+    "guestNamesPlaceholder": "Jméno1 Příjmení1, Jméno2 Příjmení2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Načítání pozvánky…",

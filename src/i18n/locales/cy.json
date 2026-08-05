@@ -165,7 +165,8 @@
     "headcountHint": "Faint o bobl ar gyfer pob opsiwn ({{cyfanswm}} cyfanswm)",
     "guestNamesLabel": "Enwau gwesteion",
     "guestNamesHint": "Ysgrifennwch enw cyntaf ac olaf pob cydymaith (uchafswm {{count}})",
-    "guestNamesPlaceholder": "Enw 1 Cyfenw1, Enw2 Cyfenw2..."
+    "guestNamesPlaceholder": "Enw 1 Cyfenw1, Enw2 Cyfenw2...",
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Yn llwytho gwahoddiad…",

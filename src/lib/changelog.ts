@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.64.0",
+    date: "2026-08-06",
+    changes: [
+      "BUGFIX: el RSVP volvía a funcionar — el contador por invitación es legible públicamente (solo un entero), lo que rompía el envío desde la 2ª respuesta",
+      "LEGALIDAD: Sentry (errores y session replay) y su fetch solo se activan con consentimiento de analítica; Google Fonts autoalojadas (sin enviar la IP a Google); política de privacidad menciona el service worker/PWA",
+      "RENDIMIENTO: el countdown ya no re-renderiza toda la invitación (style constante), image-store fuera del bundle inicial, useRsvp memoizado, el service worker ya no precachea los 100 idiomas",
+      "SECRETOS: credenciales OAuth de los scripts administrativos pasan a variables de entorno",
+      "ACCESIBILIDAD/UX: tests axe ampliados (sobre, modales, invitación completa), encabezado h3 en acompañantes, aria-busy en formularios, error de carga de RSVP con reintento para el invitado, Permissions-Policy ampliada",
+    ],
+  },
+  {
     version: "2.63.0",
     date: "2026-08-06",
     changes: [

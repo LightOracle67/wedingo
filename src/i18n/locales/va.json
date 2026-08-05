@@ -393,7 +393,8 @@
       null,
       null,
       5
-    ]
+    ],
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Carregant invitació…",
