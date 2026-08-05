@@ -1,5 +1,6 @@
 import { memo, useEffect, useMemo, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
+import { useFocusTrap } from "../hooks/useFocusTrap";
 import { randomMessage } from "../lib/invite-messages";
 import "../styles/envelope.css";
 
@@ -18,6 +19,10 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
   }, []);
 
   const message = useMemo(() => randomMessage(i18n.language), [i18n.language]);
+
+  // Trampa de foco: mientras el sobre está cerrado, el teclado no puede
+  // salir del overlay (el contenido trasero está inerte en la página).
+  const overlayRef = useFocusTrap<HTMLDivElement>(true);
 
   const handleClick = useCallback(() => {
     if (exiting) { ; return; }
@@ -41,7 +46,7 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
   }, [onOpen, open, exiting]);
 
   return (
-    <div className={`envelope-overlay ${exiting ? "envelope-overlay--exit" : ""}`} onClick={handleClick} tabIndex={0} role="button" aria-label={t("envelope.tapContinue")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick(); } }}>
+    <div ref={overlayRef} className={`envelope-overlay ${exiting ? "envelope-overlay--exit" : ""}`} onClick={handleClick} tabIndex={0} role="button" aria-label={t("envelope.tapContinue")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick(); } }}>
       <span className="envelope-light" data-light="1" />
       <span className="envelope-light" data-light="2" />
       <span className="envelope-light" data-light="3" />

@@ -192,6 +192,9 @@ if (respSnap.exists() && respSnap.data().guestName === "Maria Lopez") {
 }
 
 // ── Invitación LEGACY (creada antes del esquema de tokens hash) ──────────
+// Desde la v2.63.0 el token legacy `_activeSetupToken` ya NO activa sesión
+// (era legible públicamente y permitía forjar sesiones de admin). Solo el
+// hash con registro en setupTokens concede acceso.
 const LEGACY_TOKEN = "legacyInv99";
 const LEGACY_SETUP = "LEGACY-SETUP-TOKEN-0001";
 const legacyBase = { ...payload, firstName: "Old", secondName: "Couple", adminUsername: "oldadmin" };
@@ -206,7 +209,7 @@ await expectDeny("12. activar sesión legacy con token INCORRECTO → denegado",
     legacyToken: "TOKEN-INCORRECTO",
   });
 });
-await expectAllow("13. activar sesión legacy con el token correcto (legacyToken)", async () => {
+await expectDeny("13. activar sesión legacy con el token correcto → DENEGADO (legacy ya no vale)", async () => {
   await updateDoc(doc(db, "invitations", LEGACY_TOKEN), {
     activeSession: serverTimestamp(),
     sessionExpiresAt: new Date(Date.now() + 60 * 60 * 1000),
@@ -214,17 +217,19 @@ await expectAllow("13. activar sesión legacy con el token correcto (legacyToken
     legacyToken: LEGACY_SETUP,
   });
 });
-// Migración automática: registrar el token en setupTokens y limpiar el campo público.
-await expectAllow("14. migración legacy: setupTokens + limpieza de _activeSetupToken", async () => {
-  await setDoc(doc(db, "setupTokens", sha256(LEGACY_SETUP)), { inviteToken: LEGACY_TOKEN, createdAt: new Date().toISOString() });
+// El hash debe tener registro en setupTokens: sin él, se deniega incluso
+// conociendo el token legacy (que además es legible públicamente).
+await expectDeny("14. activar sesión con hash sin registro en setupTokens → denegado", async () => {
+  await updateDoc(doc(db, "invitations", LEGACY_TOKEN), {
+    activeSession: serverTimestamp(),
+    sessionExpiresAt: new Date(Date.now() + 60 * 60 * 1000),
+    setupTokenHash: sha256(LEGACY_SETUP),
+  });
+});
+// La limpieza de los campos legacy queda reservada al superadmin (denegado sin auth).
+await expectDeny("15. limpieza de _activeSetupToken/legacyToken sin superadmin → denegado", async () => {
   await updateDoc(doc(db, "invitations", LEGACY_TOKEN), { _activeSetupToken: deleteField(), legacyToken: deleteField() });
 });
-const legacyAfter = await getDoc(doc(db, "invitations", LEGACY_TOKEN));
-if (legacyAfter.exists() && typeof legacyAfter.data()._activeSetupToken === "undefined") {
-  check("15. _activeSetupToken eliminado del doc público tras migrar", true);
-} else {
-  check("15. _activeSetupToken eliminado del doc público tras migrar", false);
-}
 
 console.log(`\nResultado: ${pass} ok / ${fail} fail`);
 process.exit(fail ? 1 : 0);

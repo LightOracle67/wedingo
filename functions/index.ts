@@ -33,9 +33,15 @@ export const cleanupExpiredData = onSchedule(
       if (eventTime > 0 && now - eventTime > twelveMonthsAgo) {
         const inviteToken = doc.id;
 
-        const rsvpSnap = await db.collection("rsvpResponses")
-          .where("inviteToken", "==", inviteToken).get();
-        rsvpSnap.docs.forEach((d) => batch.delete(d.ref));
+        // Borrado de PII de invitados: el contador vive en
+        // rsvpResponses/{inviteToken} y cada respuesta en su subcolección
+        // rsvpResponses/{inviteToken}/responses/{id}. La consulta antigua
+        // `where("inviteToken", "==", ...)` no coincidía con nada, por lo
+        // que esta PII nunca se eliminaba (incumplía la retención GDPR).
+        const rsvpNamespaceRef = db.collection("rsvpResponses").doc(inviteToken);
+        const rsvpResponsesSnap = await rsvpNamespaceRef.collection("responses").get();
+        rsvpResponsesSnap.docs.forEach((d) => batch.delete(d.ref));
+        batch.delete(rsvpNamespaceRef);
 
         const subcollections = await doc.ref.listCollections();
         for (const subcol of subcollections) {

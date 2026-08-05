@@ -1524,7 +1524,10 @@
     "noResultsFilter": "Tsy nahitana valiny tamin'io filtre io.",
     "noResults": "Mbola tsy misy valin'ny fanatrehana.",
     "exportPdf": "Hamoaka PDF",
-    "clearAttendance": "Foana ny fanatrehana"
+    "clearAttendance": "Foana ny fanatrehana",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Navoaka tao ny fanasanao:",
@@ -2078,7 +2081,11 @@
       null,
       null,
       6
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Rakitry ny hetsika fanodinana (And. 30 GDPR)",

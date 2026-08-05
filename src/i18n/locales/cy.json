@@ -424,7 +424,10 @@
     "noResultsFilter": "Ni ddaethpwyd o hyd i ganlyniadau gyda'r hidlydd hwnnw.",
     "noResults": "Nid oes atebion presenoldeb eto.",
     "exportPdf": "Allforio PDF",
-    "clearAttendance": "Clirio presenoldeb"
+    "clearAttendance": "Clirio presenoldeb",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Mae eich gwahoddiad wedi'i gyhoeddi yn:",
@@ -784,7 +787,11 @@
     },
     "login": "Entrar",
     "emailLabel": "Ebost",
-    "passwordLabel": "Cyfrinair"
+    "passwordLabel": "Cyfrinair",
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Cofrestr gweithgareddau prosesu (GDPR erth. 30)",

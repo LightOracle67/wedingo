@@ -1602,7 +1602,10 @@
     "noResultsFilter": "Hakuna matokeo kwa kichujio hicho.",
     "noResults": "Bado hakuna majibu ya uhudhuriaji.",
     "exportPdf": "Hamisha PDF",
-    "clearAttendance": "Futa uhudhuriaji"
+    "clearAttendance": "Futa uhudhuriaji",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Mwaliko wako umechapishwa katika:",
@@ -2152,7 +2155,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Rejesta ya shughuli za uchakataji (Art. 30 GDPR)",

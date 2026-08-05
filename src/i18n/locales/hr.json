@@ -1563,7 +1563,10 @@
     "noResultsFilter": "Nema rezultata s tim filtrom.",
     "noResults": "Još nema odgovora o dolasku.",
     "exportPdf": "Izvoz PDF",
-    "clearAttendance": "Isprazni dolaske"
+    "clearAttendance": "Isprazni dolaske",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Vaša pozivnica objavljena je na:",
@@ -2137,7 +2140,11 @@
       null,
       null,
       2
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Evidencija aktivnosti obrade (čl. 30. GDPR)",

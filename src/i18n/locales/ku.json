@@ -1530,7 +1530,10 @@
     "noResultsFilter": "Bi wê parzûnê tu encam nehatin dîtin.",
     "noResults": "Hê bersivên beşdariyê nînin.",
     "exportPdf": "PDF derxe",
-    "clearAttendance": "Beşdariyê vala bike"
+    "clearAttendance": "Beşdariyê vala bike",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Dawetnameya te li vir hatiye weşandin:",
@@ -2111,7 +2114,11 @@
       null,
       null,
       10
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Qeyda çalakiyên pêvajoyê (Xala 30 GDPR)",

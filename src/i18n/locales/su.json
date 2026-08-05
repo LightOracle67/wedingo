@@ -1621,7 +1621,10 @@
     "noResultsFilter": "Henteu kapendak hasil sareng filter éta.",
     "noResults": "Teu acan aya waleran kahadiran.",
     "exportPdf": "Ékspor PDF",
-    "clearAttendance": "Kosongkeun kahadiran"
+    "clearAttendance": "Kosongkeun kahadiran",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Ondangan Anjeun dipedalkeun di:",
@@ -2240,7 +2243,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Catetan kagiatan pamrosésan (Pasal 30 GDPR)",

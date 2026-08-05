@@ -443,7 +443,10 @@
     "noResultsFilter": "Bu filtrlə nəticə tapılmadı.",
     "noResults": "Hələ iştirak cavabı yoxdur.",
     "exportPdf": "PDF ixrac et",
-    "clearAttendance": "İştirakı təmizlə"
+    "clearAttendance": "İştirakı təmizlə",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Dəvətnaməniz burada yayımlanıb:",
@@ -860,7 +863,11 @@
     },
     "login": "Entrar",
     "emailLabel": "E-poçt",
-    "passwordLabel": "parol"
+    "passwordLabel": "parol",
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Emal fəaliyyətlərinin reyestri (GDPR maddə 30)",

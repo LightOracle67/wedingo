@@ -1,7 +1,6 @@
 import { memo, useCallback, useEffect, useState } from "react";
 import { getDocs, doc, writeBatch, type DocumentData, type QueryDocumentSnapshot } from "firebase/firestore";
-import { ref, deleteObject, listAll } from "firebase/storage";
-import { db, storage, RSVP_RESPONSES_GROUP, rsvpByInviteRef, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
+import { db, getStorageInstance, RSVP_RESPONSES_GROUP, rsvpByInviteRef, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { calcGlobalStats, formatBytes } from "../../lib/superadmin-utils";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 import { logAudit } from "../../lib/audit";
@@ -83,7 +82,11 @@ const DashboardTab = memo(function DashboardTab() {
         await batch.commit();
         try {
           const prefix = `invitations/${invitation.id}/`;
-          const list = await listAll(ref(storage, prefix));
+          const storageInstance = await getStorageInstance();
+          // firebase/storage se importa solo aquí (uso exclusivo de superadmin)
+          // para no cargar su SDK en el bundle inicial de la app.
+          const { ref, listAll, deleteObject } = await import("firebase/storage");
+          const list = await listAll(ref(storageInstance, prefix));
           await Promise.allSettled(list.items.map((item) => deleteObject(item)));
         } catch { }
         deleted++;

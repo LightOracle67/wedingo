@@ -428,6 +428,10 @@ export default function PublicInvitation() {
       style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
       {showEnvelope ? <EnvelopeOverlay onOpen={() => { ; setEnvelopeOpen(true); }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} /> : null}
 
+      {/* Mientras el sobre está cerrado, el contenido trasero queda inerte e
+          invisible para lectores de pantalla (WCAG 1.3.2 / 2.4.3). display:
+          contents no altera el layout. */}
+      <div style={{ display: "contents" }} aria-hidden={showEnvelope || undefined} inert={showEnvelope || undefined}>
       {/* ── Decoraciones laterales (eucalipto) ── */}
       <div className="fixed top-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration" style={{ zIndex: 0 }}>
         <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
@@ -495,6 +499,7 @@ export default function PublicInvitation() {
           })}
         </Suspense>
       )}
+      </div>
     </div>
   );
 }

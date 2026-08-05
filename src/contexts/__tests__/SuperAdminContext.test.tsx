@@ -33,7 +33,7 @@ vi.mock("firebase/auth", () => ({
 
 vi.mock("../../lib/firebase", () => ({
   db: {},
-  auth: "auth-mock",
+  getAuthInstance: () => Promise.resolve("auth-mock"),
 }));
 
 vi.mock("../../lib/sessionVars", () => ({

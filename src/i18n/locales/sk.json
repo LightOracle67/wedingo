@@ -1621,7 +1621,10 @@
     "noResultsFilter": "S týmto filtrom sa nenašli žiadne výsledky.",
     "noResults": "Zatiaľ nie sú žiadne odpovede o účasti.",
     "exportPdf": "Exportovať PDF",
-    "clearAttendance": "Vyprázdniť účasť"
+    "clearAttendance": "Vyprázdniť účasť",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Vaše oznámenie je zverejnené na:",
@@ -2247,7 +2250,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Register spracovateľských činností (čl. 30 GDPR)",

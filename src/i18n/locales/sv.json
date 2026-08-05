@@ -1270,7 +1270,10 @@
     "noResultsFilter": "Inga resultat hittades med det filtret.",
     "noResults": "Det finns inga svar ännu.",
     "exportPdf": "Exportera PDF",
-    "clearAttendance": "Rensa närvaro"
+    "clearAttendance": "Rensa närvaro",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Din inbjudan är publicerad på:",
@@ -1849,7 +1852,11 @@
       null,
       null,
       2
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Register över behandlingsaktiviteter (Art. 30 GDPR)",

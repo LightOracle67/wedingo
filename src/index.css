@@ -1389,6 +1389,14 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   font-size: clamp(0.9rem, 2vw, 1.1rem);
 }
 
+/* Notas dentro de las tarjetas de la invitación: usan el color de copia de
+   la invitación (claro sobre fondos oscuros) en lugar de --setup-muted,
+   que sobre las tarjetas translúcidas no alcanza el contraste WCAG AA. */
+.story-section .story-card .story-note {
+  color: var(--invite-copy-color);
+  text-shadow: var(--invite-text-shadow);
+}
+
 .story-card .story-note {
   font-size: clamp(0.82rem, 1.7vw, 0.92rem);
 }

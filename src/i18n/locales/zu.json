@@ -1576,7 +1576,10 @@
     "noResultsFilter": "Ayitholakalanga imiphumela ngalelo fayela lokuhlunga.",
     "noResults": "Azekho izimpendulo zokuba khona okwamanje.",
     "exportPdf": "Khipha i-PDF",
-    "clearAttendance": "Sula ukuba khona"
+    "clearAttendance": "Sula ukuba khona",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Isimemo sakho sishicilelwe ku-:",
@@ -2107,7 +2110,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Irejista yemisebenzi yokucubungula (Isigaba 30 GDPR)",

@@ -1602,7 +1602,10 @@
     "noResultsFilter": "Այդ ֆիլտրով արդյունքներ չեն գտնվել։",
     "noResults": "Մասնակցության պատասխաններ դեռ չկան։",
     "exportPdf": "Արտահանել PDF",
-    "clearAttendance": "Դատարկել մասնակցությունը"
+    "clearAttendance": "Դատարկել մասնակցությունը",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Ձեր հրավերը հրապարակված է՝",
@@ -2152,7 +2155,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Մշակման գործողությունների գրանցամատյան (GDPR հոդ. 30)",

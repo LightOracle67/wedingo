@@ -443,7 +443,10 @@
     "noResultsFilter": "Neniuj rezultoj trovitaj kun tiu filtrilo.",
     "noResults": "Ankoraŭ ne estas ĉeestrespondoj.",
     "exportPdf": "Eksporti PDF",
-    "clearAttendance": "Malplenigi ĉeeston"
+    "clearAttendance": "Malplenigi ĉeeston",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Via invito estas publikigita ĉe:",
@@ -765,7 +768,11 @@
     },
     "login": "Entrar",
     "emailLabel": "Retpoŝto",
-    "passwordLabel": "Pasvorto"
+    "passwordLabel": "Pasvorto",
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Registro de traktadaj aktivecoj (Art. 30 GDPR)",

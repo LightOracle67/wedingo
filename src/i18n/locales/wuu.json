@@ -1537,7 +1537,10 @@
     "noResultsFilter": "未找到该筛选条件的结果。",
     "noResults": "尚无出席回复。",
     "exportPdf": "导出PDF",
-    "clearAttendance": "清空出席"
+    "clearAttendance": "清空出席",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "您的请柬发布于：",
@@ -1991,7 +1994,11 @@
       null,
       null,
       10
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "处理活动记录（GDPR第30条）",

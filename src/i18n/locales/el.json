@@ -424,7 +424,10 @@
     "noResultsFilter": "Δεν βρέθηκαν αποτελέσματα με αυτό το φίλτρο.",
     "noResults": "Δεν υπάρχουν ακόμα απαντήσεις συμμετοχής.",
     "exportPdf": "Εξαγωγή PDF",
-    "clearAttendance": "Εκκαθάριση συμμετοχών"
+    "clearAttendance": "Εκκαθάριση συμμετοχών",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Η πρόσκλησή σας έχει δημοσιευτεί στη διεύθυνση:",
@@ -727,7 +730,11 @@
     },
     "login": "Entrar",
     "emailLabel": "E-mail",
-    "passwordLabel": "Σύνθημα"
+    "passwordLabel": "Σύνθημα",
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Αρχείο δραστηριοτήτων επεξεργασίας (GDPR άρθρο 30)",

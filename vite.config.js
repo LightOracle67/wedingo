@@ -82,8 +82,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // firebase/analytics se carga de forma diferida (fuera de la ruta crítica).
+          // firebase/analytics, auth y storage se cargan bajo demanda (fuera
+          // de la ruta crítica): analytics en el primer evento, auth/storage
+          // solo en rutas de superadmin.
           if (id.includes("firebase/analytics")) return "lazy-analytics";
+          if (id.includes("firebase/auth")) return "lazy-auth";
+          if (id.includes("firebase/storage")) return "lazy-storage";
           if (id.includes("firebase")) return "vendor-firebase";
           if (id.includes("node_modules/.pnpm/react") || id.includes("node_modules/react")) return "vendor-react";
           if (id.includes("/node_modules/i18next/") || id.includes("/node_modules/react-i18next/")) return "i18n";

@@ -1621,7 +1621,10 @@
     "noResultsFilter": "Ba a sami sakamako da wannan tace ba.",
     "noResults": "Har yanzu babu amsoshin halarta.",
     "exportPdf": "Fitar da PDF",
-    "clearAttendance": "Share halarta"
+    "clearAttendance": "Share halarta",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "An buga gayyatarka a:",
@@ -2285,7 +2288,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Rajistar ayyukan sarrafawa (Art. 30 GDPR)",

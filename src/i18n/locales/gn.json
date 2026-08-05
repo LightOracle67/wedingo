@@ -1602,7 +1602,10 @@
     "noResultsFilter": "Ndojejuhúi jehupyty ko mboguykue ndive.",
     "noResults": "Ndaipórigueteri mbohovái jeju rehegua.",
     "exportPdf": "Eguenohẽ PDF",
-    "clearAttendance": "Embotypa jeju"
+    "clearAttendance": "Embotypa jeju",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Nde ñepepyrũ oñemuasãi ko'ápe:",
@@ -2228,7 +2231,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Registro tratamiento rehegua (Art. 30 GDPR)",

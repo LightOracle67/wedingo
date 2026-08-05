@@ -1659,7 +1659,10 @@
     "noResultsFilter": "Ora ana asil karo filter iku.",
     "noResults": "Durung ana wangsulan rawuh.",
     "exportPdf": "Èkspor PDF",
-    "clearAttendance": "Kosongaké rawuh"
+    "clearAttendance": "Kosongaké rawuh",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Undanganmu diterbitaké ing:",
@@ -2323,7 +2326,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Cathetan aktivitas pangolahan (Art. 30 GDPR)",

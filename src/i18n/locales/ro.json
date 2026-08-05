@@ -1543,7 +1543,10 @@
     "noResultsFilter": "Nu s-au găsit rezultate cu acel filtru.",
     "noResults": "Nu există încă răspunsuri de participare.",
     "exportPdf": "Exportă PDF",
-    "clearAttendance": "Golește participarea"
+    "clearAttendance": "Golește participarea",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Invitația ta este publicată la:",
@@ -2116,7 +2119,11 @@
       null,
       null,
       2
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Registrul activităților de prelucrare (Art. 30 GDPR)",

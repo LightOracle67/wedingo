@@ -1830,7 +1830,10 @@
     "noResultsFilter": "Walang nakitang resulta gamit ang filter na iyon.",
     "noResults": "Wala pang tugon sa pagdalo.",
     "exportPdf": "I-export sa PDF",
-    "clearAttendance": "Burahin ang pagdalo"
+    "clearAttendance": "Burahin ang pagdalo",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Ang iyong imbitasyon ay nakalathala sa:",
@@ -2532,7 +2535,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Talaan ng mga aktibidad sa pagpoproseso (Art. 30 GDPR)",

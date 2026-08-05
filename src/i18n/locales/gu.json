@@ -1602,7 +1602,10 @@
     "noResultsFilter": "તે ફિલ્ટર સાથે કોઈ પરિણામ મળ્યું નહીં.",
     "noResults": "હજી સુધી હાજરીના કોઈ જવાબ નથી.",
     "exportPdf": "PDF નિકાસ કરો",
-    "clearAttendance": "હાજરી ખાલી કરો"
+    "clearAttendance": "હાજરી ખાલી કરો",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "તમારું આમંત્રણ અહીં પ્રકાશિત છે:",
@@ -2152,7 +2155,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "પ્રક્રિયા પ્રવૃત્તિઓનો રેકોર્ડ (GDPR કલમ 30)",

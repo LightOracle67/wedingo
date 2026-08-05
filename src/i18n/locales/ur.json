@@ -1602,7 +1602,10 @@
     "noResultsFilter": "اس فلٹر کے ساتھ کوئی نتائج نہیں ملے۔",
     "noResults": "ابھی تک حاضری کے کوئی جوابات نہیں ہیں۔",
     "exportPdf": "PDF ایکسپورٹ کریں",
-    "clearAttendance": "حاضری خالی کریں"
+    "clearAttendance": "حاضری خالی کریں",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "آپ کا دعوت نامہ یہاں شائع ہوا:",
@@ -2133,7 +2136,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "پروسیسنگ سرگرمیوں کا ریکارڈ (GDPR آرٹ. 30)",

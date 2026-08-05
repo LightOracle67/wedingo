@@ -1512,7 +1512,10 @@
     "noResultsFilter": "Không tìm thấy kết quả với bộ lọc này.",
     "noResults": "Chưa có phản hồi tham dự nào.",
     "exportPdf": "Xuất PDF",
-    "clearAttendance": "Xóa dữ liệu tham dự"
+    "clearAttendance": "Xóa dữ liệu tham dự",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Thiệp mời của bạn được đăng tại:",
@@ -2055,7 +2058,11 @@
       null,
       null,
       10
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Sổ đăng ký hoạt động xử lý (Điều 30 GDPR)",

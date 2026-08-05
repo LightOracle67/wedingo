@@ -1602,7 +1602,10 @@
     "noResultsFilter": "Не се пронајдени резултати со тој филтер.",
     "noResults": "Сè уште нема одговори за присуство.",
     "exportPdf": "Експортирај PDF",
-    "clearAttendance": "Испразни присуство"
+    "clearAttendance": "Испразни присуство",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Твојата покана е објавена на:",
@@ -2133,7 +2136,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Регистар на активности на обработка (GDPR чл. 30)",

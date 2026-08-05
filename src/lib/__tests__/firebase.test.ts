@@ -14,11 +14,11 @@ vi.mock("firebase/firestore", () => ({
 }));
 
 vi.mock("firebase/auth", () => ({
-  getAuth: vi.fn(() => ({})),
+  getAuth: vi.fn(() => ({ mocked: true })),
 }));
 
 vi.mock("firebase/storage", () => ({
-  getStorage: vi.fn(() => ({})),
+  getStorage: vi.fn(() => ({ mockedStorage: true })),
 }));
 
 import {
@@ -27,6 +27,8 @@ import {
   RSVP_RESPONSES_GROUP,
   rsvpByInviteRef,
   rsvpResponseRef,
+  getAuthInstance,
+  getStorageInstance,
 } from "../firebase";
 
 describe("firebase", () => {
@@ -51,5 +53,19 @@ describe("firebase", () => {
   it("rsvpResponseRef targets a response inside the invitation subcollection", () => {
     const ref = rsvpResponseRef("test-token", "resp-1");
     expect(ref).toBe("doc-ref");
+  });
+
+  it("getAuthInstance lazily initializes Firebase Auth and memoizes", async () => {
+    const first = await getAuthInstance();
+    const second = await getAuthInstance();
+    expect(first).toHaveProperty("mocked", true);
+    expect(second).toBe(first);
+  });
+
+  it("getStorageInstance lazily initializes Firebase Storage and memoizes", async () => {
+    const first = await getStorageInstance();
+    const second = await getStorageInstance();
+    expect(first).toHaveProperty("mockedStorage", true);
+    expect(second).toBe(first);
   });
 });

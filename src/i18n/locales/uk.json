@@ -1564,7 +1564,10 @@
     "noResultsFilter": "За цим фільтром нічого не знайдено.",
     "noResults": "Ще немає відповідей про присутність.",
     "exportPdf": "Експорт PDF",
-    "clearAttendance": "Очистити присутність"
+    "clearAttendance": "Очистити присутність",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Ваше запрошення опубліковано за адресою:",
@@ -2114,7 +2117,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Реєстр діяльності з обробки даних (ст. 30 GDPR)",

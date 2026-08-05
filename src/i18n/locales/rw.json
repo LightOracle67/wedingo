@@ -1602,7 +1602,10 @@
     "noResultsFilter": "Nta bisubizo byabonetse hamwe n'iryo shyungura.",
     "noResults": "Nta bisubizo by'ukuhaba bihari.",
     "exportPdf": "Kohereza muri PDF",
-    "clearAttendance": "Siba ukuhaba"
+    "clearAttendance": "Siba ukuhaba",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Ubutumire bwawe bwashyizwe ahagaragara kuri:",
@@ -2228,7 +2231,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Igitabo cy'ibikorwa byo gutunganya (Ingingo 30 GDPR)",

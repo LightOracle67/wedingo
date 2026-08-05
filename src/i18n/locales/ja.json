@@ -1214,7 +1214,10 @@
     "noResultsFilter": "この条件に一致する結果はありません。",
     "noResults": "まだ出欠の返信はありません。",
     "exportPdf": "PDFをエクスポート",
-    "clearAttendance": "出欠をクリア"
+    "clearAttendance": "出欠をクリア",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "招待状の公開URL：",
@@ -1693,7 +1696,11 @@
       null,
       null,
       2
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "処理活動記録（GDPR第30条）",

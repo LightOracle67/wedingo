@@ -1602,7 +1602,10 @@
     "noResultsFilter": "Ez da emaitzarik aurkitu iragazki horrekin.",
     "noResults": "Oraindik ez dago bertaratze erantzunik.",
     "exportPdf": "Esportatu PDF",
-    "clearAttendance": "Hustu bertaratzea"
+    "clearAttendance": "Hustu bertaratzea",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Zure gonbidapena argitaratuta dago hemen:",
@@ -2209,7 +2212,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Tratamendu jardueren erregistroa (GDPR 30. Art.)",

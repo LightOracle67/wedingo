@@ -66,7 +66,8 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   /** Timer del fade. */
   const fadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastAdvanceRef = useRef(Date.now());
-  const rafRef = useRef<number | null>(null);
+  /** Timer del auto-avance (setInterval, pausado en pestaña oculta). */
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   /** Índice actual limitado al rango válido. */
   const clamped = Math.max(0, Math.min(idx, images.length - 1));
@@ -83,7 +84,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     };
   }, []);
 
-  // ── Auto-avance del carrusel con requestAnimationFrame ──
+  // ── Auto-avance del carrusel con setInterval (ahorra CPU vs rAF) ──
 
   const handleNextImage = useCallback(() => {
     if (images.length <= 1) return;
@@ -101,22 +102,33 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     });
   }, [images.length]);
 
-  const tick = useCallback(() => {
-    if (!paused && !reducedMotion && images.length > 1 && Date.now() - lastAdvanceRef.current >= 5000) {
-      lastAdvanceRef.current = Date.now();
-      handleNextImage();
-    }
-    rafRef.current = requestAnimationFrame(tick);
-  }, [paused, reducedMotion, images.length, handleNextImage]);
-
   useEffect(() => {
-    if (!reducedMotion) {
-      rafRef.current = requestAnimationFrame(tick);
-    }
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    if (reducedMotion) return;
+    const start = () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      // Avanza cada 5s solo si no está en pausa ni hay una sola imagen.
+      intervalRef.current = setInterval(() => {
+        if (!paused && images.length > 1) {
+          lastAdvanceRef.current = Date.now();
+          handleNextImage();
+        }
+      }, 5000);
     };
-  }, [tick, reducedMotion]);
+    start();
+    // Pausa el auto-avance cuando la pestaña está oculta (ahorra batería).
+    const onVisibility = () => {
+      if (document.hidden) {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+      } else {
+        start();
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [paused, reducedMotion, images.length, handleNextImage]);
 
   // Pausa el carrusel al hacer hover sobre la galería
   const pause = useCallback(() => { if (!reducedMotion) setPaused(true); }, [reducedMotion]);
@@ -294,6 +306,8 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                   src={images[prevClamped]?.url || ""}
                   alt=""
                   aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
                   className="gallery-blur-out gallery-main-img"
                 />
               )}
@@ -302,6 +316,8 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
               <img
                 src={currentImage?.url}
                 alt={currentImage?.description || t("gallery.imageAlt")}
+                loading="lazy"
+                decoding="async"
                 onLoad={() => setMainLoaded((p: Record<number, boolean>) => ({ ...p, [clamped]: true }))}
                 onError={() => setMainLoaded((p: Record<number, boolean>) => ({ ...p, [clamped]: true }))}
                 onClick={handleMainImageClick}

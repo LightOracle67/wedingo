@@ -405,7 +405,10 @@
     "noResultsFilter": "በዚህ ማጣሪያ ምንም ውጤት አልተገኘም።",
     "noResults": "እስካሁን የተገኝነት ምላሾች የሉም።",
     "exportPdf": "PDF ላክ",
-    "clearAttendance": "ተገኝነትን አጽዳ"
+    "clearAttendance": "ተገኝነትን አጽዳ",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "ግብዣዎ የታተመበት:",
@@ -651,7 +654,11 @@
     },
     "login": "Entrar",
     "emailLabel": "ኢሜይል",
-    "passwordLabel": "የይለፍ ቃል"
+    "passwordLabel": "የይለፍ ቃል",
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "የውሂብ አያያዝ እንቅስቃሴዎች መዝገብ (GDPR አንቀጽ 30)",

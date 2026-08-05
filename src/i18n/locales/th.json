@@ -1512,7 +1512,10 @@
     "noResultsFilter": "ไม่พบผลลัพธ์ด้วยตัวกรองนี้",
     "noResults": "ยังไม่มีคำตอบการเข้าร่วม",
     "exportPdf": "ส่งออก PDF",
-    "clearAttendance": "ล้างข้อมูลการเข้าร่วม"
+    "clearAttendance": "ล้างข้อมูลการเข้าร่วม",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "บัตรเชิญของคุณเผยแพร่ที่:",
@@ -2004,7 +2007,11 @@
       null,
       null,
       10
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "ทะเบียนกิจกรรมการประมวลผล (Art. 30 GDPR)",

@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { collection, collectionGroup, doc, initializeFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
-import { getStorage } from "firebase/storage";
+import type { Auth } from "firebase/auth";
+import type { FirebaseStorage } from "firebase/storage";
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
 
 const firebaseConfig = {
@@ -17,8 +17,33 @@ export const app = initializeApp(firebaseConfig);
 // Sin long-polling forzado: la app no usa onSnapshot, por lo que el modo
 // long-polling solo añadía latencia y consumo de batería sin beneficio.
 export const db = initializeFirestore(app, {});
-export const auth = getAuth(app);
-export const storage = getStorage(app);
+
+/**
+ * Instancia de Firebase Auth con carga diferida.
+ * Auth solo se usa en las rutas de superadmin; cargarlo al arranque
+ * añadiría el SDK completo (decenas de KB gzip) a la ruta crítica de la
+ * invitación pública. Se memoiza la promesa para un único import.
+ */
+let authPromise: Promise<Auth> | null = null;
+export function getAuthInstance(): Promise<Auth> {
+  if (!authPromise) {
+    authPromise = import("firebase/auth").then(({ getAuth }) => getAuth(app));
+  }
+  return authPromise;
+}
+
+/**
+ * Instancia de Firebase Storage con carga diferida.
+ * La app guarda las imágenes como base64 en Firestore; Storage solo se usa
+ * puntualmente en el panel de superadmin para limpiar archivos huérfanos.
+ */
+let storagePromise: Promise<FirebaseStorage> | null = null;
+export function getStorageInstance(): Promise<FirebaseStorage> {
+  if (!storagePromise) {
+    storagePromise = import("firebase/storage").then(({ getStorage }) => getStorage(app));
+  }
+  return storagePromise;
+}
 
 // App Check: se activa automáticamente si se define VITE_APPCHECK_SITE_KEY
 // (reCAPTCHA Enterprise) en el entorno. Mantener desactivado sin la clave

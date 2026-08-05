@@ -487,7 +487,10 @@
     "noResultsFilter": "S tímto filtrem nebyly nalezeny žádné výsledky.",
     "noResults": "Zatím nejsou žádné odpovědi o účasti.",
     "exportPdf": "Exportovat PDF",
-    "clearAttendance": "Vyprázdnit účast"
+    "clearAttendance": "Vyprázdnit účast",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Vaše pozvánka je zveřejněna na:",
@@ -853,7 +856,11 @@
     },
     "login": "Entrar",
     "emailLabel": "E-mail",
-    "passwordLabel": "Heslo"
+    "passwordLabel": "Heslo",
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Záznamy o činnostech zpracování (čl. 30 GDPR)",

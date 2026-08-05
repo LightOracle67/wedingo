@@ -461,7 +461,10 @@
     "noResultsFilter": "Mit diesem Filter wurden keine Ergebnisse gefunden.",
     "noResults": "Es gibt noch keine Rückmeldungen.",
     "exportPdf": "PDF exportieren",
-    "clearAttendance": "Rückmeldungen zurücksetzen"
+    "clearAttendance": "Rückmeldungen zurücksetzen",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Deine Einladung ist veröffentlicht unter:",
@@ -859,7 +862,11 @@
     },
     "login": "Entrar",
     "emailLabel": "E-Mail",
-    "passwordLabel": "Passwort"
+    "passwordLabel": "Passwort",
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Verzeichnis von Verarbeitungstätigkeiten (Art. 30 DSGVO)",

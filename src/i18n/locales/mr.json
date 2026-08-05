@@ -1602,7 +1602,10 @@
     "noResultsFilter": "त्या फिल्टरसह कोणतेही परिणाम सापडले नाहीत.",
     "noResults": "अद्याप उपस्थितीचे कोणतेही प्रतिसाद नाहीत.",
     "exportPdf": "PDF एक्सपोर्ट करा",
-    "clearAttendance": "उपस्थिती रिकामी करा"
+    "clearAttendance": "उपस्थिती रिकामी करा",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "तुमचे आमंत्रण येथे प्रकाशित झाले:",
@@ -2133,7 +2136,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "प्रक्रिया क्रियाकलापांची नोंद (GDPR कलम ३०)",

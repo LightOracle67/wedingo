@@ -1549,7 +1549,10 @@
     "noResultsFilter": "Tidak ada hasil dengan filter tersebut.",
     "noResults": "Belum ada tanggapan kehadiran.",
     "exportPdf": "Ekspor PDF",
-    "clearAttendance": "Kosongkan kehadiran"
+    "clearAttendance": "Kosongkan kehadiran",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Undangan Anda diterbitkan di:",
@@ -2148,7 +2151,11 @@
       null,
       null,
       2
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Catatan kegiatan pemrosesan (Pasal 30 GDPR)",

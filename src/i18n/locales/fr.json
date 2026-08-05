@@ -1294,7 +1294,10 @@
     "noResultsFilter": "Aucun résultat trouvé avec ce filtre.",
     "noResults": "Il n'y a pas encore de réponse.",
     "exportPdf": "Exporter en PDF",
-    "clearAttendance": "Vider les présences"
+    "clearAttendance": "Vider les présences",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Votre faire-part est publié à l'adresse :",
@@ -1828,7 +1831,11 @@
       null,
       null,
       10
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Registre des activités de traitement (Art. 30 RGPD)",

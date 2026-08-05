@@ -1602,7 +1602,10 @@
     "noResultsFilter": "ບໍ່ພົບຜົນລັບດ້ວຍຕົວກອງນີ້.",
     "noResults": "ຍັງບໍ່ມີຄຳຕອບການເຂົ້າຮ່ວມ.",
     "exportPdf": "ສົ່ງອອກ PDF",
-    "clearAttendance": "ລ້າງການເຂົ້າຮ່ວມ"
+    "clearAttendance": "ລ້າງການເຂົ້າຮ່ວມ",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "ບັດເຊີນຂອງທ່ານຖືກເຜີຍແຜ່ທີ່:",
@@ -2152,7 +2155,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "ບັນທຶກກິດຈະກຳການປະມວນຜົນ (GDPR ມາດຕາ 30)",

@@ -1602,7 +1602,10 @@
     "noResultsFilter": "A kò rí àwọn àbájáde pẹ̀lú ìsẹ̀ yẹn.",
     "noResults": "Kò sí ìdáhùn wíwá síbẹ̀síbẹ̀.",
     "exportPdf": "Ṣàgbéjáde PDF",
-    "clearAttendance": "Nu wíwá kúrò"
+    "clearAttendance": "Nu wíwá kúrò",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "A ti tẹ ìwé ìpè rẹ jáde ní:",
@@ -2152,7 +2155,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Àkosílẹ̀ àwọn ìgbòkègbodò ìṣàkóso (Ìpín 30 GDPR)",

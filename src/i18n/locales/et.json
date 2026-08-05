@@ -1640,7 +1640,10 @@
     "noResultsFilter": "Selle filtriga tulemusi ei leitud.",
     "noResults": "Osaluskinnitusi veel pole.",
     "exportPdf": "Ekspordi PDF",
-    "clearAttendance": "Tühjenda osalemine"
+    "clearAttendance": "Tühjenda osalemine",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Sinu kutse on avaldatud:",
@@ -2266,7 +2269,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Töötlemistoimingute register (GDPR art. 30)",

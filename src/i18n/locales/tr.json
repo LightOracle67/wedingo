@@ -1512,7 +1512,10 @@
     "noResultsFilter": "Bu filtreyle sonuç bulunamadı.",
     "noResults": "Henüz katılım yanıtı yok.",
     "exportPdf": "PDF'e aktar",
-    "clearAttendance": "Katılımı temizle"
+    "clearAttendance": "Katılımı temizle",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Davetiyeniz şurada yayında:",
@@ -2023,7 +2026,11 @@
       null,
       null,
       10
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "İşleme faaliyetleri kaydı (GDPR Mad. 30)",

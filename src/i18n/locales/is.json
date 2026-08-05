@@ -1602,7 +1602,10 @@
     "noResultsFilter": "Engar niðurstöður með þessari síu.",
     "noResults": "Engin svör um mætingu ennþá.",
     "exportPdf": "Flytja út PDF",
-    "clearAttendance": "Hreinsa mætingar"
+    "clearAttendance": "Hreinsa mætingar",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Boðskortið þitt er birt á:",
@@ -2133,7 +2136,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Skrá yfir vinnsluaðgerðir (GDPR gr. 30)",

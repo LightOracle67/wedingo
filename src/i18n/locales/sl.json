@@ -1602,7 +1602,10 @@
     "noResultsFilter": "S tem filtrom ni bilo najdenih rezultatov.",
     "noResults": "Ni še odgovorov o udeležbi.",
     "exportPdf": "Izvozi PDF",
-    "clearAttendance": "Izprazni udeležbo"
+    "clearAttendance": "Izprazni udeležbo",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Vaše vabilo je objavljeno na:",
@@ -2190,7 +2193,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Register dejavnosti obdelave (čl. 30 GDPR)",

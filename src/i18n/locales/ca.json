@@ -538,7 +538,10 @@
     "noResultsFilter": "No s'han trobat resultats amb aquest filtre.",
     "noResults": "Encara no hi ha respostes d'assistència.",
     "exportPdf": "Exportar PDF",
-    "clearAttendance": "Buida assistència"
+    "clearAttendance": "Buida assistència",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "La teva invitació està publicada a:",
@@ -898,7 +901,11 @@
     },
     "login": "Entrar",
     "emailLabel": "Correu electrònic",
-    "passwordLabel": "Contrasenya"
+    "passwordLabel": "Contrasenya",
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Registre d'activitats de tractament (Art. 30 GDPR)",

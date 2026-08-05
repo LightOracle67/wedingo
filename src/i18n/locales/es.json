@@ -502,7 +502,10 @@
     "deleteSelected": "Eliminar seleccionados ({{count}})",
     "deleteSelectedConfirm": "¿Eliminar {{count}} respuesta(s) seleccionada(s)? No se puede deshacer.",
     "deleteSelectedSuccess": "{{count}} respuesta(s) eliminada(s).",
-    "deleteSelectedError": "No se pudieron eliminar las respuestas seleccionadas. Inténtalo de nuevo."
+    "deleteSelectedError": "No se pudieron eliminar las respuestas seleccionadas. Inténtalo de nuevo.",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Tu invitación está publicada en:",
@@ -764,7 +767,11 @@
     "revokeConfirm": "¿Revocar este token?",
     "cleanupConfirm": "¿Eliminar todos los tokens expirados?",
     "firebaseLabel": "Firebase",
-    "rsvpsLabel": "RSVPs"
+    "rsvpsLabel": "RSVPs",
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Registro de actividades de tratamiento (Art. 30 GDPR)",

@@ -1582,7 +1582,10 @@
     "noResultsFilter": "Filtariin kun bu'aa hin argamsiifne.",
     "noResults": "Ammas deebii hin jiru.",
     "exportPdf": "PDF ergi",
-    "clearAttendance": "Deebii harcaasi"
+    "clearAttendance": "Deebii harcaasi",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Affeerraan kee itti maxxanfame:",
@@ -2119,7 +2122,11 @@
       null,
       null,
       10
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Galmee adeemsa wabii (Art. 30 GDPR)",

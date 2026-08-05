@@ -1493,7 +1493,10 @@
     "noResultsFilter": "לא נמצאו תוצאות עם סינון זה.",
     "noResults": "עדיין אין תשובות הגעה.",
     "exportPdf": "ייצא PDF",
-    "clearAttendance": "רוקן רשימת הגעה"
+    "clearAttendance": "רוקן רשימת הגעה",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "ההזמנה שלך מפורסמת ב:",
@@ -1934,7 +1937,11 @@
       null,
       null,
       2
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "רישום פעילויות עיבוד (GDPR סעיף 30)",

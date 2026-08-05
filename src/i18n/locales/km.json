@@ -1602,7 +1602,10 @@
     "noResultsFilter": "រកមិនឃើញលទ្ធផលជាមួយតម្រងនោះទេ។",
     "noResults": "មិនទាន់មានចម្លើយវត្តមាននៅឡើយទេ។",
     "exportPdf": "នាំចេញ PDF",
-    "clearAttendance": "លុបវត្តមាន"
+    "clearAttendance": "លុបវត្តមាន",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "ការអញ្ជើញរបស់អ្នកត្រូវបានចេញផ្សាយនៅ:",
@@ -2152,7 +2155,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "កំណត់ត្រាសកម្មភាពដំណើរការទិន្នន័យ (GDPR មាត្រា 30)",

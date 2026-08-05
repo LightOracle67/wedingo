@@ -1227,7 +1227,10 @@
     "noResultsFilter": "해당 필터 조건에 맞는 결과가 없습니다.",
     "noResults": "아직 참석 여부 응답이 없습니다.",
     "exportPdf": "PDF 내보내기",
-    "clearAttendance": "참석 현황 비우기"
+    "clearAttendance": "참석 현황 비우기",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "초대장이 게시된 위치:",
@@ -1725,7 +1728,11 @@
       null,
       null,
       10
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "처리 활동 기록 (GDPR 제30조)",

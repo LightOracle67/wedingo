@@ -1602,7 +1602,10 @@
     "noResultsFilter": "එම පෙරහන සමඟ ප්‍රතිඵල හමු නොවීය.",
     "noResults": "තවමත් සහභාගීත්ව පිළිතුරු නැත.",
     "exportPdf": "PDF අපනයනය කරන්න",
-    "clearAttendance": "සහභාගීත්වය හිස් කරන්න"
+    "clearAttendance": "සහභාගීත්වය හිස් කරන්න",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "ඔබේ ආරාධනාව ප්‍රකාශයට පත් කර ඇත්තේ:",
@@ -2120,7 +2123,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "සැකසුම් ක්‍රියාකාරකම් ලේඛනය (GDPR 30 වන වගන්තිය)",

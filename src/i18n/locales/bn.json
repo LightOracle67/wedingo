@@ -405,7 +405,10 @@
     "noResultsFilter": "এই ফিল্টারে কোনো ফলাফল পাওয়া যায়নি।",
     "noResults": "এখনও কোনো উপস্থিতি উত্তর নেই।",
     "exportPdf": "PDF রপ্তানি করুন",
-    "clearAttendance": "উপস্থিতি খালি করুন"
+    "clearAttendance": "উপস্থিতি খালি করুন",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "আপনার আমন্ত্রণ প্রকাশিত হয়েছে:",
@@ -651,7 +654,11 @@
     },
     "login": "Entrar",
     "emailLabel": "ইমেইল",
-    "passwordLabel": "পাসওয়ার্ড"
+    "passwordLabel": "পাসওয়ার্ড",
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "প্রক্রিয়াকরণ কার্যক্রমের রেজিস্টার (Art. 30 GDPR)",

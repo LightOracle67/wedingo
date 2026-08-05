@@ -11,6 +11,7 @@ import CookieConsent from "./components/CookieConsent";
 import DataRequestModal from "./components/DataRequestModal";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
+import { useFocusTrap } from "./hooks/useFocusTrap";
 
 const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ku", "ckb", "dv"]);
 const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
@@ -51,6 +52,9 @@ function AppShell() {
   const [showChangelog, setShowChangelog] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  // Trampa de foco del menú móvil: mientras está abierto, el teclado no
+  // puede tabular hacia el contenido detrás del overlay.
+  const navOverlayRef = useFocusTrap<HTMLDivElement>(navOpen);
 
   useEffect(() => {
 
@@ -171,13 +175,13 @@ function AppShell() {
 
       {!isEditingRoute && !isAdminTokenLoggedIn && (
         <>
-          <button type="button" className="app-nav-toggle" onClick={() => { ; setNavOpen(!navOpen); }} aria-label={t("common.menu")}>
+          <button type="button" className="app-nav-toggle" onClick={() => { ; setNavOpen(!navOpen); }} aria-label={t("common.menu")} aria-expanded={navOpen} aria-controls="app-nav-overlay">
             <span className={`app-nav-toggle__icon${navOpen ? " app-nav-toggle__icon--open" : ""}`}>
               <span /><span /><span />
             </span>
           </button>
 
-          <div className={`app-nav-overlay${navOpen ? " app-nav-overlay--open" : ""}`}>
+          <div id="app-nav-overlay" ref={navOverlayRef} className={`app-nav-overlay${navOpen ? " app-nav-overlay--open" : ""}`} role="dialog" aria-modal="true" aria-label={t("common.menu")}>
             <div className="app-nav-overlay__content">
               <LanguageSwitcher />
               <button type="button" className="app-nav-overlay__link" onClick={() => { setShowA11y(true); setNavOpen(false); }} aria-label={t("common.accessibility")}>♿ {t("common.accessibility")}</button>
@@ -231,7 +235,9 @@ function AppShell() {
         <CookieConsent />
       </main>
 
-      <Fireflies />
+      {/* Fireflies solo en la landing y en la invitación pública: su
+          animación continua no debe ejecutarse en rutas de trabajo. */}
+      {(location.pathname === "/" || (inviteToken && location.pathname === `/${inviteToken}`)) ? <Fireflies /> : null}
       <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />
       {legalSection ? <LegalModal section={legalSection} onClose={() => setLegalSection("")} /> : null}
       {showDataRequest ? <DataRequestModal inviteToken={inviteToken} onClose={() => setShowDataRequest(false)} /> : null}

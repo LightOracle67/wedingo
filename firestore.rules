@@ -48,6 +48,12 @@ service cloud.firestore {
       return value is string && value.size() <= 2000;
     }
 
+    /* Texto largo visible en la invitación: longitud acotada y caracteres
+       seguros (sin HTML/JS) para evitar XSS almacenado. */
+    function isValidLongSafeText(value) {
+      return isSafeText(value) && value.size() <= 2000;
+    }
+
     function isValidInvitationWrite(data) {
       return data.keys().hasAll(['firstName', 'secondName', 'weddingDay', 'weddingMonth', 'weddingYear', 'weddingHour', 'weddingMinute'])
         && data.firstName is string && data.firstName.size() > 0 && data.firstName.size() <= 100 && isSafeText(data.firstName)
@@ -59,12 +65,12 @@ service cloud.firestore {
         && data.weddingMinute is string && data.weddingMinute.matches('^[0-5]?[0-9]$')
         && data.theme in ['golden', 'forest', 'rose', 'linen-soft', 'blush-pearl', 'lavender-mist', 'champagne-bubble', 'amber-night', 'onyx-gold', 'midnight-royal', 'burgundy-velvet', 'sapphire-night', 'emerald-grove', 'plum-twilight', 'rainbow', 'trans', 'nonbinary', 'lesbian', 'bi', 'pan', 'ace']
         && (!data.keys().hasAny(['adminUsername']) || (data.adminUsername is string && data.adminUsername.size() <= 50 && data.adminUsername.matches('^[a-z0-9]*$')))
-        && (!data.keys().hasAny(['inviteMessage']) || (data.inviteMessage is string && data.inviteMessage.size() <= 500))
-        && (!data.keys().hasAny(['storyText']) || isValidLongText(data.storyText))
-        && (!data.keys().hasAny(['giftsInfo']) || isValidLongText(data.giftsInfo))
-        && (!data.keys().hasAny(['accommodationInfo']) || isValidLongText(data.accommodationInfo))
-        && (!data.keys().hasAny(['menuTexto']) || isValidLongText(data.menuTexto))
-        && (!data.keys().hasAny(['kidsPolicy']) || isValidLongText(data.kidsPolicy))
+        && (!data.keys().hasAny(['inviteMessage']) || (data.inviteMessage is string && data.inviteMessage.size() <= 500 && isSafeText(data.inviteMessage)))
+        && (!data.keys().hasAny(['storyText']) || isValidLongSafeText(data.storyText))
+        && (!data.keys().hasAny(['giftsInfo']) || isValidLongSafeText(data.giftsInfo))
+        && (!data.keys().hasAny(['accommodationInfo']) || isValidLongSafeText(data.accommodationInfo))
+        && (!data.keys().hasAny(['menuTexto']) || isValidLongSafeText(data.menuTexto))
+        && (!data.keys().hasAny(['kidsPolicy']) || isValidLongSafeText(data.kidsPolicy))
         && (!data.keys().hasAny(['weddingDressCode']) || (data.weddingDressCode is string && data.weddingDressCode.size() <= 100 && isSafeText(data.weddingDressCode)))
         && (!data.keys().hasAny(['weddingDressCodeCustom']) || (data.weddingDressCodeCustom is string && data.weddingDressCodeCustom.size() <= 500 && isSafeText(data.weddingDressCodeCustom)))
         && (!data.keys().hasAny(['bankInfo']) || (data.bankInfo is string && data.bankInfo.size() <= 2000))
@@ -81,40 +87,43 @@ service cloud.firestore {
       allow get: if true;
       allow list: if false;
       allow create: if isValidInvitationWrite(request.resource.data)
-        && (request.auth != null
+        && (isSuperAdmin()
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
-      /* Actualización de configuración por admin autenticado (sesión o superadmin). */
+      /* Actualización de configuración: solo admin con sesión activa o
+         superadmin. Cualquier cuenta autenticada de Firebase Auth NO puede
+         editar invitaciones de terceros (evita defacing/phisning). */
       allow update: if isValidInvitationWrite(request.resource.data)
-        && (request.auth != null || hasActiveSession(tokenId));
-      /* Incremento de contador de visitas: cualquiera puede incrementar _visits. */
-      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['_visits']);
-      /* Creación/renovación de sesión: exige prueba de conocimiento del token de
-         setup (hash con registro en setupTokens) o el token legacy de invitaciones
-         aún no migradas. sessionExpiresAt limitado a 30min-48h.
+        && (isSuperAdmin() || hasActiveSession(tokenId));
+      /* Incremento de contador de visitas: cualquiera puede incrementar
+         _visits, pero solo con un valor entero no negativo. */
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['_visits'])
+        && request.resource.data._visits is int
+        && request.resource.data._visits >= 0;
+      /* Creación/renovación de sesión: exige prueba de conocimiento del
+         token de setup (hash con registro en setupTokens). El token legacy
+         `_activeSetupToken` ya NO se acepta: era legible públicamente y
+         permitía forjar sesiones de administrador. sessionExpiresAt
+         limitado a 30min-48h.
          IMPORTANTE: request.time es la hora del SERVIDOR. El cliente envía
          sessionExpiresAt = (hora del cliente) + TTL, que por latencia/reloj es
          siempre un poco anterior a request.time + TTL. Por eso el mínimo debe
          quedar cómodamente por debajo del TTL real del cliente (60 min) para
          no rechazar el login por unos milisegundos de diferencia. */
-      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash', 'legacyToken'])
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash'])
         && request.resource.data.activeSession is timestamp
         && request.resource.data.sessionExpiresAt is timestamp
         && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
         && request.resource.data.sessionExpiresAt >= request.time + duration.value(30, 'm')
-        && (setupTokenValid(tokenId, request.resource.data.setupTokenHash)
-          || (resource.data._activeSetupToken is string
-            && resource.data._activeSetupToken.size() > 0
-            && request.resource.data.legacyToken == resource.data._activeSetupToken));
+        && setupTokenValid(tokenId, request.resource.data.setupTokenHash);
       /* Cierre de sesión: solo puede anularse una sesión existente (sin escalada). */
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt'])
         && resource.data.activeSession is timestamp
         && request.resource.data.activeSession == null
         && request.resource.data.sessionExpiresAt == null;
-      /* Migración legacy: un admin autenticado elimina el campo legacyToken. */
-      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['legacyToken'])
-        && resource.data.legacyToken is string
-        && request.resource.data.legacyToken == null
-        && hasActiveSession(tokenId);
+      /* Limpieza del token legacy: solo el superadmin retira los campos
+         `_activeSetupToken` y `legacyToken` del documento público. */
+      allow update: if isSuperAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['_activeSetupToken', 'legacyToken']);
       allow delete: if isSuperAdmin();
 
       match /gallery/{imageId} {
@@ -162,7 +171,8 @@ service cloud.firestore {
         && request.resource.data.inviteToken is string
         && request.resource.data.inviteToken.size() <= 40
         && (!exists(/databases/$(database)/documents/invitations/$(request.resource.data.inviteToken))
-          || hasActiveSession(request.resource.data.inviteToken));
+          || hasActiveSession(request.resource.data.inviteToken)
+          || isSuperAdmin());
       allow update: if isSuperAdmin()
         || (resource.data.inviteToken is string
           && hasActiveSession(resource.data.inviteToken));
@@ -243,9 +253,12 @@ service cloud.firestore {
       allow write: if false;
     }
 
-    /* Registro de auditoría del superadmin. */
+    /* Registro de auditoría: solo el superadmin puede registrarlo (evita
+       envenenar el log con entradas falsas). */
     match /auditLog/{docId} {
-      allow create: if true;
+      allow create: if isSuperAdmin()
+        && request.resource.data.action is string
+        && request.resource.data.action.size() <= 100;
       allow read: if isSuperAdmin();
     }
 

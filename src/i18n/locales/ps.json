@@ -1589,7 +1589,10 @@
     "noResultsFilter": "د دې فلټر سره هیڅ پایله ونه موندل شوه.",
     "noResults": "تر اوسه د گډون ځوابونه نشته.",
     "exportPdf": "PDF صادر کړئ",
-    "clearAttendance": "گډون تش کړئ"
+    "clearAttendance": "گډون تش کړئ",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "ستاسې بلنه دلته خپره شوې:",
@@ -2107,7 +2110,11 @@
       null,
       null,
       10
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "د پروسس فعالیتونو ریکارډ (د GDPR ۳۰ ماده)",

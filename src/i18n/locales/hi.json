@@ -1428,7 +1428,10 @@
     "noResultsFilter": "इस फ़िल्टर से कोई परिणाम नहीं मिला।",
     "noResults": "अभी तक उपस्थिति के कोई उत्तर नहीं हैं।",
     "exportPdf": "PDF निर्यात करें",
-    "clearAttendance": "उपस्थिति खाली करें"
+    "clearAttendance": "उपस्थिति खाली करें",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "आपका निमंत्रण यहाँ प्रकाशित है:",
@@ -1901,7 +1904,11 @@
       null,
       null,
       10
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "प्रसंस्करण गतिविधियों का रिकॉर्ड (GDPR अनुच्छेद 30)",

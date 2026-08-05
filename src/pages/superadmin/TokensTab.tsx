@@ -1,7 +1,8 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { collection, doc, getDocs, query, updateDoc, where, writeBatch } from "firebase/firestore";
+import { collection, doc, getDocs, query, setDoc, updateDoc, where, writeBatch, deleteField } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
+import { hashSetupToken } from "../../lib/setup-token";
 
 const TokensTab = memo(function TokensTab() {
   const { t } = useTranslation();
@@ -62,6 +63,26 @@ const TokensTab = memo(function TokensTab() {
     }
   }, [loadTokens, t]);
 
+  /**
+   * Migra un token legacy al esquema de hash: crea el registro setupTokens
+   * (el token que ya conoce el admin sigue siendo válido) y retira el campo
+   * legacy del documento público. Solo el superadmin puede ejecutarlo.
+   */
+  const handleMigrate = useCallback(async (invId: string, activeToken: string) => {
+    if (!window.confirm(t("superadmin.migrateConfirm"))) return;
+    setError("");
+    setMessage("");
+    try {
+      const tokenHash = await hashSetupToken(activeToken);
+      await setDoc(doc(db, "setupTokens", tokenHash), { inviteToken: invId, createdAt: new Date().toISOString() });
+      await updateDoc(doc(db, "invitations", invId), { _activeSetupToken: deleteField(), legacyToken: deleteField() });
+      setMessage(t("superadmin.tokenMigrated"));
+      await loadTokens();
+    } catch {
+      setError(t("superadmin.tokenMigrateError"));
+    }
+  }, [loadTokens, t]);
+
   if (loading) {
     return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("superadmin.tokensLoading")}</p>;
   }
@@ -100,14 +121,24 @@ const TokensTab = memo(function TokensTab() {
                   {t("superadmin.statusAvailable")}
                 </p>
               </div>
-              <button
-                className="setup-button setup-button--ghost"
-                type="button"
-                style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem", borderColor: "#f6c7c7", color: "#f6c7c7" }}
-                onClick={() => handleRevoke(token.id)}
-              >
-                {t("superadmin.revokeButton")}
-              </button>
+              <div style={{ display: "flex", gap: "0.4rem", alignItems: "center" }}>
+                <button
+                  className="setup-button setup-button--ghost"
+                  type="button"
+                  style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem" }}
+                  onClick={() => handleMigrate(token.id, token.activeToken)}
+                >
+                  {t("superadmin.migrateButton")}
+                </button>
+                <button
+                  className="setup-button setup-button--ghost"
+                  type="button"
+                  style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem", borderColor: "#f6c7c7", color: "#f6c7c7" }}
+                  onClick={() => handleRevoke(token.id)}
+                >
+                  {t("superadmin.revokeButton")}
+                </button>
+              </div>
             </div>
           ))}
         </div>

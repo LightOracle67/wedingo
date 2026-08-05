@@ -1659,7 +1659,10 @@
     "noResultsFilter": "Bu filtr bilan natija topilmadi.",
     "noResults": "Hali ishtirok javoblari yo'q.",
     "exportPdf": "PDF eksport qilish",
-    "clearAttendance": "Ishtirokni tozalash"
+    "clearAttendance": "Ishtirokni tozalash",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Taklifnomangiz quyidagida e'lon qilingan:",
@@ -2272,7 +2275,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Qayta ishlash faoliyati reyestri (GDPR 30-modda)",

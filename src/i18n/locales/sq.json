@@ -1602,7 +1602,10 @@
     "noResultsFilter": "Nuk u gjetën rezultate me atë filtër.",
     "noResults": "Ende nuk ka përgjigje pjesëmarrjeje.",
     "exportPdf": "Eksporto PDF",
-    "clearAttendance": "Zbraz pjesëmarrjen"
+    "clearAttendance": "Zbraz pjesëmarrjen",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Ftesa jote është publikuar në:",
@@ -2209,7 +2212,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Regjistri i aktiviteteve të trajtimit (GDPR Art. 30)",

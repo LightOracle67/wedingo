@@ -1602,7 +1602,10 @@
     "noResultsFilter": "ఆ ఫిల్టర్‌తో ఫలితాలు కనుగొనబడలేదు.",
     "noResults": "హాజరు ప్రతిస్పందనలు ఇంకా లేవు.",
     "exportPdf": "PDF ఎగుమతి చేయి",
-    "clearAttendance": "హాజరును ఖాళీ చేయి"
+    "clearAttendance": "హాజరును ఖాళీ చేయి",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "మీ ఆహ్వానం ఇక్కడ ప్రచురించబడింది:",
@@ -2133,7 +2136,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "ప్రాసెసింగ్ కార్యకలాపాల రికార్డు (GDPR ఆర్ట్. 30)",

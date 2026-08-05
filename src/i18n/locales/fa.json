@@ -1602,7 +1602,10 @@
     "noResultsFilter": "نتیجه‌ای با آن فیلتر پیدا نشد.",
     "noResults": "هنوز پاسخی برای حضور ثبت نشده.",
     "exportPdf": "خروجی PDF",
-    "clearAttendance": "خالی کردن حضور"
+    "clearAttendance": "خالی کردن حضور",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "دعوتنامه شما در اینجا منتشر شده:",
@@ -2133,7 +2136,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "ثبت فعالیت‌های پردازش (GDPR ماده ۳۰)",

@@ -1512,7 +1512,10 @@
     "noResultsFilter": "Nincs találat ezzel a szűrővel.",
     "noResults": "Még nincsenek visszajelzések.",
     "exportPdf": "PDF exportálása",
-    "clearAttendance": "Részvételek törlése"
+    "clearAttendance": "Részvételek törlése",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Meghívód itt érhető el:",
@@ -2073,7 +2076,11 @@
       null,
       null,
       2
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Adatkezelési tevékenységek nyilvántartása (GDPR 30. cikk)",

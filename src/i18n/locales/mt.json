@@ -1621,7 +1621,10 @@
     "noResultsFilter": "Ma nstabu l-ebda riżultati b'dak il-filtru.",
     "noResults": "Għad m'hemm l-ebda tweġiba ta' attendenza.",
     "exportPdf": "Esporta PDF",
-    "clearAttendance": "Żvojta l-attendenza"
+    "clearAttendance": "Żvojta l-attendenza",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "L-istedina tiegħek hi ppubblikata fuq:",
@@ -2304,7 +2307,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Reġistru tal-attivitajiet ta' trattament (Art. 30 GDPR)",

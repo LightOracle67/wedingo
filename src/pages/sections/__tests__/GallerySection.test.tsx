@@ -354,35 +354,16 @@ describe("GallerySection", () => {
     vi.useRealTimers();
   });
 
-  it("triggers handleNextImage setTimeout via auto-advance tick", async () => {
-    const origRAF = window.requestAnimationFrame;
-    const origCAF = window.cancelAnimationFrame;
-    const origDateNow = Date.now;
-    let dateNowCalls = 0;
-    let rAFHandler: FrameRequestCallback | null = null;
-    window.requestAnimationFrame = (cb: FrameRequestCallback) => {
-      rAFHandler = cb;
-      return 1;
-    };
-    window.cancelAnimationFrame = () => { rAFHandler = null; };
-    Date.now = () => {
-      dateNowCalls++;
-      return dateNowCalls <= 2 ? 1000 : 7000;
-    };
+  it("triggers handleNextImage setTimeout via auto-advance interval", async () => {
     mockLoadGallery.mockResolvedValue(mockImages);
-    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout", "setInterval", "clearInterval"] });
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
-    if (rAFHandler) {
-      Date.now = () => 8000;
-      act(() => { rAFHandler!(8000); });
-    }
+    // Transcurren 5s: el intervalo dispara el auto-avance.
+    act(() => { vi.advanceTimersByTime(5000); });
     act(() => { vi.advanceTimersByTime(600); });
-    window.requestAnimationFrame = origRAF;
-    window.cancelAnimationFrame = origCAF;
-    Date.now = origDateNow;
     vi.useRealTimers();
   });
 

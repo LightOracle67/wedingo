@@ -473,7 +473,10 @@
     "noResultsFilter": "Ingen resultater med dette filter.",
     "noResults": "Der er endnu ingen tilbagemeldinger.",
     "exportPdf": "Eksportér PDF",
-    "clearAttendance": "Ryd deltagelse"
+    "clearAttendance": "Ryd deltagelse",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Din invitation er udgivet på:",
@@ -902,7 +905,11 @@
     },
     "login": "Entrar",
     "emailLabel": "E-mail",
-    "passwordLabel": "Adgangskode"
+    "passwordLabel": "Adgangskode",
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Fortegnelse over behandlingsaktiviteter (GDPR art. 30)",

@@ -1602,7 +1602,10 @@
     "noResultsFilter": "Ahụghị nsonaazụ na nzacha ahụ.",
     "noResults": "Enwebeghị azịza ọbịbịa.",
     "exportPdf": "Bupụ PDF",
-    "clearAttendance": "Hichapụ ọbịbịa"
+    "clearAttendance": "Hichapụ ọbịbịa",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "E bipụtara akwụkwọ ịkpọ òkù gị na:",
@@ -2266,7 +2269,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Ndebanye aha nke ọrụ nhazi (Art. 30 GDPR)",

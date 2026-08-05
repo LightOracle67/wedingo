@@ -1602,7 +1602,10 @@
     "noResultsFilter": "Nav rezultātu ar šo filtru.",
     "noResults": "Vēl nav atbilžu par apmeklējumu.",
     "exportPdf": "Eksportēt PDF",
-    "clearAttendance": "Notīrīt apmeklējumus"
+    "clearAttendance": "Notīrīt apmeklējumus",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Jūsu ielūgums ir publicēts:",
@@ -2190,7 +2193,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Apstrādes darbību reģistrs (GDPR 30. pants)",

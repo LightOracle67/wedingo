@@ -1,7 +1,7 @@
 import { useApp } from "../contexts";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { getDoc, serverTimestamp, runTransaction, deleteField, updateDoc } from "firebase/firestore";
+import { getDoc, serverTimestamp, runTransaction } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import { db, invitationDocRef } from "../lib/firebase";
@@ -152,7 +152,6 @@ export default function LandingPage() {
 
       // Prueba de conocimiento del token para activar la sesión.
       const tokenHash = await hashSetupToken(normalized);
-      const isLegacy = !!matchedData && typeof matchedData._activeSetupToken === "string" && matchedData._activeSetupToken === normalized;
 
       try {
 
@@ -162,13 +161,11 @@ export default function LandingPage() {
           if (!inviteSnapInTx.exists()) {
             transaction.set(inviteRefInTx, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry(), setupTokenHash: tokenHash });
           } else {
-            const sessionPayload: Record<string, unknown> = {
+            transaction.update(inviteRefInTx, {
               activeSession: serverTimestamp(),
               sessionExpiresAt: firestoreSessionExpiry(),
               setupTokenHash: tokenHash,
-            };
-            if (isLegacy) sessionPayload.legacyToken = normalized;
-            transaction.update(inviteRefInTx, sessionPayload);
+            });
           }
         });
 
@@ -183,15 +180,6 @@ export default function LandingPage() {
         }
         setIsLoading(false);
         return;
-      }
-
-      // Migración automática de invitaciones legacy: registra el token en
-      // setupTokens y retira el campo legacy del documento público.
-      if (isLegacy) {
-        try {
-          await createSetupTokenRecord(target, normalized);
-          await updateDoc(inviteRef, { _activeSetupToken: deleteField(), legacyToken: deleteField() });
-        } catch { }
       }
 
       safeSetItem(STORAGE_KEYS.inviteToken, target, sessionStorage);

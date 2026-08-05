@@ -1621,7 +1621,10 @@
     "noResultsFilter": "Tiada hasil ditemui dengan penapis itu.",
     "noResults": "Belum ada jawapan kehadiran.",
     "exportPdf": "Eksport PDF",
-    "clearAttendance": "Kosongkan kehadiran"
+    "clearAttendance": "Kosongkan kehadiran",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Jemputan anda diterbitkan di:",
@@ -2190,7 +2193,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Rekod aktiviti pemprosesan (GDPR Art. 30)",

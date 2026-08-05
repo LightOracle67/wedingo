@@ -502,7 +502,10 @@
     "deleteSelected": "Delete selected ({{count}})",
     "deleteSelectedConfirm": "Delete {{count}} selected response(s)? This action cannot be undone.",
     "deleteSelectedSuccess": "{{count}} response(s) deleted.",
-    "deleteSelectedError": "Could not delete the selected responses. Try again."
+    "deleteSelectedError": "Could not delete the selected responses. Try again.",
+    "prevPage": "Previous page",
+    "nextPage": "Next page",
+    "pageSizeLabel": "Page size"
   },
   "share": {
     "publishedAt": "Your invitation is published at:",
@@ -763,7 +766,11 @@
     "revokeConfirm": "Revoke this token?",
     "cleanupConfirm": "Delete all expired tokens?",
     "firebaseLabel": "Firebase",
-    "rsvpsLabel": "RSVPs"
+    "rsvpsLabel": "RSVPs",
+    "migrateButton": "Migrate token",
+    "migrateConfirm": "Migrate this legacy token to the secure system (hash record)? The current token stays valid.",
+    "tokenMigrated": "Token migrated successfully.",
+    "tokenMigrateError": "Could not migrate the token."
   },
   "compliance": {
     "title": "Record of processing activities (Art. 30 GDPR)",

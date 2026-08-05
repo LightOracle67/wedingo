@@ -1239,7 +1239,10 @@
     "noResultsFilter": "Nessun risultato trovato con questo filtro.",
     "noResults": "Non ci sono ancora risposte di partecipazione.",
     "exportPdf": "Esporta PDF",
-    "clearAttendance": "Cancella presenze"
+    "clearAttendance": "Cancella presenze",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Il tuo invito è pubblicato su:",
@@ -1838,7 +1841,11 @@
       null,
       null,
       2
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Registro delle attività di trattamento (Art. 30 GDPR)",

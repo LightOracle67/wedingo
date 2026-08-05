@@ -1,5 +1,17 @@
 export const CHANGELOG = [
   {
+    version: "2.63.0",
+    date: "2026-08-06",
+    changes: [
+      "SEGURIDAD (2 críticas): eliminado el token legacy `_activeSetupToken` como prueba de sesión (era legible públicamente y permitía robar la sesión de admin); solo el hash con registro en setupTokens concede acceso",
+      "SEGURIDAD: cualquier cuenta de Firebase Auth ya NO puede editar la config de invitaciones ajenas (solo superadmin o sesión activa)",
+      "LEGALIDAD/GDPR: el cleanup programado borra por fin la PII de RSVP (responses y contador), que nunca se eliminaba",
+      "REGLA: isSafeText en textos públicos, validación de _visits, auditLog solo superadmin, CSP con reCAPTCHA Enterprise",
+      "RENDIMIENTO: Firebase Auth/Storage se cargan bajo demanda (fuera del bundle inicial), Fireflies solo en la invitación, carrusel con setInterval y pausa en pestaña oculta, imágenes con lazy",
+      "ACCESIBILIDAD: focus trap e inert en el sobre de apertura, contraste de notas de la invitación, aria-labels en paginación y menú móvil accesible",
+    ],
+  },
+  {
     version: "2.62.0",
     date: "2026-08-06",
     changes: [

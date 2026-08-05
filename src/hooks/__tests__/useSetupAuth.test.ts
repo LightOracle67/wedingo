@@ -101,17 +101,23 @@ function setup(
 
 describe("useSetupAuth", () => {
   beforeEach(() => {
-    vi.clearAllMocks();
+    // resetAllMocks también descarta los one-time mocks pendientes (los
+    // mockResolvedValueOnce no consumidos contaminaban los siguientes tests).
+    vi.resetAllMocks();
+    mockT.mockImplementation((key: string) => key);
     mockGetSession.mockReturnValue(null);
+    mockFirestoreSessionExpiry.mockImplementation(() => new Date());
+    mockSafeGetItem.mockReturnValue(null);
+    mockHashSetupToken.mockImplementation(async (t: string) => `hash-${t}`);
     // Implementación por defecto: los documentos de setupTokens se comportan
-    // según mockTokenRecordExists y la invitación devuelve un token legacy.
+    // según mockTokenRecordExists.
     mockGetDoc.mockImplementation(async (ref: unknown) => {
       if (String(ref).startsWith("token-ref-")) {
         return mockTokenRecordExists.value
           ? { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) }
           : { exists: () => false };
       }
-      return { exists: () => true, data: () => ({ _activeSetupToken: "valid-token", adminUsername: "admin" }) };
+      return { exists: () => true, data: () => ({ adminUsername: "admin" }) };
     });
     mockRunTransaction.mockImplementation(async (_db: unknown, _cb: (t: unknown) => Promise<void>) => Promise.resolve());
     mockSetDoc.mockImplementation(() => Promise.resolve());
@@ -153,9 +159,9 @@ describe("useSetupAuth", () => {
     it("proceeds even when activateSessionWithToken returns null (session exists but user cancels)", async () => {
       mockGetDoc.mockImplementation(async (ref: unknown) => {
         if (String(ref).startsWith("token-ref-")) {
-          return { exists: () => false };
+          return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };
         }
-        return { exists: () => true, data: () => ({ activeSession: true, _activeSetupToken: "valid-token" }) };
+        return { exists: () => true, data: () => ({ activeSession: true }) };
       });
       window.confirm = vi.fn(() => false);
       const { result } = setup();
@@ -173,15 +179,15 @@ describe("useSetupAuth", () => {
     it("confirms overriding an existing session and logs in", async () => {
       mockGetDoc.mockImplementation(async (ref: unknown) => {
         if (String(ref).startsWith("token-ref-")) {
-          return { exists: () => false };
+          return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };
         }
-        return { exists: () => true, data: () => ({ activeSession: true, _activeSetupToken: "valid-token" }) };
+        return { exists: () => true, data: () => ({ activeSession: true }) };
       });
       mockRunTransaction
         .mockRejectedValueOnce(new Error("sessionExists"))
         .mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
           const transaction = {
-            get: vi.fn().mockResolvedValue({ exists: () => true, data: () => ({ _activeSetupToken: "valid-token" }) }),
+            get: vi.fn().mockResolvedValue({ exists: () => true, data: () => ({}) }),
             update: vi.fn(),
           };
           await cb(transaction);
@@ -640,21 +646,6 @@ describe("useSetupAuth", () => {
 
       await waitFor(() => {
         expect(mockClearSession).not.toHaveBeenCalled();
-      });
-    });
-
-    it("repairs a legacy session and migrates the stored token", async () => {
-      mockGetSession.mockReturnValue({ type: "setup", identifier: "legacy-user" });
-      mockGetDoc.mockResolvedValueOnce({
-        exists: () => true,
-        data: () => ({ activeSession: false, sessionExpiresAt: null, _activeSetupToken: "legacy-token" }),
-      });
-      mockSafeGetItem.mockReturnValue("legacy-token");
-
-      setup();
-
-      await waitFor(() => {
-        expect(mockUpdateDoc).toHaveBeenCalledWith("invite-ref", expect.objectContaining({ legacyToken: "legacy-token" }));
       });
     });
 

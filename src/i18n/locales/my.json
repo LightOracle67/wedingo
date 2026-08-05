@@ -1602,7 +1602,10 @@
     "noResultsFilter": "ထိုစစ်ထုတ်မှုဖြင့် ရလဒ်မတွေ့ပါ။",
     "noResults": "တက်ရောက်မှု တုံ့ပြန်ချက် မရှိသေးပါ။",
     "exportPdf": "PDF ထုတ်ယူမည်",
-    "clearAttendance": "တက်ရောက်မှုများ ရှင်းလင်းမည်"
+    "clearAttendance": "တက်ရောက်မှုများ ရှင်းလင်းမည်",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "သင့်ဖိတ်ကြားလွှာကို အောက်ပါနေရာတွင် ထုတ်ဝေထားသည်:",
@@ -2139,7 +2142,11 @@
           ]
         ]
       ]
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "စီမံဆောင်ရွက်မှု လုပ်ဆောင်ချက်များ မှတ်တမ်း (GDPR အပိုဒ် 30)",

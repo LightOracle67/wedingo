@@ -1283,7 +1283,10 @@
     "noResultsFilter": "Nie znaleziono wyników z tym filtrem.",
     "noResults": "Nie ma jeszcze odpowiedzi o obecności.",
     "exportPdf": "Eksportuj PDF",
-    "clearAttendance": "Wyczyść obecność"
+    "clearAttendance": "Wyczyść obecność",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Tamaño de página"
   },
   "share": {
     "publishedAt": "Twoje zaproszenie jest opublikowane pod adresem:",
@@ -1844,7 +1847,11 @@
       null,
       null,
       10
-    ]
+    ],
+    "migrateButton": "Migrar token",
+    "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
+    "tokenMigrated": "Token migrado correctamente.",
+    "tokenMigrateError": "No se pudo migrar el token."
   },
   "compliance": {
     "title": "Rejestr czynności przetwarzania (Art. 30 RODO)",

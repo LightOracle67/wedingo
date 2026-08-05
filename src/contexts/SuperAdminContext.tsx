@@ -1,13 +1,8 @@
 import { createContext, useContext, useCallback, useEffect, useMemo, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import {
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut,
-  type User,
-} from "firebase/auth";
-import { auth } from "../lib/firebase";
+import type { User } from "firebase/auth";
+import { getAuthInstance } from "../lib/firebase";
 import { INVITE_CACHE_PREFIX } from "../lib/storage-keys";
 import { saveSession, getSession, renewSession, clearSession } from "../lib/sessionVars";
 import { SUPERADMIN_EMAIL } from "../lib/superadmin";
@@ -37,29 +32,34 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
 
   useEffect(() => {
 
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      const local = getSession();
+    let unsubscribe: (() => void) | null = null;
+    // Auth se inicializa de forma diferida (solo ruta de superadmin); el
+    // SDK se importa aquí para no cargarlo en el arranque de la app.
+    getAuthInstance().then(async (instance) => {
+      const { onAuthStateChanged, signOut } = await import("firebase/auth");
+      unsubscribe = onAuthStateChanged(instance, (firebaseUser) => {
+        const local = getSession();
 
-      if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && local?.type === "superadmin") {
+        if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && local?.type === "superadmin") {
 
-        setUser(firebaseUser);
-      } else if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && loggingInRef.current) {
-        // Login en curso: no forzar cierre, esperar a que login() guarde la sesión
+          setUser(firebaseUser);
+        } else if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && loggingInRef.current) {
+          // Login en curso: no forzar cierre, esperar a que login() guarde la sesión
 
-        setUser(firebaseUser);
-      } else {
-        if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL) {
+          setUser(firebaseUser);
+        } else {
+          if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL) {
 
-          signOut(auth).catch(() => {});
+            signOut(instance).catch(() => {});
+          }
+
+          setUser(null);
         }
-
-        setUser(null);
-      }
-      setIsLoading(false);
+        setIsLoading(false);
+      });
     });
     return () => {
-
-      unsubscribe();
+      if (unsubscribe) unsubscribe();
     };
   }, []);
 
@@ -90,10 +90,12 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
     setError("");
     loggingInRef.current = true;
     try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
+      const authInstance = await getAuthInstance();
+      const { signInWithEmailAndPassword, signOut } = await import("firebase/auth");
+      const result = await signInWithEmailAndPassword(authInstance, email, password);
       if (result.user.email !== SUPERADMIN_EMAIL) {
         console.error("[app]", "[SuperAdminContext]", "login error: no permissions", { email: result.user.email });
-        await signOut(auth);
+        await signOut(authInstance);
         setError(t("auth.superadminNoPermissions"));
         loggingInRef.current = false;
         return false;
@@ -127,7 +129,9 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
   const logout = useCallback(async () => {
 
     clearSession();
-    await signOut(auth);
+    const authInstance = await getAuthInstance();
+    const { signOut } = await import("firebase/auth");
+    await signOut(authInstance);
     setUser(null);
     try {
       const keys = Object.keys(localStorage).filter((k) => k.startsWith(INVITE_CACHE_PREFIX));
