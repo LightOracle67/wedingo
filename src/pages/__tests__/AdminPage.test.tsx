@@ -555,14 +555,15 @@ describe("AdminPage", () => {
     );
   });
 
-  it("returns null while restoring the session", () => {
+  it("shows a loading spinner while restoring the session", () => {
     mockUseApp.mockReturnValue({ ...baseMock, isRestoringSession: true });
     const { container } = render(
       <Suspense fallback={null}>
         <AdminPage />
       </Suspense>
     );
-    expect(container.firstChild).toBeNull();
+    // Ya no hay pantalla en blanco: se muestra el indicador de carga.
+    expect(container.querySelector(".page-loading")).toBeDefined();
   });
 
   it("calls setActiveTabAndFilter from PanelTab", async () => {

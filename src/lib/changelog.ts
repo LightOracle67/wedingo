@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.79.0",
+    date: "2026-08-06",
+    changes: [
+      "GALERÍA: sin spinners infinitos — los metadatos y el descifrado fallidos muestran un placeholder (antes la sección podía quedarse cargando para siempre)",
+      "ADMIN: la restauración de sesión muestra un spinner (antes una pantalla en blanco) y las pestañas del superadmin ya no parpadean (Suspense local)",
+      "RSVP: idempotencia del envío (id del documento derivado del nombre, un reintento sobrescribe en vez de duplicar) y candado en los borrados para no corromper el contador con dobles clics",
+    ],
+  },
+  {
     version: "2.78.0",
     date: "2026-08-06",
     changes: [

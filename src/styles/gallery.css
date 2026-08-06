@@ -281,3 +281,26 @@
   letter-spacing: 0.05em;
   z-index: 1;
 }
+
+/* Placeholder cuando una foto falla al descifrarse (en vez de un spinner
+   infinito). */
+.gallery-main-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--invite-copy-color, #e0d4bc) 85%, transparent);
+  background: color-mix(in srgb, var(--setup-field-bg, #2a2418) 55%, transparent);
+}
+.gallery-thumb__missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: color-mix(in srgb, var(--invite-copy-color, #e0d4bc) 70%, transparent);
+}

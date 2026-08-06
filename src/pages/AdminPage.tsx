@@ -299,7 +299,11 @@ export default function AdminPage() {
 
   // ─── Esperar a que se restaure la sesión antes de decidir ──
   if (isRestoringSession) {
-    return null; // o un spinner de carga
+    // Spinner: una página en blanco durante el getDoc de la sesión era un
+    // blank screen real de 0.3-1 s.
+    return (
+      <div className="page-loading" role="status" aria-label={t("common.loading")} />
+    );
   }
 
   // ─── Redirección si no hay sesión de admin activa ──────

@@ -121,7 +121,8 @@
     "carouselLabel": "Galería de imágenes, usa las flechas del teclado para navegar",
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniatura de foto de la galería",
-    "download": "Descargar foto"
+    "download": "Descargar foto",
+    "imageUnavailable": "Esta foto no está disponible."
   },
   "rsvp": {
     "sectionLabel": "Confirmación de asistencia",

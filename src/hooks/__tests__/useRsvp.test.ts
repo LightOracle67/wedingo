@@ -19,6 +19,8 @@ const mockEncrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockDecrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockComputeAge = vi.hoisted(() => vi.fn(() => 25));
 const mockParseDietaryInfo = vi.hoisted(() => vi.fn(() => ({ mealChoice: "", dietarySelection: [] as string[], dietaryOther: "" })));
+type SnapshotCb = (snap: unknown) => void;
+const mockOnSnapshot = vi.hoisted(() => vi.fn((_q: unknown, _cb?: SnapshotCb) => () => {}));
 
 vi.mock("firebase/firestore", () => ({
   writeBatch: mockWriteBatch,
@@ -30,7 +32,7 @@ vi.mock("firebase/firestore", () => ({
   setDoc: mockSetDoc,
   increment: vi.fn((n: number) => n),
   updateDoc: vi.fn(() => Promise.resolve()),
-  onSnapshot: vi.fn(() => () => {}),
+  onSnapshot: mockOnSnapshot,
 }));
 
 vi.mock("../../lib/analytics", () => ({
@@ -100,6 +102,8 @@ describe("useRsvp", () => {
     mockDoc.mockImplementation((_col?: unknown, id?: string) =>
       id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` },
     );
+    mockOnSnapshot.mockClear();
+    mockOnSnapshot.mockImplementation(() => () => {});
     mockWriteBatch.mockReturnValue({
       set: vi.fn(),
       update: vi.fn(),
@@ -844,6 +848,28 @@ describe("useRsvp", () => {
       await new Promise((r) => setTimeout(r, 50));
       expect(mockGetDocs).not.toHaveBeenCalled();
       expect(result.current.rsvpEntries).toEqual([]);
+    });
+
+    it("updates entries live via onSnapshot for the admin", async () => {
+      // El listener en vivo reacciona a un cambio de otro dispositivo.
+      let listenerCb: ((snap: unknown) => void) | null = null;
+      mockOnSnapshot.mockImplementationOnce((_q: unknown, cb?: (snap: unknown) => void) => {
+        listenerCb = cb ?? null;
+        return () => {};
+      });
+      const entry = createMockDoc("live-1", {
+        guestName: "Live User",
+        attendance: "yes",
+        attendees: [{ name: "Live User", menu: "carne", allergies: [] }],
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+
+      await act(async () => {
+        listenerCb!({ docs: [entry] });
+      });
+      await waitFor(() => {
+        expect(result.current.rsvpEntries.some((e) => e.id === "live-1")).toBe(true);
+      });
     });
 
     it("loads rsvp entries on mount", async () => {

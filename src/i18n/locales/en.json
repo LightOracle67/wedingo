@@ -121,7 +121,8 @@
     "carouselLabel": "Image gallery, use arrow keys to navigate",
     "thumbnailAria": "Photo {{number}}",
     "thumbnailAlt": "Gallery photo thumbnail",
-    "download": "Download photo"
+    "download": "Download photo",
+    "imageUnavailable": "This photo is not available."
   },
   "rsvp": {
     "sectionLabel": "RSVP",

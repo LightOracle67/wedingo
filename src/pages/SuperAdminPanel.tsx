@@ -1,4 +1,4 @@
-import { lazy, useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { Navigate, useSearchParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useSuperAdmin } from "../contexts/SuperAdminContext";
@@ -93,12 +93,14 @@ export default function SuperAdminPanel() {
         </nav>
 
         <div className="setup-form" role="tabpanel" id={"sadm-tabpanel-" + activeTab} aria-labelledby={"sadm-tab-" + activeTab}>
-          {activeTab === "dashboard" && <DashboardTab />}
-          {activeTab === "invitaciones" && <InvitationsTab />}
-          {activeTab === "tokens" && <TokensTab />}
-          {activeTab === "datos" && <DataTab />}
-          {activeTab === "ajustes" && <SettingsTab />}
-          {activeTab === "cumplimiento" && <ComplianceTab />}
+          <Suspense fallback={<div className="page-loading" role="status" aria-label="Cargando" />}>
+            {activeTab === "dashboard" && <DashboardTab />}
+            {activeTab === "invitaciones" && <InvitationsTab />}
+            {activeTab === "tokens" && <TokensTab />}
+            {activeTab === "datos" && <DataTab />}
+            {activeTab === "ajustes" && <SettingsTab />}
+            {activeTab === "cumplimiento" && <ComplianceTab />}
+          </Suspense>
         </div>
       </section>
     </div>

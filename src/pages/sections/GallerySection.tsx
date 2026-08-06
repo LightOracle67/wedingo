@@ -40,6 +40,8 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   const requestedRef = useRef<Set<string>>(new Set());
   /** Índice de la imagen abierta en lightbox, o null si cerrado. */
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  /** Ids cuyo descifrado falló: placeholder en vez de spinner infinito. */
+  const [failedIds, setFailedIds] = useState<Set<string>>(new Set());
 
   // La lista derivada mantiene SIEMPRE la longitud de metas: el fallo de
   // descifrado no borra fotos ni desplaza los índices del carrusel.
@@ -60,6 +62,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     requestedRef.current.add(meta.id);
     void getGalleryImageUrl(inviteToken, meta).then((url) => {
       setUrls((p) => (url ? { ...p, [meta.id]: url } : p));
+      if (!url) setFailedIds((p) => new Set(p).add(meta.id));
     });
   }, [inviteToken]);
 
@@ -69,9 +72,15 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     if (!inviteToken) return;
     let cancelled = false;
     (async () => {
-      const { loadGalleryMeta } = await import("../../lib/image-store");
-      const result = await loadGalleryMeta(inviteToken);
-      if (!cancelled) { setMetas(result); setLoading(false); }
+      try {
+        const { loadGalleryMeta } = await import("../../lib/image-store");
+        const result = await loadGalleryMeta(inviteToken);
+        if (!cancelled) { setMetas(result); setLoading(false); }
+      } catch {
+        // Sin try/catch la sección quedaba en un spinner eterno ante un error
+        // de red o de reglas: se sale del estado de carga.
+        if (!cancelled) setLoading(false);
+      }
     })();
     return () => { cancelled = true; };
   }, [inviteToken]);
@@ -412,7 +421,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
               <LoadingOverlay visible={!mainLoaded[clamped] || !currentImage?.url} zIndex={1} />
               <img
-                src={currentImage?.url || TRANSPARENT_GIF}
+                src={currentImage?.url || (failedIds.has(currentImage?.id || "") ? "" : TRANSPARENT_GIF)}
                 alt={currentImage?.description || t("gallery.imageAlt")}
                 loading="lazy"
                 decoding="async"
@@ -426,6 +435,9 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                 className={`gallery-main-img${!mainLoaded[clamped] ? " gallery-main-img--loading" : ""}${fading ? " gallery-blur-in" : ""}`}
                 style={{ cursor: "pointer" }}
               />
+              {failedIds.has(currentImage?.id || "") && (
+                <p className="gallery-main-placeholder" aria-live="polite">{t("gallery.imageUnavailable")}</p>
+              )}
             </div>
 
             {/* ── Descripción de la imagen actual ── */}
@@ -452,7 +464,6 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         {/* ── Miniaturas ── */}
         <div style={{ display: "flex", justifyContent: "center", gap: "0.4rem", marginTop: "0.6rem", flexWrap: "wrap" }}>
           {images.map((img, i) => {
-            const src = img.url || TRANSPARENT_GIF;
             return (
               <button
                 key={img.id || i}
@@ -466,17 +477,21 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                   opacity: i === clamped ? 1 : 0.55,
                 }}
               >
-                {(!thumbLoaded[i] || !img.url) ? <div className="page-loading" style={{ width: "100%", height: "100%", minHeight: 0 }} /> : null}
-                <img
-                  src={src}
-                  alt={img.description || t("gallery.thumbnailAlt")}
-                  onLoad={handleThumbLoad}
-                  onError={handleThumbLoad}
-                  data-index={i}
-                  loading="lazy"
-                  className="gallery-thumb__img"
-                  style={{ opacity: (thumbLoaded[i] && img.url) ? 1 : 0, transition: "opacity 0.3s ease" }}
-                />
+                {(!thumbLoaded[i] || !img.url) && !failedIds.has(img.id) ? <div className="page-loading" style={{ width: "100%", height: "100%", minHeight: 0 }} /> : null}
+                {failedIds.has(img.id) ? (
+                  <span className="gallery-thumb__missing" aria-hidden="true">•</span>
+                ) : (
+                  <img
+                    src={img.url || TRANSPARENT_GIF}
+                    alt={img.description || t("gallery.thumbnailAlt")}
+                    onLoad={handleThumbLoad}
+                    onError={handleThumbLoad}
+                    data-index={i}
+                    loading="lazy"
+                    className="gallery-thumb__img"
+                    style={{ opacity: (thumbLoaded[i] && img.url) ? 1 : 0, transition: "opacity 0.3s ease" }}
+                  />
+                )}
               </button>
             );
           })}

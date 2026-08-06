@@ -73,8 +73,18 @@ interface RsvpEntryData {
   mainGuestName?: string;
 }
 
-function RsvpFormDefault(): RsvpFormData {
-  return {
+/** Hash estable (FNV-1a) de un nombre normalizado, para derivar los ids de
+ *  respuesta del RSVP: un reintento reutiliza el mismo doc (idempotencia). */
+function stableGuestId(name: string): string {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < name.length; i++) {
+    h ^= name.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(36);
+}
+
+function RsvpFormDefault(): RsvpFormData {  return {
     guestName: "",
     attendance: "alone",
     companionCount: 0,
@@ -124,6 +134,9 @@ export function useRsvp(
   /** Referencia al reset del error de submit (asignada tras montar
    *  useRsvpSubmit): permite limpiar el mensaje al editar el formulario. */
   const resetErrorRef = useRef<(() => void) | null>(null);
+  /** Candado de los borrados (retirar, en lote, vaciar): un doble clic durante
+   *  el await aplicaba increment(-N) dos veces y corrompía el contador. */
+  const deletingRef = useRef(false);
   /** Contador para forzar la re-hidratación (botón "Reintentar" del invitado). */
   const [hydrateTick, setHydrateTick] = useState(0);
   const prefillRef = useRef<string | null>(null);
@@ -572,7 +585,10 @@ export function useRsvp(
     const companionCount = form.companionCount || 0;
     const nowTimestamp = serverTimestamp();
 
-    const mainGuestId = doc(rsvpByInviteRef(inviteToken)).id;
+    // Id DETERMINISTA del nombre normalizado: un reintento tras un commit con
+    // red perdida sobrescribe el mismo doc en vez de crear un duplicado (el
+    // candado del submit solo evita el doble clic en el mismo tick).
+    const mainGuestId = `main_${stableGuestId(single)}`;
     const mainGuestData = buildMainGuestData({
       data: form,
       isAttending,
@@ -584,11 +600,12 @@ export function useRsvp(
       nowTimestamp,
     });
 
-    // Create companion docs with individual dietaryInfo
+    // Create companion docs with individual dietaryInfo (ids estables por
+    // índice, para que el retry no cree compañeros duplicados)
     const companionDocIds: string[] = [];
     const companionPayloads: Array<Record<string, unknown>> = [];
     for (let i = 0; i < companionCount; i++) {
-      companionDocIds.push(doc(rsvpByInviteRef(inviteToken)).id);
+      companionDocIds.push(`comp_${stableGuestId(single)}_${i}`);
       const compAllergies = form.companionAllergies[i] || [];
       const compDietaryInfo = compAllergies.filter(Boolean).join(" | ");
       const encCompDietary = await encrypt(compDietaryInfo, inviteToken);
@@ -707,8 +724,9 @@ export function useRsvp(
 
   const handleDeleteRsvp = useCallback(async () => {
 
-    if (!alreadySubmittedEntry?.id) return;
+    if (!alreadySubmittedEntry?.id || deletingRef.current) return;
     if (!window.confirm(t("rsvp.withdrawConfirm"))) { return; }
+    deletingRef.current = true;
     try {
       const batch = writeBatch(db);
       batch.delete(rsvpResponseRef(inviteToken, alreadySubmittedEntry.id));
@@ -730,13 +748,16 @@ export function useRsvp(
     } catch (err) {
       console.error("[app]", "[useRsvp]", "withdraw error", { error: err });
       setRsvpMessage(t("rsvp.withdrawError"));
+    } finally {
+      deletingRef.current = false;
     }
   }, [alreadySubmittedEntry, t, inviteToken]);
 
   const handleDeleteRsvpEntries = useCallback(async (ids: string[]) => {
 
-    if (!ids.length) return;
+    if (!ids.length || deletingRef.current) return;
     if (!window.confirm(t("attendance.deleteSelectedConfirm", { count: ids.length }))) { return; }
+    deletingRef.current = true;
     try {
       const batch = writeBatch(db);
       for (const id of ids) {
@@ -752,12 +773,16 @@ export function useRsvp(
       console.error("[app]", "[useRsvp]", "delete selected error", { error: err });
       setAdminMessage(t("attendance.deleteSelectedError"));
       setAdminMessageType("error");
+    } finally {
+      deletingRef.current = false;
     }
   }, [setAdminMessage, setAdminMessageType, t, inviteToken]);
 
   const handleClearRsvpEntries = useCallback(async () => {
 
+    if (deletingRef.current) return;
     if (!window.confirm(t("rsvp.clearConfirm"))) { return; }
+    deletingRef.current = true;
     try {
       const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
 
@@ -772,6 +797,8 @@ export function useRsvp(
       console.error("[app]", "[useRsvp]", "clear error", { error: err });
       setAdminMessage(t("rsvp.clearError"));
       setAdminMessageType("error");
+    } finally {
+      deletingRef.current = false;
     }
   }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
