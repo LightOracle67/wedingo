@@ -36,16 +36,14 @@ export function logError(error: unknown, context?: string) {
   
   if (SENTRY_DSN && hasAnalyticsConsent()) {
     try {
-      fetch(SENTRY_DSN, {
-        method: "POST",
-        body: JSON.stringify({
-          message,
-          stack,
-          context,
-          url: location.href,
-          timestamp: new Date().toISOString(),
-        }),
-      }).catch(() => {});
+      // El SDK de Sentry se envía con el formato envelope correcto (el fetch
+      // a un DSN con JSON crudo era inválido y Sentry lo rechazaba siempre).
+      void import("@sentry/react").then((Sentry) => {
+        Sentry.captureException(error instanceof Error ? error : new Error(String(error)), {
+          tags: { context: context || "app" },
+          extra: { url: typeof location !== "undefined" ? location.href : "" },
+        });
+      });
     } catch {}
   }
 }

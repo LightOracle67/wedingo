@@ -75,6 +75,7 @@ const DetailsSection = memo(function DetailsSection({
       a.href = url;
       a.download = "invitacion.ics";
       document.body.appendChild(a);
+      void import("../../lib/analytics").then(({ trackEvent }) => trackEvent("calendar_download"));
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
@@ -160,7 +161,9 @@ const DetailsSection = memo(function DetailsSection({
                     <a className="setup-button setup-button--ghost setup-button--compact" href={weddingSiteURL} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
                       {t("details.viewGoogleMaps")}
                     </a>
-                    <a className="setup-button setup-button--ghost setup-button--compact" href={directionsUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+                    <a className="setup-button setup-button--ghost setup-button--compact" href={directionsUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer" onClick={() => {
+                      void import("../../lib/analytics").then(({ trackEvent }) => trackEvent("directions_click"));
+                    }}>
                       {t("details.directions")}
                     </a>
                   </div>

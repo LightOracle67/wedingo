@@ -45,6 +45,11 @@ vi.mock("react-router", () => ({
   useParams: () => mockUseParams,
 }));
 
+const mockTrackEvent = vi.hoisted(() => vi.fn());
+vi.mock("../../lib/analytics", () => ({
+  trackEvent: (...args: unknown[]) => mockTrackEvent(...args),
+}));
+
 vi.mock("../../contexts", () => ({
   useApp: () => mockUseAppValue,
 }));
@@ -249,6 +254,7 @@ describe("PublicInvitation", () => {
     fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
     act(() => { vi.advanceTimersByTime(3600); });
     expect(screen.queryByLabelText("envelope.tapContinue")).toBeNull();
+    expect(mockTrackEvent).toHaveBeenCalledWith("envelope_open", { method: "click" });
     vi.useRealTimers();
     mockUseAppValue.isAdminTokenLoggedIn = true;
   });

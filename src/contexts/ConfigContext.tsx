@@ -185,6 +185,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
               setHasStoredConfig(true);
               setIsConfigLoading(false);
               loadedTokenRef.current = inviteToken;
+              // Un cache-hit (<2 min) no debe perder ni la visita ni el conteo
+              // de visitas del panel (antes se saltaba con el return).
+              setVisitCount(typeof parsed.data._visits === "number" ? parsed.data._visits : 0);
+              const segments = location.pathname.split("/").filter(Boolean);
+              if (segments.length === 1 && TOKEN_ROUTE_REGEX.test(segments[0]!) && safeGetItem("wedin_cookie_consent") === "accepted") {
+                trackVisit(inviteToken);
+              }
               return;
             } else {
 
@@ -239,8 +246,12 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);
         setHasStoredConfig(true);
         loadedTokenRef.current = inviteToken;
-        const firstSegment = location.pathname.split("/").filter(Boolean)[0] || "";
-        if (TOKEN_ROUTE_REGEX.test(firstSegment) && !["setup", "admin"].includes(firstSegment) && safeGetItem("wedin_cookie_consent") === "accepted") {
+        // Solo la ruta pública exacta /:token cuenta una visita: /A/admin,
+        // /A/setup y /A/print tienen 2 segmentos y no deben sumar (antes el
+        // guard solo miraba el primer segmento y el admin se contaba a sí
+        // mismo).
+        const segments = location.pathname.split("/").filter(Boolean);
+        if (segments.length === 1 && TOKEN_ROUTE_REGEX.test(segments[0]!) && safeGetItem("wedin_cookie_consent") === "accepted") {
           trackVisit(inviteToken);
         }
       } catch (e) {

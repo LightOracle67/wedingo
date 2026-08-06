@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.89.0",
+    date: "2026-08-06",
+    changes: [
+      "VISITAS: solo la ruta pública /:token cuenta una visita (el admin ya no se contaba a sí mismo en /:token/admin) y un cache-hit ya no pierde la visita ni el conteo del panel",
+      "ANALÍTICA: nuevos eventos (abrir el sobre, crear invitación, descargar .ics, cómo llegar) y los errores llegan a Sentry con el formato correcto (antes el fetch al DSN era inválido y se descartaban)",
+    ],
+  },
+  {
     version: "2.88.0",
     date: "2026-08-06",
     changes: [

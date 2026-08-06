@@ -35,6 +35,11 @@ vi.mock("../../lib/firebase", () => ({
   INVITATIONS_COLLECTION_REF: {},
 }));
 
+const mockTrackEvent = vi.hoisted(() => vi.fn());
+vi.mock("../../lib/analytics", () => ({
+  trackEvent: (...args: unknown[]) => mockTrackEvent(...args),
+}));
+
 let mockNormalizeTokenValue = vi.fn((v: string) => v?.trim().toUpperCase().replace(/[^A-Z0-9]/g, "") || "");
 vi.mock("../../lib/token-utils", () => ({
   normalizeTokenValue: (...args: Parameters<typeof mockNormalizeTokenValue>) => mockNormalizeTokenValue(...args),
@@ -129,6 +134,7 @@ describe("LandingPage", () => {
     await vi.waitFor(() => {
       expect(mockNavigate).toHaveBeenCalledWith("/mocked-invite-token/setup");
     });
+    expect(mockTrackEvent).toHaveBeenCalledWith("create_invitation", { method: "landing" });
   });
 
   it("resumes an existing invitation instead of creating a new token", async () => {

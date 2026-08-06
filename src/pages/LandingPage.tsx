@@ -8,6 +8,7 @@ import { db, invitationDocRef } from "../lib/firebase";
 import { normalizeTokenValue, generateSetupToken } from "../lib/token-utils";
 import { generateInviteToken } from "../lib/utils";
 import { createSetupTokenRecord, findInviteBySetupToken, hashSetupToken } from "../lib/setup-token";
+import { trackEvent } from "../lib/analytics";
 import { normalizeConfig } from "../lib/normalize-config";
 import { defaultConfig } from "../lib/constants";
 import { safeSetItem } from "../lib/storage";
@@ -73,6 +74,7 @@ export default function LandingPage() {
       return;
     }
 
+    trackEvent("create_invitation", { method: "landing" });
     navigate(`/${token}/setup`);
   };
 

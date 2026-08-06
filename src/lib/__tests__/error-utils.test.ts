@@ -1,6 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { getFirestoreErrorMessage, logError } from "../error-utils";
 
+const mockCaptureException = vi.hoisted(() => vi.fn());
+vi.mock("@sentry/react", () => ({
+  captureException: (...args: unknown[]) => mockCaptureException(...args),
+}));
+
 describe("getFirestoreErrorMessage", () => {
   it("returns message for known error codes", () => {
     const t = (key: string) => key;
@@ -89,21 +94,19 @@ describe("logError", () => {
   it("sends error to Sentry when SENTRY_DSN is set", async () => {
     vi.resetModules();
     vi.stubEnv("VITE_SENTRY_DSN", "https://sentry.example.com/123");
-    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(() => Promise.resolve(new Response()));
     const { logError: sentryLogError } = await import("../error-utils");
     sentryLogError(new Error("sentry error"), "SentryCtx");
-    expect(fetchSpy).toHaveBeenCalled();
-    fetchSpy.mockRestore();
+    await new Promise((r) => setTimeout(r, 10));
+    expect(mockCaptureException).toHaveBeenCalled();
     vi.unstubAllEnvs();
   });
 
-  it("handles Sentry fetch failure gracefully", async () => {
+  it("handles Sentry capture failure gracefully", async () => {
     vi.resetModules();
     vi.stubEnv("VITE_SENTRY_DSN", "https://sentry.example.com/123");
-    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(() => Promise.reject(new Error("Network fail")));
+    mockCaptureException.mockImplementationOnce(() => { throw new Error("Sentry failed"); });
     const { logError: sentryLogError } = await import("../error-utils");
     expect(() => sentryLogError(new Error("err"))).not.toThrow();
-    fetchSpy.mockRestore();
     vi.unstubAllEnvs();
   });
 

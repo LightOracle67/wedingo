@@ -502,7 +502,11 @@ export default function PublicInvitation() {
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
       style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
-      {showEnvelope ? <EnvelopeOverlay onOpen={() => { ; setEnvelopeOpen(true); }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} inviteToken={inviteToken} /> : null}
+      {showEnvelope ? <EnvelopeOverlay onOpen={() => {
+        setEnvelopeOpen(true);
+        // Apertura del sobre: el gesto principal de la invitación.
+        trackEvent("envelope_open", { method: "click" });
+      }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} inviteToken={inviteToken} /> : null}
 
       {/* Mientras el sobre está cerrado, el contenido trasero queda inerte e
           invisible para lectores de pantalla (WCAG 1.3.2 / 2.4.3). display:

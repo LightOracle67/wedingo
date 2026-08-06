@@ -59,7 +59,15 @@ vi.mock("../components/LegalModal", () => ({
 }));
 
 vi.mock("../components/ChangelogModal", () => ({
-  default: () => <div data-testid="changelog-modal" />,
+  default: ({ onClose }: { onClose?: () => void }) => (
+    <div data-testid="changelog-modal"><button onClick={onClose}>close</button></div>
+  ),
+}));
+
+vi.mock("../components/DataRequestModal", () => ({
+  default: ({ onClose }: { onClose?: () => void }) => (
+    <div data-testid="data-request-modal"><button onClick={onClose}>close</button></div>
+  ),
 }));
 
 vi.mock("../components/Fireflies", () => ({
@@ -529,6 +537,26 @@ describe("App", () => {
     expect(versionBtn).toBeDefined();
     fireEvent.click(versionBtn!);
     expect(await screen.findByTestId("changelog-modal")).toBeDefined();
+    // Cerrar el changelog cubre su onClose (arrow del AppShell).
+    fireEvent.click(screen.getByRole("button", { name: "close" }));
+    await vi.waitFor(() => expect(screen.queryByTestId("changelog-modal")).toBeNull());
+  });
+
+  it("opens and closes the data request modal from the footer", async () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const footerButtons = document.querySelectorAll(".app-footer__link");
+    const dataBtn = Array.from(footerButtons).find((b) => b.textContent === "public.dataRequest");
+    expect(dataBtn).toBeDefined();
+    fireEvent.click(dataBtn!);
+    expect(await screen.findByTestId("data-request-modal")).toBeDefined();
+    fireEvent.click(screen.getByRole("button", { name: "close" }));
+    await vi.waitFor(() => expect(screen.queryByTestId("data-request-modal")).toBeNull());
   });
 
   it("renders a11y trigger in admin mode", () => {
