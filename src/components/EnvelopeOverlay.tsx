@@ -4,7 +4,7 @@ import { useFocusTrap } from "../hooks/useFocusTrap";
 import { randomMessage } from "../lib/invite-messages";
 import "../styles/envelope.css";
 
-const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secondName, customSeal }: { onOpen: () => void; firstName: string; secondName: string; customSeal?: string | undefined }) {
+const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secondName, customSeal, inviteToken }: { onOpen: () => void; firstName: string; secondName: string; customSeal?: string | undefined; inviteToken?: string | undefined }) {
 
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -18,7 +18,18 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
     return () => { ; document.body.style.overflow = ""; };
   }, []);
 
-  const message = useMemo(() => randomMessage(i18n.language), [i18n.language]);
+  // Mensaje fijo por invitación (sessionStorage), mismo que usa la página de
+  // impresión: el sobre y el PDF muestran el mismo texto.
+  const message = useMemo(() => {
+    const key = `wedin_print_msg_${inviteToken || ""}_${i18n.language || "es"}`;
+    try {
+      const stored = sessionStorage.getItem(key);
+      if (stored) return stored;
+    } catch { /* almacenamiento no disponible */ }
+    const raw = randomMessage(i18n.language ?? "es") ?? "";
+    try { sessionStorage.setItem(key, raw); } catch { /* noop */ }
+    return raw;
+  }, [i18n.language, inviteToken]);
 
   // Trampa de foco: mientras el sobre está cerrado, el teclado no puede
   // salir del overlay (el contenido trasero está inerte en la página).

@@ -2275,8 +2275,6 @@ a:focus-visible {
   .story-eyebrow { font-size: clamp(1.2rem, 5.4vw, 1.5rem) !important; }
   .story-copy { font-size: clamp(0.95rem, 3.5vw, 1rem) !important; }
   .story-section { padding: 0.5rem !important; }
-  .gallery-main-container { width: 96%; padding: 0.4rem; }
-  .gallery-thumb { width: 1.8rem; height: 1.8rem; }
   .admin-table-wrapper { overflow-x: auto; }
   .admin-table { font-size: 0.7rem !important; }
   .upload-grid { grid-template-columns: 1fr; }

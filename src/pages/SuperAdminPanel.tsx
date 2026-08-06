@@ -1,5 +1,5 @@
 import { lazy, useState } from "react";
-import { Navigate } from "react-router";
+import { Navigate, useSearchParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useSuperAdmin } from "../contexts/SuperAdminContext";
 import { SUPERADMIN_ROUTE } from "../lib/superadmin";
@@ -34,7 +34,17 @@ const TABS = [
 export default function SuperAdminPanel() {
   const { t } = useTranslation();
   const { isSuperAdmin, isLoading } = useSuperAdmin();
-  const [activeTab, setActiveTab] = useState("dashboard");
+  // La pestaña activa se refleja en la URL (?tab=datos) para poder enlazarla.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tabParam = searchParams.get("tab");
+  const [activeTab, setActiveTab] = useState<string>(
+    TABS.some((tab) => tab.key === tabParam) ? (tabParam as string) : "dashboard",
+  );
+
+  const handleSetTab = (key: string) => {
+    setActiveTab(key);
+    setSearchParams(key === "dashboard" ? {} : { tab: key }, { replace: true });
+  };
 
   if (isLoading) {
     return (
@@ -75,7 +85,7 @@ export default function SuperAdminPanel() {
               aria-selected={activeTab === tab.key}
               aria-controls={"sadm-tabpanel-" + tab.key}
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
-              onClick={() => setActiveTab(tab.key)}
+              onClick={() => handleSetTab(tab.key)}
             >
               {t(`superadmin.tabs.${TAB_KEY_MAP[tab.key as keyof typeof TAB_KEY_MAP]}`)}
             </button>

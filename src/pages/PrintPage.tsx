@@ -30,7 +30,7 @@ export default function PrintPage() {
   // PDF imprimido sea estable y coincida con el del sobre. Un mensaje
   // aleatorio por carga generaba PDFs distintos en cada impresión.
   const message = useMemo(() => {
-    const key = `wedin_print_msg_${inviteToken || ""}`;
+    const key = `wedin_print_msg_${inviteToken || ""}_${i18n.language || "es"}`;
     try {
       const stored = sessionStorage.getItem(key);
       if (stored) return stored;

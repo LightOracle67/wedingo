@@ -7,9 +7,18 @@ vi.mock("react-i18next", () => ({
   initReactI18next: { type: "3rdParty", init: () => {} },
 }));
 
-vi.mock("react-router", () => ({
-  Navigate: ({ to }: { to: string }) => <div>Redirect to {to}</div>,
-}));
+vi.mock("react-router", () => {
+  let params = new URLSearchParams("");
+  return {
+    Navigate: ({ to }: { to: string }) => <div>Redirect to {to}</div>,
+    useSearchParams: () => {
+      const set = (next: unknown, _opts?: unknown) => {
+        params = next instanceof URLSearchParams ? next : new URLSearchParams(String(next ?? ""));
+      };
+      return [params, set];
+    },
+  };
+});
 
 const mockUseSuperAdmin = vi.fn();
 vi.mock("../../contexts/SuperAdminContext", () => ({

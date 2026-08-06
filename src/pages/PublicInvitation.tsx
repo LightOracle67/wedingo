@@ -205,7 +205,11 @@ export default function PublicInvitation() {
     if (!weddingDate) return;
     let id: ReturnType<typeof setInterval> | null = null;
     const tick = () => {
-      setCountdown(computeCountdown(weddingDate, new Date()));
+      const next = computeCountdown(weddingDate, new Date());
+      setCountdown(next);
+      // Una vez expirado se detiene el intervalo (no re-renderizar el hero
+      // cada segundo para siempre).
+      if (next.expired && id) { clearInterval(id); id = null; }
     };
     tick();
     if (reducedMotion) return;
@@ -396,7 +400,11 @@ export default function PublicInvitation() {
 
   // ─── Estados de UI condicionales ───────────────────────
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
-  const isEmpty = !config.firstName && !config.secondName && !isInviteMode;
+  // La invitación está "configurada" si tiene nombres. Con ?invitar y un
+  // token vacío/borrado debe mostrarse el estado no encontrado (antes caía
+  // al render completo con un hero sin nombres).
+  const isConfigured = Boolean(config.firstName || config.secondName);
+  const isEmpty = !isConfigured && !inviteToken && !isInviteMode;
   const hasHash = location.hash.length > 1;
 
   /**
@@ -464,7 +472,7 @@ export default function PublicInvitation() {
   }
 
   /** ¿Mostrar pantalla de token no encontrado o invitación vacía? */
-  const showMissingToken = isEmpty && !hasHash && (Boolean(inviteToken) || isInviteMode);
+  const showMissingToken = !isConfigured && !hasHash && (Boolean(inviteToken) || isInviteMode);
 
   // ═══════════════════════════════════════════════════════
   // RENDERIZADO PRINCIPAL
@@ -474,7 +482,7 @@ export default function PublicInvitation() {
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
       style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
-      {showEnvelope ? <EnvelopeOverlay onOpen={() => { ; setEnvelopeOpen(true); }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} /> : null}
+      {showEnvelope ? <EnvelopeOverlay onOpen={() => { ; setEnvelopeOpen(true); }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} inviteToken={inviteToken} /> : null}
 
       {/* Mientras el sobre está cerrado, el contenido trasero queda inerte e
           invisible para lectores de pantalla (WCAG 1.3.2 / 2.4.3). display:
@@ -519,7 +527,7 @@ export default function PublicInvitation() {
               {t("public.emptyDescription")}
             </p>
             <div className="flex flex-wrap justify-center gap-3 mt-8">
-              <a href="/setup" className="text-sm setup-button">
+              <a href="/" className="text-sm setup-button">
                 {t("public.createLink")}
               </a>
             </div>

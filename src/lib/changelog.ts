@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.73.0",
+    date: "2026-08-06",
+    changes: [
+      "PRODUCTO: volumen del reproductor sincronizado con el slider, cuenta atrás que se detiene al expirar, enlace 'Crear' corregido y estado 'no encontrado' con ?invitar",
+      "SUPERADMIN: la pestaña activa se refleja en la URL (?tab=), errores de login persistentes inline e idioma del panel en Ajustes",
+      "ACCESIBILIDAD: grupos de niños/código de vestimenta con fieldset/legend, contraste del tema champagne, ids con prefijo en el acceso y RTL del panel",
+      "GALERÍA: objetivos de toque de 44px unificados, las fotos llenan el marco (object-fit cover) y el contador con más contraste",
+      "E2E: corregido el test del CTA (buscaba la clave i18n en lugar del texto real)",
+    ],
+  },
+  {
     version: "2.72.0",
     date: "2026-08-06",
     changes: [

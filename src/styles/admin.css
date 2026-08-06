@@ -296,7 +296,7 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
   all: unset;
   flex: 1;
   cursor: pointer;
-  text-align: left;
+  text-align: start;
 }
 .setup-collapsible__summary-text {
   display: inline-flex;
@@ -369,7 +369,7 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 .setup-collapsible__vis-toggle:hover {
   background: var(--setup-accent);
@@ -527,7 +527,7 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
   border-radius: var(--radius-xl);
   background: color-mix(in srgb, var(--setup-field-bg) 84%, transparent);
   color: var(--setup-title);
-  text-align: left;
+  text-align: start;
   cursor: pointer;
   transition:
     transform 180ms ease,
@@ -622,7 +622,7 @@ select.setup-input {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23fdf8ec' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
-  padding-right: 2rem;
+  padding-inline-end: 2rem;
   cursor: pointer;
   height: auto;
   line-height: 1.4;
@@ -906,7 +906,7 @@ select.setup-input {
   font-size: 0.92rem;
 }
 .admin-table th {
-  text-align: left;
+  text-align: start;
   padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(0.5rem, 1.5vw, 0.85rem);
   color: var(--setup-muted);
   font-weight: 700;
@@ -1203,7 +1203,7 @@ select.setup-input {
   border-radius: 0.75rem;
   background: color-mix(in srgb, var(--setup-field-bg) 50%, transparent);
   cursor: pointer;
-  text-align: left;
+  text-align: start;
   transition: background 180ms, border-color 180ms, box-shadow 180ms;
   font-family: inherit;
 }
@@ -1457,7 +1457,7 @@ select.setup-input {
 }
 .data-tab-th {
   padding: 0.5rem 0.6rem;
-  text-align: left;
+  text-align: start;
   font-weight: 600;
   font-size: 0.78rem;
   color: var(--setup-title);
@@ -1531,7 +1531,7 @@ select.setup-input {
 .setup-search-result {
   display: block;
   width: 100%;
-  text-align: left;
+  text-align: start;
   padding: 0.5rem 0.6rem;
   border: none;
   border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 50%, transparent);
@@ -1722,4 +1722,16 @@ select.setup-input {
 }
 .animate-card-reveal {
   animation: card-reveal 400ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Fieldset de opciones exclusivas (kids/dress code): sin borde por defecto,
+   el legend actúa como etiqueta del grupo. */
+.setup-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.setup-fieldset legend {
+  padding: 0;
+  margin-bottom: 0.25rem;
 }

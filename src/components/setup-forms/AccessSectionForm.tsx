@@ -48,9 +48,9 @@ export default function AccessSectionForm({ prefix = "", tokenAcknowledged = fal
         maxLength={50}
         required
         aria-required="true"
-        aria-describedby="usernameHelp"
+        aria-describedby={id("usernameHelp")}
       />
-      <p className="setup-help" id="usernameHelp">
+      <p className="setup-help" id={id("usernameHelp")}>
         {t("setup.usernameHint")}
       </p>
 
@@ -71,7 +71,7 @@ export default function AccessSectionForm({ prefix = "", tokenAcknowledged = fal
               readOnly
               disabled
               style={{ flex: 1, fontFamily: "monospace", letterSpacing: "0.05em", userSelect: "all" }}
-              aria-describedby="setupTokenHint"
+              aria-describedby={id("setupTokenHint")}
               autoComplete="off"
             />
             <button
@@ -95,7 +95,7 @@ export default function AccessSectionForm({ prefix = "", tokenAcknowledged = fal
               {t("common.copy")}
             </button>
           </div>
-          <p className="setup-help" id="setupTokenHint">
+          <p className="setup-help" id={id("setupTokenHint")}>
             {t("setup.tokenFieldHint")}
           </p>
           {/* Aviso de acceso único: el token es irrecuperable si se pierde. */}

@@ -3,6 +3,7 @@ import { useSuperAdmin } from "../../contexts/SuperAdminContext";
 import { SUPERADMIN_EMAIL } from "../../lib/superadmin";
 import { getSession, clearSession } from "../../lib/sessionVars";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../../components/LanguageSwitcher";
 
 const SettingsTab = memo(function SettingsTab() {
   const { t, i18n } = useTranslation();
@@ -65,6 +66,14 @@ const SettingsTab = memo(function SettingsTab() {
         >
           {t("superadmin.firebaseLink")}
         </a>
+      </div>
+
+      {/* Idioma del panel (los 100 idiomas también aplican al superadmin). */}
+      <div style={{ marginTop: "2rem", borderTop: "1px solid var(--setup-border)", paddingTop: "1rem" }}>
+        <p className="setup-label" style={{ fontSize: "0.9rem", marginBottom: "0.5rem" }}>
+          {t("settings.languageLabel")}
+        </p>
+        <LanguageSwitcher />
       </div>
     </div>
   );

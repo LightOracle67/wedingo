@@ -22,8 +22,9 @@ test.describe("App Shell", () => {
     await expect(page.locator('[data-testid="not-found-page"]')).toBeVisible();
   });
 
-  test("landing shows the create CTA", async ({ page }) => {
+  test("landing shows the create CTA button", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByText("landing.createInvitation").first()).toBeVisible();
+    // La etiqueta traducida es "Crear tu invitación"; se busca el botón por rol.
+    await expect(page.getByRole("button", { name: /invitaci|invitation/i }).first()).toBeVisible();
   });
 });

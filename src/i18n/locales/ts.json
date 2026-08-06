@@ -940,5 +940,8 @@
     "title": "Página no encontrada",
     "text": "La página que buscas no existe o el enlace es incorrecto.",
     "homeLink": "Volver al inicio"
+  },
+  "settings": {
+    "languageLabel": "Idioma del panel"
   }
 }

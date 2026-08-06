@@ -30,38 +30,42 @@ export default function GuestsSectionForm({ prefix = "" }) {
 
   return (
     <>
-      <p className="setup-label">{t("setup.kidsLabel")}</p>
-      <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
-        {[
-          { value: "playArea", key: "kidsPolicy.options.playArea" },
-          { value: "supervised", key: "kidsPolicy.options.supervised" },
-          { value: "adultOnly", key: "kidsPolicy.options.adultOnly" },
-        ].map(({ value, key }) => (
-          <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
-            <input id={id("kids-" + value)} type="checkbox" checked={formData.kidsPolicy === value} onChange={handleKidsPolicyChange} value={value} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-            {t(key)}
-          </label>
-        ))}
-      </div>
+      <fieldset className="setup-fieldset">
+        <legend className="setup-label">{t("setup.kidsLabel")}</legend>
+        <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
+          {[
+            { value: "playArea", key: "kidsPolicy.options.playArea" },
+            { value: "supervised", key: "kidsPolicy.options.supervised" },
+            { value: "adultOnly", key: "kidsPolicy.options.adultOnly" },
+          ].map(({ value, key }) => (
+            <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
+              <input id={id("kids-" + value)} type="checkbox" checked={formData.kidsPolicy === value} onChange={handleKidsPolicyChange} value={value} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+              {t(key)}
+            </label>
+          ))}
+        </div>
+      </fieldset>
       <p className="setup-help" id={id("kidsHint")}>{t("setup.kidsHint")}</p>
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
-      <p className="setup-label">{t("setup.dressCodeLabel")}</p>
-      <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
-        {[
-          { value: "Traje de gala", key: "setup.dressCodeGala" },
-          { value: "Etiqueta informal", key: "setup.dressCodeCasual" },
-          { value: "Vestimenta formal", key: "setup.dressCodeFormal" },
-          { value: "Cóctel elegante", key: "setup.dressCodeCocktail" },
-          { value: "Ropa cómoda", key: "setup.dressCodeComfortable" },
-          { value: "Otro", key: "setup.dressCodeOther" },
-        ].map(({ value, key }) => (
-          <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
-            <input id={id("dressCode-" + value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-"))} type="checkbox" checked={formData.weddingDressCode === value} onChange={() => handleDressCodeChange(value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-            {t(key)}
-          </label>
-        ))}
-      </div>
+      <fieldset className="setup-fieldset">
+        <legend className="setup-label">{t("setup.dressCodeLabel")}</legend>
+        <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
+          {[
+            { value: "Traje de gala", key: "setup.dressCodeGala" },
+            { value: "Etiqueta informal", key: "setup.dressCodeCasual" },
+            { value: "Vestimenta formal", key: "setup.dressCodeFormal" },
+            { value: "Cóctel elegante", key: "setup.dressCodeCocktail" },
+            { value: "Ropa cómoda", key: "setup.dressCodeComfortable" },
+            { value: "Otro", key: "setup.dressCodeOther" },
+          ].map(({ value, key }) => (
+            <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
+              <input id={id("dressCode-" + value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-"))} type="checkbox" checked={formData.weddingDressCode === value} onChange={() => handleDressCodeChange(value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+              {t(key)}
+            </label>
+          ))}
+        </div>
+      </fieldset>
       {formData.weddingDressCode === "Otro" ? (
         <div className="setup-field" style={{ marginTop: "0.6rem" }}>
           <label className="setup-label" htmlFor={id("dressCodeCustom")}>{t("setup.dressCodeCustomLabel")}</label>

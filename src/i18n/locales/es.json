@@ -1081,7 +1081,8 @@
     "apology": "Disculpa las molestias: no disponemos de transporte propio para este evento, por lo que te pedimos que llegues con tu coche particular."
   },
   "settings": {
-    "menuChangeConfirm": "Hay {{count}} confirmaciones con menú. ¿Seguro que quieres cambiar el menú?"
+    "menuChangeConfirm": "Hay {{count}} confirmaciones con menú. ¿Seguro que quieres cambiar el menú?",
+    "languageLabel": "Idioma del panel"
   },
   "map": {
     "embedTitle": "Mapa de la ubicación",

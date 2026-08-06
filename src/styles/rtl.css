@@ -86,3 +86,10 @@
 /* Accessibility panel RTL */
 [dir="rtl"] .a11y-label { text-align: right; }
 [dir="rtl"] .a11y-section { text-align: right; }
+
+/* Selector del admin en RTL: la flecha se ancla a la izquierda. */
+[dir="rtl"] .setup-input[type="select"],
+[dir="rtl"] select.setup-input {
+  background-position: left 0.75rem center;
+  text-align: right;
+}

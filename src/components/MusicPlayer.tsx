@@ -52,6 +52,12 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: { musicUrl?: string 
     };
   }, [musicUrl]);
 
+  // Sincroniza el volumen del elemento <audio> con el slider (antes el audio
+  // sonaba a 1.0 aunque el slider mostrara 0.5 hasta tocar el control).
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.volume = volume;
+  }, [volume, musicUrl]);
+
   const handleVolume = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const v = Number(e.target.value);
     setVolume(v);
