@@ -70,7 +70,6 @@
     "placePending": "ສະຖານທີ່ສະຫຼອງຈະປາກົດຢູ່ບ່ອນນີ້.",
     "welcomeWithTime": "ພວກເຮົາລໍຖ້າທ່ານເພື່ອແບ່ງປັນຊ່ວງເວລາພິເສດນີ້. ພວກເຮົາເລີ່ມເວລາ {{time}}. ດ້ານລຸ່ມທ່ານຈະເຫັນແຜນທີ່ສະຖານທີ່.",
     "welcomeWithoutTime": "ພວກເຮົາລໍຖ້າທ່ານເພື່ອແບ່ງປັນຊ່ວງເວລາພິເສດນີ້. ດ້ານລຸ່ມທ່ານຈະເຫັນແຜນທີ່ສະຖານທີ່.",
-    "transport": "ການຂົນສົ່ງ",
     "addToCalendar": "ເພີ່ມໃສ່ປະຕິທິນ",
     "viewGoogleMaps": "ເບິ່ງໃນ Google Maps",
     "viewAppleMaps": "ເບິ່ງໃນ Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "ຊີ້ນ",
     "menuPescado": "ປາ",
     "menuVegano": "ຜັກ/ມັງສະວິລັດ",
-    "postre": "ຂອງຫວານ",
     "menuLabel": "ລາຍການອາຫານ",
     "allergiesLegend": "ອາການແພ້ ແລະ ການບໍ່ທົນທານ",
     "allergiesPlaceholder": "ອາການແພ້ອື່ນໆ (ລະບຸ)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "ອາຫານ",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "ເບິ່ງການເຊີນ",
-    "logout": "ອອກຈາກລະບົບ"
+    "viewInvitation": "ເບິ່ງການເຊີນ"
   },
   "panel": {
     "confirmed": "ຢືນຢັນແລ້ວ",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "ຊອກຫາຕາມຊື່...",
     "all": "ທັງໝົດ",
     "confirmed": "ຢືນຢັນແລ້ວ",
-    "notAttending": "ບໍ່ມາ",
     "statsLine": "{{yes}} ຢືນຢັນ · {{no}} ປະຕິເສດ · {{companions}} ຜູ້ຕິດຕາມ · {{diet}} ມີອາຫານພິເສດ",
     "dietarySummary": "ຄວາມມັກດ້ານອາຫານ ({{count}})",
     "tableName": "ຊື່",
@@ -610,7 +606,6 @@
     "sessionActive": "ເຄື່ອນໄຫວ",
     "sessionInactive": "ບໍ່ເຄື່ອນໄຫວ",
     "sessionLabel": "ເຊດຊັນທ້ອງຖິ່ນ: {{status}}",
-    "sessionType": "ປະເພດ: {{type}}",
     "sessionTypeSuperadmin": "ຜູ້ດູແລສູງສຸດ",
     "sessionTypeSetup": "ການຕັ້ງຄ່າ",
     "sessionTypeAdmin": "ຜູ້ດູແລ",

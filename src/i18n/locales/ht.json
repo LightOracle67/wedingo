@@ -70,7 +70,6 @@
     "placePending": "Kote selebrasyon an ap parèt isit.",
     "welcomeWithTime": "Nou ap tann ou pou pataje moman espesyal sa a. Nou kòmanse a {{time}}. Pi ba ou ap jwenn kat jewografik la.",
     "welcomeWithoutTime": "Nou ap tann ou pou pataje moman espesyal sa a. Pi ba ou ap jwenn kat jewografik la.",
-    "transport": "Transpò",
     "addToCalendar": "Ajoute nan kalandriye a",
     "viewGoogleMaps": "Gade nan Google Maps",
     "viewAppleMaps": "Gade nan Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Vyann",
     "menuPescado": "Pwason",
     "menuVegano": "Vegan/Vejetaryen",
-    "postre": "Desè",
     "menuLabel": "Meni",
     "allergiesLegend": "Alèji ak entolerans",
     "allergiesPlaceholder": "Lòt alèji (presize)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Rejim",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Gade envitasyon an",
-    "logout": "Dekonekte"
+    "viewInvitation": "Gade envitasyon an"
   },
   "panel": {
     "confirmed": "Konfime",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Chèche pa non...",
     "all": "Tout",
     "confirmed": "Konfime",
-    "notAttending": "Pa vini",
     "statsLine": "{{yes}} konfime · {{no}} dekline · {{companions}} konpayon · {{diet}} ak rejim espesyal",
     "dietarySummary": "Preferans alimantè ({{count}})",
     "tableName": "Non",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktif",
     "sessionInactive": "Inaktif",
     "sessionLabel": "Sesyon lokal: {{status}}",
-    "sessionType": "Tip: {{type}}",
     "sessionTypeSuperadmin": "Sipèadministratè",
     "sessionTypeSetup": "Konfigirasyon",
     "sessionTypeAdmin": "Admin",

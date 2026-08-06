@@ -70,7 +70,6 @@
     "placePending": "Ebe emume ga-apụta ebe a.",
     "welcomeWithTime": "Anyị na-echere gị ikere òkè n'oge pụrụ iche a. Anyị ga-amalite n'elekere {{time}}. N'okpuru, ị ga-ahụ map ọnọdụ.",
     "welcomeWithoutTime": "Anyị na-echere gị ikere òkè n'oge pụrụ iche a. N'okpuru, ị ga-ahụ map ọnọdụ.",
-    "transport": "Ụgbọ njem",
     "addToCalendar": "Tinye na kalenda",
     "viewGoogleMaps": "Lelee na Google Maps",
     "viewAppleMaps": "Lelee na Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Anụ",
     "menuPescado": "Azụ",
     "menuVegano": "Vegan/Onye anaghị eri anụ",
-    "postre": "Ihe ụtọ",
     "menuLabel": "Nri",
     "allergiesLegend": "Ihe nfụkasị na enweghị ndidi",
     "allergiesPlaceholder": "Ihe nfụkasị ọzọ (kọwaa)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Nri",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Lelee akwụkwọ ịkpọ òkù",
-    "logout": "Wepụ"
+    "viewInvitation": "Lelee akwụkwọ ịkpọ òkù"
   },
   "panel": {
     "confirmed": "Ndị ekwenyere",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Chọọ site n'aha...",
     "all": "Niile",
     "confirmed": "Ndị ekwenyere",
-    "notAttending": "Agaghị abịa",
     "statsLine": "{{yes}} na-ekwenye · {{no}} na-ajụ · {{companions}} ndị so · {{diet}} nwere nri pụrụ iche",
     "dietarySummary": "Mmasị nri ({{count}})",
     "tableName": "Aha",
@@ -610,7 +606,6 @@
     "sessionActive": "Na-arụ ọrụ",
     "sessionInactive": "Anaghị arụ ọrụ",
     "sessionLabel": "Oge ọrụ mpaghara: {{status}}",
-    "sessionType": "Ụdị: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Nhazi",
     "sessionTypeAdmin": "Admin",

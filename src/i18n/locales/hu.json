@@ -70,7 +70,6 @@
     "placePending": "Az ünnepség helyszíne itt jelenik meg.",
     "welcomeWithTime": "Szeretettel várunk, hogy megosszuk veled ezt a különleges pillanatot. {{time}}-kor kezdünk. Lent találod a helyszín térképét.",
     "welcomeWithoutTime": "Szeretettel várunk, hogy megosszuk veled ezt a különleges pillanatot. Lent találod a helyszín térképét.",
-    "transport": "Közlekedés",
     "addToCalendar": "Hozzáadás a naptárhoz",
     "viewGoogleMaps": "Megtekintés Google Maps-en",
     "viewAppleMaps": "Megtekintés Apple Maps-en",
@@ -131,7 +130,6 @@
     "menuCarne": "Hús",
     "menuPescado": "Hal",
     "menuVegano": "Vegán/Vega",
-    "postre": "Desszert",
     "menuLabel": "Menü",
     "allergiesLegend": "Allergiák és intoleranciák",
     "allergiesPlaceholder": "Egyéb allergia (pontosítsd)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Étrend",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Meghívó megtekintése",
-    "logout": "Jelentkezzen ki"
+    "viewInvitation": "Meghívó megtekintése"
   },
   "panel": {
     "confirmed": "Visszaigazolt",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Keresés név alapján...",
     "all": "Összes",
     "confirmed": "Visszaigazolt",
-    "notAttending": "Nem vesz részt",
     "statsLine": "{{yes}} visszaigazol · {{no}} elutasít · {{companions}} kísérő · {{diet}} speciális étrenddel",
     "dietarySummary": "Étrendi preferenciák ({{count}})",
     "tableName": "Név",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktív",
     "sessionInactive": "Inaktív",
     "sessionLabel": "Helyi munkamenet: {{status}}",
-    "sessionType": "Típus: {{type}}",
     "sessionTypeSuperadmin": "Szuperadmin",
     "sessionTypeSetup": "Beállítás",
     "sessionTypeAdmin": "Admin",

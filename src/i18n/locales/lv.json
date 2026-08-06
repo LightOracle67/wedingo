@@ -70,7 +70,6 @@
     "placePending": "Svinību vieta tiks rādīta šeit.",
     "welcomeWithTime": "Gaidām jūs, lai dalītos šajā īpašajā brīdī. Sākam pulksten {{time}}. Zemāk atradīsiet atrašanās vietas karti.",
     "welcomeWithoutTime": "Gaidām jūs, lai dalītos šajā īpašajā brīdī. Zemāk atradīsiet atrašanās vietas karti.",
-    "transport": "Transports",
     "addToCalendar": "Pievienot kalendāram",
     "viewGoogleMaps": "Skatīt Google Maps",
     "viewAppleMaps": "Skatīt Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Gaļa",
     "menuPescado": "Zivs",
     "menuVegano": "Vegānisks/Veģetārs",
-    "postre": "Deserts",
     "menuLabel": "Ēdienkarte",
     "allergiesLegend": "Alerģijas un nepanesības",
     "allergiesPlaceholder": "Cita alerģija (precizējiet)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Diēta",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Skatīt ielūgumu",
-    "logout": "Atteikties"
+    "viewInvitation": "Skatīt ielūgumu"
   },
   "panel": {
     "confirmed": "Apstiprināts",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Meklēt pēc vārda...",
     "all": "Visi",
     "confirmed": "Apstiprināts",
-    "notAttending": "Neapmeklē",
     "statsLine": "{{yes}} apstiprina · {{no}} atsakās · {{companions}} pavadoņi · {{diet}} ar īpašu diētu",
     "dietarySummary": "Uztura izvēles ({{count}})",
     "tableName": "Vārds",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktīva",
     "sessionInactive": "Neaktīva",
     "sessionLabel": "Lokālā sesija: {{status}}",
-    "sessionType": "Tips: {{type}}",
     "sessionTypeSuperadmin": "Superadmins",
     "sessionTypeSetup": "Iestatīšana",
     "sessionTypeAdmin": "Administrators",

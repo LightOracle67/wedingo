@@ -5,6 +5,8 @@ const mockGetDocs = vi.fn();
 const mockDoc = vi.fn();
 const mockUpdateDoc = vi.fn();
 const mockWriteBatch = vi.fn();
+const mockDeleteDoc = vi.fn();
+const mockHashSetupToken = vi.fn((t: string) => Promise.resolve(`hash-${t}`));
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -18,6 +20,11 @@ vi.mock("firebase/firestore", () => ({
   query: vi.fn(() => "query-ref"),
   where: vi.fn(() => "where-ref"),
   writeBatch: (...args: unknown[]) => mockWriteBatch(...args),
+  deleteDoc: (...args: unknown[]) => mockDeleteDoc(...args),
+}));
+
+vi.mock("../../../lib/setup-token", () => ({
+  hashSetupToken: (...args: Parameters<typeof mockHashSetupToken>) => mockHashSetupToken(...args),
 }));
 
 vi.mock("../../../lib/firebase", () => ({
@@ -93,6 +100,9 @@ describe("TokensTab", () => {
     expect(mockConfirm).toHaveBeenCalled();
     await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalledWith("doc-ref", { _activeSetupToken: "" }));
     await vi.waitFor(() => expect(screen.getByText("superadmin.tokenRevoked")).toBeInTheDocument());
+    // La revocación también elimina el registro setupTokens/{hash} (token migrado).
+    expect(mockHashSetupToken).toHaveBeenCalledWith("token1");
+    expect(mockDeleteDoc).toHaveBeenCalled();
   });
 
   it("does not revoke if confirm is cancelled", async () => {

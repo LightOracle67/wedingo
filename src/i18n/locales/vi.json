@@ -70,7 +70,6 @@
     "placePending": "Địa điểm tổ chức sẽ hiển thị ở đây.",
     "welcomeWithTime": "Chúng tôi mong đợi bạn đến chia sẻ khoảnh khắc đặc biệt này. Bắt đầu lúc {{time}}. Bên dưới bạn sẽ tìm thấy bản đồ.",
     "welcomeWithoutTime": "Chúng tôi mong đợi bạn đến chia sẻ khoảnh khắc đặc biệt này. Bên dưới bạn sẽ tìm thấy bản đồ.",
-    "transport": "Phương tiện",
     "addToCalendar": "Thêm vào lịch",
     "viewGoogleMaps": "Xem trên Google Maps",
     "viewAppleMaps": "Xem trên Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Thịt",
     "menuPescado": "Cá",
     "menuVegano": "Thuần chay/Chay",
-    "postre": "Tráng miệng",
     "menuLabel": "Thực đơn",
     "allergiesLegend": "Dị ứng và không dung nạp",
     "allergiesPlaceholder": "Dị ứng khác (ghi rõ)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Ăn uống",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Quản trị viên",
-    "viewInvitation": "Xem lời mời",
-    "logout": "Đăng xuất"
+    "viewInvitation": "Xem lời mời"
   },
   "panel": {
     "confirmed": "Đã xác nhận",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Tìm theo tên...",
     "all": "Tất cả",
     "confirmed": "Đã xác nhận",
-    "notAttending": "Không tham dự",
     "statsLine": "{{yes}} xác nhận · {{no}} từ chối · {{companions}} người đi cùng · {{diet}} ăn kiêng đặc biệt",
     "dietarySummary": "Sở thích ăn uống ({{count}})",
     "tableName": "Tên",
@@ -610,7 +606,6 @@
     "sessionActive": "Hoạt động",
     "sessionInactive": "Không hoạt động",
     "sessionLabel": "Phiên cục bộ: {{status}}",
-    "sessionType": "Loại: {{type}}",
     "sessionTypeSuperadmin": "Quản trị viên",
     "sessionTypeSetup": "Thiết lập",
     "sessionTypeAdmin": "Quản trị",

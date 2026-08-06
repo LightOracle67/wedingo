@@ -70,7 +70,6 @@
     "placePending": "கொண்டாட்ட இடம் இங்கே தோன்றும்.",
     "welcomeWithTime": "இந்த சிறப்பான தருணத்தை உங்களுடன் பகிர்ந்து கொள்ள நாங்கள் காத்திருக்கிறோம். நாங்கள் {{time}} மணிக்குத் தொடங்குகிறோம். கீழே இருப்பிட வரைபடத்தைக் காண்பீர்கள்.",
     "welcomeWithoutTime": "இந்த சிறப்பான தருணத்தை உங்களுடன் பகிர்ந்து கொள்ள நாங்கள் காத்திருக்கிறோம். கீழே இருப்பிட வரைபடத்தைக் காண்பீர்கள்.",
-    "transport": "போக்குவரத்து",
     "addToCalendar": "நாட்காட்டியில் சேர்க்கவும்",
     "viewGoogleMaps": "Google Maps இல் காண்க",
     "viewAppleMaps": "Apple Maps இல் காண்க",
@@ -131,7 +130,6 @@
     "menuCarne": "இறைச்சி",
     "menuPescado": "மீன்",
     "menuVegano": "வீகன்/சைவம்",
-    "postre": "இனிப்பு",
     "menuLabel": "உணவுப் பட்டியல்",
     "allergiesLegend": "ஒவ்வாமை மற்றும் சகிப்புத்தன்மையின்மை",
     "allergiesPlaceholder": "பிற ஒவ்வாமை (குறிப்பிடவும்)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "உணவு",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · நிர்வாகம்",
-    "viewInvitation": "அழைப்பிதழைப் பார்க்கவும்",
-    "logout": "வெளியேறு"
+    "viewInvitation": "அழைப்பிதழைப் பார்க்கவும்"
   },
   "panel": {
     "confirmed": "உறுதிப்படுத்தப்பட்டது",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "பெயரால் தேடவும்...",
     "all": "அனைத்தும்",
     "confirmed": "உறுதிப்படுத்தப்பட்டது",
-    "notAttending": "கலந்துகொள்ளவில்லை",
     "statsLine": "{{yes}} உறுதிப்படுத்துகின்றனர் · {{no}} நிராகரிக்கின்றனர் · {{companions}} துணையாளர்கள் · {{diet}} சிறப்பு உணவுடன்",
     "dietarySummary": "உணவு விருப்பங்கள் ({{count}})",
     "tableName": "பெயர்",
@@ -610,7 +606,6 @@
     "sessionActive": "செயலில்",
     "sessionInactive": "செயலற்றது",
     "sessionLabel": "உள்ளூர் அமர்வு: {{status}}",
-    "sessionType": "வகை: {{type}}",
     "sessionTypeSuperadmin": "சூப்பர் அட்மின்",
     "sessionTypeSetup": "அமைவு",
     "sessionTypeAdmin": "அட்மின்",

@@ -70,7 +70,6 @@
     "placePending": "Die lokaal sal hier verskyn.",
     "welcomeWithTime": "Ons sien uit daarna om hierdie spesiale oomblik met jou te deel. ",
     "welcomeWithoutTime": "Ons sien uit daarna om hierdie spesiale oomblik met jou te deel. ",
-    "transport": "Vervoer",
     "addToCalendar": "Voeg by kalender",
     "viewGoogleMaps": "Maak oop in Google Maps",
     "viewAppleMaps": "Maak oop in Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Vleis",
     "menuPescado": "Vis",
     "menuVegano": "Vegan/vegetaries",
-    "postre": "Nagereg",
     "menuLabel": "Spyskaart",
     "allergiesLegend": "Allergieë en onverdraagsaamhede",
     "allergiesPlaceholder": "Ander allergieë (spesifiseer)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Dieet",
     "sectionsLabel": "Seksies",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Bekyk uitnodiging",
-    "logout": "Teken uit"
+    "viewInvitation": "Bekyk uitnodiging"
   },
   "panel": {
     "confirmed": "Bevestig",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Soek op naam...",
     "all": "Almal",
     "confirmed": "Bevestig",
-    "notAttending": "Nie bywoon nie",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "Dieetvoorkeure ({{count}})",
     "tableName": "Naam",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktief",
     "sessionInactive": "Onaktief",
     "sessionLabel": "Plaaslike sessie: {{status}}",
-    "sessionType": "Tipe: {{tipe}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Opstelling",
     "sessionTypeAdmin": "Admin",

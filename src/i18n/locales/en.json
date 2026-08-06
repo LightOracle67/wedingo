@@ -75,7 +75,6 @@
     "timeLabel": "The ceremony will begin at {{time}} h.",
     "timePending": "Time to be confirmed",
     "placePending": "The venue will appear here.",
-    "transport": "Transport",
     "addToCalendar": "Add to calendar",
     "viewGoogleMaps": "Open in Google Maps",
     "locationLabel": "Location",
@@ -138,7 +137,6 @@
     "menuCarne": "Meat",
     "menuPescado": "Fish",
     "menuVegano": "Vegan/Vegetarian",
-    "postre": "Dessert",
     "menuLabel": "Menu",
     "allergiesLegend": "Allergies & intolerances",
     "allergiesPlaceholder": "Other allergy (specify)",
@@ -188,7 +186,6 @@
     "birthDateHint": "Only needed to know if you are under 14 years old.",
     "transportLabel": "Transport",
     "transportHint": "Choose how you will get to the celebration.",
-    "transportOwnCar": "Own car",
     "transportOwnCarOption": "I'll use my own car",
     "transportBusOption": "I'll take the bus",
     "transportTaxiOption": "Or I'll take a taxi",
@@ -436,7 +433,9 @@
     "galleryMoveLeft": "Move left",
     "galleryMoveRight": "Move right",
     "instagramLabel": "Couple Instagram (optional)",
-    "facebookLabel": "Couple Facebook (optional)"
+    "facebookLabel": "Couple Facebook (optional)",
+    "successKeepToken": "Save your access code: it is your only way back in.",
+    "tokenCopied": "Code copied."
   },
   "admin": {
     "tabs": {
@@ -461,7 +460,6 @@
     "pdfTableCompanions": "Comp.",
     "pdfTableDiet": "Diet",
     "sectionsLabel": "Sections",
-    "logout": "Log out",
     "editorAriaLabel": "Invitation editor"
   },
   "panel": {
@@ -492,7 +490,6 @@
   "attendance": {
     "searchLabel": "Search by name",
     "all": "All",
-    "notAttending": "Not attending",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "tableName": "Name",
     "tableAttendance": "Attendance",
@@ -750,7 +747,6 @@
     "sessionActive": "Active",
     "sessionInactive": "Inactive",
     "sessionLabel": "Local session: {{status}}",
-    "sessionType": "Type: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Setup",
     "sessionTypeAdmin": "Admin",
@@ -937,8 +933,6 @@
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
     "minute_other": "{{count}} minutes",
-    "hours": "{{count}}h",
-    "minutes": "{{count}}min",
     "second_one": "{{count}} second",
     "second_other": "{{count}} seconds"
   },

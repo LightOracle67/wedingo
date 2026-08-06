@@ -70,7 +70,6 @@
     "placePending": "Ahantu h'ibirori hazagaragara hano.",
     "welcomeWithTime": "Turakuziye kugira ngo dusangire iki gihe cyihariye. Turatangira saa {{time}}. Hasi uzabona ikarita y'ahantu.",
     "welcomeWithoutTime": "Turakuziye kugira ngo dusangire iki gihe cyihariye. Hasi uzabona ikarita y'ahantu.",
-    "transport": "Ubwikorezi",
     "addToCalendar": "Ongera kuri kalendari",
     "viewGoogleMaps": "Reba kuri Google Maps",
     "viewAppleMaps": "Reba kuri Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Inyama",
     "menuPescado": "Amafi",
     "menuVegano": "Vegan/Ibikomoka ku bimera",
-    "postre": "Ubutayu",
     "menuLabel": "Meni",
     "allergiesLegend": "Ibiteye allergie no kudashobora kwihanganira",
     "allergiesPlaceholder": "Ikindi kintu giteye allergie (sobanura)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Indyo",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Umuyobozi",
-    "viewInvitation": "Reba ubutumire",
-    "logout": "Sohoka"
+    "viewInvitation": "Reba ubutumire"
   },
   "panel": {
     "confirmed": "Byemewe",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Shakisha ukoresheje izina...",
     "all": "Byose",
     "confirmed": "Byemewe",
-    "notAttending": "Ntibazahaba",
     "statsLine": "{{yes}} bemeza · {{no}} bega · {{companions}} abaherekeza · {{diet}} bafite indyo yihariye",
     "dietarySummary": "Ibyifuzo by'indyo ({{count}})",
     "tableName": "Izina",
@@ -610,7 +606,6 @@
     "sessionActive": "Irakora",
     "sessionInactive": "Ntikora",
     "sessionLabel": "Isesiyo y'ahantu: {{status}}",
-    "sessionType": "Ubwoko: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Igenamiterere",
     "sessionTypeAdmin": "Umuyobozi",

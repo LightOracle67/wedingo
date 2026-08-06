@@ -70,7 +70,6 @@
     "placePending": "വേദി ഇവിടെ ദൃശ്യമാകും.",
     "welcomeWithTime": "ഈ പ്രത്യേക നിമിഷം നിങ്ങളുമായി പങ്കിടാൻ ഞങ്ങൾ കാത്തിരിക്കുകയാണ്. ",
     "welcomeWithoutTime": "ഈ പ്രത്യേക നിമിഷം നിങ്ങളുമായി പങ്കിടാൻ ഞങ്ങൾ കാത്തിരിക്കുകയാണ്. ",
-    "transport": "ഗതാഗതം",
     "addToCalendar": "കലണ്ടറിലേക്ക് ചേർക്കുക",
     "viewGoogleMaps": "Google Maps-ൽ തുറക്കുക",
     "viewAppleMaps": "Apple Maps-ൽ തുറക്കുക",
@@ -131,7 +130,6 @@
     "menuCarne": "മാംസം",
     "menuPescado": "മത്സ്യം",
     "menuVegano": "വെഗൻ/വെജിറ്റേറിയൻ",
-    "postre": "പലഹാരം",
     "menuLabel": "മെനു",
     "allergiesLegend": "അലർജികളും അസഹിഷ്ണുതകളും",
     "allergiesPlaceholder": "മറ്റ് അലർജികൾ (വ്യക്തമാക്കുക)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "ഭക്ഷണക്രമം",
     "sectionsLabel": "വിഭാഗങ്ങൾ",
     "barTitle": "Wedingo · അഡ്മിൻ",
-    "viewInvitation": "ക്ഷണം കാണുക",
-    "logout": "പുറത്തുകടക്കുക"
+    "viewInvitation": "ക്ഷണം കാണുക"
   },
   "panel": {
     "confirmed": "സ്ഥിരീകരിച്ചു",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "പേര് പ്രകാരം തിരയുക...",
     "all": "എല്ലാം",
     "confirmed": "സ്ഥിരീകരിച്ചു",
-    "notAttending": "പങ്കെടുക്കുന്നില്ല",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "ഭക്ഷണ മുൻഗണനകൾ ({{count}})",
     "tableName": "പേര്",
@@ -610,7 +606,6 @@
     "sessionActive": "സജീവമാണ്",
     "sessionInactive": "നിഷ്ക്രിയം",
     "sessionLabel": "പ്രാദേശിക സെഷൻ: {{status}}",
-    "sessionType": "തരം: {{type}}",
     "sessionTypeSuperadmin": "സൂപ്പർഅഡ്മിൻ",
     "sessionTypeSetup": "സജ്ജമാക്കുക",
     "sessionTypeAdmin": "അഡ്മിൻ",

@@ -70,7 +70,6 @@
     "placePending": "Tempat majlis akan dipaparkan di sini.",
     "welcomeWithTime": "Kami menantikan kehadiran anda untuk berkongsi detik istimewa ini. Kami bermula pada pukul {{time}}. Peta lokasi ada di bawah.",
     "welcomeWithoutTime": "Kami menantikan kehadiran anda untuk berkongsi detik istimewa ini. Peta lokasi ada di bawah.",
-    "transport": "Pengangkutan",
     "addToCalendar": "Tambah ke kalendar",
     "viewGoogleMaps": "Lihat di Google Maps",
     "viewAppleMaps": "Lihat di Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Daging",
     "menuPescado": "Ikan",
     "menuVegano": "Vegan/Vegetarian",
-    "postre": "Pencuci mulut",
     "menuLabel": "Menu",
     "allergiesLegend": "Alahan dan intoleransi",
     "allergiesPlaceholder": "Alahan lain (nyatakan)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Diet",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Pentadbir",
-    "viewInvitation": "Lihat jemputan",
-    "logout": "Log keluar"
+    "viewInvitation": "Lihat jemputan"
   },
   "panel": {
     "confirmed": "Disahkan",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Cari mengikut nama...",
     "all": "Semua",
     "confirmed": "Disahkan",
-    "notAttending": "Tidak hadir",
     "statsLine": "{{yes}} mengesahkan · {{no}} menolak · {{companions}} teman · {{diet}} dengan diet khas",
     "dietarySummary": "Keutamaan pemakanan ({{count}})",
     "tableName": "Nama",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktif",
     "sessionInactive": "Tidak aktif",
     "sessionLabel": "Sesi tempatan: {{status}}",
-    "sessionType": "Jenis: {{type}}",
     "sessionTypeSuperadmin": "Pentadbir utama",
     "sessionTypeSetup": "Persediaan",
     "sessionTypeAdmin": "Pentadbir",

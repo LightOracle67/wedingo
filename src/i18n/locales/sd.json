@@ -70,7 +70,6 @@
     "placePending": "جڳهه هتي ظاهر ٿيندي.",
     "welcomeWithTime": "اسان توهان سان هن خاص لمحن کي حصيداري ڪرڻ جا منتظر آهيون. ",
     "welcomeWithoutTime": "اسان توهان سان هن خاص لمحن کي حصيداري ڪرڻ جا منتظر آهيون. ",
-    "transport": "ٽرانسپورٽ",
     "addToCalendar": "ڪئلينڊر ۾ شامل ڪريو",
     "viewGoogleMaps": "Google Maps ۾ کوليو",
     "viewAppleMaps": "Apple Maps ۾ کوليو",
@@ -131,7 +130,6 @@
     "menuCarne": "گوشت",
     "menuPescado": "مڇي",
     "menuVegano": "ويگن / سبزي",
-    "postre": "مٺاڻ",
     "menuLabel": "مينيو",
     "allergiesLegend": "الرجي ۽ عدم برداشت",
     "allergiesPlaceholder": "ٻيون الرجي (واضح ڪريو)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "غذا",
     "sectionsLabel": "حصا",
     "barTitle": "Wedingo · منتظم",
-    "viewInvitation": "دعوت ڏسو",
-    "logout": "لاگ آئوٽ"
+    "viewInvitation": "دعوت ڏسو"
   },
   "panel": {
     "confirmed": "تصديق ٿيل",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "نالي سان ڳولھيو...",
     "all": "سڀ",
     "confirmed": "تصديق ٿيل",
-    "notAttending": "شرڪت نه ڪرڻ",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "غذائي ترجيحات ({{count}})",
     "tableName": "نالو",
@@ -610,7 +606,6 @@
     "sessionActive": "چالو",
     "sessionInactive": "غير فعال",
     "sessionLabel": "مقامي سيشن: {{status}}",
-    "sessionType": "قسم: {{قسم}}",
     "sessionTypeSuperadmin": "سپر ايڊمن",
     "sessionTypeSetup": "سيٽ اپ ڪريو",
     "sessionTypeAdmin": "ايڊمن",

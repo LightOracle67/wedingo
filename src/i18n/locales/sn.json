@@ -70,7 +70,6 @@
     "placePending": "Nzvimbo yacho ichaonekwa pano.",
     "welcomeWithTime": "Tinotarisira kugovera nguva iyi yakakosha newe. ",
     "welcomeWithoutTime": "Tinotarisira kugovera nguva iyi yakakosha newe. ",
-    "transport": "Transport",
     "addToCalendar": "Wedzera kukarenda",
     "viewGoogleMaps": "Vhura muGoogle Mepu",
     "viewAppleMaps": "Vhura muApple Mepu",
@@ -131,7 +130,6 @@
     "menuCarne": "Nyama",
     "menuPescado": "Hove",
     "menuVegano": "Vegan/Vegetarian",
-    "postre": "Dessert",
     "menuLabel": "Menu",
     "allergiesLegend": "Allergy & kusashivirira",
     "allergiesPlaceholder": "Mamwe allergy (taura)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Diet",
     "sectionsLabel": "Zvikamu",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Ona kukoka",
-    "logout": "Log out"
+    "viewInvitation": "Ona kukoka"
   },
   "panel": {
     "confirmed": "Yakasimbiswa",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Tsvaga nezita...",
     "all": "Zvose",
     "confirmed": "Yakasimbiswa",
-    "notAttending": "Kusapinda",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "Zvekudya zvaunofarira ({{count}})",
     "tableName": "Zita",
@@ -610,7 +606,6 @@
     "sessionActive": "Active",
     "sessionInactive": "Kusashanda",
     "sessionLabel": "Chirongwa chemunzvimbo: {{status}}",
-    "sessionType": "Type: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Gadzirira",
     "sessionTypeAdmin": "Admin",

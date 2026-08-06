@@ -70,7 +70,6 @@
     "placePending": "สถานที่จัดงานจะปรากฏที่นี่",
     "welcomeWithTime": "เราหวังว่าจะได้พบคุณเพื่อร่วมแบ่งปันช่วงเวลาพิเศษนี้ เริ่มงานเวลา {{time}} ด้านล่างนี้คุณจะพบแผนที่",
     "welcomeWithoutTime": "เราหวังว่าจะได้พบคุณเพื่อร่วมแบ่งปันช่วงเวลาพิเศษนี้ ด้านล่างนี้คุณจะพบแผนที่",
-    "transport": "การเดินทาง",
     "addToCalendar": "เพิ่มลงในปฏิทิน",
     "viewGoogleMaps": "ดูใน Google Maps",
     "viewAppleMaps": "ดูใน Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "เนื้อ",
     "menuPescado": "ปลา",
     "menuVegano": "วีแกน/มังสวิรัติ",
-    "postre": "ของหวาน",
     "menuLabel": "เมนู",
     "allergiesLegend": "อาการแพ้และการแพ้อาหาร",
     "allergiesPlaceholder": "อาการแพ้อื่นๆ (ระบุ)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "อาหาร",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · ผู้ดูแลระบบ",
-    "viewInvitation": "ดูคำเชิญ",
-    "logout": "ออกจากระบบ"
+    "viewInvitation": "ดูคำเชิญ"
   },
   "panel": {
     "confirmed": "ยืนยันแล้ว",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "ค้นหาตามชื่อ...",
     "all": "ทั้งหมด",
     "confirmed": "ยืนยันแล้ว",
-    "notAttending": "ไม่เข้าร่วม",
     "statsLine": "{{yes}} ยืนยัน · {{no}} ปฏิเสธ · {{companions}} ผู้ติดตาม · {{diet}} อาหารพิเศษ",
     "dietarySummary": "ความชอบด้านอาหาร ({{count}})",
     "tableName": "ชื่อ",
@@ -610,7 +606,6 @@
     "sessionActive": "ใช้งานอยู่",
     "sessionInactive": "ไม่ใช้งาน",
     "sessionLabel": "เซสชันท้องถิ่น: {{status}}",
-    "sessionType": "ประเภท: {{type}}",
     "sessionTypeSuperadmin": "ผู้ดูแลระบบสูงสุด",
     "sessionTypeSetup": "ตั้งค่า",
     "sessionTypeAdmin": "ผู้ดูแลระบบ",

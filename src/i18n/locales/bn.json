@@ -70,7 +70,6 @@
     "placePending": "অনুষ্ঠানের স্থান এখানে প্রদর্শিত হবে।",
     "welcomeWithTime": "এই বিশেষ মুহূর্তটি ভাগ করে নিতে আমরা আপনাকে অপেক্ষা করছি। শুরু {{time}} টায়। নিচে অবস্থানের মানচিত্র পাবেন।",
     "welcomeWithoutTime": "এই বিশেষ মুহূর্তটি ভাগ করে নিতে আমরা আপনাকে অপেক্ষা করছি। নিচে অবস্থানের মানচিত্র পাবেন।",
-    "transport": "পরিবহন",
     "addToCalendar": "ক্যালেন্ডারে যোগ করুন",
     "viewGoogleMaps": "Google Maps-এ দেখুন",
     "viewAppleMaps": "Apple Maps-এ দেখুন",
@@ -131,7 +130,6 @@
     "menuCarne": "মাংস",
     "menuPescado": "মাছ",
     "menuVegano": "ভেগান/নিরামিষ",
-    "postre": "ডেজার্ট",
     "menuLabel": "মেনু",
     "allergiesLegend": "অ্যালার্জি ও অসহিষ্ণুতা",
     "allergiesPlaceholder": "অন্যান্য অ্যালার্জি (উল্লেখ করুন)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "খাদ্য",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · অ্যাডমিন",
-    "viewInvitation": "আমন্ত্রণ দেখুন",
-    "logout": "লগ আউট করুন"
+    "viewInvitation": "আমন্ত্রণ দেখুন"
   },
   "panel": {
     "confirmed": "নিশ্চিত করেছেন",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "নাম দ্বারা অনুসন্ধান...",
     "all": "সব",
     "confirmed": "নিশ্চিত করেছেন",
-    "notAttending": "আসছেন না",
     "statsLine": "{{yes}} নিশ্চিত করেছেন · {{no}} প্রত্যাখ্যান করেছেন · {{companions}} জন সঙ্গী · {{diet}} বিশেষ খাদ্য",
     "dietarySummary": "খাদ্য পছন্দ ({{count}})",
     "tableName": "নাম",
@@ -610,7 +606,6 @@
     "sessionActive": "সক্রিয়",
     "sessionInactive": "নিষ্ক্রিয়",
     "sessionLabel": "স্থানীয় সেশন: {{status}}",
-    "sessionType": "ধরন: {{type}}",
     "sessionTypeSuperadmin": "সুপারঅ্যাডমিন",
     "sessionTypeSetup": "সেটআপ",
     "sessionTypeAdmin": "অ্যাডমিন",

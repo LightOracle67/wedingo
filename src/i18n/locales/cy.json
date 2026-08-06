@@ -70,7 +70,6 @@
     "placePending": "Bydd lleoliad y dathliad yn ymddangos yma.",
     "welcomeWithTime": "Rydym yn eich disgwyl i rannu'r foment arbennig hon. Rydym yn dechrau am {{time}}. Isod fe welwch y map lleoliad.",
     "welcomeWithoutTime": "Rydym yn eich disgwyl i rannu'r foment arbennig hon. Isod fe welwch y map lleoliad.",
-    "transport": "Cludiant",
     "addToCalendar": "Ychwanegu at y calendr",
     "viewGoogleMaps": "Gweld yn Google Maps",
     "viewAppleMaps": "Gweld yn Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Cig",
     "menuPescado": "Pysgod",
     "menuVegano": "Fegan/Llysieuol",
-    "postre": "Pwdin",
     "menuLabel": "Bwydlen",
     "allergiesLegend": "Alergeddau ac anoddefiadau",
     "allergiesPlaceholder": "Alergedd arall (manylu)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Deiet",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Gweinyddol",
-    "viewInvitation": "Gweld gwahoddiad",
-    "logout": "Allgofnodi"
+    "viewInvitation": "Gweld gwahoddiad"
   },
   "panel": {
     "confirmed": "Wedi'u cadarnhau",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Chwilio yn ôl enw...",
     "all": "Pawb",
     "confirmed": "Wedi'u cadarnhau",
-    "notAttending": "Ddim yn bresennol",
     "statsLine": "{{yes}} yn cadarnhau · {{no}} yn gwrthod · {{companions}} cydymaith · {{diet}} gyda deiet arbennig",
     "dietarySummary": "Dewisiadau bwyd ({{count}})",
     "tableName": "Enw",
@@ -610,7 +606,6 @@
     "sessionActive": "Gweithredol",
     "sessionInactive": "Anweithredol",
     "sessionLabel": "Sesiwn leol: {{status}}",
-    "sessionType": "Math: {{type}}",
     "sessionTypeSuperadmin": "Uwch-weinyddwr",
     "sessionTypeSetup": "Gosod",
     "sessionTypeAdmin": "Gweinyddwr",

@@ -70,7 +70,6 @@
     "placePending": "Vendi i festës do të shfaqet këtu.",
     "welcomeWithTime": "Të presim për të ndarë këtë moment kaq të veçantë. Fillojmë në orën {{time}}. Më poshtë do të gjesh hartën e vendndodhjes.",
     "welcomeWithoutTime": "Të presim për të ndarë këtë moment kaq të veçantë. Më poshtë do të gjesh hartën e vendndodhjes.",
-    "transport": "Transporti",
     "addToCalendar": "Shto në kalendar",
     "viewGoogleMaps": "Shiko në Google Maps",
     "viewAppleMaps": "Shiko në Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Mish",
     "menuPescado": "Peshk",
     "menuVegano": "Vegan/Vegjetarian",
-    "postre": "Ëmbëlsirë",
     "menuLabel": "Menuja",
     "allergiesLegend": "Alergjitë dhe intolerancat",
     "allergiesPlaceholder": "Alergji tjetër (specifiko)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Shikoni ftesën",
-    "logout": "Dilni"
+    "viewInvitation": "Shikoni ftesën"
   },
   "panel": {
     "confirmed": "Të konfirmuar",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Kërko sipas emrit...",
     "all": "Të gjithë",
     "confirmed": "Të konfirmuar",
-    "notAttending": "Nuk marrin pjesë",
     "statsLine": "{{yes}} konfirmojnë · {{no}} refuzojnë · {{companions}} shoqërues · {{diet}} me dietë të veçantë",
     "dietarySummary": "Preferenca ushqimore ({{count}})",
     "tableName": "Emri",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktive",
     "sessionInactive": "Jo aktive",
     "sessionLabel": "Sesion lokal: {{status}}",
-    "sessionType": "Tipi: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Konfigurim",
     "sessionTypeAdmin": "Admin",

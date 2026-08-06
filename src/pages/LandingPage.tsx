@@ -249,7 +249,7 @@ export default function LandingPage() {
             {t("landing.description")}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <button type="button" className="setup-button text-sm" onClick={handleCreate} disabled={creating} aria-busy={creating}>
+            <button type="button" className="setup-button text-sm" onClick={handleCreate} disabled={creating} aria-busy={creating} data-testid="create-invitation-btn">
               {creating ? t("common.loading") : t("landing.createInvitation")}
             </button>
             <button type="button" className="setup-button setup-button--ghost text-sm" onClick={openModal}>

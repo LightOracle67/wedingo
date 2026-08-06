@@ -70,7 +70,6 @@
     "placePending": "ਸਥਾਨ ਇੱਥੇ ਦਿਖਾਈ ਦੇਵੇਗਾ।",
     "welcomeWithTime": "ਅਸੀਂ ਤੁਹਾਡੇ ਨਾਲ ਇਸ ਖਾਸ ਪਲ ਨੂੰ ਸਾਂਝਾ ਕਰਨ ਦੀ ਉਮੀਦ ਕਰਦੇ ਹਾਂ। ",
     "welcomeWithoutTime": "ਅਸੀਂ ਤੁਹਾਡੇ ਨਾਲ ਇਸ ਖਾਸ ਪਲ ਨੂੰ ਸਾਂਝਾ ਕਰਨ ਦੀ ਉਮੀਦ ਕਰਦੇ ਹਾਂ। ",
-    "transport": "ਆਵਾਜਾਈ",
     "addToCalendar": "ਕੈਲੰਡਰ ਵਿੱਚ ਸ਼ਾਮਲ ਕਰੋ",
     "viewGoogleMaps": "Google Maps ਵਿੱਚ ਖੋਲ੍ਹੋ",
     "viewAppleMaps": "Apple Maps ਵਿੱਚ ਖੋਲ੍ਹੋ",
@@ -131,7 +130,6 @@
     "menuCarne": "ਮੀਟ",
     "menuPescado": "ਮੱਛੀ",
     "menuVegano": "ਸ਼ਾਕਾਹਾਰੀ/ਸ਼ਾਕਾਹਾਰੀ",
-    "postre": "ਮਿਠਆਈ",
     "menuLabel": "ਮੀਨੂ",
     "allergiesLegend": "ਐਲਰਜੀ ਅਤੇ ਅਸਹਿਣਸ਼ੀਲਤਾ",
     "allergiesPlaceholder": "ਹੋਰ ਐਲਰਜੀ (ਨਿਰਧਾਰਤ ਕਰੋ)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "ਖੁਰਾਕ",
     "sectionsLabel": "ਸੈਕਸ਼ਨ",
     "barTitle": "ਵੈਡਿੰਗੋ · ਪ੍ਰਸ਼ਾਸਕ",
-    "viewInvitation": "ਸੱਦਾ ਵੇਖੋ",
-    "logout": "ਲੌਗ ਆਊਟ ਕਰੋ"
+    "viewInvitation": "ਸੱਦਾ ਵੇਖੋ"
   },
   "panel": {
     "confirmed": "ਪੁਸ਼ਟੀ ਕੀਤੀ",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "ਨਾਮ ਦੁਆਰਾ ਖੋਜੋ...",
     "all": "ਸਾਰੇ",
     "confirmed": "ਪੁਸ਼ਟੀ ਕੀਤੀ",
-    "notAttending": "ਹਾਜ਼ਰ ਨਹੀਂ ਹੋ ਰਿਹਾ",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "ਖੁਰਾਕ ਸੰਬੰਧੀ ਤਰਜੀਹਾਂ ({{count}})",
     "tableName": "ਨਾਮ",
@@ -610,7 +606,6 @@
     "sessionActive": "ਕਿਰਿਆਸ਼ੀਲ",
     "sessionInactive": "ਅਕਿਰਿਆਸ਼ੀਲ",
     "sessionLabel": "ਸਥਾਨਕ ਸੈਸ਼ਨ: {{status}}",
-    "sessionType": "ਕਿਸਮ: {{type}}",
     "sessionTypeSuperadmin": "ਸੁਪਰ ਐਡਮਿਨ",
     "sessionTypeSetup": "ਸਥਾਪਨਾ ਕਰਨਾ",
     "sessionTypeAdmin": "ਐਡਮਿਨ",

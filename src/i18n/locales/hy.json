@@ -70,7 +70,6 @@
     "placePending": "Տոնակատարության վայրը կհայտնվի այստեղ։",
     "welcomeWithTime": "Սպասում ենք ձեզ՝ կիսելու այս առանձնահատուկ պահը։ Սկսում ենք ժամը {{time}}-ին։ Ներքևում կգտնեք տեղանքի քարտեզը։",
     "welcomeWithoutTime": "Սպասում ենք ձեզ՝ կիսելու այս առանձնահատուկ պահը։ Ներքևում կգտնեք տեղանքի քարտեզը։",
-    "transport": "Տրանսպորտ",
     "addToCalendar": "Ավելացնել օրացույցին",
     "viewGoogleMaps": "Դիտել Google Maps-ում",
     "viewAppleMaps": "Դիտել Apple Maps-ում",
@@ -131,7 +130,6 @@
     "menuCarne": "Միս",
     "menuPescado": "Ձուկ",
     "menuVegano": "Վեգան/Բուսակեր",
-    "postre": "Աղանդեր",
     "menuLabel": "Ճաշացանկ",
     "allergiesLegend": "Ալերգիաներ և անհանդուրժողականություններ",
     "allergiesPlaceholder": "Այլ ալերգիա (նշեք)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Սննդակարգ",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Ադմին",
-    "viewInvitation": "Դիտել հրավերը",
-    "logout": "Դուրս գալ"
+    "viewInvitation": "Դիտել հրավերը"
   },
   "panel": {
     "confirmed": "Հաստատված",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Որոնել ըստ անվան...",
     "all": "Բոլորը",
     "confirmed": "Հաստատված",
-    "notAttending": "Չեն մասնակցում",
     "statsLine": "{{yes}} հաստատում է · {{no}} մերժում է · {{companions}} ուղեկցող · {{diet}} հատուկ սննդակարգով",
     "dietarySummary": "Սննդային նախընտրություններ ({{count}})",
     "tableName": "Անուն",
@@ -610,7 +606,6 @@
     "sessionActive": "Ակտիվ",
     "sessionInactive": "Ոչ ակտիվ",
     "sessionLabel": "Լոկալ սեսիա՝ {{status}}",
-    "sessionType": "Տեսակ՝ {{type}}",
     "sessionTypeSuperadmin": "Սուպերադմին",
     "sessionTypeSetup": "Կարգավորում",
     "sessionTypeAdmin": "Ադմին",

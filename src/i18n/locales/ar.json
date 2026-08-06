@@ -70,7 +70,6 @@
     "placePending": "سيظهر مكان الاحتفال هنا.",
     "welcomeWithTime": "ننتظرك لمشاركة هذه اللحظة المميزة. نبدأ الساعة {{time}}. ستجد خريطة الموقع أدناه.",
     "welcomeWithoutTime": "ننتظرك لمشاركة هذه اللحظة المميزة. ستجد خريطة الموقع أدناه.",
-    "transport": "وسائل النقل",
     "addToCalendar": "أضف إلى التقويم",
     "viewGoogleMaps": "عرض في خرائط Google",
     "viewAppleMaps": "عرض في خرائط Apple",
@@ -131,7 +130,6 @@
     "menuCarne": "لحم",
     "menuPescado": "سمك",
     "menuVegano": "نباتي",
-    "postre": "حلوى",
     "menuLabel": "القائمة",
     "allergiesLegend": "الحساسية وعدم التحمل",
     "allergiesPlaceholder": "حساسية أخرى (حدد)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "النظام الغذائي",
     "sectionsLabel": "Secciones",
     "barTitle": "ويدينغو · المشرف",
-    "viewInvitation": "عرض الدعوة",
-    "logout": "تسجيل الخروج"
+    "viewInvitation": "عرض الدعوة"
   },
   "panel": {
     "confirmed": "مؤكدون",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "البحث بالاسم...",
     "all": "الكل",
     "confirmed": "مؤكدون",
-    "notAttending": "لا يحضرون",
     "statsLine": "{{yes}} يؤكدون · {{no}} يعتذرون · {{companions}} مرافقين · {{diet}} بنظام غذائي خاص",
     "dietarySummary": "التفضيلات الغذائية ({{count}})",
     "tableName": "الاسم",
@@ -610,7 +606,6 @@
     "sessionActive": "نشطة",
     "sessionInactive": "غير نشطة",
     "sessionLabel": "الجلسة المحلية: {{status}}",
-    "sessionType": "النوع: {{type}}",
     "sessionTypeSuperadmin": "مشرف عام",
     "sessionTypeSetup": "إعداد",
     "sessionTypeAdmin": "مشرف",

@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.85.0",
+    date: "2026-08-06",
+    changes: [
+      "SUPERADMIN: un token migrado ya se puede revocar (antes el registro setupTokens quedaba válido para siempre) y el e2e del CTA es estable (testid en vez de regex por idioma)",
+      "ONBOARDING: la tarjeta de éxito recuerda el código de acceso con botón de copiar (antes desaparecía tras el primer guardado y era irrecuperable)",
+      "LIMPIEZA: eliminadas 8 claves i18n huérfanas de los 100 idiomas",
+    ],
+  },
+  {
     version: "2.84.0",
     date: "2026-08-06",
     changes: [

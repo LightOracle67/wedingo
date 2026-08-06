@@ -70,7 +70,6 @@
     "placePending": "Malo adzawonekera apa.",
     "welcomeWithTime": "Tikuyembekezera kugawana nanu nthawi yapaderayi. ",
     "welcomeWithoutTime": "Tikuyembekezera kugawana nanu nthawi yapaderayi. ",
-    "transport": "Transport",
     "addToCalendar": "Onjezani ku kalendala",
     "viewGoogleMaps": "Tsegulani mu Google Maps",
     "viewAppleMaps": "Tsegulani mu Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Nyama",
     "menuPescado": "Nsomba",
     "menuVegano": "Zamasamba / Zamasamba",
-    "postre": "Msuzi",
     "menuLabel": "Menyu",
     "allergiesLegend": "Matupi ndi kusalolera",
     "allergiesPlaceholder": "Matenda ena (tchulani)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Zakudya",
     "sectionsLabel": "Magawo",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Onani kuyitanidwa",
-    "logout": "Tulukani"
+    "viewInvitation": "Onani kuyitanidwa"
   },
   "panel": {
     "confirmed": "Zatsimikiziridwa",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Sakani ndi dzina...",
     "all": "Zonse",
     "confirmed": "Zatsimikiziridwa",
-    "notAttending": "Osapezekapo",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "Zakudya zokonda ({{count}})",
     "tableName": "Dzina",
@@ -610,7 +606,6 @@
     "sessionActive": "Yogwira",
     "sessionInactive": "Osagwira ntchito",
     "sessionLabel": "Gawo lapafupi: {{status}}",
-    "sessionType": "Mtundu: {{mtundu}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Khazikitsa",
     "sessionTypeAdmin": "Admin",

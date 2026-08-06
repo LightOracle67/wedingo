@@ -70,7 +70,6 @@
     "placePending": "Ο χώρος της δεξίωσης θα εμφανιστεί εδώ.",
     "welcomeWithTime": "Σας περιμένουμε για να μοιραστούμε αυτή την ξεχωριστή στιγμή. Ξεκινάμε στις {{time}}. Παρακάτω θα βρείτε τον χάρτη τοποθεσίας.",
     "welcomeWithoutTime": "Σας περιμένουμε για να μοιραστούμε αυτή την ξεχωριστή στιγμή. Παρακάτω θα βρείτε τον χάρτη τοποθεσίας.",
-    "transport": "Μεταφορά",
     "addToCalendar": "Προσθήκη στο ημερολόγιο",
     "viewGoogleMaps": "Προβολή στους Χάρτες Google",
     "viewAppleMaps": "Προβολή στους Χάρτες Apple",
@@ -131,7 +130,6 @@
     "menuCarne": "Κρέας",
     "menuPescado": "Ψάρι",
     "menuVegano": "Χορτοφαγικό/Αυστηρά χορτοφαγικό",
-    "postre": "Γλυκό",
     "menuLabel": "Μενού",
     "allergiesLegend": "Αλλεργίες και δυσανεξίες",
     "allergiesPlaceholder": "Άλλη αλλεργία (διευκρινίστε)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Διατροφή",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Διαχειρ",
-    "viewInvitation": "Δείτε την πρόσκληση",
-    "logout": "Αποσυνδεθείτε"
+    "viewInvitation": "Δείτε την πρόσκληση"
   },
   "panel": {
     "confirmed": "Επιβεβαιωμένοι",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Αναζήτηση με όνομα...",
     "all": "Όλοι",
     "confirmed": "Επιβεβαιωμένοι",
-    "notAttending": "Δεν παρευρίσκονται",
     "statsLine": "{{yes}} επιβεβαιώνουν · {{no}} αρνούνται · {{companions}} συνοδοί · {{diet}} με ειδική διατροφή",
     "dietarySummary": "Διατροφικές προτιμήσεις ({{count}})",
     "tableName": "Όνομα",
@@ -610,7 +606,6 @@
     "sessionActive": "Ενεργή",
     "sessionInactive": "Ανενεργή",
     "sessionLabel": "Τοπική συνεδρία: {{status}}",
-    "sessionType": "Τύπος: {{type}}",
     "sessionTypeSuperadmin": "Υπερδιαχειριστής",
     "sessionTypeSetup": "Ρύθμιση",
     "sessionTypeAdmin": "Διαχειριστής",

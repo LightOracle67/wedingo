@@ -70,7 +70,6 @@
     "placePending": "式の場所はここに表示されます。",
     "welcomeWithTime": "この特別なひとときを皆さまと共有できることを楽しみにしています。{{time}}に開始します。以下に場所の地図があります。",
     "welcomeWithoutTime": "この特別なひとときを皆さまと共有できることを楽しみにしています。以下に場所の地図があります。",
-    "transport": "交通手段",
     "addToCalendar": "カレンダーに追加",
     "viewGoogleMaps": "Googleマップで見る",
     "viewAppleMaps": "Appleマップで見る",
@@ -131,7 +130,6 @@
     "menuCarne": "肉料理",
     "menuPescado": "魚料理",
     "menuVegano": "ベジタリアン／ビーガン",
-    "postre": "デザート",
     "menuLabel": "メニュー",
     "allergiesLegend": "アレルギー・不耐性",
     "allergiesPlaceholder": "その他のアレルギー（具体的に）",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "食事",
     "sectionsLabel": "Secciones",
     "barTitle": "ウェディンゴ · 管理者",
-    "viewInvitation": "招待状を見る",
-    "logout": "ログアウト"
+    "viewInvitation": "招待状を見る"
   },
   "panel": {
     "confirmed": "出席",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "名前で検索...",
     "all": "すべて",
     "confirmed": "出席",
-    "notAttending": "欠席",
     "statsLine": "{{yes}}名が出席 · {{no}}名が辞退 · {{companions}}名の同伴者 · {{diet}}名が特別食",
     "dietarySummary": "食事の好み（{{count}}）",
     "tableName": "名前",
@@ -610,7 +606,6 @@
     "sessionActive": "アクティブ",
     "sessionInactive": "非アクティブ",
     "sessionLabel": "ローカルセッション：{{status}}",
-    "sessionType": "タイプ：{{type}}",
     "sessionTypeSuperadmin": "スーパー管理者",
     "sessionTypeSetup": "セットアップ",
     "sessionTypeAdmin": "管理者",

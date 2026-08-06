@@ -70,7 +70,6 @@
     "placePending": "Sebaka se tla hlaha mona.",
     "welcomeWithTime": "Re labalabela ho arolelana nako ena e khethehileng le uena. ",
     "welcomeWithoutTime": "Re labalabela ho arolelana nako ena e khethehileng le uena. ",
-    "transport": "Lipalangoang",
     "addToCalendar": "Eketsa khalendareng",
     "viewGoogleMaps": "Bula ho Google Maps",
     "viewAppleMaps": "Bula ho Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Nama",
     "menuPescado": "Litlhapi",
     "menuVegano": "Vegan/Moroho",
-    "postre": "Sejo se monate",
     "menuLabel": "Lenane",
     "allergiesLegend": "Ho kula le ho se mamelle",
     "allergiesPlaceholder": "Tse ling tsa allergy (hlalosa)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Lijo tsa lijo",
     "sectionsLabel": "Likarolo",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Sheba memo",
-    "logout": "Tsoa"
+    "viewInvitation": "Sheba memo"
   },
   "panel": {
     "confirmed": "E tiisitsoe",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Batla ka mabitso...",
     "all": "Tsohle",
     "confirmed": "E tiisitsoe",
-    "notAttending": "Ho se be teng",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "Likhetho tsa lijo ({{count}})",
     "tableName": "Lebitso",
@@ -610,7 +606,6 @@
     "sessionActive": "E sebetsa",
     "sessionInactive": "E sa sebetseng",
     "sessionLabel": "Lenaneo la lehae: {{status}}",
-    "sessionType": "Mofuta: {{mofuta}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Tlhophiso",
     "sessionTypeAdmin": "Admin",

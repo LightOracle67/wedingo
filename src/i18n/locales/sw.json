@@ -70,7 +70,6 @@
     "placePending": "Mahali pa sherehe pataonekana hapa.",
     "welcomeWithTime": "Tunakutarajia kushiriki nasi wakati huu maalum. Tunaanza saa {{time}}. Chini utapata ramani ya eneo.",
     "welcomeWithoutTime": "Tunakutarajia kushiriki nasi wakati huu maalum. Chini utapata ramani ya eneo.",
-    "transport": "Usafiri",
     "addToCalendar": "Ongeza kwenye kalenda",
     "viewGoogleMaps": "Tazama kwenye Google Maps",
     "viewAppleMaps": "Tazama kwenye Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Nyama",
     "menuPescado": "Samaki",
     "menuVegano": "Vegan/Mboga",
-    "postre": "Kitindamlo",
     "menuLabel": "Menyu",
     "allergiesLegend": "Mizio na kutovumilia",
     "allergiesPlaceholder": "Mzio mwingine (bainisha)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Mlo",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Tazama mwaliko",
-    "logout": "Toka nje"
+    "viewInvitation": "Tazama mwaliko"
   },
   "panel": {
     "confirmed": "Wamethibitisha",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Tafuta kwa jina...",
     "all": "Wote",
     "confirmed": "Wamethibitisha",
-    "notAttending": "Hawatahudhuria",
     "statsLine": "{{yes}} wanathibitisha · {{no}} wanakataa · {{companions}} wenzi · {{diet}} wenye mlo maalum",
     "dietarySummary": "Mapendeleo ya chakula ({{count}})",
     "tableName": "Jina",
@@ -610,7 +606,6 @@
     "sessionActive": "Inatumika",
     "sessionInactive": "Haitumiki",
     "sessionLabel": "Kikao cha ndani: {{status}}",
-    "sessionType": "Aina: {{type}}",
     "sessionTypeSuperadmin": "Msimamizi mkuu",
     "sessionTypeSetup": "Usanidi",
     "sessionTypeAdmin": "Msimamizi",

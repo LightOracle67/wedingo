@@ -70,7 +70,6 @@
     "placePending": "مکان مراسم در اینجا نمایش داده خواهد شد.",
     "welcomeWithTime": "منتظر شما هستیم تا این لحظه خاص را با هم به اشتراک بگذاریم. ساعت {{time}} شروع می‌کنیم. در زیر نقشه موقعیت را پیدا خواهید کرد.",
     "welcomeWithoutTime": "منتظر شما هستیم تا این لحظه خاص را با هم به اشتراک بگذاریم. در زیر نقشه موقعیت را پیدا خواهید کرد.",
-    "transport": "حمل و نقل",
     "addToCalendar": "افزودن به تقویم",
     "viewGoogleMaps": "مشاهده در Google Maps",
     "viewAppleMaps": "مشاهده در Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "گوشت",
     "menuPescado": "ماهی",
     "menuVegano": "وگان/گیاه‌خواری",
-    "postre": "دسر",
     "menuLabel": "منو",
     "allergiesLegend": "آلرژی و عدم تحمل",
     "allergiesPlaceholder": "آلرژی دیگر (توضیح دهید)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "رژیم",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "مشاهده دعوتنامه",
-    "logout": "از سیستم خارج شوید"
+    "viewInvitation": "مشاهده دعوتنامه"
   },
   "panel": {
     "confirmed": "تأیید شده",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "جستجو بر اساس نام...",
     "all": "همه",
     "confirmed": "تأیید شده",
-    "notAttending": "شرکت نمی‌کنند",
     "statsLine": "{{yes}} تأیید · {{no}} رد · {{companions}} همراه · {{diet}} با رژیم خاص",
     "dietarySummary": "ترجیحات غذایی ({{count}})",
     "tableName": "نام",
@@ -610,7 +606,6 @@
     "sessionActive": "فعال",
     "sessionInactive": "غیرفعال",
     "sessionLabel": "نشست محلی: {{status}}",
-    "sessionType": "نوع: {{type}}",
     "sessionTypeSuperadmin": "سوپر ادمین",
     "sessionTypeSetup": "راه‌اندازی",
     "sessionTypeAdmin": "ادمین",

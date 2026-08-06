@@ -70,7 +70,6 @@
     "placePending": "Raymi kuska kaypi rikuchikunqa.",
     "welcomeWithTime": "Kay sapaq pachata qanwan kuska qunakunapaq suyachkayku. {{time}} p'unchawmanta qallarimusun. Urayninpi tarikuy kuskamanta qhawana tarikun.",
     "welcomeWithoutTime": "Kay sapaq pachata qanwan kuska qunakunapaq suyachkayku. Urayninpi tarikuy kuskamanta qhawana tarikun.",
-    "transport": "Apaysikuy",
     "addToCalendar": "P'unchawchapaman yapay",
     "viewGoogleMaps": "Google Maps nisqapi qhaway",
     "viewAppleMaps": "Apple Maps nisqapi qhaway",
@@ -131,7 +130,6 @@
     "menuCarne": "Aycha",
     "menuPescado": "Challwa",
     "menuVegano": "Vegan/Vegetariano",
-    "postre": "Misk'iq",
     "menuLabel": "Mikuy",
     "allergiesLegend": "Alirhiyakuna hinaspa mana aypay",
     "allergiesPlaceholder": "Huk alirhiya (sut'inchay)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Mikuy",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Kamachiq",
-    "viewInvitation": "Invitacionta qhaway",
-    "logout": "Lloqsiy"
+    "viewInvitation": "Invitacionta qhaway"
   },
   "panel": {
     "confirmed": "Chiqañchasqa",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Sutimanta maskay...",
     "all": "Llapan",
     "confirmed": "Chiqañchasqa",
-    "notAttending": "Mana hamunqakuchu",
     "statsLine": "{{yes}} chiqañchanku · {{no}} manañanku · {{companions}} masi · {{diet}} sapaq mikuywan",
     "dietarySummary": "Mikuy akllaykuna ({{count}})",
     "tableName": "Suti",
@@ -610,7 +606,6 @@
     "sessionActive": "Llamk'achkan",
     "sessionInactive": "Mana llamk'achkanchu",
     "sessionLabel": "Kikin llamk'ay: {{status}}",
-    "sessionType": "Rikch'aynin: {{type}}",
     "sessionTypeSuperadmin": "Hanaq kamachiqqa",
     "sessionTypeSetup": "Allichay",
     "sessionTypeAdmin": "Kamachiq",

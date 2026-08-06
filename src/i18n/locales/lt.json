@@ -70,7 +70,6 @@
     "placePending": "Šventės vieta bus rodoma čia.",
     "welcomeWithTime": "Laukiame jūsų, kad pasidalintume šia ypatinga akimirka. Pradedame {{time}}. Žemiau rasite vietos žemėlapį.",
     "welcomeWithoutTime": "Laukiame jūsų, kad pasidalintume šia ypatinga akimirka. Žemiau rasite vietos žemėlapį.",
-    "transport": "Transportas",
     "addToCalendar": "Įtraukti į kalendorių",
     "viewGoogleMaps": "Žiūrėti Google Maps",
     "viewAppleMaps": "Žiūrėti Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Mėsa",
     "menuPescado": "Žuvis",
     "menuVegano": "Veganiškas/Vegetariškas",
-    "postre": "Desertas",
     "menuLabel": "Meniu",
     "allergiesLegend": "Alergijos ir netoleravimai",
     "allergiesPlaceholder": "Kita alergija (patikslinkite)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Mityba",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Žiūrėti kvietimą",
-    "logout": "Atsijungti"
+    "viewInvitation": "Žiūrėti kvietimą"
   },
   "panel": {
     "confirmed": "Patvirtinti",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Ieškoti pagal vardą...",
     "all": "Visi",
     "confirmed": "Patvirtinti",
-    "notAttending": "Nedalyvauja",
     "statsLine": "{{yes}} patvirtina · {{no}} atsisako · {{companions}} palydovai · {{diet}} su specialia mityba",
     "dietarySummary": "Mitybos pageidavimai ({{count}})",
     "tableName": "Vardas",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktyvi",
     "sessionInactive": "Neaktyvi",
     "sessionLabel": "Vietinė sesija: {{status}}",
-    "sessionType": "Tipas: {{type}}",
     "sessionTypeSuperadmin": "Superadminas",
     "sessionTypeSetup": "Sąranka",
     "sessionTypeAdmin": "Admin",

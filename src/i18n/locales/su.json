@@ -70,7 +70,6 @@
     "placePending": "Tempat hajatan bakal muncul di dieu.",
     "welcomeWithTime": "Sim kuring ngantosan Anjeun pikeun ngabagi momen istiméwa ieu. Dimimitian tabuh {{time}}. Di handap ieu aya peta lokasi.",
     "welcomeWithoutTime": "Sim kuring ngantosan Anjeun pikeun ngabagi momen istiméwa ieu. Di handap ieu aya peta lokasi.",
-    "transport": "Angkutan",
     "addToCalendar": "Tambihkeun ka kalénder",
     "viewGoogleMaps": "Tingali di Google Maps",
     "viewAppleMaps": "Tingali di Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Daging",
     "menuPescado": "Lauk",
     "menuVegano": "Végan/Végétarian",
-    "postre": "Tuang amis",
     "menuLabel": "Ménu",
     "allergiesLegend": "Alérgi sareng intoleransi",
     "allergiesPlaceholder": "Alérgi sanés (sebutkeun)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Diét",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Témbongkeun uleman",
-    "logout": "Kaluar"
+    "viewInvitation": "Témbongkeun uleman"
   },
   "panel": {
     "confirmed": "Dikonfirmasi",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Milarian dumasar nami...",
     "all": "Sadaya",
     "confirmed": "Dikonfirmasi",
-    "notAttending": "Henteu hadir",
     "statsLine": "{{yes}} ngonfirmasi · {{no}} nolak · {{companions}} babaturan · {{diet}} kalayan diet khusus",
     "dietarySummary": "Karesep pangan ({{count}})",
     "tableName": "Ngaran",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktip",
     "sessionInactive": "Teu aktip",
     "sessionLabel": "Sési lokal: {{status}}",
-    "sessionType": "Jinis: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Disetél",
     "sessionTypeAdmin": "Admin",

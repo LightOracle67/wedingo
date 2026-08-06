@@ -70,7 +70,6 @@
     "placePending": "De locatie van de viering verschijnt hier.",
     "welcomeWithTime": "We kijken ernaar uit om dit bijzondere moment met je te delen. We beginnen om {{time}}. Hieronder vind je de locatiekaart.",
     "welcomeWithoutTime": "We kijken ernaar uit om dit bijzondere moment met je te delen. Hieronder vind je de locatiekaart.",
-    "transport": "Vervoer",
     "addToCalendar": "Toevoegen aan agenda",
     "viewGoogleMaps": "Bekijken in Google Maps",
     "viewAppleMaps": "Bekijken in Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Vlees",
     "menuPescado": "Vis",
     "menuVegano": "Veganistisch/Vegetarisch",
-    "postre": "Nagerecht",
     "menuLabel": "Menu",
     "allergiesLegend": "Allergieën en intoleranties",
     "allergiesPlaceholder": "Andere allergie (specificeer)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Dieet",
     "sectionsLabel": "Secciones",
     "barTitle": "Weddingo · Beheerder",
-    "viewInvitation": "Bekijk uitnodiging",
-    "logout": "Uitloggen"
+    "viewInvitation": "Bekijk uitnodiging"
   },
   "panel": {
     "confirmed": "Bevestigd",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Zoeken op naam...",
     "all": "Alle",
     "confirmed": "Bevestigd",
-    "notAttending": "Afwezig",
     "statsLine": "{{yes}} bevestigen · {{no}} afwijzen · {{companions}} begeleiders · {{diet}} met speciaal dieet",
     "dietarySummary": "Voedingsvoorkeuren ({{count}})",
     "tableName": "Naam",
@@ -610,7 +606,6 @@
     "sessionActive": "Actief",
     "sessionInactive": "Inactief",
     "sessionLabel": "Lokale sessie: {{status}}",
-    "sessionType": "Type: {{type}}",
     "sessionTypeSuperadmin": "Superbeheerder",
     "sessionTypeSetup": "Installatie",
     "sessionTypeAdmin": "Beheerder",

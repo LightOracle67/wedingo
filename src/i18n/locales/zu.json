@@ -70,7 +70,6 @@
     "placePending": "Indawo yomgubho izovela lapha.",
     "welcomeWithTime": "Sikulindele ukwabelana nathi ngesikhathi esikhethekile. Siqala ngo-{{time}}. Ngezansi uzothola ibalazwe lendawo.",
     "welcomeWithoutTime": "Sikulindele ukwabelana nathi ngesikhathi esikhethekile. Ngezansi uzothola ibalazwe lendawo.",
-    "transport": "Ezokuthutha",
     "addToCalendar": "Faka kukhalenda",
     "viewGoogleMaps": "Buka ku-Google Maps",
     "viewAppleMaps": "Buka ku-Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Inyama",
     "menuPescado": "Inhlanzi",
     "menuVegano": "I-Vegan/I-Vegetarian",
-    "postre": "I-desert",
     "menuLabel": "Imenyu",
     "allergiesLegend": "Ukungezwani nokungabekezeleli",
     "allergiesPlaceholder": "Okunye ukungezwani (cacisa)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Ukudla",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Buka isimemo",
-    "logout": "Phuma"
+    "viewInvitation": "Buka isimemo"
   },
   "panel": {
     "confirmed": "Kuqinisekisiwe",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Sesha ngegama...",
     "all": "Konke",
     "confirmed": "Kuqinisekisiwe",
-    "notAttending": "Angeke abe khona",
     "statsLine": "{{yes}} bayaqinisekisa · {{no}} bayenqaba · {{companions}} abahambisana nabo · {{diet}} ngokudla okukhethekile",
     "dietarySummary": "Okuthandwayo ekudleni ({{count}})",
     "tableName": "Igama",
@@ -610,7 +606,6 @@
     "sessionActive": "Iyasebenza",
     "sessionInactive": "Ayisebenzi",
     "sessionLabel": "Iseshini yendawo: {{status}}",
-    "sessionType": "Uhlobo: {{type}}",
     "sessionTypeSuperadmin": "Umphathi omkhulu",
     "sessionTypeSetup": "Ukumiswa",
     "sessionTypeAdmin": "Umphathi",

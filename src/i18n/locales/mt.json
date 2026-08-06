@@ -70,7 +70,6 @@
     "placePending": "Il-post taċ-ċelebrazzjoni se jidher hawn.",
     "welcomeWithTime": "Nistennewk biex naqsmu dan il-mument speċjali. Nibdew fis-{{time}}. Hawn taħt issib il-mappa tal-post.",
     "welcomeWithoutTime": "Nistennewk biex naqsmu dan il-mument speċjali. Hawn taħt issib il-mappa tal-post.",
-    "transport": "Trasport",
     "addToCalendar": "Żid mal-kalendarju",
     "viewGoogleMaps": "Ara fuq Google Maps",
     "viewAppleMaps": "Ara fuq Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Laħam",
     "menuPescado": "Ħut",
     "menuVegano": "Vegan/Veġetarjan",
-    "postre": "Deżerta",
     "menuLabel": "Menu",
     "allergiesLegend": "Allerġiji u intolleranzi",
     "allergiesPlaceholder": "Allerġija oħra (speċifika)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Amministratur",
-    "viewInvitation": "Ara l-istedina",
-    "logout": "Log out"
+    "viewInvitation": "Ara l-istedina"
   },
   "panel": {
     "confirmed": "Ikkonfermati",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Fittex bl-isem...",
     "all": "Kollha",
     "confirmed": "Ikkonfermati",
-    "notAttending": "Mhux se jattendu",
     "statsLine": "{{yes}} jikkonfermaw · {{no}} jirrifjutaw · {{companions}} akkumpanjaturi · {{diet}} b'dieta speċjali",
     "dietarySummary": "Preferenzi alimentari ({{count}})",
     "tableName": "Isem",
@@ -610,7 +606,6 @@
     "sessionActive": "Attiva",
     "sessionInactive": "Inattiva",
     "sessionLabel": "Sessjoni lokali: {{status}}",
-    "sessionType": "Tip: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Setup",
     "sessionTypeAdmin": "Amministratur",

@@ -70,7 +70,6 @@
     "placePending": "Místo oslavy se zobrazí zde.",
     "welcomeWithTime": "Těšíme se, že s vámi budeme sdílet tuto výjimečnou chvíli. Začínáme v {{time}}. Níže najdete mapu.",
     "welcomeWithoutTime": "Těšíme se, že s vámi budeme sdílet tuto výjimečnou chvíli. Níže najdete mapu.",
-    "transport": "Doprava",
     "addToCalendar": "Přidat do kalendáře",
     "viewGoogleMaps": "Zobrazit v Google Maps",
     "viewAppleMaps": "Zobrazit v Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Maso",
     "menuPescado": "Ryba",
     "menuVegano": "Veganské/Vegetariánské",
-    "postre": "Dezert",
     "menuLabel": "Menu",
     "allergiesLegend": "Alergie a intolerance",
     "allergiesPlaceholder": "Jiná alergie (upřesněte)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Strava",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Zobrazit pozvánku",
-    "logout": "Odhlaste se"
+    "viewInvitation": "Zobrazit pozvánku"
   },
   "panel": {
     "confirmed": "Potvrzení",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Hledat podle jména...",
     "all": "Všichni",
     "confirmed": "Potvrzení",
-    "notAttending": "Neúčastní se",
     "statsLine": "{{yes}} potvrzuje · {{no}} odmítá · {{companions}} doprovod · {{diet}} se speciální dietou",
     "dietarySummary": "Stravovací preference ({{count}})",
     "tableName": "Jméno",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktivní",
     "sessionInactive": "Neaktivní",
     "sessionLabel": "Lokální relace: {{status}}",
-    "sessionType": "Typ: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Konfigurace",
     "sessionTypeAdmin": "Admin",

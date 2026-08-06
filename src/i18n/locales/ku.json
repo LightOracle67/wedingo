@@ -70,7 +70,6 @@
     "placePending": "Cihê pîrozbahiyê dê li vir xuya bibe.",
     "welcomeWithTime": "Em li benda te ne ji bo parvekirina vê kêliya taybet. Em saet {{time}} dest pê dikin. Li jêr nexşeya cih heye.",
     "welcomeWithoutTime": "Em li benda te ne ji bo parvekirina vê kêliya taybet. Li jêr nexşeya cih heye.",
-    "transport": "Veguhastin",
     "addToCalendar": "Tevlî salnameyê bike",
     "viewGoogleMaps": "Li Google Maps bibîne",
     "viewAppleMaps": "Li Apple Maps bibîne",
@@ -131,7 +130,6 @@
     "menuCarne": "Goşt",
     "menuPescado": "Masî",
     "menuVegano": "Vegan/Vegeteryan",
-    "postre": "Şîranî",
     "menuLabel": "Qerta xûrekê",
     "allergiesLegend": "Alarjî û netehammulî",
     "allergiesPlaceholder": "Alarjiyeke din (eşkere bike)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Xwarin",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Dîtina vexwendinê",
-    "logout": "Derkeve"
+    "viewInvitation": "Dîtina vexwendinê"
   },
   "panel": {
     "confirmed": "Hatine piştrastkirin",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Bi navê lê bigere...",
     "all": "Hemû",
     "confirmed": "Hatine piştrastkirin",
-    "notAttending": "Beşdar nabin",
     "statsLine": "{{yes}} piştrast kirin · {{no}} red kirin · {{companions}} heval · {{diet}} bi xwarina taybet",
     "dietarySummary": "Tercihên xwarinê ({{count}})",
     "tableName": "Nav",
@@ -610,7 +606,6 @@
     "sessionActive": "Çalak",
     "sessionInactive": "Ne çalak",
     "sessionLabel": "Danişîna herêmî: {{status}}",
-    "sessionType": "Cure: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Sazkirin",
     "sessionTypeAdmin": "Admin",

@@ -70,7 +70,6 @@
     "placePending": "Місце святкування з'явиться тут.",
     "welcomeWithTime": "Чекаємо вас, щоб розділити цю особливу мить. Починаємо о {{time}}. Нижче ви знайдете карту.",
     "welcomeWithoutTime": "Чекаємо вас, щоб розділити цю особливу мить. Нижче ви знайдете карту.",
-    "transport": "Транспорт",
     "addToCalendar": "Додати в календар",
     "viewGoogleMaps": "Переглянути в Google Картах",
     "viewAppleMaps": "Переглянути в Apple Картах",
@@ -131,7 +130,6 @@
     "menuCarne": "М'ясо",
     "menuPescado": "Риба",
     "menuVegano": "Веган/Вегетаріанець",
-    "postre": "Десерт",
     "menuLabel": "Меню",
     "allergiesLegend": "Алергії та непереносимості",
     "allergiesPlaceholder": "Інша алергія (вкажіть)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Харчування",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Адміністратор",
-    "viewInvitation": "Переглянути запрошення",
-    "logout": "Вийти"
+    "viewInvitation": "Переглянути запрошення"
   },
   "panel": {
     "confirmed": "Підтвердили",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Пошук за іменем...",
     "all": "Всі",
     "confirmed": "Підтвердили",
-    "notAttending": "Не прийдуть",
     "statsLine": "{{yes}} підтверджують · {{no}} відмовляються · {{companions}} супроводжуючих · {{diet}} зі спец. харчуванням",
     "dietarySummary": "Харчові вподобання ({{count}})",
     "tableName": "Ім'я",
@@ -610,7 +606,6 @@
     "sessionActive": "Активна",
     "sessionInactive": "Неактивна",
     "sessionLabel": "Локальна сесія: {{status}}",
-    "sessionType": "Тип: {{type}}",
     "sessionTypeSuperadmin": "Супер-адмін",
     "sessionTypeSetup": "Налаштування",
     "sessionTypeAdmin": "Адмін",

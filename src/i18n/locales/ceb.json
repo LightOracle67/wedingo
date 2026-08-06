@@ -70,7 +70,6 @@
     "placePending": "Ang venue makita dinhi.",
     "welcomeWithTime": "Kami nagpaabut sa pagpaambit niining espesyal nga higayon uban kanimo. ",
     "welcomeWithoutTime": "Kami nagpaabut sa pagpaambit niining espesyal nga higayon uban kanimo. ",
-    "transport": "Transportasyon",
     "addToCalendar": "Idugang sa kalendaryo",
     "viewGoogleMaps": "Ablihi sa Google Maps",
     "viewAppleMaps": "Ablihi sa Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Karne",
     "menuPescado": "Isda",
     "menuVegano": "Vegan/Vegetarian",
-    "postre": "Dessert",
     "menuLabel": "Menu",
     "allergiesLegend": "Allergy ug intolerance",
     "allergiesPlaceholder": "Ubang alerdyi (specific)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Pagkaon",
     "sectionsLabel": "Mga seksyon",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Tan-awa ang imbitasyon",
-    "logout": "Log out"
+    "viewInvitation": "Tan-awa ang imbitasyon"
   },
   "panel": {
     "confirmed": "Gikumpirma",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Pangitaa pinaagi sa ngalan...",
     "all": "Tanan",
     "confirmed": "Gikumpirma",
-    "notAttending": "Dili motambong",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "Mga gusto sa pagkaon ({{count}})",
     "tableName": "Ngalan",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktibo",
     "sessionInactive": "Dili aktibo",
     "sessionLabel": "Lokal nga sesyon: {{status}}",
-    "sessionType": "Type: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Setup",
     "sessionTypeAdmin": "Admin",

@@ -70,7 +70,6 @@
     "placePending": "Taispeánfar áit an cheiliúrtha anseo.",
     "welcomeWithTime": "Táimid ag fanacht leat chun an nóiméad speisialta seo a roinnt. Tosóimid ag {{time}}. Thíos gheobhaidh tú an léarscáil suímh.",
     "welcomeWithoutTime": "Táimid ag fanacht leat chun an nóiméad speisialta seo a roinnt. Thíos gheobhaidh tú an léarscáil suímh.",
-    "transport": "Iompar",
     "addToCalendar": "Cuir leis an bhféilire",
     "viewGoogleMaps": "Féach in Google Maps",
     "viewAppleMaps": "Féach in Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Feoil",
     "menuPescado": "Iasc",
     "menuVegano": "Vegan/Veigeatórach",
-    "postre": "Milseog",
     "menuLabel": "Biachlár",
     "allergiesLegend": "Ailléirgí agus éadulaingtí",
     "allergiesPlaceholder": "Ailléirge eile (sonraigh)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Aiste bia",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Riarachán",
-    "viewInvitation": "Féach ar chuireadh",
-    "logout": "Logáil amach"
+    "viewInvitation": "Féach ar chuireadh"
   },
   "panel": {
     "confirmed": "Deimhnithe",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Cuardaigh de réir ainm...",
     "all": "Gach duine",
     "confirmed": "Deimhnithe",
-    "notAttending": "Gan freastal",
     "statsLine": "{{yes}} deimhníonn · {{no}} diúltaíonn · {{companions}} compánach · {{diet}} le haiste bia speisialta",
     "dietarySummary": "Roghanna aiste bia ({{count}})",
     "tableName": "Ainm",
@@ -610,7 +606,6 @@
     "sessionActive": "Gníomhach",
     "sessionInactive": "Neamhghníomhach",
     "sessionLabel": "Seisiún áitiúil: {{status}}",
-    "sessionType": "Cineál: {{type}}",
     "sessionTypeSuperadmin": "Sár-riarthóir",
     "sessionTypeSetup": "Socrú",
     "sessionTypeAdmin": "Riarthóir",

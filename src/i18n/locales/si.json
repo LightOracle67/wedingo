@@ -70,7 +70,6 @@
     "placePending": "උත්සව ස්ථානය මෙහි දිස්වනු ඇත.",
     "welcomeWithTime": "මෙම විශේෂ මොහොත බෙදාගැනීමට අපි ඔබ එනතුරු බලා සිටිමු. {{time}} ට ආරම්භ වේ. පහත ස්ථාන සිතියම ඇත.",
     "welcomeWithoutTime": "මෙම විශේෂ මොහොත බෙදාගැනීමට අපි ඔබ එනතුරු බලා සිටිමු. පහත ස්ථාන සිතියම ඇත.",
-    "transport": "ප්‍රවාහනය",
     "addToCalendar": "දිනදර්ශනයට එක් කරන්න",
     "viewGoogleMaps": "Google Maps හි බලන්න",
     "viewAppleMaps": "Apple Maps හි බලන්න",
@@ -131,7 +130,6 @@
     "menuCarne": "මස්",
     "menuPescado": "මාළු",
     "menuVegano": "වීගන්/නිර්මාංස",
-    "postre": "අතුරුපස",
     "menuLabel": "මෙනුව",
     "allergiesLegend": "ආසාත්මිකතා සහ නොඉවසුම්",
     "allergiesPlaceholder": "වෙනත් ආසාත්මිකතා (සඳහන් කරන්න)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "ආහාර",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "ආරාධනාව බලන්න",
-    "logout": "ලොග් අවුට් වෙන්න"
+    "viewInvitation": "ආරාධනාව බලන්න"
   },
   "panel": {
     "confirmed": "තහවුරු කළ",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "නමින් සොයන්න...",
     "all": "සියල්ල",
     "confirmed": "තහවුරු කළ",
-    "notAttending": "සහභාගී නොවේ",
     "statsLine": "{{yes}} තහවුරු කරයි · {{no}} ප්‍රතික්ෂේප කරයි · සහචරයින් {{companions}} · විශේෂ ආහාර {{diet}}",
     "dietarySummary": "ආහාර මනාප ({{count}})",
     "tableName": "නම",
@@ -610,7 +606,6 @@
     "sessionActive": "ක්‍රියාකාරී",
     "sessionInactive": "අක්‍රිය",
     "sessionLabel": "දේශීය සැසිය: {{status}}",
-    "sessionType": "වර්ගය: {{type}}",
     "sessionTypeSuperadmin": "සුපිරි පරිපාලක",
     "sessionTypeSetup": "සැකසුම",
     "sessionTypeAdmin": "පරිපාලක",

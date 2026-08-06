@@ -70,7 +70,6 @@
     "placePending": "Ibi ìgbéyàwó yóò hàn níbí.",
     "welcomeWithTime": "A ń retí rẹ láti pín àkókò pàtàkì yìí. A ó bẹ̀rẹ̀ ní {{time}}. Nísàlẹ̀ o ó rí àwòrán ilẹ̀.",
     "welcomeWithoutTime": "A ń retí rẹ láti pín àkókò pàtàkì yìí. Nísàlẹ̀ o ó rí àwòrán ilẹ̀.",
-    "transport": "Ọkọ̀",
     "addToCalendar": "Fi kún kàlẹ́ńdà",
     "viewGoogleMaps": "Wò ní Google Maps",
     "viewAppleMaps": "Wò ní Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Ẹran",
     "menuPescado": "Ẹja",
     "menuVegano": "Vegan/Ajẹwẹ̀wẹ́",
-    "postre": "Oúnjẹ àdídùn",
     "menuLabel": "Àtòjọ oúnjẹ",
     "allergiesLegend": "Àwọn ohun ara kò gbà",
     "allergiesPlaceholder": "Ohun ara kò gbà mìíràn (sọ pàtó)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Oúnjẹ",
     "sectionsLabel": "Secciones",
     "barTitle": "Igbeyawo · Admin",
-    "viewInvitation": "Wo ifiwepe",
-    "logout": "Jade jade"
+    "viewInvitation": "Wo ifiwepe"
   },
   "panel": {
     "confirmed": "Àwọn tí a fídimúlẹ̀",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Wá pẹ̀lú orúkọ...",
     "all": "Gbogbo",
     "confirmed": "Àwọn tí a fídimúlẹ̀",
-    "notAttending": "Kò ní wá",
     "statsLine": "{{yes}} fidimúlẹ̀ · {{no}} kọ̀ · {{companions}} alábàákẹ́gbẹ́ · {{diet}} pẹ̀lú oúnjẹ àkànṣe",
     "dietarySummary": "Àwọn ohun tí wọ́n fẹ́ jẹ ({{count}})",
     "tableName": "Orúkọ",
@@ -610,7 +606,6 @@
     "sessionActive": "Ń ṣiṣẹ́",
     "sessionInactive": "Kò ṣiṣẹ́",
     "sessionLabel": "Ìgbà ìṣiṣẹ́ àdúgbò: {{status}}",
-    "sessionType": "Irú: {{type}}",
     "sessionTypeSuperadmin": "Alábòójútó gíga",
     "sessionTypeSetup": "Ìṣètò",
     "sessionTypeAdmin": "Alábòójútó",

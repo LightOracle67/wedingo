@@ -70,7 +70,6 @@
     "placePending": "Pidustuse koht kuvatakse siin.",
     "welcomeWithTime": "Ootame sind seda erilist hetke jagama. Alustame kell {{time}}. Allpool leiad asukohakaardi.",
     "welcomeWithoutTime": "Ootame sind seda erilist hetke jagama. Allpool leiad asukohakaardi.",
-    "transport": "Transport",
     "addToCalendar": "Lisa kalendrisse",
     "viewGoogleMaps": "Vaata Google Mapsis",
     "viewAppleMaps": "Vaata Apple Mapsis",
@@ -131,7 +130,6 @@
     "menuCarne": "Liha",
     "menuPescado": "Kala",
     "menuVegano": "Vegan/Taimetoit",
-    "postre": "Magustoit",
     "menuLabel": "Menüü",
     "allergiesLegend": "Allergiad ja talumatused",
     "allergiesPlaceholder": "Muu allergia (täpsusta)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Toit",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Kuva kutse",
-    "logout": "Logi välja"
+    "viewInvitation": "Kuva kutse"
   },
   "panel": {
     "confirmed": "Kinnitatud",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Otsi nime järgi...",
     "all": "Kõik",
     "confirmed": "Kinnitatud",
-    "notAttending": "Ei osale",
     "statsLine": "{{yes}} kinnitab · {{no}} keeldub · {{companions}} saatjat · {{diet}} eritoiduga",
     "dietarySummary": "Toidueelistused ({{count}})",
     "tableName": "Nimi",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktiivne",
     "sessionInactive": "Mitteaktiivne",
     "sessionLabel": "Kohalik sessioon: {{status}}",
-    "sessionType": "Tüüp: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Seadistus",
     "sessionTypeAdmin": "Admin",

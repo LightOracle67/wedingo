@@ -70,7 +70,6 @@
     "placePending": "Lalabas dito ang lugar ng pagdiriwang.",
     "welcomeWithTime": "Inaasahan ka naming makasama sa espesyal na sandaling ito. Magsisimula kami ng {{time}}. Sa ibaba makikita mo ang mapa ng lokasyon.",
     "welcomeWithoutTime": "Inaasahan ka naming makasama sa espesyal na sandaling ito. Sa ibaba makikita mo ang mapa ng lokasyon.",
-    "transport": "Transportasyon",
     "addToCalendar": "Idagdag sa kalendaryo",
     "viewGoogleMaps": "Tingnan sa Google Maps",
     "viewAppleMaps": "Tingnan sa Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Karne",
     "menuPescado": "Isda",
     "menuVegano": "Vegan/Vegetarian",
-    "postre": "Panghimagas",
     "menuLabel": "Menu",
     "allergiesLegend": "Mga alerdyi at intoleransya",
     "allergiesPlaceholder": "Ibang alerdyi (tukuyin)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Tingnan ang imbitasyon",
-    "logout": "Log out"
+    "viewInvitation": "Tingnan ang imbitasyon"
   },
   "panel": {
     "confirmed": "Nakumpirma",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Maghanap ayon sa pangalan...",
     "all": "Lahat",
     "confirmed": "Nakumpirma",
-    "notAttending": "Hindi dadalo",
     "statsLine": "{{yes}} kumukumpirma · {{no}} tumatanggi · {{companions}} kasama · {{diet}} may espesyal na diyeta",
     "dietarySummary": "Mga kagustuhan sa pagkain ({{count}})",
     "tableName": "Pangalan",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktibo",
     "sessionInactive": "Hindi aktibo",
     "sessionLabel": "Lokal na sesyon: {{status}}",
-    "sessionType": "Uri: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Setup",
     "sessionTypeAdmin": "Admin",

@@ -70,7 +70,6 @@
     "placePending": "Staðsetning hátíðarinnar mun birtast hér.",
     "welcomeWithTime": "Við hlökkum til að deila þessari sérstöku stund með þér. Við byrjum kl. {{time}}. Hér fyrir neðan finnur þú staðsetningarkortið.",
     "welcomeWithoutTime": "Við hlökkum til að deila þessari sérstöku stund með þér. Hér fyrir neðan finnur þú staðsetningarkortið.",
-    "transport": "Samgöngur",
     "addToCalendar": "Bæta við dagatal",
     "viewGoogleMaps": "Skoða í Google Maps",
     "viewAppleMaps": "Skoða í Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Kjöt",
     "menuPescado": "Fiskur",
     "menuVegano": "Vegan/Grænmetis",
-    "postre": "Eftirréttur",
     "menuLabel": "Matseðill",
     "allergiesLegend": "Ofnæmi og óþol",
     "allergiesPlaceholder": "Annað ofnæmi (tilgreinið)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Mataræði",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Skoða boð",
-    "logout": "Skráðu þig út"
+    "viewInvitation": "Skoða boð"
   },
   "panel": {
     "confirmed": "Staðfest",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Leita eftir nafni...",
     "all": "Allir",
     "confirmed": "Staðfest",
-    "notAttending": "Mæta ekki",
     "statsLine": "{{yes}} staðfesta · {{no}} afþakka · {{companions}} fylgdarmenn · {{diet}} með sérþarfir í mat",
     "dietarySummary": "Mataræðis óskir ({{count}})",
     "tableName": "Nafn",
@@ -610,7 +606,6 @@
     "sessionActive": "Virk",
     "sessionInactive": "Óvirk",
     "sessionLabel": "Staðbundin seta: {{status}}",
-    "sessionType": "Tegund: {{type}}",
     "sessionTypeSuperadmin": "Yfirstjórnandi",
     "sessionTypeSetup": "Uppsetning",
     "sessionTypeAdmin": "Stjórnandi",

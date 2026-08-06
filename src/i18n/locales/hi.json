@@ -70,7 +70,6 @@
     "placePending": "समारोह का स्थान यहाँ दिखाई देगा।",
     "welcomeWithTime": "हम इस खास पल को आपके साथ साझा करने की उम्मीद करते हैं। हम {{time}} बजे शुरू करेंगे। नीचे स्थान का नक्शा देखें।",
     "welcomeWithoutTime": "हम इस खास पल को आपके साथ साझा करने की उम्मीद करते हैं। नीचे स्थान का नक्शा देखें।",
-    "transport": "परिवहन",
     "addToCalendar": "कैलेंडर में जोड़ें",
     "viewGoogleMaps": "Google Maps में देखें",
     "viewAppleMaps": "Apple Maps में देखें",
@@ -131,7 +130,6 @@
     "menuCarne": "मांसाहारी",
     "menuPescado": "मछली",
     "menuVegano": "शाकाहारी",
-    "postre": "मिठाई",
     "menuLabel": "मेनू",
     "allergiesLegend": "एलर्जी और असहिष्णुता",
     "allergiesPlaceholder": "अन्य एलर्जी (निर्दिष्ट करें)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "आहार",
     "sectionsLabel": "Secciones",
     "barTitle": "वेडिंगो · एडमिन",
-    "viewInvitation": "आमंत्रण देखें",
-    "logout": "लॉग आउट"
+    "viewInvitation": "आमंत्रण देखें"
   },
   "panel": {
     "confirmed": "पुष्टि की",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "नाम से खोजें...",
     "all": "सभी",
     "confirmed": "पुष्टि की",
-    "notAttending": "नहीं आ रहे",
     "statsLine": "{{yes}} पुष्टि · {{no}} मना · {{companions}} साथी · {{diet}} विशेष आहार के साथ",
     "dietarySummary": "आहार संबंधी प्राथमिकताएँ ({{count}})",
     "tableName": "नाम",
@@ -610,7 +606,6 @@
     "sessionActive": "सक्रिय",
     "sessionInactive": "निष्क्रिय",
     "sessionLabel": "स्थानीय सत्र: {{status}}",
-    "sessionType": "प्रकार: {{type}}",
     "sessionTypeSuperadmin": "सुपरएडमिन",
     "sessionTypeSetup": "सेटअप",
     "sessionTypeAdmin": "एडमिन",

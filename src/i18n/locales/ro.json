@@ -70,7 +70,6 @@
     "placePending": "Locația ceremoniei va apărea aici.",
     "welcomeWithTime": "Te așteptăm să împărtășim acest moment special. Începem la ora {{time}}. Mai jos găsești harta locației.",
     "welcomeWithoutTime": "Te așteptăm să împărtășim acest moment special. Mai jos găsești harta locației.",
-    "transport": "Transport",
     "addToCalendar": "Adaugă în calendar",
     "viewGoogleMaps": "Vezi pe Google Maps",
     "viewAppleMaps": "Vezi pe Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Carne",
     "menuPescado": "Pește",
     "menuVegano": "Vegan/Vegetarian",
-    "postre": "Desert",
     "menuLabel": "Meniu",
     "allergiesLegend": "Alergii și intoleranțe",
     "allergiesPlaceholder": "Altă alergie (specifică)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Dietă",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Vizualizați invitația",
-    "logout": "Deconectați-vă"
+    "viewInvitation": "Vizualizați invitația"
   },
   "panel": {
     "confirmed": "Confirmați",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Caută după nume...",
     "all": "Toți",
     "confirmed": "Confirmați",
-    "notAttending": "Nu participă",
     "statsLine": "{{yes}} confirmă · {{no}} refuză · {{companions}} însoțitori · {{diet}} cu dietă specială",
     "dietarySummary": "Preferințe alimentare ({{count}})",
     "tableName": "Nume",
@@ -610,7 +606,6 @@
     "sessionActive": "Activă",
     "sessionInactive": "Inactivă",
     "sessionLabel": "Sesiune locală: {{status}}",
-    "sessionType": "Tip: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Configurare",
     "sessionTypeAdmin": "Admin",

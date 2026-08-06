@@ -70,7 +70,6 @@
     "placePending": "ସ୍ଥାନ ଏଠାରେ ଦେଖାଯିବ |",
     "welcomeWithTime": "ଆମେ ଏହି ବିଶେଷ ମୁହୂର୍ତ୍ତକୁ ଆପଣଙ୍କ ସହିତ ବାଣ୍ଟିବାକୁ ଆଗ୍ରହୀ | ",
     "welcomeWithoutTime": "ଆମେ ଏହି ବିଶେଷ ମୁହୂର୍ତ୍ତକୁ ଆପଣଙ୍କ ସହିତ ବାଣ୍ଟିବାକୁ ଆଗ୍ରହୀ | ",
-    "transport": "ପରିବହନ",
     "addToCalendar": "କ୍ୟାଲେଣ୍ଡରରେ ଯୋଡନ୍ତୁ |",
     "viewGoogleMaps": "ଗୁଗୁଲ୍ ମ୍ୟାପ୍ସରେ ଖୋଲନ୍ତୁ |",
     "viewAppleMaps": "ଆପଲ୍ ମାନଚିତ୍ରରେ ଖୋଲନ୍ତୁ |",
@@ -131,7 +130,6 @@
     "menuCarne": "ମାଂସ",
     "menuPescado": "ମାଛ |",
     "menuVegano": "ଶାକାହାରୀ / ଶାକାହାରୀ |",
-    "postre": "ମିଠା",
     "menuLabel": "ମେନୁ",
     "allergiesLegend": "ଆଲର୍ଜି ଏବଂ ଅସହିଷ୍ଣୁତା |",
     "allergiesPlaceholder": "ଅନ୍ୟାନ୍ୟ ଆଲର୍ଜି (ନିର୍ଦ୍ଦିଷ୍ଟ କରନ୍ତୁ)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "ଡାଏଟ୍ |",
     "sectionsLabel": "ବିଭାଗଗୁଡିକ",
     "barTitle": "ୱେଡିଙ୍ଗୋ · ଆଡମିନି",
-    "viewInvitation": "ନିମନ୍ତ୍ରଣ ଦର୍ଶନ କରନ୍ତୁ |",
-    "logout": "ଲଗ୍ ଆଉଟ୍ କରନ୍ତୁ |"
+    "viewInvitation": "ନିମନ୍ତ୍ରଣ ଦର୍ଶନ କରନ୍ତୁ |"
   },
   "panel": {
     "confirmed": "ନିଶ୍ଚିତ ହୋଇଛି",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "ନାମ ଅନୁଯାୟୀ ସନ୍ଧାନ ...",
     "all": "ସମସ୍ତ",
     "confirmed": "ନିଶ୍ଚିତ ହୋଇଛି",
-    "notAttending": "ଯୋଗଦେବା ନାହିଁ |",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "ଖାଦ୍ୟପେୟ ପସନ୍ଦ ({{ଗଣନା}})",
     "tableName": "ନାମ",
@@ -610,7 +606,6 @@
     "sessionActive": "ସକ୍ରିୟ |",
     "sessionInactive": "ନିଷ୍କ୍ରିୟ |",
     "sessionLabel": "ସ୍ଥାନୀୟ ଅଧିବେଶନ: {{ସ୍ଥିତି}}",
-    "sessionType": "ପ୍ରକାର: {{ପ୍ରକାର}} |",
     "sessionTypeSuperadmin": "ସୁପରଡାମିନ୍ |",
     "sessionTypeSetup": "ସେଟଅପ୍ |",
     "sessionTypeAdmin": "ଆଡମିନି",

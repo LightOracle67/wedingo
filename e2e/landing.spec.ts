@@ -24,7 +24,8 @@ test.describe("App Shell", () => {
 
   test("landing shows the create CTA button", async ({ page }) => {
     await page.goto("/");
-    // La etiqueta traducida es "Crear tu invitación"; se busca el botón por rol.
-    await expect(page.getByRole("button", { name: /invitaci|invitation/i }).first()).toBeVisible();
+    // Identificado por testid: el texto traducido varía por idioma y el regex
+    // casaba también con "Ya tengo una invitación".
+    await expect(page.getByTestId("create-invitation-btn")).toBeVisible();
   });
 });

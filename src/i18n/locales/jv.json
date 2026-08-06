@@ -70,7 +70,6 @@
     "placePending": "Papan acara bakal katon ing kéné.",
     "welcomeWithTime": "Awaké dhéwé ngentèni rawuhmu kanggo ngrayakaké wektu istiméwa iki. Diwiwiti jam {{time}}. Ing ngisor iki ana péta lokasi.",
     "welcomeWithoutTime": "Awaké dhéwé ngentèni rawuhmu kanggo ngrayakaké wektu istiméwa iki. Ing ngisor iki ana péta lokasi.",
-    "transport": "Transportasi",
     "addToCalendar": "Tambahaké menyang kalènder",
     "viewGoogleMaps": "Deleng ing Google Maps",
     "viewAppleMaps": "Deleng ing Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Daging",
     "menuPescado": "Iwak",
     "menuVegano": "Vegan / Vegetarian",
-    "postre": "Panganan pènèt",
     "menuLabel": "Menu",
     "allergiesLegend": "Alergi lan ora tahan panganan",
     "allergiesPlaceholder": "Alergi liyané (jlèntrèhaké)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "diet",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Ndeleng undhangan",
-    "logout": "metu"
+    "viewInvitation": "Ndeleng undhangan"
   },
   "panel": {
     "confirmed": "Dikonfirmasi",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Golèk nganggo jeneng...",
     "all": "Kabèh",
     "confirmed": "Dikonfirmasi",
-    "notAttending": "Ora rawuh",
     "statsLine": "{{yes}} konfirmasi · {{no}} nolak · {{companions}} kancané · {{diet}} karo diet mirunggan",
     "dietarySummary": "Préférènsi panganan ({{count}})",
     "tableName": "Jeneng",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktif",
     "sessionInactive": "Ora aktif",
     "sessionLabel": "Sési lokal: {{status}}",
-    "sessionType": "Jinis: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Setup",
     "sessionTypeAdmin": "Admin",

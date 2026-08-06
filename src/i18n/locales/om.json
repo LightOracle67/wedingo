@@ -70,7 +70,6 @@
     "placePending": "Bakki ayyaanaa asitti mul'ata.",
     "welcomeWithTime": "Yeroo addaa kana waliin qooddachuuf si eegna. Sa'aa {{time}} jalqabna. Gadiin kaartaa bakkaa argatta.",
     "welcomeWithoutTime": "Yeroo addaa kana waliin qooddachuuf si eegna. Gadiin kaartaa bakkaa argatta.",
-    "transport": "Geejjiba",
     "addToCalendar": "Kaalandarii irratti dabali",
     "viewGoogleMaps": "Google Maps irratti ilaali",
     "viewAppleMaps": "Apple Maps irratti ilaali",
@@ -131,7 +130,6 @@
     "menuCarne": "Foon",
     "menuPescado": "Qurxummii",
     "menuVegano": "Veegaanii/Vegetarian",
-    "postre": "Mi'aawaa",
     "menuLabel": "Menuu",
     "allergiesLegend": "Adanyaa fi hin fudhachuu",
     "allergiesPlaceholder": "Adanyaa biraa (ibsadhu)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Nyaata",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Waamicha ilaali",
-    "logout": "Ba'aa"
+    "viewInvitation": "Waamicha ilaali"
   },
   "panel": {
     "confirmed": "Mirkanaa'e",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Maqaadhaan barbaadi...",
     "all": "Hundaa",
     "confirmed": "Mirkanaa'e",
-    "notAttending": "Hin dhufan",
     "statsLine": "{{yes}} mirkaneessu · {{no}} ganu · {{companions}} gargaaraa · {{diet}} nyaata addaa waliin",
     "dietarySummary": "Filannoo nyaataa ({{count}})",
     "tableName": "Maqaa",
@@ -610,7 +606,6 @@
     "sessionActive": "Dalagaa",
     "sessionInactive": "Dalagaa miti",
     "sessionLabel": "Se$$ii naannoo: {{status}}",
-    "sessionType": "Gosa: {{type}}",
     "sessionTypeSuperadmin": "Bulchaa Guddaa",
     "sessionTypeSetup": "Qindaa'ina",
     "sessionTypeAdmin": "Bulchaa",

@@ -70,7 +70,6 @@
     "placePending": "Indawo iya kubonakala apha.",
     "welcomeWithTime": "Sijonge ekwabelaneni ngalo mzuzu ukhethekileyo nawe. ",
     "welcomeWithoutTime": "Sijonge ekwabelaneni ngalo mzuzu ukhethekileyo nawe. ",
-    "transport": "Ezothutho",
     "addToCalendar": "Yongeza kwikhalenda",
     "viewGoogleMaps": "Vula kwiiMaphu zikaGoogle",
     "viewAppleMaps": "Vula kwi-Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Inyama",
     "menuPescado": "Intlanzi",
     "menuVegano": "Vegan / Vegetarian",
-    "postre": "Idessert",
     "menuLabel": "Imenyu",
     "allergiesLegend": "Ukwaliwa nokunganyamezeli",
     "allergiesPlaceholder": "Okunye ukwaliwa (chaza)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Ukutya ukutya",
     "sectionsLabel": "Amacandelo",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Jonga isimemo",
-    "logout": "Phuma"
+    "viewInvitation": "Jonga isimemo"
   },
   "panel": {
     "confirmed": "Iqinisekisiwe",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Phendla ngegama...",
     "all": "Konke",
     "confirmed": "Iqinisekisiwe",
-    "notAttending": "Ukungayi",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "Ukhetho lokutya ({{count}})",
     "tableName": "Igama",
@@ -610,7 +606,6 @@
     "sessionActive": "Iyasebenza",
     "sessionInactive": "Ayisebenzi",
     "sessionLabel": "Iseshoni yasekuhlaleni: {{status}}",
-    "sessionType": "Uhlobo: {{uhlobo}}",
     "sessionTypeSuperadmin": "I-Superadmin",
     "sessionTypeSetup": "Misela",
     "sessionTypeAdmin": "Admin",

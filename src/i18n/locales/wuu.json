@@ -70,7 +70,6 @@
     "placePending": "庆祝地点将显示在此处。",
     "welcomeWithTime": "我们期待与您分享这一特别时刻。{{time}}开始。下方是位置地图。",
     "welcomeWithoutTime": "我们期待与您分享这一特别时刻。下方是位置地图。",
-    "transport": "交通",
     "addToCalendar": "添加到日历",
     "viewGoogleMaps": "在Google地图中查看",
     "viewAppleMaps": "在Apple地图中查看",
@@ -131,7 +130,6 @@
     "menuCarne": "肉类",
     "menuPescado": "鱼类",
     "menuVegano": "纯素/素食",
-    "postre": "甜点",
     "menuLabel": "菜单",
     "allergiesLegend": "过敏和不耐受",
     "allergiesPlaceholder": "其他过敏（请注明）",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "饮食",
     "sectionsLabel": "Secciones",
     "barTitle": "韦丁戈·管理员",
-    "viewInvitation": "查看邀请",
-    "logout": "退出"
+    "viewInvitation": "查看邀请"
   },
   "panel": {
     "confirmed": "已确认",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "按姓名搜索...",
     "all": "全部",
     "confirmed": "已确认",
-    "notAttending": "不出席",
     "statsLine": "{{yes}}确认 · {{no}}谢绝 · {{companions}}位陪同 · {{diet}}特殊饮食",
     "dietarySummary": "饮食偏好（{{count}}）",
     "tableName": "姓名",
@@ -610,7 +606,6 @@
     "sessionActive": "活动",
     "sessionInactive": "不活动",
     "sessionLabel": "本地会话：{{status}}",
-    "sessionType": "类型：{{type}}",
     "sessionTypeSuperadmin": "超级管理员",
     "sessionTypeSetup": "设置",
     "sessionTypeAdmin": "管理员",

@@ -70,7 +70,6 @@
     "placePending": "ზეიმის ადგილი აქ გამოჩნდება.",
     "welcomeWithTime": "გელოდებით ამ განსაკუთრებული მომენტის გასაზიარებლად. ვიწყებთ {{time}}-ზე. ქვემოთ იხილავთ ადგილმდებარეობის რუკას.",
     "welcomeWithoutTime": "გელოდებით ამ განსაკუთრებული მომენტის გასაზიარებლად. ქვემოთ იხილავთ ადგილმდებარეობის რუკას.",
-    "transport": "ტრანსპორტი",
     "addToCalendar": "კალენდარში დამატება",
     "viewGoogleMaps": "ნახვა Google Maps-ში",
     "viewAppleMaps": "ნახვა Apple Maps-ში",
@@ -131,7 +130,6 @@
     "menuCarne": "ხორცი",
     "menuPescado": "თევზი",
     "menuVegano": "ვეგანური/ვეგეტარიანული",
-    "postre": "დესერტი",
     "menuLabel": "მენიუ",
     "allergiesLegend": "ალერგიები და აუტანლობები",
     "allergiesPlaceholder": "სხვა ალერგია (დააკონკრეტეთ)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "დიეტა",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "მოწვევის ნახვა",
-    "logout": "გასვლა"
+    "viewInvitation": "მოწვევის ნახვა"
   },
   "panel": {
     "confirmed": "დადასტურებული",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "სახელით ძიება...",
     "all": "ყველა",
     "confirmed": "დადასტურებული",
-    "notAttending": "არ ესწრებიან",
     "statsLine": "{{yes}} ადასტურებს · {{no}} უარს ამბობს · {{companions}} თანმხლები · {{diet}} სპეციალური დიეტით",
     "dietarySummary": "კვებითი პრეფერენციები ({{count}})",
     "tableName": "სახელი",
@@ -610,7 +606,6 @@
     "sessionActive": "აქტიური",
     "sessionInactive": "არააქტიური",
     "sessionLabel": "ლოკალური სესია: {{status}}",
-    "sessionType": "ტიპი: {{type}}",
     "sessionTypeSuperadmin": "სუპერადმინი",
     "sessionTypeSetup": "დაყენება",
     "sessionTypeAdmin": "ადმინი",

@@ -126,6 +126,40 @@ describe("SetupPage", () => {
     expect(screen.getByText("setup.viewCover")).toBeDefined();
   });
 
+  it("shows the access code on the success card and copies it", async () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      hasStoredConfig: true,
+      saveMessage: "Saved!",
+      setupToken: "my-setup-token-123",
+    });
+    const writeText = vi.fn(() => Promise.resolve());
+    Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
+
+    render(<SetupPage />);
+    // El código de acceso se recuerda en la tarjeta de éxito (onboarding).
+    expect(screen.getByText("my-setup-token-123")).toBeDefined();
+    fireEvent.click(screen.getByText("setup.copyToken"));
+    await vi.waitFor(() => expect(writeText).toHaveBeenCalledWith("my-setup-token-123"));
+    Object.defineProperty(navigator, "clipboard", { value: undefined, configurable: true });
+  });
+
+  it("tolerates a clipboard failure when copying the token", async () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      hasStoredConfig: true,
+      saveMessage: "Saved!",
+      setupToken: "my-setup-token-123",
+    });
+    const writeText = vi.fn(() => Promise.reject(new Error("denied")));
+    Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
+
+    render(<SetupPage />);
+    expect(() => fireEvent.click(screen.getByText("setup.copyToken"))).not.toThrow();
+    await vi.waitFor(() => expect(writeText).toHaveBeenCalled());
+    Object.defineProperty(navigator, "clipboard", { value: undefined, configurable: true });
+  });
+
   it("renders music player when musicFile is present", () => {
     mockUseApp.mockReturnValue({
       ...baseMock,

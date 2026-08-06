@@ -70,7 +70,6 @@
     "placePending": "Platsen för firandet visas här.",
     "welcomeWithTime": "Vi ser fram emot att dela detta speciella ögonblick med dig. Vi börjar kl. {{time}}. Nedan hittar du kartan.",
     "welcomeWithoutTime": "Vi ser fram emot att dela detta speciella ögonblick med dig. Nedan hittar du kartan.",
-    "transport": "Transport",
     "addToCalendar": "Lägg till i kalender",
     "viewGoogleMaps": "Visa i Google Maps",
     "viewAppleMaps": "Visa i Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Kött",
     "menuPescado": "Fisk",
     "menuVegano": "Veganskt/Vegetariskt",
-    "postre": "Dessert",
     "menuLabel": "Meny",
     "allergiesLegend": "Allergier och intoleranser",
     "allergiesPlaceholder": "Annan allergi (specificera)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Kost",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Visa inbjudan",
-    "logout": "Logga ut"
+    "viewInvitation": "Visa inbjudan"
   },
   "panel": {
     "confirmed": "Bekräftade",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Sök efter namn...",
     "all": "Alla",
     "confirmed": "Bekräftade",
-    "notAttending": "Kommer inte",
     "statsLine": "{{yes}} bekräftar · {{no}} tackar nej · {{companions}} följeslagare · {{diet}} med specialkost",
     "dietarySummary": "Kostpreferenser ({{count}})",
     "tableName": "Namn",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktiv",
     "sessionInactive": "Inaktiv",
     "sessionLabel": "Lokal session: {{status}}",
-    "sessionType": "Typ: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Konfiguration",
     "sessionTypeAdmin": "Administration",

@@ -75,7 +75,6 @@
     "timeLabel": "La ceremonia dará comienzo a las {{time}} h.",
     "timePending": "Horario por confirmar",
     "placePending": "El lugar de la celebración aparecerá aquí.",
-    "transport": "Transporte",
     "addToCalendar": "Añadir al calendario",
     "viewGoogleMaps": "Ver en Google Maps",
     "locationLabel": "Ubicación",
@@ -138,7 +137,6 @@
     "menuCarne": "Carne",
     "menuPescado": "Pescado",
     "menuVegano": "Vegano/Vegetariano",
-    "postre": "Postre",
     "menuLabel": "Menú",
     "allergiesLegend": "Alergias e intolerancias",
     "allergiesPlaceholder": "Otra alergia (especificar)",
@@ -188,7 +186,6 @@
     "birthDateHint": "Necesaria solo para saber si eres menor de 14 años.",
     "transportLabel": "Transporte",
     "transportHint": "Elige cómo llegarás a la celebración.",
-    "transportOwnCar": "Coche propio",
     "transportOwnCarOption": "Usaré mi coche propio",
     "transportBusOption": "Usaré el Autobús",
     "transportTaxiOption": "O usaré el Taxi",
@@ -436,7 +433,9 @@
     "galleryMoveLeft": "Mover a la izquierda",
     "galleryMoveRight": "Mover a la derecha",
     "instagramLabel": "Instagram de los novios (opcional)",
-    "facebookLabel": "Facebook de los novios (opcional)"
+    "facebookLabel": "Facebook de los novios (opcional)",
+    "successKeepToken": "Guarda tu código de acceso: es tu única forma de volver a entrar.",
+    "tokenCopied": "Código copiado."
   },
   "admin": {
     "tabs": {
@@ -461,7 +460,6 @@
     "pdfTableCompanions": "Acomps",
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
-    "logout": "Cerrar sesión",
     "editorAriaLabel": "Editor de la invitación"
   },
   "panel": {
@@ -492,7 +490,6 @@
   "attendance": {
     "searchLabel": "Buscar por nombre",
     "all": "Todos",
-    "notAttending": "No asisten",
     "statsLine": "{{yes}} confirman · {{no}} declinan · {{companions}} acompañantes · {{diet}} con dieta especial",
     "tableName": "Nombre",
     "tableAttendance": "Asistencia",
@@ -751,7 +748,6 @@
     "sessionActive": "Activa",
     "sessionInactive": "Inactiva",
     "sessionLabel": "Sesión local: {{status}}",
-    "sessionType": "Tipo: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Setup",
     "sessionTypeAdmin": "Admin",
@@ -938,8 +934,6 @@
     "hour_other": "{{count}} horas",
     "minute_one": "{{count}} minuto",
     "minute_other": "{{count}} minutos",
-    "hours": "{{count}}h",
-    "minutes": "{{count}}min",
     "second_one": "{{count}} segundo",
     "second_other": "{{count}} segundos"
   },

@@ -70,7 +70,6 @@
     "placePending": "מיקום האירוע יופיע כאן.",
     "welcomeWithTime": "נשמח לראותך ולחלוק איתך את הרגע המיוחד הזה. מתחילים בשעה {{time}}. מפת המיקום למטה.",
     "welcomeWithoutTime": "נשמח לראותך ולחלוק איתך את הרגע המיוחד הזה. מפת המיקום למטה.",
-    "transport": "הסעות",
     "addToCalendar": "הוסף ליומן",
     "viewGoogleMaps": "צפה ב־Google Maps",
     "viewAppleMaps": "צפה ב־Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "בשר",
     "menuPescado": "דגים",
     "menuVegano": "טבעוני/צמחוני",
-    "postre": "קינוח",
     "menuLabel": "תפריט",
     "allergiesLegend": "אלרגיות ורגישויות",
     "allergiesPlaceholder": "אלרגיה אחרת (פרט)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "תזונה",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · אדמין",
-    "viewInvitation": "צפה בהזמנה",
-    "logout": "התנתק"
+    "viewInvitation": "צפה בהזמנה"
   },
   "panel": {
     "confirmed": "אישרו",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "חפש לפי שם...",
     "all": "הכל",
     "confirmed": "אישרו",
-    "notAttending": "לא מגיעים",
     "statsLine": "{{yes}} מאשרים · {{no}} מסרבים · {{companions}} מלווים · {{diet}} עם תזונה מיוחדת",
     "dietarySummary": "העדפות תזונתיות ({{count}})",
     "tableName": "שם",
@@ -610,7 +606,6 @@
     "sessionActive": "פעילה",
     "sessionInactive": "לא פעילה",
     "sessionLabel": "הפעלה מקומית: {{status}}",
-    "sessionType": "סוג: {{type}}",
     "sessionTypeSuperadmin": "מנהל-על",
     "sessionTypeSetup": "הגדרה",
     "sessionTypeAdmin": "מנהל",

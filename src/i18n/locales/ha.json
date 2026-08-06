@@ -70,7 +70,6 @@
     "placePending": "Wurin bikin zai bayyana anan.",
     "welcomeWithTime": "Muna jiran ku don raba wannan lokaci na musamman. Za mu fara da {{time}}. A ƙasa za ku sami taswirar wuri.",
     "welcomeWithoutTime": "Muna jiran ku don raba wannan lokaci na musamman. A ƙasa za ku sami taswirar wuri.",
-    "transport": "Sufuri",
     "addToCalendar": "Ƙara zuwa kalanda",
     "viewGoogleMaps": "Duba a Google Maps",
     "viewAppleMaps": "Duba a Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Nama",
     "menuPescado": "Kifi",
     "menuVegano": "Vegan/Mai cin ganyayyaki",
-    "postre": "Kayan zaki",
     "menuLabel": "Menu",
     "allergiesLegend": "Allergies da rashin haƙuri",
     "allergiesPlaceholder": "Wani allergy (ƙayyade)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Abinci",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Duba gayyata",
-    "logout": "Fita"
+    "viewInvitation": "Duba gayyata"
   },
   "panel": {
     "confirmed": "An tabbatar",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Nema da suna...",
     "all": "Duka",
     "confirmed": "An tabbatar",
-    "notAttending": "Ba za su halarta ba",
     "statsLine": "{{yes}} tabbatarwa · {{no}} ƙin yarda · {{companions}} masu rakiya · {{diet}} da abinci na musamman",
     "dietarySummary": "Zaɓuɓɓukan abinci ({{count}})",
     "tableName": "Suna",
@@ -610,7 +606,6 @@
     "sessionActive": "Mai aiki",
     "sessionInactive": "Ba ya aiki",
     "sessionLabel": "Zama na gida: {{status}}",
-    "sessionType": "Nau'in: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Tsari",
     "sessionTypeAdmin": "Admin",

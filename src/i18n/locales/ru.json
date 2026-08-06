@@ -70,7 +70,6 @@
     "placePending": "Место проведения появится здесь.",
     "welcomeWithTime": "Ждём вас, чтобы разделить этот особенный момент. Начало в {{time}}. Ниже вы найдете карту.",
     "welcomeWithoutTime": "Ждём вас, чтобы разделить этот особенный момент. Ниже вы найдете карту.",
-    "transport": "Транспорт",
     "addToCalendar": "Добавить в календарь",
     "viewGoogleMaps": "Открыть в Google Картах",
     "viewAppleMaps": "Открыть в Apple Картах",
@@ -131,7 +130,6 @@
     "menuCarne": "Мясо",
     "menuPescado": "Рыба",
     "menuVegano": "Веган/Вегетарианец",
-    "postre": "Десерт",
     "menuLabel": "Меню",
     "allergiesLegend": "Аллергии и непереносимости",
     "allergiesPlaceholder": "Другая аллергия (укажите)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Питание",
     "sectionsLabel": "Secciones",
     "barTitle": "Вединго · Администратор",
-    "viewInvitation": "Посмотреть приглашение",
-    "logout": "Выйти"
+    "viewInvitation": "Посмотреть приглашение"
   },
   "panel": {
     "confirmed": "Подтвердили",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Поиск по имени...",
     "all": "Все",
     "confirmed": "Подтвердили",
-    "notAttending": "Не придут",
     "statsLine": "{{yes}} подтверждают · {{no}} отказываются · {{companions}} сопровождающих · {{diet}} со спец. питанием",
     "dietarySummary": "Предпочтения в питании ({{count}})",
     "tableName": "Имя",
@@ -610,7 +606,6 @@
     "sessionActive": "Активна",
     "sessionInactive": "Неактивна",
     "sessionLabel": "Локальная сессия: {{status}}",
-    "sessionType": "Тип: {{type}}",
     "sessionTypeSuperadmin": "Супер-админ",
     "sessionTypeSetup": "Настройка",
     "sessionTypeAdmin": "Админ",

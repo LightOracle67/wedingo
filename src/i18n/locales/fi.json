@@ -70,7 +70,6 @@
     "placePending": "Juhlapaikka näkyy tässä.",
     "welcomeWithTime": "Tervetuloa jakamaan tämä erityinen hetki kanssamme. Aloitamme klo {{time}}. Alempana löydät sijaintikartan.",
     "welcomeWithoutTime": "Tervetuloa jakamaan tämä erityinen hetki kanssamme. Alempana löydät sijaintikartan.",
-    "transport": "Kuljetus",
     "addToCalendar": "Lisää kalenteriin",
     "viewGoogleMaps": "Näytä Google Mapsissa",
     "viewAppleMaps": "Näytä Apple Mapsissa",
@@ -131,7 +130,6 @@
     "menuCarne": "Liha",
     "menuPescado": "Kala",
     "menuVegano": "Vegaani/Kasvis",
-    "postre": "Jälkiruoka",
     "menuLabel": "Valikko",
     "allergiesLegend": "Allergiat ja intoleranssit",
     "allergiesPlaceholder": "Muu allergia (täsmennä)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Ruokavalio",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Näytä kutsu",
-    "logout": "Kirjaudu ulos"
+    "viewInvitation": "Näytä kutsu"
   },
   "panel": {
     "confirmed": "Vahvistettu",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Hae nimellä...",
     "all": "Kaikki",
     "confirmed": "Vahvistettu",
-    "notAttending": "Ei osallistu",
     "statsLine": "{{yes}} vahvistaa · {{no}} kieltäytyy · {{companions}} seuralaista · {{diet}} erityisruokavaliolla",
     "dietarySummary": "Ruokavaliotoiveet ({{count}})",
     "tableName": "Nimi",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktiivinen",
     "sessionInactive": "Ei aktiivinen",
     "sessionLabel": "Paikallinen istunto: {{status}}",
-    "sessionType": "Tyyppi: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Asennus",
     "sessionTypeAdmin": "Admin",

@@ -70,7 +70,6 @@
     "placePending": "Bayram joyi bu yerda ko'rsatiladi.",
     "welcomeWithTime": "Ushbu maxsus lahzani birga baham ko'rish uchun sizni kutamiz. Biz soat {{time}} da boshlaymiz. Quyida joylashuv xaritasini topasiz.",
     "welcomeWithoutTime": "Ushbu maxsus lahzani birga baham ko'rish uchun sizni kutamiz. Quyida joylashuv xaritasini topasiz.",
-    "transport": "Transport",
     "addToCalendar": "Taqvimga qo'shish",
     "viewGoogleMaps": "Google Mapsda ko'rish",
     "viewAppleMaps": "Apple Mapsda ko'rish",
@@ -131,7 +130,6 @@
     "menuCarne": "Go'sht",
     "menuPescado": "Baliq",
     "menuVegano": "Vegan/vegetarian",
-    "postre": "Desert",
     "menuLabel": "Menyu",
     "allergiesLegend": "Allergiyalar va toqat qila olmaslik",
     "allergiesPlaceholder": "Boshqa allergiya (aniqlang)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Parhez",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Taklifnomani ko'rish",
-    "logout": "Chiqish"
+    "viewInvitation": "Taklifnomani ko'rish"
   },
   "panel": {
     "confirmed": "Tasdiqlangan",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Ism bo'yicha qidirish...",
     "all": "Barchasi",
     "confirmed": "Tasdiqlangan",
-    "notAttending": "Ishtirok etmaydi",
     "statsLine": "{{yes}} tasdiqlaydi · {{no}} rad etadi · {{companions}} hamroh · {{diet}} maxsus parhez bilan",
     "dietarySummary": "Oziq-ovqat afzalliklari ({{count}})",
     "tableName": "Ism",
@@ -610,7 +606,6 @@
     "sessionActive": "Faol",
     "sessionInactive": "Faol emas",
     "sessionLabel": "Mahalliy sessiya: {{status}}",
-    "sessionType": "Turi: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Sozlash",
     "sessionTypeAdmin": "Admin",

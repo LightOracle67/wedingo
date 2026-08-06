@@ -1624,3 +1624,21 @@ select.setup-input {
   padding: 0;
   margin-bottom: 0.25rem;
 }
+
+/* Tarjeta de éxito del onboarding: el código de acceso se recuerda aquí. */
+.setup-success-card__token {
+  margin: 0.75rem auto 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.6rem;
+  background: color-mix(in srgb, var(--setup-field-bg, #2a2418) 45%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--setup-accent, #d8b24a) 40%, transparent);
+  max-width: 22rem;
+}
+.setup-success-card__code {
+  display: block;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0;
+  word-break: break-all;
+}

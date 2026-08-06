@@ -22,6 +22,12 @@ export default function SetupPage() {
   } = useApp();
 
   const { addToast } = useToast();
+  // El token de acceso único, para recordarlo en la tarjeta de éxito (la
+  // sección Acceso se oculta al verificar la sesión y era irrecuperable si no
+  // se guardaba antes).
+  const setupTokenValue = (() => {
+    try { return safeGetItem(STORAGE_KEYS.setupToken(inviteToken || ""), sessionStorage) || setupToken || ""; } catch { return setupToken || ""; }
+  })();
 
   useEffect(() => {
     if (authMessage) {
@@ -159,6 +165,15 @@ export default function SetupPage() {
             <p className="setup-success-card__text">
               {t("setup.successText")}
             </p>
+            <div className="setup-success-card__token" role="note">
+              <p className="setup-help">{t("setup.successKeepToken")}</p>
+              <code className="setup-success-card__code">{setupTokenValue}</code>
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => {
+                if (!setupTokenValue) return;
+                navigator.clipboard?.writeText(setupTokenValue).catch(() => {});
+                addToast("success", t("setup.tokenCopied"));
+              }}>{t("setup.copyToken")}</button>
+            </div>
             <div className="setup-actions" style={{ justifyContent: "center", marginTop: "0.5rem" }}>
               <button className="setup-button" type="button" onClick={() => navigate(`/${inviteToken}/admin`)}>
                 {t("setup.goToPanel")}

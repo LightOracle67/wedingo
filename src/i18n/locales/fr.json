@@ -70,7 +70,6 @@
     "placePending": "Le lieu de la célébration apparaîtra ici.",
     "welcomeWithTime": "Nous vous attendons pour partager ce moment si spécial. Nous commençons à {{time}}. Vous trouverez le plan d'accès ci-dessous.",
     "welcomeWithoutTime": "Nous vous attendons pour partager ce moment si spécial. Vous trouverez le plan d'accès ci-dessous.",
-    "transport": "Transport",
     "addToCalendar": "Ajouter au calendrier",
     "viewGoogleMaps": "Voir sur Google Maps",
     "viewAppleMaps": "Voir sur Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Viande",
     "menuPescado": "Poisson",
     "menuVegano": "Végane/Végétarien",
-    "postre": "Dessert",
     "menuLabel": "Menu",
     "allergiesLegend": "Allergies et intolérances",
     "allergiesPlaceholder": "Autre allergie (précisez)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Régime",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Administrateur",
-    "viewInvitation": "Afficher l'invitation",
-    "logout": "Se déconnecter"
+    "viewInvitation": "Afficher l'invitation"
   },
   "panel": {
     "confirmed": "Confirmé(e)s",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Rechercher par nom...",
     "all": "Tout",
     "confirmed": "Confirmé(e)s",
-    "notAttending": "Absent(e)s",
     "statsLine": "{{yes}} viennent · {{no}} ne viennent pas · {{companions}} accompagnant(s) · {{diet}} régime spécial",
     "dietarySummary": "Préférences alimentaires ({{count}})",
     "tableName": "Nom",
@@ -610,7 +606,6 @@
     "sessionActive": "Actif",
     "sessionInactive": "Inactif",
     "sessionLabel": "Session locale : {{status}}",
-    "sessionType": "Type : {{type}}",
     "sessionTypeSuperadmin": "Super-administrateur",
     "sessionTypeSetup": "Configuration",
     "sessionTypeAdmin": "Administrateur",

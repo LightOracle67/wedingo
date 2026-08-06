@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { collection, doc, getDocs, query, setDoc, updateDoc, where, writeBatch, deleteField } from "firebase/firestore";
+import { collection, doc, getDocs, query, setDoc, updateDoc, where, writeBatch, deleteField, deleteDoc } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
 import { hashSetupToken } from "../../lib/setup-token";
@@ -35,12 +35,19 @@ const TokensTab = memo(function TokensTab() {
     setMessage("");
     try {
       await updateDoc(doc(db, "invitations", invId), { _activeSetupToken: "" });
+      // Un token MIGRADO vive en setupTokens/{hash}: sin borrarlo, revocar el
+      // campo legacy dejaba el token aún válido (no se podía revocar nunca).
+      const activeToken = tokens.find((tk) => tk.id === invId)?.activeToken;
+      if (activeToken) {
+        const hash = await hashSetupToken(activeToken);
+        await deleteDoc(doc(db, "setupTokens", hash));
+      }
       setMessage(t("superadmin.tokenRevoked"));
       await loadTokens();
     } catch {
       setError(t("superadmin.tokenRevokeError"));
     }
-  }, [loadTokens, t]);
+  }, [loadTokens, tokens, t]);
 
   const handleCleanup = useCallback(async () => {
     if (!window.confirm(t("superadmin.cleanupConfirm"))) return;

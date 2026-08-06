@@ -70,7 +70,6 @@
     "placePending": "ಸ್ಥಳವು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತದೆ.",
     "welcomeWithTime": "ಈ ವಿಶೇಷ ಕ್ಷಣವನ್ನು ನಿಮ್ಮೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಲು ನಾವು ಎದುರು ನೋಡುತ್ತಿದ್ದೇವೆ. ",
     "welcomeWithoutTime": "ಈ ವಿಶೇಷ ಕ್ಷಣವನ್ನು ನಿಮ್ಮೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಲು ನಾವು ಎದುರು ನೋಡುತ್ತಿದ್ದೇವೆ. ",
-    "transport": "ಸಾರಿಗೆ",
     "addToCalendar": "ಕ್ಯಾಲೆಂಡರ್‌ಗೆ ಸೇರಿಸಿ",
     "viewGoogleMaps": "Google Maps ನಲ್ಲಿ ತೆರೆಯಿರಿ",
     "viewAppleMaps": "Apple ನಕ್ಷೆಗಳಲ್ಲಿ ತೆರೆಯಿರಿ",
@@ -131,7 +130,6 @@
     "menuCarne": "ಮಾಂಸ",
     "menuPescado": "ಮೀನು",
     "menuVegano": "ಸಸ್ಯಾಹಾರಿ/ಸಸ್ಯಾಹಾರಿ",
-    "postre": "ಸಿಹಿತಿಂಡಿ",
     "menuLabel": "ಮೆನು",
     "allergiesLegend": "ಅಲರ್ಜಿಗಳು ಮತ್ತು ಅಸಹಿಷ್ಣುತೆಗಳು",
     "allergiesPlaceholder": "ಇತರ ಅಲರ್ಜಿ (ನಿರ್ದಿಷ್ಟಪಡಿಸಿ)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "ಆಹಾರ ಪದ್ಧತಿ",
     "sectionsLabel": "ವಿಭಾಗಗಳು",
     "barTitle": "Wedingo · ನಿರ್ವಾಹಕ",
-    "viewInvitation": "ಆಹ್ವಾನವನ್ನು ವೀಕ್ಷಿಸಿ",
-    "logout": "ಲಾಗ್ ಔಟ್ ಮಾಡಿ"
+    "viewInvitation": "ಆಹ್ವಾನವನ್ನು ವೀಕ್ಷಿಸಿ"
   },
   "panel": {
     "confirmed": "ದೃಢಪಡಿಸಿದೆ",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "ಹೆಸರಿನಿಂದ ಹುಡುಕಿ...",
     "all": "ಎಲ್ಲಾ",
     "confirmed": "ದೃಢಪಡಿಸಿದೆ",
-    "notAttending": "ಹಾಜರಾಗುತ್ತಿಲ್ಲ",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "ಆಹಾರದ ಆದ್ಯತೆಗಳು ({{count}})",
     "tableName": "ಹೆಸರು",
@@ -610,7 +606,6 @@
     "sessionActive": "ಸಕ್ರಿಯ",
     "sessionInactive": "ನಿಷ್ಕ್ರಿಯ",
     "sessionLabel": "ಸ್ಥಳೀಯ ಸೆಷನ್: {{status}}",
-    "sessionType": "ಪ್ರಕಾರ: {{type}}",
     "sessionTypeSuperadmin": "ಸೂಪರ್ಆಡ್ಮಿನ್",
     "sessionTypeSetup": "ಸೆಟಪ್",
     "sessionTypeAdmin": "ನಿರ್ವಾಹಕ",

@@ -70,7 +70,6 @@
     "placePending": "Agparang ditoy ti venue.",
     "welcomeWithTime": "Segseggaanmi ti panangibinglay kadakayo iti daytoy naisangsangayan a kanito. ",
     "welcomeWithoutTime": "Segseggaanmi ti panangibinglay kadakayo iti daytoy naisangsangayan a kanito. ",
-    "transport": "Ibiahe",
     "addToCalendar": "Inayon iti kalendario",
     "viewGoogleMaps": "Luktan iti Google Maps",
     "viewAppleMaps": "Luktan iti Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Karne",
     "menuPescado": "Lames",
     "menuVegano": "Vegan/Vegetariano nga",
-    "postre": "Nasam-it",
     "menuLabel": "Menu ti",
     "allergiesLegend": "Allergy & dagiti saan a panaganus",
     "allergiesPlaceholder": "Dadduma pay nga allergy (ibaga) .",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Kanen",
     "sectionsLabel": "Dagiti Seksion",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Kitaen ti imbitasion",
-    "logout": "Ag-log out"
+    "viewInvitation": "Kitaen ti imbitasion"
   },
   "panel": {
     "confirmed": "Napasingkedan",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Agbirok babaen ti nagan...",
     "all": "Amin",
     "confirmed": "Napasingkedan",
-    "notAttending": "Saan a tumabuno",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "Dagiti kaykayat a taraon ({{count}}) .",
     "tableName": "Nagan",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktibo",
     "sessionInactive": "Di aktibo",
     "sessionLabel": "Lokal a sesion: {{kasasaad}}",
-    "sessionType": "Tipo: {{tipo}}",
     "sessionTypeSuperadmin": "Superadmin nga",
     "sessionTypeSetup": "Iyasmang",
     "sessionTypeAdmin": "Admin",

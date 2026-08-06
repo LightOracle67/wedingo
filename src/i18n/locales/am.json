@@ -70,7 +70,6 @@
     "placePending": "የክብረ በዓሉ ቦታ እዚህ ይታያል።",
     "welcomeWithTime": "ይህን ልዩ ጊዜ አብረን ለማካፈል እንጠብቅዎታለን። በ{{time}} እንጀምራለን። ከታች የአካባቢ ካርታ ያገኛሉ።",
     "welcomeWithoutTime": "ይህን ልዩ ጊዜ አብረን ለማካፈል እንጠብቅዎታለን። ከታች የአካባቢ ካርታ ያገኛሉ።",
-    "transport": "መጓጓዣ",
     "addToCalendar": "ወደ ቀን መቁጠሪያ አክል",
     "viewGoogleMaps": "በGoogle Maps ይመልከቱ",
     "viewAppleMaps": "በApple Maps ይመልከቱ",
@@ -131,7 +130,6 @@
     "menuCarne": "ሥጋ",
     "menuPescado": "ዓሣ",
     "menuVegano": "ቪጋን/ቬጀቴሪያን",
-    "postre": "ጣፋጭ",
     "menuLabel": "ምናሌ",
     "allergiesLegend": "አለርጂዎች እና አለመቻቻሎች",
     "allergiesPlaceholder": "ሌላ አለርጂ (ይጥቀሱ)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "አመጋገብ",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · አስተዳዳሪ",
-    "viewInvitation": "ግብዣ ይመልከቱ",
-    "logout": "ውጣ"
+    "viewInvitation": "ግብዣ ይመልከቱ"
   },
   "panel": {
     "confirmed": "የተረጋገጡ",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "በስም ፈልግ...",
     "all": "ሁሉም",
     "confirmed": "የተረጋገጡ",
-    "notAttending": "አይገኙም",
     "statsLine": "{{yes}} ያረጋግጣሉ · {{no}} አይቀበሉም · {{companions}} አጃቢዎች · {{diet}} በልዩ አመጋገብ",
     "dietarySummary": "የምግብ ምርጫዎች ({{count}})",
     "tableName": "ስም",
@@ -610,7 +606,6 @@
     "sessionActive": "ንቁ",
     "sessionInactive": "ንቁ ያልሆነ",
     "sessionLabel": "አካባቢያዊ ክፍለ ጊዜ: {{status}}",
-    "sessionType": "አይነት: {{type}}",
     "sessionTypeSuperadmin": "ሱፐርአድሚን",
     "sessionTypeSetup": "ውቅር",
     "sessionTypeAdmin": "አድሚን",

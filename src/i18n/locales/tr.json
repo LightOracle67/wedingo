@@ -70,7 +70,6 @@
     "placePending": "Kutlama yeri burada görünecek.",
     "welcomeWithTime": "Bu özel anı paylaşmanızı bekliyoruz. Saat {{time}}da başlıyoruz. Aşağıda konum haritasını bulacaksınız.",
     "welcomeWithoutTime": "Bu özel anı paylaşmanızı bekliyoruz. Aşağıda konum haritasını bulacaksınız.",
-    "transport": "Ulaşım",
     "addToCalendar": "Takvime ekle",
     "viewGoogleMaps": "Google Haritalar'da görüntüle",
     "viewAppleMaps": "Apple Haritalar'da görüntüle",
@@ -131,7 +130,6 @@
     "menuCarne": "Et",
     "menuPescado": "Balık",
     "menuVegano": "Vegan/Vejetaryen",
-    "postre": "Tatlı",
     "menuLabel": "Menü",
     "allergiesLegend": "Alerjiler ve intoleranslar",
     "allergiesPlaceholder": "Diğer alerji (belirtiniz)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Diyet",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Yönetici",
-    "viewInvitation": "Daveti görüntüle",
-    "logout": "Oturumu kapat"
+    "viewInvitation": "Daveti görüntüle"
   },
   "panel": {
     "confirmed": "Onaylandı",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "İsme göre ara...",
     "all": "Tümü",
     "confirmed": "Onaylandı",
-    "notAttending": "Katılmıyor",
     "statsLine": "{{yes}} onaylıyor · {{no}} reddediyor · {{companions}} refakatçi · {{diet}} özel diyetli",
     "dietarySummary": "Beslenme tercihleri ({{count}})",
     "tableName": "İsim",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktif",
     "sessionInactive": "Pasif",
     "sessionLabel": "Yerel oturum: {{status}}",
-    "sessionType": "Tür: {{type}}",
     "sessionTypeSuperadmin": "Süper yönetici",
     "sessionTypeSetup": "Kurulum",
     "sessionTypeAdmin": "Yönetici",

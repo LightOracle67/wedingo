@@ -70,7 +70,6 @@
     "placePending": "Lefelo le tla tlhagelela fano.",
     "welcomeWithTime": "Re lebile pele go abelana le lona motsotso ono o o kgethegileng. ",
     "welcomeWithoutTime": "Re lebile pele go abelana le lona motsotso ono o o kgethegileng. ",
-    "transport": "Dipalangwa",
     "addToCalendar": "Tsenya mo khalentareng",
     "viewGoogleMaps": "Bula mo Dimmapeng tsa Google",
     "viewAppleMaps": "Bula mo Dimmapeng tsa Apple",
@@ -131,7 +130,6 @@
     "menuCarne": "Nama",
     "menuPescado": "Tlhapi",
     "menuVegano": "Vegan/Moje wa merogo",
-    "postre": "Phuting",
     "menuLabel": "Menyu",
     "allergiesLegend": "Dialeji le go tlhoka go itshokela",
     "allergiesPlaceholder": "Dialeji tse dingwe (tlhalosa)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Dijo",
     "sectionsLabel": "Dikarolo",
     "barTitle": "Wedingo · Motsamaisi",
-    "viewInvitation": "Leba taletso",
-    "logout": "Tswa"
+    "viewInvitation": "Leba taletso"
   },
   "panel": {
     "confirmed": "Go netefaditswe",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Batla ka leina...",
     "all": "Otlhe",
     "confirmed": "Go netefaditswe",
-    "notAttending": "Ga ke tsene",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "Dijo tse o di ratang ({{bala}})",
     "tableName": "Leina",
@@ -610,7 +606,6 @@
     "sessionActive": "Matlhagatlhaga",
     "sessionInactive": "Ga e dire",
     "sessionLabel": "Nako ya selegae: {{boemo}}",
-    "sessionType": "Mofuta: {{mofuta}}",
     "sessionTypeSuperadmin": "Motsamaisi yo Mogolo",
     "sessionTypeSetup": "Siamisa",
     "sessionTypeAdmin": "Motsamaisi",

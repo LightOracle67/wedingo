@@ -70,7 +70,6 @@
     "placePending": "El lloc de la celebració apareixerà aquí.",
     "welcomeWithTime": "Us esperem per compartir aquest moment tan especial. Comencem a les {{time}}. Més avall trobareu el mapa d'ubicació.",
     "welcomeWithoutTime": "Us esperem per compartir aquest moment tan especial. Més avall trobareu el mapa d'ubicació.",
-    "transport": "Transport",
     "addToCalendar": "Afegir al calendari",
     "viewGoogleMaps": "Veure a Google Maps",
     "viewAppleMaps": "Veure a Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Carn",
     "menuPescado": "Peix",
     "menuVegano": "Vegà/Vegetarià",
-    "postre": "Postres",
     "menuLabel": "Menú",
     "allergiesLegend": "Al·lèrgies i intoleràncies",
     "allergiesPlaceholder": "Una altra al·lèrgia (especificar)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Veure invitació",
-    "logout": "Tanca la sessió"
+    "viewInvitation": "Veure invitació"
   },
   "panel": {
     "confirmed": "Confirmats",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Cercar per nom...",
     "all": "Tots",
     "confirmed": "Confirmats",
-    "notAttending": "No assisteixen",
     "statsLine": "{{yes}} confirmen · {{no}} declinen · {{companions}} acompanyants · {{diet}} amb dieta especial",
     "dietarySummary": "Preferències alimentàries ({{count}})",
     "tableName": "Nom",
@@ -610,7 +606,6 @@
     "sessionActive": "Activa",
     "sessionInactive": "Inactiva",
     "sessionLabel": "Sessió local: {{status}}",
-    "sessionType": "Tipus: {{type}}",
     "sessionTypeSuperadmin": "Superadministrador",
     "sessionTypeSetup": "Configuració",
     "sessionTypeAdmin": "Admin",

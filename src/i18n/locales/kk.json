@@ -70,7 +70,6 @@
     "placePending": "Той орны осында көрсетіледі.",
     "welcomeWithTime": "Осы ерекше сәтті бірге бөлісу үшін сізді күтеміз. Біз {{time}}-де бастаймыз. Төменде орналасу картасын табасыз.",
     "welcomeWithoutTime": "Осы ерекше сәтті бірге бөлісу үшін сізді күтеміз. Төменде орналасу картасын табасыз.",
-    "transport": "Көлік",
     "addToCalendar": "Күнтізбеге қосу",
     "viewGoogleMaps": "Google Maps-те көру",
     "viewAppleMaps": "Apple Maps-те көру",
@@ -131,7 +130,6 @@
     "menuCarne": "Ет",
     "menuPescado": "Балық",
     "menuVegano": "Веган/Вегетариан",
-    "postre": "Десерт",
     "menuLabel": "Мәзір",
     "allergiesLegend": "Аллергиялар мен төзбеушіліктер",
     "allergiesPlaceholder": "Басқа аллергия (нақтылаңыз)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Диета",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Әкімші",
-    "viewInvitation": "Шақыруды көру",
-    "logout": "Шығу"
+    "viewInvitation": "Шақыруды көру"
   },
   "panel": {
     "confirmed": "Расталған",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Аты бойынша іздеу...",
     "all": "Барлығы",
     "confirmed": "Расталған",
-    "notAttending": "Қатыспайды",
     "statsLine": "{{yes}} растайды · {{no}} бас тартады · {{companions}} серік · {{diet}} арнайы диетамен",
     "dietarySummary": "Тағамдық қалаулар ({{count}})",
     "tableName": "Есімі",
@@ -610,7 +606,6 @@
     "sessionActive": "Белсенді",
     "sessionInactive": "Белсенді емес",
     "sessionLabel": "Жергілікті сессия: {{status}}",
-    "sessionType": "Түрі: {{type}}",
     "sessionTypeSuperadmin": "Суперәкімші",
     "sessionTypeSetup": "Баптау",
     "sessionTypeAdmin": "Әкімші",

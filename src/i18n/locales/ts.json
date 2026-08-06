@@ -70,7 +70,6 @@
     "placePending": "Ndhawu ya ntlangu yi ta humelela laha.",
     "welcomeWithTime": "Hi langutele ku avelana na n’wina nkarhi lowu wo hlawuleka. ",
     "welcomeWithoutTime": "Hi langutele ku avelana na n’wina nkarhi lowu wo hlawuleka. ",
-    "transport": "Xifambo",
     "addToCalendar": "Engetelani eka khalendara",
     "viewGoogleMaps": "Vula eka Google Maps",
     "viewAppleMaps": "Vula eka Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Nyama",
     "menuPescado": "Hlampfi",
     "menuVegano": "Vegan/Mudyi wa matsavu",
-    "postre": "Dizete",
     "menuLabel": "Menyu",
     "allergiesLegend": "Ti allergies & ku nga tiyiselelani",
     "allergiesPlaceholder": "Allergy yin’wana (boxa) .",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Madyelo",
     "sectionsLabel": "Swiyenge",
     "barTitle": "Wedingo · Mufambisi wa xikolo",
-    "viewInvitation": "Languta xirhambo",
-    "logout": "Humela ehandle"
+    "viewInvitation": "Languta xirhambo"
   },
   "panel": {
     "confirmed": "Swi tiyisisiwile",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Ku lavisisa hi vito...",
     "all": "Hinkwaswo",
     "confirmed": "Swi tiyisisiwile",
-    "notAttending": "Ku nga vi kona",
     "statsLine": "{{yes}} confirm · {{no}} decline · {{companions}} companions · {{diet}} special diet",
     "dietarySummary": "Swihlawulekisi swa swakudya ({{count}}) .",
     "tableName": "Vito",
@@ -610,7 +606,6 @@
     "sessionActive": "Hanya",
     "sessionInactive": "Ku nga tirhi",
     "sessionLabel": "Nkarhi wa laha kaya: {{xiyimo}}",
-    "sessionType": "Muxaka: {{muxaka}}",
     "sessionTypeSuperadmin": "Superadmin wa xiyimo xa le henhla",
     "sessionTypeSetup": "Ku lulamisa",
     "sessionTypeAdmin": "Admin",

@@ -70,7 +70,6 @@
     "placePending": "Местото на прославата ќе се појави тука.",
     "welcomeWithTime": "Те очекуваме за да го споделиме овој посебен момент. Почнуваме во {{time}}. Подолу ќе ја најдеш мапата со локацијата.",
     "welcomeWithoutTime": "Те очекуваме за да го споделиме овој посебен момент. Подолу ќе ја најдеш мапата со локацијата.",
-    "transport": "Транспорт",
     "addToCalendar": "Додај во календар",
     "viewGoogleMaps": "Види на Google Maps",
     "viewAppleMaps": "Види на Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Месо",
     "menuPescado": "Риба",
     "menuVegano": "Веган/Вегетаријанско",
-    "postre": "Десерт",
     "menuLabel": "Мени",
     "allergiesLegend": "Алергии и интолеранции",
     "allergiesPlaceholder": "Друга алергија (наведи)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Исхрана",
     "sectionsLabel": "Secciones",
     "barTitle": "Вединго · Админ",
-    "viewInvitation": "Погледнете ја поканата",
-    "logout": "Одјави се"
+    "viewInvitation": "Погледнете ја поканата"
   },
   "panel": {
     "confirmed": "Потврдени",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Пребарај по име...",
     "all": "Сите",
     "confirmed": "Потврдени",
-    "notAttending": "Не присуствуваат",
     "statsLine": "{{yes}} потврдуваат · {{no}} одбиваат · {{companions}} придружници · {{diet}} со специјална исхрана",
     "dietarySummary": "Преференци за исхрана ({{count}})",
     "tableName": "Име",
@@ -610,7 +606,6 @@
     "sessionActive": "Активна",
     "sessionInactive": "Неактивна",
     "sessionLabel": "Локална сесија: {{status}}",
-    "sessionType": "Тип: {{type}}",
     "sessionTypeSuperadmin": "Супер админ",
     "sessionTypeSetup": "Поставување",
     "sessionTypeAdmin": "Админ",

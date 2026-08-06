@@ -70,7 +70,6 @@
     "placePending": "ઉજવણીનું સ્થળ અહીં દેખાશે.",
     "welcomeWithTime": "અમે તમારી રાહ જોઈ રહ્યા છીએ આ ખાસ ક્ષણ શેર કરવા માટે. અમે {{time}} વાગ્યે શરૂ કરીએ છીએ. નીચે તમને સ્થાનનો નકશો મળશે.",
     "welcomeWithoutTime": "અમે તમારી રાહ જોઈ રહ્યા છીએ આ ખાસ ક્ષણ શેર કરવા માટે. નીચે તમને સ્થાનનો નકશો મળશે.",
-    "transport": "પરિવહન",
     "addToCalendar": "કૅલેન્ડરમાં ઉમેરો",
     "viewGoogleMaps": "Google Maps માં જુઓ",
     "viewAppleMaps": "Apple Maps માં જુઓ",
@@ -131,7 +130,6 @@
     "menuCarne": "માંસ",
     "menuPescado": "માછલી",
     "menuVegano": "વેગન/શાકાહારી",
-    "postre": "મીઠાઈ",
     "menuLabel": "મેનૂ",
     "allergiesLegend": "એલર્જી અને અસહિષ્ણુતા",
     "allergiesPlaceholder": "બીજી એલર્જી (સ્પષ્ટ કરો)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "આહાર",
     "sectionsLabel": "Secciones",
     "barTitle": "વેડિંગો · એડમિન",
-    "viewInvitation": "આમંત્રણ જુઓ",
-    "logout": "લોગ આઉટ કરો"
+    "viewInvitation": "આમંત્રણ જુઓ"
   },
   "panel": {
     "confirmed": "પુષ્ટિ થયેલ",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "નામથી શોધો...",
     "all": "બધા",
     "confirmed": "પુષ્ટિ થયેલ",
-    "notAttending": "હાજર નહીં",
     "statsLine": "{{yes}} પુષ્ટિ કરે છે · {{no}} ના પાડે છે · {{companions}} સાથીઓ · {{diet}} ખાસ આહાર સાથે",
     "dietarySummary": "ખોરાકની પસંદગીઓ ({{count}})",
     "tableName": "નામ",
@@ -610,7 +606,6 @@
     "sessionActive": "સક્રિય",
     "sessionInactive": "નિષ્ક્રિય",
     "sessionLabel": "સ્થાનિક સત્ર: {{status}}",
-    "sessionType": "પ્રકાર: {{type}}",
     "sessionTypeSuperadmin": "સુપરએડમિન",
     "sessionTypeSetup": "સેટઅપ",
     "sessionTypeAdmin": "એડમિન",

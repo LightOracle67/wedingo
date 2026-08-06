@@ -70,7 +70,6 @@
     "placePending": "వేడుక స్థలం ఇక్కడ కనిపిస్తుంది.",
     "welcomeWithTime": "ఈ ప్రత్యేక క్షణాన్ని మీతో పంచుకోవడానికి మేము ఎదురుచూస్తున్నాము. మేము {{time}} కు ప్రారంభిస్తాము. క్రింద స్థాన మ్యాప్ కనుగొంటారు.",
     "welcomeWithoutTime": "ఈ ప్రత్యేక క్షణాన్ని మీతో పంచుకోవడానికి మేము ఎదురుచూస్తున్నాము. క్రింద స్థాన మ్యాప్ కనుగొంటారు.",
-    "transport": "రవాణా",
     "addToCalendar": "క్యాలెండర్‌కు జోడించు",
     "viewGoogleMaps": "Google Maps లో చూడండి",
     "viewAppleMaps": "Apple Maps లో చూడండి",
@@ -131,7 +130,6 @@
     "menuCarne": "మాంసం",
     "menuPescado": "చేప",
     "menuVegano": "వీగన్/శాకాహారం",
-    "postre": "డెజర్ట్",
     "menuLabel": "మెనూ",
     "allergiesLegend": "అలర్జీలు మరియు అసహనాలు",
     "allergiesPlaceholder": "ఇతర అలర్జీ (పేర్కొనండి)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "ఆహారం",
     "sectionsLabel": "Secciones",
     "barTitle": "వెడింగో · అడ్మిన్",
-    "viewInvitation": "ఆహ్వానాన్ని వీక్షించండి",
-    "logout": "లాగ్ అవుట్ చేయండి"
+    "viewInvitation": "ఆహ్వానాన్ని వీక్షించండి"
   },
   "panel": {
     "confirmed": "నిర్ధారించబడింది",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "పేరుతో శోధించండి...",
     "all": "అన్నీ",
     "confirmed": "నిర్ధారించబడింది",
-    "notAttending": "హాజరు కాలేదు",
     "statsLine": "{{yes}} నిర్ధారిస్తున్నారు · {{no}} తిరస్కరిస్తున్నారు · {{companions}} తోడుగా వచ్చినవారు · {{diet}} ప్రత్యేక ఆహారంతో",
     "dietarySummary": "ఆహార ప్రాధాన్యతలు ({{count}})",
     "tableName": "పేరు",
@@ -610,7 +606,6 @@
     "sessionActive": "క్రియాశీలం",
     "sessionInactive": "నిష్క్రియం",
     "sessionLabel": "స్థానిక సెషన్: {{status}}",
-    "sessionType": "రకం: {{type}}",
     "sessionTypeSuperadmin": "సూపర్ అడ్మిన్",
     "sessionTypeSetup": "సెటప్",
     "sessionTypeAdmin": "అడ్మిన్",

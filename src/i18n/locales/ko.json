@@ -70,7 +70,6 @@
     "placePending": "예식 장소가 여기에 표시됩니다.",
     "welcomeWithTime": "이 특별한 순간을 함께 나눌 수 있기를 기대합니다. {{time}}에 시작합니다. 아래에서 장소 지도를 확인하세요.",
     "welcomeWithoutTime": "이 특별한 순간을 함께 나눌 수 있기를 기대합니다. 아래에서 장소 지도를 확인하세요.",
-    "transport": "교통편",
     "addToCalendar": "캘린더에 추가",
     "viewGoogleMaps": "Google 지도에서 보기",
     "viewAppleMaps": "Apple 지도에서 보기",
@@ -131,7 +130,6 @@
     "menuCarne": "육류",
     "menuPescado": "생선",
     "menuVegano": "비건/채식",
-    "postre": "디저트",
     "menuLabel": "메뉴",
     "allergiesLegend": "알레르기 및 과민증",
     "allergiesPlaceholder": "기타 알레르기 (구체적으로 기재)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "식사",
     "sectionsLabel": "Secciones",
     "barTitle": "웨딩고 · 관리자",
-    "viewInvitation": "초대장 보기",
-    "logout": "로그아웃"
+    "viewInvitation": "초대장 보기"
   },
   "panel": {
     "confirmed": "참석",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "이름으로 검색...",
     "all": "전체",
     "confirmed": "참석",
-    "notAttending": "불참",
     "statsLine": "{{yes}}명 참석 · {{no}}명 불참 · {{companions}}명 동반 · {{diet}}명 특별식",
     "dietarySummary": "식사 선호도 ({{count}})",
     "tableName": "이름",
@@ -610,7 +606,6 @@
     "sessionActive": "활성",
     "sessionInactive": "비활성",
     "sessionLabel": "로컬 세션: {{status}}",
-    "sessionType": "유형: {{type}}",
     "sessionTypeSuperadmin": "최고 관리자",
     "sessionTypeSetup": "설정",
     "sessionTypeAdmin": "관리자",

@@ -70,7 +70,6 @@
     "placePending": "Lokacija proslave pojavit će se ovdje.",
     "welcomeWithTime": "Veselimo se što ćemo podijeliti ovaj poseban trenutak s vama. Počinjemo u {{time}}. Ispod ćete pronaći kartu lokacije.",
     "welcomeWithoutTime": "Veselimo se što ćemo podijeliti ovaj poseban trenutak s vama. Ispod ćete pronaći kartu lokacije.",
-    "transport": "Prijevoz",
     "addToCalendar": "Dodaj u kalendar",
     "viewGoogleMaps": "Prikaži na Google kartama",
     "viewAppleMaps": "Prikaži na Apple kartama",
@@ -131,7 +130,6 @@
     "menuCarne": "Meso",
     "menuPescado": "Riba",
     "menuVegano": "Vegansko/Vegetarijansko",
-    "postre": "Desert",
     "menuLabel": "Jelovnik",
     "allergiesLegend": "Alergije i intolerancije",
     "allergiesPlaceholder": "Druga alergija (navedite)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Prehrana",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Pogledaj pozivnicu",
-    "logout": "Odjavi se"
+    "viewInvitation": "Pogledaj pozivnicu"
   },
   "panel": {
     "confirmed": "Potvrđeni",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Pretraži po imenu...",
     "all": "Svi",
     "confirmed": "Potvrđeni",
-    "notAttending": "Ne dolaze",
     "statsLine": "{{yes}} potvrđuje · {{no}} odbija · {{companions}} pratitelja · {{diet}} s posebnom prehranom",
     "dietarySummary": "Prehrambene preferencije ({{count}})",
     "tableName": "Ime",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktivna",
     "sessionInactive": "Neaktivna",
     "sessionLabel": "Lokalna sesija: {{status}}",
-    "sessionType": "Vrsta: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Postavljanje",
     "sessionTypeAdmin": "Administrator",

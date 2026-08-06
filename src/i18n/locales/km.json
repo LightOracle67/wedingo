@@ -70,7 +70,6 @@
     "placePending": "ទីកន្លែងនៃពិធីនឹងបង្ហាញនៅទីនេះ។",
     "welcomeWithTime": "យើងរង់ចាំអ្នកដើម្បីចែករំលែកពេលវេលាពិសេសនេះ។ យើងចាប់ផ្តើមនៅម៉ោង {{time}}។ ខាងក្រោមអ្នកនឹងឃើញផែនទីទីតាំង។",
     "welcomeWithoutTime": "យើងរង់ចាំអ្នកដើម្បីចែករំលែកពេលវេលាពិសេសនេះ។ ខាងក្រោមអ្នកនឹងឃើញផែនទីទីតាំង។",
-    "transport": "ការដឹកជញ្ជូន",
     "addToCalendar": "បន្ថែមទៅប្រតិទិន",
     "viewGoogleMaps": "មើលក្នុង Google Maps",
     "viewAppleMaps": "មើលក្នុង Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "សាច់",
     "menuPescado": "ត្រី",
     "menuVegano": "បួស",
-    "postre": "បង្អែម",
     "menuLabel": "មុខម្ហូប",
     "allergiesLegend": "ប្រតិកម្មនិងការមិនអត់ឱន",
     "allergiesPlaceholder": "ប្រតិកម្មផ្សេងទៀត (បញ្ជាក់)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "របបអាហារ",
     "sectionsLabel": "Secciones",
     "barTitle": "Weddingo · អ្នកគ្រប់គ្រង",
-    "viewInvitation": "មើលការអញ្ជើញ",
-    "logout": "ចេញ"
+    "viewInvitation": "មើលការអញ្ជើញ"
   },
   "panel": {
     "confirmed": "បានបញ្ជាក់",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "ស្វែងរកតាមឈ្មោះ...",
     "all": "ទាំងអស់",
     "confirmed": "បានបញ្ជាក់",
-    "notAttending": "មិនមក",
     "statsLine": "{{yes}} បញ្ជាក់ · {{no}} បដិសេធ · {{companions}} អ្នករួមដំណើរ · {{diet}} មានរបបអាហារពិសេស",
     "dietarySummary": "ចំណូលចិត្តរបបអាហារ ({{count}})",
     "tableName": "ឈ្មោះ",
@@ -610,7 +606,6 @@
     "sessionActive": "សកម្ម",
     "sessionInactive": "អសកម្ម",
     "sessionLabel": "សម័យក្នុងស្រុក: {{status}}",
-    "sessionType": "ប្រភេទ: {{type}}",
     "sessionTypeSuperadmin": "អ្នកគ្រប់គ្រងកំពូល",
     "sessionTypeSetup": "ការដំឡើង",
     "sessionTypeAdmin": "អ្នកគ្រប់គ្រង",

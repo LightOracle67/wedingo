@@ -70,7 +70,6 @@
     "placePending": "Ospakizunaren lekua hemen agertuko da.",
     "welcomeWithTime": "Zain egongo zaitugu une berezi hau partekatzeko. {{time}}etan hasiko gara. Beherago kokapenaren mapa aurkituko duzu.",
     "welcomeWithoutTime": "Zain egongo zaitugu une berezi hau partekatzeko. Beherago kokapenaren mapa aurkituko duzu.",
-    "transport": "Garraioa",
     "addToCalendar": "Gehitu egutegira",
     "viewGoogleMaps": "Ikusi Google Maps-en",
     "viewAppleMaps": "Ikusi Apple Maps-en",
@@ -131,7 +130,6 @@
     "menuCarne": "Haragia",
     "menuPescado": "Arraina",
     "menuVegano": "Veganoa/Barazkijalea",
-    "postre": "Postrea",
     "menuLabel": "Menua",
     "allergiesLegend": "Alergiak eta intolerantziak",
     "allergiesPlaceholder": "Beste alergia bat (zehaztu)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Ikusi gonbidapena",
-    "logout": "Amaitu saioa"
+    "viewInvitation": "Ikusi gonbidapena"
   },
   "panel": {
     "confirmed": "Baieztatuta",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Bilatu izenaren arabera...",
     "all": "Denak",
     "confirmed": "Baieztatuta",
-    "notAttending": "Ez dira etortzen",
     "statsLine": "{{yes}} baieztatzen dute · {{no}} ukatzen dute · {{companions}} laguntzaile · {{diet}} dieta bereziarekin",
     "dietarySummary": "Elikagai lehentasunak ({{count}})",
     "tableName": "Izena",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktiboa",
     "sessionInactive": "Inaktiboa",
     "sessionLabel": "Saio lokala: {{status}}",
-    "sessionType": "Mota: {{type}}",
     "sessionTypeSuperadmin": "Superadministratzailea",
     "sessionTypeSetup": "Konfigurazioa",
     "sessionTypeAdmin": "Admin",

@@ -70,7 +70,6 @@
     "placePending": "Arete renda ojehechaukáne ápe.",
     "welcomeWithTime": "Rohayhu eju emboja'o ko ára ijojaha'ỹva. Ñañepyrũta aravo {{time}}. Yvy gotyo ejuhúta tenda ñemoha'ãnga.",
     "welcomeWithoutTime": "Rohayhu eju emboja'o ko ára ijojaha'ỹva. Yvy gotyo ejuhúta tenda ñemoha'ãnga.",
-    "transport": "Gueraha",
     "addToCalendar": "Embojoaju arapapáme",
     "viewGoogleMaps": "Ehecha Google Maps-pe",
     "viewAppleMaps": "Ehecha Apple Maps-pe",
@@ -131,7 +130,6 @@
     "menuCarne": "So'o",
     "menuPescado": "Pira",
     "menuVegano": "Vegano/Vegetariano",
-    "postre": "Hesa'yju",
     "menuLabel": "Tembi'u",
     "allergiesLegend": "Allergiakuéra ha jejoko",
     "allergiesPlaceholder": "Ambue allergia (emoñe'ẽ)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Tembi'u",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Ver invitación",
-    "logout": "Pechar sesión"
+    "viewInvitation": "Ver invitación"
   },
   "panel": {
     "confirmed": "Omoañetéva",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Eheka térape...",
     "all": "Maymáva",
     "confirmed": "Omoañetéva",
-    "notAttending": "Ndojúiva",
     "statsLine": "{{yes}} omoañetéva · {{no}} omboykéva · {{companions}} irundy · {{diet}} tembi'u ijojaha'ỹva ndive",
     "dietarySummary": "Tembi'u jeporavo ({{count}})",
     "tableName": "Téra",
@@ -610,7 +606,6 @@
     "sessionActive": "Oĩmba",
     "sessionInactive": "Ndopái",
     "sessionLabel": "Tembiapo local: {{status}}",
-    "sessionType": "Juehe: {{type}}",
     "sessionTypeSuperadmin": "Superadministrador",
     "sessionTypeSetup": "Ñemyatyrõ",
     "sessionTypeAdmin": "Admin",

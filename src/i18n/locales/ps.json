@@ -70,7 +70,6 @@
     "placePending": "د لمانځغونډې ځای به دلته ښکاره شي.",
     "welcomeWithTime": "موږ ستاسې په تمه یو چې دا ځانګړې شیبه شریکه کړو. موږ د {{time}} بجو پیل کوو. لاندې د موقعیت نقشه ده.",
     "welcomeWithoutTime": "موږ ستاسې په تمه یو چې دا ځانګړې شیبه شریکه کړو. لاندې د موقعیت نقشه ده.",
-    "transport": "ترانسپورت",
     "addToCalendar": "تقویم ته اضافه کړئ",
     "viewGoogleMaps": "په Google Maps کې وګورئ",
     "viewAppleMaps": "په Apple Maps کې وګورئ",
@@ -131,7 +130,6 @@
     "menuCarne": "غوښه",
     "menuPescado": "کب",
     "menuVegano": "وېگن/سبزي",
-    "postre": "خواږه",
     "menuLabel": "خواړه",
     "allergiesLegend": "الرجي او نه زغمل",
     "allergiesPlaceholder": "بله الرجي (مشخص کړئ)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "خواړه",
     "sectionsLabel": "Secciones",
     "barTitle": "ویډینګو · اډمین",
-    "viewInvitation": "بلنه وګورئ",
-    "logout": "وتل"
+    "viewInvitation": "بلنه وګورئ"
   },
   "panel": {
     "confirmed": "تایید شوي",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "د نوم له مخې لټون...",
     "all": "ټول",
     "confirmed": "تایید شوي",
-    "notAttending": "گډون نه کوي",
     "statsLine": "{{yes}} تاییدوي · {{no}} ردوي · {{companions}} ملگری · {{diet}} ځانگړي خواړه",
     "dietarySummary": "خوراکي غوره توبونه ({{count}})",
     "tableName": "نوم",
@@ -610,7 +606,6 @@
     "sessionActive": "فعال",
     "sessionInactive": "غیر فعال",
     "sessionLabel": "سیمه‌ییزه غونډه: {{status}}",
-    "sessionType": "ډول: {{type}}",
     "sessionTypeSuperadmin": "سوپر اډمین",
     "sessionTypeSetup": "تنظیم",
     "sessionTypeAdmin": "اډمین",

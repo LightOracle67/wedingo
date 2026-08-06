@@ -70,7 +70,6 @@
     "placePending": "La loko de la festo aperos ĉi tie.",
     "welcomeWithTime": "Ni atendas vin por dividi ĉi tiun specialan momenton. Ni komencos je {{time}}. Sube vi trovos la mapon de la loko.",
     "welcomeWithoutTime": "Ni atendas vin por dividi ĉi tiun specialan momenton. Sube vi trovos la mapon de la loko.",
-    "transport": "Transporto",
     "addToCalendar": "Aldoni al kalendaro",
     "viewGoogleMaps": "Vidi en Google Maps",
     "viewAppleMaps": "Vidi en Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Viando",
     "menuPescado": "Fiŝo",
     "menuVegano": "Vegana/Vegetara",
-    "postre": "Deserto",
     "menuLabel": "Menuo",
     "allergiesLegend": "Alergioj kaj netoleroj",
     "allergiesPlaceholder": "Alia alergio (specifi)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Dieto",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Rigardu inviton",
-    "logout": "Elsaluti"
+    "viewInvitation": "Rigardu inviton"
   },
   "panel": {
     "confirmed": "Konfirmitaj",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Serĉi laŭ nomo...",
     "all": "Ĉiuj",
     "confirmed": "Konfirmitaj",
-    "notAttending": "Ne ĉeestas",
     "statsLine": "{{yes}} konfirmas · {{no}} malakceptas · {{companions}} akompanantoj · {{diet}} kun speciala dieto",
     "dietarySummary": "Manĝpreferoj ({{count}})",
     "tableName": "Nomo",
@@ -610,7 +606,6 @@
     "sessionActive": "Aktiva",
     "sessionInactive": "Neaktiva",
     "sessionLabel": "Loka sesio: {{status}}",
-    "sessionType": "Tipo: {{type}}",
     "sessionTypeSuperadmin": "Superadministranto",
     "sessionTypeSetup": "Agordo",
     "sessionTypeAdmin": "Administranto",

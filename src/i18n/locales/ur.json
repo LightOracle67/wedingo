@@ -70,7 +70,6 @@
     "placePending": "تقریب کا مقام یہاں ظاہر ہوگا۔",
     "welcomeWithTime": "ہم اس خاص لمحے کو آپ کے ساتھ بانٹنے کے منتظر ہیں۔ ہم {{time}} بجے شروع کریں گے۔ نیچے آپ کو مقام کا نقشہ ملے گا۔",
     "welcomeWithoutTime": "ہم اس خاص لمحے کو آپ کے ساتھ بانٹنے کے منتظر ہیں۔ نیچے آپ کو مقام کا نقشہ ملے گا۔",
-    "transport": "نقل و حمل",
     "addToCalendar": "کیلنڈر میں شامل کریں",
     "viewGoogleMaps": "Google Maps میں دیکھیں",
     "viewAppleMaps": "Apple Maps میں دیکھیں",
@@ -131,7 +130,6 @@
     "menuCarne": "گوشت",
     "menuPescado": "مچھلی",
     "menuVegano": "ویگن/سبزی خور",
-    "postre": "میٹھا",
     "menuLabel": "مینو",
     "allergiesLegend": "الرجی اور عدم برداشت",
     "allergiesPlaceholder": "دیگر الرجی (وضاحت کریں)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "غذا",
     "sectionsLabel": "Secciones",
     "barTitle": "ویڈنگو · ایڈمن",
-    "viewInvitation": "دعوت نامہ دیکھیں",
-    "logout": "لاگ آؤٹ کریں۔"
+    "viewInvitation": "دعوت نامہ دیکھیں"
   },
   "panel": {
     "confirmed": "تصدیق شدہ",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "نام سے تلاش کریں...",
     "all": "تمام",
     "confirmed": "تصدیق شدہ",
-    "notAttending": "شرکت نہیں کریں گے",
     "statsLine": "{{yes}} تصدیق کرتے ہیں · {{no}} انکار کرتے ہیں · {{companions}} ساتھی · {{diet}} خصوصی غذا کے ساتھ",
     "dietarySummary": "غذائی ترجیحات ({{count}})",
     "tableName": "نام",
@@ -610,7 +606,6 @@
     "sessionActive": "فعال",
     "sessionInactive": "غیر فعال",
     "sessionLabel": "مقامی سیشن: {{status}}",
-    "sessionType": "قسم: {{type}}",
     "sessionTypeSuperadmin": "سپر ایڈمن",
     "sessionTypeSetup": "سیٹ اپ",
     "sessionTypeAdmin": "ایڈمن",

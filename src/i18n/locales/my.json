@@ -70,7 +70,6 @@
     "placePending": "အခမ်းအနားကျင်းပမည့်နေရာ ဤနေရာတွင် ပေါ်လာပါမည်။",
     "welcomeWithTime": "ဤအထူးအခိုက်အတန့်ကို မျှဝေရန် သင့်ကို စောင့်မျှော်နေပါသည်။ {{time}} နာရီတွင် စတင်ပါမည်။ အောက်တွင် တည်နေရာမြေပုံကို တွေ့ရပါမည်။",
     "welcomeWithoutTime": "ဤအထူးအခိုက်အတန့်ကို မျှဝေရန် သင့်ကို စောင့်မျှော်နေပါသည်။ အောက်တွင် တည်နေရာမြေပုံကို တွေ့ရပါမည်။",
-    "transport": "သယ်ယူပို့ဆောင်ရေး",
     "addToCalendar": "ပြက္ခဒိန်သို့ ထည့်မည်",
     "viewGoogleMaps": "Google Maps တွင် ကြည့်မည်",
     "viewAppleMaps": "Apple Maps တွင် ကြည့်မည်",
@@ -131,7 +130,6 @@
     "menuCarne": "အသား",
     "menuPescado": "ငါး",
     "menuVegano": "သက်သတ်လွတ်/ဗီဂန်",
-    "postre": "အချိုပွဲ",
     "menuLabel": "မီနူး",
     "allergiesLegend": "ဓာတ်မတည့်မှုနှင့် သည်းမခံနိုင်မှု",
     "allergiesPlaceholder": "အခြား ဓာတ်မတည့်မှု (သတ်မှတ်ပါ)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "အစားအသောက်",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "ဖိတ်ကြားချက်ကို ကြည့်ပါ။",
-    "logout": "ထွက်လိုက်ပါ။"
+    "viewInvitation": "ဖိတ်ကြားချက်ကို ကြည့်ပါ။"
   },
   "panel": {
     "confirmed": "အတည်ပြုပြီး",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "အမည်ဖြင့် ရှာဖွေမည်...",
     "all": "အားလုံး",
     "confirmed": "အတည်ပြုပြီး",
-    "notAttending": "မတက်ရောက်ပါ",
     "statsLine": "{{yes}} အတည်ပြုသည် · {{no}} ငြင်းပယ်သည် · {{companions}} ဦး အဖော် · {{diet}} အထူးအစားအသောက်",
     "dietarySummary": "အစားအသောက် ဦးစားပေးမှုများ ({{count}})",
     "tableName": "အမည်",
@@ -610,7 +606,6 @@
     "sessionActive": "အသက်ဝင်",
     "sessionInactive": "အသက်မဝင်",
     "sessionLabel": "စက်တွင်းဆက်ရှင်: {{status}}",
-    "sessionType": "အမျိုးအစား: {{type}}",
     "sessionTypeSuperadmin": "စူပါအက်ဒမင်",
     "sessionTypeSetup": "ပြင်ဆင်သတ်မှတ်မှု",
     "sessionTypeAdmin": "အက်ဒမင်",

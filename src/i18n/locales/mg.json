@@ -70,7 +70,6 @@
     "placePending": "Hiseho eto ny toerana hanaovana ny fety.",
     "welcomeWithTime": "Miandry anao izahay hizara ity fotoana manokana ity. Manomboka amin'ny {{time}}. Eto ambany ny sarintanin'ny toerana.",
     "welcomeWithoutTime": "Miandry anao izahay hizara ity fotoana manokana ity. Eto ambany ny sarintanin'ny toerana.",
-    "transport": "Fitaterana",
     "addToCalendar": "Ampidiro amin'ny kalandrie",
     "viewGoogleMaps": "Hijery amin'ny Google Maps",
     "viewAppleMaps": "Hijery amin'ny Apple Maps",
@@ -131,7 +130,6 @@
     "menuCarne": "Hena",
     "menuPescado": "Trondro",
     "menuVegano": "Vegan/Végétarien",
-    "postre": "Tsindrin-tsakafo",
     "menuLabel": "Sakafo",
     "allergiesLegend": "Alèrjia sy tsy fandeferana",
     "allergiesPlaceholder": "Alèrjia hafa (lazao)",
@@ -365,8 +363,7 @@
     "pdfTableDiet": "Sakafo",
     "sectionsLabel": "Secciones",
     "barTitle": "Wedingo · Admin",
-    "viewInvitation": "Jereo ny fanasana",
-    "logout": "Mivoaha"
+    "viewInvitation": "Jereo ny fanasana"
   },
   "panel": {
     "confirmed": "Voamarina",
@@ -404,7 +401,6 @@
     "searchPlaceholder": "Hikaroka amin'ny anarana...",
     "all": "Rehetra",
     "confirmed": "Voamarina",
-    "notAttending": "Tsy hanatrika",
     "statsLine": "{{yes}} manamafy · {{no}} mandà · mpiaraka {{companions}} · {{diet}} manana sakafo manokana",
     "dietarySummary": "Safidy sakafo ({{count}})",
     "tableName": "Anarana",
@@ -610,7 +606,6 @@
     "sessionActive": "Mavitrika",
     "sessionInactive": "Tsy mavitrika",
     "sessionLabel": "Session eo an-toerana: {{status}}",
-    "sessionType": "Karazana: {{type}}",
     "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Fanamafisana",
     "sessionTypeAdmin": "Admin",
