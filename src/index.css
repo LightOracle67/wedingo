@@ -1884,70 +1884,82 @@ h6 {
 /* ── Elegant animations ──────────────────────────────────────────────
    Entradas y salidas de las secciones de la invitación (gestión de estados
    en useStoryNavigation): `--is-enter` anima la card y sus elementos con
-   stagger; `--is-leave` hace un fade + scale suave. El estado base es
-   visible y estable (sin animación) para no parpadear al recargar. */
+   stagger largo y suave; `--is-leave` hace un fade + scale elegante. El
+   estado `--is-hidden` mantiene la card en su posición inicial para que la
+   entrada arranque sin salto (anti-parpadeo al cargar/sección). */
 
 @keyframes story-card-enter {
-  from { opacity: 0; transform: translateY(26px) scale(0.985); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateY(46px) scale(0.97); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
 }
 
 @keyframes story-card-leave {
-  from { opacity: 1; transform: translateY(0) scale(1); }
-  to { opacity: 0; transform: translateY(-14px) scale(0.985); }
+  from { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  to { opacity: 0; transform: translateY(-22px) scale(0.98); filter: blur(4px); }
 }
 
 @keyframes story-fade-up {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(28px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes story-fade-down {
   from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 0; transform: translateY(-18px); }
 }
 
-/* Entrada: la card entra entera y luego sus elementos suben escalonados. */
+/* Estado oculto persistente: la card queda en su posición inicial para que
+   la animación de entrada no haga un salto visible al llegar a la sección. */
+.story-section--is-hidden .story-card-wrap,
+.story-section--is-hidden .story-card {
+  opacity: 0;
+  transform: translateY(46px) scale(0.97);
+}
+
+/* Entrada: la card sube con un blur inicial y los elementos entran
+   escalonados con un easing suave (easeOutExpo). */
 .story-section--is-enter .story-card-wrap,
 .story-section--is-enter .story-card {
-  animation: story-card-enter 850ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: story-card-enter 1200ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .story-section--is-enter .story-eyebrow {
-  animation: story-fade-up 620ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+  animation: story-fade-up 800ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
 }
 
 .story-section--is-enter .story-title {
-  animation: story-fade-up 620ms cubic-bezier(0.22, 1, 0.36, 1) 220ms both;
+  animation: story-fade-up 800ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
 }
 
 .story-section--is-enter .story-copy {
-  animation: story-fade-up 620ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
+  animation: story-fade-up 800ms cubic-bezier(0.16, 1, 0.3, 1) 420ms both;
 }
 
 .story-section--is-enter .story-note,
 .story-section--is-enter .story-divider {
-  animation: story-fade-up 620ms cubic-bezier(0.22, 1, 0.36, 1) 420ms both;
+  animation: story-fade-up 800ms cubic-bezier(0.16, 1, 0.3, 1) 540ms both;
 }
 
-.story-section--is-enter .rsvp-form,
 .story-section--is-enter .story-map,
 .story-section--is-enter .story-calendar-actions,
 .story-section--is-enter .story-map__actions,
-.story-section--is-enter .story-card--rsvp > *:not(.story-title) {
-  animation: story-fade-up 620ms cubic-bezier(0.22, 1, 0.36, 1) 500ms both;
+.story-section--is-enter .rsvp-form,
+.story-section--is-enter .story-card--rsvp > *:not(.story-title),
+.story-section--is-enter .story-card--hero .mx-auto,
+.story-section--is-enter .story-card--hero .mt-6 {
+  animation: story-fade-up 800ms cubic-bezier(0.16, 1, 0.3, 1) 640ms both;
 }
 
 /* Salida: la sección que abandona el viewport se desvanece con suavidad. */
 .story-section--is-leave .story-card-wrap,
 .story-section--is-leave .story-card {
-  animation: story-card-leave 480ms ease both;
+  animation: story-card-leave 700ms cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 .story-section--is-leave .story-eyebrow,
 .story-section--is-leave .story-title,
 .story-section--is-leave .story-copy {
-  animation: story-fade-down 480ms ease both;
+  animation: story-fade-down 700ms cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 /* Usuarios con movimiento reducido: sin entradas/salidas animadas. */
@@ -1959,18 +1971,23 @@ h6 {
   .story-section--is-enter .story-copy,
   .story-section--is-enter .story-note,
   .story-section--is-enter .story-divider,
-  .story-section--is-enter .rsvp-form,
   .story-section--is-enter .story-map,
   .story-section--is-enter .story-calendar-actions,
   .story-section--is-enter .story-map__actions,
+  .story-section--is-enter .rsvp-form,
+  .story-section--is-enter .story-card--hero .mx-auto,
+  .story-section--is-enter .story-card--hero .mt-6,
   .story-section--is-leave .story-card-wrap,
   .story-section--is-leave .story-card,
   .story-section--is-leave .story-eyebrow,
   .story-section--is-leave .story-title,
-  .story-section--is-leave .story-copy {
+  .story-section--is-leave .story-copy,
+  .story-section--is-hidden .story-card-wrap,
+  .story-section--is-hidden .story-card {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
   }
 }
 

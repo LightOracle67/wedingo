@@ -31,10 +31,10 @@
 import { useEffect, useRef, useState } from "react";
 
 /** Duración (ms) de la animación de entrada, incluido el stagger de los
- *  elementos internos de la card (850ms en CSS). */
-const ENTER_MS = 900;
-/** Duración (ms) de la animación de salida (480ms en CSS + margen). */
-const LEAVE_MS = 560;
+ *  elementos internos de la card (1200ms de card + hasta 640ms de delay). */
+const ENTER_MS = 1450;
+/** Duración (ms) de la animación de salida (700ms en CSS + margen). */
+const LEAVE_MS = 750;
 /** Fracción mínima de la sección visible para considerarla "activa". */
 const VISIBILITY_THRESHOLD = 0.35;
 
@@ -64,6 +64,7 @@ export function useStoryNavigation(
       sectionKey === activeSection ? "story-section--is-active" : "",
       stages[sectionKey] === "entering" ? "story-section--is-enter" : "",
       stages[sectionKey] === "leaving" ? "story-section--is-leave" : "",
+      stages[sectionKey] === "hidden" ? "story-section--is-hidden" : "",
     ].filter(Boolean).join(" ");
 
   useEffect(() => {
@@ -96,52 +97,51 @@ export function useStoryNavigation(
       }, ms));
     };
 
-    let firstCallback = true;
+    let globalFirst = true;
+    // Secciones ya "contactadas" por el observer (primer batch global o primer
+    // callback de una sección lazy). Su primer contacto NO anima: la sección
+    // pasa a active/hidden directamente para no parpadear al cargar/montar.
+    const firstContacted = new Set<string>();
     const observer = new IntersectionObserver((entries) => {
-      if (firstCallback) {
-        firstCallback = false;
-        // Primer batch: todas las secciones observadas notifican su estado.
-        for (const entry of entries) {
-          const key = entry.target.getAttribute("data-story-section");
-          if (!key) continue;
-          if (entry.isIntersecting) {
-            setActiveSection(key);
-            if (bootMode === "reveal" && !reducedMotion) {
+      const isGlobalFirst = globalFirst;
+      globalFirst = false;
+      for (const entry of entries) {
+        const key = entry.target.getAttribute("data-story-section");
+        if (!key) continue;
+        const isFirstContact = isGlobalFirst || !firstContacted.has(key);
+        if (isFirstContact) firstContacted.add(key);
+
+        if (entry.isIntersecting) {
+          setActiveSection(key);
+          if (isFirstContact) {
+            if (isGlobalFirst && bootMode === "reveal" && !reducedMotion) {
               // El sobre acaba de abrirse: el contenido visible entra animado.
               setStages((s) => ({ ...s, [key]: "entering" }));
               schedule(key, "entering", "active", ENTER_MS);
             } else {
-              // Boot inicial o reduced motion: visible y estable, sin parpadeo.
+              // Primer contacto (boot o sección lazy montada): visible y
+              // estable, sin parpadeo al cargar la sección.
               setStages((s) => ({ ...s, [key]: "active" }));
             }
-          } else {
-            setStages((s) => ({ ...s, [key]: "hidden" }));
-          }
-        }
-        return;
-      }
-      // Callbacks posteriores (scroll): entrada y salida animadas.
-      for (const entry of entries) {
-        const key = entry.target.getAttribute("data-story-section");
-        if (!key) continue;
-        if (entry.isIntersecting) {
-          setActiveSection(key);
-          if (reducedMotion) {
+          } else if (reducedMotion) {
             setStages((s) => ({ ...s, [key]: "active" }));
           } else {
+            // Entra por scroll: animación de entrada.
             setStages((s) =>
               s[key] === "entering" || s[key] === "active" ? s : { ...s, [key]: "entering" });
             schedule(key, "entering", "active", ENTER_MS);
           }
-        } else if (!reducedMotion) {
+        } else if (isFirstContact) {
+          setStages((s) => ({ ...s, [key]: "hidden" }));
+        } else if (reducedMotion) {
+          setStages((s) => ({ ...s, [key]: "hidden" }));
+        } else {
           // Sale del viewport: animación de salida, luego hidden.
           setStages((s) => {
             if (s[key] === "entering" || s[key] === "active") return { ...s, [key]: "leaving" };
             return s;
           });
           schedule(key, "leaving", "hidden", LEAVE_MS);
-        } else {
-          setStages((s) => ({ ...s, [key]: "hidden" }));
         }
       }
     }, { threshold: VISIBILITY_THRESHOLD });

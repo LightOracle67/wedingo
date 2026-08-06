@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.10",
+    date: "2026-08-07",
+    changes: [
+      "Animaciones más largas, suaves y elegantes: entrada de la card en 1200ms con blur inicial y subida de 46px (easeOutExpo), elementos escalonados con más recorrido, y salida de 700ms con desvanecimiento. Corregido el parpadeo al cargar una sección: el estado oculto mantiene la card en su posición inicial (la entrada no salta) y las secciones lazy que montan visibles ya no se re-animan.",
+    ],
+  },
+  {
     version: "2.95.9",
     date: "2026-08-07",
     changes: [
