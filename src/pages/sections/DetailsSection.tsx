@@ -2,6 +2,8 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import MapEmbed from "../../components/MapEmbed";
 import { isValidGoogleMapsUrl } from "../../lib/geo-utils";
+import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
+import { useApp } from "../../contexts";
 import CornerDecorations from "../../components/CornerDecorations";
 
 const DetailsSection = memo(function DetailsSection({
@@ -25,8 +27,49 @@ const DetailsSection = memo(function DetailsSection({
   cornerDecoration?: string;
 }) {
   const { t } = useTranslation();
+  // Config global para generar el .ics y el enlace de navegación.
+  const { config } = useApp();
   // Modo de visualización del mapa: iframe (por defecto), solo nombre u oculto.
   const mapMode = detailsMapMode === "name" || detailsMapMode === "hidden" ? detailsMapMode : "iframe";
+  // "Cómo llegar": abre Google Maps con navegación al lugar (o a la URL del mapa).
+  const directionsUrl = config?.weddingPlace
+    ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(config.weddingPlace)}`
+    : weddingSiteURL || "";
+
+  /** Descarga el evento como archivo .ics (Apple Calendar/Outlook). */
+  const handleDownloadIcs = () => {
+    try {
+      const day = Number(config?.weddingDay) || 1;
+      const month = MONTH_VALUE_TO_NUMBER[config?.weddingMonth as keyof typeof MONTH_VALUE_TO_NUMBER] || 1;
+      const year = Number(config?.weddingYear) || new Date().getFullYear();
+      const hour = Number(config?.weddingHour) || 12;
+      const minute = Number(config?.weddingMinute) || 0;
+      const pad = (n: number) => String(n).padStart(2, "0");
+      const dtstart = `${year}${pad(month)}${pad(day)}T${pad(hour)}${pad(minute)}00`;
+      const summary = `${config?.firstName || ""} & ${config?.secondName || ""}`.trim();
+      const ics = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Wedingo//Wedding//ES",
+        "BEGIN:VEVENT",
+        `UID:${dtstart}@wedingo-invite`,
+        `DTSTART:${dtstart}`,
+        `SUMMARY:${summary}`,
+        config?.weddingPlace ? `LOCATION:${config.weddingPlace}` : "",
+        "END:VEVENT",
+        "END:VCALENDAR",
+      ].filter(Boolean).join("\r\n");
+      const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "invitacion.ics";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch { /* calendario no disponible */ }
+  };
   return (
     <section
       data-story-section="details"
@@ -59,6 +102,13 @@ const DetailsSection = memo(function DetailsSection({
               >
                 {t("details.addToCalendar")}
               </a>
+              <button
+                type="button"
+                className="setup-button setup-button--ghost setup-button--compact"
+                onClick={handleDownloadIcs}
+              >
+                {t("details.addToIcs")}
+              </button>
             </div>
           ) : null}
 
@@ -79,6 +129,9 @@ const DetailsSection = memo(function DetailsSection({
                   <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
                     <a className="setup-button setup-button--ghost setup-button--compact" href={weddingSiteURL} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
                       {t("details.viewGoogleMaps")}
+                    </a>
+                    <a className="setup-button setup-button--ghost setup-button--compact" href={directionsUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+                      {t("details.directions")}
                     </a>
                   </div>
                 </>

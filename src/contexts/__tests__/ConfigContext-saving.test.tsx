@@ -37,7 +37,7 @@ vi.mock("../../lib/image-store", () => ({
   isConfigImageRef: vi.fn(() => false),
   saveConfigImage: vi.fn((_t, id, _v) => Promise.resolve("__cfgimg:" + id)),
 }));
-vi.mock("../../lib/music-store", () => ({ loadAudio: mockLoadAudio }));
+vi.mock("../../lib/music-store", () => ({ loadAudio: mockLoadAudio, deleteAudio: vi.fn(() => Promise.resolve()) }));
 vi.mock("../../lib/sessionVars", () => ({ clearSession: vi.fn() }));
 vi.mock("../../lib/storage", () => ({ safeSetItem: mockSafeSetItem, safeGetItem: mockSafeGetItem, safeRemoveItem: vi.fn() }));
 vi.mock("../../lib/crypto-utils", () => ({ encrypt: vi.fn((s: string) => Promise.resolve(s)), decrypt: vi.fn((s: string) => Promise.resolve(s)) }));

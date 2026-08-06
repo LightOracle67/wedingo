@@ -63,6 +63,10 @@ export default function CoverSectionForm({ prefix = "" }) {
     updateFormField("couplePhoto", "");
   }, [inviteToken, updateFormField]);
 
+  /** Memoizado: onChange inestable relanzaba el useEffect de MusicArrayEditor
+   *  y re-descargaba el audio en cada render. */
+  const handleMusicChange = useCallback((val: string) => updateFormField("musicFile", val), [updateFormField]);
+
   const handleFirstNameChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
 
     updateFormField("firstName", e.target.value.slice(0, 20));
@@ -252,8 +256,8 @@ export default function CoverSectionForm({ prefix = "" }) {
           const file = e.target.files?.[0];
           if (!file) return;
 
-          if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { ; addToast("error", t("setup.errorFileFormat")); return; }
-          if (file.size > MAX_UPLOAD_SIZE_BYTES) { ; addToast("error", t("setup.errorFileSize")); return; }
+          if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); e.target.value = ""; return; }
+          if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); e.target.value = ""; return; }
           try {
             const dataUrl = await compressImageTransparent(file, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES);
             const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "backgroundImage", dataUrl);
@@ -289,7 +293,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           const file = e.target.files?.[0];
           if (!file) return;
 
-          if (file.size > 1024 * 1024) { ; addToast("error", t("setup.errorFileSize")); return; }
+          if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); e.target.value = ""; return; }
           try {
             const dataUrl = await compressImageTransparent(file);
             const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "cornerDecoration", dataUrl);
@@ -300,7 +304,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         }} />
       </div>
 
-      <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile} onChange={(val: string) => updateFormField("musicFile", val)} t={t} />
+      <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile} onChange={handleMusicChange} t={t} />
     </>
   );
 }

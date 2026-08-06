@@ -27,7 +27,9 @@
       "fallback": "প্রশাসন"
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — বিয়ের আমন্ত্রণপত্র",
@@ -71,7 +73,9 @@
     "transport": "পরিবহন",
     "addToCalendar": "ক্যালেন্ডারে যোগ করুন",
     "viewGoogleMaps": "Google Maps-এ দেখুন",
-    "viewAppleMaps": "Apple Maps-এ দেখুন"
+    "viewAppleMaps": "Apple Maps-এ দেখুন",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "অতিথিদের সম্পর্কে",

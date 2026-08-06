@@ -27,7 +27,9 @@
       "fallback": "Διαχείριση"
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Γαμήλιες προσκλήσεις",
@@ -71,7 +73,9 @@
     "transport": "Μεταφορά",
     "addToCalendar": "Προσθήκη στο ημερολόγιο",
     "viewGoogleMaps": "Προβολή στους Χάρτες Google",
-    "viewAppleMaps": "Προβολή στους Χάρτες Apple"
+    "viewAppleMaps": "Προβολή στους Χάρτες Apple",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Σχετικά με τους καλεσμένους",

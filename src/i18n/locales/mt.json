@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Stediniet tat-tieġ",
@@ -242,7 +244,9 @@
     "transport": "Trasport",
     "addToCalendar": "Żid mal-kalendarju",
     "viewGoogleMaps": "Ara fuq Google Maps",
-    "viewAppleMaps": "Ara fuq Apple Maps"
+    "viewAppleMaps": "Ara fuq Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Dwar il-mistednin",

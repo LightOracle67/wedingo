@@ -27,7 +27,9 @@
       "fallback": "Администрация"
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Сватбени покани",
@@ -71,7 +73,9 @@
     "transport": "Транспорт",
     "addToCalendar": "Добави в календара",
     "viewGoogleMaps": "Виж в Google Maps",
-    "viewAppleMaps": "Виж в Apple Maps"
+    "viewAppleMaps": "Виж в Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "За гостите",

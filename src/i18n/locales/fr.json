@@ -140,7 +140,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Faire-part de mariage",
@@ -190,7 +192,9 @@
     ],
     "addToCalendar": "Ajouter au calendrier",
     "viewGoogleMaps": "Voir sur Google Maps",
-    "viewAppleMaps": "Voir sur Apple Maps"
+    "viewAppleMaps": "Voir sur Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Informations pour les invités",

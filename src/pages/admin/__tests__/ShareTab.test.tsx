@@ -194,4 +194,29 @@ describe("ShareTab", () => {
     fireEvent.click(screen.getByText("share.generateMessage"));
     expect(textarea.value).toContain("Test invite message");
   });
+
+  it("copies the message without addToast (graceful no-op)", async () => {
+    const writeText = vi.fn(() => Promise.resolve());
+    Object.defineProperty(navigator, "clipboard", {
+      value: { writeText },
+      configurable: true,
+    });
+    render(<ShareTab inviteToken="test-token" />);
+    fireEvent.click(screen.getByText("share.copyMessage"));
+    await vi.waitFor(() => {
+      expect(writeText).toHaveBeenCalled();
+    });
+  });
+
+  it("shows an error toast when copying the message fails", async () => {
+    Object.defineProperty(navigator, "clipboard", {
+      value: { writeText: vi.fn(() => Promise.reject(new Error("denied"))) },
+      configurable: true,
+    });
+    render(<ShareTab {...baseProps} />);
+    fireEvent.click(screen.getByText("share.copyMessage"));
+    await vi.waitFor(() => {
+      expect(baseProps.addToast).toHaveBeenCalledWith("error", "errors.clipboardCopyFailed");
+    });
+  });
 });

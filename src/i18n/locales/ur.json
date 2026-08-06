@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — شادی کے دعوت نامے",
@@ -242,7 +244,9 @@
     "transport": "نقل و حمل",
     "addToCalendar": "کیلنڈر میں شامل کریں",
     "viewGoogleMaps": "Google Maps میں دیکھیں",
-    "viewAppleMaps": "Apple Maps میں دیکھیں"
+    "viewAppleMaps": "Apple Maps میں دیکھیں",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "مہمانوں کے بارے میں",

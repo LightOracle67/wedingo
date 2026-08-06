@@ -157,15 +157,20 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
   useEffect(() => {
     if (lightboxIndex === null) return;
+    // Bloquea el scroll de fondo mientras el lightbox está abierto.
+    document.body.style.overflow = "hidden";
     const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") lightboxPrev();
-      if (e.key === "ArrowRight") lightboxNext();
-      if (e.key === "Home") setLightboxIndex(0);
-      if (e.key === "End") setLightboxIndex(images.length - 1);
+      if (e.key === "Escape") { e.preventDefault(); closeLightbox(); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); lightboxPrev(); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); lightboxNext(); }
+      else if (e.key === "Home") { e.preventDefault(); setLightboxIndex(0); }
+      else if (e.key === "End") { e.preventDefault(); setLightboxIndex(images.length - 1); }
     };
     window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handler);
+    };
   }, [lightboxIndex, closeLightbox, lightboxPrev, lightboxNext, images.length]);
 
   // ── Navegación manual con fade ────────────────────────
@@ -440,9 +445,12 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
               const current = images[lightboxIndex];
               const url = current?.url;
               if (!url) return;
+              // Extensión según el MIME del data URL (PNG/WebP/JPEG).
+              const mimeMatch = url.match(/^data:image\/(\w+)/);
+              const ext = mimeMatch?.[1] && mimeMatch[1] !== "jpeg" ? mimeMatch[1] : "jpg";
               const a = document.createElement("a");
               a.href = url;
-              a.download = `wedingo-foto-${lightboxIndex + 1}.jpg`;
+              a.download = `wedingo-foto-${lightboxIndex + 1}.${ext}`;
               document.body.appendChild(a);
               a.click();
               a.remove();
@@ -450,6 +458,8 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
             aria-label={t("gallery.download")}
             title={t("gallery.download")}
           >⤓</button>
+
+          <p className="gallery-lightbox__counter" aria-live="polite">{lightboxIndex + 1} / {images.length}</p>
 
           {images[lightboxIndex].description && (
             <p className="gallery-lightbox__caption">{images[lightboxIndex].description}</p>

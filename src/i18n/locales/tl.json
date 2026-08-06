@@ -198,7 +198,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Mga Imbitasyon sa Kasal",
@@ -299,7 +301,9 @@
     "transport": "Transportasyon",
     "addToCalendar": "Idagdag sa kalendaryo",
     "viewGoogleMaps": "Tingnan sa Google Maps",
-    "viewAppleMaps": "Tingnan sa Apple Maps"
+    "viewAppleMaps": "Tingnan sa Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Tungkol sa mga bisita",

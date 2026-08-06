@@ -140,7 +140,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Fanasan-dravina",
@@ -190,7 +192,9 @@
     "transport": "Fitaterana",
     "addToCalendar": "Ampidiro amin'ny kalandrie",
     "viewGoogleMaps": "Hijery amin'ny Google Maps",
-    "viewAppleMaps": "Hijery amin'ny Apple Maps"
+    "viewAppleMaps": "Hijery amin'ny Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Momba ny vahiny",

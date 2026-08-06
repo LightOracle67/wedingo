@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Ubutumire bw'ubukwe",
@@ -242,7 +244,9 @@
     "transport": "Ubwikorezi",
     "addToCalendar": "Ongera kuri kalendari",
     "viewGoogleMaps": "Reba kuri Google Maps",
-    "viewAppleMaps": "Reba kuri Apple Maps"
+    "viewAppleMaps": "Reba kuri Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Ku bashyitsi",

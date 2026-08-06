@@ -27,7 +27,9 @@
       "fallback": "إدارة"
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "ويدنغو — دعوات الزفاف",
@@ -71,7 +73,9 @@
     "transport": "وسائل النقل",
     "addToCalendar": "أضف إلى التقويم",
     "viewGoogleMaps": "عرض في خرائط Google",
-    "viewAppleMaps": "عرض في خرائط Apple"
+    "viewAppleMaps": "عرض في خرائط Apple",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "حول الضيوف",

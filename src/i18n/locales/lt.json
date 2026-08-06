@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Vestuvių kvietimai",
@@ -242,7 +244,9 @@
     "transport": "Transportas",
     "addToCalendar": "Įtraukti į kalendorių",
     "viewGoogleMaps": "Žiūrėti Google Maps",
-    "viewAppleMaps": "Žiūrėti Apple Maps"
+    "viewAppleMaps": "Žiūrėti Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Apie svečius",

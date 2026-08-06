@@ -140,7 +140,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — 婚礼请柬",
@@ -190,7 +192,9 @@
     "transport": "交通",
     "addToCalendar": "添加到日历",
     "viewGoogleMaps": "在Google地图中查看",
-    "viewAppleMaps": "在Apple地图中查看"
+    "viewAppleMaps": "在Apple地图中查看",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "关于宾客",

@@ -166,7 +166,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Hääkutsut",
@@ -210,7 +212,9 @@
     "transport": "Kuljetus",
     "addToCalendar": "Lisää kalenteriin",
     "viewGoogleMaps": "Näytä Google Mapsissa",
-    "viewAppleMaps": "Näytä Apple Mapsissa"
+    "viewAppleMaps": "Näytä Apple Mapsissa",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Tietoa vieraista",

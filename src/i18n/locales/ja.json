@@ -140,7 +140,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — 結婚式の招待状",
@@ -184,7 +186,9 @@
     "transport": "交通手段",
     "addToCalendar": "カレンダーに追加",
     "viewGoogleMaps": "Googleマップで見る",
-    "viewAppleMaps": "Appleマップで見る"
+    "viewAppleMaps": "Appleマップで見る",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "ゲストについて",

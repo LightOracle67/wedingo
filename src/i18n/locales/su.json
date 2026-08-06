@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Ondangan Kawinan",
@@ -242,7 +244,9 @@
     "transport": "Angkutan",
     "addToCalendar": "Tambihkeun ka kalénder",
     "viewGoogleMaps": "Tingali di Google Maps",
-    "viewAppleMaps": "Tingali di Apple Maps"
+    "viewAppleMaps": "Tingali di Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Ngeunaan tamu",

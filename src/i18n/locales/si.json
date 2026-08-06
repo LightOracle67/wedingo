@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — විවාහ ආරාධනා",
@@ -242,7 +244,9 @@
     "transport": "ප්‍රවාහනය",
     "addToCalendar": "දිනදර්ශනයට එක් කරන්න",
     "viewGoogleMaps": "Google Maps හි බලන්න",
-    "viewAppleMaps": "Apple Maps හි බලන්න"
+    "viewAppleMaps": "Apple Maps හි බලන්න",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "අමුත්තන් ගැන",

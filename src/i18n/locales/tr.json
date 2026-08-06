@@ -140,7 +140,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Düğün Davetiyeleri",
@@ -184,7 +186,9 @@
     "transport": "Ulaşım",
     "addToCalendar": "Takvime ekle",
     "viewGoogleMaps": "Google Haritalar'da görüntüle",
-    "viewAppleMaps": "Apple Haritalar'da görüntüle"
+    "viewAppleMaps": "Apple Haritalar'da görüntüle",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Misafirler hakkında",

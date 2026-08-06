@@ -27,7 +27,9 @@
       "fallback": "Gweinyddiaeth"
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Gwahoddiadau priodas",
@@ -71,7 +73,9 @@
     "transport": "Cludiant",
     "addToCalendar": "Ychwanegu at y calendr",
     "viewGoogleMaps": "Gweld yn Google Maps",
-    "viewAppleMaps": "Gweld yn Apple Maps"
+    "viewAppleMaps": "Gweld yn Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Am y gwesteion",

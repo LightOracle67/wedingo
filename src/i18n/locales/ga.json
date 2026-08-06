@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Cuirí bainise",
@@ -242,7 +244,9 @@
     "transport": "Iompar",
     "addToCalendar": "Cuir leis an bhféilire",
     "viewGoogleMaps": "Féach in Google Maps",
-    "viewAppleMaps": "Féach in Apple Maps"
+    "viewAppleMaps": "Féach in Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Maidir leis na haíonna",

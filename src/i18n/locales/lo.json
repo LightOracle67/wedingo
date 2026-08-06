@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — ບັດເຊີນງານແຕ່ງ",
@@ -242,7 +244,9 @@
     "transport": "ການຂົນສົ່ງ",
     "addToCalendar": "ເພີ່ມໃສ່ປະຕິທິນ",
     "viewGoogleMaps": "ເບິ່ງໃນ Google Maps",
-    "viewAppleMaps": "ເບິ່ງໃນ Apple Maps"
+    "viewAppleMaps": "ເບິ່ງໃນ Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "ກ່ຽວກັບແຂກ",

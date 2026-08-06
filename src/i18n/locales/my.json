@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — မင်္ဂလာဖိတ်ကြားလွှာ",
@@ -242,7 +244,9 @@
     "transport": "သယ်ယူပို့ဆောင်ရေး",
     "addToCalendar": "ပြက္ခဒိန်သို့ ထည့်မည်",
     "viewGoogleMaps": "Google Maps တွင် ကြည့်မည်",
-    "viewAppleMaps": "Apple Maps တွင် ကြည့်မည်"
+    "viewAppleMaps": "Apple Maps တွင် ကြည့်မည်",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "ဧည့်သည်များအကြောင်း",

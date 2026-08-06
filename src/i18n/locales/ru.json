@@ -166,7 +166,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Свадебные приглашения",
@@ -210,7 +212,9 @@
     "transport": "Транспорт",
     "addToCalendar": "Добавить в календарь",
     "viewGoogleMaps": "Открыть в Google Картах",
-    "viewAppleMaps": "Открыть в Apple Картах"
+    "viewAppleMaps": "Открыть в Apple Картах",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "О гостях",

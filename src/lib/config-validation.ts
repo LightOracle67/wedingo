@@ -85,8 +85,17 @@ export function validateConfigForSave(
   if (sanitized.menuEnabled === "true") {
     // Al menos una opción de menú (edición por platos). El postre forma parte
     // de los platos (order: "postre"), no es un campo aparte.
+    // "[]" es un array vacío (truthy como string): se valida el contenido.
+    const hasDishes = (value: string | undefined) => {
+      if (!value) return false;
+      try {
+        return (JSON.parse(value) as unknown[]).length > 0;
+      } catch {
+        return value.length > 0;
+      }
+    };
     const hasMenuOption =
-      Boolean(sanitized.menuCarneDishes) || Boolean(sanitized.menuPescadoDishes) || Boolean(sanitized.menuVeganoDishes);
+      hasDishes(sanitized.menuCarneDishes) || hasDishes(sanitized.menuPescadoDishes) || hasDishes(sanitized.menuVeganoDishes);
     if (!hasMenuOption) {
       return { sanitized, hiddenSet, errorKey: "errors.menuRequired" };
     }

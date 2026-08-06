@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Menda ñepepyrũ",
@@ -242,7 +244,9 @@
     "transport": "Gueraha",
     "addToCalendar": "Embojoaju arapapáme",
     "viewGoogleMaps": "Ehecha Google Maps-pe",
-    "viewAppleMaps": "Ehecha Apple Maps-pe"
+    "viewAppleMaps": "Ehecha Apple Maps-pe",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Oñepepyrũvakuéra rehegua",

@@ -81,7 +81,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Invitacions de boda",
@@ -137,7 +139,9 @@
     ],
     "addToCalendar": "Afegir al calendari",
     "viewGoogleMaps": "Veure en Google Maps",
-    "viewAppleMaps": "Veure en Apple Maps"
+    "viewAppleMaps": "Veure en Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Sobre els convidats",

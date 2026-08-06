@@ -127,7 +127,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "वेडिंगो — शादी के निमंत्रण",
@@ -171,7 +173,9 @@
     "transport": "परिवहन",
     "addToCalendar": "कैलेंडर में जोड़ें",
     "viewGoogleMaps": "Google Maps में देखें",
-    "viewAppleMaps": "Apple Maps में देखें"
+    "viewAppleMaps": "Apple Maps में देखें",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "मेहमानों के बारे में",

@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — திருமண அழைப்பிதழ்கள்",
@@ -242,7 +244,9 @@
     "transport": "போக்குவரத்து",
     "addToCalendar": "நாட்காட்டியில் சேர்க்கவும்",
     "viewGoogleMaps": "Google Maps இல் காண்க",
-    "viewAppleMaps": "Apple Maps இல் காண்க"
+    "viewAppleMaps": "Apple Maps இல் காண்க",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "விருந்தினர்களைப் பற்றி",

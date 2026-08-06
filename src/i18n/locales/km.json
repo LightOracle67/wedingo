@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — ការអញ្ជើញអាពាហ៍ពិពាហ៍",
@@ -242,7 +244,9 @@
     "transport": "ការដឹកជញ្ជូន",
     "addToCalendar": "បន្ថែមទៅប្រតិទិន",
     "viewGoogleMaps": "មើលក្នុង Google Maps",
-    "viewAppleMaps": "មើលក្នុង Apple Maps"
+    "viewAppleMaps": "មើលក្នុង Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "អំពីភ្ញៀវ",

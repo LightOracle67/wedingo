@@ -338,8 +338,11 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       for (const [k, v] of Object.entries(originalImages)) {
         payload[k] = v;
       }
+      // El musicFile se persiste en la subcolección audio (chunks), no en el
+      // documento: se restaura en memoria para que el editor no quede vacío.
+      const musicFileValue = (formData as Record<string, unknown>).musicFile;
       setConfig(payload);
-      setFormData(payload);
+      setFormData(musicFileValue ? { ...payload, musicFile: musicFileValue as string } : payload);
       setHasStoredConfig(true);
 
       for (const cb of onFirstSaveCallbacksRef.current) cb();
@@ -364,12 +367,17 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       const batch = writeBatch(db);
       snap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
       const { deleteGallery, deleteAllConfigImages } = await import("../lib/image-store");
+      const { deleteAudio } = await import("../lib/music-store");
       await deleteGallery(inviteToken);
       await deleteAllConfigImages(inviteToken);
+      // El audio (chunks cifrados) también se elimina: sin esto quedaban
+      // huérfanos para siempre (incumplía el borrado completo de datos).
+      await deleteAudio(inviteToken);
       batch.delete(doc(db, "rsvpResponses", inviteToken));
       batch.delete(invitationDocRef(inviteToken));
       await batch.commit();
       safeRemoveItem(STORAGE_KEYS.inviteCache(inviteToken));
+      safeRemoveItem(STORAGE_KEYS.audio(inviteToken));
       clearSession();
 
       navigate("/");

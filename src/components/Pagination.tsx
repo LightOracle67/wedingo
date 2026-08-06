@@ -15,7 +15,8 @@ const Pagination = memo(function Pagination({
   page, totalPages, pageSize, total, pageSizes, onPageChange, onPageSizeChange
 }: PaginationProps) {
   const { t } = useTranslation();
-  const safePage = Math.min(page, totalPages - 1);
+  // Con 0 resultados totalPages es 0: el índice no debe ser negativo.
+  const safePage = Math.max(0, Math.min(page, Math.max(0, totalPages - 1)));
 
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", justifyContent: "space-between", marginTop: "0.5rem", flexWrap: "wrap" }}>

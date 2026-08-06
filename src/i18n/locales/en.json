@@ -32,7 +32,9 @@
     "hidden": "Hidden",
     "version": "v{{version}}",
     "remove": "Remove",
-    "saving": "Saving…"
+    "saving": "Saving…",
+    "updateAvailable": "A new version of Wedingo is available.",
+    "reload": "Update"
   },
   "landing": {
     "title": "Wedingo — Wedding invitations",
@@ -75,7 +77,9 @@
     "transport": "Transport",
     "addToCalendar": "Add to calendar",
     "viewGoogleMaps": "Open in Google Maps",
-    "locationLabel": "Location"
+    "locationLabel": "Location",
+    "directions": "Directions",
+    "addToIcs": "Add to Apple/Outlook"
   },
   "info": {
     "sectionLabel": "About the guests",

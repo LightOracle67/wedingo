@@ -140,7 +140,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Invitații de nuntă",
@@ -190,7 +192,9 @@
     ],
     "addToCalendar": "Adaugă în calendar",
     "viewGoogleMaps": "Vezi pe Google Maps",
-    "viewAppleMaps": "Vezi pe Apple Maps"
+    "viewAppleMaps": "Vezi pe Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Despre invitați",

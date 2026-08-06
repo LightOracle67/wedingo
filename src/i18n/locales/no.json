@@ -140,7 +140,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Bryllupsinvitasjoner",
@@ -190,7 +192,9 @@
     ],
     "addToCalendar": "Legg til i kalender",
     "viewGoogleMaps": "Se i Google Maps",
-    "viewAppleMaps": "Se i Apple Maps"
+    "viewAppleMaps": "Se i Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Om gjestene",

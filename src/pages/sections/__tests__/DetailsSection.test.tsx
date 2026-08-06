@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -19,6 +19,12 @@ vi.mock("../../../lib/utils", () => ({
 
 vi.mock("../../../components/MapEmbed", () => ({
   default: () => <div data-testid="wedding-map">Map</div>,
+}));
+
+vi.mock("../../../contexts", () => ({
+  useApp: () => ({
+    config: { firstName: "John", secondName: "Jane", weddingDay: "15", weddingMonth: "Jun", weddingYear: "2025", weddingHour: "18", weddingMinute: "30", weddingPlace: "Church" },
+  }),
 }));
 
 import DetailsSection from "../DetailsSection";
@@ -138,5 +144,18 @@ describe("DetailsSection", () => {
     expect(screen.queryByText("Madrid")).toBeNull();
     expect(screen.queryByTestId("wedding-map")).toBeNull();
     expect(screen.queryByText("details.viewGoogleMaps")).toBeNull();
+  });
+
+  it("downloads an .ics file with the wedding event", async () => {
+    const createUrl = vi.fn(() => "blob:ics");
+    const revokeUrl = vi.fn();
+    vi.stubGlobal("URL", { createObjectURL: createUrl, revokeObjectURL: revokeUrl });
+    const clickSpy = vi.spyOn(HTMLAnchorElement.prototype, "click").mockImplementation(() => {});
+    render(<DetailsSection {...baseProps} />);
+    fireEvent.click(screen.getByText("details.addToIcs"));
+    expect(createUrl).toHaveBeenCalled();
+    expect(clickSpy).toHaveBeenCalled();
+    clickSpy.mockRestore();
+    vi.unstubAllGlobals();
   });
 });

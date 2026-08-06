@@ -336,6 +336,36 @@ describe("useAutoSave", () => {
         expect(output).toBeNull();
       });
     });
+
+    it("does not persist when names are empty", async () => {
+      const onSaveMessage = vi.fn();
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", sampleConfig, sampleConfig, onSaveMessage, { current: false }),
+      );
+      const empty = { ...sampleConfig, firstName: "", secondName: "" };
+
+      await act(async () => {
+        const output = await result.current.doSave(empty);
+        expect(output).toBeNull();
+      });
+      expect(onSaveMessage).toHaveBeenCalledWith("errors.bothNamesRequired");
+      expect(mockSetDoc).not.toHaveBeenCalled();
+    });
+
+    it("does not persist an invalid map URL", async () => {
+      const onSaveMessage = vi.fn();
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", sampleConfig, sampleConfig, onSaveMessage, { current: false }),
+      );
+      const bad = { ...sampleConfig, weddingSiteURL: "https://example.com/not-a-map" };
+
+      await act(async () => {
+        const output = await result.current.doSave(bad);
+        expect(output).toBeNull();
+      });
+      expect(onSaveMessage).toHaveBeenCalledWith("errors.mapUrlInvalid");
+      expect(mockSetDoc).not.toHaveBeenCalled();
+    });
   });
 
   describe("cleanup", () => {

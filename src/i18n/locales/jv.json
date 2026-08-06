@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Undangan Mantèn",
@@ -242,7 +244,9 @@
     "transport": "Transportasi",
     "addToCalendar": "Tambahaké menyang kalènder",
     "viewGoogleMaps": "Deleng ing Google Maps",
-    "viewAppleMaps": "Deleng ing Apple Maps"
+    "viewAppleMaps": "Deleng ing Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Babagan para tamu",

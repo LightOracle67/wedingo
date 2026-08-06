@@ -140,7 +140,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Esküvői meghívók",
@@ -184,7 +186,9 @@
     "transport": "Közlekedés",
     "addToCalendar": "Hozzáadás a naptárhoz",
     "viewGoogleMaps": "Megtekintés Google Maps-en",
-    "viewAppleMaps": "Megtekintés Apple Maps-en"
+    "viewAppleMaps": "Megtekintés Apple Maps-en",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "A vendégekről",

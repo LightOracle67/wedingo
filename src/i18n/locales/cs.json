@@ -27,7 +27,9 @@
       "fallback": "Správa"
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Svatební oznámení",
@@ -71,7 +73,9 @@
     "transport": "Doprava",
     "addToCalendar": "Přidat do kalendáře",
     "viewGoogleMaps": "Zobrazit v Google Maps",
-    "viewAppleMaps": "Zobrazit v Apple Maps"
+    "viewAppleMaps": "Zobrazit v Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "O hostech",

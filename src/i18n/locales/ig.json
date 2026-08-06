@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Akwụkwọ ịkpọ òkù agbamakwụkwọ",
@@ -242,7 +244,9 @@
     "transport": "Ụgbọ njem",
     "addToCalendar": "Tinye na kalenda",
     "viewGoogleMaps": "Lelee na Google Maps",
-    "viewAppleMaps": "Lelee na Apple Maps"
+    "viewAppleMaps": "Lelee na Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Banyere ndị ọbịa",

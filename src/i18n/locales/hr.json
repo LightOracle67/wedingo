@@ -166,7 +166,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Pozivnice za vjenčanje",
@@ -216,7 +218,9 @@
     "transport": "Prijevoz",
     "addToCalendar": "Dodaj u kalendar",
     "viewGoogleMaps": "Prikaži na Google kartama",
-    "viewAppleMaps": "Prikaži na Apple kartama"
+    "viewAppleMaps": "Prikaži na Apple kartama",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "O gostima",

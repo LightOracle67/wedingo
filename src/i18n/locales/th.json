@@ -140,7 +140,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — บัตรเชิญงานแต่งงาน",
@@ -184,7 +186,9 @@
     "transport": "การเดินทาง",
     "addToCalendar": "เพิ่มลงในปฏิทิน",
     "viewGoogleMaps": "ดูใน Google Maps",
-    "viewAppleMaps": "ดูใน Apple Maps"
+    "viewAppleMaps": "ดูใน Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "เกี่ยวกับแขก",

@@ -28,6 +28,16 @@ const PRECACHE_URLS = [
   "/favicon192.png",
   "/favicon512.png",
   "/manifest.json",
+  // Tipografías autoalojadas (incluida la de accesibilidad) para que la
+  // primera carga sin conexión no quede sin fuentes.
+  "/fonts/PlayfairDisplay-normal-400.woff2",
+  "/fonts/PlayfairDisplay-italic-400.woff2",
+  "/fonts/PlayfairDisplay-normal-700.woff2",
+  "/fonts/Lora-normal-400.woff2",
+  "/fonts/Lora-italic-400.woff2",
+  "/fonts/Lora-normal-700.woff2",
+  "/fonts/GreatVibes-normal-400.woff2",
+  "/fonts/OpenDyslexic-Regular.otf",
   ...__PRECACHE_ASSETS__,
 ];
 
@@ -67,11 +77,12 @@ self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Navegaciones: red primero, offline.html como respaldo.
+  // Navegaciones: red primero; sin conexión se sirve la SPA precachead
+  // (la invitación funciona offline) y offline.html solo como último recurso.
   if (request.mode === "navigate") {
     event.respondWith(
       fetch(request).catch(() =>
-        caches.match("/offline.html").then((r) => r || caches.match("/"))
+        caches.match("/index.html").then((r) => r || caches.match("/offline.html"))
       )
     );
     return;
@@ -108,7 +119,15 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Resto (same-origin): stale-while-revalidate.
+  // Resto (same-origin): stale-while-revalidate SOLO para recursos estáticos
+  // (HTML, JS, CSS, imágenes y fuentes). Nunca se cachean respuestas JSON o
+  // de API para no servir datos de la invitación desde caché.
+  const staticExt = /\.(html?|js|mjs|css|png|jpe?g|gif|svg|webp|ico|woff2?|otf|ttf)$/;
+  if (!staticExt.test(url.pathname)) {
+    // Navegaciones no estáticas o respuestas de datos: red directa.
+    event.respondWith(fetch(request));
+    return;
+  }
   event.respondWith(
     caches.match(request).then((cached) => {
       const network = fetch(request).then((response) => {

@@ -140,7 +140,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Trouwuitnodigingen",
@@ -184,7 +186,9 @@
     "transport": "Vervoer",
     "addToCalendar": "Toevoegen aan agenda",
     "viewGoogleMaps": "Bekijken in Google Maps",
-    "viewAppleMaps": "Bekijken in Apple Maps"
+    "viewAppleMaps": "Bekijken in Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Over de gasten",

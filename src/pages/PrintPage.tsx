@@ -6,7 +6,7 @@ import "../styles/print.css";
 
 export default function PrintPage() {
   const { t, i18n } = useTranslation();
-  const { config, isConfigLoading } = useApp();
+  const { config, isConfigLoading, inviteToken } = useApp();
 
   const printed = useRef(false);
   const [loaded, setLoaded] = useState(false);
@@ -26,11 +26,19 @@ export default function PrintPage() {
     : "";
   const place = config.weddingPlace || "";
 
+  // Mensaje de la tarjeta: fijo por invitación (sessionStorage) para que el
+  // PDF imprimido sea estable y coincida con el del sobre. Un mensaje
+  // aleatorio por carga generaba PDFs distintos en cada impresión.
   const message = useMemo(() => {
-    const raw = randomMessage(i18n.language);
-
+    const key = `wedin_print_msg_${inviteToken || ""}`;
+    try {
+      const stored = sessionStorage.getItem(key);
+      if (stored) return stored;
+    } catch { /* almacenamiento no disponible */ }
+    const raw = randomMessage(i18n.language ?? "es") ?? "";
+    try { sessionStorage.setItem(key, raw); } catch { /* noop */ }
     return raw;
-  }, [i18n.language]);
+  }, [i18n.language, inviteToken]);
 
   useEffect(() => {
     if (isConfigLoading) {

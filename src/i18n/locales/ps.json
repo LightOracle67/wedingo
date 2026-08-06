@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — د واده بلنې",
@@ -242,7 +244,9 @@
     "transport": "ترانسپورت",
     "addToCalendar": "تقویم ته اضافه کړئ",
     "viewGoogleMaps": "په Google Maps کې وګورئ",
-    "viewAppleMaps": "په Apple Maps کې وګورئ"
+    "viewAppleMaps": "په Apple Maps کې وګورئ",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "د مېلمنو په اړه",

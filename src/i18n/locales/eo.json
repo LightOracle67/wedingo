@@ -27,7 +27,9 @@
       "fallback": "Administrado"
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Geedziĝaj Invitoj",
@@ -71,7 +73,9 @@
     "transport": "Transporto",
     "addToCalendar": "Aldoni al kalendaro",
     "viewGoogleMaps": "Vidi en Google Maps",
-    "viewAppleMaps": "Vidi en Apple Maps"
+    "viewAppleMaps": "Vidi en Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Pri la gastoj",

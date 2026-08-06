@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Ftesa dasme",
@@ -242,7 +244,9 @@
     "transport": "Transporti",
     "addToCalendar": "Shto në kalendar",
     "viewGoogleMaps": "Shiko në Google Maps",
-    "viewAppleMaps": "Shiko në Apple Maps"
+    "viewAppleMaps": "Shiko në Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Rreth të ftuarve",

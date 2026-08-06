@@ -32,7 +32,9 @@
     "copied": "¡Copiado!",
     "version": "v{{version}}",
     "remove": "Eliminar",
-    "saving": "Guardando…"
+    "saving": "Guardando…",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Invitaciones de boda",
@@ -75,7 +77,9 @@
     "transport": "Transporte",
     "addToCalendar": "Añadir al calendario",
     "viewGoogleMaps": "Ver en Google Maps",
-    "locationLabel": "Ubicación"
+    "locationLabel": "Ubicación",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Sobre los invitados",

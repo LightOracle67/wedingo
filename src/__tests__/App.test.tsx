@@ -114,6 +114,18 @@ const baseUseApp = {
 describe("App", () => {
   beforeEach(() => {
     mockUseApp.mockReturnValue(baseUseApp);
+    // Evita contaminación entre tests del banner de actualización.
+    const store: Record<string, string> = {};
+    Object.defineProperty(globalThis, "sessionStorage", {
+      value: {
+        getItem: (k: string) => store[k] ?? null,
+        setItem: (k: string, v: string) => { store[k] = String(v); },
+        removeItem: (k: string) => { delete store[k]; },
+        clear: () => { Object.keys(store).forEach((k) => delete store[k]); },
+      },
+      configurable: true,
+    });
+    document.querySelectorAll('meta[name="deploy-id"]').forEach((m) => m.remove());
   });
 
   it("renders landing page at root route", async () => {
@@ -949,5 +961,43 @@ describe("App", () => {
     );
     expect(registerMock).not.toHaveBeenCalled();
     import.meta.env.PROD = origEnv;
+  });
+
+  it("shows the update banner when a new deploy is detected", async () => {
+    const meta = document.createElement("meta");
+    meta.setAttribute("name", "deploy-id");
+    meta.setAttribute("content", "999");
+    document.head.appendChild(meta);
+    sessionStorage.setItem("wedin_deploy_id", "111");
+
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    expect(await screen.findByText("common.updateAvailable")).toBeDefined();
+    sessionStorage.removeItem("wedin_deploy_id");
+    meta.remove();
+  });
+
+  it("does not show the update banner on the first visit", async () => {
+    const meta = document.createElement("meta");
+    meta.setAttribute("name", "deploy-id");
+    meta.setAttribute("content", "555");
+    document.head.appendChild(meta);
+
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    await screen.findByTestId("landing-page");
+    expect(screen.queryByText("common.updateAvailable")).toBeNull();
+    sessionStorage.removeItem("wedin_deploy_id");
+    meta.remove();
   });
 });

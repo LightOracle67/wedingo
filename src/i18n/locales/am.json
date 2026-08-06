@@ -27,7 +27,9 @@
       "fallback": "አስተዳደር"
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — የሰርግ ግብዣዎች",
@@ -71,7 +73,9 @@
     "transport": "መጓጓዣ",
     "addToCalendar": "ወደ ቀን መቁጠሪያ አክል",
     "viewGoogleMaps": "በGoogle Maps ይመልከቱ",
-    "viewAppleMaps": "በApple Maps ይመልከቱ"
+    "viewAppleMaps": "በApple Maps ይመልከቱ",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "ስለ እንግዶች",

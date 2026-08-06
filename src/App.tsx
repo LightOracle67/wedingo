@@ -53,6 +53,8 @@ function AppShell() {
   const [showChangelog, setShowChangelog] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  /** Nueva versión desplegada: se detecta comparando el meta deploy-id. */
+  const [updateAvailable, setUpdateAvailable] = useState(false);
   // Trampa de foco del menú móvil: mientras está abierto, el teclado no
   // puede tabular hacia el contenido detrás del overlay.
   const navOverlayRef = useFocusTrap<HTMLDivElement>(navOpen);
@@ -77,6 +79,18 @@ function AppShell() {
     if ("serviceWorker" in navigator && import.meta.env.PROD) {
       navigator.serviceWorker.register("/sw.js").catch(() => { ; });
     }
+  }, []);
+
+  // Detecta una nueva versión desplegada comparando el deploy-id inyectado en
+  // cada build (vite.config buildTimestamp) con el de la última visita.
+  useEffect(() => {
+    const deployId = document.querySelector('meta[name="deploy-id"]')?.getAttribute("content");
+    if (!deployId) return;
+    try {
+      const last = sessionStorage.getItem("wedin_deploy_id");
+      if (last && last !== deployId) setUpdateAvailable(true);
+      sessionStorage.setItem("wedin_deploy_id", deployId);
+    } catch { /* almacenamiento no disponible */ }
   }, []);
 
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
@@ -157,6 +171,17 @@ function AppShell() {
           opacity: 1,
         }}>
           {t("common.offline")}
+        </div>
+      ) : null}
+
+      {/* Nueva versión disponible: se ofrece recargar (evita la actualización
+          silenciosa del service worker). */}
+      {updateAvailable ? (
+        <div className="update-banner" role="status">
+          <span>{t("common.updateAvailable")}</span>
+          <button type="button" className="update-banner__btn" onClick={() => window.location.reload()}>
+            {t("common.reload")}
+          </button>
         </div>
       ) : null}
 

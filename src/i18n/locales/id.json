@@ -146,7 +146,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Undangan Pernikahan",
@@ -190,7 +192,9 @@
     "transport": "Transportasi",
     "addToCalendar": "Tambahkan ke kalender",
     "viewGoogleMaps": "Lihat di Google Maps",
-    "viewAppleMaps": "Lihat di Apple Maps"
+    "viewAppleMaps": "Lihat di Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Tentang tamu",

@@ -65,7 +65,9 @@
       "fallback": "Administració"
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Invitacions de casament",
@@ -128,7 +130,9 @@
     ],
     "addToCalendar": "Afegir al calendari",
     "viewGoogleMaps": "Veure a Google Maps",
-    "viewAppleMaps": "Veure a Apple Maps"
+    "viewAppleMaps": "Veure a Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Sobre els convidats",

@@ -140,7 +140,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Inviti di nozze",
@@ -184,7 +186,9 @@
     "transport": "Trasporto",
     "addToCalendar": "Aggiungi al calendario",
     "viewGoogleMaps": "Vedi su Google Maps",
-    "viewAppleMaps": "Vedi su Apple Maps"
+    "viewAppleMaps": "Vedi su Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Informazioni sugli invitati",

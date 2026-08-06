@@ -1,6 +1,16 @@
 @page { margin: 0; size: A4 portrait; }
 @media print {
   * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+  /* Layout claro de respaldo: sin "background graphics" el fondo oscuro no
+     se imprime y el texto claro quedaría invisible sobre papel blanco. */
+  .print-root, .print-card {
+    background: #ffffff !important;
+    color: #1f1b11 !important;
+  }
+  .print-card::before { border-color: #d8b24a !important; }
+  .print-eyebrow, .print-couple-ampersand, .print-divider { color: #8a6d1f !important; background: #8a6d1f !important; }
+  .print-couple-name { color: #4a3520 !important; }
+  .print-message, .print-body { color: #2a2418 !important; }
   body { overflow: visible !important; }
   .app-footer, .admin-bar, .music-player, .envelope-overlay,
   .envelope-wrapper, .story-scroll-hint, .wedding-decoration,

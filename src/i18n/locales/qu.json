@@ -166,7 +166,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Casamientopaq waqyarikuykuna",
@@ -216,7 +218,9 @@
     "transport": "Apaysikuy",
     "addToCalendar": "P'unchawchapaman yapay",
     "viewGoogleMaps": "Google Maps nisqapi qhaway",
-    "viewAppleMaps": "Apple Maps nisqapi qhaway"
+    "viewAppleMaps": "Apple Maps nisqapi qhaway",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Waqyarisqakunamanta",

@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — వివాహ ఆహ్వాన పత్రికలు",
@@ -242,7 +244,9 @@
     "transport": "రవాణా",
     "addToCalendar": "క్యాలెండర్‌కు జోడించు",
     "viewGoogleMaps": "Google Maps లో చూడండి",
-    "viewAppleMaps": "Apple Maps లో చూడండి"
+    "viewAppleMaps": "Apple Maps లో చూడండి",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "అతిథుల గురించి",

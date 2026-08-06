@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — Весільні запрошення",
@@ -223,7 +225,9 @@
     "transport": "Транспорт",
     "addToCalendar": "Додати в календар",
     "viewGoogleMaps": "Переглянути в Google Картах",
-    "viewAppleMaps": "Переглянути в Apple Картах"
+    "viewAppleMaps": "Переглянути в Apple Картах",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "Про гостей",

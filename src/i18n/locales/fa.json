@@ -179,7 +179,9 @@
       ]
     },
     "saving": "Saving…",
-    "menu": "Menu"
+    "menu": "Menu",
+    "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
+    "reload": "Actualizar"
   },
   "landing": {
     "title": "Wedingo — دعوتنامه عروسی",
@@ -242,7 +244,9 @@
     "transport": "حمل و نقل",
     "addToCalendar": "افزودن به تقویم",
     "viewGoogleMaps": "مشاهده در Google Maps",
-    "viewAppleMaps": "مشاهده در Apple Maps"
+    "viewAppleMaps": "مشاهده در Apple Maps",
+    "directions": "Cómo llegar",
+    "addToIcs": "Añadir a Apple/Outlook"
   },
   "info": {
     "sectionLabel": "درباره مهمانان",

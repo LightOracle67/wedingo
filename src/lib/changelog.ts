@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.69.0",
+    date: "2026-08-06",
+    changes: [
+      "BUGFIX: eliminar la invitación borra también el audio y su caché (GDPR); editor de música sin bucle de re-descarga y sin perder la música al guardar",
+      "IMPRESIÓN: PDF estable (mensaje fijo por invitación) y legible sin 'background graphics'; menú vacío ya no pasa la validación; inputs de subida se limpian al fallar",
+      "PWA: aviso de nueva versión disponible (con botón Actualizar), la navegación offline sirve la SPA, tipografías precacheadas y rama del service worker restringida a estáticos",
+      "LIGHTBOX: contador de posición, scroll de fondo bloqueado, teclado con preventDefault y descarga con la extensión correcta",
+      "PRODUCTO: botones 'Cómo llegar' (directions) y calendario Apple/Outlook (.ics)",
+    ],
+  },
+  {
     version: "2.68.0",
     date: "2026-08-06",
     changes: [
