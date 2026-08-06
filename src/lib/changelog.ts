@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.92.0",
+    date: "2026-08-06",
+    changes: [
+      "E2E: los tests de Playwright se ejecutan con el config correcto (el pendiente del arranque local queda resuelto) y se amplía la cobertura con el flujo del modal de login (apertura y habilitación del botón)",
+    ],
+  },
+  {
     version: "2.91.0",
     date: "2026-08-06",
     changes: [

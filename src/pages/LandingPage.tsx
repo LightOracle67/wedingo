@@ -254,7 +254,7 @@ export default function LandingPage() {
             <button type="button" className="setup-button text-sm" onClick={handleCreate} disabled={creating} aria-busy={creating} data-testid="create-invitation-btn">
               {creating ? t("common.loading") : t("landing.createInvitation")}
             </button>
-            <button type="button" className="setup-button setup-button--ghost text-sm" onClick={openModal}>
+            <button type="button" className="setup-button setup-button--ghost text-sm" onClick={openModal} data-testid="have-invitation-btn">
               {t("landing.haveInvitation")}
             </button>
           </div>
@@ -296,6 +296,7 @@ export default function LandingPage() {
                 name="password"
                 className="setup-input"
                 type="password"
+                data-testid="login-token-input"
                 value={tokenInput}
                 onChange={(e) => setTokenInput(e.target.value.replace(/[^a-zA-Z0-9/:.?=&-]/g, "").slice(0, 80))}
                 placeholder={t("landing.tokenPlaceholder")}
@@ -304,7 +305,7 @@ export default function LandingPage() {
               />
               {error && <p className="setup-error" role="alert">{error}</p>}
               <div className="setup-actions">
-                <button className="setup-button" type="submit" aria-busy={isLoading} disabled={isLoading || usernameInput.trim().length < 1 || tokenInput.trim().length < 20}>
+                <button className="setup-button" type="submit" data-testid="login-submit-btn" aria-busy={isLoading} disabled={isLoading || usernameInput.trim().length < 1 || tokenInput.trim().length < 20}>
                   {isLoading ? t("landing.loginLoading") : t("landing.loginButton")}
                 </button>
               </div>

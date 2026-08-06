@@ -28,4 +28,21 @@ test.describe("App Shell", () => {
     // casaba también con "Ya tengo una invitación".
     await expect(page.getByTestId("create-invitation-btn")).toBeVisible();
   });
+
+  test("opens the login modal from 'Ya tengo una invitación'", async ({ page }) => {
+    await page.goto("/");
+    await page.getByTestId("have-invitation-btn").click();
+    await expect(page.getByRole("dialog")).toBeVisible();
+  });
+
+  test("keeps the login button disabled until the token is long enough", async ({ page }) => {
+    await page.goto("/");
+    await page.getByTestId("have-invitation-btn").click();
+    // El botón se habilita con usuario + token ≥20 caracteres.
+    await page.locator("#loginUsernameInput").fill("admin");
+    await page.getByTestId("login-token-input").fill("abcd");
+    await expect(page.getByTestId("login-submit-btn")).toBeDisabled();
+    await page.getByTestId("login-token-input").fill("a".repeat(24));
+    await expect(page.getByTestId("login-submit-btn")).toBeEnabled();
+  });
 });
