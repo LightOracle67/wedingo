@@ -10,9 +10,15 @@ vi.mock("../../../hooks/useReducedMotion", () => ({
   useReducedMotion: () => mockReducedMotion(),
 }));
 
-const mockLoadGallery = vi.hoisted(() => vi.fn());
+const mockLoadGalleryMeta = vi.hoisted(() => vi.fn());
+const mockGetGalleryImageUrl = vi.hoisted(() => vi.fn(async (_token: string, meta: { id: string }) =>
+  `https://example.com/${meta.id}.jpg`,
+));
 vi.mock("../../../lib/image-store", () => ({
-  loadGallery: (...args: unknown[]) => mockLoadGallery(...args),
+  loadGalleryMeta: (...args: unknown[]) => mockLoadGalleryMeta(...args),
+  getGalleryImageUrl: (...args: Parameters<typeof mockGetGalleryImageUrl>) => mockGetGalleryImageUrl(...args),
+  loadGallery: vi.fn(),
+  clearGalleryCache: vi.fn(),
 }));
 
 import GallerySection from "../GallerySection";
@@ -22,6 +28,16 @@ const mockImages = [
   { id: "2", url: "https://example.com/2.jpg", description: "Photo 2" },
   { id: "3", url: "https://example.com/3.jpg", description: "" },
 ];
+
+/** Convierte las imágenes de la UI a metadatos para loadGalleryMeta. */
+const toMeta = (images: Array<{ id: string; url: string; description: string }>) =>
+  images.map((img) => ({
+    id: img.id,
+    encrypted: "enc",
+    description: img.description,
+    originalName: "",
+    originalSize: 0,
+  }));
 
 describe("GallerySection", () => {
   beforeEach(() => {
@@ -45,15 +61,36 @@ describe("GallerySection", () => {
     Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
   });
 
-  it("renders loading state", () => {
-    mockLoadGallery.mockImplementation(() => new Promise(() => {}));
+  it("falls back to idle decryption when IntersectionObserver is unavailable", async () => {    // Sin IO, las miniaturas se descifran con el fallback (primeras 4 + idle).
+    const original = (globalThis as Record<string, unknown>).IntersectionObserver;
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: undefined, configurable: true });
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
+    render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
+    await vi.waitFor(() => {
+      expect(mockGetGalleryImageUrl).toHaveBeenCalled();
+    });
+    if (original !== undefined) {
+      Object.defineProperty(globalThis, "IntersectionObserver", { value: original, configurable: true });
+    }
+  });
+
+  it("does not decrypt without an invite token", async () => {
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
+    render(<GallerySection className="test" style={{}} />);
+    await vi.waitFor(() => {
+      expect(screen.getByText("gallery.sectionLabel")).toBeDefined();
+    });
+    expect(mockGetGalleryImageUrl).not.toHaveBeenCalled();
+  });
+
+  it("renders loading state", () => {    mockLoadGalleryMeta.mockImplementation(() => new Promise(() => {}));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     expect(screen.getByText("gallery.sectionLabel")).toBeDefined();
     expect(screen.getByText("gallery.title")).toBeDefined();
   });
 
   it("hides the section when there are no images", async () => {
-    mockLoadGallery.mockResolvedValue([]);
+    mockLoadGalleryMeta.mockResolvedValue([]);
 
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
@@ -63,14 +100,14 @@ describe("GallerySection", () => {
   });
 
   it("does not load gallery without inviteToken", async () => {
-    mockLoadGallery.mockResolvedValue([]);
+    mockLoadGalleryMeta.mockResolvedValue([]);
     render(<GallerySection className="test" style={{}} inviteToken="" />);
     expect(screen.getByText("gallery.sectionLabel")).toBeDefined();
-    expect(mockLoadGallery).not.toHaveBeenCalled();
+    expect(mockLoadGalleryMeta).not.toHaveBeenCalled();
   });
 
   it("renders with images", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
 
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
@@ -80,7 +117,7 @@ describe("GallerySection", () => {
   });
 
   it("navigates to next image", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
 
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
@@ -90,7 +127,7 @@ describe("GallerySection", () => {
   });
 
   it("navigates to previous image", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
 
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
@@ -100,7 +137,7 @@ describe("GallerySection", () => {
   });
 
   it("opens and closes lightbox", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
 
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
@@ -113,7 +150,7 @@ describe("GallerySection", () => {
   });
 
   it("downloads the current photo from the lightbox", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     const clickSpy = vi.spyOn(HTMLAnchorElement.prototype, "click").mockImplementation(() => {});
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
@@ -126,7 +163,7 @@ describe("GallerySection", () => {
   });
 
   it("navigates lightbox with arrows", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
 
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
@@ -141,7 +178,7 @@ describe("GallerySection", () => {
   });
 
   it("shows image counter when multiple images", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByText(/1 \/ 3/)).toBeDefined();
@@ -149,7 +186,7 @@ describe("GallerySection", () => {
   });
 
   it("renders image description", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByText("Photo 1")).toBeDefined();
@@ -159,7 +196,7 @@ describe("GallerySection", () => {
   });
 
   it("navigates carousel with keyboard ArrowLeft on container", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -170,7 +207,7 @@ describe("GallerySection", () => {
   });
 
   it("navigates carousel with keyboard ArrowLeft/Right on outer wrapper", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -182,7 +219,7 @@ describe("GallerySection", () => {
   });
 
   it("guards carousel navigation with a single image", async () => {
-    mockLoadGallery.mockResolvedValue([{ id: "1", url: "https://example.com/1.jpg", description: "Solo" }]);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta([{ id: "1", url: "x", description: "Solo" }]));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -197,7 +234,7 @@ describe("GallerySection", () => {
   });
 
   it("closes lightbox with Escape key", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -210,7 +247,7 @@ describe("GallerySection", () => {
   });
 
   it("navigates lightbox with ArrowLeft/ArrowRight keys", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -224,7 +261,7 @@ describe("GallerySection", () => {
 
   it("skips auto-advance when reducedMotion is enabled", async () => {
     mockReducedMotion.mockReturnValue(true);
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -232,7 +269,7 @@ describe("GallerySection", () => {
   });
 
   it("pauses auto-advance on hover", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -243,7 +280,7 @@ describe("GallerySection", () => {
   });
 
   it("handles thumbnail onLoad callback", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -255,7 +292,7 @@ describe("GallerySection", () => {
   });
 
   it("handles main image onLoad and onError", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -267,7 +304,7 @@ describe("GallerySection", () => {
   });
 
   it("shows thumbnail loading spinner before load", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -277,7 +314,7 @@ describe("GallerySection", () => {
   });
 
   it("does not navigate when images.length <= 1", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages.slice(0, 1));
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages.slice(0, 1)));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -287,7 +324,7 @@ describe("GallerySection", () => {
   });
 
   it("handles focus and blur events on story card", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -298,7 +335,7 @@ describe("GallerySection", () => {
   });
 
   it("stops propagation when clicking lightbox image", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -311,7 +348,7 @@ describe("GallerySection", () => {
   });
 
   it("shows lightbox caption when image has description", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -324,7 +361,7 @@ describe("GallerySection", () => {
   });
 
   it("clicks thumbnail to navigate (goTo)", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -335,7 +372,7 @@ describe("GallerySection", () => {
   });
 
   it("handles thumbnail onError triggers", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -346,7 +383,7 @@ describe("GallerySection", () => {
 
   it("fires setTimeout callbacks in next after delay", async () => {
     vi.useFakeTimers();
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -358,7 +395,7 @@ describe("GallerySection", () => {
 
   it("fires setTimeout callbacks in prev after delay", async () => {
     vi.useFakeTimers();
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -372,7 +409,7 @@ describe("GallerySection", () => {
 
   it("fires setTimeout callbacks in goTo after delay", async () => {
     vi.useFakeTimers();
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -384,7 +421,7 @@ describe("GallerySection", () => {
   });
 
   it("triggers handleNextImage setTimeout via auto-advance interval", async () => {
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout", "setInterval", "clearInterval"] });
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
@@ -397,7 +434,7 @@ describe("GallerySection", () => {
   });
 
   it("renders images without url or id using fallbacks", async () => {
-    mockLoadGallery.mockResolvedValue([{ description: "" }, { url: "https://example.com/2.jpg" }]);
+    mockLoadGalleryMeta.mockResolvedValue([{ id: "1", encrypted: "e", description: "" }, { id: "2", encrypted: "e", description: "" }]);
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -407,7 +444,7 @@ describe("GallerySection", () => {
   });
 
   it("guards carousel controls with a single image", async () => {
-    mockLoadGallery.mockResolvedValue([{ id: "1", url: "https://example.com/1.jpg", description: "Solo" }]);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta([{ id: "1", url: "x", description: "Solo" }]));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
@@ -419,7 +456,7 @@ describe("GallerySection", () => {
 
   it("does not pause when reducedMotion is enabled", async () => {
     mockReducedMotion.mockReturnValue(true);
-    mockLoadGallery.mockResolvedValue(mockImages);
+    mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();

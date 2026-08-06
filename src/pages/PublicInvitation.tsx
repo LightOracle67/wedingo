@@ -422,7 +422,17 @@ export default function PublicInvitation() {
         window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, "_blank", "noopener");
       }
       trackEvent("share_invite", { method: native ? "native" : "whatsapp" });
-    } catch { /* el usuario canceló el compartido */ }
+    } catch (err) {
+      // El usuario canceló el panel nativo (AbortError): silencioso. Cualquier
+      // otro fallo (HTTP no seguro, permiso) cae al enlace de WhatsApp para
+      // que el invitado siempre tenga una vía de compartir.
+      const name = typeof err === "object" && err !== null && "name" in err ? String((err as { name?: unknown }).name) : "";
+      const isCancel = name === "AbortError";
+      if (!isCancel && native) {
+        window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, "_blank", "noopener");
+        trackEvent("share_invite", { method: "whatsapp" });
+      }
+    }
   };
 
   // ═══════════════════════════════════════════════════════

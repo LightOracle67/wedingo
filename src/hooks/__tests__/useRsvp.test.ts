@@ -321,6 +321,17 @@ describe("useRsvp", () => {
       expect(result.current.rsvpMessage).toMatch(/nameFullRequired/i);
     });
 
+    it("clears the submit error when the guest edits the form", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+      await act(async () => {
+        result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      });
+      expect(result.current.rsvpMessage).toMatch(/nameRequired/i);
+      // Al corregir cualquier campo el error anterior desaparece.
+      act(() => result.current.updateRsvpField("guestName", "Ana María López"));
+      expect(result.current.rsvpMessage).toBe("");
+    });
+
     it("returns error when a companion name is not a full name", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));

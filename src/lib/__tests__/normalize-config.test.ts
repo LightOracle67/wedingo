@@ -198,12 +198,14 @@ describe("normalizeConfig", () => {
     expect(normalizeConfig({ menuPescadoDishes: "not-json" }).menuPescadoDishes).toBe("");
   });
 
-  it("drops malformed menu dish entries and non-string time values", () => {
+  it("drops malformed menu dish entries and empty dish texts", () => {
     const result = normalizeConfig({
       menuTextoDishes: JSON.stringify([null, 42, { order: "primero", text: 7 }, { order: "primero", text: "  Plato  " }]),
     });
     const parsed = JSON.parse(result.menuTextoDishes);
-    expect(parsed).toEqual([{ order: "primero", text: "" }, { order: "primero", text: "Plato" }]);
+    // La fila con texto no string (7 → "") y vacía se descarta: un menú con
+    // platos sin texto no debe persistirse ni mostrarse.
+    expect(parsed).toEqual([{ order: "primero", text: "Plato" }]);
   });
 
   it("returns empty for non-array JSON in menu dishes", () => {

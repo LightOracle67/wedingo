@@ -86,6 +86,21 @@ describe("GalleryArrayEditor", () => {
     });
   });
 
+  it("reverts the order when persistence of the reorder fails", async () => {
+    mockLoadGallery.mockResolvedValueOnce([
+      { id: "img1", url: "data:image/jpeg;base64,a", description: "", position: 0 },
+      { id: "img2", url: "data:image/jpeg;base64,b", description: "", position: 1 },
+    ] as Partial<GalleryImage>[]);
+    mockUpdateGalleryOrder.mockRejectedValueOnce(new Error("net"));
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByText("#1");
+    const moveRight = screen.getAllByLabelText("setup.galleryMoveRight")[0]!;
+    fireEvent.click(moveRight);
+    await waitFor(() => {
+      expect(mockUpdateGalleryOrder).toHaveBeenCalled();
+    });
+  });
+
   it("loads images without position, description or name using fallbacks", async () => {
     mockLoadGallery.mockResolvedValue([
       { id: "img1", url: "https://example.com/1.jpg" },

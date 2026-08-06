@@ -19,7 +19,7 @@ function normalizeMenuDishes(value: unknown): string {
         const text = typeof (d as Record<string, unknown>).text === "string" ? ((d as Record<string, unknown>).text as string).trim().slice(0, MAX_MENU_DISH_TEXT) : "";
         return { order, text };
       })
-      .filter((d): d is { order: string; text: string } => d !== null);
+      .filter((d): d is { order: string; text: string } => d !== null && d.text.length > 0);
     return JSON.stringify(cleaned);
   } catch {
     return "";

@@ -23,4 +23,9 @@ describe("CharacterCounter", () => {
     render(<CharacterCounter value={value} max={500} />);
     expect(screen.getByText("500/500")).toBeDefined();
   });
+
+  it("handles an empty value", () => {
+    render(<CharacterCounter value="" max={10} />);
+    expect(screen.getByText("0/10")).toBeDefined();
+  });
 });

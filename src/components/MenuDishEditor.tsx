@@ -24,6 +24,11 @@ export default function MenuDishEditor({ value, onChange, idBase }: { value: str
       return [];
     }
   })();
+  // JSON corrupto: se avisa al admin para que reescriba los platos (antes se
+  // vaciaba en silencio y el menú desaparecía sin feedback).
+  const parseError = (value || "").trim() !== "" && !(() => {
+    try { return Array.isArray(JSON.parse(value || "")); } catch { return false; }
+  })();
 
   const setDishes = useCallback((next: Dish[]) => {
     onChange(JSON.stringify(next.slice(0, MAX_MENU_DISHES)));
@@ -47,6 +52,11 @@ export default function MenuDishEditor({ value, onChange, idBase }: { value: str
 
   return (
     <div>
+      {parseError ? (
+        <p className="setup-muted" style={{ color: "var(--color-danger, #b91c1c)", margin: "0.5rem 0" }}>
+          {t("errors.menuParseError")}
+        </p>
+      ) : null}
       {dishes.map((dish, i) => (
         <div key={i} style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}>
           <div style={{ flex: "0 0 130px" }}>

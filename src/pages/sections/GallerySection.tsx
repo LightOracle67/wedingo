@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 import { useFocusTrap } from "../../hooks/useFocusTrap";
@@ -6,6 +6,8 @@ import "../../styles/gallery.css";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import CornerDecorations from "../../components/CornerDecorations";
 import type { GalleryImage } from "../../types";
+import type { GalleryMeta } from "../../lib/image-store";
+import { getGalleryImageUrl } from "../../lib/image-store";
 
 interface GallerySectionProps {
   style?: React.CSSProperties;
@@ -22,30 +24,54 @@ interface GallerySectionProps {
  * y descripciones. Soporta auto-avance, transiciones con blur y
  * precarga con spinner.
  */
+const TRANSPARENT_GIF = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
 const GallerySection = memo(function GallerySection({ style, className, inviteToken, cornerDecoration }: GallerySectionProps) {
   const { t } = useTranslation();
 
   const reducedMotion = useReducedMotion();
 
-  /** Lista de imágenes con metadatos: { id, url, description }. */
-  const [images, setImages] = useState<GalleryImage[]>([]);
-  /** Indica si la galería está cargando. */
+  /** Metadatos de la galería (sin descifrar): carga instantánea. */
+  const [metas, setMetas] = useState<GalleryMeta[]>([]);
+  /** URLs descifradas por id (descifrado bajo demanda). */
+  const [urls, setUrls] = useState<Record<string, string>>({});
+  /** Indica si la galería está cargando (solo espera los METADATOS). */
   const [loading, setLoading] = useState(true);
-
+  /** Ids ya solicitados (evita re-descifrar por re-render). */
+  const requestedRef = useRef<Set<string>>(new Set());
   /** Índice de la imagen abierta en lightbox, o null si cerrado. */
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  // ── Carga de imágenes desde Firestore ──
+  // La lista derivada mantiene SIEMPRE la longitud de metas: el fallo de
+  // descifrado no borra fotos ni desplaza los índices del carrusel.
+  const images = useMemo<GalleryImage[]>(() =>
+    metas.map((m) => ({
+      id: m.id,
+      url: urls[m.id] || "",
+      description: m.description,
+      ...(m.position !== undefined ? { position: m.position } : {}),
+      ...(m.originalName !== undefined ? { originalName: m.originalName } : {}),
+      ...(m.originalSize !== undefined ? { originalSize: m.originalSize } : {}),
+    })),
+  [metas, urls]);
+
+  /** Pide el descifrado de una imagen (deduplicado por id). */
+  const requestDecrypt = useCallback((meta: GalleryMeta) => {
+    if (!inviteToken || requestedRef.current.has(meta.id)) return;
+    requestedRef.current.add(meta.id);
+    void getGalleryImageUrl(inviteToken, meta).then((url) => {
+      setUrls((p) => (url ? { ...p, [meta.id]: url } : p));
+    });
+  }, [inviteToken]);
+
+  // ── Carga de metadatos desde Firestore (sin descifrar nada) ──
 
   useEffect(() => {
     if (!inviteToken) return;
     let cancelled = false;
     (async () => {
-      const { loadGallery } = await import("../../lib/image-store");
-      const result = await loadGallery(inviteToken);
-      // Todas las fotos subidas por el admin: loadGallery ya descifra todo,
-      // así que recortar aquí solo ocultaba fotos sin ahorrar trabajo.
-      if (!cancelled) { setImages(result); setLoading(false); }
+      const { loadGalleryMeta } = await import("../../lib/image-store");
+      const result = await loadGalleryMeta(inviteToken);
+      if (!cancelled) { setMetas(result); setLoading(false); }
     })();
     return () => { cancelled = true; };
   }, [inviteToken]);
@@ -79,6 +105,55 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   const prevClamped = prevIdx !== null ? Math.max(0, Math.min(prevIdx, images.length - 1)) : null;
   /** Imagen activa actual con metadatos. */
   const currentImage = images[clamped] || null;
+
+  // ── Descifrado bajo demanda: activa + vecinas + lightbox ──
+
+  useEffect(() => {
+    if (!metas.length) return;
+    const wanted = new Set<number>([
+      clamped,
+      (clamped - 1 + metas.length) % metas.length,
+      (clamped + 1) % metas.length,
+    ]);
+    if (lightboxIndex !== null) {
+      wanted.add(lightboxIndex);
+      wanted.add((lightboxIndex - 1 + metas.length) % metas.length);
+      wanted.add((lightboxIndex + 1) % metas.length);
+    }
+    for (const i of wanted) {
+      const m = metas[i];
+      if (m) requestDecrypt(m);
+    }
+  }, [clamped, lightboxIndex, metas, requestDecrypt]);
+
+  // ── Miniaturas: descifrado perezoso según visibilidad ──
+
+  useEffect(() => {
+    if (!metas.length) return;
+    if (typeof IntersectionObserver === "undefined") {
+      // Sin IO: se descifran las primeras 4 y el resto en idle.
+      for (let i = 0; i < Math.min(4, metas.length); i++) requestDecrypt(metas[i]!);
+      const idle = window.requestIdleCallback?.((deadline) => {
+        let n = 4;
+        while (n < metas.length && deadline.timeRemaining() > 8) { requestDecrypt(metas[n]!); n++; }
+      });
+      if (idle !== undefined) return;
+      for (let i = 4; i < metas.length; i++) requestDecrypt(metas[i]!);
+      return;
+    }
+    const els = Array.from(sectionRef.current?.querySelectorAll<HTMLElement>(".gallery-thumb") ?? []);
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          const i = Number((e.target as HTMLElement).dataset.index);
+          const m = metas[i];
+          if (m) requestDecrypt(m);
+        }
+      }
+    }, { rootMargin: "120px" });
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [metas, requestDecrypt]);
 
   // ── Limpieza de timers al desmontar ───────────────────
 
@@ -326,7 +401,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
             <div className="gallery-main-image-wrap">
               {fading && prevClamped !== null && (
                 <img
-                  src={images[prevClamped]?.url || ""}
+                  src={images[prevClamped]?.url || TRANSPARENT_GIF}
                   alt=""
                   aria-hidden="true"
                   loading="lazy"
@@ -335,9 +410,9 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                 />
               )}
 
-              <LoadingOverlay visible={!mainLoaded[clamped]} zIndex={1} />
+              <LoadingOverlay visible={!mainLoaded[clamped] || !currentImage?.url} zIndex={1} />
               <img
-                src={currentImage?.url}
+                src={currentImage?.url || TRANSPARENT_GIF}
                 alt={currentImage?.description || t("gallery.imageAlt")}
                 loading="lazy"
                 decoding="async"
@@ -377,7 +452,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         {/* ── Miniaturas ── */}
         <div style={{ display: "flex", justifyContent: "center", gap: "0.4rem", marginTop: "0.6rem", flexWrap: "wrap" }}>
           {images.map((img, i) => {
-            const src = img.url || "";
+            const src = img.url || TRANSPARENT_GIF;
             return (
               <button
                 key={img.id || i}
@@ -391,7 +466,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                   opacity: i === clamped ? 1 : 0.55,
                 }}
               >
-                {!thumbLoaded[i] ? <div className="page-loading" style={{ width: "100%", height: "100%", minHeight: 0 }} /> : null}
+                {(!thumbLoaded[i] || !img.url) ? <div className="page-loading" style={{ width: "100%", height: "100%", minHeight: 0 }} /> : null}
                 <img
                   src={src}
                   alt={img.description || t("gallery.thumbnailAlt")}
@@ -400,7 +475,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
                   data-index={i}
                   loading="lazy"
                   className="gallery-thumb__img"
-                  style={{ opacity: thumbLoaded[i] ? 1 : 0, transition: "opacity 0.3s ease" }}
+                  style={{ opacity: (thumbLoaded[i] && img.url) ? 1 : 0, transition: "opacity 0.3s ease" }}
                 />
               </button>
             );
@@ -445,7 +520,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
 
           <img
             className="gallery-lightbox__img"
-            src={images[lightboxIndex].url}
+            src={images[lightboxIndex].url || TRANSPARENT_GIF}
             alt={images[lightboxIndex].description || t("gallery.imageAlt")}
             loading="lazy"
             onClick={(e) => e.stopPropagation()}

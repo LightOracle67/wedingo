@@ -165,7 +165,7 @@ describe("DataTab", () => {
     render(<DataTab />);
     await vi.waitFor(() => expect(screen.getByText((text) => text.includes("superadmin.data.exportAllBtn"))).toBeInTheDocument());
     fireEvent.click(screen.getByText((text) => text.includes("superadmin.data.exportAllBtn")));
-    await vi.waitFor(() => expect(mockDownloadJson).toHaveBeenCalledWith("wedingo_full_export.json", expect.any(Object)));
+    await vi.waitFor(() => expect(mockDownloadJson).toHaveBeenCalledWith(expect.stringMatching(/^wedingo_full_export_\d{4}-\d{2}-\d{2}\.json$/), expect.any(Object)));
     expect(mockAddToast).toHaveBeenCalledWith("success", expect.any(String));
   });
 

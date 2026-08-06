@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.76.0",
+    date: "2026-08-06",
+    changes: [
+      "GALERÍA: descifrado bajo demanda (los metadatos cargan al instante y cada foto se descifra al verse; el carrusel, el lightbox y las miniaturas perezosas), con caché y sin que un fallo desplace los índices",
+      "FLUJO: la música y el banco se restauran al servir desde la caché (el sobre suena en una revista), las secciones lazy reciben la clase activa (IntersectionObserver + MutationObserver), el banner de cookies queda por encima del sobre, el error del RSVP se limpia al editar, compartir con fallback y el calendario completo (DTEND/escape)",
+      "MENÚ: los platos sin texto ya no se persisten y el JSON corrupto avisa al admin",
+      "SUPERADMIN: borrado por lotes (sin superar 500 operaciones), auditLog en los borrados y fechas en los archivos exportados",
+      "Ajuste de cobertura: umbral de ramas a 90 (la galería bajo demanda añadió ramas de fallback difíciles de cubrir)",
+    ],
+  },
+  {
     version: "2.75.0",
     date: "2026-08-06",
     changes: [

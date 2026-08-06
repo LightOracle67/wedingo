@@ -22,11 +22,11 @@ export function useStoryNavigation(visibleOrder: string[]) {
   const orderKey = visibleOrder.join(",");
 
   // Observa las secciones montadas y marca como activa la que está en el
-  // viewport (el snap hace que sea una cada vez).
+  // viewport (el snap hace que sea una cada vez). Un MutationObserver re-observa
+  // las secciones lazy que montan DESPUÉS (React.lazy/Suspense), que de otro
+  // modo nunca recibirían la clase --is-active.
   useEffect(() => {
     if (typeof IntersectionObserver === "undefined") return;
-    const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-story-section]"));
-    if (sections.length === 0) return;
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) {
@@ -35,8 +35,30 @@ export function useStoryNavigation(visibleOrder: string[]) {
         }
       }
     }, { threshold: 0.5 });
-    sections.forEach((s) => observer.observe(s));
-    return () => observer.disconnect();
+
+    let mutationObserver: MutationObserver | null = null;
+    if (typeof MutationObserver !== "undefined") {
+      mutationObserver = new MutationObserver(() => {
+        const unobserved = Array.from(document.querySelectorAll<HTMLElement>("[data-story-section]"))
+          .filter((el) => !observed.has(el));
+        for (const el of unobserved) {
+          observed.add(el);
+          observer.observe(el);
+        }
+      });
+      mutationObserver.observe(document.body, { childList: true, subtree: true });
+    }
+
+    const observed = new Set<HTMLElement>();
+    const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-story-section]"));
+    for (const s of sections) {
+      observed.add(s);
+      observer.observe(s);
+    }
+    return () => {
+      observer.disconnect();
+      mutationObserver?.disconnect();
+    };
   }, [orderKey]);
 
   const getSectionStyle = (_sectionKey?: string) => EMPTY_STYLE;

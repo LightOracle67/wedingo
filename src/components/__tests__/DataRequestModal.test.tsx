@@ -43,6 +43,17 @@ describe("DataRequestModal", () => {
     vi.unstubAllGlobals();
   });
 
+  it("exports even when the local export returns no data", () => {
+    const create = vi.fn(() => ({ toString: () => "blob:url" }));
+    const revoke = vi.fn();
+    vi.stubGlobal("URL", { createObjectURL: create, revokeObjectURL: revoke });
+    mockExport.mockReturnValueOnce({ exported: undefined } as never);
+    render(<DataRequestModal inviteToken="abc" onClose={vi.fn()} />);
+    fireEvent.click(screen.getByTestId("data-request-export"));
+    expect(mockAddToast).toHaveBeenCalledWith("success", "dataRequest.exportDone");
+    vi.unstubAllGlobals();
+  });
+
   it("does not erase data when the user cancels the confirmation", () => {
     vi.spyOn(window, "confirm").mockReturnValue(false);
     const onClose = vi.fn();

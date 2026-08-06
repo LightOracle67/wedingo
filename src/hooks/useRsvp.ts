@@ -121,6 +121,9 @@ export function useRsvp(
   const [alreadySubmittedEntry, setAlreadySubmittedEntry] = useState<RsvpEntryData | null>(null);
   /** Error de red al cargar las respuestas (visible para el invitado). */
   const [rsvpLoadError, setRsvpLoadError] = useState(false);
+  /** Referencia al reset del error de submit (asignada tras montar
+   *  useRsvpSubmit): permite limpiar el mensaje al editar el formulario. */
+  const resetErrorRef = useRef<(() => void) | null>(null);
   /** Contador para forzar la re-hidratación (botón "Reintentar" del invitado). */
   const [hydrateTick, setHydrateTick] = useState(0);
   const prefillRef = useRef<string | null>(null);
@@ -366,6 +369,8 @@ export function useRsvp(
   }, [rsvpForm.guestName, rsvpEntries]);
 
   const updateRsvpField = useCallback((field: string, value: unknown) => {
+    // Al editar cualquier campo se oculta el error del último submit.
+    resetErrorRef.current?.();
 
     if (field === "attendance") {
       setRsvpForm((current) => ({
@@ -655,11 +660,12 @@ export function useRsvp(
     try { sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken)); } catch { }
   }, [inviteToken, t]);
 
-  const { submitting, submitError, handleSubmit: submitViaHook } = useRsvpSubmit({
+  const { submitting, submitError, handleSubmit: submitViaHook, resetError } = useRsvpSubmit({
     token: inviteToken,
     onSubmit: submitRsvpData as unknown as (data: Record<string, unknown>) => Promise<void>,
     validate: validateRsvpData as unknown as (data: Record<string, unknown>) => string | null,
   });
+  resetErrorRef.current = resetError;
 
   const isRsvpSubmitting = submitting;
   const feedbackMessage = submitError || rsvpMessage;

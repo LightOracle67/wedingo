@@ -78,7 +78,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "asistencias.csv";
+      a.download = `asistencias_${new Date().toISOString().slice(0,10)}.csv`;
       document.body.appendChild(a);
       a.click();
       a.remove();

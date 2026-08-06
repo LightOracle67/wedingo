@@ -48,16 +48,24 @@ const DetailsSection = memo(function DetailsSection({
       const minute = Number(config?.weddingMinute) || 0;
       const pad = (n: number) => String(n).padStart(2, "0");
       const dtstart = `${year}${pad(month)}${pad(day)}T${pad(hour)}${pad(minute)}00`;
+      // DTEND = 1 h después del inicio (las bodas duran más, pero el evento
+      // del calendario necesita un fin válido para no ser rechazado).
+      const end = new Date(year, month - 1, day, hour, minute + 60);
+      const dtend = `${end.getFullYear()}${pad(end.getMonth() + 1)}${pad(end.getDate())}T${pad(end.getHours())}${pad(end.getMinutes())}00`;
       const summary = `${config?.firstName || ""} & ${config?.secondName || ""}`.trim();
+      // RFC 5545: las comas y puntos y coma del texto se escapan.
+      const esc = (s: string) => s.replace(/\\/g, "\\\\").replace(/,/g, "\\,").replace(/;/g, "\\;");
       const ics = [
         "BEGIN:VCALENDAR",
         "VERSION:2.0",
         "PRODID:-//Wedingo//Wedding//ES",
+        "CALSCALE:GREGORIAN",
         "BEGIN:VEVENT",
-        `UID:${dtstart}@wedingo-invite`,
+        `UID:${dtstart}-wedingo-invite`,
         `DTSTART:${dtstart}`,
-        `SUMMARY:${summary}`,
-        config?.weddingPlace ? `LOCATION:${config.weddingPlace}` : "",
+        `DTEND:${dtend}`,
+        `SUMMARY:${esc(summary)}`,
+        config?.weddingPlace ? `LOCATION:${esc(config.weddingPlace)}` : "",
         "END:VEVENT",
         "END:VCALENDAR",
       ].filter(Boolean).join("\r\n");

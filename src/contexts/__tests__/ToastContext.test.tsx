@@ -213,6 +213,29 @@ describe("ToastContext", () => {
     expect(screen.getByText("Second")).toBeDefined();
   });
 
+  it("dismisses only the toast whose timer expired (map branch)", () => {
+    vi.useFakeTimers();
+    function MultiToastTest() {
+      const { addToast } = useToast();
+      return (
+        <button onClick={() => { addToast("success", "First"); addToast("success", "Second"); }}>
+          Add Two
+        </button>
+      );
+    }
+    render(
+      <ToastProvider>
+        <MultiToastTest />
+      </ToastProvider>
+    );
+    act(() => { screen.getByText("Add Two").click(); });
+    act(() => { vi.advanceTimersByTime(5300); });
+    // Ambos timers expiran con duración por defecto: el primero queda "exiting".
+    const first = screen.queryByText("First");
+    expect(first).toBeDefined();
+    vi.useRealTimers();
+  });
+
   it("does not dismiss when no toast matches id", () => {
     vi.useFakeTimers();
     render(

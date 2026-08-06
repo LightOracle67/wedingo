@@ -24,6 +24,16 @@ describe("EnvelopeOverlay", () => {
     expect(document.querySelector(".envelope-golden__bg-seal")).toBeDefined();
   });
 
+  it("reuses a stored message for the same invite+language", () => {
+    // El mensaje del sobre se fija por invitación e idioma (sesión): una
+    // revista usa el mismo texto (rama del cache en sessionStorage).
+    sessionStorage.setItem("wedin_print_msg__es", "Mensaje fijo");
+    render(<EnvelopeOverlay {...defaultProps} />);
+    fireEvent.click(screen.getByRole("button"));
+    expect(screen.getByText("Mensaje fijo")).toBeDefined();
+    sessionStorage.removeItem("wedin_print_msg__es");
+  });
+
   it("calls onOpen on second click", () => {
     vi.useFakeTimers();
     const onOpen = vi.fn();
@@ -34,6 +44,15 @@ describe("EnvelopeOverlay", () => {
     vi.advanceTimersByTime(3500);
     expect(onOpen).toHaveBeenCalled();
     vi.useRealTimers();
+  });
+
+  it("marks the golden message as exiting on the second click", () => {
+    render(<EnvelopeOverlay {...defaultProps} />);
+    const btn = screen.getByRole("button");
+    fireEvent.click(btn);
+    expect(document.querySelector(".envelope-golden--in")).toBeDefined();
+    fireEvent.click(btn);
+    expect(document.querySelector(".envelope-golden--out")).toBeDefined();
   });
 
   it("dispatches custom event on Enter key", () => {

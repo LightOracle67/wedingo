@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { doc, getDocs, writeBatch } from "firebase/firestore";
+import { doc, getDocs, writeBatch, collection, query, where } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
 import { searchInvitations, formatBytes } from "../../lib/superadmin-utils";
 import { useTranslation } from "react-i18next";
@@ -30,18 +30,27 @@ const InvitationsTab = memo(function InvitationsTab() {
     setDeleting(id);
     try {
       // Borrado en cascada: sin esto las subcolecciones (RSVP, galería,
-      // audio, configImages) quedaban huérfanas y de lectura pública.
+      // audio, configImages, setupTokens) quedaban huérfanas.
+      const refs: Array<{ ref: unknown }> = [];
       const snap = await getDocs(rsvpByInviteRef(id));
-      const batch = writeBatch(db);
-      snap.docs.forEach((d: { ref: unknown }) => batch.delete(d.ref as never));
-      const { deleteGallery, deleteAllConfigImages } = await import("../../lib/image-store");
-      const { deleteAudio } = await import("../../lib/music-store");
-      await deleteGallery(id);
-      await deleteAllConfigImages(id);
-      await deleteAudio(id);
-      batch.delete(doc(db, "rsvpResponses", id));
-      batch.delete(doc(INVITATIONS_COLLECTION_REF, id));
-      await batch.commit();
+      for (const d of snap.docs) refs.push(d.ref as never);
+      const gallerySnap = await getDocs(collection(db, "invitations", id, "gallery"));
+      for (const d of gallerySnap.docs) refs.push(d.ref as never);
+      const audioSnap = await getDocs(collection(db, "invitations", id, "audio"));
+      for (const d of audioSnap.docs) refs.push(d.ref as never);
+      const imgSnap = await getDocs(collection(db, "invitations", id, "configImages"));
+      for (const d of imgSnap.docs) refs.push(d.ref as never);
+      const tokenSnap = await getDocs(query(collection(db, "setupTokens"), where("inviteToken", "==", id)));
+      for (const d of tokenSnap.docs) refs.push(d.ref as never);
+      refs.push(doc(db, "rsvpResponses", id) as never);
+      refs.push(doc(INVITATIONS_COLLECTION_REF, id) as never);
+      // Firestore limita a 500 operaciones por batch: se trocea.
+      for (let i = 0; i < refs.length; i += 400) {
+        const chunk = refs.slice(i, i + 400);
+        const batch = writeBatch(db);
+        for (const r of chunk) batch.delete(r.ref as never);
+        await batch.commit();
+      }
       setInvitations((prev) => prev.filter((i) => i.id !== id));
     } catch { setError(t("superadmin.deleteError")); }
     setDeleting(null);

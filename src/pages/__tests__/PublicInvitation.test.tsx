@@ -321,6 +321,38 @@ describe("PublicInvitation", () => {
     Object.defineProperty(navigator, "share", { value: undefined, configurable: true });
   });
 
+  it("falls back to WhatsApp when the native share is cancelled", async () => {
+    mockUseAppValue.config.firstName = "Test";
+    mockUseAppValue.config.secondName = "User";
+    const shareSpy = vi.fn(() => Promise.reject(new DOMException("Aborted", "AbortError")));
+    const openSpy = vi.fn();
+    Object.defineProperty(navigator, "share", { value: shareSpy, configurable: true });
+    (window as any).open = openSpy;
+    render(<PublicInvitation />);
+    fireEvent.click(screen.getByLabelText("public.share"));
+    await vi.waitFor(() => {
+      expect(shareSpy).toHaveBeenCalled();
+    });
+    // Cancelar el panel nativo es silencioso (sin fallback).
+    expect(openSpy).not.toHaveBeenCalled();
+    Object.defineProperty(navigator, "share", { value: undefined, configurable: true });
+  });
+
+  it("falls back to WhatsApp when the native share fails for another reason", async () => {
+    mockUseAppValue.config.firstName = "Test";
+    mockUseAppValue.config.secondName = "User";
+    const shareSpy = vi.fn(() => Promise.reject(new Error("NotAllowedError")));
+    const openSpy = vi.fn();
+    Object.defineProperty(navigator, "share", { value: shareSpy, configurable: true });
+    (window as any).open = openSpy;
+    render(<PublicInvitation />);
+    fireEvent.click(screen.getByLabelText("public.share"));
+    await vi.waitFor(() => {
+      expect(openSpy).toHaveBeenCalled();
+    });
+    Object.defineProperty(navigator, "share", { value: undefined, configurable: true });
+  });
+
   it("builds the schema couple name without a second name", () => {
     mockUseAppValue.config.firstName = "Test";
     mockUseAppValue.config.secondName = "";

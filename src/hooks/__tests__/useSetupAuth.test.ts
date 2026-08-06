@@ -686,6 +686,20 @@ describe("useSetupAuth", () => {
       expect(result.current.sessionExpired).toBe(false);
     });
 
+    it("marks expired when the invite doc is missing but a token was stored", async () => {
+      // La invitación ya no existe pero quedó un token de setup: el else del
+      // restore marca la sesión como expirada (ramas del aviso).
+      mockGetSession.mockReturnValue({ type: "setup", identifier: "ghost" });
+      mockGetDoc.mockResolvedValueOnce({ exists: () => false, data: () => undefined as unknown as Record<string, unknown> });
+      mockSafeGetItem.mockReturnValue("stored-token");
+
+      const { result } = setup();
+
+      await waitFor(() => {
+        expect(result.current.sessionExpired).toBe(true);
+      });
+    });
+
     it("repairs session when Firestore session is inactive", async () => {
       mockGetSession.mockReturnValue({ type: "setup", identifier: "inactive-user" });
       mockGetDoc.mockResolvedValueOnce({

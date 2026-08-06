@@ -98,6 +98,12 @@ describe("data-request", () => {
     expect(exported?.["wedin_setup_token_xyz"]).toBeUndefined();
   });
 
+  it("exportGuestLocalData includes protected accessibility preferences", () => {
+    localStorage.setItem("wedin_a11y_font", "large");
+    const { exported } = exportGuestLocalData("abc");
+    expect(exported?.["wedin_a11y_font"]).toBe("large");
+  });
+
   it("exportGuestLocalData tolerates unreadable keys", () => {
     const spy = vi.spyOn(localStorage, "getItem").mockImplementation(() => {
       throw new Error("denied");

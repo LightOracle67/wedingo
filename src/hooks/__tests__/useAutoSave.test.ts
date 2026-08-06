@@ -461,6 +461,18 @@ describe("useAutoSave", () => {
       expect(mockSetDoc).not.toHaveBeenCalled();
     });
 
+    it("cleanup with no pending timer is a no-op", () => {
+      // formData igual a config: no se programa el autosave, el desmontaje
+      // encuentra el timer a null (rama del cleanup).
+      const clearTimeoutSpy = vi.spyOn(globalThis, "clearTimeout");
+      const { unmount } = renderHook(() =>
+        useAutoSave(true, "test-token", sampleConfig, sampleConfig, vi.fn(), { current: false }),
+      );
+      unmount();
+      expect(clearTimeoutSpy).not.toHaveBeenCalled();
+      clearTimeoutSpy.mockRestore();
+    });
+
     it("does not persist an invalid map URL", async () => {
       const onSaveError = vi.fn();
       const { result } = renderHook(() =>
@@ -501,6 +513,7 @@ describe("useAutoSave", () => {
 
       expect(clearTimeoutSpy).toHaveBeenCalled();
       clearTimeoutSpy.mockRestore();
+
     });
 
     it("clears timer ref in second cleanup effect", () => {

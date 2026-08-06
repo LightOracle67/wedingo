@@ -664,7 +664,8 @@
     "mapUrlInvalid": "The location map URL is not valid. Use the map button to insert a Google Maps link.",
     "socialUrlInvalid": "The social URL is not valid (must be Instagram or Facebook).",
     "cancelled": "Operation cancelled.",
-    "yearInvalid": "The year is not valid."
+    "yearInvalid": "The year is not valid.",
+    "menuParseError": "The saved menu could not be read: please re-enter the dishes."
   },
   "superadmin": {
     "tabs": {

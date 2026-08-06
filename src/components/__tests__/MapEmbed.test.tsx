@@ -55,4 +55,10 @@ describe("MapEmbed", () => {
     expect(container.querySelector("iframe")).toBeNull();
     expect(container.querySelector(".story-map-wrapper")).toBeDefined();
   });
+
+  it("shows the map-link fallback when the url cannot be embedded", () => {
+    const { container } = render(<MapEmbed mapUrl="https://example.com/not-a-map" />);
+    expect(container.querySelector("iframe")).toBeNull();
+    expect(container.querySelector(".story-map-fallback")).toBeDefined();
+  });
 });

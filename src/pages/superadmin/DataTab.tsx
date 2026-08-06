@@ -4,6 +4,7 @@ import { getDocs, doc, collection, writeBatch, getDoc, query, where } from "fire
 import { db, INVITATIONS_COLLECTION_REF, RSVP_RESPONSES_GROUP, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadJson } from "../../lib/file-utils";
+import { logAudit } from "../../lib/audit";
 
 interface InvitationData {
   id: string;
@@ -138,7 +139,7 @@ export default function DataTab() {
         const audioSnap = await getDocs(collection(db, "invitations", token, "audio"));
         data.audio = audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() }));
       } catch { data.audio = []; }
-      downloadJson(`${token}_export.json`, data);
+      downloadJson(`${token}_export_${new Date().toISOString().slice(0,10)}.json`, data);
       addToast("success", t("superadmin.data.exportedOne", { token }));
     } catch {
       addToast("error", t("superadmin.data.exportFailed"));
@@ -167,7 +168,7 @@ export default function DataTab() {
           audio: audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
         });
       }
-      downloadJson("wedingo_export.json", result);
+      downloadJson(`wedingo_export_${new Date().toISOString().slice(0,10)}.json`, result);
       addToast("success", t("superadmin.data.exportedSelected", { count: selected.size }));
     } catch {
       addToast("error", t("superadmin.data.exportFailed"));
@@ -215,7 +216,7 @@ export default function DataTab() {
         rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
         galleryByToken: mediaByToken,
       };
-      downloadJson("wedingo_full_export.json", data);
+      downloadJson(`wedingo_full_export_${new Date().toISOString().slice(0,10)}.json`, data);
       addToast("success", t("superadmin.data.exportedAll", { count: invSnap.size }));
     } catch {
       addToast("error", t("superadmin.data.exportFailed"));
@@ -243,6 +244,7 @@ export default function DataTab() {
       setSelected((prev: Set<string>) => { const n = new Set(prev); n.delete(token); return n; });
       setConfirmText("");
       addToast("success", t("superadmin.data.deletedOne", { token }));
+      void logAudit("delete_invitation", token);
     } catch {
       addToast("error", t("superadmin.data.deleteFailed"));
     } finally {
@@ -268,6 +270,7 @@ export default function DataTab() {
       setSelected(new Set());
       setConfirmText("");
       addToast("success", t("superadmin.data.deletedSelected", { count: deleted }));
+      void logAudit("delete_selected", `count=${deleted}`);
     } catch {
       addToast("error", t("superadmin.data.partialDelete", { deleted, total: selected.size }));
     } finally {

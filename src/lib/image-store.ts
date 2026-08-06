@@ -99,29 +99,113 @@ export async function loadDecryptedField(inviteToken: string, encrypted: string)
 export async function loadGallery(inviteToken: string) {
 
   try {
-    const snap = await getDocs(galCol(inviteToken));
-
-    const result = [];
-    for (const d of snap.docs) {
-      const enc = d.data().data;
-      if (enc) {
-        try {
-          const url = await decrypt(enc, inviteToken);
+    const metas = await loadGalleryMeta(inviteToken);
+    const result: GalleryLoadedImage[] = [];
+    // Lote acotado con descifrado en paralelo (chunks de 3): WebCrypto no
+    // bloquea el hilo, pero se evita acumular ~30 MB de data URLs a la vez.
+    for (let i = 0; i < metas.length; i += 3) {
+      const chunk = metas.slice(i, i + 3);
+      const urls = await Promise.all(chunk.map((m) => getGalleryImageUrl(inviteToken, m)));
+      chunk.forEach((m, j) => {
+        if (urls[j]) {
           result.push({
-            id: d.id,
-            url,
-            position: d.data().position,
-            description: d.data().description || "",
-            originalName: d.data().originalName || "",
-            originalSize: d.data().originalSize || 0,
+            id: m.id,
+            url: urls[j],
+            ...(m.position !== undefined ? { position: m.position } : {}),
+            description: m.description,
+            ...(m.originalName !== undefined ? { originalName: m.originalName } : {}),
+            ...(m.originalSize !== undefined ? { originalSize: m.originalSize } : {}),
           });
-        } catch { ; }
-      }
+        }
+      });
     }
     result.sort((a, b) => (a.position ?? 99) - (b.position ?? 99));
-
     return result;
   } catch (err) { console.error("[app]", "[image-store]", "loadGallery error", { error: err }); return []; }
+}
+
+/** Metadatos de una imagen de la galería (sin descifrar). */
+export interface GalleryMeta {
+  id: string;
+  encrypted: string;
+  position?: number;
+  description: string;
+  originalName?: string;
+  originalSize?: number;
+}
+
+/** Imagen de la galería con su data URL descifrada. */
+export interface GalleryLoadedImage extends Omit<GalleryMeta, "encrypted"> {
+  url: string;
+}
+
+// Caché a nivel de módulo de URLs descifradas (clave `${token}:${id}`) con
+// un simple LRU: el visitante que navega por el carrusel no re-descifra.
+const URL_CACHE = new Map<string, string>();
+/** Promesas en curso (single-flight): dos efectos no descifran lo mismo. */
+const INFLIGHT = new Map<string, Promise<string>>();
+const MAX_CACHE = 80;
+
+/** Invalida la caché de URLs (logout o cambio de invitación). */
+export function clearGalleryCache() {
+  URL_CACHE.clear();
+  INFLIGHT.clear();
+}
+
+/**
+ * Carga SOLO los metadatos de la galería (una lectura, cero descifrado).
+ * Permite renderizar el carrusel al instante y descifrar bajo demanda.
+ */
+export async function loadGalleryMeta(inviteToken: string): Promise<GalleryMeta[]> {
+  try {
+    const snap = await getDocs(galCol(inviteToken));
+    const items: GalleryMeta[] = [];
+    for (const d of snap.docs) {
+      const enc = d.data().data;
+      if (typeof enc === "string" && enc) {
+        items.push({
+          id: d.id,
+          encrypted: enc,
+          position: d.data().position,
+          description: d.data().description || "",
+          originalName: d.data().originalName || "",
+          originalSize: d.data().originalSize || 0,
+        });
+      }
+    }
+    items.sort((a, b) => (a.position ?? 99) - (b.position ?? 99));
+    return items;
+  } catch (err) { console.error("[app]", "[image-store]", "loadGalleryMeta error", { error: err }); return []; }
+}
+
+/**
+ * Descifra UNA imagen con caché y single-flight. Los fallos devuelven "" y no
+ * se cachean (un re-mount lo reintenta gratis).
+ */
+export async function getGalleryImageUrl(inviteToken: string, meta: GalleryMeta): Promise<string> {
+  const key = `${inviteToken}:${meta.id}`;
+  if (URL_CACHE.has(key)) return URL_CACHE.get(key)!;
+  if (INFLIGHT.has(key)) return INFLIGHT.get(key)!;
+  const promise = (async () => {
+    try {
+      const url = await decrypt(meta.encrypted, inviteToken);
+      if (url) {
+        URL_CACHE.set(key, url);
+        // LRU simple: al exceder la cota se descarta la entrada más antigua.
+        if (URL_CACHE.size > MAX_CACHE) {
+          const oldest = URL_CACHE.keys().next().value;
+          if (oldest !== undefined) URL_CACHE.delete(oldest);
+        }
+      }
+      return url;
+    } catch {
+      return "";
+    } finally {
+      INFLIGHT.delete(key);
+    }
+  })();
+  INFLIGHT.set(key, promise);
+  return promise;
 }
 
 export async function deleteGallery(inviteToken: string) {

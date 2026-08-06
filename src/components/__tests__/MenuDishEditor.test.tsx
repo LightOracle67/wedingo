@@ -33,6 +33,16 @@ describe("MenuDishEditor", () => {
     expect(screen.queryByRole("combobox")).toBeNull();
   });
 
+  it("shows a warning when the stored JSON is corrupt", () => {
+    render(<MenuDishEditor value="{broken" onChange={vi.fn()} idBase="menu" />);
+    expect(screen.getByText("errors.menuParseError")).toBeDefined();
+  });
+
+  it("does not warn when the JSON is valid", () => {
+    render(<MenuDishEditor value='[{"order":"entrante","text":"Plato"}]' onChange={vi.fn()} idBase="menu" />);
+    expect(screen.queryByText("errors.menuParseError")).toBeNull();
+  });
+
   it("returns empty for JSON that is not an array", () => {
     render(<MenuDishEditor value='{"a":1}' onChange={vi.fn()} idBase="menu" />);
     expect(screen.queryByRole("combobox")).toBeNull();

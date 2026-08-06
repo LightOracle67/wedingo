@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 
 vi.mock("firebase/firestore", () => ({
   addDoc: vi.fn(() => Promise.resolve({ id: "new-doc" })),
@@ -47,6 +47,7 @@ import {
   updateGalleryOrder,
   loadDecryptedField,
   loadGallery,
+  getGalleryImageUrl,
   deleteGallery,
   deleteGalleryImage,
   isConfigImageRef,
@@ -57,6 +58,7 @@ import {
   resolveConfigImageField,
   resolveAllConfigImages,
   deleteAllConfigImages,
+  clearGalleryCache,
 } from "../image-store";
 
 import * as cryptoUtils from "../crypto-utils";
@@ -67,6 +69,12 @@ const mockDecrypt = vi.mocked(cryptoUtils.decrypt);
 import * as firestore from "firebase/firestore";
 
 describe("image-store", () => {
+  beforeEach(() => {
+    // La caché de URLs descifradas es a nivel de módulo: se limpia para que
+    // cada test descifre de verdad y no se contamine entre ellos.
+    clearGalleryCache();
+    mockDecrypt.mockClear();
+  });
   it("exports uploadImage", () => {
     expect(typeof uploadImage).toBe("function");
   });
@@ -297,6 +305,38 @@ describe("image-store", () => {
     expect(result[0]!.id).toBe("img2");
     expect(result[1]!.id).toBe("img1");
     expect(result[2]!.id).toBe("img3");
+  });
+
+  describe("getGalleryImageUrl (descifrado bajo demanda)", () => {
+    it("returns the cached URL on repeated calls (no re-decrypt)", async () => {
+      const meta = { id: "g1", encrypted: "enc1", description: "" };
+      const first = await getGalleryImageUrl("token", meta);
+      expect(first).toBe("data:image/jpeg;base64,decoded");
+      expect(mockDecrypt).toHaveBeenCalledTimes(1);
+      await getGalleryImageUrl("token", meta);
+      expect(mockDecrypt).toHaveBeenCalledTimes(1);
+    });
+
+    it("deduplicates concurrent requests (single-flight)", async () => {
+      const meta = { id: "g2", encrypted: "enc2", description: "" };
+      const [a, b] = await Promise.all([
+        getGalleryImageUrl("token", meta),
+        getGalleryImageUrl("token", meta),
+      ]);
+      expect(a).toBe("data:image/jpeg;base64,decoded");
+      expect(b).toBe("data:image/jpeg;base64,decoded");
+      expect(mockDecrypt).toHaveBeenCalledTimes(1);
+    });
+
+    it("returns empty and does not cache when decrypt fails", async () => {
+      mockDecrypt.mockRejectedValueOnce(new Error("boom"));
+      const meta = { id: "g3", encrypted: "enc3", description: "" };
+      const url = await getGalleryImageUrl("token", meta);
+      expect(url).toBe("");
+      // El fallo no se cachea: un segundo intento re-descifra.
+      await getGalleryImageUrl("token", meta);
+      expect(mockDecrypt).toHaveBeenCalledTimes(2);
+    });
   });
 
   it("loadGallery includes originalName and originalSize from docs", async () => {

@@ -254,6 +254,26 @@ describe("ConfigProvider", () => {
     mockLocation.pathname = "/test";
   });
 
+  it("decrypts bankInfo and loads audio from the cache hit", async () => {
+    // El cache guarda el bankInfo CIFRADO: el cache-hit lo descifra y además
+    // carga el audio (el sobre debe sonar en una revista).
+    mockLocation.pathname = "/abcdefghij";
+    localStorage.setItem(
+      "wedin_invite_cache_abcdefghij",
+      JSON.stringify({
+        data: { firstName: "Cached", secondName: "Pair" },
+        bankInfoEncrypted: "encrypted-iban",
+        cachedAt: Date.now(),
+      }),
+    );
+    mockLoadAudio.mockResolvedValueOnce({ url: "data:audio/mpeg;base64,xyz" });
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    expect(mockDecrypt).toHaveBeenCalledWith("encrypted-iban", "abcdefghij");
+    expect(mockLoadAudio).toHaveBeenCalled();
+    mockLocation.pathname = "/test";
+  });
+
   it("falls back to Firestore when the cache is expired", async () => {
     mockLocation.pathname = "/abcdefghij";
     localStorage.setItem(

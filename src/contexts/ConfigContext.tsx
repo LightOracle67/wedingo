@@ -161,6 +161,15 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
               for (const [key, url] of Object.entries(resolved)) {
                 if (url) parsed.data[key] = url;
               }
+              // El bankInfo viaja cifrado en la caché: se descifra localmente.
+              if (parsed.bankInfoEncrypted) {
+                parsed.data.bankInfo = await decrypt(parsed.bankInfoEncrypted, inviteToken);
+              }
+              // La música no se cachea (data URL grande): se descarga del
+              // mismo modo que en la carga completa para que el sobre suene.
+              const { loadAudio } = await import("../lib/music-store");
+              const audio = await loadAudio(inviteToken);
+              if (audio?.url) parsed.data.musicFile = audio.url;
               setConfig(parsed.data);
               setFormData(parsed.data);
               setHasStoredConfig(true);
@@ -185,6 +194,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           return;
         }
         const parsed = normalizeConfig(snapshot.data());
+        // Se captura el bankInfo CIFRADO (antes de descifrar) para guardarlo
+        // en la caché: el cache-hit podrá descifrarlo sin consultar Firestore.
+        const bankInfoEncrypted = parsed.bankInfo;
         if (parsed.bankInfo) { ; parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken); }
         const { resolveAllConfigImages } = await import("../lib/image-store");
         const resolved = await resolveAllConfigImages(inviteToken, parsed);
@@ -203,12 +215,14 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
         setConfig(hydrated);
         setFormData(hydrated);
-        // La caché NO guarda datos sensibles descifrados (bankInfo, audio):
-        // solo el shell de la invitación, para el modo offline. Los campos
-        // sensibles se vuelven a descifrar desde Firestore en cada carga.
-        const { bankInfo: _omitBank, musicFile: _omitAudio, ...cacheSafe } = hydrated;
+        // La caché guarda el shell + el bankInfo CIFRADO (no el descifrado):
+        // el cache-hit descifra localmente sin Firestore.
+        const { musicFile: _omitAudio, ...cacheSafe } = hydrated;
         try {
-          localStorage.setItem(STORAGE_KEYS.inviteCache(inviteToken), JSON.stringify({ data: cacheSafe, cachedAt: Date.now() }));
+          localStorage.setItem(
+            STORAGE_KEYS.inviteCache(inviteToken),
+            JSON.stringify({ data: cacheSafe, bankInfoEncrypted: bankInfoEncrypted || null, cachedAt: Date.now() }),
+          );
         } catch { /* almacenamiento no disponible */ }
         setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);
         setHasStoredConfig(true);

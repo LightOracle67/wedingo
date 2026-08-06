@@ -112,16 +112,60 @@ describe("useStoryNavigation", () => {
   });
 
   it("does nothing when there are no story sections in the DOM", () => {
-    let observerCallback: IntersectionObserverCallback | null = null;
     class FakeIO {
-      constructor(cb: IntersectionObserverCallback) { observerCallback = cb; }
+      constructor() {}
       observe() {}
       disconnect() {}
     }
     Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    // Sin elementos [data-story-section] el efecto retorna sin observar.
+    // Sin elementos [data-story-section] el hook no crashea; el MutationObserver
+    // sigue activo para observar las secciones lazy que monten después.
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
     expect(result.current.activeSection).toBe(SAMPLE_ORDER[0]);
-    expect(observerCallback).toBeNull();
+    expect(() => renderHook(() => useStoryNavigation(SAMPLE_ORDER))).not.toThrow();
+  });
+
+  it("observes lazy sections added to the DOM after mount", async () => {
+    // El MutationObserver re-observa las secciones que montan después (lazy).
+    const observed: Element[] = [];
+    class FakeIO {
+      constructor(cb: IntersectionObserverCallback) {
+        // Se guarda el callback para dispararlo manualmente.
+        (FakeIO as unknown as { cb: IntersectionObserverCallback }).cb = cb;
+      }
+      observe(el: Element) { observed.push(el); }
+      disconnect() {}
+    }
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
+    renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    // Se añade una sección tras el montaje (simula el Suspense lazy).
+    const el = document.createElement("div");
+    el.setAttribute("data-story-section", "gallery");
+    document.body.appendChild(el);
+    await vi.waitFor(() => {
+      expect(observed.some((o) => o === el)).toBe(true);
+    });
+    el.remove();
+  });
+
+  it("still observes initial sections when MutationObserver is unavailable", () => {
+    const originalMO = (globalThis as Record<string, unknown>).MutationObserver;
+    Object.defineProperty(globalThis, "MutationObserver", { value: undefined, configurable: true });
+    const observed: Element[] = [];
+    class FakeIO {
+      observe(el: Element) { observed.push(el); }
+      disconnect() {}
+    }
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
+    const el = document.createElement("div");
+    el.setAttribute("data-story-section", "hero");
+    document.body.appendChild(el);
+
+    renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    expect(observed.some((o) => o === el)).toBe(true);
+    el.remove();
+    if (originalMO !== undefined) {
+      Object.defineProperty(globalThis, "MutationObserver", { value: originalMO, configurable: true });
+    }
   });
 });

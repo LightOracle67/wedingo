@@ -88,7 +88,9 @@
 .cookie-consent-overlay {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  /* Por encima del sobre de la invitación (--z-envelope 10000): el
+     consentimiento debe ser visible e interactivo antes de abrir la boda. */
+  z-index: 10100;
   display: flex;
   align-items: flex-end;
   justify-content: center;
