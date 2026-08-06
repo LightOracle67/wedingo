@@ -8,7 +8,7 @@ const mockGetDoc = vi.hoisted(() => vi.fn((_ref?: unknown): Promise<{ exists: ()
 const mockRunTransaction = vi.hoisted(() => vi.fn(async (_db: unknown, cb: (t: unknown) => Promise<void>) => cb({} as never)));
 const mockSetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 const mockUpdateDoc = vi.hoisted(() => vi.fn((_ref?: unknown, _payload?: unknown) => Promise.resolve()));
-const mockGetSession = vi.hoisted(() => vi.fn(() => null as { type: string; identifier: string } | null));
+const mockGetSession = vi.hoisted(() => vi.fn(() => null as { type: string; identifier: string; inviteToken?: string } | null));
 const mockSaveSession = vi.hoisted(() => vi.fn());
 const mockClearSession = vi.hoisted(() => vi.fn());
 const mockRenewSession = vi.hoisted(() => vi.fn(() => Promise.resolve()));
@@ -576,6 +576,18 @@ describe("useSetupAuth", () => {
       await waitFor(() => {
         expect(result.current.isTokenVerified).toBe(true);
       });
+    });
+
+    it("clears the session when it belongs to another invitation", async () => {
+      // La sesión local apunta a otra boda: no se concede admin cruzado.
+      mockGetSession.mockReturnValue({ type: "setup", identifier: "user", inviteToken: "other-invite" });
+
+      setup();
+
+      await waitFor(() => {
+        expect(mockClearSession).toHaveBeenCalled();
+      });
+      expect(mockGetDoc).not.toHaveBeenCalled();
     });
 
     it("clears session when Firestore session repair fails", async () => {

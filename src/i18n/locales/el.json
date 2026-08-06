@@ -334,7 +334,9 @@
     "currentMusic": "Επιλεγμένη μουσική",
     "removeMusic": "Αφαιρέστε τη μουσική",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "Αρνούνται",
     "pending": "Εκκρεμούν",
     "visits_one": "1 επίσκεψη",
-    "visits_other": "{{count}} επισκέψεις"
+    "visits_other": "{{count}} επισκέψεις",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Αναζήτηση με όνομα",

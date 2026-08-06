@@ -334,7 +334,9 @@
     "currentMusic": "Música selecionada",
     "removeMusic": "Remover música",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "Declinam",
     "pending": "Pendentes",
     "visits_one": "1 visita",
-    "visits_other": "{{count}} visitas"
+    "visits_other": "{{count}} visitas",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Procurar por nome",

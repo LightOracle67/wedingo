@@ -137,6 +137,11 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
             {inviteUrl}
           </a>
         </div>
+        <div style={{ marginTop: "0.5rem" }}>
+          <a className="setup-button setup-button--compact" href={inviteUrl} target="_blank" rel="noreferrer">
+            {t("panel.viewInvitation")}
+          </a>
+        </div>
       </div>
 
       <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>

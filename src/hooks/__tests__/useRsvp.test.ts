@@ -380,6 +380,22 @@ describe("useRsvp", () => {
       expect(result.current.rsvpForm.guestName).toBe("");
     });
 
+    it("encrypts allergiesOther together with dietaryInfo", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      setupForm(result);
+      act(() => result.current.updateRsvpField("healthConsent", true));
+      // La alergia del campo libre debe cifrarse dentro de dietaryInfo.
+      act(() => result.current.updateRsvpField("allergiesOther", "alergia mariscos"));
+
+      await act(async () => {
+        result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      });
+
+      await waitFor(() => {
+        expect(mockEncrypt).toHaveBeenCalledWith(expect.stringContaining("alergia mariscos"), "test-token");
+      });
+    });
+
     it("creates the rsvp counter when it does not exist", async () => {
       mockGetDoc.mockResolvedValueOnce({ exists: () => false } as never);
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
@@ -538,6 +554,22 @@ describe("useRsvp", () => {
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "alone"));
       act(() => result.current.updateRsvpField("allergies", ["sin gluten"]));
+      act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
+      act(() => result.current.updateRsvpField("privacyConsent", true));
+
+      await act(async () => {
+        result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
+      });
+
+      expect(result.current.rsvpMessage).toMatch(/healthConsentRequired/i);
+    });
+
+    it("returns error for healthConsent when only allergiesOther is filled", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
+      act(() => result.current.updateRsvpField("attendance", "alone"));
+      // Alergia escrita solo en el campo libre: es dato de salud.
+      act(() => result.current.updateRsvpField("allergiesOther", "alergia a mariscos"));
       act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
       act(() => result.current.updateRsvpField("privacyConsent", true));
 

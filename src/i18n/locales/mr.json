@@ -334,7 +334,9 @@
     "currentMusic": "निवडलेले संगीत",
     "removeMusic": "संगीत काढा",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "नाकारतात",
     "pending": "प्रलंबित",
     "visits_one": "1 भेट",
-    "visits_other": "{{count}} visits"
+    "visits_other": "{{count}} visits",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "नावाने शोधा",

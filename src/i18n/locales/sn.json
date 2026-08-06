@@ -334,7 +334,9 @@
     "currentMusic": "Mumhanzi wakasarudzwa",
     "removeMusic": "Bvisa mimhanzi",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "withCompanions": "Hongu ({{count}} shamwari (s))",
     "confirms": "Confirm",
     "declines": "Decline",
-    "pending": "Pending"
+    "pending": "Pending",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Tsvaga nezita",

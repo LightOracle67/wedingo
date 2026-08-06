@@ -79,7 +79,7 @@ const RsvpSection = memo(function RsvpSection({
 
   const age = useMemo(() => computeAge(rsvpForm.birthDate), [rsvpForm.birthDate, computeAge]);
   const isUnder14 = age !== null && age < 14;
-  const hasDietaryData = (rsvpForm.allergies || []).length > 0;
+  const hasDietaryData = (rsvpForm.allergies || []).length > 0 || (rsvpForm.allergiesOther || "").trim().length > 0;
   const showHealthConsent = isAttending && hasDietaryData;
 
   const hasStructuredMenu = menuEnabled && (menuCarneDishes || menuPescadoDishes || menuVeganoDishes);

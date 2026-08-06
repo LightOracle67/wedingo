@@ -26,6 +26,7 @@ vi.mock("../audio-utils", () => ({
   compressAudio: vi.fn(() => Promise.resolve("data:audio/mp3;base64,...")),
 }));
 
+import { getDocs } from "firebase/firestore";
 import { uploadAudio, addAudio, loadAudio, deleteAudio } from "../music-store";
 
 describe("music-store", () => {
@@ -73,6 +74,18 @@ describe("music-store", () => {
     expect(result).toHaveProperty("dataUrl");
     expect(result).toHaveProperty("chunks");
     expect(result.chunks).toBeGreaterThan(1);
+  });
+
+  it("addAudio clears previous orphan chunks before writing", async () => {
+    // Hay chunks viejos de una subida anterior (incompleta).
+    vi.mocked(getDocs).mockResolvedValueOnce({
+      empty: false,
+      docs: [{ ref: { id: "old1" } }, { ref: { id: "old2" } }],
+    } as never);
+    const result = await addAudio("token", "enc", "data:audio/mp3;base64,...");
+    expect(result).toHaveProperty("id");
+    // La limpieza (getDocs) se consultó una vez con los chunks previos.
+    expect(getDocs).toHaveBeenCalled();
   });
 
   it("loadAudio returns null when no audio exists", async () => {

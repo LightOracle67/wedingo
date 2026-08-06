@@ -334,7 +334,9 @@
     "currentMusic": "Избранная музыка",
     "removeMusic": "Удалить музыку",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "Отказываются",
     "pending": "Ожидают",
     "visits_one": "1 посещение",
-    "visits_other": "{{count}} посещений"
+    "visits_other": "{{count}} посещений",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Поиск по имени",

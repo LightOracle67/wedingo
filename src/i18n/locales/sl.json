@@ -334,7 +334,9 @@
     "currentMusic": "Izbrana glasba",
     "removeMusic": "Odstrani glasbo",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "Zavračajo",
     "pending": "Čakajoči",
     "visits_one": "1 obisk",
-    "visits_other": "{{count}} visits"
+    "visits_other": "{{count}} visits",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Išči po imenu",

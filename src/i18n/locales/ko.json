@@ -334,7 +334,9 @@
     "currentMusic": "선택한 음악",
     "removeMusic": "음악 삭제",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "불참",
     "pending": "대기",
     "visits_one": "방문 1회",
-    "visits_other": "{{count}}회 방문"
+    "visits_other": "{{count}}회 방문",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "이름으로 검색",

@@ -23,6 +23,7 @@ const mockUploadImage = vi.fn();
 const mockAddGalleryImage = vi.fn();
 const mockDeleteGalleryImage = vi.fn();
 const mockUpdateGalleryDescription = vi.fn();
+const mockUpdateGalleryOrder = vi.fn();
 
 vi.mock("../../lib/image-store", () => ({
   loadGallery: (...args: Parameters<typeof mockLoadGallery>) => mockLoadGallery(...args),
@@ -30,6 +31,7 @@ vi.mock("../../lib/image-store", () => ({
   addGalleryImage: (...args: unknown[]) => mockAddGalleryImage(...args),
   deleteGalleryImage: (...args: unknown[]) => mockDeleteGalleryImage(...args),
   updateGalleryDescription: (...args: unknown[]) => mockUpdateGalleryDescription(...args),
+  updateGalleryOrder: (...args: unknown[]) => mockUpdateGalleryOrder(...args),
 }));
 
 vi.mock("react-i18next", () => ({
@@ -67,6 +69,21 @@ describe("GalleryArrayEditor", () => {
     expect(firstSlot).toBeInTheDocument();
     const slots = screen.getAllByText(/#\d+/);
     expect(slots).toHaveLength(10);
+  });
+
+  it("moves an image to the right and persists the order", async () => {
+    mockLoadGallery.mockResolvedValueOnce([
+      { id: "img1", url: "data:image/jpeg;base64,a", description: "", position: 0, originalName: "a.jpg", originalSize: 1 },
+      { id: "img2", url: "data:image/jpeg;base64,b", description: "", position: 1, originalName: "b.jpg", originalSize: 1 },
+    ] as Partial<GalleryImage>[]);
+    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    await screen.findByText("#1");
+    // El slot #1 tiene una imagen: se pulsa "mover a la derecha".
+    const moveRight = screen.getAllByLabelText("setup.galleryMoveRight")[0]!;
+    fireEvent.click(moveRight);
+    await waitFor(() => {
+      expect(mockUpdateGalleryOrder).toHaveBeenCalled();
+    });
   });
 
   it("loads images without position, description or name using fallbacks", async () => {

@@ -25,6 +25,16 @@ export async function uploadAudio(inviteToken: string, file: File, onProgress?: 
 
 export async function addAudio(inviteToken: string, encrypted: string, dataUrl: string, onProgress?: (pct: number) => void) {
 
+  // Elimina los chunks de subidas anteriores (incluidas las incompletas):
+  // loadAudio concatena toda la colección, y sin esta limpieza los chunks
+  // viejos se mezclaban con los nuevos corrompiendo el audio.
+  const prev = await getDocs(audioCol(inviteToken));
+  if (!prev.empty) {
+    const cleanup = writeBatch(db);
+    prev.docs.forEach((d) => cleanup.delete(d.ref));
+    await cleanup.commit();
+  }
+
   const chunks: string[] = [];
   for (let i = 0; i < encrypted.length; i += CHUNK_SIZE) {
     chunks.push(encrypted.slice(i, i + CHUNK_SIZE));

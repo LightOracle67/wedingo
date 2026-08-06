@@ -334,7 +334,9 @@
     "currentMusic": "منتخب موسیقی",
     "removeMusic": "موسیقی کو ہٹا دیں۔",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "انکار کرتے ہیں",
     "pending": "زیر التواء",
     "visits_one": "1 دورہ",
-    "visits_other": "{{count}} visits"
+    "visits_other": "{{count}} visits",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "نام سے تلاش کریں",

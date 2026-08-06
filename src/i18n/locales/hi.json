@@ -334,7 +334,9 @@
     "currentMusic": "चयनित संगीत",
     "removeMusic": "संगीत हटाएँ",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "मना करते हैं",
     "pending": "लंबित",
     "visits_one": "1 विज़िट",
-    "visits_other": "{{count}} विज़िट"
+    "visits_other": "{{count}} विज़िट",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "नाम से खोजें",

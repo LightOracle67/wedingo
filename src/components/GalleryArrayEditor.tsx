@@ -86,12 +86,13 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
       const { uploadImage, addGalleryImage, deleteGalleryImage } = await import("../lib/image-store");
       const { encrypted, dataUrl } = await withTimeout(uploadImage(inviteToken, file, (p: number) => upload.update(p)), 30000, "Image upload timed out");
 
-      const existing = slots[slotIndex];
-      if (existing?.id) {
-
-        await deleteGalleryImage(inviteToken, existing.id);
-      }
+      // Añadir primero y borrar la anterior después: si el alta falla, la
+      // foto previa no se pierde (antes se borraba primero).
       const saved = await addGalleryImage(inviteToken, encrypted, dataUrl, slotIndex, (p: number) => upload.update(85 + Math.round(p * 0.1)), file.name, file.size);
+      const existing = slots[slotIndex];
+      if (existing?.id && existing.id !== saved.id) {
+        try { await deleteGalleryImage(inviteToken, existing.id); } catch { /* huérfana tolerable */ }
+      }
 
       setSlots((prev: (SlotState | null)[]) => {
         const next = [...prev];
@@ -162,6 +163,32 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
     }
   }, [inviteToken, addToast, t]);
 
+  /** Mueve una imagen una posición (reorden visible en la invitación). */
+  const handleMove = useCallback(async (slotIndex: number, dir: -1 | 1) => {
+    if (!inviteToken) return;
+    const target = slotIndex + dir;
+    if (target < 0 || target >= SLOT_COUNT) return;
+    const current = slots[slotIndex];
+    const other = slots[target];
+    if (!current) return;
+    try {
+      const next = [...slots];
+      next[slotIndex] = other ?? null;
+      next[target] = current;
+      setSlots(next);
+      const { updateGalleryOrder } = await import("../lib/image-store");
+      await updateGalleryOrder(
+        inviteToken,
+        next.map((s, i) => ({ id: s?.id ?? "", position: i })).filter((x) => x.id !== ""),
+      );
+    } catch (err) {
+      console.error("[app]", "[GalleryArrayEditor]", "reorder error", { error: err });
+      addToast("error", t("errors.generic"));
+      // Revertir al estado previo si falla la persistencia.
+      setSlots(slots);
+    }
+  }, [inviteToken, slots, addToast, t]);
+
   if (loading) {
     return <div className="page-loading" />;
   }
@@ -175,8 +202,30 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
           const isUploading = uploadingSlots.has(i);
           return (
             <div key={i} style={galleryItemStyle}>
-              <div style={{ fontSize: "0.75rem", fontWeight: 600, color: "var(--setup-muted)", marginBottom: "0.15rem" }}>
-                #{i + 1}
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "0.15rem" }}>
+                <span style={{ fontSize: "0.75rem", fontWeight: 600, color: "var(--setup-muted)" }}>
+                  #{i + 1}
+                </span>
+                {item ? (
+                  <span style={{ display: "flex", gap: "0.25rem" }}>
+                    <button
+                      type="button"
+                      onClick={() => handleMove(i, -1)}
+                      disabled={isUploading || i === 0}
+                      aria-label={t("setup.galleryMoveLeft")}
+                      title={t("setup.galleryMoveLeft")}
+                      style={{ fontSize: "0.7rem", padding: "0.1rem 0.4rem", cursor: "pointer", border: "1px solid var(--setup-border)", borderRadius: "4px", background: "transparent", color: "var(--setup-title)" }}
+                    >←</button>
+                    <button
+                      type="button"
+                      onClick={() => handleMove(i, 1)}
+                      disabled={isUploading || i >= SLOT_COUNT - 1}
+                      aria-label={t("setup.galleryMoveRight")}
+                      title={t("setup.galleryMoveRight")}
+                      style={{ fontSize: "0.7rem", padding: "0.1rem 0.4rem", cursor: "pointer", border: "1px solid var(--setup-border)", borderRadius: "4px", background: "transparent", color: "var(--setup-title)" }}
+                    >→</button>
+                  </span>
+                ) : null}
               </div>
 
               {item ? (

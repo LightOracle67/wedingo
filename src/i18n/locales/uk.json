@@ -334,7 +334,9 @@
     "currentMusic": "Вибрана музика",
     "removeMusic": "Видаліть музику",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "Відмовляються",
     "pending": "Очікують",
     "visits_one": "1 відвідування",
-    "visits_other": "{{count}} відвідувань"
+    "visits_other": "{{count}} відвідувань",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Пошук за іменем",

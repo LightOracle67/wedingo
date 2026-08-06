@@ -59,7 +59,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     handleYearChange,
   } = useFieldHandlers(updateFormField, maxAllowedYear);
 
-  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef, setConfig);
+  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef, setConfig, setSaveError);
 
   const onFirstSaveCallbacksRef = useRef<(() => void)[]>([]);
 

@@ -334,7 +334,9 @@
     "currentMusic": "Geselecteerde muziek",
     "removeMusic": "Muziek verwijderen",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "Afwijzen",
     "pending": "In afwachting",
     "visits_one": "1 bezoek",
-    "visits_other": "{{count}} bezoeken"
+    "visits_other": "{{count}} bezoeken",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Zoeken op naam",

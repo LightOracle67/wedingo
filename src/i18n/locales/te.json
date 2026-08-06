@@ -334,7 +334,9 @@
     "currentMusic": "ఎంచుకున్న సంగీతం",
     "removeMusic": "సంగీతాన్ని తీసివేయండి",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "తిరస్కరిస్తున్నారు",
     "pending": "పెండింగ్",
     "visits_one": "1 సందర్శన",
-    "visits_other": "{{count}} visits"
+    "visits_other": "{{count}} visits",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "పేరుతో శోధించండి",

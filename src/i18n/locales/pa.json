@@ -334,7 +334,9 @@
     "currentMusic": "ਚੁਣਿਆ ਗਿਆ ਸੰਗੀਤ",
     "removeMusic": "ਸੰਗੀਤ ਹਟਾਓ",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "withCompanions": "ਹਾਂ ({{count}} ਸਾਥੀ(ਆਂ))",
     "confirms": "ਪੁਸ਼ਟੀ ਕਰੋ",
     "declines": "ਅਸਵੀਕਾਰ ਕਰੋ",
-    "pending": "ਬਕਾਇਆ"
+    "pending": "ਬਕਾਇਆ",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "ਨਾਮ ਦੁਆਰਾ ਖੋਜ ਕਰੋ",

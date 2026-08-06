@@ -334,7 +334,9 @@
     "currentMusic": "選択された音楽",
     "removeMusic": "音楽を削除する",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "辞退",
     "pending": "保留",
     "visits_one": "1 回の訪問",
-    "visits_other": "{{count}} 回の訪問"
+    "visits_other": "{{count}} 回の訪問",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "名前で検索",

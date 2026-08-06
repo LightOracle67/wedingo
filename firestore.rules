@@ -92,9 +92,13 @@ service cloud.firestore {
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
       /* Actualización de configuración: solo admin con sesión activa o
          superadmin. Cualquier cuenta autenticada de Firebase Auth NO puede
-         editar invitaciones de terceros (evita defacing/phisning). */
+         editar invitaciones de terceros (evita defacing/phisning).
+         _visits se excluye: lo gestiona exclusivamente su propia regla con
+         cota de incremento (sin esto un update global con sesión podía fijar
+         _visits arbitrariamente). */
       allow update: if isValidInvitationWrite(request.resource.data)
-        && (isSuperAdmin() || hasActiveSession(tokenId));
+        && (isSuperAdmin() || hasActiveSession(tokenId))
+        && !request.resource.data.keys().hasAny(['_visits']);
       /* Incremento de contador de visitas: cualquiera puede incrementar
          _visits, pero solo en pasos razonables (máx +10 por request) para
          evitar inflar el contador de forma arbitraria. El cliente usa
@@ -232,8 +236,19 @@ service cloud.firestore {
           || request.resource.data.healthConsent == true
         )
         && (
-          request.resource.data.dietaryInfo == ""
+          (request.resource.data.dietaryInfo == ""
+            && (!request.resource.data.keys().hasAny(['allergiesOther']) || request.resource.data.allergiesOther == ""))
           || request.resource.data.healthConsent == true
+        )
+        /* Consentimiento parental en el SERVIDOR: si la fecha de nacimiento
+           indica que el invitado es menor de 14 años (fecha de nacimiento
+           posterior al límite actual; actualizar cada año), se exige
+           parentalConsent (GDPR art. 8). La edad exacta la valida el cliente. */
+        && (
+          !request.resource.data.keys().hasAny(['birthDate'])
+          || request.resource.data.birthDate == ""
+          || request.resource.data.birthDate < "2012-08-06"
+          || request.resource.data.parentalConsent == true
         )
         && exists(/databases/$(database)/documents/rsvpResponses/$(inviteToken))
         && get(/databases/$(database)/documents/rsvpResponses/$(inviteToken)).data.count < 500

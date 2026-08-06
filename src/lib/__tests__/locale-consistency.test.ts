@@ -4,6 +4,15 @@ type GlobModules = Record<string, Record<string, string>>;
 
 const localeModules: GlobModules = import.meta.glob("../../i18n/locales/*.json", { eager: true }) as GlobModules;
 
+/** Detecta valores array a cualquier profundidad (corpus OPUS-MT corrupto). */
+function hasArrayValue(obj: unknown): boolean {
+  if (Array.isArray(obj)) return true;
+  if (obj !== null && typeof obj === "object") {
+    return Object.values(obj).some(hasArrayValue);
+  }
+  return false;
+}
+
 describe("Locale consistency", () => {
   const entries = Object.entries(localeModules);
 
@@ -20,5 +29,10 @@ describe("Locale consistency", () => {
         expect(topLevel).toContain(key);
       });
     });
+  });
+
+  it("no locale contains array values (corrupted corpus data)", () => {
+    const bad = entries.filter(([, mod]) => hasArrayValue(mod)).map(([key]) => key.split("/").pop());
+    expect(bad).toEqual([]);
   });
 });

@@ -427,7 +427,9 @@
     "cornerDecorationUploadHint": "PNG or SVG, max 1MB",
     "transportTypeLabel": "Type",
     "copyToken": "Copy access code",
-    "tokenSoleAccess": "This code is your only admin access: store it somewhere safe. If you lose it, it cannot be recovered."
+    "tokenSoleAccess": "This code is your only admin access: store it somewhere safe. If you lose it, it cannot be recovered.",
+    "galleryMoveLeft": "Move left",
+    "galleryMoveRight": "Move right"
   },
   "admin": {
     "tabs": {
@@ -476,7 +478,8 @@
     "withCompanions": "Yes ({{count}} companion(s))",
     "confirms": "Confirm",
     "declines": "Decline",
-    "pending": "Pending"
+    "pending": "Pending",
+    "viewInvitation": "View invitation"
   },
   "attendance": {
     "searchLabel": "Search by name",

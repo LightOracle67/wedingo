@@ -334,7 +334,9 @@
     "currentMusic": "ಆಯ್ದ ಸಂಗೀತ",
     "removeMusic": "ಸಂಗೀತವನ್ನು ತೆಗೆದುಹಾಕಿ",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "withCompanions": "ಹೌದು ({{count}} ಒಡನಾಡಿ(ಗಳು))",
     "confirms": "ದೃಢೀಕರಿಸಿ",
     "declines": "ನಿರಾಕರಿಸು",
-    "pending": "ಬಾಕಿಯಿದೆ"
+    "pending": "ಬಾಕಿಯಿದೆ",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "ಹೆಸರಿನಿಂದ ಹುಡುಕಿ",

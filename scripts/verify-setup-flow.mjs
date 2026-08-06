@@ -27,6 +27,8 @@ import {
   collection,
   serverTimestamp,
   deleteField,
+  deleteDoc,
+  increment,
 } from "firebase/firestore";
 import { createHash } from "node:crypto";
 
@@ -229,6 +231,51 @@ await expectDeny("14. activar sesión con hash sin registro en setupTokens → d
 // La limpieza de los campos legacy queda reservada al superadmin (denegado sin auth).
 await expectDeny("15. limpieza de _activeSetupToken/legacyToken sin superadmin → denegado", async () => {
   await updateDoc(doc(db, "invitations", LEGACY_TOKEN), { _activeSetupToken: deleteField(), legacyToken: deleteField() });
+});
+
+// ── Flujo RSVP y subcolecciones con sesión activa (pasos 16-22) ─────────
+await expectAllow("16. incrementar el contador RSVP a count=1", async () => {
+  await updateDoc(doc(db, "rsvpResponses", TOKEN), { count: 1 });
+});
+const counterSnap = await getDoc(doc(db, "rsvpResponses", TOKEN));
+if (counterSnap.exists() && counterSnap.data().count === 1) {
+  check("16b. contador legible y con valor 1", true);
+} else {
+  check("16b. contador legible y con valor 1", false);
+}
+
+await expectAllow("17. actualizar una respuesta con sesión activa", async () => {
+  await updateDoc(doc(db, "rsvpResponses", TOKEN, "responses", RESP_ID), {
+    attendance: "no",
+    dietaryInfo: "",
+    privacyConsent: true,
+  });
+});
+await expectAllow("18. borrar una respuesta con sesión activa", async () => {
+  await deleteDoc(doc(db, "rsvpResponses", TOKEN, "responses", RESP_ID));
+});
+
+await expectAllow("19. subir galería, audio y configImages (sesión activa)", async () => {
+  await setDoc(doc(db, "invitations", TOKEN, "gallery", "img1"), { data: "x".repeat(10) });
+  await setDoc(doc(db, "invitations", TOKEN, "audio", "a1"), { data: "y".repeat(10) });
+  await setDoc(doc(db, "invitations", TOKEN, "configImages", "ci1"), { data: "z".repeat(10), createdAt: new Date().toISOString() });
+});
+await expectDeny("19b. galería con data no string → denegado", async () => {
+  await setDoc(doc(db, "invitations", TOKEN, "gallery", "imgBad"), { data: 42 });
+});
+
+await expectAllow("20. incrementar _visits en 1", async () => {
+  await updateDoc(doc(db, "invitations", TOKEN), { _visits: increment(1) });
+});
+await expectDeny("20b. _visits con salto >10 → denegado", async () => {
+  await updateDoc(doc(db, "invitations", TOKEN), { _visits: 500 });
+});
+
+await expectAllow("21. cerrar sesión (activeSession/sessionExpiresAt null)", async () => {
+  await updateDoc(doc(db, "invitations", TOKEN), { activeSession: null, sessionExpiresAt: null });
+});
+await expectDeny("21b. tras cerrar sesión, actualizar respuesta → denegado", async () => {
+  await updateDoc(doc(db, "invitations", TOKEN, "gallery", "img1"), { data: "q".repeat(5) });
 });
 
 console.log(`\nResultado: ${pass} ok / ${fail} fail`);

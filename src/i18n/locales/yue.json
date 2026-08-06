@@ -334,7 +334,9 @@
     "currentMusic": "精选音乐",
     "removeMusic": "删除音乐",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "withCompanions": "是（{{count}} 个同伴）",
     "confirms": "确认",
     "declines": "衰退",
-    "pending": "待办的"
+    "pending": "待办的",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "按名称搜索",

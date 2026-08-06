@@ -334,7 +334,9 @@
     "currentMusic": "Pinili nga musika",
     "removeMusic": "Kuhaa ang musika",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "withCompanions": "Oo ({{count}} (mga) kauban)",
     "confirms": "Confirm",
     "declines": "Pagdumili",
-    "pending": "Naghulat"
+    "pending": "Naghulat",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Pangitaa pinaagi sa ngalan",

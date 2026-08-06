@@ -334,7 +334,9 @@
     "currentMusic": "Mmino o o tlhophilweng",
     "removeMusic": "Tlosa mmino",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "withCompanions": "Ee ({{bala}} (ba) molekane)",
     "confirms": "Tlhomamisa",
     "declines": "Gana",
-    "pending": "Letetse"
+    "pending": "Letetse",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Batla ka leina",

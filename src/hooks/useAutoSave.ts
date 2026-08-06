@@ -16,6 +16,7 @@ export function useAutoSave(
   onSaveMessage: ((msg: string) => void) | null,
   isSavingRef: { current: boolean } | null,
   onAutoSaved?: (data: InvitationConfig) => void,
+  onSaveError?: (msg: string) => void,
 ) {
   const { t } = useTranslation();
   const autoSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -44,11 +45,11 @@ export function useAutoSave(
       // invitación pública: nombres vacíos (hero vacío) o una URL de mapa
       // inválida (mapa muerto). El resto se valida en el guardado manual.
       if (!data.firstName?.trim() || !data.secondName?.trim()) {
-        if (onSaveMessage) onSaveMessage(t("errors.bothNamesRequired"));
+        if (onSaveError) onSaveError(t("errors.bothNamesRequired"));
         return null;
       }
       if (data.weddingSiteURL && !isValidGoogleMapsUrl(data.weddingSiteURL)) {
-        if (onSaveMessage) onSaveMessage(t("errors.mapUrlInvalid"));
+        if (onSaveError) onSaveError(t("errors.mapUrlInvalid"));
         return null;
       }
 
@@ -64,17 +65,20 @@ export function useAutoSave(
       }
       return payload;
     } catch (e) {
-      if (onSaveMessage) onSaveMessage(getFirestoreErrorMessage(e, t));
+      if (onSaveError) onSaveError(getFirestoreErrorMessage(e, t));
       return null;
     } finally {
       autoSavingRef.current = false;
       if (isSavingRef) isSavingRef.current = false;
     }
-  }, [inviteToken, isSavingRef, onSaveMessage, t, onAutoSaved]);
+  }, [inviteToken, isSavingRef, t, onAutoSaved, onSaveError]);
 
   useEffect(() => {
     if (!hasStoredConfig || !inviteToken) return;
-    if (JSON.stringify(formData) === JSON.stringify(config)) return;
+    // Se compara el formData NORMALIZADO contra config: si el usuario deja un
+    // espacio final ("Ana "), la normalización al guardar lo recorta, y sin
+    // este ajuste el autosave se relanzaba infinitamente cada 1,5 s.
+    if (JSON.stringify(normalizeConfig(formData)) === JSON.stringify(config)) return;
     if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
     autoSaveTimerRef.current = setTimeout(async () => {
       const result = await doSave(formData);

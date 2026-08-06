@@ -59,6 +59,11 @@ describe("PanelTab", () => {
     expect(screen.getByText(/https:\/\/localhost\/test-token/)).toBeDefined();
   });
 
+  it("renders the 'view invitation' button", () => {
+    render(<PanelTab config={baseConfig} />);
+    expect(screen.getByText("panel.viewInvitation")).toBeDefined();
+  });
+
   it("renders stats cards with labels", () => {
     render(<PanelTab config={baseConfig} />);
     expect(screen.getByText("panel.confirmed")).toBeDefined();

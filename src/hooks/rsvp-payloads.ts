@@ -96,6 +96,7 @@ export function buildCompanionData(input: {
     inviteToken,
     submittedAt: nowTimestamp,
     privacyConsent: true,
+    privacyConsentAt: nowTimestamp,
     mainGuestDocId: mainGuestId,
     mainGuestName: single,
   };

@@ -27,6 +27,22 @@ describe("GallerySection", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mockReducedMotion.mockReturnValue(false);
+    // IntersectionObserver disponible: el auto-avance se controla por
+    // visibilidad de la sección (cubre la rama del observer).
+    class FakeIO {
+      static instance: { callback: IntersectionObserverCallback } | null = null;
+      constructor(callback: IntersectionObserverCallback) {
+        FakeIO.instance = { callback };
+      }
+      observe(target: Element) {
+        // La sección se considera visible: el auto-avance se arranca.
+        const cb = FakeIO.instance?.callback;
+        if (cb) cb([{ isIntersecting: true, target } as unknown as IntersectionObserverEntry], this as unknown as IntersectionObserver);
+      }
+      disconnect() {}
+    }
+    (FakeIO as unknown as { instance: unknown }).instance = null;
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
   });
 
   it("renders loading state", () => {

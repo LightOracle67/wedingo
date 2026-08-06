@@ -1000,4 +1000,18 @@ describe("App", () => {
     sessionStorage.removeItem("wedin_deploy_id");
     meta.remove();
   });
+
+  it("adds noindex robots on non-landing routes", async () => {
+    render(
+      <MemoryRouter initialEntries={["/abc123/admin"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    await screen.findByText("DEV");
+    const robots = document.querySelector('meta[name="robots"]');
+    expect(robots?.getAttribute("content")).toBe("noindex, nofollow");
+    document.querySelectorAll('meta[name="robots"]').forEach((m) => m.remove());
+  });
 });

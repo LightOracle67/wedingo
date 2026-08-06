@@ -334,7 +334,9 @@
     "currentMusic": "Napili a musika",
     "removeMusic": "Ikkaten ti musika",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "withCompanions": "Wen ({{count}} kadua (dagiti)) .",
     "confirms": "Kumpirmaen",
     "declines": "Ipaid",
-    "pending": "Naisardeng biit"
+    "pending": "Naisardeng biit",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Agbirok babaen ti nagan",

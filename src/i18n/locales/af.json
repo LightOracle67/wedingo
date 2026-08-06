@@ -334,7 +334,9 @@
     "currentMusic": "Geselekteerde musiek",
     "removeMusic": "Verwyder musiek",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "withCompanions": "Ja ({{count}} metgesel(s))",
     "confirms": "Bevestig",
     "declines": "Weier",
-    "pending": "Hangende"
+    "pending": "Hangende",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Soek op naam",

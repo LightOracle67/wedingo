@@ -334,7 +334,9 @@
     "currentMusic": "ရွေးထားသော သီချင်း",
     "removeMusic": "ဂီတကို ဖယ်ရှားပါ။",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "ငြင်းပယ်သည်",
     "pending": "ဆိုင်းငံ့ထားသည်",
     "visits_one": "ခရီးစဉ် ၁",
-    "visits_other": "{{count}} visits"
+    "visits_other": "{{count}} visits",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "အမည်ဖြင့် ရှာဖွေမည်",

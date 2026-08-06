@@ -67,18 +67,33 @@ export default function AdminPage() {
 
   const { t, i18n } = useTranslation();
   const { inviteToken } = useParams();
+
   // ─── Estados del contexto global ───────────────────────
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
-    isAdminTokenLoggedIn, isRestoringSession, config,
+    isAdminTokenLoggedIn, isRestoringSession, config, formData,
     setupToken,
     authMessage, authMessageType,
     rsvpEntries,
     adminMessage, adminMessageType,
     handleAdminLogout, handleResetTokenFromAdmin,
     handleClearRsvpEntries, handleDeleteRsvpEntries, handleDeleteInvitation,
-    reloadConfig,
+    reloadConfig, visitCount,
   } = useApp();
+
+  // Avisa antes de salir si hay cambios sin guardar en la invitación.
+  useEffect(() => {
+    const onBeforeUnload = (e: BeforeUnloadEvent) => {
+      try {
+        if (JSON.stringify(formData) !== JSON.stringify(config)) {
+          e.preventDefault();
+          e.returnValue = "";
+        }
+      } catch { /* comparación no disponible */ }
+    };
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [formData, config]);
 
   const { addToast } = useToast();
   const location = useLocation();
@@ -213,9 +228,9 @@ export default function AdminPage() {
     exportPdf,
     formatDate: formatDate as (date: unknown) => string,
     onRestore: reloadConfig,
-    visitCount: config._visits || 0,
+    visitCount,
     exportData: config,
-  }), [inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries, setActiveTabAndFilter, setAttendanceFilterValue, exportPdf, reloadConfig, config]);
+  }), [inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries, setActiveTabAndFilter, setAttendanceFilterValue, exportPdf, reloadConfig, config, visitCount]);
 
   /** Props agrupadas para AttendanceTab. */
   const attendanceConfig = useMemo(() => ({

@@ -124,15 +124,16 @@ describe("useAutoSave", () => {
   it("does not report saved when the debounced save fails", async () => {
     const differentData = { ...sampleConfig, firstName: "Changed" };
     const onSaveMessage = vi.fn();
+    const onSaveError = vi.fn();
     mockSetDoc.mockRejectedValueOnce(new Error("net"));
     renderHook(() =>
-      useAutoSave(true, "test-token", differentData, sampleConfig, onSaveMessage, { current: false }),
+      useAutoSave(true, "test-token", differentData, sampleConfig, onSaveMessage, { current: false }, undefined, onSaveError),
     );
 
     await vi.advanceTimersByTimeAsync(1500);
 
     expect(onSaveMessage).not.toHaveBeenCalledWith("autosave.saved");
-    expect(onSaveMessage).toHaveBeenCalledWith("Error saving");
+    expect(onSaveError).toHaveBeenCalledWith("Error saving");
   });
 
   it("does not save when formData equals config", () => {
@@ -280,11 +281,11 @@ describe("useAutoSave", () => {
       expect(mockSaveConfigImage).not.toHaveBeenCalledWith("test-token", "couplePhoto", "https://example.com/photo.jpg");
     });
 
-    it("handles doSave error and calls onSaveMessage", async () => {
+    it("handles doSave error and calls onSaveError", async () => {
       mockSetDoc.mockRejectedValueOnce(new Error("Firestore error"));
-      const onSaveMessage = vi.fn();
+      const onSaveError = vi.fn();
       const { result } = renderHook(() =>
-        useAutoSave(true, "test-token", sampleConfig, sampleConfig, onSaveMessage, { current: false }),
+        useAutoSave(true, "test-token", sampleConfig, sampleConfig, vi.fn(), { current: false }, undefined, onSaveError),
       );
 
       let output: unknown;
@@ -293,7 +294,7 @@ describe("useAutoSave", () => {
       });
 
       expect(output).toBeNull();
-      expect(onSaveMessage).toHaveBeenCalledWith("Error saving");
+      expect(onSaveError).toHaveBeenCalledWith("Error saving");
     });
 
     it("deletes musicFile from payload before saving", async () => {
@@ -338,9 +339,9 @@ describe("useAutoSave", () => {
     });
 
     it("does not persist when names are empty", async () => {
-      const onSaveMessage = vi.fn();
+      const onSaveError = vi.fn();
       const { result } = renderHook(() =>
-        useAutoSave(true, "test-token", sampleConfig, sampleConfig, onSaveMessage, { current: false }),
+        useAutoSave(true, "test-token", sampleConfig, sampleConfig, vi.fn(), { current: false }, undefined, onSaveError),
       );
       const empty = { ...sampleConfig, firstName: "", secondName: "" };
 
@@ -348,14 +349,14 @@ describe("useAutoSave", () => {
         const output = await result.current.doSave(empty);
         expect(output).toBeNull();
       });
-      expect(onSaveMessage).toHaveBeenCalledWith("errors.bothNamesRequired");
+      expect(onSaveError).toHaveBeenCalledWith("errors.bothNamesRequired");
       expect(mockSetDoc).not.toHaveBeenCalled();
     });
 
     it("does not persist an invalid map URL", async () => {
-      const onSaveMessage = vi.fn();
+      const onSaveError = vi.fn();
       const { result } = renderHook(() =>
-        useAutoSave(true, "test-token", sampleConfig, sampleConfig, onSaveMessage, { current: false }),
+        useAutoSave(true, "test-token", sampleConfig, sampleConfig, vi.fn(), { current: false }, undefined, onSaveError),
       );
       const bad = { ...sampleConfig, weddingSiteURL: "https://example.com/not-a-map" };
 
@@ -363,7 +364,7 @@ describe("useAutoSave", () => {
         const output = await result.current.doSave(bad);
         expect(output).toBeNull();
       });
-      expect(onSaveMessage).toHaveBeenCalledWith("errors.mapUrlInvalid");
+      expect(onSaveError).toHaveBeenCalledWith("errors.mapUrlInvalid");
       expect(mockSetDoc).not.toHaveBeenCalled();
     });
 

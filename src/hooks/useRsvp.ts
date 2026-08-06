@@ -518,7 +518,10 @@ export function useRsvp(
     if (data.attendance !== "no") {
       const age = computeAge(data.birthDate);
       if (age !== null && age < 14 && !data.parentalConsent) { return t("rsvp.validation.ageUnder14"); }
-      const hasHealthData = data.allergies && data.allergies.length > 0;
+      // Las alergias del campo libre (allergiesOther) también son datos de
+      // salud: requieren consentimiento explícito (GDPR art. 9).
+      const hasHealthData = (data.allergies && data.allergies.length > 0)
+        || (data.allergiesOther || "").trim().length > 0;
       if (hasHealthData && !data.healthConsent) { return t("rsvp.validation.healthConsentRequired"); }
     }
 
@@ -534,7 +537,10 @@ export function useRsvp(
       companionNames: (data.companionNames || []).map(normalizeFullName),
     };
     const allergies = form.allergies || [];
-    const dietaryInfo = allergies.filter(Boolean).join(" | ");
+    // El texto libre de alergias (allergiesOther) es también dato de salud:
+    // se integra en el string cifrado para no almacenarlo en claro.
+    const other = (form.allergiesOther || "").trim();
+    const dietaryInfo = [allergies.filter(Boolean).join(" | "), other].filter(Boolean).join(" | ");
     const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
     const age = computeAge(form.birthDate);
     const single = form.guestName.trim();

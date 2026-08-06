@@ -334,7 +334,9 @@
     "currentMusic": "തിരഞ്ഞെടുത്ത സംഗീതം",
     "removeMusic": "സംഗീതം നീക്കം ചെയ്യുക",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "withCompanions": "അതെ ({{count}} കൂട്ടാളി(കൾ))",
     "confirms": "സ്ഥിരീകരിക്കുക",
     "declines": "നിരസിക്കുക",
-    "pending": "തീർപ്പാക്കാത്തത്"
+    "pending": "തീർപ്പാക്കാത്തത്",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "പേര് ഉപയോഗിച്ച് തിരയുക",

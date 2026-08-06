@@ -334,7 +334,9 @@
     "currentMusic": "Utvald musik",
     "removeMusic": "Ta bort musik",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "Tackar nej",
     "pending": "Väntande",
     "visits_one": "1 besök",
-    "visits_other": "{{count}} besök"
+    "visits_other": "{{count}} besök",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Sök efter namn",

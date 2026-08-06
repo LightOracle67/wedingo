@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.71.0",
+    date: "2026-08-06",
+    changes: [
+      "ADMIN: los errores de autosave ya no se muestran como éxito, fin del bucle de guardado por normalización, aviso al salir de /admin con cambios y visitas reales en el panel",
+      "GALERÍA/MÚSICA: updaters de estado puros (sin timers duplicados), auto-avance solo cuando la sección es visible, los chunks de audio se limpian al subir (sin corromper), reemplazo de foto sin perder la anterior",
+      "PRIVACIDAD (GDPR): las alergias del campo libre exigen consentimiento de salud (UI + reglas), se cifran junto a dietaryInfo, consentimiento de acompañantes con fecha, parentalConsent validado en el servidor",
+      "PRODUCTO: reordenar la galería desde el editor, botón 'Ver invitación' en el panel y screenshots del manifest (instalación rica)",
+      "TESTS: verificación del emulador ampliada a 29 pasos (contador, galería/audio, _visits, logout), sesión vinculada y locales sin arrays",
+    ],
+  },
+  {
     version: "2.70.0",
     date: "2026-08-06",
     changes: [

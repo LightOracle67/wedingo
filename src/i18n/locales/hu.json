@@ -334,7 +334,9 @@
     "currentMusic": "Válogatott zene",
     "removeMusic": "Zene eltávolítása",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "Elutasít",
     "pending": "Függőben",
     "visits_one": "1 látogatás",
-    "visits_other": "{{count}} látogatás"
+    "visits_other": "{{count}} látogatás",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Keresés név alapján",

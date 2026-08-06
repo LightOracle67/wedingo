@@ -68,6 +68,8 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   /** Timer del fade. */
   const fadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastAdvanceRef = useRef(Date.now());
+  /** Referencia al <section> de la galería (para pausar el auto-avance fuera de pantalla). */
+  const sectionRef = useRef<HTMLElement | null>(null);
   /** Timer del auto-avance (setInterval, pausado en pestaña oculta). */
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -89,20 +91,19 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   // ── Auto-avance del carrusel con setInterval (ahorra CPU vs rAF) ──
 
   const handleNextImage = useCallback(() => {
-    if (images.length <= 1) return;
-    setPrevIdx((prev: number | null) => {
-      setFading(true);
-      setIdx((i: number) => {
-        fadeTimerRef.current = setTimeout(() => {
-          setFading(false);
-          setPrevIdx(null);
-        }, 550);
-        return (i + 1) % images.length;
-      });
-      const curIdx = typeof prev === "number" ? prev : 0;
-      return curIdx;
-    });
-  }, [images.length]);
+    if (images.length <= 1 || fading) return;
+    // Los updaters de estado deben ser puros (React 19 los invoca 2× en
+    // StrictMode): el índice anterior se toma del estado (idx) y el timer se
+    // limpia antes de crear uno nuevo.
+    if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
+    setPrevIdx(idx);
+    setFading(true);
+    setIdx((i: number) => (i + 1) % images.length);
+    fadeTimerRef.current = setTimeout(() => {
+      setFading(false);
+      setPrevIdx(null);
+    }, 550);
+  }, [images.length, idx, fading]);
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -116,7 +117,19 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
         }
       }, 5000);
     };
-    start();
+    // Pausa el auto-avance cuando la galería no está en pantalla (la sección
+    // puede estar 3 pantallas más abajo y no debe consumir CPU ni avanzar
+    // sin que el invitado lo vea).
+    let io: IntersectionObserver | null = null;
+    if (typeof IntersectionObserver !== "undefined") {
+      io = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) start();
+        else if (intervalRef.current) clearInterval(intervalRef.current);
+      }, { threshold: 0.2 });
+      if (sectionRef.current) io.observe(sectionRef.current);
+    } else {
+      start();
+    }
     // Pausa el auto-avance cuando la pestaña está oculta (ahorra batería).
     const onVisibility = () => {
       if (document.hidden) {
@@ -128,6 +141,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
+      io?.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
     };
   }, [paused, reducedMotion, images.length, handleNextImage]);
@@ -279,7 +293,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
   // ═══════════════════════════════════════════════════════
 
   return (
-    <section data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style} role="region" aria-label={t("gallery.title")}>
+    <section ref={sectionRef} data-story-section="gallery" className={`${className} flex items-center justify-center px-3 py-6 sm:px-6 sm:py-10 lg:px-8 lg:py-12`} style={style} role="region" aria-label={t("gallery.title")}>
       <div className="story-card-wrap" style={{ width: "min(90%, 56rem)" }}>
         <CornerDecorations src={cornerDecoration} />
         <div

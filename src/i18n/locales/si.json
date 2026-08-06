@@ -334,7 +334,9 @@
     "currentMusic": "තෝරාගත් සංගීතය",
     "removeMusic": "සංගීතය ඉවත් කරන්න",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "declines": "ප්‍රතික්ෂේප කරයි",
     "pending": "විසඳුම් බලාපොරොත්තු",
     "visits_one": "1 සංචාරයක්",
-    "visits_other": "{{count}} visits"
+    "visits_other": "{{count}} visits",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "නමින් සොයන්න",

@@ -334,7 +334,9 @@
     "currentMusic": "Выбраная музыка",
     "removeMusic": "Прыбраць музыку",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "galleryMoveLeft": "Mover a la izquierda",
+    "galleryMoveRight": "Mover a la derecha"
   },
   "admin": {
     "tabs": {
@@ -390,7 +392,8 @@
     "withCompanions": "Так ({{count}} кампаньён(ы))",
     "confirms": "Пацвердзіць",
     "declines": "Заняпад",
-    "pending": "У чаканні"
+    "pending": "У чаканні",
+    "viewInvitation": "Ver invitación"
   },
   "attendance": {
     "searchLabel": "Пошук па імені",
