@@ -162,20 +162,40 @@ export default function PublicInvitation() {
     [sectionOrder, showRsvp, hiddenSet, isInviteMode, config],
   );
 
+  // ─── Estados de UI condicionales ───────────────────────
+  const [envelopeOpen, setEnvelopeOpen] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [showWelcomeVideo, setShowWelcomeVideo] = useState(false);
+  // Cierre animado del vídeo de bienvenida: la clase --closing se aplica y el
+  // componente se desmonta tras la animación de salida (evita el corte).
+  const [videoClosing, setVideoClosing] = useState(false);
+  // La invitación está "configurada" si tiene nombres. Con ?invitar y un
+  // token vacío/borrado debe mostrarse el estado no encontrado (antes caía
+  // al render completo con un hero sin nombres).
+  const isConfigured = Boolean(config.firstName || config.secondName);
+  const isEmpty = !isConfigured && !inviteToken && !isInviteMode;
+  const hasHash = location.hash.length > 1;
+
   // ─── Navegación entre secciones (hook extraído) ─────────
   /**
    * Hook que gestiona la navegación por scroll, teclado y touch
    * entre las secciones de la invitación. Controla el estado activo,
    * las transiciones animadas y los estilos CSS dinámicos.
    *
-   * Se usan alias para mantener compatibilidad con el resto del componente.
+   * `enabled` se desactiva mientras el sobre está cerrado: así el contenido
+   * queda quieto detrás del sobre y el hero hace su animación de ENTRADA en
+   * el momento en que se abre. Si la invitación se carga sin sobre (admin)
+   * el arranque es "boot": la sección visible no se anima para no parpadear
+   * al recargar.
    */
+  const showMissingToken = !isConfigured && !hasHash && (Boolean(inviteToken) || isInviteMode);
+  const showEnvelope = !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;
   const {
     activeSection: _activeStorySection,
     isTransitioning: isStoryTransitioning,
     getSectionStyle: getStorySectionStyle,
     getSectionClassName: getStorySectionClassName,
-  } = useStoryNavigation(visibleOrder);
+  } = useStoryNavigation(visibleOrder, { enabled: !showEnvelope, reducedMotion });
 
   // ─── Cuenta regresiva ──────────────────────────────────
 
@@ -429,15 +449,6 @@ export default function PublicInvitation() {
   ]);
 
   // ─── Estados de UI condicionales ───────────────────────
-  const [envelopeOpen, setEnvelopeOpen] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [showWelcomeVideo, setShowWelcomeVideo] = useState(false);
-  // La invitación está "configurada" si tiene nombres. Con ?invitar y un
-  // token vacío/borrado debe mostrarse el estado no encontrado (antes caía
-  // al render completo con un hero sin nombres).
-  const isConfigured = Boolean(config.firstName || config.secondName);
-  const isEmpty = !isConfigured && !inviteToken && !isInviteMode;
-  const hasHash = location.hash.length > 1;
 
   /**
    * Comparte la invitación: navegador nativo si está disponible, si no,
@@ -524,12 +535,17 @@ export default function PublicInvitation() {
   }
 
   /** ¿Mostrar pantalla de token no encontrado o invitación vacía? */
-  const showMissingToken = !isConfigured && !hasHash && (Boolean(inviteToken) || isInviteMode);
-
   // ═══════════════════════════════════════════════════════
   // RENDERIZADO PRINCIPAL
   // ═══════════════════════════════════════════════════════
-  const showEnvelope = !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;
+  const closeWelcomeVideo = () => {
+    if (videoClosing) return;
+    setVideoClosing(true);
+    setTimeout(() => {
+      setShowWelcomeVideo(false);
+      setVideoClosing(false);
+    }, 300);
+  };
 
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
@@ -546,12 +562,12 @@ export default function PublicInvitation() {
       {/* Confeti al abrir el sobre (decoración, sin interacción). */}
       {showConfetti ? <Confetti /> : null}
 
-      {/* Vídeo de bienvenida: se muestra sobre la invitación si hay uno y no
-          está deshabilitado desde el panel de configuración. */}
-      {envelopeOpen && showWelcomeVideo && config.welcomeVideo && config.welcomeVideoEnabled !== "false" ? (
-        <div className="welcome-video-overlay" onClick={() => setShowWelcomeVideo(false)} role="dialog" aria-modal="true" aria-label={t("welcomeVideo.title")}>
-          <div className="welcome-video-card" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setShowWelcomeVideo(false)} aria-label={t("common.close")}>&times;</button>
+      {/* Vídeo de bienvenida: entrada y salida animadas (el componente se
+          mantiene montado durante la salida para que el fade no se corte). */}
+      {envelopeOpen && (showWelcomeVideo || videoClosing) && config.welcomeVideo && config.welcomeVideoEnabled !== "false" ? (
+        <div className={`welcome-video-overlay ${videoClosing ? "welcome-video-overlay--closing" : ""}`} onClick={closeWelcomeVideo} role="dialog" aria-modal="true" aria-label={t("welcomeVideo.title")}>
+          <div className={`welcome-video-card ${videoClosing ? "welcome-video-card--closing" : ""}`} onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeWelcomeVideo} aria-label={t("common.close")}>&times;</button>
             <video className="welcome-video" src={config.welcomeVideo} controls autoPlay playsInline />
           </div>
         </div>

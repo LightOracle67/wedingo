@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.9",
+    date: "2026-08-07",
+    changes: [
+      "Animaciones de la invitación rehechas: las secciones tienen ahora ENTRADA animada al llegar por scroll (card + elementos escalonados) y SALIDA suave al abandonar el viewport, con movimiento reducido respetado. Sin parpadeo al recargar: en el primer render la sección visible no se re-anima, y el hero entra animado en el momento de abrir el sobre. El vídeo de bienvenida también tiene entrada y salida animadas.",
+    ],
+  },
+  {
     version: "2.95.8",
     date: "2026-08-06",
     changes: [

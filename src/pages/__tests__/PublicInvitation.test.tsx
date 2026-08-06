@@ -17,7 +17,8 @@ const mockUseAppValue = vi.hoisted(() => ({
     menuVegano: "", menuPostre: "", menuTexto: "",
     rsvpDeadline: "", rsvpDeadlineEnabled: "false", reactionsEnabled: "false",
     giftsListEnabled: "false", giftList: "[]", rideShareEnabled: "false",
-    welcomeVideo: "", notesEnabled: "false", musicPollEnabled: "false",
+    welcomeVideo: "", welcomeVideoEnabled: "false",
+    notesEnabled: "false", musicPollEnabled: "false",
     triviaEnabled: "false", trivia: "[]",
   },
   isConfigLoading: false, configLoadError: "",
@@ -273,15 +274,44 @@ describe("PublicInvitation", () => {
     vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
     mockUseAppValue.isAdminTokenLoggedIn = false;
     mockUseAppValue.config.welcomeVideo = "https://example.com/video.mp4";
+    mockUseAppValue.config.welcomeVideoEnabled = "true";
     render(<PublicInvitation />);
     fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
     fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
-    expect(document.querySelector(".confetti")).toBeDefined();
-    expect(document.querySelector(".welcome-video-overlay")).toBeDefined();
+    // El onOpen del sobre se dispara a los 3500ms de la secuencia de apertura.
+    act(() => { vi.advanceTimersByTime(3600); });
+    expect(document.querySelector(".confetti")).not.toBeNull();
+    expect(document.querySelector(".welcome-video-overlay")).not.toBeNull();
     act(() => { vi.advanceTimersByTime(3600); });
     vi.useRealTimers();
     mockUseAppValue.isAdminTokenLoggedIn = true;
     mockUseAppValue.config.welcomeVideo = "";
+    mockUseAppValue.config.welcomeVideoEnabled = "false";
+  });
+
+  it("animates the welcome video exit before unmounting", async () => {
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
+    mockUseAppValue.isAdminTokenLoggedIn = false;
+    mockUseAppValue.config.welcomeVideo = "https://example.com/video.mp4";
+    mockUseAppValue.config.welcomeVideoEnabled = "true";
+    render(<PublicInvitation />);
+    fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
+    fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
+    // Dispara el onOpen del sobre (setTimeout de 3500ms).
+    act(() => { vi.advanceTimersByTime(3600); });
+    const overlayEl = () => document.querySelector(".welcome-video-overlay") as HTMLElement | null;
+    expect(overlayEl()).not.toBeNull();
+    // Cierra el overlay: se aplica la clase de salida y sigue montado.
+    fireEvent.click(overlayEl()!);
+    expect(overlayEl()!.className).toContain("welcome-video-overlay--closing");
+    expect(document.querySelector(".welcome-video-card")!.className).toContain("welcome-video-card--closing");
+    // Tras la duración de la salida el overlay se desmonta.
+    act(() => { vi.advanceTimersByTime(350); });
+    expect(overlayEl()).toBeNull();
+    vi.useRealTimers();
+    mockUseAppValue.isAdminTokenLoggedIn = true;
+    mockUseAppValue.config.welcomeVideo = "";
+    mockUseAppValue.config.welcomeVideoEnabled = "false";
   });
 
   it("does not show the welcome video when it is disabled", () => {
@@ -294,7 +324,7 @@ describe("PublicInvitation", () => {
     expect(document.querySelector(".welcome-video-overlay")).toBeNull();
     mockUseAppValue.isAdminTokenLoggedIn = true;
     mockUseAppValue.config.welcomeVideo = "";
-    mockUseAppValue.config.welcomeVideoEnabled = undefined;
+    mockUseAppValue.config.welcomeVideoEnabled = "false";
   });
 
   it("handles section order without rsvp in admin mode", () => {
