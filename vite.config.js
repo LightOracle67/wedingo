@@ -95,6 +95,12 @@ export default defineConfig({
   build: {
     sourcemap: process.env.SENTRY_AUTH_TOKEN ? "hidden" : false,
     chunkSizeWarningLimit: 650,
+    // No modulepreloadar lazy-analytics en el primer hit: se arrastra por un
+    // borde en vendor-firebase y solo se ejecuta tras el consentimiento.
+    modulePreload: {
+      polyfill: true,
+      resolveDependencies: (_filename, deps) => deps.filter((d) => !d.includes("lazy-analytics")),
+    },
     rollupOptions: {
       output: {
         manualChunks(id) {

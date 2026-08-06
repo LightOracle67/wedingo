@@ -142,9 +142,9 @@ html {
   --z-admin-bar: 4;
   --z-nav-toggle: 5;
   --z-nav-overlay: 6;
-  --z-toast: 7;
+  --z-toast: 9;
   --z-music: 8;
-  --z-modal: 8;
+  --z-modal: 10;
   --z-legal-links: 9;
   --z-lang-popup: 10;
   --z-lightbox: 11;
@@ -1330,6 +1330,10 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   scroll-snap-align: start;
   flex-shrink: 0;
   width: 100%;
+  /* Fallback svh → vh → dvh: evita micro-CLS y reajustes de snap cuando la
+     barra del navegador móvil se pliega/despliega. */
+  min-height: 100svh;
+  min-height: 100vh;
   min-height: 100dvh;
   isolation: isolate;
   display: flex;
@@ -2260,9 +2264,9 @@ a:focus-visible {
   body { overflow-x: auto; }
   .story-card { padding: 0.6rem; }
   .story-card-wrap { width: 80% !important; }
-  .story-title { font-size: clamp(0.8rem, 4vw, 1.12rem) !important; }
-  .story-eyebrow { font-size: clamp(1.1rem, 5.4vw, 1.5rem) !important; }
-  .story-copy { font-size: clamp(0.8rem, 3.5vw, 0.95rem) !important; }
+  .story-title { font-size: clamp(0.95rem, 4vw, 1.12rem) !important; }
+  .story-eyebrow { font-size: clamp(1.2rem, 5.4vw, 1.5rem) !important; }
+  .story-copy { font-size: clamp(0.95rem, 3.5vw, 1rem) !important; }
   .story-section { padding: 0.5rem !important; }
   .gallery-main-container { width: 96%; padding: 0.4rem; }
   .gallery-thumb { width: 1.8rem; height: 1.8rem; }
@@ -2277,12 +2281,12 @@ a:focus-visible {
   .page-loading { min-height: 100px; }
 }
 @media (max-width: 360px) {
-  html { font-size: 12px; }
-  .envelope-wrapper { transform: scale(0.7); }
+  html { font-size: 14px; }
+  .envelope-wrapper { transform: scale(0.75); }
   .admin-stats-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 360px) {
-  html { font-size: 12px; }
+  html { font-size: 14px; }
   .admin-stats-grid { grid-template-columns: 1fr 1fr; }
 }
 

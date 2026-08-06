@@ -24,6 +24,15 @@ let analyticsPromise: Promise<Analytics | null> | null = null;
 let initStarted = false;
 
 /**
+ * Buffer en memoria de eventos anteriores al consentimiento (p. ej. los
+ * Web Vitals del primer load). Solo se reenvía al aceptar; nunca se persiste
+ * y se descarta si se rechaza. Límite para no crecer sin control.
+ */
+const PENDING_MAX = 20;
+let pendingEvents: Array<{ name: string; params?: Record<string, unknown> }> = [];
+let flushed = false;
+
+/**
  * Indica si el visitante ha aceptado la estadística de visitas.
  * Se respeta el consentimiento de cookies (RGPD/LGPD/CCPA): sin el
  * consentimiento "accepted" con analytics activado no se recogen datos.
@@ -35,12 +44,18 @@ export function hasAnalyticsConsent(): boolean {
 /**
  * Notifica que se ha concedido consentimiento de analítica para que
  * Analytics pueda inicializarse en la siguiente llamada (la primera
- * carga se produce antes de que el usuario decida).
+ * carga se produce antes de que el usuario decida). Además reenvía los
+ * eventos (Web Vitals) que se produjeron antes del consentimiento.
  */
 export function grantAnalyticsConsent() {
   if (!hasAnalyticsConsent()) return;
   initStarted = false;
   analyticsPromise = null;
+  if (flushed) return;
+  flushed = true;
+  const queued = pendingEvents;
+  pendingEvents = [];
+  queued.forEach(({ name, params }) => trackEvent(name, params));
 }
 
 /**
@@ -78,7 +93,14 @@ function getAnalyticsInstance(): Promise<Analytics | null> {
  * @param params - Parámetros adicionales del evento.
  */
 export function trackEvent(eventName: string, params?: Record<string, unknown>) {
-  if (!hasAnalyticsConsent()) return;
+  if (!hasAnalyticsConsent()) {
+    // Antes del consentimiento solo se bufferizan los Web Vitals (primera
+    // carga); los eventos interactivos ocurren tras aceptar.
+    if (!flushed && eventName === "web_vital" && pendingEvents.length < PENDING_MAX) {
+      pendingEvents.push(params ? { name: eventName, params } : { name: eventName });
+    }
+    return;
+  }
   getAnalyticsInstance()
     .then(async (analytics) => {
       if (!analytics) return;

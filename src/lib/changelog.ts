@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.68.0",
+    date: "2026-08-06",
+    changes: [
+      "BUGFIX: las metas sociales se limpian correctamente al salir de la invitación; las imágenes subidas no se pierden aunque el autosave valide; la galería muestra todas las fotos (sin cap de 10); emuladores sin romperse por functions",
+      "RENDIMIENTO: lazy-analytics fuera del preload inicial (~15KB); los Web Vitals previos al consentimiento se reenvían al aceptar (sin guardar nada antes); luciérnagas sin repaint de box-shadow; preload de las fuentes del hero",
+      "MÓVIL/CLS: scroll de la galería recuperado (touch-action), sobre sin nombres cortados, countdown sin CLS (inicialización síncrona), targets de toque ≥44px, toasts que no desbordan, tipografía legible y snap más suave en iOS",
+      "PRODUCTO: el export del superadmin (todas/seleccionadas) incluye la galería y el audio",
+    ],
+  },
+  {
     version: "2.67.0",
     date: "2026-08-06",
     changes: [

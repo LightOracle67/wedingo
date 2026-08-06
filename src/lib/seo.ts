@@ -24,16 +24,17 @@ const META_MARKER = "data-wedingo-seo";
 
 /**
  * Crea (o actualiza) una meta tag en <head> con el atributo indicado.
- * Marca la tag con data-wedingo-seo para poder limpiarla después.
+ * Marca la tag con data-wedingo-seo (también al reutilizar una existente de
+ * index.html) para que clearSocialMeta la limpie al desmontar.
  */
 function upsertMeta(attr: "property" | "name", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
   if (!el) {
     el = document.createElement("meta");
     el.setAttribute(attr, key);
-    el.setAttribute(META_MARKER, "true");
     document.head.appendChild(el);
   }
+  el.setAttribute(META_MARKER, "true");
   el.setAttribute("content", content);
 }
 
@@ -45,9 +46,9 @@ function upsertCanonical(href: string) {
   if (!link) {
     link = document.createElement("link");
     link.setAttribute("rel", "canonical");
-    link.setAttribute(META_MARKER, "true");
     document.head.appendChild(link);
   }
+  link.setAttribute(META_MARKER, "true");
   link.setAttribute("href", href);
 }
 

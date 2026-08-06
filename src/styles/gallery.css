@@ -111,7 +111,7 @@
 }
 
 .gallery-counter {
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   color: color-mix(in srgb, var(--invite-copy-color, #e0d4bc) 60%, transparent);
   margin: 0;
   text-align: center;
@@ -229,9 +229,10 @@
     gap: var(--spacing-sm);
   }
   .gallery-nav {
-    width: 1.8rem;
-    height: 1.8rem;
-    font-size: 1rem;
+    /* Targets de toque >= 44px (WCAG 2.5.5). */
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1.2rem;
   }
   .gallery-nav--prev { left: 0.25rem; }
   .gallery-nav--next { right: 0.25rem; }
@@ -240,9 +241,9 @@
     height: 2.2rem;
   }
   .gallery-lightbox__nav {
-    width: 2.2rem;
-    height: 2.2rem;
-    font-size: 1.2rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 1.3rem;
   }
   .gallery-lightbox__nav--prev { left: 0.75rem; }
   .gallery-lightbox__nav--next { right: 0.75rem; }

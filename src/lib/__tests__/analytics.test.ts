@@ -165,4 +165,40 @@ describe("analytics", () => {
 
     vi.unstubAllEnvs();
   });
+
+  it("buffers web_vital events before consent and flushes them after", async () => {
+    mockIsSupported.mockResolvedValue(true);
+    vi.resetModules();
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_FIREBASE_MEASUREMENT_ID", "G-XXXXXXXX");
+
+    const { trackEvent, grantAnalyticsConsent } = await import("../analytics");
+    // Sin consentimiento: el evento de métrica se bufferiza (no se descarta).
+    trackEvent("web_vital", { metric_name: "LCP" });
+    await vi.waitFor(() => expect(mockLogEvent).not.toHaveBeenCalled());
+
+    // Al aceptar, el evento bufferizado se reenvía.
+    grantConsent();
+    grantAnalyticsConsent();
+    await vi.waitFor(() => {
+      expect(mockLogEvent).toHaveBeenCalledWith(expect.any(Object), "web_vital", { metric_name: "LCP" });
+    });
+
+    vi.unstubAllEnvs();
+  });
+
+  it("does not buffer interactive events before consent", async () => {
+    vi.resetModules();
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_FIREBASE_MEASUREMENT_ID", "G-XXXXXXXX");
+
+    const { trackEvent, grantAnalyticsConsent } = await import("../analytics");
+    trackEvent("rsvp_submit", { attendance: "yes" });
+    // El evento interactivo no se bufferiza.
+    grantConsent();
+    grantAnalyticsConsent();
+    await vi.waitFor(() => expect(mockLogEvent).not.toHaveBeenCalled());
+
+    vi.unstubAllEnvs();
+  });
 });

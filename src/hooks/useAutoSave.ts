@@ -25,6 +25,20 @@ export function useAutoSave(
     autoSavingRef.current = true;
     if (isSavingRef) isSavingRef.current = true;
     try {
+      // Primero se migran las imágenes data-URL a configImages: así una foto
+      // recién subida no se pierde aunque la validación de nombres falle.
+      const payload = normalizeConfig(data);
+      const { saveConfigImage } = await import("../lib/image-store");
+      const originalImages: Record<string, string> = {};
+      const imagePayload = payload as Record<string, string | undefined>;
+      for (const imageId of ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"] as const) {
+        const val = imagePayload[imageId];
+        if (typeof val === "string" && val.startsWith("data:")) {
+          originalImages[imageId] = val;
+          imagePayload[imageId] = await saveConfigImage(inviteToken, imageId, val);
+        }
+      }
+
       // El autosave NO debe persistir configuraciones que rompan la
       // invitación pública: nombres vacíos (hero vacío) o una URL de mapa
       // inválida (mapa muerto). El resto se valida en el guardado manual.
@@ -36,21 +50,7 @@ export function useAutoSave(
         if (onSaveMessage) onSaveMessage(t("errors.mapUrlInvalid"));
         return null;
       }
-      const payload = normalizeConfig(data);
-      // Migra las imágenes data-URL a la subcolección configImages (refs
-      // __cfgimg:) como hace el guardado manual. Guardarlas inline infla el
-      // documento hasta el límite de 1MB y rompe couplePhoto (blob cifrado
-      // legacy que el <img> no puede renderizar).
-      const { saveConfigImage } = await import("../lib/image-store");
-      const originalImages: Record<string, string> = {};
-      const imagePayload = payload as Record<string, string | undefined>;
-      for (const imageId of ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"] as const) {
-        const val = imagePayload[imageId];
-        if (typeof val === "string" && val.startsWith("data:")) {
-          originalImages[imageId] = val;
-          imagePayload[imageId] = await saveConfigImage(inviteToken, imageId, val);
-        }
-      }
+
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
       delete (payload as Record<string, unknown>).musicFile;
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });

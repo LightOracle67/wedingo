@@ -43,7 +43,9 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
     (async () => {
       const { loadGallery } = await import("../../lib/image-store");
       const result = await loadGallery(inviteToken);
-      if (!cancelled) { setImages(result.slice(0, 10)); setLoading(false); }
+      // Todas las fotos subidas por el admin: loadGallery ya descifra todo,
+      // así que recortar aquí solo ocultaba fotos sin ahorrar trabajo.
+      if (!cancelled) { setImages(result); setLoading(false); }
     })();
     return () => { cancelled = true; };
   }, [inviteToken]);
@@ -282,7 +284,7 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
           onFocus={pause}
           onBlur={resume}
           onKeyDown={handleOuterKeyDown}
-          style={{ maxWidth: "min(100%, 56rem)", touchAction: "none" }}
+          style={{ maxWidth: "min(100%, 56rem)" }}
         >
           <p className="story-eyebrow">{t("gallery.sectionLabel")}</p>
         <h2 className="story-title">{t("gallery.title")}</h2>

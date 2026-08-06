@@ -105,5 +105,10 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "emulators": {
+    "functions": {
+      "disabled": true
+    }
   }
 }

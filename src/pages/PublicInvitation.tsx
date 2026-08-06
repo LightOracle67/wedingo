@@ -16,7 +16,7 @@
  * @module PublicInvitation
  */
 
-import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
@@ -26,7 +26,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { parseSectionOrder, sectionHasContent } from "../lib/section-utils";
-import { SITE_URL, applySocialMeta, clearSocialMeta } from "../lib/seo";
+import { SITE_URL, applySocialMeta, resetSocialMeta } from "../lib/seo";
 import { trackEvent } from "../lib/analytics";
 
 // ─── Assets ──────────────────────────────────────────────
@@ -153,7 +153,6 @@ export default function PublicInvitation() {
   } = useStoryNavigation(visibleOrder);
 
   // ─── Cuenta regresiva ──────────────────────────────────
-  const [countdown, setCountdown] = useState<{ years?: number; months?: number; days: number; hours: number; minutes: number; seconds: number; expired: boolean } | null>(null);
 
   /**
    * Construye el objeto Date de la boda a partir de los campos de configuración.
@@ -169,38 +168,44 @@ export default function PublicInvitation() {
     return new Date(year, month - 1, day, hour, minute);
   }, [config]);
 
+  /** Estado de la cuenta atrás (años/meses/días + horas/min/seg). */
+  const computeCountdown = useCallback((target: Date, now: Date): { years?: number; months?: number; days: number; hours: number; minutes: number; seconds: number; expired: boolean } => {
+    if (target.getTime() <= now.getTime()) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
+    }
+    let years = target.getFullYear() - now.getFullYear();
+    let months = target.getMonth() - now.getMonth();
+    let days = target.getDate() - now.getDate();
+    if (days < 0) {
+      months -= 1;
+      days += new Date(target.getFullYear(), target.getMonth(), 0).getDate();
+    }
+    if (months < 0) {
+      years -= 1;
+      months += 12;
+    }
+    const diffMs = Math.max(0, target.getTime() - now.getTime());
+    const hours = Math.floor(diffMs / 3_600_000) % 24;
+    const minutes = Math.floor(diffMs / 60_000) % 60;
+    const seconds = Math.floor(diffMs / 1000) % 60;
+    return { years, months, days, hours, minutes, seconds, expired: false };
+  }, []);
+
+  // Inicialización síncrona: el countdown se pinta en el primer render (evita
+  // el CLS de que el bloque del hero aparezca tras el mount).
+  const [countdown, setCountdown] = useState<ReturnType<typeof computeCountdown> | null>(
+    () => (weddingDate ? computeCountdown(weddingDate, new Date()) : null),
+  );
+
   /**
-   * Actualiza la cuenta regresiva cada segundo, descomponiendo la diferencia
-   * de forma calendárica. Se pausa al ocultar la pestaña, se detiene al
-   * expirar y no itera si el usuario prefiere menos movimiento.
+   * Actualiza la cuenta regresiva cada segundo. Se pausa al ocultar la
+   * pestaña, se detiene al expirar y no itera con menos movimiento.
    */
   useEffect(() => {
     if (!weddingDate) return;
     let id: ReturnType<typeof setInterval> | null = null;
     const tick = () => {
-      const now = new Date();
-      if (weddingDate.getTime() <= now.getTime()) {
-        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0, expired: true });
-        if (id) clearInterval(id);
-        return;
-      }
-      let years = weddingDate.getFullYear() - now.getFullYear();
-      let months = weddingDate.getMonth() - now.getMonth();
-      let days = weddingDate.getDate() - now.getDate();
-      if (days < 0) {
-        months -= 1;
-        days += new Date(weddingDate.getFullYear(), weddingDate.getMonth(), 0).getDate();
-      }
-      if (months < 0) {
-        years -= 1;
-        months += 12;
-      }
-      // Horas/minutos/segundos restantes del día (para la cuenta atrás fina).
-      const diffMs = Math.max(0, weddingDate.getTime() - now.getTime());
-      const hours = Math.floor(diffMs / 3_600_000) % 24;
-      const minutes = Math.floor(diffMs / 60_000) % 60;
-      const seconds = Math.floor(diffMs / 1000) % 60;
-      setCountdown({ years, months, days, hours, minutes, seconds, expired: false });
+      setCountdown(computeCountdown(weddingDate, new Date()));
     };
     tick();
     if (reducedMotion) return;
@@ -214,7 +219,7 @@ export default function PublicInvitation() {
       if (id) clearInterval(id);
       document.removeEventListener("visibilitychange", onVisibility);
     };
-  }, [weddingDate, reducedMotion]);
+  }, [weddingDate, reducedMotion, computeCountdown]);
 
   // ─── Schema.org JSON-LD ─────────────────────────────
   useEffect(() => {
@@ -251,7 +256,7 @@ export default function PublicInvitation() {
       image: config.couplePhoto,
       locale: i18n?.language,
     });
-    return () => clearSocialMeta();
+    return () => resetSocialMeta();
   }, [config.firstName, config.secondName, config.inviteMessage, config.couplePhoto, inviteToken, i18n]);
 
   // ─── Datos de ubicación derivados ──────────────────────

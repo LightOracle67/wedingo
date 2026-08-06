@@ -149,13 +149,17 @@ export default function DataTab() {
     try {
       const result = [];
       for (const token of selected) {
-        const [invDoc, rsvpSnap] = await Promise.all([
+        const [invDoc, rsvpSnap, gallerySnap, audioSnap] = await Promise.all([
           getDoc(doc(db, "invitations", token)),
           getDocs(rsvpByInviteRef(token)),
+          getDocs(collection(db, "invitations", token, "gallery")),
+          getDocs(collection(db, "invitations", token, "audio")),
         ]);
         result.push({
           invitation: { id: token, ...(invDoc.exists() ? invDoc.data() : {}) },
           rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+          gallery: gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+          audio: audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
         });
       }
       downloadJson("wedingo_export.json", result);
@@ -167,7 +171,22 @@ export default function DataTab() {
     }
   }, [selected, addToast, t]);
 
-  /** Exporta TODAS las invitaciones con sus datos. */
+  /**
+   * Lee la galería y el audio de una invitación (para exportar el backup
+   * completo con las fotos y la música).
+   */
+  const loadMediaForToken = useCallback(async (token: string) => {
+    const [gallerySnap, audioSnap] = await Promise.all([
+      getDocs(collection(db, "invitations", token, "gallery")),
+      getDocs(collection(db, "invitations", token, "audio")),
+    ]);
+    return {
+      gallery: gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+      audio: audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+    };
+  }, []);
+
+  /** Exporta TODAS las invitaciones con sus datos (incluida galería/audio). */
   const exportAll = useCallback(async () => {
     setBusy(true);
     try {
@@ -175,10 +194,21 @@ export default function DataTab() {
         getDocs(INVITATIONS_COLLECTION_REF),
         getDocs(RSVP_RESPONSES_GROUP),
       ]);
+      // Lee la galería/audio de cada invitación con concurrencia limitada
+      // (lotes de 5) para no disparar un N+1 masivo en instalaciones grandes.
+      const mediaByToken: Record<string, { gallery: unknown[]; audio: unknown[] }> = {};
+      const tokens = invSnap.docs.map((d) => d.id);
+      for (let i = 0; i < tokens.length; i += 5) {
+        const batch = tokens.slice(i, i + 5).map(async (token) => {
+          mediaByToken[token] = await loadMediaForToken(token);
+        });
+        await Promise.all(batch);
+      }
       const data = {
         exportedAt: new Date().toISOString(),
         invitations: invSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
         rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+        galleryByToken: mediaByToken,
       };
       downloadJson("wedingo_full_export.json", data);
       addToast("success", t("superadmin.data.exportedAll", { count: invSnap.size }));
@@ -187,7 +217,7 @@ export default function DataTab() {
     } finally {
       setBusy(false);
     }
-  }, [addToast, t]);
+  }, [addToast, t, loadMediaForToken]);
 
   // ── Delete ────────────────────────────────────────────
 

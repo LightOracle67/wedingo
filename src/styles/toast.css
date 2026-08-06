@@ -7,7 +7,8 @@
   flex-direction: column;
   gap: var(--spacing-sm);
   pointer-events: none;
-  max-width: 28rem;
+  /* Límite relativo al viewport: en pantallas muy pequeñas no desborda. */
+  max-width: min(28rem, calc(100vw - 2rem));
 }
 .toast {
   pointer-events: auto;

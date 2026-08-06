@@ -378,11 +378,16 @@
   letter-spacing: 0.02em;
 }
 .envelope__address-line--bold {
-  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  /* Con el scale del sobre en móvil, clamp(1.6rem, 5vw, 2.2rem) desbordaba
+     los nombres y se cortaban por overflow:hidden; se baja el mínimo. */
+  font-size: clamp(1.25rem, 4.5vw, 2.2rem);
   font-weight: 400;
   color: var(--color-dark-brown);
   border-bottom: 1px solid color-mix(in srgb, var(--invite-core-color, #c8a84e) 30%, transparent);
   padding-bottom: 3px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 .envelope__panel--front .envelope__address::before,
 .envelope__panel--front .envelope__address::after {

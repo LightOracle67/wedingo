@@ -17,6 +17,29 @@
   animation: firefly-drift 35s ease-in-out infinite;
 }
 
+/* Glow por ::after con radial-gradient: se anima solo opacity/scale (no
+   box-shadow), evitando el repaint por frame en las 20 luciérnagas. */
+.firefly::after {
+  content: "";
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--flower-accent, #d8b24a) 0%, transparent 70%);
+  filter: blur(1px);
+  opacity: 0;
+  pointer-events: none;
+  animation: firefly-glow 35s ease-in-out infinite;
+}
+
+@keyframes firefly-glow {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  12% { opacity: 0.7; transform: scale(1); }
+  35% { opacity: 0.25; transform: scale(0.85); }
+  55% { opacity: 0.6; transform: scale(1.05); }
+  75% { opacity: 0.2; transform: scale(0.8); }
+  90% { opacity: 0.5; transform: scale(0.95); }
+}
+
 /* 4 trayectorias · 4 variantes de color */
 .firefly:nth-child(4n+1) { animation-name: firefly-drift-1; }
 .firefly:nth-child(4n+2) { animation-name: firefly-drift-2; }
@@ -32,159 +55,49 @@
 
 /* ── Trayectoria 1: amplia, lenta, brillo intenso intermitente ── */
 @keyframes firefly-drift-1 {
-  0%, 100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 0;
-    box-shadow: none;
-  }
-  10% {
-    opacity: 0.9;
-    box-shadow: 0 0 12px 4px var(--flower-accent, #d8b24a), 0 0 28px 9px var(--flower-accent-dim, rgba(216,178,74,0.5));
-  }
-  20% {
-    transform: translate3d(20vw, -15vh, 0);
-    opacity: 0.4;
-    box-shadow: 0 0 6px 2px var(--flower-accent, #d8b24a);
-  }
-  35% {
-    opacity: 0.2;
-  }
-  45% {
-    transform: translate3d(-12vw, 12vh, 0);
-    opacity: 0.8;
-    box-shadow: 0 0 12px 4px var(--flower-accent, #d8b24a), 0 0 28px 9px var(--flower-accent-dim, rgba(216,178,74,0.5));
-  }
-  60% {
-    opacity: 0.1;
-    box-shadow: none;
-  }
-  75% {
-    transform: translate3d(14vw, 6vh, 0);
-    opacity: 0.6;
-    box-shadow: 0 0 8px 3px var(--flower-accent, #d8b24a);
-  }
-  90% {
-    opacity: 0.3;
-  }
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0; }
+  10% { opacity: 0.9; }
+  20% { transform: translate3d(20vw, -15vh, 0); opacity: 0.4; }
+  35% { opacity: 0.2; }
+  45% { transform: translate3d(-12vw, 12vh, 0); opacity: 0.8; }
+  60% { opacity: 0.1; }
+  75% { transform: translate3d(14vw, 6vh, 0); opacity: 0.6; }
+  90% { opacity: 0.3; }
 }
 
 /* ── Trayectoria 2: corta, rápida, brillo suave continuo ── */
 @keyframes firefly-drift-2 {
-  0%, 100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 0;
-    box-shadow: none;
-  }
-  12% {
-    opacity: 0.6;
-    box-shadow: 0 0 9px 3px var(--flower-accent-dim, rgba(216,178,74,0.5));
-  }
-  25% {
-    transform: translate3d(8vw, -6vh, 0);
-    opacity: 0.4;
-  }
-  38% {
-    opacity: 0.7;
-    box-shadow: 0 0 9px 3px var(--flower-accent, #d8b24a);
-  }
-  50% {
-    transform: translate3d(-5vw, 8vh, 0);
-    opacity: 0.3;
-    box-shadow: 0 0 6px 2px var(--flower-accent-dim, rgba(216,178,74,0.5));
-  }
-  62% {
-    opacity: 0.5;
-  }
-  75% {
-    transform: translate3d(6vw, -4vh, 0);
-    opacity: 0.6;
-    box-shadow: 0 0 9px 3px var(--flower-accent, #d8b24a);
-  }
-  88% {
-    opacity: 0.2;
-    box-shadow: none;
-  }
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0; }
+  12% { opacity: 0.6; }
+  25% { transform: translate3d(8vw, -6vh, 0); opacity: 0.4; }
+  38% { opacity: 0.7; }
+  50% { transform: translate3d(-5vw, 8vh, 0); opacity: 0.3; }
+  62% { opacity: 0.5; }
+  75% { transform: translate3d(6vw, -4vh, 0); opacity: 0.6; }
+  88% { opacity: 0.2; }
 }
 
 /* ── Trayectoria 3: zigzag, brillo pulsante ── */
 @keyframes firefly-drift-3 {
-  0%, 100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 0;
-    box-shadow: none;
-  }
-  8% {
-    opacity: 0.8;
-    box-shadow: 0 0 14px 5px var(--flower-accent, #d8b24a), 0 0 32px 10px var(--flower-accent-dim, rgba(216,178,74,0.5));
-  }
-  18% {
-    transform: translate3d(12vw, -18vh, 0);
-    opacity: 0.3;
-    box-shadow: 0 0 6px 2px var(--flower-accent-dim, rgba(216,178,74,0.5));
-  }
-  28% {
-    opacity: 0.9;
-    box-shadow: 0 0 14px 5px var(--flower-accent, #d8b24a);
-  }
-  40% {
-    transform: translate3d(-15vw, 5vh, 0);
-    opacity: 0.2;
-    box-shadow: none;
-  }
-  55% {
-    opacity: 0.7;
-    box-shadow: 0 0 12px 4px var(--flower-accent, #d8b24a), 0 0 26px 8px var(--flower-accent-dim);
-  }
-  65% {
-    transform: translate3d(8vw, -10vh, 0);
-    opacity: 0.4;
-    box-shadow: 0 0 6px 2px var(--flower-accent-dim);
-  }
-  80% {
-    opacity: 0.1;
-    box-shadow: none;
-  }
-  92% {
-    opacity: 0.5;
-    box-shadow: 0 0 8px 3px var(--flower-accent, #d8b24a);
-  }
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0; }
+  8% { opacity: 0.8; }
+  18% { transform: translate3d(12vw, -18vh, 0); opacity: 0.3; }
+  28% { opacity: 0.9; }
+  40% { transform: translate3d(-15vw, 5vh, 0); opacity: 0.2; }
+  55% { opacity: 0.7; }
+  65% { transform: translate3d(8vw, -10vh, 0); opacity: 0.4; }
+  80% { opacity: 0.1; }
+  92% { opacity: 0.5; }
 }
 
 /* ── Trayectoria 4: errática, brillo bajo y tenue ── */
 @keyframes firefly-drift-4 {
-  0%, 100% {
-    transform: translate3d(0, 0, 0);
-    opacity: 0;
-    box-shadow: none;
-  }
-  14% {
-    opacity: 0.5;
-    box-shadow: 0 0 8px 3px var(--flower-accent-dim, rgba(216,178,74,0.5));
-  }
-  28% {
-    transform: translate3d(-6vw, 14vh, 0);
-    opacity: 0.3;
-  }
-  42% {
-    opacity: 0.6;
-    box-shadow: 0 0 8px 3px var(--flower-accent, #d8b24a);
-  }
-  56% {
-    transform: translate3d(18vw, -8vh, 0);
-    opacity: 0.2;
-    box-shadow: none;
-  }
-  70% {
-    opacity: 0.4;
-    box-shadow: 0 0 6px 2px var(--flower-accent-dim, rgba(216,178,74,0.5));
-  }
-  84% {
-    transform: translate3d(-10vw, -3vh, 0);
-    opacity: 0.5;
-    box-shadow: 0 0 8px 3px var(--flower-accent, #d8b24a);
-  }
-  95% {
-    opacity: 0.1;
-    box-shadow: none;
-  }
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0; }
+  14% { opacity: 0.5; }
+  28% { transform: translate3d(-6vw, 14vh, 0); opacity: 0.3; }
+  42% { opacity: 0.6; }
+  56% { transform: translate3d(18vw, -8vh, 0); opacity: 0.2; }
+  70% { opacity: 0.4; }
+  84% { transform: translate3d(-10vw, -3vh, 0); opacity: 0.5; }
+  95% { opacity: 0.1; }
 }
