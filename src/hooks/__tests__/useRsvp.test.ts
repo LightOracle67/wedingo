@@ -9,6 +9,7 @@ const mockDoc = vi.hoisted(() => vi.fn((_col?: unknown, id?: string) =>
 ));
 const mockWriteBatch = vi.hoisted(() => vi.fn(() => ({
   set: vi.fn(),
+  update: vi.fn(),
   delete: vi.fn(),
   commit: vi.fn(() => Promise.resolve()),
 })));
@@ -27,6 +28,8 @@ vi.mock("firebase/firestore", () => ({
   serverTimestamp: vi.fn(() => ({ seconds: 1234567890, nanoseconds: 0 })),
   getDoc: mockGetDoc,
   setDoc: mockSetDoc,
+  increment: vi.fn((n: number) => n),
+  updateDoc: vi.fn(() => Promise.resolve()),
 }));
 
 vi.mock("../../lib/analytics", () => ({
@@ -98,6 +101,7 @@ describe("useRsvp", () => {
     );
     mockWriteBatch.mockReturnValue({
       set: vi.fn(),
+      update: vi.fn(),
       delete: vi.fn(),
       commit: vi.fn(() => Promise.resolve()),
     });
@@ -109,7 +113,7 @@ describe("useRsvp", () => {
   });
 
   it("initializes with default form state", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     expect(result.current.rsvpForm.guestName).toBe("");
     expect(result.current.rsvpForm.attendance).toBe("alone");
     expect(result.current.rsvpForm.companionCount).toBe(0);
@@ -124,20 +128,20 @@ describe("useRsvp", () => {
   });
 
   it("updates a form field via updateRsvpField", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("guestName", "Adrián"));
     expect(result.current.rsvpForm.guestName).toBe("Adrián");
   });
 
   it("sets companionCount and resizes companionNames", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 3));
     expect(result.current.rsvpForm.companionCount).toBe(3);
     expect(result.current.rsvpForm.companionNames).toHaveLength(3);
   });
 
   it("sets individual companion name via companionNames[N]", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 2));
     act(() => result.current.updateRsvpField("companionNames[0]", "Alice María Smith"));
     act(() => result.current.updateRsvpField("companionNames[1]", "Bob Carlos Jones"));
@@ -145,7 +149,7 @@ describe("useRsvp", () => {
   });
 
   it("trims companionNames when companionCount decreases", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 3));
     act(() => result.current.updateRsvpField("companionNames[0]", "Alice María Smith"));
     act(() => result.current.updateRsvpField("companionNames[1]", "Bob Carlos Jones"));
@@ -155,7 +159,7 @@ describe("useRsvp", () => {
   });
 
   it("clamps companionCount between 0 and 10", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 15));
     expect(result.current.rsvpForm.companionCount).toBe(10);
     act(() => result.current.updateRsvpField("companionCount", -1));
@@ -163,7 +167,7 @@ describe("useRsvp", () => {
   });
 
   it("resets companionCount to 0 when attendance is set to alone", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 3));
     act(() => result.current.updateRsvpField("attendance", "alone"));
     expect(result.current.rsvpForm.attendance).toBe("alone");
@@ -171,7 +175,7 @@ describe("useRsvp", () => {
   });
 
   it("resets companionCount to 0 when attendance is set to no", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 3));
     act(() => result.current.updateRsvpField("attendance", "no"));
     expect(result.current.rsvpForm.attendance).toBe("no");
@@ -180,7 +184,7 @@ describe("useRsvp", () => {
   });
 
   it("sets companionCount to 1 when switching from no/alone to with", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("attendance", "no"));
     act(() => result.current.updateRsvpField("attendance", "with"));
     expect(result.current.rsvpForm.attendance).toBe("with");
@@ -188,27 +192,27 @@ describe("useRsvp", () => {
   });
 
   it("preserves companionCount when switching from with to with", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 3));
     act(() => result.current.updateRsvpField("attendance", "with"));
     expect(result.current.rsvpForm.companionCount).toBe(3);
   });
 
   it("clears guestName prefill ref when guestName field is updated", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
     act(() => result.current.updateRsvpField("guestName", "Bob Carlos Jones"));
     expect(result.current.rsvpForm.guestName).toBe("Bob Carlos Jones");
   });
 
   it("updates allergies via updateRsvpField", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("allergies", ["sin gluten"]));
     expect(result.current.rsvpForm.allergies).toEqual(["sin gluten"]);
   });
 
   it("resizes companionMenus and companionAllergies when companionCount changes", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 3));
     expect(result.current.rsvpForm.companionMenus).toHaveLength(3);
     expect(result.current.rsvpForm.companionAllergies).toHaveLength(3);
@@ -217,7 +221,7 @@ describe("useRsvp", () => {
   });
 
   it("handles companionMenuss[N] field updates", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 2));
     act(() => result.current.updateRsvpField("companionMenus[0]", "carne"));
     act(() => result.current.updateRsvpField("companionMenus[1]", "pescado"));
@@ -225,7 +229,7 @@ describe("useRsvp", () => {
   });
 
   it("handles companionAllergies[N] field updates", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 2));
     act(() => result.current.updateRsvpField("companionAllergies[0]", ["sin gluten"]));
     act(() => result.current.updateRsvpField("companionAllergies[1]", ["sin lactosa", "alergia a frutos secos"]));
@@ -234,7 +238,7 @@ describe("useRsvp", () => {
   });
 
   it("trims companionMenus and companionAllergies when companionCount decreases", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 3));
     act(() => result.current.updateRsvpField("companionMenus[0]", "carne"));
     act(() => result.current.updateRsvpField("companionMenus[1]", "pescado"));
@@ -246,7 +250,7 @@ describe("useRsvp", () => {
   });
 
   it("submits companionMenus and companionAllergies with payload", async () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
     act(() => result.current.updateRsvpField("attendance", "with"));
     act(() => result.current.updateRsvpField("companionCount", 2));
@@ -291,14 +295,14 @@ describe("useRsvp", () => {
   });
 
   it("updates menuSelection via updateRsvpField", () => {
-    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("menuSelection", "carne"));
     expect(result.current.rsvpForm.menuSelection).toBe("carne");
   });
 
   describe("validation", () => {
     it("returns error when guestName is empty on submit", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await act(async () => {
         result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
       });
@@ -306,7 +310,7 @@ describe("useRsvp", () => {
     });
 
     it("returns error when guestName is not a full name", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Ana"));
       act(() => result.current.updateRsvpField("attendance", "alone"));
       act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
@@ -318,7 +322,7 @@ describe("useRsvp", () => {
     });
 
     it("returns error when a companion name is not a full name", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "with"));
       act(() => result.current.updateRsvpField("companionCount", 1));
@@ -342,7 +346,7 @@ describe("useRsvp", () => {
 
   describe("handleRsvpSubmit", () => {
     it("calls preventDefault on the event", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       const preventDefault = vi.fn();
       setupForm(result);
       await act(async () => {
@@ -352,7 +356,7 @@ describe("useRsvp", () => {
     });
 
     it("ignores a submit while already submitting", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       setupForm(result);
       const first = result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
       result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as any);
@@ -363,7 +367,7 @@ describe("useRsvp", () => {
     });
 
     it("submits valid RSVP data successfully", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       setupForm(result);
       act(() => result.current.updateRsvpField("healthConsent", true));
 
@@ -381,7 +385,7 @@ describe("useRsvp", () => {
     });
 
     it("encrypts allergiesOther together with dietaryInfo", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       setupForm(result);
       act(() => result.current.updateRsvpField("healthConsent", true));
       // La alergia del campo libre debe cifrarse dentro de dietaryInfo.
@@ -398,7 +402,7 @@ describe("useRsvp", () => {
 
     it("creates the rsvp counter when it does not exist", async () => {
       mockGetDoc.mockResolvedValueOnce({ exists: () => false } as never);
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       setupForm(result);
 
       await act(async () => {
@@ -411,7 +415,7 @@ describe("useRsvp", () => {
     });
 
     it("submits with companion data when attending with companions", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "with"));
       act(() => result.current.updateRsvpField("companionCount", 2));
@@ -436,8 +440,8 @@ describe("useRsvp", () => {
       expect(mainPayload.companionCount).toBe(2);
       expect(mainPayload.companionNames).toEqual(["Bob Carlos Jones", "Charlie Brown Smith"]);
       expect(mainPayload.rsvpType).toBe("main");
-      // 1 main + 2 companions + 1 counter increment = 4 set calls
-      expect(batch.set).toHaveBeenCalledTimes(4);
+      // 1 main + 2 companions = 3 set calls (el contador usa increment/update).
+      expect(batch.set).toHaveBeenCalledTimes(3);
     });
 
     it("submits with menuSelection when provided", async () => {
@@ -475,13 +479,14 @@ describe("useRsvp", () => {
     });
 
     it("handles submission error gracefully", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       setupForm(result);
       act(() => result.current.updateRsvpField("healthConsent", true));
 
       // Make batch.commit reject
       mockWriteBatch.mockReturnValueOnce({
         set: vi.fn(),
+        update: vi.fn(),
         delete: vi.fn(),
         commit: vi.fn(() => Promise.reject(new Error("Firestore error"))),
       });
@@ -496,7 +501,7 @@ describe("useRsvp", () => {
     });
 
     it("returns error for missing privacy consent", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "alone"));
       act(() => result.current.updateRsvpField("birthDate", "2000-01-01"));
@@ -509,7 +514,7 @@ describe("useRsvp", () => {
     });
 
     it("returns error for missing birthDate", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
 
       await act(async () => {
@@ -520,7 +525,7 @@ describe("useRsvp", () => {
     });
 
     it("returns error for companion with empty name", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "with"));
       act(() => result.current.updateRsvpField("companionCount", 1));
@@ -536,7 +541,7 @@ describe("useRsvp", () => {
 
     it("returns error for age under 14 without parentalConsent", async () => {
       mockComputeAge.mockReturnValue(12);
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "alone"));
       act(() => result.current.updateRsvpField("birthDate", "2012-01-01"));
@@ -550,7 +555,7 @@ describe("useRsvp", () => {
     });
 
     it("returns error for healthConsent when allergies present", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "alone"));
       act(() => result.current.updateRsvpField("allergies", ["sin gluten"]));
@@ -565,7 +570,7 @@ describe("useRsvp", () => {
     });
 
     it("returns error for healthConsent when only allergiesOther is filled", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "alone"));
       // Alergia escrita solo en el campo libre: es dato de salud.
@@ -581,7 +586,7 @@ describe("useRsvp", () => {
     });
 
     it("returns error for missing companion birthDate", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "with"));
       act(() => result.current.updateRsvpField("companionCount", 1));
@@ -611,7 +616,7 @@ describe("useRsvp", () => {
 
     it("returns error for companion age under 14 without parental consent", async () => {
       mockComputeAge.mockReturnValue(10);
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "with"));
       act(() => result.current.updateRsvpField("companionCount", 1));
@@ -627,7 +632,7 @@ describe("useRsvp", () => {
     });
 
     it("returns error for companion health consent when the companion has allergies", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "with"));
       act(() => result.current.updateRsvpField("companionCount", 1));
@@ -643,7 +648,7 @@ describe("useRsvp", () => {
     });
 
     it("submits successfully when not attending", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.updateRsvpField("guestName", "Alice María Smith"));
       act(() => result.current.updateRsvpField("attendance", "no"));
       act(() => result.current.updateRsvpField("privacyConsent", true));
@@ -659,7 +664,7 @@ describe("useRsvp", () => {
 
   describe("handleDeleteRsvp", () => {
     it("does nothing when alreadySubmittedEntry is null", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await act(async () => {
         await result.current.handleDeleteRsvp();
       });
@@ -681,7 +686,7 @@ describe("useRsvp", () => {
         }],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await act(async () => {
         result.current.updateRsvpField("guestName", "Alice María Smith");
@@ -718,7 +723,7 @@ describe("useRsvp", () => {
         }],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await act(async () => {
         result.current.updateRsvpField("guestName", "Bob Carlos Jones");
@@ -738,6 +743,7 @@ describe("useRsvp", () => {
     it("handles delete error gracefully", async () => {
       mockWriteBatch.mockReturnValueOnce({
         set: vi.fn(),
+        update: vi.fn(),
         delete: vi.fn(),
         commit: vi.fn(() => Promise.reject(new Error("Delete error"))),
       });
@@ -755,7 +761,7 @@ describe("useRsvp", () => {
         }],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await act(async () => {
         result.current.updateRsvpField("guestName", "Charlie Brown Smith");
@@ -781,7 +787,7 @@ describe("useRsvp", () => {
           docs: [{ id: "e1", ref: "ref1", data: () => ({}) }],
           forEach: vi.fn(),
         });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await act(async () => {
         await result.current.handleClearRsvpEntries();
@@ -795,7 +801,7 @@ describe("useRsvp", () => {
 
     it("does not clear when confirm is cancelled", async () => {
       window.confirm = vi.fn(() => false);
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await act(async () => {
         await result.current.handleClearRsvpEntries();
@@ -808,7 +814,7 @@ describe("useRsvp", () => {
       mockGetDocs
         .mockResolvedValueOnce({ docs: [], forEach: vi.fn() })
         .mockRejectedValueOnce(new Error("Fetch error"));
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await act(async () => {
         await result.current.handleClearRsvpEntries();
@@ -819,6 +825,15 @@ describe("useRsvp", () => {
   });
 
   describe("hydration", () => {
+    it("does not hydrate when canRead is false (guest)", async () => {
+      // Un invitado no puede leer respuestas (reglas): el hook no consulta
+      // Firestore ni muestra banner de error.
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, false));
+      await new Promise((r) => setTimeout(r, 50));
+      expect(mockGetDocs).not.toHaveBeenCalled();
+      expect(result.current.rsvpEntries).toEqual([]);
+    });
+
     it("loads rsvp entries on mount", async () => {
       const entry = createMockDoc("entry-1", {
         guestName: "Alice María Smith",
@@ -829,7 +844,7 @@ describe("useRsvp", () => {
         docs: [entry],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await waitFor(() => {
         expect(result.current.rsvpEntries).toHaveLength(1);
@@ -854,7 +869,7 @@ describe("useRsvp", () => {
         docs: [entry1, entry2],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries).toHaveLength(2);
       });
@@ -864,7 +879,7 @@ describe("useRsvp", () => {
 
     it("handles hydrate error gracefully", async () => {
       mockGetDocs.mockRejectedValueOnce(new Error("Hydrate error"));
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await waitFor(() => {
         expect(result.current.rsvpEntries).toEqual([]);
@@ -888,7 +903,7 @@ describe("useRsvp", () => {
         }],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await act(async () => {
         result.current.updateRsvpField("guestName", "Alice María Smith");
@@ -917,7 +932,7 @@ describe("useRsvp", () => {
         }],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await act(async () => {
         result.current.updateRsvpField("guestName", "Alice María Smith");
       });
@@ -944,7 +959,7 @@ describe("useRsvp", () => {
         }],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await act(async () => {
         result.current.updateRsvpField("guestName", "Alice María Smith");
       });
@@ -974,7 +989,7 @@ describe("useRsvp", () => {
         }],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await act(async () => {
         result.current.updateRsvpField("guestName", "Bob Carlos Jones");
@@ -984,7 +999,7 @@ describe("useRsvp", () => {
     });
 
     it("clears alreadySubmittedEntry when guestName is empty", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       act(() => result.current.updateRsvpField("guestName", ""));
       expect(result.current.alreadySubmittedEntry).toBeNull();
@@ -993,7 +1008,7 @@ describe("useRsvp", () => {
 
   describe("setRsvpMessage and feedbackMessage", () => {
     it("displays rsvpMessage after successful submission", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       act(() => result.current.setRsvpMessage("Custom message"));
       expect(result.current.rsvpMessage).toBe("Custom message");
     });
@@ -1019,7 +1034,7 @@ describe("useRsvp", () => {
         ],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
       });
@@ -1040,7 +1055,7 @@ describe("useRsvp", () => {
         }],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries).toHaveLength(1);
       });
@@ -1063,7 +1078,7 @@ describe("useRsvp", () => {
         ],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
       });
@@ -1090,7 +1105,7 @@ describe("useRsvp", () => {
         ],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
       });
@@ -1103,7 +1118,7 @@ describe("useRsvp", () => {
     });
 
     it("does nothing when deleting an empty list", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await act(async () => {
         await result.current.handleDeleteRsvpEntries([]);
       });
@@ -1111,7 +1126,7 @@ describe("useRsvp", () => {
     });
 
     it("does nothing when the invite token is empty", async () => {
-      const { result } = renderHook(() => useRsvp("", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("", setAdminMessage, setAdminMessageType, false, true));
       await act(async () => {
         await new Promise((r) => setTimeout(r, 10));
       });
@@ -1124,7 +1139,7 @@ describe("useRsvp", () => {
         docs: [{ id: "x1", data: () => ({ guestName: "Alice María Smith", attendance: "yes", submittedAt: { seconds: 1234 } }) }],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries).toHaveLength(1);
       });
@@ -1139,7 +1154,7 @@ describe("useRsvp", () => {
         ],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
       });
@@ -1152,7 +1167,7 @@ describe("useRsvp", () => {
         docs: [{ id: "c1", data: () => ({ rsvpType: "companion", guestName: "Solo Carlos", attendance: "yes", submittedAt: "2024-01-02" }) }],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await act(async () => {
         await new Promise((r) => setTimeout(r, 10));
       });
@@ -1174,7 +1189,7 @@ describe("useRsvp", () => {
         ],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
       });
@@ -1191,32 +1206,10 @@ describe("useRsvp", () => {
   describe("edge coverage", () => {
     it("ignores a malformed RSVP cache", async () => {
       mockSafeGetItem.mockReturnValueOnce(JSON.stringify({ cachedAt: Date.now() }) as never);
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries).toHaveLength(0);
       });
-    });
-
-    it("uses the cached entries when the cache is valid", async () => {
-      mockSafeGetItem.mockReturnValueOnce(
-        JSON.stringify({ entries: [{ id: "c1", guestName: "Cached", attendance: "yes" }], cachedAt: Date.now() }) as never,
-      );
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-      await waitFor(() => {
-        expect(result.current.rsvpEntries).toHaveLength(1);
-      });
-      expect(mockGetDocs).not.toHaveBeenCalled();
-    });
-
-    it("ignores an expired cache even with entries", async () => {
-      mockSafeGetItem.mockReturnValueOnce(
-        JSON.stringify({ entries: [{ id: "c1", guestName: "Cached", attendance: "yes" }], cachedAt: 0 }) as never,
-      );
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-      await waitFor(() => {
-        expect(result.current.rsvpEntries).toHaveLength(0);
-      });
-      expect(mockGetDocs).toHaveBeenCalled();
     });
 
     it("hydrates entries without guestName or attendance using fallbacks", async () => {
@@ -1224,7 +1217,7 @@ describe("useRsvp", () => {
         docs: [{ id: "x1", data: () => ({ rsvpType: "main", submittedAt: "2024-01-01" }) }],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries).toHaveLength(1);
       });
@@ -1233,7 +1226,7 @@ describe("useRsvp", () => {
     });
 
     it("clamps a non-numeric companionCount to zero", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(Array.isArray(result.current.rsvpForm.companionNames)).toBe(true);
       });
@@ -1242,7 +1235,7 @@ describe("useRsvp", () => {
     });
 
     it("handles companion field names without a numeric index", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(Array.isArray(result.current.rsvpForm.companionNames)).toBe(true);
       });
@@ -1251,7 +1244,7 @@ describe("useRsvp", () => {
     });
 
     it("handles all companion field setters without a numeric index", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(Array.isArray(result.current.rsvpForm.companionMenus)).toBe(true);
       });
@@ -1266,7 +1259,7 @@ describe("useRsvp", () => {
     });
 
     it("does nothing when deleting an empty list", async () => {
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await act(async () => {
         await result.current.handleDeleteRsvpEntries([]);
       });
@@ -1282,7 +1275,7 @@ describe("useRsvp", () => {
         ],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
       });
@@ -1302,7 +1295,7 @@ describe("useRsvp", () => {
         ],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
       });
@@ -1323,7 +1316,7 @@ describe("useRsvp", () => {
         ],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
       });
@@ -1345,7 +1338,7 @@ describe("useRsvp", () => {
         ],
         forEach: vi.fn(),
       });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await waitFor(() => {
         expect(result.current.rsvpEntries.length).toBeGreaterThan(0);
       });

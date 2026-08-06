@@ -101,9 +101,16 @@ describe("validateConfigForSave", () => {
     expect(result.errorKey).toBeNull();
   });
 
-  it("rejects a past wedding date", () => {
-    const result = validateConfigForSave(validConfig({ weddingYear: "2020" }), true, 2030);
+  it("rejects a past wedding date on the first save", () => {
+    // Sin config previa la fecha pasada se rechaza...
+    const result = validateConfigForSave(validConfig({ weddingYear: "2020" }), false, 2030);
     expect(result.errorKey).toBe("errors.dateBeforeToday");
+  });
+
+  it("allows a past wedding date when there is already stored config", () => {
+    // ...pero una boda ya celebrada no bloquea ediciones posteriores.
+    const result = validateConfigForSave(validConfig({ weddingYear: "2020" }), true, 2030);
+    expect(result.errorKey).toBeNull();
   });
 
   it("rejects an invalid accommodation URL", () => {

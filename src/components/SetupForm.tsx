@@ -12,7 +12,7 @@
  * @module SetupForm
  */
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation, Trans } from "react-i18next";
 import { useApp } from "../contexts";
 import { useToast } from "../hooks/useToast";
@@ -38,13 +38,16 @@ import "../styles/admin.css";
 export default function SetupForm({ prefix = "" }) {
 
   const { t } = useTranslation();
+  // Ref al <form> real: .setup-form también lo usan los div contenedores de
+  // SetupPage/AdminPage, por lo que un querySelector podía devolver un <div>
+  // sin requestSubmit() y lanzar un TypeError al pulsar Ctrl/Cmd+Enter.
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
 
     const handler = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
-        const form = document.querySelector(".setup-form") as HTMLFormElement;
-        if (form) form.requestSubmit();
+        if (formRef.current) formRef.current.requestSubmit();
       }
     };
     window.addEventListener("keydown", handler);
@@ -102,7 +105,7 @@ export default function SetupForm({ prefix = "" }) {
   }, [formData.hiddenSections]);
 
   return (
-    <form className="setup-form setup-form--nested" onSubmit={handleSubmit}>
+    <form ref={formRef} className="setup-form setup-form--nested" onSubmit={handleSubmit}>
       {/* ── Editor de orden de secciones ── */}
       <SectionOrderEditor
         value={formData.sectionOrder}

@@ -21,9 +21,16 @@ export function useAutoSave(
   const { t } = useTranslation();
   const autoSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoSavingRef = useRef(false);
+  /** Marca que el último guardado falló por red o estaba ocupado (permite
+   *  reintentar sin bucle infinito con validaciones rotas). */
+  const lastSaveFailedRef = useRef(false);
 
   const doSave = useCallback(async (data: InvitationConfig) => {
-    if (isSavingRef?.current || autoSavingRef.current) return null;
+    if (isSavingRef?.current || autoSavingRef.current) {
+      // Ocupado: la edición aún no se persiste, se reintentará.
+      lastSaveFailedRef.current = true;
+      return null;
+    }
     autoSavingRef.current = true;
     if (isSavingRef) isSavingRef.current = true;
     try {
@@ -52,6 +59,25 @@ export function useAutoSave(
         if (onSaveError) onSaveError(t("errors.mapUrlInvalid"));
         return null;
       }
+      // Alineación con el guardado manual: no se autoguardan estados rotos
+      // (código de vestimenta "Otro" sin texto o salidas de transporte sin hora).
+      if (data.weddingDressCode === "Otro" && !data.weddingDressCodeCustom?.trim()) {
+        if (onSaveError) onSaveError(t("errors.dressCodeCustomRequired"));
+        return null;
+      }
+      try {
+        const departures = JSON.parse(data.transportDepartures || "[]") as Array<{ time?: string; url?: string }>;
+        for (const d of departures) {
+          if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(d.time || "")) {
+            if (onSaveError) onSaveError(t("errors.transportTimeInvalid"));
+            return null;
+          }
+          if (d.url && !isValidGoogleMapsUrl(d.url)) {
+            if (onSaveError) onSaveError(t("errors.transportUrlInvalid"));
+            return null;
+          }
+        }
+      } catch { /* departures no presente: se ignora */ }
 
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
       delete (payload as Record<string, unknown>).musicFile;
@@ -63,8 +89,10 @@ export function useAutoSave(
       for (const [k, v] of Object.entries(originalImages)) {
         imagePayload[k] = v;
       }
+      lastSaveFailedRef.current = false;
       return payload;
     } catch (e) {
+      lastSaveFailedRef.current = true;
       if (onSaveError) onSaveError(getFirestoreErrorMessage(e, t));
       return null;
     } finally {
@@ -84,6 +112,15 @@ export function useAutoSave(
       const result = await doSave(formData);
       if (result && onSaveMessage) {
         onSaveMessage(t("autosave.saved"));
+      } else if (result === null && lastSaveFailedRef.current) {
+        // Fallo de red o autosave ocupado: se reintenta una vez a los 2 s
+        // para no perder las ediciones en curso.
+        lastSaveFailedRef.current = false;
+        if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
+        autoSaveTimerRef.current = setTimeout(async () => {
+          const retry = await doSave(formData);
+          if (retry && onSaveMessage) onSaveMessage(t("autosave.saved"));
+        }, 2000);
       }
     }, 1500);
     return () => {

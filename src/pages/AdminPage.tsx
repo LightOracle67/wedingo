@@ -20,7 +20,7 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate, useParams, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
-import { useApp } from "../contexts";
+import { useApp, useAppUI } from "../contexts";
 import { useToast } from "../hooks/useToast";
 import { formatDate } from "../lib/section-utils";
 import { escHtml } from "../lib/utils";
@@ -71,7 +71,7 @@ export default function AdminPage() {
   // ─── Estados del contexto global ───────────────────────
   const {
     hasStoredConfig, isConfigLoading, configLoadError,
-    isAdminTokenLoggedIn, isRestoringSession, config, formData,
+    isAdminTokenLoggedIn, isRestoringSession, sessionExpired, clearSessionExpired, config, formData,
     setupToken,
     authMessage, authMessageType,
     rsvpEntries,
@@ -80,6 +80,7 @@ export default function AdminPage() {
     handleClearRsvpEntries, handleDeleteRsvpEntries, handleDeleteInvitation,
     reloadConfig, visitCount,
   } = useApp();
+  const { setAdminMessage, setAdminMessageType } = useAppUI();
 
   // Avisa antes de salir si hay cambios sin guardar en la invitación.
   useEffect(() => {
@@ -298,6 +299,17 @@ export default function AdminPage() {
 
   // ─── Redirección si no hay sesión de admin activa ──────
   if (!isAdminTokenLoggedIn) {
+    // Si la sesión expiró (no es un primer acceso), avisar en la vista
+    // pública con un mensaje breve en lugar de redirigir en silencio.
+    if (sessionExpired) {
+      // El toast se lanza tras el redirect (AuthContext limpia authMessage al
+      // cambiar de ruta).
+      setTimeout(() => {
+        setAdminMessage(t("auth.sessionExpired"));
+        setAdminMessageType("error");
+      }, 0);
+      clearSessionExpired();
+    }
     return <Navigate to={`/${inviteToken}`} replace />;
   }
 

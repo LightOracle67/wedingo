@@ -15,7 +15,7 @@ const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve(""))
 const mockSetSaveError = vi.hoisted(() => vi.fn());
 const mockSetSaveMessage = vi.hoisted(() => vi.fn());
 const mockSetDoc = vi.hoisted(() => vi.fn());
-const mockUpdateDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
+const mockUpdateDoc = vi.hoisted(() => vi.fn((_ref: unknown, _data: Record<string, unknown>) => Promise.resolve()));
 const mockResolveAllConfigImages = vi.hoisted(() => vi.fn(() => Promise.resolve({})));
 const mockDecrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockSaveConfigImage = vi.hoisted(() => vi.fn((_t: string, id: string, _v: string) => Promise.resolve("__cfgimg:" + id)));
@@ -92,6 +92,17 @@ function SaveSetupConsumer() {
 
 beforeEach(() => {
   sessionStorage.clear();
+  // jsdom no expone localStorage global: shim limpio por test.
+  const store: Record<string, string> = {};
+  Object.defineProperty(globalThis, "localStorage", {
+    value: {
+      getItem: (k: string) => store[k] ?? null,
+      setItem: (k: string, v: string) => { store[k] = String(v); },
+      removeItem: (k: string) => { delete store[k]; },
+      clear: () => { Object.keys(store).forEach((k) => delete store[k]); },
+    },
+    configurable: true,
+  });
   mockSafeGetItem.mockReset();
   mockSafeGetItem.mockImplementation(() => null);
 });
@@ -234,12 +245,10 @@ describe("ConfigProvider", () => {
 
   it("hydrates from a fresh cache without reading Firestore", async () => {
     mockLocation.pathname = "/abcdefghij";
-    mockSafeGetItem.mockImplementation((key: unknown) => {
-      if (String(key).includes("invite_cache")) {
-        return JSON.stringify({ data: { firstName: "Cached", secondName: "Pair" }, cachedAt: Date.now() });
-      }
-      return null;
-    });
+    localStorage.setItem(
+      "wedin_invite_cache_abcdefghij",
+      JSON.stringify({ data: { firstName: "Cached", secondName: "Pair" }, cachedAt: Date.now() }),
+    );
     render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
     await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
     mockLocation.pathname = "/test";
@@ -247,12 +256,10 @@ describe("ConfigProvider", () => {
 
   it("falls back to Firestore when the cache is expired", async () => {
     mockLocation.pathname = "/abcdefghij";
-    mockSafeGetItem.mockImplementation((key: unknown) => {
-      if (String(key).includes("invite_cache")) {
-        return JSON.stringify({ data: { firstName: "Old" }, cachedAt: Date.now() - 10 * 60000 });
-      }
-      return null;
-    });
+    localStorage.setItem(
+      "wedin_invite_cache_abcdefghij",
+      JSON.stringify({ data: { firstName: "Old" }, cachedAt: Date.now() - 10 * 60000 }),
+    );
     mockGetDoc.mockResolvedValueOnce({
       exists: () => true,
       data: () => ({ firstName: "Fresh", secondName: "Pair" }),
@@ -320,6 +327,29 @@ describe("ConfigProvider", () => {
     await waitFor(() => {
       expect(mockUpdateDoc).toHaveBeenCalledWith(expect.anything(), { _visits: 1 });
     });
+    mockLocation.pathname = "/test";
+  });
+
+  it("does not count a visit twice for the same token", async () => {
+    // trackVisit se deduplica por token: re-hidratar la misma invitación no
+    // vuelve a incrementar _visits.
+    mockLocation.pathname = "/abcdefghij";
+    mockSafeGetItem.mockImplementation((key: unknown) => {
+      if (String(key) === "wedin_cookie_consent") return "accepted";
+      return null;
+    });
+    mockGetDoc
+      .mockResolvedValueOnce({ exists: () => true, data: () => ({ firstName: "A", secondName: "B", _visits: 3 }) })
+      .mockResolvedValueOnce({ exists: () => true, data: () => ({ firstName: "A", secondName: "B", _visits: 3 }) });
+    mockUpdateDoc.mockClear();
+    render(<ConfigProvider><SaveSetupConsumer /></ConfigProvider>);
+    await waitFor(() => expect(mockUpdateDoc).toHaveBeenCalledWith(expect.anything(), { _visits: 1 }));
+    fireEvent.click(screen.getByTestId("ss_reload"));
+    await vi.waitFor(() => {
+      expect(vi.mocked(mockGetDoc).mock.calls.length).toBeGreaterThanOrEqual(2);
+    });
+    const visitCalls = vi.mocked(mockUpdateDoc).mock.calls.filter((c) => c[1] && "_visits" in c[1]!).length;
+    expect(visitCalls).toBe(1);
     mockLocation.pathname = "/test";
   });
 

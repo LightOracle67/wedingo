@@ -14,7 +14,7 @@ import { sectionHasContent } from "../lib/section-utils";
 import type { InvitationConfig } from "../types";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { clearSession } from "../lib/sessionVars";
-import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
+import { safeGetItem, safeRemoveItem } from "../lib/storage";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { useCalendar } from "../hooks/useCalendar";
@@ -45,7 +45,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   /** Estado visible del guardado (habilita el botón "Guardar" de SetupForm). */
   const [isSaving, setIsSaving] = useState(false);
   const loadedTokenRef = useRef("");
-  const trackedRef = useRef(false);
+  // La visita se cuenta una vez por invitación: al cambiar de token (admin
+  // navegando entre varias) se resetea para volver a contarla.
+  const trackedRef = useRef("");
 
   const { formattedDate, formattedTime, calendarLink } = useCalendar(config);
 
@@ -68,8 +70,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const trackVisit = useCallback(async (token: string) => {
-    if (!token || trackedRef.current) { ; return; }
-    trackedRef.current = true;
+    // Solo se cuenta una visita por invitación (no por cambio de ruta).
+    if (!token || trackedRef.current === token) { return; }
+    trackedRef.current = token;
 
     try {
       const ref = invitationDocRef(token);
@@ -141,7 +144,12 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           return;
         }
 
-        const cached = safeGetItem(STORAGE_KEYS.inviteCache(inviteToken));
+        // Caché de invitación = almacenamiento técnicamente necesario para el
+        // modo offline (no sujeto a consentimiento de cookies): se accede
+        // directo a localStorage y se ignora si está bloqueado.
+        const cached = (() => {
+          try { return localStorage.getItem(STORAGE_KEYS.inviteCache(inviteToken)); } catch { return null; }
+        })();
         if (cached) {
           try {
             const parsed = JSON.parse(cached);
@@ -197,7 +205,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
         setConfig(hydrated);
         setFormData(hydrated);
-        safeSetItem(STORAGE_KEYS.inviteCache(inviteToken), JSON.stringify({ data: hydrated, cachedAt: Date.now() }));
+        // La caché NO guarda datos sensibles descifrados (bankInfo, audio):
+        // solo el shell de la invitación, para el modo offline. Los campos
+        // sensibles se vuelven a descifrar desde Firestore en cada carga.
+        const { bankInfo: _omitBank, musicFile: _omitAudio, ...cacheSafe } = hydrated;
+        try {
+          localStorage.setItem(STORAGE_KEYS.inviteCache(inviteToken), JSON.stringify({ data: cacheSafe, cachedAt: Date.now() }));
+        } catch { /* almacenamiento no disponible */ }
         setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);
         setHasStoredConfig(true);
         loadedTokenRef.current = inviteToken;

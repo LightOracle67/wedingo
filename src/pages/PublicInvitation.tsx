@@ -446,6 +446,9 @@ export default function PublicInvitation() {
 
   // ── Error de carga ──
   if (configLoadError) {
+    // Un enlace corrupto no se arregla recargando: mostrar el inicio en vez
+    // de un botón "Reintentar" que provoca un bucle infinito.
+    const invalidLink = configLoadError === t("errors.invalidLink");
     return (
       <div className="app-scene">
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
@@ -461,8 +464,14 @@ export default function PublicInvitation() {
               {configLoadError}
             </p>
             <div className="flex flex-wrap justify-center gap-3 mt-8">
-              <button className="text-sm setup-button" type="button" onClick={() => window.location.reload()}>
-                {t("common.retry")}
+              <button className="text-sm setup-button" type="button" onClick={() => {
+                if (invalidLink) {
+                  window.location.assign("/");
+                } else {
+                  window.location.reload();
+                }
+              }}>
+                {invalidLink ? t("common.goHome") : t("common.retry")}
               </button>
             </div>
           </div>

@@ -13,6 +13,10 @@ vi.mock("../useAppUI", () => ({
   useAppUI: () => ({ setAdminMessage: vi.fn(), setAdminMessageType: vi.fn() }),
 }));
 
+vi.mock("../useAuth", () => ({
+  useAuth: () => ({ isAdminTokenLoggedIn: true }),
+}));
+
 vi.mock("../../hooks/useRsvp", () => ({
   useRsvp: () => ({
     rsvpEntries: [],

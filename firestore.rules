@@ -23,7 +23,7 @@ service cloud.firestore {
 
     function isSafeText(value) {
       return value is string
-        && !value.matches('.*[<>\"\'\\\\`].*')
+        && !value.matches('.*[<>"\\\\`].*')
         && !value.matches('(?i).*javascript:.*')
         && !value.matches('(?i).*\\bon\\w+\\s*=\\s*[\'\"].*')
         && value.size() <= 5000;
@@ -214,8 +214,13 @@ service cloud.firestore {
         && request.resource.data.count <= 1;
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['count'])
         && request.resource.data.count is int
-        && request.resource.data.count == resource.data.count + 1
-        && request.resource.data.count <= 500;
+        && request.resource.data.count >= 0
+        && request.resource.data.count <= 500
+        && (request.resource.data.count == resource.data.count + 1
+          /* Decremento al retirar/borrar respuestas: solo con sesión activa o
+             superadmin, para que el tope anti-spam no se agote con borrados. */
+          || ((isSuperAdmin() || hasActiveSession(inviteToken))
+            && request.resource.data.count == resource.data.count - 1));
       allow delete: if isSuperAdmin();
     }
 

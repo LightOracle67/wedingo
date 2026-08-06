@@ -7,11 +7,15 @@ let mockDocIdCounter = 0;
 vi.mock("firebase/firestore", () => ({
   writeBatch: vi.fn(() => ({
     set: vi.fn(),
+    update: vi.fn(),
     delete: vi.fn(),
     commit: vi.fn(() => Promise.resolve()),
   })),
   deleteDoc: vi.fn(() => Promise.resolve()),
+  getDoc: vi.fn(() => Promise.resolve({ exists: () => true, data: () => ({ count: 0 }) })),
   getDocs: vi.fn(() => Promise.resolve({ docs: [], empty: true, forEach: () => {} })),
+  updateDoc: vi.fn(() => Promise.resolve()),
+  increment: vi.fn((n: number) => n),
   serverTimestamp: vi.fn(() => ({ seconds: 1234567890, nanoseconds: 0 })),
   doc: vi.fn((_col?: unknown, id?: string) =>
     id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` },
@@ -140,8 +144,8 @@ describe("RSVP Integration", () => {
     expect(compPayload2.transportTime).toBe("14:30");
     expect(compPayload2.transportPlace).toBe("Estación Norte");
     expect(compPayload2.allergiesOther).toBe("alergia a mariscos");
-    // 1 main + 2 companions + 1 contador anti-spam
-    expect(batch.set).toHaveBeenCalledTimes(4);
+    // 1 main + 2 companions = 3 set calls (el contador usa increment/update).
+    expect(batch.set).toHaveBeenCalledTimes(3);
   });
 
   it("shows error when guestName is empty", async () => {

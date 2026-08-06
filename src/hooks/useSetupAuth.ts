@@ -59,6 +59,11 @@ export function useSetupAuth(
   const [authMessageType, setAuthMessageType] = useState("error");
   const [confirmTokenInput, setConfirmTokenInput] = useState("");
   const [isRestoringSession, setIsRestoringSession] = useState(false);
+  /** True si había una sesión local que expiró/no se pudo restaurar (para
+   *  mostrar un aviso en lugar de redirigir en silencio). */
+  const [sessionExpired, setSessionExpired] = useState(() => {
+    try { return sessionStorage.getItem("wedin_session_expired") === "1"; } catch { return false; }
+  });
 
   /** Intervalo de renovación de sesión. */
   const renewRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -66,9 +71,23 @@ export function useSetupAuth(
   const sessionTypeRef = useRef("");
   /** Previene doble clic en reseteo de token. */
   const resettingRef = useRef(false);
+  /** Fallos consecutivos de renovación: al segundo se corta la sesión. */
+  const renewFailureRef = useRef(false);
 
   /** Derivado: el usuario está autenticado si el token fue verificado. */
   const isAdminTokenLoggedIn = useMemo(() => isTokenVerified, [isTokenVerified]);
+
+  /** Marca que la sesión expiró (estado + sessionStorage) para avisar en el
+   *  siguiente render del admin/login. */
+  const markSessionExpired = useCallback(() => {
+    setSessionExpired(true);
+    try { sessionStorage.setItem("wedin_session_expired", "1"); } catch { }
+  }, []);
+  /** Limpia la marca de expiración tras mostrarla. */
+  const clearSessionExpired = useCallback(() => {
+    setSessionExpired(false);
+    try { sessionStorage.removeItem("wedin_session_expired"); } catch { }
+  }, []);
 
   /**
    * Al montar el hook, intenta restaurar la sesión desde sessionStorage.
@@ -143,10 +162,14 @@ export function useSetupAuth(
           console.error("[app]", "[useSetupAuth]", "session repair failed", { error: repairErr });
 
           clearSession();
+          markSessionExpired();
         }
       } else {
         clearSession();
-
+        // Había una sesión local guardada pero expiró: se avisa en el login.
+        if (safeGetItem(STORAGE_KEYS.setupToken(inviteToken || ""), sessionStorage)) {
+          markSessionExpired();
+        }
 
       }
 
@@ -156,7 +179,7 @@ export function useSetupAuth(
 
       setIsRestoringSession(false);
     });
-  }, [inviteToken]);
+  }, [inviteToken, markSessionExpired]);
 
   /**
    * Renueva la sesión periódicamente cada 60 segundos mientras esté activa.
@@ -180,12 +203,23 @@ export function useSetupAuth(
             setupTokenHash: tokenHash,
           };
           await updateDoc(invitationDocRef(inviteToken), renewPayload);
+          // Renovación correcta: se reinicia el contador de fallos.
+          renewFailureRef.current = false;
 
         } catch (err) {
           console.error("[app]", "[useSetupAuth]", "session renewal error", { error: err });
           if (setAdminMessage && setAdminMessageType) {
             setAdminMessageType("error");
             setAdminMessage(t("auth.sessionUpdateFailed"));
+          }
+          // Sesión zombi: si la renovación de Firestore falla de forma
+          // continuada, la UI quedaría "logada" pero sin permisos. Se corta.
+          if (renewFailureRef.current) {
+            clearSession();
+            setIsTokenVerified(false);
+            setTokenLoginUsername("");
+          } else {
+            renewFailureRef.current = true;
           }
         }
       };
@@ -529,7 +563,7 @@ export function useSetupAuth(
     authMessage, setAuthMessage,
     authMessageType, setAuthMessageType,
     confirmTokenInput, setConfirmTokenInput,
-    isAdminTokenLoggedIn, isRestoringSession,
+    isAdminTokenLoggedIn, isRestoringSession, sessionExpired, clearSessionExpired,
     refreshSetupToken, generateNewToken,
     handleTokenLogin, handleAdminTokenLogin,
     handleAdminLogout,

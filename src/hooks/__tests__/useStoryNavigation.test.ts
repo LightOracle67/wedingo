@@ -99,4 +99,29 @@ describe("useStoryNavigation", () => {
     expect(result.current.getSectionClassName("details")).toContain("story-section--is-active");
     el.remove();
   });
+
+  it("does nothing when IntersectionObserver is unavailable", () => {
+    // Sin IO (SSR/agentes antiguos) el hook no crashea y no observa nada.
+    const original = (globalThis as Record<string, unknown>).IntersectionObserver;
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: undefined, configurable: true });
+    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    expect(result.current.activeSection).toBe(SAMPLE_ORDER[0]);
+    if (original !== undefined) {
+      Object.defineProperty(globalThis, "IntersectionObserver", { value: original, configurable: true });
+    }
+  });
+
+  it("does nothing when there are no story sections in the DOM", () => {
+    let observerCallback: IntersectionObserverCallback | null = null;
+    class FakeIO {
+      constructor(cb: IntersectionObserverCallback) { observerCallback = cb; }
+      observe() {}
+      disconnect() {}
+    }
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
+    // Sin elementos [data-story-section] el efecto retorna sin observar.
+    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    expect(result.current.activeSection).toBe(SAMPLE_ORDER[0]);
+    expect(observerCallback).toBeNull();
+  });
 });

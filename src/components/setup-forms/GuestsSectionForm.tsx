@@ -20,12 +20,12 @@ export default function GuestsSectionForm({ prefix = "" }) {
 
   /**
    * Cambia el código de vestimenta. La opción "Otro" abre un input de texto
-   * personalizado; al elegir una opción predefinida se descarta ese texto.
+   * personalizado; el texto se conserva al cambiar de opción (se ignora si
+   * no es "Otro") para no destruir la edición con un clic accidental.
    */
   const handleDressCodeChange = useCallback((value: string) => {
     const next = formData.weddingDressCode === value ? "" : value;
     updateFormField("weddingDressCode", next);
-    if (next !== "Otro") updateFormField("weddingDressCodeCustom", "");
   }, [formData.weddingDressCode, updateFormField]);
 
   return (

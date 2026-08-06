@@ -122,13 +122,13 @@ describe("GuestsSectionForm", () => {
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCodeCustom", "Vestimenta vintage");
   });
 
-  it("clears the custom message when a predefined option is chosen", () => {
+  it("keeps the custom message when another predefined option is chosen", () => {
     mockFormData.weddingDressCode = "Otro";
     mockFormData.weddingDressCodeCustom = "Vestimenta vintage";
     render(<GuestsSectionForm />);
     fireEvent.click(screen.getByLabelText("setup.dressCodeGala"));
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "Traje de gala");
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCodeCustom", "");
+    expect(mockUpdateFormField).not.toHaveBeenCalledWith("weddingDressCodeCustom", "");
   });
 
   it("updates the accommodationMapMode dropdown", () => {

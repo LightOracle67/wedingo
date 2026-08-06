@@ -127,8 +127,7 @@ describe("useAutoSave", () => {
     const differentData = { ...sampleConfig, firstName: "Changed" };
     const onSaveMessage = vi.fn();
     const onSaveError = vi.fn();
-    mockSetDoc.mockRejectedValueOnce(new Error("net"));
-    renderHook(() =>
+    mockSetDoc.mockRejectedValueOnce(new Error("net"));    renderHook(() =>
       useAutoSave(true, "test-token", differentData, sampleConfig, onSaveMessage, { current: false }, undefined, onSaveError),
     );
 
@@ -157,6 +156,39 @@ describe("useAutoSave", () => {
     vi.advanceTimersByTime(1500);
 
     expect(mockSetDoc).not.toHaveBeenCalled();
+  });
+
+  it("retries once after a failed debounced save", async () => {
+    // Tras un fallo de red se reprograma un único reintento a los 2 s.
+    const differentData = { ...sampleConfig, firstName: "Changed" };
+    const onSaveMessage = vi.fn();
+    mockSetDoc.mockRejectedValueOnce(new Error("net")).mockResolvedValueOnce(undefined);
+    renderHook(() =>
+      useAutoSave(true, "test-token", differentData, sampleConfig, onSaveMessage, { current: false }),
+    );
+
+    await vi.advanceTimersByTimeAsync(1500);
+    expect(mockSetDoc).toHaveBeenCalledTimes(1);
+
+    await vi.advanceTimersByTimeAsync(2000);
+    expect(mockSetDoc).toHaveBeenCalledTimes(2);
+    expect(onSaveMessage).toHaveBeenCalledWith("autosave.saved");
+  });
+
+  it("does not report saved when the retry also fails", async () => {
+    const differentData = { ...sampleConfig, firstName: "Changed" };
+    const onSaveMessage = vi.fn();
+    const onSaveError = vi.fn();
+    mockSetDoc.mockRejectedValueOnce(new Error("net")).mockRejectedValueOnce(new Error("net"));
+    renderHook(() =>
+      useAutoSave(true, "test-token", differentData, sampleConfig, onSaveMessage, { current: false }, undefined, onSaveError),
+    );
+
+    await vi.advanceTimersByTimeAsync(1500);
+    await vi.advanceTimersByTimeAsync(2000);
+
+    expect(mockSetDoc).toHaveBeenCalledTimes(2);
+    expect(onSaveMessage).not.toHaveBeenCalled();
   });
 
   it("does not save when inviteToken is empty", () => {
@@ -233,6 +265,80 @@ describe("useAutoSave", () => {
       });
 
       expect(output).toBeNull();
+    });
+
+    it("does not save a dress code 'Otro' without custom text", async () => {
+      const data = { ...sampleConfig, weddingDressCode: "Otro", weddingDressCodeCustom: "" };
+      const onSaveError = vi.fn();
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", data, data, vi.fn(), { current: false }, undefined, onSaveError),
+      );
+      await act(async () => {
+        await result.current.doSave(data);
+      });
+      expect(mockSetDoc).not.toHaveBeenCalled();
+      expect(onSaveError).toHaveBeenCalled();
+    });
+
+    it("does not save when the second name is missing", async () => {
+      const data = { ...sampleConfig, secondName: "" };
+      const onSaveError = vi.fn();
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", data, data, vi.fn(), { current: false }, undefined, onSaveError),
+      );
+      await act(async () => {
+        await result.current.doSave(data);
+      });
+      expect(mockSetDoc).not.toHaveBeenCalled();
+      expect(onSaveError).toHaveBeenCalled();
+    });
+
+    it("does not save a transport departure with an invalid time", async () => {
+      const data = {
+        ...sampleConfig,
+        transportDepartures: JSON.stringify([{ type: "bus", time: "25:00", url: "" }]),
+      };
+      const onSaveError = vi.fn();
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", data, data, vi.fn(), { current: false }, undefined, onSaveError),
+      );
+      await act(async () => {
+        await result.current.doSave(data);
+      });
+      expect(mockSetDoc).not.toHaveBeenCalled();
+      expect(onSaveError).toHaveBeenCalledWith("errors.transportTimeInvalid");
+    });
+
+    it("rejects a departure with an invalid map URL", async () => {
+      const data = {
+        ...sampleConfig,
+        transportDepartures: JSON.stringify([{ type: "bus", time: "10:30", url: "https://example.com" }]),
+      };
+      const onSaveError = vi.fn();
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", data, data, vi.fn(), { current: false }, undefined, onSaveError),
+      );
+      await act(async () => {
+        await result.current.doSave(data);
+      });
+      expect(mockSetDoc).not.toHaveBeenCalled();
+      expect(onSaveError).toHaveBeenCalledWith("errors.transportUrlInvalid");
+    });
+
+    it("saves valid departures without error", async () => {
+      const data = {
+        ...sampleConfig,
+        transportDepartures: JSON.stringify([{ type: "bus", time: "10:30", url: "" }]),
+      };
+      const onSaveError = vi.fn();
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", data, data, vi.fn(), { current: false }, undefined, onSaveError),
+      );
+      await act(async () => {
+        await result.current.doSave(data);
+      });
+      expect(mockSetDoc).toHaveBeenCalled();
+      expect(onSaveError).not.toHaveBeenCalled();
     });
 
     it("encrypts bankInfo when present", async () => {

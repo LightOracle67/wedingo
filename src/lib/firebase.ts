@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { collection, collectionGroup, doc, initializeFirestore } from "firebase/firestore";
+import { collection, collectionGroup, doc, initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from "firebase/firestore";
 import type { Auth } from "firebase/auth";
 import type { FirebaseStorage } from "firebase/storage";
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
@@ -14,9 +14,12 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-// Sin long-polling forzado: la app no usa onSnapshot, por lo que el modo
-// long-polling solo añadía latencia y consumo de batería sin beneficio.
-export const db = initializeFirestore(app, {});
+// Persistencia local en IndexedDB: la invitación ya visitada se lee offline
+// (y las imágenes/audio cifrados se descifran localmente). La limpieza se
+// gestiona en el flujo de "Eliminar mis datos".
+export const db = initializeFirestore(app, {
+  localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
+});
 
 /**
  * Instancia de Firebase Auth con carga diferida.

@@ -27,7 +27,11 @@ export function sectionHasContent(key: string, config: InvitationConfig | Partia
       return !!(config.weddingDay || config.weddingMonth || config.weddingYear
         || config.weddingHour || config.weddingMinute || config.weddingSiteURL);
     case "info":
-      return !!(config.weddingScheduleEvents || config.weddingDressCode || config.kidsPolicy);
+      // El menú también vive en la sección info: configurarlo solo no debe
+      // ocultar la sección automáticamente.
+      return !!(config.weddingScheduleEvents || config.weddingDressCode || config.kidsPolicy
+        || config.menuEnabled === "true" || config.menuCarneDishes || config.menuPescadoDishes
+        || config.menuVeganoDishes || config.menuTextoDishes);
     case "story":
       return !!config.storyText;
     case "gifts":

@@ -10,6 +10,11 @@ vi.mock("firebase/analytics", () => ({
   isSupported: mockIsSupported,
 }));
 
+// analytics.ts solo usa el token de la app; con resetModules reimporta
+// firebase.ts y volver a llamar initializeFirestore(persistentLocalCache)
+// lanza "already called with different options".
+vi.mock("../firebase", () => ({ app: {} }));
+
 import { trackEvent } from "../analytics";
 
 describe("analytics", () => {

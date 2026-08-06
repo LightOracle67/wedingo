@@ -116,15 +116,14 @@ describe("App", () => {
     mockUseApp.mockReturnValue(baseUseApp);
     // Evita contaminación entre tests del banner de actualización.
     const store: Record<string, string> = {};
-    Object.defineProperty(globalThis, "sessionStorage", {
-      value: {
-        getItem: (k: string) => store[k] ?? null,
-        setItem: (k: string, v: string) => { store[k] = String(v); },
-        removeItem: (k: string) => { delete store[k]; },
-        clear: () => { Object.keys(store).forEach((k) => delete store[k]); },
-      },
-      configurable: true,
+    const mkStorage = () => ({
+      getItem: (k: string) => store[k] ?? null,
+      setItem: (k: string, v: string) => { store[k] = String(v); },
+      removeItem: (k: string) => { delete store[k]; },
+      clear: () => { Object.keys(store).forEach((k) => delete store[k]); },
     });
+    Object.defineProperty(globalThis, "sessionStorage", { value: mkStorage(), configurable: true });
+    Object.defineProperty(globalThis, "localStorage", { value: mkStorage(), configurable: true });
     document.querySelectorAll('meta[name="deploy-id"]').forEach((m) => m.remove());
   });
 
@@ -968,7 +967,7 @@ describe("App", () => {
     meta.setAttribute("name", "deploy-id");
     meta.setAttribute("content", "999");
     document.head.appendChild(meta);
-    sessionStorage.setItem("wedin_deploy_id", "111");
+    localStorage.setItem("wedin_deploy_id", "111");
 
     render(
       <MemoryRouter initialEntries={["/"]}>
@@ -978,7 +977,7 @@ describe("App", () => {
       </MemoryRouter>
     );
     expect(await screen.findByText("common.updateAvailable")).toBeDefined();
-    sessionStorage.removeItem("wedin_deploy_id");
+    localStorage.removeItem("wedin_deploy_id");
     meta.remove();
   });
 
@@ -997,7 +996,7 @@ describe("App", () => {
     );
     await screen.findByTestId("landing-page");
     expect(screen.queryByText("common.updateAvailable")).toBeNull();
-    sessionStorage.removeItem("wedin_deploy_id");
+    localStorage.removeItem("wedin_deploy_id");
     meta.remove();
   });
 

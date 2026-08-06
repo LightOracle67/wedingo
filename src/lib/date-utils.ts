@@ -77,7 +77,10 @@ export function validateWeddingDate(config: Record<string, string>, maxAllowedYe
     }
     const today = new Date();
     today.setSeconds(0, 0);
-    if (enteredDate < today) {
+    // Una boda ya celebrada no debe bloquear ediciones posteriores
+    // (mensaje, menú, galería...): solo se exige fecha futura en el primer
+    // guardado, cuando aún no hay config almacenada.
+    if (!hasStoredConfig && enteredDate < today) {
 
       return "errors.dateBeforeToday";
     }

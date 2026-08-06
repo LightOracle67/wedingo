@@ -17,7 +17,11 @@ vi.mock("react-router", () => ({
 const mockUseApp = vi.fn();
 vi.mock("../../contexts", () => ({
   useApp: (...args: unknown[]) => mockUseApp(...args),
+  useAppUI: () => ({ setAdminMessage: mockSetAdminMessage, setAdminMessageType: mockSetAdminMessageType }),
 }));
+
+const mockSetAdminMessage = vi.fn();
+const mockSetAdminMessageType = vi.fn();
 
 const mockAddToast = vi.fn();
 vi.mock("../../hooks/useToast", () => ({
@@ -161,6 +165,23 @@ describe("AdminPage", () => {
 
     render(<AdminPage />);
     expect(screen.getByText(/Redirect to.*test-token/)).toBeDefined();
+  });
+
+  it("shows a session-expired message when redirecting after expiry", async () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      isAdminTokenLoggedIn: false,
+      sessionExpired: true,
+      clearSessionExpired: vi.fn(),
+    });
+
+    render(<AdminPage />);
+    expect(screen.getByText(/Redirect to.*test-token/)).toBeDefined();
+    // El aviso se lanza con un timeout para sobrevivir al redirect.
+    await vi.waitFor(() => {
+      expect(mockSetAdminMessage).toHaveBeenCalledWith("auth.sessionExpired");
+    });
+    expect(mockSetAdminMessageType).toHaveBeenCalledWith("error");
   });
 
   it("renders panel tab by default when all conditions met", async () => {

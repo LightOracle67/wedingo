@@ -87,9 +87,10 @@ function AppShell() {
     const deployId = document.querySelector('meta[name="deploy-id"]')?.getAttribute("content");
     if (!deployId) return;
     try {
-      const last = sessionStorage.getItem("wedin_deploy_id");
+      // localStorage: sobrevive al relaunch de la PWA (sessionStorage no).
+      const last = localStorage.getItem("wedin_deploy_id");
       if (last && last !== deployId) setUpdateAvailable(true);
-      sessionStorage.setItem("wedin_deploy_id", deployId);
+      localStorage.setItem("wedin_deploy_id", deployId);
     } catch { /* almacenamiento no disponible */ }
   }, []);
 

@@ -204,6 +204,32 @@ describe("useSetupAuth", () => {
       expect(result.current.isTokenVerified).toBe(true);
     });
 
+    it("confirms and replaces an existing active session", async () => {
+      // La invitación ya tiene una sesión activa: se pregunta al usuario y,
+      // si confirma, se sustituye (cubre el flujo sessionExists).
+      mockRunTransaction.mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
+        const transaction = {
+          get: vi.fn().mockResolvedValue({
+            exists: () => true,
+            data: () => ({ activeSession: true, _activeSetupToken: "valid-token" }),
+          }),
+          update: vi.fn(),
+        };
+        await cb(transaction);
+        return undefined as unknown as void;
+      });
+      window.confirm = vi.fn(() => true);
+      const { result } = setup();
+      act(() => result.current.setSetupTokenInput("valid-token"));
+
+      await act(async () => {
+        await result.current.handleTokenLogin();
+      });
+
+      expect(window.confirm).toHaveBeenCalled();
+      expect(result.current.isTokenVerified).toBe(true);
+    });
+
     it("creates the invite when it does not exist during login", async () => {
       mockGetDoc.mockImplementation(async (ref: unknown) => {
         if (String(ref).startsWith("token-ref-")) {
@@ -369,6 +395,39 @@ describe("useSetupAuth", () => {
       });
 
       expect(result.current.authMessage).toBe("auth.codeUserMismatch");
+    });
+
+    it("rejects when the setup token belongs to a different username", async () => {
+      // Ramas internas de activateSessionWithToken: el adminUsername de la
+      // invitación no coincide con el introducido → codeUserMismatch.
+      mockGetDoc.mockResolvedValue({
+        exists: () => true,
+        data: () => ({ _activeSetupToken: "admin-token", adminUsername: "other" }),
+      });
+      mockRunTransaction.mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
+        const transaction = {
+          get: vi.fn().mockResolvedValue({
+            exists: () => true,
+            data: () => ({ _activeSetupToken: "admin-token", adminUsername: "other" }),
+          }),
+          update: vi.fn(),
+        };
+        await cb(transaction);
+        return undefined as unknown as void;
+      });
+      window.confirm = vi.fn(() => true);
+
+      const config = { adminUsername: "admin" } as InvitationConfig;
+      const { result } = setup({ config });
+      act(() => result.current.setAdminLoginUsername("admin"));
+      act(() => result.current.setSetupTokenInput("admin-token"));
+
+      await act(async () => {
+        await result.current.handleAdminTokenLogin();
+      });
+
+      expect(result.current.authMessage).toBe("auth.codeUserMismatch");
+      expect(result.current.isTokenVerified).toBe(false);
     });
   });
 
@@ -605,6 +664,25 @@ describe("useSetupAuth", () => {
       });
     });
 
+    it("marks the session as expired when a stored session cannot be repaired", async () => {
+      mockGetSession.mockReturnValue({ type: "setup", identifier: "inactive-user" });
+      mockGetDoc.mockResolvedValueOnce({
+        exists: () => true,
+        data: () => ({ activeSession: false, sessionExpiresAt: null }),
+      });
+      mockUpdateDoc.mockRejectedValueOnce(new Error("repair failed"));
+
+      const { result } = setup();
+
+      await waitFor(() => {
+        expect(result.current.sessionExpired).toBe(true);
+      });
+
+      // clearSessionExpired limpia la marca tras mostrarla.
+      act(() => { result.current.clearSessionExpired(); });
+      expect(result.current.sessionExpired).toBe(false);
+    });
+
     it("repairs session when Firestore session is inactive", async () => {
       mockGetSession.mockReturnValue({ type: "setup", identifier: "inactive-user" });
       mockGetDoc.mockResolvedValueOnce({
@@ -774,6 +852,41 @@ describe("useSetupAuth", () => {
 
       expect(setAdminMessageType).toHaveBeenCalledWith("error");
       expect(setAdminMessage).toHaveBeenCalledWith("auth.sessionUpdateFailed");
+    });
+
+    it("cuts the session after two consecutive renewal failures", async () => {
+      // Sesión zombi: si la renovación de Firestore falla dos veces seguidas
+      // (reloj/reglas/red), se cierra la sesión en lugar de quedar "logada"
+      // sin permisos.
+      mockUpdateDoc.mockImplementation((_ref: unknown, payload?: unknown) => {
+        if (payload && typeof payload === "object" && "sessionExpiresAt" in payload) {
+          return Promise.reject(new Error("Renew error"));
+        }
+        return Promise.resolve();
+      });
+      mockGetDoc.mockResolvedValue({ exists: () => true, data: () => ({ _activeSetupToken: "tok" }) });
+      mockRunTransaction.mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
+        const transaction = {
+          get: vi.fn().mockResolvedValue({ exists: () => true, data: () => ({ _activeSetupToken: "tok" }) }),
+          update: vi.fn(),
+        };
+        await cb(transaction);
+        return Promise.resolve();
+      });
+
+      const { result } = setup();
+      act(() => result.current.setSetupTokenInput("tok"));
+      await act(async () => {
+        await result.current.handleTokenLogin();
+      });
+      expect(result.current.isAdminTokenLoggedIn).toBe(true);
+
+      await act(async () => { await vi.advanceTimersByTimeAsync(60000); });   // 1er fallo
+      await act(async () => { await vi.advanceTimersByTimeAsync(60000); });   // 2º fallo → corta
+      await act(async () => { await vi.advanceTimersByTimeAsync(1); });       // drena microtasks
+
+      expect(mockClearSession).toHaveBeenCalled();
+      expect(result.current.isAdminTokenLoggedIn).toBe(false);
     });
 
     it("does not throw on renewal failure without message callbacks", async () => {

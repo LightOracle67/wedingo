@@ -11,6 +11,8 @@ vi.mock("firebase/firestore", () => ({
   initializeFirestore: vi.fn(() => ({})),
   query: vi.fn(() => "q-ref"),
   where: vi.fn(() => "w-filter"),
+  persistentLocalCache: vi.fn(() => ({ kind: "persistent" })),
+  persistentMultipleTabManager: vi.fn(() => ({ kind: "multi-tab" })),
 }));
 
 vi.mock("firebase/auth", () => ({

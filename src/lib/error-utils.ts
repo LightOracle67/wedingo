@@ -14,6 +14,14 @@ export function getFirestoreErrorMessage(error: unknown, t?: (key: string) => st
     "failed-precondition": t ? t("errors.failedPrecondition") : "Operation failed",
     "aborted": t ? t("errors.aborted") : "Operation aborted",
     "unauthenticated": t ? t("errors.unauthenticated") : "Authentication required",
+    // Códigos adicionales que antes caían en el fallback en inglés.
+    "cancelled": t ? t("errors.cancelled") : "Operation cancelled",
+    "invalid-argument": t ? t("errors.generic") : "Invalid request",
+    "internal": t ? t("errors.generic") : "Internal error",
+    "data-loss": t ? t("errors.generic") : "Data loss",
+    "out-of-range": t ? t("errors.generic") : "Out of range",
+    "unimplemented": t ? t("errors.generic") : "Not implemented",
+    "unknown": t ? t("errors.generic") : "Unknown error",
   };
   return messages[code] || (error instanceof Error ? error.message : String(error));
 }

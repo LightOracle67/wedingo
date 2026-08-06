@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.74.0",
+    date: "2026-08-06",
+    changes: [
+      "PWA/OFFLINE: screenshots del manifest regenerados (eran HTML roto), persistencia offline de Firestore en IndexedDB, caché de invitación como almacenamiento necesario (sin consentimiento), aviso de versión persistente",
+      "RSVP: contador con incremento atómico (sin pérdidas por carrera), decremento al borrar/retirar (tope 500 ya no se agota), invitado ya no ve banner de error falso ni caché con datos de salud, apóstrofos en nombres permitidos, sesión cortada tras fallos de renovación repetidos",
+      "SETUP: sección info ya no se auto-oculta con solo el menú, fechas pasadas no bloquean ediciones posteriores, bankInfo fuera del caché local, Ctrl+Enter con el formulario real, el texto 'Otro' del vestido se conserva, autosave valida vestido y transporte como el manual",
+      "ERRORES: sesión expirada con aviso en vez de redirección silenciosa, autosave con reintento único, getFirestoreErrorMessage ampliado, enlace inválido lleva al inicio (sin bucle), visitas por invitación",
+    ],
+  },
+  {
     version: "2.73.0",
     date: "2026-08-06",
     changes: [

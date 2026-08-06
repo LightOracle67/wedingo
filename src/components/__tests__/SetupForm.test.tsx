@@ -220,17 +220,19 @@ describe("SetupForm", () => {
     expect(requestSubmit).not.toHaveBeenCalled();
   });
 
-  it("does not submit form on meta+Enter when no form exists", () => {
+  it("submits the real form on meta+Enter (ref al <form>, no querySelector)", () => {
     const requestSubmit = vi.fn();
     HTMLFormElement.prototype.requestSubmit = requestSubmit;
     const origQuery = document.querySelector.bind(document);
+    // El div contenedor .setup-form ya no se usa: el handler usa el ref del
+    // <form> real, así que aunque querySelector devuelva null, se envía.
     vi.spyOn(document, "querySelector").mockImplementation((sel: string) => {
       if (sel === ".setup-form") return null;
       return origQuery(sel);
     });
     render(<SetupForm />);
     fireEvent.keyDown(window, { key: "Enter", ctrlKey: true });
-    expect(requestSubmit).not.toHaveBeenCalled();
+    expect(requestSubmit).toHaveBeenCalled();
   });
 
   it("hides story and gallery based on hiddenSections", () => {

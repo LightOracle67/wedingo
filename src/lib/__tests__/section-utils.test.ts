@@ -18,6 +18,12 @@ describe("sectionHasContent", () => {
     expect(sectionHasContent("info", { kidsPolicy: "playArea" })).toBe(true);
   });
 
+  it("info has content when only the menu is configured", () => {
+    expect(sectionHasContent("info", { menuEnabled: "true" })).toBe(true);
+    expect(sectionHasContent("info", { menuCarneDishes: "[{\"text\":\"Plato\"}]" })).toBe(true);
+    expect(sectionHasContent("info", { menuTextoDishes: "[{\"text\":\"Texto\"}]" })).toBe(true);
+  });
+
   it("story and gifts require their text fields", () => {
     expect(sectionHasContent("story", {})).toBe(false);
     expect(sectionHasContent("story", { storyText: "x" })).toBe(true);

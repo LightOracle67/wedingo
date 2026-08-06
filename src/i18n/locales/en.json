@@ -34,7 +34,8 @@
     "remove": "Remove",
     "saving": "Saving…",
     "updateAvailable": "A new version of Wedingo is available.",
-    "reload": "Update"
+    "reload": "Update",
+    "goHome": "Back to home"
   },
   "landing": {
     "title": "Wedingo — Wedding invitations",
@@ -661,7 +662,8 @@
     "generic": "Something went wrong. Please try again.",
     "restoreFailed": "Could not restore the backup.",
     "mapUrlInvalid": "The location map URL is not valid. Use the map button to insert a Google Maps link.",
-    "socialUrlInvalid": "The social URL is not valid (must be Instagram or Facebook)."
+    "socialUrlInvalid": "The social URL is not valid (must be Instagram or Facebook).",
+    "cancelled": "Operation cancelled."
   },
   "superadmin": {
     "tabs": {
@@ -970,7 +972,8 @@
     "superadminWrongCredentials": "Incorrect credentials.",
     "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
     "superadminInvalidEmail": "The email format is not valid.",
-    "superadminLoginError": "Error logging in. Check your connection."
+    "superadminLoginError": "Error logging in. Check your connection.",
+    "sessionExpired": "Your session has expired. Log in again to continue."
   },
   "autosave": {
     "saved": "Changes saved"

@@ -11,6 +11,8 @@ export type AuthValue = Pick<
   | "adminLoginUsername"
   | "isAdminTokenLoggedIn"
   | "isRestoringSession"
+  | "sessionExpired"
+  | "clearSessionExpired"
   | "confirmTokenInput"
   | "authMessage"
   | "authMessageType"

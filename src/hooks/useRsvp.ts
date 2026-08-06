@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { writeBatch, deleteDoc, doc, getDoc, setDoc, getDocs, serverTimestamp } from "firebase/firestore";
+import { writeBatch, deleteDoc, doc, getDoc, setDoc, getDocs, updateDoc, serverTimestamp, increment } from "firebase/firestore";
 import { db, rsvpByInviteRef, rsvpResponseRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { computeAge } from "../lib/date-utils";
@@ -8,8 +8,6 @@ import { DIETARY_OPTIONS, parseDietaryInfo } from "../lib/rsvp-utils";
 import { isValidFullName, normalizeFullName } from "../lib/name-utils";
 import { useRsvpSubmit } from "./useRsvpSubmit";
 import { buildMainGuestData, buildCompanionData } from "./rsvp-payloads";
-import { RSVP_CACHE_TTL_MS } from "../lib/constants";
-import { safeGetItem, safeSetItem } from "../lib/storage";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import type { Attendee } from "../types";
 
@@ -110,6 +108,10 @@ export function useRsvp(
   setAdminMessage: (msg: string) => void,
   setAdminMessageType: (type: string) => void,
   menuEnabled: boolean,
+  /** Solo el admin con sesión puede leer respuestas (las reglas lo exigen);
+   *  el invitado envía sin leer (evita el banner de error falso y el prefill
+   *  de datos que no puede consultar). */
+  canRead = false,
 ) {
   const { t } = useTranslation();
   const [rsvpEntries, setRsvpEntries] = useState<RsvpEntryData[]>([]);
@@ -130,25 +132,17 @@ export function useRsvp(
   }, []);
 
   useEffect(() => {
+    // El invitado público no puede leer respuestas (reglas): la hidratación
+    // y el prefill quedan reservados al admin con sesión. Esto elimina el
+    // banner de error falso y la caché con datos de salud descifrados.
+    if (!canRead) return;
 
     let cancelled = false;
     const hydrateRsvp = async () => {
       if (!inviteToken) { return; }
 
-      // Caché en sessionStorage: evita volver a leer/descifrar toda la
-      // colección RSVP en cada navegación del invitado.
-      const cacheKey = STORAGE_KEYS.rsvpCache(inviteToken);
-      try {
-        const cachedRaw = safeGetItem(cacheKey, sessionStorage);
-        if (cachedRaw) {
-          const parsed = JSON.parse(cachedRaw) as { entries: RsvpEntryData[]; cachedAt: number };
-          if (parsed.entries && parsed.cachedAt && Date.now() - parsed.cachedAt < RSVP_CACHE_TTL_MS) {
-            if (!cancelled) { setRsvpEntries(parsed.entries); }
-            return;
-          }
-        }
-      } catch { }
-
+      // Sin caché en sessionStorage: el admin siempre lee datos frescos de
+      // Firestore (no se persisten alergias descifradas localmente).
       try {
         const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
 
@@ -252,11 +246,7 @@ export function useRsvp(
           (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime(),
         );
         if (!cancelled) {
-
           setRsvpEntries(entries);
-          try {
-            safeSetItem(cacheKey, JSON.stringify({ entries, cachedAt: Date.now() }), sessionStorage);
-          } catch { }
         }
       } catch (err) {
         console.error("[app]", "[useRsvp]", "hydrate error", { error: err });
@@ -272,7 +262,7 @@ export function useRsvp(
     return () => {
       cancelled = true;
     };
-  }, [inviteToken, t, setAdminMessage, setAdminMessageType, hydrateTick]);
+  }, [inviteToken, t, setAdminMessage, setAdminMessageType, hydrateTick, canRead]);
 
   useEffect(() => {
     // Se normaliza igual que al guardar (normalizeFullName colapsa espacios
@@ -593,12 +583,9 @@ export function useRsvp(
       // guarda el contador (las reglas exigen que exista y esté por debajo de
       // 500) y se incrementa en el mismo lote para mantener el tope anti-spam.
       const counterRef = doc(db, "rsvpResponses", inviteToken);
-      let currentCount = 0;
       try {
         const counterSnap = await getDoc(counterRef);
-        if (counterSnap.exists()) {
-          currentCount = typeof counterSnap.data()?.count === "number" ? counterSnap.data()!.count : 0;
-        } else {
+        if (!counterSnap.exists()) {
           await setDoc(counterRef, { count: 0 });
         }
       } catch (counterErr) {
@@ -610,7 +597,9 @@ export function useRsvp(
       for (let i = 0; i < companionCount; i++) {
         batch.set(rsvpResponseRef(inviteToken, companionDocIds[i]!), companionPayloads[i]);
       }
-      batch.set(counterRef, { count: currentCount + 1 });
+      // Incremento atómico: dos invitados a la vez ya no pisan el contador
+      // (el set con un valor leído perdía un envío completo por carrera).
+      batch.update(counterRef, { count: increment(1) });
       await batch.commit();
 
     } catch (err) {
@@ -692,6 +681,8 @@ export function useRsvp(
       for (const cid of alreadySubmittedEntry.companionDocIds || []) {
         batch.delete(rsvpResponseRef(inviteToken, cid));
       }
+      // Retirar libera un hueco del tope anti-spam (increment -1).
+      batch.update(doc(db, "rsvpResponses", inviteToken), { count: increment(-1) });
       await batch.commit();
       const idsToRemove = new Set([alreadySubmittedEntry.id, ...(alreadySubmittedEntry.companionDocIds || [])]);
       setRsvpEntries((current) => current.filter((e) => !idsToRemove.has(e.id)));
@@ -717,6 +708,7 @@ export function useRsvp(
       for (const id of ids) {
         batch.delete(rsvpResponseRef(inviteToken, id));
       }
+      batch.update(doc(db, "rsvpResponses", inviteToken), { count: increment(-ids.length) });
       await batch.commit();
       setRsvpEntries((current) => current.filter((e) => !ids.includes(e.id)));
       setAdminMessage(t("attendance.deleteSelectedSuccess", { count: ids.length }));
@@ -736,6 +728,7 @@ export function useRsvp(
       const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
 
       await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
+      await updateDoc(doc(db, "rsvpResponses", inviteToken), { count: increment(-snapshot.size) });
       setRsvpEntries([]);
       setAdminMessage(t("rsvp.clearSuccess"));
       setAdminMessageType("success");

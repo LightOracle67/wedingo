@@ -217,6 +217,22 @@ describe("PublicInvitation", () => {
     (window as any).location = origLocation;
   });
 
+  it("goes home instead of reloading when the link is invalid (no infinite loop)", () => {
+    const origLocation = window.location;
+    delete (window as any).location;
+    (window as any).location = { assign: vi.fn() };
+    // El mensaje de enlace inválido NO muestra "Reintentar" (bucle muerto).
+    mockUseAppValue.configLoadError = "errors.invalidLink";
+    render(<PublicInvitation />);
+    const homeBtn = screen.getByText("common.goHome");
+    expect(homeBtn).toBeDefined();
+    expect(screen.queryByText("common.retry")).toBeNull();
+    fireEvent.click(homeBtn);
+    expect((window as any).location.assign).toHaveBeenCalledWith("/");
+    mockUseAppValue.configLoadError = "";
+    (window as any).location = origLocation;
+  });
+
   it("shows envelope overlay in non-admin mode", () => {
     mockUseAppValue.isAdminTokenLoggedIn = false;
     render(<PublicInvitation />);
