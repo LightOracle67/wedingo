@@ -538,7 +538,7 @@ export default function PublicInvitation() {
         setEnvelopeOpen(true);
         setShowConfetti(true);
         setTimeout(() => setShowConfetti(false), 2800);
-        if (config.welcomeVideo) setShowWelcomeVideo(true);
+        if (config.welcomeVideo && config.welcomeVideoEnabled !== "false") setShowWelcomeVideo(true);
         // Apertura del sobre: el gesto principal de la invitación.
         trackEvent("envelope_open", { method: "click" });
       }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} inviteToken={inviteToken} /> : null}
@@ -546,8 +546,9 @@ export default function PublicInvitation() {
       {/* Confeti al abrir el sobre (decoración, sin interacción). */}
       {showConfetti ? <Confetti /> : null}
 
-      {/* Vídeo de bienvenida: se muestra sobre la invitación si hay uno. */}
-      {envelopeOpen && showWelcomeVideo && config.welcomeVideo ? (
+      {/* Vídeo de bienvenida: se muestra sobre la invitación si hay uno y no
+          está deshabilitado desde el panel de configuración. */}
+      {envelopeOpen && showWelcomeVideo && config.welcomeVideo && config.welcomeVideoEnabled !== "false" ? (
         <div className="welcome-video-overlay" onClick={() => setShowWelcomeVideo(false)} role="dialog" aria-modal="true" aria-label={t("welcomeVideo.title")}>
           <div className="welcome-video-card" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setShowWelcomeVideo(false)} aria-label={t("common.close")}>&times;</button>

@@ -284,6 +284,19 @@ describe("PublicInvitation", () => {
     mockUseAppValue.config.welcomeVideo = "";
   });
 
+  it("does not show the welcome video when it is disabled", () => {
+    mockUseAppValue.isAdminTokenLoggedIn = false;
+    mockUseAppValue.config.welcomeVideo = "https://example.com/video.mp4";
+    mockUseAppValue.config.welcomeVideoEnabled = "false";
+    render(<PublicInvitation />);
+    fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
+    fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
+    expect(document.querySelector(".welcome-video-overlay")).toBeNull();
+    mockUseAppValue.isAdminTokenLoggedIn = true;
+    mockUseAppValue.config.welcomeVideo = "";
+    mockUseAppValue.config.welcomeVideoEnabled = undefined;
+  });
+
   it("handles section order without rsvp in admin mode", () => {
     mockUseAppValue.config.sectionOrder = "hero,details,info,story,gifts";
     render(<PublicInvitation />);

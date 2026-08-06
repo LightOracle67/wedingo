@@ -31,10 +31,25 @@ describe("ExtrasSectionForm", () => {
     expect(mockUpdateFormField).toHaveBeenCalledWith("rsvpDeadlineEnabled", "true");
   });
 
+  it("places the checkbox before its title", () => {
+    render(<ExtrasSectionForm />);
+    // Para cada fila de extra, el checkbox es el primer hijo del .setup-toggle-row.
+    const rows = document.querySelectorAll(".setup-toggle-row");
+    expect(rows.length).toBeGreaterThan(0);
+    rows.forEach((row) => {
+      expect(row.firstElementChild!.tagName).toBe("INPUT");
+    });
+  });
+
+  it("hides the deadline input until the checkbox is selected", () => {
+    render(<ExtrasSectionForm />);
+    expect(document.getElementById("rsvpDeadline")).toBeNull();
+  });
+
   it("shows the date input when the deadline is enabled", () => {
     mockFormData.rsvpDeadlineEnabled = "true";
     render(<ExtrasSectionForm />);
-    expect(screen.getAllByLabelText("setup.rsvpDeadlineLabel").length).toBeGreaterThan(0);
+    expect(document.getElementById("rsvpDeadline")).toBeDefined();
   });
 
   it("toggles the gift list and edits its lines to JSON", () => {
@@ -54,8 +69,17 @@ describe("ExtrasSectionForm", () => {
   });
 
   it("updates the welcome video URL", () => {
+    mockFormData.welcomeVideoEnabled = "true";
     render(<ExtrasSectionForm />);
     fireEvent.change(screen.getByPlaceholderText("https://..."), { target: { value: "https://example.com/v.mp4" } });
     expect(mockUpdateFormField).toHaveBeenCalledWith("welcomeVideo", "https://example.com/v.mp4");
+  });
+
+  it("hides the welcome video input until its checkbox is selected", () => {
+    render(<ExtrasSectionForm />);
+    expect(screen.queryByPlaceholderText("https://...")).toBeNull();
+    mockFormData.welcomeVideoEnabled = "true";
+    render(<ExtrasSectionForm />);
+    expect(screen.getByPlaceholderText("https://...")).toBeDefined();
   });
 });

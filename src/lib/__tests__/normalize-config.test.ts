@@ -255,6 +255,7 @@ describe("normalizeConfig social fields", () => {
       reactionsEnabled: "true", giftsListEnabled: "true",
       giftList: JSON.stringify([{ id: "g1", name: "Tostadora", description: "Roja" }]),
       rideShareEnabled: "true", welcomeVideo: "https://example.com/v.mp4",
+      welcomeVideoEnabled: "true",
       notesEnabled: "true", musicPollEnabled: "true", triviaEnabled: "true",
       trivia: JSON.stringify([{ q: "¿Dónde?", a: "En el parque" }]),
     });
@@ -265,6 +266,7 @@ describe("normalizeConfig social fields", () => {
     expect(result.giftList).toContain("Tostadora");
     expect(result.rideShareEnabled).toBe("true");
     expect(result.welcomeVideo).toBe("https://example.com/v.mp4");
+    expect(result.welcomeVideoEnabled).toBe("true");
     expect(result.notesEnabled).toBe("true");
     expect(result.musicPollEnabled).toBe("true");
     expect(result.triviaEnabled).toBe("true");

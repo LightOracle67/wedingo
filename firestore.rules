@@ -86,6 +86,7 @@ service cloud.firestore {
            vacíos: normalizeConfig siempre los envía ("" o "false"). */
         && (!data.keys().hasAny(['rsvpDeadline']) || data.rsvpDeadline == '' || (data.rsvpDeadline is string && data.rsvpDeadline.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')))
         && (!data.keys().hasAny(['welcomeVideo']) || data.welcomeVideo == '' || (data.welcomeVideo is string && data.welcomeVideo.size() <= 1000 && data.welcomeVideo.matches('^https://.*')))
+        && (!data.keys().hasAny(['welcomeVideoEnabled']) || data.welcomeVideoEnabled == 'true' || data.welcomeVideoEnabled == 'false')
         && (!data.keys().hasAny(['giftList']) || (data.giftList is string && data.giftList.size() <= 10000))
         && (!data.keys().hasAny(['trivia']) || (data.trivia is string && data.trivia.size() <= 10000));
     }
@@ -106,6 +107,7 @@ service cloud.firestore {
         && (!data.keys().hasAny(['weddingDressCodeCustom']) || (data.weddingDressCodeCustom is string && data.weddingDressCodeCustom.size() <= 500 && isSafeText(data.weddingDressCodeCustom)))
         && (!data.keys().hasAny(['rsvpDeadline']) || data.rsvpDeadline == '' || data.rsvpDeadline.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$'))
         && (!data.keys().hasAny(['welcomeVideo']) || data.welcomeVideo == '' || (data.welcomeVideo is string && data.welcomeVideo.size() <= 1000 && data.welcomeVideo.matches('^https://.*')))
+        && (!data.keys().hasAny(['welcomeVideoEnabled']) || data.welcomeVideoEnabled == 'true' || data.welcomeVideoEnabled == 'false')
         && (!data.keys().hasAny(['giftList']) || (data.giftList is string && data.giftList.size() <= 10000))
         && (!data.keys().hasAny(['trivia']) || (data.trivia is string && data.trivia.size() <= 10000));
     }

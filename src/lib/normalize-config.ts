@@ -131,6 +131,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   giftList: normalizeJsonArray(value?.giftList),
   rideShareEnabled: s(value?.rideShareEnabled) === "true" ? "true" : "false",
   welcomeVideo: s(value?.welcomeVideo).slice(0, 1000),
+  welcomeVideoEnabled: s(value?.welcomeVideoEnabled) === "true" ? "true" : "false",
   notesEnabled: s(value?.notesEnabled) === "true" ? "true" : "false",
   musicPollEnabled: s(value?.musicPollEnabled) === "true" ? "true" : "false",
   triviaEnabled: s(value?.triviaEnabled) === "true" ? "true" : "false",

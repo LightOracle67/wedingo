@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.95.7";
+export const APP_VERSION = "2.95.8";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -161,6 +161,7 @@ export const defaultConfig = {
   giftList: "[]",
   rideShareEnabled: "false",
   welcomeVideo: "",
+  welcomeVideoEnabled: "false",
   notesEnabled: "false",
   musicPollEnabled: "false",
   triviaEnabled: "false",

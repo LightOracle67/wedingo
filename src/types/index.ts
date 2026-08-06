@@ -80,6 +80,8 @@ export interface InvitationConfig {
   rideShareEnabled?: string;
   /** Vídeo de bienvenida de los novios (URL MP4). */
   welcomeVideo?: string;
+  /** Habilita la sección del vídeo de bienvenida. */
+  welcomeVideoEnabled?: string;
   /** Muro de dedicatorias de los invitados. */
   notesEnabled?: string;
   /** Encuesta de música para el DJ. */

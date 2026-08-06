@@ -428,6 +428,23 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
 .setup-help--tight {
   margin-top: 0.18rem;
 }
+/* Fila de un extra: el checkbox va delante (a la izquierda) del título. */
+.setup-toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.45rem;
+}
+.setup-toggle-row > div {
+  flex: 1;
+  min-width: 0;
+}
+.setup-toggle {
+  flex-shrink: 0;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--invite-core-color, #c8a84e);
+}
 .setup-checkbox-label {
   display: flex;
   align-items: center;

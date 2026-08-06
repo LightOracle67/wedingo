@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.8",
+    date: "2026-08-06",
+    changes: [
+      "Extras: el checkbox de cada función va ahora delante de su título y su input aparece debajo del hint (o no aparece si el checkbox está desmarcado). El vídeo de bienvenida también se activa con su checkbox y se oculta en la invitación cuando está deshabilitado.",
+    ],
+  },
+  {
     version: "2.95.7",
     date: "2026-08-06",
     changes: [
