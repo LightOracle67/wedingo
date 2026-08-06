@@ -1640,6 +1640,14 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   background: color-mix(in srgb, var(--invite-shell-bg) 70%, transparent);
 }
 
+/* Emoji del itinerario: se muestra más grande que el texto del evento. */
+.schedule-emoji {
+  font-size: 1.9em;
+  line-height: 1;
+  min-width: 1.4em;
+  text-align: center;
+}
+
 .story-note {
   margin: 0;
   color: var(--setup-muted);

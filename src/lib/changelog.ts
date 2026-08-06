@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.5",
+    date: "2026-08-06",
+    changes: [
+      "Nuevo campo emoji por cada evento del itinerario: se edita junto a la hora/texto en el panel (setup) y se muestra grande en la sección del itinerario de la invitación.",
+    ],
+  },
+  {
     version: "2.95.4",
     date: "2026-08-06",
     changes: [

@@ -7,6 +7,7 @@ const KNOWN_KIDS = new Set(["playArea", "supervised", "adultOnly"]);
 interface ScheduleEvent {
   time: string;
   text: string;
+  emoji?: string;
 }
 
 const InfoSection = memo(function InfoSection({ style, className, weddingScheduleEvents, weddingDressCode, weddingDressCodeCustom, kidsPolicy, cornerDecoration }: { style?: React.CSSProperties; className?: string; weddingScheduleEvents?: string; weddingDressCode?: string; weddingDressCodeCustom?: string; kidsPolicy?: string; cornerDecoration?: string }) {
@@ -42,9 +43,12 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
             <>
               <p className="story-eyebrow">{t("info.sectionLabel")}</p>
               <h2 className="story-title">{t("info.scheduleTitle")}</h2>
-              <div className="mt-4 space-y-1 text-left">
+              <div className="mt-4 space-y-2 text-left">
                 {events.map((ev, i) => (
-                  <div key={i} className="flex gap-3 items-baseline">
+                  <div key={i} className="flex gap-3 items-center">
+                    {ev.emoji ? (
+                      <span className="shrink-0 schedule-emoji" aria-hidden="true">{ev.emoji}</span>
+                    ) : null}
                     {ev.time ? (
                       <span className="shrink-0 font-semibold text-boda-texto tabular-nums">{ev.time}</span>
                     ) : null}

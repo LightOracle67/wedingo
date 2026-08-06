@@ -7,6 +7,7 @@ import { isValidGoogleMapsUrl, convertToEmbedUrl, extractPlaceNameFromUrl } from
 interface ScheduleEvent {
   time: string;
   text: string;
+  emoji: string;
 }
 
 export default function DateSectionForm({ prefix = "" }) {
@@ -64,6 +65,7 @@ export default function DateSectionForm({ prefix = "" }) {
         .map((e: Record<string, unknown>) => ({
           time: typeof e.time === "string" ? e.time.slice(0, 5) : "",
           text: typeof e.text === "string" ? e.text.slice(0, MAX_SCHEDULE_EVENT_TEXT) : "",
+          emoji: typeof e.emoji === "string" ? e.emoji.slice(0, 8) : "",
         }));
     } catch {
       return [];
@@ -76,13 +78,13 @@ export default function DateSectionForm({ prefix = "" }) {
 
   const addScheduleEvent = useCallback(() => {
     if (scheduleEvents.length >= MAX_SCHEDULE_EVENTS) return;
-    setScheduleEvents([...scheduleEvents, { time: "", text: "" }]);
+    setScheduleEvents([...scheduleEvents, { time: "", text: "", emoji: "" }]);
   }, [scheduleEvents, setScheduleEvents]);
 
-  const handleScheduleEventField = useCallback((index: number, field: "time" | "text") =>
+  const handleScheduleEventField = useCallback((index: number, field: "time" | "text" | "emoji") =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const next = [...scheduleEvents];
-      next[index] = { ...(next[index] ?? { time: "", text: "" }), [field]: e.target.value };
+      next[index] = { ...(next[index] ?? { time: "", text: "", emoji: "" }), [field]: e.target.value };
       setScheduleEvents(next);
     }, [scheduleEvents, setScheduleEvents]);
 
@@ -291,6 +293,22 @@ export default function DateSectionForm({ prefix = "" }) {
                 type="time"
                 value={ev.time}
                 onChange={handleScheduleEventField(i, "time")}
+              />
+            </div>
+            <div>
+              <label className="setup-label" htmlFor={id(`scheduleEventEmoji${i}`)} style={{ fontSize: "0.75rem" }}>
+                {t("setup.scheduleEventEmojiLabel")}
+              </label>
+              <input
+                id={id(`scheduleEventEmoji${i}`)}
+                className="setup-input"
+                type="text"
+                value={ev.emoji}
+                onChange={handleScheduleEventField(i, "emoji")}
+                placeholder="🍾"
+                maxLength={8}
+                autoComplete="off"
+                style={{ width: "3.2rem", textAlign: "center" }}
               />
             </div>
             <div style={{ flex: 1 }}>

@@ -294,6 +294,7 @@
     "scheduleEventsHint": "Add the itinerary events with their time and a short description (up to {{max}}).",
     "scheduleEventTimeLabel": "Time",
     "scheduleEventTextLabel": "Event",
+    "scheduleEventEmojiLabel": "Emoji",
     "scheduleEventTextPlaceholder": "e.g. Guest reception",
     "scheduleAddEvent": "Add event",
     "scheduleRemoveEvent": "Remove event",

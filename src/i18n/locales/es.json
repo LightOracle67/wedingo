@@ -294,6 +294,7 @@
     "scheduleEventsHint": "Añade los eventos del itinerario con su hora y una breve descripción (máximo {{max}}).",
     "scheduleEventTimeLabel": "Hora",
     "scheduleEventTextLabel": "Evento",
+    "scheduleEventEmojiLabel": "Emoji",
     "scheduleEventTextPlaceholder": "Ejemplo: Recepción de invitados",
     "scheduleAddEvent": "Añadir evento",
     "scheduleRemoveEvent": "Eliminar evento",

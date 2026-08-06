@@ -171,7 +171,7 @@ describe("normalizeConfig", () => {
     const result = normalizeConfig({ weddingScheduleEvents: JSON.stringify(twelve) });
     const parsed = JSON.parse(result.weddingScheduleEvents);
     expect(parsed).toHaveLength(10);
-    expect(parsed[0]).toEqual({ time: "00:00", text: "Evento 0" });
+    expect(parsed[0]).toEqual({ time: "00:00", text: "Evento 0", emoji: "" });
   });
 
   it("truncates schedule event text to 60 characters", () => {
@@ -222,7 +222,7 @@ describe("normalizeConfig", () => {
     const result = normalizeConfig({
       weddingScheduleEvents: JSON.stringify([null, 42, { time: 5, text: "  Hola  " }]),
     });
-    expect(JSON.parse(result.weddingScheduleEvents)).toEqual([{ time: "", text: "Hola" }]);
+    expect(JSON.parse(result.weddingScheduleEvents)).toEqual([{ time: "", text: "Hola", emoji: "" }]);
   });
 
   it("returns empty for non-array JSON in transport departures", () => {

@@ -14,7 +14,7 @@ describe("InfoSection", () => {
         className="test"
         style={{}}
         weddingScheduleEvents={JSON.stringify([
-          { time: "16:00", text: "Ceremonia" },
+          { time: "16:00", text: "Ceremonia", emoji: "💍" },
           { time: "18:00", text: "Cóctel" },
         ])}
         weddingDressCode="Formal"
@@ -26,6 +26,21 @@ describe("InfoSection", () => {
     expect(screen.getByText("Ceremonia")).toBeDefined();
     expect(screen.getByText("18:00")).toBeDefined();
     expect(screen.getByText("kidsPolicy.options.playArea")).toBeDefined();
+    // El emoji del primer evento se muestra y el segundo (legacy sin emoji) no rompe.
+    expect(screen.getByText("💍")).toBeDefined();
+  });
+
+  it("renders a large emoji for schedule events that provide one", () => {
+    render(
+      <InfoSection
+        className="test"
+        style={{}}
+        weddingScheduleEvents={JSON.stringify([{ time: "20:00", text: "Fiesta", emoji: "🎉" }])}
+        weddingDressCode=""
+        kidsPolicy=""
+      />,
+    );
+    expect(screen.getByText("🎉").classList.contains("schedule-emoji")).toBe(true);
   });
 
   it("renders schedule events without time", () => {

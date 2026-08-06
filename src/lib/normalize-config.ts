@@ -38,9 +38,10 @@ function normalizeScheduleEvents(value: unknown): string {
         if (!e || typeof e !== "object") return null;
         const time = typeof (e as Record<string, unknown>).time === "string" ? ((e as Record<string, unknown>).time as string).trim().slice(0, 5) : "";
         const text = typeof (e as Record<string, unknown>).text === "string" ? ((e as Record<string, unknown>).text as string).trim().slice(0, MAX_SCHEDULE_EVENT_TEXT) : "";
-        return { time, text };
+        const emoji = typeof (e as Record<string, unknown>).emoji === "string" ? ((e as Record<string, unknown>).emoji as string).trim().slice(0, 8) : "";
+        return { time, text, emoji };
       })
-      .filter((e): e is { time: string; text: string } => e !== null);
+      .filter((e): e is { time: string; text: string; emoji: string } => e !== null);
     return JSON.stringify(cleaned);
   } catch {
     return "";

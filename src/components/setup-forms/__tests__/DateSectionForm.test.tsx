@@ -145,7 +145,7 @@ describe("DateSectionForm", () => {
   it("adds a schedule event and stores it as JSON", () => {
     render(<DateSectionForm />);
     fireEvent.click(screen.getByRole("button", { name: /setup.scheduleAddEvent/ }));
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "", text: "" }]));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "", text: "", emoji: "" }]));
   });
 
   it("caps schedule events at 10", () => {
@@ -161,7 +161,7 @@ describe("DateSectionForm", () => {
     render(<DateSectionForm />);
     const input = document.getElementById("scheduleEventTime0") as HTMLInputElement;
     fireEvent.change(input, { target: { value: "19:00" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "19:00", text: "Ceremonia" }]));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "19:00", text: "Ceremonia", emoji: "" }]));
   });
 
   it("edits a schedule event text field", () => {
@@ -169,7 +169,15 @@ describe("DateSectionForm", () => {
     render(<DateSectionForm />);
     const input = document.getElementById("scheduleEventText0") as HTMLInputElement;
     fireEvent.change(input, { target: { value: "Cóctel" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "18:00", text: "Cóctel" }]));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "18:00", text: "Cóctel", emoji: "" }]));
+  });
+
+  it("edits a schedule event emoji field", () => {
+    mockFormData.weddingScheduleEvents = JSON.stringify([{ time: "18:00", text: "Ceremonia" }]);
+    render(<DateSectionForm />);
+    const input = document.getElementById("scheduleEventEmoji0") as HTMLInputElement;
+    fireEvent.change(input, { target: { value: "💍" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "18:00", text: "Ceremonia", emoji: "💍" }]));
   });
 
   it("removes a schedule event", () => {
@@ -179,7 +187,7 @@ describe("DateSectionForm", () => {
     ]);
     render(<DateSectionForm />);
     fireEvent.click(screen.getAllByLabelText("setup.scheduleRemoveEvent")[0]!);
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "20:00", text: "Cena" }]));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "20:00", text: "Cena", emoji: "" }]));
   });
 
   it("toggles the static map checkbox", () => {
