@@ -21,6 +21,7 @@ vi.mock("../../../lib/constants", () => ({
   MONTH_VALUE_TO_NUMBER: { enero: 1, febrero: 2, marzo: 3 },
   MAX_SCHEDULE_EVENTS: 10,
   MAX_SCHEDULE_EVENT_TEXT: 60,
+  SCHEDULE_EVENT_EMOJIS: ["💍", "🥂", "🎉"],
 }));
 
 const mockFormData = vi.hoisted(() => ({
@@ -175,9 +176,19 @@ describe("DateSectionForm", () => {
   it("edits a schedule event emoji field", () => {
     mockFormData.weddingScheduleEvents = JSON.stringify([{ time: "18:00", text: "Ceremonia" }]);
     render(<DateSectionForm />);
-    const input = document.getElementById("scheduleEventEmoji0") as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "💍" } });
+    const select = document.getElementById("scheduleEventEmoji0") as HTMLSelectElement;
+    fireEvent.change(select, { target: { value: "💍" } });
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "18:00", text: "Ceremonia", emoji: "💍" }]));
+  });
+
+  it("offers the preset emojis as selectable options with an empty default", () => {
+    mockFormData.weddingScheduleEvents = JSON.stringify([{ time: "18:00", text: "Ceremonia" }]);
+    render(<DateSectionForm />);
+    const select = document.getElementById("scheduleEventEmoji0") as HTMLSelectElement;
+    // La primera opción es la vacía (sin emoji) y el resto son los emojis predefinidos.
+    const options = Array.from(select.options).map((o) => o.value);
+    expect(options[0]).toBe("");
+    expect(options).toEqual(expect.arrayContaining(["💍", "🥂", "🎉"]));
   });
 
   it("removes a schedule event", () => {

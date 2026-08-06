@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
-import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT } from "../../lib/constants";
+import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT, SCHEDULE_EVENT_EMOJIS } from "../../lib/constants";
 import { isValidGoogleMapsUrl, convertToEmbedUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
 
 interface ScheduleEvent {
@@ -82,7 +82,7 @@ export default function DateSectionForm({ prefix = "" }) {
   }, [scheduleEvents, setScheduleEvents]);
 
   const handleScheduleEventField = useCallback((index: number, field: "time" | "text" | "emoji") =>
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const next = [...scheduleEvents];
       next[index] = { ...(next[index] ?? { time: "", text: "", emoji: "" }), [field]: e.target.value };
       setScheduleEvents(next);
@@ -299,17 +299,19 @@ export default function DateSectionForm({ prefix = "" }) {
               <label className="setup-label" htmlFor={id(`scheduleEventEmoji${i}`)} style={{ fontSize: "0.75rem" }}>
                 {t("setup.scheduleEventEmojiLabel")}
               </label>
-              <input
+              <select
                 id={id(`scheduleEventEmoji${i}`)}
                 className="setup-input"
-                type="text"
                 value={ev.emoji}
                 onChange={handleScheduleEventField(i, "emoji")}
-                placeholder="🍾"
-                maxLength={8}
-                autoComplete="off"
-                style={{ width: "3.2rem", textAlign: "center" }}
-              />
+                style={{ width: "4.2rem", textAlign: "center" }}
+              >
+                {/* Primera opción vacía: evento sin emoji. */}
+                <option value="">—</option>
+                {SCHEDULE_EVENT_EMOJIS.map((emoji) => (
+                  <option key={emoji} value={emoji}>{emoji}</option>
+                ))}
+              </select>
             </div>
             <div style={{ flex: 1 }}>
               <label className="setup-label" htmlFor={id(`scheduleEventText${i}`)} style={{ fontSize: "0.75rem" }}>

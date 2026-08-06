@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.6",
+    date: "2026-08-06",
+    changes: [
+      "El emoji del itinerario ahora es un selector (select) con emojis predeterminados para cada momento de la celebración (ceremonia, cóctel, cena, baile, fiesta, etc.) en lugar de un campo de texto libre.",
+    ],
+  },
+  {
     version: "2.95.5",
     date: "2026-08-06",
     changes: [

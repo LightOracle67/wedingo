@@ -1,9 +1,19 @@
-export const APP_VERSION = "2.95.5";
+export const APP_VERSION = "2.95.6";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
 export const MAX_SCHEDULE_EVENTS = 10;
 export const MAX_SCHEDULE_EVENT_TEXT = 60;
+/* Emojis sugeridos para cada evento del itinerario. Se muestran en un
+   selector (select) dentro del editor: la primera opción (vacía) significa
+   "sin emoji". Se eligieron emojis sencillos (1-2 code units) para que
+   quepan en la normalización (máx 8 chars) y sean representativos de una
+   celebración. */
+export const SCHEDULE_EVENT_EMOJIS = [
+  "💍", "⛪", "🌸", "💌", "🔔", "🥂", "🍾", "🍸", "🍢", "🍽️",
+  "🍰", "🎂", "💃", "🕺", "🎶", "🎉", "🪩", "🎆", "📸", "❤️",
+  "✨", "🌿", "🌙", "🎁",
+] as const;
 export const MAX_MENU_DISHES = 20;
 export const MAX_MENU_DISH_TEXT = 200;
 export const MENU_DISH_ORDERS = ["entrante", "primero", "segundo", "tercero", "postre", "otro"];
