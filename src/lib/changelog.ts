@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.11",
+    date: "2026-08-07",
+    changes: [
+      "Scroll de una sección a la vez: cada gesto de rueda o teclado avanza exactamente una sección (con scroll suave) y se bloquea mientras se asienta. El scroll interior de cada sección (contenido largo, listas, RSVP) es independiente y no afecta al general: solo al llegar a su borde se pasa a la siguiente sección. La animación de entrada se ejecuta al terminar el scroll, y la sección principal (hero) la hace automáticamente al cargar o al abrir el sobre.",
+    ],
+  },
+  {
     version: "2.95.10",
     date: "2026-08-07",
     changes: [

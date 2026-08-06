@@ -2,30 +2,31 @@
  * useStoryNavigation.js
  * Hook de navegación entre secciones de la invitación.
  *
- * La navegación se hace mediante CSS scroll-snap. Este hook añade el
- * seguimiento de la sección VISIBLE con IntersectionObserver y gestiona un
- * pequeño autómata de estados por sección para las animaciones de ENTRADA y
- * SALIDA:
+ * COMPORTAMIENTO DE SCROLL:
+ * - El scroll avanza EXACTAMENTE una sección por gesto (rueda/teclado),
+ *   interceptado aquí: al hacer scroll, la sección siguiente/anterior se
+ *   alinea con scrollIntoView suave y se bloquea mientras se asienta.
+ * - El SCROLL INTERIOR es independiente: si el gesto ocurre sobre un
+ *   elemento con scroll disponible (sección con contenido largo, lista,
+ *   etc.), NO se intercepta y se hace scroll interno; solo al llegar al
+ *   borde se avanza a la siguiente sección.
+ * - La animación de ENTRADA se dispara cuando la sección termina de
+ *   asentarse (el observer usa un umbral alto: entra al estar ~70% visible).
+ * - La sección principal (primera de visibleOrder) hace su entrada
+ *   AUTOMÁTICAMENTE al arrancar (o al abrir el sobre), sin esperar scroll.
  *
+ * ESTADOS por sección (autómata para animaciones de entrada/salida):
  *   hidden → entering → active → leaving → hidden
  *
- * - "entering": la sección entra al viewport por scroll (animación de entrada
- *   con stagger en los elementos de la card).
- * - "active": estado estable, contenido visible sin animación.
- * - "leaving": la sección abandona el viewport (fade + scale suave).
- * - "hidden": fuera de viewport, lista para el siguiente snap.
- *
- * ANTI-PARPADEO A LA RECARGA: el primer arranque del observer ("boot") marca
- * las secciones ya visibles como "active" SIN animación, de modo que recargar
- * o restaurar el scroll del navegador no reproduce la animación de entrada
- * (que haría parpadear el contenido). Cuando el sobre se abre (enabled pasa
- * de false a true) se usa el modo "reveal": la sección visible hace su
- * animación de ENTRADA en ese momento.
+ * ANTI-PARPADEO: el primer contacto de una sección (boot o sección lazy que
+ * monta ya visible) la marca activa SIN animar; las demás pasan a hidden y
+ * quedan en su posición inicial (CSS) para que la entrada no salte.
  *
  * @param {string[]} visibleOrder - Array ordenado de claves de sección visibles.
  * @param {{ enabled?: boolean, reducedMotion?: boolean }} options
- *   - enabled: false mientras el sobre está cerrado (no se anima nada).
- *   - reducedMotion: salta los estados intermedios (accesibilidad).
+ *   - enabled: false mientras el sobre está cerrado (no se anima ni se
+ *     controla el scroll).
+ *   - reducedMotion: sin desplazamiento suave y sin estados intermedios.
  * @returns {object} API compatible con PublicInvitation.
  */
 import { useEffect, useRef, useState } from "react";
@@ -35,8 +36,14 @@ import { useEffect, useRef, useState } from "react";
 const ENTER_MS = 1450;
 /** Duración (ms) de la animación de salida (700ms en CSS + margen). */
 const LEAVE_MS = 750;
-/** Fracción mínima de la sección visible para considerarla "activa". */
-const VISIBILITY_THRESHOLD = 0.35;
+/** Umbral de visibilidad para considerar la sección "activa" y disparar su
+ *  ENTRADA (alto, para que entre justo cuando el scroll se asienta). */
+const VISIBILITY_THRESHOLD = 0.7;
+/** Acumulación mínima de scroll (px) para avanzar una sección (rueda de
+ *  ratón: un notch supera el umbral; trackpad: se acumulan deltas). */
+const GESTURE_THRESHOLD = 60;
+/** Tiempo de bloqueo tras avanzar una sección (asentado del scroll). */
+const SCROLL_LOCK_MS = 950;
 
 type SectionStage = "hidden" | "entering" | "active" | "leaving";
 
@@ -51,6 +58,9 @@ export function useStoryNavigation(
 ) {
   const [activeSection, setActiveSection] = useState<string>(visibleOrder[0] || "hero");
   const [stages, setStages] = useState<Record<string, SectionStage>>({});
+  // Sección activa accesible desde los listeners (evita closures obsoletos).
+  const activeSectionRef = useRef(activeSection);
+  activeSectionRef.current = activeSection;
   // true si el contenido estuvo deshabilitado (sobre cerrado) antes del
   // primer arranque real del observer: distingue el "boot" inicial
   // (anti-parpadeo) del "reveal" al abrir el sobre (entrada animada).
@@ -68,8 +78,9 @@ export function useStoryNavigation(
     ].filter(Boolean).join(" ");
 
   useEffect(() => {
-    // Mientras el sobre está cerrado el contenido está inert: no se observa
-    // ni se anima nada (la entrada del hero se dispara al abrir el sobre).
+    // Mientras el sobre está cerrado el contenido está inert: no se observa,
+    // ni se anima, ni se controla el scroll (la entrada del hero se dispara
+    // al abrir el sobre).
     const enabled = options.enabled ?? true;
     if (!enabled) {
       everDisabledRef.current = true;
@@ -78,11 +89,20 @@ export function useStoryNavigation(
     if (typeof IntersectionObserver === "undefined") return;
 
     // Primer arranque real del observer = "boot" (anti-parpadeo): las
-    // secciones visibles se marcan activas SIN animar. Si el contenido estuvo
-    // antes deshabilitado (sobre cerrado que acaba de abrirse) se usa
-    // "reveal": la sección visible hace su ENTRADA animada en ese momento.
+    // secciones visibles se marcan activas SIN animar, EXCEPTO la sección
+    // principal (primera), que hace su entrada automáticamente. Si el
+    // contenido estuvo antes deshabilitado (sobre que acaba de abrirse) se
+    // usa "reveal": la sección visible hace su ENTRADA animada en ese momento.
     const bootMode = everDisabledRef.current ? "reveal" : "boot";
     const reducedMotion = options.reducedMotion === true;
+    const primarySection = visibleOrder[0];
+
+    // Al abrir el sobre (enabled pasa de false a true) el contenido debe
+    // comenzar en la sección principal: se resetea el scroll general.
+    if (everDisabledRef.current) {
+      const scene = document.querySelector<HTMLElement>(".app-scene");
+      scene?.scrollTo({ top: 0, behavior: "auto" });
+    }
 
     // Temporizadores de promoción de estado por sección (entering→active y
     // leaving→hidden), para no depender de animationend (el stagger CSS).
@@ -95,6 +115,13 @@ export function useStoryNavigation(
         // tanto (p. ej. el usuario volvió a la sección).
         setStages((s) => (s[key] === from ? { ...s, [key]: to } : s));
       }, ms));
+    };
+
+    // Elementos de las secciones (para scrollIntoView al avanzar de sección).
+    const sectionEls = new Map<string, HTMLElement>();
+    const registerSection = (el: HTMLElement) => {
+      const key = el.getAttribute("data-story-section");
+      if (key) sectionEls.set(key, el);
     };
 
     let globalFirst = true;
@@ -114,19 +141,20 @@ export function useStoryNavigation(
         if (entry.isIntersecting) {
           setActiveSection(key);
           if (isFirstContact) {
-            if (isGlobalFirst && bootMode === "reveal" && !reducedMotion) {
-              // El sobre acaba de abrirse: el contenido visible entra animado.
+            if (isGlobalFirst && !reducedMotion && (bootMode === "reveal" || key === primarySection)) {
+              // El hero (sección principal) entra automáticamente al arrancar,
+              // y el contenido hace su entrada al abrir el sobre.
               setStages((s) => ({ ...s, [key]: "entering" }));
               schedule(key, "entering", "active", ENTER_MS);
             } else {
-              // Primer contacto (boot o sección lazy montada): visible y
-              // estable, sin parpadeo al cargar la sección.
+              // Primer contacto (boot sobre otra sección o lazy montada):
+              // visible y estable, sin parpadeo al cargar la sección.
               setStages((s) => ({ ...s, [key]: "active" }));
             }
           } else if (reducedMotion) {
             setStages((s) => ({ ...s, [key]: "active" }));
           } else {
-            // Entra por scroll: animación de entrada.
+            // La sección terminó de asentarse: animación de entrada.
             setStages((s) =>
               s[key] === "entering" || s[key] === "active" ? s : { ...s, [key]: "entering" });
             schedule(key, "entering", "active", ENTER_MS);
@@ -146,7 +174,106 @@ export function useStoryNavigation(
       }
     }, { threshold: VISIBILITY_THRESHOLD });
 
-    // Re-observa las secciones lazy que montan DESPUÉS (React.lazy/Suspense).
+    // ── Control de scroll: una sección por gesto ─────────────────────
+    let moving = false;
+    let gestureAccum = 0;
+    let gestureDir: 1 | -1 | null = null;
+
+    /** Avanza (1) o retrocede (-1) exactamente una sección. */
+    const advance = (dir: 1 | -1) => {
+      if (moving) return;
+      const currentIndex = visibleOrder.indexOf(activeSectionRef.current);
+      const nextIndex = currentIndex + dir;
+      if (nextIndex < 0 || nextIndex >= visibleOrder.length) return;
+      const nextKey = visibleOrder[nextIndex];
+      if (!nextKey) return;
+      const target = sectionEls.get(nextKey);
+      if (!target) return;
+      moving = true;
+      target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+      setTimeout(() => { moving = false; }, SCROLL_LOCK_MS);
+    };
+
+    /** ¿El gesto ocurre sobre un contenedor con scroll interior utilizable?
+     *  Recorre el árbol desde el objetivo hasta el contenedor general
+     *  (.app-scene): el primer contenedor scrolleable que no está en su
+     *  borde se queda con el gesto (el scroll general no debe avanzar de
+     *  sección mientras haya contenido interior desplazable). */
+    const appScene = document.querySelector<HTMLElement>(".app-scene");
+    const hasInnerScroll = (target: EventTarget | null, dir: 1 | -1): boolean => {
+      let node = target instanceof HTMLElement ? target : null;
+      while (node && node !== document.body && node !== appScene) {
+        if (node.scrollHeight > node.clientHeight + 2) {
+          const atEdge = dir === 1
+            ? node.scrollTop + node.clientHeight >= node.scrollHeight - 2
+            : node.scrollTop <= 2;
+          return !atEdge;
+        }
+        node = node.parentElement;
+      }
+      return false;
+    };
+
+    const onWheel = (e: WheelEvent) => {
+      const dir: 1 | -1 = e.deltaY > 0 ? 1 : -1;
+      if (Math.abs(e.deltaY) < 1) return;
+      // Scroll interior disponible: no interceptar (el contenido interno se
+      // desplaza; solo al llegar a su borde se avanza de sección).
+      if (hasInnerScroll(e.target, dir)) {
+        gestureAccum = 0;
+        gestureDir = null;
+        return;
+      }
+      // Sin sección siguiente/anterior (bordes o secciones sociales al final):
+      // se deja el scroll general nativo para poder ver ese contenido.
+      const currentIndex = visibleOrder.indexOf(activeSectionRef.current);
+      const nextIndex = currentIndex + dir;
+      if (nextIndex < 0 || nextIndex >= visibleOrder.length) return;
+      e.preventDefault();
+      if (moving) return;
+      // Acumula el gesto (un notch de rueda supera el umbral; un trackpad
+      // acumula deltas pequeños hasta completar un gesto).
+      if (gestureDir !== null && gestureDir !== dir) { gestureAccum = 0; }
+      gestureDir = dir;
+      gestureAccum += Math.abs(e.deltaY);
+      if (gestureAccum < GESTURE_THRESHOLD) return;
+      gestureAccum = 0;
+      advance(dir);
+    };
+
+    const isTyping = (el: EventTarget | null) => {
+      const n = el as HTMLElement | null;
+      return !!n && (n.tagName === "INPUT" || n.tagName === "TEXTAREA" || n.isContentEditable);
+    };
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (isTyping(e.target)) return;
+      const dirMap: Record<string, 1 | -1> = {
+        PageDown: 1, ArrowDown: 1, ArrowRight: 1, " ": 1,
+        PageUp: -1, ArrowUp: -1, ArrowLeft: -1, Home: -1,
+      };
+      if (e.key === "End") {
+        e.preventDefault();
+        const lastKey = visibleOrder[visibleOrder.length - 1];
+        if (!lastKey) return;
+        const last = sectionEls.get(lastKey);
+        if (last && !moving) { last.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" }); }
+        return;
+      }
+      const dir = dirMap[e.key];
+      if (dir === undefined) return;
+      // Sin sección a la que avanzar: no interceptar (scroll nativo).
+      const currentIndex = visibleOrder.indexOf(activeSectionRef.current);
+      const nextIndex = currentIndex + dir;
+      if (nextIndex < 0 || nextIndex >= visibleOrder.length) return;
+      e.preventDefault();
+      advance(dir);
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("keydown", onKeyDown);
+
+    // ── Observación de secciones (incluidas las lazy montadas después) ──
     let mutationObserver: MutationObserver | null = null;
     if (typeof MutationObserver !== "undefined") {
       const observed = new Set<HTMLElement>();
@@ -155,6 +282,7 @@ export function useStoryNavigation(
           .filter((el) => !observed.has(el));
         for (const el of unobserved) {
           observed.add(el);
+          registerSection(el);
           observer.observe(el);
         }
       });
@@ -165,6 +293,7 @@ export function useStoryNavigation(
     const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-story-section]"));
     for (const s of sections) {
       observed.add(s);
+      registerSection(s);
       observer.observe(s);
     }
     return () => {
@@ -172,8 +301,10 @@ export function useStoryNavigation(
       mutationObserver?.disconnect();
       timers.forEach((t) => clearTimeout(t));
       timers.clear();
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("keydown", onKeyDown);
     };
-  }, [orderKey, options.enabled, options.reducedMotion]);
+  }, [orderKey, visibleOrder, options.enabled, options.reducedMotion]);
 
   const getSectionStyle = (_sectionKey?: string) => EMPTY_STYLE;
 

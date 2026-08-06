@@ -1,10 +1,14 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useStoryNavigation } from "../useStoryNavigation";
 
 const SAMPLE_ORDER = ["hero", "details", "info", "story", "gifts", "rsvp"];
 
 describe("useStoryNavigation", () => {
+  beforeEach(() => {
+    // jsdom no implementa scrollIntoView: se mockea para el control de scroll.
+    Element.prototype.scrollIntoView = vi.fn();
+  });
   it("returns expected object shape", () => {
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
     expect(result.current).toHaveProperty("activeSection");
@@ -294,5 +298,112 @@ describe("useStoryNavigation", () => {
     if (originalMO !== undefined) {
       Object.defineProperty(globalThis, "MutationObserver", { value: originalMO, configurable: true });
     }
+  });
+
+  it("scrolls exactly one section per wheel gesture", async () => {
+    class FakeIO {
+      constructor() {}
+      observe() {}
+      disconnect() {}
+    }
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
+    // Monta las secciones en el DOM para que el hook las registre.
+    const els = SAMPLE_ORDER.map((key) => {
+      const el = document.createElement("section");
+      el.setAttribute("data-story-section", key);
+      document.body.appendChild(el);
+      return el;
+    });
+
+    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    // Gesto de rueda suficiente: avanza una sección (hero → details).
+    act(() => {
+      window.dispatchEvent(new WheelEvent("wheel", { deltaY: 120, cancelable: true }));
+    });
+    expect(result.current.activeSection).toBe("hero");
+    expect(Element.prototype.scrollIntoView).toHaveBeenCalledWith(
+      expect.objectContaining({ behavior: "smooth", block: "start" }),
+    );
+    els.forEach((el) => el.remove());
+  });
+
+  it("does not advance the section while an inner scroll has room", async () => {
+    class FakeIO {
+      constructor() {}
+      observe() {}
+      disconnect() {}
+    }
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
+    const el = document.createElement("section");
+    el.setAttribute("data-story-section", "hero");
+    document.body.appendChild(el);
+    // Contenedor interior con scroll disponible (no en su borde).
+    const inner = document.createElement("div");
+    inner.className = "story-panel";
+    Object.defineProperty(inner, "scrollHeight", { value: 800, configurable: true });
+    Object.defineProperty(inner, "clientHeight", { value: 400, configurable: true });
+    Object.defineProperty(inner, "scrollTop", { value: 0, configurable: true });
+    el.appendChild(inner);
+
+    renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    act(() => {
+      inner.dispatchEvent(new WheelEvent("wheel", { deltaY: 120, bubbles: true, cancelable: true }));
+    });
+    // El gesto se queda en el scroll interior: no se avanza de sección.
+    expect(Element.prototype.scrollIntoView).not.toHaveBeenCalled();
+    el.remove();
+  });
+
+  it("advances a section after the inner scroll reaches its edge", async () => {
+    class FakeIO {
+      constructor() {}
+      observe() {}
+      disconnect() {}
+    }
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
+    SAMPLE_ORDER.forEach((key) => {
+      const el = document.createElement("section");
+      el.setAttribute("data-story-section", key);
+      document.body.appendChild(el);
+    });
+    const inner = document.createElement("div");
+    inner.className = "story-panel";
+    Object.defineProperty(inner, "scrollHeight", { value: 800, configurable: true });
+    Object.defineProperty(inner, "clientHeight", { value: 400, configurable: true });
+    // Al borde inferior del scroll interior.
+    Object.defineProperty(inner, "scrollTop", { value: 400, configurable: true });
+    document.body.querySelector("[data-story-section='hero']")!.appendChild(inner);
+
+    renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    act(() => {
+      inner.dispatchEvent(new WheelEvent("wheel", { deltaY: 120, bubbles: true, cancelable: true }));
+    });
+    // El borde alcanzado: el gesto avanza a la siguiente sección.
+    expect(Element.prototype.scrollIntoView).toHaveBeenCalled();
+    SAMPLE_ORDER.forEach((key) => {
+      document.body.querySelector(`[data-story-section='${key}']`)?.remove();
+    });
+  });
+
+  it("advances one section with the keyboard", async () => {
+    class FakeIO {
+      constructor() {}
+      observe() {}
+      disconnect() {}
+    }
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
+    SAMPLE_ORDER.forEach((key) => {
+      const el = document.createElement("section");
+      el.setAttribute("data-story-section", key);
+      document.body.appendChild(el);
+    });
+    renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    act(() => {
+      window.dispatchEvent(new KeyboardEvent("keydown", { key: "PageDown", cancelable: true }));
+    });
+    expect(Element.prototype.scrollIntoView).toHaveBeenCalled();
+    SAMPLE_ORDER.forEach((key) => {
+      document.body.querySelector(`[data-story-section='${key}']`)?.remove();
+    });
   });
 });
