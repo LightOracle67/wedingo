@@ -87,16 +87,17 @@ const DashboardTab = memo(function DashboardTab() {
         // Las respuestas viven en la subcolección rsvpResponses/{id}/responses.
         const rsvpSnap = await getDocs(rsvpByInviteRef(invitation.id));
         rsvpSnap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
-        // Borrado completo en cascada: galería, audio y configImages quedaban
-        // huérfanos y de lectura pública (GDPR).
+        batch.delete(doc(db, "rsvpResponses", invitation.id));
+        batch.delete(doc(INVITATIONS_COLLECTION_REF, invitation.id));
+        // Se borra primero el documento principal: si algo falla después, las
+        // subcolecciones quedan huérfanas pero INACCESIBLES (el doc no existe),
+        // en vez de una invitación rota visible. (Antes era al revés.)
+        await batch.commit();
         const { deleteGallery, deleteAllConfigImages } = await import("../../lib/image-store");
         const { deleteAudio } = await import("../../lib/music-store");
         await deleteGallery(invitation.id);
         await deleteAllConfigImages(invitation.id);
         await deleteAudio(invitation.id);
-        batch.delete(doc(db, "rsvpResponses", invitation.id));
-        batch.delete(doc(INVITATIONS_COLLECTION_REF, invitation.id));
-        await batch.commit();
         try {
           const prefix = `invitations/${invitation.id}/`;
           const storageInstance = await getStorageInstance();

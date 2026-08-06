@@ -212,7 +212,9 @@ export default function DataTab() {
       }
       const data = {
         exportedAt: new Date().toISOString(),
-        invitations: invSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+        // Se sanean los documentos: el export NO debe incluir tokens de setup
+        // en claro (_activeSetupToken/legacyToken) ni hashes de sesión.
+        invitations: invSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...sanitizeInvitationForExport(d.data()) })),
         rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
         galleryByToken: mediaByToken,
       };
@@ -465,14 +467,20 @@ export default function DataTab() {
 
 
 
+/** Elimina los campos sensibles de un documento de invitación antes de
+ *  exportarlo: los tokens de setup no deben viajar en claro en un JSON. */
+function sanitizeInvitationForExport(data: Record<string, unknown>): Record<string, unknown> {
+  const { _activeSetupToken: _t, legacyToken: _l, activeSession: _s, setupTokenHash: _h, ...safe } = data;
+  return safe;
+}
+
 /**
  * Elimina en cascada una invitación y todos sus datos asociados:
  * RSVPs, imágenes de galería, tokens de setup, y el documento principal.
  *
  * @param {string} token - Token/ID de la invitación.
  */
-async function cascadeDelete(token: string) {
-  const BATCH_SIZE = 500;
+async function cascadeDelete(token: string) {  const BATCH_SIZE = 500;
   const refsToDelete = [];
 
   // RSVPs

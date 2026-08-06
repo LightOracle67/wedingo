@@ -59,7 +59,11 @@ const InvitationsTab = memo(function InvitationsTab() {
   const handleExportAll = useCallback(async () => {
     try {
       const snap = await getDocs(INVITATIONS_COLLECTION_REF);
-      const data = snap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() }));
+      // Sin tokens de setup en claro en el JSON exportado.
+      const data = snap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => {
+        const { _activeSetupToken: _t, legacyToken: _l, activeSession: _s, setupTokenHash: _h, ...safe } = d.data();
+        return { id: d.id, ...safe };
+      });
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");

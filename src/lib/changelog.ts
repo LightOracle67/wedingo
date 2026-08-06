@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.87.0",
+    date: "2026-08-06",
+    changes: [
+      "SEGURIDAD: los exports del superadmin ya no incluyen tokens de setup en claro ni hashes de sesión (se sanean los documentos antes de descargar)",
+      "SUPERADMIN: el cleanup de invitaciones expiradas borra primero el documento principal (si algo falla después, las subcolecciones quedan inaccesibles en vez de una invitación rota visible)",
+    ],
+  },
+  {
     version: "2.86.0",
     date: "2026-08-06",
     changes: [
