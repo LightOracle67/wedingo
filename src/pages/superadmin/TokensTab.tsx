@@ -49,14 +49,17 @@ const TokensTab = memo(function TokensTab() {
     try {
       const q = query(collection(db, "invitations"), where("_activeSetupToken", "!=", ""));
       const snap = await getDocs(q);
-      if (snap.empty) {
+      // Solo se limpian los tokens NUNCA usados: una invitación con sesión
+      // activa (admin en pleno flujo) se conserva. Antes se revocaba TODO.
+      const unused = snap.docs.filter((d) => !d.data().activeSession);
+      if (unused.length === 0) {
         setMessage(t("superadmin.noTokensToClean"));
         return;
       }
       const batch = writeBatch(db);
-      snap.docs.forEach((d) => batch.update(d.ref, { _activeSetupToken: "" }));
+      unused.forEach((d) => batch.update(d.ref, { _activeSetupToken: "" }));
       await batch.commit();
-      setMessage(t("superadmin.tokensCleaned", { count: snap.size }));
+      setMessage(t("superadmin.tokensCleaned", { count: unused.length }));
       await loadTokens();
     } catch {
       setError(t("superadmin.tokenCleanError"));

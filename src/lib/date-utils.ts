@@ -44,7 +44,10 @@ export function computeAge(birthDateStr: string) {
  * @returns {string|null} Mensaje de error o null si es válido.
  */
 export function validateWeddingDate(config: Record<string, string>, maxAllowedYear: number, hiddenSet: Set<string>, hasStoredConfig: boolean) {
-  if (!hiddenSet.has("details") || !hasStoredConfig) {
+  // Solo se valida la fecha si la sección "details" está VISIBLE: si el admin
+  // la ocultó, el formulario no la renderiza y exigirla bloqueaba el primer
+  // guardado sin forma de completarla.
+  if (!hiddenSet.has("details")) {
     if (!config.weddingDay || !config.weddingMonth || !config.weddingYear || !config.weddingHour || !config.weddingMinute) {
 
       return "errors.dateIncomplete";

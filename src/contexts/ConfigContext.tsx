@@ -9,7 +9,7 @@ import {
   PRIVACY_POLICY_VERSION,
 } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
-import { withTimeout } from "../lib/async-utils";
+import { withTimeout, withWriteRetry } from "../lib/async-utils";
 import { validateConfigForSave } from "../lib/config-validation";
 import { sectionHasContent } from "../lib/section-utils";
 import type { InvitationConfig } from "../types";
@@ -364,13 +364,18 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       try { localStorage.removeItem(STORAGE_KEYS.inviteCache(inviteToken)); } catch { }
 
       // Crea el documento grupo de RSVP de la invitación (tope anti-spam) si no existe.
+      // Con reintento ante fallos transitorios: sin contador, el primer RSVP
+      // fallaría con un error genérico (antes el fallo se tragaba en silencio).
       try {
         const groupRef = doc(db, "rsvpResponses", inviteToken);
         const groupSnap = await getDoc(groupRef);
         if (!groupSnap.exists()) {
-          await setDoc(groupRef, { count: 0 });
+          await withWriteRetry(() => setDoc(groupRef, { count: 0 }));
         }
-      } catch { }
+      } catch (counterErr) {
+        console.error("[app]", "[ConfigProvider]", "RSVP counter create failed", { error: counterErr });
+        setSaveError(t("errors.rsvpCounterFailed"));
+      }
 
       if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
       // Restore data URLs in memory for the current session

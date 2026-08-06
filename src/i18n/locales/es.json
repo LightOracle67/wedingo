@@ -673,7 +673,8 @@
     "socialUrlInvalid": "La URL de la red social no es válida (debe ser de Instagram o Facebook).",
     "cancelled": "Operación cancelada.",
     "yearInvalid": "El año no es válido.",
-    "menuParseError": "El menú guardado no se pudo leer: vuelve a escribir los platos."
+    "menuParseError": "El menú guardado no se pudo leer: vuelve a escribir los platos.",
+    "rsvpCounterFailed": "No se pudo preparar el apartado de confirmación. Intenta guardar de nuevo."
   },
   "superadmin": {
     "tabs": {

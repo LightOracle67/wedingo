@@ -673,7 +673,8 @@
     "socialUrlInvalid": "The social URL is not valid (must be Instagram or Facebook).",
     "cancelled": "Operation cancelled.",
     "yearInvalid": "The year is not valid.",
-    "menuParseError": "The saved menu could not be read: please re-enter the dishes."
+    "menuParseError": "The saved menu could not be read: please re-enter the dishes.",
+    "rsvpCounterFailed": "Could not prepare the RSVP area. Try saving again."
   },
   "superadmin": {
     "tabs": {

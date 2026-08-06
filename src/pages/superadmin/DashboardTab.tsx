@@ -1,5 +1,5 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { getDocs, doc, writeBatch, type DocumentData, type QueryDocumentSnapshot } from "firebase/firestore";
+import { getDocs, doc, writeBatch, collection, type DocumentData, type QueryDocumentSnapshot } from "firebase/firestore";
 import { db, getStorageInstance, RSVP_RESPONSES_GROUP, rsvpByInviteRef, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { calcGlobalStats, formatBytes } from "../../lib/superadmin-utils";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
@@ -41,14 +41,24 @@ const DashboardTab = memo(function DashboardTab() {
 
   const load = useCallback(async () => {
     try {
-      const [rsvpSnap, invSnap] = await Promise.all([
+      const [rsvpSnap, invSnap, tokenSnap] = await Promise.all([
         getDocs(RSVP_RESPONSES_GROUP),
         getDocs(INVITATIONS_COLLECTION_REF),
+        getDocs(collection(db, "setupTokens")),
       ]);
       const rsvps = rsvpSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
       const invitationDocs = invSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
       setInvitations(invitationDocs as InvitationDoc[]);
-      setStats(calcGlobalStats(invitationDocs, rsvps, []));
+      // Las stats de tokens se calculan de verdad: un token es "usado" si su
+      // invitación asociada existe (antes se pasaba un array vacío y todo
+      // salía a 0).
+      const invitationIds = new Set(invSnap.docs.map((d) => d.id));
+      const tokens = tokenSnap.docs.map((d) => ({
+        id: d.id,
+        ...d.data(),
+        used: invitationIds.has(String(d.data().inviteToken)),
+      }));
+      setStats(calcGlobalStats(invitationDocs, rsvps, tokens));
     } catch {
       addToast("error", t("errors.statsLoadFailed"));
     } finally { setLoading(false); }

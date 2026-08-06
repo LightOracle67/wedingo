@@ -22,6 +22,7 @@ vi.mock("firebase/firestore", () => ({
   writeBatch: vi.fn(() => ({ delete: vi.fn(), commit: vi.fn() })),
   query: vi.fn(),
   where: vi.fn(),
+  collection: vi.fn(() => "setup-tokens-col"),
 }));
 
 vi.mock("firebase/storage", () => ({

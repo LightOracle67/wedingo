@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.84.0",
+    date: "2026-08-06",
+    changes: [
+      "SUPERADMIN: 'limpiar tokens no usados' ya no revoca los tokens de invitaciones con sesión activa (antes expulsaba a admins en pleno flujo) y las stats de tokens se calculan de verdad (antes salían a 0)",
+      "GUARDADO: el contador RSVP se crea con reintento y avisa si falla (antes el error se tragaba en silencio y el RSVP se rompía después), y el primer guardado ya no se bloquea si la sección de fecha está oculta",
+    ],
+  },
+  {
     version: "2.83.0",
     date: "2026-08-06",
     changes: [
