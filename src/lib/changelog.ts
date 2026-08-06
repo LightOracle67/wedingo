@@ -1,5 +1,19 @@
 export const CHANGELOG = [
   {
+    version: "2.95.1",
+    date: "2026-08-06",
+    changes: [
+      "FIX CRÍTICO: el guardado del setup fallaba con 'No tienes permiso' — normalizeConfig siempre envía los campos sociales vacíos (\"\" y \"false\") y las validaciones los rechazaban; además, la validación completa superaba el límite de 1000 expresiones de Firestore en el update. Se crea isValidInvitationUpdate (reducida) para el update del admin con sesión y se permiten los valores vacíos.",
+    ],
+  },
+  {
+    version: "2.96.0",
+    date: "2026-08-06",
+    changes: [
+      "VERIFICACIÓN: comprobado el flujo de guardado de los campos sociales (ExtrasSectionForm → normalizeConfig → reglas → Firestore) con un script de emulador que crea, guarda y recupera la config; añadidos tests de normalize para los 11 campos nuevos",
+    ],
+  },
+  {
     version: "2.95.0",
     date: "2026-08-06",
     changes: [
