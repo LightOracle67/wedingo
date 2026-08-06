@@ -921,7 +921,7 @@
     "noData": "No data",
     "total": "total",
     "barChart": "Attendance bar chart",
-    "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
+    "donutSummary": "Total: {{total}} — Attending {{yes}}, not attending {{no}}, pending {{pending}}"
   },
   "changelog": {
     "title": "Changelog",

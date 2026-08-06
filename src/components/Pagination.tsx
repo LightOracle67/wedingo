@@ -15,8 +15,10 @@ const Pagination = memo(function Pagination({
   page, totalPages, pageSize, total, pageSizes, onPageChange, onPageSizeChange
 }: PaginationProps) {
   const { t } = useTranslation();
-  // Con 0 resultados totalPages es 0: el índice no debe ser negativo.
-  const safePage = Math.max(0, Math.min(page, Math.max(0, totalPages - 1)));
+  // Con 0 resultados totalPages es 0: el índice no debe ser negativo ni
+  // mostrar "Página 1 de 0".
+  const safeTotal = Math.max(0, totalPages);
+  const safePage = Math.max(0, Math.min(page, Math.max(0, safeTotal - 1)));
 
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", justifyContent: "space-between", marginTop: "0.5rem", flexWrap: "wrap" }}>
@@ -34,7 +36,7 @@ const Pagination = memo(function Pagination({
         <button className="setup-button setup-button--ghost setup-button--compact" type="button"
           aria-label={t("attendance.prevPage")} title={t("attendance.prevPage")}
           disabled={safePage === 0} onClick={() => onPageChange(safePage - 1)}>←</button>
-        <span className="setup-help" style={{ fontSize: "0.75rem" }}>{t("attendance.page", { current: safePage + 1, total: totalPages })}</span>
+        <span className="setup-help" style={{ fontSize: "0.75rem" }}>{t("attendance.page", { current: safePage + 1, total: safeTotal })}</span>
         <button className="setup-button setup-button--ghost setup-button--compact" type="button"
           aria-label={t("attendance.nextPage")} title={t("attendance.nextPage")}
           disabled={safePage >= totalPages - 1} onClick={() => onPageChange(safePage + 1)}>→</button>

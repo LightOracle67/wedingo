@@ -165,7 +165,12 @@ export default function PublicInvitation() {
     const hour = Number.parseInt(config.weddingHour, 10);
     const minute = Number.parseInt(config.weddingMinute, 10);
     if (!day || !month || !year || !Number.isFinite(hour) || !Number.isFinite(minute)) return null;
-    return new Date(year, month - 1, day, hour, minute);
+    const date = new Date(year, month - 1, day, hour, minute);
+    // Un "31 de febrero" normaliza a 3 de marzo en silencio: si la fecha no
+    // coincide con los componentes, se descarta (no se muestra un countdown
+    // a una fecha errónea).
+    if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return null;
+    return date;
   }, [config]);
 
   /** Estado de la cuenta atrás (años/meses/días + horas/min/seg). */

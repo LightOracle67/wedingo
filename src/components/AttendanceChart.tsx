@@ -25,7 +25,7 @@ export function DonutChart({ yes, no, pending, size = 120, strokeWidth = 20 }: {
   const pendOff = (yesPct + noPct) * circ;
 
   return (
-    <svg width={size} height={size} viewBox="0 0 40 40" role="img" aria-label={t("chart.donutSummary", { yes, no, pending })}>
+    <svg width={size} height={size} viewBox="0 0 40 40" role="img" aria-label={t("chart.donutSummary", { yes, no, pending, total })}>
       <circle cx="20" cy="20" r={r} fill="none" stroke="var(--setup-border)" strokeWidth={strokeWidth * (40 / size)} opacity="0.3" />
       {yes > 0 && (
         <circle cx="20" cy="20" r={r} fill="none" stroke="var(--accent, #22c55e)" strokeWidth={strokeWidth * (40 / size)}

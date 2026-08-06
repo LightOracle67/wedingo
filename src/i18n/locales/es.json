@@ -922,7 +922,7 @@
     "noData": "Sin datos",
     "total": "total",
     "barChart": "Gráfico de barras de asistencia",
-    "donutSummary": "{{yes}} confirmados, {{no}} no asisten, {{pending}} pendientes"
+    "donutSummary": "Total: {{total}} — Confirman {{yes}}, no asisten {{no}}, sin responder {{pending}}"
   },
   "changelog": {
     "title": "Changelog",

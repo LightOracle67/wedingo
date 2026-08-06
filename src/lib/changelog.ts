@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.93.0",
+    date: "2026-08-06",
+    changes: [
+      "UI: el overlay de carga ya no se desborda en la foto del hero/galería, una fecha inválida (31 de febrero) ya no muestra un countdown erróneo, 'Cómo llegar' funciona con solo el nombre del lugar, los emojis ZWJ cuentan como 1 en el contador y la paginación no muestra 'Página 1 de 0'",
+      "ACCESIBILIDAD: 'Hoy es el gran día' se anuncia a lectores de pantalla y el gráfico de asistencia incluye el total en su descripción",
+    ],
+  },
+  {
     version: "2.92.0",
     date: "2026-08-06",
     changes: [

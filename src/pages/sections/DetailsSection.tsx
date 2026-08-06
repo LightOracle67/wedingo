@@ -168,6 +168,17 @@ const DetailsSection = memo(function DetailsSection({
                     </a>
                   </div>
                 </>
+              ) : directionsUrl ? (
+                // Sin URL de mapa embebible pero con el nombre del lugar:
+                // "Cómo llegar" busca el lugar en Google Maps igualmente
+                // (antes era inalcanzable para parejas con solo el nombre).
+                <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
+                  <a className="setup-button setup-button--ghost setup-button--compact" href={directionsUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer" onClick={() => {
+                    void import("../../lib/analytics").then(({ trackEvent }) => trackEvent("directions_click"));
+                  }}>
+                    {t("details.directions")}
+                  </a>
+                </div>
               ) : null}
             </>
           ) : null}

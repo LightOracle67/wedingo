@@ -1,7 +1,7 @@
 {
   "name": "wedingo",
   "private": true,
-  "version": "2.92.0",
+  "version": "2.93.0",
   "type": "module",
   "engines": {
     "node": ">=22.22.2"

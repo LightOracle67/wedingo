@@ -1,8 +1,18 @@
 import { memo } from "react";
 
 const CharacterCounter = memo(function CharacterCounter({ value, max }: { value: string; max: number }) {
-  // Cuenta code points (no unidades UTF-16) para que los emojis valgan 1.
-  const current = [...(value ?? "")].length;
+  // Cuenta grafemas visibles: un emoji ZWJ (👨👩👧👦) o una bandera valen 1.
+  // El spread de code points los contaba como 7/2 y el límite se alcanzaba
+  // antes de lo esperado.
+  const current = (() => {
+    const text = value ?? "";
+    if (typeof Intl !== "undefined" && "Segmenter" in Intl) {
+      try {
+        return Array.from(new Intl.Segmenter(undefined, { granularity: "grapheme" }).segment(text)).length;
+      } catch { /* fallback abajo */ }
+    }
+    return [...text].length;
+  })();
   const remaining = Math.max(0, max - current);
   return (
     <span className="character-counter" aria-live="polite" title={`${current}/${max}`}>

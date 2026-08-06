@@ -101,7 +101,9 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
                   })()}
                 </p>
               ) : (
-                <p className="mt-1 text-[clamp(1.5rem,4vw,2.5rem)] leading-tight font-serif text-boda-texto">{t("hero.todayIsTheDay")}</p>
+                // El estado final se anuncia una vez (no el tick de cada
+                // segundo, que sería molesto para lectores de pantalla).
+                <p className="mt-1 text-[clamp(1.5rem,4vw,2.5rem)] leading-tight font-serif text-boda-texto" aria-live="assertive">{t("hero.todayIsTheDay")}</p>
               )}
             </div>
           ) : null}
