@@ -5,6 +5,11 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
 }));
 
+const mockToDataURL = vi.fn();
+vi.mock("qrcode", () => ({
+  toDataURL: (...args: unknown[]) => mockToDataURL(...args),
+}));
+
 vi.mock("../../../lib/invite-messages", () => ({
   randomMessage: () => "Test invite message",
 }));
@@ -17,6 +22,18 @@ const baseProps = {
 };
 
 describe("ShareTab", () => {
+  it("renders the QR code generated in the browser", async () => {
+    mockToDataURL.mockResolvedValueOnce("data:image/png;base64,qr");
+    render(<ShareTab {...baseProps} />);
+    const img = await screen.findByAltText("share.qrCodeAlt");
+    expect(img.getAttribute("src")).toBe("data:image/png;base64,qr");
+  });
+
+  it("shows an error when the QR cannot be generated", async () => {
+    mockToDataURL.mockRejectedValueOnce(new Error("boom"));
+    render(<ShareTab {...baseProps} />);
+    expect(await screen.findByText("share.qrError")).toBeDefined();
+  });
   it("renders share section title", () => {
     render(<ShareTab {...baseProps} />);
     expect(screen.getByText("share.message")).toBeDefined();

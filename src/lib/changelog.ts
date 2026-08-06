@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.86.0",
+    date: "2026-08-06",
+    changes: [
+      "COMPARTIR: la pestaña Compartir del admin ahora muestra el código QR de la invitación, generado en el navegador (sin enviar la URL a ningún servicio externo)",
+    ],
+  },
+  {
     version: "2.85.0",
     date: "2026-08-06",
     changes: [

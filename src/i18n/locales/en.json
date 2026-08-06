@@ -544,7 +544,10 @@
     "printPdf": "Print / Save PDF",
     "linkCopied": "Link copied.",
     "messageCopied": "Message copied.",
-    "messageHint": "Customize the message that will be sent to the guests."
+    "messageHint": "Customize the message that will be sent to the guests.",
+    "qrCode": "QR code",
+    "qrCodeAlt": "QR for {{url}}",
+    "qrError": "Could not generate the QR code."
   },
   "access": {
     "description": "Use this section to generate a new code. The previous code will stop working.",

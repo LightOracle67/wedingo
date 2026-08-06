@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 import { randomMessage } from "../../lib/invite-messages";
@@ -45,6 +45,20 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
   const printPdf = useCallback(() => {
     window.open(`${window.location.origin}/${inviteToken}/print`, "_blank");
   }, [inviteToken]);
+
+  // QR del enlace de la invitación, generado en cliente (sin enviar la URL a
+  // ningún servicio externo). La librería se carga bajo demanda.
+  const [qrUrl, setQrUrl] = useState("");
+  const [qrError, setQrError] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    void import("qrcode").then((QRCode) => {
+      QRCode.toDataURL(inviteUrl, { width: 180, margin: 1, errorCorrectionLevel: "M" })
+        .then((url: string) => { if (!cancelled) setQrUrl(url); })
+        .catch(() => { if (!cancelled) setQrError(true); });
+    }).catch(() => { if (!cancelled) setQrError(true); });
+    return () => { cancelled = true; };
+  }, [inviteUrl]);
 
   const btnClass = "setup-button setup-button--compact";
   const btnGhostClass = "setup-button setup-button--ghost setup-button--compact";
@@ -108,6 +122,24 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
       <button className={btnClass} type="button" onClick={printPdf}>
         {t("share.printPdf")}
       </button>
+
+      {/* Código QR del enlace: se genera en el navegador. */}
+      <div className="setup-token-card" style={{ marginTop: "1rem", padding: "1rem", textAlign: "center" }}>
+        <div className="setup-label" style={{ marginBottom: "0.5rem" }}>{t("share.qrCode")}</div>
+        {qrUrl ? (
+          <img
+            src={qrUrl}
+            alt={t("share.qrCodeAlt", { url: inviteUrl })}
+            width={180}
+            height={180}
+            style={{ borderRadius: "6px", background: "#fff", padding: "0.5rem" }}
+          />
+        ) : qrError ? (
+          <p className="setup-help">{t("share.qrError")}</p>
+        ) : (
+          <div className="page-loading" style={{ width: 180, height: 180, margin: "0 auto" }} />
+        )}
+      </div>
     </>
   );
 });
