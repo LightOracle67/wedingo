@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.75.0",
+    date: "2026-08-06",
+    changes: [
+      "AUDIO: la caché en sessionStorage (código muerto) ya no puede romper la carga completa de la invitación, lotes de subida dentro del límite de Firestore (canciones >2 min suben), indicador de error en el FAB, el preview conserva la música tras guardar y el borrado de chunks es a prueba de errores",
+      "LOGIN/SETUP: el acceso con una invitación inexistente da un aviso claro (ya no falla en bucle creando un documento inválido), la landing retoma la invitación en curso y el borrado limpia el registro de setupTokens",
+      "SUPERADMIN: el borrado en cascada elimina también los tokens de setup (con permiso de listado por superadmin), 'Eliminar mis datos' limpia el IndexedDB de Firestore y el export del invitado solo incluye sus claves con fecha en el archivo",
+      "RENDIMIENTO: firebase/auth solo se descarga en la consola del superadmin, App Check se importa solo si hay site key",
+      "VALIDACIÓN: año de boda con formato estricto (ya no falla con permission-denied) y tokenSoleAccess traducido en los 100 idiomas",
+    ],
+  },
+  {
     version: "2.74.0",
     date: "2026-08-06",
     changes: [

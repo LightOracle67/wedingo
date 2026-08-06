@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, doc, collection, writeBatch, getDoc } from "firebase/firestore";
+import { getDocs, doc, collection, writeBatch, getDoc, query, where } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, RSVP_RESPONSES_GROUP, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadJson } from "../../lib/file-utils";
@@ -487,6 +487,11 @@ async function cascadeDelete(token: string) {
   // Config images
   const configImgSnap = await getDocs(collection(db, "invitations", token, "configImages"));
   for (const d of configImgSnap.docs) refsToDelete.push(d.ref);
+
+  // Registros de tokens de setup (hash → inviteToken): sin esto quedaban
+  // hashes huérfanos apuntando a una invitación inexistente.
+  const setupTokenSnap = await getDocs(query(collection(db, "setupTokens"), where("inviteToken", "==", token)));
+  for (const d of setupTokenSnap.docs) refsToDelete.push(d.ref);
 
   // Contador RSVP
   refsToDelete.push(doc(db, "rsvpResponses", token));

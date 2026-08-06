@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { collection, collectionGroup, doc, initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from "firebase/firestore";
 import type { Auth } from "firebase/auth";
 import type { FirebaseStorage } from "firebase/storage";
-import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -49,14 +48,18 @@ export function getStorageInstance(): Promise<FirebaseStorage> {
 }
 
 // App Check: se activa automáticamente si se define VITE_APPCHECK_SITE_KEY
-// (reCAPTCHA Enterprise) en el entorno. Mantener desactivado sin la clave
-// evita bloquear todas las peticiones de la app.
+// (reCAPTCHA Enterprise) en el entorno. El import es dinámico y solo ocurre
+// si hay clave, evitando arrastrar el SDK de app-check en la ruta crítica
+// de la invitación pública. Mantener desactivado sin la clave evita
+// bloquear todas las peticiones de la app.
 try {
   const siteKey = import.meta.env.VITE_APPCHECK_SITE_KEY;
   if (siteKey) {
-    initializeAppCheck(app, {
-      provider: new ReCaptchaEnterpriseProvider(siteKey),
-      isTokenAutoRefreshEnabled: true,
+    void import("firebase/app-check").then(({ initializeAppCheck, ReCaptchaEnterpriseProvider }) => {
+      initializeAppCheck(app, {
+        provider: new ReCaptchaEnterpriseProvider(siteKey),
+        isTokenAutoRefreshEnabled: true,
+      });
     });
   }
 } catch {

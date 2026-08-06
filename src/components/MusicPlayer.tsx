@@ -103,9 +103,9 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: { musicUrl?: string 
         </div>
       </div>
 
-      <button type="button" className={`music-player__fab${playing ? " music-player__fab--playing" : ""}${open ? " music-player__fab--shifted" : ""}`} onClick={handleToggle} aria-label={t("music.label")}>
+      <button type="button" className={`music-player__fab${playing ? " music-player__fab--playing" : ""}${open ? " music-player__fab--shifted" : ""}${error ? " music-player__fab--error" : ""}`} onClick={handleToggle} aria-label={error ? t("music.loadError") : t("music.label")}>
         <span key={iconKey} className={`music-player__fab-icon${open || playing ? " music-player__fab-icon--spin" : ""}`}>♪</span>
-        {!hasMusic ? <span className="music-player__fab-dot" /> : null}
+        {error ? <span className="music-player__fab-dot music-player__fab-dot--error" /> : !hasMusic ? <span className="music-player__fab-dot" /> : null}
         <EqualizerBars isPlaying={playing} />
       </button>
     </div>

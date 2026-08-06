@@ -131,6 +131,29 @@ describe("LandingPage", () => {
     });
   });
 
+  it("resumes an existing invitation instead of creating a new token", async () => {
+    // Tras recargar la landing con una invitación en curso, el botón retoma
+    // el token guardado sin registrar otro setupTokens.
+    sessionStorage.setItem("wedin_invite_token", "AbCdEfGhIj");
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.createInvitation"));
+    await vi.waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith("/AbCdEfGhIj/setup");
+    });
+    expect(mockCreateSetupTokenRecord).not.toHaveBeenCalled();
+    sessionStorage.removeItem("wedin_invite_token");
+  });
+
+  it("creates a new token when the stored one is invalid", async () => {
+    sessionStorage.setItem("wedin_invite_token", "not-valid!");
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.createInvitation"));
+    await vi.waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith("/mocked-invite-token/setup");
+    });
+    sessionStorage.removeItem("wedin_invite_token");
+  });
+
   it("shows a visible error when creating the invitation fails", async () => {
     mockCreateSetupTokenRecord.mockRejectedValueOnce(new Error("boom"));
     render(<LandingPage />);

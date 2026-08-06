@@ -663,7 +663,8 @@
     "restoreFailed": "No se pudo restaurar la copia de seguridad.",
     "mapUrlInvalid": "La URL del mapa de la ubicación no es válida. Usa el botón de mapa para insertar un enlace de Google Maps.",
     "socialUrlInvalid": "La URL de la red social no es válida (debe ser de Instagram o Facebook).",
-    "cancelled": "Operación cancelada."
+    "cancelled": "Operación cancelada.",
+    "yearInvalid": "El año no es válido."
   },
   "superadmin": {
     "tabs": {
@@ -974,7 +975,8 @@
     "superadminTooManyAttempts": "Demasiados intentos. Espera un momento e inténtalo de nuevo.",
     "superadminInvalidEmail": "El formato del email no es válido.",
     "superadminLoginError": "Error al iniciar sesión. Comprueba tu conexión.",
-    "sessionExpired": "Tu sesión ha expirado. Inicia sesión de nuevo para continuar."
+    "sessionExpired": "Tu sesión ha expirado. Inicia sesión de nuevo para continuar.",
+    "inviteNotFound": "Esta invitación ya no existe. Vuelve a crearla desde el inicio."
   },
   "autosave": {
     "saved": "Cambios guardados"

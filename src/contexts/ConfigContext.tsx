@@ -14,6 +14,7 @@ import { sectionHasContent } from "../lib/section-utils";
 import type { InvitationConfig } from "../types";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { clearSession } from "../lib/sessionVars";
+import { deleteSetupTokenRecord } from "../lib/setup-token";
 import { safeGetItem, safeRemoveItem } from "../lib/storage";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import { encrypt, decrypt } from "../lib/crypto-utils";
@@ -196,9 +197,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           const audio = await loadAudio(inviteToken);
           if (audio?.url) {
             parsed.musicFile = audio.url;
-            sessionStorage.setItem(STORAGE_KEYS.audio(inviteToken), audio.url);
-          } else {
-            sessionStorage.removeItem(STORAGE_KEYS.audio(inviteToken));
           }
         }
         const hydrated = { ...defaultConfig, ...parsed };
@@ -259,9 +257,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         const audio = await loadAudio(inviteToken);
         if (audio?.url) {
           parsed.musicFile = audio.url;
-          sessionStorage.setItem(STORAGE_KEYS.audio(inviteToken), audio.url);
-        } else {
-          sessionStorage.removeItem(STORAGE_KEYS.audio(inviteToken));
         }
       }
       const hydrated = { ...defaultConfig, ...parsed };
@@ -355,7 +350,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       // El musicFile se persiste en la subcolección audio (chunks), no en el
       // documento: se restaura en memoria para que el editor no quede vacío.
       const musicFileValue = (formData as Record<string, unknown>).musicFile;
-      setConfig(payload);
+      setConfig(musicFileValue ? { ...payload, musicFile: musicFileValue as string } : payload);
       setFormData(musicFileValue ? { ...payload, musicFile: musicFileValue as string } : payload);
       setHasStoredConfig(true);
 
@@ -390,6 +385,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       batch.delete(doc(db, "rsvpResponses", inviteToken));
       batch.delete(invitationDocRef(inviteToken));
       await batch.commit();
+      // El registro setupTokens/{hash} también se elimina (si el token de
+      // setup sigue en esta sesión): sin esto quedaba un hash huérfano que
+      // apuntaba a una invitación inexistente.
+      try {
+        const storedToken = safeGetItem(STORAGE_KEYS.setupToken(inviteToken), sessionStorage);
+        if (storedToken) await deleteSetupTokenRecord(storedToken);
+      } catch { /* el registro se borrará en la limpieza del superadmin */ }
       safeRemoveItem(STORAGE_KEYS.inviteCache(inviteToken));
       safeRemoveItem(STORAGE_KEYS.audio(inviteToken));
       clearSession();

@@ -119,6 +119,11 @@
   border: 1.5px solid var(--setup-grad-start, #1f1a10);
   animation: music-dot-blink 1.5s ease-in-out infinite;
 }
+/* Error de carga: pulso visible aunque el panel esté cerrado. */
+.music-player__fab-dot--error {
+  background: #e11d48;
+  animation: music-dot-blink 0.9s ease-in-out infinite;
+}
 @keyframes music-dot-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }

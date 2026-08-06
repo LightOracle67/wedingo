@@ -178,7 +178,9 @@ service cloud.firestore {
        invitaciones inexistentes (alta inicial) o con sesión activa. */
     match /setupTokens/{hashId} {
       allow get: if true;
-      allow list: if false;
+      /* Listar solo superadmin: permite limpiar hashes huérfanos al borrar
+         invitaciones (query por inviteToken). */
+      allow list: if isSuperAdmin();
       /* El alta inicial crea el registro antes de que exista la invitación;
          las rotaciones se hacen con sesión activa. Se exige un formato de
          invitación estricto (10 caracteres alfanuméricos, como genera la app)

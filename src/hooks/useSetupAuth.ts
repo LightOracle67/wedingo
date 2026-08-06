@@ -19,7 +19,6 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { getDoc, runTransaction, serverTimestamp, updateDoc, type DocumentData } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
-import { defaultConfig } from "../lib/constants";
 import { generateSetupToken, normalizeTokenValue } from "../lib/token-utils";
 import { createSetupTokenRecord, deleteSetupTokenRecord, hashSetupToken, setupTokenRef } from "../lib/setup-token";
 import { saveSession, getSession, renewSession, clearSession, firestoreSessionExpiry } from "../lib/sessionVars";
@@ -331,8 +330,11 @@ export function useSetupAuth(
         const outcome = await runTransaction(db, async (transaction) => {
           const inviteSnap = await transaction.get(inviteRef);
           if (!inviteSnap.exists()) {
-            transaction.set(inviteRef, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry(), setupTokenHash: tokenHash });
-            return "";
+            // La invitación se crea en la landing antes del login: si no
+            // existe (borrada o token huérfano) no se recrea con defaultConfig
+            // (firstName vacío) porque las reglas lo rechazarían. Mejor un
+            // error claro que una escritura denegada en bucle.
+            throw new Error("inviteNotFound");
           }
 
           const data = inviteSnap.data();
@@ -356,6 +358,11 @@ export function useSetupAuth(
           userConfirmed = window.confirm(t("auth.sessionExists"));
           setIsTokenVerifying(true);
           if (!userConfirmed) return null;
+        } else if ((err as Error)?.message === "inviteNotFound") {
+          // Token huérfano: la invitación ya no existe (borrada o nunca
+          // guardada). No se puede abrir sesión sobre un doc inexistente.
+          setIsTokenVerifying(false);
+          throw new Error("inviteNotFound");
         } else {
           throw err;
         }
@@ -401,7 +408,7 @@ export function useSetupAuth(
 
     } catch (err) {
       console.error("[app]", "[useSetupAuth]", "token login failed", { error: err });
-      setAuthMessage(t("auth.codeVerifyError"));
+      setAuthMessage((err as Error)?.message === "inviteNotFound" ? t("auth.inviteNotFound") : t("auth.codeVerifyError"));
     } finally {
       setIsTokenVerifying(false);
 

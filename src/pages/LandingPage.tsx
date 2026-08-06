@@ -44,6 +44,18 @@ export default function LandingPage() {
     setCreateError("");
     setCreating(true);
 
+    // Si ya hay una invitación en curso (recarga de la landing), se retoma en
+    // lugar de crear otra con un token nuevo (evita registros setupTokens
+    // huérfanos y pérdida del acceso previo).
+    const existing = (() => {
+      try { return sessionStorage.getItem(STORAGE_KEYS.inviteToken); } catch { return null; }
+    })();
+    if (existing && /^[A-Za-z0-9]{10}$/.test(existing)) {
+      navigate(`/${existing}/setup`);
+      setCreating(false);
+      return;
+    }
+
     const token = generateInviteToken();
     // Token de setup generado y registrado (hash) antes de que exista la
     // invitación, de modo que la activación de sesión pueda verificarse.

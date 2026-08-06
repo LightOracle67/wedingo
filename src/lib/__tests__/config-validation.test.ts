@@ -113,6 +113,14 @@ describe("validateConfigForSave", () => {
     expect(result.errorKey).toBeNull();
   });
 
+  it("rejects an invalid year format that Firestore would reject", () => {
+    // "999"/"0300" superan la fecha pasada pero no el formato ^[12][0-9]{3}$.
+    const result = validateConfigForSave(validConfig({ weddingYear: "999" }), true, 2030);
+    expect(result.errorKey).toBe("errors.yearInvalid");
+    const result2 = validateConfigForSave(validConfig({ weddingYear: "0300" }), true, 2030);
+    expect(result2.errorKey).toBe("errors.yearInvalid");
+  });
+
   it("rejects an invalid accommodation URL", () => {
     const result = validateConfigForSave(validConfig({ accommodationURL: "https://example.com" }), true, 2030);
     expect(result.errorKey).toBe("errors.accommodationUrlInvalid");

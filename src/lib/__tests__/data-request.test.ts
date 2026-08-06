@@ -88,6 +88,16 @@ describe("data-request", () => {
     expect(exported?.["wedin_rsvp_cache_abc"]).toBe("{}");
   });
 
+  it("exportGuestLocalData does not leak data of other invitations", () => {
+    localStorage.setItem("wedin_invite_cache_abc", "mine");
+    localStorage.setItem("wedin_invite_cache_xyz", "other");
+    localStorage.setItem("wedin_setup_token_xyz", "secret");
+    const { exported } = exportGuestLocalData("abc");
+    expect(exported?.["wedin_invite_cache_abc"]).toBe("mine");
+    expect(exported?.["wedin_invite_cache_xyz"]).toBeUndefined();
+    expect(exported?.["wedin_setup_token_xyz"]).toBeUndefined();
+  });
+
   it("exportGuestLocalData tolerates unreadable keys", () => {
     const spy = vi.spyOn(localStorage, "getItem").mockImplementation(() => {
       throw new Error("denied");

@@ -58,6 +58,20 @@ export function eraseGuestLocalData(inviteToken?: string): DataRequestResult {
   };
   try { wipe(localStorage); } catch { /* almacenamiento no disponible */ }
   try { wipe(sessionStorage); } catch { /* almacenamiento no disponible */ }
+
+  // El IndexedDB de Firestore (persistentLocalCache, offline) también guarda
+  // datos de la invitación: se borra al eliminar los datos personales.
+  if (typeof indexedDB !== "undefined") {
+    try {
+      void indexedDB.databases().then((dbs) => {
+        const firestoreDbs = dbs.filter((d) => (d.name || "").startsWith("firestore"));
+        for (const d of firestoreDbs) {
+          try { indexedDB.deleteDatabase(d.name!); } catch { }
+        }
+      });
+    } catch { /* IndexedDB no disponible */ }
+  }
+
   return { erasedKeys };
 }
 
@@ -65,10 +79,23 @@ export function eraseGuestLocalData(inviteToken?: string): DataRequestResult {
  * Exporta los datos personales que Wedingo guarda sobre el visitante en
  * el navegador, devolviendo un objeto clave → valor.
  */
-export function exportGuestLocalData(_inviteToken?: string): DataRequestResult {
+export function exportGuestLocalData(inviteToken?: string): DataRequestResult {
   const exported: Record<string, string> = {};
   const collect = (store: Storage) => {
     Object.keys(store).forEach((key) => {
+      // Solo se exportan claves relacionadas con esta invitación (o de la
+      // sesión/consentimiento): no se vuelcan datos de otras invitaciones
+      // ni de la sesión del admin.
+      const relevant = PROTECTED_PREFIXES.some((p) => key.startsWith(p))
+        || key === STORAGE_KEYS.session
+        || key === STORAGE_KEYS.cookieConsent
+        || key === STORAGE_KEYS.cookiePrefs
+        || key === STORAGE_KEYS.inviteCache(inviteToken ?? "")
+        || key === STORAGE_KEYS.rsvpCache(inviteToken ?? "")
+        || key === STORAGE_KEYS.setupToken(inviteToken ?? "")
+        || key.startsWith(`${INVITE_CACHE_PREFIX}${inviteToken}`)
+        || key.startsWith(`${AUDIO_PREFIX}${inviteToken}`);
+      if (!relevant) return;
       try {
         exported[key] = store.getItem(key) ?? "";
       } catch { /* clave no legible */ }

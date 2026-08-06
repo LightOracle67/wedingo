@@ -336,7 +336,7 @@
     "currentMusic": "Таңдалған музыка",
     "removeMusic": "Музыканы алып тастаңыз",
     "copyToken": "Copiar código de acceso",
-    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
+    "tokenSoleAccess": "This code is your only admin access: store it somewhere safe. If you lose it, it cannot be recovered.",
     "galleryMoveLeft": "Mover a la izquierda",
     "galleryMoveRight": "Mover a la derecha",
     "instagramLabel": "Instagram de los novios (opcional)",

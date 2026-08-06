@@ -84,6 +84,13 @@ export function validateWeddingDate(config: Record<string, string>, maxAllowedYe
 
       return "errors.dateBeforeToday";
     }
+    // Las reglas de Firestore exigen un año con formato ^[12][0-9]{3}$: un
+    // "999"/"0300" pasaría la validación de fecha pasada (en edición) pero
+    // Firestore lo rechazaría con permission-denied. Se valida siempre.
+    if (!/^[12][0-9]{3}$/.test(config.weddingYear)) {
+
+      return "errors.yearInvalid";
+    }
     if (Number.isNaN(parsedYear) || parsedYear > maxAllowedYear) {
 
       return "errors.yearTooFar";

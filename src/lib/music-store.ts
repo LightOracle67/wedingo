@@ -40,7 +40,10 @@ export async function addAudio(inviteToken: string, encrypted: string, dataUrl: 
     chunks.push(encrypted.slice(i, i + CHUNK_SIZE));
   }
 
-  const BATCH_LIMIT = 400;
+  // Firestore limita cada request a 10 MiB: 400 chunks × 200 KB = 80 MB
+  // superaba el límite y las canciones >2 min no subían. ~40 chunks (8 MB)
+  // mantiene cada batch por debajo del tope.
+  const BATCH_LIMIT = 40;
   for (let batchIdx = 0; batchIdx < chunks.length; batchIdx += BATCH_LIMIT) {
     const batch = writeBatch(db);
     const end = Math.min(batchIdx + BATCH_LIMIT, chunks.length);
@@ -78,10 +81,16 @@ export async function loadAudio(inviteToken: string) {
 
 export async function deleteAudio(inviteToken: string) {
 
-  const snap = await getDocs(audioCol(inviteToken));
-  if (snap.empty) { ; return; }
-  const batch = writeBatch(db);
-  snap.docs.forEach((d) => batch.delete(d.ref));
-  await batch.commit();
-
+  try {
+    const snap = await getDocs(audioCol(inviteToken));
+    if (snap.empty) { ; return; }
+    const batch = writeBatch(db);
+    snap.docs.forEach((d) => batch.delete(d.ref));
+    await batch.commit();
+  } catch (err) {
+    // Un borrado parcial dejaría chunks huérfanos: se relanza para que el
+    // llamador (cascada de borrado) lo trate como fallo.
+    console.error("[app]", "[music-store]", "deleteAudio error", { error: err });
+    throw err;
+  }
 }

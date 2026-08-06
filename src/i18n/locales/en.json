@@ -663,7 +663,8 @@
     "restoreFailed": "Could not restore the backup.",
     "mapUrlInvalid": "The location map URL is not valid. Use the map button to insert a Google Maps link.",
     "socialUrlInvalid": "The social URL is not valid (must be Instagram or Facebook).",
-    "cancelled": "Operation cancelled."
+    "cancelled": "Operation cancelled.",
+    "yearInvalid": "The year is not valid."
   },
   "superadmin": {
     "tabs": {
@@ -973,7 +974,8 @@
     "superadminTooManyAttempts": "Too many attempts. Wait a moment and try again.",
     "superadminInvalidEmail": "The email format is not valid.",
     "superadminLoginError": "Error logging in. Check your connection.",
-    "sessionExpired": "Your session has expired. Log in again to continue."
+    "sessionExpired": "Your session has expired. Log in again to continue.",
+    "inviteNotFound": "This invitation no longer exists. Create a new one from the start."
   },
   "autosave": {
     "saved": "Changes saved"

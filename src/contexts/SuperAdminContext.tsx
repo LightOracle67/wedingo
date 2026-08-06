@@ -33,6 +33,15 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
   useEffect(() => {
 
     let unsubscribe: (() => void) | null = null;
+    // El SDK de auth solo se carga si el usuario está en la consola de
+    // superadmin o tiene una sesión superadmin persistida: un invitado en
+    // una invitación pública no debe descargar firebase/auth (~25 KB gzip).
+    const isConsoleRoute = window.location.pathname.startsWith("/_/console");
+    const hasStoredSession = getSession()?.type === "superadmin";
+    if (!isConsoleRoute && !hasStoredSession) {
+      setIsLoading(false);
+      return;
+    }
     // Auth se inicializa de forma diferida (solo ruta de superadmin); el
     // SDK se importa aquí para no cargarlo en el arranque de la app.
     getAuthInstance().then(async (instance) => {

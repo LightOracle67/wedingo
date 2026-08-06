@@ -75,6 +75,13 @@ function renderProvider() {
 describe("SuperAdminProvider", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    // El provider solo inicializa auth en la consola de superadmin (o con
+    // sesión persistida): todos los tests simulan estar en esa ruta.
+    Object.defineProperty(window, "location", {
+      value: { ...window.location, pathname: "/_/console" },
+      configurable: true,
+      writable: true,
+    });
     mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: null) => void) => {
       setTimeout(() => cb(null), 0);
       return () => {};
@@ -86,6 +93,18 @@ describe("SuperAdminProvider", () => {
   it("renders children", () => {
     render(<SuperAdminProvider><div>child</div></SuperAdminProvider>);
     expect(screen.getByText("child")).toBeInTheDocument();
+  });
+
+  it("does not initialize auth outside the superadmin console", async () => {
+    // Un invitado en una invitación pública no debe descargar firebase/auth.
+    Object.defineProperty(window, "location", {
+      value: { ...window.location, pathname: "/abcdefghij" },
+      configurable: true,
+      writable: true,
+    });
+    renderProvider();
+    await vi.waitFor(() => expect(screen.getByTestId("isLoading").textContent).toBe("false"));
+    expect(mockOnAuthStateChanged).not.toHaveBeenCalled();
   });
 
   it("shows not superadmin initially", async () => {

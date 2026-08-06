@@ -230,7 +230,7 @@ describe("useSetupAuth", () => {
       expect(result.current.isTokenVerified).toBe(true);
     });
 
-    it("creates the invite when it does not exist during login", async () => {
+    it("rejects login when the invite does not exist (no recreates with empty defaults)", async () => {
       mockGetDoc.mockImplementation(async (ref: unknown) => {
         if (String(ref).startsWith("token-ref-")) {
           return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };
@@ -255,8 +255,11 @@ describe("useSetupAuth", () => {
         await result.current.handleTokenLogin();
       });
 
-      expect(setSpy).toHaveBeenCalled();
-      expect(result.current.isTokenVerified).toBe(true);
+      // No se recrea la invitación con defaultConfig (las reglas lo rechazan):
+      // se avisa de que ya no existe.
+      expect(setSpy).not.toHaveBeenCalled();
+      expect(result.current.isTokenVerified).toBe(false);
+      expect(result.current.authMessage).toBe("auth.inviteNotFound");
     });
 
     it("logs in successfully with valid token", async () => {
