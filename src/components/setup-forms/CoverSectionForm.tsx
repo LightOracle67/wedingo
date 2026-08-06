@@ -140,7 +140,7 @@ export default function CoverSectionForm({ prefix = "" }) {
       </fieldset>
 
       <label className="setup-label" htmlFor={id("inviteMessage")}>
-        {t("setup.messageLabel")} <CharacterCounter current={(formData.inviteMessage || "").length} max={500} />
+        {t("setup.messageLabel")} <CharacterCounter value={formData.inviteMessage || ""} max={500} />
       </label>
       <textarea
         id={id("inviteMessage")}
@@ -151,6 +151,27 @@ export default function CoverSectionForm({ prefix = "" }) {
         aria-describedby={id("messageHint")}
       />
       <p className="setup-help" id={id("messageHint")}>{t("setup.messageHint")}</p>
+
+      <label className="setup-label" htmlFor={id("instagramUrl")}>{t("setup.instagramLabel")}</label>
+      <input
+        id={id("instagramUrl")}
+        className="setup-input"
+        value={formData.instagramUrl}
+        onChange={(e) => updateFormField("instagramUrl", e.target.value.slice(0, 1000))}
+        placeholder="https://www.instagram.com/tunombre"
+        inputMode="url"
+        autoComplete="url"
+      />
+      <label className="setup-label" htmlFor={id("facebookUrl")}>{t("setup.facebookLabel")}</label>
+      <input
+        id={id("facebookUrl")}
+        className="setup-input"
+        value={formData.facebookUrl}
+        onChange={(e) => updateFormField("facebookUrl", e.target.value.slice(0, 1000))}
+        placeholder="https://www.facebook.com/tunombre"
+        inputMode="url"
+        autoComplete="url"
+      />
 
       <p className="setup-label">{t("setup.themeLabel")}</p>
       <ThemePicker value={formData.theme} onChange={handleThemeChange} t={t as (key: string, options?: Record<string, unknown>) => string} />

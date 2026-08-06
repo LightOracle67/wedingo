@@ -133,6 +133,11 @@ export default function DataTab() {
         const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
         data.gallery = gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() }));
       } catch { data.gallery = []; }
+      // El audio también forma parte del backup individual.
+      try {
+        const audioSnap = await getDocs(collection(db, "invitations", token, "audio"));
+        data.audio = audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() }));
+      } catch { data.audio = []; }
       downloadJson(`${token}_export.json`, data);
       addToast("success", t("superadmin.data.exportedOne", { token }));
     } catch {
@@ -478,6 +483,13 @@ async function cascadeDelete(token: string) {
   // Audio chunks
   const audioSnap = await getDocs(collection(db, "invitations", token, "audio"));
   for (const d of audioSnap.docs) refsToDelete.push(d.ref);
+
+  // Config images
+  const configImgSnap = await getDocs(collection(db, "invitations", token, "configImages"));
+  for (const d of configImgSnap.docs) refsToDelete.push(d.ref);
+
+  // Contador RSVP
+  refsToDelete.push(doc(db, "rsvpResponses", token));
 
   // Invitation doc (siempre al final)
   refsToDelete.push(doc(db, "invitations", token));

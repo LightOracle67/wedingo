@@ -13,6 +13,10 @@ vi.mock("../../hooks/useToast", () => ({
   useToast: () => ({ addToast: mockAddToast }),
 }));
 
+vi.mock("../../contexts", () => ({
+  useApp: () => ({ rsvpEntries: [{ id: "r1", guestName: "Ana" }] }),
+}));
+
 vi.mock("../../lib/data-request", () => ({
   eraseGuestLocalData: mockErase,
   exportGuestLocalData: mockExport,

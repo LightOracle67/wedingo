@@ -225,25 +225,34 @@ export default function PublicInvitation() {
   useEffect(() => {
     if (!config.firstName || !config.weddingYear) return;
     const coupleName = `${config.firstName} & ${config.secondName || ""}`.trim();
-    const schema = {
+    // startDate en ISO 8601 estricto: weddingMonth es el nombre del mes en
+    // español; sin convertirlo a número Google rechazaba el Event.
+    const pad = (n: string) => n.padStart(2, "0");
+    const monthNum = MONTH_VALUE_TO_NUMBER[config.weddingMonth as keyof typeof MONTH_VALUE_TO_NUMBER];
+    const startDate = monthNum
+      ? `${config.weddingYear}-${pad(String(monthNum))}-${pad(config.weddingDay)}T${pad(config.weddingHour)}:${pad(config.weddingMinute)}:00`
+      : undefined;
+    const schema: Record<string, unknown> = {
       "@context": "https://schema.org",
       "@type": "Event",
       "name": coupleName,
       "description": config.inviteMessage || coupleName,
-      "startDate": `${config.weddingYear}-${config.weddingMonth}-${config.weddingDay}T${config.weddingHour}:${config.weddingMinute}:00`,
-      "location": {
-        "@type": "Place",
-        "name": config.weddingPlace || undefined,
-      },
+      "url": `${SITE_URL}/${inviteToken}`,
+      "image": config.couplePhoto && /^https?:/.test(config.couplePhoto) ? config.couplePhoto : `${SITE_URL}/og-banner.png`,
+      "organizer": { "@type": "Person", "name": coupleName },
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
     };
+    if (startDate) schema.startDate = startDate;
+    if (config.weddingPlace) {
+      schema.location = { "@type": "Place", "name": config.weddingPlace, "address": config.weddingPlace };
+    }
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.textContent = JSON.stringify(schema);
     document.head.appendChild(script);
     return () => { script.remove(); };
-  }, [config.firstName, config.secondName, config.inviteMessage, config.weddingYear, config.weddingMonth, config.weddingDay, config.weddingHour, config.weddingMinute, config.weddingPlace]);
+  }, [config.firstName, config.secondName, config.inviteMessage, config.weddingYear, config.weddingMonth, config.weddingDay, config.weddingHour, config.weddingMinute, config.weddingPlace, config.couplePhoto, inviteToken]);
 
   // ─── Metadatos sociales Open Graph / Twitter (SEO) ─────
   useEffect(() => {
@@ -288,6 +297,8 @@ export default function PublicInvitation() {
       locationDescription,
       calendarLink,
       weddingSiteURL: config.weddingSiteURL,
+      instagramUrl: config.instagramUrl,
+      facebookUrl: config.facebookUrl,
       mapView: config.weddingMapView,
       staticMap: config.weddingMapStatic === "true",
       detailsMapMode: config.detailsMapMode,
@@ -348,6 +359,7 @@ export default function PublicInvitation() {
     config.cornerDecoration,
     formattedDate, formattedTime,
     hasLocationData, locationDescription, calendarLink, config.weddingSiteURL,
+    config.instagramUrl, config.facebookUrl,
     config.weddingMapView, config.weddingMapStatic,
     config.detailsMapMode, config.transportMapMode, config.accommodationMapMode,
     config.transportEnabled, config.transportDepartures,

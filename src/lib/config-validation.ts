@@ -173,6 +173,15 @@ export function validateConfigForSave(
   if (sanitized.weddingSiteURL && !isValidGoogleMapsUrl(sanitized.weddingSiteURL)) {
     return { sanitized, hiddenSet, errorKey: "errors.mapUrlInvalid" };
   }
+  // Redes sociales: si se rellenan deben ser URL de Instagram/Facebook.
+  const socialUrl = (url: string | undefined, host: "instagram.com" | "facebook.com") =>
+    !url || /^https:\/\/(www\.)?(instagram|facebook)\.com\//.test(url) || url.startsWith(`https://${host}/`);
+  if (sanitized.instagramUrl && !socialUrl(sanitized.instagramUrl, "instagram.com")) {
+    return { sanitized, hiddenSet, errorKey: "errors.socialUrlInvalid" };
+  }
+  if (sanitized.facebookUrl && !socialUrl(sanitized.facebookUrl, "facebook.com")) {
+    return { sanitized, hiddenSet, errorKey: "errors.socialUrlInvalid" };
+  }
 
   return { sanitized, hiddenSet, errorKey: null };
 }

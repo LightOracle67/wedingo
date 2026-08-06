@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.72.0",
+    date: "2026-08-06",
+    changes: [
+      "SUPERADMIN: borrado en cascada completo en el panel (galería, audio y configImages ya no quedan huérfanos), export individual con audio e índice de TokensTab versionado",
+      "SEO: el JSON-LD de las invitaciones usa startDate ISO válido (antes Google rechazaba el Event) e incluye url, imagen y organizador; og:locale por idioma",
+      "FUNCIONALIDAD: redes sociales de los novios (Instagram/Facebook) en DetailsSection con validación y reglas",
+      "UI: contador de caracteres con code points (emojis) y anunciado, gráficos accesibles, ErrorBoundary con registro del error",
+      "GDPR: 'Exportar mis datos' incluye las respuestas del invitado y la política aclara la retención sin 'automática'",
+    ],
+  },
+  {
     version: "2.71.0",
     date: "2026-08-06",
     changes: [

@@ -123,6 +123,8 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   customSeal: s(value?.customSeal),
   cornerDecoration: s(value?.cornerDecoration),
   weddingSiteURL: s(value?.weddingSiteURL ?? value?.weddingMapUrl),
+  instagramUrl: s(value?.instagramUrl).slice(0, 1000),
+  facebookUrl: s(value?.facebookUrl).slice(0, 1000),
   weddingMapView: ["roadmap","satellite","hybrid"].includes(s(value?.weddingMapView)) ? s(value?.weddingMapView) : "roadmap",
   weddingMapStatic: s(value?.weddingMapStatic) === "true" ? "true" : "false",
   detailsMapMode: normalizeMapMode(value?.detailsMapMode),

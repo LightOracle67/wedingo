@@ -12,6 +12,14 @@ class ErrorBoundaryInner extends Component<{ t: (key: string) => string; childre
     return { error };
   }
 
+  override componentDidCatch(error: Error, info: React.ErrorInfo) {
+    // Registra el error para diagnóstico (Sentry gated por consentimiento).
+    try {
+      import("../lib/error-utils").then(({ logError }) => logError(error, "error-boundary"));
+    } catch { /* logging opcional */ }
+    console.error("[app]", "[ErrorBoundary]", "caught error", { error, info });
+  }
+
   override render() {
     const { t } = this.props;
     if (this.state.error) {

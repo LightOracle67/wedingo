@@ -19,7 +19,7 @@ export default function GiftsSectionForm({ prefix = "" }) {
   return (
     <>
       <label className="setup-label" htmlFor={id("giftsInfo")}>
-        {t("setup.giftsInfoLabel")} <CharacterCounter current={(formData.giftsInfo || "").length} max={2000} />
+        {t("setup.giftsInfoLabel")} <CharacterCounter value={formData.giftsInfo || ""} max={2000} />
       </label>
       <textarea
         id={id("giftsInfo")}
@@ -34,7 +34,7 @@ export default function GiftsSectionForm({ prefix = "" }) {
       <p className="setup-help" id={id("giftsInfoHint")}>{t("setup.giftsInfoHint")}</p>
 
       <label className="setup-label" htmlFor={id("bankInfo")}>
-        {t("setup.bankInfoLabel")} <CharacterCounter current={(formData.bankInfo || "").length} max={100} />
+        {t("setup.bankInfoLabel")} <CharacterCounter value={formData.bankInfo || ""} max={100} />
       </label>
       <input
         id={id("bankInfo")}

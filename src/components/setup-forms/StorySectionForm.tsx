@@ -11,7 +11,7 @@ export default function StorySectionForm({ prefix = "" }) {
   return (
     <>
       <label className="setup-label" htmlFor={id("storyText")}>
-        {t("setup.storyLabel")} <CharacterCounter current={(formData.storyText || "").length} max={500} />
+        {t("setup.storyLabel")} <CharacterCounter value={formData.storyText || ""} max={500} />
       </label>
       <textarea
         id={id("storyText")}

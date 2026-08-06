@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { deleteDoc, doc, getDocs } from "firebase/firestore";
-import { INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
+import { doc, getDocs, writeBatch } from "firebase/firestore";
+import { db, INVITATIONS_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
 import { searchInvitations, formatBytes } from "../../lib/superadmin-utils";
 import { useTranslation } from "react-i18next";
 
@@ -29,7 +29,19 @@ const InvitationsTab = memo(function InvitationsTab() {
     if (!window.confirm(t("superadmin.deleteConfirmInvitation", { id }))) return;
     setDeleting(id);
     try {
-      await deleteDoc(doc(INVITATIONS_COLLECTION_REF, id));
+      // Borrado en cascada: sin esto las subcolecciones (RSVP, galería,
+      // audio, configImages) quedaban huérfanas y de lectura pública.
+      const snap = await getDocs(rsvpByInviteRef(id));
+      const batch = writeBatch(db);
+      snap.docs.forEach((d: { ref: unknown }) => batch.delete(d.ref as never));
+      const { deleteGallery, deleteAllConfigImages } = await import("../../lib/image-store");
+      const { deleteAudio } = await import("../../lib/music-store");
+      await deleteGallery(id);
+      await deleteAllConfigImages(id);
+      await deleteAudio(id);
+      batch.delete(doc(db, "rsvpResponses", id));
+      batch.delete(doc(INVITATIONS_COLLECTION_REF, id));
+      await batch.commit();
       setInvitations((prev) => prev.filter((i) => i.id !== id));
     } catch { setError(t("superadmin.deleteError")); }
     setDeleting(null);

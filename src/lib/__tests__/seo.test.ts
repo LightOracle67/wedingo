@@ -21,7 +21,7 @@ describe("seo", () => {
     expect(document.querySelector('meta[property="og:title"]')?.getAttribute("content")).toBe("Ana & Luis — Wedingo");
     expect(document.querySelector('meta[property="og:description"]')?.getAttribute("content")).toBe("Os esperamos");
     expect(document.querySelector('meta[property="og:url"]')?.getAttribute("content")).toBe(`${SITE_URL}/abc123`);
-    expect(document.querySelector('meta[property="og:locale"]')?.getAttribute("content")).toBe("es");
+    expect(document.querySelector('meta[property="og:locale"]')?.getAttribute("content")).toBe("es_ES");
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute("href")).toBe(`${SITE_URL}/abc123`);
   });
 

@@ -75,6 +75,8 @@ service cloud.firestore {
         && (!data.keys().hasAny(['weddingDressCodeCustom']) || (data.weddingDressCodeCustom is string && data.weddingDressCodeCustom.size() <= 500 && isSafeText(data.weddingDressCodeCustom)))
         && (!data.keys().hasAny(['bankInfo']) || (data.bankInfo is string && data.bankInfo.size() <= 2000))
         && (!data.keys().hasAny(['weddingSiteURL']) || (data.weddingSiteURL is string && data.weddingSiteURL.size() <= 1000 && !data.weddingSiteURL.matches('(?i).*javascript:.*')))
+        && (!data.keys().hasAny(['instagramUrl']) || (data.instagramUrl is string && data.instagramUrl.size() <= 1000 && !data.instagramUrl.matches('(?i).*javascript:.*')))
+        && (!data.keys().hasAny(['facebookUrl']) || (data.facebookUrl is string && data.facebookUrl.size() <= 1000 && !data.facebookUrl.matches('(?i).*javascript:.*')))
         && (!data.keys().hasAny(['detailsMapMode']) || data.detailsMapMode in ['iframe', 'name', 'hidden'])
         && (!data.keys().hasAny(['transportMapMode']) || data.transportMapMode in ['iframe', 'name', 'hidden'])
         && (!data.keys().hasAny(['accommodationMapMode']) || data.accommodationMapMode in ['iframe', 'name', 'hidden'])

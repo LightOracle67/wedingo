@@ -36,6 +36,9 @@ export interface InvitationConfig {
   weddingMinute: string;
   weddingPlace: string;
   weddingSiteURL: string;
+  /** Redes sociales de los novios (opcional). */
+  instagramUrl: string;
+  facebookUrl: string;
   weddingMapView: string;
   weddingMapStatic: string;
   detailsMapMode: string;

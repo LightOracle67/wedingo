@@ -10,7 +10,7 @@ const DetailsSection = memo(function DetailsSection({
   style, className,
   formattedDate, formattedTime, hasLocationData, locationDescription,
   calendarLink,
-  weddingSiteURL, mapView, staticMap, detailsMapMode,
+  weddingSiteURL, instagramUrl, facebookUrl, mapView, staticMap, detailsMapMode,
   cornerDecoration,
 }: {
   style?: React.CSSProperties;
@@ -21,6 +21,8 @@ const DetailsSection = memo(function DetailsSection({
   locationDescription?: string;
   calendarLink?: string;
   weddingSiteURL?: string;
+  instagramUrl?: string;
+  facebookUrl?: string;
   mapView?: string;
   staticMap?: boolean;
   detailsMapMode?: string;
@@ -109,6 +111,26 @@ const DetailsSection = memo(function DetailsSection({
               >
                 {t("details.addToIcs")}
               </button>
+            </div>
+          ) : null}
+
+          <div className="story-divider" />
+
+          {/* Redes sociales de los novios (opcional). */}
+          {instagramUrl || facebookUrl ? (
+            <div className="story-social-actions" style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
+              {instagramUrl ? (
+                <a href={instagramUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer" aria-label={t("details.instagramLabel")} title={t("details.instagramLabel")}
+                  style={{ color: "var(--invite-title-color)", fontSize: "1.3rem", textDecoration: "none", opacity: 0.9 }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                </a>
+              ) : null}
+              {facebookUrl ? (
+                <a href={facebookUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer" aria-label={t("details.facebookLabel")} title={t("details.facebookLabel")}
+                  style={{ color: "var(--invite-title-color)", fontSize: "1.3rem", textDecoration: "none", opacity: 0.9 }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M14 8h3V5h-3a4 4 0 0 0-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9a1 1 0 0 1 1-1z"/></svg>
+                </a>
+              ) : null}
             </div>
           ) : null}
 

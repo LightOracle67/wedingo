@@ -75,7 +75,9 @@
     "viewGoogleMaps": "Ikusi Google Maps-en",
     "viewAppleMaps": "Ikusi Apple Maps-en",
     "directions": "Cómo llegar",
-    "addToIcs": "Añadir a Apple/Outlook"
+    "addToIcs": "Añadir a Apple/Outlook",
+    "instagramLabel": "Instagram de los novios",
+    "facebookLabel": "Facebook de los novios"
   },
   "info": {
     "sectionLabel": "Gonbidatuei buruz",
@@ -336,7 +338,9 @@
     "copyToken": "Copiar código de acceso",
     "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo.",
     "galleryMoveLeft": "Mover a la izquierda",
-    "galleryMoveRight": "Mover a la derecha"
+    "galleryMoveRight": "Mover a la derecha",
+    "instagramLabel": "Instagram de los novios (opcional)",
+    "facebookLabel": "Facebook de los novios (opcional)"
   },
   "admin": {
     "tabs": {
@@ -537,7 +541,8 @@
     "encryptFailed": "Irudiak enkriptatzea huts egin du.",
     "imageTooLarge": "Irudia handiegia da konprimitu ondoren ere.",
     "fileEmpty": "Fitxategia hutsik dago. ",
-    "mapUrlInvalid": "La URL del mapa de la ubicación no es válida. Usa el botón de mapa para insertar un enlace de Google Maps."
+    "mapUrlInvalid": "La URL del mapa de la ubicación no es válida. Usa el botón de mapa para insertar un enlace de Google Maps.",
+    "socialUrlInvalid": "La URL de la red social no es válida (debe ser de Instagram o Facebook)."
   },
   "superadmin": {
     "tabs": {
@@ -654,7 +659,8 @@
     "migrateButton": "Migrar token",
     "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
     "tokenMigrated": "Token migrado correctamente.",
-    "tokenMigrateError": "No se pudo migrar el token."
+    "tokenMigrateError": "No se pudo migrar el token.",
+    "cleanupDone": "Limpieza completada: {{deleted}} eliminadas{{failed, {{failed}} fallos}}"
   },
   "compliance": {
     "title": "Tratamendu jardueren erregistroa (GDPR 30. Art.)",

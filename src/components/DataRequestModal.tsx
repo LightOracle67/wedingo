@@ -12,6 +12,7 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 import { useToast } from "../hooks/useToast";
+import { useApp } from "../contexts";
 import { eraseGuestLocalData, exportGuestLocalData } from "../lib/data-request";
 import "../styles/modals.css";
 
@@ -25,13 +26,17 @@ interface DataRequestModalProps {
 const DataRequestModal = memo(function DataRequestModal({ inviteToken, onClose }: DataRequestModalProps) {
   const { t } = useTranslation();
   const { addToast } = useToast();
+  // Respuestas del invitado ya cargadas (caché/descifradas): se incluyen en
+  // el export de portabilidad cuando están disponibles.
+  const { rsvpEntries } = useApp();
   const focusTrapRef = useFocusTrap<HTMLDivElement>(true);
 
-  /** Descarga un JSON con los datos del navegador (portabilidad). */
+  /** Descarga un JSON con los datos del navegador y las respuestas (portabilidad). */
   const handleExport = () => {
     try {
       const { exported } = exportGuestLocalData(inviteToken);
-      const blob = new Blob([JSON.stringify(exported ?? {}, null, 2)], { type: "application/json" });
+      const payload = { ...(exported ?? {}), rsvp: rsvpEntries ?? [] };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;

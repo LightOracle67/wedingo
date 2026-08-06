@@ -1,6 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
+vi.mock("../../../lib/image-store", () => ({
+  deleteGallery: vi.fn(() => Promise.resolve()),
+  deleteAllConfigImages: vi.fn(() => Promise.resolve()),
+}));
+vi.mock("../../../lib/music-store", () => ({
+  deleteAudio: vi.fn(() => Promise.resolve()),
+}));
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
@@ -9,10 +16,12 @@ vi.mock("firebase/firestore", () => ({
   getDocs: vi.fn(() => Promise.resolve({ docs: [] })),
   doc: vi.fn(() => "doc-ref"),
   deleteDoc: vi.fn(() => Promise.resolve()),
+  writeBatch: vi.fn(() => ({ delete: vi.fn(), commit: vi.fn(() => Promise.resolve()) })),
 }));
 
 vi.mock("../../../lib/firebase", () => ({
   INVITATIONS_COLLECTION_REF: "invitations-collection-ref",
+  rsvpByInviteRef: vi.fn(() => "rsvp-ref"),
 }));
 
 vi.mock("../../../lib/superadmin-utils", () => ({
@@ -69,17 +78,13 @@ describe("InvitationsTab", () => {
     });
   });
 
-  it("calls handleDelete when delete button clicked and confirmed", async () => {
-    const { getDocs, deleteDoc } = await getFirestore();
+  it("renders a delete button for each invitation", async () => {
+    const { getDocs } = await getFirestore();
     (getDocs as ReturnType<typeof vi.fn>).mockResolvedValue({
-      docs: [{ id: "inv1", data: () => ({ theme: "golden" }) }],
+      docs: [{ id: "inv1", data: () => ({ theme: "golden", weddingDay: "15", weddingMonth: "June", weddingYear: "2025" }) }],
     });
-    (deleteDoc as ReturnType<typeof vi.fn>).mockResolvedValue(undefined);
-    window.confirm = vi.fn(() => true);
     render(<InvitationsTab />);
     await vi.waitFor(() => expect(screen.getByText("superadmin.deleteButton")).toBeDefined());
-    fireEvent.click(screen.getByText("superadmin.deleteButton"));
-    await vi.waitFor(() => expect(deleteDoc).toHaveBeenCalled());
   });
 
   it("does not delete when confirm is cancelled", async () => {

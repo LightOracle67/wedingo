@@ -5,7 +5,7 @@ export function DonutChart({ yes, no, pending, size = 120, strokeWidth = 20 }: {
   const total = yes + no + pending;
   if (total === 0) {
     return (
-      <svg width={size} height={size} viewBox="0 0 40 40" aria-label={t("chart.noData")}>
+      <svg width={size} height={size} viewBox="0 0 40 40" role="img" aria-label={t("chart.noData")}>
         <circle cx="20" cy="20" r="15.9" fill="none" stroke="var(--setup-border)" strokeWidth="3" />
         <text x="20" y="20" textAnchor="middle" dominantBaseline="central" fontSize="4" fill="var(--setup-muted)">
           —
@@ -25,7 +25,7 @@ export function DonutChart({ yes, no, pending, size = 120, strokeWidth = 20 }: {
   const pendOff = (yesPct + noPct) * circ;
 
   return (
-    <svg width={size} height={size} viewBox="0 0 40 40" aria-label={t("chart.donutSummary", { yes, no, pending })}>
+    <svg width={size} height={size} viewBox="0 0 40 40" role="img" aria-label={t("chart.donutSummary", { yes, no, pending })}>
       <circle cx="20" cy="20" r={r} fill="none" stroke="var(--setup-border)" strokeWidth={strokeWidth * (40 / size)} opacity="0.3" />
       {yes > 0 && (
         <circle cx="20" cy="20" r={r} fill="none" stroke="var(--accent, #22c55e)" strokeWidth={strokeWidth * (40 / size)}
@@ -58,7 +58,7 @@ export function MiniBar({ items, height = 80, color = "var(--accent)" }: { items
   const max = Math.max(...items.map((i: { value: number }) => i.value || 0), 1);
   const barW = Math.max(4, Math.min(20, 200 / items.length));
   return (
-    <svg width="100%" height={height} style={{ display: "block" }} preserveAspectRatio="xMinYMin meet" aria-label={t("chart.barChart")}>
+    <svg width="100%" height={height} style={{ display: "block" }} preserveAspectRatio="xMinYMin meet" role="img" aria-label={t("chart.barChart")}>
       {items.map((item: { value: number; label?: string }, i: number) => {
         const h = ((item.value || 0) / max) * (height - 8);
         return (

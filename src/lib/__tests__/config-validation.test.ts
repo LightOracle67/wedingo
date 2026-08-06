@@ -241,4 +241,17 @@ describe("validateConfigForSave", () => {
     expect(result.errorKey).toBeNull();
     expect(result.sanitized.weddingDressCodeCustom).toBe("");
   });
+
+  it("accepts valid social media URLs", () => {
+    const result = validateConfigForSave(
+      validConfig({ instagramUrl: "https://www.instagram.com/ana", facebookUrl: "https://www.facebook.com/ana" }),
+      true, 2030,
+    );
+    expect(result.errorKey).toBeNull();
+  });
+
+  it("rejects an invalid social media URL", () => {
+    const result = validateConfigForSave(validConfig({ instagramUrl: "https://evil.example.com" }), true, 2030);
+    expect(result.errorKey).toBe("errors.socialUrlInvalid");
+  });
 });

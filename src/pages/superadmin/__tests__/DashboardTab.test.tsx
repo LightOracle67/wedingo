@@ -1,6 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 
+vi.mock("../../../lib/image-store", () => ({
+  deleteGallery: vi.fn(() => Promise.resolve()),
+  deleteAllConfigImages: vi.fn(() => Promise.resolve()),
+}));
+vi.mock("../../../lib/music-store", () => ({
+  deleteAudio: vi.fn(() => Promise.resolve()),
+}));
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));

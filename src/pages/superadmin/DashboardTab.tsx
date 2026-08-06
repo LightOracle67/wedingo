@@ -77,6 +77,13 @@ const DashboardTab = memo(function DashboardTab() {
         // Las respuestas viven en la subcolección rsvpResponses/{id}/responses.
         const rsvpSnap = await getDocs(rsvpByInviteRef(invitation.id));
         rsvpSnap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
+        // Borrado completo en cascada: galería, audio y configImages quedaban
+        // huérfanos y de lectura pública (GDPR).
+        const { deleteGallery, deleteAllConfigImages } = await import("../../lib/image-store");
+        const { deleteAudio } = await import("../../lib/music-store");
+        await deleteGallery(invitation.id);
+        await deleteAllConfigImages(invitation.id);
+        await deleteAudio(invitation.id);
         batch.delete(doc(db, "rsvpResponses", invitation.id));
         batch.delete(doc(INVITATIONS_COLLECTION_REF, invitation.id));
         await batch.commit();
@@ -97,9 +104,12 @@ const DashboardTab = memo(function DashboardTab() {
     }
     // Registro honesto del resultado en la auditoría (sin falsear el conteo).
     await logAudit("cleanup_expired", `Eliminadas ${deleted} invitaciones expiradas${failed ? ` (${failed} fallos)` : ""}`);
+    if (addToast) {
+      addToast(deleted > 0 ? "success" : "info", t("superadmin.cleanupDone", { deleted, failed }));
+    }
     setCleaning(false);
     await load();
-  }, [expired, load, t]);
+  }, [expired, load, t, addToast]);
 
   if (loading) return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("superadmin.dashboardLoading")}</p>;
   if (!stats) {

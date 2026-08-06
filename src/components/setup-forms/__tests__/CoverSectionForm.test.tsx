@@ -498,4 +498,10 @@ describe("CoverSectionForm", () => {
     render(<CoverSectionForm />);
     expect(screen.getAllByText("setup.remove").length).toBeGreaterThan(0);
   });
+
+  it("renders social media URL inputs", () => {
+    render(<CoverSectionForm />);
+    expect(screen.getByLabelText("setup.instagramLabel")).toBeDefined();
+    expect(screen.getByLabelText("setup.facebookLabel")).toBeDefined();
+  });
 });
