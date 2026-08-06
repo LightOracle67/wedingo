@@ -101,3 +101,11 @@
   font-size: 0.85rem;
   color: var(--invite-copy-color, #c8b898);
 }
+
+/* Elementos de UI global que se colaban en el papel: el ☰ móvil y los
+   banners de actualización/offline quedaban visibles al imprimir. */
+.app-nav-toggle,
+.update-banner,
+.offline-banner {
+  display: none !important;
+}

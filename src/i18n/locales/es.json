@@ -485,7 +485,8 @@
     "pending": "Pendientes",
     "visits_one": "1 visita",
     "visits_other": "{{count}} visitas",
-    "viewInvitation": "Ver invitación"
+    "viewInvitation": "Ver invitación",
+    "restoreConfirm": "¿Restaurar la copia? Se reemplazarán los datos actuales."
   },
   "attendance": {
     "searchLabel": "Buscar por nombre",

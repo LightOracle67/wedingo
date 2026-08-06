@@ -485,7 +485,8 @@
     "confirms": "Confirm",
     "declines": "Decline",
     "pending": "Pending",
-    "viewInvitation": "View invitation"
+    "viewInvitation": "View invitation",
+    "restoreConfirm": "Restore the backup? Current data will be replaced."
   },
   "attendance": {
     "searchLabel": "Search by name",

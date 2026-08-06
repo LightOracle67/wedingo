@@ -49,6 +49,8 @@ const baseConfig: PanelTabConfig = {
 
 beforeEach(() => {
   vi.clearAllMocks();
+  // El restore pide confirmación (v2.81): se acepta en los tests.
+  window.confirm = vi.fn(() => true);
   mocks.calcRSVPSummary.mockImplementation(() => ({ confirmed: 5, declined: 2, pending: 3 }));
   mocks.getDietarySummary.mockImplementation(() => []);
 });
@@ -176,7 +178,7 @@ describe("PanelTab", () => {
     const { setDoc } = await import("firebase/firestore");
     render(<PanelTab config={baseConfig} />);
     const fileInput = document.querySelector('input[type="file"]')!;
-    const validData = JSON.stringify({ bankInfo: "[REDACTED]", firstName: "Test" });
+    const validData = JSON.stringify({ bankInfo: "[REDACTED]", firstName: "Test", secondName: "Test2" });
     const file = new File([validData], "backup.json", { type: "application/json" });
     fireEvent.change(fileInput, { target: { files: [file] } });
     await vi.waitFor(() => {
@@ -188,7 +190,7 @@ describe("PanelTab", () => {
     const { setDoc } = await import("firebase/firestore");
     render(<PanelTab config={baseConfig} />);
     const fileInput = document.querySelector('input[type="file"]')!;
-    const validData = JSON.stringify({ firstName: "Test" });
+    const validData = JSON.stringify({ firstName: "Test", secondName: "Test2" });
     const file = new File([validData], "backup.json", { type: "application/json" });
     fireEvent.change(fileInput, { target: { files: [file] } });
     await vi.waitFor(() => {
@@ -210,7 +212,7 @@ describe("PanelTab", () => {
     const { setDoc } = await import("firebase/firestore");
     render(<PanelTab config={baseConfig} />);
     const fileInput = document.querySelector('input[type="file"]')!;
-    const validData = JSON.stringify({ bankInfo: "ES1234567890", firstName: "Test" });
+    const validData = JSON.stringify({ bankInfo: "ES1234567890", firstName: "Test", secondName: "Test2" });
     const file = new File([validData], "backup.json", { type: "application/json" });
     fireEvent.change(fileInput, { target: { files: [file] } });
     await vi.waitFor(() => {
@@ -222,7 +224,7 @@ describe("PanelTab", () => {
     const onRestore = vi.fn(() => Promise.resolve());
     render(<PanelTab config={{ ...baseConfig, onRestore }} />);
     const fileInput = document.querySelector('input[type="file"]')!;
-    const validData = JSON.stringify({ bankInfo: "", firstName: "Test" });
+    const validData = JSON.stringify({ bankInfo: "", firstName: "Test", secondName: "Test2" });
     const file = new File([validData], "backup.json", { type: "application/json" });
     fireEvent.change(fileInput, { target: { files: [file] } });
     await vi.waitFor(() => {
@@ -233,7 +235,7 @@ describe("PanelTab", () => {
   it("shows success toast after successful restore", async () => {
     render(<PanelTab config={baseConfig} />);
     const fileInput = document.querySelector('input[type="file"]')!;
-    const validData = JSON.stringify({ firstName: "Test" });
+    const validData = JSON.stringify({ firstName: "Test", secondName: "Test2" });
     const file = new File([validData], "backup.json", { type: "application/json" });
     fireEvent.change(fileInput, { target: { files: [file] } });
     await vi.waitFor(() => {

@@ -69,15 +69,29 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
     try {
       const text = await file.text();
       const data = JSON.parse(text);
-      if (!data || typeof data !== "object") throw new Error("Invalid backup file");
+      // Validación estricta: un backup es un objeto plano de config (no un
+      // array ni el formato del export del superadmin, que corrompería el
+      // documento con claves anidadas).
+      if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error("Invalid backup file");
+      if (typeof data.firstName !== "string" || typeof data.secondName !== "string") {
+        throw new Error("Invalid backup file");
+      }
+      if (!window.confirm(t("panel.restoreConfirm"))) { e.target.value = ""; return; }
 
       const { bankInfo, ...rest } = data;
-      const toSave = {
-        ...rest,
-        bankInfo: bankInfo && bankInfo !== "[REDACTED]"
-          ? await encrypt(bankInfo, inviteToken)
-          : "",
-      };
+      // Las imágenes y el audio viajan como data URLs descifradas en el
+      // backup: volcarlas al documento superaba el límite de 1 MiB (y dejaba
+      // datos en claro). Se omiten en el merge (se conservan las actuales);
+      // el admin puede re-subirlas si las perdió.
+      const mediaKeys = ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration", "musicFile"];
+      const toSave: Record<string, unknown> = { ...rest, bankInfo: "" };
+      for (const key of mediaKeys) {
+        const v = toSave[key];
+        if (typeof v === "string" && v.startsWith("data:")) delete toSave[key];
+      }
+      if (bankInfo && bankInfo !== "[REDACTED]") {
+        toSave.bankInfo = await encrypt(String(bankInfo), inviteToken);
+      }
 
       await setDoc(invitationDocRef(inviteToken), toSave, { merge: true });
       if (onRestore) await onRestore();

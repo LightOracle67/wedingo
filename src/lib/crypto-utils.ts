@@ -82,6 +82,12 @@ export async function decrypt(ciphertext: string, token: string) {
       const iterBytes = raw.slice(SALT_LEN + IV_LEN, HEADER_LEN);
       const iterations = iterBytes[0]! | (iterBytes[1]! << 8) | (iterBytes[2]! << 16);
       const data = raw.slice(HEADER_LEN);
+      // Un ciphertext legacy (>31 bytes) se malinterpretaba como formato nuevo
+      // con iteraciones "basura" (hasta 16M) y ejecutaba un PBKDF2 lentísimo
+      // antes de fallar y reintentar con el formato legacy. Se valida el rango
+      // ANTES de derivar: fuera de él se pasa directo al formato antiguo.
+      if (iterations < 1000 || iterations > 2_000_000) throw new Error("invalid iterations");
+      if (data.length === 0) throw new Error("empty ciphertext");
       const key = await getKey(token, salt, iterations);
       const decrypted = await crypto.subtle.decrypt({ ...ALGORITHM, iv }, key, data);
       return new TextDecoder().decode(decrypted);

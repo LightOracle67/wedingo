@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.81.0",
+    date: "2026-08-06",
+    changes: [
+      "BACKUP/RESTORE: la restauración valida el archivo (rechaza formatos ajenos), pide confirmación y ya no vuelca imágenes/audio descifrados al documento (superaban el límite de 1 MiB y dejaban datos en claro)",
+      "ROBUSTEZ: la carga de la invitación tiene timeout (una red colgada ya no deja la pantalla 'Cargando' infinita) y el cifrado legacy no ejecuta PBKDF2 con iteraciones basura",
+      "IMPRESIÓN: el PDF de asistencia respeta la búsqueda y el filtro, y los elementos de UI (☰, banners) ya no se cuelan en el papel",
+    ],
+  },
+  {
     version: "2.80.0",
     date: "2026-08-06",
     changes: [

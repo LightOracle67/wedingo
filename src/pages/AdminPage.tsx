@@ -191,18 +191,20 @@ export default function AdminPage() {
    */
   const exportPdf = useCallback(() => {
 
-    const rows = rsvpEntries.map((e: { guestName: string; attendance: string; companions?: number; dietaryInfo?: string }) =>
+    // El PDF respeta la búsqueda y el filtro de asistencia (antes imprimía
+    // siempre la lista completa).
+    const rows = filteredEntries.map((e: { guestName: string; attendance: string; companions?: number; dietaryInfo?: string }) =>
       `<tr><td>${escHtml(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${escHtml(e.dietaryInfo || "")}</td></tr>`
     ).join("");
-    const tc = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "yes").length;
-    const td = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "no").length;
+    const tc = filteredEntries.filter((e: { attendance: string }) => e.attendance === "yes").length;
+    const td = filteredEntries.filter((e: { attendance: string }) => e.attendance === "no").length;
     // HTML completo con estilos para impresión
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${t("admin.pdfTitle", { name: escHtml(coupleName) })}</title><style>
       @page{margin:2cm}body{font-family:system-ui,sans-serif;font-size:12px;color:#222;padding:2rem}h1{font-size:18px;margin-bottom:4px}table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid #d4d0c8;padding:6px 8px}tr:nth-child(even){background:#faf8f5}.stats{display:flex;gap:1rem;margin:12px 0;font-size:13px}.stat{background:#f5f3ef;padding:8px 14px;border-radius:8px}@media print{body{padding:0}}
     </style></head><body>
     <h1>${t("admin.pdfTitle", { name: escHtml(coupleName) })}</h1>
     <p style="color:#666;font-size:13px">${new Date().toLocaleDateString(i18n.language,{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"})}</p>
-    <div class="stats"><div class="stat">${tc} ${t("admin.pdfConfirmed")}</div><div class="stat">${td} ${t("admin.pdfNotAttending")}</div><div class="stat">${rsvpEntries.length} ${t("admin.pdfResponses")}</div></div>
+    <div class="stats"><div class="stat">${tc} ${t("admin.pdfConfirmed")}</div><div class="stat">${td} ${t("admin.pdfNotAttending")}</div><div class="stat">${filteredEntries.length} ${t("admin.pdfResponses")}</div></div>
     <table><thead><tr><th>${t("admin.pdfTableName")}</th><th>${t("admin.pdfTableAttendance")}</th><th>${t("admin.pdfTableCompanions")}</th><th>${t("admin.pdfTableDiet")}</th></tr></thead><tbody>${rows}</tbody></table>
     <p style="margin-top:12px;color:#888;font-size:11px">${t("support.appTitle")}</p>
     </body></html>`;
@@ -213,7 +215,7 @@ export default function AdminPage() {
       // Abre el diálogo de impresión tras un pequeño retraso
       setTimeout(() => { w.focus(); w.print(); URL.revokeObjectURL(url); }, 500);
     }
-  }, [rsvpEntries, coupleName, t, i18n.language]);
+  }, [filteredEntries, coupleName, t, i18n.language]);
 
   // ─── Cálculo de estadísticas de asistencia ─────────────
   const confirmedResponses = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "yes").length;

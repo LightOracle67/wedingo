@@ -9,6 +9,7 @@ import {
   PRIVACY_POLICY_VERSION,
 } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
+import { withTimeout } from "../lib/async-utils";
 import { validateConfigForSave } from "../lib/config-validation";
 import { sectionHasContent } from "../lib/section-utils";
 import type { InvitationConfig } from "../types";
@@ -184,7 +185,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
         }
 
-        const snapshot = await getDoc(invitationDocRef(inviteToken));
+        const snapshot = await withTimeout(getDoc(invitationDocRef(inviteToken)), 25000, "load timeout");
         if (!snapshot.exists()) {
 
           setHasStoredConfig(false);
@@ -249,7 +250,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     if (!inviteToken) { ; return; }
     try {
       safeRemoveItem(STORAGE_KEYS.inviteCache(inviteToken));
-      const snapshot = await getDoc(invitationDocRef(inviteToken));
+      const snapshot = await withTimeout(getDoc(invitationDocRef(inviteToken)), 25000, "load timeout");
       if (!snapshot.exists()) {
 
         setHasStoredConfig(false);
