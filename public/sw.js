@@ -38,17 +38,18 @@ const PRECACHE_URLS = [
   "/fonts/Lora-normal-700.woff2",
   "/fonts/GreatVibes-normal-400.woff2",
   "/fonts/OpenDyslexic-Regular.otf",
-  "/screenshots/wide.png",
-  "/screenshots/narrow.png",
   ...__PRECACHE_ASSETS__,
 ];
 
 self.addEventListener("install", (event) => {
   // Precachea todos los recursos esenciales (la SPA funciona tras instalar).
+  // Se usa allSettled de requests individuales: si UNA URL falla (404/cuota),
+  // el resto se sigue cacheando (addAll rechazaba todo y el offline quedaba
+  // roto con un SW vacío).
   event.waitUntil(
     caches
       .open(STATIC_CACHE)
-      .then((cache) => cache.addAll(PRECACHE_URLS))
+      .then((cache) => Promise.allSettled(PRECACHE_URLS.map((url) => cache.add(url))))
       .catch(() => {})
   );
   self.skipWaiting();

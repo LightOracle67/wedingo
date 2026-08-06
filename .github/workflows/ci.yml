@@ -124,9 +124,14 @@ jobs:
           VITE_ADMIN_EMAILS: ${{ secrets.VITE_ADMIN_EMAILS }}
           VITE_SUPERADMIN_ROUTE: ${{ secrets.VITE_SUPERADMIN_ROUTE }}
 
+  # ── DEPLOY (manual, alineado con AGENTS.md) ─────────────────────────────
+  # El proyecto NO despliega automáticamente en cada push: el deploy se hace
+  # manualmente desde la CLI del desarrollador (canal dev → verificación →
+  # producción) tras limpiar dist/, correr vitest y verificar el canal.
+  # Este job existe solo como respaldo manual desde GitHub Actions.
   deploy:
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: [build-and-test, e2e]
+    if: github.event_name == 'workflow_dispatch'
+    needs: [build-and-test]
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -136,7 +141,7 @@ jobs:
           node-version: 22
           cache: 'npm'
       - run: npm ci
-      - name: Build with Sentry sourcemaps
+      - name: Build
         run: npm run build
         env:
           VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
@@ -147,28 +152,7 @@ jobs:
           VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
           VITE_ADMIN_EMAILS: ${{ secrets.VITE_ADMIN_EMAILS }}
           VITE_SUPERADMIN_ROUTE: ${{ secrets.VITE_SUPERADMIN_ROUTE }}
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: solo-developer-p9
-          SENTRY_PROJECT: wedingo-6c26a
       - name: Deploy to Firebase (hosting + security rules)
-        # El proyecto usa el plan Spark: las Cloud Functions no se despliegan
-        # desde CI (requieren plan Blaze). Se despliegan hosting y las reglas.
         run: npx firebase-tools deploy --only hosting,firestore:rules,storage:rules --token "$FIREBASE_TOKEN" --non-interactive
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      # ── SENTRY: release + sourcemaps (usa el dist/ generado arriba) ──────
-      - name: Upload sourcemaps to Sentry
-        if: env.SENTRY_AUTH_TOKEN != ''
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          npx @sentry/cli releases new "wedingo@$VERSION" 2>/dev/null || true
-          npx @sentry/cli releases set-commits --auto "wedingo@$VERSION" 2>/dev/null || true
-          npx @sentry/cli sourcemaps upload -o solo-developer-p9 -p wedingo-6c26a dist/assets/ --release "wedingo@$VERSION"
-          npx @sentry/cli releases finalize "wedingo@$VERSION"
-        env:
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-          SENTRY_ORG: solo-developer-p9
-          SENTRY_PROJECT: wedingo-6c26a
-      - name: Notify CI failure (commit status)
-        if: failure()
-        run: echo "::error::Deploy failed. Check the logs."

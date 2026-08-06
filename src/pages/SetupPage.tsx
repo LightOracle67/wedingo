@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../contexts";
+import { normalizeConfig } from "../lib/normalize-config";
 import { useToast } from "../hooks/useToast";
 import { safeGetItem } from "../lib/storage";
 import { STORAGE_KEYS } from "../lib/storage-keys";
@@ -33,7 +34,10 @@ export default function SetupPage() {
   useEffect(() => {
     const onBeforeUnload = (e: BeforeUnloadEvent) => {
       try {
-        if (JSON.stringify(formData) !== JSON.stringify(config)) {
+        // Comparación normalizada: el autosave trimea, un espacio final ya
+        // guardado no debe disparar el aviso.
+        const norm = (v: typeof formData) => JSON.stringify(normalizeConfig(v));
+        if (norm(formData) !== norm(config)) {
           e.preventDefault();
           e.returnValue = "";
         }

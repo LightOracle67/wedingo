@@ -21,6 +21,7 @@ import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react
 import { Navigate, useParams, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useApp, useAppUI } from "../contexts";
+import { normalizeConfig } from "../lib/normalize-config";
 import { useToast } from "../hooks/useToast";
 import { formatDate } from "../lib/section-utils";
 import { escHtml } from "../lib/utils";
@@ -86,7 +87,11 @@ export default function AdminPage() {
   useEffect(() => {
     const onBeforeUnload = (e: BeforeUnloadEvent) => {
       try {
-        if (JSON.stringify(formData) !== JSON.stringify(config)) {
+        // Se comparan los estados NORMALIZADOS: el autosave persiste con trim,
+        // así que un espacio final ("Ana ") ya guardado no debe disparar el
+        // aviso de "cambios sin guardar".
+        const norm = (v: typeof formData) => JSON.stringify(normalizeConfig(v));
+        if (norm(formData) !== norm(config)) {
           e.preventDefault();
           e.returnValue = "";
         }

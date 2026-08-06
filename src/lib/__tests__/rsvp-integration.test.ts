@@ -16,6 +16,7 @@ vi.mock("firebase/firestore", () => ({
   getDocs: vi.fn(() => Promise.resolve({ docs: [], empty: true, forEach: () => {} })),
   updateDoc: vi.fn(() => Promise.resolve()),
   increment: vi.fn((n: number) => n),
+  onSnapshot: vi.fn(() => () => {}),
   serverTimestamp: vi.fn(() => ({ seconds: 1234567890, nanoseconds: 0 })),
   doc: vi.fn((_col?: unknown, id?: string) =>
     id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` },

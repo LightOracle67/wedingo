@@ -220,9 +220,11 @@ service cloud.firestore {
         && request.resource.data.count <= 500
         && (request.resource.data.count == resource.data.count + 1
           /* Decremento al retirar/borrar respuestas: solo con sesión activa o
-             superadmin, para que el tope anti-spam no se agote con borrados. */
+             superadmin. Se permite cualquier decremento (>=1) porque un borrado
+             en lote o un vaciado eliminan varios documentos a la vez
+             (increment(-N)), no solo uno. */
           || ((isSuperAdmin() || hasActiveSession(inviteToken))
-            && request.resource.data.count == resource.data.count - 1));
+            && request.resource.data.count <= resource.data.count - 1));
       allow delete: if isSuperAdmin();
     }
 

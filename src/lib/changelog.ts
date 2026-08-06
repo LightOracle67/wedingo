@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.78.0",
+    date: "2026-08-06",
+    changes: [
+      "ADMIN: el borrado de respuestas en lote vuelve a funcionar (el contador aceptaba solo decrementos de 1, pero un borrado múltiple envía -N), las estadísticas de asistencia se actualizan EN VIVO (onSnapshot solo para el admin), cambiar de invitación resetea la sesión (sin panel cruzado) y la sesión queda vinculada a su invitación",
+      "AVISOS: la expiración por renovación también avisa (no solo la restauración) y el beforeunload no avisa en falso tras guardar con espacios finales",
+      "SEGURIDAD: el CI ya no despliega automáticamente en cada push (alineado con AGENTS.md, solo manual), los sourcemaps ya no se sirven al público y el .env.example deja de versionar el secreto OAuth",
+      "PWA: instalación del service worker resiliente (allSettled) y sin descargar screenshots/favicon en el primer arranque",
+    ],
+  },
+  {
     version: "2.77.0",
     date: "2026-08-06",
     changes: [

@@ -30,6 +30,7 @@ vi.mock("firebase/firestore", () => ({
   setDoc: mockSetDoc,
   increment: vi.fn((n: number) => n),
   updateDoc: vi.fn(() => Promise.resolve()),
+  onSnapshot: vi.fn(() => () => {}),
 }));
 
 vi.mock("../../lib/analytics", () => ({

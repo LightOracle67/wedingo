@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { writeBatch, deleteDoc, doc, getDoc, setDoc, getDocs, updateDoc, serverTimestamp, increment } from "firebase/firestore";
+import { writeBatch, deleteDoc, doc, getDoc, setDoc, getDocs, updateDoc, serverTimestamp, increment, onSnapshot, type QueryDocumentSnapshot, type DocumentData } from "firebase/firestore";
 import { db, rsvpByInviteRef, rsvpResponseRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { computeAge } from "../lib/date-utils";
@@ -134,6 +134,112 @@ export function useRsvp(
     setHydrateTick((t) => t + 1);
   }, []);
 
+  /** Convierte un QuerySnapshot de respuestas en la lista de entradas
+   *  (main + acompañantes individuales), descifrando alergias. Se comparte
+   *  entre el hydrate inicial y el listener en vivo (onSnapshot). */
+/** Convierte un QuerySnapshot de respuestas en la lista de entradas
+   *  (main + acompañantes individuales), descifrando alergias. Se comparte
+   *  entre el hydrate inicial y el listener en vivo (onSnapshot). */
+  const processRsvpSnapshot = useCallback(async (snapshot: { docs: QueryDocumentSnapshot<DocumentData>[] }) => {
+    const allDocs = await Promise.all(
+      snapshot.docs.map(async (entryDoc) => {
+        const data = entryDoc.data();
+        const submittedAt =
+          typeof data.submittedAt?.toDate === "function"
+            ? data.submittedAt.toDate().toISOString()
+            : typeof data.submittedAt === "string"
+              ? data.submittedAt
+              : data.submittedAt?.seconds
+                ? new Date(data.submittedAt.seconds * 1000).toISOString()
+                : new Date().toISOString();
+
+        const decryptedDietaryInfo =
+          typeof data.dietaryInfo === "string"
+            ? await decrypt(data.dietaryInfo, inviteToken)
+            : "";
+
+        const attendees = data.attendees || [];
+
+          return {
+            id: entryDoc.id,
+            rsvpType: (data.rsvpType as "main" | "companion") || (data.mainGuestDocId ? "companion" : "main"),
+            guestName: data.guestName || "",
+            attendance: data.attendance || "no",
+            dietaryInfo: decryptedDietaryInfo,
+            attendees,
+            companions: attendees.length > 0 ? attendees.length : (Number.isFinite(data.companions) ? data.companions : 0),
+            companionCount: data.companionCount || 0,
+            companionNames: data.companionNames || [],
+            companionMenus: data.companionMenus || [],
+            companionAllergies: data.companionAllergies || [],
+            companionAllergiesOther: data.companionAllergiesOther || [],
+            allergiesOther: data.allergiesOther || "",
+            mealChoice: data.mealChoice || "",
+            guestNames: data.guestNames || "",
+            note: data.note || "",
+            submittedAt,
+            birthDate: data.birthDate || "",
+            parentalConsent: data.parentalConsent || false,
+            healthConsent: data.healthConsent || false,
+            transportChoice: data.transportChoice || "",
+            transportMode: data.transportMode || "",
+            transportTime: data.transportTime || "",
+            transportPlace: data.transportPlace || "",
+            companionTransportChoices: data.companionTransportChoices || [],
+            companionTransportModes: data.companionTransportModes || [],
+            companionTransportTimes: data.companionTransportTimes || [],
+            companionTransportPlaces: data.companionTransportPlaces || [],
+            companionDocIds: data.companionDocIds || [],
+            mainGuestDocId: data.mainGuestDocId || "",
+            mainGuestName: data.mainGuestName || "",
+          };
+      }),
+    );
+
+    // Separate main entries and companion entries
+    const mainEntries = allDocs.filter((d) => d.rsvpType === "main" || (!d.rsvpType && !d.mainGuestDocId));
+    const companionEntries = allDocs.filter((d) => d.rsvpType === "companion" || d.mainGuestDocId);
+
+    // Attach companion data to main entries and create individual companion entries
+    const companionAsEntries: RsvpEntryData[] = [];
+    for (const main of mainEntries) {
+      const linkedCompanions = companionEntries.filter((c) => c.mainGuestDocId === main.id);
+      if (linkedCompanions.length > 0) {
+        main.companions = linkedCompanions.length;
+        main.companionCount = linkedCompanions.length;
+        main.companionNames = linkedCompanions.map((c) => c.guestName);
+        main.companionMenus = linkedCompanions.map((c) => c.mealChoice);
+        main.companionTransportChoices = linkedCompanions.map((c) => c.transportChoice || "");
+        main.companionTransportModes = linkedCompanions.map((c) => c.transportMode || "own");
+        main.companionTransportTimes = linkedCompanions.map((c) => c.transportTime || "");
+        main.companionTransportPlaces = linkedCompanions.map((c) => c.transportPlace || "");
+        main.companionAllergies = linkedCompanions.map((c) => {
+          const parsed = parseDietaryInfo(c.dietaryInfo, !!c.mealChoice);
+          return [...parsed.dietarySelection, ...(parsed.dietaryOther ? [parsed.dietaryOther] : [])];
+        });
+        main.companionAllergiesOther = linkedCompanions.map((c) => c.allergiesOther || "");
+        main.companionDocIds = linkedCompanions.map((c) => c.id);
+        // Create individual companion entries for the attendance list
+        for (const comp of linkedCompanions) {
+          companionAsEntries.push({
+            ...comp,
+            // Override with normalized data from the main entry's context
+            companions: 0,
+            companionCount: 0,
+            companionNames: [],
+            companionMenus: [],
+            companionAllergies: [],
+            attendees: [],
+          });
+        }
+      }
+    }
+
+    return [...companionAsEntries, ...mainEntries].sort(
+      (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime(),
+    );
+  }, [inviteToken]);
+
   useEffect(() => {
     // El invitado público no puede leer respuestas (reglas): la hidratación
     // y el prefill quedan reservados al admin con sesión. Esto elimina el
@@ -141,6 +247,9 @@ export function useRsvp(
     if (!canRead) return;
 
     let cancelled = false;
+
+
+
     const hydrateRsvp = async () => {
       if (!inviteToken) { return; }
 
@@ -148,106 +257,8 @@ export function useRsvp(
       // Firestore (no se persisten alergias descifradas localmente).
       try {
         const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
-
         if (cancelled) return;
-
-        const allDocs = await Promise.all(
-          snapshot.docs.map(async (entryDoc) => {
-            const data = entryDoc.data();
-            const submittedAt =
-              typeof data.submittedAt?.toDate === "function"
-                ? data.submittedAt.toDate().toISOString()
-                : typeof data.submittedAt === "string"
-                  ? data.submittedAt
-                  : data.submittedAt?.seconds
-                    ? new Date(data.submittedAt.seconds * 1000).toISOString()
-                    : new Date().toISOString();
-
-            const decryptedDietaryInfo =
-              typeof data.dietaryInfo === "string"
-                ? await decrypt(data.dietaryInfo, inviteToken)
-                : "";
-
-            const attendees = data.attendees || [];
-
-              return {
-                id: entryDoc.id,
-                rsvpType: (data.rsvpType as "main" | "companion") || (data.mainGuestDocId ? "companion" : "main"),
-                guestName: data.guestName || "",
-                attendance: data.attendance || "no",
-                dietaryInfo: decryptedDietaryInfo,
-                attendees,
-                companions: attendees.length > 0 ? attendees.length : (Number.isFinite(data.companions) ? data.companions : 0),
-                companionCount: data.companionCount || 0,
-                companionNames: data.companionNames || [],
-                companionMenus: data.companionMenus || [],
-                companionAllergies: data.companionAllergies || [],
-                companionAllergiesOther: data.companionAllergiesOther || [],
-                allergiesOther: data.allergiesOther || "",
-                mealChoice: data.mealChoice || "",
-                guestNames: data.guestNames || "",
-                note: data.note || "",
-                submittedAt,
-                birthDate: data.birthDate || "",
-                parentalConsent: data.parentalConsent || false,
-                healthConsent: data.healthConsent || false,
-                transportChoice: data.transportChoice || "",
-                transportMode: data.transportMode || "",
-                transportTime: data.transportTime || "",
-                transportPlace: data.transportPlace || "",
-                companionTransportChoices: data.companionTransportChoices || [],
-                companionTransportModes: data.companionTransportModes || [],
-                companionTransportTimes: data.companionTransportTimes || [],
-                companionTransportPlaces: data.companionTransportPlaces || [],
-                companionDocIds: data.companionDocIds || [],
-                mainGuestDocId: data.mainGuestDocId || "",
-                mainGuestName: data.mainGuestName || "",
-              };
-          }),
-        );
-
-        // Separate main entries and companion entries
-        const mainEntries = allDocs.filter((d) => d.rsvpType === "main" || (!d.rsvpType && !d.mainGuestDocId));
-        const companionEntries = allDocs.filter((d) => d.rsvpType === "companion" || d.mainGuestDocId);
-
-        // Attach companion data to main entries and create individual companion entries
-        const companionAsEntries: RsvpEntryData[] = [];
-        for (const main of mainEntries) {
-          const linkedCompanions = companionEntries.filter((c) => c.mainGuestDocId === main.id);
-          if (linkedCompanions.length > 0) {
-            main.companions = linkedCompanions.length;
-            main.companionCount = linkedCompanions.length;
-            main.companionNames = linkedCompanions.map((c) => c.guestName);
-            main.companionMenus = linkedCompanions.map((c) => c.mealChoice);
-            main.companionTransportChoices = linkedCompanions.map((c) => c.transportChoice || "");
-            main.companionTransportModes = linkedCompanions.map((c) => c.transportMode || "own");
-            main.companionTransportTimes = linkedCompanions.map((c) => c.transportTime || "");
-            main.companionTransportPlaces = linkedCompanions.map((c) => c.transportPlace || "");
-            main.companionAllergies = linkedCompanions.map((c) => {
-              const parsed = parseDietaryInfo(c.dietaryInfo, !!c.mealChoice);
-              return [...parsed.dietarySelection, ...(parsed.dietaryOther ? [parsed.dietaryOther] : [])];
-            });
-            main.companionAllergiesOther = linkedCompanions.map((c) => c.allergiesOther || "");
-            main.companionDocIds = linkedCompanions.map((c) => c.id);
-            // Create individual companion entries for the attendance list
-            for (const comp of linkedCompanions) {
-              companionAsEntries.push({
-                ...comp,
-                // Override with normalized data from the main entry's context
-                companions: 0,
-                companionCount: 0,
-                companionNames: [],
-                companionMenus: [],
-                companionAllergies: [],
-                attendees: [],
-              });
-            }
-          }
-        }
-
-        const entries = [...companionAsEntries, ...mainEntries].sort(
-          (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime(),
-        );
+        const entries = await processRsvpSnapshot(snapshot);
         if (!cancelled) {
           setRsvpEntries(entries);
         }
@@ -265,7 +276,24 @@ export function useRsvp(
     return () => {
       cancelled = true;
     };
-  }, [inviteToken, t, setAdminMessage, setAdminMessageType, hydrateTick, canRead]);
+  }, [inviteToken, t, setAdminMessage, setAdminMessageType, hydrateTick, canRead, processRsvpSnapshot]);
+
+  // ── Stats en vivo: listener solo para el admin con sesión ──
+  // Las respuestas llegan en tiempo real (otro dispositivo, el propio
+  // formulario) sin recargar. El invitado no se suscribe (las reglas no se
+  // lo permiten); el listener se cancela al desmontar o al cambiar de token.
+  useEffect(() => {
+    if (!inviteToken || !canRead) return;
+    let cancelled = false;
+    const unsub = onSnapshot(rsvpByInviteRef(inviteToken), (snap) => {
+      void processRsvpSnapshot(snap).then((entries) => {
+        if (!cancelled) setRsvpEntries(entries);
+      }).catch(() => { /* el siguiente snapshot reintenta */ });
+    }, (err) => {
+      console.error("[app]", "[useRsvp]", "live listen error", { error: err });
+    });
+    return () => { cancelled = true; unsub(); };
+  }, [inviteToken, canRead, processRsvpSnapshot]);
 
   useEffect(() => {
     // Se normaliza igual que al guardar (normalizeFullName colapsa espacios

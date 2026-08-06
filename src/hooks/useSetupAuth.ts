@@ -109,9 +109,13 @@ export function useSetupAuth(
     }
 
     // La sesión local debe pertenecer a ESTA invitación: si se abre la URL
-    // de otra boda, no se otorga admin cruzado.
+    // de otra boda, no se otorga admin cruzado. Además de borrar la sesión,
+    // se invalida isTokenVerified: sin esto, al navegar de A/admin a B/admin
+    // el admin quedaba "verificado" para B sin haber iniciado sesión ahí
+    // (panel cruzado / formulario de setup bloqueado).
     if (session.inviteToken && session.inviteToken !== inviteToken) {
       clearSession();
+      setIsTokenVerified(false);
       setIsRestoringSession(false);
       return;
     }
@@ -217,6 +221,9 @@ export function useSetupAuth(
             clearSession();
             setIsTokenVerified(false);
             setTokenLoginUsername("");
+            // Marca la expiración para que la redirección a la vista pública
+            // no sea silenciosa (antes solo se avisaba en la restauración).
+            markSessionExpired();
           } else {
             renewFailureRef.current = true;
           }
@@ -229,7 +236,7 @@ export function useSetupAuth(
       if (renewRef.current) { ; clearInterval(renewRef.current); }
     }
     return () => { if (renewRef.current) { ; clearInterval(renewRef.current); } };
-  }, [isTokenVerified, inviteToken, setAdminMessage, setAdminMessageType, t]);
+  }, [isTokenVerified, inviteToken, setAdminMessage, setAdminMessageType, t, markSessionExpired]);
 
   /**
    * Persiste la sesión en sessionStorage cuando cambia el estado de autenticación.
@@ -238,9 +245,9 @@ export function useSetupAuth(
 
     if (isTokenVerified && tokenLoginUsername && sessionTypeRef.current) {
 
-      saveSession(sessionTypeRef.current, tokenLoginUsername);
+      saveSession(sessionTypeRef.current, tokenLoginUsername, { inviteToken });
     }
-  }, [isTokenVerified, tokenLoginUsername]);
+  }, [isTokenVerified, tokenLoginUsername, inviteToken]);
 
   /**
    * Recupera el token de setup desde sessionStorage (única fuente fiable).
@@ -402,7 +409,7 @@ export function useSetupAuth(
       setHasStoredConfig(true);
       // Persiste el token en sessionStorage para renovaciones y recuperación.
       safeSetItem(STORAGE_KEYS.setupToken(inviteToken), enteredToken, sessionStorage);
-      saveSession(sessionTypeRef.current, displayName);
+      saveSession(sessionTypeRef.current, displayName, { inviteToken });
       setAuthMessageType("success");
       setAuthMessage(t("auth.codeVerified"));
 
