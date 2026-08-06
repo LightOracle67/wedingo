@@ -1,5 +1,6 @@
 import { defineConfig } from "@playwright/test";
 import { readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 
 /**
  * Carga el archivo .env raíz en process.env para que los e2e funcionen sin
@@ -8,7 +9,10 @@ import { readFileSync } from "node:fs";
  */
 function loadDotEnv() {
   try {
-    const content = readFileSync(".env", "utf8");
+    // Se resuelve relativo al propio config (e2e/), no al CWD: si el config
+    // se carga desde la raíz, "../.env" apuntaba a un directorio inexistente.
+    const here = fileURLToPath(new URL(".", import.meta.url));
+    const content = readFileSync(new URL("../.env", `file://${here}`), "utf8");
     for (const line of content.split("\n")) {
       const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.*)\s*$/);
       if (m && !process.env[m[1]]) process.env[m[1]] = m[2];

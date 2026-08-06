@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.91.0",
+    date: "2026-08-06",
+    changes: [
+      "E2E: el config de Playwright carga el .env desde la raíz (resolviéndolo relativo al propio config); antes apuntaba a un path inexistente y los e2e locales no tenían las variables de Firebase",
+    ],
+  },
+  {
     version: "2.90.0",
     date: "2026-08-06",
     changes: [
