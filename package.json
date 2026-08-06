@@ -59,7 +59,7 @@
     "axe-core": "^4.12.1",
     "fake-indexeddb": "^6.2.5",
     "firebase-tools": "^15.26.0",
-    "jsdom": "^30.0.0",
+    "jsdom": "^30.0.1",
     "oxlint": "^1.69.0",
     "tailwindcss": "^4.3.2",
     "typescript": "^7.0.2",
