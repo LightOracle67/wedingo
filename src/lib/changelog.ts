@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.94.0",
+    date: "2026-08-06",
+    changes: [
+      "COMPARTIR: el código QR se puede copiar como imagen al portapapeles (para pegarlo en invitaciones físicas)",
+      "IMPRESIÓN: la fecha se construye con la fuente única de meses y valida fechas imposibles (31 de febrero ya no se imprime como 3 de marzo), y la pestaña solo se cierra tras imprimir si se abrió desde el panel (antes quedaba colgada si se abría directamente)",
+    ],
+  },
+  {
     version: "2.93.0",
     date: "2026-08-06",
     changes: [

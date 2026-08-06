@@ -60,6 +60,27 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
     return () => { cancelled = true; };
   }, [inviteUrl]);
 
+  // Copia el QR como imagen PNG al portapapeles (para pegarlo en una
+  // invitación física, WhatsApp, etc.).
+  const [qrCopied, setQrCopied] = useState(false);
+  const copyQr = useCallback(async () => {
+    if (!qrUrl) return;
+    try {
+      const res = await fetch(qrUrl);
+      const blob = await res.blob();
+      if (navigator.clipboard && "write" in navigator.clipboard) {
+        await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+        setQrCopied(true);
+        if (addToast) addToast("success", t("share.copyQrDone"));
+        setTimeout(() => setQrCopied(false), 2500);
+      } else {
+        if (addToast) addToast("error", t("share.copyQrFailed"));
+      }
+    } catch {
+      if (addToast) addToast("error", t("share.copyQrFailed"));
+    }
+  }, [qrUrl, addToast, t]);
+
   const btnClass = "setup-button setup-button--compact";
   const btnGhostClass = "setup-button setup-button--ghost setup-button--compact";
 
@@ -127,13 +148,20 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
       <div className="setup-token-card" style={{ marginTop: "1rem", padding: "1rem", textAlign: "center" }}>
         <div className="setup-label" style={{ marginBottom: "0.5rem" }}>{t("share.qrCode")}</div>
         {qrUrl ? (
-          <img
-            src={qrUrl}
-            alt={t("share.qrCodeAlt", { url: inviteUrl })}
-            width={180}
-            height={180}
-            style={{ borderRadius: "6px", background: "#fff", padding: "0.5rem" }}
-          />
+          <>
+            <img
+              src={qrUrl}
+              alt={t("share.qrCodeAlt", { url: inviteUrl })}
+              width={180}
+              height={180}
+              style={{ borderRadius: "6px", background: "#fff", padding: "0.5rem" }}
+            />
+            <div style={{ marginTop: "0.6rem" }}>
+              <button className={btnGhostClass} type="button" onClick={copyQr} disabled={!qrUrl}>
+                {qrCopied ? t("share.copyQrDone") : t("share.copyQr")}
+              </button>
+            </div>
+          </>
         ) : qrError ? (
           <p className="setup-help">{t("share.qrError")}</p>
         ) : (

@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useApp } from "../contexts";
 import { useTranslation } from "react-i18next";
 import { randomMessage } from "../lib/invite-messages";
+import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import "../styles/print.css";
 
 export default function PrintPage() {
@@ -16,10 +17,19 @@ export default function PrintPage() {
     document.title = `${config.firstName} & ${config.secondName} — Wedingo`;
   }, [config.firstName, config.secondName]);
 
-  const monthMap: Record<string, number> = { enero: 0, febrero: 1, marzo: 2, abril: 3, mayo: 4, junio: 5, julio: 6, agosto: 7, septiembre: 8, octubre: 9, noviembre: 10, diciembre: 11 };
-  const weddingDateObj = config.weddingDay && config.weddingMonth && config.weddingYear
-    ? new Date(Number(config.weddingYear), monthMap[config.weddingMonth] || 0, Number(config.weddingDay))
-    : null;
+  // La fecha se construye con MONTH_VALUE_TO_NUMBER (fuente única) y se valida
+  // el rollover: antes un monthMap local solo en español y un "31 de febrero"
+  // podían imprimir una fecha errónea (enero/3 de marzo).
+  const weddingDateObj = (() => {
+    if (!config.weddingDay || !config.weddingMonth || !config.weddingYear) return null;
+    const monthIndex = MONTH_VALUE_TO_NUMBER[config.weddingMonth];
+    if (!monthIndex) return null;
+    const day = Number(config.weddingDay);
+    const year = Number(config.weddingYear);
+    const date = new Date(year, monthIndex - 1, day);
+    if (date.getFullYear() !== year || date.getMonth() !== monthIndex - 1 || date.getDate() !== day) return null;
+    return date;
+  })();
   const formattedDate = weddingDateObj ? weddingDateObj.toLocaleDateString(i18n.language || "es", { dateStyle: "long" }) : "";
   const timeStr = config.weddingHour
     ? `${String(config.weddingHour).padStart(2, "0")}:${String(config.weddingMinute || "0").padStart(2, "0")}`
@@ -67,8 +77,12 @@ export default function PrintPage() {
       await document.fonts.ready;
       await new Promise((r) => setTimeout(r, 400));
       const cleanup = () => {
-
-        try { window.close(); } catch (err) { console.error("[app]", "[PrintPage]", "window close error", err); }
+        // Solo se cierra la pestaña si se abrió desde el panel (window.open):
+        // una pestaña abierta directamente no se puede cerrar y el navegador
+        // lo bloquea (antes quedaba colgada tras imprimir).
+        if (window.opener) {
+          try { window.close(); } catch (err) { console.error("[app]", "[PrintPage]", "window close error", err); }
+        }
       };
       window.onafterprint = cleanup;
       window.onbeforeunload = null;

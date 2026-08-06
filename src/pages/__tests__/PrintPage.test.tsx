@@ -87,7 +87,7 @@ describe("PrintPage", () => {
     expect(screen.getByText("Bob", { exact: false })).toBeDefined();
   });
 
-  it("renders with an unknown wedding month using the January fallback", () => {
+  it("renders with an unknown wedding month without showing a date", () => {
     mockUseApp.mockReturnValue({
       config: {
         firstName: "Alice",
@@ -105,6 +105,29 @@ describe("PrintPage", () => {
 
     render(<PrintPage />);
     act(() => { vi.advanceTimersByTime(200); });
+    expect(screen.getByText("Alice", { exact: false })).toBeDefined();
+  });
+
+  it("does not print an invalid date (31 February rolls over)", () => {
+    mockUseApp.mockReturnValue({
+      config: {
+        firstName: "Alice",
+        secondName: "Bob",
+        theme: "golden",
+        weddingDay: "31",
+        weddingMonth: "febrero",
+        weddingYear: "2025",
+        weddingHour: "18",
+        weddingMinute: "30",
+        weddingPlace: "Iglesia",
+      },
+      isConfigLoading: false,
+    });
+
+    render(<PrintPage />);
+    act(() => { vi.advanceTimersByTime(200); });
+    // La fecha inválida no se muestra: no hay "31 de febrero" ni el rollover.
+    expect(screen.queryByText(/marzo|febrero/i)).toBeNull();
     expect(screen.getByText("Alice", { exact: false })).toBeDefined();
   });
 
@@ -166,5 +189,31 @@ describe("PrintPage", () => {
     });
 
     expect(typeof window.onafterprint).toBe("function");
+  });
+
+  it("closes the window after printing when it was opened via window.open", async () => {
+    mockUseApp.mockReturnValue({
+      config: { firstName: "John", secondName: "Jane", theme: "golden" },
+      isConfigLoading: false,
+    });
+    const close = vi.fn();
+    const origOpener = window.opener;
+    Object.defineProperty(window, "opener", { value: {}, configurable: true });
+    Object.defineProperty(window, "close", { value: close, configurable: true });
+
+    render(<PrintPage />);
+    act(() => { vi.advanceTimersByTime(200); });
+    await act(async () => {
+      await Promise.resolve();
+    });
+    act(() => { vi.advanceTimersByTime(400); });
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    // Se dispara el onafterprint: con window.opener presente, cierra la pestaña.
+    window.onafterprint?.(new Event("afterprint"));
+    expect(close).toHaveBeenCalled();
+    Object.defineProperty(window, "opener", { value: origOpener, configurable: true });
   });
 });

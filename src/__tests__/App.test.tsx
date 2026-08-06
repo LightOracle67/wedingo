@@ -1035,6 +1035,32 @@ describe("App", () => {
     meta.remove();
   });
 
+  it("reloads the page when the update banner button is clicked", async () => {
+    const meta = document.createElement("meta");
+    meta.setAttribute("name", "deploy-id");
+    meta.setAttribute("content", "222");
+    document.head.appendChild(meta);
+    localStorage.setItem("wedin_deploy_id", "111");
+    const reload = vi.fn();
+    Object.defineProperty(window, "location", {
+      value: { ...window.location, reload },
+      configurable: true,
+      writable: true,
+    });
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Suspense fallback={null}>
+          <App />
+        </Suspense>
+      </MemoryRouter>
+    );
+    const bannerBtn = await screen.findByText("common.reload");
+    fireEvent.click(bannerBtn);
+    expect(reload).toHaveBeenCalled();
+    localStorage.removeItem("wedin_deploy_id");
+    meta.remove();
+  });
+
   it("adds noindex robots on non-landing routes", async () => {
     render(
       <MemoryRouter initialEntries={["/abc123/admin"]}>

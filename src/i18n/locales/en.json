@@ -537,7 +537,10 @@
     "messageHint": "Customize the message that will be sent to the guests.",
     "qrCode": "QR code",
     "qrCodeAlt": "QR for {{url}}",
-    "qrError": "Could not generate the QR code."
+    "qrError": "Could not generate the QR code.",
+    "copyQr": "Copy QR",
+    "copyQrDone": "QR copied.",
+    "copyQrFailed": "Could not copy the QR."
   },
   "access": {
     "description": "Use this section to generate a new code. The previous code will stop working.",
