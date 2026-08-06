@@ -15,6 +15,7 @@ export function useAutoSave(
   config: InvitationConfig,
   onSaveMessage: ((msg: string) => void) | null,
   isSavingRef: { current: boolean } | null,
+  onAutoSaved?: (data: InvitationConfig) => void,
 ) {
   const { t } = useTranslation();
   const autoSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -54,6 +55,9 @@ export function useAutoSave(
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
       delete (payload as Record<string, unknown>).musicFile;
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
+      // Actualiza el config en memoria para que la vista previa del admin
+      // muestre los cambios autoguardados sin recargar.
+      if (onAutoSaved) onAutoSaved(normalizeConfig(data));
       // Restaura las data-URL en memoria para que la sesión siga mostrando las imágenes.
       for (const [k, v] of Object.entries(originalImages)) {
         imagePayload[k] = v;
@@ -66,7 +70,7 @@ export function useAutoSave(
       autoSavingRef.current = false;
       if (isSavingRef) isSavingRef.current = false;
     }
-  }, [inviteToken, isSavingRef, onSaveMessage, t]);
+  }, [inviteToken, isSavingRef, onSaveMessage, t, onAutoSaved]);
 
   useEffect(() => {
     if (!hasStoredConfig || !inviteToken) return;

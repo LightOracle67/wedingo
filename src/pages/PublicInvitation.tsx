@@ -541,6 +541,11 @@ export default function PublicInvitation() {
           <span aria-hidden="true">↗</span>
         </button>
       ) : null}
+
+      {/* Indicador de scroll: el invitado ve que hay más secciones debajo. */}
+      {!showEnvelope && !isEmpty && !showMissingToken && visibleOrder.length > 1 ? (
+        <div className="story-scroll-hint" aria-hidden="true" />
+      ) : null}
       </div>
     </div>
   );

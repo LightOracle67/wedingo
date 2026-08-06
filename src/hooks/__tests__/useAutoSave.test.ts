@@ -366,6 +366,18 @@ describe("useAutoSave", () => {
       expect(onSaveMessage).toHaveBeenCalledWith("errors.mapUrlInvalid");
       expect(mockSetDoc).not.toHaveBeenCalled();
     });
+
+    it("notifies onAutoSaved after a successful save", async () => {
+      const onAutoSaved = vi.fn();
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", sampleConfig, sampleConfig, vi.fn(), { current: false }, onAutoSaved),
+      );
+
+      await act(async () => {
+        await result.current.doSave({ ...sampleConfig, firstName: "Alice2" });
+      });
+      expect(onAutoSaved).toHaveBeenCalled();
+    });
   });
 
   describe("cleanup", () => {

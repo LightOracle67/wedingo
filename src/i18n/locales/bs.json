@@ -59,26 +59,7 @@
     "todayIsWedding": "Danas je vjenčanje",
     "missing": "Nedostaje",
     "todayIsTheDay": "Danas je veliki dan!",
-    "sectionLabel": [
-      "Cover",
-      "Cover",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sectionLabel": "Cover",
     "eyebrow": "Naše vjenčanje"
   },
   "details": {
@@ -100,26 +81,7 @@
     "sectionLabel": "O gostima",
     "scheduleTitle": "Raspored proslave",
     "schedulePending": "Detaljni raspored će uskoro biti podijeljen sa svim gostima.",
-    "dressCodeLabel": [
-      "Dress code",
-      "Dress code",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "dressCodeLabel": "Dress code",
     "dressCodeTitle": "Preporučena odjeća",
     "dressCodePending": "Dress code će biti saopšten kasnije.",
     "kidsLabel": "Djeca",
@@ -215,26 +177,7 @@
     "loadingInvitation": "Učitavanje pozivnice…",
     "notFoundTitle": "Pozivnica nije pronađena",
     "notFoundText": "Nismo pronašli pozivnicu s ovim linkom. Ako misliš da je greška, kontaktiraj domaćine.",
-    "emptyTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "emptyTitle": "Wedingo",
     "emptyText": "Kreiraj i podijeli svoju personaliziranu pozivnicu za vjenčanje.",
     "emptyDescription": "Upravljaj podacima svoje pozivnice, podijeli jedinstveni link s gostima i primaj njihove potvrde dolaska.",
     "createLink": "Kreiraj pozivnicu",
@@ -317,26 +260,7 @@
     "scheduleLabel": "Raspored vjenčanja",
     "schedulePlaceholder": "Primjer: 18:00 Doček gostiju\n18:30 Ceremonija\n19:30 Koktel\n21:00 Banket\n23:00 Ples",
     "scheduleHint": "Napiši raspored, jedan red po događaju.",
-    "dressCodeLabel": [
-      "Dress code",
-      "Dress code",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "dressCodeLabel": "Dress code",
     "dressCodeGala": "Svečano odijelo",
     "dressCodeCasual": "Neformalna odjeća",
     "dressCodeFormal": "Formalna odjeća",
@@ -434,26 +358,7 @@
     "pdfTableCompanions": "Pratioci",
     "pdfTableDiet": "Dijeta",
     "sectionsLabel": "Secciones",
-    "barTitle": [
-      "Wedingo · Admin",
-      "Wedingo · Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "barTitle": "Wedingo · Admin",
     "viewInvitation": "Pogledaj pozivnicu",
     "logout": "Odjavite se"
   },
@@ -521,66 +426,9 @@
     "generateMessage": "Generiši drugu poruku",
     "copyMessage": "Kopiraj poruku",
     "shareVia": "Podijeli putem",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "telegram": [
-      "Telegram",
-      "Telegram",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "sms": [
-      "SMS",
-      "SMS",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "sms": "SMS",
     "print": "Štampaj",
     "printPdf": "Štampaj / Sačuvaj PDF",
     "linkCopied": "Link kopiran.",
@@ -609,26 +457,7 @@
     "rightsHint": "Otvoriće se tvoj email klijent sa unaprijed definisanim šablonom. Možeš takođe pisati na adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Kalifornija)",
     "ccpaText": "Wedingo ne prodaje lične podatke. Prikupljeni podaci se koriste isključivo za upravljanje pozivnicom. Ako si stanovnik Kalifornije, imaš pravo zatražiti brisanje svojih podataka i ne biti diskriminisan/a zbog ostvarivanja svojih prava.",
-    "appTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "appTitle": "Wedingo",
     "appDescription": "Web aplikacija za upravljanje pozivnicama za vjenčanje.",
     "copyright": "© {{year}} Adrián Carrasco López. Sva prava zadržana.",
     "deleteEmailSubject": "Zahtjev za brisanje podataka - Wedingo",
@@ -716,26 +545,7 @@
       "compliance": "Usklađenost",
       "data": "Datos"
     },
-    "superadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "superadmin": "Superadmin",
     "controlPanel": "Kontrolni panel",
     "managePlatform": "Upravljaj platformom Wedingo",
     "dashboardLoading": "Učitavanje statistike...",
@@ -761,26 +571,7 @@
     "invitationsCount": "{{count}} pozivnica · {{size}} zauzeto",
     "noResultsFilter": "Nisu pronađene pozivnice sa tim kriterijem.",
     "noInvitations": "Još uvijek nema pozivnica.",
-    "tableToken": [
-      "Token",
-      "Token",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "tableToken": "Token",
     "tableTheme": "Tema",
     "tableDate": "Datum vjenčanja",
     "tableActions": "Akcije",
@@ -806,91 +597,15 @@
     "tokenRevokeError": "Token nije mogao biti opozvan.",
     "tokenCleanError": "Tokeni nisu mogli biti očišćeni.",
     "tokenLoadError": "Tokeni nisu mogli biti učitani.",
-    "accountEmail": [
-      "Email: {{email}}",
-      "Email: {{email}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "accountEmail": "Email: {{email}}",
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "Aktivna",
     "sessionInactive": "Neaktivna",
     "sessionLabel": "Lokalna sesija: {{status}}",
     "sessionType": "Tip: {{type}}",
-    "sessionTypeSuperadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Postavljanje",
-    "sessionTypeAdmin": [
-      "Admin",
-      "Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionTypeAdmin": "Admin",
     "sessionExpires": "Ističe: {{date}}",
     "logoutButton": "Odjavi se",
     "firebaseAccount": "Za upravljanje svojim superadmin računom, koristi Firebase konzolu:",
@@ -910,26 +625,7 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": [
-        "Token",
-        "Token",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "ac6faa6f1887d7a3559f8fc4a759008a",
-              "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-            ]
-          ]
-        ]
-      ],
+      "colToken": "Token",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
       "colRsvps": "Odgovori",
@@ -950,26 +646,7 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": [
-      "Email",
-      "Email",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "emailLabel": "Email",
     "passwordLabel": "Lozinka",
     "migrateButton": "Migrar token",
     "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
@@ -990,51 +667,13 @@
     "row1Basis": "Pristanak (GDPR čl. 6.1.a)",
     "row1Purpose": "Kreiranje i personalizacija pozivnice za vjenčanje",
     "row1Retention": "Dok je račun aktivan",
-    "row1Recipients": [
-      "Google Cloud (Firestore, hosting)",
-      "Google Cloud (Firestore, hosting)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row1Recipients": "Google Cloud (Firestore, hosting)",
     "row2Activity": "Potvrda dolaska (RSVP)",
     "row2Data": "Ime gosta, prisustvo (da/ne), izbor menija, alergije, zdravstveni podaci",
     "row2Basis": "Pristanak (GDPR čl. 6.1.a, 9.2.a)",
     "row2Purpose": "Upravljanje spiskom gostiju i menijem",
     "row2Retention": "12 mjeseci nakon događaja",
-    "row2Recipients": [
-      "Google Cloud (Firestore)",
-      "Google Cloud (Firestore)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row2Recipients": "Google Cloud (Firestore)",
     "row3Activity": "Učitavanje slika",
     "row3Data": "Fotografije vjenčanja (enkriptovane AES-256-GCM)",
     "row3Basis": "Pristanak (GDPR čl. 6.1.a)",
@@ -1052,26 +691,7 @@
     "row5Basis": "Zakonska obaveza (GDPR čl. 6.1.c)",
     "row5Purpose": "Registrovanje administrativnih aktivnosti",
     "row5Retention": "3 godine",
-    "row5Recipients": [
-      "Google Cloud (Firestore auditLog)",
-      "Google Cloud (Firestore auditLog)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row5Recipients": "Google Cloud (Firestore auditLog)",
     "internationalTitle": "Međunarodni prijenosi",
     "internationalText": "Podaci se čuvaju na serverima Google Cloud-a u regionu eur3 (Frankfurt, Njemačka). Google LLC (SAD) djeluje kao obrađivač podataka prema DPA u skladu sa GDPR čl. 28. Prijenosi u SAD zasnivaju se na:",
     "scc": "Standardne ugovorne klauzule (SCC) - Provedbena odluka 2021/914",
@@ -1097,49 +717,11 @@
     "lineVeryWide": "Vrlo široka",
     "highContrast": "Visok kontrast",
     "reducedMotion": "Smanjite kretanje",
-    "dyslexiaFont": [
-      "OpenDyslexic font",
-      "OpenDyslexic font",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "dyslexiaFont": "OpenDyslexic font",
     "moreSpacing": "Više razmaka između slova",
     "underlineLinks": "Podvuci sve veze",
     "bigCursor": "Veliki kursor",
-    "desaturate": [
-      "Grayscale",
-      "Grayscale",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "desaturate": "Grayscale",
     "strongFocus": "Vidljivi indikatori fokusa"
   },
   "music": {
@@ -1157,49 +739,11 @@
     "celebrationTime": "Vrijeme ceremonije:",
     "viewInGoogleMaps": "Pogledajte lokaciju u Google mapama",
     "celebrationMessage": "Radujemo se što ćemo ovaj poseban trenutak podijeliti s vama.",
-    "transport": [
-      "Transport",
-      "Transport",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "transport": "Transport",
     "aboutGuests": "O gostima",
     "scheduleTitle": "Raspored vjenčanja",
     "scheduleFallback": "Detaljan raspored će uskoro biti objavljen.",
-    "dressCode": [
-      "Dress code",
-      "Dress code",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "dressCode": "Dress code",
     "dressCodeFallback": "Biće saopšteno kasnije.",
     "aboutKids": "O djeci",
     "ourStory": "Naša priča",
@@ -1229,26 +773,7 @@
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": [
-      "Spain",
-      "Spain",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "spain": "Spain",
     "westernEurope": "Zapadna Evropa",
     "nordicEurope": "Nordijska Evropa",
     "centralEurope": "Centralna Evropa",
@@ -1329,48 +854,10 @@
   "themeGroups": {
     "light": "Lagane teme",
     "dark": "Mračne teme",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
-    "gluten": [
-      "Gluten",
-      "Gluten",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "gluten": "Gluten",
     "lactose": "Laktoza",
     "nuts": "Orašasti plodovi",
     "shellfish": "Školjke"
@@ -1378,26 +865,7 @@
   "envelope": {
     "addressLine1": "Za naše najdraže",
     "tapHint": "Dodirnite da otvorite",
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "ac6faa6f1887d7a3559f8fc4a759008a",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "and": "&",
     "tapContinue": "Dodirnite za nastavak"
   },
   "calendar": {

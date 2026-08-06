@@ -1692,6 +1692,13 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   animation: story-scroll-hint-float 1400ms ease-in-out infinite;
 }
 
+/* Flecha del indicador de scroll. */
+.story-scroll-hint::after {
+  content: "↓";
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
 .story-scroll-hint:hover {
   transform: translateY(-2px);
 }

@@ -75,7 +75,7 @@ export interface SocialMetaInput {
 
 /** Imagen social por defecto (banner genérico) cuando la invitación no tiene
  *  una URL absoluta (couplePhoto suele ser un data URI, no indexable). */
-export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/favicon192.png`;
+export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/og-banner.png`;
 
 /**
  * Aplica las meta tags Open Graph y Twitter de la invitación.

@@ -598,26 +598,7 @@
     "tokenCleanError": "টোকেন পরিষ্কার করা যায়নি।",
     "tokenLoadError": "টোকেন লোড করা যায়নি।",
     "accountEmail": "ইমেইল: {{email}}",
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "bb93a879d26edf943ed8e0c574850bff",
-            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "সক্রিয়",
     "sessionInactive": "নিষ্ক্রিয়",
     "sessionLabel": "স্থানীয় সেশন: {{status}}",
@@ -873,26 +854,7 @@
   "themeGroups": {
     "light": "হালকা থিম",
     "dark": "গাঢ় থিম",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "bb93a879d26edf943ed8e0c574850bff",
-            "tea_IndoAryanA_en2bngumrnepapssdur_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
     "gluten": "গ্লুটেন",

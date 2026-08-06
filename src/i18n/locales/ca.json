@@ -1,26 +1,7 @@
 {
   "common": {
     "loading": "Carregant...",
-    "error": [
-      "Error",
-      "Error",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "error": "Error",
     "close": "Tancar",
     "retry": "Reintentar",
     "save": "Desar canvis",
@@ -30,26 +11,7 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": [
-      "Visible",
-      "Visible",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "visible": "Visible",
     "hidden": "Oculta",
     "errorBoundary": {
       "title": "Alguna cosa va fallar",
@@ -108,26 +70,7 @@
     "placePending": "El lloc de la celebració apareixerà aquí.",
     "welcomeWithTime": "Us esperem per compartir aquest moment tan especial. Comencem a les {{time}}. Més avall trobareu el mapa d'ubicació.",
     "welcomeWithoutTime": "Us esperem per compartir aquest moment tan especial. Més avall trobareu el mapa d'ubicació.",
-    "transport": [
-      "Transport",
-      "Transport",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "transport": "Transport",
     "addToCalendar": "Afegir al calendari",
     "viewGoogleMaps": "Veure a Google Maps",
     "viewAppleMaps": "Veure a Apple Maps",
@@ -234,26 +177,7 @@
     "loadingInvitation": "Carregant invitació…",
     "notFoundTitle": "Invitació no trobada",
     "notFoundText": "No trobem una invitació amb aquest enllaç. Si creus que és un error, contacta amb els amfitrions.",
-    "emptyTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "emptyTitle": "Wedingo",
     "emptyText": "Crea i comparteix la teva invitació de casament personalitzada.",
     "emptyDescription": "Gestiona les dades de la teva invitació, comparteix un enllaç únic amb els teus convidats i rep les seves confirmacions d'assistència.",
     "createLink": "Crear invitació",
@@ -346,26 +270,7 @@
     "accommodationLabel": "Allotjament",
     "accommodationPlaceholder": "Exemple: Hotel recomanat: … Codi descompte: …",
     "accommodationHint": "Hotels, codis de descompte i opcions per als convidats.",
-    "transportLabel": [
-      "Transport",
-      "Transport",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "transportLabel": "Transport",
     "transportPlaceholder": "Exemple: Autobús des de la Plaça Major a les 17:00. Aparcament gratuït al recinte.",
     "transportHint": "Opcions de transport, horaris d'autobús, aparcament, etc.",
     "kidsLabel": "Sobre els nens",
@@ -453,26 +358,7 @@
     "pdfTableCompanions": "Acomp",
     "pdfTableDiet": "Dieta",
     "sectionsLabel": "Secciones",
-    "barTitle": [
-      "Wedingo · Admin",
-      "Wedingo · Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "barTitle": "Wedingo · Admin",
     "viewInvitation": "Veure invitació",
     "logout": "Tanca la sessió"
   },
@@ -524,26 +410,7 @@
     "total": "{{count}} en total",
     "page": "{{current}} / {{total}}",
     "attendingValue": "Sí",
-    "notAttendingValue": [
-      "No",
-      "No",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "notAttendingValue": "No",
     "noResultsFilter": "No s'han trobat resultats amb aquest filtre.",
     "noResults": "Encara no hi ha respostes d'assistència.",
     "exportPdf": "Exportar PDF",
@@ -559,47 +426,9 @@
     "generateMessage": "Generar un altre missatge",
     "copyMessage": "Copiar missatge",
     "shareVia": "Compartir per",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "whatsapp": "WhatsApp",
     "telegram": "Telegrama",
-    "sms": [
-      "SMS",
-      "SMS",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sms": "SMS",
     "print": "Imprimir",
     "printPdf": "Imprimir / Desar PDF",
     "linkCopied": "Enllaç copiat.",
@@ -628,26 +457,7 @@
     "rightsHint": "S'obrirà el teu client de correu amb una plantilla predefinida. També pots escriure a adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Califòrnia)",
     "ccpaText": "Wedingo no ven dades personals. Les dades recollides s'usen exclusivament per a la gestió de la invitació. Si ets resident a Califòrnia, tens dret a sol·licitar l'eliminació de les teves dades i a no ser discriminat per exercir els teus drets.",
-    "appTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "appTitle": "Wedingo",
     "appDescription": "Aplicació web per a la gestió d'invitacions de casament.",
     "copyright": "© {{year}} Adrián Carrasco López. Tots els drets reservats.",
     "deleteEmailSubject": "Sol·licitud d'eliminació de dades - Wedingo",
@@ -761,26 +571,7 @@
     "invitationsCount": "{{count}} invitacions · {{size}} ocupats",
     "noResultsFilter": "No s'han trobat invitacions amb aquest criteri.",
     "noInvitations": "Encara no hi ha invitacions.",
-    "tableToken": [
-      "Token",
-      "Token",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "tableToken": "Token",
     "tableTheme": "Tema",
     "tableDate": "Data casament",
     "tableActions": "Accions",
@@ -807,52 +598,14 @@
     "tokenCleanError": "No s'han pogut netejar els tokens.",
     "tokenLoadError": "No s'han pogut carregar els tokens.",
     "accountEmail": "Correu electrònic: {{email}}",
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "Activa",
     "sessionInactive": "Inactiva",
     "sessionLabel": "Sessió local: {{status}}",
     "sessionType": "Tipus: {{type}}",
     "sessionTypeSuperadmin": "Superadministrador",
     "sessionTypeSetup": "Configuració",
-    "sessionTypeAdmin": [
-      "Admin",
-      "Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionTypeAdmin": "Admin",
     "sessionExpires": "Expira: {{date}}",
     "logoutButton": "Tancar sessió",
     "firebaseAccount": "Per gestionar el teu compte de superadmin, fes servir la consola de Firebase:",
@@ -872,26 +625,7 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": [
-        "Token",
-        "Token",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
+      "colToken": "Token",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
       "colRsvps": "RSVP",
@@ -939,26 +673,7 @@
     "row2Basis": "Consentiment (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Gestionar llista de convidats i menú",
     "row2Retention": "12 mesos després de l'esdeveniment",
-    "row2Recipients": [
-      "Google Cloud (Firestore)",
-      "Google Cloud (Firestore)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row2Recipients": "Google Cloud (Firestore)",
     "row3Activity": "Pujada d'imatges",
     "row3Data": "Fotos de casament (xifrades AES-256-GCM)",
     "row3Basis": "Consentiment (Art. 6.1.a GDPR)",
@@ -976,26 +691,7 @@
     "row5Basis": "Obligació legal (Art. 6.1.c GDPR)",
     "row5Purpose": "Registre d'activitats administratives",
     "row5Retention": "3 anys",
-    "row5Recipients": [
-      "Google Cloud (Firestore auditLog)",
-      "Google Cloud (Firestore auditLog)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row5Recipients": "Google Cloud (Firestore auditLog)",
     "internationalTitle": "Transferències internacionals",
     "internationalText": "Les dades s'emmagatzemen en servidors de Google Cloud a la regió eur3 (Frankfurt, Alemanya). Google LLC (EUA) actua com a encarregat del tractament sota DPA conforme a l'Art. 28 GDPR. Les transferències als EUA s'emparen en:",
     "scc": "Clàusules Contractuals Tipus (SCC) - Decisió d'Execució 2021/914",
@@ -1012,49 +708,11 @@
     "title": "Accessibilitat",
     "close": "Tancar",
     "fontSize": "Mida del text",
-    "fontNormal": [
-      "Normal",
-      "Normal",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "fontNormal": "Normal",
     "fontLarge": "Gran",
     "fontExtraLarge": "Extra gran",
     "lineSpacing": "Interlineat",
-    "lineNormal": [
-      "Normal",
-      "Normal",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "lineNormal": "Normal",
     "lineWide": "Ample",
     "lineVeryWide": "Molt ample",
     "highContrast": "Alt contrast",
@@ -1081,26 +739,7 @@
     "celebrationTime": "Hora de la cerimònia:",
     "viewInGoogleMaps": "Veure la ubicació a Google Maps",
     "celebrationMessage": "Esperem poder compartir aquest moment especial amb vosaltres.",
-    "transport": [
-      "Transport",
-      "Transport",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "transport": "Transport",
     "aboutGuests": "Sobre els convidats",
     "scheduleTitle": "Horari del casament",
     "scheduleFallback": "La programació detallada es compartirà aviat.",
@@ -1215,48 +854,10 @@
   "themeGroups": {
     "light": "Temes clars",
     "dark": "Temes foscos",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
-    "gluten": [
-      "Gluten",
-      "Gluten",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "gluten": "Gluten",
     "lactose": "Lactosa",
     "nuts": "Fruits secs",
     "shellfish": "Marisc"
@@ -1264,26 +865,7 @@
   "envelope": {
     "addressLine1": "Als nostres estimats",
     "tapHint": "Toqueu per obrir",
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "and": "&",
     "tapContinue": "Toca per continuar"
   },
   "calendar": {
@@ -1326,26 +908,7 @@
   },
   "chart": {
     "noData": "Sense dades",
-    "total": [
-      "total",
-      "total",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "total": "total",
     "barChart": "Gràfic de barres d'assistència",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   },

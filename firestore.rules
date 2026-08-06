@@ -83,9 +83,10 @@ service cloud.firestore {
 
     match /invitations/{tokenId} {
       /* Lectura pública por documento (necesaria para la invitación),
-         pero se prohíbe listar/enumerar la colección completa. */
+         pero se prohíbe listar/enumerar la colección completa salvo para
+         el superadmin (dashboard, exportación y tokens). */
       allow get: if true;
-      allow list: if false;
+      allow list: if isSuperAdmin();
       allow create: if isValidInvitationWrite(request.resource.data)
         && (isSuperAdmin()
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));

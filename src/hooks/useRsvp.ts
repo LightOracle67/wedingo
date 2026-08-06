@@ -275,14 +275,17 @@ export function useRsvp(
   }, [inviteToken, t, setAdminMessage, setAdminMessageType, hydrateTick]);
 
   useEffect(() => {
-    const name = rsvpForm.guestName.trim().toLowerCase();
+    // Se normaliza igual que al guardar (normalizeFullName colapsa espacios
+    // internos) para que "Juan  Pérez" coincida con la respuesta guardada y
+    // no se cree un segundo documento por error.
+    const name = normalizeFullName(rsvpForm.guestName).toLowerCase();
 
     if (!name) {
       setAlreadySubmittedEntry(null);
       prefillRef.current = null;
       return;
     }
-    const match = rsvpEntries.find((e) => e.guestName.trim().toLowerCase() === name) || null;
+    const match = rsvpEntries.find((e) => normalizeFullName(e.guestName).toLowerCase() === name) || null;
 
     if (match && match.rsvpType === "companion") {
       if (match.id !== prefillRef.current) {

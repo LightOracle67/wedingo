@@ -177,26 +177,7 @@
     "loadingInvitation": "Dəvətnamə yüklənir...",
     "notFoundTitle": "Dəvətnamə tapılmadı",
     "notFoundText": "Bu keçidlə dəvətnamə tapmadıq. Səhv olduğunu düşünürsünüzsə, ev sahibləri ilə əlaqə saxlayın.",
-    "emptyTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "emptyTitle": "Wedingo",
     "emptyText": "Şəxsi toy dəvətnamənizi yaradın və paylaşın.",
     "emptyDescription": "Dəvətnamənizin məlumatlarını idarə edin, qonaqlarınızla unikal keçid paylaşın və onların iştirak təsdiqlərini alın.",
     "createLink": "Dəvətnamə yaradın",
@@ -377,26 +358,7 @@
     "pdfTableCompanions": "Müşayiətçi",
     "pdfTableDiet": "Pəhriz",
     "sectionsLabel": "Secciones",
-    "barTitle": [
-      "Wedingo · Admin",
-      "Wedingo · Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "barTitle": "Wedingo · Admin",
     "viewInvitation": "Dəvətə baxın",
     "logout": "Çıxın"
   },
@@ -464,66 +426,9 @@
     "generateMessage": "Başqa mesaj yarat",
     "copyMessage": "Mesajı kopyala",
     "shareVia": "Paylaş",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "telegram": [
-      "Telegram",
-      "Telegram",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "sms": [
-      "SMS",
-      "SMS",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "sms": "SMS",
     "print": "Çap et",
     "printPdf": "Çap et / PDF saxla",
     "linkCopied": "Keçid kopyalandı.",
@@ -552,26 +457,7 @@
     "rightsHint": "E-poçt müştəriniz əvvəlcədən təyin olunmuş şablonla açılacaq. Həmçinin adriancl2001@gmail.com ünvanına da yaza bilərsiniz.",
     "ccpaTitle": "CCPA / CPRA (Kaliforniya)",
     "ccpaText": "Wedingo şəxsi məlumatları satmır. Toplanmış məlumatlar yalnız dəvətnamənin idarə olunması üçün istifadə olunur. California sakinisinizsə, məlumatlarınızın silinməsini tələb etmək və hüquqlarınızı həyata keçirdiyinizə görə ayrı-seçkiliyə məruz qalmamaq hüququnuz var.",
-    "appTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "appTitle": "Wedingo",
     "appDescription": "Toy dəvətnamələrinin idarə olunması üçün veb tətbiq.",
     "copyright": "© {{year}} Adrián Carrasco López. Bütün hüquqlar qorunur.",
     "deleteEmailSubject": "Məlumatların silinməsi tələbi - Wedingo",
@@ -659,26 +545,7 @@
       "compliance": "Uyğunluq",
       "data": "Datos"
     },
-    "superadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "superadmin": "Superadmin",
     "controlPanel": "İdarəetmə paneli",
     "managePlatform": "Wedingo platformasını idarə edin",
     "dashboardLoading": "Statistika yüklənir...",
@@ -704,26 +571,7 @@
     "invitationsCount": "{{count}} dəvətnamə · {{size}} işğal olunub",
     "noResultsFilter": "Bu meyarla dəvətnamə tapılmadı.",
     "noInvitations": "Hələ dəvətnamə yoxdur.",
-    "tableToken": [
-      "Token",
-      "Token",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "tableToken": "Token",
     "tableTheme": "Mövzu",
     "tableDate": "Toy tarixi",
     "tableActions": "Əməliyyatlar",
@@ -750,71 +598,14 @@
     "tokenCleanError": "Tokenlər təmizlənə bilmədi.",
     "tokenLoadError": "Tokenlər yüklənə bilmədi.",
     "accountEmail": "E-poçt: {{email}}",
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "Aktiv",
     "sessionInactive": "Qeyri-aktiv",
     "sessionLabel": "Lokal sessiya: {{status}}",
     "sessionType": "Növ: {{type}}",
-    "sessionTypeSuperadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Quraşdırma",
-    "sessionTypeAdmin": [
-      "Admin",
-      "Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionTypeAdmin": "Admin",
     "sessionExpires": "Bitmə tarixi: {{date}}",
     "logoutButton": "Çıxış",
     "firebaseAccount": "Superadmin hesabınızı idarə etmək üçün Firebase konsolunu istifadə edin:",
@@ -834,26 +625,7 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": [
-        "Token",
-        "Token",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "32df64f7b2c6bf92105643e497202634",
-              "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-            ]
-          ]
-        ]
-      ],
+      "colToken": "Token",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
       "colRsvps": "Cavablar",
@@ -936,49 +708,11 @@
     "title": "Əlçatanlıq",
     "close": "Bağlayın",
     "fontSize": "Mətn ölçüsü",
-    "fontNormal": [
-      "Normal",
-      "Normal",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "fontNormal": "Normal",
     "fontLarge": "Böyük",
     "fontExtraLarge": "Əlavə böyük",
     "lineSpacing": "Sətir aralığı",
-    "lineNormal": [
-      "Normal",
-      "Normal",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "lineNormal": "Normal",
     "lineWide": "Geniş",
     "lineVeryWide": "Çox geniş",
     "highContrast": "Yüksək kontrast",
@@ -1120,26 +854,7 @@
   "themeGroups": {
     "light": "Yüngül mövzular",
     "dark": "Qaranlıq mövzular",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
     "gluten": "Qlüten",
@@ -1150,26 +865,7 @@
   "envelope": {
     "addressLine1": "Ən əzizlərimizə",
     "tapHint": "Açmaq üçün toxunun",
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "32df64f7b2c6bf92105643e497202634",
-            "tea_TurkicA_en2azkkkymntguz_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "and": "&",
     "tapContinue": "Davam etmək üçün toxunun"
   },
   "calendar": {

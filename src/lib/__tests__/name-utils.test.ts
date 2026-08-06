@@ -7,13 +7,17 @@ describe("isValidFullName", () => {
     expect(isValidFullName("Luis Pérez Rodríguez")).toBe(true);
   });
 
-  it("rejects single or double word names", () => {
+  it("rejects single word names", () => {
     expect(isValidFullName("Ana")).toBe(false);
-    expect(isValidFullName("Ana María")).toBe(false);
+  });
+  it("accepts two, three and four word names", () => {
+    expect(isValidFullName("Ana María")).toBe(true);
+    expect(isValidFullName("Ana María García")).toBe(true);
+    expect(isValidFullName("Ana María García López")).toBe(true);
   });
 
-  it("rejects more than two surnames", () => {
-    expect(isValidFullName("Ana María García López")).toBe(false);
+  it("rejects more than three surnames", () => {
+    expect(isValidFullName("Ana María García López Pérez")).toBe(false);
   });
 
   it("normalizes double spaces before validating", () => {

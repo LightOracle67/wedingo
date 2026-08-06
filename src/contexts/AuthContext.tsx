@@ -44,7 +44,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (displayName) {
 
           auth.setTokenLoginUsername(displayName);
-          saveSession("admin", displayName);
+          saveSession("admin", displayName, { inviteToken });
         }
 
       } catch (err) {

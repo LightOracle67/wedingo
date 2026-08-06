@@ -177,26 +177,7 @@
     "loadingInvitation": "Einladung wird geladen…",
     "notFoundTitle": "Einladung nicht gefunden",
     "notFoundText": "Wir haben keine Einladung mit diesem Link gefunden. Wenn du glaubst, dass ein Fehler vorliegt, kontaktiere bitte die Gastgeber.",
-    "emptyTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "emptyTitle": "Wedingo",
     "emptyText": "Erstelle und teile deine persönliche Hochzeitseinladung.",
     "emptyDescription": "Verwalte die Daten deiner Einladung, teile einen exklusiven Link mit deinen Gästen und erhalte ihre Rückmeldungen.",
     "createLink": "Einladung erstellen",
@@ -242,13 +223,7 @@
     "usernameHint": "Verwende Buchstaben und Zahlen. Du brauchst ihn, um dich nach Ablauf der Sitzung wieder anzumelden.",
     "firstNameLabel": "Erster Partner",
     "secondNameLabel": "Zweiter Partner",
-    "namePlaceholder": [
-      "Name",
-      "Name",
-      null,
-      null,
-      10
-    ],
+    "namePlaceholder": "Name",
     "godparent1Label": "Erster Pate/Patin",
     "godparent2Label": "Zweiter Pate/Patin",
     "godparentsHint": "Wenn du einen Namen eingibst, ist der andere ebenfalls erforderlich.",
@@ -378,37 +353,12 @@
     "pdfConfirmed": "zugesagt",
     "pdfNotAttending": "abgesagt",
     "pdfResponses": "Antworten",
-    "pdfTableName": [
-      "Name",
-      "Name",
-      null,
-      null,
-      10
-    ],
+    "pdfTableName": "Name",
     "pdfTableAttendance": "Teilnahme",
     "pdfTableCompanions": "Begleitungen",
     "pdfTableDiet": "Ernährung",
     "sectionsLabel": "Secciones",
-    "barTitle": [
-      "Wedingo · Admin",
-      "Wedingo · Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "barTitle": "Wedingo · Admin",
     "viewInvitation": "Einladung ansehen",
     "logout": "Abmelden"
   },
@@ -450,13 +400,7 @@
     "notAttending": "Nicht dabei",
     "statsLine": "{{yes}} Zusagen · {{no}} Absagen · {{companions}} Begleitungen · {{diet}} mit besonderen Essenswünschen",
     "dietarySummary": "Ernährungswünsche ({{count}})",
-    "tableName": [
-      "Name",
-      "Name",
-      null,
-      null,
-      10
-    ],
+    "tableName": "Name",
     "tableAttendance": "Teilnahme",
     "tableCompanions": "Begleitungen",
     "tableDiet": "Essensinfo",
@@ -482,47 +426,9 @@
     "generateMessage": "Andere Nachricht generieren",
     "copyMessage": "Nachricht kopieren",
     "shareVia": "Teilen über",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "whatsapp": "WhatsApp",
     "telegram": "Telegramm",
-    "sms": [
-      "SMS",
-      "SMS",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "sms": "SMS",
     "print": "Drucken",
     "printPdf": "Drucken / PDF speichern",
     "linkCopied": "Link kopiert.",
@@ -551,26 +457,7 @@
     "rightsHint": "Dein E-Mail-Client wird mit einer vorbereiteten Vorlage geöffnet. Du kannst auch direkt an adriancl2001@gmail.com schreiben.",
     "ccpaTitle": "CCPA / CPRA (Kalifornien)",
     "ccpaText": "Wedingo verkauft keine personenbezogenen Daten. Die erhobenen Daten werden ausschließlich für die Verwaltung der Einladung genutzt. Wenn du in Kalifornien wohnst, hast du das Recht, die Löschung deiner Daten zu beantragen und wirst nicht benachteiligt, wenn du deine Rechte ausübst.",
-    "appTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "appTitle": "Wedingo",
     "appDescription": "Webanwendung zur Verwaltung von Hochzeitseinladungen.",
     "copyright": "© {{year}} Adrián Carrasco López. Alle Rechte vorbehalten.",
     "deleteEmailSubject": "Antrag auf Datenlöschung - Wedingo",
@@ -658,26 +545,7 @@
       "compliance": "Einhaltung",
       "data": "Datos"
     },
-    "superadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "superadmin": "Superadmin",
     "controlPanel": "Systemsteuerung",
     "managePlatform": "Verwalte die Wedingo-Plattform",
     "dashboardLoading": "Statistiken werden geladen...",
@@ -703,26 +571,7 @@
     "invitationsCount": "{{count}} Einladungen · {{size}} belegt",
     "noResultsFilter": "Mit diesem Kriterium wurden keine Einladungen gefunden.",
     "noInvitations": "Es gibt noch keine Einladungen.",
-    "tableToken": [
-      "Token",
-      "Token",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "tableToken": "Token",
     "tableTheme": "Design",
     "tableDate": "Hochzeitsdatum",
     "tableActions": "Aktionen",
@@ -749,50 +598,12 @@
     "tokenCleanError": "Die Tokens konnten nicht bereinigt werden.",
     "tokenLoadError": "Die Tokens konnten nicht geladen werden.",
     "accountEmail": "E-Mail: {{email}}",
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "Aktiv",
     "sessionInactive": "Inaktiv",
     "sessionLabel": "Lokale Sitzung: {{status}}",
     "sessionType": "Typ: {{type}}",
-    "sessionTypeSuperadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Einrichtung",
     "sessionTypeAdmin": "Administrator",
     "sessionExpires": "Läuft ab: {{date}}",
@@ -814,48 +625,10 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": [
-        "Token",
-        "Token",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "84d48e73ebfa38d4d681515b81e0b72a",
-              "en_de_2023q1.md"
-            ]
-          ]
-        ]
-      ],
+      "colToken": "Token",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": [
-        "RSVPs",
-        "RSVPs",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "84d48e73ebfa38d4d681515b81e0b72a",
-              "en_de_2023q1.md"
-            ]
-          ]
-        ]
-      ],
+      "colRsvps": "RSVPs",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -900,26 +673,7 @@
     "row2Basis": "Einwilligung (Art. 6.1.a, 9.2.a DSGVO)",
     "row2Purpose": "Verwaltung der Gästeliste und des Menüs",
     "row2Retention": "12 Monate nach der Veranstaltung",
-    "row2Recipients": [
-      "Google Cloud (Firestore)",
-      "Google Cloud (Firestore)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "row2Recipients": "Google Cloud (Firestore)",
     "row3Activity": "Bilder hochladen",
     "row3Data": "Hochzeitsfotos (AES-256-GCM-verschlüsselt)",
     "row3Basis": "Einwilligung (Art. 6.1.a DSGVO)",
@@ -937,26 +691,7 @@
     "row5Basis": "Rechtliche Verpflichtung (Art. 6.1.c DSGVO)",
     "row5Purpose": "Protokollierung administrativer Tätigkeiten",
     "row5Retention": "3 Jahre",
-    "row5Recipients": [
-      "Google Cloud (Firestore auditLog)",
-      "Google Cloud (Firestore auditLog)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "row5Recipients": "Google Cloud (Firestore auditLog)",
     "internationalTitle": "Internationale Übermittlungen",
     "internationalText": "Die Daten werden auf Google-Cloud-Servern in der Region eur3 (Frankfurt, Deutschland) gespeichert. Google LLC (USA) fungiert als Auftragsverarbeiter im Rahmen einer DPA gemäß Art. 28 DSGVO. Übermittlungen in die USA stützen sich auf:",
     "scc": "Standardvertragsklauseln (SCC) - Durchführungsbeschluss 2021/914",
@@ -973,23 +708,11 @@
     "title": "Barrierefreiheit",
     "close": "Schließen",
     "fontSize": "Schriftgröße",
-    "fontNormal": [
-      "Normal",
-      "Normal",
-      null,
-      null,
-      2
-    ],
+    "fontNormal": "Normal",
     "fontLarge": "Groß",
     "fontExtraLarge": "Extra groß",
     "lineSpacing": "Zeilenabstand",
-    "lineNormal": [
-      "Normal",
-      "Normal",
-      null,
-      null,
-      2
-    ],
+    "lineNormal": "Normal",
     "lineWide": "Breit",
     "lineVeryWide": "Sehr breit",
     "highContrast": "Hoher Kontrast",
@@ -1016,13 +739,7 @@
     "celebrationTime": "Uhrzeit der Feier: ",
     "viewInGoogleMaps": "Auf Google Maps ansehen",
     "celebrationMessage": "Wir freuen uns, diesen besonderen Moment mit Ihnen zu teilen.",
-    "transport": [
-      "Transport",
-      "Transport",
-      null,
-      null,
-      2
-    ],
+    "transport": "Transport",
     "aboutGuests": "Über die Gäste",
     "scheduleTitle": "Zeitplan der Feier",
     "scheduleFallback": "Der detaillierte Zeitplan wird bald mitgeteilt.",
@@ -1124,72 +841,23 @@
     "1": "Januar",
     "2": "Februar",
     "3": "März",
-    "4": [
-      "April",
-      "April",
-      null,
-      null,
-      2
-    ],
+    "4": "April",
     "5": "Mai",
     "6": "Juni",
     "7": "Juli",
-    "8": [
-      "August",
-      "August",
-      null,
-      null,
-      2
-    ],
-    "9": [
-      "September",
-      "September",
-      null,
-      null,
-      2
-    ],
+    "8": "August",
+    "9": "September",
     "10": "Oktober",
-    "11": [
-      "November",
-      "November",
-      null,
-      null,
-      10
-    ],
+    "11": "November",
     "12": "Dezember"
   },
   "themeGroups": {
     "light": "Helle Themen",
     "dark": "Dunkle Themen",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
-    "gluten": [
-      "Gluten",
-      "Gluten",
-      null,
-      null,
-      2
-    ],
+    "gluten": "Gluten",
     "lactose": "Laktose",
     "nuts": "Baumnüsse",
     "shellfish": "Schalentiere"
@@ -1197,26 +865,7 @@
   "envelope": {
     "addressLine1": "An unsere Liebsten",
     "tapHint": "Zum Öffnen tippen",
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "84d48e73ebfa38d4d681515b81e0b72a",
-            "en_de_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "and": "&",
     "tapContinue": "Tippen Sie, um fortzufahren"
   },
   "calendar": {

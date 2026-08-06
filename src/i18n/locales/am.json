@@ -426,26 +426,7 @@
     "generateMessage": "ሌላ መልእክት ፍጠር",
     "copyMessage": "መልእክት ቅዳ",
     "shareVia": "በኩል አጋራ",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "cd0b36f34f203ad0265a2614fda8168d",
-            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "whatsapp": "WhatsApp",
     "telegram": "ቴሌግራም",
     "sms": "ኤስኤምኤስ",
     "print": "አትም",
@@ -873,26 +854,7 @@
   "themeGroups": {
     "light": "የብርሃን ገጽታዎች",
     "dark": "ጨለማ ገጽታዎች",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "cd0b36f34f203ad0265a2614fda8168d",
-            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
     "gluten": "ግሉተን",
@@ -903,26 +865,7 @@
   "envelope": {
     "addressLine1": "ለወዳጆቻችን",
     "tapHint": "ለመክፈት መታ ያድርጉ",
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "cd0b36f34f203ad0265a2614fda8168d",
-            "tea_AfroasiaA_en2amhaigsoyo_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "and": "&",
     "tapContinue": "ለመቀጠል መታ ያድርጉ"
   },
   "calendar": {

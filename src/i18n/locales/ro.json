@@ -11,133 +11,20 @@
     "show": "Mostrar",
     "hide": "Ocultar",
     "section": "sección",
-    "visible": [
-      "Vizibil",
-      "Visible",
-      null,
-      null,
-      2
-    ],
+    "visible": "Vizibil",
     "hidden": "Oculta",
     "errorBoundary": {
-      "title": [
-        "Ceva a mers prost",
-        "Something went wrong",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "message": [
-        "Vă rugăm să reîncărcați pagina pentru a încerca din nou.",
-        "Please reload the page to try again.",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "reload": [
-        "Reîncărcați pagina",
-        "Reload page",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ]
+      "title": "Ceva a mers prost",
+      "message": "Vă rugăm să reîncărcați pagina pentru a încerca din nou.",
+      "reload": "Reîncărcați pagina"
     },
     "toast": {
-      "close": [
-        "Aproape",
-        "Close",
-        null,
-        null,
-        2
-      ]
+      "close": "Aproape"
     },
-    "skipToContent": [
-      "Treci la conținutul principal",
-      "Skip to main content",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "skipToContent": "Treci la conținutul principal",
     "adminBar": {
-      "ariaLabel": [
-        "Bara de administrare",
-        "Administration bar",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "fallback": [
-        "Administrare",
-        "Administration",
-        null,
-        null,
-        2
-      ]
+      "ariaLabel": "Bara de administrare",
+      "fallback": "Administrare"
     },
     "saving": "Saving…",
     "menu": "Menu",
@@ -183,13 +70,7 @@
     "placePending": "Locația ceremoniei va apărea aici.",
     "welcomeWithTime": "Te așteptăm să împărtășim acest moment special. Începem la ora {{time}}. Mai jos găsești harta locației.",
     "welcomeWithoutTime": "Te așteptăm să împărtășim acest moment special. Mai jos găsești harta locației.",
-    "transport": [
-      "Transport",
-      "Transport",
-      null,
-      null,
-      2
-    ],
+    "transport": "Transport",
     "addToCalendar": "Adaugă în calendar",
     "viewGoogleMaps": "Vezi pe Google Maps",
     "viewAppleMaps": "Vezi pe Apple Maps",
@@ -231,46 +112,8 @@
     "next": "Următor",
     "thumbnailAria": "Fotografia {{number}}",
     "thumbnailAlt": "Miniatură fotografie galerie",
-    "carouselLabel": [
-      "Galerie de imagini, utilizați tastele săgeți pentru a naviga",
-      "Image gallery, use arrow keys to navigate",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "lightboxLabel": [
-      "Imagine mărită",
-      "Enlarged image",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "carouselLabel": "Galerie de imagini, utilizați tastele săgeți pentru a naviga",
+    "lightboxLabel": "Imagine mărită",
     "download": "Descargar foto"
   },
   "rsvp": {
@@ -285,26 +128,7 @@
     "menuLegend": "Alegerea meniului *",
     "menuCarne": "Carne",
     "menuPescado": "Pește",
-    "menuVegano": [
-      "Vegan/Vegetarian",
-      "Vegan/Vegetarian",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "menuVegano": "Vegan/Vegetarian",
     "postre": "Desert",
     "menuLabel": "Meniu",
     "allergiesLegend": "Alergii și intoleranțe",
@@ -321,626 +145,50 @@
     "ageUnder14Warning": "Ai sub 14 ani. Ai nevoie de consimțământul părinților sau tutorilor tăi.",
     "parentalConsent": "Părinții sau tutorii mei consimt la participarea mea",
     "validation": {
-      "nameRequired": [
-        "Introduceți numele pentru a confirma prezența.",
-        "Enter your name to confirm attendance.",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "menuRequired": [
-        "Selectați o opțiune de meniu.",
-        "Select a menu option.",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "privacyRequired": [
-        "Trebuie să acceptați Politica de confidențialitate.",
-        "You must accept the Privacy Policy.",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "birthDateRequired": [
-        "Introduceți data nașterii.",
-        "Enter your date of birth.",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "ageUnder14": [
-        "Ai sub 14 ani. ",
-        "You are under 14 years of age. ",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "healthConsentRequired": [
-        "Trebuie să vă dați acordul pentru prelucrarea datelor dumneavoastră de sănătate.",
-        "You must consent to the processing of your health data.",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "menuHeadcountRequired": [
-        "Indicați cel puțin o opțiune de meniu.",
-        "Indicate at least one menu option.",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "guestNamesRequired": [
-        "Introduceți numele însoțitorilor dvs.",
-        "Enter the names of your companions.",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "guestNamesExceed": [
-        "Nu puteți introduce mai multe nume decât însoțitori.",
-        "You cannot enter more names than companions.",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "headcountExceed": [
-        "Suma opțiunilor de meniu nu poate depăși numărul de însoțitori.",
-        "The sum of menu options cannot exceed the number of companions.",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ]
+      "nameRequired": "Introduceți numele pentru a confirma prezența.",
+      "menuRequired": "Selectați o opțiune de meniu.",
+      "privacyRequired": "Trebuie să acceptați Politica de confidențialitate.",
+      "birthDateRequired": "Introduceți data nașterii.",
+      "ageUnder14": "Ai sub 14 ani. ",
+      "healthConsentRequired": "Trebuie să vă dați acordul pentru prelucrarea datelor dumneavoastră de sănătate.",
+      "menuHeadcountRequired": "Indicați cel puțin o opțiune de meniu.",
+      "guestNamesRequired": "Introduceți numele însoțitorilor dvs.",
+      "guestNamesExceed": "Nu puteți introduce mai multe nume decât însoțitori.",
+      "headcountExceed": "Suma opțiunilor de meniu nu poate depăși numărul de însoțitori."
     },
-    "successAttending": [
-      "Mulțumesc, {{name}}. ",
-      "Thank you, {{name}}. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "successNotAttending": [
-      "Mulțumesc, {{name}}. ",
-      "Thank you, {{name}}. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "saveError": [
-      "Nu am putut salva răspunsul dvs. ",
-      "We could not save your response. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "withdrawConfirm": [
-      "Sigur doriți să vă retrageți răspunsul?",
-      "Are you sure you want to withdraw your response?",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "withdrawSuccess": [
-      "Răspunsul dumneavoastră a fost retras.",
-      "Your response has been withdrawn.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "withdrawError": [
-      "Nu v-am putut retrage răspunsul. ",
-      "Could not withdraw your response. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "clearConfirm": [
-      "Ștergeți toate răspunsurile de prezență? ",
-      "Delete all attendance responses? ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "clearSuccess": [
-      "Înregistrările de prezență au fost șters.",
-      "Attendance records cleared.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "clearError": [
-      "Nu s-au putut șterge înregistrările de prezență.",
-      "Could not clear attendance records.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "companionsLabel": [
-      "Însoțitorii",
-      "Companions",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "headcountLabel": [
-      "Oameni",
-      "People",
-      null,
-      null,
-      2
-    ],
-    "headcountHint": [
-      "Câte persoane pentru fiecare opțiune ({{total}} în total)",
-      "How many people for each option ({{total}} total)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "guestNamesLabel": [
-      "Nume de invitați",
-      "Guest names",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "guestNamesHint": [
-      "Scrieți numele și prenumele fiecărui însoțitor (maximum {{count}})",
-      "Write the first and last name of each companion (max {{count}})",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "guestNamesPlaceholder": [
-      "Nume1 Prenume1, Nume2 Prenume2...",
-      "Name1 Surname1, Name2 Surname2...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "successAttending": "Mulțumesc, {{name}}. ",
+    "successNotAttending": "Mulțumesc, {{name}}. ",
+    "saveError": "Nu am putut salva răspunsul dvs. ",
+    "withdrawConfirm": "Sigur doriți să vă retrageți răspunsul?",
+    "withdrawSuccess": "Răspunsul dumneavoastră a fost retras.",
+    "withdrawError": "Nu v-am putut retrage răspunsul. ",
+    "clearConfirm": "Ștergeți toate răspunsurile de prezență? ",
+    "clearSuccess": "Înregistrările de prezență au fost șters.",
+    "clearError": "Nu s-au putut șterge înregistrările de prezență.",
+    "companionsLabel": "Însoțitorii",
+    "headcountLabel": "Oameni",
+    "headcountHint": "Câte persoane pentru fiecare opțiune ({{total}} în total)",
+    "guestNamesLabel": "Nume de invitați",
+    "guestNamesHint": "Scrieți numele și prenumele fiecărui însoțitor (maximum {{count}})",
+    "guestNamesPlaceholder": "Nume1 Prenume1, Nume2 Prenume2...",
     "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
   },
   "public": {
     "loadingInvitation": "Se încarcă invitația...",
     "notFoundTitle": "Invitație negăsită",
     "notFoundText": "Nu am găsit nicio invitație cu acest link. Dacă crezi că este o eroare, contactează gazdele.",
-    "emptyTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "emptyTitle": "Wedingo",
     "emptyText": "Creează și partajează invitația ta de nuntă personalizată.",
     "emptyDescription": "Gestionează datele invitației tale, partajează un link unic cu invitații tăi și primește confirmările lor de participare.",
     "createLink": "Creează invitația",
     "privacyPolicy": "Politica de confidențialitate",
     "terms": "Termeni",
     "legalNotice": "Aviz legal",
-    "locationNotFound": [
-      "Nu am putut localiza acest loc.",
-      "Could not locate this place.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "locationMapError": [
-      "Nu s-a putut încărca harta.",
-      "Could not load the map.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "locationCoordinates": [
-      "Coordonate: {{lat}}, {{lng}}",
-      "Coordinates: {{lat}}, {{lng}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "mapPreviewAlt": [
-      "Previzualizarea hărții în locația indicată.",
-      "Map preview at the indicated location.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "locationSet": [
-      "Locație configurată",
-      "Location configured",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "locationNotFound": "Nu am putut localiza acest loc.",
+    "locationMapError": "Nu s-a putut încărca harta.",
+    "locationCoordinates": "Coordonate: {{lat}}, {{lng}}",
+    "mapPreviewAlt": "Previzualizarea hărții în locația indicată.",
+    "locationSet": "Locație configurată",
     "dataRequest": "Mis datos y privacidad",
     "share": "Compartir invitación"
   },
@@ -1022,13 +270,7 @@
     "accommodationLabel": "Cazare",
     "accommodationPlaceholder": "Exemplu: Hotel recomandat: … Cod reducere: …",
     "accommodationHint": "Hoteluri, coduri de reducere și opțiuni pentru invitați.",
-    "transportLabel": [
-      "Transport",
-      "Transport",
-      null,
-      null,
-      2
-    ],
+    "transportLabel": "Transport",
     "transportPlaceholder": "Exemplu: Autobuz din Piața Mare la ora 17:00. Parcare gratuită în incintă.",
     "transportHint": "Opțiuni de transport, ore autobuz, parcare etc.",
     "kidsLabel": "Despre copii",
@@ -1073,347 +315,24 @@
     "galleryUploadFailed": "Fotografiile nu au putut fi încărcate.",
     "noValidFiles": "Niciun fișier valid. Maxim 20 MB, JPG/PNG.",
     "hiddenSectionBadge": "oculta",
-    "audioHint": [
-      "Încărcați un fișier audio pentru redare pe coperta (MP3, WAV, OGG, M4A — max 5 MB).",
-      "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "audioUploadTitle": [
-      "Încărcați fișierul audio",
-      "Upload audio file",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "audioUploadSubtitle": [
-      "MP3, WAV, OGG sau M4A — max 5 MB",
-      "MP3, WAV, OGG or M4A — max 5 MB",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "audioFormatError": [
-      "Format audio nu este acceptat. ",
-      "Audio format not supported. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "audioEmptyError": [
-      "Fișierul audio este gol.",
-      "Audio file is empty.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "audioSizeError": [
-      "Fișierul audio depășește limita de 5 MB.",
-      "Audio file exceeds the 5 MB limit.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "audioReadError": [
-      "Eroare la citirea fișierului audio.",
-      "Error reading audio file.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "errorEmptyFile": [
-      "Fișierul este gol. ",
-      "The file is empty. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "galleryDescriptionPlaceholder": [
-      "Descrierea imaginii...",
-      "Image description...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "galleryMaxReached": [
-      "Maximum {{max}} imagini în galerie.",
-      "Maximum {{max}} images in the gallery.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "audioHint": "Încărcați un fișier audio pentru redare pe coperta (MP3, WAV, OGG, M4A — max 5 MB).",
+    "audioUploadTitle": "Încărcați fișierul audio",
+    "audioUploadSubtitle": "MP3, WAV, OGG sau M4A — max 5 MB",
+    "audioFormatError": "Format audio nu este acceptat. ",
+    "audioEmptyError": "Fișierul audio este gol.",
+    "audioSizeError": "Fișierul audio depășește limita de 5 MB.",
+    "audioReadError": "Eroare la citirea fișierului audio.",
+    "errorEmptyFile": "Fișierul este gol. ",
+    "galleryDescriptionPlaceholder": "Descrierea imaginii...",
+    "galleryMaxReached": "Maximum {{max}} imagini în galerie.",
     "galleryTrimmed": "{{max}} of {{selected}} images will be uploaded (gallery limit).",
-    "galleryUploading": [
-      "Se încarcă {{total}} fotografii...",
-      "Uploading {{total}} photo(s)...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "photoUploading": [
-      "Se încarcă fotografia...",
-      "Uploading photo...",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "replaceImage": [
-      "Schimbați fotografia",
-      "Change photo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "galleryDescriptionSaveFailed": [
-      "Eroare la salvarea descrierii",
-      "Error saving description",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "galleryDescriptionSaved": [
-      "Descrierea salvată",
-      "Description saved",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "currentMusic": [
-      "Muzică aleasă",
-      "Selected music",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "removeMusic": [
-      "Eliminați muzica",
-      "Remove music",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "galleryUploading": "Se încarcă {{total}} fotografii...",
+    "photoUploading": "Se încarcă fotografia...",
+    "replaceImage": "Schimbați fotografia",
+    "galleryDescriptionSaveFailed": "Eroare la salvarea descrierii",
+    "galleryDescriptionSaved": "Descrierea salvată",
+    "currentMusic": "Muzică aleasă",
+    "removeMusic": "Eliminați muzica",
     "copyToken": "Copiar código de acceso",
     "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
@@ -1439,66 +358,9 @@
     "pdfTableCompanions": "Însoțitori",
     "pdfTableDiet": "Dietă",
     "sectionsLabel": "Secciones",
-    "barTitle": [
-      "Wedingo · Admin",
-      "Wedingo · Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "viewInvitation": [
-      "Vizualizați invitația",
-      "View invitation",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "logout": [
-      "Deconectați-vă",
-      "Log out",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "barTitle": "Wedingo · Admin",
+    "viewInvitation": "Vizualizați invitația",
+    "logout": "Deconectați-vă"
   },
   "panel": {
     "confirmed": "Confirmați",
@@ -1564,40 +426,9 @@
     "generateMessage": "Generează alt mesaj",
     "copyMessage": "Copiază mesajul",
     "shareVia": "Partajează prin",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "telegram": [
-      "Telegramă",
-      "Telegram",
-      null,
-      null,
-      2
-    ],
-    "sms": [
-      "SMS",
-      "SMS",
-      null,
-      null,
-      10
-    ],
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegramă",
+    "sms": "SMS",
     "print": "Tipărește",
     "printPdf": "Tipărește / Salvează PDF",
     "linkCopied": "Link copiat.",
@@ -1624,47 +455,9 @@
     "deleteButton": "Solicită ștergerea datelor",
     "exportButton": "Exportă datele mele",
     "rightsHint": "Se va deschide clientul tău de email cu un șablon predefinit. Poți scrie și la adriancl2001@gmail.com.",
-    "ccpaTitle": [
-      "CCPA / CPRA (California)",
-      "CCPA / CPRA (California)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "ccpaTitle": "CCPA / CPRA (California)",
     "ccpaText": "Wedingo nu vinde date personale. Datele colectate sunt utilizate exclusiv pentru gestionarea invitației. Dacă ești rezident în California, ai dreptul să soliciți ștergerea datelor tale și să nu fii discriminat pentru exercitarea drepturilor tale.",
-    "appTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "appTitle": "Wedingo",
     "appDescription": "Aplicație web pentru gestionarea invitațiilor de nuntă.",
     "copyright": "© {{year}} Adrián Carrasco López. Toate drepturile rezervate.",
     "deleteEmailSubject": "Solicitare ștergere date - Wedingo",
@@ -1675,13 +468,7 @@
   "cookie": {
     "title": "Consimțământ cookie-uri",
     "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
-    "accept": [
-      "Accepta",
-      "Accept",
-      null,
-      null,
-      2
-    ],
+    "accept": "Accepta",
     "reject": "Refuz",
     "configure": "Configurează",
     "necessary": "Stocare necesară",
@@ -1740,146 +527,13 @@
     "deleteFailed": "Invitația nu a putut fi ștearsă. Încearcă din nou.",
     "configLoadFailed": "Configurarea nu a putut fi încărcată. Verifică conexiunea și încearcă din nou.",
     "invalidLink": "Linkul invitației nu este valid.",
-    "accommodationTooLong": [
-      "Informațiile despre cazare nu pot depăși 2000 de caractere.",
-      "Accommodation info cannot exceed 2000 characters.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "menuTextoTooLong": [
-      "Descrierea meniului nu poate depăși 2000 de caractere.",
-      "Menu description cannot exceed 2000 characters.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "uploadImageFailed": [
-      "Nu s-a putut procesa imaginea. ",
-      "Could not process the image. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "readImageFailed": [
-      "Nu s-a putut citi fișierul imagine.",
-      "Could not read the image file.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "encryptFailed": [
-      "Criptarea imaginii a eșuat.",
-      "Image encryption failed.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "imageTooLarge": [
-      "Imaginea este prea mare chiar și după compresie.",
-      "The image is too large even after compression.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "fileEmpty": [
-      "Fișierul este gol. ",
-      "The file is empty. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "accommodationTooLong": "Informațiile despre cazare nu pot depăși 2000 de caractere.",
+    "menuTextoTooLong": "Descrierea meniului nu poate depăși 2000 de caractere.",
+    "uploadImageFailed": "Nu s-a putut procesa imaginea. ",
+    "readImageFailed": "Nu s-a putut citi fișierul imagine.",
+    "encryptFailed": "Criptarea imaginii a eșuat.",
+    "imageTooLarge": "Imaginea este prea mare chiar și după compresie.",
+    "fileEmpty": "Fișierul este gol. ",
     "mapUrlInvalid": "La URL del mapa de la ubicación no es válida. Usa el botón de mapa para insertar un enlace de Google Maps."
   },
   "superadmin": {
@@ -1891,26 +545,7 @@
       "compliance": "Conformitate",
       "data": "Datos"
     },
-    "superadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "superadmin": "Superadmin",
     "controlPanel": "Panou de control",
     "managePlatform": "Gestionează platforma Wedingo",
     "dashboardLoading": "Se încarcă statisticile...",
@@ -1936,13 +571,7 @@
     "invitationsCount": "{{count}} invitații · {{size}} ocupate",
     "noResultsFilter": "Nu s-au găsit invitații cu acel criteriu.",
     "noInvitations": "Nu există încă invitații.",
-    "tableToken": [
-      "Jeton",
-      "Token",
-      null,
-      null,
-      2
-    ],
+    "tableToken": "Jeton",
     "tableTheme": "Temă",
     "tableDate": "Data nunții",
     "tableActions": "Acțiuni",
@@ -1968,91 +597,15 @@
     "tokenRevokeError": "Tokenul nu a putut fi revocat.",
     "tokenCleanError": "Tokenurile nu au putut fi curățate.",
     "tokenLoadError": "Tokenurile nu au putut fi încărcate.",
-    "accountEmail": [
-      "E-mail: {{email}}",
-      "Email: {{email}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "accountEmail": "E-mail: {{email}}",
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "Activă",
     "sessionInactive": "Inactivă",
     "sessionLabel": "Sesiune locală: {{status}}",
     "sessionType": "Tip: {{type}}",
-    "sessionTypeSuperadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Configurare",
-    "sessionTypeAdmin": [
-      "Admin",
-      "Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionTypeAdmin": "Admin",
     "sessionExpires": "Expiră: {{date}}",
     "logoutButton": "Deconectare",
     "firebaseAccount": "Pentru a gestiona contul de superadmin, folosește consola Firebase:",
@@ -2072,35 +625,10 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": [
-        "Jeton",
-        "Token",
-        null,
-        null,
-        2
-      ],
+      "colToken": "Jeton",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": [
-        "Răspunsuri",
-        "RSVPs",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
+      "colRsvps": "Răspunsuri",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -2118,20 +646,8 @@
       "deleteAllConfirm": "¿Estás SEGURO? Esto eliminará TODAS las invitaciones, RSVPs, galería y tokens del sistema. Esta acción NO se puede deshacer."
     },
     "login": "Entrar",
-    "emailLabel": [
-      "E-mail",
-      "Email",
-      null,
-      null,
-      2
-    ],
-    "passwordLabel": [
-      "Parolă",
-      "Password",
-      null,
-      null,
-      2
-    ],
+    "emailLabel": "E-mail",
+    "passwordLabel": "Parolă",
     "migrateButton": "Migrar token",
     "migrateConfirm": "¿Migrar este token legacy al sistema seguro (registro por hash)? El token actual seguirá siendo válido.",
     "tokenMigrated": "Token migrado correctamente.",
@@ -2151,126 +667,31 @@
     "row1Basis": "Consimțământ (Art. 6.1.a GDPR)",
     "row1Purpose": "Crearea și personalizarea invitației de nuntă",
     "row1Retention": "Atâta timp cât contul este activ",
-    "row1Recipients": [
-      "Google Cloud (Firestore, găzduire)",
-      "Google Cloud (Firestore, hosting)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row1Recipients": "Google Cloud (Firestore, găzduire)",
     "row2Activity": "Confirmarea participării (RSVP)",
     "row2Data": "Numele invitatului, participare (da/nu), alegerea meniului, alergii, date de sănătate",
     "row2Basis": "Consimțământ (Art. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Gestionarea listei de invitați și a meniului",
     "row2Retention": "12 luni după eveniment",
-    "row2Recipients": [
-      "Google Cloud (Firestore)",
-      "Google Cloud (Firestore)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row2Recipients": "Google Cloud (Firestore)",
     "row3Activity": "Încărcarea imaginilor",
     "row3Data": "Fotografii de nuntă (criptate AES-256-GCM)",
     "row3Basis": "Consimțământ (Art. 6.1.a GDPR)",
     "row3Purpose": "Galerie foto în invitație",
     "row3Retention": "12 luni după eveniment",
-    "row3Recipients": [
-      "Google Cloud (subcolecție Firestore)",
-      "Google Cloud (Firestore subcollection)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row3Recipients": "Google Cloud (subcolecție Firestore)",
     "row4Activity": "Autentificare și sesiuni",
     "row4Data": "Token de sesiune, nume de utilizator admin",
     "row4Basis": "Interes legitim (Art. 6.1.f GDPR)",
     "row4Purpose": "Controlul accesului la panoul de administrare",
     "row4Retention": "Durata sesiunii",
-    "row4Recipients": [
-      "Google Cloud (sesiuni Firestore)",
-      "Google Cloud (Firestore sessions)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row4Recipients": "Google Cloud (sesiuni Firestore)",
     "row5Activity": "Audit superadmin",
     "row5Data": "Acțiuni superadmin, tokenuri utilizate, invitații șterse",
     "row5Basis": "Obligație legală (Art. 6.1.c GDPR)",
     "row5Purpose": "Registrul activităților administrative",
     "row5Retention": "3 ani",
-    "row5Recipients": [
-      "Google Cloud (Firestore auditLog)",
-      "Google Cloud (Firestore auditLog)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row5Recipients": "Google Cloud (Firestore auditLog)",
     "internationalTitle": "Transferuri internaționale",
     "internationalText": "Datele sunt stocate pe servere Google Cloud în regiunea eur3 (Frankfurt, Germania). Google LLC (SUA) acționează ca persoană împuternicită de operator în baza unui DPA conform Art. 28 GDPR. Transferurile către SUA sunt acoperite de:",
     "scc": "Clauze Contractuale Standard (SCC) - Decizia de punere în aplicare 2021/914",
@@ -2284,1191 +705,86 @@
     "measureSuperadmin": "Superadmin protejat prin Firebase Authentication + rută ascunsă"
   },
   "a11y": {
-    "title": [
-      "Accesibilitate",
-      "Accessibility",
-      null,
-      null,
-      2
-    ],
-    "close": [
-      "Aproape",
-      "Close",
-      null,
-      null,
-      2
-    ],
-    "fontSize": [
-      "Dimensiunea textului",
-      "Text size",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "fontNormal": [
-      "Normal",
-      "Normal",
-      null,
-      null,
-      2
-    ],
-    "fontLarge": [
-      "Mare",
-      "Large",
-      null,
-      null,
-      2
-    ],
-    "fontExtraLarge": [
-      "Foarte mare",
-      "Extra large",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "lineSpacing": [
-      "Spațiere între linii",
-      "Line spacing",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "lineNormal": [
-      "Normal",
-      "Normal",
-      null,
-      null,
-      2
-    ],
-    "lineWide": [
-      "Lat",
-      "Wide",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "lineVeryWide": [
-      "Foarte lat",
-      "Very wide",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "highContrast": [
-      "Contrast ridicat",
-      "High contrast",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "reducedMotion": [
-      "Reduceți mișcarea",
-      "Reduce motion",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "dyslexiaFont": [
-      "Font OpenDyslexic",
-      "OpenDyslexic font",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "moreSpacing": [
-      "Mai multă spațiere între litere",
-      "More letter spacing",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "underlineLinks": [
-      "Subliniați toate linkurile",
-      "Underline all links",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "bigCursor": [
-      "Cursor mare",
-      "Big cursor",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "desaturate": [
-      "Tonuri de gri",
-      "Grayscale",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "strongFocus": [
-      "Indicatori vizibili de focalizare",
-      "Visible focus indicators",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "title": "Accesibilitate",
+    "close": "Aproape",
+    "fontSize": "Dimensiunea textului",
+    "fontNormal": "Normal",
+    "fontLarge": "Mare",
+    "fontExtraLarge": "Foarte mare",
+    "lineSpacing": "Spațiere între linii",
+    "lineNormal": "Normal",
+    "lineWide": "Lat",
+    "lineVeryWide": "Foarte lat",
+    "highContrast": "Contrast ridicat",
+    "reducedMotion": "Reduceți mișcarea",
+    "dyslexiaFont": "Font OpenDyslexic",
+    "moreSpacing": "Mai multă spațiere între litere",
+    "underlineLinks": "Subliniați toate linkurile",
+    "bigCursor": "Cursor mare",
+    "desaturate": "Tonuri de gri",
+    "strongFocus": "Indicatori vizibili de focalizare"
   },
   "music": {
-    "noMusic": [
-      "Fără muzică",
-      "No music",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "loadError": [
-      "Eroare la încărcare",
-      "Error loading",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "label": [
-      "Muzică",
-      "Music",
-      null,
-      null,
-      2
-    ],
-    "soundCloudNote": [
-      "Track SoundCloud — deschis pentru redare",
-      "SoundCloud track — open to play",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "openInSoundCloud": [
-      "Deschideți în SoundCloud",
-      "Open in SoundCloud",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "noMusic": "Fără muzică",
+    "loadError": "Eroare la încărcare",
+    "label": "Muzică",
+    "soundCloudNote": "Track SoundCloud — deschis pentru redare",
+    "openInSoundCloud": "Deschideți în SoundCloud"
   },
   "print": {
-    "preparing": [
-      "Se pregătește tipărirea...",
-      "Preparing print…",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "couplePhoto": [
-      "Foto de cuplu",
-      "Couple photo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "godparentsText": [
-      "Cu binecuvântarea nașilor lor",
-      "With the blessing of their godparents",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "dateAndPlace": [
-      "Data și locul",
-      "Date and venue",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "celebrationTime": [
-      "Ora ceremoniei:",
-      "Ceremony time:",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "viewInGoogleMaps": [
-      "Vizualizați locația în Google Maps",
-      "View location in Google Maps",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "celebrationMessage": [
-      "Așteptăm cu nerăbdare să împărtășim acest moment special cu voi.",
-      "We look forward to sharing this special moment with you.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "transport": [
-      "Transport",
-      "Transport",
-      null,
-      null,
-      2
-    ],
-    "aboutGuests": [
-      "Despre oaspeti",
-      "About the guests",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "scheduleTitle": [
-      "Programul nunții",
-      "Wedding schedule",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "scheduleFallback": [
-      "Programul detaliat va fi distribuit în curând.",
-      "The detailed schedule will be shared soon.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "dressCode": [
-      "Cod vestimentar",
-      "Dress code",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "dressCodeFallback": [
-      "Va fi comunicat ulterior.",
-      "Will be communicated later.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "aboutKids": [
-      "Despre copii",
-      "About children",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "ourStory": [
-      "Povestea noastră",
-      "Our story",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "storyStarted": [
-      "Cum a început totul",
-      "How it all began",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "storyFallback": [
-      "Povestea va fi împărtășită în curând.",
-      "The story will be shared soon.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "gifts": [
-      "Cadouri",
-      "Gifts",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "bestGift": [
-      "Prezența ta este cel mai bun cadou",
-      "Your presence is the best gift",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "giftsFallback": [
-      "Informațiile despre cadouri vor fi distribuite în curând.",
-      "Gift information will be shared soon.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "bankDetails": [
-      "Detalii bancare",
-      "Bank details",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "accommodation": [
-      "Cazare",
-      "Accommodation",
-      null,
-      null,
-      2
-    ],
-    "whereToStay": [
-      "Unde să stai",
-      "Where to stay",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "accommodationFallback": [
-      "Informațiile despre cazare vor fi distribuite în curând.",
-      "Accommodation information will be shared soon.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "footer": [
-      "Wedingo · Politica de confidențialitate la wedingo-6c26a.web.app",
-      "Wedingo · Privacy Policy at wedingo-6c26a.web.app",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "closeWindow": [
-      "Închide fereastra",
-      "Close window",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "preparing": "Se pregătește tipărirea...",
+    "couplePhoto": "Foto de cuplu",
+    "godparentsText": "Cu binecuvântarea nașilor lor",
+    "dateAndPlace": "Data și locul",
+    "celebrationTime": "Ora ceremoniei:",
+    "viewInGoogleMaps": "Vizualizați locația în Google Maps",
+    "celebrationMessage": "Așteptăm cu nerăbdare să împărtășim acest moment special cu voi.",
+    "transport": "Transport",
+    "aboutGuests": "Despre oaspeti",
+    "scheduleTitle": "Programul nunții",
+    "scheduleFallback": "Programul detaliat va fi distribuit în curând.",
+    "dressCode": "Cod vestimentar",
+    "dressCodeFallback": "Va fi comunicat ulterior.",
+    "aboutKids": "Despre copii",
+    "ourStory": "Povestea noastră",
+    "storyStarted": "Cum a început totul",
+    "storyFallback": "Povestea va fi împărtășită în curând.",
+    "gifts": "Cadouri",
+    "bestGift": "Prezența ta este cel mai bun cadou",
+    "giftsFallback": "Informațiile despre cadouri vor fi distribuite în curând.",
+    "bankDetails": "Detalii bancare",
+    "accommodation": "Cazare",
+    "whereToStay": "Unde să stai",
+    "accommodationFallback": "Informațiile despre cazare vor fi distribuite în curând.",
+    "footer": "Wedingo · Politica de confidențialitate la wedingo-6c26a.web.app",
+    "closeWindow": "Închide fereastra"
   },
   "sectionOrder": {
-    "moveUp": [
-      "Mișcă-te în sus",
-      "Move up",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "moveDown": [
-      "Deplasați-vă în jos",
-      "Move down",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "moveUp": "Mișcă-te în sus",
+    "moveDown": "Deplasați-vă în jos",
     "title": "Ordine și vizibilitate",
     "help": "Trageți pentru reordonare, folosiți butoanele pentru mutare și activați/dezactivați fiecare secțiune."
   },
   "langSwitcher": {
-    "label": [
-      "Selectați limba",
-      "Select language",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "label": "Selectați limba"
   },
   "csv": {
-    "companion_one": [
-      "1 însoțitor",
-      "1 companion",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "companion_one": "1 însoțitor",
     "companion_other": "{{count}} companions"
   },
   "langGroups": {
-    "spain": [
-      "Spania",
-      "Spain",
-      null,
-      null,
-      2
-    ],
-    "westernEurope": [
-      "Europa de Vest",
-      "Western Europe",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "nordicEurope": [
-      "Europa nordică",
-      "Nordic Europe",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "centralEurope": [
-      "Europa Centrală",
-      "Central Europe",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "southernEurope": [
-      "Europa de Sud / Balcani",
-      "Southern Europe / Balkans",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "easternEurope": [
-      "Europa de Est / Caucaz",
-      "Eastern Europe / Caucasus",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "eastAsia": [
-      "Asia de Est",
-      "East Asia",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "southAsia": [
-      "Asia de Sud",
-      "South Asia",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "southeastAsia": [
-      "Asia de Sud-Est",
-      "Southeast Asia",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "centralAsia": [
-      "Asia Centrală/Orientul Mijlociu",
-      "Central Asia / Middle East",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "africa": [
-      "Africa",
-      "Africa",
-      null,
-      null,
-      2
-    ],
-    "americas": [
-      "Americi",
-      "Americas",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "spain": "Spania",
+    "westernEurope": "Europa de Vest",
+    "nordicEurope": "Europa nordică",
+    "centralEurope": "Europa Centrală",
+    "southernEurope": "Europa de Sud / Balcani",
+    "easternEurope": "Europa de Est / Caucaz",
+    "eastAsia": "Asia de Est",
+    "southAsia": "Asia de Sud",
+    "southeastAsia": "Asia de Sud-Est",
+    "centralAsia": "Asia Centrală/Orientul Mijlociu",
+    "africa": "Africa",
+    "americas": "Americi"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -3492,506 +808,31 @@
     "showAll": "Ver historial completo"
   },
   "auth": {
-    "sessionExists": [
-      "Există deja o sesiune activă pentru această invitație. ",
-      "There is already an active session for this invitation. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "tokenInvalid": [
-      "Codul de acces nu este valid.",
-      "The access code is not valid.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "enterCode": [
-      "Introduceți codul de acces.",
-      "Enter the access code.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "codeVerified": [
-      "Cod verificat cu succes.",
-      "Code verified successfully.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "codeVerifyError": [
-      "Nu s-a putut verifica codul. ",
-      "Could not verify the code. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "enterUserAndCode": [
-      "Introduceți numele dvs. de utilizator și codul de acces.",
-      "Enter your username and the access code.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "invalidCredentials": [
-      "Nume de utilizator sau cod incorect.",
-      "Incorrect username or code.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "codeUserMismatch": [
-      "Codul nu se potrivește cu acest utilizator.",
-      "The code does not match this user.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "loginSuccess": [
-      "Te-ai autentificat cu succes.",
-      "You have logged in successfully.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "loginError": [
-      "Nu s-a putut verifica codul. ",
-      "Could not verify the code. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "confirmRequired": [
-      "Tastați CONFIRM pentru a genera un nou cod.",
-      "Type CONFIRM to generate a new code.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "usernameRequired": [
-      "Introduceți mai întâi numele de utilizator.",
-      "Enter your username first.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "usernameInvalid": [
-      "Numele de utilizator poate conține doar litere și cifre.",
-      "Username can only contain letters and numbers.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "usernameTooLong": [
-      "Numele de utilizator nu poate depăși 50 de caractere.",
-      "Username cannot exceed 50 characters.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "unauthorizedUser": [
-      "Acest utilizator nu are permisiunea de a accesa aici.",
-      "This user does not have permission to access here.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "tokenGenerated": [
-      "Cod generat. ",
-      "Code generated. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "tokenGenerateError": [
-      "Codul nu a putut fi generat. ",
-      "Could not generate the code. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "currentTokenRequired": [
-      "Introduceți codul de acces curent pentru a genera unul nou.",
-      "Enter the current access code to generate a new one.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "tokenRenewed": [
-      "Cod nou generat. ",
-      "New code generated. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "tokenRenewedAdmin": [
-      "Cod reînnoit. ",
-      "Code renewed. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "superadminNoPermissions": [
-      "Acest cont nu are permisiuni de administrare.",
-      "This account does not have administration permissions.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "superadminWrongCredentials": [
-      "Acreditări incorecte.",
-      "Incorrect credentials.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "superadminTooManyAttempts": [
-      "Prea multe încercări. ",
-      "Too many attempts. ",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "superadminInvalidEmail": [
-      "Formatul de e-mail nu este valid.",
-      "The email format is not valid.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "superadminLoginError": [
-      "Eroare la conectare. Verificați-vă conexiunea.",
-      "Error logging in. Check your connection.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "sessionExists": "Există deja o sesiune activă pentru această invitație. ",
+    "tokenInvalid": "Codul de acces nu este valid.",
+    "enterCode": "Introduceți codul de acces.",
+    "codeVerified": "Cod verificat cu succes.",
+    "codeVerifyError": "Nu s-a putut verifica codul. ",
+    "enterUserAndCode": "Introduceți numele dvs. de utilizator și codul de acces.",
+    "invalidCredentials": "Nume de utilizator sau cod incorect.",
+    "codeUserMismatch": "Codul nu se potrivește cu acest utilizator.",
+    "loginSuccess": "Te-ai autentificat cu succes.",
+    "loginError": "Nu s-a putut verifica codul. ",
+    "confirmRequired": "Tastați CONFIRM pentru a genera un nou cod.",
+    "usernameRequired": "Introduceți mai întâi numele de utilizator.",
+    "usernameInvalid": "Numele de utilizator poate conține doar litere și cifre.",
+    "usernameTooLong": "Numele de utilizator nu poate depăși 50 de caractere.",
+    "unauthorizedUser": "Acest utilizator nu are permisiunea de a accesa aici.",
+    "tokenGenerated": "Cod generat. ",
+    "tokenGenerateError": "Codul nu a putut fi generat. ",
+    "currentTokenRequired": "Introduceți codul de acces curent pentru a genera unul nou.",
+    "tokenRenewed": "Cod nou generat. ",
+    "tokenRenewedAdmin": "Cod reînnoit. ",
+    "superadminNoPermissions": "Acest cont nu are permisiuni de administrare.",
+    "superadminWrongCredentials": "Acreditări incorecte.",
+    "superadminTooManyAttempts": "Prea multe încercări. ",
+    "superadminInvalidEmail": "Formatul de e-mail nu este valid.",
+    "superadminLoginError": "Eroare la conectare. Verificați-vă conexiunea."
   },
   "autosave": {
     "saved": "Modificări salvate"
@@ -4004,13 +845,7 @@
     "5": "Mai",
     "6": "Iunie",
     "7": "Iulie",
-    "8": [
-      "august",
-      "August",
-      null,
-      null,
-      2
-    ],
+    "8": "august",
     "9": "Septembrie",
     "10": "Octombrie",
     "11": "Noiembrie",
@@ -4019,777 +854,62 @@
   "themeGroups": {
     "light": "Teme luminoase",
     "dark": "Teme întunecate",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
-    "gluten": [
-      "gluten",
-      "Gluten",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "gluten": "gluten",
     "lactose": "Lactoză",
     "nuts": "Nuci",
     "shellfish": "Crustacee"
   },
   "envelope": {
-    "addressLine1": [
-      "Pentru cei mai dragi nostri",
-      "To our dearest",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "tapHint": [
-      "Atingeți pentru a deschide",
-      "Tap to open",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "tapContinue": [
-      "Atingeți pentru a continua",
-      "Tap to continue",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "addressLine1": "Pentru cei mai dragi nostri",
+    "tapHint": "Atingeți pentru a deschide",
+    "and": "&",
+    "tapContinue": "Atingeți pentru a continua"
   },
   "calendar": {
-    "defaultTitle": [
-      "Nunta noastră",
-      "Our wedding",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "eventTitle": [
-      "Nunta lui {{names}}",
-      "Wedding of {{names}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "placeUnknown": [
-      "Locația de confirmat",
-      "Location to be confirmed",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "invitationText": [
-      "Așteptăm cu nerăbdare să sărbătorim acest moment special alături de tine.",
-      "We look forward to celebrating this special moment with you.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "timeLabel": [
-      "Timp:",
-      "Time:",
-      null,
-      null,
-      2
-    ],
-    "placeLabel": [
-      "Locul de desfasurare:",
-      "Venue:",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "defaultTitle": "Nunta noastră",
+    "eventTitle": "Nunta lui {{names}}",
+    "placeUnknown": "Locația de confirmat",
+    "invitationText": "Așteptăm cu nerăbdare să sărbătorim acest moment special alături de tine.",
+    "timeLabel": "Timp:",
+    "placeLabel": "Locul de desfasurare:"
   },
   "themeHints": {
-    "golden": [
-      "Elegant si luminos, cu accente aurii.",
-      "Elegant and bright, with golden accents.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "forest": [
-      "Natural și sobru cu verdeață moale.",
-      "Natural and sober with soft greens.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "rose": [
-      "Cald si delicat, cu nuante roz.",
-      "Warm and delicate, with pink hues.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "linen-soft": [
-      "Ușoară și neutră, cu o prezență senină și atemporală.",
-      "Light and neutral, with a serene and timeless presence.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "blush-pearl": [
-      "Moale și romantică, cu tonuri de roz sidefat.",
-      "Soft and romantic, with pearly pink tones.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "lavender-mist": [
-      "Proaspăt și senin, cu nuanțe de lavandă și mov.",
-      "Fresh and serene, with lavender and mauve hues.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "champagne-bubble": [
-      "Luminos și festiv, cu străluciri aurii calde.",
-      "Bright and festive, with warm golden sparkles.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "amber-night": [
-      "Întunecat și elegant, cu accente de chihlimbar și auriu.",
-      "Dark and elegant, with amber and gold highlights.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "onyx-gold": [
-      "Adanc si sofisticat, cu auriu intens pe fundal inchis.",
-      "Deep and sophisticated, with intense gold on dark background.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "midnight-royal": [
-      "Albastru foarte închis cu auriu intens și prezență solemnă.",
-      "Very dark blue with intense gold and solemn presence.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "burgundy-velvet": [
-      "Cald si invaluitor, cu vin rosu si paiete aurii.",
-      "Warm and enveloping, with red wine and golden sparkles.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "sapphire-night": [
-      "Albastru profund cu accente argintii și prezență senină.",
-      "Deep blue with silver accents and serene presence.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "emerald-grove": [
-      "Verde natural intens, cu nuanțe aurii și elegante.",
-      "Deep natural green with golden and elegant hues.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "plum-twilight": [
-      "Mov intens, cu străluciri roz și romantice.",
-      "Intense purple with pink and romantic sparkles.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "rainbow": [
-      "Sărbătoarea iubirii diverse cu culorile curcubeului.",
-      "Celebration of diverse love with rainbow colors.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "trans": [
-      "Albastru, roz și alb în omagiu drapelului trans.",
-      "Blue, pink and white in tribute to the trans flag.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "nonbinary": [
-      "Galben, alb, violet și negru pentru steagul non-binar.",
-      "Yellow, white, purple and black for the non-binary flag.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "lesbian": [
-      "Portocaliu, alb și roz al steagului lesbian.",
-      "Orange, white and pink of the lesbian flag.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "bi": [
-      "Roz, violet și albastru al steagului bi.",
-      "Pink, purple and blue of the bi flag.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "pan": [
-      "Roz, galben și albastru al drapelului pan.",
-      "Pink, yellow and blue of the pan flag.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "ace": [
-      "Negru, gri, alb și violet al steagului asexuat.",
-      "Black, gray, white and purple of the asexual flag.",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "golden": "Elegant si luminos, cu accente aurii.",
+    "forest": "Natural și sobru cu verdeață moale.",
+    "rose": "Cald si delicat, cu nuante roz.",
+    "linen-soft": "Ușoară și neutră, cu o prezență senină și atemporală.",
+    "blush-pearl": "Moale și romantică, cu tonuri de roz sidefat.",
+    "lavender-mist": "Proaspăt și senin, cu nuanțe de lavandă și mov.",
+    "champagne-bubble": "Luminos și festiv, cu străluciri aurii calde.",
+    "amber-night": "Întunecat și elegant, cu accente de chihlimbar și auriu.",
+    "onyx-gold": "Adanc si sofisticat, cu auriu intens pe fundal inchis.",
+    "midnight-royal": "Albastru foarte închis cu auriu intens și prezență solemnă.",
+    "burgundy-velvet": "Cald si invaluitor, cu vin rosu si paiete aurii.",
+    "sapphire-night": "Albastru profund cu accente argintii și prezență senină.",
+    "emerald-grove": "Verde natural intens, cu nuanțe aurii și elegante.",
+    "plum-twilight": "Mov intens, cu străluciri roz și romantice.",
+    "rainbow": "Sărbătoarea iubirii diverse cu culorile curcubeului.",
+    "trans": "Albastru, roz și alb în omagiu drapelului trans.",
+    "nonbinary": "Galben, alb, violet și negru pentru steagul non-binar.",
+    "lesbian": "Portocaliu, alb și roz al steagului lesbian.",
+    "bi": "Roz, violet și albastru al steagului bi.",
+    "pan": "Roz, galben și albastru al drapelului pan.",
+    "ace": "Negru, gri, alb și violet al steagului asexuat."
   },
   "kidsPolicy": {
     "options": {
-      "playArea": [
-        "Bun venit cu zona de joaca",
-        "Welcome with play area",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "supervised": [
-        "Bun venit sub supraveghere",
-        "Welcome under supervision",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
-      "adultOnly": [
-        "Doar adulți",
-        "Adults only",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ]
+      "playArea": "Bun venit cu zona de joaca",
+      "supervised": "Bun venit sub supraveghere",
+      "adultOnly": "Doar adulți"
     }
   },
   "chart": {
-    "noData": [
-      "Fără date",
-      "No data",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "total": [
-      "total",
-      "total",
-      null,
-      null,
-      2
-    ],
-    "barChart": [
-      "Diagramă cu bare de prezență",
-      "Attendance bar chart",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "noData": "Fără date",
+    "total": "total",
+    "barChart": "Diagramă cu bare de prezență",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   },
   "dataRequest": {

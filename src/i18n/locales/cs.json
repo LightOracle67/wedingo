@@ -81,26 +81,7 @@
     "sectionLabel": "O hostech",
     "scheduleTitle": "Program oslavy",
     "schedulePending": "Podrobný program bude brzy sdílen se všemi hosty.",
-    "dressCodeLabel": [
-      "Dress code",
-      "Dress code",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "dressCodeLabel": "Dress code",
     "dressCodeTitle": "Doporučený oděv",
     "dressCodePending": "Dress code bude sdělen později.",
     "kidsLabel": "Děti",
@@ -149,13 +130,7 @@
     "menuPescado": "Ryba",
     "menuVegano": "Veganské/Vegetariánské",
     "postre": "Dezert",
-    "menuLabel": [
-      "Menu",
-      "Menu",
-      null,
-      null,
-      2
-    ],
+    "menuLabel": "Menu",
     "allergiesLegend": "Alergie a intolerance",
     "allergiesPlaceholder": "Jiná alergie (upřesněte)",
     "allergiesHint": "Uveďte pouze potravinové alergie a intolerance. Nezadávejte nevyžádané lékařské informace.",
@@ -202,26 +177,7 @@
     "loadingInvitation": "Načítání pozvánky…",
     "notFoundTitle": "Pozvánka nenalezena",
     "notFoundText": "Nenašli jsme pozvánku s tímto odkazem. Pokud si myslíte, že jde o chybu, kontaktujte hostitele.",
-    "emptyTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "emptyTitle": "Wedingo",
     "emptyText": "Vytvořte a sdílejte své personalizované svatební oznámení.",
     "emptyDescription": "Spravujte data svého oznámení, sdílejte jedinečný odkaz s hosty a přijímejte jejich potvrzení účasti.",
     "createLink": "Vytvořit pozvánku",
@@ -304,26 +260,7 @@
     "scheduleLabel": "Program svatby",
     "schedulePlaceholder": "Příklad: 18:00 Přivítání hostů\n18:30 Obřad\n19:30 Koktejl\n21:00 Hostina\n23:00 Tanec",
     "scheduleHint": "Napište program, každý bod na nový řádek.",
-    "dressCodeLabel": [
-      "Dress code",
-      "Dress code",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "dressCodeLabel": "Dress code",
     "dressCodeGala": "Společenský oděv",
     "dressCodeCasual": "Neformální oděv",
     "dressCodeFormal": "Formální oděv",
@@ -421,26 +358,7 @@
     "pdfTableCompanions": "Doprovod",
     "pdfTableDiet": "Strava",
     "sectionsLabel": "Secciones",
-    "barTitle": [
-      "Wedingo · Admin",
-      "Wedingo · Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "barTitle": "Wedingo · Admin",
     "viewInvitation": "Zobrazit pozvánku",
     "logout": "Odhlaste se"
   },
@@ -508,53 +426,9 @@
     "generateMessage": "Vygenerovat jinou zprávu",
     "copyMessage": "Kopírovat zprávu",
     "shareVia": "Sdílet přes",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "telegram": [
-      "Telegram",
-      "Telegram",
-      null,
-      null,
-      2
-    ],
-    "sms": [
-      "SMS",
-      "SMS",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "sms": "SMS",
     "print": "Tisk",
     "printPdf": "Tisk / Uložit PDF",
     "linkCopied": "Odkaz zkopírován.",
@@ -583,26 +457,7 @@
     "rightsHint": "Otevře se váš e-mailový klient s předdefinovanou šablonou. Můžete také napsat na adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Kalifornie)",
     "ccpaText": "Wedingo neprodává osobní údaje. Shromážděné údaje se používají výhradně pro správu pozvánky. Pokud jste obyvatelem Kalifornie, máte právo požádat o vymazání svých údajů a nebýt diskriminován za uplatňování svých práv.",
-    "appTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "appTitle": "Wedingo",
     "appDescription": "Webová aplikace pro správu svatebních oznámení.",
     "copyright": "© {{year}} Adrián Carrasco López. Všechna práva vyhrazena.",
     "deleteEmailSubject": "Žádost o vymazání údajů - Wedingo",
@@ -690,26 +545,7 @@
       "compliance": "Soulad",
       "data": "Datos"
     },
-    "superadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "superadmin": "Superadmin",
     "controlPanel": "Ovládací panel",
     "managePlatform": "Spravujte platformu Wedingo",
     "dashboardLoading": "Načítání statistik...",
@@ -762,71 +598,14 @@
     "tokenCleanError": "Tokeny se nepodařilo vyčistit.",
     "tokenLoadError": "Tokeny se nepodařilo načíst.",
     "accountEmail": "E-mail: {{email}}",
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "Aktivní",
     "sessionInactive": "Neaktivní",
     "sessionLabel": "Lokální relace: {{status}}",
     "sessionType": "Typ: {{type}}",
-    "sessionTypeSuperadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Konfigurace",
-    "sessionTypeAdmin": [
-      "Admin",
-      "Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionTypeAdmin": "Admin",
     "sessionExpires": "Vyprší: {{date}}",
     "logoutButton": "Odhlásit se",
     "firebaseAccount": "Pro správu superadmin účtu použijte Firebase konzoli:",
@@ -888,51 +667,13 @@
     "row1Basis": "Souhlas (čl. 6.1.a GDPR)",
     "row1Purpose": "Vytvoření a přizpůsobení svatebního oznámení",
     "row1Retention": "Dokud je účet aktivní",
-    "row1Recipients": [
-      "Google Cloud (Firestore, hosting)",
-      "Google Cloud (Firestore, hosting)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row1Recipients": "Google Cloud (Firestore, hosting)",
     "row2Activity": "Potvrzení účasti (RSVP)",
     "row2Data": "Jméno hosta, účast (ano/ne), výběr menu, alergie, zdravotní údaje",
     "row2Basis": "Souhlas (čl. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Správa seznamu hostů a menu",
     "row2Retention": "12 měsíců po události",
-    "row2Recipients": [
-      "Google Cloud (Firestore)",
-      "Google Cloud (Firestore)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row2Recipients": "Google Cloud (Firestore)",
     "row3Activity": "Nahrávání obrázků",
     "row3Data": "Svatební fotografie (šifrované AES-256-GCM)",
     "row3Basis": "Souhlas (čl. 6.1.a GDPR)",
@@ -950,26 +691,7 @@
     "row5Basis": "Zákonná povinnost (čl. 6.1.c GDPR)",
     "row5Purpose": "Záznam administrativních činností",
     "row5Retention": "3 roky",
-    "row5Recipients": [
-      "Google Cloud (Firestore auditLog)",
-      "Google Cloud (Firestore auditLog)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row5Recipients": "Google Cloud (Firestore auditLog)",
     "internationalTitle": "Mezinárodní přenosy",
     "internationalText": "Údaje jsou uloženy na serverech Google Cloud v regionu eur3 (Frankfurt, Německo). Google LLC (USA) vystupuje jako zpracovatel na základě DPA v souladu s čl. 28 GDPR. Přenosy do USA jsou kryty:",
     "scc": "Standardní smluvní doložky (SCC) - Prováděcí rozhodnutí 2021/914",
@@ -1021,26 +743,7 @@
     "aboutGuests": "O hostech",
     "scheduleTitle": "Svatební plán",
     "scheduleFallback": "Podrobný harmonogram bude brzy sdílen.",
-    "dressCode": [
-      "Dress code",
-      "Dress code",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "dressCode": "Dress code",
     "dressCodeFallback": "Bude sděleno později.",
     "aboutKids": "O dětech",
     "ourStory": "Náš příběh",
@@ -1151,26 +854,7 @@
   "themeGroups": {
     "light": "Světlá témata",
     "dark": "Tmavá témata",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
     "gluten": "Lepek",
@@ -1181,26 +865,7 @@
   "envelope": {
     "addressLine1": "Našim nejdražším",
     "tapHint": "Klepnutím otevřete",
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "383bdae9ffa69f7aa8a53d8e5de30a5f",
-            "tea_CzechSlovakA_en2cssk_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "and": "&",
     "tapContinue": "Pokračujte klepnutím"
   },
   "calendar": {

@@ -177,26 +177,7 @@
     "loadingInvitation": "Ŝarĝante inviton…",
     "notFoundTitle": "Invito ne trovita",
     "notFoundText": "Ni ne trovis inviton kun ĉi tiu ligilo. Se vi pensas, ke estas eraro, kontaktu la gastigantojn.",
-    "emptyTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "emptyTitle": "Wedingo",
     "emptyText": "Kreu kaj dividu vian personecigitan geedziĝan inviton.",
     "emptyDescription": "Administru la datumojn de via invito, dividu unikan ligilon kun viaj gastoj kaj ricevu iliajn ĉeestkonfirmojn.",
     "createLink": "Krei inviton",
@@ -377,26 +358,7 @@
     "pdfTableCompanions": "Akompanantoj",
     "pdfTableDiet": "Dieto",
     "sectionsLabel": "Secciones",
-    "barTitle": [
-      "Wedingo · Admin",
-      "Wedingo · Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "barTitle": "Wedingo · Admin",
     "viewInvitation": "Rigardu inviton",
     "logout": "Elsaluti"
   },
@@ -464,47 +426,9 @@
     "generateMessage": "Generi alian mesaĝon",
     "copyMessage": "Kopii mesaĝon",
     "shareVia": "Dividi per",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "whatsapp": "WhatsApp",
     "telegram": "Telegramo",
-    "sms": [
-      "SMS",
-      "SMS",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sms": "SMS",
     "print": "Presi",
     "printPdf": "Presi / Konservi PDF",
     "linkCopied": "Ligilo kopiita.",
@@ -533,26 +457,7 @@
     "rightsHint": "Via retpoŝtprogramo malfermiĝos kun antaŭdifinita ŝablono. Vi ankaŭ povas skribi al adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Kalifornio)",
     "ccpaText": "Wedingo ne vendas personajn datumojn. La kolektitaj datumoj estas uzataj ekskluzive por la administrado de la invito. Se vi estas kalifornia loĝanto, vi rajtas peti la forigon de viaj datumoj kaj ne esti diskriminaciata pro ekzercado de viaj rajtoj.",
-    "appTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "appTitle": "Wedingo",
     "appDescription": "TTT-aplikaĵo por administrado de geedziĝaj invitoj.",
     "copyright": "© {{year}} Adrián Carrasco López. Ĉiuj rajtoj rezervitaj.",
     "deleteEmailSubject": "Peto pri forigo de datumoj - Wedingo",
@@ -693,26 +598,7 @@
     "tokenCleanError": "Ne eblis purigi la tokenojn.",
     "tokenLoadError": "Ne eblis ŝargi la tokenojn.",
     "accountEmail": "Retpoŝto: {{email}}",
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "Aktiva",
     "sessionInactive": "Neaktiva",
     "sessionLabel": "Loka sesio: {{status}}",
@@ -739,26 +625,7 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": [
-        "Token",
-        "Token",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "36ab1f45365dc899debd4d40bafba100",
-              "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-            ]
-          ]
-        ]
-      ],
+      "colToken": "Token",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
       "colRsvps": "RSVP-oj",
@@ -824,26 +691,7 @@
     "row5Basis": "Jura devigo (Art. 6.1.c GDPR)",
     "row5Purpose": "Registro de administraj aktivecoj",
     "row5Retention": "3 jaroj",
-    "row5Recipients": [
-      "Google Cloud (Firestore auditLog)",
-      "Google Cloud (Firestore auditLog)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row5Recipients": "Google Cloud (Firestore auditLog)",
     "internationalTitle": "Internaciaj transdono",
     "internationalText": "Datumoj estas konservitaj en serviloj de Google Cloud en la regiono eur3 (Frankfurto, Germanio). Google LLC (Usono) agas kiel traktanto laŭ DPA konforme al Art. 28 GDPR. Transdono al Usono baziĝas sur:",
     "scc": "Tipaj Kontraktaj Klaŭzoj (SCC) - Plenum-Decido 2021/914",
@@ -1006,26 +854,7 @@
   "themeGroups": {
     "light": "Lumaj temoj",
     "dark": "Malhelaj temoj",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
     "gluten": "Gluteno",
@@ -1036,26 +865,7 @@
   "envelope": {
     "addressLine1": "Al nia plej kara",
     "tapHint": "Frapu por malfermi",
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "36ab1f45365dc899debd4d40bafba100",
-            "tea_LatinateA_en2eucacoeoglhtmtro_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "and": "&",
     "tapContinue": "Frapu por daŭrigi"
   },
   "calendar": {

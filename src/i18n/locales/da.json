@@ -24,13 +24,7 @@
     "skipToContent": "Spring til hovedindhold",
     "adminBar": {
       "ariaLabel": "Administrationsbjælke",
-      "fallback": [
-        "Administration",
-        "Administration",
-        null,
-        null,
-        2
-      ]
+      "fallback": "Administration"
     },
     "saving": "Saving…",
     "menu": "Menu",
@@ -135,20 +129,8 @@
     "menuCarne": "Kød",
     "menuPescado": "Fisk",
     "menuVegano": "Vegansk/Vegetarisk",
-    "postre": [
-      "Dessert",
-      "Dessert",
-      null,
-      null,
-      2
-    ],
-    "menuLabel": [
-      "Menu",
-      "Menu",
-      null,
-      null,
-      2
-    ],
+    "postre": "Dessert",
+    "menuLabel": "Menu",
     "allergiesLegend": "Allergier og intolerancer",
     "allergiesPlaceholder": "Anden allergi (angiv)",
     "allergiesHint": "Angiv kun fødevareallergier og -intolerancer. Indtast ikke uopfordrede helbredsoplysninger.",
@@ -195,26 +177,7 @@
     "loadingInvitation": "Indlæser invitation…",
     "notFoundTitle": "Invitation ikke fundet",
     "notFoundText": "Vi fandt ingen invitation med dette link. Hvis du mener, det er en fejl, så kontakt værterne.",
-    "emptyTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "emptyTitle": "Wedingo",
     "emptyText": "Opret og del din personlige bryllupsinvitation.",
     "emptyDescription": "Administrér dine invitationsoplysninger, del et unikt link med dine gæster, og modtag deres tilbagemeldinger.",
     "createLink": "Opret invitation",
@@ -376,13 +339,7 @@
   "admin": {
     "tabs": {
       "panel": "Panel",
-      "invitation": [
-        "Invitation",
-        "Invitation",
-        null,
-        null,
-        2
-      ],
+      "invitation": "Invitation",
       "attendance": "Deltagelse",
       "share": "Del",
       "access": "Adgang",
@@ -401,26 +358,7 @@
     "pdfTableCompanions": "Ledsagere",
     "pdfTableDiet": "Kost",
     "sectionsLabel": "Secciones",
-    "barTitle": [
-      "Wedingo · Admin",
-      "Wedingo · Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "barTitle": "Wedingo · Admin",
     "viewInvitation": "Se invitationen",
     "logout": "Log ud"
   },
@@ -466,13 +404,7 @@
     "tableAttendance": "Deltagelse",
     "tableCompanions": "Ledsagere",
     "tableDiet": "Kostinfo",
-    "tableNote": [
-      "Note",
-      "Note",
-      null,
-      null,
-      2
-    ],
+    "tableNote": "Note",
     "tableDate": "Dato",
     "show": "Vis",
     "total": "{{count}} i alt",
@@ -494,53 +426,9 @@
     "generateMessage": "Generér ny besked",
     "copyMessage": "Kopiér besked",
     "shareVia": "Del via",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "telegram": [
-      "Telegram",
-      "Telegram",
-      null,
-      null,
-      2
-    ],
-    "sms": [
-      "SMS",
-      "SMS",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "sms": "SMS",
     "print": "Udskriv",
     "printPdf": "Udskriv / Gem PDF",
     "linkCopied": "Link kopieret.",
@@ -569,26 +457,7 @@
     "rightsHint": "Din e-mailklient åbnes med en foruddefineret skabelon. Du kan også skrive til adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Californien)",
     "ccpaText": "Wedingo sælger ikke personoplysninger. De indsamlede data bruges udelukkende til invitationsadministration. Hvis du er bosiddende i Californien, har du ret til at anmode om sletning af dine data og til ikke at blive diskrimineret for at udøve dine rettigheder.",
-    "appTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "appTitle": "Wedingo",
     "appDescription": "Webapplikation til administration af bryllupsinvitationer.",
     "copyright": "© {{year}} Adrián Carrasco López. Alle rettigheder forbeholdes.",
     "deleteEmailSubject": "Anmodning om datasletning - Wedingo",
@@ -672,36 +541,11 @@
       "dashboard": "Panel",
       "invitations": "Invitationer",
       "tokens": "Poletter",
-      "session": [
-        "Session",
-        "Session",
-        null,
-        null,
-        2
-      ],
+      "session": "Session",
       "compliance": "Overholdelse",
       "data": "Datos"
     },
-    "superadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "superadmin": "Superadmin",
     "controlPanel": "Kontrolpanel",
     "managePlatform": "Administrér Wedingo-platformen",
     "dashboardLoading": "Indlæser statistik...",
@@ -727,26 +571,7 @@
     "invitationsCount": "{{count}} invitationer · {{size}} pladser brugt",
     "noResultsFilter": "Ingen invitationer med dette kriterie.",
     "noInvitations": "Der er ingen invitationer endnu.",
-    "tableToken": [
-      "Token",
-      "Token",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "tableToken": "Token",
     "tableTheme": "Tema",
     "tableDate": "Bryllupsdato",
     "tableActions": "Handlinger",
@@ -773,90 +598,14 @@
     "tokenCleanError": "Kunne ikke rydde tokens.",
     "tokenLoadError": "Kunne ikke indlæse tokens.",
     "accountEmail": "E-mail: {{email}}",
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "Aktiv",
     "sessionInactive": "Inaktiv",
     "sessionLabel": "Lokal session: {{status}}",
-    "sessionType": [
-      "Type: {{type}}",
-      "Type: {{type}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "sessionTypeSuperadmin": [
-      "Superadmin",
-      "Superadmin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionType": "Type: {{type}}",
+    "sessionTypeSuperadmin": "Superadmin",
     "sessionTypeSetup": "Opsætning",
-    "sessionTypeAdmin": [
-      "Admin",
-      "Admin",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sessionTypeAdmin": "Admin",
     "sessionExpires": "Udløber: {{date}}",
     "logoutButton": "Log ud",
     "firebaseAccount": "For at administrere din superadmin-konto skal du bruge Firebase-konsollen:",
@@ -876,26 +625,7 @@
       "confirmRequired": "Escribe \"{{word}}\" para confirmar esta acción.",
       "export": "Exportar",
       "delete": "Eliminar",
-      "colToken": [
-        "Token",
-        "Token",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "c20f075da290ff4ebe2bae43bebf89e7",
-              "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-            ]
-          ]
-        ]
-      ],
+      "colToken": "Token",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
       "colRsvps": "Svar",
@@ -937,51 +667,13 @@
     "row1Basis": "Samtykke (GDPR art. 6, stk. 1, litra a)",
     "row1Purpose": "Oprette og personliggøre bryllupsinvitation",
     "row1Retention": "Så længe kontoen er aktiv",
-    "row1Recipients": [
-      "Google Cloud (Firestore, hosting)",
-      "Google Cloud (Firestore, hosting)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row1Recipients": "Google Cloud (Firestore, hosting)",
     "row2Activity": "Tilbagemelding (RSVP)",
     "row2Data": "Gæstens navn, deltagelse (ja/nej), menuvalg, allergier, helbredsdata",
     "row2Basis": "Samtykke (GDPR art. 6, stk. 1, litra a, art. 9, stk. 2, litra a)",
     "row2Purpose": "Administrere gæsteliste og menu",
     "row2Retention": "12 måneder efter begivenheden",
-    "row2Recipients": [
-      "Google Cloud (Firestore)",
-      "Google Cloud (Firestore)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row2Recipients": "Google Cloud (Firestore)",
     "row3Activity": "Billedupload",
     "row3Data": "Bryllupsbilleder (krypteret AES-256-GCM)",
     "row3Basis": "Samtykke (GDPR art. 6, stk. 1, litra a)",
@@ -1016,23 +708,11 @@
     "title": "Tilgængelighed",
     "close": "Tæt",
     "fontSize": "Tekststørrelse",
-    "fontNormal": [
-      "Normal",
-      "Normal",
-      null,
-      null,
-      2
-    ],
+    "fontNormal": "Normal",
     "fontLarge": "Stor",
     "fontExtraLarge": "Ekstra stor",
     "lineSpacing": "Linjeafstand",
-    "lineNormal": [
-      "Normal",
-      "Normal",
-      null,
-      null,
-      2
-    ],
+    "lineNormal": "Normal",
     "lineWide": "Bred",
     "lineVeryWide": "Meget bred",
     "highContrast": "Høj kontrast",
@@ -1174,48 +854,10 @@
   "themeGroups": {
     "light": "Lyse temaer",
     "dark": "Mørke temaer",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
-    "gluten": [
-      "Gluten",
-      "Gluten",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "gluten": "Gluten",
     "lactose": "Laktose",
     "nuts": "Trænødder",
     "shellfish": "Skaldyr"
@@ -1223,26 +865,7 @@
   "envelope": {
     "addressLine1": "Til vores kære",
     "tapHint": "Tryk for at åbne",
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "c20f075da290ff4ebe2bae43bebf89e7",
-            "tea_GermanicA_en2afdaislbnosvfyyiiw_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "and": "&",
     "tapContinue": "Tryk for at fortsætte"
   },
   "calendar": {
@@ -1285,13 +908,7 @@
   },
   "chart": {
     "noData": "Ingen data",
-    "total": [
-      "total",
-      "total",
-      null,
-      null,
-      2
-    ],
+    "total": "total",
     "barChart": "Tilstedeværelse søjlediagram",
     "donutSummary": "{{yes}} confirmed, {{no}} not attending, {{pending}} pending"
   },

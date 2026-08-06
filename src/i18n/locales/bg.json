@@ -177,26 +177,7 @@
     "loadingInvitation": "Зареждане на поканата…",
     "notFoundTitle": "Поканата не е намерена",
     "notFoundText": "Не намерихме покана с този линк. Ако смяташ, че е грешка, свържи се с домакините.",
-    "emptyTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ],
+    "emptyTitle": "Wedingo",
     "emptyText": "Създай и сподели своята персонализирана сватбена покана.",
     "emptyDescription": "Управлявай данните на поканата си, сподели уникален линк с гостите и получавай потвържденията им за присъствие.",
     "createLink": "Създай покана",
@@ -445,47 +426,9 @@
     "generateMessage": "Генерирай друго съобщение",
     "copyMessage": "Копирай съобщение",
     "shareVia": "Сподели чрез",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ],
+    "whatsapp": "WhatsApp",
     "telegram": "Телеграма",
-    "sms": [
-      "SMS",
-      "SMS",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ],
+    "sms": "SMS",
     "print": "Отпечатай",
     "printPdf": "Отпечатай / Запази PDF",
     "linkCopied": "Линкът е копиран.",
@@ -514,26 +457,7 @@
     "rightsHint": "Ще се отвори имейл клиентът ти с предварително зададен шаблон. Можеш също да пишеш на adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Калифорния)",
     "ccpaText": "Wedingo не продава лични данни. Събраните данни се използват изключително за управление на поканата. Ако си жител на Калифорния, имаш право да поискаш изтриване на данните си и да не бъдеш дискриминиран/а за упражняване на правата си.",
-    "appTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ],
+    "appTitle": "Wedingo",
     "appDescription": "Уеб приложение за управление на сватбени покани.",
     "copyright": "© {{year}} Адриан Караско Лопес. Всички права запазени.",
     "deleteEmailSubject": "Заявка за изтриване на данни - Wedingo",
@@ -674,26 +598,7 @@
     "tokenCleanError": "Токените не можаха да бъдат почистени.",
     "tokenLoadError": "Токените не можаха да бъдат заредени.",
     "accountEmail": "Имейл: {{email}}",
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ],
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "Активна",
     "sessionInactive": "Неактивна",
     "sessionLabel": "Локална сесия: {{status}}",
@@ -723,26 +628,7 @@
       "colToken": "Токен",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": [
-        "RSVPs",
-        "RSVPs",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "2e8de74564aec87fb81cb0340a661858",
-              "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-            ]
-          ]
-        ]
-      ],
+      "colRsvps": "RSVPs",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -787,26 +673,7 @@
     "row2Basis": "Съгласие (чл. 6.1.a, 9.2.a GDPR)",
     "row2Purpose": "Управление на списък с гости и меню",
     "row2Retention": "12 месеца след събитието",
-    "row2Recipients": [
-      "Google Cloud (Firestore)",
-      "Google Cloud (Firestore)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ],
+    "row2Recipients": "Google Cloud (Firestore)",
     "row3Activity": "Качване на изображения",
     "row3Data": "Сватбени снимки (криптирани AES-256-GCM)",
     "row3Basis": "Съгласие (чл. 6.1.a GDPR)",
@@ -824,26 +691,7 @@
     "row5Basis": "Законово задължение (чл. 6.1.c GDPR)",
     "row5Purpose": "Регистър на административни дейности",
     "row5Retention": "3 години",
-    "row5Recipients": [
-      "Google Cloud (Firestore auditLog)",
-      "Google Cloud (Firestore auditLog)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ],
+    "row5Recipients": "Google Cloud (Firestore auditLog)",
     "internationalTitle": "Международни трансфери",
     "internationalText": "Данните се съхраняват на сървъри на Google Cloud в региона eur3 (Франкфурт, Германия). Google LLC (САЩ) действа като обработващ данни съгласно DPA в съответствие с чл. 28 GDPR. Трансферите към САЩ се основават на:",
     "scc": "Стандартни договорни клаузи (SCC) - Решение за изпълнение 2021/914",
@@ -1006,26 +854,7 @@
   "themeGroups": {
     "light": "Леки теми",
     "dark": "Тъмни теми",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2e8de74564aec87fb81cb0340a661858",
-            "tea_SouthSlavicA_en2bebsbghrsrsluk_2022q2.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
     "gluten": "глутен",

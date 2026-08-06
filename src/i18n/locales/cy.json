@@ -177,26 +177,7 @@
     "loadingInvitation": "Yn llwytho gwahoddiad…",
     "notFoundTitle": "Gwahoddiad heb ei ganfod",
     "notFoundText": "Ni ddaethom o hyd i wahoddiad gyda'r ddolen hon. Os ydych chi'n meddwl ei fod yn gamgymeriad, cysylltwch â'r gwesteiwyr.",
-    "emptyTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2380de39af29128a9e128e1ab45d00ff",
-            "tea_CelticA_en2cygagd_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "emptyTitle": "Wedingo",
     "emptyText": "Crëwch a rhannwch eich gwahoddiad priodas personol.",
     "emptyDescription": "Rheolwch ddata eich gwahoddiad, rhannwch ddolen unigryw gyda'ch gwesteion a derbyniwch eu cadarnhadau presenoldeb.",
     "createLink": "Crëwch wahoddiad",
@@ -445,66 +426,9 @@
     "generateMessage": "Cynhyrchu neges arall",
     "copyMessage": "Copïo neges",
     "shareVia": "Rhannu trwy",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2380de39af29128a9e128e1ab45d00ff",
-            "tea_CelticA_en2cygagd_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "telegram": [
-      "Telegram",
-      "Telegram",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2380de39af29128a9e128e1ab45d00ff",
-            "tea_CelticA_en2cygagd_2021q3.md"
-          ]
-        ]
-      ]
-    ],
-    "sms": [
-      "SMS",
-      "SMS",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2380de39af29128a9e128e1ab45d00ff",
-            "tea_CelticA_en2cygagd_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "sms": "SMS",
     "print": "Argraffu",
     "printPdf": "Argraffu / Cadw PDF",
     "linkCopied": "Dolen wedi'i chopïo.",
@@ -531,47 +455,9 @@
     "deleteButton": "Gofyn am ddileu data",
     "exportButton": "Allforio fy nata",
     "rightsHint": "Bydd eich cleient e-bost yn agor gyda thempled wedi'i ddiffinio ymlaen llaw. Gallwch hefyd ysgrifennu at adriancl2001@gmail.com.",
-    "ccpaTitle": [
-      "CCPA / CPRA (California)",
-      "CCPA / CPRA (California)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2380de39af29128a9e128e1ab45d00ff",
-            "tea_CelticA_en2cygagd_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "ccpaTitle": "CCPA / CPRA (California)",
     "ccpaText": "Nid yw Wedingo yn gwerthu data personol. Defnyddir y data a gesglir yn unig ar gyfer rheoli'r gwahoddiad. Os ydych yn breswylydd California, mae gennych hawl i ofyn am ddileu eich data a pheidio â chael eich gwahaniaethu am arfer eich hawliau.",
-    "appTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2380de39af29128a9e128e1ab45d00ff",
-            "tea_CelticA_en2cygagd_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "appTitle": "Wedingo",
     "appDescription": "Cymhwysiad gwe ar gyfer rheoli gwahoddiadau priodas.",
     "copyright": "© {{year}} Adrián Carrasco López. Cedwir pob hawl.",
     "deleteEmailSubject": "Cais i ddileu data - Wedingo",
@@ -712,26 +598,7 @@
     "tokenCleanError": "Ni ellid glanhau'r tocynnau.",
     "tokenLoadError": "Ni ellid llwytho'r tocynnau.",
     "accountEmail": "E-bost: {{email}}",
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2380de39af29128a9e128e1ab45d00ff",
-            "tea_CelticA_en2cygagd_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "Gweithredol",
     "sessionInactive": "Anweithredol",
     "sessionLabel": "Sesiwn leol: {{status}}",
@@ -761,26 +628,7 @@
       "colToken": "Tocyn",
       "colNames": "Novios / Usuario",
       "colDate": "Fecha boda",
-      "colRsvps": [
-        "RSVPs",
-        "RSVPs",
-        null,
-        null,
-        3,
-        null,
-        null,
-        [
-          []
-        ],
-        [
-          [
-            [
-              "2380de39af29128a9e128e1ab45d00ff",
-              "tea_CelticA_en2cygagd_2021q3.md"
-            ]
-          ]
-        ]
-      ],
+      "colRsvps": "RSVPs",
       "colSession": "Sesión",
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
@@ -843,26 +691,7 @@
     "row5Basis": "Rhwymedigaeth gyfreithiol (GDPR erth. 6.1.c)",
     "row5Purpose": "Cofnod o weithgareddau gweinyddol",
     "row5Retention": "3 blynedd",
-    "row5Recipients": [
-      "Google Cloud (Firestore auditLog)",
-      "Google Cloud (Firestore auditLog)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2380de39af29128a9e128e1ab45d00ff",
-            "tea_CelticA_en2cygagd_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row5Recipients": "Google Cloud (Firestore auditLog)",
     "internationalTitle": "Trosglwyddiadau rhyngwladol",
     "internationalText": "Mae data'n cael ei storio ar weinyddion Google Cloud yn rhanbarth eur3 (Frankfurt, yr Almaen). Mae Google LLC (UDA) yn gweithredu fel prosesydd data o dan DPA yn unol â GDPR erth. 28. Mae trosglwyddiadau i UDA yn seiliedig ar:",
     "scc": "Cymalau Contractiol Safonol (SCC) - Penderfyniad Gweithredu 2021/914",
@@ -955,26 +784,7 @@
     "southeastAsia": "De-ddwyrain Asia",
     "centralAsia": "Canolbarth Asia / Dwyrain Canol",
     "africa": "Affrica",
-    "americas": [
-      "Americas",
-      "Americas",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2380de39af29128a9e128e1ab45d00ff",
-            "tea_CelticA_en2cygagd_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "americas": "Americas"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -1044,26 +854,7 @@
   "themeGroups": {
     "light": "Themâu ysgafn",
     "dark": "Themâu tywyll",
-    "lgbtiq": [
-      "LGTBIQ+",
-      "LGTBIQ+",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2380de39af29128a9e128e1ab45d00ff",
-            "tea_CelticA_en2cygagd_2021q3.md"
-          ]
-        ]
-      ]
-    ]
+    "lgbtiq": "LGTBIQ+"
   },
   "dietary": {
     "gluten": "Glwten",
@@ -1074,26 +865,7 @@
   "envelope": {
     "addressLine1": "I'n hanwylaf",
     "tapHint": "Tapiwch i agor",
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "2380de39af29128a9e128e1ab45d00ff",
-            "tea_CelticA_en2cygagd_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "and": "&",
     "tapContinue": "Tapiwch i barhau"
   },
   "calendar": {

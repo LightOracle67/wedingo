@@ -207,7 +207,7 @@ describe("AuthProvider", () => {
     await onFirstSave();
     await vi.waitFor(() => {
       expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("AdminUser");
-      expect(mockSaveSession).toHaveBeenCalledWith("admin", "AdminUser");
+      expect(mockSaveSession).toHaveBeenCalledWith("admin", "AdminUser", { inviteToken: "test-token" });
     });
   });
 
@@ -224,7 +224,7 @@ describe("AuthProvider", () => {
     await onFirstSave();
     await vi.waitFor(() => {
       expect(mockSetTokenLoginUsername).toHaveBeenCalledWith("test-token");
-      expect(mockSaveSession).toHaveBeenCalledWith("admin", "test-token");
+      expect(mockSaveSession).toHaveBeenCalledWith("admin", "test-token", { inviteToken: "test-token" });
     });
   });
 

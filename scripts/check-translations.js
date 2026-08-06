@@ -106,6 +106,18 @@ function findStructuralIssues(enObj, localeObj, prefix = "") {
   return issues;
 }
 
+/**
+ * Recorre un objeto y devuelve true si algún valor es un array
+ * (datos de corpus OPUS-MT corruptos que rompen i18next con returnObjects).
+ */
+function hasArrayValue(obj) {
+  if (Array.isArray(obj)) return true;
+  if (obj !== null && typeof obj === "object") {
+    return Object.values(obj).some(hasArrayValue);
+  }
+  return false;
+}
+
 let hasErrors = false;
 
 const enPath = path.join(LOCALES_DIR, "en.json");
@@ -153,10 +165,15 @@ for (const file of localeFiles.sort()) {
   // Estructura: arrays donde en espera strings rompen el render (aviso).
   const issues = findStructuralIssues(enContent, localeObj);
   if (issues.length > 0) {
-    console.log(`   ${locale}: ⚠️ ${issues.length} claves con estructura atípica (array en vez de string):`);
+    hasErrors = true;
+    console.log(`   ${locale}: ❌ ${issues.length} claves con estructura atípica (array en vez de string):`);
     for (const issue of issues.slice(0, 5)) {
       console.log(`      - ${issue}`);
     }
+  } else if (hasArrayValue(localeObj)) {
+    // Valores array en cualquier clave (corpus OPUS-MT corrupto): error.
+    hasErrors = true;
+    console.log(`   ${locale}: ❌ contiene valores array (corpus corrupto)`);
   }
 
   // Cobertura

@@ -90,6 +90,14 @@ export function useSetupAuth(
       return;
     }
 
+    // La sesión local debe pertenecer a ESTA invitación: si se abre la URL
+    // de otra boda, no se otorga admin cruzado.
+    if (session.inviteToken && session.inviteToken !== inviteToken) {
+      clearSession();
+      setIsRestoringSession(false);
+      return;
+    }
+
     setIsRestoringSession(true);
 
     getDoc(invitationDocRef(inviteToken)).then(async (snap) => {
@@ -407,7 +415,7 @@ export function useSetupAuth(
       setHasStoredConfig(true);
       // Persiste el token en sessionStorage para renovaciones y recuperación.
       safeSetItem(STORAGE_KEYS.setupToken(inviteToken), enteredToken, sessionStorage);
-      saveSession("admin", username);
+      saveSession("admin", username, { inviteToken });
       setAuthMessageType("success");
       setAuthMessage(t("auth.loginSuccess"));
 

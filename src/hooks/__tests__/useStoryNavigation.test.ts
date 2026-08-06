@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { renderHook } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { renderHook, act } from "@testing-library/react";
 import { useStoryNavigation } from "../useStoryNavigation";
 
 const SAMPLE_ORDER = ["hero", "details", "info", "story", "gifts", "rsvp"];
@@ -72,5 +72,31 @@ describe("useStoryNavigation", () => {
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
     result.current.startTransition();
     expect(result.current.isTransitioning).toBe(false);
+  });
+
+  it("marks the active section with --is-active via IntersectionObserver", async () => {
+    // Simula un IntersectionObserver que reporta la sección "details" visible.
+    let observerCallback: IntersectionObserverCallback | null = null;
+    class FakeIO {
+      constructor(cb: IntersectionObserverCallback) { observerCallback = cb; }
+      observe() {}
+      disconnect() {}
+    }
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
+    const el = document.createElement("div");
+    el.setAttribute("data-story-section", "details");
+    document.body.appendChild(el);
+
+    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    await vi.waitFor(() => {
+      expect(observerCallback).not.toBeNull();
+    });
+    // Dispara el callback con "details" visible.
+    act(() => {
+      observerCallback!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
+    });
+    expect(result.current.activeSection).toBe("details");
+    expect(result.current.getSectionClassName("details")).toContain("story-section--is-active");
+    el.remove();
   });
 });

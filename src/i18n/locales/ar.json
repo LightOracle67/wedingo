@@ -865,26 +865,7 @@
   "envelope": {
     "addressLine1": "إلى أعزائنا",
     "tapHint": "انقر لفتح",
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "a40074848905d12c107f984aac5d9776",
-            "en_ar_2023q1.md"
-          ]
-        ]
-      ]
-    ],
+    "and": "&",
     "tapContinue": "انقر للمتابعة"
   },
   "calendar": {

@@ -177,26 +177,7 @@
     "loadingInvitation": "Φόρτωση πρόσκλησης…",
     "notFoundTitle": "Η πρόσκληση δεν βρέθηκε",
     "notFoundText": "Δεν βρήκαμε πρόσκληση με αυτόν τον σύνδεσμο. Αν πιστεύετε ότι πρόκειται για λάθος, επικοινωνήστε με τους οικοδεσπότες.",
-    "emptyTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "982c75c78c6c8e6005ec3a4021a7f785",
-            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "emptyTitle": "Wedingo",
     "emptyText": "Δημιουργήστε και μοιραστείτε την προσωπική σας γαμήλια πρόσκληση.",
     "emptyDescription": "Διαχειριστείτε τα στοιχεία της πρόσκλησής σας, μοιραστείτε έναν μοναδικό σύνδεσμο με τους καλεσμένους σας και λάβετε τις επιβεβαιώσεις συμμετοχής τους.",
     "createLink": "Δημιουργία πρόσκλησης",
@@ -445,47 +426,9 @@
     "generateMessage": "Δημιουργία άλλου μηνύματος",
     "copyMessage": "Αντιγραφή μηνύματος",
     "shareVia": "Κοινοποίηση μέσω",
-    "whatsapp": [
-      "WhatsApp",
-      "WhatsApp",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "982c75c78c6c8e6005ec3a4021a7f785",
-            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "whatsapp": "WhatsApp",
     "telegram": "Τηλεγράφημα",
-    "sms": [
-      "SMS",
-      "SMS",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "982c75c78c6c8e6005ec3a4021a7f785",
-            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "sms": "SMS",
     "print": "Εκτύπωση",
     "printPdf": "Εκτύπωση / Αποθήκευση PDF",
     "linkCopied": "Ο σύνδεσμος αντιγράφηκε.",
@@ -514,26 +457,7 @@
     "rightsHint": "Θα ανοίξει το πρόγραμμα email σας με ένα προκαθορισμένο πρότυπο. Μπορείτε επίσης να γράψετε στο adriancl2001@gmail.com.",
     "ccpaTitle": "CCPA / CPRA (Καλιφόρνια)",
     "ccpaText": "Το Wedingo δεν πουλά προσωπικά δεδομένα. Τα δεδομένα που συλλέγονται χρησιμοποιούνται αποκλειστικά για τη διαχείριση της πρόσκλησης. Αν είστε κάτοικος Καλιφόρνιας, έχετε το δικαίωμα να ζητήσετε τη διαγραφή των δεδομένων σας και να μην υφίσταστε διακρίσεις για την άσκηση των δικαιωμάτων σας.",
-    "appTitle": [
-      "Wedingo",
-      "Wedingo",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "982c75c78c6c8e6005ec3a4021a7f785",
-            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "appTitle": "Wedingo",
     "appDescription": "Διαδικτυακή εφαρμογή για τη διαχείριση γαμήλιων προσκλήσεων.",
     "copyright": "© {{year}} Adrián Carrasco López. Με επιφύλαξη παντός δικαιώματος.",
     "deleteEmailSubject": "Αίτημα διαγραφής δεδομένων - Wedingo",
@@ -674,26 +598,7 @@
     "tokenCleanError": "Δεν ήταν δυνατή η εκκαθάριση των tokens.",
     "tokenLoadError": "Δεν ήταν δυνατή η φόρτωση των tokens.",
     "accountEmail": "Διεύθυνση ηλεκτρονικού ταχυδρομείου: {{email}}",
-    "accountUid": [
-      "UID: {{uid}}",
-      "UID: {{uid}}",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "982c75c78c6c8e6005ec3a4021a7f785",
-            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "accountUid": "UID: {{uid}}",
     "sessionActive": "Ενεργή",
     "sessionInactive": "Ανενεργή",
     "sessionLabel": "Τοπική συνεδρία: {{status}}",
@@ -768,26 +673,7 @@
     "row2Basis": "Συγκατάθεση (GDPR άρθρο 6 παρ. 1α, 9 παρ. 2α)",
     "row2Purpose": "Διαχείριση λίστας καλεσμένων και μενού",
     "row2Retention": "12 μήνες μετά την εκδήλωση",
-    "row2Recipients": [
-      "Google Cloud (Firestore)",
-      "Google Cloud (Firestore)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "982c75c78c6c8e6005ec3a4021a7f785",
-            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row2Recipients": "Google Cloud (Firestore)",
     "row3Activity": "Μεταφόρτωση εικόνων",
     "row3Data": "Γαμήλιες φωτογραφίες (κρυπτογραφημένες AES-256-GCM)",
     "row3Basis": "Συγκατάθεση (GDPR άρθρο 6 παρ. 1α)",
@@ -805,26 +691,7 @@
     "row5Basis": "Νομική υποχρέωση (GDPR άρθρο 6 παρ. 1γ)",
     "row5Purpose": "Καταγραφή διοικητικών δραστηριοτήτων",
     "row5Retention": "3 έτη",
-    "row5Recipients": [
-      "Google Cloud (Firestore auditLog)",
-      "Google Cloud (Firestore auditLog)",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "982c75c78c6c8e6005ec3a4021a7f785",
-            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "row5Recipients": "Google Cloud (Firestore auditLog)",
     "internationalTitle": "Διεθνείς διαβιβάσεις",
     "internationalText": "Τα δεδομένα αποθηκεύονται σε διακομιστές Google Cloud στην περιοχή eur3 (Φρανκφούρτη, Γερμανία). Η Google LLC (ΗΠΑ) ενεργεί ως εκτελών την επεξεργασία βάσει DPA σύμφωνα με το άρθρο 28 GDPR. Οι διαβιβάσεις στις ΗΠΑ προστατεύονται από:",
     "scc": "Τυποποιημένες Συμβατικές Ρήτρες (SCC) - Εκτελεστική Απόφαση 2021/914",
@@ -998,26 +865,7 @@
   "envelope": {
     "addressLine1": "Στα αγαπημένα μας",
     "tapHint": "Πατήστε για άνοιγμα",
-    "and": [
-      "&",
-      "&",
-      null,
-      null,
-      3,
-      null,
-      null,
-      [
-        []
-      ],
-      [
-        [
-          [
-            "982c75c78c6c8e6005ec3a4021a7f785",
-            "tea_GrecoIndoEuropeA_en2elfahykakumksq_2021q3.md"
-          ]
-        ]
-      ]
-    ],
+    "and": "&",
     "tapContinue": "Πατήστε για να συνεχίσετε"
   },
   "calendar": {

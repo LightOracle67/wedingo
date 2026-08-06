@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.70.0",
+    date: "2026-08-06",
+    changes: [
+      "i18n CRÍTICO: 97 locales con datos de corpus corruptos (valores array) quedan sanitizados; 16 idiomas se re-incluyen en el selector; el check de traducciones ahora falla si hay arrays",
+      "SUPERADMIN: se restaura el listado de invitaciones (allow list para el superadmin) — el dashboard, la exportación y los tokens vuelven a funcionar",
+      "RSVP: sin duplicados por espacios en el nombre, validación de nombre más flexible (2-4 palabras), retirada del botón tras enviar",
+      "ADMIN: el autosave actualiza la vista previa (config en memoria); sección activa real con IntersectionObserver; indicador de scroll en la invitación",
+      "SEGURIDAD/SEO: la sesión local se vincula a su invitación (sin admin cruzado entre bodas), noindex dinámico fuera de la landing, banner social 1200x630 y corrección RTL de kurmanji",
+    ],
+  },
+  {
     version: "2.69.0",
     date: "2026-08-06",
     changes: [

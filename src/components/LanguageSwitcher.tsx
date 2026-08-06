@@ -161,6 +161,30 @@ const GROUPS = [
       { code: "ht", label: "HT — Kreyòl Ayisyen" },
     ],
   },
+  {
+    // Idiomas previamente ocultos porque sus locales tenían datos de corpus
+    // corruptos (ya sanitizados). Se re-incluyen en el selector.
+    id: "other",
+    label: "Otros",
+    options: [
+      { code: "af", label: "AF — Afrikaans" },
+      { code: "be", label: "BE — Беларуская" },
+      { code: "ceb", label: "CEB — Cebuano" },
+      { code: "ilo", label: "ILO — Ilokano" },
+      { code: "kn", label: "KN — ಕನ್ನಡ" },
+      { code: "ml", label: "ML — മലയാളം" },
+      { code: "ny", label: "NY — Chichewa" },
+      { code: "or", label: "OR — ଓଡ଼ିଆ" },
+      { code: "pa", label: "PA — ਪੰਜਾਬੀ" },
+      { code: "sd", label: "SD — سنڌي" },
+      { code: "sn", label: "SN — Shona" },
+      { code: "st", label: "ST — Sesotho" },
+      { code: "tn", label: "TN — Setswana" },
+      { code: "ts", label: "TS — Xitsonga" },
+      { code: "xh", label: "XH — isiXhosa" },
+      { code: "yue", label: "YUE — 粵語" },
+    ],
+  },
 ];
 
 const LanguageSwitcher = memo(function LanguageSwitcher() {

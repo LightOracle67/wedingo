@@ -13,7 +13,7 @@ import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
 import { useFocusTrap, useEscapeKey } from "./hooks/useFocusTrap";
 
-const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ku", "ckb", "dv"]);
+const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ckb", "dv"]);
 const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
 import LegalModal from "./components/LegalModal";
 const ChangelogModal = lazy(() => import("./components/ChangelogModal"));
@@ -92,6 +92,23 @@ function AppShell() {
       sessionStorage.setItem("wedin_deploy_id", deployId);
     } catch { /* almacenamiento no disponible */ }
   }, []);
+
+  // noindex dinámico: solo la landing es indexable. Las invitaciones son
+  // secretas y /admin, /setup, /print y el superadmin no deben indexarse
+  // (defensa en profundidad junto a robots.txt).
+  useEffect(() => {
+    let meta = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    if (location.pathname === "/") {
+      if (meta) meta.remove();
+      return;
+    }
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "robots");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", "noindex, nofollow");
+  }, [location.pathname]);
 
   const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
 

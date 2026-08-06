@@ -192,7 +192,7 @@ export default function LandingPage() {
       safeSetItem(STORAGE_KEYS.inviteToken, target, sessionStorage);
       safeSetItem(STORAGE_KEYS.setupToken(target), normalized, sessionStorage);
       clearExpiredCache();
-      saveSession("admin", username);
+      saveSession("admin", username, { inviteToken: target });
       setTokenLoginUsername(username);
       setIsTokenVerified(true);
 
