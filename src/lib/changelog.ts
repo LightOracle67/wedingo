@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.90.0",
+    date: "2026-08-06",
+    changes: [
+      "LIMPIEZA: eliminadas 29 claves i18n huérfanas más de los 100 idiomas (37 en total esta tanda) — menos peso en los chunks de idioma y sin claves muertas",
+    ],
+  },
+  {
     version: "2.89.0",
     date: "2026-08-06",
     changes: [
