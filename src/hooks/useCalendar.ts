@@ -13,7 +13,7 @@ export function useCalendar(config: {
   secondName: string;
   weddingPlace: string;
 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const formattedDate = useMemo(() => {
     const day = config.weddingDay.trim();
     const month = config.weddingMonth.trim();
@@ -22,10 +22,12 @@ export function useCalendar(config: {
     const monthIndex = MONTH_VALUE_TO_NUMBER[month];
     if (!monthIndex) return `${day} de ${month.charAt(0).toUpperCase() + month.slice(1)} de ${year}`;
     const weddingDate = new Date(Number(year), monthIndex - 1, Number(day));
-    return weddingDate.toLocaleDateString(navigator.language || "es", {
+    // Se usa el idioma de la UI (no el del navegador): si el invitado elige
+    // árabe la fecha sale en árabe aunque el navegador esté en inglés.
+    return weddingDate.toLocaleDateString(i18n.language || "es", {
       year: "numeric", month: "long", day: "numeric"
     });
-  }, [config.weddingDay, config.weddingMonth, config.weddingYear]);
+  }, [config.weddingDay, config.weddingMonth, config.weddingYear, i18n.language]);
 
   const formattedTime = useMemo(() => {
     const hour = config.weddingHour.trim();

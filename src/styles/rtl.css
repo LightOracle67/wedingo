@@ -93,3 +93,8 @@
   background-position: left 0.75rem center;
   text-align: right;
 }
+
+/* El mapa (iframe embebido) conserva la alineación del texto en RTL. */
+[dir="rtl"] .story-map {
+  text-align: right;
+}

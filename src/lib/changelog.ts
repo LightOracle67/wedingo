@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.77.0",
+    date: "2026-08-06",
+    changes: [
+      "ACCESIBILIDAD: contraste del texto de invitación y rótulos en los temas claros (≥4.5:1), skip-link y foco con contraste suficiente, slider de volumen con objetivo de 24px y opacidad plena, estados de carga anunciados (aria-busy)",
+      "IDIOMA/SEO: las fechas usan el idioma de la UI (no el del navegador), el theme-color de la barra cambia con el tema de la invitación, alineación RTL del mapa y sufijo de hora en inglés",
+      "LIMPIEZA: eliminados ~130 líneas de código muerto (estado de mapa Leaflet, constantes y CSS huérfanos confirmados) y unificado el parseo de platos del menú en un único helper",
+    ],
+  },
+  {
     version: "2.76.0",
     date: "2026-08-06",
     changes: [

@@ -1,4 +1,5 @@
-import { STORY_SECTION_ORDER, THEME_VALUES, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT, MAX_MENU_DISHES, MAX_MENU_DISH_TEXT, MENU_DISH_ORDERS } from "./constants";
+import { STORY_SECTION_ORDER, THEME_VALUES, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT } from "./constants";
+import { parseMenuDishes } from "./menu-utils";
 
 /** Modos de visualización del mapa (iframe por defecto). */
 const MAP_MODES = new Set(["iframe", "name", "hidden"]);
@@ -8,22 +9,10 @@ function normalizeMapMode(value: unknown): string {
 
 function normalizeMenuDishes(value: unknown): string {
   if (typeof value !== "string" || !value.trim()) return "";
-  try {
-    const parsed = JSON.parse(value);
-    if (!Array.isArray(parsed)) return "";
-    const cleaned = parsed
-      .slice(0, MAX_MENU_DISHES)
-      .map((d) => {
-        if (!d || typeof d !== "object") return null;
-        const order = MENU_DISH_ORDERS.includes(String((d as Record<string, unknown>).order)) ? String((d as Record<string, unknown>).order) : "otro";
-        const text = typeof (d as Record<string, unknown>).text === "string" ? ((d as Record<string, unknown>).text as string).trim().slice(0, MAX_MENU_DISH_TEXT) : "";
-        return { order, text };
-      })
-      .filter((d): d is { order: string; text: string } => d !== null && d.text.length > 0);
-    return JSON.stringify(cleaned);
-  } catch {
-    return "";
-  }
+  // El parseo de platos se comparte con el editor y la sección RSVP.
+  const dishes = parseMenuDishes(value);
+  // JSON inválido o sin platos válidos → campo vacío (como antes).
+  return dishes.length ? JSON.stringify(dishes) : "";
 }
 
 function normalizeScheduleEvents(value: unknown): string {

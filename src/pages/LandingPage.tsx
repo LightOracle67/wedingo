@@ -249,7 +249,7 @@ export default function LandingPage() {
             {t("landing.description")}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <button type="button" className="setup-button text-sm" onClick={handleCreate} disabled={creating}>
+            <button type="button" className="setup-button text-sm" onClick={handleCreate} disabled={creating} aria-busy={creating}>
               {creating ? t("common.loading") : t("landing.createInvitation")}
             </button>
             <button type="button" className="setup-button setup-button--ghost text-sm" onClick={openModal}>
@@ -302,7 +302,7 @@ export default function LandingPage() {
               />
               {error && <p className="setup-error" role="alert">{error}</p>}
               <div className="setup-actions">
-                <button className="setup-button" type="submit" disabled={isLoading || usernameInput.trim().length < 1 || tokenInput.trim().length < 20}>
+                <button className="setup-button" type="submit" aria-busy={isLoading} disabled={isLoading || usernameInput.trim().length < 1 || tokenInput.trim().length < 20}>
                   {isLoading ? t("landing.loginLoading") : t("landing.loginButton")}
                 </button>
               </div>

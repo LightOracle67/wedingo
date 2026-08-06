@@ -1,3 +1,5 @@
+import i18next from "i18next";
+
 const BASE = import.meta.env.VITE_SUPERADMIN_ROUTE || "";
 
 export const SUPERADMIN_ROUTE = BASE;
@@ -7,7 +9,8 @@ export const SUPERADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAILS?.split(",")[0]
 
 export function formatDate(iso: string, ..._args: string[]) {
   try {
-    return new Date(iso).toLocaleString(navigator.language || "es", { dateStyle: "medium", timeStyle: "short" });
+    // El idioma de la UI (i18next) manda sobre el del navegador.
+    return new Date(iso).toLocaleString(i18next.language || "es", { dateStyle: "medium", timeStyle: "short" });
   } catch {
     return iso;
   }

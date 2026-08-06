@@ -65,7 +65,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries, formatDate,
     transportDepartures,
   } = props;
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
@@ -110,11 +110,11 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const formatBirthDate = useCallback((iso: string) => {
     if (!iso) return "—";
     try {
-      return new Date(iso.length <= 10 ? `${iso}T00:00:00` : iso).toLocaleDateString(navigator.language || "es");
+      return new Date(iso.length <= 10 ? `${iso}T00:00:00` : iso).toLocaleDateString(i18n.language || "es");
     } catch {
       return iso;
     }
-  }, []);
+  }, [i18n.language]);
 
   const filterEntries = filteredEntries || [];
 

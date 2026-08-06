@@ -18,7 +18,7 @@ const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"))
 import LegalModal from "./components/LegalModal";
 const ChangelogModal = lazy(() => import("./components/ChangelogModal"));
 import Fireflies from "./components/Fireflies";
-import { APP_VERSION } from "./lib/constants";
+import { APP_VERSION, THEME_PREVIEW_COLORS } from "./lib/constants";
 import { logError } from "./lib/error-utils";
 import { getSession } from "./lib/sessionVars";
 import "./styles/admin.css";
@@ -135,6 +135,17 @@ function AppShell() {
     const activeTheme = isEditingRoute ? "golden" : formData.theme || config.theme;
 
     document.documentElement.dataset.weddingTheme = activeTheme || "golden";
+    // theme-color de la barra del navegador alineado con el tema (antes era
+    // estático en index.html y no cambiaba con la invitación).
+    const preview = THEME_PREVIEW_COLORS[activeTheme || "golden"];
+    const color = preview?.bg || "#2a2418";
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "theme-color");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", color);
   }, [formData.theme, config.theme, isEditingRoute]);
 
   useEffect(() => {

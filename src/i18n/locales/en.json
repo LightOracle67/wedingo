@@ -903,7 +903,7 @@
     "bestGift": "Your presence is the best gift",
     "accommodation": "Accommodation",
     "accommodationFallback": "Accommodation information will be shared soon.",
-    "timeSuffix": ""
+    "timeSuffix": "h"
   },
   "sectionOrder": {
     "moveUp": "Move up",

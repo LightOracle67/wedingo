@@ -231,14 +231,17 @@
 }
 .music-player__volume {
   flex: 1;
-  height: 3px;
+  /* Objetivo ≥24 px de alto (WCAG 2.5.8) y opacidad plena: un slider casi
+     invisible de 3px al 40% era inutilizable y fallaba el contraste. */
+  height: 24px;
+  margin: 0;
   accent-color: var(--setup-accent, #d8b24a);
   cursor: pointer;
-  opacity: 0.4;
-  transition: opacity 200ms ease, height 200ms ease;
+  opacity: 0.9;
+  transition: opacity 200ms ease;
 }
-.music-player__volume:hover { opacity: 0.8; height: 4px; }
-.music-player__volume:disabled { opacity: 0.1; cursor: default; }
+.music-player__volume:hover { opacity: 1; }
+.music-player__volume:disabled { opacity: 0.2; cursor: default; }
 .music-player__spinner {
   width: 0.7rem;
   height: 0.7rem;

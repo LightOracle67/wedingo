@@ -20,7 +20,7 @@ export default function PrintPage() {
   const weddingDateObj = config.weddingDay && config.weddingMonth && config.weddingYear
     ? new Date(Number(config.weddingYear), monthMap[config.weddingMonth] || 0, Number(config.weddingDay))
     : null;
-  const formattedDate = weddingDateObj ? weddingDateObj.toLocaleDateString(navigator.language || "es", { dateStyle: "long" }) : "";
+  const formattedDate = weddingDateObj ? weddingDateObj.toLocaleDateString(i18n.language || "es", { dateStyle: "long" }) : "";
   const timeStr = config.weddingHour
     ? `${String(config.weddingHour).padStart(2, "0")}:${String(config.weddingMinute || "0").padStart(2, "0")}`
     : "";

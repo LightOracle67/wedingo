@@ -10,6 +10,9 @@ interface Dish {
 export default function MenuDishEditor({ value, onChange, idBase }: { value: string; onChange: (json: string) => void; idBase: string }) {
   const { t } = useTranslation();
 
+  // El editor debe mostrar filas vacías (para poder escribirlas): se parsea
+  // SIN filtrar, a diferencia de normalize/RSVP que solo conservan platos con
+  // texto.
   const dishes: Dish[] = (() => {
     try {
       const parsed = JSON.parse(value || "");
@@ -18,7 +21,7 @@ export default function MenuDishEditor({ value, onChange, idBase }: { value: str
         .slice(0, MAX_MENU_DISHES)
         .map((d: Record<string, unknown>) => ({
           order: MENU_DISH_ORDERS.includes(String(d.order)) ? String(d.order) : "otro",
-          text: typeof d.text === "string" ? d.text.slice(0, MAX_MENU_DISH_TEXT) : "",
+          text: typeof d.text === "string" ? d.text.trim().slice(0, MAX_MENU_DISH_TEXT) : "",
         }));
     } catch {
       return [];

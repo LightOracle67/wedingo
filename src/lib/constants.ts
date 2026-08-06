@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.76.0";
+export const APP_VERSION = "2.77.0";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -93,8 +93,6 @@ export const PRIVACY_POLICY_VERSION = "2026-07-08";
 
 export const MAX_YEARS_AHEAD = 4;
 export const INVITE_CACHE_TTL_MS = 120000;
-/** TTL de la caché de respuestas RSVP en sessionStorage. */
-export const RSVP_CACHE_TTL_MS = 60000;
 export const TOKEN_ROUTE_REGEX = /^[a-zA-Z0-9]{8,12}$/;
 export const SPECIAL_SECTIONS = ["menu", "godparents"];
 export const MAX_USERNAME_LENGTH = 50;
