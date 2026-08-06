@@ -68,6 +68,25 @@ export interface InvitationConfig {
   backgroundImage?: string;
   customSeal?: string;
   cornerDecoration?: string;
+  /** Fecha límite para confirmar asistencia (ISO yyyy-mm-dd) + habilitado. */
+  rsvpDeadline?: string;
+  rsvpDeadlineEnabled?: string;
+  /** Reacciones a la invitación (❤️🎉😂) habilitadas. */
+  reactionsEnabled?: string;
+  /** Lista de regalos (JSON de items) + habilitada. */
+  giftsListEnabled?: string;
+  giftList?: string;
+  /** Encuesta de compartir coche. */
+  rideShareEnabled?: string;
+  /** Vídeo de bienvenida de los novios (URL MP4). */
+  welcomeVideo?: string;
+  /** Muro de dedicatorias de los invitados. */
+  notesEnabled?: string;
+  /** Encuesta de música para el DJ. */
+  musicPollEnabled?: string;
+  /** Trivia de la pareja. */
+  triviaEnabled?: string;
+  trivia?: string;
   _activeSetupToken?: string;
   _visits?: number;
   [key: string]: unknown;

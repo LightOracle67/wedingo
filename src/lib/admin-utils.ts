@@ -59,3 +59,25 @@ export function formatRSVPsForCSV(entries: Array<{
   ].map(esc).join(","));
   return [header.map(esc).join(","), ...rows].join("\n");
 }
+
+/**
+ * Genera un CSV para el catering: qué plato eligió cada confirmado (y sus
+ * acompañantes), a partir del mealChoice de cada respuesta.
+ */
+export function formatMenuCateringCSV(entries: Array<{
+  guestName?: string;
+  mealChoice?: string;
+  companionNames?: string[];
+  companionMenus?: string[];
+}>): string {
+  const esc = (v: string) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const header = ["Nombre", "Plato"];
+  const rows: string[] = [];
+  for (const e of entries) {
+    rows.push([e.guestName || "", e.mealChoice || "—"].map(esc).join(","));
+    const comps = e.companionNames || [];
+    const menus = e.companionMenus || [];
+    comps.forEach((c, i) => rows.push([c, menus[i] || "—"].map(esc).join(",")));
+  }
+  return [header.map(esc).join(","), ...rows].join("\n");
+}

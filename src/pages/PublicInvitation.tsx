@@ -48,6 +48,12 @@ const GiftsSection = lazy(() => import("./sections/GiftsSection"));
 const AccommodationSection = lazy(() => import("./sections/AccommodationSection"));
 const GallerySection = lazy(() => import("./sections/GallerySection"));
 const RsvpSection = lazy(() => import("./sections/RsvpSection"));
+const ReactionsSection = lazy(() => import("./sections/ReactionsSection"));
+const NotesSection = lazy(() => import("./sections/NotesSection"));
+const MusicPollSection = lazy(() => import("./sections/MusicPollSection"));
+const TriviaSection = lazy(() => import("./sections/TriviaSection"));
+const GiftListSection = lazy(() => import("./sections/GiftListSection"));
+const RideShareSection = lazy(() => import("./sections/RideShareSection"));
 import "../styles/decorations.css";
 import "../styles/admin.css";
 import "../styles/landing.css";
@@ -70,6 +76,25 @@ const SECTION_COMPONENTS = {
 
 /** Props vacías compartidas (referencia estable, no rompe React.memo). */
 const EMPTY_PROPS: Record<string, unknown> = {};
+
+/** Confeti decorativo al abrir el sobre: piezas CSS puras con animación
+ *  (respetada por prefers-reduced-motion). Sin interacción. */
+function Confetti() {
+  const pieces = useMemo(() => Array.from({ length: 48 }, (_, i) => ({
+    left: `${Math.random() * 100}%`,
+    delay: `${Math.random() * 0.8}s`,
+    duration: `${1.6 + Math.random() * 1.2}s`,
+    color: ["#d8b24a", "#e8d0d8", "#8fb8a8", "#f0e6d0", "#c8a84e"][i % 5],
+    size: `${6 + Math.random() * 6}px`,
+  })), []);
+  return (
+    <div className="confetti" aria-hidden="true">
+      {pieces.map((p, i) => (
+        <span key={i} className="confetti__piece" style={{ left: p.left, animationDelay: p.delay, animationDuration: p.duration, background: p.color, width: p.size, height: p.size }} />
+      ))}
+    </div>
+  );
+}
 
 /**
  * Página principal de la invitación pública.
@@ -405,6 +430,8 @@ export default function PublicInvitation() {
 
   // ─── Estados de UI condicionales ───────────────────────
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [showWelcomeVideo, setShowWelcomeVideo] = useState(false);
   // La invitación está "configurada" si tiene nombres. Con ?invitar y un
   // token vacío/borrado debe mostrarse el estado no encontrado (antes caía
   // al render completo con un hero sin nombres).
@@ -509,9 +536,25 @@ export default function PublicInvitation() {
       style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
       {showEnvelope ? <EnvelopeOverlay onOpen={() => {
         setEnvelopeOpen(true);
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 2800);
+        if (config.welcomeVideo) setShowWelcomeVideo(true);
         // Apertura del sobre: el gesto principal de la invitación.
         trackEvent("envelope_open", { method: "click" });
       }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} inviteToken={inviteToken} /> : null}
+
+      {/* Confeti al abrir el sobre (decoración, sin interacción). */}
+      {showConfetti ? <Confetti /> : null}
+
+      {/* Vídeo de bienvenida: se muestra sobre la invitación si hay uno. */}
+      {envelopeOpen && showWelcomeVideo && config.welcomeVideo ? (
+        <div className="welcome-video-overlay" onClick={() => setShowWelcomeVideo(false)} role="dialog" aria-modal="true" aria-label={t("welcomeVideo.title")}>
+          <div className="welcome-video-card" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setShowWelcomeVideo(false)} aria-label={t("common.close")}>&times;</button>
+            <video className="welcome-video" src={config.welcomeVideo} controls autoPlay playsInline />
+          </div>
+        </div>
+      ) : null}
 
       {/* Mientras el sobre está cerrado, el contenido trasero queda inerte e
           invisible para lectores de pantalla (WCAG 1.3.2 / 2.4.3). display:
@@ -563,7 +606,8 @@ export default function PublicInvitation() {
           </div>
         </section>
       ) : (
-        /* ── Invitación completa: renderiza cada sección en orden ── */
+        <>
+        {/* ── Invitación completa: renderiza cada sección en orden ── */}
         <Suspense fallback={null}>
           
           {visibleOrder.map((sectionKey: string) => {
@@ -583,6 +627,57 @@ export default function PublicInvitation() {
             );
           })}
         </Suspense>
+
+        {/* ── Funciones sociales (bloques tras el contenido principal) ── */}
+        {config.giftsListEnabled === "true" ? (
+          <section className="story-section" aria-label={t("giftList.title")}>
+            <div className="story-panel">
+              <h2 className="story-title">{t("giftList.title")}</h2>
+              <Suspense fallback={null}><GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} /></Suspense>
+            </div>
+          </section>
+        ) : null}
+        {config.rideShareEnabled === "true" ? (
+          <section className="story-section" aria-label={t("rideShare.title")}>
+            <div className="story-panel">
+              <h2 className="story-title">{t("rideShare.title")}</h2>
+              <Suspense fallback={null}><RideShareSection inviteToken={inviteToken ?? ""} /></Suspense>
+            </div>
+          </section>
+        ) : null}
+        {config.reactionsEnabled === "true" ? (
+          <section className="story-section" aria-label={t("reactions.label")}>
+            <div className="story-panel">
+              <h2 className="story-title">{t("reactions.title")}</h2>
+              <Suspense fallback={null}><ReactionsSection inviteToken={inviteToken ?? ""} /></Suspense>
+            </div>
+          </section>
+        ) : null}
+        {config.notesEnabled === "true" ? (
+          <section className="story-section" aria-label={t("notes.title")}>
+            <div className="story-panel">
+              <h2 className="story-title">{t("notes.title")}</h2>
+              <Suspense fallback={null}><NotesSection inviteToken={inviteToken ?? ""} /></Suspense>
+            </div>
+          </section>
+        ) : null}
+        {config.musicPollEnabled === "true" ? (
+          <section className="story-section" aria-label={t("musicPoll.title")}>
+            <div className="story-panel">
+              <h2 className="story-title">{t("musicPoll.title")}</h2>
+              <Suspense fallback={null}><MusicPollSection inviteToken={inviteToken ?? ""} /></Suspense>
+            </div>
+          </section>
+        ) : null}
+        {config.triviaEnabled === "true" ? (
+          <section className="story-section" aria-label={t("trivia.title")}>
+            <div className="story-panel">
+              <h2 className="story-title">{t("trivia.title")}</h2>
+              <Suspense fallback={null}><TriviaSection trivia={config.trivia ?? "[]"} /></Suspense>
+            </div>
+          </section>
+        ) : null}
+        </>
       )}
       {/* Botón de compartir de la invitación pública (aparece tras el sobre). */}
       {!isEmpty && !showMissingToken ? (

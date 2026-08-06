@@ -2,7 +2,7 @@ import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Pagination from "../../components/Pagination";
 import { useToast } from "../../hooks/useToast";
-import { formatRSVPsForCSV } from "../../lib/admin-utils";
+import { formatRSVPsForCSV, formatMenuCateringCSV } from "../../lib/admin-utils";
 
 interface RsvpEntry {
   id: string;
@@ -92,6 +92,22 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
       addToast("error", t("attendance.csvExportError"));
     }
   }, [filteredEntries, addToast, t]);
+
+  // Export para el catering: qué plato eligió cada confirmado.
+  const handleExportMenu = useCallback(() => {
+    try {
+      const csv = formatMenuCateringCSV(filteredEntries);
+      const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `menu_${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch { /* export no disponible */ }
+  }, [filteredEntries]);
 
   const departures = useMemo(() => {
     try {
@@ -345,6 +361,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
           </button>
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleExportCsv}>
             {t("attendance.exportCsv")}
+          </button>
+          <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleExportMenu}>
+            {t("attendance.exportMenu")}
           </button>
           <button className="setup-button setup-button--ghost setup-button--compact" type="button"
             onClick={handleBatchDelete}

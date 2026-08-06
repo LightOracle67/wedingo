@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { calcRSVPSummary, getDietarySummary, formatRSVPsForCSV } from "../admin-utils";
+import { calcRSVPSummary, getDietarySummary, formatRSVPsForCSV, formatMenuCateringCSV } from "../admin-utils";
 
 describe("calcRSVPSummary", () => {
   it("returns zeros for null", () => {
@@ -173,5 +173,17 @@ describe("getDietarySummary", () => {
     expect(csv).toContain('"Pedro","No"');
     expect(csv).toContain("sin gluten");
     expect(csv).toContain("bus");
+  });
+});
+
+describe("formatMenuCateringCSV", () => {
+  it("lists each guest and their companions with the chosen dish", () => {
+    const csv = formatMenuCateringCSV([
+      { guestName: "Ana", mealChoice: "carne", companionNames: ["Luis"], companionMenus: ["pescado"] },
+      { guestName: "Solo", mealChoice: "vegano" },
+    ]);
+    expect(csv).toContain("\"Ana\",\"carne\"");
+    expect(csv).toContain("\"Luis\",\"pescado\"");
+    expect(csv).toContain("\"Solo\",\"vegano\"");
   });
 });

@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.95.0",
+    date: "2026-08-06",
+    changes: [
+      "FUNCIONES SOCIALES (10 nuevas): reacciones ❤️🎉😂, confeti al abrir el sobre, fecha límite de RSVP, export de menú para catering, vídeo de bienvenida, muro de dedicatorias, encuesta de música para el DJ, compartir coche, lista de regalos con reserva y trivia de la pareja",
+      "Se configura todo desde una nueva sección 'Extras' del panel, con reglas de Firestore por subcolección (texto saneado con isSafeText)",
+      "QR: el botón 'Copiar QR' copia ahora la IMAGEN (el await de fetch rompía la activación de usuario y Chrome rechazaba el clipboard.write)",
+      "IMPRESIÓN: fecha con fuente única de meses, fechas imposibles descartadas y cierre de pestaña solo si se abrió desde el panel",
+    ],
+  },
+  {
     version: "2.94.0",
     date: "2026-08-06",
     changes: [

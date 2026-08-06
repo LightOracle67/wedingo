@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.94.0";
+export const APP_VERSION = "2.95.0";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -144,5 +144,16 @@ export const defaultConfig = {
   menuCarneDishes: "",
   menuPescadoDishes: "",
   menuVeganoDishes: "",
+  rsvpDeadline: "",
+  rsvpDeadlineEnabled: "false",
+  reactionsEnabled: "false",
+  giftsListEnabled: "false",
+  giftList: "[]",
+  rideShareEnabled: "false",
+  welcomeVideo: "",
+  notesEnabled: "false",
+  musicPollEnabled: "false",
+  triviaEnabled: "false",
+  trivia: "[]",
   privacyPolicyVersion: "",
 };

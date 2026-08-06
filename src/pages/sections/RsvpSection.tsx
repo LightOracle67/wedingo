@@ -71,10 +71,15 @@ const RsvpSection = memo(function RsvpSection({
   transportEnabled, transportDepartures, computeAge, cornerDecoration,
 }: RsvpSectionProps) {
   const { t } = useTranslation();
-  const { setLegalModal } = useApp();
+  const { setLegalModal, config } = useApp();
 
+  // Fecha límite de confirmación: si la invitación tiene una y ya pasó, el
+  // formulario se bloquea y se muestra el aviso.
+  const deadlinePassed = config?.rsvpDeadlineEnabled === "true"
+    && !!config.rsvpDeadline
+    && new Date(`${config.rsvpDeadline}T23:59:59`) < new Date();
   const isAlreadySubmitted = !!alreadySubmittedEntry;
-  const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted;
+  const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted || deadlinePassed;
   const isAttending = rsvpForm.attendance !== "no";
 
   const age = useMemo(() => computeAge(rsvpForm.birthDate), [rsvpForm.birthDate, computeAge]);
@@ -231,6 +236,11 @@ const RsvpSection = memo(function RsvpSection({
         ) : null}
 
         <form className="rsvp-form" onSubmit={handleRsvpSubmit} noValidate aria-busy={isRsvpSubmitting}>
+          {deadlinePassed ? (
+            <p className="rsvp-deadline-passed" role="alert">
+              {t("rsvp.deadlinePassed")}
+            </p>
+          ) : null}
           <label className="setup-label" htmlFor="rsvpName">{t("rsvp.nameLabel")} *</label>
           <input id="rsvpName" className="setup-input" value={rsvpForm.guestName} onChange={handleNameChange} placeholder={t("rsvp.namePlaceholder")} autoComplete="off" required maxLength={120} />
           <p className="setup-help" style={{ marginTop: "0.2rem" }}>{t("rsvp.nameHint")}</p>

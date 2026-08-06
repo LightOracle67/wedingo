@@ -66,8 +66,14 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
   const copyQr = useCallback(async () => {
     if (!qrUrl) return;
     try {
-      const res = await fetch(qrUrl);
-      const blob = await res.blob();
+      // El data URL se convierte a Blob SINCRONAMENTE: un await (fetch) antes
+      // del clipboard.write perdía la activación de usuario y Chrome rechazaba
+      // con NotAllowedError (por eso antes acababa copiando un enlace o nada).
+      const base64 = qrUrl.slice(qrUrl.indexOf(",") + 1);
+      const binary = atob(base64);
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+      const blob = new Blob([bytes], { type: "image/png" });
       if (navigator.clipboard && "write" in navigator.clipboard) {
         await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
         setQrCopied(true);

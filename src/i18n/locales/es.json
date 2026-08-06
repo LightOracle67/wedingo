@@ -188,7 +188,8 @@
     "transportBusOption": "Usaré el Autobús",
     "transportTaxiOption": "O usaré el Taxi",
     "transportDepartureLabel": "Salida",
-    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo.",
+    "deadlinePassed": "La fecha límite de confirmación ha pasado. Gracias por tu interés."
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
@@ -429,7 +430,29 @@
     "instagramLabel": "Instagram de los novios (opcional)",
     "facebookLabel": "Facebook de los novios (opcional)",
     "successKeepToken": "Guarda tu código de acceso: es tu única forma de volver a entrar.",
-    "tokenCopied": "Código copiado."
+    "tokenCopied": "Código copiado.",
+    "extrasLegend": "Funciones sociales",
+    "extrasHint": "Activa las funciones que quieras para tu invitación.",
+    "extrasSectionTitle": "Extras",
+    "extrasSectionHint": "Reacciones, regalos, música, dedicatorias y más.",
+    "rsvpDeadlineLabel": "Fecha límite para confirmar",
+    "rsvpDeadlineHint": "El formulario de confirmación se cierra en esa fecha.",
+    "reactionsLabel": "Reacciones (❤️ 🎉 😂)",
+    "reactionsHint": "Los invitados pueden reaccionar a la invitación.",
+    "giftsListLabel": "Lista de regalos con reserva",
+    "giftsListHint": "Los invitados reservan un regalo para evitar duplicados.",
+    "giftListEditorHint": "Una línea por regalo: Nombre | Descripción",
+    "rideShareLabel": "Compartir coche",
+    "rideShareHint": "Los invitados ofrecen y buscan plazas de coche.",
+    "welcomeVideoLabel": "Vídeo de bienvenida",
+    "welcomeVideoHint": "URL de un vídeo MP4 (opcional) que se reproduce al abrir el sobre.",
+    "notesLabel": "Muro de dedicatorias",
+    "notesHint": "Los invitados dejan mensajes visibles en la invitación.",
+    "musicPollLabel": "Encuesta de música",
+    "musicPollHint": "Los invitados sugieren y votan canciones para el DJ.",
+    "triviaLabel": "Trivia de la pareja",
+    "triviaHint": "Un mini-quiz con las respuestas de los novios.",
+    "triviaEditorHint": "Una pregunta por línea: Pregunta | Respuesta"
   },
   "admin": {
     "tabs": {
@@ -519,7 +542,8 @@
     "filterLabel": "Filtrar por asistencia",
     "filterAll": "Todas",
     "filterYes": "Confirman",
-    "filterNo": "No asisten"
+    "filterNo": "No asisten",
+    "exportMenu": "Export menú (catering)"
   },
   "share": {
     "publishedAt": "Tu invitación está publicada en:",
@@ -1095,5 +1119,50 @@
     "title": "Página no encontrada",
     "text": "La página que buscas no existe o el enlace es incorrecto.",
     "homeLink": "Volver al inicio"
+  },
+  "reactions": {
+    "label": "Reacciona a la invitación",
+    "title": "¡Dinos qué te parece!",
+    "empty": ""
+  },
+  "notes": {
+    "title": "Dedicatorias",
+    "empty": "Sé el primero en dejar una dedicatoria.",
+    "namePlaceholder": "Tu nombre",
+    "messagePlaceholder": "Tu mensaje para los novios",
+    "send": "Dejar dedicatoria",
+    "error": "No se pudo enviar la dedicatoria."
+  },
+  "musicPoll": {
+    "title": "Canciones para el DJ",
+    "empty": "Aún no hay canciones sugeridas.",
+    "songPlaceholder": "Canción · Artista",
+    "namePlaceholder": "Tu nombre (opcional)",
+    "suggest": "Sugerir canción",
+    "vote": "Votar",
+    "error": "No se pudo enviar la canción."
+  },
+  "trivia": {
+    "title": "¿Cuánto sabes de la pareja?",
+    "guessPlaceholder": "Escribe tu respuesta…"
+  },
+  "giftList": {
+    "title": "Lista de regalos",
+    "namePlaceholder": "Tu nombre",
+    "reserve": "Reservar",
+    "taken": "Reservado",
+    "reservedBy": "Reservado por {{name}}"
+  },
+  "rideShare": {
+    "title": "Compartir coche",
+    "originPlaceholder": "¿De dónde sales?",
+    "seatsLabel": "Plazas",
+    "namePlaceholder": "Tu nombre (opcional)",
+    "publish": "Publicar",
+    "empty": "Aún no hay ofertas de coche.",
+    "seatsWord": "plazas"
+  },
+  "welcomeVideo": {
+    "title": "Mensaje de los novios"
   }
 }

@@ -1,6 +1,18 @@
 import { STORY_SECTION_ORDER, THEME_VALUES, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT } from "./constants";
 import { parseMenuDishes } from "./menu-utils";
 
+/** Normaliza los campos JSON de arrays (lista de regalos, trivia): devuelve
+ *  un JSON válido o "[]". */
+function normalizeJsonArray(value: unknown): string {
+  if (typeof value !== "string" || !value.trim()) return "[]";
+  try {
+    const parsed = JSON.parse(value);
+    return Array.isArray(parsed) ? JSON.stringify(parsed) : "[]";
+  } catch {
+    return "[]";
+  }
+}
+
 /** Modos de visualización del mapa (iframe por defecto). */
 const MAP_MODES = new Set(["iframe", "name", "hidden"]);
 function normalizeMapMode(value: unknown): string {
@@ -111,6 +123,17 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   backgroundImage: s(value?.backgroundImage),
   customSeal: s(value?.customSeal),
   cornerDecoration: s(value?.cornerDecoration),
+  rsvpDeadline: s(value?.rsvpDeadline).slice(0, 10),
+  rsvpDeadlineEnabled: s(value?.rsvpDeadlineEnabled) === "true" ? "true" : "false",
+  reactionsEnabled: s(value?.reactionsEnabled) === "true" ? "true" : "false",
+  giftsListEnabled: s(value?.giftsListEnabled) === "true" ? "true" : "false",
+  giftList: normalizeJsonArray(value?.giftList),
+  rideShareEnabled: s(value?.rideShareEnabled) === "true" ? "true" : "false",
+  welcomeVideo: s(value?.welcomeVideo).slice(0, 1000),
+  notesEnabled: s(value?.notesEnabled) === "true" ? "true" : "false",
+  musicPollEnabled: s(value?.musicPollEnabled) === "true" ? "true" : "false",
+  triviaEnabled: s(value?.triviaEnabled) === "true" ? "true" : "false",
+  trivia: normalizeJsonArray(value?.trivia),
   weddingSiteURL: s(value?.weddingSiteURL ?? value?.weddingMapUrl),
   instagramUrl: s(value?.instagramUrl).slice(0, 1000),
   facebookUrl: s(value?.facebookUrl).slice(0, 1000),

@@ -36,32 +36,25 @@ describe("ShareTab", () => {
   });
 
   it("copies the QR to the clipboard as an image", async () => {
-    mockToDataURL.mockResolvedValueOnce("data:image/png;base64,qrdata");
+    mockToDataURL.mockResolvedValueOnce("data:image/png;base64,cXJkYXRh");
     const write = vi.fn(() => Promise.resolve());
     Object.defineProperty(navigator, "clipboard", { value: { write }, configurable: true });
     (globalThis as Record<string, unknown>).ClipboardItem = class {
       constructor(public data: Record<string, Blob>) {}
     };
-    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(() =>
-      Promise.resolve(new Response(new Blob(["qr"], { type: "image/png" })))
-    );
 
     render(<ShareTab {...baseProps} />);
     const copyBtn = await screen.findByText("share.copyQr");
     fireEvent.click(copyBtn);
     await vi.waitFor(() => expect(write).toHaveBeenCalled());
 
-    fetchSpy.mockRestore();
     Object.defineProperty(navigator, "clipboard", { value: undefined, configurable: true, writable: true });
   });
 
   it("shows an error when the clipboard cannot write images", async () => {
-    mockToDataURL.mockResolvedValueOnce("data:image/png;base64,qrdata");
+    mockToDataURL.mockResolvedValueOnce("data:image/png;base64,cXJkYXRh");
     // Sin ClipboardItem (write de imágenes) se avisa del fallo.
     Object.defineProperty(navigator, "clipboard", { value: { writeText: vi.fn() }, configurable: true, writable: true });
-    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(() =>
-      Promise.resolve(new Response(new Blob(["qr"], { type: "image/png" })))
-    );
     const addToast = vi.fn();
 
     render(<ShareTab {...baseProps} addToast={addToast} />);
@@ -69,7 +62,6 @@ describe("ShareTab", () => {
     fireEvent.click(copyBtn);
     await vi.waitFor(() => expect(addToast).toHaveBeenCalledWith("error", "share.copyQrFailed"));
 
-    fetchSpy.mockRestore();
     Object.defineProperty(navigator, "clipboard", { value: undefined, configurable: true, writable: true });
   });
   it("renders share section title", () => {

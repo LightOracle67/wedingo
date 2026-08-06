@@ -25,6 +25,7 @@ import TransportSectionForm from "./setup-forms/TransportSectionForm";
 import GuestsSectionForm from "./setup-forms/GuestsSectionForm";
 import StorySectionForm from "./setup-forms/StorySectionForm";
 import GiftsSectionForm from "./setup-forms/GiftsSectionForm";
+import ExtrasSectionForm from "./setup-forms/ExtrasSectionForm";
 import GallerySectionForm from "./setup-forms/GallerySectionForm";
 import "../styles/admin.css";
 
@@ -190,6 +191,13 @@ export default function SetupForm({ prefix = "" }) {
         <GiftsSectionForm prefix={prefix} />
       </CollapsibleSection>
       ) : null}
+
+      <CollapsibleSection
+        title={t("setup.extrasSectionTitle")}
+        hint={t("setup.extrasSectionHint")}
+      >
+        <ExtrasSectionForm prefix={prefix} />
+      </CollapsibleSection>
 
       {/* ── Sección de galería de fotos (si no está oculta) ── */}
       

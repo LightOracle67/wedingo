@@ -188,7 +188,8 @@
     "transportBusOption": "I'll take the bus",
     "transportTaxiOption": "Or I'll take a taxi",
     "transportDepartureLabel": "Departure",
-    "loadError": "Your responses could not be loaded. Check your connection and try again."
+    "loadError": "Your responses could not be loaded. Check your connection and try again.",
+    "deadlinePassed": "The RSVP deadline has passed. Thanks for your interest."
   },
   "public": {
     "loadingInvitation": "Loading invitation…",
@@ -429,7 +430,29 @@
     "instagramLabel": "Couple Instagram (optional)",
     "facebookLabel": "Couple Facebook (optional)",
     "successKeepToken": "Save your access code: it is your only way back in.",
-    "tokenCopied": "Code copied."
+    "tokenCopied": "Code copied.",
+    "extrasLegend": "Funciones sociales",
+    "extrasHint": "Activa las funciones que quieras para tu invitación.",
+    "extrasSectionTitle": "Extras",
+    "extrasSectionHint": "Reacciones, regalos, música, dedicatorias y más.",
+    "rsvpDeadlineLabel": "RSVP deadline",
+    "rsvpDeadlineHint": "The RSVP form closes on this date.",
+    "reactionsLabel": "Reactions (❤️ 🎉 😂)",
+    "reactionsHint": "Guests can react to the invitation.",
+    "giftsListLabel": "Gift list with reservation",
+    "giftsListHint": "Guests reserve a gift to avoid duplicates.",
+    "giftListEditorHint": "One gift per line: Name | Description",
+    "rideShareLabel": "Carpooling",
+    "rideShareHint": "Guests offer and look for car seats.",
+    "welcomeVideoLabel": "Welcome video",
+    "welcomeVideoHint": "MP4 video URL (optional) played when the envelope opens.",
+    "notesLabel": "Dedications wall",
+    "notesHint": "Guests leave messages shown on the invitation.",
+    "musicPollLabel": "Music poll",
+    "musicPollHint": "Guests suggest and vote songs for the DJ.",
+    "triviaLabel": "Couple trivia",
+    "triviaHint": "A mini quiz with the couple's answers.",
+    "triviaEditorHint": "One question per line: Question | Answer"
   },
   "admin": {
     "tabs": {
@@ -519,7 +542,8 @@
     "filterLabel": "Filter by attendance",
     "filterAll": "All",
     "filterYes": "Attending",
-    "filterNo": "Not attending"
+    "filterNo": "Not attending",
+    "exportMenu": "Export menu (catering)"
   },
   "share": {
     "publishedAt": "Your invitation is published at:",
@@ -1094,5 +1118,50 @@
     "title": "Page not found",
     "text": "The page you are looking for does not exist or the link is incorrect.",
     "homeLink": "Back to home"
+  },
+  "reactions": {
+    "label": "Reacciona a la invitación",
+    "title": "¡Dinos qué te parece!",
+    "empty": ""
+  },
+  "notes": {
+    "title": "Dedicatorias",
+    "empty": "Sé el primero en dejar una dedicatoria.",
+    "namePlaceholder": "Tu nombre",
+    "messagePlaceholder": "Tu mensaje para los novios",
+    "send": "Dejar dedicatoria",
+    "error": "No se pudo enviar la dedicatoria."
+  },
+  "musicPoll": {
+    "title": "Canciones para el DJ",
+    "empty": "Aún no hay canciones sugeridas.",
+    "songPlaceholder": "Canción · Artista",
+    "namePlaceholder": "Tu nombre (opcional)",
+    "suggest": "Sugerir canción",
+    "vote": "Votar",
+    "error": "No se pudo enviar la canción."
+  },
+  "trivia": {
+    "title": "¿Cuánto sabes de la pareja?",
+    "guessPlaceholder": "Escribe tu respuesta…"
+  },
+  "giftList": {
+    "title": "Lista de regalos",
+    "namePlaceholder": "Tu nombre",
+    "reserve": "Reservar",
+    "taken": "Reservado",
+    "reservedBy": "Reservado por {{name}}"
+  },
+  "rideShare": {
+    "title": "Compartir coche",
+    "originPlaceholder": "¿De dónde sales?",
+    "seatsLabel": "Plazas",
+    "namePlaceholder": "Tu nombre (opcional)",
+    "publish": "Publicar",
+    "empty": "Aún no hay ofertas de coche.",
+    "seatsWord": "plazas"
+  },
+  "welcomeVideo": {
+    "title": "Mensaje de los novios"
   }
 }

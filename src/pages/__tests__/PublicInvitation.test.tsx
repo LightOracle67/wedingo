@@ -15,6 +15,10 @@ const mockUseAppValue = vi.hoisted(() => ({
     storyText: "", giftsInfo: "", bankInfo: "",
     musicFile: "", musicUrl: "", menuEnabled: "", menuCarne: "", menuPescado: "",
     menuVegano: "", menuPostre: "", menuTexto: "",
+    rsvpDeadline: "", rsvpDeadlineEnabled: "false", reactionsEnabled: "false",
+    giftsListEnabled: "false", giftList: "[]", rideShareEnabled: "false",
+    welcomeVideo: "", notesEnabled: "false", musicPollEnabled: "false",
+    triviaEnabled: "false", trivia: "[]",
   },
   isConfigLoading: false, configLoadError: "",
   formattedDate: "15 ene 2025", formattedTime: "14:30", calendarLink: null,
@@ -80,13 +84,19 @@ function mockSection(name: string) {
   return { default: comp };
 }
 
-vi.mock("../sections/TransportSection", () => mockSection("transport"));
+ vi.mock("../sections/TransportSection", () => mockSection("transport"));
 vi.mock("../sections/InfoSection", () => mockSection("info"));
 vi.mock("../sections/StorySection", () => mockSection("story"));
 vi.mock("../sections/GiftsSection", () => mockSection("gifts"));
 vi.mock("../sections/AccommodationSection", () => mockSection("accommodation"));
 vi.mock("../sections/GallerySection", () => mockSection("gallery"));
 vi.mock("../sections/RsvpSection", () => mockSection("rsvp"));
+vi.mock("../sections/ReactionsSection", () => mockSection("reactions"));
+vi.mock("../sections/NotesSection", () => mockSection("notes"));
+vi.mock("../sections/MusicPollSection", () => mockSection("musicpoll"));
+vi.mock("../sections/TriviaSection", () => mockSection("trivia"));
+vi.mock("../sections/GiftListSection", () => mockSection("giftlist"));
+vi.mock("../sections/RideShareSection", () => mockSection("rideshare"));
 
 import PublicInvitation from "../PublicInvitation";
 
@@ -257,6 +267,21 @@ describe("PublicInvitation", () => {
     expect(mockTrackEvent).toHaveBeenCalledWith("envelope_open", { method: "click" });
     vi.useRealTimers();
     mockUseAppValue.isAdminTokenLoggedIn = true;
+  });
+
+  it("shows confetti and the welcome video when the envelope opens", async () => {
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
+    mockUseAppValue.isAdminTokenLoggedIn = false;
+    mockUseAppValue.config.welcomeVideo = "https://example.com/video.mp4";
+    render(<PublicInvitation />);
+    fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
+    fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
+    expect(document.querySelector(".confetti")).toBeDefined();
+    expect(document.querySelector(".welcome-video-overlay")).toBeDefined();
+    act(() => { vi.advanceTimersByTime(3600); });
+    vi.useRealTimers();
+    mockUseAppValue.isAdminTokenLoggedIn = true;
+    mockUseAppValue.config.welcomeVideo = "";
   });
 
   it("handles section order without rsvp in admin mode", () => {
@@ -480,5 +505,43 @@ describe("PublicInvitation", () => {
     mockUseAppValue.config.sectionOrder = "";
     mockUseAppValue.config.hiddenSections = "gifts,accommodation,gallery,rsvp";
     mockUseAppValue.config.accommodationURL = "";
+  });
+
+  it("renders the social sections when enabled", async () => {
+    mockUseAppValue.config.hiddenSections = "";
+    mockUseAppValue.config.firstName = "Test";
+    mockUseAppValue.config.secondName = "User";
+    mockUseAppValue.config.reactionsEnabled = "true";
+    mockUseAppValue.config.notesEnabled = "true";
+    mockUseAppValue.config.musicPollEnabled = "true";
+    mockUseAppValue.config.triviaEnabled = "true";
+    mockUseAppValue.config.giftsListEnabled = "true";
+    mockUseAppValue.config.rideShareEnabled = "true";
+    render(<PublicInvitation />);
+    await vi.waitFor(() => {
+      expect(screen.getByTestId("section-reactions")).toBeDefined();
+      expect(screen.getByTestId("section-notes")).toBeDefined();
+      expect(screen.getByTestId("section-musicpoll")).toBeDefined();
+      expect(screen.getByTestId("section-trivia")).toBeDefined();
+      expect(screen.getByTestId("section-giftlist")).toBeDefined();
+      expect(screen.getByTestId("section-rideshare")).toBeDefined();
+    });
+    mockUseAppValue.config.reactionsEnabled = "false";
+    mockUseAppValue.config.notesEnabled = "false";
+    mockUseAppValue.config.musicPollEnabled = "false";
+    mockUseAppValue.config.triviaEnabled = "false";
+    mockUseAppValue.config.giftsListEnabled = "false";
+    mockUseAppValue.config.rideShareEnabled = "false";
+  });
+
+  it("does not render social sections when disabled", () => {
+    mockUseAppValue.config.reactionsEnabled = "false";
+    mockUseAppValue.config.notesEnabled = "false";
+    mockUseAppValue.config.musicPollEnabled = "false";
+    mockUseAppValue.config.triviaEnabled = "false";
+    mockUseAppValue.config.giftsListEnabled = "false";
+    mockUseAppValue.config.rideShareEnabled = "false";
+    render(<PublicInvitation />);
+    expect(screen.queryByTestId("section-reactions")).toBeNull();
   });
 });
