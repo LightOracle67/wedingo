@@ -79,6 +79,24 @@ export function useAutoSave(
         }
       } catch { /* departures no presente: se ignora */ }
 
+      // El menú habilitado sin platos rompería la invitación pública (el
+      // guardado manual lo bloquea; el autosave no).
+      if (data.menuEnabled === "true") {
+        const hasDishes = ["menuCarneDishes", "menuPescadoDishes", "menuVeganoDishes", "menuTextoDishes"]
+          .some((k) => {
+            const raw = (data as Record<string, unknown>)[k];
+            if (typeof raw !== "string" || !raw.trim()) return false;
+            try {
+              const parsed = JSON.parse(raw);
+              return Array.isArray(parsed) && parsed.some((d) => d && typeof d.text === "string" && d.text.trim());
+            } catch { return false; }
+          });
+        if (!hasDishes) {
+          if (onSaveError) onSaveError(t("errors.menuRequired"));
+          return null;
+        }
+      }
+
       if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
       delete (payload as Record<string, unknown>).musicFile;
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });

@@ -47,6 +47,11 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   /** Estado visible del guardado (habilita el botón "Guardar" de SetupForm). */
   const [isSaving, setIsSaving] = useState(false);
   const loadedTokenRef = useRef("");
+  /** Token actual del provider (se actualiza en cada render): evita que un
+   *  autosave de la invitación A sobrescriba el estado en memoria de B al
+   *  navegar mientras la promesa está en vuelo. */
+  const currentTokenRef = useRef(inviteToken);
+  currentTokenRef.current = inviteToken;
   // La visita se cuenta una vez por invitación: al cambiar de token (admin
   // navegando entre varias) se resetea para volver a contarla.
   const trackedRef = useRef("");
@@ -63,7 +68,11 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     handleYearChange,
   } = useFieldHandlers(updateFormField, maxAllowedYear);
 
-  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef, setConfig, setSaveError);
+  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef, (data) => {
+    // Protege la carrera: un autosave de A que resuelve tras navegar a B no
+    // debe pisar el estado de B.
+    if (currentTokenRef.current === inviteToken) setConfig(data);
+  }, setSaveError);
 
   const onFirstSaveCallbacksRef = useRef<(() => void)[]>([]);
 
@@ -217,8 +226,10 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         setConfig(hydrated);
         setFormData(hydrated);
         // La caché guarda el shell + el bankInfo CIFRADO (no el descifrado):
-        // el cache-hit descifra localmente sin Firestore.
-        const { musicFile: _omitAudio, ...cacheSafe } = hydrated;
+        // el cache-hit descifra localmente sin Firestore. hydrated.bankInfo ya
+        // está en claro, así que se omite explícitamente (antes quedaba el
+        // IBAN en localStorage).
+        const { bankInfo: _omitBank, musicFile: _omitAudio, ...cacheSafe } = hydrated;
         try {
           localStorage.setItem(
             STORAGE_KEYS.inviteCache(inviteToken),
@@ -347,6 +358,10 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
 
       await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
+
+      // Invalida la caché de invitación: sin esto, un guardado y recarga
+      // inmediata servía el estado pre-guardado durante el TTL de 2 min.
+      try { localStorage.removeItem(STORAGE_KEYS.inviteCache(inviteToken)); } catch { }
 
       // Crea el documento grupo de RSVP de la invitación (tope anti-spam) si no existe.
       try {

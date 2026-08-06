@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.83.0",
+    date: "2026-08-06",
+    changes: [
+      "PRIVACIDAD: el bankInfo vuelve a viajar cifrado en la caché local (un refactor había dejado el IBAN en claro en localStorage) y la caché se invalida al guardar (un reload ya no servía el estado obsoleto)",
+      "NAVEGACIÓN: las páginas de admin/setup/impresión remontan al cambiar de invitación (las pestañas, la búsqueda y el filtro de A ya no se arrastran a B)",
+      "AUTOSAVE: valida el menú habilitado sin platos (ya no persiste estados rotos) y no sobrescribe el estado de otra invitación si la promesa estaba en vuelo",
+    ],
+  },
+  {
     version: "2.82.0",
     date: "2026-08-06",
     changes: [

@@ -341,6 +341,36 @@ describe("useAutoSave", () => {
       expect(onSaveError).not.toHaveBeenCalled();
     });
 
+    it("does not save an enabled menu without dishes", async () => {
+      const data = { ...sampleConfig, menuEnabled: "true", menuCarneDishes: "[]" };
+      const onSaveError = vi.fn();
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", data, data, vi.fn(), { current: false }, undefined, onSaveError),
+      );
+      await act(async () => {
+        await result.current.doSave(data);
+      });
+      expect(mockSetDoc).not.toHaveBeenCalled();
+      expect(onSaveError).toHaveBeenCalledWith("errors.menuRequired");
+    });
+
+    it("saves an enabled menu with at least one dish", async () => {
+      const data = {
+        ...sampleConfig,
+        menuEnabled: "true",
+        menuCarneDishes: JSON.stringify([{ order: "entrante", text: "Solomillo" }]),
+      };
+      const onSaveError = vi.fn();
+      const { result } = renderHook(() =>
+        useAutoSave(true, "test-token", data, data, vi.fn(), { current: false }, undefined, onSaveError),
+      );
+      await act(async () => {
+        await result.current.doSave(data);
+      });
+      expect(mockSetDoc).toHaveBeenCalled();
+      expect(onSaveError).not.toHaveBeenCalled();
+    });
+
     it("encrypts bankInfo when present", async () => {
       const dataWithBank = { ...sampleConfig, bankInfo: "ES1234567890" };
       const { result } = renderHook(() =>

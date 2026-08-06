@@ -52,8 +52,10 @@ vi.mock("../components/MusicPlayer", () => ({
 }));
 
 vi.mock("../components/LegalModal", () => ({
-  default: ({ section }: { section: string }) =>
-    section ? <div data-testid="legal-modal">{section}</div> : null,
+  default: ({ section, onClose }: { section: string; onClose?: () => void }) =>
+    section ? (
+      <div data-testid="legal-modal">{section}<button onClick={onClose}>close</button></div>
+    ) : null,
 }));
 
 vi.mock("../components/ChangelogModal", () => ({
@@ -797,7 +799,9 @@ describe("App", () => {
     const privacyButton = Array.from(buttons).find((b) => b.textContent === "public.privacyPolicy");
     fireEvent.click(privacyButton!);
     expect(await screen.findByTestId("legal-modal")).toBeDefined();
-    expect((await screen.findByTestId("legal-modal")).textContent).toBe("privacy");
+    expect((await screen.findByTestId("legal-modal")).textContent).toContain("privacy");
+    // Cerrar el modal cubre su onClose (arrow del AppShell).
+    fireEvent.click(screen.getByRole("button", { name: "close" }));
   });
 
   it("renders accessibility panel when showA11y is true via overlay", () => {

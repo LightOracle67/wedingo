@@ -279,10 +279,10 @@ function AppShell() {
         <Routes>
           <Route path="/" element={<ErrorBoundary><LandingPage /></ErrorBoundary>} />
           <Route path="/:inviteToken" element={<ErrorBoundary key={location.pathname}><PublicInvitation /></ErrorBoundary>} />
-          <Route path="/:inviteToken/setup" element={<ErrorBoundary><SetupPage /></ErrorBoundary>} />
-          <Route path="/:inviteToken/admin" element={<ErrorBoundary><AdminPage /></ErrorBoundary>} />
+          <Route path="/:inviteToken/setup" element={<ErrorBoundary key={location.pathname}><SetupPage /></ErrorBoundary>} />
+          <Route path="/:inviteToken/admin" element={<ErrorBoundary key={location.pathname}><AdminPage /></ErrorBoundary>} />
           <Route path={SUPERADMIN_ROUTE} element={<ErrorBoundary><SuperAdminLogin /></ErrorBoundary>} />
-          <Route path="/:inviteToken/print" element={<ErrorBoundary><PrintPage /></ErrorBoundary>} />
+          <Route path="/:inviteToken/print" element={<ErrorBoundary key={location.pathname}><PrintPage /></ErrorBoundary>} />
           {SUPERADMIN_DASHBOARD && (
             <Route path={SUPERADMIN_DASHBOARD} element={<ErrorBoundary><SuperAdminPanel /></ErrorBoundary>} />
           )}
