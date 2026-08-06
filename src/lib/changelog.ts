@@ -1,5 +1,19 @@
 export const CHANGELOG = [
   {
+    version: "2.95.4",
+    date: "2026-08-06",
+    changes: [
+      "FIX CRÍTICO del guardado: el update del config exigía !hasAny(['_visits']) y, como el merge conserva el _visits que trackVisit añade al doc, CUALQUIER guardado del admin fallaba con 'No tienes permiso' en producción (el emulador no lo detectaba porque no visitaba la invitación). Ahora solo se prohíbe MODIFICAR _visits, no conservarlo.",
+    ],
+  },
+  {
+    version: "2.95.3",
+    date: "2026-08-06",
+    changes: [
+      "GUARDADO: el alta inicial (create) usa ahora la validación reducida, igual que el update — elimina del todo el riesgo del límite de 1000 expresiones de Firestore en producción (el emulador es más permisivo).",
+    ],
+  },
+  {
     version: "2.95.2",
     date: "2026-08-06",
     changes: [

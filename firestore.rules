@@ -116,7 +116,10 @@ service cloud.firestore {
          el superadmin (dashboard, exportación y tokens). */
       allow get: if true;
       allow list: if isSuperAdmin();
-      allow create: if isValidInvitationWrite(request.resource.data)
+      /* Alta inicial: el token de setup ya limita quién puede crearla, así que
+         se usa la validación reducida (igual que el update). La validación
+         completa superaba el límite de 1000 expresiones en producción. */
+      allow create: if isValidInvitationUpdate(request.resource.data)
         && (isSuperAdmin()
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
       /* Actualización de configuración: solo admin con sesión activa o
@@ -127,7 +130,11 @@ service cloud.firestore {
          _visits arbitrariamente). */
       allow update: if isValidInvitationUpdate(request.resource.data)
         && (isSuperAdmin() || hasActiveSession(tokenId))
-        && !request.resource.data.keys().hasAny(['_visits']);
+        /* _visits se conserva en el merge (el doc ya lo tiene tras una
+           visita): solo se prohíbe que el update lo MODIFIQUE. La condición
+           anterior (hasAny) bloqueaba el guardado cuando el doc tenía
+           _visits, porque el merge lo incluía en el request.resource.data. */
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['_visits']);
       /* Incremento de contador de visitas: cualquiera puede incrementar
          _visits, pero solo en pasos razonables (máx +10 por request) para
          evitar inflar el contador de forma arbitraria. El cliente usa
