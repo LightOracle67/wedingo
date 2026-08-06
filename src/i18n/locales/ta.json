@@ -318,7 +318,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "வருகை உறுதிப்படுத்தல்",
@@ -982,7 +983,8 @@
         ]
       ]
     ],
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "அழைப்பிதழை ஏற்றுகிறது",
@@ -1606,7 +1608,8 @@
     "clearAttendance": "வருகையை காலி செய்",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "உங்கள் அழைப்பிதழ் இங்கு வெளியிடப்பட்டது:",
@@ -3600,7 +3603,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": [

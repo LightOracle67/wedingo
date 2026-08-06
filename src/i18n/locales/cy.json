@@ -109,7 +109,8 @@
     "thumbnailAria": "Llun {{number}}",
     "thumbnailAlt": "Mân-lun o'r oriel",
     "carouselLabel": "Oriel ddelweddau, defnyddiwch y bysellau saeth i lywio",
-    "lightboxLabel": "Delwedd mwy"
+    "lightboxLabel": "Delwedd mwy",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Cadarnhad presenoldeb",
@@ -203,7 +204,8 @@
     "locationCoordinates": "Cyfesurynnau: {{lat}}, {{lng}}",
     "mapPreviewAlt": "Rhagolwg map yn y lleoliad a nodir.",
     "locationSet": "Lleoliad wedi'i ffurfweddu",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "Yn llwytho gwahoddiad",
@@ -428,7 +430,8 @@
     "clearAttendance": "Clirio presenoldeb",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "Mae eich gwahoddiad wedi'i gyhoeddi yn:",
@@ -978,7 +981,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "Newidlog",

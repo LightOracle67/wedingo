@@ -187,7 +187,8 @@
       null,
       null,
       5
-    ]
+    ],
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Confirmació d'assistència",
@@ -448,7 +449,8 @@
       null,
       5
     ],
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "Carregant invitació",
@@ -811,7 +813,8 @@
     "clearAttendance": "Buida assistència",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "La teua invitació està publicada en:",
@@ -1760,7 +1763,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": [

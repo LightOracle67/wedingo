@@ -10,7 +10,6 @@
  */
 
 import { onCLS, onFCP, onINP, onLCP, onTTFB } from "web-vitals";
-import { trackEvent } from "./analytics";
 
 interface VitalMetric {
   name: string;
@@ -39,10 +38,15 @@ export function reportWebVitals() {
   if (!import.meta.env.PROD) return;
 
   const sendToAnalytics = (metric: VitalMetric) => {
-    trackEvent("web_vital", {
-      metric_name: metric.name,
-      value: normalizeMetricValue(metric),
-      rating: metric.rating,
+    // Import dinámico: analytics.ts (y su import de firebase/analytics) no
+    // debe estar en el grafo estático inicial para que el chunk lazy-analytics
+    // no se modulepreload en el primer hit.
+    import("./analytics").then(({ trackEvent }) => {
+      trackEvent("web_vital", {
+        metric_name: metric.name,
+        value: normalizeMetricValue(metric),
+        rating: metric.rating,
+      });
     });
   };
 

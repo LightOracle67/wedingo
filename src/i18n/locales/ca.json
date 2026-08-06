@@ -166,7 +166,8 @@
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniatura de foto de la galeria",
     "carouselLabel": "Galeria d'imatges, utilitzeu les tecles de fletxa per navegar",
-    "lightboxLabel": "Imatge ampliada"
+    "lightboxLabel": "Imatge ampliada",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Confirmació d'assistència",
@@ -260,7 +261,8 @@
     "locationCoordinates": "Coordenades: {{lat}}, {{lng}}",
     "mapPreviewAlt": "Vista prèvia del mapa a la ubicació indicada.",
     "locationSet": "Ubicació configurada",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "Carregant invitació",
@@ -542,7 +544,8 @@
     "clearAttendance": "Buida assistència",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "La teva invitació està publicada a:",
@@ -1149,7 +1152,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "Registre de canvis",

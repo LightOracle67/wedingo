@@ -147,7 +147,8 @@
     "thumbnailAria": "Fotografija {{number}}",
     "thumbnailAlt": "Sličica iz galerije",
     "carouselLabel": "Galerija slika, koristite tipke sa strelicama za navigaciju",
-    "lightboxLabel": "Uvećana slika"
+    "lightboxLabel": "Uvećana slika",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Potvrda dolaska",
@@ -241,7 +242,8 @@
     "locationCoordinates": "Koordinate: {{lat}}, {{lng}}",
     "mapPreviewAlt": "Pregled karte na naznačenoj lokaciji.",
     "locationSet": "Lokacija konfigurirana",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "Učitavanje pozivnice",
@@ -504,7 +506,8 @@
     "clearAttendance": "Isprazni prisustvo",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "Tvoja pozivnica je objavljena na:",
@@ -1263,7 +1266,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "Dnevnik promjena",

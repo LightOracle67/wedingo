@@ -260,7 +260,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "참석 여부 확인",
@@ -626,7 +627,8 @@
         ]
       ]
     ],
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "초대장 로딩 중",
@@ -1231,7 +1233,8 @@
     "clearAttendance": "참석 현황 비우기",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "초대장이 게시된 위치:",
@@ -3075,7 +3078,9 @@
     "hour_one": "{{count}}시간",
     "hour_other": "{{count}}시간",
     "minute_one": "{{count}}분",
-    "minute_other": "{{count}}분"
+    "minute_other": "{{count}}분",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "변경 내역",

@@ -113,7 +113,8 @@
     "next": "Siguiente",
     "carouselLabel": "Galería de imágenes, usa las flechas del teclado para navegar",
     "thumbnailAria": "Foto {{number}}",
-    "thumbnailAlt": "Miniatura de foto de la galería"
+    "thumbnailAlt": "Miniatura de foto de la galería",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Confirmación de asistencia",
@@ -197,7 +198,8 @@
     "privacyPolicy": "Política de Privacidad",
     "terms": "Términos",
     "legalNotice": "Aviso Legal",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "mapUrlLabel": "URL de Google Maps",
@@ -507,7 +509,8 @@
     "deleteSelectedError": "No se pudieron eliminar las respuestas seleccionadas. Inténtalo de nuevo.",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "Tu invitación está publicada en:",
@@ -906,7 +909,9 @@
     "minute_one": "{{count}} minuto",
     "minute_other": "{{count}} minutos",
     "hours": "{{count}}h",
-    "minutes": "{{count}}min"
+    "minutes": "{{count}}min",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "chart": {
     "noData": "Sin datos",

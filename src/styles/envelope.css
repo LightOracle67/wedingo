@@ -79,10 +79,20 @@
   position: fixed; inset: 0; z-index: var(--z-envelope, 10000);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   background: rgba(55, 12, 12, 0.75);
-  backdrop-filter: blur(160px) brightness(1.05) saturate(0.7);
-  -webkit-backdrop-filter: blur(160px) brightness(1.05) saturate(0.7);
+  /* blur(160px) era ~8x lo perceptible y muy caro en GPU (móviles débiles):
+     blur(28px) es visualmente idéntico sobre este fondo casi plano. */
+  backdrop-filter: blur(28px) brightness(1.05) saturate(0.7);
+  -webkit-backdrop-filter: blur(28px) brightness(1.05) saturate(0.7);
   cursor: pointer;
   transition: opacity 2.5s ease, transform 2.5s ease, backdrop-filter 2.5s ease, background 2.5s ease;
+}
+/* Sin blur bajo prefers-reduced-motion y en pantallas pequeñas (GPU débil). */
+@media (prefers-reduced-motion: reduce), (max-width: 640px) {
+  .envelope-overlay {
+    backdrop-filter: blur(16px) brightness(1.05) saturate(0.7);
+    -webkit-backdrop-filter: blur(16px) brightness(1.05) saturate(0.7);
+    transition: opacity 2.5s ease, transform 2.5s ease, background 2.5s ease;
+  }
 }
 /* Navegadores sin backdrop-filter: fondo mucho más opaco para el mismo efecto difuminado */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {

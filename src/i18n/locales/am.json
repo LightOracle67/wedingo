@@ -109,7 +109,8 @@
     "thumbnailAria": "ፎቶ {{number}}",
     "thumbnailAlt": "የማዕከለ-ስዕላት ፎቶ ድንክ",
     "carouselLabel": "የምስል ማዕከለ-ስዕላት፣ ለማሰስ የቀስት ቁልፎችን ተጠቀም",
-    "lightboxLabel": "የሰፋ ምስል"
+    "lightboxLabel": "የሰፋ ምስል",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "የተገኝነት ማረጋገጫ",
@@ -184,7 +185,8 @@
     "locationCoordinates": "መጋጠሚያዎች፡ {{lat}}፣ {{lng}}",
     "mapPreviewAlt": "በተጠቀሰው ቦታ ላይ የካርታ ቅድመ እይታ.",
     "locationSet": "አካባቢ ተዋቅሯል።",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "ግብዣ በመጫን ላይ",
@@ -409,7 +411,8 @@
     "clearAttendance": "ተገኝነትን አጽዳ",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "ግብዣዎ የታተመበት:",
@@ -807,7 +810,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "ለውጥ ሎግ",

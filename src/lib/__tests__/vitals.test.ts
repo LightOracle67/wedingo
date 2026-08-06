@@ -55,19 +55,23 @@ describe("reportWebVitals", () => {
     // Extrae el callback registrado por onCLS y lo invoca con un CLS pequeño.
     const clsCallback = mockOnCLS.mock.calls[0]![0];
     clsCallback({ name: "CLS", value: 0.0452, rating: "good" });
-    expect(mockTrackEvent).toHaveBeenCalledWith("web_vital", {
-      metric_name: "CLS",
-      value: 0.045,
-      rating: "good",
+    await vi.waitFor(() => {
+      expect(mockTrackEvent).toHaveBeenCalledWith("web_vital", {
+        metric_name: "CLS",
+        value: 0.045,
+        rating: "good",
+      });
     });
 
     // Una métrica en ms se redondea a entero.
     const lcpCallback = mockOnLCP.mock.calls[0]![0];
     lcpCallback({ name: "LCP", value: 1234.6, rating: "good" });
-    expect(mockTrackEvent).toHaveBeenCalledWith("web_vital", {
-      metric_name: "LCP",
-      value: 1235,
-      rating: "good",
+    await vi.waitFor(() => {
+      expect(mockTrackEvent).toHaveBeenCalledWith("web_vital", {
+        metric_name: "LCP",
+        value: 1235,
+        rating: "good",
+      });
     });
     vi.unstubAllEnvs();
   });

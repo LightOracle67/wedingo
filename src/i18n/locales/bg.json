@@ -109,7 +109,8 @@
     "thumbnailAria": "Снимка {{number}}",
     "thumbnailAlt": "Миниатюра от галерията",
     "carouselLabel": "Галерия с изображения, използвайте клавишите със стрелки за навигация",
-    "lightboxLabel": "Увеличено изображение"
+    "lightboxLabel": "Увеличено изображение",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Потвърждение за присъствие",
@@ -203,7 +204,8 @@
     "locationCoordinates": "Координати: {{lat}}, {{lng}}",
     "mapPreviewAlt": "Преглед на картата на посоченото място.",
     "locationSet": "Местоположението е конфигурирано",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "Зареждане на поканата",
@@ -428,7 +430,8 @@
     "clearAttendance": "Изчисти присъствието",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "Твоята покана е публикувана на:",
@@ -940,7 +943,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "Дневник на промените",

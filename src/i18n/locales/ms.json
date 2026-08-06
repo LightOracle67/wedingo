@@ -299,7 +299,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Pengesahan Kehadiran",
@@ -1001,7 +1002,8 @@
         ]
       ]
     ],
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "Memuatkan jemputan",
@@ -1625,7 +1627,8 @@
     "clearAttendance": "Kosongkan kehadiran",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "Jemputan anda diterbitkan di:",
@@ -3657,7 +3660,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "Log perubahan",

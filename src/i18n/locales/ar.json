@@ -109,7 +109,8 @@
     "thumbnailAria": "صورة {{number}}",
     "thumbnailAlt": "صورة مصغرة من المعرض",
     "carouselLabel": "معرض الصور، استخدم مفاتيح الأسهم للتنقل",
-    "lightboxLabel": "صورة مكبرة"
+    "lightboxLabel": "صورة مكبرة",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "تأكيد الحضور",
@@ -184,7 +185,8 @@
     "locationCoordinates": "الإحداثيات: {{خط العرض}}، {{lng}}",
     "mapPreviewAlt": "معاينة الخريطة في الموقع المحدد.",
     "locationSet": "تم تكوين الموقع",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "جارٍ تحميل الدعوة",
@@ -409,7 +411,8 @@
     "clearAttendance": "تفريغ الحضور",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "دعوتك منشورة في:",
@@ -788,7 +791,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "سجل التغييرات",

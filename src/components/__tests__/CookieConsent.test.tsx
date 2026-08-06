@@ -5,6 +5,9 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
+vi.mock("../../lib/analytics", () => ({ grantAnalyticsConsent: vi.fn() }));
+vi.mock("../../lib/sentry", () => ({ enableSentryTracking: vi.fn() }));
+
 vi.mock("../../lib/firebase", () => ({ db: {} }));
 
 const mockLocalStorage = (() => {

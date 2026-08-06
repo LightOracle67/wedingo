@@ -9,7 +9,7 @@ interface HeroSectionProps {
   firstName?: string;
   secondName?: string;
   inviteMessage?: string;
-  countdown?: { years: number; months: number; days: number; expired: boolean } | null;
+  countdown?: { years: number; months: number; days: number; hours: number; minutes: number; seconds: number; expired: boolean } | null;
   couplePhoto?: string;
   godparent1?: string;
   godparent2?: string;
@@ -84,18 +84,20 @@ const HeroSection = memo(function HeroSection({ style, className, firstName, sec
               {!countdown.expired ? (
                 <p className="text-[clamp(1.4rem,4vw,2.2rem)] leading-tight font-serif tracking-wide text-boda-texto">
                   {(() => {
-                    const units: Array<[number, string]> = [
-                      [countdown.years ?? 0, 'year'],
-                      [countdown.months ?? 0, 'month'],
-                      [countdown.days ?? 0, 'day'],
+                    const vals: number[] = [
+                      countdown.years ?? 0, countdown.months ?? 0, countdown.days ?? 0,
+                      countdown.hours ?? 0, countdown.minutes ?? 0, countdown.seconds ?? 0,
                     ];
-                    let start = units.findIndex(([v]) => v > 0);
-                    if (start === -1) start = units.length - 1;
-                    let end = units.findIndex(([v], i) => i >= start && v === 0);
-                    if (end === -1) end = units.length;
-                    let shown = units.slice(start, end);
-                    if (shown.length === 0) shown = [units[units.length - 1]!];
-                    return shown.map(([v, key]) => t(`countdown.${key}`, { count: v })).join(" · ");
+                    const keys = ['year', 'month', 'day', 'hour', 'minute', 'second'];
+                    let start = vals.findIndex((v) => v > 0);
+                    if (start === -1) start = vals.length - 1;
+                    // Recorta los ceros finales pero mantiene los intermedios
+                    // (p. ej. "2 h · 0 min · 10 s").
+                    let end = vals.length;
+                    while (end > start && vals[end - 1] === 0) end--;
+                    let shown = vals.slice(start, end).map((v, i) => t(`countdown.${keys[start + i]}`, { count: v }));
+                    if (shown.length === 0) shown = [t(`countdown.${keys[vals.length - 1]}`, { count: 0 })];
+                    return shown.join(" · ");
                   })()}
                 </p>
               ) : (

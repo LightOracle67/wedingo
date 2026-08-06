@@ -48,7 +48,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 0, months: 0, days: 0, expired: true }}
+        countdown={{years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0, expired: true}}
         couplePhoto=""
       />,
     );
@@ -60,7 +60,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 2, months: 3, days: 0, expired: false }}
+        countdown={{years: 2, months: 3, days: 0, hours: 0, minutes: 0, seconds: 0, expired: false}}
         couplePhoto=""
       />,
     );
@@ -72,7 +72,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 0, months: 2, days: 15, expired: false }}
+        countdown={{years: 0, months: 2, days: 15, hours: 0, minutes: 0, seconds: 0, expired: false}}
         couplePhoto=""
       />
     );
@@ -84,7 +84,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 0, months: 0, days: 0, expired: false }}
+        countdown={{years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0, expired: false}}
         couplePhoto=""
       />
     );
@@ -95,31 +95,62 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: undefined as unknown as number, months: undefined as unknown as number, days: 0, expired: false }}
+        countdown={{years: undefined as unknown as number, months: undefined as unknown as number, days: 0, hours: 0, minutes: 0, seconds: 0, expired: false}}
         couplePhoto=""
       />
     );
     expect(screen.getByText(/countdown\./)).toBeDefined();
   });
 
-  it("truncates at the first zero unit", () => {
+  it("truncates trailing zero units (hours/minutes/seconds)", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 1, months: 0, days: 340, expired: false }}
+        countdown={{ years: 1, months: 2, days: 3, hours: 0, minutes: 0, seconds: 0, expired: false }}
         couplePhoto=""
       />,
     );
     expect(screen.getByText(/countdown\.year/)).toBeDefined();
-    expect(screen.queryByText(/countdown\.month/)).toBeNull();
-    expect(screen.queryByText(/countdown\.day/)).toBeNull();
+    expect(screen.getByText(/countdown\.month/)).toBeDefined();
+    expect(screen.getByText(/countdown\.day/)).toBeDefined();
+    expect(screen.queryByText(/countdown\.hour/)).toBeNull();
+    expect(screen.queryByText(/countdown\.minute/)).toBeNull();
+    expect(screen.queryByText(/countdown\.second/)).toBeNull();
+  });
+
+  it("keeps an intermediate zero unit when a smaller unit is present", () => {
+    render(
+      <HeroSection
+        {...baseProps}
+        countdown={{ years: 0, months: 0, days: 2, hours: 3, minutes: 0, seconds: 10, expired: false }}
+        couplePhoto=""
+      />,
+    );
+    expect(screen.getByText(/countdown\.day/)).toBeDefined();
+    expect(screen.getByText(/countdown\.hour/)).toBeDefined();
+    expect(screen.getByText(/countdown\.minute/)).toBeDefined();
+    expect(screen.getByText(/countdown\.second/)).toBeDefined();
+  });
+
+  it("shows seconds when the wedding is less than a day away", () => {
+    render(
+      <HeroSection
+        {...baseProps}
+        countdown={{ years: 0, months: 0, days: 0, hours: 4, minutes: 5, seconds: 6, expired: false }}
+        couplePhoto=""
+      />,
+    );
+    expect(screen.queryByText(/countdown\.year/)).toBeNull();
+    expect(screen.getByText(/countdown\.hour/)).toBeDefined();
+    expect(screen.getByText(/countdown\.minute/)).toBeDefined();
+    expect(screen.getByText(/countdown\.second/)).toBeDefined();
   });
 
   it("shows only days when months are zero", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 0, months: 0, days: 10, expired: false }}
+        countdown={{years: 0, months: 0, days: 10, hours: 0, minutes: 0, seconds: 0, expired: false}}
         couplePhoto=""
       />,
     );
@@ -132,7 +163,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{ years: 0, months: 0, days: 3, expired: false }}
+        countdown={{years: 0, months: 0, days: 3, hours: 0, minutes: 0, seconds: 0, expired: false}}
         couplePhoto=""
       />,
     );

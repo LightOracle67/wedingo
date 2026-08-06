@@ -61,7 +61,11 @@ function pwaPrecache() {
           .filter((file) => {
             const langMatch = file.match(/^([a-z]{2,4})-[A-Za-z0-9_-]{8,}\.js$/);
             // Excluye los 100 chunks de idioma del precache del service worker.
-            return !(langMatch && langCodes.has(langMatch[1]));
+            if (langMatch && langCodes.has(langMatch[1])) return false;
+            // Estos chunks son lazy por ruta (superadmin/login/sentry/analytics):
+            // se cachean al primer uso, no al instalar, para no pagar 1.7MB.
+            if (/^(vendor-sentry|lazy-auth|lazy-storage|lazy-analytics)-/.test(file)) return false;
+            return true;
           })
           .map((file) => `/assets/${file}`);
       } catch {

@@ -1,4 +1,21 @@
 import { defineConfig } from "@playwright/test";
+import { readFileSync } from "node:fs";
+
+/**
+ * Carga el archivo .env raíz en process.env para que los e2e funcionen sin
+ * exportar las variables de Firebase manualmente (el build de Vite ya las
+ * inyecta; aquí se necesitan también en el proceso de Playwright).
+ */
+function loadDotEnv() {
+  try {
+    const content = readFileSync(".env", "utf8");
+    for (const line of content.split("\n")) {
+      const m = line.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.*)\s*$/);
+      if (m && !process.env[m[1]]) process.env[m[1]] = m[2];
+    }
+  } catch { /* sin .env: se usan los defaults */ }
+}
+loadDotEnv();
 
 export default defineConfig({
   testDir: ".",

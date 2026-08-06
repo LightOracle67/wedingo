@@ -292,6 +292,19 @@ describe("PublicInvitation", () => {
     document.head.querySelectorAll('[data-wedingo-seo]').forEach((el) => el.remove());
   });
 
+  it("shares the invitation via navigator.share", async () => {
+    mockUseAppValue.config.firstName = "Test";
+    mockUseAppValue.config.secondName = "User";
+    const shareSpy = vi.fn(() => Promise.resolve());
+    Object.defineProperty(navigator, "share", { value: shareSpy, configurable: true });
+    render(<PublicInvitation />);
+    fireEvent.click(screen.getByLabelText("public.share"));
+    await vi.waitFor(() => {
+      expect(shareSpy).toHaveBeenCalled();
+    });
+    Object.defineProperty(navigator, "share", { value: undefined, configurable: true });
+  });
+
   it("builds the schema couple name without a second name", () => {
     mockUseAppValue.config.firstName = "Test";
     mockUseAppValue.config.secondName = "";

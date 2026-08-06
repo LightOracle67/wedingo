@@ -109,7 +109,8 @@
     "thumbnailAria": "Φωτογραφία {{number}}",
     "thumbnailAlt": "Μικρογραφία φωτογραφίας συλλογής",
     "carouselLabel": "Συλλογή εικόνων, χρησιμοποιήστε τα πλήκτρα βέλους για πλοήγηση",
-    "lightboxLabel": "Μεγεθυσμένη εικόνα"
+    "lightboxLabel": "Μεγεθυσμένη εικόνα",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Επιβεβαίωση συμμετοχής",
@@ -203,7 +204,8 @@
     "locationCoordinates": "Συντεταγμένες: {{lat}}, {{lng}}",
     "mapPreviewAlt": "Προεπισκόπηση χάρτη στην υποδεικνυόμενη τοποθεσία.",
     "locationSet": "Η τοποθεσία διαμορφώθηκε",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "Φόρτωση πρόσκλησης",
@@ -428,7 +430,8 @@
     "clearAttendance": "Εκκαθάριση συμμετοχών",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "Η πρόσκλησή σας έχει δημοσιευτεί στη διεύθυνση:",
@@ -921,7 +924,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "Αρχείο καταγραφής αλλαγών",

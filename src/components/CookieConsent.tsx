@@ -2,18 +2,22 @@ import { memo, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 import { INVITE_CACHE_PREFIX, AUDIO_PREFIX, STORAGE_KEYS } from "../lib/storage-keys";
-import { grantAnalyticsConsent } from "../lib/analytics";
-import { enableSentryTracking } from "../lib/sentry";
 import "../styles/modals.css";
 
 const STORAGE_KEY = STORAGE_KEYS.cookieConsent;
 const PREF_STORAGE_KEY = STORAGE_KEYS.cookiePrefs;
 
+/** Otorga el consentimiento de analítica (import dinámico para no arrastrar
+ *  firebase/analytics al grafo estático inicial). */
+function grantAnalytics() {
+  import("../lib/analytics").then(({ grantAnalyticsConsent }) => grantAnalyticsConsent());
+  import("../lib/sentry").then(({ enableSentryTracking }) => enableSentryTracking());
+}
+
 function acceptCookies() {
   localStorage.setItem(STORAGE_KEY, "accepted");
   localStorage.setItem(PREF_STORAGE_KEY, JSON.stringify({ necessary: true, analytics: true }));
-  grantAnalyticsConsent();
-  enableSentryTracking();
+  grantAnalytics();
 }
 
 function rejectCookies() {
@@ -48,10 +52,7 @@ const CookieConsent = memo(function CookieConsent() {
   const handleSavePreferences = () => {
     localStorage.setItem(STORAGE_KEY, "accepted");
     localStorage.setItem(PREF_STORAGE_KEY, JSON.stringify(preferences));
-    if (preferences.analytics) {
-      grantAnalyticsConsent();
-      enableSentryTracking();
-    }
+    if (preferences.analytics) grantAnalytics();
     if (!preferences.analytics) {
       localStorage.removeItem(STORAGE_KEYS.inviteCacheLegacy);
     }

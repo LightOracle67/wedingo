@@ -109,7 +109,8 @@
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniaturansicht eines Galeriefotos",
     "carouselLabel": "Bildergalerie, zum Navigieren verwenden Sie die Pfeiltasten",
-    "lightboxLabel": "Vergrößertes Bild"
+    "lightboxLabel": "Vergrößertes Bild",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Rückmeldung",
@@ -203,7 +204,8 @@
     "locationCoordinates": "Koordinaten: {{lat}}, {{lng}}",
     "mapPreviewAlt": "Kartenvorschau am angegebenen Standort.",
     "locationSet": "Standort konfiguriert",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "Einladung wird geladen",
@@ -465,7 +467,8 @@
     "clearAttendance": "Rückmeldungen zurücksetzen",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "Deine Einladung ist veröffentlicht unter:",
@@ -1071,7 +1074,9 @@
     "hour_one": "{{count}} Stunde",
     "hour_other": "{{count}} Stunden",
     "minute_one": "{{count}} Minute",
-    "minute_other": "{{count}} Minuten"
+    "minute_other": "{{count}} Minuten",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "Änderungsprotokoll",

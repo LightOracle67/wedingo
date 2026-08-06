@@ -96,6 +96,19 @@ describe("GallerySection", () => {
     fireEvent.click(screen.getByLabelText("common.close"));
   });
 
+  it("downloads the current photo from the lightbox", async () => {
+    mockLoadGallery.mockResolvedValue(mockImages);
+    const clickSpy = vi.spyOn(HTMLAnchorElement.prototype, "click").mockImplementation(() => {});
+    render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
+    await vi.waitFor(() => {
+      expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
+    });
+    fireEvent.click(screen.getAllByAltText("Photo 1")[0]!);
+    fireEvent.click(screen.getByLabelText("gallery.download"));
+    expect(clickSpy).toHaveBeenCalled();
+    clickSpy.mockRestore();
+  });
+
   it("navigates lightbox with arrows", async () => {
     mockLoadGallery.mockResolvedValue(mockImages);
 

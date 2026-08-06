@@ -113,7 +113,8 @@
     "next": "Next",
     "carouselLabel": "Image gallery, use arrow keys to navigate",
     "thumbnailAria": "Photo {{number}}",
-    "thumbnailAlt": "Gallery photo thumbnail"
+    "thumbnailAlt": "Gallery photo thumbnail",
+    "download": "Download photo"
   },
   "rsvp": {
     "sectionLabel": "RSVP",
@@ -197,7 +198,8 @@
     "privacyPolicy": "Privacy Policy",
     "terms": "Terms",
     "legalNotice": "Legal Notice",
-    "dataRequest": "My data & privacy"
+    "dataRequest": "My data & privacy",
+    "share": "Share invitation"
   },
   "setup": {
     "mapUrlLabel": "Google Maps URL",
@@ -507,7 +509,8 @@
     "deleteSelectedError": "Could not delete the selected responses. Try again.",
     "prevPage": "Previous page",
     "nextPage": "Next page",
-    "pageSizeLabel": "Page size"
+    "pageSizeLabel": "Page size",
+    "exportCsv": "Export CSV"
   },
   "share": {
     "publishedAt": "Your invitation is published at:",
@@ -905,7 +908,9 @@
     "minute_one": "{{count}} minute",
     "minute_other": "{{count}} minutes",
     "hours": "{{count}}h",
-    "minutes": "{{count}}min"
+    "minutes": "{{count}}min",
+    "second_one": "{{count}} second",
+    "second_other": "{{count}} seconds"
   },
   "chart": {
     "noData": "No data",

@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.65.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.65.0)  
+**Versión actual:** [v2.66.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.66.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 1850 tests, 144 test files |
+| Tests | 1855 tests, 144 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -298,6 +298,7 @@ Hitos principales:
 | v2.63.0 | 2026-08-06 | Seguridad crítica (token legacy y edición con cuentas ajenas), GDPR cleanup PII, reglas reforzadas, rendimiento y accesibilidad |
 | v2.64.0 | 2026-08-06 | Bugfix RSVP (contador legible), consentimiento total (Sentry, fuentes autoalojadas), rendimiento (re-renders, image-store, SW), secretos en env, accesibilidad |
 | v2.65.0 | 2026-08-06 | Seguridad (storage.rules, _visits, setupTokens, magic bytes JPEG), fix autosave, UX (beforeunload, indicador guardado, lightbox, mapa, menú) |
+| v2.66.0 | 2026-08-06 | Funcionalidad (countdown h/m/s, compartir, CSV, descargar foto), analítica de eventos, rendimiento (blur, precache SW), infra (functions, e2e, firebase-tools 15) |
 
 ---
 

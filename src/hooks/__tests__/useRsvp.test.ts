@@ -29,6 +29,10 @@ vi.mock("firebase/firestore", () => ({
   setDoc: mockSetDoc,
 }));
 
+vi.mock("../../lib/analytics", () => ({
+  trackEvent: vi.fn(),
+}));
+
 vi.mock("../../lib/firebase", () => ({
   db: {},
   RSVP_COLLECTION_REF: "rsvpResponses",

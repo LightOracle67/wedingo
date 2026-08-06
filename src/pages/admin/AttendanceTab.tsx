@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Pagination from "../../components/Pagination";
+import { formatRSVPsForCSV } from "../../lib/admin-utils";
 
 interface RsvpEntry {
   id: string;
@@ -68,6 +69,22 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+
+  /** Descarga un CSV con todas las respuestas RSVP (filtradas o no). */
+  const handleExportCsv = useCallback(() => {
+    try {
+      const csv = formatRSVPsForCSV(filteredEntries);
+      const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "asistencias.csv";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    } catch { /* export no disponible */ }
+  }, [filteredEntries]);
 
   const departures = useMemo(() => {
     try {
@@ -309,6 +326,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
         <div className="setup-actions" style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center", marginTop: "1rem" }}>
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportPdf}>
             {t("attendance.exportPdf")}
+          </button>
+          <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleExportCsv}>
+            {t("attendance.exportCsv")}
           </button>
           <button className="setup-button setup-button--ghost setup-button--compact" type="button"
             onClick={handleBatchDelete}

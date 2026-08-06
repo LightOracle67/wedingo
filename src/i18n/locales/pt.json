@@ -260,7 +260,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Confirmação de presença",
@@ -632,7 +633,8 @@
         ]
       ]
     ],
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "Carregando convite",
@@ -1237,7 +1239,8 @@
     "clearAttendance": "Limpar presença",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "O teu convite está publicado em:",
@@ -2354,7 +2357,9 @@
     "hour_one": "{{count}} hora",
     "hour_other": "{{count}} horas",
     "minute_one": "{{count}} minuto",
-    "minute_other": "{{count}} minutos"
+    "minute_other": "{{count}} minutos",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "Registo de alterações",

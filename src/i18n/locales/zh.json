@@ -260,7 +260,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "出席确认",
@@ -626,7 +627,8 @@
         ]
       ]
     ],
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "加载请柬中",
@@ -1231,7 +1233,8 @@
     "clearAttendance": "清空出席",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "您的请柬已发布在：",
@@ -2877,7 +2880,9 @@
     "hour_one": "{{count}} 小时",
     "hour_other": "{{count}} 小时",
     "minute_one": "{{count}} 分钟",
-    "minute_other": "{{count}} 分钟"
+    "minute_other": "{{count}} 分钟",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "更新日志",

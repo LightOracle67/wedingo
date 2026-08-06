@@ -260,7 +260,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "出欠確認",
@@ -626,7 +627,8 @@
         ]
       ]
     ],
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "招待状を読み込み中",
@@ -1218,7 +1220,8 @@
     "clearAttendance": "出欠をクリア",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "招待状の公開URL：",
@@ -2915,7 +2918,9 @@
     "hour_one": "{{count}}時間",
     "hour_other": "{{count}}時間",
     "minute_one": "{{count}}分",
-    "minute_other": "{{count}}分"
+    "minute_other": "{{count}}分",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "変更履歴",

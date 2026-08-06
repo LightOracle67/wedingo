@@ -27,6 +27,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { parseSectionOrder, sectionHasContent } from "../lib/section-utils";
 import { SITE_URL, applySocialMeta, clearSocialMeta } from "../lib/seo";
+import { trackEvent } from "../lib/analytics";
 
 // ─── Assets ──────────────────────────────────────────────
 import eucalyptusSrc from "../assets/eucalyptus.webp";
@@ -66,6 +67,9 @@ const SECTION_COMPONENTS = {
   gallery: GallerySection,
   rsvp: RsvpSection,
 };
+
+/** Props vacías compartidas (referencia estable, no rompe React.memo). */
+const EMPTY_PROPS: Record<string, unknown> = {};
 
 /**
  * Página principal de la invitación pública.
@@ -149,7 +153,7 @@ export default function PublicInvitation() {
   } = useStoryNavigation(visibleOrder);
 
   // ─── Cuenta regresiva ──────────────────────────────────
-  const [countdown, setCountdown] = useState<{ years?: number; months?: number; days: number; expired: boolean } | null>(null);
+  const [countdown, setCountdown] = useState<{ years?: number; months?: number; days: number; hours: number; minutes: number; seconds: number; expired: boolean } | null>(null);
 
   /**
    * Construye el objeto Date de la boda a partir de los campos de configuración.
@@ -176,7 +180,7 @@ export default function PublicInvitation() {
     const tick = () => {
       const now = new Date();
       if (weddingDate.getTime() <= now.getTime()) {
-        setCountdown({ days: 0, expired: true });
+        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0, expired: true });
         if (id) clearInterval(id);
         return;
       }
@@ -191,7 +195,12 @@ export default function PublicInvitation() {
         years -= 1;
         months += 12;
       }
-      setCountdown({ years, months, days, expired: false });
+      // Horas/minutos/segundos restantes del día (para la cuenta atrás fina).
+      const diffMs = Math.max(0, weddingDate.getTime() - now.getTime());
+      const hours = Math.floor(diffMs / 3_600_000) % 24;
+      const minutes = Math.floor(diffMs / 60_000) % 60;
+      const seconds = Math.floor(diffMs / 1000) % 60;
+      setCountdown({ years, months, days, hours, minutes, seconds, expired: false });
     };
     tick();
     if (reducedMotion) return;
@@ -373,6 +382,24 @@ export default function PublicInvitation() {
   const isEmpty = !config.firstName && !config.secondName && !isInviteMode;
   const hasHash = location.hash.length > 1;
 
+  /**
+   * Comparte la invitación: navegador nativo si está disponible, si no,
+   * enlace de WhatsApp. Registra el evento en analítica (con consentimiento).
+   */
+  const handleShare = async () => {
+    const url = `${SITE_URL}/${inviteToken}`;
+    const text = `${config.firstName} & ${config.secondName} te invita a su boda — Wedingo`;
+    const native = typeof navigator !== "undefined" && "share" in navigator;
+    try {
+      if (native) {
+        await navigator.share({ title: "Wedingo", text, url });
+      } else {
+        window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, "_blank", "noopener");
+      }
+      trackEvent("share_invite", { method: native ? "native" : "whatsapp" });
+    } catch { /* el usuario canceló el compartido */ }
+  };
+
   // ═══════════════════════════════════════════════════════
   // RENDERIZADO CONDICIONAL
   // ═══════════════════════════════════════════════════════
@@ -489,7 +516,7 @@ export default function PublicInvitation() {
             const Component = (SECTION_COMPONENTS as unknown as Record<string, React.ComponentType<Record<string, unknown>>>)[sectionKey];
             if (!Component) { ; return null; }
             const baseProps = (configSectionProps as Record<string, Record<string, unknown>>)[sectionKey] || {};
-            const extraProps = sectionKey === "hero" ? heroProps : sectionKey === "rsvp" ? rsvpSectionProps : {};
+            const extraProps = sectionKey === "hero" ? heroProps : sectionKey === "rsvp" ? rsvpSectionProps : EMPTY_PROPS;
             return (
               <ErrorBoundary key={sectionKey}>
                 <Component
@@ -503,6 +530,12 @@ export default function PublicInvitation() {
           })}
         </Suspense>
       )}
+      {/* Botón de compartir de la invitación pública (aparece tras el sobre). */}
+      {!isEmpty && !showMissingToken ? (
+        <button type="button" className="invite-share" onClick={handleShare} aria-label={t("public.share")} title={t("public.share")}>
+          <span aria-hidden="true">↗</span>
+        </button>
+      ) : null}
       </div>
     </div>
   );

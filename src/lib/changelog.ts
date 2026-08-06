@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.66.0",
+    date: "2026-08-06",
+    changes: [
+      "FUNCIONALIDAD: cuenta atrás con horas/minutos/segundos, botón de compartir en la invitación (navigator.share + WhatsApp), exportar asistencias a CSV, descargar foto en el lightbox",
+      "ANALÍTICA: eventos de RSVP, calendario y compartido (solo con consentimiento)",
+      "RENDIMIENTO: sobre con blur 6x menor y sin blur en pantallas pequeñas, tarjetas sin blur con prefers-reduced-motion, el service worker ya no precarga Sentry/auth/storage (ahorro ~415KB), analytics fuera del grafo estático inicial",
+      "INFRA: Cloud Functions configuradas (cleanup GDPR) — requieren el plan Blaze para desplegar; e2e cargan .env; firebase-tools actualizado a v15",
+    ],
+  },
+  {
     version: "2.65.0",
     date: "2026-08-06",
     changes: [

@@ -32,3 +32,30 @@ export function getDietarySummary(entries: { attendance: string; dietaryInfo?: s
 }
 
 /* formatRSVPsForCSV, groupRSVPsByAttendance, formatGuestDate, getCompanionList eliminados por dead code. */
+
+/**
+ * Genera un CSV de las respuestas RSVP para exportar (Excel/Sheets).
+ * Los campos con comas se escapan entre comillas dobles.
+ */
+export function formatRSVPsForCSV(entries: Array<{
+  guestName?: string;
+  attendance?: string;
+  dietaryInfo?: string;
+  companionNames?: string[];
+  transportChoice?: string;
+  transportMode?: string;
+  birthDate?: string;
+  mealChoice?: string;
+}>): string {
+  const header = ["Nombre", "Asistencia", "Acompañantes", "Alergias/Menú", "Transporte", "Fecha de nacimiento"];
+  const esc = (v: string) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const rows = entries.map((e) => [
+    e.guestName || "",
+    e.attendance === "yes" ? "Sí" : e.attendance === "no" ? "No" : "",
+    (e.companionNames || []).join("; "),
+    e.dietaryInfo || "",
+    `${e.transportChoice || ""}${e.transportMode && e.transportMode !== "own" ? ` (${e.transportMode})` : ""}`,
+    e.birthDate || "",
+  ].map(esc).join(","));
+  return [header.map(esc).join(","), ...rows].join("\n");
+}

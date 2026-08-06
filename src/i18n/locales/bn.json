@@ -109,7 +109,8 @@
     "thumbnailAria": "ছবি {{number}}",
     "thumbnailAlt": "গ্যালারির ছবির থাম্বনেইল",
     "carouselLabel": "চিত্র গ্যালারি, নেভিগেট করতে তীর কী ব্যবহার করুন",
-    "lightboxLabel": "বর্ধিত চিত্র"
+    "lightboxLabel": "বর্ধিত চিত্র",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "উপস্থিতি নিশ্চিতকরণ",
@@ -184,7 +185,8 @@
     "locationCoordinates": "স্থানাঙ্ক: {{lat}}, {{lng}}",
     "mapPreviewAlt": "নির্দেশিত অবস্থানে মানচিত্রের পূর্বরূপ।",
     "locationSet": "অবস্থান কনফিগার করা হয়েছে",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "আমন্ত্রণ লোড হচ্ছে",
@@ -409,7 +411,8 @@
     "clearAttendance": "উপস্থিতি খালি করুন",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "আপনার আমন্ত্রণ প্রকাশিত হয়েছে:",
@@ -807,7 +810,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "চেঞ্জলগ",

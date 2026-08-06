@@ -115,7 +115,8 @@
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Galleri-miniature",
     "carouselLabel": "Billedgalleri, brug piletasterne til at navigere",
-    "lightboxLabel": "Forstørret billede"
+    "lightboxLabel": "Forstørret billede",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Tilbagemelding",
@@ -221,7 +222,8 @@
     "locationCoordinates": "Koordinater: {{lat}}, {{lng}}",
     "mapPreviewAlt": "Forhåndsvisning af kort på det angivne sted.",
     "locationSet": "Placering konfigureret",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "Indlæser invitation",
@@ -477,7 +479,8 @@
     "clearAttendance": "Ryd deltagelse",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "Din invitation er udgivet på:",
@@ -1108,7 +1111,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "Ændringslog",

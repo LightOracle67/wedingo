@@ -247,3 +247,18 @@
   .gallery-lightbox__nav--prev { left: 0.75rem; }
   .gallery-lightbox__nav--next { right: 0.75rem; }
 }
+
+/* Botón de descarga de la foto actual en el lightbox. */
+.gallery-lightbox__download {
+  position: absolute; top: 1rem; left: 1rem; z-index: 1;
+  width: 2.4rem; height: 2.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(0,0,0,0.3);
+  color: var(--color-white);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: grid; place-items: center;
+}
+.gallery-lightbox__download:hover { background: rgba(0,0,0,0.55); }
+.gallery-lightbox__download:focus-visible { outline: 2px solid var(--setup-accent); outline-offset: 2px; }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { calcRSVPSummary, getDietarySummary } from "../admin-utils";
+import { calcRSVPSummary, getDietarySummary, formatRSVPsForCSV } from "../admin-utils";
 
 describe("calcRSVPSummary", () => {
   it("returns zeros for null", () => {
@@ -161,5 +161,17 @@ describe("getDietarySummary", () => {
       { item: "sin gluten", count: 1 },
       { item: "alergia", count: 1 },
     ]);
+  });
+
+  it("formatRSVPsForCSV builds a header row and escapes commas", () => {
+    const csv = formatRSVPsForCSV([
+      { guestName: "Ana, la novia", attendance: "yes", companionNames: ["Luis"], dietaryInfo: "sin gluten", transportMode: "bus", birthDate: "2000-01-01" },
+      { guestName: "Pedro", attendance: "no" },
+    ]);
+    expect(csv).toContain('"Nombre","Asistencia"');
+    expect(csv).toContain('"Ana, la novia","Sí"');
+    expect(csv).toContain('"Pedro","No"');
+    expect(csv).toContain("sin gluten");
+    expect(csv).toContain("bus");
   });
 });

@@ -51,6 +51,11 @@ const DetailsSection = memo(function DetailsSection({
                 target="_blank"
                 rel="noopener noreferrer"
                 referrerPolicy="no-referrer"
+                onClick={() => {
+                  try {
+                    import("../../lib/analytics").then(({ trackEvent }) => trackEvent("calendar_click"));
+                  } catch { /* analítica opcional */ }
+                }}
               >
                 {t("details.addToCalendar")}
               </a>

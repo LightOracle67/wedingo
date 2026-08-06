@@ -644,6 +644,11 @@ export function useRsvp(
         ? t("rsvp.successAttending", { name: single })
         : t("rsvp.successNotAttending", { name: single }),
     );
+    // Analítica del envío (solo si hay consentimiento).
+    try {
+      const { trackEvent } = await import("../lib/analytics");
+      trackEvent("rsvp_submit", { attendance: isAttending ? "yes" : "no" });
+    } catch { }
     setRsvpForm(RsvpFormDefault());
     setHasSubmitted(true);
     setAlreadySubmittedEntry(null);

@@ -109,7 +109,8 @@
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniaturo de galeria foto",
     "carouselLabel": "Bildgalerio, uzu sagoklavojn por navigi",
-    "lightboxLabel": "Pligrandigita bildo"
+    "lightboxLabel": "Pligrandigita bildo",
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "Konfirmo de ĉeesto",
@@ -203,7 +204,8 @@
     "locationCoordinates": "Koordinatoj: {{lat}}, {{lng}}",
     "mapPreviewAlt": "Antaŭrigardo de mapo ĉe la indikita loko.",
     "locationSet": "Loko agordita",
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "Ŝarĝante inviton",
@@ -447,7 +449,8 @@
     "clearAttendance": "Malplenigi ĉeeston",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "Via invito estas publikigita ĉe:",
@@ -940,7 +943,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": "Ŝanĝprotokolo",

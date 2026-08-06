@@ -430,6 +430,25 @@ const GallerySection = memo(function GallerySection({ style, className, inviteTo
             onClick={(e) => e.stopPropagation()}
           />
 
+          <button
+            type="button"
+            className="gallery-lightbox__download"
+            onClick={(e) => {
+              e.stopPropagation();
+              const current = images[lightboxIndex];
+              const url = current?.url;
+              if (!url) return;
+              const a = document.createElement("a");
+              a.href = url;
+              a.download = `wedingo-foto-${lightboxIndex + 1}.jpg`;
+              document.body.appendChild(a);
+              a.click();
+              a.remove();
+            }}
+            aria-label={t("gallery.download")}
+            title={t("gallery.download")}
+          >⤓</button>
+
           {images[lightboxIndex].description && (
             <p className="gallery-lightbox__caption">{images[lightboxIndex].description}</p>
           )}

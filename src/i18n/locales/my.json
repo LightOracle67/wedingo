@@ -318,7 +318,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "download": "Descargar foto"
   },
   "rsvp": {
     "sectionLabel": "တက်ရောက်မည့် အတည်ပြုချက်",
@@ -982,7 +983,8 @@
         ]
       ]
     ],
-    "dataRequest": "Mis datos y privacidad"
+    "dataRequest": "Mis datos y privacidad",
+    "share": "Compartir invitación"
   },
   "setup": {
     "loadingTitle": "ဖိတ်ကြားလွှာ ဖွင့်နေသည်",
@@ -1606,7 +1608,8 @@
     "clearAttendance": "တက်ရောက်မှုများ ရှင်းလင်းမည်",
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
-    "pageSizeLabel": "Tamaño de página"
+    "pageSizeLabel": "Tamaño de página",
+    "exportCsv": "Exportar CSV"
   },
   "share": {
     "publishedAt": "သင့်ဖိတ်ကြားလွှာကို အောက်ပါနေရာတွင် ထုတ်ဝေထားသည်:",
@@ -3663,7 +3666,9 @@
     "hour_one": "{{count}} hour",
     "hour_other": "{{count}} hours",
     "minute_one": "{{count}} minute",
-    "minute_other": "{{count}} minutes"
+    "minute_other": "{{count}} minutes",
+    "second_one": "{{count}} segundo",
+    "second_other": "{{count}} segundos"
   },
   "changelog": {
     "title": [
