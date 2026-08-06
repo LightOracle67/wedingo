@@ -12,10 +12,15 @@ vi.mock("../../../hooks/useToast", () => ({
 
 vi.mock("firebase/firestore", () => ({
   setDoc: vi.fn(() => Promise.resolve()),
+  getDocs: vi.fn(() => Promise.resolve({ docs: [] })),
+  collection: vi.fn(() => "collection-ref"),
+  doc: vi.fn(() => ({ id: "subdoc" })),
 }));
 
 vi.mock("../../../lib/firebase", () => ({
+  db: "db-mock",
   invitationDocRef: vi.fn(() => ({ id: "test-ref" })),
+  rsvpByInviteRef: vi.fn(() => "rsvp-col-ref"),
 }));
 
 vi.mock("../../../lib/crypto-utils", () => ({
@@ -126,7 +131,7 @@ describe("PanelTab", () => {
     expect(screen.getByText("panel.publishedAt")).toBeDefined();
   });
 
-  it("triggers backup when downloadBackup is clicked", () => {
+  it("triggers backup when downloadBackup is clicked", async () => {
     const createObjectURL = vi.fn(() => "blob:test");
     const revokeObjectURL = vi.fn();
     vi.spyOn(URL, "createObjectURL").mockImplementation(createObjectURL);
@@ -134,7 +139,9 @@ describe("PanelTab", () => {
 
     render(<PanelTab config={baseConfig} />);
     fireEvent.click(screen.getByText("panel.downloadBackup"));
-    expect(createObjectURL).toHaveBeenCalled();
+    // El backup ahora exporta también las subcolecciones (async): se espera
+    // a que el JSON se genere.
+    await vi.waitFor(() => expect(createObjectURL).toHaveBeenCalled());
   });
 
   it("shows restore error on invalid file", async () => {
@@ -195,6 +202,26 @@ describe("PanelTab", () => {
     fireEvent.change(fileInput, { target: { files: [file] } });
     await vi.waitFor(() => {
       expect(setDoc).toHaveBeenCalled();
+    });
+  });
+
+  it("restores the v1 backup including gallery and rsvp subcollections", async () => {
+    const { setDoc } = await import("firebase/firestore");
+    render(<PanelTab config={baseConfig} />);
+    const fileInput = document.querySelector('input[type="file"]')!;
+    const backup = {
+      _wedingoBackupVersion: 1,
+      config: { firstName: "Test", secondName: "Test2" },
+      gallery: [{ id: "g1", data: "enc" }],
+      rsvp: [{ id: "r1", guestName: "A" }],
+      audio: [],
+      configImages: [],
+    };
+    const file = new File([JSON.stringify(backup)], "backup.json", { type: "application/json" });
+    fireEvent.change(fileInput, { target: { files: [file] } });
+    // 1 doc config + 1 galería + 1 rsvp = 3 setDoc (más las subcolecciones).
+    await vi.waitFor(() => {
+      expect(setDoc).toHaveBeenCalledTimes(3);
     });
   });
 

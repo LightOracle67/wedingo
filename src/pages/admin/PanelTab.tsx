@@ -1,8 +1,8 @@
 import { memo, useCallback, useMemo, useRef, type ChangeEvent } from "react";
-import { setDoc } from "firebase/firestore";
+import { setDoc, doc, collection, getDocs } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
-import { invitationDocRef } from "../../lib/firebase";
+import { db, invitationDocRef, rsvpByInviteRef } from "../../lib/firebase";
 import { encrypt } from "../../lib/crypto-utils";
 import { calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
 import { DonutChart, Legend } from "../../components/AttendanceChart";
@@ -44,9 +44,25 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
       if (!exportData) throw new Error("No data to export");
 
       const { bankInfo, ...safeData } = exportData;
+      // Backup completo: además de la config, se exportan las subcolecciones
+      // CIFRADAS (galería, audio, imágenes de config y respuestas RSVP) tal y
+      // como están en Firestore, para poder restaurarlas sin re-cifrar.
+      const [galSnap, audioSnap, cfgSnap, rsvpSnap] = await Promise.all([
+        getDocs(collection(db, "invitations", inviteToken, "gallery")),
+        getDocs(collection(db, "invitations", inviteToken, "audio")),
+        getDocs(collection(db, "invitations", inviteToken, "configImages")),
+        getDocs(rsvpByInviteRef(inviteToken)),
+      ]);
+      const readDocs = (snap: { docs: Array<{ id: string; data: () => Record<string, unknown> }> }) =>
+        snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+
       const payload = {
-        ...safeData,
-        bankInfo: bankInfo || "",
+        _wedingoBackupVersion: 1,
+        config: { ...safeData, bankInfo: bankInfo || "" },
+        gallery: readDocs(galSnap),
+        audio: readDocs(audioSnap),
+        configImages: readDocs(cfgSnap),
+        rsvp: readDocs(rsvpSnap),
       };
 
       const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
@@ -60,7 +76,7 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
       const msg = err instanceof Error ? err.message : String(err);
       addToast("error", `${t("errors.backupFailed")} ${t("errors.errorDetail", { error: msg })}`);
     }
-  }, [exportData, t, addToast]);
+  }, [exportData, inviteToken, t, addToast]);
 
   const handleRestore = useCallback(async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -73,12 +89,15 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
       // array ni el formato del export del superadmin, que corrompería el
       // documento con claves anidadas).
       if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error("Invalid backup file");
-      if (typeof data.firstName !== "string" || typeof data.secondName !== "string") {
+      // Formato v1 (completo): { config, gallery, audio, configImages, rsvp }.
+      const configPart = data._wedingoBackupVersion === 1 ? (data as { config?: unknown }).config : data;
+      const cfg = configPart as Record<string, unknown>;
+      if (typeof cfg.firstName !== "string" || typeof cfg.secondName !== "string") {
         throw new Error("Invalid backup file");
       }
       if (!window.confirm(t("panel.restoreConfirm"))) { e.target.value = ""; return; }
 
-      const { bankInfo, ...rest } = data;
+      const { bankInfo, ...rest } = cfg;
       // Las imágenes y el audio viajan como data URLs descifradas en el
       // backup: volcarlas al documento superaba el límite de 1 MiB (y dejaba
       // datos en claro). Se omiten en el merge (se conservan las actuales);
@@ -94,6 +113,35 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
       }
 
       await setDoc(invitationDocRef(inviteToken), toSave, { merge: true });
+
+      // Se restauran las subcolecciones si el backup las incluye (formato
+      // _wedingoBackupVersion 1): galería, audio, imágenes de config y
+      // respuestas RSVP, tal y como se exportaron (ya cifradas).
+      const sub = data as {
+        gallery?: Array<{ id: string; [k: string]: unknown }>;
+        audio?: Array<{ id: string; [k: string]: unknown }>;
+        configImages?: Array<{ id: string; [k: string]: unknown }>;
+        rsvp?: Array<{ id: string; [k: string]: unknown }>;
+      };
+      const writeSub = async (path: string, docs: Array<{ id: string; [k: string]: unknown }> | undefined) => {
+        if (!docs || !docs.length) return;
+        for (const d of docs) {
+          const { id: _id, ...restDoc } = d;
+          await setDoc(doc(db, "invitations", inviteToken, path, _id), restDoc);
+        }
+      };
+      const writeSubRsvp = async (docs: Array<{ id: string; [k: string]: unknown }> | undefined) => {
+        if (!docs || !docs.length) return;
+        for (const d of docs) {
+          const { id: _id, ...restDoc } = d;
+          await setDoc(doc(db, "rsvpResponses", inviteToken, "responses", _id), restDoc);
+        }
+      };
+      await writeSub("gallery", sub.gallery);
+      await writeSub("audio", sub.audio);
+      await writeSub("configImages", sub.configImages);
+      await writeSubRsvp(sub.rsvp);
+
       if (onRestore) await onRestore();
       addToast("success", t("panel.restoreSuccess"));
     } catch (err) {

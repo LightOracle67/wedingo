@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.88.0",
+    date: "2026-08-06",
+    changes: [
+      "BACKUP COMPLETO: la copia de seguridad del admin incluye ahora la galería, el audio, las imágenes de configuración y las respuestas RSVP (además de la config), exportadas cifradas tal y como están en Firestore y restaurables sin re-cifrar",
+    ],
+  },
+  {
     version: "2.87.0",
     date: "2026-08-06",
     changes: [
