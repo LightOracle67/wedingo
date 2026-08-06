@@ -304,7 +304,7 @@ export default function DateSectionForm({ prefix = "" }) {
                 className="setup-input"
                 value={ev.emoji}
                 onChange={handleScheduleEventField(i, "emoji")}
-                style={{ width: "4.2rem", textAlign: "center" }}
+                style={{ width: "100%", textAlign: "center" }}
               >
                 {/* Primera opción vacía: evento sin emoji. */}
                 <option value="">—</option>

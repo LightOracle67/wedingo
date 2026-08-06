@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.7",
+    date: "2026-08-06",
+    changes: [
+      "El selector de emoji del itinerario ocupa todo el ancho de su celda (width 100%) con el emoji centrado.",
+    ],
+  },
+  {
     version: "2.95.6",
     date: "2026-08-06",
     changes: [
