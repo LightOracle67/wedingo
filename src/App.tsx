@@ -278,7 +278,7 @@ function AppShell() {
         <Suspense fallback={<div className="page-loading" />}>
         <Routes>
           <Route path="/" element={<ErrorBoundary><LandingPage /></ErrorBoundary>} />
-          <Route path="/:inviteToken" element={<ErrorBoundary><PublicInvitation /></ErrorBoundary>} />
+          <Route path="/:inviteToken" element={<ErrorBoundary key={location.pathname}><PublicInvitation /></ErrorBoundary>} />
           <Route path="/:inviteToken/setup" element={<ErrorBoundary><SetupPage /></ErrorBoundary>} />
           <Route path="/:inviteToken/admin" element={<ErrorBoundary><AdminPage /></ErrorBoundary>} />
           <Route path={SUPERADMIN_ROUTE} element={<ErrorBoundary><SuperAdminLogin /></ErrorBoundary>} />

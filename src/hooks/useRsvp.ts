@@ -9,6 +9,7 @@ import { isValidFullName, normalizeFullName } from "../lib/name-utils";
 import { useRsvpSubmit } from "./useRsvpSubmit";
 import { buildMainGuestData, buildCompanionData } from "./rsvp-payloads";
 import { STORAGE_KEYS } from "../lib/storage-keys";
+import { withWriteRetry } from "../lib/async-utils";
 import type { Attendee } from "../types";
 
 interface RsvpFormData {
@@ -650,7 +651,7 @@ export function useRsvp(
       // Incremento atómico: dos invitados a la vez ya no pisan el contador
       // (el set con un valor leído perdía un envío completo por carrera).
       batch.update(counterRef, { count: increment(1) });
-      await batch.commit();
+      await withWriteRetry(() => batch.commit());
 
     } catch (err) {
       console.error("[app]", "[useRsvp]", "RSVP batch write failed:", err);
@@ -735,7 +736,7 @@ export function useRsvp(
       }
       // Retirar libera un hueco del tope anti-spam (increment -1).
       batch.update(doc(db, "rsvpResponses", inviteToken), { count: increment(-1) });
-      await batch.commit();
+      await withWriteRetry(() => batch.commit());
       const idsToRemove = new Set([alreadySubmittedEntry.id, ...(alreadySubmittedEntry.companionDocIds || [])]);
       setRsvpEntries((current) => current.filter((e) => !idsToRemove.has(e.id)));
       setRsvpMessage(t("rsvp.withdrawSuccess"));
@@ -764,7 +765,7 @@ export function useRsvp(
         batch.delete(rsvpResponseRef(inviteToken, id));
       }
       batch.update(doc(db, "rsvpResponses", inviteToken), { count: increment(-ids.length) });
-      await batch.commit();
+      await withWriteRetry(() => batch.commit());
       setRsvpEntries((current) => current.filter((e) => !ids.includes(e.id)));
       setAdminMessage(t("attendance.deleteSelectedSuccess", { count: ids.length }));
       setAdminMessageType("success");
@@ -787,7 +788,7 @@ export function useRsvp(
       const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
 
       await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
-      await updateDoc(doc(db, "rsvpResponses", inviteToken), { count: increment(-snapshot.size) });
+      await withWriteRetry(() => updateDoc(doc(db, "rsvpResponses", inviteToken), { count: increment(-snapshot.size) }));
       setRsvpEntries([]);
       setAdminMessage(t("rsvp.clearSuccess"));
       setAdminMessageType("success");

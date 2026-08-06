@@ -413,7 +413,8 @@ export default function PublicInvitation() {
    */
   const handleShare = async () => {
     const url = `${SITE_URL}/${inviteToken}`;
-    const text = `${config.firstName} & ${config.secondName} te invita a su boda — Wedingo`;
+    // Texto traducido (antes estaba en español para toda la UI).
+    const text = t("public.shareInvite", { firstName: config.firstName, secondName: config.secondName });
     const native = typeof navigator !== "undefined" && "share" in navigator;
     try {
       if (native) {

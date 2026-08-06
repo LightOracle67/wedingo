@@ -103,8 +103,13 @@ export function applySocialMeta({ title, description, url, image, locale }: Soci
   upsertMeta("name", "twitter:description", description);
   if (locale) {
     // og:locale exige "lengua_TERRITORIO" (p. ej. es_ES), no solo el código.
-    const loc = locale.includes("_") ? locale : (LOCALE_MAP[locale] ?? `${locale}_${locale.toUpperCase()}`);
-    upsertMeta("property", "og:locale", loc);
+    // "pt-BR" llega con guion: se normaliza. Para idiomas sin territorio
+    // estándar (jv, wuu) se usa el del mapa o se omite: un locale inventado
+    // como "jv_JV" es inválido y rompía la vista previa social.
+    const normalized = locale.replace("-", "_");
+    const [lang, region] = normalized.split("_");
+    const mapped = LOCALE_MAP[lang as string] || (region ? normalized : "");
+    if (mapped) upsertMeta("property", "og:locale", mapped);
   }
   upsertMeta("property", "og:image", absoluteImage);
   upsertMeta("name", "twitter:image", absoluteImage);

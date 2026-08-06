@@ -207,7 +207,8 @@
     "terms": "Terms",
     "legalNotice": "Legal Notice",
     "dataRequest": "My data & privacy",
-    "share": "Share invitation"
+    "share": "Share invitation",
+    "shareInvite": "{{firstName}} and {{secondName}} invite you to their wedding — Wedingo"
   },
   "setup": {
     "mapUrlLabel": "Google Maps URL",
@@ -868,7 +869,8 @@
     "southeastAsia": "Southeast Asia",
     "centralAsia": "Central Asia / Middle East",
     "africa": "Africa",
-    "americas": "Americas"
+    "americas": "Americas",
+    "other": "Other"
   },
   "a11y": {
     "title": "Accessibility",

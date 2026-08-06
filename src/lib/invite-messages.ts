@@ -134,8 +134,10 @@ export const PT_MESSAGES = [
 ];
 
 export function randomMessage(lang = "es") {
+  // El idioma llega con región (p. ej. "pt-BR"): se usa la lengua base.
+  const base = (lang || "es").split("-")[0] as string;
   const map: Record<string, string[]> = { es: WEDDING_MESSAGES, en: EN_MESSAGES, fr: FR_MESSAGES, de: DE_MESSAGES, pt: PT_MESSAGES };
-  const messages = map[lang] || WEDDING_MESSAGES;
+  const messages = map[base] || WEDDING_MESSAGES;
   const index = Math.floor(Math.random() * messages.length);
   return messages[index];
 }

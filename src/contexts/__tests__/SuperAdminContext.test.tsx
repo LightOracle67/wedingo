@@ -48,6 +48,7 @@ vi.mock("../../lib/storage", () => ({
 }));
 
 import { SuperAdminProvider, useSuperAdmin } from "../SuperAdminContext";
+import { SUPERADMIN_ROUTE } from "../../lib/superadmin";
 
 function TestConsumer() {
   const ctx = useSuperAdmin();
@@ -76,9 +77,9 @@ describe("SuperAdminProvider", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     // El provider solo inicializa auth en la consola de superadmin (o con
-    // sesión persistida): todos los tests simulan estar en esa ruta.
+    // sesión persistida): todos los tests simulan estar en esa ruta real.
     Object.defineProperty(window, "location", {
-      value: { ...window.location, pathname: "/_/console" },
+      value: { ...window.location, pathname: SUPERADMIN_ROUTE || "/_/console" },
       configurable: true,
       writable: true,
     });

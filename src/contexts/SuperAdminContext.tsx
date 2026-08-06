@@ -5,7 +5,7 @@ import type { User } from "firebase/auth";
 import { getAuthInstance } from "../lib/firebase";
 import { INVITE_CACHE_PREFIX } from "../lib/storage-keys";
 import { saveSession, getSession, renewSession, clearSession } from "../lib/sessionVars";
-import { SUPERADMIN_EMAIL } from "../lib/superadmin";
+import { SUPERADMIN_EMAIL, SUPERADMIN_ROUTE } from "../lib/superadmin";
 
 export interface SuperAdminValue {
   isSuperAdmin: boolean;
@@ -36,7 +36,9 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
     // El SDK de auth solo se carga si el usuario está en la consola de
     // superadmin o tiene una sesión superadmin persistida: un invitado en
     // una invitación pública no debe descargar firebase/auth (~25 KB gzip).
-    const isConsoleRoute = window.location.pathname.startsWith("/_/console");
+    // La ruta se lee de la configuración (no hardcodeada) para que el guard
+    // funcione en el primer acceso.
+    const isConsoleRoute = window.location.pathname.startsWith(SUPERADMIN_ROUTE);
     const hasStoredSession = getSession()?.type === "superadmin";
     if (!isConsoleRoute && !hasStoredSession) {
       setIsLoading(false);

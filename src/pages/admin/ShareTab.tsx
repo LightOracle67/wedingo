@@ -20,8 +20,7 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
   const inviteUrl = `${baseUrl}?invitar`;
 
   const generateMessage = useCallback(
-    () => `${randomMessage(i18n.language)}\n\n${inviteUrl}`,
-    [inviteUrl, i18n.language],
+    () => `${randomMessage(i18n.language)}\n\n${inviteUrl}`,    [inviteUrl, i18n.language],
   );
 
   const [message, setMessage] = useState(generateMessage);

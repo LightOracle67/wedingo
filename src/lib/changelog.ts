@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.82.0",
+    date: "2026-08-06",
+    changes: [
+      "COMPARTIR: texto de invitación traducido (antes en español), og:locale válido (antes inventaba locales inexistentes) y mensajes del sobre con idioma base (sin región)",
+      "SUPERADMIN: el guard de la consola usa la ruta real (antes hardcodeada /_/console, no inicializaba auth en el primer acceso)",
+      "NAVEGACIÓN: la invitación remonta al cambiar de token (el sobre y la sección activa ya no se filtran entre bodas)",
+      "ROBUSTEZ: los envíos y borrados de RSVP reintentan ante fallos transitorios de red (withWriteRetry en los commits)",
+    ],
+  },
+  {
     version: "2.81.0",
     date: "2026-08-06",
     changes: [
