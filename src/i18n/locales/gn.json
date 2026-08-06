@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1691,7 +1693,8 @@
     "generateToken": "Emoheñói jekepyty pyahu",
     "logout": "Esẽ",
     "deleteDataDescription": "Eipuruséramo nde derécho ARSO, ikatu emboguete opa nde marandu.",
-    "deleteInvitation": "Emboguete che ñepepyrũ ha opa che marandu"
+    "deleteInvitation": "Emboguete che ñepepyrũ ha opa che marandu",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Pytyvõ",
@@ -1752,12 +1755,12 @@
   },
   "cookie": {
     "title": "Kookie moneĩ",
-    "text": "Wedingo oipuru ñongatuha tee ojeikotevẽva ñepepyrũ omba'apo haguã (ñongatu ne rembiapo ha poravopyre). Ndoiporúi kookie mbohapyha pegua térã hapykuehohára.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Moneĩ",
     "reject": "Mbotove",
     "configure": "Ñemyatyrõ",
     "necessary": "Ñongatuha ojeikotevẽva",
-    "analytics": "Jehecha estadístika",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Ñongatu poravopyre",
     "settingsTitle": "Ñemyatyrõ kookie"
   },
@@ -1766,7 +1769,7 @@
     "sectionTerms": "Jepuru Ñepyrũmby",
     "sectionLegal": "Léi Marandu",
     "modalTitle": "Marandu léi rehegua",
-    "privacyPolicy": "Tratamiento motenondehára: Adrián Carrasco López. Ñe'ẽha: adriancl2001@gmail.com. Jepuru: menda ñepepyrũ ñangareko, jeju moañete ha tembiapo marandu.\n\nLéi pyenda: interesádo moneĩ (art. 6.1.a GDPR). Tesãi marandu (tembi'u allergiakuéra ha jejoko) oñetrata moneĩ hekopete (art. 9.2.a GDPR) oñemyatyrõ haguã arete tembi'u.\n\nMarandu oñembyaty: téra, tembi'u poravopyre (allergiakuéra ha jejoko), ta'ãnga ojehupi potávape, vanko marandu oñeme'ẽ potávape.\n\nOhupytýva: Google LLC (Firebase, Google Cloud Platform) oikóva EE.UU.-pe. Google omoañete Cláusula Contractuales Tipo (SCC) omoneĩva Comisión Europea (Decisión de Ejecución 2021/914) ha oguereko Data Processing Agreement (DPA) art. 28 GDPR rehe. Avei, Google oñemoañete Data Privacy Framework (DPF) UE-EE.UU., UK-EE.UU. ha Suiza-EE.UU. ndive, certificación omoañetéva nivel de protección adecuado internacional marandu ñembohasápe.\n\nÑembohasa internacional: marandu oñeñongatu servidor Google Cloud región eur3 (Europa, Frankfurt). Oñekotevẽvo oñembohasa marandu EE.UU.-pe, ñembohasa oñemopyenda SCC ha DPF certificación Google rehe.\n\nÑongaturã ára: marandu oñepepyrũvakuéra mba'éva oñeñongatu 12 jasy arete rire. Upe ára rire, oñemboguetéta ijehegui. Marandu moheñoihára ñemyatyrõ rehegua oñeñongatu cuenta oikovove.\n\nDerécho: ikatu reipuru nde derécho acceso, rectificación, supresión, limitación, portabilidad ha oposición rehegua ehai vove adriancl2001@gmail.com-pe. Oñepepyrũvakuéra ikatu ojerure imarandu ñemboguete omombe'úvo héra ha ñepepyrũ. Rombohováita nde jerure 30 ára pukukue.\n\nDerécho moneĩ jeipe'a: ikatu reipe'a nde moneĩ arakuaa'ỹre ehai vove adriancl2001@gmail.com-pe. Moneĩ jeipe'a ndojokói léi legalidad tratamiento ojejapova'ekue moneĩ guýpe.\n\nQueja: eimo'ãramo nde derécho oñepyrũmba, ikatu reñe'ẽ Autoridad de Protección de Datos nde tetãme térã Junta Europea de Protección de Datos (EDPB) ndive.\n\nMitã protección: ore servicio ndojeporúi 14 ary mboyvépe. Marandu mitã rehegua ojehecháramo oñembyatyha, pya'ete romboguetéta.",
+    "privacyPolicy": "Tratamiento motenondehára: Adrián Carrasco López. Ñe'ẽha: adriancl2001@gmail.com. Jepuru: menda ñepepyrũ ñangareko, jeju moañete ha tembiapo marandu.\n\nLéi pyenda: interesádo moneĩ (art. 6.1.a GDPR). Tesãi marandu (tembi'u allergiakuéra ha jejoko) oñetrata moneĩ hekopete (art. 9.2.a GDPR) oñemyatyrõ haguã arete tembi'u.\n\nMarandu oñembyaty: téra, tembi'u poravopyre (allergiakuéra ha jejoko), ta'ãnga ojehupi potávape, vanko marandu oñeme'ẽ potávape.\n\nOhupytýva: Google LLC (Firebase, Google Cloud Platform) oikóva EE.UU.-pe. Google omoañete Cláusula Contractuales Tipo (SCC) omoneĩva Comisión Europea (Decisión de Ejecución 2021/914) ha oguereko Data Processing Agreement (DPA) art. 28 GDPR rehe. Avei, Google oñemoañete Data Privacy Framework (DPF) UE-EE.UU., UK-EE.UU. ha Suiza-EE.UU. ndive, certificación omoañetéva nivel de protección adecuado internacional marandu ñembohasápe.\n\nÑembohasa internacional: marandu oñeñongatu servidor Google Cloud región eur3 (Europa, Frankfurt). Oñekotevẽvo oñembohasa marandu EE.UU.-pe, ñembohasa oñemopyenda SCC ha DPF certificación Google rehe.\n\nÑongaturã ára: marandu oñepepyrũvakuéra mba'éva oñeñongatu 12 jasy arete rire. Upe ára rire, oñemboguetéta ijehegui. Marandu moheñoihára ñemyatyrõ rehegua oñeñongatu cuenta oikovove.\n\nDerécho: ikatu reipuru nde derécho acceso, rectificación, supresión, limitación, portabilidad ha oposición rehegua ehai vove adriancl2001@gmail.com-pe. Oñepepyrũvakuéra ikatu ojerure imarandu ñemboguete omombe'úvo héra ha ñepepyrũ. Rombohováita nde jerure 30 ára pukukue.\n\nDerécho moneĩ jeipe'a: ikatu reipe'a nde moneĩ arakuaa'ỹre ehai vove adriancl2001@gmail.com-pe. Moneĩ jeipe'a ndojokói léi legalidad tratamiento ojejapova'ekue moneĩ guýpe.\n\nQueja: eimo'ãramo nde derécho oñepyrũmba, ikatu reñe'ẽ Autoridad de Protección de Datos nde tetãme térã Junta Europea de Protección de Datos (EDPB) ndive.\n\nMitã protección: ore servicio ndojeporúi 14 ary mboyvépe. Marandu mitã rehegua ojehecháramo oñembyatyha, pya'ete romboguetéta.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingo jepuru ogueraha ko'ã ñepyrũmby moneĩ. Wedingo peteĩ plataforma menda ñepepyrũ moheñói ha ñangarekorã.\n\nPuruhára oñekompromete ndojeporu mo'ãiha plataforma mba'e léi'ỹvape térã contenido ofensivo omyasãi haguã.\n\nWedingo ndojerresponsabilizái contenido puruhára omoheñóiva térã uso oñepepyrũvakuéra ojapóva imarandu ndive.\n\nRoguereko derécho romoambue haguã ko'ã ñepyrũmby. Moambuepyre ojekuaaukáta plataforma rupive.\n\nUmi oikóva California-pe g̃uarã: oñeconflictávove ñepyrũmby ha CCPA, oñemotenondéta derécho CCPA ome'ẽva.",
     "legalText": "Oñekumplívove artículo 10 Ley 34/2002, 11 jasypokõi, Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), ojekuaauka:\n\nMotenondehára: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nSitio web jepuru: plataforma menda ñepepyrũ personalizada.\n\nKo sitio web oipuru Firebase (Google LLC) infraestructura hosting ha ñongatuha ramo, servidor Unión Europea-pe oĩva."
   },
@@ -3780,7 +3783,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5458,5 +5462,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

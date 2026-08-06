@@ -1409,7 +1409,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1606,7 +1608,8 @@
     "generateToken": "Generează cod nou",
     "logout": "Deconectare",
     "deleteDataDescription": "Dacă dorești să îți exerciți drepturile ARSO, poți șterge toate datele tale.",
-    "deleteInvitation": "Șterge invitația mea și toate datele mele"
+    "deleteInvitation": "Șterge invitația mea și toate datele mele",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Suport",
@@ -1667,7 +1670,7 @@
   },
   "cookie": {
     "title": "Consimțământ cookie-uri",
-    "text": "Wedingo utilizează stocare locală necesară pentru funcționarea invitației (salvarea sesiunii și preferințelor tale). Nu folosim cookie-uri de la terți sau trackere.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": [
       "Accepta",
       "Accept",
@@ -1678,7 +1681,7 @@
     "reject": "Refuz",
     "configure": "Configurează",
     "necessary": "Stocare necesară",
-    "analytics": "Statistici de vizitare",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Salvează preferințele",
     "settingsTitle": "Configurează cookie-urile"
   },
@@ -1687,7 +1690,7 @@
     "sectionTerms": "Termeni de utilizare",
     "sectionLegal": "Aviz legal",
     "modalTitle": "Informații legale",
-    "privacyPolicy": "Operator de date: Adrián Carrasco López. Contact: adriancl2001@gmail.com. Scop: gestionarea invitațiilor de nuntă, confirmarea participării și comunicarea evenimentelor.\n\nTemei legal: consimțământul persoanei vizate (art. 6.1.a GDPR). Datele de sănătate (alergii și intoleranțe alimentare) sunt prelucrate cu consimțământ explicit (art. 9.2.a GDPR) pentru adaptarea meniului ceremoniei.\n\nDate colectate: nume, preferințe alimentare (alergii și intoleranțe), imagini încărcate voluntar, date bancare dacă sunt furnizate voluntar.\n\nDestinatari: Google LLC (Firebase, Google Cloud Platform) cu sediul în SUA. Google a semnat Clauzele Contractuale Standard (SCC) aprobate de Comisia Europeană (Decizia de punere în aplicare 2021/914) și dispune de un Acord de prelucrare a datelor (DPA) conform art. 28 GDPR. În plus, Google respectă Data Privacy Framework (DPF) UE-SUA, Regatul Unit-SUA și Elveția-SUA, certificare care garantează un nivel adecvat de protecție pentru transferurile internaționale de date.\n\nTransferuri internaționale: datele sunt stocate pe servere Google Cloud în regiunea eur3 (Europa, Frankfurt). Când este necesar transferul de date către SUA, transferul este acoperit de SCC și de certificarea DPF a Google.\n\nPerioada de păstrare: datele invitaților sunt păstrate până la 12 luni după data evenimentului. După această perioadă, vor fi șterse automat. Datele de configurare ale creatorului sunt păstrate atâta timp cât contul este activ.\n\nDrepturi: îți poți exercita drepturile de acces, rectificare, ștergere, limitare, portabilitate și opoziție scriind la adriancl2001@gmail.com. Invitații pot solicita ștergerea datelor lor indicând numele și invitația. Vom răspunde solicitării tale în termen de maximum 30 de zile.\n\nDreptul de a retrage consimțământul: îți poți retrage consimțământul în orice moment scriind la adriancl2001@gmail.com, fără a afecta legalitatea prelucrării bazate pe consimțământ înainte de retragerea acestuia.",
+    "privacyPolicy": "Operator de date: Adrián Carrasco López. Contact: adriancl2001@gmail.com. Scop: gestionarea invitațiilor de nuntă, confirmarea participării și comunicarea evenimentelor.\n\nTemei legal: consimțământul persoanei vizate (art. 6.1.a GDPR). Datele de sănătate (alergii și intoleranțe alimentare) sunt prelucrate cu consimțământ explicit (art. 9.2.a GDPR) pentru adaptarea meniului ceremoniei.\n\nDate colectate: nume, preferințe alimentare (alergii și intoleranțe), imagini încărcate voluntar, date bancare dacă sunt furnizate voluntar.\n\nDestinatari: Google LLC (Firebase, Google Cloud Platform) cu sediul în SUA. Google a semnat Clauzele Contractuale Standard (SCC) aprobate de Comisia Europeană (Decizia de punere în aplicare 2021/914) și dispune de un Acord de prelucrare a datelor (DPA) conform art. 28 GDPR. În plus, Google respectă Data Privacy Framework (DPF) UE-SUA, Regatul Unit-SUA și Elveția-SUA, certificare care garantează un nivel adecvat de protecție pentru transferurile internaționale de date.\n\nTransferuri internaționale: datele sunt stocate pe servere Google Cloud în regiunea eur3 (Europa, Frankfurt). Când este necesar transferul de date către SUA, transferul este acoperit de SCC și de certificarea DPF a Google.\n\nPerioada de păstrare: datele invitaților sunt păstrate până la 12 luni după data evenimentului. După această perioadă, vor fi șterse automat. Datele de configurare ale creatorului sunt păstrate atâta timp cât contul este activ.\n\nDrepturi: îți poți exercita drepturile de acces, rectificare, ștergere, limitare, portabilitate și opoziție scriind la adriancl2001@gmail.com. Invitații pot solicita ștergerea datelor lor indicând numele și invitația. Vom răspunde solicitării tale în termen de maximum 30 de zile.\n\nDreptul de a retrage consimțământul: îți poți retrage consimțământul în orice moment scriind la adriancl2001@gmail.com, fără a afecta legalitatea prelucrării bazate pe consimțământ înainte de retragerea acestuia.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Utilizarea Wedingo implică acceptarea acestor termeni. Wedingo este o platformă pentru crearea și gestionarea invitațiilor de nuntă.\n\nUtilizatorul se angajează să nu utilizeze platforma în scopuri ilicite sau pentru a trimite conținut ofensator.\n\nWedingo nu este responsabilă pentru conținutul generat de utilizatori sau pentru utilizarea pe care invitații o fac datelor lor personale.\n\nNe rezervăm dreptul de a modifica acești termeni. Modificările vor fi notificate prin intermediul platformei.\n\nPentru rezidenții din California: în caz de conflict între acești termeni și CCPA, vor prevala drepturile acordate de CCPA.",
     "legalText": "În conformitate cu articolul 10 din Legea spaniolă 34/2002 din 11 iulie privind serviciile societății informaționale și comerțul electronic (LSSI-CE), se informează:\n\nOperator: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nScopul site-ului web: platformă de invitații de nuntă personalizate.\n\nAcest site web utilizează Firebase (Google LLC) ca infrastructură de găzduire și stocare, cu servere în Uniunea Europeană."
   },
@@ -3481,7 +3484,8 @@
   },
   "changelog": {
     "title": "Jurnal modificări",
-    "close": "Închide"
+    "close": "Închide",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -4797,5 +4801,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

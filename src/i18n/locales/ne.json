@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1691,7 +1693,8 @@
     "generateToken": "नयाँ कोड उत्पन्न गर्नुहोस्",
     "logout": "लगआउट",
     "deleteDataDescription": "यदि ARSO अधिकार प्रयोग गर्न चाहनुहुन्छ भने, सबै डेटा मेटाउन सक्नुहुन्छ।",
-    "deleteInvitation": "मेरो निमन्त्रणा र सबै डेटा मेटाउनुहोस्"
+    "deleteInvitation": "मेरो निमन्त्रणा र सबै डेटा मेटाउनुहोस्",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "सहायता",
@@ -1733,12 +1736,12 @@
   },
   "cookie": {
     "title": "कुकी सहमति",
-    "text": "Wedingo निमन्त्रणा सञ्चालनको लागि आवश्यक स्थानीय भण्डारण प्रयोग गर्दछ (सत्र र प्राथमिकता सुरक्षित)। हामी तेस्रो-पक्ष कुकी वा ट्र्याकर प्रयोग गर्दैनौं।",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "स्वीकार गर्नुहोस्",
     "reject": "अस्वीकार गर्नुहोस्",
     "configure": "कन्फिगर गर्नुहोस्",
     "necessary": "आवश्यक भण्डारण",
-    "analytics": "भ्रमण तथ्याङ्क",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "प्राथमिकता सुरक्षित गर्नुहोस्",
     "settingsTitle": "कुकी कन्फिगर गर्नुहोस्"
   },
@@ -1747,7 +1750,7 @@
     "sectionTerms": "प्रयोग सर्तहरू",
     "sectionLegal": "कानूनी सूचना",
     "modalTitle": "कानूनी जानकारी",
-    "privacyPolicy": "प्रशोधन जिम्मेवार: Adrián Carrasco López। सम्पर्क: adriancl2001@gmail.com। उद्देश्य: विवाह निमन्त्रणा व्यवस्थापन, उपस्थिति पुष्टि र कार्यक्रम सञ्चार।\n\nकानूनी आधार: डेटा विषयको सहमति (GDPR को धारा ६.१.a)। स्वास्थ्य डेटा (खाद्य एलर्जी र असहिष्णुता) उत्सव मेनु अनुकूलन गर्न स्पष्ट सहमति (धारा ९.२.a GDPR) साथ प्रशोधन गरिन्छ।\n\nसङ्कलित डेटा: नाम, आहार प्राथमिकता (एलर्जी र असहिष्णुता), स्वैच्छिक रूपमा अपलोड गरिएका तस्वीरहरू, स्वैच्छिक रूपमा प्रदान गरिएमा बैंक डेटा।\n\nप्राप्तकर्ता: Google LLC (Firebase, Google Cloud Platform) जसको मुख्यालय USA मा छ। Google ले युरोपेली आयोगद्वारा अनुमोदित मानक सङ्घीय खण्डहरू (SCC) हस्ताक्षर गरेको छ (कार्यान्वयन निर्णय २०२१/९१४) र GDPR को धारा २८ अनुसार डेटा प्रशोधन सम्झौता (DPA) राखेको छ। साथै, Google EU-US, UK-US र Switzerland-US डेटा गोपनीयता ढाँचा (DPF) को पालना गर्दछ, जसले अन्तर्राष्ट्रिय डेटा स्थानान्तरणको लागि पर्याप्त सुरक्षा स्तरको ग्यारेन्टी दिन्छ।\n\nअन्तर्राष्ट्रिय स्थानान्तरण: डेटा Google Cloud को eur3 क्षेत्र (युरोप, फ्रान्कफर्ट) मा सर्भरहरूमा भण्डारण गरिन्छ। USA मा डेटा स्थानान्तरण आवश्यक पर्दा, स्थानान्तरण SCC र Google को DPF प्रमाणीकरणद्वारा सुरक्षित हुन्छ।\n\nभण्डारण अवधि: पाहुना डेटा कार्यक्रम मिति पछि १२ महिनासम्म भण्डारण गरिन्छ। त्यसपछि स्वचालित रूपमा मेटिनेछ। सिर्जनाकर्ताको कन्फिगरेसन डेटा खाता सक्रिय रहँदासम्म भण्डारण गरिन्छ।\n\nअधिकार: तपाईं adriancl2001@gmail.com मा लेखेर पहुँच, सुधार, मेटाइ, सीमितता, पोर्टेबिलिटी र विरोधको अधिकार प्रयोग गर्न सक्नुहुन्छ। पाहुनाहरूले आफ्नो नाम र निमन्त्रणा उल्लेख गरी डेटा मेटाइ अनुरोध गर्न सक्छन्। हामी अधिकतम ३० दिन भित्र जवाफ दिनेछौं।\n\nसहमति फिर्ता लिने अधिकार: तपाईं कुनै पनि समय सहमति फिर्ता लिन सक्नुहुन्छ, जसले फिर्ता अघिको प्रशोधनको वैधतालाई असर गर्दैन।",
+    "privacyPolicy": "प्रशोधन जिम्मेवार: Adrián Carrasco López। सम्पर्क: adriancl2001@gmail.com। उद्देश्य: विवाह निमन्त्रणा व्यवस्थापन, उपस्थिति पुष्टि र कार्यक्रम सञ्चार।\n\nकानूनी आधार: डेटा विषयको सहमति (GDPR को धारा ६.१.a)। स्वास्थ्य डेटा (खाद्य एलर्जी र असहिष्णुता) उत्सव मेनु अनुकूलन गर्न स्पष्ट सहमति (धारा ९.२.a GDPR) साथ प्रशोधन गरिन्छ।\n\nसङ्कलित डेटा: नाम, आहार प्राथमिकता (एलर्जी र असहिष्णुता), स्वैच्छिक रूपमा अपलोड गरिएका तस्वीरहरू, स्वैच्छिक रूपमा प्रदान गरिएमा बैंक डेटा।\n\nप्राप्तकर्ता: Google LLC (Firebase, Google Cloud Platform) जसको मुख्यालय USA मा छ। Google ले युरोपेली आयोगद्वारा अनुमोदित मानक सङ्घीय खण्डहरू (SCC) हस्ताक्षर गरेको छ (कार्यान्वयन निर्णय २०२१/९१४) र GDPR को धारा २८ अनुसार डेटा प्रशोधन सम्झौता (DPA) राखेको छ। साथै, Google EU-US, UK-US र Switzerland-US डेटा गोपनीयता ढाँचा (DPF) को पालना गर्दछ, जसले अन्तर्राष्ट्रिय डेटा स्थानान्तरणको लागि पर्याप्त सुरक्षा स्तरको ग्यारेन्टी दिन्छ।\n\nअन्तर्राष्ट्रिय स्थानान्तरण: डेटा Google Cloud को eur3 क्षेत्र (युरोप, फ्रान्कफर्ट) मा सर्भरहरूमा भण्डारण गरिन्छ। USA मा डेटा स्थानान्तरण आवश्यक पर्दा, स्थानान्तरण SCC र Google को DPF प्रमाणीकरणद्वारा सुरक्षित हुन्छ।\n\nभण्डारण अवधि: पाहुना डेटा कार्यक्रम मिति पछि १२ महिनासम्म भण्डारण गरिन्छ। त्यसपछि स्वचालित रूपमा मेटिनेछ। सिर्जनाकर्ताको कन्फिगरेसन डेटा खाता सक्रिय रहँदासम्म भण्डारण गरिन्छ।\n\nअधिकार: तपाईं adriancl2001@gmail.com मा लेखेर पहुँच, सुधार, मेटाइ, सीमितता, पोर्टेबिलिटी र विरोधको अधिकार प्रयोग गर्न सक्नुहुन्छ। पाहुनाहरूले आफ्नो नाम र निमन्त्रणा उल्लेख गरी डेटा मेटाइ अनुरोध गर्न सक्छन्। हामी अधिकतम ३० दिन भित्र जवाफ दिनेछौं।\n\nसहमति फिर्ता लिने अधिकार: तपाईं कुनै पनि समय सहमति फिर्ता लिन सक्नुहुन्छ, जसले फिर्ता अघिको प्रशोधनको वैधतालाई असर गर्दैन।\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingo को प्रयोगले यी सर्तहरू स्वीकार गरेको जनाउँछ। Wedingo विवाह निमन्त्रणा बनाउन र व्यवस्थापन गर्ने प्लेटफर्म हो।\n\nप्रयोगकर्ताले प्लेटफर्मलाई गैरकानूनी उद्देश्य वा आपत्तिजनक सामग्री पठाउन प्रयोग नगर्ने प्रतिबद्धता जनाउँछ।\n\nWedingo प्रयोगकर्ताद्वारा उत्पन्न सामग्री वा पाहुनाहरूले व्यक्तिगत डेटाको प्रयोगको लागि जिम्मेवार छैन।\n\nहामी यी सर्तहरू परिमार्जन गर्ने अधिकार सुरक्षित राख्दछौं। परिवर्तन प्लेटफर्म मार्फत सूचित गरिनेछ।\n\nक्यालिफोर्नियाका बासिन्दाहरूको लागि: यी सर्तहरू र CCPA बीच द्वन्द्व भएमा, CCPA द्वारा प्रदत्त अधिकार प्रबल हुनेछ।",
     "legalText": "सूचना समाज सेवा र इलेक्ट्रोनिक वाणिज्य सम्बन्धी जुलाई ११ को कानून ३४/२००२ (LSSI-CE) को धारा १० को अनुपालनमा, सूचित गरिन्छ:\n\nजिम्मेवार: Adrián Carrasco López\nइमेल: adriancl2001@gmail.com\nवेबसाइटको उद्देश्य: व्यक्तिगत विवाह निमन्त्रणा प्लेटफर्म।\n\nयो वेबसाइटले Firebase (Google LLC) लाई होस्टिङ र भण्डारण पूर्वाधारको रूपमा प्रयोग गर्दछ, जसका सर्भरहरू युरोपेली संघमा छन्।"
   },
@@ -3647,7 +3650,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5325,5 +5329,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

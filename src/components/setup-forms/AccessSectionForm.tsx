@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
+import { useToast } from "../../hooks/useToast";
 
 interface AccessSectionFormProps {
   prefix?: string;
@@ -13,11 +14,23 @@ interface AccessSectionFormProps {
 export default function AccessSectionForm({ prefix = "", tokenAcknowledged = false, onTokenAcknowledge }: AccessSectionFormProps) {
   const { formData, updateFormField, setupToken, hasStoredConfig } = useApp();
   const { t } = useTranslation();
+  const { addToast } = useToast();
 
   const id = (name: string) => `${prefix}${name}`;
 
   /** Muestra/oculta el token en el input de tipo password. */
   const [showToken, setShowToken] = useState(false);
+
+  /** Copia el token de acceso al portapapeles con feedback. */
+  const handleCopyToken = async () => {
+    if (!setupToken) return;
+    try {
+      await navigator.clipboard.writeText(setupToken);
+      addToast("success", t("common.copied"));
+    } catch {
+      addToast("error", t("errors.clipboardCopyFailed"));
+    }
+  };
 
   return (
     <>
@@ -71,9 +84,23 @@ export default function AccessSectionForm({ prefix = "", tokenAcknowledged = fal
             >
               {showToken ? t("setup.hideToken") : t("setup.showToken")}
             </button>
+            <button
+              type="button"
+              className="setup-button setup-button--compact"
+              onClick={handleCopyToken}
+              aria-label={t("setup.copyToken")}
+              title={t("setup.copyToken")}
+              style={{ flexShrink: 0 }}
+            >
+              {t("common.copy")}
+            </button>
           </div>
           <p className="setup-help" id="setupTokenHint">
             {t("setup.tokenFieldHint")}
+          </p>
+          {/* Aviso de acceso único: el token es irrecuperable si se pierde. */}
+          <p className="setup-help" style={{ color: "var(--setup-accent)", marginTop: "0.35rem" }}>
+            {t("setup.tokenSoleAccess")}
           </p>
           {onTokenAcknowledge ? (
             <label className="setup-checkbox-label" htmlFor={id("setupTokenAcknowledged")}>

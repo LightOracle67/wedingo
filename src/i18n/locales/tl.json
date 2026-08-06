@@ -1658,7 +1658,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1919,7 +1921,8 @@
     "generateToken": "Bumuo ng bagong code",
     "logout": "Mag-log out",
     "deleteDataDescription": "Kung nais mong gamitin ang iyong mga karapatan sa ARSO, maaari mong tanggalin ang lahat ng iyong datos.",
-    "deleteInvitation": "Tanggalin ang aking imbitasyon at lahat ng aking datos"
+    "deleteInvitation": "Tanggalin ang aking imbitasyon at lahat ng aking datos",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Suporta",
@@ -1980,12 +1983,12 @@
   },
   "cookie": {
     "title": "Pahintulot sa cookies",
-    "text": "Gumagamit ang Wedingo ng kinakailangang lokal na imbakan para sa pagpapatakbo ng imbitasyon (i-save ang iyong sesyon at mga kagustuhan). Hindi kami gumagamit ng third-party cookies o tracker.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Tanggapin",
     "reject": "Tanggihan",
     "configure": "I-configure",
     "necessary": "Kinakailangang imbakan",
-    "analytics": "Estadistika ng pagbisita",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "I-save ang mga kagustuhan",
     "settingsTitle": "I-configure ang cookies"
   },
@@ -1994,7 +1997,7 @@
     "sectionTerms": "Mga Tuntunin ng Paggamit",
     "sectionLegal": "Legal na Paunawa",
     "modalTitle": "Legal na impormasyon",
-    "privacyPolicy": "Responsable sa pagpoproseso: Adrián Carrasco López. Kontak: adriancl2001@gmail.com. Layunin: pamamahala ng mga imbitasyon sa kasal, kumpirmasyon ng pagdalo, at komunikasyon ng kaganapan.\n\nLegal na batayan: pahintulot ng interesado (Art. 6.1.a GDPR). Ang datos pangkalusugan (alerdyi at intoleransya sa pagkain) ay pinoproseso nang may hayagang pahintulot (Art. 9.2.a GDPR) upang maiangkop ang menu ng pagdiriwang.\n\nNakolektang datos: pangalan, kagustuhan sa pagkain (alerdyi at intoleransya), kusang-loob na na-upload na larawan, datos ng bangko kung kusang-loob na ibinigay.\n\nMga tatanggap: Google LLC (Firebase, Google Cloud Platform) na nakabase sa US. Nilagdaan ng Google ang Standard Contractual Clauses (SCC) na inaprubahan ng European Commission (Implementing Decision 2021/914) at may Data Processing Agreement (DPA) alinsunod sa Art. 28 GDPR. Bukod dito, sumusunod ang Google sa Data Privacy Framework (DPF) EU-US, UK-US, at Switzerland-US, sertipikasyong nagtitiyak ng sapat na antas ng proteksyon para sa mga internasyonal na paglilipat ng datos.\n\nMga internasyonal na paglilipat: iniimbak ang datos sa mga server ng Google Cloud sa rehiyong eur3 (Europa, Frankfurt). Kapag kinakailangang ilipat ang datos sa US, ang paglilipat ay pinoprotektahan ng SCC at ng sertipikasyon ng DPF ng Google.\n\nPanahon ng pag-iingat: iniingatan ang datos ng mga bisita hanggang 12 buwan pagkatapos ng petsa ng kaganapan. Pagkalipas ng panahong iyon, awtomatiko itong tatanggalin. Iniingatan ang datos ng pagsasaayos ng lumikha habang aktibo ang account.\n\nMga karapatan: maaari mong gamitin ang iyong mga karapatan sa pag-access, pagwawasto, pagbura, paglilimita, portabilidad, at pagtutol sa pamamagitan ng pagsulat sa adriancl2001@gmail.com. Maaaring humiling ang mga bisita ng pagbura ng kanilang datos sa pamamagitan ng pagsasabi ng kanilang pangalan at imbitasyon. Tutugon kami sa iyong kahilingan sa loob ng maximum na 30 araw.\n\nKarapatang bawiin ang pahintulot: maaari mong bawiin ang iyong pahintulot anumang oras nang hindi naaapektuhan ang legalidad ng pagpoproseso batay sa pahintulot bago ang pagbawi nito.\n\nReklamo: kung sa tingin mo ay nilabag ang iyong mga karapatan, maaari kang maghain ng reklamo sa awtoridad sa pangangasiwa (AEPD sa Espanya).\n\nMinimum na edad: ang platform na ito ay hindi nakatuon sa mga batang wala pang 14 taong gulang nang walang pahintulot ng magulang.",
+    "privacyPolicy": "Responsable sa pagpoproseso: Adrián Carrasco López. Kontak: adriancl2001@gmail.com. Layunin: pamamahala ng mga imbitasyon sa kasal, kumpirmasyon ng pagdalo, at komunikasyon ng kaganapan.\n\nLegal na batayan: pahintulot ng interesado (Art. 6.1.a GDPR). Ang datos pangkalusugan (alerdyi at intoleransya sa pagkain) ay pinoproseso nang may hayagang pahintulot (Art. 9.2.a GDPR) upang maiangkop ang menu ng pagdiriwang.\n\nNakolektang datos: pangalan, kagustuhan sa pagkain (alerdyi at intoleransya), kusang-loob na na-upload na larawan, datos ng bangko kung kusang-loob na ibinigay.\n\nMga tatanggap: Google LLC (Firebase, Google Cloud Platform) na nakabase sa US. Nilagdaan ng Google ang Standard Contractual Clauses (SCC) na inaprubahan ng European Commission (Implementing Decision 2021/914) at may Data Processing Agreement (DPA) alinsunod sa Art. 28 GDPR. Bukod dito, sumusunod ang Google sa Data Privacy Framework (DPF) EU-US, UK-US, at Switzerland-US, sertipikasyong nagtitiyak ng sapat na antas ng proteksyon para sa mga internasyonal na paglilipat ng datos.\n\nMga internasyonal na paglilipat: iniimbak ang datos sa mga server ng Google Cloud sa rehiyong eur3 (Europa, Frankfurt). Kapag kinakailangang ilipat ang datos sa US, ang paglilipat ay pinoprotektahan ng SCC at ng sertipikasyon ng DPF ng Google.\n\nPanahon ng pag-iingat: iniingatan ang datos ng mga bisita hanggang 12 buwan pagkatapos ng petsa ng kaganapan. Pagkalipas ng panahong iyon, awtomatiko itong tatanggalin. Iniingatan ang datos ng pagsasaayos ng lumikha habang aktibo ang account.\n\nMga karapatan: maaari mong gamitin ang iyong mga karapatan sa pag-access, pagwawasto, pagbura, paglilimita, portabilidad, at pagtutol sa pamamagitan ng pagsulat sa adriancl2001@gmail.com. Maaaring humiling ang mga bisita ng pagbura ng kanilang datos sa pamamagitan ng pagsasabi ng kanilang pangalan at imbitasyon. Tutugon kami sa iyong kahilingan sa loob ng maximum na 30 araw.\n\nKarapatang bawiin ang pahintulot: maaari mong bawiin ang iyong pahintulot anumang oras nang hindi naaapektuhan ang legalidad ng pagpoproseso batay sa pahintulot bago ang pagbawi nito.\n\nReklamo: kung sa tingin mo ay nilabag ang iyong mga karapatan, maaari kang maghain ng reklamo sa awtoridad sa pangangasiwa (AEPD sa Espanya).\n\nMinimum na edad: ang platform na ito ay hindi nakatuon sa mga batang wala pang 14 taong gulang nang walang pahintulot ng magulang.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Ang paggamit ng Wedingo ay nagpapahiwatig ng pagtanggap sa mga tuntuning ito. Ang Wedingo ay isang platform para sa paglikha at pamamahala ng mga imbitasyon sa kasal.\n\nNangangako ang user na hindi gagamitin ang platform para sa ilegal na layunin o magpadala ng nakakasakit na nilalaman.\n\nHindi responsable ang Wedingo sa nilalamang likha ng mga user o sa paggamit ng mga bisita sa kanilang personal na datos.\n\nInilalaan namin ang karapatang baguhin ang mga tuntuning ito. Ipapaalam ang mga pagbabago sa pamamagitan ng platform.\n\nPara sa mga residente ng California: kung may salungatan sa pagitan ng mga tuntuning ito at ng CCPA, mananaig ang mga karapatang ibinibigay ng CCPA.",
     "legalText": "Bilang pagsunod sa Artikulo 10 ng Batas 34/2002, ng Hulyo 11, tungkol sa Mga Serbisyo ng Lipunang Pang-impormasyon at Elektronikong Komersyo (LSSI-CE), ipinapaalam:\n\nResponsable: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nLayunin ng website: platform ng mga personal na imbitasyon sa kasal.\n\nGumagamit ang website na ito ng Firebase (Google LLC) bilang imprastraktura ng hosting at imbakan, na may mga server sa European Union."
   },
@@ -4122,7 +4125,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5800,5 +5804,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

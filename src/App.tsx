@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import { Routes, Route, Navigate, Link, useLocation } from "react-router";
+import { Routes, Route, Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { AppProvider } from "./contexts/AppContext";
 import { useApp } from "./contexts";
@@ -16,7 +16,7 @@ import { useFocusTrap, useEscapeKey } from "./hooks/useFocusTrap";
 const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ku", "ckb", "dv"]);
 const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
 import LegalModal from "./components/LegalModal";
-import ChangelogModal from "./components/ChangelogModal";
+const ChangelogModal = lazy(() => import("./components/ChangelogModal"));
 import Fireflies from "./components/Fireflies";
 import { APP_VERSION } from "./lib/constants";
 import { logError } from "./lib/error-utils";
@@ -32,6 +32,7 @@ const AdminPage = lazy(() => import("./pages/AdminPage"));
 const SuperAdminLogin = lazy(() => import("./pages/SuperAdminLogin"));
 const SuperAdminPanel = lazy(() => import("./pages/SuperAdminPanel"));
 const PrintPage = lazy(() => import("./pages/PrintPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function AppShell() {
 
@@ -231,7 +232,7 @@ function AppShell() {
           {SUPERADMIN_DASHBOARD && (
             <Route path={SUPERADMIN_DASHBOARD} element={<ErrorBoundary><SuperAdminPanel /></ErrorBoundary>} />
           )}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         </Suspense>
         <CookieConsent />

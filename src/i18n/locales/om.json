@@ -1429,7 +1429,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1671,7 +1673,8 @@
     "generateToken": "Koodii haaraa uumi",
     "logout": "Se$$ii cufi",
     "deleteDataDescription": "Mirga ARSO kee fayyadamuu yoo barbaadde, odeeffannoo kee hunda balleessuu dandeessa.",
-    "deleteInvitation": "Affeerraa fi odeeffannoo koo hunda balleessi"
+    "deleteInvitation": "Affeerraa fi odeeffannoo koo hunda balleessi",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Gargaarsa",
@@ -1713,12 +1716,12 @@
   },
   "cookie": {
     "title": "Eeyyama kuusaa",
-    "text": "Wedingo kuusaa naannoo barbaachisaa affeerraa dalaguuf fayyadama (se$$ii fi filannoo kee olkaa'uuf). Kuusaa sadaffaa ykn hordoftuu hin fayyadamnu.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Fudhadhu",
     "reject": "Gani",
     "configure": "Qindaa'i",
     "necessary": "Kuusaa barbaachisaa",
-    "analytics": "Istaatistiksii daawwii",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Filannoo olkaa'i",
     "settingsTitle": "Kuusaa qindaa'i"
   },
@@ -1727,7 +1730,7 @@
     "sectionTerms": "Haal-duree Fayyadamaa",
     "sectionLegal": "Beeksisa Seeraa",
     "modalTitle": "Odeeffannoo seeraa",
-    "privacyPolicy": "Itti gaafatamaa wabii: Adrián Carrasco López. Qunnamtii: adriancl2001@gmail.com. Kaayyoo: affeerraa cidhaa bulchuu, deebii mirkaneessuu fi taatee beeksisuu.\n\nBu'uura seeraa: eeyyama namichaa (Art. 6.1.a GDPR). Odeeffannoon fayyaa (adanyaa fi fudhachuu dhabuu nyaataa) eeyyama ifaan (Art. 9.2.a GDPR) menuu ayyaanaa cimsuuf fayyadama.\n\nOdeeffannoo walitti qabama: maqaa, filannoo nyaataa (adanyaa fi fudhachuu dhabuu), suuraa fedhiidhaan fe'aman, odeeffannoo baankii yoo fedhiidhaan kennaman.\n\nFudhattoota: Google LLC (Firebase, Google Cloud Platform) Ameerikaa keessatti argama. Googiliin Sakatta'a Dambii Qajeelfama (SCC) Yuurooppiyaan Komishiniin mirkanaa'e (Murtii Raawwii 2021/914) fi Waltajjii Adeemsa Odeeffannoo (DPA) Art. 28 GDPR waliin kan walii galu qabdi. Dabalataanis, Googiliin Goodayyaa Dhuunfaa Odeeffannoo (DPF) EU-US, UK-US fi Swiizerlaand-US waliin kan walii galtu yoo ta'u, kunis geejjiba idil-addunyaa odeeffannoo eegumsa gahaa mirkaneessa.\n\nGeejjiba idil-addunyaa: odeeffannoon kutaalee Google Cloud naannoo eur3 (Yuurooppi, Frankfurt) keessatti olkaa'ama. Odeeffannoon Ameerikaatti geejjibamu yoo barbaachise, geejjibni SCC fi DPF Googilii irratti hundaa'a.\n\nYeroo olkaa'umsaa: odeeffannoon geessitoota guyyaa taatee booda ji'a 12 olkaa'ama. Yeroon kun darbee booda, ofumaan balleeffama. Odeeffannoon qindaa'ina uumaa akkaawuntii dalaga ta'eetti olkaa'ama.\n\nMirgoolee: mirga ilaalchaa, sirreessuu, haquu, daangessuu, dadarbuu fi mormii adriancl2001@gmail.com barreessuudhaan fayyadamuu dandeessa. Geessitoootni maqaa fi affeerraa isaanii ibsuudhaan odeeffannoo isaanii balleessuu gaafachuu danda'u. Gaaffii kee guyyaa 30 keessatti deebifna.\n\nMirga eeyyama deebisuu: yeroo kamittuu eeyyama kee adriancl2001@gmail.com barreessuudhaan deebisuu dandeessa. Deebisuu kun eeyyama duraa fudhatamaa kan hin taane malee odeeffannoo eeyyama duraan ilaallate raawwii irratti dhiibbaa hin qabu.\n\nIyyannoo: mirgoolee kee sarbaman yoo feete, Bulchiinsa Eegumsa Odeeffannoo biyya kee ykn Yuurooppi Daayitaa Prootekshin Board (EDPB) qunnamuu dandeessa.\n\nDa'imman eegumsa: Tajaajilli keenya waggaa 14 gadiif hin kennamu. Odeeffannoon da'immanii osoo walitti qabamuu yoo hubanne, hatattamaan ni balleessina.",
+    "privacyPolicy": "Itti gaafatamaa wabii: Adrián Carrasco López. Qunnamtii: adriancl2001@gmail.com. Kaayyoo: affeerraa cidhaa bulchuu, deebii mirkaneessuu fi taatee beeksisuu.\n\nBu'uura seeraa: eeyyama namichaa (Art. 6.1.a GDPR). Odeeffannoon fayyaa (adanyaa fi fudhachuu dhabuu nyaataa) eeyyama ifaan (Art. 9.2.a GDPR) menuu ayyaanaa cimsuuf fayyadama.\n\nOdeeffannoo walitti qabama: maqaa, filannoo nyaataa (adanyaa fi fudhachuu dhabuu), suuraa fedhiidhaan fe'aman, odeeffannoo baankii yoo fedhiidhaan kennaman.\n\nFudhattoota: Google LLC (Firebase, Google Cloud Platform) Ameerikaa keessatti argama. Googiliin Sakatta'a Dambii Qajeelfama (SCC) Yuurooppiyaan Komishiniin mirkanaa'e (Murtii Raawwii 2021/914) fi Waltajjii Adeemsa Odeeffannoo (DPA) Art. 28 GDPR waliin kan walii galu qabdi. Dabalataanis, Googiliin Goodayyaa Dhuunfaa Odeeffannoo (DPF) EU-US, UK-US fi Swiizerlaand-US waliin kan walii galtu yoo ta'u, kunis geejjiba idil-addunyaa odeeffannoo eegumsa gahaa mirkaneessa.\n\nGeejjiba idil-addunyaa: odeeffannoon kutaalee Google Cloud naannoo eur3 (Yuurooppi, Frankfurt) keessatti olkaa'ama. Odeeffannoon Ameerikaatti geejjibamu yoo barbaachise, geejjibni SCC fi DPF Googilii irratti hundaa'a.\n\nYeroo olkaa'umsaa: odeeffannoon geessitoota guyyaa taatee booda ji'a 12 olkaa'ama. Yeroon kun darbee booda, ofumaan balleeffama. Odeeffannoon qindaa'ina uumaa akkaawuntii dalaga ta'eetti olkaa'ama.\n\nMirgoolee: mirga ilaalchaa, sirreessuu, haquu, daangessuu, dadarbuu fi mormii adriancl2001@gmail.com barreessuudhaan fayyadamuu dandeessa. Geessitoootni maqaa fi affeerraa isaanii ibsuudhaan odeeffannoo isaanii balleessuu gaafachuu danda'u. Gaaffii kee guyyaa 30 keessatti deebifna.\n\nMirga eeyyama deebisuu: yeroo kamittuu eeyyama kee adriancl2001@gmail.com barreessuudhaan deebisuu dandeessa. Deebisuu kun eeyyama duraa fudhatamaa kan hin taane malee odeeffannoo eeyyama duraan ilaallate raawwii irratti dhiibbaa hin qabu.\n\nIyyannoo: mirgoolee kee sarbaman yoo feete, Bulchiinsa Eegumsa Odeeffannoo biyya kee ykn Yuurooppi Daayitaa Prootekshin Board (EDPB) qunnamuu dandeessa.\n\nDa'imman eegumsa: Tajaajilli keenya waggaa 14 gadiif hin kennamu. Odeeffannoon da'immanii osoo walitti qabamuu yoo hubanne, hatattamaan ni balleessina.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingo fayyadamuu haal-duree kana fudhachuu of keessaa qaba. Wedingo affeerraa cidhaa uumuufi bulchuuf mala.\n\nFayyadamaan mala karaa seeraan alaa ykn qabiyyee miidhaa erguuf fayyadamuu akka hin qabne waliigala.\n\nWedingo qabiyyee fayyadamaa fi geessitoootni odeeffannoo mataa isaaniitiin raawwataniif itti gaafatamaa miti.\n\nHaal-duree kana jijjiiruuf mirga qabna. Jijjiiramoonni malaan beeksifamu.\n\nJiraattota Kaalifoorniyaatiif: yoo waldhabdeen haal-duree kana fi CCPA giddutti uumame, mirgoolee CCPA kennitu caalti.",
     "legalText": "Art. 10 Seera 34/2002, Adoolessa 11, Tajaajila Hawaasummaa Odeeffannoo fi Daldala Elektiroonikaa (LSSI-CE) guutuuf, beeksifama:\n\nItti gaafatamaa: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nKaayyoo weebsaayitii: mala affeerraa cidhaa mataa.\n\nWeebsaayitichi Firebase (Google LLC) akka bu'uura keessummeessuu fi olkaa'umsaatti fayyadama, serveroota Gamtaa Yuurooppi keessatti qaba."
   },
@@ -3573,7 +3576,8 @@
       null,
       null,
       10
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5056,5 +5060,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

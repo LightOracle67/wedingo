@@ -131,6 +131,17 @@ describe("LandingPage", () => {
     });
   });
 
+  it("shows a visible error when creating the invitation fails", async () => {
+    mockCreateSetupTokenRecord.mockRejectedValueOnce(new Error("boom"));
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.createInvitation"));
+    await vi.waitFor(() => {
+      expect(screen.getByText("landing.errorCreateFailed")).toBeDefined();
+    });
+    // El botón vuelve a estar habilitado tras el error.
+    expect(screen.getByText("landing.createInvitation")).toBeDefined();
+  });
+
   it("opens login modal when have invitation is clicked", () => {
     render(<LandingPage />);
     expect(screen.queryByText("landing.modalTitle")).toBeNull();

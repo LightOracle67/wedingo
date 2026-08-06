@@ -1378,7 +1378,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1575,7 +1577,8 @@
     "generateToken": "Yeni kod oluştur",
     "logout": "Çıkış yap",
     "deleteDataDescription": "ARSO haklarınızı kullanmak isterseniz, tüm verilerinizi silebilirsiniz.",
-    "deleteInvitation": "Davetiyemi ve tüm verilerimi sil"
+    "deleteInvitation": "Davetiyemi ve tüm verilerimi sil",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Destek",
@@ -1636,12 +1639,12 @@
   },
   "cookie": {
     "title": "Çerez onayı",
-    "text": "Wedingo, davetiyenin çalışması için gerekli yerel depolamayı kullanır (oturumunuzu ve tercihlerinizi kaydetme). Üçüncü taraf çerezleri veya izleyiciler kullanmayız.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Kabul et",
     "reject": "Reddet",
     "configure": "Yapılandır",
     "necessary": "Gerekli depolama",
-    "analytics": "Ziyaret istatistikleri",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Tercihleri kaydet",
     "settingsTitle": "Çerezleri yapılandır"
   },
@@ -1650,7 +1653,7 @@
     "sectionTerms": "Kullanım Şartları",
     "sectionLegal": "Yasal Uyarı",
     "modalTitle": "Yasal bilgi",
-    "privacyPolicy": "Veri sorumlusu: Adrián Carrasco López. İletişim: adriancl2001@gmail.com. Amaç: düğün davetiyesi yönetimi, katılım onayı ve etkinlik bildirimi.\n\nYasal dayanak: ilgili kişinin rızası (GDPR Mad. 6.1.a). Sağlık verileri (gıda alerjileri ve intoleransları) kutlama menüsünü uyarlamak için açık rıza ile işlenir (GDPR Mad. 9.2.a).\n\nToplanan veriler: isim, beslenme tercihleri (alerjiler ve intoleranslar), gönüllü olarak yüklenen görseller, gönüllü olarak verilirse banka bilgileri.\n\nAlıcılar: Google LLC (Firebase, Google Cloud Platform), ABD'de yerleşik. Google, Avrupa Komisyonu tarafından onaylanan Standart Sözleşme Maddelerini (SCC) imzalamıştır (Uygulama Kararı 2021/914) ve GDPR Mad. 28 uyarınca bir Veri İşleme Sözleşmesine (DPA) sahiptir. Ayrıca Google, uluslararası veri aktarımları için yeterli koruma seviyesini garanti eden AB-ABD, Birleşik Krallık-ABD ve İsviçre-ABD Veri Gizliliği Çerçevesi (DPF) sertifikasına uygundur.\n\nUluslararası aktarımlar: veriler, Avrupa, Frankfurt'taki eur3 bölgesinde Google Cloud sunucularında saklanır. ABD'ye veri aktarımı gerektiğinde, aktarım SCC ve Google'ın DPF sertifikasına dayanır.\n\nSaklama süresi: misafir verileri etkinlik tarihinden itibaren 12 aya kadar saklanır. Bu sürenin sonunda otomatik olarak silinir. Oluşturucunun yapılandırma verileri hesap aktif olduğu sürece saklanır.\n\nHaklar: adriancl2001@gmail.com adresine yazarak erişim, düzeltme, silme, kısıtlama, taşınabilirlik ve itiraz haklarınızı kullanabilirsiniz. Misafirler, isimlerini ve davetiyeyi belirterek verilerinin silinmesini talep edebilir. Talebinize en fazla 30 gün içinde yanıt vereceğiz.\n\nRızayı geri çekme hakkı: rızanızı istediğiniz zaman geri çekebilirsiniz. Geri çekme, geri çekmeden önceki işlemenin hukuka uygunluğunu etkilemez.\n\nDenetim makamı: haklarınızın ihlal edildiğini düşünüyorsanız, İspanya Veri Koruma Ajansı'na (AEPD) veya ülkenizdeki yetkili makama şikayette bulunabilirsiniz.",
+    "privacyPolicy": "Veri sorumlusu: Adrián Carrasco López. İletişim: adriancl2001@gmail.com. Amaç: düğün davetiyesi yönetimi, katılım onayı ve etkinlik bildirimi.\n\nYasal dayanak: ilgili kişinin rızası (GDPR Mad. 6.1.a). Sağlık verileri (gıda alerjileri ve intoleransları) kutlama menüsünü uyarlamak için açık rıza ile işlenir (GDPR Mad. 9.2.a).\n\nToplanan veriler: isim, beslenme tercihleri (alerjiler ve intoleranslar), gönüllü olarak yüklenen görseller, gönüllü olarak verilirse banka bilgileri.\n\nAlıcılar: Google LLC (Firebase, Google Cloud Platform), ABD'de yerleşik. Google, Avrupa Komisyonu tarafından onaylanan Standart Sözleşme Maddelerini (SCC) imzalamıştır (Uygulama Kararı 2021/914) ve GDPR Mad. 28 uyarınca bir Veri İşleme Sözleşmesine (DPA) sahiptir. Ayrıca Google, uluslararası veri aktarımları için yeterli koruma seviyesini garanti eden AB-ABD, Birleşik Krallık-ABD ve İsviçre-ABD Veri Gizliliği Çerçevesi (DPF) sertifikasına uygundur.\n\nUluslararası aktarımlar: veriler, Avrupa, Frankfurt'taki eur3 bölgesinde Google Cloud sunucularında saklanır. ABD'ye veri aktarımı gerektiğinde, aktarım SCC ve Google'ın DPF sertifikasına dayanır.\n\nSaklama süresi: misafir verileri etkinlik tarihinden itibaren 12 aya kadar saklanır. Bu sürenin sonunda otomatik olarak silinir. Oluşturucunun yapılandırma verileri hesap aktif olduğu sürece saklanır.\n\nHaklar: adriancl2001@gmail.com adresine yazarak erişim, düzeltme, silme, kısıtlama, taşınabilirlik ve itiraz haklarınızı kullanabilirsiniz. Misafirler, isimlerini ve davetiyeyi belirterek verilerinin silinmesini talep edebilir. Talebinize en fazla 30 gün içinde yanıt vereceğiz.\n\nRızayı geri çekme hakkı: rızanızı istediğiniz zaman geri çekebilirsiniz. Geri çekme, geri çekmeden önceki işlemenin hukuka uygunluğunu etkilemez.\n\nDenetim makamı: haklarınızın ihlal edildiğini düşünüyorsanız, İspanya Veri Koruma Ajansı'na (AEPD) veya ülkenizdeki yetkili makama şikayette bulunabilirsiniz.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingo'nun kullanımı bu şartların kabulü anlamına gelir. Wedingo, düğün davetiyeleri oluşturmak ve yönetmek için bir platformdur.\n\nKullanıcı, platformu yasa dışı amaçlarla veya saldırgan içerik göndermek için kullanmamayı taahhüt eder.\n\nWedingo, kullanıcılar tarafından oluşturulan içerikten veya misafirlerin kişisel verilerini kullanımından sorumlu değildir.\n\nBu şartları değiştirme hakkını saklı tutarız. Değişiklikler platform aracılığıyla bildirilecektir.\n\nCalifornia'da ikamet edenler için: bu şartlar ile CCPA arasında bir çelişki olması durumunda, CCPA tarafından tanınan haklar geçerli olacaktır.",
     "legalText": "Bilgi Toplumu Hizmetleri ve Elektronik Ticaret Yasası'nın (LSSI-CE) 34/2002 sayılı, 11 Temmuz tarihli 10. maddesi uyarınca bilgi verilir:\n\nSorumlu: Adrián Carrasco López\nE-posta: adriancl2001@gmail.com\nWeb sitesinin amacı: kişiselleştirilmiş düğün davetiyesi platformu.\n\nBu web sitesi, Avrupa Birliği'nde sunucuları bulunan Firebase'i (Google LLC) barındırma ve depolama altyapısı olarak kullanır."
   },
@@ -3344,7 +3347,8 @@
   },
   "changelog": {
     "title": "Değişiklik günlüğü",
-    "close": "Kapat"
+    "close": "Kapat",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -4641,5 +4645,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

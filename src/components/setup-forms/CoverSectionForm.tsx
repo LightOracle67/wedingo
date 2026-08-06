@@ -178,9 +178,10 @@ export default function CoverSectionForm({ prefix = "" }) {
         )}
         <input ref={photoRef} id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
         {formData.couplePhoto ? (
+          /* El label "Reemplazar" apunta al input único (htmlFor); no se
+             anida un segundo input para no duplicar el id. */
           <label className="setup-upload" htmlFor={id("couplePhoto")}>
             {t("setup.replaceImage")}
-            <input id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
           </label>
         ) : null}
       </div>

@@ -29,7 +29,10 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
         {setupToken ? <p className="setup-token-display">{t("access.activeToken")}</p> : null}
 
         <div className="setup-actions">
-          <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleResetTokenFromAdmin}>
+          <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => {
+            // Regenerar el token invalida el actual: se confirma explícitamente.
+            if (window.confirm(t("access.regenConfirm"))) handleResetTokenFromAdmin();
+          }}>
             {t("access.generateToken")}
           </button>
           <button className="setup-button" type="button" onClick={handleAdminLogout}>

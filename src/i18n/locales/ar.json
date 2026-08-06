@@ -328,7 +328,9 @@
     "galleryDescriptionSaveFailed": "حدث خطأ أثناء حفظ الوصف",
     "galleryDescriptionSaved": "تم حفظ الوصف",
     "currentMusic": "الموسيقى المختارة",
-    "removeMusic": "إزالة الموسيقى"
+    "removeMusic": "إزالة الموسيقى",
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -437,7 +439,8 @@
     "generateToken": "إنشاء رمز جديد",
     "logout": "تسجيل الخروج",
     "deleteDataDescription": "إذا كنت ترغب في ممارسة حقوق ARSO الخاصة بك، يمكنك حذف جميع بياناتك.",
-    "deleteInvitation": "حذف دعوتي وجميع بياناتي"
+    "deleteInvitation": "حذف دعوتي وجميع بياناتي",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "الدعم",
@@ -460,12 +463,12 @@
   },
   "cookie": {
     "title": "الموافقة على ملفات تعريف الارتباط",
-    "text": "تستخدم Wedingo التخزين المحلي الضروري لعمل الدعوة (حفظ جلستك وتفضيلاتك). لا نستخدم ملفات تعريف ارتباط من أطراف ثالثة أو متتبعات.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "قبول",
     "reject": "رفض",
     "configure": "تكوين",
     "necessary": "التخزين الضروري",
-    "analytics": "إحصائيات الزيارة",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "حفظ التفضيلات",
     "settingsTitle": "تكوين ملفات تعريف الارتباط"
   },
@@ -474,7 +477,7 @@
     "sectionTerms": "شروط الاستخدام",
     "sectionLegal": "إشعار قانوني",
     "modalTitle": "معلومات قانونية",
-    "privacyPolicy": "المسؤول عن المعالجة: أدريان كاراسكو لوبيز. الاتصال: adriancl2001@gmail.com. الغرض: إدارة دعوات الزفاف وتأكيد الحضور والتواصل حول الأحداث.\n\nالأساس القانوني: موافقة المعني (المادة 6.1.a من GDPR). تُعالج البيانات الصحية (الحساسية الغذائية) بموافقة صريحة (المادة 9.2.a من GDPR) لتكييف قائمة الاحتفال.\n\nالبيانات المجمعة: الاسم والتفضيلات الغذائية (الحساسية) والصور المرفوعة طواعية والبيانات المصرفية إذا قُدمت طواعية.\n\nالمستلمون: Google LLC (Firebase, Google Cloud Platform) ومقرها الولايات المتحدة. وقعت Google على الشروط التعاقدية النموذجية (SCC) المعتمدة من المفوضية الأوروبية (قرار التنفيذ 2021/914) ولديها اتفاقية معالجة البيانات (DPA) وفقًا للمادة 28 من GDPR. بالإضافة إلى ذلك، تلتزم Google بإطار خصوصية البيانات (DPF) بين الاتحاد الأوروبي والولايات المتحدة والمملكة المتحدة والولايات المتحدة وسويسرا والولايات المتحدة، وهي شهادة تضمن مستوى مناسبًا من الحماية لنقل البيانات الدولي.\n\nالنقل الدولي: تُخزن البيانات على خوادم Google Cloud في منطقة eur3 (أوروبا، فرانكفورت). عندما يكون من الضروري نقل البيانات إلى الولايات المتحدة، يتم النقل بموجب SCC وشهادة DPF من Google.\n\nمدة الاحتفاظ: تُحفظ بيانات الضيوف لمدة تصل إلى 12 شهرًا بعد تاريخ الحدث. بعد هذه الفترة، سيتم حذفها تلقائيًا. تُحفظ بيانات تكوين المنشئ طالما كان الحساب نشطًا.\n\nالحقوق: يمكنك ممارسة حقوقك في الوصول والتصحيح والحذف والتقييد والقابلية للنقل والاعتراض بالكتابة إلى adriancl2001@gmail.com. يمكن للضيوف طلب حذف بياناتهم مع الإشارة إلى اسمهم والدعوة. سنرد على طلبك في غضون 30 يومًا كحد أقصى.\n\nحق سحب الموافقة: يمكنك سحب موافقتك في أي وقت دون التأثير على قانونية المعالجة السابقة.\n\nحماية البيانات: تُستخدم إجراءات أمنية تقنية وتنظيمية، بما في ذلك تشفير AES-256-GCM للصور والبيانات الحساسة واتصال HTTPS عبر TLS 1.3 وقواعد أمان Firestore.\n\nلمزيد من المعلومات أو لممارسة حقوقك، اتصل بـ adriancl2001@gmail.com.",
+    "privacyPolicy": "المسؤول عن المعالجة: أدريان كاراسكو لوبيز. الاتصال: adriancl2001@gmail.com. الغرض: إدارة دعوات الزفاف وتأكيد الحضور والتواصل حول الأحداث.\n\nالأساس القانوني: موافقة المعني (المادة 6.1.a من GDPR). تُعالج البيانات الصحية (الحساسية الغذائية) بموافقة صريحة (المادة 9.2.a من GDPR) لتكييف قائمة الاحتفال.\n\nالبيانات المجمعة: الاسم والتفضيلات الغذائية (الحساسية) والصور المرفوعة طواعية والبيانات المصرفية إذا قُدمت طواعية.\n\nالمستلمون: Google LLC (Firebase, Google Cloud Platform) ومقرها الولايات المتحدة. وقعت Google على الشروط التعاقدية النموذجية (SCC) المعتمدة من المفوضية الأوروبية (قرار التنفيذ 2021/914) ولديها اتفاقية معالجة البيانات (DPA) وفقًا للمادة 28 من GDPR. بالإضافة إلى ذلك، تلتزم Google بإطار خصوصية البيانات (DPF) بين الاتحاد الأوروبي والولايات المتحدة والمملكة المتحدة والولايات المتحدة وسويسرا والولايات المتحدة، وهي شهادة تضمن مستوى مناسبًا من الحماية لنقل البيانات الدولي.\n\nالنقل الدولي: تُخزن البيانات على خوادم Google Cloud في منطقة eur3 (أوروبا، فرانكفورت). عندما يكون من الضروري نقل البيانات إلى الولايات المتحدة، يتم النقل بموجب SCC وشهادة DPF من Google.\n\nمدة الاحتفاظ: تُحفظ بيانات الضيوف لمدة تصل إلى 12 شهرًا بعد تاريخ الحدث. بعد هذه الفترة، سيتم حذفها تلقائيًا. تُحفظ بيانات تكوين المنشئ طالما كان الحساب نشطًا.\n\nالحقوق: يمكنك ممارسة حقوقك في الوصول والتصحيح والحذف والتقييد والقابلية للنقل والاعتراض بالكتابة إلى adriancl2001@gmail.com. يمكن للضيوف طلب حذف بياناتهم مع الإشارة إلى اسمهم والدعوة. سنرد على طلبك في غضون 30 يومًا كحد أقصى.\n\nحق سحب الموافقة: يمكنك سحب موافقتك في أي وقت دون التأثير على قانونية المعالجة السابقة.\n\nحماية البيانات: تُستخدم إجراءات أمنية تقنية وتنظيمية، بما في ذلك تشفير AES-256-GCM للصور والبيانات الحساسة واتصال HTTPS عبر TLS 1.3 وقواعد أمان Firestore.\n\nلمزيد من المعلومات أو لممارسة حقوقك، اتصل بـ adriancl2001@gmail.com.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "استخدام Wedingo يعني قبول هذه الشروط. Wedingo هي منصة لإنشاء وإدارة دعوات الزفاف.\n\nيتعهد المستخدم بعدم استخدام المنصة لأغراض غير قانونية أو لإرسال محتوى مسيء.\n\nلا تتحمل Wedingo مسؤولية المحتوى الذي ينشئه المستخدمون أو استخدام الضيوف لبياناتهم الشخصية.\n\nنحتفظ بالحق في تعديل هذه الشروط. سيتم إخطار التغييرات عبر المنصة.\n\nللمقيمين في كاليفورنيا: في حالة وجود تعارض بين هذه الشروط وCCPA، تسود الحقوق الممنوحة بموجب CCPA.",
     "legalText": "امتثالاً للمادة 10 من القانون 34/2002 المؤرخ 11 يوليو بشأن خدمات مجتمع المعلومات والتجارة الإلكترونية (LSSI-CE)، يُعلم ما يلي:\n\nالمسؤول: أدريان كاراسكو لوبيز\nالبريد الإلكتروني: adriancl2001@gmail.com\nغرض الموقع: منصة دعوات زفاف مخصصة.\n\nيستخدم هذا الموقع Firebase (Google LLC) كبنية تحتية للاستضافة والتخزين، مع خوادم في الاتحاد الأوروبي."
   },
@@ -797,7 +800,8 @@
   },
   "changelog": {
     "title": "سجل التغييرات",
-    "close": "إغلاق"
+    "close": "إغلاق",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "توجد بالفعل جلسة نشطة لهذه الدعوة. ",
@@ -936,5 +940,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

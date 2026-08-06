@@ -1099,7 +1099,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1302,7 +1304,8 @@
     "generateToken": "Genera nuovo codice",
     "logout": "Esci",
     "deleteDataDescription": "Se desideri esercitare i tuoi diritti privacy, puoi eliminare tutti i tuoi dati.",
-    "deleteInvitation": "Elimina il mio invito e tutti i miei dati"
+    "deleteInvitation": "Elimina il mio invito e tutti i miei dati",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Supporto",
@@ -1363,12 +1366,12 @@
   },
   "cookie": {
     "title": "Consenso cookie",
-    "text": "Wedingo utilizza l'archiviazione locale necessaria per il funzionamento dell'invito (salvare la tua sessione e le preferenze). Non utilizziamo cookie di terze parti né tracker.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Accetta",
     "reject": "Rifiuta",
     "configure": "Configura",
     "necessary": "Archiviazione necessaria",
-    "analytics": "Statistiche di visita",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Salva preferenze",
     "settingsTitle": "Configura cookie"
   },
@@ -1377,7 +1380,7 @@
     "sectionTerms": "Termini di Utilizzo",
     "sectionLegal": "Note Legali",
     "modalTitle": "Informazioni legali",
-    "privacyPolicy": "Responsabile del trattamento: Adrián Carrasco López. Contatto: adriancl2001@gmail.com. Finalità: gestione di inviti di nozze, conferma di partecipazione e comunicazione di eventi.\n\nBase giuridica: consenso dell'interessato (art. 6.1.a GDPR). I dati sanitari (allergie e intolleranze alimentari) sono trattati con consenso esplicito (art. 9.2.a GDPR) per personalizzare il menu della celebrazione.\n\nDati raccolti: nome, preferenze alimentari (allergie e intolleranze), immagini caricate volontariamente, coordinate bancarie se fornite volontariamente.\n\nDestinatari: Google LLC (Firebase, Google Cloud Platform) con sede negli Stati Uniti. Google ha sottoscritto le Clausole Contrattuali Tipo (SCC) approvate dalla Commissione Europea (Decisione di Esecuzione 2021/914) e dispone di un Data Processing Agreement (DPA) conforme all'art. 28 GDPR. Inoltre, Google è conforme al Data Privacy Framework (DPF) UE-USA, Regno Unito-USA e Svizzera-USA, certificazione che garantisce un adeguato livello di protezione per i trasferimenti internazionali di dati.\n\nTrasferimenti internazionali: i dati sono memorizzati su server Google Cloud nella regione eur3 (Europa, Francoforte). Quando è necessario trasferire dati negli Stati Uniti, il trasferimento è coperto dalle SCC e dalla certificazione DPF di Google.\n\nPeriodo di conservazione: i dati degli invitati sono conservati per un massimo di 12 mesi dopo la data dell'evento. Trascorso tale periodo, verranno eliminati automaticamente. I dati di configurazione del creatore sono conservati finché l'account è attivo.\n\nDiritti: puoi esercitare i tuoi diritti di accesso, rettifica, cancellazione, limitazione, portabilità e opposizione scrivendo a adriancl2001@gmail.com. Gli invitati possono richiedere la cancellazione dei propri dati indicando il proprio nome e l'invito. Risponderemo alla tua richiesta entro 30 giorni.\n\nDiritto di revoca del consenso: puoi revocare il tuo consenso in qualsiasi momento scrivendo a adriancl2001@gmail.com. La revoca non pregiudica la liceità del trattamento basata sul consenso prima della revoca.\n\n reclamo: hai il diritto di presentare un reclamo all'autorità di controllo competente (Garante per la protezione dei dati personali) se ritieni che il trattamento dei tuoi dati violi il GDPR.",
+    "privacyPolicy": "Responsabile del trattamento: Adrián Carrasco López. Contatto: adriancl2001@gmail.com. Finalità: gestione di inviti di nozze, conferma di partecipazione e comunicazione di eventi.\n\nBase giuridica: consenso dell'interessato (art. 6.1.a GDPR). I dati sanitari (allergie e intolleranze alimentari) sono trattati con consenso esplicito (art. 9.2.a GDPR) per personalizzare il menu della celebrazione.\n\nDati raccolti: nome, preferenze alimentari (allergie e intolleranze), immagini caricate volontariamente, coordinate bancarie se fornite volontariamente.\n\nDestinatari: Google LLC (Firebase, Google Cloud Platform) con sede negli Stati Uniti. Google ha sottoscritto le Clausole Contrattuali Tipo (SCC) approvate dalla Commissione Europea (Decisione di Esecuzione 2021/914) e dispone di un Data Processing Agreement (DPA) conforme all'art. 28 GDPR. Inoltre, Google è conforme al Data Privacy Framework (DPF) UE-USA, Regno Unito-USA e Svizzera-USA, certificazione che garantisce un adeguato livello di protezione per i trasferimenti internazionali di dati.\n\nTrasferimenti internazionali: i dati sono memorizzati su server Google Cloud nella regione eur3 (Europa, Francoforte). Quando è necessario trasferire dati negli Stati Uniti, il trasferimento è coperto dalle SCC e dalla certificazione DPF di Google.\n\nPeriodo di conservazione: i dati degli invitati sono conservati per un massimo di 12 mesi dopo la data dell'evento. Trascorso tale periodo, verranno eliminati automaticamente. I dati di configurazione del creatore sono conservati finché l'account è attivo.\n\nDiritti: puoi esercitare i tuoi diritti di accesso, rettifica, cancellazione, limitazione, portabilità e opposizione scrivendo a adriancl2001@gmail.com. Gli invitati possono richiedere la cancellazione dei propri dati indicando il proprio nome e l'invito. Risponderemo alla tua richiesta entro 30 giorni.\n\nDiritto di revoca del consenso: puoi revocare il tuo consenso in qualsiasi momento scrivendo a adriancl2001@gmail.com. La revoca non pregiudica la liceità del trattamento basata sul consenso prima della revoca.\n\n reclamo: hai il diritto di presentare un reclamo all'autorità di controllo competente (Garante per la protezione dei dati personali) se ritieni che il trattamento dei tuoi dati violi il GDPR.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "L'utilizzo di Wedingo implica l'accettazione di questi termini. Wedingo è una piattaforma per creare e gestire inviti di nozze.\n\nL'utente si impegna a non utilizzare la piattaforma per scopi illeciti né per inviare contenuti offensivi.\n\nWedingo non è responsabile per i contenuti generati dagli utenti né per l'uso che gli invitati fanno dei propri dati personali.\n\nCi riserviamo il diritto di modificare questi termini. Le modifiche saranno notificate attraverso la piattaforma.\n\nPer i residenti in California: in caso di conflitto tra questi termini e il CCPA, prevarranno i diritti concessi dal CCPA.",
     "legalText": "In conformità con l'articolo 10 della Legge 34/2002, dell'11 luglio, sui Servizi della Società dell'Informazione e del Commercio Elettronico (LSSI-CE), si informa:\n\nResponsabile: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nFinalità del sito web: piattaforma di inviti di nozze personalizzati.\n\nQuesto sito web utilizza Firebase (Google LLC) come infrastruttura di hosting e archiviazione, con server nell'Unione Europea."
   },
@@ -2300,7 +2303,8 @@
   },
   "changelog": {
     "title": "Registro modifiche",
-    "close": "Chiudi"
+    "close": "Chiudi",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "Esiste già una sessione attiva per questo invito. Vuoi accedere comunque? La sessione precedente verrà chiusa.",
@@ -3103,5 +3107,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

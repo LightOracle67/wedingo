@@ -365,7 +365,9 @@
     "galleryDescriptionSaveFailed": "Fejl ved lagring af beskrivelse",
     "galleryDescriptionSaved": "Beskrivelse gemt",
     "currentMusic": "Udvalgt musik",
-    "removeMusic": "Fjern musik"
+    "removeMusic": "Fjern musik",
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -549,7 +551,8 @@
     "generateToken": "Generér ny kode",
     "logout": "Log ud",
     "deleteDataDescription": "Hvis du ønsker at udøve dine ARSO-rettigheder, kan du slette alle dine data.",
-    "deleteInvitation": "Slet min invitation og alle mine data"
+    "deleteInvitation": "Slet min invitation og alle mine data",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Støtte",
@@ -591,12 +594,12 @@
   },
   "cookie": {
     "title": "Samtykke til cookies",
-    "text": "Wedingo bruger nødvendig lokal lagring til invitationens funktionalitet (gemmer din session og præferencer). Vi bruger ikke tredjepartscookies eller trackere.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Accepter",
     "reject": "Afvis",
     "configure": "Indstil",
     "necessary": "Nødvendig lagring",
-    "analytics": "Besøgsstatistik",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Gem præferencer",
     "settingsTitle": "Cookie-indstillinger"
   },
@@ -605,7 +608,7 @@
     "sectionTerms": "Brugsvilkår",
     "sectionLegal": "Juridisk meddelelse",
     "modalTitle": "Juridisk information",
-    "privacyPolicy": "Dataansvarlig: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Formål: administration af bryllupsinvitationer, tilbagemeldinger og begivenhedskommunikation.\n\nRetsgrundlag: den registreredes samtykke (GDPR art. 6, stk. 1, litra a). Helbredsdata (fødevareallergier og -intolerancer) behandles med udtrykkeligt samtykke (GDPR art. 9, stk. 2, litra a) for at tilpasse festmenuen.\n\nIndsamlede data: navn, kostpræferencer (allergier og intolerancer), frivilligt uploadede billeder, bankoplysninger hvis frivilligt angivet.\n\nModtagere: Google LLC (Firebase, Google Cloud Platform) med hjemsted i USA. Google har indgået EU-Kommissionens standardkontraktbestemmelser (SCC) godkendt ved gennemførelsesafgørelse 2021/914 og har en databehandleraftale (DPA) i henhold til GDPR art. 28. Google overholder desuden Data Privacy Framework (DPF) EU-USA, UK-USA og Schweiz-USA, en certificering der sikrer et tilstrækkeligt beskyttelsesniveau for internationale dataoverførsler.\n\nInternationale overførsler: data opbevares på Google Cloud-servere i regionen eur3 (Europa, Frankfurt). Når overførsel til USA er nødvendig, er overførslen beskyttet af SCC og Googles DPF-certificering.\n\nOpbevaringsperiode: gæstedata opbevares i op til 12 måneder efter begivenhedsdatoen. Efter denne periode slettes de automatisk. Opretterens konfigurationsdata opbevares, så længe kontoen er aktiv.\n\nRettigheder: du kan udøve dine rettigheder til indsigt, berigtigelse, sletning, begrænsning, dataportabilitet og indsigelse ved at skrive til adriancl2001@gmail.com. Gæster kan anmode om sletning af deres data ved at angive deres navn og invitationen. Vi besvarer din anmodning inden for 30 dage.\n\nRet til at trække samtykke tilbage: du kan til enhver tid trække dit samtykke tilbage ved at slette invitationen eller kontakte adriancl2001@gmail.com.\n\nKlager: hvis du mener, at dine rettigheder er blevet krænket, kan du indgive en klage til Datatilsynet (www.datatilsynet.dk).\n\nSikkerhedsforanstaltninger: kryptering af følsomme data, sikker kommunikation (HTTPS/TLS), adgangskontrol via session-tokens, automatisk sletning af udløbne data.",
+    "privacyPolicy": "Dataansvarlig: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Formål: administration af bryllupsinvitationer, tilbagemeldinger og begivenhedskommunikation.\n\nRetsgrundlag: den registreredes samtykke (GDPR art. 6, stk. 1, litra a). Helbredsdata (fødevareallergier og -intolerancer) behandles med udtrykkeligt samtykke (GDPR art. 9, stk. 2, litra a) for at tilpasse festmenuen.\n\nIndsamlede data: navn, kostpræferencer (allergier og intolerancer), frivilligt uploadede billeder, bankoplysninger hvis frivilligt angivet.\n\nModtagere: Google LLC (Firebase, Google Cloud Platform) med hjemsted i USA. Google har indgået EU-Kommissionens standardkontraktbestemmelser (SCC) godkendt ved gennemførelsesafgørelse 2021/914 og har en databehandleraftale (DPA) i henhold til GDPR art. 28. Google overholder desuden Data Privacy Framework (DPF) EU-USA, UK-USA og Schweiz-USA, en certificering der sikrer et tilstrækkeligt beskyttelsesniveau for internationale dataoverførsler.\n\nInternationale overførsler: data opbevares på Google Cloud-servere i regionen eur3 (Europa, Frankfurt). Når overførsel til USA er nødvendig, er overførslen beskyttet af SCC og Googles DPF-certificering.\n\nOpbevaringsperiode: gæstedata opbevares i op til 12 måneder efter begivenhedsdatoen. Efter denne periode slettes de automatisk. Opretterens konfigurationsdata opbevares, så længe kontoen er aktiv.\n\nRettigheder: du kan udøve dine rettigheder til indsigt, berigtigelse, sletning, begrænsning, dataportabilitet og indsigelse ved at skrive til adriancl2001@gmail.com. Gæster kan anmode om sletning af deres data ved at angive deres navn og invitationen. Vi besvarer din anmodning inden for 30 dage.\n\nRet til at trække samtykke tilbage: du kan til enhver tid trække dit samtykke tilbage ved at slette invitationen eller kontakte adriancl2001@gmail.com.\n\nKlager: hvis du mener, at dine rettigheder er blevet krænket, kan du indgive en klage til Datatilsynet (www.datatilsynet.dk).\n\nSikkerhedsforanstaltninger: kryptering af følsomme data, sikker kommunikation (HTTPS/TLS), adgangskontrol via session-tokens, automatisk sletning af udløbne data.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Brug af Wedingo indebærer accept af disse vilkår. Wedingo er en platform til oprettelse og administration af bryllupsinvitationer.\n\nBrugeren forpligter sig til ikke at bruge platformen til ulovlige formål eller til at sende stødende indhold.\n\nWedingo er ikke ansvarlig for brugerproduceret indhold eller for gæsternes brug af deres personoplysninger.\n\nVi forbeholder os retten til at ændre disse vilkår. Ændringer meddeles via platformen.\n\nFor californiske bosiddende: i tilfælde af konflikt mellem disse vilkår og CCPA, har rettighederne i henhold til CCPA forrang.",
     "legalText": "I henhold til artikel 10 i lov 34/2002 af 11. juli om informationssamfundstjenester og elektronisk handel (LSSI-CE) oplyses:\n\nAnsvarlig: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nHjemmesidens formål: platform til personlige bryllupsinvitationer.\n\nDenne hjemmeside bruger Firebase (Google LLC) som hosting- og lagerinfrastruktur med servere i Den Europæiske Union."
   },
@@ -1117,7 +1120,8 @@
   },
   "changelog": {
     "title": "Ændringslog",
-    "close": "Luk"
+    "close": "Luk",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "Der er allerede en aktiv session for denne invitation. ",
@@ -1300,5 +1304,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

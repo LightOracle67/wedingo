@@ -41,10 +41,19 @@ describe("AccessTab", () => {
   });
 
   it("calls handleResetTokenFromAdmin on generate token click", () => {
+    vi.spyOn(window, "confirm").mockReturnValue(true);
     const handleResetTokenFromAdmin = vi.fn();
     render(<AccessTab {...defaultProps} handleResetTokenFromAdmin={handleResetTokenFromAdmin} />);
     fireEvent.click(screen.getByText("access.generateToken"));
     expect(handleResetTokenFromAdmin).toHaveBeenCalledOnce();
+  });
+
+  it("does not regenerate the token when the user cancels", () => {
+    vi.spyOn(window, "confirm").mockReturnValue(false);
+    const handleResetTokenFromAdmin = vi.fn();
+    render(<AccessTab {...defaultProps} handleResetTokenFromAdmin={handleResetTokenFromAdmin} />);
+    fireEvent.click(screen.getByText("access.generateToken"));
+    expect(handleResetTokenFromAdmin).not.toHaveBeenCalled();
   });
 
   it("calls handleAdminLogout on logout click", () => {

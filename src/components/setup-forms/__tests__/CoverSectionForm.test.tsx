@@ -353,8 +353,9 @@ describe("CoverSectionForm", () => {
     mockUploadImage.mockResolvedValue({ dataUrl: "https://example.com/replaced.jpg" });
     render(<CoverSectionForm />);
     const fileInputs = document.querySelectorAll('input[type="file"]');
-    expect(fileInputs.length).toBe(5);
-    const replaceInput = fileInputs[1];
+    expect(fileInputs.length).toBe(4);
+    // El input de couplePhoto es único; el label "Reemplazar" lo reutiliza.
+    const replaceInput = fileInputs[0];
     const file = new File(["test"], "new.jpg", { type: "image/jpeg" });
     fireEvent.change(replaceInput!, { target: { files: [file] } });
     await vi.waitFor(() => {

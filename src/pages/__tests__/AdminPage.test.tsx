@@ -187,6 +187,19 @@ describe("AdminPage", () => {
     });
   });
 
+  it("navigates tabs with the arrow keys (roving tabindex)", async () => {
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>
+    );
+    await screen.findByTestId("panel-tab");
+    const active = document.querySelector('button[role="tab"][aria-selected="true"]');
+    fireEvent.keyDown(active!, { key: "ArrowRight" });
+    const next = document.querySelector('button[role="tab"][aria-selected="true"]');
+    expect(next).not.toBe(active);
+  });
+
   it("shows toast when adminMessage is set", () => {
     mockUseApp.mockReturnValue({ ...baseMock, adminMessage: "Action completed", adminMessageType: "success" });
 

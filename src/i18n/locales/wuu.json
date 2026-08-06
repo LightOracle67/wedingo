@@ -1384,7 +1384,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1594,7 +1596,8 @@
     "generateToken": "生成新码",
     "logout": "退出登录",
     "deleteDataDescription": "如果您想行使ARSO权利，可以删除您的所有数据。",
-    "deleteInvitation": "删除我的请柬及所有数据"
+    "deleteInvitation": "删除我的请柬及所有数据",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "支持",
@@ -1636,12 +1639,12 @@
   },
   "cookie": {
     "title": "Cookie同意",
-    "text": "Wedingo使用必要的本地存储来运行请柬（保存您的会话和偏好）。我们不使用第三方Cookie或追踪器。",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "接受",
     "reject": "拒绝",
     "configure": "配置",
     "necessary": "必要存储",
-    "analytics": "访问统计",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "保存偏好",
     "settingsTitle": "配置Cookie"
   },
@@ -1650,7 +1653,7 @@
     "sectionTerms": "使用条款",
     "sectionLegal": "法律声明",
     "modalTitle": "法律信息",
-    "privacyPolicy": "数据处理负责人：Adrián Carrasco López。联系方式：adriancl2001@gmail.com。目的：管理婚礼请柬、出席确认和活动沟通。\n\n法律依据：数据主体的同意（GDPR第6.1.a条）。健康数据（食物过敏和不耐受）在有明确同意的情况下处理（GDPR第9.2.a条），以调整庆祝菜单。\n\n收集的数据：姓名、饮食偏好（过敏和不耐受）、自愿上传的图片、自愿提供的银行数据。\n\n接收方：Google LLC（Firebase、Google Cloud Platform），总部位于美国。Google已签署由欧盟委员会批准的标准合同条款（SCC）（执行决定2021/914），并持有符合GDPR第28条的数据处理协议（DPA）。此外，Google遵守欧盟-美国、英国-美国和瑞士-美国数据隐私框架（DPF），该认证确保国际数据传输有足够的保护水平。\n\n国际传输：数据存储在Google Cloud的eur3区域（欧洲，法兰克福）的服务器上。当需要将数据传输到美国时，该传输受SCC和Google的DPF认证保护。\n\n保留期限：宾客数据保留至活动日期后12个月。期满后将自动删除。创建者的配置数据在账户活跃期间保留。\n\n权利：您可以发送邮件至adriancl2001@gmail.com行使访问权、更正权、删除权、限制权、可携带权和反对权。宾客可以通过提供其姓名和请柬信息请求删除其数据。我们将在最多30天内回复您的请求。\n\n撤回同意权：您可以在任何时候撤回同意，而不影响撤回前处理的合法性。",
+    "privacyPolicy": "数据处理负责人：Adrián Carrasco López。联系方式：adriancl2001@gmail.com。目的：管理婚礼请柬、出席确认和活动沟通。\n\n法律依据：数据主体的同意（GDPR第6.1.a条）。健康数据（食物过敏和不耐受）在有明确同意的情况下处理（GDPR第9.2.a条），以调整庆祝菜单。\n\n收集的数据：姓名、饮食偏好（过敏和不耐受）、自愿上传的图片、自愿提供的银行数据。\n\n接收方：Google LLC（Firebase、Google Cloud Platform），总部位于美国。Google已签署由欧盟委员会批准的标准合同条款（SCC）（执行决定2021/914），并持有符合GDPR第28条的数据处理协议（DPA）。此外，Google遵守欧盟-美国、英国-美国和瑞士-美国数据隐私框架（DPF），该认证确保国际数据传输有足够的保护水平。\n\n国际传输：数据存储在Google Cloud的eur3区域（欧洲，法兰克福）的服务器上。当需要将数据传输到美国时，该传输受SCC和Google的DPF认证保护。\n\n保留期限：宾客数据保留至活动日期后12个月。期满后将自动删除。创建者的配置数据在账户活跃期间保留。\n\n权利：您可以发送邮件至adriancl2001@gmail.com行使访问权、更正权、删除权、限制权、可携带权和反对权。宾客可以通过提供其姓名和请柬信息请求删除其数据。我们将在最多30天内回复您的请求。\n\n撤回同意权：您可以在任何时候撤回同意，而不影响撤回前处理的合法性。\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "使用Wedingo即表示接受这些条款。Wedingo是创建和管理婚礼请柬的平台。\n\n用户承诺不使用该平台从事非法目的或发送攻击性内容。\n\nWedingo不对用户生成的内容或宾客对其个人数据的使用负责。\n\n我们保留修改这些条款的权利。变更将通过平台通知。\n\n对于加利福尼亚居民：如果这些条款与CCPA之间存在冲突，以CCPA授予的权利为准。",
     "legalText": "根据7月11日第34/2002号《信息社会服务和电子商务法》（LSSI-CE）第10条的规定，特此通知：\n\n负责人：Adrián Carrasco López\n邮箱：adriancl2001@gmail.com\n网站目的：个性化婚礼请柬平台。\n\n本网站使用Firebase（Google LLC）作为托管和存储基础设施，服务器位于欧盟。"
   },
@@ -3259,7 +3262,8 @@
       null,
       null,
       10
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -4716,5 +4720,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

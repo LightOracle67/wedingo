@@ -347,7 +347,9 @@
     "galleryDescriptionSaveFailed": "Eraro dum konservado de priskribo",
     "galleryDescriptionSaved": "Priskribo konservita",
     "currentMusic": "Elektita muziko",
-    "removeMusic": "Forigi muzikon"
+    "removeMusic": "Forigi muzikon",
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -513,7 +515,8 @@
     "generateToken": "Generi novan kodon",
     "logout": "Elsaluti",
     "deleteDataDescription": "Se vi deziras ekzerci viajn ARSO-rajtojn, vi povas forigi ĉiujn viajn datumojn.",
-    "deleteInvitation": "Forigi mian inviton kaj ĉiujn miajn datumojn"
+    "deleteInvitation": "Forigi mian inviton kaj ĉiujn miajn datumojn",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Subteno",
@@ -555,12 +558,12 @@
   },
   "cookie": {
     "title": "Basketkonsento",
-    "text": "Wedingo uzas necesan lokan konservadon por la funkciado de la invito (konservi vian sesion kaj preferojn). Ni ne uzas triajn basketojn nek spurajn ilojn.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Akcepti",
     "reject": "Rifuzi",
     "configure": "Agordi",
     "necessary": "Necesa konservado",
-    "analytics": "Vizitstatistikoj",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Konservi preferojn",
     "settingsTitle": "Agordi basketojn"
   },
@@ -569,7 +572,7 @@
     "sectionTerms": "Uzkondiĉoj",
     "sectionLegal": "Jura Avizo",
     "modalTitle": "Jura informo",
-    "privacyPolicy": "Respondeculo pri traktado: Adrián Carrasco López. Kontakto: adriancl2001@gmail.com. Celo: administrado de geedziĝaj invitoj, ĉeestkonfirmo kaj komunikaĵoj pri eventoj.\n\nJura bazo: konsento de la koncernato (art. 6.1.a GDPR). Sandatumoj (nutraj alergioj kaj netoleroj) estas traktataj kun eksplicita konsento (art. 9.2.a GDPR) por adapti la festomenuon.\n\nKolektitaj datumoj: nomo, manĝpreferoj (alergioj kaj netoleroj), libervole alŝutitaj bildoj, bankaj datumoj se libervole provizitaj.\n\nRicevantoj: Google LLC (Firebase, Google Cloud Platform) kun sidejo en Usono. Google subskribis la Tipajn Kontraktajn Klaŭzojn (SCC) aprobitajn de la Eŭropa Komisiono (Plenum-Decido 2021/914) kaj havas Datumtraktan Interkonsenton (DPA) laŭ art. 28 GDPR. Krome, Google plenumas la Kadron pri Privateco de Datumoj (DPF) EU-US, UK-US kaj Svislando-US, atestilo kiu garantias taŭgan protektonivelon por internaciaj datumtransdono.\n\nInternaciaj transdono: datumoj estas konservitaj en serviloj de Google Cloud en la regiono eur3 (Eŭropo, Frankfurto). Kiam necesas transdoni datumojn al Usono, la transdono baziĝas sur la SCC kaj la DPF-atestilo de Google.\n\nKonserva periodo: datumoj de gastoj estas konservataj ĝis 12 monatoj post la dato de la evento. Post tiu periodo, ili estos aŭtomate forigitaj. Agorddatumoj de la kreinto estas konservataj dum la konto aktivas.\n\nRajtoj: vi povas ekzerci viajn rajtojn pri aliro, korekto, forigo, limigo, porteblo kaj opozicio skribante al adriancl2001@gmail.com. Gastoj povas peti la forigon de siaj datumoj indikante sian nomon kaj la inviton. Ni respondos vian peton ene de maksimume 30 tagoj.\n\nRajto je retiro de konsento: vi povas retiri vian konsenton iam ajn skribante al adriancl2001@gmail.com. La retiriĝo ne influas la laŭleĝecon de la traktado bazita sur la konsento antaŭ la retiro.\n\nPlendo: se vi opinias, ke viaj rajtoj estas malobservitaj, vi povas kontakti la Aŭtoritaton pri Protekto de Datumoj de via lando aŭ la Eŭropan Estraron pri Protekto de Datumoj (EDPB).\n\nInfana protekto: nia servo ne estas destinita al personoj sub 14 jaroj. Se ni malkovras, ke datumoj de neplenaĝuloj estis kolektitaj, ni tuj forigos ilin.",
+    "privacyPolicy": "Respondeculo pri traktado: Adrián Carrasco López. Kontakto: adriancl2001@gmail.com. Celo: administrado de geedziĝaj invitoj, ĉeestkonfirmo kaj komunikaĵoj pri eventoj.\n\nJura bazo: konsento de la koncernato (art. 6.1.a GDPR). Sandatumoj (nutraj alergioj kaj netoleroj) estas traktataj kun eksplicita konsento (art. 9.2.a GDPR) por adapti la festomenuon.\n\nKolektitaj datumoj: nomo, manĝpreferoj (alergioj kaj netoleroj), libervole alŝutitaj bildoj, bankaj datumoj se libervole provizitaj.\n\nRicevantoj: Google LLC (Firebase, Google Cloud Platform) kun sidejo en Usono. Google subskribis la Tipajn Kontraktajn Klaŭzojn (SCC) aprobitajn de la Eŭropa Komisiono (Plenum-Decido 2021/914) kaj havas Datumtraktan Interkonsenton (DPA) laŭ art. 28 GDPR. Krome, Google plenumas la Kadron pri Privateco de Datumoj (DPF) EU-US, UK-US kaj Svislando-US, atestilo kiu garantias taŭgan protektonivelon por internaciaj datumtransdono.\n\nInternaciaj transdono: datumoj estas konservitaj en serviloj de Google Cloud en la regiono eur3 (Eŭropo, Frankfurto). Kiam necesas transdoni datumojn al Usono, la transdono baziĝas sur la SCC kaj la DPF-atestilo de Google.\n\nKonserva periodo: datumoj de gastoj estas konservataj ĝis 12 monatoj post la dato de la evento. Post tiu periodo, ili estos aŭtomate forigitaj. Agorddatumoj de la kreinto estas konservataj dum la konto aktivas.\n\nRajtoj: vi povas ekzerci viajn rajtojn pri aliro, korekto, forigo, limigo, porteblo kaj opozicio skribante al adriancl2001@gmail.com. Gastoj povas peti la forigon de siaj datumoj indikante sian nomon kaj la inviton. Ni respondos vian peton ene de maksimume 30 tagoj.\n\nRajto je retiro de konsento: vi povas retiri vian konsenton iam ajn skribante al adriancl2001@gmail.com. La retiriĝo ne influas la laŭleĝecon de la traktado bazita sur la konsento antaŭ la retiro.\n\nPlendo: se vi opinias, ke viaj rajtoj estas malobservitaj, vi povas kontakti la Aŭtoritaton pri Protekto de Datumoj de via lando aŭ la Eŭropan Estraron pri Protekto de Datumoj (EDPB).\n\nInfana protekto: nia servo ne estas destinita al personoj sub 14 jaroj. Se ni malkovras, ke datumoj de neplenaĝuloj estis kolektitaj, ni tuj forigos ilin.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "La uzo de Wedingo implicas la akcepton de ĉi tiuj kondiĉoj. Wedingo estas platformo por krei kaj administri geedziĝajn invitojn.\n\nLa uzanto devontigas sin ne uzi la platformon por kontraŭleĝaj celoj nek por sendi ofendan enhavon.\n\nWedingo ne respondecas pri la enhavo generita de la uzantoj nek pri la uzo, kiun la gastoj faras de siaj personaj datumoj.\n\nNi rezervas la rajton modifi ĉi tiujn kondiĉojn. La ŝanĝoj estos sciigitaj tra la platformo.\n\nPor kaliforniaj loĝantoj: okaze de konflikto inter ĉi tiuj kondiĉoj kaj la CCPA, la rajtoj donitaj de la CCPA havos prioritaton.",
     "legalText": "Konforme al artikolo 10 de la Leĝo 34/2002, de la 11-a de julio, pri Servoj de la Informa Societo kaj Elektronika Komerco (LSSI-CE), oni informas:\n\nRespondeculo: Adrián Carrasco López\nRetpoŝto: adriancl2001@gmail.com\nCelo de la retejo: platformo por personecigitaj geedziĝaj invitoj.\n\nĈi tiu retejo uzas Firebase (Google LLC) kiel gastigan kaj konservan infrastrukturon, kun serviloj en la Eŭropa Unio."
   },
@@ -949,7 +952,8 @@
   },
   "changelog": {
     "title": "Ŝanĝprotokolo",
-    "close": "Fermu"
+    "close": "Fermu",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "Jam estas aktiva sesio por ĉi tiu invito. ",
@@ -1107,5 +1111,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

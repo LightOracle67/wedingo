@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1691,7 +1693,8 @@
     "generateToken": "ახალი კოდის გენერირება",
     "logout": "გამოსვლა",
     "deleteDataDescription": "თუ გსურთ თქვენი ARSO უფლებების გამოყენება, შეგიძლიათ წაშალოთ ყველა თქვენი მონაცემი.",
-    "deleteInvitation": "ჩემი მოსაწვევისა და ყველა მონაცემის წაშლა"
+    "deleteInvitation": "ჩემი მოსაწვევისა და ყველა მონაცემის წაშლა",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "მხარდაჭერა",
@@ -1752,12 +1755,12 @@
   },
   "cookie": {
     "title": "ქუქი-ფაილების თანხმობა",
-    "text": "Wedingo იყენებს აუცილებელ ლოკალურ საცავს მოსაწვევის ფუნქციონირებისთვის (თქვენი სესიისა და პრეფერენციების შესანახად). ჩვენ არ ვიყენებთ მესამე მხარის ქუქი-ფაილებს ან ტრეკერებს.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "მიღება",
     "reject": "უარყოფა",
     "configure": "კონფიგურაცია",
     "necessary": "აუცილებელი საცავი",
-    "analytics": "ვიზიტების სტატისტიკა",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "პრეფერენციების შენახვა",
     "settingsTitle": "ქუქი-ფაილების კონფიგურაცია"
   },
@@ -1766,7 +1769,7 @@
     "sectionTerms": "გამოყენების პირობები",
     "sectionLegal": "იურიდიული შეტყობინება",
     "modalTitle": "იურიდიული ინფორმაცია",
-    "privacyPolicy": "მონაცემთა დამუშავების პასუხისმგებელი: Adrián Carrasco López. კონტაქტი: adriancl2001@gmail.com. მიზანი: საქორწინო მოსაწვევების მართვა, დასწრების დადასტურება და ღონისძიებების კომუნიკაცია. სამართლებრივი საფუძველი: მონაცემთა სუბიექტის თანხმობა (GDPR მუხ. 6.1.a). ჯანმრთელობის მონაცემები (კვებითი ალერგიები და აუტანლობები) მუშავდება გამოხატული თანხმობით (GDPR მუხ. 9.2.a) ზეიმის მენიუს მოსარგებად. შეგროვებული მონაცემები: სახელი, კვებითი პრეფერენციები (ალერგიები და აუტანლობები), ნებაყოფლობით ატვირთული სურათები, ნებაყოფლობით მოწოდებული საბანკო მონაცემები. მიმღებები: Google LLC (Firebase, Google Cloud Platform) აშშ-ში. Google-მა ხელი მოაწერა ევროკომისიის მიერ დამტკიცებულ სტანდარტულ სახელშეკრულებო პირობებს (SCC) (განხორციელების გადაწყვეტილება 2021/914) და აქვს მონაცემთა დამუშავების ხელშეკრულება (DPA) GDPR-ის 28-ე მუხლის შესაბამისად. Google ასევე შეესაბამება Data Privacy Framework-ს (DPF) EU-US, UK-US და Switzerland-US. საერთაშორისო გადაცემები: მონაცემები ინახება Google Cloud-ის სერვერებზე eur3 რეგიონში (ევროპა, ფრანკფურტი). შენახვის ვადა: სტუმრების მონაცემები ინახება ღონისძიების თარიღიდან 12 თვემდე. შემქმნელის კონფიგურაციის მონაცემები ინახება სანამ ანგარიში აქტიურია. უფლებები: შეგიძლიათ გამოიყენოთ წვდომის, შესწორების, წაშლის, შეზღუდვის, პორტაბელურობისა და შეპროტესტების უფლებები adriancl2001@gmail.com-ზე მოწერით. თქვენს მოთხოვნას მაქსიმუმ 30 დღეში ვუპასუხებთ.",
+    "privacyPolicy": "მონაცემთა დამუშავების პასუხისმგებელი: Adrián Carrasco López. კონტაქტი: adriancl2001@gmail.com. მიზანი: საქორწინო მოსაწვევების მართვა, დასწრების დადასტურება და ღონისძიებების კომუნიკაცია. სამართლებრივი საფუძველი: მონაცემთა სუბიექტის თანხმობა (GDPR მუხ. 6.1.a). ჯანმრთელობის მონაცემები (კვებითი ალერგიები და აუტანლობები) მუშავდება გამოხატული თანხმობით (GDPR მუხ. 9.2.a) ზეიმის მენიუს მოსარგებად. შეგროვებული მონაცემები: სახელი, კვებითი პრეფერენციები (ალერგიები და აუტანლობები), ნებაყოფლობით ატვირთული სურათები, ნებაყოფლობით მოწოდებული საბანკო მონაცემები. მიმღებები: Google LLC (Firebase, Google Cloud Platform) აშშ-ში. Google-მა ხელი მოაწერა ევროკომისიის მიერ დამტკიცებულ სტანდარტულ სახელშეკრულებო პირობებს (SCC) (განხორციელების გადაწყვეტილება 2021/914) და აქვს მონაცემთა დამუშავების ხელშეკრულება (DPA) GDPR-ის 28-ე მუხლის შესაბამისად. Google ასევე შეესაბამება Data Privacy Framework-ს (DPF) EU-US, UK-US და Switzerland-US. საერთაშორისო გადაცემები: მონაცემები ინახება Google Cloud-ის სერვერებზე eur3 რეგიონში (ევროპა, ფრანკფურტი). შენახვის ვადა: სტუმრების მონაცემები ინახება ღონისძიების თარიღიდან 12 თვემდე. შემქმნელის კონფიგურაციის მონაცემები ინახება სანამ ანგარიში აქტიურია. უფლებები: შეგიძლიათ გამოიყენოთ წვდომის, შესწორების, წაშლის, შეზღუდვის, პორტაბელურობისა და შეპროტესტების უფლებები adriancl2001@gmail.com-ზე მოწერით. თქვენს მოთხოვნას მაქსიმუმ 30 დღეში ვუპასუხებთ.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingo-ს გამოყენება ნიშნავს ამ პირობების მიღებას. Wedingo არის პლატფორმა საქორწინო მოსაწვევების შესაქმნელად და სამართავად. მომხმარებელი იღებს ვალდებულებას არ გამოიყენოს პლატფორმა უკანონო მიზნებისთვის ან შეურაცხმყოფელი შინაარსის გასაგზავნად. Wedingo არ არის პასუხისმგებელი მომხმარებლების მიერ შექმნილ შინაარსზე ან სტუმრების მიერ მათი პერსონალური მონაცემების გამოყენებაზე. ჩვენ ვიტოვებთ უფლებას შევცვალოთ ეს პირობები. California-ს რეზიდენტებისთვის: ამ პირობებსა და CCPA-ს შორის კონფლიქტის შემთხვევაში, CCPA-ს მიერ მინიჭებული უფლებები უპირატესი იქნება.",
     "legalText": "2002 წლის 11 ივლისის 34/2002 კანონის მე-10 მუხლის შესაბამისად, ინფორმაციული საზოგადოების სერვისებისა და ელექტრონული კომერციის შესახებ (LSSI-CE), გაცნობებთ: პასუხისმგებელი: Adrián Carrasco López ელფოსტა: adriancl2001@gmail.com ვებსაიტის მიზანი: პერსონალური საქორწინო მოსაწვევების პლატფორმა. ეს ვებსაიტი იყენებს Firebase-ს (Google LLC) როგორც ჰოსტინგისა და საცავის ინფრასტრუქტურას, სერვერებით ევროკავშირში."
   },
@@ -3723,7 +3726,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5401,5 +5405,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

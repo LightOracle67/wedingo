@@ -700,7 +700,9 @@
       null,
       null,
       5
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -857,7 +859,8 @@
     "generateToken": "Generar codi nou",
     "logout": "Tancar sessió",
     "deleteDataDescription": "Si desitges exercir els teus drets ARSO, pots eliminar totes les teues dades.",
-    "deleteInvitation": "Eliminar la meua invitació i totes les meues dades"
+    "deleteInvitation": "Eliminar la meua invitació i totes les meues dades",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Suport",
@@ -886,12 +889,12 @@
   },
   "cookie": {
     "title": "Consentiment de cookies",
-    "text": "Wedingo utilitza emmagatzematge local necessari per al funcionament de la invitació (guardar la teua sessió i preferències). No usem cookies de tercers ni rastreadors.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Acceptar",
     "reject": "Rebutjar",
     "configure": "Configurar",
     "necessary": "Emmagatzematge necessari",
-    "analytics": "Estadístiques de visita",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Guardar preferències",
     "settingsTitle": "Configurar cookies"
   },
@@ -900,7 +903,7 @@
     "sectionTerms": "Termes d'Ús",
     "sectionLegal": "Avís Legal",
     "modalTitle": "Informació legal",
-    "privacyPolicy": "Responsable del tractament: Adrián Carrasco López. Contacte: adriancl2001@gmail.com. Finalitat: gestió d'invitacions de boda, confirmació d'assistència i comunicació d'esdeveniments.\n\nBase legal: consentiment de l'interessat (art. 6.1.a GDPR). Les dades de salut (al·lèrgies i intoleràncies alimentàries) es tracten amb consentiment explícit (art. 9.2.a GDPR) per a adaptar el menú de la celebració.\n\nDades recollides: nom, preferències alimentàries (al·lèrgies i intoleràncies), imatges pujades voluntàriament, dades bancàries si es proporcionen voluntàriament.\n\nDestinataris: Google LLC (Firebase, Google Cloud Platform) amb seu als EUA. Google ha subscrit les Clàusules Contractuals Tipus (SCC) aprovades per la Comissió Europea (Decisió d'Execució 2021/914) i disposa d'un Data Processing Agreement (DPA) conforme a l'art. 28 GDPR. A més, Google complix amb el Data Privacy Framework (DPF) UE-EUA, Regne Unit-EUA i Suïssa-EUA, certificació que garantix un nivell de protecció adequat per a les transferències internacionals de dades.\n\nTransferències internacionals: les dades s'emmagatzemen en servidors de Google Cloud a la regió eur3 (Europa, Frankfurt). Quan és necessari transferir dades als EUA, la transferència s'empara en les SCC i en la certificació DPF de Google.\n\nTermini de conservació: les dades dels convidats es conserven fins a 12 mesos després de la data de l'esdeveniment. Transcorregut eixe termini, es procedirà a la seua eliminació automàtica. Les dades de configuració del creador es conserven mentre el compte estiga actiu.\n\nDrets: pots exercir els teus drets d'accés, rectificació, supressió, limitació, portabilitat i oposició escrivint a adriancl2001@gmail.com. Els convidats poden sol·licitar l'eliminació de les seues dades indicant el seu nom i la invitació. Respondrem a la teua sol·licitud en un termini màxim de 30 dies.\n\nDret a retirar el consentiment: pots retirar el teu consentiment en qualsevol moment sense que això afecte la licitud del tractament basat en el consentiment previ a la seua retirada.\n\nLegitimació per interés legítim: el tractament de dades d'autenticació (tokens de sessió, nom d'usuari admin) es basa en l'interés legítim del responsable (art. 6.1.f GDPR) per a garantir la seguretat del panell d'administració. Pots oposar-te a este tractament contactant amb nosaltres, però això impedirà l'ús del panell.\n\nReclamació: si consideres que no hem tractat les teues dades conforme a la normativa, pots presentar una reclamació davant l'Agència Espanyola de Protecció de Dades (AEPD).",
+    "privacyPolicy": "Responsable del tractament: Adrián Carrasco López. Contacte: adriancl2001@gmail.com. Finalitat: gestió d'invitacions de boda, confirmació d'assistència i comunicació d'esdeveniments.\n\nBase legal: consentiment de l'interessat (art. 6.1.a GDPR). Les dades de salut (al·lèrgies i intoleràncies alimentàries) es tracten amb consentiment explícit (art. 9.2.a GDPR) per a adaptar el menú de la celebració.\n\nDades recollides: nom, preferències alimentàries (al·lèrgies i intoleràncies), imatges pujades voluntàriament, dades bancàries si es proporcionen voluntàriament.\n\nDestinataris: Google LLC (Firebase, Google Cloud Platform) amb seu als EUA. Google ha subscrit les Clàusules Contractuals Tipus (SCC) aprovades per la Comissió Europea (Decisió d'Execució 2021/914) i disposa d'un Data Processing Agreement (DPA) conforme a l'art. 28 GDPR. A més, Google complix amb el Data Privacy Framework (DPF) UE-EUA, Regne Unit-EUA i Suïssa-EUA, certificació que garantix un nivell de protecció adequat per a les transferències internacionals de dades.\n\nTransferències internacionals: les dades s'emmagatzemen en servidors de Google Cloud a la regió eur3 (Europa, Frankfurt). Quan és necessari transferir dades als EUA, la transferència s'empara en les SCC i en la certificació DPF de Google.\n\nTermini de conservació: les dades dels convidats es conserven fins a 12 mesos després de la data de l'esdeveniment. Transcorregut eixe termini, es procedirà a la seua eliminació automàtica. Les dades de configuració del creador es conserven mentre el compte estiga actiu.\n\nDrets: pots exercir els teus drets d'accés, rectificació, supressió, limitació, portabilitat i oposició escrivint a adriancl2001@gmail.com. Els convidats poden sol·licitar l'eliminació de les seues dades indicant el seu nom i la invitació. Respondrem a la teua sol·licitud en un termini màxim de 30 dies.\n\nDret a retirar el consentiment: pots retirar el teu consentiment en qualsevol moment sense que això afecte la licitud del tractament basat en el consentiment previ a la seua retirada.\n\nLegitimació per interés legítim: el tractament de dades d'autenticació (tokens de sessió, nom d'usuari admin) es basa en l'interés legítim del responsable (art. 6.1.f GDPR) per a garantir la seguretat del panell d'administració. Pots oposar-te a este tractament contactant amb nosaltres, però això impedirà l'ús del panell.\n\nReclamació: si consideres que no hem tractat les teues dades conforme a la normativa, pots presentar una reclamació davant l'Agència Espanyola de Protecció de Dades (AEPD).\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "L'ús de Wedingo implica l'acceptació d'estos termes. Wedingo és una plataforma per a crear i gestionar invitacions de boda.\n\nL'usuari es compromet a no utilitzar la plataforma per a fins il·lícits ni per a enviar contingut ofensiu.\n\nWedingo no es fa responsable del contingut generat pels usuaris ni de l'ús que els convidats facen de les seues dades personals.\n\nEns reservem el dret de modificar estos termes. Els canvis seran notificats a través de la plataforma.\n\nPer a residents a Califòrnia: en cas de conflicte entre estos termes i la CCPA, prevaldran els drets atorgats per la CCPA.",
     "legalText": "En compliment de l'article 10 de la Llei 34/2002, d'11 de juliol, de Servicis de la Societat de la Informació i de Comerç Electrònic (LSSI-CE), s'informa:\n\nResponsable: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nFinalitat del lloc web: plataforma d'invitacions de boda personalitzades.\n\nEste lloc web utilitza Firebase (Google LLC) com a infraestructura d'hosting i emmagatzematge, amb servidors a la Unió Europea."
   },
@@ -1781,7 +1784,8 @@
       null,
       null,
       5
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -2393,5 +2397,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

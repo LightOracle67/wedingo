@@ -1487,7 +1487,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1710,7 +1712,8 @@
     "generateToken": "Generovať nový kód",
     "logout": "Odhlásiť sa",
     "deleteDataDescription": "Ak si želáte uplatniť svoje práva ARSO, môžete vymazať všetky svoje údaje.",
-    "deleteInvitation": "Zmazať moje oznámenie a všetky moje údaje"
+    "deleteInvitation": "Zmazať moje oznámenie a všetky moje údaje",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Podpora",
@@ -1752,12 +1755,12 @@
   },
   "cookie": {
     "title": "Súhlas s cookies",
-    "text": "Wedingo používa lokálne úložisko nevyhnutné na fungovanie oznámenia (uloženie relácie a preferencií). Nepoužívame cookies tretích strán ani trackery.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Prijať",
     "reject": "Odmietnuť",
     "configure": "Konfigurovať",
     "necessary": "Nevyhnutné úložisko",
-    "analytics": "Štatistiky návštev",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Uložiť preferencie",
     "settingsTitle": "Konfigurovať cookies"
   },
@@ -1766,7 +1769,7 @@
     "sectionTerms": "Podmienky používania",
     "sectionLegal": "Právne informácie",
     "modalTitle": "Právne informácie",
-    "privacyPolicy": "Prevádzkovateľ: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Účel: správa svadobných oznámení, potvrdenie účasti a komunikácia udalostí.\n\nPrávny základ: súhlas dotknutej osoby (čl. 6.1.a GDPR). Zdravotné údaje (potravinové alergie a intolerancie) sa spracúvajú s výslovným súhlasom (čl. 9.2.a GDPR) na prispôsobenie menu oslavy.\n\nZhromaždené údaje: meno, stravovacie preferencie (alergie a intolerancie), dobrovoľne nahrané obrázky, bankové údaje, ak boli dobrovoľne poskytnuté.\n\nPríjemcovia: Google LLC (Firebase, Google Cloud Platform) so sídlom v USA. Google podpísal Štandardné zmluvné doložky (SCC) schválené Európskou komisiou (Vykonávacie rozhodnutie 2021/914) a má Dohodu o spracúvaní údajov (DPA) v súlade s čl. 28 GDPR. Okrem toho Google spĺňa Data Privacy Framework (DPF) EÚ-USA, Spojené kráľovstvo-USA a Švajčiarsko-USA, certifikáciu, ktorá zaručuje primeranú úroveň ochrany pre medzinárodné prenosy údajov.\n\nMedzinárodné prenosy: údaje sú uložené na serveroch Google Cloud v regióne eur3 (Európa, Frankfurt). Keď je potrebný prenos údajov do USA, prenos je krytý SCC a certifikáciou DPF spoločnosti Google.\n\nDoba uchovávania: údaje hostí sa uchovávajú až 12 mesiacov po dátume udalosti. Po uplynutí tejto doby budú automaticky vymazané. Konfiguračné údaje tvorcu sa uchovávajú, pokiaľ je účet aktívny.\n\nPráva: svoje práva na prístup, opravu, vymazanie, obmedzenie, prenositeľnosť a námietku môžete uplatniť písomne na adrese adriancl2001@gmail.com. Hostia môžu požiadať o vymazanie svojich údajov uvedením svojho mena a oznámenia. Na vašu žiadosť odpovieme do maximálne 30 dní.\n\nPrávo odvolať súhlas: svoj súhlas môžete kedykoľvek odvolať písomne na adrese adriancl2001@gmail.com bez toho, aby to ovplyvnilo zákonnosť spracúvania založeného na súhlase pred jeho odvolaním.",
+    "privacyPolicy": "Prevádzkovateľ: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Účel: správa svadobných oznámení, potvrdenie účasti a komunikácia udalostí.\n\nPrávny základ: súhlas dotknutej osoby (čl. 6.1.a GDPR). Zdravotné údaje (potravinové alergie a intolerancie) sa spracúvajú s výslovným súhlasom (čl. 9.2.a GDPR) na prispôsobenie menu oslavy.\n\nZhromaždené údaje: meno, stravovacie preferencie (alergie a intolerancie), dobrovoľne nahrané obrázky, bankové údaje, ak boli dobrovoľne poskytnuté.\n\nPríjemcovia: Google LLC (Firebase, Google Cloud Platform) so sídlom v USA. Google podpísal Štandardné zmluvné doložky (SCC) schválené Európskou komisiou (Vykonávacie rozhodnutie 2021/914) a má Dohodu o spracúvaní údajov (DPA) v súlade s čl. 28 GDPR. Okrem toho Google spĺňa Data Privacy Framework (DPF) EÚ-USA, Spojené kráľovstvo-USA a Švajčiarsko-USA, certifikáciu, ktorá zaručuje primeranú úroveň ochrany pre medzinárodné prenosy údajov.\n\nMedzinárodné prenosy: údaje sú uložené na serveroch Google Cloud v regióne eur3 (Európa, Frankfurt). Keď je potrebný prenos údajov do USA, prenos je krytý SCC a certifikáciou DPF spoločnosti Google.\n\nDoba uchovávania: údaje hostí sa uchovávajú až 12 mesiacov po dátume udalosti. Po uplynutí tejto doby budú automaticky vymazané. Konfiguračné údaje tvorcu sa uchovávajú, pokiaľ je účet aktívny.\n\nPráva: svoje práva na prístup, opravu, vymazanie, obmedzenie, prenositeľnosť a námietku môžete uplatniť písomne na adrese adriancl2001@gmail.com. Hostia môžu požiadať o vymazanie svojich údajov uvedením svojho mena a oznámenia. Na vašu žiadosť odpovieme do maximálne 30 dní.\n\nPrávo odvolať súhlas: svoj súhlas môžete kedykoľvek odvolať písomne na adrese adriancl2001@gmail.com bez toho, aby to ovplyvnilo zákonnosť spracúvania založeného na súhlase pred jeho odvolaním.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Používanie Wedingo znamená prijatie týchto podmienok. Wedingo je platforma na vytváranie a správu svadobných oznámení.\n\nPoužívateľ sa zaväzuje nepoužívať platformu na nezákonné účely ani na odosielanie urážlivého obsahu.\n\nWedingo nezodpovedá za obsah vytvorený používateľmi ani za používanie osobných údajov hosťami.\n\nVyhradzujeme si právo tieto podmienky zmeniť. Zmeny budú oznámené prostredníctvom platformy.\n\nPre obyvateľov Kalifornie: v prípade rozporu medzi týmito podmienkami a CCPA majú prednosť práva priznané CCPA.",
     "legalText": "V súlade s článkom 10 španielskeho zákona 34/2002 z 11. júla o službách informačnej spoločnosti a elektronickom obchode (LSSI-CE) sa oznamuje:\n\nPrevádzkovateľ: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nÚčel webovej stránky: platforma personalizovaných svadobných oznámení.\n\nTáto webová stránka používa Firebase (Google LLC) ako hostingovú a úložnú infraštruktúru so servermi v Európskej únii."
   },
@@ -3742,7 +3745,8 @@
   },
   "changelog": {
     "title": "Zoznam zmien",
-    "close": "Zatvoriť"
+    "close": "Zatvoriť",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5135,5 +5139,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

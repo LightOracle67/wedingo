@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1691,7 +1693,8 @@
     "generateToken": "Ṣẹ̀dá kóòdù tuntun",
     "logout": "Jáde",
     "deleteDataDescription": "Tí o bá fẹ́ lo àwọn ẹ̀tọ́ ARSO rẹ, o lè pa gbogbo ìsọfúnni rẹ rẹ́.",
-    "deleteInvitation": "Pa ìwé ìpè mi àti gbogbo ìsọfúnni mi rẹ́"
+    "deleteInvitation": "Pa ìwé ìpè mi àti gbogbo ìsọfúnni mi rẹ́",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Àtìlẹ́yìn",
@@ -1752,12 +1755,12 @@
   },
   "cookie": {
     "title": "Ìyọ̀ǹda kúkì",
-    "text": "Wedingo ń lo ìpamọ́ àdúgbò tí a nílò fún ìṣiṣẹ́ ìwé ìpè (fi ìgbà ìṣiṣẹ́ rẹ àti àwọn ààyò pamọ́). A kì í lo àwọn kúkì ẹni kẹta tàbí àwọn olùtọpinpin.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Gbà",
     "reject": "Kọ̀",
     "configure": "Ṣètò",
     "necessary": "Ìpamọ́ tí a nílò",
-    "analytics": "Ìṣirò ìbẹ̀wò",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Fi àwọn ààyò pamọ́",
     "settingsTitle": "Ṣètò àwọn kúkì"
   },
@@ -1766,7 +1769,7 @@
     "sectionTerms": "Àwọn Òfin Ìlò",
     "sectionLegal": "Ìkéde Òfin",
     "modalTitle": "Ìsọfúnni òfin",
-    "privacyPolicy": "Olùṣàkóso ìṣàkóso ìsọfúnni: Adrián Carrasco López. Àsopọ̀: adriancl2001@gmail.com. Ète: ìṣàkóso àwọn ìwé ìpè ìgbéyàwó, ìfidimúlẹ̀ wíwá àti ìbánisọ̀rọ̀ ìṣẹ̀lẹ̀.\n\nÌpìlẹ̀ òfin: ìyọ̀ǹda ẹni tí ó kàn (Ìpín 6.1.a GDPR). A ń ṣàkóso ìsọfúnni ìlera (ohun oúnjẹ ara kò gbà) pẹ̀lú ìyọ̀ǹda kedere (Ìpín 9.2.a GDPR) láti mú àtòjọ oúnjẹ ìgbéyàwó bá àìní mu.\n\nÌsọfúnni tí a kó jọ: orúkọ, àwọn ohun tí wọ́n fẹ́ jẹ (ohun ara kò gbà), àwọn àwòrán tí a gbé kalẹ̀ látinú ọkàn, ìsọfúnni báńkì tí a bá fi sílẹ̀ látinú ọkàn.\n\nÀwọn olùgbà: Google LLC (Firebase, Google Cloud Platform) tí ó wà ní Amẹ́ríkà. Google ti forúkọ sílẹ̀ sí Àwọn Ẹsẹ Àdéhùn Ìpìlẹ̀ (SCC) tí Ìgbìmọ̀ Yúróòpù fọwọ́ sí (Ìpinnu Ìmúṣẹ 2021/914) ó sì ní Àdéhùn Ìṣàkóso Ìsọfúnni (DPA) ní ìbámu pẹ̀lú Ìpín 28 GDPR. Bákan náà, Google tẹ̀lé Ìlànà Àṣírí Ìsọfúnni (DPF) EU-US, UK-US àti Switzerland-US.\n\nÀwọn gbígbé lọ sí orílẹ̀-èdè mìíràn: a ń fi ìsọfúnni pamọ́ sí àwọn olùpèsè Google Cloud ní àgbègbè eur3 (Yúróòpù, Frankfurt). Nígbà tí a bá nílò láti gbé ìsọfúnni lọ sí Amẹ́ríkà, gbígbé náà wà lábẹ́ ààbò SCC àti ìwé ẹ̀rí DPF Google.\n\nÀkókò ìpamọ́: a ń fi ìsọfúnni àwọn àlejò pamọ́ fún títí oṣù 12 lẹ́yìn ọjọ́ ìṣẹ̀lẹ̀. Lẹ́yìn àkókò yẹn, a ó pa á rẹ́ láìfọwọ́kan. A ń fi ìsọfúnni ìṣètò olùṣẹ̀dá pamọ́ nígbà tí àkáǹtì bá ń ṣiṣẹ́.\n\nÀwọn ẹ̀tọ́: o lè lo àwọn ẹ̀tọ́ wíwọlé, àtúnṣe, ìparẹ́, ìhámọ́, gbígbé lọ àti àtakò rẹ nípa kíkọ sí adriancl2001@gmail.com. Àwọn àlejò lè béèrè fún pípa ìsọfúnni wọn rẹ́ nípa fífi orúkọ wọn àti ìwé ìpè hàn. A ó dáhùn ìbéèrè rẹ láàárín ọjọ́ 30.\n\nẸ̀tọ́ láti fa ìyọ̀ǹda padà: o lè fa ìyọ̀ǹda rẹ padà nígbàkigbà, fún ipa ọjọ́ iwájú, nípasẹ̀ àwọn ọ̀nà tí a tọ́ka sí lókè. Fífà padà kò ní ipa lórí ofin ìṣàkóso tẹ́lẹ̀.\n\nẸ̀tọ́ láti fi ẹ̀sùn sí aláṣẹ abójútó: lábẹ́ GDPR, o ní ẹ̀tọ́ láti fi ẹ̀sùn sí aláṣẹ ààbò ìsọfúnni ní àṣẹ rẹ. Ní Spain: AEPD (www.aepd.es).",
+    "privacyPolicy": "Olùṣàkóso ìṣàkóso ìsọfúnni: Adrián Carrasco López. Àsopọ̀: adriancl2001@gmail.com. Ète: ìṣàkóso àwọn ìwé ìpè ìgbéyàwó, ìfidimúlẹ̀ wíwá àti ìbánisọ̀rọ̀ ìṣẹ̀lẹ̀.\n\nÌpìlẹ̀ òfin: ìyọ̀ǹda ẹni tí ó kàn (Ìpín 6.1.a GDPR). A ń ṣàkóso ìsọfúnni ìlera (ohun oúnjẹ ara kò gbà) pẹ̀lú ìyọ̀ǹda kedere (Ìpín 9.2.a GDPR) láti mú àtòjọ oúnjẹ ìgbéyàwó bá àìní mu.\n\nÌsọfúnni tí a kó jọ: orúkọ, àwọn ohun tí wọ́n fẹ́ jẹ (ohun ara kò gbà), àwọn àwòrán tí a gbé kalẹ̀ látinú ọkàn, ìsọfúnni báńkì tí a bá fi sílẹ̀ látinú ọkàn.\n\nÀwọn olùgbà: Google LLC (Firebase, Google Cloud Platform) tí ó wà ní Amẹ́ríkà. Google ti forúkọ sílẹ̀ sí Àwọn Ẹsẹ Àdéhùn Ìpìlẹ̀ (SCC) tí Ìgbìmọ̀ Yúróòpù fọwọ́ sí (Ìpinnu Ìmúṣẹ 2021/914) ó sì ní Àdéhùn Ìṣàkóso Ìsọfúnni (DPA) ní ìbámu pẹ̀lú Ìpín 28 GDPR. Bákan náà, Google tẹ̀lé Ìlànà Àṣírí Ìsọfúnni (DPF) EU-US, UK-US àti Switzerland-US.\n\nÀwọn gbígbé lọ sí orílẹ̀-èdè mìíràn: a ń fi ìsọfúnni pamọ́ sí àwọn olùpèsè Google Cloud ní àgbègbè eur3 (Yúróòpù, Frankfurt). Nígbà tí a bá nílò láti gbé ìsọfúnni lọ sí Amẹ́ríkà, gbígbé náà wà lábẹ́ ààbò SCC àti ìwé ẹ̀rí DPF Google.\n\nÀkókò ìpamọ́: a ń fi ìsọfúnni àwọn àlejò pamọ́ fún títí oṣù 12 lẹ́yìn ọjọ́ ìṣẹ̀lẹ̀. Lẹ́yìn àkókò yẹn, a ó pa á rẹ́ láìfọwọ́kan. A ń fi ìsọfúnni ìṣètò olùṣẹ̀dá pamọ́ nígbà tí àkáǹtì bá ń ṣiṣẹ́.\n\nÀwọn ẹ̀tọ́: o lè lo àwọn ẹ̀tọ́ wíwọlé, àtúnṣe, ìparẹ́, ìhámọ́, gbígbé lọ àti àtakò rẹ nípa kíkọ sí adriancl2001@gmail.com. Àwọn àlejò lè béèrè fún pípa ìsọfúnni wọn rẹ́ nípa fífi orúkọ wọn àti ìwé ìpè hàn. A ó dáhùn ìbéèrè rẹ láàárín ọjọ́ 30.\n\nẸ̀tọ́ láti fa ìyọ̀ǹda padà: o lè fa ìyọ̀ǹda rẹ padà nígbàkigbà, fún ipa ọjọ́ iwájú, nípasẹ̀ àwọn ọ̀nà tí a tọ́ka sí lókè. Fífà padà kò ní ipa lórí ofin ìṣàkóso tẹ́lẹ̀.\n\nẸ̀tọ́ láti fi ẹ̀sùn sí aláṣẹ abójútó: lábẹ́ GDPR, o ní ẹ̀tọ́ láti fi ẹ̀sùn sí aláṣẹ ààbò ìsọfúnni ní àṣẹ rẹ. Ní Spain: AEPD (www.aepd.es).\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Lílo Wedingo túmọ̀ sí gbígba àwọn òfin wọ̀nyí. Wedingo jẹ́ pèpéle fún ṣíṣẹ̀dá àti ṣíṣàkóso àwọn ìwé ìpè ìgbéyàwó.\n\nOlùṣàmúlò gbà láti má lo pèpéle fún àwọn ète tí kò bófin mu tàbí láti fi àkóónú àbùkù ránṣẹ́.\n\nWedingo kò ní ojúṣe fún àkóónú tí àwọn olùṣàmúlò ṣẹ̀dá tàbí fún lílo tí àwọn àlejò ṣe àwọn ìsọfúnni ara wọn.\n\nA ní ẹ̀tọ́ láti yí àwọn òfin wọ̀nyí padà. A ó fi àwọn ìyípadà tọ àwọn ènìyàn létí nípasẹ̀ pèpéle.\n\nFún àwọn olùgbé California: bí ìforígbárí bá wáyé láàárín àwọn òfin wọ̀nyí àti CCPA, àwọn ẹ̀tọ́ tí CCPA fi fúnni yóò borí.",
     "legalText": "Ní ìbámu pẹ̀lú Ìpín 10 ti Òfin 34/2002, ọjọ́ 11 Oṣù Keje, lórí Àwọn Iṣẹ́ Àwùjọ Ìsọfúnni àti Ìṣòwò Líta (LSSI-CE), a fi tó ẹni tí ó kàn létí:\n\nOlùdáhùn: Adrián Carrasco López\nÍmeèlì: adriancl2001@gmail.com\nÈte ojú òpó ayélujára: pèpéle àwọn ìwé ìpè ìgbéyàwó tí ara ẹni.\n\nOjú òpó ayélujára yìí ń lo Firebase (Google LLC) gẹ́gẹ́ bí ohun èlò àlejò àti ìpamọ́, pẹ̀lú àwọn olùpèsè ní Ìṣọ̀kan Yúróòpù."
   },
@@ -3666,7 +3669,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5344,5 +5348,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

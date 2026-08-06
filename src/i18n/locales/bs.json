@@ -404,7 +404,9 @@
     "galleryDescriptionSaveFailed": "Greška pri spremanju opisa",
     "galleryDescriptionSaved": "Opis je sačuvan",
     "currentMusic": "Odabrana muzika",
-    "removeMusic": "Uklonite muziku"
+    "removeMusic": "Uklonite muziku",
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -589,7 +591,8 @@
     "generateToken": "Generiši novi kod",
     "logout": "Odjavi se",
     "deleteDataDescription": "Ako želiš ostvariti svoja prava, možeš izbrisati sve svoje podatke.",
-    "deleteInvitation": "Izbriši moju pozivnicu i sve moje podatke"
+    "deleteInvitation": "Izbriši moju pozivnicu i sve moje podatke",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Podrška",
@@ -631,12 +634,12 @@
   },
   "cookie": {
     "title": "Pristanak na kolačiće",
-    "text": "Wedingo koristi neophodno lokalno skladištenje za funkcionisanje pozivnice (čuvanje sesije i preferencija). Ne koristimo kolačiće trećih strana ni tragače.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Prihvati",
     "reject": "Odbij",
     "configure": "Konfiguriši",
     "necessary": "Neophodno skladištenje",
-    "analytics": "Statistika posjeta",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Sačuvaj preferencije",
     "settingsTitle": "Konfiguriši kolačiće"
   },
@@ -645,7 +648,7 @@
     "sectionTerms": "Uslovi korištenja",
     "sectionLegal": "Pravno obavještenje",
     "modalTitle": "Pravne informacije",
-    "privacyPolicy": "Odgovorno lice za obradu: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Svrha: upravljanje pozivnicama za vjenčanje, potvrda dolaska i komunikacija događaja.\n\nPravni osnov: pristanak zainteresovanog lica (GDPR čl. 6.1.a). Zdravstveni podaci (alergije na hranu i intolerancije) obrađuju se uz eksplicitni pristanak (GDPR čl. 9.2.a) radi prilagođavanja menija proslave.\n\nPrikupljeni podaci: ime, preferencije u ishrani (alergije i intolerancije), dobrovoljno učitane slike, bankovni podaci ako su dobrovoljno dati.\n\nPrimaoci: Google LLC (Firebase, Google Cloud Platform) sa sjedištem u SAD. Google je potpisao Standardne ugovorne klauzule (SCC) odobrene od strane Evropske komisije (Provedbena odluka 2021/914) i ima Ugovor o obradi podataka (DPA) u skladu sa GDPR čl. 28. Osim toga, Google je usklađen sa Okvirom za privatnost podataka (DPF) EU-SAD, UK-SAD i Švicarska-SAD, certifikat koji garantuje adekvatan nivo zaštite za međunarodne prijenose podataka.\n\nMeđunarodni prijenosi: podaci se čuvaju na serverima Google Cloud-a u regionu eur3 (Evropa, Frankfurt). Kada je potrebno prenijeti podatke u SAD, prijenos se zasniva na SCC i na DPF certifikaciji Google-a.\n\nPeriod čuvanja: podaci gostiju čuvaju se do 12 mjeseci nakon datuma događaja. Nakon tog perioda, biće automatski izbrisani. Konfiguracijski podaci kreatora čuvaju se dok je račun aktivan.\n\nPrava: možeš ostvariti svoja prava na pristup, ispravku, brisanje, ograničenje, prenosivost i prigovor pišući na adriancl2001@gmail.com. Gosti mogu zatražiti brisanje svojih podataka navodeći svoje ime i pozivnicu. Odgovorit ćemo na tvoj zahtjev u roku od najviše 30 dana.\n\nPravo na povlačenje pristanka: možeš povući svoj pristanak u bilo koje vrijeme bez uticaja na zakonitost obrade izvršene prije povlačenja.\n\nAutomatizovane odluke: ne koristimo automatizovano donošenje odluka niti profilisanje.\n\nNadzorni organ: ako smatraš da su tvoja prava prekršena, možeš podnijeti žalbu Agenciji za zaštitu ličnih podataka BiH (www.azlp.ba).",
+    "privacyPolicy": "Odgovorno lice za obradu: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Svrha: upravljanje pozivnicama za vjenčanje, potvrda dolaska i komunikacija događaja.\n\nPravni osnov: pristanak zainteresovanog lica (GDPR čl. 6.1.a). Zdravstveni podaci (alergije na hranu i intolerancije) obrađuju se uz eksplicitni pristanak (GDPR čl. 9.2.a) radi prilagođavanja menija proslave.\n\nPrikupljeni podaci: ime, preferencije u ishrani (alergije i intolerancije), dobrovoljno učitane slike, bankovni podaci ako su dobrovoljno dati.\n\nPrimaoci: Google LLC (Firebase, Google Cloud Platform) sa sjedištem u SAD. Google je potpisao Standardne ugovorne klauzule (SCC) odobrene od strane Evropske komisije (Provedbena odluka 2021/914) i ima Ugovor o obradi podataka (DPA) u skladu sa GDPR čl. 28. Osim toga, Google je usklađen sa Okvirom za privatnost podataka (DPF) EU-SAD, UK-SAD i Švicarska-SAD, certifikat koji garantuje adekvatan nivo zaštite za međunarodne prijenose podataka.\n\nMeđunarodni prijenosi: podaci se čuvaju na serverima Google Cloud-a u regionu eur3 (Evropa, Frankfurt). Kada je potrebno prenijeti podatke u SAD, prijenos se zasniva na SCC i na DPF certifikaciji Google-a.\n\nPeriod čuvanja: podaci gostiju čuvaju se do 12 mjeseci nakon datuma događaja. Nakon tog perioda, biće automatski izbrisani. Konfiguracijski podaci kreatora čuvaju se dok je račun aktivan.\n\nPrava: možeš ostvariti svoja prava na pristup, ispravku, brisanje, ograničenje, prenosivost i prigovor pišući na adriancl2001@gmail.com. Gosti mogu zatražiti brisanje svojih podataka navodeći svoje ime i pozivnicu. Odgovorit ćemo na tvoj zahtjev u roku od najviše 30 dana.\n\nPravo na povlačenje pristanka: možeš povući svoj pristanak u bilo koje vrijeme bez uticaja na zakonitost obrade izvršene prije povlačenja.\n\nAutomatizovane odluke: ne koristimo automatizovano donošenje odluka niti profilisanje.\n\nNadzorni organ: ako smatraš da su tvoja prava prekršena, možeš podnijeti žalbu Agenciji za zaštitu ličnih podataka BiH (www.azlp.ba).\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Korištenje Wedinga podrazumijeva prihvatanje ovih uslova. Wedingo je platforma za kreiranje i upravljanje pozivnicama za vjenčanje.\n\nKorisnik se obavezuje da neće koristiti platformu u nezakonite svrhe niti za slanje uvredljivog sadržaja.\n\nWedingo ne snosi odgovornost za sadržaj koji generišu korisnici niti za upotrebu koju gosti čine od svojih ličnih podataka.\n\nZadržavamo pravo izmjene ovih uslova. Promjene će biti objavljene putem platforme.\n\nZa stanovnike Kalifornije: u slučaju sukoba između ovih uslova i CCPA, prava data CCPA će prevladati.",
     "legalText": "U skladu sa važećim zakonodavstvom, obavještava se:\n\nOdgovorno lice: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nSvrha web stranice: platforma za personalizirane pozivnice za vjenčanje.\n\nOva web stranica koristi Firebase (Google LLC) kao infrastrukturu za hosting i skladištenje, sa serverima u Evropskoj uniji."
   },
@@ -1272,7 +1275,8 @@
   },
   "changelog": {
     "title": "Dnevnik promjena",
-    "close": "Zatvori"
+    "close": "Zatvori",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "Već postoji aktivna sesija za ovu pozivnicu. ",
@@ -1449,5 +1453,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

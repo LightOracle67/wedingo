@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1691,7 +1693,8 @@
     "generateToken": "Mepụta koodu ọhụrụ",
     "logout": "Pụọ",
     "deleteDataDescription": "Ọ bụrụ na ị chọrọ iji ikike ARSO gị, ị nwere ike ihichapụ data gị niile.",
-    "deleteInvitation": "Hichapụ akwụkwọ ịkpọ òkù m na data m niile"
+    "deleteInvitation": "Hichapụ akwụkwọ ịkpọ òkù m na data m niile",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Nkwado",
@@ -1752,12 +1755,12 @@
   },
   "cookie": {
     "title": "Nkwenye kuki",
-    "text": "Wedingo na-eji nchekwa mpaghara dị mkpa maka ịrụ ọrụ akwụkwọ ịkpọ òkù (ịchekwa oge ọrụ gị na mmasị gị). Anyị anaghị eji kuki ndị ọzọ ma ọ bụ ihe nsochi.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Nabata",
     "reject": "Jụ",
     "configure": "Hazie",
     "necessary": "Nchekwa dị mkpa",
-    "analytics": "Ọnụ ọgụgụ nleta",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Chekwaa mmasị",
     "settingsTitle": "Hazie kuki"
   },
@@ -1766,7 +1769,7 @@
     "sectionTerms": "Usoro Ojiji",
     "sectionLegal": "Ọkwa Iwu",
     "modalTitle": "Ozi iwu",
-    "privacyPolicy": "Onye na-ahụ maka nhazi data: Adrián Carrasco López. Kọntaktị: adriancl2001@gmail.com. Ebumnuche: njikwa akwụkwọ ịkpọ òkù agbamakwụkwọ, nkwenye ọbịbịa na nkwukọrịta mmemme.\n\nNdabere iwu: nkwenye nke onye metụtara (Art. 6.1.a GDPR). A na-ahazi data ahụike (ihe nfụkasị nri na enweghị ndidi) site na nkwenye doro anya (Art. 9.2.a GDPR) iji gbanwee nri emume.\n\nData anakọtara: aha, mmasị nri (ihe nfụkasị na enweghị ndidi), onyonyo ebulitere n'afọ ofufo, ozi ụlọ akụ ma ọ bụrụ na enyere ya n'afọ ofufo.\n\nNdị nnata: Google LLC (Firebase, Google Cloud Platform) nke dị na US. Google edebanyela aha na Standard Contractual Clauses (SCC) nke European Commission kwadoro (Mkpebi Mmezu 2021/914) ma nwee Data Processing Agreement (DPA) dịka Art. 28 GDPR. Ọzọkwa, Google na-agbaso Data Privacy Framework (DPF) EU-US, UK-US na Switzerland-US.\n\nMbugharị mba ụwa: a na-echekwa data na sava Google Cloud na mpaghara eur3 (Europe, Frankfurt). Mgbe ọ dị mkpa ibufe data na US, a na-echebe mbufe ahụ site na SCC na asambodo DPF nke Google.\n\nOge nchekwa: a na-echekwa data ndị ọbịa ruo ọnwa 12 mgbe ụbọchị mmemme gasịrị. Mgbe oge ahụ gasịrị, a ga-ehichapụ ya na-akpaghị aka. A na-echekwa data nhazi onye okike ma ọ bụrụhaala na akaụntụ ahụ na-arụ ọrụ.\n\nIkike: ị nwere ike iji ikike gị nke ịnweta, imezi, nhichapụ, mmachi, mbugharị na mmegide site na idegara adriancl2001@gmail.com. Ndị ọbịa nwere ike ịrịọ nhichapụ nke data ha site n'igosi aha ha na akwụkwọ ịkpọ òkù ha. Anyị ga-aza arịrịọ gị n'ime ụbọchị 30 kacha.\n\nIkike ịwepụ nkwenye: ị nwere ike ịwepụ nkwenye gị n'oge ọ bụla, maka mmetụta n'ọdịnihu, site na ọwa ndị egosiri n'elu. Mwepụ ahụ anaghị emetụta izi ezi nke nhazi gara aga.\n\nIkike ịgara ndị nlekọta akwụkwọ mkpesa: n'okpuru GDPR, ị nwere ikike ịgara ndị nchekwa data na ikike gị akwụkwọ mkpesa. Na Spain: AEPD (www.aepd.es).",
+    "privacyPolicy": "Onye na-ahụ maka nhazi data: Adrián Carrasco López. Kọntaktị: adriancl2001@gmail.com. Ebumnuche: njikwa akwụkwọ ịkpọ òkù agbamakwụkwọ, nkwenye ọbịbịa na nkwukọrịta mmemme.\n\nNdabere iwu: nkwenye nke onye metụtara (Art. 6.1.a GDPR). A na-ahazi data ahụike (ihe nfụkasị nri na enweghị ndidi) site na nkwenye doro anya (Art. 9.2.a GDPR) iji gbanwee nri emume.\n\nData anakọtara: aha, mmasị nri (ihe nfụkasị na enweghị ndidi), onyonyo ebulitere n'afọ ofufo, ozi ụlọ akụ ma ọ bụrụ na enyere ya n'afọ ofufo.\n\nNdị nnata: Google LLC (Firebase, Google Cloud Platform) nke dị na US. Google edebanyela aha na Standard Contractual Clauses (SCC) nke European Commission kwadoro (Mkpebi Mmezu 2021/914) ma nwee Data Processing Agreement (DPA) dịka Art. 28 GDPR. Ọzọkwa, Google na-agbaso Data Privacy Framework (DPF) EU-US, UK-US na Switzerland-US.\n\nMbugharị mba ụwa: a na-echekwa data na sava Google Cloud na mpaghara eur3 (Europe, Frankfurt). Mgbe ọ dị mkpa ibufe data na US, a na-echebe mbufe ahụ site na SCC na asambodo DPF nke Google.\n\nOge nchekwa: a na-echekwa data ndị ọbịa ruo ọnwa 12 mgbe ụbọchị mmemme gasịrị. Mgbe oge ahụ gasịrị, a ga-ehichapụ ya na-akpaghị aka. A na-echekwa data nhazi onye okike ma ọ bụrụhaala na akaụntụ ahụ na-arụ ọrụ.\n\nIkike: ị nwere ike iji ikike gị nke ịnweta, imezi, nhichapụ, mmachi, mbugharị na mmegide site na idegara adriancl2001@gmail.com. Ndị ọbịa nwere ike ịrịọ nhichapụ nke data ha site n'igosi aha ha na akwụkwọ ịkpọ òkù ha. Anyị ga-aza arịrịọ gị n'ime ụbọchị 30 kacha.\n\nIkike ịwepụ nkwenye: ị nwere ike ịwepụ nkwenye gị n'oge ọ bụla, maka mmetụta n'ọdịnihu, site na ọwa ndị egosiri n'elu. Mwepụ ahụ anaghị emetụta izi ezi nke nhazi gara aga.\n\nIkike ịgara ndị nlekọta akwụkwọ mkpesa: n'okpuru GDPR, ị nwere ikike ịgara ndị nchekwa data na ikike gị akwụkwọ mkpesa. Na Spain: AEPD (www.aepd.es).\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Iji Wedingo pụtara ịnakwere usoro ndị a. Wedingo bụ ikpo okwu maka ịmepụta na ijikwa akwụkwọ ịkpọ òkù agbamakwụkwọ.\n\nOnye ọrụ kwetere ịghara iji ikpo okwu ahụ maka ebumnuche iwu na-akwadoghị ma ọ bụ izipu ọdịnaya mkparị.\n\nWedingo enweghị ọrụ maka ọdịnaya ndị ọrụ mepụtara ma ọ bụ maka ojiji ndị ọbịa na-eji data onwe ha.\n\nAnyị nwere ikike ịgbanwe usoro ndị a. A ga-amara mgbanwe site na ikpo okwu.\n\nMaka ndị bi na California: ọ bụrụ na esemokwu dị n'etiti usoro ndị a na CCPA, ikike ndị CCPA nyere ga-aka.",
     "legalText": "N'ịgbaso Nkeji 10 nke Iwu 34/2002, nke 11 Julaị, gbasara Ọrụ Ọha Mgbasa Ozi na Azụmaahịa Eletrọnịkị (LSSI-CE), a na-amara:\n\nOnye ọrụ: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nEbumnuche weebụsaịtị: ikpo okwu akwụkwọ ịkpọ òkù agbamakwụkwọ nkeonwe.\n\nWeebụsaịtị a na-eji Firebase (Google LLC) dị ka akụrụngwa nnabata na nchekwa, ya na sava dị na European Union."
   },
@@ -3799,7 +3802,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5477,5 +5481,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

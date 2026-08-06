@@ -36,15 +36,15 @@ describe("seo", () => {
     expect(document.querySelector('meta[name="twitter:card"]')?.getAttribute("content")).toBe("summary_large_image");
   });
 
-  it("omits og:image and falls back to summary for data URIs", () => {
+  it("uses a generic image and summary card for data URIs", () => {
     applySocialMeta({
       title: "T",
       description: "D",
       url: `${SITE_URL}/t`,
       image: "data:image/png;base64,xxxx",
     });
-    expect(document.querySelector('meta[property="og:image"]')).toBeNull();
-    expect(document.querySelector('meta[name="twitter:card"]')?.getAttribute("content")).toBe("summary");
+    expect(document.querySelector('meta[property="og:image"]')?.getAttribute("content")).toBe(`${SITE_URL}/favicon192.png`);
+    expect(document.querySelector('meta[name="twitter:card"]')?.getAttribute("content")).toBe("summary_large_image");
   });
 
   it("omits og:locale when no locale is provided", () => {

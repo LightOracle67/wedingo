@@ -1093,7 +1093,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1277,7 +1279,8 @@
     "generateToken": "新しいコードを生成",
     "logout": "ログアウト",
     "deleteDataDescription": "ARSOの権利を行使する場合、すべてのデータを削除できます。",
-    "deleteInvitation": "招待状とすべてのデータを削除"
+    "deleteInvitation": "招待状とすべてのデータを削除",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "サポート",
@@ -1338,12 +1341,12 @@
   },
   "cookie": {
     "title": "Cookie同意",
-    "text": "Wedingoは招待状の動作に必要なローカルストレージを使用します（セッションと設定の保存）。サードパーティCookieやトラッカーは使用していません。",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "同意する",
     "reject": "拒否する",
     "configure": "設定",
     "necessary": "必要なストレージ",
-    "analytics": "訪問統計",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "設定を保存",
     "settingsTitle": "Cookieを設定"
   },
@@ -1352,7 +1355,7 @@
     "sectionTerms": "利用規約",
     "sectionLegal": "法的通知",
     "modalTitle": "法的情報",
-    "privacyPolicy": "処理責任者：Adrián Carrasco López。連絡先：adriancl2001@gmail.com。目的：結婚式招待状の管理、出欠確認、イベント連絡。\n\n法的根拠：データ主体の同意（GDPR第6条1項a）。健康データ（食物アレルギー・不耐性）は、式のメニュー調整のため明示的同意（GDPR第9条2項a）に基づき処理されます。\n\n収集データ：氏名、食事の好み（アレルギー・不耐性）、任意でアップロードされた画像、任意で提供された銀行口座情報。\n\n受領者：Google LLC（Firebase、Google Cloud Platform）、本社は米国。Googleは欧州委員会が承認した標準契約条項（SCC）（実施決定2021/914）に署名し、GDPR第28条に準拠したデータ処理契約（DPA）を締結しています。さらに、GoogleはEU-US、UK-US、スイス-USのデータプライバシーフレームワーク（DPF）に準拠しており、この認証は国際データ転送に十分な保護レベルを保証します。\n\n国際転送：データはGoogle Cloudのeur3リージョン（欧州、フランクフルト）のサーバーに保存されます。米国へのデータ転送が必要な場合、転送はSCCおよびGoogleのDPF認証に基づきます。\n\n保持期間：ゲストデータはイベント日から最大12か月間保持されます。その後、自動的に削除されます。作成者の設定データはアカウントがアクティブな間保持されます。\n\n権利：adriancl2001@gmail.comにご連絡いただくことで、アクセス、訂正、削除、制限、ポータビリティ、異議申立ての権利を行使できます。ゲストは氏名と招待状を明記してデータ削除をリクエストできます。ご要望には最大30日以内に回答いたします。\n\n同意撤回の権利：事前の処理の適法性に影響を与えることなく、いつでも同意を撤回できます。\n\nデータ保護：画像とセンシティブデータのAES-256-GCM暗号化、TLS 1.3によるHTTPS接続、Firestoreセキュリティルールなどの技術的・組織的セキュリティ対策を実施しています。\n\n詳細または権利行使については、adriancl2001@gmail.comまでご連絡ください。",
+    "privacyPolicy": "処理責任者：Adrián Carrasco López。連絡先：adriancl2001@gmail.com。目的：結婚式招待状の管理、出欠確認、イベント連絡。\n\n法的根拠：データ主体の同意（GDPR第6条1項a）。健康データ（食物アレルギー・不耐性）は、式のメニュー調整のため明示的同意（GDPR第9条2項a）に基づき処理されます。\n\n収集データ：氏名、食事の好み（アレルギー・不耐性）、任意でアップロードされた画像、任意で提供された銀行口座情報。\n\n受領者：Google LLC（Firebase、Google Cloud Platform）、本社は米国。Googleは欧州委員会が承認した標準契約条項（SCC）（実施決定2021/914）に署名し、GDPR第28条に準拠したデータ処理契約（DPA）を締結しています。さらに、GoogleはEU-US、UK-US、スイス-USのデータプライバシーフレームワーク（DPF）に準拠しており、この認証は国際データ転送に十分な保護レベルを保証します。\n\n国際転送：データはGoogle Cloudのeur3リージョン（欧州、フランクフルト）のサーバーに保存されます。米国へのデータ転送が必要な場合、転送はSCCおよびGoogleのDPF認証に基づきます。\n\n保持期間：ゲストデータはイベント日から最大12か月間保持されます。その後、自動的に削除されます。作成者の設定データはアカウントがアクティブな間保持されます。\n\n権利：adriancl2001@gmail.comにご連絡いただくことで、アクセス、訂正、削除、制限、ポータビリティ、異議申立ての権利を行使できます。ゲストは氏名と招待状を明記してデータ削除をリクエストできます。ご要望には最大30日以内に回答いたします。\n\n同意撤回の権利：事前の処理の適法性に影響を与えることなく、いつでも同意を撤回できます。\n\nデータ保護：画像とセンシティブデータのAES-256-GCM暗号化、TLS 1.3によるHTTPS接続、Firestoreセキュリティルールなどの技術的・組織的セキュリティ対策を実施しています。\n\n詳細または権利行使については、adriancl2001@gmail.comまでご連絡ください。\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingoの利用はこれらの利用規約への同意を意味します。Wedingoは結婚式招待状を作成・管理するためのプラットフォームです。\n\nユーザーは、プラットフォームを違法な目的や攻撃的なコンテンツの送信に使用しないことを約束します。\n\nWedingoは、ユーザーが生成したコンテンツやゲストによる個人データの使用について責任を負いません。\n\n当社はこれらの利用規約を変更する権利を留保します。変更はプラットフォームを通じて通知されます。\n\nカリフォルニア州居住者の方へ：本利用規約とCCPAの間に矛盾がある場合、CCPAによって付与された権利が優先されます。",
     "legalText": "7月11日付け情報社会サービスおよび電子商取引法（LSSI-CE）第34/2002号第10条に基づき、以下の通り通知します：\n\n責任者：Adrián Carrasco López\nメール：adriancl2001@gmail.com\nウェブサイトの目的：パーソナライズされた結婚式招待状プラットフォーム。\n\n本ウェブサイトは、ホスティングおよびストレージインフラとしてFirebase（Google LLC）を使用しており、サーバーはEU内にあります。"
   },
@@ -2924,7 +2927,8 @@
   },
   "changelog": {
     "title": "変更履歴",
-    "close": "閉じる"
+    "close": "閉じる",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "この招待状には既にアクティブなセッションがあります。それでもログインしますか？前のセッションは閉じられます。",
@@ -3727,5 +3731,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

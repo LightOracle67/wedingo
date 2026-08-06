@@ -310,6 +310,8 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
 }
 .setup-collapsible__title {
   font-size: 0.95rem;
+  margin: 0;
+  font-weight: inherit;
 }
 .setup-collapsible__hint {
   display: block;
@@ -372,9 +374,11 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
   color: var(--color-white);
 }
 .setup-collapsible__vis-toggle--off {
-  opacity: 0.55;
-  border-color: var(--setup-muted);
-  color: var(--setup-muted);
+  /* Opacidad .55 caía por debajo del contraste WCAG AA; se usa un color
+     directo con alpha para mantener la legibilidad. */
+  opacity: 1;
+  border-color: color-mix(in srgb, var(--setup-muted) 65%, transparent);
+  color: color-mix(in srgb, var(--setup-muted) 65%, transparent);
 }
 .setup-token-card {
   display: grid;

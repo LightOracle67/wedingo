@@ -391,7 +391,9 @@
     "galleryDescriptionSaveFailed": "Při ukládání popisu došlo k chybě",
     "galleryDescriptionSaved": "Popis uložen",
     "currentMusic": "Vybraná hudba",
-    "removeMusic": "Odebrat hudbu"
+    "removeMusic": "Odebrat hudbu",
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -563,7 +565,8 @@
     "generateToken": "Generovat nový kód",
     "logout": "Odhlásit se",
     "deleteDataDescription": "Pokud si přejete uplatnit svá práva ARSO, můžete smazat všechna svá data.",
-    "deleteInvitation": "Smazat mou pozvánku a všechna má data"
+    "deleteInvitation": "Smazat mou pozvánku a všechna má data",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Podpora",
@@ -605,12 +608,12 @@
   },
   "cookie": {
     "title": "Souhlas s cookies",
-    "text": "Wedingo používá lokální úložiště nezbytné pro fungování pozvánky (uložení relace a preferencí). Nepoužíváme cookies třetích stran ani trackery.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Přijmout",
     "reject": "Odmítnout",
     "configure": "Konfigurovat",
     "necessary": "Nezbytné úložiště",
-    "analytics": "Statistiky návštěv",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Uložit preference",
     "settingsTitle": "Konfigurovat cookies"
   },
@@ -619,7 +622,7 @@
     "sectionTerms": "Podmínky použití",
     "sectionLegal": "Právní informace",
     "modalTitle": "Právní informace",
-    "privacyPolicy": "Správce osobních údajů: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Účel: správa svatebních oznámení, potvrzování účasti a komunikace událostí.\n\nPrávní základ: souhlas subjektu údajů (čl. 6.1.a GDPR). Zdravotní údaje (potravinové alergie a intolerance) se zpracovávají s výslovným souhlasem (čl. 9.2.a GDPR) pro přizpůsobení menu oslavy.\n\nShromážděné údaje: jméno, stravovací preference (alergie a intolerance), dobrovolně nahrané obrázky, bankovní údaje, pokud byly dobrovolně poskytnuty.\n\nPříjemci: Google LLC (Firebase, Google Cloud Platform) se sídlem v USA. Google podepsal Standardní smluvní doložky (SCC) schválené Evropskou komisí (Prováděcí rozhodnutí 2021/914) a má Smlouvu o zpracování osobních údajů (DPA) v souladu s čl. 28 GDPR. Kromě toho Google splňuje Data Privacy Framework (DPF) EU-USA, Spojené království-USA a Švýcarsko-USA, certifikaci, která zaručuje odpovídající úroveň ochrany pro mezinárodní přenosy údajů.\n\nMezinárodní přenosy: údaje jsou uloženy na serverech Google Cloud v regionu eur3 (Evropa, Frankfurt). Pokud je nutný přenos údajů do USA, je přenos kryt SCC a certifikací DPF společnosti Google.\n\nDoba uchovávání: údaje hostů jsou uchovávány až 12 měsíců po datu události. Po uplynutí této doby budou automaticky smazány. Konfigurační údaje tvůrce jsou uchovávány, dokud je účet aktivní.\n\nPráva: svá práva na přístup, opravu, výmaz, omezení, přenositelnost a námitku můžete uplatnit písemně na adrese adriancl2001@gmail.com. Hosté mohou požádat o vymazání svých údajů uvedením svého jména a pozvánky. Na vaši žádost odpovíme do maximálně 30 dnů.\n\nPrávo odvolat souhlas: svůj souhlas můžete kdykoli odvolat písemně na adrese adriancl2001@gmail.com, aniž by to ovlivnilo zákonnost zpracování založeného na souhlasu před jeho odvoláním.",
+    "privacyPolicy": "Správce osobních údajů: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Účel: správa svatebních oznámení, potvrzování účasti a komunikace událostí.\n\nPrávní základ: souhlas subjektu údajů (čl. 6.1.a GDPR). Zdravotní údaje (potravinové alergie a intolerance) se zpracovávají s výslovným souhlasem (čl. 9.2.a GDPR) pro přizpůsobení menu oslavy.\n\nShromážděné údaje: jméno, stravovací preference (alergie a intolerance), dobrovolně nahrané obrázky, bankovní údaje, pokud byly dobrovolně poskytnuty.\n\nPříjemci: Google LLC (Firebase, Google Cloud Platform) se sídlem v USA. Google podepsal Standardní smluvní doložky (SCC) schválené Evropskou komisí (Prováděcí rozhodnutí 2021/914) a má Smlouvu o zpracování osobních údajů (DPA) v souladu s čl. 28 GDPR. Kromě toho Google splňuje Data Privacy Framework (DPF) EU-USA, Spojené království-USA a Švýcarsko-USA, certifikaci, která zaručuje odpovídající úroveň ochrany pro mezinárodní přenosy údajů.\n\nMezinárodní přenosy: údaje jsou uloženy na serverech Google Cloud v regionu eur3 (Evropa, Frankfurt). Pokud je nutný přenos údajů do USA, je přenos kryt SCC a certifikací DPF společnosti Google.\n\nDoba uchovávání: údaje hostů jsou uchovávány až 12 měsíců po datu události. Po uplynutí této doby budou automaticky smazány. Konfigurační údaje tvůrce jsou uchovávány, dokud je účet aktivní.\n\nPráva: svá práva na přístup, opravu, výmaz, omezení, přenositelnost a námitku můžete uplatnit písemně na adrese adriancl2001@gmail.com. Hosté mohou požádat o vymazání svých údajů uvedením svého jména a pozvánky. Na vaši žádost odpovíme do maximálně 30 dnů.\n\nPrávo odvolat souhlas: svůj souhlas můžete kdykoli odvolat písemně na adrese adriancl2001@gmail.com, aniž by to ovlivnilo zákonnost zpracování založeného na souhlasu před jeho odvoláním.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Používání Wedingo znamená přijetí těchto podmínek. Wedingo je platforma pro vytváření a správu svatebních oznámení.\n\nUživatel se zavazuje nepoužívat platformu k nezákonným účelům ani k odesílání urážlivého obsahu.\n\nWedingo neodpovídá za obsah vytvořený uživateli ani za používání osobních údajů hosty.\n\nVyhrazujeme si právo tyto podmínky změnit. Změny budou oznámeny prostřednictvím platformy.\n\nPro obyvatele Kalifornie: v případě rozporu mezi těmito podmínkami a CCPA mají přednost práva přiznaná CCPA.",
     "legalText": "V souladu s článkem 10 španělského zákona 34/2002 ze dne 11. července o službách informační společnosti a elektronickém obchodu (LSSI-CE) se oznamuje:\n\nSprávce: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nÚčel webové stránky: platforma personalizovaných svatebních oznámení.\n\nTato webová stránka používá Firebase (Google LLC) jako hostingovou a úložnou infrastrukturu se servery v Evropské unii."
   },
@@ -1094,7 +1097,8 @@
   },
   "changelog": {
     "title": "Seznam změn",
-    "close": "Zavřít"
+    "close": "Zavřít",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "Pro tuto pozvánku již existuje aktivní relace. ",
@@ -1252,5 +1256,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

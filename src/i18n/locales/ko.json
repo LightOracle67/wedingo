@@ -1093,7 +1093,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1303,7 +1305,8 @@
     "generateToken": "새 코드 생성",
     "logout": "로그아웃",
     "deleteDataDescription": "ARSO 권리를 행사하려면 모든 데이터를 삭제할 수 있습니다.",
-    "deleteInvitation": "초대장 및 모든 데이터 삭제"
+    "deleteInvitation": "초대장 및 모든 데이터 삭제",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "지원",
@@ -1364,12 +1367,12 @@
   },
   "cookie": {
     "title": "쿠키 동의",
-    "text": "Wedingo는 초대장 작동에 필요한 로컬 스토리지를 사용합니다(세션 및 기본 설정 저장). 당사는 제3자 쿠키나 추적기를 사용하지 않습니다.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "동의",
     "reject": "거부",
     "configure": "설정",
     "necessary": "필수 스토리지",
-    "analytics": "방문 통계",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "설정 저장",
     "settingsTitle": "쿠키 설정"
   },
@@ -1378,7 +1381,7 @@
     "sectionTerms": "이용약관",
     "sectionLegal": "법적 고지",
     "modalTitle": "법적 정보",
-    "privacyPolicy": "처리 책임자: Adrián Carrasco López. 연락처: adriancl2001@gmail.com. 목적: 결혼식 초대장 관리, 참석 확인 및 행사 안내.\n\n법적 근거: 정보 주체의 동의(GDPR 제6조 1항 a). 건강 데이터(식품 알레르기 및 과민증)는 예식 메뉴 조정을 위해 명시적 동의(GDPR 제9조 2항 a)에 따라 처리됩니다.\n\n수집 데이터: 이름, 식사 선호도(알레르기 및 과민증), 자발적 업로드 이미지, 자발적 제공 은행 정보.\n\n수신자: Google LLC(Firebase, Google Cloud Platform), 본사 미국 소재. Google은 유럽 위원회가 승인한 표준 계약 조항(SCC)(이행 결정 2021/914)에 서명했으며 GDPR 제28조에 따른 데이터 처리 계약(DPA)을 체결했습니다. 또한 Google은 EU-US, UK-US, 스위스-US 데이터 프라이버시 프레임워크(DPF)를 준수하며, 이 인증은 국제 데이터 전송에 적절한 보호 수준을 보장합니다.\n\n국제 전송: 데이터는 Google Cloud의 eur3 리전(유럽, 프랑크푸르트) 서버에 저장됩니다. 미국으로의 데이터 전송이 필요한 경우, 전송은 SCC와 Google의 DPF 인증에 기반합니다.\n\n보관 기간: 하객 데이터는 행사일로부터 최대 12개월간 보관됩니다. 이후 자동으로 삭제됩니다. 작성자의 설정 데이터는 계정이 활성 상태인 동안 보관됩니다.\n\n권리: adriancl2001@gmail.com으로 문의하여 접근, 정정, 삭제, 제한, 이동성 및 이의 제기 권리를 행사할 수 있습니다. 하객은 이름과 초대장을 명시하여 데이터 삭제를 요청할 수 있습니다. 요청에 대해 최대 30일 이내에 답변드리겠습니다.\n\n동의 철회 권리: 사전 처리의 적법성에 영향을 주지 않고 언제든지 동의를 철회할 수 있습니다.\n\n데이터 보호: 이미지 및 민감 데이터에 대한 AES-256-GCM 암호화, TLS 1.3을 통한 HTTPS 연결, Firestore 보안 규칙 등 기술적·조직적 보안 조치가 적용됩니다.\n\n자세한 내용이나 권리 행사에 관해서는 adriancl2001@gmail.com으로 연락 주십시오.",
+    "privacyPolicy": "처리 책임자: Adrián Carrasco López. 연락처: adriancl2001@gmail.com. 목적: 결혼식 초대장 관리, 참석 확인 및 행사 안내.\n\n법적 근거: 정보 주체의 동의(GDPR 제6조 1항 a). 건강 데이터(식품 알레르기 및 과민증)는 예식 메뉴 조정을 위해 명시적 동의(GDPR 제9조 2항 a)에 따라 처리됩니다.\n\n수집 데이터: 이름, 식사 선호도(알레르기 및 과민증), 자발적 업로드 이미지, 자발적 제공 은행 정보.\n\n수신자: Google LLC(Firebase, Google Cloud Platform), 본사 미국 소재. Google은 유럽 위원회가 승인한 표준 계약 조항(SCC)(이행 결정 2021/914)에 서명했으며 GDPR 제28조에 따른 데이터 처리 계약(DPA)을 체결했습니다. 또한 Google은 EU-US, UK-US, 스위스-US 데이터 프라이버시 프레임워크(DPF)를 준수하며, 이 인증은 국제 데이터 전송에 적절한 보호 수준을 보장합니다.\n\n국제 전송: 데이터는 Google Cloud의 eur3 리전(유럽, 프랑크푸르트) 서버에 저장됩니다. 미국으로의 데이터 전송이 필요한 경우, 전송은 SCC와 Google의 DPF 인증에 기반합니다.\n\n보관 기간: 하객 데이터는 행사일로부터 최대 12개월간 보관됩니다. 이후 자동으로 삭제됩니다. 작성자의 설정 데이터는 계정이 활성 상태인 동안 보관됩니다.\n\n권리: adriancl2001@gmail.com으로 문의하여 접근, 정정, 삭제, 제한, 이동성 및 이의 제기 권리를 행사할 수 있습니다. 하객은 이름과 초대장을 명시하여 데이터 삭제를 요청할 수 있습니다. 요청에 대해 최대 30일 이내에 답변드리겠습니다.\n\n동의 철회 권리: 사전 처리의 적법성에 영향을 주지 않고 언제든지 동의를 철회할 수 있습니다.\n\n데이터 보호: 이미지 및 민감 데이터에 대한 AES-256-GCM 암호화, TLS 1.3을 통한 HTTPS 연결, Firestore 보안 규칙 등 기술적·조직적 보안 조치가 적용됩니다.\n\n자세한 내용이나 권리 행사에 관해서는 adriancl2001@gmail.com으로 연락 주십시오.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingo 이용은 본 약관에 동의함을 의미합니다. Wedingo는 결혼식 초대장을 만들고 관리하는 플랫폼입니다.\n\n사용자는 플랫폼을 불법적인 목적이나 공격적인 콘텐츠 전송에 사용하지 않을 것에 동의합니다.\n\nWedingo는 사용자가 생성한 콘텐츠나 하객이 자신의 개인 데이터를 사용하는 방식에 대해 책임을 지지 않습니다.\n\n당사는 본 약관을 수정할 권리를 보유합니다. 변경 사항은 플랫폼을 통해 공지됩니다.\n\n캘리포니아 거주자의 경우: 본 약관과 CCPA 간에 충돌이 있을 경우, CCPA에 의해 부여된 권리가 우선합니다.",
     "legalText": "7월 11일자 정보사회 서비스 및 전자상거래법(LSSI-CE) 제34/2002호 제10조에 의거하여 다음과 같이 공지합니다:\n\n책임자: Adrián Carrasco López\n이메일: adriancl2001@gmail.com\n웹사이트 목적: 맞춤형 결혼식 초대장 플랫폼.\n\n본 웹사이트는 Firebase(Google LLC)를 호스팅 및 스토리지 인프라로 사용하며, 서버는 EU 내에 위치합니다."
   },
@@ -3084,7 +3087,8 @@
   },
   "changelog": {
     "title": "변경 내역",
-    "close": "닫기"
+    "close": "닫기",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "이 초대장에 대해 이미 활성 세션이 있습니다. 그래도 로그인하시겠습니까? 이전 세션이 종료됩니다.",
@@ -3900,5 +3904,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

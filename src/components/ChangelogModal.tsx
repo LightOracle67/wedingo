@@ -4,9 +4,13 @@ import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 import { CHANGELOG } from "../lib/changelog";
 import "../styles/modals.css";
 
+/** Número de versiones mostradas por defecto (el resto queda bajo "ver todo"). */
+const DEFAULT_VISIBLE = 5;
+
 const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
   const [closing, setClosing] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const modalRef = useFocusTrap<HTMLDivElement>(true);
 
   const handleClose = useCallback(() => {
@@ -16,6 +20,10 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () =
 
   useEscapeKey(handleClose, true);
 
+  // Solo se renderizan las últimas versiones hasta que el usuario pide ver
+  // el historial completo (80 entradas es un DOM pesado).
+  const visible = showAll ? CHANGELOG : CHANGELOG.slice(0, DEFAULT_VISIBLE);
+
   return (
     <div className={`modal-overlay ${closing ? "modal-overlay--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true" aria-label={t("changelog.title")}>
       <div className={`modal-card ${closing ? "modal-card--closing" : ""}`} ref={modalRef} onClick={(e) => e.stopPropagation()}
@@ -23,7 +31,7 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () =
         <button className="modal-close" onClick={handleClose} aria-label={t("changelog.close")}>&times;</button>
         <p className="modal-title">{t("changelog.title")}</p>
         <div style={{ overflowY: "auto", flex: 1, marginTop: "0.5rem" }}>
-          {CHANGELOG.map((entry) => (
+          {visible.map((entry) => (
             <div key={entry.version} style={{ marginBottom: "1rem", paddingBottom: "1rem", borderBottom: "1px solid var(--setup-border)" }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.3rem" }}>
                 <span style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--setup-title)" }}>{t("common.version", { version: entry.version })}</span>
@@ -36,6 +44,11 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () =
               </ul>
             </div>
           ))}
+          {!showAll && CHANGELOG.length > DEFAULT_VISIBLE ? (
+            <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => setShowAll(true)} style={{ marginTop: "0.5rem" }}>
+              {t("changelog.showAll")}
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

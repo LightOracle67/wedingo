@@ -1415,7 +1415,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1625,7 +1627,8 @@
     "generateToken": "Generer ny kode",
     "logout": "Logg ut",
     "deleteDataDescription": "Hvis du ønsker å utøve dine ARSO-rettigheter, kan du slette alle dataene dine.",
-    "deleteInvitation": "Slett invitasjonen min og alle dataene mine"
+    "deleteInvitation": "Slett invitasjonen min og alle dataene mine",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Støtte",
@@ -1686,12 +1689,12 @@
   },
   "cookie": {
     "title": "Samtykke til informasjonskapsler",
-    "text": "Wedingo bruker lokal lagring som er nødvendig for at invitasjonen skal fungere (lagre økten og preferansene dine). Vi bruker ikke tredjeparts informasjonskapsler eller sporere.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Godta",
     "reject": "Avslå",
     "configure": "Konfigurer",
     "necessary": "Nødvendig lagring",
-    "analytics": "Besøksstatistikk",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Lagre preferanser",
     "settingsTitle": "Konfigurer informasjonskapsler"
   },
@@ -1700,7 +1703,7 @@
     "sectionTerms": "Brukervilkår",
     "sectionLegal": "Juridisk informasjon",
     "modalTitle": "Juridisk informasjon",
-    "privacyPolicy": "Behandlingsansvarlig: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Formål: administrasjon av bryllupsinvitasjoner, tilbakemeldinger og kommunikasjon av arrangementer.\n\nRettslig grunnlag: samtykke fra den registrerte (art. 6.1.a GDPR). Helseopplysninger (matallergier og -intoleranser) behandles med uttrykkelig samtykke (art. 9.2.a GDPR) for å tilpasse menyen til feiringen.\n\nInnsamlede data: navn, kostholdspreferanser (allergier og intoleranser), frivillig opplastede bilder, bankinformasjon hvis frivillig oppgitt.\n\nMottakere: Google LLC (Firebase, Google Cloud Platform) med hovedkontor i USA. Google har undertegnet EUs standardkontraktsbestemmelser (SCC) godkjent av EU-kommisjonen (Gjennomføringsbeslutning 2021/914) og har en databehandleravtale (DPA) i samsvar med art. 28 GDPR. I tillegg overholder Google Data Privacy Framework (DPF) EU-USA, Storbritannia-USA og Sveits-USA, en sertifisering som garanterer et tilstrekkelig beskyttelsesnivå for internasjonale dataoverføringer.\n\nInternasjonale overføringer: data lagres på Google Cloud-servere i regionen eur3 (Europa, Frankfurt). Når det er nødvendig å overføre data til USA, er overføringen dekket av SCC og Googles DPF-sertifisering.\n\nLagringsperiode: gjestedata oppbevares i opptil 12 måneder etter datoen for arrangementet. Etter denne perioden slettes de automatisk. Konfigurasjonsdata for oppretteren oppbevares så lenge kontoen er aktiv.\n\nRettigheter: du kan utøve dine rettigheter til innsyn, retting, sletting, begrensning, dataportabilitet og protest ved å skrive til adriancl2001@gmail.com. Gjester kan be om sletting av dataene sine ved å oppgi navn og invitasjon. Vi svarer på forespørselen din innen maksimalt 30 dager.\n\nRett til å trekke tilbake samtykke: du kan når som helst trekke tilbake samtykket ditt ved å skrive til adriancl2001@gmail.com, uten at det påvirker lovligheten av behandlingen basert på samtykke før tilbaketrekkingen.",
+    "privacyPolicy": "Behandlingsansvarlig: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Formål: administrasjon av bryllupsinvitasjoner, tilbakemeldinger og kommunikasjon av arrangementer.\n\nRettslig grunnlag: samtykke fra den registrerte (art. 6.1.a GDPR). Helseopplysninger (matallergier og -intoleranser) behandles med uttrykkelig samtykke (art. 9.2.a GDPR) for å tilpasse menyen til feiringen.\n\nInnsamlede data: navn, kostholdspreferanser (allergier og intoleranser), frivillig opplastede bilder, bankinformasjon hvis frivillig oppgitt.\n\nMottakere: Google LLC (Firebase, Google Cloud Platform) med hovedkontor i USA. Google har undertegnet EUs standardkontraktsbestemmelser (SCC) godkjent av EU-kommisjonen (Gjennomføringsbeslutning 2021/914) og har en databehandleravtale (DPA) i samsvar med art. 28 GDPR. I tillegg overholder Google Data Privacy Framework (DPF) EU-USA, Storbritannia-USA og Sveits-USA, en sertifisering som garanterer et tilstrekkelig beskyttelsesnivå for internasjonale dataoverføringer.\n\nInternasjonale overføringer: data lagres på Google Cloud-servere i regionen eur3 (Europa, Frankfurt). Når det er nødvendig å overføre data til USA, er overføringen dekket av SCC og Googles DPF-sertifisering.\n\nLagringsperiode: gjestedata oppbevares i opptil 12 måneder etter datoen for arrangementet. Etter denne perioden slettes de automatisk. Konfigurasjonsdata for oppretteren oppbevares så lenge kontoen er aktiv.\n\nRettigheter: du kan utøve dine rettigheter til innsyn, retting, sletting, begrensning, dataportabilitet og protest ved å skrive til adriancl2001@gmail.com. Gjester kan be om sletting av dataene sine ved å oppgi navn og invitasjon. Vi svarer på forespørselen din innen maksimalt 30 dager.\n\nRett til å trekke tilbake samtykke: du kan når som helst trekke tilbake samtykket ditt ved å skrive til adriancl2001@gmail.com, uten at det påvirker lovligheten av behandlingen basert på samtykke før tilbaketrekkingen.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Bruk av Wedingo innebærer aksept av disse vilkårene. Wedingo er en plattform for å lage og administrere bryllupsinvitasjoner.\n\nBrukeren forplikter seg til ikke å bruke plattformen til ulovlige formål eller til å sende støtende innhold.\n\nWedingo er ikke ansvarlig for innhold generert av brukere eller for gjestenes bruk av deres personopplysninger.\n\nVi forbeholder oss retten til å endre disse vilkårene. Endringer vil bli varslet gjennom plattformen.\n\nFor innbyggere i California: i tilfelle konflikt mellom disse vilkårene og CCPA, skal rettighetene gitt av CCPA ha forrang.",
     "legalText": "I samsvar med artikkel 10 i spansk lov 34/2002 av 11. juli om informasjonssamfunnstjenester og elektronisk handel (LSSI-CE), informeres det:\n\nAnsvarlig: Adrián Carrasco López\nE-post: adriancl2001@gmail.com\nFormål med nettstedet: plattform for personlige bryllupsinvitasjoner.\n\nDette nettstedet bruker Firebase (Google LLC) som hosting- og lagringsinfrastruktur, med servere i EU."
   },
@@ -3597,7 +3600,8 @@
   },
   "changelog": {
     "title": "Endringslogg",
-    "close": "Lukk"
+    "close": "Lukk",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -4931,5 +4935,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

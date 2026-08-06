@@ -1378,7 +1378,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1601,7 +1603,8 @@
     "generateToken": "Tạo mã mới",
     "logout": "Đăng xuất",
     "deleteDataDescription": "Nếu bạn muốn thực hiện quyền của mình, bạn có thể xóa tất cả dữ liệu.",
-    "deleteInvitation": "Xóa thiệp mời và tất cả dữ liệu của tôi"
+    "deleteInvitation": "Xóa thiệp mời và tất cả dữ liệu của tôi",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Hỗ trợ",
@@ -1662,12 +1665,12 @@
   },
   "cookie": {
     "title": "Đồng ý cookie",
-    "text": "Wedingo sử dụng bộ nhớ cục bộ cần thiết cho hoạt động của thiệp mời (lưu phiên và tùy chọn của bạn). Chúng tôi không sử dụng cookie bên thứ ba hoặc trình theo dõi.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Chấp nhận",
     "reject": "Từ chối",
     "configure": "Cấu hình",
     "necessary": "Bộ nhớ cần thiết",
-    "analytics": "Thống kê lượt xem",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Lưu tùy chọn",
     "settingsTitle": "Cấu hình cookie"
   },
@@ -1676,7 +1679,7 @@
     "sectionTerms": "Điều khoản sử dụng",
     "sectionLegal": "Thông báo pháp lý",
     "modalTitle": "Thông tin pháp lý",
-    "privacyPolicy": "Bên kiểm soát dữ liệu: Adrián Carrasco López. Liên hệ: adriancl2001@gmail.com. Mục đích: quản lý thiệp cưới, xác nhận tham dự và thông báo sự kiện.\n\nCơ sở pháp lý: sự đồng ý của chủ thể dữ liệu (Điều 6.1.a GDPR). Dữ liệu sức khỏe (dị ứng và không dung nạp thực phẩm) được xử lý với sự đồng ý rõ ràng (Điều 9.2.a GDPR) để điều chỉnh thực đơn buổi lễ.\n\nDữ liệu thu thập: tên, sở thích ăn uống (dị ứng và không dung nạp), hình ảnh tải lên tự nguyện, thông tin ngân hàng nếu được cung cấp tự nguyện.\n\nBên nhận: Google LLC (Firebase, Google Cloud Platform) có trụ sở tại Hoa Kỳ. Google đã ký kết Điều khoản Hợp đồng Tiêu chuẩn (SCC) được Ủy ban Châu Âu phê duyệt (Quyết định Thực thi 2021/914) và có Thỏa thuận Xử lý Dữ liệu (DPA) theo Điều 28 GDPR. Ngoài ra, Google tuân thủ Khung Bảo mật Dữ liệu (DPF) EU-Hoa Kỳ, Vương quốc Anh-Hoa Kỳ và Thụy Sĩ-Hoa Kỳ, chứng nhận đảm bảo mức độ bảo vệ phù hợp cho việc chuyển dữ liệu quốc tế.\n\nChuyển dữ liệu quốc tế: dữ liệu được lưu trữ trên máy chủ Google Cloud tại khu vực eur3 (Frankfurt, Châu Âu). Khi cần chuyển dữ liệu sang Hoa Kỳ, việc chuyển dữ liệu được thực hiện theo SCC và chứng nhận DPF của Google.\n\nThời gian lưu trữ: dữ liệu khách mời được lưu trữ tối đa 12 tháng sau ngày sự kiện. Sau thời gian đó, dữ liệu sẽ được tự động xóa. Dữ liệu cấu hình của người tạo được lưu trữ khi tài khoản còn hoạt động.\n\nQuyền: bạn có thể thực hiện quyền truy cập, chỉnh sửa, xóa, hạn chế, chuyển dữ liệu và phản đối bằng cách viết thư đến adriancl2001@gmail.com. Khách mời có thể yêu cầu xóa dữ liệu của mình bằng cách nêu tên và thiệp mời. Chúng tôi sẽ phản hồi yêu cầu của bạn trong vòng 30 ngày.\n\nQuyền rút lại sự đồng ý: bạn có thể rút lại sự đồng ý bất kỳ lúc nào. Việc rút lại không ảnh hưởng đến tính hợp pháp của việc xử lý trước khi rút lại.\n\nCơ quan giám sát: nếu bạn cho rằng quyền của mình bị vi phạm, bạn có thể khiếu nại lên Cơ quan Bảo vệ Dữ liệu Tây Ban Nha (AEPD) hoặc cơ quan có thẩm quyền tại quốc gia của bạn.",
+    "privacyPolicy": "Bên kiểm soát dữ liệu: Adrián Carrasco López. Liên hệ: adriancl2001@gmail.com. Mục đích: quản lý thiệp cưới, xác nhận tham dự và thông báo sự kiện.\n\nCơ sở pháp lý: sự đồng ý của chủ thể dữ liệu (Điều 6.1.a GDPR). Dữ liệu sức khỏe (dị ứng và không dung nạp thực phẩm) được xử lý với sự đồng ý rõ ràng (Điều 9.2.a GDPR) để điều chỉnh thực đơn buổi lễ.\n\nDữ liệu thu thập: tên, sở thích ăn uống (dị ứng và không dung nạp), hình ảnh tải lên tự nguyện, thông tin ngân hàng nếu được cung cấp tự nguyện.\n\nBên nhận: Google LLC (Firebase, Google Cloud Platform) có trụ sở tại Hoa Kỳ. Google đã ký kết Điều khoản Hợp đồng Tiêu chuẩn (SCC) được Ủy ban Châu Âu phê duyệt (Quyết định Thực thi 2021/914) và có Thỏa thuận Xử lý Dữ liệu (DPA) theo Điều 28 GDPR. Ngoài ra, Google tuân thủ Khung Bảo mật Dữ liệu (DPF) EU-Hoa Kỳ, Vương quốc Anh-Hoa Kỳ và Thụy Sĩ-Hoa Kỳ, chứng nhận đảm bảo mức độ bảo vệ phù hợp cho việc chuyển dữ liệu quốc tế.\n\nChuyển dữ liệu quốc tế: dữ liệu được lưu trữ trên máy chủ Google Cloud tại khu vực eur3 (Frankfurt, Châu Âu). Khi cần chuyển dữ liệu sang Hoa Kỳ, việc chuyển dữ liệu được thực hiện theo SCC và chứng nhận DPF của Google.\n\nThời gian lưu trữ: dữ liệu khách mời được lưu trữ tối đa 12 tháng sau ngày sự kiện. Sau thời gian đó, dữ liệu sẽ được tự động xóa. Dữ liệu cấu hình của người tạo được lưu trữ khi tài khoản còn hoạt động.\n\nQuyền: bạn có thể thực hiện quyền truy cập, chỉnh sửa, xóa, hạn chế, chuyển dữ liệu và phản đối bằng cách viết thư đến adriancl2001@gmail.com. Khách mời có thể yêu cầu xóa dữ liệu của mình bằng cách nêu tên và thiệp mời. Chúng tôi sẽ phản hồi yêu cầu của bạn trong vòng 30 ngày.\n\nQuyền rút lại sự đồng ý: bạn có thể rút lại sự đồng ý bất kỳ lúc nào. Việc rút lại không ảnh hưởng đến tính hợp pháp của việc xử lý trước khi rút lại.\n\nCơ quan giám sát: nếu bạn cho rằng quyền của mình bị vi phạm, bạn có thể khiếu nại lên Cơ quan Bảo vệ Dữ liệu Tây Ban Nha (AEPD) hoặc cơ quan có thẩm quyền tại quốc gia của bạn.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Việc sử dụng Wedingo đồng nghĩa với việc chấp nhận các điều khoản này. Wedingo là nền tảng tạo và quản lý thiệp cưới.\n\nNgười dùng cam kết không sử dụng nền tảng cho mục đích bất hợp pháp hoặc gửi nội dung xúc phạm.\n\nWedingo không chịu trách nhiệm về nội dung do người dùng tạo ra hoặc việc khách mời sử dụng dữ liệu cá nhân của họ.\n\nChúng tôi có quyền sửa đổi các điều khoản này. Các thay đổi sẽ được thông báo qua nền tảng.\n\nĐối với cư dân California: trong trường hợp có xung đột giữa các điều khoản này và CCPA, quyền được cấp bởi CCPA sẽ được ưu tiên.",
     "legalText": "Theo Điều 10 của Luật 34/2002 ngày 11 tháng 7 về Dịch vụ Xã hội Thông tin và Thương mại Điện tử (LSSI-CE), xin thông báo:\n\nBên chịu trách nhiệm: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nMục đích của trang web: nền tảng thiệp cưới tùy chỉnh.\n\nTrang web này sử dụng Firebase (Google LLC) làm cơ sở hạ tầng lưu trữ và hosting, với máy chủ tại Liên minh Châu Âu."
   },
@@ -3420,7 +3423,8 @@
   },
   "changelog": {
     "title": "Nhật ký thay đổi",
-    "close": "Đóng"
+    "close": "Đóng",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -4736,5 +4740,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

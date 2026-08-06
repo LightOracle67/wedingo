@@ -1099,7 +1099,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1296,7 +1298,8 @@
     "generateToken": "Gerar novo código",
     "logout": "Encerrar sessão",
     "deleteDataDescription": "Se desejares exercer os teus direitos ARSO, podes eliminar todos os teus dados.",
-    "deleteInvitation": "Eliminar o meu convite e todos os meus dados"
+    "deleteInvitation": "Eliminar o meu convite e todos os meus dados",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Suporte",
@@ -1338,12 +1341,12 @@
   },
   "cookie": {
     "title": "Consentimento de cookies",
-    "text": "O Wedingo utiliza armazenamento local necessário para o funcionamento do convite (guardar a tua sessão e preferências). Não usamos cookies de terceiros nem rastreadores.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Aceitar",
     "reject": "Rejeitar",
     "configure": "Configurar",
     "necessary": "Armazenamento necessário",
-    "analytics": "Estatísticas de visita",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Guardar preferências",
     "settingsTitle": "Configurar cookies"
   },
@@ -1352,7 +1355,7 @@
     "sectionTerms": "Termos de Uso",
     "sectionLegal": "Aviso Legal",
     "modalTitle": "Informação legal",
-    "privacyPolicy": "Responsável pelo tratamento: Adrián Carrasco López. Contacto: adriancl2001@gmail.com. Finalidade: gestão de convites de casamento, confirmação de presença e comunicação de eventos.\n\nBase legal: consentimento do interessado (art. 6.1.a GDPR). Os dados de saúde (alergias e intolerâncias alimentares) são tratados com consentimento explícito (art. 9.2.a GDPR) para adequar o menu da celebração.\n\nDados recolhidos: nome, preferências alimentares (alergias e intolerâncias), imagens carregadas voluntariamente, dados bancários se fornecidos voluntariamente.\n\nDestinatários: Google LLC (Firebase, Google Cloud Platform) com sede nos EUA. A Google subscreveu as Cláusulas Contratuais Tipo (SCC) aprovadas pela Comissão Europeia (Decisão de Execução 2021/914) e dispõe de um Data Processing Agreement (DPA) conforme o art. 28 GDPR. Além disso, a Google cumpre o Data Privacy Framework (DPF) UE-EUA, Reino Unido-EUA e Suíça-EUA, certificação que garante um nível de proteção adequado para as transferências internacionais de dados.\n\nTransferências internacionais: os dados são armazenados em servidores da Google Cloud na região eur3 (Europa, Frankfurt). Quando é necessário transferir dados para os EUA, a transferência é amparada pelas SCC e pela certificação DPF da Google.\n\nPrazo de conservação: os dados dos convidados são conservados até 12 meses após a data do evento. Decorrido esse prazo, serão eliminados automaticamente. Os dados de configuração do criador são conservados enquanto a conta estiver ativa.\n\nDireitos: podes exercer os teus direitos de acesso, retificação, eliminação, limitação, portabilidade e oposição escrevendo para adriancl2001@gmail.com. Os convidados podem solicitar a eliminação dos seus dados indicando o seu nome e o convite. Responderemos ao teu pedido num prazo máximo de 30 dias.\n\nDireito a retirar o consentimento: podes retirar o teu consentimento em qualquer momento, sem comprometer a licitude do tratamento efetuado até essa data.\n\nDireito de reclamação: tens o direito de apresentar uma reclamação à autoridade de controlo competente (CNPD em Portugal, ANPD no Brasil).",
+    "privacyPolicy": "Responsável pelo tratamento: Adrián Carrasco López. Contacto: adriancl2001@gmail.com. Finalidade: gestão de convites de casamento, confirmação de presença e comunicação de eventos.\n\nBase legal: consentimento do interessado (art. 6.1.a GDPR). Os dados de saúde (alergias e intolerâncias alimentares) são tratados com consentimento explícito (art. 9.2.a GDPR) para adequar o menu da celebração.\n\nDados recolhidos: nome, preferências alimentares (alergias e intolerâncias), imagens carregadas voluntariamente, dados bancários se fornecidos voluntariamente.\n\nDestinatários: Google LLC (Firebase, Google Cloud Platform) com sede nos EUA. A Google subscreveu as Cláusulas Contratuais Tipo (SCC) aprovadas pela Comissão Europeia (Decisão de Execução 2021/914) e dispõe de um Data Processing Agreement (DPA) conforme o art. 28 GDPR. Além disso, a Google cumpre o Data Privacy Framework (DPF) UE-EUA, Reino Unido-EUA e Suíça-EUA, certificação que garante um nível de proteção adequado para as transferências internacionais de dados.\n\nTransferências internacionais: os dados são armazenados em servidores da Google Cloud na região eur3 (Europa, Frankfurt). Quando é necessário transferir dados para os EUA, a transferência é amparada pelas SCC e pela certificação DPF da Google.\n\nPrazo de conservação: os dados dos convidados são conservados até 12 meses após a data do evento. Decorrido esse prazo, serão eliminados automaticamente. Os dados de configuração do criador são conservados enquanto a conta estiver ativa.\n\nDireitos: podes exercer os teus direitos de acesso, retificação, eliminação, limitação, portabilidade e oposição escrevendo para adriancl2001@gmail.com. Os convidados podem solicitar a eliminação dos seus dados indicando o seu nome e o convite. Responderemos ao teu pedido num prazo máximo de 30 dias.\n\nDireito a retirar o consentimento: podes retirar o teu consentimento em qualquer momento, sem comprometer a licitude do tratamento efetuado até essa data.\n\nDireito de reclamação: tens o direito de apresentar uma reclamação à autoridade de controlo competente (CNPD em Portugal, ANPD no Brasil).\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "O uso do Wedingo implica a aceitação destes termos. O Wedingo é uma plataforma para criar e gerir convites de casamento.\n\nO utilizador compromete-se a não utilizar a plataforma para fins ilícitos nem para enviar conteúdo ofensivo.\n\nO Wedingo não se responsabiliza pelo conteúdo gerado pelos utilizadores nem pelo uso que os convidados façam dos seus dados pessoais.\n\nReservamo-nos o direito de modificar estes termos. As alterações serão notificadas através da plataforma.\n\nPara residentes na Califórnia: em caso de conflito entre estes termos e a CCPA, prevalecerão os direitos concedidos pela CCPA.",
     "legalText": "Em cumprimento do artigo 10 da Lei 34/2002, de 11 de julho, de Serviços da Sociedade da Informação e de Comércio Eletrónico (LSSI-CE), informa-se:\n\nResponsável: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nFinalidade do site: plataforma de convites de casamento personalizados.\n\nEste site utiliza Firebase (Google LLC) como infraestrutura de alojamento e armazenamento, com servidores na União Europeia."
   },
@@ -2363,7 +2366,8 @@
   },
   "changelog": {
     "title": "Registo de alterações",
-    "close": "Fechar"
+    "close": "Fechar",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "Já existe uma sessão ativa para este convite. Deseja entrar mesmo assim? A sessão anterior será encerrada.",
@@ -3172,5 +3176,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

@@ -85,7 +85,11 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
         <button className={btnGhostClass} type="button" onClick={handleRandom} style={{ marginTop: "0.5rem" }}>
           {t("share.generateMessage")}
         </button>
-        <button className={btnGhostClass} type="button" onClick={() => { navigator.clipboard.writeText(message); if (addToast) addToast("success", t("share.messageCopied")); }} style={{ marginTop: "0.5rem", marginLeft: "0.5rem" }}>
+        <button className={btnGhostClass} type="button" onClick={() => {
+          navigator.clipboard.writeText(message)
+            .then(() => { if (addToast) addToast("success", t("share.messageCopied")); })
+            .catch(() => { if (addToast) addToast("error", t("errors.clipboardCopyFailed")); });
+        }} style={{ marginTop: "0.5rem", marginLeft: "0.5rem" }}>
           {t("share.copyMessage")}
         </button>
       </div>

@@ -1371,7 +1371,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1574,7 +1576,8 @@
     "generateToken": "Hamorona kaody vaovao",
     "logout": "Hiala",
     "deleteDataDescription": "Raha te hampiasa ny zontsika ARSO ianao, azonao fafana daholo ny angon-drakitrao.",
-    "deleteInvitation": "Fafao ny fanasako sy ny angon-drakitro rehetra"
+    "deleteInvitation": "Fafao ny fanasako sy ny angon-drakitro rehetra",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Fanampiana",
@@ -1635,12 +1638,12 @@
   },
   "cookie": {
     "title": "Fanekena cookie",
-    "text": "Mampiasa fitahirizana eo an-toerana ilaina amin'ny fiasan'ny fanasana i Wedingo (mitahiry ny session-nao sy ny safidinao). Tsy mampiasa cookie an'ny antoko fahatelo na mpanara-maso izahay.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Hanaiky",
     "reject": "Handà",
     "configure": "Hikarakara",
     "necessary": "Fitahirizana ilaina",
-    "analytics": "Statistikan'ny fitsidihana",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Tehirizo ny safidy",
     "settingsTitle": "Hikarakara cookie"
   },
@@ -1649,7 +1652,7 @@
     "sectionTerms": "Fepetran'ny fampiasana",
     "sectionLegal": "Filazana ara-dalana",
     "modalTitle": "Fampahalalana ara-dalana",
-    "privacyPolicy": "Tompon'andraikitra amin'ny fanodinana: Adrián Carrasco López. Fifandraisana: adriancl2001@gmail.com. Tanjona: fitantanana fanasan-dravina, fanamafisana fanatrehana ary fifandraisana hetsika.\n\nFototra ara-dalana: faneken'ny olona voakasika (and. 6.1.a GDPR). Ny angon-drakitra momba ny fahasalamana (alèrjia sy tsy fandeferana sakafo) dia voakarakara miaraka amin'ny fanekena mazava (and. 9.2.a GDPR) hampifanaraka ny sakafon'ny fety.\n\nAngon-drakitra voaangona: anarana, safidy sakafo (alèrjia sy tsy fandeferana), sary nampidirina an-tsitrapo, antontan-kevitra banky raha nomena an-tsitrapo.\n\nMpandray: Google LLC (Firebase, Google Cloud Platform) manana foibe any Etazonia. Google dia nanao sonia ireo Fehezan-dalàna mahazatra (SCC) nankatoavin'ny Vaomiera Eoropeana (Fanapahan-kevitra fanatanterahana 2021/914) ary manana Fifanarahana fanodinana angon-drakitra (DPA) araka ny and. 28 GDPR. Ankoatra izany, manaraka ny DPF EU-Etazonia, UK-Etazonia ary Soisa-Etazonia i Google, fanamarinana izay miantoka ambaratonga fiarovana sahaza ho an'ny famindrana angon-drakitra iraisam-pirenena.\n\nFamindrana iraisam-pirenena: voatahiry ao amin'ny mpizara Google Cloud ao amin'ny faritra eur3 (Eoropa, Frankfurt) ny angon-drakitra. Rehefa ilaina ny mamindra angon-drakitra mankany Etazonia, dia arovan'ny SCC sy ny fanamarinana DPF an'i Google ny famindrana.\n\nFe-potoana fitehirizana: voatahiry mandritra ny 12 volana aorian'ny datin'ny hetsika ny angon-drakitry ny vahiny. Rehefa tapitra io fe-potoana io, dia hofafana ho azy. Voatahiry raha mbola mavitrika ny kaonty ny angon-drakitra fanamboaran'ny mpamorona.\n\nZo: afaka mampiasa ny zonao hidirana, hanitsiana, hamafana, hamerana, azo entina ary hanoherana ianao amin'ny alalan'ny fanoratana amin'ny adriancl2001@gmail.com. Afaka mangataka famafana ny angon-drakitr'izy ireo ny vahiny amin'ny filazana ny anarany sy ny fanasana. Hamaly ny fangatahanao ao anatin'ny 30 andro farafahakeliny izahay.\n\nZo hanesorana ny fanekena: afaka manaisotra ny fanekenao ianao amin'ny fotoana rehetra nefa tsy misy fiantraikany amin'ny maha-ara-dalana ny fanodinana talohan'ny fanesorana.",
+    "privacyPolicy": "Tompon'andraikitra amin'ny fanodinana: Adrián Carrasco López. Fifandraisana: adriancl2001@gmail.com. Tanjona: fitantanana fanasan-dravina, fanamafisana fanatrehana ary fifandraisana hetsika.\n\nFototra ara-dalana: faneken'ny olona voakasika (and. 6.1.a GDPR). Ny angon-drakitra momba ny fahasalamana (alèrjia sy tsy fandeferana sakafo) dia voakarakara miaraka amin'ny fanekena mazava (and. 9.2.a GDPR) hampifanaraka ny sakafon'ny fety.\n\nAngon-drakitra voaangona: anarana, safidy sakafo (alèrjia sy tsy fandeferana), sary nampidirina an-tsitrapo, antontan-kevitra banky raha nomena an-tsitrapo.\n\nMpandray: Google LLC (Firebase, Google Cloud Platform) manana foibe any Etazonia. Google dia nanao sonia ireo Fehezan-dalàna mahazatra (SCC) nankatoavin'ny Vaomiera Eoropeana (Fanapahan-kevitra fanatanterahana 2021/914) ary manana Fifanarahana fanodinana angon-drakitra (DPA) araka ny and. 28 GDPR. Ankoatra izany, manaraka ny DPF EU-Etazonia, UK-Etazonia ary Soisa-Etazonia i Google, fanamarinana izay miantoka ambaratonga fiarovana sahaza ho an'ny famindrana angon-drakitra iraisam-pirenena.\n\nFamindrana iraisam-pirenena: voatahiry ao amin'ny mpizara Google Cloud ao amin'ny faritra eur3 (Eoropa, Frankfurt) ny angon-drakitra. Rehefa ilaina ny mamindra angon-drakitra mankany Etazonia, dia arovan'ny SCC sy ny fanamarinana DPF an'i Google ny famindrana.\n\nFe-potoana fitehirizana: voatahiry mandritra ny 12 volana aorian'ny datin'ny hetsika ny angon-drakitry ny vahiny. Rehefa tapitra io fe-potoana io, dia hofafana ho azy. Voatahiry raha mbola mavitrika ny kaonty ny angon-drakitra fanamboaran'ny mpamorona.\n\nZo: afaka mampiasa ny zonao hidirana, hanitsiana, hamafana, hamerana, azo entina ary hanoherana ianao amin'ny alalan'ny fanoratana amin'ny adriancl2001@gmail.com. Afaka mangataka famafana ny angon-drakitr'izy ireo ny vahiny amin'ny filazana ny anarany sy ny fanasana. Hamaly ny fangatahanao ao anatin'ny 30 andro farafahakeliny izahay.\n\nZo hanesorana ny fanekena: afaka manaisotra ny fanekenao ianao amin'ny fotoana rehetra nefa tsy misy fiantraikany amin'ny maha-ara-dalana ny fanodinana talohan'ny fanesorana.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Midika fanekena ireo fepetra ireo ny fampiasana an'i Wedingo. I Wedingo dia sehatra hamoronana sy hitantanana fanasan-dravina.\n\nManolo-tena ny mpampiasa tsy hampiasa ny sehatra ho an'ny tanjona tsy ara-dalana na handefasana atiny manafintohina.\n\nTsy tompon'andraikitra amin'ny atiny noforonin'ny mpampiasa na amin'ny fampiasan'ny vahiny ny angon-drakitra manokana i Wedingo.\n\nManana zo hanova ireo fepetra ireo izahay. Hambara amin'ny alalan'ny sehatra ny fanovana.\n\nHo an'ny mponina any California: raha misy fifanoherana eo amin'ireo fepetra ireo sy ny CCPA, dia ny zo nomen'ny CCPA no hanjaka.",
     "legalText": "Araka ny andininy faha-10 amin'ny Lalàna 34/2002, tamin'ny 11 Jolay, momba ny Sampan-draharahan'ny Fiaraha-monina Fampahalalam-baovao sy ny Varotra Elektronika (LSSI-CE), dia ambarana fa:\n\nTompon'andraikitra: Adrián Carrasco López\nMailaka: adriancl2001@gmail.com\nTanjona amin'ny tranokala: sehatra fanasan-dravina manokana.\n\nIty tranokala ity dia mampiasa Firebase (Google LLC) ho fotodrafitrasa fampiantranoana sy fitehirizana, miaraka amin'ireo mpizara ao amin'ny Vondrona Eoropeana."
   },
@@ -3442,7 +3445,8 @@
       null,
       null,
       6
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -4964,5 +4968,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

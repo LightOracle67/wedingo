@@ -1468,7 +1468,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1710,7 +1712,8 @@
     "generateToken": "Ƙirƙiri sabuwar lamba",
     "logout": "Fita",
     "deleteDataDescription": "Idan kana son amfani da haƙƙoƙin ARSO, za ka iya share duk bayananka.",
-    "deleteInvitation": "Share gayyata da duk bayanana"
+    "deleteInvitation": "Share gayyata da duk bayanana",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Tallafi",
@@ -1771,12 +1774,12 @@
   },
   "cookie": {
     "title": "Yardar cookie",
-    "text": "Wedingo yana amfani da ajiya na gida da ake buƙata don aikin gayyata (ajiye zamanka da zaɓuɓɓuka). Ba ma amfani da cookies na ɓangare na uku ko masu bin diddigi.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Karɓa",
     "reject": "Ƙi",
     "configure": "Tsara",
     "necessary": "Ajiya da ake buƙata",
-    "analytics": "Ƙididdigar ziyara",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Ajiye zaɓuɓɓuka",
     "settingsTitle": "Tsara cookies"
   },
@@ -1785,7 +1788,7 @@
     "sectionTerms": "Sharuɗɗan Amfani",
     "sectionLegal": "Sanarwar Shari'a",
     "modalTitle": "Bayanan shari'a",
-    "privacyPolicy": "Mai kula da sarrafa bayanai: Adrián Carrasco López. Lamba: adriancl2001@gmail.com. Manufa: sarrafa gayyatar aure, tabbatar da halarta da sadarwar taron.\n\nTushen shari'a: yardar mai sha'awa (Art. 6.1.a GDPR). Ana sarrafa bayanan lafiya (allergies na abinci da rashin haƙuri) tare da yarda bayyananniya (Art. 9.2.a GDPR) don daidaita menu na bikin.\n\nBayanan da aka tattara: suna, zaɓuɓɓukan abinci (allergies da rashin haƙuri), hotuna da aka loda da son rai, bayanan banki idan an bayar da su da son rai.\n\nMasu karɓa: Google LLC (Firebase, Google Cloud Platform) da ke Amurka. Google ya yi rijista ga Ƙa'idodin Kwangila na Standard (SCC) da Hukumar Turai ta amince da su (Shawarar Zartarwa 2021/914) kuma yana da Yarjejeniyar Sarrafa Bayanai (DPA) bisa ga Art. 28 GDPR. Bugu da ƙari, Google ya bi Tsarin Sirrin Bayanai (DPF) EU-US, UK-US da Switzerland-US.\n\nCanja wurin ƙasa da ƙasa: ana ajiye bayanai a sabobin Google Cloud a yankin eur3 (Turai, Frankfurt). Lokacin da ake buƙatar canja bayanai zuwa Amurka, canja wurin yana da kariya ta SCC da takardar shaidar DPF ta Google.\n\nLokacin ajiya: ana ajiye bayanan baƙi har zuwa watanni 12 bayan ranar taron. Bayan wannan lokacin, za a share su kai tsaye. Ana ajiye bayanan tsarin mahalicci muddin asusun yana aiki.\n\nHaƙƙoƙi: za ka iya amfani da haƙƙoƙin samun dama, gyara, shafewa, ƙuntatawa, ɗauka da adawa ta hanyar rubuta zuwa adriancl2001@gmail.com. Baƙi za su iya neman shafe bayanansu ta nuna sunansu da gayyatarsu. Za mu amsa buƙatarka cikin matsakaicin kwanaki 30.\n\nHaƙƙin janye yarda: za ka iya janye yardarka a kowane lokaci, don tasiri na gaba, ta hanyoyin da aka nuna a sama. Janyewar ba ta shafar halaccin sarrafawar da ta gabata.\n\nHaƙƙin ƙara zuwa hukumar kulawa: a ƙarƙashin GDPR, kana da haƙƙin ƙara zuwa hukumar kare bayanai a cikin ikonka. A Spain: AEPD (www.aepd.es).",
+    "privacyPolicy": "Mai kula da sarrafa bayanai: Adrián Carrasco López. Lamba: adriancl2001@gmail.com. Manufa: sarrafa gayyatar aure, tabbatar da halarta da sadarwar taron.\n\nTushen shari'a: yardar mai sha'awa (Art. 6.1.a GDPR). Ana sarrafa bayanan lafiya (allergies na abinci da rashin haƙuri) tare da yarda bayyananniya (Art. 9.2.a GDPR) don daidaita menu na bikin.\n\nBayanan da aka tattara: suna, zaɓuɓɓukan abinci (allergies da rashin haƙuri), hotuna da aka loda da son rai, bayanan banki idan an bayar da su da son rai.\n\nMasu karɓa: Google LLC (Firebase, Google Cloud Platform) da ke Amurka. Google ya yi rijista ga Ƙa'idodin Kwangila na Standard (SCC) da Hukumar Turai ta amince da su (Shawarar Zartarwa 2021/914) kuma yana da Yarjejeniyar Sarrafa Bayanai (DPA) bisa ga Art. 28 GDPR. Bugu da ƙari, Google ya bi Tsarin Sirrin Bayanai (DPF) EU-US, UK-US da Switzerland-US.\n\nCanja wurin ƙasa da ƙasa: ana ajiye bayanai a sabobin Google Cloud a yankin eur3 (Turai, Frankfurt). Lokacin da ake buƙatar canja bayanai zuwa Amurka, canja wurin yana da kariya ta SCC da takardar shaidar DPF ta Google.\n\nLokacin ajiya: ana ajiye bayanan baƙi har zuwa watanni 12 bayan ranar taron. Bayan wannan lokacin, za a share su kai tsaye. Ana ajiye bayanan tsarin mahalicci muddin asusun yana aiki.\n\nHaƙƙoƙi: za ka iya amfani da haƙƙoƙin samun dama, gyara, shafewa, ƙuntatawa, ɗauka da adawa ta hanyar rubuta zuwa adriancl2001@gmail.com. Baƙi za su iya neman shafe bayanansu ta nuna sunansu da gayyatarsu. Za mu amsa buƙatarka cikin matsakaicin kwanaki 30.\n\nHaƙƙin janye yarda: za ka iya janye yardarka a kowane lokaci, don tasiri na gaba, ta hanyoyin da aka nuna a sama. Janyewar ba ta shafar halaccin sarrafawar da ta gabata.\n\nHaƙƙin ƙara zuwa hukumar kulawa: a ƙarƙashin GDPR, kana da haƙƙin ƙara zuwa hukumar kare bayanai a cikin ikonka. A Spain: AEPD (www.aepd.es).\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Amfani da Wedingo yana nufin karɓar waɗannan sharuɗɗan. Wedingo dandamali ne don ƙirƙira da sarrafa gayyatar aure.\n\nMai amfani ya yarda ba zai yi amfani da dandamalin don dalilai marasa doka ba ko aika abun ciki na cin fuska.\n\nWedingo ba shi da alhakin abun ciki da masu amfani suka ƙirƙira ko amfanin da baƙi za su yi da bayanan sirrinsu.\n\nMun riƙe haƙƙin canza waɗannan sharuɗɗan. Za a sanar da canje-canje ta hanyar dandamali.\n\nGa mazaunan California: idan akwai rikici tsakanin waɗannan sharuɗɗan da CCPA, haƙƙoƙin da CCPA ta bayar za su fifita.",
     "legalText": "Bisa ga biyayya da Mataki na 10 na Dokar 34/2002, na 11 ga Yuli, kan Ayyukan Jama'ar Watsa Labarai da Kasuwancin Lantarki (LSSI-CE), an sanar da cewa:\n\nMai alhaki: Adrián Carrasco López\nImel: adriancl2001@gmail.com\nManufar gidan yanar: dandamalin gayyatar aure na musamman.\n\nWannan gidan yanar yana amfani da Firebase (Google LLC) azaman kayan aikin hosting da ajiya, tare da sabobin a Tarayyar Turai."
   },
@@ -3856,7 +3859,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5534,5 +5538,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

@@ -1468,7 +1468,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1710,7 +1712,8 @@
     "generateToken": "Iġġenera kodiċi ġdid",
     "logout": "Oħroġ",
     "deleteDataDescription": "Jekk tixtieq teżerċita d-drittijiet ARSO tiegħek, tista' tħassar id-dejta kollha tiegħek.",
-    "deleteInvitation": "Ħassar l-istedina tiegħi u d-dejta kollha tiegħi"
+    "deleteInvitation": "Ħassar l-istedina tiegħi u d-dejta kollha tiegħi",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Appoġġ",
@@ -1771,12 +1774,12 @@
   },
   "cookie": {
     "title": "Kunsens għall-cookies",
-    "text": "Wedingo tuża ħażna lokali meħtieġa għall-funzjonament tal-istedina (ssalva s-sessjoni u l-preferenzi tiegħek). Ma nużawx cookies ta' partijiet terzi jew trackers.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Aċċetta",
     "reject": "Irrifjuta",
     "configure": "Ikkonfigura",
     "necessary": "Ħażna meħtieġa",
-    "analytics": "Statistika taż-żjarat",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Salva l-preferenzi",
     "settingsTitle": "Ikkonfigura l-cookies"
   },
@@ -1785,7 +1788,7 @@
     "sectionTerms": "Termini tal-Użu",
     "sectionLegal": "Avviż Legali",
     "modalTitle": "Informazzjoni legali",
-    "privacyPolicy": "Responsabbli għat-trattament: Adrián Carrasco López. Kuntatt: adriancl2001@gmail.com. Għan: ġestjoni tal-istediniet tat-tieġ, konferma tal-attendenza u komunikazzjoni tal-avvenimenti.\n\nBażi legali: kunsens tal-interessat (art. 6.1.a GDPR). Id-dejta tas-saħħa (allerġiji u intolleranzi alimentari) tiġi ttrattata b'kunsens espliċitu (art. 9.2.a GDPR) biex jiġi adattat il-menu taċ-ċelebrazzjoni.\n\nDejta miġbura: isem, preferenzi alimentari (allerġiji u intolleranzi), immaġnijiet ittella' volontarjament, dejta bankarja jekk ipprovduta volontarjament.\n\nDestinatarji: Google LLC (Firebase, Google Cloud Platform) bl-uffiċċju fl-Istati Uniti. Google ffirmat il-Klawżoli Kuntrattwali Standard (SCC) approvati mill-Kummissjoni Ewropea (Deċiżjoni ta' Implimentazzjoni 2021/914) u għandha Data Processing Agreement (DPA) konformi mal-art. 28 GDPR. Barra minn hekk, Google tikkonforma mad-Data Privacy Framework (DPF) UE-Istati Uniti, Renju Unit-Istati Uniti u Żvizzera-Istati Uniti, ċertifikazzjoni li tiggarantixxi livell ta' protezzjoni adegwat għat-trasferimenti internazzjonali tad-dejta.\n\nTrasferimenti internazzjonali: id-dejta tinħażen fuq servers ta' Google Cloud fir-reġjun eur3 (Ewropa, Frankfurt). Meta jkun meħtieġ li tiġi ttrasferita dejta lejn l-Istati Uniti, it-trasferiment ikun kopert mill-SCC u miċ-ċertifikazzjoni DPF ta' Google.\n\nPerjodu ta' konservazzjoni: id-dejta tal-mistednin tinżamm sa 12-il xahar wara d-data tal-avveniment. Wara dan il-perjodu, titħassar awtomatikament. Id-dejta tal-konfigurazzjoni tal-kreatur tinżamm sakemm il-kont ikun attiv.\n\nDrittijiet: tista' teżerċita d-drittijiet tiegħek ta' aċċess, rettifika, tħassir, limitazzjoni, portabbiltà u oppożizzjoni billi tikteb lil adriancl2001@gmail.com. Il-mistednin jistgħu jitolbu t-tħassir tad-dejta tagħhom billi jindikaw isimhom u l-istedina. Se nirrispondu għat-talba tiegħek fi żmien massimu ta' 30 jum.\n\nDritt li tirtira l-kunsens: tista' tirtira l-kunsens tiegħek fi kwalunkwe mument billi tikteb lil adriancl2001@gmail.com, mingħajr ma taffettwa l-legalità tat-trattament ibbażat fuq il-kunsens qabel l-irtirar tiegħu.",
+    "privacyPolicy": "Responsabbli għat-trattament: Adrián Carrasco López. Kuntatt: adriancl2001@gmail.com. Għan: ġestjoni tal-istediniet tat-tieġ, konferma tal-attendenza u komunikazzjoni tal-avvenimenti.\n\nBażi legali: kunsens tal-interessat (art. 6.1.a GDPR). Id-dejta tas-saħħa (allerġiji u intolleranzi alimentari) tiġi ttrattata b'kunsens espliċitu (art. 9.2.a GDPR) biex jiġi adattat il-menu taċ-ċelebrazzjoni.\n\nDejta miġbura: isem, preferenzi alimentari (allerġiji u intolleranzi), immaġnijiet ittella' volontarjament, dejta bankarja jekk ipprovduta volontarjament.\n\nDestinatarji: Google LLC (Firebase, Google Cloud Platform) bl-uffiċċju fl-Istati Uniti. Google ffirmat il-Klawżoli Kuntrattwali Standard (SCC) approvati mill-Kummissjoni Ewropea (Deċiżjoni ta' Implimentazzjoni 2021/914) u għandha Data Processing Agreement (DPA) konformi mal-art. 28 GDPR. Barra minn hekk, Google tikkonforma mad-Data Privacy Framework (DPF) UE-Istati Uniti, Renju Unit-Istati Uniti u Żvizzera-Istati Uniti, ċertifikazzjoni li tiggarantixxi livell ta' protezzjoni adegwat għat-trasferimenti internazzjonali tad-dejta.\n\nTrasferimenti internazzjonali: id-dejta tinħażen fuq servers ta' Google Cloud fir-reġjun eur3 (Ewropa, Frankfurt). Meta jkun meħtieġ li tiġi ttrasferita dejta lejn l-Istati Uniti, it-trasferiment ikun kopert mill-SCC u miċ-ċertifikazzjoni DPF ta' Google.\n\nPerjodu ta' konservazzjoni: id-dejta tal-mistednin tinżamm sa 12-il xahar wara d-data tal-avveniment. Wara dan il-perjodu, titħassar awtomatikament. Id-dejta tal-konfigurazzjoni tal-kreatur tinżamm sakemm il-kont ikun attiv.\n\nDrittijiet: tista' teżerċita d-drittijiet tiegħek ta' aċċess, rettifika, tħassir, limitazzjoni, portabbiltà u oppożizzjoni billi tikteb lil adriancl2001@gmail.com. Il-mistednin jistgħu jitolbu t-tħassir tad-dejta tagħhom billi jindikaw isimhom u l-istedina. Se nirrispondu għat-talba tiegħek fi żmien massimu ta' 30 jum.\n\nDritt li tirtira l-kunsens: tista' tirtira l-kunsens tiegħek fi kwalunkwe mument billi tikteb lil adriancl2001@gmail.com, mingħajr ma taffettwa l-legalità tat-trattament ibbażat fuq il-kunsens qabel l-irtirar tiegħu.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "L-użu ta' Wedingo jimplika l-aċċettazzjoni ta' dawn it-termini. Wedingo hija pjattaforma biex toħloq u timmaniġġja stediniet tat-tieġ.\n\nL-utent jimpenja ruħu li ma jużax il-pjattaforma għal finijiet illeċiti jew biex jibgħat kontenut offensiv.\n\nWedingo mhix responsabbli għall-kontenut iġġenerat mill-utenti jew għall-użu li l-mistednin jagħmlu mid-dejta personali tagħhom.\n\nNirriżervaw id-dritt li nimmodifikaw dawn it-termini. Il-bidliet se jiġu notifikati permezz tal-pjattaforma.\n\nGħar-residenti f'California: f'każ ta' kunflitt bejn dawn it-termini u s-CCPA, jipprevalu d-drittijiet mogħtija mis-CCPA.",
     "legalText": "F'konformità mal-artikolu 10 tal-Liġi 34/2002, tal-11 ta' Lulju, dwar is-Servizzi tas-Soċjetà tal-Informazzjoni u l-Kummerċ Elettroniku (LSSI-CE), huwa infurmat:\n\nResponsabbli: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nGħan tas-sit web: pjattaforma ta' stediniet tat-tieġ personalizzati.\n\nDan is-sit web juża Firebase (Google LLC) bħala infrastruttura ta' hosting u ħażna, b'servers fl-Unjoni Ewropea."
   },
@@ -3875,7 +3878,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5553,5 +5557,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

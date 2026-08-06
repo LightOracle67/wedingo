@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1691,7 +1693,8 @@
     "generateToken": "Gjenero kod të ri",
     "logout": "Dil",
     "deleteDataDescription": "Nëse dëshiron të ushtrosh të drejtat e tua, mund të fshish të gjitha të dhënat.",
-    "deleteInvitation": "Fshij ftesën time dhe të gjitha të dhënat e mia"
+    "deleteInvitation": "Fshij ftesën time dhe të gjitha të dhënat e mia",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Mbështetje",
@@ -1733,12 +1736,12 @@
   },
   "cookie": {
     "title": "Pëlqimi për cookies",
-    "text": "Wedingo përdor ruajtjen lokale të nevojshme për funksionimin e ftesës (ruajtjen e sesionit dhe preferencave). Nuk përdorim cookies të palëve të treta apo gjurmues.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Prano",
     "reject": "Refuzo",
     "configure": "Konfiguro",
     "necessary": "Ruajtje e nevojshme",
-    "analytics": "Statistika vizitash",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Ruaj preferencat",
     "settingsTitle": "Konfiguro cookies"
   },
@@ -1747,7 +1750,7 @@
     "sectionTerms": "Kushtet e Përdorimit",
     "sectionLegal": "Shënim Ligjor",
     "modalTitle": "Informacion ligjor",
-    "privacyPolicy": "Përgjegjësi i trajtimit: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Qëllimi: menaxhimi i ftesave të dasmës, konfirmimi i pjesëmarrjes dhe komunikimi i ngjarjeve.\n\nBaza ligjore: pëlqimi i personit të interesuar (GDPR art. 6.1.a). Të dhënat shëndetësore (alergjitë ushqimore dhe intolerancat) trajtohen me pëlqim eksplicit (GDPR art. 9.2.a) për të përshtatur menunë e festës.\n\nTë dhënat e mbledhura: emri, preferencat ushqimore (alergjitë dhe intolerancat), imazhet e ngarkuara vullnetarisht, të dhënat bankare nëse sigurohen vullnetarisht.\n\nPërfituesit: Google LLC (Firebase, Google Cloud Platform) me seli në SHBA. Google ka nënshkruar Klauzolat Standarde të Kontratës (SCC) të miratuara nga Komisioni Evropian (Vendimi i Zbatimit 2021/914) dhe ka një Marrëveshje për Përpunimin e të Dhënave (DPA) në përputhje me GDPR art. 28. Për më tepër, Google përmbush Kuadrin e Privatësisë së të Dhënave (DPF) BE-SHBA, MB-SHBA dhe Zvicër-SHBA, certifikim që garanton një nivel të përshtatshëm mbrojtjeje për transferimet ndërkombëtare të të dhënave.\n\nTransferimet ndërkombëtare: të dhënat ruhen në serverat e Google Cloud në rajonin eur3 (Evropë, Frankfurt). Kur është e nevojshme të transferohen të dhënat në SHBA, transferimi bazohet në SCC dhe në certifikimin DPF të Google.\n\nPeriudha e ruajtjes: të dhënat e të ftuarve ruhen deri në 12 muaj pas datës së ngjarjes. Pas kësaj periudhe do të fshihen automatikisht. Të dhënat e konfigurimit të krijuesit ruhen derisa llogaria të jetë aktive.\n\nTë drejtat: mund të ushtrosh të drejtat e tua për akses, korrigjim, fshirje, kufizim, bartje dhe kundërshtim duke shkruar në adriancl2001@gmail.com. Të ftuarit mund të kërkojnë fshirjen e të dhënave të tyre duke treguar emrin dhe ftesën. Do t'i përgjigjemi kërkesës tënde brenda 30 ditëve.\n\nE drejta për të tërhequr pëlqimin: mund të tërheqësh pëlqimin tënd në çdo kohë pa ndikuar në ligjshmërinë e trajtimit të kryer para tërheqjes.\n\nVendime të automatizuara: nuk përdorim vendimmarrje të automatizuar, as profilizim.\n\nAutoriteti mbikëqyrës: nëse mendon se të drejtat e tua janë shkelur, mund të paraqesësh një ankesë pranë Komisionerit për të Drejtën e Informacionit dhe Mbrojtjen e të Dhënave Personale (www.idp.al).",
+    "privacyPolicy": "Përgjegjësi i trajtimit: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Qëllimi: menaxhimi i ftesave të dasmës, konfirmimi i pjesëmarrjes dhe komunikimi i ngjarjeve.\n\nBaza ligjore: pëlqimi i personit të interesuar (GDPR art. 6.1.a). Të dhënat shëndetësore (alergjitë ushqimore dhe intolerancat) trajtohen me pëlqim eksplicit (GDPR art. 9.2.a) për të përshtatur menunë e festës.\n\nTë dhënat e mbledhura: emri, preferencat ushqimore (alergjitë dhe intolerancat), imazhet e ngarkuara vullnetarisht, të dhënat bankare nëse sigurohen vullnetarisht.\n\nPërfituesit: Google LLC (Firebase, Google Cloud Platform) me seli në SHBA. Google ka nënshkruar Klauzolat Standarde të Kontratës (SCC) të miratuara nga Komisioni Evropian (Vendimi i Zbatimit 2021/914) dhe ka një Marrëveshje për Përpunimin e të Dhënave (DPA) në përputhje me GDPR art. 28. Për më tepër, Google përmbush Kuadrin e Privatësisë së të Dhënave (DPF) BE-SHBA, MB-SHBA dhe Zvicër-SHBA, certifikim që garanton një nivel të përshtatshëm mbrojtjeje për transferimet ndërkombëtare të të dhënave.\n\nTransferimet ndërkombëtare: të dhënat ruhen në serverat e Google Cloud në rajonin eur3 (Evropë, Frankfurt). Kur është e nevojshme të transferohen të dhënat në SHBA, transferimi bazohet në SCC dhe në certifikimin DPF të Google.\n\nPeriudha e ruajtjes: të dhënat e të ftuarve ruhen deri në 12 muaj pas datës së ngjarjes. Pas kësaj periudhe do të fshihen automatikisht. Të dhënat e konfigurimit të krijuesit ruhen derisa llogaria të jetë aktive.\n\nTë drejtat: mund të ushtrosh të drejtat e tua për akses, korrigjim, fshirje, kufizim, bartje dhe kundërshtim duke shkruar në adriancl2001@gmail.com. Të ftuarit mund të kërkojnë fshirjen e të dhënave të tyre duke treguar emrin dhe ftesën. Do t'i përgjigjemi kërkesës tënde brenda 30 ditëve.\n\nE drejta për të tërhequr pëlqimin: mund të tërheqësh pëlqimin tënd në çdo kohë pa ndikuar në ligjshmërinë e trajtimit të kryer para tërheqjes.\n\nVendime të automatizuara: nuk përdorim vendimmarrje të automatizuar, as profilizim.\n\nAutoriteti mbikëqyrës: nëse mendon se të drejtat e tua janë shkelur, mund të paraqesësh një ankesë pranë Komisionerit për të Drejtën e Informacionit dhe Mbrojtjen e të Dhënave Personale (www.idp.al).\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Përdorimi i Wedingo nënkupton pranimin e këtyre kushteve. Wedingo është një platformë për të krijuar dhe menaxhuar ftesa dasmash.\n\nPërdoruesi angazhohet të mos përdorë platformën për qëllime të paligjshme ose për të dërguar përmbajtje fyese.\n\nWedingo nuk mban përgjegjësi për përmbajtjen e krijuar nga përdoruesit ose për përdorimin që të ftuarit i bëjnë të dhënave të tyre personale.\n\nNe rezervojmë të drejtën të modifikojmë këto kushte. Ndryshimet do të njoftohen përmes platformës.\n\nPër banorët e Kalifornisë: në rast konflikti midis këtyre kushteve dhe CCPA, do të mbizotërojnë të drejtat e dhëna nga CCPA.",
     "legalText": "Në përputhje me legjislacionin në fuqi, njoftohet:\n\nPërgjegjës: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nQëllimi i faqes së internetit: platformë për ftesa dasmash të personalizuara.\n\nKjo faqe interneti përdor Firebase (Google LLC) si infrastrukturë hostimi dhe ruajtjeje, me servera në Bashkimin Evropian."
   },
@@ -3761,7 +3764,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5439,5 +5443,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

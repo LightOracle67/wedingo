@@ -1506,7 +1506,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1735,7 +1737,8 @@
     "generateToken": "Yangi kod yaratish",
     "logout": "Chiqish",
     "deleteDataDescription": "ARSO huquqlaringizdan foydalanmoqchi bo'lsangiz, barcha ma'lumotlaringizni o'chirishingiz mumkin.",
-    "deleteInvitation": "Taklifnomam va barcha ma'lumotlarimni o'chirish"
+    "deleteInvitation": "Taklifnomam va barcha ma'lumotlarimni o'chirish",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Qo'llab-quvvatlash",
@@ -1777,12 +1780,12 @@
   },
   "cookie": {
     "title": "Cookie roziligi",
-    "text": "Wedingo taklifnomaning ishlashi uchun zarur bo'lgan mahalliy xotiradan foydalanadi (sessiyangiz va afzalliklaringizni saqlash). Uchinchi tomon cookie yoki kuzatuvchilardan foydalanmaymiz.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Qabul qilish",
     "reject": "Rad etish",
     "configure": "Sozlash",
     "necessary": "Zarur xotira",
-    "analytics": "Tashrif statistikasi",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Afzalliklarni saqlash",
     "settingsTitle": "Cookie sozlash"
   },
@@ -1791,7 +1794,7 @@
     "sectionTerms": "Foydalanish shartlari",
     "sectionLegal": "Yuridik bildirishnoma",
     "modalTitle": "Yuridik ma'lumot",
-    "privacyPolicy": "Ma'lumotlarni qayta ishlash uchun javobgar: Adrián Carrasco López. Aloqa: adriancl2001@gmail.com. Maqsad: to'y taklifnomalarini boshqarish, ishtirokni tasdiqlash va tadbir xabarlari.\n\nYuridik asos: manfaatdor shaxsning roziligi (GDPR 6.1.a-modda). Sog'liq ma'lumotlari (oziq-ovqat allergiyalari va toqat qila olmaslik) bayram menyusini moslashtirish uchun aniq rozilik bilan (GDPR 9.2.a-modda) qayta ishlanadi.\n\nTo'plangan ma'lumotlar: ism, oziq-ovqat afzalliklari (allergiyalar va toqat qila olmaslik), ixtiyoriy yuklangan rasmlar, ixtiyoriy taqdim etilgan bank ma'lumotlari.\n\nQabul qiluvchilar: Google LLC (Firebase, Google Cloud Platform), AQShda joylashgan. Google Yevropa Komissiyasi tomonidan tasdiqlangan Standart Shartnoma Qoidalariga (SCC) (2021/914 Ijro Qarori) obuna bo'lgan va GDPR 28-moddasiga muvofiq Ma'lumotlarni Qayta Ishlash Shartnomasiga (DPA) ega. Bundan tashqari, Google YeI-AQSh, Buyuk Britaniya-AQSh va Shveytsariya-AQSh Ma'lumotlar Maxfiyligi Ramkasiga (DPF) mos keladi, bu sertifikat xalqaro ma'lumotlar uzatish uchun adekvat himoya darajasini kafolatlaydi.\n\nXalqaro uzatmalar: ma'lumotlar eur3 mintaqasidagi (Yevropa, Frankfurt) Google Cloud serverlarida saqlanadi. AQShga ma'lumotlarni uzatish zarur bo'lganda, uzatish SCC va Googlening DPF sertifikati bilan himoyalanadi.\n\nSaqlash muddati: mehmonlarning ma'lumotlari tadbir sanasidan keyin 12 oygacha saqlanadi. Ushbu muddat o'tgach, ular avtomatik ravishda o'chiriladi. Yaratuvchining sozlash ma'lumotlari hisob faol bo'lganda saqlanadi.\n\nHuquqlar: adriancl2001@gmail.com manziliga yozish orqali kirish, tuzatish, o'chirish, cheklash, portativlik va e'tiroz bildirish huquqlaringizdan foydalanishingiz mumkin. Mehmonlar o'z ismlari va taklifnomalarini ko'rsatib, ma'lumotlarini o'chirishni so'rashlari mumkin. So'rovingizga ko'pi bilan 30 kun ichida javob beramiz.\n\nRozilikni qaytarib olish huquqi: roziligingizni istalgan vaqtda, kelajakdagi ta'sir uchun, yuqorida ko'rsatilgan kanallar orqali qaytarib olishingiz mumkin. Qaytarib olish avvalgi qayta ishlashning qonuniyligiga ta'sir qilmaydi.\n\nNazorat organiga shikoyat qilish huquqi: GDPR bo'yicha, yurisdiksiyangizdagi ma'lumotlarni himoya qilish organiga shikoyat qilish huquqiga egasiz. Ispaniyada: AEPD (www.aepd.es).",
+    "privacyPolicy": "Ma'lumotlarni qayta ishlash uchun javobgar: Adrián Carrasco López. Aloqa: adriancl2001@gmail.com. Maqsad: to'y taklifnomalarini boshqarish, ishtirokni tasdiqlash va tadbir xabarlari.\n\nYuridik asos: manfaatdor shaxsning roziligi (GDPR 6.1.a-modda). Sog'liq ma'lumotlari (oziq-ovqat allergiyalari va toqat qila olmaslik) bayram menyusini moslashtirish uchun aniq rozilik bilan (GDPR 9.2.a-modda) qayta ishlanadi.\n\nTo'plangan ma'lumotlar: ism, oziq-ovqat afzalliklari (allergiyalar va toqat qila olmaslik), ixtiyoriy yuklangan rasmlar, ixtiyoriy taqdim etilgan bank ma'lumotlari.\n\nQabul qiluvchilar: Google LLC (Firebase, Google Cloud Platform), AQShda joylashgan. Google Yevropa Komissiyasi tomonidan tasdiqlangan Standart Shartnoma Qoidalariga (SCC) (2021/914 Ijro Qarori) obuna bo'lgan va GDPR 28-moddasiga muvofiq Ma'lumotlarni Qayta Ishlash Shartnomasiga (DPA) ega. Bundan tashqari, Google YeI-AQSh, Buyuk Britaniya-AQSh va Shveytsariya-AQSh Ma'lumotlar Maxfiyligi Ramkasiga (DPF) mos keladi, bu sertifikat xalqaro ma'lumotlar uzatish uchun adekvat himoya darajasini kafolatlaydi.\n\nXalqaro uzatmalar: ma'lumotlar eur3 mintaqasidagi (Yevropa, Frankfurt) Google Cloud serverlarida saqlanadi. AQShga ma'lumotlarni uzatish zarur bo'lganda, uzatish SCC va Googlening DPF sertifikati bilan himoyalanadi.\n\nSaqlash muddati: mehmonlarning ma'lumotlari tadbir sanasidan keyin 12 oygacha saqlanadi. Ushbu muddat o'tgach, ular avtomatik ravishda o'chiriladi. Yaratuvchining sozlash ma'lumotlari hisob faol bo'lganda saqlanadi.\n\nHuquqlar: adriancl2001@gmail.com manziliga yozish orqali kirish, tuzatish, o'chirish, cheklash, portativlik va e'tiroz bildirish huquqlaringizdan foydalanishingiz mumkin. Mehmonlar o'z ismlari va taklifnomalarini ko'rsatib, ma'lumotlarini o'chirishni so'rashlari mumkin. So'rovingizga ko'pi bilan 30 kun ichida javob beramiz.\n\nRozilikni qaytarib olish huquqi: roziligingizni istalgan vaqtda, kelajakdagi ta'sir uchun, yuqorida ko'rsatilgan kanallar orqali qaytarib olishingiz mumkin. Qaytarib olish avvalgi qayta ishlashning qonuniyligiga ta'sir qilmaydi.\n\nNazorat organiga shikoyat qilish huquqi: GDPR bo'yicha, yurisdiksiyangizdagi ma'lumotlarni himoya qilish organiga shikoyat qilish huquqiga egasiz. Ispaniyada: AEPD (www.aepd.es).\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingo dan foydalanish ushbu shartlarni qabul qilishni anglatadi. Wedingo — to'y taklifnomalarini yaratish va boshqarish platformasi.\n\nFoydalanuvchi platformani noqonuniy maqsadlarda yoki haqoratli kontent yuborish uchun ishlatmaslikka majburdir.\n\nWedingo foydalanuvchilar tomonidan yaratilgan kontent yoki mehmonlarning shaxsiy ma'lumotlaridan foydalanishi uchun javobgar emas.\n\nBiz ushbu shartlarni o'zgartirish huquqini saqlab qolamiz. O'zgarishlar platforma orqali xabar qilinadi.\n\nKaliforniya rezidentlari uchun: ushbu shartlar va CCPA o'rtasida ziddiyat yuzaga kelsa, CCPA tomonidan berilgan huquqlar ustunlik qiladi.",
     "legalText": "Axborot jamiyati xizmatlari va elektron tijorat to'g'risidagi 11 iyul 2002 yildagi 34/2002-sonli Qonunning (LSSI-CE) 10-moddasiga muvofiq xabar qilinadi:\n\nJavobgar: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nVeb-sayt maqsadi: shaxsiy to'y taklifnomalari platformasi.\n\nUshbu veb-sayt hosting va saqlash infratuzilmasi sifatida Firebase (Google LLC) dan foydalanadi, serverlar Yevropa Ittifoqida joylashgan."
   },
@@ -3805,7 +3808,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5470,5 +5474,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

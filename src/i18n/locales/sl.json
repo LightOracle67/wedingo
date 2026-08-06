@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1691,7 +1693,8 @@
     "generateToken": "Ustvari novo kodo",
     "logout": "Odjava",
     "deleteDataDescription": "Če želite uveljavljati svoje pravice ARSO, lahko izbrišete vse svoje podatke.",
-    "deleteInvitation": "Izbriši moje vabilo in vse moje podatke"
+    "deleteInvitation": "Izbriši moje vabilo in vse moje podatke",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Podpora",
@@ -1733,12 +1736,12 @@
   },
   "cookie": {
     "title": "Soglasje za piškotke",
-    "text": "Wedingo uporablja lokalno shranjevanje, potrebno za delovanje vabila (shranjevanje seje in preferenc). Ne uporabljamo piškotkov tretjih oseb ali sledilcev.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Sprejmi",
     "reject": "Zavrni",
     "configure": "Konfiguriraj",
     "necessary": "Potrebno shranjevanje",
-    "analytics": "Statistika obiskov",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Shrani nastavitve",
     "settingsTitle": "Konfiguriraj piškotke"
   },
@@ -1747,7 +1750,7 @@
     "sectionTerms": "Pogoji uporabe",
     "sectionLegal": "Pravno obvestilo",
     "modalTitle": "Pravne informacije",
-    "privacyPolicy": "Upravljavec osebnih podatkov: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Namen: upravljanje poročnih vabil, potrjevanje udeležbe in komunikacija dogodkov.\n\nPravna podlaga: privolitev posameznika (čl. 6.1.a GDPR). Zdravstveni podatki (alergije na hrano in intolerance) se obdelujejo z izrecno privolitvijo (čl. 9.2.a GDPR) za prilagoditev menija slavja.\n\nZbrani podatki: ime, prehranske preference (alergije in intolerance), prostovoljno naložene slike, bančni podatki, če so prostovoljno posredovani.\n\nPrejemniki: Google LLC (Firebase, Google Cloud Platform) s sedežem v ZDA. Google je podpisal Standardne pogodbene klavzule (SCC), ki jih je odobrila Evropska komisija (Izvedbeni sklep 2021/914), in ima Pogodbo o obdelavi podatkov (DPA) v skladu s čl. 28 GDPR. Poleg tega Google izpolnjuje Data Privacy Framework (DPF) EU-ZDA, Združeno kraljestvo-ZDA in Švica-ZDA, certifikacijo, ki zagotavlja ustrezno raven zaščite za mednarodne prenose podatkov.\n\nMednarodni prenosi: podatki so shranjeni na strežnikih Google Cloud v regiji eur3 (Evropa, Frankfurt). Kadar je potreben prenos podatkov v ZDA, je prenos krit s SCC in DPF certifikacijo Googla.\n\nObdobje hrambe: podatki gostov se hranijo do 12 mesecev po datumu dogodka. Po tem obdobju bodo samodejno izbrisani. Konfiguracijski podatki ustvarjalca se hranijo, dokler je račun aktiven.\n\nPravice: svoje pravice do dostopa, popravka, izbrisa, omejitve, prenosljivosti in ugovora lahko uveljavljate s pisanjem na adriancl2001@gmail.com. Gostje lahko zahtevajo izbris svojih podatkov tako, da navedejo svoje ime in vabilo. Na vašo zahtevo bomo odgovorili v največ 30 dneh.\n\nPravica do preklica privolitve: svojo privolitev lahko kadar koli prekličete s pisanjem na adriancl2001@gmail.com, ne da bi to vplivalo na zakonitost obdelave na podlagi privolitve pred njenim preklicem.",
+    "privacyPolicy": "Upravljavec osebnih podatkov: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Namen: upravljanje poročnih vabil, potrjevanje udeležbe in komunikacija dogodkov.\n\nPravna podlaga: privolitev posameznika (čl. 6.1.a GDPR). Zdravstveni podatki (alergije na hrano in intolerance) se obdelujejo z izrecno privolitvijo (čl. 9.2.a GDPR) za prilagoditev menija slavja.\n\nZbrani podatki: ime, prehranske preference (alergije in intolerance), prostovoljno naložene slike, bančni podatki, če so prostovoljno posredovani.\n\nPrejemniki: Google LLC (Firebase, Google Cloud Platform) s sedežem v ZDA. Google je podpisal Standardne pogodbene klavzule (SCC), ki jih je odobrila Evropska komisija (Izvedbeni sklep 2021/914), in ima Pogodbo o obdelavi podatkov (DPA) v skladu s čl. 28 GDPR. Poleg tega Google izpolnjuje Data Privacy Framework (DPF) EU-ZDA, Združeno kraljestvo-ZDA in Švica-ZDA, certifikacijo, ki zagotavlja ustrezno raven zaščite za mednarodne prenose podatkov.\n\nMednarodni prenosi: podatki so shranjeni na strežnikih Google Cloud v regiji eur3 (Evropa, Frankfurt). Kadar je potreben prenos podatkov v ZDA, je prenos krit s SCC in DPF certifikacijo Googla.\n\nObdobje hrambe: podatki gostov se hranijo do 12 mesecev po datumu dogodka. Po tem obdobju bodo samodejno izbrisani. Konfiguracijski podatki ustvarjalca se hranijo, dokler je račun aktiven.\n\nPravice: svoje pravice do dostopa, popravka, izbrisa, omejitve, prenosljivosti in ugovora lahko uveljavljate s pisanjem na adriancl2001@gmail.com. Gostje lahko zahtevajo izbris svojih podatkov tako, da navedejo svoje ime in vabilo. Na vašo zahtevo bomo odgovorili v največ 30 dneh.\n\nPravica do preklica privolitve: svojo privolitev lahko kadar koli prekličete s pisanjem na adriancl2001@gmail.com, ne da bi to vplivalo na zakonitost obdelave na podlagi privolitve pred njenim preklicem.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Uporaba Wedingo pomeni sprejetje teh pogojev. Wedingo je platforma za ustvarjanje in upravljanje poročnih vabil.\n\nUporabnik se zavezuje, da platforme ne bo uporabljal za nezakonite namene ali za pošiljanje žaljivih vsebin.\n\nWedingo ne odgovarja za vsebine, ki jih ustvarijo uporabniki, ali za uporabo osebnih podatkov s strani gostov.\n\nPridržujemo si pravico do spremembe teh pogojev. Spremembe bodo sporočene prek platforme.\n\nZa rezidente Kalifornije: v primeru neskladja med temi pogoji in CCPA imajo prednost pravice, podeljene s CCPA.",
     "legalText": "V skladu s členom 10 španskega zakona 34/2002 z dne 11. julija o storitvah informacijske družbe in elektronskem poslovanju (LSSI-CE) se obvešča:\n\nUpravljavec: Adrián Carrasco López\nE-pošta: adriancl2001@gmail.com\nNamen spletnega mesta: platforma za personalizirana poročna vabila.\n\nTo spletno mesto uporablja Firebase (Google LLC) kot infrastrukturo za gostovanje in shranjevanje s strežniki v Evropski uniji."
   },
@@ -3761,7 +3764,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5439,5 +5443,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

@@ -353,7 +353,9 @@
     "galleryDescriptionSaveFailed": "Fehler beim Speichern der Beschreibung",
     "galleryDescriptionSaved": "Beschreibung gespeichert",
     "currentMusic": "Ausgewählte Musik",
-    "removeMusic": "Musik entfernen"
+    "removeMusic": "Musik entfernen",
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -531,7 +533,8 @@
     "generateToken": "Neuen Code generieren",
     "logout": "Abmelden",
     "deleteDataDescription": "Wenn du deine Betroffenenrechte ausüben möchtest, kannst du all deine Daten löschen.",
-    "deleteInvitation": "Meine Einladung und alle meine Daten löschen"
+    "deleteInvitation": "Meine Einladung und alle meine Daten löschen",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Unterstützung",
@@ -573,12 +576,12 @@
   },
   "cookie": {
     "title": "Cookie-Zustimmung",
-    "text": "Wedingo verwendet notwendige lokale Speicherung für den Betrieb der Einladung (Speicherung deiner Sitzung und Einstellungen). Wir verwenden keine Drittanbieter-Cookies oder Tracker.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Akzeptieren",
     "reject": "Ablehnen",
     "configure": "Konfigurieren",
     "necessary": "Notwendige Speicherung",
-    "analytics": "Besuchsstatistik",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Einstellungen speichern",
     "settingsTitle": "Cookies konfigurieren"
   },
@@ -587,7 +590,7 @@
     "sectionTerms": "Nutzungsbedingungen",
     "sectionLegal": "Impressum",
     "modalTitle": "Rechtliche Informationen",
-    "privacyPolicy": "Verantwortlicher: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Zweck: Verwaltung von Hochzeitseinladungen, Rückmeldung und Eventkommunikation.\n\nRechtsgrundlage: Einwilligung der betroffenen Person (Art. 6.1.a DSGVO). Gesundheitsdaten (Allergien und Lebensmittelunverträglichkeiten) werden mit ausdrücklicher Einwilligung (Art. 9.2.a DSGVO) zur Anpassung des Menüs verarbeitet.\n\nErhobene Daten: Name, Ernährungspräferenzen (Allergien und Unverträglichkeiten), freiwillig hochgeladene Bilder, freiwillig angegebene Bankdaten.\n\nEmpfänger: Google LLC (Firebase, Google Cloud Platform) mit Sitz in den USA. Google hat die von der Europäischen Kommission genehmigten Standardvertragsklauseln (SCC, Durchführungsbeschluss 2021/914) unterzeichnet und verfügt über eine Auftragsverarbeitungsvereinbarung (DPA) gemäß Art. 28 DSGVO. Darüber hinaus erfüllt Google das Data Privacy Framework (DPF) EU-USA, UK-USA und Schweiz-USA, eine Zertifizierung, die ein angemessenes Schutzniveau für internationale Datenübermittlungen gewährleistet.\n\nInternationale Übermittlungen: Die Daten werden auf Google-Cloud-Servern in der Region eur3 (Europa, Frankfurt) gespeichert. Wenn eine Übermittlung in die USA erforderlich ist, erfolgt diese auf Grundlage der SCC und der DPF-Zertifizierung von Google.\n\nSpeicherdauer: Die Daten der Gäste werden bis zu 12 Monate nach dem Veranstaltungsdatum aufbewahrt. Nach Ablauf dieser Frist werden sie automatisch gelöscht. Die Konfigurationsdaten des Erstellers bleiben so lange gespeichert, wie das Konto aktiv ist.\n\nRechte: Du kannst deine Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch ausüben, indem du eine E-Mail an adriancl2001@gmail.com sendest. Gäste können die Löschung ihrer Daten unter Angabe ihres Namens und der Einladung beantragen. Wir bearbeiten deine Anfrage innerhalb von maximal 30 Tagen.\n\nRecht auf Widerruf der Einwilligung: Du kannst deine Einwilligung jederzeit widerrufen, ohne dass die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung berührt wird.\n\nBeschwerderecht: Du hast das Recht, bei einer Aufsichtsbehörde Beschwerde einzulegen, wenn du der Ansicht bist, dass die Verarbeitung gegen die DSGVO verstößt.",
+    "privacyPolicy": "Verantwortlicher: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Zweck: Verwaltung von Hochzeitseinladungen, Rückmeldung und Eventkommunikation.\n\nRechtsgrundlage: Einwilligung der betroffenen Person (Art. 6.1.a DSGVO). Gesundheitsdaten (Allergien und Lebensmittelunverträglichkeiten) werden mit ausdrücklicher Einwilligung (Art. 9.2.a DSGVO) zur Anpassung des Menüs verarbeitet.\n\nErhobene Daten: Name, Ernährungspräferenzen (Allergien und Unverträglichkeiten), freiwillig hochgeladene Bilder, freiwillig angegebene Bankdaten.\n\nEmpfänger: Google LLC (Firebase, Google Cloud Platform) mit Sitz in den USA. Google hat die von der Europäischen Kommission genehmigten Standardvertragsklauseln (SCC, Durchführungsbeschluss 2021/914) unterzeichnet und verfügt über eine Auftragsverarbeitungsvereinbarung (DPA) gemäß Art. 28 DSGVO. Darüber hinaus erfüllt Google das Data Privacy Framework (DPF) EU-USA, UK-USA und Schweiz-USA, eine Zertifizierung, die ein angemessenes Schutzniveau für internationale Datenübermittlungen gewährleistet.\n\nInternationale Übermittlungen: Die Daten werden auf Google-Cloud-Servern in der Region eur3 (Europa, Frankfurt) gespeichert. Wenn eine Übermittlung in die USA erforderlich ist, erfolgt diese auf Grundlage der SCC und der DPF-Zertifizierung von Google.\n\nSpeicherdauer: Die Daten der Gäste werden bis zu 12 Monate nach dem Veranstaltungsdatum aufbewahrt. Nach Ablauf dieser Frist werden sie automatisch gelöscht. Die Konfigurationsdaten des Erstellers bleiben so lange gespeichert, wie das Konto aktiv ist.\n\nRechte: Du kannst deine Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerspruch ausüben, indem du eine E-Mail an adriancl2001@gmail.com sendest. Gäste können die Löschung ihrer Daten unter Angabe ihres Namens und der Einladung beantragen. Wir bearbeiten deine Anfrage innerhalb von maximal 30 Tagen.\n\nRecht auf Widerruf der Einwilligung: Du kannst deine Einwilligung jederzeit widerrufen, ohne dass die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung berührt wird.\n\nBeschwerderecht: Du hast das Recht, bei einer Aufsichtsbehörde Beschwerde einzulegen, wenn du der Ansicht bist, dass die Verarbeitung gegen die DSGVO verstößt.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Die Nutzung von Wedingo setzt die Zustimmung zu diesen Bedingungen voraus. Wedingo ist eine Plattform zur Erstellung und Verwaltung von Hochzeitseinladungen.\n\nDer Nutzer verpflichtet sich, die Plattform nicht für rechtswidrige Zwecke oder zum Versenden anstößiger Inhalte zu nutzen.\n\nWedingo übernimmt keine Haftung für die von den Nutzern erstellten Inhalte oder für die Verwendung ihrer personenbezogenen Daten durch die Gäste.\n\nWir behalten uns das Recht vor, diese Bedingungen zu ändern. Änderungen werden über die Plattform mitgeteilt.\n\nFür Einwohner Kaliforniens: Im Falle eines Widerspruchs zwischen diesen Bedingungen und dem CCPA haben die durch den CCPA gewährten Rechte Vorrang.",
     "legalText": "Gemäß Artikel 10 des Gesetzes 34/2002 vom 11. Juli über Dienste der Informationsgesellschaft und des elektronischen Geschäftsverkehrs (LSSI-CE) wird Folgendes mitgeteilt:\n\nVerantwortlicher: Adrián Carrasco López\nE-Mail: adriancl2001@gmail.com\nZweck der Website: Plattform für personalisierte Hochzeitseinladungen.\n\nDiese Website nutzt Firebase (Google LLC) als Hosting- und Speicherinfrastruktur mit Servern in der Europäischen Union."
   },
@@ -1080,7 +1083,8 @@
   },
   "changelog": {
     "title": "Änderungsprotokoll",
-    "close": "Schließen"
+    "close": "Schließen",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "Für diese Einladung ist bereits eine Sitzung aktiv. Möchten Sie trotzdem einloggen? Die vorherige Sitzung wird geschlossen.",
@@ -1268,5 +1272,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

@@ -34,9 +34,15 @@ export default function LandingPage() {
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const loginAttemptsRef = useRef(0);
   const loginBlockedUntilRef = useRef(0);
+  const [creating, setCreating] = useState(false);
+  /** Error de la creación de invitación (visible en la vista principal,
+   *  no en el modal de login). */
+  const [createError, setCreateError] = useState("");
 
   const handleCreate = async () => {
-    setError("");
+    if (creating) return;
+    setCreateError("");
+    setCreating(true);
 
     const token = generateInviteToken();
     // Token de setup generado y registrado (hash) antes de que exista la
@@ -50,7 +56,8 @@ export default function LandingPage() {
       await createSetupTokenRecord(token, setupToken);
     } catch (err) {
       console.error("[app]", "[LandingPage]", "create setup token failed", { error: err });
-      setError(t("landing.errorCreateFailed"));
+      setCreateError(t("landing.errorCreateFailed"));
+      setCreating(false);
       return;
     }
 
@@ -230,13 +237,18 @@ export default function LandingPage() {
             {t("landing.description")}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <button type="button" className="setup-button text-sm" onClick={handleCreate}>
-              {t("landing.createInvitation")}
+            <button type="button" className="setup-button text-sm" onClick={handleCreate} disabled={creating}>
+              {creating ? t("common.loading") : t("landing.createInvitation")}
             </button>
             <button type="button" className="setup-button setup-button--ghost text-sm" onClick={openModal}>
               {t("landing.haveInvitation")}
             </button>
           </div>
+          {createError ? (
+            <p className="setup-error" style={{ marginTop: "1rem" }} role="alert">
+              {createError}
+            </p>
+          ) : null}
         </div>
       </section>
       {showModal && (

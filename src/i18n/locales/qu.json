@@ -1410,7 +1410,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1652,7 +1654,8 @@
     "generateToken": "Musuq yupichayta paqarichiy",
     "logout": "Llamk'aymanta lluqsiy",
     "deleteDataDescription": "ARSO hayñiykikunata llamk'ichiyta munanki chayqa, llapan willayniykita qulluyta atinki.",
-    "deleteInvitation": "Waqyarikuyniyta hinaspa llapan willayniyta qulluy"
+    "deleteInvitation": "Waqyarikuyniyta hinaspa llapan willayniyta qulluy",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Yanapay",
@@ -1713,12 +1716,12 @@
   },
   "cookie": {
     "title": "Kuki awniy",
-    "text": "Wedingoqa waqyarikuy llamk'ananpaq munasqa kikin waqaychayta llamk'achin (llamk'ayniyki hinaspa akllaykunata waqaychanapaq). Kimsa kaq kukikunata nitaq qatiqkunatapas llamk'achiykuchu.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Chaskiy",
     "reject": "Manañay",
     "configure": "Allichay",
     "necessary": "Munasqa waqaychay",
-    "analytics": "Watukuy yupaychakuna",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Akllaykunata waqaychay",
     "settingsTitle": "Kukikunata allichay"
   },
@@ -1727,7 +1730,7 @@
     "sectionTerms": "Llamk'achiy Ruwaykuna",
     "sectionLegal": "Kamachiy Willay",
     "modalTitle": "Kamachiy willay",
-    "privacyPolicy": "Tratamientumanta mas'ud: Adrián Carrasco López. Tupay: adriancl2001@gmail.com. Ruwayninkuna: casamientopaq waqyarikuykamachiy, hamunapaq chiqañchay, ruwaykuna willaypas.\n\nKamachiy tiqsichay: interesadop awniynin (art. 6.1.a GDPR). Qali kay willaykuna (mikuy alirhiyakuna hinaspa mana aypay) awniy qawasqa (art. 9.2.a GDPR) raymipaq mikuyta allichanapaq llamk'achikun.\n\nHuñusqa willaykuna: suti, mikuy akllaykuna (alirhiyakuna hinaspa mana aypay), munaymanta churasqa phatukuna, qullqi wasi willaykuna munaymanta qusqa kaptin.\n\nChaskiqkuna: Google LLC (Firebase, Google Cloud Platform) Hukllachasqa Amirika Suyukunapi tiyasqa. Googleqa Yurupa Kumitipa (Iskaychay Rurachiy 2021/914) chiqañchasqan Tipo Kamachiy Clausekuna (SCC) haywasqa, art. 28 GDPRman hina Willay Tratamientu Awniy (DPA) nisqatapas kapun. Hinallataq, Googleqa Data Privacy Framework (DPF) UE-US, UK-US hinaspa Suwisa-US nisqawan kamachikun, kaymi mamallaqtapura willay apachiykunapaq kamachisqa waqaychayta qun.\n\nMamallaqtapura apachiykuna: willaykunaqa Google Cloud nisqap eur3 kuskapi serverkunapi waqaychasqa (Frankfurt, Alimanyapi). Hukllachasqa Amirika Suyukunaman willayta apachiy munasqa kaptin, apachiyqa SCC nisqapi hinaspa Googlep DPF chiqañchayninpi tiqsichasqa.\n\nWaqaychay pacha: waqyarisqakunap willayninkuqa ruway p'unchawmanta 12 killakama waqaychasqa. Chay pacha tukusqa kaptin, kikinmanta qullusqa kanqa. Kamariqp allichay willayninkunaqa llamk'aynin kawsachkaptin waqaychasqa.\n\nHayñikuna: qhaway, allichay, qulluchiy, saywachtay, apakamuy hinaspa hayñi hayñiykikunata adriancl2001@gmail.comman qillqamuspa llamk'ichiyta atinki. Waqyarisqakunaqa sutinta hinaspa waqyarikuyninta willaspa willayninkuta qulluchiyta mañakuwaq. Mañakuyniykita 30 p'unchawpi kutichisqayku.\n\nAwniyta qarachiy hayñi: hayk'aqllapas awniyniykita adriancl2001@gmail.comman qillqamuspa qarachiyta atinki. Awniy qarachiyqa ñawpaq awniywan ruwasqa willay tratamientu legal nisqaman mana yapaytaqmi chuqanchu.\n\nWillarikuy: hayñikuna sarunchasqa kaptin yuyanki chayqa, suyuykipi Willay Waaychay Kamachiqman utaq Yurupa Willay Waaychay Umalliq T'antaman (EDPB) willarikuyta atinki.\n\nWawa waqaychay: yanapayniykuqa 14 watamanta aswan sullkaqkunaman mana qusqachu. Wawakunamanta willay huñusqa kasqanta rikuruptiykuqa, chay ratullam qullusun.",
+    "privacyPolicy": "Tratamientumanta mas'ud: Adrián Carrasco López. Tupay: adriancl2001@gmail.com. Ruwayninkuna: casamientopaq waqyarikuykamachiy, hamunapaq chiqañchay, ruwaykuna willaypas.\n\nKamachiy tiqsichay: interesadop awniynin (art. 6.1.a GDPR). Qali kay willaykuna (mikuy alirhiyakuna hinaspa mana aypay) awniy qawasqa (art. 9.2.a GDPR) raymipaq mikuyta allichanapaq llamk'achikun.\n\nHuñusqa willaykuna: suti, mikuy akllaykuna (alirhiyakuna hinaspa mana aypay), munaymanta churasqa phatukuna, qullqi wasi willaykuna munaymanta qusqa kaptin.\n\nChaskiqkuna: Google LLC (Firebase, Google Cloud Platform) Hukllachasqa Amirika Suyukunapi tiyasqa. Googleqa Yurupa Kumitipa (Iskaychay Rurachiy 2021/914) chiqañchasqan Tipo Kamachiy Clausekuna (SCC) haywasqa, art. 28 GDPRman hina Willay Tratamientu Awniy (DPA) nisqatapas kapun. Hinallataq, Googleqa Data Privacy Framework (DPF) UE-US, UK-US hinaspa Suwisa-US nisqawan kamachikun, kaymi mamallaqtapura willay apachiykunapaq kamachisqa waqaychayta qun.\n\nMamallaqtapura apachiykuna: willaykunaqa Google Cloud nisqap eur3 kuskapi serverkunapi waqaychasqa (Frankfurt, Alimanyapi). Hukllachasqa Amirika Suyukunaman willayta apachiy munasqa kaptin, apachiyqa SCC nisqapi hinaspa Googlep DPF chiqañchayninpi tiqsichasqa.\n\nWaqaychay pacha: waqyarisqakunap willayninkuqa ruway p'unchawmanta 12 killakama waqaychasqa. Chay pacha tukusqa kaptin, kikinmanta qullusqa kanqa. Kamariqp allichay willayninkunaqa llamk'aynin kawsachkaptin waqaychasqa.\n\nHayñikuna: qhaway, allichay, qulluchiy, saywachtay, apakamuy hinaspa hayñi hayñiykikunata adriancl2001@gmail.comman qillqamuspa llamk'ichiyta atinki. Waqyarisqakunaqa sutinta hinaspa waqyarikuyninta willaspa willayninkuta qulluchiyta mañakuwaq. Mañakuyniykita 30 p'unchawpi kutichisqayku.\n\nAwniyta qarachiy hayñi: hayk'aqllapas awniyniykita adriancl2001@gmail.comman qillqamuspa qarachiyta atinki. Awniy qarachiyqa ñawpaq awniywan ruwasqa willay tratamientu legal nisqaman mana yapaytaqmi chuqanchu.\n\nWillarikuy: hayñikuna sarunchasqa kaptin yuyanki chayqa, suyuykipi Willay Waaychay Kamachiqman utaq Yurupa Willay Waaychay Umalliq T'antaman (EDPB) willarikuyta atinki.\n\nWawa waqaychay: yanapayniykuqa 14 watamanta aswan sullkaqkunaman mana qusqachu. Wawakunamanta willay huñusqa kasqanta rikuruptiykuqa, chay ratullam qullusun.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingo llamk'achiyqa kay ruwaykunata chaskiyta yupaychan. Wedingoqa casamientopaq waqyarikuyta kamariy hinaspa kamachiypaq patamartam.\n\nLlamk'achiqqa patamartata mana kamachisqa ruwaykunapaq nitaq k'amiq willayta kachanapaqpas mana llamk'achinanpaq awnin.\n\nWedingoqa llamk'achiqkuna paqarichisqan willaymanta nitaq waqyarisqakuna sapan willaykunawan imatachus ruwasqankumantapas mana mas'udchu.\n\nKay ruwaykunata hukchayta atillayku. Hukchaykuna patamarta ukhunpi willakunqa.\n\nCalifornia tiyaqkunapaq: kay ruwaykuna hinaspa CCPA iskayninpi awqanakuy kaptin, CCPA qusqan hayñikuna aswanta atinqa.",
     "legalText": "Yanapaypi 34/2002, Hulyu killa 11, LSSI-CE ley, kayta willakun:\n\nMas'ud: Adrián Carrasco López\nE-chaski: adriancl2001@gmail.com\nWeb kuska ruwaynin: kikillan casamientopaq waqyarikuy patamarta.\n\nKay web kuskaqa Firebase (Google LLC) nisqata waqaychana hinaspa wasichay rak'ina hina llamk'achin, Hukllachasqa Yurupapi serverkunayuq."
   },
@@ -3516,7 +3519,8 @@
       null,
       null,
       10
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5012,5 +5016,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

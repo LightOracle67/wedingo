@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.67.0",
+    date: "2026-08-06",
+    changes: [
+      "LEGALIDAD: OpenDyslexic autoalojada (sin peticiones a terceros), banner de cookies ampliado y política de privacidad con Sentry y Google Analytics como destinatarios",
+      "SEO: robots.txt permite indexar la landing, og:image genérica de respaldo, sitemap.xml, JSON-LD WebSite y manifest con icono maskable",
+      "ONBOARDING: el error de creación se ve en la landing, el token tiene botón «Copiar» y aviso de acceso único, «Crear» se deshabilita mientras crea, regenerar token pide confirmación, página 404 amigable",
+      "ACCESIBILIDAD: encabezados h2 en las secciones colapsables, tabs con roving tabindex y flechas, aria-controls en el superadmin, id duplicado corregido, contraste del toggle",
+      "PRODUCTO: historial de versiones paginado (5 + «ver historial») y modal en carga diferida",
+    ],
+  },
+  {
     version: "2.66.0",
     date: "2026-08-06",
     changes: [

@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1678,7 +1680,8 @@
     "generateToken": "نوی کوډ جوړ کړئ",
     "logout": "وتل",
     "deleteDataDescription": "که غواړئ د ARSO حقونه وکاروئ، کولی شئ خپل ټول معلومات حذف کړئ.",
-    "deleteInvitation": "زما بلنه او ټول معلومات حذف کړئ"
+    "deleteInvitation": "زما بلنه او ټول معلومات حذف کړئ",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "ملاتړ",
@@ -1720,12 +1723,12 @@
   },
   "cookie": {
     "title": "د کوکي رضایت",
-    "text": "Wedingo د بلنې د فعالیت لپاره اړین محلي ذخیره کاروي (ستاسې غونډه او غوره توبونه خوندي کول). موږ د دریمې ډلې کوکي یا تعقیبونکي نه کاروو.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "منل",
     "reject": "ردول",
     "configure": "تنظیمول",
     "necessary": "اړینه ذخیره",
-    "analytics": "د کتنې احصایې",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "غوره توبونه خوندي کړئ",
     "settingsTitle": "کوکي تنظیم کړئ"
   },
@@ -1734,7 +1737,7 @@
     "sectionTerms": "د کارولو شرایط",
     "sectionLegal": "قانوني خبرتیا",
     "modalTitle": "قانوني معلومات",
-    "privacyPolicy": "د پروسس مسؤل: Adrián Carrasco López. اړیکه: adriancl2001@gmail.com. موخه: د واده بلنو اداره، د گډون تایید او د پیښو اړیکه.\n\nقانوني اساس: د موضوع رضایت (د GDPR ۶.۱.a ماده). روغتیایي معلومات (خوراکي الرجي او نه زغمل) د ښکاره رضایت سره پروسس کېږي (د GDPR ۹.۲.a ماده) ترڅو د لمانځغونډې خواړه تنظیم شي.\n\nراټول شوي معلومات: نوم، خوراکي غوره توبونه (الرجي او نه زغمل)، په اختیاري توگه اپلوډ شوي انځورونه، بانکي معلومات که په اختیاري توگه ورکړل شي.\n\nترلاسه کوونکي: Google LLC (Firebase, Google Cloud Platform) چې مرکز یې په امریکا کې دی. Google د اروپایي کمیسیون لخوا منظور شوي معیاري قراردادي مادې (SCC) لاسلیک کړي (د ۲۰۲۱/۹۱۴ اجرایوي پرېکړه) او د GDPR ۲۸ مادې سره سم د معلوماتو پروسس تړون (DPA) لري. سربیره پردې، Google د EU-US، UK-US او سویس-US د معلوماتو محرمیت چوکاټ (DPF) سره مطابقت لري، کوم چې د نړیوالو معلوماتو لېږد لپاره د مناسب محافظت کچه تضمینوي.\n\nنړیوال لېږد: معلومات د Google Cloud په eur3 سیمه (اروپا، فرانکفورت) کې په سرورونو کې زیرمه کېږي. کله چې امریکا ته د معلوماتو لېږد اړین وي، لېږد د SCC او د Google د DPF سند لخوا خوندي کېږي.\n\nد ساتنې موده: د مېلمنو معلومات د پیښې له نیټې وروسته تر ۱۲ میاشتو پورې ساتل کېږي. د دې مودې وروسته، په اتومات ډول به حذف شي. د جوړوونکي ترتیبي معلومات تر هغه ساتل کېږي چې حساب فعال وي.\n\nحقوق: تاسې کولی شئ د لاسرسي، اصلاح، حذف، محدودیت، لېږدونې او اعتراض حقونه adriancl2001@gmail.com ته په لیکلو سره وکاروئ. مېلمانه کولی شي د خپل نوم او بلنې په ښودلو د خپلو معلوماتو حذف غوښتنه وکړي. موږ به ستاسې غوښتنې ته د ۳۰ ورځو په اوږدو کې ځواب ووایو.\n\nد رضایت بېرته اخیستو حق: تاسې کولی شئ هر وخت خپل رضایت بېرته واخلئ پرته له دې چې د بېرته اخیستو دمخه د پروسس قانونيتوب اغېزمن شي.",
+    "privacyPolicy": "د پروسس مسؤل: Adrián Carrasco López. اړیکه: adriancl2001@gmail.com. موخه: د واده بلنو اداره، د گډون تایید او د پیښو اړیکه.\n\nقانوني اساس: د موضوع رضایت (د GDPR ۶.۱.a ماده). روغتیایي معلومات (خوراکي الرجي او نه زغمل) د ښکاره رضایت سره پروسس کېږي (د GDPR ۹.۲.a ماده) ترڅو د لمانځغونډې خواړه تنظیم شي.\n\nراټول شوي معلومات: نوم، خوراکي غوره توبونه (الرجي او نه زغمل)، په اختیاري توگه اپلوډ شوي انځورونه، بانکي معلومات که په اختیاري توگه ورکړل شي.\n\nترلاسه کوونکي: Google LLC (Firebase, Google Cloud Platform) چې مرکز یې په امریکا کې دی. Google د اروپایي کمیسیون لخوا منظور شوي معیاري قراردادي مادې (SCC) لاسلیک کړي (د ۲۰۲۱/۹۱۴ اجرایوي پرېکړه) او د GDPR ۲۸ مادې سره سم د معلوماتو پروسس تړون (DPA) لري. سربیره پردې، Google د EU-US، UK-US او سویس-US د معلوماتو محرمیت چوکاټ (DPF) سره مطابقت لري، کوم چې د نړیوالو معلوماتو لېږد لپاره د مناسب محافظت کچه تضمینوي.\n\nنړیوال لېږد: معلومات د Google Cloud په eur3 سیمه (اروپا، فرانکفورت) کې په سرورونو کې زیرمه کېږي. کله چې امریکا ته د معلوماتو لېږد اړین وي، لېږد د SCC او د Google د DPF سند لخوا خوندي کېږي.\n\nد ساتنې موده: د مېلمنو معلومات د پیښې له نیټې وروسته تر ۱۲ میاشتو پورې ساتل کېږي. د دې مودې وروسته، په اتومات ډول به حذف شي. د جوړوونکي ترتیبي معلومات تر هغه ساتل کېږي چې حساب فعال وي.\n\nحقوق: تاسې کولی شئ د لاسرسي، اصلاح، حذف، محدودیت، لېږدونې او اعتراض حقونه adriancl2001@gmail.com ته په لیکلو سره وکاروئ. مېلمانه کولی شي د خپل نوم او بلنې په ښودلو د خپلو معلوماتو حذف غوښتنه وکړي. موږ به ستاسې غوښتنې ته د ۳۰ ورځو په اوږدو کې ځواب ووایو.\n\nد رضایت بېرته اخیستو حق: تاسې کولی شئ هر وخت خپل رضایت بېرته واخلئ پرته له دې چې د بېرته اخیستو دمخه د پروسس قانونيتوب اغېزمن شي.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "د Wedingo کارول د دې شرایطو منلو په معنی دی. Wedingo د واده بلنو جوړولو او ادارې لپاره یو پلاتفورم دی.\n\nکارن ژمنه کوي چې پلاتفورم د ناقانونه موخو یا برید کوونکي محتوا لېږلو لپاره نه کاروي.\n\nWedingo د کاروونکو لخوا جوړ شوي محتوا یا د مېلمنو لخوا د شخصي معلوماتو کارولو مسؤل نه دی.\n\nموږ د دې شرایطو د بدلولو حق لرو. بدلونونه به د پلاتفورم له لارې خبر شي.\n\nد کالیفورنیا اوسیدونکو لپاره: که د دې شرایطو او CCPA ترمنځ ټکر وي، د CCPA لخوا ورکړل شوي حقونه به برتري ولري.",
     "legalText": "د ۲۰۰۲ کال د جولای د ۱۱مې د ۳۴/۲۰۰۲ قانون د ۱۰ مادې سره سم، د معلوماتي ټولنې خدماتو او برېښنایي سوداګرۍ (LSSI-CE)، خبر ورکول کېږي:\n\nمسؤل: Adrián Carrasco López\nبرېښنالیک: adriancl2001@gmail.com\nد ویب پاڼې موخه: د ځانګړو واده بلنو پلاتفورم.\n\nدا ویب پاڼه Firebase (Google LLC) د کوربه توب او زیرمتون زیربنا په توگه کاروي، چې سرورونه یې په اروپایي اتحادیه کې دي."
   },
@@ -3608,7 +3611,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5130,5 +5134,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

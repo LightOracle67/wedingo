@@ -1111,7 +1111,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1321,7 +1323,8 @@
     "generateToken": "Nieuwe code genereren",
     "logout": "Uitloggen",
     "deleteDataDescription": "Als je je ARSO-rechten wilt uitoefenen, kun je al je gegevens verwijderen.",
-    "deleteInvitation": "Mijn uitnodiging en al mijn gegevens verwijderen"
+    "deleteInvitation": "Mijn uitnodiging en al mijn gegevens verwijderen",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Ondersteuning",
@@ -1363,12 +1366,12 @@
   },
   "cookie": {
     "title": "Cookietoestemming",
-    "text": "Wedingo gebruikt lokale opslag die nodig is voor de werking van de uitnodiging (sessie en voorkeuren opslaan). We gebruiken geen cookies van derden of trackers.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Accepteren",
     "reject": "Weigeren",
     "configure": "Configureren",
     "necessary": "Noodzakelijke opslag",
-    "analytics": "Bezoekstatistieken",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Voorkeuren opslaan",
     "settingsTitle": "Cookies configureren"
   },
@@ -1377,7 +1380,7 @@
     "sectionTerms": "Gebruiksvoorwaarden",
     "sectionLegal": "Juridische kennisgeving",
     "modalTitle": "Juridische informatie",
-    "privacyPolicy": "Verwerkingsverantwoordelijke: Adrián Carrasco López. Contact: adriancl2001@gmail.com. Doel: beheer van trouwuitnodigingen, aanwezigheidsbevestiging en evenementencommunicatie.\n\nRechtsgrond: toestemming van de betrokkene (art. 6.1.a GDPR). Gezondheidsgegevens (voedselallergieën en -intoleranties) worden verwerkt met uitdrukkelijke toestemming (art. 9.2.a GDPR) om het menu van de viering aan te passen.\n\nVerzamelde gegevens: naam, voedingsvoorkeuren (allergieën en intoleranties), vrijwillig geüploade afbeeldingen, bankgegevens indien vrijwillig verstrekt.\n\nOntvangers: Google LLC (Firebase, Google Cloud Platform) met hoofdkantoor in de VS. Google heeft de door de Europese Commissie goedgekeurde Standaardcontractbepalingen (SCC) ondertekend (Uitvoeringsbesluit 2021/914) en beschikt over een Data Processing Agreement (DPA) conform art. 28 GDPR. Bovendien voldoet Google aan het Data Privacy Framework (DPF) EU-VS, VK-VS en Zwitserland-VS, een certificering die een passend beschermingsniveau garandeert voor internationale gegevensoverdrachten.\n\nInternationale overdrachten: gegevens worden opgeslagen op Google Cloud-servers in de regio eur3 (Europa, Frankfurt). Wanneer gegevensoverdracht naar de VS noodzakelijk is, wordt de overdracht gedekt door de SCC en de DPF-certificering van Google.\n\nBewaarperiode: gastgegevens worden bewaard tot 12 maanden na de datum van het evenement. Na deze periode worden ze automatisch verwijderd. Configuratiegegevens van de maker worden bewaard zolang de account actief is.\n\nRechten: je kunt je rechten op inzage, rectificatie, wissing, beperking, overdraagbaarheid en bezwaar uitoefenen door te schrijven naar adriancl2001@gmail.com. Gasten kunnen verwijdering van hun gegevens aanvragen door hun naam en de uitnodiging te vermelden. We reageren binnen maximaal 30 dagen op je verzoek.\n\nRecht om toestemming in te trekken: je kunt je toestemming op elk moment intrekken door te schrijven naar adriancl2001@gmail.com, zonder dat dit de rechtmatigheid van de verwerking op basis van toestemming vóór de intrekking aantast.",
+    "privacyPolicy": "Verwerkingsverantwoordelijke: Adrián Carrasco López. Contact: adriancl2001@gmail.com. Doel: beheer van trouwuitnodigingen, aanwezigheidsbevestiging en evenementencommunicatie.\n\nRechtsgrond: toestemming van de betrokkene (art. 6.1.a GDPR). Gezondheidsgegevens (voedselallergieën en -intoleranties) worden verwerkt met uitdrukkelijke toestemming (art. 9.2.a GDPR) om het menu van de viering aan te passen.\n\nVerzamelde gegevens: naam, voedingsvoorkeuren (allergieën en intoleranties), vrijwillig geüploade afbeeldingen, bankgegevens indien vrijwillig verstrekt.\n\nOntvangers: Google LLC (Firebase, Google Cloud Platform) met hoofdkantoor in de VS. Google heeft de door de Europese Commissie goedgekeurde Standaardcontractbepalingen (SCC) ondertekend (Uitvoeringsbesluit 2021/914) en beschikt over een Data Processing Agreement (DPA) conform art. 28 GDPR. Bovendien voldoet Google aan het Data Privacy Framework (DPF) EU-VS, VK-VS en Zwitserland-VS, een certificering die een passend beschermingsniveau garandeert voor internationale gegevensoverdrachten.\n\nInternationale overdrachten: gegevens worden opgeslagen op Google Cloud-servers in de regio eur3 (Europa, Frankfurt). Wanneer gegevensoverdracht naar de VS noodzakelijk is, wordt de overdracht gedekt door de SCC en de DPF-certificering van Google.\n\nBewaarperiode: gastgegevens worden bewaard tot 12 maanden na de datum van het evenement. Na deze periode worden ze automatisch verwijderd. Configuratiegegevens van de maker worden bewaard zolang de account actief is.\n\nRechten: je kunt je rechten op inzage, rectificatie, wissing, beperking, overdraagbaarheid en bezwaar uitoefenen door te schrijven naar adriancl2001@gmail.com. Gasten kunnen verwijdering van hun gegevens aanvragen door hun naam en de uitnodiging te vermelden. We reageren binnen maximaal 30 dagen op je verzoek.\n\nRecht om toestemming in te trekken: je kunt je toestemming op elk moment intrekken door te schrijven naar adriancl2001@gmail.com, zonder dat dit de rechtmatigheid van de verwerking op basis van toestemming vóór de intrekking aantast.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Het gebruik van Wedingo impliceert aanvaarding van deze voorwaarden. Wedingo is een platform voor het maken en beheren van trouwuitnodigingen.\n\nDe gebruiker verbindt zich ertoe het platform niet te gebruiken voor onwettige doeleinden of voor het verzenden van aanstootgevende inhoud.\n\nWedingo is niet verantwoordelijk voor door gebruikers gegenereerde inhoud of voor het gebruik dat gasten maken van hun persoonsgegevens.\n\nWe behouden ons het recht voor deze voorwaarden te wijzigen. Wijzigingen worden via het platform gemeld.\n\nVoor inwoners van Californië: in geval van een conflict tussen deze voorwaarden en de CCPA, prevaleren de door de CCPA verleende rechten.",
     "legalText": "Conform artikel 10 van de Spaanse wet 34/2002 van 11 juli inzake diensten van de informatiemaatschappij en elektronische handel (LSSI-CE), wordt het volgende meegedeeld:\n\nVerantwoordelijke: Adrián Carrasco López\nE-mail: adriancl2001@gmail.com\nDoel van de website: platform voor gepersonaliseerde trouwuitnodigingen.\n\nDeze website gebruikt Firebase (Google LLC) als hosting- en opslaginfrastructuur, met servers in de Europese Unie."
   },
@@ -2408,7 +2411,8 @@
   },
   "changelog": {
     "title": "Wijzigingslogboek",
-    "close": "Sluiten"
+    "close": "Sluiten",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "Er is al een actieve sessie voor deze uitnodiging. Wil je toch inloggen? De vorige sessie wordt gesloten.",
@@ -3273,5 +3277,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

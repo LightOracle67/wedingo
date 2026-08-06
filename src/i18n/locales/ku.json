@@ -1390,7 +1390,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1606,7 +1608,8 @@
     "generateToken": "Kodek nû çêke",
     "logout": "Derkeve",
     "deleteDataDescription": "Eger bixwazî mafên ARSO bi kar bînî, dikarî hemû daneyên xwe jê bî.",
-    "deleteInvitation": "Dawetnameya min û hemû daneyên min jê bibe"
+    "deleteInvitation": "Dawetnameya min û hemû daneyên min jê bibe",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Alîkarî",
@@ -1648,12 +1651,12 @@
   },
   "cookie": {
     "title": "Razîbûna çerezan",
-    "text": "Wedingo hilanîna herêmî ya pêwîst ji bo xebata dawetnameyê bi kar tîne (hilanîna danişîn û tercihên te). Em çerezên aliyê sêyem an şopîneran bi kar naynin.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Qebûl bike",
     "reject": "Red bike",
     "configure": "Veav bike",
     "necessary": "Hilanîna pêwîst",
-    "analytics": "Statîstîkên serdanê",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Tercihan tomar bike",
     "settingsTitle": "Çerezan veav bike"
   },
@@ -1662,7 +1665,7 @@
     "sectionTerms": "Mercên Bikaranînê",
     "sectionLegal": "Daxuyaniya Hiqûqî",
     "modalTitle": "Agahiyên hiqûqî",
-    "privacyPolicy": "Berpirsiyarê pêvajoyê: Adrián Carrasco López. Têkilî: adriancl2001@gmail.com. Armanc: rêvebirina dawetnameyên zewacê, piştrastkirina beşdariyê û ragihandina bûyeran.\n\nBingeha hiqûqî: razîbûna kesê têkildar (xala 6.1.a GDPR). Daneyên tenduristiyê (alarjî û netehammuliyên xwarinê) bi razîbûneke eşkere (xala 9.2.a GDPR) têne pêvajo kirin ji bo guncandina menuyê.\n\nDaneyên berhevkirî: nav, tercihên xwarinê (alarjî û netehammulî), wêneyên bi dilxwazî hatine barkirin, daneyên bankê eger bi dilxwazî hatine dayîn.\n\nWergir: Google LLC (Firebase, Google Cloud Platform) bi navenda xwe li DYAyê. Google Peymanên Peymanî yên Standard (SCC) ên ji aliyê Komîsyona Ewropî ve hatine pejirandin (Biriyara Bicihanînê 2021/914) îmze kiriye û Peymaneke Pêvajoya Daneyan (DPA) li gor xala 28 GDPR heye. Herwiha, Google li gor Çarçoveya Nepenîtiya Daneyan (DPF) YE-DYA, Brîtanya-DYA û Swîsre-DYA tevdigere, sertîfîkayek ku asteke parastinê ya guncav ji bo transferên navneteweyî yên daneyan garantî dike.\n\nTransferên navneteweyî: dane li ser serverên Google Cloud li herêma eur3 (Ewropa, Frankfurt) têne hilanîn. Dema ku pêwîst e dane bo DYAyê werin transferkirin, transfer li ser bingeha SCC û sertîfîkaya DPF ya Google tê parastin.\n\nDemê hilanînê: daneyên mêvanan heta 12 mehan piştî tarîxa bûyerê têne hilanîn. Piştî wê demê, ew ê bixweber werin jêbirin. Daneyên veavakirina afirîner heta ku hesab çalak e têne hilanîn.\n\nMaf: tu dikarî bi nivîsandina ji adriancl2001@gmail.com re mafên xwe yên gihîştinê, rastkirinê, jêbirînê, sînorkirinê, veguhastinê û îtîrazê bi kar bînî. Mêvan dikarin bi diyarkirina navê xwe û dawetnameyê jêbirina daneyên xwe bixwazin. Em ê di heyama zêdetirîn 30 rojan de bersiva daxwaza te bidin.\n\nMafê vekişandina razîbûnê: tu dikarî her dem razîbûna xwe vekişînî bêyî ku bandorê li qanûnîbûna pêvajoya berî vekişînê bike.",
+    "privacyPolicy": "Berpirsiyarê pêvajoyê: Adrián Carrasco López. Têkilî: adriancl2001@gmail.com. Armanc: rêvebirina dawetnameyên zewacê, piştrastkirina beşdariyê û ragihandina bûyeran.\n\nBingeha hiqûqî: razîbûna kesê têkildar (xala 6.1.a GDPR). Daneyên tenduristiyê (alarjî û netehammuliyên xwarinê) bi razîbûneke eşkere (xala 9.2.a GDPR) têne pêvajo kirin ji bo guncandina menuyê.\n\nDaneyên berhevkirî: nav, tercihên xwarinê (alarjî û netehammulî), wêneyên bi dilxwazî hatine barkirin, daneyên bankê eger bi dilxwazî hatine dayîn.\n\nWergir: Google LLC (Firebase, Google Cloud Platform) bi navenda xwe li DYAyê. Google Peymanên Peymanî yên Standard (SCC) ên ji aliyê Komîsyona Ewropî ve hatine pejirandin (Biriyara Bicihanînê 2021/914) îmze kiriye û Peymaneke Pêvajoya Daneyan (DPA) li gor xala 28 GDPR heye. Herwiha, Google li gor Çarçoveya Nepenîtiya Daneyan (DPF) YE-DYA, Brîtanya-DYA û Swîsre-DYA tevdigere, sertîfîkayek ku asteke parastinê ya guncav ji bo transferên navneteweyî yên daneyan garantî dike.\n\nTransferên navneteweyî: dane li ser serverên Google Cloud li herêma eur3 (Ewropa, Frankfurt) têne hilanîn. Dema ku pêwîst e dane bo DYAyê werin transferkirin, transfer li ser bingeha SCC û sertîfîkaya DPF ya Google tê parastin.\n\nDemê hilanînê: daneyên mêvanan heta 12 mehan piştî tarîxa bûyerê têne hilanîn. Piştî wê demê, ew ê bixweber werin jêbirin. Daneyên veavakirina afirîner heta ku hesab çalak e têne hilanîn.\n\nMaf: tu dikarî bi nivîsandina ji adriancl2001@gmail.com re mafên xwe yên gihîştinê, rastkirinê, jêbirînê, sînorkirinê, veguhastinê û îtîrazê bi kar bînî. Mêvan dikarin bi diyarkirina navê xwe û dawetnameyê jêbirina daneyên xwe bixwazin. Em ê di heyama zêdetirîn 30 rojan de bersiva daxwaza te bidin.\n\nMafê vekişandina razîbûnê: tu dikarî her dem razîbûna xwe vekişînî bêyî ku bandorê li qanûnîbûna pêvajoya berî vekişînê bike.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Bikaranîna Wedingo tê wateya qebûlkirina van mercan. Wedingo platformek e ji bo afirandin û rêvebirina dawetnameyên zewacê.\n\nBikarhêner soz dide ku platformê ji bo armancên neqanûnî an şandina naveroka êrîşkar bi kar neyne.\n\nWedingo ji naveroka ji aliyê bikarhêneran ve hatî çêkirin an ji bikaranîna daneyên kesane ji aliyê mêvanan ve ne berpirsiyar e.\n\nEm mafê guherandina van mercan diparêzin. Guhertin dê bi rêya platformê werin ragihandin.\n\nJi bo rûniştvanên Kalîforniyayê: di rewşa pevçûna di navbera van mercan û CCPA de, mafên ku ji aliyê CCPA ve hatine dayîn dê bi ser bikevin.",
     "legalText": "Di çarçoveya bicihanîna xala 10 ya Qanûna 34/2002, a 11ê Tîrmehê, ya Xizmetên Civaka Agahiyê û Bazirganiya Elektronîk (LSSI-CE), tê ragihandin:\n\nBerpirsiyar: Adrián Carrasco López\nE-name: adriancl2001@gmail.com\nArmanca malperê: platforma dawetnameyên zewacê yên kesane.\n\nEv malper Firebase (Google LLC) wekî binesaziya mêvandarî û hilanînê bi kar tîne, bi serverên li Yekîtiya Ewropayê."
   },
@@ -3526,7 +3529,8 @@
       null,
       null,
       2
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5022,5 +5026,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

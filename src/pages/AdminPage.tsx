@@ -111,6 +111,25 @@ export default function AdminPage() {
   }, [location.search, location.pathname]);
 
   /**
+   * Roving tabindex + flechas (ARIA tabs): mueve el foco entre pestañas
+   * con ←/→/Home/End y activa la pestaña destino.
+   */
+  const handleTabKeyDown = useCallback((e: React.KeyboardEvent<HTMLButtonElement>, key: string) => {
+    const index = TABS.findIndex((t) => t.key === key);
+    let nextIndex = -1;
+    if (e.key === "ArrowRight") nextIndex = (index + 1) % TABS.length;
+    else if (e.key === "ArrowLeft") nextIndex = (index - 1 + TABS.length) % TABS.length;
+    else if (e.key === "Home") nextIndex = 0;
+    else if (e.key === "End") nextIndex = TABS.length - 1;
+    if (nextIndex >= 0) {
+      e.preventDefault();
+      const next = TABS[nextIndex]!;
+      handleSetTab(next.key);
+      document.getElementById("tab-" + next.key)?.focus();
+    }
+  }, [handleSetTab]);
+
+  /**
    * Filtra las entradas RSVP según el filtro de asistencia y la búsqueda.
    * Se recalcula cuando cambian las entradas, el filtro o la búsqueda.
    */
@@ -289,8 +308,10 @@ export default function AdminPage() {
               role="tab"
               aria-selected={activeTab === tab.key}
               aria-controls={"tabpanel-" + tab.key}
+              tabIndex={activeTab === tab.key ? 0 : -1}
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
               onClick={() => handleSetTab(tab.key)}
+              onKeyDown={(e) => handleTabKeyDown(e, tab.key)}
             >
               {t(`admin.tabs.${TAB_KEY_MAP[tab.key]}`)}
             </button>

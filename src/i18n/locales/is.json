@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1691,7 +1693,8 @@
     "generateToken": "Búa til nýjan kóða",
     "logout": "Útskrá",
     "deleteDataDescription": "Ef þú vilt nýta ARSO réttindi þín geturðu eytt öllum gögnunum þínum.",
-    "deleteInvitation": "Eyða boðskortinu mínu og öllum gögnum mínum"
+    "deleteInvitation": "Eyða boðskortinu mínu og öllum gögnum mínum",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Stuðningur",
@@ -1733,12 +1736,12 @@
   },
   "cookie": {
     "title": "Samþykki fyrir kökum",
-    "text": "Wedingo notar nauðsynlega staðbundna geymslu fyrir virkni boðskortsins (vistar setu og stillingar). Við notum ekki kökur frá þriðja aðila eða rakningartæki.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Samþykkja",
     "reject": "Hafna",
     "configure": "Stilla",
     "necessary": "Nauðsynleg geymsla",
-    "analytics": "Heimsóknartölfræði",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Vista stillingar",
     "settingsTitle": "Stillingar kaka"
   },
@@ -1747,7 +1750,7 @@
     "sectionTerms": "Notkunarskilmálar",
     "sectionLegal": "Lagaleg tilkynning",
     "modalTitle": "Lagalegar upplýsingar",
-    "privacyPolicy": "Ábyrgðaraðili: Adrián Carrasco López. Netfang: adriancl2001@gmail.com. Tilgangur: stjórnun brúðkaupsboðskorta, staðfesting á mætingu og samskipti um viðburði.\n\nLagagrundvöllur: samþykki hins skráða (GDPR gr. 6.1.a). Heilbrigðisgögn (fæðuofnæmi og -óþol) eru unnin með skýlausu samþykki (GDPR gr. 9.2.a) til að aðlaga matseðil hátíðarinnar.\n\nSöfnuð gögn: nafn, mataræðis óskir (ofnæmi og óþol), myndir sem hlaðið er upp sjálfviljuglega, bankaupplýsingar ef þær eru veittar sjálfviljuglega.\n\nViðtakendur: Google LLC (Firebase, Google Cloud Platform) með höfuðstöðvar í Bandaríkjunum. Google hefur undirritað staðlaða samningsskilmála (SCC) sem framkvæmdastjórn Evrópusambandsins hefur samþykkt (Framkvæmdarákvörðun 2021/914) og hefur gagnavinnslusamning (DPA) í samræmi við GDPR gr. 28. Að auki uppfyllir Google Data Privacy Framework (DPF) ESB-BNA, Bretland-BNA og Sviss-BNA, vottun sem tryggir fullnægjandi verndarstig fyrir alþjóðlega gagnaflutninga.\n\nAlþjóðlegir flutningar: gögn eru geymd á Google Cloud netþjónum á eur3 svæðinu (Evrópa, Frankfurt). Þegar flutningur til Bandaríkjanna er nauðsynlegur byggir flutningurinn á SCC og DPF vottun Google.\n\nVarðveislutími: gestagögn eru varðveitt í allt að 12 mánuði eftir dagsetningu viðburðarins. Eftir þann tíma verður þeim eytt sjálfkrafa. Stillingargögn skapara eru varðveitt á meðan reikningurinn er virkur.\n\nRéttindi: þú getur nýtt rétt þinn til aðgangs, leiðréttingar, eyðingar, takmörkunar, gagnaflutnings og andmæla með því að skrifa á adriancl2001@gmail.com. Gestir geta óskað eftir eyðingu gagna sinna með því að tilgreina nafn sitt og boðskortið. Við munum svara beiðni þinni innan 30 daga.\n\nRéttur til að afturkalla samþykki: þú getur hvenær sem er afturkallað samþykki þitt með því að eyða boðskortinu eða hafa samband á adriancl2001@gmail.com.\n\nKvartanir: ef þú telur að réttindi þín hafi verið brotin geturðu lagt fram kvörtun til Persónuverndar (www.personuvernd.is).\n\nÖryggisráðstafanir: dulkóðun viðkvæmra gagna, örugg samskipti (HTTPS/TLS), aðgangsstýring með setutáknum, sjálfvirk eyðing úreltra gagna.",
+    "privacyPolicy": "Ábyrgðaraðili: Adrián Carrasco López. Netfang: adriancl2001@gmail.com. Tilgangur: stjórnun brúðkaupsboðskorta, staðfesting á mætingu og samskipti um viðburði.\n\nLagagrundvöllur: samþykki hins skráða (GDPR gr. 6.1.a). Heilbrigðisgögn (fæðuofnæmi og -óþol) eru unnin með skýlausu samþykki (GDPR gr. 9.2.a) til að aðlaga matseðil hátíðarinnar.\n\nSöfnuð gögn: nafn, mataræðis óskir (ofnæmi og óþol), myndir sem hlaðið er upp sjálfviljuglega, bankaupplýsingar ef þær eru veittar sjálfviljuglega.\n\nViðtakendur: Google LLC (Firebase, Google Cloud Platform) með höfuðstöðvar í Bandaríkjunum. Google hefur undirritað staðlaða samningsskilmála (SCC) sem framkvæmdastjórn Evrópusambandsins hefur samþykkt (Framkvæmdarákvörðun 2021/914) og hefur gagnavinnslusamning (DPA) í samræmi við GDPR gr. 28. Að auki uppfyllir Google Data Privacy Framework (DPF) ESB-BNA, Bretland-BNA og Sviss-BNA, vottun sem tryggir fullnægjandi verndarstig fyrir alþjóðlega gagnaflutninga.\n\nAlþjóðlegir flutningar: gögn eru geymd á Google Cloud netþjónum á eur3 svæðinu (Evrópa, Frankfurt). Þegar flutningur til Bandaríkjanna er nauðsynlegur byggir flutningurinn á SCC og DPF vottun Google.\n\nVarðveislutími: gestagögn eru varðveitt í allt að 12 mánuði eftir dagsetningu viðburðarins. Eftir þann tíma verður þeim eytt sjálfkrafa. Stillingargögn skapara eru varðveitt á meðan reikningurinn er virkur.\n\nRéttindi: þú getur nýtt rétt þinn til aðgangs, leiðréttingar, eyðingar, takmörkunar, gagnaflutnings og andmæla með því að skrifa á adriancl2001@gmail.com. Gestir geta óskað eftir eyðingu gagna sinna með því að tilgreina nafn sitt og boðskortið. Við munum svara beiðni þinni innan 30 daga.\n\nRéttur til að afturkalla samþykki: þú getur hvenær sem er afturkallað samþykki þitt með því að eyða boðskortinu eða hafa samband á adriancl2001@gmail.com.\n\nKvartanir: ef þú telur að réttindi þín hafi verið brotin geturðu lagt fram kvörtun til Persónuverndar (www.personuvernd.is).\n\nÖryggisráðstafanir: dulkóðun viðkvæmra gagna, örugg samskipti (HTTPS/TLS), aðgangsstýring með setutáknum, sjálfvirk eyðing úreltra gagna.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Notkun Wedingo felur í sér samþykki þessara skilmála. Wedingo er vettvangur til að búa til og stjórna brúðkaupsboðskortum.\n\nNotandinn skuldbindur sig til að nota ekki vettvanginn í ólöglegum tilgangi eða til að senda móðgandi efni.\n\nWedingo ber ekki ábyrgð á efni sem notendur búa til né á notkun gagna gesta á persónuupplýsingum sínum.\n\nVið áskiljum okkur rétt til að breyta þessum skilmálum. Breytingar verða tilkynntar í gegnum vettvanginn.\n\nFyrir íbúa í Kaliforníu: ef árekstur verður á milli þessara skilmála og CCPA munu réttindi samkvæmt CCPA ganga framar.",
     "legalText": "Í samræmi við 10. grein laga 34/2002 frá 11. júlí um þjónustu upplýsingasamfélagsins og rafræn viðskipti (LSSI-CE) er upplýst:\n\nÁbyrgðaraðili: Adrián Carrasco López\nNetfang: adriancl2001@gmail.com\nTilgangur vefsíðunnar: vettvangur fyrir sérsniðin brúðkaupsboðskort.\n\nÞessi vefsíða notar Firebase (Google LLC) sem hýsingar- og geymsluinnviði með netþjónum í Evrópusambandinu."
   },
@@ -3647,7 +3650,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5325,5 +5329,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

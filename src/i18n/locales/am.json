@@ -328,7 +328,9 @@
     "galleryDescriptionSaveFailed": "መግለጫ ማስቀመጥ ላይ ስህተት",
     "galleryDescriptionSaved": "መግለጫ ተቀምጧል",
     "currentMusic": "የተመረጠ ሙዚቃ",
-    "removeMusic": "ሙዚቃን ያስወግዱ"
+    "removeMusic": "ሙዚቃን ያስወግዱ",
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -456,7 +458,8 @@
     "generateToken": "አዲስ ኮድ ፍጠር",
     "logout": "ውጣ",
     "deleteDataDescription": "የARSO መብቶችዎን ለመጠቀም ከፈለጉ ሁሉንም ውሂቦችዎን መሰረዝ ይችላሉ።",
-    "deleteInvitation": "ግብዣዬን እና ሁሉንም ውሂቦቼን ሰርዝ"
+    "deleteInvitation": "ግብዣዬን እና ሁሉንም ውሂቦቼን ሰርዝ",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "ድጋፍ",
@@ -479,12 +482,12 @@
   },
   "cookie": {
     "title": "የኩኪ ፈቃድ",
-    "text": "Wedingo ለግብዣው አሠራር አስፈላጊ የሆነውን አካባቢያዊ ማከማቻ ይጠቀማል (ክፍለ ጊዜዎን እና ምርጫዎችዎን ማስቀመጥ)። የሶስተኛ ወገን ኩኪዎችን ወይም መከታተያዎችን አንጠቀምም።",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "ተቀበል",
     "reject": "አትቀበል",
     "configure": "አዋቅር",
     "necessary": "አስፈላጊ ማከማቻ",
-    "analytics": "የጉብኝት ስታቲስቲክስ",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "ምርጫዎችን አስቀምጥ",
     "settingsTitle": "ኩኪዎችን አዋቅር"
   },
@@ -493,7 +496,7 @@
     "sectionTerms": "የአጠቃቀም ውሎች",
     "sectionLegal": "የህግ ማስታወቂያ",
     "modalTitle": "የህግ መረጃ",
-    "privacyPolicy": "የውሂብ አያያዝ ኃላፊ: Adrián Carrasco López. እውቂያ: adriancl2001@gmail.com. ዓላማ: የሰርግ ግብዣዎችን ማስተዳደር፣ የተገኝነት ማረጋገጫ እና የክስተት ግንኙነት።\n\nየህግ መሠረት: የተመለከተው ሰው ፈቃድ (GDPR አንቀጽ 6.1.a)። የጤና ውሂብ (የምግብ አለርጂዎች እና አለመቻቻሎች) የክብረ በዓሉን ምናሌ ለማስማማት በግልጽ ፈቃድ (GDPR አንቀጽ 9.2.a) ይሰራበታል።\n\nየተሰበሰበ ውሂብ: ስም፣ የምግብ ምርጫዎች (አለርጂዎች እና አለመቻቻሎች)፣ በፈቃደኝነት የተጫኑ ምስሎች፣ በፈቃደኝነት የቀረቡ የባንክ ዝርዝሮች።\n\nተቀባዮች: Google LLC (Firebase, Google Cloud Platform) በአሜሪካ የተመሰረተ። Google በአውሮፓ ኮሚሽን (የ2021/914 አፈጻጸም ውሳኔ) የጸደቀውን መደበኛ የውል አንቀጾችን (SCC) ተመዝግቧል እና በGDPR አንቀጽ 28 መሰረት የውሂብ አያያዝ ስምምነት (DPA) አለው። በተጨማሪም፣ Google የአውሮፓ ህብረት-አሜሪካ፣ ዩናይትድ ኪንግደም-አሜሪካ እና ስዊዘርላንድ-አሜሪካ የውሂብ ግላዊነት ማዕቀፍ (DPF) ጋር ይጣጣማል።\n\nዓለም አቀፍ ዝውውሮች: ውሂብ በeur3 ክልል (አውሮፓ፣ ፍራንክፈርት) ውስጥ ባሉ የGoogle Cloud አገልጋዮች ላይ ይቀመጣል። ወደ አሜሪካ ውሂብ ማስተላለፍ አስፈላጊ ሲሆን ዝውውሩ በSCC እና በGoogles DPF ማረጋገጫ ይጠበቃል።\n\nየማቆያ ጊዜ: የእንግዶች ውሂብ ከክስተቱ ቀን በኋላ እስከ 12 ወራት ይቆያል። ያ ጊዜ ካለፈ በኋላ ራሱን ይሰረዛል። የፈጣሪው ውቅር ውሂብ መለያው ንቁ እስከሆነ ድረስ ይቆያል።\n\nመብቶች: adriancl2001@gmail.com ላይ በመጻፍ የማግኘት፣ የማረም፣ የመሰረዝ፣ የመገደብ፣ የመንቀሳቀስ እና የመቃወም መብቶችዎን መጠቀም ይችላሉ። እንግዶች ስማቸውን እና ግብዣቸውን በማመልከት ውሂባቸውን መሰረዝ መጠየቅ ይችላሉ። ጥያቄዎን ቢበዛ በ30 ቀናት ውስጥ ምላሽ እንሰጣለን።\n\nፈቃድን የመሻር መብት: ከላይ በተገለጹት መንገዶች በማንኛውም ጊዜ ፈቃድዎን መሻር ይችላሉ። መሻሩ የቀድሞውን አያያዝ ህጋዊነት አይጎዳም።\n\nለተቆጣጣሪ ባለስልጣን ቅሬታ የማቅረብ መብት: በGDPR መሰረት፣ በስልጣንዎ ውስጥ ላለው የውሂብ ጥበቃ ባለስልጣን ቅሬታ የማቅረብ መብት አለዎት። በስፔን: AEPD (www.aepd.es)።",
+    "privacyPolicy": "የውሂብ አያያዝ ኃላፊ: Adrián Carrasco López. እውቂያ: adriancl2001@gmail.com. ዓላማ: የሰርግ ግብዣዎችን ማስተዳደር፣ የተገኝነት ማረጋገጫ እና የክስተት ግንኙነት።\n\nየህግ መሠረት: የተመለከተው ሰው ፈቃድ (GDPR አንቀጽ 6.1.a)። የጤና ውሂብ (የምግብ አለርጂዎች እና አለመቻቻሎች) የክብረ በዓሉን ምናሌ ለማስማማት በግልጽ ፈቃድ (GDPR አንቀጽ 9.2.a) ይሰራበታል።\n\nየተሰበሰበ ውሂብ: ስም፣ የምግብ ምርጫዎች (አለርጂዎች እና አለመቻቻሎች)፣ በፈቃደኝነት የተጫኑ ምስሎች፣ በፈቃደኝነት የቀረቡ የባንክ ዝርዝሮች።\n\nተቀባዮች: Google LLC (Firebase, Google Cloud Platform) በአሜሪካ የተመሰረተ። Google በአውሮፓ ኮሚሽን (የ2021/914 አፈጻጸም ውሳኔ) የጸደቀውን መደበኛ የውል አንቀጾችን (SCC) ተመዝግቧል እና በGDPR አንቀጽ 28 መሰረት የውሂብ አያያዝ ስምምነት (DPA) አለው። በተጨማሪም፣ Google የአውሮፓ ህብረት-አሜሪካ፣ ዩናይትድ ኪንግደም-አሜሪካ እና ስዊዘርላንድ-አሜሪካ የውሂብ ግላዊነት ማዕቀፍ (DPF) ጋር ይጣጣማል።\n\nዓለም አቀፍ ዝውውሮች: ውሂብ በeur3 ክልል (አውሮፓ፣ ፍራንክፈርት) ውስጥ ባሉ የGoogle Cloud አገልጋዮች ላይ ይቀመጣል። ወደ አሜሪካ ውሂብ ማስተላለፍ አስፈላጊ ሲሆን ዝውውሩ በSCC እና በGoogles DPF ማረጋገጫ ይጠበቃል።\n\nየማቆያ ጊዜ: የእንግዶች ውሂብ ከክስተቱ ቀን በኋላ እስከ 12 ወራት ይቆያል። ያ ጊዜ ካለፈ በኋላ ራሱን ይሰረዛል። የፈጣሪው ውቅር ውሂብ መለያው ንቁ እስከሆነ ድረስ ይቆያል።\n\nመብቶች: adriancl2001@gmail.com ላይ በመጻፍ የማግኘት፣ የማረም፣ የመሰረዝ፣ የመገደብ፣ የመንቀሳቀስ እና የመቃወም መብቶችዎን መጠቀም ይችላሉ። እንግዶች ስማቸውን እና ግብዣቸውን በማመልከት ውሂባቸውን መሰረዝ መጠየቅ ይችላሉ። ጥያቄዎን ቢበዛ በ30 ቀናት ውስጥ ምላሽ እንሰጣለን።\n\nፈቃድን የመሻር መብት: ከላይ በተገለጹት መንገዶች በማንኛውም ጊዜ ፈቃድዎን መሻር ይችላሉ። መሻሩ የቀድሞውን አያያዝ ህጋዊነት አይጎዳም።\n\nለተቆጣጣሪ ባለስልጣን ቅሬታ የማቅረብ መብት: በGDPR መሰረት፣ በስልጣንዎ ውስጥ ላለው የውሂብ ጥበቃ ባለስልጣን ቅሬታ የማቅረብ መብት አለዎት። በስፔን: AEPD (www.aepd.es)።\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingoን መጠቀም እነዚህን ውሎች መቀበልን ያመለክታል። Wedingo የሰርግ ግብዣዎችን ለመፍጠር እና ለማስተዳደር መድረክ ነው።\n\nተጠቃሚው መድረኩን ለህገ-ወጥ ዓላማዎች ወይም አጸያፊ ይዘት ለመላክ ላለመጠቀም ይስማማል።\n\nWedingo በተጠቃሚዎች ለሚፈጠረው ይዘት ወይም እንግዶች ለግል ውሂባቸው ለሚጠቀሙበት አጠቃቀም ኃላፊነት አይወስድም።\n\nእነዚህን ውሎች የመቀየር መብት እንጠብቃለን። ለውጦች በመድረኩ በኩል ይነገራሉ።\n\nለካሊፎርኒያ ነዋሪዎች: በእነዚህ ውሎች እና በCCPA መካከል ግጭት ከተፈጠረ በCCPA የተሰጡት መብቶች ያሸንፋሉ።",
     "legalText": "የመረጃ ማህበረሰብ አገልግሎቶች እና የኤሌክትሮኒክስ ንግድ ህግ 34/2002 ጁላይ 11 (LSSI-CE) አንቀጽ 10ን በማክበር ይነገራል:\n\nኃላፊ: Adrián Carrasco López\nኢሜል: adriancl2001@gmail.com\nየድረ-ገጹ ዓላማ: የግል የሰርግ ግብዣዎች መድረክ።\n\nይህ ድረ-ገጽ እንደ ሆስቲንግ እና ማከማቻ መሠረተ ልማት Firebase (Google LLC) ይጠቀማል፣ አገልጋዮች በአውሮፓ ህብረት ውስጥ ይገኛሉ።"
   },
@@ -816,7 +819,8 @@
   },
   "changelog": {
     "title": "ለውጥ ሎግ",
-    "close": "ገጠመ"
+    "close": "ገጠመ",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "ለዚህ ግብዣ አስቀድሞ ንቁ ክፍለ ጊዜ አለ። ",
@@ -974,5 +978,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

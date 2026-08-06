@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1691,7 +1693,8 @@
     "generateToken": "Tengeneza msimbo mpya",
     "logout": "Ondoka",
     "deleteDataDescription": "Ikiwa unataka kutekeleza haki zako, unaweza kufuta data yako yote.",
-    "deleteInvitation": "Futa mwaliko wangu na data yangu yote"
+    "deleteInvitation": "Futa mwaliko wangu na data yangu yote",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Msaada",
@@ -1752,12 +1755,12 @@
   },
   "cookie": {
     "title": "Idhini ya kuki",
-    "text": "Wedingo hutumia hifadhi ya ndani inayohitajika kwa uendeshaji wa mwaliko (kuhifadhi kikao chako na mapendeleo). Hatutumii kuki za watu wengine au vifuatiliaji.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Kubali",
     "reject": "Kataa",
     "configure": "Sanidi",
     "necessary": "Hifadhi inayohitajika",
-    "analytics": "Takwimu za ziara",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Hifadhi mapendeleo",
     "settingsTitle": "Sanidi kuki"
   },
@@ -1766,7 +1769,7 @@
     "sectionTerms": "Masharti ya Matumizi",
     "sectionLegal": "Ilani ya Kisheria",
     "modalTitle": "Taarifa ya kisheria",
-    "privacyPolicy": "Mdhibiti wa data: Adrián Carrasco López. Mawasiliano: adriancl2001@gmail.com. Kusudi: usimamizi wa mialiko ya harusi, uthibitisho wa kuhudhuria na mawasiliano ya matukio.\n\nMsingi wa kisheria: idhini ya mhusika wa data (Art. 6.1.a GDPR). Data ya afya (mizio ya chakula na kutovumilia) inachakatwa kwa idhini ya wazi (Art. 9.2.a GDPR) ili kurekebisha menyu ya sherehe.\n\nData inayokusanywa: jina, mapendeleo ya chakula (mizio na kutovumilia), picha zilizopakiwa kwa hiari, maelezo ya benki yakitolewa kwa hiari.\n\nWapokeaji: Google LLC (Firebase, Google Cloud Platform) yenye makao makuu Marekani. Google imesaini Vifungu vya Kawaida vya Kimkataba (SCC) vilivyoidhinishwa na Tume ya Ulaya (Uamuzi wa Utekelezaji 2021/914) na ina Mkataba wa Uchakataji Data (DPA) kwa mujibu wa Art. 28 GDPR. Zaidi ya hayo, Google inatii Mfumo wa Faragha wa Data (DPF) wa EU-Marekani, Uingereza-Marekani na Uswisi-Marekani, uidhinishaji unaohakikisha kiwango cha kutosha cha ulinzi kwa uhamishaji wa data wa kimataifa.\n\nUhamishaji wa kimataifa: data huhifadhiwa kwenye seva za Google Cloud katika eneo la eur3 (Frankfurt, Ulaya). Inapohitajika kuhamisha data hadi Marekani, uhamishaji unafanywa kwa msingi wa SCC na uidhinishaji wa DPF wa Google.\n\nMuda wa uhifadhi: data ya wageni huhifadhiwa hadi miezi 12 baada ya tarehe ya tukio. Baada ya muda huo, itafutwa kiotomatiki. Data ya usanidi wa muundaji huhifadhiwa maadamu akaunti inatumika.\n\nHaki: unaweza kutekeleza haki zako za ufikiaji, marekebisho, kufuta, kuzuia, kubebeka na kupinga kwa kuandika kwa adriancl2001@gmail.com. Wageni wanaweza kuomba kufutwa kwa data zao kwa kutaja jina lao na mwaliko. Tutajibu ombi lako ndani ya siku 30.\n\nHaki ya kuondoa idhini: unaweza kuondoa idhini yako wakati wowote. Kuondoa hakuathiri uhalali wa uchakataji uliofanywa kabla ya kuondoa.\n\nMamlaka ya uangalizi: ikiwa unaamini haki zako zimekiukwa, unaweza kuwasilisha malalamiko kwa Wakala wa Ulinzi wa Data wa Uhispania (AEPD) au mamlaka husika nchini mwako.",
+    "privacyPolicy": "Mdhibiti wa data: Adrián Carrasco López. Mawasiliano: adriancl2001@gmail.com. Kusudi: usimamizi wa mialiko ya harusi, uthibitisho wa kuhudhuria na mawasiliano ya matukio.\n\nMsingi wa kisheria: idhini ya mhusika wa data (Art. 6.1.a GDPR). Data ya afya (mizio ya chakula na kutovumilia) inachakatwa kwa idhini ya wazi (Art. 9.2.a GDPR) ili kurekebisha menyu ya sherehe.\n\nData inayokusanywa: jina, mapendeleo ya chakula (mizio na kutovumilia), picha zilizopakiwa kwa hiari, maelezo ya benki yakitolewa kwa hiari.\n\nWapokeaji: Google LLC (Firebase, Google Cloud Platform) yenye makao makuu Marekani. Google imesaini Vifungu vya Kawaida vya Kimkataba (SCC) vilivyoidhinishwa na Tume ya Ulaya (Uamuzi wa Utekelezaji 2021/914) na ina Mkataba wa Uchakataji Data (DPA) kwa mujibu wa Art. 28 GDPR. Zaidi ya hayo, Google inatii Mfumo wa Faragha wa Data (DPF) wa EU-Marekani, Uingereza-Marekani na Uswisi-Marekani, uidhinishaji unaohakikisha kiwango cha kutosha cha ulinzi kwa uhamishaji wa data wa kimataifa.\n\nUhamishaji wa kimataifa: data huhifadhiwa kwenye seva za Google Cloud katika eneo la eur3 (Frankfurt, Ulaya). Inapohitajika kuhamisha data hadi Marekani, uhamishaji unafanywa kwa msingi wa SCC na uidhinishaji wa DPF wa Google.\n\nMuda wa uhifadhi: data ya wageni huhifadhiwa hadi miezi 12 baada ya tarehe ya tukio. Baada ya muda huo, itafutwa kiotomatiki. Data ya usanidi wa muundaji huhifadhiwa maadamu akaunti inatumika.\n\nHaki: unaweza kutekeleza haki zako za ufikiaji, marekebisho, kufuta, kuzuia, kubebeka na kupinga kwa kuandika kwa adriancl2001@gmail.com. Wageni wanaweza kuomba kufutwa kwa data zao kwa kutaja jina lao na mwaliko. Tutajibu ombi lako ndani ya siku 30.\n\nHaki ya kuondoa idhini: unaweza kuondoa idhini yako wakati wowote. Kuondoa hakuathiri uhalali wa uchakataji uliofanywa kabla ya kuondoa.\n\nMamlaka ya uangalizi: ikiwa unaamini haki zako zimekiukwa, unaweza kuwasilisha malalamiko kwa Wakala wa Ulinzi wa Data wa Uhispania (AEPD) au mamlaka husika nchini mwako.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Matumizi ya Wedingo yanamaanisha kukubali masharti haya. Wedingo ni jukwaa la kuunda na kusimamia mialiko ya harusi.\n\nMtumiaji anajitolea kutotumia jukwaa kwa madhumuni haramu au kutuma maudhui ya kukera.\n\nWedingo haiwajibiki kwa maudhui yaliyoundwa na watumiaji au matumizi ya wageni ya data zao za kibinafsi.\n\nTunahifadhi haki ya kurekebisha masharti haya. Mabadiliko yataarifiwa kupitia jukwaa.\n\nKwa wakazi wa California: katika kesi ya mgongano kati ya masharti haya na CCPA, haki zilizotolewa na CCPA zitatangulizwa.",
     "legalText": "Kwa kuzingatia kifungu cha 10 cha Sheria ya 34/2002 ya tarehe 11 Julai ya Huduma za Jamii ya Habari na Biashara ya Kielektroniki (LSSI-CE), inaarifiwa:\n\nMwenye wajibu: Adrián Carrasco López\nBarua pepe: adriancl2001@gmail.com\nKusudi la tovuti: jukwaa la mialiko ya harusi iliyobinafsishwa.\n\nTovuti hii inatumia Firebase (Google LLC) kama miundombinu ya upangishaji na uhifadhi, na seva katika Umoja wa Ulaya."
   },
@@ -3685,7 +3688,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5363,5 +5367,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

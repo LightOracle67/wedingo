@@ -1487,7 +1487,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1748,7 +1750,8 @@
     "generateToken": "Gawe kodhe anyar",
     "logout": "Metu",
     "deleteDataDescription": "Yèn arep ngleksanakaké hak ARSO, kowé bisa mbusak kabèh datamu.",
-    "deleteInvitation": "Busak undanganku lan kabèh dataku"
+    "deleteInvitation": "Busak undanganku lan kabèh dataku",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Dhukungan",
@@ -1809,12 +1812,12 @@
   },
   "cookie": {
     "title": "Idin cookie",
-    "text": "Wedingo nganggo panyimpenan lokal sing dibutuhaké kanggo lakuné undangan (nyimpen sési lan préférènsi). Ora nganggo cookie pihak katelu utawa pelacak.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Tampa",
     "reject": "Tolak",
     "configure": "Atur",
     "necessary": "Panyimpenan sing dibutuhaké",
-    "analytics": "Statistik kunjungan",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Simpen préférènsi",
     "settingsTitle": "Atur cookie"
   },
@@ -1823,7 +1826,7 @@
     "sectionTerms": "Ketentuan Panggunaan",
     "sectionLegal": "Wara-wara Sah",
     "modalTitle": "Informasi sah",
-    "privacyPolicy": "Penanggung jawab pangolahan: Adrián Carrasco López. Kontak: adriancl2001@gmail.com. Tujuan: ngatur undangan mantèn, konfirmasi rawuh, lan komunikasi acara.\n\nLandhesan sah: idin saka sing ana gandhèngané (art. 6.1.a GDPR). Data kaséhatan (alergi lan ora tahan panganan) diolah karo idin sing jelas (art. 9.2.a GDPR) kanggo nyocogaké menu acara.\n\nData sing diklumpukaké: jeneng, préférènsi panganan (alergi lan ora tahan panganan), gambar sing diunggahaké sacara sukarela, data bank yèn diwènèhaké sukarela.\n\nPanampa: Google LLC (Firebase, Google Cloud Platform) sing markasé ing AS. Google wis nandhatangani Klausul Kontrak Standar (SCC) sing disarujuki Komisi Éropah (Keputusan Pelaksanaan 2021/914) lan nduwé Data Processing Agreement (DPA) miturut art. 28 GDPR. Saliyané kuwi, Google manut Data Privacy Framework (DPF) EU-AS, UK-AS lan Swiss-AS, sertifikasi sing njamin tingkat perlindhungan sing trep kanggo transfer data internasional.\n\nTransfer internasional: data disimpen ing server Google Cloud ing wilayah eur3 (Éropah, Frankfurt). Yèn perlu nransfer data menyang AS, transfer iki diayomi déning SCC lan sertifikasi DPF Google.\n\nWektu panyimpenan: data tamu disimpen nganti 12 sasi sawisé tanggal acara. Sawisé wektu kuwi, data bakal dibusak otomatis. Data konfigurasi sing nggawé disimpen salawasé akun aktif.\n\nHak-hak: kowé bisa ngleksanakaké hak aksès, mbeneraké, mbusak, matesi, portabilitas lan mbantah kanthi nulis menyang adriancl2001@gmail.com. Para tamu bisa njaluk pambusakan data kanthi nyebutaké jeneng lan undangan. Panjalukanmu bakal dijawab ing wektu maksimal 30 dina.\n\nHak mbatalaké idin: kowé bisa mbatalaké idin sawayah-wayah tanpa ngganggu legalitas pangolahan sadurungé pambatalan.",
+    "privacyPolicy": "Penanggung jawab pangolahan: Adrián Carrasco López. Kontak: adriancl2001@gmail.com. Tujuan: ngatur undangan mantèn, konfirmasi rawuh, lan komunikasi acara.\n\nLandhesan sah: idin saka sing ana gandhèngané (art. 6.1.a GDPR). Data kaséhatan (alergi lan ora tahan panganan) diolah karo idin sing jelas (art. 9.2.a GDPR) kanggo nyocogaké menu acara.\n\nData sing diklumpukaké: jeneng, préférènsi panganan (alergi lan ora tahan panganan), gambar sing diunggahaké sacara sukarela, data bank yèn diwènèhaké sukarela.\n\nPanampa: Google LLC (Firebase, Google Cloud Platform) sing markasé ing AS. Google wis nandhatangani Klausul Kontrak Standar (SCC) sing disarujuki Komisi Éropah (Keputusan Pelaksanaan 2021/914) lan nduwé Data Processing Agreement (DPA) miturut art. 28 GDPR. Saliyané kuwi, Google manut Data Privacy Framework (DPF) EU-AS, UK-AS lan Swiss-AS, sertifikasi sing njamin tingkat perlindhungan sing trep kanggo transfer data internasional.\n\nTransfer internasional: data disimpen ing server Google Cloud ing wilayah eur3 (Éropah, Frankfurt). Yèn perlu nransfer data menyang AS, transfer iki diayomi déning SCC lan sertifikasi DPF Google.\n\nWektu panyimpenan: data tamu disimpen nganti 12 sasi sawisé tanggal acara. Sawisé wektu kuwi, data bakal dibusak otomatis. Data konfigurasi sing nggawé disimpen salawasé akun aktif.\n\nHak-hak: kowé bisa ngleksanakaké hak aksès, mbeneraké, mbusak, matesi, portabilitas lan mbantah kanthi nulis menyang adriancl2001@gmail.com. Para tamu bisa njaluk pambusakan data kanthi nyebutaké jeneng lan undangan. Panjalukanmu bakal dijawab ing wektu maksimal 30 dina.\n\nHak mbatalaké idin: kowé bisa mbatalaké idin sawayah-wayah tanpa ngganggu legalitas pangolahan sadurungé pambatalan.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Nganggo Wedingo ateges sarujuk karo ketentuan iki. Wedingo iku platform kanggo nggawé lan ngatur undangan mantèn.\n\nPanganggo setuju ora bakal nganggo platform kanggo tujuan ilegal utawa ngirim kontèn sing nyinggung.\n\nWedingo ora tanggung jawab marang kontèn sing digawé déning panganggo utawa panggunaan data pribadi déning para tamu.\n\nAwaké dhéwé nduwé hak ngowahi ketentuan iki. Owahan bakal dikabari liwat platform.\n\nKanggo sing manggon ing California: yèn ana konflik antara ketentuan iki lan CCPA, hak sing diwènèhaké CCPA bakal ngonggoni.",
     "legalText": "Kanggo manut artikel 10 UU 34/2002, tanggal 11 Juli, babagan Layanan Masyarakat Informasi lan Perdagangan Élèktronik (LSSI-CE), dikabari:\n\nPenanggung jawab: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nTujuan situs wèb: platform undangan mantèn pribadi.\n\nSitus wèb iki nganggo Firebase (Google LLC) minangka infrastruktur hosting lan panyimpenan, karo server ing Uni Éropah."
   },
@@ -3894,7 +3897,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5572,5 +5576,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

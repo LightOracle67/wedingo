@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1697,7 +1699,8 @@
     "generateToken": "Hasilkeun kodeu anyar",
     "logout": "Kaluar",
     "deleteDataDescription": "Upami hoyong ngalaksanakeun hak ARSO, Anjeun tiasa mupus sadaya data Anjeun.",
-    "deleteInvitation": "Pupus ondangan abdi sareng sadaya data abdi"
+    "deleteInvitation": "Pupus ondangan abdi sareng sadaya data abdi",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Rojongan",
@@ -1758,12 +1761,12 @@
   },
   "cookie": {
     "title": "Idin cookie",
-    "text": "Wedingo ngagunakeun panyimpenan lokal anu diperyogikeun pikeun jalanna ondangan (nyimpen sési sareng karesep Anjeun). Sim kuring henteu ngagunakeun cookie pihak katilu atanapi palacak.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Tarima",
     "reject": "Tolak",
     "configure": "Konpigurasikeun",
     "necessary": "Panyimpenan anu diperyogikeun",
-    "analytics": "Statistik kunjungan",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Simpen karesep",
     "settingsTitle": "Konpigurasikeun cookie"
   },
@@ -1772,7 +1775,7 @@
     "sectionTerms": "Katangtuan Pamakéan",
     "sectionLegal": "Bewara Hukum",
     "modalTitle": "Inpormasi hukum",
-    "privacyPolicy": "Pananggung jawab pamrosésan: Adrián Carrasco López. Kontak: adriancl2001@gmail.com. Tujuan: ngatur ondangan kawinan, konfirmasi kahadiran sareng komunikasi acara.\n\nDasar hukum: idin ti nu kapangaruhan (pasal 6.1.a GDPR). Data kaséhatan (alérgi sareng intoleransi pangan) diprosés kalayan idin eksplisit (pasal 9.2.a GDPR) pikeun nyaluyukeun ménu hajatan.\n\nData anu dikumpulkeun: nami, karesep pangan (alérgi sareng intoleransi), gambar anu diunggah sacara sukarela, data bank upami disayogikeun sacara sukarela.\n\nPanarima: Google LLC (Firebase, Google Cloud Platform) anu kantor pusatna di AS. Google parantos nandatanganan Klausul Kontrak Standar (SCC) anu disatujuan ku Komisi Éropa (Kaputusan Palaksanaan 2021/914) sareng gaduh Data Processing Agreement (DPA) numutkeun pasal 28 GDPR. Salian ti éta, Google matuh kana Data Privacy Framework (DPF) EU-AS, UK-AS sareng Swiss-AS, sertipikasi anu ngajamin tingkat panyalindungan anu nyukupan pikeun transfer data internasional.\n\nTransfer internasional: data disimpen dina server Google Cloud di wilayah eur3 (Éropa, Frankfurt). Nalika kedah nransfer data ka AS, transfer éta dijagaan ku SCC sareng sertipikasi DPF Google.\n\nMangsa panyimpenan: data tamu disimpen dugi ka 12 bulan saatos tanggal acara. Saatos éta, bakal dipupus sacara otomatis. Data konpigurasi panyipta disimpen salami akun aktip.\n\nHak: Anjeun tiasa ngalaksanakeun hak aksés, koréksi, ngahapus, ngawatesan, portabilitas sareng oposisi ku nyerat ka adriancl2001@gmail.com. Tamu tiasa nyuhunkeun ngahapus datana ku nyebatkeun nami sareng ondanganana. Sim kuring bakal ngawaler paménta Anjeun dina waktos maksimal 30 dinten.\n\nHak narik idin: Anjeun tiasa narik idin Anjeun iraha waé tanpa mangaruhan legalitas pamrosésan sateuacan ditarikna.",
+    "privacyPolicy": "Pananggung jawab pamrosésan: Adrián Carrasco López. Kontak: adriancl2001@gmail.com. Tujuan: ngatur ondangan kawinan, konfirmasi kahadiran sareng komunikasi acara.\n\nDasar hukum: idin ti nu kapangaruhan (pasal 6.1.a GDPR). Data kaséhatan (alérgi sareng intoleransi pangan) diprosés kalayan idin eksplisit (pasal 9.2.a GDPR) pikeun nyaluyukeun ménu hajatan.\n\nData anu dikumpulkeun: nami, karesep pangan (alérgi sareng intoleransi), gambar anu diunggah sacara sukarela, data bank upami disayogikeun sacara sukarela.\n\nPanarima: Google LLC (Firebase, Google Cloud Platform) anu kantor pusatna di AS. Google parantos nandatanganan Klausul Kontrak Standar (SCC) anu disatujuan ku Komisi Éropa (Kaputusan Palaksanaan 2021/914) sareng gaduh Data Processing Agreement (DPA) numutkeun pasal 28 GDPR. Salian ti éta, Google matuh kana Data Privacy Framework (DPF) EU-AS, UK-AS sareng Swiss-AS, sertipikasi anu ngajamin tingkat panyalindungan anu nyukupan pikeun transfer data internasional.\n\nTransfer internasional: data disimpen dina server Google Cloud di wilayah eur3 (Éropa, Frankfurt). Nalika kedah nransfer data ka AS, transfer éta dijagaan ku SCC sareng sertipikasi DPF Google.\n\nMangsa panyimpenan: data tamu disimpen dugi ka 12 bulan saatos tanggal acara. Saatos éta, bakal dipupus sacara otomatis. Data konpigurasi panyipta disimpen salami akun aktip.\n\nHak: Anjeun tiasa ngalaksanakeun hak aksés, koréksi, ngahapus, ngawatesan, portabilitas sareng oposisi ku nyerat ka adriancl2001@gmail.com. Tamu tiasa nyuhunkeun ngahapus datana ku nyebatkeun nami sareng ondanganana. Sim kuring bakal ngawaler paménta Anjeun dina waktos maksimal 30 dinten.\n\nHak narik idin: Anjeun tiasa narik idin Anjeun iraha waé tanpa mangaruhan legalitas pamrosésan sateuacan ditarikna.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Pamakéan Wedingo hartosna nampi katangtuan ieu. Wedingo mangrupikeun platform pikeun nyiptakeun sareng ngatur ondangan kawinan.\n\nPamaké komitmen pikeun henteu ngagunakeun platform pikeun tujuan anu henteu sah atanapi ngirim kontén anu nyinggung.\n\nWedingo henteu nanggung jawab kana kontén anu didamel ku pamaké atanapi pamakéan data pribadi ku tamu.\n\nSim kuring ngagaduhan hak ngarobih katangtuan ieu. Parobihan bakal dibéjaan ngalangkungan platform.\n\nKanggo warga California: upami aya konflik antara katangtuan ieu sareng CCPA, hak anu dipasihkeun ku CCPA bakal diutamakeun.",
     "legalText": "Pikeun matuh pasal 10 UU 34/2002, tanggal 11 Juli, ngeunaan Jasa Masarakat Informasi sareng Dagang Éléktronik (LSSI-CE), dibéjaan:\n\nPananggung jawab: Adrián Carrasco López\nSurélék: adriancl2001@gmail.com\nTujuan situs wéb: platform ondangan kawinan pribadi.\n\nSitus wéb ieu ngagunakeun Firebase (Google LLC) salaku infrastruktur hosting sareng panyimpenan, kalayan server di Uni Éropa."
   },
@@ -3792,7 +3795,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5457,5 +5461,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

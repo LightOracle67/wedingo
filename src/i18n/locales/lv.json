@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1691,7 +1693,8 @@
     "generateToken": "Ģenerēt jaunu kodu",
     "logout": "Izrakstīties",
     "deleteDataDescription": "Ja vēlaties izmantot savas ARSO tiesības, varat dzēst visus savus datus.",
-    "deleteInvitation": "Dzēst manu ielūgumu un visus manus datus"
+    "deleteInvitation": "Dzēst manu ielūgumu un visus manus datus",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Atbalsts",
@@ -1733,12 +1736,12 @@
   },
   "cookie": {
     "title": "Sīkdatņu piekrišana",
-    "text": "Wedingo izmanto nepieciešamo lokālo krātuvi ielūguma darbībai (sesijas un izvēļu saglabāšanai). Mēs neizmantojam trešo pušu sīkdatnes vai izsekotājus.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Piekrist",
     "reject": "Noraidīt",
     "configure": "Konfigurēt",
     "necessary": "Nepieciešamā krātuve",
-    "analytics": "Apmeklējumu statistika",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Saglabāt izvēles",
     "settingsTitle": "Sīkdatņu iestatījumi"
   },
@@ -1747,7 +1750,7 @@
     "sectionTerms": "Lietošanas noteikumi",
     "sectionLegal": "Juridiskais paziņojums",
     "modalTitle": "Juridiskā informācija",
-    "privacyPolicy": "Datu pārzinis: Adrián Carrasco López. Kontakts: adriancl2001@gmail.com. Nolūks: kāzu ielūgumu pārvaldība, dalības apstiprināšana un pasākumu komunikācija.\n\nJuridiskais pamats: datu subjekta piekrišana (GDPR 6. panta 1. punkta a) apakšpunkts). Veselības dati (pārtikas alerģijas un nepanesības) tiek apstrādāti ar nepārprotamu piekrišanu (GDPR 9. panta 2. punkta a) apakšpunkts), lai pielāgotu svinību ēdienkarti.\n\nIevāktie dati: vārds, uztura izvēles (alerģijas un nepanesības), brīvprātīgi augšupielādēti attēli, bankas dati, ja sniegti brīvprātīgi.\n\nSaņēmēji: Google LLC (Firebase, Google Cloud Platform), reģistrēta ASV. Google ir parakstījusi Eiropas Komisijas apstiprinātās Standarta līguma klauzulas (SCC) (Īstenošanas lēmums 2021/914) un tai ir Datu apstrādes līgums (DPA) saskaņā ar GDPR 28. pantu. Turklāt Google atbilst ES-ASV, AK-ASV un Šveices-ASV Datu privātuma ietvaram (DPF), sertifikātam, kas garantē atbilstošu aizsardzības līmeni starptautiskajām datu pārsūtīšanām.\n\nStarptautiskās pārsūtīšanas: dati tiek glabāti Google Cloud serveros eur3 reģionā (Eiropa, Frankfurte). Kad nepieciešams pārsūtīt datus uz ASV, pārsūtīšana balstās uz SCC un Google DPF sertifikātu.\n\nGlabāšanas periods: viesu dati tiek glabāti līdz 12 mēnešiem pēc pasākuma datuma. Pēc šī perioda tie tiks automātiski dzēsti. Veidotāja konfigurācijas dati tiek glabāti, kamēr konts ir aktīvs.\n\nTiesības: jūs varat izmantot savas tiesības uz piekļuvi, labošanu, dzēšanu, ierobežošanu, pārnesamību un iebildumiem, rakstot uz adriancl2001@gmail.com. Viesi var pieprasīt savu datu dzēšanu, norādot savu vārdu un ielūgumu. Mēs atbildēsim uz jūsu pieprasījumu 30 dienu laikā.\n\nTiesības atsaukt piekrišanu: jūs jebkurā laikā varat atsaukt savu piekrišanu, izdzēšot ielūgumu vai sazinoties pa adriancl2001@gmail.com.\n\nSūdzības: ja uzskatāt, ka jūsu tiesības ir pārkāptas, varat iesniegt sūdzību Datu valsts inspekcijai (www.dvi.gov.lv).\n\nDrošības pasākumi: sensitīvo datu šifrēšana, droša komunikācija (HTTPS/TLS), piekļuves kontrole ar sesiju tokeniem, automātiska novecojušo datu dzēšana.",
+    "privacyPolicy": "Datu pārzinis: Adrián Carrasco López. Kontakts: adriancl2001@gmail.com. Nolūks: kāzu ielūgumu pārvaldība, dalības apstiprināšana un pasākumu komunikācija.\n\nJuridiskais pamats: datu subjekta piekrišana (GDPR 6. panta 1. punkta a) apakšpunkts). Veselības dati (pārtikas alerģijas un nepanesības) tiek apstrādāti ar nepārprotamu piekrišanu (GDPR 9. panta 2. punkta a) apakšpunkts), lai pielāgotu svinību ēdienkarti.\n\nIevāktie dati: vārds, uztura izvēles (alerģijas un nepanesības), brīvprātīgi augšupielādēti attēli, bankas dati, ja sniegti brīvprātīgi.\n\nSaņēmēji: Google LLC (Firebase, Google Cloud Platform), reģistrēta ASV. Google ir parakstījusi Eiropas Komisijas apstiprinātās Standarta līguma klauzulas (SCC) (Īstenošanas lēmums 2021/914) un tai ir Datu apstrādes līgums (DPA) saskaņā ar GDPR 28. pantu. Turklāt Google atbilst ES-ASV, AK-ASV un Šveices-ASV Datu privātuma ietvaram (DPF), sertifikātam, kas garantē atbilstošu aizsardzības līmeni starptautiskajām datu pārsūtīšanām.\n\nStarptautiskās pārsūtīšanas: dati tiek glabāti Google Cloud serveros eur3 reģionā (Eiropa, Frankfurte). Kad nepieciešams pārsūtīt datus uz ASV, pārsūtīšana balstās uz SCC un Google DPF sertifikātu.\n\nGlabāšanas periods: viesu dati tiek glabāti līdz 12 mēnešiem pēc pasākuma datuma. Pēc šī perioda tie tiks automātiski dzēsti. Veidotāja konfigurācijas dati tiek glabāti, kamēr konts ir aktīvs.\n\nTiesības: jūs varat izmantot savas tiesības uz piekļuvi, labošanu, dzēšanu, ierobežošanu, pārnesamību un iebildumiem, rakstot uz adriancl2001@gmail.com. Viesi var pieprasīt savu datu dzēšanu, norādot savu vārdu un ielūgumu. Mēs atbildēsim uz jūsu pieprasījumu 30 dienu laikā.\n\nTiesības atsaukt piekrišanu: jūs jebkurā laikā varat atsaukt savu piekrišanu, izdzēšot ielūgumu vai sazinoties pa adriancl2001@gmail.com.\n\nSūdzības: ja uzskatāt, ka jūsu tiesības ir pārkāptas, varat iesniegt sūdzību Datu valsts inspekcijai (www.dvi.gov.lv).\n\nDrošības pasākumi: sensitīvo datu šifrēšana, droša komunikācija (HTTPS/TLS), piekļuves kontrole ar sesiju tokeniem, automātiska novecojušo datu dzēšana.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingo izmantošana nozīmē šo noteikumu piekrišanu. Wedingo ir platforma kāzu ielūgumu izveidei un pārvaldībai.\n\nLietotājs apņemas neizmantot platformu nelikumīgiem mērķiem vai aizskaroša satura sūtīšanai.\n\nWedingo nav atbildīgs par lietotāju radīto saturu vai par to, kā viesi izmanto savus personas datus.\n\nMēs paturam tiesības mainīt šos noteikumus. Izmaiņas tiks paziņotas platformā.\n\nKalifornijas iedzīvotājiem: gadījumā, ja rodas pretrunas starp šiem noteikumiem un CCPA, CCPA piešķirtajām tiesībām ir prioritāte.",
     "legalText": "Saskaņā ar Informācijas sabiedrības pakalpojumu un elektroniskās komercijas likuma 34/2002, 11. jūlija, 10. pantu (LSSI-CE) tiek paziņots:\n\nAtbildīgais: Adrián Carrasco López\nE-pasts: adriancl2001@gmail.com\nVietnes mērķis: personalizēto kāzu ielūgumu platforma.\n\nŠī vietne izmanto Firebase (Google LLC) kā mitināšanas un glabāšanas infrastruktūru ar serveriem Eiropas Savienībā."
   },
@@ -3704,7 +3707,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5382,5 +5386,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

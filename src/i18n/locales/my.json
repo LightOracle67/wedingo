@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1678,7 +1680,8 @@
     "generateToken": "ကုဒ်အသစ် ထုတ်လုပ်မည်",
     "logout": "ထွက်မည်",
     "deleteDataDescription": "သင်၏ ARSO အခွင့်အရေးများကို ကျင့်သုံးလိုပါက သင့်ဒေတာအားလုံးကို ဖျက်နိုင်သည်။",
-    "deleteInvitation": "ကျွန်ုပ်၏ ဖိတ်ကြားလွှာနှင့် ဒေတာအားလုံး ဖျက်မည်"
+    "deleteInvitation": "ကျွန်ုပ်၏ ဖိတ်ကြားလွှာနှင့် ဒေတာအားလုံး ဖျက်မည်",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "အကူအညီ",
@@ -1739,12 +1742,12 @@
   },
   "cookie": {
     "title": "ကွက်ကီး သဘောတူညီချက်",
-    "text": "Wedingo သည် ဖိတ်ကြားလွှာ လည်ပတ်ရန်အတွက် လိုအပ်သော စက်တွင်းသိုလှောင်မှုကို အသုံးပြုသည် (သင်၏ session နှင့် ဦးစားပေးမှုများကို သိမ်းဆည်းရန်)။ ပြင်ပကွက်ကီး သို့မဟုတ် ခြေရာခံကိရိယာများ မသုံးပါ။",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "လက်ခံမည်",
     "reject": "ငြင်းပယ်မည်",
     "configure": "ပြင်ဆင်သတ်မှတ်မည်",
     "necessary": "လိုအပ်သော သိုလှောင်မှု",
-    "analytics": "လာရောက်ကြည့်ရှုမှု စာရင်းအင်း",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "ဦးစားပေးမှုများ သိမ်းမည်",
     "settingsTitle": "ကွက်ကီးများ ပြင်ဆင်သတ်မှတ်မည်"
   },
@@ -1753,7 +1756,7 @@
     "sectionTerms": "အသုံးပြုမှု စည်းမျဉ်းများ",
     "sectionLegal": "ဥပဒေဆိုင်ရာ အသိပေးချက်",
     "modalTitle": "ဥပဒေဆိုင်ရာ အချက်အလက်",
-    "privacyPolicy": "ဒေတာထိန်းချုပ်သူ: Adrián Carrasco López။ ဆက်သွယ်ရန်: adriancl2001@gmail.com။ ရည်ရွယ်ချက်: မင်္ဂလာဖိတ်ကြားလွှာများ စီမံခန့်ခွဲခြင်း၊ တက်ရောက်မှု အတည်ပြုခြင်းနှင့် ပွဲအကြောင်း ဆက်သွယ်ခြင်း။ ဥပဒေအခြေခံ: ဒေတာပိုင်ရှင်၏ သဘောတူညီချက် (GDPR အပိုဒ် 6.1.a)။ ကျန်းမာရေးဒေတာ (အစားအစာ ဓာတ်မတည့်မှုနှင့် သည်းမခံနိုင်မှု) ကို အခမ်းအနား မီနူး ပြင်ဆင်ရန် တိကျသော သဘောတူညီချက် (GDPR အပိုဒ် 9.2.a) ဖြင့် စီမံဆောင်ရွက်သည်။ စုဆောင်းထားသော ဒေတာ: အမည်၊ အစားအသောက် ဦးစားပေးမှု (ဓာတ်မတည့်မှုနှင့် သည်းမခံနိုင်မှု)၊ မိမိဆန္ဒအလျောက် တင်ထားသော ဓာတ်ပုံများ၊ မိမိဆန္ဒအလျောက် ပေးထားသော ဘဏ်အချက်အလက်များ။ လက်ခံသူများ: Google LLC (Firebase, Google Cloud Platform)၊ USA တွင် အခြေစိုက်။ Google သည် ဥရောပကော်မရှင်မှ အတည်ပြုထားသော Standard Contractual Clauses (SCC) (Implementation Decision 2021/914) ကို လက်မှတ်ရေးထိုးထားပြီး GDPR အပိုဒ် 28 အရ Data Processing Agreement (DPA) ရှိသည်။ Google သည် EU-US, UK-US နှင့် Switzerland-US Data Privacy Framework (DPF) ကိုလည်း လိုက်နာသည်။ နိုင်ငံတကာ လွှဲပြောင်းမှုများ: ဒေတာကို eur3 ဒေသ (ဥရောပ၊ Frankfurt) ရှိ Google Cloud ဆာဗာများတွင် သိမ်းဆည်းသည်။ သိမ်းဆည်းကာလ: ဧည့်သည်ဒေတာကို ပွဲနေ့မှ 12 လအထိ သိမ်းဆည်းသည်။ ထိုကာလပြီးပါက အလိုအလျောက် ဖျက်ပစ်မည်။ ဖန်တီးသူ၏ ပြင်ဆင်မှုဒေတာကို အကောင့် အသက်ဝင်နေသရွေ့ သိမ်းဆည်းသည်။ အခွင့်အရေးများ: adriancl2001@gmail.com သို့ စာရေးခြင်းဖြင့် ဝင်ရောက်ခွင့်၊ ပြင်ဆင်ခွင့်၊ ဖျက်ခွင့်၊ ကန့်သတ်ခွင့်၊ သယ်ဆောင်ခွင့်နှင့် ကန့်ကွက်ခွင့်များကို ကျင့်သုံးနိုင်သည်။ သင့်တောင်းဆိုချက်ကို အများဆုံး ရက် 30 အတွင်း တုံ့ပြန်ပါမည်။ သဘောတူညီချက် ပြန်လည်ရုပ်သိမ်းခွင့်: မရုပ်သိမ်းမီ ဒေတာစီမံဆောင်ရွက်မှု၏ တရားဝင်မှုကို မထိခိုက်စေဘဲ အချိန်မရွေး သင့်သဘောတူညီချက်ကို ပြန်လည်ရုပ်သိမ်းနိုင်သည်။ တိုင်ကြားချက်: သင့်ဒေတာကို သင့်လျော်စွာ မစီမံဆောင်ရွက်ဟု ယူဆပါက အရည်အချင်းရှိသော ကြီးကြပ်ရေးအာဏာပိုင် (စပိန်အတွက် AEPD) ထံ တိုင်ကြားနိုင်သည်။",
+    "privacyPolicy": "ဒေတာထိန်းချုပ်သူ: Adrián Carrasco López။ ဆက်သွယ်ရန်: adriancl2001@gmail.com။ ရည်ရွယ်ချက်: မင်္ဂလာဖိတ်ကြားလွှာများ စီမံခန့်ခွဲခြင်း၊ တက်ရောက်မှု အတည်ပြုခြင်းနှင့် ပွဲအကြောင်း ဆက်သွယ်ခြင်း။ ဥပဒေအခြေခံ: ဒေတာပိုင်ရှင်၏ သဘောတူညီချက် (GDPR အပိုဒ် 6.1.a)။ ကျန်းမာရေးဒေတာ (အစားအစာ ဓာတ်မတည့်မှုနှင့် သည်းမခံနိုင်မှု) ကို အခမ်းအနား မီနူး ပြင်ဆင်ရန် တိကျသော သဘောတူညီချက် (GDPR အပိုဒ် 9.2.a) ဖြင့် စီမံဆောင်ရွက်သည်။ စုဆောင်းထားသော ဒေတာ: အမည်၊ အစားအသောက် ဦးစားပေးမှု (ဓာတ်မတည့်မှုနှင့် သည်းမခံနိုင်မှု)၊ မိမိဆန္ဒအလျောက် တင်ထားသော ဓာတ်ပုံများ၊ မိမိဆန္ဒအလျောက် ပေးထားသော ဘဏ်အချက်အလက်များ။ လက်ခံသူများ: Google LLC (Firebase, Google Cloud Platform)၊ USA တွင် အခြေစိုက်။ Google သည် ဥရောပကော်မရှင်မှ အတည်ပြုထားသော Standard Contractual Clauses (SCC) (Implementation Decision 2021/914) ကို လက်မှတ်ရေးထိုးထားပြီး GDPR အပိုဒ် 28 အရ Data Processing Agreement (DPA) ရှိသည်။ Google သည် EU-US, UK-US နှင့် Switzerland-US Data Privacy Framework (DPF) ကိုလည်း လိုက်နာသည်။ နိုင်ငံတကာ လွှဲပြောင်းမှုများ: ဒေတာကို eur3 ဒေသ (ဥရောပ၊ Frankfurt) ရှိ Google Cloud ဆာဗာများတွင် သိမ်းဆည်းသည်။ သိမ်းဆည်းကာလ: ဧည့်သည်ဒေတာကို ပွဲနေ့မှ 12 လအထိ သိမ်းဆည်းသည်။ ထိုကာလပြီးပါက အလိုအလျောက် ဖျက်ပစ်မည်။ ဖန်တီးသူ၏ ပြင်ဆင်မှုဒေတာကို အကောင့် အသက်ဝင်နေသရွေ့ သိမ်းဆည်းသည်။ အခွင့်အရေးများ: adriancl2001@gmail.com သို့ စာရေးခြင်းဖြင့် ဝင်ရောက်ခွင့်၊ ပြင်ဆင်ခွင့်၊ ဖျက်ခွင့်၊ ကန့်သတ်ခွင့်၊ သယ်ဆောင်ခွင့်နှင့် ကန့်ကွက်ခွင့်များကို ကျင့်သုံးနိုင်သည်။ သင့်တောင်းဆိုချက်ကို အများဆုံး ရက် 30 အတွင်း တုံ့ပြန်ပါမည်။ သဘောတူညီချက် ပြန်လည်ရုပ်သိမ်းခွင့်: မရုပ်သိမ်းမီ ဒေတာစီမံဆောင်ရွက်မှု၏ တရားဝင်မှုကို မထိခိုက်စေဘဲ အချိန်မရွေး သင့်သဘောတူညီချက်ကို ပြန်လည်ရုပ်သိမ်းနိုင်သည်။ တိုင်ကြားချက်: သင့်ဒေတာကို သင့်လျော်စွာ မစီမံဆောင်ရွက်ဟု ယူဆပါက အရည်အချင်းရှိသော ကြီးကြပ်ရေးအာဏာပိုင် (စပိန်အတွက် AEPD) ထံ တိုင်ကြားနိုင်သည်။\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingo အသုံးပြုခြင်းသည် ဤစည်းမျဉ်းများကို လက်ခံခြင်းဖြစ်သည်။ Wedingo သည် မင်္ဂလာဖိတ်ကြားလွှာများ ဖန်တီးရန်နှင့် စီမံရန် ပလက်ဖောင်းဖြစ်သည်။ အသုံးပြုသူသည် ပလက်ဖောင်းကို တရားမဝင်သော ရည်ရွယ်ချက်များ သို့မဟုတ် စော်ကားသော အကြောင်းအရာများ ပေးပို့ရန် အသုံးမပြုရန် သဘောတူသည်။ Wedingo သည် အသုံးပြုသူများ ဖန်တီးသော အကြောင်းအရာ သို့မဟုတ် ဧည့်သည်များ၏ ကိုယ်ရေးဒေတာ အသုံးပြုမှုအတွက် တာဝန်မယူပါ။ ဤစည်းမျဉ်းများကို ပြင်ဆင်ခွင့် ရှိသည်။ California နေထိုင်သူများအတွက်: ဤစည်းမျဉ်းများနှင့် CCPA အကြား ကွဲလွဲမှုရှိပါက CCPA မှ ပေးအပ်သော အခွင့်အရေးများ အာဏာသက်ရောက်မည်။",
     "legalText": "သတင်းအချက်အလက် လူမှုအဖွဲ့အစည်းနှင့် အီလက်ထရောနစ် ကူးသန်းရောင်းဝယ်ရေး ဝန်ဆောင်မှုများဆိုင်ရာ ဇူလိုင် 11 ရက် ဥပဒေ 34/2002 (LSSI-CE) အပိုဒ် 10 ကို လိုက်နာလျက် အသိပေးအပ်ပါသည်: တာဝန်ရှိသူ: Adrián Carrasco López အီးမေးလ်: adriancl2001@gmail.com ဝဘ်ဆိုက်၏ ရည်ရွယ်ချက်: ကိုယ်ပိုင်မင်္ဂလာဖိတ်ကြားလွှာများ ပလက်ဖောင်း။ ဤဝဘ်ဆိုက်သည် ဥရောပသမဂ္ဂရှိ ဆာဗာများဖြင့် Firebase (Google LLC) ကို hosting နှင့် storage infrastructure အဖြစ် အသုံးပြုသည်။"
   },
@@ -3710,7 +3713,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5375,5 +5379,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

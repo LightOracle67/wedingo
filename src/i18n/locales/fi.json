@@ -1423,7 +1423,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1646,7 +1648,8 @@
     "generateToken": "Luo uusi koodi",
     "logout": "Kirjaudu ulos",
     "deleteDataDescription": "Jos haluat käyttää ARSO-oikeuksiasi, voit poistaa kaikki tietosi.",
-    "deleteInvitation": "Poista kutsuni ja kaikki tietoni"
+    "deleteInvitation": "Poista kutsuni ja kaikki tietoni",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Tuki",
@@ -1688,12 +1691,12 @@
   },
   "cookie": {
     "title": "Evästeiden suostumus",
-    "text": "Wedingo käyttää välttämätöntä paikallista tallennustilaa kutsun toimintaa varten (istunnon ja asetusten tallentaminen). Emme käytä kolmannen osapuolen evästeitä tai seurantaa.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Hyväksy",
     "reject": "Hylkää",
     "configure": "Määritä",
     "necessary": "Välttämätön tallennustila",
-    "analytics": "Kävijätilastot",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Tallenna asetukset",
     "settingsTitle": "Evästeasetukset"
   },
@@ -1702,7 +1705,7 @@
     "sectionTerms": "Käyttöehdot",
     "sectionLegal": "Oikeudellinen huomautus",
     "modalTitle": "Oikeudelliset tiedot",
-    "privacyPolicy": "Rekisterinpitäjä: Adrián Carrasco López. Yhteystiedot: adriancl2001@gmail.com. Tarkoitus: hääkutsujen hallinta, osallistumisvahvistus ja tapahtumatiedotus.\n\nOikeusperuste: rekisteröidyn suostumus (GDPR 6 artikla 1 kohta a). Terveystietoja (ruoka-allergiat ja -intoleranssit) käsitellään nimenomaisella suostumuksella (GDPR 9 artikla 2 kohta a) juhlan menun mukauttamiseksi.\n\nKerättävät tiedot: nimi, ruokavaliotoiveet (allergiat ja intoleranssit), vapaaehtoisesti ladatut kuvat, pankkitiedot jos vapaaehtoisesti ilmoitettu.\n\nVastaanottajat: Google LLC (Firebase, Google Cloud Platform), kotipaikka USA. Google on allekirjoittanut Euroopan komission hyväksymät vakiolausekkeet (SCC) täytäntöönpanopäätöksellä 2021/914 ja sillä on tietojenkäsittelysopimus (DPA) GDPR 28 artiklan mukaisesti. Lisäksi Google noudattaa Data Privacy Framework (DPF) -sopimusta EU-USA, UK-USA ja Sveitsi-USA, sertifiointi takaa riittävän suojan tason kansainvälisille tiedonsiirroille.\n\nKansainväliset siirrot: tiedot tallennetaan Google Cloud -palvelimilla eur3-alueella (Eurooppa, Frankfurt). Kun siirto USA:han on tarpeen, siirto perustuu SCC:hen ja Googlen DPF-sertifiointiin.\n\nSäilytysaika: vieraiden tietoja säilytetään enintään 12 kuukautta tapahtuman päivämäärästä. Tämän ajan jälkeen ne poistetaan automaattisesti. Luojan asetustietoja säilytetään niin kauan kuin tili on aktiivinen.\n\nOikeudet: voit käyttää oikeuksiasi tutustua, oikaista, poistaa, rajoittaa, siirtää ja vastustaa tietojasi kirjoittamalla osoitteeseen adriancl2001@gmail.com. Vieraat voivat pyytää tietojensa poistamista ilmoittamalla nimensä ja kutsun. Vastaamme pyyntöösi 30 päivän kuluessa.\n\nOikeus peruuttaa suostumus: voit milloin tahansa peruuttaa suostumuksesi poistamalla kutsun tai ottamalla yhteyttä osoitteeseen adriancl2001@gmail.com.\n\nValitukset: jos katsot, että oikeuksiasi on loukattu, voit tehdä valituksen tietosuojavaltuutetulle (www.tietosuoja.fi).\n\nTurvatoimenpiteet: arkaluonteisten tietojen salaus, turvallinen viestintä (HTTPS/TLS), pääsynvalvonta istuntotokeneilla, vanhentuneiden tietojen automaattinen poisto.",
+    "privacyPolicy": "Rekisterinpitäjä: Adrián Carrasco López. Yhteystiedot: adriancl2001@gmail.com. Tarkoitus: hääkutsujen hallinta, osallistumisvahvistus ja tapahtumatiedotus.\n\nOikeusperuste: rekisteröidyn suostumus (GDPR 6 artikla 1 kohta a). Terveystietoja (ruoka-allergiat ja -intoleranssit) käsitellään nimenomaisella suostumuksella (GDPR 9 artikla 2 kohta a) juhlan menun mukauttamiseksi.\n\nKerättävät tiedot: nimi, ruokavaliotoiveet (allergiat ja intoleranssit), vapaaehtoisesti ladatut kuvat, pankkitiedot jos vapaaehtoisesti ilmoitettu.\n\nVastaanottajat: Google LLC (Firebase, Google Cloud Platform), kotipaikka USA. Google on allekirjoittanut Euroopan komission hyväksymät vakiolausekkeet (SCC) täytäntöönpanopäätöksellä 2021/914 ja sillä on tietojenkäsittelysopimus (DPA) GDPR 28 artiklan mukaisesti. Lisäksi Google noudattaa Data Privacy Framework (DPF) -sopimusta EU-USA, UK-USA ja Sveitsi-USA, sertifiointi takaa riittävän suojan tason kansainvälisille tiedonsiirroille.\n\nKansainväliset siirrot: tiedot tallennetaan Google Cloud -palvelimilla eur3-alueella (Eurooppa, Frankfurt). Kun siirto USA:han on tarpeen, siirto perustuu SCC:hen ja Googlen DPF-sertifiointiin.\n\nSäilytysaika: vieraiden tietoja säilytetään enintään 12 kuukautta tapahtuman päivämäärästä. Tämän ajan jälkeen ne poistetaan automaattisesti. Luojan asetustietoja säilytetään niin kauan kuin tili on aktiivinen.\n\nOikeudet: voit käyttää oikeuksiasi tutustua, oikaista, poistaa, rajoittaa, siirtää ja vastustaa tietojasi kirjoittamalla osoitteeseen adriancl2001@gmail.com. Vieraat voivat pyytää tietojensa poistamista ilmoittamalla nimensä ja kutsun. Vastaamme pyyntöösi 30 päivän kuluessa.\n\nOikeus peruuttaa suostumus: voit milloin tahansa peruuttaa suostumuksesi poistamalla kutsun tai ottamalla yhteyttä osoitteeseen adriancl2001@gmail.com.\n\nValitukset: jos katsot, että oikeuksiasi on loukattu, voit tehdä valituksen tietosuojavaltuutetulle (www.tietosuoja.fi).\n\nTurvatoimenpiteet: arkaluonteisten tietojen salaus, turvallinen viestintä (HTTPS/TLS), pääsynvalvonta istuntotokeneilla, vanhentuneiden tietojen automaattinen poisto.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Wedingon käyttö merkitsee näiden ehtojen hyväksymistä. Wedingo on alusta hääkutsujen luomiseen ja hallintaan.\n\nKäyttäjä sitoutuu olemaan käyttämättä alustaa laittomiin tarkoituksiin tai loukkaavan sisällön lähettämiseen.\n\nWedingo ei ole vastuussa käyttäjien tuottamasta sisällöstä eikä vieraiden henkilötietojensa käytöstä.\n\nPidätämme oikeuden muuttaa näitä ehtoja. Muutoksista ilmoitetaan alustan kautta.\n\nKalifornian asukkaille: jos nämä ehdot ja CCPA ovat ristiriidassa, CCPA:n myöntämät oikeudet ovat ensisijaisia.",
     "legalText": "Tietoyhteiskunnan palveluista ja sähköisestä kaupankäynnistä annetun lain 34/2002, 11. heinäkuuta, 10 artiklan (LSSI-CE) mukaisesti ilmoitetaan:\n\nVastuuhenkilö: Adrián Carrasco López\nSähköposti: adriancl2001@gmail.com\nVerkkosivuston tarkoitus: henkilökohtaisten hääkutsujen alusta.\n\nTämä verkkosivusto käyttää Firebase (Google LLC) -palvelua hosting- ja tallennusinfrastruktuurina, palvelimet Euroopan unionissa."
   },
@@ -3556,7 +3559,8 @@
   },
   "changelog": {
     "title": "Muutosloki",
-    "close": "Sulje"
+    "close": "Sulje",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -4860,5 +4864,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

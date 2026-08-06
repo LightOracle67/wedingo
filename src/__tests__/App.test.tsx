@@ -386,7 +386,7 @@ describe("App", () => {
     expect(screen.getByTestId("legal-modal")).toBeDefined();
   });
 
-  it("opens changelog from overlay version button", () => {
+  it("opens changelog from overlay version button", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -399,7 +399,7 @@ describe("App", () => {
     const versionButton = Array.from(buttons).find((b) => b.textContent?.includes("common.version"));
     expect(versionButton).toBeDefined();
     fireEvent.click(versionButton!);
-    expect(screen.getByTestId("changelog-modal")).toBeDefined();
+    expect(await screen.findByTestId("changelog-modal")).toBeDefined();
   });
 
   it("renders footer when not editing route", () => {
@@ -415,7 +415,7 @@ describe("App", () => {
     expect(screen.getAllByText("public.legalNotice").length).toBe(2);
   });
 
-  it("redirects unknown multi-segment paths to root", async () => {
+  it("shows the 404 page for unknown multi-segment paths", async () => {
     render(
       <MemoryRouter initialEntries={["/random/test"]}>
         <Suspense fallback={null}>
@@ -423,7 +423,7 @@ describe("App", () => {
         </Suspense>
       </MemoryRouter>
     );
-    expect(await screen.findByTestId("landing-page")).toBeDefined();
+    expect(await screen.findByTestId("not-found-page")).toBeDefined();
   });
 
   it("opens legal modal for terms from overlay", () => {
@@ -503,7 +503,7 @@ describe("App", () => {
     expect(screen.getByTestId("legal-modal")).toBeDefined();
   });
 
-  it("opens changelog from footer version button", () => {
+  it("opens changelog from footer version button", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -515,7 +515,7 @@ describe("App", () => {
     const versionBtn = Array.from(footerButtons).find((b) => b.textContent?.includes("common.version"));
     expect(versionBtn).toBeDefined();
     fireEvent.click(versionBtn!);
-    expect(screen.getByTestId("changelog-modal")).toBeDefined();
+    expect(await screen.findByTestId("changelog-modal")).toBeDefined();
   });
 
   it("renders a11y trigger in admin mode", () => {
@@ -755,7 +755,7 @@ describe("App", () => {
     expect(screen.getByText("DEV")).toBeDefined();
   });
 
-  it("renders changelog modal directly when showChangelog is true", () => {
+  it("renders changelog modal directly when showChangelog is true", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -767,7 +767,7 @@ describe("App", () => {
     const buttons = document.querySelectorAll(".app-nav-overlay__link");
     const versionButton = Array.from(buttons).find((b) => b.textContent?.includes("common.version"));
     fireEvent.click(versionButton!);
-    expect(screen.getByTestId("changelog-modal")).toBeDefined();
+    expect(await screen.findByTestId("changelog-modal")).toBeDefined();
   });
 
   it("renders legal modal when legalSection is set via overlay", () => {

@@ -14,6 +14,10 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
+vi.mock("../../../hooks/useToast", () => ({
+  useToast: () => ({ addToast: vi.fn(), startUploadToast: vi.fn() }),
+}));
+
 vi.mock("../../../contexts", () => ({
   useApp: () => mockAppState,
 }));
@@ -53,6 +57,18 @@ describe("AccessSectionForm", () => {
     expect(input.type).toBe("text");
     fireEvent.click(screen.getByRole("button", { name: "setup.hideToken" }));
     expect(input.type).toBe("password");
+    mockAppState.setupToken = "";
+  });
+
+  it("copies the setup token and shows a toast", async () => {
+    mockAppState.setupToken = "SECRET-TOKEN";
+    const writeText = vi.fn(() => Promise.resolve());
+    Object.defineProperty(navigator, "clipboard", { value: { writeText }, configurable: true });
+    render(<AccessSectionForm />);
+    fireEvent.click(screen.getByRole("button", { name: "setup.copyToken" }));
+    await vi.waitFor(() => {
+      expect(writeText).toHaveBeenCalledWith("SECRET-TOKEN");
+    });
     mockAppState.setupToken = "";
   });
 });

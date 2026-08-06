@@ -66,7 +66,8 @@ export default function CollapsibleSection({
         >
           <span className="setup-collapsible__summary-text">
             {isHidden ? <span className="setup-collapsible__hidden-badge">{t("common.hidden")}</span> : null}
-            <span className="setup-collapsible__title">{title}</span>
+            {/* h2: el título es el encabezado de la sección (HTML válido en <button>). */}
+            <h2 className="setup-collapsible__title">{title}</h2>
           </span>
           {hint ? <span className="setup-collapsible__hint">{hint}</span> : null}
         </button>

@@ -1093,7 +1093,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1284,7 +1286,8 @@
     "generateToken": "生成新验证码",
     "logout": "退出登录",
     "deleteDataDescription": "如果您希望行使ARSO权利，可以删除所有数据。",
-    "deleteInvitation": "删除我的请柬和所有数据"
+    "deleteInvitation": "删除我的请柬和所有数据",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "支持",
@@ -1326,12 +1329,12 @@
   },
   "cookie": {
     "title": "Cookie 同意",
-    "text": "Wedingo使用必要的本地存储以确保请柬正常运行（保存您的会话和偏好）。我们不使用第三方Cookie或追踪器。",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "接受",
     "reject": "拒绝",
     "configure": "配置",
     "necessary": "必要存储",
-    "analytics": "访问统计",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "保存偏好",
     "settingsTitle": "配置Cookie"
   },
@@ -1340,7 +1343,7 @@
     "sectionTerms": "使用条款",
     "sectionLegal": "法律声明",
     "modalTitle": "法律信息",
-    "privacyPolicy": "数据处理负责人：Adrián Carrasco López。联系方式：adriancl2001@gmail.com。目的：管理婚礼请柬、出席确认和活动通知。\n\n法律依据：数据主体的同意（GDPR第6.1.a条）。健康数据（食物过敏和不耐受）基于明确同意（GDPR第9.2.a条）进行处理，以调整庆典菜单。\n\n收集的数据：姓名、饮食偏好（过敏和不耐受）、自愿上传的图片、自愿提供的银行信息。\n\n接收方：Google LLC（Firebase、Google Cloud Platform），总部位于美国。Google已签署欧盟委员会批准的标准合同条款（SCC）（执行决定2021/914），并拥有符合GDPR第28条的数据处理协议（DPA）。此外，Google遵守欧盟-美国、英国-美国和瑞士-美国数据隐私框架（DPF），该认证确保国际数据传输的充分保护水平。\n\n国际传输：数据存储在Google Cloud位于eur3区域（欧洲，法兰克福）的服务器上。当需要向美国传输数据时，传输基于SCC和Google的DPF认证。\n\n保留期限：宾客数据在活动日期后保留最多12个月。期满后将自动删除。创建者的配置数据在账户活跃期间保留。\n\n权利：您可以通过发送邮件至adriancl2001@gmail.com行使访问、更正、删除、限制、可携带和反对的权利。宾客可以注明姓名和请柬来请求删除数据。我们将在最多30天内回复您的请求。\n\n撤回同意权：您可以随时撤回同意，不影响撤回前处理的合法性。\n\n数据保护：采用技术和组织安全措施，包括对图片和敏感数据进行AES-256-GCM加密、通过TLS 1.3建立HTTPS连接以及Firestore安全规则。\n\n如需更多信息或行使您的权利，请联系adriancl2001@gmail.com。",
+    "privacyPolicy": "数据处理负责人：Adrián Carrasco López。联系方式：adriancl2001@gmail.com。目的：管理婚礼请柬、出席确认和活动通知。\n\n法律依据：数据主体的同意（GDPR第6.1.a条）。健康数据（食物过敏和不耐受）基于明确同意（GDPR第9.2.a条）进行处理，以调整庆典菜单。\n\n收集的数据：姓名、饮食偏好（过敏和不耐受）、自愿上传的图片、自愿提供的银行信息。\n\n接收方：Google LLC（Firebase、Google Cloud Platform），总部位于美国。Google已签署欧盟委员会批准的标准合同条款（SCC）（执行决定2021/914），并拥有符合GDPR第28条的数据处理协议（DPA）。此外，Google遵守欧盟-美国、英国-美国和瑞士-美国数据隐私框架（DPF），该认证确保国际数据传输的充分保护水平。\n\n国际传输：数据存储在Google Cloud位于eur3区域（欧洲，法兰克福）的服务器上。当需要向美国传输数据时，传输基于SCC和Google的DPF认证。\n\n保留期限：宾客数据在活动日期后保留最多12个月。期满后将自动删除。创建者的配置数据在账户活跃期间保留。\n\n权利：您可以通过发送邮件至adriancl2001@gmail.com行使访问、更正、删除、限制、可携带和反对的权利。宾客可以注明姓名和请柬来请求删除数据。我们将在最多30天内回复您的请求。\n\n撤回同意权：您可以随时撤回同意，不影响撤回前处理的合法性。\n\n数据保护：采用技术和组织安全措施，包括对图片和敏感数据进行AES-256-GCM加密、通过TLS 1.3建立HTTPS连接以及Firestore安全规则。\n\n如需更多信息或行使您的权利，请联系adriancl2001@gmail.com。\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "使用Wedingo即表示接受这些条款。Wedingo是一个创建和管理婚礼请柬的平台。\n\n用户承诺不会将平台用于非法目的或发送冒犯性内容。\n\nWedingo不对用户生成的内容或宾客对其个人数据的使用承担责任。\n\n我们保留修改这些条款的权利。变更将通过平台通知。\n\n对于加利福尼亚州居民：如果这些条款与CCPA之间存在冲突，将以CCPA授予的权利为准。",
     "legalText": "根据7月11日第34/2002号《信息社会服务和电子商务法》（LSSI-CE）第10条，特此告知：\n\n负责人：Adrián Carrasco López\n电子邮箱：adriancl2001@gmail.com\n网站目的：个性化婚礼请柬平台。\n\n本网站使用Firebase（Google LLC）作为托管和存储基础设施，服务器位于欧盟。"
   },
@@ -2886,7 +2889,8 @@
   },
   "changelog": {
     "title": "更新日志",
-    "close": "关闭"
+    "close": "关闭",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "此邀请已有活动会话。是否仍要登录？之前的会话将被关闭。",
@@ -3683,5 +3687,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

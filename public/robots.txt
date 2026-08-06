@@ -1,2 +1,8 @@
 User-agent: *
-Disallow: /
+# La landing es indexable; las invitaciones y rutas internas no deben
+# indexarse (sus URLs son secretas y se comparten solo con los invitados).
+Allow: /
+Disallow: /admin
+Disallow: /setup
+Disallow: /_/
+Disallow: /print

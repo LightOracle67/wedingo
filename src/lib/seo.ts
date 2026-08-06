@@ -72,13 +72,18 @@ export interface SocialMetaInput {
   locale?: string;
 }
 
+/** Imagen social por defecto (banner genérico) cuando la invitación no tiene
+ *  una URL absoluta (couplePhoto suele ser un data URI, no indexable). */
+export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/favicon192.png`;
+
 /**
  * Aplica las meta tags Open Graph y Twitter de la invitación.
- * La imagen solo se publica si es una URL absoluta http(s): los datos
- * en data URI no son indexables por los rastreadores sociales.
+ * Si no hay imagen absoluta http(s), se usa una imagen genérica para que
+ * WhatsApp/Telegram muestren una vista previa (los data URIs no son
+ * indexables por los rastreadores sociales).
  */
 export function applySocialMeta({ title, description, url, image, locale }: SocialMetaInput) {
-  const absoluteImage = image && /^https?:\/\//.test(image) ? image : undefined;
+  const absoluteImage = image && /^https?:\/\//.test(image) ? image : DEFAULT_SOCIAL_IMAGE;
 
   upsertMeta("property", "og:title", title);
   upsertMeta("property", "og:description", description);
@@ -89,13 +94,8 @@ export function applySocialMeta({ title, description, url, image, locale }: Soci
   upsertMeta("name", "twitter:title", title);
   upsertMeta("name", "twitter:description", description);
   if (locale) upsertMeta("property", "og:locale", locale);
-  if (absoluteImage) {
-    upsertMeta("property", "og:image", absoluteImage);
-    upsertMeta("name", "twitter:image", absoluteImage);
-  } else {
-    // Sin imagen indexable se deja la tarjeta en modo "summary".
-    upsertMeta("name", "twitter:card", "summary");
-  }
+  upsertMeta("property", "og:image", absoluteImage);
+  upsertMeta("name", "twitter:image", absoluteImage);
   upsertCanonical(url);
 }
 

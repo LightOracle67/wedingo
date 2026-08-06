@@ -1449,7 +1449,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1691,7 +1693,8 @@
     "generateToken": "ສ້າງລະຫັດໃໝ່",
     "logout": "ອອກຈາກລະບົບ",
     "deleteDataDescription": "ຖ້າທ່ານຕ້ອງການໃຊ້ສິດ ARSO ຂອງທ່ານ ທ່ານສາມາດລຶບຂໍ້ມູນທັງໝົດຂອງທ່ານ.",
-    "deleteInvitation": "ລຶບບັດເຊີນ ແລະ ຂໍ້ມູນທັງໝົດຂອງຂ້ອຍ"
+    "deleteInvitation": "ລຶບບັດເຊີນ ແລະ ຂໍ້ມູນທັງໝົດຂອງຂ້ອຍ",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "ຊ່ວຍເຫຼືອ",
@@ -1752,12 +1755,12 @@
   },
   "cookie": {
     "title": "ການຍິນຍອມຄຸກກີ້",
-    "text": "Wedingo ໃຊ້ບ່ອນເກັບຂໍ້ມູນທ້ອງຖິ່ນທີ່ຈຳເປັນສຳລັບການເຮັດວຽກຂອງບັດເຊີນ (ບັນທຶກເຊດຊັນ ແລະ ການຕັ້ງຄ່າຂອງທ່ານ). ພວກເຮົາບໍ່ໃຊ້ຄຸກກີ້ພາກສ່ວນທີສາມ ຫຼື ຕົວຕິດຕາມ.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "ຍອມຮັບ",
     "reject": "ປະຕິເສດ",
     "configure": "ຕັ້ງຄ່າ",
     "necessary": "ບ່ອນເກັບຂໍ້ມູນຈຳເປັນ",
-    "analytics": "ສະຖິຕິການເຂົ້າຊົມ",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "ບັນທຶກການຕັ້ງຄ່າ",
     "settingsTitle": "ຕັ້ງຄ່າຄຸກກີ້"
   },
@@ -1766,7 +1769,7 @@
     "sectionTerms": "ເງື່ອນໄຂການໃຊ້ງານ",
     "sectionLegal": "ແຈ້ງການທາງກົດໝາຍ",
     "modalTitle": "ຂໍ້ມູນທາງກົດໝາຍ",
-    "privacyPolicy": "ຜູ້ຄວບຄຸມການປະມວນຜົນຂໍ້ມູນ: Adrián Carrasco López. ຕິດຕໍ່: adriancl2001@gmail.com. ຈຸດປະສົງ: ການຈັດການບັດເຊີນງານແຕ່ງ ການຢືນຢັນການເຂົ້າຮ່ວມ ແລະ ການສື່ສານກິດຈະກຳ. ພື້ນຖານກົດໝາຍ: ການຍິນຍອມຂອງເຈົ້າຂອງຂໍ້ມູນ (GDPR ມາດຕາ 6.1.a). ຂໍ້ມູນສຸຂະພາບ (ອາການແພ້ ແລະ ການບໍ່ທົນທານ) ຖືກປະມວນຜົນດ້ວຍການຍິນຍອມຢ່າງຊັດເຈນ (GDPR ມາດຕາ 9.2.a) ເພື່ອປັບລາຍການອາຫານຂອງງານ. ຂໍ້ມູນທີ່ເກັບກຳ: ຊື່ ຄວາມມັກດ້ານອາຫານ (ອາການແພ້ ແລະ ການບໍ່ທົນທານ) ຮູບພາບທີ່ອັບໂຫລດໂດຍສະໝັກໃຈ ຂໍ້ມູນທະນາຄານຖ້າໃຫ້ໂດຍສະໝັກໃຈ. ຜູ້ຮັບ: Google LLC (Firebase, Google Cloud Platform) ຕັ້ງຢູ່ສະຫະລັດອາເມລິກາ. Google ໄດ້ລົງນາມໃນຂໍ້ກຳນົດສັນຍາມາດຕະຖານ (SCC) ທີ່ຖືກອະນຸມັດໂດຍຄະນະກຳມະການເອີຣົບ (ຄຳຕັດສິນບັງຄັບໃຊ້ 2021/914) ແລະ ມີຂໍ້ຕົກລົງການປະມວນຜົນຂໍ້ມູນ (DPA) ຕາມ GDPR ມາດຕາ 28. Google ຍັງປະຕິບັດຕາມ Data Privacy Framework (DPF) EU-US, UK-US ແລະ ສະວິດ-US. ການໂອນຍ້າຍລະຫວ່າງປະເທດ: ຂໍ້ມູນຖືກເກັບຢູ່ເຊີບເວີ Google Cloud ໃນພາກພື້ນ eur3 (ເອີຣົບ ແຟງເຟີດ). ໄລຍະເວລາເກັບຮັກສາ: ຂໍ້ມູນແຂກຖືກເກັບໄວ້ເຖິງ 12 ເດືອນຫຼັງວັນທີງານ. ຂໍ້ມູນການຕັ້ງຄ່າຂອງຜູ້ສ້າງຖືກເກັບໄວ້ຕະຫຼອດເວລາທີ່ບັນຊີເຄື່ອນໄຫວ. ສິດ: ທ່ານສາມາດໃຊ້ສິດເຂົ້າເຖິງ ແກ້ໄຂ ລຶບ ຈຳກັດ ການໂອນຍ້າຍ ແລະ ຄັດຄ້ານໄດ້ໂດຍຂຽນຫາ adriancl2001@gmail.com. ພວກເຮົາຈະຕອບຄຳຮ້ອງຂໍຂອງທ່ານພາຍໃນເວລາສູງສຸດ 30 ມື້.",
+    "privacyPolicy": "ຜູ້ຄວບຄຸມການປະມວນຜົນຂໍ້ມູນ: Adrián Carrasco López. ຕິດຕໍ່: adriancl2001@gmail.com. ຈຸດປະສົງ: ການຈັດການບັດເຊີນງານແຕ່ງ ການຢືນຢັນການເຂົ້າຮ່ວມ ແລະ ການສື່ສານກິດຈະກຳ. ພື້ນຖານກົດໝາຍ: ການຍິນຍອມຂອງເຈົ້າຂອງຂໍ້ມູນ (GDPR ມາດຕາ 6.1.a). ຂໍ້ມູນສຸຂະພາບ (ອາການແພ້ ແລະ ການບໍ່ທົນທານ) ຖືກປະມວນຜົນດ້ວຍການຍິນຍອມຢ່າງຊັດເຈນ (GDPR ມາດຕາ 9.2.a) ເພື່ອປັບລາຍການອາຫານຂອງງານ. ຂໍ້ມູນທີ່ເກັບກຳ: ຊື່ ຄວາມມັກດ້ານອາຫານ (ອາການແພ້ ແລະ ການບໍ່ທົນທານ) ຮູບພາບທີ່ອັບໂຫລດໂດຍສະໝັກໃຈ ຂໍ້ມູນທະນາຄານຖ້າໃຫ້ໂດຍສະໝັກໃຈ. ຜູ້ຮັບ: Google LLC (Firebase, Google Cloud Platform) ຕັ້ງຢູ່ສະຫະລັດອາເມລິກາ. Google ໄດ້ລົງນາມໃນຂໍ້ກຳນົດສັນຍາມາດຕະຖານ (SCC) ທີ່ຖືກອະນຸມັດໂດຍຄະນະກຳມະການເອີຣົບ (ຄຳຕັດສິນບັງຄັບໃຊ້ 2021/914) ແລະ ມີຂໍ້ຕົກລົງການປະມວນຜົນຂໍ້ມູນ (DPA) ຕາມ GDPR ມາດຕາ 28. Google ຍັງປະຕິບັດຕາມ Data Privacy Framework (DPF) EU-US, UK-US ແລະ ສະວິດ-US. ການໂອນຍ້າຍລະຫວ່າງປະເທດ: ຂໍ້ມູນຖືກເກັບຢູ່ເຊີບເວີ Google Cloud ໃນພາກພື້ນ eur3 (ເອີຣົບ ແຟງເຟີດ). ໄລຍະເວລາເກັບຮັກສາ: ຂໍ້ມູນແຂກຖືກເກັບໄວ້ເຖິງ 12 ເດືອນຫຼັງວັນທີງານ. ຂໍ້ມູນການຕັ້ງຄ່າຂອງຜູ້ສ້າງຖືກເກັບໄວ້ຕະຫຼອດເວລາທີ່ບັນຊີເຄື່ອນໄຫວ. ສິດ: ທ່ານສາມາດໃຊ້ສິດເຂົ້າເຖິງ ແກ້ໄຂ ລຶບ ຈຳກັດ ການໂອນຍ້າຍ ແລະ ຄັດຄ້ານໄດ້ໂດຍຂຽນຫາ adriancl2001@gmail.com. ພວກເຮົາຈະຕອບຄຳຮ້ອງຂໍຂອງທ່ານພາຍໃນເວລາສູງສຸດ 30 ມື້.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "ການໃຊ້ Wedingo ໝາຍເຖິງການຍອມຮັບເງື່ອນໄຂເຫຼົ່ານີ້. Wedingo ເປັນແພລດຟອມສຳລັບສ້າງ ແລະ ຈັດການບັດເຊີນງານແຕ່ງ. ຜູ້ໃຊ້ຕົກລົງບໍ່ໃຊ້ແພລດຟອມສຳລັບຈຸດປະສົງທີ່ຜິດກົດໝາຍ ຫຼື ສົ່ງເນື້ອຫາທີ່ໝິ່ນປະໝາດ. Wedingo ບໍ່ຮັບຜິດຊອບຕໍ່ເນື້ອຫາທີ່ສ້າງໂດຍຜູ້ໃຊ້ ຫຼື ການໃຊ້ຂໍ້ມູນສ່ວນຕົວໂດຍແຂກ. ພວກເຮົາສະຫງວນສິດໃນການປ່ຽນແປງເງື່ອນໄຂເຫຼົ່ານີ້. ສຳລັບຜູ້ຢູ່ອາໄສ California: ໃນກໍລະນີຂັດແຍ່ງລະຫວ່າງເງື່ອນໄຂເຫຼົ່ານີ້ກັບ CCPA ສິດທິທີ່ຖືກມອບໃຫ້ໂດຍ CCPA ຈະມີຜົນບັງຄັບໃຊ້ກ່ອນ.",
     "legalText": "ເພື່ອປະຕິບັດຕາມມາດຕາ 10 ຂອງກົດໝາຍ 34/2002 ວັນທີ 11 ກໍລະກົດ ວ່າດ້ວຍບໍລິການສັງຄົມຂໍ້ມູນຂ່າວສານ ແລະ ການຄ້າອີເລັກໂທຣນິກ (LSSI-CE) ຂໍແຈ້ງໃຫ້ຊາບ: ຜູ້ຮັບຜິດຊອບ: Adrián Carrasco López ອີເມວ: adriancl2001@gmail.com ຈຸດປະສົງເວັບໄຊທ໌: ແພລດຟອມບັດເຊີນງານແຕ່ງແບບສ່ວນຕົວ. ເວັບໄຊທ໌ນີ້ໃຊ້ Firebase (Google LLC) ເປັນໂຄງສ້າງພື້ນຖານການໂຮສຕິ້ງ ແລະ ການເກັບຂໍ້ມູນ ໂດຍມີເຊີບເວີໃນສະຫະພາບເອີຣົບ."
   },
@@ -3723,7 +3726,8 @@
           ]
         ]
       ]
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5401,5 +5405,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

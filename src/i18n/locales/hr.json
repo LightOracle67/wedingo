@@ -1410,7 +1410,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1639,7 +1641,8 @@
     "generateToken": "Generiraj novi kod",
     "logout": "Odjava",
     "deleteDataDescription": "Ako želite ostvariti svoja ARSO prava, možete izbrisati sve svoje podatke.",
-    "deleteInvitation": "Izbriši moju pozivnicu i sve moje podatke"
+    "deleteInvitation": "Izbriši moju pozivnicu i sve moje podatke",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Podrška",
@@ -1681,12 +1684,12 @@
   },
   "cookie": {
     "title": "Pristanak na kolačiće",
-    "text": "Wedingo koristi nužnu lokalnu pohranu za funkcioniranje pozivnice (spremanje sesije i postavki). Ne koristimo kolačiće trećih strana ni alate za praćenje.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Prihvati",
     "reject": "Odbij",
     "configure": "Konfiguriraj",
     "necessary": "Nužna pohrana",
-    "analytics": "Statistika posjeta",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Spremi postavke",
     "settingsTitle": "Konfiguracija kolačića"
   },
@@ -1695,7 +1698,7 @@
     "sectionTerms": "Uvjeti korištenja",
     "sectionLegal": "Pravna obavijest",
     "modalTitle": "Pravne informacije",
-    "privacyPolicy": "Voditelj obrade: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Svrha: upravljanje pozivnicama za vjenčanje, potvrda dolaska i komunikacija događaja.\n\nPravna osnova: privola ispitanika (čl. 6. st. 1. t. a Opće uredbe o zaštiti podataka - GDPR). Zdravstveni podaci (alergije i intolerancije na hranu) obrađuju se uz izričitu privolu (čl. 9. st. 2. t. a GDPR) za prilagodbu jelovnika proslave.\n\nPrikupljeni podaci: ime, prehrambene preferencije (alergije i intolerancije), dobrovoljno prenesene fotografije, bankovni podaci ako su dobrovoljno navedeni.\n\nPrimatelji: Google LLC (Firebase, Google Cloud Platform) sa sjedištem u SAD-u. Google je potpisao Standardne ugovorne klauzule (SCC) odobrene od strane Europske komisije (Provedbena odluka 2021/914) i ima Ugovor o obradi podataka (DPA) u skladu s čl. 28 GDPR. Osim toga, Google je u skladu s Okvirom za privatnost podataka (DPF) EU-SAD, UK-SAD i Švicarska-SAD, certifikat koji jamči odgovarajuću razinu zaštite za međunarodne prijenose podataka.\n\nMeđunarodni prijenosi: podaci se pohranjuju na Google Cloud poslužiteljima u regiji eur3 (Europa, Frankfurt). Kada je prijenos podataka u SAD nužan, prijenos se temelji na SCC i Google-ovom DPF certifikatu.\n\nRazdoblje čuvanja: podaci gostiju čuvaju se do 12 mjeseci nakon datuma događaja. Nakon tog razdoblja automatski će se brisati. Podaci o konfiguraciji kreatora čuvaju se dok je račun aktivan.\n\nPrava: možete ostvariti svoja prava na pristup, ispravak, brisanje, ograničenje, prenosivost i prigovor pišući na adriancl2001@gmail.com. Gosti mogu zatražiti brisanje svojih podataka navodeći svoje ime i pozivnicu. Odgovorit ćemo na vaš zahtjev u roku od 30 dana.\n\nPravo na povlačenje privole: svoju privolu možete povući u bilo kojem trenutku brisanjem pozivnice ili kontaktiranjem na adriancl2001@gmail.com.\n\nPritužbe: ako smatrate da su vaša prava povrijeđena, možete podnijeti pritužbu Agenciji za zaštitu osobnih podataka (www.azop.hr).\n\nSigurnosne mjere: enkripcija osjetljivih podataka, sigurna komunikacija (HTTPS/TLS), kontrola pristupa putem tokena sesije, automatsko brisanje isteklih podataka.",
+    "privacyPolicy": "Voditelj obrade: Adrián Carrasco López. Kontakt: adriancl2001@gmail.com. Svrha: upravljanje pozivnicama za vjenčanje, potvrda dolaska i komunikacija događaja.\n\nPravna osnova: privola ispitanika (čl. 6. st. 1. t. a Opće uredbe o zaštiti podataka - GDPR). Zdravstveni podaci (alergije i intolerancije na hranu) obrađuju se uz izričitu privolu (čl. 9. st. 2. t. a GDPR) za prilagodbu jelovnika proslave.\n\nPrikupljeni podaci: ime, prehrambene preferencije (alergije i intolerancije), dobrovoljno prenesene fotografije, bankovni podaci ako su dobrovoljno navedeni.\n\nPrimatelji: Google LLC (Firebase, Google Cloud Platform) sa sjedištem u SAD-u. Google je potpisao Standardne ugovorne klauzule (SCC) odobrene od strane Europske komisije (Provedbena odluka 2021/914) i ima Ugovor o obradi podataka (DPA) u skladu s čl. 28 GDPR. Osim toga, Google je u skladu s Okvirom za privatnost podataka (DPF) EU-SAD, UK-SAD i Švicarska-SAD, certifikat koji jamči odgovarajuću razinu zaštite za međunarodne prijenose podataka.\n\nMeđunarodni prijenosi: podaci se pohranjuju na Google Cloud poslužiteljima u regiji eur3 (Europa, Frankfurt). Kada je prijenos podataka u SAD nužan, prijenos se temelji na SCC i Google-ovom DPF certifikatu.\n\nRazdoblje čuvanja: podaci gostiju čuvaju se do 12 mjeseci nakon datuma događaja. Nakon tog razdoblja automatski će se brisati. Podaci o konfiguraciji kreatora čuvaju se dok je račun aktivan.\n\nPrava: možete ostvariti svoja prava na pristup, ispravak, brisanje, ograničenje, prenosivost i prigovor pišući na adriancl2001@gmail.com. Gosti mogu zatražiti brisanje svojih podataka navodeći svoje ime i pozivnicu. Odgovorit ćemo na vaš zahtjev u roku od 30 dana.\n\nPravo na povlačenje privole: svoju privolu možete povući u bilo kojem trenutku brisanjem pozivnice ili kontaktiranjem na adriancl2001@gmail.com.\n\nPritužbe: ako smatrate da su vaša prava povrijeđena, možete podnijeti pritužbu Agenciji za zaštitu osobnih podataka (www.azop.hr).\n\nSigurnosne mjere: enkripcija osjetljivih podataka, sigurna komunikacija (HTTPS/TLS), kontrola pristupa putem tokena sesije, automatsko brisanje isteklih podataka.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Korištenje Wedinga podrazumijeva prihvaćanje ovih uvjeta. Wedingo je platforma za izradu i upravljanje pozivnicama za vjenčanje.\n\nKorisnik se obvezuje da neće koristiti platformu u nezakonite svrhe niti za slanje uvredljivog sadržaja.\n\nWedingo nije odgovoran za sadržaj koji generiraju korisnici niti za korištenje osobnih podataka od strane gostiju.\n\nZadržavamo pravo izmjene ovih uvjeta. Promjene će biti objavljene putem platforme.\n\nZa stanovnike Kalifornije: u slučaju sukoba između ovih uvjeta i CCPA, prava dodijeljena CCPA-om imaju prednost.",
     "legalText": "U skladu s člankom 10. Zakona 34/2002 od 11. srpnja o uslugama informacijskog društva i elektroničke trgovine (LSSI-CE), obavještava se:\n\nOdgovorna osoba: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nSvrha web stranice: platforma za personalizirane pozivnice za vjenčanje.\n\nOva web stranica koristi Firebase (Google LLC) kao infrastrukturu za hosting i pohranu, s poslužiteljima u Europskoj uniji."
   },
@@ -3540,7 +3543,8 @@
       null,
       null,
       2
-    ]
+    ],
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -5049,5 +5053,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

@@ -347,7 +347,9 @@
     "galleryDescriptionSaveFailed": "Gwall wrth gadw'r disgrifiad",
     "galleryDescriptionSaved": "Disgrifiad wedi'i gadw",
     "currentMusic": "Cerddoriaeth dethol",
-    "removeMusic": "Dileu cerddoriaeth"
+    "removeMusic": "Dileu cerddoriaeth",
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -513,7 +515,8 @@
     "generateToken": "Cynhyrchu cod newydd",
     "logout": "Allgofnodi",
     "deleteDataDescription": "Os ydych am arfer eich hawliau, gallwch ddileu eich holl ddata.",
-    "deleteInvitation": "Dileu fy ngwahoddiad a'm holl ddata"
+    "deleteInvitation": "Dileu fy ngwahoddiad a'm holl ddata",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Cymorth",
@@ -574,12 +577,12 @@
   },
   "cookie": {
     "title": "Cydsyniad cwcis",
-    "text": "Mae Wedingo yn defnyddio storfa leol angenrheidiol ar gyfer gweithrediad y gwahoddiad (cadw eich sesiwn a'ch dewisiadau). Nid ydym yn defnyddio cwcis trydydd parti na thracwyr.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Derbyn",
     "reject": "Gwrthod",
     "configure": "Ffurfweddu",
     "necessary": "Storfa angenrheidiol",
-    "analytics": "Ystadegau ymweliadau",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Cadw dewisiadau",
     "settingsTitle": "Ffurfweddu cwcis"
   },
@@ -588,7 +591,7 @@
     "sectionTerms": "Telerau Defnyddio",
     "sectionLegal": "Hysbysiad Cyfreithiol",
     "modalTitle": "Gwybodaeth gyfreithiol",
-    "privacyPolicy": "Rheolwr data: Adrián Carrasco López. Cyswllt: adriancl2001@gmail.com. Diben: rheoli gwahoddiadau priodas, cadarnhad presenoldeb a chyfathrebu digwyddiadau.\n\nSail gyfreithiol: cydsyniad y person dan sylw (GDPR erth. 6.1.a). Mae data iechyd (alergeddau bwyd ac anoddefiadau) yn cael ei brosesu gyda chydsyniad penodol (GDPR erth. 9.2.a) i addasu bwydlen y dathliad.\n\nData a gesglir: enw, dewisiadau bwyd (alergeddau ac anoddefiadau), delweddau wedi'u llwytho'n wirfoddol, manylion banc os cânt eu darparu'n wirfoddol.\n\nDerbynyddion: Google LLC (Firebase, Google Cloud Platform) gyda phencadlys yn UDA. Mae Google wedi llofnodi'r Cymalau Contractiol Safonol (SCC) a gymeradwywyd gan y Comisiwn Ewropeaidd (Penderfyniad Gweithredu 2021/914) ac mae ganddo Gytundeb Prosesu Data (DPA) yn unol â GDPR erth. 28. Yn ogystal, mae Google yn cydymffurfio â'r Fframwaith Preifatrwydd Data (DPF) UE-UDA, DU-UDA a'r Swistir-UDA, ardystiad sy'n gwarantu lefel ddigonol o amddiffyniad ar gyfer trosglwyddiadau data rhyngwladol.\n\nTrosglwyddiadau rhyngwladol: mae data'n cael ei storio ar weinyddion Google Cloud yn rhanbarth eur3 (Ewrop, Frankfurt). Pan fydd angen trosglwyddo data i UDA, mae'r trosglwyddiad yn seiliedig ar SCC ac ardystiad DPF Google.\n\nCyfnod cadw: cedwir data gwesteion am hyd at 12 mis ar ôl dyddiad y digwyddiad. Ar ôl y cyfnod hwnnw, bydd yn cael ei ddileu'n awtomatig. Cedwir data cyfluniad y crëwr tra bo'r cyfrif yn weithredol.\n\nHawliau: gallwch arfer eich hawliau i gael mynediad, cywiro, dileu, cyfyngu, cludadwyedd a gwrthwynebu trwy ysgrifennu at adriancl2001@gmail.com. Gall gwesteion ofyn am ddileu eu data trwy nodi eu henw a'r gwahoddiad. Byddwn yn ateb eich cais o fewn 30 diwrnod ar y mwyaf.\n\nHawl i dynnu cydsyniad yn ôl: gallwch dynnu eich cydsyniad yn ôl ar unrhyw adeg heb effeithio ar gyfreithlondeb y prosesu a wnaed cyn y tynnu'n ôl.\n\nPenderfyniadau awtomataidd: nid ydym yn defnyddio gwneud penderfyniadau awtomataidd na phroffilio.\n\nAwdurdod goruchwylio: os ydych chi'n credu bod eich hawliau wedi'u torri, gallwch gyflwyno cwyn i Swyddfa'r Comisiynydd Gwybodaeth (www.ico.org.uk).",
+    "privacyPolicy": "Rheolwr data: Adrián Carrasco López. Cyswllt: adriancl2001@gmail.com. Diben: rheoli gwahoddiadau priodas, cadarnhad presenoldeb a chyfathrebu digwyddiadau.\n\nSail gyfreithiol: cydsyniad y person dan sylw (GDPR erth. 6.1.a). Mae data iechyd (alergeddau bwyd ac anoddefiadau) yn cael ei brosesu gyda chydsyniad penodol (GDPR erth. 9.2.a) i addasu bwydlen y dathliad.\n\nData a gesglir: enw, dewisiadau bwyd (alergeddau ac anoddefiadau), delweddau wedi'u llwytho'n wirfoddol, manylion banc os cânt eu darparu'n wirfoddol.\n\nDerbynyddion: Google LLC (Firebase, Google Cloud Platform) gyda phencadlys yn UDA. Mae Google wedi llofnodi'r Cymalau Contractiol Safonol (SCC) a gymeradwywyd gan y Comisiwn Ewropeaidd (Penderfyniad Gweithredu 2021/914) ac mae ganddo Gytundeb Prosesu Data (DPA) yn unol â GDPR erth. 28. Yn ogystal, mae Google yn cydymffurfio â'r Fframwaith Preifatrwydd Data (DPF) UE-UDA, DU-UDA a'r Swistir-UDA, ardystiad sy'n gwarantu lefel ddigonol o amddiffyniad ar gyfer trosglwyddiadau data rhyngwladol.\n\nTrosglwyddiadau rhyngwladol: mae data'n cael ei storio ar weinyddion Google Cloud yn rhanbarth eur3 (Ewrop, Frankfurt). Pan fydd angen trosglwyddo data i UDA, mae'r trosglwyddiad yn seiliedig ar SCC ac ardystiad DPF Google.\n\nCyfnod cadw: cedwir data gwesteion am hyd at 12 mis ar ôl dyddiad y digwyddiad. Ar ôl y cyfnod hwnnw, bydd yn cael ei ddileu'n awtomatig. Cedwir data cyfluniad y crëwr tra bo'r cyfrif yn weithredol.\n\nHawliau: gallwch arfer eich hawliau i gael mynediad, cywiro, dileu, cyfyngu, cludadwyedd a gwrthwynebu trwy ysgrifennu at adriancl2001@gmail.com. Gall gwesteion ofyn am ddileu eu data trwy nodi eu henw a'r gwahoddiad. Byddwn yn ateb eich cais o fewn 30 diwrnod ar y mwyaf.\n\nHawl i dynnu cydsyniad yn ôl: gallwch dynnu eich cydsyniad yn ôl ar unrhyw adeg heb effeithio ar gyfreithlondeb y prosesu a wnaed cyn y tynnu'n ôl.\n\nPenderfyniadau awtomataidd: nid ydym yn defnyddio gwneud penderfyniadau awtomataidd na phroffilio.\n\nAwdurdod goruchwylio: os ydych chi'n credu bod eich hawliau wedi'u torri, gallwch gyflwyno cwyn i Swyddfa'r Comisiynydd Gwybodaeth (www.ico.org.uk).\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "Mae defnyddio Wedingo yn golygu derbyn y telerau hyn. Mae Wedingo yn blatfform ar gyfer creu a rheoli gwahoddiadau priodas.\n\nMae'r defnyddiwr yn ymrwymo i beidio â defnyddio'r platfform at ddibenion anghyfreithlon nac i anfon cynnwys sarhaus.\n\nNid yw Wedingo yn gyfrifol am gynnwys a gynhyrchir gan ddefnyddwyr nac am y defnydd y mae gwesteion yn ei wneud o'u data personol.\n\nRydym yn cadw'r hawl i addasu'r telerau hyn. Bydd newidiadau'n cael eu hysbysu trwy'r platfform.\n\nAr gyfer preswylwyr California: rhag ofn gwrthdaro rhwng y telerau hyn a'r CCPA, bydd yr hawliau a roddir gan y CCPA yn drechaf.",
     "legalText": "Yn unol â'r ddeddfwriaeth berthnasol, hysbysir:\n\nCyfrifol: Adrián Carrasco López\nE-bost: adriancl2001@gmail.com\nDiben y wefan: platfform gwahoddiadau priodas personol.\n\nMae'r wefan hon yn defnyddio Firebase (Google LLC) fel seilwaith cynnal a storio, gyda gweinyddion yn yr Undeb Ewropeaidd."
   },
@@ -987,7 +990,8 @@
   },
   "changelog": {
     "title": "Newidlog",
-    "close": "Cau"
+    "close": "Cau",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": "Mae sesiwn weithredol ar gyfer y gwahoddiad hwn yn barod. ",
@@ -1145,5 +1149,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

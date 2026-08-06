@@ -1378,7 +1378,9 @@
           ]
         ]
       ]
-    ]
+    ],
+    "copyToken": "Copiar código de acceso",
+    "tokenSoleAccess": "Este código es tu único acceso de administrador: guárdalo en un lugar seguro. Si lo pierdes no podremos recuperarlo."
   },
   "admin": {
     "tabs": {
@@ -1588,7 +1590,8 @@
     "generateToken": "Új kód generálása",
     "logout": "Kijelentkezés",
     "deleteDataDescription": "Ha szeretnéd gyakorolni ARSO-jogaidat, törölheted az összes adatodat.",
-    "deleteInvitation": "Meghívóm és összes adatom törlése"
+    "deleteInvitation": "Meghívóm és összes adatom törlése",
+    "regenConfirm": "Generar un código nuevo invalidará el actual (dejarás de poder entrar con él). ¿Continuar?"
   },
   "support": {
     "title": "Támogatás",
@@ -1630,12 +1633,12 @@
   },
   "cookie": {
     "title": "Cookie hozzájárulás",
-    "text": "A Wedingo a meghívó működéséhez szükséges helyi tárolót használ (munkamenet és preferenciák mentése). Nem használunk harmadik féltől származó cookie-kat vagy nyomkövetőket.",
+    "text": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias). Las tipografías están alojadas en este sitio, sin peticiones a terceros. No usamos cookies de terceros ni rastreadores: la estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
     "accept": "Elfogadás",
     "reject": "Elutasítás",
     "configure": "Beállítás",
     "necessary": "Szükséges tárolás",
-    "analytics": "Látogatási statisztika",
+    "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Beállítások mentése",
     "settingsTitle": "Cookie beállítások"
   },
@@ -1644,7 +1647,7 @@
     "sectionTerms": "Felhasználási feltételek",
     "sectionLegal": "Jogi nyilatkozat",
     "modalTitle": "Jogi információk",
-    "privacyPolicy": "Adatkezelő: Adrián Carrasco López. Kapcsolat: adriancl2001@gmail.com. Cél: esküvői meghívók kezelése, részvétel visszaigazolása és eseménykommunikáció.\n\nJogalap: az érintett hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont). Az egészségügyi adatok (ételallergiák és intoleranciák) kezelése kifejezett hozzájáruláson alapul (GDPR 9. cikk (2) bekezdés a) pont) az ünnepség menüjének testreszabása érdekében.\n\nGyűjtött adatok: név, étrendi preferenciák (allergiák és intoleranciák), önkéntesen feltöltött képek, banki adatok önkéntes megadás esetén.\n\nCímzettek: Google LLC (Firebase, Google Cloud Platform), székhelye USA. A Google aláírta az Európai Bizottság által jóváhagyott általános szerződési feltételeket (SCC) (2021/914 végrehajtási határozat) és rendelkezik adatfeldolgozási szerződéssel (DPA) a GDPR 28. cikke szerint. Ezenkívül a Google megfelel az EU-USA, UK-USA és Svájc-USA Adatvédelmi Keretrendszernek (DPF), amely tanúsítvány megfelelő védelmi szintet garantál a nemzetközi adattovábbításokhoz.\n\nNemzetközi továbbítások: az adatok a Google Cloud szerverein az eur3 régióban (Európa, Frankfurt) kerülnek tárolásra. Ha az USA-ba történő adattovábbítás szükséges, a továbbítás az SCC-k és a Google DPF tanúsítványa alapján történik.\n\nMegőrzési idő: a vendégadatok az esemény időpontjától számított 12 hónapig kerülnek megőrzésre. Ezen időszak után automatikusan törlésre kerülnek. A létrehozó konfigurációs adatait a fiók aktív állapotában őrizzük meg.\n\nJogok: gyakorolhatod hozzáférési, helyesbítési, törlési, korlátozási, hordozhatósági és tiltakozási jogodat a adriancl2001@gmail.com e-mail címen. A vendégek kérhetik adataik törlését nevük és a meghívó megadásával. Kérelmedre 30 napon belül válaszolunk.\n\nA hozzájárulás visszavonásának joga: bármikor visszavonhatod hozzájárulásodat a meghívó törlésével vagy a adriancl2001@gmail.com címen történő kapcsolatfelvétellel.\n\nPanaszok: ha úgy véled, hogy jogaid sérültek, panaszt nyújthatsz be a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (www.naih.hu).\n\nBiztonsági intézkedések: érzékeny adatok titkosítása, biztonságos kommunikáció (HTTPS/TLS), hozzáférés-szabályozás munkamenet-tokenekkel, lejárt adatok automatikus törlése.",
+    "privacyPolicy": "Adatkezelő: Adrián Carrasco López. Kapcsolat: adriancl2001@gmail.com. Cél: esküvői meghívók kezelése, részvétel visszaigazolása és eseménykommunikáció.\n\nJogalap: az érintett hozzájárulása (GDPR 6. cikk (1) bekezdés a) pont). Az egészségügyi adatok (ételallergiák és intoleranciák) kezelése kifejezett hozzájáruláson alapul (GDPR 9. cikk (2) bekezdés a) pont) az ünnepség menüjének testreszabása érdekében.\n\nGyűjtött adatok: név, étrendi preferenciák (allergiák és intoleranciák), önkéntesen feltöltött képek, banki adatok önkéntes megadás esetén.\n\nCímzettek: Google LLC (Firebase, Google Cloud Platform), székhelye USA. A Google aláírta az Európai Bizottság által jóváhagyott általános szerződési feltételeket (SCC) (2021/914 végrehajtási határozat) és rendelkezik adatfeldolgozási szerződéssel (DPA) a GDPR 28. cikke szerint. Ezenkívül a Google megfelel az EU-USA, UK-USA és Svájc-USA Adatvédelmi Keretrendszernek (DPF), amely tanúsítvány megfelelő védelmi szintet garantál a nemzetközi adattovábbításokhoz.\n\nNemzetközi továbbítások: az adatok a Google Cloud szerverein az eur3 régióban (Európa, Frankfurt) kerülnek tárolásra. Ha az USA-ba történő adattovábbítás szükséges, a továbbítás az SCC-k és a Google DPF tanúsítványa alapján történik.\n\nMegőrzési idő: a vendégadatok az esemény időpontjától számított 12 hónapig kerülnek megőrzésre. Ezen időszak után automatikusan törlésre kerülnek. A létrehozó konfigurációs adatait a fiók aktív állapotában őrizzük meg.\n\nJogok: gyakorolhatod hozzáférési, helyesbítési, törlési, korlátozási, hordozhatósági és tiltakozási jogodat a adriancl2001@gmail.com e-mail címen. A vendégek kérhetik adataik törlését nevük és a meghívó megadásával. Kérelmedre 30 napon belül válaszolunk.\n\nA hozzájárulás visszavonásának joga: bármikor visszavonhatod hozzájárulásodat a meghívó törlésével vagy a adriancl2001@gmail.com címen történő kapcsolatfelvétellel.\n\nPanaszok: ha úgy véled, hogy jogaid sérültek, panaszt nyújthatsz be a Nemzeti Adatvédelmi és Információszabadság Hatóságnál (www.naih.hu).\n\nBiztonsági intézkedések: érzékeny adatok titkosítása, biztonságos kommunikáció (HTTPS/TLS), hozzáférés-szabályozás munkamenet-tokenekkel, lejárt adatok automatikus törlése.\n\nAnalítica y monitorización de errores: con tu consentimiento (opción «Estadísticas de visita»), Wedingo utiliza Google Analytics (Google LLC) para medir el uso anónimo de la invitación y Sentry (Functional Software, Inc., con DPA y Cláusulas Contractuales Tipo) para detectar y corregir errores. Estos servicios solo reciben datos si tú aceptas esa opción en el banner de cookies; no se activan sin consentimiento.",
     "termsText": "A Wedingo használata ezen feltételek elfogadását jelenti. A Wedingo egy platform esküvői meghívók létrehozására és kezelésére.\n\nA felhasználó vállalja, hogy nem használja a platformot jogellenes célokra vagy sértő tartalom küldésére.\n\nA Wedingo nem vállal felelősséget a felhasználók által generált tartalomért, sem a vendégek által a személyes adataikkal való visszaélésért.\n\nFenntartjuk a jogot ezen feltételek módosítására. A változásokról a platformon keresztül értesítünk.\n\nKaliforniai lakosok számára: ezen feltételek és a CCPA közötti ellentmondás esetén a CCPA által biztosított jogok élveznek elsőbbséget.",
     "legalText": "Az információs társadalommal összefüggő szolgáltatásokról és az elektronikus kereskedelemről szóló, július 11-i 34/2002 törvény (LSSI-CE) 10. cikkének megfelelően tájékoztatunk:\n\nFelelős: Adrián Carrasco López\nEmail: adriancl2001@gmail.com\nA weboldal célja: személyre szabott esküvői meghívók platformja.\n\nEz a weboldal a Firebase (Google LLC) szolgáltatást használja hosting és tárolási infrastruktúraként, az Európai Unióban található szerverekkel."
   },
@@ -3374,7 +3377,8 @@
   },
   "changelog": {
     "title": "Változásnapló",
-    "close": "Bezár"
+    "close": "Bezár",
+    "showAll": "Ver historial completo"
   },
   "auth": {
     "sessionExists": [
@@ -4664,5 +4668,11 @@
   },
   "map": {
     "openInMaps": "Abrir en Google Maps"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o el enlace es incorrecto.",
+    "homeLink": "Volver al inicio"
   }
 }

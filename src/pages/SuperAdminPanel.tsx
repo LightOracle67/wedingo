@@ -70,8 +70,10 @@ export default function SuperAdminPanel() {
           {TABS.map((tab) => (
             <button
               key={tab.key}
+              id={"sadm-tab-" + tab.key}
               role="tab"
               aria-selected={activeTab === tab.key}
+              aria-controls={"sadm-tabpanel-" + tab.key}
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
               onClick={() => setActiveTab(tab.key)}
             >
@@ -80,7 +82,7 @@ export default function SuperAdminPanel() {
           ))}
         </nav>
 
-        <div className="setup-form">
+        <div className="setup-form" role="tabpanel" id={"sadm-tabpanel-" + activeTab} aria-labelledby={"sadm-tab-" + activeTab}>
           {activeTab === "dashboard" && <DashboardTab />}
           {activeTab === "invitaciones" && <InvitationsTab />}
           {activeTab === "tokens" && <TokensTab />}
