@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.2",
+    date: "2026-08-06",
+    changes: [
+      "GUARDADO: la lista de temas se valida con regex (reduce el límite de 1000 expresiones del create), se avisa con claridad cuando el guardado falla por sesión expirada/permisos, y se re-despliegan las reglas refactorizadas",
+    ],
+  },
+  {
     version: "2.95.1",
     date: "2026-08-06",
     changes: [

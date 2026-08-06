@@ -691,7 +691,8 @@
     "cancelled": "Operation cancelled.",
     "yearInvalid": "The year is not valid.",
     "menuParseError": "The saved menu could not be read: please re-enter the dishes.",
-    "rsvpCounterFailed": "Could not prepare the RSVP area. Try saving again."
+    "rsvpCounterFailed": "Could not prepare the RSVP area. Try saving again.",
+    "saveSessionExpired": "Your session expired or access is not verified. Reload the page and sign in again."
   },
   "superadmin": {
     "tabs": {

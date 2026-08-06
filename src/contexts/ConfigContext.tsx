@@ -405,7 +405,10 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       setSaveMessage(deactivatedMsg || t("errors.configSaved"));
     } catch (e) {
       console.error("[app]", "[ConfigProvider]", "save error", { error: e });
-      setSaveError(getFirestoreErrorMessage(e, t));
+      // Un permission-denied al guardar suele significar sesión expirada o
+      // token no verificado: se avisa de forma útil en vez del genérico.
+      const code = (e as { code?: string })?.code;
+      setSaveError(code === "permission-denied" ? t("errors.saveSessionExpired") : getFirestoreErrorMessage(e, t));
     } finally {
 
       isSavingRef.current = false;

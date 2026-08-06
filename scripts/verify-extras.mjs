@@ -10,15 +10,30 @@ const token = "abcdefghij";
 const hash = createHash("sha256").update("TOKEN123").digest("hex");
 
 // Payload real que envía la app (normalizeConfig añade siempre estos campos).
-const config = {
+// Payload EXACTO del guardado: {...defaultConfig, ...normalizeConfig(formData)}.
+// defaultConfig incluye todos los campos; formData es lo que el admin edita.
+const defaultConfig = {
+  adminUsername: "", firstName: "", secondName: "", inviteMessage: "", theme: "golden",
+  weddingDay: "", weddingMonth: "", weddingYear: "", weddingHour: "", weddingMinute: "",
+  weddingPlace: "", weddingSiteURL: "", instagramUrl: "", facebookUrl: "",
+  weddingMapView: "roadmap", weddingMapStatic: "false", detailsMapMode: "iframe",
+  transportMapMode: "iframe", accommodationMapMode: "iframe",
+  weddingScheduleEvents: "", weddingDressCode: "", weddingDressCodeCustom: "",
+  couplePhoto: "", musicFile: "", sectionOrder: "", hiddenSections: "", storyText: "",
+  giftsInfo: "", bankInfo: "", accommodationURL: "", transportEnabled: "none",
+  transportDepartures: "", godparent1: "", godparent2: "", kidsPolicy: "",
+  menuEnabled: "false", menuTextoDishes: "", menuCarneDishes: "", menuPescadoDishes: "", menuVeganoDishes: "",
+  rsvpDeadline: "", rsvpDeadlineEnabled: "false", reactionsEnabled: "false",
+  giftsListEnabled: "false", giftList: "[]", rideShareEnabled: "false", welcomeVideo: "",
+  notesEnabled: "false", musicPollEnabled: "false", triviaEnabled: "false", trivia: "[]",
+  privacyPolicyVersion: "",
+};
+const formData = {
   firstName: "Ana", secondName: "Luis", theme: "golden",
   weddingDay: "15", weddingMonth: "junio", weddingYear: "2026", weddingHour: "18", weddingMinute: "30",
-  adminUsername: "ana",
-  rsvpDeadline: "", rsvpDeadlineEnabled: "false", reactionsEnabled: "false",
-  giftsListEnabled: "false", giftList: "[]", rideShareEnabled: "false",
-  welcomeVideo: "", notesEnabled: "false", musicPollEnabled: "false",
-  triviaEnabled: "false", trivia: "[]",
+  adminUsername: "ana", inviteMessage: "Bienvenidos", weddingPlace: "Madrid",
 };
+const config = { ...defaultConfig, ...formData };
 
 try {
   await setDoc(doc(db, "setupTokens", hash), { inviteToken: token, createdAt: new Date().toISOString() });
