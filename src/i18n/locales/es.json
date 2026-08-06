@@ -525,7 +525,12 @@
     "prevPage": "Página anterior",
     "nextPage": "Página siguiente",
     "pageSizeLabel": "Tamaño de página",
-    "exportCsv": "Exportar CSV"
+    "exportCsv": "Exportar CSV",
+    "csvExportError": "No se pudo generar el CSV.",
+    "filterLabel": "Filtrar por asistencia",
+    "filterAll": "Todas",
+    "filterYes": "Confirman",
+    "filterNo": "No asisten"
   },
   "share": {
     "publishedAt": "Tu invitación está publicada en:",

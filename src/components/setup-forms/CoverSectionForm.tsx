@@ -25,6 +25,11 @@ export default function CoverSectionForm({ prefix = "" }) {
 
   const photoRef = useRef<HTMLInputElement>(null);
   const id = (name: string) => `${prefix}${name}`;
+  /** src seguro para las imágenes de config: si la URL resuelta no está
+   *  disponible y el valor crudo es una referencia __cfgimg: (aún sin
+   *  descifrar), no se usa como src (antes mostraba un icono roto). */
+  const safeSrc = (url: string | undefined, raw: string | undefined) =>
+    (url || (raw && !raw.startsWith("__cfgimg:") ? raw : undefined)) || "";
 
   const uploadConfigImage = useCallback(async (imageId: string, file: File, onProgress?: (p: number) => void) => {
     // image-store se importa aquí para no arrastrarlo al bundle inicial.
@@ -190,7 +195,7 @@ export default function CoverSectionForm({ prefix = "" }) {
 
         {formData.couplePhoto ? (
           <div className="setup-selected-background">
-            <img src={couplePhotoUrl || formData.couplePhoto} alt={t("setup.couplePhotoLabel")} className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
+            <img src={safeSrc(couplePhotoUrl, formData.couplePhoto)} alt={t("setup.couplePhotoLabel")} className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
             <div>
               <p className="setup-selected-background__title">{t("setup.currentPhoto")}</p>
             </div>
@@ -225,7 +230,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         </div>
         {formData.customSeal ? (
           <div className="setup-selected-background">
-            <img src={customSealUrl || formData.customSeal} alt="" className="setup-selected-background__image" style={{ width: "3rem", height: "3rem", objectFit: "contain" }} />
+            <img src={safeSrc(customSealUrl, formData.customSeal)} alt="" className="setup-selected-background__image" style={{ width: "3rem", height: "3rem", objectFit: "contain" }} />
             <div>
               <p className="setup-selected-background__title">{t("setup.currentSeal")}</p>
             </div>
@@ -265,7 +270,7 @@ export default function CoverSectionForm({ prefix = "" }) {
 
         {formData.backgroundImage ? (
           <div className="setup-selected-background">
-            <img src={backgroundImageUrl || formData.backgroundImage} alt="" className="setup-selected-background__image" style={{ width: "100%", maxHeight: "100px", objectFit: "cover", borderRadius: "0.35rem" }} />
+            <img src={safeSrc(backgroundImageUrl, formData.backgroundImage)} alt="" className="setup-selected-background__image" style={{ width: "100%", maxHeight: "100px", objectFit: "cover", borderRadius: "0.35rem" }} />
           </div>
         ) : (
           <label className="setup-upload" htmlFor={id("backgroundImage")}>
@@ -302,7 +307,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         </div>
         {(formData as Record<string, unknown>).cornerDecoration ? (
           <div>
-            <img src={cornerDecorationUrl || (formData as Record<string, unknown>).cornerDecoration as string} alt="" style={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }} />
+            <img src={safeSrc(cornerDecorationUrl, (formData as Record<string, unknown>).cornerDecoration as string)} alt="" style={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }} />
           </div>
         ) : (
           <label className="setup-upload" htmlFor={id("cornerDecoration")}>

@@ -381,7 +381,7 @@ describe("App", () => {
     expect(screen.getByTestId("a11y-panel")).toBeDefined();
   });
 
-  it("opens legal modal from overlay privacy button", () => {
+  it("opens legal modal from overlay privacy button", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -394,7 +394,7 @@ describe("App", () => {
     const privacyButton = Array.from(buttons).find((b) => b.textContent === "public.privacyPolicy");
     expect(privacyButton).toBeDefined();
     fireEvent.click(privacyButton!);
-    expect(screen.getByTestId("legal-modal")).toBeDefined();
+    expect(await screen.findByTestId("legal-modal")).toBeDefined();
   });
 
   it("opens changelog from overlay version button", async () => {
@@ -437,7 +437,7 @@ describe("App", () => {
     expect(await screen.findByTestId("not-found-page")).toBeDefined();
   });
 
-  it("opens legal modal for terms from overlay", () => {
+  it("opens legal modal for terms from overlay", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -450,10 +450,10 @@ describe("App", () => {
     const termsButton = Array.from(buttons).find((b) => b.textContent === "public.terms");
     expect(termsButton).toBeDefined();
     fireEvent.click(termsButton!);
-    expect(screen.getByTestId("legal-modal")).toBeDefined();
+    expect(await screen.findByTestId("legal-modal")).toBeDefined();
   });
 
-  it("opens legal modal for legal notice from overlay", () => {
+  it("opens legal modal for legal notice from overlay", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -466,10 +466,10 @@ describe("App", () => {
     const legalButton = Array.from(buttons).find((b) => b.textContent === "public.legalNotice");
     expect(legalButton).toBeDefined();
     fireEvent.click(legalButton!);
-    expect(screen.getByTestId("legal-modal")).toBeDefined();
+    expect(await screen.findByTestId("legal-modal")).toBeDefined();
   });
 
-  it("opens legal modal from footer privacy button", () => {
+  it("opens legal modal from footer privacy button", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -481,10 +481,10 @@ describe("App", () => {
     const privacyBtn = Array.from(footerButtons).find((b) => b.textContent === "public.privacyPolicy");
     expect(privacyBtn).toBeDefined();
     fireEvent.click(privacyBtn!);
-    expect(screen.getByTestId("legal-modal")).toBeDefined();
+    expect(await screen.findByTestId("legal-modal")).toBeDefined();
   });
 
-  it("opens legal modal from footer terms button", () => {
+  it("opens legal modal from footer terms button", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -496,10 +496,10 @@ describe("App", () => {
     const termsBtn = Array.from(footerButtons).find((b) => b.textContent === "public.terms");
     expect(termsBtn).toBeDefined();
     fireEvent.click(termsBtn!);
-    expect(screen.getByTestId("legal-modal")).toBeDefined();
+    expect(await screen.findByTestId("legal-modal")).toBeDefined();
   });
 
-  it("opens legal modal from footer legal button", () => {
+  it("opens legal modal from footer legal button", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -511,7 +511,7 @@ describe("App", () => {
     const legalBtn = Array.from(footerButtons).find((b) => b.textContent === "public.legalNotice");
     expect(legalBtn).toBeDefined();
     fireEvent.click(legalBtn!);
-    expect(screen.getByTestId("legal-modal")).toBeDefined();
+    expect(await screen.findByTestId("legal-modal")).toBeDefined();
   });
 
   it("opens changelog from footer version button", async () => {
@@ -781,7 +781,7 @@ describe("App", () => {
     expect(await screen.findByTestId("changelog-modal")).toBeDefined();
   });
 
-  it("renders legal modal when legalSection is set via overlay", () => {
+  it("renders legal modal when legalSection is set via overlay", async () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
@@ -789,12 +789,15 @@ describe("App", () => {
         </Suspense>
       </MemoryRouter>
     );
+    // El nav overlay es async (los modales bajo demanda montan tras el
+    // Suspense): se espera a que el toggle exista antes de pulsarlo.
+    await vi.waitFor(() => expect(document.querySelector(".app-nav-toggle")).not.toBeNull());
     fireEvent.click(document.querySelector(".app-nav-toggle")!);
     const buttons = document.querySelectorAll(".app-nav-overlay__link");
     const privacyButton = Array.from(buttons).find((b) => b.textContent === "public.privacyPolicy");
     fireEvent.click(privacyButton!);
-    expect(screen.getByTestId("legal-modal")).toBeDefined();
-    expect(screen.getByTestId("legal-modal").textContent).toBe("privacy");
+    expect(await screen.findByTestId("legal-modal")).toBeDefined();
+    expect((await screen.findByTestId("legal-modal")).textContent).toBe("privacy");
   });
 
   it("renders accessibility panel when showA11y is true via overlay", () => {

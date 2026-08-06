@@ -6,16 +6,34 @@ const HEADER_LEN = SALT_LEN + IV_LEN + ITER_LEN;
 // Format: salt(16B) || iv(12B) || iterations(3B) || AES-GCM ciphertext
 const ITERATIONS_NEW = 600000;
 
+// Caché de claves derivadas: el MISMO dato (mismo salt) se descifra varias
+// veces (reload, re-hidratación) y cada vez re-derivaba PBKDF2-600k (~0.1-0.5s
+// en móvil). Se cachea por secret|salt|iterations.
+const KEY_CACHE = new Map<string, CryptoKey>();
+const MAX_KEYS = 20;
+
 async function getKey(secret: string, salt: BufferSource, iterations: number) {
+  const saltBytes = new Uint8Array(salt as ArrayBuffer);
+  const key = Array.from(saltBytes).map((b) => b.toString(16).padStart(2, "0")).join("");
+  const cacheKey = `${secret}|${key}|${iterations}`;
+  const cached = KEY_CACHE.get(cacheKey);
+  if (cached) return cached;
+
   const enc = new TextEncoder();
   const keyMaterial = await crypto.subtle.importKey(
     "raw", enc.encode(secret.padEnd(32, "x").slice(0, 32)),
     { name: "PBKDF2" }, false, ["deriveKey"]
   );
-  return crypto.subtle.deriveKey(
+  const derived = await crypto.subtle.deriveKey(
     { name: "PBKDF2", salt, iterations, hash: "SHA-256" },
     keyMaterial, ALGORITHM, false, ["encrypt", "decrypt"]
   );
+  KEY_CACHE.set(cacheKey, derived);
+  if (KEY_CACHE.size > MAX_KEYS) {
+    const oldest = KEY_CACHE.keys().next().value;
+    if (oldest !== undefined) KEY_CACHE.delete(oldest);
+  }
+  return derived;
 }
 
 function uint8ToBase64(bytes: Uint8Array) {

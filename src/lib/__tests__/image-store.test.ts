@@ -59,6 +59,7 @@ import {
   resolveAllConfigImages,
   deleteAllConfigImages,
   clearGalleryCache,
+  clearConfigImageCache,
 } from "../image-store";
 
 import * as cryptoUtils from "../crypto-utils";
@@ -73,6 +74,7 @@ describe("image-store", () => {
     // La caché de URLs descifradas es a nivel de módulo: se limpia para que
     // cada test descifre de verdad y no se contamine entre ellos.
     clearGalleryCache();
+    clearConfigImageCache();
     mockDecrypt.mockClear();
   });
   it("exports uploadImage", () => {

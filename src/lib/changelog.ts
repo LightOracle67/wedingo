@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.80.0",
+    date: "2026-08-06",
+    changes: [
+      "RENDIMIENTO: caché de la clave AES (PBKDF2-600k se deriva una vez por dato, los reloads ya no re-derivan), imágenes de configuración con caché de módulo y modales (cookies, legal, datos, changelog) con carga bajo demanda",
+      "ADMIN: filtro de asistencia operativo (Confirmadas/No asisten), export CSV con aviso de error y las imágenes de configuración ya no muestran icono roto si el descifrado falla",
+    ],
+  },
+  {
     version: "2.79.0",
     date: "2026-08-06",
     changes: [

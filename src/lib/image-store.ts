@@ -274,9 +274,22 @@ export async function saveConfigImage(
  */
 const CONFIG_IMAGE_RETRY_DELAYS_MS = [300, 600];
 
+// Caché a nivel de módulo de las imágenes de config descifradas (clave
+// `${token}:${imageId}`): cada reload re-leía Firestore y re-derivaba la clave
+// para las 4 imágenes de portada/fondo/sello.
+const CONFIG_IMG_CACHE = new Map<string, string>();
+
+export function clearConfigImageCache() {
+  CONFIG_IMG_CACHE.clear();
+}
+
 export async function getConfigImage(
   inviteToken: string, imageId: string,
 ): Promise<string | null> {
+
+  const cacheKey = `${inviteToken}:${imageId}`;
+  const cached = CONFIG_IMG_CACHE.get(cacheKey);
+  if (cached) return cached;
 
   const attempts = CONFIG_IMAGE_RETRY_DELAYS_MS.length + 1;
   let lastError: unknown;
@@ -286,7 +299,15 @@ export async function getConfigImage(
       if (!snap.exists()) { ; return null; }
       const encrypted = snap.data().data;
       if (typeof encrypted !== "string") { ; return null; }
-      return await decrypt(encrypted, inviteToken);
+      const url = await decrypt(encrypted, inviteToken);
+      if (url) {
+        CONFIG_IMG_CACHE.set(cacheKey, url);
+        if (CONFIG_IMG_CACHE.size > 12) {
+          const oldest = CONFIG_IMG_CACHE.keys().next().value;
+          if (oldest !== undefined) CONFIG_IMG_CACHE.delete(oldest);
+        }
+      }
+      return url;
     } catch (err) {
       lastError = err;
       // Reintento solo ante errores lanzados (red/deserialización); un

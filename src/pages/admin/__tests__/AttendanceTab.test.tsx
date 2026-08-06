@@ -5,6 +5,11 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key, i18n: { language: "es" } }),
 }));
 
+const mockAddToast = vi.fn();
+vi.mock("../../../hooks/useToast", () => ({
+  useToast: () => ({ addToast: mockAddToast }),
+}));
+
 import AttendanceTab from "../AttendanceTab";
 import type { RsvpEntry } from "../../../types";
 
@@ -203,6 +208,26 @@ describe("AttendanceTab", () => {
       />
     );
     expect(screen.getByText("attendance.noResultsFilter")).toBeDefined();
+  });
+
+  it("calls setAttendanceFilter when the attendance filter changes", () => {
+    const setAttendanceFilter = vi.fn();
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={setAttendanceFilter}
+        filteredEntries={[]}
+        rsvpEntries={[]}
+        exportPdf={vi.fn()}
+        formatDate={(d) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
+      />
+    );
+    fireEvent.change(screen.getByLabelText("attendance.filterLabel"), { target: { value: "yes" } });
+    expect(setAttendanceFilter).toHaveBeenCalledWith("yes");
   });
 
   it("calls setSearchQuery when select changes", () => {

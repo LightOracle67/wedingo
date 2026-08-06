@@ -525,7 +525,12 @@
     "prevPage": "Previous page",
     "nextPage": "Next page",
     "pageSizeLabel": "Page size",
-    "exportCsv": "Export CSV"
+    "exportCsv": "Export CSV",
+    "csvExportError": "Could not generate the CSV.",
+    "filterLabel": "Filter by attendance",
+    "filterAll": "All",
+    "filterYes": "Attending",
+    "filterNo": "Not attending"
   },
   "share": {
     "publishedAt": "Your invitation is published at:",

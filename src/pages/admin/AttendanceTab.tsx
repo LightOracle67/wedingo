@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Pagination from "../../components/Pagination";
+import { useToast } from "../../hooks/useToast";
 import { formatRSVPsForCSV } from "../../lib/admin-utils";
 
 interface RsvpEntry {
@@ -60,12 +61,13 @@ function formatMenuLabel(mealChoice: string, t: (key: string) => string): string
 const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const {
     searchQuery, setSearchQuery,
-    attendanceFilter,
+    attendanceFilter, setAttendanceFilter,
     filteredEntries, exportPdf,
     rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries, formatDate,
     transportDepartures,
   } = props;
   const { t, i18n } = useTranslation();
+  const { addToast } = useToast();
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
@@ -83,8 +85,13 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
-    } catch { /* export no disponible */ }
-  }, [filteredEntries]);
+    } catch (err) {
+      // Antes se traga el error en silencio: sin aviso el admin no sabía que
+      // el CSV no se generó.
+      console.error("[app]", "[AttendanceTab]", "csv export error", { error: err });
+      addToast("error", t("attendance.csvExportError"));
+    }
+  }, [filteredEntries, addToast, t]);
 
   const departures = useMemo(() => {
     try {
@@ -181,6 +188,15 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
               .map((e: RsvpEntry) => (
                 <option key={e.id} value={e.guestName}>{e.guestName}</option>
               ))}
+          </select>
+          {/* Filtro de asistencia: el estado existía pero no había UI para
+              cambiarlo (feature muerta). */}
+          <label className="sr-only" htmlFor="adminAttendanceFilter">{t("attendance.filterLabel")}</label>
+          <select id="adminAttendanceFilter" className="setup-input" value={attendanceFilter} onChange={(e) => setAttendanceFilter(e.target.value)}
+            style={{ maxWidth: "180px", fontSize: "0.85rem" }}>
+            <option value="all">{t("attendance.filterAll")}</option>
+            <option value="yes">{t("attendance.filterYes")}</option>
+            <option value="no">{t("attendance.filterNo")}</option>
           </select>
       </div>
 

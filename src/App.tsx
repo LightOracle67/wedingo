@@ -7,15 +7,15 @@ import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
 import AdminBarHeightSync from "./components/AdminBarHeightSync";
-import CookieConsent from "./components/CookieConsent";
-import DataRequestModal from "./components/DataRequestModal";
+const CookieConsent = lazy(() => import("./components/CookieConsent"));
+const DataRequestModal = lazy(() => import("./components/DataRequestModal"));
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
 import { useFocusTrap, useEscapeKey } from "./hooks/useFocusTrap";
 
 const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ckb", "dv"]);
 const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
-import LegalModal from "./components/LegalModal";
+const LegalModal = lazy(() => import("./components/LegalModal"));
 const ChangelogModal = lazy(() => import("./components/ChangelogModal"));
 import Fireflies from "./components/Fireflies";
 import { APP_VERSION, THEME_PREVIEW_COLORS } from "./lib/constants";
@@ -289,16 +289,20 @@ function AppShell() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         </Suspense>
-        <CookieConsent />
       </main>
 
       {/* Fireflies solo en la landing y en la invitación pública: su
           animación continua no debe ejecutarse en rutas de trabajo. */}
       {(location.pathname === "/" || (inviteToken && location.pathname === `/${inviteToken}`)) ? <Fireflies /> : null}
       <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />
-      {legalSection ? <LegalModal section={legalSection} onClose={() => setLegalSection("")} /> : null}
-      {showDataRequest ? <DataRequestModal inviteToken={inviteToken} onClose={() => setShowDataRequest(false)} /> : null}
-      {showChangelog ? <ChangelogModal onClose={() => setShowChangelog(false)} /> : null}
+
+      {/* Modales bajo demanda: su chunk se descarga solo al abrirlos. */}
+      <Suspense fallback={null}>
+        <CookieConsent />
+        {legalSection ? <LegalModal section={legalSection} onClose={() => setLegalSection("")} /> : null}
+        {showDataRequest ? <DataRequestModal inviteToken={inviteToken} onClose={() => setShowDataRequest(false)} /> : null}
+        {showChangelog ? <ChangelogModal onClose={() => setShowChangelog(false)} /> : null}
+      </Suspense>
     </>
   );
 }
