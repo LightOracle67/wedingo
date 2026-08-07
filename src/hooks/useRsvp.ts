@@ -12,6 +12,16 @@ import { STORAGE_KEYS } from "../lib/storage-keys";
 import { withWriteRetry } from "../lib/async-utils";
 import type { Attendee } from "../types";
 
+/**
+ * Cache de alergias descifradas por (inviteToken, docId).
+ * El onSnapshot vivo descifraba TODO el dietaryInfo en cada snapshot (cada
+ * 60s + cada cambio), descifrando repetidamente documentos ya conocidos con
+ * AES-GCM (coste no trivial en paneles con muchas respuestas). La clave deriva
+ * del inviteToken, así que los datos de una invitación nunca se reutilizan
+ * para otra; se descifra solo la primera vez por documento.
+ */
+const dietaryInfoCache = new Map<string, string>();
+
 interface RsvpFormData {
   guestName: string;
   attendance: string;
@@ -75,7 +85,15 @@ interface RsvpEntryData {
 }
 
 /** Hash estable (FNV-1a) de un nombre normalizado, para derivar los ids de
- *  respuesta del RSVP: un reintento reutiliza el mismo doc (idempotencia). */
+ *  respuesta del RSVP: un reintento reutiliza el mismo doc (idempotencia).
+ *
+ *  TRADEOFF DOCUMENTADO: el hash es de 32 bits (base36, ~7 chars), así que
+ *  dos invitados DISTINTOS con el mismo nombre normalizado comparten doc y el
+ *  segundo sobrescribe al primero. Es un comportamiento aceptado: en una
+ *  boda los homónimos exactos son raros y la idempotencia (reintentos no
+ *  duplican) vale más que la unicidad absoluta. Si un día se necesitara
+ *  unicidad estricta, habría que pasar a un id con sal verificada por el
+ *  servidor (p. ej. hash(serverSecret + nombre)) en vez del FNV-1a puro. */
 function stableGuestId(name: string): string {
   let h = 0x811c9dc5;
   for (let i = 0; i < name.length; i++) {
@@ -150,10 +168,9 @@ export function useRsvp(
 
   /** Convierte un QuerySnapshot de respuestas en la lista de entradas
    *  (main + acompañantes individuales), descifrando alergias. Se comparte
-   *  entre el hydrate inicial y el listener en vivo (onSnapshot). */
-/** Convierte un QuerySnapshot de respuestas en la lista de entradas
-   *  (main + acompañantes individuales), descifrando alergias. Se comparte
-   *  entre el hydrate inicial y el listener en vivo (onSnapshot). */
+   *  entre el hydrate inicial y el listener en vivo (onSnapshot).
+   *  El descifrado se cachea por (inviteToken, docId): un documento ya
+   *  procesado no se vuelve a descifrar en snapshots posteriores. */
   const processRsvpSnapshot = useCallback(async (snapshot: { docs: QueryDocumentSnapshot<DocumentData>[] }) => {
     const allDocs = await Promise.all(
       snapshot.docs.map(async (entryDoc) => {
@@ -167,10 +184,17 @@ export function useRsvp(
                 ? new Date(data.submittedAt.seconds * 1000).toISOString()
                 : new Date().toISOString();
 
-        const decryptedDietaryInfo =
-          typeof data.dietaryInfo === "string"
-            ? await decrypt(data.dietaryInfo, inviteToken)
-            : "";
+        const cacheKey = `${inviteToken}|${entryDoc.id}`;
+        let decryptedDietaryInfo = typeof data.dietaryInfo === "string" ? data.dietaryInfo : "";
+        if (typeof data.dietaryInfo === "string" && data.dietaryInfo !== "") {
+          const cached = dietaryInfoCache.get(cacheKey);
+          if (cached !== undefined) {
+            decryptedDietaryInfo = cached;
+          } else {
+            decryptedDietaryInfo = await decrypt(data.dietaryInfo, inviteToken);
+            dietaryInfoCache.set(cacheKey, decryptedDietaryInfo);
+          }
+        }
 
         const attendees = data.attendees || [];
 
@@ -255,6 +279,10 @@ export function useRsvp(
   }, [inviteToken]);
 
   useEffect(() => {
+    // Al cambiar de invitación se descarta la caché de alergias descifradas
+    // de la invitación anterior (datos de salud que no deben persistir entre
+    // invitaciones ni reutilizarse con otra clave).
+    dietaryInfoCache.clear();
     // El invitado público no puede leer respuestas (reglas): la hidratación
     // y el prefill quedan reservados al admin con sesión. Esto elimina el
     // banner de error falso y la caché con datos de salud descifrados.
@@ -632,7 +660,7 @@ export function useRsvp(
 
       // Contador por invitación: el documento grupo rsvpResponses/{inviteToken}
       // guarda el contador (las reglas exigen que exista y esté por debajo de
-      // 500) y se incrementa en el mismo lote para mantener el tope anti-spam.
+      // RSVP_MAX_RESPONSES) y se incrementa en el mismo lote para mantener el tope anti-spam.
       const counterRef = doc(db, "rsvpResponses", inviteToken);
       try {
         const counterSnap = await getDoc(counterRef);
@@ -655,7 +683,12 @@ export function useRsvp(
 
     } catch (err) {
       console.error("[app]", "[useRsvp]", "RSVP batch write failed:", err);
-      throw new Error(t("rsvp.saveError"));
+      // El tope anti-spam (RSVP_MAX_RESPONSES) lo aplican las reglas en el
+      // increment del contador: se traduce como permission-denied en el lote.
+      // Se distingue del resto de fallos para dar un aviso claro en vez del
+      // genérico (antes el invitado veía "algo salió mal" sin explicación).
+      const code = err && typeof err === "object" && "code" in err ? String((err as Record<string, unknown>).code) : "";
+      throw new Error(code === "permission-denied" ? t("rsvp.limitReached") : t("rsvp.saveError"));
     }
 
     const mainEntry: RsvpEntryData = {

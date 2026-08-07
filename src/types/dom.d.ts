@@ -1,19 +1,23 @@
-interface PasswordCredentialData {
-  id: string;
-  password: string;
-  name: string;
-}
+export {};
 
-interface PasswordCredential extends Credential {
-  id: string;
-  type: "password";
-}
+declare global {
+  interface PasswordCredentialData {
+    id: string;
+    password: string;
+    name: string;
+  }
 
-declare var PasswordCredential: {
-  prototype: PasswordCredential;
-  new (data: PasswordCredentialData): PasswordCredential;
-};
+  interface PasswordCredential extends Credential {
+    id: string;
+    type: "password";
+  }
 
-interface CredentialContainer {
-  store(credential: PasswordCredential): Promise<void>;
+  var PasswordCredential: {
+    prototype: PasswordCredential;
+    new (data: PasswordCredentialData): PasswordCredential;
+  };
+
+  interface CredentialContainer {
+    store(credential: PasswordCredential): Promise<void>;
+  }
 }

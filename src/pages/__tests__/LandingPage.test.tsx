@@ -7,7 +7,7 @@ vi.mock("react-i18next", () => ({
 }));
 
 vi.mock("../../contexts", () => ({
-  useApp: () => ({
+  useAuth: () => ({
     config: {},
     setIsTokenVerified: vi.fn(),
     setTokenLoginUsername: vi.fn(),

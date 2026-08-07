@@ -101,7 +101,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
       <p className="setup-label setup-label--tight">{t("sectionOrder.title")}</p>
       <p className="setup-help setup-help--tight">{t("sectionOrder.help")}</p>
       <div className="section-order-list">
-        {items.filter((s: string) => s !== "godparents").map((sectionKey: string, index: number) => {
+        {items.map((sectionKey: string, index: number) => {
           // La portada (primera) y el RSVP (último) están fijos: no se
           // reordenan y se muestran bloqueados con su mismo estilo.
           const isFixed = sectionKey === "hero" || sectionKey === "rsvp";

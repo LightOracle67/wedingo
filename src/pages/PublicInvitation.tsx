@@ -20,7 +20,7 @@ import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react
 import { useLocation, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
-import { useApp } from "../contexts";
+import { useConfig, useRsvpContext, useAuth } from "../contexts";
 import { useStoryNavigation } from "../hooks/useStoryNavigation";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 
@@ -120,16 +120,17 @@ export default function PublicInvitation() {
   const isInviteMode = searchParams.has("invitar");
   const reducedMotion = useReducedMotion();
 
-  // ─── Estado global del contexto ────────────────────────
+  // ─── Estado global del contexto (hooks granulares por dominio) ──
   const {
     config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink,
+  } = useConfig();
+  const {
     rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
     rsvpLoadError, retryLoadRsvp,
-
     handleRsvpSubmit, updateRsvpField, handleDeleteRsvp,
-    isAdminTokenLoggedIn,
     DIETARY_OPTIONS, computeAge,
-  } = useApp();
+  } = useRsvpContext();
+  const { isAdminTokenLoggedIn } = useAuth();
 
   // ─── Secciones ocultas derivadas de la configuración ───
   const hiddenSet = useMemo(() => {

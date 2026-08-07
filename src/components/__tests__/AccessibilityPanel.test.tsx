@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
-import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup, act } from "@testing-library/react";
 
 const localStorageMock = (() => {
   let store: Record<string, string> = {};
@@ -136,18 +136,24 @@ describe("AccessibilityPanel", () => {
   });
 
   it("calls onClose when overlay is clicked", () => {
+    vi.useFakeTimers();
     const onClose = vi.fn();
     render(<AccessibilityPanel open={true} onClose={onClose} />);
     const overlay = document.querySelector(".modal-overlay") as HTMLElement;
     fireEvent.click(overlay);
+    act(() => { vi.advanceTimersByTime(250); });
     expect(onClose).toHaveBeenCalled();
+    vi.useRealTimers();
   });
 
   it("calls onClose when close button is clicked", () => {
+    vi.useFakeTimers();
     const onClose = vi.fn();
     render(<AccessibilityPanel open={true} onClose={onClose} />);
     fireEvent.click(screen.getByLabelText("a11y.close"));
+    act(() => { vi.advanceTimersByTime(250); });
     expect(onClose).toHaveBeenCalled();
+    vi.useRealTimers();
   });
 
   it("persists preferences to localStorage", () => {

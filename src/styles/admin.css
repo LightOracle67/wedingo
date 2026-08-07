@@ -1660,3 +1660,29 @@ select.setup-input {
   padding: 0.35rem 0;
   word-break: break-all;
 }
+
+/* Pagination — barra de paginaci�n de la tabla de asistencia. */
+.pagination-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.pagination-page-size {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.3rem;
+  border-radius: 4px;
+  border: 1px solid var(--setup-border);
+  background: var(--setup-bg);
+  color: var(--setup-text);
+}
+.pagination-meta {
+  font-size: 0.75rem;
+}

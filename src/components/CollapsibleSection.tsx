@@ -19,7 +19,6 @@ export default function CollapsibleSection({
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const [maxHeight, setMaxHeight] = useState(defaultOpen ? undefined : 0);
   const contentRef = useRef<HTMLDivElement | null>(null);
-  const hasMeasured = useRef(defaultOpen);
 
   const toggle = () => {
     if (isOpen) {
@@ -33,10 +32,8 @@ export default function CollapsibleSection({
       });
       setIsOpen(false);
     } else {
-      hasMeasured.current = false;
       if (contentRef.current) {
         setMaxHeight(contentRef.current.scrollHeight);
-        hasMeasured.current = true;
       }
       setIsOpen(true);
     }

@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { useApp } from "../contexts";
+import { useConfig } from "../contexts";
 
 interface SetupToggleFieldProps {
   /** Campo *Enabled que activa/oculta el input. */
@@ -18,7 +18,7 @@ interface SetupToggleFieldProps {
  * sectionHasContent al guardar). Centraliza el patrón para todos los campos.
  */
 export default function SetupToggleField({ enabledField, label, hint, id, children }: SetupToggleFieldProps) {
-  const { formData, updateFormField } = useApp();
+  const { formData, updateFormField } = useConfig();
   const enabled = formData[enabledField] === "true";
   const toggle = () => updateFormField(enabledField, enabled ? "false" : "true");
 

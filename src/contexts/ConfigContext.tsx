@@ -401,6 +401,10 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       setHasStoredConfig(true);
 
       for (const cb of onFirstSaveCallbacksRef.current) cb();
+      // Solo deben ejecutarse UNA vez (tras el primer guardado). Se vacía la
+      // lista para que un remount del proveedor (StrictMode, lazy) no acumule
+      // duplicados que se dispararían en cada guardado posterior.
+      onFirstSaveCallbacksRef.current = [];
 
       setSaveMessage(deactivatedMsg || t("errors.configSaved"));
     } catch (e) {

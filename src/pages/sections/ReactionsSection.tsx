@@ -9,7 +9,12 @@ const VOTE_KEY = "wedin_reacted";
 
 /**
  * ReactionsSection — Reacciones a la invitación (❤️ 🎉 😂) con contador.
- * Cada dispositivo solo puede sumar 1 por emoji (sessionStorage).
+ *
+ * ANTI-DOBLE-VOTO POR DEVICE: cada dispositivo solo suma 1 por emoji
+ * (sessionStorage `wedin_reacted`). Limitación conocida y aceptada: el mismo
+ * usuario desde otro dispositivo/navegador puede volver a reaccionar (no hay
+ * identidad verificada). La regla Firestore (increment-only con cap 10000)
+ * evita el abuso masivo.
  */
 export default function ReactionsSection({ inviteToken }: { inviteToken?: string }) {
   const { t } = useTranslation();

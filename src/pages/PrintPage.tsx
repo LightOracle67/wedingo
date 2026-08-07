@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useApp } from "../contexts";
+import { useConfig } from "../contexts";
 import { useTranslation } from "react-i18next";
 import { randomMessage } from "../lib/invite-messages";
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
@@ -7,7 +7,7 @@ import "../styles/print.css";
 
 export default function PrintPage() {
   const { t, i18n } = useTranslation();
-  const { config, isConfigLoading, inviteToken } = useApp();
+  const { config, isConfigLoading, inviteToken } = useConfig();
 
   const printed = useRef(false);
   const [loaded, setLoaded] = useState(false);

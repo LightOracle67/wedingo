@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 import { STORAGE_KEYS } from "../lib/storage-keys";
+import Modal from "./Modal";
 import "../styles/a11y.css";
 import "../styles/modals.css";
 
@@ -67,15 +67,10 @@ export default function AccessibilityPanel({ open, onClose }: { open: boolean; o
 
     return loaded;
   });
-  const modalRef = useFocusTrap<HTMLDivElement>(open);
-  useEscapeKey(onClose, open);
-
   useEffect(() => {
 
     applyPrefs(prefs);
-  }, [prefs]);
-
-  const toggle = (key: keyof A11yPrefs) => {
+  }, [prefs]);  const toggle = (key: keyof A11yPrefs) => {
 
     setPrefs((prev: A11yPrefs) => {
       const next = { ...prev, [key]: !prev[key] };
@@ -108,11 +103,12 @@ export default function AccessibilityPanel({ open, onClose }: { open: boolean; o
   if (!open) return null;
 
   return (
-    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={t("a11y.title")}>
-      <div className="modal-card" ref={modalRef} onClick={(e) => e.stopPropagation()} style={{ maxWidth: "400px", padding: "1.2rem 1rem 1rem" }}>
-        <button className="modal-close" onClick={onClose} aria-label={t("a11y.close")}>&times;</button>
-        <p className="modal-title">{t("a11y.title")}</p>
-
+    <Modal
+      title={t("a11y.title")}
+      closeLabel={t("a11y.close")}
+      onClose={onClose}
+      style={{ maxWidth: "400px", padding: "1.2rem 1rem 1rem" }}
+    >
         <div className="a11y-section">
           <p className="a11y-label">{t("a11y.fontSize")}</p>
           <div className="a11y-btn-row">
@@ -216,7 +212,6 @@ export default function AccessibilityPanel({ open, onClose }: { open: boolean; o
             <span>{t("a11y.strongFocus")}</span>
           </label>
         </div>
-      </div>
-    </div>
+    </Modal>
   );
 }

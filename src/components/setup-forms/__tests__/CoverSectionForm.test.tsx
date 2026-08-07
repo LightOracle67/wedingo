@@ -44,7 +44,7 @@ vi.mock("../../../lib/image-utils", () => ({
 const mockFormData = vi.hoisted(() => ({ firstName: "John", godparentsEnabled: "true", inviteMessageEnabled: "true", instagramEnabled: "true", facebookEnabled: "true", couplePhotoEnabled: "true", customSealEnabled: "true", backgroundImageEnabled: "true", cornerDecorationEnabled: "true", musicFileEnabled: "true" } as Record<string, string | undefined>));
 
 vi.mock("../../../contexts", () => ({
-  useApp: () => ({
+  useConfig: () => ({
     config: { theme: "golden", menuEnabled: "true" },
     formData: mockFormData,
     updateFormField: mockUpdateFormField,
@@ -354,7 +354,7 @@ describe("CoverSectionForm", () => {
     render(<CoverSectionForm />);
     const fileInputs = document.querySelectorAll('input[type="file"]');
     expect(fileInputs.length).toBe(4);
-    // El input de couplePhoto es único; el label "Reemplazar" lo reutiliza.
+    // El input de couplePhoto es Ãºnico; el label "Reemplazar" lo reutiliza.
     const replaceInput = fileInputs[0];
     const file = new File(["test"], "new.jpg", { type: "image/jpeg" });
     fireEvent.change(replaceInput!, { target: { files: [file] } });

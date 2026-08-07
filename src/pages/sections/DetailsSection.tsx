@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import MapEmbed from "../../components/MapEmbed";
 import { isValidGoogleMapsUrl } from "../../lib/geo-utils";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
-import { useApp } from "../../contexts";
+import { useConfig } from "../../contexts";
 import CornerDecorations from "../../components/CornerDecorations";
 
 const DetailsSection = memo(function DetailsSection({
@@ -30,7 +30,7 @@ const DetailsSection = memo(function DetailsSection({
 }) {
   const { t } = useTranslation();
   // Config global para generar el .ics y el enlace de navegación.
-  const { config } = useApp();
+  const { config } = useConfig();
   // Modo de visualización del mapa: iframe (por defecto), solo nombre u oculto.
   const mapMode = detailsMapMode === "name" || detailsMapMode === "hidden" ? detailsMapMode : "iframe";
   // "Cómo llegar": abre Google Maps con navegación al lugar (o a la URL del mapa).

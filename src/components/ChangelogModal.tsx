@@ -1,7 +1,7 @@
 import { memo, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 import { CHANGELOG } from "../lib/changelog";
+import Modal from "./Modal";
 import "../styles/modals.css";
 
 /** Número de versiones mostradas por defecto (el resto queda bajo "ver todo"). */
@@ -9,27 +9,21 @@ const DEFAULT_VISIBLE = 5;
 
 const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
-  const [closing, setClosing] = useState(false);
   const [showAll, setShowAll] = useState(false);
-  const modalRef = useFocusTrap<HTMLDivElement>(true);
 
-  const handleClose = useCallback(() => {
-    setClosing(true);
-    setTimeout(() => { setClosing(false); onClose(); }, 200);
-  }, [onClose]);
-
-  useEscapeKey(handleClose, true);
+  const handleClose = useCallback(() => onClose(), [onClose]);
 
   // Solo se renderizan las últimas versiones hasta que el usuario pide ver
   // el historial completo (80 entradas es un DOM pesado).
   const visible = showAll ? CHANGELOG : CHANGELOG.slice(0, DEFAULT_VISIBLE);
 
   return (
-    <div className={`modal-overlay ${closing ? "modal-overlay--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true" aria-label={t("changelog.title")}>
-      <div className={`modal-card ${closing ? "modal-card--closing" : ""}`} ref={modalRef} onClick={(e) => e.stopPropagation()}
-        style={{ width: "40%", height: "80%", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}>
-        <button className="modal-close" onClick={handleClose} aria-label={t("changelog.close")}>&times;</button>
-        <p className="modal-title">{t("changelog.title")}</p>
+    <Modal
+      title={t("changelog.title")}
+      closeLabel={t("changelog.close")}
+      onClose={handleClose}
+      style={{ width: "40%", height: "80%", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}
+    >
         <div style={{ overflowY: "auto", flex: 1, marginTop: "0.5rem" }}>
           {visible.map((entry) => (
             <div key={entry.version} style={{ marginBottom: "1rem", paddingBottom: "1rem", borderBottom: "1px solid var(--setup-border)" }}>
@@ -50,8 +44,7 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () =
             </button>
           ) : null}
         </div>
-      </div>
-    </div>
+    </Modal>
   );
 });
 

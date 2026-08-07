@@ -241,6 +241,14 @@ export function useStoryNavigation(
     };
 
     const onWheel = (e: WheelEvent) => {
+      // Solo se intercepta el scroll que ocurre DENTRO de la invitación
+      // (.app-scene): un scroll en otra parte de la app (menú móvil, modales,
+      // admin) se deja nativo. Evita tragar el gesto del usuario fuera de la
+      // invitación y posibles conflictos con contenedores no cubiertos por
+      // hasInnerScroll. Si el target no es un elemento DOM real (eventos
+      // sintéticos) o no existe .app-scene, se conserva el comportamiento
+      // original por compatibilidad.
+      if (appScene && e.target instanceof Node && !appScene.contains(e.target)) return;
       const dir: 1 | -1 = e.deltaY > 0 ? 1 : -1;
       if (Math.abs(e.deltaY) < 1) return;
       // Scroll interior disponible: no interceptar (el contenido interno se
@@ -273,6 +281,13 @@ export function useStoryNavigation(
     };
 
     const onKeyDown = (e: KeyboardEvent) => {
+      // Solo se interceptan las teclas de navegación cuando el foco está
+      // DENTRO de la invitación: fuera de ella (menú móvil, modal, admin) las
+      // flechas/PageDown/End conservan su comportamiento nativo. Esto evita
+      // que el hook trague la navegación de teclado del resto de la app.
+      // Si el target no es un elemento DOM real o no existe .app-scene, se
+      // conserva el comportamiento original por compatibilidad.
+      if (appScene && e.target instanceof Node && !appScene.contains(e.target)) return;
       if (isTyping(e.target)) return;
       const dirMap: Record<string, 1 | -1> = {
         PageDown: 1, ArrowDown: 1, ArrowRight: 1, " ": 1,

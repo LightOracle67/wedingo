@@ -8,9 +8,9 @@
  * @param {string} inviteToken - Token de la invitación
  * @param {string} value - URL del audio actual
  * @param {function} onChange - Callback al cambiar el audio
- * @param {object} t - Función de traducción i18next
  */
 import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useToast } from "../hooks/useToast";
 import { withTimeout } from "../lib/async-utils";
 
@@ -26,7 +26,8 @@ function formatSize(bytes: number) {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
-const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, onChange, t }: { inviteToken: string; value: string; onChange: (val: string) => void; t: (key: string) => string }) {
+const MusicArrayEditor = memo(function MusicArrayEditor({ inviteToken, value, onChange }: { inviteToken: string; value: string; onChange: (val: string) => void }) {
+  const { t } = useTranslation();
   const { addToast, startUploadToast } = useToast();
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);

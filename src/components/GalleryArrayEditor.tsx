@@ -6,9 +6,9 @@
  * Las imágenes se almacenan en la subcolección invitations/{token}/gallery.
  *
  * @param {string} inviteToken - Token de la invitación
- * @param {object} t - Función de traducción i18next
  */
 import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../lib/constants";
 import { useToast } from "../hooks/useToast";
 import { withTimeout } from "../lib/async-utils";
@@ -28,11 +28,10 @@ const galleryItemStyle: React.CSSProperties = {
 
 interface GalleryArrayEditorProps {
   inviteToken?: string;
-  t: (key: string, options?: Record<string, unknown>) => string;
 }
 
-const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: GalleryArrayEditorProps) {
-
+const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: GalleryArrayEditorProps) {
+  const { t } = useTranslation();
   const { addToast, startUploadToast } = useToast();
   const [slots, setSlots] = useState<(SlotState | null)[]>(Array.from({ length: SLOT_COUNT }, () => null));
   const [loading, setLoading] = useState(true);
@@ -68,7 +67,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
 
   const handleUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>, slotIndex: number) => {
 
-    if (!inviteToken || !t) { if (t) addToast("error", t("errors.generic")); return; }
+    if (!inviteToken) return;
     const file = e.target.files?.[0];
     const input = e.target;
     if (!file) return;
@@ -112,7 +111,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken, t }: 
 
   const handleDelete = useCallback(async (slotIndex: number) => {
 
-    if (!inviteToken || !t) return;
+    if (!inviteToken) return;
     const existing = slots[slotIndex];
     if (!existing?.id) { ; return; }
     if (!window.confirm(t("setup.deleteImageConfirm"))) { ; return; }

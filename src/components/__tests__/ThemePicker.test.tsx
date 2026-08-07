@@ -14,7 +14,7 @@ vi.mock("../../lib/constants", () => ({
 import ThemePicker from "../ThemePicker";
 
 describe("ThemePicker", () => {
-  const defaultProps = { value: "golden", onChange: vi.fn(), t: (key: string) => key };
+  const defaultProps = { value: "golden", onChange: vi.fn() };
 
   it("renders theme options", () => {
     render(<ThemePicker {...defaultProps} />);

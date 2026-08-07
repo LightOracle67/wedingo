@@ -34,8 +34,10 @@ vi.mock("../../lib/image-store", () => ({
   updateGalleryOrder: (...args: unknown[]) => mockUpdateGalleryOrder(...args),
 }));
 
+const mockT = vi.hoisted(() => (key: string) => key);
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
+  useTranslation: () => ({ t: mockT, i18n: { language: "en" } }),
+  initReactI18next: { type: "3rdParty", init: () => {} },
 }));
 
 import GalleryArrayEditor from "../GalleryArrayEditor";
@@ -56,15 +58,13 @@ beforeEach(() => {
 });
 
 describe("GalleryArrayEditor", () => {
-  const t = (key: string) => key;
-
   it("renders loading state initially", () => {
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     expect(document.querySelector(".page-loading")).toBeInTheDocument();
   });
 
   it("renders 10 slots after loading completes", async () => {
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     const firstSlot = await screen.findByText("#1");
     expect(firstSlot).toBeInTheDocument();
     const slots = screen.getAllByText(/#\d+/);
@@ -76,7 +76,7 @@ describe("GalleryArrayEditor", () => {
       { id: "img1", url: "data:image/jpeg;base64,a", description: "", position: 0, originalName: "a.jpg", originalSize: 1 },
       { id: "img2", url: "data:image/jpeg;base64,b", description: "", position: 1, originalName: "b.jpg", originalSize: 1 },
     ] as Partial<GalleryImage>[]);
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
     // El slot #1 tiene una imagen: se pulsa "mover a la derecha".
     const moveRight = screen.getAllByLabelText("setup.galleryMoveRight")[0]!;
@@ -92,7 +92,7 @@ describe("GalleryArrayEditor", () => {
       { id: "img2", url: "data:image/jpeg;base64,b", description: "", position: 1 },
     ] as Partial<GalleryImage>[]);
     mockUpdateGalleryOrder.mockRejectedValueOnce(new Error("net"));
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
     const moveRight = screen.getAllByLabelText("setup.galleryMoveRight")[0]!;
     fireEvent.click(moveRight);
@@ -106,14 +106,14 @@ describe("GalleryArrayEditor", () => {
       { id: "img1", url: "https://example.com/1.jpg" },
       { id: "img2", url: "https://example.com/2.jpg", position: 5 },
     ] as Partial<GalleryImage>[]);
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     const firstSlot = await screen.findByText("#1");
     expect(firstSlot).toBeInTheDocument();
     expect(mockLoadGallery).toHaveBeenCalled();
   });
 
   it("stays in loading state when uploading without an invite token", async () => {
-    render(<GalleryArrayEditor inviteToken="" t={t} />);
+    render(<GalleryArrayEditor inviteToken="" />);
     expect(document.querySelector(".page-loading")).toBeInTheDocument();
   });
 
@@ -121,7 +121,7 @@ describe("GalleryArrayEditor", () => {
     mockLoadGallery.mockResolvedValue([
       { id: "img1", url: "https://example.com/1.jpg", description: "Desc", originalName: "a.jpg", originalSize: 10, position: 0 },
     ] as Partial<GalleryImage>[]);
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     const input = await screen.findByDisplayValue("Desc");
     fireEvent.change(input, { target: { value: "" } });
     fireEvent.blur(input);
@@ -131,26 +131,24 @@ describe("GalleryArrayEditor", () => {
   });
 
   it("shows upload label for each empty slot", async () => {
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     const labels = await screen.findAllByText("setup.galleryUploadLabel");
     expect(labels).toHaveLength(10);
   });
 
   it("renders without inviteToken (loading state only)", () => {
-    render(<GalleryArrayEditor t={t} />);
+    render(<GalleryArrayEditor />);
     expect(document.querySelector(".page-loading")).toBeInTheDocument();
   });
 
-  it("accepts a custom t function", async () => {
-    const tFn = vi.fn((key: string) => key);
-    render(<GalleryArrayEditor inviteToken="test-token" t={tFn} />);
+  it("renders upload labels from useTranslation", async () => {
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     const labels = await screen.findAllByText("setup.galleryUploadLabel");
     expect(labels).toHaveLength(10);
-    expect(tFn).toHaveBeenCalledWith("setup.galleryUploadLabel");
   });
 
   it("handles file upload flow", async () => {
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
 
     const fileInputs = document.querySelectorAll<HTMLInputElement>('input[type="file"]');
@@ -166,7 +164,7 @@ describe("GalleryArrayEditor", () => {
   });
 
   it("rejects empty file", async () => {
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -184,7 +182,7 @@ describe("GalleryArrayEditor", () => {
       { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
 
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
 
     const deleteBtn = document.querySelector<HTMLButtonElement>('button[aria-label="common.delete"]');
@@ -204,7 +202,7 @@ describe("GalleryArrayEditor", () => {
       { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
 
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
 
     const deleteBtn = document.querySelector<HTMLButtonElement>('button[aria-label="common.delete"]')!;
@@ -221,7 +219,7 @@ describe("GalleryArrayEditor", () => {
       { id: "img-1", url: "data:image/png,test", description: "hello", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
 
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("hello");
 
     const input = screen.getByDisplayValue("hello");
@@ -236,7 +234,7 @@ describe("GalleryArrayEditor", () => {
   it("handles upload error", async () => {
     mockUploadImage.mockRejectedValue(new Error("Upload failed"));
 
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -255,7 +253,7 @@ describe("GalleryArrayEditor", () => {
     const testError = new Error("Network error");
     mockUpdateGalleryDescription.mockRejectedValue(testError);
 
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("hello");
 
     const input = screen.getByDisplayValue("hello");
@@ -272,7 +270,7 @@ describe("GalleryArrayEditor", () => {
       { id: "img-1", url: "data:image/png,existing", description: "desc", originalName: "old.png", originalSize: 500, position: 0 },
     ]);
 
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("desc");
 
     const replaceLabel = screen.getByText("setup.replaceImage");
@@ -292,7 +290,7 @@ describe("GalleryArrayEditor", () => {
   it("handles load gallery error", async () => {
     mockLoadGallery.mockRejectedValue(new Error("Load failed"));
 
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await waitFor(() => {
       expect(mockAddToast).toHaveBeenCalledWith("error", "errors.galleryLoadFailed");
     });
@@ -303,7 +301,7 @@ describe("GalleryArrayEditor", () => {
       { url: "data:image/png,test", description: "no-id", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
 
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("no-id");
 
     const input = screen.getByDisplayValue("no-id");
@@ -315,7 +313,7 @@ describe("GalleryArrayEditor", () => {
   });
 
   it("rejects invalid file type", async () => {
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -332,7 +330,7 @@ describe("GalleryArrayEditor", () => {
       { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
 
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
 
     const fileInputs = document.querySelectorAll<HTMLInputElement>('input[type="file"]');
@@ -346,7 +344,7 @@ describe("GalleryArrayEditor", () => {
   });
 
   it("stays in loading state when no inviteToken", () => {
-    render(<GalleryArrayEditor t={t} />);
+    render(<GalleryArrayEditor />);
     expect(document.querySelector(".page-loading")).toBeInTheDocument();
   });
 
@@ -356,7 +354,7 @@ describe("GalleryArrayEditor", () => {
     ]);
     mockUpdateGalleryDescription.mockRejectedValue("String error");
 
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("hello");
 
     const input = screen.getByDisplayValue("hello");
@@ -374,7 +372,7 @@ describe("GalleryArrayEditor", () => {
     ]);
     mockDeleteGalleryImage.mockRejectedValue(new Error("Delete failed"));
 
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
 
     const deleteBtn = document.querySelector<HTMLButtonElement>('button[aria-label="common.delete"]')!;
@@ -391,7 +389,7 @@ describe("GalleryArrayEditor", () => {
     mockLoadGallery.mockResolvedValue([
       { url: "data:image/png,test", description: "no-id", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("no-id");
     const deleteBtn = document.querySelector<HTMLButtonElement>('button[aria-label="common.delete"]')!;
     vi.spyOn(globalThis, "confirm").mockReturnValue(true);
@@ -405,7 +403,7 @@ describe("GalleryArrayEditor", () => {
     mockLoadGallery.mockResolvedValue([
       { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
-    render(<GalleryArrayEditor inviteToken="" t={t} />);
+    render(<GalleryArrayEditor inviteToken="" />);
     expect(document.querySelector(".page-loading")).toBeInTheDocument();
   });
 
@@ -413,7 +411,7 @@ describe("GalleryArrayEditor", () => {
     mockLoadGallery.mockResolvedValue([
       { id: "img-1", url: "data:image/png,test", description: "long text", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("long text");
     const input = screen.getByDisplayValue("long text");
     fireEvent.change(input, { target: { value: "a".repeat(250) } });
@@ -427,7 +425,7 @@ describe("GalleryArrayEditor", () => {
     mockLoadGallery.mockResolvedValue([
       { id: "img-1", url: "data:image/png,test", description: "", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByPlaceholderText("setup.galleryDescriptionPlaceholder");
     const input = screen.getByPlaceholderText("setup.galleryDescriptionPlaceholder");
     fireEvent.change(input, { target: { value: "updated" } });
@@ -436,29 +434,24 @@ describe("GalleryArrayEditor", () => {
 
   it("returns early from handleDelete when inviteToken is empty", async () => {
     mockLoadGallery.mockResolvedValue([]);
-    const tFn = vi.fn((key: string) => key);
-    render(<GalleryArrayEditor inviteToken="" t={tFn} />);
+    render(<GalleryArrayEditor inviteToken="" />);
     await vi.waitFor(() => {
       expect(document.querySelector(".page-loading")).toBeInTheDocument();
     });
   });
 
-  it("returns early from handleDelete when inviteToken is missing after load", async () => {
+  it("does not crash when inviteToken is removed after load", async () => {
     mockLoadGallery.mockResolvedValue([
       { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
-    const tFn = vi.fn((key: string) => key);
-    const { rerender } = render(<GalleryArrayEditor inviteToken="test-token" t={tFn} />);
+    const { rerender } = render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("desc");
-    rerender(<GalleryArrayEditor inviteToken="" t={tFn} />);
-    await vi.waitFor(() => {
-      expect(tFn).toHaveBeenCalled();
-    });
+    expect(() => rerender(<GalleryArrayEditor inviteToken="" />)).not.toThrow();
   });
 
   it("handles descriptionChange for null slot gracefully", async () => {
     mockLoadGallery.mockResolvedValue([]);
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
     const nullSlotInput = document.querySelector<HTMLInputElement>('input[type="text"]');
     expect(nullSlotInput).toBeNull();
@@ -469,7 +462,7 @@ describe("GalleryArrayEditor", () => {
       { url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
     mockDeleteGalleryImage.mockClear();
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("desc");
     const deleteBtn = document.querySelector<HTMLButtonElement>('button[aria-label="common.delete"]')!;
     vi.spyOn(globalThis, "confirm").mockReturnValue(true);
@@ -483,7 +476,7 @@ describe("GalleryArrayEditor", () => {
     mockLoadGallery.mockResolvedValue([
       { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("desc");
     const input = screen.getByDisplayValue("desc");
     fireEvent.change(input, { target: { value: "  padded  " } });
@@ -494,7 +487,7 @@ describe("GalleryArrayEditor", () => {
   });
 
   it("skips upload when file input has no files", async () => {
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
     fireEvent.change(fileInput, { target: { files: [] } });
@@ -507,7 +500,7 @@ describe("GalleryArrayEditor", () => {
     mockLoadGallery.mockResolvedValue([
       { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
     ]);
-    render(<GalleryArrayEditor inviteToken="test-token" t={t} />);
+    render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("desc");
     const input = screen.getByDisplayValue("desc");
     fireEvent.blur(input);

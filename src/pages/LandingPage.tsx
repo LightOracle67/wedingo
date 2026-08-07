@@ -1,4 +1,4 @@
-import { useApp } from "../contexts";
+import { useAuth } from "../contexts";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import { getDoc, serverTimestamp, runTransaction } from "firebase/firestore";
@@ -23,7 +23,7 @@ export default function LandingPage() {
 
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { setIsTokenVerified, setTokenLoginUsername } = useApp();
+  const { setIsTokenVerified, setTokenLoginUsername } = useAuth();
   const [showModal, setShowModal] = useState(false);
   const [usernameInput, setUsernameInput] = useState("");
   const [tokenInput, setTokenInput] = useState("");
@@ -36,7 +36,7 @@ export default function LandingPage() {
   const loginAttemptsRef = useRef(0);
   const loginBlockedUntilRef = useRef(0);
   const [creating, setCreating] = useState(false);
-  /** Error de la creación de invitación (visible en la vista principal,
+  /** Error de la creaciÃ³n de invitaciÃ³n (visible en la vista principal,
    *  no en el modal de login). */
   const [createError, setCreateError] = useState("");
 
@@ -45,9 +45,9 @@ export default function LandingPage() {
     setCreateError("");
     setCreating(true);
 
-    // Si ya hay una invitación en curso (recarga de la landing), se retoma en
+    // Si ya hay una invitaciÃ³n en curso (recarga de la landing), se retoma en
     // lugar de crear otra con un token nuevo (evita registros setupTokens
-    // huérfanos y pérdida del acceso previo).
+    // huÃ©rfanos y pÃ©rdida del acceso previo).
     const existing = (() => {
       try { return sessionStorage.getItem(STORAGE_KEYS.inviteToken); } catch { return null; }
     })();
@@ -59,7 +59,7 @@ export default function LandingPage() {
 
     const token = generateInviteToken();
     // Token de setup generado y registrado (hash) antes de que exista la
-    // invitación, de modo que la activación de sesión pueda verificarse.
+    // invitaciÃ³n, de modo que la activaciÃ³n de sesiÃ³n pueda verificarse.
     const setupToken = normalizeTokenValue(generateSetupToken());
 
     safeSetItem(STORAGE_KEYS.inviteToken, token, sessionStorage);
@@ -120,7 +120,7 @@ export default function LandingPage() {
 
     try {
 
-      // Localiza la invitación por el hash del token (sin enumerar la colección).
+      // Localiza la invitaciÃ³n por el hash del token (sin enumerar la colecciÃ³n).
       const target = await findInviteBySetupToken(normalized);
       if (!target) {
 
@@ -171,7 +171,7 @@ export default function LandingPage() {
         setIsLoading(true);
       }
 
-      // Prueba de conocimiento del token para activar la sesión.
+      // Prueba de conocimiento del token para activar la sesiÃ³n.
       const tokenHash = await hashSetupToken(normalized);
 
       try {
@@ -211,7 +211,7 @@ export default function LandingPage() {
       setIsTokenVerified(true);
 
       // NOTA: el token de setup NO se guarda en el Credential Manager del
-      // navegador: es una credencial de tipo bearer que concede sesión de
+      // navegador: es una credencial de tipo bearer que concede sesiÃ³n de
       // admin y no debe replicarse/sincronizarse por el sistema operativo.
       navigate(`/${target}`);
     } catch (err) {
@@ -282,7 +282,7 @@ export default function LandingPage() {
                 className="setup-input"
                 type="text"
                 value={usernameInput}
-                onChange={(e) => setUsernameInput(e.target.value.replace(/[^a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ]/g, "").slice(0, 50))}
+                onChange={(e) => setUsernameInput(e.target.value.replace(/[^a-zA-Z0-9\sÃ¡Ã©Ã­Ã³ÃºÃ±ÃÃ‰ÃÃ“ÃšÃ‘]/g, "").slice(0, 50))}
                 placeholder={t("landing.usernamePlaceholder")}
                 autoComplete="username"
                 spellCheck="false"

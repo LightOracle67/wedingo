@@ -22,7 +22,7 @@ vi.mock("../../../components/MapEmbed", () => ({
 }));
 
 vi.mock("../../../contexts", () => ({
-  useApp: () => ({
+  useConfig: () => ({
     config: { firstName: "John", secondName: "Jane", weddingDay: "15", weddingMonth: "Jun", weddingYear: "2025", weddingHour: "18", weddingMinute: "30", weddingPlace: "Church" },
   }),
 }));

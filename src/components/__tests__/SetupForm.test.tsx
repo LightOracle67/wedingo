@@ -34,7 +34,9 @@ vi.mock("../../hooks/useToast", () => ({
 }));
 
 vi.mock("../../contexts", () => ({
-  useApp: () => mockUseApp(),
+  useConfig: () => mockUseApp(),
+  useAuth: () => mockUseApp(),
+  useAppUI: () => mockUseApp(),
 }));
 
 import SetupForm from "../SetupForm";

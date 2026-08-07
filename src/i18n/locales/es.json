@@ -165,6 +165,7 @@
     "successAttending": "¡Gracias, {{name}}! Nos alegra mucho que vengas.",
     "successNotAttending": "Gracias, {{name}}. Te echaremos de menos.",
     "saveError": "Algo salió mal al guardar. Inténtalo de nuevo en un momento.",
+    "limitReached": "Hemos llegado al límite de confirmaciones de esta invitación. Si crees que es un error, contacta con los novios.",
     "withdrawConfirm": "¿Estás seguro de que quieres retirar tu confirmación? Siempre puedes volver a confirmar.",
     "withdrawSuccess": "Tu confirmación ha sido retirada. Si cambias de opinión, dínoslo de nuevo.",
     "withdrawError": "No pudimos retirar tu confirmación. Inténtalo de nuevo.",

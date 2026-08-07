@@ -1,6 +1,6 @@
 import { memo, useCallback, useMemo } from "react";
 import { Trans, useTranslation } from "react-i18next";
-import { useApp } from "../../contexts";
+import { useConfig, useAppUI } from "../../contexts";
 import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import { parseMenuDishes } from "../../lib/menu-utils";
 import CornerDecorations from "../../components/CornerDecorations";
@@ -71,7 +71,8 @@ const RsvpSection = memo(function RsvpSection({
   transportEnabled, transportDepartures, computeAge, cornerDecoration,
 }: RsvpSectionProps) {
   const { t } = useTranslation();
-  const { setLegalModal, config } = useApp();
+  const { setLegalModal } = useAppUI();
+  const { config } = useConfig();
 
   // Fecha límite de confirmación: si la invitación tiene una y ya pasó, el
   // formulario se bloquea y se muestra el aviso.

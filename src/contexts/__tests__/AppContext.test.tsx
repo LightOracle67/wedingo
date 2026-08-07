@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { createElement, Fragment } from "react";
+import { createElement, Fragment, useContext } from "react";
 
 const mockHandleSaveSetup = vi.fn();
 let mockHasStoredConfig = true;
@@ -77,7 +77,6 @@ vi.mock("../RsvpContext", () => ({ RsvpProvider: MockProvider }));
 
 import { AppProvider } from "../AppContext";
 import { AppContext } from "../useApp";
-import { useContext } from "react";
 
 function TestConsumer() {
   const ctx = useContext(AppContext);

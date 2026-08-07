@@ -1,11 +1,12 @@
 import { STORAGE_KEYS } from "./storage-keys";
+import { SESSION_DURATION_MS } from "./constants";
 
 const STORAGE_KEY = STORAGE_KEYS.session;
 /** Duración de la sesión local (sessionStorage): 60 minutos. */
-const SESSION_DURATION = 60 * 60 * 1000;
+const SESSION_DURATION = SESSION_DURATION_MS;
 
 /** TTL para activeSession en Firestore (60 minutos). */
-const FIRESTORE_SESSION_TTL_MS = 3600000;
+const FIRESTORE_SESSION_TTL_MS = SESSION_DURATION_MS;
 
 /**
  * La sesión se guarda en sessionStorage (no localStorage) para que no

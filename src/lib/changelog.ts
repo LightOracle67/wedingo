@@ -1,5 +1,18 @@
 export const CHANGELOG = [
   {
+    version: "2.95.19",
+    date: "2026-08-07",
+    changes: [
+      "Auditoría completa de mejora progresiva (33 ítems aplicados):",
+      "Seguridad: fecha de corte GDPR de consentimiento parental en constante verificada por CI (check-consent-cutoff), validación integrada en reglas Firestore (theme whitelist, URLs seguras, textos largos, map modes), limpieza del cron que dejaba setupTokens huérfanos y batches corruptos, IndexedDB del borrado de datos acotada al projectId, modelo de amenazas documentado en SECURITY.md",
+      "Arquitectura: hooks de contexto granulares (useConfig/useAuth/useRsvpContext/useAppUI) exportados y migrados 15 consumidores (fin del mega-contexto), App.tsx extraído a useAppShellEffects, sesión única con useSessionRenewal, useJsonArrayField para los editores JSON duplicados",
+      "Componentes: Modal compartido (4 modales), MapUrlField (3 forms), upload de imágenes de configuración unificado, prop t eliminada de 3 componentes, ToggleRow estable, código muerto eliminado",
+      "Rendimiento: cache de desencriptado RSVP por documento, Intl.Segmenter hoisted, extractPlaceNameFromUrl cacheado, listeners de scroll/keyboard acotados a la invitación",
+      "UX: Trivia sin falsos positivos (matching por palabras), aviso de límite de confirmaciones RSVP, decisiones de seguridad documentadas (reservas de regalos, anti-doble-voto)",
+      "Calidad: 5 reglas de lint añadidas (6 errores reales corregidos), Prettier configurado, 5 secciones reales bajo axe, E2E de setup y RSVP, constantes centralizadas, docs actualizadas",
+    ],
+  },
+  {
     version: "2.95.18",
     date: "2026-08-07",
     changes: [

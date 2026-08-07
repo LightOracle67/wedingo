@@ -1,8 +1,10 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { THEME_GROUPS, THEME_OPTIONS, THEME_PREVIEW_COLORS } from "../lib/constants";
 import CollapsibleSection from "./CollapsibleSection";
 
-const ThemePicker = memo(function ThemePicker({ value, onChange, t }: { value: string; onChange: (val: string) => void; t: (key: string, options?: Record<string, unknown>) => string }) {
+const ThemePicker = memo(function ThemePicker({ value, onChange }: { value: string; onChange: (val: string) => void }) {
+  const { t } = useTranslation();
   return THEME_GROUPS.map((group) => (
     <CollapsibleSection key={group.value} title={t("themeGroups." + group.value)} hint={t("setup.themeGroupCount", { count: THEME_OPTIONS.filter((th) => th.group === group.value).length })}>
       <div className="theme-picker__grid">

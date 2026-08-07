@@ -20,7 +20,7 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate, useParams, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
-import { useApp, useAppUI } from "../contexts";
+import { useConfig, useAuth, useRsvpContext, useAppUI } from "../contexts";
 import { normalizeConfig } from "../lib/normalize-config";
 import { useToast } from "../hooks/useToast";
 import { formatDate } from "../lib/section-utils";
@@ -69,19 +69,18 @@ export default function AdminPage() {
   const { t, i18n } = useTranslation();
   const { inviteToken } = useParams();
 
-  // ─── Estados del contexto global ───────────────────────
+  // ─── Estados del contexto global (hooks granulares) ─────
   const {
-    hasStoredConfig, isConfigLoading, configLoadError,
-    isAdminTokenLoggedIn, isRestoringSession, sessionExpired, clearSessionExpired, config, formData,
-    setupToken,
+    hasStoredConfig, isConfigLoading, configLoadError, config, formData,
+    handleDeleteInvitation, reloadConfig, visitCount,
+  } = useConfig();
+  const {
+    isAdminTokenLoggedIn, isRestoringSession, sessionExpired, clearSessionExpired, setupToken,
     authMessage, authMessageType,
-    rsvpEntries,
-    adminMessage, adminMessageType,
     handleAdminLogout, handleResetTokenFromAdmin,
-    handleClearRsvpEntries, handleDeleteRsvpEntries, handleDeleteInvitation,
-    reloadConfig, visitCount,
-  } = useApp();
-  const { setAdminMessage, setAdminMessageType } = useAppUI();
+  } = useAuth();
+  const { rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries } = useRsvpContext();
+  const { adminMessage, adminMessageType, setAdminMessage, setAdminMessageType } = useAppUI();
 
   // Avisa antes de salir si hay cambios sin guardar en la invitación.
   useEffect(() => {

@@ -48,18 +48,16 @@ beforeEach(() => {
 });
 
 describe("MusicArrayEditor", () => {
-  const t = (key: string) => key;
-
   it("renders loading state initially", () => {
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     expect(document.querySelector(".page-loading")).toBeInTheDocument();
   });
 
   it("shows upload label after loading completes", async () => {
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     const label = await screen.findByText("setup.musicUploadLabel");
     expect(label).toBeInTheDocument();
@@ -67,7 +65,7 @@ describe("MusicArrayEditor", () => {
 
   it("shows audio hint text", async () => {
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     const hint = await screen.findByText("setup.audioHint");
     expect(hint).toBeInTheDocument();
@@ -79,7 +77,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={vi.fn()}
-        t={t}
+       
       />
     );
     const status = await screen.findByText("setup.currentMusic");
@@ -99,7 +97,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value=""
         onChange={onChange}
-        t={t}
+       
       />
     );
 
@@ -109,7 +107,7 @@ describe("MusicArrayEditor", () => {
 
   it("handles loadAudio returning null gracefully", async () => {
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     const label = await screen.findByText("setup.musicUploadLabel");
     expect(label).toBeInTheDocument();
@@ -118,7 +116,7 @@ describe("MusicArrayEditor", () => {
   it("handles audio file selection via hidden input", async () => {
     const onChange = vi.fn();
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={onChange} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={onChange} />
     );
     await screen.findByText("setup.musicUploadLabel");
 
@@ -137,7 +135,7 @@ describe("MusicArrayEditor", () => {
 
   it("rejects empty audio file", async () => {
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     await screen.findByText("setup.musicUploadLabel");
 
@@ -153,7 +151,7 @@ describe("MusicArrayEditor", () => {
 
   it("rejects invalid audio format", async () => {
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     await screen.findByText("setup.musicUploadLabel");
 
@@ -178,7 +176,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={onChange}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -201,7 +199,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={vi.fn()}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -225,7 +223,7 @@ describe("MusicArrayEditor", () => {
     mockLoadAudio.mockRejectedValue(new Error("Load failed"));
 
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
 
     await waitFor(() => {
@@ -245,7 +243,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/old.mp3"
         onChange={onChange}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -268,7 +266,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={onChange}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -297,7 +295,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={onChange}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -324,7 +322,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={onChange}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -342,14 +340,14 @@ describe("MusicArrayEditor", () => {
   it("handles upload without inviteToken gracefully", async () => {
     const onChange = vi.fn();
     render(
-      <MusicArrayEditor inviteToken="" value="" onChange={onChange} t={t} />
+      <MusicArrayEditor inviteToken="" value="" onChange={onChange} />
     );
     await screen.findByText("setup.musicUploadLabel");
   });
 
   it("clears input after upload completes", async () => {
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     await screen.findByText("setup.musicUploadLabel");
 
@@ -369,7 +367,7 @@ describe("MusicArrayEditor", () => {
     mockUploadAudio.mockRejectedValue(new Error("Upload failed"));
 
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     await screen.findByText("setup.musicUploadLabel");
 
@@ -394,7 +392,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={vi.fn()}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -409,7 +407,7 @@ describe("MusicArrayEditor", () => {
 
   it("rejects oversized audio file", async () => {
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     await screen.findByText("setup.musicUploadLabel");
 
@@ -431,7 +429,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={vi.fn()}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -454,7 +452,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={onChange}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -479,7 +477,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={onChange}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -504,7 +502,7 @@ describe("MusicArrayEditor", () => {
   it("handles upload with empty inviteToken", async () => {
     const onChange = vi.fn();
     render(
-      <MusicArrayEditor inviteToken="" value="" onChange={onChange} t={t} />
+      <MusicArrayEditor inviteToken="" value="" onChange={onChange} />
     );
     await screen.findByText("setup.musicUploadLabel");
 
@@ -519,7 +517,7 @@ describe("MusicArrayEditor", () => {
 
   it("clears input after oversized file error", async () => {
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     await screen.findByText("setup.musicUploadLabel");
 
@@ -544,7 +542,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={onChange}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -558,7 +556,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value=""
         onChange={onChange}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.musicUploadLabel");
@@ -566,7 +564,7 @@ describe("MusicArrayEditor", () => {
 
   it("clears input value after empty file error", async () => {
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     await screen.findByText("setup.musicUploadLabel");
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -592,7 +590,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={onChange}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -625,7 +623,7 @@ describe("MusicArrayEditor", () => {
         inviteToken="test-token"
         value="https://example.com/song.mp3"
         onChange={onChange}
-        t={t}
+       
       />
     );
     await screen.findByText("setup.currentMusic");
@@ -639,7 +637,7 @@ describe("MusicArrayEditor", () => {
 
   it("handles handleFile when no file selected", async () => {
     render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     await screen.findByText("setup.musicUploadLabel");
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -651,7 +649,7 @@ describe("MusicArrayEditor", () => {
 
   it("triggers cleanup on unmount", async () => {
     const { unmount } = render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
     );
     await screen.findByText("setup.musicUploadLabel");
     unmount();
@@ -661,7 +659,7 @@ describe("MusicArrayEditor", () => {
     mockLoadAudio.mockResolvedValue({ id: "audio-1", url: "https://example.com/song.mp3" });
     const onChange = vi.fn();
     render(
-      <MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} t={t} />
+      <MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />
     );
     await screen.findByText("setup.currentMusic");
 

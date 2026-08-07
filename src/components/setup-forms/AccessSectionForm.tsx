@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useApp } from "../../contexts";
+import { useConfig, useAuth } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
 
 interface AccessSectionFormProps {
@@ -12,7 +12,8 @@ interface AccessSectionFormProps {
 }
 
 export default function AccessSectionForm({ prefix = "", tokenAcknowledged = false, onTokenAcknowledge }: AccessSectionFormProps) {
-  const { formData, updateFormField, setupToken, hasStoredConfig } = useApp();
+  const { formData, updateFormField, hasStoredConfig } = useConfig();
+  const { setupToken } = useAuth();
   const { t } = useTranslation();
   const { addToast } = useToast();
 

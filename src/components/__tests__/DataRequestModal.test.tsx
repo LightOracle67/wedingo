@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 
 const mockAddToast = vi.hoisted(() => vi.fn());
 const mockErase = vi.hoisted(() => vi.fn(() => ({ erasedKeys: ["a", "b"] })));
@@ -83,9 +83,12 @@ describe("DataRequestModal", () => {
   });
 
   it("closes via the close button", () => {
+    vi.useFakeTimers();
     const onClose = vi.fn();
     render(<DataRequestModal inviteToken="abc" onClose={onClose} />);
     fireEvent.click(screen.getByLabelText("common.close"));
+    act(() => { vi.advanceTimersByTime(250); });
     expect(onClose).toHaveBeenCalledTimes(1);
+    vi.useRealTimers();
   });
 });

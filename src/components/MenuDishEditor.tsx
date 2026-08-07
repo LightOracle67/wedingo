@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { MAX_MENU_DISHES, MAX_MENU_DISH_TEXT, MENU_DISH_ORDERS } from "../lib/constants";
+import { useJsonArrayField } from "../hooks/useJsonArrayField";
 
 interface Dish {
   order: string;
@@ -13,45 +14,34 @@ export default function MenuDishEditor({ value, onChange, idBase }: { value: str
   // El editor debe mostrar filas vacías (para poder escribirlas): se parsea
   // SIN filtrar, a diferencia de normalize/RSVP que solo conservan platos con
   // texto.
-  const dishes: Dish[] = (() => {
-    try {
-      const parsed = JSON.parse(value || "");
-      if (!Array.isArray(parsed)) return [];
-      return parsed
-        .slice(0, MAX_MENU_DISHES)
-        .map((d: Record<string, unknown>) => ({
-          order: MENU_DISH_ORDERS.includes(String(d.order)) ? String(d.order) : "otro",
-          text: typeof d.text === "string" ? d.text.trim().slice(0, MAX_MENU_DISH_TEXT) : "",
-        }));
-    } catch {
-      return [];
-    }
-  })();
-  // JSON corrupto: se avisa al admin para que reescriba los platos (antes se
-  // vaciaba en silencio y el menú desaparecía sin feedback).
-  const parseError = (value || "").trim() !== "" && !(() => {
-    try { return Array.isArray(JSON.parse(value || "")); } catch { return false; }
-  })();
+  const normalizeDish = useCallback((d: unknown): Dish | null => {
+    if (!d || typeof d !== "object") return null;
+    const rec = d as Record<string, unknown>;
+    return {
+      order: MENU_DISH_ORDERS.includes(String(rec.order)) ? String(rec.order) : "otro",
+      text: typeof rec.text === "string" ? rec.text.trim().slice(0, MAX_MENU_DISH_TEXT) : "",
+    };
+  }, []);
 
-  const setDishes = useCallback((next: Dish[]) => {
-    onChange(JSON.stringify(next.slice(0, MAX_MENU_DISHES)));
-  }, [onChange]);
+  const { items: dishes, parseError, addItem, removeItem, updateItem } = useJsonArrayField<Dish>(
+    value,
+    normalizeDish,
+    MAX_MENU_DISHES,
+  );
 
   const handleField = useCallback((index: number, field: "order" | "text") =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-      const next = [...dishes];
-      next[index] = { ...(next[index] ?? { order: "entrante", text: "" }), [field]: e.target.value };
-      setDishes(next);
-    }, [dishes, setDishes]);
+      const next = { ...(dishes[index] ?? { order: "entrante", text: "" }), [field]: e.target.value };
+      updateItem(index, next, onChange);
+    }, [dishes, onChange, updateItem]);
 
-  const addDish = useCallback(() => {
-    if (dishes.length >= MAX_MENU_DISHES) return;
-    setDishes([...dishes, { order: "entrante", text: "" }]);
-  }, [dishes, setDishes]);
+  const handleAdd = useCallback(() => {
+    addItem({ order: "entrante", text: "" }, onChange);
+  }, [addItem, onChange]);
 
-  const removeDish = useCallback((index: number) => {
-    setDishes(dishes.filter((_, i) => i !== index));
-  }, [dishes, setDishes]);
+  const handleRemove = useCallback((index: number) => {
+    removeItem(index, onChange);
+  }, [removeItem, onChange]);
 
   return (
     <div>
@@ -91,7 +81,7 @@ export default function MenuDishEditor({ value, onChange, idBase }: { value: str
           <button
             type="button"
             className="setup-button setup-button--ghost setup-button--compact"
-            onClick={() => removeDish(i)}
+            onClick={() => handleRemove(i)}
             style={{ marginTop: "1.4rem", flexShrink: 0 }}
             aria-label={t("setup.menuRemoveDish")}
           >
@@ -103,7 +93,7 @@ export default function MenuDishEditor({ value, onChange, idBase }: { value: str
         <button
           type="button"
           className="setup-button setup-button--ghost setup-button--compact"
-          onClick={addDish}
+          onClick={handleAdd}
           style={{ marginTop: "0.6rem" }}
         >
           + {t("setup.menuAddDish")}

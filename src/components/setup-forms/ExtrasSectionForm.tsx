@@ -1,28 +1,55 @@
 import { useCallback, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { useApp } from "../../contexts";
+import { useConfig } from "../../contexts";
 
 /**
- * ExtrasSectionForm — Configura las funciones sociales de la invitación:
- * fecha límite de RSVP, reacciones, lista de regalos, compartir coche,
- * vídeo de bienvenida, muro de dedicatorias, encuesta de música y trivia.
+ * Fila de extra: checkbox primero y título + hint después.
+ * Definida FUERA del componente (estable entre renders): una ToggleRow
+ * definida dentro del cuerpo se re-creaba en cada render, provocando que
+ * React desmontara/remontara el subárbol (pérdida de foco en inputs hijos).
+ */
+function ToggleRow({ field, label, hint, checked, onToggle, id, children }: {
+  field: string;
+  label: string;
+  hint?: string;
+  checked: boolean;
+  onToggle: () => void;
+  id: (name: string) => string;
+  children?: ReactNode;
+}) {
+  return (
+    <div className="setup-toggle-row">
+      <input type="checkbox" className="setup-toggle" id={id(`${field}Toggle`)} checked={checked} onChange={onToggle} aria-label={label} />
+      <div>
+        <label className="setup-label setup-label--tight" htmlFor={id(`${field}Toggle`)}>{label}</label>
+        {hint ? <p className="setup-help setup-help--tight">{hint}</p> : null}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+/**
+ * ExtrasSectionForm â€” Configura las funciones sociales de la invitaciÃ³n:
+ * fecha lÃ­mite de RSVP, reacciones, lista de regalos, compartir coche,
+ * vÃ­deo de bienvenida, muro de dedicatorias, encuesta de mÃºsica y trivia.
  *
- * Layout de cada extra: el checkbox va SIEMPRE delante de su título (para
- * que la activación se vea a simple vista) y, cuando está activado, su input
- * aparece debajo del hint. Si el checkbox no está marcado, no hay input.
+ * Layout de cada extra: el checkbox va SIEMPRE delante de su tÃ­tulo (para
+ * que la activaciÃ³n se vea a simple vista) y, cuando estÃ¡ activado, su input
+ * aparece debajo del hint. Si el checkbox no estÃ¡ marcado, no hay input.
  */
 export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) {
-  const { formData, updateFormField } = useApp();
+  const { formData, updateFormField } = useConfig();
   const { t } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
-  // Toggle genérico para los switches.
+  // Toggle genÃ©rico para los switches.
   const toggle = useCallback((field: string) => () => {
     updateFormField(field, formData[field] === "true" ? "false" : "true");
   }, [formData, updateFormField]);
 
   /** Editor de la lista de regalos (JSON de {id,name,description}): se edita
-   *  como líneas "nombre | descripción" y se convierte a JSON al guardar. */
+   *  como lÃ­neas "nombre | descripciÃ³n" y se convierte a JSON al guardar. */
   const giftListLines = (() => {
     try {
       const parsed = JSON.parse(formData.giftList || "[]");
@@ -38,7 +65,7 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
     updateFormField("giftList", JSON.stringify(items));
   }, [updateFormField]);
 
-  /** Editor de la trivia (JSON de {q,a}): líneas "pregunta | respuesta". */
+  /** Editor de la trivia (JSON de {q,a}): lÃ­neas "pregunta | respuesta". */
   const triviaLines = (() => {
     try {
       const parsed = JSON.parse(formData.trivia || "[]");
@@ -54,16 +81,18 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
     updateFormField("trivia", JSON.stringify(items));
   }, [updateFormField]);
 
-  /** Fila de extra: checkbox primero y título + hint después. */
-  const ToggleRow = ({ field, label, hint, children }: { field: string; label: string; hint?: string; children?: ReactNode }) => (
-    <div className="setup-toggle-row">
-      <input type="checkbox" className="setup-toggle" id={id(`${field}Toggle`)} checked={formData[`${field}Enabled`] === "true"} onChange={toggle(`${field}Enabled`)} aria-label={label} />
-      <div>
-        <label className="setup-label setup-label--tight" htmlFor={id(`${field}Toggle`)}>{label}</label>
-        {hint ? <p className="setup-help setup-help--tight">{hint}</p> : null}
-      </div>
+  /** Renders una fila de extra con el ToggleRow estable del módulo. */
+  const renderToggleRow = (field: string, label: string, hint?: string, children?: ReactNode) => (
+    <ToggleRow
+      field={field}
+      label={label}
+      {...(hint !== undefined ? { hint } : {})}
+      checked={formData[`${field}Enabled`] === "true"}
+      onToggle={toggle(`${field}Enabled`)}
+      id={id}
+    >
       {children}
-    </div>
+    </ToggleRow>
   );
 
   return (
@@ -72,17 +101,17 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
         <legend className="setup-label">{t("setup.extrasLegend")}</legend>
         <p className="setup-help">{t("setup.extrasHint")}</p>
 
-        {/* Fecha límite de RSVP */}
-        <ToggleRow field="rsvpDeadline" label={t("setup.rsvpDeadlineLabel")} hint={t("setup.rsvpDeadlineHint")} />
+        {/* Fecha lÃ­mite de RSVP */}
+        {renderToggleRow("rsvpDeadline", t("setup.rsvpDeadlineLabel"), t("setup.rsvpDeadlineHint"))}
         {formData.rsvpDeadlineEnabled === "true" ? (
           <input id={id("rsvpDeadline")} className="setup-input" type="date" value={formData.rsvpDeadline || ""} onChange={(e) => updateFormField("rsvpDeadline", e.target.value)} />
         ) : null}
 
         {/* Reacciones */}
-        <ToggleRow field="reactions" label={t("setup.reactionsLabel")} hint={t("setup.reactionsHint")} />
+        {renderToggleRow("reactions", t("setup.reactionsLabel"), t("setup.reactionsHint"))}
 
         {/* Lista de regalos */}
-        <ToggleRow field="giftsList" label={t("setup.giftsListLabel")} hint={t("setup.giftsListHint")} />
+        {renderToggleRow("giftsList", t("setup.giftsListLabel"), t("setup.giftsListHint"))}
         {formData.giftsListEnabled === "true" ? (
           <>
             <p className="setup-help" id={id("giftListHint")}>{t("setup.giftListEditorHint")}</p>
@@ -91,10 +120,10 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
         ) : null}
 
         {/* Compartir coche */}
-        <ToggleRow field="rideShare" label={t("setup.rideShareLabel")} hint={t("setup.rideShareHint")} />
+        {renderToggleRow("rideShare", t("setup.rideShareLabel"), t("setup.rideShareHint"))}
 
-        {/* Vídeo de bienvenida */}
-        <ToggleRow field="welcomeVideo" label={t("setup.welcomeVideoLabel")} hint={t("setup.welcomeVideoHint")} />
+        {/* VÃ­deo de bienvenida */}
+        {renderToggleRow("welcomeVideo", t("setup.welcomeVideoLabel"), t("setup.welcomeVideoHint"))}
         {formData.welcomeVideoEnabled === "true" ? (
           <input id={id("welcomeVideo")} className="setup-input" type="url" inputMode="url" autoComplete="url"
             value={formData.welcomeVideo || ""} onChange={(e) => updateFormField("welcomeVideo", e.target.value.slice(0, 1000))}
@@ -102,13 +131,13 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
         ) : null}
 
         {/* Muro de dedicatorias */}
-        <ToggleRow field="notes" label={t("setup.notesLabel")} hint={t("setup.notesHint")} />
+        {renderToggleRow("notes", t("setup.notesLabel"), t("setup.notesHint"))}
 
-        {/* Encuesta de música */}
-        <ToggleRow field="musicPoll" label={t("setup.musicPollLabel")} hint={t("setup.musicPollHint")} />
+        {/* Encuesta de mÃºsica */}
+        {renderToggleRow("musicPoll", t("setup.musicPollLabel"), t("setup.musicPollHint"))}
 
         {/* Trivia */}
-        <ToggleRow field="trivia" label={t("setup.triviaLabel")} hint={t("setup.triviaHint")} />
+        {renderToggleRow("trivia", t("setup.triviaLabel"), t("setup.triviaHint"))}
         {formData.triviaEnabled === "true" ? (
           <>
             <p className="setup-help" id={id("triviaHint")}>{t("setup.triviaEditorHint")}</p>

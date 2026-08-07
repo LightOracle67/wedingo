@@ -21,7 +21,7 @@ vi.mock("../../../lib/constants", () => ({
   MONTH_VALUE_TO_NUMBER: { enero: 1, febrero: 2, marzo: 3 },
   MAX_SCHEDULE_EVENTS: 10,
   MAX_SCHEDULE_EVENT_TEXT: 60,
-  SCHEDULE_EVENT_EMOJIS: ["💍", "🥂", "🎉"],
+  SCHEDULE_EVENT_EMOJIS: ["ðŸ’", "ðŸ¥‚", "ðŸŽ‰"],
 }));
 
 const mockFormData = vi.hoisted(() => ({
@@ -37,11 +37,11 @@ const mockFormData = vi.hoisted(() => ({
 vi.mock("../../../lib/geo-utils", () => ({
   isValidGoogleMapsUrl: (url: string) => url.startsWith("https://maps.google.com"),
   convertToEmbedUrl: (url: string) => url.replace("maps.google.com", "maps.google.com/embed"),
-  extractPlaceNameFromUrl: (url: string) => (url.includes("place") ? "Iglesia San José" : ""),
+  extractPlaceNameFromUrl: (url: string) => (url.includes("place") ? "Iglesia San JosÃ©" : ""),
 }));
 
 vi.mock("../../../contexts", () => ({
-  useApp: () => ({
+  useConfig: () => ({
     config: { theme: "golden", menuEnabled: "true" },
     formData: mockFormData,
     updateFormField: mockUpdateFormField,
@@ -170,26 +170,26 @@ describe("DateSectionForm", () => {
     mockFormData.weddingScheduleEvents = JSON.stringify([{ time: "18:00", text: "Ceremonia" }]);
     render(<DateSectionForm />);
     const input = document.getElementById("scheduleEventText0") as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "Cóctel" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "18:00", text: "Cóctel", emoji: "" }]));
+    fireEvent.change(input, { target: { value: "CÃ³ctel" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "18:00", text: "CÃ³ctel", emoji: "" }]));
   });
 
   it("edits a schedule event emoji field", () => {
     mockFormData.weddingScheduleEvents = JSON.stringify([{ time: "18:00", text: "Ceremonia" }]);
     render(<DateSectionForm />);
     const select = document.getElementById("scheduleEventEmoji0") as HTMLSelectElement;
-    fireEvent.change(select, { target: { value: "💍" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "18:00", text: "Ceremonia", emoji: "💍" }]));
+    fireEvent.change(select, { target: { value: "ðŸ’" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingScheduleEvents", JSON.stringify([{ time: "18:00", text: "Ceremonia", emoji: "ðŸ’" }]));
   });
 
   it("offers the preset emojis as selectable options with an empty default", () => {
     mockFormData.weddingScheduleEvents = JSON.stringify([{ time: "18:00", text: "Ceremonia" }]);
     render(<DateSectionForm />);
     const select = document.getElementById("scheduleEventEmoji0") as HTMLSelectElement;
-    // La primera opción es la vacía (sin emoji) y el resto son los emojis predefinidos.
+    // La primera opciÃ³n es la vacÃ­a (sin emoji) y el resto son los emojis predefinidos.
     const options = Array.from(select.options).map((o) => o.value);
     expect(options[0]).toBe("");
-    expect(options).toEqual(expect.arrayContaining(["💍", "🥂", "🎉"]));
+    expect(options).toEqual(expect.arrayContaining(["ðŸ’", "ðŸ¥‚", "ðŸŽ‰"]));
   });
 
   it("removes a schedule event", () => {
@@ -290,7 +290,7 @@ describe("DateSectionForm", () => {
   it("shows recovered venue name when URL contains a place", () => {
     mockFormData.weddingSiteURL = "https://maps.google.com/maps/place/Iglesia";
     render(<DateSectionForm />);
-    expect(screen.getByText(/Iglesia San José/)).toBeDefined();
+    expect(screen.getByText(/Iglesia San JosÃ©/)).toBeDefined();
   });
 
   it("shows invalid URL error and explanation", () => {

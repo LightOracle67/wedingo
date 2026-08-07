@@ -10,10 +10,10 @@
 
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { useFocusTrap } from "../hooks/useFocusTrap";
 import { useToast } from "../hooks/useToast";
 import { useApp } from "../contexts";
 import { eraseGuestLocalData, exportGuestLocalData } from "../lib/data-request";
+import Modal from "./Modal";
 import "../styles/modals.css";
 
 interface DataRequestModalProps {
@@ -29,7 +29,6 @@ const DataRequestModal = memo(function DataRequestModal({ inviteToken, onClose }
   // Respuestas del invitado ya cargadas (caché/descifradas): se incluyen en
   // el export de portabilidad cuando están disponibles.
   const { rsvpEntries } = useApp();
-  const focusTrapRef = useFocusTrap<HTMLDivElement>(true);
 
   /** Descarga un JSON con los datos del navegador y las respuestas (portabilidad). */
   const handleExport = () => {
@@ -61,22 +60,13 @@ const DataRequestModal = memo(function DataRequestModal({ inviteToken, onClose }
   };
 
   return (
-    <div
-      className="modal-overlay"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-label={t("dataRequest.title")}
-      data-testid="data-request-modal"
+    <Modal
+      title={t("dataRequest.title")}
+      closeLabel={t("common.close")}
+      onClose={onClose}
+      overlayClassName="data-request-modal"
+      style={{ width: "min(95vw, 640px)", minWidth: "min(95vw, 360px)", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}
     >
-      <div
-        className="modal-card"
-        ref={focusTrapRef}
-        onClick={(e) => e.stopPropagation()}
-        style={{ width: "min(95vw, 640px)", minWidth: "min(95vw, 360px)", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}
-      >
-        <button className="modal-close" onClick={onClose} aria-label={t("common.close")}>&times;</button>
-        <p className="modal-title">{t("dataRequest.title")}</p>
         <div style={{ overflowY: "auto", overflowX: "hidden", flex: 1, marginTop: "0.5rem", wordBreak: "break-word" }}>
           <p className="data-request-text">{t("dataRequest.intro")}</p>
 
@@ -93,8 +83,7 @@ const DataRequestModal = memo(function DataRequestModal({ inviteToken, onClose }
 
           <p className="data-request-note">{t("dataRequest.serverNote")}</p>
         </div>
-      </div>
-    </div>
+    </Modal>
   );
 });
 

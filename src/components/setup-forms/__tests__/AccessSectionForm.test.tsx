@@ -19,7 +19,8 @@ vi.mock("../../../hooks/useToast", () => ({
 }));
 
 vi.mock("../../../contexts", () => ({
-  useApp: () => mockAppState,
+  useConfig: () => mockAppState,
+  useAuth: () => mockAppState,
 }));
 
 import AccessSectionForm from "../AccessSectionForm";

@@ -6,9 +6,9 @@ vi.mock("react-i18next", () => ({
   initReactI18next: { type: "3rdParty", init: () => {} },
 }));
 
-const mockUseApp = vi.fn();
+const mockUseConfig = vi.fn();
 vi.mock("../../contexts", () => ({
-  useApp: (...args: unknown[]) => mockUseApp(...args),
+  useConfig: (...args: unknown[]) => mockUseConfig(...args),
 }));
 
 vi.mock("../../lib/invite-messages", () => ({
@@ -29,12 +29,12 @@ beforeEach(() => {
   vi.useFakeTimers();
   window.print = vi.fn();
   window.close = vi.fn();
-  mockUseApp.mockReset();
+  mockUseConfig.mockReset();
 });
 
 describe("PrintPage", () => {
   it("shows loading state when config is loading", () => {
-    mockUseApp.mockReturnValue({
+    mockUseConfig.mockReturnValue({
       config: { firstName: "", secondName: "" },
       isConfigLoading: true,
     });
@@ -44,7 +44,7 @@ describe("PrintPage", () => {
   });
 
   it("shows loading state before loaded timer fires", () => {
-    mockUseApp.mockReturnValue({
+    mockUseConfig.mockReturnValue({
       config: { firstName: "John", secondName: "Jane", theme: "golden" },
       isConfigLoading: false,
     });
@@ -54,7 +54,7 @@ describe("PrintPage", () => {
   });
 
   it("renders couple names after loading", () => {
-    mockUseApp.mockReturnValue({
+    mockUseConfig.mockReturnValue({
       config: { firstName: "John", secondName: "Jane", theme: "golden" },
       isConfigLoading: false,
     });
@@ -66,7 +66,7 @@ describe("PrintPage", () => {
   });
 
   it("renders wedding details when provided", () => {
-    mockUseApp.mockReturnValue({
+    mockUseConfig.mockReturnValue({
       config: {
         firstName: "Alice",
         secondName: "Bob",
@@ -88,7 +88,7 @@ describe("PrintPage", () => {
   });
 
   it("renders with an unknown wedding month without showing a date", () => {
-    mockUseApp.mockReturnValue({
+    mockUseConfig.mockReturnValue({
       config: {
         firstName: "Alice",
         secondName: "Bob",
@@ -109,7 +109,7 @@ describe("PrintPage", () => {
   });
 
   it("does not print an invalid date (31 February rolls over)", () => {
-    mockUseApp.mockReturnValue({
+    mockUseConfig.mockReturnValue({
       config: {
         firstName: "Alice",
         secondName: "Bob",
@@ -126,13 +126,13 @@ describe("PrintPage", () => {
 
     render(<PrintPage />);
     act(() => { vi.advanceTimersByTime(200); });
-    // La fecha inválida no se muestra: no hay "31 de febrero" ni el rollover.
+    // La fecha invÃ¡lida no se muestra: no hay "31 de febrero" ni el rollover.
     expect(screen.queryByText(/marzo|febrero/i)).toBeNull();
     expect(screen.getByText("Alice", { exact: false })).toBeDefined();
   });
 
   it("renders without a wedding date", () => {
-    mockUseApp.mockReturnValue({
+    mockUseConfig.mockReturnValue({
       config: { firstName: "Alice", secondName: "Bob", theme: "golden" },
       isConfigLoading: false,
     });
@@ -143,7 +143,7 @@ describe("PrintPage", () => {
   });
 
   it("renders hero eyebrow text", () => {
-    mockUseApp.mockReturnValue({
+    mockUseConfig.mockReturnValue({
       config: { firstName: "John", secondName: "Jane", theme: "golden" },
       isConfigLoading: false,
     });
@@ -154,7 +154,7 @@ describe("PrintPage", () => {
   });
 
   it("calls window.print after loading and fonts ready", async () => {
-    mockUseApp.mockReturnValue({
+    mockUseConfig.mockReturnValue({
       config: { firstName: "John", secondName: "Jane", theme: "golden" },
       isConfigLoading: false,
     });
@@ -173,7 +173,7 @@ describe("PrintPage", () => {
   });
 
   it("sets window.onafterprint to window.close", async () => {
-    mockUseApp.mockReturnValue({
+    mockUseConfig.mockReturnValue({
       config: { firstName: "John", secondName: "Jane", theme: "golden" },
       isConfigLoading: false,
     });
@@ -192,7 +192,7 @@ describe("PrintPage", () => {
   });
 
   it("closes the window after printing when it was opened via window.open", async () => {
-    mockUseApp.mockReturnValue({
+    mockUseConfig.mockReturnValue({
       config: { firstName: "John", secondName: "Jane", theme: "golden" },
       isConfigLoading: false,
     });
@@ -211,7 +211,7 @@ describe("PrintPage", () => {
       await Promise.resolve();
     });
 
-    // Se dispara el onafterprint: con window.opener presente, cierra la pestaña.
+    // Se dispara el onafterprint: con window.opener presente, cierra la pestaÃ±a.
     window.onafterprint?.(new Event("afterprint"));
     expect(close).toHaveBeenCalled();
     Object.defineProperty(window, "opener", { value: origOpener, configurable: true });

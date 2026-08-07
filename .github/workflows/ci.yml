@@ -35,6 +35,7 @@ jobs:
       - run: npm run lint:ci
       - run: npm run typecheck
       - run: npm run translations:check
+      - run: npm run consent:check
       # Una sola pasada de Vitest con cobertura y reporte JUnit.
       - run: npx vitest run --coverage --reporter=junit --outputFile=junit.xml --exclude 'e2e/**'
       - run: npm ci --prefix functions

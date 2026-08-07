@@ -44,57 +44,31 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/setupTokens/$(hash)).data.inviteToken == tokenId;
     }
 
-    function isValidLongText(value) {
-      return value is string && value.size() <= 2000;
-    }
-
     /* Texto largo visible en la invitación: longitud acotada y caracteres
        seguros (sin HTML/JS) para evitar XSS almacenado. */
     function isValidLongSafeText(value) {
       return isSafeText(value) && value.size() <= 2000;
     }
 
-    function isValidInvitationWrite(data) {
-      return data.keys().hasAll(['firstName', 'secondName', 'weddingDay', 'weddingMonth', 'weddingYear', 'weddingHour', 'weddingMinute'])
-        && data.firstName is string && data.firstName.size() > 0 && data.firstName.size() <= 100 && isSafeText(data.firstName)
-        && data.secondName is string && data.secondName.size() > 0 && data.secondName.size() <= 100 && isSafeText(data.secondName)
-        && data.weddingDay is string && data.weddingDay.matches('^(0?[1-9]|[12][0-9]|3[01])$')
-        && data.weddingMonth is string && data.weddingMonth.matches('^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)$')
-        && data.weddingYear is string && data.weddingYear.matches('^[12][0-9]{3}$')
-        && data.weddingHour is string && data.weddingHour.matches('^([01]?[0-9]|2[0-3])$')
-        && data.weddingMinute is string && data.weddingMinute.matches('^[0-5]?[0-9]$')
-        && data.theme.matches('^(golden|forest|rose|linen-soft|blush-pearl|lavender-mist|champagne-bubble|amber-night|onyx-gold|midnight-royal|burgundy-velvet|sapphire-night|emerald-grove|plum-twilight|rainbow|trans|nonbinary|lesbian|bi|pan|ace)$')
-        && (!data.keys().hasAny(['adminUsername']) || (data.adminUsername is string && data.adminUsername.size() <= 50 && data.adminUsername.matches('^[a-z0-9]*$')))
-        && (!data.keys().hasAny(['inviteMessage']) || (data.inviteMessage is string && data.inviteMessage.size() <= 500 && isSafeText(data.inviteMessage)))
-        && (!data.keys().hasAny(['storyText']) || isValidLongSafeText(data.storyText))
-        && (!data.keys().hasAny(['giftsInfo']) || isValidLongSafeText(data.giftsInfo))
-        && (!data.keys().hasAny(['accommodationInfo']) || isValidLongSafeText(data.accommodationInfo))
-        && (!data.keys().hasAny(['menuTexto']) || isValidLongSafeText(data.menuTexto))
-        && (!data.keys().hasAny(['kidsPolicy']) || isValidLongSafeText(data.kidsPolicy))
-        && (!data.keys().hasAny(['weddingDressCode']) || (data.weddingDressCode is string && data.weddingDressCode.size() <= 100 && isSafeText(data.weddingDressCode)))
-        && (!data.keys().hasAny(['weddingDressCodeCustom']) || (data.weddingDressCodeCustom is string && data.weddingDressCodeCustom.size() <= 500 && isSafeText(data.weddingDressCodeCustom)))
-        && (!data.keys().hasAny(['bankInfo']) || (data.bankInfo is string && data.bankInfo.size() <= 2000))
-        && (!data.keys().hasAny(['weddingSiteURL']) || (data.weddingSiteURL is string && data.weddingSiteURL.size() <= 1000 && !data.weddingSiteURL.matches('(?i).*javascript:.*')))
-        && (!data.keys().hasAny(['instagramUrl']) || (data.instagramUrl is string && data.instagramUrl.size() <= 1000 && !data.instagramUrl.matches('(?i).*javascript:.*')))
-        && (!data.keys().hasAny(['facebookUrl']) || (data.facebookUrl is string && data.facebookUrl.size() <= 1000 && !data.facebookUrl.matches('(?i).*javascript:.*')))
-        && (!data.keys().hasAny(['detailsMapMode']) || data.detailsMapMode in ['iframe', 'name', 'hidden'])
-        && (!data.keys().hasAny(['transportMapMode']) || data.transportMapMode in ['iframe', 'name', 'hidden'])
-        && (!data.keys().hasAny(['accommodationMapMode']) || data.accommodationMapMode in ['iframe', 'name', 'hidden'])
-        && (!data.keys().hasAny(['accommodationURL']) || (data.accommodationURL is string && data.accommodationURL.size() <= 1000 && !data.accommodationURL.matches('(?i).*javascript:.*')))
-        /* Campos de las funciones sociales (opcionales): fecha límite, vídeo
-           de bienvenida y los arrays JSON de regalos/trivia. Se permiten
-           vacíos: normalizeConfig siempre los envía ("" o "false"). */
-        && (!data.keys().hasAny(['rsvpDeadline']) || data.rsvpDeadline == '' || (data.rsvpDeadline is string && data.rsvpDeadline.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')))
-        && (!data.keys().hasAny(['welcomeVideo']) || data.welcomeVideo == '' || (data.welcomeVideo is string && data.welcomeVideo.size() <= 1000 && data.welcomeVideo.matches('^https://.*')))
-        && (!data.keys().hasAny(['welcomeVideoEnabled']) || data.welcomeVideoEnabled == 'true' || data.welcomeVideoEnabled == 'false')
-        && (!data.keys().hasAny(['giftList']) || (data.giftList is string && data.giftList.size() <= 10000))
-        && (!data.keys().hasAny(['trivia']) || (data.trivia is string && data.trivia.size() <= 10000));
+    /* Whitelist estricta de temas: rechaza cualquier valor que no sea un tema
+       soportado por el cliente (THEME_VALUES). Evita que un valor arbitrario
+       se guarde y rompa el renderizado o se use para inyección de estilos. */
+    function isValidTheme(theme) {
+      return theme is string
+        && theme.matches('^(golden|forest|rose|linen-soft|blush-pearl|lavender-mist|champagne-bubble|amber-night|onyx-gold|midnight-royal|burgundy-velvet|sapphire-night|emerald-grove|plum-twilight|rainbow|trans|nonbinary|lesbian|bi|pan|ace)$');
     }
 
-    /* Validación reducida para el UPDATE de la configuración (el admin ya
-       tiene sesión activa, que es la garantía real). La validación completa
-       de isValidInvitationWrite superaba el límite de 1000 expresiones de
-       Firestore al combinarse con hasActiveSession en el update. */
+    /* URL visible en la invitación: acotada y sin esquemas peligrosos
+       (bloquea javascript: e inyección vía atributos). */
+    function isValidSafeUrl(url) {
+      return url is string && url.size() <= 1000 && !url.matches('(?i).*javascript:.*');
+    }
+
+    /* Validación de la configuración para create y update (el admin ya tiene
+       sesión activa, que es la garantía real de autorización). Se mantiene
+       compacta para no superar el límite de 1000 expresiones de Firestore al
+       combinarse con hasActiveSession, pero incluye la validación estricta de
+       los campos críticos: nombres, fecha, tema, URLs y texto largo seguro. */
     function isValidInvitationUpdate(data) {
       return data.keys().hasAll(['firstName', 'secondName'])
         && data.firstName is string && data.firstName.size() > 0 && data.firstName.size() <= 100 && isSafeText(data.firstName)
@@ -102,8 +76,21 @@ service cloud.firestore {
         && (!data.keys().hasAny(['weddingDay']) || (data.weddingDay is string && data.weddingDay.matches('^(0?[1-9]|[12][0-9]|3[01])$')))
         && (!data.keys().hasAny(['weddingMonth']) || (data.weddingMonth is string && data.weddingMonth.matches('^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)$')))
         && (!data.keys().hasAny(['weddingYear']) || (data.weddingYear is string && data.weddingYear.matches('^[12][0-9]{3}$')))
-        && (!data.keys().hasAny(['theme']) || (data.theme is string && data.theme.size() <= 40))
+        && (!data.keys().hasAny(['theme']) || isValidTheme(data.theme))
         && (!data.keys().hasAny(['inviteMessage']) || (data.inviteMessage is string && data.inviteMessage.size() <= 500 && isSafeText(data.inviteMessage)))
+        /* Texto largo visible en la invitación: longitud acotada y sin HTML/JS
+           (XSS almacenado). */
+        && (!data.keys().hasAny(['storyText']) || isValidLongSafeText(data.storyText))
+        && (!data.keys().hasAny(['giftsInfo']) || isValidLongSafeText(data.giftsInfo))
+        && (!data.keys().hasAny(['accommodationInfo']) || isValidLongSafeText(data.accommodationInfo))
+        && (!data.keys().hasAny(['menuTexto']) || isValidLongSafeText(data.menuTexto))
+        && (!data.keys().hasAny(['kidsPolicy']) || isValidLongSafeText(data.kidsPolicy))
+        /* URLs de la invitación: acotadas y sin javascript: (XSS). */
+        && (!data.keys().hasAny(['weddingSiteURL']) || isValidSafeUrl(data.weddingSiteURL))
+        && (!data.keys().hasAny(['instagramUrl']) || isValidSafeUrl(data.instagramUrl))
+        && (!data.keys().hasAny(['facebookUrl']) || isValidSafeUrl(data.facebookUrl))
+        && (!data.keys().hasAny(['accommodationURL']) || isValidSafeUrl(data.accommodationURL))
+        && (!data.keys().hasAny(['bankInfo']) || (data.bankInfo is string && data.bankInfo.size() <= 2000))
         /* Toggles *Enabled de los campos opcionales del setup: solo admiten
            "true" o "false" (normalizeConfig los normaliza a esos valores). */
         && (!data.keys().hasAny(['inviteMessageEnabled']) || data.inviteMessageEnabled == 'true' || data.inviteMessageEnabled == 'false')
@@ -123,6 +110,10 @@ service cloud.firestore {
         && (!data.keys().hasAny(['weddingDressCodeEnabled']) || data.weddingDressCodeEnabled == 'true' || data.weddingDressCodeEnabled == 'false')
         && (!data.keys().hasAny(['kidsPolicyEnabled']) || data.kidsPolicyEnabled == 'true' || data.kidsPolicyEnabled == 'false')
         && (!data.keys().hasAny(['weddingDressCodeCustom']) || (data.weddingDressCodeCustom is string && data.weddingDressCodeCustom.size() <= 500 && isSafeText(data.weddingDressCodeCustom)))
+        && (!data.keys().hasAny(['adminUsername']) || (data.adminUsername is string && data.adminUsername.size() <= 50 && data.adminUsername.matches('^[a-z0-9]*$')))
+        && (!data.keys().hasAny(['detailsMapMode']) || data.detailsMapMode in ['iframe', 'name', 'hidden'])
+        && (!data.keys().hasAny(['transportMapMode']) || data.transportMapMode in ['iframe', 'name', 'hidden'])
+        && (!data.keys().hasAny(['accommodationMapMode']) || data.accommodationMapMode in ['iframe', 'name', 'hidden'])
         && (!data.keys().hasAny(['rsvpDeadline']) || data.rsvpDeadline == '' || data.rsvpDeadline.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$'))
         && (!data.keys().hasAny(['welcomeVideo']) || data.welcomeVideo == '' || (data.welcomeVideo is string && data.welcomeVideo.size() <= 1000 && data.welcomeVideo.matches('^https://.*')))
         && (!data.keys().hasAny(['welcomeVideoEnabled']) || data.welcomeVideoEnabled == 'true' || data.welcomeVideoEnabled == 'false')
@@ -359,12 +350,14 @@ service cloud.firestore {
         )
         /* Consentimiento parental en el SERVIDOR: si la fecha de nacimiento
            indica que el invitado es menor de 14 años (fecha de nacimiento
-           posterior al límite actual; actualizar cada año), se exige
-           parentalConsent (GDPR art. 8). La edad exacta la valida el cliente. */
+           posterior al límite actual), se exige parentalConsent (GDPR art. 8).
+           La edad exacta la valida el cliente.
+           IMPORTANTE: actualiza esta fecha cada año. El script CI
+           `node scripts/check-consent-cutoff.js` falla si queda obsoleta. */
         && (
           !request.resource.data.keys().hasAny(['birthDate'])
           || request.resource.data.birthDate == ""
-          || request.resource.data.birthDate < "2012-08-06"
+          || request.resource.data.birthDate < "2012-08-08"
           || request.resource.data.parentalConsent == true
         )
         && exists(/databases/$(database)/documents/rsvpResponses/$(inviteToken))

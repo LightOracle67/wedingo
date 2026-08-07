@@ -12,14 +12,13 @@ const DataRequestModal = lazy(() => import("./components/DataRequestModal"));
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import MusicPlayer from "./components/MusicPlayer";
 import { useFocusTrap, useEscapeKey } from "./hooks/useFocusTrap";
+import { useAppShellEffects } from "./hooks/useAppShellEffects";
 
-const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ckb", "dv"]);
 const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
 const LegalModal = lazy(() => import("./components/LegalModal"));
 const ChangelogModal = lazy(() => import("./components/ChangelogModal"));
 import Fireflies from "./components/Fireflies";
-import { APP_VERSION, THEME_PREVIEW_COLORS } from "./lib/constants";
-import { logError } from "./lib/error-utils";
+import { APP_VERSION } from "./lib/constants";
 import { getSession } from "./lib/sessionVars";
 import "./styles/admin.css";
 import "./styles/rtl.css";
@@ -36,7 +35,7 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function AppShell() {
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
   const [username, setUsername] = useState("");
   
@@ -60,6 +59,11 @@ function AppShell() {
   const navOverlayRef = useFocusTrap<HTMLDivElement>(navOpen);
   // Escape cierra el menú móvil (patrón de diálogo accesible).
   useEscapeKey(() => setNavOpen(false), navOpen);
+
+  const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
+
+  // Efectos de documento (idioma/RTL, título, tema, robots, errores, scroll).
+  useAppShellEffects(config, formData, inviteToken, isEditingRoute);
 
   useEffect(() => {
 
@@ -93,87 +97,6 @@ function AppShell() {
       localStorage.setItem("wedin_deploy_id", deployId);
     } catch { /* almacenamiento no disponible */ }
   }, []);
-
-  // noindex dinámico: solo la landing es indexable. Las invitaciones son
-  // secretas y /admin, /setup, /print y el superadmin no deben indexarse
-  // (defensa en profundidad junto a robots.txt).
-  useEffect(() => {
-    let meta = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
-    if (location.pathname === "/") {
-      if (meta) meta.remove();
-      return;
-    }
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "robots");
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute("content", "noindex, nofollow");
-  }, [location.pathname]);
-
-  const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
-
-
-  useEffect(() => {
-    const lang = i18n.language?.split("-")[0] || "es";
-
-    document.documentElement.lang = lang;
-    document.documentElement.dir = RTL_LANGS.has(lang) ? "rtl" : "ltr";
-    document.documentElement.translate = true;
-  }, [i18n.language]);
-
-  useEffect(() => {
-    const path = location.pathname;
-
-    if (path === "/") document.title = t("app.titleLanding");
-    else if (path.includes("/admin")) document.title = t("app.titleAdmin");
-    else if (path.includes("/setup")) document.title = t("app.titleSetup");
-    else if (inviteToken) document.title = `${config.firstName || t("app.titleInvitation")} & ${config.secondName || ""} — Wedingo`;
-  }, [location.pathname, inviteToken, config.firstName, config.secondName, t]);
-
-  useEffect(() => {
-    const activeTheme = isEditingRoute ? "golden" : formData.theme || config.theme;
-
-    document.documentElement.dataset.weddingTheme = activeTheme || "golden";
-    // theme-color de la barra del navegador alineado con el tema (antes era
-    // estático en index.html y no cambiaba con la invitación).
-    const preview = THEME_PREVIEW_COLORS[activeTheme || "golden"];
-    const color = preview?.bg || "#2a2418";
-    let meta = document.querySelector('meta[name="theme-color"]');
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "theme-color");
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute("content", color);
-  }, [formData.theme, config.theme, isEditingRoute]);
-
-  useEffect(() => {
-
-    document.documentElement.style.setProperty("--wedding-background-image", "none");
-  }, []);
-
-  useEffect(() => {
-
-    const handler = (event: ErrorEvent) => {
-      logError(event.error || event.message, "global");
-    };
-    const rejectionHandler = (event: PromiseRejectionEvent) => {
-      logError(event.reason, "unhandledRejection");
-    };
-    window.addEventListener("error", handler);
-    window.addEventListener("unhandledrejection", rejectionHandler);
-    return () => {
-
-      window.removeEventListener("error", handler);
-      window.removeEventListener("unhandledrejection", rejectionHandler);
-    };
-  }, []);
-
-  useEffect(() => {
-
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
 
   return (
     <>

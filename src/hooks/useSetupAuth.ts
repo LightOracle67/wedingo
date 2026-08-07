@@ -1,15 +1,15 @@
 /**
  * useSetupAuth.js
- * ─────────────────────────────────────────────────────────────
- * Hook de autenticación para el panel de configuración y admin.
+ * â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+ * Hook de autenticaciÃ³n para el panel de configuraciÃ³n y admin.
  *
  * Gestiona:
- * - Generación y verificación de tokens de acceso únicos.
- * - Inicio de sesión con token (setup) o usuario + token (admin).
- * - Persistencia de sesión en sessionStorage + Firestore.
- * - Renovación automática de sesión cada 60 segundos.
- * - Cierre de sesión con limpieza de caché y estado.
- * - Restauración de sesión desde sessionStorage al recargar.
+ * - GeneraciÃ³n y verificaciÃ³n de tokens de acceso Ãºnicos.
+ * - Inicio de sesiÃ³n con token (setup) o usuario + token (admin).
+ * - Persistencia de sesiÃ³n en sessionStorage + Firestore.
+ * - RenovaciÃ³n automÃ¡tica de sesiÃ³n cada 60 segundos.
+ * - Cierre de sesiÃ³n con limpieza de cachÃ© y estado.
+ * - RestauraciÃ³n de sesiÃ³n desde sessionStorage al recargar.
  *
  * @module useSetupAuth
  */
@@ -21,20 +21,21 @@ import { getDoc, runTransaction, serverTimestamp, updateDoc, type DocumentData }
 import { db, invitationDocRef } from "../lib/firebase";
 import { generateSetupToken, normalizeTokenValue } from "../lib/token-utils";
 import { createSetupTokenRecord, deleteSetupTokenRecord, hashSetupToken, setupTokenRef } from "../lib/setup-token";
-import { saveSession, getSession, renewSession, clearSession, firestoreSessionExpiry } from "../lib/sessionVars";
+import { saveSession, getSession, clearSession, firestoreSessionExpiry } from "../lib/sessionVars";
+import { useSessionRenewal } from "../hooks/useSessionRenewal";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import type { InvitationConfig } from "../types";
 
 /**
- * Hook de autenticación del panel de configuración.
+ * Hook de autenticaciÃ³n del panel de configuraciÃ³n.
  *
- * @param {string} inviteToken - Token de la invitación.
- * @param {object} config - Configuración actual de la boda.
+ * @param {string} inviteToken - Token de la invitaciÃ³n.
+ * @param {object} config - ConfiguraciÃ³n actual de la boda.
  * @param {function} setAdminMessage - Setter para mensajes del panel admin.
  * @param {function} setAdminMessageType - Setter para tipo de mensaje.
  * @param {function} setHasStoredConfig - Setter para indicar si hay config guardada.
- * @returns {object} Estado y handlers de autenticación.
+ * @returns {object} Estado y handlers de autenticaciÃ³n.
  */
 export function useSetupAuth(
   inviteToken: string,
@@ -46,7 +47,7 @@ export function useSetupAuth(
 
   const { t } = useTranslation();
   const navigate = useNavigate();
-  // ─── Estados de autenticación ──────────────────────────
+  // â”€â”€â”€ Estados de autenticaciÃ³n â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const [setupToken, setSetupToken] = useState("");
   const [setupTokenInput, setSetupTokenInput] = useState("");
   const [isTokenVerifying, setIsTokenVerifying] = useState(false);
@@ -58,40 +59,40 @@ export function useSetupAuth(
   const [authMessageType, setAuthMessageType] = useState("error");
   const [confirmTokenInput, setConfirmTokenInput] = useState("");
   const [isRestoringSession, setIsRestoringSession] = useState(false);
-  /** True si había una sesión local que expiró/no se pudo restaurar (para
+  /** True si habÃ­a una sesiÃ³n local que expirÃ³/no se pudo restaurar (para
    *  mostrar un aviso en lugar de redirigir en silencio). */
   const [sessionExpired, setSessionExpired] = useState(() => {
     try { return sessionStorage.getItem("wedin_session_expired") === "1"; } catch { return false; }
   });
 
-  /** Intervalo de renovación de sesión. */
+  /** Intervalo de renovaciÃ³n de sesiÃ³n. */
   const renewRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  /** Tipo de sesión actual: "setup" o "admin". */
+  /** Tipo de sesiÃ³n actual: "setup" o "admin". */
   const sessionTypeRef = useRef("");
   /** Previene doble clic en reseteo de token. */
   const resettingRef = useRef(false);
-  /** Fallos consecutivos de renovación: al segundo se corta la sesión. */
+  /** Fallos consecutivos de renovaciÃ³n: al segundo se corta la sesiÃ³n. */
   const renewFailureRef = useRef(false);
 
-  /** Derivado: el usuario está autenticado si el token fue verificado. */
+  /** Derivado: el usuario estÃ¡ autenticado si el token fue verificado. */
   const isAdminTokenLoggedIn = useMemo(() => isTokenVerified, [isTokenVerified]);
 
-  /** Marca que la sesión expiró (estado + sessionStorage) para avisar en el
+  /** Marca que la sesiÃ³n expirÃ³ (estado + sessionStorage) para avisar en el
    *  siguiente render del admin/login. */
   const markSessionExpired = useCallback(() => {
     setSessionExpired(true);
     try { sessionStorage.setItem("wedin_session_expired", "1"); } catch { }
   }, []);
-  /** Limpia la marca de expiración tras mostrarla. */
+  /** Limpia la marca de expiraciÃ³n tras mostrarla. */
   const clearSessionExpired = useCallback(() => {
     setSessionExpired(false);
     try { sessionStorage.removeItem("wedin_session_expired"); } catch { }
   }, []);
 
   /**
-   * Al montar el hook, intenta restaurar la sesión desde sessionStorage.
-   * Si hay una sesión guardada, la reactiva sin pedir token.
-   * Verifica que la sesión siga activa en Firestore.
+   * Al montar el hook, intenta restaurar la sesiÃ³n desde sessionStorage.
+   * Si hay una sesiÃ³n guardada, la reactiva sin pedir token.
+   * Verifica que la sesiÃ³n siga activa en Firestore.
    */
   useEffect(() => {
 
@@ -108,10 +109,10 @@ export function useSetupAuth(
       return;
     }
 
-    // La sesión local debe pertenecer a ESTA invitación: si se abre la URL
-    // de otra boda, no se otorga admin cruzado. Además de borrar la sesión,
+    // La sesiÃ³n local debe pertenecer a ESTA invitaciÃ³n: si se abre la URL
+    // de otra boda, no se otorga admin cruzado. AdemÃ¡s de borrar la sesiÃ³n,
     // se invalida isTokenVerified: sin esto, al navegar de A/admin a B/admin
-    // el admin quedaba "verificado" para B sin haber iniciado sesión ahí
+    // el admin quedaba "verificado" para B sin haber iniciado sesiÃ³n ahÃ­
     // (panel cruzado / formulario de setup bloqueado).
     if (session.inviteToken && session.inviteToken !== inviteToken) {
       clearSession();
@@ -143,7 +144,7 @@ export function useSetupAuth(
 
 
         try {
-          // La reparación/renovación de sesión necesita la prueba de
+          // La reparaciÃ³n/renovaciÃ³n de sesiÃ³n necesita la prueba de
           // conocimiento del token (hash) para que las reglas la acepten.
           const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
           const storedToken = safeGetItem(storageKey, sessionStorage) || "";
@@ -169,7 +170,7 @@ export function useSetupAuth(
         }
       } else {
         clearSession();
-        // Había una sesión local guardada pero expiró: se avisa en el login.
+        // HabÃ­a una sesiÃ³n local guardada pero expirÃ³: se avisa en el login.
         if (safeGetItem(STORAGE_KEYS.setupToken(inviteToken || ""), sessionStorage)) {
           markSessionExpired();
         }
@@ -185,17 +186,17 @@ export function useSetupAuth(
   }, [inviteToken, markSessionExpired]);
 
   /**
-   * Renueva la sesión periódicamente cada 60 segundos mientras esté activa.
-   * Para que las reglas permitan la renovación se adjunta el hash del token
-   * de setup (prueba de conocimiento). Nunca se persiste el token en claro
-   * en el documento público.
+   * Renueva la sesiÃ³n periÃ³dicamente cada 60 segundos mientras estÃ© activa.
+   * La renovaciÃ³n LOCAL (sessionStorage) la gestiona useSessionRenewal; aquÃ­
+   * solo se renueva en FIRESTORE, adjuntando el hash del token de setup
+   * (prueba de conocimiento) para que las reglas lo permitan. Nunca se
+   * persiste el token en claro en el documento pÃºblico.
    */
+  useSessionRenewal(isTokenVerified);
   useEffect(() => {
 
     if (isTokenVerified) {
       const doRenew = async () => {
-
-        renewSession();
         try {
           const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
           const storedToken = safeGetItem(storageKey, sessionStorage) || "";
@@ -206,7 +207,7 @@ export function useSetupAuth(
             setupTokenHash: tokenHash,
           };
           await updateDoc(invitationDocRef(inviteToken), renewPayload);
-          // Renovación correcta: se reinicia el contador de fallos.
+          // RenovaciÃ³n correcta: se reinicia el contador de fallos.
           renewFailureRef.current = false;
 
         } catch (err) {
@@ -215,14 +216,14 @@ export function useSetupAuth(
             setAdminMessageType("error");
             setAdminMessage(t("auth.sessionUpdateFailed"));
           }
-          // Sesión zombi: si la renovación de Firestore falla de forma
-          // continuada, la UI quedaría "logada" pero sin permisos. Se corta.
+          // SesiÃ³n zombi: si la renovaciÃ³n de Firestore falla de forma
+          // continuada, la UI quedarÃ­a "logada" pero sin permisos. Se corta.
           if (renewFailureRef.current) {
             clearSession();
             setIsTokenVerified(false);
             setTokenLoginUsername("");
-            // Marca la expiración para que la redirección a la vista pública
-            // no sea silenciosa (antes solo se avisaba en la restauración).
+            // Marca la expiraciÃ³n para que la redirecciÃ³n a la vista pÃºblica
+            // no sea silenciosa (antes solo se avisaba en la restauraciÃ³n).
             markSessionExpired();
           } else {
             renewFailureRef.current = true;
@@ -231,7 +232,6 @@ export function useSetupAuth(
       };
       doRenew();
       renewRef.current = setInterval(() => doRenew(), 60_000);
-
     } else {
       if (renewRef.current) { ; clearInterval(renewRef.current); }
     }
@@ -239,7 +239,7 @@ export function useSetupAuth(
   }, [isTokenVerified, inviteToken, setAdminMessage, setAdminMessageType, t, markSessionExpired]);
 
   /**
-   * Persiste la sesión en sessionStorage cuando cambia el estado de autenticación.
+   * Persiste la sesiÃ³n en sessionStorage cuando cambia el estado de autenticaciÃ³n.
    */
   useEffect(() => {
 
@@ -250,15 +250,15 @@ export function useSetupAuth(
   }, [isTokenVerified, tokenLoginUsername, inviteToken]);
 
   /**
-   * Recupera el token de setup desde sessionStorage (única fuente fiable).
+   * Recupera el token de setup desde sessionStorage (Ãºnica fuente fiable).
    *
-   * El token NO se lee del documento público de la invitación (seguridad):
-   * se persiste en sessionStorage por invitación y solo puede recuperarse
-   * desde Firestore (colección setupTokens) con sesión activa, por lo que
-   * aquí se devuelve lo que haya en sessionStorage o vacío.
+   * El token NO se lee del documento pÃºblico de la invitaciÃ³n (seguridad):
+   * se persiste en sessionStorage por invitaciÃ³n y solo puede recuperarse
+   * desde Firestore (colecciÃ³n setupTokens) con sesiÃ³n activa, por lo que
+   * aquÃ­ se devuelve lo que haya en sessionStorage o vacÃ­o.
    *
    * @param {string} [_oldToken] - Sin uso funcional (API estable).
-   * @returns {Promise<string>} El token activo o cadena vacía.
+   * @returns {Promise<string>} El token activo o cadena vacÃ­a.
    */
   const refreshSetupToken = useCallback(async (_oldToken?: string) => {
 
@@ -278,10 +278,10 @@ export function useSetupAuth(
   }, [inviteToken]);
 
   /**
-   * Genera un token nuevo y lo registra en la colección setupTokens
-   * (documentId = hash SHA-256), no en el documento público.
+   * Genera un token nuevo y lo registra en la colecciÃ³n setupTokens
+   * (documentId = hash SHA-256), no en el documento pÃºblico.
    *
-   * Si se pasa `oldToken`, elimina su registro (rotación segura).
+   * Si se pasa `oldToken`, elimina su registro (rotaciÃ³n segura).
    *
    * @param {string} [oldToken] - Token anterior a rotar (opcional).
    * @returns {Promise<string>} El token normalizado generado.
@@ -314,19 +314,19 @@ export function useSetupAuth(
   }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
 
   /**
-   * Intenta activar la sesión usando un token de setup.
-   * Verifica el token contra la colección setupTokens (hash) y activa la
-   * sesión. Retorna el username del token (si existe) o lanza error.
+   * Intenta activar la sesiÃ³n usando un token de setup.
+   * Verifica el token contra la colecciÃ³n setupTokens (hash) y activa la
+   * sesiÃ³n. Retorna el username del token (si existe) o lanza error.
    */
   const activateSessionWithToken = useCallback(async (enteredToken: string, _validateToken?: (tokenDoc: DocumentData, tu: string) => void) => {
     const inviteRef = invitationDocRef(inviteToken);
     const normalized = normalizeTokenValue(enteredToken);
     const tokenHash = await hashSetupToken(normalized);
 
-    // Verificación temprana: el token debe tener registro en setupTokens.
+    // VerificaciÃ³n temprana: el token debe tener registro en setupTokens.
     const tokenRecord = await getDoc(setupTokenRef(tokenHash));
     if (!tokenRecord.exists()) {
-      throw new Error("Token no válido");
+      throw new Error("Token no vÃ¡lido");
     }
 
     let userConfirmed = false;
@@ -337,9 +337,9 @@ export function useSetupAuth(
         const outcome = await runTransaction(db, async (transaction) => {
           const inviteSnap = await transaction.get(inviteRef);
           if (!inviteSnap.exists()) {
-            // La invitación se crea en la landing antes del login: si no
-            // existe (borrada o token huérfano) no se recrea con defaultConfig
-            // (firstName vacío) porque las reglas lo rechazarían. Mejor un
+            // La invitaciÃ³n se crea en la landing antes del login: si no
+            // existe (borrada o token huÃ©rfano) no se recrea con defaultConfig
+            // (firstName vacÃ­o) porque las reglas lo rechazarÃ­an. Mejor un
             // error claro que una escritura denegada en bucle.
             throw new Error("inviteNotFound");
           }
@@ -348,7 +348,7 @@ export function useSetupAuth(
           if (data.activeSession && !userConfirmed) {
             throw new Error("sessionExists");
           }
-          if (!tokenRecord.exists()) throw new Error("Token no válido");
+          if (!tokenRecord.exists()) throw new Error("Token no vÃ¡lido");
           if (_validateToken) _validateToken(data, data.adminUsername);
           const sessionUpdate: Record<string, unknown> = {
             activeSession: serverTimestamp(),
@@ -366,8 +366,8 @@ export function useSetupAuth(
           setIsTokenVerifying(true);
           if (!userConfirmed) return null;
         } else if ((err as Error)?.message === "inviteNotFound") {
-          // Token huérfano: la invitación ya no existe (borrada o nunca
-          // guardada). No se puede abrir sesión sobre un doc inexistente.
+          // Token huÃ©rfano: la invitaciÃ³n ya no existe (borrada o nunca
+          // guardada). No se puede abrir sesiÃ³n sobre un doc inexistente.
           setIsTokenVerifying(false);
           throw new Error("inviteNotFound");
         } else {
@@ -378,9 +378,9 @@ export function useSetupAuth(
   }, [inviteToken, t]);
 
   /**
-   * Inicia sesión con token de setup (sin usuario).
-   * Verifica el token en Firestore y activa la sesión.
-   * Si ya hay una sesión activa, pide confirmación para sobrescribir.
+   * Inicia sesiÃ³n con token de setup (sin usuario).
+   * Verifica el token en Firestore y activa la sesiÃ³n.
+   * Si ya hay una sesiÃ³n activa, pide confirmaciÃ³n para sobrescribir.
    */
   const handleTokenLogin = useCallback(async () => {
 
@@ -407,7 +407,7 @@ export function useSetupAuth(
       setSetupTokenInput("");
       setIsTokenVerified(true);
       setHasStoredConfig(true);
-      // Persiste el token en sessionStorage para renovaciones y recuperación.
+      // Persiste el token en sessionStorage para renovaciones y recuperaciÃ³n.
       safeSetItem(STORAGE_KEYS.setupToken(inviteToken), enteredToken, sessionStorage);
       saveSession(sessionTypeRef.current, displayName, { inviteToken });
       setAuthMessageType("success");
@@ -423,8 +423,8 @@ export function useSetupAuth(
   }, [activateSessionWithToken, setupTokenInput, inviteToken, setHasStoredConfig, config, adminLoginUsername, t]);
 
   /**
-   * Inicia sesión como administrador (requiere usuario + token).
-   * Verifica que el usuario coincida con el configurado y que el token sea válido.
+   * Inicia sesiÃ³n como administrador (requiere usuario + token).
+   * Verifica que el usuario coincida con el configurado y que el token sea vÃ¡lido.
    */
   const handleAdminTokenLogin = useCallback(async () => {
 
@@ -461,7 +461,7 @@ export function useSetupAuth(
       setSetupTokenInput("");
       setIsTokenVerified(true);
       setHasStoredConfig(true);
-      // Persiste el token en sessionStorage para renovaciones y recuperación.
+      // Persiste el token en sessionStorage para renovaciones y recuperaciÃ³n.
       safeSetItem(STORAGE_KEYS.setupToken(inviteToken), enteredToken, sessionStorage);
       saveSession("admin", username, { inviteToken });
       setAuthMessageType("success");
@@ -483,12 +483,12 @@ export function useSetupAuth(
 
   /**
    * Genera un nuevo token de acceso vinculado a un usuario administrador.
-   * Requiere escribir "CONFIRMAR" y que el usuario esté registrado.
+   * Requiere escribir "CONFIRMAR" y que el usuario estÃ© registrado.
    */
   /**
-   * Cierra la sesión actual.
-   * Limpia el estado local, la sesión en Firestore y la caché.
-   * Redirige a la página principal.
+   * Cierra la sesiÃ³n actual.
+   * Limpia el estado local, la sesiÃ³n en Firestore y la cachÃ©.
+   * Redirige a la pÃ¡gina principal.
    */
   const handleAdminLogout = useCallback(async () => {
 
@@ -518,7 +518,7 @@ export function useSetupAuth(
   }, [inviteToken, navigate, setAdminMessage, setAdminMessageType, t]);
 
   /**
-   * Regenera el token de setup desde la página de configuración.
+   * Regenera el token de setup desde la pÃ¡gina de configuraciÃ³n.
    * Requiere confirmar el token actual.
    */
   const handleResetSetupToken = useCallback(async () => {
@@ -547,7 +547,7 @@ export function useSetupAuth(
   }, [generateNewToken, setupToken, confirmTokenInput, inviteToken, t]);
 
   /**
-   * Regenera el token desde el panel de administración.
+   * Regenera el token desde el panel de administraciÃ³n.
    * Similar a handleResetSetupToken pero con mensajes dirigidos al admin.
    */
   const handleResetTokenFromAdmin = useCallback(async () => {

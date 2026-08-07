@@ -1,16 +1,12 @@
-import { memo, useEffect, useRef, useState, useCallback } from "react";
+import { memo, useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useFocusTrap } from "../hooks/useFocusTrap";
+import Modal from "./Modal";
 
 import "../styles/modals.css";
 
 const LegalModal = memo(function LegalModal({ section, onClose }: { section: string; onClose: () => void }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(section || "");
-  const [closing, setClosing] = useState(false);
-  const isOpen = Boolean(section || open);
-  const modalRef = useFocusTrap<HTMLDivElement>(isOpen);
-  const closeRef = useRef<((e: KeyboardEvent) => void) | null>(null);
 
   const SECTIONS = [
     { id: "privacy", label: t("legal.sectionPrivacy"), content: t("legal.privacyPolicy") },
@@ -18,31 +14,21 @@ const LegalModal = memo(function LegalModal({ section, onClose }: { section: str
     { id: "legal", label: t("legal.sectionLegal"), content: t("legal.legalText") },
   ];
 
-  const handleClose = useCallback(() => {
-    setClosing(true);
-    setTimeout(() => { setClosing(false); onClose(); }, 200);
-  }, [onClose]);
+  const handleClose = useCallback(() => onClose(), [onClose]);
 
   useEffect(() => {
     if (section) setOpen(section);
   }, [section]);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") handleClose(); };
-    window.addEventListener("keydown", handleKey);
-    closeRef.current = handleKey;
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [isOpen, handleClose]);
-
   const toggle = (id: string) => setOpen((prev: string) => (prev === id ? "" : id));
 
   return (
-    <div className={`modal-overlay ${closing ? "modal-overlay--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true" aria-label={t("legal.modalTitle")}>
-      <div className={`modal-card ${closing ? "modal-card--closing" : ""}`} ref={modalRef} onClick={(e) => e.stopPropagation()}
-        style={{ width: "min(95vw, 960px)", minWidth: "min(95vw, 360px)", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}>
-        <button className="modal-close" onClick={handleClose} aria-label={t("common.close")}>&times;</button>
-        <p className="modal-title">{t("legal.modalTitle")}</p>
+    <Modal
+      title={t("legal.modalTitle")}
+      closeLabel={t("common.close")}
+      onClose={handleClose}
+      style={{ width: "min(95vw, 960px)", minWidth: "min(95vw, 360px)", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}
+    >
         <div style={{ overflowY: "auto", overflowX: "hidden", flex: 1, marginTop: "0.5rem", wordBreak: "break-word" }}>
           {SECTIONS.map((s: { id: string; label: string; content: string }) => (
             <div key={s.id}>
@@ -76,8 +62,7 @@ const LegalModal = memo(function LegalModal({ section, onClose }: { section: str
             </div>
           ))}
         </div>
-      </div>
-    </div>
+    </Modal>
   );
 });
 

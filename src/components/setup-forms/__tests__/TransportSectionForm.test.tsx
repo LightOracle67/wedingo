@@ -13,7 +13,7 @@ const mockFormData = vi.hoisted(() => ({
 }));
 
 vi.mock("../../../contexts", () => ({
-  useApp: () => ({
+  useConfig: () => ({
     formData: mockFormData,
     updateFormField: mockUpdateFormField,
   }),
@@ -32,7 +32,7 @@ function getStored() {
   return call ? JSON.parse(call[1] as string) : [];
 }
 
-// Harness: re-renderiza el form al actualizar formData (como haría el contexto real)
+// Harness: re-renderiza el form al actualizar formData (como harÃ­a el contexto real)
 function Harness() {
   const [, force] = useState(0);
   mockUpdateFormField.mockImplementation((field: string, value: unknown) => {

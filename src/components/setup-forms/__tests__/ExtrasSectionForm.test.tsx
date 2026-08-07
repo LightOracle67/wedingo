@@ -9,7 +9,7 @@ const mockUpdateFormField = vi.fn();
 const mockFormData = vi.hoisted(() => ({}) as Record<string, string | undefined>);
 
 vi.mock("../../../contexts", () => ({
-  useApp: () => ({
+  useConfig: () => ({
     config: {},
     formData: mockFormData,
     updateFormField: mockUpdateFormField,
@@ -64,7 +64,7 @@ describe("ExtrasSectionForm", () => {
     mockFormData.triviaEnabled = "true";
     mockFormData.trivia = "[]";
     render(<ExtrasSectionForm />);
-    fireEvent.change(screen.getAllByRole("textbox").find((el) => el.tagName === "TEXTAREA")!, { target: { value: "¿Dónde? | En el parque" } });
+    fireEvent.change(screen.getAllByRole("textbox").find((el) => el.tagName === "TEXTAREA")!, { target: { value: "Â¿DÃ³nde? | En el parque" } });
     expect(mockUpdateFormField).toHaveBeenCalledWith("trivia", expect.stringContaining("En el parque"));
   });
 

@@ -10,6 +10,13 @@ interface GiftReservation { reservedBy: string; }
 /**
  * GiftListSection — Lista de regalos con reserva: cada invitado marca el
  * regalo que aporta (la reserva se guarda en Firestore y la ve el admin).
+ *
+ * DECISIÓN DE SEGURIDAD: no hay cancelación pública de reservas. Un delete
+ * de Firestore solo puede validarse contra el documento existente (no hay
+ * identidad verificada en la regla), por lo que permitir el borrado público
+ * dejaría que cualquiera cancelara la reserva de otro. La cancelación la
+ * gestiona el admin (reglas: delete solo admin/superadmin); si un invitado
+ * necesita cambiar su aportación, contacta con los novios.
  */
 export default function GiftListSection({ inviteToken, gifts }: { inviteToken?: string; gifts?: string }) {
   const { t } = useTranslation();

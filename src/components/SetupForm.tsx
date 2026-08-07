@@ -14,7 +14,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation, Trans } from "react-i18next";
-import { useApp } from "../contexts";
+import { useConfig, useAuth, useAppUI } from "../contexts";
 import { useToast } from "../hooks/useToast";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
@@ -57,12 +57,13 @@ export default function SetupForm({ prefix = "" }) {
       window.removeEventListener("keydown", handler);
     };
   }, []);
-  // ─── Extrae estado y handlers del contexto global ───────
+  // ─── Extrae estado y handlers del contexto global (hooks granulares) ──
   const {
     formData, updateFormField, handleSaveSetup,
-    saveMessage, saveError, isTokenVerified, isRestoringSession, hasStoredConfig, setLegalModal,
-    isSaving,
-  } = useApp();
+    hasStoredConfig, isSaving,
+  } = useConfig();
+  const { isTokenVerified, isRestoringSession } = useAuth();
+  const { saveMessage, saveError, setLegalModal } = useAppUI();
   const { addToast } = useToast();
 
   /** Confirmación de haber guardado el token de acceso (solo primer guardado). */

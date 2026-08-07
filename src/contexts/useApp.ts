@@ -1,5 +1,4 @@
-import { createContext, useContext } from "react";
-import type { FormEvent } from "react";
+import { createContext, useContext, type FormEvent } from "react";
 import type { ConfigContextValue } from "./useConfig";
 import type { AuthValue } from "./useAuth";
 import type { RsvpValue } from "./useRsvpContext";

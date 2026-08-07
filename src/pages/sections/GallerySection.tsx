@@ -6,8 +6,7 @@ import "../../styles/gallery.css";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import CornerDecorations from "../../components/CornerDecorations";
 import type { GalleryImage } from "../../types";
-import type { GalleryMeta } from "../../lib/image-store";
-import { getGalleryImageUrl } from "../../lib/image-store";
+import { getGalleryImageUrl, type GalleryMeta } from "../../lib/image-store";
 
 interface GallerySectionProps {
   style?: React.CSSProperties;

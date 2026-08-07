@@ -1,9 +1,9 @@
 import { getDocs, collection, writeBatch, doc, query, orderBy } from "firebase/firestore";
 import { db } from "./firebase";
 import { encrypt, decrypt } from "./crypto-utils";
+import { AUDIO_CHUNK_SIZE_BYTES } from "./constants";
 
-const CHUNK_SIZE = 200 * 1024;
-
+const CHUNK_SIZE = AUDIO_CHUNK_SIZE_BYTES;
 function audioCol(token: string) {
   return collection(db, "invitations", token, "audio");
 }

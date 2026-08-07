@@ -7,8 +7,10 @@ import { withWriteRetry } from "../../lib/async-utils";
 interface Ride { id: string; guestName: string; origin: string; seats: number; }
 
 /**
- * RideShareSection — Compartir coche: los invitados publican su origen y las
- * plazas que ofrecen, para que otros se apunten.
+ * RideShareSection — Tablón de compartir coche: los invitados publican su
+ * origen y las plazas que ofrecen. No hay botón de "unirse" en la página
+ * pública (los interesados se coordinan por su cuenta); el panel de admin
+ * ve todas las ofertas para ponerse en contacto.
  */
 export default function RideShareSection({ inviteToken }: { inviteToken?: string }) {
   const { t } = useTranslation();

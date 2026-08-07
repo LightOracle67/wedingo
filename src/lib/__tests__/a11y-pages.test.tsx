@@ -110,6 +110,59 @@ vi.mock("../../contexts", () => ({
     attendanceFilter: "all",
     filteredEntries: [],
   }),
+  useConfig: () => ({
+    config: { firstName: "John", secondName: "Jane", theme: "golden" },
+    formData: {},
+    isConfigLoading: false,
+    configLoadError: "",
+    hasStoredConfig: true,
+    inviteToken: "test-token",
+    maxAllowedYear: 2099,
+    previewBackgrounds: [],
+    isPreviewLoading: false,
+    formattedDate: "June 15, 2026",
+    formattedTime: "5:00 PM",
+    calendarLink: null,
+    updateFormField: vi.fn(),
+    handleSaveSetup: vi.fn(),
+    handleDeleteInvitation: vi.fn(),
+    setHasStoredConfig: vi.fn(),
+    registerOnFirstSave: vi.fn(),
+    reloadConfig: vi.fn(),
+    visitCount: 0,
+  }),
+  useAuth: () => ({
+    isAdminTokenLoggedIn: false,
+    isTokenVerified: true,
+    setupToken: "",
+    tokenLoginUsername: "",
+    handleAdminLogout: vi.fn(),
+    handleResetTokenFromAdmin: vi.fn(),
+    setIsTokenVerified: vi.fn(),
+    setTokenLoginUsername: vi.fn(),
+  }),
+  useRsvpContext: () => ({
+    rsvpForm: { attendees: [], guestName: "", attendance: "yes", birthDate: "", privacyConsent: false, healthConsent: false, parentalConsent: false },
+    rsvpEntries: [],
+    rsvpMessage: "",
+    isRsvpSubmitting: false,
+    hasSubmitted: false,
+    alreadySubmittedEntry: null,
+    updateRsvpField: vi.fn(),
+    handleRsvpSubmit: vi.fn(),
+    handleDeleteRsvp: vi.fn(),
+    DIETARY_OPTIONS: [],
+    computeAge: vi.fn(),
+  }),
+  useAppUI: () => ({
+    setLegalModal: vi.fn(),
+    saveMessage: "",
+    saveError: "",
+    adminMessage: "",
+    adminMessageType: "success",
+    setAdminMessage: vi.fn(),
+    setAdminMessageType: vi.fn(),
+  }),
 }));
 
 const BASE_MOCK_CTX = {
@@ -129,6 +182,7 @@ const BASE_MOCK_CTX = {
     MAX_SCHEDULE_EVENTS: 10,
     MAX_SCHEDULE_EVENT_TEXT: 60,
     PRIVACY_POLICY_VERSION: 1,
+    SESSION_DURATION_MS: 3600000,
     MONTH_VALUE_TO_NUMBER: {
       enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6,
       julio: 7, agosto: 8, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12,
@@ -265,6 +319,74 @@ describe("a11y-page-audit", () => {
   it("PublicInvitation has no serious violations", async () => {
     const PublicInvitation = (await import("../../pages/PublicInvitation")).default;
     const { container } = render(<PublicInvitation />);
+    const results = await runAxe(container);
+    const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
+    expect(violations).toHaveLength(0);
+  });
+
+  // ── Secciones REALES (no mockeadas) ─────────────────────────────────
+  // El audit detectó que PublicInvitation mockeaba las secciones con
+  // mockSection(): las secciones presentacionales nunca pasaban por axe.
+  // Estas pruebas renderizan las secciones reales con props mínimas.
+
+  it("HeroSection (real) has no serious violations", async () => {
+    const HeroSection = (await import("../../pages/sections/HeroSection")).default;
+    const { container } = render(
+      <HeroSection
+        style={{}}
+        className="test"
+        firstName="John"
+        secondName="Jane"
+        inviteMessage="¡Nos casamos!"
+        countdown={{ years: 0, months: 1, days: 2, hours: 3, minutes: 4, seconds: 5, expired: false }}
+      />,
+    );
+    const results = await runAxe(container);
+    const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
+    expect(violations).toHaveLength(0);
+  });
+
+  it("StorySection (real) has no serious violations", async () => {
+    const StorySection = (await import("../../pages/sections/StorySection")).default;
+    const { container } = render(
+      <StorySection style={{}} className="test" storyText="Nos conocimos en el parque." />,
+    );
+    const results = await runAxe(container);
+    const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
+    expect(violations).toHaveLength(0);
+  });
+
+  it("GiftsSection (real) has no serious violations", async () => {
+    const GiftsSection = (await import("../../pages/sections/GiftsSection")).default;
+    const { container } = render(
+      <GiftsSection style={{}} className="test" giftsInfo="Tu presencia es el mejor regalo" bankInfo="ES91 2100 0418 4502 0005 1332" />,
+    );
+    const results = await runAxe(container);
+    const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
+    expect(violations).toHaveLength(0);
+  });
+
+  it("InfoSection (real) with schedule, dress code and kids policy has no serious violations", async () => {
+    const InfoSection = (await import("../../pages/sections/InfoSection")).default;
+    const { container } = render(
+      <InfoSection
+        style={{}}
+        className="test"
+        weddingScheduleEvents={JSON.stringify([{ time: "18:00", text: "Ceremonia", emoji: "💍" }, { time: "20:00", text: "Banquete" }])}
+        weddingDressCode="Vestimenta formal"
+        kidsPolicy="adultOnly"
+      />,
+    );
+    const results = await runAxe(container);
+    const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
+    expect(violations).toHaveLength(0);
+  });
+
+  it("TriviaSection (real) has no serious violations", async () => {
+    const TriviaSection = (await import("../../pages/sections/TriviaSection")).default;
+    const { container } = render(
+      <TriviaSection trivia={JSON.stringify([{ q: "¿Dónde nos conocimos?", a: "París" }, { q: "¿Primera cita?", a: "Madrid" }])} />,
+    );
     const results = await runAxe(container);
     const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
     expect(violations).toHaveLength(0);

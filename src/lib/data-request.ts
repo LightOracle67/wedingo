@@ -61,10 +61,22 @@ export function eraseGuestLocalData(inviteToken?: string): DataRequestResult {
 
   // El IndexedDB de Firestore (persistentLocalCache, offline) también guarda
   // datos de la invitación: se borra al eliminar los datos personales.
+  // SOLO se borran las bases del proyecto actual de Wedingo: el formato de
+  // nombre de la base de Firestore incluye el projectId
+  // (`firestore/{projectId}/...`). Filtrar por él evita arrastrar datos de
+  // OTRAS apps de Firebase que compartan el mismo origin (antes se borraban
+  // todas las bases `firestore*`, un efecto colateral agresivo).
   if (typeof indexedDB !== "undefined") {
     try {
+      const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID || "";
       void indexedDB.databases().then((dbs) => {
-        const firestoreDbs = dbs.filter((d) => (d.name || "").startsWith("firestore"));
+        const firestoreDbs = dbs.filter((d) => {
+          const name = d.name || "";
+          if (!name.startsWith("firestore")) return false;
+          // Si no hay projectId configurado, se conserva el comportamiento
+          // anterior (borrar todas) para no dejar datos huérfanos.
+          return !projectId || name.includes(projectId);
+        });
         for (const d of firestoreDbs) {
           try { indexedDB.deleteDatabase(d.name!); } catch { }
         }

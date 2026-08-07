@@ -8,6 +8,8 @@ vi.mock("react-i18next", () => ({
 
 vi.mock("../../../contexts", () => ({
   useApp: () => ({ setLegalModal: vi.fn() }),
+  useAppUI: () => ({ setLegalModal: vi.fn() }),
+  useConfig: () => ({ config: {} }),
 }));
 
 import RsvpSection from "../RsvpSection";

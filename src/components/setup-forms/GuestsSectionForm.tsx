@@ -1,13 +1,13 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useApp } from "../../contexts";
-import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
+import { useConfig } from "../../contexts";
 import { MAX_DRESS_CODE_CUSTOM_LENGTH } from "../../lib/constants";
 import MenuDishEditor from "../MenuDishEditor";
+import MapUrlField from "../MapUrlField";
 import SetupToggleField from "../SetupToggleField";
 
 export default function GuestsSectionForm({ prefix = "" }) {
-  const { formData, updateFormField } = useApp();
+  const { formData, updateFormField } = useConfig();
   const id = (name: string) => `${prefix}${name}`;
   const { t } = useTranslation();
 
@@ -20,9 +20,9 @@ export default function GuestsSectionForm({ prefix = "" }) {
   }, [updateFormField]);
 
   /**
-   * Cambia el código de vestimenta. La opción "Otro" abre un input de texto
-   * personalizado; el texto se conserva al cambiar de opción (se ignora si
-   * no es "Otro") para no destruir la edición con un clic accidental.
+   * Cambia el cÃ³digo de vestimenta. La opciÃ³n "Otro" abre un input de texto
+   * personalizado; el texto se conserva al cambiar de opciÃ³n (se ignora si
+   * no es "Otro") para no destruir la ediciÃ³n con un clic accidental.
    */
   const handleDressCodeChange = useCallback((value: string) => {
     const next = formData.weddingDressCode === value ? "" : value;
@@ -53,8 +53,8 @@ export default function GuestsSectionForm({ prefix = "" }) {
             { value: "Traje de gala", key: "setup.dressCodeGala" },
             { value: "Etiqueta informal", key: "setup.dressCodeCasual" },
             { value: "Vestimenta formal", key: "setup.dressCodeFormal" },
-            { value: "Cóctel elegante", key: "setup.dressCodeCocktail" },
-            { value: "Ropa cómoda", key: "setup.dressCodeComfortable" },
+            { value: "CÃ³ctel elegante", key: "setup.dressCodeCocktail" },
+            { value: "Ropa cÃ³moda", key: "setup.dressCodeComfortable" },
             { value: "Otro", key: "setup.dressCodeOther" },
           ].map(({ value, key }) => (
             <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
@@ -113,28 +113,14 @@ export default function GuestsSectionForm({ prefix = "" }) {
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
       <SetupToggleField enabledField="accommodationURLEnabled" label={t("setup.accommodationLabel")} hint={t("setup.accommodationUrlHint")} id={id}>
-        <input
+        <MapUrlField
           id={id("accommodationURL")}
-          className={formData.accommodationURL && !isValidGoogleMapsUrl(formData.accommodationURL) ? "setup-input setup-input--error" : "setup-input"}
           value={formData.accommodationURL || ""}
-          onChange={(e) => updateFormField("accommodationURL", e.target.value)}
+          onChange={(url) => updateFormField("accommodationURL", url)}
           placeholder={t("setup.accommodationUrlPlaceholder")}
-          autoComplete="off"
-          aria-describedby={id("accommodationUrlHelp")}
+          placeHintId={id("accommodationPlace")}
+          placeLabel={t("setup.siteNameLabel")}
         />
-        {formData.accommodationURL ? (
-          <p className="setup-help" id={id("accommodationUrlHelp")} style={!isValidGoogleMapsUrl(formData.accommodationURL) ? { color: "#ef4444" } : { color: "#22c55e" }}>
-            {isValidGoogleMapsUrl(formData.accommodationURL) ? `✓ ${t("setup.mapUrlOk")}` : `✗ ${t("setup.mapUrlInvalid")}`}
-          </p>
-        ) : null}
-        {formData.accommodationURL && isValidGoogleMapsUrl(formData.accommodationURL) ? (() => {
-          const placeName = extractPlaceNameFromUrl(formData.accommodationURL);
-          return placeName ? (
-            <p className="setup-help" id={id("accommodationPlace")} style={{ marginTop: "0.15rem", color: "var(--setup-accent)", fontWeight: 600 }}>
-              {t("setup.siteNameLabel")}: {placeName}
-            </p>
-          ) : null;
-        })() : null}
         <label className="setup-label" htmlFor={id("accommodationMapMode")} style={{ marginTop: "0.6rem" }}>{t("setup.mapModeLabel")}</label>
         <select
           id={id("accommodationMapMode")}

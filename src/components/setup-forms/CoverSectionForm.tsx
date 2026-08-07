@@ -1,7 +1,7 @@
 import { useCallback, useRef } from "react";
 import CharacterCounter from "../../components/CharacterCounter";
 import { useTranslation } from "react-i18next";
-import { useApp } from "../../contexts";
+import { useConfig } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../../lib/constants";
 import { compressImageTransparent, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES } from "../../lib/image-utils";
@@ -15,7 +15,7 @@ export default function CoverSectionForm({ prefix = "" }) {
   const {
     formData, updateFormField,
     inviteToken,
-  } = useApp();
+  } = useConfig();
   const { t } = useTranslation();
   const { addToast, startUploadToast } = useToast();
 
@@ -26,8 +26,8 @@ export default function CoverSectionForm({ prefix = "" }) {
 
   const photoRef = useRef<HTMLInputElement>(null);
   const id = (name: string) => `${prefix}${name}`;
-  /** src seguro para las imágenes de config: si la URL resuelta no está
-   *  disponible y el valor crudo es una referencia __cfgimg: (aún sin
+  /** src seguro para las imÃ¡genes de config: si la URL resuelta no estÃ¡
+   *  disponible y el valor crudo es una referencia __cfgimg: (aÃºn sin
    *  descifrar), no se usa como src (antes mostraba un icono roto). */
   const safeSrc = (url: string | undefined, raw: string | undefined) =>
     (url || (raw && !raw.startsWith("__cfgimg:") ? raw : undefined)) || "";
@@ -39,6 +39,47 @@ export default function CoverSectionForm({ prefix = "" }) {
     const { dataUrl } = await uploadImage(inviteToken, file, onProgress, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES);
     return await saveConfigImage(inviteToken, imageId, dataUrl);
   }, [inviteToken]);
+
+  /**
+   * Sube una imagen de configuración con validación UNIFICADA:
+   * archivo vacío, tipo (opcional) y tamaño (máx. personalizable).
+   * Comprime con compressImageTransparent (transparencia) y guarda la
+   * referencia __cfgimg: en el campo. Antes cada campo (couplePhoto,
+   * customSeal, backgroundImage, cornerDecoration) duplicaba este flujo
+   * con validaciones inconsistentes (unos chequeaban tipo, otros no).
+   *
+   * @returns la referencia __cfgimg: guardada, o null si se abortó/falló.
+   */
+  const handleConfigImageUpload = useCallback(async (
+    imageId: string,
+    file: File | undefined,
+    options: { maxBytes?: number; validateType?: boolean; onProgress?: (p: number) => void } = {},
+  ): Promise<string | null> => {
+    if (!file) return null;
+    if (file.size === 0) { addToast("error", t("setup.errorEmptyFile")); return null; }
+    const validateType = options.validateType ?? true;
+    if (validateType && !ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); return null; }
+    const maxBytes = options.maxBytes ?? MAX_UPLOAD_SIZE_BYTES;
+    if (file.size > maxBytes) { addToast("error", t("setup.errorFileSize")); return null; }
+    try {
+      const { saveConfigImage } = await import("../../lib/image-store");
+      const dataUrl = await compressImageTransparent(file);
+      const ref = await saveConfigImage(inviteToken, imageId, dataUrl);
+      updateFormField(imageId, ref);
+      return ref;
+    } catch (err) {
+      console.error("[app]", "[CoverSectionForm]", `${imageId} upload error:`, err);
+      addToast("error", t("setup.photoUploadFailed"));
+      return null;
+    }
+  }, [inviteToken, updateFormField, addToast, t]);
+
+  /** Elimina una imagen de configuración (subcolección) y limpia el campo. */
+  const removeConfigImage = useCallback(async (imageId: string) => {
+    const { deleteConfigImage } = await import("../../lib/image-store");
+    deleteConfigImage(inviteToken, imageId).catch(() => {});
+    updateFormField(imageId, "");
+  }, [inviteToken, updateFormField]);
 
   const handleCouplePhotoUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -64,10 +105,8 @@ export default function CoverSectionForm({ prefix = "" }) {
   }, [updateFormField, startUploadToast, addToast, t, uploadConfigImage]);
 
   const handleRemovePhoto = useCallback(async () => {
-    const { deleteConfigImage } = await import("../../lib/image-store");
-    deleteConfigImage(inviteToken, "couplePhoto").catch(() => {});
-    updateFormField("couplePhoto", "");
-  }, [inviteToken, updateFormField]);
+    await removeConfigImage("couplePhoto");
+  }, [removeConfigImage]);
 
   /** Memoizado: onChange inestable relanzaba el useEffect de MusicArrayEditor
    *  y re-descargaba el audio en cada render. */
@@ -183,7 +222,7 @@ export default function CoverSectionForm({ prefix = "" }) {
       </SetupToggleField>
 
       <p className="setup-label">{t("setup.themeLabel")}</p>
-      <ThemePicker value={formData.theme} onChange={handleThemeChange} t={t as (key: string, options?: Record<string, unknown>) => string} />
+      <ThemePicker value={formData.theme} onChange={handleThemeChange} />
       <p className="setup-help" id={id("themeHint")}>{t("setup.themeHint")}</p>
 
       <SetupToggleField enabledField="couplePhotoEnabled" label={t("setup.couplePhotoLabel")} hint={t("setup.couplePhotoHint")} id={id}>
@@ -204,7 +243,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           )}
           <input ref={photoRef} id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
           {formData.couplePhoto ? (
-            /* El label "Reemplazar" apunta al input único (htmlFor); no se
+            /* El label "Reemplazar" apunta al input Ãºnico (htmlFor); no se
                anida un segundo input para no duplicar el id. */
             <label className="setup-upload" htmlFor={id("couplePhoto")}>
               {t("setup.replaceImage")}
@@ -222,7 +261,7 @@ export default function CoverSectionForm({ prefix = "" }) {
               <img src={safeSrc(customSealUrl, formData.customSeal)} alt="" className="setup-selected-background__image" style={{ width: "3rem", height: "3rem", objectFit: "contain" }} />
               <div>
                 <p className="setup-selected-background__title">{t("setup.currentSeal")}</p>
-                <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "customSeal").catch(() => {}); updateFormField("customSeal", ""); }}>{t("setup.remove")}</button>
+                <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => { void removeConfigImage("customSeal"); }}>{t("setup.remove")}</button>
               </div>
             </div>
           ) : (
@@ -232,15 +271,7 @@ export default function CoverSectionForm({ prefix = "" }) {
             </label>
           )}
           <input className="setup-upload__input" id={id("customSeal")} type="file" accept="image/jpeg,image/png,image/svg+xml" onChange={async (e) => {
-            const file = e.target.files?.[0]; if (!file) return;
-
-            if (file.size > 1024 * 1024) { ; addToast("error", t("setup.errorFileSize")); return; }
-            try {
-              const dataUrl = await compressImageTransparent(file);
-              const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "customSeal", dataUrl);
-              updateFormField("customSeal", ref);
-
-            } catch (err) { console.error("[app]", "[CoverSectionForm]", "customSeal error:", err); addToast("error", t("setup.photoUploadFailed")); }
+            await handleConfigImageUpload("customSeal", e.target.files?.[0], { maxBytes: 1024 * 1024, validateType: false });
             e.target.value = "";
           }} />
         </div>
@@ -253,7 +284,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           {formData.backgroundImage ? (
             <div className="setup-selected-background">
               <img src={safeSrc(backgroundImageUrl, formData.backgroundImage)} alt="" className="setup-selected-background__image" style={{ width: "100%", maxHeight: "100px", objectFit: "cover", borderRadius: "0.35rem" }} />
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "backgroundImage").catch(() => {}); updateFormField("backgroundImage", ""); }}>{t("setup.remove")}</button>
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => { void removeConfigImage("backgroundImage"); }}>{t("setup.remove")}</button>
             </div>
           ) : (
             <label className="setup-upload" htmlFor={id("backgroundImage")}>
@@ -262,17 +293,7 @@ export default function CoverSectionForm({ prefix = "" }) {
             </label>
           )}
           <input className="setup-upload__input" id={id("backgroundImage")} type="file" accept="image/jpeg,image/png,image/webp" onChange={async (e) => {
-            const file = e.target.files?.[0];
-            if (!file) return;
-
-            if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); e.target.value = ""; return; }
-            if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); e.target.value = ""; return; }
-            try {
-              const dataUrl = await compressImageTransparent(file, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES);
-              const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "backgroundImage", dataUrl);
-              updateFormField("backgroundImage", ref);
-
-            } catch (err) { console.error("[app]", "[CoverSectionForm]", "backgroundImage error:", err); addToast("error", t("setup.photoUploadFailed")); }
+            await handleConfigImageUpload("backgroundImage", e.target.files?.[0]);
             e.target.value = "";
           }} />
         </div>
@@ -283,7 +304,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           <div className="setup-background-panel__header">
             <span className="setup-label setup-label--tight" style={{ fontSize: "0.8rem" }}>{t("setup.cornerDecorationLabel")}</span>
             {(formData as Record<string, unknown>).cornerDecoration ? (
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "cornerDecoration").catch(() => {}); updateFormField("cornerDecoration", ""); }} style={{ fontSize: "0.7rem" }}>{t("setup.remove")}</button>
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => { void removeConfigImage("cornerDecoration"); }} style={{ fontSize: "0.7rem" }}>{t("setup.remove")}</button>
             ) : null}
           </div>
           {(formData as Record<string, unknown>).cornerDecoration ? (
@@ -297,23 +318,14 @@ export default function CoverSectionForm({ prefix = "" }) {
             </label>
           )}
           <input className="setup-upload__input" id={id("cornerDecoration")} type="file" accept="image/png,image/svg+xml" onChange={async (e) => {
-            const file = e.target.files?.[0];
-            if (!file) return;
-
-            if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); e.target.value = ""; return; }
-            try {
-              const dataUrl = await compressImageTransparent(file);
-              const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "cornerDecoration", dataUrl);
-              updateFormField("cornerDecoration", ref);
-
-            } catch (err) { console.error("[app]", "[CoverSectionForm]", "cornerDecoration error:", err); addToast("error", t("setup.photoUploadFailed")); }
+            await handleConfigImageUpload("cornerDecoration", e.target.files?.[0], { maxBytes: 1024 * 1024, validateType: false });
             e.target.value = "";
           }} />
         </div>
       </SetupToggleField>
 
       <SetupToggleField enabledField="musicFileEnabled" label={t("setup.musicLabel")} id={id}>
-        <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile} onChange={handleMusicChange} t={t} />
+        <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile} onChange={handleMusicChange} />
       </SetupToggleField>
     </>
   );

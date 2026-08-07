@@ -3,6 +3,35 @@ import { useTranslation } from "react-i18next";
 
 interface TriviaItem { q: string; a: string; }
 
+/** Normaliza un texto para comparar respuestas: minúsculas y sin acentos. */
+function normalizeTriviaText(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+}
+
+/**
+ * Comprueba si el intento del invitado acierta la respuesta de la pareja.
+ * Comparación INDULGENTE pero por PALABRAS COMPLETAS: se divide tanto la
+ * respuesta como el intento en tokens de palabras y se exige que cada
+ * palabra del intento aparezca como palabra entera en la respuesta.
+ *
+ * Evita el falso positivo del substring ("boda" acertaba "bodega") sin
+ * exigir exactitud total ("París 2024" acerta "París").
+ */
+function isTriviaMatch(guess: string, answer: string): boolean {
+  const g = normalizeTriviaText(guess);
+  const a = normalizeTriviaText(answer);
+  if (!g) return false;
+  if (g === a) return true;
+  const tokens = a.split(/[^a-z0-9]+/).filter(Boolean);
+  const guessTokens = g.split(/[^a-z0-9]+/).filter(Boolean);
+  if (guessTokens.length === 0) return false;
+  return guessTokens.every((word) => tokens.includes(word));
+}
+
 /**
  * TriviaSection — Mini-quiz de la pareja: cada pregunta se revela y el
  * invitado puede comprobar su respuesta contra la de los novios.
@@ -23,9 +52,9 @@ export default function TriviaSection({ trivia }: { trivia?: string }) {
   return (
     <div className="trivia-quiz">
       {items.map((item, i) => {
-        const guess = (answers[i] || "").trim().toLowerCase();
+        const guess = (answers[i] || "").trim();
         const revealed = guess.length > 0;
-        const correct = revealed && (guess === item.a.toLowerCase() || item.a.toLowerCase().includes(guess));
+        const correct = revealed && isTriviaMatch(guess, item.a);
         return (
           <div className="trivia-q" key={i}>
             <p className="trivia-q__text">{i + 1}. {item.q}</p>

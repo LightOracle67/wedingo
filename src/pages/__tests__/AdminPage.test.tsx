@@ -16,8 +16,10 @@ vi.mock("react-router", () => ({
 
 const mockUseApp = vi.fn();
 vi.mock("../../contexts", () => ({
-  useApp: (...args: unknown[]) => mockUseApp(...args),
-  useAppUI: () => ({ setAdminMessage: mockSetAdminMessage, setAdminMessageType: mockSetAdminMessageType }),
+  useConfig: (...args: unknown[]) => mockUseApp(...args),
+  useAuth: (...args: unknown[]) => mockUseApp(...args),
+  useRsvpContext: (...args: unknown[]) => mockUseApp(...args),
+  useAppUI: () => ({ ...mockUseApp(), setAdminMessage: mockSetAdminMessage, setAdminMessageType: mockSetAdminMessageType }),
 }));
 
 const mockSetAdminMessage = vi.fn();

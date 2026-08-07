@@ -1,7 +1,8 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useApp } from "../../contexts";
-import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
+import { useConfig } from "../../contexts";
+import { useJsonArrayField } from "../../hooks/useJsonArrayField";
+import MapUrlField from "../MapUrlField";
 
 interface Departure {
   type: "bus" | "taxi";
@@ -12,25 +13,30 @@ interface Departure {
 const MAX_DEPARTURES = 4;
 
 export default function TransportSectionForm({ prefix = "" }) {
-  const { formData, updateFormField } = useApp();
+  const { formData, updateFormField } = useConfig();
   const { t } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
-  const departures: Departure[] = (() => {
-    try {
-      const parsed = JSON.parse(formData.transportDepartures || "");
-      if (!Array.isArray(parsed)) return [];
-      return parsed
-        .slice(0, MAX_DEPARTURES)
-        .map((d: Record<string, unknown>) => ({
-          type: d.type === "taxi" ? "taxi" as const : "bus" as const,
-          time: typeof d.time === "string" ? d.time : "",
-          url: typeof d.url === "string" ? d.url : "",
-        }));
-    } catch {
-      return [];
-    }
-  })();
+  const normalizeDeparture = useCallback((d: unknown): Departure | null => {
+    if (!d || typeof d !== "object") return null;
+    const rec = d as Record<string, unknown>;
+    return {
+      type: rec.type === "taxi" ? "taxi" as const : "bus" as const,
+      time: typeof rec.time === "string" ? rec.time : "",
+      url: typeof rec.url === "string" ? rec.url : "",
+    };
+  }, []);
+
+  const {
+    items: departures,
+    addItem: addDeparture,
+    removeItem: removeDeparture,
+    updateItem: updateDeparture,
+  } = useJsonArrayField<Departure>(
+    formData.transportDepartures || "",
+    normalizeDeparture,
+    MAX_DEPARTURES,
+  );
 
   const setDepartures = useCallback((next: Departure[]) => {
     updateFormField("transportDepartures", JSON.stringify(next.slice(0, MAX_DEPARTURES)));
@@ -48,20 +54,16 @@ export default function TransportSectionForm({ prefix = "" }) {
 
   const handleDepartureField = useCallback((index: number, field: "type" | "time" | "url") =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-      const next = [...departures];
-      next[index] = { ...(next[index] ?? { type: "bus", time: "", url: "" }), [field]: e.target.value };
-      setDepartures(next);
-    }, [departures, setDepartures]);
+      updateDeparture(index, { ...(departures[index] ?? { type: "bus", time: "", url: "" }), [field]: e.target.value }, (json) => updateFormField("transportDepartures", json));
+    }, [departures, updateDeparture, updateFormField]);
 
-  const addDeparture = useCallback(() => {
-    if (departures.length >= MAX_DEPARTURES) return;
-    setDepartures([...departures, { type: enabled === "taxi" ? "taxi" : "bus", time: "", url: "" }]);
-  }, [departures, enabled, setDepartures]);
+  const handleAddDeparture = useCallback(() => {
+    addDeparture({ type: enabled === "taxi" ? "taxi" : "bus", time: "", url: "" }, (json) => updateFormField("transportDepartures", json));
+  }, [addDeparture, enabled, updateFormField]);
 
-  const removeDeparture = useCallback((index: number) => {
-    const next = departures.filter((_, i) => i !== index);
-    setDepartures(next);
-  }, [departures, setDepartures]);
+  const handleRemoveDeparture = useCallback((index: number) => {
+    removeDeparture(index, (json) => updateFormField("transportDepartures", json));
+  }, [removeDeparture, updateFormField]);
 
   return (
     <>
@@ -131,36 +133,24 @@ export default function TransportSectionForm({ prefix = "" }) {
               <div className="transport-departure-url">
                 <label className="setup-label" htmlFor={id(`departureUrl${i}`)} style={{ fontSize: "0.75rem" }}>
                   {t("setup.transportUrlLabel")}
-                  {dep.url && !isValidGoogleMapsUrl(dep.url) ? (
-                    <span style={{ color: "#ef4444", marginLeft: "0.4rem" }}>{t("setup.mapUrlInvalid")}</span>
-                  ) : null}
                 </label>
-                <input
+                <MapUrlField
                   id={id(`departureUrl${i}`)}
-                  className={dep.url && !isValidGoogleMapsUrl(dep.url) ? "setup-input setup-input--error" : "setup-input"}
                   value={dep.url}
-                  onChange={handleDepartureField(i, "url")}
+                  onChange={(url) => updateDeparture(i, { ...dep, url }, (json) => updateFormField("transportDepartures", json))}
                   placeholder="https://www.google.com/maps/place/..."
-                  autoComplete="off"
-                  aria-describedby={dep.url && isValidGoogleMapsUrl(dep.url) ? id(`departurePlace${i}`) : undefined}
+                  placeHintId={id(`departurePlace${i}`)}
+                  placeLabel={t("setup.siteNameLabel")}
                 />
-                {dep.url && isValidGoogleMapsUrl(dep.url) ? (() => {
-                  const placeName = extractPlaceNameFromUrl(dep.url);
-                  return placeName ? (
-                    <p className="setup-help" id={id(`departurePlace${i}`)} style={{ marginTop: "0.15rem", fontSize: "0.75rem", color: "var(--setup-accent)" }}>
-                      {t("setup.siteNameLabel")}: {placeName}
-                    </p>
-                  ) : null;
-                })() : null}
               </div>
               <button
                 type="button"
                 className="setup-button setup-button--ghost setup-button--compact"
-                onClick={() => removeDeparture(i)}
+                onClick={() => handleRemoveDeparture(i)}
                 style={{ marginTop: "1.4rem", flexShrink: 0 }}
                 aria-label={t("setup.transportRemoveDeparture")}
               >
-                ✕
+                âœ•
               </button>
             </div>
           ))}
@@ -169,7 +159,7 @@ export default function TransportSectionForm({ prefix = "" }) {
             <button
               type="button"
               className="setup-button setup-button--ghost setup-button--compact"
-              onClick={addDeparture}
+              onClick={handleAddDeparture}
               style={{ marginTop: "0.6rem" }}
             >
               + {t("setup.transportAddDeparture")}

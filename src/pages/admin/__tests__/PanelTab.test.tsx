@@ -36,9 +36,7 @@ vi.mock("../../../lib/admin-utils", () => ({
   getDietarySummary: (...args: Parameters<typeof mocks.getDietarySummary>) => mocks.getDietarySummary(...args),
 }));
 
-import PanelTab from "../PanelTab";
-
-import type { PanelTabConfig } from "../PanelTab";
+import PanelTab, { type PanelTabConfig } from "../PanelTab";
 
 const baseConfig: PanelTabConfig = {
   inviteToken: "test-token",
@@ -54,7 +52,7 @@ const baseConfig: PanelTabConfig = {
 
 beforeEach(() => {
   vi.clearAllMocks();
-  // El restore pide confirmación (v2.81): se acepta en los tests.
+  // El restore pide confirmaciÃ³n (v2.81): se acepta en los tests.
   window.confirm = vi.fn(() => true);
   mocks.calcRSVPSummary.mockImplementation(() => ({ confirmed: 5, declined: 2, pending: 3 }));
   mocks.getDietarySummary.mockImplementation(() => []);
@@ -139,7 +137,7 @@ describe("PanelTab", () => {
 
     render(<PanelTab config={baseConfig} />);
     fireEvent.click(screen.getByText("panel.downloadBackup"));
-    // El backup ahora exporta también las subcolecciones (async): se espera
+    // El backup ahora exporta tambiÃ©n las subcolecciones (async): se espera
     // a que el JSON se genere.
     await vi.waitFor(() => expect(createObjectURL).toHaveBeenCalled());
   });
@@ -219,7 +217,7 @@ describe("PanelTab", () => {
     };
     const file = new File([JSON.stringify(backup)], "backup.json", { type: "application/json" });
     fireEvent.change(fileInput, { target: { files: [file] } });
-    // 1 doc config + 1 galería + 1 rsvp = 3 setDoc (más las subcolecciones).
+    // 1 doc config + 1 galerÃ­a + 1 rsvp = 3 setDoc (mÃ¡s las subcolecciones).
     await vi.waitFor(() => {
       expect(setDoc).toHaveBeenCalledTimes(3);
     });

@@ -4,7 +4,8 @@ import { useNavigate } from "react-router";
 import type { User } from "firebase/auth";
 import { getAuthInstance } from "../lib/firebase";
 import { INVITE_CACHE_PREFIX } from "../lib/storage-keys";
-import { saveSession, getSession, renewSession, clearSession } from "../lib/sessionVars";
+import { saveSession, getSession, clearSession } from "../lib/sessionVars";
+import { useSessionRenewal } from "../hooks/useSessionRenewal";
 import { SUPERADMIN_EMAIL, SUPERADMIN_ROUTE } from "../lib/superadmin";
 
 export interface SuperAdminValue {
@@ -26,9 +27,11 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const renewRef = useRef<ReturnType<typeof setInterval> | null>(null);
   /** Flag para evitar que onAuthStateChanged cierre sesión durante el login. */
   const loggingInRef = useRef(false);
+
+  // Renovación de la sesión local cada 60s mientras haya sesión de superadmin.
+  useSessionRenewal(user !== null);
 
   useEffect(() => {
 
@@ -73,28 +76,6 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
       if (unsubscribe) unsubscribe();
     };
   }, []);
-
-  useEffect(() => {
-    if (user) {
-
-      renewSession();
-      renewRef.current = setInterval(() => {
-
-        renewSession();
-      }, 60_000);
-    } else {
-      if (renewRef.current) {
-
-        clearInterval(renewRef.current);
-      }
-    }
-    return () => {
-      if (renewRef.current) {
-
-        clearInterval(renewRef.current);
-      }
-    };
-  }, [user]);
 
   const login = useCallback(async (email: string, password: string) => {
 

@@ -1,7 +1,7 @@
 {
   "name": "wedingo",
   "private": true,
-  "version": "2.95.18",
+  "version": "2.95.19",
   "type": "module",
   "engines": {
     "node": ">=22.22.2"
@@ -11,12 +11,16 @@
     "build": "vite build",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
+    "typecheck:e2e": "tsc --noEmit -p e2e/tsconfig.json",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "lint": "oxlint",
     "lint:ci": "oxlint --deny-warnings",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\" \"functions/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css,json}\" \"functions/**/*.ts\"",
     "preview": "vite preview",
     "translations:check": "node scripts/check-translations.js",
+    "consent:check": "node scripts/check-consent-cutoff.js",
     "audit": "npm audit",
     "audit:prod": "npm audit --production",
     "analyze": "vite-bundle-visualizer",
@@ -30,7 +34,7 @@
     "deploy": "npm run lint && npm run build && firebase deploy --only hosting,firestore:rules",
     "bump": "node scripts/bump-version.js",
     "loadtest": "k6 run scripts/load-test.js",
-    "preready": "npm run lint && npm run build && npm run changelog:check",
+    "preready": "npm run lint && npm run build && npm run changelog:check && npm run consent:check && npm run translations:check",
     "changelog:check": "node scripts/check-changelog.js"
   },
   "dependencies": {
@@ -63,6 +67,7 @@
     "firebase-tools": "^15.26.0",
     "jsdom": "^30.0.0",
     "oxlint": "^1.69.0",
+    "prettier": "^3.9.6",
     "tailwindcss": "^4.3.2",
     "typescript": "^7.0.2",
     "vite": "^8.1.0",

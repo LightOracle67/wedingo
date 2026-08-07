@@ -1,10 +1,10 @@
 import { useTranslation } from "react-i18next";
 import CharacterCounter from "../../components/CharacterCounter";
-import { useApp } from "../../contexts";
+import { useConfig } from "../../contexts";
 import SetupToggleField from "../SetupToggleField";
 
 export default function StorySectionForm({ prefix = "" }) {
-  const { formData, updateFormField } = useApp();
+  const { formData, updateFormField } = useConfig();
   const { t } = useTranslation();
 
   const id = (name: string) => `${prefix}${name}`;

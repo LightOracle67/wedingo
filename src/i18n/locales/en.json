@@ -165,6 +165,7 @@
     "successAttending": "Thank you, {{name}}! We are so happy you will be there.",
     "successNotAttending": "Thank you, {{name}}. We will miss you!",
     "saveError": "Something went wrong while saving. Please try again in a moment.",
+    "limitReached": "This invitation has reached its confirmation limit. If you think this is a mistake, please contact the couple.",
     "withdrawConfirm": "Are you sure you want to withdraw your confirmation? You can always confirm again.",
     "withdrawSuccess": "Your confirmation has been withdrawn. If you change your mind, just let us know again.",
     "withdrawError": "We could not withdraw your confirmation. Please try again.",

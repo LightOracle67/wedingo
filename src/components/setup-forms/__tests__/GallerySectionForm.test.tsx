@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 
-const mockUseApp = vi.fn(() => ({
+const mockUseConfig = vi.fn(() => ({
   config: { theme: "golden", menuEnabled: "true" },
   formData: {},
   updateFormField: vi.fn(),
@@ -13,7 +13,7 @@ vi.mock("react-i18next", () => ({
 }));
 
 vi.mock("../../../contexts", () => ({
-  useApp: () => mockUseApp(),
+  useConfig: () => mockUseConfig(),
 }));
 
 const mockGalleryEditor = vi.fn((_props: Record<string, unknown>) => <div data-testid="gallery-editor">GalleryArrayEditor</div>);
@@ -39,12 +39,11 @@ describe("GallerySectionForm", () => {
     expect(screen.getByText("GalleryArrayEditor")).toBeDefined();
   });
 
-  it("passes inviteToken and t props to GalleryArrayEditor", () => {
+  it("passes inviteToken to GalleryArrayEditor", () => {
     render(<GallerySectionForm />);
     expect(mockGalleryEditor).toHaveBeenCalledWith(
       expect.objectContaining({
         inviteToken: "test-token",
-        t: expect.any(Function),
       })
     );
   });

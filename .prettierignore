@@ -1,0 +1,10 @@
+node_modules
+dist
+dist-ssr
+package-lock.json
+functions/node_modules
+functions/package-lock.json
+*.md
+.vscode
+.idea
+.firebase

@@ -10,6 +10,13 @@ const VOTED_KEY = "wedin_voted_songs";
 /**
  * MusicPollSection — Encuesta de música para el DJ: los invitados sugieren
  * canciones y votan; el admin ve el ranking.
+ *
+ * ANTI-DOBLE-VOTO POR DEVICE: el voto se registra en sessionStorage
+ * (`wedin_voted_songs`), por lo que un mismo navegador solo vota una vez por
+ * canción. Limitación conocida y aceptada: el mismo usuario en otro
+ * dispositivo o navegador puede votar de nuevo (no hay identidad verificada
+ * ni login de invitado). El tope de votos por canción (regla Firestore,
+ * increment-only con cap) evita el abuso masivo.
  */
 export default function MusicPollSection({ inviteToken }: { inviteToken?: string }) {
   const { t } = useTranslation();

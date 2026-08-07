@@ -57,6 +57,9 @@ vi.mock("../../lib/analytics", () => ({
 
 vi.mock("../../contexts", () => ({
   useApp: () => mockUseAppValue,
+  useConfig: () => mockUseAppValue,
+  useRsvpContext: () => mockUseAppValue,
+  useAuth: () => mockUseAppValue,
 }));
 
 vi.mock("../../lib/image-store", () => ({
