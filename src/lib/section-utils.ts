@@ -40,8 +40,10 @@ export function sectionHasContent(
         || config.weddingHour || config.weddingMinute || config.weddingSiteURL);
     case "info":
       // El menú también vive en la sección info: configurarlo solo no debe
-      // ocultar la sección automáticamente.
-      return !!(config.weddingScheduleEvents || config.weddingDressCode || config.kidsPolicy
+      // ocultar la sección automáticamente. weddingDressCodeCustom acompaña
+      // a weddingDressCode cuando se elige "Otro".
+      return !!(config.weddingScheduleEvents || config.weddingDressCode || config.weddingDressCodeCustom
+        || config.kidsPolicy
         || config.menuEnabled === "true" || config.menuCarneDishes || config.menuPescadoDishes
         || config.menuVeganoDishes || config.menuTextoDishes);
     case "story":
@@ -52,6 +54,17 @@ export function sectionHasContent(
       return !!config.accommodationURL;
     case "transport":
       return config.transportEnabled !== "none" || !!config.transportDepartures;
+    case "extras":
+      // La sección de funciones sociales se desactiva si ningún extra está
+      // activado (ninguno de sus inputs/toggles se ha establecido).
+      return config.rsvpDeadlineEnabled === "true"
+        || config.reactionsEnabled === "true"
+        || config.giftsListEnabled === "true"
+        || config.rideShareEnabled === "true"
+        || config.welcomeVideoEnabled === "true"
+        || config.notesEnabled === "true"
+        || config.musicPollEnabled === "true"
+        || config.triviaEnabled === "true";
     case "gallery":
       // La galería se desactiva si no tiene ninguna imagen subida.
       return galleryHasImages;

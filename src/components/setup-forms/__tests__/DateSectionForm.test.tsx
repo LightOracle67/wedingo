@@ -26,6 +26,7 @@ vi.mock("../../../lib/constants", () => ({
 
 const mockFormData = vi.hoisted(() => ({
   weddingSiteURL: "",
+  weddingSiteURLEnabled: "true",
   weddingHour: "",
   weddingMinute: "",
   weddingDay: "",
@@ -268,7 +269,7 @@ describe("DateSectionForm", () => {
 
   it("calls updateFormField with weddingSiteURL on input change", () => {
     render(<DateSectionForm />);
-    const input = screen.getByLabelText("setup.mapUrlLabel");
+    const input = document.getElementById("weddingSiteURL") as HTMLInputElement;
     fireEvent.change(input, { target: { value: "https://maps.google.com/maps/place/Madrid" } });
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingSiteURL", "https://maps.google.com/maps/place/Madrid");
   });

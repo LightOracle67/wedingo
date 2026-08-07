@@ -4,6 +4,7 @@ import { useApp } from "../../contexts";
 import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import { MAX_DRESS_CODE_CUSTOM_LENGTH } from "../../lib/constants";
 import MenuDishEditor from "../MenuDishEditor";
+import SetupToggleField from "../SetupToggleField";
 
 export default function GuestsSectionForm({ prefix = "" }) {
   const { formData, updateFormField } = useApp();
@@ -30,8 +31,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
 
   return (
     <>
-      <fieldset className="setup-fieldset">
-        <legend className="setup-label">{t("setup.kidsLabel")}</legend>
+      <SetupToggleField enabledField="kidsPolicyEnabled" label={t("setup.kidsLabel")} hint={t("setup.kidsHint")} id={id}>
         <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
           {[
             { value: "playArea", key: "kidsPolicy.options.playArea" },
@@ -44,12 +44,10 @@ export default function GuestsSectionForm({ prefix = "" }) {
             </label>
           ))}
         </div>
-      </fieldset>
-      <p className="setup-help" id={id("kidsHint")}>{t("setup.kidsHint")}</p>
+      </SetupToggleField>
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
-      <fieldset className="setup-fieldset">
-        <legend className="setup-label">{t("setup.dressCodeLabel")}</legend>
+      <SetupToggleField enabledField="weddingDressCodeEnabled" label={t("setup.dressCodeLabel")} hint={t("setup.dressCodeHint")} id={id}>
         <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
           {[
             { value: "Traje de gala", key: "setup.dressCodeGala" },
@@ -65,17 +63,16 @@ export default function GuestsSectionForm({ prefix = "" }) {
             </label>
           ))}
         </div>
-      </fieldset>
-      {formData.weddingDressCode === "Otro" ? (
-        <div className="setup-field" style={{ marginTop: "0.6rem" }}>
-          <label className="setup-label" htmlFor={id("dressCodeCustom")}>{t("setup.dressCodeCustomLabel")}</label>
-          <input id={id("dressCodeCustom")} type="text" className="setup-input" value={formData.weddingDressCodeCustom || ""}
-            onChange={(e) => updateFormField("weddingDressCodeCustom", e.target.value.slice(0, MAX_DRESS_CODE_CUSTOM_LENGTH))}
-            placeholder={t("setup.dressCodeCustomPlaceholder")} maxLength={MAX_DRESS_CODE_CUSTOM_LENGTH} autoComplete="off" />
-          <p className="setup-help" id={id("dressCodeCustomHint")}>{t("setup.dressCodeCustomHint")}</p>
-        </div>
-      ) : null}
-      <p className="setup-help" id={id("dressCodeHint")}>{t("setup.dressCodeHint")}</p>
+        {formData.weddingDressCode === "Otro" ? (
+          <div className="setup-field" style={{ marginTop: "0.6rem" }}>
+            <label className="setup-label" htmlFor={id("dressCodeCustom")}>{t("setup.dressCodeCustomLabel")}</label>
+            <input id={id("dressCodeCustom")} type="text" className="setup-input" value={formData.weddingDressCodeCustom || ""}
+              onChange={(e) => updateFormField("weddingDressCodeCustom", e.target.value.slice(0, MAX_DRESS_CODE_CUSTOM_LENGTH))}
+              placeholder={t("setup.dressCodeCustomPlaceholder")} maxLength={MAX_DRESS_CODE_CUSTOM_LENGTH} autoComplete="off" />
+            <p className="setup-help" id={id("dressCodeCustomHint")}>{t("setup.dressCodeCustomHint")}</p>
+          </div>
+        ) : null}
+      </SetupToggleField>
       <p className="setup-label" style={{ marginBottom: "0.3rem" }}>{t("setup.menuCelebrationLabel")}</p>
 
       <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginBottom: "0.5rem" }}>
@@ -115,45 +112,43 @@ export default function GuestsSectionForm({ prefix = "" }) {
       )}
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
-      <label className="setup-label" htmlFor={id("accommodationURL")}>
-        {t("setup.accommodationLabel")}
-        {formData.accommodationURL && !isValidGoogleMapsUrl(formData.accommodationURL) ? (
-          <span style={{ color: "#ef4444", marginLeft: "0.4rem" }}>✗ {t("setup.mapUrlInvalid")}</span>
-        ) : formData.accommodationURL && isValidGoogleMapsUrl(formData.accommodationURL) ? (
-          <span style={{ color: "#22c55e", marginLeft: "0.4rem" }}>✓ {t("setup.mapUrlOk")}</span>
-        ) : null}
-      </label>
-      <input
-        id={id("accommodationURL")}
-        className={formData.accommodationURL && !isValidGoogleMapsUrl(formData.accommodationURL) ? "setup-input setup-input--error" : "setup-input"}
-        value={formData.accommodationURL || ""}
-        onChange={(e) => updateFormField("accommodationURL", e.target.value)}
-        placeholder={t("setup.accommodationUrlPlaceholder")}
-        autoComplete="off"
-        aria-describedby={id("accommodationUrlHelp")}
-      />
-      <p className="setup-help" id={id("accommodationUrlHelp")}>{t("setup.accommodationUrlHint")}</p>
-      {formData.accommodationURL && isValidGoogleMapsUrl(formData.accommodationURL) ? (() => {
-        const placeName = extractPlaceNameFromUrl(formData.accommodationURL);
-        return placeName ? (
-          <p className="setup-help" id={id("accommodationPlace")} style={{ marginTop: "0.15rem", color: "var(--setup-accent)", fontWeight: 600 }}>
-            {t("setup.siteNameLabel")}: {placeName}
+      <SetupToggleField enabledField="accommodationURLEnabled" label={t("setup.accommodationLabel")} hint={t("setup.accommodationUrlHint")} id={id}>
+        <input
+          id={id("accommodationURL")}
+          className={formData.accommodationURL && !isValidGoogleMapsUrl(formData.accommodationURL) ? "setup-input setup-input--error" : "setup-input"}
+          value={formData.accommodationURL || ""}
+          onChange={(e) => updateFormField("accommodationURL", e.target.value)}
+          placeholder={t("setup.accommodationUrlPlaceholder")}
+          autoComplete="off"
+          aria-describedby={id("accommodationUrlHelp")}
+        />
+        {formData.accommodationURL ? (
+          <p className="setup-help" id={id("accommodationUrlHelp")} style={!isValidGoogleMapsUrl(formData.accommodationURL) ? { color: "#ef4444" } : { color: "#22c55e" }}>
+            {isValidGoogleMapsUrl(formData.accommodationURL) ? `✓ ${t("setup.mapUrlOk")}` : `✗ ${t("setup.mapUrlInvalid")}`}
           </p>
-        ) : null;
-      })() : null}
-      <label className="setup-label" htmlFor={id("accommodationMapMode")} style={{ marginTop: "0.6rem" }}>{t("setup.mapModeLabel")}</label>
-      <select
-        id={id("accommodationMapMode")}
-        className="setup-input"
-        value={formData.accommodationMapMode || "iframe"}
-        onChange={(e) => updateFormField("accommodationMapMode", e.target.value)}
-        aria-describedby={id("accommodationMapModeHint")}
-      >
-        <option value="iframe">{t("setup.mapModeIframe")}</option>
-        <option value="name">{t("setup.mapModeName")}</option>
-        <option value="hidden">{t("setup.mapModeHidden")}</option>
-      </select>
-      <p className="setup-help" id={id("accommodationMapModeHint")}>{t("setup.mapModeHint")}</p>
+        ) : null}
+        {formData.accommodationURL && isValidGoogleMapsUrl(formData.accommodationURL) ? (() => {
+          const placeName = extractPlaceNameFromUrl(formData.accommodationURL);
+          return placeName ? (
+            <p className="setup-help" id={id("accommodationPlace")} style={{ marginTop: "0.15rem", color: "var(--setup-accent)", fontWeight: 600 }}>
+              {t("setup.siteNameLabel")}: {placeName}
+            </p>
+          ) : null;
+        })() : null}
+        <label className="setup-label" htmlFor={id("accommodationMapMode")} style={{ marginTop: "0.6rem" }}>{t("setup.mapModeLabel")}</label>
+        <select
+          id={id("accommodationMapMode")}
+          className="setup-input"
+          value={formData.accommodationMapMode || "iframe"}
+          onChange={(e) => updateFormField("accommodationMapMode", e.target.value)}
+          aria-describedby={id("accommodationMapModeHint")}
+        >
+          <option value="iframe">{t("setup.mapModeIframe")}</option>
+          <option value="name">{t("setup.mapModeName")}</option>
+          <option value="hidden">{t("setup.mapModeHidden")}</option>
+        </select>
+        <p className="setup-help" id={id("accommodationMapModeHint")}>{t("setup.mapModeHint")}</p>
+      </SetupToggleField>
     </>
   );
 }

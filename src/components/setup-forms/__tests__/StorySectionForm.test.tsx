@@ -10,7 +10,7 @@ vi.mock("react-i18next", () => ({
 vi.mock("../../../contexts", () => ({
   useApp: () => ({
     config: { theme: "golden", menuEnabled: "true" },
-    formData: {},
+    formData: { storyTextEnabled: "true" },
     updateFormField: mockUpdateFormField,
   }),
 }));

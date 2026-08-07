@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useApp } from "../../contexts";
 import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT, SCHEDULE_EVENT_EMOJIS } from "../../lib/constants";
 import { isValidGoogleMapsUrl, convertToEmbedUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
+import SetupToggleField from "../SetupToggleField";
 
 interface ScheduleEvent {
   time: string;
@@ -96,25 +97,23 @@ export default function DateSectionForm({ prefix = "" }) {
 
   return (
     <>
-      <label className="setup-label" htmlFor={id("weddingSiteURL")}>
-        {t("setup.mapUrlLabel")}
-        {siteUrl && isSiteUrlValid ? (
-          <span style={{ color: "#22c55e", fontSize: "0.8rem", marginLeft: "0.5rem" }}>✓ {t("setup.mapUrlOk")}</span>
-        ) : siteUrl && !isSiteUrlValid ? (
-          <span style={{ color: "#ef4444", fontSize: "0.8rem", marginLeft: "0.5rem" }}>✗ {t("setup.mapUrlInvalid")}</span>
+      <SetupToggleField enabledField="weddingSiteURLEnabled" label={t("setup.mapUrlLabel")} hint={t("setup.mapUrlHowTo")} id={id}>
+        <input
+          id={id("weddingSiteURL")}
+          className="setup-input"
+          value={formData.weddingSiteURL || ""}
+          onChange={handleSiteUrlChange}
+          placeholder={t("setup.mapUrlPlaceholder")}
+          autoComplete="off"
+          aria-describedby={id("mapUrlHelp")}
+          style={siteUrl && !isSiteUrlValid ? { borderColor: "#ef4444" } : siteUrl && isSiteUrlValid ? { borderColor: "#22c55e" } : undefined}
+        />
+        {siteUrl ? (
+          <p className="setup-help" id={id("mapUrlHelp")} style={!isSiteUrlValid ? { color: "#ef4444" } : { color: "#22c55e" }}>
+            {isSiteUrlValid ? `✓ ${t("setup.mapUrlOk")}` : `✗ ${t("setup.mapUrlInvalid")}`}
+          </p>
         ) : null}
-      </label>
-      <input
-        id={id("weddingSiteURL")}
-        className="setup-input"
-        value={formData.weddingSiteURL || ""}
-        onChange={handleSiteUrlChange}
-        placeholder={t("setup.mapUrlPlaceholder")}
-        autoComplete="off"
-        aria-describedby={id("mapUrlHelp")}
-        style={siteUrl && !isSiteUrlValid ? { borderColor: "#ef4444" } : siteUrl && isSiteUrlValid ? { borderColor: "#22c55e" } : undefined}
-      />
-      <p className="setup-help" id={id("mapUrlHelp")}>{t("setup.mapUrlHowTo")}</p>
+      </SetupToggleField>
 
       <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))" }}>
         <div>

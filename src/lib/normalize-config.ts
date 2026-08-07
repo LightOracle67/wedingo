@@ -15,8 +15,7 @@ function normalizeJsonArray(value: unknown): string {
 
 /** Modos de visualización del mapa (iframe por defecto). */
 const MAP_MODES = new Set(["iframe", "name", "hidden"]);
-function normalizeMapMode(value: unknown): string {
-  return typeof value === "string" && MAP_MODES.has(value) ? value : "iframe";
+function normalizeMapMode(value: unknown): string {  return typeof value === "string" && MAP_MODES.has(value) ? value : "iframe";
 }
 
 function normalizeMenuDishes(value: unknown): string {
@@ -76,11 +75,21 @@ const s = (v: unknown) => {
   return "";
 };
 
+/** Normaliza un toggle *Enabled a "true" o "false". */
+const bool = (v: unknown): string => (s(v) === "true" ? "true" : "false");
+
+/** Normaliza un toggle *Enabled con compatibilidad para invitaciones ya
+ *  guardadas: si el toggle no viene definido (config antigua) se activa solo
+ *  si el campo de contenido asociado tiene valor. */
+const toggleWithLegacy = (enabled: unknown, content: unknown): string =>
+  enabled !== undefined ? bool(enabled) : (s(content) ? "true" : "false");
+
 export const normalizeConfig = (value: Record<string, unknown> | undefined) => ({
   adminUsername: s(value?.adminUsername).toLowerCase(),
   firstName: s(value?.firstName),
   secondName: s(value?.secondName),
   inviteMessage: s(value?.inviteMessage),
+  inviteMessageEnabled: toggleWithLegacy(value?.inviteMessageEnabled, value?.inviteMessage),
   weddingPlace: s(value?.weddingPlace),
   weddingDay: s(value?.weddingDay),
   weddingMonth: s(value?.weddingMonth),
@@ -89,12 +98,14 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   weddingMinute: s(value?.weddingMinute),
   weddingScheduleEvents: normalizeScheduleEvents(value?.weddingScheduleEvents),
   weddingDressCode: s(value?.weddingDressCode),
+  weddingDressCodeEnabled: toggleWithLegacy(value?.weddingDressCodeEnabled, value?.weddingDressCode),
   weddingDressCodeCustom: s(value?.weddingDressCodeCustom),
   theme:
     typeof value?.theme === "string" && THEME_VALUES.has(value.theme.trim())
       ? value.theme.trim()
       : "golden",
   couplePhoto: s(value?.couplePhoto),
+  couplePhotoEnabled: toggleWithLegacy(value?.couplePhotoEnabled, value?.couplePhoto),
   sectionOrder: (() => {
     const stored = typeof value?.sectionOrder === "string" ? value.sectionOrder.trim() : "";
     const parts = stored ? stored.split(",").filter(Boolean) : [];
@@ -106,15 +117,22 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   })(),
   hiddenSections: s(value?.hiddenSections),
   storyText: s(value?.storyText),
+  storyTextEnabled: toggleWithLegacy(value?.storyTextEnabled, value?.storyText),
   giftsInfo: s(value?.giftsInfo),
+  giftsInfoEnabled: toggleWithLegacy(value?.giftsInfoEnabled, value?.giftsInfo),
   bankInfo: s(value?.bankInfo),
+  bankInfoEnabled: toggleWithLegacy(value?.bankInfoEnabled, value?.bankInfo),
   accommodationURL: s(value?.accommodationURL),
+  accommodationURLEnabled: toggleWithLegacy(value?.accommodationURLEnabled, value?.accommodationURL),
   transportEnabled: ["none", "bus", "taxi", "both"].includes(s(value?.transportEnabled)) ? s(value?.transportEnabled) : "none",
   transportDepartures: normalizeTransportDepartures(value?.transportDepartures),
   godparent1: s(value?.godparent1),
   godparent2: s(value?.godparent2),
+  godparentsEnabled: toggleWithLegacy(value?.godparentsEnabled, value?.godparent1 || value?.godparent2),
   musicFile: s(value?.musicFile),
+  musicFileEnabled: toggleWithLegacy(value?.musicFileEnabled, value?.musicFile),
   kidsPolicy: s(value?.kidsPolicy),
+  kidsPolicyEnabled: toggleWithLegacy(value?.kidsPolicyEnabled, value?.kidsPolicy),
   menuEnabled: s(value?.menuEnabled) === "true" ? "true" : "false",
   privacyPolicyVersion: s(value?.privacyPolicyVersion),
   menuTextoDishes: normalizeMenuDishes(value?.menuTextoDishes),
@@ -122,8 +140,11 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   menuPescadoDishes: normalizeMenuDishes(value?.menuPescadoDishes),
   menuVeganoDishes: normalizeMenuDishes(value?.menuVeganoDishes),
   backgroundImage: s(value?.backgroundImage),
+  backgroundImageEnabled: toggleWithLegacy(value?.backgroundImageEnabled, value?.backgroundImage),
   customSeal: s(value?.customSeal),
+  customSealEnabled: toggleWithLegacy(value?.customSealEnabled, value?.customSeal),
   cornerDecoration: s(value?.cornerDecoration),
+  cornerDecorationEnabled: toggleWithLegacy(value?.cornerDecorationEnabled, value?.cornerDecoration),
   rsvpDeadline: s(value?.rsvpDeadline).slice(0, 10),
   rsvpDeadlineEnabled: s(value?.rsvpDeadlineEnabled) === "true" ? "true" : "false",
   reactionsEnabled: s(value?.reactionsEnabled) === "true" ? "true" : "false",
@@ -137,8 +158,11 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   triviaEnabled: s(value?.triviaEnabled) === "true" ? "true" : "false",
   trivia: normalizeJsonArray(value?.trivia),
   weddingSiteURL: s(value?.weddingSiteURL ?? value?.weddingMapUrl),
+  weddingSiteURLEnabled: toggleWithLegacy(value?.weddingSiteURLEnabled, value?.weddingSiteURL ?? value?.weddingMapUrl),
   instagramUrl: s(value?.instagramUrl).slice(0, 1000),
+  instagramEnabled: toggleWithLegacy(value?.instagramEnabled, value?.instagramUrl),
   facebookUrl: s(value?.facebookUrl).slice(0, 1000),
+  facebookEnabled: toggleWithLegacy(value?.facebookEnabled, value?.facebookUrl),
   weddingMapView: ["roadmap","satellite","hybrid"].includes(s(value?.weddingMapView)) ? s(value?.weddingMapView) : "roadmap",
   weddingMapStatic: s(value?.weddingMapStatic) === "true" ? "true" : "false",
   detailsMapMode: normalizeMapMode(value?.detailsMapMode),

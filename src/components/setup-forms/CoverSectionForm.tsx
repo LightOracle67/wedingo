@@ -8,6 +8,7 @@ import { compressImageTransparent, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARG
 import { useConfigImage } from "../../hooks/useConfigImage";
 import ThemePicker from "../ThemePicker";
 import MusicArrayEditor from "../MusicArrayEditor";
+import SetupToggleField from "../SetupToggleField";
 
 export default function CoverSectionForm({ prefix = "" }) {
 
@@ -127,210 +128,193 @@ export default function CoverSectionForm({ prefix = "" }) {
         </div>
       </fieldset>
 
-      <fieldset className="setup-name-group">
-        <legend className="setup-label">{t("setup.godparentsLegend")}</legend>
-        <div className="setup-name-grid">
-          <div className="setup-name-col">
-            <label className="setup-label" htmlFor={id("godparent1")}>{t("setup.godparent1Label")}</label>
-            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("godparent1Hint")}>{t("setup.nameOnlyHint")}</p>
-            <input id={id("godparent1")} className="setup-input" value={formData.godparent1} onChange={(e) => updateFormField("godparent1", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" maxLength={40} aria-describedby={id("godparent1Hint")} />
+      <SetupToggleField enabledField="godparentsEnabled" label={t("setup.godparentsLegend")} hint={t("setup.godparentsHint")} id={id}>
+        <fieldset className="setup-name-group">
+          <div className="setup-name-grid">
+            <div className="setup-name-col">
+              <label className="setup-label" htmlFor={id("godparent1")}>{t("setup.godparent1Label")}</label>
+              <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("godparent1Hint")}>{t("setup.nameOnlyHint")}</p>
+              <input id={id("godparent1")} className="setup-input" value={formData.godparent1} onChange={(e) => updateFormField("godparent1", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" maxLength={40} aria-describedby={id("godparent1Hint")} />
+            </div>
+            <div className="setup-name-col">
+              <label className="setup-label" htmlFor={id("godparent2")}>{t("setup.godparent2Label")}</label>
+              <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("godparent2Hint")}>{t("setup.nameOnlyHint")}</p>
+              <input id={id("godparent2")} className="setup-input" value={formData.godparent2} onChange={(e) => updateFormField("godparent2", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" maxLength={40} aria-describedby={id("godparent2Hint")} />
+            </div>
           </div>
-          <div className="setup-name-col">
-            <label className="setup-label" htmlFor={id("godparent2")}>{t("setup.godparent2Label")}</label>
-            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("godparent2Hint")}>{t("setup.nameOnlyHint")}</p>
-            <input id={id("godparent2")} className="setup-input" value={formData.godparent2} onChange={(e) => updateFormField("godparent2", e.target.value.slice(0, 40))} placeholder={t("setup.namePlaceholder")} autoComplete="off" maxLength={40} aria-describedby={id("godparent2Hint")} />
-          </div>
-        </div>
-        <p className="setup-help">{t("setup.godparentsHint")}</p>
-      </fieldset>
+        </fieldset>
+      </SetupToggleField>
 
-      <label className="setup-label" htmlFor={id("inviteMessage")}>
-        {t("setup.messageLabel")} <CharacterCounter value={formData.inviteMessage || ""} max={500} />
-      </label>
-      <textarea
-        id={id("inviteMessage")}
-        className="setup-textarea"
-        value={formData.inviteMessage}
-        onChange={(e) => updateFormField("inviteMessage", e.target.value.slice(0, 500))}
-        placeholder={t("setup.messagePlaceholder")}
-        aria-describedby={id("messageHint")}
-      />
-      <p className="setup-help" id={id("messageHint")}>{t("setup.messageHint")}</p>
+      <SetupToggleField enabledField="inviteMessageEnabled" label={t("setup.messageLabel")} hint={t("setup.messageHint")} id={id}>
+        <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
+          <CharacterCounter value={formData.inviteMessage || ""} max={500} />
+        </p>
+        <textarea
+          id={id("inviteMessage")}
+          className="setup-textarea"
+          value={formData.inviteMessage}
+          onChange={(e) => updateFormField("inviteMessage", e.target.value.slice(0, 500))}
+          placeholder={t("setup.messagePlaceholder")}
+          aria-describedby={id("messageHint")}
+        />
+      </SetupToggleField>
 
-      <label className="setup-label" htmlFor={id("instagramUrl")}>{t("setup.instagramLabel")}</label>
-      <input
-        id={id("instagramUrl")}
-        className="setup-input"
-        value={formData.instagramUrl}
-        onChange={(e) => updateFormField("instagramUrl", e.target.value.slice(0, 1000))}
-        placeholder="https://www.instagram.com/tunombre"
-        inputMode="url"
-        autoComplete="url"
-      />
-      <label className="setup-label" htmlFor={id("facebookUrl")}>{t("setup.facebookLabel")}</label>
-      <input
-        id={id("facebookUrl")}
-        className="setup-input"
-        value={formData.facebookUrl}
-        onChange={(e) => updateFormField("facebookUrl", e.target.value.slice(0, 1000))}
-        placeholder="https://www.facebook.com/tunombre"
-        inputMode="url"
-        autoComplete="url"
-      />
+      <SetupToggleField enabledField="instagramEnabled" label={t("setup.instagramLabel")} id={id}>
+        <input
+          id={id("instagramUrl")}
+          className="setup-input"
+          value={formData.instagramUrl}
+          onChange={(e) => updateFormField("instagramUrl", e.target.value.slice(0, 1000))}
+          placeholder="https://www.instagram.com/tunombre"
+          inputMode="url"
+          autoComplete="url"
+        />
+      </SetupToggleField>
+      <SetupToggleField enabledField="facebookEnabled" label={t("setup.facebookLabel")} id={id}>
+        <input
+          id={id("facebookUrl")}
+          className="setup-input"
+          value={formData.facebookUrl}
+          onChange={(e) => updateFormField("facebookUrl", e.target.value.slice(0, 1000))}
+          placeholder="https://www.facebook.com/tunombre"
+          inputMode="url"
+          autoComplete="url"
+        />
+      </SetupToggleField>
 
       <p className="setup-label">{t("setup.themeLabel")}</p>
       <ThemePicker value={formData.theme} onChange={handleThemeChange} t={t as (key: string, options?: Record<string, unknown>) => string} />
       <p className="setup-help" id={id("themeHint")}>{t("setup.themeHint")}</p>
 
-      <div className="setup-background-panel">
-        <div className="setup-background-panel__header">
-          <div>
-            <p className="setup-label setup-label--tight">{t("setup.couplePhotoLabel")}</p>
-            <p className="setup-help setup-help--tight">{t("setup.couplePhotoHint")}</p>
-          </div>
+      <SetupToggleField enabledField="couplePhotoEnabled" label={t("setup.couplePhotoLabel")} hint={t("setup.couplePhotoHint")} id={id}>
+        <div className="setup-background-panel">
           {formData.couplePhoto ? (
-            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleRemovePhoto}>{t("setup.remove")}</button>
+            <div className="setup-selected-background">
+              <img src={safeSrc(couplePhotoUrl, formData.couplePhoto)} alt={t("setup.couplePhotoLabel")} className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
+              <div>
+                <p className="setup-selected-background__title">{t("setup.currentPhoto")}</p>
+                <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleRemovePhoto}>{t("setup.remove")}</button>
+              </div>
+            </div>
+          ) : (
+            <label className="setup-upload" htmlFor={id("couplePhoto")}>
+              <span className="setup-upload__title">{t("setup.couplePhotoUpload")}</span>
+              <span className="setup-upload__subtitle">{t("setup.couplePhotoUploadHint")}</span>
+            </label>
+          )}
+          <input ref={photoRef} id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
+          {formData.couplePhoto ? (
+            /* El label "Reemplazar" apunta al input único (htmlFor); no se
+               anida un segundo input para no duplicar el id. */
+            <label className="setup-upload" htmlFor={id("couplePhoto")}>
+              {t("setup.replaceImage")}
+            </label>
           ) : null}
         </div>
-
-        {formData.couplePhoto ? (
-          <div className="setup-selected-background">
-            <img src={safeSrc(couplePhotoUrl, formData.couplePhoto)} alt={t("setup.couplePhotoLabel")} className="setup-selected-background__image" style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }} />
-            <div>
-              <p className="setup-selected-background__title">{t("setup.currentPhoto")}</p>
-            </div>
-          </div>
-        ) : (
-          <label className="setup-upload" htmlFor={id("couplePhoto")}>
-            <span className="setup-upload__title">{t("setup.couplePhotoUpload")}</span>
-            <span className="setup-upload__subtitle">{t("setup.couplePhotoUploadHint")}</span>
-          </label>
-        )}
-        <input ref={photoRef} id={id("couplePhoto")} className="setup-upload__input" type="file" accept="image/jpeg,image/png,image/webp" onChange={handleCouplePhotoUpload} />
-        {formData.couplePhoto ? (
-          /* El label "Reemplazar" apunta al input único (htmlFor); no se
-             anida un segundo input para no duplicar el id. */
-          <label className="setup-upload" htmlFor={id("couplePhoto")}>
-            {t("setup.replaceImage")}
-          </label>
-        ) : null}
-      </div>
+      </SetupToggleField>
 
       <div className="story-divider" />
 
-      <div className="setup-background-panel">
-        <div className="setup-background-panel__header">
-          <div>
-            <p className="setup-label setup-label--tight">{t("setup.customSealLabel")}</p>
-            <p className="setup-help setup-help--tight">{t("setup.customSealHint")}</p>
-          </div>
+      <SetupToggleField enabledField="customSealEnabled" label={t("setup.customSealLabel")} hint={t("setup.customSealHint")} id={id}>
+        <div className="setup-background-panel">
           {formData.customSeal ? (
-            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "customSeal").catch(() => {}); updateFormField("customSeal", ""); }}>{t("setup.remove")}</button>
-          ) : null}
-        </div>
-        {formData.customSeal ? (
-          <div className="setup-selected-background">
-            <img src={safeSrc(customSealUrl, formData.customSeal)} alt="" className="setup-selected-background__image" style={{ width: "3rem", height: "3rem", objectFit: "contain" }} />
-            <div>
-              <p className="setup-selected-background__title">{t("setup.currentSeal")}</p>
+            <div className="setup-selected-background">
+              <img src={safeSrc(customSealUrl, formData.customSeal)} alt="" className="setup-selected-background__image" style={{ width: "3rem", height: "3rem", objectFit: "contain" }} />
+              <div>
+                <p className="setup-selected-background__title">{t("setup.currentSeal")}</p>
+                <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "customSeal").catch(() => {}); updateFormField("customSeal", ""); }}>{t("setup.remove")}</button>
+              </div>
             </div>
-          </div>
-        ) : (
-          <label className="setup-upload" htmlFor={id("customSeal")}>
-            <span className="setup-upload__title">{t("setup.uploadSeal")}</span>
-            <span className="setup-upload__subtitle">{t("setup.uploadSealHint")}</span>
-          </label>
-        )}
-        <input className="setup-upload__input" id={id("customSeal")} type="file" accept="image/jpeg,image/png,image/svg+xml" onChange={async (e) => {
-          const file = e.target.files?.[0]; if (!file) return;
+          ) : (
+            <label className="setup-upload" htmlFor={id("customSeal")}>
+              <span className="setup-upload__title">{t("setup.uploadSeal")}</span>
+              <span className="setup-upload__subtitle">{t("setup.uploadSealHint")}</span>
+            </label>
+          )}
+          <input className="setup-upload__input" id={id("customSeal")} type="file" accept="image/jpeg,image/png,image/svg+xml" onChange={async (e) => {
+            const file = e.target.files?.[0]; if (!file) return;
 
-          if (file.size > 1024 * 1024) { ; addToast("error", t("setup.errorFileSize")); return; }
-          try {
-            const dataUrl = await compressImageTransparent(file);
-            const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "customSeal", dataUrl);
-            updateFormField("customSeal", ref);
+            if (file.size > 1024 * 1024) { ; addToast("error", t("setup.errorFileSize")); return; }
+            try {
+              const dataUrl = await compressImageTransparent(file);
+              const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "customSeal", dataUrl);
+              updateFormField("customSeal", ref);
 
-          } catch (err) { console.error("[app]", "[CoverSectionForm]", "customSeal error:", err); addToast("error", t("setup.photoUploadFailed")); }
-          e.target.value = "";
-        }} />
-      </div>
+            } catch (err) { console.error("[app]", "[CoverSectionForm]", "customSeal error:", err); addToast("error", t("setup.photoUploadFailed")); }
+            e.target.value = "";
+          }} />
+        </div>
+      </SetupToggleField>
 
       <div className="story-divider" />
 
-      <div className="setup-background-panel">
-        <div className="setup-background-panel__header">
-          <div>
-            <p className="setup-label setup-label--tight">{t("setup.backgroundLabel")}</p>
-            <p className="setup-help setup-help--tight">{t("setup.backgroundHint")}</p>
-          </div>
+      <SetupToggleField enabledField="backgroundImageEnabled" label={t("setup.backgroundLabel")} hint={t("setup.backgroundHint")} id={id}>
+        <div className="setup-background-panel">
           {formData.backgroundImage ? (
-            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "backgroundImage").catch(() => {}); updateFormField("backgroundImage", ""); }}>{t("setup.remove")}</button>
-          ) : null}
+            <div className="setup-selected-background">
+              <img src={safeSrc(backgroundImageUrl, formData.backgroundImage)} alt="" className="setup-selected-background__image" style={{ width: "100%", maxHeight: "100px", objectFit: "cover", borderRadius: "0.35rem" }} />
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "backgroundImage").catch(() => {}); updateFormField("backgroundImage", ""); }}>{t("setup.remove")}</button>
+            </div>
+          ) : (
+            <label className="setup-upload" htmlFor={id("backgroundImage")}>
+              <span className="setup-upload__title">{t("setup.backgroundUpload")}</span>
+              <span className="setup-upload__subtitle">{t("setup.backgroundUploadHint")}</span>
+            </label>
+          )}
+          <input className="setup-upload__input" id={id("backgroundImage")} type="file" accept="image/jpeg,image/png,image/webp" onChange={async (e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+
+            if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); e.target.value = ""; return; }
+            if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); e.target.value = ""; return; }
+            try {
+              const dataUrl = await compressImageTransparent(file, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES);
+              const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "backgroundImage", dataUrl);
+              updateFormField("backgroundImage", ref);
+
+            } catch (err) { console.error("[app]", "[CoverSectionForm]", "backgroundImage error:", err); addToast("error", t("setup.photoUploadFailed")); }
+            e.target.value = "";
+          }} />
         </div>
+      </SetupToggleField>
 
-        {formData.backgroundImage ? (
-          <div className="setup-selected-background">
-            <img src={safeSrc(backgroundImageUrl, formData.backgroundImage)} alt="" className="setup-selected-background__image" style={{ width: "100%", maxHeight: "100px", objectFit: "cover", borderRadius: "0.35rem" }} />
+      <SetupToggleField enabledField="cornerDecorationEnabled" label={t("setup.cornerDecorationsLabel")} hint={t("setup.cornerDecorationsHint")} id={id}>
+        <div className="setup-background-panel" style={{ marginBottom: "0.5rem" }}>
+          <div className="setup-background-panel__header">
+            <span className="setup-label setup-label--tight" style={{ fontSize: "0.8rem" }}>{t("setup.cornerDecorationLabel")}</span>
+            {(formData as Record<string, unknown>).cornerDecoration ? (
+              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "cornerDecoration").catch(() => {}); updateFormField("cornerDecoration", ""); }} style={{ fontSize: "0.7rem" }}>{t("setup.remove")}</button>
+            ) : null}
           </div>
-        ) : (
-          <label className="setup-upload" htmlFor={id("backgroundImage")}>
-            <span className="setup-upload__title">{t("setup.backgroundUpload")}</span>
-            <span className="setup-upload__subtitle">{t("setup.backgroundUploadHint")}</span>
-          </label>
-        )}
-        <input className="setup-upload__input" id={id("backgroundImage")} type="file" accept="image/jpeg,image/png,image/webp" onChange={async (e) => {
-          const file = e.target.files?.[0];
-          if (!file) return;
-
-          if (!ALLOWED_UPLOAD_TYPES.has(file.type)) { addToast("error", t("setup.errorFileFormat")); e.target.value = ""; return; }
-          if (file.size > MAX_UPLOAD_SIZE_BYTES) { addToast("error", t("setup.errorFileSize")); e.target.value = ""; return; }
-          try {
-            const dataUrl = await compressImageTransparent(file, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES);
-            const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "backgroundImage", dataUrl);
-            updateFormField("backgroundImage", ref);
-
-          } catch (err) { console.error("[app]", "[CoverSectionForm]", "backgroundImage error:", err); addToast("error", t("setup.photoUploadFailed")); }
-          e.target.value = "";
-        }} />
-      </div>
-
-      <div className="story-divider" style={{ margin: "0.75rem 0" }} />
-
-      <p className="setup-label">{t("setup.cornerDecorationsLabel")}</p>
-      <p className="setup-help">{t("setup.cornerDecorationsHint")}</p>
-      <div className="setup-background-panel" style={{ marginBottom: "0.5rem" }}>
-        <div className="setup-background-panel__header">
-          <span className="setup-label setup-label--tight" style={{ fontSize: "0.8rem" }}>{t("setup.cornerDecorationLabel")}</span>
           {(formData as Record<string, unknown>).cornerDecoration ? (
-            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={async () => { const { deleteConfigImage } = await import("../../lib/image-store"); deleteConfigImage(inviteToken, "cornerDecoration").catch(() => {}); updateFormField("cornerDecoration", ""); }} style={{ fontSize: "0.7rem" }}>{t("setup.remove")}</button>
-          ) : null}
+            <div>
+              <img src={safeSrc(cornerDecorationUrl, (formData as Record<string, unknown>).cornerDecoration as string)} alt="" style={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }} />
+            </div>
+          ) : (
+            <label className="setup-upload" htmlFor={id("cornerDecoration")}>
+              <span className="setup-upload__title">{t("setup.uploadCorner")}</span>
+              <span className="setup-upload__subtitle">{t("setup.cornerDecorationUploadHint")}</span>
+            </label>
+          )}
+          <input className="setup-upload__input" id={id("cornerDecoration")} type="file" accept="image/png,image/svg+xml" onChange={async (e) => {
+            const file = e.target.files?.[0];
+            if (!file) return;
+
+            if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); e.target.value = ""; return; }
+            try {
+              const dataUrl = await compressImageTransparent(file);
+              const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "cornerDecoration", dataUrl);
+              updateFormField("cornerDecoration", ref);
+
+            } catch (err) { console.error("[app]", "[CoverSectionForm]", "cornerDecoration error:", err); addToast("error", t("setup.photoUploadFailed")); }
+            e.target.value = "";
+          }} />
         </div>
-        {(formData as Record<string, unknown>).cornerDecoration ? (
-          <div>
-            <img src={safeSrc(cornerDecorationUrl, (formData as Record<string, unknown>).cornerDecoration as string)} alt="" style={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }} />
-          </div>
-        ) : (
-          <label className="setup-upload" htmlFor={id("cornerDecoration")}>
-            <span className="setup-upload__title">{t("setup.uploadCorner")}</span>
-            <span className="setup-upload__subtitle">{t("setup.cornerDecorationUploadHint")}</span>
-          </label>
-        )}
-        <input className="setup-upload__input" id={id("cornerDecoration")} type="file" accept="image/png,image/svg+xml" onChange={async (e) => {
-          const file = e.target.files?.[0];
-          if (!file) return;
+      </SetupToggleField>
 
-          if (file.size > 1024 * 1024) { addToast("error", t("setup.errorFileSize")); e.target.value = ""; return; }
-          try {
-            const dataUrl = await compressImageTransparent(file);
-            const { saveConfigImage } = await import("../../lib/image-store"); const ref = await saveConfigImage(inviteToken, "cornerDecoration", dataUrl);
-            updateFormField("cornerDecoration", ref);
-
-          } catch (err) { console.error("[app]", "[CoverSectionForm]", "cornerDecoration error:", err); addToast("error", t("setup.photoUploadFailed")); }
-          e.target.value = "";
-        }} />
-      </div>
-
-      <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile} onChange={handleMusicChange} t={t} />
+      <SetupToggleField enabledField="musicFileEnabled" label={t("setup.musicLabel")} id={id}>
+        <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile} onChange={handleMusicChange} t={t} />
+      </SetupToggleField>
     </>
   );
 }

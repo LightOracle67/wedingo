@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import CharacterCounter from "../../components/CharacterCounter";
 import { useApp } from "../../contexts";
+import SetupToggleField from "../SetupToggleField";
 
 export default function GiftsSectionForm({ prefix = "" }) {
   const { formData, updateFormField } = useApp();
@@ -18,37 +19,40 @@ export default function GiftsSectionForm({ prefix = "" }) {
 
   return (
     <>
-      <label className="setup-label" htmlFor={id("giftsInfo")}>
-        {t("setup.giftsInfoLabel")} <CharacterCounter value={formData.giftsInfo || ""} max={2000} />
-      </label>
-      <textarea
-        id={id("giftsInfo")}
-        className="setup-textarea"
-        value={formData.giftsInfo}
-        onChange={(e) => updateFormField("giftsInfo", e.target.value.slice(0, 2000))}
-        placeholder={t("setup.giftsInfoPlaceholder")}
-        rows={4}
-        maxLength={2000}
-        aria-describedby={id("giftsInfoHint")}
-      />
-      <p className="setup-help" id={id("giftsInfoHint")}>{t("setup.giftsInfoHint")}</p>
+      <SetupToggleField enabledField="giftsInfoEnabled" label={t("setup.giftsInfoLabel")} hint={t("setup.giftsInfoHint")} id={id}>
+        <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
+          <CharacterCounter value={formData.giftsInfo || ""} max={2000} />
+        </p>
+        <textarea
+          id={id("giftsInfo")}
+          className="setup-textarea"
+          value={formData.giftsInfo}
+          onChange={(e) => updateFormField("giftsInfo", e.target.value.slice(0, 2000))}
+          placeholder={t("setup.giftsInfoPlaceholder")}
+          rows={4}
+          maxLength={2000}
+          aria-describedby={id("giftsInfoHint")}
+        />
+      </SetupToggleField>
 
-      <label className="setup-label" htmlFor={id("bankInfo")}>
-        {t("setup.bankInfoLabel")} <CharacterCounter value={formData.bankInfo || ""} max={100} />
-      </label>
-      <input
-        id={id("bankInfo")}
-        value={formData.bankInfo}
-        onChange={(e) => updateFormField("bankInfo", e.target.value.slice(0, 100))}
-        placeholder={t("setup.bankInfoPlaceholder")}
-        autoComplete="off"
-        maxLength={100}
-        className={ibanLooksInvalid ? "setup-input setup-input--error" : "setup-input"}
-        aria-invalid={ibanLooksInvalid || undefined}
-        aria-describedby={ibanLooksInvalid ? `${id("bankInfoHint")} ${id("ibanError")}` : id("bankInfoHint")}
-      />
-      {ibanLooksInvalid ? <p className="setup-help" id={id("ibanError")} style={{ color: "#ef4444" }}>{t("errors.ibanInvalid")}</p> : null}
-      <p className="setup-help" id={id("bankInfoHint")}>{t("setup.bankInfoHint")}</p>
+      <SetupToggleField enabledField="bankInfoEnabled" label={t("setup.bankInfoLabel")} hint={t("setup.bankInfoHint")} id={id}>
+        <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
+          <CharacterCounter value={formData.bankInfo || ""} max={100} />
+        </p>
+        <input
+          id={id("bankInfo")}
+          value={formData.bankInfo}
+          onChange={(e) => updateFormField("bankInfo", e.target.value.slice(0, 100))}
+          placeholder={t("setup.bankInfoPlaceholder")}
+          autoComplete="off"
+          maxLength={100}
+          className={ibanLooksInvalid ? "setup-input setup-input--error" : "setup-input"}
+          aria-invalid={ibanLooksInvalid || undefined}
+          aria-describedby={ibanLooksInvalid ? `${id("bankInfoHint")} ${id("ibanError")}` : id("bankInfoHint")}
+        />
+        {ibanLooksInvalid ? <p className="setup-help" id={id("ibanError")} style={{ color: "#ef4444" }}>{t("errors.ibanInvalid")}</p> : null}
+      </SetupToggleField>
     </>
   );
 }
+

@@ -9,6 +9,16 @@ const inviteToken = "jg3n96A6Re";
 const hash = createHash("sha256").update("HYQL4HD83BGZ52QA6F45QERVLWCYKRD9").digest("hex");
 try {
   await updateDoc(doc(db, "invitations", inviteToken), { activeSession: new Date(), sessionExpiresAt: new Date(Date.now() + 3600000), setupTokenHash: hash });
-  await updateDoc(doc(db, "invitations", inviteToken), { welcomeVideoEnabled: "true", welcomeVideo: "https://example.com/v.mp4" });
-  console.log("✅ PRODUCCIÓN: welcomeVideoEnabled + welcomeVideo guardados OK");
+  await updateDoc(doc(db, "invitations", inviteToken), {
+    inviteMessage: "Guardado OK", inviteMessageEnabled: "true",
+    storyTextEnabled: "true", storyText: "Historia",
+    giftsInfoEnabled: "false", bankInfoEnabled: "false",
+    accommodationURLEnabled: "false", weddingDressCodeEnabled: "false",
+    kidsPolicyEnabled: "false", instagramEnabled: "false", facebookEnabled: "false",
+    couplePhotoEnabled: "false", customSealEnabled: "false",
+    backgroundImageEnabled: "false", cornerDecorationEnabled: "false",
+    godparentsEnabled: "false", musicFileEnabled: "false",
+    welcomeVideoEnabled: "true", welcomeVideo: "https://example.com/v.mp4",
+  });
+  console.log("✅ PRODUCCIÓN: guardado con toggles *Enabled OK");
 } catch (e) { console.error("❌ ERROR:", e?.code, e?.message); }

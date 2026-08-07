@@ -6,7 +6,7 @@ vi.mock("react-i18next", () => ({
 }));
 
 const mockUpdateFormField = vi.fn();
-const mockFormData = vi.hoisted(() => ({}) as Record<string, string | undefined>);
+const mockFormData = vi.hoisted(() => ({ kidsPolicyEnabled: "true", weddingDressCodeEnabled: "true", accommodationURLEnabled: "true",}) as Record<string, string | undefined>);
 
 vi.mock("../../../contexts", () => ({
   useApp: () => ({
@@ -19,13 +19,20 @@ vi.mock("../../../contexts", () => ({
 import GuestsSectionForm from "../GuestsSectionForm";
 
 function getAllCheckboxes() {
-  return screen.getAllByRole("checkbox");
+  // Excluye los toggles del patrón checkbox→input (.setup-toggle): solo las
+  // opciones de contenido (kids policy, dress code, menú).
+  return screen.getAllByRole("checkbox").filter((cb) => !cb.classList.contains("setup-toggle"));
 }
 
 describe("GuestsSectionForm", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     Object.keys(mockFormData).forEach((key) => delete mockFormData[key]);
+    // Los toggles del patrón checkbox→input quedan activos por defecto para
+    // que los campos opcionales se muestren en los tests.
+    mockFormData.kidsPolicyEnabled = "true";
+    mockFormData.weddingDressCodeEnabled = "true";
+    mockFormData.accommodationURLEnabled = "true";
   });
 
   it("renders without crashing", () => {

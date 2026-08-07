@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.16",
+    date: "2026-08-07",
+    changes: [
+      "Toggles generalizados en el setup: todos los campos opcionales (mensaje, padrinos, redes, foto, sello, fondo, esquinas, música, URL del mapa, historia, regalos, IBAN, vestimenta, niños y alojamiento) tienen un checkbox que muestra/oculta su input. Si no se escribe nada, la sección se desactiva. El filtro de secciones sin contenido cubre ahora todos los inputs (los extras se ocultan si ningún toggle está activo) y las invitaciones existentes conservan sus campos (el toggle se activa si ya había contenido).",
+    ],
+  },
+  {
     version: "2.95.15",
     date: "2026-08-07",
     changes: [

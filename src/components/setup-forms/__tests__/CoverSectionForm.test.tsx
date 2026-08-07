@@ -41,7 +41,7 @@ vi.mock("../../../lib/image-utils", () => ({
   HIGH_QUALITY_TARGET_BYTES: 450 * 1024,
 }));
 
-const mockFormData = vi.hoisted(() => ({ firstName: "John" } as Record<string, string | undefined>));
+const mockFormData = vi.hoisted(() => ({ firstName: "John", godparentsEnabled: "true", inviteMessageEnabled: "true", instagramEnabled: "true", facebookEnabled: "true", couplePhotoEnabled: "true", customSealEnabled: "true", backgroundImageEnabled: "true", cornerDecorationEnabled: "true", musicFileEnabled: "true" } as Record<string, string | undefined>));
 
 vi.mock("../../../contexts", () => ({
   useApp: () => ({
