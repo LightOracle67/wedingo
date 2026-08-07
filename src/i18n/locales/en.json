@@ -1147,6 +1147,9 @@
     "title": "¿Cuánto sabes de la pareja?",
     "guessPlaceholder": "Escribe tu respuesta…"
   },
+  "extras": {
+    "ariaLabel": "More sections"
+  },
   "giftList": {
     "title": "Lista de regalos",
     "namePlaceholder": "Tu nombre",

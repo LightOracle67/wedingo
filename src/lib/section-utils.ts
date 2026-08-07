@@ -17,9 +17,16 @@ export function parseHidden(raw: string | null | undefined) {
 }
 
 /** Indica si una sección tiene contenido configurado (si no, no se muestra en
- *  la invitación aunque esté en el orden de secciones). La galería se decide
- *  dentro de su propia sección (carga las imágenes de forma asíncrona). */
-export function sectionHasContent(key: string, config: InvitationConfig | Partial<InvitationConfig>): boolean {
+ *  la invitación aunque esté en el orden de secciones). El filtro aplica a
+ *  TODAS las secciones: la galería se desactiva si no tiene ninguna imagen
+ *  subida. El default de la galería es visible (el guardado del admin no
+ *  conoce Storage); solo la invitación pública pasa el resultado de la
+ *  consulta real de sus metadatos (galleryHasImages). */
+export function sectionHasContent(
+  key: string,
+  config: InvitationConfig | Partial<InvitationConfig>,
+  galleryHasImages = true,
+): boolean {
   switch (key) {
     case "hero":
       return true;
@@ -40,6 +47,9 @@ export function sectionHasContent(key: string, config: InvitationConfig | Partia
       return !!config.accommodationURL;
     case "transport":
       return config.transportEnabled !== "none" || !!config.transportDepartures;
+    case "gallery":
+      // La galería se desactiva si no tiene ninguna imagen subida.
+      return galleryHasImages;
     default:
       return true;
   }

@@ -43,6 +43,14 @@ describe("sectionHasContent", () => {
   });
 
   it("defaults unknown sections to visible", () => {
+    expect(sectionHasContent("hero", {})).toBe(true);
+  });
+
+  it("hides the gallery when it has no images and shows it with images", () => {
+    // Por defecto (p. ej. en el guardado del admin) la galería es visible.
     expect(sectionHasContent("gallery", {})).toBe(true);
+    expect(sectionHasContent("gallery", {}, true)).toBe(true);
+    // En la invitación pública, sin imágenes subidas, la sección se oculta.
+    expect(sectionHasContent("gallery", {}, false)).toBe(false);
   });
 });

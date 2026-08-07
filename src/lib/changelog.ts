@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.14",
+    date: "2026-08-07",
+    changes: [
+      "El filtro de secciones sin contenido se aplica a TODAS: la galería se oculta si no tiene ninguna imagen subida (se consultan sus metadatos al cargar la invitación). Las funciones sociales (regalos, coche compartido, reacciones, dedicatorias, música y trivia) se agrupan en UNA sección conjunta scrollable al final, en vez de seis secciones separadas.",
+    ],
+  },
+  {
     version: "2.95.13",
     date: "2026-08-07",
     changes: [

@@ -137,6 +137,28 @@ export default function PublicInvitation() {
     return new Set(raw.split(",").filter(Boolean));
   }, [config.hiddenSections]);
 
+  // ─── Galería: ¿tiene imágenes? ─────────────────────────
+  // La galería se desactiva si no tiene ninguna imagen subida (filtro de
+  // secciones sin contenido aplicado a todas). Se consultan los metadatos al
+  // inicio para decidirlo antes de montar la sección.
+  const [galleryImageCount, setGalleryImageCount] = useState<number | null>(null);
+  const galleryHasImages = (galleryImageCount ?? 0) > 0;
+
+  useEffect(() => {
+    if (!inviteToken) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const { loadGalleryMeta } = await import("../lib/image-store");
+        const metas = await loadGalleryMeta(inviteToken);
+        if (!cancelled) setGalleryImageCount(metas.length);
+      } catch {
+        if (!cancelled) setGalleryImageCount(0);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [inviteToken]);
+
   // ─── Orden de secciones visible ────────────────────────
   /**
    * Calcula el orden de secciones a mostrar.
@@ -164,11 +186,12 @@ export default function PublicInvitation() {
         filtered = filtered.filter((s: string) => !hiddenSet.has(s));
       }
       // Oculta las secciones sin contenido configurado (aunque estén en el
-      // orden) para no mostrar secciones vacías al invitado.
-      filtered = filtered.filter((s: string) => sectionHasContent(s, config));
+      // orden) para no mostrar secciones vacías al invitado. Se aplica a
+      // TODAS: la galería se desactiva si no tiene imágenes.
+      filtered = filtered.filter((s: string) => sectionHasContent(s, config, galleryHasImages));
       return filtered;
     },
-    [sectionOrder, showRsvp, hiddenSet, isInviteMode, config],
+    [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages],
   );
 
   // ─── Estados de UI condicionales ───────────────────────
@@ -556,6 +579,15 @@ export default function PublicInvitation() {
     }, 300);
   };
 
+  /** ¿Hay alguna función social activa? Se agrupan todas en UNA sección
+   *  conjunta scrollable al final de la invitación. */
+  const hasExtras = config.giftsListEnabled === "true"
+    || config.rideShareEnabled === "true"
+    || config.reactionsEnabled === "true"
+    || config.notesEnabled === "true"
+    || config.musicPollEnabled === "true"
+    || config.triviaEnabled === "true";
+
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
       style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
@@ -657,52 +689,61 @@ export default function PublicInvitation() {
           })}
         </Suspense>
 
-        {/* ── Funciones sociales (bloques tras el contenido principal) ── */}
-        {config.giftsListEnabled === "true" ? (
-          <section className="story-section" aria-label={t("giftList.title")}>
-            <div className="story-panel">
-              <h2 className="story-title">{t("giftList.title")}</h2>
-              <Suspense fallback={null}><GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} /></Suspense>
-            </div>
-          </section>
-        ) : null}
-        {config.rideShareEnabled === "true" ? (
-          <section className="story-section" aria-label={t("rideShare.title")}>
-            <div className="story-panel">
-              <h2 className="story-title">{t("rideShare.title")}</h2>
-              <Suspense fallback={null}><RideShareSection inviteToken={inviteToken ?? ""} /></Suspense>
-            </div>
-          </section>
-        ) : null}
-        {config.reactionsEnabled === "true" ? (
-          <section className="story-section" aria-label={t("reactions.label")}>
-            <div className="story-panel">
-              <h2 className="story-title">{t("reactions.title")}</h2>
-              <Suspense fallback={null}><ReactionsSection inviteToken={inviteToken ?? ""} /></Suspense>
-            </div>
-          </section>
-        ) : null}
-        {config.notesEnabled === "true" ? (
-          <section className="story-section" aria-label={t("notes.title")}>
-            <div className="story-panel">
-              <h2 className="story-title">{t("notes.title")}</h2>
-              <Suspense fallback={null}><NotesSection inviteToken={inviteToken ?? ""} /></Suspense>
-            </div>
-          </section>
-        ) : null}
-        {config.musicPollEnabled === "true" ? (
-          <section className="story-section" aria-label={t("musicPoll.title")}>
-            <div className="story-panel">
-              <h2 className="story-title">{t("musicPoll.title")}</h2>
-              <Suspense fallback={null}><MusicPollSection inviteToken={inviteToken ?? ""} /></Suspense>
-            </div>
-          </section>
-        ) : null}
-        {config.triviaEnabled === "true" ? (
-          <section className="story-section" aria-label={t("trivia.title")}>
-            <div className="story-panel">
-              <h2 className="story-title">{t("trivia.title")}</h2>
-              <Suspense fallback={null}><TriviaSection trivia={config.trivia ?? "[]"} /></Suspense>
+        {/* ── Funciones sociales: UNA sección conjunta scrollable ── */}
+        {hasExtras ? (
+          <section className="story-section story-section--extras" aria-label={t("extras.ariaLabel")}>
+            <div className="story-panel story-panel--extras w-full">
+              {config.giftsListEnabled === "true" ? (
+                <div className="story-extra-block">
+                  <h2 className="story-title">{t("giftList.title")}</h2>
+                  <Suspense fallback={null}><GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} /></Suspense>
+                </div>
+              ) : null}
+              {config.rideShareEnabled === "true" ? (
+                <>
+                  <div className="story-divider" />
+                  <div className="story-extra-block">
+                    <h2 className="story-title">{t("rideShare.title")}</h2>
+                    <Suspense fallback={null}><RideShareSection inviteToken={inviteToken ?? ""} /></Suspense>
+                  </div>
+                </>
+              ) : null}
+              {config.reactionsEnabled === "true" ? (
+                <>
+                  <div className="story-divider" />
+                  <div className="story-extra-block">
+                    <h2 className="story-title">{t("reactions.title")}</h2>
+                    <Suspense fallback={null}><ReactionsSection inviteToken={inviteToken ?? ""} /></Suspense>
+                  </div>
+                </>
+              ) : null}
+              {config.notesEnabled === "true" ? (
+                <>
+                  <div className="story-divider" />
+                  <div className="story-extra-block">
+                    <h2 className="story-title">{t("notes.title")}</h2>
+                    <Suspense fallback={null}><NotesSection inviteToken={inviteToken ?? ""} /></Suspense>
+                  </div>
+                </>
+              ) : null}
+              {config.musicPollEnabled === "true" ? (
+                <>
+                  <div className="story-divider" />
+                  <div className="story-extra-block">
+                    <h2 className="story-title">{t("musicPoll.title")}</h2>
+                    <Suspense fallback={null}><MusicPollSection inviteToken={inviteToken ?? ""} /></Suspense>
+                  </div>
+                </>
+              ) : null}
+              {config.triviaEnabled === "true" ? (
+                <>
+                  <div className="story-divider" />
+                  <div className="story-extra-block">
+                    <h2 className="story-title">{t("trivia.title")}</h2>
+                    <Suspense fallback={null}><TriviaSection trivia={config.trivia ?? "[]"} /></Suspense>
+                  </div>
+                </>
+              ) : null}
             </div>
           </section>
         ) : null}

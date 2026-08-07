@@ -61,6 +61,7 @@ vi.mock("../../contexts", () => ({
 
 vi.mock("../../lib/image-store", () => ({
   loadGallery: vi.fn(() => Promise.resolve([{ id: "1", url: "https://example.com/1.jpg", description: "" }])),
+  loadGalleryMeta: vi.fn(() => Promise.resolve([{ id: "1", encrypted: "", description: "" }])),
 }));
 
 vi.mock("../../components/ErrorBoundary", () => ({
@@ -569,6 +570,11 @@ describe("PublicInvitation", () => {
       expect(screen.getByTestId("section-giftlist")).toBeDefined();
       expect(screen.getByTestId("section-rideshare")).toBeDefined();
     });
+    // Los extras se agrupan en UNA sección conjunta (no una por función).
+    expect(document.querySelectorAll(".story-section--extras").length).toBe(1);
+    const extrasPanel = document.querySelector(".story-section--extras .story-panel--extras");
+    expect(extrasPanel).not.toBeNull();
+    expect(extrasPanel!.querySelectorAll(".story-extra-block").length).toBe(6);
     mockUseAppValue.config.reactionsEnabled = "false";
     mockUseAppValue.config.notesEnabled = "false";
     mockUseAppValue.config.musicPollEnabled = "false";

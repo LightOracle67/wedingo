@@ -1660,6 +1660,26 @@ button, a, .gallery-thumb, .music-player__fab, .gallery-nav {
   z-index: var(--z-section-text, 2);
 }
 
+/* Sección conjunta de funciones sociales (extras): UNA sección al final con
+   todos los extras activos apilados. Si el contenido excede la pantalla, la
+   sección hace scroll INTERIOR (independiente del scroll general). */
+.story-section--extras {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.05));
+}
+.story-panel--extras {
+  width: min(92%, 44rem);
+  max-height: 92dvh;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+.story-extra-block {
+  margin: 0 auto;
+  max-width: 36rem;
+}
+.story-extra-block .story-title {
+  margin-bottom: 0.5rem;
+}
+
 .story-scroll-hint {
   position: fixed;
   left: 50%;
