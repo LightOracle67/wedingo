@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.17",
+    date: "2026-08-07",
+    changes: [
+      "Fix: la animación de entrada del RSVP (y de cualquier sección) ya no se ejecuta 2 veces. El observer usa ahora un umbral de entrada alto y uno de salida muy bajo: una micro-oscilación del scroll al asentarse ya no hace salir y volver a entrar (antes reiniciaba la animación).",
+    ],
+  },
+  {
     version: "2.95.16",
     date: "2026-08-07",
     changes: [

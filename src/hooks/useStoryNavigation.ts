@@ -142,9 +142,16 @@ export function useStoryNavigation(
         // ~70% visible (justo al terminar el scroll); una sección más baja que
         // el viewport (p. ej. la sección de extras) entra con solo asomarse,
         // porque nunca alcanzaría el 70%.
+        // IMPORTANTE: el umbral de SALIDA es mucho más bajo que el de entrada.
+        // Si ambos fuesen el mismo, una micro-oscilación del scroll al
+        // asentarse (p. ej. el snap del RSVP) bajaba del 70% y volvía a subir,
+        // disparando entering → leaving → entering y animando la sección DOS
+        // veces. Entre el umbral de salida y el de entrada no se cambia estado.
         const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
         const isTall = (entry.target as HTMLElement).clientHeight >= window.innerHeight * 0.8;
-        const isEntered = isTall ? ratio >= VISIBILITY_THRESHOLD : ratio > 0.1;
+        const enteredThreshold = isTall ? VISIBILITY_THRESHOLD : 0.1;
+        const isEntered = ratio >= enteredThreshold;
+        const isGone = ratio <= 0.15;
 
         if (isEntered) {
           setActiveSection(key);
@@ -167,20 +174,24 @@ export function useStoryNavigation(
               s[key] === "entering" || s[key] === "active" ? s : { ...s, [key]: "entering" });
             schedule(key, "entering", "active", ENTER_MS);
           }
-        } else if (isFirstContact) {
-          setStages((s) => ({ ...s, [key]: "hidden" }));
-        } else if (reducedMotion) {
-          setStages((s) => ({ ...s, [key]: "hidden" }));
-        } else {
-          // Sale del viewport: animación de salida, luego hidden.
-          setStages((s) => {
-            if (s[key] === "entering" || s[key] === "active") return { ...s, [key]: "leaving" };
-            return s;
-          });
-          schedule(key, "leaving", "hidden", LEAVE_MS);
+        } else if (isGone) {
+          if (isFirstContact) {
+            setStages((s) => ({ ...s, [key]: "hidden" }));
+          } else if (reducedMotion) {
+            setStages((s) => ({ ...s, [key]: "hidden" }));
+          } else {
+            // Sale del viewport: animación de salida, luego hidden.
+            setStages((s) => {
+              if (s[key] === "entering" || s[key] === "active") return { ...s, [key]: "leaving" };
+              return s;
+            });
+            schedule(key, "leaving", "hidden", LEAVE_MS);
+          }
         }
+        // Entre el umbral de salida (0.15) y el de entrada no se cambia de
+        // estado: evita reiniciar la animación por variaciones del scroll.
       }
-    }, { threshold: [0.1, VISIBILITY_THRESHOLD] });
+    }, { threshold: [0.1, 0.15, VISIBILITY_THRESHOLD] });
 
     // ── Control de scroll: una sección por gesto ─────────────────────
     let moving = false;

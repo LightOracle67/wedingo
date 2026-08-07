@@ -203,6 +203,36 @@ describe("useStoryNavigation", () => {
     el.remove();
   });
 
+  it("does not re-trigger the entry on a scroll micro-oscillation", async () => {
+    // Si la sección baja del umbral de entrada pero sigue visible (entre 0.15
+    // y 0.7) y luego sube, NO debe salir y volver a entrar (la animación se
+    // ejecutaría 2 veces). Se mantiene activa sin animar de nuevo.
+    let cb: IntersectionObserverCallback | null = null;
+    class FakeIO {
+      constructor(c: IntersectionObserverCallback) { cb = c; }
+      observe() {}
+      disconnect() {}
+    }
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
+    const el = document.createElement("div");
+    el.setAttribute("data-story-section", "rsvp");
+    el.style.height = "800px";
+    document.body.appendChild(el);
+
+    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    await vi.waitFor(() => { expect(cb).not.toBeNull(); });
+    act(() => { cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    expect(result.current.getSectionClassName("rsvp")).toContain("story-section--is-active");
+    // Micro-oscilación: ratio 0.5 (baja del 70% pero sigue visible).
+    act(() => { cb!([{ isIntersecting: false, intersectionRatio: 0.5, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    expect(result.current.getSectionClassName("rsvp")).not.toContain("story-section--is-leave");
+    // Vuelve a estar totalmente visible: sigue activa, sin nueva entrada.
+    act(() => { cb!([{ isIntersecting: true, intersectionRatio: 1, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    expect(result.current.getSectionClassName("rsvp")).toContain("story-section--is-active");
+    expect(result.current.getSectionClassName("rsvp")).not.toContain("story-section--is-enter");
+    el.remove();
+  });
+
   it("skips intermediate stages with reduced motion", async () => {
     let cb: IntersectionObserverCallback | null = null;
     class FakeIO {
