@@ -307,7 +307,7 @@
     "godparentsLegend": "Godparents (opsyonal)",
     "menuCelebrationLabel": "Menu sa selebrasyon *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "Akong nabasa ug gidawat ang Privacy Policy",
+    "privacyConsent": "<link>Privacy Policy</link>",
     "errorEmptyFile": "Ang file walay sulod. ",
     "errorFileFormat": "Dili gitugotan ang porma. ",
     "errorFileSize": "Ang hulagway milapas sa 20 MB.",

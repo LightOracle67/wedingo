@@ -307,7 +307,7 @@
     "godparentsLegend": "ಗಾಡ್ ಪೇರೆಂಟ್ಸ್ (ಐಚ್ಛಿಕ)",
     "menuCelebrationLabel": "ಆಚರಣೆ ಮೆನು *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "ನಾನು ಗೌಪ್ಯತಾ ನೀತಿಯನ್ನು ಓದಿದ್ದೇನೆ ಮತ್ತು ಸ್ವೀಕರಿಸಿದ್ದೇನೆ",
+    "privacyConsent": "<link>ಗೌಪ್ಯತಾ ನೀತಿಯನ್ನು</link>",
     "errorEmptyFile": "ಫೈಲ್ ಖಾಲಿಯಾಗಿದೆ. ",
     "errorFileFormat": "ಸ್ವರೂಪವನ್ನು ಅನುಮತಿಸಲಾಗುವುದಿಲ್ಲ. ",
     "errorFileSize": "ಚಿತ್ರವು 20 MB ಮೀರಿದೆ.",

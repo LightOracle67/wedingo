@@ -307,7 +307,7 @@
     "godparentsLegend": "教父母（可选）",
     "menuCelebrationLabel": "庆祝菜单*",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "我已阅读并接受隐私政策",
+    "privacyConsent": "<link>隐私政策</link>",
     "errorEmptyFile": "文件为空。",
     "errorFileFormat": "格式不允许。",
     "errorFileSize": "图像超过 20 MB。",

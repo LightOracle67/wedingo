@@ -307,7 +307,7 @@
     "godparentsLegend": "Vanamwari (kusarudza)",
     "menuCelebrationLabel": "Menyu yemhemberero *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "Ndakaverenga uye ndagamuchira Privacy Policy",
+    "privacyConsent": "<link>Privacy Policy</link>",
     "errorEmptyFile": "Iyo faira haina chinhu. ",
     "errorFileFormat": "Fomati haibvumidzwe. ",
     "errorFileSize": "Mufananidzo unodarika 20 MB.",

@@ -140,8 +140,10 @@ html {
   --z-footer: 3;
   --z-scroll-hint: 3;
   --z-admin-bar: 4;
-  --z-nav-toggle: 5;
-  --z-nav-overlay: 6;
+  /* El toggle (botón ☰/✕) va POR ENCIMA del overlay abierto del menú,
+     pero POR DEBAJO de los modales (--z-modal: 10) que se abren desde él. */
+  --z-nav-overlay: 5;
+  --z-nav-toggle: 6;
   --z-toast: 9;
   --z-music: 8;
   --z-modal: 10;

@@ -307,7 +307,7 @@
     "godparentsLegend": "Abazali bakathixo (uyazikhethela)",
     "menuCelebrationLabel": "Imenyu yoMbhiyozo *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "Ndiyifundile kwaye ndayamkela iPolisi yaBucala",
+    "privacyConsent": "<link>iPolisi yaBucala</link>",
     "errorEmptyFile": "Ifayile ayinanto. ",
     "errorFileFormat": "Ukufomatha akuvumelekanga. ",
     "errorFileSize": "Umfanekiso ungaphezulu kwe-20 MB.",

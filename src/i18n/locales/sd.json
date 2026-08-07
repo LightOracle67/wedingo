@@ -307,7 +307,7 @@
     "godparentsLegend": "والدين (اختياري)",
     "menuCelebrationLabel": "جشن مينيو *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "مون پڙهيو آهي ۽ قبول ڪيو آهي رازداري پاليسي",
+    "privacyConsent": "<link>رازداري پاليسي</link>",
     "errorEmptyFile": "فائل خالي آهي. ",
     "errorFileFormat": "فارميٽ جي اجازت ناهي. ",
     "errorFileSize": "تصوير 20 MB کان وڌيڪ آهي.",

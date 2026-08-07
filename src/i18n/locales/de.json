@@ -301,7 +301,7 @@
     "godparentsLegend": "Paten (optional)",
     "menuCelebrationLabel": "Menü der Feier *",
     "themeGroupCount": "{{count}} Designs",
-    "privacyConsent": "Ich habe die Datenschutzerklärung gelesen und akzeptiere sie",
+    "privacyConsent": "<link>Datenschutzerklärung</link>",
     "errorFileFormat": "Format nicht erlaubt. Bitte verwende JPG oder PNG.",
     "errorFileSize": "Das Bild überschreitet 20 MB.",
     "photoUploaded": "Foto erfolgreich hochgeladen.",

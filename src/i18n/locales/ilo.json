@@ -307,7 +307,7 @@
     "godparentsLegend": "Padrino (opsional) .",
     "menuCelebrationLabel": "Menu ti selebrasion * .",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "Nabasak ken inawatko ti Privacy Policy",
+    "privacyConsent": "<link>Privacy Policy</link>",
     "errorEmptyFile": "Awan ti kargana ti file. ",
     "errorFileFormat": "Saan a maipalubos ti pormat. ",
     "errorFileSize": "Ti ladawan ket nasurok a 20 MB.",

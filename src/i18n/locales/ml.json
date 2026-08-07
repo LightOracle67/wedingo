@@ -307,7 +307,7 @@
     "godparentsLegend": "ഗോഡ് പാരൻ്റ്സ് (ഓപ്ഷണൽ)",
     "menuCelebrationLabel": "ആഘോഷ മെനു *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "ഞാൻ സ്വകാര്യതാ നയം വായിക്കുകയും അംഗീകരിക്കുകയും ചെയ്തിട്ടുണ്ട്",
+    "privacyConsent": "<link>സ്വകാര്യതാ നയം</link>",
     "errorEmptyFile": "ഫയൽ ശൂന്യമാണ്. ",
     "errorFileFormat": "ഫോർമാറ്റ് അനുവദനീയമല്ല. ",
     "errorFileSize": "ചിത്രം 20 MB കവിയുന്നു.",

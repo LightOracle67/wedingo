@@ -301,7 +301,7 @@
     "godparentsLegend": "Padriños (opcional)",
     "menuCelebrationLabel": "Menú da celebración *",
     "themeGroupCount": "{{count}} temas",
-    "privacyConsent": "Lin e acepto a Política de Privacidade",
+    "privacyConsent": "<link>Política de Privacidade</link>",
     "errorFileFormat": "Formato non permitido. Usa JPG ou PNG.",
     "errorFileSize": "A imaxe supera 20 MB.",
     "photoUploaded": "Foto subida correctamente.",

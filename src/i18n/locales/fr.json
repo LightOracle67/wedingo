@@ -301,7 +301,7 @@
     "godparentsLegend": "Parrains/marraines (optionnel)",
     "menuCelebrationLabel": "Menu de la célébration *",
     "themeGroupCount": "{{count}} thèmes",
-    "privacyConsent": "J'ai lu et j'accepte la Politique de confidentialité",
+    "privacyConsent": "<link>Politique de confidentialité</link>",
     "errorFileFormat": "Format non autorisé. Utilisez JPG ou PNG.",
     "errorFileSize": "L'image dépasse 20 Mo.",
     "photoUploaded": "Photo téléchargée avec succès.",

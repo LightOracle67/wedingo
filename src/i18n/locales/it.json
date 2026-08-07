@@ -301,7 +301,7 @@
     "godparentsLegend": "Testimoni (opzionale)",
     "menuCelebrationLabel": "Menu della celebrazione *",
     "themeGroupCount": "{{count}} temi",
-    "privacyConsent": "Ho letto e accetto l'Informativa sulla Privacy",
+    "privacyConsent": "<link>Informativa sulla Privacy</link>",
     "errorFileFormat": "Formato non consentito. Usa JPG o PNG.",
     "errorFileSize": "L'immagine supera i 20 MB.",
     "photoUploaded": "Foto caricata correttamente.",

@@ -307,7 +307,7 @@
     "godparentsLegend": "Batsadi ba Modimo (ga go tlhokege)",
     "menuCelebrationLabel": "Menyu wa moletlo *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "Ke badile le go amogela Pholisi ya Polokodiphiri",
+    "privacyConsent": "<link>Pholisi ya Polokodiphiri</link>",
     "errorEmptyFile": "Faele ga e na sepe. ",
     "errorFileFormat": "Fomete ga e a letlelelwa. ",
     "errorFileSize": "Setshwantsho se feta 20 MB.",

@@ -343,7 +343,7 @@
     "godparentsLegend": "Godparents (optional)",
     "menuCelebrationLabel": "Celebration menu *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "I have read and accept the Privacy Policy",
+    "privacyConsent": "<link>Privacy Policy</link>",
     "errorEmptyFile": "The file is empty. Select a valid file.",
     "errorFileFormat": "Format not allowed. Use JPG or PNG.",
     "errorFileSize": "The image exceeds 20 MB.",

@@ -307,7 +307,7 @@
     "godparentsLegend": "Хросныя бацькі (неабавязкова)",
     "menuCelebrationLabel": "Святочнае меню *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "Я прачытаў і прымаю Палітыку прыватнасці",
+    "privacyConsent": "<link>Палітыку прыватнасці</link>",
     "errorEmptyFile": "Файл пусты. ",
     "errorFileFormat": "Фармат недапушчальны. ",
     "errorFileSize": "Выява перавышае 20 Мб.",

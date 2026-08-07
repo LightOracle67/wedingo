@@ -307,7 +307,7 @@
     "godparentsLegend": "Agogo (ngati mukufuna)",
     "menuCelebrationLabel": "Menyu yachikondwerero *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "Ndawerenga ndikuvomereza Mfundo Zazinsinsi",
+    "privacyConsent": "<link>Mfundo Zazinsinsi</link>",
     "errorEmptyFile": "Fayilo ilibe kanthu. ",
     "errorFileFormat": "Mawonekedwe saloledwa. ",
     "errorFileSize": "Chithunzicho chimaposa 20 MB.",

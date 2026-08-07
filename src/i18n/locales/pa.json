@@ -307,7 +307,7 @@
     "godparentsLegend": "ਗੋਡਪੇਰੈਂਟਸ (ਵਿਕਲਪਿਕ)",
     "menuCelebrationLabel": "ਜਸ਼ਨ ਮੇਨੂ *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "ਮੈਂ ਗੋਪਨੀਯਤਾ ਨੀਤੀ ਨੂੰ ਪੜ੍ਹ ਲਿਆ ਹੈ ਅਤੇ ਸਵੀਕਾਰ ਕਰ ਲਿਆ ਹੈ",
+    "privacyConsent": "<link>ਗੋਪਨੀਯਤਾ ਨੀਤੀ</link>",
     "errorEmptyFile": "ਫਾਈਲ ਖਾਲੀ ਹੈ। ",
     "errorFileFormat": "ਫਾਰਮੈਟ ਦੀ ਇਜਾਜ਼ਤ ਨਹੀਂ ਹੈ। ",
     "errorFileSize": "ਚਿੱਤਰ 20 MB ਤੋਂ ਵੱਧ ਹੈ।",

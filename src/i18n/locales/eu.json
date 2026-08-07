@@ -301,7 +301,7 @@
     "godparentsLegend": "Aitabitxiak (aukerakoa)",
     "menuCelebrationLabel": "Ospakizunaren menua *",
     "themeGroupCount": "{{count}} gai",
-    "privacyConsent": "Irakurri eta onartzen dut Pribatutasun Politika",
+    "privacyConsent": "<link>Pribatutasun Politika</link>",
     "errorFileFormat": "Formatu ez onartua. Erabili JPG edo PNG.",
     "errorFileSize": "Irudiak 20 MB gainditzen ditu.",
     "photoUploaded": "Argazkia ongi igo da.",

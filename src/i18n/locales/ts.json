@@ -307,7 +307,7 @@
     "godparentsLegend": "Vatswari va Xikwembu (hi ku hlawula) .",
     "menuCelebrationLabel": "Menyu ya nkhuvo * .",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "Ndzi hlayile naswona ndzi amukele Pholisi ya Vuhlayiseki bya Swihundla",
+    "privacyConsent": "<link>Pholisi ya Vuhlayiseki</link>",
     "errorEmptyFile": "Fayili a yi na nchumu. ",
     "errorFileFormat": "Fomati a yi pfumeleriwi. ",
     "errorFileSize": "Xifaniso xi tlula 20 MB.",

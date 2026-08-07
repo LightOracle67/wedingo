@@ -307,7 +307,7 @@
     "godparentsLegend": "Peetouers (opsioneel)",
     "menuCelebrationLabel": "Viering spyskaart *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "Ek het die Privaatheidsbeleid gelees en aanvaar",
+    "privacyConsent": "<link>Privaatheidsbeleid</link>",
     "errorEmptyFile": "Die lêer is leeg. ",
     "errorFileFormat": "Formaat nie toegelaat nie. ",
     "errorFileSize": "Die prent oorskry 20 MB.",

@@ -307,7 +307,7 @@
     "godparentsLegend": "Batsoali ba Molimo (boikhethelo)",
     "menuCelebrationLabel": "Lenane la mokete *",
     "themeGroupCount": "{{count}} themes",
-    "privacyConsent": "Ke balile ebile ke amohetse Leano la Lekunutu",
+    "privacyConsent": "<link>Leano la Lekunutu</link>",
     "errorEmptyFile": "Faele ha e na letho. ",
     "errorFileFormat": "Sebopeho ha se lumelloe. ",
     "errorFileSize": "Setšoantšo se feta 20 MB.",
