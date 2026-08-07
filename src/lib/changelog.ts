@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.18",
+    date: "2026-08-07",
+    changes: [
+      "Fix animación doble del RSVP: la entrada animaba .story-card-wrap y .story-card (anidados), acumulando el desplazamiento (efecto de animación repetida), y el formulario del RSVP re-animaba sus hijos a los 640ms. Ahora anima solo la caja (.story-card-wrap) y el formulario entra con ella, sin re-animarse.",
+    ],
+  },
+  {
     version: "2.95.17",
     date: "2026-08-07",
     changes: [
