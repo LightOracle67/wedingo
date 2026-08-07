@@ -3070,8 +3070,11 @@ body::after {
 .rides-share__meta { font-size: 0.78rem; color: var(--setup-muted, #a99f8e); }
 
 /* Confeti al abrir el sobre. */
-.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 10050; overflow: hidden; }
-.confetti__piece { position: absolute; top: -10px; border-radius: 2px; animation-name: confetti-fall; animation-timing-function: linear; animation-iteration-count: infinite; }
+/* Confeti al abrir el sobre: va DETRÁS de la invitación (z-index bajo, el
+   panel translúcido de cada sección lo deja asomar) y cada pieza cae 3
+   veces con la misma duración (elegante, no errático). */
+.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.confetti__piece { position: absolute; top: -10px; border-radius: 2px; animation-name: confetti-fall; animation-timing-function: linear; animation-iteration-count: 3; }
 @keyframes confetti-fall { to { transform: translateY(105vh) rotate(720deg); opacity: 0.4; } }
 @media (prefers-reduced-motion: reduce) { .confetti { display: none; } }
 

@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.12",
+    date: "2026-08-07",
+    changes: [
+      "Confeti al abrir el sobre: ahora se ve DETRÁS de la invitación (z-index bajo, asoma a través del panel translúcido), cada pieza cae 3 veces con duración uniforme (ya no es errático) y arranca justo al terminar el fade out del texto del sobre (2.6s), de modo que ya cae cuando se muestra la invitación.",
+    ],
+  },
+  {
     version: "2.95.11",
     date: "2026-08-07",
     changes: [

@@ -4,7 +4,7 @@ import { useFocusTrap } from "../hooks/useFocusTrap";
 import { randomMessage } from "../lib/invite-messages";
 import "../styles/envelope.css";
 
-const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secondName, customSeal, inviteToken }: { onOpen: () => void; firstName: string; secondName: string; customSeal?: string | undefined; inviteToken?: string | undefined }) {
+const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, onConfetti, firstName, secondName, customSeal, inviteToken }: { onOpen: () => void; onConfetti?: () => void; firstName: string; secondName: string; customSeal?: string | undefined; inviteToken?: string | undefined }) {
 
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -47,6 +47,10 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
 
     setExiting(true);
     try { window.dispatchEvent(new CustomEvent("wedin:play-audio")); } catch {}
+    // El texto dorado tarda 2.5s en desvanecerse (opacity 2s / transform 2.5s):
+    // el confeti arranca justo al terminar ese fade out, detrás del sobre que
+    // todavía se está yendo, de modo que ya cae cuando la invitación aparece.
+    setTimeout(() => onConfetti?.(), 2600);
     setTimeout(() => {
 
       document.body.style.overflow = "";
@@ -54,7 +58,7 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, firstName, secon
       if (main) main.focus({ preventScroll: true });
       onOpen();
     }, 3500);
-  }, [onOpen, open, exiting]);
+  }, [onOpen, onConfetti, open, exiting]);
 
   return (
     <div ref={overlayRef} className={`envelope-overlay ${exiting ? "envelope-overlay--exit" : ""}`} onClick={handleClick} tabIndex={0} role="button" aria-label={t("envelope.tapContinue")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick(); } }}>

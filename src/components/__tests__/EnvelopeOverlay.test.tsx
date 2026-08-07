@@ -46,6 +46,22 @@ describe("EnvelopeOverlay", () => {
     vi.useRealTimers();
   });
 
+  it("calls onConfetti right after the golden text fade out (2.6s)", () => {
+    vi.useFakeTimers();
+    const onConfetti = vi.fn();
+    const onOpen = vi.fn();
+    render(<EnvelopeOverlay {...defaultProps} onOpen={onOpen} onConfetti={onConfetti} />);
+    const btn = screen.getByRole("button");
+    fireEvent.click(btn);
+    fireEvent.click(btn);
+    // A los 2.6s (justo tras el fade out del texto de 2.5s) el confeti arranca.
+    vi.advanceTimersByTime(2600);
+    expect(onConfetti).toHaveBeenCalledTimes(1);
+    // Y antes de mostrar la invitación (onOpen a los 3.5s).
+    expect(onOpen).not.toHaveBeenCalled();
+    vi.useRealTimers();
+  });
+
   it("marks the golden message as exiting on the second click", () => {
     render(<EnvelopeOverlay {...defaultProps} />);
     const btn = screen.getByRole("button");

@@ -77,15 +77,24 @@ const SECTION_COMPONENTS = {
 /** Props vacías compartidas (referencia estable, no rompe React.memo). */
 const EMPTY_PROPS: Record<string, unknown> = {};
 
-/** Confeti decorativo al abrir el sobre: piezas CSS puras con animación
- *  (respetada por prefers-reduced-motion). Sin interacción. */
+/** Duración (ms) de cada caída de confeti y número de repeticiones: la caída
+ *  es uniforme (misma duración y stagger corto) para que se vea elegante y
+ *  no errática, y se repite 3 veces detrás de la invitación. */
+const CONF_FALL_MS = 2200;
+const CONF_REPEATS = 3;
+const CONF_TOTAL_MS = CONF_FALL_MS * CONF_REPEATS + 900;
+
+/** Confeti decorativo al abrir el sobre: piezas CSS puras con animación de
+ *  caída (respetada por prefers-reduced-motion). Va DETRÁS de la invitación
+ *  (z-index bajo) y cada pieza cae 3 veces. Sin interacción. */
 function Confetti() {
   const pieces = useMemo(() => Array.from({ length: 48 }, (_, i) => ({
-    left: `${Math.random() * 100}%`,
-    delay: `${Math.random() * 0.8}s`,
-    duration: `${1.6 + Math.random() * 1.2}s`,
+    // Distribución uniforme (no aleatoria): el confeti se ve natural, no errático.
+    left: `${(i * 2.1) % 100}%`,
+    delay: `${(i % 9) * 0.1}s`,
+    duration: `${CONF_FALL_MS}ms`,
     color: ["#d8b24a", "#e8d0d8", "#8fb8a8", "#f0e6d0", "#c8a84e"][i % 5],
-    size: `${6 + Math.random() * 6}px`,
+    size: `${7 + (i % 3) * 3}px`,
   })), []);
   return (
     <div className="confetti" aria-hidden="true">
@@ -552,11 +561,14 @@ export default function PublicInvitation() {
       style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
       {showEnvelope ? <EnvelopeOverlay onOpen={() => {
         setEnvelopeOpen(true);
-        setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 2800);
         if (config.welcomeVideo && config.welcomeVideoEnabled !== "false") setShowWelcomeVideo(true);
         // Apertura del sobre: el gesto principal de la invitación.
         trackEvent("envelope_open", { method: "click" });
+      }} onConfetti={() => {
+        // El confeti arranca justo al terminar el fade out del texto del sobre
+        // (2.6s tras el segundo gesto) y cae 3 veces detrás de la invitación.
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), CONF_TOTAL_MS);
       }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} inviteToken={inviteToken} /> : null}
 
       {/* Confeti al abrir el sobre (decoración, sin interacción). */}
