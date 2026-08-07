@@ -4,7 +4,6 @@ import "./Fireflies.css";
 const COUNT = 20;
 
 const Fireflies = memo(function Fireflies() {
-
   return (
     <div className="fireflies" aria-hidden="true">
       {Array.from({ length: COUNT }, (_, i) => {

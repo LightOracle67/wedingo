@@ -33,11 +33,25 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: { musicUrl?: string 
   useEffect(() => {
     const el = audioRef.current;
     if (!el || !musicUrl) return;
-    const onError = () => { setLoading(false); setError(true); setPlaying(false); };
+    const onError = () => {
+      setLoading(false);
+      setError(true);
+      setPlaying(false);
+    };
     const onEnded = () => setPlaying(false);
-    const onPlay = () => { setPlaying(true); setError(false); setLoading(false); };
-    const onPause = () => { setPlaying(false); };
-    const onPlayAudio = () => { el.play().then(() => setPlaying(true)).catch(() => {}); };
+    const onPlay = () => {
+      setPlaying(true);
+      setError(false);
+      setLoading(false);
+    };
+    const onPause = () => {
+      setPlaying(false);
+    };
+    const onPlayAudio = () => {
+      el.play()
+        .then(() => setPlaying(true))
+        .catch(() => {});
+    };
     el.addEventListener("error", onError);
     el.addEventListener("ended", onEnded);
     el.addEventListener("play", onPlay);
@@ -74,7 +88,16 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: { musicUrl?: string 
       setError(false);
       setLoading(true);
       setIconKey((k) => k + 1);
-      el.play().then(() => { setPlaying(true); setLoading(false); }).catch(() => { setLoading(false); setError(true); setPlaying(false); });
+      el.play()
+        .then(() => {
+          setPlaying(true);
+          setLoading(false);
+        })
+        .catch(() => {
+          setLoading(false);
+          setError(true);
+          setPlaying(false);
+        });
     }
   }, [playing, musicUrl]);
 
@@ -91,21 +114,57 @@ const MusicPlayer = memo(function MusicPlayer({ musicUrl }: { musicUrl?: string 
 
       <div className={`music-player__card${open ? " music-player__card--open" : ""}`}>
         <span className="music-player__track">{name}</span>
-        {error ? <span className="music-player__status" role="alert">{t("music.loadError")}</span> : null}
+        {error ? (
+          <span className="music-player__status" role="alert">
+            {t("music.loadError")}
+          </span>
+        ) : null}
         <div className="music-player__controls">
-          <button type="button" className={`music-player__play${playing ? " music-player__play--active" : ""}`} onClick={toggleMusic} disabled={loading || !hasMusic} aria-label={playing ? t("music.pause") : t("music.play")}>
+          <button
+            type="button"
+            className={`music-player__play${playing ? " music-player__play--active" : ""}`}
+            onClick={toggleMusic}
+            disabled={loading || !hasMusic}
+            aria-label={playing ? t("music.pause") : t("music.play")}
+          >
             {loading ? <span className="music-player__spinner" /> : playing ? <span>⏸</span> : <span>▶</span>}
           </button>
           <div className="music-player__volume-row">
-            <span className="music-player__vol-icon" aria-hidden="true">{volume === 0 ? "🔇" : volume < 0.5 ? "🔉" : "🔊"}</span>
-            <input type="range" min="0" max="1" step="0.05" value={volume} onChange={handleVolume} className="music-player__volume" disabled={!hasMusic} aria-label={t("music.volume")} />
+            <span className="music-player__vol-icon" aria-hidden="true">
+              {volume === 0 ? "🔇" : volume < 0.5 ? "🔉" : "🔊"}
+            </span>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={volume}
+              onChange={handleVolume}
+              className="music-player__volume"
+              disabled={!hasMusic}
+              aria-label={t("music.volume")}
+            />
           </div>
         </div>
       </div>
 
-      <button type="button" className={`music-player__fab${playing ? " music-player__fab--playing" : ""}${open ? " music-player__fab--shifted" : ""}${error ? " music-player__fab--error" : ""}`} onClick={handleToggle} aria-label={error ? t("music.loadError") : t("music.label")}>
-        <span key={iconKey} className={`music-player__fab-icon${open || playing ? " music-player__fab-icon--spin" : ""}`}>♪</span>
-        {error ? <span className="music-player__fab-dot music-player__fab-dot--error" /> : !hasMusic ? <span className="music-player__fab-dot" /> : null}
+      <button
+        type="button"
+        className={`music-player__fab${playing ? " music-player__fab--playing" : ""}${open ? " music-player__fab--shifted" : ""}${error ? " music-player__fab--error" : ""}`}
+        onClick={handleToggle}
+        aria-label={error ? t("music.loadError") : t("music.label")}
+      >
+        <span
+          key={iconKey}
+          className={`music-player__fab-icon${open || playing ? " music-player__fab-icon--spin" : ""}`}
+        >
+          ♪
+        </span>
+        {error ? (
+          <span className="music-player__fab-dot music-player__fab-dot--error" />
+        ) : !hasMusic ? (
+          <span className="music-player__fab-dot" />
+        ) : null}
         <EqualizerBars isPlaying={playing} />
       </button>
     </div>

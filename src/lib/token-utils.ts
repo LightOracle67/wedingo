@@ -6,7 +6,9 @@ export const generateSetupToken = () => {
   // y no se requiere rejection-sampling.
   const bytes = new Uint8Array(needed);
   crypto.getRandomValues(bytes);
-  const rawToken = Array.from(bytes, (byte) => alphabet[byte % alphabetLen]).join("").slice(0, needed);
+  const rawToken = Array.from(bytes, (byte) => alphabet[byte % alphabetLen])
+    .join("")
+    .slice(0, needed);
   const token = rawToken.match(/.{1,4}/g)?.join("-") ?? rawToken;
 
   return token;
@@ -14,10 +16,12 @@ export const generateSetupToken = () => {
 
 export const normalizeTokenValue = (value: unknown) => {
   if (typeof value !== "string") {
-
     return "";
   }
-  const normalized = value.trim().toUpperCase().replace(/[^A-Z0-9]/g, "");
+  const normalized = value
+    .trim()
+    .toUpperCase()
+    .replace(/[^A-Z0-9]/g, "");
 
   return normalized;
 };

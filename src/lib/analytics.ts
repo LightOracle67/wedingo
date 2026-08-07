@@ -107,6 +107,5 @@ export function trackEvent(eventName: string, params?: Record<string, unknown>) 
       const { logEvent } = await import("firebase/analytics");
       logEvent(analytics, eventName, params);
     })
-    .catch(() => { });
+    .catch(() => {});
 }
-

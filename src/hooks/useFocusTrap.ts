@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 
-const FOCUSABLE = 'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+const FOCUSABLE =
+  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 export function useFocusTrap<T extends HTMLElement = HTMLElement>(open: boolean) {
   const ref = useRef<T | null>(null);
@@ -20,8 +21,13 @@ export function useFocusTrap<T extends HTMLElement = HTMLElement>(open: boolean)
         const current = el.querySelectorAll(FOCUSABLE);
         const f = current[0];
         const l = current[current.length - 1];
-        if (e.shiftKey && document.activeElement === f) { e.preventDefault(); (l as HTMLElement)?.focus(); }
-        else if (!e.shiftKey && document.activeElement === l) { e.preventDefault(); (f as HTMLElement)?.focus(); }
+        if (e.shiftKey && document.activeElement === f) {
+          e.preventDefault();
+          (l as HTMLElement)?.focus();
+        } else if (!e.shiftKey && document.activeElement === l) {
+          e.preventDefault();
+          (f as HTMLElement)?.focus();
+        }
       }
     };
     el.addEventListener("keydown", handleKey);
@@ -42,7 +48,9 @@ export function useFocusTrap<T extends HTMLElement = HTMLElement>(open: boolean)
 export function useEscapeKey(onEscape: () => void, enabled = true) {
   useEffect(() => {
     if (!enabled) return;
-    const handleKey = (e: KeyboardEvent) => { if (e.key === "Escape") onEscape(); };
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onEscape();
+    };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [onEscape, enabled]);

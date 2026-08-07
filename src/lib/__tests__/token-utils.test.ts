@@ -14,7 +14,6 @@ afterEach(() => {
   vi.unstubAllGlobals();
 });
 
-
 describe("generateSetupToken", () => {
   it("returns a string", () => {
     const token = generateSetupToken();
@@ -40,7 +39,10 @@ describe("generateSetupToken with edge cases", () => {
   });
 
   it("skips invalid bytes and accepts valid ones", () => {
-    vi.stubGlobal("crypto", { ...crypto, getRandomValues: (arr: Uint8Array) => mockRandomValues(arr, (i) => (i % 2 === 0 ? 10 : 255)) });
+    vi.stubGlobal("crypto", {
+      ...crypto,
+      getRandomValues: (arr: Uint8Array) => mockRandomValues(arr, (i) => (i % 2 === 0 ? 10 : 255)),
+    });
     const token = generateSetupToken();
     expect(typeof token).toBe("string");
     expect(token.length).toBeGreaterThan(0);
@@ -49,7 +51,10 @@ describe("generateSetupToken with edge cases", () => {
 
 describe("generateInviteToken with edge cases", () => {
   it("skips invalid random bytes deterministically", () => {
-    vi.stubGlobal("crypto", { ...crypto, getRandomValues: (arr: Uint8Array) => mockRandomValues(arr, (i) => (i % 2 === 0 ? 10 : 255)) });
+    vi.stubGlobal("crypto", {
+      ...crypto,
+      getRandomValues: (arr: Uint8Array) => mockRandomValues(arr, (i) => (i % 2 === 0 ? 10 : 255)),
+    });
     const token = generateInviteToken();
     expect(typeof token).toBe("string");
     expect(token.length).toBeGreaterThan(0);

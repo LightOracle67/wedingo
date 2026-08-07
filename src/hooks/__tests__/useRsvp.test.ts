@@ -3,22 +3,28 @@ import { renderHook, act, waitFor } from "@testing-library/react";
 
 let mockDocIdCounter = 0;
 const mockDeleteDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
-const mockGetDocs = vi.hoisted(() => vi.fn(() => Promise.resolve({ docs: [] as Array<{ id: string; ref?: unknown; data: () => any }>, forEach: vi.fn() })));
-const mockDoc = vi.hoisted(() => vi.fn((_col?: unknown, id?: string) =>
-  id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` },
-));
-const mockWriteBatch = vi.hoisted(() => vi.fn(() => ({
-  set: vi.fn(),
-  update: vi.fn(),
-  delete: vi.fn(),
-  commit: vi.fn(() => Promise.resolve()),
-})));
+const mockGetDocs = vi.hoisted(() =>
+  vi.fn(() => Promise.resolve({ docs: [] as Array<{ id: string; ref?: unknown; data: () => any }>, forEach: vi.fn() })),
+);
+const mockDoc = vi.hoisted(() =>
+  vi.fn((_col?: unknown, id?: string) => (id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` })),
+);
+const mockWriteBatch = vi.hoisted(() =>
+  vi.fn(() => ({
+    set: vi.fn(),
+    update: vi.fn(),
+    delete: vi.fn(),
+    commit: vi.fn(() => Promise.resolve()),
+  })),
+);
 const mockGetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve({ exists: () => true, data: () => ({ count: 0 }) })));
 const mockSetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 const mockEncrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockDecrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockComputeAge = vi.hoisted(() => vi.fn(() => 25));
-const mockParseDietaryInfo = vi.hoisted(() => vi.fn(() => ({ mealChoice: "", dietarySelection: [] as string[], dietaryOther: "" })));
+const mockParseDietaryInfo = vi.hoisted(() =>
+  vi.fn(() => ({ mealChoice: "", dietarySelection: [] as string[], dietaryOther: "" })),
+);
 type SnapshotCb = (snap: unknown) => void;
 const mockOnSnapshot = vi.hoisted(() => vi.fn((_q: unknown, _cb?: SnapshotCb) => () => {}));
 
@@ -689,17 +695,19 @@ describe("useRsvp", () => {
 
     it("deletes the submitted entry when confirmed", async () => {
       mockGetDocs.mockResolvedValueOnce({
-        docs: [{
-          id: "entry-1",
-          data: () => ({
-            guestName: "Alice María Smith",
-            attendance: "yes",
-            attendees: [{ name: "Alice María Smith", menu: "", allergies: [] }],
-            submittedAt: new Date().toISOString(),
-            dietaryInfo: "",
-            companions: 1,
-          }),
-        }],
+        docs: [
+          {
+            id: "entry-1",
+            data: () => ({
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              attendees: [{ name: "Alice María Smith", menu: "", allergies: [] }],
+              submittedAt: new Date().toISOString(),
+              dietaryInfo: "",
+              companions: 1,
+            }),
+          },
+        ],
         forEach: vi.fn(),
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
@@ -726,17 +734,19 @@ describe("useRsvp", () => {
     it("does not delete when confirm is cancelled", async () => {
       window.confirm = vi.fn(() => false);
       mockGetDocs.mockResolvedValueOnce({
-        docs: [{
-          id: "entry-1",
-          data: () => ({
-            guestName: "Bob Carlos Jones",
-            attendance: "yes",
-            attendees: [{ name: "Bob Carlos Jones", menu: "", allergies: [] }],
-            submittedAt: new Date().toISOString(),
-            dietaryInfo: "",
-            companions: 1,
-          }),
-        }],
+        docs: [
+          {
+            id: "entry-1",
+            data: () => ({
+              guestName: "Bob Carlos Jones",
+              attendance: "yes",
+              attendees: [{ name: "Bob Carlos Jones", menu: "", allergies: [] }],
+              submittedAt: new Date().toISOString(),
+              dietaryInfo: "",
+              companions: 1,
+            }),
+          },
+        ],
         forEach: vi.fn(),
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
@@ -764,17 +774,19 @@ describe("useRsvp", () => {
         commit: vi.fn(() => Promise.reject(new Error("Delete error"))),
       });
       mockGetDocs.mockResolvedValueOnce({
-        docs: [{
-          id: "entry-1",
-          data: () => ({
-            guestName: "Charlie Brown Smith",
-            attendance: "no",
-            attendees: [],
-            submittedAt: new Date().toISOString(),
-            dietaryInfo: "",
-            companions: 0,
-          }),
-        }],
+        docs: [
+          {
+            id: "entry-1",
+            data: () => ({
+              guestName: "Charlie Brown Smith",
+              attendance: "no",
+              attendees: [],
+              submittedAt: new Date().toISOString(),
+              dietaryInfo: "",
+              companions: 0,
+            }),
+          },
+        ],
         forEach: vi.fn(),
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
@@ -797,12 +809,10 @@ describe("useRsvp", () => {
 
   describe("handleClearRsvpEntries", () => {
     it("clears all entries and sets admin message", async () => {
-      mockGetDocs
-        .mockResolvedValueOnce({ docs: [], forEach: vi.fn() })
-        .mockResolvedValueOnce({
-          docs: [{ id: "e1", ref: "ref1", data: () => ({}) }],
-          forEach: vi.fn(),
-        });
+      mockGetDocs.mockResolvedValueOnce({ docs: [], forEach: vi.fn() }).mockResolvedValueOnce({
+        docs: [{ id: "e1", ref: "ref1", data: () => ({}) }],
+        forEach: vi.fn(),
+      });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await act(async () => {
@@ -827,9 +837,7 @@ describe("useRsvp", () => {
     });
 
     it("handles clear error gracefully", async () => {
-      mockGetDocs
-        .mockResolvedValueOnce({ docs: [], forEach: vi.fn() })
-        .mockRejectedValueOnce(new Error("Fetch error"));
+      mockGetDocs.mockResolvedValueOnce({ docs: [], forEach: vi.fn() }).mockRejectedValueOnce(new Error("Fetch error"));
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
 
       await act(async () => {
@@ -926,19 +934,21 @@ describe("useRsvp", () => {
 
     it("prefills form when guestName matches an existing entry", async () => {
       mockGetDocs.mockResolvedValueOnce({
-        docs: [{
-          id: "entry-1",
-          data: () => ({
-            guestName: "Alice María Smith",
-            attendance: "yes",
-            attendees: [{ name: "Alice María Smith", menu: "carne", allergies: [] }],
-            submittedAt: new Date().toISOString(),
-            dietaryInfo: "",
-            companions: 1,
-            companionCount: 0,
-            companionNames: [],
-          }),
-        }],
+        docs: [
+          {
+            id: "entry-1",
+            data: () => ({
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              attendees: [{ name: "Alice María Smith", menu: "carne", allergies: [] }],
+              submittedAt: new Date().toISOString(),
+              dietaryInfo: "",
+              companions: 1,
+              companionCount: 0,
+              companionNames: [],
+            }),
+          },
+        ],
         forEach: vi.fn(),
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
@@ -955,19 +965,21 @@ describe("useRsvp", () => {
 
     it("hits else branch in effect when prefillRef already matches", async () => {
       mockGetDocs.mockResolvedValueOnce({
-        docs: [{
-          id: "entry-1",
-          data: () => ({
-            guestName: "Alice María Smith",
-            attendance: "yes",
-            attendees: [{ name: "Alice María Smith", menu: "carne", allergies: [] }],
-            submittedAt: new Date().toISOString(),
-            dietaryInfo: "",
-            companions: 1,
-            companionCount: 0,
-            companionNames: [],
-          }),
-        }],
+        docs: [
+          {
+            id: "entry-1",
+            data: () => ({
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              attendees: [{ name: "Alice María Smith", menu: "carne", allergies: [] }],
+              submittedAt: new Date().toISOString(),
+              dietaryInfo: "",
+              companions: 1,
+              companionCount: 0,
+              companionNames: [],
+            }),
+          },
+        ],
         forEach: vi.fn(),
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
@@ -982,19 +994,21 @@ describe("useRsvp", () => {
 
     it("re-matches alreadySubmittedEntry on subsequent same-name input", async () => {
       mockGetDocs.mockResolvedValueOnce({
-        docs: [{
-          id: "entry-1",
-          data: () => ({
-            guestName: "Alice María Smith",
-            attendance: "yes",
-            attendees: [{ name: "Alice María Smith", menu: "carne", allergies: [] }],
-            submittedAt: new Date().toISOString(),
-            dietaryInfo: "",
-            companions: 1,
-            companionCount: 0,
-            companionNames: [],
-          }),
-        }],
+        docs: [
+          {
+            id: "entry-1",
+            data: () => ({
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              attendees: [{ name: "Alice María Smith", menu: "carne", allergies: [] }],
+              submittedAt: new Date().toISOString(),
+              dietaryInfo: "",
+              companions: 1,
+              companionCount: 0,
+              companionNames: [],
+            }),
+          },
+        ],
         forEach: vi.fn(),
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
@@ -1012,19 +1026,21 @@ describe("useRsvp", () => {
 
     it("resets alreadySubmittedEntry when guestName does not match", async () => {
       mockGetDocs.mockResolvedValueOnce({
-        docs: [{
-          id: "entry-1",
-          data: () => ({
-            guestName: "Alice María Smith",
-            attendance: "yes",
-            attendees: [],
-            submittedAt: new Date().toISOString(),
-            dietaryInfo: "",
-            companions: 0,
-            companionCount: 0,
-            companionNames: [],
-          }),
-        }],
+        docs: [
+          {
+            id: "entry-1",
+            data: () => ({
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              attendees: [],
+              submittedAt: new Date().toISOString(),
+              dietaryInfo: "",
+              companions: 0,
+              companionCount: 0,
+              companionNames: [],
+            }),
+          },
+        ],
         forEach: vi.fn(),
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
@@ -1054,19 +1070,38 @@ describe("useRsvp", () => {
 
   describe("hydration companion linking", () => {
     it("links companion docs to the main entry", async () => {
-      mockParseDietaryInfo.mockReturnValueOnce({ mealChoice: "pescado", dietarySelection: ["sin gluten"], dietaryOther: "alergia frutos secos" });
+      mockParseDietaryInfo.mockReturnValueOnce({
+        mealChoice: "pescado",
+        dietarySelection: ["sin gluten"],
+        dietaryOther: "alergia frutos secos",
+      });
       mockGetDocs.mockResolvedValueOnce({
         docs: [
           {
             id: "m1",
-            data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", mealChoice: "carne", submittedAt: { toDate: () => new Date("2024-01-01") } }),
+            data: () => ({
+              rsvpType: "main",
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              mealChoice: "carne",
+              submittedAt: { toDate: () => new Date("2024-01-01") },
+            }),
           },
           {
             id: "c1",
             data: () => ({
-              rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes",
-              mealChoice: "pescado", dietaryInfo: "enc", allergiesOther: "otra", submittedAt: "2024-01-02",
-              transportChoice: "0", transportMode: "bus", transportTime: "12:00", transportPlace: "Plaza",
+              rsvpType: "companion",
+              mainGuestDocId: "m1",
+              guestName: "Bob Carlos Jones",
+              attendance: "yes",
+              mealChoice: "pescado",
+              dietaryInfo: "enc",
+              allergiesOther: "otra",
+              submittedAt: "2024-01-02",
+              transportChoice: "0",
+              transportMode: "bus",
+              transportTime: "12:00",
+              transportPlace: "Plaza",
             }),
           },
         ],
@@ -1087,10 +1122,12 @@ describe("useRsvp", () => {
 
     it("falls back to now when submittedAt is missing", async () => {
       mockGetDocs.mockResolvedValueOnce({
-        docs: [{
-          id: "x1",
-          data: () => ({ guestName: "Alice María Smith", attendance: "yes", submittedAt: undefined }),
-        }],
+        docs: [
+          {
+            id: "x1",
+            data: () => ({ guestName: "Alice María Smith", attendance: "yes", submittedAt: undefined }),
+          },
+        ],
         forEach: vi.fn(),
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
@@ -1101,16 +1138,40 @@ describe("useRsvp", () => {
     });
 
     it("prefills a companion entry when its name is typed", async () => {
-      mockParseDietaryInfo.mockReturnValue({ mealChoice: "pescado", dietarySelection: ["sin gluten"], dietaryOther: "alergia frutos secos" });
+      mockParseDietaryInfo.mockReturnValue({
+        mealChoice: "pescado",
+        dietarySelection: ["sin gluten"],
+        dietaryOther: "alergia frutos secos",
+      });
       mockGetDocs.mockResolvedValueOnce({
         docs: [
-          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
           {
-            id: "c1", data: () => ({
-              rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes",
-              mealChoice: "pescado", allergiesOther: "otra", dietaryInfo: "enc", submittedAt: "2024-01-02",
-              birthDate: "2000-01-01", healthConsent: true, parentalConsent: true,
-              transportChoice: "0", transportMode: "bus", transportTime: "12:00", transportPlace: "Plaza",
+            id: "m1",
+            data: () => ({
+              rsvpType: "main",
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              submittedAt: "2024-01-01",
+            }),
+          },
+          {
+            id: "c1",
+            data: () => ({
+              rsvpType: "companion",
+              mainGuestDocId: "m1",
+              guestName: "Bob Carlos Jones",
+              attendance: "yes",
+              mealChoice: "pescado",
+              allergiesOther: "otra",
+              dietaryInfo: "enc",
+              submittedAt: "2024-01-02",
+              birthDate: "2000-01-01",
+              healthConsent: true,
+              parentalConsent: true,
+              transportChoice: "0",
+              transportMode: "bus",
+              transportTime: "12:00",
+              transportPlace: "Plaza",
             }),
           },
         ],
@@ -1133,11 +1194,28 @@ describe("useRsvp", () => {
       mockParseDietaryInfo.mockReturnValue({ mealChoice: "", dietarySelection: [], dietaryOther: "" });
       mockGetDocs.mockResolvedValueOnce({
         docs: [
-          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", companionNames: ["Bob Carlos Jones"], companionDocIds: ["c1"], submittedAt: "2024-01-01" }) },
           {
-            id: "c1", data: () => ({
-              rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes",
-              birthDate: "2000-01-01", parentalConsent: true, healthConsent: true, submittedAt: "2024-01-02",
+            id: "m1",
+            data: () => ({
+              rsvpType: "main",
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              companionNames: ["Bob Carlos Jones"],
+              companionDocIds: ["c1"],
+              submittedAt: "2024-01-01",
+            }),
+          },
+          {
+            id: "c1",
+            data: () => ({
+              rsvpType: "companion",
+              mainGuestDocId: "m1",
+              guestName: "Bob Carlos Jones",
+              attendance: "yes",
+              birthDate: "2000-01-01",
+              parentalConsent: true,
+              healthConsent: true,
+              submittedAt: "2024-01-02",
             }),
           },
         ],
@@ -1174,7 +1252,12 @@ describe("useRsvp", () => {
 
     it("normalizes a Firestore timestamp with seconds to ISO", async () => {
       mockGetDocs.mockResolvedValueOnce({
-        docs: [{ id: "x1", data: () => ({ guestName: "Alice María Smith", attendance: "yes", submittedAt: { seconds: 1234 } }) }],
+        docs: [
+          {
+            id: "x1",
+            data: () => ({ guestName: "Alice María Smith", attendance: "yes", submittedAt: { seconds: 1234 } }),
+          },
+        ],
         forEach: vi.fn(),
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
@@ -1188,7 +1271,15 @@ describe("useRsvp", () => {
       mockGetDocs.mockResolvedValueOnce({
         docs: [
           { id: "m1", data: () => ({ guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
-          { id: "c1", data: () => ({ guestName: "Bob Carlos Jones", mainGuestDocId: "m1", attendance: "yes", submittedAt: "2024-01-02" }) },
+          {
+            id: "c1",
+            data: () => ({
+              guestName: "Bob Carlos Jones",
+              mainGuestDocId: "m1",
+              attendance: "yes",
+              submittedAt: "2024-01-02",
+            }),
+          },
         ],
         forEach: vi.fn(),
       });
@@ -1202,7 +1293,17 @@ describe("useRsvp", () => {
 
     it("classifies an entry with rsvpType companion but no mainGuestDocId as companion", async () => {
       mockGetDocs.mockResolvedValueOnce({
-        docs: [{ id: "c1", data: () => ({ rsvpType: "companion", guestName: "Solo Carlos", attendance: "yes", submittedAt: "2024-01-02" }) }],
+        docs: [
+          {
+            id: "c1",
+            data: () => ({
+              rsvpType: "companion",
+              guestName: "Solo Carlos",
+              attendance: "yes",
+              submittedAt: "2024-01-02",
+            }),
+          },
+        ],
         forEach: vi.fn(),
       });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
@@ -1219,9 +1320,14 @@ describe("useRsvp", () => {
         docs: [
           { id: "m1", data: () => ({ guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
           {
-            id: "c1", data: () => ({
-              rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes",
-              dietaryInfo: "enc", submittedAt: "2024-01-02",
+            id: "c1",
+            data: () => ({
+              rsvpType: "companion",
+              mainGuestDocId: "m1",
+              guestName: "Bob Carlos Jones",
+              attendance: "yes",
+              dietaryInfo: "enc",
+              submittedAt: "2024-01-02",
             }),
           },
         ],
@@ -1308,8 +1414,25 @@ describe("useRsvp", () => {
       mockParseDietaryInfo.mockReturnValue({ mealChoice: "", dietarySelection: [], dietaryOther: "" });
       mockGetDocs.mockResolvedValueOnce({
         docs: [
-          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
-          { id: "c1", data: () => ({ rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes", submittedAt: "2024-01-02" }) },
+          {
+            id: "m1",
+            data: () => ({
+              rsvpType: "main",
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              submittedAt: "2024-01-01",
+            }),
+          },
+          {
+            id: "c1",
+            data: () => ({
+              rsvpType: "companion",
+              mainGuestDocId: "m1",
+              guestName: "Bob Carlos Jones",
+              attendance: "yes",
+              submittedAt: "2024-01-02",
+            }),
+          },
         ],
         forEach: vi.fn(),
       });
@@ -1328,8 +1451,25 @@ describe("useRsvp", () => {
     it("hits the prefill else branch when the same companion name is typed again", async () => {
       mockGetDocs.mockResolvedValueOnce({
         docs: [
-          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
-          { id: "c1", data: () => ({ rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes", submittedAt: "2024-01-02" }) },
+          {
+            id: "m1",
+            data: () => ({
+              rsvpType: "main",
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              submittedAt: "2024-01-01",
+            }),
+          },
+          {
+            id: "c1",
+            data: () => ({
+              rsvpType: "companion",
+              mainGuestDocId: "m1",
+              guestName: "Bob Carlos Jones",
+              attendance: "yes",
+              submittedAt: "2024-01-02",
+            }),
+          },
         ],
         forEach: vi.fn(),
       });
@@ -1350,7 +1490,15 @@ describe("useRsvp", () => {
     it("hits the main prefill else branch when the same name is typed again", async () => {
       mockGetDocs.mockResolvedValueOnce({
         docs: [
-          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", submittedAt: "2024-01-01" }) },
+          {
+            id: "m1",
+            data: () => ({
+              rsvpType: "main",
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              submittedAt: "2024-01-01",
+            }),
+          },
         ],
         forEach: vi.fn(),
       });
@@ -1371,8 +1519,26 @@ describe("useRsvp", () => {
     it("prefills companion arrays using fallbacks when optional fields are missing", async () => {
       mockGetDocs.mockResolvedValueOnce({
         docs: [
-          { id: "m1", data: () => ({ rsvpType: "main", guestName: "Alice María Smith", attendance: "yes", companionNames: ["Bob Carlos Jones"], submittedAt: "2024-01-01" }) },
-          { id: "c1", data: () => ({ rsvpType: "companion", mainGuestDocId: "m1", guestName: "Bob Carlos Jones", attendance: "yes", submittedAt: "2024-01-02" }) },
+          {
+            id: "m1",
+            data: () => ({
+              rsvpType: "main",
+              guestName: "Alice María Smith",
+              attendance: "yes",
+              companionNames: ["Bob Carlos Jones"],
+              submittedAt: "2024-01-01",
+            }),
+          },
+          {
+            id: "c1",
+            data: () => ({
+              rsvpType: "companion",
+              mainGuestDocId: "m1",
+              guestName: "Bob Carlos Jones",
+              attendance: "yes",
+              submittedAt: "2024-01-02",
+            }),
+          },
         ],
         forEach: vi.fn(),
       });

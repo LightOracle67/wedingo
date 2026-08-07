@@ -6,7 +6,9 @@ import { useTranslation } from "react-i18next";
 
 const InvitationsTab = memo(function InvitationsTab() {
   const { t } = useTranslation();
-  const [invitations, setInvitations] = useState<Array<{ id: string; theme?: string; weddingDay?: string; weddingMonth?: string; weddingYear?: string }>>([]);
+  const [invitations, setInvitations] = useState<
+    Array<{ id: string; theme?: string; weddingDay?: string; weddingMonth?: string; weddingYear?: string }>
+  >([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
@@ -16,45 +18,57 @@ const InvitationsTab = memo(function InvitationsTab() {
     setLoading(true);
     try {
       const snap = await getDocs(INVITATIONS_COLLECTION_REF);
-      const list = snap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() }));
+      const list = snap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+        id: d.id,
+        ...d.data(),
+      }));
       setInvitations(list);
       setError("");
-    } catch { setError(t("superadmin.invitationLoadError")); }
+    } catch {
+      setError(t("superadmin.invitationLoadError"));
+    }
     setLoading(false);
   }, [t]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    load();
+  }, [load]);
 
-  const handleDelete = useCallback(async (id: string) => {
-    if (!window.confirm(t("superadmin.deleteConfirmInvitation", { id }))) return;
-    setDeleting(id);
-    try {
-      // Borrado en cascada: sin esto las subcolecciones (RSVP, galería,
-      // audio, configImages, setupTokens) quedaban huérfanas.
-      const refs: Array<{ ref: unknown }> = [];
-      const snap = await getDocs(rsvpByInviteRef(id));
-      for (const d of snap.docs) refs.push(d.ref as never);
-      const gallerySnap = await getDocs(collection(db, "invitations", id, "gallery"));
-      for (const d of gallerySnap.docs) refs.push(d.ref as never);
-      const audioSnap = await getDocs(collection(db, "invitations", id, "audio"));
-      for (const d of audioSnap.docs) refs.push(d.ref as never);
-      const imgSnap = await getDocs(collection(db, "invitations", id, "configImages"));
-      for (const d of imgSnap.docs) refs.push(d.ref as never);
-      const tokenSnap = await getDocs(query(collection(db, "setupTokens"), where("inviteToken", "==", id)));
-      for (const d of tokenSnap.docs) refs.push(d.ref as never);
-      refs.push(doc(db, "rsvpResponses", id) as never);
-      refs.push(doc(INVITATIONS_COLLECTION_REF, id) as never);
-      // Firestore limita a 500 operaciones por batch: se trocea.
-      for (let i = 0; i < refs.length; i += 400) {
-        const chunk = refs.slice(i, i + 400);
-        const batch = writeBatch(db);
-        for (const r of chunk) batch.delete(r.ref as never);
-        await batch.commit();
+  const handleDelete = useCallback(
+    async (id: string) => {
+      if (!window.confirm(t("superadmin.deleteConfirmInvitation", { id }))) return;
+      setDeleting(id);
+      try {
+        // Borrado en cascada: sin esto las subcolecciones (RSVP, galería,
+        // audio, configImages, setupTokens) quedaban huérfanas.
+        const refs: Array<{ ref: unknown }> = [];
+        const snap = await getDocs(rsvpByInviteRef(id));
+        for (const d of snap.docs) refs.push(d.ref as never);
+        const gallerySnap = await getDocs(collection(db, "invitations", id, "gallery"));
+        for (const d of gallerySnap.docs) refs.push(d.ref as never);
+        const audioSnap = await getDocs(collection(db, "invitations", id, "audio"));
+        for (const d of audioSnap.docs) refs.push(d.ref as never);
+        const imgSnap = await getDocs(collection(db, "invitations", id, "configImages"));
+        for (const d of imgSnap.docs) refs.push(d.ref as never);
+        const tokenSnap = await getDocs(query(collection(db, "setupTokens"), where("inviteToken", "==", id)));
+        for (const d of tokenSnap.docs) refs.push(d.ref as never);
+        refs.push(doc(db, "rsvpResponses", id) as never);
+        refs.push(doc(INVITATIONS_COLLECTION_REF, id) as never);
+        // Firestore limita a 500 operaciones por batch: se trocea.
+        for (let i = 0; i < refs.length; i += 400) {
+          const chunk = refs.slice(i, i + 400);
+          const batch = writeBatch(db);
+          for (const r of chunk) batch.delete(r.ref as never);
+          await batch.commit();
+        }
+        setInvitations((prev) => prev.filter((i) => i.id !== id));
+      } catch {
+        setError(t("superadmin.deleteError"));
       }
-      setInvitations((prev) => prev.filter((i) => i.id !== id));
-    } catch { setError(t("superadmin.deleteError")); }
-    setDeleting(null);
-  }, [t]);
+      setDeleting(null);
+    },
+    [t],
+  );
 
   const handleExportAll = useCallback(async () => {
     try {
@@ -71,26 +85,59 @@ const InvitationsTab = memo(function InvitationsTab() {
       a.download = `wedingo-invitaciones-${Date.now()}.json`;
       a.click();
       URL.revokeObjectURL(url);
-    } catch { setError(t("superadmin.exportError")); }
+    } catch {
+      setError(t("superadmin.exportError"));
+    }
   }, [t]);
 
-  const filtered = searchInvitations(invitations, search) as Array<{ id: string; theme?: string; weddingDay?: string; weddingMonth?: string; weddingYear?: string }>;
+  const filtered = searchInvitations(invitations, search) as Array<{
+    id: string;
+    theme?: string;
+    weddingDay?: string;
+    weddingMonth?: string;
+    weddingYear?: string;
+  }>;
   const totalBytes = invitations.reduce((acc, d) => {
-    try { return acc + new Blob([JSON.stringify(d)]).size; } catch { return acc; }
+    try {
+      return acc + new Blob([JSON.stringify(d)]).size;
+    } catch {
+      return acc;
+    }
   }, 0);
 
-  if (loading) return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("common.loading")}</p>;
+  if (loading)
+    return (
+      <p className="setup-subtitle" style={{ textAlign: "center" }}>
+        {t("common.loading")}
+      </p>
+    );
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
       {error && <p className="setup-error">{error}</p>}
 
       <div className="admin-filters" style={{ marginBottom: "1rem" }}>
-        <input id="superadminSearch" className="setup-input" value={search} onChange={(e) => setSearch(e.target.value)}
-          placeholder={t("superadmin.searchTokenPlaceholder")} autoComplete="off" aria-label={t("superadmin.searchTokenPlaceholder")} />
+        <input
+          id="superadminSearch"
+          className="setup-input"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder={t("superadmin.searchTokenPlaceholder")}
+          autoComplete="off"
+          aria-label={t("superadmin.searchTokenPlaceholder")}
+        />
       </div>
 
-      <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "0.75rem",
+          flexWrap: "wrap",
+          alignItems: "center",
+          justifyContent: "space-between",
+          marginBottom: "1rem",
+        }}
+      >
         <span className="setup-help" style={{ margin: 0 }}>
           {t("superadmin.invitationsCount", { count: invitations.length, size: formatBytes(totalBytes) })}
         </span>
@@ -105,45 +152,54 @@ const InvitationsTab = memo(function InvitationsTab() {
       </div>
 
       <div aria-live="polite" aria-atomic="true">
-      {filtered.length === 0 ? (
-        <p className="setup-help">
-          {search ? t("superadmin.noResultsFilter") : t("superadmin.noInvitations")}
-        </p>
-      ) : (
-        <div className="admin-table-wrapper">
-          <table className="admin-table">
-            <thead>
-              <tr>
-                <th>{t("superadmin.tableToken")}</th>
-                <th>{t("superadmin.tableTheme")}</th>
-                <th>{t("superadmin.tableDate")}</th>
-                <th>{t("superadmin.tableActions")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.map((inv: { id: string; theme?: string; weddingDay?: string; weddingMonth?: string; weddingYear?: string }) => (
-                <tr key={inv.id}>
-                  <td style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>
-                    {inv.id}
-                  </td>
-                  <td>{inv.theme || "—"}</td>
-                  <td className="admin-table__date">
-                    {inv.weddingDay && inv.weddingMonth && inv.weddingYear
-                      ? `${inv.weddingDay} ${inv.weddingMonth} ${inv.weddingYear}`
-                      : "—"}
-                  </td>
-                  <td style={{ whiteSpace: "nowrap" }}>
-                    <button className="setup-button setup-button--ghost setup-button--compact" style={{ fontSize: "0.7rem", color: "#ef4444" }}
-                      type="button" onClick={() => handleDelete(inv.id)} disabled={deleting === inv.id}>
-                      {deleting === inv.id ? "…" : t("superadmin.deleteButton")}
-                    </button>
-                  </td>
+        {filtered.length === 0 ? (
+          <p className="setup-help">{search ? t("superadmin.noResultsFilter") : t("superadmin.noInvitations")}</p>
+        ) : (
+          <div className="admin-table-wrapper">
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th>{t("superadmin.tableToken")}</th>
+                  <th>{t("superadmin.tableTheme")}</th>
+                  <th>{t("superadmin.tableDate")}</th>
+                  <th>{t("superadmin.tableActions")}</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
+              </thead>
+              <tbody>
+                {filtered.map(
+                  (inv: {
+                    id: string;
+                    theme?: string;
+                    weddingDay?: string;
+                    weddingMonth?: string;
+                    weddingYear?: string;
+                  }) => (
+                    <tr key={inv.id}>
+                      <td style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>{inv.id}</td>
+                      <td>{inv.theme || "—"}</td>
+                      <td className="admin-table__date">
+                        {inv.weddingDay && inv.weddingMonth && inv.weddingYear
+                          ? `${inv.weddingDay} ${inv.weddingMonth} ${inv.weddingYear}`
+                          : "—"}
+                      </td>
+                      <td style={{ whiteSpace: "nowrap" }}>
+                        <button
+                          className="setup-button setup-button--ghost setup-button--compact"
+                          style={{ fontSize: "0.7rem", color: "#ef4444" }}
+                          type="button"
+                          onClick={() => handleDelete(inv.id)}
+                          disabled={deleting === inv.id}
+                        >
+                          {deleting === inv.id ? "…" : t("superadmin.deleteButton")}
+                        </button>
+                      </td>
+                    </tr>
+                  ),
+                )}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -9,15 +9,15 @@ const MAP_VIEW_TILES: Record<string, string> = { roadmap: "m", satellite: "k", h
 export function convertToEmbedUrl(mapUrl: string, view: string = "roadmap", lang: string = "es"): string {
   const url = mapUrl.trim();
   // Already an embed URL, return as-is
-  if (url.includes('output=embed')) return url;
+  if (url.includes("output=embed")) return url;
   // Convert a Google Maps place URL to embed
   try {
     const parsed = new URL(url);
-    const q = parsed.searchParams.get('q') || parsed.searchParams.get('query') || '';
-    const ll = parsed.searchParams.get('ll') || '';
-    const query = q || ll || parsed.pathname.replace(/^\/maps\/place\//, '').replace(/\/.+$/, '');
-    const encoded = encodeURIComponent(query.replace(/\+/g, ' '));
-    const tile = MAP_VIEW_TILES[view] || 'm';
+    const q = parsed.searchParams.get("q") || parsed.searchParams.get("query") || "";
+    const ll = parsed.searchParams.get("ll") || "";
+    const query = q || ll || parsed.pathname.replace(/^\/maps\/place\//, "").replace(/\/.+$/, "");
+    const encoded = encodeURIComponent(query.replace(/\+/g, " "));
+    const tile = MAP_VIEW_TILES[view] || "m";
     // hl usa el idioma de la app para localizar el mapa del invitado.
     const hl = ((lang || "es").split("-")[0] || "es").toLowerCase();
     return `https://maps.google.com/maps?q=${encoded}&hl=${hl}&z=14&t=${tile}&output=embed`;
@@ -43,16 +43,18 @@ export function extractPlaceNameFromUrl(mapUrl: string): string | null {
   if (isValidGoogleMapsUrl(url)) {
     try {
       const parsed = new URL(url);
-      const q = parsed.searchParams.get('q') || parsed.searchParams.get('query') || '';
+      const q = parsed.searchParams.get("q") || parsed.searchParams.get("query") || "";
       if (q && !COORDINATES_ONLY_PATTERN.test(q.trim())) {
-        result = decodeURIComponent(q.replace(/\+/g, ' ')).trim() || null;
+        result = decodeURIComponent(q.replace(/\+/g, " ")).trim() || null;
       } else {
         const placeMatch = parsed.pathname.match(/\/maps\/place\/([^/@]+)/);
         if (placeMatch && placeMatch[1]) {
-          result = decodeURIComponent(placeMatch[1].replace(/\+/g, ' ')).trim() || null;
+          result = decodeURIComponent(placeMatch[1].replace(/\+/g, " ")).trim() || null;
         }
       }
-    } catch { result = null; }
+    } catch {
+      result = null;
+    }
   }
   if (placeNameCache.size >= PLACE_NAME_CACHE_MAX) placeNameCache.clear();
   placeNameCache.set(url, result);

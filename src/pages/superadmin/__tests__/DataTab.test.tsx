@@ -63,7 +63,15 @@ describe("DataTab", () => {
       if (ref === "invitations-collection-ref") {
         return Promise.resolve({
           docs: [
-            docData({ id: "token1", firstName: "John", secondName: "Jane", adminUsername: "jj", weddingDay: "15", weddingMonth: "6", weddingYear: "2025" }),
+            docData({
+              id: "token1",
+              firstName: "John",
+              secondName: "Jane",
+              adminUsername: "jj",
+              weddingDay: "15",
+              weddingMonth: "6",
+              weddingYear: "2025",
+            }),
             docData({ id: "token2", firstName: "Alice", secondName: "Bob", adminUsername: "ab" }),
           ],
         });
@@ -100,8 +108,22 @@ describe("DataTab", () => {
       if (ref === "invitations-collection-ref") {
         return Promise.resolve({
           docs: [
-            docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" }),
-            docData({ id: "t2", firstName: "C", secondName: "D", weddingDay: "2", weddingMonth: "2", weddingYear: "2025" }),
+            docData({
+              id: "t1",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2025",
+            }),
+            docData({
+              id: "t2",
+              firstName: "C",
+              secondName: "D",
+              weddingDay: "2",
+              weddingMonth: "2",
+              weddingYear: "2025",
+            }),
           ],
         });
       }
@@ -123,7 +145,14 @@ describe("DataTab", () => {
         return Promise.resolve({
           docs: [
             docData({ id: "emptytoken" }),
-            docData({ id: "fulltoken", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" }),
+            docData({
+              id: "fulltoken",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2025",
+            }),
           ],
         });
       }
@@ -136,7 +165,18 @@ describe("DataTab", () => {
   it("calls exportOne when export button clicked", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {
-        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+        return Promise.resolve({
+          docs: [
+            docData({
+              id: "t1",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2025",
+            }),
+          ],
+        });
       }
       if (ref === "rsvp-collection-ref") {
         return Promise.resolve({ docs: [] });
@@ -163,16 +203,34 @@ describe("DataTab", () => {
       return Promise.resolve({ docs: [] });
     });
     render(<DataTab />);
-    await vi.waitFor(() => expect(screen.getByText((text) => text.includes("superadmin.data.exportAllBtn"))).toBeInTheDocument());
+    await vi.waitFor(() =>
+      expect(screen.getByText((text) => text.includes("superadmin.data.exportAllBtn"))).toBeInTheDocument(),
+    );
     fireEvent.click(screen.getByText((text) => text.includes("superadmin.data.exportAllBtn")));
-    await vi.waitFor(() => expect(mockDownloadJson).toHaveBeenCalledWith(expect.stringMatching(/^wedingo_full_export_\d{4}-\d{2}-\d{2}\.json$/), expect.any(Object)));
+    await vi.waitFor(() =>
+      expect(mockDownloadJson).toHaveBeenCalledWith(
+        expect.stringMatching(/^wedingo_full_export_\d{4}-\d{2}-\d{2}\.json$/),
+        expect.any(Object),
+      ),
+    );
     expect(mockAddToast).toHaveBeenCalledWith("success", expect.any(String));
   });
 
   it("requires confirmation text before deleting", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {
-        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+        return Promise.resolve({
+          docs: [
+            docData({
+              id: "t1",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2025",
+            }),
+          ],
+        });
       }
       return Promise.resolve({ docs: [] });
     });
@@ -184,7 +242,18 @@ describe("DataTab", () => {
   it("deletes one invitation with correct confirmation", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {
-        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+        return Promise.resolve({
+          docs: [
+            docData({
+              id: "t1",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2025",
+            }),
+          ],
+        });
       }
       if (ref === "rsvp-collection-ref") {
         return Promise.resolve({ docs: [] });
@@ -217,7 +286,17 @@ describe("DataTab", () => {
       if (ref === "invitations-collection-ref") {
         return Promise.resolve({
           docs: [
-            { id: "t1", data: () => ({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" }) },
+            {
+              id: "t1",
+              data: () => ({
+                id: "t1",
+                firstName: "A",
+                secondName: "B",
+                weddingDay: "1",
+                weddingMonth: "1",
+                weddingYear: "2025",
+              }),
+            },
           ],
         });
       }
@@ -238,7 +317,17 @@ describe("DataTab", () => {
       if (ref === "invitations-collection-ref") {
         return Promise.resolve({
           docs: [
-            { id: "token-abc", data: () => ({ id: "token-abc", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" }) },
+            {
+              id: "token-abc",
+              data: () => ({
+                id: "token-abc",
+                firstName: "A",
+                secondName: "B",
+                weddingDay: "1",
+                weddingMonth: "1",
+                weddingYear: "2025",
+              }),
+            },
           ],
         });
       }
@@ -259,7 +348,16 @@ describe("DataTab", () => {
       if (ref === "invitations-collection-ref") {
         return Promise.resolve({
           docs: [
-            { id: "t1", data: () => ({ firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" }) },
+            {
+              id: "t1",
+              data: () => ({
+                firstName: "A",
+                secondName: "B",
+                weddingDay: "1",
+                weddingMonth: "1",
+                weddingYear: "2025",
+              }),
+            },
           ],
         });
       }
@@ -285,7 +383,18 @@ describe("DataTab", () => {
   it("deleteSelected is disabled without the confirm word", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {
-        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+        return Promise.resolve({
+          docs: [
+            docData({
+              id: "t1",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2025",
+            }),
+          ],
+        });
       }
       return Promise.resolve({ docs: [] });
     });
@@ -299,7 +408,18 @@ describe("DataTab", () => {
   it("deleteAll is cancelled when the user declines", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {
-        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+        return Promise.resolve({
+          docs: [
+            docData({
+              id: "t1",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2025",
+            }),
+          ],
+        });
       }
       return Promise.resolve({ docs: [] });
     });
@@ -316,7 +436,18 @@ describe("DataTab", () => {
   it("deleteAll proceeds when confirmation is accepted", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {
-        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+        return Promise.resolve({
+          docs: [
+            docData({
+              id: "t1",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2025",
+            }),
+          ],
+        });
       }
       return Promise.resolve({ docs: [] });
     });
@@ -334,13 +465,26 @@ describe("DataTab", () => {
   it("computes rsvp counts from the responses group", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {
-        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+        return Promise.resolve({
+          docs: [
+            docData({
+              id: "t1",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2025",
+            }),
+          ],
+        });
       }
       if (ref === "rsvp-responses-group") {
-        return Promise.resolve({ docs: [
-          { id: "r1", data: () => ({ inviteToken: "t1", attendance: "yes" }) },
-          { id: "r2", data: () => ({ inviteToken: "t1", attendance: "no" }) },
-        ] });
+        return Promise.resolve({
+          docs: [
+            { id: "r1", data: () => ({ inviteToken: "t1", attendance: "yes" }) },
+            { id: "r2", data: () => ({ inviteToken: "t1", attendance: "no" }) },
+          ],
+        });
       }
       return Promise.resolve({ docs: [] });
     });
@@ -352,13 +496,26 @@ describe("DataTab", () => {
   it("counts only rsvp docs that carry an invite token", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {
-        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+        return Promise.resolve({
+          docs: [
+            docData({
+              id: "t1",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2025",
+            }),
+          ],
+        });
       }
       if (ref === "rsvp-responses-group") {
-        return Promise.resolve({ docs: [
-          { id: "r1", data: () => ({ inviteToken: "t1" }) },
-          { id: "r2", data: () => ({ attendance: "yes" }) },
-        ] });
+        return Promise.resolve({
+          docs: [
+            { id: "r1", data: () => ({ inviteToken: "t1" }) },
+            { id: "r2", data: () => ({ attendance: "yes" }) },
+          ],
+        });
       }
       return Promise.resolve({ docs: [] });
     });
@@ -370,7 +527,18 @@ describe("DataTab", () => {
   it("exports an invitation whose document does not exist", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {
-        return Promise.resolve({ docs: [docData({ id: "t1", firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" })] });
+        return Promise.resolve({
+          docs: [
+            docData({
+              id: "t1",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2025",
+            }),
+          ],
+        });
       }
       return Promise.resolve({ docs: [] });
     });

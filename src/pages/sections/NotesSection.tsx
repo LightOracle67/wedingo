@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../../lib/firebase";
-import { withWriteRetry } from "../../lib/async-utils";
+import { useInviteSubcollection } from "../../hooks/useInviteSubcollection";
 
-interface Note { id: string; guestName: string; message: string; }
+interface Note {
+  id: string;
+  guestName: string;
+  message: string;
+}
 
 /**
  * NotesSection — Muro de dedicatorias: los invitados dejan un mensaje que
@@ -12,42 +14,36 @@ interface Note { id: string; guestName: string; message: string; }
  */
 export default function NotesSection({ inviteToken }: { inviteToken?: string }) {
   const { t } = useTranslation();
-  const [notes, setNotes] = useState<Note[]>([]);
+  const { items: notes, add: addNote } = useInviteSubcollection<Note>(inviteToken, "notes", {
+    map: ({ id, data }) => ({ id, guestName: data.guestName || "", message: data.message || "" }),
+    sort: (a, b) => b.id.localeCompare(a.id),
+    limit: 50,
+  });
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
-  const load = useCallback(() => {
-    if (!inviteToken) return;
-    void getDocs(collection(db, "invitations", inviteToken, "notes")).then((snap) => {
-      const list = snap.docs.map((d) => ({ id: d.id, ...(d.data() as { guestName: string; message: string }) }));
-      setNotes(list.sort((a, b) => b.id.localeCompare(a.id)).slice(0, 50));
-    }).catch(() => {});
-  }, [inviteToken]);
-
-  useEffect(() => { load(); }, [load]);
-
-  const submit = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inviteToken || !name.trim() || !message.trim() || sending) return;
-    setSending(true);
-    setError("");
-    try {
-      await withWriteRetry(() => addDoc(collection(db, "invitations", inviteToken, "notes"), {
+  const submit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!name.trim() || !message.trim() || sending) return;
+      setSending(true);
+      setError("");
+      const id = await addNote({
         guestName: name.trim().slice(0, 60),
         message: message.trim().slice(0, 500),
-        createdAt: serverTimestamp(),
-      }));
-      setName("");
-      setMessage("");
-      load();
-    } catch {
-      setError(t("notes.error"));
-    } finally {
+      });
+      if (id !== null) {
+        setName("");
+        setMessage("");
+      } else {
+        setError(t("notes.error"));
+      }
       setSending(false);
-    }
-  }, [inviteToken, name, message, sending, t, load]);
+    },
+    [name, message, sending, addNote, t],
+  );
 
   return (
     <div>
@@ -61,10 +57,31 @@ export default function NotesSection({ inviteToken }: { inviteToken?: string }) 
         ))}
       </div>
       <form className="notes-form" onSubmit={submit}>
-        <input className="setup-input" value={name} onChange={(e) => setName(e.target.value)} placeholder={t("notes.namePlaceholder")} maxLength={60} aria-label={t("notes.namePlaceholder")} />
-        <textarea className="setup-textarea" rows={2} value={message} onChange={(e) => setMessage(e.target.value)} placeholder={t("notes.messagePlaceholder")} maxLength={500} aria-label={t("notes.messagePlaceholder")} />
-        {error ? <p className="setup-error" role="alert">{error}</p> : null}
-        <button className="setup-button" type="submit" disabled={sending || !name.trim() || !message.trim()}>{sending ? t("common.loading") : t("notes.send")}</button>
+        <input
+          className="setup-input"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder={t("notes.namePlaceholder")}
+          maxLength={60}
+          aria-label={t("notes.namePlaceholder")}
+        />
+        <textarea
+          className="setup-textarea"
+          rows={2}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder={t("notes.messagePlaceholder")}
+          maxLength={500}
+          aria-label={t("notes.messagePlaceholder")}
+        />
+        {error ? (
+          <p className="setup-error" role="alert">
+            {error}
+          </p>
+        ) : null}
+        <button className="setup-button" type="submit" disabled={sending || !name.trim() || !message.trim()}>
+          {sending ? t("common.loading") : t("notes.send")}
+        </button>
       </form>
     </div>
   );

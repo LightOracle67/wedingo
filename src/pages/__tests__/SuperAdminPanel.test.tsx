@@ -80,7 +80,7 @@ describe("SuperAdminPanel", () => {
     render(
       <Suspense fallback={null}>
         <SuperAdminPanel />
-      </Suspense>
+      </Suspense>,
     );
     expect(await screen.findByTestId("dashboard-tab")).toBeDefined();
     expect(screen.getByText("superadmin.controlPanel")).toBeDefined();
@@ -91,7 +91,7 @@ describe("SuperAdminPanel", () => {
     render(
       <Suspense fallback={null}>
         <SuperAdminPanel />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("dashboard-tab");
     const tabs = ["dashboard", "invitations", "tokens", "data", "session", "compliance"];
@@ -104,7 +104,7 @@ describe("SuperAdminPanel", () => {
     render(
       <Suspense fallback={null}>
         <SuperAdminPanel />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("dashboard-tab");
     fireEvent.click(screen.getByText("superadmin.tabs.invitations"));
@@ -116,7 +116,7 @@ describe("SuperAdminPanel", () => {
     render(
       <Suspense fallback={null}>
         <SuperAdminPanel />
-      </Suspense>
+      </Suspense>,
     );
     const firstTab = await screen.findByText("superadmin.tabs.dashboard");
     expect(firstTab.closest("button")?.getAttribute("aria-selected")).toBe("true");
@@ -126,7 +126,7 @@ describe("SuperAdminPanel", () => {
     render(
       <Suspense fallback={null}>
         <SuperAdminPanel />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("dashboard-tab");
     fireEvent.click(screen.getByText("superadmin.tabs.data"));
@@ -137,7 +137,7 @@ describe("SuperAdminPanel", () => {
     render(
       <Suspense fallback={null}>
         <SuperAdminPanel />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("dashboard-tab");
     fireEvent.click(screen.getByText("superadmin.tabs.session"));
@@ -148,7 +148,7 @@ describe("SuperAdminPanel", () => {
     render(
       <Suspense fallback={null}>
         <SuperAdminPanel />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("dashboard-tab");
     fireEvent.click(screen.getByText("superadmin.tabs.compliance"));
@@ -159,7 +159,7 @@ describe("SuperAdminPanel", () => {
     render(
       <Suspense fallback={null}>
         <SuperAdminPanel />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("dashboard-tab");
     fireEvent.click(screen.getByText("superadmin.tabs.tokens"));

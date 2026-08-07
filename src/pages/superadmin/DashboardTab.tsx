@@ -1,6 +1,19 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { getDocs, doc, writeBatch, collection, type DocumentData, type QueryDocumentSnapshot } from "firebase/firestore";
-import { db, getStorageInstance, RSVP_RESPONSES_GROUP, rsvpByInviteRef, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
+import {
+  getDocs,
+  doc,
+  writeBatch,
+  collection,
+  type DocumentData,
+  type QueryDocumentSnapshot,
+} from "firebase/firestore";
+import {
+  db,
+  getStorageInstance,
+  RSVP_RESPONSES_GROUP,
+  rsvpByInviteRef,
+  INVITATIONS_COLLECTION_REF,
+} from "../../lib/firebase";
 import { calcGlobalStats, formatBytes } from "../../lib/superadmin-utils";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 import { logAudit } from "../../lib/audit";
@@ -61,10 +74,14 @@ const DashboardTab = memo(function DashboardTab() {
       setStats(calcGlobalStats(invitationDocs, rsvps, tokens));
     } catch {
       addToast("error", t("errors.statsLoadFailed"));
-    } finally { setLoading(false); }
+    } finally {
+      setLoading(false);
+    }
   }, [addToast, t]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    load();
+  }, [load]);
 
   const twelveMonthsAgo = Date.now() - 365 * 24 * 60 * 60 * 1000;
 
@@ -106,7 +123,7 @@ const DashboardTab = memo(function DashboardTab() {
           const { ref, listAll, deleteObject } = await import("firebase/storage");
           const list = await listAll(ref(storageInstance, prefix));
           await Promise.allSettled(list.items.map((item) => deleteObject(item)));
-        } catch { }
+        } catch {}
         deleted++;
       } catch (err) {
         failed++;
@@ -114,7 +131,10 @@ const DashboardTab = memo(function DashboardTab() {
       }
     }
     // Registro honesto del resultado en la auditoría (sin falsear el conteo).
-    await logAudit("cleanup_expired", `Eliminadas ${deleted} invitaciones expiradas${failed ? ` (${failed} fallos)` : ""}`);
+    await logAudit(
+      "cleanup_expired",
+      `Eliminadas ${deleted} invitaciones expiradas${failed ? ` (${failed} fallos)` : ""}`,
+    );
     if (addToast) {
       addToast(deleted > 0 ? "success" : "info", t("superadmin.cleanupDone", { deleted, failed }));
     }
@@ -122,13 +142,26 @@ const DashboardTab = memo(function DashboardTab() {
     await load();
   }, [expired, load, t, addToast]);
 
-  if (loading) return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("superadmin.dashboardLoading")}</p>;
+  if (loading)
+    return (
+      <p className="setup-subtitle" style={{ textAlign: "center" }}>
+        {t("superadmin.dashboardLoading")}
+      </p>
+    );
   if (!stats) {
     return (
-      <div className="admin-flex--col" style={{ height: "100%", minHeight: 0, alignItems: "center", justifyContent: "center", padding: "2rem", textAlign: "center" }}>
-        <p style={{ color: "var(--setup-muted)", fontSize: "0.9rem", margin: 0 }}>
-          {t("superadmin.dashboardEmpty")}
-        </p>
+      <div
+        className="admin-flex--col"
+        style={{
+          height: "100%",
+          minHeight: 0,
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "2rem",
+          textAlign: "center",
+        }}
+      >
+        <p style={{ color: "var(--setup-muted)", fontSize: "0.9rem", margin: 0 }}>{t("superadmin.dashboardEmpty")}</p>
       </div>
     );
   }
@@ -141,10 +174,18 @@ const DashboardTab = memo(function DashboardTab() {
         <div className="setup-background-panel" style={{ marginBottom: "0.75rem", borderColor: "#e06060" }}>
           <div className="setup-background-panel__header">
             <div>
-              <p className="setup-label" style={{ color: "#e06060" }}>{t("superadmin.expiredInvitations", { count: expired.length })}</p>
+              <p className="setup-label" style={{ color: "#e06060" }}>
+                {t("superadmin.expiredInvitations", { count: expired.length })}
+              </p>
               <p className="setup-help">{t("superadmin.expiredText")}</p>
             </div>
-            <button className="setup-button" type="button" onClick={handleCleanup} disabled={cleaning} style={{ fontSize: "0.8rem", flexShrink: 0 }}>
+            <button
+              className="setup-button"
+              type="button"
+              onClick={handleCleanup}
+              disabled={cleaning}
+              style={{ fontSize: "0.8rem", flexShrink: 0 }}
+            >
               {cleaning ? t("superadmin.cleaningButton") : t("superadmin.cleanButton", { count: expired.length })}
             </button>
           </div>
@@ -164,12 +205,20 @@ const DashboardTab = memo(function DashboardTab() {
           <p className="setup-label">{t("superadmin.responseSummary")}</p>
           <div style={{ display: "flex", gap: "1rem", marginTop: "0.5rem", flexWrap: "wrap" }}>
             <div>
-              <p style={{ fontSize: "0.75rem", color: "var(--setup-muted)", margin: 0 }}>{t("superadmin.statsConfirmations")}</p>
-              <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "#22c55e", margin: "0.2rem 0" }}>{stats.rsvpYes}</p>
+              <p style={{ fontSize: "0.75rem", color: "var(--setup-muted)", margin: 0 }}>
+                {t("superadmin.statsConfirmations")}
+              </p>
+              <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "#22c55e", margin: "0.2rem 0" }}>
+                {stats.rsvpYes}
+              </p>
             </div>
             <div>
-              <p style={{ fontSize: "0.75rem", color: "var(--setup-muted)", margin: 0 }}>{t("superadmin.statsDeclinations")}</p>
-              <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "#ef4444", margin: "0.2rem 0" }}>{stats.rsvpNo}</p>
+              <p style={{ fontSize: "0.75rem", color: "var(--setup-muted)", margin: 0 }}>
+                {t("superadmin.statsDeclinations")}
+              </p>
+              <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "#ef4444", margin: "0.2rem 0" }}>
+                {stats.rsvpNo}
+              </p>
             </div>
           </div>
         </div>
@@ -177,9 +226,15 @@ const DashboardTab = memo(function DashboardTab() {
         <div className="setup-background-panel">
           <p className="setup-label">{t("superadmin.platformInfo")}</p>
           <div style={{ marginTop: "0.3rem", fontSize: "0.8rem", color: "var(--setup-muted)", lineHeight: 1.8 }}>
-            <p style={{ margin: 0 }}>{t("superadmin.firebaseLabel")}: {import.meta.env.VITE_FIREBASE_PROJECT_ID || "—"}</p>
-            <p style={{ margin: 0 }}>{t("superadmin.statsInvitations")}: {stats.invitationCount}</p>
-            <p style={{ margin: 0 }}>{t("superadmin.rsvpsLabel")}: {stats.rsvpTotal}</p>
+            <p style={{ margin: 0 }}>
+              {t("superadmin.firebaseLabel")}: {import.meta.env.VITE_FIREBASE_PROJECT_ID || "—"}
+            </p>
+            <p style={{ margin: 0 }}>
+              {t("superadmin.statsInvitations")}: {stats.invitationCount}
+            </p>
+            <p style={{ margin: 0 }}>
+              {t("superadmin.rsvpsLabel")}: {stats.rsvpTotal}
+            </p>
           </div>
         </div>
       </div>

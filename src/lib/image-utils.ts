@@ -52,7 +52,10 @@ function loadImage(file: File): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => resolve(img);
-    img.onerror = () => { URL.revokeObjectURL(img.src); reject(new Error(i18n.t("errors.readImageFailed"))); };
+    img.onerror = () => {
+      URL.revokeObjectURL(img.src);
+      reject(new Error(i18n.t("errors.readImageFailed")));
+    };
     img.src = URL.createObjectURL(file);
   });
 }
@@ -60,7 +63,11 @@ function loadImage(file: File): Promise<HTMLImageElement> {
 /** Comprime una imagen preservando transparencia.
  *  Exporta a WebP (soporta alpha), con fallback a PNG.
  *  Reduce calidad/dimensiones hasta encajar en el target (por defecto 300KB). */
-export const compressImageTransparent = async (file: File, maxDimension = MAX_IMAGE_DIMENSION, targetBytes = TARGET_BYTES): Promise<string> => {
+export const compressImageTransparent = async (
+  file: File,
+  maxDimension = MAX_IMAGE_DIMENSION,
+  targetBytes = TARGET_BYTES,
+): Promise<string> => {
   const img = await loadImage(file);
   let { width, height } = img;
   if (width > maxDimension || height > maxDimension) {
@@ -98,17 +105,24 @@ export const compressImageTransparent = async (file: File, maxDimension = MAX_IM
 /** Comprime una imagen: elimina fondo blanco, preserva transparencia,
  *  reduce calidad/dimensiones hasta encajar en el target (por defecto 300KB).
  *  Exporta a WebP (con alpha si existe), con fallback a JPEG. */
-export const compressImage = async (file: File, maxDimension = MAX_IMAGE_DIMENSION, targetBytes = TARGET_BYTES): Promise<string> => {
-
+export const compressImage = async (
+  file: File,
+  maxDimension = MAX_IMAGE_DIMENSION,
+  targetBytes = TARGET_BYTES,
+): Promise<string> => {
   const img = await loadImage(file);
 
   // Fast path: JPEG ya pequeño y con dimensiones razonables.
   // Se comprueba el magic bytes JPEG (FF D8 FF) porque file.type lo envía el
   // cliente y no es fiable; el contenido se vuelve a validar en canvas en el
   // camino lento si no pasa.
-  if (file.size <= targetBytes && file.type === "image/jpeg"
-      && img.width <= maxDimension && img.height <= maxDimension
-      && file.slice(0, 3).size === 3) {
+  if (
+    file.size <= targetBytes &&
+    file.type === "image/jpeg" &&
+    img.width <= maxDimension &&
+    img.height <= maxDimension &&
+    file.slice(0, 3).size === 3
+  ) {
     const isJpeg = await new Promise<boolean>((resolve) => {
       const probe = file.slice(0, 3);
       const reader = new FileReader();
@@ -164,10 +178,8 @@ export const compressImage = async (file: File, maxDimension = MAX_IMAGE_DIMENSI
 
   // Si sigue siendo muy grande, reducir dimensiones
   if (estimatedBytes > targetBytes) {
-
     dataUrl = shrinkToFit(canvas, targetBytes);
     estimatedBytes = Math.round((dataUrl.length * 3) / 4);
-
   }
 
   return dataUrl;

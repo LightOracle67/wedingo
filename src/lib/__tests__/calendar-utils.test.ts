@@ -29,8 +29,11 @@ describe("buildGoogleCalendarUrl", () => {
     const endDate = new Date("2026-01-05T10:00:00");
 
     const url = buildGoogleCalendarUrl({
-      title: "Event", description: "", place: "",
-      startDate, endDate,
+      title: "Event",
+      description: "",
+      place: "",
+      startDate,
+      endDate,
     });
 
     expect(url).toContain("20260105T090000");
@@ -42,8 +45,11 @@ describe("buildGoogleCalendarUrl", () => {
     const endDate = new Date("2026-06-15T23:00:00");
 
     const url = buildGoogleCalendarUrl({
-      title: "Test", description: "", place: "",
-      startDate, endDate,
+      title: "Test",
+      description: "",
+      place: "",
+      startDate,
+      endDate,
     });
 
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Madrid";
@@ -54,8 +60,11 @@ describe("buildGoogleCalendarUrl", () => {
     const startDate = new Date("2026-12-25T18:30:00");
     const endDate = new Date("2026-12-25T23:00:00");
     const url = buildGoogleCalendarUrl({
-      title: "Test Event", description: "", place: "Test Place",
-      startDate, endDate,
+      title: "Test Event",
+      description: "",
+      place: "Test Place",
+      startDate,
+      endDate,
     });
     expect(url).toContain("https://calendar.google.com");
     expect(url).toContain("Test+Event");
@@ -66,8 +75,11 @@ describe("buildGoogleCalendarUrl", () => {
     const startDate = new Date("2026-12-25");
     const endDate = new Date("2026-12-25");
     const url = buildGoogleCalendarUrl({
-      title: "Event", description: "", place: "Place",
-      startDate, endDate,
+      title: "Event",
+      description: "",
+      place: "Place",
+      startDate,
+      endDate,
     });
     expect(url).toContain("calendar.google.com");
   });
@@ -79,7 +91,8 @@ describe("buildGoogleCalendarUrl", () => {
       title: "Test & Special <Chars>",
       description: "Desc with üñíçødé",
       place: "",
-      startDate, endDate,
+      startDate,
+      endDate,
     });
     expect(url).toContain("Test+%26+Special+%3CChars%3E");
     expect(url).toContain("Desc+with+%C3%BC%C3%B1%C3%AD%C3%A7%C3%B8d%C3%A9");
@@ -92,7 +105,8 @@ describe("buildGoogleCalendarUrl", () => {
       title: "",
       description: "",
       place: "",
-      startDate, endDate,
+      startDate,
+      endDate,
     });
     expect(url).toContain("https://calendar.google.com/calendar/render?");
   });
@@ -106,8 +120,11 @@ describe("buildGoogleCalendarUrl", () => {
     const startDate = new Date("2026-06-15T18:00:00");
     const endDate = new Date("2026-06-15T23:00:00");
     const url = buildGoogleCalendarUrl({
-      title: "Test", description: "", place: "",
-      startDate, endDate,
+      title: "Test",
+      description: "",
+      place: "",
+      startDate,
+      endDate,
     });
 
     expect(url).toContain(encodeURIComponent("Europe/Madrid"));
@@ -119,8 +136,11 @@ describe("buildGoogleCalendarUrl", () => {
     const startDate = new Date("2026-06-15T00:00:00");
     const endDate = new Date("2026-06-16T00:00:00");
     const url = buildGoogleCalendarUrl({
-      title: "All day", description: "", place: "",
-      startDate, endDate,
+      title: "All day",
+      description: "",
+      place: "",
+      startDate,
+      endDate,
     });
     expect(url).toContain("20260615T000000");
     expect(url).toContain("20260616T000000");

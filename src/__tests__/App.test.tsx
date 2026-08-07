@@ -54,19 +54,26 @@ vi.mock("../components/MusicPlayer", () => ({
 vi.mock("../components/LegalModal", () => ({
   default: ({ section, onClose }: { section: string; onClose?: () => void }) =>
     section ? (
-      <div data-testid="legal-modal">{section}<button onClick={onClose}>close</button></div>
+      <div data-testid="legal-modal">
+        {section}
+        <button onClick={onClose}>close</button>
+      </div>
     ) : null,
 }));
 
 vi.mock("../components/ChangelogModal", () => ({
   default: ({ onClose }: { onClose?: () => void }) => (
-    <div data-testid="changelog-modal"><button onClick={onClose}>close</button></div>
+    <div data-testid="changelog-modal">
+      <button onClick={onClose}>close</button>
+    </div>
   ),
 }));
 
 vi.mock("../components/DataRequestModal", () => ({
   default: ({ onClose }: { onClose?: () => void }) => (
-    <div data-testid="data-request-modal"><button onClick={onClose}>close</button></div>
+    <div data-testid="data-request-modal">
+      <button onClick={onClose}>close</button>
+    </div>
   ),
 }));
 
@@ -128,9 +135,15 @@ describe("App", () => {
     const store: Record<string, string> = {};
     const mkStorage = () => ({
       getItem: (k: string) => store[k] ?? null,
-      setItem: (k: string, v: string) => { store[k] = String(v); },
-      removeItem: (k: string) => { delete store[k]; },
-      clear: () => { Object.keys(store).forEach((k) => delete store[k]); },
+      setItem: (k: string, v: string) => {
+        store[k] = String(v);
+      },
+      removeItem: (k: string) => {
+        delete store[k];
+      },
+      clear: () => {
+        Object.keys(store).forEach((k) => delete store[k]);
+      },
     });
     Object.defineProperty(globalThis, "sessionStorage", { value: mkStorage(), configurable: true });
     Object.defineProperty(globalThis, "localStorage", { value: mkStorage(), configurable: true });
@@ -143,7 +156,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(await screen.findByTestId("landing-page")).toBeDefined();
     expect(screen.getByTestId("fireflies")).toBeDefined();
@@ -156,7 +169,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getAllByTestId("lang-switcher").length).toBe(2);
   });
@@ -169,7 +182,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText("common.offline")).toBeDefined();
 
@@ -182,7 +195,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.queryByText("common.offline")).toBeNull();
   });
@@ -200,7 +213,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText("admin.tabs.invitation")).toBeDefined();
     expect(screen.getByText("admin.tabs.panel")).toBeDefined();
@@ -218,7 +231,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByTestId("music-player")).toBeDefined();
   });
@@ -229,7 +242,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.queryByText("admin.tabs.invitation")).toBeNull();
   });
@@ -242,7 +255,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(await screen.findByTestId("setup-page")).toBeDefined();
   });
@@ -255,7 +268,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(await screen.findByTestId("admin-page")).toBeDefined();
   });
@@ -268,13 +281,14 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(await screen.findByTestId("superadmin-login")).toBeDefined();
   });
 
   it("renders superadmin panel route when dashboard is configured", async () => {
-    (mockSuperadminModule as { SUPERADMIN_ROUTE: string; SUPERADMIN_DASHBOARD?: string }).SUPERADMIN_DASHBOARD = "/superadmin/dashboard";
+    (mockSuperadminModule as { SUPERADMIN_ROUTE: string; SUPERADMIN_DASHBOARD?: string }).SUPERADMIN_DASHBOARD =
+      "/superadmin/dashboard";
     mockUseApp.mockReturnValue({ ...baseUseApp });
 
     render(
@@ -282,7 +296,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(await screen.findByTestId("superadmin-panel")).toBeDefined();
 
@@ -297,7 +311,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(await screen.findByTestId("print-page")).toBeDefined();
   });
@@ -310,7 +324,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(await screen.findByTestId("public-invitation")).toBeDefined();
   });
@@ -327,7 +341,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByTestId("music-player")).toBeDefined();
   });
@@ -345,7 +359,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText("admin.tabs.invitation")).toBeDefined();
     expect(screen.getByText("admin.tabs.panel")).toBeDefined();
@@ -357,7 +371,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const toggle = document.querySelector(".app-nav-toggle");
     expect(toggle).toBeDefined();
@@ -369,7 +383,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     fireEvent.click(document.querySelector(".app-nav-toggle")!);
     expect(document.querySelector(".app-nav-overlay--open")).toBeDefined();
@@ -381,7 +395,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     fireEvent.click(document.querySelector(".app-nav-toggle")!);
     const buttons = document.querySelectorAll(".app-nav-overlay__link");
@@ -397,7 +411,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     fireEvent.click(document.querySelector(".app-nav-toggle")!);
     const buttons = document.querySelectorAll(".app-nav-overlay__link");
@@ -413,7 +427,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     fireEvent.click(document.querySelector(".app-nav-toggle")!);
     const buttons = document.querySelectorAll(".app-nav-overlay__link");
@@ -429,7 +443,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getAllByText("public.privacyPolicy").length).toBe(2);
     expect(screen.getAllByText("public.terms").length).toBe(2);
@@ -442,7 +456,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(await screen.findByTestId("not-found-page")).toBeDefined();
   });
@@ -453,7 +467,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     fireEvent.click(document.querySelector(".app-nav-toggle")!);
     const buttons = document.querySelectorAll(".app-nav-overlay__link");
@@ -469,7 +483,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     fireEvent.click(document.querySelector(".app-nav-toggle")!);
     const buttons = document.querySelectorAll(".app-nav-overlay__link");
@@ -485,7 +499,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const footerButtons = document.querySelectorAll(".app-footer__link");
     const privacyBtn = Array.from(footerButtons).find((b) => b.textContent === "public.privacyPolicy");
@@ -500,7 +514,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const footerButtons = document.querySelectorAll(".app-footer__link");
     const termsBtn = Array.from(footerButtons).find((b) => b.textContent === "public.terms");
@@ -515,7 +529,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const footerButtons = document.querySelectorAll(".app-footer__link");
     const legalBtn = Array.from(footerButtons).find((b) => b.textContent === "public.legalNotice");
@@ -530,7 +544,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const footerButtons = document.querySelectorAll(".app-footer__link");
     const versionBtn = Array.from(footerButtons).find((b) => b.textContent?.includes("common.version"));
@@ -548,7 +562,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const footerButtons = document.querySelectorAll(".app-footer__link");
     const dataBtn = Array.from(footerButtons).find((b) => b.textContent === "public.dataRequest");
@@ -570,7 +584,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const adminA11y = document.querySelector(".a11y-trigger--admin");
     expect(adminA11y).toBeDefined();
@@ -582,7 +596,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     fireEvent.click(document.querySelector(".app-nav-toggle")!);
     expect(document.querySelector(".app-nav-overlay--open")).toBeDefined();
@@ -599,7 +613,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(document.title).toBe("app.titleAdmin");
   });
@@ -611,7 +625,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(document.title).toBe("app.titleSetup");
   });
@@ -627,7 +641,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(document.documentElement.dataset.weddingTheme).toBe("rose");
   });
@@ -644,7 +658,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(document.documentElement.dataset.weddingTheme).toBe("golden");
   });
@@ -654,16 +668,25 @@ describe("App", () => {
       let store: Record<string, string> = {};
       return {
         getItem: vi.fn((k: string) => store[k] ?? null),
-        setItem: vi.fn((k: string, v: string) => { store[k] = v; }),
-        removeItem: vi.fn((k: string) => { delete store[k]; }),
-        clear: vi.fn(() => { store = {}; }),
+        setItem: vi.fn((k: string, v: string) => {
+          store[k] = v;
+        }),
+        removeItem: vi.fn((k: string) => {
+          delete store[k];
+        }),
+        clear: vi.fn(() => {
+          store = {};
+        }),
       };
     })();
     Object.defineProperty(window, "sessionStorage", {
       value: sessionMock,
       configurable: true,
     });
-    sessionMock.setItem("wedin_session", JSON.stringify({ identifier: "restored-user", expiresAt: Date.now() + 99999 }));
+    sessionMock.setItem(
+      "wedin_session",
+      JSON.stringify({ identifier: "restored-user", expiresAt: Date.now() + 99999 }),
+    );
     mockUseApp.mockReturnValue({
       ...baseUseApp,
       isAdminTokenLoggedIn: true,
@@ -675,7 +698,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText("restored-user")).toBeDefined();
     Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
@@ -686,9 +709,15 @@ describe("App", () => {
       let store: Record<string, string> = {};
       return {
         getItem: vi.fn((k: string) => store[k] ?? null),
-        setItem: vi.fn((k: string, v: string) => { store[k] = v; }),
-        removeItem: vi.fn((k: string) => { delete store[k]; }),
-        clear: vi.fn(() => { store = {}; }),
+        setItem: vi.fn((k: string, v: string) => {
+          store[k] = v;
+        }),
+        removeItem: vi.fn((k: string) => {
+          delete store[k];
+        }),
+        clear: vi.fn(() => {
+          store = {};
+        }),
       };
     })();
     Object.defineProperty(window, "sessionStorage", {
@@ -702,7 +731,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText("common.skipToContent")).toBeDefined();
     Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
@@ -713,9 +742,15 @@ describe("App", () => {
       let store: Record<string, string> = {};
       return {
         getItem: vi.fn((k: string) => store[k] ?? null),
-        setItem: vi.fn((k: string, v: string) => { store[k] = v; }),
-        removeItem: vi.fn((k: string) => { delete store[k]; }),
-        clear: vi.fn(() => { store = {}; }),
+        setItem: vi.fn((k: string, v: string) => {
+          store[k] = v;
+        }),
+        removeItem: vi.fn((k: string) => {
+          delete store[k];
+        }),
+        clear: vi.fn(() => {
+          store = {};
+        }),
       };
     })();
     Object.defineProperty(window, "sessionStorage", {
@@ -728,7 +763,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByTestId("landing-page")).toBeDefined();
     Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
@@ -739,9 +774,15 @@ describe("App", () => {
       let store: Record<string, string> = {};
       return {
         getItem: vi.fn((k: string) => store[k] ?? null),
-        setItem: vi.fn((k: string, v: string) => { store[k] = v; }),
-        removeItem: vi.fn((k: string) => { delete store[k]; }),
-        clear: vi.fn(() => { store = {}; }),
+        setItem: vi.fn((k: string, v: string) => {
+          store[k] = v;
+        }),
+        removeItem: vi.fn((k: string) => {
+          delete store[k];
+        }),
+        clear: vi.fn(() => {
+          store = {};
+        }),
       };
     })();
     Object.defineProperty(window, "sessionStorage", {
@@ -754,7 +795,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByTestId("landing-page")).toBeDefined();
     Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
@@ -765,9 +806,15 @@ describe("App", () => {
       let store: Record<string, string> = {};
       return {
         getItem: vi.fn(() => null),
-        setItem: vi.fn((k: string, v: string) => { store[k] = v; }),
-        removeItem: vi.fn((k: string) => { delete store[k]; }),
-        clear: vi.fn(() => { store = {}; }),
+        setItem: vi.fn((k: string, v: string) => {
+          store[k] = v;
+        }),
+        removeItem: vi.fn((k: string) => {
+          delete store[k];
+        }),
+        clear: vi.fn(() => {
+          store = {};
+        }),
       };
     })();
     Object.defineProperty(window, "sessionStorage", {
@@ -779,7 +826,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByTestId("landing-page")).toBeDefined();
     Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
@@ -791,7 +838,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(screen.getByText("DEV")).toBeDefined();
   });
@@ -802,7 +849,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     fireEvent.click(document.querySelector(".app-nav-toggle")!);
     const buttons = document.querySelectorAll(".app-nav-overlay__link");
@@ -817,7 +864,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     // El nav overlay es async (los modales bajo demanda montan tras el
     // Suspense): se espera a que el toggle exista antes de pulsarlo.
@@ -838,7 +885,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     fireEvent.click(document.querySelector(".app-nav-toggle")!);
     const buttons = document.querySelectorAll(".app-nav-overlay__link");
@@ -853,7 +900,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const footerTrigger = document.querySelector(".app-footer .a11y-trigger");
     expect(footerTrigger).toBeDefined();
@@ -872,7 +919,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const adminTrigger = document.querySelector(".a11y-trigger--admin");
     expect(adminTrigger).toBeDefined();
@@ -888,7 +935,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     window.dispatchEvent(new ErrorEvent("error", { message: "test error", error: new Error("test") }));
     expect(logError).toHaveBeenCalled();
@@ -902,7 +949,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     window.dispatchEvent(new ErrorEvent("error", { message: "plain message" }));
     expect(logError).toHaveBeenCalledWith("plain message", "global");
@@ -916,7 +963,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const reason = new Error("rejected");
     const promise = Promise.reject(reason);
@@ -933,7 +980,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const skipLink = document.querySelector(".skip-link");
     expect(skipLink).not.toBeNull();
@@ -953,7 +1000,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(registerMock).toHaveBeenCalledWith("/sw.js");
     import.meta.env.PROD = origEnv;
@@ -972,7 +1019,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(registerMock).toHaveBeenCalledWith("/sw.js");
     import.meta.env.PROD = origEnv;
@@ -991,7 +1038,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(registerMock).not.toHaveBeenCalled();
     import.meta.env.PROD = origEnv;
@@ -1009,7 +1056,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(await screen.findByText("common.updateAvailable")).toBeDefined();
     localStorage.removeItem("wedin_deploy_id");
@@ -1027,7 +1074,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     await screen.findByTestId("landing-page");
     expect(screen.queryByText("common.updateAvailable")).toBeNull();
@@ -1052,7 +1099,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     const bannerBtn = await screen.findByText("common.reload");
     fireEvent.click(bannerBtn);
@@ -1067,7 +1114,7 @@ describe("App", () => {
         <Suspense fallback={null}>
           <App />
         </Suspense>
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     await screen.findByText("DEV");
     const robots = document.querySelector('meta[name="robots"]');

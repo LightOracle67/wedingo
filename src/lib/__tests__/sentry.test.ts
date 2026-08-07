@@ -16,7 +16,12 @@ describe("sentry", () => {
     // Consentimiento de analítica aceptado (Sentry se gatea por él).
     Object.defineProperty(globalThis, "localStorage", {
       value: {
-        getItem: (k: string) => (k === "wedin_cookie_consent" ? "accepted" : k === "wedin_cookie_prefs" ? '{"necessary":true,"analytics":true}' : null),
+        getItem: (k: string) =>
+          k === "wedin_cookie_consent"
+            ? "accepted"
+            : k === "wedin_cookie_prefs"
+              ? '{"necessary":true,"analytics":true}'
+              : null,
         setItem: () => {},
         removeItem: () => {},
         clear: () => {},
@@ -46,7 +51,10 @@ describe("sentry", () => {
       value: { getItem: () => null, setItem: () => {}, removeItem: () => {}, clear: () => {} },
       configurable: true,
     });
-    const idleCallback = vi.fn((cb: () => void) => { cb(); return 0; });
+    const idleCallback = vi.fn((cb: () => void) => {
+      cb();
+      return 0;
+    });
     vi.stubGlobal("requestIdleCallback", idleCallback);
     vi.resetModules();
     await import("../sentry");
@@ -57,15 +65,20 @@ describe("sentry", () => {
     vi.stubEnv("PROD", true);
     vi.stubEnv("VITE_SENTRY_DSN", "https://dsn");
     // requestIdleCallback disponible: se ejecuta la inicialización.
-    const idleCallback = vi.fn((cb: () => void) => { cb(); return 0; });
+    const idleCallback = vi.fn((cb: () => void) => {
+      cb();
+      return 0;
+    });
     vi.stubGlobal("requestIdleCallback", idleCallback);
     vi.resetModules();
     await import("../sentry");
     await vi.waitFor(() => {
-      expect(mockInit).toHaveBeenCalledWith(expect.objectContaining({
-        environment: "production",
-        dsn: "https://dsn",
-      }));
+      expect(mockInit).toHaveBeenCalledWith(
+        expect.objectContaining({
+          environment: "production",
+          dsn: "https://dsn",
+        }),
+      );
     });
   });
 
@@ -96,7 +109,10 @@ describe("sentry", () => {
   it("does not include replay integration outside production", async () => {
     vi.stubEnv("PROD", false);
     vi.stubEnv("VITE_SENTRY_DSN", "https://dsn");
-    const idleCallback = vi.fn((cb: () => void) => { cb(); return 0; });
+    const idleCallback = vi.fn((cb: () => void) => {
+      cb();
+      return 0;
+    });
     vi.stubGlobal("requestIdleCallback", idleCallback);
     vi.resetModules();
     await import("../sentry");

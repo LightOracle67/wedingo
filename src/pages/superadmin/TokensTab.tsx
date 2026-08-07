@@ -1,5 +1,16 @@
 import { memo, useCallback, useEffect, useState } from "react";
-import { collection, doc, getDocs, query, setDoc, updateDoc, where, writeBatch, deleteField, deleteDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  query,
+  setDoc,
+  updateDoc,
+  where,
+  writeBatch,
+  deleteField,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
 import { hashSetupToken } from "../../lib/setup-token";
@@ -27,27 +38,32 @@ const TokensTab = memo(function TokensTab() {
     }
   }, [t]);
 
-  useEffect(() => { loadTokens(); }, [loadTokens]);
+  useEffect(() => {
+    loadTokens();
+  }, [loadTokens]);
 
-  const handleRevoke = useCallback(async (invId: string) => {
-    if (!window.confirm(t("superadmin.revokeConfirm"))) return;
-    setError("");
-    setMessage("");
-    try {
-      await updateDoc(doc(db, "invitations", invId), { _activeSetupToken: "" });
-      // Un token MIGRADO vive en setupTokens/{hash}: sin borrarlo, revocar el
-      // campo legacy dejaba el token aún válido (no se podía revocar nunca).
-      const activeToken = tokens.find((tk) => tk.id === invId)?.activeToken;
-      if (activeToken) {
-        const hash = await hashSetupToken(activeToken);
-        await deleteDoc(doc(db, "setupTokens", hash));
+  const handleRevoke = useCallback(
+    async (invId: string) => {
+      if (!window.confirm(t("superadmin.revokeConfirm"))) return;
+      setError("");
+      setMessage("");
+      try {
+        await updateDoc(doc(db, "invitations", invId), { _activeSetupToken: "" });
+        // Un token MIGRADO vive en setupTokens/{hash}: sin borrarlo, revocar el
+        // campo legacy dejaba el token aún válido (no se podía revocar nunca).
+        const activeToken = tokens.find((tk) => tk.id === invId)?.activeToken;
+        if (activeToken) {
+          const hash = await hashSetupToken(activeToken);
+          await deleteDoc(doc(db, "setupTokens", hash));
+        }
+        setMessage(t("superadmin.tokenRevoked"));
+        await loadTokens();
+      } catch {
+        setError(t("superadmin.tokenRevokeError"));
       }
-      setMessage(t("superadmin.tokenRevoked"));
-      await loadTokens();
-    } catch {
-      setError(t("superadmin.tokenRevokeError"));
-    }
-  }, [loadTokens, tokens, t]);
+    },
+    [loadTokens, tokens, t],
+  );
 
   const handleCleanup = useCallback(async () => {
     if (!window.confirm(t("superadmin.cleanupConfirm"))) return;
@@ -78,23 +94,33 @@ const TokensTab = memo(function TokensTab() {
    * (el token que ya conoce el admin sigue siendo válido) y retira el campo
    * legacy del documento público. Solo el superadmin puede ejecutarlo.
    */
-  const handleMigrate = useCallback(async (invId: string, activeToken: string) => {
-    if (!window.confirm(t("superadmin.migrateConfirm"))) return;
-    setError("");
-    setMessage("");
-    try {
-      const tokenHash = await hashSetupToken(activeToken);
-      await setDoc(doc(db, "setupTokens", tokenHash), { inviteToken: invId, createdAt: new Date().toISOString() });
-      await updateDoc(doc(db, "invitations", invId), { _activeSetupToken: deleteField(), legacyToken: deleteField() });
-      setMessage(t("superadmin.tokenMigrated"));
-      await loadTokens();
-    } catch {
-      setError(t("superadmin.tokenMigrateError"));
-    }
-  }, [loadTokens, t]);
+  const handleMigrate = useCallback(
+    async (invId: string, activeToken: string) => {
+      if (!window.confirm(t("superadmin.migrateConfirm"))) return;
+      setError("");
+      setMessage("");
+      try {
+        const tokenHash = await hashSetupToken(activeToken);
+        await setDoc(doc(db, "setupTokens", tokenHash), { inviteToken: invId, createdAt: new Date().toISOString() });
+        await updateDoc(doc(db, "invitations", invId), {
+          _activeSetupToken: deleteField(),
+          legacyToken: deleteField(),
+        });
+        setMessage(t("superadmin.tokenMigrated"));
+        await loadTokens();
+      } catch {
+        setError(t("superadmin.tokenMigrateError"));
+      }
+    },
+    [loadTokens, t],
+  );
 
   if (loading) {
-    return <p className="setup-subtitle" style={{ textAlign: "center" }}>{t("superadmin.tokensLoading")}</p>;
+    return (
+      <p className="setup-subtitle" style={{ textAlign: "center" }}>
+        {t("superadmin.tokensLoading")}
+      </p>
+    );
   }
 
   return (
@@ -113,7 +139,9 @@ const TokensTab = memo(function TokensTab() {
 
       {tokens.length === 0 ? (
         <div className="setup-token-card" style={{ padding: "2rem", textAlign: "center" }}>
-          <p className="setup-help" style={{ margin: 0, fontSize: "0.9rem" }}>{t("superadmin.noTokens")}</p>
+          <p className="setup-help" style={{ margin: 0, fontSize: "0.9rem" }}>
+            {t("superadmin.noTokens")}
+          </p>
         </div>
       ) : (
         <div className="admin-grid">

@@ -25,7 +25,9 @@ vi.mock("../../../hooks/useToast", () => ({
 }));
 
 const mockUploadImage = vi.hoisted(() => vi.fn());
-const mockSaveConfigImage = vi.hoisted(() => vi.fn((_token: string, _id: string, _dataUrl: string) => Promise.resolve(`__cfgimg:${_id}`)));
+const mockSaveConfigImage = vi.hoisted(() =>
+  vi.fn((_token: string, _id: string, _dataUrl: string) => Promise.resolve(`__cfgimg:${_id}`)),
+);
 vi.mock("../../../lib/image-store", () => ({
   uploadImage: mockUploadImage,
   saveConfigImage: mockSaveConfigImage,
@@ -41,7 +43,21 @@ vi.mock("../../../lib/image-utils", () => ({
   HIGH_QUALITY_TARGET_BYTES: 450 * 1024,
 }));
 
-const mockFormData = vi.hoisted(() => ({ firstName: "John", godparentsEnabled: "true", inviteMessageEnabled: "true", instagramEnabled: "true", facebookEnabled: "true", couplePhotoEnabled: "true", customSealEnabled: "true", backgroundImageEnabled: "true", cornerDecorationEnabled: "true", musicFileEnabled: "true" } as Record<string, string | undefined>));
+const mockFormData = vi.hoisted(
+  () =>
+    ({
+      firstName: "John",
+      godparentsEnabled: "true",
+      inviteMessageEnabled: "true",
+      instagramEnabled: "true",
+      facebookEnabled: "true",
+      couplePhotoEnabled: "true",
+      customSealEnabled: "true",
+      backgroundImageEnabled: "true",
+      cornerDecorationEnabled: "true",
+      musicFileEnabled: "true",
+    }) as Record<string, string | undefined>,
+);
 
 vi.mock("../../../contexts", () => ({
   useConfig: () => ({
@@ -54,13 +70,17 @@ vi.mock("../../../contexts", () => ({
 
 vi.mock("../../ThemePicker", () => ({
   default: ({ value, onChange }: { value: string; onChange: (val: string) => void }) => (
-    <button data-testid="theme-picker" onClick={() => onChange("forest")}>ThemePicker {value}</button>
+    <button data-testid="theme-picker" onClick={() => onChange("forest")}>
+      ThemePicker {value}
+    </button>
   ),
 }));
 
 vi.mock("../../MusicArrayEditor", () => ({
   default: ({ onChange }: { onChange: (val: string) => void }) => (
-    <button data-testid="music-editor" onClick={() => onChange("test-music")}>MusicArrayEditor</button>
+    <button data-testid="music-editor" onClick={() => onChange("test-music")}>
+      MusicArrayEditor
+    </button>
   ),
 }));
 

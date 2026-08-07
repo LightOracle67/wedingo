@@ -4,38 +4,75 @@ import { render, screen, fireEvent } from "@testing-library/react";
 
 const mockUseAppValue = vi.hoisted(() => ({
   config: {
-    firstName: "Test", secondName: "User", theme: "golden",
-    inviteMessage: "", couplePhoto: "", godparent1: "", godparent2: "",
-    hiddenSections: "gifts,accommodation,gallery,rsvp", sectionOrder: "",
-    weddingDay: "15", weddingMonth: "enero", weddingYear: "2025",
-    weddingHour: "14", weddingMinute: "30", weddingPlace: "Madrid",
+    firstName: "Test",
+    secondName: "User",
+    theme: "golden",
+    inviteMessage: "",
+    couplePhoto: "",
+    godparent1: "",
+    godparent2: "",
+    hiddenSections: "gifts,accommodation,gallery,rsvp",
+    sectionOrder: "",
+    weddingDay: "15",
+    weddingMonth: "enero",
+    weddingYear: "2025",
+    weddingHour: "14",
+    weddingMinute: "30",
+    weddingPlace: "Madrid",
     weddingSiteURL: "https://maps.google.com/maps/place/Madrid",
     weddingScheduleEvents: "",
-    weddingDressCode: "", kidsPolicy: "", accommodationURL: "",
-    storyText: "", giftsInfo: "", bankInfo: "",
-    musicFile: "", musicUrl: "", menuEnabled: "", menuCarne: "", menuPescado: "",
-    menuVegano: "", menuPostre: "", menuTexto: "",
-    rsvpDeadline: "", rsvpDeadlineEnabled: "false", reactionsEnabled: "false",
-    giftsListEnabled: "false", giftList: "[]", rideShareEnabled: "false",
-    welcomeVideo: "", welcomeVideoEnabled: "false",
-    notesEnabled: "false", musicPollEnabled: "false",
-    triviaEnabled: "false", trivia: "[]",
+    weddingDressCode: "",
+    kidsPolicy: "",
+    accommodationURL: "",
+    storyText: "",
+    giftsInfo: "",
+    bankInfo: "",
+    musicFile: "",
+    musicUrl: "",
+    menuEnabled: "",
+    menuCarne: "",
+    menuPescado: "",
+    menuVegano: "",
+    menuPostre: "",
+    menuTexto: "",
+    rsvpDeadline: "",
+    rsvpDeadlineEnabled: "false",
+    reactionsEnabled: "false",
+    giftsListEnabled: "false",
+    giftList: "[]",
+    rideShareEnabled: "false",
+    welcomeVideo: "",
+    welcomeVideoEnabled: "false",
+    notesEnabled: "false",
+    musicPollEnabled: "false",
+    triviaEnabled: "false",
+    trivia: "[]",
   },
-  isConfigLoading: false, configLoadError: "",
-  formattedDate: "15 ene 2025", formattedTime: "14:30", calendarLink: null,
-  rsvpForm: { attendees: [] }, rsvpEntries: [], rsvpMessage: "",
-  isRsvpSubmitting: false, hasSubmitted: false, alreadySubmittedEntry: null,
-  updateRsvpField: vi.fn(), handleRsvpSubmit: vi.fn(), handleDeleteRsvp: vi.fn(),
+  isConfigLoading: false,
+  configLoadError: "",
+  formattedDate: "15 ene 2025",
+  formattedTime: "14:30",
+  calendarLink: null,
+  rsvpForm: { attendees: [] },
+  rsvpEntries: [],
+  rsvpMessage: "",
+  isRsvpSubmitting: false,
+  hasSubmitted: false,
+  alreadySubmittedEntry: null,
+  updateRsvpField: vi.fn(),
+  handleRsvpSubmit: vi.fn(),
+  handleDeleteRsvp: vi.fn(),
   DIETARY_OPTIONS: [],
-  computeAge: vi.fn(), isAdminTokenLoggedIn: true,
-
+  computeAge: vi.fn(),
+  isAdminTokenLoggedIn: true,
 }));
 
 const mockUseParams = vi.hoisted(() => ({ inviteToken: "test" }));
 const mockUseLocation = vi.hoisted(() => ({ pathname: "/test", search: "", hash: "" }));
 
 const mockStoryNavigation = vi.hoisted(() => ({
-  activeSection: "hero", isTransitioning: false,
+  activeSection: "hero",
+  isTransitioning: false,
   getSectionStyle: () => ({}),
   getSectionClassName: () => "story-section story-section--is-active",
 }));
@@ -89,7 +126,7 @@ function mockSection(name: string) {
   return { default: comp };
 }
 
- vi.mock("../sections/TransportSection", () => mockSection("transport"));
+vi.mock("../sections/TransportSection", () => mockSection("transport"));
 vi.mock("../sections/InfoSection", () => mockSection("info"));
 vi.mock("../sections/StorySection", () => mockSection("story"));
 vi.mock("../sections/GiftsSection", () => mockSection("gifts"));
@@ -267,7 +304,9 @@ describe("PublicInvitation", () => {
     expect(screen.getByLabelText("envelope.tapContinue")).toBeDefined();
     fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
     fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
-    act(() => { vi.advanceTimersByTime(3600); });
+    act(() => {
+      vi.advanceTimersByTime(3600);
+    });
     expect(screen.queryByLabelText("envelope.tapContinue")).toBeNull();
     expect(mockTrackEvent).toHaveBeenCalledWith("envelope_open", { method: "click" });
     vi.useRealTimers();
@@ -283,10 +322,14 @@ describe("PublicInvitation", () => {
     fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
     fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
     // El onOpen del sobre se dispara a los 3500ms de la secuencia de apertura.
-    act(() => { vi.advanceTimersByTime(3600); });
+    act(() => {
+      vi.advanceTimersByTime(3600);
+    });
     expect(document.querySelector(".confetti")).not.toBeNull();
     expect(document.querySelector(".welcome-video-overlay")).not.toBeNull();
-    act(() => { vi.advanceTimersByTime(3600); });
+    act(() => {
+      vi.advanceTimersByTime(3600);
+    });
     vi.useRealTimers();
     mockUseAppValue.isAdminTokenLoggedIn = true;
     mockUseAppValue.config.welcomeVideo = "";
@@ -302,7 +345,9 @@ describe("PublicInvitation", () => {
     fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
     fireEvent.click(screen.getByLabelText("envelope.tapContinue"));
     // Dispara el onOpen del sobre (setTimeout de 3500ms).
-    act(() => { vi.advanceTimersByTime(3600); });
+    act(() => {
+      vi.advanceTimersByTime(3600);
+    });
     const overlayEl = () => document.querySelector(".welcome-video-overlay") as HTMLElement | null;
     expect(overlayEl()).not.toBeNull();
     // Cierra el overlay: se aplica la clase de salida y sigue montado.
@@ -310,7 +355,9 @@ describe("PublicInvitation", () => {
     expect(overlayEl()!.className).toContain("welcome-video-overlay--closing");
     expect(document.querySelector(".welcome-video-card")!.className).toContain("welcome-video-card--closing");
     // Tras la duración de la salida el overlay se desmonta.
-    act(() => { vi.advanceTimersByTime(350); });
+    act(() => {
+      vi.advanceTimersByTime(350);
+    });
     expect(overlayEl()).toBeNull();
     vi.useRealTimers();
     mockUseAppValue.isAdminTokenLoggedIn = true;
@@ -382,8 +429,10 @@ describe("PublicInvitation", () => {
     mockUseAppValue.config.secondName = "User";
     render(<PublicInvitation />);
     expect(document.querySelector('meta[property="og:title"]')?.getAttribute("content")).toBe("Test User — Wedingo");
-    expect(document.querySelector('meta[property="og:url"]')?.getAttribute("content")).toBe("https://wedingo-6c26a.web.app/test");
-    document.head.querySelectorAll('[data-wedingo-seo]').forEach((el) => el.remove());
+    expect(document.querySelector('meta[property="og:url"]')?.getAttribute("content")).toBe(
+      "https://wedingo-6c26a.web.app/test",
+    );
+    document.head.querySelectorAll("[data-wedingo-seo]").forEach((el) => el.remove());
   });
 
   it("shares the invitation via navigator.share", async () => {

@@ -12,8 +12,13 @@ interface CollapsibleSectionProps {
 }
 
 export default function CollapsibleSection({
-  title, hint, defaultOpen = false, children,
-  sectionKey, isHidden, onToggleVisibility,
+  title,
+  hint,
+  defaultOpen = false,
+  children,
+  sectionKey,
+  isHidden,
+  onToggleVisibility,
 }: CollapsibleSectionProps) {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(defaultOpen);
@@ -45,22 +50,20 @@ export default function CollapsibleSection({
     }
   };
 
-  const handleVisibilityClick = useCallback((e: React.MouseEvent | React.KeyboardEvent) => {
-    e.stopPropagation();
-    if (sectionKey && onToggleVisibility) {
-      onToggleVisibility(sectionKey);
-    }
-  }, [sectionKey, onToggleVisibility]);
+  const handleVisibilityClick = useCallback(
+    (e: React.MouseEvent | React.KeyboardEvent) => {
+      e.stopPropagation();
+      if (sectionKey && onToggleVisibility) {
+        onToggleVisibility(sectionKey);
+      }
+    },
+    [sectionKey, onToggleVisibility],
+  );
 
   return (
     <div className="setup-collapsible" data-open={isOpen}>
       <div className="setup-collapsible__summary">
-        <button
-          type="button"
-          className="setup-collapsible__summary-btn"
-          onClick={toggle}
-          aria-expanded={isOpen}
-        >
+        <button type="button" className="setup-collapsible__summary-btn" onClick={toggle} aria-expanded={isOpen}>
           <span className="setup-collapsible__summary-text">
             {isHidden ? <span className="setup-collapsible__hidden-badge">{t("common.hidden")}</span> : null}
             {/* h2: el título es el encabezado de la sección (HTML válido en <button>). */}
@@ -76,7 +79,9 @@ export default function CollapsibleSection({
             aria-checked={!isHidden}
             aria-label={`${isHidden ? t("common.show") : t("common.hide")} ${t("common.section")}`}
             tabIndex={0}
-            onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") handleVisibilityClick(e); }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") handleVisibilityClick(e);
+            }}
           >
             {isHidden ? t("common.show") : t("common.visible")}
           </span>

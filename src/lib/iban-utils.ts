@@ -4,10 +4,13 @@ export function isValidIBAN(iban: string): boolean {
   if (!/^[A-Z]{2}\d{2}[A-Z0-9]+$/.test(cleaned)) return false;
 
   const rearranged = cleaned.slice(4) + cleaned.slice(0, 4);
-  const numeric = rearranged.split("").map((c) => {
-    const code = c.charCodeAt(0);
-    return code >= 65 ? String(code - 55) : c;
-  }).join("");
+  const numeric = rearranged
+    .split("")
+    .map((c) => {
+      const code = c.charCodeAt(0);
+      return code >= 65 ? String(code - 55) : c;
+    })
+    .join("");
 
   let remainder = 0;
   for (let i = 0; i < numeric.length; i++) {

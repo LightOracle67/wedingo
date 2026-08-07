@@ -54,7 +54,11 @@ describe("ShareTab", () => {
   it("shows an error when the clipboard cannot write images", async () => {
     mockToDataURL.mockResolvedValueOnce("data:image/png;base64,cXJkYXRh");
     // Sin ClipboardItem (write de imágenes) se avisa del fallo.
-    Object.defineProperty(navigator, "clipboard", { value: { writeText: vi.fn() }, configurable: true, writable: true });
+    Object.defineProperty(navigator, "clipboard", {
+      value: { writeText: vi.fn() },
+      configurable: true,
+      writable: true,
+    });
     const addToast = vi.fn();
 
     render(<ShareTab {...baseProps} addToast={addToast} />);
@@ -177,11 +181,7 @@ describe("ShareTab", () => {
     render(<ShareTab {...baseProps} />);
     const whatsappBtn = screen.getByText("share.whatsapp");
     fireEvent.click(whatsappBtn);
-    expect(windowOpenSpy).toHaveBeenCalledWith(
-      expect.stringContaining("wa.me"),
-      "_blank",
-      "noopener,noreferrer"
-    );
+    expect(windowOpenSpy).toHaveBeenCalledWith(expect.stringContaining("wa.me"), "_blank", "noopener,noreferrer");
     windowOpenSpy.mockRestore();
   });
 
@@ -189,11 +189,7 @@ describe("ShareTab", () => {
     const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
     render(<ShareTab {...baseProps} />);
     fireEvent.click(screen.getByText("share.telegram"));
-    expect(windowOpenSpy).toHaveBeenCalledWith(
-      expect.stringContaining("t.me"),
-      "_blank",
-      "noopener,noreferrer"
-    );
+    expect(windowOpenSpy).toHaveBeenCalledWith(expect.stringContaining("t.me"), "_blank", "noopener,noreferrer");
     windowOpenSpy.mockRestore();
   });
 
@@ -201,11 +197,7 @@ describe("ShareTab", () => {
     const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
     render(<ShareTab {...baseProps} />);
     fireEvent.click(screen.getByText("share.sms"));
-    expect(windowOpenSpy).toHaveBeenCalledWith(
-      expect.stringContaining("sms:"),
-      "_blank",
-      "noopener,noreferrer"
-    );
+    expect(windowOpenSpy).toHaveBeenCalledWith(expect.stringContaining("sms:"), "_blank", "noopener,noreferrer");
     windowOpenSpy.mockRestore();
   });
 

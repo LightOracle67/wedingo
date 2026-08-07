@@ -58,29 +58,14 @@ describe("InfoSection", () => {
   });
 
   it("hides the schedule block when there are no events", () => {
-    render(
-      <InfoSection
-        className="test"
-        style={{}}
-        weddingScheduleEvents=""
-        weddingDressCode=""
-        kidsPolicy=""
-      />,
-    );
+    render(<InfoSection className="test" style={{}} weddingScheduleEvents="" weddingDressCode="" kidsPolicy="" />);
     expect(screen.queryByText("info.sectionLabel")).toBeNull();
     expect(screen.queryByText("info.scheduleTitle")).toBeNull();
     expect(screen.getByText("info.dressCodePending")).toBeDefined();
   });
 
   it("renders with unknown kids policy string", () => {
-    render(
-      <InfoSection
-        className="test"
-        style={{}}
-        weddingDressCode=""
-        kidsPolicy="Custom policy text"
-      />,
-    );
+    render(<InfoSection className="test" style={{}} weddingDressCode="" kidsPolicy="Custom policy text" />);
     expect(screen.getByText("Custom policy text")).toBeDefined();
   });
 
@@ -104,13 +89,7 @@ describe("InfoSection", () => {
 
   it("hides the schedule block for invalid schedule events JSON", () => {
     render(
-      <InfoSection
-        className="test"
-        style={{}}
-        weddingScheduleEvents="not-json"
-        weddingDressCode=""
-        kidsPolicy=""
-      />,
+      <InfoSection className="test" style={{}} weddingScheduleEvents="not-json" weddingDressCode="" kidsPolicy="" />,
     );
     expect(screen.queryByText("info.sectionLabel")).toBeNull();
     expect(screen.queryByText("info.scheduleTitle")).toBeNull();

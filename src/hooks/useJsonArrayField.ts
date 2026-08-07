@@ -17,11 +17,7 @@ import { useCallback, useMemo } from "react";
  * @param max  Longitud máxima del array.
  * @returns    { items, parseError, setItems, addItem, removeItem, updateItem }
  */
-export function useJsonArrayField<T>(
-  raw: string | undefined,
-  normalize: (item: unknown) => T | null,
-  max: number,
-) {
+export function useJsonArrayField<T>(raw: string | undefined, normalize: (item: unknown) => T | null, max: number) {
   const { items, parseError } = useMemo(() => {
     const text = (raw || "").trim();
     if (text === "") return { items: [] as T[], parseError: false };
@@ -44,28 +40,40 @@ export function useJsonArrayField<T>(
   }, [raw, normalize, max]);
 
   /** Reemplaza la lista completa (recortada al máximo) y serializa a JSON. */
-  const setItems = useCallback((next: T[]) => {
-    return JSON.stringify(next.slice(0, max));
-  }, [max]);
+  const setItems = useCallback(
+    (next: T[]) => {
+      return JSON.stringify(next.slice(0, max));
+    },
+    [max],
+  );
 
   /** Añade un elemento al final si hay hueco. */
-  const addItem = useCallback((item: T, onChange: (json: string) => void, current: T[] = items) => {
-    if (current.length >= max) return;
-    onChange(setItems([...current, item]));
-  }, [items, max, setItems]);
+  const addItem = useCallback(
+    (item: T, onChange: (json: string) => void, current: T[] = items) => {
+      if (current.length >= max) return;
+      onChange(setItems([...current, item]));
+    },
+    [items, max, setItems],
+  );
 
   /** Elimina el elemento en el índice dado. */
-  const removeItem = useCallback((index: number, onChange: (json: string) => void, current: T[] = items) => {
-    onChange(setItems(current.filter((_, i) => i !== index)));
-  }, [items, setItems]);
+  const removeItem = useCallback(
+    (index: number, onChange: (json: string) => void, current: T[] = items) => {
+      onChange(setItems(current.filter((_, i) => i !== index)));
+    },
+    [items, setItems],
+  );
 
   /** Actualiza el elemento en el índice dado. */
-  const updateItem = useCallback((index: number, next: T, onChange: (json: string) => void, current: T[] = items) => {
-    const copy = [...current];
-    if (index < 0 || index >= copy.length) return;
-    copy[index] = next;
-    onChange(setItems(copy));
-  }, [items, setItems]);
+  const updateItem = useCallback(
+    (index: number, next: T, onChange: (json: string) => void, current: T[] = items) => {
+      const copy = [...current];
+      if (index < 0 || index >= copy.length) return;
+      copy[index] = next;
+      onChange(setItems(copy));
+    },
+    [items, setItems],
+  );
 
   return { items, parseError, setItems, addItem, removeItem, updateItem };
 }

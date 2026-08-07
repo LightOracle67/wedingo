@@ -2,7 +2,19 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import CornerDecorations from "../../components/CornerDecorations";
 
-const GiftsSection = memo(function GiftsSection({ style, className, giftsInfo, bankInfo, cornerDecoration }: { style?: React.CSSProperties; className?: string; giftsInfo?: string; bankInfo?: string; cornerDecoration?: string }) {
+const GiftsSection = memo(function GiftsSection({
+  style,
+  className,
+  giftsInfo,
+  bankInfo,
+  cornerDecoration,
+}: {
+  style?: React.CSSProperties;
+  className?: string;
+  giftsInfo?: string;
+  bankInfo?: string;
+  cornerDecoration?: string;
+}) {
   const { t } = useTranslation();
   return (
     <section
@@ -22,13 +34,24 @@ const GiftsSection = memo(function GiftsSection({ style, className, giftsInfo, b
               {t("gifts.pending")}
             </p>
           )}
+          {bankInfo ? <div className="story-divider" /> : null}
           {bankInfo ? (
-            <div className="story-divider" />
-          ) : null}
-          {bankInfo ? (
-            <div className="mt-4 p-3 rounded-xl" style={{ background: "color-mix(in srgb, var(--setup-field-bg) 80%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 30%, transparent)" }}>
-              <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>{t("gifts.bankInfo")}</p>
-              <p className="story-note mt-1 whitespace-pre-line" style={{ fontFamily: "monospace", fontSize: "0.85rem" }}>{bankInfo}</p>
+            <div
+              className="mt-4 p-3 rounded-xl"
+              style={{
+                background: "color-mix(in srgb, var(--setup-field-bg) 80%, transparent)",
+                border: "1px solid color-mix(in srgb, var(--setup-accent) 30%, transparent)",
+              }}
+            >
+              <p className="story-eyebrow" style={{ fontSize: "0.72rem" }}>
+                {t("gifts.bankInfo")}
+              </p>
+              <p
+                className="story-note mt-1 whitespace-pre-line"
+                style={{ fontFamily: "monospace", fontSize: "0.85rem" }}
+              >
+                {bankInfo}
+              </p>
             </div>
           ) : null}
         </div>

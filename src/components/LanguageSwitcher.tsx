@@ -188,25 +188,30 @@ const GROUPS = [
 ];
 
 const LanguageSwitcher = memo(function LanguageSwitcher() {
-
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const trapRef = useFocusTrap<HTMLDivElement>(open && !closing);
   const currentLang = i18n.language?.split("-")[0] || "es";
-  const currentLabel = GROUPS.flatMap(g => g.options).find((l: { code: string; label: string }) => l.code === currentLang)?.label || currentLang.toUpperCase();
+  const currentLabel =
+    GROUPS.flatMap((g) => g.options).find((l: { code: string; label: string }) => l.code === currentLang)?.label ||
+    currentLang.toUpperCase();
 
   const handleClose = useCallback(() => {
-
     setClosing(true);
-    setTimeout(() => { ; setClosing(false); setOpen(false); }, 200);
+    setTimeout(() => {
+      setClosing(false);
+      setOpen(false);
+    }, 200);
   }, []);
 
-  const handleSelect = useCallback((code: string) => {
-
-    i18n.changeLanguage(code);
-    handleClose();
-  }, [i18n, handleClose]);
+  const handleSelect = useCallback(
+    (code: string) => {
+      i18n.changeLanguage(code);
+      handleClose();
+    },
+    [i18n, handleClose],
+  );
 
   useEscapeKey(handleClose, open && !closing);
 
@@ -215,7 +220,9 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
       <button
         type="button"
         className="lang-trigger"
-        onClick={() => { ; setOpen(true); }}
+        onClick={() => {
+          setOpen(true);
+        }}
         aria-label={t("lang.triggerLabel")}
         title={t("lang.triggerLabel")}
         aria-expanded={open}
@@ -224,33 +231,44 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
         🌐 {currentLabel}
       </button>
 
-      {open && createPortal(
-        <div className={`lang-popup ${closing ? "lang-popup--closing" : ""}`} onClick={handleClose} role="dialog" aria-modal="true" aria-label={t("langSwitcher.label")}>
-          <div className={`lang-popup__card ${closing ? "lang-popup__card--closing" : ""}`} ref={trapRef} onClick={(e) => e.stopPropagation()}>
-            <div className="lang-popup__grid">
-            {GROUPS.map((group) => (
-              <div key={group.label} className="lang-popup__group">
-                <p className="lang-popup__group-title">{t(`langGroups.${group.id}`, group.label)}</p>
-                <div className="lang-popup__options">
-                  {group.options.map((lang) => (
-                    <button
-                      key={lang.code}
-                      type="button"
-                      className={`lang-popup__btn ${currentLang === lang.code ? "lang-popup__btn--active" : ""}`}
-                      onClick={() => handleSelect(lang.code)}
-                    >
-                      <span className="lang-popup__code">{lang.code.toUpperCase()}</span>
-                      <span className="lang-popup__name">{lang.label.split(" — ")[1] || lang.label}</span>
-                    </button>
-                  ))}
-                </div>
+      {open &&
+        createPortal(
+          <div
+            className={`lang-popup ${closing ? "lang-popup--closing" : ""}`}
+            onClick={handleClose}
+            role="dialog"
+            aria-modal="true"
+            aria-label={t("langSwitcher.label")}
+          >
+            <div
+              className={`lang-popup__card ${closing ? "lang-popup__card--closing" : ""}`}
+              ref={trapRef}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="lang-popup__grid">
+                {GROUPS.map((group) => (
+                  <div key={group.label} className="lang-popup__group">
+                    <p className="lang-popup__group-title">{t(`langGroups.${group.id}`, group.label)}</p>
+                    <div className="lang-popup__options">
+                      {group.options.map((lang) => (
+                        <button
+                          key={lang.code}
+                          type="button"
+                          className={`lang-popup__btn ${currentLang === lang.code ? "lang-popup__btn--active" : ""}`}
+                          onClick={() => handleSelect(lang.code)}
+                        >
+                          <span className="lang-popup__code">{lang.code.toUpperCase()}</span>
+                          <span className="lang-popup__name">{lang.label.split(" — ")[1] || lang.label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
             </div>
-          </div>
-        </div>,
-        document.body
-      )}
+          </div>,
+          document.body,
+        )}
     </div>
   );
 });

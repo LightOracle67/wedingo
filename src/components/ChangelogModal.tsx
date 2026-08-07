@@ -24,26 +24,51 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () =
       onClose={handleClose}
       style={{ width: "40%", height: "80%", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}
     >
-        <div style={{ overflowY: "auto", flex: 1, marginTop: "0.5rem" }}>
-          {visible.map((entry) => (
-            <div key={entry.version} style={{ marginBottom: "1rem", paddingBottom: "1rem", borderBottom: "1px solid var(--setup-border)" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.3rem" }}>
-                <span style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--setup-title)" }}>{t("common.version", { version: entry.version })}</span>
-                <span style={{ fontSize: "0.75rem", color: "var(--setup-muted)" }}>{entry.date}</span>
-              </div>
-              <ul style={{ margin: 0, paddingLeft: "1.2rem", fontSize: "0.85rem", color: "var(--setup-subtitle)", lineHeight: 1.6 }}>
-                {entry.changes.map((change, i) => (
-                  <li key={i}>{change}</li>
-                ))}
-              </ul>
+      <div style={{ overflowY: "auto", flex: 1, marginTop: "0.5rem" }}>
+        {visible.map((entry) => (
+          <div
+            key={entry.version}
+            style={{ marginBottom: "1rem", paddingBottom: "1rem", borderBottom: "1px solid var(--setup-border)" }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "baseline",
+                marginBottom: "0.3rem",
+              }}
+            >
+              <span style={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--setup-title)" }}>
+                {t("common.version", { version: entry.version })}
+              </span>
+              <span style={{ fontSize: "0.75rem", color: "var(--setup-muted)" }}>{entry.date}</span>
             </div>
-          ))}
-          {!showAll && CHANGELOG.length > DEFAULT_VISIBLE ? (
-            <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => setShowAll(true)} style={{ marginTop: "0.5rem" }}>
-              {t("changelog.showAll")}
-            </button>
-          ) : null}
-        </div>
+            <ul
+              style={{
+                margin: 0,
+                paddingLeft: "1.2rem",
+                fontSize: "0.85rem",
+                color: "var(--setup-subtitle)",
+                lineHeight: 1.6,
+              }}
+            >
+              {entry.changes.map((change, i) => (
+                <li key={i}>{change}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        {!showAll && CHANGELOG.length > DEFAULT_VISIBLE ? (
+          <button
+            type="button"
+            className="setup-button setup-button--ghost setup-button--compact"
+            onClick={() => setShowAll(true)}
+            style={{ marginTop: "0.5rem" }}
+          >
+            {t("changelog.showAll")}
+          </button>
+        ) : null}
+      </div>
     </Modal>
   );
 });

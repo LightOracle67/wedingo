@@ -9,8 +9,17 @@ export interface ShareTabProps {
 }
 
 const APPS = (t: TFunction) => [
-  { key: "whatsapp", label: t("share.whatsapp"), url: (text: string) => `https://wa.me/?text=${encodeURIComponent(text)}` },
-  { key: "telegram", label: t("share.telegram"), url: (text: string) => `https://t.me/share/url?url=${encodeURIComponent(text.split("\n").pop() ?? "")}&text=${encodeURIComponent(text)}` },
+  {
+    key: "whatsapp",
+    label: t("share.whatsapp"),
+    url: (text: string) => `https://wa.me/?text=${encodeURIComponent(text)}`,
+  },
+  {
+    key: "telegram",
+    label: t("share.telegram"),
+    url: (text: string) =>
+      `https://t.me/share/url?url=${encodeURIComponent(text.split("\n").pop() ?? "")}&text=${encodeURIComponent(text)}`,
+  },
   { key: "sms", label: t("share.sms"), url: (text: string) => `sms:?body=${encodeURIComponent(text)}` },
 ];
 
@@ -20,7 +29,8 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
   const inviteUrl = `${baseUrl}?invitar`;
 
   const generateMessage = useCallback(
-    () => `${randomMessage(i18n.language)}\n\n${inviteUrl}`,    [inviteUrl, i18n.language],
+    () => `${randomMessage(i18n.language)}\n\n${inviteUrl}`,
+    [inviteUrl, i18n.language],
   );
 
   const [message, setMessage] = useState(generateMessage);
@@ -52,12 +62,22 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
   const [qrError, setQrError] = useState(false);
   useEffect(() => {
     let cancelled = false;
-    void import("qrcode").then((QRCode) => {
-      QRCode.toDataURL(inviteUrl, { width: 180, margin: 1, errorCorrectionLevel: "M" })
-        .then((url: string) => { if (!cancelled) setQrUrl(url); })
-        .catch(() => { if (!cancelled) setQrError(true); });
-    }).catch(() => { if (!cancelled) setQrError(true); });
-    return () => { cancelled = true; };
+    void import("qrcode")
+      .then((QRCode) => {
+        QRCode.toDataURL(inviteUrl, { width: 180, margin: 1, errorCorrectionLevel: "M" })
+          .then((url: string) => {
+            if (!cancelled) setQrUrl(url);
+          })
+          .catch(() => {
+            if (!cancelled) setQrError(true);
+          });
+      })
+      .catch(() => {
+        if (!cancelled) setQrError(true);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [inviteUrl]);
 
   // Copia el QR como imagen PNG al portapapeles (para pegarlo en una
@@ -93,9 +113,7 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
   return (
     <>
       <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.7rem 1rem" }}>
-        <p style={{ margin: 0, color: "var(--setup-muted)", fontSize: "0.8rem" }}>
-          {t("share.publishedAt")}
-        </p>
+        <p style={{ margin: 0, color: "var(--setup-muted)", fontSize: "0.8rem" }}>{t("share.publishedAt")}</p>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
           <a
             href={inviteUrl}
@@ -105,13 +123,20 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
           >
             {inviteUrl}
           </a>
-          <button className={btnGhostClass} type="button" onClick={copyLink} style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem", flexShrink: 0 }}>
+          <button
+            className={btnGhostClass}
+            type="button"
+            onClick={copyLink}
+            style={{ fontSize: "0.75rem", padding: "0.2rem 0.5rem", flexShrink: 0 }}
+          >
             {t("common.copy")}
           </button>
         </div>
       </div>
 
-      <label className="setup-label" htmlFor="shareMessage" style={{ marginBottom: "0.5rem", display: "block" }}>{t("share.message")}</label>
+      <label className="setup-label" htmlFor="shareMessage" style={{ marginBottom: "0.5rem", display: "block" }}>
+        {t("share.message")}
+      </label>
       <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.7rem 1rem" }}>
         <textarea
           id="shareMessage"
@@ -119,22 +144,46 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
           onChange={(e) => setMessage(e.target.value)}
           rows={6}
           aria-describedby="shareMessageHint"
-          style={{ width: "100%", resize: "vertical", fontFamily: "inherit", fontSize: "0.9rem", padding: "0.5rem", borderRadius: "6px", border: "1px solid var(--setup-border)", background: "var(--setup-bg)", color: "var(--setup-text)" }}
+          style={{
+            width: "100%",
+            resize: "vertical",
+            fontFamily: "inherit",
+            fontSize: "0.9rem",
+            padding: "0.5rem",
+            borderRadius: "6px",
+            border: "1px solid var(--setup-border)",
+            background: "var(--setup-bg)",
+            color: "var(--setup-text)",
+          }}
         />
-        <p className="setup-help" id="shareMessageHint" style={{ marginTop: "0.4rem" }}>{t("share.messageHint")}</p>
+        <p className="setup-help" id="shareMessageHint" style={{ marginTop: "0.4rem" }}>
+          {t("share.messageHint")}
+        </p>
         <button className={btnGhostClass} type="button" onClick={handleRandom} style={{ marginTop: "0.5rem" }}>
           {t("share.generateMessage")}
         </button>
-        <button className={btnGhostClass} type="button" onClick={() => {
-          navigator.clipboard.writeText(message)
-            .then(() => { if (addToast) addToast("success", t("share.messageCopied")); })
-            .catch(() => { if (addToast) addToast("error", t("errors.clipboardCopyFailed")); });
-        }} style={{ marginTop: "0.5rem", marginLeft: "0.5rem" }}>
+        <button
+          className={btnGhostClass}
+          type="button"
+          onClick={() => {
+            navigator.clipboard
+              .writeText(message)
+              .then(() => {
+                if (addToast) addToast("success", t("share.messageCopied"));
+              })
+              .catch(() => {
+                if (addToast) addToast("error", t("errors.clipboardCopyFailed"));
+              });
+          }}
+          style={{ marginTop: "0.5rem", marginLeft: "0.5rem" }}
+        >
           {t("share.copyMessage")}
         </button>
       </div>
 
-      <div className="setup-label" style={{ marginBottom: "0.5rem" }}>{t("share.shareVia")}</div>
+      <div className="setup-label" style={{ marginBottom: "0.5rem" }}>
+        {t("share.shareVia")}
+      </div>
       <div style={{ display: "grid", gap: "0.5rem" }}>
         {APPS(t).map((app) => (
           <button key={app.key} className={btnClass} type="button" onClick={() => shareVia(app.url(message))}>
@@ -145,14 +194,18 @@ const ShareTab = memo(function ShareTab({ inviteToken, addToast }: ShareTabProps
 
       <hr style={{ margin: "1rem 0", border: "none", borderTop: "1px solid var(--setup-border)" }} />
 
-      <div className="setup-label" style={{ marginBottom: "0.5rem" }}>{t("share.print")}</div>
+      <div className="setup-label" style={{ marginBottom: "0.5rem" }}>
+        {t("share.print")}
+      </div>
       <button className={btnClass} type="button" onClick={printPdf}>
         {t("share.printPdf")}
       </button>
 
       {/* Código QR del enlace: se genera en el navegador. */}
       <div className="setup-token-card" style={{ marginTop: "1rem", padding: "1rem", textAlign: "center" }}>
-        <div className="setup-label" style={{ marginBottom: "0.5rem" }}>{t("share.qrCode")}</div>
+        <div className="setup-label" style={{ marginBottom: "0.5rem" }}>
+          {t("share.qrCode")}
+        </div>
         {qrUrl ? (
           <>
             <img

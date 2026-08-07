@@ -16,7 +16,9 @@ vi.mock("../../../contexts", () => ({
   useConfig: () => mockUseConfig(),
 }));
 
-const mockGalleryEditor = vi.fn((_props: Record<string, unknown>) => <div data-testid="gallery-editor">GalleryArrayEditor</div>);
+const mockGalleryEditor = vi.fn((_props: Record<string, unknown>) => (
+  <div data-testid="gallery-editor">GalleryArrayEditor</div>
+));
 
 vi.mock("../../GalleryArrayEditor", () => ({
   default: (props: Record<string, unknown>) => mockGalleryEditor(props),
@@ -44,7 +46,7 @@ describe("GallerySectionForm", () => {
     expect(mockGalleryEditor).toHaveBeenCalledWith(
       expect.objectContaining({
         inviteToken: "test-token",
-      })
+      }),
     );
   });
 });

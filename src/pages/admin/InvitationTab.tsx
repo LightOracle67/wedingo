@@ -6,7 +6,11 @@ const InvitationTab = memo(function InvitationTab() {
   const { t } = useTranslation();
   return (
     <div className="setup-layout setup-layout--full" style={{ paddingTop: "0.25rem" }}>
-      <section className="setup-card setup-card--wide setup-card--full allow-select" aria-label={t("admin.editorAriaLabel")} style={{ borderRadius: "1rem" }}>
+      <section
+        className="setup-card setup-card--wide setup-card--full allow-select"
+        aria-label={t("admin.editorAriaLabel")}
+        style={{ borderRadius: "1rem" }}
+      >
         <SetupForm prefix="admin" />
       </section>
     </div>

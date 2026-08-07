@@ -8,7 +8,7 @@ describe("CollapsibleSection", () => {
     render(
       <CollapsibleSection title="Test Title" hint="Test Hint">
         <p>Child content</p>
-      </CollapsibleSection>
+      </CollapsibleSection>,
     );
     expect(screen.getByText("Test Title")).toBeInTheDocument();
     expect(screen.getByText("Test Hint")).toBeInTheDocument();
@@ -19,7 +19,7 @@ describe("CollapsibleSection", () => {
     render(
       <CollapsibleSection title="Toggle Test">
         <p>Content</p>
-      </CollapsibleSection>
+      </CollapsibleSection>,
     );
     const button = screen.getByRole("button", { name: "Toggle Test" });
     expect(screen.getByText("Content")).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe("CollapsibleSection", () => {
     render(
       <CollapsibleSection title="Closed by default">
         <p>Hidden content</p>
-      </CollapsibleSection>
+      </CollapsibleSection>,
     );
 
     const button = screen.getByRole("button", { name: "Closed by default" });
@@ -45,7 +45,7 @@ describe("CollapsibleSection", () => {
     render(
       <CollapsibleSection title="Open by default" defaultOpen={true}>
         <p>Visible content</p>
-      </CollapsibleSection>
+      </CollapsibleSection>,
     );
 
     const button = screen.getByRole("button", { name: "Open by default" });
@@ -56,7 +56,7 @@ describe("CollapsibleSection", () => {
     render(
       <CollapsibleSection title="Hidden section" isHidden={true} sectionKey="test" onToggleVisibility={vi.fn()}>
         <p>Content</p>
-      </CollapsibleSection>
+      </CollapsibleSection>,
     );
 
     expect(screen.getByText("common.hidden")).toBeInTheDocument();
@@ -64,14 +64,7 @@ describe("CollapsibleSection", () => {
 
   it("calls onToggleVisibility when visibility toggle is clicked", () => {
     const onToggle = vi.fn();
-    render(
-      <CollapsibleSection
-        title="Test"
-        sectionKey="details"
-        isHidden={false}
-        onToggleVisibility={onToggle}
-      />
-    );
+    render(<CollapsibleSection title="Test" sectionKey="details" isHidden={false} onToggleVisibility={onToggle} />);
     const switchEl = screen.getByRole("switch");
     fireEvent.click(switchEl);
     expect(onToggle).toHaveBeenCalledWith("details");
@@ -79,23 +72,11 @@ describe("CollapsibleSection", () => {
 
   it("shows visibility toggle label based on hidden state", () => {
     const { rerender } = render(
-      <CollapsibleSection
-        title="Test"
-        sectionKey="test"
-        isHidden={false}
-        onToggleVisibility={vi.fn()}
-      />
+      <CollapsibleSection title="Test" sectionKey="test" isHidden={false} onToggleVisibility={vi.fn()} />,
     );
     expect(screen.getByText("common.visible")).toBeInTheDocument();
 
-    rerender(
-      <CollapsibleSection
-        title="Test"
-        sectionKey="test"
-        isHidden={true}
-        onToggleVisibility={vi.fn()}
-      />
-    );
+    rerender(<CollapsibleSection title="Test" sectionKey="test" isHidden={true} onToggleVisibility={vi.fn()} />);
     expect(screen.getByText("common.show")).toBeInTheDocument();
   });
 
@@ -103,7 +84,7 @@ describe("CollapsibleSection", () => {
     render(
       <CollapsibleSection title="Transition Test" defaultOpen={true}>
         <p>Content</p>
-      </CollapsibleSection>
+      </CollapsibleSection>,
     );
 
     const wrap = document.querySelector(".setup-collapsible__wrap")!;
@@ -118,14 +99,7 @@ describe("CollapsibleSection", () => {
 
   it("triggers onToggleVisibility via keyboard Enter", () => {
     const onToggle = vi.fn();
-    render(
-      <CollapsibleSection
-        title="Test"
-        sectionKey="details"
-        isHidden={false}
-        onToggleVisibility={onToggle}
-      />
-    );
+    render(<CollapsibleSection title="Test" sectionKey="details" isHidden={false} onToggleVisibility={onToggle} />);
     const switchEl = screen.getByRole("switch");
     fireEvent.keyDown(switchEl, { key: "Enter" });
     expect(onToggle).toHaveBeenCalledWith("details");
@@ -133,14 +107,7 @@ describe("CollapsibleSection", () => {
 
   it("triggers onToggleVisibility via keyboard Space", () => {
     const onToggle = vi.fn();
-    render(
-      <CollapsibleSection
-        title="Test"
-        sectionKey="details"
-        isHidden={false}
-        onToggleVisibility={onToggle}
-      />
-    );
+    render(<CollapsibleSection title="Test" sectionKey="details" isHidden={false} onToggleVisibility={onToggle} />);
     const switchEl = screen.getByRole("switch");
     fireEvent.keyDown(switchEl, { key: " " });
     expect(onToggle).toHaveBeenCalledWith("details");
@@ -148,30 +115,19 @@ describe("CollapsibleSection", () => {
 
   it("does not call onToggleVisibility on non-Enter/Space key", () => {
     const onToggle = vi.fn();
-    render(
-      <CollapsibleSection
-        title="Test"
-        sectionKey="details"
-        isHidden={false}
-        onToggleVisibility={onToggle}
-      />
-    );
+    render(<CollapsibleSection title="Test" sectionKey="details" isHidden={false} onToggleVisibility={onToggle} />);
     const switchEl = screen.getByRole("switch");
     fireEvent.keyDown(switchEl, { key: "Tab" });
     expect(onToggle).not.toHaveBeenCalled();
   });
 
   it("does not render visibility toggle when sectionKey is missing", () => {
-    render(
-      <CollapsibleSection title="Test" isHidden={false} onToggleVisibility={vi.fn()} />
-    );
+    render(<CollapsibleSection title="Test" isHidden={false} onToggleVisibility={vi.fn()} />);
     expect(screen.queryByRole("switch")).toBeNull();
   });
 
   it("does not render visibility toggle when onToggleVisibility is missing", () => {
-    render(
-      <CollapsibleSection title="Test" sectionKey="test" isHidden={false} />
-    );
+    render(<CollapsibleSection title="Test" sectionKey="test" isHidden={false} />);
     expect(screen.queryByRole("switch")).toBeNull();
   });
 
@@ -179,7 +135,7 @@ describe("CollapsibleSection", () => {
     render(
       <CollapsibleSection title="Open Test" defaultOpen={false}>
         <p>Content</p>
-      </CollapsibleSection>
+      </CollapsibleSection>,
     );
 
     const wrap = document.querySelector(".setup-collapsible__wrap")!;
@@ -194,7 +150,7 @@ describe("CollapsibleSection", () => {
     render(
       <CollapsibleSection title="Close Test" defaultOpen={true}>
         <p>Content</p>
-      </CollapsibleSection>
+      </CollapsibleSection>,
     );
     const button = screen.getByRole("button", { name: "Close Test" });
     fireEvent.click(button);
@@ -207,7 +163,7 @@ describe("CollapsibleSection", () => {
     render(
       <CollapsibleSection title="Hidden" sectionKey="test" isHidden={true} onToggleVisibility={onToggle}>
         <p>Content</p>
-      </CollapsibleSection>
+      </CollapsibleSection>,
     );
     expect(screen.getByText("common.hidden")).toBeInTheDocument();
   });
@@ -216,7 +172,7 @@ describe("CollapsibleSection", () => {
     render(
       <CollapsibleSection title="Prop Test" defaultOpen={true}>
         <p>Content</p>
-      </CollapsibleSection>
+      </CollapsibleSection>,
     );
     const wrap = document.querySelector(".setup-collapsible__wrap")!;
     expect(wrap).toHaveStyle("max-height: none");
@@ -235,7 +191,7 @@ describe("CollapsibleSection", () => {
     render(
       <CollapsibleSection title="Close Test" defaultOpen={true}>
         <p>Content</p>
-      </CollapsibleSection>
+      </CollapsibleSection>,
     );
 
     const wrap = document.querySelector(".setup-collapsible__wrap")!;

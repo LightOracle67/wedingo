@@ -44,12 +44,20 @@ describe("Firestore rules simulation (extra)", () => {
   });
 
   it("validates gallery file size", () => {
-    expect(isValidRequest("invitations/abc123/gallery/img1", "create", { auth: true, resourceSize: 100 * 1024 })).toBe(true);
-    expect(isValidRequest("invitations/abc123/gallery/img1", "create", { auth: true, resourceSize: 500 * 1024 })).toBe(false);
+    expect(isValidRequest("invitations/abc123/gallery/img1", "create", { auth: true, resourceSize: 100 * 1024 })).toBe(
+      true,
+    );
+    expect(isValidRequest("invitations/abc123/gallery/img1", "create", { auth: true, resourceSize: 500 * 1024 })).toBe(
+      false,
+    );
   });
 
   it("validates audio file size", () => {
-    expect(isValidRequest("invitations/abc123/audio/aud1", "create", { auth: true, resourceSize: 400 * 1024 })).toBe(true);
-    expect(isValidRequest("invitations/abc123/audio/aud1", "create", { auth: true, resourceSize: 600 * 1024 })).toBe(false);
+    expect(isValidRequest("invitations/abc123/audio/aud1", "create", { auth: true, resourceSize: 400 * 1024 })).toBe(
+      true,
+    );
+    expect(isValidRequest("invitations/abc123/audio/aud1", "create", { auth: true, resourceSize: 600 * 1024 })).toBe(
+      false,
+    );
   });
 });

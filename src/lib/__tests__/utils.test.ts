@@ -23,7 +23,7 @@ describe("escHtml", () => {
   });
 
   it("handles all special characters together", () => {
-    expect(escHtml("<div class=\"test\">Tom & Jerry's</div>")).toBe(
+    expect(escHtml('<div class="test">Tom & Jerry\'s</div>')).toBe(
       "&lt;div class=&quot;test&quot;&gt;Tom &amp; Jerry&#039;s&lt;/div&gt;",
     );
   });

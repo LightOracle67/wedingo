@@ -8,14 +8,17 @@ export interface AccessTabProps {
   handleDeleteInvitation: () => void;
 }
 
-const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmin, handleAdminLogout, handleDeleteInvitation }: AccessTabProps) {
+const AccessTab = memo(function AccessTab({
+  setupToken,
+  handleResetTokenFromAdmin,
+  handleAdminLogout,
+  handleDeleteInvitation,
+}: AccessTabProps) {
   const { t } = useTranslation();
   return (
     <>
       <div className="setup-token-card">
-        <p className="setup-help setup-help--tight">
-          {t("access.description")}
-        </p>
+        <p className="setup-help setup-help--tight">{t("access.description")}</p>
         <input
           id="setupTokenDisplay"
           className="setup-input setup-token-input"
@@ -29,10 +32,14 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
         {setupToken ? <p className="setup-token-display">{t("access.activeToken")}</p> : null}
 
         <div className="setup-actions">
-          <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => {
-            // Regenerar el token invalida el actual: se confirma explícitamente.
-            if (window.confirm(t("access.regenConfirm"))) handleResetTokenFromAdmin();
-          }}>
+          <button
+            className="setup-button setup-button--ghost setup-button--compact"
+            type="button"
+            onClick={() => {
+              // Regenerar el token invalida el actual: se confirma explícitamente.
+              if (window.confirm(t("access.regenConfirm"))) handleResetTokenFromAdmin();
+            }}
+          >
             {t("access.generateToken")}
           </button>
           <button className="setup-button" type="button" onClick={handleAdminLogout}>
@@ -46,7 +53,12 @@ const AccessTab = memo(function AccessTab({ setupToken, handleResetTokenFromAdmi
         {t("access.deleteDataDescription")}
       </p>
       <div className="setup-actions">
-        <button className="setup-button setup-button--ghost" type="button" onClick={handleDeleteInvitation} style={{ borderColor: "#e06060", color: "#e06060" }}>
+        <button
+          className="setup-button setup-button--ghost"
+          type="button"
+          onClick={handleDeleteInvitation}
+          style={{ borderColor: "#e06060", color: "#e06060" }}
+        >
           {t("access.deleteInvitation")}
         </button>
       </div>

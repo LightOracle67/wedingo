@@ -33,7 +33,9 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run lint:ci
+      - run: npm run format:check
       - run: npm run typecheck
+      - run: npm run typecheck:e2e
       - run: npm run translations:check
       - run: npm run consent:check
       # Una sola pasada de Vitest con cobertura y reporte JUnit.
@@ -102,7 +104,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   e2e:
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # Los e2e corren contra un webServer local (vite preview) y usan el
+    # script test-invite contra Firestore de staging/test: no dependen del
+    # canal de producción, así que también cubren PRs (antes solo main).
+    if: github.event_name == 'pull_request' || github.ref == 'refs/heads/main'
     needs: build-and-test
     runs-on: ubuntu-latest
     timeout-minutes: 25
@@ -113,6 +118,7 @@ jobs:
           node-version: 22
           cache: 'npm'
       - run: npm ci
+      - run: npm run typecheck:e2e
       - run: npx playwright install --with-deps chromium
       - run: npm run e2e
         env:

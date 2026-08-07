@@ -4,11 +4,19 @@ import type { InvitationConfig } from "../../types";
 
 const mockT = vi.hoisted(() => vi.fn((key: string) => key));
 const mockNavigate = vi.hoisted(() => vi.fn());
-const mockGetDoc = vi.hoisted(() => vi.fn((_ref?: unknown): Promise<{ exists: () => boolean; data?: () => Record<string, unknown> }> => Promise.resolve({ exists: () => false })));
-const mockRunTransaction = vi.hoisted(() => vi.fn(async (_db: unknown, cb: (t: unknown) => Promise<void>) => cb({} as never)));
+const mockGetDoc = vi.hoisted(() =>
+  vi.fn((_ref?: unknown): Promise<{ exists: () => boolean; data?: () => Record<string, unknown> }> =>
+    Promise.resolve({ exists: () => false }),
+  ),
+);
+const mockRunTransaction = vi.hoisted(() =>
+  vi.fn(async (_db: unknown, cb: (t: unknown) => Promise<void>) => cb({} as never)),
+);
 const mockSetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 const mockUpdateDoc = vi.hoisted(() => vi.fn((_ref?: unknown, _payload?: unknown) => Promise.resolve()));
-const mockGetSession = vi.hoisted(() => vi.fn(() => null as { type: string; identifier: string; inviteToken?: string } | null));
+const mockGetSession = vi.hoisted(() =>
+  vi.fn(() => null as { type: string; identifier: string; inviteToken?: string } | null),
+);
 const mockSaveSession = vi.hoisted(() => vi.fn());
 const mockClearSession = vi.hoisted(() => vi.fn());
 const mockRenewSession = vi.hoisted(() => vi.fn(() => Promise.resolve()));
@@ -119,7 +127,9 @@ describe("useSetupAuth", () => {
       }
       return { exists: () => true, data: () => ({ adminUsername: "admin" }) };
     });
-    mockRunTransaction.mockImplementation(async (_db: unknown, _cb: (t: unknown) => Promise<void>) => Promise.resolve());
+    mockRunTransaction.mockImplementation(async (_db: unknown, _cb: (t: unknown) => Promise<void>) =>
+      Promise.resolve(),
+    );
     mockSetDoc.mockImplementation(() => Promise.resolve());
     mockUpdateDoc.mockImplementation(() => Promise.resolve());
     mockGenerateSetupToken.mockImplementation(() => "generated-token-123");
@@ -682,7 +692,9 @@ describe("useSetupAuth", () => {
       });
 
       // clearSessionExpired limpia la marca tras mostrarla.
-      act(() => { result.current.clearSessionExpired(); });
+      act(() => {
+        result.current.clearSessionExpired();
+      });
       expect(result.current.sessionExpired).toBe(false);
     });
 
@@ -690,7 +702,10 @@ describe("useSetupAuth", () => {
       // La invitación ya no existe pero quedó un token de setup: el else del
       // restore marca la sesión como expirada (ramas del aviso).
       mockGetSession.mockReturnValue({ type: "setup", identifier: "ghost" });
-      mockGetDoc.mockResolvedValueOnce({ exists: () => false, data: () => undefined as unknown as Record<string, unknown> });
+      mockGetDoc.mockResolvedValueOnce({
+        exists: () => false,
+        data: () => undefined as unknown as Record<string, unknown>,
+      });
       mockSafeGetItem.mockReturnValue("stored-token");
 
       const { result } = setup();
@@ -898,9 +913,15 @@ describe("useSetupAuth", () => {
       });
       expect(result.current.isAdminTokenLoggedIn).toBe(true);
 
-      await act(async () => { await vi.advanceTimersByTimeAsync(60000); });   // 1er fallo
-      await act(async () => { await vi.advanceTimersByTimeAsync(60000); });   // 2º fallo → corta
-      await act(async () => { await vi.advanceTimersByTimeAsync(1); });       // drena microtasks
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(60000);
+      }); // 1er fallo
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(60000);
+      }); // 2º fallo → corta
+      await act(async () => {
+        await vi.advanceTimersByTimeAsync(1);
+      }); // drena microtasks
 
       expect(mockClearSession).toHaveBeenCalled();
       expect(result.current.isAdminTokenLoggedIn).toBe(false);
@@ -929,7 +950,13 @@ describe("useSetupAuth", () => {
       });
 
       const { result } = renderHook(() =>
-        useSetupAuth("test-invite-token", {} as InvitationConfig, null as unknown as (m: string) => void, null as unknown as (t: string) => void, vi.fn()),
+        useSetupAuth(
+          "test-invite-token",
+          {} as InvitationConfig,
+          null as unknown as (m: string) => void,
+          null as unknown as (t: string) => void,
+          vi.fn(),
+        ),
       );
       act(() => result.current.setSetupTokenInput("tok"));
 

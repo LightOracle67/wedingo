@@ -8,7 +8,15 @@ interface Dish {
   text: string;
 }
 
-export default function MenuDishEditor({ value, onChange, idBase }: { value: string; onChange: (json: string) => void; idBase: string }) {
+export default function MenuDishEditor({
+  value,
+  onChange,
+  idBase,
+}: {
+  value: string;
+  onChange: (json: string) => void;
+  idBase: string;
+}) {
   const { t } = useTranslation();
 
   // El editor debe mostrar filas vacías (para poder escribirlas): se parsea
@@ -23,25 +31,32 @@ export default function MenuDishEditor({ value, onChange, idBase }: { value: str
     };
   }, []);
 
-  const { items: dishes, parseError, addItem, removeItem, updateItem } = useJsonArrayField<Dish>(
-    value,
-    normalizeDish,
-    MAX_MENU_DISHES,
-  );
+  const {
+    items: dishes,
+    parseError,
+    addItem,
+    removeItem,
+    updateItem,
+  } = useJsonArrayField<Dish>(value, normalizeDish, MAX_MENU_DISHES);
 
-  const handleField = useCallback((index: number, field: "order" | "text") =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleField = useCallback(
+    (index: number, field: "order" | "text") => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
       const next = { ...(dishes[index] ?? { order: "entrante", text: "" }), [field]: e.target.value };
       updateItem(index, next, onChange);
-    }, [dishes, onChange, updateItem]);
+    },
+    [dishes, onChange, updateItem],
+  );
 
   const handleAdd = useCallback(() => {
     addItem({ order: "entrante", text: "" }, onChange);
   }, [addItem, onChange]);
 
-  const handleRemove = useCallback((index: number) => {
-    removeItem(index, onChange);
-  }, [removeItem, onChange]);
+  const handleRemove = useCallback(
+    (index: number) => {
+      removeItem(index, onChange);
+    },
+    [removeItem, onChange],
+  );
 
   return (
     <div>
@@ -51,9 +66,14 @@ export default function MenuDishEditor({ value, onChange, idBase }: { value: str
         </p>
       ) : null}
       {dishes.map((dish, i) => (
-        <div key={i} style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}>
+        <div
+          key={i}
+          style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}
+        >
           <div style={{ flex: "0 0 130px" }}>
-            <label className="setup-label" htmlFor={`${idBase}-order-${i}`} style={{ fontSize: "0.75rem" }}>{t("setup.menuOrderLabel")}</label>
+            <label className="setup-label" htmlFor={`${idBase}-order-${i}`} style={{ fontSize: "0.75rem" }}>
+              {t("setup.menuOrderLabel")}
+            </label>
             <select
               id={`${idBase}-order-${i}`}
               className="setup-input"
@@ -61,12 +81,16 @@ export default function MenuDishEditor({ value, onChange, idBase }: { value: str
               onChange={handleField(i, "order")}
             >
               {MENU_DISH_ORDERS.map((order: string) => (
-                <option key={order} value={order}>{t("setup.menuOrder" + order.charAt(0).toUpperCase() + order.slice(1))}</option>
+                <option key={order} value={order}>
+                  {t("setup.menuOrder" + order.charAt(0).toUpperCase() + order.slice(1))}
+                </option>
               ))}
             </select>
           </div>
           <div style={{ flex: 1 }}>
-            <label className="setup-label" htmlFor={`${idBase}-dish-${i}`} style={{ fontSize: "0.75rem" }}>{t("setup.menuDishLabel")}</label>
+            <label className="setup-label" htmlFor={`${idBase}-dish-${i}`} style={{ fontSize: "0.75rem" }}>
+              {t("setup.menuDishLabel")}
+            </label>
             <input
               id={`${idBase}-dish-${i}`}
               className="setup-input"

@@ -6,5 +6,10 @@ export { compressImage } from "./image-utils";
 export { encodeInviteConfig, decodeInviteConfig } from "./invite-config-codec";
 
 export function escHtml(s: unknown) {
-  return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+  return String(s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }

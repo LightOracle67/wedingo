@@ -40,7 +40,9 @@ describe("useFocusTrap", () => {
   });
 
   it("focuses first element when opened", () => {
-    const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), { initialProps: false });
+    const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), {
+      initialProps: false,
+    });
     const { container, buttons } = createTrapElements();
     result.current.current = container;
     rerender(true);
@@ -54,7 +56,9 @@ describe("useFocusTrap", () => {
     document.body.appendChild(outside);
     outside.focus();
 
-    const { result, rerender, unmount } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), { initialProps: true });
+    const { result, rerender, unmount } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), {
+      initialProps: true,
+    });
     const { container } = createTrapElements();
     result.current.current = container;
 
@@ -66,49 +70,68 @@ describe("useFocusTrap", () => {
   });
 
   it("wraps Tab from last to first element", () => {
-    const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), { initialProps: false });
+    const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), {
+      initialProps: false,
+    });
     const { container, buttons } = createTrapElements();
     result.current.current = container;
     rerender(true);
 
-    act(() => { buttons[1]!.focus(); container.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true })); });
+    act(() => {
+      buttons[1]!.focus();
+      container.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true }));
+    });
     expect(document.activeElement).toBe(buttons[0]!);
 
     document.body.removeChild(container);
   });
 
   it("wraps Shift+Tab from first to last element", () => {
-    const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), { initialProps: false });
+    const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), {
+      initialProps: false,
+    });
     const { container, buttons } = createTrapElements();
     result.current.current = container;
     rerender(true);
 
-    act(() => { buttons[0]!.focus(); container.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", shiftKey: true, bubbles: true })); });
+    act(() => {
+      buttons[0]!.focus();
+      container.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", shiftKey: true, bubbles: true }));
+    });
     expect(document.activeElement).toBe(buttons[1]!);
 
     document.body.removeChild(container);
   });
 
   it("ignores non-Tab key events", () => {
-    const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), { initialProps: false });
+    const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), {
+      initialProps: false,
+    });
     const { container, buttons } = createTrapElements();
     result.current.current = container;
     rerender(true);
 
-    act(() => { buttons[0]!.focus(); container.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true })); });
+    act(() => {
+      buttons[0]!.focus();
+      container.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+    });
     expect(document.activeElement).toBe(buttons[0]!);
 
     document.body.removeChild(container);
   });
 
   it("handles Tab when container has no focusable elements", () => {
-    const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), { initialProps: false });
+    const { result, rerender } = renderHook((open: boolean) => useFocusTrap<HTMLDivElement>(open), {
+      initialProps: false,
+    });
     const container = document.createElement("div");
     container.innerHTML = "<span>Not focusable</span>";
     document.body.appendChild(container);
     result.current.current = container;
     rerender(true);
-    act(() => { container.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true })); });
+    act(() => {
+      container.dispatchEvent(new KeyboardEvent("keydown", { key: "Tab", bubbles: true }));
+    });
     expect(document.body.contains(container)).toBe(true);
     document.body.removeChild(container);
   });

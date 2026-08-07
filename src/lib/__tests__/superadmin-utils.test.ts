@@ -51,11 +51,7 @@ describe("searchInvitations", () => {
 describe("calcGlobalStats", () => {
   it("calculates global stats correctly", () => {
     const invs = [{}, {}];
-    const rsvps = [
-      { attendance: "yes", companions: 2 },
-      { attendance: "yes" },
-      { attendance: "no" },
-    ];
+    const rsvps = [{ attendance: "yes", companions: 2 }, { attendance: "yes" }, { attendance: "no" }];
     const tokens = [
       { used: true, autoGen: true },
       { used: false, autoGen: true },

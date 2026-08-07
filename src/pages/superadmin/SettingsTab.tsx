@@ -35,19 +35,33 @@ const SettingsTab = memo(function SettingsTab() {
         </p>
         {session && (
           <div style={{ display: "grid", gap: "0.4rem", marginTop: "0.5rem" }}>
-            <div style={{ color: "var(--setup-title)", fontWeight: 700, fontSize: "0.9rem" }}>
-              {session.identifier}
-            </div>
+            <div style={{ color: "var(--setup-title)", fontWeight: 700, fontSize: "0.9rem" }}>{session.identifier}</div>
             <div style={{ color: "var(--setup-muted)", fontSize: "0.8rem" }}>
-              {session.type === "superadmin" ? t("superadmin.sessionTypeSuperadmin") : session.type === "setup" ? t("superadmin.sessionTypeSetup") : t("superadmin.sessionTypeAdmin")}
+              {session.type === "superadmin"
+                ? t("superadmin.sessionTypeSuperadmin")
+                : session.type === "setup"
+                  ? t("superadmin.sessionTypeSetup")
+                  : t("superadmin.sessionTypeAdmin")}
             </div>
             <div style={{ color: "var(--setup-muted)", fontSize: "0.75rem" }}>
-              {t("superadmin.sessionExpires", { date: new Date(session.expiresAt).toLocaleString(i18n.language, { dateStyle: "medium", timeStyle: "short" }) })}
+              {t("superadmin.sessionExpires", {
+                date: new Date(session.expiresAt).toLocaleString(i18n.language, {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                }),
+              })}
             </div>
           </div>
         )}
         <div className="setup-actions" style={{ marginTop: "0.75rem" }}>
-          <button className="setup-button" type="button" onClick={() => { handleClear(); logout(); }}>
+          <button
+            className="setup-button"
+            type="button"
+            onClick={() => {
+              handleClear();
+              logout();
+            }}
+          >
             {t("superadmin.logoutButton")}
           </button>
         </div>

@@ -82,7 +82,9 @@ describe("useStoryNavigation", () => {
     // Simula un IntersectionObserver que reporta la sección "details" visible.
     let observerCallback: IntersectionObserverCallback | null = null;
     class FakeIO {
-      constructor(cb: IntersectionObserverCallback) { observerCallback = cb; }
+      constructor(cb: IntersectionObserverCallback) {
+        observerCallback = cb;
+      }
       observe() {}
       disconnect() {}
     }
@@ -97,7 +99,10 @@ describe("useStoryNavigation", () => {
     });
     // Dispara el callback con "details" visible.
     act(() => {
-      observerCallback!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
+      observerCallback!(
+        [{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry],
+        {} as IntersectionObserver,
+      );
     });
     expect(result.current.activeSection).toBe("details");
     expect(result.current.getSectionClassName("details")).toContain("story-section--is-active");
@@ -134,7 +139,9 @@ describe("useStoryNavigation", () => {
     // de entrada, para que recargar o restaurar el scroll no parpadee.
     let cb: IntersectionObserverCallback | null = null;
     class FakeIO {
-      constructor(c: IntersectionObserverCallback) { cb = c; }
+      constructor(c: IntersectionObserverCallback) {
+        cb = c;
+      }
       observe() {}
       disconnect() {}
     }
@@ -144,8 +151,12 @@ describe("useStoryNavigation", () => {
     document.body.appendChild(el);
 
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    await vi.waitFor(() => { expect(cb).not.toBeNull(); });
-    act(() => { cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    await vi.waitFor(() => {
+      expect(cb).not.toBeNull();
+    });
+    act(() => {
+      cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
+    });
     expect(result.current.getSectionClassName("details")).toContain("story-section--is-active");
     expect(result.current.getSectionClassName("details")).not.toContain("story-section--is-enter");
     el.remove();
@@ -154,7 +165,9 @@ describe("useStoryNavigation", () => {
   it("animates the entry when a section becomes visible by scroll", async () => {
     let cb: IntersectionObserverCallback | null = null;
     class FakeIO {
-      constructor(c: IntersectionObserverCallback) { cb = c; }
+      constructor(c: IntersectionObserverCallback) {
+        cb = c;
+      }
       observe() {}
       disconnect() {}
     }
@@ -164,14 +177,22 @@ describe("useStoryNavigation", () => {
     document.body.appendChild(el);
 
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    await vi.waitFor(() => { expect(cb).not.toBeNull(); });
+    await vi.waitFor(() => {
+      expect(cb).not.toBeNull();
+    });
     // Primer callback (boot): no visible → hidden.
-    act(() => { cb!([{ isIntersecting: false, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    act(() => {
+      cb!([{ isIntersecting: false, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
+    });
     // Segundo callback (scroll): visible → entering.
-    act(() => { cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    act(() => {
+      cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
+    });
     expect(result.current.getSectionClassName("gifts")).toContain("story-section--is-enter");
     // Al terminar la entrada (900ms) pasa a active.
-    await act(async () => { await new Promise((r) => setTimeout(r, 1500)); });
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 1500));
+    });
     expect(result.current.getSectionClassName("gifts")).toContain("story-section--is-active");
     expect(result.current.getSectionClassName("gifts")).not.toContain("story-section--is-enter");
     el.remove();
@@ -180,7 +201,9 @@ describe("useStoryNavigation", () => {
   it("animates the exit when a section leaves the viewport", async () => {
     let cb: IntersectionObserverCallback | null = null;
     class FakeIO {
-      constructor(c: IntersectionObserverCallback) { cb = c; }
+      constructor(c: IntersectionObserverCallback) {
+        cb = c;
+      }
       observe() {}
       disconnect() {}
     }
@@ -190,15 +213,23 @@ describe("useStoryNavigation", () => {
     document.body.appendChild(el);
 
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    await vi.waitFor(() => { expect(cb).not.toBeNull(); });
+    await vi.waitFor(() => {
+      expect(cb).not.toBeNull();
+    });
     // Boot: visible → active.
-    act(() => { cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    act(() => {
+      cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
+    });
     expect(result.current.getSectionClassName("info")).toContain("story-section--is-active");
     // Sale del viewport → leaving.
-    act(() => { cb!([{ isIntersecting: false, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    act(() => {
+      cb!([{ isIntersecting: false, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
+    });
     expect(result.current.getSectionClassName("info")).toContain("story-section--is-leave");
     // Tras la salida (560ms) vuelve a hidden.
-    await act(async () => { await new Promise((r) => setTimeout(r, 800)); });
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 800));
+    });
     expect(result.current.getSectionClassName("info")).not.toContain("story-section--is-leave");
     el.remove();
   });
@@ -209,7 +240,9 @@ describe("useStoryNavigation", () => {
     // ejecutaría 2 veces). Se mantiene activa sin animar de nuevo.
     let cb: IntersectionObserverCallback | null = null;
     class FakeIO {
-      constructor(c: IntersectionObserverCallback) { cb = c; }
+      constructor(c: IntersectionObserverCallback) {
+        cb = c;
+      }
       observe() {}
       disconnect() {}
     }
@@ -220,14 +253,28 @@ describe("useStoryNavigation", () => {
     document.body.appendChild(el);
 
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    await vi.waitFor(() => { expect(cb).not.toBeNull(); });
-    act(() => { cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    await vi.waitFor(() => {
+      expect(cb).not.toBeNull();
+    });
+    act(() => {
+      cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
+    });
     expect(result.current.getSectionClassName("rsvp")).toContain("story-section--is-active");
     // Micro-oscilación: ratio 0.5 (baja del 70% pero sigue visible).
-    act(() => { cb!([{ isIntersecting: false, intersectionRatio: 0.5, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    act(() => {
+      cb!(
+        [{ isIntersecting: false, intersectionRatio: 0.5, target: el } as unknown as IntersectionObserverEntry],
+        {} as IntersectionObserver,
+      );
+    });
     expect(result.current.getSectionClassName("rsvp")).not.toContain("story-section--is-leave");
     // Vuelve a estar totalmente visible: sigue activa, sin nueva entrada.
-    act(() => { cb!([{ isIntersecting: true, intersectionRatio: 1, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    act(() => {
+      cb!(
+        [{ isIntersecting: true, intersectionRatio: 1, target: el } as unknown as IntersectionObserverEntry],
+        {} as IntersectionObserver,
+      );
+    });
     expect(result.current.getSectionClassName("rsvp")).toContain("story-section--is-active");
     expect(result.current.getSectionClassName("rsvp")).not.toContain("story-section--is-enter");
     el.remove();
@@ -236,7 +283,9 @@ describe("useStoryNavigation", () => {
   it("skips intermediate stages with reduced motion", async () => {
     let cb: IntersectionObserverCallback | null = null;
     class FakeIO {
-      constructor(c: IntersectionObserverCallback) { cb = c; }
+      constructor(c: IntersectionObserverCallback) {
+        cb = c;
+      }
       observe() {}
       disconnect() {}
     }
@@ -246,11 +295,17 @@ describe("useStoryNavigation", () => {
     document.body.appendChild(el);
 
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER, { reducedMotion: true }));
-    await vi.waitFor(() => { expect(cb).not.toBeNull(); });
-    act(() => { cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    await vi.waitFor(() => {
+      expect(cb).not.toBeNull();
+    });
+    act(() => {
+      cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
+    });
     expect(result.current.getSectionClassName("hero")).toContain("story-section--is-active");
     expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-enter");
-    act(() => { cb!([{ isIntersecting: false, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver); });
+    act(() => {
+      cb!([{ isIntersecting: false, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
+    });
     expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-leave");
     el.remove();
   });
@@ -261,7 +316,9 @@ describe("useStoryNavigation", () => {
     // hace su ENTRADA animada (modo reveal), no un boot estático.
     let cb: IntersectionObserverCallback | null = null;
     class FakeIO {
-      constructor(c: IntersectionObserverCallback) { cb = c; }
+      constructor(c: IntersectionObserverCallback) {
+        cb = c;
+      }
       observe() {}
       disconnect() {}
     }
@@ -270,15 +327,16 @@ describe("useStoryNavigation", () => {
     el.setAttribute("data-story-section", "hero");
     document.body.appendChild(el);
 
-    const { result, rerender } = renderHook(
-      ({ enabled }) => useStoryNavigation(SAMPLE_ORDER, { enabled }),
-      { initialProps: { enabled: false } },
-    );
+    const { result, rerender } = renderHook(({ enabled }) => useStoryNavigation(SAMPLE_ORDER, { enabled }), {
+      initialProps: { enabled: false },
+    });
     // Con el sobre cerrado (enabled=false) no hay observer ni animaciones.
     expect(cb).toBeNull();
     rerender({ enabled: true });
     // El hook recrea el observer; el primer callback usa el modo reveal.
-    await vi.waitFor(() => { expect(cb).not.toBeNull(); });
+    await vi.waitFor(() => {
+      expect(cb).not.toBeNull();
+    });
     await act(async () => {
       cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
     });
@@ -294,7 +352,9 @@ describe("useStoryNavigation", () => {
         // Se guarda el callback para dispararlo manualmente.
         (FakeIO as unknown as { cb: IntersectionObserverCallback }).cb = cb;
       }
-      observe(el: Element) { observed.push(el); }
+      observe(el: Element) {
+        observed.push(el);
+      }
       disconnect() {}
     }
     Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
@@ -314,7 +374,9 @@ describe("useStoryNavigation", () => {
     Object.defineProperty(globalThis, "MutationObserver", { value: undefined, configurable: true });
     const observed: Element[] = [];
     class FakeIO {
-      observe(el: Element) { observed.push(el); }
+      observe(el: Element) {
+        observed.push(el);
+      }
       disconnect() {}
     }
     Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });

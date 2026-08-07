@@ -2,16 +2,12 @@ export function withTimeout<T>(promise: Promise<T>, ms: number, message?: string
   return Promise.race([
     promise,
     new Promise<T>((_, reject) =>
-      setTimeout(() => reject(new Error(message || `Operation timed out after ${ms}ms`)), ms)
+      setTimeout(() => reject(new Error(message || `Operation timed out after ${ms}ms`)), ms),
     ),
   ]);
 }
 
-export async function retry<T>(
-  fn: () => Promise<T>,
-  maxRetries = 3,
-  delay = 1000,
-): Promise<T> {
+export async function retry<T>(fn: () => Promise<T>, maxRetries = 3, delay = 1000): Promise<T> {
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
       return await fn();

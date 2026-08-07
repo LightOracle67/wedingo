@@ -65,24 +65,36 @@ const DataRequestModal = memo(function DataRequestModal({ inviteToken, onClose }
       closeLabel={t("common.close")}
       onClose={onClose}
       overlayClassName="data-request-modal"
-      style={{ width: "min(95vw, 640px)", minWidth: "min(95vw, 360px)", maxHeight: "calc(100dvh - 2rem)", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}
+      style={{
+        width: "min(95vw, 640px)",
+        minWidth: "min(95vw, 360px)",
+        maxHeight: "calc(100dvh - 2rem)",
+        display: "flex",
+        flexDirection: "column",
+        padding: "1.2rem 1rem 1rem",
+      }}
     >
-        <div style={{ overflowY: "auto", overflowX: "hidden", flex: 1, marginTop: "0.5rem", wordBreak: "break-word" }}>
-          <p className="data-request-text">{t("dataRequest.intro")}</p>
+      <div style={{ overflowY: "auto", overflowX: "hidden", flex: 1, marginTop: "0.5rem", wordBreak: "break-word" }}>
+        <p className="data-request-text">{t("dataRequest.intro")}</p>
 
-          <div className="data-request-actions">
-            {/* Exportación de datos (portabilidad) */}
-            <button type="button" className="setup-button" onClick={handleExport} data-testid="data-request-export">
-              {t("dataRequest.exportLabel")}
-            </button>
-            {/* Borrado local de datos + retirada de consentimiento */}
-            <button type="button" className="setup-button data-request-erase" onClick={handleErase} data-testid="data-request-erase">
-              {t("dataRequest.eraseLabel")}
-            </button>
-          </div>
-
-          <p className="data-request-note">{t("dataRequest.serverNote")}</p>
+        <div className="data-request-actions">
+          {/* Exportación de datos (portabilidad) */}
+          <button type="button" className="setup-button" onClick={handleExport} data-testid="data-request-export">
+            {t("dataRequest.exportLabel")}
+          </button>
+          {/* Borrado local de datos + retirada de consentimiento */}
+          <button
+            type="button"
+            className="setup-button data-request-erase"
+            onClick={handleErase}
+            data-testid="data-request-erase"
+          >
+            {t("dataRequest.eraseLabel")}
+          </button>
         </div>
+
+        <p className="data-request-note">{t("dataRequest.serverNote")}</p>
+      </div>
     </Modal>
   );
 });

@@ -53,23 +53,18 @@ describe("music-store", () => {
 
   it("uploadAudio throws on encrypt failure", async () => {
     const mockEncrypt: () => Promise<string | null> = vi.fn(() => Promise.resolve(null));
-    (vi.mocked((await import("../crypto-utils")).encrypt) as unknown as { mockImplementationOnce: (fn: () => Promise<string | null>) => void }).mockImplementationOnce(
-      mockEncrypt,
-    );
-    await expect(
-      uploadAudio("token", new File([], "test.mp3")),
-    ).rejects.toThrow("Encryption failed");
+    (
+      vi.mocked((await import("../crypto-utils")).encrypt) as unknown as {
+        mockImplementationOnce: (fn: () => Promise<string | null>) => void;
+      }
+    ).mockImplementationOnce(mockEncrypt);
+    await expect(uploadAudio("token", new File([], "test.mp3"))).rejects.toThrow("Encryption failed");
   });
 
   it("addAudio chunks and writes to firestore", async () => {
     const onProgress = vi.fn();
     const encrypted = "a".repeat(600 * 1024);
-    const result = await addAudio(
-      "token",
-      encrypted,
-      "data:audio/mp3;base64,...",
-      onProgress,
-    );
+    const result = await addAudio("token", encrypted, "data:audio/mp3;base64,...", onProgress);
     expect(result).toHaveProperty("id");
     expect(result).toHaveProperty("dataUrl");
     expect(result).toHaveProperty("chunks");
@@ -94,9 +89,7 @@ describe("music-store", () => {
   });
 
   it("loadAudio returns null on error", async () => {
-    vi.mocked((await import("firebase/firestore")).getDocs).mockRejectedValueOnce(
-      new Error("Network error"),
-    );
+    vi.mocked((await import("firebase/firestore")).getDocs).mockRejectedValueOnce(new Error("Network error"));
     const result = await loadAudio("token");
     expect(result).toBeNull();
   });

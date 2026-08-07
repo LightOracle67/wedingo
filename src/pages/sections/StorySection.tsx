@@ -2,7 +2,17 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import CornerDecorations from "../../components/CornerDecorations";
 
-const StorySection = memo(function StorySection({ style, className, storyText, cornerDecoration }: { style?: React.CSSProperties; className?: string; storyText?: string; cornerDecoration?: string }) {
+const StorySection = memo(function StorySection({
+  style,
+  className,
+  storyText,
+  cornerDecoration,
+}: {
+  style?: React.CSSProperties;
+  className?: string;
+  storyText?: string;
+  cornerDecoration?: string;
+}) {
   const { t } = useTranslation();
   return (
     <section

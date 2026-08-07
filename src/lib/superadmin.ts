@@ -1,6 +1,9 @@
 import i18next from "i18next";
 
-const BASE = import.meta.env.VITE_SUPERADMIN_ROUTE || "";
+// Fallback a /_/console (NUNCA a ""): con una ruta vacía, el guard de
+// SuperAdminContext (pathname.startsWith(SUPERADMIN_ROUTE)) evaluaría
+// startsWith("") === true y TODO visitante público descargaría firebase/auth.
+const BASE = import.meta.env.VITE_SUPERADMIN_ROUTE || "/_/console";
 
 export const SUPERADMIN_ROUTE = BASE;
 export const SUPERADMIN_DASHBOARD = BASE ? `${BASE}/dashboard` : "";

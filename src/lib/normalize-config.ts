@@ -15,7 +15,8 @@ function normalizeJsonArray(value: unknown): string {
 
 /** Modos de visualización del mapa (iframe por defecto). */
 const MAP_MODES = new Set(["iframe", "name", "hidden"]);
-function normalizeMapMode(value: unknown): string {  return typeof value === "string" && MAP_MODES.has(value) ? value : "iframe";
+function normalizeMapMode(value: unknown): string {
+  return typeof value === "string" && MAP_MODES.has(value) ? value : "iframe";
 }
 
 function normalizeMenuDishes(value: unknown): string {
@@ -35,9 +36,18 @@ function normalizeScheduleEvents(value: unknown): string {
       .slice(0, MAX_SCHEDULE_EVENTS)
       .map((e) => {
         if (!e || typeof e !== "object") return null;
-        const time = typeof (e as Record<string, unknown>).time === "string" ? ((e as Record<string, unknown>).time as string).trim().slice(0, 5) : "";
-        const text = typeof (e as Record<string, unknown>).text === "string" ? ((e as Record<string, unknown>).text as string).trim().slice(0, MAX_SCHEDULE_EVENT_TEXT) : "";
-        const emoji = typeof (e as Record<string, unknown>).emoji === "string" ? ((e as Record<string, unknown>).emoji as string).trim().slice(0, 8) : "";
+        const time =
+          typeof (e as Record<string, unknown>).time === "string"
+            ? ((e as Record<string, unknown>).time as string).trim().slice(0, 5)
+            : "";
+        const text =
+          typeof (e as Record<string, unknown>).text === "string"
+            ? ((e as Record<string, unknown>).text as string).trim().slice(0, MAX_SCHEDULE_EVENT_TEXT)
+            : "";
+        const emoji =
+          typeof (e as Record<string, unknown>).emoji === "string"
+            ? ((e as Record<string, unknown>).emoji as string).trim().slice(0, 8)
+            : "";
         return { time, text, emoji };
       })
       .filter((e): e is { time: string; text: string; emoji: string } => e !== null);
@@ -56,8 +66,14 @@ function normalizeTransportDepartures(value: unknown): string {
       .slice(0, 4)
       .map((d) => {
         if (!d || typeof d !== "object") return null;
-        const time = typeof (d as Record<string, unknown>).time === "string" ? ((d as Record<string, unknown>).time as string).trim().slice(0, 5) : "";
-        const url = typeof (d as Record<string, unknown>).url === "string" ? ((d as Record<string, unknown>).url as string).trim().slice(0, 1000) : "";
+        const time =
+          typeof (d as Record<string, unknown>).time === "string"
+            ? ((d as Record<string, unknown>).time as string).trim().slice(0, 5)
+            : "";
+        const url =
+          typeof (d as Record<string, unknown>).url === "string"
+            ? ((d as Record<string, unknown>).url as string).trim().slice(0, 1000)
+            : "";
         const type = (d as Record<string, unknown>).type === "taxi" ? "taxi" : "bus";
         return { type, time, url };
       })
@@ -82,7 +98,7 @@ const bool = (v: unknown): string => (s(v) === "true" ? "true" : "false");
  *  guardadas: si el toggle no viene definido (config antigua) se activa solo
  *  si el campo de contenido asociado tiene valor. */
 const toggleWithLegacy = (enabled: unknown, content: unknown): string =>
-  enabled !== undefined ? bool(enabled) : (s(content) ? "true" : "false");
+  enabled !== undefined ? bool(enabled) : s(content) ? "true" : "false";
 
 export const normalizeConfig = (value: Record<string, unknown> | undefined) => ({
   adminUsername: s(value?.adminUsername).toLowerCase(),
@@ -100,10 +116,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   weddingDressCode: s(value?.weddingDressCode),
   weddingDressCodeEnabled: toggleWithLegacy(value?.weddingDressCodeEnabled, value?.weddingDressCode),
   weddingDressCodeCustom: s(value?.weddingDressCodeCustom),
-  theme:
-    typeof value?.theme === "string" && THEME_VALUES.has(value.theme.trim())
-      ? value.theme.trim()
-      : "golden",
+  theme: typeof value?.theme === "string" && THEME_VALUES.has(value.theme.trim()) ? value.theme.trim() : "golden",
   couplePhoto: s(value?.couplePhoto),
   couplePhotoEnabled: toggleWithLegacy(value?.couplePhotoEnabled, value?.couplePhoto),
   sectionOrder: (() => {
@@ -124,7 +137,9 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   bankInfoEnabled: toggleWithLegacy(value?.bankInfoEnabled, value?.bankInfo),
   accommodationURL: s(value?.accommodationURL),
   accommodationURLEnabled: toggleWithLegacy(value?.accommodationURLEnabled, value?.accommodationURL),
-  transportEnabled: ["none", "bus", "taxi", "both"].includes(s(value?.transportEnabled)) ? s(value?.transportEnabled) : "none",
+  transportEnabled: ["none", "bus", "taxi", "both"].includes(s(value?.transportEnabled))
+    ? s(value?.transportEnabled)
+    : "none",
   transportDepartures: normalizeTransportDepartures(value?.transportDepartures),
   godparent1: s(value?.godparent1),
   godparent2: s(value?.godparent2),
@@ -163,7 +178,9 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   instagramEnabled: toggleWithLegacy(value?.instagramEnabled, value?.instagramUrl),
   facebookUrl: s(value?.facebookUrl).slice(0, 1000),
   facebookEnabled: toggleWithLegacy(value?.facebookEnabled, value?.facebookUrl),
-  weddingMapView: ["roadmap","satellite","hybrid"].includes(s(value?.weddingMapView)) ? s(value?.weddingMapView) : "roadmap",
+  weddingMapView: ["roadmap", "satellite", "hybrid"].includes(s(value?.weddingMapView))
+    ? s(value?.weddingMapView)
+    : "roadmap",
   weddingMapStatic: s(value?.weddingMapStatic) === "true" ? "true" : "false",
   detailsMapMode: normalizeMapMode(value?.detailsMapMode),
   transportMapMode: normalizeMapMode(value?.transportMapMode),

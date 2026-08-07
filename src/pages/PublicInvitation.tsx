@@ -88,18 +88,33 @@ const CONF_TOTAL_MS = CONF_FALL_MS * CONF_REPEATS + 900;
  *  caída (respetada por prefers-reduced-motion). Va DETRÁS de la invitación
  *  (z-index bajo) y cada pieza cae 3 veces. Sin interacción. */
 function Confetti() {
-  const pieces = useMemo(() => Array.from({ length: 48 }, (_, i) => ({
-    // Distribución uniforme (no aleatoria): el confeti se ve natural, no errático.
-    left: `${(i * 2.1) % 100}%`,
-    delay: `${(i % 9) * 0.1}s`,
-    duration: `${CONF_FALL_MS}ms`,
-    color: ["#d8b24a", "#e8d0d8", "#8fb8a8", "#f0e6d0", "#c8a84e"][i % 5],
-    size: `${7 + (i % 3) * 3}px`,
-  })), []);
+  const pieces = useMemo(
+    () =>
+      Array.from({ length: 48 }, (_, i) => ({
+        // Distribución uniforme (no aleatoria): el confeti se ve natural, no errático.
+        left: `${(i * 2.1) % 100}%`,
+        delay: `${(i % 9) * 0.1}s`,
+        duration: `${CONF_FALL_MS}ms`,
+        color: ["#d8b24a", "#e8d0d8", "#8fb8a8", "#f0e6d0", "#c8a84e"][i % 5],
+        size: `${7 + (i % 3) * 3}px`,
+      })),
+    [],
+  );
   return (
     <div className="confetti" aria-hidden="true">
       {pieces.map((p, i) => (
-        <span key={i} className="confetti__piece" style={{ left: p.left, animationDelay: p.delay, animationDuration: p.duration, background: p.color, width: p.size, height: p.size }} />
+        <span
+          key={i}
+          className="confetti__piece"
+          style={{
+            left: p.left,
+            animationDelay: p.delay,
+            animationDuration: p.duration,
+            background: p.color,
+            width: p.size,
+            height: p.size,
+          }}
+        />
       ))}
     </div>
   );
@@ -112,7 +127,6 @@ function Confetti() {
  * @returns {JSX.Element} Página de invitación.
  */
 export default function PublicInvitation() {
-
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const { inviteToken } = useParams();
@@ -121,14 +135,21 @@ export default function PublicInvitation() {
   const reducedMotion = useReducedMotion();
 
   // ─── Estado global del contexto (hooks granulares por dominio) ──
+  const { config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink } = useConfig();
   const {
-    config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink,
-  } = useConfig();
-  const {
-    rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
-    rsvpLoadError, retryLoadRsvp,
-    handleRsvpSubmit, updateRsvpField, handleDeleteRsvp,
-    DIETARY_OPTIONS, computeAge,
+    rsvpForm,
+    rsvpEntries,
+    rsvpMessage,
+    isRsvpSubmitting,
+    hasSubmitted,
+    alreadySubmittedEntry,
+    rsvpLoadError,
+    retryLoadRsvp,
+    handleRsvpSubmit,
+    updateRsvpField,
+    handleDeleteRsvp,
+    DIETARY_OPTIONS,
+    computeAge,
   } = useRsvpContext();
   const { isAdminTokenLoggedIn } = useAuth();
 
@@ -157,17 +178,20 @@ export default function PublicInvitation() {
         if (!cancelled) setGalleryImageCount(0);
       }
     })();
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [inviteToken]);
 
   /** ¿Hay alguna función social activa? Se agrupan en la sección conjunta
    *  "extras" (reordenable en el editor, siempre antes del RSVP). */
-  const hasExtras = config.giftsListEnabled === "true"
-    || config.rideShareEnabled === "true"
-    || config.reactionsEnabled === "true"
-    || config.notesEnabled === "true"
-    || config.musicPollEnabled === "true"
-    || config.triviaEnabled === "true";
+  const hasExtras =
+    config.giftsListEnabled === "true" ||
+    config.rideShareEnabled === "true" ||
+    config.reactionsEnabled === "true" ||
+    config.notesEnabled === "true" ||
+    config.musicPollEnabled === "true" ||
+    config.triviaEnabled === "true";
 
   // ─── Orden de secciones visible ────────────────────────
   /**
@@ -189,22 +213,19 @@ export default function PublicInvitation() {
    * Orden final de secciones visibles, excluyendo las ocultas
    * (excepto en modo invitar, donde se muestran todas).
    */
-  const visibleOrder = useMemo(
-    () => {
-      let filtered = showRsvp ? sectionOrder : sectionOrder.filter((s: string) => s !== "rsvp");
-      if (!isInviteMode) {
-        filtered = filtered.filter((s: string) => !hiddenSet.has(s));
-      }
-      // Oculta las secciones sin contenido configurado (aunque estén en el
-      // orden) para no mostrar secciones vacías al invitado. Se aplica a
-      // TODAS: la galería se desactiva si no tiene imágenes y los extras si
-      // no hay ninguna función social activa.
-      filtered = filtered.filter((s: string) => sectionHasContent(s, config, galleryHasImages));
-      filtered = filtered.filter((s: string) => s !== "extras" || hasExtras);
-      return filtered;
-    },
-    [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages, hasExtras],
-  );
+  const visibleOrder = useMemo(() => {
+    let filtered = showRsvp ? sectionOrder : sectionOrder.filter((s: string) => s !== "rsvp");
+    if (!isInviteMode) {
+      filtered = filtered.filter((s: string) => !hiddenSet.has(s));
+    }
+    // Oculta las secciones sin contenido configurado (aunque estén en el
+    // orden) para no mostrar secciones vacías al invitado. Se aplica a
+    // TODAS: la galería se desactiva si no tiene imágenes y los extras si
+    // no hay ninguna función social activa.
+    filtered = filtered.filter((s: string) => sectionHasContent(s, config, galleryHasImages));
+    filtered = filtered.filter((s: string) => s !== "extras" || hasExtras);
+    return filtered;
+  }, [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages, hasExtras]);
 
   // ─── Estados de UI condicionales ───────────────────────
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
@@ -233,7 +254,8 @@ export default function PublicInvitation() {
    * al recargar.
    */
   const showMissingToken = !isConfigured && !hasHash && (Boolean(inviteToken) || isInviteMode);
-  const showEnvelope = !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;
+  const showEnvelope =
+    !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;
   const {
     activeSection: _activeStorySection,
     isTransitioning: isStoryTransitioning,
@@ -263,32 +285,46 @@ export default function PublicInvitation() {
   }, [config]);
 
   /** Estado de la cuenta atrás (años/meses/días + horas/min/seg). */
-  const computeCountdown = useCallback((target: Date, now: Date): { years?: number; months?: number; days: number; hours: number; minutes: number; seconds: number; expired: boolean } => {
-    if (target.getTime() <= now.getTime()) {
-      return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
-    }
-    let years = target.getFullYear() - now.getFullYear();
-    let months = target.getMonth() - now.getMonth();
-    let days = target.getDate() - now.getDate();
-    if (days < 0) {
-      months -= 1;
-      days += new Date(target.getFullYear(), target.getMonth(), 0).getDate();
-    }
-    if (months < 0) {
-      years -= 1;
-      months += 12;
-    }
-    const diffMs = Math.max(0, target.getTime() - now.getTime());
-    const hours = Math.floor(diffMs / 3_600_000) % 24;
-    const minutes = Math.floor(diffMs / 60_000) % 60;
-    const seconds = Math.floor(diffMs / 1000) % 60;
-    return { years, months, days, hours, minutes, seconds, expired: false };
-  }, []);
+  const computeCountdown = useCallback(
+    (
+      target: Date,
+      now: Date,
+    ): {
+      years?: number;
+      months?: number;
+      days: number;
+      hours: number;
+      minutes: number;
+      seconds: number;
+      expired: boolean;
+    } => {
+      if (target.getTime() <= now.getTime()) {
+        return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
+      }
+      let years = target.getFullYear() - now.getFullYear();
+      let months = target.getMonth() - now.getMonth();
+      let days = target.getDate() - now.getDate();
+      if (days < 0) {
+        months -= 1;
+        days += new Date(target.getFullYear(), target.getMonth(), 0).getDate();
+      }
+      if (months < 0) {
+        years -= 1;
+        months += 12;
+      }
+      const diffMs = Math.max(0, target.getTime() - now.getTime());
+      const hours = Math.floor(diffMs / 3_600_000) % 24;
+      const minutes = Math.floor(diffMs / 60_000) % 60;
+      const seconds = Math.floor(diffMs / 1000) % 60;
+      return { years, months, days, hours, minutes, seconds, expired: false };
+    },
+    [],
+  );
 
   // Inicialización síncrona: el countdown se pinta en el primer render (evita
   // el CLS de que el bloque del hero aparezca tras el mount).
-  const [countdown, setCountdown] = useState<ReturnType<typeof computeCountdown> | null>(
-    () => (weddingDate ? computeCountdown(weddingDate, new Date()) : null),
+  const [countdown, setCountdown] = useState<ReturnType<typeof computeCountdown> | null>(() =>
+    weddingDate ? computeCountdown(weddingDate, new Date()) : null,
   );
 
   /**
@@ -303,14 +339,22 @@ export default function PublicInvitation() {
       setCountdown(next);
       // Una vez expirado se detiene el intervalo (no re-renderizar el hero
       // cada segundo para siempre).
-      if (next.expired && id) { clearInterval(id); id = null; }
+      if (next.expired && id) {
+        clearInterval(id);
+        id = null;
+      }
     };
     tick();
     if (reducedMotion) return;
     id = setInterval(tick, 1000);
     const onVisibility = () => {
-      if (document.hidden && id) { clearInterval(id); id = null; }
-      else if (!document.hidden && !id) { tick(); id = setInterval(tick, 1000); }
+      if (document.hidden && id) {
+        clearInterval(id);
+        id = null;
+      } else if (!document.hidden && !id) {
+        tick();
+        id = setInterval(tick, 1000);
+      }
     };
     document.addEventListener("visibilitychange", onVisibility);
     return () => {
@@ -333,24 +377,39 @@ export default function PublicInvitation() {
     const schema: Record<string, unknown> = {
       "@context": "https://schema.org",
       "@type": "Event",
-      "name": coupleName,
-      "description": config.inviteMessage || coupleName,
-      "url": `${SITE_URL}/${inviteToken}`,
-      "image": config.couplePhoto && /^https?:/.test(config.couplePhoto) ? config.couplePhoto : `${SITE_URL}/og-banner.png`,
-      "organizer": { "@type": "Person", "name": coupleName },
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "eventStatus": "https://schema.org/EventScheduled",
+      name: coupleName,
+      description: config.inviteMessage || coupleName,
+      url: `${SITE_URL}/${inviteToken}`,
+      image:
+        config.couplePhoto && /^https?:/.test(config.couplePhoto) ? config.couplePhoto : `${SITE_URL}/og-banner.png`,
+      organizer: { "@type": "Person", name: coupleName },
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      eventStatus: "https://schema.org/EventScheduled",
     };
     if (startDate) schema.startDate = startDate;
     if (config.weddingPlace) {
-      schema.location = { "@type": "Place", "name": config.weddingPlace, "address": config.weddingPlace };
+      schema.location = { "@type": "Place", name: config.weddingPlace, address: config.weddingPlace };
     }
     const script = document.createElement("script");
     script.type = "application/ld+json";
     script.textContent = JSON.stringify(schema);
     document.head.appendChild(script);
-    return () => { script.remove(); };
-  }, [config.firstName, config.secondName, config.inviteMessage, config.weddingYear, config.weddingMonth, config.weddingDay, config.weddingHour, config.weddingMinute, config.weddingPlace, config.couplePhoto, inviteToken]);
+    return () => {
+      script.remove();
+    };
+  }, [
+    config.firstName,
+    config.secondName,
+    config.inviteMessage,
+    config.weddingYear,
+    config.weddingMonth,
+    config.weddingDay,
+    config.weddingHour,
+    config.weddingMinute,
+    config.weddingPlace,
+    config.couplePhoto,
+    inviteToken,
+  ]);
 
   // ─── Metadatos sociales Open Graph / Twitter (SEO) ─────
   useEffect(() => {
@@ -358,7 +417,8 @@ export default function PublicInvitation() {
     const coupleName = `${config.firstName} ${config.secondName || ""}`.trim();
     applySocialMeta({
       title: `${coupleName} — Wedingo`,
-      description: config.inviteMessage || `${config.firstName} & ${config.secondName || ""} te invitan a su boda.`.trim(),
+      description:
+        config.inviteMessage || `${config.firstName} & ${config.secondName || ""} te invitan a su boda.`.trim(),
       url: `${SITE_URL}/${inviteToken}`,
       image: config.couplePhoto,
       locale: i18n?.language,
@@ -378,90 +438,116 @@ export default function PublicInvitation() {
    * Props derivadas SOLO de la configuración. Se memoizan de forma que no
    * cambien con cada tick del countdown ni con cada tecla del formulario RSVP.
    */
-  const configSectionProps = useMemo(() => ({
-    hero: {
-      firstName: config.firstName,
-      secondName: config.secondName,
-      inviteMessage: config.inviteMessage,
-      couplePhoto: config.couplePhoto,
-      godparent1: config.godparent1,
-      godparent2: config.godparent2,
-      cornerDecoration: config.cornerDecoration,
-    },
-    details: {
+  const configSectionProps = useMemo(
+    () => ({
+      hero: {
+        firstName: config.firstName,
+        secondName: config.secondName,
+        inviteMessage: config.inviteMessage,
+        couplePhoto: config.couplePhoto,
+        godparent1: config.godparent1,
+        godparent2: config.godparent2,
+        cornerDecoration: config.cornerDecoration,
+      },
+      details: {
+        formattedDate,
+        formattedTime,
+        hasLocationData,
+        locationDescription,
+        calendarLink,
+        weddingSiteURL: config.weddingSiteURL,
+        instagramUrl: config.instagramUrl,
+        facebookUrl: config.facebookUrl,
+        mapView: config.weddingMapView,
+        staticMap: config.weddingMapStatic === "true",
+        detailsMapMode: config.detailsMapMode,
+        cornerDecoration: config.cornerDecoration,
+      },
+      transport: {
+        transportEnabled: config.transportEnabled,
+        transportDepartures: config.transportDepartures,
+        mapView: config.weddingMapView,
+        staticMap: config.weddingMapStatic === "true",
+        transportMapMode: config.transportMapMode,
+        cornerDecoration: config.cornerDecoration,
+      },
+      info: {
+        weddingScheduleEvents: config.weddingScheduleEvents,
+        weddingDressCode: config.weddingDressCode,
+        weddingDressCodeCustom: config.weddingDressCodeCustom,
+        kidsPolicy: config.kidsPolicy,
+        cornerDecoration: config.cornerDecoration,
+      },
+      story: {
+        storyText: config.storyText,
+        cornerDecoration: config.cornerDecoration,
+      },
+      gifts: {
+        giftsInfo: config.giftsInfo,
+        bankInfo: config.bankInfo,
+        cornerDecoration: config.cornerDecoration,
+      },
+      accommodation: {
+        accommodationURL: config.accommodationURL,
+        mapView: config.weddingMapView,
+        staticMap: config.weddingMapStatic === "true",
+        accommodationMapMode: config.accommodationMapMode,
+        cornerDecoration: config.cornerDecoration,
+      },
+      gallery: {
+        inviteToken,
+        cornerDecoration: config.cornerDecoration,
+      },
+      rsvp: {
+        menuEnabled: config.menuEnabled === "true",
+        menuCarneDishes: config.menuCarneDishes,
+        menuPescadoDishes: config.menuPescadoDishes,
+        menuVeganoDishes: config.menuVeganoDishes,
+        menuTextoDishes: config.menuTextoDishes,
+        transportEnabled: config.transportEnabled,
+        transportDepartures: config.transportDepartures,
+        cornerDecoration: config.cornerDecoration,
+      },
+    }),
+    [
+      config.firstName,
+      config.secondName,
+      config.inviteMessage,
+      config.weddingScheduleEvents,
+      config.weddingDressCode,
+      config.weddingDressCodeCustom,
+      config.kidsPolicy,
+      config.storyText,
+      config.giftsInfo,
+      config.accommodationURL,
+      config.godparent1,
+      config.godparent2,
+      inviteToken,
+      config.couplePhoto,
+      config.bankInfo,
+      config.menuEnabled,
+      config.menuCarneDishes,
+      config.menuPescadoDishes,
+      config.menuVeganoDishes,
+      config.menuTextoDishes,
+      config.cornerDecoration,
       formattedDate,
       formattedTime,
       hasLocationData,
       locationDescription,
       calendarLink,
-      weddingSiteURL: config.weddingSiteURL,
-      instagramUrl: config.instagramUrl,
-      facebookUrl: config.facebookUrl,
-      mapView: config.weddingMapView,
-      staticMap: config.weddingMapStatic === "true",
-      detailsMapMode: config.detailsMapMode,
-      cornerDecoration: config.cornerDecoration,
-    },
-    transport: {
-      transportEnabled: config.transportEnabled,
-      transportDepartures: config.transportDepartures,
-      mapView: config.weddingMapView,
-      staticMap: config.weddingMapStatic === "true",
-      transportMapMode: config.transportMapMode,
-      cornerDecoration: config.cornerDecoration,
-    },
-    info: {
-      weddingScheduleEvents: config.weddingScheduleEvents,
-      weddingDressCode: config.weddingDressCode,
-      weddingDressCodeCustom: config.weddingDressCodeCustom,
-      kidsPolicy: config.kidsPolicy,
-      cornerDecoration: config.cornerDecoration,
-    },
-    story: {
-      storyText: config.storyText,
-      cornerDecoration: config.cornerDecoration,
-    },
-    gifts: {
-      giftsInfo: config.giftsInfo,
-      bankInfo: config.bankInfo,
-      cornerDecoration: config.cornerDecoration,
-    },
-    accommodation: {
-      accommodationURL: config.accommodationURL,
-      mapView: config.weddingMapView,
-      staticMap: config.weddingMapStatic === "true",
-      accommodationMapMode: config.accommodationMapMode,
-      cornerDecoration: config.cornerDecoration,
-    },
-    gallery: {
-      inviteToken,
-      cornerDecoration: config.cornerDecoration,
-    },
-    rsvp: {
-      menuEnabled: config.menuEnabled === "true",
-      menuCarneDishes: config.menuCarneDishes,
-      menuPescadoDishes: config.menuPescadoDishes,
-      menuVeganoDishes: config.menuVeganoDishes,
-      menuTextoDishes: config.menuTextoDishes,
-      transportEnabled: config.transportEnabled,
-      transportDepartures: config.transportDepartures,
-      cornerDecoration: config.cornerDecoration,
-    },
-  }), [
-    config.firstName, config.secondName, config.inviteMessage,
-    config.weddingScheduleEvents, config.weddingDressCode, config.weddingDressCodeCustom,
-    config.kidsPolicy, config.storyText, config.giftsInfo, config.accommodationURL,
-    config.godparent1, config.godparent2, inviteToken,
-    config.couplePhoto, config.bankInfo, config.menuEnabled,
-    config.menuCarneDishes, config.menuPescadoDishes, config.menuVeganoDishes, config.menuTextoDishes,
-    config.cornerDecoration,
-    formattedDate, formattedTime,
-    hasLocationData, locationDescription, calendarLink, config.weddingSiteURL,
-    config.instagramUrl, config.facebookUrl,
-    config.weddingMapView, config.weddingMapStatic,
-    config.detailsMapMode, config.transportMapMode, config.accommodationMapMode,
-    config.transportEnabled, config.transportDepartures,
-  ]);
+      config.weddingSiteURL,
+      config.instagramUrl,
+      config.facebookUrl,
+      config.weddingMapView,
+      config.weddingMapStatic,
+      config.detailsMapMode,
+      config.transportMapMode,
+      config.accommodationMapMode,
+      config.transportEnabled,
+      config.transportDepartures,
+    ],
+  );
 
   /**
    * Props del countdown: solo afectan a HeroSection (cambian cada segundo).
@@ -472,25 +558,38 @@ export default function PublicInvitation() {
    * Props del estado RSVP: solo afectan a RsvpSection. Cambian al editar el
    * formulario RSVP, sin re-renderizar el resto de secciones.
    */
-  const rsvpSectionProps = useMemo(() => ({
-    rsvpForm,
-    rsvpEntries,
-    rsvpMessage,
-    isRsvpSubmitting,
-    hasSubmitted,
-    alreadySubmittedEntry,
-    rsvpLoadError,
-    retryLoadRsvp,
-    updateRsvpField,
-    handleRsvpSubmit,
-    handleDeleteRsvp,
-    DIETARY_OPTIONS,
-    computeAge,
-  }), [
-    rsvpForm, rsvpEntries, rsvpMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
-    rsvpLoadError, retryLoadRsvp,
-    updateRsvpField, handleRsvpSubmit, handleDeleteRsvp, DIETARY_OPTIONS, computeAge,
-  ]);
+  const rsvpSectionProps = useMemo(
+    () => ({
+      rsvpForm,
+      rsvpEntries,
+      rsvpMessage,
+      isRsvpSubmitting,
+      hasSubmitted,
+      alreadySubmittedEntry,
+      rsvpLoadError,
+      retryLoadRsvp,
+      updateRsvpField,
+      handleRsvpSubmit,
+      handleDeleteRsvp,
+      DIETARY_OPTIONS,
+      computeAge,
+    }),
+    [
+      rsvpForm,
+      rsvpEntries,
+      rsvpMessage,
+      isRsvpSubmitting,
+      hasSubmitted,
+      alreadySubmittedEntry,
+      rsvpLoadError,
+      retryLoadRsvp,
+      updateRsvpField,
+      handleRsvpSubmit,
+      handleDeleteRsvp,
+      DIETARY_OPTIONS,
+      computeAge,
+    ],
+  );
 
   // ─── Estados de UI condicionales ───────────────────────
 
@@ -514,7 +613,8 @@ export default function PublicInvitation() {
       // El usuario canceló el panel nativo (AbortError): silencioso. Cualquier
       // otro fallo (HTTP no seguro, permiso) cae al enlace de WhatsApp para
       // que el invitado siempre tenga una vía de compartir.
-      const name = typeof err === "object" && err !== null && "name" in err ? String((err as { name?: unknown }).name) : "";
+      const name =
+        typeof err === "object" && err !== null && "name" in err ? String((err as { name?: unknown }).name) : "";
       const isCancel = name === "AbortError";
       if (!isCancel && native) {
         window.open(`https://wa.me/?text=${encodeURIComponent(`${text} ${url}`)}`, "_blank", "noopener");
@@ -527,12 +627,16 @@ export default function PublicInvitation() {
   // RENDERIZADO CONDICIONAL
   // ═══════════════════════════════════════════════════════
 
-   // ── Estado de carga ──
+  // ── Estado de carga ──
   if (isConfigLoading) {
     return (
       <div className="app-scene">
         <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-          <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="polite" aria-busy="true">
+          <div
+            className="w-full max-w-md text-center story-panel story-panel--hero"
+            aria-live="polite"
+            aria-busy="true"
+          >
             <p className="font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/60 leading-relaxed">
               {t("public.loadingInvitation")}
             </p>
@@ -558,17 +662,19 @@ export default function PublicInvitation() {
               {t("setup.errorTitle")}
             </p>
             <div className="my-6 story-divider" />
-            <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
-              {configLoadError}
-            </p>
+            <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">{configLoadError}</p>
             <div className="flex flex-wrap justify-center gap-3 mt-8">
-              <button className="text-sm setup-button" type="button" onClick={() => {
-                if (invalidLink) {
-                  window.location.assign("/");
-                } else {
-                  window.location.reload();
-                }
-              }}>
+              <button
+                className="text-sm setup-button"
+                type="button"
+                onClick={() => {
+                  if (invalidLink) {
+                    window.location.assign("/");
+                  } else {
+                    window.location.reload();
+                  }
+                }}
+              >
                 {invalidLink ? t("common.goHome") : t("common.retry")}
               </button>
             </div>
@@ -592,29 +698,58 @@ export default function PublicInvitation() {
   };
 
   return (
-    <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
-      style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
-      {showEnvelope ? <EnvelopeOverlay onOpen={() => {
-        setEnvelopeOpen(true);
-        if (config.welcomeVideo && config.welcomeVideoEnabled !== "false") setShowWelcomeVideo(true);
-        // Apertura del sobre: el gesto principal de la invitación.
-        trackEvent("envelope_open", { method: "click" });
-      }} onConfetti={() => {
-        // El confeti arranca justo al terminar el fade out del texto del sobre
-        // (2.6s tras el segundo gesto) y cae 3 veces detrás de la invitación.
-        setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), CONF_TOTAL_MS);
-      }} firstName={config.firstName} secondName={config.secondName} customSeal={config.customSeal} inviteToken={inviteToken} /> : null}
+    <div
+      className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
+      style={
+        {
+          "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined,
+        } as React.CSSProperties
+      }
+    >
+      {showEnvelope ? (
+        <EnvelopeOverlay
+          onOpen={() => {
+            setEnvelopeOpen(true);
+            if (config.welcomeVideo && config.welcomeVideoEnabled !== "false") setShowWelcomeVideo(true);
+            // Apertura del sobre: el gesto principal de la invitación.
+            trackEvent("envelope_open", { method: "click" });
+          }}
+          onConfetti={() => {
+            // El confeti arranca justo al terminar el fade out del texto del sobre
+            // (2.6s tras el segundo gesto) y cae 3 veces detrás de la invitación.
+            setShowConfetti(true);
+            setTimeout(() => setShowConfetti(false), CONF_TOTAL_MS);
+          }}
+          firstName={config.firstName}
+          secondName={config.secondName}
+          customSeal={config.customSeal}
+          inviteToken={inviteToken}
+        />
+      ) : null}
 
       {/* Confeti al abrir el sobre (decoración, sin interacción). */}
       {showConfetti ? <Confetti /> : null}
 
       {/* Vídeo de bienvenida: entrada y salida animadas (el componente se
           mantiene montado durante la salida para que el fade no se corte). */}
-      {envelopeOpen && (showWelcomeVideo || videoClosing) && config.welcomeVideo && config.welcomeVideoEnabled !== "false" ? (
-        <div className={`welcome-video-overlay ${videoClosing ? "welcome-video-overlay--closing" : ""}`} onClick={closeWelcomeVideo} role="dialog" aria-modal="true" aria-label={t("welcomeVideo.title")}>
-          <div className={`welcome-video-card ${videoClosing ? "welcome-video-card--closing" : ""}`} onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeWelcomeVideo} aria-label={t("common.close")}>&times;</button>
+      {envelopeOpen &&
+      (showWelcomeVideo || videoClosing) &&
+      config.welcomeVideo &&
+      config.welcomeVideoEnabled !== "false" ? (
+        <div
+          className={`welcome-video-overlay ${videoClosing ? "welcome-video-overlay--closing" : ""}`}
+          onClick={closeWelcomeVideo}
+          role="dialog"
+          aria-modal="true"
+          aria-label={t("welcomeVideo.title")}
+        >
+          <div
+            className={`welcome-video-card ${videoClosing ? "welcome-video-card--closing" : ""}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className="modal-close" onClick={closeWelcomeVideo} aria-label={t("common.close")}>
+              &times;
+            </button>
             <video className="welcome-video" src={config.welcomeVideo} controls autoPlay playsInline />
           </div>
         </div>
@@ -624,152 +759,177 @@ export default function PublicInvitation() {
           invisible para lectores de pantalla (WCAG 1.3.2 / 2.4.3). display:
           contents no altera el layout. */}
       <div style={{ display: "contents" }} aria-hidden={showEnvelope || undefined} inert={showEnvelope || undefined}>
-      {/* ── Decoraciones laterales (eucalipto) ── */}
-      <div className="fixed top-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration" style={{ zIndex: 0 }}>
-        <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
-      </div>
-      <div className="fixed pointer-events-none right-2 bottom-2 wedding-decoration--right wedding-decoration" style={{ zIndex: 0 }}>
-        <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
-      </div>
+        {/* ── Decoraciones laterales (eucalipto) ── */}
+        <div
+          className="fixed top-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration"
+          style={{ zIndex: 0 }}
+        >
+          <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
+        </div>
+        <div
+          className="fixed pointer-events-none right-2 bottom-2 wedding-decoration--right wedding-decoration"
+          style={{ zIndex: 0 }}
+        >
+          <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
+        </div>
 
-      {/* ── Token no encontrado (invitación no configurada) ── */}
-      {showMissingToken ? (
-        <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-          <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
-            <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-              {t("public.emptyTitle")}
-            </h1>
-            <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
-              {t("public.notFoundTitle")}
-            </p>
-            <div className="my-6 story-divider" />
-            <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
-              {t("public.notFoundText")}
-            </p>
-          </div>
-        </section>
-      ) : isEmpty ? (
-        /* ── Invitación vacía (sin configurar) ── */
-        <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-          <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
-            <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-              {t("public.emptyTitle")}
-            </h1>
-            <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
-              {t("public.emptyText")}
-            </p>
-            <div className="my-6 story-divider" />
-            <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
-              {t("public.emptyDescription")}
-            </p>
-            <div className="flex flex-wrap justify-center gap-3 mt-8">
-              <a href="/" className="text-sm setup-button">
-                {t("public.createLink")}
-              </a>
+        {/* ── Token no encontrado (invitación no configurada) ── */}
+        {showMissingToken ? (
+          <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
+            <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
+              <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
+                {t("public.emptyTitle")}
+              </h1>
+              <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
+                {t("public.notFoundTitle")}
+              </p>
+              <div className="my-6 story-divider" />
+              <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">{t("public.notFoundText")}</p>
             </div>
-          </div>
-        </section>
-      ) : (
-        <>
-        {/* ── Invitación completa: renderiza cada sección en orden ── */}
-        <Suspense fallback={null}>
-          {visibleOrder.map((sectionKey: string) => {
-            // La sección "extras" (funciones sociales) se renderiza en el
-            // orden configurado, agrupada en una única sección scrollable.
-            if (sectionKey === "extras") {
-              return (
-                <section
-                  key="extras"
-                  data-story-section="extras"
-                  className={getStorySectionClassName("extras")}
-                  style={getStorySectionStyle("extras")}
-                  aria-label={t("extras.ariaLabel")}
-                >
-                  <div className="story-panel story-panel--extras w-full">
-                    {config.giftsListEnabled === "true" ? (
-                      <div className="story-extra-block">
-                        <h2 className="story-title">{t("giftList.title")}</h2>
-                        <Suspense fallback={null}><GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} /></Suspense>
+          </section>
+        ) : isEmpty ? (
+          /* ── Invitación vacía (sin configurar) ── */
+          <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
+            <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
+              <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
+                {t("public.emptyTitle")}
+              </h1>
+              <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
+                {t("public.emptyText")}
+              </p>
+              <div className="my-6 story-divider" />
+              <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">{t("public.emptyDescription")}</p>
+              <div className="flex flex-wrap justify-center gap-3 mt-8">
+                <a href="/" className="text-sm setup-button">
+                  {t("public.createLink")}
+                </a>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <>
+            {/* ── Invitación completa: renderiza cada sección en orden ── */}
+            <Suspense fallback={null}>
+              {visibleOrder.map((sectionKey: string) => {
+                // La sección "extras" (funciones sociales) se renderiza en el
+                // orden configurado, agrupada en una única sección scrollable.
+                if (sectionKey === "extras") {
+                  return (
+                    <section
+                      key="extras"
+                      data-story-section="extras"
+                      className={getStorySectionClassName("extras")}
+                      style={getStorySectionStyle("extras")}
+                      aria-label={t("extras.ariaLabel")}
+                    >
+                      <div className="story-panel story-panel--extras w-full">
+                        {config.giftsListEnabled === "true" ? (
+                          <div className="story-extra-block">
+                            <h2 className="story-title">{t("giftList.title")}</h2>
+                            <Suspense fallback={null}>
+                              <GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} />
+                            </Suspense>
+                          </div>
+                        ) : null}
+                        {config.rideShareEnabled === "true" ? (
+                          <>
+                            <div className="story-divider" />
+                            <div className="story-extra-block">
+                              <h2 className="story-title">{t("rideShare.title")}</h2>
+                              <Suspense fallback={null}>
+                                <RideShareSection inviteToken={inviteToken ?? ""} />
+                              </Suspense>
+                            </div>
+                          </>
+                        ) : null}
+                        {config.reactionsEnabled === "true" ? (
+                          <>
+                            <div className="story-divider" />
+                            <div className="story-extra-block">
+                              <h2 className="story-title">{t("reactions.title")}</h2>
+                              <Suspense fallback={null}>
+                                <ReactionsSection inviteToken={inviteToken ?? ""} />
+                              </Suspense>
+                            </div>
+                          </>
+                        ) : null}
+                        {config.notesEnabled === "true" ? (
+                          <>
+                            <div className="story-divider" />
+                            <div className="story-extra-block">
+                              <h2 className="story-title">{t("notes.title")}</h2>
+                              <Suspense fallback={null}>
+                                <NotesSection inviteToken={inviteToken ?? ""} />
+                              </Suspense>
+                            </div>
+                          </>
+                        ) : null}
+                        {config.musicPollEnabled === "true" ? (
+                          <>
+                            <div className="story-divider" />
+                            <div className="story-extra-block">
+                              <h2 className="story-title">{t("musicPoll.title")}</h2>
+                              <Suspense fallback={null}>
+                                <MusicPollSection inviteToken={inviteToken ?? ""} />
+                              </Suspense>
+                            </div>
+                          </>
+                        ) : null}
+                        {config.triviaEnabled === "true" ? (
+                          <>
+                            <div className="story-divider" />
+                            <div className="story-extra-block">
+                              <h2 className="story-title">{t("trivia.title")}</h2>
+                              <Suspense fallback={null}>
+                                <TriviaSection trivia={config.trivia ?? "[]"} />
+                              </Suspense>
+                            </div>
+                          </>
+                        ) : null}
                       </div>
-                    ) : null}
-                    {config.rideShareEnabled === "true" ? (
-                      <>
-                        <div className="story-divider" />
-                        <div className="story-extra-block">
-                          <h2 className="story-title">{t("rideShare.title")}</h2>
-                          <Suspense fallback={null}><RideShareSection inviteToken={inviteToken ?? ""} /></Suspense>
-                        </div>
-                      </>
-                    ) : null}
-                    {config.reactionsEnabled === "true" ? (
-                      <>
-                        <div className="story-divider" />
-                        <div className="story-extra-block">
-                          <h2 className="story-title">{t("reactions.title")}</h2>
-                          <Suspense fallback={null}><ReactionsSection inviteToken={inviteToken ?? ""} /></Suspense>
-                        </div>
-                      </>
-                    ) : null}
-                    {config.notesEnabled === "true" ? (
-                      <>
-                        <div className="story-divider" />
-                        <div className="story-extra-block">
-                          <h2 className="story-title">{t("notes.title")}</h2>
-                          <Suspense fallback={null}><NotesSection inviteToken={inviteToken ?? ""} /></Suspense>
-                        </div>
-                      </>
-                    ) : null}
-                    {config.musicPollEnabled === "true" ? (
-                      <>
-                        <div className="story-divider" />
-                        <div className="story-extra-block">
-                          <h2 className="story-title">{t("musicPoll.title")}</h2>
-                          <Suspense fallback={null}><MusicPollSection inviteToken={inviteToken ?? ""} /></Suspense>
-                        </div>
-                      </>
-                    ) : null}
-                    {config.triviaEnabled === "true" ? (
-                      <>
-                        <div className="story-divider" />
-                        <div className="story-extra-block">
-                          <h2 className="story-title">{t("trivia.title")}</h2>
-                          <Suspense fallback={null}><TriviaSection trivia={config.trivia ?? "[]"} /></Suspense>
-                        </div>
-                      </>
-                    ) : null}
-                  </div>
-                </section>
-              );
-            }
-            const Component = (SECTION_COMPONENTS as unknown as Record<string, React.ComponentType<Record<string, unknown>>>)[sectionKey];
-            if (!Component) { ; return null; }
-            const baseProps = (configSectionProps as Record<string, Record<string, unknown>>)[sectionKey] || {};
-            const extraProps = sectionKey === "hero" ? heroProps : sectionKey === "rsvp" ? rsvpSectionProps : EMPTY_PROPS;
-            return (
-              <ErrorBoundary key={sectionKey}>
-                <Component
-                  style={getStorySectionStyle(sectionKey)}
-                  className={getStorySectionClassName(sectionKey)}
-                  {...baseProps}
-                  {...extraProps}
-                />
-              </ErrorBoundary>
-            );
-          })}
-        </Suspense>
-        </>
-      )}
-      {/* Botón de compartir de la invitación pública (aparece tras el sobre). */}
-      {!isEmpty && !showMissingToken ? (
-        <button type="button" className="invite-share" onClick={handleShare} aria-label={t("public.share")} title={t("public.share")}>
-          <span aria-hidden="true">↗</span>
-        </button>
-      ) : null}
+                    </section>
+                  );
+                }
+                const Component = (
+                  SECTION_COMPONENTS as unknown as Record<string, React.ComponentType<Record<string, unknown>>>
+                )[sectionKey];
+                if (!Component) {
+                  return null;
+                }
+                const baseProps = (configSectionProps as Record<string, Record<string, unknown>>)[sectionKey] || {};
+                const extraProps =
+                  sectionKey === "hero" ? heroProps : sectionKey === "rsvp" ? rsvpSectionProps : EMPTY_PROPS;
+                return (
+                  <ErrorBoundary key={sectionKey}>
+                    <Component
+                      style={getStorySectionStyle(sectionKey)}
+                      className={getStorySectionClassName(sectionKey)}
+                      {...baseProps}
+                      {...extraProps}
+                    />
+                  </ErrorBoundary>
+                );
+              })}
+            </Suspense>
+          </>
+        )}
+        {/* Botón de compartir de la invitación pública (aparece tras el sobre). */}
+        {!isEmpty && !showMissingToken ? (
+          <button
+            type="button"
+            className="invite-share"
+            onClick={handleShare}
+            aria-label={t("public.share")}
+            title={t("public.share")}
+          >
+            <span aria-hidden="true">↗</span>
+          </button>
+        ) : null}
 
-      {/* Indicador de scroll: el invitado ve que hay más secciones debajo. */}
-      {!showEnvelope && !isEmpty && !showMissingToken && visibleOrder.length > 1 ? (
-        <div className="story-scroll-hint" aria-hidden="true" />
-      ) : null}
+        {/* Indicador de scroll: el invitado ve que hay más secciones debajo. */}
+        {!showEnvelope && !isEmpty && !showMissingToken && visibleOrder.length > 1 ? (
+          <div className="story-scroll-hint" aria-hidden="true" />
+        ) : null}
       </div>
     </div>
   );

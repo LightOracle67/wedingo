@@ -103,7 +103,14 @@ describe("buildMainGuestData", () => {
   });
 
   it("falls back to empty arrays when companion optional lists are missing", () => {
-    const { companionAllergiesOther: _cao, companionTransportChoices: _ctc, companionTransportModes: _ctm, companionTransportTimes: _ctt, companionTransportPlaces: _ctp, ...rest } = form;
+    const {
+      companionAllergiesOther: _cao,
+      companionTransportChoices: _ctc,
+      companionTransportModes: _ctm,
+      companionTransportTimes: _ctt,
+      companionTransportPlaces: _ctp,
+      ...rest
+    } = form;
     const doc = buildMainGuestData({
       data: rest as typeof form,
       isAttending: true,
@@ -121,7 +128,6 @@ describe("buildMainGuestData", () => {
     expect(doc.companionTransportPlaces).toEqual([]);
   });
 });
-
 
 describe("buildCompanionData", () => {
   it("builds a companion document linked to the main guest", () => {

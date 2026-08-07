@@ -2,7 +2,9 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string, opts?: Record<string, unknown>) => opts ? `${key} ${JSON.stringify(opts)}` : key }),
+  useTranslation: () => ({
+    t: (key: string, opts?: Record<string, unknown>) => (opts ? `${key} ${JSON.stringify(opts)}` : key),
+  }),
 }));
 
 import Pagination from "../Pagination";
@@ -11,9 +13,13 @@ afterEach(cleanup);
 
 describe("Pagination", () => {
   const defaultProps = {
-    page: 0, totalPages: 5, pageSize: 10, total: 50,
+    page: 0,
+    totalPages: 5,
+    pageSize: 10,
+    total: 50,
     pageSizes: [10, 20, 50],
-    onPageChange: vi.fn(), onPageSizeChange: vi.fn(),
+    onPageChange: vi.fn(),
+    onPageSizeChange: vi.fn(),
   };
 
   it("renders page info", () => {

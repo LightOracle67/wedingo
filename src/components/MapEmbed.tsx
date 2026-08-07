@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import { isValidGoogleMapsUrl, convertToEmbedUrl } from "../lib/geo-utils";
 
 function canEmbed(url: string): boolean {
-  return url.includes('output=embed') || /^https:\/\/((www|maps)\.)?google\.(com|[a-z]{2,3})\/maps\//.test(url);
+  return url.includes("output=embed") || /^https:\/\/((www|maps)\.)?google\.(com|[a-z]{2,3})\/maps\//.test(url);
 }
 
 /**
@@ -10,7 +10,12 @@ function canEmbed(url: string): boolean {
  * la invitación y para cualquier otra URL de mapa (p. ej. salidas de
  * transporte). Hereda las propiedades de vista y estático del invitación.
  */
-export default function MapEmbed({ mapUrl, mapView = "roadmap", staticMap = false, height = 250 }: {
+export default function MapEmbed({
+  mapUrl,
+  mapView = "roadmap",
+  staticMap = false,
+  height = 250,
+}: {
   mapUrl?: string;
   mapView?: string;
   staticMap?: boolean;
@@ -21,7 +26,10 @@ export default function MapEmbed({ mapUrl, mapView = "roadmap", staticMap = fals
   const showIframe = embedSrc && canEmbed(embedSrc);
 
   return (
-    <div className="story-map-wrapper" style={{ position: "relative", minHeight: "200px", width: "80%", margin: "0 auto" }}>
+    <div
+      className="story-map-wrapper"
+      style={{ position: "relative", minHeight: "200px", width: "80%", margin: "0 auto" }}
+    >
       {showIframe ? (
         <>
           <iframe
@@ -34,12 +42,7 @@ export default function MapEmbed({ mapUrl, mapView = "roadmap", staticMap = fals
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
-          {staticMap ? (
-            <div
-              aria-hidden="true"
-              style={{ position: "absolute", inset: 0, cursor: "default" }}
-            />
-          ) : null}
+          {staticMap ? <div aria-hidden="true" style={{ position: "absolute", inset: 0, cursor: "default" }} /> : null}
         </>
       ) : mapUrl ? (
         // Fallback accesible: la URL no es embebible, se ofrece abrirla en Google Maps.

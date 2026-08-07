@@ -4,19 +4,34 @@ import { calcRSVPSummary, getDietarySummary, formatRSVPsForCSV, formatMenuCateri
 describe("calcRSVPSummary", () => {
   it("returns zeros for null", () => {
     expect(calcRSVPSummary(null)).toEqual({
-      confirmed: 0, declined: 0, pending: 0, totalGuests: 0, confirmedGuests: 0, allEntries: 0,
+      confirmed: 0,
+      declined: 0,
+      pending: 0,
+      totalGuests: 0,
+      confirmedGuests: 0,
+      allEntries: 0,
     });
   });
 
   it("returns zeros for undefined", () => {
     expect(calcRSVPSummary(undefined)).toEqual({
-      confirmed: 0, declined: 0, pending: 0, totalGuests: 0, confirmedGuests: 0, allEntries: 0,
+      confirmed: 0,
+      declined: 0,
+      pending: 0,
+      totalGuests: 0,
+      confirmedGuests: 0,
+      allEntries: 0,
     });
   });
 
   it("returns zeros for empty array", () => {
     expect(calcRSVPSummary([])).toEqual({
-      confirmed: 0, declined: 0, pending: 0, totalGuests: 0, confirmedGuests: 0, allEntries: 0,
+      confirmed: 0,
+      declined: 0,
+      pending: 0,
+      totalGuests: 0,
+      confirmedGuests: 0,
+      allEntries: 0,
     });
   });
 
@@ -34,11 +49,7 @@ describe("calcRSVPSummary", () => {
   });
 
   it("counts declined entries", () => {
-    const entries = [
-      { attendance: "no" },
-      { attendance: "no" },
-      { attendance: "yes" },
-    ];
+    const entries = [{ attendance: "no" }, { attendance: "no" }, { attendance: "yes" }];
     const result = calcRSVPSummary(entries);
     expect(result.confirmed).toBe(1);
     expect(result.declined).toBe(2);
@@ -103,10 +114,7 @@ describe("getDietarySummary", () => {
   });
 
   it("ignores empty dietaryInfo", () => {
-    const entries = [
-      { attendance: "yes", dietaryInfo: "  " },
-      { attendance: "yes" },
-    ];
+    const entries = [{ attendance: "yes", dietaryInfo: "  " }, { attendance: "yes" }];
     expect(getDietarySummary(entries)).toEqual([]);
   });
 
@@ -126,18 +134,14 @@ describe("getDietarySummary", () => {
   });
 
   it("strips 'Menú:' prefix from items", () => {
-    const entries = [
-      { attendance: "yes", dietaryInfo: "Menú: Vegano | sin lactosa" },
-    ];
+    const entries = [{ attendance: "yes", dietaryInfo: "Menú: Vegano | sin lactosa" }];
     const result = getDietarySummary(entries);
     expect(result.find((r) => r.item === "vegano")).toBeUndefined();
     expect(result.find((r) => r.item === "sin lactosa")).toBeDefined();
   });
 
   it("handles entries with non-zero companions and attendance no", () => {
-    const entries = [
-      { attendance: "no", companions: 3 },
-    ];
+    const entries = [{ attendance: "no", companions: 3 }];
     const result = calcRSVPSummary(entries);
     expect(result.totalGuests).toBe(0);
     expect(result.confirmed).toBe(0);
@@ -145,17 +149,13 @@ describe("getDietarySummary", () => {
   });
 
   it("handles entries with null companions", () => {
-    const entries = [
-      { attendance: "yes", companions: null as unknown as number },
-    ];
+    const entries = [{ attendance: "yes", companions: null as unknown as number }];
     const result = calcRSVPSummary(entries);
     expect(result.confirmedGuests).toBe(1);
   });
 
   it("filters out empty segments in dietary info", () => {
-    const entries = [
-      { attendance: "yes", dietaryInfo: "sin gluten |  | alergia" },
-    ];
+    const entries = [{ attendance: "yes", dietaryInfo: "sin gluten |  | alergia" }];
     const result = getDietarySummary(entries);
     expect(result).toEqual([
       { item: "sin gluten", count: 1 },
@@ -165,7 +165,14 @@ describe("getDietarySummary", () => {
 
   it("formatRSVPsForCSV builds a header row and escapes commas", () => {
     const csv = formatRSVPsForCSV([
-      { guestName: "Ana, la novia", attendance: "yes", companionNames: ["Luis"], dietaryInfo: "sin gluten", transportMode: "bus", birthDate: "2000-01-01" },
+      {
+        guestName: "Ana, la novia",
+        attendance: "yes",
+        companionNames: ["Luis"],
+        dietaryInfo: "sin gluten",
+        transportMode: "bus",
+        birthDate: "2000-01-01",
+      },
       { guestName: "Pedro", attendance: "no" },
     ]);
     expect(csv).toContain('"Nombre","Asistencia"');
@@ -182,8 +189,8 @@ describe("formatMenuCateringCSV", () => {
       { guestName: "Ana", mealChoice: "carne", companionNames: ["Luis"], companionMenus: ["pescado"] },
       { guestName: "Solo", mealChoice: "vegano" },
     ]);
-    expect(csv).toContain("\"Ana\",\"carne\"");
-    expect(csv).toContain("\"Luis\",\"pescado\"");
-    expect(csv).toContain("\"Solo\",\"vegano\"");
+    expect(csv).toContain('"Ana","carne"');
+    expect(csv).toContain('"Luis","pescado"');
+    expect(csv).toContain('"Solo","vegano"');
   });
 });

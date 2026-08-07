@@ -9,11 +9,13 @@ const mockGetDocs = vi.fn();
 const mockUpdateDoc = vi.fn(() => Promise.resolve());
 const mockSetDoc = vi.fn(() => Promise.resolve());
 const mockAddDoc = vi.fn(() => Promise.resolve({ id: "x" }));
+const mockCommit = vi.fn(() => Promise.resolve());
 vi.mock("firebase/firestore", () => ({
   getDocs: (...args: Parameters<typeof mockGetDocs>) => mockGetDocs(...args),
   updateDoc: (...args: Parameters<typeof mockUpdateDoc>) => mockUpdateDoc(...args),
   setDoc: (...args: Parameters<typeof mockSetDoc>) => mockSetDoc(...args),
   addDoc: (...args: Parameters<typeof mockAddDoc>) => mockAddDoc(...args),
+  writeBatch: vi.fn(() => ({ set: vi.fn(), commit: mockCommit })),
   collection: vi.fn(() => "col"),
   doc: vi.fn((_db: unknown, _c: unknown, _t: unknown, _s: unknown, id: string) => ({ id })),
   serverTimestamp: vi.fn(() => "ts"),
@@ -65,11 +67,11 @@ describe("NotesSection", () => {
     fireEvent.change(screen.getByPlaceholderText("notes.namePlaceholder"), { target: { value: "Ana" } });
     fireEvent.change(screen.getByPlaceholderText("notes.messagePlaceholder"), { target: { value: "Felicidades" } });
     fireEvent.click(screen.getByText("notes.send"));
-    expect(mockAddDoc).toHaveBeenCalled();
+    expect(mockCommit).toHaveBeenCalled();
   });
 
   it("shows an error when publishing the note fails", async () => {
-    mockAddDoc.mockRejectedValueOnce(new Error("net"));
+    mockCommit.mockRejectedValueOnce(new Error("net"));
     render(<NotesSection inviteToken="tok" />);
     fireEvent.change(screen.getByPlaceholderText("notes.namePlaceholder"), { target: { value: "Ana" } });
     fireEvent.change(screen.getByPlaceholderText("notes.messagePlaceholder"), { target: { value: "Hola" } });
@@ -89,7 +91,7 @@ describe("MusicPollSection", () => {
     render(<MusicPollSection inviteToken="tok" />);
     fireEvent.change(screen.getByPlaceholderText("musicPoll.songPlaceholder"), { target: { value: "Algo contigo" } });
     fireEvent.click(screen.getByText("musicPoll.suggest"));
-    expect(mockAddDoc).toHaveBeenCalled();
+    expect(mockCommit).toHaveBeenCalled();
   });
 
   it("votes on an existing song", async () => {
@@ -123,7 +125,7 @@ describe("GiftListSection", () => {
     expect(screen.getByText("Tostadora")).toBeDefined();
     fireEvent.change(screen.getByPlaceholderText("giftList.namePlaceholder"), { target: { value: "Ana" } });
     fireEvent.click(screen.getByText("giftList.reserve"));
-    expect(mockAddDoc).toHaveBeenCalled();
+    expect(mockCommit).toHaveBeenCalled();
   });
 
   it("marks a gift as taken when it is already reserved", async () => {
@@ -138,7 +140,7 @@ describe("GiftListSection", () => {
 
   it("tolerates a failed reservation", async () => {
     const gifts = JSON.stringify([{ id: "g1", name: "Tostadora", description: "" }]);
-    mockAddDoc.mockRejectedValueOnce(new Error("net"));
+    mockCommit.mockRejectedValueOnce(new Error("net"));
     render(<GiftListSection inviteToken="tok" gifts={gifts} />);
     fireEvent.change(screen.getByPlaceholderText("giftList.namePlaceholder"), { target: { value: "Ana" } });
     fireEvent.click(screen.getByText("giftList.reserve"));
@@ -156,6 +158,6 @@ describe("RideShareSection", () => {
     render(<RideShareSection inviteToken="tok" />);
     fireEvent.change(screen.getByPlaceholderText("rideShare.originPlaceholder"), { target: { value: "Madrid" } });
     fireEvent.click(screen.getByText("rideShare.publish"));
-    expect(mockAddDoc).toHaveBeenCalled();
+    expect(mockCommit).toHaveBeenCalled();
   });
 });

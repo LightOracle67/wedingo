@@ -14,7 +14,11 @@ const FIRESTORE_SESSION_TTL_MS = SESSION_DURATION_MS;
  * pestañas del origen, reduciendo la superficie de robo de sesión.
  */
 function ss() {
-  try { return sessionStorage; } catch { return null; }
+  try {
+    return sessionStorage;
+  } catch {
+    return null;
+  }
 }
 
 /** Calcula la fecha de expiración para activeSession en Firestore. */
@@ -23,7 +27,6 @@ export function firestoreSessionExpiry() {
 }
 
 export function saveSession(type: string, identifier: string, extra: Record<string, unknown> = {}) {
-
   try {
     const data = {
       type,
@@ -33,16 +36,19 @@ export function saveSession(type: string, identifier: string, extra: Record<stri
       expiresAt: Date.now() + SESSION_DURATION,
     };
     ss()?.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch (err) { console.error("[app]", "[sessionVars]", "saveSession error", { error: err }); }
+  } catch (err) {
+    console.error("[app]", "[sessionVars]", "saveSession error", { error: err });
+  }
 }
 
 export function getSession() {
   try {
     const raw = ss()?.getItem(STORAGE_KEY);
-    if (!raw) { ; return null; }
+    if (!raw) {
+      return null;
+    }
     const data = JSON.parse(raw);
     if (data.expiresAt && Date.now() < data.expiresAt) {
-
       return data;
     }
 
@@ -58,15 +64,21 @@ export function getSession() {
 export function renewSession() {
   try {
     const raw = ss()?.getItem(STORAGE_KEY);
-    if (!raw) { ; return; }
+    if (!raw) {
+      return;
+    }
     const data = JSON.parse(raw);
     data.expiresAt = Date.now() + SESSION_DURATION;
     ss()?.setItem(STORAGE_KEY, JSON.stringify(data));
-
-  } catch (err) { console.error("[app]", "[sessionVars]", "renewSession error", { error: err }); }
+  } catch (err) {
+    console.error("[app]", "[sessionVars]", "renewSession error", { error: err });
+  }
 }
 
 export function clearSession() {
-
-  try { ss()?.removeItem(STORAGE_KEY); } catch (err) { console.error("[app]", "[sessionVars]", "clearSession error", { error: err }); }
+  try {
+    ss()?.removeItem(STORAGE_KEY);
+  } catch (err) {
+    console.error("[app]", "[sessionVars]", "clearSession error", { error: err });
+  }
 }

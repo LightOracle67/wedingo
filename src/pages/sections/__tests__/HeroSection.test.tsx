@@ -31,7 +31,9 @@ describe("HeroSection", () => {
   it("handles photo load error", () => {
     render(<HeroSection {...baseProps} couplePhoto="https://example.com/photo.jpg" countdown={null} />);
     const img = screen.getByAltText("hero.couplePhotoAlt");
-    act(() => { img.dispatchEvent(new Event("error")); });
+    act(() => {
+      img.dispatchEvent(new Event("error"));
+    });
   });
 
   it("shows godparents when provided", () => {
@@ -40,7 +42,17 @@ describe("HeroSection", () => {
   });
 
   it("renders without a first name or godparents", () => {
-    render(<HeroSection {...baseProps} firstName="" secondName="" godparent1="Mom" godparent2="" countdown={null} couplePhoto="" />);
+    render(
+      <HeroSection
+        {...baseProps}
+        firstName=""
+        secondName=""
+        godparent1="Mom"
+        godparent2=""
+        countdown={null}
+        couplePhoto=""
+      />,
+    );
     expect(screen.getByText(/^&$/)).toBeDefined();
   });
 
@@ -48,7 +60,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0, expired: true}}
+        countdown={{ years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0, expired: true }}
         couplePhoto=""
       />,
     );
@@ -60,7 +72,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{years: 2, months: 3, days: 0, hours: 0, minutes: 0, seconds: 0, expired: false}}
+        countdown={{ years: 2, months: 3, days: 0, hours: 0, minutes: 0, seconds: 0, expired: false }}
         couplePhoto=""
       />,
     );
@@ -72,9 +84,9 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{years: 0, months: 2, days: 15, hours: 0, minutes: 0, seconds: 0, expired: false}}
+        countdown={{ years: 0, months: 2, days: 15, hours: 0, minutes: 0, seconds: 0, expired: false }}
         couplePhoto=""
-      />
+      />,
     );
     expect(screen.getByText(/countdown\.month/)).toBeDefined();
     expect(screen.getByText(/countdown\.day/)).toBeDefined();
@@ -84,9 +96,9 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0, expired: false}}
+        countdown={{ years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0, expired: false }}
         couplePhoto=""
-      />
+      />,
     );
     expect(screen.getByText(/countdown\./)).toBeDefined();
   });
@@ -95,9 +107,17 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{years: undefined as unknown as number, months: undefined as unknown as number, days: 0, hours: 0, minutes: 0, seconds: 0, expired: false}}
+        countdown={{
+          years: undefined as unknown as number,
+          months: undefined as unknown as number,
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+          expired: false,
+        }}
         couplePhoto=""
-      />
+      />,
     );
     expect(screen.getByText(/countdown\./)).toBeDefined();
   });
@@ -150,7 +170,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{years: 0, months: 0, days: 10, hours: 0, minutes: 0, seconds: 0, expired: false}}
+        countdown={{ years: 0, months: 0, days: 10, hours: 0, minutes: 0, seconds: 0, expired: false }}
         couplePhoto=""
       />,
     );
@@ -163,7 +183,7 @@ describe("HeroSection", () => {
     render(
       <HeroSection
         {...baseProps}
-        countdown={{years: 0, months: 0, days: 3, hours: 0, minutes: 0, seconds: 0, expired: false}}
+        countdown={{ years: 0, months: 0, days: 3, hours: 0, minutes: 0, seconds: 0, expired: false }}
         couplePhoto=""
       />,
     );

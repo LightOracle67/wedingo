@@ -20,8 +20,8 @@ describe("sectionHasContent", () => {
 
   it("info has content when only the menu is configured", () => {
     expect(sectionHasContent("info", { menuEnabled: "true" })).toBe(true);
-    expect(sectionHasContent("info", { menuCarneDishes: "[{\"text\":\"Plato\"}]" })).toBe(true);
-    expect(sectionHasContent("info", { menuTextoDishes: "[{\"text\":\"Texto\"}]" })).toBe(true);
+    expect(sectionHasContent("info", { menuCarneDishes: '[{"text":"Plato"}]' })).toBe(true);
+    expect(sectionHasContent("info", { menuTextoDishes: '[{"text":"Texto"}]' })).toBe(true);
   });
 
   it("story and gifts require their text fields", () => {
@@ -39,7 +39,9 @@ describe("sectionHasContent", () => {
   it("transport has content when enabled or departures exist", () => {
     expect(sectionHasContent("transport", { transportEnabled: "none" })).toBe(false);
     expect(sectionHasContent("transport", { transportEnabled: "bus" })).toBe(true);
-    expect(sectionHasContent("transport", { transportEnabled: "none", transportDepartures: '[{"time":"12:00"}]' })).toBe(true);
+    expect(
+      sectionHasContent("transport", { transportEnabled: "none", transportDepartures: '[{"time":"12:00"}]' }),
+    ).toBe(true);
   });
 
   it("defaults unknown sections to visible", () => {

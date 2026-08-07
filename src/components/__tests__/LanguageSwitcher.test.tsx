@@ -45,7 +45,9 @@ describe("LanguageSwitcher", () => {
     expect(screen.getByRole("dialog")).toBeDefined();
     const enBtn = screen.getByText("English");
     fireEvent.click(enBtn);
-    act(() => { vi.advanceTimersByTime(250); });
+    act(() => {
+      vi.advanceTimersByTime(250);
+    });
     expect(screen.queryByRole("dialog")).toBeNull();
     vi.useRealTimers();
   });
@@ -56,7 +58,9 @@ describe("LanguageSwitcher", () => {
     fireEvent.click(screen.getByTitle("lang.triggerLabel"));
     const dialog = screen.getByRole("dialog");
     fireEvent.click(dialog);
-    act(() => { vi.advanceTimersByTime(250); });
+    act(() => {
+      vi.advanceTimersByTime(250);
+    });
     expect(screen.queryByRole("dialog")).toBeNull();
     vi.useRealTimers();
   });

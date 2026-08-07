@@ -48,12 +48,18 @@ describe("crypto-utils", () => {
     const enc = new TextEncoder();
     const salt = enc.encode("wedingo-" + token.slice(0, 16));
     const keyMaterial = await crypto.subtle.importKey(
-      "raw", enc.encode(token.padEnd(32, "x").slice(0, 32)),
-      { name: "PBKDF2" }, false, ["deriveKey"],
+      "raw",
+      enc.encode(token.padEnd(32, "x").slice(0, 32)),
+      { name: "PBKDF2" },
+      false,
+      ["deriveKey"],
     );
     const key = await crypto.subtle.deriveKey(
       { name: "PBKDF2", salt, iterations: 10000, hash: "SHA-256" },
-      keyMaterial, { name: "AES-GCM", length: 256 }, false, ["encrypt"],
+      keyMaterial,
+      { name: "AES-GCM", length: 256 },
+      false,
+      ["encrypt"],
     );
     const iv = crypto.getRandomValues(new Uint8Array(12));
     const encrypted = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, enc.encode(text));

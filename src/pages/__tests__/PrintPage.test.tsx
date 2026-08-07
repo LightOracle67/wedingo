@@ -60,7 +60,9 @@ describe("PrintPage", () => {
     });
 
     render(<PrintPage />);
-    act(() => { vi.advanceTimersByTime(200); });
+    act(() => {
+      vi.advanceTimersByTime(200);
+    });
     expect(screen.getByText("John", { exact: false })).toBeDefined();
     expect(screen.getByText("Jane", { exact: false })).toBeDefined();
   });
@@ -82,7 +84,9 @@ describe("PrintPage", () => {
     });
 
     render(<PrintPage />);
-    act(() => { vi.advanceTimersByTime(200); });
+    act(() => {
+      vi.advanceTimersByTime(200);
+    });
     expect(screen.getByText("Alice", { exact: false })).toBeDefined();
     expect(screen.getByText("Bob", { exact: false })).toBeDefined();
   });
@@ -104,7 +108,9 @@ describe("PrintPage", () => {
     });
 
     render(<PrintPage />);
-    act(() => { vi.advanceTimersByTime(200); });
+    act(() => {
+      vi.advanceTimersByTime(200);
+    });
     expect(screen.getByText("Alice", { exact: false })).toBeDefined();
   });
 
@@ -125,7 +131,9 @@ describe("PrintPage", () => {
     });
 
     render(<PrintPage />);
-    act(() => { vi.advanceTimersByTime(200); });
+    act(() => {
+      vi.advanceTimersByTime(200);
+    });
     // La fecha invÃ¡lida no se muestra: no hay "31 de febrero" ni el rollover.
     expect(screen.queryByText(/marzo|febrero/i)).toBeNull();
     expect(screen.getByText("Alice", { exact: false })).toBeDefined();
@@ -138,7 +146,9 @@ describe("PrintPage", () => {
     });
 
     render(<PrintPage />);
-    act(() => { vi.advanceTimersByTime(200); });
+    act(() => {
+      vi.advanceTimersByTime(200);
+    });
     expect(screen.getByText("Alice", { exact: false })).toBeDefined();
   });
 
@@ -149,7 +159,9 @@ describe("PrintPage", () => {
     });
 
     render(<PrintPage />);
-    act(() => { vi.advanceTimersByTime(200); });
+    act(() => {
+      vi.advanceTimersByTime(200);
+    });
     expect(screen.getByText("hero.eyebrow")).toBeDefined();
   });
 
@@ -160,11 +172,15 @@ describe("PrintPage", () => {
     });
 
     render(<PrintPage />);
-    act(() => { vi.advanceTimersByTime(200); });
+    act(() => {
+      vi.advanceTimersByTime(200);
+    });
     await act(async () => {
       await Promise.resolve();
     });
-    act(() => { vi.advanceTimersByTime(400); });
+    act(() => {
+      vi.advanceTimersByTime(400);
+    });
     await act(async () => {
       await Promise.resolve();
     });
@@ -179,11 +195,15 @@ describe("PrintPage", () => {
     });
 
     render(<PrintPage />);
-    act(() => { vi.advanceTimersByTime(200); });
+    act(() => {
+      vi.advanceTimersByTime(200);
+    });
     await act(async () => {
       await Promise.resolve();
     });
-    act(() => { vi.advanceTimersByTime(400); });
+    act(() => {
+      vi.advanceTimersByTime(400);
+    });
     await act(async () => {
       await Promise.resolve();
     });
@@ -202,11 +222,15 @@ describe("PrintPage", () => {
     Object.defineProperty(window, "close", { value: close, configurable: true });
 
     render(<PrintPage />);
-    act(() => { vi.advanceTimersByTime(200); });
+    act(() => {
+      vi.advanceTimersByTime(200);
+    });
     await act(async () => {
       await Promise.resolve();
     });
-    act(() => { vi.advanceTimersByTime(400); });
+    act(() => {
+      vi.advanceTimersByTime(400);
+    });
     await act(async () => {
       await Promise.resolve();
     });

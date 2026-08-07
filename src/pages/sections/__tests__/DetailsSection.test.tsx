@@ -23,7 +23,16 @@ vi.mock("../../../components/MapEmbed", () => ({
 
 vi.mock("../../../contexts", () => ({
   useConfig: () => ({
-    config: { firstName: "John", secondName: "Jane", weddingDay: "15", weddingMonth: "Jun", weddingYear: "2025", weddingHour: "18", weddingMinute: "30", weddingPlace: "Church" },
+    config: {
+      firstName: "John",
+      secondName: "Jane",
+      weddingDay: "15",
+      weddingMonth: "Jun",
+      weddingYear: "2025",
+      weddingHour: "18",
+      weddingMinute: "30",
+      weddingPlace: "Church",
+    },
   }),
 }));
 
@@ -64,7 +73,7 @@ describe("DetailsSection", () => {
         locationDescription=""
         calendarLink={""}
         weddingSiteURL=""
-              />,
+      />,
     );
     expect(screen.getByText("details.datePending")).toBeDefined();
     expect(screen.getByText("details.timePending")).toBeDefined();
@@ -82,7 +91,7 @@ describe("DetailsSection", () => {
         locationDescription="Unknown location"
         calendarLink={""}
         weddingSiteURL=""
-              />,
+      />,
     );
     expect(screen.getByText("Unknown location")).toBeDefined();
   });
@@ -98,7 +107,7 @@ describe("DetailsSection", () => {
         locationDescription="Madrid"
         calendarLink={""}
         weddingSiteURL=""
-              />,
+      />,
     );
     expect(screen.getByText("details.timePending")).toBeDefined();
   });
@@ -114,7 +123,7 @@ describe("DetailsSection", () => {
         locationDescription=""
         calendarLink={""}
         weddingSiteURL=""
-              />,
+      />,
     );
     expect(screen.getByText("details.placePending")).toBeDefined();
     expect(screen.queryByText("details.viewGoogleMaps")).toBeNull();
@@ -122,24 +131,14 @@ describe("DetailsSection", () => {
   });
 
   it("shows only the location name when detailsMapMode is 'name'", () => {
-    render(
-      <DetailsSection
-        {...baseProps}
-        detailsMapMode="name"
-      />,
-    );
+    render(<DetailsSection {...baseProps} detailsMapMode="name" />);
     expect(screen.getByText("Madrid")).toBeDefined();
     expect(screen.queryByTestId("wedding-map")).toBeNull();
     expect(screen.queryByText("details.viewGoogleMaps")).toBeNull();
   });
 
   it("hides the location block when detailsMapMode is 'hidden'", () => {
-    render(
-      <DetailsSection
-        {...baseProps}
-        detailsMapMode="hidden"
-      />,
-    );
+    render(<DetailsSection {...baseProps} detailsMapMode="hidden" />);
     expect(screen.queryByText("details.locationLabel")).toBeNull();
     expect(screen.queryByText("Madrid")).toBeNull();
     expect(screen.queryByTestId("wedding-map")).toBeNull();
@@ -160,7 +159,13 @@ describe("DetailsSection", () => {
   });
 
   it("renders social media links when provided", () => {
-    render(<DetailsSection {...baseProps} instagramUrl="https://www.instagram.com/ana" facebookUrl="https://www.facebook.com/ana" />);
+    render(
+      <DetailsSection
+        {...baseProps}
+        instagramUrl="https://www.instagram.com/ana"
+        facebookUrl="https://www.facebook.com/ana"
+      />,
+    );
     expect(screen.getByLabelText("details.instagramLabel")).toBeDefined();
     expect(screen.getByLabelText("details.facebookLabel")).toBeDefined();
   });

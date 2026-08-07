@@ -4,12 +4,16 @@ import axe from "axe-core";
 
 function runAxe(html: HTMLElement): Promise<axe.AxeResults> {
   return new Promise((resolve) => {
-    axe.run(html, {
-      runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"],
-    }, (err, results) => {
-      if (err) throw err;
-      resolve(results);
-    });
+    axe.run(
+      html,
+      {
+        runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"],
+      },
+      (err, results) => {
+        if (err) throw err;
+        resolve(results);
+      },
+    );
   });
 }
 
@@ -42,23 +46,17 @@ describe("a11y-axe", () => {
     const { container } = render(
       <div>
         <input type="text" />
-      </div>
+      </div>,
     );
     const results = await runAxe(container);
-    const labelViolations = results.violations.filter(
-      (v) => v.id === "label"
-    );
+    const labelViolations = results.violations.filter((v) => v.id === "label");
     expect(labelViolations.length).toBeGreaterThan(0);
   });
 
   it("a button with accessible name passes", async () => {
-    const { container } = render(
-      <button aria-label="Close">✕</button>
-    );
+    const { container } = render(<button aria-label="Close">✕</button>);
     const results = await runAxe(container);
-    const buttonNameViolations = results.violations.filter(
-      (v) => v.id === "button-name"
-    );
+    const buttonNameViolations = results.violations.filter((v) => v.id === "button-name");
     expect(buttonNameViolations).toHaveLength(0);
   });
 
@@ -68,7 +66,7 @@ describe("a11y-axe", () => {
       <ErrorBoundary>
         <h2>Child content</h2>
         <p>Some text here</p>
-      </ErrorBoundary>
+      </ErrorBoundary>,
     );
     const results = await runAxe(container);
     expect(results.violations).toHaveLength(0);

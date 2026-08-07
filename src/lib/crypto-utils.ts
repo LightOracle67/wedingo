@@ -14,19 +14,27 @@ const MAX_KEYS = 20;
 
 async function getKey(secret: string, salt: BufferSource, iterations: number) {
   const saltBytes = new Uint8Array(salt as ArrayBuffer);
-  const key = Array.from(saltBytes).map((b) => b.toString(16).padStart(2, "0")).join("");
+  const key = Array.from(saltBytes)
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
   const cacheKey = `${secret}|${key}|${iterations}`;
   const cached = KEY_CACHE.get(cacheKey);
   if (cached) return cached;
 
   const enc = new TextEncoder();
   const keyMaterial = await crypto.subtle.importKey(
-    "raw", enc.encode(secret.padEnd(32, "x").slice(0, 32)),
-    { name: "PBKDF2" }, false, ["deriveKey"]
+    "raw",
+    enc.encode(secret.padEnd(32, "x").slice(0, 32)),
+    { name: "PBKDF2" },
+    false,
+    ["deriveKey"],
   );
   const derived = await crypto.subtle.deriveKey(
     { name: "PBKDF2", salt, iterations, hash: "SHA-256" },
-    keyMaterial, ALGORITHM, false, ["encrypt", "decrypt"]
+    keyMaterial,
+    ALGORITHM,
+    false,
+    ["encrypt", "decrypt"],
   );
   KEY_CACHE.set(cacheKey, derived);
   if (KEY_CACHE.size > MAX_KEYS) {
@@ -75,7 +83,7 @@ export async function encrypt(text: string, token: string) {
 export async function decrypt(ciphertext: string, token: string) {
   if (!ciphertext || !token || ciphertext.length < 24) return ciphertext;
   try {
-    const raw = Uint8Array.from(atob(ciphertext), c => c.charCodeAt(0));
+    const raw = Uint8Array.from(atob(ciphertext), (c) => c.charCodeAt(0));
     if (raw.length >= HEADER_LEN) {
       const salt = raw.slice(0, SALT_LEN);
       const iv = raw.slice(SALT_LEN, SALT_LEN + IV_LEN);
@@ -97,17 +105,25 @@ export async function decrypt(ciphertext: string, token: string) {
     const enc = new TextEncoder();
     const salt = enc.encode("wedingo-" + token.slice(0, 16));
     const keyMaterial = await crypto.subtle.importKey(
-      "raw", enc.encode(token.padEnd(32, "x").slice(0, 32)),
-      { name: "PBKDF2" }, false, ["deriveKey"]
+      "raw",
+      enc.encode(token.padEnd(32, "x").slice(0, 32)),
+      { name: "PBKDF2" },
+      false,
+      ["deriveKey"],
     );
     const key = await crypto.subtle.deriveKey(
       { name: "PBKDF2", salt, iterations: 10000, hash: "SHA-256" },
-      keyMaterial, ALGORITHM, false, ["encrypt", "decrypt"]
+      keyMaterial,
+      ALGORITHM,
+      false,
+      ["encrypt", "decrypt"],
     );
-    const raw = Uint8Array.from(atob(ciphertext), c => c.charCodeAt(0));
+    const raw = Uint8Array.from(atob(ciphertext), (c) => c.charCodeAt(0));
     const iv = raw.slice(0, 12);
     const data = raw.slice(12);
     const decrypted = await crypto.subtle.decrypt({ ...ALGORITHM, iv }, key, data);
     return new TextDecoder().decode(decrypted);
-  } catch { return ""; }
+  } catch {
+    return "";
+  }
 }

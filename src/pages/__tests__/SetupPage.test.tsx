@@ -36,7 +36,14 @@ vi.mock("../../components/MusicPlayer", () => ({
 import SetupPage from "../SetupPage";
 
 const baseMock = {
-  config: { theme: "golden", firstName: "John", secondName: "Jane", adminUsername: "admin", musicFile: "", musicUrl: "" },
+  config: {
+    theme: "golden",
+    firstName: "John",
+    secondName: "Jane",
+    adminUsername: "admin",
+    musicFile: "",
+    musicUrl: "",
+  },
   formData: {},
   isConfigLoading: false,
   configLoadError: "",

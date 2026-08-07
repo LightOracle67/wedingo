@@ -11,7 +11,11 @@ interface AccessSectionFormProps {
   onTokenAcknowledge?: (checked: boolean) => void;
 }
 
-export default function AccessSectionForm({ prefix = "", tokenAcknowledged = false, onTokenAcknowledge }: AccessSectionFormProps) {
+export default function AccessSectionForm({
+  prefix = "",
+  tokenAcknowledged = false,
+  onTokenAcknowledge,
+}: AccessSectionFormProps) {
   const { formData, updateFormField, hasStoredConfig } = useConfig();
   const { setupToken } = useAuth();
   const { t } = useTranslation();
@@ -42,7 +46,15 @@ export default function AccessSectionForm({ prefix = "", tokenAcknowledged = fal
         id={id("adminUsername")}
         className="setup-input"
         value={formData.adminUsername}
-        onChange={(e) => updateFormField("adminUsername", e.target.value.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 50))}
+        onChange={(e) =>
+          updateFormField(
+            "adminUsername",
+            e.target.value
+              .toLowerCase()
+              .replace(/[^a-z0-9]/g, "")
+              .slice(0, 50),
+          )
+        }
         placeholder={t("setup.usernamePlaceholder")}
         autoComplete="username"
         name="username"
@@ -58,7 +70,13 @@ export default function AccessSectionForm({ prefix = "", tokenAcknowledged = fal
       {!hasStoredConfig ? (
         <div
           className="setup-token-section"
-          style={{ marginTop: "0.9rem", padding: "0.9rem 1rem", borderRadius: "var(--radius-md)", background: "color-mix(in srgb, var(--setup-field-bg) 55%, transparent)", border: "1px solid color-mix(in srgb, var(--setup-accent) 35%, transparent)" }}
+          style={{
+            marginTop: "0.9rem",
+            padding: "0.9rem 1rem",
+            borderRadius: "var(--radius-md)",
+            background: "color-mix(in srgb, var(--setup-field-bg) 55%, transparent)",
+            border: "1px solid color-mix(in srgb, var(--setup-accent) 35%, transparent)",
+          }}
         >
           <label className="setup-label" htmlFor={id("setupTokenReadonly")}>
             {t("setup.tokenFieldLabel")}

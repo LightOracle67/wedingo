@@ -13,7 +13,6 @@ export default function PrintPage() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-
     document.title = `${config.firstName} & ${config.secondName} — Wedingo`;
   }, [config.firstName, config.secondName]);
 
@@ -30,7 +29,9 @@ export default function PrintPage() {
     if (date.getFullYear() !== year || date.getMonth() !== monthIndex - 1 || date.getDate() !== day) return null;
     return date;
   })();
-  const formattedDate = weddingDateObj ? weddingDateObj.toLocaleDateString(i18n.language || "es", { dateStyle: "long" }) : "";
+  const formattedDate = weddingDateObj
+    ? weddingDateObj.toLocaleDateString(i18n.language || "es", { dateStyle: "long" })
+    : "";
   const timeStr = config.weddingHour
     ? `${String(config.weddingHour).padStart(2, "0")}:${String(config.weddingMinute || "0").padStart(2, "0")}`
     : "";
@@ -44,31 +45,33 @@ export default function PrintPage() {
     try {
       const stored = sessionStorage.getItem(key);
       if (stored) return stored;
-    } catch { /* almacenamiento no disponible */ }
+    } catch {
+      /* almacenamiento no disponible */
+    }
     const raw = randomMessage(i18n.language ?? "es") ?? "";
-    try { sessionStorage.setItem(key, raw); } catch { /* noop */ }
+    try {
+      sessionStorage.setItem(key, raw);
+    } catch {
+      /* noop */
+    }
     return raw;
   }, [i18n.language, inviteToken]);
 
   useEffect(() => {
     if (isConfigLoading) {
-
       return;
     }
 
     const id = setTimeout(() => {
-
       setLoaded(true);
     }, 200);
     return () => {
-
       clearTimeout(id);
     };
   }, [isConfigLoading]);
 
   useEffect(() => {
     if (!loaded || printed.current) {
-
       return;
     }
     printed.current = true;
@@ -81,7 +84,11 @@ export default function PrintPage() {
         // una pestaña abierta directamente no se puede cerrar y el navegador
         // lo bloquea (antes quedaba colgada tras imprimir).
         if (window.opener) {
-          try { window.close(); } catch (err) { console.error("[app]", "[PrintPage]", "window close error", err); }
+          try {
+            window.close();
+          } catch (err) {
+            console.error("[app]", "[PrintPage]", "window close error", err);
+          }
         }
       };
       window.onafterprint = cleanup;
@@ -114,8 +121,17 @@ export default function PrintPage() {
           <p className="print-message">{message}</p>
           <div className="print-divider" />
           <p className="print-body">{formattedDate}</p>
-          {timeStr ? <p className="print-body" style={{ marginTop: "0.15rem" }}>{timeStr}{t("print.timeSuffix")}</p> : null}
-          {place ? <p className="print-body" style={{ marginTop: "0.15rem" }}>{place}</p> : null}
+          {timeStr ? (
+            <p className="print-body" style={{ marginTop: "0.15rem" }}>
+              {timeStr}
+              {t("print.timeSuffix")}
+            </p>
+          ) : null}
+          {place ? (
+            <p className="print-body" style={{ marginTop: "0.15rem" }}>
+              {place}
+            </p>
+          ) : null}
         </div>
       </div>
     </div>

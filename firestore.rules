@@ -44,6 +44,20 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/setupTokens/$(hash)).data.inviteToken == tokenId;
     }
 
+    /* Tope anti-spam por subcolección social (notes/songs/gifts/rides). */
+    function socialCounterCap(name) {
+      return name == 'rides' ? 100 : 200;
+    }
+
+    /* El contador invitations/{id}/_counters/{name} debe estar por debajo del
+       tope. Si el contador no existe (invitación creada antes de introducir
+       los contadores) se permite la escritura: el cliente lo crea de forma
+       atómica en el mismo batch y el cap aplica a partir de ahí. */
+    function socialCounterBelow(tokenId, name) {
+      return !exists(/databases/$(database)/documents/invitations/$(tokenId)/_counters/$(name))
+        || get(/databases/$(database)/documents/invitations/$(tokenId)/_counters/$(name)).data.count < socialCounterCap(name);
+    }
+
     /* Texto largo visible en la invitación: longitud acotada y caracteres
        seguros (sin HTML/JS) para evitar XSS almacenado. */
     function isValidLongSafeText(value) {
@@ -231,7 +245,8 @@ service cloud.firestore {
         allow create: if request.resource.data.keys().hasOnly(['guestName', 'message', 'createdAt'])
           && isSafeText(request.resource.data.guestName)
           && isSafeText(request.resource.data.message)
-          && request.resource.data.message.size() <= 500;
+          && request.resource.data.message.size() <= 500
+          && socialCounterBelow(tokenId, 'notes');
         allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
       match /songs/{songId} {
@@ -240,7 +255,8 @@ service cloud.firestore {
           && isSafeText(request.resource.data.guestName)
           && isSafeText(request.resource.data.song)
           && request.resource.data.song.size() <= 200
-          && request.resource.data.votes is int && request.resource.data.votes == 1;
+          && request.resource.data.votes is int && request.resource.data.votes == 1
+          && socialCounterBelow(tokenId, 'songs');
         allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['votes'])
           && request.resource.data.votes is int
           && request.resource.data.votes == resource.data.votes + 1
@@ -254,14 +270,39 @@ service cloud.firestore {
           && isSafeText(request.resource.data.origin)
           && request.resource.data.origin.size() <= 200
           && request.resource.data.seats is int
-          && request.resource.data.seats >= 1 && request.resource.data.seats <= 8;
+          && request.resource.data.seats >= 1 && request.resource.data.seats <= 8
+          && socialCounterBelow(tokenId, 'rides');
         allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
       match /gifts/{giftId} {
         allow read: if true;
         allow create: if request.resource.data.keys().hasOnly(['itemId', 'reservedBy', 'createdAt'])
           && request.resource.data.itemId is string && request.resource.data.itemId.size() <= 100
-          && isSafeText(request.resource.data.reservedBy);
+          && isSafeText(request.resource.data.reservedBy)
+          && socialCounterBelow(tokenId, 'gifts');
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+      }
+      /* Contadores anti-spam de las subcolecciones sociales: invitations/{id}/
+         _counters/{name} con { count }. El cliente los incrementa de forma
+         atómica en el mismo batch que crea el documento (addDoc + setDoc con
+         merge), replicando el patrón de rsvpResponses. Un contador inexistente
+         (invitación antigua) NO bloquea la creación: el cap se aplica desde
+         el primer documento de la versión que introduce los contadores. */
+      match /_counters/{counterName} {
+        allow read: if true;
+        // create limitado a count 0/1: 0 es la inicialización de ConfigContext
+        // al guardar la invitación, 1 es el increment del primer documento
+        // desde un contador inexistente (setDoc con merge). Un atacante no
+        // puede crear el contador directamente en el cap para "quemar" las
+        // escrituras de una invitación (como rsvpResponses, que limita a 1).
+        allow create: if request.resource.data.keys().hasOnly(['count'])
+          && request.resource.data.count is int
+          && request.resource.data.count >= 0
+          && request.resource.data.count <= 1;
+        allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['count'])
+          && request.resource.data.count is int
+          && request.resource.data.count == resource.data.count + 1
+          && request.resource.data.count <= socialCounterCap(counterName);
         allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
     }

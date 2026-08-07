@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.95.20",
+    date: "2026-08-08",
+    changes: [
+      "Segunda ronda de mejora progresiva (según análisis en profundidad):",
+      "CI verde de nuevo: 3 suites de tests rotas arregladas de raíz (error-utils: rechazo sin capturar de Sentry; ConfigContext-saving: localStorage sin limpiar entre tests; SuperAdminContext: microtarea de auth contaminando el test siguiente), código muerto eliminado (randomFrom), y CI ampliado con format:check y typecheck:e2e (los e2e ahora también cubren PRs). Prettier aplicado a todo el repo (drift de 238 archivos).",
+      "Fix de seguridad latente: SUPERADMIN_ROUTE caía a '' sin variable de entorno y pathname.startsWith('') === true hacía que cualquier visitante público descargara firebase/auth. Ahora fail-closed con ruta por defecto /_/console.",
+      "Anti-spam en las secciones sociales: las reglas Firestore exigen un contador por invitación (invitations/{id}/_counters/{name}) por debajo del tope (200 notas/canciones/regalos, 100 trayectos) antes de cada creación, con incremento atómico en el mismo batch (patrón de rsvpResponses). El cliente unificado en el nuevo hook useInviteSubcollection (5 secciones sociales: Gifts, MusicPoll, Notes, Reactions, RideShare) con opciones estables por ref.",
+      "Robustez y rendimiento: localStorage tolerante a fallos en AccessibilityPanel y CookieConsent (documentado el caso circular del consentimiento), valor del contexto de toasts memoizado (los ticks de progreso ya no re-renderizan a todos los consumidores), icono de toast con aria-hidden, evaluación de cache single-tab descartada por coste/beneficio (3.4 kB gzip vs pérdida de coherencia entre pestañas, documentado en firebase.ts).",
+    ],
+  },
+  {
     version: "2.95.19",
     date: "2026-08-07",
     changes: [
@@ -135,7 +146,7 @@ export const CHANGELOG = [
     version: "2.95.1",
     date: "2026-08-06",
     changes: [
-      "FIX CRÍTICO: el guardado del setup fallaba con 'No tienes permiso' — normalizeConfig siempre envía los campos sociales vacíos (\"\" y \"false\") y las validaciones los rechazaban; además, la validación completa superaba el límite de 1000 expresiones de Firestore en el update. Se crea isValidInvitationUpdate (reducida) para el update del admin con sesión y se permiten los valores vacíos.",
+      'FIX CRÍTICO: el guardado del setup fallaba con \'No tienes permiso\' — normalizeConfig siempre envía los campos sociales vacíos ("" y "false") y las validaciones los rechazaban; además, la validación completa superaba el límite de 1000 expresiones de Firestore en el update. Se crea isValidInvitationUpdate (reducida) para el update del admin con sesión y se permiten los valores vacíos.',
     ],
   },
   {

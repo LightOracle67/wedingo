@@ -7,6 +7,36 @@ import "../styles/modals.css";
 const STORAGE_KEY = STORAGE_KEYS.cookieConsent;
 const PREF_STORAGE_KEY = STORAGE_KEYS.cookiePrefs;
 
+/**
+ * Acceso directo a localStorage con tolerancia (modo privado, cuota llena).
+ * NO usa safeSetItem/safeGetItem de storage.ts a propósito: esas helpers
+ * exigen hasStorageConsent(), y este banner es precisamente el que OTORGA el
+ * consentimiento (escribirlo a través de ellas sería un rechazo circular).
+ */
+const ls = {
+  get: (key: string): string | null => {
+    try {
+      return localStorage.getItem(key);
+    } catch {
+      return null;
+    }
+  },
+  set: (key: string, value: string): void => {
+    try {
+      localStorage.setItem(key, value);
+    } catch {
+      /* almacenamiento no disponible */
+    }
+  },
+  remove: (key: string): void => {
+    try {
+      localStorage.removeItem(key);
+    } catch {
+      /* almacenamiento no disponible */
+    }
+  },
+};
+
 /** Otorga el consentimiento de analítica (import dinámico para no arrastrar
  *  firebase/analytics al grafo estático inicial). */
 function grantAnalytics() {
@@ -15,14 +45,14 @@ function grantAnalytics() {
 }
 
 function acceptCookies() {
-  localStorage.setItem(STORAGE_KEY, "accepted");
-  localStorage.setItem(PREF_STORAGE_KEY, JSON.stringify({ necessary: true, analytics: true }));
+  ls.set(STORAGE_KEY, "accepted");
+  ls.set(PREF_STORAGE_KEY, JSON.stringify({ necessary: true, analytics: true }));
   grantAnalytics();
 }
 
 function rejectCookies() {
-  localStorage.setItem(STORAGE_KEY, "rejected");
-  localStorage.removeItem(PREF_STORAGE_KEY);
+  ls.set(STORAGE_KEY, "rejected");
+  ls.remove(PREF_STORAGE_KEY);
 }
 
 const CookieConsent = memo(function CookieConsent() {
@@ -32,7 +62,7 @@ const CookieConsent = memo(function CookieConsent() {
   const [preferences, setPreferences] = useState({ necessary: true, analytics: false });
 
   useEffect(() => {
-    const status = localStorage.getItem(STORAGE_KEY);
+    const status = ls.get(STORAGE_KEY);
     if (!status) setVisible(true);
   }, []);
 
@@ -44,17 +74,19 @@ const CookieConsent = memo(function CookieConsent() {
   const handleReject = () => {
     rejectCookies();
     try {
-      Object.keys(localStorage).filter(k => k.startsWith(INVITE_CACHE_PREFIX) || k.startsWith(AUDIO_PREFIX)).forEach(k => localStorage.removeItem(k));
+      Object.keys(localStorage)
+        .filter((k) => k.startsWith(INVITE_CACHE_PREFIX) || k.startsWith(AUDIO_PREFIX))
+        .forEach((k) => localStorage.removeItem(k));
     } catch {}
     setVisible(false);
   };
 
   const handleSavePreferences = () => {
-    localStorage.setItem(STORAGE_KEY, "accepted");
-    localStorage.setItem(PREF_STORAGE_KEY, JSON.stringify(preferences));
+    ls.set(STORAGE_KEY, "accepted");
+    ls.set(PREF_STORAGE_KEY, JSON.stringify(preferences));
     if (preferences.analytics) grantAnalytics();
     if (!preferences.analytics) {
-      localStorage.removeItem(STORAGE_KEYS.inviteCacheLegacy);
+      ls.remove(STORAGE_KEYS.inviteCacheLegacy);
     }
     setVisible(false);
   };
@@ -73,9 +105,7 @@ const CookieConsent = memo(function CookieConsent() {
       <div className="cookie-consent-card" ref={focusTrapRef}>
         {!showSettings ? (
           <>
-            <p className="cookie-consent-text">
-              {t("cookie.text")}
-            </p>
+            <p className="cookie-consent-text">{t("cookie.text")}</p>
             <div className="cookie-consent-actions">
               <button className="setup-button setup-button--primary" onClick={handleAccept}>
                 {t("cookie.accept")}
@@ -104,11 +134,7 @@ const CookieConsent = memo(function CookieConsent() {
                 <span>{t("cookie.necessary")}</span>
               </label>
               <label className="cookie-settings-item">
-                <input
-                  type="checkbox"
-                  checked={preferences.analytics}
-                  onChange={() => togglePreference("analytics")}
-                />
+                <input type="checkbox" checked={preferences.analytics} onChange={() => togglePreference("analytics")} />
                 <span>{t("cookie.analytics")}</span>
               </label>
             </div>

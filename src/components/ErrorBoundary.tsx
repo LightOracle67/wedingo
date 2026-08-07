@@ -2,7 +2,10 @@ import { Component } from "react";
 import { useTranslation } from "react-i18next";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-class ErrorBoundaryInner extends Component<{ t: (key: string) => string; children: React.ReactNode }, { error: Error | null }> {
+class ErrorBoundaryInner extends Component<
+  { t: (key: string) => string; children: React.ReactNode },
+  { error: Error | null }
+> {
   constructor(props: { t: (key: string) => string; children: React.ReactNode }) {
     super(props);
     this.state = { error: null };
@@ -16,7 +19,9 @@ class ErrorBoundaryInner extends Component<{ t: (key: string) => string; childre
     // Registra el error para diagnóstico (Sentry gated por consentimiento).
     try {
       import("../lib/error-utils").then(({ logError }) => logError(error, "error-boundary"));
-    } catch { /* logging opcional */ }
+    } catch {
+      /* logging opcional */
+    }
     console.error("[app]", "[ErrorBoundary]", "caught error", { error, info });
   }
 

@@ -23,22 +23,38 @@ describe("ErrorBoundary", () => {
   });
 
   it("renders children when no error", () => {
-    render(<ErrorBoundary><div>child</div></ErrorBoundary>);
+    render(
+      <ErrorBoundary>
+        <div>child</div>
+      </ErrorBoundary>,
+    );
     expect(screen.getByText("child")).toBeDefined();
   });
 
   it("renders error state when a child throws", () => {
-    render(<ErrorBoundary><Bomb shouldThrow={true} /></ErrorBoundary>);
+    render(
+      <ErrorBoundary>
+        <Bomb shouldThrow={true} />
+      </ErrorBoundary>,
+    );
     expect(screen.getByText("common.errorBoundary.title")).toBeDefined();
   });
 
   it("shows error message", () => {
-    render(<ErrorBoundary><Bomb shouldThrow={true} /></ErrorBoundary>);
+    render(
+      <ErrorBoundary>
+        <Bomb shouldThrow={true} />
+      </ErrorBoundary>,
+    );
     expect(screen.getByText("Kaboom!")).toBeDefined();
   });
 
   it("renders reload button", () => {
-    render(<ErrorBoundary><Bomb shouldThrow={true} /></ErrorBoundary>);
+    render(
+      <ErrorBoundary>
+        <Bomb shouldThrow={true} />
+      </ErrorBoundary>,
+    );
     expect(screen.getByText("common.errorBoundary.reload")).toBeDefined();
   });
 
@@ -48,7 +64,11 @@ describe("ErrorBoundary", () => {
       value: { reload: reloadSpy },
       writable: true,
     });
-    render(<ErrorBoundary><Bomb shouldThrow={true} /></ErrorBoundary>);
+    render(
+      <ErrorBoundary>
+        <Bomb shouldThrow={true} />
+      </ErrorBoundary>,
+    );
     fireEvent.click(screen.getByText("common.errorBoundary.reload"));
     expect(reloadSpy).toHaveBeenCalled();
   });
@@ -60,7 +80,11 @@ describe("ErrorBoundary", () => {
       useTranslation: () => ({ t: (key: string) => key }),
     }));
     const { default: ProdErrorBoundary } = await import("../ErrorBoundary");
-    render(<ProdErrorBoundary><Bomb shouldThrow={true} /></ProdErrorBoundary>);
+    render(
+      <ProdErrorBoundary>
+        <Bomb shouldThrow={true} />
+      </ProdErrorBoundary>,
+    );
     expect(screen.getByText("common.errorBoundary.message")).toBeDefined();
     vi.unstubAllEnvs();
   });

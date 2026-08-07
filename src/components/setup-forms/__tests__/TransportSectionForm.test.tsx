@@ -21,7 +21,8 @@ vi.mock("../../../contexts", () => ({
 
 vi.mock("../../../lib/geo-utils", () => ({
   isValidGoogleMapsUrl: (url: string) => url.startsWith("https://www.google.com/maps/place/"),
-  extractPlaceNameFromUrl: (url: string) => (url.includes("place/") ? url.split("/place/")[1]?.split("/")[0]?.replace(/\+/g, " ") || "" : ""),
+  extractPlaceNameFromUrl: (url: string) =>
+    url.includes("place/") ? url.split("/place/")[1]?.split("/")[0]?.replace(/\+/g, " ") || "" : "",
 }));
 
 import TransportSectionForm from "../TransportSectionForm";
@@ -70,7 +71,9 @@ describe("TransportSectionForm departures flow", () => {
     renderForm();
     fireEvent.click(screen.getByRole("button", { name: /setup.transportAddDeparture/ }));
     fireEvent.change(screen.getByLabelText("setup.transportTimeLabel"), { target: { value: "12:30" } });
-    fireEvent.change(screen.getByLabelText("setup.transportUrlLabel"), { target: { value: "https://www.google.com/maps/place/Plaza" } });
+    fireEvent.change(screen.getByLabelText("setup.transportUrlLabel"), {
+      target: { value: "https://www.google.com/maps/place/Plaza" },
+    });
     const stored = getStored();
     expect(stored[0]).toEqual({ type: "bus", time: "12:30", url: "https://www.google.com/maps/place/Plaza" });
   });
@@ -97,9 +100,7 @@ describe("TransportSectionForm departures flow", () => {
   });
 
   it("sanitizes legacy entries without type", () => {
-    mockFormData.transportDepartures = JSON.stringify([
-      { time: "12:00", url: "" },
-    ]);
+    mockFormData.transportDepartures = JSON.stringify([{ time: "12:00", url: "" }]);
     renderForm();
     const select = screen.getByLabelText("setup.transportTypeLabel") as HTMLSelectElement;
     expect(select.value).toBe("bus");
@@ -107,9 +108,7 @@ describe("TransportSectionForm departures flow", () => {
 
   it("disables the type select and defaults it to bus when the option is bus", () => {
     mockFormData.transportEnabled = "bus";
-    mockFormData.transportDepartures = JSON.stringify([
-      { type: "taxi", time: "12:00", url: "" },
-    ]);
+    mockFormData.transportDepartures = JSON.stringify([{ type: "taxi", time: "12:00", url: "" }]);
     renderForm();
     const select = screen.getByLabelText("setup.transportTypeLabel") as HTMLSelectElement;
     expect(select.disabled).toBe(true);
@@ -118,9 +117,7 @@ describe("TransportSectionForm departures flow", () => {
 
   it("disables the type select and defaults it to taxi when the option is taxi", () => {
     mockFormData.transportEnabled = "taxi";
-    mockFormData.transportDepartures = JSON.stringify([
-      { type: "bus", time: "12:00", url: "" },
-    ]);
+    mockFormData.transportDepartures = JSON.stringify([{ type: "bus", time: "12:00", url: "" }]);
     renderForm();
     const select = screen.getByLabelText("setup.transportTypeLabel") as HTMLSelectElement;
     expect(select.disabled).toBe(true);
@@ -194,7 +191,9 @@ describe("TransportSectionForm departures flow", () => {
   });
 
   it("does not show the site hint for a valid URL without a place", () => {
-    mockFormData.transportDepartures = JSON.stringify([{ type: "bus", time: "12:00", url: "https://maps.google.com/maps?q=40.41,-3.70" }]);
+    mockFormData.transportDepartures = JSON.stringify([
+      { type: "bus", time: "12:00", url: "https://maps.google.com/maps?q=40.41,-3.70" },
+    ]);
     renderForm();
     expect(screen.queryByText(/setup.siteNameLabel/)).toBeNull();
   });

@@ -79,9 +79,24 @@ export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/og-banner.png`;
 
 /** Mapeo de código de idioma a locale og:locale (lengua_TERRITORIO). */
 const LOCALE_MAP: Record<string, string> = {
-  es: "es_ES", en: "en_US", fr: "fr_FR", de: "de_DE", pt: "pt_PT", it: "it_IT",
-  nl: "nl_NL", ca: "ca_ES", gl: "gl_ES", eu: "eu_ES", pl: "pl_PL", ru: "ru_RU",
-  ar: "ar_AR", he: "he_IL", ja: "ja_JP", zh: "zh_CN", ko: "ko_KR", tr: "tr_TR",
+  es: "es_ES",
+  en: "en_US",
+  fr: "fr_FR",
+  de: "de_DE",
+  pt: "pt_PT",
+  it: "it_IT",
+  nl: "nl_NL",
+  ca: "ca_ES",
+  gl: "gl_ES",
+  eu: "eu_ES",
+  pl: "pl_PL",
+  ru: "ru_RU",
+  ar: "ar_AR",
+  he: "he_IL",
+  ja: "ja_JP",
+  zh: "zh_CN",
+  ko: "ko_KR",
+  tr: "tr_TR",
 };
 
 /**

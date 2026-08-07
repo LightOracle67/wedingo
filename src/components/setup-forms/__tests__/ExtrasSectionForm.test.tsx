@@ -56,7 +56,10 @@ describe("ExtrasSectionForm", () => {
     mockFormData.giftsListEnabled = "true";
     mockFormData.giftList = "[]";
     render(<ExtrasSectionForm />);
-    fireEvent.change(screen.getAllByRole("textbox").find((el) => el.tagName === "TEXTAREA")!, { target: { value: "Tostadora | Roja" } });
+    fireEvent.change(
+      screen.getAllByRole("textbox").find((el) => el.tagName === "TEXTAREA")!,
+      { target: { value: "Tostadora | Roja" } },
+    );
     expect(mockUpdateFormField).toHaveBeenCalledWith("giftList", expect.stringContaining("Tostadora"));
   });
 
@@ -64,7 +67,10 @@ describe("ExtrasSectionForm", () => {
     mockFormData.triviaEnabled = "true";
     mockFormData.trivia = "[]";
     render(<ExtrasSectionForm />);
-    fireEvent.change(screen.getAllByRole("textbox").find((el) => el.tagName === "TEXTAREA")!, { target: { value: "Â¿DÃ³nde? | En el parque" } });
+    fireEvent.change(
+      screen.getAllByRole("textbox").find((el) => el.tagName === "TEXTAREA")!,
+      { target: { value: "Â¿DÃ³nde? | En el parque" } },
+    );
     expect(mockUpdateFormField).toHaveBeenCalledWith("trivia", expect.stringContaining("En el parque"));
   });
 

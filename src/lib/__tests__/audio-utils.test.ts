@@ -37,8 +37,13 @@ describe("compressAudio", () => {
 
   it("throws a localized error when decoding fails", async () => {
     const ctx = new AudioContext();
-    ctx.decodeAudioData = vi.fn(async () => { throw new Error("decode"); });
-    globalThis.AudioContext = class { decodeAudioData = ctx.decodeAudioData; close = vi.fn(async () => {}); } as unknown as typeof AudioContext;
+    ctx.decodeAudioData = vi.fn(async () => {
+      throw new Error("decode");
+    });
+    globalThis.AudioContext = class {
+      decodeAudioData = ctx.decodeAudioData;
+      close = vi.fn(async () => {});
+    } as unknown as typeof AudioContext;
     await expect(compressAudio(makeAudioFile())).rejects.toThrow("audio.decodeFailed");
   });
 });

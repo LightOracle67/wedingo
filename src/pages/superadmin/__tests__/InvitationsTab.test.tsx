@@ -81,7 +81,9 @@ describe("InvitationsTab", () => {
   it("renders a delete button for each invitation", async () => {
     const { getDocs } = await getFirestore();
     (getDocs as ReturnType<typeof vi.fn>).mockResolvedValue({
-      docs: [{ id: "inv1", data: () => ({ theme: "golden", weddingDay: "15", weddingMonth: "June", weddingYear: "2025" }) }],
+      docs: [
+        { id: "inv1", data: () => ({ theme: "golden", weddingDay: "15", weddingMonth: "June", weddingYear: "2025" }) },
+      ],
     });
     render(<InvitationsTab />);
     await vi.waitFor(() => expect(screen.getByText("superadmin.deleteButton")).toBeDefined());

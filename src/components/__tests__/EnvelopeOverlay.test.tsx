@@ -210,7 +210,9 @@ describe("EnvelopeOverlay", () => {
 
   it("handles dispatchEvent throwing", () => {
     vi.useFakeTimers();
-    vi.spyOn(window, "dispatchEvent").mockImplementation(() => { throw new Error("dispatch failed"); });
+    vi.spyOn(window, "dispatchEvent").mockImplementation(() => {
+      throw new Error("dispatch failed");
+    });
     const onOpen = vi.fn();
     render(<EnvelopeOverlay {...defaultProps} onOpen={onOpen} />);
     const btn = screen.getByRole("button");

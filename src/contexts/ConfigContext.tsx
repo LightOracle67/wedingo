@@ -1,11 +1,23 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router";
-import { getDoc, setDoc, doc, increment, updateDoc, getDocs, writeBatch, type DocumentData, type QueryDocumentSnapshot } from "firebase/firestore";
+import {
+  getDoc,
+  setDoc,
+  doc,
+  increment,
+  updateDoc,
+  getDocs,
+  writeBatch,
+  type DocumentData,
+  type QueryDocumentSnapshot,
+} from "firebase/firestore";
 import { db, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
 import {
   defaultConfig,
-  MAX_YEARS_AHEAD, INVITE_CACHE_TTL_MS, TOKEN_ROUTE_REGEX,
+  MAX_YEARS_AHEAD,
+  INVITE_CACHE_TTL_MS,
+  TOKEN_ROUTE_REGEX,
   PRIVACY_POLICY_VERSION,
 } from "../lib/constants";
 import { normalizeConfig } from "../lib/normalize-config";
@@ -27,7 +39,6 @@ import { ConfigContext } from "./useConfig";
 import { useAppUI } from "./useAppUI";
 
 export function ConfigProvider({ children }: { children: ReactNode }) {
-
   const { t } = useTranslation();
   const { setSaveMessage, setSaveError } = useAppUI();
   const location = useLocation();
@@ -59,20 +70,28 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   const { formattedDate, formattedTime, calendarLink } = useCalendar(config);
 
   const updateFormField = useCallback((field: string, value: string) => {
-
     setFormData((current: InvitationConfig) => ({ ...current, [field]: value }));
   }, []);
 
-  const {
-    handleDayChange, handleTimeChange, handleTimeBlur,
-    handleYearChange,
-  } = useFieldHandlers(updateFormField, maxAllowedYear);
+  const { handleDayChange, handleTimeChange, handleTimeBlur, handleYearChange } = useFieldHandlers(
+    updateFormField,
+    maxAllowedYear,
+  );
 
-  const { autoSaveTimerRef } = useAutoSave(hasStoredConfig, inviteToken, formData, config, setSaveMessage, isSavingRef, (data) => {
-    // Protege la carrera: un autosave de A que resuelve tras navegar a B no
-    // debe pisar el estado de B.
-    if (currentTokenRef.current === inviteToken) setConfig(data);
-  }, setSaveError);
+  const { autoSaveTimerRef } = useAutoSave(
+    hasStoredConfig,
+    inviteToken,
+    formData,
+    config,
+    setSaveMessage,
+    isSavingRef,
+    (data) => {
+      // Protege la carrera: un autosave de A que resuelve tras navegar a B no
+      // debe pisar el estado de B.
+      if (currentTokenRef.current === inviteToken) setConfig(data);
+    },
+    setSaveError,
+  );
 
   const onFirstSaveCallbacksRef = useRef<(() => void)[]>([]);
 
@@ -82,13 +101,14 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
   const trackVisit = useCallback(async (token: string) => {
     // Solo se cuenta una visita por invitación (no por cambio de ruta).
-    if (!token || trackedRef.current === token) { return; }
+    if (!token || trackedRef.current === token) {
+      return;
+    }
     trackedRef.current = token;
 
     try {
       const ref = invitationDocRef(token);
       await updateDoc(ref, { _visits: increment(1) });
-
     } catch (e) {
       console.warn("[app]", "[ConfigProvider]", "trackVisit failed:", getFirestoreErrorMessage(e));
     }
@@ -99,11 +119,12 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     const isInvite = new URLSearchParams(window.location.search).has("invitar");
     const pathParts = location.pathname.split("/").filter(Boolean);
     const firstSegment = pathParts[0] || "";
-    const isTokenRoute = TOKEN_ROUTE_REGEX.test(firstSegment) && !["setup", "admin", "superadmin-login", "superadmin"].includes(firstSegment);
+    const isTokenRoute =
+      TOKEN_ROUTE_REGEX.test(firstSegment) &&
+      !["setup", "admin", "superadmin-login", "superadmin"].includes(firstSegment);
     const isAdminRoute = pathParts[1] === "setup" || pathParts[1] === "admin";
 
     if (hash && hash.length > 1) {
-
       try {
         const parsed = decodeInviteConfig(hash.slice(1));
         const hydrated = { ...defaultConfig, ...normalizeConfig(parsed) };
@@ -114,7 +135,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         setIsConfigLoading(false);
         return;
       } catch {
-
         if (isInvite) {
           setIsConfigLoading(false);
           setConfigLoadError(t("errors.invalidLink"));
@@ -124,20 +144,17 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     }
 
     if (isInvite && !isTokenRoute) {
-
       setIsConfigLoading(false);
       return;
     }
 
     if (isTokenRoute && inviteToken !== firstSegment) {
-
       setInviteToken(firstSegment);
       setIsConfigLoading(true);
       return;
     }
 
     if (!isAdminRoute && !isTokenRoute) {
-
       setIsConfigLoading(false);
       return;
     }
@@ -147,10 +164,12 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     const hydrateConfig = async () => {
       setConfigLoadError("");
       try {
-        if (!inviteToken) { ; setIsConfigLoading(false); return; }
+        if (!inviteToken) {
+          setIsConfigLoading(false);
+          return;
+        }
 
         if (inviteToken === loadedTokenRef.current && hasStoredConfig) {
-
           setIsConfigLoading(false);
           return;
         }
@@ -159,13 +178,16 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         // modo offline (no sujeto a consentimiento de cookies): se accede
         // directo a localStorage y se ignora si está bloqueado.
         const cached = (() => {
-          try { return localStorage.getItem(STORAGE_KEYS.inviteCache(inviteToken)); } catch { return null; }
+          try {
+            return localStorage.getItem(STORAGE_KEYS.inviteCache(inviteToken));
+          } catch {
+            return null;
+          }
         })();
         if (cached) {
           try {
             const parsed = JSON.parse(cached);
             if (parsed.data && parsed.cachedAt && Date.now() - parsed.cachedAt < INVITE_CACHE_TTL_MS) {
-
               const { resolveAllConfigImages } = await import("../lib/image-store");
               const resolved = await resolveAllConfigImages(inviteToken, parsed.data);
               for (const [key, url] of Object.entries(resolved)) {
@@ -189,21 +211,22 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
               // de visitas del panel (antes se saltaba con el return).
               setVisitCount(typeof parsed.data._visits === "number" ? parsed.data._visits : 0);
               const segments = location.pathname.split("/").filter(Boolean);
-              if (segments.length === 1 && TOKEN_ROUTE_REGEX.test(segments[0]!) && safeGetItem("wedin_cookie_consent") === "accepted") {
+              if (
+                segments.length === 1 &&
+                TOKEN_ROUTE_REGEX.test(segments[0]!) &&
+                safeGetItem("wedin_cookie_consent") === "accepted"
+              ) {
                 trackVisit(inviteToken);
               }
               return;
             } else {
-
             }
-          } catch { ; }
+          } catch {}
         } else {
-
         }
 
         const snapshot = await withTimeout(getDoc(invitationDocRef(inviteToken)), 25000, "load timeout");
         if (!snapshot.exists()) {
-
           setHasStoredConfig(false);
           setConfig(defaultConfig);
           setFormData(defaultConfig);
@@ -214,14 +237,15 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         // Se captura el bankInfo CIFRADO (antes de descifrar) para guardarlo
         // en la caché: el cache-hit podrá descifrarlo sin consultar Firestore.
         const bankInfoEncrypted = parsed.bankInfo;
-        if (parsed.bankInfo) { ; parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken); }
+        if (parsed.bankInfo) {
+          parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
+        }
         const { resolveAllConfigImages } = await import("../lib/image-store");
         const resolved = await resolveAllConfigImages(inviteToken, parsed);
         for (const [key, url] of Object.entries(resolved)) {
           if (url) (parsed as Record<string, unknown>)[key] = url;
         }
         {
-
           const { loadAudio } = await import("../lib/music-store");
           const audio = await loadAudio(inviteToken);
           if (audio?.url) {
@@ -242,7 +266,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
             STORAGE_KEYS.inviteCache(inviteToken),
             JSON.stringify({ data: cacheSafe, bankInfoEncrypted: bankInfoEncrypted || null, cachedAt: Date.now() }),
           );
-        } catch { /* almacenamiento no disponible */ }
+        } catch {
+          /* almacenamiento no disponible */
+        }
         setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);
         setHasStoredConfig(true);
         loadedTokenRef.current = inviteToken;
@@ -251,7 +277,11 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         // guard solo miraba el primer segmento y el admin se contaba a sí
         // mismo).
         const segments = location.pathname.split("/").filter(Boolean);
-        if (segments.length === 1 && TOKEN_ROUTE_REGEX.test(segments[0]!) && safeGetItem("wedin_cookie_consent") === "accepted") {
+        if (
+          segments.length === 1 &&
+          TOKEN_ROUTE_REGEX.test(segments[0]!) &&
+          safeGetItem("wedin_cookie_consent") === "accepted"
+        ) {
           trackVisit(inviteToken);
         }
       } catch (e) {
@@ -260,7 +290,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           setConfigLoadError(getFirestoreErrorMessage(e, t));
         }
       } finally {
-
         setIsConfigLoading(false);
       }
     };
@@ -268,13 +297,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   }, [location.pathname, location.hash, inviteToken, hasStoredConfig, trackVisit, t]);
 
   const reloadConfig = useCallback(async () => {
-
-    if (!inviteToken) { ; return; }
+    if (!inviteToken) {
+      return;
+    }
     try {
       safeRemoveItem(STORAGE_KEYS.inviteCache(inviteToken));
       const snapshot = await withTimeout(getDoc(invitationDocRef(inviteToken)), 25000, "load timeout");
       if (!snapshot.exists()) {
-
         setHasStoredConfig(false);
         setConfig(defaultConfig);
         setFormData(defaultConfig);
@@ -307,123 +336,167 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     }
   }, [inviteToken, t, setSaveError]);
 
-  const handleSaveSetupCore = useCallback(async (event: React.FormEvent) => {
-    event.preventDefault();
+  const handleSaveSetupCore = useCallback(
+    async (event: React.FormEvent) => {
+      event.preventDefault();
 
-    if (autoSaveTimerRef.current) { ; clearTimeout(autoSaveTimerRef.current); }
-    if (isSavingRef.current) {
-
-      setSaveError(t("errors.alreadySaving"));
-      return;
-    }
-    setSaveError("");
-    setSaveMessage("");
-
-    const { sanitized, hiddenSet, errorKey, errorParams } = validateConfigForSave(formData, hasStoredConfig, maxAllowedYear);
-    if (errorKey) {
-      setSaveError(errorParams ? t(errorKey, errorParams) : t(errorKey));
-      return;
-    }
-
-    const payload = { ...defaultConfig, ...sanitized } as InvitationConfig;
-
-    // Desactiva automáticamente las secciones habilitadas sin contenido:
-    // se añaden a hiddenSections (mantiene válido el orden) y se informa.
-    const orderSections = (formData.sectionOrder || "").split(",").filter(Boolean);
-    const alreadyHidden = new Set((formData.hiddenSections || "").split(",").filter(Boolean));
-    const emptyEnabled = orderSections.filter((s) => !alreadyHidden.has(s) && !sectionHasContent(s, formData));
-
-    let deactivatedMsg: string | null = null;
-    if (emptyEnabled.length > 0) {
-      const nextHidden = [...alreadyHidden, ...emptyEnabled].join(",");
-      payload.hiddenSections = nextHidden;
-      updateFormField("hiddenSections", nextHidden);
-      deactivatedMsg = t("errors.sectionsDeactivated", { sections: emptyEnabled.join(", ") });
-    }
-
-    if (hiddenSet.has("details") && hasStoredConfig) {
-      payload.weddingDay = config.weddingDay;
-      payload.weddingMonth = config.weddingMonth;
-      payload.weddingYear = config.weddingYear;
-      payload.weddingHour = config.weddingHour;
-      payload.weddingMinute = config.weddingMinute;
-    }
-
-    isSavingRef.current = true;
-    setIsSaving(true);
-
-    try {
-      if (payload.bankInfo) { ; payload.bankInfo = await encrypt(payload.bankInfo, inviteToken); }
-      // Migrate any data-URL image fields to configImages subcollection
-      const { saveConfigImage } = await import("../lib/image-store");
-      const originalImages: Record<string, string> = {};
-      for (const imageId of ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"]) {
-        const val = payload[imageId];
-        if (typeof val === "string" && val.startsWith("data:")) {
-
-          originalImages[imageId] = val;
-          payload[imageId] = await saveConfigImage(inviteToken, imageId, val);
-        }
+      if (autoSaveTimerRef.current) {
+        clearTimeout(autoSaveTimerRef.current);
       }
-      delete (payload as { musicFile?: string }).musicFile;
-      payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
+      if (isSavingRef.current) {
+        setSaveError(t("errors.alreadySaving"));
+        return;
+      }
+      setSaveError("");
+      setSaveMessage("");
 
-      await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
+      const { sanitized, hiddenSet, errorKey, errorParams } = validateConfigForSave(
+        formData,
+        hasStoredConfig,
+        maxAllowedYear,
+      );
+      if (errorKey) {
+        setSaveError(errorParams ? t(errorKey, errorParams) : t(errorKey));
+        return;
+      }
 
-      // Invalida la caché de invitación: sin esto, un guardado y recarga
-      // inmediata servía el estado pre-guardado durante el TTL de 2 min.
-      try { localStorage.removeItem(STORAGE_KEYS.inviteCache(inviteToken)); } catch { }
+      const payload = { ...defaultConfig, ...sanitized } as InvitationConfig;
 
-      // Crea el documento grupo de RSVP de la invitación (tope anti-spam) si no existe.
-      // Con reintento ante fallos transitorios: sin contador, el primer RSVP
-      // fallaría con un error genérico (antes el fallo se tragaba en silencio).
+      // Desactiva automáticamente las secciones habilitadas sin contenido:
+      // se añaden a hiddenSections (mantiene válido el orden) y se informa.
+      const orderSections = (formData.sectionOrder || "").split(",").filter(Boolean);
+      const alreadyHidden = new Set((formData.hiddenSections || "").split(",").filter(Boolean));
+      const emptyEnabled = orderSections.filter((s) => !alreadyHidden.has(s) && !sectionHasContent(s, formData));
+
+      let deactivatedMsg: string | null = null;
+      if (emptyEnabled.length > 0) {
+        const nextHidden = [...alreadyHidden, ...emptyEnabled].join(",");
+        payload.hiddenSections = nextHidden;
+        updateFormField("hiddenSections", nextHidden);
+        deactivatedMsg = t("errors.sectionsDeactivated", { sections: emptyEnabled.join(", ") });
+      }
+
+      if (hiddenSet.has("details") && hasStoredConfig) {
+        payload.weddingDay = config.weddingDay;
+        payload.weddingMonth = config.weddingMonth;
+        payload.weddingYear = config.weddingYear;
+        payload.weddingHour = config.weddingHour;
+        payload.weddingMinute = config.weddingMinute;
+      }
+
+      isSavingRef.current = true;
+      setIsSaving(true);
+
       try {
-        const groupRef = doc(db, "rsvpResponses", inviteToken);
-        const groupSnap = await getDoc(groupRef);
-        if (!groupSnap.exists()) {
-          await withWriteRetry(() => setDoc(groupRef, { count: 0 }));
+        if (payload.bankInfo) {
+          payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
         }
-      } catch (counterErr) {
-        console.error("[app]", "[ConfigProvider]", "RSVP counter create failed", { error: counterErr });
-        setSaveError(t("errors.rsvpCounterFailed"));
+        // Migrate any data-URL image fields to configImages subcollection
+        const { saveConfigImage } = await import("../lib/image-store");
+        const originalImages: Record<string, string> = {};
+        for (const imageId of ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"]) {
+          const val = payload[imageId];
+          if (typeof val === "string" && val.startsWith("data:")) {
+            originalImages[imageId] = val;
+            payload[imageId] = await saveConfigImage(inviteToken, imageId, val);
+          }
+        }
+        delete (payload as { musicFile?: string }).musicFile;
+        payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
+
+        await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
+
+        // Invalida la caché de invitación: sin esto, un guardado y recarga
+        // inmediata servía el estado pre-guardado durante el TTL de 2 min.
+        try {
+          localStorage.removeItem(STORAGE_KEYS.inviteCache(inviteToken));
+        } catch {}
+
+        // Crea el documento grupo de RSVP de la invitación (tope anti-spam) si no existe.
+        // Con reintento ante fallos transitorios: sin contador, el primer RSVP
+        // fallaría con un error genérico (antes el fallo se tragaba en silencio).
+        try {
+          const groupRef = doc(db, "rsvpResponses", inviteToken);
+          const groupSnap = await getDoc(groupRef);
+          if (!groupSnap.exists()) {
+            await withWriteRetry(() => setDoc(groupRef, { count: 0 }));
+          }
+        } catch (counterErr) {
+          console.error("[app]", "[ConfigProvider]", "RSVP counter create failed", { error: counterErr });
+          setSaveError(t("errors.rsvpCounterFailed"));
+        }
+
+        // Crea los contadores anti-spam de las subcolecciones sociales
+        // (_counters/notes, songs, gifts, rides). Igual que rsvpResponses:
+        // sin contador, la regla permite escribir y lo crea el cliente en el
+        // primer documento (merge+increment), pero inicializarlos aquí hace
+        // que el tope aplique desde el primer guardado de la invitación.
+        try {
+          const counterRefs = ["notes", "songs", "gifts", "rides"].map((name) =>
+            doc(db, "invitations", inviteToken, "_counters", name),
+          );
+          const counterSnaps = await Promise.all(counterRefs.map((ref) => getDoc(ref)));
+          await Promise.all(
+            counterSnaps.map(async (snap, i) => {
+              if (!snap.exists()) {
+                await withWriteRetry(() => setDoc(counterRefs[i]!, { count: 0 }));
+              }
+            }),
+          );
+        } catch (counterErr) {
+          console.error("[app]", "[ConfigProvider]", "social counters create failed", { error: counterErr });
+        }
+
+        if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
+        // Restore data URLs in memory for the current session
+        for (const [k, v] of Object.entries(originalImages)) {
+          payload[k] = v;
+        }
+        // El musicFile se persiste en la subcolección audio (chunks), no en el
+        // documento: se restaura en memoria para que el editor no quede vacío.
+        const musicFileValue = (formData as Record<string, unknown>).musicFile;
+        setConfig(musicFileValue ? { ...payload, musicFile: musicFileValue as string } : payload);
+        setFormData(musicFileValue ? { ...payload, musicFile: musicFileValue as string } : payload);
+        setHasStoredConfig(true);
+
+        for (const cb of onFirstSaveCallbacksRef.current) cb();
+        // Solo deben ejecutarse UNA vez (tras el primer guardado). Se vacía la
+        // lista para que un remount del proveedor (StrictMode, lazy) no acumule
+        // duplicados que se dispararían en cada guardado posterior.
+        onFirstSaveCallbacksRef.current = [];
+
+        setSaveMessage(deactivatedMsg || t("errors.configSaved"));
+      } catch (e) {
+        console.error("[app]", "[ConfigProvider]", "save error", { error: e });
+        // Un permission-denied al guardar suele significar sesión expirada o
+        // token no verificado: se avisa de forma útil en vez del genérico.
+        const code = (e as { code?: string })?.code;
+        setSaveError(code === "permission-denied" ? t("errors.saveSessionExpired") : getFirestoreErrorMessage(e, t));
+      } finally {
+        isSavingRef.current = false;
+        setIsSaving(false);
       }
-
-      if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
-      // Restore data URLs in memory for the current session
-      for (const [k, v] of Object.entries(originalImages)) {
-        payload[k] = v;
-      }
-      // El musicFile se persiste en la subcolección audio (chunks), no en el
-      // documento: se restaura en memoria para que el editor no quede vacío.
-      const musicFileValue = (formData as Record<string, unknown>).musicFile;
-      setConfig(musicFileValue ? { ...payload, musicFile: musicFileValue as string } : payload);
-      setFormData(musicFileValue ? { ...payload, musicFile: musicFileValue as string } : payload);
-      setHasStoredConfig(true);
-
-      for (const cb of onFirstSaveCallbacksRef.current) cb();
-      // Solo deben ejecutarse UNA vez (tras el primer guardado). Se vacía la
-      // lista para que un remount del proveedor (StrictMode, lazy) no acumule
-      // duplicados que se dispararían en cada guardado posterior.
-      onFirstSaveCallbacksRef.current = [];
-
-      setSaveMessage(deactivatedMsg || t("errors.configSaved"));
-    } catch (e) {
-      console.error("[app]", "[ConfigProvider]", "save error", { error: e });
-      // Un permission-denied al guardar suele significar sesión expirada o
-      // token no verificado: se avisa de forma útil en vez del genérico.
-      const code = (e as { code?: string })?.code;
-      setSaveError(code === "permission-denied" ? t("errors.saveSessionExpired") : getFirestoreErrorMessage(e, t));
-    } finally {
-
-      isSavingRef.current = false;
-      setIsSaving(false);
-    }
-  }, [hasStoredConfig, formData, maxAllowedYear, inviteToken, config, autoSaveTimerRef, isSavingRef, t, setSaveError, setSaveMessage, updateFormField]);
+    },
+    [
+      hasStoredConfig,
+      formData,
+      maxAllowedYear,
+      inviteToken,
+      config,
+      autoSaveTimerRef,
+      isSavingRef,
+      t,
+      setSaveError,
+      setSaveMessage,
+      updateFormField,
+    ],
+  );
 
   const handleDeleteInvitation = useCallback(async () => {
-
     if (!inviteToken) return;
-    if (!window.confirm(t("errors.deleteConfirm"))) { ; return; }
+    if (!window.confirm(t("errors.deleteConfirm"))) {
+      return;
+    }
     try {
       const snap = await getDocs(rsvpByInviteRef(inviteToken));
       const batch = writeBatch(db);
@@ -444,7 +517,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       try {
         const storedToken = safeGetItem(STORAGE_KEYS.setupToken(inviteToken), sessionStorage);
         if (storedToken) await deleteSetupTokenRecord(storedToken);
-      } catch { /* el registro se borrará en la limpieza del superadmin */ }
+      } catch {
+        /* el registro se borrará en la limpieza del superadmin */
+      }
       safeRemoveItem(STORAGE_KEYS.inviteCache(inviteToken));
       safeRemoveItem(STORAGE_KEYS.audio(inviteToken));
       clearSession();
@@ -456,29 +531,56 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     }
   }, [inviteToken, navigate, t, setSaveError]);
 
-  const configValue = useMemo(() => ({
-    config, formData, hasStoredConfig, isConfigLoading, configLoadError, inviteToken,
-    maxAllowedYear,
-    formattedDate, formattedTime, calendarLink, visitCount,
-    updateFormField, reloadConfig, handleSaveSetup: handleSaveSetupCore,
-    handleDayChange, handleTimeChange, handleTimeBlur,
-    handleYearChange, handleDeleteInvitation,
-    setHasStoredConfig, registerOnFirstSave, isSaving,
-  }), [
-    config, formData, hasStoredConfig, isConfigLoading, configLoadError, inviteToken,
-    maxAllowedYear,
-    formattedDate, formattedTime, calendarLink, visitCount,
-    updateFormField, reloadConfig, handleSaveSetupCore,
-    handleDayChange, handleTimeChange, handleTimeBlur,
-    handleYearChange, handleDeleteInvitation,
-    setHasStoredConfig, registerOnFirstSave, isSaving,
-  ]);
-
-  return (
-    <ConfigContext.Provider value={configValue}>
-      {children}
-    </ConfigContext.Provider>
+  const configValue = useMemo(
+    () => ({
+      config,
+      formData,
+      hasStoredConfig,
+      isConfigLoading,
+      configLoadError,
+      inviteToken,
+      maxAllowedYear,
+      formattedDate,
+      formattedTime,
+      calendarLink,
+      visitCount,
+      updateFormField,
+      reloadConfig,
+      handleSaveSetup: handleSaveSetupCore,
+      handleDayChange,
+      handleTimeChange,
+      handleTimeBlur,
+      handleYearChange,
+      handleDeleteInvitation,
+      setHasStoredConfig,
+      registerOnFirstSave,
+      isSaving,
+    }),
+    [
+      config,
+      formData,
+      hasStoredConfig,
+      isConfigLoading,
+      configLoadError,
+      inviteToken,
+      maxAllowedYear,
+      formattedDate,
+      formattedTime,
+      calendarLink,
+      visitCount,
+      updateFormField,
+      reloadConfig,
+      handleSaveSetupCore,
+      handleDayChange,
+      handleTimeChange,
+      handleTimeBlur,
+      handleYearChange,
+      handleDeleteInvitation,
+      setHasStoredConfig,
+      registerOnFirstSave,
+      isSaving,
+    ],
   );
+
+  return <ConfigContext.Provider value={configValue}>{children}</ConfigContext.Provider>;
 }
-
-

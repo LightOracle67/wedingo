@@ -23,9 +23,7 @@ const NotFoundPage = () => {
             {t("notFound.title")}
           </p>
           <div className="my-6 story-divider" />
-          <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">
-            {t("notFound.text")}
-          </p>
+          <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">{t("notFound.text")}</p>
           <div className="flex flex-wrap justify-center gap-3 mt-8">
             <Link to="/" className="text-sm setup-button">
               {t("notFound.homeLink")}

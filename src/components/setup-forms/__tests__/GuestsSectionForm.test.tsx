@@ -6,7 +6,13 @@ vi.mock("react-i18next", () => ({
 }));
 
 const mockUpdateFormField = vi.fn();
-const mockFormData = vi.hoisted(() => ({ kidsPolicyEnabled: "true", weddingDressCodeEnabled: "true", accommodationURLEnabled: "true",}) as Record<string, string | undefined>);
+const mockFormData = vi.hoisted(
+  () =>
+    ({ kidsPolicyEnabled: "true", weddingDressCodeEnabled: "true", accommodationURLEnabled: "true" }) as Record<
+      string,
+      string | undefined
+    >,
+);
 
 vi.mock("../../../contexts", () => ({
   useConfig: () => ({
@@ -158,7 +164,10 @@ describe("GuestsSectionForm", () => {
   it("adds a dish to the fixed menu editor", () => {
     render(<GuestsSectionForm />);
     fireEvent.click(screen.getByRole("button", { name: /setup.menuAddDish/ }));
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuTextoDishes", JSON.stringify([{ order: "entrante", text: "" }]));
+    expect(mockUpdateFormField).toHaveBeenCalledWith(
+      "menuTextoDishes",
+      JSON.stringify([{ order: "entrante", text: "" }]),
+    );
   });
 
   it("edits the dish text in the fixed menu editor", () => {
@@ -166,7 +175,10 @@ describe("GuestsSectionForm", () => {
     render(<GuestsSectionForm />);
     const input = screen.getByPlaceholderText("setup.menuDishPlaceholder");
     fireEvent.change(input, { target: { value: "Lubina al horno" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuTextoDishes", JSON.stringify([{ order: "primero", text: "Lubina al horno" }]));
+    expect(mockUpdateFormField).toHaveBeenCalledWith(
+      "menuTextoDishes",
+      JSON.stringify([{ order: "primero", text: "Lubina al horno" }]),
+    );
   });
 
   it("removes a dish from the fixed menu editor", () => {
@@ -177,7 +189,10 @@ describe("GuestsSectionForm", () => {
     render(<GuestsSectionForm />);
     const removeButtons = screen.getAllByLabelText("setup.menuRemoveDish");
     fireEvent.click(removeButtons[0]!);
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuTextoDishes", JSON.stringify([{ order: "postre", text: "Tarta" }]));
+    expect(mockUpdateFormField).toHaveBeenCalledWith(
+      "menuTextoDishes",
+      JSON.stringify([{ order: "postre", text: "Tarta" }]),
+    );
   });
 
   it("changes the dish order in the fixed menu editor", () => {
@@ -185,7 +200,10 @@ describe("GuestsSectionForm", () => {
     render(<GuestsSectionForm />);
     const select = screen.getByLabelText("setup.menuOrderLabel") as HTMLSelectElement;
     fireEvent.change(select, { target: { value: "postre" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuTextoDishes", JSON.stringify([{ order: "postre", text: "Ensalada" }]));
+    expect(mockUpdateFormField).toHaveBeenCalledWith(
+      "menuTextoDishes",
+      JSON.stringify([{ order: "postre", text: "Ensalada" }]),
+    );
   });
 
   it("edits a dish of a selectable menu option", () => {
@@ -194,14 +212,20 @@ describe("GuestsSectionForm", () => {
     render(<GuestsSectionForm />);
     const inputs = screen.getAllByPlaceholderText("setup.menuDishPlaceholder");
     fireEvent.change(inputs[0]!, { target: { value: "Solomillo" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("menuCarneDishes", JSON.stringify([{ order: "primero", text: "Solomillo" }]));
+    expect(mockUpdateFormField).toHaveBeenCalledWith(
+      "menuCarneDishes",
+      JSON.stringify([{ order: "primero", text: "Solomillo" }]),
+    );
   });
 
   it("calls updateFormField on accommodation URL change", () => {
     render(<GuestsSectionForm />);
     const input = screen.getByPlaceholderText("setup.accommodationUrlPlaceholder");
     fireEvent.change(input, { target: { value: "https://www.google.com/maps/place/Hotel+Sol/@40.41,-3.70,17z" } });
-    expect(mockUpdateFormField).toHaveBeenCalledWith("accommodationURL", "https://www.google.com/maps/place/Hotel+Sol/@40.41,-3.70,17z");
+    expect(mockUpdateFormField).toHaveBeenCalledWith(
+      "accommodationURL",
+      "https://www.google.com/maps/place/Hotel+Sol/@40.41,-3.70,17z",
+    );
   });
 
   it("marks an invalid accommodation URL as error", () => {

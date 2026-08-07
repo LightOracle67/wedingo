@@ -10,7 +10,23 @@ interface ScheduleEvent {
   emoji?: string;
 }
 
-const InfoSection = memo(function InfoSection({ style, className, weddingScheduleEvents, weddingDressCode, weddingDressCodeCustom, kidsPolicy, cornerDecoration }: { style?: React.CSSProperties; className?: string; weddingScheduleEvents?: string; weddingDressCode?: string; weddingDressCodeCustom?: string; kidsPolicy?: string; cornerDecoration?: string }) {
+const InfoSection = memo(function InfoSection({
+  style,
+  className,
+  weddingScheduleEvents,
+  weddingDressCode,
+  weddingDressCodeCustom,
+  kidsPolicy,
+  cornerDecoration,
+}: {
+  style?: React.CSSProperties;
+  className?: string;
+  weddingScheduleEvents?: string;
+  weddingDressCode?: string;
+  weddingDressCodeCustom?: string;
+  kidsPolicy?: string;
+  cornerDecoration?: string;
+}) {
   const { t } = useTranslation();
   const kidsLabel = kidsPolicy && KNOWN_KIDS.has(kidsPolicy) ? t("kidsPolicy.options." + kidsPolicy) : kidsPolicy;
 
@@ -20,7 +36,13 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
         const parsed = JSON.parse(weddingScheduleEvents);
         if (Array.isArray(parsed)) {
           return parsed
-            .filter((e): e is ScheduleEvent => !!e && typeof e === "object" && typeof (e as ScheduleEvent).time === "string" && typeof (e as ScheduleEvent).text === "string")
+            .filter(
+              (e): e is ScheduleEvent =>
+                !!e &&
+                typeof e === "object" &&
+                typeof (e as ScheduleEvent).time === "string" &&
+                typeof (e as ScheduleEvent).text === "string",
+            )
             .slice(0, 10);
         }
       } catch {
@@ -47,7 +69,9 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
                 {events.map((ev, i) => (
                   <div key={i} className="flex gap-3 items-center">
                     {ev.emoji ? (
-                      <span className="shrink-0 schedule-emoji" aria-hidden="true">{ev.emoji}</span>
+                      <span className="shrink-0 schedule-emoji" aria-hidden="true">
+                        {ev.emoji}
+                      </span>
                     ) : null}
                     {ev.time ? (
                       <span className="shrink-0 font-semibold text-boda-texto tabular-nums">{ev.time}</span>
@@ -58,26 +82,28 @@ const InfoSection = memo(function InfoSection({ style, className, weddingSchedul
               </div>
             </>
           ) : null}
-        <>
-          <div className="story-divider" />
-          <p className="story-eyebrow">{t("info.dressCodeLabel")}</p>
-          <h3 className="story-subheading">{t("info.dressCodeTitle")}</h3>
-          {weddingDressCode ? (
-            <p className="story-copy">{weddingDressCode === "Otro" && weddingDressCodeCustom ? weddingDressCodeCustom : weddingDressCode}</p>
-          ) : (
-            <p className="story-copy" style={{ fontStyle: "italic" }}>
-              {t("info.dressCodePending")}
-            </p>
-          )}
-        </>
-        {kidsPolicy ? (
           <>
             <div className="story-divider" />
-            <p className="story-eyebrow">{t("info.kidsLabel")}</p>
-            <h3 className="story-subheading">{t("info.kidsTitle")}</h3>
-            <p className="story-copy whitespace-pre-line">{kidsLabel}</p>
+            <p className="story-eyebrow">{t("info.dressCodeLabel")}</p>
+            <h3 className="story-subheading">{t("info.dressCodeTitle")}</h3>
+            {weddingDressCode ? (
+              <p className="story-copy">
+                {weddingDressCode === "Otro" && weddingDressCodeCustom ? weddingDressCodeCustom : weddingDressCode}
+              </p>
+            ) : (
+              <p className="story-copy" style={{ fontStyle: "italic" }}>
+                {t("info.dressCodePending")}
+              </p>
+            )}
           </>
-        ) : null}
+          {kidsPolicy ? (
+            <>
+              <div className="story-divider" />
+              <p className="story-eyebrow">{t("info.kidsLabel")}</p>
+              <h3 className="story-subheading">{t("info.kidsTitle")}</h3>
+              <p className="story-copy whitespace-pre-line">{kidsLabel}</p>
+            </>
+          ) : null}
         </div>
       </div>
     </section>

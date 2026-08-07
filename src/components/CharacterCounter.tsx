@@ -7,7 +7,9 @@ function getSegmenter(): Intl.Segmenter | null {
   if (graphemeSegmenter === null && typeof Intl !== "undefined" && "Segmenter" in Intl) {
     try {
       graphemeSegmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
-    } catch { /* no soportado: fallback a code points */ }
+    } catch {
+      /* no soportado: fallback a code points */
+    }
   }
   return graphemeSegmenter;
 }
@@ -22,7 +24,9 @@ const CharacterCounter = memo(function CharacterCounter({ value, max }: { value:
     if (segmenter) {
       try {
         return Array.from(segmenter.segment(text)).length;
-      } catch { /* fallback abajo */ }
+      } catch {
+        /* fallback abajo */
+      }
     }
     return [...text].length;
   })();

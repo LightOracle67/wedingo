@@ -154,7 +154,11 @@ describe("normalizeConfig", () => {
   });
 
   it("normalizes transportDepartures: caps at 4 and sanitizes entries", () => {
-    const five = Array.from({ length: 5 }, (_, i) => ({ type: i % 2 ? "taxi" : "bus", time: `1${i}:00`, url: `https://www.google.com/maps/place/A${i}` }));
+    const five = Array.from({ length: 5 }, (_, i) => ({
+      type: i % 2 ? "taxi" : "bus",
+      time: `1${i}:00`,
+      url: `https://www.google.com/maps/place/A${i}`,
+    }));
     const result = normalizeConfig({ transportDepartures: JSON.stringify(five) });
     const parsed = JSON.parse(result.transportDepartures);
     expect(parsed).toHaveLength(4);
@@ -167,7 +171,10 @@ describe("normalizeConfig", () => {
   });
 
   it("normalizes weddingScheduleEvents: caps at 10 and sanitizes entries", () => {
-    const twelve = Array.from({ length: 12 }, (_, i) => ({ time: `${String(i).padStart(2, "0")}:00`, text: `Evento ${i}` }));
+    const twelve = Array.from({ length: 12 }, (_, i) => ({
+      time: `${String(i).padStart(2, "0")}:00`,
+      text: `Evento ${i}`,
+    }));
     const result = normalizeConfig({ weddingScheduleEvents: JSON.stringify(twelve) });
     const parsed = JSON.parse(result.weddingScheduleEvents);
     expect(parsed).toHaveLength(10);
@@ -175,7 +182,9 @@ describe("normalizeConfig", () => {
   });
 
   it("truncates schedule event text to 60 characters", () => {
-    const result = normalizeConfig({ weddingScheduleEvents: JSON.stringify([{ time: "12:00", text: "x".repeat(80) }]) });
+    const result = normalizeConfig({
+      weddingScheduleEvents: JSON.stringify([{ time: "12:00", text: "x".repeat(80) }]),
+    });
     const parsed = JSON.parse(result.weddingScheduleEvents);
     expect(parsed[0].text).toHaveLength(60);
   });
@@ -200,7 +209,12 @@ describe("normalizeConfig", () => {
 
   it("drops malformed menu dish entries and empty dish texts", () => {
     const result = normalizeConfig({
-      menuTextoDishes: JSON.stringify([null, 42, { order: "primero", text: 7 }, { order: "primero", text: "  Plato  " }]),
+      menuTextoDishes: JSON.stringify([
+        null,
+        42,
+        { order: "primero", text: 7 },
+        { order: "primero", text: "  Plato  " },
+      ]),
     });
     const parsed = JSON.parse(result.menuTextoDishes);
     // La fila con texto no string (7 → "") y vacía se descarta: un menú con
@@ -235,11 +249,18 @@ describe("normalizeConfig", () => {
       transportDepartures: JSON.stringify([null, 42, { type: "taxi", time: 5, url: 7 }, { time: "10:00", url: "" }]),
     });
     const parsed = JSON.parse(result.transportDepartures);
-    expect(parsed).toEqual([{ type: "taxi", time: "", url: "" }, { type: "bus", time: "10:00", url: "" }]);
+    expect(parsed).toEqual([
+      { type: "taxi", time: "", url: "" },
+      { type: "bus", time: "10:00", url: "" },
+    ]);
   });
 
   it("normalizes the map display modes and defaults to iframe", () => {
-    const result = normalizeConfig({ detailsMapMode: "name", transportMapMode: "hidden", accommodationMapMode: "bogus" });
+    const result = normalizeConfig({
+      detailsMapMode: "name",
+      transportMapMode: "hidden",
+      accommodationMapMode: "bogus",
+    });
     expect(result.detailsMapMode).toBe("name");
     expect(result.transportMapMode).toBe("hidden");
     expect(result.accommodationMapMode).toBe("iframe");
@@ -249,14 +270,25 @@ describe("normalizeConfig", () => {
 describe("normalizeConfig social fields", () => {
   it("keeps and normalizes the new social fields", () => {
     const result = normalizeConfig({
-      firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "enero", weddingYear: "2026",
-      weddingHour: "1", weddingMinute: "1", theme: "golden",
-      rsvpDeadline: "2026-06-01", rsvpDeadlineEnabled: "true",
-      reactionsEnabled: "true", giftsListEnabled: "true",
+      firstName: "A",
+      secondName: "B",
+      weddingDay: "1",
+      weddingMonth: "enero",
+      weddingYear: "2026",
+      weddingHour: "1",
+      weddingMinute: "1",
+      theme: "golden",
+      rsvpDeadline: "2026-06-01",
+      rsvpDeadlineEnabled: "true",
+      reactionsEnabled: "true",
+      giftsListEnabled: "true",
       giftList: JSON.stringify([{ id: "g1", name: "Tostadora", description: "Roja" }]),
-      rideShareEnabled: "true", welcomeVideo: "https://example.com/v.mp4",
+      rideShareEnabled: "true",
+      welcomeVideo: "https://example.com/v.mp4",
       welcomeVideoEnabled: "true",
-      notesEnabled: "true", musicPollEnabled: "true", triviaEnabled: "true",
+      notesEnabled: "true",
+      musicPollEnabled: "true",
+      triviaEnabled: "true",
       trivia: JSON.stringify([{ q: "¿Dónde?", a: "En el parque" }]),
     });
     expect(result.rsvpDeadline).toBe("2026-06-01");

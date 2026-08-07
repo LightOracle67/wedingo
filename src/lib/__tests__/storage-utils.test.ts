@@ -3,12 +3,24 @@ import { clearExpiredCache } from "../storage-utils";
 
 const store: Record<string, string> = {};
 const mock = {
-  get length() { return Object.keys(store).length; },
-  key(index: number) { return Object.keys(store)[index] ?? null; },
-  getItem(key: string) { return Object.hasOwn(store, key) ? store[key] : null; },
-  setItem(key: string, value: string) { store[key] = String(value); },
-  removeItem(key: string) { delete store[key]; },
-  clear() { Object.keys(store).forEach((k) => delete store[k]); },
+  get length() {
+    return Object.keys(store).length;
+  },
+  key(index: number) {
+    return Object.keys(store)[index] ?? null;
+  },
+  getItem(key: string) {
+    return Object.hasOwn(store, key) ? store[key] : null;
+  },
+  setItem(key: string, value: string) {
+    store[key] = String(value);
+  },
+  removeItem(key: string) {
+    delete store[key];
+  },
+  clear() {
+    Object.keys(store).forEach((k) => delete store[k]);
+  },
 };
 
 Object.defineProperty(globalThis, "localStorage", { value: mock, writable: true, configurable: true });
@@ -43,7 +55,9 @@ describe("storage-utils", () => {
   it("clearExpiredCache handles localStorage errors", () => {
     localStorage.setItem("wedin_invite_cache_test", JSON.stringify({ cachedAt: 0 }));
     const origKey = localStorage.key;
-    localStorage.key = vi.fn(() => { throw new Error("fail"); });
+    localStorage.key = vi.fn(() => {
+      throw new Error("fail");
+    });
     const result = clearExpiredCache();
     localStorage.key = origKey;
     expect(result).toBe(0);

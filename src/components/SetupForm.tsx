@@ -37,7 +37,6 @@ import "../styles/admin.css";
  * @returns {JSX.Element} Formulario con todas las secciones de configuración.
  */
 export default function SetupForm({ prefix = "" }) {
-
   const { t } = useTranslation();
   // Ref al <form> real: .setup-form también lo usan los div contenedores de
   // SetupPage/AdminPage, por lo que un querySelector podía devolver un <div>
@@ -45,7 +44,6 @@ export default function SetupForm({ prefix = "" }) {
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
-
     const handler = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
         if (formRef.current) formRef.current.requestSubmit();
@@ -53,15 +51,11 @@ export default function SetupForm({ prefix = "" }) {
     };
     window.addEventListener("keydown", handler);
     return () => {
-
       window.removeEventListener("keydown", handler);
     };
   }, []);
   // ─── Extrae estado y handlers del contexto global (hooks granulares) ──
-  const {
-    formData, updateFormField, handleSaveSetup,
-    hasStoredConfig, isSaving,
-  } = useConfig();
+  const { formData, updateFormField, handleSaveSetup, hasStoredConfig, isSaving } = useConfig();
   const { isTokenVerified, isRestoringSession } = useAuth();
   const { saveMessage, saveError, setLegalModal } = useAppUI();
   const { addToast } = useToast();
@@ -72,7 +66,6 @@ export default function SetupForm({ prefix = "" }) {
   // ── Muestra mensajes de éxito/error como toasts ─────────
   useEffect(() => {
     if (saveMessage) {
-
       addToast("success", saveMessage);
     }
   }, [saveMessage, addToast]);
@@ -117,110 +110,111 @@ export default function SetupForm({ prefix = "" }) {
       />
 
       {/* ── Sección de acceso (solo visible antes del primer guardado) ── */}
-      
+
       {isRestoringSession ? null : !isTokenVerified ? (
-      <CollapsibleSection
-        title={t("setup.accessSectionTitle")}
-        hint={t("setup.accessSectionHint")}
-        defaultOpen
-      >
-        <AccessSectionForm prefix={prefix} tokenAcknowledged={tokenAcknowledged} onTokenAcknowledge={setTokenAcknowledged} />
-      </CollapsibleSection>
+        <CollapsibleSection title={t("setup.accessSectionTitle")} hint={t("setup.accessSectionHint")} defaultOpen>
+          <AccessSectionForm
+            prefix={prefix}
+            tokenAcknowledged={tokenAcknowledged}
+            onTokenAcknowledge={setTokenAcknowledged}
+          />
+        </CollapsibleSection>
       ) : null}
 
       {/* ── Sección de portada: nombres, padrinos, mensaje, tema, fondo ── */}
-      
-      <CollapsibleSection
-        title={t("setup.coverSectionTitle")}
-        hint={t("setup.coverSectionHint")}
-        defaultOpen
-      >
+
+      <CollapsibleSection title={t("setup.coverSectionTitle")} hint={t("setup.coverSectionHint")} defaultOpen>
         <CoverSectionForm prefix={prefix} />
       </CollapsibleSection>
 
       {/* ── Sección de fecha y lugar (si no está oculta) ── */}
-      
+
       {!hiddenSet.has("details") ? (
-      <CollapsibleSection
-        title={t("setup.dateSectionTitle")}
-        hint={t("setup.dateSectionHint")}
-      >
-        <DateSectionForm prefix={prefix} />
-      </CollapsibleSection>
+        <CollapsibleSection title={t("setup.dateSectionTitle")} hint={t("setup.dateSectionHint")}>
+          <DateSectionForm prefix={prefix} />
+        </CollapsibleSection>
       ) : null}
 
       {/* ── Sección de transporte (si no está oculta) ── */}
-      
+
       {!hiddenSet.has("transport") ? (
-      <CollapsibleSection
-        title={t("setup.transportSectionTitle")}
-        hint={t("setup.transportSectionHint")}
-      >
-        <TransportSectionForm prefix={prefix} />
-      </CollapsibleSection>
+        <CollapsibleSection title={t("setup.transportSectionTitle")} hint={t("setup.transportSectionHint")}>
+          <TransportSectionForm prefix={prefix} />
+        </CollapsibleSection>
       ) : null}
 
       {/* ── Sección de invitados y menú (si no está oculta) ── */}
-      
+
       {!hiddenSet.has("info") ? (
-      <CollapsibleSection
-        title={t("setup.guestsSectionTitle")}
-        hint={t("setup.guestsSectionHint")}
-      >
-        <GuestsSectionForm prefix={prefix} />
-      </CollapsibleSection>
+        <CollapsibleSection title={t("setup.guestsSectionTitle")} hint={t("setup.guestsSectionHint")}>
+          <GuestsSectionForm prefix={prefix} />
+        </CollapsibleSection>
       ) : null}
 
       {/* ── Sección de historia de los novios (si no está oculta) ── */}
-      
+
       {!hiddenSet.has("story") ? (
-      <CollapsibleSection
-        title={t("setup.storySectionTitle")}
-        hint={t("setup.storySectionHint")}
-      >
-        <StorySectionForm prefix={prefix} />
-      </CollapsibleSection>
+        <CollapsibleSection title={t("setup.storySectionTitle")} hint={t("setup.storySectionHint")}>
+          <StorySectionForm prefix={prefix} />
+        </CollapsibleSection>
       ) : null}
 
       {/* ── Sección de regalos (si no está oculta) ── */}
-      
+
       {!hiddenSet.has("gifts") ? (
-      <CollapsibleSection
-        title={t("setup.giftsSectionTitle")}
-        hint={t("setup.giftsSectionHint")}
-      >
-        <GiftsSectionForm prefix={prefix} />
-      </CollapsibleSection>
+        <CollapsibleSection title={t("setup.giftsSectionTitle")} hint={t("setup.giftsSectionHint")}>
+          <GiftsSectionForm prefix={prefix} />
+        </CollapsibleSection>
       ) : null}
 
-      <CollapsibleSection
-        title={t("setup.extrasSectionTitle")}
-        hint={t("setup.extrasSectionHint")}
-      >
+      <CollapsibleSection title={t("setup.extrasSectionTitle")} hint={t("setup.extrasSectionHint")}>
         <ExtrasSectionForm prefix={prefix} />
       </CollapsibleSection>
 
       {/* ── Sección de galería de fotos (si no está oculta) ── */}
-      
+
       {!hiddenSet.has("gallery") ? (
-      <CollapsibleSection
-        title={t("setup.gallerySectionTitle")}
-        hint={t("setup.gallerySectionHint")}
-      >
-        <GallerySectionForm />
-      </CollapsibleSection>
+        <CollapsibleSection title={t("setup.gallerySectionTitle")} hint={t("setup.gallerySectionHint")}>
+          <GallerySectionForm />
+        </CollapsibleSection>
       ) : null}
 
       {/* ── Consentimiento de privacidad (solo primer guardado) ── */}
       {!hasStoredConfig ? (
         <label className="setup-checkbox-label" htmlFor="privacyConsent">
-          <input id="privacyConsent" type="checkbox" checked={formData._privacyConsent === "true"} onChange={(e) => updateFormField("_privacyConsent", e.target.checked ? "true" : "false")} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
-          <Trans i18nKey="setup.privacyConsent" components={{ link: <button type="button" onClick={() => setLegalModal("privacy")} style={{ color: "var(--setup-accent)", textDecoration: "underline", background: "none", border: "none", cursor: "pointer", fontFamily: "inherit", fontSize: "inherit", padding: 0 }} /> }} />
+          <input
+            id="privacyConsent"
+            type="checkbox"
+            checked={formData._privacyConsent === "true"}
+            onChange={(e) => updateFormField("_privacyConsent", e.target.checked ? "true" : "false")}
+            style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+          />
+          <Trans
+            i18nKey="setup.privacyConsent"
+            components={{
+              link: (
+                <button
+                  type="button"
+                  onClick={() => setLegalModal("privacy")}
+                  style={{
+                    color: "var(--setup-accent)",
+                    textDecoration: "underline",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    fontSize: "inherit",
+                    padding: 0,
+                  }}
+                />
+              ),
+            }}
+          />
         </label>
       ) : null}
 
       {/* ── Botón de guardar ── */}
-      
+
       <div className="setup-actions setup-actions--sticky" style={{ background: 0, WebkitBackdropFilter: "unset" }}>
         <button className="setup-button" type="submit" disabled={(!hasStoredConfig && !tokenAcknowledged) || isSaving}>
           {isSaving ? t("common.saving") : t("common.save")}

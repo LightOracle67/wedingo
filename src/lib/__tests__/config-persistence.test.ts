@@ -77,10 +77,13 @@ describe("Persistencia de la configuración", () => {
       ["cornerDecoration", "__cfgimg:cornerDecoration"],
       ["hiddenSections", "gifts"],
       ["menuEnabled", "true"],
-      ["menuCarneDishes", JSON.stringify([
-        { order: "entrante", text: "Ensalada" },
-        { order: "segundo", text: "Solomillo" },
-      ])],
+      [
+        "menuCarneDishes",
+        JSON.stringify([
+          { order: "entrante", text: "Ensalada" },
+          { order: "segundo", text: "Solomillo" },
+        ]),
+      ],
     ];
     for (const [key, expected] of checks) {
       expect(payload[key as keyof typeof payload], `payload.${key}`).toBe(expected);
@@ -103,21 +106,25 @@ describe("Persistencia de la configuración", () => {
     // Simula lo que hace reloadConfig: docData -> normalizeConfig -> hydrated
     const docData = normalizeConfig(FULL_CONFIG);
     const hydrated = { ...defaultConfig, ...docData };
-    expect(hydrated.transportDepartures).toBe(JSON.stringify([
-      { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
-      { type: "taxi", time: "14:30", url: "" },
-    ]));
+    expect(hydrated.transportDepartures).toBe(
+      JSON.stringify([
+        { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
+        { type: "taxi", time: "14:30", url: "" },
+      ]),
+    );
     const parsedDepartures = JSON.parse(hydrated.transportDepartures);
     expect(parsedDepartures).toHaveLength(2);
     expect(parsedDepartures[0].type).toBe("bus");
     expect(parsedDepartures[1].type).toBe("taxi");
     expect(hydrated.sectionOrder.split(",")).toHaveLength(STORY_SECTION_ORDER.length);
     expect(hydrated.couplePhoto).toBe("__cfgimg:couplePhoto");
-    expect(hydrated.menuTextoDishes).toBe(JSON.stringify([
-      { order: "entrante", text: "Ensalada" },
-      { order: "primero", text: "Lubina" },
-      { order: "postre", text: "Tarta" },
-    ]));
+    expect(hydrated.menuTextoDishes).toBe(
+      JSON.stringify([
+        { order: "entrante", text: "Ensalada" },
+        { order: "primero", text: "Lubina" },
+        { order: "postre", text: "Tarta" },
+      ]),
+    );
     const parsedDishes = JSON.parse(hydrated.menuCarneDishes);
     expect(parsedDishes).toHaveLength(2);
     expect(parsedDishes[1]).toEqual({ order: "segundo", text: "Solomillo" });

@@ -24,7 +24,15 @@ interface ModalProps {
  * ChangelogModal, LegalModal, DataRequestModal y LanguageSwitcher: la
  * semántica ARIA y el comportamiento de teclado convergen en un único punto.
  */
-const Modal = memo(function Modal({ title, onClose, closeLabel, children, style, overlayClassName, hideTitle }: ModalProps) {
+const Modal = memo(function Modal({
+  title,
+  onClose,
+  closeLabel,
+  children,
+  style,
+  overlayClassName,
+  hideTitle,
+}: ModalProps) {
   const [closing, setClosing] = useState(false);
   const modalRef = useFocusTrap<HTMLDivElement>(true);
 
@@ -52,7 +60,9 @@ const Modal = memo(function Modal({ title, onClose, closeLabel, children, style,
         onClick={(e) => e.stopPropagation()}
         style={style}
       >
-        <button className="modal-close" onClick={handleClose} aria-label={closeLabel}>&times;</button>
+        <button className="modal-close" onClick={handleClose} aria-label={closeLabel}>
+          &times;
+        </button>
         {!hideTitle ? <p className="modal-title">{title}</p> : null}
         {children}
       </div>

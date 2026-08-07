@@ -33,13 +33,7 @@ describe("AccommodationSection", () => {
   });
 
   it("shows pending state for an invalid URL", () => {
-    render(
-      <AccommodationSection
-        className="test-class"
-        style={{}}
-        accommodationURL="https://maps.app.goo.gl/abc"
-      />,
-    );
+    render(<AccommodationSection className="test-class" style={{}} accommodationURL="https://maps.app.goo.gl/abc" />);
     expect(screen.getByText("accommodation.pending")).toBeDefined();
     expect(screen.queryByTestId("map-embed")).toBeNull();
   });

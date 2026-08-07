@@ -2,7 +2,12 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { parseSectionOrder as parseOrder, parseHidden } from "../lib/section-utils";
 
-export default function SectionOrderEditor({ value, onChange, hiddenValue, onHiddenChange }: {
+export default function SectionOrderEditor({
+  value,
+  onChange,
+  hiddenValue,
+  onHiddenChange,
+}: {
   value: string;
   onChange: (key: string, val: string) => void;
   hiddenValue: string;
@@ -12,82 +17,110 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
   const [items, setItems] = useState(() => parseOrder(value));
   const [hidden, setHidden] = useState(() => parseHidden(hiddenValue));
 
-  useEffect(() => { setItems(parseOrder(value)); }, [value]);
-  useEffect(() => { setHidden(parseHidden(hiddenValue)); }, [hiddenValue]);
+  useEffect(() => {
+    setItems(parseOrder(value));
+  }, [value]);
+  useEffect(() => {
+    setHidden(parseHidden(hiddenValue));
+  }, [hiddenValue]);
   const [dragIndex, setDragIndex] = useState<number | null>(null);
   const [overIndex, setOverIndex] = useState<number | null>(null);
 
-  const sync = useCallback((next: string[]) => {
-    setItems(next);
-    onChange("sectionOrder", next.join(","));
-  }, [onChange]);
+  const sync = useCallback(
+    (next: string[]) => {
+      setItems(next);
+      onChange("sectionOrder", next.join(","));
+    },
+    [onChange],
+  );
 
-  const syncHidden = useCallback((next: Set<string>) => {
-    setHidden(next);
-    onHiddenChange("hiddenSections", [...next].join(","));
-  }, [onHiddenChange]);
+  const syncHidden = useCallback(
+    (next: Set<string>) => {
+      setHidden(next);
+      onHiddenChange("hiddenSections", [...next].join(","));
+    },
+    [onHiddenChange],
+  );
 
-  const toggleVisibility = useCallback((key: string) => {
-    const next = new Set(hidden);
-    if (next.has(key)) next.delete(key);
-    else next.add(key);
-    syncHidden(next);
-  }, [hidden, syncHidden]);
+  const toggleVisibility = useCallback(
+    (key: string) => {
+      const next = new Set(hidden);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      syncHidden(next);
+    },
+    [hidden, syncHidden],
+  );
 
-  const handleDragStart = useCallback((e: React.DragEvent, index: number) => {
-    const key = items[index];
-    if (key === "hero" || key === "rsvp") return;
-    setDragIndex(index);
-    setOverIndex(null);
-    e.dataTransfer.effectAllowed = "move";
-    e.dataTransfer.setData("text/plain", String(index));
-  }, [items]);
+  const handleDragStart = useCallback(
+    (e: React.DragEvent, index: number) => {
+      const key = items[index];
+      if (key === "hero" || key === "rsvp") return;
+      setDragIndex(index);
+      setOverIndex(null);
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", String(index));
+    },
+    [items],
+  );
 
-  const handleDragEnter = useCallback((e: React.DragEvent, index: number) => {
-    e.preventDefault();
-    if (index !== overIndex) setOverIndex(index);
-  }, [overIndex]);
+  const handleDragEnter = useCallback(
+    (e: React.DragEvent, index: number) => {
+      e.preventDefault();
+      if (index !== overIndex) setOverIndex(index);
+    },
+    [overIndex],
+  );
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "move";
   }, []);
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    const from = dragIndex;
-    const to = overIndex;
-    setDragIndex(null);
-    setOverIndex(null);
-    if (from === null || to === null || from === to) return;
-    // No se puede soltar sobre la portada (primera) ni sobre o más allá del
-    // RSVP (último, siempre bloqueado al final).
-    if (to === 0 || to >= items.length - 1) return;
-    const next = [...items];
-    const moved = next.splice(from, 1)[0]!;
-    next.splice(to, 0, moved);
-    sync(next);
-  }, [dragIndex, overIndex, items, sync]);
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      const from = dragIndex;
+      const to = overIndex;
+      setDragIndex(null);
+      setOverIndex(null);
+      if (from === null || to === null || from === to) return;
+      // No se puede soltar sobre la portada (primera) ni sobre o más allá del
+      // RSVP (último, siempre bloqueado al final).
+      if (to === 0 || to >= items.length - 1) return;
+      const next = [...items];
+      const moved = next.splice(from, 1)[0]!;
+      next.splice(to, 0, moved);
+      sync(next);
+    },
+    [dragIndex, overIndex, items, sync],
+  );
 
   const handleDragEnd = useCallback(() => {
     setDragIndex(null);
     setOverIndex(null);
   }, []);
 
-  const moveUp = useCallback((index: number) => {
-    if (index <= 1) return;
-    const next = [...items];
-    [next[index - 1], next[index]] = [next[index]!, next[index - 1]!];
-    sync(next);
-  }, [items, sync]);
+  const moveUp = useCallback(
+    (index: number) => {
+      if (index <= 1) return;
+      const next = [...items];
+      [next[index - 1], next[index]] = [next[index]!, next[index - 1]!];
+      sync(next);
+    },
+    [items, sync],
+  );
 
-  const moveDown = useCallback((index: number) => {
-    // No se puede mover por debajo del penúltimo: el RSVP (último) está fijo.
-    if (index >= items.length - 2) return;
-    const next = [...items];
-    [next[index], next[index + 1]] = [next[index + 1]!, next[index]!];
-    sync(next);
-  }, [items, sync]);
+  const moveDown = useCallback(
+    (index: number) => {
+      // No se puede mover por debajo del penúltimo: el RSVP (último) está fijo.
+      if (index >= items.length - 2) return;
+      const next = [...items];
+      [next[index], next[index + 1]] = [next[index + 1]!, next[index]!];
+      sync(next);
+    },
+    [items, sync],
+  );
 
   const getDropIndicator = (index: number) => {
     if (index === 0 || index >= items.length - 1) return null;

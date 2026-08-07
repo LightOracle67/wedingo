@@ -48,7 +48,14 @@ describe("TransportSection", () => {
     const departures = JSON.stringify([
       { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
     ]);
-    render(<TransportSection {...baseProps} transportEnabled="bus" transportDepartures={departures} transportMapMode="name" />);
+    render(
+      <TransportSection
+        {...baseProps}
+        transportEnabled="bus"
+        transportDepartures={departures}
+        transportMapMode="name"
+      />,
+    );
     expect(screen.getByText(/12:00/)).toBeDefined();
     expect(screen.getByText("Plaza Mayor")).toBeDefined();
     expect(screen.queryByTestId("map-embed")).toBeNull();
@@ -58,7 +65,14 @@ describe("TransportSection", () => {
     const departures = JSON.stringify([
       { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
     ]);
-    render(<TransportSection {...baseProps} transportEnabled="bus" transportDepartures={departures} transportMapMode="hidden" />);
+    render(
+      <TransportSection
+        {...baseProps}
+        transportEnabled="bus"
+        transportDepartures={departures}
+        transportMapMode="hidden"
+      />,
+    );
     expect(screen.getByText("transport.optionBus")).toBeDefined();
     expect(screen.queryByText(/12:00/)).toBeNull();
     expect(screen.queryByText("Plaza Mayor")).toBeNull();

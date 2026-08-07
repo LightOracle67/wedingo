@@ -1,6 +1,19 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { writeBatch, deleteDoc, doc, getDoc, setDoc, getDocs, updateDoc, serverTimestamp, increment, onSnapshot, type QueryDocumentSnapshot, type DocumentData } from "firebase/firestore";
+import {
+  writeBatch,
+  deleteDoc,
+  doc,
+  getDoc,
+  setDoc,
+  getDocs,
+  updateDoc,
+  serverTimestamp,
+  increment,
+  onSnapshot,
+  type QueryDocumentSnapshot,
+  type DocumentData,
+} from "firebase/firestore";
 import { db, rsvpByInviteRef, rsvpResponseRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { computeAge } from "../lib/date-utils";
@@ -103,7 +116,8 @@ function stableGuestId(name: string): string {
   return (h >>> 0).toString(36);
 }
 
-function RsvpFormDefault(): RsvpFormData {  return {
+function RsvpFormDefault(): RsvpFormData {
+  return {
     guestName: "",
     attendance: "alone",
     companionCount: 0,
@@ -171,32 +185,33 @@ export function useRsvp(
    *  entre el hydrate inicial y el listener en vivo (onSnapshot).
    *  El descifrado se cachea por (inviteToken, docId): un documento ya
    *  procesado no se vuelve a descifrar en snapshots posteriores. */
-  const processRsvpSnapshot = useCallback(async (snapshot: { docs: QueryDocumentSnapshot<DocumentData>[] }) => {
-    const allDocs = await Promise.all(
-      snapshot.docs.map(async (entryDoc) => {
-        const data = entryDoc.data();
-        const submittedAt =
-          typeof data.submittedAt?.toDate === "function"
-            ? data.submittedAt.toDate().toISOString()
-            : typeof data.submittedAt === "string"
-              ? data.submittedAt
-              : data.submittedAt?.seconds
-                ? new Date(data.submittedAt.seconds * 1000).toISOString()
-                : new Date().toISOString();
+  const processRsvpSnapshot = useCallback(
+    async (snapshot: { docs: QueryDocumentSnapshot<DocumentData>[] }) => {
+      const allDocs = await Promise.all(
+        snapshot.docs.map(async (entryDoc) => {
+          const data = entryDoc.data();
+          const submittedAt =
+            typeof data.submittedAt?.toDate === "function"
+              ? data.submittedAt.toDate().toISOString()
+              : typeof data.submittedAt === "string"
+                ? data.submittedAt
+                : data.submittedAt?.seconds
+                  ? new Date(data.submittedAt.seconds * 1000).toISOString()
+                  : new Date().toISOString();
 
-        const cacheKey = `${inviteToken}|${entryDoc.id}`;
-        let decryptedDietaryInfo = typeof data.dietaryInfo === "string" ? data.dietaryInfo : "";
-        if (typeof data.dietaryInfo === "string" && data.dietaryInfo !== "") {
-          const cached = dietaryInfoCache.get(cacheKey);
-          if (cached !== undefined) {
-            decryptedDietaryInfo = cached;
-          } else {
-            decryptedDietaryInfo = await decrypt(data.dietaryInfo, inviteToken);
-            dietaryInfoCache.set(cacheKey, decryptedDietaryInfo);
+          const cacheKey = `${inviteToken}|${entryDoc.id}`;
+          let decryptedDietaryInfo = typeof data.dietaryInfo === "string" ? data.dietaryInfo : "";
+          if (typeof data.dietaryInfo === "string" && data.dietaryInfo !== "") {
+            const cached = dietaryInfoCache.get(cacheKey);
+            if (cached !== undefined) {
+              decryptedDietaryInfo = cached;
+            } else {
+              decryptedDietaryInfo = await decrypt(data.dietaryInfo, inviteToken);
+              dietaryInfoCache.set(cacheKey, decryptedDietaryInfo);
+            }
           }
-        }
 
-        const attendees = data.attendees || [];
+          const attendees = data.attendees || [];
 
           return {
             id: entryDoc.id,
@@ -205,7 +220,8 @@ export function useRsvp(
             attendance: data.attendance || "no",
             dietaryInfo: decryptedDietaryInfo,
             attendees,
-            companions: attendees.length > 0 ? attendees.length : (Number.isFinite(data.companions) ? data.companions : 0),
+            companions:
+              attendees.length > 0 ? attendees.length : Number.isFinite(data.companions) ? data.companions : 0,
             companionCount: data.companionCount || 0,
             companionNames: data.companionNames || [],
             companionMenus: data.companionMenus || [],
@@ -231,52 +247,54 @@ export function useRsvp(
             mainGuestDocId: data.mainGuestDocId || "",
             mainGuestName: data.mainGuestName || "",
           };
-      }),
-    );
+        }),
+      );
 
-    // Separate main entries and companion entries
-    const mainEntries = allDocs.filter((d) => d.rsvpType === "main" || (!d.rsvpType && !d.mainGuestDocId));
-    const companionEntries = allDocs.filter((d) => d.rsvpType === "companion" || d.mainGuestDocId);
+      // Separate main entries and companion entries
+      const mainEntries = allDocs.filter((d) => d.rsvpType === "main" || (!d.rsvpType && !d.mainGuestDocId));
+      const companionEntries = allDocs.filter((d) => d.rsvpType === "companion" || d.mainGuestDocId);
 
-    // Attach companion data to main entries and create individual companion entries
-    const companionAsEntries: RsvpEntryData[] = [];
-    for (const main of mainEntries) {
-      const linkedCompanions = companionEntries.filter((c) => c.mainGuestDocId === main.id);
-      if (linkedCompanions.length > 0) {
-        main.companions = linkedCompanions.length;
-        main.companionCount = linkedCompanions.length;
-        main.companionNames = linkedCompanions.map((c) => c.guestName);
-        main.companionMenus = linkedCompanions.map((c) => c.mealChoice);
-        main.companionTransportChoices = linkedCompanions.map((c) => c.transportChoice || "");
-        main.companionTransportModes = linkedCompanions.map((c) => c.transportMode || "own");
-        main.companionTransportTimes = linkedCompanions.map((c) => c.transportTime || "");
-        main.companionTransportPlaces = linkedCompanions.map((c) => c.transportPlace || "");
-        main.companionAllergies = linkedCompanions.map((c) => {
-          const parsed = parseDietaryInfo(c.dietaryInfo, !!c.mealChoice);
-          return [...parsed.dietarySelection, ...(parsed.dietaryOther ? [parsed.dietaryOther] : [])];
-        });
-        main.companionAllergiesOther = linkedCompanions.map((c) => c.allergiesOther || "");
-        main.companionDocIds = linkedCompanions.map((c) => c.id);
-        // Create individual companion entries for the attendance list
-        for (const comp of linkedCompanions) {
-          companionAsEntries.push({
-            ...comp,
-            // Override with normalized data from the main entry's context
-            companions: 0,
-            companionCount: 0,
-            companionNames: [],
-            companionMenus: [],
-            companionAllergies: [],
-            attendees: [],
+      // Attach companion data to main entries and create individual companion entries
+      const companionAsEntries: RsvpEntryData[] = [];
+      for (const main of mainEntries) {
+        const linkedCompanions = companionEntries.filter((c) => c.mainGuestDocId === main.id);
+        if (linkedCompanions.length > 0) {
+          main.companions = linkedCompanions.length;
+          main.companionCount = linkedCompanions.length;
+          main.companionNames = linkedCompanions.map((c) => c.guestName);
+          main.companionMenus = linkedCompanions.map((c) => c.mealChoice);
+          main.companionTransportChoices = linkedCompanions.map((c) => c.transportChoice || "");
+          main.companionTransportModes = linkedCompanions.map((c) => c.transportMode || "own");
+          main.companionTransportTimes = linkedCompanions.map((c) => c.transportTime || "");
+          main.companionTransportPlaces = linkedCompanions.map((c) => c.transportPlace || "");
+          main.companionAllergies = linkedCompanions.map((c) => {
+            const parsed = parseDietaryInfo(c.dietaryInfo, !!c.mealChoice);
+            return [...parsed.dietarySelection, ...(parsed.dietaryOther ? [parsed.dietaryOther] : [])];
           });
+          main.companionAllergiesOther = linkedCompanions.map((c) => c.allergiesOther || "");
+          main.companionDocIds = linkedCompanions.map((c) => c.id);
+          // Create individual companion entries for the attendance list
+          for (const comp of linkedCompanions) {
+            companionAsEntries.push({
+              ...comp,
+              // Override with normalized data from the main entry's context
+              companions: 0,
+              companionCount: 0,
+              companionNames: [],
+              companionMenus: [],
+              companionAllergies: [],
+              attendees: [],
+            });
+          }
         }
       }
-    }
 
-    return [...companionAsEntries, ...mainEntries].sort(
-      (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime(),
-    );
-  }, [inviteToken]);
+      return [...companionAsEntries, ...mainEntries].sort(
+        (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime(),
+      );
+    },
+    [inviteToken],
+  );
 
   useEffect(() => {
     // Al cambiar de invitación se descarta la caché de alergias descifradas
@@ -290,10 +308,10 @@ export function useRsvp(
 
     let cancelled = false;
 
-
-
     const hydrateRsvp = async () => {
-      if (!inviteToken) { return; }
+      if (!inviteToken) {
+        return;
+      }
 
       // Sin caché en sessionStorage: el admin siempre lee datos frescos de
       // Firestore (no se persisten alergias descifradas localmente).
@@ -327,14 +345,25 @@ export function useRsvp(
   useEffect(() => {
     if (!inviteToken || !canRead) return;
     let cancelled = false;
-    const unsub = onSnapshot(rsvpByInviteRef(inviteToken), (snap) => {
-      void processRsvpSnapshot(snap).then((entries) => {
-        if (!cancelled) setRsvpEntries(entries);
-      }).catch(() => { /* el siguiente snapshot reintenta */ });
-    }, (err) => {
-      console.error("[app]", "[useRsvp]", "live listen error", { error: err });
-    });
-    return () => { cancelled = true; unsub(); };
+    const unsub = onSnapshot(
+      rsvpByInviteRef(inviteToken),
+      (snap) => {
+        void processRsvpSnapshot(snap)
+          .then((entries) => {
+            if (!cancelled) setRsvpEntries(entries);
+          })
+          .catch(() => {
+            /* el siguiente snapshot reintenta */
+          });
+      },
+      (err) => {
+        console.error("[app]", "[useRsvp]", "live listen error", { error: err });
+      },
+    );
+    return () => {
+      cancelled = true;
+      unsub();
+    };
   }, [inviteToken, canRead, processRsvpSnapshot]);
 
   useEffect(() => {
@@ -352,7 +381,6 @@ export function useRsvp(
 
     if (match && match.rsvpType === "companion") {
       if (match.id !== prefillRef.current) {
-
         prefillRef.current = match.id;
         setAlreadySubmittedEntry(match);
         const parsed = parseDietaryInfo(match.dietaryInfo, !!match.mealChoice);
@@ -383,7 +411,6 @@ export function useRsvp(
           transportPlace: match.transportPlace || "",
         }));
       } else {
-
         setAlreadySubmittedEntry(match);
       }
       return;
@@ -391,7 +418,6 @@ export function useRsvp(
 
     if (match) {
       if (match.id !== prefillRef.current) {
-
         prefillRef.current = match.id;
         setAlreadySubmittedEntry(match);
         const companionCount = match.companionNames?.length || 0;
@@ -428,11 +454,9 @@ export function useRsvp(
           transportPlace: match.transportPlace || "",
         }));
       } else {
-
         setAlreadySubmittedEntry(match);
       }
     } else {
-
       setAlreadySubmittedEntry(null);
       prefillRef.current = null;
     }
@@ -446,7 +470,7 @@ export function useRsvp(
       setRsvpForm((current) => ({
         ...current,
         attendance: value as string,
-        companionCount: value === "no" ? 0 : (value === "alone" ? 0 : (current.companionCount || 1)),
+        companionCount: value === "no" ? 0 : value === "alone" ? 0 : current.companionCount || 1,
         companionNames: value === "no" || value === "alone" ? [] : current.companionNames,
         companionMenus: value === "no" || value === "alone" ? [] : current.companionMenus,
         companionAllergies: value === "no" || value === "alone" ? [] : current.companionAllergies,
@@ -488,7 +512,21 @@ export function useRsvp(
           transportTimes.push("");
           transportPlaces.push("");
         }
-        return { ...current, companionCount: count, companionNames: names, companionMenus: menus, companionAllergies: allergies, companionAllergiesOther: allergiesOther, companionBirthDates: birthDates, companionParentalConsents: parentalConsents, companionHealthConsents: healthConsents, companionTransportChoices: transportChoices, companionTransportModes: transportModes, companionTransportTimes: transportTimes, companionTransportPlaces: transportPlaces };
+        return {
+          ...current,
+          companionCount: count,
+          companionNames: names,
+          companionMenus: menus,
+          companionAllergies: allergies,
+          companionAllergiesOther: allergiesOther,
+          companionBirthDates: birthDates,
+          companionParentalConsents: parentalConsents,
+          companionHealthConsents: healthConsents,
+          companionTransportChoices: transportChoices,
+          companionTransportModes: transportModes,
+          companionTransportTimes: transportTimes,
+          companionTransportPlaces: transportPlaces,
+        };
       });
       return;
     }
@@ -561,185 +599,221 @@ export function useRsvp(
     setRsvpForm((current) => ({ ...current, [field]: value }));
   }, []);
 
-  const validateRsvpData = useCallback((data: RsvpFormData) => {
-    if (!data.guestName?.trim()) { return t("rsvp.validation.nameRequired"); }
-    if (!isValidFullName(data.guestName)) { return t("rsvp.validation.nameFullRequired"); }
-    if (data.attendance !== "no" && !data.birthDate) { return t("rsvp.validation.birthDateRequired"); }
-    if (data.attendance === "with" && data.companionCount > 0) {
-      for (let i = 0; i < data.companionCount; i++) {
-        if (!data.companionNames[i]?.trim()) { return t("rsvp.validation.nameRequired"); }
-        if (!isValidFullName(data.companionNames[i]!)) { return t("rsvp.validation.nameFullRequired"); }
-        if (!data.companionBirthDates?.[i]) { return t("rsvp.validation.birthDateRequired"); }
-        if (menuEnabled && !data.companionMenus?.[i]) { return t("rsvp.validation.menuRequired"); }
-        const compAge = computeAge(data.companionBirthDates[i]!);
-        if (compAge !== null && compAge < 14 && !data.companionParentalConsents?.[i]) { return t("rsvp.validation.ageUnder14"); }
-        const hasCompAllergies = (data.companionAllergies?.[i] || []).length > 0
-          || (data.companionAllergiesOther?.[i] || "").trim().length > 0;
-        if (hasCompAllergies && !data.companionHealthConsents?.[i]) { return t("rsvp.validation.healthConsentRequired"); }
+  const validateRsvpData = useCallback(
+    (data: RsvpFormData) => {
+      if (!data.guestName?.trim()) {
+        return t("rsvp.validation.nameRequired");
       }
-    }
-    if (data.attendance !== "no" && menuEnabled && !data.menuSelection) { return t("rsvp.validation.menuRequired"); }
-    if (!data.privacyConsent) { return t("rsvp.validation.privacyRequired"); }
-    if (data.attendance !== "no") {
-      const age = computeAge(data.birthDate);
-      if (age !== null && age < 14 && !data.parentalConsent) { return t("rsvp.validation.ageUnder14"); }
-      // Las alergias del campo libre (allergiesOther) también son datos de
-      // salud: requieren consentimiento explícito (GDPR art. 9).
-      const hasHealthData = (data.allergies && data.allergies.length > 0)
-        || (data.allergiesOther || "").trim().length > 0;
-      if (hasHealthData && !data.healthConsent) { return t("rsvp.validation.healthConsentRequired"); }
-    }
-
-    return null;
-  }, [t, menuEnabled]);
-
-  const submitRsvpData = useCallback(async (data: RsvpFormData) => {
-
-    // Copia defensiva: nunca se muta directamente el estado de React.
-    const form = {
-      ...data,
-      guestName: normalizeFullName(data.guestName),
-      companionNames: (data.companionNames || []).map(normalizeFullName),
-    };
-    const allergies = form.allergies || [];
-    // El texto libre de alergias (allergiesOther) es también dato de salud:
-    // se integra en el string cifrado para no almacenarlo en claro.
-    const other = (form.allergiesOther || "").trim();
-    const dietaryInfo = [allergies.filter(Boolean).join(" | "), other].filter(Boolean).join(" | ");
-    const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
-    const age = computeAge(form.birthDate);
-    const single = form.guestName.trim();
-    const now = new Date().toISOString();
-    const isAttending = form.attendance !== "no";
-    const companionCount = form.companionCount || 0;
-    const nowTimestamp = serverTimestamp();
-
-    // Id DETERMINISTA del nombre normalizado: un reintento tras un commit con
-    // red perdida sobrescribe el mismo doc en vez de crear un duplicado (el
-    // candado del submit solo evita el doble clic en el mismo tick).
-    const mainGuestId = `main_${stableGuestId(single)}`;
-    const mainGuestData = buildMainGuestData({
-      data: form,
-      isAttending,
-      companionCount,
-      single,
-      encryptedDietaryInfo,
-      age,
-      inviteToken,
-      nowTimestamp,
-    });
-
-    // Create companion docs with individual dietaryInfo (ids estables por
-    // índice, para que el retry no cree compañeros duplicados)
-    const companionDocIds: string[] = [];
-    const companionPayloads: Array<Record<string, unknown>> = [];
-    for (let i = 0; i < companionCount; i++) {
-      companionDocIds.push(`comp_${stableGuestId(single)}_${i}`);
-      const compAllergies = form.companionAllergies[i] || [];
-      const compDietaryInfo = compAllergies.filter(Boolean).join(" | ");
-      const encCompDietary = await encrypt(compDietaryInfo, inviteToken);
-      const compBirthDate = form.companionBirthDates?.[i] || "";
-      const compAge = computeAge(compBirthDate);
-      const companionData = buildCompanionData({
-        data: form,
-        i,
-        single,
-        mainGuestId,
-        encCompDietary,
-        compBirthDate,
-        compAge,
-        nowTimestamp,
-        inviteToken,
-      });
-      companionPayloads.push(companionData);
-    }
-
-    mainGuestData.companionDocIds = companionDocIds;
-
-    try {
-
-      // Contador por invitación: el documento grupo rsvpResponses/{inviteToken}
-      // guarda el contador (las reglas exigen que exista y esté por debajo de
-      // RSVP_MAX_RESPONSES) y se incrementa en el mismo lote para mantener el tope anti-spam.
-      const counterRef = doc(db, "rsvpResponses", inviteToken);
-      try {
-        const counterSnap = await getDoc(counterRef);
-        if (!counterSnap.exists()) {
-          await setDoc(counterRef, { count: 0 });
+      if (!isValidFullName(data.guestName)) {
+        return t("rsvp.validation.nameFullRequired");
+      }
+      if (data.attendance !== "no" && !data.birthDate) {
+        return t("rsvp.validation.birthDateRequired");
+      }
+      if (data.attendance === "with" && data.companionCount > 0) {
+        for (let i = 0; i < data.companionCount; i++) {
+          if (!data.companionNames[i]?.trim()) {
+            return t("rsvp.validation.nameRequired");
+          }
+          if (!isValidFullName(data.companionNames[i]!)) {
+            return t("rsvp.validation.nameFullRequired");
+          }
+          if (!data.companionBirthDates?.[i]) {
+            return t("rsvp.validation.birthDateRequired");
+          }
+          if (menuEnabled && !data.companionMenus?.[i]) {
+            return t("rsvp.validation.menuRequired");
+          }
+          const compAge = computeAge(data.companionBirthDates[i]!);
+          if (compAge !== null && compAge < 14 && !data.companionParentalConsents?.[i]) {
+            return t("rsvp.validation.ageUnder14");
+          }
+          const hasCompAllergies =
+            (data.companionAllergies?.[i] || []).length > 0 ||
+            (data.companionAllergiesOther?.[i] || "").trim().length > 0;
+          if (hasCompAllergies && !data.companionHealthConsents?.[i]) {
+            return t("rsvp.validation.healthConsentRequired");
+          }
         }
-      } catch (counterErr) {
-        console.error("[app]", "[useRsvp]", "RSVP counter setup failed", { error: counterErr });
+      }
+      if (data.attendance !== "no" && menuEnabled && !data.menuSelection) {
+        return t("rsvp.validation.menuRequired");
+      }
+      if (!data.privacyConsent) {
+        return t("rsvp.validation.privacyRequired");
+      }
+      if (data.attendance !== "no") {
+        const age = computeAge(data.birthDate);
+        if (age !== null && age < 14 && !data.parentalConsent) {
+          return t("rsvp.validation.ageUnder14");
+        }
+        // Las alergias del campo libre (allergiesOther) también son datos de
+        // salud: requieren consentimiento explícito (GDPR art. 9).
+        const hasHealthData =
+          (data.allergies && data.allergies.length > 0) || (data.allergiesOther || "").trim().length > 0;
+        if (hasHealthData && !data.healthConsent) {
+          return t("rsvp.validation.healthConsentRequired");
+        }
       }
 
-      const batch = writeBatch(db);
-      batch.set(rsvpResponseRef(inviteToken, mainGuestId), mainGuestData);
+      return null;
+    },
+    [t, menuEnabled],
+  );
+
+  const submitRsvpData = useCallback(
+    async (data: RsvpFormData) => {
+      // Copia defensiva: nunca se muta directamente el estado de React.
+      const form = {
+        ...data,
+        guestName: normalizeFullName(data.guestName),
+        companionNames: (data.companionNames || []).map(normalizeFullName),
+      };
+      const allergies = form.allergies || [];
+      // El texto libre de alergias (allergiesOther) es también dato de salud:
+      // se integra en el string cifrado para no almacenarlo en claro.
+      const other = (form.allergiesOther || "").trim();
+      const dietaryInfo = [allergies.filter(Boolean).join(" | "), other].filter(Boolean).join(" | ");
+      const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
+      const age = computeAge(form.birthDate);
+      const single = form.guestName.trim();
+      const now = new Date().toISOString();
+      const isAttending = form.attendance !== "no";
+      const companionCount = form.companionCount || 0;
+      const nowTimestamp = serverTimestamp();
+
+      // Id DETERMINISTA del nombre normalizado: un reintento tras un commit con
+      // red perdida sobrescribe el mismo doc en vez de crear un duplicado (el
+      // candado del submit solo evita el doble clic en el mismo tick).
+      const mainGuestId = `main_${stableGuestId(single)}`;
+      const mainGuestData = buildMainGuestData({
+        data: form,
+        isAttending,
+        companionCount,
+        single,
+        encryptedDietaryInfo,
+        age,
+        inviteToken,
+        nowTimestamp,
+      });
+
+      // Create companion docs with individual dietaryInfo (ids estables por
+      // índice, para que el retry no cree compañeros duplicados)
+      const companionDocIds: string[] = [];
+      const companionPayloads: Array<Record<string, unknown>> = [];
       for (let i = 0; i < companionCount; i++) {
-        batch.set(rsvpResponseRef(inviteToken, companionDocIds[i]!), companionPayloads[i]);
+        companionDocIds.push(`comp_${stableGuestId(single)}_${i}`);
+        const compAllergies = form.companionAllergies[i] || [];
+        const compDietaryInfo = compAllergies.filter(Boolean).join(" | ");
+        const encCompDietary = await encrypt(compDietaryInfo, inviteToken);
+        const compBirthDate = form.companionBirthDates?.[i] || "";
+        const compAge = computeAge(compBirthDate);
+        const companionData = buildCompanionData({
+          data: form,
+          i,
+          single,
+          mainGuestId,
+          encCompDietary,
+          compBirthDate,
+          compAge,
+          nowTimestamp,
+          inviteToken,
+        });
+        companionPayloads.push(companionData);
       }
-      // Incremento atómico: dos invitados a la vez ya no pisan el contador
-      // (el set con un valor leído perdía un envío completo por carrera).
-      batch.update(counterRef, { count: increment(1) });
-      await withWriteRetry(() => batch.commit());
 
-    } catch (err) {
-      console.error("[app]", "[useRsvp]", "RSVP batch write failed:", err);
-      // El tope anti-spam (RSVP_MAX_RESPONSES) lo aplican las reglas en el
-      // increment del contador: se traduce como permission-denied en el lote.
-      // Se distingue del resto de fallos para dar un aviso claro en vez del
-      // genérico (antes el invitado veía "algo salió mal" sin explicación).
-      const code = err && typeof err === "object" && "code" in err ? String((err as Record<string, unknown>).code) : "";
-      throw new Error(code === "permission-denied" ? t("rsvp.limitReached") : t("rsvp.saveError"));
-    }
+      mainGuestData.companionDocIds = companionDocIds;
 
-    const mainEntry: RsvpEntryData = {
-      id: mainGuestId,
-      rsvpType: "main",
-      guestName: single,
-      attendance: isAttending ? "yes" : "no",
-      dietaryInfo,
-      attendees: [],
-      companions: companionCount,
-      companionCount,
-      companionNames: mainGuestData.companionNames as string[],
-      companionMenus: mainGuestData.companionMenus as string[],
-      companionAllergies: mainGuestData.companionAllergies as string[][],
-      companionAllergiesOther: mainGuestData.companionAllergiesOther as string[],
-      allergiesOther: mainGuestData.allergiesOther as string,
-      mealChoice: (mainGuestData.mealChoice as string) || "",
-      guestNames: "",
-      note: "",
-      submittedAt: now,
-      transportChoice: (mainGuestData.transportChoice as string) || "",
-      transportMode: (mainGuestData.transportMode as string) || "",
-      transportTime: (mainGuestData.transportTime as string) || "",
-      transportPlace: (mainGuestData.transportPlace as string) || "",
-      companionTransportChoices: mainGuestData.companionTransportChoices as string[],
-      companionTransportModes: mainGuestData.companionTransportModes as string[],
-      companionTransportTimes: mainGuestData.companionTransportTimes as string[],
-      companionTransportPlaces: mainGuestData.companionTransportPlaces as string[],
-      companionDocIds,
-    };
+      try {
+        // Contador por invitación: el documento grupo rsvpResponses/{inviteToken}
+        // guarda el contador (las reglas exigen que exista y esté por debajo de
+        // RSVP_MAX_RESPONSES) y se incrementa en el mismo lote para mantener el tope anti-spam.
+        const counterRef = doc(db, "rsvpResponses", inviteToken);
+        try {
+          const counterSnap = await getDoc(counterRef);
+          if (!counterSnap.exists()) {
+            await setDoc(counterRef, { count: 0 });
+          }
+        } catch (counterErr) {
+          console.error("[app]", "[useRsvp]", "RSVP counter setup failed", { error: counterErr });
+        }
 
-    setRsvpEntries((current) => [mainEntry, ...current]);
-    setRsvpMessage(
-      isAttending
-        ? t("rsvp.successAttending", { name: single })
-        : t("rsvp.successNotAttending", { name: single }),
-    );
-    // Analítica del envío (solo si hay consentimiento).
-    try {
-      const { trackEvent } = await import("../lib/analytics");
-      trackEvent("rsvp_submit", { attendance: isAttending ? "yes" : "no" });
-    } catch { }
-    setRsvpForm(RsvpFormDefault());
-    setHasSubmitted(true);
-    setAlreadySubmittedEntry(null);
-    prefillRef.current = null;
-    // Invalida la caché para que la próxima visita refleje el nuevo estado.
-    try { sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken)); } catch { }
-  }, [inviteToken, t]);
+        const batch = writeBatch(db);
+        batch.set(rsvpResponseRef(inviteToken, mainGuestId), mainGuestData);
+        for (let i = 0; i < companionCount; i++) {
+          batch.set(rsvpResponseRef(inviteToken, companionDocIds[i]!), companionPayloads[i]);
+        }
+        // Incremento atómico: dos invitados a la vez ya no pisan el contador
+        // (el set con un valor leído perdía un envío completo por carrera).
+        batch.update(counterRef, { count: increment(1) });
+        await withWriteRetry(() => batch.commit());
+      } catch (err) {
+        console.error("[app]", "[useRsvp]", "RSVP batch write failed:", err);
+        // El tope anti-spam (RSVP_MAX_RESPONSES) lo aplican las reglas en el
+        // increment del contador: se traduce como permission-denied en el lote.
+        // Se distingue del resto de fallos para dar un aviso claro en vez del
+        // genérico (antes el invitado veía "algo salió mal" sin explicación).
+        const code =
+          err && typeof err === "object" && "code" in err ? String((err as Record<string, unknown>).code) : "";
+        throw new Error(code === "permission-denied" ? t("rsvp.limitReached") : t("rsvp.saveError"));
+      }
 
-  const { submitting, submitError, handleSubmit: submitViaHook, resetError } = useRsvpSubmit({
+      const mainEntry: RsvpEntryData = {
+        id: mainGuestId,
+        rsvpType: "main",
+        guestName: single,
+        attendance: isAttending ? "yes" : "no",
+        dietaryInfo,
+        attendees: [],
+        companions: companionCount,
+        companionCount,
+        companionNames: mainGuestData.companionNames as string[],
+        companionMenus: mainGuestData.companionMenus as string[],
+        companionAllergies: mainGuestData.companionAllergies as string[][],
+        companionAllergiesOther: mainGuestData.companionAllergiesOther as string[],
+        allergiesOther: mainGuestData.allergiesOther as string,
+        mealChoice: (mainGuestData.mealChoice as string) || "",
+        guestNames: "",
+        note: "",
+        submittedAt: now,
+        transportChoice: (mainGuestData.transportChoice as string) || "",
+        transportMode: (mainGuestData.transportMode as string) || "",
+        transportTime: (mainGuestData.transportTime as string) || "",
+        transportPlace: (mainGuestData.transportPlace as string) || "",
+        companionTransportChoices: mainGuestData.companionTransportChoices as string[],
+        companionTransportModes: mainGuestData.companionTransportModes as string[],
+        companionTransportTimes: mainGuestData.companionTransportTimes as string[],
+        companionTransportPlaces: mainGuestData.companionTransportPlaces as string[],
+        companionDocIds,
+      };
+
+      setRsvpEntries((current) => [mainEntry, ...current]);
+      setRsvpMessage(
+        isAttending ? t("rsvp.successAttending", { name: single }) : t("rsvp.successNotAttending", { name: single }),
+      );
+      // Analítica del envío (solo si hay consentimiento).
+      try {
+        const { trackEvent } = await import("../lib/analytics");
+        trackEvent("rsvp_submit", { attendance: isAttending ? "yes" : "no" });
+      } catch {}
+      setRsvpForm(RsvpFormDefault());
+      setHasSubmitted(true);
+      setAlreadySubmittedEntry(null);
+      prefillRef.current = null;
+      // Invalida la caché para que la próxima visita refleje el nuevo estado.
+      try {
+        sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken));
+      } catch {}
+    },
+    [inviteToken, t],
+  );
+
+  const {
+    submitting,
+    submitError,
+    handleSubmit: submitViaHook,
+    resetError,
+  } = useRsvpSubmit({
     token: inviteToken,
     onSubmit: submitRsvpData as unknown as (data: Record<string, unknown>) => Promise<void>,
     validate: validateRsvpData as unknown as (data: Record<string, unknown>) => string | null,
@@ -749,17 +823,21 @@ export function useRsvp(
   const isRsvpSubmitting = submitting;
   const feedbackMessage = submitError || rsvpMessage;
 
-  const handleRsvpSubmit = useCallback((event: React.FormEvent) => {
-    event.preventDefault();
+  const handleRsvpSubmit = useCallback(
+    (event: React.FormEvent) => {
+      event.preventDefault();
 
-    if (submitting) return;
-    submitViaHook(rsvpForm as unknown as Record<string, unknown>);
-  }, [submitting, submitViaHook, rsvpForm]);
+      if (submitting) return;
+      submitViaHook(rsvpForm as unknown as Record<string, unknown>);
+    },
+    [submitting, submitViaHook, rsvpForm],
+  );
 
   const handleDeleteRsvp = useCallback(async () => {
-
     if (!alreadySubmittedEntry?.id || deletingRef.current) return;
-    if (!window.confirm(t("rsvp.withdrawConfirm"))) { return; }
+    if (!window.confirm(t("rsvp.withdrawConfirm"))) {
+      return;
+    }
     deletingRef.current = true;
     try {
       const batch = writeBatch(db);
@@ -777,8 +855,9 @@ export function useRsvp(
       setAlreadySubmittedEntry(null);
       prefillRef.current = null;
       setHasSubmitted(false);
-      try { sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken)); } catch { }
-
+      try {
+        sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken));
+      } catch {}
     } catch (err) {
       console.error("[app]", "[useRsvp]", "withdraw error", { error: err });
       setRsvpMessage(t("rsvp.withdrawError"));
@@ -787,46 +866,53 @@ export function useRsvp(
     }
   }, [alreadySubmittedEntry, t, inviteToken]);
 
-  const handleDeleteRsvpEntries = useCallback(async (ids: string[]) => {
-
-    if (!ids.length || deletingRef.current) return;
-    if (!window.confirm(t("attendance.deleteSelectedConfirm", { count: ids.length }))) { return; }
-    deletingRef.current = true;
-    try {
-      const batch = writeBatch(db);
-      for (const id of ids) {
-        batch.delete(rsvpResponseRef(inviteToken, id));
+  const handleDeleteRsvpEntries = useCallback(
+    async (ids: string[]) => {
+      if (!ids.length || deletingRef.current) return;
+      if (!window.confirm(t("attendance.deleteSelectedConfirm", { count: ids.length }))) {
+        return;
       }
-      batch.update(doc(db, "rsvpResponses", inviteToken), { count: increment(-ids.length) });
-      await withWriteRetry(() => batch.commit());
-      setRsvpEntries((current) => current.filter((e) => !ids.includes(e.id)));
-      setAdminMessage(t("attendance.deleteSelectedSuccess", { count: ids.length }));
-      setAdminMessageType("success");
-
-    } catch (err) {
-      console.error("[app]", "[useRsvp]", "delete selected error", { error: err });
-      setAdminMessage(t("attendance.deleteSelectedError"));
-      setAdminMessageType("error");
-    } finally {
-      deletingRef.current = false;
-    }
-  }, [setAdminMessage, setAdminMessageType, t, inviteToken]);
+      deletingRef.current = true;
+      try {
+        const batch = writeBatch(db);
+        for (const id of ids) {
+          batch.delete(rsvpResponseRef(inviteToken, id));
+        }
+        batch.update(doc(db, "rsvpResponses", inviteToken), { count: increment(-ids.length) });
+        await withWriteRetry(() => batch.commit());
+        setRsvpEntries((current) => current.filter((e) => !ids.includes(e.id)));
+        setAdminMessage(t("attendance.deleteSelectedSuccess", { count: ids.length }));
+        setAdminMessageType("success");
+      } catch (err) {
+        console.error("[app]", "[useRsvp]", "delete selected error", { error: err });
+        setAdminMessage(t("attendance.deleteSelectedError"));
+        setAdminMessageType("error");
+      } finally {
+        deletingRef.current = false;
+      }
+    },
+    [setAdminMessage, setAdminMessageType, t, inviteToken],
+  );
 
   const handleClearRsvpEntries = useCallback(async () => {
-
     if (deletingRef.current) return;
-    if (!window.confirm(t("rsvp.clearConfirm"))) { return; }
+    if (!window.confirm(t("rsvp.clearConfirm"))) {
+      return;
+    }
     deletingRef.current = true;
     try {
       const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
 
       await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
-      await withWriteRetry(() => updateDoc(doc(db, "rsvpResponses", inviteToken), { count: increment(-snapshot.size) }));
+      await withWriteRetry(() =>
+        updateDoc(doc(db, "rsvpResponses", inviteToken), { count: increment(-snapshot.size) }),
+      );
       setRsvpEntries([]);
       setAdminMessage(t("rsvp.clearSuccess"));
       setAdminMessageType("success");
-      try { sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken)); } catch { }
-
+      try {
+        sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken));
+      } catch {}
     } catch (err) {
       console.error("[app]", "[useRsvp]", "clear error", { error: err });
       setAdminMessage(t("rsvp.clearError"));
@@ -839,16 +925,42 @@ export function useRsvp(
   // Memoizado: un objeto literal nuevo en cada render invalidaba el value del
   // AppContext (que depende de este objeto) y re-renderizaba a todos los
   // consumidores de useApp() con cada tecla del formulario RSVP.
-  return useMemo(() => ({
-    rsvpEntries, rsvpForm, rsvpMessage: feedbackMessage, isRsvpSubmitting, hasSubmitted,
-    alreadySubmittedEntry, rsvpLoadError, retryLoadRsvp,
-    updateRsvpField, handleRsvpSubmit, handleDeleteRsvpEntries, handleClearRsvpEntries, handleDeleteRsvp,
-    DIETARY_OPTIONS,
-    setRsvpMessage, setRsvpForm, computeAge,
-  }), [
-    rsvpEntries, rsvpForm, feedbackMessage, isRsvpSubmitting, hasSubmitted, alreadySubmittedEntry,
-    rsvpLoadError, retryLoadRsvp,
-    updateRsvpField, handleRsvpSubmit, handleDeleteRsvpEntries, handleClearRsvpEntries, handleDeleteRsvp,
-    setRsvpMessage, setRsvpForm,
-  ]);
+  return useMemo(
+    () => ({
+      rsvpEntries,
+      rsvpForm,
+      rsvpMessage: feedbackMessage,
+      isRsvpSubmitting,
+      hasSubmitted,
+      alreadySubmittedEntry,
+      rsvpLoadError,
+      retryLoadRsvp,
+      updateRsvpField,
+      handleRsvpSubmit,
+      handleDeleteRsvpEntries,
+      handleClearRsvpEntries,
+      handleDeleteRsvp,
+      DIETARY_OPTIONS,
+      setRsvpMessage,
+      setRsvpForm,
+      computeAge,
+    }),
+    [
+      rsvpEntries,
+      rsvpForm,
+      feedbackMessage,
+      isRsvpSubmitting,
+      hasSubmitted,
+      alreadySubmittedEntry,
+      rsvpLoadError,
+      retryLoadRsvp,
+      updateRsvpField,
+      handleRsvpSubmit,
+      handleDeleteRsvpEntries,
+      handleClearRsvpEntries,
+      handleDeleteRsvp,
+      setRsvpMessage,
+      setRsvpForm,
+    ],
+  );
 }

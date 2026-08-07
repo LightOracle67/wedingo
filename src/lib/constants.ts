@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.95.19";
+export const APP_VERSION = "2.95.20";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -10,9 +10,30 @@ export const MAX_SCHEDULE_EVENT_TEXT = 60;
    quepan en la normalización (máx 8 chars) y sean representativos de una
    celebración. */
 export const SCHEDULE_EVENT_EMOJIS = [
-  "💍", "⛪", "🌸", "💌", "🔔", "🥂", "🍾", "🍸", "🍢", "🍽️",
-  "🍰", "🎂", "💃", "🕺", "🎶", "🎉", "🪩", "🎆", "📸", "❤️",
-  "✨", "🌿", "🌙", "🎁",
+  "💍",
+  "⛪",
+  "🌸",
+  "💌",
+  "🔔",
+  "🥂",
+  "🍾",
+  "🍸",
+  "🍢",
+  "🍽️",
+  "🍰",
+  "🎂",
+  "💃",
+  "🕺",
+  "🎶",
+  "🎉",
+  "🪩",
+  "🎆",
+  "📸",
+  "❤️",
+  "✨",
+  "🌿",
+  "🌙",
+  "🎁",
 ] as const;
 export const MAX_MENU_DISHES = 20;
 export const MAX_MENU_DISH_TEXT = 200;
@@ -37,28 +58,103 @@ export const MONTH_OPTIONS = [
 ];
 
 export const MONTH_VALUE_TO_NUMBER: Record<string, number> = {
-  enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6,
-  julio: 7, agosto: 8, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12,
+  enero: 1,
+  febrero: 2,
+  marzo: 3,
+  abril: 4,
+  mayo: 5,
+  junio: 6,
+  julio: 7,
+  agosto: 8,
+  septiembre: 9,
+  octubre: 10,
+  noviembre: 11,
+  diciembre: 12,
 };
 
 export const THEME_OPTIONS = [
   { value: "golden", label: "Dorado clásico", hint: "Elegante y luminoso, con acentos dorados.", group: "claros" },
   { value: "forest", label: "Eucalipto fresco", hint: "Natural y sobrio con verdes suaves.", group: "claros" },
   { value: "rose", label: "Romántico rosado", hint: "Cálido y delicado, con matices rosados.", group: "claros" },
-  { value: "linen-soft", label: "Lino suave", hint: "Claro y neutro, con una presencia serena y atemporal.", group: "claros" },
-  { value: "blush-pearl", label: "Perla rosada", hint: "Suave y romántico, con tonos rosados perlados.", group: "claros" },
-  { value: "lavender-mist", label: "Brisa lavanda", hint: "Fresco y sereno, con matices lavanda y malva.", group: "claros" },
-  { value: "champagne-bubble", label: "Burbuja champán", hint: "Luminoso y festivo, con destellos dorados cálidos.", group: "claros" },
-  { value: "amber-night", label: "Noche ámbar", hint: "Oscuro y elegante, con destellos ámbar y dorados.", group: "oscuros" },
-  { value: "onyx-gold", label: "Ónix dorado", hint: "Profundo y sofisticado, con oro intenso sobre fondo oscuro.", group: "oscuros" },
-  { value: "midnight-royal", label: "Medianoche real", hint: "Azul muy oscuro con dorado intenso y presencia solemne.", group: "oscuros" },
-  { value: "burgundy-velvet", label: "Terciopelo burdeos", hint: "Cálido y envolvente, con vino tinto y destellos dorados.", group: "oscuros" },
-  { value: "sapphire-night", label: "Noche zafiro", hint: "Azul profundo con acentos plateados y presencia serena.", group: "oscuros" },
-  { value: "emerald-grove", label: "Esmeralda bosque", hint: "Verde profundo natural con matices dorados y elegantes.", group: "oscuros" },
-  { value: "plum-twilight", label: "Crepúsculo ciruela", hint: "Púrpura intenso con destellos rosados y románticos.", group: "oscuros" },
-  { value: "rainbow", label: "Arcoíris", hint: "Celebración del amor diverso con los colores del arcoíris.", group: "lgtbiq+" },
+  {
+    value: "linen-soft",
+    label: "Lino suave",
+    hint: "Claro y neutro, con una presencia serena y atemporal.",
+    group: "claros",
+  },
+  {
+    value: "blush-pearl",
+    label: "Perla rosada",
+    hint: "Suave y romántico, con tonos rosados perlados.",
+    group: "claros",
+  },
+  {
+    value: "lavender-mist",
+    label: "Brisa lavanda",
+    hint: "Fresco y sereno, con matices lavanda y malva.",
+    group: "claros",
+  },
+  {
+    value: "champagne-bubble",
+    label: "Burbuja champán",
+    hint: "Luminoso y festivo, con destellos dorados cálidos.",
+    group: "claros",
+  },
+  {
+    value: "amber-night",
+    label: "Noche ámbar",
+    hint: "Oscuro y elegante, con destellos ámbar y dorados.",
+    group: "oscuros",
+  },
+  {
+    value: "onyx-gold",
+    label: "Ónix dorado",
+    hint: "Profundo y sofisticado, con oro intenso sobre fondo oscuro.",
+    group: "oscuros",
+  },
+  {
+    value: "midnight-royal",
+    label: "Medianoche real",
+    hint: "Azul muy oscuro con dorado intenso y presencia solemne.",
+    group: "oscuros",
+  },
+  {
+    value: "burgundy-velvet",
+    label: "Terciopelo burdeos",
+    hint: "Cálido y envolvente, con vino tinto y destellos dorados.",
+    group: "oscuros",
+  },
+  {
+    value: "sapphire-night",
+    label: "Noche zafiro",
+    hint: "Azul profundo con acentos plateados y presencia serena.",
+    group: "oscuros",
+  },
+  {
+    value: "emerald-grove",
+    label: "Esmeralda bosque",
+    hint: "Verde profundo natural con matices dorados y elegantes.",
+    group: "oscuros",
+  },
+  {
+    value: "plum-twilight",
+    label: "Crepúsculo ciruela",
+    hint: "Púrpura intenso con destellos rosados y románticos.",
+    group: "oscuros",
+  },
+  {
+    value: "rainbow",
+    label: "Arcoíris",
+    hint: "Celebración del amor diverso con los colores del arcoíris.",
+    group: "lgtbiq+",
+  },
   { value: "trans", label: "Trans", hint: "Azul, rosa y blanco en homenaje a la bandera trans.", group: "lgtbiq+" },
-  { value: "nonbinary", label: "No binario", hint: "Amarillo, blanco, morado y negro por la bandera no binaria.", group: "lgtbiq+" },
+  {
+    value: "nonbinary",
+    label: "No binario",
+    hint: "Amarillo, blanco, morado y negro por la bandera no binaria.",
+    group: "lgtbiq+",
+  },
   { value: "lesbian", label: "Lesbian Pride", hint: "Naranja, blanco y rosa de la bandera lésbica.", group: "lgtbiq+" },
   { value: "bi", label: "Bisexual", hint: "Rosa, morado y azul de la bandera bi.", group: "lgtbiq+" },
   { value: "pan", label: "Pansexual", hint: "Rosa, amarillo y azul de la bandera pan.", group: "lgtbiq+" },
@@ -97,7 +193,18 @@ export const THEME_GROUPS = [
   { value: "lgtbiq+", label: "LGTBIQ+" },
 ];
 
-export const STORY_SECTION_ORDER = ["hero", "details", "transport", "info", "story", "gallery", "gifts", "accommodation", "extras", "rsvp"];
+export const STORY_SECTION_ORDER = [
+  "hero",
+  "details",
+  "transport",
+  "info",
+  "story",
+  "gallery",
+  "gifts",
+  "accommodation",
+  "extras",
+  "rsvp",
+];
 /** Secciones que SIEMPRE quedan fijas en el editor de orden: la portada
  *  (primera) y la confirmación de asistencia RSVP (última). */
 export const FIXED_SECTION_POSITIONS = ["hero", "rsvp"];

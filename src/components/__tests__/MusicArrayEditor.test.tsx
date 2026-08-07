@@ -16,7 +16,7 @@ vi.mock("../../hooks/useToast", () => ({
   }),
 }));
 
-const mockLoadAudio = vi.fn(() => Promise.resolve(null as ({ id?: string; url: string }) | null));
+const mockLoadAudio = vi.fn(() => Promise.resolve(null as { id?: string; url: string } | null));
 const mockUploadAudio = vi.fn();
 const mockAddAudio = vi.fn();
 const mockDeleteAudio = vi.fn();
@@ -49,37 +49,24 @@ beforeEach(() => {
 
 describe("MusicArrayEditor", () => {
   it("renders loading state initially", () => {
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     expect(document.querySelector(".page-loading")).toBeInTheDocument();
   });
 
   it("shows upload label after loading completes", async () => {
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     const label = await screen.findByText("setup.musicUploadLabel");
     expect(label).toBeInTheDocument();
   });
 
   it("shows audio hint text", async () => {
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     const hint = await screen.findByText("setup.audioHint");
     expect(hint).toBeInTheDocument();
   });
 
   it("displays current music controls when value is provided", async () => {
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={vi.fn()}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={vi.fn()} />);
     const status = await screen.findByText("setup.currentMusic");
     expect(status).toBeInTheDocument();
   });
@@ -92,32 +79,21 @@ describe("MusicArrayEditor", () => {
       url: "https://example.com/loaded.mp3",
     });
 
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value=""
-        onChange={onChange}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={onChange} />);
 
     await screen.findByText("setup.musicUploadLabel");
     expect(onChange).toHaveBeenCalledWith("https://example.com/loaded.mp3");
   });
 
   it("handles loadAudio returning null gracefully", async () => {
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     const label = await screen.findByText("setup.musicUploadLabel");
     expect(label).toBeInTheDocument();
   });
 
   it("handles audio file selection via hidden input", async () => {
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={onChange} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={onChange} />);
     await screen.findByText("setup.musicUploadLabel");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -134,9 +110,7 @@ describe("MusicArrayEditor", () => {
   });
 
   it("rejects empty audio file", async () => {
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     await screen.findByText("setup.musicUploadLabel");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -150,9 +124,7 @@ describe("MusicArrayEditor", () => {
   });
 
   it("rejects invalid audio format", async () => {
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     await screen.findByText("setup.musicUploadLabel");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -171,14 +143,7 @@ describe("MusicArrayEditor", () => {
     });
 
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={onChange}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />);
     await screen.findByText("setup.currentMusic");
 
     const deleteBtn = screen.getByRole("button", { name: "common.delete" });
@@ -194,14 +159,7 @@ describe("MusicArrayEditor", () => {
     HTMLMediaElement.prototype.play = vi.fn().mockResolvedValue(undefined);
     HTMLMediaElement.prototype.pause = vi.fn();
 
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={vi.fn()}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={vi.fn()} />);
     await screen.findByText("setup.currentMusic");
 
     const playBtn = screen.getByRole("button", { name: "music.play" });
@@ -222,9 +180,7 @@ describe("MusicArrayEditor", () => {
   it("handles load audio error", async () => {
     mockLoadAudio.mockRejectedValue(new Error("Load failed"));
 
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
 
     await waitFor(() => {
       expect(mockAddToast).toHaveBeenCalledWith("error", "errors.musicLoadFailed");
@@ -238,14 +194,7 @@ describe("MusicArrayEditor", () => {
     });
 
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/old.mp3"
-        onChange={onChange}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/old.mp3" onChange={onChange} />);
     await screen.findByText("setup.currentMusic");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -261,14 +210,7 @@ describe("MusicArrayEditor", () => {
     mockLoadAudio.mockResolvedValue({ id: "audio-1", url: "https://example.com/song.mp3" });
 
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={onChange}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />);
     await screen.findByText("setup.currentMusic");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -290,14 +232,7 @@ describe("MusicArrayEditor", () => {
     });
 
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={onChange}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />);
     await screen.findByText("setup.currentMusic");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -317,14 +252,7 @@ describe("MusicArrayEditor", () => {
     });
 
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={onChange}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />);
     await screen.findByText("setup.currentMusic");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -339,16 +267,12 @@ describe("MusicArrayEditor", () => {
 
   it("handles upload without inviteToken gracefully", async () => {
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor inviteToken="" value="" onChange={onChange} />
-    );
+    render(<MusicArrayEditor inviteToken="" value="" onChange={onChange} />);
     await screen.findByText("setup.musicUploadLabel");
   });
 
   it("clears input after upload completes", async () => {
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     await screen.findByText("setup.musicUploadLabel");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -366,9 +290,7 @@ describe("MusicArrayEditor", () => {
   it("handles upload error", async () => {
     mockUploadAudio.mockRejectedValue(new Error("Upload failed"));
 
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     await screen.findByText("setup.musicUploadLabel");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -387,14 +309,7 @@ describe("MusicArrayEditor", () => {
     });
     mockDeleteAudio.mockRejectedValue(new Error("Delete failed"));
 
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={vi.fn()}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={vi.fn()} />);
     await screen.findByText("setup.currentMusic");
 
     const deleteBtn = screen.getByRole("button", { name: "common.delete" });
@@ -406,9 +321,7 @@ describe("MusicArrayEditor", () => {
   });
 
   it("rejects oversized audio file", async () => {
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     await screen.findByText("setup.musicUploadLabel");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -424,14 +337,7 @@ describe("MusicArrayEditor", () => {
   it("handles playback error gracefully", async () => {
     HTMLMediaElement.prototype.play = vi.fn().mockRejectedValue(new Error("playback blocked"));
 
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={vi.fn()}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={vi.fn()} />);
     await screen.findByText("setup.currentMusic");
 
     const playBtn = screen.getByRole("button", { name: "music.play" });
@@ -447,14 +353,7 @@ describe("MusicArrayEditor", () => {
     mockLoadAudio.mockResolvedValue({ url: "https://example.com/song.mp3" });
 
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={onChange}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />);
     await screen.findByText("setup.currentMusic");
 
     const deleteBtn = screen.getByRole("button", { name: "common.delete" });
@@ -472,14 +371,7 @@ describe("MusicArrayEditor", () => {
     });
 
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={onChange}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />);
     await screen.findByText("setup.currentMusic");
 
     HTMLMediaElement.prototype.play = vi.fn().mockResolvedValue(undefined);
@@ -501,9 +393,7 @@ describe("MusicArrayEditor", () => {
 
   it("handles upload with empty inviteToken", async () => {
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor inviteToken="" value="" onChange={onChange} />
-    );
+    render(<MusicArrayEditor inviteToken="" value="" onChange={onChange} />);
     await screen.findByText("setup.musicUploadLabel");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -516,9 +406,7 @@ describe("MusicArrayEditor", () => {
   });
 
   it("clears input after oversized file error", async () => {
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     await screen.findByText("setup.musicUploadLabel");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
@@ -538,12 +426,7 @@ describe("MusicArrayEditor", () => {
     });
     const onChange = vi.fn();
     const { rerender } = render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={onChange}
-       
-      />
+      <MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />,
     );
     await screen.findByText("setup.currentMusic");
     const deleteBtn = screen.getByRole("button", { name: "common.delete" });
@@ -551,21 +434,12 @@ describe("MusicArrayEditor", () => {
     await waitFor(() => {
       expect(mockDeleteAudio).toHaveBeenCalledWith("test-token");
     });
-    rerender(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value=""
-        onChange={onChange}
-       
-      />
-    );
+    rerender(<MusicArrayEditor inviteToken="test-token" value="" onChange={onChange} />);
     await screen.findByText("setup.musicUploadLabel");
   });
 
   it("clears input value after empty file error", async () => {
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     await screen.findByText("setup.musicUploadLabel");
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
     const emptyFile = new File([], "empty.mp3", { type: "audio/mpeg" });
@@ -585,14 +459,7 @@ describe("MusicArrayEditor", () => {
       url: "https://example.com/song.mp3",
     });
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={onChange}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />);
     await screen.findByText("setup.currentMusic");
     const playBtn = screen.getByRole("button", { name: "music.play" });
     fireEvent.click(playBtn);
@@ -618,14 +485,7 @@ describe("MusicArrayEditor", () => {
     mockAddAudio.mockResolvedValue({ id: "new-id", dataUrl: "data:audio/mp3,test" });
 
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor
-        inviteToken="test-token"
-        value="https://example.com/song.mp3"
-        onChange={onChange}
-       
-      />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />);
     await screen.findByText("setup.currentMusic");
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
     const file = new File(["fake-audio"], "song.mp3", { type: "audio/mpeg" });
@@ -636,9 +496,7 @@ describe("MusicArrayEditor", () => {
   });
 
   it("handles handleFile when no file selected", async () => {
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     await screen.findByText("setup.musicUploadLabel");
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;
     fireEvent.change(fileInput, { target: { files: [] } });
@@ -648,9 +506,7 @@ describe("MusicArrayEditor", () => {
   });
 
   it("triggers cleanup on unmount", async () => {
-    const { unmount } = render(
-      <MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />
-    );
+    const { unmount } = render(<MusicArrayEditor inviteToken="test-token" value="" onChange={vi.fn()} />);
     await screen.findByText("setup.musicUploadLabel");
     unmount();
   });
@@ -658,9 +514,7 @@ describe("MusicArrayEditor", () => {
   it("handles formatSize rendering in MB", async () => {
     mockLoadAudio.mockResolvedValue({ id: "audio-1", url: "https://example.com/song.mp3" });
     const onChange = vi.fn();
-    render(
-      <MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />
-    );
+    render(<MusicArrayEditor inviteToken="test-token" value="https://example.com/song.mp3" onChange={onChange} />);
     await screen.findByText("setup.currentMusic");
 
     const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]')!;

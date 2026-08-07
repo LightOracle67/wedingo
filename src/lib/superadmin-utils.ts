@@ -12,7 +12,11 @@ export function calcGlobalStats(invitations: AnyRecord[], rsvps: AnyRecord[], to
   const totalGuests = rsvpYes.reduce((s, r) => s + 1 + (Number(r.companions) || 0), 0);
   const invitationCount = invitations.length;
   const totalBytes = invitations.reduce((acc, d) => {
-    try { return acc + new Blob([JSON.stringify(d)]).size; } catch { return acc; }
+    try {
+      return acc + new Blob([JSON.stringify(d)]).size;
+    } catch {
+      return acc;
+    }
   }, 0);
   const tokensTotal = tokens.length;
   const tokensUsed = tokens.filter((t) => t.used === true).length;
@@ -45,4 +49,3 @@ export function searchInvitations(invitations: Record<string, unknown>[], query:
     return name.includes(q) || user.includes(q) || token.includes(q);
   });
 }
-

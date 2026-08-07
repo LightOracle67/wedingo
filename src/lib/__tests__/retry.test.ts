@@ -20,23 +20,37 @@ describe("retry", () => {
   });
 
   it("throws after max retries", async () => {
-    const fn = async () => { throw new Error("always fail"); };
+    const fn = async () => {
+      throw new Error("always fail");
+    };
     await expect(retry(fn, 2, 10)).rejects.toThrow("always fail");
   });
 
   it("exponential backoff increases delay", async () => {
     const start = Date.now();
     let attempts = 0;
-    await retry(async () => {
-      attempts++;
-      throw new Error("fail");
-    }, 3, 50).catch(() => {});
+    await retry(
+      async () => {
+        attempts++;
+        throw new Error("fail");
+      },
+      3,
+      50,
+    ).catch(() => {});
     const elapsed = Date.now() - start;
     expect(attempts).toBe(3);
     expect(elapsed).toBeGreaterThanOrEqual(50 + 100); // 50 + 100ms cumulative
   }, 5000);
 
   it("handles synchronous throws", async () => {
-    await expect(retry(() => { throw new Error("sync"); }, 1, 10)).rejects.toThrow("sync");
+    await expect(
+      retry(
+        () => {
+          throw new Error("sync");
+        },
+        1,
+        10,
+      ),
+    ).rejects.toThrow("sync");
   });
 });

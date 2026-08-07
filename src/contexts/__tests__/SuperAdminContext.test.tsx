@@ -44,7 +44,9 @@ vi.mock("../../lib/sessionVars", () => ({
 }));
 
 vi.mock("../../lib/storage", () => ({
-  safeGetItem: vi.fn(() => null), safeSetItem: vi.fn(), safeRemoveItem: vi.fn(),
+  safeGetItem: vi.fn(() => null),
+  safeSetItem: vi.fn(),
+  safeRemoveItem: vi.fn(),
 }));
 
 import { SuperAdminProvider, useSuperAdmin } from "../SuperAdminContext";
@@ -59,8 +61,12 @@ function TestConsumer() {
       <span data-testid="isLoading">{String(ctx.isLoading)}</span>
       <span data-testid="error">{ctx.error}</span>
       {ctx.user && <span data-testid="user-uid">{ctx.user.uid}</span>}
-      <button data-testid="login-btn" onClick={() => ctx.login("test@test.com", "password")}>Login</button>
-      <button data-testid="logout-btn" onClick={() => ctx.logout()}>Logout</button>
+      <button data-testid="login-btn" onClick={() => ctx.login("test@test.com", "password")}>
+        Login
+      </button>
+      <button data-testid="logout-btn" onClick={() => ctx.logout()}>
+        Logout
+      </button>
     </div>
   );
 }
@@ -92,7 +98,19 @@ describe("SuperAdminProvider", () => {
   });
 
   it("renders children", () => {
-    render(<SuperAdminProvider><div>child</div></SuperAdminProvider>);
+    // En ruta pública para no disparar la carga diferida de auth: dejar esa
+    // microtarea (getAuthInstance().then) pendiente contaminaría el conteo de
+    // onAuthStateChanged del siguiente test (se resuelve tras clearAllMocks).
+    Object.defineProperty(window, "location", {
+      value: { ...window.location, pathname: "/abcdefghij" },
+      configurable: true,
+      writable: true,
+    });
+    render(
+      <SuperAdminProvider>
+        <div>child</div>
+      </SuperAdminProvider>,
+    );
     expect(screen.getByText("child")).toBeInTheDocument();
   });
 
@@ -116,20 +134,24 @@ describe("SuperAdminProvider", () => {
 
   it("sets user when Firebase user matches superadmin email and session exists", async () => {
     mockGetSession.mockReturnValue({ type: "superadmin", identifier: FALLBACK_ADMIN_EMAIL });
-    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
-      setTimeout(() => cb({ email: FALLBACK_ADMIN_EMAIL, uid: "uid-123" }), 0);
-      return () => {};
-    });
+    mockOnAuthStateChanged.mockImplementation(
+      (_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
+        setTimeout(() => cb({ email: FALLBACK_ADMIN_EMAIL, uid: "uid-123" }), 0);
+        return () => {};
+      },
+    );
     renderProvider();
     await vi.waitFor(() => expect(screen.getByTestId("isSuperAdmin").textContent).toBe("true"));
     expect(screen.getByTestId("user-uid").textContent).toBe("uid-123");
   });
 
   it("does not set user when email does not match superadmin email", async () => {
-    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
-      setTimeout(() => cb({ email: "other@admin.com", uid: "uid-456" }), 0);
-      return () => {};
-    });
+    mockOnAuthStateChanged.mockImplementation(
+      (_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
+        setTimeout(() => cb({ email: "other@admin.com", uid: "uid-456" }), 0);
+        return () => {};
+      },
+    );
     renderProvider();
     await vi.waitFor(() => expect(screen.getByTestId("isSuperAdmin").textContent).toBe("false"));
   });
@@ -216,10 +238,12 @@ describe("SuperAdminProvider", () => {
   });
 
   it("signs out when Firebase user has no local session", async () => {
-    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
-      setTimeout(() => cb({ email: FALLBACK_ADMIN_EMAIL, uid: "uid-no-session" }), 0);
-      return () => {};
-    });
+    mockOnAuthStateChanged.mockImplementation(
+      (_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
+        setTimeout(() => cb({ email: FALLBACK_ADMIN_EMAIL, uid: "uid-no-session" }), 0);
+        return () => {};
+      },
+    );
     renderProvider();
     await vi.waitFor(() => expect(screen.getByTestId("isLoading").textContent).toBe("false"));
     expect(mockSignOut).toHaveBeenCalled();

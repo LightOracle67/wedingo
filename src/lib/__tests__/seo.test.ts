@@ -32,7 +32,9 @@ describe("seo", () => {
       url: `${SITE_URL}/t`,
       image: "https://example.com/photo.jpg",
     });
-    expect(document.querySelector('meta[property="og:image"]')?.getAttribute("content")).toBe("https://example.com/photo.jpg");
+    expect(document.querySelector('meta[property="og:image"]')?.getAttribute("content")).toBe(
+      "https://example.com/photo.jpg",
+    );
     expect(document.querySelector('meta[name="twitter:card"]')?.getAttribute("content")).toBe("summary_large_image");
   });
 
@@ -43,7 +45,9 @@ describe("seo", () => {
       url: `${SITE_URL}/t`,
       image: "data:image/png;base64,xxxx",
     });
-    expect(document.querySelector('meta[property="og:image"]')?.getAttribute("content")).toBe(`${SITE_URL}/og-banner.png`);
+    expect(document.querySelector('meta[property="og:image"]')?.getAttribute("content")).toBe(
+      `${SITE_URL}/og-banner.png`,
+    );
     expect(document.querySelector('meta[name="twitter:card"]')?.getAttribute("content")).toBe("summary_large_image");
   });
 

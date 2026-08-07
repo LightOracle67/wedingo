@@ -46,7 +46,10 @@ const PAGE_SIZES = [10, 25, 50, 100];
 
 function parseDietaryItems(dietaryInfo: string): string[] {
   if (!dietaryInfo) return [];
-  return dietaryInfo.split(" | ").map((s) => s.trim()).filter((s) => s && !s.startsWith("Menú:"));
+  return dietaryInfo
+    .split(" | ")
+    .map((s) => s.trim())
+    .filter((s) => s && !s.startsWith("Menú:"));
 }
 
 function getDietaryItems(dietaryInfo: string): string[] {
@@ -60,10 +63,16 @@ function formatMenuLabel(mealChoice: string, t: (key: string) => string): string
 
 const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const {
-    searchQuery, setSearchQuery,
-    attendanceFilter, setAttendanceFilter,
-    filteredEntries, exportPdf,
-    rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries, formatDate,
+    searchQuery,
+    setSearchQuery,
+    attendanceFilter,
+    setAttendanceFilter,
+    filteredEntries,
+    exportPdf,
+    rsvpEntries,
+    handleClearRsvpEntries,
+    handleDeleteRsvpEntries,
+    formatDate,
     transportDepartures,
   } = props;
   const { t, i18n } = useTranslation();
@@ -80,7 +89,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `asistencias_${new Date().toISOString().slice(0,10)}.csv`;
+      a.download = `asistencias_${new Date().toISOString().slice(0, 10)}.csv`;
       document.body.appendChild(a);
       a.click();
       a.remove();
@@ -106,7 +115,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
-    } catch { /* export no disponible */ }
+    } catch {
+      /* export no disponible */
+    }
   }, [filteredEntries]);
 
   const departures = useMemo(() => {
@@ -119,25 +130,31 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     }
   }, [transportDepartures]);
 
-  const resolveTransportLabel = useCallback((mode: string, choice: string, storedTime: string) => {
-    if (!mode && !choice && !storedTime) return "—";
-    if (!mode || mode === "own") return t("attendance.transportOwnCar");
-    const typeLabel = t(mode === "taxi" ? "transport.typeTaxi" : "transport.typeBus");
-    if (storedTime) return `${typeLabel} (${storedTime})`;
-    const idx = Number.parseInt(choice, 10);
-    const dep = departures[idx] as { time?: string } | undefined;
-    if (dep && dep.time) return `${typeLabel} (${dep.time})`;
-    return typeLabel;
-  }, [departures, t]);
+  const resolveTransportLabel = useCallback(
+    (mode: string, choice: string, storedTime: string) => {
+      if (!mode && !choice && !storedTime) return "—";
+      if (!mode || mode === "own") return t("attendance.transportOwnCar");
+      const typeLabel = t(mode === "taxi" ? "transport.typeTaxi" : "transport.typeBus");
+      if (storedTime) return `${typeLabel} (${storedTime})`;
+      const idx = Number.parseInt(choice, 10);
+      const dep = departures[idx] as { time?: string } | undefined;
+      if (dep && dep.time) return `${typeLabel} (${dep.time})`;
+      return typeLabel;
+    },
+    [departures, t],
+  );
 
-  const formatBirthDate = useCallback((iso: string) => {
-    if (!iso) return "—";
-    try {
-      return new Date(iso.length <= 10 ? `${iso}T00:00:00` : iso).toLocaleDateString(i18n.language || "es");
-    } catch {
-      return iso;
-    }
-  }, [i18n.language]);
+  const formatBirthDate = useCallback(
+    (iso: string) => {
+      if (!iso) return "—";
+      try {
+        return new Date(iso.length <= 10 ? `${iso}T00:00:00` : iso).toLocaleDateString(i18n.language || "es");
+      } catch {
+        return iso;
+      }
+    },
+    [i18n.language],
+  );
 
   const filterEntries = filteredEntries || [];
 
@@ -145,7 +162,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const safePage = Math.min(page, totalPages - 1);
   const paginated = filterEntries.slice(safePage * pageSize, (safePage + 1) * pageSize);
 
-  useEffect(() => { setPage(0); }, [searchQuery, attendanceFilter]);
+  useEffect(() => {
+    setPage(0);
+  }, [searchQuery, attendanceFilter]);
 
   const stats = useMemo(() => {
     const entries = rsvpEntries || [];
@@ -168,7 +187,8 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const toggleOne = (id: string) => {
     setSelectedIds((prev) => {
       const next = new Set(prev);
-      if (next.has(id)) next.delete(id); else next.add(id);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
       return next;
     });
   };
@@ -195,183 +215,276 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   return (
     <>
       <div className="admin-filters">
-        <label className="sr-only" htmlFor="adminSearchName">{t("attendance.searchLabel")}</label>
-          <select id="adminSearchName" className="setup-input" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}
-            style={{ maxWidth: "250px", fontSize: "0.85rem" }}>
-            <option value="">{t("attendance.all")}</option>
-            {(rsvpEntries || [])
-              .filter((e: RsvpEntry, i: number, arr: RsvpEntry[]) => arr.findIndex((x: RsvpEntry) => x.guestName === e.guestName) === i)
-              .map((e: RsvpEntry) => (
-                <option key={e.id} value={e.guestName}>{e.guestName}</option>
-              ))}
-          </select>
-          {/* Filtro de asistencia: el estado existía pero no había UI para
+        <label className="sr-only" htmlFor="adminSearchName">
+          {t("attendance.searchLabel")}
+        </label>
+        <select
+          id="adminSearchName"
+          className="setup-input"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={{ maxWidth: "250px", fontSize: "0.85rem" }}
+        >
+          <option value="">{t("attendance.all")}</option>
+          {(rsvpEntries || [])
+            .filter(
+              (e: RsvpEntry, i: number, arr: RsvpEntry[]) =>
+                arr.findIndex((x: RsvpEntry) => x.guestName === e.guestName) === i,
+            )
+            .map((e: RsvpEntry) => (
+              <option key={e.id} value={e.guestName}>
+                {e.guestName}
+              </option>
+            ))}
+        </select>
+        {/* Filtro de asistencia: el estado existía pero no había UI para
               cambiarlo (feature muerta). */}
-          <label className="sr-only" htmlFor="adminAttendanceFilter">{t("attendance.filterLabel")}</label>
-          <select id="adminAttendanceFilter" className="setup-input" value={attendanceFilter} onChange={(e) => setAttendanceFilter(e.target.value)}
-            style={{ maxWidth: "180px", fontSize: "0.85rem" }}>
-            <option value="all">{t("attendance.filterAll")}</option>
-            <option value="yes">{t("attendance.filterYes")}</option>
-            <option value="no">{t("attendance.filterNo")}</option>
-          </select>
+        <label className="sr-only" htmlFor="adminAttendanceFilter">
+          {t("attendance.filterLabel")}
+        </label>
+        <select
+          id="adminAttendanceFilter"
+          className="setup-input"
+          value={attendanceFilter}
+          onChange={(e) => setAttendanceFilter(e.target.value)}
+          style={{ maxWidth: "180px", fontSize: "0.85rem" }}
+        >
+          <option value="all">{t("attendance.filterAll")}</option>
+          <option value="yes">{t("attendance.filterYes")}</option>
+          <option value="no">{t("attendance.filterNo")}</option>
+        </select>
       </div>
 
       <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>
         <span className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
-          {t("attendance.statsLine", { yes: stats.yes, no: stats.no, companions: stats.totalCompanions, diet: stats.withDietary })}
+          {t("attendance.statsLine", {
+            yes: stats.yes,
+            no: stats.no,
+            companions: stats.totalCompanions,
+            diet: stats.withDietary,
+          })}
         </span>
       </div>
 
       <div aria-live="polite" aria-atomic="true">
-      {filterEntries.length > 0 ? (
-        <div className="admin-table-wrapper" style={{ overflowX: "auto" }}>
-          <table className="admin-table" style={{ fontSize: "0.8rem", minWidth: "800px" }}>
-            <thead>
-              <tr>
-                <th scope="col" style={{ width: "2rem" }}>
-                  <input type="checkbox" onChange={toggleAll}
-                    checked={paginated.length > 0 && selectedIds.size === paginated.length}
-                    aria-label={t("attendance.selectAll")} />
-                </th>
-                <th scope="col" style={{ minWidth: "100px" }}>{t("attendance.tableName")}</th>
-                <th scope="col" style={{ minWidth: "120px" }}>{t("attendance.tableAccompanies")}</th>
-                <th scope="col" style={{ minWidth: "70px" }}>{t("attendance.tableAttendance")}</th>
-                <th scope="col" style={{ minWidth: "120px" }}>{t("attendance.tableMenu")}</th>
-                <th scope="col" style={{ minWidth: "140px" }}>{t("attendance.tableDiet")}</th>
-                <th scope="col" style={{ minWidth: "120px" }}>{t("attendance.tableTransport")}</th>
-                <th scope="col" style={{ minWidth: "110px" }}>{t("attendance.tableBirth")}</th>
-                <th scope="col" style={{ minWidth: "120px" }}>{t("attendance.tableConsents")}</th>
-                <th scope="col" style={{ minWidth: "120px" }}>{t("attendance.tableDate")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginated.map((entry: RsvpEntry) => {
-                const isCompanion = entry.rsvpType === "companion";
-                const attending = entry.attendance === "yes";
-                const menuLines = entry.attendees?.length
-                  ? entry.attendees.map((a) => a.menu ? `${a.name}: ${t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1))}` : null).filter((x): x is string => x !== null)
-                  : (formatMenuLabel(entry.mealChoice || "", t) ? [formatMenuLabel(entry.mealChoice || "", t)!] : []);
-                const dietLines = entry.attendees?.length
-                  ? entry.attendees.filter((a) => a.allergies?.length).map((a) => `${a.name}: ${a.allergies.join(", ")}`)
-                  : (attending ? getDietaryItems(entry.dietaryInfo || "") : []);
-                const crossed = !attending ? { textDecoration: "line-through", opacity: 0.4 } : {};
-                const transportLabel = resolveTransportLabel(entry.transportMode || "", entry.transportChoice || "", entry.transportTime || "");
-                const consentBadges: string[] = [];
-                if (entry.parentalConsent) consentBadges.push(t("attendance.consentParental"));
-                if (entry.healthConsent) consentBadges.push(t("attendance.consentHealth"));
+        {filterEntries.length > 0 ? (
+          <div className="admin-table-wrapper" style={{ overflowX: "auto" }}>
+            <table className="admin-table" style={{ fontSize: "0.8rem", minWidth: "800px" }}>
+              <thead>
+                <tr>
+                  <th scope="col" style={{ width: "2rem" }}>
+                    <input
+                      type="checkbox"
+                      onChange={toggleAll}
+                      checked={paginated.length > 0 && selectedIds.size === paginated.length}
+                      aria-label={t("attendance.selectAll")}
+                    />
+                  </th>
+                  <th scope="col" style={{ minWidth: "100px" }}>
+                    {t("attendance.tableName")}
+                  </th>
+                  <th scope="col" style={{ minWidth: "120px" }}>
+                    {t("attendance.tableAccompanies")}
+                  </th>
+                  <th scope="col" style={{ minWidth: "70px" }}>
+                    {t("attendance.tableAttendance")}
+                  </th>
+                  <th scope="col" style={{ minWidth: "120px" }}>
+                    {t("attendance.tableMenu")}
+                  </th>
+                  <th scope="col" style={{ minWidth: "140px" }}>
+                    {t("attendance.tableDiet")}
+                  </th>
+                  <th scope="col" style={{ minWidth: "120px" }}>
+                    {t("attendance.tableTransport")}
+                  </th>
+                  <th scope="col" style={{ minWidth: "110px" }}>
+                    {t("attendance.tableBirth")}
+                  </th>
+                  <th scope="col" style={{ minWidth: "120px" }}>
+                    {t("attendance.tableConsents")}
+                  </th>
+                  <th scope="col" style={{ minWidth: "120px" }}>
+                    {t("attendance.tableDate")}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {paginated.map((entry: RsvpEntry) => {
+                  const isCompanion = entry.rsvpType === "companion";
+                  const attending = entry.attendance === "yes";
+                  const menuLines = entry.attendees?.length
+                    ? entry.attendees
+                        .map((a) =>
+                          a.menu
+                            ? `${a.name}: ${t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1))}`
+                            : null,
+                        )
+                        .filter((x): x is string => x !== null)
+                    : formatMenuLabel(entry.mealChoice || "", t)
+                      ? [formatMenuLabel(entry.mealChoice || "", t)!]
+                      : [];
+                  const dietLines = entry.attendees?.length
+                    ? entry.attendees
+                        .filter((a) => a.allergies?.length)
+                        .map((a) => `${a.name}: ${a.allergies.join(", ")}`)
+                    : attending
+                      ? getDietaryItems(entry.dietaryInfo || "")
+                      : [];
+                  const crossed = !attending ? { textDecoration: "line-through", opacity: 0.4 } : {};
+                  const transportLabel = resolveTransportLabel(
+                    entry.transportMode || "",
+                    entry.transportChoice || "",
+                    entry.transportTime || "",
+                  );
+                  const consentBadges: string[] = [];
+                  if (entry.parentalConsent) consentBadges.push(t("attendance.consentParental"));
+                  if (entry.healthConsent) consentBadges.push(t("attendance.consentHealth"));
 
-                return (
-                  <tr key={entry.id}>
-                    <td>
-                      <input type="checkbox" checked={selectedIds.has(entry.id)}
-                        onChange={() => toggleOne(entry.id)}
-                        aria-label={t("attendance.selectEntry", { name: entry.guestName })} />
-                    </td>
-                    <td className="admin-table__name" style={{ fontWeight: isCompanion ? 400 : 600 }}>
-                      {entry.guestName}
-                    </td>
-                    <td style={{ fontSize: "0.78rem", color: "var(--setup-muted)" }}>
-                      {isCompanion && entry.mainGuestName ? entry.mainGuestName : "—"}
-                    </td>
-                    <td>
-                      <span className={`admin-badge admin-badge--${entry.attendance}`}>
-                        {attending ? t("attendance.attendingValue") : t("attendance.notAttendingValue")}
-                      </span>
-                    </td>
-                    <td>
-                      <div style={crossed}>
-                        {attending ? (
-                          <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                            {menuLines.length > 0 ? menuLines.map((line, i) => (
-                              <span key={i} style={{ fontSize: "0.78rem" }}>{line}</span>
-                            )) : <span style={{ fontSize: "0.78rem" }}>—</span>}
-                          </div>
-                        ) : (
-                          <span style={{ fontSize: "0.78rem" }}>—</span>
-                        )}
-                      </div>
-                    </td>
-                    <td>
-                      <div style={crossed}>
-                        {attending && dietLines.length > 0 ? (
-                          <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                            {dietLines.map((line, i) => (
-                              <span key={i} style={{ fontSize: "0.78rem" }}>{line}</span>
-                            ))}
-                          </div>
-                        ) : (
-                          <span style={{ fontSize: "0.78rem" }}>—</span>
-                        )}
-                      </div>
-                    </td>
-                    <td>
-                      <div style={crossed}>
-                        <span style={{ fontSize: "0.78rem" }}>{attending ? transportLabel : "—"}</span>
-                      </div>
-                    </td>
-                    <td>
-                      <div style={crossed}>
-                        <span style={{ fontSize: "0.78rem" }}>{entry.birthDate ? formatBirthDate(entry.birthDate) : "—"}</span>
-                      </div>
-                    </td>
-                    <td>
-                      <div style={crossed}>
-                        {attending && consentBadges.length > 0 ? (
-                          <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                            {consentBadges.map((b, i) => (
-                              <span key={i} style={{ fontSize: "0.72rem", color: "var(--setup-accent)" }}>{b}</span>
-                            ))}
-                          </div>
-                        ) : (
-                          <span style={{ fontSize: "0.78rem" }}>—</span>
-                        )}
-                      </div>
-                    </td>
-                    <td className="admin-table__date" style={{ whiteSpace: "nowrap", fontSize: "0.78rem" }}>
-                      {formatDate(entry.submittedAt)}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <Pagination
-            page={safePage}
-            totalPages={totalPages}
-            pageSize={pageSize}
-            total={filterEntries.length}
-            pageSizes={PAGE_SIZES}
-            onPageChange={setPage}
-            onPageSizeChange={setPageSize}
-          />
-        </div>
-      ) : (
-        <p className="setup-help">
-          {searchQuery
-            ? t("attendance.noResultsFilter")
-            : t("attendance.noResults")}
-        </p>
-      )}
+                  return (
+                    <tr key={entry.id}>
+                      <td>
+                        <input
+                          type="checkbox"
+                          checked={selectedIds.has(entry.id)}
+                          onChange={() => toggleOne(entry.id)}
+                          aria-label={t("attendance.selectEntry", { name: entry.guestName })}
+                        />
+                      </td>
+                      <td className="admin-table__name" style={{ fontWeight: isCompanion ? 400 : 600 }}>
+                        {entry.guestName}
+                      </td>
+                      <td style={{ fontSize: "0.78rem", color: "var(--setup-muted)" }}>
+                        {isCompanion && entry.mainGuestName ? entry.mainGuestName : "—"}
+                      </td>
+                      <td>
+                        <span className={`admin-badge admin-badge--${entry.attendance}`}>
+                          {attending ? t("attendance.attendingValue") : t("attendance.notAttendingValue")}
+                        </span>
+                      </td>
+                      <td>
+                        <div style={crossed}>
+                          {attending ? (
+                            <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+                              {menuLines.length > 0 ? (
+                                menuLines.map((line, i) => (
+                                  <span key={i} style={{ fontSize: "0.78rem" }}>
+                                    {line}
+                                  </span>
+                                ))
+                              ) : (
+                                <span style={{ fontSize: "0.78rem" }}>—</span>
+                              )}
+                            </div>
+                          ) : (
+                            <span style={{ fontSize: "0.78rem" }}>—</span>
+                          )}
+                        </div>
+                      </td>
+                      <td>
+                        <div style={crossed}>
+                          {attending && dietLines.length > 0 ? (
+                            <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+                              {dietLines.map((line, i) => (
+                                <span key={i} style={{ fontSize: "0.78rem" }}>
+                                  {line}
+                                </span>
+                              ))}
+                            </div>
+                          ) : (
+                            <span style={{ fontSize: "0.78rem" }}>—</span>
+                          )}
+                        </div>
+                      </td>
+                      <td>
+                        <div style={crossed}>
+                          <span style={{ fontSize: "0.78rem" }}>{attending ? transportLabel : "—"}</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div style={crossed}>
+                          <span style={{ fontSize: "0.78rem" }}>
+                            {entry.birthDate ? formatBirthDate(entry.birthDate) : "—"}
+                          </span>
+                        </div>
+                      </td>
+                      <td>
+                        <div style={crossed}>
+                          {attending && consentBadges.length > 0 ? (
+                            <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+                              {consentBadges.map((b, i) => (
+                                <span key={i} style={{ fontSize: "0.72rem", color: "var(--setup-accent)" }}>
+                                  {b}
+                                </span>
+                              ))}
+                            </div>
+                          ) : (
+                            <span style={{ fontSize: "0.78rem" }}>—</span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="admin-table__date" style={{ whiteSpace: "nowrap", fontSize: "0.78rem" }}>
+                        {formatDate(entry.submittedAt)}
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            <Pagination
+              page={safePage}
+              totalPages={totalPages}
+              pageSize={pageSize}
+              total={filterEntries.length}
+              pageSizes={PAGE_SIZES}
+              onPageChange={setPage}
+              onPageSizeChange={setPageSize}
+            />
+          </div>
+        ) : (
+          <p className="setup-help">{searchQuery ? t("attendance.noResultsFilter") : t("attendance.noResults")}</p>
+        )}
       </div>
 
       {(rsvpEntries || []).length > 0 && (
-        <div className="setup-actions" style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center", marginTop: "1rem" }}>
+        <div
+          className="setup-actions"
+          style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center", marginTop: "1rem" }}
+        >
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportPdf}>
             {t("attendance.exportPdf")}
           </button>
-          <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleExportCsv}>
+          <button
+            className="setup-button setup-button--ghost setup-button--compact"
+            type="button"
+            onClick={handleExportCsv}
+          >
             {t("attendance.exportCsv")}
           </button>
-          <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleExportMenu}>
+          <button
+            className="setup-button setup-button--ghost setup-button--compact"
+            type="button"
+            onClick={handleExportMenu}
+          >
             {t("attendance.exportMenu")}
           </button>
-          <button className="setup-button setup-button--ghost setup-button--compact" type="button"
+          <button
+            className="setup-button setup-button--ghost setup-button--compact"
+            type="button"
             onClick={handleBatchDelete}
             disabled={selectedIds.size === 0}
-            style={{ background: selectedIds.size > 0 ? "#ef4444" : undefined, color: selectedIds.size > 0 ? "#fff" : undefined }}>
+            style={{
+              background: selectedIds.size > 0 ? "#ef4444" : undefined,
+              color: selectedIds.size > 0 ? "#fff" : undefined,
+            }}
+          >
             {t("attendance.deleteSelected", { count: selectedIds.size })}
           </button>
-          <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleClearRsvpEntries}>
+          <button
+            className="setup-button setup-button--ghost setup-button--compact"
+            type="button"
+            onClick={handleClearRsvpEntries}
+          >
             {t("attendance.clearAttendance")}
           </button>
         </div>

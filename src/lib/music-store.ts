@@ -9,22 +9,28 @@ function audioCol(token: string) {
 }
 
 export async function uploadAudio(inviteToken: string, file: File, onProgress?: (pct: number) => void) {
-
   onProgress?.(10);
   const { compressAudio } = await import("./audio-utils");
   const dataUrl = await compressAudio(file);
 
   onProgress?.(40);
   const encrypted = await encrypt(dataUrl, inviteToken);
-  if (!encrypted) { console.error("[app]", "[music-store]", "uploadAudio encrypt failed", {}); throw new Error("Encryption failed"); }
+  if (!encrypted) {
+    console.error("[app]", "[music-store]", "uploadAudio encrypt failed", {});
+    throw new Error("Encryption failed");
+  }
 
   onProgress?.(70);
 
   return { encrypted, dataUrl };
 }
 
-export async function addAudio(inviteToken: string, encrypted: string, dataUrl: string, onProgress?: (pct: number) => void) {
-
+export async function addAudio(
+  inviteToken: string,
+  encrypted: string,
+  dataUrl: string,
+  onProgress?: (pct: number) => void,
+) {
   // Elimina los chunks de subidas anteriores (incluidas las incompletas):
   // loadAudio concatena toda la colección, y sin esta limpieza los chunks
   // viejos se mezclaban con los nuevos corrompiendo el audio.
@@ -64,26 +70,33 @@ export async function addAudio(inviteToken: string, encrypted: string, dataUrl: 
 }
 
 export async function loadAudio(inviteToken: string) {
-
   try {
     const q = query(audioCol(inviteToken), orderBy("chunkIndex", "asc"));
     const snap = await getDocs(q);
-    if (snap.empty) { ; return null; }
+    if (snap.empty) {
+      return null;
+    }
     const chunks = snap.docs.map((d) => d.data().data as string);
 
     const concatenated = chunks.join("");
     const url = await decrypt(concatenated, inviteToken);
-    if (url) { ; return { id: `${inviteToken}_audio`, url }; }
+    if (url) {
+      return { id: `${inviteToken}_audio`, url };
+    }
 
     return null;
-  } catch (err) { console.error("[app]", "[music-store]", "loadAudio error", { error: err }); return null; }
+  } catch (err) {
+    console.error("[app]", "[music-store]", "loadAudio error", { error: err });
+    return null;
+  }
 }
 
 export async function deleteAudio(inviteToken: string) {
-
   try {
     const snap = await getDocs(audioCol(inviteToken));
-    if (snap.empty) { ; return; }
+    if (snap.empty) {
+      return;
+    }
     const batch = writeBatch(db);
     snap.docs.forEach((d) => batch.delete(d.ref));
     await batch.commit();

@@ -21,7 +21,6 @@ export interface SuperAdminValue {
 const SuperAdminContext = createContext<SuperAdminValue | null>(null);
 
 export function SuperAdminProvider({ children }: { children: React.ReactNode }) {
-
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
@@ -34,7 +33,6 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
   useSessionRenewal(user !== null);
 
   useEffect(() => {
-
     let unsubscribe: (() => void) | null = null;
     // El SDK de auth solo se carga si el usuario está en la consola de
     // superadmin o tiene una sesión superadmin persistida: un invitado en
@@ -55,7 +53,6 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
         const local = getSession();
 
         if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && local?.type === "superadmin") {
-
           setUser(firebaseUser);
         } else if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && loggingInRef.current) {
           // Login en curso: no forzar cierre, esperar a que login() guarde la sesión
@@ -63,7 +60,6 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
           setUser(firebaseUser);
         } else {
           if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL) {
-
             signOut(instance).catch(() => {});
           }
 
@@ -77,49 +73,51 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
     };
   }, []);
 
-  const login = useCallback(async (email: string, password: string) => {
-
-    setError("");
-    loggingInRef.current = true;
-    try {
-      const authInstance = await getAuthInstance();
-      const { signInWithEmailAndPassword, signOut } = await import("firebase/auth");
-      const result = await signInWithEmailAndPassword(authInstance, email, password);
-      if (result.user.email !== SUPERADMIN_EMAIL) {
-        console.error("[app]", "[SuperAdminContext]", "login error: no permissions", { email: result.user.email });
-        await signOut(authInstance);
-        setError(t("auth.superadminNoPermissions"));
+  const login = useCallback(
+    async (email: string, password: string) => {
+      setError("");
+      loggingInRef.current = true;
+      try {
+        const authInstance = await getAuthInstance();
+        const { signInWithEmailAndPassword, signOut } = await import("firebase/auth");
+        const result = await signInWithEmailAndPassword(authInstance, email, password);
+        if (result.user.email !== SUPERADMIN_EMAIL) {
+          console.error("[app]", "[SuperAdminContext]", "login error: no permissions", { email: result.user.email });
+          await signOut(authInstance);
+          setError(t("auth.superadminNoPermissions"));
+          loggingInRef.current = false;
+          return false;
+        }
+        saveSession("superadmin", result.user.email ?? "", { uid: result.user.uid });
+        setUser(result.user);
         loggingInRef.current = false;
+
+        try {
+          const cred = new PasswordCredential({ id: email, password, name: email });
+          navigator.credentials.store(cred);
+        } catch {}
+        return true;
+      } catch (err) {
+        loggingInRef.current = false;
+        const code =
+          err && typeof err === "object" && "code" in err ? String((err as Record<string, unknown>).code) : "";
+        console.error("[app]", "[SuperAdminContext]", "login error", { code });
+        if (code === "auth/user-not-found" || code === "auth/wrong-password" || code === "auth/invalid-credential") {
+          setError(t("auth.superadminWrongCredentials"));
+        } else if (code === "auth/too-many-requests") {
+          setError(t("auth.superadminTooManyAttempts"));
+        } else if (code === "auth/invalid-email") {
+          setError(t("auth.superadminInvalidEmail"));
+        } else {
+          setError(t("auth.superadminLoginError"));
+        }
         return false;
       }
-      saveSession("superadmin", result.user.email ?? "", { uid: result.user.uid });
-      setUser(result.user);
-      loggingInRef.current = false;
-
-      try {
-        const cred = new PasswordCredential({ id: email, password, name: email });
-        navigator.credentials.store(cred);
-      } catch {}
-      return true;
-    } catch (err) {
-      loggingInRef.current = false;
-      const code = err && typeof err === "object" && "code" in err ? String((err as Record<string, unknown>).code) : "";
-      console.error("[app]", "[SuperAdminContext]", "login error", { code });
-      if (code === "auth/user-not-found" || code === "auth/wrong-password" || code === "auth/invalid-credential") {
-        setError(t("auth.superadminWrongCredentials"));
-      } else if (code === "auth/too-many-requests") {
-        setError(t("auth.superadminTooManyAttempts"));
-      } else if (code === "auth/invalid-email") {
-        setError(t("auth.superadminInvalidEmail"));
-      } else {
-        setError(t("auth.superadminLoginError"));
-      }
-      return false;
-    }
-  }, [t]);
+    },
+    [t],
+  );
 
   const logout = useCallback(async () => {
-
     clearSession();
     const authInstance = await getAuthInstance();
     const { signOut } = await import("firebase/auth");
@@ -134,15 +132,18 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
     navigate("/");
   }, [navigate]);
 
-  const value = useMemo(() => ({
-    isSuperAdmin: user !== null,
-    user,
-    email: SUPERADMIN_EMAIL,
-    isLoading,
-    error,
-    login,
-    logout,
-  }), [user, isLoading, error, login, logout]);
+  const value = useMemo(
+    () => ({
+      isSuperAdmin: user !== null,
+      user,
+      email: SUPERADMIN_EMAIL,
+      isLoading,
+      error,
+      login,
+      logout,
+    }),
+    [user, isLoading, error, login, logout],
+  );
 
   return <SuperAdminContext.Provider value={value}>{children}</SuperAdminContext.Provider>;
 }

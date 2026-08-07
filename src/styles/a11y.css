@@ -58,7 +58,10 @@
   color: var(--setup-muted);
   background: color-mix(in srgb, var(--setup-field-bg) 60%, transparent);
   border: 1px solid color-mix(in srgb, var(--setup-border) 30%, transparent);
-  transition: background 200ms, color 200ms, border-color 200ms;
+  transition:
+    background 200ms,
+    color 200ms,
+    border-color 200ms;
 }
 .a11y-btn:hover {
   color: var(--setup-title);
@@ -90,7 +93,9 @@
   background: color-mix(in srgb, var(--setup-field-bg) 80%, transparent);
   border: 1px solid color-mix(in srgb, var(--setup-border) 30%, transparent);
   position: relative;
-  transition: background 200ms, border-color 200ms;
+  transition:
+    background 200ms,
+    border-color 200ms;
   flex-shrink: 0;
 }
 .a11y-toggle__track::after {
@@ -102,7 +107,9 @@
   height: calc(1.3rem - 6px);
   border-radius: 50%;
   background: var(--setup-muted);
-  transition: transform 200ms, background 200ms;
+  transition:
+    transform 200ms,
+    background 200ms;
 }
 .a11y-toggle input:checked + .a11y-toggle__track {
   background: color-mix(in srgb, var(--setup-accent) 30%, transparent);
@@ -124,7 +131,9 @@
   background: color-mix(in srgb, var(--setup-accent) 14%, transparent);
   border: 1px solid color-mix(in srgb, var(--setup-accent) 25%, transparent);
   color: var(--setup-title);
-  transition: background 200ms, border-color 200ms;
+  transition:
+    background 200ms,
+    border-color 200ms;
 }
 .a11y-trigger:hover {
   background: color-mix(in srgb, var(--setup-accent) 22%, transparent);
@@ -208,7 +217,10 @@ html.a11y-underline-links button:not(.a11y-btn):not(.music-player__play):not(.a1
 }
 html.a11y-big-cursor,
 html.a11y-big-cursor * {
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'><circle cx='24' cy='24' r='14' fill='none' stroke='white' stroke-width='3'/><circle cx='24' cy='24' r='3' fill='white'/></svg>") 24 24, auto !important;
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'><circle cx='24' cy='24' r='14' fill='none' stroke='white' stroke-width='3'/><circle cx='24' cy='24' r='3' fill='white'/></svg>")
+      24 24,
+    auto !important;
 }
 html.a11y-desaturate {
   filter: grayscale(100%);

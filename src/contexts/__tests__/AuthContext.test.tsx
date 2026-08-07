@@ -27,7 +27,10 @@ vi.mock("../useConfig", () => ({
   useConfig: () => mockUseConfig(),
 }));
 
-const mockUseAppUI = vi.fn(() => ({ setAdminMessage: mockSetAdminMessage, setAdminMessageType: mockSetAdminMessageType }));
+const mockUseAppUI = vi.fn(() => ({
+  setAdminMessage: mockSetAdminMessage,
+  setAdminMessageType: mockSetAdminMessageType,
+}));
 vi.mock("../useAppUI", () => ({
   useAppUI: (...args: Parameters<typeof mockUseAppUI>) => mockUseAppUI(...args),
 }));
@@ -100,17 +103,29 @@ describe("AuthProvider", () => {
   });
 
   it("renders children", () => {
-    render(<AuthProvider><div>child</div></AuthProvider>);
+    render(
+      <AuthProvider>
+        <div>child</div>
+      </AuthProvider>,
+    );
     expect(screen.getByText("child")).toBeDefined();
   });
 
   it("registers onFirstSave callback", () => {
-    render(<AuthProvider><div>child</div></AuthProvider>);
+    render(
+      <AuthProvider>
+        <div>child</div>
+      </AuthProvider>,
+    );
     expect(mockRegisterOnFirstSave).toHaveBeenCalledWith(expect.any(Function));
   });
 
   it("calls refreshSetupToken on mount with inviteToken", () => {
-    render(<AuthProvider><div>child</div></AuthProvider>);
+    render(
+      <AuthProvider>
+        <div>child</div>
+      </AuthProvider>,
+    );
     expect(mockRefreshSetupToken).toHaveBeenCalled();
   });
 
@@ -121,12 +136,20 @@ describe("AuthProvider", () => {
       setHasStoredConfig: vi.fn(),
       registerOnFirstSave: vi.fn(),
     });
-    render(<AuthProvider><div>child</div></AuthProvider>);
+    render(
+      <AuthProvider>
+        <div>child</div>
+      </AuthProvider>,
+    );
     expect(mockRefreshSetupToken).not.toHaveBeenCalled();
   });
 
   it("triggers session renewal via onFirstSave callback", async () => {
-    render(<AuthProvider><div>child</div></AuthProvider>);
+    render(
+      <AuthProvider>
+        <div>child</div>
+      </AuthProvider>,
+    );
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     // El token ya no se borra: el auto-login usa las credenciales previas.
@@ -143,7 +166,11 @@ describe("AuthProvider", () => {
 
   it("handles session update error gracefully", async () => {
     mockUpdateDoc.mockRejectedValueOnce(new Error("update failed"));
-    render(<AuthProvider><div>child</div></AuthProvider>);
+    render(
+      <AuthProvider>
+        <div>child</div>
+      </AuthProvider>,
+    );
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     await vi.waitFor(() => {
@@ -178,7 +205,11 @@ describe("AuthProvider", () => {
       setSetupToken: mockSetSetupToken,
       setAuthMessage: vi.fn(),
     });
-    render(<AuthProvider><div>child</div></AuthProvider>);
+    render(
+      <AuthProvider>
+        <div>child</div>
+      </AuthProvider>,
+    );
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     expect(mockSetSetupToken).not.toHaveBeenCalled();
@@ -186,7 +217,11 @@ describe("AuthProvider", () => {
 
   it("saves session with displayName on first save", async () => {
     mockGetSession.mockReturnValue({ identifier: "admin-user-name", expiresAt: Date.now() + 999999 });
-    render(<AuthProvider><div>child</div></AuthProvider>);
+    render(
+      <AuthProvider>
+        <div>child</div>
+      </AuthProvider>,
+    );
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     await vi.waitFor(() => {
@@ -202,7 +237,11 @@ describe("AuthProvider", () => {
       setHasStoredConfig: vi.fn(),
       registerOnFirstSave: mockRegisterOnFirstSave,
     });
-    render(<AuthProvider><div>child</div></AuthProvider>);
+    render(
+      <AuthProvider>
+        <div>child</div>
+      </AuthProvider>,
+    );
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     await vi.waitFor(() => {
@@ -219,7 +258,11 @@ describe("AuthProvider", () => {
       setHasStoredConfig: vi.fn(),
       registerOnFirstSave: mockRegisterOnFirstSave,
     });
-    render(<AuthProvider><div>child</div></AuthProvider>);
+    render(
+      <AuthProvider>
+        <div>child</div>
+      </AuthProvider>,
+    );
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     await vi.waitFor(() => {
@@ -234,7 +277,11 @@ describe("AuthProvider", () => {
       setAdminMessageType: null,
     } as unknown as ReturnType<typeof mockUseAppUI>);
     mockUpdateDoc.mockRejectedValueOnce(new Error("update failed"));
-    render(<AuthProvider><div>child</div></AuthProvider>);
+    render(
+      <AuthProvider>
+        <div>child</div>
+      </AuthProvider>,
+    );
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
     // updateDoc failed, so setIsTokenVerified should NOT be called

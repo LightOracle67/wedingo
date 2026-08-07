@@ -36,7 +36,10 @@ export function validateConfigForSave(
       sanitized.weddingPlace = derivedPlace;
     }
   }
-  const hiddenArray = (sanitized.hiddenSections || "").split(",").filter(Boolean).filter((s: string) => !SPECIAL_SECTIONS.includes(s));
+  const hiddenArray = (sanitized.hiddenSections || "")
+    .split(",")
+    .filter(Boolean)
+    .filter((s: string) => !SPECIAL_SECTIONS.includes(s));
   const hiddenSet = new Set(hiddenArray);
 
   if (!hasStoredConfig) {
@@ -67,7 +70,10 @@ export function validateConfigForSave(
     return { sanitized, hiddenSet, errorKey: "errors.themeInvalid" };
   }
 
-  const orderArray = (sanitized.sectionOrder || "").split(",").filter(Boolean).filter((s: string) => !SPECIAL_SECTIONS.includes(s));
+  const orderArray = (sanitized.sectionOrder || "")
+    .split(",")
+    .filter(Boolean)
+    .filter((s: string) => !SPECIAL_SECTIONS.includes(s));
   const validSectionKeys = new Set(STORY_SECTION_ORDER);
   if (orderArray.length < 1 || !orderArray.every((s: string) => validSectionKeys.has(s))) {
     return { sanitized, hiddenSet, errorKey: "errors.sectionOrderInvalid" };
@@ -95,7 +101,9 @@ export function validateConfigForSave(
       }
     };
     const hasMenuOption =
-      hasDishes(sanitized.menuCarneDishes) || hasDishes(sanitized.menuPescadoDishes) || hasDishes(sanitized.menuVeganoDishes);
+      hasDishes(sanitized.menuCarneDishes) ||
+      hasDishes(sanitized.menuPescadoDishes) ||
+      hasDishes(sanitized.menuVeganoDishes);
     if (!hasMenuOption) {
       return { sanitized, hiddenSet, errorKey: "errors.menuRequired" };
     }
@@ -127,7 +135,12 @@ export function validateConfigForSave(
       return { sanitized, hiddenSet, errorKey: "errors.dressCodeCustomRequired" };
     }
     if (sanitized.weddingDressCodeCustom.length > MAX_DRESS_CODE_CUSTOM_LENGTH) {
-      return { sanitized, hiddenSet, errorKey: "errors.dressCodeCustomTooLong", errorParams: { max: MAX_DRESS_CODE_CUSTOM_LENGTH } };
+      return {
+        sanitized,
+        hiddenSet,
+        errorKey: "errors.dressCodeCustomTooLong",
+        errorParams: { max: MAX_DRESS_CODE_CUSTOM_LENGTH },
+      };
     }
   } else if (sanitized.weddingDressCodeCustom) {
     // Si se elige una opción predefinida, el texto personalizado se descarta.

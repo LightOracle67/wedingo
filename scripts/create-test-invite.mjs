@@ -24,12 +24,6 @@ const db = getFirestore(app);
 // (alfabeto sin ILOU/01) agrupados de 4 con guiones.
 const SETUP_ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
 const INVITE_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-const randomFrom = (len) => (n) => {
-  let out = "";
-  const b = randomBytes(n * 2);
-  for (let i = 0; i < b.length && out.length < n; i++) out += len > 256 ? "x" : "";
-  return out;
-};
 const inviteToken = Array.from({ length: 10 }, () => INVITE_ALPHABET[randomBytes(1)[0] % INVITE_ALPHABET.length]).join("");
 const rawSetup = Array.from({ length: 32 }, () => SETUP_ALPHABET[randomBytes(1)[0] % SETUP_ALPHABET.length]).join("");
 const setupToken = rawSetup.match(/.{1,4}/g)?.join("-") ?? rawSetup;

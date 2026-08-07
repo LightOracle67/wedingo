@@ -34,11 +34,10 @@ const PrintPage = lazy(() => import("./pages/PrintPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function AppShell() {
-
   const { t } = useTranslation();
   const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
   const [username, setUsername] = useState("");
-  
+
   useEffect(() => {
     const session = getSession();
     if (session?.identifier && session.identifier.length > 10) {
@@ -60,28 +59,30 @@ function AppShell() {
   // Escape cierra el menú móvil (patrón de diálogo accesible).
   useEscapeKey(() => setNavOpen(false), navOpen);
 
-  const isEditingRoute = location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
+  const isEditingRoute =
+    location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
 
   // Efectos de documento (idioma/RTL, título, tema, robots, errores, scroll).
   useAppShellEffects(config, formData, inviteToken, isEditingRoute);
 
   useEffect(() => {
-
-    const onOnline = () => { ; setIsOnline(true); };
-    const onOffline = () => { ; setIsOnline(false); };
+    const onOnline = () => {
+      setIsOnline(true);
+    };
+    const onOffline = () => {
+      setIsOnline(false);
+    };
     window.addEventListener("online", onOnline);
     window.addEventListener("offline", onOffline);
     return () => {
-
       window.removeEventListener("online", onOnline);
       window.removeEventListener("offline", onOffline);
     };
   }, []);
 
   useEffect(() => {
-
     if ("serviceWorker" in navigator && import.meta.env.PROD) {
-      navigator.serviceWorker.register("/sw.js").catch(() => { ; });
+      navigator.serviceWorker.register("/sw.js").catch(() => {});
     }
   }, []);
 
@@ -95,7 +96,9 @@ function AppShell() {
       const last = localStorage.getItem("wedin_deploy_id");
       if (last && last !== deployId) setUpdateAvailable(true);
       localStorage.setItem("wedin_deploy_id", deployId);
-    } catch { /* almacenamiento no disponible */ }
+    } catch {
+      /* almacenamiento no disponible */
+    }
   }, []);
 
   return (
@@ -105,23 +108,45 @@ function AppShell() {
         {t("common.skipToContent")}
       </a>
       {import.meta.env.DEV ? (
-        <div style={{
-          position: "fixed", top: 0, left: 0, zIndex: 100000,
-          background: "#ff9800", color: "#000", fontSize: "0.7rem",
-          padding: "0.1rem 0.4rem", borderRadius: "0 0 0.25rem 0",
-          fontWeight: 700, letterSpacing: "0.05em",
-        }}>DEV</div>
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            zIndex: 100000,
+            background: "#ff9800",
+            color: "#000",
+            fontSize: "0.7rem",
+            padding: "0.1rem 0.4rem",
+            borderRadius: "0 0 0.25rem 0",
+            fontWeight: 700,
+            letterSpacing: "0.05em",
+          }}
+        >
+          DEV
+        </div>
       ) : null}
 
       {!isOnline ? (
-        <div className="offline-banner" style={{
-          position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 99999,
-          background: "#e06060", color: "#fff", textAlign: "center",
-          padding: "0.5rem", fontSize: "0.85rem", fontWeight: 600,
-          transition: "transform 0.3s ease, opacity 0.3s ease",
-          transform: "translateY(0)",
-          opacity: 1,
-        }}>
+        <div
+          className="offline-banner"
+          style={{
+            position: "fixed",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 99999,
+            background: "#e06060",
+            color: "#fff",
+            textAlign: "center",
+            padding: "0.5rem",
+            fontSize: "0.85rem",
+            fontWeight: 600,
+            transition: "transform 0.3s ease, opacity 0.3s ease",
+            transform: "translateY(0)",
+            opacity: 1,
+          }}
+        >
           {t("common.offline")}
         </div>
       ) : null}
@@ -137,93 +162,270 @@ function AppShell() {
         </div>
       ) : null}
 
-      {isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print") ? (
+      {isAdminTokenLoggedIn &&
+      inviteToken &&
+      !location.pathname.endsWith("/setup") &&
+      !location.pathname.endsWith("/print") ? (
         <nav className="admin-bar" aria-label={t("common.adminBar.ariaLabel")}>
           <div className="admin-bar__inner">
-            <span className="admin-bar__title">{username || tokenLoginUsername || config.adminUsername || t("common.adminBar.fallback")}</span>
+            <span className="admin-bar__title">
+              {username || tokenLoginUsername || config.adminUsername || t("common.adminBar.fallback")}
+            </span>
             <div className="admin-bar__links">
-              <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}`}>{t("admin.tabs.invitation")}</Link>
-              <Link className={`admin-bar__link ${location.pathname === `/${inviteToken}/admin` ? "admin-bar__link--active" : ""}`} to={`/${inviteToken}/admin`}>{t("admin.tabs.panel")}</Link>
-               <LanguageSwitcher />
+              <Link
+                className={`admin-bar__link ${location.pathname === `/${inviteToken}` ? "admin-bar__link--active" : ""}`}
+                to={`/${inviteToken}`}
+              >
+                {t("admin.tabs.invitation")}
+              </Link>
+              <Link
+                className={`admin-bar__link ${location.pathname === `/${inviteToken}/admin` ? "admin-bar__link--active" : ""}`}
+                to={`/${inviteToken}/admin`}
+              >
+                {t("admin.tabs.panel")}
+              </Link>
+              <LanguageSwitcher />
             </div>
           </div>
         </nav>
       ) : null}
-      <AdminBarHeightSync show={Boolean(isAdminTokenLoggedIn && inviteToken && !location.pathname.endsWith("/setup") && !location.pathname.endsWith("/print"))} />
+      <AdminBarHeightSync
+        show={Boolean(
+          isAdminTokenLoggedIn &&
+          inviteToken &&
+          !location.pathname.endsWith("/setup") &&
+          !location.pathname.endsWith("/print"),
+        )}
+      />
 
-      {inviteToken && location.pathname === `/${inviteToken}` && config.musicFile ? <MusicPlayer musicUrl={config.musicFile} /> : null}
+      {inviteToken && location.pathname === `/${inviteToken}` && config.musicFile ? (
+        <MusicPlayer musicUrl={config.musicFile} />
+      ) : null}
 
       {!isEditingRoute && !isAdminTokenLoggedIn && (
         <>
-          <button type="button" className="app-nav-toggle" onClick={() => { ; setNavOpen(!navOpen); }} aria-label={t("common.menu")} aria-expanded={navOpen} aria-controls="app-nav-overlay">
+          <button
+            type="button"
+            className="app-nav-toggle"
+            onClick={() => {
+              setNavOpen(!navOpen);
+            }}
+            aria-label={t("common.menu")}
+            aria-expanded={navOpen}
+            aria-controls="app-nav-overlay"
+          >
             <span className={`app-nav-toggle__icon${navOpen ? " app-nav-toggle__icon--open" : ""}`}>
-              <span /><span /><span />
+              <span />
+              <span />
+              <span />
             </span>
           </button>
 
-          <div id="app-nav-overlay" ref={navOverlayRef} className={`app-nav-overlay${navOpen ? " app-nav-overlay--open" : ""}`} role="dialog" aria-modal="true" aria-label={t("common.menu")}>
+          <div
+            id="app-nav-overlay"
+            ref={navOverlayRef}
+            className={`app-nav-overlay${navOpen ? " app-nav-overlay--open" : ""}`}
+            role="dialog"
+            aria-modal="true"
+            aria-label={t("common.menu")}
+          >
             <div className="app-nav-overlay__content">
               <LanguageSwitcher />
-              <button type="button" className="app-nav-overlay__link" onClick={() => { setShowA11y(true); setNavOpen(false); }} aria-label={t("common.accessibility")}>♿ {t("common.accessibility")}</button>
-              <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("privacy"); setNavOpen(false); }}>{t("public.privacyPolicy")}</button>
-              <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("terms"); setNavOpen(false); }}>{t("public.terms")}</button>
-              <button type="button" className="app-nav-overlay__link" onClick={() => { setLegalSection("legal"); setNavOpen(false); }}>{t("public.legalNotice")}</button>
-              <button type="button" className="app-nav-overlay__link" onClick={() => { setShowDataRequest(true); setNavOpen(false); }}>{t("public.dataRequest")}</button>
-              <button type="button" className="app-nav-overlay__link app-nav-overlay__link--version" onClick={() => { setShowChangelog(true); setNavOpen(false); }}>{t("common.version", { version: APP_VERSION })}</button>
+              <button
+                type="button"
+                className="app-nav-overlay__link"
+                onClick={() => {
+                  setShowA11y(true);
+                  setNavOpen(false);
+                }}
+                aria-label={t("common.accessibility")}
+              >
+                ♿ {t("common.accessibility")}
+              </button>
+              <button
+                type="button"
+                className="app-nav-overlay__link"
+                onClick={() => {
+                  setLegalSection("privacy");
+                  setNavOpen(false);
+                }}
+              >
+                {t("public.privacyPolicy")}
+              </button>
+              <button
+                type="button"
+                className="app-nav-overlay__link"
+                onClick={() => {
+                  setLegalSection("terms");
+                  setNavOpen(false);
+                }}
+              >
+                {t("public.terms")}
+              </button>
+              <button
+                type="button"
+                className="app-nav-overlay__link"
+                onClick={() => {
+                  setLegalSection("legal");
+                  setNavOpen(false);
+                }}
+              >
+                {t("public.legalNotice")}
+              </button>
+              <button
+                type="button"
+                className="app-nav-overlay__link"
+                onClick={() => {
+                  setShowDataRequest(true);
+                  setNavOpen(false);
+                }}
+              >
+                {t("public.dataRequest")}
+              </button>
+              <button
+                type="button"
+                className="app-nav-overlay__link app-nav-overlay__link--version"
+                onClick={() => {
+                  setShowChangelog(true);
+                  setNavOpen(false);
+                }}
+              >
+                {t("common.version", { version: APP_VERSION })}
+              </button>
             </div>
           </div>
 
           <footer className="app-footer">
             <div className="app-footer__left">
               <LanguageSwitcher />
-              <button type="button" className="a11y-trigger" onClick={() => setShowA11y(true)} aria-label={t("common.accessibility")}>♿</button>
+              <button
+                type="button"
+                className="a11y-trigger"
+                onClick={() => setShowA11y(true)}
+                aria-label={t("common.accessibility")}
+              >
+                ♿
+              </button>
             </div>
             <div className="app-footer__right">
-              <button type="button" onClick={() => setLegalSection("privacy")} className="app-footer__link">{t("public.privacyPolicy")}</button>
+              <button type="button" onClick={() => setLegalSection("privacy")} className="app-footer__link">
+                {t("public.privacyPolicy")}
+              </button>
               <span className="app-footer__sep">·</span>
-              <button type="button" onClick={() => setLegalSection("terms")} className="app-footer__link">{t("public.terms")}</button>
+              <button type="button" onClick={() => setLegalSection("terms")} className="app-footer__link">
+                {t("public.terms")}
+              </button>
               <span className="app-footer__sep">·</span>
-              <button type="button" onClick={() => setLegalSection("legal")} className="app-footer__link">{t("public.legalNotice")}</button>
+              <button type="button" onClick={() => setLegalSection("legal")} className="app-footer__link">
+                {t("public.legalNotice")}
+              </button>
               <span className="app-footer__sep">·</span>
-              <button type="button" onClick={() => setShowDataRequest(true)} className="app-footer__link">{t("public.dataRequest")}</button>
+              <button type="button" onClick={() => setShowDataRequest(true)} className="app-footer__link">
+                {t("public.dataRequest")}
+              </button>
               <span className="app-footer__sep">·</span>
-              <button type="button" onClick={() => setShowChangelog(true)} className="app-footer__link" style={{ opacity: 0.4 }}>{t("common.version", { version: APP_VERSION })}</button>
+              <button
+                type="button"
+                onClick={() => setShowChangelog(true)}
+                className="app-footer__link"
+                style={{ opacity: 0.4 }}
+              >
+                {t("common.version", { version: APP_VERSION })}
+              </button>
             </div>
           </footer>
         </>
       )}
 
       {isAdminTokenLoggedIn && (
-        <button type="button" className="a11y-trigger a11y-trigger--admin" onClick={() => setShowA11y(true)} aria-label={t("common.accessibility")}>♿</button>
+        <button
+          type="button"
+          className="a11y-trigger a11y-trigger--admin"
+          onClick={() => setShowA11y(true)}
+          aria-label={t("common.accessibility")}
+        >
+          ♿
+        </button>
       )}
 
       <main id="main-content" tabIndex={-1}>
         <Suspense fallback={<div className="page-loading" />}>
-        <Routes>
-          <Route path="/" element={<ErrorBoundary><LandingPage /></ErrorBoundary>} />
-          <Route path="/:inviteToken" element={<ErrorBoundary key={location.pathname}><PublicInvitation /></ErrorBoundary>} />
-          <Route path="/:inviteToken/setup" element={<ErrorBoundary key={location.pathname}><SetupPage /></ErrorBoundary>} />
-          <Route path="/:inviteToken/admin" element={<ErrorBoundary key={location.pathname}><AdminPage /></ErrorBoundary>} />
-          <Route path={SUPERADMIN_ROUTE} element={<ErrorBoundary><SuperAdminLogin /></ErrorBoundary>} />
-          <Route path="/:inviteToken/print" element={<ErrorBoundary key={location.pathname}><PrintPage /></ErrorBoundary>} />
-          {SUPERADMIN_DASHBOARD && (
-            <Route path={SUPERADMIN_DASHBOARD} element={<ErrorBoundary><SuperAdminPanel /></ErrorBoundary>} />
-          )}
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <ErrorBoundary>
+                  <LandingPage />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="/:inviteToken"
+              element={
+                <ErrorBoundary key={location.pathname}>
+                  <PublicInvitation />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="/:inviteToken/setup"
+              element={
+                <ErrorBoundary key={location.pathname}>
+                  <SetupPage />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="/:inviteToken/admin"
+              element={
+                <ErrorBoundary key={location.pathname}>
+                  <AdminPage />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path={SUPERADMIN_ROUTE}
+              element={
+                <ErrorBoundary>
+                  <SuperAdminLogin />
+                </ErrorBoundary>
+              }
+            />
+            <Route
+              path="/:inviteToken/print"
+              element={
+                <ErrorBoundary key={location.pathname}>
+                  <PrintPage />
+                </ErrorBoundary>
+              }
+            />
+            {SUPERADMIN_DASHBOARD && (
+              <Route
+                path={SUPERADMIN_DASHBOARD}
+                element={
+                  <ErrorBoundary>
+                    <SuperAdminPanel />
+                  </ErrorBoundary>
+                }
+              />
+            )}
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
         </Suspense>
       </main>
 
       {/* Fireflies solo en la landing y en la invitación pública: su
           animación continua no debe ejecutarse en rutas de trabajo. */}
-      {(location.pathname === "/" || (inviteToken && location.pathname === `/${inviteToken}`)) ? <Fireflies /> : null}
+      {location.pathname === "/" || (inviteToken && location.pathname === `/${inviteToken}`) ? <Fireflies /> : null}
       <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />
 
       {/* Modales bajo demanda: su chunk se descarga solo al abrirlos. */}
       <Suspense fallback={null}>
         <CookieConsent />
         {legalSection ? <LegalModal section={legalSection} onClose={() => setLegalSection("")} /> : null}
-        {showDataRequest ? <DataRequestModal inviteToken={inviteToken} onClose={() => setShowDataRequest(false)} /> : null}
+        {showDataRequest ? (
+          <DataRequestModal inviteToken={inviteToken} onClose={() => setShowDataRequest(false)} />
+        ) : null}
         {showChangelog ? <ChangelogModal onClose={() => setShowChangelog(false)} /> : null}
       </Suspense>
     </>

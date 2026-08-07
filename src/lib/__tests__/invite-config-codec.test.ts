@@ -39,7 +39,12 @@ const CONFIG_WITH_ALL = {
 
 describe("encodeInviteConfig", () => {
   it("excludes backgroundImage fields", () => {
-    const result = encodeInviteConfig({ ...SAMPLE_CONFIG, backgroundImageLabel: "label", backgroundImageSource: "local", adminUsername: "admin" });
+    const result = encodeInviteConfig({
+      ...SAMPLE_CONFIG,
+      backgroundImageLabel: "label",
+      backgroundImageSource: "local",
+      adminUsername: "admin",
+    });
     const decoded = decodeInviteConfig(result);
     expect(decoded.backgroundImageLabel).toBeUndefined();
     expect(decoded.backgroundImageSource).toBeUndefined();

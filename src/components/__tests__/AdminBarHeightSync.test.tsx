@@ -29,7 +29,9 @@ describe("AdminBarHeightSync", () => {
     vi.stubGlobal("ResizeObserver", MockResizeObserver);
     const bar = document.createElement("div");
     bar.className = "admin-bar";
-    bar.getBoundingClientRect = vi.fn(() => ({ height: 72, width: 0, top: 0, left: 0, bottom: 0, right: 0, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect);
+    bar.getBoundingClientRect = vi.fn(
+      () => ({ height: 72, width: 0, top: 0, left: 0, bottom: 0, right: 0, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect,
+    );
     document.body.appendChild(bar);
 
     render(<AdminBarHeightSync show={true} />);
@@ -39,7 +41,9 @@ describe("AdminBarHeightSync", () => {
   it("does not set the variable when the bar has no height", () => {
     const bar = document.createElement("div");
     bar.className = "admin-bar";
-    bar.getBoundingClientRect = vi.fn(() => ({ height: 0, width: 0, top: 0, left: 0, bottom: 0, right: 0, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect);
+    bar.getBoundingClientRect = vi.fn(
+      () => ({ height: 0, width: 0, top: 0, left: 0, bottom: 0, right: 0, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect,
+    );
     document.body.appendChild(bar);
 
     render(<AdminBarHeightSync show={true} />);
@@ -55,7 +59,9 @@ describe("AdminBarHeightSync", () => {
     vi.stubGlobal("ResizeObserver", MockResizeObserver);
     const bar = document.createElement("div");
     bar.className = "admin-bar";
-    bar.getBoundingClientRect = vi.fn(() => ({ height: 50, width: 0, top: 0, left: 0, bottom: 0, right: 0, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect);
+    bar.getBoundingClientRect = vi.fn(
+      () => ({ height: 50, width: 0, top: 0, left: 0, bottom: 0, right: 0, x: 0, y: 0, toJSON: () => ({}) }) as DOMRect,
+    );
     document.body.appendChild(bar);
 
     const { unmount } = render(<AdminBarHeightSync show={true} />);

@@ -2,7 +2,9 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 const mockUpdateFormField = vi.fn();
-const mockFormData = vi.hoisted(() => ({ giftsInfo: "", bankInfo: "", giftsInfoEnabled: "true", bankInfoEnabled: "true" }) as Record<string, string>);
+const mockFormData = vi.hoisted(
+  () => ({ giftsInfo: "", bankInfo: "", giftsInfoEnabled: "true", bankInfoEnabled: "true" }) as Record<string, string>,
+);
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),

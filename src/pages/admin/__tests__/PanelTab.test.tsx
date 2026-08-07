@@ -47,7 +47,10 @@ const baseConfig: PanelTabConfig = {
   formatDate: (d: unknown) => String(d),
   onRestore: vi.fn(() => Promise.resolve()),
   visitCount: 15,
-  exportData: { firstName: "Test", secondName: "User", theme: "golden" } as Exclude<PanelTabConfig["exportData"], undefined>,
+  exportData: { firstName: "Test", secondName: "User", theme: "golden" } as Exclude<
+    PanelTabConfig["exportData"],
+    undefined
+  >,
 };
 
 beforeEach(() => {

@@ -11,7 +11,12 @@ export default function StorySectionForm({ prefix = "" }) {
 
   return (
     <>
-      <SetupToggleField enabledField="storyTextEnabled" label={t("setup.storyLabel")} hint={t("setup.storyHint")} id={id}>
+      <SetupToggleField
+        enabledField="storyTextEnabled"
+        label={t("setup.storyLabel")}
+        hint={t("setup.storyHint")}
+        id={id}
+      >
         <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
           <CharacterCounter value={formData.storyText || ""} max={500} />
         </p>

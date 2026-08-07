@@ -35,7 +35,9 @@ describe("MapEmbed", () => {
   });
 
   it("passes satellite view to the embed url", () => {
-    const { container } = render(<MapEmbed mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" mapView="satellite" />);
+    const { container } = render(
+      <MapEmbed mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" mapView="satellite" />,
+    );
     expect(container.querySelector("iframe")?.getAttribute("src")).toContain("t=k");
   });
 

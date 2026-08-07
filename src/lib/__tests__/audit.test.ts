@@ -72,9 +72,12 @@ describe("logAudit", () => {
 
     await logAudit("session.logout");
 
-    expect(mockAddDoc).toHaveBeenCalledWith("auditLogRef", expect.objectContaining({
-      action: "session.logout",
-      detail: "",
-    }));
+    expect(mockAddDoc).toHaveBeenCalledWith(
+      "auditLogRef",
+      expect.objectContaining({
+        action: "session.logout",
+        detail: "",
+      }),
+    );
   });
 });

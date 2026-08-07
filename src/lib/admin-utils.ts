@@ -9,7 +9,7 @@ export function calcRSVPSummary(entries: { attendance: string; companions?: numb
     confirmed: confirmedCount,
     declined: declinedCount,
     pending: Math.max(0, entries.length - confirmedCount - declinedCount),
-    totalGuests: entries.reduce((sum, e) => sum + (e.attendance === "yes" ? (Number(e.companions) || 1) : 0), 0),
+    totalGuests: entries.reduce((sum, e) => sum + (e.attendance === "yes" ? Number(e.companions) || 1 : 0), 0),
     confirmedGuests: guestsWithCompanions,
     allEntries: entries.length,
   };
@@ -17,11 +17,17 @@ export function calcRSVPSummary(entries: { attendance: string; companions?: numb
 
 export function getDietarySummary(entries: { attendance: string; dietaryInfo?: string }[] | null | undefined) {
   if (!entries) return [];
-  const confirmed = entries.filter((e): e is { attendance: "yes"; dietaryInfo: string } & typeof e => e.attendance === "yes" && !!e.dietaryInfo?.trim());
+  const confirmed = entries.filter(
+    (e): e is { attendance: "yes"; dietaryInfo: string } & typeof e =>
+      e.attendance === "yes" && !!e.dietaryInfo?.trim(),
+  );
   if (!confirmed.length) return [];
   const counts: Record<string, number> = {};
   for (const e of confirmed) {
-    const items = e.dietaryInfo.split(" | ").map((s) => s.trim().toLowerCase()).filter((s) => s && !s.startsWith("menú:"));
+    const items = e.dietaryInfo
+      .split(" | ")
+      .map((s) => s.trim().toLowerCase())
+      .filter((s) => s && !s.startsWith("menú:"));
     for (const item of items) {
       counts[item] = (counts[item] || 0) + 1;
     }
@@ -37,26 +43,32 @@ export function getDietarySummary(entries: { attendance: string; dietaryInfo?: s
  * Genera un CSV de las respuestas RSVP para exportar (Excel/Sheets).
  * Los campos con comas se escapan entre comillas dobles.
  */
-export function formatRSVPsForCSV(entries: Array<{
-  guestName?: string;
-  attendance?: string;
-  dietaryInfo?: string;
-  companionNames?: string[];
-  transportChoice?: string;
-  transportMode?: string;
-  birthDate?: string;
-  mealChoice?: string;
-}>): string {
+export function formatRSVPsForCSV(
+  entries: Array<{
+    guestName?: string;
+    attendance?: string;
+    dietaryInfo?: string;
+    companionNames?: string[];
+    transportChoice?: string;
+    transportMode?: string;
+    birthDate?: string;
+    mealChoice?: string;
+  }>,
+): string {
   const header = ["Nombre", "Asistencia", "Acompañantes", "Alergias/Menú", "Transporte", "Fecha de nacimiento"];
   const esc = (v: string) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-  const rows = entries.map((e) => [
-    e.guestName || "",
-    e.attendance === "yes" ? "Sí" : e.attendance === "no" ? "No" : "",
-    (e.companionNames || []).join("; "),
-    e.dietaryInfo || "",
-    `${e.transportChoice || ""}${e.transportMode && e.transportMode !== "own" ? ` (${e.transportMode})` : ""}`,
-    e.birthDate || "",
-  ].map(esc).join(","));
+  const rows = entries.map((e) =>
+    [
+      e.guestName || "",
+      e.attendance === "yes" ? "Sí" : e.attendance === "no" ? "No" : "",
+      (e.companionNames || []).join("; "),
+      e.dietaryInfo || "",
+      `${e.transportChoice || ""}${e.transportMode && e.transportMode !== "own" ? ` (${e.transportMode})` : ""}`,
+      e.birthDate || "",
+    ]
+      .map(esc)
+      .join(","),
+  );
   return [header.map(esc).join(","), ...rows].join("\n");
 }
 
@@ -64,12 +76,14 @@ export function formatRSVPsForCSV(entries: Array<{
  * Genera un CSV para el catering: qué plato eligió cada confirmado (y sus
  * acompañantes), a partir del mealChoice de cada respuesta.
  */
-export function formatMenuCateringCSV(entries: Array<{
-  guestName?: string;
-  mealChoice?: string;
-  companionNames?: string[];
-  companionMenus?: string[];
-}>): string {
+export function formatMenuCateringCSV(
+  entries: Array<{
+    guestName?: string;
+    mealChoice?: string;
+    companionNames?: string[];
+    companionMenus?: string[];
+  }>,
+): string {
   const esc = (v: string) => `"${String(v ?? "").replace(/"/g, '""')}"`;
   const header = ["Nombre", "Plato"];
   const rows: string[] = [];

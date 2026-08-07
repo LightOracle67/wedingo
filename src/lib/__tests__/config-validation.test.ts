@@ -75,7 +75,11 @@ describe("validateConfigForSave", () => {
   });
 
   it("requires hero to be the first section", () => {
-    const result = validateConfigForSave(validConfig({ sectionOrder: "details," + STORY_SECTION_ORDER.filter((s) => s !== "details").join(",") }), true, 2030);
+    const result = validateConfigForSave(
+      validConfig({ sectionOrder: "details," + STORY_SECTION_ORDER.filter((s) => s !== "details").join(",") }),
+      true,
+      2030,
+    );
     expect(result.errorKey).toBe("errors.coverFirst");
   });
 
@@ -127,14 +131,23 @@ describe("validateConfigForSave", () => {
   });
 
   it("derives weddingPlace from a valid maps URL", () => {
-    const result = validateConfigForSave(validConfig({ weddingSiteURL: "https://www.google.com/maps/place/Hacienda+Los+Olivos/@37.5,-4.7,17z" }), true, 2030);
+    const result = validateConfigForSave(
+      validConfig({ weddingSiteURL: "https://www.google.com/maps/place/Hacienda+Los+Olivos/@37.5,-4.7,17z" }),
+      true,
+      2030,
+    );
     expect(result.errorKey).toBeNull();
     expect(result.sanitized.weddingPlace).toBe("Hacienda Los Olivos");
   });
 
   it("normalizes a menu dish with an unknown order", () => {
     const result = validateConfigForSave(
-      validConfig({ menuEnabled: "true", menuPostre: "Tarta", menuCarne: "Carne", menuCarneDishes: JSON.stringify([{ order: "nope", text: "Plato" }]) }),
+      validConfig({
+        menuEnabled: "true",
+        menuPostre: "Tarta",
+        menuCarne: "Carne",
+        menuCarneDishes: JSON.stringify([{ order: "nope", text: "Plato" }]),
+      }),
       true,
       2030,
     );
@@ -143,7 +156,15 @@ describe("validateConfigForSave", () => {
   });
 
   it("rejects a transport departure with an invalid time", () => {
-    const result = validateConfigForSave(validConfig({ transportDepartures: JSON.stringify([{ type: "bus", time: "25:00", url: "https://maps.google.com/maps/place/x" }]) }), true, 2030);
+    const result = validateConfigForSave(
+      validConfig({
+        transportDepartures: JSON.stringify([
+          { type: "bus", time: "25:00", url: "https://maps.google.com/maps/place/x" },
+        ]),
+      }),
+      true,
+      2030,
+    );
     expect(result.errorKey).toBe("errors.transportTimeInvalid");
   });
 
@@ -224,7 +245,9 @@ describe("validateConfigForSave", () => {
   });
 
   it("accepts transport departures with valid time and URL", () => {
-    const dep = JSON.stringify([{ type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" }]);
+    const dep = JSON.stringify([
+      { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
+    ]);
     const result = validateConfigForSave(validConfig({ transportDepartures: dep }), true, 2030);
     expect(result.errorKey).toBeNull();
   });
@@ -236,23 +259,39 @@ describe("validateConfigForSave", () => {
   });
 
   it("requires a custom message when the dress code is 'Otro'", () => {
-    const result = validateConfigForSave(validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "" }), true, 2030);
+    const result = validateConfigForSave(
+      validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "" }),
+      true,
+      2030,
+    );
     expect(result.errorKey).toBe("errors.dressCodeCustomRequired");
   });
 
   it("accepts the dress code 'Otro' with a custom message", () => {
-    const result = validateConfigForSave(validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "Vestimenta vintage" }), true, 2030);
+    const result = validateConfigForSave(
+      validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "Vestimenta vintage" }),
+      true,
+      2030,
+    );
     expect(result.errorKey).toBeNull();
     expect(result.sanitized.weddingDressCodeCustom).toBe("Vestimenta vintage");
   });
 
   it("rejects an overlong custom dress code message", () => {
-    const result = validateConfigForSave(validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "x".repeat(501) }), true, 2030);
+    const result = validateConfigForSave(
+      validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "x".repeat(501) }),
+      true,
+      2030,
+    );
     expect(result.errorKey).toBe("errors.dressCodeCustomTooLong");
   });
 
   it("discards the custom message when a predefined dress code is chosen", () => {
-    const result = validateConfigForSave(validConfig({ weddingDressCode: "Vestimenta formal", weddingDressCodeCustom: "Vestimenta vintage" }), true, 2030);
+    const result = validateConfigForSave(
+      validConfig({ weddingDressCode: "Vestimenta formal", weddingDressCodeCustom: "Vestimenta vintage" }),
+      true,
+      2030,
+    );
     expect(result.errorKey).toBeNull();
     expect(result.sanitized.weddingDressCodeCustom).toBe("");
   });
@@ -260,7 +299,8 @@ describe("validateConfigForSave", () => {
   it("accepts valid social media URLs", () => {
     const result = validateConfigForSave(
       validConfig({ instagramUrl: "https://www.instagram.com/ana", facebookUrl: "https://www.facebook.com/ana" }),
-      true, 2030,
+      true,
+      2030,
     );
     expect(result.errorKey).toBeNull();
   });

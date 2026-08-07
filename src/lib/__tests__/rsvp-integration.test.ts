@@ -18,9 +18,7 @@ vi.mock("firebase/firestore", () => ({
   increment: vi.fn((n: number) => n),
   onSnapshot: vi.fn(() => () => {}),
   serverTimestamp: vi.fn(() => ({ seconds: 1234567890, nanoseconds: 0 })),
-  doc: vi.fn((_col?: unknown, id?: string) =>
-    id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` },
-  ),
+  doc: vi.fn((_col?: unknown, id?: string) => (id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` })),
   collection: vi.fn(() => "collection-ref"),
   query: vi.fn(() => "query-ref"),
   where: vi.fn(() => "where-ref"),
@@ -67,20 +65,32 @@ describe("RSVP Integration", () => {
 
   it("sets companion count and fills names", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    act(() => { result.current.updateRsvpField("companionCount", 2); });
+    act(() => {
+      result.current.updateRsvpField("companionCount", 2);
+    });
     expect(result.current.rsvpForm.companionCount).toBe(2);
     expect(result.current.rsvpForm.companionNames).toHaveLength(2);
-    act(() => { result.current.updateRsvpField("companionNames[0]", "Alice María Smith"); });
-    act(() => { result.current.updateRsvpField("companionNames[1]", "Bob Carlos Jones"); });
+    act(() => {
+      result.current.updateRsvpField("companionNames[0]", "Alice María Smith");
+    });
+    act(() => {
+      result.current.updateRsvpField("companionNames[1]", "Bob Carlos Jones");
+    });
     expect(result.current.rsvpForm.companionNames).toEqual(["Alice María Smith", "Bob Carlos Jones"]);
   });
 
   it("submits RSVP successfully", async () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    
-    act(() => { result.current.updateRsvpField("guestName", "García Pérez López"); });
-    act(() => { result.current.updateRsvpField("privacyConsent", true); });
-    act(() => { result.current.updateRsvpField("birthDate", "1990-01-01"); });
+
+    act(() => {
+      result.current.updateRsvpField("guestName", "García Pérez López");
+    });
+    act(() => {
+      result.current.updateRsvpField("privacyConsent", true);
+    });
+    act(() => {
+      result.current.updateRsvpField("birthDate", "1990-01-01");
+    });
 
     const event = { preventDefault: vi.fn() } as unknown as React.FormEvent;
     await act(async () => {
@@ -95,27 +105,67 @@ describe("RSVP Integration", () => {
 
   it("submits with companions", async () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    
-    act(() => { result.current.updateRsvpField("guestName", "García Pérez López"); });
-    act(() => { result.current.updateRsvpField("attendance", "with"); });
-    act(() => { result.current.updateRsvpField("companionCount", 2); });
-    act(() => { result.current.updateRsvpField("companionNames[0]", "Alice María Smith"); });
-    act(() => { result.current.updateRsvpField("companionNames[1]", "Bob Carlos Jones"); });
-    act(() => { result.current.updateRsvpField("companionBirthDates", ["2000-01-01", "2000-01-01"]); });
-    act(() => { result.current.updateRsvpField("companionAllergiesOther", ["", "alergia a mariscos"]); });
-    act(() => { result.current.updateRsvpField("companionHealthConsents", [false, true]); });
-    act(() => { result.current.updateRsvpField("privacyConsent", true); });
-    act(() => { result.current.updateRsvpField("birthDate", "1990-01-01"); });
-    act(() => { result.current.updateRsvpField("transportChoice", "0"); });
-    act(() => { result.current.updateRsvpField("transportMode", "bus"); });
-    act(() => { result.current.updateRsvpField("transportTime", "12:00"); });
-    act(() => { result.current.updateRsvpField("transportPlace", "Plaza Mayor"); });
-    act(() => { result.current.updateRsvpField("companionTransportChoices[0]", "own"); });
-    act(() => { result.current.updateRsvpField("companionTransportModes[0]", "own"); });
-    act(() => { result.current.updateRsvpField("companionTransportChoices[1]", "1"); });
-    act(() => { result.current.updateRsvpField("companionTransportModes[1]", "taxi"); });
-    act(() => { result.current.updateRsvpField("companionTransportTimes[1]", "14:30"); });
-    act(() => { result.current.updateRsvpField("companionTransportPlaces[1]", "Estación Norte"); });
+
+    act(() => {
+      result.current.updateRsvpField("guestName", "García Pérez López");
+    });
+    act(() => {
+      result.current.updateRsvpField("attendance", "with");
+    });
+    act(() => {
+      result.current.updateRsvpField("companionCount", 2);
+    });
+    act(() => {
+      result.current.updateRsvpField("companionNames[0]", "Alice María Smith");
+    });
+    act(() => {
+      result.current.updateRsvpField("companionNames[1]", "Bob Carlos Jones");
+    });
+    act(() => {
+      result.current.updateRsvpField("companionBirthDates", ["2000-01-01", "2000-01-01"]);
+    });
+    act(() => {
+      result.current.updateRsvpField("companionAllergiesOther", ["", "alergia a mariscos"]);
+    });
+    act(() => {
+      result.current.updateRsvpField("companionHealthConsents", [false, true]);
+    });
+    act(() => {
+      result.current.updateRsvpField("privacyConsent", true);
+    });
+    act(() => {
+      result.current.updateRsvpField("birthDate", "1990-01-01");
+    });
+    act(() => {
+      result.current.updateRsvpField("transportChoice", "0");
+    });
+    act(() => {
+      result.current.updateRsvpField("transportMode", "bus");
+    });
+    act(() => {
+      result.current.updateRsvpField("transportTime", "12:00");
+    });
+    act(() => {
+      result.current.updateRsvpField("transportPlace", "Plaza Mayor");
+    });
+    act(() => {
+      result.current.updateRsvpField("companionTransportChoices[0]", "own");
+    });
+    act(() => {
+      result.current.updateRsvpField("companionTransportModes[0]", "own");
+    });
+    act(() => {
+      result.current.updateRsvpField("companionTransportChoices[1]", "1");
+    });
+    act(() => {
+      result.current.updateRsvpField("companionTransportModes[1]", "taxi");
+    });
+    act(() => {
+      result.current.updateRsvpField("companionTransportTimes[1]", "14:30");
+    });
+    act(() => {
+      result.current.updateRsvpField("companionTransportPlaces[1]", "Estación Norte");
+    });
 
     const event = { preventDefault: vi.fn() } as unknown as React.FormEvent;
     await act(async () => {
@@ -152,7 +202,7 @@ describe("RSVP Integration", () => {
   it("shows error when guestName is empty", async () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
     const event = { preventDefault: vi.fn() } as unknown as React.FormEvent;
-    
+
     await act(async () => {
       await result.current.handleRsvpSubmit(event);
     });
@@ -162,16 +212,22 @@ describe("RSVP Integration", () => {
 
   it("resets companionCount when attendance changes to no", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    act(() => { result.current.updateRsvpField("attendance", "no"); });
+    act(() => {
+      result.current.updateRsvpField("attendance", "no");
+    });
     expect(result.current.rsvpForm.companionCount).toBe(0);
     expect(result.current.rsvpForm.companionNames).toEqual([]);
   });
 
   it("sets companionCount to 1 when changing to with", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false));
-    act(() => { result.current.updateRsvpField("attendance", "no"); });
+    act(() => {
+      result.current.updateRsvpField("attendance", "no");
+    });
     expect(result.current.rsvpForm.companionCount).toBe(0);
-    act(() => { result.current.updateRsvpField("attendance", "with"); });
+    act(() => {
+      result.current.updateRsvpField("attendance", "with");
+    });
     expect(result.current.rsvpForm.companionCount).toBe(1);
   });
 });

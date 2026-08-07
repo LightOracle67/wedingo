@@ -28,7 +28,11 @@ describe("MiniBar", () => {
   });
 
   it("renders bars for items with values", () => {
-    const items = [{ value: 10, label: "A" }, { value: 5, label: "B" }, { value: 0, label: "C" }];
+    const items = [
+      { value: 10, label: "A" },
+      { value: 5, label: "B" },
+      { value: 0, label: "C" },
+    ];
     const { container } = render(<MiniBar items={items} />);
     const rects = container.querySelectorAll("rect");
     expect(rects.length).toBe(3);

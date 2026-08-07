@@ -1,7 +1,10 @@
 import { describe, it, expect, vi } from "vitest";
 
 vi.mock("i18next-resources-to-backend", () => ({
-  default: () => ({ type: "backend" as const, read: (_lng: string, _ns: string, cb: (err: Error | null, data: unknown) => void) => cb(null, {}) }),
+  default: () => ({
+    type: "backend" as const,
+    read: (_lng: string, _ns: string, cb: (err: Error | null, data: unknown) => void) => cb(null, {}),
+  }),
 }));
 
 import i18n from "../index";

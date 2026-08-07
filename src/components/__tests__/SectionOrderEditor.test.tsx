@@ -37,13 +37,7 @@ describe("SectionOrderEditor", () => {
 
   it("shows hidden badge when section is hidden", () => {
     const onHiddenChange = vi.fn();
-    render(
-      <SectionOrderEditor
-        {...defaultProps}
-        hiddenValue="details"
-        onHiddenChange={onHiddenChange}
-      />
-    );
+    render(<SectionOrderEditor {...defaultProps} hiddenValue="details" onHiddenChange={onHiddenChange} />);
 
     expect(screen.getByText("setup.hiddenSectionBadge")).toBeDefined();
 
@@ -58,7 +52,10 @@ describe("SectionOrderEditor", () => {
 
     const infoUp = screen.getByRole("button", { name: "sectionOrder.moveUp info.sectionLabel" });
     fireEvent.click(infoUp);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,info,transport,story,gifts,gallery,accommodation,extras,rsvp");
+    expect(onChange).toHaveBeenCalledWith(
+      "sectionOrder",
+      "hero,details,info,transport,story,gifts,gallery,accommodation,extras,rsvp",
+    );
   });
 
   it("moves an item down with the down button", () => {
@@ -67,7 +64,10 @@ describe("SectionOrderEditor", () => {
 
     const infoDown = screen.getByRole("button", { name: "sectionOrder.moveDown info.sectionLabel" });
     fireEvent.click(infoDown);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,story,info,gifts,gallery,accommodation,extras,rsvp");
+    expect(onChange).toHaveBeenCalledWith(
+      "sectionOrder",
+      "hero,details,transport,story,info,gifts,gallery,accommodation,extras,rsvp",
+    );
   });
 
   it("disables up button for hero section", () => {
@@ -191,7 +191,10 @@ describe("SectionOrderEditor", () => {
 
     const storyUp = screen.getByRole("button", { name: "sectionOrder.moveUp story.sectionLabel" });
     fireEvent.click(storyUp);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,story,info,gifts,gallery,accommodation,extras,rsvp");
+    expect(onChange).toHaveBeenCalledWith(
+      "sectionOrder",
+      "hero,details,transport,story,info,gifts,gallery,accommodation,extras,rsvp",
+    );
   });
 
   it("moves item down from non-last index", () => {
@@ -200,7 +203,10 @@ describe("SectionOrderEditor", () => {
 
     const storyDown = screen.getByRole("button", { name: "sectionOrder.moveDown story.sectionLabel" });
     fireEvent.click(storyDown);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,info,gifts,story,gallery,accommodation,extras,rsvp");
+    expect(onChange).toHaveBeenCalledWith(
+      "sectionOrder",
+      "hero,details,transport,info,gifts,story,gallery,accommodation,extras,rsvp",
+    );
   });
 
   it("triggers moveUp early return when index <= 1 via dispatchEvent", () => {

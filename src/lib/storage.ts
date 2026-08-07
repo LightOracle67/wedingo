@@ -39,7 +39,6 @@ export function hasAnalyticsConsent(): boolean {
 
 export function safeSetItem(key: string, value: string, storage: Storage = localStorage) {
   if (storage === localStorage && !hasStorageConsent()) {
-
     return false;
   }
   try {
@@ -53,7 +52,6 @@ export function safeSetItem(key: string, value: string, storage: Storage = local
 
 export function safeGetItem(key: string, storage: Storage = localStorage) {
   if (storage === localStorage && !hasStorageConsent()) {
-
     return null;
   }
   try {
@@ -74,13 +72,12 @@ export function safeRemoveItem(key: string, storage: Storage = localStorage) {
 }
 
 export function clearAllStorage() {
-
   try {
-    const localKeys = Object.keys(localStorage).filter(k => k.startsWith("wedin_"));
-    const sessionKeys = Object.keys(sessionStorage).filter(k => k.startsWith("wedin_"));
+    const localKeys = Object.keys(localStorage).filter((k) => k.startsWith("wedin_"));
+    const sessionKeys = Object.keys(sessionStorage).filter((k) => k.startsWith("wedin_"));
 
-    localKeys.forEach(k => localStorage.removeItem(k));
-    sessionKeys.forEach(k => sessionStorage.removeItem(k));
+    localKeys.forEach((k) => localStorage.removeItem(k));
+    sessionKeys.forEach((k) => sessionStorage.removeItem(k));
   } catch (err) {
     console.error("[app]", "[storage]", "clearAllStorage error", err);
   }

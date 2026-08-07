@@ -11,10 +11,13 @@ interface Departure {
 }
 
 const TransportSection = memo(function TransportSection({
-  style, className,
+  style,
+  className,
   transportEnabled = "none",
   transportDepartures = "",
-  mapView, staticMap, transportMapMode,
+  mapView,
+  staticMap,
+  transportMapMode,
   cornerDecoration,
 }: {
   style?: React.CSSProperties;
@@ -35,10 +38,17 @@ const TransportSection = memo(function TransportSection({
   try {
     const parsed = JSON.parse(transportDepartures || "");
     if (Array.isArray(parsed)) departures = parsed;
-  } catch { /* JSON inválido */ }
+  } catch {
+    /* JSON inválido */
+  }
 
   const enabled = transportEnabled !== "none";
-  const optionKey = transportEnabled === "both" ? "transport.optionBoth" : transportEnabled === "taxi" ? "transport.optionTaxi" : "transport.optionBus";
+  const optionKey =
+    transportEnabled === "both"
+      ? "transport.optionBoth"
+      : transportEnabled === "taxi"
+        ? "transport.optionTaxi"
+        : "transport.optionBus";
 
   return (
     <section
@@ -60,9 +70,7 @@ const TransportSection = memo(function TransportSection({
             <>
               <p className="story-copy mt-4">{t(optionKey)}</p>
 
-              {departures.length > 0 ? (
-                <div className="story-divider" />
-              ) : null}
+              {departures.length > 0 ? <div className="story-divider" /> : null}
               {departures.length > 0 ? (
                 <div style={{ marginTop: "0.5rem", display: "grid", gap: "1rem" }}>
                   {departures.map((dep, i) => {
@@ -75,17 +83,33 @@ const TransportSection = memo(function TransportSection({
                       <div key={i}>
                         {dep.time ? (
                           <p className="story-eyebrow" style={{ fontSize: "0.82rem" }}>
-                            {dep.time} <span style={{ opacity: 0.85 }}>({t(dep.type === "taxi" ? "transport.typeTaxi" : "transport.typeBus")})</span>
+                            {dep.time}{" "}
+                            <span style={{ opacity: 0.85 }}>
+                              ({t(dep.type === "taxi" ? "transport.typeTaxi" : "transport.typeBus")})
+                            </span>
                           </p>
                         ) : null}
                         {placeName ? (
-                          <p className="story-note" style={{ marginTop: "0.15rem" }}>{placeName}</p>
+                          <p className="story-note" style={{ marginTop: "0.15rem" }}>
+                            {placeName}
+                          </p>
                         ) : null}
                         {showMap ? (
                           <>
-                            <MapEmbed mapUrl={dep.url} mapView={mapView || "roadmap"} staticMap={staticMap === true} height={220} />
+                            <MapEmbed
+                              mapUrl={dep.url}
+                              mapView={mapView || "roadmap"}
+                              staticMap={staticMap === true}
+                              height={220}
+                            />
                             <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
-                              <a className="setup-button setup-button--ghost setup-button--compact" href={dep.url} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+                              <a
+                                className="setup-button setup-button--ghost setup-button--compact"
+                                href={dep.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                referrerPolicy="no-referrer"
+                              >
                                 {t("details.viewGoogleMaps")}
                               </a>
                             </div>

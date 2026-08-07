@@ -21,7 +21,7 @@ export default function TransportSectionForm({ prefix = "" }) {
     if (!d || typeof d !== "object") return null;
     const rec = d as Record<string, unknown>;
     return {
-      type: rec.type === "taxi" ? "taxi" as const : "bus" as const,
+      type: rec.type === "taxi" ? ("taxi" as const) : ("bus" as const),
       time: typeof rec.time === "string" ? rec.time : "",
       url: typeof rec.url === "string" ? rec.url : "",
     };
@@ -32,42 +32,57 @@ export default function TransportSectionForm({ prefix = "" }) {
     addItem: addDeparture,
     removeItem: removeDeparture,
     updateItem: updateDeparture,
-  } = useJsonArrayField<Departure>(
-    formData.transportDepartures || "",
-    normalizeDeparture,
-    MAX_DEPARTURES,
-  );
+  } = useJsonArrayField<Departure>(formData.transportDepartures || "", normalizeDeparture, MAX_DEPARTURES);
 
-  const setDepartures = useCallback((next: Departure[]) => {
-    updateFormField("transportDepartures", JSON.stringify(next.slice(0, MAX_DEPARTURES)));
-  }, [updateFormField]);
+  const setDepartures = useCallback(
+    (next: Departure[]) => {
+      updateFormField("transportDepartures", JSON.stringify(next.slice(0, MAX_DEPARTURES)));
+    },
+    [updateFormField],
+  );
 
   const enabled = (formData.transportEnabled || "none") as "none" | "bus" | "taxi" | "both";
 
-  const handleEnabledChange = useCallback((e: React.ChangeEvent<HTMLSelectElement>) => {
-    const next = e.target.value;
-    updateFormField("transportEnabled", next);
-    if (next === "bus" || next === "taxi") {
-      setDepartures(departures.map((d) => ({ ...d, type: next as "bus" | "taxi" })));
-    }
-  }, [departures, setDepartures, updateFormField]);
+  const handleEnabledChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const next = e.target.value;
+      updateFormField("transportEnabled", next);
+      if (next === "bus" || next === "taxi") {
+        setDepartures(departures.map((d) => ({ ...d, type: next as "bus" | "taxi" })));
+      }
+    },
+    [departures, setDepartures, updateFormField],
+  );
 
-  const handleDepartureField = useCallback((index: number, field: "type" | "time" | "url") =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-      updateDeparture(index, { ...(departures[index] ?? { type: "bus", time: "", url: "" }), [field]: e.target.value }, (json) => updateFormField("transportDepartures", json));
-    }, [departures, updateDeparture, updateFormField]);
+  const handleDepartureField = useCallback(
+    (index: number, field: "type" | "time" | "url") => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      updateDeparture(
+        index,
+        { ...(departures[index] ?? { type: "bus", time: "", url: "" }), [field]: e.target.value },
+        (json) => updateFormField("transportDepartures", json),
+      );
+    },
+    [departures, updateDeparture, updateFormField],
+  );
 
   const handleAddDeparture = useCallback(() => {
-    addDeparture({ type: enabled === "taxi" ? "taxi" : "bus", time: "", url: "" }, (json) => updateFormField("transportDepartures", json));
+    addDeparture({ type: enabled === "taxi" ? "taxi" : "bus", time: "", url: "" }, (json) =>
+      updateFormField("transportDepartures", json),
+    );
   }, [addDeparture, enabled, updateFormField]);
 
-  const handleRemoveDeparture = useCallback((index: number) => {
-    removeDeparture(index, (json) => updateFormField("transportDepartures", json));
-  }, [removeDeparture, updateFormField]);
+  const handleRemoveDeparture = useCallback(
+    (index: number) => {
+      removeDeparture(index, (json) => updateFormField("transportDepartures", json));
+    },
+    [removeDeparture, updateFormField],
+  );
 
   return (
     <>
-      <label className="setup-label" htmlFor={id("transportEnabled")}>{t("setup.transportEnabledLabel")}</label>
+      <label className="setup-label" htmlFor={id("transportEnabled")}>
+        {t("setup.transportEnabledLabel")}
+      </label>
       <select
         id={id("transportEnabled")}
         className="setup-input"
@@ -80,12 +95,16 @@ export default function TransportSectionForm({ prefix = "" }) {
         <option value="taxi">{t("setup.transportOptionTaxi")}</option>
         <option value="both">{t("setup.transportOptionBoth")}</option>
       </select>
-      <p className="setup-help" id={id("transportEnabledHint")}>{t("setup.transportEnabledHint")}</p>
+      <p className="setup-help" id={id("transportEnabledHint")}>
+        {t("setup.transportEnabledHint")}
+      </p>
 
       {enabled !== "none" ? (
         <>
           <div className="story-divider" />
-          <label className="setup-label" htmlFor={id("transportMapMode")}>{t("setup.mapModeLabel")}</label>
+          <label className="setup-label" htmlFor={id("transportMapMode")}>
+            {t("setup.mapModeLabel")}
+          </label>
           <select
             id={id("transportMapMode")}
             className="setup-input"
@@ -97,16 +116,29 @@ export default function TransportSectionForm({ prefix = "" }) {
             <option value="name">{t("setup.mapModeName")}</option>
             <option value="hidden">{t("setup.mapModeHidden")}</option>
           </select>
-          <p className="setup-help" id={id("transportMapModeHint")}>{t("setup.mapModeHint")}</p>
+          <p className="setup-help" id={id("transportMapModeHint")}>
+            {t("setup.mapModeHint")}
+          </p>
 
           <div className="story-divider" />
           <p className="setup-label">{t("setup.transportDeparturesLabel")}</p>
           <p className="setup-help">{t("setup.transportDeparturesHint")}</p>
 
           {departures.map((dep, i) => (
-            <div key={i} style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}>
+            <div
+              key={i}
+              style={{
+                display: "flex",
+                gap: "0.5rem",
+                alignItems: "flex-start",
+                marginTop: "0.5rem",
+                flexWrap: "wrap",
+              }}
+            >
               <div style={{ flex: "0 0 120px" }}>
-                <label className="setup-label" htmlFor={id(`departureType${i}`)} style={{ fontSize: "0.75rem" }}>{t("setup.transportTypeLabel")}</label>
+                <label className="setup-label" htmlFor={id(`departureType${i}`)} style={{ fontSize: "0.75rem" }}>
+                  {t("setup.transportTypeLabel")}
+                </label>
                 <select
                   id={id(`departureType${i}`)}
                   className="setup-input"
@@ -119,7 +151,9 @@ export default function TransportSectionForm({ prefix = "" }) {
                 </select>
               </div>
               <div style={{ flex: "0 0 90px" }}>
-                <label className="setup-label" htmlFor={id(`departureTime${i}`)} style={{ fontSize: "0.75rem" }}>{t("setup.transportTimeLabel")}</label>
+                <label className="setup-label" htmlFor={id(`departureTime${i}`)} style={{ fontSize: "0.75rem" }}>
+                  {t("setup.transportTimeLabel")}
+                </label>
                 <input
                   id={id(`departureTime${i}`)}
                   className="setup-input"
@@ -137,7 +171,9 @@ export default function TransportSectionForm({ prefix = "" }) {
                 <MapUrlField
                   id={id(`departureUrl${i}`)}
                   value={dep.url}
-                  onChange={(url) => updateDeparture(i, { ...dep, url }, (json) => updateFormField("transportDepartures", json))}
+                  onChange={(url) =>
+                    updateDeparture(i, { ...dep, url }, (json) => updateFormField("transportDepartures", json))
+                  }
                   placeholder="https://www.google.com/maps/place/..."
                   placeHintId={id(`departurePlace${i}`)}
                   placeLabel={t("setup.siteNameLabel")}

@@ -14,9 +14,15 @@ const mockLocalStorage = (() => {
   let store: Record<string, string> = {};
   return {
     getItem: vi.fn((k: string) => store[k] ?? null),
-    setItem: vi.fn((k: string, v: string) => { store[k] = v; }),
-    removeItem: vi.fn((k: string) => { delete store[k]; }),
-    clear: () => { store = {}; },
+    setItem: vi.fn((k: string, v: string) => {
+      store[k] = v;
+    }),
+    removeItem: vi.fn((k: string) => {
+      delete store[k];
+    }),
+    clear: () => {
+      store = {};
+    },
   };
 })();
 
@@ -45,7 +51,7 @@ describe("CookieConsent", () => {
     expect(mockLocalStorage.setItem).toHaveBeenCalledWith("wedin_cookie_consent", "accepted");
     expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
       "wedin_cookie_prefs",
-      JSON.stringify({ necessary: true, analytics: true })
+      JSON.stringify({ necessary: true, analytics: true }),
     );
   });
 
@@ -77,7 +83,7 @@ describe("CookieConsent", () => {
     expect(mockLocalStorage.setItem).toHaveBeenCalledWith("wedin_cookie_consent", "accepted");
     expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
       "wedin_cookie_prefs",
-      JSON.stringify({ necessary: true, analytics: false })
+      JSON.stringify({ necessary: true, analytics: false }),
     );
   });
 
@@ -123,7 +129,7 @@ describe("CookieConsent", () => {
     fireEvent.click(screen.getByRole("button", { name: "cookie.savePreferences" }));
     expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
       "wedin_cookie_prefs",
-      JSON.stringify({ necessary: true, analytics: true })
+      JSON.stringify({ necessary: true, analytics: true }),
     );
   });
 

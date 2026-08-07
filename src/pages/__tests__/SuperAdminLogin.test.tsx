@@ -56,7 +56,7 @@ describe("SuperAdminLogin", () => {
     const { container } = render(
       <MemoryRouter>
         <SuperAdminLogin />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(container.innerHTML).toBe("");
   });

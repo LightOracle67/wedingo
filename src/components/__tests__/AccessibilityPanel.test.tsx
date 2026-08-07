@@ -5,9 +5,15 @@ const localStorageMock = (() => {
   let store: Record<string, string> = {};
   return {
     getItem: vi.fn((key: string) => store[key] ?? null),
-    setItem: vi.fn((key: string, value: string) => { store[key] = value; }),
-    removeItem: vi.fn((key: string) => { delete store[key]; }),
-    clear: vi.fn(() => { store = {}; }),
+    setItem: vi.fn((key: string, value: string) => {
+      store[key] = value;
+    }),
+    removeItem: vi.fn((key: string) => {
+      delete store[key];
+    }),
+    clear: vi.fn(() => {
+      store = {};
+    }),
   };
 })();
 
@@ -141,7 +147,9 @@ describe("AccessibilityPanel", () => {
     render(<AccessibilityPanel open={true} onClose={onClose} />);
     const overlay = document.querySelector(".modal-overlay") as HTMLElement;
     fireEvent.click(overlay);
-    act(() => { vi.advanceTimersByTime(250); });
+    act(() => {
+      vi.advanceTimersByTime(250);
+    });
     expect(onClose).toHaveBeenCalled();
     vi.useRealTimers();
   });
@@ -151,7 +159,9 @@ describe("AccessibilityPanel", () => {
     const onClose = vi.fn();
     render(<AccessibilityPanel open={true} onClose={onClose} />);
     fireEvent.click(screen.getByLabelText("a11y.close"));
-    act(() => { vi.advanceTimersByTime(250); });
+    act(() => {
+      vi.advanceTimersByTime(250);
+    });
     expect(onClose).toHaveBeenCalled();
     vi.useRealTimers();
   });
@@ -186,7 +196,9 @@ describe("AccessibilityPanel", () => {
 
   it("handles localStorage error gracefully", () => {
     const origGetItem = localStorageMock.getItem;
-    localStorageMock.getItem = vi.fn(() => { throw new Error("storage error"); });
+    localStorageMock.getItem = vi.fn(() => {
+      throw new Error("storage error");
+    });
     expect(() => render(<AccessibilityPanel open={true} onClose={vi.fn()} />)).not.toThrow();
     localStorageMock.getItem = origGetItem;
   });

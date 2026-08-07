@@ -1,7 +1,13 @@
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useConfig } from "../../contexts";
-import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT, SCHEDULE_EVENT_EMOJIS } from "../../lib/constants";
+import {
+  MONTH_OPTIONS,
+  MONTH_VALUE_TO_NUMBER,
+  MAX_SCHEDULE_EVENTS,
+  MAX_SCHEDULE_EVENT_TEXT,
+  SCHEDULE_EVENT_EMOJIS,
+} from "../../lib/constants";
 import { isValidGoogleMapsUrl, convertToEmbedUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import { useJsonArrayField } from "../../hooks/useJsonArrayField";
 import MapUrlField from "../MapUrlField";
@@ -14,7 +20,15 @@ interface ScheduleEvent {
 }
 
 export default function DateSectionForm({ prefix = "" }) {
-  const { formData, updateFormField, handleDayChange, handleYearChange, handleTimeChange, handleTimeBlur, maxAllowedYear } = useConfig();
+  const {
+    formData,
+    updateFormField,
+    handleDayChange,
+    handleYearChange,
+    handleTimeChange,
+    handleTimeBlur,
+    maxAllowedYear,
+  } = useConfig();
   const { t, i18n } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
@@ -51,9 +65,8 @@ export default function DateSectionForm({ prefix = "" }) {
     if (!formData.weddingHour && !formData.weddingMinute) return false;
     return !(hourValid && minuteValid);
   })();
-  const timeValue = hourValid && minuteValid
-    ? `${String(hourNum).padStart(2, "0")}:${String(minuteNum).padStart(2, "0")}`
-    : "";
+  const timeValue =
+    hourValid && minuteValid ? `${String(hourNum).padStart(2, "0")}:${String(minuteNum).padStart(2, "0")}` : "";
 
   const normalizeEvent = useCallback((e: unknown): ScheduleEvent | null => {
     if (!e || typeof e !== "object") return null;
@@ -70,22 +83,30 @@ export default function DateSectionForm({ prefix = "" }) {
     addItem: addScheduleEvent,
     removeItem: removeScheduleEvent,
     updateItem: updateScheduleEvent,
-  } = useJsonArrayField<ScheduleEvent>(
-    formData.weddingScheduleEvents || "",
-    normalizeEvent,
-    MAX_SCHEDULE_EVENTS,
-  );
+  } = useJsonArrayField<ScheduleEvent>(formData.weddingScheduleEvents || "", normalizeEvent, MAX_SCHEDULE_EVENTS);
 
-  const handleScheduleEventField = useCallback((index: number, field: "time" | "text" | "emoji") =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-      updateScheduleEvent(index, { ...(scheduleEvents[index] ?? { time: "", text: "", emoji: "" }), [field]: e.target.value }, (json) => updateFormField("weddingScheduleEvents", json));
-    }, [scheduleEvents, updateScheduleEvent, updateFormField]);
+  const handleScheduleEventField = useCallback(
+    (index: number, field: "time" | "text" | "emoji") =>
+      (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        updateScheduleEvent(
+          index,
+          { ...(scheduleEvents[index] ?? { time: "", text: "", emoji: "" }), [field]: e.target.value },
+          (json) => updateFormField("weddingScheduleEvents", json),
+        );
+      },
+    [scheduleEvents, updateScheduleEvent, updateFormField],
+  );
 
   const visibleScheduleEvents = scheduleEvents;
 
   return (
     <>
-      <SetupToggleField enabledField="weddingSiteURLEnabled" label={t("setup.mapUrlLabel")} hint={t("setup.mapUrlHowTo")} id={id}>
+      <SetupToggleField
+        enabledField="weddingSiteURLEnabled"
+        label={t("setup.mapUrlLabel")}
+        hint={t("setup.mapUrlHowTo")}
+        id={id}
+      >
         <MapUrlField
           id={id("weddingSiteURL")}
           value={formData.weddingSiteURL || ""}
@@ -97,7 +118,9 @@ export default function DateSectionForm({ prefix = "" }) {
 
       <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))" }}>
         <div>
-          <label className="setup-label" htmlFor={id("weddingMapView")}>{t("setup.mapViewLabel")}</label>
+          <label className="setup-label" htmlFor={id("weddingMapView")}>
+            {t("setup.mapViewLabel")}
+          </label>
           <select
             id={id("weddingMapView")}
             className="setup-input"
@@ -109,10 +132,14 @@ export default function DateSectionForm({ prefix = "" }) {
             <option value="satellite">{t("setup.mapViewSatellite")}</option>
             <option value="hybrid">{t("setup.mapViewHybrid")}</option>
           </select>
-          <p className="setup-help" id={id("mapViewHint")}>{t("setup.mapViewHint")}</p>
+          <p className="setup-help" id={id("mapViewHint")}>
+            {t("setup.mapViewHint")}
+          </p>
         </div>
         <div>
-          <label className="setup-label" htmlFor={id("detailsMapMode")}>{t("setup.mapModeLabel")}</label>
+          <label className="setup-label" htmlFor={id("detailsMapMode")}>
+            {t("setup.mapModeLabel")}
+          </label>
           <select
             id={id("detailsMapMode")}
             className="setup-input"
@@ -124,9 +151,22 @@ export default function DateSectionForm({ prefix = "" }) {
             <option value="name">{t("setup.mapModeName")}</option>
             <option value="hidden">{t("setup.mapModeHidden")}</option>
           </select>
-          <p className="setup-help" id={id("mapModeHint")}>{t("setup.mapModeHint")}</p>
+          <p className="setup-help" id={id("mapModeHint")}>
+            {t("setup.mapModeHint")}
+          </p>
         </div>
-        <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginTop: "1.5rem" }}>
+        <label
+          className="setup-checkbox-label"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+            color: "var(--setup-title)",
+            fontSize: "0.9rem",
+            cursor: "pointer",
+            marginTop: "1.5rem",
+          }}
+        >
           <input
             id={id("weddingMapStatic")}
             type="checkbox"
@@ -139,25 +179,37 @@ export default function DateSectionForm({ prefix = "" }) {
         </label>
       </div>
       {formData.weddingMapStatic === "true" ? (
-        <p className="setup-help" id={id("mapStaticHint")}>{t("setup.mapStaticHint")}</p>
+        <p className="setup-help" id={id("mapStaticHint")}>
+          {t("setup.mapStaticHint")}
+        </p>
       ) : null}
 
       {siteUrl && !isSiteUrlValid ? (
-        <div style={{
-          marginTop: "0.5rem", padding: "0.5rem 0.6rem", borderRadius: "0.6rem",
-          background: "color-mix(in srgb, #ef4444 10%, transparent)",
-          border: "1px solid color-mix(in srgb, #ef4444 35%, transparent)",
-          fontSize: "0.82rem", lineHeight: 1.4,
-        }}>
+        <div
+          style={{
+            marginTop: "0.5rem",
+            padding: "0.5rem 0.6rem",
+            borderRadius: "0.6rem",
+            background: "color-mix(in srgb, #ef4444 10%, transparent)",
+            border: "1px solid color-mix(in srgb, #ef4444 35%, transparent)",
+            fontSize: "0.82rem",
+            lineHeight: 1.4,
+          }}
+        >
           {t("setup.mapUrlInvalidInfo")}
         </div>
       ) : siteUrl && isSiteUrlValid ? (
-        <div style={{
-          marginTop: "0.5rem", padding: "0.5rem 0.6rem", borderRadius: "0.6rem",
-          background: "color-mix(in srgb, #22c55e 10%, transparent)",
-          border: "1px solid color-mix(in srgb, #22c55e 35%, transparent)",
-          fontSize: "0.82rem", lineHeight: 1.4,
-        }}>
+        <div
+          style={{
+            marginTop: "0.5rem",
+            padding: "0.5rem 0.6rem",
+            borderRadius: "0.6rem",
+            background: "color-mix(in srgb, #22c55e 10%, transparent)",
+            border: "1px solid color-mix(in srgb, #22c55e 35%, transparent)",
+            fontSize: "0.82rem",
+            lineHeight: 1.4,
+          }}
+        >
           âœ“ {t("setup.mapUrlValidInfo")}
         </div>
       ) : null}
@@ -193,13 +245,21 @@ export default function DateSectionForm({ prefix = "" }) {
 
       <div className="setup-date-grid">
         <div>
-          <label className="setup-label setup-label--required" htmlFor={id("weddingDay")}>{t("setup.dayLabel")}</label>
+          <label className="setup-label setup-label--required" htmlFor={id("weddingDay")}>
+            {t("setup.dayLabel")}
+          </label>
           <input
             id={id("weddingDay")}
             value={formData.weddingDay}
             onChange={(e) => handleDayChange(e.target.value)}
             placeholder={t("setup.dayPlaceholder")}
-            inputMode="numeric" autoComplete="off" min="1" max="31" maxLength={2} pattern="[0-9]*" aria-describedby={id("dateHelp")}
+            inputMode="numeric"
+            autoComplete="off"
+            min="1"
+            max="31"
+            maxLength={2}
+            pattern="[0-9]*"
+            aria-describedby={id("dateHelp")}
             aria-invalid={dayError || undefined}
             required
             aria-required="true"
@@ -207,7 +267,9 @@ export default function DateSectionForm({ prefix = "" }) {
           />
         </div>
         <div>
-          <label className="setup-label setup-label--required" htmlFor={id("weddingMonth")}>{t("setup.monthLabel")}</label>
+          <label className="setup-label setup-label--required" htmlFor={id("weddingMonth")}>
+            {t("setup.monthLabel")}
+          </label>
           <select
             id={id("weddingMonth")}
             className="setup-input"
@@ -217,27 +279,43 @@ export default function DateSectionForm({ prefix = "" }) {
             required
             aria-required="true"
           >
-            <option value="" disabled>{t("setup.monthPlaceholder")}</option>
+            <option value="" disabled>
+              {t("setup.monthPlaceholder")}
+            </option>
             {MONTH_OPTIONS.map((month) => (
-              <option key={month.value} value={month.value}>{t("monthNames." + (MONTH_VALUE_TO_NUMBER[month.value] || ""))}</option>
+              <option key={month.value} value={month.value}>
+                {t("monthNames." + (MONTH_VALUE_TO_NUMBER[month.value] || ""))}
+              </option>
             ))}
           </select>
         </div>
         <div>
-          <label className="setup-label setup-label--required" htmlFor={id("weddingYear")}>{t("setup.yearLabel")}</label>
+          <label className="setup-label setup-label--required" htmlFor={id("weddingYear")}>
+            {t("setup.yearLabel")}
+          </label>
           <input
-            id={id("weddingYear")} value={formData.weddingYear}
+            id={id("weddingYear")}
+            value={formData.weddingYear}
             onChange={(e) => handleYearChange(e.target.value)}
-            placeholder={t("setup.yearPlaceholder")} inputMode="numeric" autoComplete="off" maxLength={4} pattern="[0-9]*" aria-describedby={id("dateHelp") + " " + id("yearMaxHint")}
+            placeholder={t("setup.yearPlaceholder")}
+            inputMode="numeric"
+            autoComplete="off"
+            maxLength={4}
+            pattern="[0-9]*"
+            aria-describedby={id("dateHelp") + " " + id("yearMaxHint")}
             aria-invalid={yearError || undefined}
             required
             aria-required="true"
             className={yearError ? "setup-input setup-input--error" : "setup-input"}
           />
-          <p className="setup-help" id={id("yearMaxHint")}>{t("setup.yearMaxHint", { year: maxAllowedYear })}</p>
+          <p className="setup-help" id={id("yearMaxHint")}>
+            {t("setup.yearMaxHint", { year: maxAllowedYear })}
+          </p>
         </div>
         <div>
-          <label className="setup-label setup-label--required" htmlFor={id("weddingTime")}>{t("setup.timeInputLabel")}</label>
+          <label className="setup-label setup-label--required" htmlFor={id("weddingTime")}>
+            {t("setup.timeInputLabel")}
+          </label>
           <input
             id={id("weddingTime")}
             type="time"
@@ -254,18 +332,31 @@ export default function DateSectionForm({ prefix = "" }) {
         </div>
       </div>
 
-      <p className="setup-help" id={id("dateHelp")}>{t("setup.dateHint")}</p>
+      <p className="setup-help" id={id("dateHelp")}>
+        {t("setup.dateHint")}
+      </p>
 
-      <p className="setup-help" id={id("timeHelp")}>{t("setup.timeHint")}</p>
+      <p className="setup-help" id={id("timeHelp")}>
+        {t("setup.timeHint")}
+      </p>
 
-      <p className="setup-label" id={id("scheduleEventsLabel")}>{t("setup.scheduleLabel")}</p>
-      <p className="setup-help" id={id("scheduleEventsHint")}>{t("setup.scheduleEventsHint", { max: MAX_SCHEDULE_EVENTS })}</p>
+      <p className="setup-label" id={id("scheduleEventsLabel")}>
+        {t("setup.scheduleLabel")}
+      </p>
+      <p className="setup-help" id={id("scheduleEventsHint")}>
+        {t("setup.scheduleEventsHint", { max: MAX_SCHEDULE_EVENTS })}
+      </p>
 
       <div role="group" aria-labelledby={id("scheduleEventsLabel")} aria-describedby={id("scheduleEventsHint")}>
         {visibleScheduleEvents.map((ev, i) => (
-          <div key={i} style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}>
+          <div
+            key={i}
+            style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}
+          >
             <div style={{ flex: "0 0 110px" }}>
-              <label className="setup-label" htmlFor={id(`scheduleEventTime${i}`)} style={{ fontSize: "0.75rem" }}>{t("setup.scheduleEventTimeLabel")}</label>
+              <label className="setup-label" htmlFor={id(`scheduleEventTime${i}`)} style={{ fontSize: "0.75rem" }}>
+                {t("setup.scheduleEventTimeLabel")}
+              </label>
               <input
                 id={id(`scheduleEventTime${i}`)}
                 className="setup-input"
@@ -288,7 +379,9 @@ export default function DateSectionForm({ prefix = "" }) {
                 {/* Primera opciÃ³n vacÃ­a: evento sin emoji. */}
                 <option value="">â€”</option>
                 {SCHEDULE_EVENT_EMOJIS.map((emoji) => (
-                  <option key={emoji} value={emoji}>{emoji}</option>
+                  <option key={emoji} value={emoji}>
+                    {emoji}
+                  </option>
                 ))}
               </select>
             </div>
@@ -324,7 +417,11 @@ export default function DateSectionForm({ prefix = "" }) {
         <button
           type="button"
           className="setup-button setup-button--ghost setup-button--compact"
-          onClick={() => addScheduleEvent({ time: "", text: "", emoji: "" }, (json) => updateFormField("weddingScheduleEvents", json))}
+          onClick={() =>
+            addScheduleEvent({ time: "", text: "", emoji: "" }, (json) =>
+              updateFormField("weddingScheduleEvents", json),
+            )
+          }
           style={{ marginTop: "0.6rem" }}
         >
           + {t("setup.scheduleAddEvent")}

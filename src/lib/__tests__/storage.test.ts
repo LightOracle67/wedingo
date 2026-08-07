@@ -80,7 +80,9 @@ describe("storage", () => {
     });
 
     it("devuelve false si localStorage falla", () => {
-      localMock.getItem = vi.fn(() => { throw new Error("StorageError"); });
+      localMock.getItem = vi.fn(() => {
+        throw new Error("StorageError");
+      });
       expect(hasStorageConsent()).toBe(false);
     });
   });
@@ -184,7 +186,9 @@ describe("storage", () => {
     it("no lanza error si removeItem falla", () => {
       localMock.setItem("wedin_test", "value");
       const orig = localMock.removeItem;
-      localMock.removeItem = vi.fn(() => { throw new Error("fail"); });
+      localMock.removeItem = vi.fn(() => {
+        throw new Error("fail");
+      });
       expect(() => clearAllStorage()).not.toThrow();
       localMock.removeItem = orig;
     });
@@ -198,7 +202,9 @@ describe("storage", () => {
     it("safeSetItem no lanza error si localStorage falla", () => {
       localMock.setItem("wedin_cookie_consent", "accepted");
       const origSetItem = localMock.setItem;
-      localMock.setItem = vi.fn(() => { throw new Error("QuotaExceeded"); });
+      localMock.setItem = vi.fn(() => {
+        throw new Error("QuotaExceeded");
+      });
       const result = safeSetItem("wedin_test", "valor");
       localMock.setItem = origSetItem;
       expect(result).toBe(false);
@@ -218,7 +224,9 @@ describe("storage", () => {
 
     it("safeGetItem catches when sessionStorage.getItem throws", () => {
       const origGetItem = sessionMock.getItem;
-      sessionMock.getItem = vi.fn(() => { throw new Error("fail"); });
+      sessionMock.getItem = vi.fn(() => {
+        throw new Error("fail");
+      });
       const result = safeGetItem("test", sessionStorage);
       sessionMock.getItem = origGetItem;
       expect(result).toBeNull();
@@ -226,7 +234,9 @@ describe("storage", () => {
 
     it("safeRemoveItem no lanza error si falla", () => {
       const origRemoveItem = localMock.removeItem;
-      localMock.removeItem = vi.fn(() => { throw new Error("Error"); });
+      localMock.removeItem = vi.fn(() => {
+        throw new Error("Error");
+      });
       expect(() => safeRemoveItem("wedin_test")).not.toThrow();
       localMock.removeItem = origRemoveItem;
     });

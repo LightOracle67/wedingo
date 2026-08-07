@@ -19,7 +19,12 @@ export default function GiftsSectionForm({ prefix = "" }) {
 
   return (
     <>
-      <SetupToggleField enabledField="giftsInfoEnabled" label={t("setup.giftsInfoLabel")} hint={t("setup.giftsInfoHint")} id={id}>
+      <SetupToggleField
+        enabledField="giftsInfoEnabled"
+        label={t("setup.giftsInfoLabel")}
+        hint={t("setup.giftsInfoHint")}
+        id={id}
+      >
         <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
           <CharacterCounter value={formData.giftsInfo || ""} max={2000} />
         </p>
@@ -35,7 +40,12 @@ export default function GiftsSectionForm({ prefix = "" }) {
         />
       </SetupToggleField>
 
-      <SetupToggleField enabledField="bankInfoEnabled" label={t("setup.bankInfoLabel")} hint={t("setup.bankInfoHint")} id={id}>
+      <SetupToggleField
+        enabledField="bankInfoEnabled"
+        label={t("setup.bankInfoLabel")}
+        hint={t("setup.bankInfoHint")}
+        id={id}
+      >
         <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
           <CharacterCounter value={formData.bankInfo || ""} max={100} />
         </p>
@@ -50,9 +60,12 @@ export default function GiftsSectionForm({ prefix = "" }) {
           aria-invalid={ibanLooksInvalid || undefined}
           aria-describedby={ibanLooksInvalid ? `${id("bankInfoHint")} ${id("ibanError")}` : id("bankInfoHint")}
         />
-        {ibanLooksInvalid ? <p className="setup-help" id={id("ibanError")} style={{ color: "#ef4444" }}>{t("errors.ibanInvalid")}</p> : null}
+        {ibanLooksInvalid ? (
+          <p className="setup-help" id={id("ibanError")} style={{ color: "#ef4444" }}>
+            {t("errors.ibanInvalid")}
+          </p>
+        ) : null}
       </SetupToggleField>
     </>
   );
 }
-

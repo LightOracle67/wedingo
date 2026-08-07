@@ -4,8 +4,21 @@ import { useFocusTrap } from "../hooks/useFocusTrap";
 import { randomMessage } from "../lib/invite-messages";
 import "../styles/envelope.css";
 
-const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, onConfetti, firstName, secondName, customSeal, inviteToken }: { onOpen: () => void; onConfetti?: () => void; firstName: string; secondName: string; customSeal?: string | undefined; inviteToken?: string | undefined }) {
-
+const EnvelopeOverlay = memo(function EnvelopeOverlay({
+  onOpen,
+  onConfetti,
+  firstName,
+  secondName,
+  customSeal,
+  inviteToken,
+}: {
+  onOpen: () => void;
+  onConfetti?: () => void;
+  firstName: string;
+  secondName: string;
+  customSeal?: string | undefined;
+  inviteToken?: string | undefined;
+}) {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [exiting, setExiting] = useState(false);
@@ -13,9 +26,10 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, onConfetti, firs
   const [showText, setShowText] = useState(false);
 
   useEffect(() => {
-
     document.body.style.overflow = "hidden";
-    return () => { ; document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, []);
 
   // Mensaje fijo por invitación (sessionStorage), mismo que usa la página de
@@ -25,9 +39,15 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, onConfetti, firs
     try {
       const stored = sessionStorage.getItem(key);
       if (stored) return stored;
-    } catch { /* almacenamiento no disponible */ }
+    } catch {
+      /* almacenamiento no disponible */
+    }
     const raw = randomMessage(i18n.language ?? "es") ?? "";
-    try { sessionStorage.setItem(key, raw); } catch { /* noop */ }
+    try {
+      sessionStorage.setItem(key, raw);
+    } catch {
+      /* noop */
+    }
     return raw;
   }, [i18n.language, inviteToken]);
 
@@ -36,23 +56,29 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, onConfetti, firs
   const overlayRef = useFocusTrap<HTMLDivElement>(true);
 
   const handleClick = useCallback(() => {
-    if (exiting) { ; return; }
+    if (exiting) {
+      return;
+    }
     if (!open) {
-
       setOpen(true);
-      setTimeout(() => { ; setShowWhite(true); }, 600);
-      setTimeout(() => { ; setShowText(true); }, 1400);
+      setTimeout(() => {
+        setShowWhite(true);
+      }, 600);
+      setTimeout(() => {
+        setShowText(true);
+      }, 1400);
       return;
     }
 
     setExiting(true);
-    try { window.dispatchEvent(new CustomEvent("wedin:play-audio")); } catch {}
+    try {
+      window.dispatchEvent(new CustomEvent("wedin:play-audio"));
+    } catch {}
     // El texto dorado tarda 2.5s en desvanecerse (opacity 2s / transform 2.5s):
     // el confeti arranca justo al terminar ese fade out, detrás del sobre que
     // todavía se está yendo, de modo que ya cae cuando la invitación aparece.
     setTimeout(() => onConfetti?.(), 2600);
     setTimeout(() => {
-
       document.body.style.overflow = "";
       const main = document.getElementById("main-content");
       if (main) main.focus({ preventScroll: true });
@@ -61,7 +87,20 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, onConfetti, firs
   }, [onOpen, onConfetti, open, exiting]);
 
   return (
-    <div ref={overlayRef} className={`envelope-overlay ${exiting ? "envelope-overlay--exit" : ""}`} onClick={handleClick} tabIndex={0} role="button" aria-label={t("envelope.tapContinue")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick(); } }}>
+    <div
+      ref={overlayRef}
+      className={`envelope-overlay ${exiting ? "envelope-overlay--exit" : ""}`}
+      onClick={handleClick}
+      tabIndex={0}
+      role="button"
+      aria-label={t("envelope.tapContinue")}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
+    >
       <span className="envelope-light" data-light="1" />
       <span className="envelope-light" data-light="2" />
       <span className="envelope-light" data-light="3" />
@@ -98,7 +137,9 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({ onOpen, onConfetti, firs
           </div>
           <div className="envelope__panel envelope__panel--back">
             <div className="envelope__letter">
-              <p className="envelope__letter-names">{firstName} <span className="envelope__letter-ampersand">&</span> {secondName}</p>
+              <p className="envelope__letter-names">
+                {firstName} <span className="envelope__letter-ampersand">&</span> {secondName}
+              </p>
               <p className="envelope__letter-message">{message}</p>
             </div>
           </div>

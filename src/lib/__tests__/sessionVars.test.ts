@@ -8,10 +8,18 @@ beforeEach(() => {
   Object.keys(storage).forEach((k) => delete storage[k]);
   const mock = {
     getItem: vi.fn((key: string) => (key in storage ? storage[key] : null)),
-    setItem: vi.fn((key: string, value: string) => { storage[key] = value; }),
-    removeItem: vi.fn((key: string) => { delete storage[key]; }),
-    clear: vi.fn(() => { Object.keys(storage).forEach((k) => delete storage[k]); }),
-    get length() { return Object.keys(storage).length; },
+    setItem: vi.fn((key: string, value: string) => {
+      storage[key] = value;
+    }),
+    removeItem: vi.fn((key: string) => {
+      delete storage[key];
+    }),
+    clear: vi.fn(() => {
+      Object.keys(storage).forEach((k) => delete storage[k]);
+    }),
+    get length() {
+      return Object.keys(storage).length;
+    },
     key: vi.fn((i: number) => Object.keys(storage)[i] ?? null),
   };
   // La sesión se guarda en sessionStorage (más seguro que localStorage).
@@ -57,7 +65,9 @@ describe("sessionVars", () => {
   });
 
   it("handles localStorage write errors gracefully", () => {
-    (sessionStorage.setItem as ReturnType<typeof vi.fn>).mockImplementationOnce(() => { throw new Error("QuotaExceededError"); });
+    (sessionStorage.setItem as ReturnType<typeof vi.fn>).mockImplementationOnce(() => {
+      throw new Error("QuotaExceededError");
+    });
     expect(() => saveSession("setup", "user")).not.toThrow();
     expect(getSession()).toBeNull();
   });
@@ -98,7 +108,9 @@ describe("sessionVars", () => {
   it("renewSession handles storage errors gracefully", () => {
     saveSession("setup", "user");
     const orig = sessionStorage.getItem;
-    sessionStorage.getItem = vi.fn(() => { throw new Error("fail"); });
+    sessionStorage.getItem = vi.fn(() => {
+      throw new Error("fail");
+    });
     expect(() => renewSession()).not.toThrow();
     sessionStorage.getItem = orig;
   });

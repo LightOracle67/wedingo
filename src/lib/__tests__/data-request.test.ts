@@ -6,10 +6,32 @@ import { eraseGuestLocalData, exportGuestLocalData } from "../data-request";
  * funcione igual que en un Storage real. */
 function createStorageMock() {
   const mock: Record<string, unknown> = {};
-  Object.defineProperty(mock, "getItem", { writable: true, value: (k: string) => (k in mock ? mock[k] : null), enumerable: false });
-  Object.defineProperty(mock, "setItem", { writable: true, value: (k: string, v: string) => { mock[k] = String(v); }, enumerable: false });
-  Object.defineProperty(mock, "removeItem", { writable: true, value: (k: string) => { delete mock[k]; }, enumerable: false });
-  Object.defineProperty(mock, "clear", { writable: true, value: () => { Object.keys(mock).forEach((k) => delete mock[k]); }, enumerable: false });
+  Object.defineProperty(mock, "getItem", {
+    writable: true,
+    value: (k: string) => (k in mock ? mock[k] : null),
+    enumerable: false,
+  });
+  Object.defineProperty(mock, "setItem", {
+    writable: true,
+    value: (k: string, v: string) => {
+      mock[k] = String(v);
+    },
+    enumerable: false,
+  });
+  Object.defineProperty(mock, "removeItem", {
+    writable: true,
+    value: (k: string) => {
+      delete mock[k];
+    },
+    enumerable: false,
+  });
+  Object.defineProperty(mock, "clear", {
+    writable: true,
+    value: () => {
+      Object.keys(mock).forEach((k) => delete mock[k]);
+    },
+    enumerable: false,
+  });
   Object.defineProperty(mock, "key", { value: (i: number) => Object.keys(mock)[i] ?? null, enumerable: false });
   Object.defineProperty(mock, "length", { get: () => Object.keys(mock).length, enumerable: false });
   return mock as Storage;

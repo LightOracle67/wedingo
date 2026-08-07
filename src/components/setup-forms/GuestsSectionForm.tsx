@@ -11,35 +11,68 @@ export default function GuestsSectionForm({ prefix = "" }) {
   const id = (name: string) => `${prefix}${name}`;
   const { t } = useTranslation();
 
-  const handleKidsPolicyChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    updateFormField("kidsPolicy", formData.kidsPolicy === e.currentTarget.value ? "" : e.currentTarget.value);
-  }, [updateFormField, formData.kidsPolicy]);
+  const handleKidsPolicyChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      updateFormField("kidsPolicy", formData.kidsPolicy === e.currentTarget.value ? "" : e.currentTarget.value);
+    },
+    [updateFormField, formData.kidsPolicy],
+  );
 
-  const handleMenuEnabledChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    updateFormField("menuEnabled", e.target.checked ? "true" : "false");
-  }, [updateFormField]);
+  const handleMenuEnabledChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      updateFormField("menuEnabled", e.target.checked ? "true" : "false");
+    },
+    [updateFormField],
+  );
 
   /**
    * Cambia el cÃ³digo de vestimenta. La opciÃ³n "Otro" abre un input de texto
    * personalizado; el texto se conserva al cambiar de opciÃ³n (se ignora si
    * no es "Otro") para no destruir la ediciÃ³n con un clic accidental.
    */
-  const handleDressCodeChange = useCallback((value: string) => {
-    const next = formData.weddingDressCode === value ? "" : value;
-    updateFormField("weddingDressCode", next);
-  }, [formData.weddingDressCode, updateFormField]);
+  const handleDressCodeChange = useCallback(
+    (value: string) => {
+      const next = formData.weddingDressCode === value ? "" : value;
+      updateFormField("weddingDressCode", next);
+    },
+    [formData.weddingDressCode, updateFormField],
+  );
 
   return (
     <>
-      <SetupToggleField enabledField="kidsPolicyEnabled" label={t("setup.kidsLabel")} hint={t("setup.kidsHint")} id={id}>
+      <SetupToggleField
+        enabledField="kidsPolicyEnabled"
+        label={t("setup.kidsLabel")}
+        hint={t("setup.kidsHint")}
+        id={id}
+      >
         <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}>
           {[
             { value: "playArea", key: "kidsPolicy.options.playArea" },
             { value: "supervised", key: "kidsPolicy.options.supervised" },
             { value: "adultOnly", key: "kidsPolicy.options.adultOnly" },
           ].map(({ value, key }) => (
-            <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
-              <input id={id("kids-" + value)} type="checkbox" checked={formData.kidsPolicy === value} onChange={handleKidsPolicyChange} value={value} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+            <label
+              key={value}
+              className="setup-checkbox-label"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.4rem",
+                padding: "0.35rem 0",
+                cursor: "pointer",
+                fontSize: "0.9rem",
+                color: "var(--setup-title)",
+              }}
+            >
+              <input
+                id={id("kids-" + value)}
+                type="checkbox"
+                checked={formData.kidsPolicy === value}
+                onChange={handleKidsPolicyChange}
+                value={value}
+                style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+              />
               {t(key)}
             </label>
           ))}
@@ -47,7 +80,12 @@ export default function GuestsSectionForm({ prefix = "" }) {
       </SetupToggleField>
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
-      <SetupToggleField enabledField="weddingDressCodeEnabled" label={t("setup.dressCodeLabel")} hint={t("setup.dressCodeHint")} id={id}>
+      <SetupToggleField
+        enabledField="weddingDressCodeEnabled"
+        label={t("setup.dressCodeLabel")}
+        hint={t("setup.dressCodeHint")}
+        id={id}
+      >
         <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
           {[
             { value: "Traje de gala", key: "setup.dressCodeGala" },
@@ -57,39 +95,104 @@ export default function GuestsSectionForm({ prefix = "" }) {
             { value: "Ropa cÃ³moda", key: "setup.dressCodeComfortable" },
             { value: "Otro", key: "setup.dressCodeOther" },
           ].map(({ value, key }) => (
-            <label key={value} className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0", cursor: "pointer", fontSize: "0.9rem", color: "var(--setup-title)" }}>
-              <input id={id("dressCode-" + value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-"))} type="checkbox" checked={formData.weddingDressCode === value} onChange={() => handleDressCodeChange(value)} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+            <label
+              key={value}
+              className="setup-checkbox-label"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.4rem",
+                padding: "0.35rem 0",
+                cursor: "pointer",
+                fontSize: "0.9rem",
+                color: "var(--setup-title)",
+              }}
+            >
+              <input
+                id={id(
+                  "dressCode-" +
+                    value
+                      .toLowerCase()
+                      .normalize("NFD")
+                      .replace(/[\u0300-\u036f]/g, "")
+                      .replace(/[^a-z0-9]+/g, "-"),
+                )}
+                type="checkbox"
+                checked={formData.weddingDressCode === value}
+                onChange={() => handleDressCodeChange(value)}
+                style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+              />
               {t(key)}
             </label>
           ))}
         </div>
         {formData.weddingDressCode === "Otro" ? (
           <div className="setup-field" style={{ marginTop: "0.6rem" }}>
-            <label className="setup-label" htmlFor={id("dressCodeCustom")}>{t("setup.dressCodeCustomLabel")}</label>
-            <input id={id("dressCodeCustom")} type="text" className="setup-input" value={formData.weddingDressCodeCustom || ""}
-              onChange={(e) => updateFormField("weddingDressCodeCustom", e.target.value.slice(0, MAX_DRESS_CODE_CUSTOM_LENGTH))}
-              placeholder={t("setup.dressCodeCustomPlaceholder")} maxLength={MAX_DRESS_CODE_CUSTOM_LENGTH} autoComplete="off" />
-            <p className="setup-help" id={id("dressCodeCustomHint")}>{t("setup.dressCodeCustomHint")}</p>
+            <label className="setup-label" htmlFor={id("dressCodeCustom")}>
+              {t("setup.dressCodeCustomLabel")}
+            </label>
+            <input
+              id={id("dressCodeCustom")}
+              type="text"
+              className="setup-input"
+              value={formData.weddingDressCodeCustom || ""}
+              onChange={(e) =>
+                updateFormField("weddingDressCodeCustom", e.target.value.slice(0, MAX_DRESS_CODE_CUSTOM_LENGTH))
+              }
+              placeholder={t("setup.dressCodeCustomPlaceholder")}
+              maxLength={MAX_DRESS_CODE_CUSTOM_LENGTH}
+              autoComplete="off"
+            />
+            <p className="setup-help" id={id("dressCodeCustomHint")}>
+              {t("setup.dressCodeCustomHint")}
+            </p>
           </div>
         ) : null}
       </SetupToggleField>
-      <p className="setup-label" style={{ marginBottom: "0.3rem" }}>{t("setup.menuCelebrationLabel")}</p>
+      <p className="setup-label" style={{ marginBottom: "0.3rem" }}>
+        {t("setup.menuCelebrationLabel")}
+      </p>
 
-      <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem", color: "var(--setup-title)", fontSize: "0.9rem", cursor: "pointer", marginBottom: "0.5rem" }}>
-        <input id={id("menuEnabled")} type="checkbox" checked={formData.menuEnabled === "true"} onChange={handleMenuEnabledChange} style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }} />
+      <label
+        className="setup-checkbox-label"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem",
+          color: "var(--setup-title)",
+          fontSize: "0.9rem",
+          cursor: "pointer",
+          marginBottom: "0.5rem",
+        }}
+      >
+        <input
+          id={id("menuEnabled")}
+          type="checkbox"
+          checked={formData.menuEnabled === "true"}
+          onChange={handleMenuEnabledChange}
+          style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+        />
         <span>{t("setup.menuEnabledLabel")}</span>
       </label>
 
       {formData.menuEnabled === "true" ? (
         <>
-          <p className="setup-help" id={id("menuHint")} style={{ marginBottom: "0.4rem" }}>{t("setup.menuHint")}</p>
+          <p className="setup-help" id={id("menuHint")} style={{ marginBottom: "0.4rem" }}>
+            {t("setup.menuHint")}
+          </p>
           {[
             { dishes: "menuCarneDishes", labelKey: "setup.menuCarneLabel" },
             { dishes: "menuPescadoDishes", labelKey: "setup.menuPescadoLabel" },
             { dishes: "menuVeganoDishes", labelKey: "setup.menuVeganoLabel" },
           ].map(({ dishes, labelKey }) => (
             <div key={dishes} style={{ marginBottom: "0.5rem" }}>
-              <p className="setup-label" id={id(dishes + "Label")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t(labelKey)}</p>
+              <p
+                className="setup-label"
+                id={id(dishes + "Label")}
+                style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}
+              >
+                {t(labelKey)}
+              </p>
               <MenuDishEditor
                 value={(formData[dishes] as string) || ""}
                 onChange={(json) => updateFormField(dishes, json)}
@@ -101,18 +204,27 @@ export default function GuestsSectionForm({ prefix = "" }) {
         </>
       ) : (
         <>
-          <p className="setup-label" id={id("menuTextoLabel")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>{t("setup.menuTextoLabel")}</p>
+          <p className="setup-label" id={id("menuTextoLabel")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>
+            {t("setup.menuTextoLabel")}
+          </p>
           <MenuDishEditor
             value={formData.menuTextoDishes || ""}
             onChange={(json) => updateFormField("menuTextoDishes", json)}
             idBase={id("menuTextoDishes")}
           />
-          <p className="setup-help" id={id("menuTextoHint")}>{t("setup.menuTextoHint")}</p>
+          <p className="setup-help" id={id("menuTextoHint")}>
+            {t("setup.menuTextoHint")}
+          </p>
         </>
       )}
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
-      <SetupToggleField enabledField="accommodationURLEnabled" label={t("setup.accommodationLabel")} hint={t("setup.accommodationUrlHint")} id={id}>
+      <SetupToggleField
+        enabledField="accommodationURLEnabled"
+        label={t("setup.accommodationLabel")}
+        hint={t("setup.accommodationUrlHint")}
+        id={id}
+      >
         <MapUrlField
           id={id("accommodationURL")}
           value={formData.accommodationURL || ""}
@@ -121,7 +233,9 @@ export default function GuestsSectionForm({ prefix = "" }) {
           placeHintId={id("accommodationPlace")}
           placeLabel={t("setup.siteNameLabel")}
         />
-        <label className="setup-label" htmlFor={id("accommodationMapMode")} style={{ marginTop: "0.6rem" }}>{t("setup.mapModeLabel")}</label>
+        <label className="setup-label" htmlFor={id("accommodationMapMode")} style={{ marginTop: "0.6rem" }}>
+          {t("setup.mapModeLabel")}
+        </label>
         <select
           id={id("accommodationMapMode")}
           className="setup-input"
@@ -133,7 +247,9 @@ export default function GuestsSectionForm({ prefix = "" }) {
           <option value="name">{t("setup.mapModeName")}</option>
           <option value="hidden">{t("setup.mapModeHidden")}</option>
         </select>
-        <p className="setup-help" id={id("accommodationMapModeHint")}>{t("setup.mapModeHint")}</p>
+        <p className="setup-help" id={id("accommodationMapModeHint")}>
+          {t("setup.mapModeHint")}
+        </p>
       </SetupToggleField>
     </>
   );

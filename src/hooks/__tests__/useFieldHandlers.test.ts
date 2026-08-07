@@ -111,4 +111,3 @@ describe("handleYearChange", () => {
     expect(updateFormField).toHaveBeenCalledWith("weddingYear", "");
   });
 });
-

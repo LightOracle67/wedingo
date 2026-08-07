@@ -71,9 +71,10 @@ export default function DataTab() {
             adminUsername: String(data.adminUsername || ""),
             rsvpCount: rsvpCounts[token] || 0,
             tokenCount: 0,
-            weddingDate: data.weddingDay && data.weddingMonth && data.weddingYear
-              ? `${String(data.weddingDay)}/${String(data.weddingMonth)}/${String(data.weddingYear)}`
-              : "",
+            weddingDate:
+              data.weddingDay && data.weddingMonth && data.weddingYear
+                ? `${String(data.weddingDay)}/${String(data.weddingMonth)}/${String(data.weddingYear)}`
+                : "",
             hasSession: !!data.activeSession,
           };
         });
@@ -84,12 +85,17 @@ export default function DataTab() {
       }
       if (!cancelled) setLoading(false);
     })();
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [addToast, t]);
 
   /** IDs de invitaciones que no tienen datos (sin nombres configurados). */
   const emptyIds = useMemo(
-    () => new Set<string>(invitations.filter((i) => !i.firstName && !i.secondName && !i.rsvpCount).map((i: InvitationData) => i.id)),
+    () =>
+      new Set<string>(
+        invitations.filter((i) => !i.firstName && !i.secondName && !i.rsvpCount).map((i: InvitationData) => i.id),
+      ),
     [invitations],
   );
 
@@ -98,7 +104,8 @@ export default function DataTab() {
   const toggleSelect = useCallback((id: string) => {
     setSelected((prev: Set<string>) => {
       const next = new Set(prev);
-      if (next.has(id)) next.delete(id); else next.add(id);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
       return next;
     });
   }, []);
@@ -118,35 +125,51 @@ export default function DataTab() {
    *
    * @param {string} token - Token/ID de la invitación.
    */
-  const exportOne = useCallback(async (token: string) => {
-    setBusy(true);
-    try {
-      const [invDoc, rsvpSnap] = await Promise.all([
-        getDoc(doc(db, "invitations", token)),
-        getDocs(rsvpByInviteRef(token)),
-      ]);
-      const data: Record<string, unknown> = {
-        invitation: { id: token, ...(invDoc.exists() ? invDoc.data() : {}) },
-        rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
-      };
-      // Carga la galería desde la subcolección
+  const exportOne = useCallback(
+    async (token: string) => {
+      setBusy(true);
       try {
-        const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
-        data.gallery = gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() }));
-      } catch { data.gallery = []; }
-      // El audio también forma parte del backup individual.
-      try {
-        const audioSnap = await getDocs(collection(db, "invitations", token, "audio"));
-        data.audio = audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() }));
-      } catch { data.audio = []; }
-      downloadJson(`${token}_export_${new Date().toISOString().slice(0,10)}.json`, data);
-      addToast("success", t("superadmin.data.exportedOne", { token }));
-    } catch {
-      addToast("error", t("superadmin.data.exportFailed"));
-    } finally {
-      setBusy(false);
-    }
-  }, [addToast, t]);
+        const [invDoc, rsvpSnap] = await Promise.all([
+          getDoc(doc(db, "invitations", token)),
+          getDocs(rsvpByInviteRef(token)),
+        ]);
+        const data: Record<string, unknown> = {
+          invitation: { id: token, ...(invDoc.exists() ? invDoc.data() : {}) },
+          rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+            id: d.id,
+            ...d.data(),
+          })),
+        };
+        // Carga la galería desde la subcolección
+        try {
+          const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
+          data.gallery = gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+            id: d.id,
+            ...d.data(),
+          }));
+        } catch {
+          data.gallery = [];
+        }
+        // El audio también forma parte del backup individual.
+        try {
+          const audioSnap = await getDocs(collection(db, "invitations", token, "audio"));
+          data.audio = audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+            id: d.id,
+            ...d.data(),
+          }));
+        } catch {
+          data.audio = [];
+        }
+        downloadJson(`${token}_export_${new Date().toISOString().slice(0, 10)}.json`, data);
+        addToast("success", t("superadmin.data.exportedOne", { token }));
+      } catch {
+        addToast("error", t("superadmin.data.exportFailed"));
+      } finally {
+        setBusy(false);
+      }
+    },
+    [addToast, t],
+  );
 
   /** Exporta todas las invitaciones seleccionadas en un solo JSON. */
   const exportSelected = useCallback(async () => {
@@ -163,12 +186,21 @@ export default function DataTab() {
         ]);
         result.push({
           invitation: { id: token, ...(invDoc.exists() ? invDoc.data() : {}) },
-          rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
-          gallery: gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
-          audio: audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+          rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+            id: d.id,
+            ...d.data(),
+          })),
+          gallery: gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+            id: d.id,
+            ...d.data(),
+          })),
+          audio: audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+            id: d.id,
+            ...d.data(),
+          })),
         });
       }
-      downloadJson(`wedingo_export_${new Date().toISOString().slice(0,10)}.json`, result);
+      downloadJson(`wedingo_export_${new Date().toISOString().slice(0, 10)}.json`, result);
       addToast("success", t("superadmin.data.exportedSelected", { count: selected.size }));
     } catch {
       addToast("error", t("superadmin.data.exportFailed"));
@@ -187,8 +219,14 @@ export default function DataTab() {
       getDocs(collection(db, "invitations", token, "audio")),
     ]);
     return {
-      gallery: gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
-      audio: audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+      gallery: gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+        id: d.id,
+        ...d.data(),
+      })),
+      audio: audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+        id: d.id,
+        ...d.data(),
+      })),
     };
   }, []);
 
@@ -214,11 +252,17 @@ export default function DataTab() {
         exportedAt: new Date().toISOString(),
         // Se sanean los documentos: el export NO debe incluir tokens de setup
         // en claro (_activeSetupToken/legacyToken) ni hashes de sesión.
-        invitations: invSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...sanitizeInvitationForExport(d.data()) })),
-        rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+        invitations: invSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+          id: d.id,
+          ...sanitizeInvitationForExport(d.data()),
+        })),
+        rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+          id: d.id,
+          ...d.data(),
+        })),
         galleryByToken: mediaByToken,
       };
-      downloadJson(`wedingo_full_export_${new Date().toISOString().slice(0,10)}.json`, data);
+      downloadJson(`wedingo_full_export_${new Date().toISOString().slice(0, 10)}.json`, data);
       addToast("success", t("superadmin.data.exportedAll", { count: invSnap.size }));
     } catch {
       addToast("error", t("superadmin.data.exportFailed"));
@@ -234,25 +278,32 @@ export default function DataTab() {
    *
    * @param {string} token - Token/ID de la invitación.
    */
-  const deleteOne = useCallback(async (token: string) => {
-    if (confirmText !== CONFIRM_WORD) {
-      addToast("error", t("superadmin.data.confirmRequired", { word: CONFIRM_WORD }));
-      return;
-    }
-    setBusy(true);
-    try {
-      await cascadeDelete(token);
-      setInvitations((prev: InvitationData[]) => prev.filter((i: InvitationData) => i.id !== token));
-      setSelected((prev: Set<string>) => { const n = new Set(prev); n.delete(token); return n; });
-      setConfirmText("");
-      addToast("success", t("superadmin.data.deletedOne", { token }));
-      void logAudit("delete_invitation", token);
-    } catch {
-      addToast("error", t("superadmin.data.deleteFailed"));
-    } finally {
-      setBusy(false);
-    }
-  }, [confirmText, addToast, t]);
+  const deleteOne = useCallback(
+    async (token: string) => {
+      if (confirmText !== CONFIRM_WORD) {
+        addToast("error", t("superadmin.data.confirmRequired", { word: CONFIRM_WORD }));
+        return;
+      }
+      setBusy(true);
+      try {
+        await cascadeDelete(token);
+        setInvitations((prev: InvitationData[]) => prev.filter((i: InvitationData) => i.id !== token));
+        setSelected((prev: Set<string>) => {
+          const n = new Set(prev);
+          n.delete(token);
+          return n;
+        });
+        setConfirmText("");
+        addToast("success", t("superadmin.data.deletedOne", { token }));
+        void logAudit("delete_invitation", token);
+      } catch {
+        addToast("error", t("superadmin.data.deleteFailed"));
+      } finally {
+        setBusy(false);
+      }
+    },
+    [confirmText, addToast, t],
+  );
 
   /** Elimina las invitaciones seleccionadas. */
   const deleteSelected = useCallback(async () => {
@@ -312,9 +363,7 @@ export default function DataTab() {
     return (
       <div className="data-tab-loading">
         <div className="page-loading" style={{ minHeight: "6rem" }} />
-        <p>
-          {t("common.loading")}
-        </p>
+        <p>{t("common.loading")}</p>
       </div>
     );
   }
@@ -327,10 +376,20 @@ export default function DataTab() {
     <div className="admin-flex--col" style={{ height: "100%", minHeight: 0 }}>
       {/* ── Acciones en lote ── */}
       <div className="data-tab-actions">
-        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={selectAll} disabled={busy}>
+        <button
+          type="button"
+          className="setup-button setup-button--ghost setup-button--compact"
+          onClick={selectAll}
+          disabled={busy}
+        >
           {t("superadmin.data.selectAll")}
         </button>
-        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={deselectAll} disabled={busy}>
+        <button
+          type="button"
+          className="setup-button setup-button--ghost setup-button--compact"
+          onClick={deselectAll}
+          disabled={busy}
+        >
           {t("superadmin.data.deselectAll")}
         </button>
 
@@ -342,7 +401,12 @@ export default function DataTab() {
 
         {selectedCount > 0 && (
           <>
-            <button type="button" className="setup-button setup-button--compact" onClick={exportSelected} disabled={busy}>
+            <button
+              type="button"
+              className="setup-button setup-button--compact"
+              onClick={exportSelected}
+              disabled={busy}
+            >
               {t("superadmin.data.exportSelectedBtn", { count: selectedCount })}
             </button>
             <button
@@ -400,7 +464,7 @@ export default function DataTab() {
                 <input
                   type="checkbox"
                   checked={selectedCount === totalCount && totalCount > 0}
-                  onChange={() => selectedCount === totalCount ? deselectAll() : selectAll()}
+                  onChange={() => (selectedCount === totalCount ? deselectAll() : selectAll())}
                   disabled={busy}
                   aria-label={t("superadmin.data.selectAll")}
                 />
@@ -426,23 +490,47 @@ export default function DataTab() {
                   />
                 </td>
                 <td className="data-tab-td">
-                  <code className="data-tab-code-copy" onClick={() => navigator.clipboard?.writeText(inv.id)} title={t("superadmin.data.copyToken")}>
+                  <code
+                    className="data-tab-code-copy"
+                    onClick={() => navigator.clipboard?.writeText(inv.id)}
+                    title={t("superadmin.data.copyToken")}
+                  >
                     {inv.id}
                   </code>
                 </td>
                 <td className="data-tab-td">
-                  {inv.firstName ? `${inv.firstName} & ${inv.secondName}` : <span className="data-tab-empty-name">{t("superadmin.data.emptyInvitation")}</span>}
+                  {inv.firstName ? (
+                    `${inv.firstName} & ${inv.secondName}`
+                  ) : (
+                    <span className="data-tab-empty-name">{t("superadmin.data.emptyInvitation")}</span>
+                  )}
                   {inv.adminUsername ? <span className="data-tab-admin-user">@{inv.adminUsername}</span> : null}
                 </td>
-                <td className="data-tab-td" style={{ whiteSpace: "nowrap" }}>{inv.weddingDate || "—"}</td>
-                <td className="data-tab-td" style={{ textAlign: "center" }}>{inv.rsvpCount}</td>
-                <td className="data-tab-td" style={{ textAlign: "center" }}>{inv.hasSession ? "🟢" : "—"}</td>
+                <td className="data-tab-td" style={{ whiteSpace: "nowrap" }}>
+                  {inv.weddingDate || "—"}
+                </td>
+                <td className="data-tab-td" style={{ textAlign: "center" }}>
+                  {inv.rsvpCount}
+                </td>
+                <td className="data-tab-td" style={{ textAlign: "center" }}>
+                  {inv.hasSession ? "🟢" : "—"}
+                </td>
                 <td className="data-tab-td">
                   <div className="admin-flex admin-gap-sm">
-                    <button type="button" className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm" onClick={() => exportOne(inv.id)} disabled={busy}>
+                    <button
+                      type="button"
+                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
+                      onClick={() => exportOne(inv.id)}
+                      disabled={busy}
+                    >
                       {t("superadmin.data.exportBtn")}
                     </button>
-                    <button type="button" className="setup-button setup-button--danger setup-button--compact data-tab-btn-danger" onClick={() => deleteOne(inv.id)} disabled={busy || confirmText !== CONFIRM_WORD}>
+                    <button
+                      type="button"
+                      className="setup-button setup-button--danger setup-button--compact data-tab-btn-danger"
+                      onClick={() => deleteOne(inv.id)}
+                      disabled={busy || confirmText !== CONFIRM_WORD}
+                    >
                       {t("superadmin.data.delete")}
                     </button>
                   </div>
@@ -451,11 +539,7 @@ export default function DataTab() {
             ))}
           </tbody>
         </table>
-        {!invitations.length && (
-          <p className="data-tab-empty-msg">
-            {t("superadmin.data.noInvitations")}
-          </p>
-        )}
+        {!invitations.length && <p className="data-tab-empty-msg">{t("superadmin.data.noInvitations")}</p>}
       </div>
     </div>
   );
@@ -464,8 +548,6 @@ export default function DataTab() {
 // ═══════════════════════════════════════════════════════
 // HELPERS
 // ═══════════════════════════════════════════════════════
-
-
 
 /** Elimina los campos sensibles de un documento de invitación antes de
  *  exportarlo: los tokens de setup no deben viajar en claro en un JSON. */
@@ -480,7 +562,8 @@ function sanitizeInvitationForExport(data: Record<string, unknown>): Record<stri
  *
  * @param {string} token - Token/ID de la invitación.
  */
-async function cascadeDelete(token: string) {  const BATCH_SIZE = 500;
+async function cascadeDelete(token: string) {
+  const BATCH_SIZE = 500;
   const refsToDelete = [];
 
   // RSVPs

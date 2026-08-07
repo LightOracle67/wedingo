@@ -24,7 +24,7 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <div>child</div>
-      </ToastProvider>
+      </ToastProvider>,
     );
     expect(screen.getByText("child")).toBeDefined();
   });
@@ -33,9 +33,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <TestConsumer />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Add Toast").click(); });
+    act(() => {
+      screen.getByText("Add Toast").click();
+    });
     expect(screen.getByText("Test toast")).toBeDefined();
   });
 
@@ -43,9 +45,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <TestConsumer />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Add Toast").click(); });
+    act(() => {
+      screen.getByText("Add Toast").click();
+    });
     expect(screen.getByText("✓")).toBeDefined();
   });
 
@@ -57,9 +61,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <WarningTest />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Warn").click(); });
+    act(() => {
+      screen.getByText("Warn").click();
+    });
     expect(screen.getByText("!")).toBeDefined();
   });
 
@@ -71,9 +77,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <ProgressTest />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Upload").click(); });
+    act(() => {
+      screen.getByText("Upload").click();
+    });
     expect(screen.getByText("↑")).toBeDefined();
   });
 
@@ -81,10 +89,12 @@ describe("ToastContext", () => {
     function ProgressUpdateTest() {
       const { startUploadToast } = useToast();
       return (
-        <button onClick={() => {
-          const toast = startUploadToast("Uploading...");
-          toast.update(50);
-        }}>
+        <button
+          onClick={() => {
+            const toast = startUploadToast("Uploading...");
+            toast.update(50);
+          }}
+        >
           Update
         </button>
       );
@@ -92,9 +102,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <ProgressUpdateTest />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Update").click(); });
+    act(() => {
+      screen.getByText("Update").click();
+    });
     const bar = document.querySelector(".toast__progress-bar");
     expect(bar).toBeDefined();
     expect((bar as HTMLElement).style.width).toBe("50%");
@@ -104,10 +116,12 @@ describe("ToastContext", () => {
     function ProgressCompleteTest() {
       const { startUploadToast } = useToast();
       return (
-        <button onClick={() => {
-          const toast = startUploadToast("Uploading...");
-          toast.complete("Done");
-        }}>
+        <button
+          onClick={() => {
+            const toast = startUploadToast("Uploading...");
+            toast.complete("Done");
+          }}
+        >
           Complete
         </button>
       );
@@ -115,9 +129,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <ProgressCompleteTest />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Complete").click(); });
+    act(() => {
+      screen.getByText("Complete").click();
+    });
     expect(screen.getByText("Done")).toBeDefined();
     expect(screen.getByText("✓")).toBeDefined();
   });
@@ -126,10 +142,12 @@ describe("ToastContext", () => {
     function ProgressErrorTest() {
       const { startUploadToast } = useToast();
       return (
-        <button onClick={() => {
-          const toast = startUploadToast("Uploading...");
-          toast.error("Failed");
-        }}>
+        <button
+          onClick={() => {
+            const toast = startUploadToast("Uploading...");
+            toast.error("Failed");
+          }}
+        >
           Error
         </button>
       );
@@ -137,9 +155,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <ProgressErrorTest />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Error").click(); });
+    act(() => {
+      screen.getByText("Error").click();
+    });
     expect(screen.getByText("Failed")).toBeDefined();
     expect(document.querySelector(".toast__icon")?.textContent).toBe("✕");
   });
@@ -148,9 +168,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider containerId="custom-root">
         <TestConsumer />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Add Toast").click(); });
+    act(() => {
+      screen.getByText("Add Toast").click();
+    });
     expect(document.getElementById("custom-root")).toBeDefined();
   });
 
@@ -158,11 +180,15 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <TestConsumer />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Add Toast").click(); });
+    act(() => {
+      screen.getByText("Add Toast").click();
+    });
     expect(screen.getByText("Test toast")).toBeDefined();
-    act(() => { screen.getByLabelText("common.toast.close").click(); });
+    act(() => {
+      screen.getByLabelText("common.toast.close").click();
+    });
     expect(screen.queryByText("Test toast")).toBeNull();
   });
 
@@ -174,9 +200,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <ErrorTest />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("ErrorBtn").click(); });
+    act(() => {
+      screen.getByText("ErrorBtn").click();
+    });
     expect(document.querySelector(".toast__icon")?.textContent).toBe("✕");
   });
 
@@ -185,11 +213,15 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <TestConsumer />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Add Toast").click(); });
+    act(() => {
+      screen.getByText("Add Toast").click();
+    });
     expect(screen.getByText("Test toast")).toBeDefined();
-    act(() => { vi.advanceTimersByTime(5300); });
+    act(() => {
+      vi.advanceTimersByTime(5300);
+    });
     expect(screen.queryByText("Test toast")).toBeNull();
     vi.useRealTimers();
   });
@@ -198,7 +230,12 @@ describe("ToastContext", () => {
     function MultiToastTest() {
       const { addToast } = useToast();
       return (
-        <button onClick={() => { addToast("success", "First"); addToast("success", "Second"); }}>
+        <button
+          onClick={() => {
+            addToast("success", "First");
+            addToast("success", "Second");
+          }}
+        >
           Add Two
         </button>
       );
@@ -206,9 +243,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <MultiToastTest />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Add Two").click(); });
+    act(() => {
+      screen.getByText("Add Two").click();
+    });
     expect(screen.getByText("First")).toBeDefined();
     expect(screen.getByText("Second")).toBeDefined();
   });
@@ -218,7 +257,12 @@ describe("ToastContext", () => {
     function MultiToastTest() {
       const { addToast } = useToast();
       return (
-        <button onClick={() => { addToast("success", "First"); addToast("success", "Second"); }}>
+        <button
+          onClick={() => {
+            addToast("success", "First");
+            addToast("success", "Second");
+          }}
+        >
           Add Two
         </button>
       );
@@ -226,10 +270,14 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <MultiToastTest />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Add Two").click(); });
-    act(() => { vi.advanceTimersByTime(5300); });
+    act(() => {
+      screen.getByText("Add Two").click();
+    });
+    act(() => {
+      vi.advanceTimersByTime(5300);
+    });
     // Ambos timers expiran con duración por defecto: el primero queda "exiting".
     const first = screen.queryByText("First");
     expect(first).toBeDefined();
@@ -241,10 +289,14 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <TestConsumer />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Add Toast").click(); });
-    act(() => { vi.advanceTimersByTime(6000); });
+    act(() => {
+      screen.getByText("Add Toast").click();
+    });
+    act(() => {
+      vi.advanceTimersByTime(6000);
+    });
     expect(screen.queryByText("Test toast")).toBeNull();
     vi.useRealTimers();
   });
@@ -253,11 +305,13 @@ describe("ToastContext", () => {
     function MultiProgressTest() {
       const { startUploadToast } = useToast();
       return (
-        <button onClick={() => {
-          const t1 = startUploadToast("Upload 1");
-          startUploadToast("Upload 2");
-          t1.update(75);
-        }}>
+        <button
+          onClick={() => {
+            const t1 = startUploadToast("Upload 1");
+            startUploadToast("Upload 2");
+            t1.update(75);
+          }}
+        >
           Multi Update
         </button>
       );
@@ -265,9 +319,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <MultiProgressTest />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Multi Update").click(); });
+    act(() => {
+      screen.getByText("Multi Update").click();
+    });
     const bars = document.querySelectorAll(".toast__progress-bar");
     expect(bars.length).toBe(2);
     expect((bars[0] as HTMLElement).style.width).toBe("75%");
@@ -277,11 +333,13 @@ describe("ToastContext", () => {
     function MultiCompleteTest() {
       const { startUploadToast } = useToast();
       return (
-        <button onClick={() => {
-          const t1 = startUploadToast("Upload 1");
-          startUploadToast("Upload 2");
-          t1.complete("Done");
-        }}>
+        <button
+          onClick={() => {
+            const t1 = startUploadToast("Upload 1");
+            startUploadToast("Upload 2");
+            t1.complete("Done");
+          }}
+        >
           Multi Complete
         </button>
       );
@@ -289,9 +347,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <MultiCompleteTest />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Multi Complete").click(); });
+    act(() => {
+      screen.getByText("Multi Complete").click();
+    });
     expect(screen.getByText("Done")).toBeDefined();
     expect(document.querySelectorAll(".toast").length).toBe(2);
   });
@@ -300,11 +360,13 @@ describe("ToastContext", () => {
     function MultiErrorTest() {
       const { startUploadToast } = useToast();
       return (
-        <button onClick={() => {
-          const t1 = startUploadToast("Upload 1");
-          startUploadToast("Upload 2");
-          t1.error("Failed");
-        }}>
+        <button
+          onClick={() => {
+            const t1 = startUploadToast("Upload 1");
+            startUploadToast("Upload 2");
+            t1.error("Failed");
+          }}
+        >
           Multi Error
         </button>
       );
@@ -312,9 +374,11 @@ describe("ToastContext", () => {
     render(
       <ToastProvider>
         <MultiErrorTest />
-      </ToastProvider>
+      </ToastProvider>,
     );
-    act(() => { screen.getByText("Multi Error").click(); });
+    act(() => {
+      screen.getByText("Multi Error").click();
+    });
     expect(screen.getByText("Failed")).toBeDefined();
     expect(document.querySelectorAll(".toast").length).toBe(2);
   });

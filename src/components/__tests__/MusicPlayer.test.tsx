@@ -259,7 +259,9 @@ describe("MusicPlayer", () => {
     fireEvent.click(fab);
     const playBtn = document.querySelector(".music-player__play") as HTMLButtonElement;
     Object.defineProperty(playBtn, "disabled", { value: false, configurable: true });
-    mockAudioPlay.mockImplementation(() => { throw new Error("no audio"); });
+    mockAudioPlay.mockImplementation(() => {
+      throw new Error("no audio");
+    });
     playBtn.click();
     expect(document.querySelector(".music-player__spinner")).toBeNull();
   });

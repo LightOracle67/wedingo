@@ -87,7 +87,9 @@ describe("DataRequestModal", () => {
     const onClose = vi.fn();
     render(<DataRequestModal inviteToken="abc" onClose={onClose} />);
     fireEvent.click(screen.getByLabelText("common.close"));
-    act(() => { vi.advanceTimersByTime(250); });
+    act(() => {
+      vi.advanceTimersByTime(250);
+    });
     expect(onClose).toHaveBeenCalledTimes(1);
     vi.useRealTimers();
   });

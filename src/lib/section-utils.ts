@@ -18,7 +18,12 @@ export function parseSectionOrder(raw: string | undefined) {
 }
 
 export function parseHidden(raw: string | null | undefined) {
-  return new Set((raw || "").split(",").map((s) => s.trim()).filter(Boolean));
+  return new Set(
+    (raw || "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean),
+  );
 }
 
 /** Indica si una sección tiene contenido configurado (si no, no se muestra en
@@ -36,16 +41,29 @@ export function sectionHasContent(
     case "hero":
       return true;
     case "details":
-      return !!(config.weddingDay || config.weddingMonth || config.weddingYear
-        || config.weddingHour || config.weddingMinute || config.weddingSiteURL);
+      return !!(
+        config.weddingDay ||
+        config.weddingMonth ||
+        config.weddingYear ||
+        config.weddingHour ||
+        config.weddingMinute ||
+        config.weddingSiteURL
+      );
     case "info":
       // El menú también vive en la sección info: configurarlo solo no debe
       // ocultar la sección automáticamente. weddingDressCodeCustom acompaña
       // a weddingDressCode cuando se elige "Otro".
-      return !!(config.weddingScheduleEvents || config.weddingDressCode || config.weddingDressCodeCustom
-        || config.kidsPolicy
-        || config.menuEnabled === "true" || config.menuCarneDishes || config.menuPescadoDishes
-        || config.menuVeganoDishes || config.menuTextoDishes);
+      return !!(
+        config.weddingScheduleEvents ||
+        config.weddingDressCode ||
+        config.weddingDressCodeCustom ||
+        config.kidsPolicy ||
+        config.menuEnabled === "true" ||
+        config.menuCarneDishes ||
+        config.menuPescadoDishes ||
+        config.menuVeganoDishes ||
+        config.menuTextoDishes
+      );
     case "story":
       return !!config.storyText;
     case "gifts":
@@ -57,14 +75,16 @@ export function sectionHasContent(
     case "extras":
       // La sección de funciones sociales se desactiva si ningún extra está
       // activado (ninguno de sus inputs/toggles se ha establecido).
-      return config.rsvpDeadlineEnabled === "true"
-        || config.reactionsEnabled === "true"
-        || config.giftsListEnabled === "true"
-        || config.rideShareEnabled === "true"
-        || config.welcomeVideoEnabled === "true"
-        || config.notesEnabled === "true"
-        || config.musicPollEnabled === "true"
-        || config.triviaEnabled === "true";
+      return (
+        config.rsvpDeadlineEnabled === "true" ||
+        config.reactionsEnabled === "true" ||
+        config.giftsListEnabled === "true" ||
+        config.rideShareEnabled === "true" ||
+        config.welcomeVideoEnabled === "true" ||
+        config.notesEnabled === "true" ||
+        config.musicPollEnabled === "true" ||
+        config.triviaEnabled === "true"
+      );
     case "gallery":
       // La galería se desactiva si no tiene ninguna imagen subida.
       return galleryHasImages;

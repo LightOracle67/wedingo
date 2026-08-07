@@ -7,10 +7,19 @@ import { useConfig } from "../../contexts";
 import CornerDecorations from "../../components/CornerDecorations";
 
 const DetailsSection = memo(function DetailsSection({
-  style, className,
-  formattedDate, formattedTime, hasLocationData, locationDescription,
+  style,
+  className,
+  formattedDate,
+  formattedTime,
+  hasLocationData,
+  locationDescription,
   calendarLink,
-  weddingSiteURL, instagramUrl, facebookUrl, mapView, staticMap, detailsMapMode,
+  weddingSiteURL,
+  instagramUrl,
+  facebookUrl,
+  mapView,
+  staticMap,
+  detailsMapMode,
   cornerDecoration,
 }: {
   style?: React.CSSProperties;
@@ -68,7 +77,9 @@ const DetailsSection = memo(function DetailsSection({
         config?.weddingPlace ? `LOCATION:${esc(config.weddingPlace)}` : "",
         "END:VEVENT",
         "END:VCALENDAR",
-      ].filter(Boolean).join("\r\n");
+      ]
+        .filter(Boolean)
+        .join("\r\n");
       const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -79,7 +90,9 @@ const DetailsSection = memo(function DetailsSection({
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
-    } catch { /* calendario no disponible */ }
+    } catch {
+      /* calendario no disponible */
+    }
   };
   return (
     <section
@@ -93,7 +106,9 @@ const DetailsSection = memo(function DetailsSection({
           <p className="story-eyebrow">{t("details.sectionLabel")}</p>
 
           <h2 className="story-title">{formattedDate || t("details.datePending")}</h2>
-          <p className="story-note">{formattedTime ? t("details.timeLabel", { time: formattedTime }) : t("details.timePending")}</p>
+          <p className="story-note">
+            {formattedTime ? t("details.timeLabel", { time: formattedTime }) : t("details.timePending")}
+          </p>
 
           <div className="story-divider" />
 
@@ -108,7 +123,9 @@ const DetailsSection = memo(function DetailsSection({
                 onClick={() => {
                   try {
                     import("../../lib/analytics").then(({ trackEvent }) => trackEvent("calendar_click"));
-                  } catch { /* analítica opcional */ }
+                  } catch {
+                    /* analítica opcional */
+                  }
                 }}
               >
                 {t("details.addToCalendar")}
@@ -127,17 +144,66 @@ const DetailsSection = memo(function DetailsSection({
 
           {/* Redes sociales de los novios (opcional). */}
           {instagramUrl || facebookUrl ? (
-            <div className="story-social-actions" style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}>
+            <div
+              className="story-social-actions"
+              style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}
+            >
               {instagramUrl ? (
-                <a href={instagramUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer" aria-label={t("details.instagramLabel")} title={t("details.instagramLabel")}
-                  style={{ color: "var(--invite-title-color)", fontSize: "1.3rem", textDecoration: "none", opacity: 0.9 }}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  referrerPolicy="no-referrer"
+                  aria-label={t("details.instagramLabel")}
+                  title={t("details.instagramLabel")}
+                  style={{
+                    color: "var(--invite-title-color)",
+                    fontSize: "1.3rem",
+                    textDecoration: "none",
+                    opacity: 0.9,
+                  }}
+                >
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    aria-hidden="true"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  </svg>
                 </a>
               ) : null}
               {facebookUrl ? (
-                <a href={facebookUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer" aria-label={t("details.facebookLabel")} title={t("details.facebookLabel")}
-                  style={{ color: "var(--invite-title-color)", fontSize: "1.3rem", textDecoration: "none", opacity: 0.9 }}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M14 8h3V5h-3a4 4 0 0 0-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9a1 1 0 0 1 1-1z"/></svg>
+                <a
+                  href={facebookUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  referrerPolicy="no-referrer"
+                  aria-label={t("details.facebookLabel")}
+                  title={t("details.facebookLabel")}
+                  style={{
+                    color: "var(--invite-title-color)",
+                    fontSize: "1.3rem",
+                    textDecoration: "none",
+                    opacity: 0.9,
+                  }}
+                >
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    aria-hidden="true"
+                  >
+                    <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9a1 1 0 0 1 1-1z" />
+                  </svg>
                 </a>
               ) : null}
             </div>
@@ -147,7 +213,9 @@ const DetailsSection = memo(function DetailsSection({
 
           {mapMode !== "hidden" ? (
             <>
-              <p className="story-eyebrow" style={{ fontSize: "0.82rem" }}>{t("details.locationLabel")}</p>
+              <p className="story-eyebrow" style={{ fontSize: "0.82rem" }}>
+                {t("details.locationLabel")}
+              </p>
               {hasLocationData ? (
                 <p className="story-copy">{locationDescription}</p>
               ) : (
@@ -158,12 +226,25 @@ const DetailsSection = memo(function DetailsSection({
                 <>
                   <MapEmbed mapUrl={weddingSiteURL} mapView={mapView || "roadmap"} staticMap={staticMap === true} />
                   <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
-                    <a className="setup-button setup-button--ghost setup-button--compact" href={weddingSiteURL} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+                    <a
+                      className="setup-button setup-button--ghost setup-button--compact"
+                      href={weddingSiteURL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      referrerPolicy="no-referrer"
+                    >
                       {t("details.viewGoogleMaps")}
                     </a>
-                    <a className="setup-button setup-button--ghost setup-button--compact" href={directionsUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer" onClick={() => {
-                      void import("../../lib/analytics").then(({ trackEvent }) => trackEvent("directions_click"));
-                    }}>
+                    <a
+                      className="setup-button setup-button--ghost setup-button--compact"
+                      href={directionsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      referrerPolicy="no-referrer"
+                      onClick={() => {
+                        void import("../../lib/analytics").then(({ trackEvent }) => trackEvent("directions_click"));
+                      }}
+                    >
                       {t("details.directions")}
                     </a>
                   </div>
@@ -173,9 +254,16 @@ const DetailsSection = memo(function DetailsSection({
                 // "Cómo llegar" busca el lugar en Google Maps igualmente
                 // (antes era inalcanzable para parejas con solo el nombre).
                 <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
-                  <a className="setup-button setup-button--ghost setup-button--compact" href={directionsUrl} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer" onClick={() => {
-                    void import("../../lib/analytics").then(({ trackEvent }) => trackEvent("directions_click"));
-                  }}>
+                  <a
+                    className="setup-button setup-button--ghost setup-button--compact"
+                    href={directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    referrerPolicy="no-referrer"
+                    onClick={() => {
+                      void import("../../lib/analytics").then(({ trackEvent }) => trackEvent("directions_click"));
+                    }}
+                  >
                     {t("details.directions")}
                   </a>
                 </div>

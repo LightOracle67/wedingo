@@ -75,7 +75,9 @@ export function useStoryNavigation(
       stages[sectionKey] === "entering" ? "story-section--is-enter" : "",
       stages[sectionKey] === "leaving" ? "story-section--is-leave" : "",
       stages[sectionKey] === "hidden" ? "story-section--is-hidden" : "",
-    ].filter(Boolean).join(" ");
+    ]
+      .filter(Boolean)
+      .join(" ");
 
   useEffect(() => {
     // Mientras el sobre está cerrado el contenido está inert: no se observa,
@@ -110,11 +112,14 @@ export function useStoryNavigation(
     const schedule = (key: string, from: SectionStage, to: SectionStage, ms: number) => {
       const prev = timers.get(key);
       if (prev) clearTimeout(prev);
-      timers.set(key, setTimeout(() => {
-        // Solo promueve si el estado no cambió a otro intermedio mientras
-        // tanto (p. ej. el usuario volvió a la sección).
-        setStages((s) => (s[key] === from ? { ...s, [key]: to } : s));
-      }, ms));
+      timers.set(
+        key,
+        setTimeout(() => {
+          // Solo promueve si el estado no cambió a otro intermedio mientras
+          // tanto (p. ej. el usuario volvió a la sección).
+          setStages((s) => (s[key] === from ? { ...s, [key]: to } : s));
+        }, ms),
+      );
     };
 
     // Elementos de las secciones (para scrollIntoView al avanzar de sección).
@@ -129,69 +134,71 @@ export function useStoryNavigation(
     // callback de una sección lazy). Su primer contacto NO anima: la sección
     // pasa a active/hidden directamente para no parpadear al cargar/montar.
     const firstContacted = new Set<string>();
-    const observer = new IntersectionObserver((entries) => {
-      const isGlobalFirst = globalFirst;
-      globalFirst = false;
-      for (const entry of entries) {
-        const key = entry.target.getAttribute("data-story-section");
-        if (!key) continue;
-        const isFirstContact = isGlobalFirst || !firstContacted.has(key);
-        if (isFirstContact) firstContacted.add(key);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const isGlobalFirst = globalFirst;
+        globalFirst = false;
+        for (const entry of entries) {
+          const key = entry.target.getAttribute("data-story-section");
+          if (!key) continue;
+          const isFirstContact = isGlobalFirst || !firstContacted.has(key);
+          if (isFirstContact) firstContacted.add(key);
 
-        // Umbral adaptativo: una sección a pantalla completa "entra" al estar
-        // ~70% visible (justo al terminar el scroll); una sección más baja que
-        // el viewport (p. ej. la sección de extras) entra con solo asomarse,
-        // porque nunca alcanzaría el 70%.
-        // IMPORTANTE: el umbral de SALIDA es mucho más bajo que el de entrada.
-        // Si ambos fuesen el mismo, una micro-oscilación del scroll al
-        // asentarse (p. ej. el snap del RSVP) bajaba del 70% y volvía a subir,
-        // disparando entering → leaving → entering y animando la sección DOS
-        // veces. Entre el umbral de salida y el de entrada no se cambia estado.
-        const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
-        const isTall = (entry.target as HTMLElement).clientHeight >= window.innerHeight * 0.8;
-        const enteredThreshold = isTall ? VISIBILITY_THRESHOLD : 0.1;
-        const isEntered = ratio >= enteredThreshold;
-        const isGone = ratio <= 0.15;
+          // Umbral adaptativo: una sección a pantalla completa "entra" al estar
+          // ~70% visible (justo al terminar el scroll); una sección más baja que
+          // el viewport (p. ej. la sección de extras) entra con solo asomarse,
+          // porque nunca alcanzaría el 70%.
+          // IMPORTANTE: el umbral de SALIDA es mucho más bajo que el de entrada.
+          // Si ambos fuesen el mismo, una micro-oscilación del scroll al
+          // asentarse (p. ej. el snap del RSVP) bajaba del 70% y volvía a subir,
+          // disparando entering → leaving → entering y animando la sección DOS
+          // veces. Entre el umbral de salida y el de entrada no se cambia estado.
+          const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
+          const isTall = (entry.target as HTMLElement).clientHeight >= window.innerHeight * 0.8;
+          const enteredThreshold = isTall ? VISIBILITY_THRESHOLD : 0.1;
+          const isEntered = ratio >= enteredThreshold;
+          const isGone = ratio <= 0.15;
 
-        if (isEntered) {
-          setActiveSection(key);
-          if (isFirstContact) {
-            if (isGlobalFirst && !reducedMotion && (bootMode === "reveal" || key === primarySection)) {
-              // El hero (sección principal) entra automáticamente al arrancar,
-              // y el contenido hace su entrada al abrir el sobre.
-              setStages((s) => ({ ...s, [key]: "entering" }));
-              schedule(key, "entering", "active", ENTER_MS);
-            } else {
-              // Primer contacto (boot sobre otra sección o lazy montada):
-              // visible y estable, sin parpadeo al cargar la sección.
+          if (isEntered) {
+            setActiveSection(key);
+            if (isFirstContact) {
+              if (isGlobalFirst && !reducedMotion && (bootMode === "reveal" || key === primarySection)) {
+                // El hero (sección principal) entra automáticamente al arrancar,
+                // y el contenido hace su entrada al abrir el sobre.
+                setStages((s) => ({ ...s, [key]: "entering" }));
+                schedule(key, "entering", "active", ENTER_MS);
+              } else {
+                // Primer contacto (boot sobre otra sección o lazy montada):
+                // visible y estable, sin parpadeo al cargar la sección.
+                setStages((s) => ({ ...s, [key]: "active" }));
+              }
+            } else if (reducedMotion) {
               setStages((s) => ({ ...s, [key]: "active" }));
+            } else {
+              // La sección terminó de asentarse: animación de entrada.
+              setStages((s) => (s[key] === "entering" || s[key] === "active" ? s : { ...s, [key]: "entering" }));
+              schedule(key, "entering", "active", ENTER_MS);
             }
-          } else if (reducedMotion) {
-            setStages((s) => ({ ...s, [key]: "active" }));
-          } else {
-            // La sección terminó de asentarse: animación de entrada.
-            setStages((s) =>
-              s[key] === "entering" || s[key] === "active" ? s : { ...s, [key]: "entering" });
-            schedule(key, "entering", "active", ENTER_MS);
+          } else if (isGone) {
+            if (isFirstContact) {
+              setStages((s) => ({ ...s, [key]: "hidden" }));
+            } else if (reducedMotion) {
+              setStages((s) => ({ ...s, [key]: "hidden" }));
+            } else {
+              // Sale del viewport: animación de salida, luego hidden.
+              setStages((s) => {
+                if (s[key] === "entering" || s[key] === "active") return { ...s, [key]: "leaving" };
+                return s;
+              });
+              schedule(key, "leaving", "hidden", LEAVE_MS);
+            }
           }
-        } else if (isGone) {
-          if (isFirstContact) {
-            setStages((s) => ({ ...s, [key]: "hidden" }));
-          } else if (reducedMotion) {
-            setStages((s) => ({ ...s, [key]: "hidden" }));
-          } else {
-            // Sale del viewport: animación de salida, luego hidden.
-            setStages((s) => {
-              if (s[key] === "entering" || s[key] === "active") return { ...s, [key]: "leaving" };
-              return s;
-            });
-            schedule(key, "leaving", "hidden", LEAVE_MS);
-          }
+          // Entre el umbral de salida (0.15) y el de entrada no se cambia de
+          // estado: evita reiniciar la animación por variaciones del scroll.
         }
-        // Entre el umbral de salida (0.15) y el de entrada no se cambia de
-        // estado: evita reiniciar la animación por variaciones del scroll.
-      }
-    }, { threshold: [0.1, 0.15, VISIBILITY_THRESHOLD] });
+      },
+      { threshold: [0.1, 0.15, VISIBILITY_THRESHOLD] },
+    );
 
     // ── Control de scroll: una sección por gesto ─────────────────────
     let moving = false;
@@ -218,7 +225,9 @@ export function useStoryNavigation(
         // acercarse; en el siguiente gesto ya existirá el elemento.
         appScene.scrollBy({ top: dir * window.innerHeight, behavior: reducedMotion ? "auto" : "smooth" });
       }
-      setTimeout(() => { moving = false; }, SCROLL_LOCK_MS);
+      setTimeout(() => {
+        moving = false;
+      }, SCROLL_LOCK_MS);
     };
 
     /** ¿El gesto ocurre sobre un contenedor con scroll interior utilizable?
@@ -230,9 +239,7 @@ export function useStoryNavigation(
       let node = target instanceof HTMLElement ? target : null;
       while (node && node !== document.body && node !== appScene) {
         if (node.scrollHeight > node.clientHeight + 2) {
-          const atEdge = dir === 1
-            ? node.scrollTop + node.clientHeight >= node.scrollHeight - 2
-            : node.scrollTop <= 2;
+          const atEdge = dir === 1 ? node.scrollTop + node.clientHeight >= node.scrollHeight - 2 : node.scrollTop <= 2;
           return !atEdge;
         }
         node = node.parentElement;
@@ -267,7 +274,9 @@ export function useStoryNavigation(
       if (moving) return;
       // Acumula el gesto (un notch de rueda supera el umbral; un trackpad
       // acumula deltas pequeños hasta completar un gesto).
-      if (gestureDir !== null && gestureDir !== dir) { gestureAccum = 0; }
+      if (gestureDir !== null && gestureDir !== dir) {
+        gestureAccum = 0;
+      }
       gestureDir = dir;
       gestureAccum += Math.abs(e.deltaY);
       if (gestureAccum < GESTURE_THRESHOLD) return;
@@ -290,8 +299,14 @@ export function useStoryNavigation(
       if (appScene && e.target instanceof Node && !appScene.contains(e.target)) return;
       if (isTyping(e.target)) return;
       const dirMap: Record<string, 1 | -1> = {
-        PageDown: 1, ArrowDown: 1, ArrowRight: 1, " ": 1,
-        PageUp: -1, ArrowUp: -1, ArrowLeft: -1, Home: -1,
+        PageDown: 1,
+        ArrowDown: 1,
+        ArrowRight: 1,
+        " ": 1,
+        PageUp: -1,
+        ArrowUp: -1,
+        ArrowLeft: -1,
+        Home: -1,
       };
       if (e.key === "End") {
         e.preventDefault();
@@ -324,8 +339,9 @@ export function useStoryNavigation(
     if (typeof MutationObserver !== "undefined") {
       const observed = new Set<HTMLElement>();
       mutationObserver = new MutationObserver(() => {
-        const unobserved = Array.from(document.querySelectorAll<HTMLElement>("[data-story-section]"))
-          .filter((el) => !observed.has(el));
+        const unobserved = Array.from(document.querySelectorAll<HTMLElement>("[data-story-section]")).filter(
+          (el) => !observed.has(el),
+        );
         for (const el of unobserved) {
           observed.add(el);
           registerSection(el);

@@ -11,42 +11,40 @@ import { useRsvpContext } from "./useRsvpContext";
 import { AppContext } from "./useApp";
 
 function AppMerger({ children }: { children: React.ReactNode }) {
-
   const { t } = useTranslation();
   const config = useConfig();
   const auth = useAuth();
   const rsvp = useRsvpContext();
   const ui = useAppUI();
 
-  const handleSaveSetup = useCallback(async (event: React.FormEvent) => {
-
-    event.preventDefault();
-    ui.setSaveError("");
-    ui.setSaveMessage("");
-    if (!config.hasStoredConfig && !auth.isTokenVerified && !auth.setupToken) {
-
-      ui.setSaveError(t("errors.verifyTokenFirst"));
-      return;
-    }
-    const rsvpCount = (rsvp.rsvpEntries || []).filter((e: { attendance: string }) => e.attendance === "yes").length;
-    if (rsvpCount > 0) {
-      const hasMenuChanges =
-        config.formData?.menuEnabled !== config.config?.menuEnabled ||
-        config.formData?.menuTextoDishes !== config.config?.menuTextoDishes ||
-        config.formData?.menuCarneDishes !== config.config?.menuCarneDishes ||
-        config.formData?.menuPescadoDishes !== config.config?.menuPescadoDishes ||
-        config.formData?.menuVeganoDishes !== config.config?.menuVeganoDishes;
-
-      if (hasMenuChanges && !window.confirm(t("settings.menuChangeConfirm", { count: rsvpCount }))) {
-
+  const handleSaveSetup = useCallback(
+    async (event: React.FormEvent) => {
+      event.preventDefault();
+      ui.setSaveError("");
+      ui.setSaveMessage("");
+      if (!config.hasStoredConfig && !auth.isTokenVerified && !auth.setupToken) {
+        ui.setSaveError(t("errors.verifyTokenFirst"));
         return;
       }
-    }
-    await config.handleSaveSetup(event);
-  }, [config, auth, rsvp, ui, t]);
+      const rsvpCount = (rsvp.rsvpEntries || []).filter((e: { attendance: string }) => e.attendance === "yes").length;
+      if (rsvpCount > 0) {
+        const hasMenuChanges =
+          config.formData?.menuEnabled !== config.config?.menuEnabled ||
+          config.formData?.menuTextoDishes !== config.config?.menuTextoDishes ||
+          config.formData?.menuCarneDishes !== config.config?.menuCarneDishes ||
+          config.formData?.menuPescadoDishes !== config.config?.menuPescadoDishes ||
+          config.formData?.menuVeganoDishes !== config.config?.menuVeganoDishes;
+
+        if (hasMenuChanges && !window.confirm(t("settings.menuChangeConfirm", { count: rsvpCount }))) {
+          return;
+        }
+      }
+      await config.handleSaveSetup(event);
+    },
+    [config, auth, rsvp, ui, t],
+  );
 
   const value = useMemo(() => {
-
     return {
       ...config,
       ...auth,
@@ -56,11 +54,7 @@ function AppMerger({ children }: { children: React.ReactNode }) {
     };
   }, [config, auth, rsvp, ui, handleSaveSetup]);
 
-  return (
-    <AppContext.Provider value={value}>
-      {children}
-    </AppContext.Provider>
-  );
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
 
 export function AppProvider({ children }: { children: React.ReactNode }) {
@@ -69,14 +63,10 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       <ConfigProvider>
         <AuthProvider>
           <RsvpProvider>
-            <AppMerger>
-              {children}
-            </AppMerger>
+            <AppMerger>{children}</AppMerger>
           </RsvpProvider>
         </AuthProvider>
       </ConfigProvider>
     </UIProvider>
   );
 }
-
-

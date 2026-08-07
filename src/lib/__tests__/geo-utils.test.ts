@@ -1,14 +1,14 @@
 import { describe, it, expect } from "vitest";
-import {
-  isValidGoogleMapsUrl, convertToEmbedUrl, extractPlaceNameFromUrl,
-} from "../geo-utils";
+import { isValidGoogleMapsUrl, convertToEmbedUrl, extractPlaceNameFromUrl } from "../geo-utils";
 
 describe("isValidGoogleMapsUrl", () => {
   it("accepts google.com/maps/place URLs", () => {
     expect(isValidGoogleMapsUrl("https://www.google.com/maps/place/Madrid")).toBe(true);
     expect(isValidGoogleMapsUrl("https://www.google.com/maps/place/Plaza+Mayor/@40.4153,-3.7074,17z")).toBe(true);
     expect(isValidGoogleMapsUrl("https://maps.google.com/maps/place/Madrid")).toBe(true);
-    expect(isValidGoogleMapsUrl("https://www.google.es/maps/place/Plaza+Mayor/@40.41,-3.70,17z/data=!3m1!4b1")).toBe(true);
+    expect(isValidGoogleMapsUrl("https://www.google.es/maps/place/Plaza+Mayor/@40.41,-3.70,17z/data=!3m1!4b1")).toBe(
+      true,
+    );
   });
 
   it("rejects query/coordinate URLs (not place links)", () => {
@@ -89,7 +89,9 @@ describe("convertToEmbedUrl", () => {
 
 describe("extractPlaceNameFromUrl", () => {
   it("recovers name from /maps/place/ path", () => {
-    const name = extractPlaceNameFromUrl("https://www.google.com/maps/place/La+Mas%C3%ADa+de+L%C3%B3pez/@40.4,-3.7,15z");
+    const name = extractPlaceNameFromUrl(
+      "https://www.google.com/maps/place/La+Mas%C3%ADa+de+L%C3%B3pez/@40.4,-3.7,15z",
+    );
     expect(name).toBe("La Masía de López");
   });
 
@@ -99,7 +101,9 @@ describe("extractPlaceNameFromUrl", () => {
   });
 
   it("returns null for non-place URLs (q param)", () => {
-    expect(extractPlaceNameFromUrl("https://www.google.com/maps/search/?api=1&query=Iglesia%20San%20Jos%C3%A9")).toBeNull();
+    expect(
+      extractPlaceNameFromUrl("https://www.google.com/maps/search/?api=1&query=Iglesia%20San%20Jos%C3%A9"),
+    ).toBeNull();
     expect(extractPlaceNameFromUrl("https://www.google.com/maps?q=Hacienda+Los+Olivos")).toBeNull();
   });
 

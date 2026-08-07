@@ -22,7 +22,9 @@ describe("Locale consistency", () => {
 
   it("all locale files share a common set of top-level keys", () => {
     const allKeys = entries.map(([, mod]) => new Set(Object.keys(mod)));
-    const common = [...allKeys.reduce((a: Set<string>, b: Set<string>) => new Set([...a].filter((k) => b.has(k))))].sort();
+    const common = [
+      ...allKeys.reduce((a: Set<string>, b: Set<string>) => new Set([...a].filter((k) => b.has(k)))),
+    ].sort();
     entries.forEach(([, mod]) => {
       const topLevel = Object.keys(mod).sort();
       common.forEach((key) => {

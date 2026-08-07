@@ -17,13 +17,15 @@ describe("superadmin", () => {
     expect(mod.SUPERADMIN_DASHBOARD).toBe("/admin/dashboard");
   });
 
-  it("exports empty routes when env var is not set", async () => {
+  it("falls back to /_/console route when env var is not set", async () => {
     vi.stubEnv("VITE_SUPERADMIN_ROUTE", "");
     vi.stubEnv("VITE_ADMIN_EMAILS", "");
 
     const mod = await import("../superadmin");
-    expect(mod.SUPERADMIN_ROUTE).toBe("");
-    expect(mod.SUPERADMIN_DASHBOARD).toBe("");
+    // Fail-closed: NUNCA ruta vacía (startsWith("") === true haría que un
+    // invitado público cargara firebase/auth en cualquier ruta).
+    expect(mod.SUPERADMIN_ROUTE).toBe("/_/console");
+    expect(mod.SUPERADMIN_DASHBOARD).toBe("/_/console/dashboard");
     // Fallback del email de superadmin por defecto.
     expect(mod.SUPERADMIN_EMAIL).toBe("adriancl2001@gmail.com");
   });
@@ -58,7 +60,9 @@ describe("superadmin", () => {
   it("formatDate returns input when toLocaleString throws", async () => {
     vi.stubEnv("VITE_SUPERADMIN_ROUTE", "");
     vi.stubEnv("VITE_ADMIN_EMAILS", "");
-    vi.spyOn(Date.prototype, "toLocaleString").mockImplementation(() => { throw new Error("fail"); });
+    vi.spyOn(Date.prototype, "toLocaleString").mockImplementation(() => {
+      throw new Error("fail");
+    });
 
     const mod = await import("../superadmin");
     const result = mod.formatDate("2026-07-15T18:30:00");

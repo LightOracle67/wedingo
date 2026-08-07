@@ -21,7 +21,13 @@ vi.mock("../token-utils", () => ({
   normalizeTokenValue: (v: string) => mockNormalize(v),
 }));
 
-import { hashSetupToken, setupTokenRef, createSetupTokenRecord, deleteSetupTokenRecord, findInviteBySetupToken } from "../setup-token";
+import {
+  hashSetupToken,
+  setupTokenRef,
+  createSetupTokenRecord,
+  deleteSetupTokenRecord,
+  findInviteBySetupToken,
+} from "../setup-token";
 
 describe("setup-token", () => {
   beforeEach(() => {

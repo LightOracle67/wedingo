@@ -1,10 +1,17 @@
 import { initializeApp } from "firebase/app";
-import { collection, collectionGroup, doc, initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from "firebase/firestore";
+import {
+  collection,
+  collectionGroup,
+  doc,
+  initializeFirestore,
+  persistentLocalCache,
+  persistentMultipleTabManager,
+} from "firebase/firestore";
 import type { Auth } from "firebase/auth";
 import type { FirebaseStorage } from "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
   projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
@@ -16,6 +23,13 @@ export const app = initializeApp(firebaseConfig);
 // Persistencia local en IndexedDB: la invitación ya visitada se lee offline
 // (y las imágenes/audio cifrados se descifran localmente). La limpieza se
 // gestiona en el flujo de "Eliminar mis datos".
+//
+// DECISIÓN (evaluado v2.95.20): multi-tab se mantiene a propósito. El
+// single-tab ahorra ~3.4 kB gzip del bundle total (158.1 → 154.8 kB en
+// vendor-firebase), un 2% del chunk y <1% de la app, pero pierde la
+// sincronización de caché entre pestañas: el admin que edita en una pestaña
+// mientras la invitación pública se abre en otra (o se contesta el RSVP)
+// vería datos obsoletos. El coste no justifica la pérdida de coherencia.
 export const db = initializeFirestore(app, {
   localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
 });
@@ -77,6 +91,3 @@ export const RSVP_RESPONSES_GROUP = collectionGroup(db, "responses");
 export const rsvpByInviteRef = (token: string) => collection(db, "rsvpResponses", token, "responses");
 // Referencia a una respuesta concreta dentro de la subcolección de su invitación.
 export const rsvpResponseRef = (token: string, id: string) => doc(db, "rsvpResponses", token, "responses", id);
-
-
-

@@ -114,35 +114,23 @@ describe("image-store", () => {
 
   it("uploadImage throws when encrypt returns null", async () => {
     mockEncrypt.mockResolvedValueOnce(null as unknown as string);
-    await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow(
-      "errors.encryptFailed",
-    );
+    await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow("errors.encryptFailed");
   });
 
   it("uploadImage throws on encrypt failure", async () => {
     mockEncrypt.mockRejectedValueOnce(new Error("errors.encryptFailed"));
-    await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow(
-      "errors.encryptFailed",
-    );
+    await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow("errors.encryptFailed");
   });
 
   it("uploadImage throws when image exceeds size limit", async () => {
     const largeData = "x".repeat(1300000);
     mockEncrypt.mockResolvedValueOnce(largeData);
-    await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow(
-      "errors.imageTooLarge",
-    );
+    await expect(uploadImage("token", new File([], "test.jpg"))).rejects.toThrow("errors.imageTooLarge");
   });
 
   it("addGalleryImage adds a document and returns id and dataUrl", async () => {
     const onProgress = vi.fn();
-    const result = await addGalleryImage(
-      "token",
-      "encrypted-data",
-      "data:image/jpeg;base64,...",
-      0,
-      onProgress,
-    );
+    const result = await addGalleryImage("token", "encrypted-data", "data:image/jpeg;base64,...", 0, onProgress);
     expect(result).toHaveProperty("id", "new-doc");
     expect(result).toHaveProperty("dataUrl");
   });
@@ -164,22 +152,21 @@ describe("image-store", () => {
   it("addGalleryImage handles null position", async () => {
     const onProgress = vi.fn();
     const result = await addGalleryImage(
-      "token", "encrypted-data", "data:image/jpeg;base64,...",
-      null as unknown as number, onProgress,
+      "token",
+      "encrypted-data",
+      "data:image/jpeg;base64,...",
+      null as unknown as number,
+      onProgress,
     );
     expect(result).toHaveProperty("id");
   });
 
   it("updateGalleryDescription resolves", async () => {
-    await expect(
-      updateGalleryDescription("token", "img-id", "A beautiful photo"),
-    ).resolves.toBeUndefined();
+    await expect(updateGalleryDescription("token", "img-id", "A beautiful photo")).resolves.toBeUndefined();
   });
 
   it("updateGalleryDescription handles falsy description", async () => {
-    await expect(
-      updateGalleryDescription("token", "img-id", ""),
-    ).resolves.toBeUndefined();
+    await expect(updateGalleryDescription("token", "img-id", "")).resolves.toBeUndefined();
   });
 
   it("updateGalleryOrder resolves with items", async () => {
@@ -227,9 +214,7 @@ describe("image-store", () => {
   });
 
   it("deleteGalleryImage resolves", async () => {
-    await expect(
-      deleteGalleryImage("token", "img-id"),
-    ).resolves.toBeUndefined();
+    await expect(deleteGalleryImage("token", "img-id")).resolves.toBeUndefined();
   });
 
   it("loadGallery returns mapped results for non-empty snapshot", async () => {
@@ -321,10 +306,7 @@ describe("image-store", () => {
 
     it("deduplicates concurrent requests (single-flight)", async () => {
       const meta = { id: "g2", encrypted: "enc2", description: "" };
-      const [a, b] = await Promise.all([
-        getGalleryImageUrl("token", meta),
-        getGalleryImageUrl("token", meta),
-      ]);
+      const [a, b] = await Promise.all([getGalleryImageUrl("token", meta), getGalleryImageUrl("token", meta)]);
       expect(a).toBe("data:image/jpeg;base64,decoded");
       expect(b).toBe("data:image/jpeg;base64,decoded");
       expect(mockDecrypt).toHaveBeenCalledTimes(1);
@@ -394,7 +376,9 @@ describe("image-store", () => {
     it("saveConfigImage throws when the encrypted data exceeds the 1MB limit", async () => {
       // El base64 cifrado no debe superar el límite de Firestore (~1MB).
       mockEncrypt.mockResolvedValueOnce("x".repeat(1100 * 1024));
-      await expect(saveConfigImage("token", "couplePhoto", "data:image/png;base64,x")).rejects.toThrow("errors.imageTooLarge");
+      await expect(saveConfigImage("token", "couplePhoto", "data:image/png;base64,x")).rejects.toThrow(
+        "errors.imageTooLarge",
+      );
     });
 
     it("saveConfigImage retries a transient network failure", async () => {
@@ -468,7 +452,9 @@ describe("image-store", () => {
     });
 
     it("resolveConfigImageField returns the value untouched for non-refs", async () => {
-      await expect(resolveConfigImageField("token", "data:image/png;base64,x")).resolves.toBe("data:image/png;base64,x");
+      await expect(resolveConfigImageField("token", "data:image/png;base64,x")).resolves.toBe(
+        "data:image/png;base64,x",
+      );
       await expect(resolveConfigImageField(undefined, "x")).resolves.toBe("x");
     });
 
@@ -477,7 +463,9 @@ describe("image-store", () => {
         exists: () => true,
         data: () => ({ data: "enc" }),
       } as never);
-      await expect(resolveConfigImageField("token", "__cfgimg:couplePhoto")).resolves.toBe("data:image/jpeg;base64,decoded");
+      await expect(resolveConfigImageField("token", "__cfgimg:couplePhoto")).resolves.toBe(
+        "data:image/jpeg;base64,decoded",
+      );
     });
 
     it("resolveConfigImageField returns undefined when the ref has no doc", async () => {

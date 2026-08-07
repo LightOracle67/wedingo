@@ -44,7 +44,6 @@ export function useSetupAuth(
   setAdminMessageType: (type: string) => void,
   setHasStoredConfig: (v: boolean) => void,
 ) {
-
   const { t } = useTranslation();
   const navigate = useNavigate();
   // â”€â”€â”€ Estados de autenticaciÃ³n â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -62,7 +61,11 @@ export function useSetupAuth(
   /** True si habÃ­a una sesiÃ³n local que expirÃ³/no se pudo restaurar (para
    *  mostrar un aviso en lugar de redirigir en silencio). */
   const [sessionExpired, setSessionExpired] = useState(() => {
-    try { return sessionStorage.getItem("wedin_session_expired") === "1"; } catch { return false; }
+    try {
+      return sessionStorage.getItem("wedin_session_expired") === "1";
+    } catch {
+      return false;
+    }
   });
 
   /** Intervalo de renovaciÃ³n de sesiÃ³n. */
@@ -81,12 +84,16 @@ export function useSetupAuth(
    *  siguiente render del admin/login. */
   const markSessionExpired = useCallback(() => {
     setSessionExpired(true);
-    try { sessionStorage.setItem("wedin_session_expired", "1"); } catch { }
+    try {
+      sessionStorage.setItem("wedin_session_expired", "1");
+    } catch {}
   }, []);
   /** Limpia la marca de expiraciÃ³n tras mostrarla. */
   const clearSessionExpired = useCallback(() => {
     setSessionExpired(false);
-    try { sessionStorage.removeItem("wedin_session_expired"); } catch { }
+    try {
+      sessionStorage.removeItem("wedin_session_expired");
+    } catch {}
   }, []);
 
   /**
@@ -95,17 +102,12 @@ export function useSetupAuth(
    * Verifica que la sesiÃ³n siga activa en Firestore.
    */
   useEffect(() => {
-
     const session = getSession();
 
     if (!session || (session.type !== "setup" && session.type !== "admin")) {
-
-
       return;
     }
     if (!inviteToken) {
-
-
       return;
     }
 
@@ -123,66 +125,58 @@ export function useSetupAuth(
 
     setIsRestoringSession(true);
 
-    getDoc(invitationDocRef(inviteToken)).then(async (snap) => {
-      const data = snap.data();
-      const sessionExpiresAt = data?.sessionExpiresAt?.toDate?.() ?? data?.sessionExpiresAt;
-      const isValid = snap.exists()
-        && data?.activeSession
-        && sessionExpiresAt
-        && new Date(sessionExpiresAt).getTime() > Date.now();
+    getDoc(invitationDocRef(inviteToken))
+      .then(async (snap) => {
+        const data = snap.data();
+        const sessionExpiresAt = data?.sessionExpiresAt?.toDate?.() ?? data?.sessionExpiresAt;
+        const isValid =
+          snap.exists() && data?.activeSession && sessionExpiresAt && new Date(sessionExpiresAt).getTime() > Date.now();
 
-
-      if (isValid) {
-        setTokenLoginUsername(session.identifier);
-        sessionTypeRef.current = session.type;
-        setSetupToken("");
-        setSetupTokenInput("");
-        setIsTokenVerified(true);
-
-
-      } else if (snap.exists()) {
-
-
-        try {
-          // La reparaciÃ³n/renovaciÃ³n de sesiÃ³n necesita la prueba de
-          // conocimiento del token (hash) para que las reglas la acepten.
-          const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
-          const storedToken = safeGetItem(storageKey, sessionStorage) || "";
-          const tokenHash = storedToken ? await hashSetupToken(storedToken) : "";
-          const repairPayload: Record<string, unknown> = {
-            activeSession: serverTimestamp(),
-            sessionExpiresAt: firestoreSessionExpiry(),
-            setupTokenHash: tokenHash,
-          };
-          await updateDoc(invitationDocRef(inviteToken), repairPayload);
+        if (isValid) {
           setTokenLoginUsername(session.identifier);
           sessionTypeRef.current = session.type;
           setSetupToken("");
           setSetupTokenInput("");
           setIsTokenVerified(true);
+        } else if (snap.exists()) {
+          try {
+            // La reparaciÃ³n/renovaciÃ³n de sesiÃ³n necesita la prueba de
+            // conocimiento del token (hash) para que las reglas la acepten.
+            const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
+            const storedToken = safeGetItem(storageKey, sessionStorage) || "";
+            const tokenHash = storedToken ? await hashSetupToken(storedToken) : "";
+            const repairPayload: Record<string, unknown> = {
+              activeSession: serverTimestamp(),
+              sessionExpiresAt: firestoreSessionExpiry(),
+              setupTokenHash: tokenHash,
+            };
+            await updateDoc(invitationDocRef(inviteToken), repairPayload);
+            setTokenLoginUsername(session.identifier);
+            sessionTypeRef.current = session.type;
+            setSetupToken("");
+            setSetupTokenInput("");
+            setIsTokenVerified(true);
+          } catch (repairErr) {
+            console.error("[app]", "[useSetupAuth]", "session repair failed", { error: repairErr });
 
-
-        } catch (repairErr) {
-          console.error("[app]", "[useSetupAuth]", "session repair failed", { error: repairErr });
-
+            clearSession();
+            markSessionExpired();
+          }
+        } else {
           clearSession();
-          markSessionExpired();
-        }
-      } else {
-        clearSession();
-        // HabÃ­a una sesiÃ³n local guardada pero expirÃ³: se avisa en el login.
-        if (safeGetItem(STORAGE_KEYS.setupToken(inviteToken || ""), sessionStorage)) {
-          markSessionExpired();
+          // HabÃ­a una sesiÃ³n local guardada pero expirÃ³: se avisa en el login.
+          if (safeGetItem(STORAGE_KEYS.setupToken(inviteToken || ""), sessionStorage)) {
+            markSessionExpired();
+          }
         }
 
-      }
+        setIsRestoringSession(false);
+      })
+      .catch((err) => {
+        console.error("[app]", "[useSetupAuth]", "session restoration Firestore error", { error: err });
 
-      setIsRestoringSession(false);
-    }).catch((err) => {
-      console.error("[app]", "[useSetupAuth]", "session restoration Firestore error", { error: err });
-
-      setIsRestoringSession(false);
-    });
+        setIsRestoringSession(false);
+      });
   }, [inviteToken, markSessionExpired]);
 
   /**
@@ -194,7 +188,6 @@ export function useSetupAuth(
    */
   useSessionRenewal(isTokenVerified);
   useEffect(() => {
-
     if (isTokenVerified) {
       const doRenew = async () => {
         try {
@@ -209,7 +202,6 @@ export function useSetupAuth(
           await updateDoc(invitationDocRef(inviteToken), renewPayload);
           // RenovaciÃ³n correcta: se reinicia el contador de fallos.
           renewFailureRef.current = false;
-
         } catch (err) {
           console.error("[app]", "[useSetupAuth]", "session renewal error", { error: err });
           if (setAdminMessage && setAdminMessageType) {
@@ -233,18 +225,22 @@ export function useSetupAuth(
       doRenew();
       renewRef.current = setInterval(() => doRenew(), 60_000);
     } else {
-      if (renewRef.current) { ; clearInterval(renewRef.current); }
+      if (renewRef.current) {
+        clearInterval(renewRef.current);
+      }
     }
-    return () => { if (renewRef.current) { ; clearInterval(renewRef.current); } };
+    return () => {
+      if (renewRef.current) {
+        clearInterval(renewRef.current);
+      }
+    };
   }, [isTokenVerified, inviteToken, setAdminMessage, setAdminMessageType, t, markSessionExpired]);
 
   /**
    * Persiste la sesiÃ³n en sessionStorage cuando cambia el estado de autenticaciÃ³n.
    */
   useEffect(() => {
-
     if (isTokenVerified && tokenLoginUsername && sessionTypeRef.current) {
-
       saveSession(sessionTypeRef.current, tokenLoginUsername, { inviteToken });
     }
   }, [isTokenVerified, tokenLoginUsername, inviteToken]);
@@ -260,22 +256,23 @@ export function useSetupAuth(
    * @param {string} [_oldToken] - Sin uso funcional (API estable).
    * @returns {Promise<string>} El token activo o cadena vacÃ­a.
    */
-  const refreshSetupToken = useCallback(async (_oldToken?: string) => {
+  const refreshSetupToken = useCallback(
+    async (_oldToken?: string) => {
+      const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
 
-    const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
-
-    if (inviteToken) {
-      const saved = safeGetItem(storageKey, sessionStorage);
-      if (saved) {
-
-        setSetupToken(saved);
-        setSetupTokenInput(saved);
-        return saved;
+      if (inviteToken) {
+        const saved = safeGetItem(storageKey, sessionStorage);
+        if (saved) {
+          setSetupToken(saved);
+          setSetupTokenInput(saved);
+          return saved;
+        }
       }
-    }
 
-    return "";
-  }, [inviteToken]);
+      return "";
+    },
+    [inviteToken],
+  );
 
   /**
    * Genera un token nuevo y lo registra en la colecciÃ³n setupTokens
@@ -286,96 +283,103 @@ export function useSetupAuth(
    * @param {string} [oldToken] - Token anterior a rotar (opcional).
    * @returns {Promise<string>} El token normalizado generado.
    */
-  const generateNewToken = useCallback(async (oldToken?: string) => {
+  const generateNewToken = useCallback(
+    async (oldToken?: string) => {
+      const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
+      const nextToken = generateSetupToken();
+      const normalizedToken = normalizeTokenValue(nextToken);
 
-    const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
-    const nextToken = generateSetupToken();
-    const normalizedToken = normalizeTokenValue(nextToken);
-
-    setSetupToken(normalizedToken);
-    setSetupTokenInput(normalizedToken);
-    if (inviteToken) {
-      safeSetItem(storageKey, normalizedToken, sessionStorage);
-      try {
-        await createSetupTokenRecord(inviteToken, normalizedToken);
-        if (oldToken) {
-          try { await deleteSetupTokenRecord(oldToken); } catch { }
-        }
-      } catch (err) {
-        console.error("[app]", "[useSetupAuth]", "token save to Firestore failed", { error: err });
-        if (setAdminMessage && setAdminMessageType) {
-          setAdminMessageType("error");
-          setAdminMessage(t("auth.tokenCreateFailed"));
+      setSetupToken(normalizedToken);
+      setSetupTokenInput(normalizedToken);
+      if (inviteToken) {
+        safeSetItem(storageKey, normalizedToken, sessionStorage);
+        try {
+          await createSetupTokenRecord(inviteToken, normalizedToken);
+          if (oldToken) {
+            try {
+              await deleteSetupTokenRecord(oldToken);
+            } catch {}
+          }
+        } catch (err) {
+          console.error("[app]", "[useSetupAuth]", "token save to Firestore failed", { error: err });
+          if (setAdminMessage && setAdminMessageType) {
+            setAdminMessageType("error");
+            setAdminMessage(t("auth.tokenCreateFailed"));
+          }
         }
       }
-    }
 
-    return normalizedToken;
-  }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
+      return normalizedToken;
+    },
+    [inviteToken, setAdminMessage, setAdminMessageType, t],
+  );
 
   /**
    * Intenta activar la sesiÃ³n usando un token de setup.
    * Verifica el token contra la colecciÃ³n setupTokens (hash) y activa la
    * sesiÃ³n. Retorna el username del token (si existe) o lanza error.
    */
-  const activateSessionWithToken = useCallback(async (enteredToken: string, _validateToken?: (tokenDoc: DocumentData, tu: string) => void) => {
-    const inviteRef = invitationDocRef(inviteToken);
-    const normalized = normalizeTokenValue(enteredToken);
-    const tokenHash = await hashSetupToken(normalized);
+  const activateSessionWithToken = useCallback(
+    async (enteredToken: string, _validateToken?: (tokenDoc: DocumentData, tu: string) => void) => {
+      const inviteRef = invitationDocRef(inviteToken);
+      const normalized = normalizeTokenValue(enteredToken);
+      const tokenHash = await hashSetupToken(normalized);
 
-    // VerificaciÃ³n temprana: el token debe tener registro en setupTokens.
-    const tokenRecord = await getDoc(setupTokenRef(tokenHash));
-    if (!tokenRecord.exists()) {
-      throw new Error("Token no vÃ¡lido");
-    }
+      // VerificaciÃ³n temprana: el token debe tener registro en setupTokens.
+      const tokenRecord = await getDoc(setupTokenRef(tokenHash));
+      if (!tokenRecord.exists()) {
+        throw new Error("Token no vÃ¡lido");
+      }
 
-    let userConfirmed = false;
+      let userConfirmed = false;
 
-    // eslint-disable-next-line no-constant-condition
-    while (true) {
-      try {
-        const outcome = await runTransaction(db, async (transaction) => {
-          const inviteSnap = await transaction.get(inviteRef);
-          if (!inviteSnap.exists()) {
-            // La invitaciÃ³n se crea en la landing antes del login: si no
-            // existe (borrada o token huÃ©rfano) no se recrea con defaultConfig
-            // (firstName vacÃ­o) porque las reglas lo rechazarÃ­an. Mejor un
-            // error claro que una escritura denegada en bucle.
+      // eslint-disable-next-line no-constant-condition
+      while (true) {
+        try {
+          const outcome = await runTransaction(db, async (transaction) => {
+            const inviteSnap = await transaction.get(inviteRef);
+            if (!inviteSnap.exists()) {
+              // La invitaciÃ³n se crea en la landing antes del login: si no
+              // existe (borrada o token huÃ©rfano) no se recrea con defaultConfig
+              // (firstName vacÃ­o) porque las reglas lo rechazarÃ­an. Mejor un
+              // error claro que una escritura denegada en bucle.
+              throw new Error("inviteNotFound");
+            }
+
+            const data = inviteSnap.data();
+            if (data.activeSession && !userConfirmed) {
+              throw new Error("sessionExists");
+            }
+            if (!tokenRecord.exists()) throw new Error("Token no vÃ¡lido");
+            if (_validateToken) _validateToken(data, data.adminUsername);
+            const sessionUpdate: Record<string, unknown> = {
+              activeSession: serverTimestamp(),
+              sessionExpiresAt: firestoreSessionExpiry(),
+              setupTokenHash: tokenHash,
+            };
+            transaction.update(inviteRef, sessionUpdate);
+            return "";
+          });
+          return outcome;
+        } catch (err) {
+          if ((err as Error)?.message === "sessionExists") {
+            setIsTokenVerifying(false);
+            userConfirmed = window.confirm(t("auth.sessionExists"));
+            setIsTokenVerifying(true);
+            if (!userConfirmed) return null;
+          } else if ((err as Error)?.message === "inviteNotFound") {
+            // Token huÃ©rfano: la invitaciÃ³n ya no existe (borrada o nunca
+            // guardada). No se puede abrir sesiÃ³n sobre un doc inexistente.
+            setIsTokenVerifying(false);
             throw new Error("inviteNotFound");
+          } else {
+            throw err;
           }
-
-          const data = inviteSnap.data();
-          if (data.activeSession && !userConfirmed) {
-            throw new Error("sessionExists");
-          }
-          if (!tokenRecord.exists()) throw new Error("Token no vÃ¡lido");
-          if (_validateToken) _validateToken(data, data.adminUsername);
-          const sessionUpdate: Record<string, unknown> = {
-            activeSession: serverTimestamp(),
-            sessionExpiresAt: firestoreSessionExpiry(),
-            setupTokenHash: tokenHash,
-          };
-          transaction.update(inviteRef, sessionUpdate);
-          return "";
-        });
-        return outcome;
-      } catch (err) {
-        if ((err as Error)?.message === "sessionExists") {
-          setIsTokenVerifying(false);
-          userConfirmed = window.confirm(t("auth.sessionExists"));
-          setIsTokenVerifying(true);
-          if (!userConfirmed) return null;
-        } else if ((err as Error)?.message === "inviteNotFound") {
-          // Token huÃ©rfano: la invitaciÃ³n ya no existe (borrada o nunca
-          // guardada). No se puede abrir sesiÃ³n sobre un doc inexistente.
-          setIsTokenVerifying(false);
-          throw new Error("inviteNotFound");
-        } else {
-          throw err;
         }
       }
-    }
-  }, [inviteToken, t]);
+    },
+    [inviteToken, t],
+  );
 
   /**
    * Inicia sesiÃ³n con token de setup (sin usuario).
@@ -383,13 +387,11 @@ export function useSetupAuth(
    * Si ya hay una sesiÃ³n activa, pide confirmaciÃ³n para sobrescribir.
    */
   const handleTokenLogin = useCallback(async () => {
-
     setAuthMessageType("error");
     setAuthMessage("");
 
     const enteredToken = normalizeTokenValue(setupTokenInput);
     if (!enteredToken) {
-
       setAuthMessage(t("auth.enterCode"));
       return;
     }
@@ -398,7 +400,10 @@ export function useSetupAuth(
 
     try {
       const result = await activateSessionWithToken(enteredToken);
-      if (result === null) { ; setIsTokenVerifying(false); return; }
+      if (result === null) {
+        setIsTokenVerifying(false);
+        return;
+      }
 
       const displayName = config.adminUsername || adminLoginUsername || inviteToken;
       setTokenLoginUsername(displayName);
@@ -412,13 +417,13 @@ export function useSetupAuth(
       saveSession(sessionTypeRef.current, displayName, { inviteToken });
       setAuthMessageType("success");
       setAuthMessage(t("auth.codeVerified"));
-
     } catch (err) {
       console.error("[app]", "[useSetupAuth]", "token login failed", { error: err });
-      setAuthMessage((err as Error)?.message === "inviteNotFound" ? t("auth.inviteNotFound") : t("auth.codeVerifyError"));
+      setAuthMessage(
+        (err as Error)?.message === "inviteNotFound" ? t("auth.inviteNotFound") : t("auth.codeVerifyError"),
+      );
     } finally {
       setIsTokenVerifying(false);
-
     }
   }, [activateSessionWithToken, setupTokenInput, inviteToken, setHasStoredConfig, config, adminLoginUsername, t]);
 
@@ -427,21 +432,18 @@ export function useSetupAuth(
    * Verifica que el usuario coincida con el configurado y que el token sea vÃ¡lido.
    */
   const handleAdminTokenLogin = useCallback(async () => {
-
     setAuthMessageType("error");
     setAuthMessage("");
 
     const username = adminLoginUsername.trim().toLowerCase();
     const enteredToken = normalizeTokenValue(setupTokenInput);
     if (!username || !enteredToken) {
-
       setAuthMessage(t("auth.enterUserAndCode"));
       return;
     }
 
     const configuredUsername = (config.adminUsername || "").trim().toLowerCase();
     if (configuredUsername && username !== configuredUsername) {
-
       setAuthMessage(t("auth.invalidCredentials"));
       return;
     }
@@ -453,7 +455,9 @@ export function useSetupAuth(
           throw new Error("codeUserMismatch");
         }
       });
-      if (tokenUsername === null) { ; return; }
+      if (tokenUsername === null) {
+        return;
+      }
 
       setTokenLoginUsername(username);
       sessionTypeRef.current = "admin";
@@ -466,18 +470,16 @@ export function useSetupAuth(
       saveSession("admin", username, { inviteToken });
       setAuthMessageType("success");
       setAuthMessage(t("auth.loginSuccess"));
-
     } catch (err) {
       const key = (err as Error)?.message;
       console.error("[app]", "[useSetupAuth]", "admin login failed", { key });
       if (key === "codeUserMismatch") {
         setAuthMessage(t("auth.codeUserMismatch"));
       } else {
-      setAuthMessage(t("auth.codeVerifyError"));
+        setAuthMessage(t("auth.codeVerifyError"));
       }
     } finally {
       setIsTokenVerifying(false);
-
     }
   }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config, setHasStoredConfig, inviteToken, t]);
 
@@ -491,7 +493,6 @@ export function useSetupAuth(
    * Redirige a la pÃ¡gina principal.
    */
   const handleAdminLogout = useCallback(async () => {
-
     const token = inviteToken;
     setIsTokenVerified(false);
     setTokenLoginUsername("");
@@ -504,7 +505,6 @@ export function useSetupAuth(
       try {
         safeRemoveItem(STORAGE_KEYS.inviteCache(token));
         await updateDoc(invitationDocRef(token), { activeSession: null, sessionExpiresAt: null });
-
       } catch (err) {
         console.error("[app]", "[useSetupAuth]", "logout Firestore update failed", { error: err });
         if (setAdminMessage && setAdminMessageType) {
@@ -522,15 +522,15 @@ export function useSetupAuth(
    * Requiere confirmar el token actual.
    */
   const handleResetSetupToken = useCallback(async () => {
-
-    if (resettingRef.current) { ; return; }
+    if (resettingRef.current) {
+      return;
+    }
     resettingRef.current = true;
     try {
       const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
       const storedToken = safeGetItem(storageKey, sessionStorage) || "";
       const currentToken = setupToken || storedToken;
       if (!currentToken || confirmTokenInput !== currentToken) {
-
         setAuthMessage(t("auth.currentTokenRequired"));
         return;
       }
@@ -540,7 +540,6 @@ export function useSetupAuth(
       setAuthMessageType("success");
       setAuthMessage(t("auth.tokenRenewed"));
       setConfirmTokenInput("");
-
     } finally {
       resettingRef.current = false;
     }
@@ -551,8 +550,9 @@ export function useSetupAuth(
    * Similar a handleResetSetupToken pero con mensajes dirigidos al admin.
    */
   const handleResetTokenFromAdmin = useCallback(async () => {
-
-    if (resettingRef.current) { ; return; }
+    if (resettingRef.current) {
+      return;
+    }
     resettingRef.current = true;
     try {
       setAdminMessage("");
@@ -562,25 +562,39 @@ export function useSetupAuth(
       setAdminMessageType("success");
       setAdminMessage(t("auth.tokenRenewedAdmin"));
       setConfirmTokenInput("");
-
     } finally {
       resettingRef.current = false;
     }
   }, [generateNewToken, setAdminMessage, setAdminMessageType, t, inviteToken, setupToken]);
 
   return {
-    setupToken, setSetupToken,
-    setupTokenInput, setSetupTokenInput,
-    isTokenVerifying, isTokenVerified, setIsTokenVerified,
-    tokenLoginUsername, setTokenLoginUsername,
-    adminLoginUsername, setAdminLoginUsername,
-    authMessage, setAuthMessage,
-    authMessageType, setAuthMessageType,
-    confirmTokenInput, setConfirmTokenInput,
-    isAdminTokenLoggedIn, isRestoringSession, sessionExpired, clearSessionExpired,
-    refreshSetupToken, generateNewToken,
-    handleTokenLogin, handleAdminTokenLogin,
+    setupToken,
+    setSetupToken,
+    setupTokenInput,
+    setSetupTokenInput,
+    isTokenVerifying,
+    isTokenVerified,
+    setIsTokenVerified,
+    tokenLoginUsername,
+    setTokenLoginUsername,
+    adminLoginUsername,
+    setAdminLoginUsername,
+    authMessage,
+    setAuthMessage,
+    authMessageType,
+    setAuthMessageType,
+    confirmTokenInput,
+    setConfirmTokenInput,
+    isAdminTokenLoggedIn,
+    isRestoringSession,
+    sessionExpired,
+    clearSessionExpired,
+    refreshSetupToken,
+    generateNewToken,
+    handleTokenLogin,
+    handleAdminTokenLogin,
     handleAdminLogout,
-    handleResetSetupToken, handleResetTokenFromAdmin,
+    handleResetSetupToken,
+    handleResetTokenFromAdmin,
   };
 }

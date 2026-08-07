@@ -11,14 +11,20 @@ import MusicPlayer from "../components/MusicPlayer";
 import "../styles/admin.css";
 
 export default function SetupPage() {
-
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { inviteToken } = useParams();
   const {
-    hasStoredConfig, isConfigLoading, configLoadError,
-    authMessage, authMessageType,
-    saveMessage, config, formData, setupToken, generateNewToken,
+    hasStoredConfig,
+    isConfigLoading,
+    configLoadError,
+    authMessage,
+    authMessageType,
+    saveMessage,
+    config,
+    formData,
+    setupToken,
+    generateNewToken,
   } = useApp();
 
   const { addToast } = useToast();
@@ -26,12 +32,15 @@ export default function SetupPage() {
   // sección Acceso se oculta al verificar la sesión y era irrecuperable si no
   // se guardaba antes).
   const setupTokenValue = (() => {
-    try { return safeGetItem(STORAGE_KEYS.setupToken(inviteToken || ""), sessionStorage) || setupToken || ""; } catch { return setupToken || ""; }
+    try {
+      return safeGetItem(STORAGE_KEYS.setupToken(inviteToken || ""), sessionStorage) || setupToken || "";
+    } catch {
+      return setupToken || "";
+    }
   })();
 
   useEffect(() => {
     if (authMessage) {
-
       addToast(authMessageType === "success" ? "success" : "error", authMessage);
     }
   }, [authMessage, authMessageType, addToast]);
@@ -47,7 +56,9 @@ export default function SetupPage() {
           e.preventDefault();
           e.returnValue = "";
         }
-      } catch { /* comparación no disponible */ }
+      } catch {
+        /* comparación no disponible */
+      }
     };
     window.addEventListener("beforeunload", onBeforeUnload);
     return () => window.removeEventListener("beforeunload", onBeforeUnload);
@@ -64,7 +75,11 @@ export default function SetupPage() {
     if (!hasStoredConfig && !setupToken && inviteToken) {
       const stored = safeGetItem(STORAGE_KEYS.setupToken(inviteToken), sessionStorage);
       if (!stored) {
-        (async () => { try { await generateNewToken(); } catch { } })();
+        (async () => {
+          try {
+            await generateNewToken();
+          } catch {}
+        })();
       }
     }
   }, [hasStoredConfig, setupToken, inviteToken, generateNewToken]);
@@ -73,7 +88,6 @@ export default function SetupPage() {
   // mostró en el formulario y se confirmó antes de guardar). El auto-login
   // utiliza las credenciales (token) previas vía onFirstSave.
   useEffect(() => {
-
     if (saveMessage && hasStoredConfig) {
       setShowSuccess(true);
     }
@@ -81,11 +95,9 @@ export default function SetupPage() {
 
   // Redirige al panel automáticamente tras el éxito.
   useEffect(() => {
-
     if (showSuccess && !hasRedirectedRef.current) {
       hasRedirectedRef.current = true;
       const timer = setTimeout(() => {
-
         navigate(`/${inviteToken}/admin`, { replace: true });
       }, 3000);
       return () => clearTimeout(timer);
@@ -133,8 +145,6 @@ export default function SetupPage() {
     return <Navigate to={`/${inviteToken}/admin`} replace />;
   }
 
-
-
   const coupleName = `${config.firstName} & ${config.secondName}`;
 
   return (
@@ -145,9 +155,7 @@ export default function SetupPage() {
           <div>
             <p className="setup-eyebrow">{t("setup.configTitle")}</p>
             <h1 className="setup-title">{t("setup.configSubtitle")}</h1>
-            <p className="setup-subtitle">
-              {showSuccess ? t("setup.readyText") : t("setup.configText")}
-            </p>
+            <p className="setup-subtitle">{showSuccess ? t("setup.readyText") : t("setup.configText")}</p>
           </div>
         </header>
 
@@ -162,23 +170,31 @@ export default function SetupPage() {
             <div className="setup-success-card__icon">✓</div>
             <p className="setup-success-card__title">{t("setup.successTitle")}</p>
             <p className="setup-success-card__names">{coupleName}</p>
-            <p className="setup-success-card__text">
-              {t("setup.successText")}
-            </p>
+            <p className="setup-success-card__text">{t("setup.successText")}</p>
             <div className="setup-success-card__token" role="note">
               <p className="setup-help">{t("setup.successKeepToken")}</p>
               <code className="setup-success-card__code">{setupTokenValue}</code>
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => {
-                if (!setupTokenValue) return;
-                navigator.clipboard?.writeText(setupTokenValue).catch(() => {});
-                addToast("success", t("setup.tokenCopied"));
-              }}>{t("setup.copyToken")}</button>
+              <button
+                className="setup-button setup-button--ghost setup-button--compact"
+                type="button"
+                onClick={() => {
+                  if (!setupTokenValue) return;
+                  navigator.clipboard?.writeText(setupTokenValue).catch(() => {});
+                  addToast("success", t("setup.tokenCopied"));
+                }}
+              >
+                {t("setup.copyToken")}
+              </button>
             </div>
             <div className="setup-actions" style={{ justifyContent: "center", marginTop: "0.5rem" }}>
               <button className="setup-button" type="button" onClick={() => navigate(`/${inviteToken}/admin`)}>
                 {t("setup.goToPanel")}
               </button>
-              <button className="setup-button setup-button--ghost" type="button" onClick={() => navigate(`/${inviteToken}`)}>
+              <button
+                className="setup-button setup-button--ghost"
+                type="button"
+                onClick={() => navigate(`/${inviteToken}`)}
+              >
                 {t("setup.viewCover")}
               </button>
             </div>

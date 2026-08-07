@@ -6,7 +6,11 @@ import CollapsibleSection from "./CollapsibleSection";
 const ThemePicker = memo(function ThemePicker({ value, onChange }: { value: string; onChange: (val: string) => void }) {
   const { t } = useTranslation();
   return THEME_GROUPS.map((group) => (
-    <CollapsibleSection key={group.value} title={t("themeGroups." + group.value)} hint={t("setup.themeGroupCount", { count: THEME_OPTIONS.filter((th) => th.group === group.value).length })}>
+    <CollapsibleSection
+      key={group.value}
+      title={t("themeGroups." + group.value)}
+      hint={t("setup.themeGroupCount", { count: THEME_OPTIONS.filter((th) => th.group === group.value).length })}
+    >
       <div className="theme-picker__grid">
         {THEME_OPTIONS.filter((th) => th.group === group.value).map((theme) => {
           const colors = THEME_PREVIEW_COLORS[theme.value as keyof typeof THEME_PREVIEW_COLORS]!;
@@ -21,7 +25,9 @@ const ThemePicker = memo(function ThemePicker({ value, onChange }: { value: stri
             >
               <span
                 className="theme-picker__swatch"
-                style={{ background: `linear-gradient(135deg, ${colors.bg} 0%, ${colors.bg} 50%, ${colors.accent} 100%)` }}
+                style={{
+                  background: `linear-gradient(135deg, ${colors.bg} 0%, ${colors.bg} 50%, ${colors.accent} 100%)`,
+                }}
               >
                 <span className="theme-picker__dot" style={{ background: colors.accent }} />
               </span>

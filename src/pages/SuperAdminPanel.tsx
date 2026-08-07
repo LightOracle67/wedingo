@@ -92,7 +92,12 @@ export default function SuperAdminPanel() {
           ))}
         </nav>
 
-        <div className="setup-form" role="tabpanel" id={"sadm-tabpanel-" + activeTab} aria-labelledby={"sadm-tab-" + activeTab}>
+        <div
+          className="setup-form"
+          role="tabpanel"
+          id={"sadm-tabpanel-" + activeTab}
+          aria-labelledby={"sadm-tab-" + activeTab}
+        >
           <Suspense fallback={<div className="page-loading" role="status" aria-label="Cargando" />}>
             {activeTab === "dashboard" && <DashboardTab />}
             {activeTab === "invitaciones" && <InvitationsTab />}

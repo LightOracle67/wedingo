@@ -19,7 +19,11 @@ vi.mock("../../contexts", () => ({
   useConfig: (...args: unknown[]) => mockUseApp(...args),
   useAuth: (...args: unknown[]) => mockUseApp(...args),
   useRsvpContext: (...args: unknown[]) => mockUseApp(...args),
-  useAppUI: () => ({ ...mockUseApp(), setAdminMessage: mockSetAdminMessage, setAdminMessageType: mockSetAdminMessageType }),
+  useAppUI: () => ({
+    ...mockUseApp(),
+    setAdminMessage: mockSetAdminMessage,
+    setAdminMessageType: mockSetAdminMessageType,
+  }),
 }));
 
 const mockSetAdminMessage = vi.fn();
@@ -38,8 +42,24 @@ vi.mock("../../lib/constants", () => ({
 vi.mock("../admin/PanelTab", () => ({
   default: ({ config }: { config: Record<string, unknown> }) => (
     <div data-testid="panel-tab">
-      <button data-testid="export-pdf-btn" onClick={() => { const fn = config.exportPdf as () => void; if (fn) fn(); }}>Export</button>
-      <button data-testid="set-active-tab-btn" onClick={() => { const fn = config.setActiveTab as (t: string) => void; if (fn) fn("invitacion"); }}>Set Tab</button>
+      <button
+        data-testid="export-pdf-btn"
+        onClick={() => {
+          const fn = config.exportPdf as () => void;
+          if (fn) fn();
+        }}
+      >
+        Export
+      </button>
+      <button
+        data-testid="set-active-tab-btn"
+        onClick={() => {
+          const fn = config.setActiveTab as (t: string) => void;
+          if (fn) fn("invitacion");
+        }}
+      >
+        Set Tab
+      </button>
     </div>
   ),
 }));
@@ -51,8 +71,24 @@ vi.mock("../admin/InvitationTab", () => ({
 vi.mock("../admin/AttendanceTab", () => ({
   default: (props: Record<string, unknown>) => (
     <div data-testid="attendance-tab">
-      <button data-testid="set-attendance-filter-btn" onClick={() => { const fn = props.setAttendanceFilter as (f: string) => void; if (fn) fn("yes"); }}>Set Filter</button>
-      <button data-testid="set-search-query-btn" onClick={() => { const fn = props.setSearchQuery as (q: string) => void; if (fn) fn("test"); }}>Set Search</button>
+      <button
+        data-testid="set-attendance-filter-btn"
+        onClick={() => {
+          const fn = props.setAttendanceFilter as (f: string) => void;
+          if (fn) fn("yes");
+        }}
+      >
+        Set Filter
+      </button>
+      <button
+        data-testid="set-search-query-btn"
+        onClick={() => {
+          const fn = props.setSearchQuery as (q: string) => void;
+          if (fn) fn("test");
+        }}
+      >
+        Set Search
+      </button>
     </div>
   ),
 }));
@@ -190,7 +226,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     expect(await screen.findByTestId("panel-tab")).toBeDefined();
     expect(screen.getByText("John & Jane")).toBeDefined();
@@ -201,7 +237,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     const tabKeys = ["panel", "invitation", "attendance", "share", "access", "support"];
@@ -214,7 +250,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     const active = document.querySelector('button[role="tab"][aria-selected="true"]');
@@ -241,7 +277,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByText("admin.tabs.invitation"));
@@ -252,7 +288,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByText("admin.tabs.attendance"));
@@ -263,7 +299,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByText("admin.tabs.share"));
@@ -274,7 +310,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByText("admin.tabs.access"));
@@ -285,7 +321,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByText("admin.tabs.support"));
@@ -298,7 +334,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     expect(await screen.findByTestId("invitation-tab")).toBeDefined();
 
@@ -325,7 +361,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByText("admin.tabs.invitation"));
@@ -348,7 +384,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     expect(screen.getByText("admin.tabs.attendance")).toBeDefined();
   });
@@ -357,7 +393,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     expect(await screen.findByText("John & Jane")).toBeDefined();
   });
@@ -399,7 +435,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     expect(screen.getByText("John & Jane")).toBeDefined();
   });
@@ -408,7 +444,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByText("admin.tabs.invitation"));
@@ -419,7 +455,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     expect(screen.getByText("John & Jane")).toBeDefined();
@@ -438,7 +474,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
   });
 
@@ -455,7 +491,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
   });
 
@@ -466,7 +502,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("invitation-tab");
 
@@ -490,7 +526,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
   });
 
@@ -508,7 +544,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
   });
 
@@ -531,7 +567,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByTestId("export-pdf-btn"));
@@ -553,7 +589,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
   });
 
@@ -562,7 +598,7 @@ describe("AdminPage", () => {
     const { container } = render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     // Ya no hay pantalla en blanco: se muestra el indicador de carga.
     expect(container.querySelector(".page-loading")).toBeDefined();
@@ -572,7 +608,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByTestId("set-active-tab-btn"));
@@ -583,7 +619,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByText("admin.tabs.attendance"));
@@ -595,7 +631,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByText("admin.tabs.attendance"));
@@ -610,15 +646,13 @@ describe("AdminPage", () => {
 
     mockUseApp.mockReturnValue({
       ...baseMock,
-      rsvpEntries: [
-        { guestName: "Alice", attendance: "yes", companions: 2, dietaryInfo: "Veg" },
-      ],
+      rsvpEntries: [{ guestName: "Alice", attendance: "yes", companions: 2, dietaryInfo: "Veg" }],
     });
 
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByTestId("export-pdf-btn"));
@@ -638,7 +672,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     expect(screen.getByText("admin.tabs.share")).toBeDefined();
   });
@@ -647,7 +681,7 @@ describe("AdminPage", () => {
     render(
       <Suspense fallback={null}>
         <AdminPage />
-      </Suspense>
+      </Suspense>,
     );
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByText("admin.tabs.share"));

@@ -40,7 +40,13 @@ vi.mock("../../lib/analytics", () => ({
   trackEvent: (...args: unknown[]) => mockTrackEvent(...args),
 }));
 
-let mockNormalizeTokenValue = vi.fn((v: string) => v?.trim().toUpperCase().replace(/[^A-Z0-9]/g, "") || "");
+let mockNormalizeTokenValue = vi.fn(
+  (v: string) =>
+    v
+      ?.trim()
+      .toUpperCase()
+      .replace(/[^A-Z0-9]/g, "") || "",
+);
 vi.mock("../../lib/token-utils", () => ({
   normalizeTokenValue: (...args: Parameters<typeof mockNormalizeTokenValue>) => mockNormalizeTokenValue(...args),
   generateInviteToken: () => "mocked-invite-token",
@@ -94,7 +100,11 @@ beforeEach(() => {
   mockHashSetupToken.mockResolvedValue("mock-hash");
   mockCreateSetupTokenRecord.mockResolvedValue("mock-hash");
   Object.defineProperty(globalThis, "crypto", {
-    value: { getRandomValues: (arr: Uint8Array) => { for (let i = 0; i < arr.length; i++) arr[i] = i; } },
+    value: {
+      getRandomValues: (arr: Uint8Array) => {
+        for (let i = 0; i < arr.length; i++) arr[i] = i;
+      },
+    },
     configurable: true,
     writable: true,
   });
@@ -103,9 +113,15 @@ beforeEach(() => {
       let store: Record<string, string> = {};
       return {
         getItem: (k: string) => store[k] ?? null,
-        setItem: (k: string, v: string) => { store[k] = v; },
-        removeItem: (k: string) => { delete store[k]; },
-        clear: () => { store = {}; },
+        setItem: (k: string, v: string) => {
+          store[k] = v;
+        },
+        removeItem: (k: string) => {
+          delete store[k];
+        },
+        clear: () => {
+          store = {};
+        },
       };
     })(),
     configurable: true,
@@ -419,7 +435,9 @@ describe("LandingPage", () => {
     const form = screen.getByRole("dialog").querySelector("form")!;
     for (let i = 0; i < 4; i++) {
       fireEvent.change(screen.getByLabelText("landing.usernameLabel"), { target: { value: "user" } });
-      fireEvent.change(screen.getByLabelText("landing.tokenLabel"), { target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" } });
+      fireEvent.change(screen.getByLabelText("landing.tokenLabel"), {
+        target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" },
+      });
       fireEvent.submit(form);
       await new Promise((r) => setTimeout(r, 10));
     }
@@ -436,7 +454,9 @@ describe("LandingPage", () => {
     const form = screen.getByRole("dialog").querySelector("form")!;
     for (let i = 0; i < 4; i++) {
       fireEvent.change(screen.getByLabelText("landing.usernameLabel"), { target: { value: "user" } });
-      fireEvent.change(screen.getByLabelText("landing.tokenLabel"), { target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" } });
+      fireEvent.change(screen.getByLabelText("landing.tokenLabel"), {
+        target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" },
+      });
       fireEvent.submit(form);
       await new Promise((r) => setTimeout(r, 10));
     }
@@ -458,7 +478,9 @@ describe("LandingPage", () => {
     const form = screen.getByRole("dialog").querySelector("form")!;
     for (let i = 0; i < 4; i++) {
       fireEvent.change(screen.getByLabelText("landing.usernameLabel"), { target: { value: "john" } });
-      fireEvent.change(screen.getByLabelText("landing.tokenLabel"), { target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" } });
+      fireEvent.change(screen.getByLabelText("landing.tokenLabel"), {
+        target: { value: "ABCDEFGHIJKLMNOPQRSTUVWXYZ" },
+      });
       fireEvent.submit(form);
       await new Promise((r) => setTimeout(r, 10));
     }

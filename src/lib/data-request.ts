@@ -56,8 +56,16 @@ export function eraseGuestLocalData(inviteToken?: string): DataRequestResult {
       erasedKeys.push(key);
     });
   };
-  try { wipe(localStorage); } catch { /* almacenamiento no disponible */ }
-  try { wipe(sessionStorage); } catch { /* almacenamiento no disponible */ }
+  try {
+    wipe(localStorage);
+  } catch {
+    /* almacenamiento no disponible */
+  }
+  try {
+    wipe(sessionStorage);
+  } catch {
+    /* almacenamiento no disponible */
+  }
 
   // El IndexedDB de Firestore (persistentLocalCache, offline) también guarda
   // datos de la invitación: se borra al eliminar los datos personales.
@@ -78,10 +86,14 @@ export function eraseGuestLocalData(inviteToken?: string): DataRequestResult {
           return !projectId || name.includes(projectId);
         });
         for (const d of firestoreDbs) {
-          try { indexedDB.deleteDatabase(d.name!); } catch { }
+          try {
+            indexedDB.deleteDatabase(d.name!);
+          } catch {}
         }
       });
-    } catch { /* IndexedDB no disponible */ }
+    } catch {
+      /* IndexedDB no disponible */
+    }
   }
 
   return { erasedKeys };
@@ -98,22 +110,33 @@ export function exportGuestLocalData(inviteToken?: string): DataRequestResult {
       // Solo se exportan claves relacionadas con esta invitación (o de la
       // sesión/consentimiento): no se vuelcan datos de otras invitaciones
       // ni de la sesión del admin.
-      const relevant = PROTECTED_PREFIXES.some((p) => key.startsWith(p))
-        || key === STORAGE_KEYS.session
-        || key === STORAGE_KEYS.cookieConsent
-        || key === STORAGE_KEYS.cookiePrefs
-        || key === STORAGE_KEYS.inviteCache(inviteToken ?? "")
-        || key === STORAGE_KEYS.rsvpCache(inviteToken ?? "")
-        || key === STORAGE_KEYS.setupToken(inviteToken ?? "")
-        || key.startsWith(`${INVITE_CACHE_PREFIX}${inviteToken}`)
-        || key.startsWith(`${AUDIO_PREFIX}${inviteToken}`);
+      const relevant =
+        PROTECTED_PREFIXES.some((p) => key.startsWith(p)) ||
+        key === STORAGE_KEYS.session ||
+        key === STORAGE_KEYS.cookieConsent ||
+        key === STORAGE_KEYS.cookiePrefs ||
+        key === STORAGE_KEYS.inviteCache(inviteToken ?? "") ||
+        key === STORAGE_KEYS.rsvpCache(inviteToken ?? "") ||
+        key === STORAGE_KEYS.setupToken(inviteToken ?? "") ||
+        key.startsWith(`${INVITE_CACHE_PREFIX}${inviteToken}`) ||
+        key.startsWith(`${AUDIO_PREFIX}${inviteToken}`);
       if (!relevant) return;
       try {
         exported[key] = store.getItem(key) ?? "";
-      } catch { /* clave no legible */ }
+      } catch {
+        /* clave no legible */
+      }
     });
   };
-  try { collect(localStorage); } catch { /* almacenamiento no disponible */ }
-  try { collect(sessionStorage); } catch { /* almacenamiento no disponible */ }
+  try {
+    collect(localStorage);
+  } catch {
+    /* almacenamiento no disponible */
+  }
+  try {
+    collect(sessionStorage);
+  } catch {
+    /* almacenamiento no disponible */
+  }
   return { erasedKeys: [], exported };
 }

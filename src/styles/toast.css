@@ -20,10 +20,14 @@
   background: rgba(20, 17, 10, 0.92);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(247, 227, 170, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.2);
   font-family: var(--font-body);
   animation: toast-in 0.3s ease-out;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 .toast--exiting {
   opacity: 0;

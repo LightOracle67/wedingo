@@ -65,19 +65,30 @@ const TABS = [
  * @returns {JSX.Element} Panel de administración con pestañas.
  */
 export default function AdminPage() {
-
   const { t, i18n } = useTranslation();
   const { inviteToken } = useParams();
 
   // ─── Estados del contexto global (hooks granulares) ─────
   const {
-    hasStoredConfig, isConfigLoading, configLoadError, config, formData,
-    handleDeleteInvitation, reloadConfig, visitCount,
+    hasStoredConfig,
+    isConfigLoading,
+    configLoadError,
+    config,
+    formData,
+    handleDeleteInvitation,
+    reloadConfig,
+    visitCount,
   } = useConfig();
   const {
-    isAdminTokenLoggedIn, isRestoringSession, sessionExpired, clearSessionExpired, setupToken,
-    authMessage, authMessageType,
-    handleAdminLogout, handleResetTokenFromAdmin,
+    isAdminTokenLoggedIn,
+    isRestoringSession,
+    sessionExpired,
+    clearSessionExpired,
+    setupToken,
+    authMessage,
+    authMessageType,
+    handleAdminLogout,
+    handleResetTokenFromAdmin,
   } = useAuth();
   const { rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries } = useRsvpContext();
   const { adminMessage, adminMessageType, setAdminMessage, setAdminMessageType } = useAppUI();
@@ -94,7 +105,9 @@ export default function AdminPage() {
           e.preventDefault();
           e.returnValue = "";
         }
-      } catch { /* comparación no disponible */ }
+      } catch {
+        /* comparación no disponible */
+      }
     };
     window.addEventListener("beforeunload", onBeforeUnload);
     return () => window.removeEventListener("beforeunload", onBeforeUnload);
@@ -105,11 +118,15 @@ export default function AdminPage() {
 
   // ─── Muestra mensajes de auth como toasts ──────────────
   useEffect(() => {
-    if (authMessage) { ; addToast(authMessageType === "success" ? "success" : "error", authMessage); }
+    if (authMessage) {
+      addToast(authMessageType === "success" ? "success" : "error", authMessage);
+    }
   }, [authMessage, authMessageType, addToast]);
 
   useEffect(() => {
-    if (adminMessage) { ; addToast(adminMessageType === "error" ? "error" : "success", adminMessage); }
+    if (adminMessage) {
+      addToast(adminMessageType === "error" ? "error" : "success", adminMessage);
+    }
   }, [adminMessage, adminMessageType, addToast]);
 
   // ─── Estados locales de UI ─────────────────────────────
@@ -119,35 +136,40 @@ export default function AdminPage() {
   const [attendanceFilter, setAttendanceFilter] = useState("all");
 
   // Sync tab changes to URL
-  const handleSetTab = useCallback((tab: string) => {
-
-    setActiveTab(tab);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    const params = new URLSearchParams(location.search);
-    if (tab === "panel") params.delete("tab");
-    else params.set("tab", tab);
-    const qs = params.toString();
-    window.history.replaceState(null, "", qs ? `${location.pathname}?${qs}` : location.pathname);
-  }, [location.search, location.pathname]);
+  const handleSetTab = useCallback(
+    (tab: string) => {
+      setActiveTab(tab);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      const params = new URLSearchParams(location.search);
+      if (tab === "panel") params.delete("tab");
+      else params.set("tab", tab);
+      const qs = params.toString();
+      window.history.replaceState(null, "", qs ? `${location.pathname}?${qs}` : location.pathname);
+    },
+    [location.search, location.pathname],
+  );
 
   /**
    * Roving tabindex + flechas (ARIA tabs): mueve el foco entre pestañas
    * con ←/→/Home/End y activa la pestaña destino.
    */
-  const handleTabKeyDown = useCallback((e: React.KeyboardEvent<HTMLButtonElement>, key: string) => {
-    const index = TABS.findIndex((t) => t.key === key);
-    let nextIndex = -1;
-    if (e.key === "ArrowRight") nextIndex = (index + 1) % TABS.length;
-    else if (e.key === "ArrowLeft") nextIndex = (index - 1 + TABS.length) % TABS.length;
-    else if (e.key === "Home") nextIndex = 0;
-    else if (e.key === "End") nextIndex = TABS.length - 1;
-    if (nextIndex >= 0) {
-      e.preventDefault();
-      const next = TABS[nextIndex]!;
-      handleSetTab(next.key);
-      document.getElementById("tab-" + next.key)?.focus();
-    }
-  }, [handleSetTab]);
+  const handleTabKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLButtonElement>, key: string) => {
+      const index = TABS.findIndex((t) => t.key === key);
+      let nextIndex = -1;
+      if (e.key === "ArrowRight") nextIndex = (index + 1) % TABS.length;
+      else if (e.key === "ArrowLeft") nextIndex = (index - 1 + TABS.length) % TABS.length;
+      else if (e.key === "Home") nextIndex = 0;
+      else if (e.key === "End") nextIndex = TABS.length - 1;
+      if (nextIndex >= 0) {
+        e.preventDefault();
+        const next = TABS[nextIndex]!;
+        handleSetTab(next.key);
+        document.getElementById("tab-" + next.key)?.focus();
+      }
+    },
+    [handleSetTab],
+  );
 
   /**
    * Filtra las entradas RSVP según el filtro de asistencia y la búsqueda.
@@ -161,9 +183,10 @@ export default function AdminPage() {
       const q = searchQuery.trim().toLowerCase();
       const nameMatched = result.filter((e: { guestName: string }) => e.guestName.toLowerCase().includes(q));
       const matchedNames = new Set(nameMatched.map((e: { guestName: string }) => e.guestName.toLowerCase()));
-      result = result.filter((e: { guestName: string; mainGuestName?: string }) =>
-        matchedNames.has(e.guestName.toLowerCase())
-        || (e.mainGuestName && matchedNames.has(e.mainGuestName.toLowerCase()))
+      result = result.filter(
+        (e: { guestName: string; mainGuestName?: string }) =>
+          matchedNames.has(e.guestName.toLowerCase()) ||
+          (e.mainGuestName && matchedNames.has(e.mainGuestName.toLowerCase())),
       );
     }
     return result;
@@ -171,13 +194,11 @@ export default function AdminPage() {
 
   /** Callback memoizado para cambiar de pestaña. */
   const setActiveTabAndFilter = useCallback((tab: string) => {
-
     setActiveTab(tab);
   }, []);
 
   /** Callback memoizado para cambiar el filtro de asistencia. */
   const setAttendanceFilterValue = useCallback((filter: string) => {
-
     setAttendanceFilter(filter);
   }, []);
 
@@ -189,12 +210,14 @@ export default function AdminPage() {
    * Crea un HTML con estilos de impresión y abre la ventana de impresión.
    */
   const exportPdf = useCallback(() => {
-
     // El PDF respeta la búsqueda y el filtro de asistencia (antes imprimía
     // siempre la lista completa).
-    const rows = filteredEntries.map((e: { guestName: string; attendance: string; companions?: number; dietaryInfo?: string }) =>
-      `<tr><td>${escHtml(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${escHtml(e.dietaryInfo || "")}</td></tr>`
-    ).join("");
+    const rows = filteredEntries
+      .map(
+        (e: { guestName: string; attendance: string; companions?: number; dietaryInfo?: string }) =>
+          `<tr><td>${escHtml(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${escHtml(e.dietaryInfo || "")}</td></tr>`,
+      )
+      .join("");
     const tc = filteredEntries.filter((e: { attendance: string }) => e.attendance === "yes").length;
     const td = filteredEntries.filter((e: { attendance: string }) => e.attendance === "no").length;
     // HTML completo con estilos para impresión
@@ -202,7 +225,7 @@ export default function AdminPage() {
       @page{margin:2cm}body{font-family:system-ui,sans-serif;font-size:12px;color:#222;padding:2rem}h1{font-size:18px;margin-bottom:4px}table{width:100%;border-collapse:collapse;margin-top:8px}th,td{border:1px solid #d4d0c8;padding:6px 8px}tr:nth-child(even){background:#faf8f5}.stats{display:flex;gap:1rem;margin:12px 0;font-size:13px}.stat{background:#f5f3ef;padding:8px 14px;border-radius:8px}@media print{body{padding:0}}
     </style></head><body>
     <h1>${t("admin.pdfTitle", { name: escHtml(coupleName) })}</h1>
-    <p style="color:#666;font-size:13px">${new Date().toLocaleDateString(i18n.language,{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"})}</p>
+    <p style="color:#666;font-size:13px">${new Date().toLocaleDateString(i18n.language, { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}</p>
     <div class="stats"><div class="stat">${tc} ${t("admin.pdfConfirmed")}</div><div class="stat">${td} ${t("admin.pdfNotAttending")}</div><div class="stat">${filteredEntries.length} ${t("admin.pdfResponses")}</div></div>
     <table><thead><tr><th>${t("admin.pdfTableName")}</th><th>${t("admin.pdfTableAttendance")}</th><th>${t("admin.pdfTableCompanions")}</th><th>${t("admin.pdfTableDiet")}</th></tr></thead><tbody>${rows}</tbody></table>
     <p style="margin-top:12px;color:#888;font-size:11px">${t("support.appTitle")}</p>
@@ -212,53 +235,88 @@ export default function AdminPage() {
     const w = window.open(url, "_blank");
     if (w) {
       // Abre el diálogo de impresión tras un pequeño retraso
-      setTimeout(() => { w.focus(); w.print(); URL.revokeObjectURL(url); }, 500);
+      setTimeout(() => {
+        w.focus();
+        w.print();
+        URL.revokeObjectURL(url);
+      }, 500);
     }
   }, [filteredEntries, coupleName, t, i18n.language]);
 
   // ─── Cálculo de estadísticas de asistencia ─────────────
   const confirmedResponses = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "yes").length;
   const declinedResponses = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "no").length;
-  const totalGuests = rsvpEntries.reduce(
-    (s: number, r: { companions?: number }) => s + (Number(r.companions) || 1), 0,
-  );
+  const totalGuests = rsvpEntries.reduce((s: number, r: { companions?: number }) => s + (Number(r.companions) || 1), 0);
 
   /** Props agrupadas para PanelTab (reduce prop drilling). */
-  const panelConfig = useMemo(() => ({
-    inviteToken: inviteToken!,
-    confirmedResponses,
-    declinedResponses,
-    totalGuests,
-    rsvpEntries,
-    setActiveTab: setActiveTabAndFilter,
-    setAttendanceFilter: setAttendanceFilterValue,
-    exportPdf,
-    formatDate: formatDate as (date: unknown) => string,
-    onRestore: reloadConfig,
-    visitCount,
-    exportData: config,
-  }), [inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries, setActiveTabAndFilter, setAttendanceFilterValue, exportPdf, reloadConfig, config, visitCount]);
+  const panelConfig = useMemo(
+    () => ({
+      inviteToken: inviteToken!,
+      confirmedResponses,
+      declinedResponses,
+      totalGuests,
+      rsvpEntries,
+      setActiveTab: setActiveTabAndFilter,
+      setAttendanceFilter: setAttendanceFilterValue,
+      exportPdf,
+      formatDate: formatDate as (date: unknown) => string,
+      onRestore: reloadConfig,
+      visitCount,
+      exportData: config,
+    }),
+    [
+      inviteToken,
+      confirmedResponses,
+      declinedResponses,
+      totalGuests,
+      rsvpEntries,
+      setActiveTabAndFilter,
+      setAttendanceFilterValue,
+      exportPdf,
+      reloadConfig,
+      config,
+      visitCount,
+    ],
+  );
 
   /** Props agrupadas para AttendanceTab. */
-  const attendanceConfig = useMemo(() => ({
-    searchQuery,
-    setSearchQuery,
-    attendanceFilter,
-    setAttendanceFilter: setAttendanceFilterValue,
-    filteredEntries,
-    exportPdf,
-    rsvpEntries,
-    handleClearRsvpEntries,
-    handleDeleteRsvpEntries,
-    formatDate,
-    transportDepartures: config.transportDepartures,
-  }), [searchQuery, setSearchQuery, attendanceFilter, setAttendanceFilterValue, filteredEntries, exportPdf, rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries, config.transportDepartures]);
+  const attendanceConfig = useMemo(
+    () => ({
+      searchQuery,
+      setSearchQuery,
+      attendanceFilter,
+      setAttendanceFilter: setAttendanceFilterValue,
+      filteredEntries,
+      exportPdf,
+      rsvpEntries,
+      handleClearRsvpEntries,
+      handleDeleteRsvpEntries,
+      formatDate,
+      transportDepartures: config.transportDepartures,
+    }),
+    [
+      searchQuery,
+      setSearchQuery,
+      attendanceFilter,
+      setAttendanceFilterValue,
+      filteredEntries,
+      exportPdf,
+      rsvpEntries,
+      handleClearRsvpEntries,
+      handleDeleteRsvpEntries,
+      config.transportDepartures,
+    ],
+  );
 
   // ─── Estados de carga ──────────────────────────────────
   if (isConfigLoading) {
     return (
       <div className="setup-layout setup-layout--full">
-        <section className="setup-card setup-card--full allow-select" aria-label={t("setup.loadingTitle")} style={{ borderRadius: "1rem" }}>
+        <section
+          className="setup-card setup-card--full allow-select"
+          aria-label={t("setup.loadingTitle")}
+          style={{ borderRadius: "1rem" }}
+        >
           <header className="setup-header">
             <div>
               <p className="setup-eyebrow">{t("setup.configTitle")}</p>
@@ -275,7 +333,11 @@ export default function AdminPage() {
   if (configLoadError) {
     return (
       <div className="setup-layout setup-layout--full">
-        <section className="setup-card setup-card--full allow-select" aria-label={t("common.error")} style={{ borderRadius: "1rem" }}>
+        <section
+          className="setup-card setup-card--full allow-select"
+          aria-label={t("common.error")}
+          style={{ borderRadius: "1rem" }}
+        >
           <header className="setup-header">
             <div>
               <p className="setup-eyebrow">{t("common.error")}</p>
@@ -302,9 +364,7 @@ export default function AdminPage() {
   if (isRestoringSession) {
     // Spinner: una página en blanco durante el getDoc de la sesión era un
     // blank screen real de 0.3-1 s.
-    return (
-      <div className="page-loading" role="status" aria-label={t("common.loading")} />
-    );
+    return <div className="page-loading" role="status" aria-label={t("common.loading")} />;
   }
 
   // ─── Redirección si no hay sesión de admin activa ──────
@@ -323,11 +383,14 @@ export default function AdminPage() {
     return <Navigate to={`/${inviteToken}`} replace />;
   }
 
-
   return (
     <div className="setup-layout setup-layout--full">
       {/* ── Contenedor de títulos y navegación ── */}
-      <section className="setup-card setup-card--title allow-select" aria-label={t("admin.privateArea")} style={{ borderRadius: "1rem" }}>
+      <section
+        className="setup-card setup-card--title allow-select"
+        aria-label={t("admin.privateArea")}
+        style={{ borderRadius: "1rem" }}
+      >
         <header className="setup-header">
           <div>
             <p className="setup-eyebrow">{t("admin.privateArea")}</p>
@@ -357,7 +420,11 @@ export default function AdminPage() {
       </section>
 
       {/* ── Contenedor de secciones (contenido de la pestaña activa) ── */}
-      <section className="setup-card setup-card--content allow-select" aria-label={t("admin.privateArea")} style={{ borderRadius: "1rem" }}>
+      <section
+        className="setup-card setup-card--content allow-select"
+        aria-label={t("admin.privateArea")}
+        style={{ borderRadius: "1rem" }}
+      >
         <Suspense fallback={<div className="page-loading" style={{ minHeight: "10rem", margin: "1rem" }} />}>
           <div className="setup-form" role="tabpanel" id={"tabpanel-" + activeTab} aria-labelledby={"tab-" + activeTab}>
             {/* Pestaña: Panel de control */}
@@ -370,21 +437,16 @@ export default function AdminPage() {
             {activeTab === "asistencia" && <AttendanceTab {...attendanceConfig} />}
 
             {/* Pestaña: Compartir invitación */}
-            {activeTab === "compartir" && (
-              <ShareTab
-                inviteToken={inviteToken || ""}
-                addToast={addToast}
-              />
-            )}
+            {activeTab === "compartir" && <ShareTab inviteToken={inviteToken || ""} addToast={addToast} />}
 
             {/* Pestaña: Gestión de acceso */}
             {activeTab === "acceso" && (
-               <AccessTab
-                 setupToken={setupToken}
-                 handleResetTokenFromAdmin={handleResetTokenFromAdmin}
-                 handleAdminLogout={handleAdminLogout}
-                 handleDeleteInvitation={handleDeleteInvitation}
-               />
+              <AccessTab
+                setupToken={setupToken}
+                handleResetTokenFromAdmin={handleResetTokenFromAdmin}
+                handleAdminLogout={handleAdminLogout}
+                handleDeleteInvitation={handleDeleteInvitation}
+              />
             )}
 
             {/* Pestaña: Soporte */}

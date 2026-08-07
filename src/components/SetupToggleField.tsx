@@ -25,9 +25,18 @@ export default function SetupToggleField({ enabledField, label, hint, id, childr
   return (
     <>
       <div className="setup-toggle-row">
-        <input type="checkbox" className="setup-toggle" id={id(enabledField)} checked={enabled} onChange={toggle} aria-label={label} />
+        <input
+          type="checkbox"
+          className="setup-toggle"
+          id={id(enabledField)}
+          checked={enabled}
+          onChange={toggle}
+          aria-label={label}
+        />
         <div>
-          <label className="setup-label setup-label--tight" htmlFor={id(enabledField)}>{label}</label>
+          <label className="setup-label setup-label--tight" htmlFor={id(enabledField)}>
+            {label}
+          </label>
           {hint ? <p className="setup-help setup-help--tight">{hint}</p> : null}
         </div>
       </div>

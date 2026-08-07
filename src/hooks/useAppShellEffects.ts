@@ -52,7 +52,8 @@ export function useAppShellEffects(
     if (path === "/") document.title = t("app.titleLanding");
     else if (path.includes("/admin")) document.title = t("app.titleAdmin");
     else if (path.includes("/setup")) document.title = t("app.titleSetup");
-    else if (inviteToken) document.title = `${config.firstName || t("app.titleInvitation")} & ${config.secondName || ""} — Wedingo`;
+    else if (inviteToken)
+      document.title = `${config.firstName || t("app.titleInvitation")} & ${config.secondName || ""} — Wedingo`;
   }, [location.pathname, inviteToken, config.firstName, config.secondName, t]);
 
   // Tema del wedding + theme-color de la barra del navegador.

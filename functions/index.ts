@@ -28,8 +28,7 @@ async function cascadeDeleteInvitation(inviteToken: string): Promise<number> {
   const rsvpNamespaceRef = db.collection("rsvpResponses").doc(inviteToken);
 
   // Borrado de setupTokens asociados (huérfanos si solo la invitación los referencia).
-  const setupTokensSnap = await db.collection("setupTokens")
-    .where("inviteToken", "==", inviteToken).get();
+  const setupTokensSnap = await db.collection("setupTokens").where("inviteToken", "==", inviteToken).get();
 
   // Almacena los refs de subcolecciones; se re-consultan tras cada flush.
   let collectionRefs: FirebaseFirestore.CollectionReference[] = [];
@@ -92,37 +91,34 @@ async function cascadeDeleteInvitation(inviteToken: string): Promise<number> {
 
   try {
     await (storage.bucket() as Bucket).deleteFiles({ prefix: `invitations/${inviteToken}/` });
-  } catch { /* el directorio puede no existir */ }
+  } catch {
+    /* el directorio puede no existir */
+  }
 
   return totalDeletes;
 }
 
-export const cleanupExpiredData = onSchedule(
-  { schedule: "0 0 1 * *" } satisfies ScheduleOptions,
-  async () => {
-    const now = Date.now();
-    const twelveMonthsAgo = now - 365 * 24 * 60 * 60 * 1000;
-    let processed = 0;
+export const cleanupExpiredData = onSchedule({ schedule: "0 0 1 * *" } satisfies ScheduleOptions, async () => {
+  const now = Date.now();
+  const twelveMonthsAgo = now - 365 * 24 * 60 * 60 * 1000;
+  let processed = 0;
 
-    const snapshot = await db.collection("invitations").get();
+  const snapshot = await db.collection("invitations").get();
 
-    for (const doc of snapshot.docs) {
-      const data = doc.data() as Record<string, unknown>;
-      const day = Number(data.weddingDay);
-      const month = typeof data.weddingMonth === "string"
-        ? new Date(`${data.weddingMonth} 1, 2000`).getMonth()
-        : -1;
-      const year = Number(data.weddingYear);
-      if (!day || month < 0 || !year) continue;
+  for (const doc of snapshot.docs) {
+    const data = doc.data() as Record<string, unknown>;
+    const day = Number(data.weddingDay);
+    const month = typeof data.weddingMonth === "string" ? new Date(`${data.weddingMonth} 1, 2000`).getMonth() : -1;
+    const year = Number(data.weddingYear);
+    if (!day || month < 0 || !year) continue;
 
-      const weddingDate = new Date(year, month, day);
-      const eventTime = weddingDate.getTime();
-      if (eventTime > 0 && now - eventTime > twelveMonthsAgo) {
-        await cascadeDeleteInvitation(doc.id);
-        processed++;
-      }
+    const weddingDate = new Date(year, month, day);
+    const eventTime = weddingDate.getTime();
+    if (eventTime > 0 && now - eventTime > twelveMonthsAgo) {
+      await cascadeDeleteInvitation(doc.id);
+      processed++;
     }
+  }
 
-    console.log(`Cleanup complete: ${processed} invitations removed`);
-  },
-);
+  console.log(`Cleanup complete: ${processed} invitations removed`);
+});

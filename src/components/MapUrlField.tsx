@@ -42,10 +42,7 @@ const MapUrlField = memo(function MapUrlField({
   const url = value.trim();
   const isValid = url ? isValidGoogleMapsUrl(url) : false;
 
-  const placeName = useMemo(
-    () => (isValid ? extractPlaceNameFromUrl(url) || "" : ""),
-    [url, isValid],
-  );
+  const placeName = useMemo(() => (isValid ? extractPlaceNameFromUrl(url) || "" : ""), [url, isValid]);
 
   return (
     <>
@@ -60,15 +57,16 @@ const MapUrlField = memo(function MapUrlField({
         aria-invalid={url && !isValid ? true : undefined}
       />
       {url ? (
-        <p
-          className="setup-help"
-          style={!isValid ? { color: "#ef4444" } : { color: "#22c55e" }}
-        >
+        <p className="setup-help" style={!isValid ? { color: "#ef4444" } : { color: "#22c55e" }}>
           {isValid ? `${t("setup.mapUrlOk")}` : `${t("setup.mapUrlInvalid")}`}
         </p>
       ) : null}
       {!hidePlaceName && placeName ? (
-        <p className="setup-help" id={placeHintId} style={{ marginTop: "0.15rem", color: "var(--setup-accent)", fontWeight: 600 }}>
+        <p
+          className="setup-help"
+          id={placeHintId}
+          style={{ marginTop: "0.15rem", color: "var(--setup-accent)", fontWeight: 600 }}
+        >
           {placeLabel ? `${placeLabel}: ${placeName}` : placeName}
         </p>
       ) : null}

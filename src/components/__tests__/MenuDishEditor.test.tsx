@@ -50,7 +50,13 @@ describe("MenuDishEditor", () => {
 
   it("normalizes dishes with non-string text", () => {
     const onChange = vi.fn();
-    render(<MenuDishEditor value='[{"order":"entrante","text":42},{"order":"primero","text":"Solomillo"}]' onChange={onChange} idBase="menu" />);
+    render(
+      <MenuDishEditor
+        value='[{"order":"entrante","text":42},{"order":"primero","text":"Solomillo"}]'
+        onChange={onChange}
+        idBase="menu"
+      />,
+    );
     expect(screen.getByDisplayValue("Solomillo")).toBeDefined();
   });
 

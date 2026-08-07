@@ -73,8 +73,22 @@ describe("GalleryArrayEditor", () => {
 
   it("moves an image to the right and persists the order", async () => {
     mockLoadGallery.mockResolvedValueOnce([
-      { id: "img1", url: "data:image/jpeg;base64,a", description: "", position: 0, originalName: "a.jpg", originalSize: 1 },
-      { id: "img2", url: "data:image/jpeg;base64,b", description: "", position: 1, originalName: "b.jpg", originalSize: 1 },
+      {
+        id: "img1",
+        url: "data:image/jpeg;base64,a",
+        description: "",
+        position: 0,
+        originalName: "a.jpg",
+        originalSize: 1,
+      },
+      {
+        id: "img2",
+        url: "data:image/jpeg;base64,b",
+        description: "",
+        position: 1,
+        originalName: "b.jpg",
+        originalSize: 1,
+      },
     ] as Partial<GalleryImage>[]);
     render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByText("#1");
@@ -119,7 +133,14 @@ describe("GalleryArrayEditor", () => {
 
   it("clears a description via blur", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img1", url: "https://example.com/1.jpg", description: "Desc", originalName: "a.jpg", originalSize: 10, position: 0 },
+      {
+        id: "img1",
+        url: "https://example.com/1.jpg",
+        description: "Desc",
+        originalName: "a.jpg",
+        originalSize: 10,
+        position: 0,
+      },
     ] as Partial<GalleryImage>[]);
     render(<GalleryArrayEditor inviteToken="test-token" />);
     const input = await screen.findByDisplayValue("Desc");
@@ -179,7 +200,14 @@ describe("GalleryArrayEditor", () => {
 
   it("deletes an image after confirmation", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "desc",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
 
     render(<GalleryArrayEditor inviteToken="test-token" />);
@@ -199,7 +227,14 @@ describe("GalleryArrayEditor", () => {
 
   it("shows confirm dialog on delete", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "desc",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
 
     render(<GalleryArrayEditor inviteToken="test-token" />);
@@ -216,7 +251,14 @@ describe("GalleryArrayEditor", () => {
 
   it("edits description on blur", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "hello", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "hello",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
 
     render(<GalleryArrayEditor inviteToken="test-token" />);
@@ -248,7 +290,14 @@ describe("GalleryArrayEditor", () => {
 
   it("handles description save failure", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "hello", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "hello",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
     const testError = new Error("Network error");
     mockUpdateGalleryDescription.mockRejectedValue(testError);
@@ -267,7 +316,14 @@ describe("GalleryArrayEditor", () => {
 
   it("replaces existing image via filled slot upload", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,existing", description: "desc", originalName: "old.png", originalSize: 500, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,existing",
+        description: "desc",
+        originalName: "old.png",
+        originalSize: 500,
+        position: 0,
+      },
     ]);
 
     render(<GalleryArrayEditor inviteToken="test-token" />);
@@ -327,7 +383,14 @@ describe("GalleryArrayEditor", () => {
 
   it("detects duplicate file upload", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "desc",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
 
     render(<GalleryArrayEditor inviteToken="test-token" />);
@@ -350,7 +413,14 @@ describe("GalleryArrayEditor", () => {
 
   it("handles description save failure with non-Error", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "hello", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "hello",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
     mockUpdateGalleryDescription.mockRejectedValue("String error");
 
@@ -368,7 +438,14 @@ describe("GalleryArrayEditor", () => {
 
   it("handles delete error", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "desc",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
     mockDeleteGalleryImage.mockRejectedValue(new Error("Delete failed"));
 
@@ -401,7 +478,14 @@ describe("GalleryArrayEditor", () => {
 
   it("does not crash on delete when inviteToken is unset", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "desc",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
     render(<GalleryArrayEditor inviteToken="" />);
     expect(document.querySelector(".page-loading")).toBeInTheDocument();
@@ -409,7 +493,14 @@ describe("GalleryArrayEditor", () => {
 
   it("trims description on save and handles null currentValue", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "long text", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "long text",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
     render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("long text");
@@ -423,7 +514,14 @@ describe("GalleryArrayEditor", () => {
 
   it("changes description on existing slot triggers handleDescriptionChange", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
     render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByPlaceholderText("setup.galleryDescriptionPlaceholder");
@@ -442,7 +540,14 @@ describe("GalleryArrayEditor", () => {
 
   it("does not crash when inviteToken is removed after load", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "desc",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
     const { rerender } = render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("desc");
@@ -474,7 +579,14 @@ describe("GalleryArrayEditor", () => {
 
   it("calls handleDescriptionBlur with nullish currentValue safely", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "desc",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
     render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("desc");
@@ -498,7 +610,14 @@ describe("GalleryArrayEditor", () => {
 
   it("calls handleDescriptionBlur and skips save when inviteToken changes", async () => {
     mockLoadGallery.mockResolvedValue([
-      { id: "img-1", url: "data:image/png,test", description: "desc", originalName: "test.png", originalSize: 1000, position: 0 },
+      {
+        id: "img-1",
+        url: "data:image/png,test",
+        description: "desc",
+        originalName: "test.png",
+        originalSize: 1000,
+        position: 0,
+      },
     ]);
     render(<GalleryArrayEditor inviteToken="test-token" />);
     await screen.findByDisplayValue("desc");

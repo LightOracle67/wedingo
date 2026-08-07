@@ -1,11 +1,12 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "../../lib/firebase";
-import { withWriteRetry } from "../../lib/async-utils";
+import { useInviteSubcollection } from "../../hooks/useInviteSubcollection";
 
-interface GiftItem { id: string; name: string; description: string; }
-interface GiftReservation { reservedBy: string; }
+interface GiftItem {
+  id: string;
+  name: string;
+  description: string;
+}
 
 /**
  * GiftListSection — Lista de regalos con reserva: cada invitado marca el
@@ -21,51 +22,62 @@ interface GiftReservation { reservedBy: string; }
 export default function GiftListSection({ inviteToken, gifts }: { inviteToken?: string; gifts?: string }) {
   const { t } = useTranslation();
   const [items, setItems] = useState<GiftItem[]>([]);
-  const [reserved, setReserved] = useState<Record<string, string>>({});
   const [name, setName] = useState("");
-  const [busy, setBusy] = useState("");
+  const [activeItem, setActiveItem] = useState("");
+
+  // Reservas existentes: cada doc { itemId, reservedBy } → Record<itemId, name>.
+  // Fallback al id del doc cuando itemId no está presente (datos antiguos/tests).
+  const {
+    items: reservations,
+    add: addReservation,
+    busy,
+  } = useInviteSubcollection<{ itemId: string; reservedBy: string }>(inviteToken, "gifts", {
+    map: ({ id, data }) => ({ itemId: data.itemId || id, reservedBy: data.reservedBy || "" }),
+  });
+  const reserved = useMemo(() => {
+    const map: Record<string, string> = {};
+    for (const r of reservations) if (r.itemId) map[r.itemId] = r.reservedBy;
+    return map;
+  }, [reservations]);
 
   useEffect(() => {
     try {
       const parsed = JSON.parse(gifts || "[]");
-      setItems(Array.isArray(parsed) ? parsed.filter((g: unknown): g is GiftItem => !!g && typeof (g as GiftItem).name === "string") : []);
-    } catch { setItems([]); }
+      setItems(
+        Array.isArray(parsed)
+          ? parsed.filter((g: unknown): g is GiftItem => !!g && typeof (g as GiftItem).name === "string")
+          : [],
+      );
+    } catch {
+      setItems([]);
+    }
   }, [gifts]);
 
-  // Lee las reservas existentes.
-  useEffect(() => {
-    if (!inviteToken) return;
-    void getDocs(collection(db, "invitations", inviteToken, "gifts")).then((snap) => {
-      const map: Record<string, string> = {};
-      snap.docs.forEach((d) => {
-        const data = d.data() as GiftReservation;
-        map[d.id] = data.reservedBy || "";
-      });
-      setReserved(map);
-    }).catch(() => {});
-  }, [inviteToken]);
-
-  const reserve = useCallback(async (itemId: string) => {
-    if (!inviteToken || busy) return;
-    const guestName = name.trim();
-    if (!guestName) { return; }
-    setBusy(itemId);
-    try {
-      await withWriteRetry(() => addDoc(collection(db, "invitations", inviteToken, "gifts"), {
-        itemId,
-        reservedBy: guestName.slice(0, 60),
-        createdAt: serverTimestamp(),
-      }));
-      setReserved((p) => ({ ...p, [itemId]: guestName.slice(0, 60) }));
-    } catch { /* las reglas o la red lo impidieron */ }
-    setBusy("");
-  }, [inviteToken, name, busy]);
+  const reserve = useCallback(
+    async (itemId: string) => {
+      const guestName = name.trim();
+      if (!guestName || busy) return;
+      setActiveItem(itemId);
+      const id = await addReservation({ itemId, reservedBy: guestName.slice(0, 60) });
+      if (id !== null) setName("");
+      setActiveItem("");
+    },
+    [name, busy, addReservation],
+  );
 
   if (items.length === 0) return null;
 
   return (
     <div>
-      <input className="setup-input" style={{ marginBottom: "0.6rem" }} value={name} onChange={(e) => setName(e.target.value)} placeholder={t("giftList.namePlaceholder")} maxLength={60} aria-label={t("giftList.namePlaceholder")} />
+      <input
+        className="setup-input"
+        style={{ marginBottom: "0.6rem" }}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder={t("giftList.namePlaceholder")}
+        maxLength={60}
+        aria-label={t("giftList.namePlaceholder")}
+      />
       <div className="gift-list">
         {items.map((item) => {
           const taken = Boolean(reserved[item.id]);
@@ -74,10 +86,17 @@ export default function GiftListSection({ inviteToken, gifts }: { inviteToken?: 
               <div>
                 <p className="gift-list__name">{item.name}</p>
                 {item.description ? <p className="gift-list__desc">{item.description}</p> : null}
-                {taken ? <p className="gift-list__reserved">{t("giftList.reservedBy", { name: reserved[item.id] })}</p> : null}
+                {taken ? (
+                  <p className="gift-list__reserved">{t("giftList.reservedBy", { name: reserved[item.id] })}</p>
+                ) : null}
               </div>
-              <button className="setup-button setup-button--compact" type="button" onClick={() => reserve(item.id)} disabled={taken || busy === item.id || !name.trim()}>
-                {taken ? t("giftList.taken") : t("giftList.reserve")}
+              <button
+                className="setup-button setup-button--compact"
+                type="button"
+                onClick={() => reserve(item.id)}
+                disabled={taken || busy || !name.trim()}
+              >
+                {taken ? t("giftList.taken") : activeItem === item.id ? t("common.loading") : t("giftList.reserve")}
               </button>
             </div>
           );

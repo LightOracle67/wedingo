@@ -134,9 +134,7 @@ describe("TokensTab", () => {
   });
 
   it("shows no tokens to clean when empty", async () => {
-    mockGetDocs.mockImplementation(() =>
-      Promise.resolve({ docs: [], size: 0, empty: true }),
-    );
+    mockGetDocs.mockImplementation(() => Promise.resolve({ docs: [], size: 0, empty: true }));
     render(<TokensTab />);
     await vi.waitFor(() => expect(screen.getByText("superadmin.cleanUnused")).toBeInTheDocument());
     fireEvent.click(screen.getByText("superadmin.cleanUnused"));

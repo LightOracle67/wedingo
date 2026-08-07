@@ -18,7 +18,8 @@ export default function SuperAdminLogin() {
     if (error) addToast("error", error);
   }, [error, addToast]);
 
-  if (isLoading) {    return (
+  if (isLoading) {
+    return (
       <div className="setup-layout">
         <section className="setup-card allow-select" aria-label={t("common.loading")}>
           <header className="setup-header">
@@ -51,9 +52,7 @@ export default function SuperAdminLogin() {
           <div>
             <p className="setup-eyebrow">{t("superadmin.superadmin")}</p>
             <h1 className="setup-title">{t("superadmin.controlPanel")}</h1>
-            <p className="setup-subtitle">
-              {t("superadmin.managePlatform")}
-            </p>
+            <p className="setup-subtitle">{t("superadmin.managePlatform")}</p>
           </div>
         </header>
 
@@ -95,7 +94,12 @@ export default function SuperAdminLogin() {
           </div>
           {/* Error persistente inline (no solo toast efímero): legible y accesible. */}
           {error ? (
-            <p role="alert" id="sadm-login-error" className="setup-error" style={{ marginTop: "0.75rem", textAlign: "center" }}>
+            <p
+              role="alert"
+              id="sadm-login-error"
+              className="setup-error"
+              style={{ marginTop: "0.75rem", textAlign: "center" }}
+            >
               {error}
             </p>
           ) : null}

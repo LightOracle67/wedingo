@@ -82,7 +82,9 @@ function TestConsumer() {
   const ctx = useContext(AppContext);
   return (
     <div>
-      <button data-testid="save-btn" onClick={(e) => ctx?.handleSaveSetup(e)}>Save</button>
+      <button data-testid="save-btn" onClick={(e) => ctx?.handleSaveSetup(e)}>
+        Save
+      </button>
     </div>
   );
 }
@@ -110,7 +112,11 @@ describe("AppProvider", () => {
   });
 
   it("renders children", () => {
-    render(<AppProvider><div>child</div></AppProvider>);
+    render(
+      <AppProvider>
+        <div>child</div>
+      </AppProvider>,
+    );
     expect(screen.getByText("child")).toBeInTheDocument();
   });
 

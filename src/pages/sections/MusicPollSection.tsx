@@ -1,10 +1,16 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, collection, addDoc, doc, updateDoc, increment, serverTimestamp } from "firebase/firestore";
+import { doc, updateDoc, increment } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { withWriteRetry } from "../../lib/async-utils";
+import { useInviteSubcollection } from "../../hooks/useInviteSubcollection";
 
-interface Song { id: string; guestName: string; song: string; votes: number; }
+interface Song {
+  id: string;
+  guestName: string;
+  song: string;
+  votes: number;
+}
 const VOTED_KEY = "wedin_voted_songs";
 
 /**
@@ -20,56 +26,76 @@ const VOTED_KEY = "wedin_voted_songs";
  */
 export default function MusicPollSection({ inviteToken }: { inviteToken?: string }) {
   const { t } = useTranslation();
-  const [songs, setSongs] = useState<Song[]>([]);
+  const {
+    items: songs,
+    setItems: setSongs,
+    add: addSong,
+  } = useInviteSubcollection<Song>(inviteToken, "songs", {
+    map: ({ id, data }) => ({
+      id,
+      guestName: data.guestName || "",
+      song: data.song || "",
+      votes: Number(data.votes) || 0,
+    }),
+    sort: (a, b) => (b.votes || 0) - (a.votes || 0),
+  });
   const [name, setName] = useState("");
   const [song, setSong] = useState("");
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
   const votedIds = useMemo(() => {
-    try { return new Set(JSON.parse(sessionStorage.getItem(VOTED_KEY) || "[]") as string[]); } catch { return new Set<string>(); }
+    try {
+      return new Set(JSON.parse(sessionStorage.getItem(VOTED_KEY) || "[]") as string[]);
+    } catch {
+      return new Set<string>();
+    }
   }, []);
 
-  const load = useCallback(() => {
-    if (!inviteToken) return;
-    void getDocs(collection(db, "invitations", inviteToken, "songs")).then((snap) => {
-      const list = snap.docs.map((d) => ({ id: d.id, ...(d.data() as { guestName: string; song: string; votes: number }) }));
-      setSongs(list.sort((a, b) => (b.votes || 0) - (a.votes || 0)));
-    }).catch(() => {});
-  }, [inviteToken]);
-
-  useEffect(() => { load(); }, [load]);
-
-  const suggest = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!inviteToken || !song.trim() || sending) return;
-    setSending(true);
-    setError("");
-    try {
-      await withWriteRetry(() => addDoc(collection(db, "invitations", inviteToken, "songs"), {
+  const suggest = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!song.trim() || sending) return;
+      setSending(true);
+      setError("");
+      const id = await addSong({
         guestName: name.trim().slice(0, 60) || "—",
         song: song.trim().slice(0, 200),
         votes: 1,
-        createdAt: serverTimestamp(),
-      }));
-      setSong("");
-      load();
-    } catch {
-      setError(t("musicPoll.error"));
-    } finally {
+      });
+      if (id !== null) {
+        setSong("");
+      } else {
+        setError(t("musicPoll.error"));
+      }
       setSending(false);
-    }
-  }, [inviteToken, song, name, sending, t, load]);
+    },
+    [song, name, sending, addSong, t],
+  );
 
-  const vote = useCallback(async (id: string) => {
-    if (!inviteToken || votedIds.has(id)) return;
-    try {
-      await withWriteRetry(() => updateDoc(doc(db, "invitations", inviteToken, "songs", id), { votes: increment(1) }));
-    } catch { return; }
-    setSongs((p) => p.map((s) => (s.id === id ? { ...s, votes: (s.votes || 0) + 1 } : s)).sort((a, b) => (b.votes || 0) - (a.votes || 0)));
-    votedIds.add(id);
-    try { sessionStorage.setItem(VOTED_KEY, JSON.stringify([...votedIds])); } catch { }
-  }, [inviteToken, votedIds]);
+  const vote = useCallback(
+    async (id: string) => {
+      if (!inviteToken || votedIds.has(id)) return;
+      try {
+        await withWriteRetry(() =>
+          updateDoc(doc(db, "invitations", inviteToken, "songs", id), { votes: increment(1) }),
+        );
+      } catch {
+        return;
+      }
+      votedIds.add(id);
+      try {
+        sessionStorage.setItem(VOTED_KEY, JSON.stringify([...votedIds]));
+      } catch {}
+      // Reordena en el estado local (sin re-consultar Firestore).
+      setSongs((p) =>
+        p
+          .map((s) => (s.id === id ? { ...s, votes: (s.votes || 0) + 1 } : s))
+          .sort((a, b) => (b.votes || 0) - (a.votes || 0)),
+      );
+    },
+    [inviteToken, votedIds, setSongs],
+  );
 
   return (
     <div>
@@ -81,17 +107,43 @@ export default function MusicPollSection({ inviteToken }: { inviteToken?: string
               <p className="song-poll__song">{s.song}</p>
               <p className="song-poll__guest">{s.guestName}</p>
             </div>
-            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => vote(s.id)} disabled={votedIds.has(s.id)} aria-label={t("musicPoll.vote")}>
+            <button
+              className="setup-button setup-button--ghost setup-button--compact"
+              type="button"
+              onClick={() => vote(s.id)}
+              disabled={votedIds.has(s.id)}
+              aria-label={t("musicPoll.vote")}
+            >
               <span className="song-poll__votes">👍 {s.votes || 0}</span>
             </button>
           </div>
         ))}
       </div>
       <form className="notes-form" onSubmit={suggest}>
-        <input className="setup-input" value={song} onChange={(e) => setSong(e.target.value)} placeholder={t("musicPoll.songPlaceholder")} maxLength={200} aria-label={t("musicPoll.songPlaceholder")} />
-        <input className="setup-input" value={name} onChange={(e) => setName(e.target.value)} placeholder={t("musicPoll.namePlaceholder")} maxLength={60} aria-label={t("musicPoll.namePlaceholder")} />
-        {error ? <p className="setup-error" role="alert">{error}</p> : null}
-        <button className="setup-button" type="submit" disabled={sending || !song.trim()}>{sending ? t("common.loading") : t("musicPoll.suggest")}</button>
+        <input
+          className="setup-input"
+          value={song}
+          onChange={(e) => setSong(e.target.value)}
+          placeholder={t("musicPoll.songPlaceholder")}
+          maxLength={200}
+          aria-label={t("musicPoll.songPlaceholder")}
+        />
+        <input
+          className="setup-input"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder={t("musicPoll.namePlaceholder")}
+          maxLength={60}
+          aria-label={t("musicPoll.namePlaceholder")}
+        />
+        {error ? (
+          <p className="setup-error" role="alert">
+            {error}
+          </p>
+        ) : null}
+        <button className="setup-button" type="submit" disabled={sending || !song.trim()}>
+          {sending ? t("common.loading") : t("musicPoll.suggest")}
+        </button>
       </form>
     </div>
   );

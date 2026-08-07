@@ -4,13 +4,30 @@ import CornerDecorations from "../../components/CornerDecorations";
 import MapEmbed from "../../components/MapEmbed";
 import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
 
-const AccommodationSection = memo(function AccommodationSection({ style, className, accommodationURL, mapView, staticMap, accommodationMapMode, cornerDecoration }: { style?: React.CSSProperties; className?: string; accommodationURL?: string; mapView?: string; staticMap?: boolean; accommodationMapMode?: string; cornerDecoration?: string }) {
+const AccommodationSection = memo(function AccommodationSection({
+  style,
+  className,
+  accommodationURL,
+  mapView,
+  staticMap,
+  accommodationMapMode,
+  cornerDecoration,
+}: {
+  style?: React.CSSProperties;
+  className?: string;
+  accommodationURL?: string;
+  mapView?: string;
+  staticMap?: boolean;
+  accommodationMapMode?: string;
+  cornerDecoration?: string;
+}) {
   const { t } = useTranslation();
   const url = (accommodationURL || "").trim();
   const urlValid = url ? isValidGoogleMapsUrl(url) : false;
   const placeName = urlValid ? extractPlaceNameFromUrl(url) : "";
   // Modo de visualización del mapa: iframe (por defecto), solo nombre u oculto.
-  const mapMode = accommodationMapMode === "name" || accommodationMapMode === "hidden" ? accommodationMapMode : "iframe";
+  const mapMode =
+    accommodationMapMode === "name" || accommodationMapMode === "hidden" ? accommodationMapMode : "iframe";
 
   return (
     <section
@@ -26,7 +43,9 @@ const AccommodationSection = memo(function AccommodationSection({ style, classNa
           {urlValid && mapMode !== "hidden" ? (
             <div className="mt-4">
               {placeName ? (
-                <p className="story-copy" style={{ fontWeight: 600 }}>{placeName}</p>
+                <p className="story-copy" style={{ fontWeight: 600 }}>
+                  {placeName}
+                </p>
               ) : null}
               {mapMode === "iframe" ? (
                 <>
@@ -34,7 +53,13 @@ const AccommodationSection = memo(function AccommodationSection({ style, classNa
                     <MapEmbed mapUrl={url} mapView={mapView || "roadmap"} staticMap={staticMap === true} height={220} />
                   </div>
                   <div className="story-map__actions" style={{ marginTop: "0.5rem" }}>
-                    <a className="setup-button setup-button--ghost setup-button--compact" href={url} target="_blank" rel="noopener noreferrer" referrerPolicy="no-referrer">
+                    <a
+                      className="setup-button setup-button--ghost setup-button--compact"
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      referrerPolicy="no-referrer"
+                    >
                       {t("details.viewGoogleMaps")}
                     </a>
                   </div>

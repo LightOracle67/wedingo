@@ -28,9 +28,16 @@ interface DietaryItem {
 
 const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) {
   const {
-  inviteToken, confirmedResponses, declinedResponses, totalGuests, rsvpEntries,
-  formatDate, onRestore, visitCount, exportData,
-} = config;
+    inviteToken,
+    confirmedResponses,
+    declinedResponses,
+    totalGuests,
+    rsvpEntries,
+    formatDate,
+    onRestore,
+    visitCount,
+    exportData,
+  } = config;
   const { t } = useTranslation();
   const { addToast } = useToast();
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
@@ -78,78 +85,87 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
     }
   }, [exportData, inviteToken, t, addToast]);
 
-  const handleRestore = useCallback(async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    if (file.size > 10 * 1024 * 1024) { e.target.value = ""; return; }
-    try {
-      const text = await file.text();
-      const data = JSON.parse(text);
-      // Validación estricta: un backup es un objeto plano de config (no un
-      // array ni el formato del export del superadmin, que corrompería el
-      // documento con claves anidadas).
-      if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error("Invalid backup file");
-      // Formato v1 (completo): { config, gallery, audio, configImages, rsvp }.
-      const configPart = data._wedingoBackupVersion === 1 ? (data as { config?: unknown }).config : data;
-      const cfg = configPart as Record<string, unknown>;
-      if (typeof cfg.firstName !== "string" || typeof cfg.secondName !== "string") {
-        throw new Error("Invalid backup file");
+  const handleRestore = useCallback(
+    async (e: ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      if (file.size > 10 * 1024 * 1024) {
+        e.target.value = "";
+        return;
       }
-      if (!window.confirm(t("panel.restoreConfirm"))) { e.target.value = ""; return; }
-
-      const { bankInfo, ...rest } = cfg;
-      // Las imágenes y el audio viajan como data URLs descifradas en el
-      // backup: volcarlas al documento superaba el límite de 1 MiB (y dejaba
-      // datos en claro). Se omiten en el merge (se conservan las actuales);
-      // el admin puede re-subirlas si las perdió.
-      const mediaKeys = ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration", "musicFile"];
-      const toSave: Record<string, unknown> = { ...rest, bankInfo: "" };
-      for (const key of mediaKeys) {
-        const v = toSave[key];
-        if (typeof v === "string" && v.startsWith("data:")) delete toSave[key];
-      }
-      if (bankInfo && bankInfo !== "[REDACTED]") {
-        toSave.bankInfo = await encrypt(String(bankInfo), inviteToken);
-      }
-
-      await setDoc(invitationDocRef(inviteToken), toSave, { merge: true });
-
-      // Se restauran las subcolecciones si el backup las incluye (formato
-      // _wedingoBackupVersion 1): galería, audio, imágenes de config y
-      // respuestas RSVP, tal y como se exportaron (ya cifradas).
-      const sub = data as {
-        gallery?: Array<{ id: string; [k: string]: unknown }>;
-        audio?: Array<{ id: string; [k: string]: unknown }>;
-        configImages?: Array<{ id: string; [k: string]: unknown }>;
-        rsvp?: Array<{ id: string; [k: string]: unknown }>;
-      };
-      const writeSub = async (path: string, docs: Array<{ id: string; [k: string]: unknown }> | undefined) => {
-        if (!docs || !docs.length) return;
-        for (const d of docs) {
-          const { id: _id, ...restDoc } = d;
-          await setDoc(doc(db, "invitations", inviteToken, path, _id), restDoc);
+      try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        // Validación estricta: un backup es un objeto plano de config (no un
+        // array ni el formato del export del superadmin, que corrompería el
+        // documento con claves anidadas).
+        if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error("Invalid backup file");
+        // Formato v1 (completo): { config, gallery, audio, configImages, rsvp }.
+        const configPart = data._wedingoBackupVersion === 1 ? (data as { config?: unknown }).config : data;
+        const cfg = configPart as Record<string, unknown>;
+        if (typeof cfg.firstName !== "string" || typeof cfg.secondName !== "string") {
+          throw new Error("Invalid backup file");
         }
-      };
-      const writeSubRsvp = async (docs: Array<{ id: string; [k: string]: unknown }> | undefined) => {
-        if (!docs || !docs.length) return;
-        for (const d of docs) {
-          const { id: _id, ...restDoc } = d;
-          await setDoc(doc(db, "rsvpResponses", inviteToken, "responses", _id), restDoc);
+        if (!window.confirm(t("panel.restoreConfirm"))) {
+          e.target.value = "";
+          return;
         }
-      };
-      await writeSub("gallery", sub.gallery);
-      await writeSub("audio", sub.audio);
-      await writeSub("configImages", sub.configImages);
-      await writeSubRsvp(sub.rsvp);
 
-      if (onRestore) await onRestore();
-      addToast("success", t("panel.restoreSuccess"));
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      addToast("error", `${t("errors.restoreFailed")} ${t("errors.errorDetail", { error: msg })}`);
-    }
-    e.target.value = "";
-  }, [inviteToken, onRestore, t, addToast]);
+        const { bankInfo, ...rest } = cfg;
+        // Las imágenes y el audio viajan como data URLs descifradas en el
+        // backup: volcarlas al documento superaba el límite de 1 MiB (y dejaba
+        // datos en claro). Se omiten en el merge (se conservan las actuales);
+        // el admin puede re-subirlas si las perdió.
+        const mediaKeys = ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration", "musicFile"];
+        const toSave: Record<string, unknown> = { ...rest, bankInfo: "" };
+        for (const key of mediaKeys) {
+          const v = toSave[key];
+          if (typeof v === "string" && v.startsWith("data:")) delete toSave[key];
+        }
+        if (bankInfo && bankInfo !== "[REDACTED]") {
+          toSave.bankInfo = await encrypt(String(bankInfo), inviteToken);
+        }
+
+        await setDoc(invitationDocRef(inviteToken), toSave, { merge: true });
+
+        // Se restauran las subcolecciones si el backup las incluye (formato
+        // _wedingoBackupVersion 1): galería, audio, imágenes de config y
+        // respuestas RSVP, tal y como se exportaron (ya cifradas).
+        const sub = data as {
+          gallery?: Array<{ id: string; [k: string]: unknown }>;
+          audio?: Array<{ id: string; [k: string]: unknown }>;
+          configImages?: Array<{ id: string; [k: string]: unknown }>;
+          rsvp?: Array<{ id: string; [k: string]: unknown }>;
+        };
+        const writeSub = async (path: string, docs: Array<{ id: string; [k: string]: unknown }> | undefined) => {
+          if (!docs || !docs.length) return;
+          for (const d of docs) {
+            const { id: _id, ...restDoc } = d;
+            await setDoc(doc(db, "invitations", inviteToken, path, _id), restDoc);
+          }
+        };
+        const writeSubRsvp = async (docs: Array<{ id: string; [k: string]: unknown }> | undefined) => {
+          if (!docs || !docs.length) return;
+          for (const d of docs) {
+            const { id: _id, ...restDoc } = d;
+            await setDoc(doc(db, "rsvpResponses", inviteToken, "responses", _id), restDoc);
+          }
+        };
+        await writeSub("gallery", sub.gallery);
+        await writeSub("audio", sub.audio);
+        await writeSub("configImages", sub.configImages);
+        await writeSubRsvp(sub.rsvp);
+
+        if (onRestore) await onRestore();
+        addToast("success", t("panel.restoreSuccess"));
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        addToast("error", `${t("errors.restoreFailed")} ${t("errors.errorDetail", { error: msg })}`);
+      }
+      e.target.value = "";
+    },
+    [inviteToken, onRestore, t, addToast],
+  );
 
   return (
     <>
@@ -167,11 +183,13 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
       {summary.confirmed + summary.declined > 0 && (
         <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "1rem", textAlign: "center" }}>
           <DonutChart yes={summary.confirmed} no={summary.declined} pending={summary.pending} size={120} />
-          <Legend items={[
-            { label: t("panel.confirms"), value: summary.confirmed, color: "var(--accent, #22c55e)" },
-            { label: t("panel.declines"), value: summary.declined, color: "#ef4444" },
-            { label: t("panel.pending"), value: summary.pending, color: "#f59e0b" },
-          ]} />
+          <Legend
+            items={[
+              { label: t("panel.confirms"), value: summary.confirmed, color: "var(--accent, #22c55e)" },
+              { label: t("panel.declines"), value: summary.declined, color: "#ef4444" },
+              { label: t("panel.pending"), value: summary.pending, color: "#f59e0b" },
+            ]}
+          />
         </div>
       )}
 
@@ -181,7 +199,16 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
             {t("panel.dietaryPreferences")}
           </p>
           {dietary.map((d: DietaryItem) => (
-            <div key={d.item} style={{ display: "flex", justifyContent: "space-between", fontSize: "0.8rem", padding: "0.15rem 0", borderBottom: "1px solid var(--setup-border)" }}>
+            <div
+              key={d.item}
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontSize: "0.8rem",
+                padding: "0.15rem 0",
+                borderBottom: "1px solid var(--setup-border)",
+              }}
+            >
               <span style={{ textTransform: "capitalize" }}>{d.item}</span>
               <span style={{ fontWeight: 600 }}>{d.count}</span>
             </div>
@@ -190,12 +217,14 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
       )}
 
       <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.7rem 1rem" }}>
-        <p style={{ margin: 0, color: "var(--setup-muted)", fontSize: "0.8rem" }}>
-          {t("panel.publishedAt")}
-        </p>
+        <p style={{ margin: 0, color: "var(--setup-muted)", fontSize: "0.8rem" }}>{t("panel.publishedAt")}</p>
         <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginTop: "0.25rem" }}>
-          <a href={inviteUrl} target="_blank" rel="noreferrer"
-            style={{ color: "var(--setup-accent)", fontSize: "0.9rem", wordBreak: "break-all" }}>
+          <a
+            href={inviteUrl}
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "var(--setup-accent)", fontSize: "0.9rem", wordBreak: "break-all" }}
+          >
             {inviteUrl}
           </a>
         </div>
@@ -210,7 +239,11 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
         <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={handleBackup}>
           {t("panel.downloadBackup")}
         </button>
-        <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => restoreRef.current?.click()}>
+        <button
+          className="setup-button setup-button--ghost setup-button--compact"
+          type="button"
+          onClick={() => restoreRef.current?.click()}
+        >
           {t("panel.restoreBackup")}
         </button>
         <input ref={restoreRef} type="file" accept=".json" style={{ display: "none" }} onChange={handleRestore} />
@@ -219,15 +252,27 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
       {rsvpEntries && rsvpEntries.length > 0 ? (
         <div className="admin-recent-section" style={{ marginTop: "1rem" }}>
           <p className="setup-label setup-label--tight">{t("panel.latestResponses")}</p>
-          {(rsvpEntries || []).slice(0, 5).map((entry: { id: string; guestName: string; attendance: string; companions: number; submittedAt: unknown }) => (
-            <div key={entry.id} className="admin-recent-row">
-              <span className="admin-recent-row__name">{entry.guestName}</span>
-              <span className={`admin-recent-row__status admin-recent-row__status--${entry.attendance}`}>
-                {entry.attendance === "yes" ? t("panel.withCompanions", { count: entry.companions }) : t("panel.notAttends")}
-              </span>
-              <span className="admin-recent-row__date">{formatDate(entry.submittedAt)}</span>
-            </div>
-          ))}
+          {(rsvpEntries || [])
+            .slice(0, 5)
+            .map(
+              (entry: {
+                id: string;
+                guestName: string;
+                attendance: string;
+                companions: number;
+                submittedAt: unknown;
+              }) => (
+                <div key={entry.id} className="admin-recent-row">
+                  <span className="admin-recent-row__name">{entry.guestName}</span>
+                  <span className={`admin-recent-row__status admin-recent-row__status--${entry.attendance}`}>
+                    {entry.attendance === "yes"
+                      ? t("panel.withCompanions", { count: entry.companions })
+                      : t("panel.notAttends")}
+                  </span>
+                  <span className="admin-recent-row__date">{formatDate(entry.submittedAt)}</span>
+                </div>
+              ),
+            )}
         </div>
       ) : (
         <p className="setup-help">{t("panel.noResponses")}</p>

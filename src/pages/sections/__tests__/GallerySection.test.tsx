@@ -11,9 +11,9 @@ vi.mock("../../../hooks/useReducedMotion", () => ({
 }));
 
 const mockLoadGalleryMeta = vi.hoisted(() => vi.fn());
-const mockGetGalleryImageUrl = vi.hoisted(() => vi.fn(async (_token: string, meta: { id: string }) =>
-  `https://example.com/${meta.id}.jpg`,
-));
+const mockGetGalleryImageUrl = vi.hoisted(() =>
+  vi.fn(async (_token: string, meta: { id: string }) => `https://example.com/${meta.id}.jpg`),
+);
 vi.mock("../../../lib/image-store", () => ({
   loadGalleryMeta: (...args: unknown[]) => mockLoadGalleryMeta(...args),
   getGalleryImageUrl: (...args: Parameters<typeof mockGetGalleryImageUrl>) => mockGetGalleryImageUrl(...args),
@@ -53,7 +53,11 @@ describe("GallerySection", () => {
       observe(target: Element) {
         // La sección se considera visible: el auto-avance se arranca.
         const cb = FakeIO.instance?.callback;
-        if (cb) cb([{ isIntersecting: true, target } as unknown as IntersectionObserverEntry], this as unknown as IntersectionObserver);
+        if (cb)
+          cb(
+            [{ isIntersecting: true, target } as unknown as IntersectionObserverEntry],
+            this as unknown as IntersectionObserver,
+          );
       }
       disconnect() {}
     }
@@ -61,7 +65,8 @@ describe("GallerySection", () => {
     Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
   });
 
-  it("falls back to idle decryption when IntersectionObserver is unavailable", async () => {    // Sin IO, las miniaturas se descifran con el fallback (primeras 4 + idle).
+  it("falls back to idle decryption when IntersectionObserver is unavailable", async () => {
+    // Sin IO, las miniaturas se descifran con el fallback (primeras 4 + idle).
     const original = (globalThis as Record<string, unknown>).IntersectionObserver;
     Object.defineProperty(globalThis, "IntersectionObserver", { value: undefined, configurable: true });
     mockLoadGalleryMeta.mockResolvedValue(toMeta(mockImages));
@@ -83,7 +88,8 @@ describe("GallerySection", () => {
     expect(mockGetGalleryImageUrl).not.toHaveBeenCalled();
   });
 
-  it("renders loading state", () => {    mockLoadGalleryMeta.mockImplementation(() => new Promise(() => {}));
+  it("renders loading state", () => {
+    mockLoadGalleryMeta.mockImplementation(() => new Promise(() => {}));
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     expect(screen.getByText("gallery.sectionLabel")).toBeDefined();
     expect(screen.getByText("gallery.title")).toBeDefined();
@@ -388,8 +394,12 @@ describe("GallerySection", () => {
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
-    act(() => { fireEvent.click(screen.getByLabelText("gallery.next")); });
-    act(() => { vi.advanceTimersByTime(600); });
+    act(() => {
+      fireEvent.click(screen.getByLabelText("gallery.next"));
+    });
+    act(() => {
+      vi.advanceTimersByTime(600);
+    });
     vi.useRealTimers();
   });
 
@@ -400,10 +410,18 @@ describe("GallerySection", () => {
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
-    act(() => { fireEvent.click(screen.getByLabelText("gallery.next")); });
-    act(() => { vi.advanceTimersByTime(600); });
-    act(() => { fireEvent.click(screen.getByLabelText("gallery.prev")); });
-    act(() => { vi.advanceTimersByTime(600); });
+    act(() => {
+      fireEvent.click(screen.getByLabelText("gallery.next"));
+    });
+    act(() => {
+      vi.advanceTimersByTime(600);
+    });
+    act(() => {
+      fireEvent.click(screen.getByLabelText("gallery.prev"));
+    });
+    act(() => {
+      vi.advanceTimersByTime(600);
+    });
     vi.useRealTimers();
   });
 
@@ -415,8 +433,12 @@ describe("GallerySection", () => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
     const thumbBtns = document.querySelectorAll<HTMLButtonElement>(".gallery-thumb");
-    act(() => { if (thumbBtns[2]) fireEvent.click(thumbBtns[2]!); });
-    act(() => { vi.advanceTimersByTime(600); });
+    act(() => {
+      if (thumbBtns[2]) fireEvent.click(thumbBtns[2]!);
+    });
+    act(() => {
+      vi.advanceTimersByTime(600);
+    });
     vi.useRealTimers();
   });
 
@@ -428,13 +450,20 @@ describe("GallerySection", () => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
     // Transcurren 5s: el intervalo dispara el auto-avance.
-    act(() => { vi.advanceTimersByTime(5000); });
-    act(() => { vi.advanceTimersByTime(600); });
+    act(() => {
+      vi.advanceTimersByTime(5000);
+    });
+    act(() => {
+      vi.advanceTimersByTime(600);
+    });
     vi.useRealTimers();
   });
 
   it("renders images without url or id using fallbacks", async () => {
-    mockLoadGalleryMeta.mockResolvedValue([{ id: "1", encrypted: "e", description: "" }, { id: "2", encrypted: "e", description: "" }]);
+    mockLoadGalleryMeta.mockResolvedValue([
+      { id: "1", encrypted: "e", description: "" },
+      { id: "2", encrypted: "e", description: "" },
+    ]);
     render(<GallerySection className="test" style={{}} inviteToken="test-token" />);
     await vi.waitFor(() => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();

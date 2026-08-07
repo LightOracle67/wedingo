@@ -1,6 +1,18 @@
 import { useTranslation } from "react-i18next";
 
-export function DonutChart({ yes, no, pending, size = 120, strokeWidth = 20 }: { yes: number; no: number; pending: number; size?: number; strokeWidth?: number }) {
+export function DonutChart({
+  yes,
+  no,
+  pending,
+  size = 120,
+  strokeWidth = 20,
+}: {
+  yes: number;
+  no: number;
+  pending: number;
+  size?: number;
+  strokeWidth?: number;
+}) {
   const { t } = useTranslation();
   const total = yes + no + pending;
   if (total === 0) {
@@ -25,24 +37,73 @@ export function DonutChart({ yes, no, pending, size = 120, strokeWidth = 20 }: {
   const pendOff = (yesPct + noPct) * circ;
 
   return (
-    <svg width={size} height={size} viewBox="0 0 40 40" role="img" aria-label={t("chart.donutSummary", { yes, no, pending, total })}>
-      <circle cx="20" cy="20" r={r} fill="none" stroke="var(--setup-border)" strokeWidth={strokeWidth * (40 / size)} opacity="0.3" />
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 40 40"
+      role="img"
+      aria-label={t("chart.donutSummary", { yes, no, pending, total })}
+    >
+      <circle
+        cx="20"
+        cy="20"
+        r={r}
+        fill="none"
+        stroke="var(--setup-border)"
+        strokeWidth={strokeWidth * (40 / size)}
+        opacity="0.3"
+      />
       {yes > 0 && (
-        <circle cx="20" cy="20" r={r} fill="none" stroke="var(--accent, #22c55e)" strokeWidth={strokeWidth * (40 / size)}
-          strokeDasharray={`${yesPct * circ} ${circ}`} strokeDashoffset={-yesOff} transform="rotate(-90 20 20)"
-          style={{ transition: "stroke-dasharray 0.3s" }} />
+        <circle
+          cx="20"
+          cy="20"
+          r={r}
+          fill="none"
+          stroke="var(--accent, #22c55e)"
+          strokeWidth={strokeWidth * (40 / size)}
+          strokeDasharray={`${yesPct * circ} ${circ}`}
+          strokeDashoffset={-yesOff}
+          transform="rotate(-90 20 20)"
+          style={{ transition: "stroke-dasharray 0.3s" }}
+        />
       )}
       {no > 0 && (
-        <circle cx="20" cy="20" r={r} fill="none" stroke="#ef4444" strokeWidth={strokeWidth * (40 / size)}
-          strokeDasharray={`${noPct * circ} ${circ}`} strokeDashoffset={-noOff} transform="rotate(-90 20 20)"
-          style={{ transition: "stroke-dasharray 0.3s" }} />
+        <circle
+          cx="20"
+          cy="20"
+          r={r}
+          fill="none"
+          stroke="#ef4444"
+          strokeWidth={strokeWidth * (40 / size)}
+          strokeDasharray={`${noPct * circ} ${circ}`}
+          strokeDashoffset={-noOff}
+          transform="rotate(-90 20 20)"
+          style={{ transition: "stroke-dasharray 0.3s" }}
+        />
       )}
       {pending > 0 && (
-        <circle cx="20" cy="20" r={r} fill="none" stroke="#f59e0b" strokeWidth={strokeWidth * (40 / size)}
-          strokeDasharray={`${pendPct * circ} ${circ}`} strokeDashoffset={-pendOff} transform="rotate(-90 20 20)"
-          style={{ transition: "stroke-dasharray 0.3s" }} />
+        <circle
+          cx="20"
+          cy="20"
+          r={r}
+          fill="none"
+          stroke="#f59e0b"
+          strokeWidth={strokeWidth * (40 / size)}
+          strokeDasharray={`${pendPct * circ} ${circ}`}
+          strokeDashoffset={-pendOff}
+          transform="rotate(-90 20 20)"
+          style={{ transition: "stroke-dasharray 0.3s" }}
+        />
       )}
-      <text x="20" y="18" textAnchor="middle" dominantBaseline="central" fontSize="5" fontWeight="700" fill="var(--setup-title)">
+      <text
+        x="20"
+        y="18"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fontSize="5"
+        fontWeight="700"
+        fill="var(--setup-title)"
+      >
         {total}
       </text>
       <text x="20" y="24" textAnchor="middle" dominantBaseline="central" fontSize="2.8" fill="var(--setup-muted)">
@@ -52,21 +113,42 @@ export function DonutChart({ yes, no, pending, size = 120, strokeWidth = 20 }: {
   );
 }
 
-export function MiniBar({ items, height = 80, color = "var(--accent)" }: { items: Array<{ value: number; label?: string }>; height?: number; color?: string }) {
+export function MiniBar({
+  items,
+  height = 80,
+  color = "var(--accent)",
+}: {
+  items: Array<{ value: number; label?: string }>;
+  height?: number;
+  color?: string;
+}) {
   const { t } = useTranslation();
   if (!items?.length) return null;
   const max = Math.max(...items.map((i: { value: number }) => i.value || 0), 1);
   const barW = Math.max(4, Math.min(20, 200 / items.length));
   return (
-    <svg width="100%" height={height} style={{ display: "block" }} preserveAspectRatio="xMinYMin meet" role="img" aria-label={t("chart.barChart")}>
+    <svg
+      width="100%"
+      height={height}
+      style={{ display: "block" }}
+      preserveAspectRatio="xMinYMin meet"
+      role="img"
+      aria-label={t("chart.barChart")}
+    >
       {items.map((item: { value: number; label?: string }, i: number) => {
         const h = ((item.value || 0) / max) * (height - 8);
         return (
           <g key={i}>
             <rect x={i * (barW + 4) + 2} y={height - 4 - h} width={barW} height={h} fill={color} rx="2" />
             {item.label && (
-              <text x={i * (barW + 4) + 2 + barW / 2} y={height - 2} textAnchor="end" fontSize="6" fill="var(--setup-muted)"
-                transform={`rotate(-45 ${i * (barW + 4) + 2 + barW / 2} ${height - 2})`}>
+              <text
+                x={i * (barW + 4) + 2 + barW / 2}
+                y={height - 2}
+                textAnchor="end"
+                fontSize="6"
+                fill="var(--setup-muted)"
+                transform={`rotate(-45 ${i * (barW + 4) + 2 + barW / 2} ${height - 2})`}
+              >
                 {item.label.length > 5 ? item.label.slice(0, 5) + "…" : item.label}
               </text>
             )}
@@ -81,7 +163,16 @@ export function Legend({ items }: { items: Array<{ label: string; value: number;
   return (
     <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center", marginTop: "0.5rem" }}>
       {items.map((item: { label: string; value: number; color: string }) => (
-        <div key={item.label} style={{ display: "flex", alignItems: "center", gap: "0.3rem", fontSize: "0.75rem", color: "var(--setup-muted)" }}>
+        <div
+          key={item.label}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "0.3rem",
+            fontSize: "0.75rem",
+            color: "var(--setup-muted)",
+          }}
+        >
           <span style={{ width: 10, height: 10, borderRadius: "50%", background: item.color, flexShrink: 0 }} />
           {item.label}: <strong style={{ color: "var(--setup-title)" }}>{item.value}</strong>
         </div>

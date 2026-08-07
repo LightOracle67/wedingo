@@ -1,5 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { randomMessage, WEDDING_MESSAGES, EN_MESSAGES, FR_MESSAGES, DE_MESSAGES, PT_MESSAGES } from "../invite-messages";
+import {
+  randomMessage,
+  WEDDING_MESSAGES,
+  EN_MESSAGES,
+  FR_MESSAGES,
+  DE_MESSAGES,
+  PT_MESSAGES,
+} from "../invite-messages";
 
 const LANG_MAP = { es: WEDDING_MESSAGES, en: EN_MESSAGES, fr: FR_MESSAGES, de: DE_MESSAGES, pt: PT_MESSAGES };
 

@@ -25,7 +25,9 @@ export function useCalendar(config: {
     // Se usa el idioma de la UI (no el del navegador): si el invitado elige
     // árabe la fecha sale en árabe aunque el navegador esté en inglés.
     return weddingDate.toLocaleDateString(i18n.language || "es", {
-      year: "numeric", month: "long", day: "numeric"
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   }, [config.weddingDay, config.weddingMonth, config.weddingYear, i18n.language]);
 
@@ -46,7 +48,8 @@ export function useCalendar(config: {
     if (!month || Number.isNaN(day) || Number.isNaN(year) || Number.isNaN(hour) || Number.isNaN(minute)) return null;
 
     const startDate = new Date(year, month - 1, day, hour, minute, 0, 0);
-    if (startDate.getFullYear() !== year || startDate.getMonth() !== month - 1 || startDate.getDate() !== day) return null;
+    if (startDate.getFullYear() !== year || startDate.getMonth() !== month - 1 || startDate.getDate() !== day)
+      return null;
 
     const endDate = new Date(startDate.getTime() + 2 * 60 * 60 * 1000);
     const coupleNames = [config.firstName, config.secondName].filter(Boolean).join(" & ") || t("calendar.defaultTitle");
@@ -56,7 +59,9 @@ export function useCalendar(config: {
       t("calendar.invitationText"),
       formattedTime ? `${t("calendar.timeLabel")} ${formattedTime}` : "",
       config.weddingPlace ? `${t("calendar.placeLabel")} ${config.weddingPlace}` : "",
-    ].filter(Boolean).join("\n");
+    ]
+      .filter(Boolean)
+      .join("\n");
 
     return buildGoogleCalendarUrl({ title, description, place, startDate, endDate });
   }, [config, formattedTime, t]);

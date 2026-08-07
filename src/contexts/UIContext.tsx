@@ -11,7 +11,11 @@ export function UIProvider({ children }: { children: React.ReactNode }) {
   const [legalModal, setLegalModal] = useState("");
   const [locationMapError, setLocationMapError] = useState("");
   const [locationMapLoading, setLocationMapLoading] = useState(false);
-  const [locationMapTarget, setLocationMapTarget] = useState<{ latitude: number; longitude: number; label: string } | null>(null);
+  const [locationMapTarget, setLocationMapTarget] = useState<{
+    latitude: number;
+    longitude: number;
+    label: string;
+  } | null>(null);
   const locationMapContainerRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
 
@@ -21,23 +25,46 @@ export function UIProvider({ children }: { children: React.ReactNode }) {
     setAdminMessage("");
   }, [location.pathname]);
 
-  const uiValue = useMemo(() => ({
-    legalModal, setLegalModal,
-    saveMessage, setSaveMessage,
-    saveError, setSaveError,
-    adminMessage, setAdminMessage,
-    adminMessageType, setAdminMessageType,
-    locationMapContainerRef, locationMapError, setLocationMapError,
-    locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
-  }), [
-    legalModal, setLegalModal,
-    saveMessage, setSaveMessage,
-    saveError, setSaveError,
-    adminMessage, setAdminMessage,
-    adminMessageType, setAdminMessageType,
-    locationMapContainerRef, locationMapError, setLocationMapError,
-    locationMapLoading, setLocationMapLoading, locationMapTarget, setLocationMapTarget,
-  ]);
+  const uiValue = useMemo(
+    () => ({
+      legalModal,
+      setLegalModal,
+      saveMessage,
+      setSaveMessage,
+      saveError,
+      setSaveError,
+      adminMessage,
+      setAdminMessage,
+      adminMessageType,
+      setAdminMessageType,
+      locationMapContainerRef,
+      locationMapError,
+      setLocationMapError,
+      locationMapLoading,
+      setLocationMapLoading,
+      locationMapTarget,
+      setLocationMapTarget,
+    }),
+    [
+      legalModal,
+      setLegalModal,
+      saveMessage,
+      setSaveMessage,
+      saveError,
+      setSaveError,
+      adminMessage,
+      setAdminMessage,
+      adminMessageType,
+      setAdminMessageType,
+      locationMapContainerRef,
+      locationMapError,
+      setLocationMapError,
+      locationMapLoading,
+      setLocationMapLoading,
+      locationMapTarget,
+      setLocationMapTarget,
+    ],
+  );
 
   return (
     <UIContext.Provider value={uiValue}>
@@ -46,5 +73,3 @@ export function UIProvider({ children }: { children: React.ReactNode }) {
     </UIContext.Provider>
   );
 }
-
-

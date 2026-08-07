@@ -18,14 +18,14 @@ describe("getFirestoreErrorMessage", () => {
     const t = (key: string) => key;
     const codeMap: Record<string, string> = {
       "permission-denied": "errors.permissionDenied",
-      "unavailable": "errors.serviceUnavailable",
+      unavailable: "errors.serviceUnavailable",
       "not-found": "errors.notFound",
       "deadline-exceeded": "errors.timeout",
       "resource-exhausted": "errors.quotaExceeded",
       "already-exists": "errors.alreadyExists",
       "failed-precondition": "errors.failedPrecondition",
-      "aborted": "errors.aborted",
-      "unauthenticated": "errors.unauthenticated",
+      aborted: "errors.aborted",
+      unauthenticated: "errors.unauthenticated",
     };
     Object.entries(codeMap).forEach(([code, expected]) => {
       expect(getFirestoreErrorMessage({ code }, t)).toBe(expected);
@@ -59,7 +59,8 @@ describe("logError", () => {
     // Consentimiento de analítica: el fetch a Sentry está gateado por él.
     Object.defineProperty(globalThis, "localStorage", {
       value: {
-        getItem: (k: string) => (k === "wedin_cookie_consent" ? "accepted" : k === "wedin_cookie_prefs" ? '{"analytics":true}' : null),
+        getItem: (k: string) =>
+          k === "wedin_cookie_consent" ? "accepted" : k === "wedin_cookie_prefs" ? '{"analytics":true}' : null,
         setItem: () => {},
         removeItem: () => {},
         clear: () => {},
@@ -72,11 +73,7 @@ describe("logError", () => {
     const err = new Error("test error");
     const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
     logError(err, "TestContext");
-    expect(consoleSpy).toHaveBeenCalledWith(
-      "[TestContext]",
-      "test error",
-      expect.stringContaining("test error")
-    );
+    expect(consoleSpy).toHaveBeenCalledWith("[TestContext]", "test error", expect.stringContaining("test error"));
   });
 
   it("logs a string to console.error in DEV", () => {
@@ -104,7 +101,9 @@ describe("logError", () => {
   it("handles Sentry capture failure gracefully", async () => {
     vi.resetModules();
     vi.stubEnv("VITE_SENTRY_DSN", "https://sentry.example.com/123");
-    mockCaptureException.mockImplementationOnce(() => { throw new Error("Sentry failed"); });
+    mockCaptureException.mockImplementationOnce(() => {
+      throw new Error("Sentry failed");
+    });
     const { logError: sentryLogError } = await import("../error-utils");
     expect(() => sentryLogError(new Error("err"))).not.toThrow();
     vi.unstubAllEnvs();
@@ -113,7 +112,9 @@ describe("logError", () => {
   it("handles synchronous fetch throw in Sentry path", async () => {
     vi.resetModules();
     vi.stubEnv("VITE_SENTRY_DSN", "https://sentry.example.com/123");
-    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(() => { throw new Error("Sync fetch fail"); });
+    const fetchSpy = vi.spyOn(globalThis, "fetch").mockImplementation(() => {
+      throw new Error("Sync fetch fail");
+    });
     const { logError: sentryLogError } = await import("../error-utils");
     expect(() => sentryLogError(new Error("err"))).not.toThrow();
     fetchSpy.mockRestore();

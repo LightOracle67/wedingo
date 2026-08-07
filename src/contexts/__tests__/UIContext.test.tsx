@@ -15,20 +15,26 @@ import { useContext, useEffect } from "react";
 
 describe("UIProvider", () => {
   it("renders children", () => {
-    render(<UIProvider><div>child</div></UIProvider>);
+    render(
+      <UIProvider>
+        <div>child</div>
+      </UIProvider>,
+    );
     expect(screen.getByText("child")).toBeDefined();
   });
 
   it("renders LegalModal when legalModal is set", () => {
     function Consumer() {
       const ctx = useContext(UIContext);
-      useEffect(() => { ctx?.setLegalModal("privacy"); }, [ctx]);
+      useEffect(() => {
+        ctx?.setLegalModal("privacy");
+      }, [ctx]);
       return null;
     }
     render(
       <UIProvider>
         <Consumer />
-      </UIProvider>
+      </UIProvider>,
     );
     expect(screen.getByRole("dialog")).toBeDefined();
   });
@@ -36,13 +42,15 @@ describe("UIProvider", () => {
   it("closes LegalModal on close button click", async () => {
     function Consumer() {
       const ctx = useContext(UIContext);
-      useEffect(() => { ctx?.setLegalModal("privacy"); }, [ctx]);
+      useEffect(() => {
+        ctx?.setLegalModal("privacy");
+      }, [ctx]);
       return null;
     }
     const { container } = render(
       <UIProvider>
         <Consumer />
-      </UIProvider>
+      </UIProvider>,
     );
     expect(screen.getByRole("dialog")).toBeDefined();
     const closeBtn = container.querySelector(".modal-close");
@@ -54,22 +62,32 @@ describe("UIProvider", () => {
   });
 
   it("clears messages when location changes", () => {
-    const { rerender } = render(<UIProvider><div>initial</div></UIProvider>);
+    const { rerender } = render(
+      <UIProvider>
+        <div>initial</div>
+      </UIProvider>,
+    );
     expect(screen.getByText("initial")).toBeDefined();
-    rerender(<UIProvider><div>rerendered</div></UIProvider>);
+    rerender(
+      <UIProvider>
+        <div>rerendered</div>
+      </UIProvider>,
+    );
     expect(screen.getByText("rerendered")).toBeDefined();
   });
 
   it("renders LegalModal with correct section when legalModal is set", () => {
     function Consumer() {
       const ctx = useContext(UIContext);
-      useEffect(() => { ctx?.setLegalModal("terms"); }, [ctx]);
+      useEffect(() => {
+        ctx?.setLegalModal("terms");
+      }, [ctx]);
       return null;
     }
     render(
       <UIProvider>
         <Consumer />
-      </UIProvider>
+      </UIProvider>,
     );
     expect(screen.getByRole("dialog")).toBeDefined();
     expect(screen.getByText("legal.sectionTerms")).toBeDefined();
@@ -80,7 +98,11 @@ describe("UIProvider", () => {
       const ctx = useContext(UIContext);
       return <div data-testid="ref-type">{typeof ctx?.locationMapContainerRef}</div>;
     }
-    render(<UIProvider><Consumer /></UIProvider>);
+    render(
+      <UIProvider>
+        <Consumer />
+      </UIProvider>,
+    );
     expect(screen.getByTestId("ref-type").textContent).toBe("object");
   });
 });

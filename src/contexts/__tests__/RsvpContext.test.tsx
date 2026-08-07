@@ -38,7 +38,11 @@ import { RsvpProvider } from "../RsvpContext";
 
 describe("RsvpProvider", () => {
   it("renders children", () => {
-    render(<RsvpProvider><div>child</div></RsvpProvider>);
+    render(
+      <RsvpProvider>
+        <div>child</div>
+      </RsvpProvider>,
+    );
     expect(screen.getByText("child")).toBeDefined();
   });
 });

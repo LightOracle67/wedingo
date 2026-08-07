@@ -40,7 +40,20 @@ vi.mock("../../../lib/firebase", () => ({
 }));
 
 vi.mock("../../../lib/constants", () => ({
-  MONTH_VALUE_TO_NUMBER: { enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6, julio: 7, agosto: 8, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12 },
+  MONTH_VALUE_TO_NUMBER: {
+    enero: 1,
+    febrero: 2,
+    marzo: 3,
+    abril: 4,
+    mayo: 5,
+    junio: 6,
+    julio: 7,
+    agosto: 8,
+    septiembre: 9,
+    octubre: 10,
+    noviembre: 11,
+    diciembre: 12,
+  },
 }));
 
 vi.mock("../../../lib/audit", () => ({
@@ -63,7 +76,8 @@ const mockCalcGlobalStats = vi.fn(() => ({
 
 vi.mock("../../../lib/superadmin-utils", () => ({
   calcGlobalStats: (...args: Parameters<typeof mockCalcGlobalStats>) => mockCalcGlobalStats(...args),
-  formatBytes: (bytes: number) => bytes >= 1024 * 1024 ? `${(bytes / (1024 * 1024)).toFixed(2)} MB` : `${(bytes / 1024).toFixed(1)} KB`,
+  formatBytes: (bytes: number) =>
+    bytes >= 1024 * 1024 ? `${(bytes / (1024 * 1024)).toFixed(2)} MB` : `${(bytes / 1024).toFixed(1)} KB`,
 }));
 
 import DashboardTab from "../DashboardTab";
@@ -130,7 +144,10 @@ describe("DashboardTab", () => {
     getDocsMock.mockResolvedValue({
       docs: [
         { id: "inv1", data: () => ({ weddingYear: String(year), weddingMonth: "enero", weddingDay: "1" }) },
-        { id: "inv2", data: () => ({ weddingYear: String(now.getFullYear()), weddingMonth: "diciembre", weddingDay: "31" }) },
+        {
+          id: "inv2",
+          data: () => ({ weddingYear: String(now.getFullYear()), weddingMonth: "diciembre", weddingDay: "31" }),
+        },
       ],
     } as never);
 
@@ -169,7 +186,10 @@ describe("DashboardTab", () => {
     const now = new Date();
     getDocsMock.mockResolvedValue({
       docs: [
-        { id: "inv1", data: () => ({ weddingYear: String(now.getFullYear()), weddingMonth: "diciembre", weddingDay: "31" }) },
+        {
+          id: "inv1",
+          data: () => ({ weddingYear: String(now.getFullYear()), weddingMonth: "diciembre", weddingDay: "31" }),
+        },
       ],
     } as never);
 
@@ -187,9 +207,7 @@ describe("DashboardTab", () => {
     const threeYearsAgo = new Date(now.getFullYear() - 3, 0, 1);
     const year = threeYearsAgo.getFullYear();
     getDocsMock.mockResolvedValue({
-      docs: [
-        { id: "inv1", data: () => ({ weddingYear: String(year), weddingMonth: "enero", weddingDay: "1" }) },
-      ],
+      docs: [{ id: "inv1", data: () => ({ weddingYear: String(year), weddingMonth: "enero", weddingDay: "1" }) }],
     } as never);
 
     window.confirm = vi.fn(() => true);
@@ -214,9 +232,7 @@ describe("DashboardTab", () => {
     const threeYearsAgo = new Date(now.getFullYear() - 3, 0, 1);
     const year = threeYearsAgo.getFullYear();
     getDocsMock.mockResolvedValue({
-      docs: [
-        { id: "inv1", data: () => ({ weddingYear: String(year), weddingMonth: "enero", weddingDay: "1" }) },
-      ],
+      docs: [{ id: "inv1", data: () => ({ weddingYear: String(year), weddingMonth: "enero", weddingDay: "1" }) }],
     } as never);
 
     const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(false);
@@ -235,9 +251,7 @@ describe("DashboardTab", () => {
     const { getDocs } = await import("firebase/firestore");
     const getDocsMock = vi.mocked(getDocs);
     getDocsMock.mockResolvedValue({
-      docs: [
-        { id: "inv1", data: () => ({ weddingYear: "", weddingMonth: "enero", weddingDay: "1" }) },
-      ],
+      docs: [{ id: "inv1", data: () => ({ weddingYear: "", weddingMonth: "enero", weddingDay: "1" }) }],
     } as never);
     render(<DashboardTab />);
     await waitFor(() => {

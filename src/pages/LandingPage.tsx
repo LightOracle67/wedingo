@@ -20,7 +20,6 @@ import "../styles/admin.css";
 import "../styles/modals.css";
 
 export default function LandingPage() {
-
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { setIsTokenVerified, setTokenLoginUsername } = useAuth();
@@ -49,7 +48,11 @@ export default function LandingPage() {
     // lugar de crear otra con un token nuevo (evita registros setupTokens
     // huÃ©rfanos y pÃ©rdida del acceso previo).
     const existing = (() => {
-      try { return sessionStorage.getItem(STORAGE_KEYS.inviteToken); } catch { return null; }
+      try {
+        return sessionStorage.getItem(STORAGE_KEYS.inviteToken);
+      } catch {
+        return null;
+      }
     })();
     if (existing && /^[A-Za-z0-9]{10}$/.test(existing)) {
       navigate(`/${existing}/setup`);
@@ -90,13 +93,11 @@ export default function LandingPage() {
     const username = (usernameInput || "").trim();
     const raw = (tokenInput || "").trim();
     if (!username || !raw) {
-
       setError(t("landing.errorEmpty"));
       loginAttemptsRef.current++;
       if (loginAttemptsRef.current >= 3) {
         loginBlockedUntilRef.current = Date.now() + 30000;
         loginAttemptsRef.current = 0;
-
       }
       return;
     }
@@ -106,30 +107,25 @@ export default function LandingPage() {
 
     const normalized = normalizeTokenValue(raw);
     if (normalized.length < 20) {
-
       setError(t("landing.errorInvalidToken"));
       loginAttemptsRef.current++;
       if (loginAttemptsRef.current >= 3) {
         loginBlockedUntilRef.current = Date.now() + 30000;
         loginAttemptsRef.current = 0;
-
       }
       setIsLoading(false);
       return;
     }
 
     try {
-
       // Localiza la invitaciÃ³n por el hash del token (sin enumerar la colecciÃ³n).
       const target = await findInviteBySetupToken(normalized);
       if (!target) {
-
         setError(t("landing.errorTokenNotFound"));
         loginAttemptsRef.current++;
         if (loginAttemptsRef.current >= 3) {
           loginBlockedUntilRef.current = Date.now() + 30000;
           loginAttemptsRef.current = 0;
-
         }
         setIsLoading(false);
         return;
@@ -140,13 +136,11 @@ export default function LandingPage() {
       const matchedData = inviteSnap.exists() ? inviteSnap.data() : null;
 
       if (matchedData?.adminUsername && matchedData.adminUsername.toLowerCase() !== username.toLowerCase()) {
-
         setError(t("landing.errorUsernameMismatch"));
         loginAttemptsRef.current++;
         if (loginAttemptsRef.current >= 3) {
           loginBlockedUntilRef.current = Date.now() + 30000;
           loginAttemptsRef.current = 0;
-
         }
         setIsLoading(false);
         return;
@@ -161,10 +155,8 @@ export default function LandingPage() {
       }
 
       if (matchedData?.activeSession) {
-
         setIsLoading(false);
         if (!window.confirm(t("landing.sessionExists"))) {
-
           return;
         }
 
@@ -175,12 +167,16 @@ export default function LandingPage() {
       const tokenHash = await hashSetupToken(normalized);
 
       try {
-
         await runTransaction(db, async (transaction) => {
           const inviteRefInTx = invitationDocRef(target);
           const inviteSnapInTx = await transaction.get(inviteRefInTx);
           if (!inviteSnapInTx.exists()) {
-            transaction.set(inviteRefInTx, { ...defaultConfig, activeSession: serverTimestamp(), sessionExpiresAt: firestoreSessionExpiry(), setupTokenHash: tokenHash });
+            transaction.set(inviteRefInTx, {
+              ...defaultConfig,
+              activeSession: serverTimestamp(),
+              sessionExpiresAt: firestoreSessionExpiry(),
+              setupTokenHash: tokenHash,
+            });
           } else {
             transaction.update(inviteRefInTx, {
               activeSession: serverTimestamp(),
@@ -189,7 +185,6 @@ export default function LandingPage() {
             });
           }
         });
-
       } catch (err) {
         console.error("[app]", "[LandingPage]", "transaction failed", { error: err });
         setError(t("landing.errorTransactionFailed"));
@@ -197,7 +192,6 @@ export default function LandingPage() {
         if (loginAttemptsRef.current >= 3) {
           loginBlockedUntilRef.current = Date.now() + 30000;
           loginAttemptsRef.current = 0;
-
         }
         setIsLoading(false);
         return;
@@ -221,7 +215,6 @@ export default function LandingPage() {
       if (loginAttemptsRef.current >= 3) {
         loginBlockedUntilRef.current = Date.now() + 30000;
         loginAttemptsRef.current = 0;
-
       }
     }
 
@@ -229,7 +222,6 @@ export default function LandingPage() {
   };
 
   const openModal = () => {
-
     setUsernameInput("");
     setTokenInput("");
     setError("");
@@ -247,14 +239,24 @@ export default function LandingPage() {
             {t("landing.subtitle")}
           </p>
           <div className="story-divider my-6" />
-          <p className="text-[0.95rem] leading-relaxed text-boda-texto/60">
-            {t("landing.description")}
-          </p>
+          <p className="text-[0.95rem] leading-relaxed text-boda-texto/60">{t("landing.description")}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <button type="button" className="setup-button text-sm" onClick={handleCreate} disabled={creating} aria-busy={creating} data-testid="create-invitation-btn">
+            <button
+              type="button"
+              className="setup-button text-sm"
+              onClick={handleCreate}
+              disabled={creating}
+              aria-busy={creating}
+              data-testid="create-invitation-btn"
+            >
               {creating ? t("common.loading") : t("landing.createInvitation")}
             </button>
-            <button type="button" className="setup-button setup-button--ghost text-sm" onClick={openModal} data-testid="have-invitation-btn">
+            <button
+              type="button"
+              className="setup-button setup-button--ghost text-sm"
+              onClick={openModal}
+              data-testid="have-invitation-btn"
+            >
               {t("landing.haveInvitation")}
             </button>
           </div>
@@ -266,9 +268,28 @@ export default function LandingPage() {
         </div>
       </section>
       {showModal && (
-        <div className="modal-overlay" onClick={() => { ; setShowModal(false); }} role="dialog" aria-modal="true" aria-label={t("landing.modalTitle")}>
-          <div className="modal-card" ref={modalRef as React.RefObject<HTMLDivElement>} onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" ref={closeButtonRef} onClick={() => { ; setShowModal(false); }} aria-label={t("common.close")}>
+        <div
+          className="modal-overlay"
+          onClick={() => {
+            setShowModal(false);
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={t("landing.modalTitle")}
+        >
+          <div
+            className="modal-card"
+            ref={modalRef as React.RefObject<HTMLDivElement>}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="modal-close"
+              ref={closeButtonRef}
+              onClick={() => {
+                setShowModal(false);
+              }}
+              aria-label={t("common.close")}
+            >
               &times;
             </button>
             <form action="#" onSubmit={handleLogin}>
@@ -282,7 +303,9 @@ export default function LandingPage() {
                 className="setup-input"
                 type="text"
                 value={usernameInput}
-                onChange={(e) => setUsernameInput(e.target.value.replace(/[^a-zA-Z0-9\sÃ¡Ã©Ã­Ã³ÃºÃ±ÃÃ‰ÃÃ“ÃšÃ‘]/g, "").slice(0, 50))}
+                onChange={(e) =>
+                  setUsernameInput(e.target.value.replace(/[^a-zA-Z0-9\sÃ¡Ã©Ã­Ã³ÃºÃ±ÃÃ‰ÃÃ“ÃšÃ‘]/g, "").slice(0, 50))
+                }
                 placeholder={t("landing.usernamePlaceholder")}
                 autoComplete="username"
                 spellCheck="false"
@@ -303,9 +326,19 @@ export default function LandingPage() {
                 autoComplete="current-password"
                 spellCheck="false"
               />
-              {error && <p className="setup-error" role="alert">{error}</p>}
+              {error && (
+                <p className="setup-error" role="alert">
+                  {error}
+                </p>
+              )}
               <div className="setup-actions">
-                <button className="setup-button" type="submit" data-testid="login-submit-btn" aria-busy={isLoading} disabled={isLoading || usernameInput.trim().length < 1 || tokenInput.trim().length < 20}>
+                <button
+                  className="setup-button"
+                  type="submit"
+                  data-testid="login-submit-btn"
+                  aria-busy={isLoading}
+                  disabled={isLoading || usernameInput.trim().length < 1 || tokenInput.trim().length < 20}
+                >
                   {isLoading ? t("landing.loginLoading") : t("landing.loginButton")}
                 </button>
               </div>

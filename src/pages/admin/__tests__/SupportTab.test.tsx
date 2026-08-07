@@ -77,10 +77,7 @@ describe("SupportTab", () => {
     const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
     render(<SupportTab />);
     fireEvent.click(screen.getByText("support.deleteButton"));
-    expect(windowOpenSpy).toHaveBeenCalledWith(
-      expect.stringContaining("mailto:"),
-      "_blank",
-    );
+    expect(windowOpenSpy).toHaveBeenCalledWith(expect.stringContaining("mailto:"), "_blank");
     windowOpenSpy.mockRestore();
   });
 
@@ -88,10 +85,7 @@ describe("SupportTab", () => {
     const windowOpenSpy = vi.spyOn(window, "open").mockImplementation(() => null);
     render(<SupportTab />);
     fireEvent.click(screen.getByText("support.exportButton"));
-    expect(windowOpenSpy).toHaveBeenCalledWith(
-      expect.stringContaining("mailto:"),
-      "_blank",
-    );
+    expect(windowOpenSpy).toHaveBeenCalledWith(expect.stringContaining("mailto:"), "_blank");
     windowOpenSpy.mockRestore();
   });
 });

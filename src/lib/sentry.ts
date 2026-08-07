@@ -17,7 +17,9 @@ import { hasAnalyticsConsent } from "./storage";
 const isProd = import.meta.env.PROD;
 
 /** DSN público de Sentry (por diseño no es un secreto). */
-const SENTRY_DSN = import.meta.env.VITE_SENTRY_DSN || "https://dc9feab6e652cea6b31dc2b0c2c9dabe@o4511795631882240.ingest.de.sentry.io/4511795638304848";
+const SENTRY_DSN =
+  import.meta.env.VITE_SENTRY_DSN ||
+  "https://dc9feab6e652cea6b31dc2b0c2c9dabe@o4511795631882240.ingest.de.sentry.io/4511795638304848";
 
 /** Evita inicializar Sentry más de una vez. */
 let initialized = false;

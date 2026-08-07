@@ -22,12 +22,16 @@ vi.mock("../../lib/image-store", () => ({
 
 function runAxe(html: HTMLElement): Promise<axe.AxeResults> {
   return new Promise((resolve) => {
-    axe.run(html, {
-      runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"],
-    }, (err, results) => {
-      if (err) throw err;
-      resolve(results);
-    });
+    axe.run(
+      html,
+      {
+        runOnly: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"],
+      },
+      (err, results) => {
+        if (err) throw err;
+        resolve(results);
+      },
+    );
   });
 }
 
@@ -54,7 +58,15 @@ vi.mock("../../contexts", () => ({
     hasStoredConfig: true,
     isAdminTokenLoggedIn: false,
     inviteToken: "test-token",
-    rsvpForm: { attendees: [], guestName: "", attendance: "yes", birthDate: "", privacyConsent: false, healthConsent: false, parentalConsent: false },
+    rsvpForm: {
+      attendees: [],
+      guestName: "",
+      attendance: "yes",
+      birthDate: "",
+      privacyConsent: false,
+      healthConsent: false,
+      parentalConsent: false,
+    },
     rsvpEntries: [],
     rsvpMessage: "",
     isRsvpSubmitting: false,
@@ -142,7 +154,15 @@ vi.mock("../../contexts", () => ({
     setTokenLoginUsername: vi.fn(),
   }),
   useRsvpContext: () => ({
-    rsvpForm: { attendees: [], guestName: "", attendance: "yes", birthDate: "", privacyConsent: false, healthConsent: false, parentalConsent: false },
+    rsvpForm: {
+      attendees: [],
+      guestName: "",
+      attendance: "yes",
+      birthDate: "",
+      privacyConsent: false,
+      healthConsent: false,
+      parentalConsent: false,
+    },
     rsvpEntries: [],
     rsvpMessage: "",
     isRsvpSubmitting: false,
@@ -184,8 +204,18 @@ const BASE_MOCK_CTX = {
     PRIVACY_POLICY_VERSION: 1,
     SESSION_DURATION_MS: 3600000,
     MONTH_VALUE_TO_NUMBER: {
-      enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6,
-      julio: 7, agosto: 8, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12,
+      enero: 1,
+      febrero: 2,
+      marzo: 3,
+      abril: 4,
+      mayo: 5,
+      junio: 6,
+      julio: 7,
+      agosto: 8,
+      septiembre: 9,
+      octubre: 10,
+      noviembre: 11,
+      diciembre: 12,
     },
   }),
 };
@@ -295,9 +325,15 @@ describe("a11y-page-audit", () => {
     Object.defineProperty(globalThis, "localStorage", {
       value: {
         getItem: (k: string) => store[k] ?? null,
-        setItem: (k: string, v: string) => { store[k] = String(v); },
-        removeItem: (k: string) => { delete store[k]; },
-        clear: () => { Object.keys(store).forEach((k) => delete store[k]); },
+        setItem: (k: string, v: string) => {
+          store[k] = String(v);
+        },
+        removeItem: (k: string) => {
+          delete store[k];
+        },
+        clear: () => {
+          Object.keys(store).forEach((k) => delete store[k]);
+        },
       },
       configurable: true,
     });
@@ -348,9 +384,7 @@ describe("a11y-page-audit", () => {
 
   it("StorySection (real) has no serious violations", async () => {
     const StorySection = (await import("../../pages/sections/StorySection")).default;
-    const { container } = render(
-      <StorySection style={{}} className="test" storyText="Nos conocimos en el parque." />,
-    );
+    const { container } = render(<StorySection style={{}} className="test" storyText="Nos conocimos en el parque." />);
     const results = await runAxe(container);
     const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
     expect(violations).toHaveLength(0);
@@ -359,7 +393,12 @@ describe("a11y-page-audit", () => {
   it("GiftsSection (real) has no serious violations", async () => {
     const GiftsSection = (await import("../../pages/sections/GiftsSection")).default;
     const { container } = render(
-      <GiftsSection style={{}} className="test" giftsInfo="Tu presencia es el mejor regalo" bankInfo="ES91 2100 0418 4502 0005 1332" />,
+      <GiftsSection
+        style={{}}
+        className="test"
+        giftsInfo="Tu presencia es el mejor regalo"
+        bankInfo="ES91 2100 0418 4502 0005 1332"
+      />,
     );
     const results = await runAxe(container);
     const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
@@ -372,7 +411,10 @@ describe("a11y-page-audit", () => {
       <InfoSection
         style={{}}
         className="test"
-        weddingScheduleEvents={JSON.stringify([{ time: "18:00", text: "Ceremonia", emoji: "💍" }, { time: "20:00", text: "Banquete" }])}
+        weddingScheduleEvents={JSON.stringify([
+          { time: "18:00", text: "Ceremonia", emoji: "💍" },
+          { time: "20:00", text: "Banquete" },
+        ])}
         weddingDressCode="Vestimenta formal"
         kidsPolicy="adultOnly"
       />,
@@ -385,7 +427,12 @@ describe("a11y-page-audit", () => {
   it("TriviaSection (real) has no serious violations", async () => {
     const TriviaSection = (await import("../../pages/sections/TriviaSection")).default;
     const { container } = render(
-      <TriviaSection trivia={JSON.stringify([{ q: "¿Dónde nos conocimos?", a: "París" }, { q: "¿Primera cita?", a: "Madrid" }])} />,
+      <TriviaSection
+        trivia={JSON.stringify([
+          { q: "¿Dónde nos conocimos?", a: "París" },
+          { q: "¿Primera cita?", a: "Madrid" },
+        ])}
+      />,
     );
     const results = await runAxe(container);
     const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
