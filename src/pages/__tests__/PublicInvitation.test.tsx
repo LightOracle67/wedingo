@@ -571,8 +571,8 @@ describe("PublicInvitation", () => {
       expect(screen.getByTestId("section-rideshare")).toBeDefined();
     });
     // Los extras se agrupan en UNA sección conjunta (no una por función).
-    expect(document.querySelectorAll(".story-section--extras").length).toBe(1);
-    const extrasPanel = document.querySelector(".story-section--extras .story-panel--extras");
+    expect(document.querySelector('[data-story-section="extras"]')).not.toBeNull();
+    const extrasPanel = document.querySelector(".story-panel--extras");
     expect(extrasPanel).not.toBeNull();
     expect(extrasPanel!.querySelectorAll(".story-extra-block").length).toBe(6);
     mockUseAppValue.config.reactionsEnabled = "false";

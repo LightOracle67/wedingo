@@ -159,6 +159,15 @@ export default function PublicInvitation() {
     return () => { cancelled = true; };
   }, [inviteToken]);
 
+  /** ¿Hay alguna función social activa? Se agrupan en la sección conjunta
+   *  "extras" (reordenable en el editor, siempre antes del RSVP). */
+  const hasExtras = config.giftsListEnabled === "true"
+    || config.rideShareEnabled === "true"
+    || config.reactionsEnabled === "true"
+    || config.notesEnabled === "true"
+    || config.musicPollEnabled === "true"
+    || config.triviaEnabled === "true";
+
   // ─── Orden de secciones visible ────────────────────────
   /**
    * Calcula el orden de secciones a mostrar.
@@ -187,11 +196,13 @@ export default function PublicInvitation() {
       }
       // Oculta las secciones sin contenido configurado (aunque estén en el
       // orden) para no mostrar secciones vacías al invitado. Se aplica a
-      // TODAS: la galería se desactiva si no tiene imágenes.
+      // TODAS: la galería se desactiva si no tiene imágenes y los extras si
+      // no hay ninguna función social activa.
       filtered = filtered.filter((s: string) => sectionHasContent(s, config, galleryHasImages));
+      filtered = filtered.filter((s: string) => s !== "extras" || hasExtras);
       return filtered;
     },
-    [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages],
+    [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages, hasExtras],
   );
 
   // ─── Estados de UI condicionales ───────────────────────
@@ -579,15 +590,6 @@ export default function PublicInvitation() {
     }, 300);
   };
 
-  /** ¿Hay alguna función social activa? Se agrupan todas en UNA sección
-   *  conjunta scrollable al final de la invitación. */
-  const hasExtras = config.giftsListEnabled === "true"
-    || config.rideShareEnabled === "true"
-    || config.reactionsEnabled === "true"
-    || config.notesEnabled === "true"
-    || config.musicPollEnabled === "true"
-    || config.triviaEnabled === "true";
-
   return (
     <div className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
       style={{ "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined } as React.CSSProperties}>
@@ -670,8 +672,74 @@ export default function PublicInvitation() {
         <>
         {/* ── Invitación completa: renderiza cada sección en orden ── */}
         <Suspense fallback={null}>
-          
           {visibleOrder.map((sectionKey: string) => {
+            // La sección "extras" (funciones sociales) se renderiza en el
+            // orden configurado, agrupada en una única sección scrollable.
+            if (sectionKey === "extras") {
+              return (
+                <section
+                  key="extras"
+                  data-story-section="extras"
+                  className={getStorySectionClassName("extras")}
+                  style={getStorySectionStyle("extras")}
+                  aria-label={t("extras.ariaLabel")}
+                >
+                  <div className="story-panel story-panel--extras w-full">
+                    {config.giftsListEnabled === "true" ? (
+                      <div className="story-extra-block">
+                        <h2 className="story-title">{t("giftList.title")}</h2>
+                        <Suspense fallback={null}><GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} /></Suspense>
+                      </div>
+                    ) : null}
+                    {config.rideShareEnabled === "true" ? (
+                      <>
+                        <div className="story-divider" />
+                        <div className="story-extra-block">
+                          <h2 className="story-title">{t("rideShare.title")}</h2>
+                          <Suspense fallback={null}><RideShareSection inviteToken={inviteToken ?? ""} /></Suspense>
+                        </div>
+                      </>
+                    ) : null}
+                    {config.reactionsEnabled === "true" ? (
+                      <>
+                        <div className="story-divider" />
+                        <div className="story-extra-block">
+                          <h2 className="story-title">{t("reactions.title")}</h2>
+                          <Suspense fallback={null}><ReactionsSection inviteToken={inviteToken ?? ""} /></Suspense>
+                        </div>
+                      </>
+                    ) : null}
+                    {config.notesEnabled === "true" ? (
+                      <>
+                        <div className="story-divider" />
+                        <div className="story-extra-block">
+                          <h2 className="story-title">{t("notes.title")}</h2>
+                          <Suspense fallback={null}><NotesSection inviteToken={inviteToken ?? ""} /></Suspense>
+                        </div>
+                      </>
+                    ) : null}
+                    {config.musicPollEnabled === "true" ? (
+                      <>
+                        <div className="story-divider" />
+                        <div className="story-extra-block">
+                          <h2 className="story-title">{t("musicPoll.title")}</h2>
+                          <Suspense fallback={null}><MusicPollSection inviteToken={inviteToken ?? ""} /></Suspense>
+                        </div>
+                      </>
+                    ) : null}
+                    {config.triviaEnabled === "true" ? (
+                      <>
+                        <div className="story-divider" />
+                        <div className="story-extra-block">
+                          <h2 className="story-title">{t("trivia.title")}</h2>
+                          <Suspense fallback={null}><TriviaSection trivia={config.trivia ?? "[]"} /></Suspense>
+                        </div>
+                      </>
+                    ) : null}
+                  </div>
+                </section>
+              );
+            }
             const Component = (SECTION_COMPONENTS as unknown as Record<string, React.ComponentType<Record<string, unknown>>>)[sectionKey];
             if (!Component) { ; return null; }
             const baseProps = (configSectionProps as Record<string, Record<string, unknown>>)[sectionKey] || {};
@@ -688,65 +756,6 @@ export default function PublicInvitation() {
             );
           })}
         </Suspense>
-
-        {/* ── Funciones sociales: UNA sección conjunta scrollable ── */}
-        {hasExtras ? (
-          <section className="story-section story-section--extras" aria-label={t("extras.ariaLabel")}>
-            <div className="story-panel story-panel--extras w-full">
-              {config.giftsListEnabled === "true" ? (
-                <div className="story-extra-block">
-                  <h2 className="story-title">{t("giftList.title")}</h2>
-                  <Suspense fallback={null}><GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} /></Suspense>
-                </div>
-              ) : null}
-              {config.rideShareEnabled === "true" ? (
-                <>
-                  <div className="story-divider" />
-                  <div className="story-extra-block">
-                    <h2 className="story-title">{t("rideShare.title")}</h2>
-                    <Suspense fallback={null}><RideShareSection inviteToken={inviteToken ?? ""} /></Suspense>
-                  </div>
-                </>
-              ) : null}
-              {config.reactionsEnabled === "true" ? (
-                <>
-                  <div className="story-divider" />
-                  <div className="story-extra-block">
-                    <h2 className="story-title">{t("reactions.title")}</h2>
-                    <Suspense fallback={null}><ReactionsSection inviteToken={inviteToken ?? ""} /></Suspense>
-                  </div>
-                </>
-              ) : null}
-              {config.notesEnabled === "true" ? (
-                <>
-                  <div className="story-divider" />
-                  <div className="story-extra-block">
-                    <h2 className="story-title">{t("notes.title")}</h2>
-                    <Suspense fallback={null}><NotesSection inviteToken={inviteToken ?? ""} /></Suspense>
-                  </div>
-                </>
-              ) : null}
-              {config.musicPollEnabled === "true" ? (
-                <>
-                  <div className="story-divider" />
-                  <div className="story-extra-block">
-                    <h2 className="story-title">{t("musicPoll.title")}</h2>
-                    <Suspense fallback={null}><MusicPollSection inviteToken={inviteToken ?? ""} /></Suspense>
-                  </div>
-                </>
-              ) : null}
-              {config.triviaEnabled === "true" ? (
-                <>
-                  <div className="story-divider" />
-                  <div className="story-extra-block">
-                    <h2 className="story-title">{t("trivia.title")}</h2>
-                    <Suspense fallback={null}><TriviaSection trivia={config.trivia ?? "[]"} /></Suspense>
-                  </div>
-                </>
-              ) : null}
-            </div>
-          </section>
-        ) : null}
         </>
       )}
       {/* Botón de compartir de la invitación pública (aparece tras el sobre). */}

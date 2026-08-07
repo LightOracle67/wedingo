@@ -35,8 +35,8 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
   }, [hidden, syncHidden]);
 
   const handleDragStart = useCallback((e: React.DragEvent, index: number) => {
-    const isHero = items[index] === "hero";
-    if (isHero) return;
+    const key = items[index];
+    if (key === "hero" || key === "rsvp") return;
     setDragIndex(index);
     setOverIndex(null);
     e.dataTransfer.effectAllowed = "move";
@@ -60,7 +60,9 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
     setDragIndex(null);
     setOverIndex(null);
     if (from === null || to === null || from === to) return;
-    if (to === 0) return;
+    // No se puede soltar sobre la portada (primera) ni sobre o más allá del
+    // RSVP (último, siempre bloqueado al final).
+    if (to === 0 || to >= items.length - 1) return;
     const next = [...items];
     const moved = next.splice(from, 1)[0]!;
     next.splice(to, 0, moved);
@@ -80,14 +82,15 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
   }, [items, sync]);
 
   const moveDown = useCallback((index: number) => {
-    if (index >= items.length - 1) return;
+    // No se puede mover por debajo del penúltimo: el RSVP (último) está fijo.
+    if (index >= items.length - 2) return;
     const next = [...items];
     [next[index], next[index + 1]] = [next[index + 1]!, next[index]!];
     sync(next);
   }, [items, sync]);
 
   const getDropIndicator = (index: number) => {
-    if (index === 0) return null;
+    if (index === 0 || index >= items.length - 1) return null;
     if (dragIndex === null || overIndex === null) return null;
     if (dragIndex === overIndex) return null;
     return overIndex === index ? "section-order-item--drop-target" : "";
@@ -99,14 +102,16 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
       <p className="setup-help setup-help--tight">{t("sectionOrder.help")}</p>
       <div className="section-order-list">
         {items.filter((s: string) => s !== "godparents").map((sectionKey: string, index: number) => {
-          const isHero = sectionKey === "hero";
+          // La portada (primera) y el RSVP (último) están fijos: no se
+          // reordenan y se muestran bloqueados con su mismo estilo.
+          const isFixed = sectionKey === "hero" || sectionKey === "rsvp";
           const isDragging = dragIndex === index;
           const isHidden = hidden.has(sectionKey);
           return (
             <div
               key={sectionKey}
-              className={`section-order-item ${isDragging ? "section-order-item--dragging" : ""} ${isHero ? "section-order-item--fixed" : ""} ${getDropIndicator(index)} ${isHidden ? "section-order-item--hidden" : ""}`}
-              draggable={!isHero}
+              className={`section-order-item ${isDragging ? "section-order-item--dragging" : ""} ${isFixed ? "section-order-item--fixed" : ""} ${getDropIndicator(index)} ${isHidden ? "section-order-item--hidden" : ""}`}
+              draggable={!isFixed}
               onDragStart={(e) => handleDragStart(e, index)}
               onDragEnter={(e) => handleDragEnter(e, index)}
               onDragOver={handleDragOver}
@@ -114,13 +119,13 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
               onDragEnd={handleDragEnd}
             >
               <span className="section-order-item__grip" aria-hidden="true">
-                {isHero ? "🔒" : "⠿"}
+                {isFixed ? "🔒" : "⠿"}
               </span>
               <span className={`section-order-item__label ${isHidden ? "section-order-item__label--hidden" : ""}`}>
                 {t(sectionKey + ".sectionLabel")}
                 {isHidden && <span className="section-order-item__badge">{t("setup.hiddenSectionBadge")}</span>}
               </span>
-              {!isHero && (
+              {!isFixed && (
                 <span className="section-order-item__actions">
                   <button
                     type="button"
@@ -143,7 +148,7 @@ export default function SectionOrderEditor({ value, onChange, hiddenValue, onHid
                     type="button"
                     className="section-order-item__btn"
                     onClick={() => moveDown(index)}
-                    disabled={index === items.length - 1}
+                    disabled={index >= items.length - 2}
                     aria-label={`${t("sectionOrder.moveDown")} ${t(sectionKey + ".sectionLabel")}`}
                   >
                     ↓

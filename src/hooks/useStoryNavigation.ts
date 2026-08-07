@@ -138,7 +138,15 @@ export function useStoryNavigation(
         const isFirstContact = isGlobalFirst || !firstContacted.has(key);
         if (isFirstContact) firstContacted.add(key);
 
-        if (entry.isIntersecting) {
+        // Umbral adaptativo: una sección a pantalla completa "entra" al estar
+        // ~70% visible (justo al terminar el scroll); una sección más baja que
+        // el viewport (p. ej. la sección de extras) entra con solo asomarse,
+        // porque nunca alcanzaría el 70%.
+        const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
+        const isTall = (entry.target as HTMLElement).clientHeight >= window.innerHeight * 0.8;
+        const isEntered = isTall ? ratio >= VISIBILITY_THRESHOLD : ratio > 0.1;
+
+        if (isEntered) {
           setActiveSection(key);
           if (isFirstContact) {
             if (isGlobalFirst && !reducedMotion && (bootMode === "reveal" || key === primarySection)) {
@@ -172,7 +180,7 @@ export function useStoryNavigation(
           schedule(key, "leaving", "hidden", LEAVE_MS);
         }
       }
-    }, { threshold: VISIBILITY_THRESHOLD });
+    }, { threshold: [0.1, VISIBILITY_THRESHOLD] });
 
     // ── Control de scroll: una sección por gesto ─────────────────────
     let moving = false;

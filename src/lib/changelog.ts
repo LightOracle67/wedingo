@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.15",
+    date: "2026-08-07",
+    changes: [
+      "Editor de orden y visibilidad: se añade la sección de Extras (funciones sociales) al array reordenable. El RSVP SIEMPRE es la última sección y queda bloqueado como la Portada (con su mismo estilo, candado, no arrastrable y sin acciones).",
+    ],
+  },
+  {
     version: "2.95.14",
     date: "2026-08-07",
     changes: [

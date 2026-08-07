@@ -1149,7 +1149,8 @@
     "guessPlaceholder": "Escribe tu respuesta…"
   },
   "extras": {
-    "ariaLabel": "Más secciones"
+    "ariaLabel": "Más secciones",
+    "sectionLabel": "Extras"
   },
   "giftList": {
     "title": "Lista de regalos",

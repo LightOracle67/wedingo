@@ -58,7 +58,7 @@ describe("SectionOrderEditor", () => {
 
     const infoUp = screen.getByRole("button", { name: "sectionOrder.moveUp info.sectionLabel" });
     fireEvent.click(infoUp);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,info,transport,story,gifts,gallery,rsvp,accommodation");
+    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,info,transport,story,gifts,gallery,accommodation,extras,rsvp");
   });
 
   it("moves an item down with the down button", () => {
@@ -67,7 +67,7 @@ describe("SectionOrderEditor", () => {
 
     const infoDown = screen.getByRole("button", { name: "sectionOrder.moveDown info.sectionLabel" });
     fireEvent.click(infoDown);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,story,info,gifts,gallery,rsvp,accommodation");
+    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,story,info,gifts,gallery,accommodation,extras,rsvp");
   });
 
   it("disables up button for hero section", () => {
@@ -179,7 +179,7 @@ describe("SectionOrderEditor", () => {
     const onChange = vi.fn();
     render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
 
-    const lastDownBtn = screen.getByRole("button", { name: `sectionOrder.moveDown accommodation.sectionLabel` });
+    const lastDownBtn = screen.getByRole("button", { name: `sectionOrder.moveDown extras.sectionLabel` });
     expect(lastDownBtn).toBeDisabled();
     fireEvent.click(lastDownBtn);
     expect(onChange).not.toHaveBeenCalled();
@@ -191,7 +191,7 @@ describe("SectionOrderEditor", () => {
 
     const storyUp = screen.getByRole("button", { name: "sectionOrder.moveUp story.sectionLabel" });
     fireEvent.click(storyUp);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,story,info,gifts,gallery,rsvp,accommodation");
+    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,story,info,gifts,gallery,accommodation,extras,rsvp");
   });
 
   it("moves item down from non-last index", () => {
@@ -200,7 +200,7 @@ describe("SectionOrderEditor", () => {
 
     const storyDown = screen.getByRole("button", { name: "sectionOrder.moveDown story.sectionLabel" });
     fireEvent.click(storyDown);
-    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,info,gifts,story,gallery,rsvp,accommodation");
+    expect(onChange).toHaveBeenCalledWith("sectionOrder", "hero,details,transport,info,gifts,story,gallery,accommodation,extras,rsvp");
   });
 
   it("triggers moveUp early return when index <= 1 via dispatchEvent", () => {
@@ -216,8 +216,28 @@ describe("SectionOrderEditor", () => {
     const onChange = vi.fn();
     render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
 
-    const lastDownBtn = screen.getByRole("button", { name: "sectionOrder.moveDown accommodation.sectionLabel" });
+    const lastDownBtn = screen.getByRole("button", { name: "sectionOrder.moveDown extras.sectionLabel" });
     lastDownBtn.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it("locks the RSVP section at the end like the hero", () => {
+    render(<SectionOrderEditor {...defaultProps} />);
+    const items = document.querySelectorAll(".section-order-item");
+    const last = items[items.length - 1]!;
+    // El RSVP es SIEMPRE la última sección y queda bloqueada.
+    expect(last.textContent).toContain("rsvp.sectionLabel");
+    expect(last.getAttribute("draggable")).toBe("false");
+    expect(last.textContent).toContain("🔒");
+    expect(last.querySelectorAll("button").length).toBe(0);
+  });
+
+  it("shows the extras section as reorderable", () => {
+    render(<SectionOrderEditor {...defaultProps} />);
+    const items = Array.from(document.querySelectorAll(".section-order-item"));
+    const extrasEl = items.find((el) => el.textContent?.includes("extras.sectionLabel"));
+    expect(extrasEl).toBeDefined();
+    expect(extrasEl!.getAttribute("draggable")).toBe("true");
+    expect(extrasEl!.textContent).toContain("⠿");
   });
 });

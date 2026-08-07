@@ -9,7 +9,12 @@ export function parseSectionOrder(raw: string | undefined) {
   for (const s of STORY_SECTION_ORDER) {
     if (!existing.has(s)) parsed.push(s);
   }
-  return parsed;
+  // El RSVP SIEMPRE es la última sección: se saca de su posición y se
+  // reinserta al final (en el editor queda bloqueado como la portada).
+  const hasRsvp = parsed.includes("rsvp");
+  const withoutRsvp = parsed.filter((s) => s !== "rsvp");
+  if (hasRsvp) withoutRsvp.push("rsvp");
+  return withoutRsvp;
 }
 
 export function parseHidden(raw: string | null | undefined) {

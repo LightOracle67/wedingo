@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.95.14";
+export const APP_VERSION = "2.95.15";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -97,7 +97,10 @@ export const THEME_GROUPS = [
   { value: "lgtbiq+", label: "LGTBIQ+" },
 ];
 
-export const STORY_SECTION_ORDER = ["hero", "details", "transport", "info", "story", "gallery", "gifts", "accommodation", "rsvp"];
+export const STORY_SECTION_ORDER = ["hero", "details", "transport", "info", "story", "gallery", "gifts", "accommodation", "extras", "rsvp"];
+/** Secciones que SIEMPRE quedan fijas en el editor de orden: la portada
+ *  (primera) y la confirmación de asistencia RSVP (última). */
+export const FIXED_SECTION_POSITIONS = ["hero", "rsvp"];
 
 export const PRIVACY_POLICY_VERSION = "2026-07-08";
 
