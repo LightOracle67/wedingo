@@ -179,6 +179,8 @@ export function useStoryNavigation(
     let gestureAccum = 0;
     let gestureDir: 1 | -1 | null = null;
 
+    const appScene = document.querySelector<HTMLElement>(".app-scene");
+
     /** Avanza (1) o retrocede (-1) exactamente una sección. */
     const advance = (dir: 1 | -1) => {
       if (moving) return;
@@ -188,9 +190,15 @@ export function useStoryNavigation(
       const nextKey = visibleOrder[nextIndex];
       if (!nextKey) return;
       const target = sectionEls.get(nextKey);
-      if (!target) return;
       moving = true;
-      target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+      if (target) {
+        target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+      } else if (appScene) {
+        // La sección destino aún no está montada (lazy en proceso de carga):
+        // se avanza el scroll general una pantalla para que se monte al
+        // acercarse; en el siguiente gesto ya existirá el elemento.
+        appScene.scrollBy({ top: dir * window.innerHeight, behavior: reducedMotion ? "auto" : "smooth" });
+      }
       setTimeout(() => { moving = false; }, SCROLL_LOCK_MS);
     };
 
@@ -199,7 +207,6 @@ export function useStoryNavigation(
      *  (.app-scene): el primer contenedor scrolleable que no está en su
      *  borde se queda con el gesto (el scroll general no debe avanzar de
      *  sección mientras haya contenido interior desplazable). */
-    const appScene = document.querySelector<HTMLElement>(".app-scene");
     const hasInnerScroll = (target: EventTarget | null, dir: 1 | -1): boolean => {
       let node = target instanceof HTMLElement ? target : null;
       while (node && node !== document.body && node !== appScene) {
@@ -257,7 +264,12 @@ export function useStoryNavigation(
         const lastKey = visibleOrder[visibleOrder.length - 1];
         if (!lastKey) return;
         const last = sectionEls.get(lastKey);
-        if (last && !moving) { last.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" }); }
+        if (moving) return;
+        if (last) {
+          last.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+        } else if (appScene) {
+          appScene.scrollTo({ top: appScene.scrollHeight, behavior: reducedMotion ? "auto" : "smooth" });
+        }
         return;
       }
       const dir = dirMap[e.key];

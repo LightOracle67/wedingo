@@ -406,4 +406,31 @@ describe("useStoryNavigation", () => {
       document.body.querySelector(`[data-story-section='${key}']`)?.remove();
     });
   });
+
+  it("falls back to the general scroll when the target section is not mounted (lazy)", async () => {
+    class FakeIO {
+      constructor() {}
+      observe() {}
+      disconnect() {}
+    }
+    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
+    // Solo el hero está montado; "details" (lazy) aún no existe.
+    const hero = document.createElement("section");
+    hero.setAttribute("data-story-section", "hero");
+    document.body.appendChild(hero);
+    const scene = document.createElement("div");
+    scene.className = "app-scene";
+    document.body.appendChild(scene);
+    const scrollBy = vi.fn();
+    scene.scrollBy = scrollBy;
+
+    renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    act(() => {
+      window.dispatchEvent(new WheelEvent("wheel", { deltaY: 120, cancelable: true }));
+    });
+    // En lugar de quedarse atascado, el scroll general avanza una pantalla.
+    expect(scrollBy).toHaveBeenCalled();
+    hero.remove();
+    scene.remove();
+  });
 });

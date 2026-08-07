@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.13",
+    date: "2026-08-07",
+    changes: [
+      "Fix scroll: se llega a la sección RSVP aunque sea lazy. Si la sección destino aún no está montada (chunk en carga), el scroll general avanza una pantalla en vez de quedarse bloqueado (antes el gesto se interceptaba y no se podía avanzar). La tecla End también cae al final si el destino no existe.",
+    ],
+  },
+  {
     version: "2.95.12",
     date: "2026-08-07",
     changes: [
