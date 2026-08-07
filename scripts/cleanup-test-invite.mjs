@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, updateDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, updateDoc } from "firebase/firestore";
 import { readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 const env = Object.fromEntries(readFileSync(".env", "utf8").split("\n").map((l) => l.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.*)\s*$/)).filter(Boolean).map((m) => [m[1], m[2]]));
@@ -8,20 +8,15 @@ const db = getFirestore(app);
 const inviteToken = "jg3n96A6Re";
 const hash = createHash("sha256").update("HYQL4HD83BGZ52QA6F45QERVLWCYKRD9").digest("hex");
 try {
+  const snap = await getDoc(doc(db, "invitations", inviteToken));
+  console.log("Antes → inviteMessage:", JSON.stringify(snap.data()?.inviteMessage));
   await updateDoc(doc(db, "invitations", inviteToken), { activeSession: new Date(), sessionExpiresAt: new Date(Date.now() + 3600000), setupTokenHash: hash });
-  // Verifica los toggles *Enabled con valores NO visibles (sin tocar
-  // inviteMessage/storyText/welcomeVideo para no dejar texto en la portada).
   await updateDoc(doc(db, "invitations", inviteToken), {
-    inviteMessageEnabled: "false",
-    storyTextEnabled: "false",
-    giftsInfoEnabled: "false", bankInfoEnabled: "false",
-    accommodationURLEnabled: "false", weddingDressCodeEnabled: "false",
-    kidsPolicyEnabled: "false", instagramEnabled: "false", facebookEnabled: "false",
-    couplePhotoEnabled: "false", customSealEnabled: "false",
-    backgroundImageEnabled: "false", cornerDecorationEnabled: "false",
-    godparentsEnabled: "false", musicFileEnabled: "false",
-    weddingSiteURLEnabled: "false",
-    welcomeVideoEnabled: "false",
+    inviteMessage: "", inviteMessageEnabled: "false",
+    storyText: "", storyTextEnabled: "false",
+    welcomeVideo: "", welcomeVideoEnabled: "false",
   });
-  console.log("✅ PRODUCCIÓN: guardado con toggles *Enabled OK (sin datos visibles)");
+  const after = await getDoc(doc(db, "invitations", inviteToken));
+  console.log("Después → inviteMessage:", JSON.stringify(after.data()?.inviteMessage), "| storyText:", JSON.stringify(after.data()?.storyText));
+  console.log("✅ Limpieza completada");
 } catch (e) { console.error("❌ ERROR:", e?.code, e?.message); }
