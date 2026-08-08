@@ -100,24 +100,61 @@
      consentimiento debe ser visible e interactivo antes de abrir la boda. */
   z-index: 10100;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
-  padding: var(--spacing-md);
+  background: rgba(0, 0, 0, 0.55);
+  padding: var(--spacing-sm);
 }
 .cookie-consent-card {
   background: var(--setup-grad-start);
   border: 1px solid var(--setup-border);
   border-radius: var(--radius-xl);
-  padding: 1.2rem;
-  max-width: 420px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
   width: 100%;
-  /* Limitado a la altura de pantalla con scroll interno: con las secciones
-     del accordion desplegadas el contenido no debe salirse de la vista. */
-  max-height: min(90dvh, 560px);
+  max-width: 480px;
+  /* Altura del 95% de la pantalla: el scroll es SOLO interior (el cuerpo se
+     desplaza; cabecera y acciones quedan fijas). */
+  height: 95dvh;
+  height: 95vh;
+  max-height: 95dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.cookie-consent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 1.2rem 0.6rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
+  flex-shrink: 0;
+}
+.cookie-consent-title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--setup-title);
+  font-family: var(--font-body);
+}
+.cookie-consent-body {
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   overscroll-behavior-y: contain;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  padding: 1rem 1.2rem;
+}
+.cookie-consent-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0.8rem 1.2rem 1.2rem;
+  border-top: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
+  flex-shrink: 0;
+}
+.cookie-consent-footer .setup-button {
+  flex: 1;
+  min-width: 6.5rem;
 }
 .cookie-consent-text {
   margin: 0 0 1rem;
@@ -125,12 +162,36 @@
   line-height: 1.6;
   color: var(--setup-subtitle);
 }
-.cookie-consent-actions {
-  display: flex;
-  gap: 0.6rem;
+.cookie-consent-policy {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  color: var(--setup-accent, #c8a84e);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  display: inline-block;
 }
-.cookie-consent-actions .setup-button {
-  flex: 1;
+.cookie-settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.cookie-settings-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--setup-title);
+  cursor: pointer;
+}
+.cookie-settings-item input[type="checkbox"] {
+  accent-color: var(--setup-accent);
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
 }
 .invitation-legal-links {
   position: fixed;

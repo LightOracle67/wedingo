@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.33",
+    date: "2026-08-08",
+    changes: [
+      "Rediseño del modal de consentimiento de cookies: ocupa el 95% de la altura de pantalla con scroll SOLO interior (cabecera con título y cerrar, cuerpo desplazable y acciones fijas abajo), centrado en pantalla y con estética coherente con los modales de la app.",
+    ],
+  },
+  {
     version: "2.95.32",
     date: "2026-08-08",
     changes: [
