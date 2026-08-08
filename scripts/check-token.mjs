@@ -1,0 +1,14 @@
+import { initializeApp } from "firebase/app";
+import { getFirestore, doc, getDoc, collection, getDocs } from "firebase/firestore";
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+const env = Object.fromEntries(readFileSync(".env", "utf8").split("\n").map((l) => l.match(/^\s*([A-Z_][A-Z0-9_]*)\s*=\s*(.*)\s*$/)).filter(Boolean).map((m) => [m[1], m[2]]));
+const app = initializeApp({ apiKey: env.VITE_FIREBASE_API_KEY, authDomain: env.VITE_FIREBASE_AUTH_DOMAIN, projectId: env.VITE_FIREBASE_PROJECT_ID, storageBucket: env.VITE_FIREBASE_STORAGE_BUCKET, messagingSenderId: env.VITE_FIREBASE_MESSAGING_SENDER_ID, appId: env.VITE_FIREBASE_APP_ID });
+const db = getFirestore(app);
+const inviteToken = "jg3n96A6Re";
+const hash = createHash("sha256").update("HYQL4HD83BGZ52QA6F45QERVLWCYKRD9").digest("hex");
+const snap = await getDoc(doc(db, "setupTokens", hash));
+console.log("setupTokens/{hash} existe:", snap.exists());
+console.log("data:", JSON.stringify(snap.data() ?? null));
+const inv = await getDoc(doc(db, "invitations", inviteToken));
+console.log("invitación existe:", inv.exists());

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { render, cleanup } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
@@ -26,11 +26,14 @@ describe("MapEmbed", () => {
 
   it("renders iframe when valid url is provided", () => {
     const { container } = render(<MapEmbed mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" />);
+    // El mapa requiere consentimiento explícito: se carga tras el clic.
+    fireEvent.click(screen.getByText("map.loadButton"));
     expect(container.querySelector("iframe")).toBeDefined();
   });
 
   it("passes an already-embed URL through", () => {
     const { container } = render(<MapEmbed mapUrl="https://maps.google.com/maps?q=41.3874&output=embed" />);
+    fireEvent.click(screen.getByText("map.loadButton"));
     expect(container.querySelector("iframe")).toBeDefined();
   });
 
@@ -38,6 +41,7 @@ describe("MapEmbed", () => {
     const { container } = render(
       <MapEmbed mapUrl="https://maps.google.com/maps?q=41.3874,2.1686" mapView="satellite" />,
     );
+    fireEvent.click(screen.getByText("map.loadButton"));
     expect(container.querySelector("iframe")?.getAttribute("src")).toContain("t=k");
   });
 

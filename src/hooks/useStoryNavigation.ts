@@ -305,6 +305,10 @@ export function useStoryNavigation(
       // conserva el comportamiento original por compatibilidad.
       if (appScene && e.target instanceof Node && !appScene.contains(e.target)) return;
       if (isTyping(e.target)) return;
+      // Con un diálogo o lightbox abierto no se navega por secciones: sus
+      // controles (flechas, Escape, espacio) son del modal, no de la
+      // invitación (p. ej. el lightbox de la galería usa ArrowLeft/Right).
+      if (document.querySelector('[aria-modal="true"]') || document.querySelector(".gallery-lightbox")) return;
       const dirMap: Record<string, 1 | -1> = {
         PageDown: 1,
         ArrowDown: 1,

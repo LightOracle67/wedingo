@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useInviteSubcollection } from "../../hooks/useInviteSubcollection";
 
@@ -12,7 +12,7 @@ interface Note {
  * NotesSection — Muro de dedicatorias: los invitados dejan un mensaje que
  * se muestra en la invitación (las reglas sanea el texto con isSafeText).
  */
-export default function NotesSection({ inviteToken }: { inviteToken?: string }) {
+const NotesSection = memo(function NotesSection({ inviteToken }: { inviteToken?: string }) {
   const { t } = useTranslation();
   const { items: notes, add: addNote } = useInviteSubcollection<Note>(inviteToken, "notes", {
     map: ({ id, data }) => ({ id, guestName: data.guestName || "", message: data.message || "" }),
@@ -84,5 +84,6 @@ export default function NotesSection({ inviteToken }: { inviteToken?: string }) 
         </button>
       </form>
     </div>
-  );
-}
+  );});
+
+export default NotesSection;

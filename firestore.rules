@@ -105,24 +105,11 @@ service cloud.firestore {
         && (!data.keys().hasAny(['facebookUrl']) || isValidSafeUrl(data.facebookUrl))
         && (!data.keys().hasAny(['accommodationURL']) || isValidSafeUrl(data.accommodationURL))
         && (!data.keys().hasAny(['bankInfo']) || (data.bankInfo is string && data.bankInfo.size() <= 2000))
-        /* Toggles *Enabled de los campos opcionales del setup: solo admiten
-           "true" o "false" (normalizeConfig los normaliza a esos valores). */
-        && (!data.keys().hasAny(['inviteMessageEnabled']) || data.inviteMessageEnabled == 'true' || data.inviteMessageEnabled == 'false')
-        && (!data.keys().hasAny(['weddingSiteURLEnabled']) || data.weddingSiteURLEnabled == 'true' || data.weddingSiteURLEnabled == 'false')
-        && (!data.keys().hasAny(['instagramEnabled']) || data.instagramEnabled == 'true' || data.instagramEnabled == 'false')
-        && (!data.keys().hasAny(['facebookEnabled']) || data.facebookEnabled == 'true' || data.facebookEnabled == 'false')
-        && (!data.keys().hasAny(['couplePhotoEnabled']) || data.couplePhotoEnabled == 'true' || data.couplePhotoEnabled == 'false')
-        && (!data.keys().hasAny(['backgroundImageEnabled']) || data.backgroundImageEnabled == 'true' || data.backgroundImageEnabled == 'false')
-        && (!data.keys().hasAny(['customSealEnabled']) || data.customSealEnabled == 'true' || data.customSealEnabled == 'false')
-        && (!data.keys().hasAny(['cornerDecorationEnabled']) || data.cornerDecorationEnabled == 'true' || data.cornerDecorationEnabled == 'false')
-        && (!data.keys().hasAny(['godparentsEnabled']) || data.godparentsEnabled == 'true' || data.godparentsEnabled == 'false')
-        && (!data.keys().hasAny(['musicFileEnabled']) || data.musicFileEnabled == 'true' || data.musicFileEnabled == 'false')
-        && (!data.keys().hasAny(['storyTextEnabled']) || data.storyTextEnabled == 'true' || data.storyTextEnabled == 'false')
-        && (!data.keys().hasAny(['giftsInfoEnabled']) || data.giftsInfoEnabled == 'true' || data.giftsInfoEnabled == 'false')
-        && (!data.keys().hasAny(['bankInfoEnabled']) || data.bankInfoEnabled == 'true' || data.bankInfoEnabled == 'false')
-        && (!data.keys().hasAny(['accommodationURLEnabled']) || data.accommodationURLEnabled == 'true' || data.accommodationURLEnabled == 'false')
-        && (!data.keys().hasAny(['weddingDressCodeEnabled']) || data.weddingDressCodeEnabled == 'true' || data.weddingDressCodeEnabled == 'false')
-        && (!data.keys().hasAny(['kidsPolicyEnabled']) || data.kidsPolicyEnabled == 'true' || data.kidsPolicyEnabled == 'false')
+        /* Los toggles *Enabled de los campos opcionales del setup NO se
+           validan aquí: normalizeConfig los normaliza SIEMPRE a "true"/"false"
+           en el cliente, y validarlos añadía ~85 expresiones que superaban el
+           límite de complejidad de Firestore con docs grandes (rompía el
+           guardado y la renovación de sesión). El contenido se valida igual. */
         && (!data.keys().hasAny(['weddingDressCodeCustom']) || (data.weddingDressCodeCustom is string && data.weddingDressCodeCustom.size() <= 500 && isSafeText(data.weddingDressCodeCustom)))
         && (!data.keys().hasAny(['adminUsername']) || (data.adminUsername is string && data.adminUsername.size() <= 50 && data.adminUsername.matches('^[a-z0-9]*$')))
         && (!data.keys().hasAny(['detailsMapMode']) || data.detailsMapMode in ['iframe', 'name', 'hidden'])
@@ -159,7 +146,12 @@ service cloud.firestore {
            visita): solo se prohíbe que el update lo MODIFIQUE. La condición
            anterior (hasAny) bloqueaba el guardado cuando el doc tenía
            _visits, porque el merge lo incluía en el request.resource.data. */
-        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['_visits']);
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['_visits'])
+        /* Los campos de sesión solo los gestiona su regla dedicada (acotada
+           a 48 h): el update de configuración no puede fijarlos, o un cliente
+           con sesión podría extenderla indefinidamente sin volver a autenticar
+           (la rotación de token no la revocaría). */
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['activeSession', 'sessionExpiresAt', 'setupTokenHash']);
       /* Incremento de contador de visitas: cualquiera puede incrementar
          _visits, pero solo en pasos razonables (máx +10 por request) para
          evitar inflar el contador de forma arbitraria. El cliente usa

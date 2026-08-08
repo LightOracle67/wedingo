@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useInviteSubcollection } from "../../hooks/useInviteSubcollection";
 
@@ -19,7 +19,7 @@ interface GiftItem {
  * gestiona el admin (reglas: delete solo admin/superadmin); si un invitado
  * necesita cambiar su aportación, contacta con los novios.
  */
-export default function GiftListSection({ inviteToken, gifts }: { inviteToken?: string; gifts?: string }) {
+const GiftListSection = memo(function GiftListSection({ inviteToken, gifts }: { inviteToken?: string; gifts?: string }) {
   const { t } = useTranslation();
   const [items, setItems] = useState<GiftItem[]>([]);
   const [name, setName] = useState("");
@@ -103,5 +103,6 @@ export default function GiftListSection({ inviteToken, gifts }: { inviteToken?: 
         })}
       </div>
     </div>
-  );
-}
+  );});
+
+export default GiftListSection;

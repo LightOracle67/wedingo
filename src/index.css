@@ -1335,7 +1335,15 @@ a,
   }
 }
 
-/* Eyebrow claro en temas oscuros (el default es oscuro para temas claros). */
+/* Eyebrow claro en temas con tarjeta OSCURA (el default navy #141d38 solo
+   tiene contraste suficiente sobre temas claros; sobre estas tarjetas oscuras
+   el texto del eyebrow era prácticamente invisible, ~1.08:1). */
+:root[data-wedding-theme="golden"],
+:root[data-wedding-theme="forest"],
+:root[data-wedding-theme="rose"],
+:root[data-wedding-theme="blush-pearl"],
+:root[data-wedding-theme="lavender-mist"],
+:root[data-wedding-theme="champagne-bubble"],
 :root[data-wedding-theme="amber-night"],
 :root[data-wedding-theme="onyx-gold"],
 :root[data-wedding-theme="midnight-royal"],

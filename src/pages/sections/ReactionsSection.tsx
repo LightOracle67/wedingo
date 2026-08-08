@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { memo, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { doc, updateDoc, setDoc, increment } from "firebase/firestore";
 import { db } from "../../lib/firebase";
@@ -17,7 +17,7 @@ const VOTE_KEY = "wedin_reacted";
  * identidad verificada). La regla Firestore (increment-only con cap 10000)
  * evita el abuso masivo.
  */
-export default function ReactionsSection({ inviteToken }: { inviteToken?: string }) {
+const ReactionsSection = memo(function ReactionsSection({ inviteToken }: { inviteToken?: string }) {
   const { t } = useTranslation();
 
   // Lectura de contadores: el hook maneja la subcolección; aquí se convierte
@@ -84,5 +84,6 @@ export default function ReactionsSection({ inviteToken }: { inviteToken?: string
         );
       })}
     </div>
-  );
-}
+  );});
+
+export default ReactionsSection;

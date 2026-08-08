@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.95.20";
+export const APP_VERSION = "2.95.21";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -205,9 +205,6 @@ export const STORY_SECTION_ORDER = [
   "extras",
   "rsvp",
 ];
-/** Secciones que SIEMPRE quedan fijas en el editor de orden: la portada
- *  (primera) y la confirmación de asistencia RSVP (última). */
-export const FIXED_SECTION_POSITIONS = ["hero", "rsvp"];
 
 export const PRIVACY_POLICY_VERSION = "2026-07-08";
 

@@ -1,5 +1,18 @@
 export const CHANGELOG = [
   {
+    version: "2.95.21",
+    date: "2026-08-08",
+    changes: [
+      "Tercera ronda de mejora progresiva (auditoría en profundidad):",
+      "CRÍTICO (reglas Firestore): isValidInvitationUpdate superaba el límite de complejidad de expresiones con documentos grandes — rompía la renovación de sesión y el guardado en producción. Se redujo (los toggles *Enabled no se validan en las reglas; normalizeConfig los normaliza siempre a 'true'/'false'). Verificado en producción: sesión + guardado OK.",
+      "Seguridad: el update de configuración ya no puede escribir activeSession/sessionExpiresAt/setupTokenHash (solo la regla de sesión dedicada, acotada a 48 h); CSP ampliada para Sentry (ingest.de.sentry.io) y Google Analytics.",
+      "Privacidad (GDPR): el borrado en cascada del superadmin ahora elimina también las subcolecciones sociales (reactions/notes/songs/rides/gifts) que guardan datos de invitados; la política de privacidad ya no promete una limpieza automática inexistente (plan Spark sin Cloud Functions).",
+      "Accesibilidad: el vídeo de bienvenida es un diálogo con trampa de foco, cierre con Escape e inert del fondo; la navegación por secciones ya no secuestra el teclado de selects/botones/enlaces ni interfiere con modales/lightbox; contraste de los eyebrows corregido en 6 temas con tarjeta oscura.",
+      "Legal (ePrivacy): los mapas de Google Maps se cargan solo tras el consentimiento explícito del invitado (botón 'Cargar mapa'), ya que el banner declara que no se cargan terceros sin consentimiento.",
+      "Rendimiento: las 6 secciones sociales ahora usan React.memo (el countdown dejaba de re-renderizarlas cada segundo); código muerto eliminado (FIXED_SECTION_POSITIONS).",
+    ],
+  },
+  {
     version: "2.95.20",
     date: "2026-08-08",
     changes: [

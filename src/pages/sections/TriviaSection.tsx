@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 interface TriviaItem {
@@ -39,7 +39,7 @@ function isTriviaMatch(guess: string, answer: string): boolean {
  * TriviaSection — Mini-quiz de la pareja: cada pregunta se revela y el
  * invitado puede comprobar su respuesta contra la de los novios.
  */
-export default function TriviaSection({ trivia }: { trivia?: string }) {
+const TriviaSection = memo(function TriviaSection({ trivia }: { trivia?: string }) {
   const { t } = useTranslation();
   const [answers, setAnswers] = useState<Record<number, string>>({});
 
@@ -85,5 +85,6 @@ export default function TriviaSection({ trivia }: { trivia?: string }) {
         );
       })}
     </div>
-  );
-}
+  );});
+
+export default TriviaSection;

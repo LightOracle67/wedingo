@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { doc, updateDoc, increment } from "firebase/firestore";
 import { db } from "../../lib/firebase";
@@ -24,7 +24,7 @@ const VOTED_KEY = "wedin_voted_songs";
  * ni login de invitado). El tope de votos por canción (regla Firestore,
  * increment-only con cap) evita el abuso masivo.
  */
-export default function MusicPollSection({ inviteToken }: { inviteToken?: string }) {
+const MusicPollSection = memo(function MusicPollSection({ inviteToken }: { inviteToken?: string }) {
   const { t } = useTranslation();
   const {
     items: songs,
@@ -146,5 +146,6 @@ export default function MusicPollSection({ inviteToken }: { inviteToken?: string
         </button>
       </form>
     </div>
-  );
-}
+  );});
+
+export default MusicPollSection;

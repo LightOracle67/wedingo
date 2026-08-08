@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useInviteSubcollection } from "../../hooks/useInviteSubcollection";
 
@@ -15,7 +15,7 @@ interface Ride {
  * pública (los interesados se coordinan por su cuenta); el panel de admin
  * ve todas las ofertas para ponerse en contacto.
  */
-export default function RideShareSection({ inviteToken }: { inviteToken?: string }) {
+const RideShareSection = memo(function RideShareSection({ inviteToken }: { inviteToken?: string }) {
   const { t } = useTranslation();
   const { items: rides, add: addRide } = useInviteSubcollection<Ride>(inviteToken, "rides", {
     map: ({ id, data }) => ({
@@ -93,5 +93,6 @@ export default function RideShareSection({ inviteToken }: { inviteToken?: string
         ))}
       </div>
     </div>
-  );
-}
+  );});
+
+export default RideShareSection;

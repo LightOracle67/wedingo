@@ -104,6 +104,13 @@ const DashboardTab = memo(function DashboardTab() {
         // Las respuestas viven en la subcolección rsvpResponses/{id}/responses.
         const rsvpSnap = await getDocs(rsvpByInviteRef(invitation.id));
         rsvpSnap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
+        // Subcolecciones de la invitación (medios y FUNCIONES SOCIALES con
+        // datos de invitados): no dejar datos personales huérfanos (GDPR).
+        const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters"];
+        for (const name of SUB_COLLECTIONS) {
+          const subSnap = await getDocs(collection(db, "invitations", invitation.id, name));
+          subSnap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
+        }
         batch.delete(doc(db, "rsvpResponses", invitation.id));
         batch.delete(doc(INVITATIONS_COLLECTION_REF, invitation.id));
         // Se borra primero el documento principal: si algo falla después, las

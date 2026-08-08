@@ -570,17 +570,16 @@ async function cascadeDelete(token: string) {
   const rsvpSnap = await getDocs(rsvpByInviteRef(token));
   for (const d of rsvpSnap.docs) refsToDelete.push(d.ref);
 
-  // Gallery images
-  const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
-  for (const d of gallerySnap.docs) refsToDelete.push(d.ref);
-
-  // Audio chunks
-  const audioSnap = await getDocs(collection(db, "invitations", token, "audio"));
-  for (const d of audioSnap.docs) refsToDelete.push(d.ref);
-
-  // Config images
-  const configImgSnap = await getDocs(collection(db, "invitations", token, "configImages"));
-  for (const d of configImgSnap.docs) refsToDelete.push(d.ref);
+  // Subcolecciones de la invitación: medios (galería, audio, configImages) y
+  // las FUNCIONES SOCIALES (reactions/notes/songs/rides/gifts) más el contador
+  // interno _counters. Las sociales guardan datos personales de los invitados
+  // y, si no se borran, quedan huérfanas y legibles para siempre (derecho de
+  // supresión, GDPR art. 17).
+  const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters"];
+  for (const name of SUB_COLLECTIONS) {
+    const subSnap = await getDocs(collection(db, "invitations", token, name));
+    for (const d of subSnap.docs) refsToDelete.push(d.ref);
+  }
 
   // Registros de tokens de setup (hash → inviteToken): sin esto quedaban
   // hashes huérfanos apuntando a una invitación inexistente.

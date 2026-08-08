@@ -16,13 +16,14 @@
  * @module PublicInvitation
  */
 
-import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import { useConfig, useRsvpContext, useAuth } from "../contexts";
 import { useStoryNavigation } from "../hooks/useStoryNavigation";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { useFocusTrap } from "../hooks/useFocusTrap";
 
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { parseSectionOrder, sectionHasContent } from "../lib/section-utils";
@@ -234,6 +235,32 @@ export default function PublicInvitation() {
   // Cierre animado del vídeo de bienvenida: la clase --closing se aplica y el
   // componente se desmonta tras la animación de salida (evita el corte).
   const [videoClosing, setVideoClosing] = useState(false);
+
+  // Cierre animado del vídeo de bienvenida: la clase --closing se aplica y el
+  // componente se desmonta tras la animación de salida (evita el corte).
+  const videoClosingRef = useRef(false);
+  const closeWelcomeVideo = useCallback(() => {
+    if (videoClosingRef.current) return;
+    videoClosingRef.current = true;
+    setVideoClosing(true);
+    setTimeout(() => {
+      setShowWelcomeVideo(false);
+      setVideoClosing(false);
+      videoClosingRef.current = false;
+    }, 300);
+  }, []);
+  // El vídeo de bienvenida es un diálogo modal: trampa de foco (WCAG 2.4.3) y
+  // cierre con Escape mientras está abierto (incluida la animación de salida).
+  const videoOpen = showWelcomeVideo || videoClosing;
+  const welcomeVideoRef = useFocusTrap<HTMLDivElement>(videoOpen);
+  useEffect(() => {
+    if (!videoOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { e.preventDefault(); closeWelcomeVideo(); }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [videoOpen, closeWelcomeVideo]);
   // La invitación está "configurada" si tiene nombres. Con ?invitar y un
   // token vacío/borrado debe mostrarse el estado no encontrado (antes caía
   // al render completo con un hero sin nombres).
@@ -688,15 +715,6 @@ export default function PublicInvitation() {
   // ═══════════════════════════════════════════════════════
   // RENDERIZADO PRINCIPAL
   // ═══════════════════════════════════════════════════════
-  const closeWelcomeVideo = () => {
-    if (videoClosing) return;
-    setVideoClosing(true);
-    setTimeout(() => {
-      setShowWelcomeVideo(false);
-      setVideoClosing(false);
-    }, 300);
-  };
-
   return (
     <div
       className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
@@ -737,6 +755,7 @@ export default function PublicInvitation() {
       config.welcomeVideo &&
       config.welcomeVideoEnabled !== "false" ? (
         <div
+          ref={welcomeVideoRef}
           className={`welcome-video-overlay ${videoClosing ? "welcome-video-overlay--closing" : ""}`}
           onClick={closeWelcomeVideo}
           role="dialog"
@@ -758,7 +777,10 @@ export default function PublicInvitation() {
       {/* Mientras el sobre está cerrado, el contenido trasero queda inerte e
           invisible para lectores de pantalla (WCAG 1.3.2 / 2.4.3). display:
           contents no altera el layout. */}
-      <div style={{ display: "contents" }} aria-hidden={showEnvelope || undefined} inert={showEnvelope || undefined}>
+      {/* Mientras el sobre está cerrado o el vídeo de bienvenida está abierto,
+          el contenido trasero queda inerte e invisible para lectores de
+          pantalla (WCAG 1.3.2 / 2.4.3). display: contents no altera el layout. */}
+      <div style={{ display: "contents" }} aria-hidden={showEnvelope || videoOpen || undefined} inert={showEnvelope || videoOpen || undefined}>
         {/* ── Decoraciones laterales (eucalipto) ── */}
         <div
           className="fixed top-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration"
