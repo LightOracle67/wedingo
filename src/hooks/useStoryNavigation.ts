@@ -285,8 +285,15 @@ export function useStoryNavigation(
     };
 
     const isTyping = (el: EventTarget | null) => {
+      // No secuestra el teclado de los controles interactivos: inputs, selects,
+      // botones, enlaces, radios y checkboxes deben operarse con flechas/espacio
+      // de forma nativa (WCAG 2.1.1). Solo los elementos sin interacción
+      // permiten navegar por secciones con el teclado.
       const n = el as HTMLElement | null;
-      return !!n && (n.tagName === "INPUT" || n.tagName === "TEXTAREA" || n.isContentEditable);
+      if (!n) return false;
+      if (n.tagName === "INPUT" || n.tagName === "TEXTAREA" || n.tagName === "SELECT"
+        || n.tagName === "BUTTON" || n.tagName === "A" || n.isContentEditable) return true;
+      return !!n.closest?.('button, a, select, [role="button"], [role="radio"], [role="checkbox"], input, textarea');
     };
 
     const onKeyDown = (e: KeyboardEvent) => {
