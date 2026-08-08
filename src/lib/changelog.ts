@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.95.26",
+    date: "2026-08-08",
+    changes: [
+      "Octava ronda de mejora progresiva (rendimiento y accesibilidad):",
+      "Rendimiento: la caché de metadatos de la galería se invalida al subir, borrar, reordenar o editar descripciones de imágenes (antes podía mostrar un listado obsoleto hasta 30 s); getConfigImage añade single-flight (dos vistas simultáneas ya no lanzan lecturas+descifrados duplicados).",
+      "Accesibilidad: las secciones ocultas de la invitación se retiran del orden de tabulación (visibility:hidden) — sus botones y formularios ya no reciben foco mientras están invisibles.",
+    ],
+  },
+  {
     version: "2.95.25",
     date: "2026-08-08",
     changes: [

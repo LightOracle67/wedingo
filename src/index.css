@@ -2016,7 +2016,12 @@ h6 {
 }
 
 /* Estado oculto persistente: la card queda en su posición inicial para que
-   la animación de entrada no haga un salto visible al llegar a la sección. */
+   la animación de entrada no haga un salto visible al llegar a la sección.
+   visibility:hidden retira además la sección oculta del orden de tabulación
+   (sus botones/formularios no deben recibir foco mientras están invisibles). */
+.story-section--is-hidden {
+  visibility: hidden;
+}
 .story-section--is-hidden .story-card-wrap,
 .story-section--is-hidden .story-card {
   opacity: 0;

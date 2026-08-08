@@ -77,6 +77,7 @@ export async function addGalleryImage(
     }),
   );
   onProgress?.(95);
+  META_CACHE.delete(inviteToken);
 
   return { id: docRef.id, dataUrl };
 }
@@ -86,6 +87,7 @@ export async function updateGalleryDescription(inviteToken: string, imageId: str
     .slice(0, 200)
     .trim();
   await updateDoc(doc(galCol(inviteToken), imageId), { description: safe });
+  META_CACHE.delete(inviteToken);
 }
 
 export async function updateGalleryOrder(inviteToken: string, items: { id: string; position: number }[]) {
@@ -97,6 +99,7 @@ export async function updateGalleryOrder(inviteToken: string, items: { id: strin
     batch.update(doc(galCol(inviteToken), id), { position });
   }
   await batch.commit();
+  META_CACHE.delete(inviteToken);
 }
 
 export async function loadDecryptedField(inviteToken: string, encrypted: string) {
@@ -245,10 +248,12 @@ export async function deleteGallery(inviteToken: string) {
   const batch = writeBatch(db);
   snap.docs.forEach((d) => batch.delete(d.ref));
   await batch.commit();
+  META_CACHE.delete(inviteToken);
 }
 
 export async function deleteGalleryImage(inviteToken: string, imageId: string) {
   await deleteDoc(doc(galCol(inviteToken), imageId));
+  META_CACHE.delete(inviteToken);
 }
 
 // ─── Config images subcollection ─────────────────────────
@@ -320,11 +325,24 @@ export function clearConfigImageCache() {
   CONFIG_IMG_CACHE.clear();
 }
 
+// Promesas en curso (single-flight): dos efectos que piden la misma imagen de
+// configuración no lanzan dos lecturas+descifrados concurrentes.
+const CONFIG_IMG_INFLIGHT = new Map<string, Promise<string | null>>();
+
 export async function getConfigImage(inviteToken: string, imageId: string): Promise<string | null> {
   const cacheKey = `${inviteToken}:${imageId}`;
   const cached = CONFIG_IMG_CACHE.get(cacheKey);
   if (cached) return cached;
+  const inflight = CONFIG_IMG_INFLIGHT.get(cacheKey);
+  if (inflight) return inflight;
+  const promise = loadConfigImageWithRetry(inviteToken, imageId, cacheKey);
+  CONFIG_IMG_INFLIGHT.set(cacheKey, promise);
+  promise.finally(() => CONFIG_IMG_INFLIGHT.delete(cacheKey)).catch(() => {});
+  return promise;
+}
 
+/** Lectura + descifrado de una imagen de configuración con reintentos. */
+async function loadConfigImageWithRetry(inviteToken: string, imageId: string, cacheKey: string): Promise<string | null> {
   const attempts = CONFIG_IMAGE_RETRY_DELAYS_MS.length + 1;
   let lastError: unknown;
   for (let attempt = 0; attempt < attempts; attempt++) {
@@ -399,4 +417,5 @@ export async function deleteAllConfigImages(inviteToken: string): Promise<void> 
   const batch = writeBatch(db);
   snap.docs.forEach((d) => batch.delete(d.ref));
   await batch.commit();
+  META_CACHE.delete(inviteToken);
 }
