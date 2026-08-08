@@ -601,7 +601,8 @@
     "point1": "Wedingo uses local storage necessary for the invitation to work (keeping your session and preferences).",
     "point2": "Fonts are hosted on this site, with no requests to third parties.",
     "point3": "We use no third-party cookies or trackers.",
-    "point4": "Visit analytics and error monitoring only activate if you accept the 'Visit analytics' option."
+    "point4": "Visit analytics and error monitoring only activate if you accept the 'Visit analytics' option.",
+    "policyLink": "For more information, please read our privacy policy"
   },
   "legal": {
     "sectionPrivacy": "Privacy Policy",

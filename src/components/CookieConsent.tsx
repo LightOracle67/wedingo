@@ -137,7 +137,7 @@ const CookieConsent = memo(function CookieConsent() {
                 className="cookie-consent-policy"
                 onClick={() => setLegalModal("privacy")}
               >
-                {t("legal.privacyPolicy")}
+                {t("cookie.policyLink")}
               </button>
             </>
           ) : (

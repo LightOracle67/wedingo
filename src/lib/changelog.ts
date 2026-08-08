@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.37",
+    date: "2026-08-08",
+    changes: [
+      "Fix: el enlace a la política de privacidad del banner de cookies mostraba el texto completo de la política (hipervínculo larguísimo). Ahora muestra un texto breve: «Para más información, lea nuestra política de privacidad».",
+    ],
+  },
+  {
     version: "2.95.36",
     date: "2026-08-08",
     changes: [

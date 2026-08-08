@@ -601,7 +601,8 @@
     "point1": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias).",
     "point2": "Las tipografías están alojadas en este sitio, sin peticiones a terceros.",
     "point3": "No usamos cookies de terceros ni rastreadores.",
-    "point4": "La estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita»."
+    "point4": "La estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita».",
+    "policyLink": "Para más información, lea nuestra política de privacidad"
   },
   "legal": {
     "sectionPrivacy": "Política de Privacidad",
