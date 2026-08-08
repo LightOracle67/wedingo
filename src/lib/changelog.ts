@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.34",
+    date: "2026-08-08",
+    changes: [
+      "Refinamiento del modal de cookies: entrada animada (fade + subida), fondo con blur y gradiente, título en fuente serif con acento, scrollbar fino en el cuerpo, divisores y sombra más elegantes, botón de política con hover sutil.",
+    ],
+  },
+  {
     version: "2.95.33",
     date: "2026-08-08",
     changes: [

@@ -131,7 +131,7 @@ const CookieConsent = memo(function CookieConsent() {
             </>
           ) : (
             <>
-              <p className="cookie-consent-text" style={{ fontWeight: 600 }}>
+              <p className="cookie-consent-text cookie-consent-text--sub">
                 {t("cookie.settingsTitle")}
               </p>
               {/* Preferencias en secciones accordion (patrón del modal legal):
