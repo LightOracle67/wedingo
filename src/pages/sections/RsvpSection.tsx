@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useConfig, useAppUI } from "../../contexts";
 import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import { parseMenuDishes } from "../../lib/menu-utils";
+import { parseTransportDepartures } from "../../lib/transport-utils";
 import CornerDecorations from "../../components/CornerDecorations";
 
 const ALLERGIES = ["sin gluten", "sin lactosa", "alergia frutos secos", "alergia mariscos"];
@@ -130,13 +131,7 @@ const RsvpSection = memo(function RsvpSection({
 
   const departures: Departure[] = useMemo(() => {
     if (!transportEnabled || transportEnabled === "none") return [];
-    try {
-      const parsed = JSON.parse(transportDepartures || "");
-      if (!Array.isArray(parsed)) return [];
-      return parsed.slice(0, 10);
-    } catch {
-      return [];
-    }
+    return parseTransportDepartures(transportDepartures);
   }, [transportEnabled, transportDepartures]);
 
   const hasTransportChoices = departures.length > 0;
@@ -336,6 +331,8 @@ const RsvpSection = memo(function RsvpSection({
               autoComplete="off"
               required
               maxLength={120}
+              aria-invalid={Boolean(rsvpMessage) || undefined}
+              aria-describedby={rsvpMessage ? "rsvpFeedback" : undefined}
             />
             <p className="setup-help" style={{ marginTop: "0.2rem" }}>
               {t("rsvp.nameHint")}
@@ -1002,7 +999,7 @@ const RsvpSection = memo(function RsvpSection({
           </form>
 
           {rsvpMessage ? (
-            <p className="rsvp-feedback" aria-live="polite">
+            <p className="rsvp-feedback" id="rsvpFeedback" aria-live="polite">
               {rsvpMessage}
             </p>
           ) : null}

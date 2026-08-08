@@ -1,6 +1,7 @@
 import { memo, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useFocusTrap } from "../hooks/useFocusTrap";
+import { useAppUI } from "../contexts";
 import { INVITE_CACHE_PREFIX, AUDIO_PREFIX, STORAGE_KEYS } from "../lib/storage-keys";
 import "../styles/modals.css";
 
@@ -98,6 +99,10 @@ const CookieConsent = memo(function CookieConsent() {
 
   const focusTrapRef = useFocusTrap<HTMLDivElement>(visible);
 
+  // El banner debe dar acceso directo a la política de privacidad (GDPR
+  // art. 7.2): abre el LegalModal desde el contexto de UI.
+  const { setLegalModal } = useAppUI();
+
   if (!visible) return null;
 
   return (
@@ -106,6 +111,23 @@ const CookieConsent = memo(function CookieConsent() {
         {!showSettings ? (
           <>
             <p className="cookie-consent-text">{t("cookie.text")}</p>
+            <button
+              type="button"
+              className="cookie-consent-policy"
+              onClick={() => setLegalModal("privacy")}
+              style={{
+                background: "none",
+                border: "none",
+                padding: 0,
+                marginBottom: "0.75rem",
+                color: "var(--setup-accent, #c8a84e)",
+                textDecoration: "underline",
+                cursor: "pointer",
+                fontSize: "0.8rem",
+              }}
+            >
+              {t("legal.privacyPolicy")}
+            </button>
             <div className="cookie-consent-actions">
               <button className="setup-button setup-button--primary" onClick={handleAccept}>
                 {t("cookie.accept")}

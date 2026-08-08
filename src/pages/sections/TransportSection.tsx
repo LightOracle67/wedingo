@@ -2,6 +2,7 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import MapEmbed from "../../components/MapEmbed";
 import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
+import { parseTransportDepartures } from "../../lib/transport-utils";
 import CornerDecorations from "../../components/CornerDecorations";
 
 interface Departure {
@@ -34,13 +35,7 @@ const TransportSection = memo(function TransportSection({
   // solo nombre de la ubicación u oculto.
   const mapMode = transportMapMode === "name" || transportMapMode === "hidden" ? transportMapMode : "iframe";
 
-  let departures: Departure[] = [];
-  try {
-    const parsed = JSON.parse(transportDepartures || "");
-    if (Array.isArray(parsed)) departures = parsed;
-  } catch {
-    /* JSON inválido */
-  }
+  const departures: Departure[] = parseTransportDepartures(transportDepartures);
 
   const enabled = transportEnabled !== "none";
   const optionKey =

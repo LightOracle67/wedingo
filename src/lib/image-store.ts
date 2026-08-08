@@ -164,13 +164,24 @@ const MAX_CACHE = 80;
 export function clearGalleryCache() {
   URL_CACHE.clear();
   INFLIGHT.clear();
+  META_CACHE.clear();
 }
 
 /**
  * Carga SOLO los metadatos de la galería (una lectura, cero descifrado).
  * Permite renderizar el carrusel al instante y descifrar bajo demanda.
+ *
+ * La invitación pública consulta esta función DOS veces en cada carga: una
+ * para decidir si la sección tiene imágenes (PublicInvitation) y otra dentro
+ * de la galería para renderizarla. La caché de módulo evita la segunda
+ * lectura de Firestore en la misma visita.
  */
+const META_CACHE = new Map<string, { at: number; metas: GalleryMeta[] }>();
+const META_TTL_MS = 30_000;
+
 export async function loadGalleryMeta(inviteToken: string): Promise<GalleryMeta[]> {
+  const hit = META_CACHE.get(inviteToken);
+  if (hit && Date.now() - hit.at < META_TTL_MS) return hit.metas;
   try {
     const snap = await getDocs(galCol(inviteToken));
     const items: GalleryMeta[] = [];
@@ -188,6 +199,7 @@ export async function loadGalleryMeta(inviteToken: string): Promise<GalleryMeta[
       }
     }
     items.sort((a, b) => (a.position ?? 99) - (b.position ?? 99));
+    META_CACHE.set(inviteToken, { at: Date.now(), metas: items });
     return items;
   } catch (err) {
     console.error("[app]", "[image-store]", "loadGalleryMeta error", { error: err });

@@ -5,7 +5,7 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
-import { DonutChart, MiniBar, Legend } from "../AttendanceChart";
+import { DonutChart, Legend } from "../AttendanceChart";
 
 afterEach(cleanup);
 
@@ -18,31 +18,6 @@ describe("DonutChart", () => {
   it("renders empty state when all values are zero", () => {
     render(<DonutChart yes={0} no={0} pending={0} />);
     expect(screen.getByLabelText("chart.noData")).toBeDefined();
-  });
-});
-
-describe("MiniBar", () => {
-  it("renders nothing when items is empty", () => {
-    const { container } = render(<MiniBar items={[]} />);
-    expect(container.innerHTML).toBe("");
-  });
-
-  it("renders bars for items with values", () => {
-    const items = [
-      { value: 10, label: "A" },
-      { value: 5, label: "B" },
-      { value: 0, label: "C" },
-    ];
-    const { container } = render(<MiniBar items={items} />);
-    const rects = container.querySelectorAll("rect");
-    expect(rects.length).toBe(3);
-  });
-
-  it("truncates long labels", () => {
-    const items = [{ value: 10, label: "VeryLongLabel" }];
-    const { container } = render(<MiniBar items={items} />);
-    const text = container.querySelector("text");
-    expect(text?.textContent).toBe("VeryL…");
   });
 });
 

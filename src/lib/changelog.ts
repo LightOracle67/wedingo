@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.95.22",
+    date: "2026-08-08",
+    changes: [
+      "Cuarta ronda de mejora progresiva (exhaustiva):",
+      "Seguridad: el create de invitaciones ya no permite forjar sesión (bloqueados activeSession/sessionExpiresAt/setupTokenHash en el create) ni alojar contenido con tokenId arbitrario (formato de 10 caracteres alfanuméricos); el consentimiento de privacidad del responsable (privacyConsent) se persiste con timestamp de servidor y se valida en las reglas.",
+      "Privacidad: el banner de cookies enlaza ahora directamente a la política de privacidad (GDPR art. 7.2); el RSVP asocia el mensaje de error al campo de nombre (aria-invalid + aria-describedby).",
+      "Rendimiento y calidad: la galería evita la doble lectura de Firestore (caché de metadatos); parseo de salidas de transporte centralizado (transport-utils); bloque de funciones sociales refactorizado a un array de config; código muerto eliminado (MiniBar, photoRef, FIXED_SECTION_POSITIONS); 8 claves i18n huérfanas eliminadas de los 88 locales.",
+    ],
+  },
+  {
     version: "2.95.21",
     date: "2026-08-08",
     changes: [

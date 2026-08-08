@@ -9,6 +9,7 @@ import {
   updateDoc,
   getDocs,
   writeBatch,
+  serverTimestamp,
   type DocumentData,
   type QueryDocumentSnapshot,
 } from "firebase/firestore";
@@ -402,7 +403,11 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           }
         }
         delete (payload as { musicFile?: string }).musicFile;
+        // Evidencia auditable del consentimiento del responsable (GDPR art.
+        // 7.1): se estampa la versión aceptada y un timestamp de servidor.
         payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
+        payload.privacyConsent = true;
+        payload.privacyConsentAt = serverTimestamp();
 
         await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
 

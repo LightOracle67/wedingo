@@ -1,4 +1,4 @@
-import { useCallback, useRef } from "react";
+import { useCallback } from "react";
 import CharacterCounter from "../../components/CharacterCounter";
 import { useTranslation } from "react-i18next";
 import { useConfig } from "../../contexts";
@@ -23,7 +23,6 @@ export default function CoverSectionForm({ prefix = "" }) {
     (formData as Record<string, unknown>).cornerDecoration as string,
   );
 
-  const photoRef = useRef<HTMLInputElement>(null);
   const id = (name: string) => `${prefix}${name}`;
   /** src seguro para las imÃ¡genes de config: si la URL resuelta no estÃ¡
    *  disponible y el valor crudo es una referencia __cfgimg: (aÃºn sin
@@ -343,7 +342,6 @@ export default function CoverSectionForm({ prefix = "" }) {
             </label>
           )}
           <input
-            ref={photoRef}
             id={id("couplePhoto")}
             className="setup-upload__input"
             type="file"

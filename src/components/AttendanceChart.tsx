@@ -113,51 +113,6 @@ export function DonutChart({
   );
 }
 
-export function MiniBar({
-  items,
-  height = 80,
-  color = "var(--accent)",
-}: {
-  items: Array<{ value: number; label?: string }>;
-  height?: number;
-  color?: string;
-}) {
-  const { t } = useTranslation();
-  if (!items?.length) return null;
-  const max = Math.max(...items.map((i: { value: number }) => i.value || 0), 1);
-  const barW = Math.max(4, Math.min(20, 200 / items.length));
-  return (
-    <svg
-      width="100%"
-      height={height}
-      style={{ display: "block" }}
-      preserveAspectRatio="xMinYMin meet"
-      role="img"
-      aria-label={t("chart.barChart")}
-    >
-      {items.map((item: { value: number; label?: string }, i: number) => {
-        const h = ((item.value || 0) / max) * (height - 8);
-        return (
-          <g key={i}>
-            <rect x={i * (barW + 4) + 2} y={height - 4 - h} width={barW} height={h} fill={color} rx="2" />
-            {item.label && (
-              <text
-                x={i * (barW + 4) + 2 + barW / 2}
-                y={height - 2}
-                textAnchor="end"
-                fontSize="6"
-                fill="var(--setup-muted)"
-                transform={`rotate(-45 ${i * (barW + 4) + 2 + barW / 2} ${height - 2})`}
-              >
-                {item.label.length > 5 ? item.label.slice(0, 5) + "…" : item.label}
-              </text>
-            )}
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
 
 export function Legend({ items }: { items: Array<{ label: string; value: number; color: string }> }) {
   return (

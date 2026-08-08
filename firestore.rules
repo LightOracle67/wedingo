@@ -112,6 +112,10 @@ service cloud.firestore {
            guardado y la renovación de sesión). El contenido se valida igual. */
         && (!data.keys().hasAny(['weddingDressCodeCustom']) || (data.weddingDressCodeCustom is string && data.weddingDressCodeCustom.size() <= 500 && isSafeText(data.weddingDressCodeCustom)))
         && (!data.keys().hasAny(['adminUsername']) || (data.adminUsername is string && data.adminUsername.size() <= 50 && data.adminUsername.matches('^[a-z0-9]*$')))
+        /* Consentimiento del responsable: si se envía, debe ser true (la
+           evidencia auditable de la versión aceptada se estampa en el cliente
+           con privacyConsentAt de servidor). */
+        && (!data.keys().hasAny(['privacyConsent']) || data.privacyConsent == true)
         && (!data.keys().hasAny(['detailsMapMode']) || data.detailsMapMode in ['iframe', 'name', 'hidden'])
         && (!data.keys().hasAny(['transportMapMode']) || data.transportMapMode in ['iframe', 'name', 'hidden'])
         && (!data.keys().hasAny(['accommodationMapMode']) || data.accommodationMapMode in ['iframe', 'name', 'hidden'])
@@ -130,8 +134,14 @@ service cloud.firestore {
       allow list: if isSuperAdmin();
       /* Alta inicial: el token de setup ya limita quién puede crearla, así que
          se usa la validación reducida (igual que el update). La validación
-         completa superaba el límite de 1000 expresiones en producción. */
+         completa superaba el límite de 1000 expresiones en producción.
+         La sesión NO puede auto-provisionarse en el create: los campos de
+         sesión los gestiona exclusivamente su regla dedicada, y el tokenId
+         debe tener el formato que genera la app (10 caracteres alfanuméricos)
+         para limitar el alojamiento de contenido arbitrario en el dominio. */
       allow create: if isValidInvitationUpdate(request.resource.data)
+        && tokenId.matches('^[A-Za-z0-9]{10}$')
+        && !request.resource.data.keys().hasAny(['activeSession', 'sessionExpiresAt', 'setupTokenHash'])
         && (isSuperAdmin()
           || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
       /* Actualización de configuración: solo admin con sesión activa o

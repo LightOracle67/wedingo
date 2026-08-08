@@ -10,6 +10,10 @@ vi.mock("../../lib/sentry", () => ({ enableSentryTracking: vi.fn() }));
 
 vi.mock("../../lib/firebase", () => ({ db: {} }));
 
+vi.mock("../../contexts", () => ({
+  useAppUI: () => ({ setLegalModal: vi.fn() }),
+}));
+
 const mockLocalStorage = (() => {
   let store: Record<string, string> = {};
   return {

@@ -16,7 +16,7 @@
  * @module PublicInvitation
  */
 
-import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { lazy, Fragment, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
@@ -193,6 +193,33 @@ export default function PublicInvitation() {
     config.notesEnabled === "true" ||
     config.musicPollEnabled === "true" ||
     config.triviaEnabled === "true";
+
+  // Bloques de las funciones sociales activas: se agrupan en la sección
+  // conjunta "extras" (renderizados por config para no duplicar el JSX).
+  const extraBlocks = useMemo<Array<{ title: string; node: React.JSX.Element }>>(
+    () =>
+      [
+        config.giftsListEnabled === "true"
+          ? { title: t("giftList.title"), node: <GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} /> }
+          : null,
+        config.rideShareEnabled === "true"
+          ? { title: t("rideShare.title"), node: <RideShareSection inviteToken={inviteToken ?? ""} /> }
+          : null,
+        config.reactionsEnabled === "true"
+          ? { title: t("reactions.title"), node: <ReactionsSection inviteToken={inviteToken ?? ""} /> }
+          : null,
+        config.notesEnabled === "true"
+          ? { title: t("notes.title"), node: <NotesSection inviteToken={inviteToken ?? ""} /> }
+          : null,
+        config.musicPollEnabled === "true"
+          ? { title: t("musicPoll.title"), node: <MusicPollSection inviteToken={inviteToken ?? ""} /> }
+          : null,
+        config.triviaEnabled === "true"
+          ? { title: t("trivia.title"), node: <TriviaSection trivia={config.trivia ?? "[]"} /> }
+          : null,
+      ].filter((b): b is { title: string; node: React.JSX.Element } => b !== null),
+    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.giftList, config.trivia, t, inviteToken],
+  );
 
   // ─── Orden de secciones visible ────────────────────────
   /**
@@ -845,69 +872,15 @@ export default function PublicInvitation() {
                       aria-label={t("extras.ariaLabel")}
                     >
                       <div className="story-panel story-panel--extras w-full">
-                        {config.giftsListEnabled === "true" ? (
-                          <div className="story-extra-block">
-                            <h2 className="story-title">{t("giftList.title")}</h2>
-                            <Suspense fallback={null}>
-                              <GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} />
-                            </Suspense>
-                          </div>
-                        ) : null}
-                        {config.rideShareEnabled === "true" ? (
-                          <>
-                            <div className="story-divider" />
+                        {extraBlocks.map((b, i) => (
+                          <Fragment key={b.title}>
+                            {i > 0 ? <div className="story-divider" /> : null}
                             <div className="story-extra-block">
-                              <h2 className="story-title">{t("rideShare.title")}</h2>
-                              <Suspense fallback={null}>
-                                <RideShareSection inviteToken={inviteToken ?? ""} />
-                              </Suspense>
+                              <h2 className="story-title">{b.title}</h2>
+                              <Suspense fallback={null}>{b.node}</Suspense>
                             </div>
-                          </>
-                        ) : null}
-                        {config.reactionsEnabled === "true" ? (
-                          <>
-                            <div className="story-divider" />
-                            <div className="story-extra-block">
-                              <h2 className="story-title">{t("reactions.title")}</h2>
-                              <Suspense fallback={null}>
-                                <ReactionsSection inviteToken={inviteToken ?? ""} />
-                              </Suspense>
-                            </div>
-                          </>
-                        ) : null}
-                        {config.notesEnabled === "true" ? (
-                          <>
-                            <div className="story-divider" />
-                            <div className="story-extra-block">
-                              <h2 className="story-title">{t("notes.title")}</h2>
-                              <Suspense fallback={null}>
-                                <NotesSection inviteToken={inviteToken ?? ""} />
-                              </Suspense>
-                            </div>
-                          </>
-                        ) : null}
-                        {config.musicPollEnabled === "true" ? (
-                          <>
-                            <div className="story-divider" />
-                            <div className="story-extra-block">
-                              <h2 className="story-title">{t("musicPoll.title")}</h2>
-                              <Suspense fallback={null}>
-                                <MusicPollSection inviteToken={inviteToken ?? ""} />
-                              </Suspense>
-                            </div>
-                          </>
-                        ) : null}
-                        {config.triviaEnabled === "true" ? (
-                          <>
-                            <div className="story-divider" />
-                            <div className="story-extra-block">
-                              <h2 className="story-title">{t("trivia.title")}</h2>
-                              <Suspense fallback={null}>
-                                <TriviaSection trivia={config.trivia ?? "[]"} />
-                              </Suspense>
-                            </div>
-                          </>
-                        ) : null}
+                          </Fragment>
+                        ))}
                       </div>
                     </section>
                   );
