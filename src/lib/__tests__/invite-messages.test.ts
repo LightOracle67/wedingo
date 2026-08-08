@@ -1,14 +1,7 @@
 import { describe, it, expect } from "vitest";
-import {
-  randomMessage,
-  WEDDING_MESSAGES,
-  EN_MESSAGES,
-  FR_MESSAGES,
-  DE_MESSAGES,
-  PT_MESSAGES,
-} from "../invite-messages";
+import { randomMessage, WEDDING_MESSAGES, EN_MESSAGES } from "../invite-messages";
 
-const LANG_MAP = { es: WEDDING_MESSAGES, en: EN_MESSAGES, fr: FR_MESSAGES, de: DE_MESSAGES, pt: PT_MESSAGES };
+const LANG_MAP = { es: WEDDING_MESSAGES, en: EN_MESSAGES };
 
 describe("language message arrays", () => {
   for (const [lang, messages] of Object.entries(LANG_MAP)) {
@@ -36,21 +29,6 @@ describe("randomMessage", () => {
   it("returns a string from the English list", () => {
     const result = randomMessage("en");
     expect(EN_MESSAGES).toContain(result);
-  });
-
-  it("returns a string from the French list", () => {
-    const result = randomMessage("fr");
-    expect(FR_MESSAGES).toContain(result);
-  });
-
-  it("returns a string from the German list", () => {
-    const result = randomMessage("de");
-    expect(DE_MESSAGES).toContain(result);
-  });
-
-  it("returns a string from the Portuguese list", () => {
-    const result = randomMessage("pt");
-    expect(PT_MESSAGES).toContain(result);
   });
 
   it("falls back to Spanish for unknown lang", () => {

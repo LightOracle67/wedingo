@@ -16,8 +16,9 @@ function hasArrayValue(obj: unknown): boolean {
 describe("Locale consistency", () => {
   const entries = Object.entries(localeModules);
 
-  it("has at least 50 locale files", () => {
-    expect(entries.length).toBeGreaterThanOrEqual(50);
+  it("only ships the supported locales (es and en)", () => {
+    const names = entries.map(([key]) => key.split("/").pop()).sort();
+    expect(names).toEqual(["en.json", "es.json"]);
   });
 
   it("all locale files share a common set of top-level keys", () => {

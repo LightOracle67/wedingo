@@ -843,21 +843,6 @@
     "measureRetention": "Retention policy: 12 months post-event for guest data",
     "measureSuperadmin": "Superadmin protected by Firebase Authentication + hidden route"
   },
-  "langGroups": {
-    "spain": "Spain",
-    "westernEurope": "Western Europe",
-    "nordicEurope": "Nordic Europe",
-    "centralEurope": "Central Europe",
-    "southernEurope": "Southern Europe / Balkans",
-    "easternEurope": "Eastern Europe / Caucasus",
-    "eastAsia": "East Asia",
-    "southAsia": "South Asia",
-    "southeastAsia": "Southeast Asia",
-    "centralAsia": "Central Asia / Middle East",
-    "africa": "Africa",
-    "americas": "Americas",
-    "other": "Other"
-  },
   "a11y": {
     "title": "Accessibility",
     "close": "Close",
@@ -896,9 +881,6 @@
     "moveDown": "Move down",
     "title": "Order & visibility",
     "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
-  },
-  "langSwitcher": {
-    "label": "Select language"
   },
   "countdown": {
     "year_one": "{{count}} year",

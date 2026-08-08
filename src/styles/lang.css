@@ -43,6 +43,16 @@ html.a11y-high-contrast .app-footer {
   border-color: color-mix(in srgb, var(--setup-accent) 55%, transparent);
   box-shadow: 0 0 18px color-mix(in srgb, var(--setup-accent) 22%, transparent);
 }
+/* Selector reducido a es/en: botones en fila y activo destacado. */
+.lang-wrapper {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+.lang-trigger--active {
+  background: color-mix(in srgb, var(--setup-accent) 42%, transparent);
+  border-color: var(--setup-accent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--setup-accent) 30%, transparent);
+}
 .lang-trigger:focus-visible {
   outline: 2px solid var(--setup-accent);
   outline-offset: 2px;

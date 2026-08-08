@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.28",
+    date: "2026-08-08",
+    changes: [
+      "i18n: el proyecto se limita a español e inglés. Se eliminan los 98 locales restantes (caían al español como fallback), el selector de idiomas queda como dos botones (ES/EN) y se limpian las claves langGroups/langSwitcher y los mensajes FR/DE/PT. El bundle ya no empaqueta cientos de idiomas.",
+    ],
+  },
+  {
     version: "2.95.27",
     date: "2026-08-08",
     changes: [
