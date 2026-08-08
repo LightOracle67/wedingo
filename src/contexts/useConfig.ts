@@ -20,6 +20,9 @@ export interface ConfigContextValue {
   handleTimeChange: (value: string) => void;
   handleTimeBlur: (value: string) => void;
   handleYearChange: (value: string) => void;
+  /** Restablece el formulario a los valores por defecto (conserva el token
+   *  de acceso en el setup inicial). */
+  handleResetForm: () => void;
   handleDeleteInvitation: () => Promise<void>;
   setHasStoredConfig: (v: boolean) => void;
   registerOnFirstSave: (cb: () => void) => void;

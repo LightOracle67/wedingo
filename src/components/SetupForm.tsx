@@ -55,7 +55,7 @@ export default function SetupForm({ prefix = "" }) {
     };
   }, []);
   // ─── Extrae estado y handlers del contexto global (hooks granulares) ──
-  const { formData, updateFormField, handleSaveSetup, hasStoredConfig, isSaving } = useConfig();
+  const { formData, updateFormField, handleSaveSetup, hasStoredConfig, isSaving, handleResetForm } = useConfig();
   const { isTokenVerified, isRestoringSession } = useAuth();
   const { saveMessage, saveError, setLegalModal } = useAppUI();
   const { addToast } = useToast();
@@ -216,9 +216,17 @@ export default function SetupForm({ prefix = "" }) {
         </label>
       ) : null}
 
-      {/* ── Botón de guardar ── */}
+      {/* ── Botones de guardar y restablecer ── */}
 
       <div className="setup-actions setup-actions--sticky" style={{ background: 0, WebkitBackdropFilter: "unset" }}>
+        <button
+          className="setup-button setup-button--ghost"
+          type="button"
+          onClick={handleResetForm}
+          disabled={isSaving}
+        >
+          {t("setup.resetButton")}
+        </button>
         <button className="setup-button" type="submit" disabled={(!hasStoredConfig && !tokenAcknowledged) || isSaving}>
           {isSaving ? t("common.saving") : t("common.save")}
         </button>

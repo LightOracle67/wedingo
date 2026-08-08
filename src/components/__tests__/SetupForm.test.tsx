@@ -5,6 +5,7 @@ const mockHandleSaveSetup = vi.fn();
 const mockUpdateFormField = vi.fn();
 const mockAddToast = vi.fn();
 const mockSetLegalModal = vi.fn();
+const mockResetForm = vi.fn();
 
 const mockUseApp = vi.fn();
 
@@ -63,6 +64,7 @@ const baseUseApp = {
   hasStoredConfig: false,
   setupToken: "test-token-123",
   setLegalModal: mockSetLegalModal,
+  handleResetForm: mockResetForm,
 };
 
 describe("SetupForm", () => {
@@ -258,5 +260,13 @@ describe("SetupForm", () => {
     expect(checkbox).toBeChecked();
     fireEvent.click(checkbox);
     expect(mockUpdateFormField).toHaveBeenCalledWith("_privacyConsent", "false");
+  });
+
+  it("renders reset button next to save and calls handleResetForm", () => {
+    render(<SetupForm />);
+    const resetBtn = screen.getByRole("button", { name: "setup.resetButton" });
+    expect(resetBtn).toHaveAttribute("type", "button");
+    fireEvent.click(resetBtn);
+    expect(mockResetForm).toHaveBeenCalled();
   });
 });

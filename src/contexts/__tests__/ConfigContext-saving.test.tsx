@@ -231,6 +231,29 @@ function SaveSetupConsumer() {
   );
 }
 
+function ResetConsumer() {
+  const ctx = useConfig();
+  return (
+    <div>
+      <button data-testid="rs_first" onClick={() => ctx.updateFormField("firstName", "John")}>
+        F
+      </button>
+      <button data-testid="rs_username" onClick={() => ctx.updateFormField("adminUsername", "admin1")}>
+        U
+      </button>
+      <button data-testid="rs_stored" onClick={() => ctx.setHasStoredConfig(true)}>
+        S
+      </button>
+      <button data-testid="rs_reset" onClick={() => ctx.handleResetForm()}>
+        R
+      </button>
+      <span data-testid="rs_hasConfig">{String(ctx.hasStoredConfig)}</span>
+      <span data-testid="rs_formFirstName">{ctx.formData.firstName || ""}</span>
+      <span data-testid="rs_formUsername">{ctx.formData.adminUsername || ""}</span>
+    </div>
+  );
+}
+
 beforeEach(() => {
   sessionStorage.clear();
   // jsdom no expone localStorage global: shim limpio por test. Sin esto, la
@@ -926,6 +949,81 @@ describe("ConfigProvider", () => {
       expect(mockSetSaveError).toHaveBeenCalled();
     });
     mockSetSaveError.mockClear();
+    mockLocation.pathname = "/test";
+  });
+
+  it("handleResetForm resets all fields to defaults in admin mode", async () => {
+    const originalConfirm = window.confirm;
+    window.confirm = vi.fn(() => true);
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "U", secondName: "N", _visits: 0 }),
+    });
+    render(
+      <ConfigProvider>
+        <ResetConsumer />
+      </ConfigProvider>,
+    );
+    await waitFor(() => expect(screen.getByTestId("rs_hasConfig").textContent).toBe("true"));
+    fireEvent.click(screen.getByTestId("rs_first"));
+    fireEvent.click(screen.getByTestId("rs_username"));
+    await waitFor(() => expect(screen.getByTestId("rs_formFirstName").textContent).toBe("John"));
+    fireEvent.click(screen.getByTestId("rs_reset"));
+    await waitFor(() => {
+      expect(screen.getByTestId("rs_formFirstName").textContent).toBe("");
+      expect(screen.getByTestId("rs_formUsername").textContent).toBe("");
+    });
+    expect(window.confirm).toHaveBeenCalled();
+    window.confirm = originalConfirm;
+    mockLocation.pathname = "/test";
+  });
+
+  it("handleResetForm keeps admin username in initial setup (predefined token)", async () => {
+    const originalConfirm = window.confirm;
+    window.confirm = vi.fn(() => true);
+    // Ruta sin hydratación (no admin ni token): evita que el efecto de carga
+    // (con el t mockeado con identidad nueva por render) pise formData.
+    mockLocation.pathname = "/some-random-path";
+    render(
+      <ConfigProvider>
+        <ResetConsumer />
+      </ConfigProvider>,
+    );
+    await waitFor(() => expect(screen.getByTestId("rs_hasConfig").textContent).toBe("false"));
+    fireEvent.click(screen.getByTestId("rs_first"));
+    fireEvent.click(screen.getByTestId("rs_username"));
+    await waitFor(() => expect(screen.getByTestId("rs_formUsername").textContent).toBe("admin1"));
+    fireEvent.click(screen.getByTestId("rs_reset"));
+    await waitFor(() => {
+      expect(screen.getByTestId("rs_formFirstName").textContent).toBe("");
+      expect(screen.getByTestId("rs_formUsername").textContent).toBe("admin1");
+    });
+    expect(window.confirm).toHaveBeenCalled();
+    window.confirm = originalConfirm;
+    mockLocation.pathname = "/test";
+  });
+
+  it("handleResetForm does nothing when confirmation is cancelled", async () => {
+    const originalConfirm = window.confirm;
+    window.confirm = vi.fn(() => false);
+    mockLocation.pathname = "/abcdefghij";
+    mockGetDoc.mockResolvedValueOnce({
+      exists: () => true,
+      data: () => ({ firstName: "U", secondName: "N", _visits: 0 }),
+    });
+    render(
+      <ConfigProvider>
+        <ResetConsumer />
+      </ConfigProvider>,
+    );
+    await waitFor(() => expect(screen.getByTestId("rs_hasConfig").textContent).toBe("true"));
+    fireEvent.click(screen.getByTestId("rs_first"));
+    await waitFor(() => expect(screen.getByTestId("rs_formFirstName").textContent).toBe("John"));
+    fireEvent.click(screen.getByTestId("rs_reset"));
+    await waitFor(() => expect(screen.getByTestId("rs_formFirstName").textContent).toBe("John"));
+    expect(window.confirm).toHaveBeenCalled();
+    window.confirm = originalConfirm;
     mockLocation.pathname = "/test";
   });
 });

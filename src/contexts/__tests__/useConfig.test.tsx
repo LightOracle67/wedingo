@@ -30,6 +30,7 @@ describe("useConfig", () => {
       handleTimeBlur: () => {},
       handleYearChange: () => {},
       handleCoordinateChange: () => {},
+      handleResetForm: () => {},
       handleDeleteInvitation: async () => {},
       setHasStoredConfig: () => {},
       registerOnFirstSave: () => {},

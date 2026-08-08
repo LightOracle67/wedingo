@@ -492,6 +492,24 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     ],
   );
 
+  const handleResetForm = useCallback(() => {
+    const message = hasStoredConfig ? t("setup.resetConfirmAdmin") : t("setup.resetConfirmInitial");
+    if (!window.confirm(message)) {
+      return;
+    }
+    setSaveMessage("");
+    setSaveError("");
+    if (hasStoredConfig) {
+      // Setup admin: restablece todos los campos por defecto.
+      setFormData(defaultConfig as InvitationConfig);
+    } else {
+      // Setup inicial: restablece todos los campos excepto el token
+      // predefinido (el token de acceso vive fuera de formData; el username
+      // ligado a él se conserva para no perder las credenciales de acceso).
+      setFormData({ ...defaultConfig, adminUsername: formData.adminUsername } as InvitationConfig);
+    }
+  }, [hasStoredConfig, formData.adminUsername, t, setSaveMessage, setSaveError]);
+
   const handleDeleteInvitation = useCallback(async () => {
     if (!inviteToken) return;
     if (!window.confirm(t("errors.deleteConfirm"))) {
@@ -551,6 +569,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       handleTimeChange,
       handleTimeBlur,
       handleYearChange,
+      handleResetForm,
       handleDeleteInvitation,
       setHasStoredConfig,
       registerOnFirstSave,
@@ -575,6 +594,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       handleTimeChange,
       handleTimeBlur,
       handleYearChange,
+      handleResetForm,
       handleDeleteInvitation,
       setHasStoredConfig,
       registerOnFirstSave,
