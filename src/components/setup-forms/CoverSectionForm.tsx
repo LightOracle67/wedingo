@@ -35,14 +35,15 @@ export default function CoverSectionForm({ prefix = "" }) {
       // image-store se importa aquí para no arrastrarlo al bundle inicial.
       const { uploadImage, saveConfigImage } = await import("../../lib/image-store");
       // couplePhoto es una imagen protagonista: se comprime en alta calidad.
-      const { dataUrl } = await uploadImage(
+      const { encrypted, dataUrl } = await uploadImage(
         inviteToken,
         file,
         onProgress,
         HIGH_QUALITY_MAX_DIMENSION,
         HIGH_QUALITY_TARGET_BYTES,
       );
-      return await saveConfigImage(inviteToken, imageId, dataUrl);
+      // Reutiliza el cifrado de uploadImage (evita cifrar dos veces).
+      return await saveConfigImage(inviteToken, imageId, dataUrl, encrypted);
     },
     [inviteToken],
   );

@@ -1,5 +1,14 @@
 export const CHANGELOG = [
   {
+    version: "2.95.27",
+    date: "2026-08-08",
+    changes: [
+      "Novena ronda de mejora progresiva (rendimiento e i18n):",
+      "Rendimiento: la detección de invitado ya confirmado usa un índice por nombre normalizado (antes recorría todas las respuestas en cada tecla del formulario RSVP); couplePhoto deja de cifrarse dos veces (se reutiliza el cifrado de uploadImage).",
+      "i18n: completadas las claves críticas (common, RSVP, galería y vídeo de bienvenida) en francés, alemán, portugués, italiano, catalán y gallego — antes caían al español como fallback.",
+    ],
+  },
+  {
     version: "2.95.26",
     date: "2026-08-08",
     changes: [

@@ -366,6 +366,17 @@ export function useRsvp(
     };
   }, [inviteToken, canRead, processRsvpSnapshot]);
 
+  // Índice por nombre normalizado (evita recorrer todas las entradas en cada
+  // tecla del formulario RSVP cuando hay muchas respuestas).
+  const entriesByName = useMemo(() => {
+    const map = new Map<string, RsvpEntryData>();
+    for (const e of rsvpEntries) {
+      const n = normalizeFullName(e.guestName).toLowerCase();
+      if (n && !map.has(n)) map.set(n, e);
+    }
+    return map;
+  }, [rsvpEntries]);
+
   useEffect(() => {
     // Se normaliza igual que al guardar (normalizeFullName colapsa espacios
     // internos) para que "Juan  Pérez" coincida con la respuesta guardada y
@@ -377,7 +388,7 @@ export function useRsvp(
       prefillRef.current = null;
       return;
     }
-    const match = rsvpEntries.find((e) => normalizeFullName(e.guestName).toLowerCase() === name) || null;
+    const match = entriesByName.get(name) || null;
 
     if (match && match.rsvpType === "companion") {
       if (match.id !== prefillRef.current) {
@@ -460,7 +471,7 @@ export function useRsvp(
       setAlreadySubmittedEntry(null);
       prefillRef.current = null;
     }
-  }, [rsvpForm.guestName, rsvpEntries]);
+  }, [rsvpForm.guestName, entriesByName, rsvpEntries]);
 
   const updateRsvpField = useCallback((field: string, value: unknown) => {
     // Al editar cualquier campo se oculta el error del último submit.

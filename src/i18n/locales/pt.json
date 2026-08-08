@@ -29,7 +29,13 @@
     "saving": "Saving…",
     "menu": "Menu",
     "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
-    "reload": "Actualizar"
+    "reload": "Actualizar",
+    "copied": "Copiado",
+    "delete": "Excluir",
+    "offline": "Offline",
+    "version": "Versão",
+    "remove": "Remover",
+    "goHome": "Voltar ao início"
   },
   "landing": {
     "title": "Wedingo — Convites de casamento",
@@ -114,7 +120,9 @@
     "thumbnailAlt": "Miniatura de foto da galeria",
     "carouselLabel": "Galeria de imagens, use as setas para navegar",
     "lightboxLabel": "Imagem ampliada",
-    "download": "Descargar foto"
+    "download": "Descargar foto",
+    "openLightbox": "Ampliar imagem",
+    "imageUnavailable": "Imagem indisponível"
   },
   "rsvp": {
     "sectionLabel": "Confirmação de presença",
@@ -169,7 +177,31 @@
     "guestNamesLabel": "Nomes de convidados",
     "guestNamesHint": "Escreva o nome e o sobrenome de cada acompanhante (máx. {{count}})",
     "guestNamesPlaceholder": "Nome1 Sobrenome1, Nome2 Sobrenome2...",
-    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo.",
+    "attendanceOptions": "Presença",
+    "attendingAlone": "Vou sozinho(a)",
+    "attendingWithCompanions": "Vou com acompanhantes",
+    "companionHeading": "Acompanhante {{number}}",
+    "companionInfo": "Foi confirmado(a) como acompanhante de {{name}}",
+    "limitReached": "O limite de confirmações foi atingido",
+    "addCompanion": "Adicionar acompanhante",
+    "attendeeNamePlaceholder": "Nome do convidado",
+    "menuPlaceholder": "Escolha um menu",
+    "allergies": {
+      "sin gluten": "Sem glúten",
+      "sin lactosa": "Sem lactose",
+      "alergia frutos secos": "Alergia a frutos secos",
+      "alergia mariscos": "Alergia a mariscos"
+    },
+    "nameHint": "Escreva o seu nome tal como aparece no convite",
+    "birthDateHint": "Data de nascimento (para validar a idade)",
+    "transportLabel": "Transporte",
+    "transportHint": "Indique o seu meio de transporte",
+    "transportOwnCarOption": "Meu carro",
+    "transportBusOption": "Ônibus",
+    "transportTaxiOption": "Táxi",
+    "transportDepartureLabel": "Partida",
+    "deadlinePassed": "O prazo expirou"
   },
   "public": {
     "loadingInvitation": "Carregando convite…",
@@ -888,5 +920,8 @@
   },
   "settings": {
     "languageLabel": "Idioma del panel"
+  },
+  "welcomeVideo": {
+    "title": "Mensagem dos noivos"
   }
 }

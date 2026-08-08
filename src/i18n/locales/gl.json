@@ -29,7 +29,13 @@
     "saving": "Saving…",
     "menu": "Menu",
     "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
-    "reload": "Actualizar"
+    "reload": "Actualizar",
+    "copied": "Copiado",
+    "delete": "Eliminar",
+    "offline": "Sen conexión",
+    "version": "Versión",
+    "remove": "Eliminar",
+    "goHome": "Volver ao inicio"
   },
   "landing": {
     "title": "Wedingo — Invitacións de voda",
@@ -114,7 +120,9 @@
     "thumbnailAlt": "Miniatura de foto da galería",
     "carouselLabel": "Galería de imaxes, usa as frechas para navegar",
     "lightboxLabel": "Imaxe ampliada",
-    "download": "Descargar foto"
+    "download": "Descargar foto",
+    "openLightbox": "Ampliar imaxe",
+    "imageUnavailable": "Imaxe non dispoñible"
   },
   "rsvp": {
     "sectionLabel": "Confirmación de asistencia",
@@ -169,7 +177,31 @@
     "guestNamesLabel": "Nomes de convidados",
     "guestNamesHint": "Escribe o nome e apelidos de cada acompañante (máx. {{count}})",
     "guestNamesPlaceholder": "Nome1 Apelidos1, Nome2 Apelidos2...",
-    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo.",
+    "attendanceOptions": "Asistencia",
+    "attendingAlone": "Vou só/a",
+    "attendingWithCompanions": "Vou con acompañantes",
+    "companionHeading": "Acompañante {{number}}",
+    "companionInfo": "Fuches confirmado como acompañante de {{name}}",
+    "limitReached": "Alcanzouse o límite de confirmacións",
+    "addCompanion": "Engadir acompañante",
+    "attendeeNamePlaceholder": "Nome do convidado",
+    "menuPlaceholder": "Escolle un menú",
+    "allergies": {
+      "sin gluten": "Sen glute",
+      "sin lactosa": "Sen lactosa",
+      "alergia frutos secos": "Alerxia a froitos secos",
+      "alergia mariscos": "Alerxia a mariscos"
+    },
+    "nameHint": "Escribe o teu nome tal como aparece na invitación",
+    "birthDateHint": "Data de nacemento (para validar a idade)",
+    "transportLabel": "Transporte",
+    "transportHint": "Indica o teu medio de transporte",
+    "transportOwnCarOption": "O meu coche",
+    "transportBusOption": "Autobús",
+    "transportTaxiOption": "Taxi",
+    "transportDepartureLabel": "Saída",
+    "deadlinePassed": "O prazo expirou"
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
@@ -888,5 +920,8 @@
   },
   "settings": {
     "languageLabel": "Idioma del panel"
+  },
+  "welcomeVideo": {
+    "title": "Mensaxe dos noivos"
   }
 }

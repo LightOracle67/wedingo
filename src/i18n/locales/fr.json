@@ -29,7 +29,13 @@
     "saving": "Saving…",
     "menu": "Menu",
     "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
-    "reload": "Actualizar"
+    "reload": "Actualizar",
+    "copied": "Copié",
+    "delete": "Supprimer",
+    "offline": "Hors ligne",
+    "version": "Version",
+    "remove": "Retirer",
+    "goHome": "Retour à l'accueil"
   },
   "landing": {
     "title": "Wedingo — Faire-part de mariage",
@@ -114,7 +120,9 @@
     "thumbnailAlt": "Miniature de photo de la galerie",
     "carouselLabel": "Galerie d'images, utilisez les touches fléchées pour naviguer",
     "lightboxLabel": "Image agrandie",
-    "download": "Descargar foto"
+    "download": "Descargar foto",
+    "openLightbox": "Agrandir l'image",
+    "imageUnavailable": "Image indisponible"
   },
   "rsvp": {
     "sectionLabel": "Confirmation de présence",
@@ -169,7 +177,31 @@
     "guestNamesLabel": "Noms des invités",
     "guestNamesHint": "Écrivez le prénom et le nom de chaque compagnon (max {{count}})",
     "guestNamesPlaceholder": "Nom1 Nom1, Nom2 Nom2...",
-    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo.",
+    "attendanceOptions": "Assistance",
+    "attendingAlone": "Je viens seul(e)",
+    "attendingWithCompanions": "Je viens avec des accompagnants",
+    "companionHeading": "Accompagnant {{number}}",
+    "companionInfo": "Vous avez été confirmé(e) comme accompagnant de {{name}}",
+    "limitReached": "La limite de confirmations a été atteinte",
+    "addCompanion": "Ajouter un accompagnant",
+    "attendeeNamePlaceholder": "Nom de l'invité",
+    "menuPlaceholder": "Choisissez un menu",
+    "allergies": {
+      "sin gluten": "Sans gluten",
+      "sin lactosa": "Sans lactose",
+      "alergia frutos secos": "Allergie aux fruits à coque",
+      "alergia mariscos": "Allergie aux fruits de mer"
+    },
+    "nameHint": "Écrivez votre nom tel qu'il apparaît sur l'invitation",
+    "birthDateHint": "Date de naissance (pour valider l'âge)",
+    "transportLabel": "Transport",
+    "transportHint": "Indiquez votre moyen de transport",
+    "transportOwnCarOption": "Ma voiture",
+    "transportBusOption": "Bus",
+    "transportTaxiOption": "Taxi",
+    "transportDepartureLabel": "Départ",
+    "deadlinePassed": "La date limite est dépassée"
   },
   "public": {
     "loadingInvitation": "Chargement du faire-part…",
@@ -888,5 +920,8 @@
   },
   "settings": {
     "languageLabel": "Idioma del panel"
+  },
+  "welcomeVideo": {
+    "title": "Message des mariés"
   }
 }

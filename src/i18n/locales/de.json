@@ -29,7 +29,13 @@
     "saving": "Saving…",
     "menu": "Menu",
     "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
-    "reload": "Actualizar"
+    "reload": "Actualizar",
+    "copied": "Kopiert",
+    "delete": "Löschen",
+    "offline": "Offline",
+    "version": "Version",
+    "remove": "Entfernen",
+    "goHome": "Zur Startseite"
   },
   "landing": {
     "title": "Wedingo — Hochzeitseinladungen",
@@ -114,7 +120,9 @@
     "thumbnailAlt": "Miniaturansicht eines Galeriefotos",
     "carouselLabel": "Bildergalerie, zum Navigieren verwenden Sie die Pfeiltasten",
     "lightboxLabel": "Vergrößertes Bild",
-    "download": "Descargar foto"
+    "download": "Descargar foto",
+    "openLightbox": "Bild vergrößern",
+    "imageUnavailable": "Bild nicht verfügbar"
   },
   "rsvp": {
     "sectionLabel": "Rückmeldung",
@@ -169,7 +177,31 @@
     "guestNamesLabel": "Gastnamen",
     "guestNamesHint": "Schreiben Sie den Vor- und Nachnamen jedes Begleiters (max. {{count}})",
     "guestNamesPlaceholder": "Name1 Nachname1, Name2 Nachname2...",
-    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo.",
+    "attendanceOptions": "Anwesenheit",
+    "attendingAlone": "Ich komme allein",
+    "attendingWithCompanions": "Ich komme mit Begleitung",
+    "companionHeading": "Begleitung {{number}}",
+    "companionInfo": "Sie wurden als Begleitung von {{name}} bestätigt",
+    "limitReached": "Das Bestätigungslimit wurde erreicht",
+    "addCompanion": "Begleitung hinzufügen",
+    "attendeeNamePlaceholder": "Name des Gastes",
+    "menuPlaceholder": "Wählen Sie ein Menü",
+    "allergies": {
+      "sin gluten": "Ohne Gluten",
+      "sin lactosa": "Ohne Laktose",
+      "alergia frutos secos": "Nussallergie",
+      "alergia mariscos": "Meeresfrüchteallergie"
+    },
+    "nameHint": "Geben Sie Ihren Namen wie auf der Einladung an",
+    "birthDateHint": "Geburtsdatum (zur Altersprüfung)",
+    "transportLabel": "Transport",
+    "transportHint": "Geben Sie Ihr Transportmittel an",
+    "transportOwnCarOption": "Eigenes Auto",
+    "transportBusOption": "Bus",
+    "transportTaxiOption": "Taxi",
+    "transportDepartureLabel": "Abfahrt",
+    "deadlinePassed": "Die Frist ist abgelaufen"
   },
   "public": {
     "loadingInvitation": "Einladung wird geladen…",
@@ -888,5 +920,8 @@
   },
   "settings": {
     "languageLabel": "Idioma del panel"
+  },
+  "welcomeVideo": {
+    "title": "Nachricht des Paares"
   }
 }

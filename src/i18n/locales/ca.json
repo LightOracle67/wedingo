@@ -29,7 +29,13 @@
     "saving": "Saving…",
     "menu": "Menu",
     "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
-    "reload": "Actualizar"
+    "reload": "Actualizar",
+    "copied": "Copiat",
+    "delete": "Elimina",
+    "offline": "Sense connexió",
+    "version": "Versió",
+    "remove": "Treu",
+    "goHome": "Torna a l'inici"
   },
   "landing": {
     "title": "Wedingo — Invitacions de casament",
@@ -114,7 +120,9 @@
     "thumbnailAlt": "Miniatura de foto de la galeria",
     "carouselLabel": "Galeria d'imatges, utilitzeu les tecles de fletxa per navegar",
     "lightboxLabel": "Imatge ampliada",
-    "download": "Descargar foto"
+    "download": "Descargar foto",
+    "openLightbox": "Ampliar imatge",
+    "imageUnavailable": "Imatge no disponible"
   },
   "rsvp": {
     "sectionLabel": "Confirmació d'assistència",
@@ -169,7 +177,31 @@
     "guestNamesLabel": "Noms de convidats",
     "guestNamesHint": "Escriu el nom i els cognoms de cada company ({{count}} màxim)",
     "guestNamesPlaceholder": "Nom1 Cognoms1, Nom2 Cognoms2...",
-    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo.",
+    "attendanceOptions": "Assistència",
+    "attendingAlone": "Vinc sol/a",
+    "attendingWithCompanions": "Vinc amb acompanyants",
+    "companionHeading": "Acompanyant {{number}}",
+    "companionInfo": "Has estat confirmat com a acompanyant de {{name}}",
+    "limitReached": "S'ha assolit el límit de confirmacions",
+    "addCompanion": "Afegeix acompanyant",
+    "attendeeNamePlaceholder": "Nom del convidat",
+    "menuPlaceholder": "Tria un menú",
+    "allergies": {
+      "sin gluten": "Sense gluten",
+      "sin lactosa": "Sense lactosa",
+      "alergia frutos secos": "Al·lèrgia a fruits secs",
+      "alergia mariscos": "Al·lèrgia a mariscs"
+    },
+    "nameHint": "Escriu el teu nom tal com apareix a la invitació",
+    "birthDateHint": "Data de naixement (per validar l'edat)",
+    "transportLabel": "Transport",
+    "transportHint": "Indica el teu mitjà de transport",
+    "transportOwnCarOption": "El meu cotxe",
+    "transportBusOption": "Autobús",
+    "transportTaxiOption": "Taxi",
+    "transportDepartureLabel": "Sortida",
+    "deadlinePassed": "El termini ha vençut"
   },
   "public": {
     "loadingInvitation": "Carregant invitació…",
@@ -888,5 +920,8 @@
   },
   "settings": {
     "languageLabel": "Idioma del panel"
+  },
+  "welcomeVideo": {
+    "title": "Missatge dels nuvis"
   }
 }

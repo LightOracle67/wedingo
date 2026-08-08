@@ -280,25 +280,34 @@ function cfgImgCol(token: string) {
   return collection(db, "invitations", token, "configImages");
 }
 
-export async function saveConfigImage(inviteToken: string, imageId: string, dataUrl: string): Promise<string> {
-  let encrypted;
-  try {
-    encrypted = await encrypt(dataUrl, inviteToken);
-  } catch (e) {
-    console.error("[app]", "[image-store]", "saveConfigImage encrypt failed:", e);
-    throw new Error(i18n.t("errors.encryptFailed"));
+export async function saveConfigImage(
+  inviteToken: string,
+  imageId: string,
+  dataUrl: string,
+  encrypted?: string,
+): Promise<string> {
+  // Si el caller ya cifró (p. ej. uploadImage lo hace para la galería), se
+  // reutiliza: evita el doble cifrado de couplePhoto. Si no, se cifra aquí.
+  let enc = encrypted;
+  if (!enc) {
+    try {
+      enc = await encrypt(dataUrl, inviteToken);
+    } catch (e) {
+      console.error("[app]", "[image-store]", "saveConfigImage encrypt failed:", e);
+      throw new Error(i18n.t("errors.encryptFailed"));
+    }
+    if (!enc) throw new Error(i18n.t("errors.encryptFailed"));
   }
-  if (!encrypted) throw new Error(i18n.t("errors.encryptFailed"));
   // El campo `data` guarda el base64 cifrado y Firestore limita a 1MB por valor;
   // se valida aquí con un error amigable antes de que Firestore lo rechace.
-  if (encrypted.length > MAX_ENCRYPTED_BYTES) {
-    console.error("[app]", "[image-store]", "saveConfigImage too large", { imageId, size: encrypted.length });
+  if (enc.length > MAX_ENCRYPTED_BYTES) {
+    console.error("[app]", "[image-store]", "saveConfigImage too large", { imageId, size: enc.length });
     throw new Error(i18n.t("errors.imageTooLarge"));
   }
 
   const ref = doc(cfgImgCol(inviteToken), imageId);
   try {
-    await withWriteRetry(() => setDoc(ref, { data: encrypted, createdAt: serverTimestamp() }));
+    await withWriteRetry(() => setDoc(ref, { data: enc, createdAt: serverTimestamp() }));
   } catch (e) {
     console.error("[app]", "[image-store]", "saveConfigImage setDoc FAILED:", e);
     throw e;

@@ -29,7 +29,13 @@
     "saving": "Saving…",
     "menu": "Menu",
     "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
-    "reload": "Actualizar"
+    "reload": "Actualizar",
+    "copied": "Copiato",
+    "delete": "Elimina",
+    "offline": "Offline",
+    "version": "Versione",
+    "remove": "Rimuovi",
+    "goHome": "Torna alla home"
   },
   "landing": {
     "title": "Wedingo — Inviti di nozze",
@@ -114,7 +120,9 @@
     "thumbnailAlt": "Miniatura foto della galleria",
     "carouselLabel": "Galleria di immagini, usa i tasti freccia per navigare",
     "lightboxLabel": "Immagine ingrandita",
-    "download": "Descargar foto"
+    "download": "Descargar foto",
+    "openLightbox": "Ingrandisci immagine",
+    "imageUnavailable": "Immagine non disponibile"
   },
   "rsvp": {
     "sectionLabel": "Conferma di partecipazione",
@@ -169,7 +177,31 @@
     "guestNamesLabel": "Nomi degli ospiti",
     "guestNamesHint": "Scrivi il nome e il cognome di ciascun accompagnatore (max {{count}})",
     "guestNamesPlaceholder": "Nome1 Cognome1, Nome2 Cognome2...",
-    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo."
+    "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo.",
+    "attendanceOptions": "Partecipazione",
+    "attendingAlone": "Vengo da solo/a",
+    "attendingWithCompanions": "Vengo con accompagnatori",
+    "companionHeading": "Accompagnatore {{number}}",
+    "companionInfo": "Sei stato confermato come accompagnatore di {{name}}",
+    "limitReached": "È stato raggiunto il limite di conferme",
+    "addCompanion": "Aggiungi accompagnatore",
+    "attendeeNamePlaceholder": "Nome dell'ospite",
+    "menuPlaceholder": "Scegli un menu",
+    "allergies": {
+      "sin gluten": "Senza glutine",
+      "sin lactosa": "Senza lattosio",
+      "alergia frutos secos": "Allergia alla frutta secca",
+      "alergia mariscos": "Allergia ai crostacei"
+    },
+    "nameHint": "Scrivi il tuo nome come appare sull'invito",
+    "birthDateHint": "Data di nascita (per la verifica dell'età)",
+    "transportLabel": "Trasporto",
+    "transportHint": "Indica il tuo mezzo di trasporto",
+    "transportOwnCarOption": "La mia auto",
+    "transportBusOption": "Bus",
+    "transportTaxiOption": "Taxi",
+    "transportDepartureLabel": "Partenza",
+    "deadlinePassed": "Il termine è scaduto"
   },
   "public": {
     "loadingInvitation": "Caricamento invito…",
@@ -888,5 +920,8 @@
   },
   "settings": {
     "languageLabel": "Idioma del panel"
+  },
+  "welcomeVideo": {
+    "title": "Messaggio degli sposi"
   }
 }
