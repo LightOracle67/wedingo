@@ -1,7 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useLocation } from "react-router";
-import LegalModal from "../components/LegalModal";
 import { UIContext } from "./useAppUI";
+
+// Lazy: el LegalModal (con el texto completo de la política) no debe entrar en
+// el bundle inicial; se carga solo cuando se abre.
+const LegalModal = lazy(() => import("../components/LegalModal"));
 
 export function UIProvider({ children }: { children: React.ReactNode }) {
   const [saveMessage, setSaveMessage] = useState("");
@@ -68,7 +71,11 @@ export function UIProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <UIContext.Provider value={uiValue}>
-      {legalModal && <LegalModal section={legalModal} onClose={() => setLegalModal("")} />}
+      {legalModal ? (
+        <Suspense fallback={null}>
+          <LegalModal section={legalModal} onClose={() => setLegalModal("")} />
+        </Suspense>
+      ) : null}
       {children}
     </UIContext.Provider>
   );

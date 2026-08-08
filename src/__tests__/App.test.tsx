@@ -29,6 +29,8 @@ vi.mock("../contexts/ToastContext", () => ({
 const mockUseApp = vi.fn();
 vi.mock("../contexts", () => ({
   useApp: (...args: unknown[]) => mockUseApp(...args),
+  useConfig: (...args: unknown[]) => mockUseApp(...args),
+  useAuth: (...args: unknown[]) => mockUseApp(...args),
 }));
 
 vi.mock("../components/AccessibilityPanel", () => ({

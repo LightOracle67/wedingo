@@ -11,7 +11,7 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../hooks/useToast";
-import { useApp } from "../contexts";
+import { useRsvpContext } from "../contexts";
 import { eraseGuestLocalData, exportGuestLocalData } from "../lib/data-request";
 import Modal from "./Modal";
 import "../styles/modals.css";
@@ -28,7 +28,7 @@ const DataRequestModal = memo(function DataRequestModal({ inviteToken, onClose }
   const { addToast } = useToast();
   // Respuestas del invitado ya cargadas (caché/descifradas): se incluyen en
   // el export de portabilidad cuando están disponibles.
-  const { rsvpEntries } = useApp();
+  const { rsvpEntries } = useRsvpContext();
 
   /** Descarga un JSON con los datos del navegador y las respuestas (portabilidad). */
   const handleExport = () => {

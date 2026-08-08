@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.95.23",
+    date: "2026-08-08",
+    changes: [
+      "Quinta ronda de mejora progresiva (rendimiento, i18n y legal):",
+      "Rendimiento: el LegalModal sale del bundle inicial (lazy real); AppShell y DataRequestModal usan hooks granulares (el contexto fusionado ya no re-renderiza todo con cada tecla del RSVP); los handlers del sobre son estables (el EnvelopeOverlay memoizado ya no re-renderiza cada segundo con el countdown).",
+      "i18n: completado es.json (botones de restablecer que antes se mostraban como claves literales en español); eliminadas 41 claves muertas + 1 huérfana (2633 referencias en los locales); el fallback de compartir y el aria-label de carga ahora se traducen.",
+      "Legal: la política de privacidad en inglés se alinea con la española (menores, decisiones automatizadas, consecuencias de no facilitar datos, DPO, AEPD, UK GDPR/ICO y almacenamiento local), como exige el UK GDPR.",
+    ],
+  },
+  {
     version: "2.95.22",
     date: "2026-08-08",
     changes: [

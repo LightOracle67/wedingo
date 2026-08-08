@@ -160,8 +160,7 @@
       "birthDateRequired": "Necesitamos tu fecha de nacimiento para completar tu respuesta.",
       "ageUnder14": "Al ser menor de 14 años, necesitamos el consentimiento de tus padres o tutores.",
       "healthConsentRequired": "Dinos si podemos usar tu información de alergias para adaptar el menú.",
-      "nameFullRequired": "Introduce el nombre completo: nombre y dos apellidos.",
-      "guestNamesRequired": "Los nombres de los invitados son obligatorios."
+      "nameFullRequired": "Introduce el nombre completo: nombre y dos apellidos."
     },
     "successAttending": "¡Gracias, {{name}}! Nos alegra mucho que vengas.",
     "successNotAttending": "Gracias, {{name}}. Te echaremos de menos.",
@@ -269,9 +268,6 @@
     "couplePhotoUploadHint": "JPG, PNG o WebP — máx 20 MB",
     "couplePhotoHint": "Foto de la pareja para la portada.",
     "currentPhoto": "Foto actual",
-    "imagesHint": "Sube un fondo y una foto de los novios para la portada.",
-    "presetsLabel": "Previsualizaciones del lugar",
-    "presetsHint": "Pulsa para usar como fondo de portada",
     "remove": "Quitar",
     "musicLabel": "Música de fondo",
     "audioHint": "Sube un archivo de audio para reproducir en la portada (MP3, WAV, OGG, M4A — máx 5 MB).",
@@ -313,15 +309,9 @@
     "menuEnabledLabel": "Los invitados pueden elegir su menú",
     "menuHint": "Añade los platos de cada menú con su orden. Si no se ofrece ese menú, déjalo vacío.",
     "menuCarneLabel": "Menú de carne",
-    "menuCarnePlaceholder": "Describe el menú de carne...",
     "menuPescadoLabel": "Menú de pescado",
-    "menuPescadoPlaceholder": "Describe el menú de pescado...",
     "menuVeganoLabel": "Menú vegano/vegetariano",
-    "menuVeganoPlaceholder": "Describe el menú vegano...",
-    "postreLabel": "Postre *",
-    "postrePlaceholder": "Describe el postre",
     "menuRequiredText": "Obligatorio: postre y al menos un menú principal.",
-    "menuTextoPlaceholder": "Describe el menú: entrante, plato principal, postre...",
     "menuTextoHint": "Añade los platos del menú con su orden. Los invitados los verán al confirmar.",
     "storyLabel": "Nuestra historia",
     "storyPlaceholder": "Ejemplo: Nos conocimos en…",
@@ -450,7 +440,10 @@
     "musicPollHint": "Los invitados sugieren y votan canciones para el DJ.",
     "triviaLabel": "Trivia de la pareja",
     "triviaHint": "Un mini-quiz con las respuestas de los novios.",
-    "triviaEditorHint": "Una pregunta por línea: Pregunta | Respuesta"
+    "triviaEditorHint": "Una pregunta por línea: Pregunta | Respuesta",
+    "resetButton": "Restablecer",
+    "resetConfirmInitial": "Todos los campos se restablecerán a sus valores por defecto, excepto tu token de acceso. ¿Continuar?",
+    "resetConfirmAdmin": "Todos los campos se restablecerán a sus valores por defecto. ¿Continuar?"
   },
   "admin": {
     "tabs": {
@@ -642,16 +635,12 @@
     "dressCodeCustomRequired": "Si eliges 'Otro' como código de vestimenta, escribe un mensaje personalizado.",
     "dressCodeCustomTooLong": "El mensaje personalizado del código de vestimenta no puede superar los {{max}} caracteres.",
     "sectionsDeactivated": "Se han desactivado las secciones sin contenido: {{sections}}.",
-    "scheduleEventsInvalid": "El itinerario no puede tener más de 10 eventos.",
     "scheduleEventTimeInvalid": "La hora de un evento del itinerario no es válida.",
-    "scheduleEventTextTooLong": "El texto de un evento no puede superar los 60 caracteres.",
     "storyTooLong": "La historia no puede superar los 2000 caracteres.",
     "giftsTooLong": "La información de regalos no puede superar los 2000 caracteres.",
     "configSaved": "Configuración guardada correctamente.",
     "deleteConfirm": "¿Eliminar toda tu invitación? Se borrarán todos los datos, fotos y confirmaciones. No se puede deshacer.",
     "invalidLink": "El enlace de invitación no es válido.",
-    "accommodationTooLong": "La información de alojamiento no puede superar los 2000 caracteres.",
-    "menuTextoTooLong": "La descripción del menú no puede superar los 2000 caracteres.",
     "uploadImageFailed": "No se pudo procesar la imagen. Prueba con otra.",
     "readImageFailed": "No se pudo leer el archivo de imagen.",
     "encryptFailed": "El cifrado de la imagen falló.",
@@ -675,13 +664,9 @@
     "aborted": "La operación fue abortada.",
     "unauthenticated": "Se requiere autenticación.",
     "errorDetail": "{{error}}",
-    "transportDeparturesInvalid": "Las salidas de transporte no son válidas.",
     "transportTimeInvalid": "La hora de una salida es obligatoria y debe ser válida (formato HH:MM).",
     "transportUrlInvalid": "El enlace del mapa de una salida no es válido.",
     "accommodationUrlInvalid": "El enlace de alojamiento no es válido (debe ser una URL de Google Maps de un lugar).",
-    "menuDishesInvalid": "Los platos del menú no son válidos.",
-    "menuDishOrderInvalid": "El orden de un plato no es válido.",
-    "menuDishTextTooLong": "El texto de un plato no puede superar los 200 caracteres.",
     "generic": "Algo salió mal. Inténtalo de nuevo.",
     "restoreFailed": "No se pudo restaurar la copia de seguridad.",
     "mapUrlInvalid": "La URL del mapa de la ubicación no es válida. Usa el botón de mapa para insertar un enlace de Google Maps.",
@@ -706,7 +691,6 @@
     "managePlatform": "Gestiona la plataforma Wedingo",
     "dashboardEmpty": "No hay datos disponibles aún. Crea una invitación para ver estadísticas.",
     "dashboardLoading": "Cargando estadísticas...",
-    "dashboardError": "Error al cargar estadísticas.",
     "expiredInvitations": "{{count}} invitación(es) con más de 12 meses desde la boda",
     "expiredText": "Según la política de privacidad, estos datos deberían haberse eliminado automáticamente.",
     "cleanButton": "Eliminar {{count}} invitación(es)",
@@ -718,14 +702,9 @@
     "statsTotalGuests": "Invitados totales",
     "statsInvitations": "Invitaciones",
     "statsConfirmationRate": "Tasa de confirmación",
-    "statsGalleryImages": "Imágenes en galería",
-    "statsTokenUtilization": "Uso de tokens",
     "statsStorage": "Espacio estimado",
-    "statsAutoTokens": "Auto-generados",
     "responseSummary": "Resumen de respuestas",
     "platformInfo": "Información de la plataforma",
-    "responsesByDay": "Respuestas por día",
-    "tokensByDay": "Tokens generados por día",
     "invitationLoadError": "No se pudieron cargar las invitaciones.",
     "searchTokenPlaceholder": "Buscar por token...",
     "invitationsCount": "{{count}} invitaciones · {{size}} ocupados",
@@ -739,20 +718,15 @@
     "deleteConfirmInvitation": "¿Eliminar la invitación \"{{id}}\" permanentemente?",
     "deleteError": "No se pudo eliminar la invitación.",
     "exportError": "Error al exportar.",
-    "exportAllBtn": "Exportar todo",
     "tokensLoading": "Cargando tokens...",
     "tokensStats": "{{total}} tokens · {{used}} usados · {{available}} disponibles",
-    "generateToken": "Generar nuevo token",
     "cleanUnused": "Limpiar no usados",
     "noTokens": "No hay tokens todavía.",
     "statusAvailable": "Disponible",
-    "createdLabel": "Creado: {{date}}",
-    "usedLabel": "Usado: {{date}}",
     "revokeButton": "Revocar",
     "tokenRevoked": "Token revocado.",
     "tokensCleaned": "Se eliminaron {{count}} tokens no usados.",
     "noTokensToClean": "No hay tokens no usados que limpiar.",
-    "tokenCreateError": "No se pudo crear el token.",
     "tokenRevokeError": "No se pudo revocar el token.",
     "tokenCleanError": "No se pudieron limpiar los tokens.",
     "tokenLoadError": "No se pudieron cargar los tokens.",
@@ -914,9 +888,6 @@
   },
   "print": {
     "preparing": "Preparando impresión...",
-    "dressCodeFallback": "Se comunicará más adelante.",
-    "bestGift": "Tu presencia es el mejor regalo",
-    "accommodationFallback": "La información sobre alojamiento se compartirá próximamente.",
     "timeSuffix": "h"
   },
   "sectionOrder": {
@@ -947,7 +918,6 @@
   "chart": {
     "noData": "Sin datos",
     "total": "total",
-    "barChart": "Gráfico de barras de asistencia",
     "donutSummary": "Total: {{total}} — Confirman {{yes}}, no asisten {{no}}, sin responder {{pending}}"
   },
   "changelog": {
@@ -964,19 +934,10 @@
     "invalidCredentials": "Usuario o código incorrecto.",
     "codeUserMismatch": "El código no corresponde a este usuario.",
     "loginSuccess": "Has entrado correctamente.",
-    "confirmRequired": "Escribe CONFIRMAR para generar un código nuevo.",
-    "usernameInvalid": "El usuario solo puede contener letras y números.",
-    "usernameTooLong": "El usuario no puede superar los 50 caracteres.",
-    "unauthorizedUser": "Este usuario no tiene permiso para entrar aquí.",
-    "tokenGenerated": "Código generado. Ahora puedes entrar.",
-    "tokenGenerateError": "No se pudo generar el código. Inténtalo de nuevo.",
     "currentTokenRequired": "Escribe el código de acceso actual para generar uno nuevo.",
     "tokenRenewed": "Código nuevo generado. Cópialo del campo superior antes de guardar.",
     "tokenRenewedAdmin": "Código renovado. Esto no cambia la contraseña de la aplicación.",
     "sessionUpdateFailed": "No se pudo actualizar la sesión.",
-    "tokenUpdateFailed": "No se pudo actualizar el código de acceso.",
-    "tokenRestoreFailed": "No se pudo restaurar el código guardado.",
-    "tokenLookupFailed": "No se pudo verificar el código de acceso.",
     "tokenCreateFailed": "No se pudo crear un nuevo código de acceso.",
     "logoutFailed": "No se pudo cerrar la sesión.",
     "superadminNoPermissions": "Esta cuenta no tiene permisos de administración.",
@@ -1122,8 +1083,7 @@
   },
   "reactions": {
     "label": "Reacciona a la invitación",
-    "title": "¡Dinos qué te parece!",
-    "empty": ""
+    "title": "¡Dinos qué te parece!"
   },
   "notes": {
     "title": "Dedicatorias",
@@ -1168,5 +1128,8 @@
   },
   "welcomeVideo": {
     "title": "Mensaje de los novios"
+  },
+  "seo": {
+    "inviteFallback": "{{names}} te invitan a su boda."
   }
 }

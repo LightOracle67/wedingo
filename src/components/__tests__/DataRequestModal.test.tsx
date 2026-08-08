@@ -14,7 +14,7 @@ vi.mock("../../hooks/useToast", () => ({
 }));
 
 vi.mock("../../contexts", () => ({
-  useApp: () => ({ rsvpEntries: [{ id: "r1", guestName: "Ana" }] }),
+  useRsvpContext: () => ({ rsvpEntries: [{ id: "r1", guestName: "Ana" }] }),
 }));
 
 vi.mock("../../lib/data-request", () => ({

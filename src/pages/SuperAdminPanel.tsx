@@ -98,7 +98,7 @@ export default function SuperAdminPanel() {
           id={"sadm-tabpanel-" + activeTab}
           aria-labelledby={"sadm-tab-" + activeTab}
         >
-          <Suspense fallback={<div className="page-loading" role="status" aria-label="Cargando" />}>
+          <Suspense fallback={<div className="page-loading" role="status" aria-label={t("common.loading")} />}>
             {activeTab === "dashboard" && <DashboardTab />}
             {activeTab === "invitaciones" && <InvitationsTab />}
             {activeTab === "tokens" && <TokensTab />}

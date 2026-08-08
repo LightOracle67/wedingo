@@ -276,6 +276,20 @@ export default function PublicInvitation() {
       videoClosingRef.current = false;
     }, 300);
   }, []);
+  // Apertura del sobre y confeti: handlers ESTABLES (useCallback) para no
+  // romper el React.memo del EnvelopeOverlay en cada tick del countdown.
+  const handleEnvelopeOpen = useCallback(() => {
+    setEnvelopeOpen(true);
+    if (config.welcomeVideo && config.welcomeVideoEnabled !== "false") setShowWelcomeVideo(true);
+    // Apertura del sobre: el gesto principal de la invitación.
+    trackEvent("envelope_open", { method: "click" });
+  }, [config.welcomeVideo, config.welcomeVideoEnabled]);
+  const handleConfetti = useCallback(() => {
+    // El confeti arranca justo al terminar el fade out del texto del sobre
+    // (2.6s tras el segundo gesto) y cae 3 veces detrás de la invitación.
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), CONF_TOTAL_MS);
+  }, []);
   // El vídeo de bienvenida es un diálogo modal: trampa de foco (WCAG 2.4.3) y
   // cierre con Escape mientras está abierto (incluida la animación de salida).
   const videoOpen = showWelcomeVideo || videoClosing;
@@ -472,13 +486,13 @@ export default function PublicInvitation() {
     applySocialMeta({
       title: `${coupleName} — Wedingo`,
       description:
-        config.inviteMessage || `${config.firstName} & ${config.secondName || ""} te invitan a su boda.`.trim(),
+        config.inviteMessage || t("seo.inviteFallback", { names: `${config.firstName} & ${config.secondName || ""}`.trim() }),
       url: `${SITE_URL}/${inviteToken}`,
       image: config.couplePhoto,
       locale: i18n?.language,
     });
     return () => resetSocialMeta();
-  }, [config.firstName, config.secondName, config.inviteMessage, config.couplePhoto, inviteToken, i18n]);
+  }, [config.firstName, config.secondName, config.inviteMessage, config.couplePhoto, inviteToken, i18n, t]);
 
   // ─── Datos de ubicación derivados ──────────────────────
   const hasLocationData = Boolean(config.weddingPlace || config.weddingSiteURL);
@@ -753,18 +767,8 @@ export default function PublicInvitation() {
     >
       {showEnvelope ? (
         <EnvelopeOverlay
-          onOpen={() => {
-            setEnvelopeOpen(true);
-            if (config.welcomeVideo && config.welcomeVideoEnabled !== "false") setShowWelcomeVideo(true);
-            // Apertura del sobre: el gesto principal de la invitación.
-            trackEvent("envelope_open", { method: "click" });
-          }}
-          onConfetti={() => {
-            // El confeti arranca justo al terminar el fade out del texto del sobre
-            // (2.6s tras el segundo gesto) y cae 3 veces detrás de la invitación.
-            setShowConfetti(true);
-            setTimeout(() => setShowConfetti(false), CONF_TOTAL_MS);
-          }}
+          onOpen={handleEnvelopeOpen}
+          onConfetti={handleConfetti}
           firstName={config.firstName}
           secondName={config.secondName}
           customSeal={config.customSeal}

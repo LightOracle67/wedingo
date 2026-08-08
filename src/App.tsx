@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { AppProvider } from "./contexts/AppContext";
-import { useApp } from "./contexts";
+import { useConfig, useAuth } from "./contexts";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -35,7 +35,10 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function AppShell() {
   const { t } = useTranslation();
-  const { config, formData, isAdminTokenLoggedIn, tokenLoginUsername, inviteToken } = useApp();
+  // Hooks granulares (no useApp): evitan que AppShell re-renderice con cada
+  // tecla del formulario RSVP o cada tick del countdown (contexto fusionado).
+  const { config, formData, inviteToken } = useConfig();
+  const { isAdminTokenLoggedIn, tokenLoginUsername } = useAuth();
   const [username, setUsername] = useState("");
 
   useEffect(() => {
