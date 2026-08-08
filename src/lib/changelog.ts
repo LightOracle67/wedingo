@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.32",
+    date: "2026-08-08",
+    changes: [
+      "Fix: el modal de consentimiento de cookies se limita a la altura de pantalla (max-height con scroll interno), de modo que las secciones del accordion siempre se ven completas y accesibles.",
+    ],
+  },
+  {
     version: "2.95.31",
     date: "2026-08-08",
     changes: [
