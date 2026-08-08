@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.35",
+    date: "2026-08-08",
+    changes: [
+      "Fix: el botón de cerrar (X) del modal de cookies se posiciona dentro del contenedor, arriba a la derecha (antes quedaba anclado a la esquina de la pantalla).",
+    ],
+  },
+  {
     version: "2.95.34",
     date: "2026-08-08",
     changes: [

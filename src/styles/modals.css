@@ -109,6 +109,7 @@
   animation: overlay-in 240ms ease;
 }
 .cookie-consent-card {
+  position: relative;
   background:
     linear-gradient(150deg, color-mix(in srgb, var(--setup-grad-start) 96%, white) 0%, var(--setup-grad-end) 100%);
   border: 1px solid color-mix(in srgb, var(--setup-border) 80%, transparent);
