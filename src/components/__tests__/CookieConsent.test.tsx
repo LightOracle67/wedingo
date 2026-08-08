@@ -94,7 +94,9 @@ describe("CookieConsent", () => {
   it("toggles analytics preference", () => {
     render(<CookieConsent />);
     fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
-    const analyticsCheckbox = screen.getByText("cookie.analytics").previousElementSibling as HTMLInputElement;
+    // Abre la sección "Estadísticas de visita" del accordion.
+    fireEvent.click(screen.getByRole("button", { name: /analytics/ }));
+    const analyticsCheckbox = screen.getAllByRole("checkbox")[1] as HTMLInputElement;
     expect(analyticsCheckbox.checked).toBe(false);
     fireEvent.click(analyticsCheckbox);
     expect(analyticsCheckbox.checked).toBe(true);
@@ -112,7 +114,7 @@ describe("CookieConsent", () => {
   it("does not toggle necessary preference", () => {
     render(<CookieConsent />);
     fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
-    const necessaryCheckbox = screen.getByText("cookie.necessary").previousElementSibling as HTMLInputElement;
+    const necessaryCheckbox = screen.getAllByRole("checkbox")[0] as HTMLInputElement;
     expect(necessaryCheckbox).toBeDisabled();
     expect(necessaryCheckbox.checked).toBe(true);
   });
@@ -128,7 +130,8 @@ describe("CookieConsent", () => {
   it("does not remove cache when saving preferences with analytics enabled", () => {
     render(<CookieConsent />);
     fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
-    const analyticsCheckbox = screen.getByText("cookie.analytics").previousElementSibling as HTMLInputElement;
+    fireEvent.click(screen.getByRole("button", { name: /analytics/ }));
+    const analyticsCheckbox = screen.getAllByRole("checkbox")[1] as HTMLInputElement;
     fireEvent.click(analyticsCheckbox);
     fireEvent.click(screen.getByRole("button", { name: "cookie.savePreferences" }));
     expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
@@ -141,7 +144,7 @@ describe("CookieConsent", () => {
     render(<CookieConsent />);
     fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
     const prefsBefore = mockLocalStorage.setItem.mock.calls.length;
-    const necessaryCheckbox = screen.getByText("cookie.necessary").previousElementSibling as HTMLInputElement;
+    const necessaryCheckbox = screen.getAllByRole("checkbox")[0] as HTMLInputElement;
     fireEvent.click(necessaryCheckbox);
     expect(mockLocalStorage.setItem.mock.calls.length).toBe(prefsBefore);
   });
@@ -149,9 +152,9 @@ describe("CookieConsent", () => {
   it("calling togglePreference with necessary key returns early", () => {
     render(<CookieConsent />);
     fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
-    const necessaryCheckbox = screen.getByText("cookie.necessary").previousElementSibling as HTMLInputElement;
+    const necessaryCheckbox = screen.getAllByRole("checkbox")[0] as HTMLInputElement;
     expect(necessaryCheckbox.checked).toBe(true);
-    const analyticsCheckbox = screen.getByText("cookie.analytics").previousElementSibling as HTMLInputElement;
+    const analyticsCheckbox = screen.getAllByRole("checkbox")[1] as HTMLInputElement;
     const analyticsBefore = analyticsCheckbox.checked;
     fireEvent.click(necessaryCheckbox);
     expect(necessaryCheckbox.checked).toBe(true);

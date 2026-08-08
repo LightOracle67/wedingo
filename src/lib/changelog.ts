@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.31",
+    date: "2026-08-08",
+    changes: [
+      "El modal de consentimiento de cookies (vista de configuración) se divide en secciones accordion como el modal legal: cada categoría (almacenamiento necesario, estadísticas de visita) se despliega para mostrar su descripción y su control, con transición suave y aria-expanded.",
+    ],
+  },
+  {
     version: "2.95.30",
     date: "2026-08-08",
     changes: [

@@ -595,7 +595,9 @@
     "necessary": "Almacenamiento necesario",
     "analytics": "Estadísticas de visita (envía datos de uso y errores solo si aceptas)",
     "savePreferences": "Guardar preferencias",
-    "settingsTitle": "Configurar cookies"
+    "settingsTitle": "Configurar cookies",
+    "necessaryDesc": "Necesario para que la invitación funcione: guarda tu sesión de configuración, tus preferencias de consentimiento y la caché local. No se puede desactivar.",
+    "analyticsDesc": "Si la aceptas, enviamos estadísticas anónimas de uso (Google Analytics) y datos de errores (Sentry) que nos ayudan a mejorar. No se activa sin tu consentimiento."
   },
   "legal": {
     "sectionPrivacy": "Política de Privacidad",

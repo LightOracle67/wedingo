@@ -595,7 +595,9 @@
     "necessary": "Necessary storage",
     "analytics": "Visit analytics (sends usage and error data only if you accept)",
     "savePreferences": "Save preferences",
-    "settingsTitle": "Cookie settings"
+    "settingsTitle": "Cookie settings",
+    "necessaryDesc": "Required for the invitation to work: it stores your setup session, consent preferences and local cache. It cannot be disabled.",
+    "analyticsDesc": "If you accept, we send anonymous usage statistics (Google Analytics) and error data (Sentry) that help us improve. It never activates without your consent."
   },
   "legal": {
     "sectionPrivacy": "Privacy Policy",

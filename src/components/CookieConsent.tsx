@@ -60,6 +60,8 @@ const CookieConsent = memo(function CookieConsent() {
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  // Sección del accordion de preferencias abierta ("" = ninguna).
+  const [openSection, setOpenSection] = useState("necessary");
   const [preferences, setPreferences] = useState({ necessary: true, analytics: false });
 
   useEffect(() => {
@@ -145,20 +147,90 @@ const CookieConsent = memo(function CookieConsent() {
             <p className="cookie-consent-text" style={{ fontWeight: 600 }}>
               {t("cookie.settingsTitle")}
             </p>
+            {/* Preferencias en secciones accordion (patrón del modal legal):
+                cada categoría se despliega para mostrar su descripción y su
+                control, evitando un modal demasiado largo. */}
             <div className="cookie-settings-list">
-              <label className="cookie-settings-item">
-                <input
-                  type="checkbox"
-                  checked={preferences.necessary}
-                  disabled
-                  onChange={() => togglePreference("necessary")}
-                />
-                <span>{t("cookie.necessary")}</span>
-              </label>
-              <label className="cookie-settings-item">
-                <input type="checkbox" checked={preferences.analytics} onChange={() => togglePreference("analytics")} />
-                <span>{t("cookie.analytics")}</span>
-              </label>
+              {[
+                {
+                  id: "necessary" as const,
+                  label: t("cookie.necessary"),
+                  desc: t("cookie.necessaryDesc"),
+                  control: (
+                    <label className="cookie-settings-item">
+                      <input type="checkbox" checked disabled onChange={() => {}} />
+                      <span>{t("cookie.necessary")}</span>
+                    </label>
+                  ),
+                },
+                {
+                  id: "analytics" as const,
+                  label: t("cookie.analytics"),
+                  desc: t("cookie.analyticsDesc"),
+                  control: (
+                    <label className="cookie-settings-item">
+                      <input type="checkbox" checked={preferences.analytics} onChange={() => togglePreference("analytics")} />
+                      <span>{t("cookie.analytics")}</span>
+                    </label>
+                  ),
+                },
+              ].map((s) => (
+                <div key={s.id}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenSection((prev) => (prev === s.id ? "" : s.id))}
+                    aria-expanded={openSection === s.id ? "true" : "false"}
+                    style={{
+                      width: "100%",
+                      textAlign: "left",
+                      padding: "0.7rem 0",
+                      border: "none",
+                      borderBottom: "1px solid var(--setup-border)",
+                      background: "transparent",
+                      color: "var(--setup-title)",
+                      cursor: "pointer",
+                      fontSize: "0.9rem",
+                      fontWeight: 600,
+                      fontFamily: "var(--font-body)",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span>{s.label}</span>
+                    <span
+                      style={{
+                        transform: openSection === s.id ? "rotate(135deg)" : "rotate(0deg)",
+                        transition: "transform 300ms ease",
+                        fontSize: "1rem",
+                        opacity: 0.5,
+                      }}
+                    >
+                      +
+                    </span>
+                  </button>
+                  <div
+                    style={{
+                      maxHeight: openSection === s.id ? "400px" : "0px",
+                      overflow: "hidden",
+                      transition: "max-height 400ms ease, opacity 300ms ease",
+                      opacity: openSection === s.id ? 1 : 0,
+                    }}
+                  >
+                    <div
+                      style={{
+                        padding: "0.5rem 0 0.8rem",
+                        color: "var(--setup-subtitle)",
+                        fontSize: "0.82rem",
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      <p style={{ margin: "0 0 0.6rem" }}>{s.desc}</p>
+                      {s.control}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
             <div className="cookie-consent-actions" style={{ marginTop: "0.75rem" }}>
               <button className="setup-button setup-button--primary" onClick={handleSavePreferences}>
