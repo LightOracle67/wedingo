@@ -170,14 +170,12 @@ export default function LandingPage() {
         await runTransaction(db, async (transaction) => {
           const inviteRefInTx = invitationDocRef(target);
           const inviteSnapInTx = await transaction.get(inviteRefInTx);
-          if (!inviteSnapInTx.exists()) {
-            transaction.set(inviteRefInTx, {
-              ...defaultConfig,
-              activeSession: serverTimestamp(),
-              sessionExpiresAt: firestoreSessionExpiry(),
-              setupTokenHash: tokenHash,
-            });
-          } else {
+          // La sesión solo se renueva sobre una invitación que ya existe: si el
+          // documento aún no se ha guardado (token huérfano), la sesión se
+          // activará en el primer guardado del setup. Crear aquí la invitación
+          // con campos de sesión está prohibido por las reglas (no se puede
+          // auto-provisionar una sesión en el create).
+          if (inviteSnapInTx.exists()) {
             transaction.update(inviteRefInTx, {
               activeSession: serverTimestamp(),
               sessionExpiresAt: firestoreSessionExpiry(),

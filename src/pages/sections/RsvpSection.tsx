@@ -1,6 +1,6 @@
 import { memo, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useAppUI } from "../../contexts";
+import { useConfig, useAppUI, useAuth } from "../../contexts";
 import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import { parseMenuDishes } from "../../lib/menu-utils";
 import { parseTransportDepartures } from "../../lib/transport-utils";
@@ -88,6 +88,11 @@ const RsvpSection = memo(function RsvpSection({
 }: RsvpSectionProps) {
   const { t } = useTranslation();
   const { setLegalModal } = useAppUI();
+  // El botón "Retirar respuesta" solo funciona con sesión de admin (las reglas
+  // Firestore exigen isSuperAdmin o hasActiveSession): para el invitado sin
+  // sesión se oculta, ya que de otro modo se mostraría un botón que siempre
+  // fallaría con permission-denied.
+  const { isAdminTokenLoggedIn } = useAuth();
   const { config } = useConfig();
 
   // Fecha límite de confirmación: si la invitación tiene una y ya pasó, el
@@ -117,17 +122,20 @@ const RsvpSection = memo(function RsvpSection({
     [t],
   );
 
-  const menuOptions = [
-    ...(menuCarneDishes
-      ? [{ key: "carne" as const, label: t("rsvp.menuCarne"), desc: formatDishes(menuCarneDishes) }]
-      : []),
-    ...(menuPescadoDishes
-      ? [{ key: "pescado" as const, label: t("rsvp.menuPescado"), desc: formatDishes(menuPescadoDishes) }]
-      : []),
-    ...(menuVeganoDishes
-      ? [{ key: "vegano" as const, label: t("rsvp.menuVegano"), desc: formatDishes(menuVeganoDishes) }]
-      : []),
-  ];
+  const menuOptions = useMemo(
+    () => [
+      ...(menuCarneDishes
+        ? [{ key: "carne" as const, label: t("rsvp.menuCarne"), desc: formatDishes(menuCarneDishes) }]
+        : []),
+      ...(menuPescadoDishes
+        ? [{ key: "pescado" as const, label: t("rsvp.menuPescado"), desc: formatDishes(menuPescadoDishes) }]
+        : []),
+      ...(menuVeganoDishes
+        ? [{ key: "vegano" as const, label: t("rsvp.menuVegano"), desc: formatDishes(menuVeganoDishes) }]
+        : []),
+    ],
+    [menuCarneDishes, menuPescadoDishes, menuVeganoDishes, formatDishes, t],
+  );
 
   const departures: Departure[] = useMemo(() => {
     if (!transportEnabled || transportEnabled === "none") return [];
@@ -976,14 +984,16 @@ const RsvpSection = memo(function RsvpSection({
                 className="setup-actions"
                 style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}
               >
-                <button
-                  className="setup-button"
-                  type="button"
-                  onClick={handleDeleteRsvp}
-                  style={{ background: "#ef4444", color: "#fff" }}
-                >
-                  {t("rsvp.withdrawButton")}
-                </button>
+                {isAdminTokenLoggedIn ? (
+                  <button
+                    className="setup-button"
+                    type="button"
+                    onClick={handleDeleteRsvp}
+                    style={{ background: "#ef4444", color: "#fff" }}
+                  >
+                    {t("rsvp.withdrawButton")}
+                  </button>
+                ) : null}
               </div>
             ) : (
               <div className="setup-actions">

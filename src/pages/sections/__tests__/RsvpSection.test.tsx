@@ -10,6 +10,7 @@ vi.mock("../../../contexts", () => ({
   useApp: () => ({ setLegalModal: vi.fn() }),
   useAppUI: () => ({ setLegalModal: vi.fn() }),
   useConfig: () => ({ config: {} }),
+  useAuth: () => ({ isAdminTokenLoggedIn: true }),
 }));
 
 import RsvpSection from "../RsvpSection";

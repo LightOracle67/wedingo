@@ -234,10 +234,15 @@ service cloud.firestore {
          ofertas de coche compartido y reservas de regalo. El texto público se
          sanea con isSafeText; solo el admin/superadmin puede borrar. */
       match /reactions/{emoji} {
+        /* El id se restringe a los emojis soportados por la UI (❤️ 🎉 😂):
+           un atacante no puede crear documentos de reacciones con ids
+           arbitrarios para inflar el almacenamiento ni llenar la subcolección. */
         allow read: if true;
-        allow create: if request.resource.data.keys().hasOnly(['count'])
+        allow create: if emoji in ['❤️', '🎉', '😂']
+          && request.resource.data.keys().hasOnly(['count'])
           && request.resource.data.count is int && request.resource.data.count == 1;
-        allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['count'])
+        allow update: if emoji in ['❤️', '🎉', '😂']
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['count'])
           && request.resource.data.count is int
           && request.resource.data.count == resource.data.count + 1
           && request.resource.data.count <= 10000;
@@ -382,6 +387,7 @@ service cloud.firestore {
         && request.resource.data.dietaryInfo.size() <= 4000
         && isSafeText(request.resource.data.dietaryInfo)
         && request.resource.data.privacyConsent == true
+        && request.resource.data.privacyConsentAt is timestamp
         && (
           !request.resource.data.keys().hasAny(['healthConsent'])
           || request.resource.data.healthConsent == true
@@ -400,7 +406,7 @@ service cloud.firestore {
         && (
           !request.resource.data.keys().hasAny(['birthDate'])
           || request.resource.data.birthDate == ""
-          || request.resource.data.birthDate < "2012-08-09"
+          || request.resource.data.birthDate < "2013-08-08"
           || request.resource.data.parentalConsent == true
         )
         && exists(/databases/$(database)/documents/rsvpResponses/$(inviteToken))

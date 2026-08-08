@@ -1,5 +1,16 @@
 export const CHANGELOG = [
   {
+    version: "2.95.24",
+    date: "2026-08-08",
+    changes: [
+      "Sexta ronda de mejora progresiva (seguridad y funcionalidad):",
+      "Seguridad: las reacciones se limitan a los emojis soportados (❤️ 🎉 😂), evitando spam de documentos con ids arbitrarios; el consentimiento del RSVP exige timestamp de servidor (privacyConsentAt) auditable; la fecha de corte del consentimiento parental se actualiza a 2013-08-08 (el CI la valida).",
+      "Funcionalidad: el botón 'Retirar respuesta' ya no se muestra a invitados sin sesión (las reglas lo denegaban siempre, con permiso-denied); el login del Landing ya no intenta activar sesión sobre una invitación inexistente (el create de sesión está prohibido por las reglas).",
+      "Rendimiento: menuOptions del RSVP memoizado; clase text-boda-texto (color del tema) añadida al CSS, que se usaba sin definir.",
+      "Legal: la política de privacidad (es/en) informa ahora de la fecha de nacimiento y de que las contribuciones sociales (dedicatorias, canciones, trayectos, reservas) son visibles para los demás invitados.",
+    ],
+  },
+  {
     version: "2.95.23",
     date: "2026-08-08",
     changes: [

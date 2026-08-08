@@ -1748,6 +1748,19 @@ a,
   margin-bottom: 0.5rem;
 }
 
+/* text-boda-texto: color de texto de la boda (heredado del tema). Estas
+   clases Tailwind se usan en las páginas de la invitación pero no venían
+   definidas, así que el texto muted no aplicaba. */
+.text-boda-texto {
+  color: var(--invite-copy-color, #c3b193);
+}
+.text-boda-texto\/60 {
+  color: color-mix(in srgb, var(--invite-copy-color, #c3b193) 60%, transparent);
+}
+.text-boda-texto\/80 {
+  color: color-mix(in srgb, var(--invite-copy-color, #c3b193) 80%, transparent);
+}
+
 .story-scroll-hint {
   position: fixed;
   left: 50%;
