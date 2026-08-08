@@ -99,7 +99,7 @@ describe("SetupForm", () => {
 
   it("renders privacy consent when no stored config", () => {
     render(<SetupForm />);
-    expect(screen.getByText("setup.privacyConsent")).toBeDefined();
+    expect(screen.getByText("setup.privacyConsentBefore", { exact: false })).toBeDefined();
   });
 
   it("does not render privacy consent when config exists", () => {
@@ -115,7 +115,7 @@ describe("SetupForm", () => {
 
   it("calls handleSaveSetup on form submit", () => {
     render(<SetupForm />);
-    // Marca la confirmación obligatoria del token antes de guardar.
+    // Marca la confirmaciÃ³n obligatoria del token antes de guardar.
     fireEvent.click(screen.getByText("setup.tokenAcknowledge"));
     const form = document.querySelector(".setup-form") as HTMLFormElement;
     fireEvent.submit(form);
@@ -194,7 +194,7 @@ describe("SetupForm", () => {
 
   it("calls updateFormField on privacy consent toggle", () => {
     render(<SetupForm />);
-    const privacyLabel = screen.getByText("setup.privacyConsent").closest("label")!;
+    const privacyLabel = screen.getByText("setup.privacyConsentBefore", { exact: false }).closest("label")!;
     const checkbox = within(privacyLabel).getByRole("checkbox");
     fireEvent.click(checkbox);
     expect(mockUpdateFormField).toHaveBeenCalledWith("_privacyConsent", "true");
@@ -208,7 +208,7 @@ describe("SetupForm", () => {
   it("calls setLegalModal when clicking privacy link", () => {
     mockUseApp.mockReturnValue({ ...baseUseApp, hasStoredConfig: false });
     render(<SetupForm />);
-    const privacyLabel = screen.getByText("setup.privacyConsent").closest("label")!;
+    const privacyLabel = screen.getByText("setup.privacyConsentBefore", { exact: false }).closest("label")!;
     const linkBtn = within(privacyLabel).getByRole("button");
     fireEvent.click(linkBtn);
     expect(mockSetLegalModal).toHaveBeenCalledWith("privacy");
@@ -227,7 +227,7 @@ describe("SetupForm", () => {
     HTMLFormElement.prototype.requestSubmit = requestSubmit;
     const origQuery = document.querySelector.bind(document);
     // El div contenedor .setup-form ya no se usa: el handler usa el ref del
-    // <form> real, así que aunque querySelector devuelva null, se envía.
+    // <form> real, asÃ­ que aunque querySelector devuelva null, se envÃ­a.
     vi.spyOn(document, "querySelector").mockImplementation((sel: string) => {
       if (sel === ".setup-form") return null;
       return origQuery(sel);
@@ -253,7 +253,7 @@ describe("SetupForm", () => {
       formData: { _privacyConsent: "true" },
     });
     render(<SetupForm />);
-    const privacyLabel = screen.getByText("setup.privacyConsent").closest("label")!;
+    const privacyLabel = screen.getByText("setup.privacyConsentBefore", { exact: false }).closest("label")!;
     const checkbox = within(privacyLabel).getByRole("checkbox");
     expect(checkbox).toBeChecked();
     fireEvent.click(checkbox);

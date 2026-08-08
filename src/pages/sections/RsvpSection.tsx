@@ -1,5 +1,5 @@
 import { memo, useCallback, useMemo } from "react";
-import { Trans, useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { useConfig, useAppUI } from "../../contexts";
 import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import { parseMenuDishes } from "../../lib/menu-utils";
@@ -925,27 +925,28 @@ const RsvpSection = memo(function RsvpSection({
                 disabled={isAlreadySubmitted}
               />
               <span>
-                <Trans
-                  i18nKey="rsvp.privacyConsent"
-                  components={{
-                    link: (
-                      <button
-                        type="button"
-                        onClick={handleLegalClick}
-                        style={{
-                          color: "var(--setup-accent)",
-                          textDecoration: "underline",
-                          background: "none",
-                          border: "none",
-                          cursor: "pointer",
-                          fontFamily: "inherit",
-                          fontSize: "inherit",
-                          padding: 0,
-                        }}
-                      />
-                    ),
+                {t("rsvp.privacyConsentBefore")}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleLegalClick();
                   }}
-                />
+                  style={{
+                    color: "var(--setup-accent)",
+                    textDecoration: "underline",
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    fontFamily: "inherit",
+                    fontSize: "inherit",
+                    padding: 0,
+                  }}
+                >
+                  {t("public.privacyPolicy")}
+                </button>
+                {t("rsvp.privacyConsentAfter")}
               </span>
             </label>
 

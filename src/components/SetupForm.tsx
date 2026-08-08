@@ -13,7 +13,7 @@
  */
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useTranslation, Trans } from "react-i18next";
+import { useTranslation } from "react-i18next";
 import { useConfig, useAuth, useAppUI } from "../contexts";
 import { useToast } from "../hooks/useToast";
 import CollapsibleSection from "./CollapsibleSection";
@@ -189,27 +189,30 @@ export default function SetupForm({ prefix = "" }) {
             onChange={(e) => updateFormField("_privacyConsent", e.target.checked ? "true" : "false")}
             style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
           />
-          <Trans
-            i18nKey="setup.privacyConsent"
-            components={{
-              link: (
-                <button
-                  type="button"
-                  onClick={() => setLegalModal("privacy")}
-                  style={{
-                    color: "var(--setup-accent)",
-                    textDecoration: "underline",
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    fontFamily: "inherit",
-                    fontSize: "inherit",
-                    padding: 0,
-                  }}
-                />
-              ),
-            }}
-          />
+          <span>
+            {t("setup.privacyConsentBefore")}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setLegalModal("privacy");
+              }}
+              style={{
+                color: "var(--setup-accent)",
+                textDecoration: "underline",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                fontFamily: "inherit",
+                fontSize: "inherit",
+                padding: 0,
+              }}
+            >
+              {t("public.privacyPolicy")}
+            </button>
+            {t("setup.privacyConsentAfter")}
+          </span>
         </label>
       ) : null}
 
