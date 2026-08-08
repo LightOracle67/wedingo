@@ -16,7 +16,7 @@ export function useConfigImage(
     let cancelled = false;
 
     (async () => {
-      const { getConfigImage, isConfigImageRef } = await import("../lib/image-store");
+      const { getConfigImage, isConfigImageRef, configImageIdFromRef } = await import("../lib/image-store");
 
       if (!fieldValue) {
         setDataUrl(undefined);
@@ -29,7 +29,8 @@ export function useConfigImage(
       if (!inviteToken) {
         return;
       }
-      const imageId = fieldValue.slice("__cfgimg:".length);
+      // El ref puede llevar revisión (__cfgimg:{id}:{rev}): se extrae solo el id.
+      const imageId = configImageIdFromRef(fieldValue);
 
       getConfigImage(inviteToken, imageId)
         .then((url) => {

@@ -187,7 +187,7 @@ describe("MusicArrayEditor", () => {
     });
   });
 
-  it("deletes existing audio before uploading new one", async () => {
+  it("does not delete existing audio before uploading (add-first)", async () => {
     mockLoadAudio.mockResolvedValue({
       id: "existing-id",
       url: "https://example.com/old.mp3",
@@ -201,9 +201,12 @@ describe("MusicArrayEditor", () => {
     const file = new File(["fake-audio"], "new.mp3", { type: "audio/mpeg" });
     fireEvent.change(fileInput, { target: { files: [file] } });
 
+    // addAudio retira los chunks anteriores SOLO tras commitar los nuevos
+    // (add-first): el editor ya no borra el audio antes de la subida.
     await waitFor(() => {
-      expect(mockDeleteAudio).toHaveBeenCalledWith("test-token");
+      expect(mockAddAudio).toHaveBeenCalled();
     });
+    expect(mockDeleteAudio).not.toHaveBeenCalled();
   });
 
   it("shows formatted file size after upload", async () => {
@@ -491,8 +494,10 @@ describe("MusicArrayEditor", () => {
     const file = new File(["fake-audio"], "song.mp3", { type: "audio/mpeg" });
     fireEvent.change(fileInput, { target: { files: [file] } });
     await waitFor(() => {
-      expect(mockDeleteAudio).toHaveBeenCalledWith("test-token");
+      expect(mockAddAudio).toHaveBeenCalledWith("test-token", "enc", "data:audio/mp3,test", expect.any(Function));
     });
+    // add-first: no se borra el audio previo desde el editor.
+    expect(mockDeleteAudio).not.toHaveBeenCalled();
   });
 
   it("handles handleFile when no file selected", async () => {

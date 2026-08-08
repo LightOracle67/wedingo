@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.95.25",
+    date: "2026-08-08",
+    changes: [
+      "Séptima ronda de mejora progresiva (uploads y almacenamiento):",
+      "Fix: al re-subir la misma imagen de configuración (portada, sello, fondo, esquina) el preview ya se refresca en la misma sesión (la referencia lleva una revisión y se invalida la caché de URLs).",
+      "Robustez: subir una canción ya no borra el audio anterior antes de garantizar el éxito (add-first): si la subida falla se conserva el audio previo, y la carga usa siempre el intento más reciente.",
+      "Borrado seguro: eliminar una imagen de configuración espera al borrado en Firestore y avisa si falla (ya no limpia el campo en falso ni deja huérfanos en silencio); deleteConfigImage relanza los errores.",
+    ],
+  },
+  {
     version: "2.95.24",
     date: "2026-08-08",
     changes: [

@@ -365,7 +365,7 @@ describe("image-store", () => {
 
     it("saveConfigImage encrypts and stores, returning a ref", async () => {
       const result = await saveConfigImage("token", "couplePhoto", "data:image/png;base64,x");
-      expect(result).toBe("__cfgimg:couplePhoto");
+      expect(result).toMatch(/^__cfgimg:couplePhoto:\d+$/);
     });
 
     it("saveConfigImage throws when encrypt fails", async () => {
@@ -388,7 +388,7 @@ describe("image-store", () => {
       vi.useFakeTimers();
       const promise = saveConfigImage("token", "couplePhoto", "data:image/png;base64,x");
       await vi.advanceTimersByTimeAsync(500);
-      await expect(promise).resolves.toBe("__cfgimg:couplePhoto");
+      await expect(promise).resolves.toMatch(/^__cfgimg:couplePhoto:\d+$/);
       vi.useRealTimers();
     });
 
@@ -445,10 +445,12 @@ describe("image-store", () => {
       vi.useRealTimers();
     });
 
-    it("deleteConfigImage resolves and swallows errors", async () => {
+    it("deleteConfigImage resolves on success and rethrows on failure", async () => {
       await expect(deleteConfigImage("token", "couplePhoto")).resolves.toBeUndefined();
       vi.mocked(firestore.deleteDoc).mockRejectedValueOnce(new Error("net"));
-      await expect(deleteConfigImage("token", "couplePhoto")).resolves.toBeUndefined();
+      // Relanza para que el caller pueda informar y no limpiar el campo si el
+      // borrado en Firestore falló (evita imágenes huérfanas en silencio).
+      await expect(deleteConfigImage("token", "couplePhoto")).rejects.toThrow("net");
     });
 
     it("resolveConfigImageField returns the value untouched for non-refs", async () => {

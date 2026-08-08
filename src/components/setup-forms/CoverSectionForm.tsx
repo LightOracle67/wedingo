@@ -93,14 +93,21 @@ export default function CoverSectionForm({ prefix = "" }) {
     [inviteToken, updateFormField, addToast, t],
   );
 
-  /** Elimina una imagen de configuración (subcolección) y limpia el campo. */
+  /** Elimina una imagen de configuración (subcolección) y limpia el campo.
+   *  Espera al borrado en Firestore: si falla, se informa y NO se limpia el
+   *  campo (evita mostrar la imagen borrada cuando en realidad sigue en la
+   *  subcolección — GDPR: no dejar huérfanos en silencio). */
   const removeConfigImage = useCallback(
     async (imageId: string) => {
       const { deleteConfigImage } = await import("../../lib/image-store");
-      deleteConfigImage(inviteToken, imageId).catch(() => {});
-      updateFormField(imageId, "");
+      try {
+        await deleteConfigImage(inviteToken, imageId);
+        updateFormField(imageId, "");
+      } catch {
+        addToast("error", t("errors.deleteImageFailed"));
+      }
     },
-    [inviteToken, updateFormField],
+    [inviteToken, updateFormField, addToast, t],
   );
 
   const handleCouplePhotoUpload = useCallback(

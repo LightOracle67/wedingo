@@ -5,11 +5,13 @@ import { useConfigImage } from "../useConfigImage";
 const mocks = vi.hoisted(() => ({
   getConfigImage: vi.fn(),
   isConfigImageRef: vi.fn(),
+  configImageIdFromRef: (value: string) => value.slice("__cfgimg:".length).split(":")[0] ?? "",
 }));
 
 vi.mock("../../lib/image-store", () => ({
   getConfigImage: mocks.getConfigImage,
   isConfigImageRef: mocks.isConfigImageRef,
+  configImageIdFromRef: mocks.configImageIdFromRef,
 }));
 
 describe("useConfigImage", () => {

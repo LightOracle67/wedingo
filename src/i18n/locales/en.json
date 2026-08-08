@@ -675,7 +675,8 @@
     "yearInvalid": "The year is not valid.",
     "menuParseError": "The saved menu could not be read: please re-enter the dishes.",
     "rsvpCounterFailed": "Could not prepare the RSVP area. Try saving again.",
-    "saveSessionExpired": "Your session expired or access is not verified. Reload the page and sign in again."
+    "saveSessionExpired": "Your session expired or access is not verified. Reload the page and sign in again.",
+    "deleteImageFailed": "Could not delete the image. Please try again."
   },
   "superadmin": {
     "tabs": {

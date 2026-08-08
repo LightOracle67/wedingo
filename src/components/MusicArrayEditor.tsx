@@ -99,16 +99,16 @@ const MusicArrayEditor = memo(function MusicArrayEditor({
       setUploading(true);
       const upload = startUploadToast(t("setup.musicUploading"));
       try {
-        const { uploadAudio, addAudio, deleteAudio } = await import("../lib/music-store");
+        const { uploadAudio, addAudio } = await import("../lib/music-store");
         const { encrypted, dataUrl } = await withTimeout(
           uploadAudio(inviteToken, file, (p) => upload.update(p)),
           60000,
           "Audio upload timed out",
         );
 
-        if (audioId) {
-          await deleteAudio(inviteToken);
-        }
+        // addAudio ya retira los chunks anteriores SOLO si la subida nueva
+        // commitea (add-first): no borrar aquí, o perderíamos el audio
+        // antiguo si esta subida falla.
         const saved = await addAudio(inviteToken, encrypted, dataUrl, (p) => upload.update(85 + Math.round(p * 0.1)));
 
         setAudioId(saved.id);
@@ -124,7 +124,7 @@ const MusicArrayEditor = memo(function MusicArrayEditor({
       }
       if (input) input.value = "";
     },
-    [inviteToken, audioId, onChange, startUploadToast, addToast, t],
+    [inviteToken, onChange, startUploadToast, addToast, t],
   );
 
   const togglePlay = useCallback(() => {

@@ -259,8 +259,16 @@ export function isConfigImageRef(value: string): boolean {
   return typeof value === "string" && value.startsWith(CONFIG_IMG_PREFIX);
 }
 
-export function makeConfigImageRef(imageId: string): string {
-  return `${CONFIG_IMG_PREFIX}${imageId}`;
+export function makeConfigImageRef(imageId: string, rev?: number): string {
+  // La revisión (rev) cambia en cada subida: el preview (useConfigImage) se
+  // re-resuelve al re-subir la misma imagen, aunque el id no varíe.
+  return rev !== undefined ? `${CONFIG_IMG_PREFIX}${imageId}:${rev}` : `${CONFIG_IMG_PREFIX}${imageId}`;
+}
+
+/** Extrae el id de una referencia __cfgimg:{id}[:{rev}] (compatible con el
+ *  formato antiguo sin revisión). */
+export function configImageIdFromRef(value: string): string {
+  return value.slice(CONFIG_IMG_PREFIX.length).split(":")[0] ?? "";
 }
 
 function cfgImgCol(token: string) {
@@ -290,7 +298,10 @@ export async function saveConfigImage(inviteToken: string, imageId: string, data
     console.error("[app]", "[image-store]", "saveConfigImage setDoc FAILED:", e);
     throw e;
   }
-  return makeConfigImageRef(imageId);
+  // Ref con revisión nueva: invalida la caché de URLs y hace que el preview
+  // se refresque en la misma sesión (fix de imagen obsoleta tras re-subir).
+  CONFIG_IMG_CACHE.delete(`${inviteToken}:${imageId}`);
+  return makeConfigImageRef(imageId, Date.now());
 }
 
 /**
@@ -349,11 +360,8 @@ export async function getConfigImage(inviteToken: string, imageId: string): Prom
 }
 
 export async function deleteConfigImage(inviteToken: string, imageId: string): Promise<void> {
-  try {
-    await deleteDoc(doc(cfgImgCol(inviteToken), imageId));
-  } catch (err) {
-    console.error("[app]", "[image-store]", "deleteConfigImage error", { error: err });
-  }
+  await deleteDoc(doc(cfgImgCol(inviteToken), imageId));
+  CONFIG_IMG_CACHE.delete(`${inviteToken}:${imageId}`);
 }
 
 export async function resolveConfigImageField(
@@ -362,7 +370,7 @@ export async function resolveConfigImageField(
 ): Promise<string | undefined> {
   if (!fieldValue || !inviteToken) return fieldValue;
   if (!isConfigImageRef(fieldValue)) return fieldValue;
-  const imageId = fieldValue.slice(CONFIG_IMG_PREFIX.length);
+  const imageId = configImageIdFromRef(fieldValue);
   return (await getConfigImage(inviteToken, imageId)) || undefined;
 }
 

@@ -31,15 +31,12 @@ export async function addAudio(
   dataUrl: string,
   onProgress?: (pct: number) => void,
 ) {
-  // Elimina los chunks de subidas anteriores (incluidas las incompletas):
-  // loadAudio concatena toda la colección, y sin esta limpieza los chunks
-  // viejos se mezclaban con los nuevos corrompiendo el audio.
+  // Los chunks previos NO se borran al inicio: si la subida falla, el audio
+  // antiguo se conserva. Se escriben primero los chunks nuevos (con un id de
+  // intento único) y solo al final se borran los anteriores. loadAudio usa
+  // siempre el intento más reciente, así que no hay mezcla.
   const prev = await getDocs(audioCol(inviteToken));
-  if (!prev.empty) {
-    const cleanup = writeBatch(db);
-    prev.docs.forEach((d) => cleanup.delete(d.ref));
-    await cleanup.commit();
-  }
+  const attemptId = Date.now();
 
   const chunks: string[] = [];
   for (let i = 0; i < encrypted.length; i += CHUNK_SIZE) {
@@ -59,12 +56,22 @@ export async function addAudio(
         chunkIndex: i,
         data: chunks[i],
         totalChunks: chunks.length,
+        attempt: attemptId,
         createdAt: new Date().toISOString(),
       });
     }
     await batch.commit();
   }
   onProgress?.(95);
+
+  // Subida completada: ahora sí se retiran los chunks anteriores (los nuevos
+  // tienen ids auto-generados y no colisionan). Si este borrado fallara, los
+  // chunks viejos quedan como basura pero el audio nuevo se conserva.
+  if (!prev.empty) {
+    const cleanup = writeBatch(db);
+    prev.docs.forEach((d) => cleanup.delete(d.ref));
+    await cleanup.commit();
+  }
 
   return { id: `${inviteToken}_audio`, dataUrl, chunks: chunks.length };
 }
@@ -76,7 +83,21 @@ export async function loadAudio(inviteToken: string) {
     if (snap.empty) {
       return null;
     }
-    const chunks = snap.docs.map((d) => d.data().data as string);
+    // Usa SOLO los chunks del intento de subida más reciente: al re-subir una
+    // canción quedan temporalmente los chunks antiguos y los nuevos (add-first
+    // para no perder el audio si la subida falla), y sin este filtro se
+    // mezclarían. Los chunks antiguos sin campo `attempt` se tratan como 0.
+    let latestAttempt = -Infinity;
+    for (const d of snap.docs) {
+      const a = typeof d.data().attempt === "number" ? d.data().attempt : 0;
+      if (a > latestAttempt) latestAttempt = a;
+    }
+    const chunks = snap.docs
+      .filter((d) => {
+        const a = typeof d.data().attempt === "number" ? d.data().attempt : 0;
+        return a === latestAttempt;
+      })
+      .map((d) => d.data().data as string);
 
     const concatenated = chunks.join("");
     const url = await decrypt(concatenated, inviteToken);
