@@ -120,7 +120,18 @@ const CookieConsent = memo(function CookieConsent() {
         <div className="cookie-consent-body">
           {!showSettings ? (
             <>
-              <p className="cookie-consent-text">{t("cookie.text")}</p>
+              {/* El texto del consentimiento se presenta por puntos clave,
+                  manteniendo íntegro el contenido de cada sección. */}
+              <div className="cookie-consent-points">
+                {[1, 2, 3, 4].map((n) => (
+                  <p className="cookie-consent-point" key={n}>
+                    <span className="cookie-consent-point__icon" aria-hidden="true">
+                      ✦
+                    </span>
+                    {t(`cookie.point${n}`)}
+                  </p>
+                ))}
+              </div>
               <button
                 type="button"
                 className="cookie-consent-policy"

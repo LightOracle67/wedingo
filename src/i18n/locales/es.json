@@ -597,7 +597,11 @@
     "savePreferences": "Guardar preferencias",
     "settingsTitle": "Configurar cookies",
     "necessaryDesc": "Necesario para que la invitación funcione: guarda tu sesión de configuración, tus preferencias de consentimiento y la caché local. No se puede desactivar.",
-    "analyticsDesc": "Si la aceptas, enviamos estadísticas anónimas de uso (Google Analytics) y datos de errores (Sentry) que nos ayudan a mejorar. No se activa sin tu consentimiento."
+    "analyticsDesc": "Si la aceptas, enviamos estadísticas anónimas de uso (Google Analytics) y datos de errores (Sentry) que nos ayudan a mejorar. No se activa sin tu consentimiento.",
+    "point1": "Wedingo utiliza almacenamiento local necesario para el funcionamiento de la invitación (guardar tu sesión y preferencias).",
+    "point2": "Las tipografías están alojadas en este sitio, sin peticiones a terceros.",
+    "point3": "No usamos cookies de terceros ni rastreadores.",
+    "point4": "La estadística de visitas y la monitorización de errores solo se activan si aceptas la opción «Estadísticas de visita»."
   },
   "legal": {
     "sectionPrivacy": "Política de Privacidad",

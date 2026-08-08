@@ -186,6 +186,26 @@
   line-height: 1.7;
   color: var(--setup-subtitle);
 }
+.cookie-consent-points {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+.cookie-consent-point {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: var(--setup-subtitle);
+}
+.cookie-consent-point__icon {
+  flex-shrink: 0;
+  color: var(--setup-accent, #c8a84e);
+  font-size: 0.8em;
+  line-height: 1.9;
+}
 .cookie-consent-text--sub {
   font-weight: 600;
   color: var(--setup-title);

@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.36",
+    date: "2026-08-08",
+    changes: [
+      "El texto del consentimiento de cookies se presenta por puntos clave (contenido íntegro, solo seccionado): almacenamiento local necesario, tipografías sin terceros, sin cookies ni rastreadores, y analítica/errores solo con consentimiento.",
+    ],
+  },
+  {
     version: "2.95.35",
     date: "2026-08-08",
     changes: [

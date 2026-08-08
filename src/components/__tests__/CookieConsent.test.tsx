@@ -44,7 +44,8 @@ beforeEach(() => {
 describe("CookieConsent", () => {
   it("renders consent message", () => {
     render(<CookieConsent />);
-    expect(screen.getByText("cookie.text")).toBeDefined();
+    expect(screen.getByText("cookie.point1")).toBeDefined();
+    expect(screen.getByText("cookie.point4")).toBeDefined();
   });
 
   it("calls acceptCookies on accept button click", () => {
@@ -108,7 +109,8 @@ describe("CookieConsent", () => {
     expect(screen.getByText("cookie.settingsTitle")).toBeDefined();
     fireEvent.click(screen.getByRole("button", { name: "common.back" }));
     expect(screen.queryByText("cookie.settingsTitle")).toBeNull();
-    expect(screen.getByText("cookie.text")).toBeDefined();
+    expect(screen.getByText("cookie.point1")).toBeDefined();
+    expect(screen.getByText("cookie.point4")).toBeDefined();
   });
 
   it("does not toggle necessary preference", () => {
