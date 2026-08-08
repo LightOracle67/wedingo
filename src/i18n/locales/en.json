@@ -676,7 +676,9 @@
     "menuParseError": "The saved menu could not be read: please re-enter the dishes.",
     "rsvpCounterFailed": "Could not prepare the RSVP area. Try saving again.",
     "saveSessionExpired": "Your session expired or access is not verified. Reload the page and sign in again.",
-    "deleteImageFailed": "Could not delete the image. Please try again."
+    "deleteImageFailed": "Could not delete the image. Please try again.",
+    "errorFileFormat": "File format not allowed",
+    "errorFileSize": "File exceeds the maximum size"
   },
   "superadmin": {
     "tabs": {

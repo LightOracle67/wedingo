@@ -1,6 +1,5 @@
-import { memo, useState, useCallback } from "react";
+import { memo, useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { CHANGELOG } from "../lib/changelog";
 import Modal from "./Modal";
 import "../styles/modals.css";
 
@@ -10,12 +9,22 @@ const DEFAULT_VISIBLE = 5;
 const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
+  // Los datos del changelog se cargan al abrir (import dinámico): así el chunk
+  // del modal no arrastra el historial completo (~80 entradas).
+  const [entries, setEntries] = useState<Array<{ version: string; date: string; changes: string[] }>>([]);
+  useEffect(() => {
+    let cancelled = false;
+    import("../lib/changelog").then((m) => {
+      if (!cancelled) setEntries(m.CHANGELOG);
+    });
+    return () => { cancelled = true; };
+  }, []);
 
   const handleClose = useCallback(() => onClose(), [onClose]);
 
   // Solo se renderizan las últimas versiones hasta que el usuario pide ver
   // el historial completo (80 entradas es un DOM pesado).
-  const visible = showAll ? CHANGELOG : CHANGELOG.slice(0, DEFAULT_VISIBLE);
+  const visible = showAll ? entries : entries.slice(0, DEFAULT_VISIBLE);
 
   return (
     <Modal
@@ -58,7 +67,7 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () =
             </ul>
           </div>
         ))}
-        {!showAll && CHANGELOG.length > DEFAULT_VISIBLE ? (
+        {!showAll && entries.length > DEFAULT_VISIBLE ? (
           <button
             type="button"
             className="setup-button setup-button--ghost setup-button--compact"

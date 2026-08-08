@@ -22,15 +22,15 @@ import ChangelogModal from "../ChangelogModal";
 describe("ChangelogModal", () => {
   afterEach(cleanup);
 
-  it("renders version dates", () => {
+  it("renders version dates", async () => {
     render(<ChangelogModal onClose={vi.fn()} />);
-    expect(screen.getByText("2026-07-01")).toBeDefined();
+    expect(await screen.findByText("2026-07-01")).toBeDefined();
     expect(screen.getByText("2026-03-01")).toBeDefined();
   });
 
-  it("renders change descriptions", () => {
+  it("renders change descriptions", async () => {
     render(<ChangelogModal onClose={vi.fn()} />);
-    expect(screen.getByText("Seven")).toBeDefined();
+    expect(await screen.findByText("Seven")).toBeDefined();
     expect(screen.getByText("Three")).toBeDefined();
   });
 
@@ -55,10 +55,10 @@ describe("ChangelogModal", () => {
     vi.useRealTimers();
   });
 
-  it("shows only the latest versions until the user asks for the full history", () => {
+  it("shows only the latest versions until the user asks for the full history", async () => {
     render(<ChangelogModal onClose={vi.fn()} />);
     // Las 5 primeras versiones se muestran; el botón "ver todo" aparece.
-    expect(screen.getByText("2026-07-01")).toBeDefined();
+    expect(await screen.findByText("2026-07-01")).toBeDefined();
     expect(screen.getByText("changelog.showAll")).toBeDefined();
     // La versión 1.0.0 está fuera de las 5 primeras.
     expect(screen.queryByText("2025-06-01")).toBeNull();

@@ -75,7 +75,7 @@ export interface SocialMetaInput {
 
 /** Imagen social por defecto (banner genérico) cuando la invitación no tiene
  *  una URL absoluta (couplePhoto suele ser un data URI, no indexable). */
-export const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/og-banner.png`;
+const DEFAULT_SOCIAL_IMAGE = `${SITE_URL}/og-banner.png`;
 
 /** Mapeo de código de idioma a locale og:locale (lengua_TERRITORIO). */
 const LOCALE_MAP: Record<string, string> = {

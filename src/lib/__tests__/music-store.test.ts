@@ -45,7 +45,7 @@ describe("music-store", () => {
 
   it("uploadAudio compresses and encrypts", async () => {
     const onProgress = vi.fn();
-    const result = await uploadAudio("token", new File([], "test.mp3"), onProgress);
+    const result = await uploadAudio("token", new File([], "test.mp3", { type: "audio/mpeg" }), onProgress);
     expect(result).toHaveProperty("encrypted");
     expect(result).toHaveProperty("dataUrl");
     expect(onProgress).toHaveBeenCalled();
@@ -58,7 +58,7 @@ describe("music-store", () => {
         mockImplementationOnce: (fn: () => Promise<string | null>) => void;
       }
     ).mockImplementationOnce(mockEncrypt);
-    await expect(uploadAudio("token", new File([], "test.mp3"))).rejects.toThrow("Encryption failed");
+    await expect(uploadAudio("token", new File([], "test.mp3", { type: "audio/mpeg" }))).rejects.toThrow("Encryption failed");
   });
 
   it("addAudio chunks and writes to firestore", async () => {

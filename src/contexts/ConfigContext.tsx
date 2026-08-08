@@ -39,13 +39,15 @@ import { getFirestoreErrorMessage } from "../lib/error-utils";
 import { ConfigContext } from "./useConfig";
 import { useAppUI } from "./useAppUI";
 
+/** Año máximo permitido al guardar la fecha de la boda (constante de módulo:
+ *  no se recalcula en cada render). */
+const MAX_ALLOWED_YEAR = new Date().getFullYear() + MAX_YEARS_AHEAD;
+
 export function ConfigProvider({ children }: { children: ReactNode }) {
   const { t } = useTranslation();
   const { setSaveMessage, setSaveError } = useAppUI();
   const location = useLocation();
   const navigate = useNavigate();
-
-  const maxAllowedYear = new Date().getFullYear() + MAX_YEARS_AHEAD;
 
   const [config, setConfig] = useState<InvitationConfig>(defaultConfig as InvitationConfig);
   const [formData, setFormData] = useState<InvitationConfig>(defaultConfig as InvitationConfig);
@@ -59,11 +61,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   /** Estado visible del guardado (habilita el botón "Guardar" de SetupForm). */
   const [isSaving, setIsSaving] = useState(false);
   const loadedTokenRef = useRef("");
-  /** Token actual del provider (se actualiza en cada render): evita que un
+  /** Token actual del provider (se actualiza en un effect): evita que un
    *  autosave de la invitación A sobrescriba el estado en memoria de B al
    *  navegar mientras la promesa está en vuelo. */
   const currentTokenRef = useRef(inviteToken);
-  currentTokenRef.current = inviteToken;
+  useEffect(() => {
+    currentTokenRef.current = inviteToken;
+  }, [inviteToken]);
   // La visita se cuenta una vez por invitación: al cambiar de token (admin
   // navegando entre varias) se resetea para volver a contarla.
   const trackedRef = useRef("");
@@ -76,7 +80,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
   const { handleDayChange, handleTimeChange, handleTimeBlur, handleYearChange } = useFieldHandlers(
     updateFormField,
-    maxAllowedYear,
+    MAX_ALLOWED_YEAR,
   );
 
   const { autoSaveTimerRef } = useAutoSave(
@@ -354,7 +358,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       const { sanitized, hiddenSet, errorKey, errorParams } = validateConfigForSave(
         formData,
         hasStoredConfig,
-        maxAllowedYear,
+        MAX_ALLOWED_YEAR,
       );
       if (errorKey) {
         setSaveError(errorParams ? t(errorKey, errorParams) : t(errorKey));
@@ -408,6 +412,23 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
         payload.privacyConsent = true;
         payload.privacyConsentAt = serverTimestamp();
+
+        // Primer guardado (create): las reglas exigen la prueba de conocimiento
+        // del token de setup (setupTokenValid) para no alojar invitaciones
+        // falsas. Se adjunta el hash del token guardado en sessionStorage.
+        if (!hasStoredConfig) {
+          const storedToken = (() => {
+            try {
+              return sessionStorage.getItem(STORAGE_KEYS.setupToken(inviteToken || "")) || "";
+            } catch {
+              return "";
+            }
+          })();
+          if (storedToken) {
+            const { hashSetupToken } = await import("../lib/setup-token");
+            payload.setupTokenHash = await hashSetupToken(storedToken);
+          }
+        }
 
         await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
 
@@ -485,7 +506,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     [
       hasStoredConfig,
       formData,
-      maxAllowedYear,
       inviteToken,
       config,
       autoSaveTimerRef,
@@ -562,7 +582,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       isConfigLoading,
       configLoadError,
       inviteToken,
-      maxAllowedYear,
+      maxAllowedYear: MAX_ALLOWED_YEAR,
       formattedDate,
       formattedTime,
       calendarLink,
@@ -587,7 +607,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       isConfigLoading,
       configLoadError,
       inviteToken,
-      maxAllowedYear,
       formattedDate,
       formattedTime,
       calendarLink,

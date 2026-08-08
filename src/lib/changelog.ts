@@ -1,5 +1,15 @@
 export const CHANGELOG = [
   {
+    version: "2.95.29",
+    date: "2026-08-08",
+    changes: [
+      "Implementación de pendientes de auditorías (seguridad, rendimiento y calidad):",
+      "Seguridad: el create de invitaciones exige la prueba de conocimiento del token de setup (el primer guardado adjunta el hash); _visits no puede fijarse en el create y tiene un tope global (1M); los nombres en las subcolecciones sociales se limitan a 60 caracteres.",
+      "Rendimiento: la auto-reproducción de la galería ya no recrea el intervalo en cada avance; useAutoSave no re-serializa todo el config en cada tecla; DetailsSection deja de suscribirse al contexto (recibe la configuración por props y el memo se conserva); ChangelogModal carga los datos solo al abrir.",
+      "Calidad: validación de tipo/tamaño movida a uploadImage/uploadAudio (defensa en profundidad); couplePhoto sin doble cifrado ya integrado; maxAllowedYear como constante de módulo; currentTokenRef en effect; exports internos sin 'export'.",
+    ],
+  },
+  {
     version: "2.95.28",
     date: "2026-08-08",
     changes: [

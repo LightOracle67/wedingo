@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { setDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
@@ -127,12 +127,17 @@ export function useAutoSave(
     [inviteToken, isSavingRef, t, onAutoSaved, onSaveError],
   );
 
+  // Comparaciones memoizadas: se evita re-serializar todo el config en cada
+  // tecla (normalizeConfig(formData) y config son grandes).
+  const normalizedSnapshot = useMemo(() => JSON.stringify(normalizeConfig(formData)), [formData]);
+  const configSnapshot = useMemo(() => JSON.stringify(config), [config]);
+
   useEffect(() => {
     if (!hasStoredConfig || !inviteToken) return;
     // Se compara el formData NORMALIZADO contra config: si el usuario deja un
     // espacio final ("Ana "), la normalización al guardar lo recorta, y sin
     // este ajuste el autosave se relanzaba infinitamente cada 1,5 s.
-    if (JSON.stringify(normalizeConfig(formData)) === JSON.stringify(config)) return;
+    if (normalizedSnapshot === configSnapshot) return;
     if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current);
     autoSaveTimerRef.current = setTimeout(async () => {
       const result = await doSave(formData);
@@ -155,7 +160,7 @@ export function useAutoSave(
         autoSaveTimerRef.current = null;
       }
     };
-  }, [formData, hasStoredConfig, inviteToken, doSave, config, onSaveMessage, t]);
+  }, [normalizedSnapshot, configSnapshot, formData, hasStoredConfig, inviteToken, doSave, onSaveMessage, t]);
 
   useEffect(() => {
     return () => {

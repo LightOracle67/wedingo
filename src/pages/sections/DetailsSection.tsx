@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import MapEmbed from "../../components/MapEmbed";
 import { isValidGoogleMapsUrl } from "../../lib/geo-utils";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
-import { useConfig } from "../../contexts";
 import CornerDecorations from "../../components/CornerDecorations";
 
 const DetailsSection = memo(function DetailsSection({
@@ -21,6 +20,14 @@ const DetailsSection = memo(function DetailsSection({
   staticMap,
   detailsMapMode,
   cornerDecoration,
+  weddingPlace,
+  weddingDay,
+  weddingMonth,
+  weddingYear,
+  weddingHour,
+  weddingMinute,
+  coupleFirstName,
+  coupleSecondName,
 }: {
   style?: React.CSSProperties;
   className?: string;
@@ -36,32 +43,38 @@ const DetailsSection = memo(function DetailsSection({
   staticMap?: boolean;
   detailsMapMode?: string;
   cornerDecoration?: string;
+  weddingPlace?: string;
+  weddingDay?: string;
+  weddingMonth?: string;
+  weddingYear?: string;
+  weddingHour?: string;
+  weddingMinute?: string;
+  coupleFirstName?: string;
+  coupleSecondName?: string;
 }) {
   const { t } = useTranslation();
-  // Config global para generar el .ics y el enlace de navegación.
-  const { config } = useConfig();
   // Modo de visualización del mapa: iframe (por defecto), solo nombre u oculto.
   const mapMode = detailsMapMode === "name" || detailsMapMode === "hidden" ? detailsMapMode : "iframe";
   // "Cómo llegar": abre Google Maps con navegación al lugar (o a la URL del mapa).
-  const directionsUrl = config?.weddingPlace
-    ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(config.weddingPlace)}`
+  const directionsUrl = weddingPlace
+    ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(weddingPlace)}`
     : weddingSiteURL || "";
 
   /** Descarga el evento como archivo .ics (Apple Calendar/Outlook). */
   const handleDownloadIcs = () => {
     try {
-      const day = Number(config?.weddingDay) || 1;
-      const month = MONTH_VALUE_TO_NUMBER[config?.weddingMonth as keyof typeof MONTH_VALUE_TO_NUMBER] || 1;
-      const year = Number(config?.weddingYear) || new Date().getFullYear();
-      const hour = Number(config?.weddingHour) || 12;
-      const minute = Number(config?.weddingMinute) || 0;
+      const day = Number(weddingDay) || 1;
+      const month = MONTH_VALUE_TO_NUMBER[weddingMonth as keyof typeof MONTH_VALUE_TO_NUMBER] || 1;
+      const year = Number(weddingYear) || new Date().getFullYear();
+      const hour = Number(weddingHour) || 12;
+      const minute = Number(weddingMinute) || 0;
       const pad = (n: number) => String(n).padStart(2, "0");
       const dtstart = `${year}${pad(month)}${pad(day)}T${pad(hour)}${pad(minute)}00`;
       // DTEND = 1 h después del inicio (las bodas duran más, pero el evento
       // del calendario necesita un fin válido para no ser rechazado).
       const end = new Date(year, month - 1, day, hour, minute + 60);
       const dtend = `${end.getFullYear()}${pad(end.getMonth() + 1)}${pad(end.getDate())}T${pad(end.getHours())}${pad(end.getMinutes())}00`;
-      const summary = `${config?.firstName || ""} & ${config?.secondName || ""}`.trim();
+      const summary = `${coupleFirstName || ""} & ${coupleSecondName || ""}`.trim();
       // RFC 5545: las comas y puntos y coma del texto se escapan.
       const esc = (s: string) => s.replace(/\\/g, "\\\\").replace(/,/g, "\\,").replace(/;/g, "\\;");
       const ics = [
@@ -74,7 +87,7 @@ const DetailsSection = memo(function DetailsSection({
         `DTSTART:${dtstart}`,
         `DTEND:${dtend}`,
         `SUMMARY:${esc(summary)}`,
-        config?.weddingPlace ? `LOCATION:${esc(config.weddingPlace)}` : "",
+        weddingPlace ? `LOCATION:${esc(weddingPlace)}` : "",
         "END:VEVENT",
         "END:VCALENDAR",
       ]

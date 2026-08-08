@@ -193,21 +193,27 @@ const GallerySection = memo(function GallerySection({
   }, []);
 
   // ── Auto-avance del carrusel con setInterval (ahorra CPU vs rAF) ──
+  // Refs sincronizados: el interval del auto-avance NO debe recrearse en cada
+  // avance (dependía de idx/fading), así que se leen desde refs estables.
+  const idxRef = useRef(idx);
+  idxRef.current = idx;
+  const fadingRef = useRef(fading);
+  fadingRef.current = fading;
 
   const handleNextImage = useCallback(() => {
-    if (images.length <= 1 || fading) return;
+    if (images.length <= 1 || fadingRef.current) return;
     // Los updaters de estado deben ser puros (React 19 los invoca 2× en
-    // StrictMode): el índice anterior se toma del estado (idx) y el timer se
-    // limpia antes de crear uno nuevo.
+    // StrictMode): el índice anterior se toma del ref y el timer se limpia
+    // antes de crear uno nuevo.
     if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
-    setPrevIdx(idx);
+    setPrevIdx(idxRef.current);
     setFading(true);
     setIdx((i: number) => (i + 1) % images.length);
     fadeTimerRef.current = setTimeout(() => {
       setFading(false);
       setPrevIdx(null);
     }, 550);
-  }, [images.length, idx, fading]);
+  }, [images.length]);
 
   useEffect(() => {
     if (reducedMotion) return;

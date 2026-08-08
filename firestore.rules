@@ -141,9 +141,14 @@ service cloud.firestore {
          para limitar el alojamiento de contenido arbitrario en el dominio. */
       allow create: if isValidInvitationUpdate(request.resource.data)
         && tokenId.matches('^[A-Za-z0-9]{10}$')
-        && !request.resource.data.keys().hasAny(['activeSession', 'sessionExpiresAt', 'setupTokenHash'])
+        /* La sesión NO puede auto-provisionarse en el create (solo su regla
+           dedicada) ni fijar _visits. Se exige la prueba de conocimiento del
+           token de setup (setupTokenValid): el primer guardado del cliente
+           adjunta el hash, y así no se pueden alojar invitaciones falsas. */
+        && !request.resource.data.keys().hasAny(['activeSession', 'sessionExpiresAt', '_visits'])
         && (isSuperAdmin()
-          || !exists(/databases/$(database)/documents/invitations/$(tokenId)));
+          || (setupTokenValid(tokenId, request.resource.data.setupTokenHash)
+            && !exists(/databases/$(database)/documents/invitations/$(tokenId))));
       /* Actualización de configuración: solo admin con sesión activa o
          superadmin. Cualquier cuenta autenticada de Firebase Auth NO puede
          editar invitaciones de terceros (evita defacing/phisning).
@@ -169,6 +174,9 @@ service cloud.firestore {
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['_visits'])
         && request.resource.data._visits is int
         && request.resource.data._visits >= 0
+        /* Tope global: evita inflar _visits hasta números absurdos con +10
+           repetidos (una invitación real no supera este orden de magnitud). */
+        && request.resource.data._visits <= 1000000
         && (resource.data.keys().hasAny(['_visits'])
           ? (request.resource.data._visits >= resource.data._visits
             && request.resource.data._visits <= resource.data._visits + 10)
@@ -251,6 +259,7 @@ service cloud.firestore {
         allow read: if true;
         allow create: if request.resource.data.keys().hasOnly(['guestName', 'message', 'createdAt'])
           && isSafeText(request.resource.data.guestName)
+          && request.resource.data.guestName.size() <= 60
           && isSafeText(request.resource.data.message)
           && request.resource.data.message.size() <= 500
           && socialCounterBelow(tokenId, 'notes');
@@ -260,6 +269,7 @@ service cloud.firestore {
         allow read: if true;
         allow create: if request.resource.data.keys().hasOnly(['guestName', 'song', 'votes', 'createdAt'])
           && isSafeText(request.resource.data.guestName)
+          && request.resource.data.guestName.size() <= 60
           && isSafeText(request.resource.data.song)
           && request.resource.data.song.size() <= 200
           && request.resource.data.votes is int && request.resource.data.votes == 1
@@ -274,6 +284,7 @@ service cloud.firestore {
         allow read: if true;
         allow create: if request.resource.data.keys().hasOnly(['guestName', 'origin', 'seats', 'createdAt'])
           && isSafeText(request.resource.data.guestName)
+          && request.resource.data.guestName.size() <= 60
           && isSafeText(request.resource.data.origin)
           && request.resource.data.origin.size() <= 200
           && request.resource.data.seats is int
@@ -286,6 +297,7 @@ service cloud.firestore {
         allow create: if request.resource.data.keys().hasOnly(['itemId', 'reservedBy', 'createdAt'])
           && request.resource.data.itemId is string && request.resource.data.itemId.size() <= 100
           && isSafeText(request.resource.data.reservedBy)
+          && request.resource.data.reservedBy.size() <= 60
           && socialCounterBelow(tokenId, 'gifts');
         allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }

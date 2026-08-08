@@ -676,7 +676,9 @@
     "menuParseError": "El menú guardado no se pudo leer: vuelve a escribir los platos.",
     "rsvpCounterFailed": "No se pudo preparar el apartado de confirmación. Intenta guardar de nuevo.",
     "saveSessionExpired": "Tu sesión ha expirado o el acceso no está verificado. Recarga la página y entra de nuevo.",
-    "deleteImageFailed": "No se pudo eliminar la imagen. Inténtalo de nuevo."
+    "deleteImageFailed": "No se pudo eliminar la imagen. Inténtalo de nuevo.",
+    "errorFileFormat": "Formato de archivo no permitido",
+    "errorFileSize": "El archivo supera el tamaño máximo"
   },
   "superadmin": {
     "tabs": {

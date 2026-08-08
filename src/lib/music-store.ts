@@ -1,7 +1,7 @@
 import { getDocs, collection, writeBatch, doc, query, orderBy } from "firebase/firestore";
 import { db } from "./firebase";
 import { encrypt, decrypt } from "./crypto-utils";
-import { AUDIO_CHUNK_SIZE_BYTES } from "./constants";
+import { AUDIO_CHUNK_SIZE_BYTES, MAX_UPLOAD_SIZE_BYTES } from "./constants";
 
 const CHUNK_SIZE = AUDIO_CHUNK_SIZE_BYTES;
 function audioCol(token: string) {
@@ -9,6 +9,13 @@ function audioCol(token: string) {
 }
 
 export async function uploadAudio(inviteToken: string, file: File, onProgress?: (pct: number) => void) {
+  // Validación base (defensa en profundidad): tipo de audio y tamaño acotado.
+  if (!file || !file.type.startsWith("audio/")) {
+    throw new Error("Invalid audio format");
+  }
+  if (file.size > MAX_UPLOAD_SIZE_BYTES) {
+    throw new Error("Audio file too large");
+  }
   onProgress?.(10);
   const { compressAudio } = await import("./audio-utils");
   const dataUrl = await compressAudio(file);

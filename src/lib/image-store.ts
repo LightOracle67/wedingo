@@ -20,6 +20,7 @@ import {
 } from "./image-utils";
 import { encrypt, decrypt } from "./crypto-utils";
 import { withWriteRetry } from "./async-utils";
+import { MAX_UPLOAD_SIZE_BYTES } from "./constants";
 
 function galCol(token: string) {
   return collection(db, "invitations", token, "gallery");
@@ -32,6 +33,15 @@ export async function uploadImage(
   maxDimension = HIGH_QUALITY_MAX_DIMENSION,
   targetBytes = HIGH_QUALITY_TARGET_BYTES,
 ) {
+  // Validación base en el punto de entrada (defensa en profundidad): cualquier
+  // caller futuro no puede saltarse el tipo/size. Los callers con restricciones
+  // específicas (p. ej. 1MB en sello/esquinas) la mantienen además.
+  if (!file || !file.type.startsWith("image/")) {
+    throw new Error(i18n.t("errors.errorFileFormat"));
+  }
+  if (file.size > MAX_UPLOAD_SIZE_BYTES) {
+    throw new Error(i18n.t("errors.errorFileSize"));
+  }
   onProgress?.(10);
   const dataUrl = await compressImage(file, maxDimension, targetBytes);
 
@@ -401,7 +411,7 @@ export async function resolveConfigImageField(
   return (await getConfigImage(inviteToken, imageId)) || undefined;
 }
 
-export const CONFIG_IMAGE_IDS = ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"] as const;
+const CONFIG_IMAGE_IDS = ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"] as const;
 
 export async function resolveAllConfigImages(
   inviteToken: string,
