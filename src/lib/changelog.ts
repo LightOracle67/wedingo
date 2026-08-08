@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.30",
+    date: "2026-08-08",
+    changes: [
+      "Animaciones de scroll rediseñadas (sin tocar el envelope): entradas MUY suaves y atrevidas con efecto 3D (perspectiva + inclinación, blur y brillo iniciales, recorrido de 76px) y stagger más largo en los elementos; al hacer scroll, la sección que se abandona se DESVANECE GRADUALMENTE (fade + escala + blur de 1,1s) mientras la siguiente emerge. El comportamiento de navegación es el mismo (una sección por gesto, entrada al asentarse, hero automático).",
+    ],
+  },
+  {
     version: "2.95.29",
     date: "2026-08-08",
     changes: [

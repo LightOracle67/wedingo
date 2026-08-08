@@ -191,7 +191,7 @@ describe("useStoryNavigation", () => {
     expect(result.current.getSectionClassName("gifts")).toContain("story-section--is-enter");
     // Al terminar la entrada (900ms) pasa a active.
     await act(async () => {
-      await new Promise((r) => setTimeout(r, 1500));
+      await new Promise((r) => setTimeout(r, 1650));
     });
     expect(result.current.getSectionClassName("gifts")).toContain("story-section--is-active");
     expect(result.current.getSectionClassName("gifts")).not.toContain("story-section--is-enter");
@@ -226,9 +226,9 @@ describe("useStoryNavigation", () => {
       cb!([{ isIntersecting: false, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
     });
     expect(result.current.getSectionClassName("info")).toContain("story-section--is-leave");
-    // Tras la salida (560ms) vuelve a hidden.
+    // Tras la salida (1150ms) vuelve a hidden.
     await act(async () => {
-      await new Promise((r) => setTimeout(r, 800));
+      await new Promise((r) => setTimeout(r, 1250));
     });
     expect(result.current.getSectionClassName("info")).not.toContain("story-section--is-leave");
     el.remove();

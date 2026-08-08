@@ -33,9 +33,9 @@ import { useEffect, useRef, useState } from "react";
 
 /** Duración (ms) de la animación de entrada, incluido el stagger de los
  *  elementos internos de la card (1200ms de card + hasta 640ms de delay). */
-const ENTER_MS = 1450;
-/** Duración (ms) de la animación de salida (700ms en CSS + margen). */
-const LEAVE_MS = 750;
+const ENTER_MS = 1550;
+/** Duración (ms) de la animación de salida GRADUAL (1100ms en CSS + margen). */
+const LEAVE_MS = 1150;
 /** Umbral de visibilidad para considerar la sección "activa" y disparar su
  *  ENTRADA (alto, para que entre justo cuando el scroll se asienta). */
 const VISIBILITY_THRESHOLD = 0.7;

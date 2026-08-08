@@ -1962,114 +1962,120 @@ h6 {
 
 /* ── Elegant animations ──────────────────────────────────────────────
    Entradas y salidas de las secciones de la invitación (gestión de estados
-   en useStoryNavigation): `--is-enter` anima la card y sus elementos con
-   stagger largo y suave; `--is-leave` hace un fade + scale elegante. El
-   estado `--is-hidden` mantiene la card en su posición inicial para que la
-   entrada arranque sin salto (anti-parpadeo al cargar/sección). */
+   en useStoryNavigation). Rediseñadas para ser MUY suaves, elegantes y
+   atrevidas: la card entra con un efecto 3D (perspectiva + inclinación) y
+   un blur inicial; al hacer scroll, la sección que se abandona se DESVANECE
+   GRADUALMENTE (fade + escala + blur largos) mientras la siguiente emerge. */
 
 @keyframes story-card-enter {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(46px) scale(0.97);
-    filter: blur(6px);
+    transform: perspective(1200px) translateY(76px) scale(0.94) rotateX(9deg);
+    filter: blur(12px) brightness(0.92);
   }
-  to {
+  100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
+    transform: perspective(1200px) translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0) brightness(1);
   }
 }
 
 @keyframes story-card-leave {
-  from {
+  0% {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
+    transform: perspective(1200px) translateY(0) scale(1) rotateX(0deg);
+    filter: blur(0) brightness(1);
   }
-  to {
+  100% {
     opacity: 0;
-    transform: translateY(-22px) scale(0.98);
-    filter: blur(4px);
+    transform: perspective(1200px) translateY(-40px) scale(0.96) rotateX(-6deg);
+    filter: blur(12px) brightness(0.82);
   }
 }
 
 @keyframes story-fade-up {
-  from {
+  0% {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(40px);
+    filter: blur(8px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
 @keyframes story-fade-down {
-  from {
+  0% {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
-  to {
+  100% {
     opacity: 0;
-    transform: translateY(-18px);
+    transform: translateY(-28px);
+    filter: blur(8px);
   }
 }
 
-/* Estado oculto persistente: la card queda en su posición inicial para que
-   la animación de entrada no haga un salto visible al llegar a la sección.
-   visibility:hidden retira además la sección oculta del orden de tabulación
-   (sus botones/formularios no deben recibir foco mientras están invisibles). */
+/* Estado oculto persistente: la card queda en su posición inicial (pre-entrada)
+   para que la animación de entrada arranque sin salto. visibility:hidden
+   retira la sección del orden de tabulación (WCAG: sin foco en invisibles). */
 .story-section--is-hidden {
   visibility: hidden;
 }
 .story-section--is-hidden .story-card-wrap,
 .story-section--is-hidden .story-card {
   opacity: 0;
-  transform: translateY(46px) scale(0.97);
+  transform: perspective(1200px) translateY(76px) scale(0.94) rotateX(9deg);
+  filter: blur(12px) brightness(0.92);
 }
 
-/* Entrada: SOLO la caja (.story-card-wrap) anima con el fade-up; el
-   .story-card (contenido) la acompaña porque está dentro. Animar ambos
-   (están anidados) acumulaba el desplazamiento y parecía que la animación
-   se ejecutaba DOS veces. Los elementos internos entran escalonados. */
+/* Entrada: solo la caja (.story-card-wrap) anima con el efecto 3D; el
+   .story-card (contenido) la acompaña porque está dentro (animar ambos
+   acumularía el desplazamiento). Los elementos internos entran escalonados
+   con un stagger largo y elegante. */
 .story-section--is-enter .story-card-wrap {
-  animation: story-card-enter 1200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: story-card-enter 1400ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .story-section--is-enter .story-eyebrow {
-  animation: story-fade-up 800ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+  animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 150ms both;
 }
 
 .story-section--is-enter .story-title {
-  animation: story-fade-up 800ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
+  animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
 }
 
 .story-section--is-enter .story-copy {
-  animation: story-fade-up 800ms cubic-bezier(0.16, 1, 0.3, 1) 420ms both;
+  animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 430ms both;
 }
 
 .story-section--is-enter .story-note,
 .story-section--is-enter .story-divider {
-  animation: story-fade-up 800ms cubic-bezier(0.16, 1, 0.3, 1) 540ms both;
+  animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 560ms both;
 }
 
 .story-section--is-enter .story-map,
 .story-section--is-enter .story-calendar-actions,
 .story-section--is-enter .story-map__actions,
+.story-section--is-enter .story-card--rsvp .rsvp-form,
 .story-section--is-enter .story-card--hero .mx-auto,
 .story-section--is-enter .story-card--hero .mt-6 {
-  animation: story-fade-up 800ms cubic-bezier(0.16, 1, 0.3, 1) 640ms both;
+  animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 680ms both;
 }
 
-/* Salida: la sección que abandona el viewport se desvanece con suavidad. */
+/* Salida GRADUAL: al hacer scroll, la sección que se abandona se desvanece
+   de forma prolongada (fade + escala + blur) mientras la siguiente entra. */
 .story-section--is-leave .story-card-wrap {
-  animation: story-card-leave 700ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation: story-card-leave 1100ms cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 .story-section--is-leave .story-eyebrow,
 .story-section--is-leave .story-title,
 .story-section--is-leave .story-copy {
-  animation: story-fade-down 700ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation: story-fade-down 1100ms cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 /* Usuarios con movimiento reducido: sin entradas/salidas animadas. */
@@ -2083,6 +2089,7 @@ h6 {
   .story-section--is-enter .story-map,
   .story-section--is-enter .story-calendar-actions,
   .story-section--is-enter .story-map__actions,
+  .story-section--is-enter .story-card--rsvp .rsvp-form,
   .story-section--is-enter .story-card--hero .mx-auto,
   .story-section--is-enter .story-card--hero .mt-6,
   .story-section--is-leave .story-card-wrap,
