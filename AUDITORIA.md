@@ -195,6 +195,18 @@ Método: 4 auditorías estáticas paralelas (seguridad, accesibilidad, legal int
 
 ---
 
+## Funciones nuevas del superadmin (58 propuestas)
+
+**Implementadas y desplegadas (34) en v2.95.46–49:**
+
+- **Fase 1 (9)**: editor global de configuración, traspaso de titularidad, clonado, expiración manual, previsualización sin contar visita, copia de secciones, sello de verificación, notas internas, mensaje de agradecimiento post-RSVP.
+- **Fase 2 (8)**: actividad reciente, embudo (visitas sin confirmar), confirmaciones por día, historial de respaldos, búsqueda por contenido, comparativa de temas, columna de usuario, estadísticas de dispositivo (UA).
+- **Fase 3 (9)**: modo mantenimiento, banner global, listas negras de URLs y tokens, umbral de expiración, estado de invitación (activa/revisión/bloqueada), etiquetas con filtro, aforo máximo, firma digital en RSVP, avisos de expiración en dashboard.
+- **Fase 4 (6)**: cierre de sesión remota, registro de accesos por invitación, previsualización por dispositivo, QR, auto-respuesta de RSVP.
+
+**Pendientes (24) — mayoría bloqueados por el plan Spark (Cloud Functions) o servicios externos:**
+- F5: PDF RSVP, restauración remota de backup, auditoría por sección, GC de Storage, API/webhooks (Blaze), traducción automática (proveedor), alertas por email (servicio de correo), modo presentación completo, invitado asistido.
+
 ## Próximos pasos recomendados
 1. **Operativo**: App Check + MFA superadmin + rotación de credenciales (mayor mitigación de abuso/DoS) — requiere consola de Firebase.
 2. **H4 (bloqueado por plan Spark)**: el autoservicio de borrado social necesita Cloud Functions (plan Blaze). Sin Blaze, se mantiene el borrado admin + email.
