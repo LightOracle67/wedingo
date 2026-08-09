@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.42",
+    date: "2026-08-09",
+    changes: [
+      "El modal de cookies ya no muestra scroll horizontal: el panel compartido oculta el desbordamiento horizontal, los textos de puntos y las etiquetas del accordion pueden envolver (min-width: 0 / flex: 1) y el indicador + no empuja el ancho.",
+    ],
+  },
+  {
     version: "2.95.41",
     date: "2026-08-09",
     changes: [

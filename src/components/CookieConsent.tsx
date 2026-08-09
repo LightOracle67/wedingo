@@ -255,13 +255,17 @@ const CookieConsent = memo(function CookieConsent() {
                       alignItems: "center",
                     }}
                   >
-                    <span>{s.label}</span>
+                    {/* Label con flex:1 + minWidth:0: ocupa el espacio disponible y
+                      envuelve si es largo (sin empujar el ancho del modal). */}
+                  <span style={{ flex: 1, minWidth: 0, textAlign: "left" }}>{s.label}</span>
                     <span
                       style={{
                         transform: openSection === s.id ? "rotate(135deg)" : "rotate(0deg)",
                         transition: "transform 300ms ease",
                         fontSize: "1rem",
                         opacity: 0.5,
+                        flexShrink: 0,
+                        marginLeft: "0.5rem",
                       }}
                     >
                       +
