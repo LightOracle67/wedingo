@@ -49,6 +49,8 @@ export function buildMainGuestData(input: {
     submittedAt: nowTimestamp,
     privacyConsent: true,
     privacyConsentAt: nowTimestamp,
+    // F2-8: estadísticas de dispositivo (anonimizado: solo UA, sin IP).
+    userAgent: navigator.userAgent.slice(0, 200),
   };
   if (data.menuSelection) mainGuestData.mealChoice = data.menuSelection;
   if (data.birthDate) mainGuestData.birthDate = data.birthDate;

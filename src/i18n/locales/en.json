@@ -801,7 +801,15 @@
     "tokenMigrateError": "Could not migrate the token.",
     "cleanupDone": "Cleanup complete: {{deleted}} removed{{failed, {{failed}} failed}}",
     "statusLegacy": "Legacy",
-    "hashForInvitation": "Token for {{token}}"
+    "hashForInvitation": "Token for {{token}}",
+    "dailyConfirmations": "Confirmations per day (last 7 days)",
+    "topVisits": "Most visits without confirmation",
+    "visitsWord": "visits",
+    "rsvpsWord": "confirmations",
+    "themeComparison": "Theme comparison",
+    "recentActivity": "Recent activity",
+    "noActivity": "No recorded activity.",
+    "tableUser": "User"
   },
   "compliance": {
     "title": "Record of processing activities (Art. 30 GDPR)",
@@ -1152,6 +1160,9 @@
     "copySectionSub": "Section",
     "copySectionButton": "Copy",
     "copySectionConfirm": "Copy the selected section to this invitation?",
-    "copySectionDone": "Section copied ({{count}} items)."
+    "copySectionDone": "Section copied ({{count}} items).",
+    "downloadBackup": "Download latest backup",
+    "noBackup": "No backup yet for this invitation.",
+    "backupDownloaded": "Backup downloaded."
   }
 }

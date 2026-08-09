@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.47",
+    date: "2026-08-09",
+    changes: [
+      "Fase 2 (monitoreo y datos) del superadmin: panel de actividad reciente (auditLog), histograma de confirmaciones por día, invitaciones con más visitas sin confirmar (embudo), comparativa de temas, búsqueda de invitaciones por contenido (historia/regalos/menú), columna de usuario responsable, guardado y descarga del último backup por invitación, y estadísticas de dispositivo en el RSVP (userAgent).",
+    ],
+  },
+  {
     version: "2.95.46",
     date: "2026-08-09",
     changes: [

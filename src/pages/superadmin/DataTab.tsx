@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, doc, collection, writeBatch, getDoc, query, where } from "firebase/firestore";
+import { getDocs, doc, collection, writeBatch, getDoc, query, where, setDoc, serverTimestamp } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, RSVP_RESPONSES_GROUP, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadJson } from "../../lib/file-utils";
@@ -163,6 +163,18 @@ export default function DataTab() {
           data.audio = [];
         }
         downloadJson(`${token}_export_${new Date().toISOString().slice(0, 10)}.json`, data);
+        // F2-4: historial de respaldos — se guarda un backup LIGERO (config +
+        // RSVPs, sin galería/audio que duplican almacenamiento) en la
+        // subcolección _backup/latest para poder descargarlo desde Gestión.
+        try {
+          await setDoc(doc(db, "invitations", token, "_backup", "latest"), {
+            data: JSON.stringify({
+              invitation: { id: token, ...(invDoc.exists() ? sanitizeInvitationForExport(invDoc.data()) : {}) },
+              rsvps: data.rsvps,
+            }),
+            at: serverTimestamp(),
+          });
+        } catch {}
         addToast("success", t("superadmin.data.exportedOne", { token }));
       } catch {
         addToast("error", t("superadmin.data.exportFailed"));

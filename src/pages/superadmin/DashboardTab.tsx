@@ -6,6 +6,8 @@ import {
   collection,
   query,
   where,
+  orderBy,
+  limit,
   type DocumentData,
   type QueryDocumentSnapshot,
 } from "firebase/firestore";
@@ -50,6 +52,12 @@ const DashboardTab = memo(function DashboardTab() {
   const { addToast } = useToast();
   const [stats, setStats] = useState<GlobalStats | null>(null);
   const [invitations, setInvitations] = useState<InvitationDoc[]>([]);
+  // F2-1 actividad reciente, F2-3 confirmaciones/día, F2-6 comparativa de temas,
+  // F2-2 invitaciones con más visitas sin confirmar.
+  const [recentActivity, setRecentActivity] = useState<Array<{ action: string; detail: string; ts: number }>>([]);
+  const [dailyCounts, setDailyCounts] = useState<Array<{ day: string; count: number }>>([]);
+  const [themeCounts, setThemeCounts] = useState<Array<{ theme: string; count: number }>>([]);
+  const [topVisits, setTopVisits] = useState<Array<{ id: string; visits: number; rsvp: number }>>([]);
 
   const [loading, setLoading] = useState(true);
   const [cleaning, setCleaning] = useState(false);
@@ -61,8 +69,8 @@ const DashboardTab = memo(function DashboardTab() {
         getDocs(INVITATIONS_COLLECTION_REF),
         getDocs(collection(db, "setupTokens")),
       ]);
-      const rsvps = rsvpSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
-      const invitationDocs = invSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
+      const rsvps: Array<Record<string, unknown>> = rsvpSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
+      const invitationDocs: Array<Record<string, unknown>> = invSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
       setInvitations(invitationDocs as InvitationDoc[]);
       // Las stats de tokens se calculan de verdad: un token es "usado" si su
       // invitación asociada existe (antes se pasaba un array vacío y todo
@@ -74,6 +82,66 @@ const DashboardTab = memo(function DashboardTab() {
         used: invitationIds.has(String(d.data().inviteToken)),
       }));
       setStats(calcGlobalStats(invitationDocs, rsvps, tokens));
+
+      // F2-3: confirmaciones por día (últimos 7 días) para el histograma.
+      const days: Record<string, number> = {};
+      for (let i = 6; i >= 0; i--) {
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        days[d.toISOString().slice(0, 10)] = 0;
+      }
+      for (const r of rsvps) {
+        const raw = r.submittedAt as unknown;
+        let ts = 0;
+        if (raw && typeof raw === "object" && "seconds" in (raw as { seconds?: unknown })) {
+          ts = Number((raw as { seconds: number }).seconds) * 1000;
+        } else if (typeof raw === "number") ts = raw;
+        else if (typeof raw === "string") ts = Date.parse(raw);
+        if (!ts) continue;
+        const key = new Date(ts).toISOString().slice(0, 10);
+        if (key in days) days[key] = (days[key] || 0) + 1;
+      }
+      setDailyCounts(Object.entries(days).map(([day, count]) => ({ day, count })));
+
+      // F2-6: comparativa de temas.
+      const themes: Record<string, number> = {};
+      for (const inv of invitationDocs) {
+        const th = String(inv.theme || "sin tema");
+        themes[th] = (themes[th] || 0) + 1;
+      }
+      setThemeCounts(Object.entries(themes).sort((a, b) => b[1] - a[1]).map(([theme, count]) => ({ theme, count })));
+
+      // F2-2: invitaciones con más visitas sin confirmar (embudo).
+      const rsvpByToken: Record<string, number> = {};
+      for (const r of rsvps) {
+        const tk = String(r.inviteToken || "");
+        if (tk) rsvpByToken[tk] = (rsvpByToken[tk] || 0) + 1;
+      }
+      const withVisits = invitationDocs
+        .map((d) => ({
+          id: String(d.id),
+          visits: Number(d._visits) || 0,
+          rsvp: rsvpByToken[String(d.id)] || 0,
+        }))
+        .filter((x) => x.visits > 0)
+        .sort((a, b) => b.visits - a.visits)
+        .slice(0, 5);
+      setTopVisits(withVisits);
+
+      // F2-1: actividad reciente (últimos 10 eventos de auditoría).
+      try {
+        const auditSnap = await getDocs(query(collection(db, "auditLog"), orderBy("createdAt", "desc"), limit(10)));
+        setRecentActivity(
+          auditSnap.docs.map((d) => {
+            const data = d.data();
+            const raw = data.createdAt as { seconds?: unknown } | null | undefined;
+            const ts = raw && typeof raw === "object" && "seconds" in raw ? Number(raw.seconds) * 1000 : 0;
+            return { action: String(data.action || ""), detail: String(data.detail || ""), ts };
+          }),
+        );
+      } catch {
+        setRecentActivity([]);
+      }
     } catch {
       addToast("error", t("errors.statsLoadFailed"));
     } finally {
@@ -257,6 +325,78 @@ const DashboardTab = memo(function DashboardTab() {
             </p>
           </div>
         </div>
+      </div>
+
+      {/* ── F2-3: Confirmaciones por día (histograma) ── */}
+      <div className="setup-background-panel" style={{ marginTop: "0.75rem" }}>
+        <p className="setup-label">{t("superadmin.dailyConfirmations")}</p>
+        <div className="admin-flex" style={{ alignItems: "flex-end", gap: "0.3rem", minHeight: "4.5rem" }}>
+          {dailyCounts.map(({ day, count }) => (
+            <div key={day} style={{ flex: 1, textAlign: "center" }}>
+              <div
+                title={`${day}: ${count}`}
+                style={{
+                  height: `${Math.max(4, Math.min(64, count * 8))}px`,
+                  background: "var(--setup-accent)",
+                  borderRadius: "0.3rem 0.3rem 0 0",
+                  opacity: 0.85,
+                  minWidth: "1rem",
+                }}
+              />
+              <p style={{ margin: "0.15rem 0 0", fontSize: "0.6rem", color: "var(--setup-muted)" }}>{day.slice(5)}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── F2-2: Embudo (más visitas sin confirmar) ── */}
+      {topVisits.length > 0 ? (
+        <div className="setup-background-panel" style={{ marginTop: "0.75rem" }}>
+          <p className="setup-label">{t("superadmin.topVisits")}</p>
+          <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}>
+            {topVisits.map((v) => (
+              <li key={v.id} style={{ marginBottom: "0.2rem" }}>
+                {v.id} — {v.visits} {t("superadmin.visitsWord")} · {v.rsvp} {t("superadmin.rsvpsWord")}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      {/* ── F2-6: Comparativa de temas ── */}
+      <div className="setup-background-panel" style={{ marginTop: "0.75rem" }}>
+        <p className="setup-label">{t("superadmin.themeComparison")}</p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginTop: "0.4rem" }}>
+          {themeCounts.map(({ theme, count }) => (
+            <span
+              key={theme}
+              className="setup-token-card"
+              style={{ padding: "0.3rem 0.7rem", fontSize: "0.75rem", color: "var(--setup-title)" }}
+            >
+              {theme}: {count}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ── F2-1: Actividad reciente ── */}
+      <div className="setup-background-panel" style={{ marginTop: "0.75rem" }}>
+        <p className="setup-label">{t("superadmin.recentActivity")}</p>
+        {recentActivity.length === 0 ? (
+          <p className="setup-help" style={{ margin: 0 }}>
+            {t("superadmin.noActivity")}
+          </p>
+        ) : (
+          <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}>
+            {recentActivity.map((a, i) => (
+              <li key={i} style={{ marginBottom: "0.2rem" }}>
+                <strong>{a.action}</strong>
+                {a.detail ? ` — ${a.detail}` : ""}
+                {a.ts ? <span style={{ color: "var(--setup-muted)" }}> · {new Date(a.ts).toLocaleString()}</span> : null}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

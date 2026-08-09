@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 const InvitationsTab = memo(function InvitationsTab() {
   const { t } = useTranslation();
   const [invitations, setInvitations] = useState<
-    Array<{ id: string; theme?: string; weddingDay?: string; weddingMonth?: string; weddingYear?: string }>
+    Array<{ id: string; theme?: string; weddingDay?: string; weddingMonth?: string; weddingYear?: string; adminUsername?: string }>
   >([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -99,6 +99,7 @@ const InvitationsTab = memo(function InvitationsTab() {
     weddingDay?: string;
     weddingMonth?: string;
     weddingYear?: string;
+    adminUsername?: string;
   }>;
   const totalBytes = invitations.reduce((acc, d) => {
     try {
@@ -165,6 +166,7 @@ const InvitationsTab = memo(function InvitationsTab() {
                   <th>{t("superadmin.tableToken")}</th>
                   <th>{t("superadmin.tableTheme")}</th>
                   <th>{t("superadmin.tableDate")}</th>
+                  <th>{t("superadmin.tableUser")}</th>
                   <th>{t("superadmin.tableActions")}</th>
                 </tr>
               </thead>
@@ -176,6 +178,7 @@ const InvitationsTab = memo(function InvitationsTab() {
                     weddingDay?: string;
                     weddingMonth?: string;
                     weddingYear?: string;
+                    adminUsername?: string;
                   }) => (
                     <tr key={inv.id}>
                       <td style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>{inv.id}</td>
@@ -185,6 +188,7 @@ const InvitationsTab = memo(function InvitationsTab() {
                           ? `${inv.weddingDay} ${inv.weddingMonth} ${inv.weddingYear}`
                           : "—"}
                       </td>
+                      <td>{inv.adminUsername ? `@${inv.adminUsername}` : "—"}</td>
                       <td style={{ whiteSpace: "nowrap" }}>
                         <button
                           className="setup-button setup-button--ghost setup-button--compact"

@@ -17,6 +17,7 @@ import { hashSetupToken } from "../../lib/setup-token";
 import { generateInviteToken, generateSetupToken } from "../../lib/token-utils";
 import { validateConfigForSave } from "../../lib/config-validation";
 import { MAX_YEARS_AHEAD } from "../../lib/constants";
+import { downloadJson } from "../../lib/file-utils";
 
 /** Subcolecciones duplicables entre invitaciones (copiar sección). */
 const CLONABLE_SUBS = ["gallery", "audio", "configImages"] as const;
@@ -210,9 +211,26 @@ const ManageTab = memo(function ManageTab() {
     }
   }, [token, verified, adminNotes, addToast, t]);
 
+  /** F2-4: descarga el último backup ligero guardado en _backup/latest. */
+  const handleDownloadBackup = useCallback(async () => {
+    if (!token) return;
+    try {
+      const snap = await getDoc(doc(db, "invitations", token, "_backup", "latest"));
+      if (!snap.exists()) {
+        addToast("info", t("manage.noBackup"));
+        return;
+      }
+      const raw = String(snap.data().data || "");
+      const parsed = JSON.parse(raw);
+      downloadJson(`${token}_backup.json`, parsed);
+      addToast("success", t("manage.backupDownloaded"));
+    } catch {
+      addToast("error", t("errors.generic"));
+    }
+  }, [token, addToast, t]);
+
   /** F1-6: copia una subcolección (galería/audio/configImages) de otra invitación. */
-  const handleCopySection = useCallback(async () => {
-    if (!token || !copySource || copySource === token) return;
+  const handleCopySection = useCallback(async () => {    if (!token || !copySource || copySource === token) return;
     if (!window.confirm(t("manage.copySectionConfirm"))) return;
     setCopying(true);
     try {
@@ -289,6 +307,9 @@ const ManageTab = memo(function ManageTab() {
             <div className="setup-actions">
               <button className="setup-button" type="button" onClick={handleSaveJson} disabled={saving}>
                 {saving ? t("common.loading") : t("manage.saveConfig")}
+              </button>
+              <button className="setup-button setup-button--ghost" type="button" onClick={handleDownloadBackup}>
+                {t("manage.downloadBackup")}
               </button>
               <a className="setup-button setup-button--ghost" href={previewUrl} target="_blank" rel="noreferrer">
                 {t("manage.preview")}

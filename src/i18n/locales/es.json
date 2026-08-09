@@ -801,7 +801,15 @@
     "tokenMigrateError": "No se pudo migrar el token.",
     "cleanupDone": "Limpieza completada: {{deleted}} eliminadas{{failed, {{failed}} fallos}}",
     "statusLegacy": "Legacy",
-    "hashForInvitation": "Token de {{token}}"
+    "hashForInvitation": "Token de {{token}}",
+    "dailyConfirmations": "Confirmaciones por día (últimos 7 días)",
+    "topVisits": "Más visitas sin confirmar",
+    "visitsWord": "visitas",
+    "rsvpsWord": "confirmaciones",
+    "themeComparison": "Comparativa de temas",
+    "recentActivity": "Actividad reciente",
+    "noActivity": "Sin actividad registrada.",
+    "tableUser": "Usuario"
   },
   "compliance": {
     "title": "Registro de actividades de tratamiento (Art. 30 GDPR)",
@@ -1152,6 +1160,9 @@
     "copySectionSub": "Sección",
     "copySectionButton": "Copiar",
     "copySectionConfirm": "¿Copiar la sección seleccionada a esta invitación?",
-    "copySectionDone": "Sección copiada ({{count}} elementos)."
+    "copySectionDone": "Sección copiada ({{count}} elementos).",
+    "downloadBackup": "Descargar último backup",
+    "noBackup": "Aún no hay backup para esta invitación.",
+    "backupDownloaded": "Backup descargado."
   }
 }

@@ -46,6 +46,15 @@ export function searchInvitations(invitations: Record<string, unknown>[], query:
     const name = `${String(inv.firstName ?? "")} ${String(inv.secondName ?? "")}`.toLowerCase();
     const user = String(inv.adminUsername ?? "").toLowerCase();
     const token = String(inv.id ?? "").toLowerCase();
-    return name.includes(q) || user.includes(q) || token.includes(q);
+    // F2-5: búsqueda por contenido interno (historia, regalos, menú).
+    const content = [
+      String(inv.storyText ?? ""),
+      String(inv.giftsInfo ?? ""),
+      String(inv.menuTexto ?? ""),
+      String(inv.kidsPolicy ?? ""),
+    ]
+      .join(" ")
+      .toLowerCase();
+    return name.includes(q) || user.includes(q) || token.includes(q) || content.includes(q);
   });
 }
