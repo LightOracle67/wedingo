@@ -11,36 +11,13 @@ describe("useStoryNavigation", () => {
   });
   it("returns expected object shape", () => {
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    expect(result.current).toHaveProperty("activeSection");
-    expect(result.current).toHaveProperty("transition");
-    expect(result.current).toHaveProperty("isTransitioning");
     expect(result.current).toHaveProperty("getSectionStyle");
     expect(result.current).toHaveProperty("getSectionClassName");
-    expect(result.current).toHaveProperty("startTransition");
-  });
-
-  it("sets activeSection to the first item in visibleOrder", () => {
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    expect(result.current.activeSection).toBe("hero");
-  });
-
-  it("falls back to 'hero' when visibleOrder is empty", () => {
-    const { result } = renderHook(() => useStoryNavigation([]));
-    expect(result.current.activeSection).toBe("hero");
   });
 
   it("handles a single section", () => {
     const { result } = renderHook(() => useStoryNavigation(["rsvp"]));
-    expect(result.current.activeSection).toBe("rsvp");
     expect(result.current.getSectionClassName("rsvp")).toContain("story-section--rsvp");
-  });
-
-  it("is not transitioning initially", () => {
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    expect(result.current.isTransitioning).toBe(false);
-    expect(result.current.transition.toIndex).toBeNull();
-    expect(result.current.transition.fromIndex).toBe(0);
-    expect(result.current.transition.direction).toBe(1);
   });
 
   it("getSectionStyle returns empty object for any key", () => {
@@ -63,19 +40,6 @@ describe("useStoryNavigation", () => {
     const cls = result.current.getSectionClassName("");
     expect(cls).toContain("story-section");
     expect(cls).toContain("story-section--");
-  });
-
-  it("startTransition is a no-op", () => {
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    result.current.startTransition(1);
-    expect(result.current.isTransitioning).toBe(false);
-    expect(result.current.activeSection).toBe("hero");
-  });
-
-  it("startTransition ignores undefined index", () => {
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    result.current.startTransition();
-    expect(result.current.isTransitioning).toBe(false);
   });
 
   it("marks the active section with --is-active via IntersectionObserver", async () => {
@@ -104,7 +68,7 @@ describe("useStoryNavigation", () => {
         {} as IntersectionObserver,
       );
     });
-    expect(result.current.activeSection).toBe("details");
+    expect(result.current.getSectionClassName("details")).toContain("story-section--is-active");
     expect(result.current.getSectionClassName("details")).toContain("story-section--is-active");
     el.remove();
   });
@@ -114,7 +78,7 @@ describe("useStoryNavigation", () => {
     const original = (globalThis as Record<string, unknown>).IntersectionObserver;
     Object.defineProperty(globalThis, "IntersectionObserver", { value: undefined, configurable: true });
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    expect(result.current.activeSection).toBe(SAMPLE_ORDER[0]);
+    expect(result.current.getSectionClassName(SAMPLE_ORDER[0]!)).toContain("story-section--is-active");
     if (original !== undefined) {
       Object.defineProperty(globalThis, "IntersectionObserver", { value: original, configurable: true });
     }
@@ -130,7 +94,7 @@ describe("useStoryNavigation", () => {
     // Sin elementos [data-story-section] el hook no crashea; el MutationObserver
     // sigue activo para observar las secciones lazy que monten después.
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    expect(result.current.activeSection).toBe(SAMPLE_ORDER[0]);
+    expect(result.current.getSectionClassName(SAMPLE_ORDER[0]!)).toContain("story-section--is-active");
     expect(() => renderHook(() => useStoryNavigation(SAMPLE_ORDER))).not.toThrow();
   });
 
@@ -412,7 +376,7 @@ describe("useStoryNavigation", () => {
     act(() => {
       window.dispatchEvent(new WheelEvent("wheel", { deltaY: 120, cancelable: true }));
     });
-    expect(result.current.activeSection).toBe("hero");
+    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-active");
     expect(Element.prototype.scrollIntoView).toHaveBeenCalledWith(
       expect.objectContaining({ behavior: "smooth", block: "start" }),
     );

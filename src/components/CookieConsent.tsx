@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useAppUI } from "../contexts";
 import Modal from "./Modal";
 import { INVITE_CACHE_PREFIX, AUDIO_PREFIX, STORAGE_KEYS } from "../lib/storage-keys";
+import { PRIVACY_POLICY_VERSION } from "../lib/constants";
+import { grantAnalyticsConsent } from "../lib/analytics";
 import "../styles/modals.css";
 
 const STORAGE_KEY = STORAGE_KEYS.cookieConsent;
@@ -38,22 +40,44 @@ const ls = {
   },
 };
 
-/** Otorga el consentimiento de analítica (import dinámico para no arrastrar
- *  firebase/analytics al grafo estático inicial). */
+/** Otorga el consentimiento de analítica. El módulo analytics ya está en el
+ *  grafo (importado estáticamente por LandingPage/PublicInvitation); el SDK
+ *  pesado de firebase/analytics se importa dinámicamente DENTRO de él. Sentry
+ *  sí se carga lazy (idle + consentimiento). */
 function grantAnalytics() {
-  import("../lib/analytics").then(({ grantAnalyticsConsent }) => grantAnalyticsConsent());
+  grantAnalyticsConsent();
   import("../lib/sentry").then(({ enableSentryTracking }) => enableSentryTracking());
 }
 
+/** Registro de consentimiento persistido: estado + timestamp + versión de la
+ *  política (GDPR art. 7.1, consentimiento demostrable). */
+function saveConsent(status: "accepted" | "rejected", analytics: boolean) {
+  ls.set(STORAGE_KEY, JSON.stringify({ status, ts: Date.now(), version: PRIVACY_POLICY_VERSION }));
+  ls.set(PREF_STORAGE_KEY, JSON.stringify({ necessary: true, analytics }));
+}
+
 function acceptCookies() {
-  ls.set(STORAGE_KEY, "accepted");
-  ls.set(PREF_STORAGE_KEY, JSON.stringify({ necessary: true, analytics: true }));
+  saveConsent("accepted", true);
   grantAnalytics();
 }
 
 function rejectCookies() {
-  ls.set(STORAGE_KEY, "rejected");
+  saveConsent("rejected", false);
   ls.remove(PREF_STORAGE_KEY);
+}
+
+/** Parsea el registro con tolerancia al formato legacy (valor plano). */
+function parseConsent(raw: string | null): { status: "accepted" | "rejected"; version: string } | null {
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw) as { status?: string; version?: string };
+    if (parsed && (parsed.status === "accepted" || parsed.status === "rejected") && typeof parsed.version === "string") {
+      return { status: parsed.status, version: parsed.version };
+    }
+  } catch {
+    /* formato legacy */
+  }
+  return null;
 }
 
 const CookieConsent = memo(function CookieConsent() {
@@ -63,11 +87,31 @@ const CookieConsent = memo(function CookieConsent() {
   // Sección del accordion de preferencias abierta ("" = ninguna).
   const [openSection, setOpenSection] = useState("necessary");
   const [preferences, setPreferences] = useState({ necessary: true, analytics: false });
+  // El banner debe dar acceso directo a la política de privacidad (GDPR
+  // art. 7.2). Al abrirla se CIERRA este modal (evita que ambos modales se
+  // solapen) y se reabre cuando se cierra la política, sin decidir aún.
+  const { legalModal, setLegalModal, cookiePrefsOpen, setCookiePrefsOpen } = useAppUI();
+  const wasHiddenForPolicyRef = useRef(false);
 
   useEffect(() => {
-    const status = ls.get(STORAGE_KEY);
-    if (!status) setVisible(true);
+    // Se muestra el banner si NO hay decisión o si la política cambió de
+    // versión (re-consentimiento, GDPR art. 7.2): el consentimiento anterior
+    // deja de ser demostrable/pertinente.
+    const record = parseConsent(ls.get(STORAGE_KEY));
+    if (!record || record.version !== PRIVACY_POLICY_VERSION) {
+      setVisible(true);
+    }
   }, []);
+
+  // Apertura forzada desde el footer ("Preferencias de cookies"): retirar o
+  // cambiar el consentimiento es tan fácil como otorgarlo (GDPR art. 7.3).
+  useEffect(() => {
+    if (cookiePrefsOpen) {
+      setShowSettings(true);
+      setVisible(true);
+      setCookiePrefsOpen(false);
+    }
+  }, [cookiePrefsOpen, setCookiePrefsOpen]);
 
   const handleAccept = () => {
     acceptCookies();
@@ -81,12 +125,14 @@ const CookieConsent = memo(function CookieConsent() {
         .filter((k) => k.startsWith(INVITE_CACHE_PREFIX) || k.startsWith(AUDIO_PREFIX))
         .forEach((k) => localStorage.removeItem(k));
     } catch {}
+    // ePrivacy art. 5.3: al rechazar no debe quedar la caché offline de
+    // Firestore (IndexedDB) de la invitación, solo se limpia la del proyecto.
+    import("../lib/data-request").then(({ eraseFirestoreIndexedDB }) => eraseFirestoreIndexedDB());
     setVisible(false);
   };
 
   const handleSavePreferences = () => {
-    ls.set(STORAGE_KEY, "accepted");
-    ls.set(PREF_STORAGE_KEY, JSON.stringify(preferences));
+    saveConsent("accepted", preferences.analytics);
     if (preferences.analytics) grantAnalytics();
     if (!preferences.analytics) {
       ls.remove(STORAGE_KEYS.inviteCacheLegacy);
@@ -99,12 +145,6 @@ const CookieConsent = memo(function CookieConsent() {
     setPreferences((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
-  // El banner debe dar acceso directo a la política de privacidad (GDPR
-  // art. 7.2). Al abrirla se CIERRA este modal (evita que ambos modales se
-  // solapen) y se reabre cuando se cierra la política, sin decidir aún.
-  const { legalModal, setLegalModal } = useAppUI();
-  const wasHiddenForPolicyRef = useRef(false);
-
   const handlePrivacyClick = () => {
     wasHiddenForPolicyRef.current = true;
     setVisible(false);
@@ -112,6 +152,7 @@ const CookieConsent = memo(function CookieConsent() {
   };
 
   useEffect(() => {
+    // Al cerrar la política sin decidir, el banner reaparece.
     if (wasHiddenForPolicyRef.current && !legalModal) {
       wasHiddenForPolicyRef.current = false;
       setVisible(true);

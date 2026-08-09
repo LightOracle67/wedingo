@@ -34,6 +34,36 @@ export interface DataRequestResult {
  * Elimina las claves de almacenamiento local de la invitación y el
  * consentimiento de cookies. Devuelve la lista de claves borradas.
  */
+/**
+ * Borra SOLO las bases IndexedDB de Firestore del proyecto actual de Wedingo:
+ * el formato de nombre de la base incluye el projectId (`firestore/{projectId}/...`).
+ * Filtrar por él evita arrastrar datos de OTRAS apps de Firebase que compartan
+ * el mismo origin. Se usa tanto en el borrado de datos del invitado (GDPR art.
+ * 17) como al rechazar el consentimiento (ePrivacy art. 5.3).
+ */
+export function eraseFirestoreIndexedDB(): void {
+  if (typeof indexedDB === "undefined") return;
+  try {
+    const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID || "";
+    void indexedDB.databases().then((dbs) => {
+      const firestoreDbs = dbs.filter((d) => {
+        const name = d.name || "";
+        if (!name.startsWith("firestore")) return false;
+        // Si no hay projectId configurado, se conserva el comportamiento
+        // anterior (borrar todas) para no dejar datos huérfanos.
+        return !projectId || name.includes(projectId);
+      });
+      for (const d of firestoreDbs) {
+        try {
+          indexedDB.deleteDatabase(d.name!);
+        } catch {}
+      }
+    });
+  } catch {
+    /* IndexedDB no disponible */
+  }
+}
+
 export function eraseGuestLocalData(inviteToken?: string): DataRequestResult {
   const erasedKeys: string[] = [];
   const wipe = (store: Storage) => {
@@ -69,32 +99,10 @@ export function eraseGuestLocalData(inviteToken?: string): DataRequestResult {
 
   // El IndexedDB de Firestore (persistentLocalCache, offline) también guarda
   // datos de la invitación: se borra al eliminar los datos personales.
-  // SOLO se borran las bases del proyecto actual de Wedingo: el formato de
-  // nombre de la base de Firestore incluye el projectId
-  // (`firestore/{projectId}/...`). Filtrar por él evita arrastrar datos de
-  // OTRAS apps de Firebase que compartan el mismo origin (antes se borraban
-  // todas las bases `firestore*`, un efecto colateral agresivo).
-  if (typeof indexedDB !== "undefined") {
-    try {
-      const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID || "";
-      void indexedDB.databases().then((dbs) => {
-        const firestoreDbs = dbs.filter((d) => {
-          const name = d.name || "";
-          if (!name.startsWith("firestore")) return false;
-          // Si no hay projectId configurado, se conserva el comportamiento
-          // anterior (borrar todas) para no dejar datos huérfanos.
-          return !projectId || name.includes(projectId);
-        });
-        for (const d of firestoreDbs) {
-          try {
-            indexedDB.deleteDatabase(d.name!);
-          } catch {}
-        }
-      });
-    } catch {
-      /* IndexedDB no disponible */
-    }
-  }
+  // SOLO se borran las bases del proyecto actual de Wedingo (ver
+  // eraseFirestoreIndexedDB): antes se borraban todas las bases `firestore*`,
+  // un efecto colateral agresivo.
+  eraseFirestoreIndexedDB();
 
   return { erasedKeys };
 }

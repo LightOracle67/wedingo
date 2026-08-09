@@ -12,7 +12,7 @@ const mockDecodeInviteConfig = vi.hoisted(() => {
   const stable = {};
   return vi.fn(() => stable);
 });
-const mockSafeGetItem = vi.hoisted(() => vi.fn(() => null));
+const mockSafeGetItem = vi.hoisted(() => vi.fn((_key?: unknown) => null as string | null));
 const mockSafeSetItem = vi.hoisted(() => vi.fn());
 const mockLoadAudio = vi.hoisted(() => vi.fn(() => Promise.resolve({ url: "" })));
 const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve("")));
@@ -91,6 +91,9 @@ vi.mock("../../lib/storage", () => ({
   safeSetItem: mockSafeSetItem,
   safeGetItem: mockSafeGetItem,
   safeRemoveItem: vi.fn(),
+  // Respeta el valor de consentimiento que simulan los tests vía mockSafeGetItem.
+  hasAnalyticsConsent: vi.fn(() => mockSafeGetItem("wedin_cookie_consent") === "accepted"),
+  hasRejectedConsent: vi.fn(() => mockSafeGetItem("wedin_cookie_consent") === "rejected"),
 }));
 vi.mock("../../lib/crypto-utils", () => ({
   encrypt: vi.fn((s: string) => Promise.resolve(s)),

@@ -12,6 +12,7 @@ export function UIProvider({ children }: { children: React.ReactNode }) {
   const [adminMessage, setAdminMessage] = useState("");
   const [adminMessageType, setAdminMessageType] = useState("success");
   const [legalModal, setLegalModal] = useState("");
+  const [cookiePrefsOpen, setCookiePrefsOpen] = useState(false);
   const [locationMapError, setLocationMapError] = useState("");
   const [locationMapLoading, setLocationMapLoading] = useState(false);
   const [locationMapTarget, setLocationMapTarget] = useState<{
@@ -32,6 +33,8 @@ export function UIProvider({ children }: { children: React.ReactNode }) {
     () => ({
       legalModal,
       setLegalModal,
+      cookiePrefsOpen,
+      setCookiePrefsOpen,
       saveMessage,
       setSaveMessage,
       saveError,
@@ -51,6 +54,8 @@ export function UIProvider({ children }: { children: React.ReactNode }) {
     [
       legalModal,
       setLegalModal,
+      cookiePrefsOpen,
+      setCookiePrefsOpen,
       saveMessage,
       setSaveMessage,
       saveError,

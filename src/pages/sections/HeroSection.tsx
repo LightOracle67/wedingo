@@ -1,7 +1,42 @@
-import { memo, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import CornerDecorations from "../../components/CornerDecorations";
+import { useReducedMotion } from "../../hooks/useReducedMotion";
+
+/** Estado de la cuenta atrás (años/meses/días + horas/min/seg). */
+export interface CountdownState {
+  years?: number;
+  months?: number;
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  expired: boolean;
+}
+
+/** Calcula el countdown entre `target` y `now` (función pura, sin estado). */
+function computeCountdown(target: Date, now: Date): CountdownState {
+  if (target.getTime() <= now.getTime()) {
+    return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
+  }
+  let years = target.getFullYear() - now.getFullYear();
+  let months = target.getMonth() - now.getMonth();
+  let days = target.getDate() - now.getDate();
+  if (days < 0) {
+    months -= 1;
+    days += new Date(target.getFullYear(), target.getMonth(), 0).getDate();
+  }
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+  const diffMs = Math.max(0, target.getTime() - now.getTime());
+  const hours = Math.floor(diffMs / 3_600_000) % 24;
+  const minutes = Math.floor(diffMs / 60_000) % 60;
+  const seconds = Math.floor(diffMs / 1000) % 60;
+  return { years, months, days, hours, minutes, seconds, expired: false };
+}
 
 interface HeroSectionProps {
   style?: React.CSSProperties;
@@ -9,15 +44,9 @@ interface HeroSectionProps {
   firstName?: string;
   secondName?: string;
   inviteMessage?: string;
-  countdown?: {
-    years: number;
-    months: number;
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-    expired: boolean;
-  } | null;
+  /** Fecha del evento: el countdown vive AQUÍ (no en la página) para que el
+   *  tick de 1s solo re-renderice esta sección, no todo el árbol. */
+  weddingDate?: Date | null;
   couplePhoto?: string;
   godparent1?: string;
   godparent2?: string;
@@ -30,7 +59,7 @@ const HeroSection = memo(function HeroSection({
   firstName,
   secondName,
   inviteMessage,
-  countdown,
+  weddingDate,
   couplePhoto,
   godparent1,
   godparent2,
@@ -38,6 +67,50 @@ const HeroSection = memo(function HeroSection({
 }: HeroSectionProps) {
   const { t } = useTranslation();
   const [photoLoaded, setPhotoLoaded] = useState(false);
+  const reducedMotion = useReducedMotion();
+
+  // Inicialización síncrona: el countdown se pinta en el primer render (evita
+  // el CLS de que el bloque del hero aparezca tras el mount).
+  const [countdown, setCountdown] = useState<CountdownState | null>(() =>
+    weddingDate ? computeCountdown(weddingDate, new Date()) : null,
+  );
+
+  /**
+   * Actualiza la cuenta regresiva cada segundo SOLO en esta sección. Se pausa
+   * al ocultar la pestaña, se detiene al expirar y no itera con menos
+   * movimiento (la página ya no se re-renderiza entera cada segundo).
+   */
+  useEffect(() => {
+    if (!weddingDate) return;
+    let id: ReturnType<typeof setInterval> | null = null;
+    const tick = () => {
+      const next = computeCountdown(weddingDate, new Date());
+      setCountdown(next);
+      // Una vez expirado se detiene el intervalo (no re-renderizar el hero
+      // cada segundo para siempre).
+      if (next.expired && id) {
+        clearInterval(id);
+        id = null;
+      }
+    };
+    tick();
+    if (reducedMotion) return;
+    id = setInterval(tick, 1000);
+    const onVisibility = () => {
+      if (document.hidden && id) {
+        clearInterval(id);
+        id = null;
+      } else if (!document.hidden && !id) {
+        tick();
+        id = setInterval(tick, 1000);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      if (id) clearInterval(id);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, [weddingDate, reducedMotion]);
 
   return (
     <section

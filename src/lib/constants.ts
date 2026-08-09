@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.95.40";
+export const APP_VERSION = "2.95.41";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -206,7 +206,7 @@ export const STORY_SECTION_ORDER = [
   "rsvp",
 ];
 
-export const PRIVACY_POLICY_VERSION = "2026-07-08";
+export const PRIVACY_POLICY_VERSION = "2026-08-09";
 
 export const MAX_YEARS_AHEAD = 4;
 export const INVITE_CACHE_TTL_MS = 120000;
@@ -218,7 +218,9 @@ export const RSVP_MAX_RESPONSES = 500;
 export const VISITS_MAX_INCREMENT = 10;
 /** Límite de audio por chunk cifrado (batch < 10 MiB). */
 export const AUDIO_CHUNK_SIZE_BYTES = 200 * 1024;
-export const TOKEN_ROUTE_REGEX = /^[a-zA-Z0-9]{8,12}$/;
+/** Formato de id de invitación en la URL: alineado con la regla de Firestore
+ *  (^[A-Za-z0-9]{10}$): la app solo consulta ids que la regla puede crear. */
+export const TOKEN_ROUTE_REGEX = /^[a-zA-Z0-9]{10}$/;
 export const SPECIAL_SECTIONS = ["menu", "godparents"];
 export const MAX_USERNAME_LENGTH = 50;
 export const MAX_LONG_TEXT_LENGTH = 2000;

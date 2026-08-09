@@ -16,15 +16,27 @@ vi.mock("../../lib/firebase", () => ({ db: {} }));
 // componente memo no reciba props nuevas.
 let mockLegalModal = "";
 let mockSetLegalModal: (v: string) => void = () => {};
+let mockCookiePrefsOpen = false;
+// El setter se expone vía cierre para que los tests simulen la apertura desde
+// el footer (se usa dentro de useAppUIMock, por eso el prefijo guion bajo).
+let _mockSetCookiePrefsOpen: ((v: boolean) => void) | undefined;
+void _mockSetCookiePrefsOpen;
 
 function useAppUIMock() {
   const [legal, setLegal] = useState(mockLegalModal);
+  const [prefs, setPrefs] = useState(mockCookiePrefsOpen);
   mockSetLegalModal = setLegal;
+  _mockSetCookiePrefsOpen = setPrefs;
   return {
     legalModal: legal,
     setLegalModal: (v: string) => {
       mockLegalModal = v;
       setLegal(v);
+    },
+    cookiePrefsOpen: prefs,
+    setCookiePrefsOpen: (v: boolean) => {
+      mockCookiePrefsOpen = v;
+      setPrefs(v);
     },
   };
 }
@@ -50,6 +62,7 @@ const mockLocalStorage = (() => {
 })();
 
 import CookieConsent from "../CookieConsent";
+import { PRIVACY_POLICY_VERSION } from "../../lib/constants";
 
 beforeEach(() => {
   Object.defineProperty(globalThis, "localStorage", {
@@ -72,7 +85,12 @@ describe("CookieConsent", () => {
     const acceptBtn = screen.getByText("cookie.accept");
     fireEvent.click(acceptBtn);
 
-    expect(mockLocalStorage.setItem).toHaveBeenCalledWith("wedin_cookie_consent", "accepted");
+    // El consentimiento se persiste como registro JSON con timestamp y versión
+    // de la política (GDPR art. 7.1: consentimiento demostrable).
+    expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
+      "wedin_cookie_consent",
+      expect.stringContaining('"status":"accepted"'),
+    );
     expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
       "wedin_cookie_prefs",
       JSON.stringify({ necessary: true, analytics: true }),
@@ -84,12 +102,18 @@ describe("CookieConsent", () => {
     const rejectBtn = screen.getByText("cookie.reject");
     fireEvent.click(rejectBtn);
 
-    expect(mockLocalStorage.setItem).toHaveBeenCalledWith("wedin_cookie_consent", "rejected");
+    expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
+      "wedin_cookie_consent",
+      expect.stringContaining('"status":"rejected"'),
+    );
     expect(mockLocalStorage.removeItem).toHaveBeenCalledWith("wedin_cookie_prefs");
   });
 
   it("does not render when consent already given", () => {
-    mockLocalStorage.getItem.mockImplementationOnce(() => "accepted");
+    // Formato actual: registro JSON con la versión vigente de la política.
+    mockLocalStorage.getItem.mockImplementationOnce(() =>
+      JSON.stringify({ status: "accepted", ts: Date.now(), version: PRIVACY_POLICY_VERSION }),
+    );
     const { container } = render(<CookieConsent />);
     expect(container.innerHTML).toBe("");
   });
@@ -104,7 +128,10 @@ describe("CookieConsent", () => {
     render(<CookieConsent />);
     fireEvent.click(screen.getByRole("button", { name: "cookie.configure" }));
     fireEvent.click(screen.getByRole("button", { name: "cookie.savePreferences" }));
-    expect(mockLocalStorage.setItem).toHaveBeenCalledWith("wedin_cookie_consent", "accepted");
+    expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
+      "wedin_cookie_consent",
+      expect.stringContaining('"status":"accepted"'),
+    );
     expect(mockLocalStorage.setItem).toHaveBeenCalledWith(
       "wedin_cookie_prefs",
       JSON.stringify({ necessary: true, analytics: false }),

@@ -3,6 +3,10 @@ import { createContext, useContext } from "react";
 export interface UIValue {
   legalModal: string;
   setLegalModal: (v: string) => void;
+  /** Abre el banner de cookies en modo preferencias (GDPR art. 7.3: retirar el
+   *  consentimiento debe ser tan fácil como otorgarlo). */
+  cookiePrefsOpen: boolean;
+  setCookiePrefsOpen: (v: boolean) => void;
   saveMessage: string;
   setSaveMessage: (v: string) => void;
   saveError: string;

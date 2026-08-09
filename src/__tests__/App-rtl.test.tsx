@@ -26,6 +26,7 @@ vi.mock("../contexts", () => ({
   useApp: (...args: unknown[]) => mockUseApp(...args),
   useConfig: (...args: unknown[]) => mockUseApp(...args),
   useAuth: (...args: unknown[]) => mockUseApp(...args),
+  useAppUI: () => ({ setCookiePrefsOpen: vi.fn() }),
 }));
 
 vi.mock("../components/AccessibilityPanel", () => ({

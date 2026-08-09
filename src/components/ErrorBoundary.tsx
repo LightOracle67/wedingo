@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { useTranslation } from "react-i18next";
+import { logError } from "../lib/error-utils";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 class ErrorBoundaryInner extends Component<
@@ -17,8 +18,9 @@ class ErrorBoundaryInner extends Component<
 
   override componentDidCatch(error: Error, info: React.ErrorInfo) {
     // Registra el error para diagnóstico (Sentry gated por consentimiento).
+    // Import estático: error-utils ya está en el grafo (no rompe chunks).
     try {
-      import("../lib/error-utils").then(({ logError }) => logError(error, "error-boundary"));
+      logError(error, "error-boundary");
     } catch {
       /* logging opcional */
     }

@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { AppProvider } from "./contexts/AppContext";
-import { useConfig, useAuth } from "./contexts";
+import { useConfig, useAuth, useAppUI } from "./contexts";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -39,6 +39,7 @@ function AppShell() {
   // tecla del formulario RSVP o cada tick del countdown (contexto fusionado).
   const { config, formData, inviteToken } = useConfig();
   const { isAdminTokenLoggedIn, tokenLoginUsername } = useAuth();
+  const { setCookiePrefsOpen } = useAppUI();
   const [username, setUsername] = useState("");
 
   useEffect(() => {
@@ -133,6 +134,8 @@ function AppShell() {
       {!isOnline ? (
         <div
           className="offline-banner"
+          role="status"
+          aria-live="polite"
           style={{
             position: "fixed",
             bottom: 0,
@@ -325,6 +328,10 @@ function AppShell() {
               <span className="app-footer__sep">·</span>
               <button type="button" onClick={() => setShowDataRequest(true)} className="app-footer__link">
                 {t("public.dataRequest")}
+              </button>
+              <span className="app-footer__sep">·</span>
+              <button type="button" onClick={() => setCookiePrefsOpen(true)} className="app-footer__link">
+                {t("public.cookiePreferences")}
               </button>
               <span className="app-footer__sep">·</span>
               <button

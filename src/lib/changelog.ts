@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.41",
+    date: "2026-08-09",
+    changes: [
+      "Auditoría completa de mejora progresiva (seguridad, accesibilidad, legal y rendimiento). Seguridad: reglas de medios con whitelist de esquema y campos (hasOnly), update de RSVP saneado, CSP sin wildcard de googleapis, regex de token alineada a 10 caracteres. Accesibilidad: contraste corregido en temas bandera y temas claros, fondo inert en modales, focus trap robusto, tabs del panel superadmin operativos por teclado, banner offline anunciado. Legal: consentimiento de cookies con timestamp y versión (re-consentimiento), rechazo persistente sin re-cacheo, enlace de preferencias de cookies en el footer, política EN alineada con ES (CCPA, POPIA, Google Maps). Rendimiento: countdown aislado en el hero, limpieza de temporizadores del sobre, imports estáticos (sin chunk fantasma), dead code y CSS muerto eliminado.",
+    ],
+  },
+  {
     version: "2.95.40",
     date: "2026-08-09",
     changes: [

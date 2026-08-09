@@ -265,18 +265,23 @@ export default function PublicInvitation() {
   // Cierre animado del vídeo de bienvenida: la clase --closing se aplica y el
   // componente se desmonta tras la animación de salida (evita el corte).
   const videoClosingRef = useRef(false);
+  // Los setTimeout de vídeo/confeti se limpian al desmontar: son idempotentes
+  // pero no deben actualizar estado de un componente retirado de la pantalla.
+  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+  useEffect(() => () => timersRef.current.forEach((id) => clearTimeout(id)), []);
   const closeWelcomeVideo = useCallback(() => {
     if (videoClosingRef.current) return;
     videoClosingRef.current = true;
     setVideoClosing(true);
-    setTimeout(() => {
+    const id = setTimeout(() => {
       setShowWelcomeVideo(false);
       setVideoClosing(false);
       videoClosingRef.current = false;
     }, 300);
+    timersRef.current.push(id);
   }, []);
   // Apertura del sobre y confeti: handlers ESTABLES (useCallback) para no
-  // romper el React.memo del EnvelopeOverlay en cada tick del countdown.
+  // romper el React.memo del EnvelopeOverlay.
   const handleEnvelopeOpen = useCallback(() => {
     setEnvelopeOpen(true);
     if (config.welcomeVideo && config.welcomeVideoEnabled !== "false") setShowWelcomeVideo(true);
@@ -287,7 +292,8 @@ export default function PublicInvitation() {
     // El confeti arranca justo al terminar el fade out del texto del sobre
     // (2.6s tras el segundo gesto) y cae una única vez detrás de la invitación.
     setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), CONF_TOTAL_MS);
+    const id = setTimeout(() => setShowConfetti(false), CONF_TOTAL_MS);
+    timersRef.current.push(id);
   }, []);
   // El vídeo de bienvenida es un diálogo modal: trampa de foco (WCAG 2.4.3) y
   // cierre con Escape mientras está abierto (incluida la animación de salida).
@@ -324,8 +330,6 @@ export default function PublicInvitation() {
   const showEnvelope =
     !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;
   const {
-    activeSection: _activeStorySection,
-    isTransitioning: isStoryTransitioning,
     getSectionStyle: getStorySectionStyle,
     getSectionClassName: getStorySectionClassName,
   } = useStoryNavigation(visibleOrder, { enabled: !showEnvelope, reducedMotion });
@@ -350,85 +354,6 @@ export default function PublicInvitation() {
     if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return null;
     return date;
   }, [config]);
-
-  /** Estado de la cuenta atrás (años/meses/días + horas/min/seg). */
-  const computeCountdown = useCallback(
-    (
-      target: Date,
-      now: Date,
-    ): {
-      years?: number;
-      months?: number;
-      days: number;
-      hours: number;
-      minutes: number;
-      seconds: number;
-      expired: boolean;
-    } => {
-      if (target.getTime() <= now.getTime()) {
-        return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
-      }
-      let years = target.getFullYear() - now.getFullYear();
-      let months = target.getMonth() - now.getMonth();
-      let days = target.getDate() - now.getDate();
-      if (days < 0) {
-        months -= 1;
-        days += new Date(target.getFullYear(), target.getMonth(), 0).getDate();
-      }
-      if (months < 0) {
-        years -= 1;
-        months += 12;
-      }
-      const diffMs = Math.max(0, target.getTime() - now.getTime());
-      const hours = Math.floor(diffMs / 3_600_000) % 24;
-      const minutes = Math.floor(diffMs / 60_000) % 60;
-      const seconds = Math.floor(diffMs / 1000) % 60;
-      return { years, months, days, hours, minutes, seconds, expired: false };
-    },
-    [],
-  );
-
-  // Inicialización síncrona: el countdown se pinta en el primer render (evita
-  // el CLS de que el bloque del hero aparezca tras el mount).
-  const [countdown, setCountdown] = useState<ReturnType<typeof computeCountdown> | null>(() =>
-    weddingDate ? computeCountdown(weddingDate, new Date()) : null,
-  );
-
-  /**
-   * Actualiza la cuenta regresiva cada segundo. Se pausa al ocultar la
-   * pestaña, se detiene al expirar y no itera con menos movimiento.
-   */
-  useEffect(() => {
-    if (!weddingDate) return;
-    let id: ReturnType<typeof setInterval> | null = null;
-    const tick = () => {
-      const next = computeCountdown(weddingDate, new Date());
-      setCountdown(next);
-      // Una vez expirado se detiene el intervalo (no re-renderizar el hero
-      // cada segundo para siempre).
-      if (next.expired && id) {
-        clearInterval(id);
-        id = null;
-      }
-    };
-    tick();
-    if (reducedMotion) return;
-    id = setInterval(tick, 1000);
-    const onVisibility = () => {
-      if (document.hidden && id) {
-        clearInterval(id);
-        id = null;
-      } else if (!document.hidden && !id) {
-        tick();
-        id = setInterval(tick, 1000);
-      }
-    };
-    document.addEventListener("visibilitychange", onVisibility);
-    return () => {
-      if (id) clearInterval(id);
-      document.removeEventListener("visibilitychange", onVisibility);
-    };
-  }, [weddingDate, reducedMotion, computeCountdown]);
 
   // ─── Schema.org JSON-LD ─────────────────────────────
   useEffect(() => {
@@ -631,9 +556,11 @@ export default function PublicInvitation() {
   );
 
   /**
-   * Props del countdown: solo afectan a HeroSection (cambian cada segundo).
+   * Props del hero: la fecha del evento es ESTABLE (solo cambia con la
+   * config); el countdown se calcula dentro de HeroSection para no
+   * re-renderizar la página cada segundo.
    */
-  const heroProps = useMemo(() => ({ countdown }), [countdown]);
+  const heroProps = useMemo(() => ({ weddingDate }), [weddingDate]);
 
   /**
    * Props del estado RSVP: solo afectan a RsvpSection. Cambian al editar el
@@ -771,7 +698,7 @@ export default function PublicInvitation() {
   // ═══════════════════════════════════════════════════════
   return (
     <div
-      className={`app-scene ${isStoryTransitioning ? "app-scene--transitioning" : ""}`}
+      className="app-scene"
       style={
         {
           "--story-card-user-bg": config.backgroundImage ? `url(${config.backgroundImage})` : undefined,

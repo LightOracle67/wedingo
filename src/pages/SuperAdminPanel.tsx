@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useCallback, useState } from "react";
 import { Navigate, useSearchParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useSuperAdmin } from "../contexts/SuperAdminContext";
@@ -41,10 +41,30 @@ export default function SuperAdminPanel() {
     TABS.some((tab) => tab.key === tabParam) ? (tabParam as string) : "dashboard",
   );
 
-  const handleSetTab = (key: string) => {
+  const handleSetTab = useCallback((key: string) => {
     setActiveTab(key);
     setSearchParams(key === "dashboard" ? {} : { tab: key }, { replace: true });
-  };
+  }, [setSearchParams]);
+
+  // Patrón ARIA de tabs operativo por teclado: flechas/Home/End con roving
+  // tabindex (mismo comportamiento que el panel admin, WCAG 2.1.1).
+  const handleTabKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLButtonElement>, key: string) => {
+      const index = TABS.findIndex((t) => t.key === key);
+      let nextIndex = -1;
+      if (e.key === "ArrowRight") nextIndex = (index + 1) % TABS.length;
+      else if (e.key === "ArrowLeft") nextIndex = (index - 1 + TABS.length) % TABS.length;
+      else if (e.key === "Home") nextIndex = 0;
+      else if (e.key === "End") nextIndex = TABS.length - 1;
+      if (nextIndex >= 0) {
+        e.preventDefault();
+        const next = TABS[nextIndex]!;
+        handleSetTab(next.key);
+        document.getElementById("sadm-tab-" + next.key)?.focus();
+      }
+    },
+    [handleSetTab],
+  );
 
   if (isLoading) {
     return (
@@ -84,8 +104,10 @@ export default function SuperAdminPanel() {
               role="tab"
               aria-selected={activeTab === tab.key}
               aria-controls={"sadm-tabpanel-" + tab.key}
+              tabIndex={activeTab === tab.key ? 0 : -1}
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
               onClick={() => handleSetTab(tab.key)}
+              onKeyDown={(e) => handleTabKeyDown(e, tab.key)}
             >
               {t(`superadmin.tabs.${TAB_KEY_MAP[tab.key as keyof typeof TAB_KEY_MAP]}`)}
             </button>

@@ -1,4 +1,4 @@
-import { memo, useEffect, useMemo, useState, useCallback } from "react";
+import { memo, useEffect, useMemo, useState, useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 import { randomMessage } from "../lib/invite-messages";
@@ -24,10 +24,17 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({
   const [exiting, setExiting] = useState(false);
   const [showWhite, setShowWhite] = useState(false);
   const [showText, setShowText] = useState(false);
+  // Ids de los setTimeout de la secuencia de apertura: se limpian al
+  // desmontar para que el onOpen no se dispare sobre un sobre ya retirado.
+  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
+      // Si el usuario navega antes de que acabe la secuencia (hasta 3.5s),
+      // se cancelan los temporizadores pendientes (onOpen, onConfetti, etc.).
+      timersRef.current.forEach((id) => clearTimeout(id));
+      timersRef.current = [];
       document.body.style.overflow = "";
     };
   }, []);
@@ -59,12 +66,16 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({
     if (exiting) {
       return;
     }
+    const schedule = (fn: () => void, ms: number) => {
+      const id = setTimeout(fn, ms);
+      timersRef.current.push(id);
+    };
     if (!open) {
       setOpen(true);
-      setTimeout(() => {
+      schedule(() => {
         setShowWhite(true);
       }, 600);
-      setTimeout(() => {
+      schedule(() => {
         setShowText(true);
       }, 1400);
       return;
@@ -77,8 +88,8 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({
     // El texto dorado tarda 2.5s en desvanecerse (opacity 2s / transform 2.5s):
     // el confeti arranca justo al terminar ese fade out, detrás del sobre que
     // todavía se está yendo, de modo que ya cae cuando la invitación aparece.
-    setTimeout(() => onConfetti?.(), 2600);
-    setTimeout(() => {
+    schedule(() => onConfetti?.(), 2600);
+    schedule(() => {
       document.body.style.overflow = "";
       const main = document.getElementById("main-content");
       if (main) main.focus({ preventScroll: true });

@@ -1,5 +1,5 @@
 import { memo, useCallback, useState, type ReactNode, type CSSProperties } from "react";
-import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
+import { useFocusTrap, useInertBackground, useEscapeKey } from "../hooks/useFocusTrap";
 import "../styles/modals.css";
 
 interface ModalProps {
@@ -35,6 +35,9 @@ const Modal = memo(function Modal({
 }: ModalProps) {
   const [closing, setClosing] = useState(false);
   const modalRef = useFocusTrap<HTMLDivElement>(true);
+  // Mientras el modal está abierto, el resto del documento queda `inert`:
+  // el lector de pantalla y el cursor virtual ya no leen el fondo (WCAG 1.3.1).
+  useInertBackground(true, modalRef);
 
   const handleClose = useCallback(() => {
     setClosing(true);

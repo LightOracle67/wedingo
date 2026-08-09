@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import MapEmbed from "../../components/MapEmbed";
 import { isValidGoogleMapsUrl } from "../../lib/geo-utils";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
+import { trackEvent } from "../../lib/analytics";
 import CornerDecorations from "../../components/CornerDecorations";
 
 const DetailsSection = memo(function DetailsSection({
@@ -99,7 +100,7 @@ const DetailsSection = memo(function DetailsSection({
       a.href = url;
       a.download = "invitacion.ics";
       document.body.appendChild(a);
-      void import("../../lib/analytics").then(({ trackEvent }) => trackEvent("calendar_download"));
+      void trackEvent("calendar_download");
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
@@ -135,7 +136,7 @@ const DetailsSection = memo(function DetailsSection({
                 referrerPolicy="no-referrer"
                 onClick={() => {
                   try {
-                    import("../../lib/analytics").then(({ trackEvent }) => trackEvent("calendar_click"));
+                    trackEvent("calendar_click");
                   } catch {
                     /* analítica opcional */
                   }
@@ -255,7 +256,7 @@ const DetailsSection = memo(function DetailsSection({
                       rel="noopener noreferrer"
                       referrerPolicy="no-referrer"
                       onClick={() => {
-                        void import("../../lib/analytics").then(({ trackEvent }) => trackEvent("directions_click"));
+                        void trackEvent("directions_click");
                       }}
                     >
                       {t("details.directions")}
@@ -274,7 +275,7 @@ const DetailsSection = memo(function DetailsSection({
                     rel="noopener noreferrer"
                     referrerPolicy="no-referrer"
                     onClick={() => {
-                      void import("../../lib/analytics").then(({ trackEvent }) => trackEvent("directions_click"));
+                      void trackEvent("directions_click");
                     }}
                   >
                     {t("details.directions")}

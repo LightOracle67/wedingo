@@ -166,13 +166,6 @@ const RsvpSection = memo(function RsvpSection({
     return opts;
   }, [transportEnabled]);
 
-  const departuresOfType = useCallback(
-    (type: string) => {
-      return departures.filter((d) => (d.type || "bus") === type);
-    },
-    [departures],
-  );
-
   const handleTransportModeChange = useCallback(
     (group: "main" | "companion", idx: number, mode: string) => {
       const modeField = group === "main" ? "transportMode" : `companionTransportModes[${idx}]`;
@@ -420,7 +413,6 @@ const RsvpSection = memo(function RsvpSection({
                 {(() => {
                   const mode = rsvpForm.transportMode || "own";
                   if (mode !== "bus" && mode !== "taxi") return null;
-                  const typeDepartures = departuresOfType(mode);
                   return (
                     <>
                       <label
@@ -437,11 +429,13 @@ const RsvpSection = memo(function RsvpSection({
                         onChange={(e) => handleDepartureChange("main", 0, e.target.value)}
                         disabled={isAlreadySubmitted}
                       >
-                        {typeDepartures.map((dep) => (
-                          <option key={departures.indexOf(dep)} value={String(departures.indexOf(dep))}>
-                            {departureLabel(dep)}
-                          </option>
-                        ))}
+                        {departures.map((dep, i) =>
+                          (dep.type || "bus") === mode ? (
+                            <option key={i} value={String(i)}>
+                              {departureLabel(dep)}
+                            </option>
+                          ) : null,
+                        )}
                       </select>
                     </>
                   );
@@ -536,7 +530,6 @@ const RsvpSection = memo(function RsvpSection({
                         {(() => {
                           const mode = rsvpForm.companionTransportModes?.[i] || "own";
                           if (mode !== "bus" && mode !== "taxi") return null;
-                          const typeDepartures = departuresOfType(mode);
                           return (
                             <>
                               <label
@@ -553,11 +546,13 @@ const RsvpSection = memo(function RsvpSection({
                                 onChange={(e) => handleDepartureChange("companion", i, e.target.value)}
                                 disabled={isAlreadySubmitted}
                               >
-                                {typeDepartures.map((dep) => (
-                                  <option key={departures.indexOf(dep)} value={String(departures.indexOf(dep))}>
-                                    {departureLabel(dep)}
-                                  </option>
-                                ))}
+                                {departures.map((dep, i) =>
+                                  (dep.type || "bus") === mode ? (
+                                    <option key={i} value={String(i)}>
+                                      {departureLabel(dep)}
+                                    </option>
+                                  ) : null,
+                                )}
                               </select>
                             </>
                           );

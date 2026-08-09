@@ -2,13 +2,64 @@ import { STORAGE_KEYS } from "./storage-keys";
 
 const STORAGE_CONSENT_KEY = STORAGE_KEYS.cookieConsent;
 
-export function hasStorageConsent() {
+/** Registro de consentimiento persistido por el banner de cookies (GDPR
+ *  art. 7.1: consentimiento demostrable): status, timestamp y versión de la
+ *  política con la que se otorgó (re-consentimiento si cambia). */
+export interface ConsentRecord {
+  status: "accepted" | "rejected";
+  ts: number;
+  version: string;
+}
+
+/** Parsea el registro de consentimiento con tolerancia al formato legacy
+ *  (el banner anterior guardaba el valor plano "accepted"/"rejected"). */
+function parseConsent(value: string | null): ConsentRecord | null {
+  if (!value) return null;
   try {
-    const value = localStorage.getItem(STORAGE_CONSENT_KEY);
-    const result = value === "accepted";
-    return result;
+    const parsed = JSON.parse(value) as Partial<ConsentRecord>;
+    if (
+      parsed &&
+      typeof parsed === "object" &&
+      (parsed.status === "accepted" || parsed.status === "rejected") &&
+      typeof parsed.ts === "number" &&
+      typeof parsed.version === "string"
+    ) {
+      return parsed as ConsentRecord;
+    }
+  } catch {
+    /* formato legacy */
+  }
+  return null;
+}
+
+export function getConsentRecord(): ConsentRecord | null {
+  try {
+    return parseConsent(localStorage.getItem(STORAGE_CONSENT_KEY));
   } catch (err) {
     console.error("[app]", "[storage]", "consent check error", err);
+    return null;
+  }
+}
+
+export function hasStorageConsent() {
+  const record = getConsentRecord();
+  if (record) return record.status === "accepted";
+  try {
+    return localStorage.getItem(STORAGE_CONSENT_KEY) === "accepted";
+  } catch (err) {
+    console.error("[app]", "[storage]", "consent check error", err);
+    return false;
+  }
+}
+
+/** El visitante rechazó el consentimiento: NO se debe volver a cachear la
+ *  invitación en localStorage (ePrivacy art. 5.3) hasta que decida. */
+export function hasRejectedConsent() {
+  const record = getConsentRecord();
+  if (record) return record.status === "rejected";
+  try {
+    return localStorage.getItem(STORAGE_CONSENT_KEY) === "rejected";
+  } catch {
     return false;
   }
 }
@@ -21,19 +72,30 @@ export function hasStorageConsent() {
  * consulten sin arrastrar el bundle de firebase.
  */
 export function hasAnalyticsConsent(): boolean {
-  try {
-    const consent = localStorage.getItem(STORAGE_CONSENT_KEY);
-    if (consent !== "accepted") return false;
-    const prefs = localStorage.getItem(STORAGE_KEYS.cookiePrefs);
-    if (!prefs) return true;
+  const record = getConsentRecord();
+  if (record) {
+    if (record.status !== "accepted") return false;
+  } else {
+    // Compatibilidad con el formato legacy (valor plano).
     try {
-      const parsed = JSON.parse(prefs) as { analytics?: boolean };
-      return parsed.analytics !== false;
+      if (localStorage.getItem(STORAGE_CONSENT_KEY) !== "accepted") return false;
     } catch {
-      return true;
+      return false;
     }
+  }
+  const prefs = (() => {
+    try {
+      return localStorage.getItem(STORAGE_KEYS.cookiePrefs);
+    } catch {
+      return null;
+    }
+  })();
+  if (!prefs) return true;
+  try {
+    const parsed = JSON.parse(prefs) as { analytics?: boolean };
+    return parsed.analytics !== false;
   } catch {
-    return false;
+    return true;
   }
 }
 

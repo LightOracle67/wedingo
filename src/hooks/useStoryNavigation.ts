@@ -382,11 +382,7 @@ export function useStoryNavigation(
   const getSectionStyle = (_sectionKey?: string) => EMPTY_STYLE;
 
   return {
-    activeSection,
-    transition: { fromIndex: 0, toIndex: null, direction: 1 },
-    isTransitioning: false,
     getSectionStyle,
     getSectionClassName,
-    startTransition: (_index?: number) => {},
   };
 }

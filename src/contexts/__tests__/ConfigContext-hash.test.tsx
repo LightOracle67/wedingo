@@ -98,6 +98,9 @@ vi.mock("../../lib/storage", () => ({
   safeSetItem: mockSafeSetItem,
   safeGetItem: mockSafeGetItem,
   safeRemoveItem: vi.fn(),
+  // Respeta el valor de consentimiento que simulan los tests vía mockSafeGetItem.
+  hasAnalyticsConsent: vi.fn(() => mockSafeGetItem("wedin_cookie_consent") === "accepted"),
+  hasRejectedConsent: vi.fn(() => mockSafeGetItem("wedin_cookie_consent") === "rejected"),
 }));
 vi.mock("../../lib/crypto-utils", () => ({ encrypt: vi.fn((s: string) => Promise.resolve(s)), decrypt: mockDecrypt }));
 vi.mock("../../lib/error-utils", () => ({ getFirestoreErrorMessage: vi.fn(() => "error") }));

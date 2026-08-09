@@ -28,8 +28,8 @@ import { sectionHasContent } from "../lib/section-utils";
 import type { InvitationConfig } from "../types";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
 import { clearSession } from "../lib/sessionVars";
-import { deleteSetupTokenRecord } from "../lib/setup-token";
-import { safeGetItem, safeRemoveItem } from "../lib/storage";
+import { deleteSetupTokenRecord, hashSetupToken } from "../lib/setup-token";
+import { safeGetItem, safeRemoveItem, hasAnalyticsConsent, hasRejectedConsent } from "../lib/storage";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import { encrypt, decrypt } from "../lib/crypto-utils";
 import { useCalendar } from "../hooks/useCalendar";
@@ -219,7 +219,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
               if (
                 segments.length === 1 &&
                 TOKEN_ROUTE_REGEX.test(segments[0]!) &&
-                safeGetItem("wedin_cookie_consent") === "accepted"
+                hasAnalyticsConsent()
               ) {
                 trackVisit(inviteToken);
               }
@@ -266,13 +266,17 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         // está en claro, así que se omite explícitamente (antes quedaba el
         // IBAN en localStorage).
         const { bankInfo: _omitBank, musicFile: _omitAudio, ...cacheSafe } = hydrated;
-        try {
-          localStorage.setItem(
-            STORAGE_KEYS.inviteCache(inviteToken),
-            JSON.stringify({ data: cacheSafe, bankInfoEncrypted: bankInfoEncrypted || null, cachedAt: Date.now() }),
-          );
-        } catch {
-          /* almacenamiento no disponible */
+        // ePrivacy art. 5.3: tras REChazar el consentimiento no se vuelve a
+        // cachear la invitación en localStorage (el rechazo es persistente).
+        if (!hasRejectedConsent()) {
+          try {
+            localStorage.setItem(
+              STORAGE_KEYS.inviteCache(inviteToken),
+              JSON.stringify({ data: cacheSafe, bankInfoEncrypted: bankInfoEncrypted || null, cachedAt: Date.now() }),
+            );
+          } catch {
+            /* almacenamiento no disponible */
+          }
         }
         setVisitCount(typeof snapshot.data()._visits === "number" ? snapshot.data()._visits : 0);
         setHasStoredConfig(true);
@@ -285,7 +289,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         if (
           segments.length === 1 &&
           TOKEN_ROUTE_REGEX.test(segments[0]!) &&
-          safeGetItem("wedin_cookie_consent") === "accepted"
+          hasAnalyticsConsent()
         ) {
           trackVisit(inviteToken);
         }
@@ -425,7 +429,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
             }
           })();
           if (storedToken) {
-            const { hashSetupToken } = await import("../lib/setup-token");
             payload.setupTokenHash = await hashSetupToken(storedToken);
           }
         }

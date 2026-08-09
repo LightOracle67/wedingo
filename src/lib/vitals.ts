@@ -10,6 +10,7 @@
  */
 
 import { onCLS, onFCP, onINP, onLCP, onTTFB } from "web-vitals";
+import { trackEvent } from "./analytics";
 
 interface VitalMetric {
   name: string;
@@ -38,15 +39,14 @@ export function reportWebVitals() {
   if (!import.meta.env.PROD) return;
 
   const sendToAnalytics = (metric: VitalMetric) => {
-    // Import dinámico: analytics.ts (y su import de firebase/analytics) no
-    // debe estar en el grafo estático inicial para que el chunk lazy-analytics
-    // no se modulepreload en el primer hit.
-    import("./analytics").then(({ trackEvent }) => {
-      trackEvent("web_vital", {
-        metric_name: metric.name,
-        value: normalizeMetricValue(metric),
-        rating: metric.rating,
-      });
+    // Import estático: analytics.ts ya está en el grafo (LandingPage/
+    // PublicInvitation/CookieConsent lo importan); el SDK pesado de
+    // firebase/analytics se importa dinámicamente DENTRO de él, así que el
+    // chunk lazy-analytics sigue fuera de la ruta crítica.
+    trackEvent("web_vital", {
+      metric_name: metric.name,
+      value: normalizeMetricValue(metric),
+      rating: metric.rating,
     });
   };
 

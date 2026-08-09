@@ -374,7 +374,7 @@ describe("a11y-page-audit", () => {
         firstName="John"
         secondName="Jane"
         inviteMessage="¡Nos casamos!"
-        countdown={{ years: 0, months: 1, days: 2, hours: 3, minutes: 4, seconds: 5, expired: false }}
+        weddingDate={new Date(Date.now() + 3 * 86400000)}
       />,
     );
     const results = await runAxe(container);

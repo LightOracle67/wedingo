@@ -36,6 +36,17 @@ service cloud.firestore {
         && hash.matches('[0-9a-f]{64}');
     }
 
+    /* El `data` de los medios (galería/audio/imágenes de config) es SIEMPRE
+       cifrado AES-GCM en base64 (formato de crypto-utils: salt|iv|iteraciones|
+       ciphertext, con cabecera >= 31 bytes). Exigir el alfabeto base64 y un
+       mínimo de 44 caracteres impide alojar texto arbitrario o data URLs no
+       cifrados (p. ej. data:text/html o SVG) bajo una sesión admin. */
+    function isEncryptedMedia(data) {
+      return data is string
+        && data.size() >= 44
+        && data.matches('[A-Za-z0-9+/=]+');
+    }
+
     /* Un token de setup es válido si existe un registro en setupTokens cuyo
        documentId (el hash del token) apunta a esta invitación. */
     function setupTokenValid(tokenId, hash) {
@@ -210,16 +221,29 @@ service cloud.firestore {
 
       match /gallery/{imageId} {
         allow read: if true;
-        allow create: if request.resource.data.data is string
+        allow create: if request.resource.data.keys().hasOnly(['data', 'description', 'position', 'createdAt', 'originalName', 'originalSize'])
+          && request.resource.data.data is string
+          && isEncryptedMedia(request.resource.data.data)
           && request.resource.data.data.size() <= 1048576
+          && request.resource.data.description is string && request.resource.data.description.size() <= 200
+          && request.resource.data.position is int
           && isAuthenticatedAdmin(tokenId);
-        allow update, delete: if isAuthenticatedAdmin(tokenId);
+        /* El update solo permite retocar la descripción (el resto de campos se
+           crean en el create y no deben poder alterarse en caliente). */
+        allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['description'])
+          && request.resource.data.description is string && request.resource.data.description.size() <= 200
+          && isAuthenticatedAdmin(tokenId);
+        allow delete: if isAuthenticatedAdmin(tokenId);
       }
 
       match /audio/{docId} {
         allow read: if true;
-        allow create: if request.resource.data.data is string
+        allow create: if request.resource.data.keys().hasOnly(['chunkIndex', 'data', 'totalChunks', 'attempt', 'createdAt'])
+          && request.resource.data.data is string
+          && isEncryptedMedia(request.resource.data.data)
           && request.resource.data.data.size() <= 524288
+          && request.resource.data.chunkIndex is int
+          && request.resource.data.totalChunks is int && request.resource.data.totalChunks <= 400
           && isAuthenticatedAdmin(tokenId);
         allow delete: if isAuthenticatedAdmin(tokenId);
       }
@@ -228,10 +252,12 @@ service cloud.firestore {
         allow read: if true;
         allow create: if request.resource.data.keys().hasOnly(['data', 'createdAt'])
           && request.resource.data.data is string
+          && isEncryptedMedia(request.resource.data.data)
           && request.resource.data.data.size() <= 1048576
           && isAuthenticatedAdmin(tokenId);
         allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['data', 'createdAt'])
           && request.resource.data.data is string
+          && isEncryptedMedia(request.resource.data.data)
           && request.resource.data.data.size() <= 1048576
           && isAuthenticatedAdmin(tokenId);
         allow delete: if isAuthenticatedAdmin(tokenId);
@@ -439,9 +465,12 @@ service cloud.firestore {
 
       allow update: if request.resource.data.attendance in ['yes', 'no']
         && request.resource.data.dietaryInfo is string
+        && request.resource.data.dietaryInfo.size() <= 4000
+        && isSafeText(request.resource.data.dietaryInfo)
         && request.resource.data.inviteToken == inviteToken
         && hasActiveSession(inviteToken)
         && request.resource.data.privacyConsent == true
+        && (!request.resource.data.keys().hasAny(['guestName']) || (request.resource.data.guestName is string && request.resource.data.guestName.size() <= 120 && isSafeText(request.resource.data.guestName)))
         && request.resource.data.keys().hasOnly(['attendance', 'dietaryInfo', 'privacyConsent', 'privacyConsentAt', 'healthConsent', 'healthConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'guestName', 'submittedAt', 'inviteToken', 'companions', 'menuHeadcounts', 'guestNames', 'attendees', 'notAttendingCount', 'companionCount', 'companionNames', 'companionMenus', 'companionAllergies', 'companionAllergiesOther', 'allergiesOther', 'rsvpType', 'mainGuestDocId', 'mainGuestName', 'companionDocIds', 'transportChoice', 'transportMode', 'transportTime', 'transportPlace', 'companionTransportChoices', 'companionTransportModes', 'companionTransportTimes', 'companionTransportPlaces']);
 
       allow delete: if isSuperAdmin()

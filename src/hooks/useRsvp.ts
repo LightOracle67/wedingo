@@ -20,6 +20,7 @@ import { computeAge } from "../lib/date-utils";
 import { DIETARY_OPTIONS, parseDietaryInfo } from "../lib/rsvp-utils";
 import { isValidFullName, normalizeFullName } from "../lib/name-utils";
 import { useRsvpSubmit } from "./useRsvpSubmit";
+import { trackEvent } from "../lib/analytics";
 import { buildMainGuestData, buildCompanionData } from "./rsvp-payloads";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import { withWriteRetry } from "../lib/async-utils";
@@ -802,9 +803,9 @@ export function useRsvp(
       setRsvpMessage(
         isAttending ? t("rsvp.successAttending", { name: single }) : t("rsvp.successNotAttending", { name: single }),
       );
-      // Analítica del envío (solo si hay consentimiento).
+      // Analítica del envío (solo si hay consentimiento; import estático, el
+      // módulo ya está en el grafo).
       try {
-        const { trackEvent } = await import("../lib/analytics");
         trackEvent("rsvp_submit", { attendance: isAttending ? "yes" : "no" });
       } catch {}
       setRsvpForm(RsvpFormDefault());

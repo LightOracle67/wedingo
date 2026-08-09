@@ -1544,72 +1544,22 @@ select.setup-input {
 }
 
 /* ── Utility classes ── */
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.flex-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.flex-row {
+.admin-flex {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
 }
-.flex-col {
+.admin-flex--between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.admin-flex--col {
   display: flex;
   flex-direction: column;
 }
-.gap-sm {
+.admin-gap-sm {
   gap: 0.4rem;
-}
-.gap-md {
-  gap: 0.75rem;
-}
-.mt-sm {
-  margin-top: 0.35rem;
-}
-.mt-md {
-  margin-top: 0.75rem;
-}
-.mb-sm {
-  margin-bottom: 0.35rem;
-}
-.text-center {
-  text-align: center;
-}
-.text-muted {
-  color: var(--setup-muted);
-}
-.text-sm {
-  font-size: 0.85rem;
-}
-.text-xs {
-  font-size: 0.78rem;
-}
-.w-full {
-  width: 100%;
-}
-.p-sm {
-  padding: var(--spacing-sm);
-}
-.p-md {
-  padding: 0.75rem;
-}
-.pos-relative {
-  position: relative;
-}
-.overflow-auto {
-  overflow-y: auto;
-}
-.cursor-pointer {
-  cursor: pointer;
-}
-.flex-wrap {
-  flex-wrap: wrap;
 }
 
 /* ── Utility classes para reducir inline styles (legacy) ── */
