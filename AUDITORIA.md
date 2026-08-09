@@ -203,9 +203,9 @@ Método: 4 auditorías estáticas paralelas (seguridad, accesibilidad, legal int
 - **Fase 2 (8)**: actividad reciente, embudo (visitas sin confirmar), confirmaciones por día, historial de respaldos, búsqueda por contenido, comparativa de temas, columna de usuario, estadísticas de dispositivo (UA).
 - **Fase 3 (9)**: modo mantenimiento, banner global, listas negras de URLs y tokens, umbral de expiración, estado de invitación (activa/revisión/bloqueada), etiquetas con filtro, aforo máximo, firma digital en RSVP, avisos de expiración en dashboard.
 - **Fase 4 (8)**: cierre de sesión remota, registro de accesos, previsualización por dispositivo, QR, auto-respuesta, modo presentación, invitado asistido (v2.95.49-50).
+- **Fase 5 (4 viables)**: PDF/imprimir confirmaciones, restauración de backup, auditoría de config (configLog), GC de Storage huérfano (v2.95.50).
 
-**Pendientes (24) — mayoría bloqueados por el plan Spark (Cloud Functions) o servicios externos:**
-- F5: PDF RSVP, restauración remota de backup, auditoría por sección, GC de Storage, API/webhooks (Blaze), traducción automática (proveedor), alertas por email (servicio de correo), modo presentación completo, invitado asistido.
+**Descartadas definitivamente (~16)** — el plan Spark es permanente (sin migración a Blaze), por lo que las funciones que requieren Cloud Functions o servicios externos NO se implementarán: API/webhooks, backup automático programado, alertas por email, traducción automática, encuesta personalizada, comparador de invitados vs. confirmados, bloqueo geográfico por IP, simulación de reglas Firestore, autoservicio de borrado social (H4), detección de abuso con bloqueo automático y notificaciones de seguridad por email.
 
 ## Próximos pasos recomendados
 1. **Operativo**: App Check + MFA superadmin + rotación de credenciales (mayor mitigación de abuso/DoS) — requiere consola de Firebase.
