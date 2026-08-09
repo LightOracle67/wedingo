@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.62",
+    date: "2026-08-09",
+    changes: [
+      "FIX: animaciones de sección al hacer scroll — umbral de entrada rebajado al 20% (antes 70%): las secciones asomaban invisibles y creaban huecos en blanco al scrollear rápido, y las secciones más altas que el viewport (RSVP) nunca llegaban a animarse; el hero entra siempre animado al abrir el sobre (antes una carrera en la primera callback del IntersectionObserver podía dejarlo sin animación); los timers de transición ya no se reinician en bucle.",
+    ],
+  },
+
+  {
     version: "2.95.61",
     date: "2026-08-09",
     changes: [

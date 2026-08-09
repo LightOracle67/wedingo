@@ -25,7 +25,16 @@ import { useEffect, useRef, useState } from "react";
 
 const ENTER_MS = 1550;
 const LEAVE_MS = 1150;
-const VISIBILITY_THRESHOLD = 0.7;
+// Ratio para CONSIDERAR ENTRADA: cualquier sección que asome un 20% al
+// viewport empieza su animación de entrada. Un umbral bajo evita dos
+// problemas: secciones invisibles (entre 15% y 70%) que crean huecos en
+// blanco al scrollear rápido, y secciones más altas que el viewport (p. ej.
+// el RSVP) cuyo ratio máximo nunca alcanzaría un 0.7.
+const ENTER_RATIO = 0.2;
+// Ratio para CONSIDERAR SALIDA: solo cuando la sección está prácticamente
+// fuera (5%) pasa a hidden. Entre ENTER_RATIO y LEAVE_RATIO el estado se
+// mantiene (histéresis) para no parpadear por micro-oscilaciones del scroll.
+const LEAVE_RATIO = 0.05;
 
 type SectionStage = "hidden" | "entering" | "active" | "leaving";
 
@@ -71,12 +80,17 @@ export function useStoryNavigation(
     }
 
     const timers = new Map<string, ReturnType<typeof setTimeout>>();
+    // Programa una transición: si el estado actual coincide con `from`, lo
+    // mueve a `to` tras `ms`. La transición SOLO se programa cuando cambia el
+    // estado (lo decide quien llama), así no se reinicia en bucle mientras el
+    // IO sigue disparando para la misma sección.
     const schedule = (key: string, from: SectionStage, to: SectionStage, ms: number) => {
       const prev = timers.get(key);
       if (prev) clearTimeout(prev);
       timers.set(
         key,
         setTimeout(() => {
+          timers.delete(key);
           setStages((s) => (s[key] === from ? { ...s, [key]: to } : s));
         }, ms),
       );
@@ -94,30 +108,42 @@ export function useStoryNavigation(
           const isFirstContact = isGlobalFirst || !firstContacted.has(key);
           if (isFirstContact) firstContacted.add(key);
 
-          // Umbral adaptativo: una sección a pantalla completa "entra" al estar
-          // ~70% visible; una sección más baja que el viewport entra al asomarse.
-          // El umbral de SALIDA es más bajo (0.15) que el de entrada para no
-          // reiniciar la animación por micro-oscilaciones del scroll.
+          // Ratio de intersección con el viewport (el scroll container es
+          // `.app-scene`, que llena la ventana: root null es correcto).
           const ratio = entry.intersectionRatio ?? (entry.isIntersecting ? 1 : 0);
-          const isTall = (entry.target as HTMLElement).clientHeight >= window.innerHeight * 0.8;
-          const enteredThreshold = isTall ? VISIBILITY_THRESHOLD : 0.1;
-          const isEntered = ratio >= enteredThreshold;
-          const isGone = ratio <= 0.15;
+          const isEntered = ratio >= ENTER_RATIO;
+          const isGone = ratio <= LEAVE_RATIO;
 
           if (isEntered) {
             setActiveSection(key);
             if (isFirstContact) {
-              if (isGlobalFirst && !reducedMotion && (bootMode === "reveal" || key === primarySection)) {
-                setStages((s) => ({ ...s, [key]: "entering" }));
-                schedule(key, "entering", "active", ENTER_MS);
-              } else {
-                setStages((s) => ({ ...s, [key]: "active" }));
-              }
+              // ANTI-PARPADEO + carrera del arranque: en modo "reveal" (sobre
+              // recién abierto) la sección principal (hero) entra ANIMADA
+              // siempre (el orden de procesado del IO no es garantizado); en
+              // modo "boot" (admin/preview) solo anima si es procesada primero
+              // para no parpadear al recargar. El resto de secciones al primer
+              // contacto se activan SIN animar si ya son visibles.
+              const shouldAnimateEntry =
+                !reducedMotion && key === primarySection && (bootMode === "reveal" || isGlobalFirst);
+              setStages((s) => {
+                if (shouldAnimateEntry) {
+                  // Solo se anima si no está ya entrando (no reiniciar el timer).
+                  if (s[key] === "entering") return s;
+                  schedule(key, "entering", "active", ENTER_MS);
+                  return { ...s, [key]: "entering" };
+                }
+                return { ...s, [key]: "active" };
+              });
             } else if (reducedMotion) {
               setStages((s) => ({ ...s, [key]: "active" }));
             } else {
-              setStages((s) => (s[key] === "entering" || s[key] === "active" ? s : { ...s, [key]: "entering" }));
-              schedule(key, "entering", "active", ENTER_MS);
+              // Reentrada (scroll de vuelta): si estaba oculta o saliendo,
+              // arranca la animación de entrada UNA vez.
+              setStages((s) => {
+                if (s[key] === "entering" || s[key] === "active") return s;
+                schedule(key, "entering", "active", ENTER_MS);
+                return { ...s, [key]: "entering" };
+              });
             }
           } else if (isGone) {
             if (isFirstContact) {
@@ -126,15 +152,17 @@ export function useStoryNavigation(
               setStages((s) => ({ ...s, [key]: "hidden" }));
             } else {
               setStages((s) => {
-                if (s[key] === "entering" || s[key] === "active") return { ...s, [key]: "leaving" };
+                if (s[key] === "entering" || s[key] === "active") {
+                  schedule(key, "leaving", "hidden", LEAVE_MS);
+                  return { ...s, [key]: "leaving" };
+                }
                 return s;
               });
-              schedule(key, "leaving", "hidden", LEAVE_MS);
             }
           }
         }
       },
-      { threshold: [0.1, 0.15, VISIBILITY_THRESHOLD] },
+      { threshold: [LEAVE_RATIO, ENTER_RATIO] },
     );
 
     const observed = new Set<HTMLElement>();
