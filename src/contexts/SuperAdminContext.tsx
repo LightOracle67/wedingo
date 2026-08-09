@@ -2,7 +2,8 @@ import { createContext, useContext, useCallback, useEffect, useMemo, useState, u
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import type { User } from "firebase/auth";
-import { getAuthInstance } from "../lib/firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { getAuthInstance, db } from "../lib/firebase";
 import { INVITE_CACHE_PREFIX } from "../lib/storage-keys";
 import { saveSession, getSession, clearSession } from "../lib/sessionVars";
 import { useSessionRenewal } from "../hooks/useSessionRenewal";
@@ -62,6 +63,13 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
           if (!local || local.type !== "superadmin") {
             saveSession("superadmin", firebaseUser.email ?? "", { uid: firebaseUser.uid });
           }
+          // Registra el UID del superadmin (respaldo de las reglas ante tokens
+          // sin el claim de email): best-effort.
+          if (firebaseUser.uid) {
+            try {
+              setDoc(doc(db, "platform", "settings"), { superadminUid: firebaseUser.uid }, { merge: true }).catch(() => {});
+            } catch {}
+          }
           setUser(firebaseUser);
         } else {
           // Usuario de Firebase con OTRO email (o sesión nula): se cierra la
@@ -95,6 +103,10 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
           return false;
         }
         saveSession("superadmin", result.user.email ?? "", { uid: result.user.uid });
+        // Registra el UID (respaldo de las reglas ante tokens sin claim email).
+        try {
+          setDoc(doc(db, "platform", "settings"), { superadminUid: result.user.uid }, { merge: true }).catch(() => {});
+        } catch {}
         setUser(result.user);
         loggingInRef.current = false;
 

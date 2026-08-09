@@ -2,8 +2,15 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     function isSuperAdmin() {
+      // Se comprueba el email del ID token Y, como respaldo robusto, el UID
+      // del superadmin registrado en platform/settings (escrito por el cliente
+      // en cada login). Algunos tokens de Firebase no exponen el claim `email`
+      // en request.auth.token.email, lo que causaba permission-denied aunque
+      // el cliente validara correctamente.
       return request.auth != null
-        && request.auth.token.email in ['adriancl2001@gmail.com'];
+        && (request.auth.token.email in ['adriancl2001@gmail.com']
+          || (exists(/databases/$(database)/documents/platform/settings)
+            && get(/databases/$(database)/documents/platform/settings).data.superadminUid == request.auth.uid));
     }
 
     function sessionExists(tokenId) {

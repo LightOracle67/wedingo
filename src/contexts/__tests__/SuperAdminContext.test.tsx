@@ -25,6 +25,11 @@ vi.mock("react-router", () => ({
   useLocation: () => ({ pathname: "/superadmin" }),
 }));
 
+vi.mock("firebase/firestore", () => ({
+  doc: vi.fn(() => "settings-doc"),
+  setDoc: vi.fn(() => Promise.resolve()),
+}));
+
 vi.mock("firebase/auth", () => ({
   signInWithEmailAndPassword: (...args: unknown[]) => mockSignInWithEmailAndPassword(...args),
   signOut: (...args: unknown[]) => mockSignOut(...args),

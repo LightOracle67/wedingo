@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.58",
+    date: "2026-08-09",
+    changes: [
+      "Fix de raíz del permission-denied del superadmin: las reglas de Firestore solo comprobaban el claim de email del token (que algunos tokens de Firebase no exponen en request.auth.token.email), por lo que todas las lecturas del panel fallaban con 'Missing or insufficient permissions'. Ahora las reglas aceptan también el UID del superadmin, que el cliente registra en platform/settings en cada login/re-hidratación.",
+    ],
+  },
+
+  {
     version: "2.95.57",
     date: "2026-08-09",
     changes: [
