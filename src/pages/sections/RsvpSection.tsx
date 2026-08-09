@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useConfig, useAppUI, useAuth, useRsvpFormContext } from "../../contexts";
 import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import { parseMenuDishes } from "../../lib/menu-utils";
+import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 import { parseTransportDepartures } from "../../lib/transport-utils";
 import CornerDecorations from "../../components/CornerDecorations";
 
@@ -79,11 +80,19 @@ const RsvpSection = memo(function RsvpSection({
   const isAlreadySubmitted = !!alreadySubmittedEntry;
   // F3-2: invitación bloqueada por el superadmin → el formulario se desactiva.
   const isBlocked = config?.status === "blocked";
+  // Boda ya pasada (o expiración manual pasada): se bloquea la confirmación.
+  const weddingPassed = (() => {
+    if (config?.manualExpiry && `${config.manualExpiry}T23:59:59` < new Date().toISOString()) return true;
+    if (!config?.weddingYear || !config?.weddingMonth) return false;
+    const monthIndex = MONTH_VALUE_TO_NUMBER[config.weddingMonth] || 1;
+    const d = new Date(Number(config.weddingYear), monthIndex - 1, Number(config.weddingDay) || 1);
+    return d.getTime() > 0 && d.getTime() < Date.now();
+  })();
   // F3-7: control de aforo — si hay capacidad y se ha alcanzado, se bloquea la
   // confirmación de asistencia (sí / con acompañantes).
   const capacity = Number(config?.rsvpCapacity) || 0;
   const capacityReached = capacity > 0 && (rsvpConfirmedCount ?? 0) >= capacity;
-  const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted || deadlinePassed || isBlocked;
+  const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted || deadlinePassed || isBlocked || weddingPassed;
   const isAttending = rsvpForm.attendance !== "no";
 
   const age = useMemo(() => computeAge(rsvpForm.birthDate), [rsvpForm.birthDate, computeAge]);
@@ -994,6 +1003,10 @@ const RsvpSection = memo(function RsvpSection({
             {isBlocked ? (
               <p className="setup-error" role="alert">
                 {t("rsvp.blockedNotice")}
+              </p>
+            ) : weddingPassed ? (
+              <p className="setup-error" role="alert">
+                {t("rsvp.weddingPassedNotice")}
               </p>
             ) : capacityReached && rsvpForm.attendance !== "no" ? (
               <p className="setup-error" role="alert">

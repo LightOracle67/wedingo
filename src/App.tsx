@@ -11,6 +11,7 @@ import AdminBarHeightSync from "./components/AdminBarHeightSync";
 const CookieConsent = lazy(() => import("./components/CookieConsent"));
 const DataRequestModal = lazy(() => import("./components/DataRequestModal"));
 import LanguageSwitcher from "./components/LanguageSwitcher";
+import GoogleTranslateToggle from "./components/GoogleTranslateToggle";
 import MusicPlayer from "./components/MusicPlayer";
 import { useFocusTrap, useEscapeKey } from "./hooks/useFocusTrap";
 import { useAppShellEffects } from "./hooks/useAppShellEffects";
@@ -310,6 +311,11 @@ function AppShell() {
           <footer className="app-footer">
             <div className="app-footer__left">
               <LanguageSwitcher />
+              {/* Traducción con el widget de Google, cargada SOLO si el usuario
+                  lo solicita (ePrivacy: sin scripts de terceros previos a la
+                  acción del usuario). El texto se envía a Google al traducir;
+                  se disclose en la política. */}
+              <GoogleTranslateToggle />
               <button
                 type="button"
                 className="a11y-trigger"

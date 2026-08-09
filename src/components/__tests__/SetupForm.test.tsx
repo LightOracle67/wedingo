@@ -9,6 +9,8 @@ const mockResetForm = vi.fn();
 
 const mockUseApp = vi.fn();
 
+vi.mock("../../hooks/useConfigImage", () => ({ useConfigImage: () => "" }));
+
 import React from "react";
 
 vi.mock("react-i18next", () => ({

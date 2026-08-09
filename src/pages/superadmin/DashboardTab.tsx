@@ -172,6 +172,19 @@ const DashboardTab = memo(function DashboardTab() {
     .map((inv) => `${String(inv.weddingDay || 1)} ${String(inv.weddingMonth || "")} ${String(inv.weddingYear || "")} (${inv.id})`)
     .slice(0, 8);
 
+  // Agenda de bodas: próximos eventos ordenados por fecha.
+  const upcomingWeddings = invitations
+    .filter((inv) => inv.weddingYear && inv.weddingMonth)
+    .map((inv) => {
+      const monthIndex = (inv.weddingMonth ? MONTH_VALUE_TO_NUMBER[inv.weddingMonth] || 1 : 1) - 1;
+      const day = Number(inv.weddingDay) || 1;
+      const ts = new Date(Number(inv.weddingYear), monthIndex, day).getTime();
+      return { ts, label: `${String(inv.firstName || "?")} & ${String(inv.secondName || "?")} — ${day}/${inv.weddingMonth}/${inv.weddingYear} (${inv.id})` };
+    })
+    .filter((w) => w.ts > 0)
+    .sort((a, b) => a.ts - b.ts)
+    .slice(0, 8);
+
   const expired = invitations.filter((inv) => {
     // Expiración manual fijada por el superadmin (manage.manualExpiry).
     if (inv.manualExpiry) {
@@ -444,6 +457,20 @@ const DashboardTab = memo(function DashboardTab() {
             {expiringSoon.map((e, i) => (
               <li key={i} style={{ marginBottom: "0.2rem" }}>
                 {e}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      {/* ── Agenda de bodas (próximas) ── */}
+      {upcomingWeddings.length > 0 ? (
+        <div className="setup-background-panel" style={{ marginTop: "0.75rem" }}>
+          <p className="setup-label">{t("superadmin.upcomingWeddings")}</p>
+          <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}>
+            {upcomingWeddings.map((w, i) => (
+              <li key={i} style={{ marginBottom: "0.2rem" }}>
+                {w.label}
               </li>
             ))}
           </ul>

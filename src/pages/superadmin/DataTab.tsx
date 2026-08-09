@@ -15,6 +15,9 @@ interface InvitationData {
   tokenCount: number;
   weddingDate: string;
   hasSession: boolean;
+  visits: number;
+  lastActivity: string;
+  createdAt: string;
 }
 
 /**
@@ -41,6 +44,28 @@ export default function DataTab() {
 
   /** Texto requerido para confirmar eliminaciones. */
   const CONFIRM_WORD = "ELIMINAR";
+  /** Filtro de actividad: "hoy", "semana", "sesion" o "todas". */
+  const [activityFilter, setActivityFilter] = useState("todas");
+
+  /** Invitaciones filtradas por actividad (confirmaciones hoy/semana, sesión activa). */
+  const filtered = useMemo(() => {
+    const now = Date.now();
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+    const weekAgo = now - 7 * 86400000;
+    return invitations.filter((inv) => {
+      if (activityFilter === "sesion") return inv.hasSession;
+      if (activityFilter === "hoy") {
+        const a = inv.lastActivity ? Date.parse(inv.lastActivity) : 0;
+        return a >= todayStart.getTime();
+      }
+      if (activityFilter === "semana") {
+        const a = inv.lastActivity ? Date.parse(inv.lastActivity) : 0;
+        return a >= weekAgo;
+      }
+      return true;
+    });
+  }, [invitations, activityFilter]);
 
   // ── Carga de datos ────────────────────────────────────
 
@@ -64,6 +89,10 @@ export default function DataTab() {
         const list = invSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => {
           const data = d.data();
           const token = d.id;
+          const sessionAt = data.activeSession as { seconds?: number } | null | undefined;
+          const lastActivity = sessionAt && typeof sessionAt === "object" && "seconds" in sessionAt
+            ? new Date(Number(sessionAt.seconds) * 1000).toISOString()
+            : String(data.createdAt || "");
           return {
             id: token,
             firstName: String(data.firstName || ""),
@@ -76,6 +105,9 @@ export default function DataTab() {
                 ? `${String(data.weddingDay)}/${String(data.weddingMonth)}/${String(data.weddingYear)}`
                 : "",
             hasSession: !!data.activeSession,
+            visits: Number(data._visits) || 0,
+            lastActivity,
+            createdAt: String(data.createdAt || ""),
           };
         });
         list.sort((a, b) => (b.weddingDate || "").localeCompare(a.weddingDate || ""));
@@ -256,6 +288,46 @@ export default function DataTab() {
     },
     [addToast, t],
   );
+
+  /** Exporta las confirmaciones de una invitación en CSV (para hojas de cálculo). */
+  const exportCsv = useCallback(
+    async (token: string) => {
+      try {
+        const rsvpSnap = await getDocs(rsvpByInviteRef(token));
+        const esc = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+        const header = "Nombre,Asistencia,Acompañantes,Menú,Alergias,Fecha";
+        const rows = rsvpSnap.docs
+          .map((d) => {
+            const r = d.data();
+            return [
+              esc(r.guestName),
+              esc(r.attendance),
+              esc(Number(r.companionCount) || 0),
+              esc(r.mealChoice),
+              esc(Array.isArray(r.allergiesOther) ? r.allergiesOther.join("; ") : r.allergiesOther),
+              esc(r.submittedAt ? new Date(String(r.submittedAt)).toLocaleDateString() : ""),
+            ].join(",");
+          })
+          .join("\n");
+        downloadJson(`${token}_rsvp.csv`, `${header}\n${rows}`);
+        addToast("success", t("superadmin.data.exportedOne", { token }));
+      } catch {
+        addToast("error", t("superadmin.data.exportFailed"));
+      }
+    },
+    [addToast, t],
+  );
+
+  /** Resumen de menús (cuántos pidieron carne/pescado/vegano) de una invitación. */
+  const menuSummary = useCallback(async (token: string) => {
+    const rsvpSnap = await getDocs(rsvpByInviteRef(token));
+    const counts: Record<string, number> = {};
+    for (const d of rsvpSnap.docs) {
+      const m = String(d.data().mealChoice || "");
+      if (m) counts[m] = (counts[m] || 0) + 1;
+    }
+    return counts;
+  }, []);
 
   /**
    * Lee la galería y el audio de una invitación (para exportar el backup
@@ -504,6 +576,25 @@ export default function DataTab() {
         </button>
       </div>
 
+      {/* ── Filtro de actividad ── */}
+      <div className="admin-filters" style={{ marginBottom: "0.75rem" }}>
+        <select
+          className="setup-input"
+          value={activityFilter}
+          onChange={(e) => setActivityFilter(e.target.value)}
+          aria-label={t("superadmin.data.activityFilter")}
+          style={{ maxWidth: "16rem" }}
+        >
+          <option value="todas">{t("superadmin.data.activityAll")}</option>
+          <option value="hoy">{t("superadmin.data.activityToday")}</option>
+          <option value="semana">{t("superadmin.data.activityWeek")}</option>
+          <option value="sesion">{t("superadmin.data.activitySession")}</option>
+        </select>
+        <span className="setup-help" style={{ margin: 0 }}>
+          {t("superadmin.data.filteredCount", { count: filtered.length, total: totalCount })}
+        </span>
+      </div>
+
       {/* ── Tabla de invitaciones ── */}
       <div className="data-tab-table-wrap">
         <table className="data-tab-table">
@@ -524,7 +615,9 @@ export default function DataTab() {
               <th scope="col" className="data-tab-th">{t("superadmin.data.colNames")}</th>
               <th scope="col" className="data-tab-th">{t("superadmin.data.colDate")}</th>
               <th scope="col" className="data-tab-th">{t("superadmin.data.colRsvps")}</th>
+              <th scope="col" className="data-tab-th">{t("superadmin.data.colVisits")}</th>
               <th scope="col" className="data-tab-th">{t("superadmin.data.colSession")}</th>
+              <th scope="col" className="data-tab-th">{t("superadmin.data.colActivity")}</th>
               <th scope="col" className="data-tab-th">{t("superadmin.data.colActions")}</th>
             </tr>
           </thead>
@@ -574,10 +667,16 @@ export default function DataTab() {
                   {inv.rsvpCount}
                 </td>
                 <td className="data-tab-td" style={{ textAlign: "center" }}>
+                  {inv.visits}
+                </td>
+                <td className="data-tab-td" style={{ textAlign: "center" }}>
                   {inv.hasSession ? "🟢" : "—"}
                 </td>
+                <td className="data-tab-td" style={{ fontSize: "0.7rem", color: "var(--setup-muted)" }}>
+                  {inv.lastActivity ? new Date(inv.lastActivity).toLocaleString() : "—"}
+                </td>
                 <td className="data-tab-td">
-                  <div className="admin-flex admin-gap-sm">
+                  <div className="admin-flex admin-gap-sm" style={{ flexWrap: "wrap" }}>
                     <button
                       type="button"
                       className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
@@ -594,6 +693,33 @@ export default function DataTab() {
                     >
                       {t("superadmin.data.printBtn")}
                     </button>
+                    <button
+                      type="button"
+                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
+                      onClick={() => exportCsv(inv.id)}
+                      disabled={busy}
+                    >
+                      CSV
+                    </button>
+                    <button
+                      type="button"
+                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
+                      onClick={async () => {
+                        const s = await menuSummary(inv.id);
+                        addToast("info", Object.entries(s).map(([k, v]) => `${k}: ${v}`).join(" · ") || t("superadmin.data.noMenuData"));
+                      }}
+                      disabled={busy}
+                    >
+                      {t("superadmin.data.menusBtn")}
+                    </button>
+                    <a
+                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
+                      href={`/${inv.id}/admin`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {t("superadmin.data.adminLink")}
+                    </a>
                     <button
                       type="button"
                       className="setup-button setup-button--danger setup-button--compact data-tab-btn-danger"
