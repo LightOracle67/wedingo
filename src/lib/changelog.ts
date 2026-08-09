@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.69",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: la página de tokens del superadmin ahora es una tabla (admin-table) con ordenación por columnas (Invitación y Tipo, asc/desc/sin orden), unificando legacy y hashed; se mantiene el acceso a migrar/revocar y no se exponen los tokens secretos.",
+    ],
+  },
+
+  {
     version: "2.95.68",
     date: "2026-08-09",
     changes: [

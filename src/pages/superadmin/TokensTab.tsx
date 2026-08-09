@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import {
   collection,
   doc,
@@ -14,14 +14,32 @@ import {
 import { db } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
 import { hashSetupToken } from "../../lib/setup-token";
+import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
+import { SortableTh } from "../../components/SortableTh";
+
+interface LegacyToken {
+  id: string;
+  activeToken: string;
+}
+interface HashedToken {
+  hash: string;
+  inviteToken: string;
+}
+interface TokenRow {
+  key: string;
+  inviteToken: string;
+  type: "legacy" | "hash";
+  legacyToken?: string;
+  hash?: string;
+}
 
 const TokensTab = memo(function TokensTab() {
   const { t } = useTranslation();
   // Tokens LEGACY: invitaciones con el campo `_activeSetupToken` (formato
   // anterior a v2.95.22). Los nuevos viven en setupTokens/{hash}.
-  const [tokens, setTokens] = useState<Array<{ id: string; activeToken: string }>>([]);
+  const [tokens, setTokens] = useState<LegacyToken[]>([]);
   // Tokens NUEVOS: registros setupTokens/{hash} → { inviteToken }.
-  const [hashedTokens, setHashedTokens] = useState<Array<{ hash: string; inviteToken: string }>>([]);
+  const [hashedTokens, setHashedTokens] = useState<HashedToken[]>([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
@@ -145,6 +163,37 @@ const TokensTab = memo(function TokensTab() {
     [loadTokens, t],
   );
 
+  // Unifica legacy y hashed en filas de tabla (sin exponer el token secreto).
+  // Se calcula SIEMPRE (antes del early return de loading) para no violar las
+  // reglas de los hooks.
+  const rows = useMemo<TokenRow[]>(
+    () => [
+      ...tokens.map((tk) => ({
+        key: `legacy-${tk.id}`,
+        inviteToken: tk.id,
+        type: "legacy" as const,
+        legacyToken: tk.activeToken,
+      })),
+      ...hashedTokens.map((tk) => ({
+        key: `hash-${tk.hash}`,
+        inviteToken: tk.inviteToken,
+        type: "hash" as const,
+        hash: tk.hash,
+      })),
+    ],
+    [tokens, hashedTokens],
+  );
+
+  // Ordenación por columnas: Invitación y Tipo (Acciones no).
+  const sortColumns = useMemo<SortableColumn<TokenRow>[]>(
+    () => [
+      { key: "invite", type: "string", getValue: (r: TokenRow) => r.inviteToken },
+      { key: "type", type: "string", getValue: (r: TokenRow) => r.type },
+    ],
+    [],
+  );
+  const { sorted: sortedRows, toggleSort, getIndicator } = useColumnSort(rows, sortColumns);
+
   if (loading) {
     return (
       <p className="setup-subtitle" style={{ textAlign: "center" }}>
@@ -167,75 +216,69 @@ const TokensTab = memo(function TokensTab() {
         </button>
       </div>
 
-      {tokens.length === 0 && hashedTokens.length === 0 ? (
+      {rows.length === 0 ? (
         <div className="setup-token-card" style={{ padding: "2rem", textAlign: "center" }}>
           <p className="setup-help" style={{ margin: 0, fontSize: "0.9rem" }}>
             {t("superadmin.noTokens")}
           </p>
         </div>
       ) : (
-        <div className="admin-grid">
-          {tokens.map((token: { id: string; activeToken: string }) => (
-            <div
-              key={token.id}
-              className="setup-token-card admin-flex admin-flex--between admin-pad-sm"
-              style={{ gap: "0.5rem" }}
-            >
-              <div className="admin-token-card-content">
-                <p className="admin-text-mono" style={{ margin: 0, color: "var(--setup-title)" }}>
-                  {token.id}
-                </p>
-                <p className="admin-text-sm" style={{ margin: "0.2rem 0 0", color: "var(--setup-muted)" }}>
-                  {t("superadmin.statusLegacy")}
-                </p>
-              </div>
-              <div style={{ display: "flex", gap: "0.4rem", alignItems: "center" }}>
-                <button
-                  className="setup-button setup-button--ghost"
-                  type="button"
-                  style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem" }}
-                  onClick={() => handleMigrate(token.id, token.activeToken)}
-                >
-                  {t("superadmin.migrateButton")}
-                </button>
-                <button
-                  className="setup-button setup-button--ghost"
-                  type="button"
-                  style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem", borderColor: "#f6c7c7", color: "#f6c7c7" }}
-                  onClick={() => handleRevoke(token.id)}
-                >
-                  {t("superadmin.revokeButton")}
-                </button>
-              </div>
-            </div>
-          ))}
-
-          {hashedTokens.map((tk: { hash: string; inviteToken: string }) => (
-            <div
-              key={tk.hash}
-              className="setup-token-card admin-flex admin-flex--between admin-pad-sm"
-              style={{ gap: "0.5rem" }}
-            >
-              <div className="admin-token-card-content">
-                <p className="admin-text-mono" style={{ margin: 0, color: "var(--setup-title)" }}>
-                  {tk.hash.slice(0, 12)}…
-                </p>
-                <p className="admin-text-sm" style={{ margin: "0.2rem 0 0", color: "var(--setup-muted)" }}>
-                  {t("superadmin.hashForInvitation", { token: tk.inviteToken })}
-                </p>
-              </div>
-              <div style={{ display: "flex", gap: "0.4rem", alignItems: "center" }}>
-                <button
-                  className="setup-button setup-button--ghost"
-                  type="button"
-                  style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem", borderColor: "#f6c7c7", color: "#f6c7c7" }}
-                  onClick={() => handleRevokeHashed(tk.hash)}
-                >
-                  {t("superadmin.revokeButton")}
-                </button>
-              </div>
-            </div>
-          ))}
+        <div className="admin-table-wrapper" style={{ overflowX: "auto" }}>
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <SortableTh columnKey="invite" order={getIndicator("invite")} onSort={toggleSort}>
+                  {t("superadmin.tableToken")}
+                </SortableTh>
+                <SortableTh columnKey="type" order={getIndicator("type")} onSort={toggleSort}>
+                  {t("superadmin.tableType")}
+                </SortableTh>
+                <th>{t("superadmin.tableActions")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedRows.map((row: TokenRow) => (
+                <tr key={row.key}>
+                  <td className="admin-text-mono" style={{ fontSize: "0.8rem" }}>
+                    {row.inviteToken}
+                  </td>
+                  <td>
+                    {row.type === "legacy" ? (
+                      <span className="admin-badge admin-badge--yes">{t("superadmin.statusLegacy")}</span>
+                    ) : (
+                      <span className="admin-badge">{t("superadmin.statusHash")}</span>
+                    )}
+                  </td>
+                  <td style={{ whiteSpace: "nowrap" }}>
+                    {row.type === "legacy" ? (
+                      <button
+                        className="setup-button setup-button--ghost"
+                        type="button"
+                        style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem" }}
+                        onClick={() => handleMigrate(row.inviteToken, row.legacyToken || "")}
+                      >
+                        {t("superadmin.migrateButton")}
+                      </button>
+                    ) : null}
+                    <button
+                      className="setup-button setup-button--ghost"
+                      type="button"
+                      style={{
+                        padding: "0.3rem 0.7rem",
+                        fontSize: "0.8rem",
+                        borderColor: "#f6c7c7",
+                        color: "#f6c7c7",
+                        marginLeft: row.type === "legacy" ? "0.4rem" : 0,
+                      }}
+                      onClick={() => (row.type === "legacy" ? handleRevoke(row.inviteToken) : handleRevokeHashed(row.hash || ""))}
+                    >
+                      {t("superadmin.revokeButton")}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
 
