@@ -67,7 +67,8 @@
     "missing": "In",
     "todayIsTheDay": "Today is the big day!",
     "eyebrow": "Our Wedding",
-    "sectionLabel": "Cover"
+    "sectionLabel": "Cover",
+    "verifiedBadge": "Verified"
   },
   "details": {
     "sectionLabel": "Date & venue",
@@ -691,7 +692,8 @@
       "tokens": "Tokens",
       "session": "Session",
       "compliance": "Compliance",
-      "data": "Data"
+      "data": "Data",
+      "manage": "Manage"
     },
     "superadmin": "Superadmin",
     "controlPanel": "Control panel",
@@ -1123,5 +1125,33 @@
   },
   "seo": {
     "inviteFallback": "{{names}} invite you to their wedding."
+  },
+  "manage": {
+    "selectInvitation": "Select an invitation",
+    "selectHint": "Choose an invitation to manage.",
+    "globalEditor": "Global config editor (JSON)",
+    "saveConfig": "Save config",
+    "preview": "Preview (no visit counted)",
+    "verification": "Verification & notes",
+    "verifiedLabel": "Verification seal (visible on cover)",
+    "adminNotesPlaceholder": "Superadmin internal notes (not public)",
+    "saveFlags": "Save seal & notes",
+    "manualExpiry": "Manual expiry (yyyy-mm-dd)",
+    "saveExpiry": "Save expiry",
+    "transferTitle": "Ownership transfer",
+    "transferHelp": "Generates a NEW access token and revokes previous ones. Only the holder of the new token can manage the invitation.",
+    "transferButton": "Generate new token",
+    "transferConfirm": "Generate a new token and revoke the current one? The current owner will lose access.",
+    "transferDone": "New token generated. Copy it and hand it to the new owner.",
+    "cloneButton": "Clone invitation",
+    "cloneConfirm": "Clone this invitation to a new token?",
+    "cloneDone": "Invitation cloned with a new token.",
+    "newTokenLabel": "New invitation",
+    "copySectionTitle": "Copy a section from another invitation",
+    "copySectionFrom": "Source",
+    "copySectionSub": "Section",
+    "copySectionButton": "Copy",
+    "copySectionConfirm": "Copy the selected section to this invitation?",
+    "copySectionDone": "Section copied ({{count}} items)."
   }
 }

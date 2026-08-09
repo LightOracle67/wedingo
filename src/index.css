@@ -1773,6 +1773,12 @@ a,
   color: var(--invite-title-color);
 }
 
+/* Mensaje de agradecimiento post-RSVP (configurado por el admin). */
+.rsvp-feedback--thanks {
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
 @media (max-width: 640px) {
   .story-title {
     font-size: clamp(1.28rem, 5.6vw, 1.84rem);

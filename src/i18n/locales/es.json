@@ -67,7 +67,8 @@
     "missing": "Faltan",
     "todayIsTheDay": "¡Hoy es el gran día!",
     "eyebrow": "Nuestra boda",
-    "sectionLabel": "Portada"
+    "sectionLabel": "Portada",
+    "verifiedBadge": "Verificada"
   },
   "details": {
     "sectionLabel": "Fecha y lugar",
@@ -691,7 +692,8 @@
       "tokens": "Tokens",
       "session": "Sesión",
       "compliance": "Cumplimiento",
-      "data": "Datos"
+      "data": "Datos",
+      "manage": "Gestión"
     },
     "superadmin": "Superadmin",
     "controlPanel": "Panel de control",
@@ -1123,5 +1125,33 @@
   },
   "seo": {
     "inviteFallback": "{{names}} te invitan a su boda."
+  },
+  "manage": {
+    "selectInvitation": "Selecciona una invitación",
+    "selectHint": "Elige una invitación para gestionarla.",
+    "globalEditor": "Editor global de configuración (JSON)",
+    "saveConfig": "Guardar configuración",
+    "preview": "Previsualizar (sin contar visita)",
+    "verification": "Verificación y notas",
+    "verifiedLabel": "Sello de verificación (visible en la portada)",
+    "adminNotesPlaceholder": "Notas internas del superadmin (no visibles para el público)",
+    "saveFlags": "Guardar sello y notas",
+    "manualExpiry": "Expiración manual (yyyy-mm-dd)",
+    "saveExpiry": "Guardar expiración",
+    "transferTitle": "Traspaso de titularidad",
+    "transferHelp": "Genera un NUEVO token de acceso y revoca los anteriores. Solo quien conozca el nuevo token podrá administrar la invitación.",
+    "transferButton": "Generar nuevo token",
+    "transferConfirm": "¿Generar un nuevo token y revocar el actual? El responsable actual perderá el acceso.",
+    "transferDone": "Nuevo token generado. Cópialo y entrégalo al nuevo responsable.",
+    "cloneButton": "Clonar invitación",
+    "cloneConfirm": "¿Clonar esta invitación a un token nuevo?",
+    "cloneDone": "Invitación clonada con un token nuevo.",
+    "newTokenLabel": "Nueva invitación",
+    "copySectionTitle": "Duplicar sección desde otra invitación",
+    "copySectionFrom": "Origen",
+    "copySectionSub": "Sección",
+    "copySectionButton": "Copiar",
+    "copySectionConfirm": "¿Copiar la sección seleccionada a esta invitación?",
+    "copySectionDone": "Sección copiada ({{count}} elementos)."
   }
 }

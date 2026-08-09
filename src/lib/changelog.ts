@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.46",
+    date: "2026-08-09",
+    changes: [
+      "Fase 1 de nuevas funciones del superadmin: pestaña 'Gestión' con editor global de configuración de cualquier invitación (JSON validado), traspaso de titularidad (nuevo token y revocación de los anteriores), clonado de invitación a token nuevo, expiración manual, sello de verificación visible en la portada, notas internas, previsualización sin contar visita (?preview=1) y copia de secciones entre invitaciones. Añadido mensaje de agradecimiento post-RSVP configurable.",
+    ],
+  },
+  {
     version: "2.95.45",
     date: "2026-08-09",
     changes: [

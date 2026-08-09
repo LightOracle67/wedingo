@@ -235,7 +235,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
               if (
                 segments.length === 1 &&
                 TOKEN_ROUTE_REGEX.test(segments[0]!) &&
-                hasAnalyticsConsent()
+                hasAnalyticsConsent() &&
+                // Previsualización del superadmin (?preview=1): no cuenta visita.
+                !location.search.includes("preview=1")
               ) {
                 trackVisit(inviteToken);
               }
@@ -307,7 +309,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         if (
           segments.length === 1 &&
           TOKEN_ROUTE_REGEX.test(segments[0]!) &&
-          hasAnalyticsConsent()
+          hasAnalyticsConsent() &&
+          // Previsualización del superadmin (?preview=1): no cuenta visita.
+          !location.search.includes("preview=1")
         ) {
           trackVisit(inviteToken);
         }

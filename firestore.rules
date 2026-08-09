@@ -157,6 +157,12 @@ service cloud.firestore {
            token de setup (setupTokenValid): el primer guardado del cliente
            adjunta el hash, y así no se pueden alojar invitaciones falsas. */
         && !request.resource.data.keys().hasAny(['activeSession', 'sessionExpiresAt', '_visits'])
+        /* Campos de superadmin: verified/adminNotes/manualExpiry solo los puede
+           fijar el superadmin; un admin normal solo puede escribirlos con sus
+           valores por defecto (normalizeConfig los incluye en el payload). */
+        && (!request.resource.data.keys().hasAny(['verified', 'adminNotes', 'manualExpiry'])
+          || (request.resource.data.verified == 'false' && request.resource.data.adminNotes == '' && request.resource.data.manualExpiry == '')
+          || isSuperAdmin())
         && (isSuperAdmin()
           || (setupTokenValid(tokenId, request.resource.data.setupTokenHash)
             && !exists(/databases/$(database)/documents/invitations/$(tokenId))));
@@ -177,7 +183,12 @@ service cloud.firestore {
            a 48 h): el update de configuración no puede fijarlos, o un cliente
            con sesión podría extenderla indefinidamente sin volver a autenticar
            (la rotación de token no la revocaría). */
-        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['activeSession', 'sessionExpiresAt', 'setupTokenHash']);
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['activeSession', 'sessionExpiresAt', 'setupTokenHash'])
+        /* Campos de superadmin: cambiarlos exige ser superadmin (el admin solo
+           puede escribirlos con sus valores por defecto). */
+        && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['verified', 'adminNotes', 'manualExpiry'])
+          || (request.resource.data.verified == 'false' && request.resource.data.adminNotes == '' && request.resource.data.manualExpiry == '')
+          || isSuperAdmin());
       /* Incremento de contador de visitas: cualquiera puede incrementar
          _visits, pero solo en pasos razonables (máx +10 por request) para
          evitar inflar el contador de forma arbitraria. El cliente usa

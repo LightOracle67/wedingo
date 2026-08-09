@@ -51,6 +51,8 @@ interface HeroSectionProps {
   godparent1?: string;
   godparent2?: string;
   cornerDecoration?: string;
+  /** Sello de verificación (solo lo fija el superadmin). */
+  verified?: string;
 }
 
 const HeroSection = memo(function HeroSection({
@@ -64,6 +66,7 @@ const HeroSection = memo(function HeroSection({
   godparent1,
   godparent2,
   cornerDecoration,
+  verified,
 }: HeroSectionProps) {
   const { t } = useTranslation();
   const [photoLoaded, setPhotoLoaded] = useState(false);
@@ -123,6 +126,28 @@ const HeroSection = memo(function HeroSection({
         <div className="story-card story-panel story-card--hero w-full text-center">
           <div className="relative z-20">
             <div className="story-eyebrow">{t("hero.eyebrow")}</div>
+            {verified === "true" ? (
+              <p
+                className="hero-verified"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.3rem",
+                  margin: "0.4rem 0 0",
+                  padding: "0.25rem 0.7rem",
+                  borderRadius: "999px",
+                  fontSize: "0.7rem",
+                  fontWeight: 600,
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  color: "var(--setup-accent)",
+                  border: "1px solid color-mix(in srgb, var(--setup-accent) 45%, transparent)",
+                  background: "color-mix(in srgb, var(--setup-accent) 12%, transparent)",
+                }}
+              >
+                ✓ {t("hero.verifiedBadge")}
+              </p>
+            ) : null}
             {couplePhoto ? (
               <div className="mx-auto" style={{ position: "relative", width: "min(70vw, 400px)", aspectRatio: "1/1" }}>
                 {photoLoaded && <div className="hero-couple-photo-ring" />}

@@ -87,6 +87,10 @@ export interface InvitationConfig {
   /** Fecha límite para confirmar asistencia (ISO yyyy-mm-dd) + habilitado. */
   rsvpDeadline?: string;
   rsvpDeadlineEnabled?: string;
+  rsvpThanks?: string;
+  verified?: string;
+  adminNotes?: string;
+  manualExpiry?: string;
   /** Reacciones a la invitación (❤️🎉😂) habilitadas. */
   reactionsEnabled?: string;
   /** Lista de regalos (JSON de items) + habilitada. */

@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.95.45";
+export const APP_VERSION = "2.95.46";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -300,4 +300,14 @@ export const defaultConfig = {
   triviaEnabled: "false",
   trivia: "[]",
   privacyPolicyVersion: "",
+  // ── Campos de superadmin (no editables por el admin normal) ──
+  // Mensaje de agradecimiento mostrado tras confirmar el RSVP (config del admin).
+  rsvpThanks: "",
+  // Sello de verificación visible en la portada (solo superadmin).
+  verified: "false",
+  // Notas internas del superadmin (nunca visibles en la invitación).
+  adminNotes: "",
+  // Fecha de expiración manual (ISO yyyy-mm-dd): la invitación se considera
+  // expirada si la tiene fijada y ya pasó (además del default de 12 meses).
+  manualExpiry: "",
 };

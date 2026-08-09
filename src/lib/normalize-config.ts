@@ -185,4 +185,9 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   detailsMapMode: normalizeMapMode(value?.detailsMapMode),
   transportMapMode: normalizeMapMode(value?.transportMapMode),
   accommodationMapMode: normalizeMapMode(value?.accommodationMapMode),
+  // ── Campos de superadmin ──
+  rsvpThanks: s(value?.rsvpThanks).slice(0, 500),
+  verified: s(value?.verified) === "true" ? "true" : "false",
+  adminNotes: s(value?.adminNotes).slice(0, 2000),
+  manualExpiry: s(value?.manualExpiry).slice(0, 10),
 });

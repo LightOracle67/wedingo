@@ -996,6 +996,14 @@ const RsvpSection = memo(function RsvpSection({
             </p>
           ) : null}
 
+          {/* Mensaje de agradecimiento configurado por el admin: se muestra
+              tras confirmar (F1-9). */}
+          {hasSubmitted && config?.rsvpThanks ? (
+            <p className="rsvp-feedback rsvp-feedback--thanks" style={{ marginTop: "0.5rem" }}>
+              {config.rsvpThanks}
+            </p>
+          ) : null}
+
           {/* Error de red al cargar las respuestas: el invitado puede reintentar. */}
           {rsvpLoadError ? (
             <div className="rsvp-feedback rsvp-feedback--error" role="alert">

@@ -436,6 +436,7 @@ export default function PublicInvitation() {
         godparent1: config.godparent1,
         godparent2: config.godparent2,
         cornerDecoration: config.cornerDecoration,
+        verified: config.verified,
       },
       details: {
         formattedDate,
