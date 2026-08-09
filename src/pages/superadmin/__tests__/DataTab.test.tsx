@@ -9,8 +9,9 @@ const mockWriteBatch = vi.fn();
 const mockDownloadJson = vi.fn();
 const mockAddToast = vi.fn();
 
+const stableT = (key: string) => key;
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string) => key }),
+  useTranslation: () => ({ t: stableT }),
 }));
 
 vi.mock("firebase/firestore", () => ({
@@ -167,7 +168,7 @@ describe("DataTab", () => {
     await vi.waitFor(() => expect(screen.getByText("superadmin.data.selectEmpty")).toBeInTheDocument());
   });
 
-  it("calls exportOne when export button clicked", async () => {
+  it("exports the selected invitations", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {
         return Promise.resolve({
@@ -194,8 +195,10 @@ describe("DataTab", () => {
     mockGetDoc.mockResolvedValue({ exists: () => true, data: () => ({ firstName: "A" }) });
     mockDoc.mockReturnValue("doc-ref");
     render(<DataTab />);
-    await vi.waitFor(() => expect(screen.getByText("superadmin.data.exportBtn")).toBeInTheDocument());
-    fireEvent.click(screen.getByText("superadmin.data.exportBtn"));
+    await vi.waitFor(() => expect(screen.getByText("t1")).toBeInTheDocument());
+    // Selecciona la fila y exporta la selección (las acciones están fuera de la tabla).
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
+    fireEvent.click(screen.getByText((text) => text.includes("superadmin.data.exportSelectedBtn")));
     await vi.waitFor(() => expect(mockDownloadJson).toHaveBeenCalled());
     expect(mockAddToast).toHaveBeenCalledWith("success", expect.any(String));
   });
@@ -240,7 +243,7 @@ describe("DataTab", () => {
       return Promise.resolve({ docs: [] });
     });
     render(<DataTab />);
-    await vi.waitFor(() => expect(screen.getByText("superadmin.data.exportBtn")).toBeInTheDocument());
+    await vi.waitFor(() => expect(screen.getByText("t1")).toBeInTheDocument());
     expect(screen.getByText("superadmin.data.deleteAllBtn")).toBeDisabled();
   });
 
@@ -272,11 +275,14 @@ describe("DataTab", () => {
     mockDoc.mockReturnValue({ id: "t1" });
     mockWriteBatch.mockReturnValue({ delete: vi.fn(), commit: vi.fn().mockResolvedValue(undefined) });
     render(<DataTab />);
-    await vi.waitFor(() => expect(screen.getByText("superadmin.data.exportBtn")).toBeInTheDocument());
+    await vi.waitFor(() => expect(screen.getByText("t1")).toBeInTheDocument());
+    // Selecciona la fila, escribe la confirmación y elimina la selección.
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
     const input = screen.getByPlaceholderText("superadmin.data.confirmPlaceholder");
     fireEvent.change(input, { target: { value: "ELIMINAR" } });
-    expect(screen.getByText("superadmin.data.delete")).not.toBeDisabled();
-    fireEvent.click(screen.getByText("superadmin.data.delete"));
+    const delBtn = screen.getByText((text) => text.includes("superadmin.data.deleteSelectedBtn"));
+    expect(delBtn).not.toBeDisabled();
+    fireEvent.click(delBtn);
     await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("success", expect.any(String)));
   });
 
@@ -494,7 +500,7 @@ describe("DataTab", () => {
       return Promise.resolve({ docs: [] });
     });
     render(<DataTab />);
-    await vi.waitFor(() => expect(screen.getByText("superadmin.data.exportBtn")).toBeInTheDocument());
+    await vi.waitFor(() => expect(screen.getByText("t1")).toBeInTheDocument());
     expect(screen.getByText("2")).toBeDefined();
   });
 
@@ -525,7 +531,7 @@ describe("DataTab", () => {
       return Promise.resolve({ docs: [] });
     });
     render(<DataTab />);
-    await vi.waitFor(() => expect(screen.getByText("superadmin.data.exportBtn")).toBeInTheDocument());
+    await vi.waitFor(() => expect(screen.getByText("t1")).toBeInTheDocument());
     expect(screen.getByText("1")).toBeDefined();
   });
 
@@ -576,6 +582,8 @@ describe("DataTab avanzadas", () => {
   it("opens the invitation detail modal", async () => {
     render(<DataTab />);
     await vi.waitFor(() => expect(screen.getByText("tok1234567")).toBeInTheDocument());
+    // El detalle se abre desde la barra con UNA invitación seleccionada.
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
     fireEvent.click(screen.getByText("superadmin.data.detailBtn"));
     expect(screen.getByTestId("detail-modal")).toBeInTheDocument();
   });

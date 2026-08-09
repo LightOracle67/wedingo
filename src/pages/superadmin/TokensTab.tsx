@@ -15,7 +15,9 @@ import { db } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
 import { hashSetupToken } from "../../lib/setup-token";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
+import { useRowSelection } from "../../hooks/useRowSelection";
 import { SortableTh } from "../../components/SortableTh";
+import { TableActionsBar } from "../../components/TableActionsBar";
 
 interface LegacyToken {
   id: string;
@@ -72,31 +74,39 @@ const TokensTab = memo(function TokensTab() {
     loadTokens();
   }, [loadTokens]);
 
-  const handleRevoke = useCallback(
+  /** Revoca un token LEGACY (invitación con `_activeSetupToken`). */
+  const revokeOne = useCallback(
     async (invId: string) => {
-      if (!window.confirm(t("superadmin.revokeConfirm"))) return;
       setError("");
       setMessage("");
-      try {
-        await updateDoc(doc(db, "invitations", invId), { _activeSetupToken: "" });
-        // Un token MIGRADO vive en setupTokens/{hash}: sin borrarlo, revocar el
-        // campo legacy dejaba el token aún válido (no se podía revocar nunca).
-        const activeToken = tokens.find((tk) => tk.id === invId)?.activeToken;
-        if (activeToken) {
-          const hash = await hashSetupToken(activeToken);
-          await deleteDoc(doc(db, "setupTokens", hash));
-        }
-        setMessage(t("superadmin.tokenRevoked"));
-        await loadTokens();
-      } catch {
-        setError(t("superadmin.tokenRevokeError"));
+      await updateDoc(doc(db, "invitations", invId), { _activeSetupToken: "" });
+      // Un token MIGRADO vive en setupTokens/{hash}: sin borrarlo, revocar el
+      // campo legacy dejaba el token aún válido (no se podía revocar nunca).
+      const activeToken = tokens.find((tk) => tk.id === invId)?.activeToken;
+      if (activeToken) {
+        const hash = await hashSetupToken(activeToken);
+        await deleteDoc(doc(db, "setupTokens", hash));
       }
+      setMessage(t("superadmin.tokenRevoked"));
+      await loadTokens();
     },
     [loadTokens, tokens, t],
   );
 
-  const handleCleanup = useCallback(async () => {
-    if (!window.confirm(t("superadmin.cleanupConfirm"))) return;
+  /** Revoca un token NUEVO (setupTokens/{hash}): al borrar el registro, la
+   *  regla de sesión deja de aceptar ese hash (prueba de conocimiento). */
+  const revokeHashedOne = useCallback(
+    async (hash: string) => {
+      setError("");
+      setMessage("");
+      await deleteDoc(doc(db, "setupTokens", hash));
+      setMessage(t("superadmin.tokenRevoked"));
+      await loadTokens();
+    },
+    [loadTokens, t],
+  );
+
+  const handleCleanup = useCallback(async () => {    if (!window.confirm(t("superadmin.cleanupConfirm"))) return;
     setError("");
     setMessage("");
     try {
@@ -124,41 +134,18 @@ const TokensTab = memo(function TokensTab() {
    * (el token que ya conoce el admin sigue siendo válido) y retira el campo
    * legacy del documento público. Solo el superadmin puede ejecutarlo.
    */
-  const handleMigrate = useCallback(
+  const migrateOne = useCallback(
     async (invId: string, activeToken: string) => {
-      if (!window.confirm(t("superadmin.migrateConfirm"))) return;
       setError("");
       setMessage("");
-      try {
-        const tokenHash = await hashSetupToken(activeToken);
-        await setDoc(doc(db, "setupTokens", tokenHash), { inviteToken: invId, createdAt: new Date().toISOString() });
-        await updateDoc(doc(db, "invitations", invId), {
-          _activeSetupToken: deleteField(),
-          legacyToken: deleteField(),
-        });
-        setMessage(t("superadmin.tokenMigrated"));
-        await loadTokens();
-      } catch {
-        setError(t("superadmin.tokenMigrateError"));
-      }
-    },
-    [loadTokens, t],
-  );
-
-  /** Revoca un token NUEVO (setupTokens/{hash}): al borrar el registro, la
-   *  regla de sesión deja de aceptar ese hash (prueba de conocimiento). */
-  const handleRevokeHashed = useCallback(
-    async (hash: string) => {
-      if (!window.confirm(t("superadmin.revokeConfirm"))) return;
-      setError("");
-      setMessage("");
-      try {
-        await deleteDoc(doc(db, "setupTokens", hash));
-        setMessage(t("superadmin.tokenRevoked"));
-        await loadTokens();
-      } catch {
-        setError(t("superadmin.tokenRevokeError"));
-      }
+      const tokenHash = await hashSetupToken(activeToken);
+      await setDoc(doc(db, "setupTokens", tokenHash), { inviteToken: invId, createdAt: new Date().toISOString() });
+      await updateDoc(doc(db, "invitations", invId), {
+        _activeSetupToken: deleteField(),
+        legacyToken: deleteField(),
+      });
+      setMessage(t("superadmin.tokenMigrated"));
+      await loadTokens();
     },
     [loadTokens, t],
   );
@@ -194,6 +181,40 @@ const TokensTab = memo(function TokensTab() {
   );
   const { sorted: sortedRows, toggleSort, getIndicator } = useColumnSort(rows, sortColumns);
 
+  // Selección de filas para acciones genéricas en lote (fuera de la tabla).
+  const selection = useRowSelection();
+  const selectedLegacy = tokens.filter((tk) => selection.selected.has(`legacy-${tk.id}`));
+  const selectedHashed = hashedTokens.filter((tk) => selection.selected.has(`hash-${tk.hash}`));
+
+  // Revoca en lote todos los tokens seleccionados (legacy y hash), con una
+  // única confirmación.
+  const handleBulkRevoke = useCallback(async () => {
+    const count = selectedLegacy.length + selectedHashed.length;
+    if (count === 0 || !window.confirm(t("superadmin.revokeSelectedConfirm", { count }))) return;
+    setError("");
+    setMessage("");
+    try {
+      for (const tk of selectedLegacy) await revokeOne(tk.id);
+      for (const tk of selectedHashed) await revokeHashedOne(tk.hash);
+      selection.clear();
+    } catch {
+      setError(t("superadmin.tokenRevokeError"));
+    }
+  }, [selectedLegacy, selectedHashed, revokeOne, revokeHashedOne, selection, t]);
+
+  // Migra en lote los tokens legacy seleccionados (los hashed ya están migrados).
+  const handleBulkMigrate = useCallback(async () => {
+    if (selectedLegacy.length === 0 || !window.confirm(t("superadmin.migrateSelectedConfirm", { count: selectedLegacy.length }))) return;
+    setError("");
+    setMessage("");
+    try {
+      for (const tk of selectedLegacy) await migrateOne(tk.id, tk.activeToken);
+      selection.clear();
+    } catch {
+      setError(t("superadmin.tokenMigrateError"));
+    }
+  }, [selectedLegacy, migrateOne, selection, t]);
+
   if (loading) {
     return (
       <p className="setup-subtitle" style={{ textAlign: "center" }}>
@@ -223,63 +244,72 @@ const TokensTab = memo(function TokensTab() {
           </p>
         </div>
       ) : (
-        <div className="admin-table-wrapper" style={{ overflowX: "auto" }}>
-          <table className="admin-table">
-            <thead>
-              <tr>
-                <SortableTh columnKey="invite" order={getIndicator("invite")} onSort={toggleSort}>
-                  {t("superadmin.tableToken")}
-                </SortableTh>
-                <SortableTh columnKey="type" order={getIndicator("type")} onSort={toggleSort}>
-                  {t("superadmin.tableType")}
-                </SortableTh>
-                <th>{t("superadmin.tableActions")}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {sortedRows.map((row: TokenRow) => (
-                <tr key={row.key}>
-                  <td className="admin-text-mono" style={{ fontSize: "0.8rem" }}>
-                    {row.inviteToken}
-                  </td>
-                  <td>
-                    {row.type === "legacy" ? (
-                      <span className="admin-badge admin-badge--yes">{t("superadmin.statusLegacy")}</span>
-                    ) : (
-                      <span className="admin-badge">{t("superadmin.statusHash")}</span>
-                    )}
-                  </td>
-                  <td style={{ whiteSpace: "nowrap" }}>
-                    {row.type === "legacy" ? (
-                      <button
-                        className="setup-button setup-button--ghost"
-                        type="button"
-                        style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem" }}
-                        onClick={() => handleMigrate(row.inviteToken, row.legacyToken || "")}
-                      >
-                        {t("superadmin.migrateButton")}
-                      </button>
-                    ) : null}
-                    <button
-                      className="setup-button setup-button--ghost"
-                      type="button"
-                      style={{
-                        padding: "0.3rem 0.7rem",
-                        fontSize: "0.8rem",
-                        borderColor: "#f6c7c7",
-                        color: "#f6c7c7",
-                        marginLeft: row.type === "legacy" ? "0.4rem" : 0,
-                      }}
-                      onClick={() => (row.type === "legacy" ? handleRevoke(row.inviteToken) : handleRevokeHashed(row.hash || ""))}
-                    >
-                      {t("superadmin.revokeButton")}
-                    </button>
-                  </td>
+        <>
+          <TableActionsBar
+            total={rows.length}
+            selectedCount={selection.selectedCount}
+            allSelected={selection.allSelected}
+            onToggleAll={() => selection.toggleAll(rows.map((r) => r.key))}
+            selectAllLabel={t("superadmin.selectAllTokens")}
+          >
+            <button
+              type="button"
+              className="setup-button setup-button--ghost setup-button--compact"
+              disabled={selectedLegacy.length === 0}
+              onClick={() => void handleBulkMigrate()}
+            >
+              {t("superadmin.migrateSelected", { count: selectedLegacy.length })}
+            </button>
+            <button
+              type="button"
+              className="setup-button setup-button--danger setup-button--compact"
+              disabled={selection.selectedCount === 0}
+              onClick={() => void handleBulkRevoke()}
+            >
+              {t("superadmin.revokeSelected", { count: selection.selectedCount })}
+            </button>
+          </TableActionsBar>
+
+          <div className="admin-table-wrapper" style={{ overflowX: "auto" }}>
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th scope="col" style={{ width: "2rem" }} />
+                  <SortableTh columnKey="invite" order={getIndicator("invite")} onSort={toggleSort}>
+                    {t("superadmin.tableToken")}
+                  </SortableTh>
+                  <SortableTh columnKey="type" order={getIndicator("type")} onSort={toggleSort}>
+                    {t("superadmin.tableType")}
+                  </SortableTh>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {sortedRows.map((row: TokenRow) => (
+                  <tr key={row.key}>
+                    <td>
+                      <input
+                        type="checkbox"
+                        aria-label={t("superadmin.selectToken", { token: row.inviteToken })}
+                        checked={selection.isSelected(row.key)}
+                        onChange={() => selection.toggle(row.key)}
+                      />
+                    </td>
+                    <td className="admin-text-mono" style={{ fontSize: "0.8rem" }}>
+                      {row.inviteToken}
+                    </td>
+                    <td>
+                      {row.type === "legacy" ? (
+                        <span className="admin-badge admin-badge--yes">{t("superadmin.statusLegacy")}</span>
+                      ) : (
+                        <span className="admin-badge">{t("superadmin.statusHash")}</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
 
       {message ? <p className="setup-success">{message}</p> : null}

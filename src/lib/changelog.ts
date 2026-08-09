@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.70",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: acciones genéricas fuera de la tabla en todas las tablas — se elimina la columna Acciones y cada tabla pasa a selección + barra de acciones en lote (useRowSelection + TableActionsBar): tokens (migrar/revocar seleccionados), invitaciones (eliminar seleccionadas) y DataTab (detalle/exportar/imprimir/CSV/menús/link admin/eliminar sobre la selección); TokensTab permite seleccionar un grupo y borrar los seleccionados.",
+    ],
+  },
+
+  {
     version: "2.95.69",
     date: "2026-08-09",
     changes: [

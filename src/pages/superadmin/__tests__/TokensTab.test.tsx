@@ -8,14 +8,17 @@ const mockWriteBatch = vi.fn();
 const mockDeleteDoc = vi.fn();
 const mockHashSetupToken = vi.fn((t: string) => Promise.resolve(`hash-${t}`));
 
+const stableT = (key: string) => key;
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string) => key }),
+  useTranslation: () => ({ t: stableT }),
 }));
 
 vi.mock("firebase/firestore", () => ({
   getDocs: (...args: unknown[]) => mockGetDocs(...args),
   doc: (...args: unknown[]) => mockDoc(...args),
   updateDoc: (...args: unknown[]) => mockUpdateDoc(...args),
+  setDoc: vi.fn().mockResolvedValue(undefined),
+  deleteField: vi.fn(() => "delete-field"),
   collection: vi.fn(() => "collection-ref"),
   query: vi.fn(() => "query-ref"),
   where: vi.fn(() => "where-ref"),
@@ -100,8 +103,10 @@ describe("TokensTab", () => {
     mockDoc.mockReturnValue("doc-ref");
     mockUpdateDoc.mockResolvedValue(undefined);
     render(<TokensTab />);
-    await vi.waitFor(() => expect(screen.getByText("superadmin.revokeButton")).toBeInTheDocument());
-    fireEvent.click(screen.getByText("superadmin.revokeButton"));
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeInTheDocument());
+    // Selecciona la fila y revoca los seleccionados.
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
+    fireEvent.click(screen.getByText("superadmin.revokeSelected"));
     expect(mockConfirm).toHaveBeenCalled();
     await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalledWith("doc-ref", { _activeSetupToken: "" }));
     await vi.waitFor(() => expect(screen.getByText("superadmin.tokenRevoked")).toBeInTheDocument());
@@ -114,9 +119,37 @@ describe("TokensTab", () => {
     mockConfirm.mockReturnValue(false);
     mockTokenSnapshots([{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }]);
     render(<TokensTab />);
-    await vi.waitFor(() => expect(screen.getByText("superadmin.revokeButton")).toBeInTheDocument());
-    fireEvent.click(screen.getByText("superadmin.revokeButton"));
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeInTheDocument());
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
+    fireEvent.click(screen.getByText("superadmin.revokeSelected"));
     expect(mockUpdateDoc).not.toHaveBeenCalled();
+  });
+
+  it("migrates selected legacy tokens in bulk", async () => {
+    mockTokenSnapshots([{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }]);
+    mockDoc.mockReturnValue("doc-ref");
+    mockUpdateDoc.mockResolvedValue(undefined);
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeInTheDocument());
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
+    fireEvent.click(screen.getByText("superadmin.migrateSelected"));
+    expect(mockConfirm).toHaveBeenCalled();
+    await vi.waitFor(() => expect(mockHashSetupToken).toHaveBeenCalledWith("token1"));
+    await vi.waitFor(() => expect(screen.getByText("superadmin.tokenMigrated")).toBeInTheDocument());
+  });
+
+  it("selects all tokens via the bar checkbox", async () => {
+    mockTokenSnapshots([
+      { id: "inv1", data: () => ({ _activeSetupToken: "token1" }) },
+      { id: "inv2", data: () => ({ _activeSetupToken: "token2" }) },
+    ]);
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeInTheDocument());
+    const checkboxes = screen.getAllByRole("checkbox");
+    // El primero es el "seleccionar todas" de la barra.
+    fireEvent.click(checkboxes[0]!);
+    expect((screen.getAllByRole("checkbox")[1]! as HTMLInputElement).checked).toBe(true);
+    expect((screen.getAllByRole("checkbox")[2]! as HTMLInputElement).checked).toBe(true);
   });
 
   it("calls handleCleanup on cleanup button click", async () => {
@@ -147,8 +180,9 @@ describe("TokensTab", () => {
     mockDoc.mockReturnValue("doc-ref");
     mockUpdateDoc.mockRejectedValue(new Error("fail"));
     render(<TokensTab />);
-    await vi.waitFor(() => expect(screen.getByText("superadmin.revokeButton")).toBeInTheDocument());
-    fireEvent.click(screen.getByText("superadmin.revokeButton"));
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeInTheDocument());
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
+    fireEvent.click(screen.getByText("superadmin.revokeSelected"));
     await vi.waitFor(() => expect(screen.getByText("superadmin.tokenRevokeError")).toBeInTheDocument());
   });
 

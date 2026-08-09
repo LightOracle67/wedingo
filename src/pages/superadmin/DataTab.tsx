@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, doc, collection, writeBatch, getDoc, query, where, setDoc, serverTimestamp } from "firebase/firestore";
+import { getDocs, doc, collection, writeBatch, getDoc, query, where } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, RSVP_RESPONSES_GROUP, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadJson, downloadText } from "../../lib/file-utils";
@@ -209,66 +209,6 @@ export default function DataTab() {
    *
    * @param {string} token - Token/ID de la invitación.
    */
-  const exportOne = useCallback(
-    async (token: string) => {
-      setBusy(true);
-      try {
-        const [invDoc, rsvpSnap] = await Promise.all([
-          getDoc(doc(db, "invitations", token)),
-          getDocs(rsvpByInviteRef(token)),
-        ]);
-        const data: Record<string, unknown> = {
-          // Sanitizado: el export individual NO debe incluir tokens de setup
-          // en claro ni hashes de sesión (igual que el export completo).
-          invitation: { id: token, ...(invDoc.exists() ? sanitizeInvitationForExport(invDoc.data()) : {}) },
-          rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
-            id: d.id,
-            ...d.data(),
-          })),
-        };
-        // Carga la galería desde la subcolección
-        try {
-          const gallerySnap = await getDocs(collection(db, "invitations", token, "gallery"));
-          data.gallery = gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
-            id: d.id,
-            ...d.data(),
-          }));
-        } catch {
-          data.gallery = [];
-        }
-        // El audio también forma parte del backup individual.
-        try {
-          const audioSnap = await getDocs(collection(db, "invitations", token, "audio"));
-          data.audio = audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
-            id: d.id,
-            ...d.data(),
-          }));
-        } catch {
-          data.audio = [];
-        }
-        downloadJson(`${token}_export_${new Date().toISOString().slice(0, 10)}.json`, data);
-        // F2-4: historial de respaldos — se guarda un backup LIGERO (config +
-        // RSVPs, sin galería/audio que duplican almacenamiento) en la
-        // subcolección _backup/latest para poder descargarlo desde Gestión.
-        try {
-          await setDoc(doc(db, "invitations", token, "_backup", "latest"), {
-            data: JSON.stringify({
-              invitation: { id: token, ...(invDoc.exists() ? sanitizeInvitationForExport(invDoc.data()) : {}) },
-              rsvps: data.rsvps,
-            }),
-            at: serverTimestamp(),
-          });
-        } catch {}
-        addToast("success", t("superadmin.data.exportedOne", { token }));
-      } catch {
-        addToast("error", t("superadmin.data.exportFailed"));
-      } finally {
-        setBusy(false);
-      }
-    },
-    [addToast, t],
-  );
-
   /** Exporta todas las invitaciones seleccionadas en un solo JSON. */
   const exportSelected = useCallback(async () => {
     if (!selected.size) return;
@@ -450,34 +390,6 @@ export default function DataTab() {
    *
    * @param {string} token - Token/ID de la invitación.
    */
-  const deleteOne = useCallback(
-    async (token: string) => {
-      if (confirmText !== CONFIRM_WORD) {
-        addToast("error", t("superadmin.data.confirmRequired", { word: CONFIRM_WORD }));
-        return;
-      }
-      setBusy(true);
-      try {
-        await cascadeDelete(token);
-        setInvitations((prev: InvitationData[]) => prev.filter((i: InvitationData) => i.id !== token));
-        setSelected((prev: Set<string>) => {
-          const n = new Set(prev);
-          n.delete(token);
-          return n;
-        });
-        setConfirmText("");
-        addToast("success", t("superadmin.data.deletedOne", { token }));
-        void logAudit("delete_invitation", token);
-      } catch {
-        addToast("error", t("superadmin.data.deleteFailed"));
-      } finally {
-        setBusy(false);
-      }
-    },
-    [confirmText, addToast, t],
-  );
-
-  /** Elimina las invitaciones seleccionadas. */
   const deleteSelected = useCallback(async () => {
     if (!selected.size) return;
     if (confirmText !== CONFIRM_WORD) {
@@ -502,6 +414,29 @@ export default function DataTab() {
       setBusy(false);
     }
   }, [selected, confirmText, addToast, t]);
+
+  // Acciones genéricas sobre la selección (fuera de la tabla). Imprimir,
+  // CSV y resumen de menús recorren las invitaciones seleccionadas.
+  const handlePrintSelected = useCallback(async () => {
+    for (const token of selected) await printRsvps(token);
+  }, [selected, printRsvps]);
+
+  const handleCsvSelected = useCallback(async () => {
+    for (const token of selected) await exportCsv(token);
+  }, [selected, exportCsv]);
+
+  const handleMenusSelected = useCallback(async () => {
+    const parts: string[] = [];
+    for (const token of selected) {
+      const s = await menuSummary(token);
+      parts.push(`${token}: ${Object.entries(s).map(([k, v]) => `${k}: ${v}`).join(" · ")}`);
+    }
+    addToast("info", parts.join("  //  ") || t("superadmin.data.noMenuData"));
+  }, [selected, menuSummary, addToast, t]);
+
+  // El detalle y el enlace al panel del admin solo tienen sentido con UNA
+  // invitación seleccionada.
+  const singleSelected = selected.size === 1 ? [...selected][0] : "";
 
   /** Elimina TODAS las invitaciones y datos del sistema. */
   const deleteAll = useCallback(async () => {
@@ -602,6 +537,26 @@ export default function DataTab() {
 
         {selectedCount > 0 && (
           <>
+            {singleSelected ? (
+              <button
+                type="button"
+                className="setup-button setup-button--ghost setup-button--compact"
+                onClick={() => setDetailToken(singleSelected)}
+                disabled={busy}
+              >
+                {t("superadmin.data.detailBtn")}
+              </button>
+            ) : null}
+            {singleSelected ? (
+              <a
+                className="setup-button setup-button--ghost setup-button--compact"
+                href={`/${singleSelected}/admin`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t("superadmin.data.adminLink")}
+              </a>
+            ) : null}
             <button
               type="button"
               className="setup-button setup-button--compact"
@@ -609,6 +564,30 @@ export default function DataTab() {
               disabled={busy}
             >
               {t("superadmin.data.exportSelectedBtn", { count: selectedCount })}
+            </button>
+            <button
+              type="button"
+              className="setup-button setup-button--ghost setup-button--compact"
+              onClick={() => void handlePrintSelected()}
+              disabled={busy}
+            >
+              {t("superadmin.data.printBtn")} ({selectedCount})
+            </button>
+            <button
+              type="button"
+              className="setup-button setup-button--ghost setup-button--compact"
+              onClick={() => void handleCsvSelected()}
+              disabled={busy}
+            >
+              CSV ({selectedCount})
+            </button>
+            <button
+              type="button"
+              className="setup-button setup-button--ghost setup-button--compact"
+              onClick={() => void handleMenusSelected()}
+              disabled={busy}
+            >
+              {t("superadmin.data.menusBtn")} ({selectedCount})
             </button>
             <button
               type="button"
@@ -755,7 +734,6 @@ export default function DataTab() {
               <SortableTh columnKey="activity" order={getIndicator("activity")} onSort={toggleSort} className="data-tab-th">
                 {t("superadmin.data.colActivity")}
               </SortableTh>
-              <th scope="col" className="data-tab-th">{t("superadmin.data.colActions")}</th>
             </tr>
           </thead>
           <tbody>
@@ -811,69 +789,6 @@ export default function DataTab() {
                 </td>
                 <td className="data-tab-td" style={{ fontSize: "0.7rem", color: "var(--setup-muted)" }}>
                   {inv.lastActivity ? new Date(inv.lastActivity).toLocaleString() : "—"}
-                </td>
-                <td className="data-tab-td">
-                  <div className="admin-flex admin-gap-sm" style={{ flexWrap: "wrap" }}>
-                    <button
-                      type="button"
-                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
-                      onClick={() => setDetailToken(inv.id)}
-                      disabled={busy}
-                    >
-                      {t("superadmin.data.detailBtn")}
-                    </button>
-                    <button
-                      type="button"
-                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
-                      onClick={() => exportOne(inv.id)}
-                      disabled={busy}
-                    >
-                      {t("superadmin.data.exportBtn")}
-                    </button>
-                    <button
-                      type="button"
-                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
-                      onClick={() => printRsvps(inv.id)}
-                      disabled={busy}
-                    >
-                      {t("superadmin.data.printBtn")}
-                    </button>
-                    <button
-                      type="button"
-                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
-                      onClick={() => exportCsv(inv.id)}
-                      disabled={busy}
-                    >
-                      CSV
-                    </button>
-                    <button
-                      type="button"
-                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
-                      onClick={async () => {
-                        const s = await menuSummary(inv.id);
-                        addToast("info", Object.entries(s).map(([k, v]) => `${k}: ${v}`).join(" · ") || t("superadmin.data.noMenuData"));
-                      }}
-                      disabled={busy}
-                    >
-                      {t("superadmin.data.menusBtn")}
-                    </button>
-                    <a
-                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
-                      href={`/${inv.id}/admin`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {t("superadmin.data.adminLink")}
-                    </a>
-                    <button
-                      type="button"
-                      className="setup-button setup-button--danger setup-button--compact data-tab-btn-danger"
-                      onClick={() => deleteOne(inv.id)}
-                      disabled={busy || confirmText !== CONFIRM_WORD}
-                    >
-                      {t("superadmin.data.delete")}
-                    </button>
-                  </div>
                 </td>
               </tr>
             ))}

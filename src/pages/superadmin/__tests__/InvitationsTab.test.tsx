@@ -8,8 +8,9 @@ vi.mock("../../../lib/image-store", () => ({
 vi.mock("../../../lib/music-store", () => ({
   deleteAudio: vi.fn(() => Promise.resolve()),
 }));
+const stableT = (key: string) => key;
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string) => key }),
+  useTranslation: () => ({ t: stableT }),
 }));
 
 vi.mock("firebase/firestore", () => ({
@@ -17,9 +18,13 @@ vi.mock("firebase/firestore", () => ({
   doc: vi.fn(() => "doc-ref"),
   deleteDoc: vi.fn(() => Promise.resolve()),
   writeBatch: vi.fn(() => ({ delete: vi.fn(), commit: vi.fn(() => Promise.resolve()) })),
+  collection: vi.fn(() => "collection-ref"),
+  query: vi.fn(() => "query-ref"),
+  where: vi.fn(() => "where-ref"),
 }));
 
 vi.mock("../../../lib/firebase", () => ({
+  db: "db-mock",
   INVITATIONS_COLLECTION_REF: "invitations-collection-ref",
   rsvpByInviteRef: vi.fn(() => "rsvp-ref"),
 }));
@@ -78,7 +83,7 @@ describe("InvitationsTab", () => {
     });
   });
 
-  it("renders a delete button for each invitation", async () => {
+  it("renders the bulk delete action in the actions bar", async () => {
     const { getDocs } = await getFirestore();
     (getDocs as ReturnType<typeof vi.fn>).mockResolvedValue({
       docs: [
@@ -86,18 +91,35 @@ describe("InvitationsTab", () => {
       ],
     });
     render(<InvitationsTab />);
-    await vi.waitFor(() => expect(screen.getByText("superadmin.deleteButton")).toBeDefined());
+    await vi.waitFor(() => expect(screen.getByText("superadmin.deleteSelected")).toBeDefined());
   });
 
   it("does not delete when confirm is cancelled", async () => {
-    const { getDocs } = await getFirestore();
+    const { getDocs, writeBatch } = await getFirestore();
     (getDocs as ReturnType<typeof vi.fn>).mockResolvedValue({
       docs: [{ id: "inv1", data: () => ({ theme: "golden" }) }],
     });
     window.confirm = vi.fn(() => false);
     render(<InvitationsTab />);
-    await vi.waitFor(() => expect(screen.getByText("superadmin.deleteButton")).toBeDefined());
-    fireEvent.click(screen.getByText("superadmin.deleteButton"));
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeDefined());
+    // Selecciona la fila y pulsa eliminar; al cancelar el confirm no borra.
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
+    fireEvent.click(screen.getByText("superadmin.deleteSelected"));
+    expect(window.confirm).toHaveBeenCalled();
+    expect(writeBatch).not.toHaveBeenCalled();
+  });
+
+  it("deletes the selected invitations in bulk", async () => {
+    const { getDocs, writeBatch } = await getFirestore();
+    (getDocs as ReturnType<typeof vi.fn>).mockResolvedValue({
+      docs: [{ id: "inv1", data: () => ({ theme: "golden" }) }],
+    });
+    window.confirm = vi.fn(() => true);
+    render(<InvitationsTab />);
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeDefined());
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
+    fireEvent.click(screen.getByText("superadmin.deleteSelected"));
+    await vi.waitFor(() => expect(writeBatch).toHaveBeenCalled());
   });
 
   it("calls handleExportAll when export button clicked", async () => {

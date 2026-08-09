@@ -859,7 +859,17 @@
     "gcStorage": "Limpiar Storage huérfano",
     "gcStorageConfirm": "¿Borrar archivos de Storage de invitaciones ya eliminadas?",
     "gcStorageDone": "Storage limpiado: {{count}} archivo(s).",
-    "upcomingWeddings": "Próximas bodas"
+    "upcomingWeddings": "Próximas bodas",
+    "selectAllTokens": "Seleccionar todos los tokens",
+    "selectToken": "Seleccionar token {{token}}",
+    "revokeSelected": "Revocar seleccionados ({{count}})",
+    "migrateSelected": "Migrar seleccionados ({{count}})",
+    "revokeSelectedConfirm": "¿Revocar {{count}} token(s) seleccionados?",
+    "migrateSelectedConfirm": "¿Migrar {{count}} token(s) legacy seleccionados?",
+    "selectAllInvitations": "Seleccionar todas las invitaciones",
+    "selectInvitation": "Seleccionar invitación {{id}}",
+    "deleteSelected": "Eliminar seleccionadas ({{count}})",
+    "deleteConfirmBulk": "¿Eliminar {{count}} invitaciones seleccionadas permanentemente?"
   },
   "compliance": {
     "title": "Registro de actividades de tratamiento (Art. 30 GDPR)",

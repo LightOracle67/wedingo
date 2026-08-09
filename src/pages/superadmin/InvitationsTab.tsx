@@ -4,7 +4,9 @@ import { db, INVITATIONS_COLLECTION_REF, rsvpByInviteRef } from "../../lib/fireb
 import { searchInvitations, formatBytes } from "../../lib/superadmin-utils";
 import { useTranslation } from "react-i18next";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
+import { useRowSelection } from "../../hooks/useRowSelection";
 import { SortableTh } from "../../components/SortableTh";
+import { TableActionsBar } from "../../components/TableActionsBar";
 
 interface InvitationRow {
   id: string;
@@ -23,7 +25,6 @@ const InvitationsTab = memo(function InvitationsTab() {
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [tagFilter, setTagFilter] = useState("");
-  const [deleting, setDeleting] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -45,44 +46,50 @@ const InvitationsTab = memo(function InvitationsTab() {
     load();
   }, [load]);
 
-  const handleDelete = useCallback(
-    async (id: string) => {
-      if (!window.confirm(t("superadmin.deleteConfirmInvitation", { id }))) return;
-      setDeleting(id);
-      try {
-        // Borrado en cascada completo: sin esto las subcolecciones (RSVP,
-        // galería, audio, configImages, setupTokens) quedaban huérfanas. Las
-        // FUNCIONES SOCIALES (reactions/notes/songs/rides/gifts) y _counters
-        // guardan datos personales de los invitados: si no se borran, quedan
-        // huérfanas y legibles para siempre (GDPR art. 17). El consentLog
-        // (consentimiento de cookies) también debe limpiarse.
-        const refs: Array<{ ref: unknown }> = [];
-        const snap = await getDocs(rsvpByInviteRef(id));
-        for (const d of snap.docs) refs.push(d.ref as never);
-        const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog"];
-        for (const name of SUB_COLLECTIONS) {
-          const subSnap = await getDocs(collection(db, "invitations", id, name));
-          for (const d of subSnap.docs) refs.push(d.ref as never);
-        }
-        const tokenSnap = await getDocs(query(collection(db, "setupTokens"), where("inviteToken", "==", id)));
-        for (const d of tokenSnap.docs) refs.push(d.ref as never);
-        refs.push(doc(db, "rsvpResponses", id) as never);
-        refs.push(doc(INVITATIONS_COLLECTION_REF, id) as never);
-        // Firestore limita a 500 operaciones por batch: se trocea.
-        for (let i = 0; i < refs.length; i += 400) {
-          const chunk = refs.slice(i, i + 400);
-          const batch = writeBatch(db);
-          for (const r of chunk) batch.delete(r.ref as never);
-          await batch.commit();
-        }
-        setInvitations((prev) => prev.filter((i) => i.id !== id));
-      } catch {
-        setError(t("superadmin.deleteError"));
-      }
-      setDeleting(null);
-    },
-    [t],
-  );
+  // Selección de filas para acciones genéricas en lote (fuera de la tabla).
+  const selection = useRowSelection();
+
+  // Borrado en cascada COMPLETO (sin confirmación: la gestiona quien llama):
+  // sin esto las subcolecciones (RSVP, galería, audio, configImages,
+  // setupTokens) quedaban huérfanas. Las FUNCIONES SOCIALES
+  // (reactions/notes/songs/rides/gifts) y _counters guardan datos personales
+  // de los invitados: si no se borran, quedan huérfanas y legibles para
+  // siempre (GDPR art. 17). El consentLog también debe limpiarse.
+  const deleteOne = useCallback(async (id: string) => {
+    const refs: Array<{ ref: unknown }> = [];
+    const snap = await getDocs(rsvpByInviteRef(id));
+    for (const d of snap.docs) refs.push(d.ref as never);
+    const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog"];
+    for (const name of SUB_COLLECTIONS) {
+      const subSnap = await getDocs(collection(db, "invitations", id, name));
+      for (const d of subSnap.docs) refs.push(d.ref as never);
+    }
+    const tokenSnap = await getDocs(query(collection(db, "setupTokens"), where("inviteToken", "==", id)));
+    for (const d of tokenSnap.docs) refs.push(d.ref as never);
+    refs.push(doc(db, "rsvpResponses", id) as never);
+    refs.push(doc(INVITATIONS_COLLECTION_REF, id) as never);
+    // Firestore limita a 500 operaciones por batch: se trocea.
+    for (let i = 0; i < refs.length; i += 400) {
+      const chunk = refs.slice(i, i + 400);
+      const batch = writeBatch(db);
+      for (const r of chunk) batch.delete(r.ref as never);
+      await batch.commit();
+    }
+    setInvitations((prev) => prev.filter((i) => i.id !== id));
+  }, []);
+
+  // Borrado en lote de las invitaciones seleccionadas (una sola confirmación).
+  const handleBulkDelete = useCallback(async () => {
+    const ids = [...selection.selected];
+    if (ids.length === 0 || !window.confirm(t("superadmin.deleteConfirmBulk", { count: ids.length }))) return;
+    setError("");
+    try {
+      for (const id of ids) await deleteOne(id);
+      selection.clear();
+    } catch {
+      setError(t("superadmin.deleteError"));
+    }
+  }, [selection, deleteOne, t]);
 
   const handleExportAll = useCallback(async () => {
     try {
@@ -193,54 +200,69 @@ const InvitationsTab = memo(function InvitationsTab() {
         {filteredByTag.length === 0 ? (
           <p className="setup-help">{search ? t("superadmin.noResultsFilter") : t("superadmin.noInvitations")}</p>
         ) : (
-          <div className="admin-table-wrapper">
-            <table className="admin-table">
-              <thead>
-                <tr>
-                  <SortableTh columnKey="token" order={getIndicator("token")} onSort={toggleSort}>
-                    {t("superadmin.tableToken")}
-                  </SortableTh>
-                  <SortableTh columnKey="theme" order={getIndicator("theme")} onSort={toggleSort}>
-                    {t("superadmin.tableTheme")}
-                  </SortableTh>
-                  <SortableTh columnKey="date" order={getIndicator("date")} onSort={toggleSort}>
-                    {t("superadmin.tableDate")}
-                  </SortableTh>
-                  <SortableTh columnKey="user" order={getIndicator("user")} onSort={toggleSort}>
-                    {t("superadmin.tableUser")}
-                  </SortableTh>
-                  <th>{t("superadmin.tableActions")}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sortedInvitations.map(
-                  (inv: InvitationRow) => (
-                    <tr key={inv.id}>
-                      <td style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>{inv.id}</td>
-                      <td>{inv.theme || "—"}</td>
-                      <td className="admin-table__date">
-                        {inv.weddingDay && inv.weddingMonth && inv.weddingYear
-                          ? `${inv.weddingDay} ${inv.weddingMonth} ${inv.weddingYear}`
-                          : "—"}
-                      </td>
-                      <td>{inv.adminUsername ? `@${inv.adminUsername}` : "—"}</td>
-                      <td style={{ whiteSpace: "nowrap" }}>
-                        <button
-                          className="setup-button setup-button--ghost setup-button--compact"
-                          style={{ fontSize: "0.7rem", color: "#ef4444" }}
-                          type="button"
-                          onClick={() => handleDelete(inv.id)}
-                          disabled={deleting === inv.id}
-                        >
-                          {deleting === inv.id ? "…" : t("superadmin.deleteButton")}
-                        </button>
-                      </td>
-                    </tr>
-                  ),
-                )}
-              </tbody>
-            </table>
-          </div>
+          <>
+            <TableActionsBar
+              total={filteredByTag.length}
+              selectedCount={selection.selectedCount}
+              allSelected={selection.allSelected}
+              onToggleAll={() => selection.toggleAll(filteredByTag.map((r) => r.id))}
+              selectAllLabel={t("superadmin.selectAllInvitations")}
+            >
+              <button
+                type="button"
+                className="setup-button setup-button--danger setup-button--compact"
+                disabled={selection.selectedCount === 0}
+                onClick={() => void handleBulkDelete()}
+              >
+                {t("superadmin.deleteSelected", { count: selection.selectedCount })}
+              </button>
+            </TableActionsBar>
+            <div className="admin-table-wrapper">
+              <table className="admin-table">
+                <thead>
+                  <tr>
+                    <th scope="col" style={{ width: "2rem" }} />
+                    <SortableTh columnKey="token" order={getIndicator("token")} onSort={toggleSort}>
+                      {t("superadmin.tableToken")}
+                    </SortableTh>
+                    <SortableTh columnKey="theme" order={getIndicator("theme")} onSort={toggleSort}>
+                      {t("superadmin.tableTheme")}
+                    </SortableTh>
+                    <SortableTh columnKey="date" order={getIndicator("date")} onSort={toggleSort}>
+                      {t("superadmin.tableDate")}
+                    </SortableTh>
+                    <SortableTh columnKey="user" order={getIndicator("user")} onSort={toggleSort}>
+                      {t("superadmin.tableUser")}
+                    </SortableTh>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sortedInvitations.map(
+                    (inv: InvitationRow) => (
+                      <tr key={inv.id}>
+                        <td>
+                          <input
+                            type="checkbox"
+                            aria-label={t("superadmin.selectInvitation", { id: inv.id })}
+                            checked={selection.isSelected(inv.id)}
+                            onChange={() => selection.toggle(inv.id)}
+                          />
+                        </td>
+                        <td style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>{inv.id}</td>
+                        <td>{inv.theme || "—"}</td>
+                        <td className="admin-table__date">
+                          {inv.weddingDay && inv.weddingMonth && inv.weddingYear
+                            ? `${inv.weddingDay} ${inv.weddingMonth} ${inv.weddingYear}`
+                            : "—"}
+                        </td>
+                        <td>{inv.adminUsername ? `@${inv.adminUsername}` : "—"}</td>
+                      </tr>
+                    ),
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
       </div>
     </div>
