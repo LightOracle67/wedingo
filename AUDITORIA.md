@@ -202,7 +202,7 @@ Método: 4 auditorías estáticas paralelas (seguridad, accesibilidad, legal int
 - **Fase 1 (9)**: editor global de configuración, traspaso de titularidad, clonado, expiración manual, previsualización sin contar visita, copia de secciones, sello de verificación, notas internas, mensaje de agradecimiento post-RSVP.
 - **Fase 2 (8)**: actividad reciente, embudo (visitas sin confirmar), confirmaciones por día, historial de respaldos, búsqueda por contenido, comparativa de temas, columna de usuario, estadísticas de dispositivo (UA).
 - **Fase 3 (9)**: modo mantenimiento, banner global, listas negras de URLs y tokens, umbral de expiración, estado de invitación (activa/revisión/bloqueada), etiquetas con filtro, aforo máximo, firma digital en RSVP, avisos de expiración en dashboard.
-- **Fase 4 (6)**: cierre de sesión remota, registro de accesos por invitación, previsualización por dispositivo, QR, auto-respuesta de RSVP.
+- **Fase 4 (8)**: cierre de sesión remota, registro de accesos, previsualización por dispositivo, QR, auto-respuesta, modo presentación, invitado asistido (v2.95.49-50).
 
 **Pendientes (24) — mayoría bloqueados por el plan Spark (Cloud Functions) o servicios externos:**
 - F5: PDF RSVP, restauración remota de backup, auditoría por sección, GC de Storage, API/webhooks (Blaze), traducción automática (proveedor), alertas por email (servicio de correo), modo presentación completo, invitado asistido.
