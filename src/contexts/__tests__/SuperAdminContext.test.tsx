@@ -145,6 +145,36 @@ describe("SuperAdminProvider", () => {
     expect(screen.getByTestId("user-uid").textContent).toBe("uid-123");
   });
 
+  it("re-hydrates the session when Firebase user is superadmin but local session is missing", async () => {
+    // Pestaña nueva: sessionStorage vacío, pero el token de Firebase sigue
+    // válido. El hydrate debe restaurar la sesión local y NO hacer signOut.
+    mockGetSession.mockReturnValue(null);
+    mockOnAuthStateChanged.mockImplementation(
+      (_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
+        setTimeout(() => cb({ email: FALLBACK_ADMIN_EMAIL, uid: "uid-999" }), 0);
+        return () => {};
+      },
+    );
+    renderProvider();
+    await vi.waitFor(() => expect(screen.getByTestId("isSuperAdmin").textContent).toBe("true"));
+    expect(screen.getByTestId("user-uid").textContent).toBe("uid-999");
+    // La sesión local se restaura y el token NO se invalida.
+    expect(mockSaveSession).toHaveBeenCalledWith("superadmin", FALLBACK_ADMIN_EMAIL, expect.anything());
+    expect(mockSignOut).not.toHaveBeenCalled();
+  });
+
+  it("does not hydrate a non-superadmin Firebase account (signs it out)", async () => {
+    mockOnAuthStateChanged.mockImplementation(
+      (_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
+        setTimeout(() => cb({ email: "other@admin.com", uid: "uid-777" }), 0);
+        return () => {};
+      },
+    );
+    renderProvider();
+    await vi.waitFor(() => expect(screen.getByTestId("isSuperAdmin").textContent).toBe("false"));
+    await vi.waitFor(() => expect(mockSignOut).toHaveBeenCalled());
+  });
+
   it("does not set user when email does not match superadmin email", async () => {
     mockOnAuthStateChanged.mockImplementation(
       (_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
@@ -235,19 +265,6 @@ describe("SuperAdminProvider", () => {
     await vi.waitFor(() => expect(mockClearSession).toHaveBeenCalled());
     await vi.waitFor(() => expect(mockSignOut).toHaveBeenCalled());
     await vi.waitFor(() => expect(mockNavigate).toHaveBeenCalledWith("/"));
-  });
-
-  it("signs out when Firebase user has no local session", async () => {
-    mockOnAuthStateChanged.mockImplementation(
-      (_auth: unknown, cb: (u: { email: string; uid?: string } | null) => void) => {
-        setTimeout(() => cb({ email: FALLBACK_ADMIN_EMAIL, uid: "uid-no-session" }), 0);
-        return () => {};
-      },
-    );
-    renderProvider();
-    await vi.waitFor(() => expect(screen.getByTestId("isLoading").textContent).toBe("false"));
-    expect(mockSignOut).toHaveBeenCalled();
-    expect(screen.getByTestId("isSuperAdmin").textContent).toBe("false");
   });
 
   it("handles non-object error in login", async () => {

@@ -51,18 +51,24 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
       const { onAuthStateChanged, signOut } = await import("firebase/auth");
       unsubscribe = onAuthStateChanged(instance, (firebaseUser) => {
         const local = getSession();
+        const isSuper = !!firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL;
 
-        if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && local?.type === "superadmin") {
-          setUser(firebaseUser);
-        } else if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL && loggingInRef.current) {
-          // Login en curso: no forzar cierre, esperar a que login() guarde la sesión
-
+        if (isSuper) {
+          // Autenticado con el email de superadmin: marca autenticado y RE-
+          // HIDRATA la sesión local si falta (p. ej. pestaña nueva, donde
+          // sessionStorage está vacío). NO se fuerza signOut: el token de
+          // Firebase es válido y restaurar la sesión evita pedir credenciales
+          // de nuevo (antes el else firmaba out y obligaba a re-login).
+          if (!local || local.type !== "superadmin") {
+            saveSession("superadmin", firebaseUser.email ?? "", { uid: firebaseUser.uid });
+          }
           setUser(firebaseUser);
         } else {
-          if (firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL) {
+          // Usuario de Firebase con OTRO email (o sesión nula): se cierra la
+          // cuenta ajena para no dejar autenticada a otra persona.
+          if (firebaseUser) {
             signOut(instance).catch(() => {});
           }
-
           setUser(null);
         }
         setIsLoading(false);

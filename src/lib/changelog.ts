@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.56",
+    date: "2026-08-09",
+    changes: [
+      "Fix del hydrate del superadmin: al tener un token de Firebase válido pero sin sesión local (p. ej. pestaña nueva), el flujo forzaba signOut y obligaba a re-login. Ahora re-hidrata la sesión local automáticamente y solo firma fuera cuentas de Firebase con email distinto al superadmin. Añadidos tests de hydrate (2017 en total).",
+    ],
+  },
+
+  {
     version: "2.95.55",
     date: "2026-08-09",
     changes: [
