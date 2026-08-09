@@ -73,12 +73,6 @@ export function useStoryNavigation(
     const reducedMotion = options.reducedMotion === true;
     const primarySection = visibleOrder[0];
 
-    // Al abrir el sobre (enabled pasa de false a true) se vuelve al inicio.
-    if (everDisabledRef.current) {
-      const scene = document.querySelector<HTMLElement>(".app-scene");
-      scene?.scrollTo({ top: 0, behavior: "auto" });
-    }
-
     const timers = new Map<string, ReturnType<typeof setTimeout>>();
     // Programa una transición: si el estado actual coincide con `from`, lo
     // mueve a `to` tras `ms`. La transición SOLO se programa cuando cambia el
@@ -95,6 +89,21 @@ export function useStoryNavigation(
         }, ms),
       );
     };
+
+    // Al abrir el sobre (enabled pasa de false a true) se vuelve al inicio.
+    if (everDisabledRef.current) {
+      const scene = document.querySelector<HTMLElement>(".app-scene");
+      scene?.scrollTo({ top: 0, behavior: "auto" });
+      // ENTRADA SÍNCRONA: la primera sección visible (normalmente el hero)
+      // arranca su animación en el MISMO commit en que se revela la
+      // invitación. Si se esperase a la primera callback asíncrona del
+      // IntersectionObserver (que puede llegar varios frames tarde), el hero
+      // aparecería ya renderizado y estático un instante antes de animarse.
+      if (!reducedMotion && primarySection) {
+        setStages((s) => (s[primarySection] === "entering" ? s : { ...s, [primarySection]: "entering" }));
+        schedule(primarySection, "entering", "active", ENTER_MS);
+      }
+    }
 
     let globalFirst = true;
     const firstContacted = new Set<string>();

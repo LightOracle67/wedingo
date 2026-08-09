@@ -332,7 +332,14 @@ export default function PublicInvitation() {
   const {
     getSectionStyle: getStorySectionStyle,
     getSectionClassName: getStorySectionClassName,
-  } = useStoryNavigation(visibleOrder, { enabled: !showEnvelope, reducedMotion });
+  } = useStoryNavigation(visibleOrder, {
+    // `enabled` requiere que el sobre esté fuera Y que el vídeo de bienvenida
+    // esté cerrado: así la animación de entrada del hero no se ejecuta detrás
+    // del vídeo (el usuario la vería perdida y al cerrarlo el hero aparecería
+    // ya renderizado). Sin vídeo, se activa justo al terminar el sobre.
+    enabled: !showEnvelope && !videoOpen,
+    reducedMotion,
+  });
 
   // ─── Cuenta regresiva ──────────────────────────────────
 

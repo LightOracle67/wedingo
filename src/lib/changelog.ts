@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.65",
+    date: "2026-08-09",
+    changes: [
+      "FIX: la sección principal (hero) ejecuta su animación de entrada en el mismo instante en que se revela la invitación (entrada síncrona al terminar la pantalla blanca del sobre, sin esperar la primera callback del IntersectionObserver), y ya no se anima detrás del vídeo de bienvenida: la navegación se activa al cerrar el vídeo para que la entrada del hero sea visible.",
+    ],
+  },
+
+  {
     version: "2.95.64",
     date: "2026-08-09",
     changes: [
