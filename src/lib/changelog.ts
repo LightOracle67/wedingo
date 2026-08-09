@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.59",
+    date: "2026-08-09",
+    changes: [
+      "Verificación con emulador: test de reglas Firestore (npm run test:rules) que cubre los flujos del superadmin — lecturas del dashboard (invitaciones, respuestas, tokens, auditLog, plataforma, consentLog), denegación a invitados, respaldo por UID y escrituras/borrados del superadmin (14/14 correctos).",
+    ],
+  },
+
+  {
     version: "2.95.58",
     date: "2026-08-09",
     changes: [

@@ -35,7 +35,8 @@
     "bump": "node scripts/bump-version.js",
     "loadtest": "k6 run scripts/load-test.js",
     "preready": "npm run lint && npm run build && npm run changelog:check && npm run consent:check && npm run translations:check",
-    "changelog:check": "node scripts/check-changelog.js"
+    "changelog:check": "node scripts/check-changelog.js",
+    "test:rules": "firebase emulators:exec --only firestore --project demo-wedingo \"node scripts/rules-test.mjs\""
   },
   "dependencies": {
     "@sentry/react": "^10.68.0",
@@ -51,6 +52,7 @@
     "web-vitals": "^6.0.0"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.1",
     "@playwright/test": "^1.62.0",
     "@sentry/vite-plugin": "^5.4.0",
     "@tailwindcss/vite": "^4.3.2",
