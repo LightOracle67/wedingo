@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.45",
+    date: "2026-08-09",
+    changes: [
+      "Auditoría de flujos del superadmin. Seguridad: el export individual/seleccionado ya no filtra tokens de setup ni hashes de sesión; el borrado en cascada (panel, dashboard y pestaña de datos) elimina ahora también las aportaciones sociales, los contadores y el registro de consentimiento (GDPR art. 17); el panel de tokens gestiona también los tokens del formato nuevo (setupTokens) con revocación.",
+    ],
+  },
+  {
     version: "2.95.44",
     date: "2026-08-09",
     changes: [

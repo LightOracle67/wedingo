@@ -1,6 +1,35 @@
 # Auditoría Completa de Mejora Progresiva — Wedingo
 
-**Fecha:** 2026-08-09 · **Versión actual:** v2.95.43 → **v2.95.44 (pendientes implementados)**
+**Fecha:** 2026-08-09 · **Versión actual:** v2.95.44 → **v2.95.45 (auditoría del superadmin)**
+
+---
+
+## Auditoría de flujos del superadmin (v2.95.45)
+
+Análisis completo de los 6 tabs + login + contexto + reglas. **1991 tests, oxlint/tsc/build limpios, hosting + firestore.rules desplegados.**
+
+### Flujos auditados
+- **Login** (`/_/console`): Firebase Auth real con email whitelistado, `onAuthStateChanged` con guard (no fuerza cierre durante login), sesión 60 min renovable, logout con signOut + limpieza.
+- **Dashboard**: stats globales (RSVP, invitaciones, storage), limpieza de invitaciones expiradas (>12 meses) con cascada.
+- **InvitationsTab**: listado/búsqueda, borrado en cascada, export JSON sanitizado.
+- **TokensTab**: gestión de tokens legacy (`_activeSetupToken`) + revocación.
+- **DataTab**: export individual/seleccionado/total, borrado individual/masivo/total con confirmación por texto "ELIMINAR".
+- **SettingsTab**: cuenta, sesión, logout.
+- **ComplianceTab**: registro de tratamiento (estático).
+
+### Fallos encontrados y corregidos
+1. **[ALTO] Export individual/seleccionado filtraba datos sensibles**: `exportOne`/`exportSelected` volcaban el documento completo de la invitación (incluía `setupTokenHash` y, en legacy, `_activeSetupToken`/`legacyToken` en claro). Ahora usan `sanitizeInvitationForExport` (igual que el export total).
+2. **[ALTO] InvitationsTab borrado incompleto**: el borrado en cascada no eliminaba las FUNCIONES SOCIALES (reactions/notes/songs/rides/gifts) ni `_counters` ni `consentLog` → PII de invitados quedaba huérfana y legible (GDPR art. 17). Corregido con la lista completa de subcolecciones.
+3. **[ALTO] Dashboard cleanup sin setupTokens ni consentLog**: la limpieza de expiradas dejaba hashes de tokens y registros de consentimiento huérfanos (la función cloud sí los borra; el cliente no). Corregido.
+4. **[MEDIO] DataTab cascadeDelete sin consentLog**: la subcolección nueva (v2.95.44) no se limpiaba al borrar. Corregido.
+5. **[MEDIO] TokensTab solo gestionaba tokens legacy**: tras v2.95.22 los tokens viven en `setupTokens/{hash}` y el tab no los mostraba (no se podían revocar desde la UI). Ahora también lista `setupTokens` (hash abreviado + invitación) y permite revocar (borrar el registro → la regla de sesión deja de aceptar el hash).
+
+### Riesgos aceptados / pendientes (documentados)
+- **MFA/App Check** en el login de superadmin: operativo (requiere consola Firebase).
+- `navigator.credentials.store` guarda la contraseña en el gestor del navegador (comportamiento estándar; revisar en terminales compartidos).
+- La sesión superadmin comparte la clave `wedin_session` con la sesión admin/setup (login de uno invalida el otro; menor).
+- `cleanupExpiredData` (función) sin aislamiento de errores por invitación: no desplegable en plan Spark.
+- `consentLog` crece sin tope (una entrada por decisión): aceptable, solo superadmin lo lee.
 
 ---
 

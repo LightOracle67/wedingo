@@ -134,7 +134,9 @@ export default function DataTab() {
           getDocs(rsvpByInviteRef(token)),
         ]);
         const data: Record<string, unknown> = {
-          invitation: { id: token, ...(invDoc.exists() ? invDoc.data() : {}) },
+          // Sanitizado: el export individual NO debe incluir tokens de setup
+          // en claro ni hashes de sesión (igual que el export completo).
+          invitation: { id: token, ...(invDoc.exists() ? sanitizeInvitationForExport(invDoc.data()) : {}) },
           rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
             id: d.id,
             ...d.data(),
@@ -185,7 +187,7 @@ export default function DataTab() {
           getDocs(collection(db, "invitations", token, "audio")),
         ]);
         result.push({
-          invitation: { id: token, ...(invDoc.exists() ? invDoc.data() : {}) },
+          invitation: { id: token, ...(invDoc.exists() ? sanitizeInvitationForExport(invDoc.data()) : {}) },
           rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
             id: d.id,
             ...d.data(),
@@ -588,7 +590,7 @@ async function cascadeDelete(token: string) {
   // interno _counters. Las sociales guardan datos personales de los invitados
   // y, si no se borran, quedan huérfanas y legibles para siempre (derecho de
   // supresión, GDPR art. 17).
-  const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters"];
+  const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog"];
   for (const name of SUB_COLLECTIONS) {
     const subSnap = await getDocs(collection(db, "invitations", token, name));
     for (const d of subSnap.docs) refsToDelete.push(d.ref);

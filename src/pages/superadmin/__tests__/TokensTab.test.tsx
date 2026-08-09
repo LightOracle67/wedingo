@@ -36,6 +36,23 @@ window.confirm = mockConfirm;
 
 import TokensTab from "../TokensTab";
 
+/** Mock de getDocs que distingue las dos consultas de la pestaña:
+ *  la de invitaciones legacy (query-ref) devuelve `legacyDocs` y la de
+ *  setupTokens (collection-ref) vacía, salvo que se indique lo contrario. */
+const mockTokenSnapshots = (
+  legacyDocs: Array<{ id: string; data: () => Record<string, unknown> }>,
+  hashedDocs: Array<{ id: string; data: () => Record<string, unknown> }> = [],
+) => {
+  mockGetDocs.mockImplementation((ref: unknown) =>
+    Promise.resolve(
+      ref === "query-ref"
+        ? { docs: legacyDocs, size: legacyDocs.length, empty: legacyDocs.length === 0 }
+        : { docs: hashedDocs, size: hashedDocs.length, empty: hashedDocs.length === 0 },
+    ),
+  );
+};
+
+
 describe("TokensTab", () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -50,32 +67,24 @@ describe("TokensTab", () => {
   });
 
   it("renders tokens after loading", async () => {
-    mockGetDocs.mockImplementation(() =>
-      Promise.resolve({
-        docs: [
-          { id: "inv1", data: () => ({ _activeSetupToken: "token1" }) },
-          { id: "inv2", data: () => ({ _activeSetupToken: "token2" }) },
-        ],
-      }),
-    );
+    mockTokenSnapshots([
+      { id: "inv1", data: () => ({ _activeSetupToken: "token1" }) },
+      { id: "inv2", data: () => ({ _activeSetupToken: "token2" }) },
+    ]);
     render(<TokensTab />);
     await vi.waitFor(() => expect(screen.getByText("inv1")).toBeInTheDocument());
     expect(screen.getByText("inv2")).toBeInTheDocument();
-    expect(screen.getAllByText("superadmin.statusAvailable").length).toBe(2);
+    expect(screen.getAllByText("superadmin.statusLegacy").length).toBe(2);
   });
 
   it("shows no tokens message when list is empty", async () => {
-    mockGetDocs.mockImplementation(() => Promise.resolve({ docs: [], empty: true }));
+    mockTokenSnapshots([]);
     render(<TokensTab />);
     await vi.waitFor(() => expect(screen.getByText("superadmin.noTokens")).toBeInTheDocument());
   });
 
   it("shows tokens stats", async () => {
-    mockGetDocs.mockImplementation(() =>
-      Promise.resolve({
-        docs: [{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }],
-      }),
-    );
+    mockTokenSnapshots([{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }]);
     render(<TokensTab />);
     await vi.waitFor(() => expect(screen.getByText(/superadmin\.tokensStats/)).toBeInTheDocument());
   });
@@ -87,11 +96,7 @@ describe("TokensTab", () => {
   });
 
   it("calls handleRevoke on revoke button click", async () => {
-    mockGetDocs.mockImplementation(() =>
-      Promise.resolve({
-        docs: [{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }],
-      }),
-    );
+    mockTokenSnapshots([{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }]);
     mockDoc.mockReturnValue("doc-ref");
     mockUpdateDoc.mockResolvedValue(undefined);
     render(<TokensTab />);
@@ -107,11 +112,7 @@ describe("TokensTab", () => {
 
   it("does not revoke if confirm is cancelled", async () => {
     mockConfirm.mockReturnValue(false);
-    mockGetDocs.mockImplementation(() =>
-      Promise.resolve({
-        docs: [{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }],
-      }),
-    );
+    mockTokenSnapshots([{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }]);
     render(<TokensTab />);
     await vi.waitFor(() => expect(screen.getByText("superadmin.revokeButton")).toBeInTheDocument());
     fireEvent.click(screen.getByText("superadmin.revokeButton"));
@@ -134,7 +135,7 @@ describe("TokensTab", () => {
   });
 
   it("shows no tokens to clean when empty", async () => {
-    mockGetDocs.mockImplementation(() => Promise.resolve({ docs: [], size: 0, empty: true }));
+    mockTokenSnapshots([]);
     render(<TokensTab />);
     await vi.waitFor(() => expect(screen.getByText("superadmin.cleanUnused")).toBeInTheDocument());
     fireEvent.click(screen.getByText("superadmin.cleanUnused"));
@@ -142,11 +143,7 @@ describe("TokensTab", () => {
   });
 
   it("displays error on revoke failure", async () => {
-    mockGetDocs.mockImplementation(() =>
-      Promise.resolve({
-        docs: [{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }],
-      }),
-    );
+    mockTokenSnapshots([{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }]);
     mockDoc.mockReturnValue("doc-ref");
     mockUpdateDoc.mockRejectedValue(new Error("fail"));
     render(<TokensTab />);
@@ -156,11 +153,7 @@ describe("TokensTab", () => {
   });
 
   it("renders clean unused button and confirms dialog", async () => {
-    mockGetDocs.mockImplementation(() =>
-      Promise.resolve({
-        docs: [{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }],
-      }),
-    );
+    mockTokenSnapshots([{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }]);
     render(<TokensTab />);
     await vi.waitFor(() => expect(screen.getByText("superadmin.cleanUnused")).toBeInTheDocument());
     fireEvent.click(screen.getByText("superadmin.cleanUnused"));

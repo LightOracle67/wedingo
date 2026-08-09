@@ -39,17 +39,20 @@ const InvitationsTab = memo(function InvitationsTab() {
       if (!window.confirm(t("superadmin.deleteConfirmInvitation", { id }))) return;
       setDeleting(id);
       try {
-        // Borrado en cascada: sin esto las subcolecciones (RSVP, galería,
-        // audio, configImages, setupTokens) quedaban huérfanas.
+        // Borrado en cascada completo: sin esto las subcolecciones (RSVP,
+        // galería, audio, configImages, setupTokens) quedaban huérfanas. Las
+        // FUNCIONES SOCIALES (reactions/notes/songs/rides/gifts) y _counters
+        // guardan datos personales de los invitados: si no se borran, quedan
+        // huérfanas y legibles para siempre (GDPR art. 17). El consentLog
+        // (consentimiento de cookies) también debe limpiarse.
         const refs: Array<{ ref: unknown }> = [];
         const snap = await getDocs(rsvpByInviteRef(id));
         for (const d of snap.docs) refs.push(d.ref as never);
-        const gallerySnap = await getDocs(collection(db, "invitations", id, "gallery"));
-        for (const d of gallerySnap.docs) refs.push(d.ref as never);
-        const audioSnap = await getDocs(collection(db, "invitations", id, "audio"));
-        for (const d of audioSnap.docs) refs.push(d.ref as never);
-        const imgSnap = await getDocs(collection(db, "invitations", id, "configImages"));
-        for (const d of imgSnap.docs) refs.push(d.ref as never);
+        const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog"];
+        for (const name of SUB_COLLECTIONS) {
+          const subSnap = await getDocs(collection(db, "invitations", id, name));
+          for (const d of subSnap.docs) refs.push(d.ref as never);
+        }
         const tokenSnap = await getDocs(query(collection(db, "setupTokens"), where("inviteToken", "==", id)));
         for (const d of tokenSnap.docs) refs.push(d.ref as never);
         refs.push(doc(db, "rsvpResponses", id) as never);

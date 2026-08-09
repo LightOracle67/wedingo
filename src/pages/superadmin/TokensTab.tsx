@@ -17,20 +17,32 @@ import { hashSetupToken } from "../../lib/setup-token";
 
 const TokensTab = memo(function TokensTab() {
   const { t } = useTranslation();
+  // Tokens LEGACY: invitaciones con el campo `_activeSetupToken` (formato
+  // anterior a v2.95.22). Los nuevos viven en setupTokens/{hash}.
   const [tokens, setTokens] = useState<Array<{ id: string; activeToken: string }>>([]);
+  // Tokens NUEVOS: registros setupTokens/{hash} → { inviteToken }.
+  const [hashedTokens, setHashedTokens] = useState<Array<{ hash: string; inviteToken: string }>>([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
   const loadTokens = useCallback(async () => {
     try {
-      const q = query(collection(db, "invitations"), where("_activeSetupToken", "!=", ""));
-      const snap = await getDocs(q);
-      const list = snap.docs.map((d: { id: string; data: () => { _activeSetupToken?: string } }) => ({
+      const [legacySnap, hashSnap] = await Promise.all([
+        getDocs(query(collection(db, "invitations"), where("_activeSetupToken", "!=", ""))),
+        // list en setupTokens es solo-superadmin (reglas): aquí se ejecuta con sesión.
+        getDocs(collection(db, "setupTokens")),
+      ]);
+      const legacy = legacySnap.docs.map((d: { id: string; data: () => { _activeSetupToken?: string } }) => ({
         id: d.id,
         activeToken: d.data()._activeSetupToken || "",
       }));
-      setTokens(list);
+      const hashed = hashSnap.docs.map((d) => ({
+        hash: d.id,
+        inviteToken: String(d.data().inviteToken || ""),
+      }));
+      setTokens(legacy);
+      setHashedTokens(hashed);
     } catch {
       setError(t("superadmin.tokenLoadError"));
     } finally {
@@ -115,6 +127,24 @@ const TokensTab = memo(function TokensTab() {
     [loadTokens, t],
   );
 
+  /** Revoca un token NUEVO (setupTokens/{hash}): al borrar el registro, la
+   *  regla de sesión deja de aceptar ese hash (prueba de conocimiento). */
+  const handleRevokeHashed = useCallback(
+    async (hash: string) => {
+      if (!window.confirm(t("superadmin.revokeConfirm"))) return;
+      setError("");
+      setMessage("");
+      try {
+        await deleteDoc(doc(db, "setupTokens", hash));
+        setMessage(t("superadmin.tokenRevoked"));
+        await loadTokens();
+      } catch {
+        setError(t("superadmin.tokenRevokeError"));
+      }
+    },
+    [loadTokens, t],
+  );
+
   if (loading) {
     return (
       <p className="setup-subtitle" style={{ textAlign: "center" }}>
@@ -127,7 +157,7 @@ const TokensTab = memo(function TokensTab() {
     <div>
       <div className="setup-token-card" style={{ marginBottom: "1rem" }}>
         <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.9rem" }}>
-          {t("superadmin.tokensStats", { total: tokens.length, used: 0, available: tokens.length })}
+          {t("superadmin.tokensStats", { total: tokens.length + hashedTokens.length, used: 0, available: tokens.length + hashedTokens.length })}
         </p>
       </div>
 
@@ -137,7 +167,7 @@ const TokensTab = memo(function TokensTab() {
         </button>
       </div>
 
-      {tokens.length === 0 ? (
+      {tokens.length === 0 && hashedTokens.length === 0 ? (
         <div className="setup-token-card" style={{ padding: "2rem", textAlign: "center" }}>
           <p className="setup-help" style={{ margin: 0, fontSize: "0.9rem" }}>
             {t("superadmin.noTokens")}
@@ -156,7 +186,7 @@ const TokensTab = memo(function TokensTab() {
                   {token.id}
                 </p>
                 <p className="admin-text-sm" style={{ margin: "0.2rem 0 0", color: "var(--setup-muted)" }}>
-                  {t("superadmin.statusAvailable")}
+                  {t("superadmin.statusLegacy")}
                 </p>
               </div>
               <div style={{ display: "flex", gap: "0.4rem", alignItems: "center" }}>
@@ -173,6 +203,33 @@ const TokensTab = memo(function TokensTab() {
                   type="button"
                   style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem", borderColor: "#f6c7c7", color: "#f6c7c7" }}
                   onClick={() => handleRevoke(token.id)}
+                >
+                  {t("superadmin.revokeButton")}
+                </button>
+              </div>
+            </div>
+          ))}
+
+          {hashedTokens.map((tk: { hash: string; inviteToken: string }) => (
+            <div
+              key={tk.hash}
+              className="setup-token-card admin-flex admin-flex--between admin-pad-sm"
+              style={{ gap: "0.5rem" }}
+            >
+              <div className="admin-token-card-content">
+                <p className="admin-text-mono" style={{ margin: 0, color: "var(--setup-title)" }}>
+                  {tk.hash.slice(0, 12)}…
+                </p>
+                <p className="admin-text-sm" style={{ margin: "0.2rem 0 0", color: "var(--setup-muted)" }}>
+                  {t("superadmin.hashForInvitation", { token: tk.inviteToken })}
+                </p>
+              </div>
+              <div style={{ display: "flex", gap: "0.4rem", alignItems: "center" }}>
+                <button
+                  className="setup-button setup-button--ghost"
+                  type="button"
+                  style={{ padding: "0.3rem 0.7rem", fontSize: "0.8rem", borderColor: "#f6c7c7", color: "#f6c7c7" }}
+                  onClick={() => handleRevokeHashed(tk.hash)}
                 >
                   {t("superadmin.revokeButton")}
                 </button>
