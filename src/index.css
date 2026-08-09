@@ -1790,23 +1790,10 @@ h6 {
     transform: perspective(1200px) translateY(76px) scale(0.94) rotateX(9deg);
     filter: blur(12px) brightness(0.92);
   }
-  100% {
+   100% {
     opacity: 1;
     transform: perspective(1200px) translateY(0) scale(1) rotateX(0deg);
     filter: blur(0) brightness(1);
-  }
-}
-
-@keyframes story-card-leave {
-  0% {
-    opacity: 1;
-    transform: perspective(1200px) translateY(0) scale(1) rotateX(0deg);
-    filter: blur(0) brightness(1);
-  }
-  100% {
-    opacity: 0;
-    transform: perspective(1200px) translateY(-40px) scale(0.96) rotateX(-6deg);
-    filter: blur(12px) brightness(0.82);
   }
 }
 
@@ -1823,40 +1810,46 @@ h6 {
   }
 }
 
-@keyframes story-fade-down {
+@keyframes story-fade-up {
   0% {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(8px);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0);
   }
-  100% {
-    opacity: 0;
-    transform: translateY(-28px);
-    filter: blur(8px);
-  }
 }
 
-/* Estado oculto persistente: la card queda en su posición inicial (pre-entrada)
-   para que la animación de entrada arranque sin salto. visibility:hidden
-   retira la sección del orden de tabulación (WCAG: sin foco en invisibles). */
-.story-section--is-hidden {
-  visibility: hidden;
-}
-.story-section--is-hidden .story-card-wrap,
-.story-section--is-hidden .story-card {
+/* Contenido oculto hasta centrarse: los elementos de una sección no se
+   muestran hasta que la sección llega al CENTRO EXACTO del viewport, donde
+   ejecutan su animación de entrada escalonada (.story-section--is-enter). La
+   card (caja con fondo y borde) sí se ve, desvanecida por el progreso de
+   scroll (estilos inline aplicados por useStoryNavigation). */
+.story-section:not(.story-section--is-enter) .story-eyebrow,
+.story-section:not(.story-section--is-enter) .story-title,
+.story-section:not(.story-section--is-enter) .story-copy,
+.story-section:not(.story-section--is-enter) .story-note,
+.story-section:not(.story-section--is-enter) .story-divider,
+.story-section:not(.story-section--is-enter) .story-map,
+.story-section:not(.story-section--is-enter) .story-calendar-actions,
+.story-section:not(.story-section--is-enter) .story-map__actions,
+.story-section:not(.story-section--is-enter) .story-card--rsvp .rsvp-form,
+.story-section:not(.story-section--is-enter) .story-card--hero .mx-auto,
+.story-section:not(.story-section--is-enter) .story-card--hero .mt-6 {
   opacity: 0;
-  transform: perspective(1200px) translateY(76px) scale(0.94) rotateX(9deg);
-  filter: blur(12px) brightness(0.92);
 }
 
-/* Entrada: solo la caja (.story-card-wrap) anima con el efecto 3D; el
-   .story-card (contenido) la acompaña porque está dentro (animar ambos
-   acumularía el desplazamiento). Los elementos internos entran escalonados
-   con un stagger largo y elegante. */
-.story-section--is-enter .story-card-wrap {
+/* Entrada 3D de la card de la PRIMERA sección al abrir el sobre (is-reveal):
+   efecto 3D + blur inicial, UNA única vez. El resto de secciones se revelan
+   con el progreso de scroll (inline), sin animación temporal. */
+.story-section--is-reveal .story-card-wrap {
   animation: story-card-enter 1400ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Stagger de los elementos internos al alcanzar el centro exacto. */
 .story-section--is-enter .story-eyebrow {
   animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 150ms both;
 }
@@ -1883,21 +1876,9 @@ h6 {
   animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 680ms both;
 }
 
-/* Salida GRADUAL: al hacer scroll, la sección que se abandona se desvanece
-   de forma prolongada (fade + escala + blur) mientras la siguiente entra. */
-.story-section--is-leave .story-card-wrap {
-  animation: story-card-leave 1100ms cubic-bezier(0.4, 0, 0.2, 1) both;
-}
-
-.story-section--is-leave .story-eyebrow,
-.story-section--is-leave .story-title,
-.story-section--is-leave .story-copy {
-  animation: story-fade-down 1100ms cubic-bezier(0.4, 0, 0.2, 1) both;
-}
-
-/* Usuarios con movimiento reducido: sin entradas/salidas animadas. */
+/* Usuarios con movimiento reducido: sin entradas animadas y contenido visible. */
 @media (prefers-reduced-motion: reduce) {
-  .story-section--is-enter .story-card-wrap,
+  .story-section--is-reveal .story-card-wrap,
   .story-section--is-enter .story-eyebrow,
   .story-section--is-enter .story-title,
   .story-section--is-enter .story-copy,
@@ -1908,13 +1889,7 @@ h6 {
   .story-section--is-enter .story-map__actions,
   .story-section--is-enter .story-card--rsvp .rsvp-form,
   .story-section--is-enter .story-card--hero .mx-auto,
-  .story-section--is-enter .story-card--hero .mt-6,
-  .story-section--is-leave .story-card-wrap,
-  .story-section--is-leave .story-eyebrow,
-  .story-section--is-leave .story-title,
-  .story-section--is-leave .story-copy,
-  .story-section--is-hidden .story-card-wrap,
-  .story-section--is-hidden .story-card {
+  .story-section--is-enter .story-card--hero .mt-6 {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

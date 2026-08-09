@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.66",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: scroll de secciones rediseñado a modelo de PROGRESO — cada sección se desvanece/aparece en proporción a la distancia de su centro al centro del viewport (fundido cruzado entre secciones), las animaciones de entrada de sus elementos se ejecutan al estar en el centro exacto (una sola vez), la entrada 3D solo se aplica a la primera sección al abrir el sobre, y el scroll interior de las cards (overscroll-behavior: contain) no afecta al scroll entre secciones.",
+    ],
+  },
+
+  {
     version: "2.95.65",
     date: "2026-08-09",
     changes: [

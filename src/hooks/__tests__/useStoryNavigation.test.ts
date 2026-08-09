@@ -1,14 +1,63 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
 import { useStoryNavigation } from "../useStoryNavigation";
 
 const SAMPLE_ORDER = ["hero", "details", "info", "story", "gifts", "rsvp"];
+const VH = 800;
+
+function defineViewport(h = VH) {
+  Object.defineProperty(window, "innerHeight", { value: h, configurable: true });
+}
+
+// Crea el DOM: `.app-scene` + secciones con rects mutables (simulan el scroll).
+function setupScene(order: string[], initial: Record<string, number> = {}) {
+  const scene = document.createElement("div");
+  scene.className = "app-scene";
+  document.body.appendChild(scene);
+  const els: Record<string, HTMLElement> = {};
+  const rects: Record<string, { top: number; height: number }> = {};
+  for (const key of order) {
+    const el = document.createElement("section");
+    el.setAttribute("data-story-section", key);
+    const wrap = document.createElement("div");
+    wrap.className = "story-card-wrap";
+    el.appendChild(wrap);
+    rects[key] = { top: initial[key] ?? order.indexOf(key) * VH, height: VH };
+    el.getBoundingClientRect = () =>
+      ({ top: rects[key]!.top, height: rects[key]!.height, bottom: rects[key]!.top + rects[key]!.height } as DOMRect);
+    scene.appendChild(el);
+    els[key] = el;
+  }
+  // Simula scroll: actualiza scrollTop y dispara el listener (rAF síncrono).
+  const scrollTo = (top: number) => {
+    scene.scrollTop = top;
+    act(() => {
+      scene.dispatchEvent(new Event("scroll"));
+    });
+  };
+  return { scene, els, rects, scrollTo };
+}
 
 describe("useStoryNavigation", () => {
   beforeEach(() => {
-    // jsdom no implementa scrollIntoView: se mockea para el control de scroll.
+    defineViewport();
     Element.prototype.scrollIntoView = vi.fn();
+    Element.prototype.scrollTo = vi.fn();
+    // El stub devuelve 0: tras cada onScroll, `raf` vuelve a 0 y el siguiente
+    // evento de scroll vuelve a recalcular el progreso.
+    vi.stubGlobal("requestAnimationFrame", (cb: FrameRequestCallback) => {
+      cb(0);
+      return 0;
+    });
+    vi.stubGlobal("cancelAnimationFrame", vi.fn());
+    document.body.innerHTML = "";
   });
+
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    document.body.innerHTML = "";
+  });
+
   it("returns expected object shape", () => {
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
     expect(result.current).toHaveProperty("getSectionStyle");
@@ -35,358 +84,121 @@ describe("useStoryNavigation", () => {
     expect(cls).toContain("story-section--hero");
   });
 
-  it("getSectionClassName handles empty key gracefully", () => {
+  it("marks centered and active the section at the exact center (reveal)", () => {
+    // El hero ocupa el viewport completo y está centrado desde el inicio.
+    setupScene(SAMPLE_ORDER);
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    const cls = result.current.getSectionClassName("");
-    expect(cls).toContain("story-section");
-    expect(cls).toContain("story-section--");
+    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-enter");
+    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-active");
   });
 
-  it("marks the active section with --is-active via IntersectionObserver", async () => {
-    // Simula un IntersectionObserver que reporta la sección "details" visible.
-    let observerCallback: IntersectionObserverCallback | null = null;
-    class FakeIO {
-      constructor(cb: IntersectionObserverCallback) {
-        observerCallback = cb;
-      }
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    const el = document.createElement("div");
-    el.setAttribute("data-story-section", "details");
-    document.body.appendChild(el);
-
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    await vi.waitFor(() => {
-      expect(observerCallback).not.toBeNull();
-    });
-    // Dispara el callback con "details" visible.
-    act(() => {
-      observerCallback!(
-        [{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry],
-        {} as IntersectionObserver,
-      );
-    });
-    expect(result.current.getSectionClassName("details")).toContain("story-section--is-active");
-    expect(result.current.getSectionClassName("details")).toContain("story-section--is-active");
-    el.remove();
+  it("fades a section proportionally to its distance from the center", () => {
+    const { els, rects, scrollTo } = setupScene(["hero"]);
+    const { result } = renderHook(() => useStoryNavigation(["hero"]));
+    const wrap = els["hero"]!.querySelector<HTMLElement>(".story-card-wrap")!;
+    // Centrada → opacidad 1.
+    expect(parseFloat(wrap.style.opacity)).toBe(1);
+    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-enter");
+    // A media pantalla del centro (dist = VH/2) → 50% de opacidad.
+    rects["hero"]!.top = VH / 2;
+    scrollTo(0);
+    expect(parseFloat(wrap.style.opacity)).toBeCloseTo(0.5, 1);
+    // A una pantalla del centro → invisible y no enfocable (visibility hidden).
+    rects["hero"]!.top = VH;
+    scrollTo(0);
+    expect(parseFloat(wrap.style.opacity)).toBe(0);
+    expect(els["hero"]!.style.visibility).toBe("hidden");
   });
 
-  it("does nothing when IntersectionObserver is unavailable", () => {
-    // Sin IO (SSR/agentes antiguos) el hook no crashea y no observa nada.
-    const original = (globalThis as Record<string, unknown>).IntersectionObserver;
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: undefined, configurable: true });
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    expect(result.current.getSectionClassName(SAMPLE_ORDER[0]!)).toContain("story-section--is-active");
-    if (original !== undefined) {
-      Object.defineProperty(globalThis, "IntersectionObserver", { value: original, configurable: true });
-    }
+  it("runs the element stagger ONCE when crossing the exact center", () => {
+    const { els, rects, scrollTo } = setupScene(["hero", "details"]);
+    const { result } = renderHook(() => useStoryNavigation(["hero", "details"]));
+    // "details" fuera (una pantalla abajo) → no centrada.
+    rects["details"]!.top = VH;
+    scrollTo(0);
+    expect(result.current.getSectionClassName("details")).not.toContain("story-section--is-enter");
+    // Cruza el centro (de abajo hacia arriba) → stagger.
+    rects["details"]!.top = 0;
+    scrollTo(0);
+    expect(result.current.getSectionClassName("details")).toContain("story-section--is-enter");
+    // Oscilación: se va por encima del centro y vuelve → NO se re-ejecuta.
+    rects["details"]!.top = -VH;
+    scrollTo(0);
+    rects["details"]!.top = 0;
+    scrollTo(0);
+    expect(result.current.getSectionClassName("details")).toContain("story-section--is-enter");
+    expect(els["details"]!).toBeDefined();
+  });
+
+  it("reveal mode enters the first section (is-enter + is-reveal) when enabled", async () => {
+    setupScene(SAMPLE_ORDER);
+    const { result, rerender } = renderHook(({ enabled }) => useStoryNavigation(SAMPLE_ORDER, { enabled }), {
+      initialProps: { enabled: false },
+    });
+    // Con el sobre cerrado no hay animación de entrada.
+    expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-enter");
+    expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-reveal");
+    rerender({ enabled: true });
+    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-enter");
+    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-reveal");
+    // La entrada 3D es transitoria: se quita tras REVEAL_MS (1500ms).
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 1550));
+    });
+    expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-reveal");
+    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-enter");
+  });
+
+  it("reduced motion shows everything centered without reveal", () => {
+    const { els } = setupScene(SAMPLE_ORDER);
+    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER, { reducedMotion: true }));
+    const wrap = els["hero"]!.querySelector<HTMLElement>(".story-card-wrap")!;
+    expect(wrap.style.opacity).toBe("1");
+    expect(wrap.style.transform).toBe("none");
+    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-enter");
+    expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-reveal");
   });
 
   it("does nothing when there are no story sections in the DOM", () => {
-    class FakeIO {
-      constructor() {}
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    // Sin elementos [data-story-section] el hook no crashea; el MutationObserver
-    // sigue activo para observar las secciones lazy que monten después.
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
     expect(result.current.getSectionClassName(SAMPLE_ORDER[0]!)).toContain("story-section--is-active");
     expect(() => renderHook(() => useStoryNavigation(SAMPLE_ORDER))).not.toThrow();
   });
 
-  it("boot does not animate the section visible on first paint (anti-parpadeo)", async () => {
-    // Primer arranque: la sección ya visible se marca "active" SIN la clase
-    // de entrada, para que recargar o restaurar el scroll no parpadee.
-    let cb: IntersectionObserverCallback | null = null;
-    class FakeIO {
-      constructor(c: IntersectionObserverCallback) {
-        cb = c;
-      }
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    const el = document.createElement("div");
-    el.setAttribute("data-story-section", "details");
-    document.body.appendChild(el);
-
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    await vi.waitFor(() => {
-      expect(cb).not.toBeNull();
-    });
-    act(() => {
-      cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
-    });
-    expect(result.current.getSectionClassName("details")).toContain("story-section--is-active");
-    expect(result.current.getSectionClassName("details")).not.toContain("story-section--is-enter");
-    el.remove();
+  it("caches lazy sections added to the DOM after mount", async () => {
+    const { scene, els, rects, scrollTo } = setupScene(["hero"]);
+    const { result } = renderHook(() => useStoryNavigation(["hero", "gallery"]));
+    // Se añade la sección lazy "gallery" tras el montaje.
+    const g = document.createElement("section");
+    g.setAttribute("data-story-section", "gallery");
+    const wrap = document.createElement("div");
+    wrap.className = "story-card-wrap";
+    g.appendChild(wrap);
+    rects["gallery"]! = { top: VH, height: VH };
+    const galleryRect = rects["gallery"]!;
+    g.getBoundingClientRect = () =>
+      ({ top: galleryRect.top, height: galleryRect.height, bottom: galleryRect.top + galleryRect.height } as DOMRect);
+    scene.appendChild(g);
+    els["gallery"]! = g;
+    // Espera a que el MutationObserver la cachee, luego un scroll la evalúa.
+    await new Promise((r) => setTimeout(r, 0));
+    scrollTo(0);
+    expect(els["gallery"]!.style.visibility).toBe("hidden");
+    expect(result.current.getSectionClassName("gallery")).toContain("story-section");
   });
 
-  it("animates the entry when a section becomes visible by scroll", async () => {
-    let cb: IntersectionObserverCallback | null = null;
-    class FakeIO {
-      constructor(c: IntersectionObserverCallback) {
-        cb = c;
-      }
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    const el = document.createElement("div");
-    el.setAttribute("data-story-section", "gifts");
-    document.body.appendChild(el);
-
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    await vi.waitFor(() => {
-      expect(cb).not.toBeNull();
-    });
-    // Primer callback (boot): no visible → hidden.
-    act(() => {
-      cb!([{ isIntersecting: false, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
-    });
-    // Segundo callback (scroll): visible → entering.
-    act(() => {
-      cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
-    });
-    expect(result.current.getSectionClassName("gifts")).toContain("story-section--is-enter");
-    // Al terminar la entrada (900ms) pasa a active.
-    await act(async () => {
-      await new Promise((r) => setTimeout(r, 1650));
-    });
-    expect(result.current.getSectionClassName("gifts")).toContain("story-section--is-active");
-    expect(result.current.getSectionClassName("gifts")).not.toContain("story-section--is-enter");
-    el.remove();
-  });
-
-  it("animates the exit when a section leaves the viewport", async () => {
-    let cb: IntersectionObserverCallback | null = null;
-    class FakeIO {
-      constructor(c: IntersectionObserverCallback) {
-        cb = c;
-      }
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    const el = document.createElement("div");
-    el.setAttribute("data-story-section", "info");
-    document.body.appendChild(el);
-
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    await vi.waitFor(() => {
-      expect(cb).not.toBeNull();
-    });
-    // Boot: visible → active.
-    act(() => {
-      cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
-    });
-    expect(result.current.getSectionClassName("info")).toContain("story-section--is-active");
-    // Sale del viewport → leaving.
-    act(() => {
-      cb!([{ isIntersecting: false, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
-    });
-    expect(result.current.getSectionClassName("info")).toContain("story-section--is-leave");
-    // Tras la salida (1150ms) vuelve a hidden.
-    await act(async () => {
-      await new Promise((r) => setTimeout(r, 1250));
-    });
-    expect(result.current.getSectionClassName("info")).not.toContain("story-section--is-leave");
-    el.remove();
-  });
-
-  it("does not re-trigger the entry on a scroll micro-oscillation", async () => {
-    // Si la sección baja del umbral de entrada pero sigue visible (entre 0.15
-    // y 0.7) y luego sube, NO debe salir y volver a entrar (la animación se
-    // ejecutaría 2 veces). Se mantiene activa sin animar de nuevo.
-    let cb: IntersectionObserverCallback | null = null;
-    class FakeIO {
-      constructor(c: IntersectionObserverCallback) {
-        cb = c;
-      }
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    const el = document.createElement("div");
-    el.setAttribute("data-story-section", "rsvp");
-    el.style.height = "800px";
-    document.body.appendChild(el);
-
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    await vi.waitFor(() => {
-      expect(cb).not.toBeNull();
-    });
-    act(() => {
-      cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
-    });
-    expect(result.current.getSectionClassName("rsvp")).toContain("story-section--is-active");
-    // Micro-oscilación: ratio 0.5 (baja del 70% pero sigue visible).
-    act(() => {
-      cb!(
-        [{ isIntersecting: false, intersectionRatio: 0.5, target: el } as unknown as IntersectionObserverEntry],
-        {} as IntersectionObserver,
-      );
-    });
-    expect(result.current.getSectionClassName("rsvp")).not.toContain("story-section--is-leave");
-    // Vuelve a estar totalmente visible: sigue activa, sin nueva entrada.
-    act(() => {
-      cb!(
-        [{ isIntersecting: true, intersectionRatio: 1, target: el } as unknown as IntersectionObserverEntry],
-        {} as IntersectionObserver,
-      );
-    });
-    expect(result.current.getSectionClassName("rsvp")).toContain("story-section--is-active");
-    expect(result.current.getSectionClassName("rsvp")).not.toContain("story-section--is-enter");
-    el.remove();
-  });
-
-  it("skips intermediate stages with reduced motion", async () => {
-    let cb: IntersectionObserverCallback | null = null;
-    class FakeIO {
-      constructor(c: IntersectionObserverCallback) {
-        cb = c;
-      }
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    const el = document.createElement("div");
-    el.setAttribute("data-story-section", "hero");
-    document.body.appendChild(el);
-
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER, { reducedMotion: true }));
-    await vi.waitFor(() => {
-      expect(cb).not.toBeNull();
-    });
-    act(() => {
-      cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
-    });
-    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-active");
-    expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-enter");
-    act(() => {
-      cb!([{ isIntersecting: false, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
-    });
-    expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-leave");
-    el.remove();
-  });
-
-  it("does not observe while disabled (envelope closed) and reveals on enable", async () => {
-    // Con enabled=false no se crea el observer: el contenido queda quieto
-    // detrás del sobre. Al habilitarse (sobre abierto) la sección visible
-    // hace su ENTRADA animada (modo reveal), no un boot estático.
-    let cb: IntersectionObserverCallback | null = null;
-    class FakeIO {
-      constructor(c: IntersectionObserverCallback) {
-        cb = c;
-      }
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    const el = document.createElement("div");
-    el.setAttribute("data-story-section", "hero");
-    document.body.appendChild(el);
-
-    const { result, rerender } = renderHook(({ enabled }) => useStoryNavigation(SAMPLE_ORDER, { enabled }), {
-      initialProps: { enabled: false },
-    });
-    // Con el sobre cerrado (enabled=false) no hay observer ni animaciones.
-    expect(cb).toBeNull();
-    rerender({ enabled: true });
-    // El hook recrea el observer; el primer callback usa el modo reveal.
-    await vi.waitFor(() => {
-      expect(cb).not.toBeNull();
-    });
-    await act(async () => {
-      cb!([{ isIntersecting: true, target: el } as unknown as IntersectionObserverEntry], {} as IntersectionObserver);
-    });
-    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-enter");
-    el.remove();
-  });
-
-  it("observes lazy sections added to the DOM after mount", async () => {
-    // El MutationObserver re-observa las secciones que montan después (lazy).
-    const observed: Element[] = [];
-    class FakeIO {
-      constructor(cb: IntersectionObserverCallback) {
-        // Se guarda el callback para dispararlo manualmente.
-        (FakeIO as unknown as { cb: IntersectionObserverCallback }).cb = cb;
-      }
-      observe(el: Element) {
-        observed.push(el);
-      }
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
+  it("deja el scroll libre (no intercepta rueda ni teclado)", () => {
+    setupScene(SAMPLE_ORDER);
     renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    // Se añade una sección tras el montaje (simula el Suspense lazy).
-    const el = document.createElement("div");
-    el.setAttribute("data-story-section", "gallery");
-    document.body.appendChild(el);
-    await vi.waitFor(() => {
-      expect(observed.some((o) => o === el)).toBe(true);
-    });
-    el.remove();
-  });
-
-  it("still observes initial sections when MutationObserver is unavailable", () => {
-    const originalMO = (globalThis as Record<string, unknown>).MutationObserver;
-    Object.defineProperty(globalThis, "MutationObserver", { value: undefined, configurable: true });
-    const observed: Element[] = [];
-    class FakeIO {
-      observe(el: Element) {
-        observed.push(el);
-      }
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    const el = document.createElement("div");
-    el.setAttribute("data-story-section", "hero");
-    document.body.appendChild(el);
-
-    renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    expect(observed.some((o) => o === el)).toBe(true);
-    el.remove();
-    if (originalMO !== undefined) {
-      Object.defineProperty(globalThis, "MutationObserver", { value: originalMO, configurable: true });
-    }
-  });
-
-  it("deja el scroll libre (no intercepta rueda ni teclado)", async () => {
-    class FakeIO {
-      constructor() {}
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    SAMPLE_ORDER.forEach((key) => {
-      const el = document.createElement("section");
-      el.setAttribute("data-story-section", key);
-      document.body.appendChild(el);
-    });
-
-    const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    // Un gesto de rueda NO debe interceptarse: el navegador hace scroll libre.
     act(() => {
       const e = new WheelEvent("wheel", { deltaY: 120, cancelable: true });
       Object.defineProperty(e, "preventDefault", { value: vi.fn(), configurable: true });
       window.dispatchEvent(e);
     });
     expect(Element.prototype.scrollIntoView).not.toHaveBeenCalled();
-    // Tampoco se intercepta el teclado (flechas/PgDn) para navegar.
     act(() => {
       window.dispatchEvent(new KeyboardEvent("keydown", { key: "PageDown", cancelable: true }));
     });
     expect(Element.prototype.scrollIntoView).not.toHaveBeenCalled();
-    // El hook sigue devolviendo las clases de las secciones.
-    expect(result.current.getSectionClassName("hero")).toContain("story-section");
-    SAMPLE_ORDER.forEach((key) => {
-      document.body.querySelector(`[data-story-section='${key}']`)?.remove();
-    });
   });
 });
-
