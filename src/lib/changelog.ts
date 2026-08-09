@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.67",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: ordenación por columnas en TODAS las tablas de la app (asistencias del admin, invitaciones y registro de cumplimiento del superadmin) — al hacer clic en el encabezado de una columna cicla asc → desc → sin orden; cada columna declara su tipo (texto/número/fecha/booleano) y los valores vacíos quedan siempre al final; sistema reutilizable (useColumnSort + SortableTh) con indicador ▲/▼ y aria-sort.",
+    ],
+  },
+
+  {
     version: "2.95.66",
     date: "2026-08-09",
     changes: [

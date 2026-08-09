@@ -5,6 +5,8 @@ import { db, INVITATIONS_COLLECTION_REF, RSVP_RESPONSES_GROUP, rsvpByInviteRef }
 import { useToast } from "../../hooks/useToast";
 import { downloadJson, downloadText } from "../../lib/file-utils";
 import { logAudit } from "../../lib/audit";
+import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
+import { SortableTh } from "../../components/SortableTh";
 import InvitationDetailModal from "./InvitationDetailModal";
 
 interface InvitationData {
@@ -529,6 +531,35 @@ export default function DataTab() {
 
   // ── Render ────────────────────────────────────────────
 
+  // Ordenación por columnas de la tabla de invitaciones (checkbox y acciones
+  // no). Se calcula SIEMPRE (antes del early return de loading) para no violar
+  // las reglas de los hooks.
+  const sortColumns = useMemo<SortableColumn<InvitationData>[]>(
+    () => [
+      { key: "token", type: "string", getValue: (r: InvitationData) => r.id },
+      {
+        key: "names",
+        type: "string",
+        getValue: (r: InvitationData) => `${r.firstName} ${r.secondName} ${r.adminUsername}`,
+      },
+      {
+        key: "date",
+        type: "date",
+        // "dd/mm/yyyy" → timestamp comparable cronológicamente.
+        getValue: (r: InvitationData) => {
+          const m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(r.weddingDate || "");
+          return m ? new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1])).getTime() : r.weddingDate;
+        },
+      },
+      { key: "rsvps", type: "number", getValue: (r: InvitationData) => r.rsvpCount },
+      { key: "visits", type: "number", getValue: (r: InvitationData) => r.visits },
+      { key: "session", type: "boolean", getValue: (r: InvitationData) => r.hasSession },
+      { key: "activity", type: "date", getValue: (r: InvitationData) => r.lastActivity },
+    ],
+    [],
+  );
+  const { sorted: sortedInvitations, toggleSort, getIndicator } = useColumnSort(invitations, sortColumns);
+
   if (loading) {
     return (
       <div className="data-tab-loading">
@@ -703,18 +734,32 @@ export default function DataTab() {
                   aria-label={t("superadmin.data.selectAll")}
                 />
               </th>
-              <th scope="col" className="data-tab-th">{t("superadmin.data.colToken")}</th>
-              <th scope="col" className="data-tab-th">{t("superadmin.data.colNames")}</th>
-              <th scope="col" className="data-tab-th">{t("superadmin.data.colDate")}</th>
-              <th scope="col" className="data-tab-th">{t("superadmin.data.colRsvps")}</th>
-              <th scope="col" className="data-tab-th">{t("superadmin.data.colVisits")}</th>
-              <th scope="col" className="data-tab-th">{t("superadmin.data.colSession")}</th>
-              <th scope="col" className="data-tab-th">{t("superadmin.data.colActivity")}</th>
+              <SortableTh columnKey="token" order={getIndicator("token")} onSort={toggleSort} className="data-tab-th">
+                {t("superadmin.data.colToken")}
+              </SortableTh>
+              <SortableTh columnKey="names" order={getIndicator("names")} onSort={toggleSort} className="data-tab-th">
+                {t("superadmin.data.colNames")}
+              </SortableTh>
+              <SortableTh columnKey="date" order={getIndicator("date")} onSort={toggleSort} className="data-tab-th">
+                {t("superadmin.data.colDate")}
+              </SortableTh>
+              <SortableTh columnKey="rsvps" order={getIndicator("rsvps")} onSort={toggleSort} className="data-tab-th">
+                {t("superadmin.data.colRsvps")}
+              </SortableTh>
+              <SortableTh columnKey="visits" order={getIndicator("visits")} onSort={toggleSort} className="data-tab-th">
+                {t("superadmin.data.colVisits")}
+              </SortableTh>
+              <SortableTh columnKey="session" order={getIndicator("session")} onSort={toggleSort} className="data-tab-th">
+                {t("superadmin.data.colSession")}
+              </SortableTh>
+              <SortableTh columnKey="activity" order={getIndicator("activity")} onSort={toggleSort} className="data-tab-th">
+                {t("superadmin.data.colActivity")}
+              </SortableTh>
               <th scope="col" className="data-tab-th">{t("superadmin.data.colActions")}</th>
             </tr>
           </thead>
           <tbody>
-            {invitations.map((inv) => (
+            {sortedInvitations.map((inv) => (
               <tr key={inv.id} className="data-tab-tr" style={{ opacity: emptyIds.has(inv.id) ? 0.7 : 1 }}>
                 <td className="data-tab-td">
                   <input

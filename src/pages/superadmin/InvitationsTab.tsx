@@ -1,14 +1,24 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { doc, getDocs, writeBatch, collection, query, where } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
 import { searchInvitations, formatBytes } from "../../lib/superadmin-utils";
 import { useTranslation } from "react-i18next";
+import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
+import { SortableTh } from "../../components/SortableTh";
+
+interface InvitationRow {
+  id: string;
+  theme?: string;
+  weddingDay?: string;
+  weddingMonth?: string;
+  weddingYear?: string;
+  adminUsername?: string;
+  tags?: string;
+}
 
 const InvitationsTab = memo(function InvitationsTab() {
   const { t } = useTranslation();
-  const [invitations, setInvitations] = useState<
-    Array<{ id: string; theme?: string; weddingDay?: string; weddingMonth?: string; weddingYear?: string; adminUsername?: string }>
-  >([]);
+  const [invitations, setInvitations] = useState<InvitationRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
@@ -94,19 +104,28 @@ const InvitationsTab = memo(function InvitationsTab() {
     }
   }, [t]);
 
-  const filtered = searchInvitations(invitations, search) as Array<{
-    id: string;
-    theme?: string;
-    weddingDay?: string;
-    weddingMonth?: string;
-    weddingYear?: string;
-    adminUsername?: string;
-    tags?: string;
-  }>;
+  const filtered = searchInvitations(invitations as unknown as Record<string, unknown>[], search) as unknown as InvitationRow[];
   // F3-5: filtro por etiquetas del superadmin.
   const filteredByTag = tagFilter
     ? filtered.filter((inv) => (inv.tags || "").toLowerCase().includes(tagFilter.toLowerCase()))
     : filtered;
+
+  // Ordenación por columnas: Token, Tema, Fecha y Usuario (Acciones no).
+  const sortColumns = useMemo<SortableColumn<InvitationRow>[]>(
+    () => [
+      { key: "token", type: "string", getValue: (r: InvitationRow) => r.id },
+      { key: "theme", type: "string", getValue: (r: InvitationRow) => r.theme },
+      {
+        key: "date",
+        type: "string",
+        getValue: (r: InvitationRow) =>
+          r.weddingDay && r.weddingMonth && r.weddingYear ? `${r.weddingDay} ${r.weddingMonth} ${r.weddingYear}` : "",
+      },
+      { key: "user", type: "string", getValue: (r: InvitationRow) => r.adminUsername },
+    ],
+    [],
+  );
+  const { sorted: sortedInvitations, toggleSort, getIndicator } = useColumnSort(filteredByTag, sortColumns);
   const totalBytes = invitations.reduce((acc, d) => {
     try {
       return acc + new Blob([JSON.stringify(d)]).size;
@@ -178,23 +197,24 @@ const InvitationsTab = memo(function InvitationsTab() {
             <table className="admin-table">
               <thead>
                 <tr>
-                  <th>{t("superadmin.tableToken")}</th>
-                  <th>{t("superadmin.tableTheme")}</th>
-                  <th>{t("superadmin.tableDate")}</th>
-                  <th>{t("superadmin.tableUser")}</th>
+                  <SortableTh columnKey="token" order={getIndicator("token")} onSort={toggleSort}>
+                    {t("superadmin.tableToken")}
+                  </SortableTh>
+                  <SortableTh columnKey="theme" order={getIndicator("theme")} onSort={toggleSort}>
+                    {t("superadmin.tableTheme")}
+                  </SortableTh>
+                  <SortableTh columnKey="date" order={getIndicator("date")} onSort={toggleSort}>
+                    {t("superadmin.tableDate")}
+                  </SortableTh>
+                  <SortableTh columnKey="user" order={getIndicator("user")} onSort={toggleSort}>
+                    {t("superadmin.tableUser")}
+                  </SortableTh>
                   <th>{t("superadmin.tableActions")}</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredByTag.map(
-                  (inv: {
-                    id: string;
-                    theme?: string;
-                    weddingDay?: string;
-                    weddingMonth?: string;
-                    weddingYear?: string;
-                    adminUsername?: string;
-                  }) => (
+                {sortedInvitations.map(
+                  (inv: InvitationRow) => (
                     <tr key={inv.id}>
                       <td style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>{inv.id}</td>
                       <td>{inv.theme || "—"}</td>

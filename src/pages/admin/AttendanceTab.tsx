@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import Pagination from "../../components/Pagination";
 import { useToast } from "../../hooks/useToast";
 import { formatRSVPsForCSV, formatMenuCateringCSV } from "../../lib/admin-utils";
+import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
+import { SortableTh } from "../../components/SortableTh";
 
 interface RsvpEntry {
   id: string;
@@ -161,9 +163,66 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
 
   const filterEntries = filteredEntries || [];
 
-  const totalPages = Math.max(1, Math.ceil(filterEntries.length / pageSize));
+  // Ordenación por columnas de la tabla de asistencias (checkbox no). Cada
+  // columna extrae su valor comparable (texto, número, fecha o booleano).
+  const sortColumns = useMemo<SortableColumn<RsvpEntry>[]>(
+    () => [
+      { key: "name", type: "string", getValue: (e: RsvpEntry) => e.guestName },
+      {
+        key: "accompanies",
+        type: "string",
+        getValue: (e: RsvpEntry) => (e.rsvpType === "companion" ? e.mainGuestName || "" : ""),
+      },
+      { key: "attendance", type: "string", getValue: (e: RsvpEntry) => e.attendance },
+      {
+        key: "menu",
+        type: "string",
+        getValue: (e: RsvpEntry) => {
+          if (e.attendees?.length) {
+            return e.attendees
+              .map((a) => (a.menu ? `${a.name}: ${formatMenuLabel(a.menu, t)}` : ""))
+              .filter(Boolean)
+              .join(", ");
+          }
+          return formatMenuLabel(e.mealChoice || "", t) || "";
+        },
+      },
+      {
+        key: "diet",
+        type: "string",
+        getValue: (e: RsvpEntry) => {
+          if (e.attendees?.length) {
+            return e.attendees.filter((a) => a.allergies?.length).map((a) => `${a.name}: ${a.allergies.join(", ")}`).join(", ");
+          }
+          return e.attendance === "yes" ? getDietaryItems(e.dietaryInfo || "").join(", ") : "";
+        },
+      },
+      {
+        key: "transport",
+        type: "string",
+        getValue: (e: RsvpEntry) =>
+          e.attendance === "yes" ? resolveTransportLabel(e.transportMode || "", e.transportChoice || "", e.transportTime || "") : "",
+      },
+      { key: "birth", type: "date", getValue: (e: RsvpEntry) => e.birthDate || "" },
+      {
+        key: "consents",
+        type: "boolean",
+        getValue: (e: RsvpEntry) => Boolean(e.parentalConsent || e.healthConsent),
+      },
+      {
+        key: "contact",
+        type: "string",
+        getValue: (e: RsvpEntry) => [e.phone, e.email].filter(Boolean).join(" "),
+      },
+      { key: "submittedAt", type: "date", getValue: (e: RsvpEntry) => e.submittedAt },
+    ],
+    [t, resolveTransportLabel],
+  );
+  const { sorted: sortedFilterEntries, toggleSort, getIndicator } = useColumnSort(filterEntries, sortColumns);
+
+  const totalPages = Math.max(1, Math.ceil(sortedFilterEntries.length / pageSize));
   const safePage = Math.min(page, totalPages - 1);
-  const paginated = filterEntries.slice(safePage * pageSize, (safePage + 1) * pageSize);
+  const paginated = sortedFilterEntries.slice(safePage * pageSize, (safePage + 1) * pageSize);
 
   useEffect(() => {
     setPage(0);
@@ -283,36 +342,36 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                       aria-label={t("attendance.selectAll")}
                     />
                   </th>
-                  <th scope="col" style={{ minWidth: "100px" }}>
+                  <SortableTh columnKey="name" order={getIndicator("name")} onSort={toggleSort} style={{ minWidth: "100px" }}>
                     {t("attendance.tableName")}
-                  </th>
-                  <th scope="col" style={{ minWidth: "120px" }}>
+                  </SortableTh>
+                  <SortableTh columnKey="accompanies" order={getIndicator("accompanies")} onSort={toggleSort} style={{ minWidth: "120px" }}>
                     {t("attendance.tableAccompanies")}
-                  </th>
-                  <th scope="col" style={{ minWidth: "70px" }}>
+                  </SortableTh>
+                  <SortableTh columnKey="attendance" order={getIndicator("attendance")} onSort={toggleSort} style={{ minWidth: "70px" }}>
                     {t("attendance.tableAttendance")}
-                  </th>
-                  <th scope="col" style={{ minWidth: "120px" }}>
+                  </SortableTh>
+                  <SortableTh columnKey="menu" order={getIndicator("menu")} onSort={toggleSort} style={{ minWidth: "120px" }}>
                     {t("attendance.tableMenu")}
-                  </th>
-                  <th scope="col" style={{ minWidth: "140px" }}>
+                  </SortableTh>
+                  <SortableTh columnKey="diet" order={getIndicator("diet")} onSort={toggleSort} style={{ minWidth: "140px" }}>
                     {t("attendance.tableDiet")}
-                  </th>
-                  <th scope="col" style={{ minWidth: "120px" }}>
+                  </SortableTh>
+                  <SortableTh columnKey="transport" order={getIndicator("transport")} onSort={toggleSort} style={{ minWidth: "120px" }}>
                     {t("attendance.tableTransport")}
-                  </th>
-                  <th scope="col" style={{ minWidth: "110px" }}>
+                  </SortableTh>
+                  <SortableTh columnKey="birth" order={getIndicator("birth")} onSort={toggleSort} style={{ minWidth: "110px" }}>
                     {t("attendance.tableBirth")}
-                  </th>
-                  <th scope="col" style={{ minWidth: "120px" }}>
+                  </SortableTh>
+                  <SortableTh columnKey="consents" order={getIndicator("consents")} onSort={toggleSort} style={{ minWidth: "120px" }}>
                     {t("attendance.tableConsents")}
-                  </th>
-                  <th scope="col" style={{ minWidth: "120px" }}>
+                  </SortableTh>
+                  <SortableTh columnKey="contact" order={getIndicator("contact")} onSort={toggleSort} style={{ minWidth: "120px" }}>
                     {t("attendance.tableContact")}
-                  </th>
-                  <th scope="col" style={{ minWidth: "120px" }}>
+                  </SortableTh>
+                  <SortableTh columnKey="submittedAt" order={getIndicator("submittedAt")} onSort={toggleSort} style={{ minWidth: "120px" }}>
                     {t("attendance.tableDate")}
-                  </th>
+                  </SortableTh>
                 </tr>
               </thead>
               <tbody>

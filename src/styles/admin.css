@@ -901,6 +901,33 @@ select.setup-input {
   font-size: 0.82rem;
   color: var(--setup-muted);
 }
+/* ── Encabezados ordenables (SortableTh) ── */
+.table-sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-align: start;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.table-sort-btn:hover .table-sort-indicator,
+.table-sort-btn:focus-visible .table-sort-indicator {
+  opacity: 1;
+}
+.table-sort-indicator {
+  font-size: 0.72em;
+  opacity: 0.45;
+  transition: opacity 150ms ease;
+  flex-shrink: 0;
+}
 .admin-badge {
   display: inline-block;
   padding: 0.15rem 0.55rem;
