@@ -1,4 +1,4 @@
-import { memo, useState, useEffect } from "react";
+import { memo, useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppUI } from "../contexts";
 import Modal from "./Modal";
@@ -100,8 +100,23 @@ const CookieConsent = memo(function CookieConsent() {
   };
 
   // El banner debe dar acceso directo a la política de privacidad (GDPR
-  // art. 7.2): abre el LegalModal desde el contexto de UI.
-  const { setLegalModal } = useAppUI();
+  // art. 7.2). Al abrirla se CIERRA este modal (evita que ambos modales se
+  // solapen) y se reabre cuando se cierra la política, sin decidir aún.
+  const { legalModal, setLegalModal } = useAppUI();
+  const wasHiddenForPolicyRef = useRef(false);
+
+  const handlePrivacyClick = () => {
+    wasHiddenForPolicyRef.current = true;
+    setVisible(false);
+    setLegalModal("privacy");
+  };
+
+  useEffect(() => {
+    if (wasHiddenForPolicyRef.current && !legalModal) {
+      wasHiddenForPolicyRef.current = false;
+      setVisible(true);
+    }
+  }, [legalModal]);
 
   if (!visible) return null;
 
@@ -139,7 +154,7 @@ const CookieConsent = memo(function CookieConsent() {
             <button
               type="button"
               className="cookie-consent-policy"
-              onClick={() => setLegalModal("privacy")}
+              onClick={handlePrivacyClick}
             >
               {t("cookie.policyLink")}
             </button>

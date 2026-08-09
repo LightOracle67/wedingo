@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
+import { useState } from "react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -10,8 +11,26 @@ vi.mock("../../lib/sentry", () => ({ enableSentryTracking: vi.fn() }));
 
 vi.mock("../../lib/firebase", () => ({ db: {} }));
 
+// Mock del contexto UI con estado REAL de React: así cambiar legalModal
+// re-renderiza el consumidor (memo) igual que en producción, aunque el
+// componente memo no reciba props nuevas.
+let mockLegalModal = "";
+let mockSetLegalModal: (v: string) => void = () => {};
+
+function useAppUIMock() {
+  const [legal, setLegal] = useState(mockLegalModal);
+  mockSetLegalModal = setLegal;
+  return {
+    legalModal: legal,
+    setLegalModal: (v: string) => {
+      mockLegalModal = v;
+      setLegal(v);
+    },
+  };
+}
+
 vi.mock("../../contexts", () => ({
-  useAppUI: () => ({ setLegalModal: vi.fn() }),
+  useAppUI: useAppUIMock,
 }));
 
 const mockLocalStorage = (() => {
@@ -161,5 +180,19 @@ describe("CookieConsent", () => {
     fireEvent.click(necessaryCheckbox);
     expect(necessaryCheckbox.checked).toBe(true);
     expect(analyticsCheckbox.checked).toBe(analyticsBefore);
+  });
+
+  it("closes when opening the privacy policy and reopens after it closes", () => {
+    render(<CookieConsent />);
+    expect(screen.getByText("cookie.point1")).toBeDefined();
+    // Abre la política: el consentimiento se cierra para que el legal se vea.
+    fireEvent.click(screen.getByRole("button", { name: "cookie.policyLink" }));
+    expect(screen.queryByText("cookie.point1")).toBeNull();
+    expect(mockLegalModal).toBe("privacy");
+    // Se cierra el legal: el consentimiento reaparece sin haber decidido.
+    act(() => {
+      mockSetLegalModal("");
+    });
+    expect(screen.getByText("cookie.point1")).toBeDefined();
   });
 });

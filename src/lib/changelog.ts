@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.39",
+    date: "2026-08-09",
+    changes: [
+      "Al abrir la política de privacidad desde el banner de cookies el banner se cierra (evita que ambos modales se solapen) y se vuelve a mostrar al cerrar la política, sin haber decidido el consentimiento.",
+    ],
+  },
+  {
     version: "2.95.38",
     date: "2026-08-08",
     changes: [
