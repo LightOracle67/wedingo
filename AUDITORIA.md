@@ -205,6 +205,9 @@ Método: 4 auditorías estáticas paralelas (seguridad, accesibilidad, legal int
 - **Fase 4 (8)**: cierre de sesión remota, registro de accesos, previsualización por dispositivo, QR, auto-respuesta, modo presentación, invitado asistido (v2.95.49-50).
 - **Fase 5 (4 viables)**: PDF/imprimir confirmaciones, restauración de backup, auditoría de config (configLog), GC de Storage huérfano (v2.95.50).
 
+- **Lote final (8, v2.95.52)**: panel de detalle de invitación (RSVP+menús, moderación social, galería, configLog, reset, export, import CSV), búsqueda global de invitados (GDPR), tema en bloque, comparador de invitaciones, validador de configuración y fecha de creación.
+
+Con esto queda implementado TODO el lote viable sin backend. Las ~16 que requieren Cloud Functions/servicios externos se mantienen descartadas.
 - **Lote verde/ámbar (13, v2.95.51)**: export CSV de confirmaciones, resumen de menús, columnas de visitas/actividad, filtros por actividad, enlace directo al admin, QR-PNG, copiar enlace e .ics, agenda de próximas bodas, aviso de boda pasada (bloquea RSVP) y traducción con widget de Google (usuario-initiated, disclosed).
 
 **Descartadas definitivamente (~16)** — el plan Spark es permanente (sin migración a Blaze), por lo que las funciones que requieren Cloud Functions o servicios externos NO se implementarán: API/webhooks, backup automático programado, alertas por email, traducción automática, encuesta personalizada, comparador de invitados vs. confirmados, bloqueo geográfico por IP, simulación de reglas Firestore, autoservicio de borrado social (H4), detección de abuso con bloqueo automático y notificaciones de seguridad por email.
