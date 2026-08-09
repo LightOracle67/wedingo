@@ -38,8 +38,11 @@ vi.mock("../../../lib/token-utils", () => ({
   generateInviteToken: () => "AbCdEf1234",
   generateSetupToken: () => "NEW-TOKEN-ABC-1234",
 }));
+const mockValidate = vi.hoisted(() =>
+  vi.fn(() => ({ sanitized: { firstName: "A", secondName: "B" }, hiddenSet: new Set(), errorKey: "" })),
+);
 vi.mock("../../../lib/config-validation", () => ({
-  validateConfigForSave: () => ({ sanitized: { firstName: "A", secondName: "B" }, hiddenSet: new Set(), errorKey: "" }),
+  validateConfigForSave: () => mockValidate(),
 }));
 
 import ManageTab from "../ManageTab";
@@ -95,5 +98,46 @@ describe("ManageTab", () => {
     await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
     expect(mockHashSetupToken).toHaveBeenCalled();
     confirmSpy.mockRestore();
+  });
+
+  it("validates a config JSON (validador de reglas en cliente)", async () => {
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    const editor = await screen.findByLabelText("manage.validatorTitle");
+    fireEvent.change(editor, { target: { value: '{"firstName":"A","secondName":"B"}' } });
+    fireEvent.click(screen.getByText("manage.validatorButton"));
+    await vi.waitFor(() => expect(screen.getByText(/manage.validatorOk/)).toBeInTheDocument());
+  });
+
+  it("flags an invalid config JSON in the validator", async () => {
+    // validateConfigForSave se mockea para que falle en este caso concreto.
+    mockValidate.mockReturnValueOnce({ sanitized: { firstName: "", secondName: "" }, hiddenSet: new Set(), errorKey: "errors.firstNameRequired" });
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    const editor = await screen.findByLabelText("manage.validatorTitle");
+    fireEvent.change(editor, { target: { value: '{}' } });
+    fireEvent.click(screen.getByText("manage.validatorButton"));
+    await vi.waitFor(() => expect(screen.getByText("errors.firstNameRequired")).toBeInTheDocument());
+  });
+
+  it("compares two invitations and lists differences", async () => {
+    mockGetDocs.mockResolvedValue({ docs: [baseInvitation] });
+    mockGetDoc.mockImplementation((_ref: unknown) =>
+      Promise.resolve(
+        _ref === "cmpA"
+          ? { exists: () => true, data: () => ({ firstName: "A", theme: "golden" }) }
+          : { exists: () => true, data: () => ({ firstName: "B", theme: "golden" }) },
+      ),
+    );
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.compareA")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.compareA"), { target: { value: "cmpA" } });
+    fireEvent.change(screen.getByLabelText("manage.compareB"), { target: { value: "cmpB" } });
+    fireEvent.click(screen.getByText("manage.compareButton"));
+    await vi.waitFor(() => expect(screen.getByText(/firstName/)).toBeInTheDocument());
   });
 });

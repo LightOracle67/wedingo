@@ -19,7 +19,7 @@ import { hashSetupToken } from "../../lib/setup-token";
 import { generateInviteToken, generateSetupToken } from "../../lib/token-utils";
 import { validateConfigForSave } from "../../lib/config-validation";
 import { MAX_YEARS_AHEAD, MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
-import { downloadJson } from "../../lib/file-utils";
+import { downloadJson, downloadText } from "../../lib/file-utils";
 
 /** Subcolecciones duplicables entre invitaciones (copiar sección). */
 const CLONABLE_SUBS = ["gallery", "audio", "configImages"] as const;
@@ -266,7 +266,7 @@ const ManageTab = memo(function ManageTab() {
       const hash = await hashSetupToken(newSetup);
       // Se copia la configuración pero NO el bankInfo (cifrado con el token
       // original) ni los campos de sesión/tokens.
-      const { bankInfo: _b, activeSession: _s, sessionExpiresAt: _e, setupTokenHash: _h, ...clone } = docData;
+      const { bankInfo: _b, activeSession: _s, sessionExpiresAt: _e, setupTokenHash: _h, _visits: _v, ...clone } = docData;
       await setDoc(doc(INVITATIONS_COLLECTION_REF, newInviteToken), { ...clone, bankInfo: "", firstName: String(docData.firstName || "") || "Clone", secondName: String(docData.secondName || "") || "Copy" });
       await setDoc(doc(db, "setupTokens", hash), { inviteToken: newInviteToken, createdAt: new Date().toISOString() });
       setNewToken(newInviteToken);
@@ -390,7 +390,7 @@ const ManageTab = memo(function ManageTab() {
     ]
       .filter(Boolean)
       .join("\r\n");
-    downloadJson(`${token}.ics`, ics);
+    downloadText(`${token}.ics`, ics, "text/calendar;charset=utf-8");
     addToast("success", t("manage.icsDownloaded"));
   }, [token, docData, addToast, t]);
 

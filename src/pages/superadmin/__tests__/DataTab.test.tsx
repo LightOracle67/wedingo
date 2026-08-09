@@ -21,6 +21,7 @@ vi.mock("firebase/firestore", () => ({
   writeBatch: (...args: unknown[]) => mockWriteBatch(...args),
   query: vi.fn(() => "query-ref"),
   where: vi.fn(() => "where-ref"),
+  collectionGroup: vi.fn(() => "cg-ref"),
 }));
 
 vi.mock("../../../lib/firebase", () => ({
@@ -37,6 +38,10 @@ vi.mock("../../../hooks/useToast", () => ({
 
 vi.mock("../../../lib/file-utils", () => ({
   downloadJson: (...args: unknown[]) => mockDownloadJson(...args),
+  downloadText: vi.fn(),
+}));
+vi.mock("../InvitationDetailModal", () => ({
+  default: () => <div data-testid="detail-modal" />,
 }));
 
 import DataTab from "../DataTab";
@@ -49,7 +54,7 @@ const docData = (overrides: Record<string, unknown> = {}) => ({
 describe("DataTab", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    mockWriteBatch.mockReturnValue({ delete: vi.fn(), commit: vi.fn() });
+    mockWriteBatch.mockReturnValue({ delete: vi.fn(), update: vi.fn(), set: vi.fn(), commit: vi.fn().mockResolvedValue(undefined) });
   });
 
   it("renders loading state initially", () => {
@@ -554,5 +559,52 @@ describe("DataTab", () => {
     await vi.waitFor(() => {
       expect(mockDownloadJson).toHaveBeenCalled();
     });
+  });
+});
+
+describe("DataTab avanzadas", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({ docs: [docData({ id: "tok1234567", firstName: "Ana", secondName: "Luis", visits: 42, _visits: 42 })] });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+  });
+
+  it("opens the invitation detail modal", async () => {
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("tok1234567")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.data.detailBtn"));
+    expect(screen.getByTestId("detail-modal")).toBeInTheDocument();
+  });
+
+  it("searches a guest by name (PII) via collectionGroup", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) =>
+      ref === "invitations-collection-ref"
+        ? Promise.resolve({ docs: [docData({ id: "tok1234567", firstName: "Ana", secondName: "Luis" })] })
+        : Promise.resolve({
+            docs: [{ data: () => ({ inviteToken: "tok1234567", guestName: "Ana García", attendance: "yes" }) }],
+            size: 1,
+          }),
+    );
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("superadmin.data.piiPlaceholder")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("superadmin.data.piiPlaceholder"), { target: { value: "Ana" } });
+    fireEvent.click(screen.getByText("superadmin.data.piiSearch"));
+    await vi.waitFor(() => expect(screen.getByText(/Ana García/)).toBeInTheDocument());
+  });
+
+  it("applies a bulk theme to selected invitations", async () => {
+    const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(true);
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getAllByRole("checkbox").length).toBeGreaterThan(0));
+    // Selecciona la única invitación mediante el checkbox de cabecera.
+    fireEvent.click(screen.getAllByRole("checkbox")[0]!);
+    fireEvent.change(screen.getByLabelText("superadmin.data.bulkTheme"), { target: { value: "forest" } });
+    fireEvent.click(screen.getByText("superadmin.data.bulkTheme", { exact: false }));
+    await vi.waitFor(() => expect(mockWriteBatch).toHaveBeenCalled());
+    confirmSpy.mockRestore();
   });
 });

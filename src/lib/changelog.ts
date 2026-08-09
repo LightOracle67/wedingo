@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.53",
+    date: "2026-08-09",
+    changes: [
+      "QA de las funciones del superadmin: verificados los flujos de las fases 1-5 y el lote verde/ámbar. Corregidos 2 bugs (el clonado de invitación copiaba _visits, prohibido por la regla de create; CSV/iCal se serializaban como JSON). Añadidos 13 tests nuevos: PlatformTab, InvitationDetailModal (render, moderación social, export), GoogleTranslateToggle (ePrivacy), ManageTab (validador, comparador), DataTab (detalle, búsqueda PII, tema en bloque). Total 2008 tests.",
+    ],
+  },
+
+  {
     version: "2.95.52",
     date: "2026-08-09",
     changes: [

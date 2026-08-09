@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { getDocs, doc, collection, writeBatch, getDoc, query, where, setDoc, serverTimestamp } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, RSVP_RESPONSES_GROUP, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
-import { downloadJson } from "../../lib/file-utils";
+import { downloadJson, downloadText } from "../../lib/file-utils";
 import { logAudit } from "../../lib/audit";
 import InvitationDetailModal from "./InvitationDetailModal";
 
@@ -359,7 +359,7 @@ export default function DataTab() {
             ].join(",");
           })
           .join("\n");
-        downloadJson(`${token}_rsvp.csv`, `${header}\n${rows}`);
+        downloadText(`${token}_rsvp.csv`, `${header}\n${rows}`, "text/csv;charset=utf-8");
         addToast("success", t("superadmin.data.exportedOne", { token }));
       } catch {
         addToast("error", t("superadmin.data.exportFailed"));
