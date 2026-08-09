@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.38",
+    date: "2026-08-08",
+    changes: [
+      "El modal de consentimiento de cookies usa ahora el componente Modal compartido (el mismo de LegalModal): idéntico estilo (overlay + card), focus trap, cierre con Escape y animaciones de entrada/salida. El cuerpo conserva el scroll interior y el pie las acciones.",
+    ],
+  },
+  {
     version: "2.95.37",
     date: "2026-08-08",
     changes: [
