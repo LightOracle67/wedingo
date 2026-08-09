@@ -22,15 +22,20 @@ export function useFocusTrap<T extends HTMLElement = HTMLElement>(open: boolean)
 
   useEffect(() => {
     if (!open) return;
-    // Se captura el abridor SOLO si no hay ya un modal encima: si se abre un
-    // segundo modal sobre otro, el foco debe volver al primero, no al fondo.
-    const topModal = document.querySelector("[aria-modal='true']");
-    if (topModal) {
-      prevRef.current = topModal;
+    const el = ref.current;
+    // Se captura el abridor SOLO si no hay ya un modal abierto y VISIBLE
+    // encima (que no sea el propio `el`, ni overlays ocultos como el menú de
+    // navegación que está permanentemente en el DOM con aria-modal). Sin el
+    // filtro de visibilidad, el foco volvía a un overlay oculto y se perdía
+    // la posición del usuario al cerrar (WCAG 2.4.3/2.4.7).
+    const others = Array.from(document.querySelectorAll("[aria-modal='true']")).filter(
+      (m) => m !== el && (m as HTMLElement).getClientRects().length > 0,
+    );
+    if (others.length > 0) {
+      prevRef.current = others[others.length - 1] ?? null;
     } else {
       prevRef.current = document.activeElement;
     }
-    const el = ref.current;
     if (!el) return;
 
     const focusable = el.querySelectorAll(FOCUSABLE);

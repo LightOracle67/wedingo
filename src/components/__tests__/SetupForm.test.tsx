@@ -28,6 +28,7 @@ vi.mock("../../lib/image-store", () => ({
   resolveAllConfigImages: vi.fn(() => Promise.resolve({})),
   saveConfigImage: vi.fn(() => Promise.resolve("")),
   deleteConfigImage: vi.fn(() => Promise.resolve()),
+  configImageIdFromRef: vi.fn(() => ""),
 }));
 
 vi.mock("../../hooks/useToast", () => ({
@@ -138,7 +139,9 @@ describe("SetupForm", () => {
     expect(screen.getByText("setup.tokenFieldHint")).toBeDefined();
     const tokenInput = screen.getByLabelText("setup.tokenFieldLabel") as HTMLInputElement;
     expect(tokenInput).toBeDefined();
-    expect(tokenInput.disabled).toBe(true);
+    // readOnly (no disabled): el campo sigue siendo enfocable por teclado.
+    expect(tokenInput.disabled).toBe(false);
+    expect(tokenInput.readOnly).toBe(true);
     expect(tokenInput.value).toBe("test-token-123");
   });
 
@@ -211,7 +214,7 @@ describe("SetupForm", () => {
     mockUseApp.mockReturnValue({ ...baseUseApp, hasStoredConfig: false });
     render(<SetupForm />);
     const privacyLabel = screen.getByText("setup.privacyConsentBefore", { exact: false }).closest("label")!;
-    const linkBtn = within(privacyLabel).getByRole("button");
+    const linkBtn = within(privacyLabel).getByRole("link");
     fireEvent.click(linkBtn);
     expect(mockSetLegalModal).toHaveBeenCalledWith("privacy");
   });

@@ -1,6 +1,49 @@
 # Auditoría Completa de Mejora Progresiva — Wedingo
 
-**Fecha:** 2026-08-09 · **Versión auditada:** v2.95.40 → **Resultado:** v2.95.41
+**Fecha:** 2026-08-09 · **Versión auditada:** v2.95.42 → **Resultado:** v2.95.43
+
+---
+
+## Ronda 2 (2026-08-09)
+
+Método: 4 auditorías paralelas con ángulos nuevos (cloud functions, backup/restore, PrintPage, sesiones, flujos de foco, validación de formularios, teardown de consentimiento, plan del re-render del Setup). Verificación: **1991 tests / 148 ficheros, 0 unhandled rejections, oxlint, tsc y build limpios.**
+
+### Seguridad
+- **[A1] Reordenado de galería restaurado**: la regla de update de `gallery` (v2.95.41) solo admitía `description` y rompía `updateGalleryOrder` → ahora permite `position` (int).
+- **[M3] Export del invitado sin credenciales**: `exportGuestLocalData` ya NO incluye `wedin_session` ni `wedin_setup_token_*` (en dispositivo compartido son credenciales del responsable, no del invitado).
+- **[R1] Restore de RSVP corregido** (PanelTab): los `{seconds,nanoseconds}` de los Timestamps se reconstruyen a `Date` para que `setDoc` cumpla la regla `is timestamp`.
+- **[B1→documentado] Inyección CSS vía `backgroundImage`**: se documenta como riesgo menor (el flujo normal resuelve a `data:image/webp;base64`); defensa en profundidad opcional.
+- **[M1] Cifrado de datos de salud con clave pública**: riesgo asumido y documentado (misma naturaleza que el cifrado de bankInfo; el token viaja en la URL).
+- **[A2→no-issue] "Retirar respuesta"**: el botón ya es solo-admin en la UI (no hay vía de invitado).
+
+### Accesibilidad
+- **[C1 CRÍTICO] Restauración de foco al abridor**: `useFocusTrap` ahora filtra SOLO modales visibles y excluye el propio (el menú de navegación con `aria-modal` oculto estaba capturando el foco de vuelta).
+- **[C3 CRÍTICO] linen-soft y blush-pearl**: revertido a texto claro (la tarjeta es un gradiente OSCURO, no crema) y los gradientes de card unificados en oscuro → ≥4.5:1 en todo el panel.
+- **[Alto] Contraste**: banner offline `#e06060→#c9302c` (≥4.5:1), botón "Retirar" `#ef4444→#b91c1c`, aviso de edad `#e88b2c→#d97b18`.
+- **[Alto] Errores RSVP**: `role="alert"` en el feedback + `aria-invalid`/`aria-describedby` en nombre, menú y fecha.
+- **[Alto] DataTab**: `<caption>` + `scope="col"`, token copiable por teclado (`role=button`+Enter/Espacio), input de confirmación con `aria-label`.
+- **[Medio] Botón dentro de `<label>`**: el enlace a la política en RSVP y SetupForm ahora es `role="link"` con teclado (HTML válido).
+- **[Bajo]**: token de setup `disabled→readOnly` (enfocable), targets de SectionOrderEditor ≥24px (WCAG 2.5.8).
+
+### Legal
+- **[Alto] Consentimiento parental corregido**: cutoff `2013-08-08→2012-08-10` (hoy −14a +1d) y **script CI reparado** (la ventana era de 364 días; ahora valida `(hoy−14a, hoy−14a+1d]`). Menores de 13 quedaban eximidos.
+- **[Medio-Alto] Sentry se detiene al retirar consentimiento**: nuevo `disableSentryTracking()` (`Sentry.close()` + stop replay) llamado en rechazo, guardar preferencias sin analítica y borrado de datos.
+- **[Medio] Política corregida**: retención del creador "hasta 12 meses post-evento", edad de consentimiento en España = **14** (LOPDGDD art. 7), `cookie.point3` matiza "sin tu consentimiento", fecha de registro "agosto 2026".
+- **[Bajo] `wedin_deploy_id`** ahora se escribe con `safeSetItem` (gate ePrivacy); **preconnect** redundante de `apis.google.com` eliminado; **parser de consentimiento** alineado (exige `ts`).
+- **[3] IndexedDB re-poblada tras rechazo**: documentado como limitación (la caché offline es "almacenamiento necesario" y así se declara en la política); la mitigación completa (memoryLocalCache sin consentimiento) queda como mejora futura.
+
+### Rendimiento / Calidad
+- **[H1 CRÍTICO deploy-blocker] `npx vitest run` fallaba** con 80 unhandled rejections (faltaba `configImageIdFromRef` en 2 mocks) → corregido. El gate de deploy queda verde.
+- **[H4] `eucalyptus.webp`**: comprimido 119→60 KB (800×800, q78) + `width/height` (anti-CLS).
+- **[H5] `rings.webp` (102 KB) eliminado** (asset muerto) + CSS `.invite-rings` y `story-map__canvas/__image/__status/__caption` y `upload-grid`.
+- **[H7] 18 clases CSS muertas eliminadas** (setup-background-*, setup-search-result, data-tab-empty-row, theme-picker__group, etc.).
+- **[H3/H2] Pendientes de refactor documentados** (ver "Próximos pasos"): mover el formulario RSVP fuera del `RsvpContext` y el store de selectores `useFormField` para el Setup (plan completo incluido).
+
+---
+
+## Ronda 1 (v2.95.41) — referencia
+
+**Versión auditada:** v2.95.40 → **Resultado:** v2.95.41
 **Disparador:** 23 commits desde la última gran ronda (v2.95.29) — regla "cada 20 commits" de AGENTS.md.
 
 Método: 4 auditorías estáticas paralelas (seguridad, accesibilidad, legal internacional, rendimiento/calidad) + implementación de los fixes factibles + verificación (1991 tests, oxlint, tsc, build).
@@ -104,6 +147,9 @@ Método: 4 auditorías estáticas paralelas (seguridad, accesibilidad, legal int
 
 ## Próximos pasos recomendados
 1. **Operativo**: App Check + MFA superadmin + rotación de credenciales (mayor mitigación de abuso/DoS).
-2. **H4**: borrado por invitado de contribuciones sociales en retirada/supresión.
-3. **#1 Perf**: scoping del estado del Setup (re-render por sección).
-4. Compresión de `eucalyptus.webp`.
+2. **H4**: borrado por invitado de contribuciones sociales en retirada/supresión (requiere función cloud o borrado por `guestId`).
+3. **[Perf] Re-render del Setup**: plan completo listo — store de selectores `useFormField`/`useFormData` (src/contexts/FormStore.tsx) + convertir las 9 secciones; impacto estimado −70/90% renders por tecla. Refactor de ~1-2 días.
+4. **[Perf] RSVP form fuera de `RsvpContext`**: mover `rsvpForm`/`updateRsvpField` a estado local de `RsvpSection` (o sub-contexto) para que `PublicInvitation` no re-renderice por tecla.
+5. **[Legal] Registro servidor de consentimiento** (art. 7.1) para el accept/reject del visitante (col. `consentLog` con hash de sesión + versión + ts).
+6. **[Legal] IndexedDB**: usar `memoryLocalCache` si no hay consentimiento (hoy la caché offline se re-puebla tras rechazo; declarada "necesaria" en la política).
+7. **Exports solo-usados-por-tests** (9): eliminar o acotar.

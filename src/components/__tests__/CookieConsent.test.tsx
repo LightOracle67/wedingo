@@ -7,7 +7,7 @@ vi.mock("react-i18next", () => ({
 }));
 
 vi.mock("../../lib/analytics", () => ({ grantAnalyticsConsent: vi.fn() }));
-vi.mock("../../lib/sentry", () => ({ enableSentryTracking: vi.fn() }));
+vi.mock("../../lib/sentry", () => ({ enableSentryTracking: vi.fn(), disableSentryTracking: vi.fn() }));
 
 vi.mock("../../lib/firebase", () => ({ db: {} }));
 

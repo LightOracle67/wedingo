@@ -163,8 +163,12 @@ describe("GallerySection", () => {
       expect(screen.getByLabelText("gallery.carouselLabel")).toBeDefined();
     });
     fireEvent.click(screen.getAllByAltText("Photo 1")[0]!);
-    fireEvent.click(screen.getByLabelText("gallery.download"));
-    expect(clickSpy).toHaveBeenCalled();
+    // El url de la imagen se resuelve de forma asíncrona (getGalleryImageUrl):
+    // el clic de descarga se reintenta hasta que la imagen esté lista.
+    await vi.waitFor(() => {
+      fireEvent.click(screen.getByLabelText("gallery.download"));
+      expect(clickSpy).toHaveBeenCalled();
+    });
     clickSpy.mockRestore();
   });
 

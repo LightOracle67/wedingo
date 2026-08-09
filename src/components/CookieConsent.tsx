@@ -49,6 +49,11 @@ function grantAnalytics() {
   import("../lib/sentry").then(({ enableSentryTracking }) => enableSentryTracking());
 }
 
+/** Retira el consentimiento de analítica: frena Sentry (replay + close). */
+function revokeAnalytics() {
+  import("../lib/sentry").then(({ disableSentryTracking }) => disableSentryTracking());
+}
+
 /** Registro de consentimiento persistido: estado + timestamp + versión de la
  *  política (GDPR art. 7.1, consentimiento demostrable). */
 function saveConsent(status: "accepted" | "rejected", analytics: boolean) {
@@ -66,12 +71,19 @@ function rejectCookies() {
   ls.remove(PREF_STORAGE_KEY);
 }
 
-/** Parsea el registro con tolerancia al formato legacy (valor plano). */
+/** Parsea el registro con tolerancia al formato legacy (valor plano). Se exige
+ *  `ts` numérico, igual que storage.ts: un registro sin timestamp no es un
+ *  consentimiento demostrable (GDPR art. 7.1) y obliga a re-preguntar. */
 function parseConsent(raw: string | null): { status: "accepted" | "rejected"; version: string } | null {
   if (!raw) return null;
   try {
-    const parsed = JSON.parse(raw) as { status?: string; version?: string };
-    if (parsed && (parsed.status === "accepted" || parsed.status === "rejected") && typeof parsed.version === "string") {
+    const parsed = JSON.parse(raw) as { status?: string; version?: string; ts?: unknown };
+    if (
+      parsed &&
+      (parsed.status === "accepted" || parsed.status === "rejected") &&
+      typeof parsed.version === "string" &&
+      typeof parsed.ts === "number"
+    ) {
       return { status: parsed.status, version: parsed.version };
     }
   } catch {
@@ -120,6 +132,8 @@ const CookieConsent = memo(function CookieConsent() {
 
   const handleReject = () => {
     rejectCookies();
+    // Sin consentimiento no puede quedar Sentry recogiendo datos (replay).
+    revokeAnalytics();
     try {
       Object.keys(localStorage)
         .filter((k) => k.startsWith(INVITE_CACHE_PREFIX) || k.startsWith(AUDIO_PREFIX))
@@ -133,8 +147,11 @@ const CookieConsent = memo(function CookieConsent() {
 
   const handleSavePreferences = () => {
     saveConsent("accepted", preferences.analytics);
-    if (preferences.analytics) grantAnalytics();
-    if (!preferences.analytics) {
+    if (preferences.analytics) {
+      grantAnalytics();
+    } else {
+      // Se desmarcó analítica: Sentry/GA deben detenerse (GDPR 7.3).
+      revokeAnalytics();
       ls.remove(STORAGE_KEYS.inviteCacheLegacy);
     }
     setVisible(false);

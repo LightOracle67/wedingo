@@ -144,11 +144,31 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
             await setDoc(doc(db, "invitations", inviteToken, path, _id), restDoc);
           }
         };
+        // Los Timestamps de Firestore se serializan en el backup como
+        // { seconds, nanoseconds } y la regla exige `is timestamp`: se
+        // reconstruyen como Date (setDoc los convierte a Timestamp).
+        const reviveTimestamp = (value: unknown): unknown => {
+          if (
+            value &&
+            typeof value === "object" &&
+            !Array.isArray(value) &&
+            typeof (value as { seconds?: unknown }).seconds === "number" &&
+            typeof (value as { nanoseconds?: unknown }).nanoseconds === "number"
+          ) {
+            const { seconds, nanoseconds } = value as { seconds: number; nanoseconds: number };
+            return new Date(seconds * 1000 + Math.round(nanoseconds / 1e6));
+          }
+          if (Array.isArray(value)) return value.map(reviveTimestamp);
+          if (value && typeof value === "object") {
+            return Object.fromEntries(Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, reviveTimestamp(v)]));
+          }
+          return value;
+        };
         const writeSubRsvp = async (docs: Array<{ id: string; [k: string]: unknown }> | undefined) => {
           if (!docs || !docs.length) return;
           for (const d of docs) {
             const { id: _id, ...restDoc } = d;
-            await setDoc(doc(db, "rsvpResponses", inviteToken, "responses", _id), restDoc);
+            await setDoc(doc(db, "rsvpResponses", inviteToken, "responses", _id), reviveTimestamp(restDoc));
           }
         };
         await writeSub("gallery", sub.gallery);

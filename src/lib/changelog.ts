@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.43",
+    date: "2026-08-09",
+    changes: [
+      "Auditoría ronda 2 (seguridad, accesibilidad, legal, rendimiento). Seguridad: restaurado el reordenado de galería, el export del invitado ya no filtra credenciales de admin, restore de RSVP con timestamps correctos. Accesibilidad: foco restaurado al abridor de modales, contraste corregido en linen-soft/blush-pearl (tarjetas oscuras con texto claro), errores RSVP por campo, tabla del panel con caption/scope y token copiable por teclado, botones de sección ≥24px. Legal: fecha de consentimiento parental a 2012-08-10 (y script CI reparado), Sentry se detiene al retirar el consentimiento, política corregida (retención 12m, España=14 años). Rendimiento: eucalyptus comprimido (119→60 KB), rings.webp y CSS muerto eliminados, deploy-blocker de vitest corregido.",
+    ],
+  },
+  {
     version: "2.95.42",
     date: "2026-08-09",
     changes: [

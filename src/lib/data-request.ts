@@ -115,17 +115,17 @@ export function exportGuestLocalData(inviteToken?: string): DataRequestResult {
   const exported: Record<string, string> = {};
   const collect = (store: Storage) => {
     Object.keys(store).forEach((key) => {
-      // Solo se exportan claves relacionadas con esta invitación (o de la
-      // sesión/consentimiento): no se vuelcan datos de otras invitaciones
-      // ni de la sesión del admin.
+      // Solo se exportan claves relacionadas con esta invitación o con el
+      // consentimiento del visitante. Se EXCLUYEN explícitamente la sesión de
+      // admin/superadmin y el token de setup: en un dispositivo compartido
+      // pertenecen al responsable, no al invitado (GDPR 17 no las ampara y
+      // exponerlas filtraría credenciales).
       const relevant =
         PROTECTED_PREFIXES.some((p) => key.startsWith(p)) ||
-        key === STORAGE_KEYS.session ||
         key === STORAGE_KEYS.cookieConsent ||
         key === STORAGE_KEYS.cookiePrefs ||
         key === STORAGE_KEYS.inviteCache(inviteToken ?? "") ||
         key === STORAGE_KEYS.rsvpCache(inviteToken ?? "") ||
-        key === STORAGE_KEYS.setupToken(inviteToken ?? "") ||
         key.startsWith(`${INVITE_CACHE_PREFIX}${inviteToken}`) ||
         key.startsWith(`${AUDIO_PREFIX}${inviteToken}`);
       if (!relevant) return;

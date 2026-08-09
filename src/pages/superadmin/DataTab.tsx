@@ -442,6 +442,7 @@ export default function DataTab() {
           value={confirmText}
           onChange={(e) => setConfirmText(e.target.value)}
           placeholder={t("superadmin.data.confirmPlaceholder", { word: CONFIRM_WORD })}
+          aria-label={t("superadmin.data.confirmInputLabel")}
           disabled={busy}
         />
         <button
@@ -458,9 +459,11 @@ export default function DataTab() {
       {/* ── Tabla de invitaciones ── */}
       <div className="data-tab-table-wrap">
         <table className="data-tab-table">
+          {/* caption visible solo para lectores de pantalla (WCAG 1.3.1). */}
+          <caption className="sr-only">{t("superadmin.data.tableCaption")}</caption>
           <thead>
             <tr className="data-tab-sticky-header">
-              <th className="data-tab-th">
+              <th scope="col" className="data-tab-th">
                 <input
                   type="checkbox"
                   checked={selectedCount === totalCount && totalCount > 0}
@@ -469,17 +472,17 @@ export default function DataTab() {
                   aria-label={t("superadmin.data.selectAll")}
                 />
               </th>
-              <th className="data-tab-th">{t("superadmin.data.colToken")}</th>
-              <th className="data-tab-th">{t("superadmin.data.colNames")}</th>
-              <th className="data-tab-th">{t("superadmin.data.colDate")}</th>
-              <th className="data-tab-th">{t("superadmin.data.colRsvps")}</th>
-              <th className="data-tab-th">{t("superadmin.data.colSession")}</th>
-              <th className="data-tab-th">{t("superadmin.data.colActions")}</th>
+              <th scope="col" className="data-tab-th">{t("superadmin.data.colToken")}</th>
+              <th scope="col" className="data-tab-th">{t("superadmin.data.colNames")}</th>
+              <th scope="col" className="data-tab-th">{t("superadmin.data.colDate")}</th>
+              <th scope="col" className="data-tab-th">{t("superadmin.data.colRsvps")}</th>
+              <th scope="col" className="data-tab-th">{t("superadmin.data.colSession")}</th>
+              <th scope="col" className="data-tab-th">{t("superadmin.data.colActions")}</th>
             </tr>
           </thead>
           <tbody>
             {invitations.map((inv) => (
-              <tr key={inv.id} className="data-tab-tr" style={{ opacity: emptyIds.has(inv.id) ? 0.5 : 1 }}>
+              <tr key={inv.id} className="data-tab-tr" style={{ opacity: emptyIds.has(inv.id) ? 0.7 : 1 }}>
                 <td className="data-tab-td">
                   <input
                     type="checkbox"
@@ -490,10 +493,20 @@ export default function DataTab() {
                   />
                 </td>
                 <td className="data-tab-td">
+                  {/* Token copiable con teclado: role=button + Enter/Espacio
+                      (WCAG 2.1.1), además del clic. */}
                   <code
                     className="data-tab-code-copy"
+                    role="button"
+                    tabIndex={0}
                     onClick={() => navigator.clipboard?.writeText(inv.id)}
-                    title={t("superadmin.data.copyToken")}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        navigator.clipboard?.writeText(inv.id);
+                      }
+                    }}
+                    aria-label={`${t("superadmin.data.copyToken")}: ${inv.id}`}
                   >
                     {inv.id}
                   </code>

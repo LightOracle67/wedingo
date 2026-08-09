@@ -1053,6 +1053,9 @@ describe("App", () => {
     meta.setAttribute("content", "999");
     document.head.appendChild(meta);
     localStorage.setItem("wedin_deploy_id", "111");
+    // El aviso de actualización usa safeGetItem: requiere consentimiento de
+    // almacenamiento (ePrivacy 5.3).
+    localStorage.setItem("wedin_cookie_consent", "accepted");
 
     render(
       <MemoryRouter initialEntries={["/"]}>
@@ -1063,6 +1066,7 @@ describe("App", () => {
     );
     expect(await screen.findByText("common.updateAvailable")).toBeDefined();
     localStorage.removeItem("wedin_deploy_id");
+    localStorage.removeItem("wedin_cookie_consent");
     meta.remove();
   });
 
@@ -1082,6 +1086,7 @@ describe("App", () => {
     await screen.findByTestId("landing-page");
     expect(screen.queryByText("common.updateAvailable")).toBeNull();
     localStorage.removeItem("wedin_deploy_id");
+    localStorage.removeItem("wedin_cookie_consent");
     meta.remove();
   });
 
@@ -1091,6 +1096,8 @@ describe("App", () => {
     meta.setAttribute("content", "222");
     document.head.appendChild(meta);
     localStorage.setItem("wedin_deploy_id", "111");
+    // safeGetItem exige consentimiento de almacenamiento (ePrivacy 5.3).
+    localStorage.setItem("wedin_cookie_consent", "accepted");
     const reload = vi.fn();
     Object.defineProperty(window, "location", {
       value: { ...window.location, reload },
@@ -1108,6 +1115,7 @@ describe("App", () => {
     fireEvent.click(bannerBtn);
     expect(reload).toHaveBeenCalled();
     localStorage.removeItem("wedin_deploy_id");
+    localStorage.removeItem("wedin_cookie_consent");
     meta.remove();
   });
 

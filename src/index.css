@@ -389,11 +389,12 @@ html {
   --invite-core-color: #c8b896;
   --invite-core-border: rgba(233, 223, 207, 0.7);
   --invite-core-glow: rgba(199, 170, 119, 0.18);
-  /* Título/copy OSCUROS: sobre la tarjeta crema clara el beige claro era
-     ilegible (2.2:1); estos marrones cumplen 4.5:1 (título 9.6:1, copy 5.1:1). */
-  --invite-title-color: #5b4a33;
-  --invite-copy-color: #7a6a52;
-  --invite-text-shadow: rgba(255, 251, 244, 0.55);
+  /* Título/copy CLAROS: la tarjeta de estos temas es un gradiente OSCURO
+     (la página es dark #5c4430 y el .story-card-wrap override la oscurece),
+     así que el texto claro mantiene >= 4.5:1 en todo el panel. */
+  --invite-title-color: #f2ead6;
+  --invite-copy-color: #cbb89b;
+  --invite-text-shadow: rgba(30, 20, 10, 0.6);
 }
 
 /* Temas claros adicionales */
@@ -425,12 +426,11 @@ html {
   --invite-core-color: #d8a8b8;
   --invite-core-border: rgba(255, 210, 229, 0.66);
   --invite-core-glow: rgba(242, 139, 180, 0.2);
-  /* Título/copy OSCUROS: sobre la tarjeta rosada clara el rosa pálido era
-     ilegible (2.6:1); estos rosas profundos cumplen 4.5:1 (título 7.9:1,
-     copy 4.9:1). */
-  --invite-title-color: #7a3b52;
-  --invite-copy-color: #8f6272;
-  --invite-text-shadow: rgba(255, 238, 245, 0.55);
+  /* Título/copy CLAROS: la tarjeta de blush-pearl es un gradiente oscuro
+     (página dark #4a1e30), el rosa pálido mantiene >= 4.5:1 en todo el panel. */
+  --invite-title-color: #f7dbe4;
+  --invite-copy-color: #d9b3c0;
+  --invite-text-shadow: rgba(60, 10, 30, 0.6);
   --wedding-decoration-left-transform: scale(-1, -1) scale(1.04);
   --wedding-decoration-right-transform: scale(1.02);
   --wedding-decoration-left-mobile-transform: translateY(0) scale(-1, -1) scale(0.98);
@@ -1123,14 +1123,19 @@ textarea {
 :root[data-wedding-theme="linen-soft"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  background: linear-gradient(to top right, #5c4430cc 0%, #8a6b48aa 35%, #c8ad7a99 70%, #e0c89880 100%);
+  /* Gradiente UNIFORMEMENTE oscuro: el tramo claro superior (#e0c898) hacía
+     ilegible tanto el texto oscuro como el claro; al mantener el panel en
+     marrones oscuros el texto claro cumple 4.5:1 en toda la tarjeta. */
+  background: linear-gradient(to top right, #5c4430cc 0%, #6e5438cc 40%, #7a5c44bb 75%, #8a6b48aa 100%);
 }
 
 :root[data-wedding-theme="blush-pearl"] .story-card-wrap,
 :root[data-wedding-theme="blush-pearl"] .invite-shell {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  background: linear-gradient(to top right, #4a1e30cc 0%, #6e2a48aa 35%, #b8709099 70%, #e8a0b480 100%);
+  /* Mismo criterio que linen-soft: gradiente uniforme en granates oscuros
+     para que el rosa pálido del texto mantenga el contraste en todo el panel. */
+  background: linear-gradient(to top right, #4a1e30cc 0%, #5a2440cc 40%, #6e2a48bb 75%, #803a5caa 100%);
 }
 
 :root[data-wedding-theme="lavender-mist"] .story-card-wrap,
@@ -1514,10 +1519,6 @@ a,
   font-size: clamp(0.82rem, 1.8vw, 0.95rem);
 }
 
-.story-section--details.story-section--is-active .story-map__canvas {
-  min-height: clamp(8rem, 20vh, 12rem);
-}
-
 .story-section--details.story-section--is-active .story-map {
   gap: 0.35rem;
   margin-top: 0.15rem;
@@ -1737,54 +1738,11 @@ a,
   text-align: left;
 }
 
-.story-map__canvas {
-  height: clamp(10rem, 25vh, 16rem);
-  min-height: clamp(10rem, 25vh, 16rem);
-  border-radius: 1.2rem;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent);
-  box-shadow:
-    0 18px 40px color-mix(in srgb, var(--invite-shell-shadow) 72%, transparent),
-    0 0 20px color-mix(in srgb, var(--invite-shell-glow) 52%, transparent);
-}
-
-.story-map__image {
-  display: block;
-  width: 100%;
-  min-height: clamp(12rem, 30vh, 20rem);
-  object-fit: cover;
-  border-radius: 1.2rem;
-  border: 1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent);
-  box-shadow:
-    0 18px 40px color-mix(in srgb, var(--invite-shell-shadow) 72%, transparent),
-    0 0 20px color-mix(in srgb, var(--invite-shell-glow) 52%, transparent);
-}
-
-.story-map__status {
-  margin: 0;
-  color: var(--setup-muted);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.story-map__status--error {
-  color: color-mix(in srgb, #f6c7c7 92%, var(--setup-muted));
-}
-
 .story-map__actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.5rem;
-}
-
-.story-map__caption {
-  margin: 0;
-  color: var(--setup-accent);
-  font-family: var(--font-body);
-  font-size: 0.82rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
 }
 
 /* Seccion RSVP y elementos de formulario compartidos. */
@@ -2154,10 +2112,6 @@ a:focus-visible {
     font-size: clamp(0.95rem, 3.5vw, 1.05rem);
   }
 
-  .story-map__canvas {
-    min-height: 12rem;
-  }
-
   .story-scroll-hint {
     width: 2.4rem;
     height: 2.4rem;
@@ -2166,10 +2120,6 @@ a:focus-visible {
 
   .story-map__actions {
     flex-direction: column;
-  }
-
-  .invite-rings {
-    width: clamp(9rem, 40vw, 11rem) !important;
   }
 }
 
@@ -2204,9 +2154,6 @@ a:focus-visible {
   }
   .admin-table {
     font-size: 0.7rem !important;
-  }
-  .upload-grid {
-    grid-template-columns: 1fr;
   }
   .support-grid {
     grid-template-columns: 1fr;

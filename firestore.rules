@@ -228,10 +228,12 @@ service cloud.firestore {
           && request.resource.data.description is string && request.resource.data.description.size() <= 200
           && request.resource.data.position is int
           && isAuthenticatedAdmin(tokenId);
-        /* El update solo permite retocar la descripción (el resto de campos se
-           crean en el create y no deben poder alterarse en caliente). */
-        allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['description'])
-          && request.resource.data.description is string && request.resource.data.description.size() <= 200
+        /* El update solo permite retocar la descripción o la POSICIÓN de
+           reordenado (updateGalleryOrder reescribe {position} en lote al
+           arrastrar en el editor); el resto de campos solo se crean. */
+        allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['description', 'position'])
+          && (!request.resource.data.keys().hasAny(['description']) || (request.resource.data.description is string && request.resource.data.description.size() <= 200))
+          && (!request.resource.data.keys().hasAny(['position']) || request.resource.data.position is int)
           && isAuthenticatedAdmin(tokenId);
         allow delete: if isAuthenticatedAdmin(tokenId);
       }
@@ -444,7 +446,7 @@ service cloud.firestore {
         && (
           !request.resource.data.keys().hasAny(['birthDate'])
           || request.resource.data.birthDate == ""
-          || request.resource.data.birthDate < "2013-08-08"
+          || request.resource.data.birthDate < "2012-08-10"
           || request.resource.data.parentalConsent == true
         )
         && exists(/databases/$(database)/documents/rsvpResponses/$(inviteToken))

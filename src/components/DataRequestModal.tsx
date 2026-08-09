@@ -55,6 +55,8 @@ const DataRequestModal = memo(function DataRequestModal({ inviteToken, onClose }
     // Confirmación explícita antes de destruir datos (no reversible).
     if (!window.confirm(t("dataRequest.eraseConfirm"))) return;
     const { erasedKeys } = eraseGuestLocalData(inviteToken);
+    // El borrado retira el consentimiento: Sentry debe detenerse.
+    import("../lib/sentry").then(({ disableSentryTracking }) => disableSentryTracking());
     addToast("success", t("dataRequest.eraseDone", { count: erasedKeys.length }));
     onClose();
   };

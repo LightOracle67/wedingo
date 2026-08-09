@@ -757,13 +757,33 @@ export default function PublicInvitation() {
           className="fixed top-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration"
           style={{ zIndex: 0 }}
         >
-          <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
+          {/* width/height reservan el layout del eucalipto (decorativo, 2000x2000
+              renderizado a ~250-400px) para evitar CLS (CLS == 0). */}
+          <img
+            src={eucalyptusSrc}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            width="2000"
+            height="2000"
+            className="wedding-decoration__image"
+          />
         </div>
         <div
           className="fixed pointer-events-none right-2 bottom-2 wedding-decoration--right wedding-decoration"
           style={{ zIndex: 0 }}
         >
-          <img src={eucalyptusSrc} alt="" aria-hidden="true" loading="lazy" className="wedding-decoration__image" />
+          {/* width/height reservan el layout del eucalipto (decorativo, 2000x2000
+              renderizado a ~250-400px) para evitar CLS (CLS == 0). */}
+          <img
+            src={eucalyptusSrc}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            width="2000"
+            height="2000"
+            className="wedding-decoration__image"
+          />
         </div>
 
         {/* ── Token no encontrado (invitación no configurada) ── */}

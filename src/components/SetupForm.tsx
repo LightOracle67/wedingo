@@ -191,18 +191,24 @@ export default function SetupForm({ prefix = "" }) {
           />
           <span>
             {t("setup.privacyConsentBefore")}
-            <button
-              type="button"
+            {/* Enlace a la política fuera del label (HTML válido, teclado y SR). */}
+            <span
+              role="link"
+              tabIndex={0}
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 setLegalModal("privacy");
               }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setLegalModal("privacy");
+                }
+              }}
               style={{
                 color: "var(--setup-accent)",
                 textDecoration: "underline",
-                background: "none",
-                border: "none",
                 cursor: "pointer",
                 fontFamily: "inherit",
                 fontSize: "inherit",
@@ -210,7 +216,7 @@ export default function SetupForm({ prefix = "" }) {
               }}
             >
               {t("public.privacyPolicy")}
-            </button>
+            </span>
             {t("setup.privacyConsentAfter")}
           </span>
         </label>

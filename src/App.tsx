@@ -3,6 +3,7 @@ import { Routes, Route, Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { AppProvider } from "./contexts/AppContext";
 import { useConfig, useAuth, useAppUI } from "./contexts";
+import { safeGetItem, safeSetItem } from "./lib/storage";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -97,9 +98,11 @@ function AppShell() {
     if (!deployId) return;
     try {
       // localStorage: sobrevive al relaunch de la PWA (sessionStorage no).
-      const last = localStorage.getItem("wedin_deploy_id");
+      // Escritura técnica con safeSetItem: respeta el consentimiento de
+      // almacenamiento (ePrivacy art. 5.3) sin romper el aviso de actualización.
+      const last = safeGetItem("wedin_deploy_id");
       if (last && last !== deployId) setUpdateAvailable(true);
-      localStorage.setItem("wedin_deploy_id", deployId);
+      safeSetItem("wedin_deploy_id", deployId);
     } catch {
       /* almacenamiento no disponible */
     }
@@ -142,7 +145,7 @@ function AppShell() {
             left: 0,
             right: 0,
             zIndex: 99999,
-            background: "#e06060",
+            background: "#c9302c",
             color: "#fff",
             textAlign: "center",
             padding: "0.5rem",

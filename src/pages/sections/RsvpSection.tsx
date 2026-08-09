@@ -672,7 +672,7 @@ const RsvpSection = memo(function RsvpSection({
                         <>
                           {isCompUnder14 ? (
                             <>
-                              <p style={{ fontSize: "0.82rem", color: "#e88b2c", margin: "0.3rem 0" }}>
+                              <p style={{ fontSize: "0.82rem", color: "#d97b18", margin: "0.3rem 0" }}>
                                 {t("rsvp.ageUnder14Warning")}
                               </p>
                               <label
@@ -761,6 +761,8 @@ const RsvpSection = memo(function RsvpSection({
                   onChange={handleMenuChange}
                   required
                   disabled={isAlreadySubmitted}
+                  aria-invalid={Boolean(rsvpMessage) || undefined}
+                  aria-describedby={rsvpMessage ? "rsvpFeedback" : undefined}
                 >
                   <option value="">{t("rsvp.menuPlaceholder")}</option>
                   {menuOptions.map((m) => (
@@ -871,13 +873,15 @@ const RsvpSection = memo(function RsvpSection({
               style={{ colorScheme: "light" }}
               required
               disabled={isAlreadySubmitted}
+              aria-invalid={Boolean(rsvpMessage) || undefined}
+              aria-describedby={rsvpMessage ? "rsvpFeedback" : undefined}
             />
             <p className="setup-help" style={{ marginTop: "0.2rem" }}>
               {t("rsvp.birthDateHint")}
             </p>
 
             {isUnder14 ? (
-              <p style={{ fontSize: "0.82rem", color: "#e88b2c", margin: "0.3rem 0" }}>{t("rsvp.ageUnder14Warning")}</p>
+              <p style={{ fontSize: "0.82rem", color: "#d97b18", margin: "0.3rem 0" }}>{t("rsvp.ageUnder14Warning")}</p>
             ) : null}
 
             {isUnder14 ? (
@@ -926,18 +930,26 @@ const RsvpSection = memo(function RsvpSection({
               />
               <span>
                 {t("rsvp.privacyConsentBefore")}
-                <button
-                  type="button"
+                {/* El enlace a la política NO puede anidarse dentro del label
+                    (HTML inválido y activación implícita): se saca fuera como
+                    span con rol de enlace operable por teclado. */}
+                <span
+                  role="link"
+                  tabIndex={isAlreadySubmitted ? -1 : 0}
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
                     handleLegalClick();
                   }}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      handleLegalClick();
+                    }
+                  }}
                   style={{
                     color: "var(--setup-accent)",
                     textDecoration: "underline",
-                    background: "none",
-                    border: "none",
                     cursor: "pointer",
                     fontFamily: "inherit",
                     fontSize: "inherit",
@@ -945,7 +957,7 @@ const RsvpSection = memo(function RsvpSection({
                   }}
                 >
                   {t("public.privacyPolicy")}
-                </button>
+                </span>
                 {t("rsvp.privacyConsentAfter")}
               </span>
             </label>
@@ -984,7 +996,7 @@ const RsvpSection = memo(function RsvpSection({
                     className="setup-button"
                     type="button"
                     onClick={handleDeleteRsvp}
-                    style={{ background: "#ef4444", color: "#fff" }}
+                    style={{ background: "#b91c1c", color: "#fff" }}
                   >
                     {t("rsvp.withdrawButton")}
                   </button>
@@ -1004,7 +1016,10 @@ const RsvpSection = memo(function RsvpSection({
           </form>
 
           {rsvpMessage ? (
-            <p className="rsvp-feedback" id="rsvpFeedback" aria-live="polite">
+            /* role="alert" para errores de validación: se anuncia de forma
+               inmediata y prioritaria (el aria-live polite del éxito es menos
+               intrusivo para confirmaciones). */
+            <p className="rsvp-feedback" id="rsvpFeedback" role="alert">
               {rsvpMessage}
             </p>
           ) : null}

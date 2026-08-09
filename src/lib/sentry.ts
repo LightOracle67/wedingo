@@ -70,6 +70,26 @@ export function enableSentryTracking() {
   });
 }
 
+/**
+ * Detiene Sentry al RETIRAR el consentimiento de analítica (GDPR art. 7.3):
+ * frena el session replay y cierra el cliente para que no se recojan datos
+ * de una sesión sin consentimiento. Permite reiniciar si se vuelve a aceptar.
+ */
+export function disableSentryTracking() {
+  if (!initialized) return;
+  initialized = false;
+  import("@sentry/react")
+    .then((Sentry) => {
+      try {
+        (Sentry.getReplay?.() as { stop?: () => void } | undefined)?.stop?.();
+      } catch {
+        /* integración de replay no disponible */
+      }
+      void Sentry.close();
+    })
+    .catch(() => {});
+}
+
 if (isProd || import.meta.env.VITE_SENTRY_DSN) {
   scheduleWhenIdle(() => {
     enableSentryTracking();

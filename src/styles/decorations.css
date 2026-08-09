@@ -1,5 +1,4 @@
-.story-section--is-active .wedding-decoration__image,
-.story-section--is-active .invite-rings {
+.story-section--is-active .wedding-decoration__image {
   animation: subtle-float 5.4s ease-in-out infinite;
 }
 @keyframes subtle-float {

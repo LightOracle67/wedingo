@@ -34,6 +34,7 @@ vi.mock("../../../lib/image-store", () => ({
   deleteConfigImage: vi.fn(() => Promise.resolve()),
   getConfigImage: vi.fn(() => Promise.resolve(null)),
   isConfigImageRef: vi.fn(() => false),
+  configImageIdFromRef: vi.fn(() => ""),
 }));
 
 vi.mock("../../../lib/image-utils", () => ({

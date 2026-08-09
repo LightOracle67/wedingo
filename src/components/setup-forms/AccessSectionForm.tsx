@@ -88,7 +88,6 @@ export default function AccessSectionForm({
               type={showToken ? "text" : "password"}
               value={setupToken || ""}
               readOnly
-              disabled
               style={{ flex: 1, fontFamily: "monospace", letterSpacing: "0.05em", userSelect: "all" }}
               aria-describedby={id("setupTokenHint")}
               autoComplete="off"
