@@ -1,6 +1,8 @@
 import { memo, useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useAppUI } from "../contexts";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../lib/firebase";
+import { useAppUI, useConfig } from "../contexts";
 import Modal from "./Modal";
 import { INVITE_CACHE_PREFIX, AUDIO_PREFIX, STORAGE_KEYS } from "../lib/storage-keys";
 import { PRIVACY_POLICY_VERSION } from "../lib/constants";
@@ -71,6 +73,23 @@ function rejectCookies() {
   ls.remove(PREF_STORAGE_KEY);
 }
 
+/**
+ * Registro del consentimiento en el SERVIDOR (GDPR art. 7.1, consentimiento
+ * demostrable): cada decisión del banner (aceptar/rechazar/preferencias) se
+ * guarda en invitations/{token}/consentLog con estado + versión + timestamp.
+ * Sin datos personales del visitante; best-effort (no bloquea la UI).
+ */
+function logServerConsent(inviteToken: string | undefined, status: "accepted" | "rejected") {
+  if (!inviteToken) return;
+  addDoc(collection(db, "invitations", inviteToken, "consentLog"), {
+    status,
+    version: PRIVACY_POLICY_VERSION,
+    ts: serverTimestamp(),
+  }).catch(() => {
+    /* el registro de consentimiento es best-effort */
+  });
+}
+
 /** Parsea el registro con tolerancia al formato legacy (valor plano). Se exige
  *  `ts` numérico, igual que storage.ts: un registro sin timestamp no es un
  *  consentimiento demostrable (GDPR art. 7.1) y obliga a re-preguntar. */
@@ -103,6 +122,8 @@ const CookieConsent = memo(function CookieConsent() {
   // art. 7.2). Al abrirla se CIERRA este modal (evita que ambos modales se
   // solapen) y se reabre cuando se cierra la política, sin decidir aún.
   const { legalModal, setLegalModal, cookiePrefsOpen, setCookiePrefsOpen } = useAppUI();
+  // inviteToken (si hay invitación): para registrar la decisión en el servidor.
+  const { inviteToken } = useConfig();
   const wasHiddenForPolicyRef = useRef(false);
 
   useEffect(() => {
@@ -127,11 +148,13 @@ const CookieConsent = memo(function CookieConsent() {
 
   const handleAccept = () => {
     acceptCookies();
+    logServerConsent(inviteToken, "accepted");
     setVisible(false);
   };
 
   const handleReject = () => {
     rejectCookies();
+    logServerConsent(inviteToken, "rejected");
     // Sin consentimiento no puede quedar Sentry recogiendo datos (replay).
     revokeAnalytics();
     try {
@@ -147,6 +170,7 @@ const CookieConsent = memo(function CookieConsent() {
 
   const handleSavePreferences = () => {
     saveConsent("accepted", preferences.analytics);
+    logServerConsent(inviteToken, "accepted");
     if (preferences.analytics) {
       grantAnalytics();
     } else {

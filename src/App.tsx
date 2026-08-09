@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { AppProvider } from "./contexts/AppContext";
-import { useConfig, useAuth, useAppUI } from "./contexts";
+import { useConfig, useAuth, useAppUI, useFormField } from "./contexts";
 import { safeGetItem, safeSetItem } from "./lib/storage";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
@@ -38,7 +38,10 @@ function AppShell() {
   const { t } = useTranslation();
   // Hooks granulares (no useApp): evitan que AppShell re-renderice con cada
   // tecla del formulario RSVP o cada tick del countdown (contexto fusionado).
-  const { config, formData, inviteToken } = useConfig();
+  const { config, inviteToken } = useConfig();
+  // theme se lee de la tienda por campo: cambiar el tema en el setup NO debe
+  // re-renderizar AppShell con cada tecla (solo cuando cambia el tema).
+  const setupTheme = useFormField("theme");
   const { isAdminTokenLoggedIn, tokenLoginUsername } = useAuth();
   const { setCookiePrefsOpen } = useAppUI();
   const [username, setUsername] = useState("");
@@ -68,7 +71,7 @@ function AppShell() {
     location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
 
   // Efectos de documento (idioma/RTL, título, tema, robots, errores, scroll).
-  useAppShellEffects(config, formData, inviteToken, isEditingRoute);
+  useAppShellEffects(config, { theme: setupTheme }, inviteToken, isEditingRoute);
 
   useEffect(() => {
     const onOnline = () => {

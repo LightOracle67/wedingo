@@ -2872,6 +2872,12 @@ body::after {
   overflow-y: auto;
   padding-right: 0.25rem;
 }
+.song-poll__item,
+.gift-list__item,
+.rides-share__item,
+.notes-wall__item {
+  position: relative;
+}
 .notes-wall__item {
   background: color-mix(in srgb, var(--setup-field-bg, #2a2418) 45%, transparent);
   border-radius: 0.7rem;

@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.44",
+    date: "2026-08-09",
+    changes: [
+      "Pendientes de auditoría implementados. GDPR: autoservicio de borrado de aportaciones sociales (dedicatorias, canciones, trayectos y reservas) con función cloud que verifica la propiedad por ownerKey; registro de consentimiento en el servidor (consentLog, art. 7.1); IndexedDB usa caché en memoria si el visitante rechazó. Rendimiento: el formulario RSVP se aísla en un contexto propio (teclear ya no re-renderiza la página) y el Setup usa un store de selectores por campo (useFormField) para acotar el re-render a la sección editada.",
+    ],
+  },
+  {
     version: "2.95.43",
     date: "2026-08-09",
     changes: [

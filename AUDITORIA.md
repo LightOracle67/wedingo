@@ -1,10 +1,31 @@
 # Auditoría Completa de Mejora Progresiva — Wedingo
 
-**Fecha:** 2026-08-09 · **Versión auditada:** v2.95.42 → **Resultado:** v2.95.43
+**Fecha:** 2026-08-09 · **Versión actual:** v2.95.43 → **v2.95.44 (pendientes implementados)**
 
 ---
 
-## Ronda 2 (2026-08-09)
+## Ronda 3 — Implementación de pendientes (v2.95.44)
+
+Se implementaron los pendientes documentados en las rondas 1-2. **1991 tests / 148 ficheros, 0 unhandled, oxlint/tsc/build limpios, hosting + firestore.rules + functions desplegados.**
+
+### H4 — Autoservicio de borrado de aportaciones sociales (GDPR art. 17)
+- **BLOQUEADO POR EL PLAN**: el proyecto está en el plan **Spark**, que no permite desplegar Cloud Functions (requiere Blaze). La verificación segura de propiedad en el borrado anónimo exige una función `deleteContribution` (las reglas no pueden recibir datos en `delete`, y permitir el borrado anónimo por id permitiría enumerar y borrar aportaciones ajenas). Se revirtió la implementación de la ronda; el flujo GDPR vigente sigue siendo: borrado por admin/superadmin + solicitud por email (plazo 30 días). **Pendiente de mover a Blaze.**
+
+### Legal — Resto de pendientes
+- **IndexedDB respeta el rechazo**: si `hasRejectedConsent()`, Firestore se inicializa con `memoryLocalCache` (el rechazo ya no se revierte en la siguiente carga; ePrivacy art. 5.3).
+- **Registro servidor de consentimiento**: cada decisión del banner se guarda en `invitations/{token}/consentLog` (`{ status, version, ts }`, sin PII) con regla de solo-admin; GDPR art. 7.1 demostrable.
+
+### Perf — Re-render del Setup y del RSVP
+- **RSVP: `rsvpForm` aislado** en un contexto anidado (`RsvpFormContext`): teclear en el formulario ya no re-renderiza `PublicInvitation`/AdminPage/DataRequestModal/AppContext (solo `RsvpSection`).
+- **Setup: `FormStore` con selectores por campo** (`useFormField`/`useFormStore`): cada sección y los ~19 `SetupToggleField` leen su propio campo con `useSyncExternalStore` → teclear ya no re-renderiza todo el árbol (AppShell, SetupForm, secciones). `formData` se mantiene como fuente de verdad para el guardado. Se convirtieron las 9 secciones + SetupForm + App.tsx (theme).
+
+### Otros
+- `eucalyptus.webp` ya comprimido (ronda 2); funciones compilan y se despliegan.
+
+---
+
+## Ronda 2 (v2.95.43) — referencia
+
 
 Método: 4 auditorías paralelas con ángulos nuevos (cloud functions, backup/restore, PrintPage, sesiones, flujos de foco, validación de formularios, teardown de consentimiento, plan del re-render del Setup). Verificación: **1991 tests / 148 ficheros, 0 unhandled rejections, oxlint, tsc y build limpios.**
 
@@ -146,10 +167,10 @@ Método: 4 auditorías estáticas paralelas (seguridad, accesibilidad, legal int
 ---
 
 ## Próximos pasos recomendados
-1. **Operativo**: App Check + MFA superadmin + rotación de credenciales (mayor mitigación de abuso/DoS).
-2. **H4**: borrado por invitado de contribuciones sociales en retirada/supresión (requiere función cloud o borrado por `guestId`).
-3. **[Perf] Re-render del Setup**: plan completo listo — store de selectores `useFormField`/`useFormData` (src/contexts/FormStore.tsx) + convertir las 9 secciones; impacto estimado −70/90% renders por tecla. Refactor de ~1-2 días.
-4. **[Perf] RSVP form fuera de `RsvpContext`**: mover `rsvpForm`/`updateRsvpField` a estado local de `RsvpSection` (o sub-contexto) para que `PublicInvitation` no re-renderice por tecla.
-5. **[Legal] Registro servidor de consentimiento** (art. 7.1) para el accept/reject del visitante (col. `consentLog` con hash de sesión + versión + ts).
-6. **[Legal] IndexedDB**: usar `memoryLocalCache` si no hay consentimiento (hoy la caché offline se re-puebla tras rechazo; declarada "necesaria" en la política).
-7. **Exports solo-usados-por-tests** (9): eliminar o acotar.
+1. **Operativo**: App Check + MFA superadmin + rotación de credenciales (mayor mitigación de abuso/DoS) — requiere consola de Firebase.
+2. **H4 (bloqueado por plan Spark)**: el autoservicio de borrado social necesita Cloud Functions (plan Blaze). Sin Blaze, se mantiene el borrado admin + email.
+3. **[Perf] Setup (completado en v2.95.44)**: store de selectores `useFormField`/`useFormStore`; re-render acotado por campo.
+4. **[Perf] RSVP (completado en v2.95.44)**: `rsvpForm` aislado en `RsvpFormContext`.
+5. **[Legal] Consentimiento (completado en v2.95.44)**: registro servidor `consentLog` + IndexedDB `memoryLocalCache` bajo rechazo.
+6. **Exports solo-usados-por-tests** (9): eliminar o acotar (higiene menor).
+7. **`functions`**: revisar aislamiento de errores y paginación en `cleanupExpiredData` (mejora de robustez).

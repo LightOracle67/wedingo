@@ -4,11 +4,13 @@ import {
   collectionGroup,
   doc,
   initializeFirestore,
+  memoryLocalCache,
   persistentLocalCache,
   persistentMultipleTabManager,
 } from "firebase/firestore";
 import type { Auth } from "firebase/auth";
 import type { FirebaseStorage } from "firebase/storage";
+import { hasRejectedConsent } from "./storage";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -20,9 +22,15 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-// Persistencia local en IndexedDB: la invitación ya visitada se lee offline
-// (y las imágenes/audio cifrados se descifran localmente). La limpieza se
-// gestiona en el flujo de "Eliminar mis datos".
+// Persistencia local: la invitación ya visitada se lee offline (y las
+// imágenes/audio cifrados se descifran localmente). La limpieza se gestiona
+// en el flujo de "Eliminar mis datos".
+//
+// ePrivacy art. 5.3: si el visitante ya REchazó el consentimiento, NO se
+// persiste nada en IndexedDB (memoryLocalCache) — el borrado al rechazar no
+// se revierte en la siguiente carga. En el primer acceso (sin decisión) se
+// usa la caché persistente y el banner decide; si se rechaza, la próxima
+// carga ya arranca en modo memoria.
 //
 // DECISIÓN (evaluado v2.95.20): multi-tab se mantiene a propósito. El
 // single-tab ahorra ~3.4 kB gzip del bundle total (158.1 → 154.8 kB en
@@ -31,7 +39,9 @@ export const app = initializeApp(firebaseConfig);
 // mientras la invitación pública se abre en otra (o se contesta el RSVP)
 // vería datos obsoletos. El coste no justifica la pérdida de coherencia.
 export const db = initializeFirestore(app, {
-  localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
+  localCache: hasRejectedConsent()
+    ? memoryLocalCache()
+    : persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
 });
 
 /**

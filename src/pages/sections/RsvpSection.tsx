@@ -1,36 +1,12 @@
 import { memo, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useAppUI, useAuth } from "../../contexts";
+import { useConfig, useAppUI, useAuth, useRsvpFormContext } from "../../contexts";
 import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import { parseMenuDishes } from "../../lib/menu-utils";
 import { parseTransportDepartures } from "../../lib/transport-utils";
 import CornerDecorations from "../../components/CornerDecorations";
 
 const ALLERGIES = ["sin gluten", "sin lactosa", "alergia frutos secos", "alergia mariscos"];
-
-interface RsvpFormState {
-  guestName: string;
-  attendance: string;
-  birthDate: string;
-  companionCount: number;
-  companionNames: string[];
-  companionMenus: string[];
-  companionAllergies: string[][];
-  companionAllergiesOther: string[];
-  companionBirthDates?: string[];
-  companionParentalConsents?: boolean[];
-  companionHealthConsents?: boolean[];
-  companionTransportChoices?: string[];
-  companionTransportModes?: string[];
-  menuSelection: string;
-  allergies: string[];
-  allergiesOther: string;
-  parentalConsent: boolean;
-  privacyConsent: boolean;
-  healthConsent: boolean;
-  transportChoice: string;
-  transportMode: string;
-}
 
 interface Departure {
   type?: "bus" | "taxi";
@@ -41,7 +17,6 @@ interface Departure {
 interface RsvpSectionProps {
   style?: React.CSSProperties;
   className?: string;
-  rsvpForm: RsvpFormState;
   rsvpMessage?: string;
   isRsvpSubmitting?: boolean;
   hasSubmitted?: boolean;
@@ -49,8 +24,6 @@ interface RsvpSectionProps {
   /** Error de red al cargar las respuestas (botón "Reintentar" del invitado). */
   rsvpLoadError?: boolean;
   retryLoadRsvp?: () => void;
-  updateRsvpField: (field: string, value: string | boolean | number | string[] | string[][] | boolean[]) => void;
-  handleRsvpSubmit: (e: React.FormEvent) => void;
   handleDeleteRsvp: () => void;
   menuEnabled?: boolean;
   menuCarneDishes?: string;
@@ -59,22 +32,18 @@ interface RsvpSectionProps {
   menuTextoDishes?: string;
   transportEnabled?: string;
   transportDepartures?: string;
-  computeAge: (birthDate: string) => number | null;
   cornerDecoration?: string;
 }
 
 const RsvpSection = memo(function RsvpSection({
   style,
   className,
-  rsvpForm,
   rsvpMessage,
   isRsvpSubmitting,
   hasSubmitted,
   alreadySubmittedEntry,
   rsvpLoadError,
   retryLoadRsvp,
-  updateRsvpField,
-  handleRsvpSubmit,
   handleDeleteRsvp,
   menuEnabled,
   menuCarneDishes,
@@ -83,11 +52,14 @@ const RsvpSection = memo(function RsvpSection({
   menuTextoDishes,
   transportEnabled,
   transportDepartures,
-  computeAge,
   cornerDecoration,
 }: RsvpSectionProps) {
   const { t } = useTranslation();
   const { setLegalModal } = useAppUI();
+  // El formulario (rsvpForm/updateRsvpField/submit) viene del contexto anidado
+  // RsvpFormContext: solo esta sección lo consume, de modo que teclear en el
+  // RSVP NO re-renderiza PublicInvitation ni el resto de secciones.
+  const { rsvpForm, updateRsvpField, handleRsvpSubmit, computeAge } = useRsvpFormContext();
   // El botón "Retirar respuesta" solo funciona con sesión de admin (las reglas
   // Firestore exigen isSuperAdmin o hasActiveSession): para el invitado sin
   // sesión se oculta, ya que de otro modo se mostraría un botón que siempre

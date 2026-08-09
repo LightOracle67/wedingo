@@ -1,15 +1,16 @@
 import { useTranslation } from "react-i18next";
 import CharacterCounter from "../../components/CharacterCounter";
-import { useConfig } from "../../contexts";
+import { useConfig, useFormField } from "../../contexts";
 import SetupToggleField from "../SetupToggleField";
 
 export default function GiftsSectionForm({ prefix = "" }) {
-  const { formData, updateFormField } = useConfig();
+  const { updateFormField } = useConfig();
+  const bankInfo = useFormField("bankInfo");
+  const giftsInfo = useFormField("giftsInfo");
   const { t } = useTranslation();
 
   const id = (name: string) => `${prefix}${name}`;
 
-  const bankInfo = formData.bankInfo || "";
   const ibanLooksInvalid = (() => {
     const upper = bankInfo.trim().toUpperCase();
     if (!upper) return false;
@@ -26,12 +27,12 @@ export default function GiftsSectionForm({ prefix = "" }) {
         id={id}
       >
         <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
-          <CharacterCounter value={formData.giftsInfo || ""} max={2000} />
+          <CharacterCounter value={giftsInfo || ""} max={2000} />
         </p>
         <textarea
           id={id("giftsInfo")}
           className="setup-textarea"
-          value={formData.giftsInfo}
+          value={giftsInfo}
           onChange={(e) => updateFormField("giftsInfo", e.target.value.slice(0, 2000))}
           placeholder={t("setup.giftsInfoPlaceholder")}
           rows={4}
@@ -47,11 +48,11 @@ export default function GiftsSectionForm({ prefix = "" }) {
         id={id}
       >
         <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
-          <CharacterCounter value={formData.bankInfo || ""} max={100} />
+          <CharacterCounter value={bankInfo || ""} max={100} />
         </p>
         <input
           id={id("bankInfo")}
-          value={formData.bankInfo}
+          value={bankInfo}
           onChange={(e) => updateFormField("bankInfo", e.target.value.slice(0, 100))}
           placeholder={t("setup.bankInfoPlaceholder")}
           autoComplete="off"

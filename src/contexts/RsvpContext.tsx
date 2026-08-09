@@ -3,7 +3,7 @@ import { useRsvp } from "../hooks/useRsvp";
 import { useConfig } from "./useConfig";
 import { useAppUI } from "./useAppUI";
 import { useAuth } from "./useAuth";
-import { RsvpContext } from "./useRsvpContext";
+import { RsvpContext, RsvpFormContext } from "./useRsvpContext";
 
 export function RsvpProvider({ children }: { children: React.ReactNode }) {
   const { setAdminMessage, setAdminMessageType } = useAppUI();
@@ -20,10 +20,11 @@ export function RsvpProvider({ children }: { children: React.ReactNode }) {
     isAdminTokenLoggedIn,
   );
 
+  // Valor COMPARTIDO: estable durante la edición del formulario (sin
+  // rsvpForm). El formulario vive en RsvpFormContext (solo RsvpSection).
   const rsvpValue = useMemo(
     () => ({
       rsvpEntries: rsvp.rsvpEntries,
-      rsvpForm: rsvp.rsvpForm,
       rsvpMessage: rsvp.rsvpMessage,
       isRsvpSubmitting: rsvp.isRsvpSubmitting,
       hasSubmitted: rsvp.hasSubmitted,
@@ -31,15 +32,27 @@ export function RsvpProvider({ children }: { children: React.ReactNode }) {
       DIETARY_OPTIONS: rsvp.DIETARY_OPTIONS,
       rsvpLoadError: rsvp.rsvpLoadError,
       retryLoadRsvp: rsvp.retryLoadRsvp,
-      updateRsvpField: rsvp.updateRsvpField,
-      handleRsvpSubmit: rsvp.handleRsvpSubmit,
       handleDeleteRsvp: rsvp.handleDeleteRsvp,
       handleDeleteRsvpEntries: rsvp.handleDeleteRsvpEntries,
-      computeAge: rsvp.computeAge,
       handleClearRsvpEntries: rsvp.handleClearRsvpEntries,
     }),
     [rsvp],
   );
 
-  return <RsvpContext.Provider value={rsvpValue}>{children}</RsvpContext.Provider>;
+  // Valor del FORMULARIO: cambia por tecla; solo RsvpSection lo consume.
+  const rsvpFormValue = useMemo(
+    () => ({
+      rsvpForm: rsvp.rsvpForm,
+      updateRsvpField: rsvp.updateRsvpField,
+      handleRsvpSubmit: rsvp.handleRsvpSubmit,
+      computeAge: rsvp.computeAge,
+    }),
+    [rsvp],
+  );
+
+  return (
+    <RsvpContext.Provider value={rsvpValue}>
+      <RsvpFormContext.Provider value={rsvpFormValue}>{children}</RsvpFormContext.Provider>
+    </RsvpContext.Provider>
+  );
 }

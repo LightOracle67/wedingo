@@ -24,16 +24,19 @@ vi.mock("../../../lib/constants", () => ({
   SCHEDULE_EVENT_EMOJIS: ["ðŸ’", "ðŸ¥‚", "ðŸŽ‰"],
 }));
 
-const mockFormData = vi.hoisted(() => ({
-  weddingSiteURL: "",
-  weddingSiteURLEnabled: "true",
-  weddingHour: "",
-  weddingMinute: "",
-  weddingDay: "",
-  weddingYear: "",
-  weddingScheduleEvents: "",
-  weddingMapStatic: "",
-}));
+const mockFormData = vi.hoisted(
+  () =>
+    ({
+      weddingSiteURL: "",
+      weddingSiteURLEnabled: "true",
+      weddingHour: "",
+      weddingMinute: "",
+      weddingDay: "",
+      weddingYear: "",
+      weddingScheduleEvents: "",
+      weddingMapStatic: "",
+    }) as Record<string, string | undefined>,
+);
 vi.mock("../../../lib/geo-utils", () => ({
   isValidGoogleMapsUrl: (url: string) => url.startsWith("https://maps.google.com"),
   convertToEmbedUrl: (url: string) => url.replace("maps.google.com", "maps.google.com/embed"),
@@ -41,6 +44,8 @@ vi.mock("../../../lib/geo-utils", () => ({
 }));
 
 vi.mock("../../../contexts", () => ({
+  useFormField: (field: string) => mockFormData[field] ?? "",
+  useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
   useConfig: () => ({
     config: { theme: "golden", menuEnabled: "true" },
     formData: mockFormData,

@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { useConfig } from "../contexts";
+import { useConfig, useFormField } from "../contexts";
 
 interface SetupToggleFieldProps {
   /** Campo *Enabled que activa/oculta el input. */
@@ -16,10 +16,14 @@ interface SetupToggleFieldProps {
  * un checkbox que, al seleccionarse, muestra el input que lo acompaña. Si el
  * input se deja vacío, la sección correspondiente se desactiva (lo decide
  * sectionHasContent al guardar). Centraliza el patrón para todos los campos.
+ *
+ * El valor del toggle se lee con useFormField (re-render acotado a este campo,
+ * no a todo el árbol del Setup cuando se teclea en otro campo).
  */
 export default function SetupToggleField({ enabledField, label, hint, id, children }: SetupToggleFieldProps) {
-  const { formData, updateFormField } = useConfig();
-  const enabled = formData[enabledField] === "true";
+  const { updateFormField } = useConfig();
+  const enabledValue = useFormField(enabledField);
+  const enabled = enabledValue === "true";
   const toggle = () => updateFormField(enabledField, enabled ? "false" : "true");
 
   return (

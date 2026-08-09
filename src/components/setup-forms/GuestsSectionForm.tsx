@@ -1,21 +1,34 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig } from "../../contexts";
+import { useConfig, useFormField } from "../../contexts";
 import { MAX_DRESS_CODE_CUSTOM_LENGTH } from "../../lib/constants";
 import MenuDishEditor from "../MenuDishEditor";
 import MapUrlField from "../MapUrlField";
 import SetupToggleField from "../SetupToggleField";
 
 export default function GuestsSectionForm({ prefix = "" }) {
-  const { formData, updateFormField } = useConfig();
+  const { updateFormField } = useConfig();
+  const accommodationMapMode = useFormField("accommodationMapMode");
+  const accommodationURL = useFormField("accommodationURL");
+  const kidsPolicy = useFormField("kidsPolicy");
+  const menuEnabled = useFormField("menuEnabled");
+  const menuTextoDishes = useFormField("menuTextoDishes");
+  const weddingDressCode = useFormField("weddingDressCode");
+  const weddingDressCodeCustom = useFormField("weddingDressCodeCustom");
+  const menuCarneDishes = useFormField("menuCarneDishes");
+  const menuPescadoDishes = useFormField("menuPescadoDishes");
+  const menuVeganoDishes = useFormField("menuVeganoDishes");
+  // Lookup por clave de plato para los editores (el hook no puede llamarse
+  // dentro del .map de render).
+  const dishValues: Record<string, string> = { menuCarneDishes, menuPescadoDishes, menuVeganoDishes };
   const id = (name: string) => `${prefix}${name}`;
   const { t } = useTranslation();
 
   const handleKidsPolicyChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      updateFormField("kidsPolicy", formData.kidsPolicy === e.currentTarget.value ? "" : e.currentTarget.value);
+      updateFormField("kidsPolicy", kidsPolicy === e.currentTarget.value ? "" : e.currentTarget.value);
     },
-    [updateFormField, formData.kidsPolicy],
+    [updateFormField, kidsPolicy],
   );
 
   const handleMenuEnabledChange = useCallback(
@@ -32,10 +45,10 @@ export default function GuestsSectionForm({ prefix = "" }) {
    */
   const handleDressCodeChange = useCallback(
     (value: string) => {
-      const next = formData.weddingDressCode === value ? "" : value;
+      const next = weddingDressCode === value ? "" : value;
       updateFormField("weddingDressCode", next);
     },
-    [formData.weddingDressCode, updateFormField],
+    [weddingDressCode, updateFormField],
   );
 
   return (
@@ -68,7 +81,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
               <input
                 id={id("kids-" + value)}
                 type="checkbox"
-                checked={formData.kidsPolicy === value}
+                checked={kidsPolicy === value}
                 onChange={handleKidsPolicyChange}
                 value={value}
                 style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
@@ -118,7 +131,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
                       .replace(/[^a-z0-9]+/g, "-"),
                 )}
                 type="checkbox"
-                checked={formData.weddingDressCode === value}
+                checked={weddingDressCode === value}
                 onChange={() => handleDressCodeChange(value)}
                 style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
               />
@@ -126,7 +139,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
             </label>
           ))}
         </div>
-        {formData.weddingDressCode === "Otro" ? (
+        {weddingDressCode === "Otro" ? (
           <div className="setup-field" style={{ marginTop: "0.6rem" }}>
             <label className="setup-label" htmlFor={id("dressCodeCustom")}>
               {t("setup.dressCodeCustomLabel")}
@@ -135,7 +148,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
               id={id("dressCodeCustom")}
               type="text"
               className="setup-input"
-              value={formData.weddingDressCodeCustom || ""}
+              value={weddingDressCodeCustom || ""}
               onChange={(e) =>
                 updateFormField("weddingDressCodeCustom", e.target.value.slice(0, MAX_DRESS_CODE_CUSTOM_LENGTH))
               }
@@ -168,14 +181,14 @@ export default function GuestsSectionForm({ prefix = "" }) {
         <input
           id={id("menuEnabled")}
           type="checkbox"
-          checked={formData.menuEnabled === "true"}
+          checked={menuEnabled === "true"}
           onChange={handleMenuEnabledChange}
           style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
         />
         <span>{t("setup.menuEnabledLabel")}</span>
       </label>
 
-      {formData.menuEnabled === "true" ? (
+      {menuEnabled === "true" ? (
         <>
           <p className="setup-help" id={id("menuHint")} style={{ marginBottom: "0.4rem" }}>
             {t("setup.menuHint")}
@@ -194,7 +207,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
                 {t(labelKey)}
               </p>
               <MenuDishEditor
-                value={(formData[dishes] as string) || ""}
+                value={dishValues[dishes] || ""}
                 onChange={(json) => updateFormField(dishes, json)}
                 idBase={id(dishes)}
               />
@@ -208,7 +221,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
             {t("setup.menuTextoLabel")}
           </p>
           <MenuDishEditor
-            value={formData.menuTextoDishes || ""}
+            value={menuTextoDishes || ""}
             onChange={(json) => updateFormField("menuTextoDishes", json)}
             idBase={id("menuTextoDishes")}
           />
@@ -227,7 +240,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
       >
         <MapUrlField
           id={id("accommodationURL")}
-          value={formData.accommodationURL || ""}
+          value={accommodationURL || ""}
           onChange={(url) => updateFormField("accommodationURL", url)}
           placeholder={t("setup.accommodationUrlPlaceholder")}
           placeHintId={id("accommodationPlace")}
@@ -239,7 +252,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
         <select
           id={id("accommodationMapMode")}
           className="setup-input"
-          value={formData.accommodationMapMode || "iframe"}
+          value={accommodationMapMode || "iframe"}
           onChange={(e) => updateFormField("accommodationMapMode", e.target.value)}
           aria-describedby={id("accommodationMapModeHint")}
         >

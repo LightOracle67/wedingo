@@ -15,6 +15,8 @@ const mockFormData = vi.hoisted(
 );
 
 vi.mock("../../../contexts", () => ({
+  useFormField: (field: string) => mockFormData[field] ?? "",
+  useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
   useConfig: () => ({
     config: { theme: "golden", menuEnabled: "true" },
     formData: mockFormData,

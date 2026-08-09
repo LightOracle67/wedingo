@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useAuth } from "../../contexts";
+import { useConfig, useFormField, useAuth } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
 
 interface AccessSectionFormProps {
@@ -16,7 +16,8 @@ export default function AccessSectionForm({
   tokenAcknowledged = false,
   onTokenAcknowledge,
 }: AccessSectionFormProps) {
-  const { formData, updateFormField, hasStoredConfig } = useConfig();
+  const { updateFormField, hasStoredConfig } = useConfig();
+  const adminUsername = useFormField("adminUsername");
   const { setupToken } = useAuth();
   const { t } = useTranslation();
   const { addToast } = useToast();
@@ -45,7 +46,7 @@ export default function AccessSectionForm({
       <input
         id={id("adminUsername")}
         className="setup-input"
-        value={formData.adminUsername}
+        value={adminUsername}
         onChange={(e) =>
           updateFormField(
             "adminUsername",

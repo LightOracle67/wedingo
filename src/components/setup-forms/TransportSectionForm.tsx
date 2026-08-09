@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig } from "../../contexts";
+import { useConfig, useFormField } from "../../contexts";
 import { useJsonArrayField } from "../../hooks/useJsonArrayField";
 import MapUrlField from "../MapUrlField";
 
@@ -13,7 +13,10 @@ interface Departure {
 const MAX_DEPARTURES = 4;
 
 export default function TransportSectionForm({ prefix = "" }) {
-  const { formData, updateFormField } = useConfig();
+  const { updateFormField } = useConfig();
+  const transportDepartures = useFormField("transportDepartures");
+  const transportEnabled = useFormField("transportEnabled");
+  const transportMapMode = useFormField("transportMapMode");
   const { t } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
@@ -32,7 +35,7 @@ export default function TransportSectionForm({ prefix = "" }) {
     addItem: addDeparture,
     removeItem: removeDeparture,
     updateItem: updateDeparture,
-  } = useJsonArrayField<Departure>(formData.transportDepartures || "", normalizeDeparture, MAX_DEPARTURES);
+  } = useJsonArrayField<Departure>(transportDepartures || "", normalizeDeparture, MAX_DEPARTURES);
 
   const setDepartures = useCallback(
     (next: Departure[]) => {
@@ -41,7 +44,7 @@ export default function TransportSectionForm({ prefix = "" }) {
     [updateFormField],
   );
 
-  const enabled = (formData.transportEnabled || "none") as "none" | "bus" | "taxi" | "both";
+  const enabled = (transportEnabled || "none") as "none" | "bus" | "taxi" | "both";
 
   const handleEnabledChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -86,7 +89,7 @@ export default function TransportSectionForm({ prefix = "" }) {
       <select
         id={id("transportEnabled")}
         className="setup-input"
-        value={formData.transportEnabled || "none"}
+        value={transportEnabled || "none"}
         onChange={handleEnabledChange}
         aria-describedby={id("transportEnabledHint")}
       >
@@ -108,7 +111,7 @@ export default function TransportSectionForm({ prefix = "" }) {
           <select
             id={id("transportMapMode")}
             className="setup-input"
-            value={formData.transportMapMode || "iframe"}
+            value={transportMapMode || "iframe"}
             onChange={(e) => updateFormField("transportMapMode", e.target.value)}
             aria-describedby={id("transportMapModeHint")}
           >

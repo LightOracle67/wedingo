@@ -6,14 +6,19 @@ vi.mock("react-i18next", () => ({
   Trans: ({ i18nKey }: { i18nKey: string }) => i18nKey,
 }));
 
-vi.mock("../../../contexts", () => ({
-  useApp: () => ({ setLegalModal: vi.fn() }),
-  useAppUI: () => ({ setLegalModal: vi.fn() }),
-  useConfig: () => ({ config: {} }),
-  useAuth: () => ({ isAdminTokenLoggedIn: true }),
-}));
+vi.mock("../../../contexts", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("../../../contexts")>();
+  return {
+    ...actual,
+    useApp: () => ({ setLegalModal: vi.fn() }),
+    useAppUI: () => ({ setLegalModal: vi.fn() }),
+    useConfig: () => ({ config: {} }),
+    useAuth: () => ({ isAdminTokenLoggedIn: true }),
+  };
+});
 
 import RsvpSection from "../RsvpSection";
+import { RsvpFormContext, type RsvpFormValue } from "../../../contexts/useRsvpContext";
 
 const baseForm = {
   guestName: "",
@@ -24,8 +29,13 @@ const baseForm = {
   companionMenus: [],
   companionAllergies: [],
   companionAllergiesOther: [],
+  companionBirthDates: [],
+  companionParentalConsents: [],
+  companionHealthConsents: [],
   companionTransportChoices: [],
   companionTransportModes: [],
+  companionTransportTimes: [],
+  companionTransportPlaces: [],
   menuSelection: "",
   allergies: [],
   allergiesOther: "",
@@ -34,6 +44,8 @@ const baseForm = {
   healthConsent: false,
   transportChoice: "own",
   transportMode: "own",
+  transportTime: "",
+  transportPlace: "",
 };
 
 const baseProps = {
@@ -59,9 +71,30 @@ const baseProps = {
 
 const updateRsvpField = baseProps.updateRsvpField as ReturnType<typeof vi.fn>;
 
+/**
+ * Wrapper que provee el formulario vía RsvpFormContext (el componente ya no lo
+ * recibe por props): los tests siguen controlando rsvpForm/updateRsvpField/
+ * handleRsvpSubmit/computeAge como si fueran props del wrapper.
+ */
+function WrappedRsvp(props: Record<string, unknown>) {
+  const { rsvpForm: _f, updateRsvpField: _u, handleRsvpSubmit: _h, computeAge: _c, ...rest } = props;
+  return (
+    <RsvpFormContext.Provider
+      value={{
+        rsvpForm: (props.rsvpForm as typeof baseForm) ?? baseForm,
+        updateRsvpField: (props.updateRsvpField as RsvpFormValue["updateRsvpField"]) ?? (updateRsvpField as unknown as RsvpFormValue["updateRsvpField"]),
+        handleRsvpSubmit: (props.handleRsvpSubmit as (e: React.FormEvent) => void) ?? (() => {}),
+        computeAge: (props.computeAge as (d: string) => number | null) ?? (() => 0),
+      }}
+    >
+      <RsvpSection {...(rest as unknown as React.ComponentProps<typeof RsvpSection>)} />
+    </RsvpFormContext.Provider>
+  );
+}
+
 describe("RsvpSection", () => {
   it("renders the form in default state", () => {
-    render(<RsvpSection {...baseProps} />);
+    render(<WrappedRsvp {...baseProps} />);
     expect(screen.getByText("rsvp.sectionLabel")).toBeDefined();
     expect(screen.getByText("rsvp.title")).toBeDefined();
     expect(screen.getByText("rsvp.description")).toBeDefined();
@@ -69,37 +102,35 @@ describe("RsvpSection", () => {
   });
 
   it("shows submitting state", () => {
-    render(<RsvpSection {...baseProps} isRsvpSubmitting={true} />);
+    render(<WrappedRsvp {...baseProps} isRsvpSubmitting={true} />);
     expect(screen.getByText("rsvp.submittingButton")).toBeDefined();
   });
 
   it("shows confirmed state when already submitted", () => {
-    render(<RsvpSection {...baseProps} hasSubmitted={true} />);
+    render(<WrappedRsvp {...baseProps} hasSubmitted={true} />);
     expect(screen.getByText("rsvp.confirmedButton")).toBeDefined();
   });
 
   it("shows already submitted badge", () => {
-    render(<RsvpSection {...baseProps} alreadySubmittedEntry={{ id: "1" }} />);
+    render(<WrappedRsvp {...baseProps} alreadySubmittedEntry={{ id: "1" }} />);
     expect(screen.getByText("rsvp.alreadySubmitted")).toBeDefined();
     expect(screen.getByText("rsvp.withdrawButton")).toBeDefined();
   });
 
   it("calls handleDeleteRsvp when withdraw clicked", () => {
     const handleDeleteRsvp = vi.fn();
-    render(<RsvpSection {...baseProps} alreadySubmittedEntry={{ id: "1" }} handleDeleteRsvp={handleDeleteRsvp} />);
+    render(<WrappedRsvp {...baseProps} alreadySubmittedEntry={{ id: "1" }} handleDeleteRsvp={handleDeleteRsvp} />);
     fireEvent.click(screen.getByText("rsvp.withdrawButton"));
     expect(handleDeleteRsvp).toHaveBeenCalled();
   });
 
   it("renders attendance select with with option", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "with" }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with" }} />);
     expect(screen.getByText("rsvp.attendingWithCompanions")).toBeDefined();
   });
 
   it("shows companion cards when companionCount > 0", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{
           ...baseForm,
           attendance: "with",
@@ -115,19 +146,17 @@ describe("RsvpSection", () => {
   });
 
   it("does not show companion count when attendance is alone", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
     expect(screen.queryByText((text: string) => text.includes("rsvp.companionCountLabel"))).toBeNull();
   });
 
   it("does not show companion count when attendance is no", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "no" }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "no" }} />);
     expect(screen.queryByText((text: string) => text.includes("rsvp.companionCountLabel"))).toBeNull();
   });
 
   it("shows structured menu when enabled and attending", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         menuEnabled={true}
         menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
       />,
@@ -136,9 +165,7 @@ describe("RsvpSection", () => {
   });
 
   it("shows menu dishes when no structured menu", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         menuEnabled={true}
         menuTextoDishes={JSON.stringify([{ order: "entrante", text: "Ensalada" }])}
       />,
@@ -148,9 +175,7 @@ describe("RsvpSection", () => {
   });
 
   it("shows formatted dishes for the fixed menu", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         menuEnabled={true}
         menuTextoDishes={JSON.stringify([
           { order: "entrante", text: "Ensalada" },
@@ -163,9 +188,7 @@ describe("RsvpSection", () => {
   });
 
   it("shows the fixed menu without a selector when menu is disabled", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
         menuEnabled={false}
         menuTextoDishes={JSON.stringify([
@@ -181,15 +204,13 @@ describe("RsvpSection", () => {
   });
 
   it("does not show the fixed menu when there are no dishes", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} menuEnabled={false} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} menuEnabled={false} />);
     expect(screen.queryByText("rsvp.menuLabel")).toBeNull();
     expect(document.getElementById("rsvpMenu")).toBeNull();
   });
 
   it("shows the dish description when a selectable menu option is chosen", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone", menuSelection: "carne" }}
         menuEnabled={true}
         menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
@@ -199,9 +220,7 @@ describe("RsvpSection", () => {
   });
 
   it("shows health consent when allergies exist", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{
           ...baseForm,
           attendance: "alone",
@@ -213,14 +232,12 @@ describe("RsvpSection", () => {
   });
 
   it("shows feedback message when rsvpMessage is set", () => {
-    render(<RsvpSection {...baseProps} rsvpMessage="Thank you!" />);
+    render(<WrappedRsvp {...baseProps} rsvpMessage="Thank you!" />);
     expect(screen.getByText("Thank you!")).toBeDefined();
   });
 
   it("shows companion cards with menu and allergies when companionCount > 0 and menu enabled", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         menuEnabled={true}
         menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
         rsvpForm={{
@@ -238,9 +255,7 @@ describe("RsvpSection", () => {
   });
 
   it("shows companion remove buttons when more than 1 companion", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{
           ...baseForm,
           attendance: "with",
@@ -255,30 +270,28 @@ describe("RsvpSection", () => {
   });
 
   it("shows allergies hint when not menuEnabled and attending", () => {
-    render(<RsvpSection {...baseProps} menuEnabled={false} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
+    render(<WrappedRsvp {...baseProps} menuEnabled={false} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
     expect(screen.getByText("rsvp.allergiesHint")).toBeDefined();
   });
 
   it("shows allergies checkboxes when attending", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
     expect(screen.getByText("rsvp.allergiesLegend")).toBeDefined();
   });
 
   it("hides allergies section when not attending", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "no" }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "no" }} />);
     expect(screen.queryByText("rsvp.allergiesLegend")).toBeNull();
   });
 
   it("shows age warning when under 14", () => {
-    render(<RsvpSection {...baseProps} computeAge={() => 10} rsvpForm={{ ...baseForm, birthDate: "2016-01-01" }} />);
+    render(<WrappedRsvp {...baseProps} computeAge={() => 10} rsvpForm={{ ...baseForm, birthDate: "2016-01-01" }} />);
     expect(screen.getByText("rsvp.ageUnder14Warning")).toBeDefined();
     expect(screen.getByText("rsvp.parentalConsent")).toBeDefined();
   });
 
   it("does not show transport select when no departures defined", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
         transportEnabled="bus"
         transportDepartures=""
@@ -288,9 +301,7 @@ describe("RsvpSection", () => {
   });
 
   it("shows transport radios with departures and own car for the main guest", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
         transportEnabled="both"
         transportDepartures={JSON.stringify([
@@ -306,9 +317,7 @@ describe("RsvpSection", () => {
   });
 
   it("hides bus option when only taxi is enabled", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
         transportEnabled="taxi"
         transportDepartures={JSON.stringify([{ type: "taxi", time: "14:30", url: "" }])}
@@ -321,9 +330,7 @@ describe("RsvpSection", () => {
 
   it("shows the departure select after choosing bus and preselects the first departure", () => {
     const update = baseProps.updateRsvpField as ReturnType<typeof vi.fn>;
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
         transportEnabled="both"
         transportDepartures={JSON.stringify([
@@ -340,9 +347,7 @@ describe("RsvpSection", () => {
 
   it("shows only bus departures when taxi is chosen", () => {
     const update = baseProps.updateRsvpField as ReturnType<typeof vi.fn>;
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "taxi", transportChoice: "1" }}
         transportEnabled="both"
         transportDepartures={JSON.stringify([
@@ -360,9 +365,7 @@ describe("RsvpSection", () => {
   });
 
   it("shows the departure place name in the options when the URL is valid", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "bus", transportChoice: "0" }}
         transportEnabled="bus"
         transportDepartures={JSON.stringify([
@@ -376,9 +379,7 @@ describe("RsvpSection", () => {
 
   it("stores time and place when changing the departure", () => {
     const update = baseProps.updateRsvpField as ReturnType<typeof vi.fn>;
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "bus", transportChoice: "0" }}
         transportEnabled="bus"
         transportDepartures={JSON.stringify([
@@ -394,9 +395,7 @@ describe("RsvpSection", () => {
   });
 
   it("labels departures with the 24h time", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "bus", transportChoice: "0" }}
         transportEnabled="bus"
         transportDepartures={JSON.stringify([
@@ -413,9 +412,7 @@ describe("RsvpSection", () => {
   });
 
   it("shows transport radios inside each companion card", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }}
         transportEnabled="bus"
         transportDepartures={JSON.stringify([{ type: "bus", time: "12:00", url: "" }])}
@@ -428,16 +425,14 @@ describe("RsvpSection", () => {
   });
 
   it("updates attendance via the attendance select", () => {
-    render(<RsvpSection {...baseProps} />);
+    render(<WrappedRsvp {...baseProps} />);
     const select = document.getElementById("rsvpAttendance") as HTMLSelectElement;
     fireEvent.change(select, { target: { value: "with" } });
     expect(updateRsvpField).toHaveBeenCalledWith("attendance", "with");
   });
 
   it("updates the menu selection via the menu select", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         menuEnabled
         menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
@@ -449,9 +444,7 @@ describe("RsvpSection", () => {
   });
 
   it("updates the main transport departure", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "bus", transportChoice: "0" }}
         transportEnabled="both"
         transportDepartures={JSON.stringify([
@@ -466,16 +459,14 @@ describe("RsvpSection", () => {
   });
 
   it("updates allergiesOther when typed", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone", allergies: ["sin gluten"] }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone", allergies: ["sin gluten"] }} />);
     const input = screen.getByPlaceholderText("rsvp.allergiesPlaceholder");
     fireEvent.change(input, { target: { value: "alergia al huevo" } });
     expect(updateRsvpField).toHaveBeenCalledWith("allergiesOther", "alergia al huevo");
   });
 
   it("updates a companion menu selection", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         menuEnabled
         menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
         menuPescadoDishes={JSON.stringify([{ order: "primero", text: "Lubina" }])}
@@ -488,32 +479,32 @@ describe("RsvpSection", () => {
   });
 
   it("toggles an allergy checkbox", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
     fireEvent.click(screen.getByLabelText("rsvp.allergies.sin gluten"));
     expect(updateRsvpField).toHaveBeenCalledWith("allergies", ["sin gluten"]);
   });
 
   it("removes an allergy when unchecked", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone", allergies: ["sin gluten"] }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone", allergies: ["sin gluten"] }} />);
     fireEvent.click(screen.getByLabelText("rsvp.allergies.sin gluten"));
     expect(updateRsvpField).toHaveBeenCalledWith("allergies", []);
   });
 
   it("toggles the health consent when allergies are present", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone", allergies: ["sin gluten"] }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone", allergies: ["sin gluten"] }} />);
     fireEvent.click(screen.getByLabelText("rsvp.healthConsent"));
     expect(updateRsvpField).toHaveBeenCalledWith("healthConsent", true);
   });
 
   it("toggles the parental consent when the guest is under 14", () => {
     const props = { ...baseProps, computeAge: vi.fn(() => 10) };
-    render(<RsvpSection {...props} rsvpForm={{ ...baseForm, attendance: "alone", birthDate: "2015-01-01" }} />);
+    render(<WrappedRsvp {...props} rsvpForm={{ ...baseForm, attendance: "alone", birthDate: "2015-01-01" }} />);
     fireEvent.click(screen.getByLabelText("rsvp.parentalConsent"));
     expect(updateRsvpField).toHaveBeenCalledWith("parentalConsent", true);
   });
 
   it("toggles a companion allergy checkbox", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
     // El invitado principal y el acompañante muestran el mismo checkbox de alergia;
     // se verifica que alguno de ellos actualice el campo de alergias del acompañante.
     const boxes = screen.getAllByLabelText("rsvp.allergies.sin gluten");
@@ -523,7 +514,7 @@ describe("RsvpSection", () => {
   });
 
   it("updates a companion allergiesOther field", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
     const inputs = screen.getAllByPlaceholderText("rsvp.allergiesPlaceholder");
     fireEvent.change(inputs[0]!, { target: { value: "alergia al huevo" } });
     expect(updateRsvpField).toHaveBeenCalledWith("companionAllergiesOther", ["alergia al huevo"]);
@@ -531,9 +522,7 @@ describe("RsvpSection", () => {
 
   it("toggles a companion parental consent when the companion is under 14", () => {
     const props = { ...baseProps, computeAge: vi.fn(() => 10) };
-    render(
-      <RsvpSection
-        {...props}
+    render(<WrappedRsvp         {...props}
         rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1, companionBirthDates: ["2015-01-01"] }}
       />,
     );
@@ -542,9 +531,7 @@ describe("RsvpSection", () => {
   });
 
   it("toggles a companion health consent when the companion has allergies", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1, companionAllergies: [["sin gluten"]] }}
       />,
     );
@@ -553,9 +540,7 @@ describe("RsvpSection", () => {
   });
 
   it("shows the companion info banner when the submitted entry is a companion", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         alreadySubmittedEntry={{ id: "c1", rsvpType: "companion", mainGuestName: "Alice María Smith" }}
       />,
     );
@@ -563,22 +548,20 @@ describe("RsvpSection", () => {
   });
 
   it("adds a companion via the add button", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
     fireEvent.click(screen.getByText((text: string) => text.includes("rsvp.addCompanion")));
     expect(updateRsvpField).toHaveBeenCalledWith("companionCount", 2);
   });
 
   it("updates a companion birth date", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
     const input = document.getElementById("companion-birth-0") as HTMLInputElement;
     fireEvent.change(input, { target: { value: "2000-05-15" } });
     expect(updateRsvpField).toHaveBeenCalledWith("companionBirthDates", ["2000-05-15"]);
   });
 
   it("sets the departure place when the departure has a URL", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
         transportEnabled="bus"
         transportDepartures={JSON.stringify([
@@ -592,9 +575,7 @@ describe("RsvpSection", () => {
   });
 
   it("shows the departure select when the mode is already bus", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone", transportMode: "bus", transportChoice: "0" }}
         transportEnabled="bus"
         transportDepartures={JSON.stringify([{ type: "bus", time: "12:00", url: "" }])}
@@ -608,21 +589,19 @@ describe("RsvpSection", () => {
 
   it("does not require parental consent for guests aged 14 or older", () => {
     const props = { ...baseProps, computeAge: vi.fn(() => 20) };
-    render(<RsvpSection {...props} rsvpForm={{ ...baseForm, attendance: "alone", birthDate: "2000-01-01" }} />);
+    render(<WrappedRsvp {...props} rsvpForm={{ ...baseForm, attendance: "alone", birthDate: "2000-01-01" }} />);
     expect(screen.queryByText("rsvp.ageUnder14Warning")).toBeNull();
     expect(screen.queryByLabelText("rsvp.parentalConsent")).toBeNull();
   });
 
   it("renders no menu options when no dishes are configured", () => {
-    render(<RsvpSection {...baseProps} menuEnabled rsvpForm={{ ...baseForm, attendance: "alone" }} />);
+    render(<WrappedRsvp {...baseProps} menuEnabled rsvpForm={{ ...baseForm, attendance: "alone" }} />);
     expect(screen.queryByText("rsvp.menuCarne")).toBeNull();
     expect(screen.queryByText("rsvp.menuPescado")).toBeNull();
   });
 
   it("renders only the configured menu options", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         menuEnabled
         menuPescadoDishes={JSON.stringify([{ order: "first", text: "Merluza" }])}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
@@ -633,15 +612,13 @@ describe("RsvpSection", () => {
   });
 
   it("removes an allergy already selected", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone", allergies: ["sin gluten"] }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone", allergies: ["sin gluten"] }} />);
     fireEvent.click(screen.getByLabelText("rsvp.allergies.sin gluten"));
     expect(updateRsvpField).toHaveBeenCalledWith("allergies", []);
   });
 
   it("handles the taxi transport mode with departures", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
         transportEnabled="taxi"
         transportDepartures={JSON.stringify([{ type: "taxi", time: "12:30", url: "" }])}
@@ -652,9 +629,7 @@ describe("RsvpSection", () => {
   });
 
   it("defaults a departure without type to bus", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
         transportEnabled="bus"
         transportDepartures={JSON.stringify([{ time: "12:00", url: "" }])}
@@ -665,14 +640,12 @@ describe("RsvpSection", () => {
   });
 
   it("hides the health consent when attending without allergies", () => {
-    render(<RsvpSection {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone", allergies: [] }} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone", allergies: [] }} />);
     expect(screen.queryByLabelText("rsvp.healthConsent")).toBeNull();
   });
 
   it("renders only the vegan menu option when only vegan dishes exist", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         menuEnabled
         menuVeganoDishes={JSON.stringify([{ order: "first", text: "Hummus" }])}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
@@ -684,9 +657,7 @@ describe("RsvpSection", () => {
   });
 
   it("renders all menu options when every dish type is configured", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         menuEnabled
         menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
         menuPescadoDishes={JSON.stringify([{ order: "primero", text: "Merluza" }])}
@@ -700,9 +671,7 @@ describe("RsvpSection", () => {
   });
 
   it("renders the menu text dishes block when configured", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         menuEnabled
         menuTextoDishes={JSON.stringify([{ order: "primero", text: "Entrante" }])}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
@@ -713,9 +682,7 @@ describe("RsvpSection", () => {
   });
 
   it("renders the menu label for the first course order", () => {
-    render(
-      <RsvpSection
-        {...baseProps}
+    render(<WrappedRsvp         {...baseProps}
         menuEnabled
         menuCarneDishes={JSON.stringify([{ order: "first", text: "Solomillo" }])}
         rsvpForm={{ ...baseForm, attendance: "alone", menuSelection: "carne" }}
@@ -727,20 +694,20 @@ describe("RsvpSection", () => {
 
   it("does not crash when the allergies array is missing", () => {
     const minimal = { ...baseForm } as never;
-    render(<RsvpSection {...baseProps} rsvpForm={minimal} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={minimal} />);
     expect(screen.queryByText("rsvp.attendingLabel")).toBeDefined();
   });
 
   it("renders with a minimal form missing the optional companion arrays", () => {
     // Sin las arrays opcionales: los fallbacks (?.[i] || "", || []) se cubren.
     const minimal = { attendance: "with", guestName: "" } as never;
-    render(<RsvpSection {...baseProps} rsvpForm={minimal} />);
+    render(<WrappedRsvp {...baseProps} rsvpForm={minimal} />);
     expect(screen.queryByText("rsvp.attendingWithCompanions")).toBeDefined();
   });
 
   it("renders the companion form with existing values", () => {
     render(
-      <RsvpSection
+      <WrappedRsvp
         {...baseProps}
         menuEnabled
         menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}

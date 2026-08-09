@@ -137,7 +137,6 @@ export default function PublicInvitation() {
   // ─── Estado global del contexto (hooks granulares por dominio) ──
   const { config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink } = useConfig();
   const {
-    rsvpForm,
     rsvpEntries,
     rsvpMessage,
     isRsvpSubmitting,
@@ -145,11 +144,8 @@ export default function PublicInvitation() {
     alreadySubmittedEntry,
     rsvpLoadError,
     retryLoadRsvp,
-    handleRsvpSubmit,
-    updateRsvpField,
     handleDeleteRsvp,
     DIETARY_OPTIONS,
-    computeAge,
   } = useRsvpContext();
   const { isAdminTokenLoggedIn } = useAuth();
 
@@ -568,7 +564,6 @@ export default function PublicInvitation() {
    */
   const rsvpSectionProps = useMemo(
     () => ({
-      rsvpForm,
       rsvpEntries,
       rsvpMessage,
       isRsvpSubmitting,
@@ -576,14 +571,10 @@ export default function PublicInvitation() {
       alreadySubmittedEntry,
       rsvpLoadError,
       retryLoadRsvp,
-      updateRsvpField,
-      handleRsvpSubmit,
       handleDeleteRsvp,
       DIETARY_OPTIONS,
-      computeAge,
     }),
     [
-      rsvpForm,
       rsvpEntries,
       rsvpMessage,
       isRsvpSubmitting,
@@ -591,11 +582,8 @@ export default function PublicInvitation() {
       alreadySubmittedEntry,
       rsvpLoadError,
       retryLoadRsvp,
-      updateRsvpField,
-      handleRsvpSubmit,
       handleDeleteRsvp,
       DIETARY_OPTIONS,
-      computeAge,
     ],
   );
 

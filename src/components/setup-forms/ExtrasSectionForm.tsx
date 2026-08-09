@@ -1,6 +1,6 @@
 import { useCallback, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig } from "../../contexts";
+import { useConfig, useFormField, useFormStore } from "../../contexts";
 
 /**
  * Fila de extra: checkbox primero y título + hint después.
@@ -56,23 +56,38 @@ function ToggleRow({
  * aparece debajo del hint. Si el checkbox no estÃ¡ marcado, no hay input.
  */
 export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) {
-  const { formData, updateFormField } = useConfig();
+  const { updateFormField } = useConfig();
+  const formStore = useFormStore();
+  const giftList = useFormField("giftList");
+  const giftsListEnabled = useFormField("giftsListEnabled");
+  const rsvpDeadline = useFormField("rsvpDeadline");
+  const rsvpDeadlineEnabled = useFormField("rsvpDeadlineEnabled");
+  const trivia = useFormField("trivia");
+  const triviaEnabled = useFormField("triviaEnabled");
+  const welcomeVideo = useFormField("welcomeVideo");
+  const welcomeVideoEnabled = useFormField("welcomeVideoEnabled");
   const { t } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
-  // Toggle genÃ©rico para los switches.
+  // Lookup de los *Enabled para el render de filas (los hooks no pueden
+  // llamarse dentro del .map de renderToggleRow).
+  const enabledMap: Record<string, string> = { giftsListEnabled, rsvpDeadlineEnabled, triviaEnabled, welcomeVideoEnabled };
+
+  // Toggle genérico para los switches: lee el valor ACTUAL del campo desde la
+  // tienda (getField es síncrono y no necesita suscripción en el callback).
   const toggle = useCallback(
     (field: string) => () => {
-      updateFormField(field, formData[field] === "true" ? "false" : "true");
+      const current = formStore.getField(field);
+      updateFormField(field, current === "true" ? "false" : "true");
     },
-    [formData, updateFormField],
+    [formStore, updateFormField],
   );
 
   /** Editor de la lista de regalos (JSON de {id,name,description}): se edita
    *  como lÃ­neas "nombre | descripciÃ³n" y se convierte a JSON al guardar. */
   const giftListLines = (() => {
     try {
-      const parsed = JSON.parse(formData.giftList || "[]");
+      const parsed = JSON.parse(giftList || "[]");
       return Array.isArray(parsed)
         ? parsed
             .map((g: { name?: string; description?: string }) => `${g.name ?? ""} | ${g.description ?? ""}`)
@@ -104,7 +119,7 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
   /** Editor de la trivia (JSON de {q,a}): lÃ­neas "pregunta | respuesta". */
   const triviaLines = (() => {
     try {
-      const parsed = JSON.parse(formData.trivia || "[]");
+      const parsed = JSON.parse(trivia || "[]");
       return Array.isArray(parsed)
         ? parsed.map((tr: { q?: string; a?: string }) => `${tr.q ?? ""} | ${tr.a ?? ""}`).join("\n")
         : "";
@@ -133,7 +148,7 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
       field={field}
       label={label}
       {...(hint !== undefined ? { hint } : {})}
-      checked={formData[`${field}Enabled`] === "true"}
+      checked={enabledMap[`${field}Enabled`] === "true"}
       onToggle={toggle(`${field}Enabled`)}
       id={id}
     >
@@ -149,12 +164,12 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
 
         {/* Fecha lÃ­mite de RSVP */}
         {renderToggleRow("rsvpDeadline", t("setup.rsvpDeadlineLabel"), t("setup.rsvpDeadlineHint"))}
-        {formData.rsvpDeadlineEnabled === "true" ? (
+        {rsvpDeadlineEnabled === "true" ? (
           <input
             id={id("rsvpDeadline")}
             className="setup-input"
             type="date"
-            value={formData.rsvpDeadline || ""}
+            value={rsvpDeadline || ""}
             onChange={(e) => updateFormField("rsvpDeadline", e.target.value)}
           />
         ) : null}
@@ -164,7 +179,7 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
 
         {/* Lista de regalos */}
         {renderToggleRow("giftsList", t("setup.giftsListLabel"), t("setup.giftsListHint"))}
-        {formData.giftsListEnabled === "true" ? (
+        {giftsListEnabled === "true" ? (
           <>
             <p className="setup-help" id={id("giftListHint")}>
               {t("setup.giftListEditorHint")}
@@ -185,14 +200,14 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
 
         {/* VÃ­deo de bienvenida */}
         {renderToggleRow("welcomeVideo", t("setup.welcomeVideoLabel"), t("setup.welcomeVideoHint"))}
-        {formData.welcomeVideoEnabled === "true" ? (
+        {welcomeVideoEnabled === "true" ? (
           <input
             id={id("welcomeVideo")}
             className="setup-input"
             type="url"
             inputMode="url"
             autoComplete="url"
-            value={formData.welcomeVideo || ""}
+            value={welcomeVideo || ""}
             onChange={(e) => updateFormField("welcomeVideo", e.target.value.slice(0, 1000))}
             placeholder="https://..."
           />
@@ -206,7 +221,7 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
 
         {/* Trivia */}
         {renderToggleRow("trivia", t("setup.triviaLabel"), t("setup.triviaHint"))}
-        {formData.triviaEnabled === "true" ? (
+        {triviaEnabled === "true" ? (
           <>
             <p className="setup-help" id={id("triviaHint")}>
               {t("setup.triviaEditorHint")}

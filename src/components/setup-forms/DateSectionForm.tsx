@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig } from "../../contexts";
+import { useConfig, useFormField } from "../../contexts";
 import {
   MONTH_OPTIONS,
   MONTH_VALUE_TO_NUMBER,
@@ -20,25 +20,27 @@ interface ScheduleEvent {
 }
 
 export default function DateSectionForm({ prefix = "" }) {
-  const {
-    formData,
-    updateFormField,
-    handleDayChange,
-    handleYearChange,
-    handleTimeChange,
-    handleTimeBlur,
-    maxAllowedYear,
-  } = useConfig();
+  const { updateFormField, handleDayChange, handleYearChange, handleTimeChange, handleTimeBlur, maxAllowedYear } = useConfig();
+  const detailsMapMode = useFormField("detailsMapMode");
+  const weddingDay = useFormField("weddingDay");
+  const weddingHour = useFormField("weddingHour");
+  const weddingMapStatic = useFormField("weddingMapStatic");
+  const weddingMapView = useFormField("weddingMapView");
+  const weddingMinute = useFormField("weddingMinute");
+  const weddingMonth = useFormField("weddingMonth");
+  const weddingScheduleEvents = useFormField("weddingScheduleEvents");
+  const weddingSiteURL = useFormField("weddingSiteURL");
+  const weddingYear = useFormField("weddingYear");
   const { t, i18n } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
-  const siteUrl = formData.weddingSiteURL?.trim() || "";
+  const siteUrl = weddingSiteURL?.trim() || "";
   const isSiteUrlValid = siteUrl ? isValidGoogleMapsUrl(siteUrl) : false;
 
   const embedUrl = useMemo(() => {
     if (!isSiteUrlValid) return "";
-    return convertToEmbedUrl(siteUrl, formData.weddingMapView || "roadmap", i18n.language);
-  }, [siteUrl, isSiteUrlValid, formData.weddingMapView, i18n.language]);
+    return convertToEmbedUrl(siteUrl, weddingMapView || "roadmap", i18n.language);
+  }, [siteUrl, isSiteUrlValid, weddingMapView, i18n.language]);
 
   const siteName = useMemo(() => {
     if (!isSiteUrlValid) return "";
@@ -46,23 +48,23 @@ export default function DateSectionForm({ prefix = "" }) {
   }, [siteUrl, isSiteUrlValid]);
 
   const dayError = (() => {
-    const d = (formData.weddingDay || "").trim();
+    const d = (weddingDay || "").trim();
     if (!d) return false;
     return !/^(0?[1-9]|[12][0-9]|3[01])$/.test(d);
   })();
   const yearError = (() => {
-    const y = (formData.weddingYear || "").trim();
+    const y = (weddingYear || "").trim();
     if (!y) return false;
     const n = Number.parseInt(y, 10);
     return !Number.isFinite(n) || y.length !== 4 || n < new Date().getFullYear() - 120 || n > maxAllowedYear;
   })();
 
-  const hourNum = formData.weddingHour ? Number.parseInt(formData.weddingHour, 10) : NaN;
-  const minuteNum = formData.weddingMinute ? Number.parseInt(formData.weddingMinute, 10) : NaN;
+  const hourNum = weddingHour ? Number.parseInt(weddingHour, 10) : NaN;
+  const minuteNum = weddingMinute ? Number.parseInt(weddingMinute, 10) : NaN;
   const hourValid = Number.isFinite(hourNum) && hourNum >= 0 && hourNum <= 23;
   const minuteValid = Number.isFinite(minuteNum) && minuteNum >= 0 && minuteNum <= 59;
   const timeError = (() => {
-    if (!formData.weddingHour && !formData.weddingMinute) return false;
+    if (!weddingHour && !weddingMinute) return false;
     return !(hourValid && minuteValid);
   })();
   const timeValue =
@@ -83,7 +85,7 @@ export default function DateSectionForm({ prefix = "" }) {
     addItem: addScheduleEvent,
     removeItem: removeScheduleEvent,
     updateItem: updateScheduleEvent,
-  } = useJsonArrayField<ScheduleEvent>(formData.weddingScheduleEvents || "", normalizeEvent, MAX_SCHEDULE_EVENTS);
+  } = useJsonArrayField<ScheduleEvent>(weddingScheduleEvents || "", normalizeEvent, MAX_SCHEDULE_EVENTS);
 
   const handleScheduleEventField = useCallback(
     (index: number, field: "time" | "text" | "emoji") =>
@@ -109,7 +111,7 @@ export default function DateSectionForm({ prefix = "" }) {
       >
         <MapUrlField
           id={id("weddingSiteURL")}
-          value={formData.weddingSiteURL || ""}
+          value={weddingSiteURL || ""}
           onChange={(url) => updateFormField("weddingSiteURL", url)}
           placeholder={t("setup.mapUrlPlaceholder")}
           hidePlaceName
@@ -124,7 +126,7 @@ export default function DateSectionForm({ prefix = "" }) {
           <select
             id={id("weddingMapView")}
             className="setup-input"
-            value={formData.weddingMapView || "roadmap"}
+            value={weddingMapView || "roadmap"}
             onChange={(e) => updateFormField("weddingMapView", e.target.value)}
             aria-describedby={id("mapViewHint")}
           >
@@ -143,7 +145,7 @@ export default function DateSectionForm({ prefix = "" }) {
           <select
             id={id("detailsMapMode")}
             className="setup-input"
-            value={formData.detailsMapMode || "iframe"}
+            value={detailsMapMode || "iframe"}
             onChange={(e) => updateFormField("detailsMapMode", e.target.value)}
             aria-describedby={id("mapModeHint")}
           >
@@ -170,7 +172,7 @@ export default function DateSectionForm({ prefix = "" }) {
           <input
             id={id("weddingMapStatic")}
             type="checkbox"
-            checked={formData.weddingMapStatic === "true"}
+            checked={weddingMapStatic === "true"}
             onChange={(e) => updateFormField("weddingMapStatic", e.target.checked ? "true" : "false")}
             style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
             aria-describedby={id("mapStaticHint")}
@@ -178,7 +180,7 @@ export default function DateSectionForm({ prefix = "" }) {
           <span>{t("setup.mapStaticLabel")}</span>
         </label>
       </div>
-      {formData.weddingMapStatic === "true" ? (
+      {weddingMapStatic === "true" ? (
         <p className="setup-help" id={id("mapStaticHint")}>
           {t("setup.mapStaticHint")}
         </p>
@@ -230,11 +232,11 @@ export default function DateSectionForm({ prefix = "" }) {
               width="100%"
               height="250"
               className="story-map-frame"
-              style={{ marginTop: "0.35rem", touchAction: formData.weddingMapStatic === "true" ? "none" : undefined }}
+              style={{ marginTop: "0.35rem", touchAction: weddingMapStatic === "true" ? "none" : undefined }}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-            {formData.weddingMapStatic === "true" ? (
+            {weddingMapStatic === "true" ? (
               <div aria-hidden="true" style={{ position: "absolute", inset: 0 }} />
             ) : null}
           </div>
@@ -250,7 +252,7 @@ export default function DateSectionForm({ prefix = "" }) {
           </label>
           <input
             id={id("weddingDay")}
-            value={formData.weddingDay}
+            value={weddingDay}
             onChange={(e) => handleDayChange(e.target.value)}
             placeholder={t("setup.dayPlaceholder")}
             inputMode="numeric"
@@ -273,7 +275,7 @@ export default function DateSectionForm({ prefix = "" }) {
           <select
             id={id("weddingMonth")}
             className="setup-input"
-            value={formData.weddingMonth}
+            value={weddingMonth}
             onChange={(e) => updateFormField("weddingMonth", e.target.value)}
             aria-describedby={id("dateHelp")}
             required
@@ -295,7 +297,7 @@ export default function DateSectionForm({ prefix = "" }) {
           </label>
           <input
             id={id("weddingYear")}
-            value={formData.weddingYear}
+            value={weddingYear}
             onChange={(e) => handleYearChange(e.target.value)}
             placeholder={t("setup.yearPlaceholder")}
             inputMode="numeric"

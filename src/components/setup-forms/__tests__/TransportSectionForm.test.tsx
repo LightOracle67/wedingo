@@ -10,9 +10,11 @@ const mockUpdateFormField = vi.fn();
 const mockFormData = vi.hoisted(() => ({
   transportEnabled: "both",
   transportDepartures: "",
-}));
+}) as Record<string, string | undefined>);
 
 vi.mock("../../../contexts", () => ({
+  useFormField: (field: string) => mockFormData[field] ?? "",
+  useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
   useConfig: () => ({
     formData: mockFormData,
     updateFormField: mockUpdateFormField,

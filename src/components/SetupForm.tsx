@@ -14,7 +14,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useAuth, useAppUI } from "../contexts";
+import {useConfig, useAuth, useAppUI, useFormField} from "../contexts";
 import { useToast } from "../hooks/useToast";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
@@ -55,7 +55,10 @@ export default function SetupForm({ prefix = "" }) {
     };
   }, []);
   // ─── Extrae estado y handlers del contexto global (hooks granulares) ──
-  const { formData, updateFormField, handleSaveSetup, hasStoredConfig, isSaving, handleResetForm } = useConfig();
+  const { updateFormField, handleSaveSetup, hasStoredConfig, isSaving, handleResetForm } = useConfig();
+  const _privacyConsent = useFormField("_privacyConsent");
+  const hiddenSections = useFormField("hiddenSections");
+  const sectionOrder = useFormField("sectionOrder");
   const { isTokenVerified, isRestoringSession } = useAuth();
   const { saveMessage, saveError, setLegalModal } = useAppUI();
   const { addToast } = useToast();
@@ -95,17 +98,17 @@ export default function SetupForm({ prefix = "" }) {
    * Se memoiza para evitar re-cálculos en cada render.
    */
   const hiddenSet = useMemo(() => {
-    const raw = formData.hiddenSections || "";
+    const raw = hiddenSections || "";
     return new Set(raw.split(",").filter(Boolean));
-  }, [formData.hiddenSections]);
+  }, [hiddenSections]);
 
   return (
     <form ref={formRef} className="setup-form setup-form--nested" onSubmit={handleSubmit}>
       {/* ── Editor de orden de secciones ── */}
       <SectionOrderEditor
-        value={formData.sectionOrder}
+        value={sectionOrder}
         onChange={updateFormField}
-        hiddenValue={formData.hiddenSections}
+        hiddenValue={hiddenSections}
         onHiddenChange={updateFormField}
       />
 
@@ -185,7 +188,7 @@ export default function SetupForm({ prefix = "" }) {
           <input
             id="privacyConsent"
             type="checkbox"
-            checked={formData._privacyConsent === "true"}
+            checked={_privacyConsent === "true"}
             onChange={(e) => updateFormField("_privacyConsent", e.target.checked ? "true" : "false")}
             style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
           />

@@ -9,6 +9,8 @@ const mockUpdateFormField = vi.fn();
 const mockFormData = vi.hoisted(() => ({}) as Record<string, string | undefined>);
 
 vi.mock("../../../contexts", () => ({
+  useFormField: (field: string) => mockFormData[field] ?? "",
+  useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
   useConfig: () => ({
     config: {},
     formData: mockFormData,

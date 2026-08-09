@@ -352,6 +352,19 @@ service cloud.firestore {
           && request.resource.data.count <= socialCounterCap(counterName);
         allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
+
+      /* Registro de consentimiento del visitante (GDPR art. 7.1, consentimiento
+         demostrable): cada decisión del banner de cookies (aceptar/rechazar/
+         preferencias) se registra en el servidor con la versión de la política
+         y timestamp. Sin datos personales del visitante (solo estado+versión),
+         con documentId auto-generado. Lectura/gestión solo admin/superadmin. */
+      match /consentLog/{entryId} {
+        allow create: if request.resource.data.keys().hasOnly(['status', 'version', 'ts'])
+          && request.resource.data.status in ['accepted', 'rejected']
+          && request.resource.data.version is string && request.resource.data.version.size() <= 20
+          && request.resource.data.ts is timestamp;
+        allow read, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+      }
     }
 
     /* Registros de tokens de setup. El documentId es el hash SHA-256 del token

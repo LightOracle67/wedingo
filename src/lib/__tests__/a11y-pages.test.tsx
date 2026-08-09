@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render } from "@testing-library/react";
 import axe from "axe-core";
+import { RsvpFormContext } from "../../contexts/useRsvpContext";
 
 vi.mock("../../hooks/useToast", () => ({
   useToast: () => ({ addToast: vi.fn(), startUploadToast: vi.fn() }),
@@ -255,6 +256,8 @@ describe("a11y-page-audit", () => {
       companionHealthConsents: [false],
       companionTransportChoices: ["0"],
       companionTransportModes: ["bus"],
+      companionTransportTimes: [""],
+      companionTransportPlaces: [""],
       menuSelection: "",
       allergies: [],
       allergiesOther: "",
@@ -263,24 +266,31 @@ describe("a11y-page-audit", () => {
       healthConsent: false,
       transportChoice: "0",
       transportMode: "bus",
+      transportTime: "",
+      transportPlace: "",
     };
     const { container } = render(
-      <RsvpSection
-        style={{}}
-        className="test"
-        rsvpForm={rsvpForm}
-        updateRsvpField={vi.fn()}
-        handleRsvpSubmit={vi.fn()}
-        handleDeleteRsvp={vi.fn()}
-        menuEnabled
-        menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
-        transportEnabled="both"
-        transportDepartures={JSON.stringify([
-          { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
-          { type: "taxi", time: "14:30", url: "" },
-        ])}
-        computeAge={vi.fn(() => 30)}
-      />,
+      <RsvpFormContext.Provider
+        value={{
+          rsvpForm: rsvpForm,
+          updateRsvpField: vi.fn(),
+          handleRsvpSubmit: vi.fn(),
+          computeAge: vi.fn(() => 30),
+        }}
+      >
+        <RsvpSection
+          style={{}}
+          className="test"
+          handleDeleteRsvp={vi.fn()}
+          menuEnabled
+          menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
+          transportEnabled="both"
+          transportDepartures={JSON.stringify([
+            { type: "bus", time: "12:00", url: "https://www.google.com/maps/place/Plaza+Mayor/@40.41,-3.70,17z" },
+            { type: "taxi", time: "14:30", url: "" },
+          ])}
+        />
+      </RsvpFormContext.Provider>,
     );
     const results = await runAxe(container);
     const serious = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");

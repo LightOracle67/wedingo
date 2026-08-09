@@ -37,6 +37,7 @@ import { useFieldHandlers } from "../hooks/useFieldHandlers";
 import { useAutoSave } from "../hooks/useAutoSave";
 import { getFirestoreErrorMessage } from "../lib/error-utils";
 import { ConfigContext } from "./useConfig";
+import { FormStoreContext, createFormStore, type FormStore } from "./FormStore";
 import { useAppUI } from "./useAppUI";
 
 /** Año máximo permitido al guardar la fecha de la boda (constante de módulo:
@@ -74,9 +75,22 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
   const { formattedDate, formattedTime, calendarLink } = useCalendar(config);
 
-  const updateFormField = useCallback((field: string, value: string) => {
-    setFormData((current: InvitationConfig) => ({ ...current, [field]: value }));
-  }, []);
+  // Tienda de selectores por campo (ver FormStore): permite que las secciones
+  // del Setup lean con useFormField(field) y solo se re-rendericen cuando su
+  // propio campo cambia, en vez de todo el árbol por cada tecla.
+  const storeRef = useRef<FormStore | null>(null);
+  if (!storeRef.current) storeRef.current = createFormStore();
+  const formStore = storeRef.current;
+
+  const updateFormField = useCallback(
+    (field: string, value: string) => {
+      // El campo se escribe en la tienda (notifica a los lectores con
+      // useFormField) y en formData (fuente de verdad para el guardado).
+      formStore.set(field, value);
+      setFormData((current: InvitationConfig) => ({ ...current, [field]: value }));
+    },
+    [formStore],
+  );
 
   const { handleDayChange, handleTimeChange, handleTimeBlur, handleYearChange } = useFieldHandlers(
     updateFormField,
@@ -136,6 +150,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
         setConfig(hydrated);
         setFormData(hydrated);
+        formStore.setAll(hydrated);
         setHasStoredConfig(false);
         setIsConfigLoading(false);
         return;
@@ -209,6 +224,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
               if (audio?.url) parsed.data.musicFile = audio.url;
               setConfig(parsed.data);
               setFormData(parsed.data);
+              formStore.setAll(parsed.data as Record<string, string>);
               setHasStoredConfig(true);
               setIsConfigLoading(false);
               loadedTokenRef.current = inviteToken;
@@ -235,6 +251,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           setHasStoredConfig(false);
           setConfig(defaultConfig);
           setFormData(defaultConfig);
+          formStore.setAll(defaultConfig);
           setIsConfigLoading(false);
           return;
         }
@@ -261,6 +278,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
         setConfig(hydrated);
         setFormData(hydrated);
+        formStore.setAll(hydrated);
         // La caché guarda el shell + el bankInfo CIFRADO (no el descifrado):
         // el cache-hit descifra localmente sin Firestore. hydrated.bankInfo ya
         // está en claro, así que se omite explícitamente (antes quedaba el
@@ -303,7 +321,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       }
     };
     hydrateConfig();
-  }, [location.pathname, location.hash, inviteToken, hasStoredConfig, trackVisit, t]);
+  }, [location.pathname, location.hash, inviteToken, hasStoredConfig, trackVisit, t, formStore]);
 
   const reloadConfig = useCallback(async () => {
     if (!inviteToken) {
@@ -316,6 +334,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         setHasStoredConfig(false);
         setConfig(defaultConfig);
         setFormData(defaultConfig);
+        formStore.setAll(defaultConfig);
         return;
       }
       const parsed = normalizeConfig(snapshot.data());
@@ -338,12 +357,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
       setConfig(hydrated);
       setFormData(hydrated);
+      formStore.setAll(hydrated);
       setHasStoredConfig(true);
     } catch (e) {
       console.error("[app]", "[ConfigProvider]", "reloadConfig error", { error: e });
       setSaveError(getFirestoreErrorMessage(e, t));
     }
-  }, [inviteToken, t, setSaveError]);
+  }, [inviteToken, t, setSaveError, formStore]);
 
   const handleSaveSetupCore = useCallback(
     async (event: React.FormEvent) => {
@@ -530,13 +550,14 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     if (hasStoredConfig) {
       // Setup admin: restablece todos los campos por defecto.
       setFormData(defaultConfig as InvitationConfig);
+      formStore.setAll(defaultConfig as unknown as Record<string, string>);
     } else {
       // Setup inicial: restablece todos los campos excepto el token
       // predefinido (el token de acceso vive fuera de formData; el username
       // ligado a él se conserva para no perder las credenciales de acceso).
       setFormData({ ...defaultConfig, adminUsername: formData.adminUsername } as InvitationConfig);
     }
-  }, [hasStoredConfig, formData.adminUsername, t, setSaveMessage, setSaveError]);
+  }, [hasStoredConfig, formData.adminUsername, t, setSaveMessage, setSaveError, formStore]);
 
   const handleDeleteInvitation = useCallback(async () => {
     if (!inviteToken) return;
@@ -629,5 +650,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     ],
   );
 
-  return <ConfigContext.Provider value={configValue}>{children}</ConfigContext.Provider>;
+  return (
+    <FormStoreContext.Provider value={formStore}>
+      <ConfigContext.Provider value={configValue}>{children}</ConfigContext.Provider>
+    </FormStoreContext.Provider>
+  );
 }

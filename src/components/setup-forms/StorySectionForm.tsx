@@ -1,10 +1,11 @@
 import { useTranslation } from "react-i18next";
 import CharacterCounter from "../../components/CharacterCounter";
-import { useConfig } from "../../contexts";
+import { useConfig, useFormField } from "../../contexts";
 import SetupToggleField from "../SetupToggleField";
 
 export default function StorySectionForm({ prefix = "" }) {
-  const { formData, updateFormField } = useConfig();
+  const { updateFormField } = useConfig();
+  const storyText = useFormField("storyText");
   const { t } = useTranslation();
 
   const id = (name: string) => `${prefix}${name}`;
@@ -18,12 +19,12 @@ export default function StorySectionForm({ prefix = "" }) {
         id={id}
       >
         <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
-          <CharacterCounter value={formData.storyText || ""} max={500} />
+          <CharacterCounter value={storyText || ""} max={500} />
         </p>
         <textarea
           id={id("storyText")}
           className="setup-textarea"
-          value={formData.storyText}
+          value={storyText}
           onChange={(e) => updateFormField("storyText", e.target.value.slice(0, 500))}
           placeholder={t("setup.storyPlaceholder")}
           rows={4}

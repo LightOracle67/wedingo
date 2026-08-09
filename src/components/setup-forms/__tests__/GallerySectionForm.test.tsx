@@ -12,7 +12,11 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
+const mockFormData = vi.hoisted(() => ({}) as Record<string, string | undefined>);
+
 vi.mock("../../../contexts", () => ({
+  useFormField: (field: string) => mockFormData[field] ?? "",
+  useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
   useConfig: () => mockUseConfig(),
 }));
 

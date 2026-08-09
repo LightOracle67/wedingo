@@ -27,6 +27,9 @@ vi.mock("../contexts", () => ({
   useConfig: (...args: unknown[]) => mockUseApp(...args),
   useAuth: (...args: unknown[]) => mockUseApp(...args),
   useAppUI: () => ({ setCookiePrefsOpen: vi.fn() }),
+  // App lee el theme del setup con useFormField (tienda por campo): devuelve
+  // el valor del formData simulado por el test.
+  useFormField: (field: string) => (mockUseApp().formData as Record<string, string | undefined>)?.[field] ?? "",
 }));
 
 vi.mock("../components/AccessibilityPanel", () => ({

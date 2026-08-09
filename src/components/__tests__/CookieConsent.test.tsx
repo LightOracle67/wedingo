@@ -43,6 +43,7 @@ function useAppUIMock() {
 
 vi.mock("../../contexts", () => ({
   useAppUI: useAppUIMock,
+  useConfig: () => ({ inviteToken: undefined }),
 }));
 
 const mockLocalStorage = (() => {

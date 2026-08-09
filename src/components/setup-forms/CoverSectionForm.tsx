@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import CharacterCounter from "../../components/CharacterCounter";
 import { useTranslation } from "react-i18next";
-import { useConfig } from "../../contexts";
+import { useConfig, useFormField } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../../lib/constants";
 import { compressImageTransparent, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES } from "../../lib/image-utils";
@@ -11,16 +11,29 @@ import MusicArrayEditor from "../MusicArrayEditor";
 import SetupToggleField from "../SetupToggleField";
 
 export default function CoverSectionForm({ prefix = "" }) {
-  const { formData, updateFormField, inviteToken } = useConfig();
+  const { updateFormField, inviteToken } = useConfig();
+  const backgroundImage = useFormField("backgroundImage");
+  const couplePhoto = useFormField("couplePhoto");
+  const customSeal = useFormField("customSeal");
+  const facebookUrl = useFormField("facebookUrl");
+  const firstName = useFormField("firstName");
+  const godparent1 = useFormField("godparent1");
+  const godparent2 = useFormField("godparent2");
+  const instagramUrl = useFormField("instagramUrl");
+  const inviteMessage = useFormField("inviteMessage");
+  const musicFile = useFormField("musicFile");
+  const secondName = useFormField("secondName");
+  const theme = useFormField("theme");
+  const cornerDecoration = useFormField("cornerDecoration");
   const { t } = useTranslation();
   const { addToast, startUploadToast } = useToast();
 
-  const couplePhotoUrl = useConfigImage(inviteToken, formData.couplePhoto);
-  const customSealUrl = useConfigImage(inviteToken, formData.customSeal);
-  const backgroundImageUrl = useConfigImage(inviteToken, formData.backgroundImage);
+  const couplePhotoUrl = useConfigImage(inviteToken, couplePhoto);
+  const customSealUrl = useConfigImage(inviteToken, customSeal);
+  const backgroundImageUrl = useConfigImage(inviteToken, backgroundImage);
   const cornerDecorationUrl = useConfigImage(
     inviteToken,
-    (formData as Record<string, unknown>).cornerDecoration as string,
+    cornerDecoration as string,
   );
 
   const id = (name: string) => `${prefix}${name}`;
@@ -188,9 +201,9 @@ export default function CoverSectionForm({ prefix = "" }) {
             <input
               id={id("firstName")}
               className="setup-input"
-              value={formData.firstName}
+              value={firstName}
               onChange={handleFirstNameChange}
-              onBlur={() => updateFormField("firstName", formData.firstName.trim())}
+              onBlur={() => updateFormField("firstName", firstName.trim())}
               placeholder={t("setup.namePlaceholder")}
               autoComplete="off"
               required
@@ -208,9 +221,9 @@ export default function CoverSectionForm({ prefix = "" }) {
             <input
               id={id("secondName")}
               className="setup-input"
-              value={formData.secondName}
+              value={secondName}
               onChange={handleSecondNameChange}
-              onBlur={() => updateFormField("secondName", formData.secondName.trim())}
+              onBlur={() => updateFormField("secondName", secondName.trim())}
               placeholder={t("setup.namePlaceholder")}
               autoComplete="off"
               required
@@ -239,7 +252,7 @@ export default function CoverSectionForm({ prefix = "" }) {
               <input
                 id={id("godparent1")}
                 className="setup-input"
-                value={formData.godparent1}
+                value={godparent1}
                 onChange={(e) => updateFormField("godparent1", e.target.value.slice(0, 40))}
                 placeholder={t("setup.namePlaceholder")}
                 autoComplete="off"
@@ -257,7 +270,7 @@ export default function CoverSectionForm({ prefix = "" }) {
               <input
                 id={id("godparent2")}
                 className="setup-input"
-                value={formData.godparent2}
+                value={godparent2}
                 onChange={(e) => updateFormField("godparent2", e.target.value.slice(0, 40))}
                 placeholder={t("setup.namePlaceholder")}
                 autoComplete="off"
@@ -276,12 +289,12 @@ export default function CoverSectionForm({ prefix = "" }) {
         id={id}
       >
         <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
-          <CharacterCounter value={formData.inviteMessage || ""} max={500} />
+          <CharacterCounter value={inviteMessage || ""} max={500} />
         </p>
         <textarea
           id={id("inviteMessage")}
           className="setup-textarea"
-          value={formData.inviteMessage}
+          value={inviteMessage}
           onChange={(e) => updateFormField("inviteMessage", e.target.value.slice(0, 500))}
           placeholder={t("setup.messagePlaceholder")}
           aria-describedby={id("messageHint")}
@@ -292,7 +305,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         <input
           id={id("instagramUrl")}
           className="setup-input"
-          value={formData.instagramUrl}
+          value={instagramUrl}
           onChange={(e) => updateFormField("instagramUrl", e.target.value.slice(0, 1000))}
           placeholder="https://www.instagram.com/tunombre"
           inputMode="url"
@@ -303,7 +316,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         <input
           id={id("facebookUrl")}
           className="setup-input"
-          value={formData.facebookUrl}
+          value={facebookUrl}
           onChange={(e) => updateFormField("facebookUrl", e.target.value.slice(0, 1000))}
           placeholder="https://www.facebook.com/tunombre"
           inputMode="url"
@@ -312,7 +325,7 @@ export default function CoverSectionForm({ prefix = "" }) {
       </SetupToggleField>
 
       <p className="setup-label">{t("setup.themeLabel")}</p>
-      <ThemePicker value={formData.theme} onChange={handleThemeChange} />
+      <ThemePicker value={theme} onChange={handleThemeChange} />
       <p className="setup-help" id={id("themeHint")}>
         {t("setup.themeHint")}
       </p>
@@ -324,10 +337,10 @@ export default function CoverSectionForm({ prefix = "" }) {
         id={id}
       >
         <div className="setup-background-panel">
-          {formData.couplePhoto ? (
+          {couplePhoto ? (
             <div className="setup-selected-background">
               <img
-                src={safeSrc(couplePhotoUrl, formData.couplePhoto)}
+                src={safeSrc(couplePhotoUrl, couplePhoto)}
                 alt={t("setup.couplePhotoLabel")}
                 className="setup-selected-background__image"
                 style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }}
@@ -356,7 +369,7 @@ export default function CoverSectionForm({ prefix = "" }) {
             accept="image/jpeg,image/png,image/webp"
             onChange={handleCouplePhotoUpload}
           />
-          {formData.couplePhoto ? (
+          {couplePhoto ? (
             /* El label "Reemplazar" apunta al input Ãºnico (htmlFor); no se
                anida un segundo input para no duplicar el id. */
             <label className="setup-upload" htmlFor={id("couplePhoto")}>
@@ -375,10 +388,10 @@ export default function CoverSectionForm({ prefix = "" }) {
         id={id}
       >
         <div className="setup-background-panel">
-          {formData.customSeal ? (
+          {customSeal ? (
             <div className="setup-selected-background">
               <img
-                src={safeSrc(customSealUrl, formData.customSeal)}
+                src={safeSrc(customSealUrl, customSeal)}
                 alt=""
                 className="setup-selected-background__image"
                 style={{ width: "3rem", height: "3rem", objectFit: "contain" }}
@@ -427,10 +440,10 @@ export default function CoverSectionForm({ prefix = "" }) {
         id={id}
       >
         <div className="setup-background-panel">
-          {formData.backgroundImage ? (
+          {backgroundImage ? (
             <div className="setup-selected-background">
               <img
-                src={safeSrc(backgroundImageUrl, formData.backgroundImage)}
+                src={safeSrc(backgroundImageUrl, backgroundImage)}
                 alt=""
                 className="setup-selected-background__image"
                 style={{ width: "100%", maxHeight: "100px", objectFit: "cover", borderRadius: "0.35rem" }}
@@ -475,7 +488,7 @@ export default function CoverSectionForm({ prefix = "" }) {
             <span className="setup-label setup-label--tight" style={{ fontSize: "0.8rem" }}>
               {t("setup.cornerDecorationLabel")}
             </span>
-            {(formData as Record<string, unknown>).cornerDecoration ? (
+            {cornerDecoration ? (
               <button
                 className="setup-button setup-button--ghost setup-button--compact"
                 type="button"
@@ -488,10 +501,10 @@ export default function CoverSectionForm({ prefix = "" }) {
               </button>
             ) : null}
           </div>
-          {(formData as Record<string, unknown>).cornerDecoration ? (
+          {cornerDecoration ? (
             <div>
               <img
-                src={safeSrc(cornerDecorationUrl, (formData as Record<string, unknown>).cornerDecoration as string)}
+                src={safeSrc(cornerDecorationUrl, cornerDecoration as string)}
                 alt=""
                 style={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }}
               />
@@ -519,7 +532,7 @@ export default function CoverSectionForm({ prefix = "" }) {
       </SetupToggleField>
 
       <SetupToggleField enabledField="musicFileEnabled" label={t("setup.musicLabel")} id={id}>
-        <MusicArrayEditor inviteToken={inviteToken} value={formData.musicFile} onChange={handleMusicChange} />
+        <MusicArrayEditor inviteToken={inviteToken} value={musicFile} onChange={handleMusicChange} />
       </SetupToggleField>
     </>
   );
