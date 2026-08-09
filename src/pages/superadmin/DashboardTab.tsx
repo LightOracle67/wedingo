@@ -21,6 +21,7 @@ import {
 import { calcGlobalStats, formatBytes } from "../../lib/superadmin-utils";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 import { logAudit } from "../../lib/audit";
+import { usePlatformSettings } from "../../lib/platform-settings";
 import StatsCard from "../admin/StatsCard";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
@@ -61,6 +62,9 @@ const DashboardTab = memo(function DashboardTab() {
 
   const [loading, setLoading] = useState(true);
   const [cleaning, setCleaning] = useState(false);
+  // F3-9: umbral de expiración (días) desde los ajustes de plataforma.
+  const { settings: platform } = usePlatformSettings();
+  const expiringDays = Math.max(1, Number(platform.expiringDays) || 30);
 
   const load = useCallback(async () => {
     try {
@@ -154,6 +158,19 @@ const DashboardTab = memo(function DashboardTab() {
   }, [load]);
 
   const twelveMonthsAgo = Date.now() - 365 * 24 * 60 * 60 * 1000;
+
+  // F3-9: invitaciones que expiran pronto (dentro del umbral configurado).
+  const expiringSoon = invitations
+    .filter((inv) => {
+      if (!inv.weddingYear || !inv.weddingMonth) return false;
+      const monthIndex = (MONTH_VALUE_TO_NUMBER[inv.weddingMonth] || 1) - 1;
+      const day = Number(inv.weddingDay) || 1;
+      const d = new Date(Number(inv.weddingYear), monthIndex, day).getTime();
+      if (!(d > 0)) return false;
+      return d >= Date.now() && d <= Date.now() + expiringDays * 86400000;
+    })
+    .map((inv) => `${String(inv.weddingDay || 1)} ${String(inv.weddingMonth || "")} ${String(inv.weddingYear || "")} (${inv.id})`)
+    .slice(0, 8);
 
   const expired = invitations.filter((inv) => {
     // Expiración manual fijada por el superadmin (manage.manualExpiry).
@@ -378,6 +395,20 @@ const DashboardTab = memo(function DashboardTab() {
           ))}
         </div>
       </div>
+
+      {/* ── F3-9: invitaciones por expirar ── */}
+      {expiringSoon.length > 0 ? (
+        <div className="setup-background-panel" style={{ marginTop: "0.75rem", borderColor: "#e0a54a" }}>
+          <p className="setup-label">{t("superadmin.expiringSoon", { days: expiringDays })}</p>
+          <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}>
+            {expiringSoon.map((e, i) => (
+              <li key={i} style={{ marginBottom: "0.2rem" }}>
+                {e}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       {/* ── F2-1: Actividad reciente ── */}
       <div className="setup-background-panel" style={{ marginTop: "0.75rem" }}>

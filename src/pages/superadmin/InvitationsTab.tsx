@@ -12,6 +12,7 @@ const InvitationsTab = memo(function InvitationsTab() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
+  const [tagFilter, setTagFilter] = useState("");
   const [deleting, setDeleting] = useState<string | null>(null);
 
   const load = useCallback(async () => {
@@ -100,7 +101,12 @@ const InvitationsTab = memo(function InvitationsTab() {
     weddingMonth?: string;
     weddingYear?: string;
     adminUsername?: string;
+    tags?: string;
   }>;
+  // F3-5: filtro por etiquetas del superadmin.
+  const filteredByTag = tagFilter
+    ? filtered.filter((inv) => (inv.tags || "").toLowerCase().includes(tagFilter.toLowerCase()))
+    : filtered;
   const totalBytes = invitations.reduce((acc, d) => {
     try {
       return acc + new Blob([JSON.stringify(d)]).size;
@@ -120,15 +126,24 @@ const InvitationsTab = memo(function InvitationsTab() {
     <div style={{ display: "flex", flexDirection: "column", height: "100%", minHeight: 0 }}>
       {error && <p className="setup-error">{error}</p>}
 
-      <div className="admin-filters" style={{ marginBottom: "1rem" }}>
+      <div className="admin-filters" style={{ marginBottom: "1rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
         <input
           id="superadminSearch"
           className="setup-input"
+          style={{ flex: 1, minWidth: "10rem" }}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder={t("superadmin.searchTokenPlaceholder")}
           autoComplete="off"
           aria-label={t("superadmin.searchTokenPlaceholder")}
+        />
+        <input
+          className="setup-input"
+          style={{ width: "10rem" }}
+          value={tagFilter}
+          onChange={(e) => setTagFilter(e.target.value)}
+          placeholder={t("superadmin.filterTagPlaceholder")}
+          aria-label={t("superadmin.filterTagPlaceholder")}
         />
       </div>
 
@@ -156,7 +171,7 @@ const InvitationsTab = memo(function InvitationsTab() {
       </div>
 
       <div aria-live="polite" aria-atomic="true">
-        {filtered.length === 0 ? (
+        {filteredByTag.length === 0 ? (
           <p className="setup-help">{search ? t("superadmin.noResultsFilter") : t("superadmin.noInvitations")}</p>
         ) : (
           <div className="admin-table-wrapper">
@@ -171,7 +186,7 @@ const InvitationsTab = memo(function InvitationsTab() {
                 </tr>
               </thead>
               <tbody>
-                {filtered.map(
+                {filteredByTag.map(
                   (inv: {
                     id: string;
                     theme?: string;

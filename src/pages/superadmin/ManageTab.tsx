@@ -51,6 +51,11 @@ const ManageTab = memo(function ManageTab() {
   const [manualExpiry, setManualExpiry] = useState("");
   const [verified, setVerified] = useState(false);
   const [adminNotes, setAdminNotes] = useState("");
+  // F3-2 estado / F3-5 etiquetas / F3-7 aforo / F3-8 firma digital.
+  const [status, setStatus] = useState("active");
+  const [tags, setTags] = useState("");
+  const [rsvpCapacity, setRsvpCapacity] = useState("");
+  const [rsvpSignatureEnabled, setRsvpSignatureEnabled] = useState(false);
 
   // ── F1-6 duplicar sección ──
   const [copySource, setCopySource] = useState("");
@@ -93,6 +98,10 @@ const ManageTab = memo(function ManageTab() {
       setManualExpiry(String(data.manualExpiry || ""));
       setVerified(String(data.verified) === "true");
       setAdminNotes(String(data.adminNotes || ""));
+      setStatus(String(data.status || "active"));
+      setTags(String(data.tags || ""));
+      setRsvpCapacity(String(data.rsvpCapacity || ""));
+      setRsvpSignatureEnabled(String(data.rsvpSignatureEnabled) === "true");
       setNewToken("");
       setNewSetupToken("");
     } catch {
@@ -198,18 +207,23 @@ const ManageTab = memo(function ManageTab() {
     }
   }, [token, manualExpiry, addToast, t]);
 
-  /** F1-7 + F1-8: guarda sello + notas internas. */
+  /** F1-7 + F1-8 + F3-2/5/7/8: guarda sello, notas, estado, etiquetas, aforo
+   *  y firma digital. */
   const handleSaveFlags = useCallback(async () => {
     try {
       await updateDoc(doc(INVITATIONS_COLLECTION_REF, token), {
         verified: verified ? "true" : "false",
         adminNotes,
+        status,
+        tags,
+        rsvpCapacity,
+        rsvpSignatureEnabled: rsvpSignatureEnabled ? "true" : "false",
       });
       addToast("success", t("errors.configSaved"));
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [token, verified, adminNotes, addToast, t]);
+  }, [token, verified, adminNotes, status, tags, rsvpCapacity, rsvpSignatureEnabled, addToast, t]);
 
   /** F2-4: descarga el último backup ligero guardado en _backup/latest. */
   const handleDownloadBackup = useCallback(async () => {
@@ -329,6 +343,48 @@ const ManageTab = memo(function ManageTab() {
               />
               <span>{t("manage.verifiedLabel")}</span>
             </label>
+            <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap", marginTop: "0.4rem" }}>
+              <label className="setup-label" style={{ margin: 0 }}>
+                {t("manage.status")}
+                <select className="setup-input" value={status} onChange={(e) => setStatus(e.target.value)} style={{ marginLeft: "0.4rem" }}>
+                  <option value="active">{t("manage.statusActive")}</option>
+                  <option value="review">{t("manage.statusReview")}</option>
+                  <option value="blocked">{t("manage.statusBlocked")}</option>
+                </select>
+              </label>
+              <label className="setup-label" style={{ margin: 0 }}>
+                {t("manage.tags")}
+                <input
+                  className="setup-input"
+                  value={tags}
+                  onChange={(e) => setTags(e.target.value.slice(0, 500))}
+                  placeholder={t("manage.tagsPlaceholder")}
+                  style={{ marginLeft: "0.4rem", maxWidth: "14rem" }}
+                  aria-label={t("manage.tags")}
+                />
+              </label>
+              <label className="setup-label" style={{ margin: 0 }}>
+                {t("manage.rsvpCapacity")}
+                <input
+                  type="number"
+                  min={0}
+                  className="setup-input"
+                  value={rsvpCapacity}
+                  onChange={(e) => setRsvpCapacity(e.target.value.slice(0, 5))}
+                  style={{ marginLeft: "0.4rem", width: "5rem" }}
+                  aria-label={t("manage.rsvpCapacity")}
+                />
+              </label>
+              <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+                <input
+                  type="checkbox"
+                  checked={rsvpSignatureEnabled}
+                  onChange={(e) => setRsvpSignatureEnabled(e.target.checked)}
+                  style={{ accentColor: "var(--setup-accent)" }}
+                />
+                <span>{t("manage.rsvpSignature")}</span>
+              </label>
+            </div>
             <textarea
               className="setup-textarea"
               value={adminNotes}

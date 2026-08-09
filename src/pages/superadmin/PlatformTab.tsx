@@ -1,0 +1,131 @@
+import { memo, useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { setDoc, doc } from "firebase/firestore";
+import { db } from "../../lib/firebase";
+import { useToast } from "../../hooks/useToast";
+import { usePlatformSettings, type PlatformSettings } from "../../lib/platform-settings";
+
+/**
+ * PlatformTab — Ajustes globales de la plataforma (Fase 3): banner global
+ * (F3-1), modo mantenimiento (F3-4), lista negra de URLs (F3-3), lista negra
+ * de tokens (F3-6) y umbral de expiración (F3-9). Escrituras con sesión de
+ * superadmin (reglas: platform solo-superadmin).
+ */
+const PlatformTab = memo(function PlatformTab() {
+  const { t } = useTranslation();
+  const { addToast } = useToast();
+  const { settings, reload } = usePlatformSettings();
+  const [form, setForm] = useState<PlatformSettings>(settings);
+  const [saving, setSaving] = useState(false);
+
+  // Sincroniza el formulario local cuando los ajustes se cargan.
+  useEffect(() => {
+    setForm(settings);
+  }, [settings]);
+
+  const handleSave = useCallback(async () => {
+    setSaving(true);
+    try {
+      await setDoc(doc(db, "platform", "settings"), form);
+      addToast("success", t("errors.configSaved"));
+      void reload();
+    } catch {
+      addToast("error", t("errors.generic"));
+    } finally {
+      setSaving(false);
+    }
+  }, [form, reload, addToast, t]);
+
+  const set = (key: keyof PlatformSettings, value: string) => setForm((p) => ({ ...p, [key]: value }));
+
+  return (
+    <div className="admin-flex--col" style={{ height: "100%", minHeight: 0, gap: "0.75rem" }}>
+      {/* F3-4: modo mantenimiento */}
+      <div className="setup-background-panel">
+        <p className="setup-label">{t("platform.maintenance")}</p>
+        <p className="setup-help">{t("platform.maintenanceHelp")}</p>
+        <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <input
+            type="checkbox"
+            checked={form.maintenance === "true"}
+            onChange={(e) => set("maintenance", e.target.checked ? "true" : "false")}
+            style={{ accentColor: "var(--setup-accent)" }}
+          />
+          <span>{t("platform.maintenanceToggle")}</span>
+        </label>
+      </div>
+
+      {/* F3-1: banner global */}
+      <div className="setup-background-panel">
+        <p className="setup-label">{t("platform.globalBanner")}</p>
+        <label className="setup-checkbox-label" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <input
+            type="checkbox"
+            checked={form.bannerEnabled === "true"}
+            onChange={(e) => set("bannerEnabled", e.target.checked ? "true" : "false")}
+            style={{ accentColor: "var(--setup-accent)" }}
+          />
+          <span>{t("platform.bannerToggle")}</span>
+        </label>
+        <textarea
+          className="setup-textarea"
+          value={form.bannerText}
+          onChange={(e) => set("bannerText", e.target.value.slice(0, 500))}
+          rows={3}
+          placeholder={t("platform.bannerPlaceholder")}
+          aria-label={t("platform.globalBanner")}
+        />
+      </div>
+
+      {/* F3-3: lista negra de URLs */}
+      <div className="setup-background-panel">
+        <p className="setup-label">{t("platform.blockedUrls")}</p>
+        <p className="setup-help">{t("platform.blockedUrlsHelp")}</p>
+        <textarea
+          className="setup-textarea"
+          value={form.blockedUrls}
+          onChange={(e) => set("blockedUrls", e.target.value.slice(0, 2000))}
+          rows={3}
+          placeholder={t("platform.blockedUrlsPlaceholder")}
+          aria-label={t("platform.blockedUrls")}
+        />
+      </div>
+
+      {/* F3-6: lista negra de tokens */}
+      <div className="setup-background-panel">
+        <p className="setup-label">{t("platform.blockedTokens")}</p>
+        <p className="setup-help">{t("platform.blockedTokensHelp")}</p>
+        <textarea
+          className="setup-textarea"
+          value={form.blockedTokens}
+          onChange={(e) => set("blockedTokens", e.target.value.slice(0, 2000))}
+          rows={3}
+          placeholder={t("platform.blockedTokensPlaceholder")}
+          aria-label={t("platform.blockedTokens")}
+        />
+      </div>
+
+      {/* F3-9: umbral de expiración */}
+      <div className="setup-background-panel">
+        <p className="setup-label">{t("platform.expiringDays")}</p>
+        <input
+          type="number"
+          min={1}
+          max={365}
+          className="setup-input"
+          value={form.expiringDays}
+          onChange={(e) => set("expiringDays", e.target.value.slice(0, 3))}
+          aria-label={t("platform.expiringDays")}
+        />
+      </div>
+
+      <div className="setup-actions">
+        <button className="setup-button" type="button" onClick={handleSave} disabled={saving}>
+          {saving ? t("common.loading") : t("manage.saveConfig")}
+        </button>
+      </div>
+    </div>
+  );
+});
+
+export default PlatformTab;

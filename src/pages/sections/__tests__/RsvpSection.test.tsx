@@ -6,6 +6,17 @@ vi.mock("react-i18next", () => ({
   Trans: ({ i18nKey }: { i18nKey: string }) => i18nKey,
 }));
 
+vi.mock("../../../lib/platform-settings", () => ({
+  usePlatformSettings: () => ({
+    settings: { maintenance: "false", bannerEnabled: "false", bannerText: "", blockedUrls: "", blockedTokens: "", expiringDays: "30" },
+    loaded: true,
+    reload: () => undefined,
+  }),
+  tokenIsBlocked: () => false,
+}));
+
+
+
 vi.mock("../../../contexts", async (importOriginal) => {
   const actual = await importOriginal<typeof import("../../../contexts")>();
   return {
@@ -46,6 +57,7 @@ const baseForm = {
   transportMode: "own",
   transportTime: "",
   transportPlace: "",
+  digitalSignature: false,
 };
 
 const baseProps = {

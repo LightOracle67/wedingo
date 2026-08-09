@@ -190,7 +190,10 @@
     "transportTaxiOption": "O usaré el Taxi",
     "transportDepartureLabel": "Salida",
     "loadError": "No se pudieron cargar tus confirmaciones. Comprueba la conexión e inténtalo de nuevo.",
-    "deadlinePassed": "La fecha límite de confirmación ha pasado. Gracias por tu interés."
+    "deadlinePassed": "La fecha límite de confirmación ha pasado. Gracias por tu interés.",
+    "digitalSignature": "Confirmo y firmo electrónicamente esta respuesta.",
+    "blockedNotice": "La confirmación de asistencia está temporalmente desactivada.",
+    "capacityReached": "Se ha alcanzado el aforo máximo. No hay plazas disponibles."
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
@@ -206,7 +209,9 @@
     "dataRequest": "Mis datos y privacidad",
     "cookiePreferences": "Preferencias de cookies",
     "share": "Compartir invitación",
-    "shareInvite": "{{firstName}} y {{secondName}} te invitan a su boda — Wedingo"
+    "shareInvite": "{{firstName}} y {{secondName}} te invitan a su boda — Wedingo",
+    "blockedTitle": "Invitación no disponible",
+    "blockedText": "Esta invitación no está disponible en estos momentos. Contacta con los novios si tienes dudas."
   },
   "setup": {
     "mapUrlLabel": "URL de Google Maps",
@@ -693,7 +698,8 @@
       "session": "Sesión",
       "compliance": "Cumplimiento",
       "data": "Datos",
-      "manage": "Gestión"
+      "manage": "Gestión",
+      "platform": "Plataforma"
     },
     "superadmin": "Superadmin",
     "controlPanel": "Panel de control",
@@ -809,7 +815,9 @@
     "themeComparison": "Comparativa de temas",
     "recentActivity": "Actividad reciente",
     "noActivity": "Sin actividad registrada.",
-    "tableUser": "Usuario"
+    "tableUser": "Usuario",
+    "filterTagPlaceholder": "Filtrar por etiqueta",
+    "expiringSoon": "Invitaciones por expirar (≤{{days}} días)"
   },
   "compliance": {
     "title": "Registro de actividades de tratamiento (Art. 30 GDPR)",
@@ -1163,6 +1171,30 @@
     "copySectionDone": "Sección copiada ({{count}} elementos).",
     "downloadBackup": "Descargar último backup",
     "noBackup": "Aún no hay backup para esta invitación.",
-    "backupDownloaded": "Backup descargado."
+    "backupDownloaded": "Backup descargado.",
+    "status": "Estado",
+    "statusActive": "Activa",
+    "statusReview": "En revisión",
+    "statusBlocked": "Bloqueada",
+    "tags": "Etiquetas",
+    "tagsPlaceholder": "boda, invierno, ciudad…",
+    "rsvpCapacity": "Aforo",
+    "rsvpSignature": "Firma digital en el RSVP"
+  },
+  "platform": {
+    "maintenance": "Modo mantenimiento",
+    "maintenanceHelp": "Desactiva la creación de nuevas invitaciones en la landing.",
+    "maintenanceToggle": "Activar modo mantenimiento",
+    "maintenanceNotice": "La creación de invitaciones está temporalmente desactivada.",
+    "globalBanner": "Banner global",
+    "bannerToggle": "Mostrar banner en todas las invitaciones",
+    "bannerPlaceholder": "Texto del aviso (mantenimiento, legal…)",
+    "blockedUrls": "Lista negra de URLs",
+    "blockedUrlsHelp": "Patrones de URL bloqueados (separados por comas).",
+    "blockedUrlsPlaceholder": "ej. youtube.com, ejemplo-peligroso.com",
+    "blockedTokens": "Lista negra de tokens",
+    "blockedTokensHelp": "Tokens de invitación bloqueados (separados por comas): no se mostrarán.",
+    "blockedTokensPlaceholder": "ej. AbCdEf1234, XyZq9876ab",
+    "expiringDays": "Umbral de expiración (días)"
   }
 }

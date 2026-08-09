@@ -190,4 +190,8 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   verified: s(value?.verified) === "true" ? "true" : "false",
   adminNotes: s(value?.adminNotes).slice(0, 2000),
   manualExpiry: s(value?.manualExpiry).slice(0, 10),
+  status: ["active", "review", "blocked"].includes(s(value?.status)) ? s(value?.status) : "active",
+  tags: s(value?.tags).slice(0, 500),
+  rsvpCapacity: s(value?.rsvpCapacity).slice(0, 5),
+  rsvpSignatureEnabled: s(value?.rsvpSignatureEnabled) === "true" ? "true" : "false",
 });

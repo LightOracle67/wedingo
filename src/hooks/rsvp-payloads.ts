@@ -21,6 +21,7 @@ export interface RsvpFormLike {
   transportMode: string;
   transportTime: string;
   transportPlace: string;
+  digitalSignature?: boolean;
 }
 
 export function buildMainGuestData(input: {
@@ -52,6 +53,8 @@ export function buildMainGuestData(input: {
     // F2-8: estadísticas de dispositivo (anonimizado: solo UA, sin IP).
     userAgent: navigator.userAgent.slice(0, 200),
   };
+  // F3-8: firma digital extra (si el admin la exige).
+  if (data.digitalSignature) mainGuestData.digitalSignature = true;
   if (data.menuSelection) mainGuestData.mealChoice = data.menuSelection;
   if (data.birthDate) mainGuestData.birthDate = data.birthDate;
   if (age !== null && age < 14) mainGuestData.parentalConsent = true;

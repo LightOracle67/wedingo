@@ -5,6 +5,17 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
+vi.mock("../../../lib/platform-settings", () => ({
+  usePlatformSettings: () => ({
+    settings: { maintenance: "false", bannerEnabled: "false", bannerText: "", blockedUrls: "", blockedTokens: "", expiringDays: "30" },
+    loaded: true,
+    reload: () => undefined,
+  }),
+  tokenIsBlocked: () => false,
+}));
+
+
+
 import HeroSection from "../HeroSection";
 
 const baseProps = {

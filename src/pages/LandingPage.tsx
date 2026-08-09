@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import { db, invitationDocRef } from "../lib/firebase";
 import { normalizeTokenValue, generateSetupToken } from "../lib/token-utils";
+import { usePlatformSettings } from "../lib/platform-settings";
 import { generateInviteToken } from "../lib/utils";
 import { createSetupTokenRecord, findInviteBySetupToken, hashSetupToken } from "../lib/setup-token";
 import { trackEvent } from "../lib/analytics";
@@ -23,6 +24,9 @@ export default function LandingPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const { setIsTokenVerified, setTokenLoginUsername } = useAuth();
+  // F3-4: modo mantenimiento global (la creación se desactiva).
+  const { settings: platform } = usePlatformSettings();
+  const maintenance = platform.maintenance === "true";
   const [showModal, setShowModal] = useState(false);
   const [usernameInput, setUsernameInput] = useState("");
   const [tokenInput, setTokenInput] = useState("");
@@ -40,7 +44,7 @@ export default function LandingPage() {
   const [createError, setCreateError] = useState("");
 
   const handleCreate = async () => {
-    if (creating) return;
+    if (creating || maintenance) return;
     setCreateError("");
     setCreating(true);
 
@@ -238,12 +242,17 @@ export default function LandingPage() {
           </p>
           <div className="story-divider my-6" />
           <p className="text-[0.95rem] leading-relaxed text-boda-texto/60">{t("landing.description")}</p>
+          {maintenance ? (
+            <p className="setup-help" style={{ marginTop: "0.6rem" }} role="status">
+              {t("platform.maintenanceNotice")}
+            </p>
+          ) : null}
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <button
               type="button"
               className="setup-button text-sm"
               onClick={handleCreate}
-              disabled={creating}
+              disabled={creating || maintenance}
               aria-busy={creating}
               data-testid="create-invitation-btn"
             >

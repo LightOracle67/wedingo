@@ -33,6 +33,8 @@ interface RsvpSectionProps {
   transportEnabled?: string;
   transportDepartures?: string;
   cornerDecoration?: string;
+  /** F3-7: número de confirmaciones "sí" actuales (para el control de aforo). */
+  rsvpConfirmedCount?: number;
 }
 
 const RsvpSection = memo(function RsvpSection({
@@ -53,6 +55,7 @@ const RsvpSection = memo(function RsvpSection({
   transportEnabled,
   transportDepartures,
   cornerDecoration,
+  rsvpConfirmedCount,
 }: RsvpSectionProps) {
   const { t } = useTranslation();
   const { setLegalModal } = useAppUI();
@@ -74,7 +77,13 @@ const RsvpSection = memo(function RsvpSection({
     !!config.rsvpDeadline &&
     new Date(`${config.rsvpDeadline}T23:59:59`) < new Date();
   const isAlreadySubmitted = !!alreadySubmittedEntry;
-  const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted || deadlinePassed;
+  // F3-2: invitación bloqueada por el superadmin → el formulario se desactiva.
+  const isBlocked = config?.status === "blocked";
+  // F3-7: control de aforo — si hay capacidad y se ha alcanzado, se bloquea la
+  // confirmación de asistencia (sí / con acompañantes).
+  const capacity = Number(config?.rsvpCapacity) || 0;
+  const capacityReached = capacity > 0 && (rsvpConfirmedCount ?? 0) >= capacity;
+  const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted || deadlinePassed || isBlocked;
   const isAttending = rsvpForm.attendance !== "no";
 
   const age = useMemo(() => computeAge(rsvpForm.birthDate), [rsvpForm.birthDate, computeAge]);
@@ -956,6 +965,40 @@ const RsvpSection = memo(function RsvpSection({
                 />
                 <span>{t("rsvp.healthConsent")}</span>
               </label>
+            ) : null}
+
+            {/* F3-8: firma digital extra (si el admin la exige). */}
+            {config?.rsvpSignatureEnabled === "true" && !isAlreadySubmitted ? (
+              <label
+                className="setup-checkbox-label"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  color: "var(--setup-title)",
+                  fontSize: "0.85rem",
+                  cursor: isDisabled ? "default" : "pointer",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={rsvpForm.digitalSignature}
+                  onChange={(e) => updateRsvpField("digitalSignature", e.target.checked)}
+                  style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+                  disabled={isDisabled}
+                />
+                <span>{t("rsvp.digitalSignature")}</span>
+              </label>
+            ) : null}
+
+            {isBlocked ? (
+              <p className="setup-error" role="alert">
+                {t("rsvp.blockedNotice")}
+              </p>
+            ) : capacityReached && rsvpForm.attendance !== "no" ? (
+              <p className="setup-error" role="alert">
+                {t("rsvp.capacityReached")}
+              </p>
             ) : null}
 
             {isAlreadySubmitted ? (

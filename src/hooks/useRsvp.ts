@@ -62,6 +62,7 @@ interface RsvpFormData {
   transportMode: string;
   transportTime: string;
   transportPlace: string;
+  digitalSignature: boolean;
 }
 
 interface RsvpEntryData {
@@ -144,6 +145,7 @@ function RsvpFormDefault(): RsvpFormData {
     transportMode: "own",
     transportTime: "",
     transportPlace: "",
+    digitalSignature: false,
   };
 }
 

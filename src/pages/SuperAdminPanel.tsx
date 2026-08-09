@@ -13,6 +13,7 @@ const SettingsTab = lazy(() => import("./superadmin/SettingsTab"));
 const ComplianceTab = lazy(() => import("./superadmin/ComplianceTab"));
 const DataTab = lazy(() => import("./superadmin/DataTab"));
 const ManageTab = lazy(() => import("./superadmin/ManageTab"));
+const PlatformTab = lazy(() => import("./superadmin/PlatformTab"));
 
 const TAB_KEY_MAP = {
   dashboard: "dashboard",
@@ -20,6 +21,7 @@ const TAB_KEY_MAP = {
   tokens: "tokens",
   datos: "data",
   gestion: "manage",
+  plataforma: "platform",
   ajustes: "session",
   cumplimiento: "compliance",
 };
@@ -30,6 +32,7 @@ const TABS = [
   { key: "tokens" },
   { key: "datos" },
   { key: "gestion" },
+  { key: "plataforma" },
   { key: "ajustes" },
   { key: "cumplimiento" },
 ];
@@ -129,6 +132,7 @@ export default function SuperAdminPanel() {
             {activeTab === "tokens" && <TokensTab />}
             {activeTab === "datos" && <DataTab />}
             {activeTab === "gestion" && <ManageTab />}
+            {activeTab === "plataforma" && <PlatformTab />}
             {activeTab === "ajustes" && <SettingsTab />}
             {activeTab === "cumplimiento" && <ComplianceTab />}
           </Suspense>

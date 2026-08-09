@@ -22,6 +22,7 @@ import { useTranslation } from "react-i18next";
 
 import { useConfig, useRsvpContext, useAuth } from "../contexts";
 import { useStoryNavigation } from "../hooks/useStoryNavigation";
+import { usePlatformSettings, tokenIsBlocked } from "../lib/platform-settings";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 
@@ -323,6 +324,9 @@ export default function PublicInvitation() {
    * al recargar.
    */
   const showMissingToken = !isConfigured && !hasHash && (Boolean(inviteToken) || isInviteMode);
+  // F3-6: token bloqueado por el superadmin → la invitación no se muestra.
+  const { settings: platform } = usePlatformSettings();
+  const tokenBlocked = Boolean(inviteToken) && tokenIsBlocked(inviteToken || "", platform.blockedTokens);
   const showEnvelope =
     !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;
   const {
@@ -574,6 +578,8 @@ export default function PublicInvitation() {
       retryLoadRsvp,
       handleDeleteRsvp,
       DIETARY_OPTIONS,
+      // F3-7: confirmaciones "sí" actuales para el control de aforo.
+      rsvpConfirmedCount: rsvpEntries.filter((e) => e.attendance === "yes").length,
     }),
     [
       rsvpEntries,
@@ -694,6 +700,28 @@ export default function PublicInvitation() {
         } as React.CSSProperties
       }
     >
+      {/* F3-1: banner global de la plataforma (avisos de mantenimiento/legal). */}
+      {platform.bannerEnabled === "true" && platform.bannerText ? (
+        <div
+          role="status"
+          className="platform-banner"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 9990,
+            textAlign: "center",
+            padding: "0.45rem 1rem",
+            fontSize: "0.8rem",
+            color: "#fff",
+            background: "rgba(40,30,20,0.92)",
+            borderBottom: "1px solid color-mix(in srgb, var(--setup-accent) 40%, transparent)",
+          }}
+        >
+          {platform.bannerText}
+        </div>
+      ) : null}
       {showEnvelope ? (
         <EnvelopeOverlay
           onOpen={handleEnvelopeOpen}
@@ -775,8 +803,18 @@ export default function PublicInvitation() {
           />
         </div>
 
-        {/* ── Token no encontrado (invitación no configurada) ── */}
-        {showMissingToken ? (
+        {/* ── Token bloqueado por el superadmin (F3-6) ── */}
+        {tokenBlocked ? (
+          <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
+            <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
+              <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
+                {t("public.blockedTitle")}
+              </h1>
+              <div className="my-6 story-divider" />
+              <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">{t("public.blockedText")}</p>
+            </div>
+          </section>
+        ) : showMissingToken ? (
           <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
             <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
               <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">

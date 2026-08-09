@@ -268,6 +268,7 @@ describe("a11y-page-audit", () => {
       transportMode: "bus",
       transportTime: "",
       transportPlace: "",
+      digitalSignature: false,
     };
     const { container } = render(
       <RsvpFormContext.Provider

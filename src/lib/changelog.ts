@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.48",
+    date: "2026-08-09",
+    changes: [
+      "Fase 3 (control de plataforma) del superadmin: nueva pestaña 'Plataforma' con modo mantenimiento (desactiva la creación), banner global en todas las invitaciones, lista negra de URLs y de tokens, y umbral de expiración. Gestión de invitaciones ampliada: estado (activa/revisión/bloqueada), etiquetas con filtro, aforo máximo de confirmaciones y firma digital en el RSVP. El Dashboard avisa de invitaciones por expirar.",
+    ],
+  },
+  {
     version: "2.95.47",
     date: "2026-08-09",
     changes: [

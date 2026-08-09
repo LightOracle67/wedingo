@@ -119,6 +119,17 @@ vi.mock("../../lib/utils", () => ({
   buildAppleMapsSearchUrl: vi.fn(() => ""),
 }));
 
+vi.mock("../../lib/platform-settings", () => ({
+  usePlatformSettings: () => ({
+    settings: { maintenance: "false", bannerEnabled: "false", bannerText: "", blockedUrls: "", blockedTokens: "", expiringDays: "30" },
+    loaded: true,
+    reload: () => undefined,
+  }),
+  tokenIsBlocked: () => false,
+}));
+
+
+
 const mockSectionComponents: Record<string, ReturnType<typeof vi.fn>> = {};
 function mockSection(name: string) {
   const comp = vi.fn(() => <div data-testid={`section-${name}`} />);

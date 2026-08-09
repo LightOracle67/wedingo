@@ -457,6 +457,18 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           }
         }
 
+        // Campos de SUPERADMIN: el guardado del admin NO debe tocarlos (con
+        // setDoc + merge, si no viajan en el payload se conservan intactos y
+        // las reglas no los ven en el diff). Los gestiona solo la pestaña
+        // Gestión del superadmin.
+        delete payload.verified;
+        delete payload.adminNotes;
+        delete payload.manualExpiry;
+        delete payload.status;
+        delete payload.tags;
+        delete payload.rsvpCapacity;
+        delete payload.rsvpSignatureEnabled;
+
         await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
 
         // Invalida la caché de invitación: sin esto, un guardado y recarga

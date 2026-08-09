@@ -310,4 +310,12 @@ export const defaultConfig = {
   // Fecha de expiración manual (ISO yyyy-mm-dd): la invitación se considera
   // expirada si la tiene fijada y ya pasó (además del default de 12 meses).
   manualExpiry: "",
+  // Estado de la invitación (F3-2): active | review | blocked.
+  status: "active",
+  // Etiquetas/categorías del superadmin (F3-5), separadas por comas.
+  tags: "",
+  // Aforo máximo de confirmaciones (F3-7, "" = sin límite).
+  rsvpCapacity: "",
+  // Firma digital extra en el RSVP (F3-8).
+  rsvpSignatureEnabled: "false",
 };
