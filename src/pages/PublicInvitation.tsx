@@ -78,16 +78,15 @@ const SECTION_COMPONENTS = {
 /** Props vacías compartidas (referencia estable, no rompe React.memo). */
 const EMPTY_PROPS: Record<string, unknown> = {};
 
-/** Duración (ms) de cada caída de confeti y número de repeticiones: la caída
- *  es uniforme (misma duración y stagger corto) para que se vea elegante y
- *  no errática, y se repite 3 veces detrás de la invitación. */
+/** Duración (ms) de la caída de confeti: la caída es uniforme (misma
+ *  duración y stagger corto) para que se vea elegante y no errática, y se
+ *  ejecuta UNA sola vez detrás de la invitación. */
 const CONF_FALL_MS = 2200;
-const CONF_REPEATS = 3;
-const CONF_TOTAL_MS = CONF_FALL_MS * CONF_REPEATS + 900;
+const CONF_TOTAL_MS = CONF_FALL_MS + 900;
 
-/** Confeti decorativo al abrir el sobre: piezas CSS puras con animación de
- *  caída (respetada por prefers-reduced-motion). Va DETRÁS de la invitación
- *  (z-index bajo) y cada pieza cae 3 veces. Sin interacción. */
+/** Confeti decorativo al abrir el sobre: piezas CSS puras con una animación
+ *  de caída (respetada por prefers-reduced-motion). Va DETRÁS de la
+ *  invitación (z-index bajo) y cada pieza cae una única vez. Sin interacción. */
 function Confetti() {
   const pieces = useMemo(
     () =>
@@ -286,7 +285,7 @@ export default function PublicInvitation() {
   }, [config.welcomeVideo, config.welcomeVideoEnabled]);
   const handleConfetti = useCallback(() => {
     // El confeti arranca justo al terminar el fade out del texto del sobre
-    // (2.6s tras el segundo gesto) y cae 3 veces detrás de la invitación.
+    // (2.6s tras el segundo gesto) y cae una única vez detrás de la invitación.
     setShowConfetti(true);
     setTimeout(() => setShowConfetti(false), CONF_TOTAL_MS);
   }, []);

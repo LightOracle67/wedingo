@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.40",
+    date: "2026-08-09",
+    changes: [
+      "El confeti al abrir el sobre ahora cae UNA sola vez (antes se repetía 3 veces): la caída es uniforme y el contenedor se desmonta al terminar.",
+    ],
+  },
+  {
     version: "2.95.39",
     date: "2026-08-09",
     changes: [

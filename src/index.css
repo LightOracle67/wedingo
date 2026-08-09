@@ -3163,7 +3163,7 @@ body::after {
   border-radius: 2px;
   animation-name: confetti-fall;
   animation-timing-function: linear;
-  animation-iteration-count: 3;
+  animation-iteration-count: 1;
 }
 @keyframes confetti-fall {
   to {

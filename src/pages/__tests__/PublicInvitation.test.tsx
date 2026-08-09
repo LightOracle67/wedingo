@@ -330,6 +330,9 @@ describe("PublicInvitation", () => {
     act(() => {
       vi.advanceTimersByTime(3600);
     });
+    // El confeti cae UNA sola vez y se desmonta al terminar (no se repite).
+    expect(document.querySelector(".confetti")).toBeNull();
+    expect(document.querySelector(".welcome-video-overlay")).not.toBeNull();
     vi.useRealTimers();
     mockUseAppValue.isAdminTokenLoggedIn = true;
     mockUseAppValue.config.welcomeVideo = "";
