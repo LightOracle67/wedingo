@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.61",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: scroll libre en la invitación — se elimina el snap por sección y la interceptación de rueda/teclado (useStoryNavigation reescrito con IntersectionObserver y estados hidden/entering/active/leaving), animaciones ligadas al scroll en todos los viewports y botón de flecha inferior eliminado.",
+    ],
+  },
+
+  {
     version: "2.95.60",
     date: "2026-08-09",
     changes: [

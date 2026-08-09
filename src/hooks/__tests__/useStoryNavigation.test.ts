@@ -356,137 +356,37 @@ describe("useStoryNavigation", () => {
     }
   });
 
-  it("scrolls exactly one section per wheel gesture", async () => {
+  it("deja el scroll libre (no intercepta rueda ni teclado)", async () => {
     class FakeIO {
       constructor() {}
       observe() {}
       disconnect() {}
     }
     Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    // Monta las secciones en el DOM para que el hook las registre.
-    const els = SAMPLE_ORDER.map((key) => {
+    SAMPLE_ORDER.forEach((key) => {
       const el = document.createElement("section");
       el.setAttribute("data-story-section", key);
       document.body.appendChild(el);
-      return el;
     });
 
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    // Gesto de rueda suficiente: avanza una sección (hero → details).
+    // Un gesto de rueda NO debe interceptarse: el navegador hace scroll libre.
     act(() => {
-      window.dispatchEvent(new WheelEvent("wheel", { deltaY: 120, cancelable: true }));
+      const e = new WheelEvent("wheel", { deltaY: 120, cancelable: true });
+      Object.defineProperty(e, "preventDefault", { value: vi.fn(), configurable: true });
+      window.dispatchEvent(e);
     });
-    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-active");
-    expect(Element.prototype.scrollIntoView).toHaveBeenCalledWith(
-      expect.objectContaining({ behavior: "smooth", block: "start" }),
-    );
-    els.forEach((el) => el.remove());
-  });
-
-  it("does not advance the section while an inner scroll has room", async () => {
-    class FakeIO {
-      constructor() {}
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    const el = document.createElement("section");
-    el.setAttribute("data-story-section", "hero");
-    document.body.appendChild(el);
-    // Contenedor interior con scroll disponible (no en su borde).
-    const inner = document.createElement("div");
-    inner.className = "story-panel";
-    Object.defineProperty(inner, "scrollHeight", { value: 800, configurable: true });
-    Object.defineProperty(inner, "clientHeight", { value: 400, configurable: true });
-    Object.defineProperty(inner, "scrollTop", { value: 0, configurable: true });
-    el.appendChild(inner);
-
-    renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    act(() => {
-      inner.dispatchEvent(new WheelEvent("wheel", { deltaY: 120, bubbles: true, cancelable: true }));
-    });
-    // El gesto se queda en el scroll interior: no se avanza de sección.
     expect(Element.prototype.scrollIntoView).not.toHaveBeenCalled();
-    el.remove();
-  });
-
-  it("advances a section after the inner scroll reaches its edge", async () => {
-    class FakeIO {
-      constructor() {}
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    SAMPLE_ORDER.forEach((key) => {
-      const el = document.createElement("section");
-      el.setAttribute("data-story-section", key);
-      document.body.appendChild(el);
-    });
-    const inner = document.createElement("div");
-    inner.className = "story-panel";
-    Object.defineProperty(inner, "scrollHeight", { value: 800, configurable: true });
-    Object.defineProperty(inner, "clientHeight", { value: 400, configurable: true });
-    // Al borde inferior del scroll interior.
-    Object.defineProperty(inner, "scrollTop", { value: 400, configurable: true });
-    document.body.querySelector("[data-story-section='hero']")!.appendChild(inner);
-
-    renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    act(() => {
-      inner.dispatchEvent(new WheelEvent("wheel", { deltaY: 120, bubbles: true, cancelable: true }));
-    });
-    // El borde alcanzado: el gesto avanza a la siguiente sección.
-    expect(Element.prototype.scrollIntoView).toHaveBeenCalled();
-    SAMPLE_ORDER.forEach((key) => {
-      document.body.querySelector(`[data-story-section='${key}']`)?.remove();
-    });
-  });
-
-  it("advances one section with the keyboard", async () => {
-    class FakeIO {
-      constructor() {}
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    SAMPLE_ORDER.forEach((key) => {
-      const el = document.createElement("section");
-      el.setAttribute("data-story-section", key);
-      document.body.appendChild(el);
-    });
-    renderHook(() => useStoryNavigation(SAMPLE_ORDER));
+    // Tampoco se intercepta el teclado (flechas/PgDn) para navegar.
     act(() => {
       window.dispatchEvent(new KeyboardEvent("keydown", { key: "PageDown", cancelable: true }));
     });
-    expect(Element.prototype.scrollIntoView).toHaveBeenCalled();
+    expect(Element.prototype.scrollIntoView).not.toHaveBeenCalled();
+    // El hook sigue devolviendo las clases de las secciones.
+    expect(result.current.getSectionClassName("hero")).toContain("story-section");
     SAMPLE_ORDER.forEach((key) => {
       document.body.querySelector(`[data-story-section='${key}']`)?.remove();
     });
   });
-
-  it("falls back to the general scroll when the target section is not mounted (lazy)", async () => {
-    class FakeIO {
-      constructor() {}
-      observe() {}
-      disconnect() {}
-    }
-    Object.defineProperty(globalThis, "IntersectionObserver", { value: FakeIO, configurable: true });
-    // Solo el hero está montado; "details" (lazy) aún no existe.
-    const hero = document.createElement("section");
-    hero.setAttribute("data-story-section", "hero");
-    document.body.appendChild(hero);
-    const scene = document.createElement("div");
-    scene.className = "app-scene";
-    document.body.appendChild(scene);
-    const scrollBy = vi.fn();
-    scene.scrollBy = scrollBy;
-
-    renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    act(() => {
-      window.dispatchEvent(new WheelEvent("wheel", { deltaY: 120, cancelable: true }));
-    });
-    // En lugar de quedarse atascado, el scroll general avanza una pantalla.
-    expect(scrollBy).toHaveBeenCalled();
-    hero.remove();
-    scene.remove();
-  });
 });
+

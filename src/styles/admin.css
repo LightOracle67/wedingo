@@ -16,16 +16,17 @@
   left: 0px;
   top: 0px;
   overflow-y: scroll;
-  /* proximity (no mandatory): con scroll anidado en iOS, mandatory puede
-     "pegar" la sección e impedir llegar al final del contenido interno. */
-  scroll-snap-type: y proximity;
   width: 100%;
   max-width: 100vw;
-  scroll-behavior: smooth;
   overscroll-behavior-y: contain;
   display: flex;
   flex-direction: column;
   background: var(--page-bg, #1f1b14);
+  /* Scroll LIBRE y SUAVE por toda la invitación (sin snap por sección):
+     se aprecian las animaciones de entrada/salida de cada sección. Se respeta
+     prefers-reduced-motion (el media query global lo neutraliza). */
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
 }
 .story-section--details.story-section--is-active .story-map__actions .setup-button {
   font-size: 0.82rem;

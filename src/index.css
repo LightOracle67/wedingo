@@ -138,7 +138,7 @@ html {
   --z-section-active: 2;
   --z-section-text: 2;
   --z-footer: 3;
-  --z-scroll-hint: 3;
+
   --z-admin-bar: 4;
   /* El toggle (botón ☰/✕) va POR ENCIMA del overlay abierto del menú,
      pero POR DEBAJO de los modales (--z-modal: 10) que se abren desde él. */
@@ -1296,12 +1296,12 @@ a,
 }
 
 .story-section {
-  scroll-margin-top: 3rem;
-  scroll-snap-align: start;
+  /* El scroll es LIBRE: la sección ocupa al menos una pantalla y crece con su
+     contenido; el contenedor general (.app-scene) se desplaza de forma natural. */
   flex-shrink: 0;
   width: 100%;
-  /* Fallback svh → vh → dvh: evita micro-CLS y reajustes de snap cuando la
-     barra del navegador móvil se pliega/despliega. */
+  /* Fallback svh → vh → dvh: evita micro-CLS y reajustes cuando la barra del
+     navegador móvil se pliega/despliega. */
   min-height: 100svh;
   min-height: 100vh;
   min-height: 100dvh;
@@ -1309,10 +1309,7 @@ a,
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;
-  /* El scroll interior de la sección no se propaga al contenedor general:
-     se avanza de sección solo cuando su contenido interior llega al borde. */
-  overscroll-behavior-y: contain;
+  overflow: visible;
   transition:
     background-color 520ms ease,
     background-image 520ms ease;
@@ -1680,51 +1677,6 @@ a,
   color: color-mix(in srgb, var(--invite-copy-color, #c3b193) 80%, transparent);
 }
 
-.story-scroll-hint {
-  position: fixed;
-  left: 50%;
-  bottom: 1rem;
-  z-index: var(--z-scroll-hint, 3);
-  width: 3rem;
-  height: 3rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--invite-shell-border) 74%, transparent);
-  background: color-mix(in srgb, var(--invite-shell-bg) 78%, transparent);
-  color: var(--invite-title-color);
-  display: grid;
-  place-items: center;
-  box-shadow:
-    0 10px 26px color-mix(in srgb, var(--invite-shell-shadow) 60%, transparent),
-    0 0 16px color-mix(in srgb, var(--invite-shell-glow) 48%, transparent);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-  transition:
-    transform 180ms ease,
-    opacity 180ms ease;
-  animation: story-scroll-hint-float 1400ms ease-in-out infinite;
-}
-
-/* Flecha del indicador de scroll. */
-.story-scroll-hint::after {
-  content: "↓";
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-.story-scroll-hint:hover {
-  transform: translateY(-2px);
-}
-
-@keyframes story-scroll-hint-float {
-  0%,
-  100% {
-    transform: translate(-50%, 0);
-  }
-  50% {
-    transform: translate(-50%, -4px);
-  }
-}
-
 .story-calendar-actions {
   margin-top: 0.65rem;
   display: flex;
@@ -1782,10 +1734,6 @@ a,
 @media (max-width: 640px) {
   .story-title {
     font-size: clamp(1.28rem, 5.6vw, 1.84rem);
-  }
-
-  .story-scroll-hint {
-    bottom: 4.5rem;
   }
 
   a[aria-label="Compartir por WhatsApp"] {
@@ -2060,11 +2008,6 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
-.story-scroll-hint:focus-visible {
-  outline: 2px solid var(--setup-accent);
-  outline-offset: 2px;
-}
-
 /* ── SetupPage: save transition ── */
 
 /* ── Admin: Tabs ── */
@@ -2116,12 +2059,6 @@ a:focus-visible {
 
   .story-copy {
     font-size: clamp(0.95rem, 3.5vw, 1.05rem);
-  }
-
-  .story-scroll-hint {
-    width: 2.4rem;
-    height: 2.4rem;
-    bottom: 0.8rem;
   }
 
   .story-map__actions {
