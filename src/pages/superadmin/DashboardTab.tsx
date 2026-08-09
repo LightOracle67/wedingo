@@ -67,27 +67,37 @@ const DashboardTab = memo(function DashboardTab() {
   const expiringDays = Math.max(1, Number(platform.expiringDays) || 30);
 
   const load = useCallback(async () => {
+    // Cada fuente se aísla: si una falla (p. ej. setupTokens o auditLog), el
+    // resto del panel sigue cargando en lugar de mostrar "no se pudieron
+    // cargar las estadísticas". El error real se registra para diagnóstico.
+    let rsvps: Array<Record<string, unknown>> = [];
+    let invitationDocs: Array<Record<string, unknown>> = [];
+    let tokens: Array<Record<string, unknown>> = [];
+    let baseOk = true;
     try {
       const [rsvpSnap, invSnap, tokenSnap] = await Promise.all([
         getDocs(RSVP_RESPONSES_GROUP),
         getDocs(INVITATIONS_COLLECTION_REF),
         getDocs(collection(db, "setupTokens")),
       ]);
-      const rsvps: Array<Record<string, unknown>> = rsvpSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
-      const invitationDocs: Array<Record<string, unknown>> = invSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
+      rsvps = rsvpSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
+      invitationDocs = invSnap.docs.map((d: QueryDocumentSnapshot<DocumentData>) => ({ id: d.id, ...d.data() }));
       setInvitations(invitationDocs as InvitationDoc[]);
-      // Las stats de tokens se calculan de verdad: un token es "usado" si su
-      // invitación asociada existe (antes se pasaba un array vacío y todo
-      // salía a 0).
       const invitationIds = new Set(invSnap.docs.map((d) => d.id));
-      const tokens = tokenSnap.docs.map((d) => ({
+      tokens = tokenSnap.docs.map((d) => ({
         id: d.id,
         ...d.data(),
         used: invitationIds.has(String(d.data().inviteToken)),
       }));
       setStats(calcGlobalStats(invitationDocs, rsvps, tokens));
+    } catch (err) {
+      baseOk = false;
+      console.error("[app]", "[superadmin]", "stats base load failed", err);
+      addToast("error", t("errors.statsLoadFailed"));
+    }
 
-      // F2-3: confirmaciones por día (últimos 7 días) para el histograma.
+    // F2-3: confirmaciones por día (últimos 7 días) para el histograma.
+    try {
       const days: Record<string, number> = {};
       for (let i = 6; i >= 0; i--) {
         const d = new Date();
@@ -106,16 +116,20 @@ const DashboardTab = memo(function DashboardTab() {
         if (key in days) days[key] = (days[key] || 0) + 1;
       }
       setDailyCounts(Object.entries(days).map(([day, count]) => ({ day, count })));
+    } catch {}
 
-      // F2-6: comparativa de temas.
+    // F2-6: comparativa de temas.
+    try {
       const themes: Record<string, number> = {};
       for (const inv of invitationDocs) {
         const th = String(inv.theme || "sin tema");
         themes[th] = (themes[th] || 0) + 1;
       }
       setThemeCounts(Object.entries(themes).sort((a, b) => b[1] - a[1]).map(([theme, count]) => ({ theme, count })));
+    } catch {}
 
-      // F2-2: invitaciones con más visitas sin confirmar (embudo).
+    // F2-2: invitaciones con más visitas sin confirmar (embudo).
+    try {
       const rsvpByToken: Record<string, number> = {};
       for (const r of rsvps) {
         const tk = String(r.inviteToken || "");
@@ -131,26 +145,26 @@ const DashboardTab = memo(function DashboardTab() {
         .sort((a, b) => b.visits - a.visits)
         .slice(0, 5);
       setTopVisits(withVisits);
+    } catch {}
 
-      // F2-1: actividad reciente (últimos 10 eventos de auditoría).
-      try {
-        const auditSnap = await getDocs(query(collection(db, "auditLog"), orderBy("createdAt", "desc"), limit(10)));
-        setRecentActivity(
-          auditSnap.docs.map((d) => {
-            const data = d.data();
-            const raw = data.createdAt as { seconds?: unknown } | null | undefined;
-            const ts = raw && typeof raw === "object" && "seconds" in raw ? Number(raw.seconds) * 1000 : 0;
-            return { action: String(data.action || ""), detail: String(data.detail || ""), ts };
-          }),
-        );
-      } catch {
-        setRecentActivity([]);
-      }
-    } catch {
-      addToast("error", t("errors.statsLoadFailed"));
-    } finally {
-      setLoading(false);
+    // F2-1: actividad reciente (últimos 10 eventos de auditoría).
+    try {
+      const auditSnap = await getDocs(query(collection(db, "auditLog"), orderBy("createdAt", "desc"), limit(10)));
+      setRecentActivity(
+        auditSnap.docs.map((d) => {
+          const data = d.data();
+          const raw = data.createdAt as { seconds?: unknown } | null | undefined;
+          const ts = raw && typeof raw === "object" && "seconds" in raw ? Number(raw.seconds) * 1000 : 0;
+          return { action: String(data.action || ""), detail: String(data.detail || ""), ts };
+        }),
+      );
+    } catch (err) {
+      console.error("[app]", "[superadmin]", "stats auditLog failed", err);
+      setRecentActivity([]);
     }
+
+    setLoading(false);
+    void baseOk;
   }, [addToast, t]);
 
   useEffect(() => {

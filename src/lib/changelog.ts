@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.57",
+    date: "2026-08-09",
+    changes: [
+      "Panel del superadmin resiliente: las estadísticas se cargan por fuente aislada (confirmaciones, invitaciones, tokens, actividad, temas, embudo), de modo que si una consulta falla el resto del panel se sigue mostrando en lugar de 'no se pudieron cargar las estadísticas'. El error real se registra en consola para diagnóstico.",
+    ],
+  },
+
+  {
     version: "2.95.56",
     date: "2026-08-09",
     changes: [
