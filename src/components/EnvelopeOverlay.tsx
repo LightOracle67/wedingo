@@ -85,16 +85,18 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({
     try {
       window.dispatchEvent(new CustomEvent("wedin:play-audio"));
     } catch {}
-    // El texto dorado tarda 2.5s en desvanecerse (opacity 2s / transform 2.5s):
-    // el confeti arranca justo al terminar ese fade out, detrás del sobre que
-    // todavía se está yendo, de modo que ya cae cuando la invitación aparece.
+    // El texto dorado tarda 2.5s en desvanecerse (opacity 2s / transform 2.5s)
+    // y el propio overlay hace un fade de 2.5s: al terminar esa última
+    // animación (t=2500) la invitación queda al descubierto y el hero arranca
+    // SU animación de entrada, sincronizada con la salida del sobre (antes
+    // tardaba 1s más en aparecer, desconectado del desvanecimiento).
     schedule(() => onConfetti?.(), 2600);
     schedule(() => {
       document.body.style.overflow = "";
       const main = document.getElementById("main-content");
       if (main) main.focus({ preventScroll: true });
       onOpen();
-    }, 3500);
+    }, 2500);
   }, [onOpen, onConfetti, open, exiting]);
 
   return (

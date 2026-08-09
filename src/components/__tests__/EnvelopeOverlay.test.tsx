@@ -41,7 +41,9 @@ describe("EnvelopeOverlay", () => {
     const btn = screen.getByRole("button");
     fireEvent.click(btn);
     fireEvent.click(btn);
-    vi.advanceTimersByTime(3500);
+    // Al terminar la última animación del sobre (fade de 2.5s) se revela la
+    // invitación y arranca la entrada del hero.
+    vi.advanceTimersByTime(2500);
     expect(onOpen).toHaveBeenCalled();
     vi.useRealTimers();
   });
@@ -54,11 +56,13 @@ describe("EnvelopeOverlay", () => {
     const btn = screen.getByRole("button");
     fireEvent.click(btn);
     fireEvent.click(btn);
-    // A los 2.6s (justo tras el fade out del texto de 2.5s) el confeti arranca.
-    vi.advanceTimersByTime(2600);
+    // A los 2.5s termina el fade del sobre: la invitación se revela (onOpen).
+    vi.advanceTimersByTime(2500);
+    expect(onOpen).toHaveBeenCalledTimes(1);
+    expect(onConfetti).not.toHaveBeenCalled();
+    // El confeti arranca justo después (2.6s), ya con la invitación visible.
+    vi.advanceTimersByTime(100);
     expect(onConfetti).toHaveBeenCalledTimes(1);
-    // Y antes de mostrar la invitación (onOpen a los 3.5s).
-    expect(onOpen).not.toHaveBeenCalled();
     vi.useRealTimers();
   });
 

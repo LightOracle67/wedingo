@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.63",
+    date: "2026-08-09",
+    changes: [
+      "FIX: la animación de entrada del hero arranca al terminar la última animación del sobre (fade de 2.5s), sincronizada con el desvanecimiento; antes aparecía 1s después, desconectada de la salida del sobre.",
+    ],
+  },
+
+  {
     version: "2.95.62",
     date: "2026-08-09",
     changes: [
