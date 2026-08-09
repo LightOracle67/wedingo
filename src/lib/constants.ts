@@ -318,4 +318,6 @@ export const defaultConfig = {
   rsvpCapacity: "",
   // Firma digital extra en el RSVP (F3-8).
   rsvpSignatureEnabled: "false",
+  // F-rec: contacto opcional del invitado (teléfono/email con consentimiento).
+  rsvpContactEnabled: "false",
 };

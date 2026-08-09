@@ -948,9 +948,15 @@ const RsvpSection = memo(function RsvpSection({
                 >
                   {t("public.privacyPolicy")}
                 </span>
-                {t("rsvp.privacyConsentAfter")}
-              </span>
-            </label>
+                 {t("rsvp.privacyConsentAfter")}
+               </span>
+             </label>
+             {/* Versión de la política vigente (transparencia, GDPR 5.1/12). */}
+             {config?.privacyPolicyVersion ? (
+               <p className="setup-help" style={{ fontSize: "0.65rem", margin: "0.1rem 0 0" }}>
+                 {t("rsvp.policyVersion", { version: config.privacyPolicyVersion })}
+               </p>
+             ) : null}
 
             {showHealthConsent ? (
               <label
@@ -1000,6 +1006,49 @@ const RsvpSection = memo(function RsvpSection({
               </label>
             ) : null}
 
+            {/* Contacto opcional con consentimiento explícito (GDPR art. 7):
+                SOLO se guarda si el invitado marca el consentimiento. */}
+            {config?.rsvpContactEnabled === "true" && !isAlreadySubmitted ? (
+              <div style={{ borderTop: "1px solid var(--setup-border)", paddingTop: "0.75rem" }}>
+                <p className="setup-label" style={{ fontSize: "0.85rem" }}>
+                  {t("rsvp.contactOptional")}
+                </p>
+                <input
+                  className="setup-input"
+                  value={rsvpForm.phone}
+                  onChange={(e) => updateRsvpField("phone", e.target.value.slice(0, 30))}
+                  placeholder={t("rsvp.phonePlaceholder")}
+                  inputMode="tel"
+                  autoComplete="tel"
+                  disabled={isDisabled}
+                  aria-label={t("rsvp.phonePlaceholder")}
+                />
+                <input
+                  className="setup-input"
+                  value={rsvpForm.email}
+                  onChange={(e) => updateRsvpField("email", e.target.value.slice(0, 200))}
+                  placeholder={t("rsvp.emailPlaceholder")}
+                  type="email"
+                  autoComplete="email"
+                  disabled={isDisabled}
+                  aria-label={t("rsvp.emailPlaceholder")}
+                />
+                <label
+                  className="setup-checkbox-label"
+                  style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8rem", color: "var(--setup-subtitle)", cursor: isDisabled ? "default" : "pointer" }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={rsvpForm.contactConsent}
+                    onChange={(e) => updateRsvpField("contactConsent", e.target.checked)}
+                    style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+                    disabled={isDisabled}
+                  />
+                  <span>{t("rsvp.contactConsentLabel")}</span>
+                </label>
+              </div>
+            ) : null}
+
             {isBlocked ? (
               <p className="setup-error" role="alert">
                 {t("rsvp.blockedNotice")}
@@ -1012,6 +1061,32 @@ const RsvpSection = memo(function RsvpSection({
               <p className="setup-error" role="alert">
                 {t("rsvp.capacityReached")}
               </p>
+            ) : null}
+
+            {/* Aforo restante + días para confirmar (sin datos personales). */}
+            {!isAlreadySubmitted && !isBlocked && !weddingPassed ? (
+              <div className="admin-flex" style={{ gap: "0.75rem", flexWrap: "wrap", marginTop: "0.4rem" }}>
+                {capacity > 0 ? (
+                  <p className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
+                    {t("rsvp.capacityLeft", { count: Math.max(0, capacity - (rsvpConfirmedCount ?? 0)) })}
+                  </p>
+                ) : null}
+                {config?.rsvpDeadline ? (
+                  <p className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
+                    {t("rsvp.daysLeft", { days: Math.max(0, Math.ceil((new Date(`${config.rsvpDeadline}T23:59:59`).getTime() - Date.now()) / 86400000)) })}
+                  </p>
+                ) : null}
+              </div>
+            ) : null}
+
+            {/* Resumen de la respuesta tras enviar (el invitado ve lo elegido). */}
+            {hasSubmitted && !isAlreadySubmitted ? (
+              <div className="rsvp-summary" style={{ marginTop: "0.6rem", fontSize: "0.85rem", lineHeight: 1.7 }}>
+                <p className="setup-label" style={{ fontSize: "0.8rem" }}>{t("rsvp.summaryTitle")}</p>
+                <p style={{ margin: 0 }}>{t("rsvp.summaryAttendance", { v: rsvpForm.attendance === "no" ? t("rsvp.notAttending") : t("rsvp.attendingAlone") })}</p>
+                {rsvpForm.menuSelection ? <p style={{ margin: 0 }}>{t("rsvp.summaryMenu", { m: rsvpForm.menuSelection })}</p> : null}
+                {rsvpForm.companionCount > 0 ? <p style={{ margin: 0 }}>{t("rsvp.summaryCompanions", { c: rsvpForm.companionCount })}</p> : null}
+              </div>
             ) : null}
 
             {isAlreadySubmitted ? (

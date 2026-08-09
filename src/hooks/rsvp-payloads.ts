@@ -22,6 +22,9 @@ export interface RsvpFormLike {
   transportTime: string;
   transportPlace: string;
   digitalSignature?: boolean;
+  phone?: string;
+  email?: string;
+  contactConsent?: boolean;
 }
 
 export function buildMainGuestData(input: {
@@ -55,6 +58,13 @@ export function buildMainGuestData(input: {
   };
   // F3-8: firma digital extra (si el admin la exige).
   if (data.digitalSignature) mainGuestData.digitalSignature = true;
+  // Contacto opcional: SOLO se guarda si el invitado dio consentimiento
+  // explícito (GDPR art. 7). Sin consentimiento, ni teléfono ni email viajan.
+  if (data.contactConsent) {
+    if (data.phone) mainGuestData.phone = String(data.phone).slice(0, 30);
+    if (data.email) mainGuestData.email = String(data.email).slice(0, 200);
+    mainGuestData.contactConsent = true;
+  }
   if (data.menuSelection) mainGuestData.mealChoice = data.menuSelection;
   if (data.birthDate) mainGuestData.birthDate = data.birthDate;
   if (age !== null && age < 14) mainGuestData.parentalConsent = true;

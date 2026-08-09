@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.54",
+    date: "2026-08-09",
+    changes: [
+      "Funciones nuevas para la invitación y el panel del responsable: pestaña 'Herramientas' (recordatorio por WhatsApp personalizable, lista de invitados esperados con pendientes, badge de confirmaciones nuevas, descarga de galería, .ics, nota interna), contacto opcional del invitado con consentimiento explícito (GDPR art. 7) visible en la asistencia, aviso de plazas restantes y días para confirmar, resumen de la respuesta tras enviar, versión de la política visible y divulgación del contacto en la política. Añadidos 7 tests (total 2015).",
+    ],
+  },
+
+  {
     version: "2.95.53",
     date: "2026-08-09",
     changes: [

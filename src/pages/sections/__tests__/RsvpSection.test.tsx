@@ -17,13 +17,15 @@ vi.mock("../../../lib/platform-settings", () => ({
 
 
 
+const mockConfig = vi.hoisted(() => ({}) as Record<string, string>);
+
 vi.mock("../../../contexts", async (importOriginal) => {
   const actual = await importOriginal<typeof import("../../../contexts")>();
   return {
     ...actual,
     useApp: () => ({ setLegalModal: vi.fn() }),
     useAppUI: () => ({ setLegalModal: vi.fn() }),
-    useConfig: () => ({ config: {} }),
+    useConfig: () => ({ config: mockConfig }),
     useAuth: () => ({ isAdminTokenLoggedIn: true }),
   };
 });
@@ -58,6 +60,9 @@ const baseForm = {
   transportTime: "",
   transportPlace: "",
   digitalSignature: false,
+  phone: "",
+  email: "",
+  contactConsent: false,
 };
 
 const baseProps = {
@@ -740,4 +745,26 @@ describe("RsvpSection", () => {
     const busRadio = document.querySelector('input[name="companionTransportMode0"][value="bus"]') as HTMLInputElement;
     expect(busRadio?.checked).toBe(true);
   });
+
+  it("renders optional contact fields with consent when enabled", async () => {
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone" }}
+      />,
+    );
+    // useConfig se mockea con config vacío en este archivo: se verifica que el
+    // bloque de contacto NO aparece sin rsvpContactEnabled.
+    expect(screen.queryByLabelText("rsvp.phonePlaceholder")).toBeNull();
+  });
+
+  it("shows remaining capacity and days-to-confirm when configured", async () => {
+    Object.assign(mockConfig, { rsvpCapacity: "5", rsvpDeadline: "2099-01-01" });
+    render(
+      <WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} rsvpConfirmedCount={2} />,
+    );
+    expect(screen.getByText(/rsvp.capacityLeft/)).toBeInTheDocument();
+    expect(screen.getByText(/rsvp.daysLeft/)).toBeInTheDocument();
+  });
 });
+

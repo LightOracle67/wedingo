@@ -194,4 +194,5 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   tags: s(value?.tags).slice(0, 500),
   rsvpCapacity: s(value?.rsvpCapacity).slice(0, 5),
   rsvpSignatureEnabled: s(value?.rsvpSignatureEnabled) === "true" ? "true" : "false",
+  rsvpContactEnabled: s(value?.rsvpContactEnabled) === "true" ? "true" : "false",
 });

@@ -21,6 +21,9 @@ interface RsvpEntry {
   parentalConsent?: boolean;
   healthConsent?: boolean;
   transportChoice?: string;
+  phone?: string;
+  email?: string;
+  contactConsent?: boolean;
   transportMode?: string;
   transportTime?: string;
   companionTransportChoices?: string[];
@@ -305,6 +308,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                     {t("attendance.tableConsents")}
                   </th>
                   <th scope="col" style={{ minWidth: "120px" }}>
+                    {t("attendance.tableContact")}
+                  </th>
+                  <th scope="col" style={{ minWidth: "120px" }}>
                     {t("attendance.tableDate")}
                   </th>
                 </tr>
@@ -417,6 +423,21 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                                   {b}
                                 </span>
                               ))}
+                            </div>
+                          ) : (
+                            <span style={{ fontSize: "0.78rem" }}>—</span>
+                          )}
+                        </div>
+                      </td>
+                      <td>
+                        <div style={crossed}>
+                          {entry.contactConsent ? (
+                            <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
+                              {entry.phone ? <span style={{ fontSize: "0.75rem" }}>{entry.phone}</span> : null}
+                              {entry.email ? <span style={{ fontSize: "0.75rem" }}>{entry.email}</span> : null}
+                              {!entry.phone && !entry.email ? (
+                                <span style={{ fontSize: "0.75rem", color: "var(--setup-muted)" }}>{t("attendance.contactConsentOnly")}</span>
+                              ) : null}
                             </div>
                           ) : (
                             <span style={{ fontSize: "0.78rem" }}>—</span>

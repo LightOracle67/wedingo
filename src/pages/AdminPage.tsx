@@ -34,6 +34,7 @@ const InvitationTab = lazy(() => import("./admin/InvitationTab"));
 const AccessTab = lazy(() => import("./admin/AccessTab"));
 const ShareTab = lazy(() => import("./admin/ShareTab"));
 const SupportTab = lazy(() => import("./admin/SupportTab"));
+const ToolsTab = lazy(() => import("./admin/ToolsTab"));
 
 /**
  * Mapa de claves de pestaña a IDs de traducción.
@@ -43,6 +44,7 @@ const TAB_KEY_MAP = {
   invitacion: "invitation",
   asistencia: "attendance",
   compartir: "share",
+  herramientas: "herramientas",
   acceso: "access",
   soporte: "support",
 };
@@ -55,6 +57,7 @@ const TABS = [
   { key: "invitacion" },
   { key: "asistencia" },
   { key: "compartir" },
+  { key: "herramientas" },
   { key: "acceso" },
   { key: "soporte" },
 ] as const;
@@ -438,6 +441,15 @@ export default function AdminPage() {
 
             {/* Pestaña: Compartir invitación */}
             {activeTab === "compartir" && <ShareTab inviteToken={inviteToken || ""} addToast={addToast} />}
+            {activeTab === "herramientas" && (
+              <ToolsTab
+                inviteToken={inviteToken || ""}
+                inviteUrl={`${window.location.origin}/${inviteToken}`}
+                weddingDate={{ year: config.weddingYear, month: config.weddingMonth, day: config.weddingDay, hour: config.weddingHour, minute: config.weddingMinute }}
+                weddingPlace={config.weddingPlace}
+                coupleName={coupleName}
+              />
+            )}
 
             {/* Pestaña: Gestión de acceso */}
             {activeTab === "acceso" && (
