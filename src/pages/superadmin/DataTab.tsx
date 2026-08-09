@@ -223,6 +223,40 @@ export default function DataTab() {
     }
   }, [selected, addToast, t]);
 
+  /** F5-1 (F12): abre una ventana imprimible con el resumen de confirmaciones
+   *  de una invitación (para imprimir/guardar en PDF). */
+  const printRsvps = useCallback(
+    async (token: string) => {
+      try {
+        const rsvpSnap = await getDocs(rsvpByInviteRef(token));
+        const rows = rsvpSnap.docs.map((d) => d.data());
+        const html = `<!doctype html><html><head><meta charset="utf-8"><title>${token} — RSVP</title><style>
+          body{font-family:system-ui,sans-serif;padding:2rem;color:#222}
+          h1{font-size:1.3rem}h2{font-size:1rem;margin-top:1.5rem}
+          table{border-collapse:collapse;width:100%;font-size:0.85rem}
+          th,td{border:1px solid #ccc;padding:0.4rem 0.5rem;text-align:left}
+          th{background:#f4f4f4}</style></head><body>
+          <h1>Confirmaciones — ${token}</h1>
+          <h2>${rows.length} respuesta(s)</h2>
+          <table><thead><tr><th>Nombre</th><th>Asistencia</th><th>Acompañantes</th></tr></thead><tbody>
+          ${rows
+            .map(
+              (r) =>
+                `<tr><td>${String(r.guestName || "")}</td><td>${String(r.attendance || "")}</td><td>${Number(r.companionCount) || 0}</td></tr>`,
+            )
+            .join("")}
+          </tbody></table></body></html>`;
+        const url = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+        const win = window.open(url, "_blank");
+        if (win) win.addEventListener("load", () => win.print());
+        setTimeout(() => URL.revokeObjectURL(url), 60000);
+      } catch {
+        addToast("error", t("superadmin.data.exportFailed"));
+      }
+    },
+    [addToast, t],
+  );
+
   /**
    * Lee la galería y el audio de una invitación (para exportar el backup
    * completo con las fotos y la música).
@@ -551,6 +585,14 @@ export default function DataTab() {
                       disabled={busy}
                     >
                       {t("superadmin.data.exportBtn")}
+                    </button>
+                    <button
+                      type="button"
+                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
+                      onClick={() => printRsvps(inv.id)}
+                      disabled={busy}
+                    >
+                      {t("superadmin.data.printBtn")}
                     </button>
                     <button
                       type="button"

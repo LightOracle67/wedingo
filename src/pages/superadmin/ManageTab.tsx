@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   getDoc,
@@ -68,6 +68,8 @@ const ManageTab = memo(function ManageTab() {
   const [autoName, setAutoName] = useState("");
   const [autoAttendance, setAutoAttendance] = useState("yes");
   const [autoSaving, setAutoSaving] = useState(false);
+  // F4-5: ref del iframe de previsualización (para modo presentación).
+  const previewFrameRef = useRef<HTMLIFrameElement | null>(null);
 
   // ── F1-6 duplicar sección ──
   const [copySource, setCopySource] = useState("");
@@ -294,6 +296,48 @@ const ManageTab = memo(function ManageTab() {
     }
   }, [token, addToast, t]);
 
+  /** F4-5: abre la previsualización a pantalla completa (modo presentación). */
+  const handlePresent = useCallback(() => {
+    const frame = previewFrameRef.current;
+    if (frame?.requestFullscreen) {
+      void frame.requestFullscreen().catch(() => {});
+    }
+  }, []);
+
+  /** F5-2 (F14): restaura un backup JSON subido (config) en esta invitación. */
+  const handleRestoreBackup = useCallback(
+    async (file: File | undefined) => {
+      if (!file || !token) return;
+      if (!window.confirm(t("manage.restoreConfirm"))) return;
+      try {
+        const text = await file.text();
+        let parsed: Record<string, unknown>;
+        try {
+          parsed = JSON.parse(text);
+        } catch {
+          addToast("error", t("manage.restoreInvalidJson"));
+          return;
+        }
+        // Acepta { invitation: {...} } (formato de export) o la config directa.
+        const config = (parsed.invitation && typeof parsed.invitation === "object" ? parsed.invitation : parsed) as Record<
+          string,
+          unknown
+        >;
+        const { sanitized, errorKey } = validateConfigForSave(config, true, new Date().getFullYear() + MAX_YEARS_AHEAD);
+        if (errorKey) {
+          addToast("error", t(errorKey));
+          return;
+        }
+        await setDoc(doc(INVITATIONS_COLLECTION_REF, token), sanitized, { merge: true });
+        addToast("success", t("manage.restoreDone"));
+        void loadInvitation();
+      } catch {
+        addToast("error", t("errors.generic"));
+      }
+    },
+    [token, loadInvitation, addToast, t],
+  );
+
   /** F4-6: registra una respuesta RSVP en nombre del invitado (auto-respuesta
    *  del superadmin cuando el invitado confirma por teléfono). */
   const handleAutoRespond = useCallback(async () => {
@@ -415,6 +459,18 @@ const ManageTab = memo(function ManageTab() {
               <button className="setup-button setup-button--ghost" type="button" onClick={handleDownloadBackup}>
                 {t("manage.downloadBackup")}
               </button>
+              <label className="setup-button setup-button--ghost" style={{ cursor: "pointer", margin: 0 }}>
+                {t("manage.restoreBackup")}
+                <input
+                  type="file"
+                  accept="application/json,.json"
+                  style={{ display: "none" }}
+                  onChange={(e) => {
+                    void handleRestoreBackup(e.target.files?.[0]);
+                    e.target.value = "";
+                  }}
+                />
+              </label>
               <a className="setup-button setup-button--ghost" href={previewUrl} target="_blank" rel="noreferrer">
                 {t("manage.preview")}
               </a>
@@ -585,11 +641,21 @@ const ManageTab = memo(function ManageTab() {
                 }}
               >
                 <iframe
+                  ref={previewFrameRef}
                   src={previewUrl}
                   title={t("manage.devicePreview")}
                   style={{ width: "100%", height: "380px", border: 0, background: "#fff" }}
                   sandbox="allow-scripts allow-same-origin"
+                  allowFullScreen
                 />
+                <div className="admin-flex" style={{ gap: "0.4rem", marginTop: "0.4rem", flexWrap: "wrap" }}>
+                  <button className="setup-button setup-button--compact" type="button" onClick={handlePresent}>
+                    {t("manage.presentMode")}
+                  </button>
+                  <a className="setup-button setup-button--ghost setup-button--compact" href={previewUrl} target="_blank" rel="noreferrer">
+                    {t("manage.assistMode")}
+                  </a>
+                </div>
               </div>
               {qrDataUrl ? (
                 <div style={{ textAlign: "center" }}>

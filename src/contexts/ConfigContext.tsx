@@ -9,6 +9,8 @@ import {
   updateDoc,
   getDocs,
   writeBatch,
+  addDoc,
+  collection,
   serverTimestamp,
   type DocumentData,
   type QueryDocumentSnapshot,
@@ -468,6 +470,25 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         delete payload.tags;
         delete payload.rsvpCapacity;
         delete payload.rsvpSignatureEnabled;
+
+        // F5-3: auditoría por sección — se registran los campos que cambiaron
+        // respecto al config actual (subcolección configLog, solo lectura
+        // admin/superadmin). Best-effort.
+        try {
+          const changed: string[] = [];
+          for (const key of Object.keys(payload)) {
+            if (String(payload[key] ?? "") !== String((config as Record<string, unknown>)[key] ?? "")) {
+              changed.push(key);
+            }
+          }
+          if (changed.length > 0) {
+            await addDoc(collection(db, "invitations", inviteToken, "configLog"), {
+              fields: changed.slice(0, 60).join(", "),
+              ts: serverTimestamp(),
+              userAgent: navigator.userAgent.slice(0, 200),
+            });
+          }
+        } catch {}
 
         await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
 

@@ -363,6 +363,15 @@ service cloud.firestore {
         allow read, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
 
+      /* Auditoría de cambios de configuración (F5-3): qué campos se
+         modificaron en cada guardado del setup. Lectura solo admin/superadmin. */
+      match /configLog/{entryId} {
+        allow create: if request.resource.data.keys().hasOnly(['fields', 'ts', 'userAgent'])
+          && request.resource.data.fields is string && request.resource.data.fields.size() <= 2000
+          && request.resource.data.userAgent is string && request.resource.data.userAgent.size() <= 200;
+        allow read, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+      }
+
       match /_counters/{counterName} {
         allow read: if true;
         // create limitado a count 0/1: 0 es la inicialización de ConfigContext

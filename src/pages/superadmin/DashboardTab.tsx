@@ -184,6 +184,37 @@ const DashboardTab = memo(function DashboardTab() {
     return d.getTime() > 0 && d.getTime() < twelveMonthsAgo;
   });
 
+  /** F5-4 (F36): limpia archivos de Storage huérfanos (invitaciones ya borradas). */
+  const handleStorageGC = useCallback(async () => {
+    if (!window.confirm(t("superadmin.gcStorageConfirm"))) return;
+    setCleaning(true);
+    let removed = 0;
+    try {
+      const storageInstance = await getStorageInstance();
+      const { ref, listAll, deleteObject } = await import("firebase/storage");
+      const rootRef = ref(storageInstance, "invitations/");
+      const root = await listAll(rootRef);
+      const existing = new Set((await getDocs(INVITATIONS_COLLECTION_REF)).docs.map((d) => d.id));
+      for (const prefix of root.prefixes) {
+        const token = prefix.name.replace(/\/$/, "");
+        if (existing.has(token)) continue;
+        // Invitación borrada: borra todos sus archivos.
+        const files = await listAll(prefix);
+        await Promise.allSettled(files.items.map((item) => deleteObject(item)));
+        for (const sub of files.prefixes) {
+          const subFiles = await listAll(sub);
+          await Promise.allSettled(subFiles.items.map((item) => deleteObject(item)));
+        }
+        removed += files.items.length + (await Promise.all(files.prefixes.map(async (sub) => (await listAll(sub)).items.length))).reduce((a, b) => a + b, 0);
+      }
+      addToast("success", t("superadmin.gcStorageDone", { count: removed }));
+    } catch {
+      addToast("error", t("errors.statsLoadFailed"));
+    } finally {
+      setCleaning(false);
+    }
+  }, [addToast, t]);
+
   const handleCleanup = useCallback(async () => {
     if (!window.confirm(t("superadmin.cleanConfirm", { count: expired.length }))) return;
     setCleaning(true);
@@ -292,6 +323,15 @@ const DashboardTab = memo(function DashboardTab() {
               style={{ fontSize: "0.8rem", flexShrink: 0 }}
             >
               {cleaning ? t("superadmin.cleaningButton") : t("superadmin.cleanButton", { count: expired.length })}
+            </button>
+            <button
+              className="setup-button setup-button--ghost"
+              type="button"
+              onClick={handleStorageGC}
+              disabled={cleaning}
+              style={{ fontSize: "0.8rem", flexShrink: 0 }}
+            >
+              {t("superadmin.gcStorage")}
             </button>
           </div>
         </div>

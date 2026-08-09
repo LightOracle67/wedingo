@@ -817,7 +817,11 @@
     "noActivity": "Sin actividad registrada.",
     "tableUser": "Usuario",
     "filterTagPlaceholder": "Filtrar por etiqueta",
-    "expiringSoon": "Invitaciones por expirar (≤{{days}} días)"
+    "expiringSoon": "Invitaciones por expirar (≤{{days}} días)",
+    "data.printBtn": "Imprimir",
+    "gcStorage": "Limpiar Storage huérfano",
+    "gcStorageConfirm": "¿Borrar archivos de Storage de invitaciones ya eliminadas?",
+    "gcStorageDone": "Storage limpiado: {{count}} archivo(s)."
   },
   "compliance": {
     "title": "Registro de actividades de tratamiento (Art. 30 GDPR)",
@@ -1197,7 +1201,13 @@
     "autoRespondName": "Nombre del invitado",
     "autoRespondAttendance": "Asistencia",
     "autoRespondButton": "Registrar respuesta",
-    "autoRespondDone": "Respuesta registrada."
+    "autoRespondDone": "Respuesta registrada.",
+    "presentMode": "Modo presentación",
+    "assistMode": "Abrir para asistir",
+    "restoreBackup": "Restaurar backup",
+    "restoreConfirm": "¿Restaurar este backup? Sobrescribirá la configuración actual.",
+    "restoreInvalidJson": "El archivo no es un JSON válido.",
+    "restoreDone": "Backup restaurado."
   },
   "platform": {
     "maintenance": "Modo mantenimiento",

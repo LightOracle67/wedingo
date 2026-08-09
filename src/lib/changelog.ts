@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.50",
+    date: "2026-08-09",
+    changes: [
+      "Fase 5 (avanzadas viables) del superadmin: modo presentación a pantalla completa y apertura para asistir al invitado, restauración de backup desde un archivo JSON, impresión/PDF del resumen de confirmaciones, auditoría de cambios de configuración por sección (configLog) y limpieza de archivos de Storage huérfanos.",
+    ],
+  },
+
+  {
     version: "2.95.49",
     date: "2026-08-09",
     changes: [
