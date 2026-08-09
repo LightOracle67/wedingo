@@ -54,6 +54,7 @@ describe("useStoryNavigation", () => {
   });
 
   afterEach(() => {
+    vi.useRealTimers();
     vi.unstubAllGlobals();
     document.body.innerHTML = "";
   });
@@ -200,5 +201,51 @@ describe("useStoryNavigation", () => {
       window.dispatchEvent(new KeyboardEvent("keydown", { key: "PageDown", cancelable: true }));
     });
     expect(Element.prototype.scrollIntoView).not.toHaveBeenCalled();
+  });
+
+  it("encaja suavemente al centro la sección cercana tras el silencio de scroll", () => {
+    vi.useFakeTimers();
+    const { scene, rects } = setupScene(["hero", "details"]);
+    renderHook(() => useStoryNavigation(["hero", "details"]));
+    // El hero queda 80px por debajo del centro (centro en 480, viewport en 400):
+    // dentro del radio de encaje (0.4 * 800 = 320).
+    rects["hero"]!.top = 80;
+    act(() => {
+      scene.dispatchEvent(new Event("scroll"));
+    });
+    // Tras el debounce (350ms) se llama a scrollTo para centrar el hero.
+    vi.advanceTimersByTime(400);
+    expect(Element.prototype.scrollTo).toHaveBeenCalledWith({ top: 80, behavior: "smooth" });
+  });
+
+  it("no encaja si la sección más cercana está fuera del radio", () => {
+    vi.useFakeTimers();
+    const { scene, rects } = setupScene(["hero", "details"]);
+    renderHook(() => useStoryNavigation(["hero", "details"]));
+    // El hero está a 500px del centro: fuera del radio de encaje (320px).
+    rects["hero"]!.top = 500;
+    act(() => {
+      scene.dispatchEvent(new Event("scroll"));
+    });
+    vi.advanceTimersByTime(400);
+    expect(Element.prototype.scrollTo).not.toHaveBeenCalled();
+  });
+
+  it("no encaja si el scroll sigue activo (el debounce se reprograma)", () => {
+    vi.useFakeTimers();
+    const { scene, rects } = setupScene(["hero", "details"]);
+    renderHook(() => useStoryNavigation(["hero", "details"]));
+    rects["hero"]!.top = 80;
+    act(() => {
+      scene.dispatchEvent(new Event("scroll"));
+    });
+    // Un nuevo scroll antes del debounce reinicia el temporizador.
+    act(() => {
+      scene.dispatchEvent(new Event("scroll"));
+    });
+    vi.advanceTimersByTime(400);
+    // Aunque hayan pasado 400ms, el segundo evento se produjo 0ms después del
+    // primero: el debounce se reprogramó y solo han pasado 400ms desde entonces.
+    expect(Element.prototype.scrollTo).toHaveBeenCalledTimes(1);
   });
 });

@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.68",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: auto-centrado suave de secciones — si al detener el scroll una sección está cerca del centro (dentro del 40% del viewport), se desliza suavemente hasta quedar centrada; se mantiene el scroll libre actual (sin interceptar rueda/teclado, respeta prefers-reduced-motion y no actúa mientras el usuario sigue moviendo).",
+    ],
+  },
+
+  {
     version: "2.95.67",
     date: "2026-08-09",
     changes: [

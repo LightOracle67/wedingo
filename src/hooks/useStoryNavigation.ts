@@ -41,6 +41,14 @@ const MIN_SCALE = 0.94;
 // Margen de progreso para cambiar la sección activa (histéresis: evita
 // parpadeos en el punto de empate entre dos secciones durante el fundido).
 const ACTIVE_MARGIN = 0.04;
+// AUTO-CENTRADO SUAVE: si al detener el scroll una sección está cerca del
+// centro (dentro de este radio, como fracción de la altura del viewport), se
+// desliza suavemente hasta centrarla. Mantiene el scroll libre: solo actúa
+// cuando el scroll se asienta, sin interceptar rueda/teclado.
+const SNAP_RADIUS = 0.4;
+// Silencio de scroll (ms) antes de comprobar el encaje: si el usuario sigue
+// moviendo, el chequeo se reprograma y no pelea con el gesto.
+const SNAP_DEBOUNCE_MS = 350;
 
 const EMPTY_STYLE: Record<string, string> = {};
 
@@ -201,6 +209,38 @@ export function useStoryNavigation(
         raf = 0;
         update();
       });
+      scheduleSnap();
+    };
+
+    // Auto-centrado suave (snap): tras un silencio de scroll, si la sección
+    // más cercana al centro está dentro del radio, se desplaza suavemente
+    // hasta quedar centrada. No interfiere con el scroll libre: solo actúa
+    // cuando el usuario se detiene cerca del centro.
+    let snapTimer: ReturnType<typeof setTimeout> | null = null;
+    const scheduleSnap = () => {
+      if (reducedMotion) return;
+      if (snapTimer) clearTimeout(snapTimer);
+      snapTimer = setTimeout(() => {
+        snapTimer = null;
+        const scroller = document.querySelector<HTMLElement>(".app-scene");
+        if (!scroller) return;
+        const vpCenter = window.innerHeight / 2;
+        let bestDist = Infinity;
+        for (const key of visibleOrder) {
+          const sec = sectionsRef.current[key];
+          if (!sec) continue;
+          const rect = sec.getBoundingClientRect();
+          const center = rect.top + rect.height / 2;
+          const d = center - vpCenter;
+          if (Math.abs(d) < Math.abs(bestDist)) bestDist = d;
+        }
+        if (!Number.isFinite(bestDist)) return;
+        const snapRadius = window.innerHeight * SNAP_RADIUS;
+        // Solo encaja si está dentro del radio y hay que moverse al menos 1px.
+        if (Math.abs(bestDist) < snapRadius && Math.abs(bestDist) > 1) {
+          scroller.scrollTo({ top: scroller.scrollTop + bestDist, behavior: "smooth" });
+        }
+      }, SNAP_DEBOUNCE_MS);
     };
 
     scene?.addEventListener("scroll", onScroll, { passive: true });
@@ -221,6 +261,7 @@ export function useStoryNavigation(
       window.removeEventListener("resize", onScroll);
       mutationObserver?.disconnect();
       if (revealTimer) clearTimeout(revealTimer);
+      if (snapTimer) clearTimeout(snapTimer);
     };
   }, [orderKey, visibleOrder, options.enabled, options.reducedMotion]);
 
