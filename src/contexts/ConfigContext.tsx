@@ -442,6 +442,10 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
         payload.privacyConsent = true;
         payload.privacyConsentAt = serverTimestamp();
+        // Fecha de creación: solo en el primer guardado (create).
+        if (!hasStoredConfig) {
+          payload.createdAt = serverTimestamp();
+        }
 
         // Primer guardado (create): las reglas exigen la prueba de conocimiento
         // del token de setup (setupTokenValid) para no alojar invitaciones

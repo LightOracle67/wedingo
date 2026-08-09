@@ -5,6 +5,7 @@ import { db, INVITATIONS_COLLECTION_REF, RSVP_RESPONSES_GROUP, rsvpByInviteRef }
 import { useToast } from "../../hooks/useToast";
 import { downloadJson } from "../../lib/file-utils";
 import { logAudit } from "../../lib/audit";
+import InvitationDetailModal from "./InvitationDetailModal";
 
 interface InvitationData {
   id: string;
@@ -46,6 +47,55 @@ export default function DataTab() {
   const CONFIRM_WORD = "ELIMINAR";
   /** Filtro de actividad: "hoy", "semana", "sesion" o "todas". */
   const [activityFilter, setActivityFilter] = useState("todas");
+  /** Invitación abierta en el modal de detalle. */
+  const [detailToken, setDetailToken] = useState<string | null>(null);
+  /** Búsqueda global de PII (invitados por nombre en todas las invitaciones). */
+  const [piiQuery, setPiiQuery] = useState("");
+  const [piiResults, setPiiResults] = useState<Array<{ token: string; name: string; attendance: string }>>([]);
+  /** Tema a aplicar en bloque a las invitaciones seleccionadas. */
+  const [bulkTheme, setBulkTheme] = useState("golden");
+  const [bulkingTheme, setBulkingTheme] = useState(false);
+
+  const searchPii = useCallback(async () => {
+    const q = piiQuery.trim();
+    if (q.length < 3) {
+      addToast("info", t("superadmin.data.piiMinChars"));
+      return;
+    }
+    try {
+      const { collectionGroup, query: qry, where } = await import("firebase/firestore");
+      const snap = await getDocs(
+        qry(collectionGroup(db, "responses"), where("guestName", ">=", q), where("guestName", "<=", q + "\uf8ff")),
+      );
+      setPiiResults(
+        snap.docs.map((d) => ({
+          token: String(d.data().inviteToken || ""),
+          name: String(d.data().guestName || ""),
+          attendance: String(d.data().attendance || ""),
+        })),
+      );
+      if (snap.size === 0) addToast("info", t("superadmin.data.piiNone"));
+    } catch {
+      addToast("error", t("errors.dataLoadFailed"));
+    }
+  }, [piiQuery, addToast, t]);
+
+  const applyBulkTheme = useCallback(async () => {
+    if (!selected.size) return;
+    if (!window.confirm(t("superadmin.data.bulkThemeConfirm", { count: selected.size }))) return;
+    setBulkingTheme(true);
+    try {
+      const { writeBatch: wb } = await import("firebase/firestore");
+      const batch = wb(db);
+      for (const token of selected) batch.update(doc(db, "invitations", token), { theme: bulkTheme });
+      await batch.commit();
+      addToast("success", t("superadmin.data.bulkThemeDone", { count: selected.size }));
+    } catch {
+      addToast("error", t("errors.generic"));
+    } finally {
+      setBulkingTheme(false);
+    }
+  }, [selected, bulkTheme, addToast, t]);
 
   /** Invitaciones filtradas por actividad (confirmaciones hoy/semana, sesión activa). */
   const filtered = useMemo(() => {
@@ -595,6 +645,48 @@ export default function DataTab() {
         </span>
       </div>
 
+      {/* ── Búsqueda global de PII (derechos GDPR) ── */}
+      <div className="admin-filters" style={{ marginBottom: "0.75rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+        <input
+          className="setup-input"
+          style={{ flex: 1, minWidth: "12rem" }}
+          value={piiQuery}
+          onChange={(e) => setPiiQuery(e.target.value)}
+          onKeyDown={(e) => { if (e.key === "Enter") void searchPii(); }}
+          placeholder={t("superadmin.data.piiPlaceholder")}
+          aria-label={t("superadmin.data.piiPlaceholder")}
+        />
+        <button className="setup-button setup-button--compact" type="button" onClick={() => void searchPii()}>
+          {t("superadmin.data.piiSearch")}
+        </button>
+        {piiResults.length > 0 ? (
+          <span className="setup-help" style={{ margin: 0 }}>
+            {t("superadmin.data.piiCount", { count: piiResults.length })}
+          </span>
+        ) : null}
+      </div>
+      {piiResults.length > 0 ? (
+        <div style={{ marginBottom: "0.75rem", maxHeight: "8rem", overflowY: "auto", border: "1px solid var(--setup-border)", borderRadius: "0.5rem" }}>
+          {piiResults.map((r, i) => (
+            <div key={i} style={{ padding: "0.3rem 0.6rem", fontSize: "0.78rem", borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)" }}>
+              {r.name} — {r.attendance} · <code>{r.token}</code>
+            </div>
+          ))}
+        </div>
+      ) : null}
+
+      {/* ── Tema en bloque para la selección ── */}
+      <div className="admin-flex" style={{ marginBottom: "0.75rem", gap: "0.5rem", flexWrap: "wrap" }}>
+        <select className="setup-input" value={bulkTheme} onChange={(e) => setBulkTheme(e.target.value)} aria-label={t("superadmin.data.bulkTheme")} style={{ maxWidth: "12rem" }}>
+          {["golden", "forest", "rose", "linen-soft", "blush-pearl", "lavender-mist", "champagne-bubble", "amber-night", "onyx-gold", "midnight-royal", "burgundy-velvet", "sapphire-night", "emerald-grove", "plum-twilight", "rainbow", "trans", "nonbinary", "lesbian", "bi", "pan", "ace"].map((th) => (
+            <option key={th} value={th}>{th}</option>
+          ))}
+        </select>
+        <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => void applyBulkTheme()} disabled={!selected.size || bulkingTheme}>
+          {t("superadmin.data.bulkTheme", { count: selected.size })}
+        </button>
+      </div>
+
       {/* ── Tabla de invitaciones ── */}
       <div className="data-tab-table-wrap">
         <table className="data-tab-table">
@@ -680,6 +772,14 @@ export default function DataTab() {
                     <button
                       type="button"
                       className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
+                      onClick={() => setDetailToken(inv.id)}
+                      disabled={busy}
+                    >
+                      {t("superadmin.data.detailBtn")}
+                    </button>
+                    <button
+                      type="button"
+                      className="setup-button setup-button--ghost setup-button--compact data-tab-btn-sm"
                       onClick={() => exportOne(inv.id)}
                       disabled={busy}
                     >
@@ -736,6 +836,9 @@ export default function DataTab() {
         </table>
         {!invitations.length && <p className="data-tab-empty-msg">{t("superadmin.data.noInvitations")}</p>}
       </div>
+
+      {/* Modal de detalle de invitación (moderación social, RSVP, configLog…). */}
+      {detailToken ? <InvitationDetailModal token={detailToken} onClose={() => setDetailToken(null)} /> : null}
     </div>
   );
 }

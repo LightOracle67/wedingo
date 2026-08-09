@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.52",
+    date: "2026-08-09",
+    changes: [
+      "Lote final verde/ámbar del superadmin: panel de detalle de invitación (confirmaciones con resumen de menús, moderación del muro social, galería, auditoría de cambios, tamaño de medios, reset de confirmaciones, export de aportaciones e importación CSV), búsqueda global de invitados (derechos GDPR), cambio de tema en bloque, comparador de invitaciones, validador de configuración (simulación de reglas en cliente) y fecha de creación de invitaciones.",
+    ],
+  },
+
+  {
     version: "2.95.50",
     date: "2026-08-09",
     changes: [

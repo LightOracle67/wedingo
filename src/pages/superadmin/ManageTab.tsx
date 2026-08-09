@@ -68,6 +68,49 @@ const ManageTab = memo(function ManageTab() {
   const [autoName, setAutoName] = useState("");
   const [autoAttendance, setAutoAttendance] = useState("yes");
   const [autoSaving, setAutoSaving] = useState(false);
+  // Comparar invitaciones.
+  const [cmpA, setCmpA] = useState("");
+  const [cmpB, setCmpB] = useState("");
+  const [cmpDiff, setCmpDiff] = useState<Array<{ key: string; a: string; b: string }>>([]);
+  // Validador de configuración (simulación de reglas en cliente).
+  const [validatorJson, setValidatorJson] = useState("");
+  const [validatorResult, setValidatorResult] = useState<{ ok: boolean; msg: string } | null>(null);
+
+  /** Compara dos invitaciones y muestra los campos con valores distintos. */
+  const handleCompare = useCallback(async () => {
+    if (!cmpA || !cmpB) return;
+    try {
+      const [sa, sb] = await Promise.all([
+        getDoc(doc(INVITATIONS_COLLECTION_REF, cmpA)),
+        getDoc(doc(INVITATIONS_COLLECTION_REF, cmpB)),
+      ]);
+      const da = sa.exists() ? sa.data() : {};
+      const db = sb.exists() ? sb.data() : {};
+      const keys = new Set([...Object.keys(da), ...Object.keys(db)]);
+      const diff: Array<{ key: string; a: string; b: string }> = [];
+      for (const k of keys) {
+        const va = String((da as Record<string, unknown>)[k] ?? "");
+        const vb = String((db as Record<string, unknown>)[k] ?? "");
+        if (va !== vb) diff.push({ key: k, a: va.slice(0, 80), b: vb.slice(0, 80) });
+      }
+      setCmpDiff(diff);
+    } catch {
+      addToast("error", t("errors.dataLoadFailed"));
+    }
+  }, [cmpA, cmpB, addToast, t]);
+
+  /** Valida una configuración JSON contra la misma validación del guardado. */
+  const handleValidate = useCallback(() => {
+    let parsed: Record<string, unknown>;
+    try {
+      parsed = JSON.parse(validatorJson || "{}");
+    } catch {
+      setValidatorResult({ ok: false, msg: t("manage.restoreInvalidJson") });
+      return;
+    }
+    const { errorKey, sanitized } = validateConfigForSave(parsed, true, new Date().getFullYear() + MAX_YEARS_AHEAD);
+    setValidatorResult(errorKey ? { ok: false, msg: t(errorKey) } : { ok: true, msg: t("manage.validatorOk") + ` (${Object.keys(sanitized).length} campos)` });
+  }, [validatorJson, t]);
   // F4-5: ref del iframe de previsualización (para modo presentación).
   const previewFrameRef = useRef<HTMLIFrameElement | null>(null);
 
@@ -746,6 +789,59 @@ const ManageTab = memo(function ManageTab() {
                 {autoSaving ? t("common.loading") : t("manage.autoRespondButton")}
               </button>
             </div>
+          </div>
+
+          {/* Comparar invitaciones + validador de configuración */}
+          <div className="setup-background-panel">
+            <p className="setup-label">{t("manage.compareTitle")}</p>
+            <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
+              <select className="setup-input" value={cmpA} onChange={(e) => setCmpA(e.target.value)} aria-label={t("manage.compareA")} style={{ maxWidth: "100%" }}>
+                <option value="">A —</option>
+                {invitations.map((inv) => <option key={inv.id} value={inv.id}>{inv.id}</option>)}
+              </select>
+              <select className="setup-input" value={cmpB} onChange={(e) => setCmpB(e.target.value)} aria-label={t("manage.compareB")} style={{ maxWidth: "100%" }}>
+                <option value="">B —</option>
+                {invitations.map((inv) => <option key={inv.id} value={inv.id}>{inv.id}</option>)}
+              </select>
+              <button className="setup-button setup-button--compact" type="button" onClick={() => void handleCompare()}>
+                {t("manage.compareButton")}
+              </button>
+            </div>
+            {cmpDiff.length > 0 ? (
+              <div style={{ marginTop: "0.5rem", maxHeight: "10rem", overflowY: "auto", border: "1px solid var(--setup-border)", borderRadius: "0.5rem" }}>
+                {cmpDiff.map((d) => (
+                  <div key={d.key} style={{ padding: "0.3rem 0.6rem", fontSize: "0.75rem", borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)" }}>
+                    <strong>{d.key}</strong>: <code>{d.a}</code> → <code>{d.b}</code>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="setup-help" style={{ margin: "0.4rem 0 0" }}>{t("manage.compareNone")}</p>
+            )}
+          </div>
+
+          <div className="setup-background-panel">
+            <p className="setup-label">{t("manage.validatorTitle")}</p>
+            <p className="setup-help">{t("manage.validatorHelp")}</p>
+            <textarea
+              className="setup-textarea"
+              value={validatorJson}
+              onChange={(e) => setValidatorJson(e.target.value)}
+              rows={5}
+              spellCheck={false}
+              style={{ fontFamily: "monospace", fontSize: "0.75rem" }}
+              aria-label={t("manage.validatorTitle")}
+            />
+            <div className="setup-actions">
+              <button className="setup-button setup-button--compact" type="button" onClick={handleValidate}>
+                {t("manage.validatorButton")}
+              </button>
+            </div>
+            {validatorResult ? (
+              <p className={validatorResult.ok ? "setup-success" : "setup-error"} role="alert">
+                {validatorResult.msg}
+              </p>
+            ) : null}
           </div>
 
           {/* F1-6: duplicar sección desde otra invitación */}
