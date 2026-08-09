@@ -46,6 +46,8 @@ vi.mock("firebase/firestore", () => ({
   setDoc: mockSetDoc,
   updateDoc: mockUpdateDoc,
   deleteField: vi.fn(() => Symbol("deleteField")),
+  addDoc: vi.fn(() => Promise.resolve({ id: "access-1" })),
+  collection: vi.fn(() => "col"),
 }));
 
 vi.mock("../../lib/firebase", () => ({

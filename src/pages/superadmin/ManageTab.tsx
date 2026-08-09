@@ -10,6 +10,8 @@ import {
   writeBatch,
   query,
   where,
+  orderBy,
+  limit,
 } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
@@ -56,6 +58,16 @@ const ManageTab = memo(function ManageTab() {
   const [tags, setTags] = useState("");
   const [rsvpCapacity, setRsvpCapacity] = useState("");
   const [rsvpSignatureEnabled, setRsvpSignatureEnabled] = useState(false);
+  // F4-1 sesión activa / F4-8 registro de accesos / F4-3 preview devices.
+  const [hasSession, setHasSession] = useState(false);
+  const [accessLog, setAccessLog] = useState<Array<{ action: string; detail: string; ts: number }>>([]);
+  const [deviceWidth, setDeviceWidth] = useState(400);
+  // F4-4 QR.
+  const [qrDataUrl, setQrDataUrl] = useState("");
+  // F4-6 auto-respuesta en nombre del invitado.
+  const [autoName, setAutoName] = useState("");
+  const [autoAttendance, setAutoAttendance] = useState("yes");
+  const [autoSaving, setAutoSaving] = useState(false);
 
   // ── F1-6 duplicar sección ──
   const [copySource, setCopySource] = useState("");
@@ -102,8 +114,34 @@ const ManageTab = memo(function ManageTab() {
       setTags(String(data.tags || ""));
       setRsvpCapacity(String(data.rsvpCapacity || ""));
       setRsvpSignatureEnabled(String(data.rsvpSignatureEnabled) === "true");
+      setHasSession(data.activeSession != null);
       setNewToken("");
       setNewSetupToken("");
+      // F4-8: registro de accesos de esta invitación (subcolección accessLog).
+      try {
+        const accessSnap = await getDocs(
+          query(collection(db, "invitations", token, "accessLog"), orderBy("ts", "desc"), limit(8)),
+        );
+        setAccessLog(
+          accessSnap.docs.map((d) => {
+            const dd = d.data();
+            const raw = dd.ts as { seconds?: unknown } | null | undefined;
+            const ts = raw && typeof raw === "object" && "seconds" in raw ? Number(raw.seconds) * 1000 : 0;
+            return { action: String(dd.action || ""), detail: String(dd.detail || ""), ts };
+          }),
+        );
+      } catch {
+        setAccessLog([]);
+      }
+      // F4-4: QR de la URL pública de la invitación (lazy, como en ShareTab).
+      try {
+        const QRCode = (await import("qrcode")).default;
+        const url = `${window.location.origin}/${token}`;
+        const dataUrl = await QRCode.toDataURL(url, { width: 160, margin: 1 });
+        setQrDataUrl(dataUrl);
+      } catch {
+        setQrDataUrl("");
+      }
     } catch {
       addToast("error", t("errors.dataLoadFailed"));
     }
@@ -242,6 +280,58 @@ const ManageTab = memo(function ManageTab() {
       addToast("error", t("errors.generic"));
     }
   }, [token, addToast, t]);
+
+    /** F4-1: cierra la sesión activa de la invitación (revocación remota). */
+  const handleKillSession = useCallback(async () => {
+    if (!token) return;
+    if (!window.confirm(t("manage.killSessionConfirm"))) return;
+    try {
+      await updateDoc(doc(INVITATIONS_COLLECTION_REF, token), { activeSession: null, sessionExpiresAt: null });
+      setHasSession(false);
+      addToast("success", t("manage.killSessionDone"));
+    } catch {
+      addToast("error", t("errors.generic"));
+    }
+  }, [token, addToast, t]);
+
+  /** F4-6: registra una respuesta RSVP en nombre del invitado (auto-respuesta
+   *  del superadmin cuando el invitado confirma por teléfono). */
+  const handleAutoRespond = useCallback(async () => {
+    if (!token || !autoName.trim()) return;
+    setAutoSaving(true);
+    try {
+      const now = new Date();
+      const id = `main_${autoName.trim().toLowerCase().replace(/[^a-z0-9]/g, "")}_${Date.now()}`;
+      await setDoc(doc(db, "rsvpResponses", token, "responses", id), {
+        rsvpType: "main",
+        guestName: autoName.trim().slice(0, 120),
+        attendance: autoAttendance === "yes" ? "yes" : "no",
+        inviteToken: token,
+        submittedAt: now,
+        privacyConsent: true,
+        privacyConsentAt: now,
+        companions: 0,
+        companionCount: 0,
+        companionNames: [],
+        companionMenus: [],
+        companionAllergies: [],
+        companionAllergiesOther: [],
+        allergiesOther: "",
+        mealChoice: "",
+        dietaryInfo: "",
+        guestNames: autoName.trim().slice(0, 120),
+        attendees: [],
+        // userAgent del superadmin (F2-8) + nota de que es una auto-respuesta.
+        userAgent: `${navigator.userAgent.slice(0, 160)} [auto]`,
+      });
+      setAutoName("");
+      addToast("success", t("manage.autoRespondDone"));
+    } catch {
+      addToast("error", t("errors.generic"));
+    } finally {
+      setAutoSaving(false);
+    }
+  }, [token, autoName, autoAttendance, addToast, t]);
 
   /** F1-6: copia una subcolección (galería/audio/configImages) de otra invitación. */
   const handleCopySection = useCallback(async () => {    if (!token || !copySource || copySource === token) return;
@@ -444,6 +534,94 @@ const ManageTab = memo(function ManageTab() {
                 ) : null}
               </div>
             ) : null}
+          </div>
+
+          {/* F4-1 + F4-8: sesión activa y registro de accesos */}
+          <div className="setup-background-panel">
+            <p className="setup-label">{t("manage.sessionTitle")}</p>
+            <p className="setup-help" style={{ margin: "0 0 0.4rem" }}>
+              {hasSession ? t("manage.sessionActiveLabel") : t("manage.sessionInactiveLabel")}
+            </p>
+            {hasSession ? (
+              <button className="setup-button setup-button--danger setup-button--compact" type="button" onClick={handleKillSession}>
+                {t("manage.killSession")}
+              </button>
+            ) : null}
+            {accessLog.length > 0 ? (
+              <ul style={{ margin: "0.5rem 0 0", paddingLeft: "1.2rem", fontSize: "0.75rem", color: "var(--setup-subtitle)" }}>
+                {accessLog.map((a, i) => (
+                  <li key={i} style={{ marginBottom: "0.15rem" }}>
+                    <strong>{a.action}</strong> — {a.detail.slice(0, 60)}
+                    {a.ts ? <span style={{ color: "var(--setup-muted)" }}> · {new Date(a.ts).toLocaleTimeString()}</span> : null}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="setup-help">{t("manage.noAccessLog")}</p>
+            )}
+          </div>
+
+          {/* F4-3 + F4-4: previsualización con ancho de dispositivo + QR */}
+          <div className="setup-background-panel">
+            <p className="setup-label">{t("manage.devicePreview")}</p>
+            <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
+              <label className="setup-label" style={{ margin: 0 }}>
+                {t("manage.deviceWidth")}
+                <select className="setup-input" value={deviceWidth} onChange={(e) => setDeviceWidth(Number(e.target.value))} style={{ marginLeft: "0.4rem" }}>
+                  <option value={360}>{t("manage.deviceMobile")}</option>
+                  <option value={768}>{t("manage.deviceTablet")}</option>
+                  <option value={1200}>{t("manage.deviceDesktop")}</option>
+                </select>
+              </label>
+            </div>
+            <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}>
+              <div
+                style={{
+                  width: Math.min(deviceWidth, 900),
+                  maxWidth: "100%",
+                  border: "1px solid var(--setup-border)",
+                  borderRadius: "0.6rem",
+                  overflow: "hidden",
+                }}
+              >
+                <iframe
+                  src={previewUrl}
+                  title={t("manage.devicePreview")}
+                  style={{ width: "100%", height: "380px", border: 0, background: "#fff" }}
+                  sandbox="allow-scripts allow-same-origin"
+                />
+              </div>
+              {qrDataUrl ? (
+                <div style={{ textAlign: "center" }}>
+                  <img src={qrDataUrl} alt={t("manage.qrAlt")} width={140} height={140} />
+                  <p className="setup-help" style={{ margin: 0, fontSize: "0.7rem" }}>
+                    {t("manage.qrAlt")}
+                  </p>
+                </div>
+              ) : null}
+            </div>
+          </div>
+
+          {/* F4-6: auto-respuesta del superadmin */}
+          <div className="setup-background-panel">
+            <p className="setup-label">{t("manage.autoRespond")}</p>
+            <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
+              <input
+                className="setup-input"
+                value={autoName}
+                onChange={(e) => setAutoName(e.target.value)}
+                placeholder={t("manage.autoRespondName")}
+                maxLength={120}
+                aria-label={t("manage.autoRespondName")}
+              />
+              <select className="setup-input" value={autoAttendance} onChange={(e) => setAutoAttendance(e.target.value)} aria-label={t("manage.autoRespondAttendance")}>
+                <option value="yes">{t("rsvp.attendingAlone")}</option>
+                <option value="no">{t("rsvp.notAttending")}</option>
+              </select>
+              <button className="setup-button setup-button--compact" type="button" onClick={handleAutoRespond} disabled={autoSaving || !autoName.trim()}>
+                {autoSaving ? t("common.loading") : t("manage.autoRespondButton")}
+              </button>
+            </div>
           </div>
 
           {/* F1-6: duplicar sección desde otra invitación */}

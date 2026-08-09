@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.49",
+    date: "2026-08-09",
+    changes: [
+      "Fase 4 (seguridad y UX) del superadmin: cierre de sesión remota y registro de accesos por invitación (login exitoso/fallido con userAgent anonimizado), previsualización con selector de dispositivo (móvil/tablet/escritorio), código QR de la invitación y auto-respuesta de RSVP en nombre del invitado.",
+    ],
+  },
+
+  {
     version: "2.95.48",
     date: "2026-08-09",
     changes: [

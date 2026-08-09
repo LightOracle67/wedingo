@@ -17,7 +17,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { getDoc, runTransaction, serverTimestamp, updateDoc, type DocumentData } from "firebase/firestore";
+import { getDoc, runTransaction, serverTimestamp, updateDoc, addDoc, collection, type DocumentData } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
 import { generateSetupToken, normalizeTokenValue } from "../lib/token-utils";
 import { createSetupTokenRecord, deleteSetupTokenRecord, hashSetupToken, setupTokenRef } from "../lib/setup-token";
@@ -37,6 +37,18 @@ import type { InvitationConfig } from "../types";
  * @param {function} setHasStoredConfig - Setter para indicar si hay config guardada.
  * @returns {object} Estado y handlers de autenticaciÃ³n.
  */
+/** Registra un intento de acceso al setup/admin en la subcolección
+ *  accessLog de la invitación (F4-2/F4-8): sin IP, solo userAgent. Best-effort. */
+function logAccess(inviteToken: string | undefined, action: string, detail = "") {
+  if (!inviteToken) return;
+  addDoc(collection(db, "invitations", inviteToken, "accessLog"), {
+    action,
+    detail: detail.slice(0, 200),
+    ts: serverTimestamp(),
+    userAgent: navigator.userAgent.slice(0, 200),
+  }).catch(() => {});
+}
+
 export function useSetupAuth(
   inviteToken: string,
   config: InvitationConfig,
@@ -412,12 +424,14 @@ export function useSetupAuth(
       setSetupTokenInput("");
       setIsTokenVerified(true);
       setHasStoredConfig(true);
+      logAccess(inviteToken, "login_success", "setup");
       // Persiste el token en sessionStorage para renovaciones y recuperaciÃ³n.
       safeSetItem(STORAGE_KEYS.setupToken(inviteToken), enteredToken, sessionStorage);
       saveSession(sessionTypeRef.current, displayName, { inviteToken });
       setAuthMessageType("success");
       setAuthMessage(t("auth.codeVerified"));
     } catch (err) {
+      logAccess(inviteToken, "login_failed", "setup");
       console.error("[app]", "[useSetupAuth]", "token login failed", { error: err });
       setAuthMessage(
         (err as Error)?.message === "inviteNotFound" ? t("auth.inviteNotFound") : t("auth.codeVerifyError"),
