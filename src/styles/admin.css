@@ -66,12 +66,6 @@
   font-size: 0.85rem;
   color: var(--setup-accent, #c62828);
 }
-.story-section--is-active .story-card .setup-button,
-.story-section--is-active .story-card .story-calendar-actions,
-.story-section--is-active .story-card .story-map,
-.story-section--is-active .story-card .rsvp-form {
-  animation: hero-fade-up 600ms cubic-bezier(0.22, 1, 0.36, 1) 500ms both;
-}
 .setup-card {
   animation: story-card-enter 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }

@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.64",
+    date: "2026-08-09",
+    changes: [
+      "FIX: el formulario del RSVP (y mapa/acciones de calendario) ya no repite su animación de aparición — la regla que los animaba con hero-fade-up cada vez que la sección recuperaba is-active se eliminó (el is-active alterna entre secciones con el scroll libre, lo que re-disparaba la animación; la entrada real sigue animándose vía is-enter).",
+    ],
+  },
+
+  {
     version: "2.95.63",
     date: "2026-08-09",
     changes: [
