@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.60",
+    date: "2026-08-09",
+    changes: [
+      "Política de privacidad actualizada (ES y EN) y versión a 2026-08-10 (re-consentimiento): aclarado que la limpieza de 12 meses la ejecuta el administrador (el plan actual no despliega la limpieza automática), y añadidos los tratamientos nuevos: user-agent en el RSVP, registro de accesos y cambios de configuración (auditoría), lista de invitados esperados del organizador, consentimiento demostrable (fecha y versión) y matiz de cookies de terceros (mapa y traducción solo al pulsarlos).",
+    ],
+  },
+
+  {
     version: "2.95.59",
     date: "2026-08-09",
     changes: [

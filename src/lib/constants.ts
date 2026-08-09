@@ -206,7 +206,7 @@ export const STORY_SECTION_ORDER = [
   "rsvp",
 ];
 
-export const PRIVACY_POLICY_VERSION = "2026-08-09";
+export const PRIVACY_POLICY_VERSION = "2026-08-10";
 
 export const MAX_YEARS_AHEAD = 4;
 export const INVITE_CACHE_TTL_MS = 120000;
