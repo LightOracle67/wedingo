@@ -240,10 +240,16 @@ const ManageTab = memo(function ManageTab() {
       const newSetup = generateSetupToken();
       const hash = await hashSetupToken(newSetup);
       await setDoc(doc(db, "setupTokens", hash), { inviteToken: token, createdAt: new Date().toISOString() });
-      // Revoca los tokens anteriores (hash → inviteToken) y los campos legacy.
+      // Revoca los tokens ANTERIORES (hash → inviteToken) y los campos legacy.
+      // CRÍTICO: la consulta `where("inviteToken", "==", token)` también
+      // devuelve el registro RECIÉN creado; se excluye explícitamente su hash
+      // para no borrarlo (antes el token nuevo quedaba huérfano y el login
+      // fallaba con "Token no válido").
       const oldSnap = await getDocs(query(collection(db, "setupTokens"), where("inviteToken", "==", token)));
       const batch = writeBatch(db);
-      oldSnap.docs.forEach((d) => batch.delete(d.ref));
+      oldSnap.docs.forEach((d) => {
+        if (d.id !== hash) batch.delete(d.ref);
+      });
       batch.update(doc(INVITATIONS_COLLECTION_REF, token), { _activeSetupToken: "", legacyToken: "" });
       await batch.commit();
       setNewSetupToken(newSetup);

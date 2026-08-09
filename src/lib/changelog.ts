@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.55",
+    date: "2026-08-09",
+    changes: [
+      "Fix crítico en el traspaso de titularidad del superadmin: al revocar los tokens anteriores se borraba TAMBIÉN el token recién generado (la consulta por inviteToken incluía el registro nuevo), dejándolo huérfano y haciendo que el login fallara con 'Token no válido'. Ahora el nuevo hash se excluye del borrado. Añadido test de regresión.",
+    ],
+  },
+
+  {
     version: "2.95.54",
     date: "2026-08-09",
     changes: [

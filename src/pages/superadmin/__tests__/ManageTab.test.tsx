@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
-const mockGetDocs = vi.fn<() => Promise<{ docs: Array<{ id: string; data: () => Record<string, unknown> }> }>>();
+const mockGetDocs = vi.fn<() => Promise<{ docs: Array<{ id: string; data: () => Record<string, unknown>; ref?: { id?: string } }> }>>();
 const mockGetDoc = vi.fn();
 const mockSetDoc = vi.fn(() => Promise.resolve());
 const mockUpdateDoc = vi.fn(() => Promise.resolve());
@@ -97,6 +97,37 @@ describe("ManageTab", () => {
     // La transferencia escribe el nuevo setupTokens/{hash} con el nuevo token.
     await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
     expect(mockHashSetupToken).toHaveBeenCalled();
+    confirmSpy.mockRestore();
+  });
+
+  it("transfer keeps the NEW token record (no borra el recién creado)", async () => {
+    // El token nuevo se crea con hash "hash-NEW-TOKEN-ABC-1234"; la consulta de
+    // revocación devuelve ESE registro + un antiguo: solo debe borrarse el antiguo.
+    const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(true);
+    mockGetDocs.mockResolvedValue({
+      docs: [
+        baseInvitation,
+        { id: "hash-NEW-TOKEN-ABC-1234", data: () => ({}), ref: { id: "hash-NEW-TOKEN-ABC-1234" } },
+        { id: "hash-oldtoken", data: () => ({}), ref: { id: "hash-oldtoken" } },
+      ],
+    });
+    const deletes: string[] = [];
+    const mockBatch = {
+      set: vi.fn(),
+      delete: vi.fn((ref: { id?: string }) => void deletes.push(ref?.id ?? String(ref))),
+      update: vi.fn(),
+      commit: vi.fn().mockResolvedValue(undefined),
+    };
+    mockWriteBatch.mockReturnValue(mockBatch);
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    const button = await screen.findByText("manage.transferButton");
+    fireEvent.click(button);
+    await vi.waitFor(() => expect(mockBatch.commit).toHaveBeenCalled());
+    // Solo se revoca el token antiguo; el NUEVO se conserva.
+    expect(deletes).toContain("hash-oldtoken");
+    expect(deletes).not.toContain("hash-NEW-TOKEN-ABC-1234");
     confirmSpy.mockRestore();
   });
 
