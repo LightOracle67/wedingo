@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.88",
+    date: "2026-08-09",
+    changes: [
+      "AUDITORÍA: revisión profunda de claves i18n (todas las familias dinámicas cubiertas, es/en alineadas, clave muerta distribucion.tableAdded eliminada) y búsqueda de errores (sin `as any`, sin console.log en producción, suite 2033/2033, reglas 19/19, lint/tsc/build limpios).",
+    ],
+  },
+
+  {
     version: "2.95.87",
     date: "2026-08-09",
     changes: [

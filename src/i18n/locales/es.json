@@ -1566,7 +1566,6 @@
     "deleteSectionConfirm": "¿Eliminar esta sección y todas sus mesas?",
     "createSectionFirst": "Crea una sección para empezar a dibujar su mapa.",
     "defaultTable": "Mesa",
-    "tableAdded": "Mesa añadida.",
     "shape": "Forma:",
     "shape_circle": "Círculo",
     "shape_rect": "Rectángulo",

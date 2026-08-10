@@ -1566,7 +1566,6 @@
     "deleteSectionConfirm": "Delete this section and all its tables?",
     "createSectionFirst": "Create a section to start drawing its map.",
     "defaultTable": "Table",
-    "tableAdded": "Table added.",
     "shape": "Shape:",
     "shape_circle": "Circle",
     "shape_rect": "Rectangle",
