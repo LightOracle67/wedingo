@@ -14,13 +14,17 @@ const ComplianceTab = lazy(() => import("./superadmin/ComplianceTab"));
 const DataTab = lazy(() => import("./superadmin/DataTab"));
 const ManageTab = lazy(() => import("./superadmin/ManageTab"));
 const PlatformTab = lazy(() => import("./superadmin/PlatformTab"));
+const MetricsTab = lazy(() => import("./superadmin/MetricsTab"));
+const SupportTab = lazy(() => import("./superadmin/SupportTab"));
 
 const TAB_KEY_MAP = {
   dashboard: "dashboard",
+  metricas: "metrics",
   invitaciones: "invitations",
   tokens: "tokens",
   datos: "data",
   gestion: "manage",
+  soporte: "support",
   plataforma: "platform",
   ajustes: "session",
   cumplimiento: "compliance",
@@ -28,10 +32,12 @@ const TAB_KEY_MAP = {
 
 const TABS = [
   { key: "dashboard" },
+  { key: "metricas" },
   { key: "invitaciones" },
   { key: "tokens" },
   { key: "datos" },
   { key: "gestion" },
+  { key: "soporte" },
   { key: "plataforma" },
   { key: "ajustes" },
   { key: "cumplimiento" },
@@ -128,10 +134,12 @@ export default function SuperAdminPanel() {
         >
           <Suspense fallback={<div className="page-loading" role="status" aria-label={t("common.loading")} />}>
             {activeTab === "dashboard" && <DashboardTab />}
+            {activeTab === "metricas" && <MetricsTab />}
             {activeTab === "invitaciones" && <InvitationsTab />}
             {activeTab === "tokens" && <TokensTab />}
             {activeTab === "datos" && <DataTab />}
             {activeTab === "gestion" && <ManageTab />}
+            {activeTab === "soporte" && <SupportTab />}
             {activeTab === "plataforma" && <PlatformTab />}
             {activeTab === "ajustes" && <SettingsTab />}
             {activeTab === "cumplimiento" && <ComplianceTab />}

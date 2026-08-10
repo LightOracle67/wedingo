@@ -438,6 +438,82 @@ export default function DataTab() {
   // invitación seleccionada.
   const singleSelected = selected.size === 1 ? [...selected][0] : "";
 
+  /** Aplica una fecha de expiración manual a las invitaciones seleccionadas. */
+  const handleBulkExpiry = useCallback(async () => {
+    if (!selected.size) return;
+    const dateStr = window.prompt(t("superadmin.data.bulkExpiryPrompt"), "");
+    if (!dateStr) return;
+    setBusy(true);
+    try {
+      const batch = writeBatch(db);
+      for (const token of selected) batch.update(doc(db, "invitations", token), { manualExpiry: dateStr });
+      await batch.commit();
+      addToast("success", t("superadmin.data.bulkExpiryDone", { count: selected.size }));
+      void logAudit("bulk_expiry", `count=${selected.size}`);
+    } catch {
+      addToast("error", t("superadmin.data.bulkExpiryError"));
+    } finally {
+      setBusy(false);
+    }
+  }, [selected, addToast, t]);
+
+  /** Marca el sello de verificación en las invitaciones seleccionadas. */
+  const handleBulkSeal = useCallback(async () => {
+    if (!selected.size) return;
+    if (!window.confirm(t("superadmin.data.bulkSealConfirm", { count: selected.size }))) return;
+    setBusy(true);
+    try {
+      const batch = writeBatch(db);
+      for (const token of selected) batch.update(doc(db, "invitations", token), { verified: "true" });
+      await batch.commit();
+      addToast("success", t("superadmin.data.bulkSealDone", { count: selected.size }));
+      void logAudit("bulk_seal", `count=${selected.size}`);
+    } catch {
+      addToast("error", t("superadmin.data.bulkSealError"));
+    } finally {
+      setBusy(false);
+    }
+  }, [selected, addToast, t]);
+
+  /** Convierte "dd/mm/yyyy" a una fecha comparable, o null si no es válida. */
+  const parseDDMMYYYY = (value: string): Date | null => {
+    const m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(value.trim());
+    if (!m) return null;
+    const d = new Date(Number(m[3]), Number(m[2]) - 1, Number(m[1]));
+    return Number.isNaN(d.getTime()) ? null : d;
+  };
+
+  /** Purga (GDPR) invitaciones con boda anterior a N meses: borra en cascada. */
+  const handlePurgeOld = useCallback(async () => {
+    const monthsStr = window.prompt(t("superadmin.data.purgePrompt"), "12");
+    const months = Number(monthsStr);
+    if (!Number.isFinite(months) || months < 1) return;
+    const cutoff = new Date();
+    cutoff.setMonth(cutoff.getMonth() - months);
+    const targets = invitations.filter((i) => {
+      const d = parseDDMMYYYY(i.weddingDate || "");
+      return d !== null && d.getTime() < cutoff.getTime();
+    });
+    if (targets.length === 0) {
+      addToast("info", t("superadmin.data.purgeEmpty"));
+      return;
+    }
+    if (!window.confirm(t("superadmin.data.purgeConfirm", { count: targets.length }))) return;
+    setBusy(true);
+    try {
+      for (const inv of targets) await cascadeDelete(inv.id);
+      setInvitations((prev) => prev.filter((i) => !targets.some((x) => x.id === i.id)));
+      setSelected(new Set());
+      setConfirmText("");
+      addToast("success", t("superadmin.data.purgeDone", { count: targets.length }));
+      void logAudit("purge_old", `count=${targets.length}`);
+    } catch {
+      addToast("error", t("superadmin.data.purgeError"));
+    } finally {
+      setBusy(false);
+    }
+  }, [invitations, cascadeDelete, addToast, t]);
+
   /** Elimina TODAS las invitaciones y datos del sistema. */
   const deleteAll = useCallback(async () => {
     if (confirmText !== CONFIRM_WORD) {
@@ -591,6 +667,22 @@ export default function DataTab() {
             </button>
             <button
               type="button"
+              className="setup-button setup-button--ghost setup-button--compact"
+              onClick={() => void handleBulkExpiry()}
+              disabled={busy}
+            >
+              {t("superadmin.data.bulkExpiryBtn")} ({selectedCount})
+            </button>
+            <button
+              type="button"
+              className="setup-button setup-button--ghost setup-button--compact"
+              onClick={() => void handleBulkSeal()}
+              disabled={busy}
+            >
+              {t("superadmin.data.bulkSealBtn")} ({selectedCount})
+            </button>
+            <button
+              type="button"
               className="setup-button setup-button--danger setup-button--compact"
               onClick={deleteSelected}
               disabled={busy || confirmText !== CONFIRM_WORD}
@@ -633,6 +725,14 @@ export default function DataTab() {
           aria-busy={busy}
         >
           {busy ? t("common.loading") : t("superadmin.data.deleteAllBtn")}
+        </button>
+        <button
+          type="button"
+          className="setup-button setup-button--danger setup-button--ghost"
+          onClick={() => void handlePurgeOld()}
+          disabled={busy}
+        >
+          {t("superadmin.data.purgeBtn")}
         </button>
       </div>
 

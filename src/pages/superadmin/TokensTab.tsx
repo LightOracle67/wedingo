@@ -181,6 +181,23 @@ const TokensTab = memo(function TokensTab() {
   );
   const { sorted: sortedRows, toggleSort, getIndicator } = useColumnSort(rows, sortColumns);
 
+  // Conflicto de tokens: dos hashes apuntando a la MISMA invitación, o dos
+  // invitaciones con el MISMO token legacy (inseguro: cualquiera de ellas
+  // acepta la sesión). El superadmin debe migrar/revocar estos casos.
+  const conflicts = useMemo(() => {
+    const countByInvite: Record<string, number> = {};
+    for (const h of hashedTokens) countByInvite[h.inviteToken] = (countByInvite[h.inviteToken] || 0) + 1;
+    const duplicateInvites = Object.entries(countByInvite)
+      .filter(([, n]) => n > 1)
+      .map(([k]) => k);
+    const countByLegacy: Record<string, number> = {};
+    for (const tk of tokens) countByLegacy[tk.activeToken] = (countByLegacy[tk.activeToken] || 0) + 1;
+    const duplicateLegacy = Object.entries(countByLegacy)
+      .filter(([, n]) => n > 1)
+      .map(([k]) => k);
+    return { duplicateInvites, duplicateLegacy };
+  }, [tokens, hashedTokens]);
+
   // Selección de filas para acciones genéricas en lote (fuera de la tabla).
   const selection = useRowSelection();
   const selectedLegacy = tokens.filter((tk) => selection.selected.has(`legacy-${tk.id}`));
@@ -236,6 +253,25 @@ const TokensTab = memo(function TokensTab() {
           {t("superadmin.cleanUnused")}
         </button>
       </div>
+
+      {(conflicts.duplicateInvites.length > 0 || conflicts.duplicateLegacy.length > 0) ? (
+        <div
+          className="setup-background-panel"
+          style={{ marginBottom: "1rem", borderColor: "#f6c7c7", borderLeft: "3px solid #ef4444", padding: "0.6rem 0.9rem" }}
+        >
+          <p className="setup-label" style={{ color: "#ef4444" }}>{t("superadmin.tokenConflictsTitle")}</p>
+          {conflicts.duplicateLegacy.length > 0 ? (
+            <p className="setup-help" style={{ margin: "0.2rem 0 0" }}>
+              {t("superadmin.tokenConflictsLegacy")}: {conflicts.duplicateLegacy.join(", ")}
+            </p>
+          ) : null}
+          {conflicts.duplicateInvites.length > 0 ? (
+            <p className="setup-help" style={{ margin: "0.2rem 0 0" }}>
+              {t("superadmin.tokenConflictsHash")}: {conflicts.duplicateInvites.join(", ")}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
 
       {rows.length === 0 ? (
         <div className="setup-token-card" style={{ padding: "2rem", textAlign: "center" }}>

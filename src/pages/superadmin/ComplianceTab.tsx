@@ -13,7 +13,7 @@ interface ComplianceRow {
 }
 
 const ComplianceTab = memo(function ComplianceTab() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   // Filas del registro de tratamientos (contenido estático traducido).
   const rows = useMemo<ComplianceRow[]>(
@@ -41,6 +41,55 @@ const ComplianceTab = memo(function ComplianceTab() {
     [],
   );
   const { sorted: sortedRows, toggleSort, getIndicator } = useColumnSort(rows, sortColumns);
+
+  // Plantillas de cláusula de privacidad por jurisdicción (resumen breve).
+  const templates = useMemo(() => {
+    const es = i18n.language?.toLowerCase().startsWith("es");
+    return [
+      {
+        code: "EU",
+        label: es ? "RGPD (UE)" : "GDPR (EU)",
+        text: es
+          ? "Base legal: consentimiento (art. 6.1.a RGPD). Datos: nombre, asistencia, menú, alergias, contacto si el invitado lo consiente. Retención: 12 meses tras la boda. Derechos: acceso, rectificación, supresión, portabilidad."
+          : "Legal basis: consent (GDPR art. 6.1.a). Data: name, attendance, menu, allergies, contact only with consent. Retention: 12 months after the wedding. Rights: access, rectification, erasure, portability.",
+      },
+      {
+        code: "UK",
+        label: es ? "UK GDPR (Reino Unido)" : "UK GDPR (United Kingdom)",
+        text: es
+          ? "Base legal: consentimiento (UK GDPR art. 6.1.a). Retención: 12 meses tras la boda. Transferencia: datos alojados en EEUU con SCCs vigentes."
+          : "Legal basis: consent (UK GDPR art. 6.1.a). Retention: 12 months after the wedding. Transfer: data hosted in the US under current SCCs.",
+      },
+      {
+        code: "CCPA",
+        label: es ? "CCPA/CPRA (California)" : "CCPA/CPRA (California)",
+        text: es
+          ? "Categorías recogidas: identificadores (nombre, teléfono/email si consiente). Derechos: saber, eliminar, opt-out de venta (no se venden datos). Solo residentes de California."
+          : "Categories collected: identifiers (name, phone/email with consent). Rights: know, delete, sale opt-out (no data sold). California residents only.",
+      },
+      {
+        code: "LGPD",
+        label: "LGPD (Brasil)",
+        text: es
+          ? "Base legal: consentimento (art. 7º I). Dados: nome, presença, menu, alergias. Retenção: 12 meses. Direitos: acesso, correção, exclusão, portabilidade."
+          : "Legal basis: consent (art. 7 I). Data: name, attendance, menu, allergies. Retention: 12 months. Rights: access, correction, deletion, portability.",
+      },
+      {
+        code: "PIPEDA",
+        label: "PIPEDA (Canadá)",
+        text: es
+          ? "Consentimiento significativo. Fines: organización de la boda. Retención: solo lo necesario (12 meses). Acceso y corrección disponibles."
+          : "Meaningful consent. Purposes: wedding planning. Retention: only as needed (12 months). Access and correction available.",
+      },
+      {
+        code: "POPIA",
+        label: "POPIA (Sudáfrica)",
+        text: es
+          ? "Justificación: consentimiento. Fines: organización del evento. Retención: no más de lo necesario (12 meses). Derechos: acceso, rectificación, eliminación."
+          : "Justification: consent. Purposes: event planning. Retention: no longer than necessary (12 months). Rights: access, rectification, deletion.",
+      },
+    ];
+  }, [i18n.language]);
 
   const thStyle: React.CSSProperties = {
     padding: "0.4rem 0.5rem",
@@ -135,6 +184,31 @@ const ComplianceTab = memo(function ComplianceTab() {
             <li>{t("compliance.measureRetention")}</li>
             <li>{t("compliance.measureSuperadmin")}</li>
           </ul>
+        </div>
+      </div>
+
+      {/* ── Plantillas de textos legales por país ── */}
+      <div className="setup-background-panel">
+        <p className="setup-label">{t("compliance.templatesTitle")}</p>
+        <p className="setup-help" style={{ fontSize: "0.8rem" }}>
+          {t("compliance.templatesHelp")}
+        </p>
+        <div className="support-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+          {templates.map((tp) => (
+            <div key={tp.code} className="setup-background-panel" style={{ padding: "0.6rem" }}>
+              <p className="setup-label" style={{ fontSize: "0.8rem" }}>{tp.label}</p>
+              <p className="setup-help" style={{ fontSize: "0.72rem", lineHeight: 1.5, whiteSpace: "pre-line" }}>
+                {tp.text}
+              </p>
+              <button
+                type="button"
+                className="setup-button setup-button--ghost setup-button--compact"
+                onClick={() => void navigator.clipboard?.writeText(tp.text)}
+              >
+                {t("compliance.copyTemplate")}
+              </button>
+            </div>
+          ))}
         </div>
       </div>
     </div>

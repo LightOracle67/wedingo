@@ -656,6 +656,24 @@ export default function PublicInvitation() {
     );
   }
 
+  // ── Kill-switch global: mantenimiento de la plataforma ──
+  // Con `platform.maintenance === "true"` la invitación no se muestra (ni el
+  // sobre): se presenta una pantalla de mantenimiento al visitante. Es la
+  // respuesta rápida del superadmin ante un incidente (sin Blaze).
+  if (platform.maintenance === "true" && !isAdminTokenLoggedIn) {
+    return (
+      <div className="app-scene">
+        <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
+          <div className="w-full max-w-md text-center story-panel story-panel--hero">
+            <p className="story-eyebrow">{t("public.maintenanceEyebrow")}</p>
+            <h1 className="story-title">{t("public.maintenanceTitle")}</h1>
+            <p className="story-copy">{t("public.maintenanceText")}</p>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
   // ── Error de carga ──
   if (configLoadError) {
     // Un enlace corrupto no se arregla recargando: mostrar el inicio en vez

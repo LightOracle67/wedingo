@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.75",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: funciones avanzadas de superadmin (sin Blaze) — pestaña Métricas (resumen global, funnel de conversión visitas→RSVP, ranking, crecimiento mensual, almacenamiento bajo demanda, CSV global); pestaña Soporte (centro de avisos: bodas próximas/sin configurar/tokens legacy/sesiones, consola por invitación y diagnóstico de conectividad); kill-switch global de mantenimiento (la invitación pública muestra aviso); pausar/reanudar invitación; detección de tokens en conflicto; acciones masivas de expiración y sello + purga por antigüedad (GDPR); plantillas de cláusula de privacidad por país.",
+    ],
+  },
+
+  {
     version: "2.95.74",
     date: "2026-08-09",
     changes: [

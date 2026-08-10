@@ -345,6 +345,23 @@ const ManageTab = memo(function ManageTab() {
     }
   }, [token, addToast, t]);
 
+  /** Pausa/reanuda la invitación: añade o quita el token de la lista bloqueada
+   *  global (platform.blockedTokens), que la invitación pública ya respeta. */
+  const handlePause = useCallback(async () => {
+    if (!token) return;
+    try {
+      const snap = await getDoc(doc(db, "platform", "settings"));
+      const data = (snap.exists() ? snap.data() : {}) as { blockedTokens?: string };
+      const blocked = (data.blockedTokens || "").split(",").map((s) => s.trim()).filter(Boolean);
+      const isBlocked = blocked.includes(token);
+      const next = isBlocked ? blocked.filter((x) => x !== token) : [...blocked, token];
+      await setDoc(doc(db, "platform", "settings"), { ...data, blockedTokens: next.join(",") }, { merge: true });
+      addToast("success", t(isBlocked ? "manage.unpaused" : "manage.paused"));
+    } catch {
+      addToast("error", t("errors.generic"));
+    }
+  }, [token, addToast, t]);
+
   /** F4-5: abre la previsualización a pantalla completa (modo presentación). */
   const handlePresent = useCallback(() => {
     const frame = previewFrameRef.current;
@@ -699,6 +716,9 @@ const ManageTab = memo(function ManageTab() {
                 {t("manage.killSession")}
               </button>
             ) : null}
+            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => void handlePause()}>
+              {t("manage.pause")}
+            </button>
             {accessLog.length > 0 ? (
               <ul style={{ margin: "0.5rem 0 0", paddingLeft: "1.2rem", fontSize: "0.75rem", color: "var(--setup-subtitle)" }}>
                 {accessLog.map((a, i) => (
