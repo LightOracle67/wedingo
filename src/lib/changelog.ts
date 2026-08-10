@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.73",
+    date: "2026-08-09",
+    changes: [
+      "FIX: el contenido de las secciones es SIEMPRE visible — se elimina la regla que ocultaba los elementos hasta el centro (creaba contenedores vacíos al desvanecerse el blanco del sobre y al hacer scroll) y el stagger de entrada que la acompañaba; la card entra con su contenido mediante el progreso de scroll y la entrada 3D del hero al abrir el sobre.",
+    ],
+  },
+
+  {
     version: "2.95.72",
     date: "2026-08-09",
     changes: [

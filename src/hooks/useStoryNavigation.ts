@@ -11,13 +11,10 @@
  * - Con un poco de scroll hacia arriba o abajo → pierde opacidad, se desplaza
  *   ligeramente (paralaje) y se desenfoca, en la misma proporción al scroll.
  * - Una pantalla fuera del centro → invisible.
- * Esto aplica a TODAS las secciones por igual (fundido cruzado entre ellas).
- *
- * Las animaciones de entrada de los ELEMENTOS de una sección (eyebrow, título,
- * texto, mapa, formulario...) se ejecutan UNA sola vez, cuando el centro de la
- * sección cruza el CENTRO EXACTO del viewport (stagger vía la clase
- * `.story-section--is-enter`). Al abrir el sobre, la primera sección (hero)
- * recibe además `.story-section--is-reveal` para su entrada 3D de la card.
+ * Esto aplica a TODAS las secciones por igual (fundido cruzado entre ellas) y
+ * el CONTENIDO de cada sección es siempre visible (nunca se muestran
+ * contenedores vacíos). Al abrir el sobre, la primera sección (hero) recibe
+ * además `.story-section--is-reveal` para su entrada 3D de la card.
  *
  * El scroll INTERIOR de las cards (overflow-y: auto + overscroll-behavior:
  * contain) no afecta al scroll entre secciones: al llegar al final de un
@@ -57,18 +54,13 @@ export function useStoryNavigation(
   options: { enabled?: boolean; reducedMotion?: boolean } = {},
 ) {
   const [activeSection, setActiveSection] = useState<string>(visibleOrder[0] || "hero");
-  // `centered`: secciones cuyo centro ya cruzó el centro exacto del viewport.
-  // Marcan `.story-section--is-enter` (stagger de sus elementos) una sola vez.
-  const [centered, setCentered] = useState<Record<string, boolean>>({});
   // `revealing`: entrada 3D de la card de la primera sección al abrir el sobre.
   const [revealing, setRevealing] = useState(false);
 
   // Espejos en refs: la función `update` lee/escribe sin re-renderizar.
-  const centeredRef = useRef<Record<string, boolean>>({});
   const activeRef = useRef<string>(visibleOrder[0] || "hero");
-  // Distancia previa (cruce del centro) y referencias DOM para aplicar estilos
-  // de progreso por frame sin provocar renderizados.
-  const prevDistRef = useRef<Record<string, number>>({});
+  // Referencias DOM para aplicar estilos de progreso por frame sin provocar
+  // renderizados.
   const sectionsRef = useRef<Record<string, HTMLElement | null>>({});
   const wrapsRef = useRef<Record<string, HTMLElement | null>>({});
   const everDisabledRef = useRef(false);
@@ -80,7 +72,6 @@ export function useStoryNavigation(
       "story-section",
       `story-section--${sectionKey}`,
       sectionKey === activeSection ? "story-section--is-active" : "",
-      centered[sectionKey] ? "story-section--is-enter" : "",
       revealing && sectionKey === primary ? "story-section--is-reveal" : "",
     ]
       .filter(Boolean)
@@ -134,13 +125,6 @@ export function useStoryNavigation(
       mutationObserver.observe(document.body, { childList: true, subtree: true });
     }
 
-    // Marca la sección como "centrada": ejecuta el stagger de sus elementos.
-    const markCentered = (key: string) => {
-      if (centeredRef.current[key]) return;
-      centeredRef.current[key] = true;
-      setCentered((c) => (c[key] ? c : { ...c, [key]: true }));
-    };
-
     let raf = 0;
     const update = () => {
       const vpCenter = window.innerHeight / 2;
@@ -172,11 +156,11 @@ export function useStoryNavigation(
             wrap.style.filter = "none";
           }
           sec.style.visibility = "visible";
-          markCentered(key);
         } else {
           if (wrap) {
             // Estilos de progreso: opacidad, paralaje y desenfoque en función
-            // de la distancia al centro del viewport.
+            // de la distancia al centro del viewport. El CONTENIDO siempre
+            // está visible (no se ocultan contenedores vacíos).
             wrap.style.opacity = String(progress);
             wrap.style.transform = `translateY(${(-dist * PARALLAX).toFixed(2)}px) scale(${(
               MIN_SCALE + (1 - MIN_SCALE) * progress
@@ -185,16 +169,6 @@ export function useStoryNavigation(
           }
           // Accesibilidad: la sección fuera de pantalla no es enfocable.
           sec.style.visibility = progress <= 0.001 ? "hidden" : "visible";
-          // Cruce del centro EXACTO: el centro de la sección pasa por el centro
-          // del viewport → stagger de entrada (una sola vez).
-          const prev = prevDistRef.current[key];
-          if (prev === undefined) {
-            prevDistRef.current[key] = dist;
-            if (Math.abs(dist) <= 1) markCentered(key);
-          } else {
-            if ((prev > 0 && dist <= 0) || (prev < 0 && dist >= 0)) markCentered(key);
-            prevDistRef.current[key] = dist;
-          }
         }
 
         if (progress > bestProgress) {

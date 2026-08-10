@@ -1797,99 +1797,18 @@ h6 {
   }
 }
 
-@keyframes story-fade-up {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-    filter: blur(8px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-@keyframes story-fade-up {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-    filter: blur(8px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
-
-/* Contenido oculto hasta centrarse: los elementos de una sección no se
-   muestran hasta que la sección llega al CENTRO EXACTO del viewport, donde
-   ejecutan su animación de entrada escalonada (.story-section--is-enter). La
-   card (caja con fondo y borde) sí se ve, desvanecida por el progreso de
-   scroll (estilos inline aplicados por useStoryNavigation). */
-.story-section:not(.story-section--is-enter) .story-eyebrow,
-.story-section:not(.story-section--is-enter) .story-title,
-.story-section:not(.story-section--is-enter) .story-copy,
-.story-section:not(.story-section--is-enter) .story-note,
-.story-section:not(.story-section--is-enter) .story-divider,
-.story-section:not(.story-section--is-enter) .story-map,
-.story-section:not(.story-section--is-enter) .story-calendar-actions,
-.story-section:not(.story-section--is-enter) .story-map__actions,
-.story-section:not(.story-section--is-enter) .story-card--rsvp .rsvp-form,
-.story-section:not(.story-section--is-enter) .story-card--hero .mx-auto,
-.story-section:not(.story-section--is-enter) .story-card--hero .mt-6 {
-  opacity: 0;
-}
-
 /* Entrada 3D de la card de la PRIMERA sección al abrir el sobre (is-reveal):
    efecto 3D + blur inicial, UNA única vez. El resto de secciones se revelan
-   con el progreso de scroll (inline), sin animación temporal. */
+   con el progreso de scroll (inline, opacidad/paralaje/desenfoque en función
+   de la distancia al centro del viewport), manteniendo SIEMPRE su contenido
+   visible: no hay contenedores vacíos. */
 .story-section--is-reveal .story-card-wrap {
   animation: story-card-enter 1400ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* Stagger de los elementos internos al alcanzar el centro exacto. */
-.story-section--is-enter .story-eyebrow {
-  animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 150ms both;
-}
-
-.story-section--is-enter .story-title {
-  animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
-}
-
-.story-section--is-enter .story-copy {
-  animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 430ms both;
-}
-
-.story-section--is-enter .story-note,
-.story-section--is-enter .story-divider {
-  animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 560ms both;
-}
-
-.story-section--is-enter .story-map,
-.story-section--is-enter .story-calendar-actions,
-.story-section--is-enter .story-map__actions,
-.story-section--is-enter .story-card--rsvp .rsvp-form,
-.story-section--is-enter .story-card--hero .mx-auto,
-.story-section--is-enter .story-card--hero .mt-6 {
-  animation: story-fade-up 900ms cubic-bezier(0.16, 1, 0.3, 1) 680ms both;
-}
-
-/* Usuarios con movimiento reducido: sin entradas animadas y contenido visible. */
+/* Usuarios con movimiento reducido: sin entradas animadas. */
 @media (prefers-reduced-motion: reduce) {
-  .story-section--is-reveal .story-card-wrap,
-  .story-section--is-enter .story-eyebrow,
-  .story-section--is-enter .story-title,
-  .story-section--is-enter .story-copy,
-  .story-section--is-enter .story-note,
-  .story-section--is-enter .story-divider,
-  .story-section--is-enter .story-map,
-  .story-section--is-enter .story-calendar-actions,
-  .story-section--is-enter .story-map__actions,
-  .story-section--is-enter .story-card--rsvp .rsvp-form,
-  .story-section--is-enter .story-card--hero .mx-auto,
-  .story-section--is-enter .story-card--hero .mt-6 {
+  .story-section--is-reveal .story-card-wrap {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

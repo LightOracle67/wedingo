@@ -85,12 +85,12 @@ describe("useStoryNavigation", () => {
     expect(cls).toContain("story-section--hero");
   });
 
-  it("marks centered and active the section at the exact center (reveal)", () => {
+  it("marks active the section at the exact center (reveal)", () => {
     // El hero ocupa el viewport completo y está centrado desde el inicio.
     setupScene(SAMPLE_ORDER);
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER));
-    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-enter");
     expect(result.current.getSectionClassName("hero")).toContain("story-section--is-active");
+    expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-enter");
   });
 
   it("fades a section proportionally to its distance from the center", () => {
@@ -99,7 +99,7 @@ describe("useStoryNavigation", () => {
     const wrap = els["hero"]!.querySelector<HTMLElement>(".story-card-wrap")!;
     // Centrada → opacidad 1.
     expect(parseFloat(wrap.style.opacity)).toBe(1);
-    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-enter");
+    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-active");
     // A media pantalla del centro (dist = VH/2) → 50% de opacidad.
     rects["hero"]!.top = VH / 2;
     scrollTo(0);
@@ -111,53 +111,51 @@ describe("useStoryNavigation", () => {
     expect(els["hero"]!.style.visibility).toBe("hidden");
   });
 
-  it("runs the element stagger ONCE when crossing the exact center", () => {
-    const { els, rects, scrollTo } = setupScene(["hero", "details"]);
+  it("mantiene la sección activa estable al cruzar el centro (sin re-triggers)", () => {
+    const { rects, scrollTo } = setupScene(["hero", "details"]);
     const { result } = renderHook(() => useStoryNavigation(["hero", "details"]));
-    // "details" fuera (una pantalla abajo) → no centrada.
+    // "details" fuera (una pantalla abajo) → no activa.
     rects["details"]!.top = VH;
     scrollTo(0);
-    expect(result.current.getSectionClassName("details")).not.toContain("story-section--is-enter");
-    // Cruza el centro (de abajo hacia arriba) → stagger.
+    expect(result.current.getSectionClassName("details")).not.toContain("story-section--is-active");
+    // El hero se va arriba y details cruza el centro → activa.
+    rects["hero"]!.top = -VH;
     rects["details"]!.top = 0;
     scrollTo(0);
-    expect(result.current.getSectionClassName("details")).toContain("story-section--is-enter");
-    // Oscilación: se va por encima del centro y vuelve → NO se re-ejecuta.
+    expect(result.current.getSectionClassName("details")).toContain("story-section--is-active");
+    // Oscilación: se va por encima del centro y vuelve → sigue activa.
     rects["details"]!.top = -VH;
     scrollTo(0);
     rects["details"]!.top = 0;
     scrollTo(0);
-    expect(result.current.getSectionClassName("details")).toContain("story-section--is-enter");
-    expect(els["details"]!).toBeDefined();
+    expect(result.current.getSectionClassName("details")).toContain("story-section--is-active");
   });
 
-  it("reveal mode enters the first section (is-enter + is-reveal) when enabled", async () => {
+  it("reveal mode anima la primera sección (is-reveal) al habilitarse", async () => {
     setupScene(SAMPLE_ORDER);
     const { result, rerender } = renderHook(({ enabled }) => useStoryNavigation(SAMPLE_ORDER, { enabled }), {
       initialProps: { enabled: false },
     });
     // Con el sobre cerrado no hay animación de entrada.
-    expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-enter");
     expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-reveal");
     rerender({ enabled: true });
-    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-enter");
     expect(result.current.getSectionClassName("hero")).toContain("story-section--is-reveal");
     // La entrada 3D es transitoria: se quita tras REVEAL_MS (1500ms).
     await act(async () => {
       await new Promise((r) => setTimeout(r, 1550));
     });
     expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-reveal");
-    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-enter");
+    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-active");
   });
 
-  it("reduced motion shows everything centered without reveal", () => {
+  it("reduced motion muestra contenido sin animación ni reveal", () => {
     const { els } = setupScene(SAMPLE_ORDER);
     const { result } = renderHook(() => useStoryNavigation(SAMPLE_ORDER, { reducedMotion: true }));
     const wrap = els["hero"]!.querySelector<HTMLElement>(".story-card-wrap")!;
     expect(wrap.style.opacity).toBe("1");
     expect(wrap.style.transform).toBe("none");
-    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-enter");
     expect(result.current.getSectionClassName("hero")).not.toContain("story-section--is-reveal");
+    expect(result.current.getSectionClassName("hero")).toContain("story-section--is-active");
   });
 
   it("does nothing when there are no story sections in the DOM", () => {
