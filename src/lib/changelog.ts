@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.85",
+    date: "2026-08-09",
+    changes: [
+      "FIX: la prueba social del hero usa polling ligero (getDoc cada 20s) en lugar de onSnapshot — se elimina el canal WebChannel persistente (Listen) de Firestore que abría una conexión por visitante y podía fallar con CORS en algunas redes; el contador sigue actualizándose en vivo de forma práctica.",
+    ],
+  },
+
+  {
     version: "2.95.84",
     date: "2026-08-09",
     changes: [

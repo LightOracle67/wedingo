@@ -78,30 +78,34 @@ const HeroSection = memo(function HeroSection({
   const [photoLoaded, setPhotoLoaded] = useState(false);
   const reducedMotion = useReducedMotion();
 
-  // Prueba social en vivo: nº de invitados que ya confirmaron (lectura en
-  // tiempo real del contador rsvpResponses/{token}). Solo si hay confirmados.
+  // Prueba social en vivo: nº de invitados que ya confirmaron. Se lee con
+  // polling ligero (getDoc cada 20s) en lugar de onSnapshot: así no se abre un
+  // canal WebChannel persistente de Firestore (más robusto ante redes/CORS).
   const [confirmedCount, setConfirmedCount] = useState(0);
   useEffect(() => {
     if (!inviteToken) return;
-    let unsub: (() => void) | undefined;
     let cancelled = false;
+    let timer: ReturnType<typeof setInterval> | undefined;
     const init = async () => {
-      const { doc, onSnapshot } = await import("firebase/firestore");
-      const { db } = await import("../../lib/firebase");
-      unsub = onSnapshot(
-        doc(db, "rsvpResponses", inviteToken),
-        (snap) => {
+      const fs = await import("firebase/firestore");
+      const fb = await import("../../lib/firebase");
+      const tick = async () => {
+        try {
+          const snap = await fs.getDoc(fs.doc(fb.db, "rsvpResponses", inviteToken));
           if (cancelled) return;
           const n = Number(snap.data()?.count || 0);
           setConfirmedCount(n > 0 ? n : 0);
-        },
-        () => {},
-      );
+        } catch {
+          /* si falla, se reintenta en el siguiente tick */
+        }
+      };
+      await tick();
+      timer = setInterval(() => void tick(), 20000);
     };
     void init();
     return () => {
       cancelled = true;
-      unsub?.();
+      if (timer) clearInterval(timer);
     };
   }, [inviteToken]);
 
