@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.72",
+    date: "2026-08-09",
+    changes: [
+      "FIX: se bloquea el scroll del contenedor de la invitación mientras el sobre (o el vídeo de bienvenida) está en pantalla — antes se podía hacer scroll y la invitación se activaba con sus animaciones detrás del envelope; el scroll se libera al terminar la última animación del sobre.",
+    ],
+  },
+
+  {
     version: "2.95.71",
     date: "2026-08-09",
     changes: [

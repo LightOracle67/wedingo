@@ -89,17 +89,27 @@ export function useStoryNavigation(
 
   useEffect(() => {
     const enabled = options.enabled ?? true;
+    if (typeof document === "undefined") return;
+
+    // Mientras el sobre (o el vídeo de bienvenida) está en pantalla, se BLOQUEA
+    // el scroll del `.app-scene`: si no, con la rueda/dedos se podía hacer
+    // scroll y la invitación (detrás del envelope) se activaba y disparaba sus
+    // animaciones de sección. El scroll se restaura cuando `enabled` pasa a
+    // true (al terminar la última animación del sobre).
+    const scene = document.querySelector<HTMLElement>(".app-scene");
     if (!enabled) {
       everDisabledRef.current = true;
-      return;
+      if (scene) scene.style.overflow = "hidden";
+      return () => {
+        if (scene) scene.style.overflow = "";
+      };
     }
-    if (typeof document === "undefined") return;
+    if (scene) scene.style.overflow = "";
 
     const reducedMotion = options.reducedMotion === true;
     const primarySection = visibleOrder[0];
 
     // Al abrir el sobre (enabled pasa de false a true) se vuelve al inicio.
-    const scene = document.querySelector<HTMLElement>(".app-scene");
     if (everDisabledRef.current) scene?.scrollTo({ top: 0, behavior: "auto" });
 
     // Caché de referencias de cada sección (incluye las lazy que montan después).
