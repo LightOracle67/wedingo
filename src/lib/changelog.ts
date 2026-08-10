@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.77",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: más herramientas de superadmin (sin Blaze) — kill-switch por función social (desactivar regalos/coche/reacciones/notas/música/trivial globalmente); analítica de uso de funciones sociales; revisión de privacidad (mapas de terceros en iframe); detección de abandono (visitas sin RSVP); auditoría exportable en CSV; búsqueda de tokens por hash; export por rango de fechas; modo simulación del invitado en el preview (ya confirmado / plazo vencido); reporte de almacenamiento corregido (Firestore, no Storage).",
+    ],
+  },
+
+  {
     version: "2.95.76",
     date: "2026-08-09",
     changes: [

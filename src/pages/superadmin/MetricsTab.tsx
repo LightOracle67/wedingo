@@ -10,9 +10,8 @@
  * - Export global en CSV de todas las confirmaciones.
  */
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
-import { getDocs } from "firebase/firestore";
-import { INVITATIONS_COLLECTION_REF, rsvpByInviteRef, getStorageInstance } from "../../lib/firebase";
-import { ref, listAll, getMetadata } from "firebase/storage";
+import { getDocs, collection } from "firebase/firestore";
+import { INVITATIONS_COLLECTION_REF, rsvpByInviteRef, db } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
 
 interface InvRow {
@@ -136,32 +135,32 @@ const MetricsTab = memo(function MetricsTab() {
     return months;
   }, [rows]);
 
-  // ── Almacenamiento bajo demanda (galería/audio de cada invitación) ──
+  // ── Almacenamiento bajo demanda (las imágenes/audio viven en Firestore
+  // como base64 cifrado en las subcolecciones gallery/audio) ──
   const calculateStorage = useCallback(async () => {
     setCalcStorage(true);
     setError("");
     const out: StorageRow[] = [];
     try {
-      const storage = await getStorageInstance();
       for (const r of rows) {
         let images = 0;
         let audioBytes = 0;
         try {
-          const galleryRef = ref(storage, `gallery/${r.id}`);
-          const gallery = await listAll(galleryRef);
-          images = gallery.items.length;
+          const g = await getDocs(collection(db, "invitations", r.id, "gallery"));
+          images = g.size;
         } catch {}
         try {
-          const audioRef = ref(storage, `audio/${r.id}`);
-          const audio = await listAll(audioRef);
-          for (const item of audio.items) {
-            try {
-              const meta = await getMetadata(item);
-              audioBytes += Number(meta.size) || 0;
-            } catch {}
-          }
+          const a = await getDocs(collection(db, "invitations", r.id, "audio"));
+          // Cada chunk de audio lleva su `data` (base64 cifrado): se estima el
+          // tamaño real como ~75% de la longitud base64 (3 bytes → 4 chars).
+          audioBytes = a.docs.reduce((acc, d) => {
+            const data = String(d.data().data || "");
+            return acc + Math.round(data.length * 0.75);
+          }, 0);
         } catch {}
-        out.push({ token: r.id, images, audioBytes, totalMB: Math.round((audioBytes / 1024 / 1024) * 100) / 100 });
+        if (images > 0 || audioBytes > 0) {
+          out.push({ token: r.id, images, audioBytes, totalMB: Math.round((audioBytes / 1024 / 1024) * 100) / 100 });
+        }
       }
       out.sort((a, b) => b.totalMB - a.totalMB || b.images - a.images);
       setStorageRows(out);
@@ -231,6 +230,40 @@ const MetricsTab = memo(function MetricsTab() {
     URL.revokeObjectURL(url);
   }, [rows]);
 
+  // ── Analítica de funciones sociales (uso global) ──
+  const [socialLoading, setSocialLoading] = useState(false);
+  const [socialStats, setSocialStats] = useState<
+    Array<{ token: string; reactions: number; notes: number; songs: number; rides: number; gifts: number }>
+  >([]);
+  const calculateSocial = useCallback(async () => {
+    setSocialLoading(true);
+    setError("");
+    const out: Array<{ token: string; reactions: number; notes: number; songs: number; rides: number; gifts: number }> = [];
+    try {
+      for (const r of rows) {
+        const counts = { reactions: 0, notes: 0, songs: 0, rides: 0, gifts: 0 };
+        for (const sub of ["reactions", "notes", "songs", "rides", "gifts"] as const) {
+          try {
+            const snap = await getDocs(collection(db, "invitations", r.id, sub));
+            counts[sub] = snap.size;
+          } catch {}
+        }
+        if (counts.reactions + counts.notes + counts.songs + counts.rides + counts.gifts > 0) {
+          out.push({ token: r.id, ...counts });
+        }
+      }
+      out.sort(
+        (a, b) =>
+          b.reactions + b.notes + b.songs + b.rides + b.gifts -
+          (a.reactions + a.notes + a.songs + a.rides + a.gifts),
+      );
+      setSocialStats(out);
+    } catch {
+      setError(t("superadmin.metrics.storageError"));
+    }
+    setSocialLoading(false);
+  }, [rows, t]);
+
   // Etiqueta de fecha de boda ya integrada en `funnel` (campo weddingDateLabel).
   if (loading) {
     return (
@@ -298,6 +331,9 @@ const MetricsTab = memo(function MetricsTab() {
         <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportGuestsCsv()}>
           {t("superadmin.metrics.guestsCsvBtn")}
         </button>
+        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void calculateSocial()} disabled={socialLoading}>
+          {socialLoading ? t("common.loading") : t("superadmin.metrics.socialBtn")}
+        </button>
       </div>
       {storageRows.length > 0 ? (
         <div className="admin-table-wrapper">
@@ -315,6 +351,36 @@ const MetricsTab = memo(function MetricsTab() {
                   <td className="admin-text-mono" style={{ fontSize: "0.78rem" }}>{s.token}</td>
                   <td>{s.images}</td>
                   <td>{s.totalMB} MB</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : null}
+
+      {/* ── Uso de funciones sociales ── */}
+      {socialStats.length > 0 ? (
+        <div className="admin-table-wrapper">
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>{t("superadmin.metrics.token")}</th>
+                <th>{t("superadmin.metrics.socialReactions")}</th>
+                <th>{t("superadmin.metrics.socialNotes")}</th>
+                <th>{t("superadmin.metrics.socialSongs")}</th>
+                <th>{t("superadmin.metrics.socialRides")}</th>
+                <th>{t("superadmin.metrics.socialGifts")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {socialStats.map((s) => (
+                <tr key={s.token}>
+                  <td className="admin-text-mono" style={{ fontSize: "0.78rem" }}>{s.token}</td>
+                  <td>{s.reactions}</td>
+                  <td>{s.notes}</td>
+                  <td>{s.songs}</td>
+                  <td>{s.rides}</td>
+                  <td>{s.gifts}</td>
                 </tr>
               ))}
             </tbody>

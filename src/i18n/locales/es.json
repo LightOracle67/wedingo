@@ -886,7 +886,12 @@
       "purgeConfirm": "¿Eliminar definitivamente {{count}} invitación(es) con sus datos (GDPR)?",
       "purgeDone": "Purga completada: {{count}} eliminadas.",
       "purgeError": "No se pudo completar la purga.",
-      "purgeEmpty": "No hay invitaciones anteriores a ese rango."
+      "purgeEmpty": "No hay invitaciones anteriores a ese rango.",
+      "rangeBtn": "Exportar por rango",
+      "rangeFromPrompt": "Desde (AAAA-MM-DD):",
+      "rangeToPrompt": "Hasta (AAAA-MM-DD):",
+      "rangeInvalid": "Rango de fechas no válido.",
+      "rangeEmpty": "No hay invitaciones en ese rango."
     },
     "login": "Entrar",
     "emailLabel": "Email",
@@ -946,7 +951,13 @@
       "topVisitsTitle": "Más visitas",
       "wedding": "Boda",
       "date": "Fecha",
-      "guestsCsvBtn": "Export CSV de invitados"
+      "guestsCsvBtn": "Export CSV de invitados",
+      "socialBtn": "Analizar funciones sociales",
+      "socialReactions": "Reacciones",
+      "socialNotes": "Notas",
+      "socialSongs": "Música",
+      "socialRides": "Coches",
+      "socialGifts": "Regalos"
     },
     "support": {
       "upcomingTitle": "Bodas próximas (≤14 días)",
@@ -968,7 +979,14 @@
       "diagTitle": "Diagnóstico de conectividad",
       "diagBtn": "Comprobar Firestore",
       "invitations": "Invitaciones",
-      "tokens": "Tokens"
+      "tokens": "Tokens",
+      "privacyTitle": "Mapas de terceros (iframe)",
+      "privacyHint": "Invitaciones que cargan Google Maps embebido",
+      "abandonTitle": "Posible abandono",
+      "abandonBtn": "Analizar (visitas sin RSVP)",
+      "auditTitle": "Auditoría",
+      "auditLoad": "Cargar",
+      "auditExport": "Export CSV"
     },
     "tokenConflictsTitle": "Conflictos de tokens detectados",
     "tokenConflictsLegacy": "Tokens legacy duplicados entre invitaciones",
@@ -1396,7 +1414,11 @@
     "validatorOk": "Configuración válida",
     "pause": "Pausar/Reanudar",
     "paused": "Invitación pausada.",
-    "unpaused": "Invitación reanudada."
+    "unpaused": "Invitación reanudada.",
+    "simulate": "Simular invitado",
+    "simNone": "Sin simulación",
+    "simResponded": "Ya confirmado",
+    "simExpired": "Plazo vencido"
   },
   "platform": {
     "maintenance": "Modo mantenimiento",
@@ -1412,7 +1434,9 @@
     "blockedTokens": "Lista negra de tokens",
     "blockedTokensHelp": "Tokens de invitación bloqueados (separados por comas): no se mostrarán.",
     "blockedTokensPlaceholder": "ej. AbCdEf1234, XyZq9876ab",
-    "expiringDays": "Umbral de expiración (días)"
+    "expiringDays": "Umbral de expiración (días)",
+    "disabledFeatures": "Kill-switch por función",
+    "disabledFeaturesHelp": "Desactiva una función social en TODAS las invitaciones a la vez (regalos, coche compartido, reacciones, notas, música, trivial)."
   },
   "tools": {
     "newConfirmations": "{{count}} confirmación(es) nueva(s) desde tu última visita.",

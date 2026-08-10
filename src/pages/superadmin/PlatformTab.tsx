@@ -3,7 +3,17 @@ import { useTranslation } from "react-i18next";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
-import { usePlatformSettings, type PlatformSettings } from "../../lib/platform-settings";
+import { usePlatformSettings, isFeatureDisabled, type PlatformSettings } from "../../lib/platform-settings";
+
+// Funciones sociales que se pueden desactivar globalmente (kill-switch).
+const SOCIAL_FEATURES: Array<{ key: string; labelKey: string }> = [
+  { key: "gifts", labelKey: "giftList.title" },
+  { key: "rides", labelKey: "rideShare.title" },
+  { key: "reactions", labelKey: "reactions.title" },
+  { key: "notes", labelKey: "notes.title" },
+  { key: "songs", labelKey: "musicPoll.title" },
+  { key: "trivia", labelKey: "trivia.title" },
+];
 
 /**
  * PlatformTab — Ajustes globales de la plataforma (Fase 3): banner global
@@ -117,6 +127,35 @@ const PlatformTab = memo(function PlatformTab() {
           onChange={(e) => set("expiringDays", e.target.value.slice(0, 3))}
           aria-label={t("platform.expiringDays")}
         />
+      </div>
+
+      {/* Kill-switch por función social (desactivación global) */}
+      <div className="setup-background-panel">
+        <p className="setup-label">{t("platform.disabledFeatures")}</p>
+        <p className="setup-help">{t("platform.disabledFeaturesHelp")}</p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem 1.2rem" }}>
+          {SOCIAL_FEATURES.map((f) => {
+            const disabled = isFeatureDisabled(form, f.key);
+            return (
+              <label key={f.key} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", cursor: "pointer", fontSize: "0.85rem" }}>
+                <input
+                  type="checkbox"
+                  checked={disabled}
+                  onChange={() => {
+                    const list = (form.disabledFeatures || "")
+                      .split(",")
+                      .map((s) => s.trim().toLowerCase())
+                      .filter(Boolean);
+                    const next = disabled ? list.filter((x) => x !== f.key) : [...list, f.key];
+                    set("disabledFeatures", next.join(","));
+                  }}
+                  aria-label={t(f.labelKey)}
+                />
+                <span>{t(f.labelKey)}</span>
+              </label>
+            );
+          })}
+        </div>
       </div>
 
       <div className="setup-actions">

@@ -515,6 +515,8 @@ const ManageTab = memo(function ManageTab() {
     }
   }, [token, copySource, copySub, addToast, t]);
 
+  const [sim, setSim] = useState("");
+
   if (loading) {
     return (
       <p className="setup-subtitle" style={{ textAlign: "center" }}>
@@ -523,7 +525,7 @@ const ManageTab = memo(function ManageTab() {
     );
   }
 
-  const previewUrl = token ? `/${token}?preview=1` : "";
+  const previewUrl = token ? `/${token}?preview=1${sim ? `&sim=${sim}` : ""}` : "";
 
   return (
     <div className="admin-flex--col" style={{ height: "100%", minHeight: 0, gap: "0.75rem" }}>
@@ -745,6 +747,18 @@ const ManageTab = memo(function ManageTab() {
                   <option value={1200}>{t("manage.deviceDesktop")}</option>
                 </select>
               </label>
+              {/* Simulación de estados del invitado (sin tocar datos reales) */}
+              <select
+                className="setup-input"
+                value={sim}
+                onChange={(e) => setSim(e.target.value)}
+                aria-label={t("manage.simulate")}
+                style={{ maxWidth: "14rem" }}
+              >
+                <option value="">{t("manage.simNone")}</option>
+                <option value="responded">{t("manage.simResponded")}</option>
+                <option value="expired">{t("manage.simExpired")}</option>
+              </select>
             </div>
             <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}>
               <div

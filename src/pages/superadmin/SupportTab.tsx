@@ -22,6 +22,8 @@ interface AlertInfo {
   empty: boolean;
   legacy: boolean;
   session: boolean;
+  mapIframe: boolean;
+  visits: number;
 }
 
 const SupportTab = memo(function SupportTab() {
@@ -75,6 +77,13 @@ const SupportTab = memo(function SupportTab() {
           empty: !names,
           legacy: legacyIds.has(d.id),
           session: !!data.activeSession,
+          visits: Number(data._visits) || 0,
+          // Revisión de privacidad: si se embebe el mapa de Google (iframe),
+          // se está cargando un servicio de terceros en la invitación.
+          mapIframe:
+            String(data.detailsMapMode || "") === "iframe" ||
+            String(data.transportMapMode || "") === "iframe" ||
+            String(data.accommodationMapMode || "") === "iframe",
         };
       });
       setAlerts(list);
@@ -94,6 +103,57 @@ const SupportTab = memo(function SupportTab() {
   const empty = alerts.filter((a) => a.empty);
   const legacy = alerts.filter((a) => a.legacy);
   const sessions = alerts.filter((a) => a.session);
+  const mapIframe = alerts.filter((a) => a.mapIframe);
+
+  // Análisis de abandono: invitaciones con muchas visitas y ningún RSVP.
+  const [abandoned, setAbandoned] = useState<Array<{ id: string; visits: number }>>([]);
+  const [abandonLoading, setAbandonLoading] = useState(false);
+  const analyzeAbandoned = useCallback(async () => {
+    setAbandonLoading(true);
+    const out: Array<{ id: string; visits: number }> = [];
+    try {
+      for (const a of alerts) {
+        try {
+          const counter = await getDocs(query(collection(db, "rsvpResponses", a.id, "responses"), limit(1)));
+          if (a.visits >= 50 && counter.empty) out.push({ id: a.id, visits: a.visits });
+        } catch {}
+      }
+      setAbandoned(out);
+    } finally {
+      setAbandonLoading(false);
+    }
+  }, [alerts]);
+
+  // Export de la auditoría (auditLog) en CSV.
+  const [auditRows, setAuditRows] = useState<Array<{ action: string; detail: string; ts: string }>>([]);
+  const loadAudit = useCallback(async () => {
+    try {
+      const snap = await getDocs(query(collection(db, "auditLog"), limit(200)));
+      setAuditRows(
+        snap.docs.map((d) => ({
+          action: String(d.data().action || ""),
+          detail: String(d.data().detail || ""),
+          ts: d.data().createdAt
+            ? new Date((d.data().createdAt as { seconds?: number })?.seconds ? Number((d.data().createdAt as { seconds: number }).seconds) * 1000 : Date.now()).toLocaleString()
+            : "",
+        })),
+      );
+    } catch {}
+  }, []);
+  const exportAudit = useCallback(() => {
+    const esc = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    const header = "Acción,Detalle,Fecha";
+    const lines = auditRows.map((r) => [r.action, r.detail, r.ts].map(esc).join(","));
+    const blob = new Blob(["\uFEFF" + [header, ...lines].join("\n")], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `auditoria_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }, [auditRows]);
 
   const searchToken = useCallback(async () => {
     const token = queryToken.trim();
@@ -184,6 +244,55 @@ const SupportTab = memo(function SupportTab() {
           <p className="setup-label">{t("superadmin.support.sessionsTitle")}</p>
           <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: 0 }}>{sessions.length}</p>
           <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.78rem" }}>{t("superadmin.support.sessionsHint")}</p>
+        </div>
+      </div>
+
+      {/* ── Revisiones ── */}
+      <div className="support-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}>
+        <div className="setup-background-panel">
+          <p className="setup-label">{t("superadmin.support.privacyTitle")}</p>
+          <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: 0 }}>{mapIframe.length}</p>
+          <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.78rem" }}>{t("superadmin.support.privacyHint")}</p>
+        </div>
+        <div className="setup-background-panel">
+          <p className="setup-label">{t("superadmin.support.abandonTitle")}</p>
+          <div className="admin-flex" style={{ gap: "0.4rem", alignItems: "center", flexWrap: "wrap" }}>
+            <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void analyzeAbandoned()} disabled={abandonLoading}>
+              {abandonLoading ? t("common.loading") : t("superadmin.support.abandonBtn")}
+            </button>
+            {abandoned.length > 0 ? (
+              <span className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>{abandoned.length}</span>
+            ) : null}
+          </div>
+          {abandoned.length > 0 ? (
+            <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.1rem", fontSize: "0.75rem", color: "var(--setup-subtitle)" }}>
+              {abandoned.slice(0, 8).map((a) => (
+                <li key={a.id}>
+                  <code>{a.id}</code> — {a.visits} {t("superadmin.visitsWord")}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+        <div className="setup-background-panel">
+          <p className="setup-label">{t("superadmin.support.auditTitle")}</p>
+          <div className="admin-flex" style={{ gap: "0.4rem", alignItems: "center", flexWrap: "wrap" }}>
+            <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void loadAudit()}>
+              {t("superadmin.support.auditLoad")}
+            </button>
+            <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={exportAudit} disabled={auditRows.length === 0}>
+              {t("superadmin.support.auditExport")}
+            </button>
+          </div>
+          {auditRows.length > 0 ? (
+            <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.1rem", fontSize: "0.72rem", color: "var(--setup-subtitle)", maxHeight: "8rem", overflowY: "auto" }}>
+              {auditRows.slice(0, 12).map((r, i) => (
+                <li key={i} style={{ marginBottom: "0.15rem" }}>
+                  <strong>{r.action}</strong> — {r.detail.slice(0, 40)} · {r.ts}
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </div>
       </div>
 

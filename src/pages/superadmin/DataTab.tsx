@@ -219,7 +219,7 @@ export default function DataTab() {
    *
    * @param {string} token - Token/ID de la invitación.
    */
-  /** Exporta todas las invitaciones seleccionadas en un solo JSON. */
+    /** Exporta todas las invitaciones seleccionadas en un solo JSON. */
   const exportSelected = useCallback(async () => {
     if (!selected.size) return;
     setBusy(true);
@@ -256,6 +256,55 @@ export default function DataTab() {
       setBusy(false);
     }
   }, [selected, addToast, t]);
+
+  /** Exporta las invitaciones creadas en un rango de fechas (YYYY-MM-DD). */
+  const exportRange = useCallback(async () => {
+    const from = window.prompt(t("superadmin.data.rangeFromPrompt"), "");
+    if (!from) return;
+    const to = window.prompt(t("superadmin.data.rangeToPrompt"), "");
+    if (!to) return;
+    const fromT = new Date(from).getTime();
+    const toT = new Date(to).getTime();
+    if (Number.isNaN(fromT) || Number.isNaN(toT)) {
+      addToast("error", t("superadmin.data.rangeInvalid"));
+      return;
+    }
+    const tokens = invitations
+      .filter((i) => {
+        const c = new Date(i.createdAt).getTime();
+        return !Number.isNaN(c) && c >= fromT && c <= toT + 86400000;
+      })
+      .map((i) => i.id);
+    if (tokens.length === 0) {
+      addToast("info", t("superadmin.data.rangeEmpty"));
+      return;
+    }
+    setBusy(true);
+    try {
+      const result = [];
+      for (const token of tokens) {
+        const [invDoc, rsvpSnap, gallerySnap, audioSnap] = await Promise.all([
+          getDoc(doc(db, "invitations", token)),
+          getDocs(rsvpByInviteRef(token)),
+          getDocs(collection(db, "invitations", token, "gallery")),
+          getDocs(collection(db, "invitations", token, "audio")),
+        ]);
+        result.push({
+          invitation: { id: token, ...(invDoc.exists() ? sanitizeInvitationForExport(invDoc.data()) : {}) },
+          rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+          gallery: gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+          audio: audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+        });
+      }
+      downloadJson(`wedingo_export_rango_${from}_${to}.json`, result);
+      addToast("success", t("superadmin.data.exportedSelected", { count: tokens.length }));
+      void logAudit("export_range", `from=${from} to=${to} count=${tokens.length}`);
+    } catch {
+      addToast("error", t("superadmin.data.exportFailed"));
+    } finally {
+      setBusy(false);
+    }
+  }, [invitations, addToast, t]);
 
   /** F5-1 (F12): abre una ventana imprimible con el resumen de confirmaciones
    *  de una invitación (para imprimir/guardar en PDF). */
@@ -619,6 +668,9 @@ export default function DataTab() {
 
         <button type="button" className="setup-button setup-button--compact" onClick={exportAll} disabled={busy}>
           {t("superadmin.data.exportAllBtn")} ({totalCount})
+        </button>
+        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportRange()} disabled={busy}>
+          {t("superadmin.data.rangeBtn")}
         </button>
 
         {selectedCount > 0 && (

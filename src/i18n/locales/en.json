@@ -886,7 +886,12 @@
       "purgeConfirm": "Permanently delete {{count}} invitation(s) with their data (GDPR)?",
       "purgeDone": "Purge complete: {{count}} deleted.",
       "purgeError": "Could not complete the purge.",
-      "purgeEmpty": "No invitations older than that range."
+      "purgeEmpty": "No invitations older than that range.",
+      "rangeBtn": "Export by range",
+      "rangeFromPrompt": "From (YYYY-MM-DD):",
+      "rangeToPrompt": "To (YYYY-MM-DD):",
+      "rangeInvalid": "Invalid date range.",
+      "rangeEmpty": "No invitations in that range."
     },
     "login": "Login",
     "emailLabel": "Email",
@@ -946,7 +951,13 @@
       "topVisitsTitle": "Most visits",
       "wedding": "Wedding",
       "date": "Date",
-      "guestsCsvBtn": "Export guests CSV"
+      "guestsCsvBtn": "Export guests CSV",
+      "socialBtn": "Analyze social features",
+      "socialReactions": "Reactions",
+      "socialNotes": "Notes",
+      "socialSongs": "Music",
+      "socialRides": "Rides",
+      "socialGifts": "Gifts"
     },
     "support": {
       "upcomingTitle": "Upcoming weddings (≤14 days)",
@@ -968,7 +979,14 @@
       "diagTitle": "Connectivity diagnostics",
       "diagBtn": "Check Firestore",
       "invitations": "Invitations",
-      "tokens": "Tokens"
+      "tokens": "Tokens",
+      "privacyTitle": "Third-party maps (iframe)",
+      "privacyHint": "Invitations embedding Google Maps",
+      "abandonTitle": "Possible abandonment",
+      "abandonBtn": "Analyze (visits without RSVP)",
+      "auditTitle": "Audit log",
+      "auditLoad": "Load",
+      "auditExport": "Export CSV"
     },
     "tokenConflictsTitle": "Token conflicts detected",
     "tokenConflictsLegacy": "Legacy tokens duplicated between invitations",
@@ -1396,7 +1414,11 @@
     "validatorOk": "Valid configuration",
     "pause": "Pause/Resume",
     "paused": "Invitation paused.",
-    "unpaused": "Invitation resumed."
+    "unpaused": "Invitation resumed.",
+    "simulate": "Simulate guest",
+    "simNone": "No simulation",
+    "simResponded": "Already responded",
+    "simExpired": "Deadline passed"
   },
   "platform": {
     "maintenance": "Maintenance mode",
@@ -1412,7 +1434,9 @@
     "blockedTokens": "Blocked tokens",
     "blockedTokensHelp": "Blocked invitation tokens (comma separated): they won't be shown.",
     "blockedTokensPlaceholder": "e.g. AbCdEf1234, XyZq9876ab",
-    "expiringDays": "Expiry threshold (days)"
+    "expiringDays": "Expiry threshold (days)",
+    "disabledFeatures": "Per-feature kill switch",
+    "disabledFeaturesHelp": "Disable a social feature across ALL invitations at once (gifts, ride share, reactions, notes, music, trivia)."
   },
   "tools": {
     "newConfirmations": "{{count}} new confirmation(s) since your last visit.",

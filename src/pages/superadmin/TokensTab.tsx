@@ -45,6 +45,7 @@ const TokensTab = memo(function TokensTab() {
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [search, setSearch] = useState("");
 
   const loadTokens = useCallback(async () => {
     try {
@@ -181,6 +182,11 @@ const TokensTab = memo(function TokensTab() {
   );
   const { sorted: sortedRows, toggleSort, getIndicator } = useColumnSort(rows, sortColumns);
 
+  // Filtro de búsqueda por token/hash (client-side).
+  const visibleRows = search
+    ? sortedRows.filter((r) => r.inviteToken.toLowerCase().includes(search.toLowerCase()))
+    : sortedRows;
+
   // Conflicto de tokens: dos hashes apuntando a la MISMA invitación, o dos
   // invitaciones con el MISMO token legacy (inseguro: cualquiera de ellas
   // acepta la sesión). El superadmin debe migrar/revocar estos casos.
@@ -248,10 +254,19 @@ const TokensTab = memo(function TokensTab() {
         </p>
       </div>
 
-      <div className="setup-actions" style={{ marginBottom: "1rem" }}>
+      <div className="setup-actions" style={{ marginBottom: "1rem", display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
         <button className="setup-button setup-button--ghost" type="button" onClick={handleCleanup}>
           {t("superadmin.cleanUnused")}
         </button>
+        <input
+          className="setup-input"
+          style={{ maxWidth: "16rem" }}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder={t("superadmin.searchTokenPlaceholder")}
+          aria-label={t("superadmin.searchTokenPlaceholder")}
+          autoComplete="off"
+        />
       </div>
 
       {(conflicts.duplicateInvites.length > 0 || conflicts.duplicateLegacy.length > 0) ? (
@@ -282,10 +297,10 @@ const TokensTab = memo(function TokensTab() {
       ) : (
         <>
           <TableActionsBar
-            total={rows.length}
+            total={visibleRows.length}
             selectedCount={selection.selectedCount}
             allSelected={selection.allSelected}
-            onToggleAll={() => selection.toggleAll(rows.map((r) => r.key))}
+            onToggleAll={() => selection.toggleAll(visibleRows.map((r) => r.key))}
             selectAllLabel={t("superadmin.selectAllTokens")}
           >
             <button
@@ -320,7 +335,7 @@ const TokensTab = memo(function TokensTab() {
                 </tr>
               </thead>
               <tbody>
-                {sortedRows.map((row: TokenRow) => (
+                {visibleRows.map((row: TokenRow) => (
                   <tr key={row.key}>
                     <td>
                       <input

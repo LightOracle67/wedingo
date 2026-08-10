@@ -22,7 +22,7 @@ import { useTranslation } from "react-i18next";
 
 import { useConfig, useRsvpContext, useAuth } from "../contexts";
 import { useStoryNavigation } from "../hooks/useStoryNavigation";
-import { usePlatformSettings, tokenIsBlocked } from "../lib/platform-settings";
+import { usePlatformSettings, tokenIsBlocked, isFeatureDisabled } from "../lib/platform-settings";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 
@@ -135,6 +135,11 @@ export default function PublicInvitation() {
   const isInviteMode = searchParams.has("invitar");
   const reducedMotion = useReducedMotion();
 
+  // Ajustes globales de la plataforma (kill-switch por función, banner,
+  // bloqueos, mantenimiento). Se carga aquí (arriba) porque `hasExtras` y
+  // `extraBlocks` lo usan para el kill-switch por función.
+  const { settings: platform } = usePlatformSettings();
+
   // ─── Estado global del contexto (hooks granulares por dominio) ──
   const { config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink } = useConfig();
   const {
@@ -182,39 +187,44 @@ export default function PublicInvitation() {
 
   /** ¿Hay alguna función social activa? Se agrupan en la sección conjunta
    *  "extras" (reordenable en el editor, siempre antes del RSVP). */
+  // Kill-switch por función social: una función debe estar activa en la
+  // invitación Y no desactivada globalmente por el superadmin.
+  const socialEnabled = (feature: "gifts" | "rides" | "reactions" | "notes" | "songs" | "trivia", flag?: string) =>
+    flag === "true" && !isFeatureDisabled(platform, feature);
+
   const hasExtras =
-    config.giftsListEnabled === "true" ||
-    config.rideShareEnabled === "true" ||
-    config.reactionsEnabled === "true" ||
-    config.notesEnabled === "true" ||
-    config.musicPollEnabled === "true" ||
-    config.triviaEnabled === "true";
+    socialEnabled("gifts", config.giftsListEnabled) ||
+    socialEnabled("rides", config.rideShareEnabled) ||
+    socialEnabled("reactions", config.reactionsEnabled) ||
+    socialEnabled("notes", config.notesEnabled) ||
+    socialEnabled("songs", config.musicPollEnabled) ||
+    socialEnabled("trivia", config.triviaEnabled);
 
   // Bloques de las funciones sociales activas: se agrupan en la sección
   // conjunta "extras" (renderizados por config para no duplicar el JSX).
   const extraBlocks = useMemo<Array<{ title: string; node: React.JSX.Element }>>(
     () =>
       [
-        config.giftsListEnabled === "true"
+        socialEnabled("gifts", config.giftsListEnabled)
           ? { title: t("giftList.title"), node: <GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} /> }
           : null,
-        config.rideShareEnabled === "true"
+        socialEnabled("rides", config.rideShareEnabled)
           ? { title: t("rideShare.title"), node: <RideShareSection inviteToken={inviteToken ?? ""} /> }
           : null,
-        config.reactionsEnabled === "true"
+        socialEnabled("reactions", config.reactionsEnabled)
           ? { title: t("reactions.title"), node: <ReactionsSection inviteToken={inviteToken ?? ""} /> }
           : null,
-        config.notesEnabled === "true"
+        socialEnabled("notes", config.notesEnabled)
           ? { title: t("notes.title"), node: <NotesSection inviteToken={inviteToken ?? ""} /> }
           : null,
-        config.musicPollEnabled === "true"
+        socialEnabled("songs", config.musicPollEnabled)
           ? { title: t("musicPoll.title"), node: <MusicPollSection inviteToken={inviteToken ?? ""} /> }
           : null,
-        config.triviaEnabled === "true"
+        socialEnabled("trivia", config.triviaEnabled)
           ? { title: t("trivia.title"), node: <TriviaSection trivia={config.trivia ?? "[]"} /> }
           : null,
       ].filter((b): b is { title: string; node: React.JSX.Element } => b !== null),
-    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.giftList, config.trivia, t, inviteToken],
+    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.giftList, config.trivia, t, inviteToken, platform.disabledFeatures],
   );
 
   // ─── Orden de secciones visible ────────────────────────
@@ -325,7 +335,6 @@ export default function PublicInvitation() {
    */
   const showMissingToken = !isConfigured && !hasHash && (Boolean(inviteToken) || isInviteMode);
   // F3-6: token bloqueado por el superadmin → la invitación no se muestra.
-  const { settings: platform } = usePlatformSettings();
   const tokenBlocked = Boolean(inviteToken) && tokenIsBlocked(inviteToken || "", platform.blockedTokens);
   const showEnvelope =
     !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;

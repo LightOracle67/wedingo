@@ -10,6 +10,9 @@ export interface PlatformSettings {
   blockedUrls: string;
   blockedTokens: string;
   expiringDays: string;
+  /** Funciones sociales desactivadas GLOBALMENTE (lista separada por comas):
+   *  gifts, rides, reactions, notes, songs, trivia. Kill-switch por función. */
+  disabledFeatures: string;
 }
 
 const DEFAULTS: PlatformSettings = {
@@ -19,7 +22,17 @@ const DEFAULTS: PlatformSettings = {
   blockedUrls: "",
   blockedTokens: "",
   expiringDays: "30",
+  disabledFeatures: "",
 };
+
+/** Comprueba si una función social está desactivada globalmente. */
+export function isFeatureDisabled(settings: PlatformSettings, feature: string): boolean {
+  return (settings.disabledFeatures || "")
+    .split(",")
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean)
+    .includes(feature.toLowerCase());
+}
 
 const SETTINGS_REF = () => doc(db, "platform", "settings");
 

@@ -74,10 +74,16 @@ const RsvpSection = memo(function RsvpSection({
   // Fecha límite de confirmación: si la invitación tiene una y ya pasó, el
   // formulario se bloquea y se muestra el aviso.
   const deadlinePassed =
-    config?.rsvpDeadlineEnabled === "true" &&
-    !!config.rsvpDeadline &&
-    new Date(`${config.rsvpDeadline}T23:59:59`) < new Date();
-  const isAlreadySubmitted = !!alreadySubmittedEntry;
+    (config?.rsvpDeadlineEnabled === "true" &&
+      !!config.rsvpDeadline &&
+      new Date(`${config.rsvpDeadline}T23:59:59`) < new Date()) ||
+    // Modo simulación del superadmin (?sim=expired): fuerza el estado como si
+    // hubiera pasado el plazo, sin tocar datos reales.
+    new URLSearchParams(window.location.search).get("sim") === "expired";
+  const isAlreadySubmitted =
+    !!alreadySubmittedEntry ||
+    // Simulación (?sim=responded): muestra el estado de "ya confirmado".
+    new URLSearchParams(window.location.search).get("sim") === "responded";
   // F3-2: invitación bloqueada por el superadmin → el formulario se desactiva.
   const isBlocked = config?.status === "blocked";
   // Boda ya pasada (o expiración manual pasada): se bloquea la confirmación.
