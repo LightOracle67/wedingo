@@ -479,7 +479,8 @@
       "share": "Compartir",
       "access": "Acceso",
       "support": "Soporte",
-      "herramientas": "Herramientas"
+      "herramientas": "Herramientas",
+      "distribucion": "Distribución"
     },
     "privateArea": "Área privada",
     "manageInvitation": "Gestiona tu invitación de boda",
@@ -1543,5 +1544,33 @@
   "venueMap": {
     "title": "Mapa del recinto",
     "aria": "Mapa del recinto con puntos de interés"
+  },
+  "distribucion": {
+    "zoneAdded": "Zona creada.",
+    "defaultTable": "Mesa",
+    "tableAdded": "Mesa añadida.",
+    "shape": "Forma:",
+    "shape_circle": "Círculo",
+    "shape_rect": "Rectángulo",
+    "shape_oval": "Óvalo",
+    "shape_square": "Cuadrado",
+    "addTable": "Añadir mesa",
+    "dragHint": "Arrastra las mesas para colocarlas",
+    "zones": "Zonas del recinto",
+    "zonePlaceholder": "Nombre de la zona (p. ej. Zona A)",
+    "addZone": "Añadir zona",
+    "deleteZone": "Eliminar zona",
+    "emptyMap": "Añade mesas para empezar a dibujar el plano",
+    "selectedTable": "Mesa seleccionada",
+    "name": "Nombre",
+    "zone": "Zona",
+    "seats": "Plazas",
+    "size": "Ancho (%)",
+    "height": "Alto (%)",
+    "rotation": "Rotación (°)",
+    "deleteTable": "Eliminar mesa",
+    "assignPlaceholder": "Nombre del invitado…",
+    "assign": "Asignar",
+    "removeGuest": "Quitar invitado"
   }
 }

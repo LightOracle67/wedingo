@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.80",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: nueva pestaña 'Distribución' en el panel de admin — mapa interactivo del recinto con MESAS CON FORMA (círculo, rectángulo, óvalo, cuadrado) que se arrastran, redimensionan y rotan, ZONAS con color, y asignación de invitados por mesa. Nuevas subcolecciones zones y shapedtables (lectura pública, escritura admin).",
+    ],
+  },
+
+  {
     version: "2.95.79",
     date: "2026-08-09",
     changes: [

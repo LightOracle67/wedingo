@@ -35,6 +35,7 @@ const AccessTab = lazy(() => import("./admin/AccessTab"));
 const ShareTab = lazy(() => import("./admin/ShareTab"));
 const SupportTab = lazy(() => import("./admin/SupportTab"));
 const ToolsTab = lazy(() => import("./admin/ToolsTab"));
+const DistribucionTab = lazy(() => import("./admin/DistribucionTab"));
 
 /**
  * Mapa de claves de pestaña a IDs de traducción.
@@ -45,6 +46,7 @@ const TAB_KEY_MAP = {
   asistencia: "attendance",
   compartir: "share",
   herramientas: "herramientas",
+  distribucion: "distribucion",
   acceso: "access",
   soporte: "support",
 };
@@ -58,6 +60,7 @@ const TABS = [
   { key: "asistencia" },
   { key: "compartir" },
   { key: "herramientas" },
+  { key: "distribucion" },
   { key: "acceso" },
   { key: "soporte" },
 ] as const;
@@ -450,6 +453,9 @@ export default function AdminPage() {
                 coupleName={coupleName}
               />
             )}
+
+            {/* Pestaña: Distribución (mapa de mesas y zonas) */}
+            {activeTab === "distribucion" && <DistribucionTab inviteToken={inviteToken || ""} />}
 
             {/* Pestaña: Gestión de acceso */}
             {activeTab === "acceso" && (

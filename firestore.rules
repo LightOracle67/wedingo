@@ -486,6 +486,34 @@ service cloud.firestore {
           && request.resource.data.y is number && request.resource.data.y >= 0 && request.resource.data.y <= 100
           && request.resource.data.color is string && request.resource.data.color.size() <= 12;
       }
+
+      /* Distribución: ZONAS del recinto (admin dibuja áreas; lectura pública). */
+      match /zones/{zoneId} {
+        allow read: if true;
+        allow create, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+          && request.resource.data.keys().hasOnly(['name', 'color', 'createdAt'])
+          && request.resource.data.name is string && request.resource.data.name.size() <= 80 && isSafeText(request.resource.data.name)
+          && request.resource.data.color is string && request.resource.data.color.size() <= 12;
+      }
+
+      /* Distribución: MESAS con forma sobre el mapa (admin dibuja; lectura
+         pública para que el invitado vea su mesa). */
+      match /shapedtables/{tableId} {
+        allow read: if true;
+        allow create, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+          && request.resource.data.keys().hasOnly(['name', 'shape', 'x', 'y', 'w', 'h', 'rotation', 'zoneId', 'seats', 'guests', 'createdAt'])
+          && request.resource.data.name is string && request.resource.data.name.size() <= 80 && isSafeText(request.resource.data.name)
+          && request.resource.data.shape in ['circle', 'rect', 'oval', 'square']
+          && request.resource.data.x is number && request.resource.data.x >= 0 && request.resource.data.x <= 100
+          && request.resource.data.y is number && request.resource.data.y >= 0 && request.resource.data.y <= 100
+          && request.resource.data.w is number && request.resource.data.w > 0 && request.resource.data.w <= 80
+          && request.resource.data.h is number && request.resource.data.h > 0 && request.resource.data.h <= 80
+          && request.resource.data.rotation is number && request.resource.data.rotation >= -180 && request.resource.data.rotation <= 180
+          && request.resource.data.zoneId is string && request.resource.data.zoneId.size() <= 40
+          && request.resource.data.seats is int && request.resource.data.seats >= 0 && request.resource.data.seats <= 100
+          && request.resource.data.guests is list && request.resource.data.guests.size() <= 200
+          && request.resource.data.guests.all(g, g is string && g.size() <= 120);
+      }
     }
 
     /* Registros de tokens de setup. El documentId es el hash SHA-256 del token

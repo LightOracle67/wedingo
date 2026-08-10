@@ -479,7 +479,8 @@
       "share": "Share",
       "access": "Access",
       "support": "Support",
-      "herramientas": "Tools"
+      "herramientas": "Tools",
+      "distribucion": "Layout"
     },
     "privateArea": "Private area",
     "manageInvitation": "Manage your wedding invitation",
@@ -1543,5 +1544,33 @@
   "venueMap": {
     "title": "Venue map",
     "aria": "Venue map with points of interest"
+  },
+  "distribucion": {
+    "zoneAdded": "Zone created.",
+    "defaultTable": "Table",
+    "tableAdded": "Table added.",
+    "shape": "Shape:",
+    "shape_circle": "Circle",
+    "shape_rect": "Rectangle",
+    "shape_oval": "Oval",
+    "shape_square": "Square",
+    "addTable": "Add table",
+    "dragHint": "Drag tables to position them",
+    "zones": "Venue zones",
+    "zonePlaceholder": "Zone name (e.g. Zone A)",
+    "addZone": "Add zone",
+    "deleteZone": "Delete zone",
+    "emptyMap": "Add tables to start drawing the floor plan",
+    "selectedTable": "Selected table",
+    "name": "Name",
+    "zone": "Zone",
+    "seats": "Seats",
+    "size": "Width (%)",
+    "height": "Height (%)",
+    "rotation": "Rotation (°)",
+    "deleteTable": "Delete table",
+    "assignPlaceholder": "Guest name…",
+    "assign": "Assign",
+    "removeGuest": "Remove guest"
   }
 }
