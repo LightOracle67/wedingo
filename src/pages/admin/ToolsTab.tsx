@@ -52,14 +52,40 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
   const [newTableName, setNewTableName] = useState("");
   const [newTableSeats, setNewTableSeats] = useState("8");
 
+  // ── Extras diferenciales: buzón, fotos del día, puntos del recinto ──
+  const [mailbox, setMailbox] = useState<Array<{ id: string; guestName: string; message: string; ts: string }>>([]);
+  const [venuePoints, setVenuePoints] = useState<Array<{ id: string; label: string; x: number; y: number }>>([]);
+  const [dayPhotoCount, setDayPhotoCount] = useState(0);
+  const [pointLabel, setPointLabel] = useState("");
+
   const load = useCallback(async () => {
     try {
-      const [guestsSnap, rsvpSnap, galSnap, tablesSnap] = await Promise.all([
+      const [guestsSnap, rsvpSnap, galSnap, tablesSnap, mailboxSnap, pointsSnap, daySnap] = await Promise.all([
         getDocs(collection(db, "invitations", inviteToken, "guests")),
         getDocs(rsvpByInviteRef(inviteToken)),
         getDocs(collection(db, "invitations", inviteToken, "gallery")),
         getDocs(collection(db, "invitations", inviteToken, "tables")),
+        getDocs(collection(db, "invitations", inviteToken, "mailbox")),
+        getDocs(collection(db, "invitations", inviteToken, "venuepoints")),
+        getDocs(collection(db, "invitations", inviteToken, "dayphotos")),
       ]);
+      setMailbox(
+        mailboxSnap.docs.map((d) => ({
+          id: d.id,
+          guestName: String(d.data().guestName || ""),
+          message: String(d.data().message || ""),
+          ts: d.data().createdAt ? new Date(String(d.data().createdAt)).toLocaleString() : "",
+        })),
+      );
+      setVenuePoints(
+        pointsSnap.docs.map((d) => ({
+          id: d.id,
+          label: String(d.data().label || ""),
+          x: Number(d.data().x) || 0,
+          y: Number(d.data().y) || 0,
+        })),
+      );
+      setDayPhotoCount(daySnap.size || 0);
       setTables(
         tablesSnap.docs.map((d) => ({
           id: d.id,
@@ -174,6 +200,82 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
     },
     [tablesRef, addToast, t],
   );
+
+  // ── Buzón privado ──
+  const deleteMail = useCallback(
+    async (id: string) => {
+      try {
+        await deleteDoc(doc(collection(db, "invitations", inviteToken, "mailbox"), id));
+        setMailbox((prev) => prev.filter((m) => m.id !== id));
+        addToast("success", t("tools.mailDeleted"));
+      } catch {
+        addToast("error", t("errors.generic"));
+      }
+    },
+    [inviteToken, addToast, t],
+  );
+
+  // ── Puntos del recinto ──
+  const addPoint = useCallback(async () => {
+    const label = pointLabel.trim();
+    if (!label) return;
+    const x = Number(window.prompt(t("tools.pointX"), "50"));
+    const y = Number(window.prompt(t("tools.pointY"), "50"));
+    if (Number.isNaN(x) || Number.isNaN(y)) return;
+    try {
+      const ref = await addDoc(collection(db, "invitations", inviteToken, "venuepoints"), {
+        label: label.slice(0, 80),
+        x: Math.min(100, Math.max(0, x)),
+        y: Math.min(100, Math.max(0, y)),
+        color: "#d8b24a",
+      });
+      setVenuePoints((prev) => [...prev, { id: ref.id, label: label.slice(0, 80), x: Math.min(100, Math.max(0, x)), y: Math.min(100, Math.max(0, y)) }]);
+      setPointLabel("");
+      addToast("success", t("tools.pointAdded"));
+    } catch {
+      addToast("error", t("errors.generic"));
+    }
+  }, [pointLabel, inviteToken, addToast, t]);
+
+  const deletePoint = useCallback(
+    async (id: string) => {
+      try {
+        await deleteDoc(doc(collection(db, "invitations", inviteToken, "venuepoints"), id));
+        setVenuePoints((prev) => prev.filter((p) => p.id !== id));
+      } catch {
+        addToast("error", t("errors.generic"));
+      }
+    },
+    [inviteToken, addToast, t],
+  );
+
+  // ── Fotos del día: descarga y borrado ──
+  const downloadDayPhotos = useCallback(async () => {
+    try {
+      const snap = await getDocs(collection(db, "invitations", inviteToken, "dayphotos"));
+      const { decrypt } = await import("../../lib/crypto-utils");
+      const urls: string[] = [];
+      for (const d of snap.docs) {
+        const data = String(d.data().data || "");
+        if (!data) continue;
+        const url = await decrypt(data, inviteToken);
+        if (url) urls.push(url);
+      }
+      if (urls.length === 0) {
+        addToast("info", t("tools.noDayPhotos"));
+        return;
+      }
+      const blob = new Blob([JSON.stringify(urls)], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `${inviteToken}_fotos_dia.json`;
+      link.click();
+      URL.revokeObjectURL(link.href);
+      addToast("success", t("tools.dayPhotosDownloaded", { count: urls.length }));
+    } catch {
+      addToast("error", t("errors.generic"));
+    }
+  }, [inviteToken, addToast, t]);
 
   const openReminder = useCallback(() => {
     const text = reminder.trim() || `${t("tools.reminderDefault")} ${coupleName || ""}\n\n${inviteUrl}`;
@@ -326,6 +428,59 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
         ) : (
           <p className="setup-help" style={{ margin: "0.5rem 0 0" }}>{t("tools.noTables")}</p>
         )}
+      </div>
+
+      {/* Extras diferenciales: buzón, fotos del día, puntos del recinto */}
+      <div className="setup-background-panel">
+        <p className="setup-label">{t("tools.mailbox")}</p>
+        <p className="setup-help">{t("tools.mailboxHelp")}</p>
+        {mailbox.length > 0 ? (
+          <ul style={{ margin: "0.5rem 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: "0.4rem" }}>
+            {mailbox.map((m) => (
+              <li key={m.id} style={{ border: "1px solid var(--setup-border)", borderRadius: "0.5rem", padding: "0.45rem 0.6rem" }}>
+                <div className="admin-flex" style={{ gap: "0.5rem", justifyContent: "space-between", flexWrap: "wrap" }}>
+                  <strong style={{ fontSize: "0.8rem" }}>{m.guestName}</strong>
+                  <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void deleteMail(m.id)}>
+                    {t("tools.delete")}
+                  </button>
+                </div>
+                <p style={{ margin: "0.25rem 0 0", fontSize: "0.82rem", color: "var(--setup-subtitle)", whiteSpace: "pre-wrap" }}>{m.message}</p>
+                {m.ts ? <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.7rem" }}>{m.ts}</p> : null}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="setup-help" style={{ margin: "0.4rem 0 0" }}>{t("tools.noMail")}</p>
+        )}
+      </div>
+
+      <div className="setup-background-panel">
+        <p className="setup-label">{t("tools.venueMap")}</p>
+        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
+          <input className="setup-input" value={pointLabel} onChange={(e) => setPointLabel(e.target.value)} placeholder={t("tools.pointLabelPlaceholder")} maxLength={80} style={{ flex: 1, minWidth: "10rem" }} aria-label={t("tools.pointLabelPlaceholder")} />
+          <button className="setup-button setup-button--compact" type="button" onClick={() => void addPoint()}>{t("tools.addPoint")}</button>
+        </div>
+        {venuePoints.length > 0 ? (
+          <ul style={{ margin: "0.5rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}>
+            {venuePoints.map((p) => (
+              <li key={p.id} style={{ marginBottom: "0.2rem" }}>
+                {p.label} ({p.x}%, {p.y}%)
+                <button type="button" className="setup-button setup-button--ghost setup-button--compact" style={{ marginLeft: "0.5rem", fontSize: "0.7rem" }} onClick={() => void deletePoint(p.id)}>
+                  ✕
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
+
+      <div className="setup-background-panel">
+        <p className="setup-label">{t("tools.dayPhotos")}</p>
+        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
+          <button className="setup-button setup-button--compact" type="button" onClick={() => void downloadDayPhotos()} disabled={dayPhotoCount === 0}>
+            {t("tools.downloadDayPhotos", { count: dayPhotoCount })}
+          </button>
+        </div>
       </div>
     </div>
   );

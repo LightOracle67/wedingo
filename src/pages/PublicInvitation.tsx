@@ -55,6 +55,10 @@ const NotesSection = lazy(() => import("./sections/NotesSection"));
 const MusicPollSection = lazy(() => import("./sections/MusicPollSection"));
 const TriviaSection = lazy(() => import("./sections/TriviaSection"));
 const VoiceNotesSection = lazy(() => import("./sections/VoiceNotesSection"));
+const DayPhotosSection = lazy(() => import("./sections/DayPhotosSection"));
+const MailboxSection = lazy(() => import("./sections/MailboxSection"));
+const ToastsSection = lazy(() => import("./sections/ToastsSection"));
+const VenueMapSection = lazy(() => import("./sections/VenueMapSection"));
 const GiftListSection = lazy(() => import("./sections/GiftListSection"));
 const RideShareSection = lazy(() => import("./sections/RideShareSection"));
 import "../styles/decorations.css";
@@ -191,7 +195,7 @@ export default function PublicInvitation() {
   // Kill-switch por función social: una función debe estar activa en la
   // invitación Y no desactivada globalmente por el superadmin.
   const socialEnabled = (
-    feature: "gifts" | "rides" | "reactions" | "notes" | "songs" | "trivia" | "voiceNotes",
+    feature: "gifts" | "rides" | "reactions" | "notes" | "songs" | "trivia" | "voiceNotes" | "dayPhotos" | "mailbox" | "toasts" | "venueMap",
     flag?: string,
   ) => flag === "true" && !isFeatureDisabled(platform, feature);
 
@@ -202,7 +206,11 @@ export default function PublicInvitation() {
     socialEnabled("notes", config.notesEnabled) ||
     socialEnabled("songs", config.musicPollEnabled) ||
     socialEnabled("trivia", config.triviaEnabled) ||
-    socialEnabled("voiceNotes", config.voiceNotesEnabled);
+    socialEnabled("voiceNotes", config.voiceNotesEnabled) ||
+    socialEnabled("dayPhotos", config.dayPhotosEnabled) ||
+    socialEnabled("mailbox", config.mailboxEnabled) ||
+    socialEnabled("toasts", config.toastsEnabled) ||
+    socialEnabled("venueMap", config.venueMapEnabled);
 
   // Bloques de las funciones sociales activas: se agrupan en la sección
   // conjunta "extras" (renderizados por config para no duplicar el JSX).
@@ -230,8 +238,20 @@ export default function PublicInvitation() {
         socialEnabled("voiceNotes", config.voiceNotesEnabled)
           ? { title: t("voiceNotes.title"), node: <VoiceNotesSection inviteToken={inviteToken ?? ""} /> }
           : null,
+        socialEnabled("dayPhotos", config.dayPhotosEnabled)
+          ? { title: t("dayPhotos.title"), node: <DayPhotosSection inviteToken={inviteToken ?? ""} /> }
+          : null,
+        socialEnabled("mailbox", config.mailboxEnabled)
+          ? { title: t("mailbox.title"), node: <MailboxSection inviteToken={inviteToken ?? ""} /> }
+          : null,
+        socialEnabled("toasts", config.toastsEnabled)
+          ? { title: t("toasts.title"), node: <ToastsSection inviteToken={inviteToken ?? ""} /> }
+          : null,
+        socialEnabled("venueMap", config.venueMapEnabled)
+          ? { title: t("venueMap.title"), node: <VenueMapSection inviteToken={inviteToken ?? ""} background={config.backgroundImage} /> }
+          : null,
       ].filter((b): b is { title: string; node: React.JSX.Element } => b !== null),
-    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.voiceNotesEnabled, config.giftList, config.trivia, t, inviteToken, platform.disabledFeatures],
+    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.voiceNotesEnabled, config.dayPhotosEnabled, config.mailboxEnabled, config.toastsEnabled, config.venueMapEnabled, config.giftList, config.trivia, config.backgroundImage, t, inviteToken, platform.disabledFeatures],
   );
 
   // ─── Orden de secciones visible ────────────────────────
@@ -585,8 +605,8 @@ export default function PublicInvitation() {
    * re-renderizar la página cada segundo.
    */
   const heroProps = useMemo(
-    () => ({ weddingDate, inviteToken: inviteToken ?? "" }),
-    [weddingDate, inviteToken],
+    () => ({ weddingDate, inviteToken: inviteToken ?? "", schedule: config.weddingScheduleEvents ?? "[]" }),
+    [weddingDate, inviteToken, config.weddingScheduleEvents],
   );
 
   /**

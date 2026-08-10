@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import CornerDecorations from "../../components/CornerDecorations";
@@ -55,6 +55,8 @@ interface HeroSectionProps {
   verified?: string;
   /** Token de la invitación (para la prueba social en vivo y el recuerdo). */
   inviteToken?: string;
+  /** Agenda del día (JSON de weddingScheduleEvents) para la pantalla en vivo. */
+  schedule?: string;
 }
 
 const HeroSection = memo(function HeroSection({
@@ -70,6 +72,7 @@ const HeroSection = memo(function HeroSection({
   cornerDecoration,
   verified,
   inviteToken,
+  schedule,
 }: HeroSectionProps) {
   const { t } = useTranslation();
   const [photoLoaded, setPhotoLoaded] = useState(false);
@@ -109,6 +112,39 @@ const HeroSection = memo(function HeroSection({
   );
   // Boda ya pasada → la invitación se convierte en "recuerdo" (agradecimiento).
   const weddingPassed = weddingDate ? weddingDate.getTime() < Date.now() : false;
+  // "Hoy es la boda": pantalla en vivo con la agenda del día.
+  const isWeddingDay = weddingDate
+    ? weddingDate.toDateString() === new Date().toDateString()
+    : false;
+  const agenda = useMemo<Array<{ time: string; text: string; emoji: string }>>(() => {
+    try {
+      const parsed = JSON.parse(schedule || "[]");
+      return Array.isArray(parsed)
+        ? parsed.map((e: { time?: string; text?: string; emoji?: string }) => ({
+            time: String(e?.time || ""),
+            text: String(e?.text || ""),
+            emoji: String(e?.emoji || ""),
+          }))
+        : [];
+    } catch {
+      return [];
+    }
+  }, [schedule]);
+  const nowMin = new Date().getHours() * 60 + new Date().getMinutes();
+  const currentIndex = useMemo(() => {
+    let idx = -1;
+    for (let i = 0; i < agenda.length; i++) {
+      const parts = (agenda[i]!.time || "").split(":");
+      const h = Number(parts[0]);
+      const m = Number(parts[1]);
+      if (!Number.isNaN(h) && !Number.isNaN(m)) {
+        const t = h * 60 + m;
+        if (t <= nowMin) idx = i;
+        else break;
+      }
+    }
+    return idx;
+  }, [agenda, nowMin]);
 
   /**
    * Actualiza la cuenta regresiva cada segundo SOLO en esta sección. Se pausa
@@ -212,6 +248,38 @@ const HeroSection = memo(function HeroSection({
               >
                 {t("hero.thanksPost")}
               </p>
+            ) : null}
+            {isWeddingDay && agenda.length > 0 ? (
+              <div
+                className="hero-live-agenda"
+                style={{
+                  margin: "0.6rem auto 0",
+                  maxWidth: "26rem",
+                  textAlign: "left",
+                  background: "rgba(0,0,0,0.45)",
+                  border: "1px solid color-mix(in srgb, var(--setup-accent) 35%, transparent)",
+                  borderRadius: "0.9rem",
+                  padding: "0.6rem 0.9rem",
+                }}
+              >
+                <p className="setup-label" style={{ margin: 0, fontSize: "0.78rem", color: "var(--invite-copy-color)" }}>
+                  {t("hero.todayAgenda")}
+                </p>
+                {agenda.map((ev, i) => (
+                  <p
+                    key={i}
+                    style={{
+                      margin: "0.2rem 0 0",
+                      fontSize: "0.82rem",
+                      color: i === currentIndex ? "var(--invite-title-color)" : "var(--invite-copy-color)",
+                      fontWeight: i === currentIndex ? 700 : 400,
+                    }}
+                  >
+                    {ev.emoji} {ev.time ? <strong>{ev.time}</strong> : null} {ev.text}
+                    {i === currentIndex ? <span style={{ marginLeft: "0.35rem", color: "var(--setup-accent)" }}>● {t("hero.now")}</span> : null}
+                  </p>
+                ))}
+              </div>
             ) : null}
             {couplePhoto ? (
               <div className="mx-auto" style={{ position: "relative", width: "min(70vw, 400px)", aspectRatio: "1/1" }}>

@@ -107,6 +107,10 @@ export interface InvitationConfig {
   /** Encuesta de música para el DJ. */
   musicPollEnabled?: string;
   voiceNotesEnabled?: string;
+  dayPhotosEnabled?: string;
+  mailboxEnabled?: string;
+  toastsEnabled?: string;
+  venueMapEnabled?: string;
   /** Trivia de la pareja. */
   triviaEnabled?: string;
   trivia?: string;

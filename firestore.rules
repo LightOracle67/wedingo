@@ -440,6 +440,52 @@ service cloud.firestore {
           && request.resource.data.totalChunks is int && request.resource.data.totalChunks > 0 && request.resource.data.totalChunks <= 400;
         allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
+
+      /* Muro de fotos del día (diferencial): los invitados suben fotos a un
+         álbum compartido durante la boda. Cifradas como la galería (data
+         base64), lectura pública, creación pública con cap, borrado admin. */
+      match /dayphotos/{photoId} {
+        allow read: if true;
+        allow create: if socialCounterBelow(tokenId, 'dayphotos')
+          && request.resource.data.keys().hasOnly(['guestName', 'data', 'createdAt'])
+          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60
+          && request.resource.data.data is string && request.resource.data.data.size() <= 1048576;
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+      }
+
+      /* Buzón de mensajes privados (diferencial): mensajes que SOLO lee la
+         pareja (admin). Creación pública con cap; lectura/borrado solo
+         admin/superadmin (privacidad). */
+      match /mailbox/{messageId} {
+        allow create: if socialCounterBelow(tokenId, 'mailbox')
+          && request.resource.data.keys().hasOnly(['guestName', 'message', 'createdAt'])
+          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60
+          && request.resource.data.message is string && request.resource.data.message.size() <= 600 && isSafeText(request.resource.data.message);
+        allow read, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+      }
+
+      /* Programa de brindis/discursos (diferencial): los invitados se apuntan
+         a hablar. Lectura pública, creación pública con cap, borrado admin. */
+      match /toasts/{toastId} {
+        allow read: if true;
+        allow create: if socialCounterBelow(tokenId, 'toasts')
+          && request.resource.data.keys().hasOnly(['guestName', 'time', 'createdAt'])
+          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60
+          && request.resource.data.time is string && request.resource.data.time.size() <= 20;
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+      }
+
+      /* Mapa del recinto (diferencial): puntos de interés dibujados por el
+         admin (coordenadas en %) visibles para los invitados. */
+      match /venuepoints/{pointId} {
+        allow read: if true;
+        allow create, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+          && request.resource.data.keys().hasOnly(['label', 'x', 'y', 'color'])
+          && request.resource.data.label is string && request.resource.data.label.size() <= 80 && isSafeText(request.resource.data.label)
+          && request.resource.data.x is number && request.resource.data.x >= 0 && request.resource.data.x <= 100
+          && request.resource.data.y is number && request.resource.data.y >= 0 && request.resource.data.y <= 100
+          && request.resource.data.color is string && request.resource.data.color.size() <= 12;
+      }
     }
 
     /* Registros de tokens de setup. El documentId es el hash SHA-256 del token

@@ -71,7 +71,9 @@
     "sectionLabel": "Portada",
     "verifiedBadge": "Verificada",
     "liveConfirmed": "{{count}} invitados ya han confirmado",
-    "thanksPost": "Gracias por compartir este día con nosotros. Tu mensaje y vuestro cariño son el mejor recuerdo."
+    "thanksPost": "Gracias por compartir este día con nosotros. Tu mensaje y vuestro cariño son el mejor recuerdo.",
+    "todayAgenda": "Agenda de hoy",
+    "now": "Ahora"
   },
   "details": {
     "sectionLabel": "Fecha y lugar",
@@ -1476,7 +1478,22 @@
     "removeGuest": "Quitar invitado",
     "tableAdded": "Mesa añadida.",
     "tableDeleted": "Mesa eliminada.",
-    "guestAssigned": "Invitado asignado."
+    "guestAssigned": "Invitado asignado.",
+    "mailbox": "Buzón privado",
+    "mailboxHelp": "Mensajes que los invitados envían SOLO para vosotros",
+    "noMail": "No hay mensajes.",
+    "mailDeleted": "Mensaje eliminado.",
+    "delete": "Eliminar",
+    "venueMap": "Mapa del recinto",
+    "pointLabelPlaceholder": "Etiqueta (p. ej. Bar)",
+    "addPoint": "Añadir punto",
+    "pointAdded": "Punto añadido.",
+    "pointX": "Posición X (%)",
+    "pointY": "Posición Y (%)",
+    "dayPhotos": "Fotos del día",
+    "downloadDayPhotos": "Descargar fotos ({{count}})",
+    "noDayPhotos": "Aún no hay fotos.",
+    "dayPhotosDownloaded": "{{count}} fotos descargadas."
   },
   "voiceNotes": {
     "title": "Caja de recuerdos",
@@ -1493,5 +1510,38 @@
     "playing": "Reproduciendo…",
     "empty": "Aún no hay recuerdos. ¡Sé el primero!",
     "deleteConfirm": "¿Eliminar esta nota de voz?"
+  },
+  "dayPhotos": {
+    "title": "Fotos del día",
+    "upload": "Subir foto",
+    "namePlaceholder": "Tu nombre",
+    "anonymous": "Anónimo",
+    "uploadError": "No se pudo subir la foto.",
+    "empty": "Aún no hay fotos. ¡Comparte las tuyas!",
+    "photo": "Foto del día"
+  },
+  "mailbox": {
+    "title": "Buzón de la pareja",
+    "namePlaceholder": "Tu nombre",
+    "messagePlaceholder": "Escribe un mensaje privado…",
+    "send": "Enviar",
+    "anonymous": "Anónimo",
+    "sent": "Mensaje enviado.",
+    "thanks": "Gracias por tu mensaje. La pareja lo leerá en privado.",
+    "error": "No se pudo enviar.",
+    "privateHint": "Solo la pareja puede leer estos mensajes."
+  },
+  "toasts": {
+    "title": "Brindis y discursos",
+    "namePlaceholder": "Tu nombre",
+    "timePlaceholder": "Hora (opcional)",
+    "signUp": "Apuntarme",
+    "signedUp": "¡Apuntado!",
+    "error": "No se pudo apuntar.",
+    "empty": "Nadie ha pedido brindar todavía."
+  },
+  "venueMap": {
+    "title": "Mapa del recinto",
+    "aria": "Mapa del recinto con puntos de interés"
   }
 }

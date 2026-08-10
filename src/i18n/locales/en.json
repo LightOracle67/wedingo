@@ -71,7 +71,9 @@
     "sectionLabel": "Cover",
     "verifiedBadge": "Verified",
     "liveConfirmed": "{{count}} guests have already confirmed",
-    "thanksPost": "Thank you for sharing this day with us. Your messages and love are the best memory."
+    "thanksPost": "Thank you for sharing this day with us. Your messages and love are the best memory.",
+    "todayAgenda": "Today's agenda",
+    "now": "Now"
   },
   "details": {
     "sectionLabel": "Date & venue",
@@ -1476,7 +1478,22 @@
     "removeGuest": "Remove guest",
     "tableAdded": "Table added.",
     "tableDeleted": "Table deleted.",
-    "guestAssigned": "Guest assigned."
+    "guestAssigned": "Guest assigned.",
+    "mailbox": "Private mailbox",
+    "mailboxHelp": "Messages guests send ONLY to you",
+    "noMail": "No messages.",
+    "mailDeleted": "Message deleted.",
+    "delete": "Delete",
+    "venueMap": "Venue map",
+    "pointLabelPlaceholder": "Label (e.g. Bar)",
+    "addPoint": "Add point",
+    "pointAdded": "Point added.",
+    "pointX": "Position X (%)",
+    "pointY": "Position Y (%)",
+    "dayPhotos": "Day photos",
+    "downloadDayPhotos": "Download photos ({{count}})",
+    "noDayPhotos": "No photos yet.",
+    "dayPhotosDownloaded": "{{count}} photos downloaded."
   },
   "voiceNotes": {
     "title": "Memory box",
@@ -1493,5 +1510,38 @@
     "playing": "Playing…",
     "empty": "No memories yet. Be the first!",
     "deleteConfirm": "Delete this voice note?"
+  },
+  "dayPhotos": {
+    "title": "Day photos",
+    "upload": "Upload photo",
+    "namePlaceholder": "Your name",
+    "anonymous": "Anonymous",
+    "uploadError": "Could not upload the photo.",
+    "empty": "No photos yet. Share yours!",
+    "photo": "Day photo"
+  },
+  "mailbox": {
+    "title": "Couple's mailbox",
+    "namePlaceholder": "Your name",
+    "messagePlaceholder": "Write a private message…",
+    "send": "Send",
+    "anonymous": "Anonymous",
+    "sent": "Message sent.",
+    "thanks": "Thank you for your message. The couple will read it privately.",
+    "error": "Could not send.",
+    "privateHint": "Only the couple can read these messages."
+  },
+  "toasts": {
+    "title": "Toasts & speeches",
+    "namePlaceholder": "Your name",
+    "timePlaceholder": "Time (optional)",
+    "signUp": "Sign up",
+    "signedUp": "Signed up!",
+    "error": "Could not sign up.",
+    "empty": "No one has asked to toast yet."
+  },
+  "venueMap": {
+    "title": "Venue map",
+    "aria": "Venue map with points of interest"
   }
 }

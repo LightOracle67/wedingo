@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.79",
+    date: "2026-08-09",
+    changes: [
+      "FEAT (diferenciales): muro de fotos del día (los invitados suben fotos cifradas a un álbum compartido que la pareja descarga); buzón de mensajes privados (solo lee la pareja); programa de brindis con registro; mapa del recinto con puntos de interés dibujados por el admin; pantalla en vivo 'Hoy es la boda' con agenda y 'qué está pasando ahora'. Gestión admin de todas en Herramientas. Nuevas reglas Firestore (dayphotos/mailbox/toasts/venuepoints) con contadores anti-spam.",
+    ],
+  },
+
+  {
     version: "2.95.78",
     date: "2026-08-09",
     changes: [

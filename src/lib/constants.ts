@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.95.78";
+export const APP_VERSION = "2.95.79";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -298,6 +298,10 @@ export const defaultConfig = {
   notesEnabled: "false",
   musicPollEnabled: "false",
   voiceNotesEnabled: "false",
+  dayPhotosEnabled: "false",
+  mailboxEnabled: "false",
+  toastsEnabled: "false",
+  venueMapEnabled: "false",
   triviaEnabled: "false",
   trivia: "[]",
   privacyPolicyVersion: "",
