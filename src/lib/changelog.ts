@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.71",
+    date: "2026-08-09",
+    changes: [
+      "FIX: CSP frame-ancestors 'none' → 'self' para que la previsualización del superadmin (?preview=1, iframe mismo-origen con sandbox allow-scripts allow-same-origin) pueda cargar la invitación; se mantiene la protección contra clickjacking de orígenes externos. Desaparece también el error de sandbox de Sentry al acceder al frame bloqueado.",
+    ],
+  },
+
+  {
     version: "2.95.70",
     date: "2026-08-09",
     changes: [
