@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.74",
+    date: "2026-08-09",
+    changes: [
+      "FIX: las secciones se ocultan mientras el sobre (o el vídeo de bienvenida) está en pantalla — antes la hero quedaba completamente visible al desvanecerse el blanco del sobre; ahora se revela con su animación de entrada 3D al terminar la última animación del envelope.",
+    ],
+  },
+
+  {
     version: "2.95.73",
     date: "2026-08-09",
     changes: [

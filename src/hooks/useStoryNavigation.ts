@@ -82,15 +82,22 @@ export function useStoryNavigation(
     const enabled = options.enabled ?? true;
     if (typeof document === "undefined") return;
 
-    // Mientras el sobre (o el vídeo de bienvenida) está en pantalla, se BLOQUEA
-    // el scroll del `.app-scene`: si no, con la rueda/dedos se podía hacer
-    // scroll y la invitación (detrás del envelope) se activaba y disparaba sus
-    // animaciones de sección. El scroll se restaura cuando `enabled` pasa a
-    // true (al terminar la última animación del sobre).
+    // Mientras el sobre (o el vídeo de bienvenida) está en pantalla:
+    // 1) se BLOQUEA el scroll del `.app-scene` (si no, la invitación se
+    //    activaba con la rueda/dedos detrás del envelope);
+    // 2) se OCULTAN las secciones (opacity 0 + visibility hidden): si no, la
+    //    hero quedaba completamente visible al desvanecerse el blanco del
+    //    sobre. Al habilitarse (`enabled` → true), `update()` y la entrada 3D
+    //    (is-reveal) revelan la primera sección desde 0.
     const scene = document.querySelector<HTMLElement>(".app-scene");
     if (!enabled) {
       everDisabledRef.current = true;
       if (scene) scene.style.overflow = "hidden";
+      document.querySelectorAll<HTMLElement>("[data-story-section]").forEach((el) => {
+        el.style.visibility = "hidden";
+        const wrap = el.querySelector<HTMLElement>(".story-card-wrap, .story-panel");
+        if (wrap) wrap.style.opacity = "0";
+      });
       return () => {
         if (scene) scene.style.overflow = "";
       };
