@@ -94,4 +94,15 @@ describe("DistribucionTab", () => {
     fireEvent.change(size, { target: { value: "120" } });
     expect((updateDoc as ReturnType<typeof vi.fn>)).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ w: 120, h: 120 }));
   });
+
+  it("deletes a table from the map", async () => {
+    const { deleteDoc } = await import("firebase/firestore");
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    const mesa1 = await screen.findByText("Mesa 1");
+    fireEvent.pointerDown(mesa1, { clientX: 0, clientY: 0 });
+    // Aparece la "✕" de borrado sobre la mesa seleccionada.
+    fireEvent.click(screen.getByLabelText("distribucion.deleteTable"));
+    expect(deleteDoc).toHaveBeenCalled();
+  });
 });

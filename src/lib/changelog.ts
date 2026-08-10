@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.83",
+    date: "2026-08-09",
+    changes: [
+      "UX: borrado de mesas en Distribución visible directamente sobre la mesa seleccionada (✕) además del panel; y UI de formularios admin/superadmin descargada: paneles con más aire y cabecera clara, etiquetas separadas, inputs más compactos, menos ruido visual.",
+    ],
+  },
+
+  {
     version: "2.95.82",
     date: "2026-08-09",
     changes: [

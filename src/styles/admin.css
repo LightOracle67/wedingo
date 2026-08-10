@@ -1744,16 +1744,6 @@ select.setup-input {
 
 /* Fieldset de opciones exclusivas (kids/dress code): sin borde por defecto,
    el legend actúa como etiqueta del grupo. */
-.setup-fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
-}
-.setup-fieldset legend {
-  padding: 0;
-  margin-bottom: 0.25rem;
-}
-
 /* Tarjeta de éxito del onboarding: el código de acceso se recuerda aquí. */
 .setup-success-card__token {
   margin: 0.75rem auto 0;
@@ -1796,4 +1786,91 @@ select.setup-input {
 }
 .pagination-meta {
   font-size: 0.75rem;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   UI refinada: formularios admin/superadmin menos cargados.
+   Más aire, jerarquía clara y paneles más ligeros.
+   ───────────────────────────────────────────────────────────── */
+.setup-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.setup-fieldset legend {
+  padding: 0;
+  margin-bottom: 0.25rem;
+}
+
+/* Formulario con más ritmo vertical. */
+.setup-form {
+  gap: 1rem;
+}
+
+/* Paneles con más aire y borde más suave (menos ruido). */
+.setup-background-panel {
+  padding: 1.1rem 1.2rem;
+  gap: 0.85rem;
+  border-radius: var(--radius-xl);
+  border: 1px solid color-mix(in srgb, var(--setup-border) 55%, transparent);
+  background: color-mix(in srgb, var(--setup-field-bg) 60%, transparent);
+}
+
+/* El primer título de cada panel actúa como cabecera clara. */
+.setup-background-panel > .setup-label:first-child {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--setup-accent);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.15rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 45%, transparent);
+}
+
+/* Etiquetas de campo con separación respecto al input. */
+.setup-form .setup-label:not(.setup-background-panel > .setup-label) {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--setup-title);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+/* Inputs más compactos pero con aire: menos "bloque pesado". */
+.setup-input,
+.setup-textarea {
+  padding: 0.6rem 0.8rem;
+  font-size: 0.92rem;
+  border-radius: var(--radius-md);
+}
+
+/* Grupos de campos: separación clara entre filas. */
+.setup-form .admin-flex,
+.setup-form .admin-grid {
+  row-gap: 0.6rem;
+}
+
+/* Botones secundarios más ligeros (menos carga visual). */
+.setup-button--ghost {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--setup-border) 75%, transparent);
+}
+
+/* Mensajes de ayuda: más discretos. */
+.setup-help {
+  font-size: 0.8rem;
+}
+
+/* Barras de acciones con separación superior clara. */
+.setup-actions {
+  margin-top: 0.6rem;
+}
+
+/* Filtros y herramientas de tablas: más separación. */
+.admin-filters {
+  gap: 0.6rem;
+}
+.admin-filters .setup-input {
+  font-size: 0.85rem;
 }

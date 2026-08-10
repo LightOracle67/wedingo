@@ -412,9 +412,36 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
                 color: "#fff",
                 textAlign: "center",
                 lineHeight: 1.2,
-                overflow: "hidden",
               }}
             >
+              {selectedId === tb.id ? (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    void deleteTable(tb.id);
+                  }}
+                  title={t("distribucion.deleteTable")}
+                  aria-label={t("distribucion.deleteTable")}
+                  style={{
+                    position: "absolute",
+                    top: -8,
+                    right: -8,
+                    width: 20,
+                    height: 20,
+                    borderRadius: "50%",
+                    background: "#ef4444",
+                    color: "#fff",
+                    border: 0,
+                    cursor: "pointer",
+                    fontSize: "0.75rem",
+                    lineHeight: 1,
+                    boxShadow: "0 2px 6px rgba(0,0,0,0.5)",
+                  }}
+                >
+                  ✕
+                </button>
+              ) : null}
               <span style={{ fontWeight: 600 }}>{tb.name}</span>
               <span style={{ opacity: 0.85, fontSize: "0.64rem" }}>
                 {tb.guests.length}/{tb.seats}
