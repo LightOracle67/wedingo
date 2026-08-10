@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.84",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: maquetación de las mesas en Distribución — las mesas se dibujan como mesas reales con sillas alrededor (círculo/óvalo: sillas en círculo; rectángulo/cuadrado: sillas por el perímetro), nombre y plazas ocupadas, sobre el plano del recinto.",
+    ],
+  },
+
+  {
     version: "2.95.83",
     date: "2026-08-09",
     changes: [

@@ -43,6 +43,47 @@ const SHAPES: Array<{ key: Shape; label: string }> = [
   { key: "square", label: "Cuadrado" },
 ];
 
+/** Posiciones (%) de las sillas alrededor de la mesa según forma y plazas. */
+function chairPositions(shape: Shape, _w: number, _h: number, seats: number): Array<{ x: number; y: number }> {
+  const n = Math.min(Math.max(seats || 0, 0), 24);
+  if (n === 0) return [];
+  if (shape === "circle" || shape === "oval") {
+    // Sillas en círculo alrededor del centro (radio ~46% de la caja).
+    const out: Array<{ x: number; y: number }> = [];
+    for (let i = 0; i < n; i++) {
+      const ang = (i / n) * Math.PI * 2;
+      out.push({ x: 50 + Math.cos(ang) * 46, y: 50 + Math.sin(ang) * 46 });
+    }
+    return out;
+  }
+  // Rectángulo/cuadrado: sillas repartidas por el perímetro de la caja.
+  const W = 100;
+  const H = 100;
+  const P = 2 * (W + H);
+  const out: Array<{ x: number; y: number }> = [];
+  for (let i = 0; i < n; i++) {
+    const t = n === 1 ? 0.25 : i / n;
+    const d = t * P;
+    let x: number;
+    let y: number;
+    if (d < W) {
+      x = d;
+      y = 0;
+    } else if (d < W + H) {
+      x = W;
+      y = d - W;
+    } else if (d < 2 * W + H) {
+      x = W - (d - W - H);
+      y = H;
+    } else {
+      x = 0;
+      y = H - (d - 2 * W - H);
+    }
+    out.push({ x, y });
+  }
+  return out;
+}
+
 const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteToken: string }) {
   const { t } = useTranslation();
   const { addToast } = useToast();
@@ -387,67 +428,100 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
             userSelect: "none",
           }}
         >
-          {tables.map((tb) => (
-            <div
-              key={tb.id}
-              data-table-id={tb.id}
-              onPointerDown={(e) => onPointerDown(e, tb.id)}
-              style={{
-                position: "absolute",
-                left: `${tb.x}%`,
-                top: `${tb.y}%`,
-                width: `${tb.w}px`,
-                height: `${tb.h}px`,
-                transform: `translate(-50%, -50%) rotate(${tb.rotation}deg)`,
-                borderRadius: tb.shape === "rect" || tb.shape === "square" ? "0.4rem" : "50%",
-                border: `2px solid ${selectedId === tb.id ? "var(--setup-accent)" : "rgba(255,255,255,0.5)"}`,
-                background: "rgba(255,255,255,0.12)",
-                boxShadow: selectedId === tb.id ? "0 0 0 3px var(--setup-accent)" : "0 4px 12px rgba(0,0,0,0.4)",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "grab",
-                fontSize: "0.72rem",
-                color: "#fff",
-                textAlign: "center",
-                lineHeight: 1.2,
-              }}
-            >
-              {selectedId === tb.id ? (
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    void deleteTable(tb.id);
-                  }}
-                  title={t("distribucion.deleteTable")}
-                  aria-label={t("distribucion.deleteTable")}
+          {tables.map((tb) => {
+            // Maquetación: sillas alrededor de la mesa según su forma y nº de plazas.
+            const chairs = chairPositions(tb.shape, tb.w, tb.h, tb.seats);
+            return (
+              <div
+                key={tb.id}
+                data-table-id={tb.id}
+                onPointerDown={(e) => onPointerDown(e, tb.id)}
+                style={{
+                  position: "absolute",
+                  left: `${tb.x}%`,
+                  top: `${tb.y}%`,
+                  width: `${tb.w}px`,
+                  height: `${tb.h}px`,
+                  transform: `translate(-50%, -50%) rotate(${tb.rotation}deg)`,
+                  cursor: "grab",
+                }}
+              >
+                {selectedId === tb.id ? (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      void deleteTable(tb.id);
+                    }}
+                    title={t("distribucion.deleteTable")}
+                    aria-label={t("distribucion.deleteTable")}
+                    style={{
+                      position: "absolute",
+                      top: -8,
+                      right: -8,
+                      zIndex: 3,
+                      width: 20,
+                      height: 20,
+                      borderRadius: "50%",
+                      background: "#ef4444",
+                      color: "#fff",
+                      border: 0,
+                      cursor: "pointer",
+                      fontSize: "0.75rem",
+                      lineHeight: 1,
+                      boxShadow: "0 2px 6px rgba(0,0,0,0.5)",
+                    }}
+                  >
+                    ✕
+                  </button>
+                ) : null}
+                {/* Sillas alrededor */}
+                {chairs.map((c, i) => (
+                  <span
+                    key={i}
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      left: `${c.x}%`,
+                      top: `${c.y}%`,
+                      width: 11,
+                      height: 11,
+                      transform: "translate(-50%, -50%)",
+                      borderRadius: "50%",
+                      background: "rgba(255,255,255,0.35)",
+                      border: "1px solid rgba(255,255,255,0.5)",
+                      zIndex: 1,
+                    }}
+                  />
+                ))}
+                {/* Cuerpo de la mesa */}
+                <div
                   style={{
                     position: "absolute",
-                    top: -8,
-                    right: -8,
-                    width: 20,
-                    height: 20,
-                    borderRadius: "50%",
-                    background: "#ef4444",
-                    color: "#fff",
-                    border: 0,
-                    cursor: "pointer",
-                    fontSize: "0.75rem",
-                    lineHeight: 1,
-                    boxShadow: "0 2px 6px rgba(0,0,0,0.5)",
+                    inset: 0,
+                    borderRadius: tb.shape === "rect" || tb.shape === "square" ? "0.35rem" : "50%",
+                    border: `2px solid ${selectedId === tb.id ? "var(--setup-accent)" : "rgba(255,255,255,0.55)"}`,
+                    background:
+                      "linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08))",
+                    boxShadow: selectedId === tb.id ? "0 0 0 3px var(--setup-accent)" : "0 6px 16px rgba(0,0,0,0.45)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "0.1rem",
+                    zIndex: 2,
                   }}
                 >
-                  ✕
-                </button>
-              ) : null}
-              <span style={{ fontWeight: 600 }}>{tb.name}</span>
-              <span style={{ opacity: 0.85, fontSize: "0.64rem" }}>
-                {tb.guests.length}/{tb.seats}
-              </span>
-            </div>
-          ))}
+                  <span style={{ fontWeight: 700, fontSize: "0.72rem", color: "#fff", textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}>
+                    {tb.name}
+                  </span>
+                  <span style={{ opacity: 0.9, fontSize: "0.62rem", color: "#fff" }}>
+                    {tb.guests.length}/{tb.seats}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
           {tables.length === 0 ? (
             <p style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", margin: 0 }}>
               {t("distribucion.emptyMap")}
