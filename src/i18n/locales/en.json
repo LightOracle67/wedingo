@@ -1576,14 +1576,15 @@
     "selectedTable": "Selected table",
     "name": "Name",
     "seats": "Seats",
-    "size": "Width (%)",
-    "height": "Height (%)",
     "rotation": "Rotation (°)",
     "deleteTable": "Delete table",
     "guests": "Guests (confirmed)",
     "noGuestsAssigned": "No guests assigned.",
     "assignPlaceholder": "Assign confirmed guest…",
     "removeGuest": "Remove guest",
-    "tableFull": "Table is full."
+    "tableFull": "Table is full.",
+    "sizePx": "Size (px)",
+    "widthPx": "Width (px)",
+    "heightPx": "Height (px)"
   }
 }

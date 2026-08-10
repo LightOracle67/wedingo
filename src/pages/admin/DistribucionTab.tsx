@@ -167,14 +167,27 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
   // ── Mesas de la sección activa ──
   const addTable = useCallback(async () => {
     if (!activeSectionId) return;
+    // Tamaño por defecto en PÍXELES: en círculo/cuadrado ancho=alto siempre.
+    const defaultSize = (shape: Shape): { w: number; h: number } => {
+      switch (shape) {
+        case "circle":
+        case "square":
+          return { w: 90, h: 90 };
+        case "oval":
+          return { w: 140, h: 90 };
+        default:
+          return { w: 130, h: 80 };
+      }
+    };
+    const size = defaultSize(newShape);
     try {
       const ref = await addDoc(tablesRef(activeSectionId), {
         name: t("distribucion.defaultTable"),
         shape: newShape,
         x: 50,
         y: 50,
-        w: newShape === "circle" || newShape === "square" ? 12 : 14,
-        h: newShape === "circle" || newShape === "square" ? 12 : 8,
+        w: size.w,
+        h: size.h,
         rotation: 0,
         seats: 8,
         guests: [],
@@ -182,7 +195,7 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
       });
       setTables((prev) => [
         ...prev,
-        { id: ref.id, name: t("distribucion.defaultTable"), shape: newShape, x: 50, y: 50, w: newShape === "circle" || newShape === "square" ? 12 : 14, h: newShape === "circle" || newShape === "square" ? 12 : 8, rotation: 0, seats: 8, guests: [] },
+        { id: ref.id, name: t("distribucion.defaultTable"), shape: newShape, x: 50, y: 50, w: size.w, h: size.h, rotation: 0, seats: 8, guests: [] },
       ]);
       setSelectedId(ref.id);
     } catch {
@@ -383,8 +396,8 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
                 position: "absolute",
                 left: `${tb.x}%`,
                 top: `${tb.y}%`,
-                width: `${tb.w}%`,
-                height: `${tb.shape === "rect" || tb.shape === "square" ? tb.h : tb.w}%`,
+                width: `${tb.w}px`,
+                height: `${tb.h}px`,
                 transform: `translate(-50%, -50%) rotate(${tb.rotation}deg)`,
                 borderRadius: tb.shape === "rect" || tb.shape === "square" ? "0.4rem" : "50%",
                 border: `2px solid ${selectedId === tb.id ? "var(--setup-accent)" : "rgba(255,255,255,0.5)"}`,
@@ -399,6 +412,7 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
                 color: "#fff",
                 textAlign: "center",
                 lineHeight: 1.2,
+                overflow: "hidden",
               }}
             >
               <span style={{ fontWeight: 600 }}>{tb.name}</span>
@@ -442,14 +456,57 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
               {t("distribucion.seats")}
               <input className="setup-input" type="number" min={0} max={100} value={selected.seats} onChange={(e) => { const seats = Math.min(100, Math.max(0, Number(e.target.value) || 0)); patchTable(selected.id, { seats }); void persistTable(selected.id, { seats }); }} />
             </label>
-            <label className="setup-label" style={{ margin: 0 }}>
-              {t("distribucion.size")}
-              <input className="setup-input" type="number" min={2} max={80} value={selected.w} onChange={(e) => { const w = Math.min(80, Math.max(2, Number(e.target.value) || 10)); patchTable(selected.id, { w }); void persistTable(selected.id, { w }); }} />
-            </label>
-            <label className="setup-label" style={{ margin: 0 }}>
-              {t("distribucion.height")}
-              <input className="setup-input" type="number" min={2} max={80} value={selected.h} onChange={(e) => { const h = Math.min(80, Math.max(2, Number(e.target.value) || 8)); patchTable(selected.id, { h }); void persistTable(selected.id, { h }); }} />
-            </label>
+            {selected.shape === "circle" || selected.shape === "square" ? (
+              <label className="setup-label" style={{ margin: 0 }}>
+                {t("distribucion.sizePx")}
+                <input
+                  className="setup-input"
+                  type="number"
+                  min={20}
+                  max={500}
+                  value={selected.w}
+                  onChange={(e) => {
+                    const v = Math.min(500, Math.max(20, Number(e.target.value) || 90));
+                    // Círculo y cuadrado: ancho y alto SIEMPRE iguales.
+                    patchTable(selected.id, { w: v, h: v });
+                    void persistTable(selected.id, { w: v, h: v });
+                  }}
+                />
+              </label>
+            ) : (
+              <>
+                <label className="setup-label" style={{ margin: 0 }}>
+                  {t("distribucion.widthPx")}
+                  <input
+                    className="setup-input"
+                    type="number"
+                    min={20}
+                    max={500}
+                    value={selected.w}
+                    onChange={(e) => {
+                      const w = Math.min(500, Math.max(20, Number(e.target.value) || 90));
+                      patchTable(selected.id, { w });
+                      void persistTable(selected.id, { w });
+                    }}
+                  />
+                </label>
+                <label className="setup-label" style={{ margin: 0 }}>
+                  {t("distribucion.heightPx")}
+                  <input
+                    className="setup-input"
+                    type="number"
+                    min={20}
+                    max={500}
+                    value={selected.h}
+                    onChange={(e) => {
+                      const h = Math.min(500, Math.max(20, Number(e.target.value) || 60));
+                      patchTable(selected.id, { h });
+                      void persistTable(selected.id, { h });
+                    }}
+                  />
+                </label>
+              </>
+            )}
             <label className="setup-label" style={{ margin: 0 }}>
               {t("distribucion.rotation")}
               <input className="setup-input" type="number" min={-180} max={180} value={selected.rotation} onChange={(e) => { const rotation = Math.min(180, Math.max(-180, Number(e.target.value) || 0)); patchTable(selected.id, { rotation }); void persistTable(selected.id, { rotation }); }} />

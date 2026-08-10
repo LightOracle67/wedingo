@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.82",
+    date: "2026-08-09",
+    changes: [
+      "FIX: tamaño de las mesas de Distribución en PÍXELES (antes % mal calculado); en círculo y cuadrado ancho y alto quedan SIEMPRE bloqueados al mismo valor (un único control); reglas Firestore con límites en px y w==h para esas formas.",
+    ],
+  },
+
+  {
     version: "2.95.81",
     date: "2026-08-09",
     changes: [

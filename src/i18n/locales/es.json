@@ -1576,14 +1576,15 @@
     "selectedTable": "Mesa seleccionada",
     "name": "Nombre",
     "seats": "Plazas",
-    "size": "Ancho (%)",
-    "height": "Alto (%)",
     "rotation": "Rotación (°)",
     "deleteTable": "Eliminar mesa",
     "guests": "Invitados (confirmados)",
     "noGuestsAssigned": "Sin invitados asignados.",
     "assignPlaceholder": "Asignar invitado confirmado…",
     "removeGuest": "Quitar invitado",
-    "tableFull": "La mesa está llena."
+    "tableFull": "La mesa está llena.",
+    "sizePx": "Tamaño (px)",
+    "widthPx": "Ancho (px)",
+    "heightPx": "Alto (px)"
   }
 }

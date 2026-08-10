@@ -82,4 +82,16 @@ describe("DistribucionTab", () => {
     expect(options).toContain("Pepe");
     expect(options).not.toContain("Luis");
   });
+
+  it("locks width and height to the same value on circle/square", async () => {
+    const { updateDoc } = await import("firebase/firestore");
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    const mesa1 = await screen.findByText("Mesa 1");
+    fireEvent.pointerDown(mesa1, { clientX: 0, clientY: 0 });
+    // La mesa del mock es círculo (w:12,h:12) → un único control de tamaño.
+    const size = screen.getByLabelText("distribucion.sizePx") as HTMLInputElement;
+    fireEvent.change(size, { target: { value: "120" } });
+    expect((updateDoc as ReturnType<typeof vi.fn>)).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ w: 120, h: 120 }));
+  });
 });
