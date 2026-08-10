@@ -1,5 +1,7 @@
-import { memo, useCallback, useMemo } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../../lib/firebase";
 import { useConfig, useAppUI, useAuth, useRsvpFormContext } from "../../contexts";
 import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import { parseMenuDishes } from "../../lib/menu-utils";
@@ -36,6 +38,8 @@ interface RsvpSectionProps {
   cornerDecoration?: string;
   /** F3-7: número de confirmaciones "sí" actuales (para el control de aforo). */
   rsvpConfirmedCount?: number;
+  /** Token de la invitación (para localizar la mesa asignada). */
+  inviteToken?: string;
 }
 
 const RsvpSection = memo(function RsvpSection({
@@ -57,6 +61,7 @@ const RsvpSection = memo(function RsvpSection({
   transportDepartures,
   cornerDecoration,
   rsvpConfirmedCount,
+  inviteToken,
 }: RsvpSectionProps) {
   const { t } = useTranslation();
   const { setLegalModal } = useAppUI();
@@ -70,6 +75,35 @@ const RsvpSection = memo(function RsvpSection({
   // fallaría con permission-denied.
   const { isAdminTokenLoggedIn } = useAuth();
   const { config } = useConfig();
+
+  // Mesa asignada al invitado (diferencial): se busca su nombre en las mesas
+  // configuradas por el admin y se muestra tras confirmar.
+  const [assignedTable, setAssignedTable] = useState<string>("");
+  useEffect(() => {
+    const attendingName = alreadySubmittedEntry && (alreadySubmittedEntry as Record<string, unknown>).attendance === "yes"
+      ? String((alreadySubmittedEntry as Record<string, unknown>).guestName || "")
+      : "";
+    if (!attendingName || !inviteToken) {
+      setAssignedTable("");
+      return;
+    }
+    let cancelled = false;
+    void (async () => {
+      try {
+        const snap = await getDocs(collection(db, "invitations", inviteToken, "tables"));
+        const needle = attendingName.toLowerCase();
+        const found = snap.docs.find((d) =>
+          Array.isArray(d.data().guests) && (d.data().guests as string[]).some((g) => g.toLowerCase() === needle),
+        );
+        if (!cancelled) setAssignedTable(found ? String(found.data().name || "") : "");
+      } catch {
+        if (!cancelled) setAssignedTable("");
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [alreadySubmittedEntry, inviteToken]);
 
   // Fecha límite de confirmación: si la invitación tiene una y ya pasó, el
   // formulario se bloquea y se muestra el aviso.
@@ -1138,6 +1172,11 @@ const RsvpSection = memo(function RsvpSection({
           {hasSubmitted && config?.rsvpThanks ? (
             <p className="rsvp-feedback rsvp-feedback--thanks" style={{ marginTop: "0.5rem" }}>
               {config.rsvpThanks}
+            </p>
+          ) : null}
+          {assignedTable ? (
+            <p className="rsvp-feedback" style={{ marginTop: "0.5rem", textAlign: "center" }}>
+              {t("rsvp.yourTable", { table: assignedTable })}
             </p>
           ) : null}
 

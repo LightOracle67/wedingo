@@ -170,6 +170,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   welcomeVideoEnabled: s(value?.welcomeVideoEnabled) === "true" ? "true" : "false",
   notesEnabled: s(value?.notesEnabled) === "true" ? "true" : "false",
   musicPollEnabled: s(value?.musicPollEnabled) === "true" ? "true" : "false",
+  voiceNotesEnabled: s(value?.voiceNotesEnabled) === "true" ? "true" : "false",
   triviaEnabled: s(value?.triviaEnabled) === "true" ? "true" : "false",
   trivia: normalizeJsonArray(value?.trivia),
   weddingSiteURL: s(value?.weddingSiteURL ?? value?.weddingMapUrl),

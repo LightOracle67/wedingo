@@ -170,6 +170,29 @@ const MetricsTab = memo(function MetricsTab() {
     setCalcStorage(false);
   }, [rows, t]);
 
+  // ── Orígenes de los invitados (coche compartido) — diferencial ──
+  const [originStats, setOriginStats] = useState<Array<{ origin: string; count: number }>>([]);
+  const [originLoading, setOriginLoading] = useState(false);
+  const calculateOrigins = useCallback(async () => {
+    setOriginLoading(true);
+    const counts = new Map<string, number>();
+    try {
+      for (const r of rows) {
+        try {
+          const snap = await getDocs(collection(db, "invitations", r.id, "rides"));
+          for (const d of snap.docs) {
+            const origin = String(d.data().origin || "").trim();
+            if (origin) counts.set(origin, (counts.get(origin) || 0) + 1);
+          }
+        } catch {}
+      }
+      setOriginStats([...counts.entries()].map(([origin, count]) => ({ origin, count })).sort((a, b) => b.count - a.count));
+    } catch {
+      setError(t("superadmin.metrics.storageError"));
+    }
+    setOriginLoading(false);
+  }, [rows, t]);
+
   // ── Export CSV global ──
   const exportCsv = useCallback(() => {
     const esc = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
@@ -334,6 +357,9 @@ const MetricsTab = memo(function MetricsTab() {
         <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void calculateSocial()} disabled={socialLoading}>
           {socialLoading ? t("common.loading") : t("superadmin.metrics.socialBtn")}
         </button>
+        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void calculateOrigins()} disabled={originLoading}>
+          {originLoading ? t("common.loading") : t("superadmin.metrics.originsBtn")}
+        </button>
       </div>
       {storageRows.length > 0 ? (
         <div className="admin-table-wrapper">
@@ -385,6 +411,20 @@ const MetricsTab = memo(function MetricsTab() {
               ))}
             </tbody>
           </table>
+        </div>
+      ) : null}
+
+      {/* ── Orígenes de los invitados ── */}
+      {originStats.length > 0 ? (
+        <div className="setup-background-panel">
+          <p className="setup-label">{t("superadmin.metrics.originsTitle")}</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+            {originStats.slice(0, 30).map((o) => (
+              <span key={o.origin} style={{ fontSize: "0.78rem", border: "1px solid var(--setup-border)", borderRadius: "999px", padding: "0.15rem 0.6rem", color: "var(--setup-subtitle)" }}>
+                {o.origin} · {o.count}
+              </span>
+            ))}
+          </div>
         </div>
       ) : null}
 

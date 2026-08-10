@@ -54,6 +54,7 @@ const ReactionsSection = lazy(() => import("./sections/ReactionsSection"));
 const NotesSection = lazy(() => import("./sections/NotesSection"));
 const MusicPollSection = lazy(() => import("./sections/MusicPollSection"));
 const TriviaSection = lazy(() => import("./sections/TriviaSection"));
+const VoiceNotesSection = lazy(() => import("./sections/VoiceNotesSection"));
 const GiftListSection = lazy(() => import("./sections/GiftListSection"));
 const RideShareSection = lazy(() => import("./sections/RideShareSection"));
 import "../styles/decorations.css";
@@ -189,8 +190,10 @@ export default function PublicInvitation() {
    *  "extras" (reordenable en el editor, siempre antes del RSVP). */
   // Kill-switch por función social: una función debe estar activa en la
   // invitación Y no desactivada globalmente por el superadmin.
-  const socialEnabled = (feature: "gifts" | "rides" | "reactions" | "notes" | "songs" | "trivia", flag?: string) =>
-    flag === "true" && !isFeatureDisabled(platform, feature);
+  const socialEnabled = (
+    feature: "gifts" | "rides" | "reactions" | "notes" | "songs" | "trivia" | "voiceNotes",
+    flag?: string,
+  ) => flag === "true" && !isFeatureDisabled(platform, feature);
 
   const hasExtras =
     socialEnabled("gifts", config.giftsListEnabled) ||
@@ -198,7 +201,8 @@ export default function PublicInvitation() {
     socialEnabled("reactions", config.reactionsEnabled) ||
     socialEnabled("notes", config.notesEnabled) ||
     socialEnabled("songs", config.musicPollEnabled) ||
-    socialEnabled("trivia", config.triviaEnabled);
+    socialEnabled("trivia", config.triviaEnabled) ||
+    socialEnabled("voiceNotes", config.voiceNotesEnabled);
 
   // Bloques de las funciones sociales activas: se agrupan en la sección
   // conjunta "extras" (renderizados por config para no duplicar el JSX).
@@ -223,8 +227,11 @@ export default function PublicInvitation() {
         socialEnabled("trivia", config.triviaEnabled)
           ? { title: t("trivia.title"), node: <TriviaSection trivia={config.trivia ?? "[]"} /> }
           : null,
+        socialEnabled("voiceNotes", config.voiceNotesEnabled)
+          ? { title: t("voiceNotes.title"), node: <VoiceNotesSection inviteToken={inviteToken ?? ""} /> }
+          : null,
       ].filter((b): b is { title: string; node: React.JSX.Element } => b !== null),
-    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.giftList, config.trivia, t, inviteToken, platform.disabledFeatures],
+    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.voiceNotesEnabled, config.giftList, config.trivia, t, inviteToken, platform.disabledFeatures],
   );
 
   // ─── Orden de secciones visible ────────────────────────
@@ -577,7 +584,10 @@ export default function PublicInvitation() {
    * config); el countdown se calcula dentro de HeroSection para no
    * re-renderizar la página cada segundo.
    */
-  const heroProps = useMemo(() => ({ weddingDate }), [weddingDate]);
+  const heroProps = useMemo(
+    () => ({ weddingDate, inviteToken: inviteToken ?? "" }),
+    [weddingDate, inviteToken],
+  );
 
   /**
    * Props del estado RSVP: solo afectan a RsvpSection. Cambian al editar el
@@ -596,6 +606,8 @@ export default function PublicInvitation() {
       DIETARY_OPTIONS,
       // F3-7: confirmaciones "sí" actuales para el control de aforo.
       rsvpConfirmedCount: rsvpEntries.filter((e) => e.attendance === "yes").length,
+      // Diferencial: token para localizar la mesa asignada al invitado.
+      inviteToken: inviteToken ?? "",
     }),
     [
       rsvpEntries,
@@ -607,6 +619,7 @@ export default function PublicInvitation() {
       retryLoadRsvp,
       handleDeleteRsvp,
       DIETARY_OPTIONS,
+      inviteToken,
     ],
   );
 

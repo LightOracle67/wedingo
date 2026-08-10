@@ -13,6 +13,7 @@ const SOCIAL_FEATURES: Array<{ key: string; labelKey: string }> = [
   { key: "notes", labelKey: "notes.title" },
   { key: "songs", labelKey: "musicPoll.title" },
   { key: "trivia", labelKey: "trivia.title" },
+  { key: "voiceNotes", labelKey: "voiceNotes.title" },
 ];
 
 /**

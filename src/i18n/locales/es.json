@@ -69,7 +69,9 @@
     "todayIsTheDay": "¡Hoy es el gran día!",
     "eyebrow": "Nuestra boda",
     "sectionLabel": "Portada",
-    "verifiedBadge": "Verificada"
+    "verifiedBadge": "Verificada",
+    "liveConfirmed": "{{count}} invitados ya han confirmado",
+    "thanksPost": "Gracias por compartir este día con nosotros. Tu mensaje y vuestro cariño son el mejor recuerdo."
   },
   "details": {
     "sectionLabel": "Fecha y lugar",
@@ -206,7 +208,8 @@
     "summaryTitle": "Tu respuesta",
     "summaryAttendance": "Asistencia: {{v}}",
     "summaryMenu": "Menú: {{m}}",
-    "summaryCompanions": "Acompañantes: {{c}}"
+    "summaryCompanions": "Acompañantes: {{c}}",
+    "yourTable": "Estás en la mesa {table}"
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
@@ -957,7 +960,9 @@
       "socialNotes": "Notas",
       "socialSongs": "Música",
       "socialRides": "Coches",
-      "socialGifts": "Regalos"
+      "socialGifts": "Regalos",
+      "originsBtn": "Orígenes de invitados",
+      "originsTitle": "De dónde vienen los invitados (coche compartido)"
     },
     "support": {
       "upcomingTitle": "Bodas próximas (≤14 días)",
@@ -1458,6 +1463,35 @@
     "present": "Abrir la invitación",
     "internalNote": "Nota interna",
     "internalNotePlaceholder": "Apuntes solo visibles para ti",
-    "saveNote": "Guardar nota"
+    "saveNote": "Guardar nota",
+    "tables": "Asignador de mesas",
+    "tablesHelp": "Crea mesas y asigna invitados; ellos verán su mesa al confirmar",
+    "tableNamePlaceholder": "Nombre de la mesa (p. ej. Mesa 1)",
+    "tableSeats": "Plazas",
+    "addTable": "Añadir mesa",
+    "deleteTable": "Borrar",
+    "noTables": "Aún no hay mesas.",
+    "assignPlaceholder": "Nombre del invitado…",
+    "assign": "Asignar",
+    "removeGuest": "Quitar invitado",
+    "tableAdded": "Mesa añadida.",
+    "tableDeleted": "Mesa eliminada.",
+    "guestAssigned": "Invitado asignado."
+  },
+  "voiceNotes": {
+    "title": "Caja de recuerdos",
+    "record": "Grabar nota de voz",
+    "stop": "Detener y enviar",
+    "hint": "Graba un mensaje corto para la pareja",
+    "namePrompt": "¿Con qué nombre firmas?",
+    "anonymous": "Anónimo",
+    "saved": "Nota guardada.",
+    "saveError": "No se pudo guardar la nota.",
+    "tooShort": "La nota es demasiado corta.",
+    "micError": "No se pudo acceder al micrófono.",
+    "playError": "No se pudo reproducir.",
+    "playing": "Reproduciendo…",
+    "empty": "Aún no hay recuerdos. ¡Sé el primero!",
+    "deleteConfirm": "¿Eliminar esta nota de voz?"
   }
 }

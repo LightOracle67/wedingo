@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.78",
+    date: "2026-08-09",
+    changes: [
+      "FEAT (diferenciales): asignador de mesas — el admin crea mesas y asigna invitados, y el invitado ve su mesa al confirmar; caja de recuerdos de voz — los invitados graban notas de voz (cifradas y troceadas) para la pareja; prueba social en vivo en el hero (nº de confirmados); la boda pasada se convierte en recuerdo (agradecimiento); mapa/orígenes de invitados (coche compartido) en Métricas. Nuevas reglas Firestore para tables y voicenotes.",
+    ],
+  },
+
+  {
     version: "2.95.77",
     date: "2026-08-09",
     changes: [

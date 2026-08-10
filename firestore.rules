@@ -62,7 +62,8 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/setupTokens/$(hash)).data.inviteToken == tokenId;
     }
 
-    /* Tope anti-spam por subcolección social (notes/songs/gifts/rides). */
+    /* Tope anti-spam por subcolección social (notes/songs/gifts/rides).
+       voicenotes: 200 notas de voz por invitación (cap como notes). */
     function socialCounterCap(name) {
       return name == 'rides' ? 100 : 200;
     }
@@ -408,6 +409,36 @@ service cloud.firestore {
           && request.resource.data.version is string && request.resource.data.version.size() <= 20
           && request.resource.data.ts is timestamp;
         allow read, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+      }
+
+      /* Asignación de mesas (diferencial): el admin gestiona las mesas y el
+         invitado ve su mesa asignada. Lectura pública (solo nombres de mesa y
+         de invitados asignados), escritura solo admin/superadmin. */
+      match /tables/{tableId} {
+        allow read: if true;
+        allow create, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+          && request.resource.data.keys().hasOnly(['name', 'seats', 'guests', 'createdAt'])
+          && request.resource.data.name is string && request.resource.data.name.size() <= 80
+          && request.resource.data.seats is int && request.resource.data.seats >= 0 && request.resource.data.seats <= 100
+          && request.resource.data.guests is list
+          && request.resource.data.guests.size() <= 200
+          && request.resource.data.guests.all(g, g is string && g.size() <= 120);
+      }
+
+      /* Caja de recuerdos de voz (diferencial): los invitados graban una nota
+         de voz corta para la pareja. Se trocea como el audio de música y se
+         controla con el contador `voicenotes`. Lectura pública, creación
+         pública (con cap), borrado solo admin/superadmin. */
+      match /voicenotes/{entryId} {
+        allow read: if true;
+        allow create: if socialCounterBelow(tokenId, 'voicenotes')
+          && request.resource.data.keys().hasOnly(['noteId', 'guestName', 'chunkIndex', 'data', 'totalChunks', 'attempt', 'createdAt'])
+          && request.resource.data.noteId is string && request.resource.data.noteId.size() <= 40
+          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60
+          && request.resource.data.chunkIndex is int && request.resource.data.chunkIndex >= 0 && request.resource.data.chunkIndex < 400
+          && request.resource.data.data is string && request.resource.data.data.size() <= 524288
+          && request.resource.data.totalChunks is int && request.resource.data.totalChunks > 0 && request.resource.data.totalChunks <= 400;
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
     }
 

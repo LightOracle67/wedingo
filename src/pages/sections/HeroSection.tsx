@@ -53,6 +53,8 @@ interface HeroSectionProps {
   cornerDecoration?: string;
   /** Sello de verificación (solo lo fija el superadmin). */
   verified?: string;
+  /** Token de la invitación (para la prueba social en vivo y el recuerdo). */
+  inviteToken?: string;
 }
 
 const HeroSection = memo(function HeroSection({
@@ -67,16 +69,46 @@ const HeroSection = memo(function HeroSection({
   godparent2,
   cornerDecoration,
   verified,
+  inviteToken,
 }: HeroSectionProps) {
   const { t } = useTranslation();
   const [photoLoaded, setPhotoLoaded] = useState(false);
   const reducedMotion = useReducedMotion();
+
+  // Prueba social en vivo: nº de invitados que ya confirmaron (lectura en
+  // tiempo real del contador rsvpResponses/{token}). Solo si hay confirmados.
+  const [confirmedCount, setConfirmedCount] = useState(0);
+  useEffect(() => {
+    if (!inviteToken) return;
+    let unsub: (() => void) | undefined;
+    let cancelled = false;
+    const init = async () => {
+      const { doc, onSnapshot } = await import("firebase/firestore");
+      const { db } = await import("../../lib/firebase");
+      unsub = onSnapshot(
+        doc(db, "rsvpResponses", inviteToken),
+        (snap) => {
+          if (cancelled) return;
+          const n = Number(snap.data()?.count || 0);
+          setConfirmedCount(n > 0 ? n : 0);
+        },
+        () => {},
+      );
+    };
+    void init();
+    return () => {
+      cancelled = true;
+      unsub?.();
+    };
+  }, [inviteToken]);
 
   // Inicialización síncrona: el countdown se pinta en el primer render (evita
   // el CLS de que el bloque del hero aparezca tras el mount).
   const [countdown, setCountdown] = useState<CountdownState | null>(() =>
     weddingDate ? computeCountdown(weddingDate, new Date()) : null,
   );
+  // Boda ya pasada → la invitación se convierte en "recuerdo" (agradecimiento).
+  const weddingPassed = weddingDate ? weddingDate.getTime() < Date.now() : false;
 
   /**
    * Actualiza la cuenta regresiva cada segundo SOLO en esta sección. Se pausa
@@ -146,6 +178,39 @@ const HeroSection = memo(function HeroSection({
                 }}
               >
                 ✓ {t("hero.verifiedBadge")}
+              </p>
+            ) : null}
+            {confirmedCount > 0 && !weddingPassed ? (
+              <p
+                className="hero-rsvp-live"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.3rem",
+                  margin: "0.4rem 0 0",
+                  padding: "0.25rem 0.8rem",
+                  borderRadius: "999px",
+                  fontSize: "0.75rem",
+                  color: "var(--invite-copy-color, #c3b193)",
+                  border: "1px solid color-mix(in srgb, var(--setup-accent) 30%, transparent)",
+                  background: "color-mix(in srgb, var(--setup-accent) 10%, transparent)",
+                }}
+              >
+                {t("hero.liveConfirmed", { count: confirmedCount })}
+              </p>
+            ) : null}
+            {weddingPassed ? (
+              <p
+                className="hero-thanks"
+                style={{
+                  margin: "0.5rem auto 0",
+                  maxWidth: "26rem",
+                  fontSize: "0.9rem",
+                  lineHeight: 1.5,
+                  color: "var(--invite-copy-color, #c3b193)",
+                }}
+              >
+                {t("hero.thanksPost")}
               </p>
             ) : null}
             {couplePhoto ? (

@@ -69,7 +69,9 @@
     "todayIsTheDay": "Today is the big day!",
     "eyebrow": "Our Wedding",
     "sectionLabel": "Cover",
-    "verifiedBadge": "Verified"
+    "verifiedBadge": "Verified",
+    "liveConfirmed": "{{count}} guests have already confirmed",
+    "thanksPost": "Thank you for sharing this day with us. Your messages and love are the best memory."
   },
   "details": {
     "sectionLabel": "Date & venue",
@@ -206,7 +208,8 @@
     "summaryTitle": "Your response",
     "summaryAttendance": "Attendance: {{v}}",
     "summaryMenu": "Menu: {{m}}",
-    "summaryCompanions": "Companions: {{c}}"
+    "summaryCompanions": "Companions: {{c}}",
+    "yourTable": "You are at table {table}"
   },
   "public": {
     "loadingInvitation": "Loading invitation…",
@@ -957,7 +960,9 @@
       "socialNotes": "Notes",
       "socialSongs": "Music",
       "socialRides": "Rides",
-      "socialGifts": "Gifts"
+      "socialGifts": "Gifts",
+      "originsBtn": "Guest origins",
+      "originsTitle": "Where guests come from (ride share)"
     },
     "support": {
       "upcomingTitle": "Upcoming weddings (≤14 days)",
@@ -1458,6 +1463,35 @@
     "present": "Open the invitation",
     "internalNote": "Internal note",
     "internalNotePlaceholder": "Notes only visible to you",
-    "saveNote": "Save note"
+    "saveNote": "Save note",
+    "tables": "Seating chart",
+    "tablesHelp": "Create tables and assign guests; they will see their table after confirming",
+    "tableNamePlaceholder": "Table name (e.g. Table 1)",
+    "tableSeats": "Seats",
+    "addTable": "Add table",
+    "deleteTable": "Delete",
+    "noTables": "No tables yet.",
+    "assignPlaceholder": "Guest name…",
+    "assign": "Assign",
+    "removeGuest": "Remove guest",
+    "tableAdded": "Table added.",
+    "tableDeleted": "Table deleted.",
+    "guestAssigned": "Guest assigned."
+  },
+  "voiceNotes": {
+    "title": "Memory box",
+    "record": "Record voice note",
+    "stop": "Stop and send",
+    "hint": "Record a short message for the couple",
+    "namePrompt": "Sign with your name:",
+    "anonymous": "Anonymous",
+    "saved": "Note saved.",
+    "saveError": "Could not save the note.",
+    "tooShort": "Note is too short.",
+    "micError": "Could not access the microphone.",
+    "playError": "Could not play.",
+    "playing": "Playing…",
+    "empty": "No memories yet. Be the first!",
+    "deleteConfirm": "Delete this voice note?"
   }
 }
