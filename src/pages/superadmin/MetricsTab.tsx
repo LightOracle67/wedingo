@@ -191,6 +191,46 @@ const MetricsTab = memo(function MetricsTab() {
     URL.revokeObjectURL(url);
   }, [funnel]);
 
+  // ── Export CSV de invitados (todas las confirmaciones) ──
+  const exportGuestsCsv = useCallback(async () => {
+    const esc = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    const header = "Token,Invitación,Nombre,Asistencia,Menú,Alergias,Teléfono,Email,Fecha";
+    const out: string[] = [];
+    for (const r of rows) {
+      try {
+        const rsvpSnap = await getDocs(rsvpByInviteRef(r.id));
+        for (const d of rsvpSnap.docs) {
+          const rd = d.data();
+          if (rd.inviteToken !== r.id) continue;
+          out.push(
+            [
+              r.id,
+              `${r.firstName} ${r.secondName}`.trim(),
+              rd.guestName,
+              rd.attendance,
+              Array.isArray(rd.attendees) ? rd.attendees.map((a: { menu?: string }) => a.menu || "").join("; ") : rd.mealChoice,
+              Array.isArray(rd.allergiesOther) ? rd.allergiesOther.join("; ") : rd.dietaryInfo,
+              rd.phone,
+              rd.email,
+              rd.submittedAt,
+            ]
+              .map(esc)
+              .join(","),
+          );
+        }
+      } catch {}
+    }
+    const blob = new Blob(["\uFEFF" + [header, ...out].join("\n")], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `invitados_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }, [rows]);
+
   // Etiqueta de fecha de boda ya integrada en `funnel` (campo weddingDateLabel).
   if (loading) {
     return (
@@ -254,6 +294,9 @@ const MetricsTab = memo(function MetricsTab() {
         </button>
         <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={exportCsv}>
           {t("superadmin.metrics.csvBtn")}
+        </button>
+        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportGuestsCsv()}>
+          {t("superadmin.metrics.guestsCsvBtn")}
         </button>
       </div>
       {storageRows.length > 0 ? (

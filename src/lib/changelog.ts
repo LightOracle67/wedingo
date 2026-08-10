@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.76",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: búsqueda PII ampliada a teléfono y email (derechos GDPR) y export CSV global de invitados (nombre, asistencia, menú, alergias, contacto) desde Métricas.",
+    ],
+  },
+
+  {
     version: "2.95.75",
     date: "2026-08-09",
     changes: [

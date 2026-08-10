@@ -66,17 +66,27 @@ export default function DataTab() {
     }
     try {
       const { collectionGroup, query: qry, where } = await import("firebase/firestore");
-      const snap = await getDocs(
-        qry(collectionGroup(db, "responses"), where("guestName", ">=", q), where("guestName", "<=", q + "\uf8ff")),
-      );
-      setPiiResults(
-        snap.docs.map((d) => ({
-          token: String(d.data().inviteToken || ""),
-          name: String(d.data().guestName || ""),
-          attendance: String(d.data().attendance || ""),
-        })),
-      );
-      if (snap.size === 0) addToast("info", t("superadmin.data.piiNone"));
+      // Búsqueda PII ampliada: nombre, teléfono y email (derechos GDPR).
+      const fields = ["guestName", "phone", "email"];
+      const seen = new Set<string>();
+      const results: Array<{ token: string; name: string; attendance: string }> = [];
+      for (const field of fields) {
+        const snap = await getDocs(
+          qry(collectionGroup(db, "responses"), where(field, ">=", q), where(field, "<=", q + "\uf8ff")),
+        );
+        for (const d of snap.docs) {
+          const id = d.id;
+          if (seen.has(id)) continue;
+          seen.add(id);
+          results.push({
+            token: String(d.data().inviteToken || ""),
+            name: String(d.data().guestName || ""),
+            attendance: String(d.data().attendance || ""),
+          });
+        }
+      }
+      setPiiResults(results);
+      if (results.length === 0) addToast("info", t("superadmin.data.piiNone"));
     } catch {
       addToast("error", t("errors.dataLoadFailed"));
     }

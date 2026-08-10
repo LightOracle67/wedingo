@@ -945,7 +945,8 @@
       "audioMb": "Audio (MB)",
       "topVisitsTitle": "Most visits",
       "wedding": "Wedding",
-      "date": "Date"
+      "date": "Date",
+      "guestsCsvBtn": "Export guests CSV"
     },
     "support": {
       "upcomingTitle": "Upcoming weddings (≤14 days)",
