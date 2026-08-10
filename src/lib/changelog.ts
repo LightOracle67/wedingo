@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.87",
+    date: "2026-08-09",
+    changes: [
+      "UX: auditoría de formularios admin/superadmin — protegidos de desbordes de anchura (inputs/selects en flex encogen con min-width:0, etiquetas largas envuelven, anchos nunca superan el contenedor) y añadidos hints a campos que no los tenían (Distribución, mapa del recinto, consola de soporte).",
+    ],
+  },
+
+  {
     version: "2.95.86",
     date: "2026-08-09",
     changes: [

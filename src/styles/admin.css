@@ -1874,3 +1874,44 @@ select.setup-input {
 .admin-filters .setup-input {
   font-size: 0.85rem;
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Auditoría de anchura: inputs/etiquetas no desbordan.
+   ───────────────────────────────────────────────────────────── */
+/* Etiquetas largas dentro de filas flex: pueden envolver sin desbordar. */
+.admin-flex,
+.admin-flex--between,
+.admin-grid {
+  min-width: 0;
+}
+.admin-flex > *,
+.admin-grid > * {
+  min-width: 0;
+}
+
+/* Inputs/selects en filas flex: encogen en vez de desbordar. */
+.admin-flex .setup-input,
+.admin-flex select.setup-input,
+.admin-grid .setup-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Etiquetas inline junto a un control: wrap limpio. */
+label.setup-label {
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Longitudes de etiqueta fijas: nunca empujan al control fuera. */
+.setup-label[style*="min-width"] {
+  max-width: 100%;
+}
+
+/* Línea de campo (label + control) nunca más ancha que su contenedor. */
+.setup-form .setup-label + input,
+.setup-form .setup-label + select,
+.setup-form .setup-label + textarea {
+  width: 100%;
+}

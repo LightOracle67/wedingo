@@ -1004,7 +1004,8 @@
       "abandonBtn": "Analizar (visitas sin RSVP)",
       "auditTitle": "Auditoría",
       "auditLoad": "Cargar",
-      "auditExport": "Export CSV"
+      "auditExport": "Export CSV",
+      "consoleHint": "Escribe un token para ver su resumen y accesos rápidos."
     },
     "tokenConflictsTitle": "Conflictos de tokens detectados",
     "tokenConflictsLegacy": "Tokens legacy duplicados entre invitaciones",
@@ -1504,7 +1505,8 @@
     "dayPhotos": "Fotos del día",
     "downloadDayPhotos": "Descargar fotos ({{count}})",
     "noDayPhotos": "Aún no hay fotos.",
-    "dayPhotosDownloaded": "{{count}} fotos descargadas."
+    "dayPhotosDownloaded": "{{count}} fotos descargadas.",
+    "venueMapHelp": "Añade puntos con etiqueta y posición (%). Se muestran a los invitados sobre el fondo."
   },
   "voiceNotes": {
     "title": "Caja de recuerdos",
@@ -1585,6 +1587,8 @@
     "tableFull": "La mesa está llena.",
     "sizePx": "Tamaño (px)",
     "widthPx": "Ancho (px)",
-    "heightPx": "Alto (px)"
+    "heightPx": "Alto (px)",
+    "sectionsHint": "Cada sección tiene su propio mapa. Crea una y añade sus mesas.",
+    "assignHint": "Solo aparecen invitados que hayan confirmado su asistencia y que aún no estén asignados."
   }
 }

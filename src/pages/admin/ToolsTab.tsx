@@ -456,6 +456,7 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
 
       <div className="setup-background-panel">
         <p className="setup-label">{t("tools.venueMap")}</p>
+        <p className="setup-help">{t("tools.venueMapHelp")}</p>
         <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
           <input className="setup-input" value={pointLabel} onChange={(e) => setPointLabel(e.target.value)} placeholder={t("tools.pointLabelPlaceholder")} maxLength={80} style={{ flex: 1, minWidth: "10rem" }} aria-label={t("tools.pointLabelPlaceholder")} />
           <button className="setup-button setup-button--compact" type="button" onClick={() => void addPoint()}>{t("tools.addPoint")}</button>

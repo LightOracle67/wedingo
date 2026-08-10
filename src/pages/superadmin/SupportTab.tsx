@@ -299,6 +299,7 @@ const SupportTab = memo(function SupportTab() {
       {/* ── Consola por invitación ── */}
       <div className="setup-background-panel">
         <p className="setup-label">{t("superadmin.support.consoleTitle")}</p>
+        <p className="setup-help">{t("superadmin.support.consoleHint")}</p>
         <div className="admin-filters" style={{ margin: "0.4rem 0 0", gap: "0.5rem" }}>
           <input
             className="setup-input"

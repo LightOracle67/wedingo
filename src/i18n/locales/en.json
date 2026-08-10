@@ -1004,7 +1004,8 @@
       "abandonBtn": "Analyze (visits without RSVP)",
       "auditTitle": "Audit log",
       "auditLoad": "Load",
-      "auditExport": "Export CSV"
+      "auditExport": "Export CSV",
+      "consoleHint": "Enter a token to see its summary and quick links."
     },
     "tokenConflictsTitle": "Token conflicts detected",
     "tokenConflictsLegacy": "Legacy tokens duplicated between invitations",
@@ -1504,7 +1505,8 @@
     "dayPhotos": "Day photos",
     "downloadDayPhotos": "Download photos ({{count}})",
     "noDayPhotos": "No photos yet.",
-    "dayPhotosDownloaded": "{{count}} photos downloaded."
+    "dayPhotosDownloaded": "{{count}} photos downloaded.",
+    "venueMapHelp": "Add labeled points with position (%). Guests see them over the background."
   },
   "voiceNotes": {
     "title": "Memory box",
@@ -1585,6 +1587,8 @@
     "tableFull": "Table is full.",
     "sizePx": "Size (px)",
     "widthPx": "Width (px)",
-    "heightPx": "Height (px)"
+    "heightPx": "Height (px)",
+    "sectionsHint": "Each section has its own map. Create one and add its tables.",
+    "assignHint": "Only confirmed guests not yet assigned are listed."
   }
 }

@@ -382,6 +382,9 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
           {t("distribucion.addSection")}
         </button>
       </div>
+      <p className="setup-help" style={{ margin: "0 0 0.1rem" }}>
+        {t("distribucion.sectionsHint")}
+      </p>
 
       {/* ── Controles de mesas (sección activa) ── */}
       {activeSectionId ? (
@@ -647,6 +650,9 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
                 </option>
               ))}
             </select>
+            <p className="setup-help" style={{ margin: "0.3rem 0 0" }}>
+              {t("distribucion.assignHint")}
+            </p>
           </div>
 
           <button type="button" className="setup-button setup-button--danger setup-button--compact" style={{ marginTop: "0.6rem" }} onClick={() => void deleteTable(selected.id)}>
