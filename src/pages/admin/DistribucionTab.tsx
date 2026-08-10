@@ -1,23 +1,26 @@
 /**
- * DistribucionTab — Mapa interactivo de mesas y zonas (diferencial).
+ * DistribucionTab — Distribución del recinto por SECCIONES (diferencial).
  *
- * El admin dibuja el plano del recinto: crea ZONAS (áreas con color) y MESAS
- * con forma (círculo, rectángulo, óvalo, cuadrado) que arrastra por el mapa,
- * ajusta tamaño/rotación y asigna invitados. Los datos viven en las
- * subcolecciones `zones` y `shapedtables` (lectura pública, escritura admin).
+ * El admin crea SECCIONES (p. ej. "Salón principal", "Jardín"); cada sección
+ * tiene su PROPIO mapa con mesas con forma que se arrastran, redimensionan y
+ * rotan. Las mesas y sus posiciones se GUARDAN en Firestore (subcolección
+ * `sections/{sectionId}/tables`). Solo se pueden asignar a las mesas invitados
+ * que hayan CONFIRMADO su asistencia (attendance === "yes").
+ *
+ * Las secciones se muestran como un menú superior sobre la previsualización, y
+ * el mapa ocupa todo el espacio disponible.
  */
-import { memo, useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { getDocs, collection, doc, addDoc, updateDoc, deleteDoc, arrayUnion, arrayRemove } from "firebase/firestore";
-import { db } from "../../lib/firebase";
+import { db, rsvpByInviteRef } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 
 type Shape = "circle" | "rect" | "oval" | "square";
 
-interface Zone {
+interface Section {
   id: string;
   name: string;
-  color: string;
 }
 
 interface ShapeTable {
@@ -29,12 +32,10 @@ interface ShapeTable {
   w: number;
   h: number;
   rotation: number;
-  zoneId: string;
   seats: number;
   guests: string[];
 }
 
-const ZONE_COLORS = ["#d8b24a", "#7fb3d5", "#9fdc9a", "#f5a8a8", "#d6a2e0", "#f7c873"];
 const SHAPES: Array<{ key: Shape; label: string }> = [
   { key: "circle", label: "Círculo" },
   { key: "rect", label: "Rectángulo" },
@@ -45,77 +46,129 @@ const SHAPES: Array<{ key: Shape; label: string }> = [
 const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteToken: string }) {
   const { t } = useTranslation();
   const { addToast } = useToast();
-  const [zones, setZones] = useState<Zone[]>([]);
+  const [sections, setSections] = useState<Section[]>([]);
+  const [activeSectionId, setActiveSectionId] = useState("");
   const [tables, setTables] = useState<ShapeTable[]>([]);
   const [selectedId, setSelectedId] = useState("");
-  const [newZoneName, setNewZoneName] = useState("");
+  const [newSectionName, setNewSectionName] = useState("");
   const [newShape, setNewShape] = useState<Shape>("rect");
+  // Invitados CONFIRMADOS (attendance yes) disponibles para asignar.
+  const [confirmedGuests, setConfirmedGuests] = useState<Array<{ name: string; assigned: boolean }>>([]);
   const mapRef = useRef<HTMLDivElement | null>(null);
-  const dragRef = useRef<{ id: string; dx: number; dy: number; moved: boolean } | null>(null);
+  const dragRef = useRef<{ id: string; moved: boolean } | null>(null);
 
-  const zonesRef = useCallback(() => collection(db, "invitations", inviteToken, "zones"), [inviteToken]);
-  const tablesRef = useCallback(() => collection(db, "invitations", inviteToken, "shapedtables"), [inviteToken]);
+  const sectionsRef = useCallback(() => collection(db, "invitations", inviteToken, "sections"), [inviteToken]);
+  const tablesRef = useCallback(
+    (sectionId: string) => collection(db, "invitations", inviteToken, "sections", sectionId, "tables"),
+    [inviteToken],
+  );
 
-  const load = useCallback(async () => {
+  // ── Carga de secciones y confirmados ──
+  const loadSections = useCallback(async () => {
     try {
-      const [zSnap, tSnap] = await Promise.all([getDocs(zonesRef()), getDocs(tablesRef())]);
-      setZones(zSnap.docs.map((d) => ({ id: d.id, name: String(d.data().name || ""), color: String(d.data().color || "#d8b24a") })));
+      const snap = await getDocs(sectionsRef());
+      const list = snap.docs.map((d) => ({ id: d.id, name: String(d.data().name || "") }));
+      setSections(list);
+      if (list.length > 0 && !list.some((s) => s.id === activeSectionId)) {
+        setActiveSectionId(list[0]!.id);
+      }
+    } catch {
+      /* datos no disponibles */
+    }
+  }, [sectionsRef, activeSectionId]);
+
+  const loadConfirmed = useCallback(async () => {
+    try {
+      const snap = await getDocs(rsvpByInviteRef(inviteToken));
+      const names = new Set<string>();
+      for (const d of snap.docs) {
+        const data = d.data();
+        if (data.attendance === "yes") names.add(String(data.guestName || "").trim());
+      }
+      setConfirmedGuests([...names].filter(Boolean).map((name) => ({ name, assigned: false })));
+    } catch {
+      /* sin confirmados */
+    }
+  }, [inviteToken]);
+
+  useEffect(() => {
+    void loadSections();
+    void loadConfirmed();
+  }, [loadSections, loadConfirmed]);
+
+  // ── Carga de mesas de la sección activa ──
+  const loadTables = useCallback(async () => {
+    if (!activeSectionId) return;
+    try {
+      const snap = await getDocs(tablesRef(activeSectionId));
       setTables(
-        tSnap.docs.map((d) => ({
+        snap.docs.map((d) => ({
           id: d.id,
           name: String(d.data().name || ""),
-          shape: (String(d.data().shape || "rect") as Shape),
+          shape: String(d.data().shape || "rect") as Shape,
           x: Number(d.data().x) || 0,
           y: Number(d.data().y) || 0,
-          w: Number(d.data().w) || 10,
+          w: Number(d.data().w) || 14,
           h: Number(d.data().h) || 8,
           rotation: Number(d.data().rotation) || 0,
-          zoneId: String(d.data().zoneId || ""),
           seats: Number(d.data().seats) || 0,
           guests: Array.isArray(d.data().guests) ? (d.data().guests as string[]) : [],
         })),
       );
+      setSelectedId("");
     } catch {
       /* datos no disponibles */
     }
-  }, [zonesRef, tablesRef]);
+  }, [activeSectionId, tablesRef]);
 
   useEffect(() => {
-    load();
-  }, [load]);
+    void loadTables();
+  }, [loadTables]);
 
-  // ── Zonas ──
-  const addZone = useCallback(async () => {
-    const name = newZoneName.trim();
+  // Mantiene la marca "asignado" de los confirmados según las mesas actuales.
+  const assignedNames = useMemo(() => new Set(tables.flatMap((tb) => tb.guests)), [tables]);
+
+  // ── Secciones ──
+  const addSection = useCallback(async () => {
+    const name = newSectionName.trim();
     if (!name) return;
     try {
-      const color = ZONE_COLORS[zones.length % ZONE_COLORS.length]!;
-      const ref = await addDoc(zonesRef(), { name: name.slice(0, 80), color, createdAt: new Date().toISOString() });
-      setZones((prev) => [...prev, { id: ref.id, name: name.slice(0, 80), color }]);
-      setNewZoneName("");
-      addToast("success", t("distribucion.zoneAdded"));
+      const ref = await addDoc(sectionsRef(), { name: name.slice(0, 80), createdAt: new Date().toISOString() });
+      setSections((prev) => [...prev, { id: ref.id, name: name.slice(0, 80) }]);
+      setActiveSectionId(ref.id);
+      setNewSectionName("");
+      addToast("success", t("distribucion.sectionAdded"));
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [newZoneName, zones.length, zonesRef, addToast, t]);
+  }, [newSectionName, sectionsRef, addToast, t]);
 
-  const deleteZone = useCallback(
+  const deleteSection = useCallback(
     async (id: string) => {
+      if (!window.confirm(t("distribucion.deleteSectionConfirm"))) return;
       try {
-        await deleteDoc(doc(zonesRef(), id));
-        setZones((prev) => prev.filter((z) => z.id !== id));
-        setTables((prev) => prev.map((tb) => (tb.zoneId === id ? { ...tb, zoneId: "" } : tb)));
+        const tbSnap = await getDocs(tablesRef(id));
+        for (let i = 0; i < tbSnap.docs.length; i += 400) {
+          const batch = await import("firebase/firestore").then((m) => m.writeBatch(db));
+          tbSnap.docs.slice(i, i + 400).forEach((d) => batch.delete(d.ref));
+          await batch.commit();
+        }
+        await deleteDoc(doc(sectionsRef(), id));
+        const next = sections.filter((s) => s.id !== id);
+        setSections(next);
+        if (activeSectionId === id) setActiveSectionId(next[0]?.id || "");
       } catch {
         addToast("error", t("errors.generic"));
       }
     },
-    [zonesRef, addToast, t],
+    [sectionsRef, tablesRef, sections, activeSectionId, addToast, t],
   );
 
-  // ── Mesas ──
+  // ── Mesas de la sección activa ──
   const addTable = useCallback(async () => {
+    if (!activeSectionId) return;
     try {
-      const ref = await addDoc(tablesRef(), {
+      const ref = await addDoc(tablesRef(activeSectionId), {
         name: t("distribucion.defaultTable"),
         shape: newShape,
         x: 50,
@@ -123,45 +176,32 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
         w: newShape === "circle" || newShape === "square" ? 12 : 14,
         h: newShape === "circle" || newShape === "square" ? 12 : 8,
         rotation: 0,
-        zoneId: "",
         seats: 8,
         guests: [],
         createdAt: new Date().toISOString(),
       });
       setTables((prev) => [
         ...prev,
-        {
-          id: ref.id,
-          name: t("distribucion.defaultTable"),
-          shape: newShape,
-          x: 50,
-          y: 50,
-          w: newShape === "circle" || newShape === "square" ? 12 : 14,
-          h: newShape === "circle" || newShape === "square" ? 12 : 8,
-          rotation: 0,
-          zoneId: "",
-          seats: 8,
-          guests: [],
-        },
+        { id: ref.id, name: t("distribucion.defaultTable"), shape: newShape, x: 50, y: 50, w: newShape === "circle" || newShape === "square" ? 12 : 14, h: newShape === "circle" || newShape === "square" ? 12 : 8, rotation: 0, seats: 8, guests: [] },
       ]);
       setSelectedId(ref.id);
-      addToast("success", t("distribucion.tableAdded"));
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [newShape, tablesRef, addToast, t]);
+  }, [activeSectionId, newShape, tablesRef, addToast, t]);
 
   const deleteTable = useCallback(
     async (id: string) => {
+      if (!activeSectionId) return;
       try {
-        await deleteDoc(doc(tablesRef(), id));
+        await deleteDoc(doc(tablesRef(activeSectionId), id));
         setTables((prev) => prev.filter((tb) => tb.id !== id));
         if (selectedId === id) setSelectedId("");
       } catch {
         addToast("error", t("errors.generic"));
       }
     },
-    [tablesRef, selectedId, addToast, t],
+    [activeSectionId, tablesRef, selectedId, addToast, t],
   );
 
   const patchTable = useCallback(
@@ -173,50 +213,57 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
 
   const persistTable = useCallback(
     async (id: string, patch: Partial<ShapeTable>) => {
+      if (!activeSectionId) return;
       try {
-        await updateDoc(doc(tablesRef(), id), patch);
+        await updateDoc(doc(tablesRef(activeSectionId), id), patch);
       } catch {
         addToast("error", t("errors.generic"));
       }
     },
-    [tablesRef, addToast, t],
+    [activeSectionId, tablesRef, addToast, t],
   );
 
+  // Solo se asignan invitados CONFIRMADOS y que no estén ya en otra mesa.
   const assignGuest = useCallback(
     async (id: string, name: string) => {
-      const clean = name.trim().slice(0, 120);
-      if (!clean) return;
-      patchTable(id, { guests: [...(tables.find((tb) => tb.id === id)?.guests || []), clean] });
+      if (!activeSectionId || !name) return;
+      if (assignedNames.has(name)) return;
+      const tb = tables.find((x) => x.id === id);
+      if (!tb || tb.guests.length >= tb.seats) {
+        addToast("error", t("distribucion.tableFull"));
+        return;
+      }
+      patchTable(id, { guests: [...tb.guests, name] });
       try {
-        await updateDoc(doc(tablesRef(), id), { guests: arrayUnion(clean) });
+        await updateDoc(doc(tablesRef(activeSectionId), id), { guests: arrayUnion(name) });
       } catch {
         addToast("error", t("errors.generic"));
       }
     },
-    [tables, patchTable, tablesRef, addToast, t],
+    [activeSectionId, tables, assignedNames, patchTable, tablesRef, addToast, t],
   );
 
   const removeGuest = useCallback(
     async (id: string, name: string) => {
-      patchTable(id, { guests: (tables.find((tb) => tb.id === id)?.guests || []).filter((g) => g !== name) });
+      if (!activeSectionId) return;
+      patchTable(id, { guests: (tables.find((x) => x.id === id)?.guests || []).filter((g) => g !== name) });
       try {
-        await updateDoc(doc(tablesRef(), id), { guests: arrayRemove(name) });
+        await updateDoc(doc(tablesRef(activeSectionId), id), { guests: arrayRemove(name) });
       } catch {
         addToast("error", t("errors.generic"));
       }
     },
-    [tables, patchTable, tablesRef, addToast, t],
+    [activeSectionId, tables, patchTable, tablesRef, addToast, t],
   );
 
-  // ── Arrastre de mesas sobre el mapa ──
+  // ── Arrastre de mesas ──
   const onPointerDown = useCallback(
     (e: React.PointerEvent, id: string) => {
       e.preventDefault();
       const map = mapRef.current;
       if (!map) return;
-      const rect = map.getBoundingClientRect();
-      dragRef.current = { id, dx: e.clientX - rect.left, dy: e.clientY - rect.top, moved: false };
-      (e.target as HTMLElement).setPointerCapture(e.pointerId);
+      dragRef.current = { id, moved: false };
+      (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
       setSelectedId(id);
     },
     [],
@@ -230,7 +277,7 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
       const rect = map.getBoundingClientRect();
       const x = Math.min(100, Math.max(0, ((e.clientX - rect.left) / rect.width) * 100));
       const y = Math.min(100, Math.max(0, ((e.clientY - rect.top) / rect.height) * 100));
-      if (Math.abs(x - drag.dx) > 0.1 || Math.abs(y - drag.dy) > 0.1) drag.moved = true;
+      drag.moved = true;
       patchTable(drag.id, { x, y });
     },
     [patchTable],
@@ -245,131 +292,140 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
     dragRef.current = null;
   }, [tables, persistTable]);
 
-  const zoneColor = (zoneId: string) => zones.find((z) => z.id === zoneId)?.color || "#d8b24a";
   const selected = tables.find((tb) => tb.id === selectedId);
+  const availableGuests = confirmedGuests.filter((g) => !assignedNames.has(g.name));
 
   return (
-    <div className="admin-flex--col" style={{ gap: "0.75rem" }}>
-      {/* ── Controles superiores ── */}
-      <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
-        <label className="setup-label" style={{ margin: 0, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
-          {t("distribucion.shape")}
-          <select className="setup-input" value={newShape} onChange={(e) => setNewShape(e.target.value as Shape)} style={{ marginLeft: "0.3rem" }}>
-            {SHAPES.map((s) => (
-              <option key={s.key} value={s.key}>
-                {t(`distribucion.shape_${s.key}`)}
-              </option>
-            ))}
-          </select>
-        </label>
-        <button type="button" className="setup-button setup-button--compact" onClick={() => void addTable()}>
-          {t("distribucion.addTable")}
+    <div className="admin-flex--col" style={{ gap: "0.75rem", height: "100%", minHeight: 0 }}>
+      {/* ── Menú superior de secciones ── */}
+      <div className="admin-flex" style={{ gap: "0.4rem", flexWrap: "wrap", alignItems: "center" }}>
+        {sections.length === 0 ? (
+          <span className="setup-help" style={{ margin: 0 }}>{t("distribucion.noSections")}</span>
+        ) : (
+          sections.map((s) => (
+            <button
+              key={s.id}
+              type="button"
+              className={`admin-tab ${activeSectionId === s.id ? "admin-tab--active" : ""}`}
+              onClick={() => setActiveSectionId(s.id)}
+              style={{ padding: "0.35rem 0.8rem", fontSize: "0.82rem" }}
+            >
+              {s.name}
+            </button>
+          ))
+        )}
+        <span style={{ flex: 1 }} />
+        <input
+          className="setup-input"
+          value={newSectionName}
+          onChange={(e) => setNewSectionName(e.target.value)}
+          placeholder={t("distribucion.sectionPlaceholder")}
+          maxLength={80}
+          style={{ maxWidth: "14rem" }}
+          aria-label={t("distribucion.sectionPlaceholder")}
+        />
+        <button type="button" className="setup-button setup-button--compact" onClick={() => void addSection()}>
+          {t("distribucion.addSection")}
         </button>
-        <div style={{ flex: 1 }} />
-        <span className="setup-help" style={{ margin: 0 }}>{t("distribucion.dragHint")}</span>
       </div>
 
-      {/* ── Zonas ── */}
-      <div className="setup-background-panel">
-        <p className="setup-label">{t("distribucion.zones")}</p>
-        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
-          <input className="setup-input" value={newZoneName} onChange={(e) => setNewZoneName(e.target.value)} placeholder={t("distribucion.zonePlaceholder")} maxLength={80} style={{ flex: 1, minWidth: "10rem" }} aria-label={t("distribucion.zonePlaceholder")} />
-          <button type="button" className="setup-button setup-button--compact" onClick={() => void addZone()}>{t("distribucion.addZone")}</button>
+      {/* ── Controles de mesas (sección activa) ── */}
+      {activeSectionId ? (
+        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
+          <label className="setup-label" style={{ margin: 0, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+            {t("distribucion.shape")}
+            <select className="setup-input" value={newShape} onChange={(e) => setNewShape(e.target.value as Shape)} style={{ marginLeft: "0.3rem" }}>
+              {SHAPES.map((s) => (
+                <option key={s.key} value={s.key}>
+                  {t(`distribucion.shape_${s.key}`)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button type="button" className="setup-button setup-button--compact" onClick={() => void addTable()}>
+            {t("distribucion.addTable")}
+          </button>
+          <button type="button" className="setup-button setup-button--danger setup-button--ghost setup-button--compact" onClick={() => void deleteSection(activeSectionId)}>
+            {t("distribucion.deleteSection")}
+          </button>
+          <span style={{ flex: 1 }} />
+          <span className="setup-help" style={{ margin: 0 }}>{t("distribucion.dragHint")}</span>
         </div>
-        {zones.length > 0 ? (
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem", marginTop: "0.5rem" }}>
-            {zones.map((z) => (
-              <span key={z.id} style={{ display: "inline-flex", alignItems: "center", gap: "0.35rem", fontSize: "0.78rem", border: "1px solid var(--setup-border)", borderRadius: "999px", padding: "0.15rem 0.6rem", color: "var(--setup-subtitle)" }}>
-                <span style={{ width: "0.6rem", height: "0.6rem", borderRadius: "50%", background: z.color, display: "inline-block" }} />
-                {z.name}
-                <button type="button" aria-label={t("distribucion.deleteZone")} onClick={() => void deleteZone(z.id)} style={{ background: "none", border: 0, cursor: "pointer", color: "#ef4444" }}>
-                  ×
-                </button>
-              </span>
-            ))}
-          </div>
-        ) : null}
-      </div>
+      ) : null}
 
-      {/* ── Mapa interactivo ── */}
-      <div
-        ref={mapRef}
-        className="distribucion-map"
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerLeave={onPointerUp}
-        style={{
-          position: "relative",
-          width: "100%",
-          aspectRatio: "16/9",
-          borderRadius: "1rem",
-          overflow: "hidden",
-          background: "linear-gradient(160deg, #241c12, #3a2d1c)",
-          border: "1px solid var(--setup-border)",
-          touchAction: "none",
-          userSelect: "none",
-        }}
-      >
-        {/* Leyenda de zonas de fondo */}
-        {zones.map((z) => (
-          <div
-            key={z.id}
-            style={{
-              position: "absolute",
-              left: 0,
-              top: 0,
-              width: "100%",
-              height: "100%",
-              background: `radial-gradient(circle at 50% 50%, ${z.color}14, transparent 70%)`,
-              pointerEvents: "none",
-            }}
-          />
-        ))}
-        {tables.map((tb) => (
-          <div
-            key={tb.id}
-            data-table-id={tb.id}
-            onPointerDown={(e) => onPointerDown(e, tb.id)}
-            style={{
-              position: "absolute",
-              left: `${tb.x}%`,
-              top: `${tb.y}%`,
-              width: `${tb.w}%`,
-              height: `${tb.shape === "circle" ? tb.w : tb.shape === "oval" ? tb.h : tb.h}%`,
-              transform: `translate(-50%, -50%) rotate(${tb.rotation}deg)`,
-              borderRadius: tb.shape === "rect" || tb.shape === "square" ? "0.4rem" : "50%",
-              border: `2px solid ${tb.zoneId ? zoneColor(tb.zoneId) : "rgba(255,255,255,0.5)"}`,
-              background: "rgba(255,255,255,0.12)",
-              boxShadow: selectedId === tb.id ? "0 0 0 3px var(--setup-accent)" : "0 4px 12px rgba(0,0,0,0.4)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "grab",
-              fontSize: "0.7rem",
-              color: "#fff",
-              textAlign: "center",
-              lineHeight: 1.2,
-            }}
-          >
-            <span style={{ fontWeight: 600 }}>{tb.name}</span>
-            <span style={{ opacity: 0.85, fontSize: "0.62rem" }}>
-              {tb.guests.length}/{tb.seats}
-            </span>
-          </div>
-        ))}
-        {tables.length === 0 ? (
-          <p style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", margin: 0 }}>
-            {t("distribucion.emptyMap")}
-          </p>
-        ) : null}
-      </div>
+      {/* ── Mapa de la sección activa (ocupa todo el espacio) ── */}
+      {activeSectionId ? (
+        <div
+          ref={mapRef}
+          className="distribucion-map"
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerLeave={onPointerUp}
+          style={{
+            position: "relative",
+            flex: 1,
+            width: "100%",
+            minHeight: "24rem",
+            borderRadius: "1rem",
+            overflow: "hidden",
+            background: "linear-gradient(160deg, #241c12, #3a2d1c)",
+            border: "1px solid var(--setup-border)",
+            touchAction: "none",
+            userSelect: "none",
+          }}
+        >
+          {tables.map((tb) => (
+            <div
+              key={tb.id}
+              data-table-id={tb.id}
+              onPointerDown={(e) => onPointerDown(e, tb.id)}
+              style={{
+                position: "absolute",
+                left: `${tb.x}%`,
+                top: `${tb.y}%`,
+                width: `${tb.w}%`,
+                height: `${tb.shape === "rect" || tb.shape === "square" ? tb.h : tb.w}%`,
+                transform: `translate(-50%, -50%) rotate(${tb.rotation}deg)`,
+                borderRadius: tb.shape === "rect" || tb.shape === "square" ? "0.4rem" : "50%",
+                border: `2px solid ${selectedId === tb.id ? "var(--setup-accent)" : "rgba(255,255,255,0.5)"}`,
+                background: "rgba(255,255,255,0.12)",
+                boxShadow: selectedId === tb.id ? "0 0 0 3px var(--setup-accent)" : "0 4px 12px rgba(0,0,0,0.4)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "grab",
+                fontSize: "0.72rem",
+                color: "#fff",
+                textAlign: "center",
+                lineHeight: 1.2,
+              }}
+            >
+              <span style={{ fontWeight: 600 }}>{tb.name}</span>
+              <span style={{ opacity: 0.85, fontSize: "0.64rem" }}>
+                {tb.guests.length}/{tb.seats}
+              </span>
+            </div>
+          ))}
+          {tables.length === 0 ? (
+            <p style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", margin: 0 }}>
+              {t("distribucion.emptyMap")}
+            </p>
+          ) : null}
+        </div>
+      ) : (
+        <div className="setup-background-panel" style={{ textAlign: "center", padding: "2rem" }}>
+          <p className="setup-help">{t("distribucion.createSectionFirst")}</p>
+        </div>
+      )}
 
       {/* ── Panel de la mesa seleccionada ── */}
       {selected ? (
         <div className="setup-background-panel">
-          <p className="setup-label">{t("distribucion.selectedTable")}: {selected.name}</p>
-          <div className="admin-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: "0.5rem" }}>
+          <p className="setup-label">
+            {t("distribucion.selectedTable")}: {selected.name}
+          </p>
+          <div className="admin-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "0.5rem" }}>
             <label className="setup-label" style={{ margin: 0 }}>
               {t("distribucion.name")}
               <input className="setup-input" value={selected.name} maxLength={80} onChange={(e) => { patchTable(selected.id, { name: e.target.value }); void persistTable(selected.id, { name: e.target.value }); }} />
@@ -379,15 +435,6 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
               <select className="setup-input" value={selected.shape} onChange={(e) => { const shape = e.target.value as Shape; patchTable(selected.id, { shape }); void persistTable(selected.id, { shape }); }}>
                 {SHAPES.map((s) => (
                   <option key={s.key} value={s.key}>{t(`distribucion.shape_${s.key}`)}</option>
-                ))}
-              </select>
-            </label>
-            <label className="setup-label" style={{ margin: 0 }}>
-              {t("distribucion.zone")}
-              <select className="setup-input" value={selected.zoneId} onChange={(e) => { patchTable(selected.id, { zoneId: e.target.value }); void persistTable(selected.id, { zoneId: e.target.value }); }}>
-                <option value="">—</option>
-                {zones.map((z) => (
-                  <option key={z.id} value={z.id}>{z.name}</option>
                 ))}
               </select>
             </label>
@@ -409,13 +456,39 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
             </label>
           </div>
 
-          {/* Asignación de invitados */}
-          <div className="admin-flex" style={{ gap: "0.4rem", flexWrap: "wrap", marginTop: "0.6rem" }}>
-            <GuestAssign
-              guests={selected.guests}
-              onAssign={(n) => void assignGuest(selected.id, n)}
-              onRemove={(n) => void removeGuest(selected.id, n)}
-            />
+          {/* Invitados asignados (solo confirmados) */}
+          <div style={{ marginTop: "0.6rem" }}>
+            <p className="setup-label" style={{ fontSize: "0.85rem" }}>{t("distribucion.guests")}</p>
+            {selected.guests.length > 0 ? (
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
+                {selected.guests.map((g, i) => (
+                  <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: "0.3rem", fontSize: "0.78rem", border: "1px solid var(--setup-border)", borderRadius: "999px", padding: "0.15rem 0.5rem", color: "var(--setup-subtitle)" }}>
+                    {g}
+                    <button type="button" aria-label={t("distribucion.removeGuest")} onClick={() => void removeGuest(selected.id, g)} style={{ background: "none", border: 0, cursor: "pointer", color: "#ef4444", fontSize: "0.85rem" }}>
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
+            ) : (
+              <p className="setup-help" style={{ margin: "0.2rem 0 0" }}>{t("distribucion.noGuestsAssigned")}</p>
+            )}
+            <select
+              className="setup-input"
+              value=""
+              onChange={(e) => {
+                if (e.target.value) void assignGuest(selected.id, e.target.value);
+              }}
+              style={{ marginTop: "0.4rem", maxWidth: "16rem" }}
+              aria-label={t("distribucion.assignPlaceholder")}
+            >
+              <option value="">{t("distribucion.assignPlaceholder")}</option>
+              {availableGuests.map((g) => (
+                <option key={g.name} value={g.name}>
+                  {g.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <button type="button" className="setup-button setup-button--danger setup-button--compact" style={{ marginTop: "0.6rem" }} onClick={() => void deleteTable(selected.id)}>
@@ -426,45 +499,5 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
     </div>
   );
 });
-
-/** Asignación de invitados a una mesa (chips + input). */
-function GuestAssign({
-  guests,
-  onAssign,
-  onRemove,
-}: {
-  guests: string[];
-  onAssign: (name: string) => void;
-  onRemove: (name: string) => void;
-}) {
-  const { t } = useTranslation();
-  const [value, setValue] = useState("");
-  const submit = () => {
-    if (value.trim()) {
-      onAssign(value);
-      setValue("");
-    }
-  };
-  return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem", width: "100%" }}>
-      <div className="admin-flex" style={{ gap: "0.4rem", flexWrap: "wrap" }}>
-        <input className="setup-input" value={value} onChange={(e) => setValue(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} placeholder={t("distribucion.assignPlaceholder")} maxLength={120} style={{ flex: 1, minWidth: "9rem" }} aria-label={t("distribucion.assignPlaceholder")} />
-        <button type="button" className="setup-button setup-button--compact" onClick={submit}>{t("distribucion.assign")}</button>
-      </div>
-      {guests.length > 0 ? (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
-          {guests.map((g, i) => (
-            <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: "0.3rem", fontSize: "0.78rem", border: "1px solid var(--setup-border)", borderRadius: "999px", padding: "0.15rem 0.5rem", color: "var(--setup-subtitle)" }}>
-              {g}
-              <button type="button" aria-label={t("distribucion.removeGuest")} onClick={() => onRemove(g)} style={{ background: "none", border: 0, cursor: "pointer", color: "#ef4444", fontSize: "0.85rem" }}>
-                ×
-              </button>
-            </span>
-          ))}
-        </div>
-      ) : null}
-    </div>
-  );
-}
 
 export default DistribucionTab;

@@ -66,12 +66,27 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
   const triviaEnabled = useFormField("triviaEnabled");
   const welcomeVideo = useFormField("welcomeVideo");
   const welcomeVideoEnabled = useFormField("welcomeVideoEnabled");
+  const voiceNotesEnabled = useFormField("voiceNotesEnabled");
+  const dayPhotosEnabled = useFormField("dayPhotosEnabled");
+  const mailboxEnabled = useFormField("mailboxEnabled");
+  const toastsEnabled = useFormField("toastsEnabled");
+  const venueMapEnabled = useFormField("venueMapEnabled");
   const { t } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
   // Lookup de los *Enabled para el render de filas (los hooks no pueden
   // llamarse dentro del .map de renderToggleRow).
-  const enabledMap: Record<string, string> = { giftsListEnabled, rsvpDeadlineEnabled, triviaEnabled, welcomeVideoEnabled };
+  const enabledMap: Record<string, string> = {
+    giftsListEnabled,
+    rsvpDeadlineEnabled,
+    triviaEnabled,
+    welcomeVideoEnabled,
+    voiceNotesEnabled,
+    dayPhotosEnabled,
+    mailboxEnabled,
+    toastsEnabled,
+    venueMapEnabled,
+  };
 
   // Toggle genérico para los switches: lee el valor ACTUAL del campo desde la
   // tienda (getField es síncrono y no necesita suscripción en el callback).
@@ -236,6 +251,21 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
             />
           </>
         ) : null}
+
+        {/* Caja de recuerdos de voz */}
+        {renderToggleRow("voiceNotes", t("setup.voiceNotesLabel"), t("setup.voiceNotesHint"))}
+
+        {/* Fotos del día */}
+        {renderToggleRow("dayPhotos", t("setup.dayPhotosLabel"), t("setup.dayPhotosHint"))}
+
+        {/* Buzón privado */}
+        {renderToggleRow("mailbox", t("setup.mailboxLabel"), t("setup.mailboxHint"))}
+
+        {/* Brindis */}
+        {renderToggleRow("toasts", t("setup.toastsLabel"), t("setup.toastsHint"))}
+
+        {/* Mapa del recinto */}
+        {renderToggleRow("venueMap", t("setup.venueMapLabel"), t("setup.venueMapHint"))}
       </fieldset>
     </>
   );

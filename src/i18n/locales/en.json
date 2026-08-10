@@ -469,7 +469,17 @@
     "musicPollHint": "Guests suggest and vote songs for the DJ.",
     "triviaLabel": "Couple trivia",
     "triviaHint": "A mini quiz with the couple's answers.",
-    "triviaEditorHint": "One question per line: Question | Answer"
+    "triviaEditorHint": "One question per line: Question | Answer",
+    "voiceNotesLabel": "Voice memory box",
+    "voiceNotesHint": "Guests record voice notes for the couple",
+    "dayPhotosLabel": "Day photos",
+    "dayPhotosHint": "Guests upload photos to a shared album",
+    "mailboxLabel": "Private mailbox",
+    "mailboxHint": "Messages only the couple can read",
+    "toastsLabel": "Toasts & speeches",
+    "toastsHint": "Guests sign up to toast",
+    "venueMapLabel": "Venue map",
+    "venueMapHint": "Points of interest you draw"
   },
   "admin": {
     "tabs": {
@@ -1546,7 +1556,13 @@
     "aria": "Venue map with points of interest"
   },
   "distribucion": {
-    "zoneAdded": "Zone created.",
+    "sectionAdded": "Section created.",
+    "noSections": "No sections yet.",
+    "sectionPlaceholder": "Section name (e.g. Main hall)",
+    "addSection": "Add section",
+    "deleteSection": "Delete section",
+    "deleteSectionConfirm": "Delete this section and all its tables?",
+    "createSectionFirst": "Create a section to start drawing its map.",
     "defaultTable": "Table",
     "tableAdded": "Table added.",
     "shape": "Shape:",
@@ -1556,21 +1572,18 @@
     "shape_square": "Square",
     "addTable": "Add table",
     "dragHint": "Drag tables to position them",
-    "zones": "Venue zones",
-    "zonePlaceholder": "Zone name (e.g. Zone A)",
-    "addZone": "Add zone",
-    "deleteZone": "Delete zone",
     "emptyMap": "Add tables to start drawing the floor plan",
     "selectedTable": "Selected table",
     "name": "Name",
-    "zone": "Zone",
     "seats": "Seats",
     "size": "Width (%)",
     "height": "Height (%)",
     "rotation": "Rotation (°)",
     "deleteTable": "Delete table",
-    "assignPlaceholder": "Guest name…",
-    "assign": "Assign",
-    "removeGuest": "Remove guest"
+    "guests": "Guests (confirmed)",
+    "noGuestsAssigned": "No guests assigned.",
+    "assignPlaceholder": "Assign confirmed guest…",
+    "removeGuest": "Remove guest",
+    "tableFull": "Table is full."
   }
 }

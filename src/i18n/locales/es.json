@@ -469,7 +469,17 @@
     "triviaEditorHint": "Una pregunta por línea: Pregunta | Respuesta",
     "resetButton": "Restablecer",
     "resetConfirmInitial": "Todos los campos se restablecerán a sus valores por defecto, excepto tu token de acceso. ¿Continuar?",
-    "resetConfirmAdmin": "Todos los campos se restablecerán a sus valores por defecto. ¿Continuar?"
+    "resetConfirmAdmin": "Todos los campos se restablecerán a sus valores por defecto. ¿Continuar?",
+    "voiceNotesLabel": "Caja de recuerdos de voz",
+    "voiceNotesHint": "Los invitados graban notas de voz para la pareja",
+    "dayPhotosLabel": "Fotos del día",
+    "dayPhotosHint": "Los invitados suben fotos a un álbum compartido",
+    "mailboxLabel": "Buzón privado",
+    "mailboxHint": "Mensajes que solo lee la pareja",
+    "toastsLabel": "Brindis y discursos",
+    "toastsHint": "Los invitados se apuntan para brindar",
+    "venueMapLabel": "Mapa del recinto",
+    "venueMapHint": "Puntos de interés dibujados por ti"
   },
   "admin": {
     "tabs": {
@@ -1546,7 +1556,13 @@
     "aria": "Mapa del recinto con puntos de interés"
   },
   "distribucion": {
-    "zoneAdded": "Zona creada.",
+    "sectionAdded": "Sección creada.",
+    "noSections": "Aún no hay secciones.",
+    "sectionPlaceholder": "Nombre de la sección (p. ej. Salón principal)",
+    "addSection": "Añadir sección",
+    "deleteSection": "Eliminar sección",
+    "deleteSectionConfirm": "¿Eliminar esta sección y todas sus mesas?",
+    "createSectionFirst": "Crea una sección para empezar a dibujar su mapa.",
     "defaultTable": "Mesa",
     "tableAdded": "Mesa añadida.",
     "shape": "Forma:",
@@ -1556,21 +1572,18 @@
     "shape_square": "Cuadrado",
     "addTable": "Añadir mesa",
     "dragHint": "Arrastra las mesas para colocarlas",
-    "zones": "Zonas del recinto",
-    "zonePlaceholder": "Nombre de la zona (p. ej. Zona A)",
-    "addZone": "Añadir zona",
-    "deleteZone": "Eliminar zona",
     "emptyMap": "Añade mesas para empezar a dibujar el plano",
     "selectedTable": "Mesa seleccionada",
     "name": "Nombre",
-    "zone": "Zona",
     "seats": "Plazas",
     "size": "Ancho (%)",
     "height": "Alto (%)",
     "rotation": "Rotación (°)",
     "deleteTable": "Eliminar mesa",
-    "assignPlaceholder": "Nombre del invitado…",
-    "assign": "Asignar",
-    "removeGuest": "Quitar invitado"
+    "guests": "Invitados (confirmados)",
+    "noGuestsAssigned": "Sin invitados asignados.",
+    "assignPlaceholder": "Asignar invitado confirmado…",
+    "removeGuest": "Quitar invitado",
+    "tableFull": "La mesa está llena."
   }
 }

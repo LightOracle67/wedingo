@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.81",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: Distribución rediseñada por SECCIONES — cada sección tiene su PROPIO mapa con mesas con forma que se guardan en Firestore (posición, tamaño, rotación, plazas e invitados); las secciones se muestran como menú superior sobre la previsualización y el mapa ocupa todo el espacio. Solo se asignan invitados que hayan CONFIRMADO asistencia. Se añaden los toggles de configuración (setup) para caja de voz, fotos del día, buzón privado, brindis y mapa del recinto. Reglas Firestore: secciones con tablas anidadas.",
+    ],
+  },
+
+  {
     version: "2.95.80",
     date: "2026-08-09",
     changes: [
