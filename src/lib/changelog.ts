@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.89",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: servicio de impresión de etiquetas por mesa en Distribución — imprime UNA etiqueta por página A4 por invitado asignado, con el Nombre completo y la mesa en la línea siguiente, usando el fondo personalizado, las esquinas personalizadas y el estilo de ancho de sección de la invitación.",
+    ],
+  },
+
+  {
     version: "2.95.88",
     date: "2026-08-09",
     changes: [

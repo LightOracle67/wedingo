@@ -455,7 +455,13 @@ export default function AdminPage() {
             )}
 
             {/* Pestaña: Distribución (mapa de mesas y zonas) */}
-            {activeTab === "distribucion" && <DistribucionTab inviteToken={inviteToken || ""} />}
+            {activeTab === "distribucion" && (
+              <DistribucionTab
+                inviteToken={inviteToken || ""}
+                background={config.backgroundImage}
+                cornerDecoration={config.cornerDecoration}
+              />
+            )}
 
             {/* Pestaña: Gestión de acceso */}
             {activeTab === "acceso" && (

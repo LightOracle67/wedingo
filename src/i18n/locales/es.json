@@ -1588,6 +1588,9 @@
     "widthPx": "Ancho (px)",
     "heightPx": "Alto (px)",
     "sectionsHint": "Cada sección tiene su propio mapa. Crea una y añade sus mesas.",
-    "assignHint": "Solo aparecen invitados que hayan confirmado su asistencia y que aún no estén asignados."
+    "assignHint": "Solo aparecen invitados que hayan confirmado su asistencia y que aún no estén asignados.",
+    "printLabels": "Imprimir etiquetas",
+    "printTitle": "Etiquetas por mesa",
+    "printNoGuests": "Asigna invitados a las mesas para poder imprimir etiquetas."
   }
 }

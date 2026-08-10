@@ -84,7 +84,17 @@ function chairPositions(shape: Shape, _w: number, _h: number, seats: number): Ar
   return out;
 }
 
-const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteToken: string }) {
+const DistribucionTab = memo(function DistribucionTab({
+  inviteToken,
+  background,
+  cornerDecoration,
+}: {
+  inviteToken: string;
+  /** Imagen de fondo personalizada (data-URL ya hidratada) para las etiquetas. */
+  background?: string | undefined;
+  /** Decoración de esquinas personalizada (data-URL) para las etiquetas. */
+  cornerDecoration?: string | undefined;
+}) {
   const { t } = useTranslation();
   const { addToast } = useToast();
   const [sections, setSections] = useState<Section[]>([]);
@@ -346,6 +356,67 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
     dragRef.current = null;
   }, [tables, persistTable]);
 
+  // ── Servicio de impresión de etiquetas por mesa (A4, una por página) ──
+  const printLabels = useCallback(() => {
+    const withGuests = tables.filter((tb) => tb.guests.length > 0);
+    if (withGuests.length === 0) {
+      addToast("info", t("distribucion.printNoGuests"));
+      return;
+    }
+    const esc = (v: string) =>
+      v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    const cornerImg = cornerDecoration
+      ? `<img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--tl"/>
+         <img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--tr"/>
+         <img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--bl"/>
+         <img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--br"/>`
+      : "";
+    const bgStyle = background ? `background-image:url("${esc(background)}");` : "";
+    const pages = withGuests.flatMap((tb) =>
+      tb.guests.map(
+        (g) => `<div class="lbl-page">
+          <div class="lbl-card" style="${bgStyle}">
+            <div class="lbl-scrim"></div>
+            ${cornerImg}
+            <div class="lbl-text">
+              <p class="lbl-guest">${esc(g)}</p>
+              <p class="lbl-table">${esc(tb.name)}</p>
+            </div>
+          </div>
+        </div>`,
+      ),
+    );
+    const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${esc(t("distribucion.printTitle"))}</title><style>
+      @page{size:A4 portrait;margin:0}
+      *{box-sizing:border-box}
+      body{margin:0;font-family:Georgia,'Times New Roman',serif}
+      .lbl-page{width:210mm;height:297mm;display:grid;place-items:center;page-break-after:always;background:#fff;padding:14mm}
+      .lbl-page:last-child{page-break-after:auto}
+      .lbl-card{position:relative;width:min(90%,42rem);aspect-ratio:3/2;background-size:cover;background-position:center;border-radius:1.2rem;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.35)}
+      .lbl-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,6,2,.05),rgba(10,6,2,.38));z-index:1}
+      .lbl-corner{position:absolute;width:64px;height:64px;z-index:2;opacity:.9}
+      .lbl-corner--tl{top:8px;left:8px}
+      .lbl-corner--tr{top:8px;right:8px;transform:scaleX(-1)}
+      .lbl-corner--bl{bottom:8px;left:8px;transform:scaleY(-1)}
+      .lbl-corner--br{bottom:8px;right:8px;transform:scale(-1)}
+      .lbl-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;text-align:center;padding:1.5rem;z-index:3;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.7)}
+      .lbl-guest{margin:0;font-family:'Great Vibes',Georgia,cursive;font-size:clamp(2rem,9vw,3.4rem);line-height:1.1}
+      .lbl-table{margin:0;font-size:clamp(1rem,4vw,1.4rem);letter-spacing:.06em;text-transform:uppercase;opacity:.95}
+      @media print{.lbl-scrim{background:linear-gradient(180deg,rgba(10,6,2,.05),rgba(10,6,2,.4))}}
+    </style></head><body>${pages.join("")}</body></html>`;
+    const win = window.open("", "_blank");
+    if (!win) {
+      addToast("error", t("errors.generic"));
+      return;
+    }
+    win.document.write(html);
+    win.document.close();
+    win.focus();
+    setTimeout(() => {
+      win.print();
+    }, 400);
+  }, [tables, background, cornerDecoration, addToast, t]);
+
   const selected = tables.find((tb) => tb.id === selectedId);
   const availableGuests = confirmedGuests.filter((g) => !assignedNames.has(g.name));
 
@@ -401,6 +472,9 @@ const DistribucionTab = memo(function DistribucionTab({ inviteToken }: { inviteT
           </label>
           <button type="button" className="setup-button setup-button--compact" onClick={() => void addTable()}>
             {t("distribucion.addTable")}
+          </button>
+          <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={printLabels}>
+            {t("distribucion.printLabels")}
           </button>
           <button type="button" className="setup-button setup-button--danger setup-button--ghost setup-button--compact" onClick={() => void deleteSection(activeSectionId)}>
             {t("distribucion.deleteSection")}

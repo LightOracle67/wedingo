@@ -105,4 +105,37 @@ describe("DistribucionTab", () => {
     fireEvent.click(screen.getByLabelText("distribucion.deleteTable"));
     expect(deleteDoc).toHaveBeenCalled();
   });
+
+  it("prints one place card per guest with table name and custom style", async () => {
+    // Una mesa con un invitado asignado.
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
+      if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
+      return Promise.resolve({
+        docs: [{ id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 8, guests: ["Ana García"] }) }],
+      });
+    });
+    let html = "";
+    const fakeWin = {
+      document: {
+        write: (s: string) => {
+          html += s;
+        },
+        close: () => {},
+      },
+      focus: () => {},
+      print: () => {},
+    };
+    vi.stubGlobal("open", vi.fn(() => fakeWin));
+    render(<DistribucionTab inviteToken="tok" background="data:image/png;base64,BG" cornerDecoration="data:image/png;base64,CORNER" />);
+    await screen.findByText("Salón");
+    await screen.findByText("Mesa 1");
+    fireEvent.click(screen.getByText("distribucion.printLabels"));
+    expect(html).toContain("Ana García");
+    expect(html).toContain("Mesa 1");
+    expect(html).toContain("data:image/png;base64,BG");
+    expect(html).toContain("data:image/png;base64,CORNER");
+    expect(html).toContain("lbl-page");
+    vi.unstubAllGlobals();
+  });
 });

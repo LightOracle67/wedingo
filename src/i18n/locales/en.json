@@ -1588,6 +1588,9 @@
     "widthPx": "Width (px)",
     "heightPx": "Height (px)",
     "sectionsHint": "Each section has its own map. Create one and add its tables.",
-    "assignHint": "Only confirmed guests not yet assigned are listed."
+    "assignHint": "Only confirmed guests not yet assigned are listed.",
+    "printLabels": "Print place cards",
+    "printTitle": "Table place cards",
+    "printNoGuests": "Assign guests to tables to print place cards."
   }
 }
