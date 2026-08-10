@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.86",
+    date: "2026-08-09",
+    changes: [
+      "FIX (crítico): no se podían eliminar mesas (ni secciones/zonas/puntos) — las reglas combinaban create/update/delete y evaluaban request.resource.data, que es null en delete, denegando el borrado. Ahora el borrado tiene su propia regla de admin. Reglas test 19/19 con escenarios de delete.",
+    ],
+  },
+
+  {
     version: "2.95.85",
     date: "2026-08-09",
     changes: [

@@ -416,13 +416,14 @@ service cloud.firestore {
          de invitados asignados), escritura solo admin/superadmin. */
       match /tables/{tableId} {
         allow read: if true;
-        allow create, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+        allow create, update: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
           && request.resource.data.keys().hasOnly(['name', 'seats', 'guests', 'createdAt'])
           && request.resource.data.name is string && request.resource.data.name.size() <= 80
           && request.resource.data.seats is int && request.resource.data.seats >= 0 && request.resource.data.seats <= 100
           && request.resource.data.guests is list
           && request.resource.data.guests.size() <= 200
           && request.resource.data.guests.all(g, g is string && g.size() <= 120);
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
 
       /* Caja de recuerdos de voz (diferencial): los invitados graban una nota
@@ -479,28 +480,30 @@ service cloud.firestore {
          admin (coordenadas en %) visibles para los invitados. */
       match /venuepoints/{pointId} {
         allow read: if true;
-        allow create, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+        allow create, update: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
           && request.resource.data.keys().hasOnly(['label', 'x', 'y', 'color'])
           && request.resource.data.label is string && request.resource.data.label.size() <= 80 && isSafeText(request.resource.data.label)
           && request.resource.data.x is number && request.resource.data.x >= 0 && request.resource.data.x <= 100
           && request.resource.data.y is number && request.resource.data.y >= 0 && request.resource.data.y <= 100
           && request.resource.data.color is string && request.resource.data.color.size() <= 12;
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
 
       /* Distribución: SECCIONES del recinto (cada una con su propio mapa).
          Lectura pública (el invitado ve su mesa), escritura solo admin. */
       match /sections/{sectionId} {
         allow read: if true;
-        allow create, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+        allow create, update: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
           && request.resource.data.keys().hasOnly(['name', 'createdAt'])
           && request.resource.data.name is string && request.resource.data.name.size() <= 80 && isSafeText(request.resource.data.name);
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
 
         /* Mesas de la sección: forma, posición, tamaño (PÍXELES), rotación,
            plazas e invitados CONFIRMADOS (solo admin escribe; lectura pública).
            En círculo y cuadrado ancho == alto SIEMPRE. */
         match /tables/{tableId} {
           allow read: if true;
-          allow create, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+          allow create, update: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
             && request.resource.data.keys().hasOnly(['name', 'shape', 'x', 'y', 'w', 'h', 'rotation', 'seats', 'guests', 'createdAt'])
             && request.resource.data.name is string && request.resource.data.name.size() <= 80 && isSafeText(request.resource.data.name)
             && request.resource.data.shape in ['circle', 'rect', 'oval', 'square']
@@ -514,6 +517,7 @@ service cloud.firestore {
             && request.resource.data.seats is int && request.resource.data.seats >= 0 && request.resource.data.seats <= 100
             && request.resource.data.guests is list && request.resource.data.guests.size() <= 200
             && request.resource.data.guests.all(g, g is string && g.size() <= 120);
+          allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
         }
       }
     }

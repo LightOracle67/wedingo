@@ -81,6 +81,15 @@ async function run() {
   // 8. El superadmin puede borrar una invitación.
   await t("invitation delete (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").delete());
 
+  // 9. Distribución: crear/borrar una sección y una mesa (regresión: el delete
+  //    combinado con create/update evaluaba request.resource.data (null en
+  //    delete) y denegaba el borrado).
+  await t("section create (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").collection("sections").doc("s1").set({ name: "Salón", createdAt: new Date().toISOString() }));
+  await t("section delete (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").collection("sections").doc("s1").delete());
+  await t("section table create (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").collection("sections").doc("s2").collection("tables").doc("t1").set({ name: "Mesa 1", shape: "square", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 8, guests: [] }));
+  await t("section table delete (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").collection("sections").doc("s2").collection("tables").doc("t1").delete());
+  await t("section table delete (invitado) → NEGADO", false, guestDb.collection("invitations").doc("AbCdEf1234").collection("sections").doc("s2").collection("tables").doc("t1").delete());
+
   await testEnv.cleanup();
 
   console.log("\n=== RESULTADOS REGLAS ===");
