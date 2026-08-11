@@ -856,6 +856,7 @@
       "colActions": "Actions",
       "emptyInvitation": "Not configured",
       "noInvitations": "No invitations in the system.",
+      "noRsvp": "No RSVP responses for {{token}}.",
       "copyToken": "Copy token",
       "exportedOne": "Data for {{token}} exported.",
       "exportedSelected": "{{count}} invitations exported.",
@@ -977,7 +978,8 @@
       "socialRides": "Rides",
       "socialGifts": "Gifts",
       "originsBtn": "Guest origins",
-      "originsTitle": "Where guests come from (ride share)"
+      "originsTitle": "Where guests come from (ride share)",
+      "noData": "No data to export."
     },
     "support": {
       "upcomingTitle": "Upcoming weddings (≤14 days)",
@@ -1007,6 +1009,7 @@
       "auditTitle": "Audit log",
       "auditLoad": "Load",
       "auditExport": "Export CSV",
+      "noAudit": "No audit records to export.",
       "consoleHint": "Enter a token to see its summary and quick links."
     },
     "tokenConflictsTitle": "Token conflicts detected",
@@ -1475,6 +1478,8 @@
     "quickActions": "Quick actions",
     "downloadGallery": "Download gallery ({{count}})",
     "galleryDownloaded": "{{count}} image(s) downloaded.",
+    "noGalleryPhotos": "No gallery photos to download.",
+    "noGuestsToExport": "No guests to export.",
     "icsButton": "Add to my calendar (.ics)",
     "present": "Open the invitation",
     "internalNote": "Internal note",
@@ -1564,6 +1569,7 @@
     "shape_rect": "Rectangle",
     "shape_oval": "Oval",
     "shape_square": "Square",
+    "noTables": "No tables in this section to export.",
     "addTable": "Add table",
     "dragHint": "Drag tables to position them",
     "emptyMap": "Add tables to start drawing the floor plan",

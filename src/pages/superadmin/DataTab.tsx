@@ -313,6 +313,11 @@ export default function DataTab() {
       try {
         const rsvpSnap = await getDocs(rsvpByInviteRef(token));
         const rows = rsvpSnap.docs.map((d) => d.data());
+        // Sin respuestas no se abre una ventana de impresión vacía.
+        if (rows.length === 0) {
+          addToast("info", t("superadmin.data.noRsvp", { token }));
+          return;
+        }
         const html = `<!doctype html><html><head><meta charset="utf-8"><title>${token} — RSVP</title><style>
           body{font-family:system-ui,sans-serif;padding:2rem;color:#222}
           h1{font-size:1.3rem}h2{font-size:1rem;margin-top:1.5rem}
@@ -344,9 +349,14 @@ export default function DataTab() {
   const exportRsvpExcel = useCallback(
     async (token: string) => {
       try {
+        const rsvpSnap = await getDocs(rsvpByInviteRef(token));
+        // Sin confirmaciones no se genera un fichero vacío.
+        if (rsvpSnap.docs.length === 0) {
+          addToast("info", t("superadmin.data.noRsvp", { token }));
+          return;
+        }
         const { exportToXlsx } = await import("../../lib/excel-utils");
         const { buildRsvpSheet } = await import("../../lib/excel-builders");
-        const rsvpSnap = await getDocs(rsvpByInviteRef(token));
         const sheet = buildRsvpSheet(token, rsvpSnap.docs.map((d) => d.data() as Record<string, unknown>));
         exportToXlsx(`${token}_rsvp`, [sheet]);
         addToast("success", t("superadmin.data.exportedOne", { token }));
@@ -397,6 +407,12 @@ export default function DataTab() {
         getDocs(INVITATIONS_COLLECTION_REF),
         getDocs(RSVP_RESPONSES_GROUP),
       ]);
+      // Sin invitaciones registradas no se exporta un backup vacío.
+      if (invSnap.docs.length === 0) {
+        addToast("info", t("superadmin.data.noInvitations"));
+        setBusy(false);
+        return;
+      }
       // Lee la galería/audio de cada invitación con concurrencia limitada
       // (lotes de 5) para no disparar un N+1 masivo en instalaciones grandes.
       const mediaByToken: Record<string, { gallery: unknown[]; audio: unknown[] }> = {};

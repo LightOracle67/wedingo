@@ -856,6 +856,7 @@
       "colActions": "Acciones",
       "emptyInvitation": "Sin configurar",
       "noInvitations": "No hay invitaciones en el sistema.",
+      "noRsvp": "No hay confirmaciones para {{token}}.",
       "copyToken": "Copiar token",
       "exportedOne": "Datos de {{token}} exportados.",
       "exportedSelected": "{{count}} invitaciones exportadas.",
@@ -977,7 +978,8 @@
       "socialRides": "Coches",
       "socialGifts": "Regalos",
       "originsBtn": "Orígenes de invitados",
-      "originsTitle": "De dónde vienen los invitados (coche compartido)"
+      "originsTitle": "De dónde vienen los invitados (coche compartido)",
+      "noData": "No hay datos para exportar."
     },
     "support": {
       "upcomingTitle": "Bodas próximas (≤14 días)",
@@ -1007,6 +1009,7 @@
       "auditTitle": "Auditoría",
       "auditLoad": "Cargar",
       "auditExport": "Export CSV",
+      "noAudit": "No hay registros de auditoría para exportar.",
       "consoleHint": "Escribe un token para ver su resumen y accesos rápidos."
     },
     "tokenConflictsTitle": "Conflictos de tokens detectados",
@@ -1475,6 +1478,8 @@
     "quickActions": "Acciones rápidas",
     "downloadGallery": "Descargar galería ({{count}})",
     "galleryDownloaded": "{{count}} imagen(es) descargada(s).",
+    "noGalleryPhotos": "No hay fotos en la galería para descargar.",
+    "noGuestsToExport": "No hay invitados para exportar.",
     "icsButton": "Añadir a mi calendario (.ics)",
     "present": "Abrir la invitación",
     "internalNote": "Nota interna",
@@ -1564,6 +1569,7 @@
     "shape_rect": "Rectángulo",
     "shape_oval": "Óvalo",
     "shape_square": "Cuadrado",
+    "noTables": "No hay mesas en esta sección para exportar.",
     "addTable": "Añadir mesa",
     "dragHint": "Arrastra las mesas para colocarlas",
     "emptyMap": "Añade mesas para empezar a dibujar el plano",

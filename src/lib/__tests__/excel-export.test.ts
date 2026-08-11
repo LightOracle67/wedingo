@@ -302,9 +302,19 @@ describe("Export Excel: auditoría (SupportTab)", () => {
 });
 
 describe("buildWorkbook (excel-utils)", () => {
-  it("omite las hojas sin cabecera ni filas (evita hojas vacías)", () => {
-    const wb = buildWorkbook([{ name: "Vacía", headers: [], rows: [] }]);
-    expect(wb.SheetNames).toEqual([]);
+  it("omite las hojas sin filas de datos (incluso con cabecera)", () => {
+    // Hoja totalmente vacía.
+    const empty = buildWorkbook([{ name: "Vacía", headers: [], rows: [] }]);
+    expect(empty.SheetNames).toEqual([]);
+    // Hoja con cabecera pero sin datos: también se omite (no exportar vacío).
+    const headerOnly = buildWorkbook([{ name: "SoloCabecera", headers: ["A", "B"], rows: [] }]);
+    expect(headerOnly.SheetNames).toEqual([]);
+    // Un libro con varias hojas donde solo una tiene datos conserva esa hoja.
+    const mixed = buildWorkbook([
+      { name: "SinDatos", headers: ["A"], rows: [] },
+      { name: "ConDatos", headers: ["A"], rows: [["x"]] },
+    ]);
+    expect(mixed.SheetNames).toEqual(["ConDatos"]);
   });
 
   it("respeta el límite de 31 caracteres del nombre de hoja", () => {

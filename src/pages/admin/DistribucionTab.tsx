@@ -445,6 +445,11 @@ const DistribucionTab = memo(function DistribucionTab({
 
   // ── Exportación XLSX (Excel/LibreOffice) de las mesas e invitados asignados ──
   const exportTablesXlsx = useCallback(async () => {
+    // Sin mesas en la sección activa no hay nada que exportar.
+    if ((tables || []).length === 0) {
+      addToast("info", t("distribucion.noTables"));
+      return;
+    }
     const { exportToXlsx } = await import("../../lib/excel-utils");
     const { buildTablesSheet } = await import("../../lib/excel-builders");
     const sheet = buildTablesSheet(sections, activeSectionId, tables, t);

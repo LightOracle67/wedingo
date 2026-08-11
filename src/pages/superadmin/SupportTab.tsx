@@ -13,6 +13,7 @@ import { memo, useCallback, useEffect, useState } from "react";
 import { getDocs, collection, query, where, limit } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
+import { useToast } from "../../hooks/useToast";
 
 interface AlertInfo {
   id: string;
@@ -28,6 +29,7 @@ interface AlertInfo {
 
 const SupportTab = memo(function SupportTab() {
   const { t } = useTranslation();
+  const { addToast } = useToast();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [alerts, setAlerts] = useState<AlertInfo[]>([]);
@@ -141,10 +143,15 @@ const SupportTab = memo(function SupportTab() {
     } catch {}
   }, []);
   const exportAudit = useCallback(async () => {
+    // Sin filas de auditoría no se genera un fichero vacío.
+    if ((auditRows || []).length === 0) {
+      addToast("info", t("superadmin.support.noAudit"));
+      return;
+    }
     const { exportToXlsx } = await import("../../lib/excel-utils");
     const { buildAuditSheet } = await import("../../lib/excel-builders");
     exportToXlsx(`auditoria_${new Date().toISOString().slice(0, 10)}`, [buildAuditSheet(auditRows)]);
-  }, [auditRows]);
+  }, [auditRows, t, addToast]);
 
   const searchToken = useCallback(async () => {
     const token = queryToken.trim();

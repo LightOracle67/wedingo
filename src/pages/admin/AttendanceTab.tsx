@@ -87,6 +87,11 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
 
   /** Descarga un Excel con todas las respuestas RSVP (filtradas o no). */
   const handleExportExcel = useCallback(async () => {
+    // No se exporta si no hay respuestas: se avisa y se evita un fichero vacío.
+    if ((filteredEntries || []).length === 0) {
+      addToast("info", t("attendance.noResults"));
+      return;
+    }
     try {
       const { buildRSVPSheet, buildMenuSheet } = await import("../../lib/excel-builders");
       const { exportToXlsx } = await import("../../lib/excel-utils");

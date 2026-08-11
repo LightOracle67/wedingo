@@ -22,6 +22,11 @@ vi.mock("../../../lib/firebase", () => ({
   getStorageInstance: vi.fn(() => Promise.resolve({})),
 }));
 
+const mockAddToast = vi.fn();
+vi.mock("../../../hooks/useToast", () => ({
+  useToast: () => ({ addToast: mockAddToast }),
+}));
+
 import MetricsTab from "../MetricsTab";
 import SupportTab from "../SupportTab";
 

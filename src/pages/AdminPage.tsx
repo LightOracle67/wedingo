@@ -216,6 +216,11 @@ export default function AdminPage() {
    * Crea un HTML con estilos de impresión y abre la ventana de impresión.
    */
   const exportPdf = useCallback(() => {
+    // Sin respuestas filtradas no se imprime una lista vacía.
+    if (!filteredEntries || filteredEntries.length === 0) {
+      addToast("info", t("attendance.noResults"));
+      return;
+    }
     // El PDF respeta la búsqueda y el filtro de asistencia (antes imprimía
     // siempre la lista completa).
     const rows = filteredEntries

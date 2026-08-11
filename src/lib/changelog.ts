@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.5",
+    date: "2026-08-11",
+    changes: [
+      "FEAT: ninguna exportación se realiza si sus datos están vacíos (Excel, PDF, galería, fotos del día, RSVP, auditoría y backup). buildWorkbook omite hojas sin filas y cada export avisa con un toast cuando no hay contenido.",
+    ],
+  },
+  {
     version: "2.96.4",
     date: "2026-08-11",
     changes: [

@@ -164,6 +164,11 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
 
   // ── Exportación XLSX (Excel/LibreOffice) de invitados y buzón ──
   const exportGuestsXlsx = useCallback(async () => {
+    // Sin invitados esperados no hay nada que exportar.
+    if ((expected || []).length === 0) {
+      addToast("info", t("tools.noGuestsToExport"));
+      return;
+    }
     const { exportToXlsx } = await import("../../lib/excel-utils");
     const { buildGuestsSheet } = await import("../../lib/excel-builders");
     const sheet = buildGuestsSheet(expected, confirmed, t);
@@ -172,6 +177,11 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
   }, [expected, confirmed, t, addToast]);
 
   const exportMailboxXlsx = useCallback(async () => {
+    // Sin mensajes privados no hay buzón que exportar.
+    if ((mailbox || []).length === 0) {
+      addToast("info", t("tools.noMail"));
+      return;
+    }
     const { exportToXlsx } = await import("../../lib/excel-utils");
     const { buildMailboxSheet } = await import("../../lib/excel-builders");
     const sheet = buildMailboxSheet(mailbox || [], t);
@@ -185,6 +195,11 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
   }, [reminder, inviteUrl, coupleName, t]);
 
   const downloadGallery = useCallback(async () => {
+    // Sin fotos en la galería no se descarga nada.
+    if (galleryCount === 0) {
+      addToast("info", t("tools.noGalleryPhotos"));
+      return;
+    }
     try {
       const snap = await getDocs(collection(db, "invitations", inviteToken, "gallery"));
       const urls = snap.docs.map((d) => ({ id: d.id, data: String(d.data().data || "") }));
@@ -201,7 +216,7 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [inviteToken, addToast, t]);
+  }, [galleryCount, inviteToken, addToast, t]);
 
   const downloadIcs = useCallback(() => {
     if (!weddingDate?.year || !weddingDate.month || !weddingDate.day) {

@@ -13,6 +13,7 @@ import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { INVITATIONS_COLLECTION_REF, rsvpByInviteRef, db } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
+import { useToast } from "../../hooks/useToast";
 
 interface InvRow {
   id: string;
@@ -38,6 +39,7 @@ interface StorageRow {
 
 const MetricsTab = memo(function MetricsTab() {
   const { t } = useTranslation();
+  const { addToast } = useToast();
   const [rows, setRows] = useState<InvRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -195,13 +197,23 @@ const MetricsTab = memo(function MetricsTab() {
 
   // ── Export Excel global ──
   const exportExcel = useCallback(async () => {
+    // Sin filas de métricas no hay embudo que exportar.
+    if ((funnel || []).length === 0) {
+      addToast("info", t("superadmin.metrics.noData"));
+      return;
+    }
     const { exportToXlsx } = await import("../../lib/excel-utils");
     const { buildMetricsSheet } = await import("../../lib/excel-builders");
     exportToXlsx(`metricas_${new Date().toISOString().slice(0, 10)}`, [buildMetricsSheet(funnel)]);
-  }, [funnel]);
+  }, [funnel, t, addToast]);
 
   // ── Export Excel de invitados (todas las confirmaciones) ──
   const exportGuestsExcel = useCallback(async () => {
+    // Sin invitaciones no hay confirmaciones que exportar.
+    if ((rows || []).length === 0) {
+      addToast("info", t("superadmin.metrics.noData"));
+      return;
+    }
     const { exportToXlsx } = await import("../../lib/excel-utils");
     const { buildGlobalGuestsSheet } = await import("../../lib/excel-builders");
     const perInvite: Array<{ invite: { id: string; firstName: string; secondName: string }; rsvps: Array<Record<string, unknown>> }> = [];
@@ -211,8 +223,13 @@ const MetricsTab = memo(function MetricsTab() {
         perInvite.push({ invite: r, rsvps: rsvpSnap.docs.map((d) => d.data() as Record<string, unknown>) });
       } catch {}
     }
+    // Si ninguna invitación tiene confirmaciones, no se genera el fichero.
+    if (perInvite.every((p) => p.rsvps.length === 0)) {
+      addToast("info", t("superadmin.metrics.noData"));
+      return;
+    }
     exportToXlsx(`invitados_${new Date().toISOString().slice(0, 10)}`, [buildGlobalGuestsSheet(perInvite)]);
-  }, [rows]);
+  }, [rows, t, addToast]);
 
   // ── Analítica de funciones sociales (uso global) ──
   const [socialLoading, setSocialLoading] = useState(false);

@@ -32,12 +32,15 @@ export function excelDate(value: Date | string | number | undefined): string {
  * Construye el libro de trabajo XLSX a partir de las hojas (sin descargar).
  * Función pura: se usa desde exportToXlsx y desde los tests para reabrir el
  * fichero y verificar que cada celda conserva su valor y tipo.
+ *
+ * Seguridad: se OMITEN las hojas sin filas de datos (aunque tengan cabecera).
+ * Así una exportación sin datos nunca genera un fichero vacío o con solo la
+ * cabecera. Si ninguna hoja aporta datos, el libro queda sin hojas.
  */
 export function buildWorkbook(sheets: ExcelSheet[]): XLSX.WorkBook {
   const wb = XLSX.utils.book_new();
   for (const sheet of sheets) {
-    // Se omite la hoja si no aporta nada (evita hojas vacías en el fichero).
-    if (sheet.rows.length === 0 && sheet.headers.length === 0) continue;
+    if (sheet.rows.length === 0) continue;
     const ws = XLSX.utils.aoa_to_sheet([sheet.headers, ...sheet.rows]);
     // Anchos de columna para que el contenido sea legible sin reajustar.
     if (sheet.colWidths && sheet.colWidths.length > 0) {
