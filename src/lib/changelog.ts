@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.3",
+    date: "2026-08-11",
+    changes: [
+      "FIX: retiradas las formas Rectángulo y Óvalo al añadir mesas (daban fallo) — el selector solo ofrece Círculo y Cuadrado; el tipo y el render conservan rect/oval para leer mesas antiguas ya guardadas.",
+    ],
+  },
+  {
     version: "2.96.2",
     date: "2026-08-11",
     changes: [

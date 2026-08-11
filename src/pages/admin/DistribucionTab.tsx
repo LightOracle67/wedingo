@@ -18,7 +18,6 @@ import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 
 type Shape = "circle" | "rect" | "oval" | "square";
-
 interface Section {
   id: string;
   name: string;
@@ -38,9 +37,9 @@ interface ShapeTable {
 }
 
 const SHAPES: Array<{ key: Shape; label: string }> = [
+  // Solo círculo y cuadrado: las mesas rectangulares/ovaladas dieron fallos
+  // y se retiraron. El tipo Shape conserva rect/oval para leer mesas antiguas.
   { key: "circle", label: "Círculo" },
-  { key: "rect", label: "Rectángulo" },
-  { key: "oval", label: "Óvalo" },
   { key: "square", label: "Cuadrado" },
 ];
 
@@ -106,7 +105,7 @@ const DistribucionTab = memo(function DistribucionTab({
   const [tables, setTables] = useState<ShapeTable[]>([]);
   const [selectedId, setSelectedId] = useState("");
   const [newSectionName, setNewSectionName] = useState("");
-  const [newShape, setNewShape] = useState<Shape>("rect");
+  const [newShape, setNewShape] = useState<Shape>("circle");
   // Invitados CONFIRMADOS (attendance yes) disponibles para asignar.
   const [confirmedGuests, setConfirmedGuests] = useState<Array<{ name: string; assigned: boolean }>>([]);
   const mapRef = useRef<HTMLDivElement | null>(null);
@@ -160,7 +159,7 @@ const DistribucionTab = memo(function DistribucionTab({
         snap.docs.map((d) => ({
           id: d.id,
           name: String(d.data().name || ""),
-          shape: String(d.data().shape || "rect") as Shape,
+          shape: String(d.data().shape || "circle") as Shape,
           x: Number(d.data().x) || 0,
           y: Number(d.data().y) || 0,
           w: Number(d.data().w) || 14,
