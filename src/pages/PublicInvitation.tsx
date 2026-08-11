@@ -194,10 +194,13 @@ export default function PublicInvitation() {
    *  "extras" (reordenable en el editor, siempre antes del RSVP). */
   // Kill-switch por función social: una función debe estar activa en la
   // invitación Y no desactivada globalmente por el superadmin.
-  const socialEnabled = (
-    feature: "gifts" | "rides" | "reactions" | "notes" | "songs" | "trivia" | "voiceNotes" | "dayPhotos" | "mailbox" | "toasts" | "venueMap",
-    flag?: string,
-  ) => flag === "true" && !isFeatureDisabled(platform, feature);
+  const socialEnabled = useCallback(
+    (
+      feature: "gifts" | "rides" | "reactions" | "notes" | "songs" | "trivia" | "voiceNotes" | "dayPhotos" | "mailbox" | "toasts" | "venueMap",
+      flag?: string,
+    ) => flag === "true" && !isFeatureDisabled(platform, feature),
+    [platform],
+  );
 
   const hasExtras =
     socialEnabled("gifts", config.giftsListEnabled) ||
@@ -251,7 +254,7 @@ export default function PublicInvitation() {
           ? { title: t("venueMap.title"), node: <VenueMapSection inviteToken={inviteToken ?? ""} background={config.backgroundImage} /> }
           : null,
       ].filter((b): b is { title: string; node: React.JSX.Element } => b !== null),
-    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.voiceNotesEnabled, config.dayPhotosEnabled, config.mailboxEnabled, config.toastsEnabled, config.venueMapEnabled, config.giftList, config.trivia, config.backgroundImage, t, inviteToken, platform.disabledFeatures],
+    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.voiceNotesEnabled, config.dayPhotosEnabled, config.mailboxEnabled, config.toastsEnabled, config.venueMapEnabled, config.giftList, config.trivia, config.backgroundImage, t, inviteToken, socialEnabled],
   );
 
   // ─── Orden de secciones visible ────────────────────────
@@ -575,6 +578,7 @@ export default function PublicInvitation() {
       config.menuVeganoDishes,
       config.menuTextoDishes,
       config.cornerDecoration,
+      config.verified,
       formattedDate,
       formattedTime,
       hasLocationData,

@@ -29,9 +29,7 @@
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 0 26px rgba(0, 0, 0, 0.55) !important;
   }
   /* Botones de accesibilidad y paneles flotantes: no deben salir en el papel. */
-  .a11y-trigger,
-  .accessibility-panel,
-  .accessibility-toggle {
+  .a11y-trigger {
     display: none !important;
   }
   body {
@@ -42,17 +40,13 @@
   .music-player,
   .envelope-overlay,
   .envelope-wrapper,
-  .story-scroll-hint,
   .wedding-decoration,
-  .lang-popup,
   .modal-overlay,
   .toast-container,
-  .gallery-section,
   .gallery-main-container,
   .gallery-lightbox {
     display: none !important;
   }
-  .rsvp-section,
   .rsvp-form {
     display: none !important;
   }
@@ -99,13 +93,6 @@
   border-radius: 1.2rem;
   pointer-events: none;
   z-index: 2;
-}
-.print-card__scrim {
-  position: absolute;
-  inset: 0;
-  background: transparent;
-  z-index: 1;
-  pointer-events: none;
 }
 .print-card__bg {
   position: absolute;

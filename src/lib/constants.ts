@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.96.5";
+export const APP_VERSION = "2.96.6";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -212,10 +212,6 @@ export const MAX_YEARS_AHEAD = 4;
 export const INVITE_CACHE_TTL_MS = 120000;
 /** Duración de la sesión de admin (local y Firestore): 60 minutos. */
 export const SESSION_DURATION_MS = 60 * 60 * 1000;
-/** Tope anti-spam de respuestas RSVP por invitación (regla Firestore). */
-export const RSVP_MAX_RESPONSES = 500;
-/** Tope de incremento de visitas por petición (regla Firestore). */
-export const VISITS_MAX_INCREMENT = 10;
 /** Límite de audio por chunk cifrado (batch < 10 MiB). */
 export const AUDIO_CHUNK_SIZE_BYTES = 200 * 1024;
 /** Formato de id de invitación en la URL: alineado con la regla de Firestore

@@ -162,7 +162,7 @@ export interface GalleryMeta {
 }
 
 /** Imagen de la galería con su data URL descifrada. */
-export interface GalleryLoadedImage extends Omit<GalleryMeta, "encrypted"> {
+interface GalleryLoadedImage extends Omit<GalleryMeta, "encrypted"> {
   url: string;
 }
 

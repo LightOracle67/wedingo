@@ -37,7 +37,7 @@ let flushed = false;
  * Se respeta el consentimiento de cookies (RGPD/LGPD/CCPA): sin el
  * consentimiento "accepted" con analytics activado no se recogen datos.
  */
-export function hasAnalyticsConsent(): boolean {
+function hasAnalyticsConsent(): boolean {
   return hasConsent();
 }
 

@@ -5,7 +5,7 @@ const STORAGE_CONSENT_KEY = STORAGE_KEYS.cookieConsent;
 /** Registro de consentimiento persistido por el banner de cookies (GDPR
  *  art. 7.1: consentimiento demostrable): status, timestamp y versión de la
  *  política con la que se otorgó (re-consentimiento si cambia). */
-export interface ConsentRecord {
+interface ConsentRecord {
   status: "accepted" | "rejected";
   ts: number;
   version: string;
@@ -32,7 +32,7 @@ function parseConsent(value: string | null): ConsentRecord | null {
   return null;
 }
 
-export function getConsentRecord(): ConsentRecord | null {
+function getConsentRecord(): ConsentRecord | null {
   try {
     return parseConsent(localStorage.getItem(STORAGE_CONSENT_KEY));
   } catch (err) {

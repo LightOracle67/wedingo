@@ -48,10 +48,6 @@
 .modal-overlay--closing {
   animation: overlay-out 200ms ease forwards;
 }
-.modal-overlay--clear {
-  background: transparent;
-  backdrop-filter: none;
-}
 .modal-card {
   position: relative;
   background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
@@ -187,15 +183,6 @@
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
-}
-.invitation-legal-links {
-  position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: var(--z-legal-links, 10002);
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
 }
 .legal-actions {
   display: flex;

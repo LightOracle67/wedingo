@@ -5,7 +5,7 @@ import CornerDecorations from "../../components/CornerDecorations";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
 
 /** Estado de la cuenta atrás (años/meses/días + horas/min/seg). */
-export interface CountdownState {
+interface CountdownState {
   years?: number;
   months?: number;
   days: number;

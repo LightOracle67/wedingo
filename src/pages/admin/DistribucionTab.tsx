@@ -441,7 +441,7 @@ const DistribucionTab = memo(function DistribucionTab({
       win.print();
     };
     void waitForImages();
-  }, [tables, background, cornerDecoration, addToast, t]);
+  }, [tables, background, cornerDecoration, theme, addToast, t]);
 
   // ── Exportación XLSX (Excel/LibreOffice) de las mesas e invitados asignados ──
   const exportTablesXlsx = useCallback(async () => {

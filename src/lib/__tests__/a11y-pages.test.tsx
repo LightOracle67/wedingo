@@ -221,6 +221,10 @@ const BASE_MOCK_CTX = {
   }),
 };
 
+// Mock de constantes a nivel de módulo: PrintPage y RsvpSection leen APP_VERSION
+// y configuraciones globales en su render (vi.mock se aplica por hoisting).
+vi.mock("../../lib/constants", () => BASE_MOCK_CTX.constants());
+
 describe("a11y-page-audit", () => {
   it("LandingPage has no critical violations", async () => {
     const LandingPage = (await import("../../pages/LandingPage")).default;
@@ -231,7 +235,6 @@ describe("a11y-page-audit", () => {
   });
 
   it("PrintPage has no a11y violations", async () => {
-    vi.mock("../../lib/constants", () => BASE_MOCK_CTX.constants());
     const PrintPage = (await import("../../pages/PrintPage")).default;
     const { container } = render(<PrintPage />);
     const results = await runAxe(container);
@@ -240,7 +243,6 @@ describe("a11y-page-audit", () => {
   });
 
   it("RsvpSection with transport and menu has no serious violations", async () => {
-    vi.mock("../../lib/constants", () => BASE_MOCK_CTX.constants());
     const RsvpSection = (await import("../../pages/sections/RsvpSection")).default;
     const rsvpForm = {
       guestName: "",

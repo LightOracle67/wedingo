@@ -327,7 +327,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       }
     };
     hydrateConfig();
-  }, [location.pathname, location.hash, inviteToken, hasStoredConfig, trackVisit, t, formStore]);
+  }, [location.pathname, location.search, location.hash, inviteToken, hasStoredConfig, trackVisit, t, formStore]);
 
   const reloadConfig = useCallback(async () => {
     if (!inviteToken) {

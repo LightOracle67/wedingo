@@ -163,7 +163,6 @@ html.a11y-high-contrast .invite-shell,
 html.a11y-high-contrast .modal-card,
 html.a11y-high-contrast .music-player__card,
 html.a11y-high-contrast .music-player__fab,
-html.a11y-high-contrast .lang-popup__card,
 html.a11y-high-contrast .app-footer {
   border: 2px solid var(--color-white) !important;
   box-shadow: none !important;

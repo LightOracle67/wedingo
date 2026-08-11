@@ -575,7 +575,7 @@ export default function DataTab() {
     } finally {
       setBusy(false);
     }
-  }, [invitations, cascadeDelete, addToast, t]);
+  }, [invitations, addToast, t]);
 
   /** Elimina TODAS las invitaciones y datos del sistema. */
   const deleteAll = useCallback(async () => {

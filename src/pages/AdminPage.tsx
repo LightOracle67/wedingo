@@ -252,7 +252,7 @@ export default function AdminPage() {
         URL.revokeObjectURL(url);
       }, 500);
     }
-  }, [filteredEntries, coupleName, t, i18n.language]);
+  }, [filteredEntries, coupleName, t, i18n.language, addToast]);
 
   // ─── Cálculo de estadísticas de asistencia ─────────────
   const confirmedResponses = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "yes").length;

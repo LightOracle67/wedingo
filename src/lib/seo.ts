@@ -60,7 +60,7 @@ export function clearSocialMeta() {
   document.head.querySelectorAll(`[${META_MARKER}]`).forEach((el) => el.remove());
 }
 
-export interface SocialMetaInput {
+interface SocialMetaInput {
   /** Título de la invitación (p. ej. "Ana & Luis — Wedingo"). */
   title: string;
   /** Descripción corta para el compartido social. */

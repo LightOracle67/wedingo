@@ -23,11 +23,6 @@
   left: 1rem;
 }
 
-[dir="rtl"] .lang-popup__card {
-  right: auto;
-  left: 0;
-}
-
 [dir="rtl"] .app-footer__left {
   order: 2;
 }
@@ -115,14 +110,6 @@
 }
 [dir="rtl"] .envelope__hint {
   direction: rtl;
-}
-
-/* Language popup RTL */
-[dir="rtl"] .lang-popup__group-title {
-  text-align: right;
-}
-[dir="rtl"] .lang-popup__btn {
-  text-align: right;
 }
 
 /* Accessibility panel RTL */

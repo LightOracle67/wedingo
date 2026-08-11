@@ -11,7 +11,7 @@ import {
   MAX_LONG_TEXT_LENGTH,
 } from "./constants";
 
-export interface ConfigValidationResult {
+interface ConfigValidationResult {
   sanitized: ReturnType<typeof normalizeConfig>;
   hiddenSet: Set<string>;
   errorKey: string | null;

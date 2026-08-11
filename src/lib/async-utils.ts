@@ -24,7 +24,7 @@ const WRITE_RETRY_DELAYS_MS = [400, 900];
 
 /** Los errores permanentes (invalid-argument, permission-denied, etc.) no se
  *  reintentan: solo los transitorios de red. */
-export function isRetryableFirestoreError(err: unknown): boolean {
+function isRetryableFirestoreError(err: unknown): boolean {
   const code = (err as { code?: string })?.code || "";
   return ["unavailable", "deadline-exceeded", "aborted", "resource-exhausted"].includes(code);
 }

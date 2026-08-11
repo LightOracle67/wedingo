@@ -27,7 +27,7 @@ async function t(name, expectSuccess, promise) {
   try {
     await assertSucceeds(promise);
     check(name, expectSuccess);
-  } catch (e) {
+  } catch {
     check(name, !expectSuccess);
   }
 }

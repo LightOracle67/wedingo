@@ -6,7 +6,7 @@ export interface UploadToastControls {
   error: (msg: string) => void;
 }
 
-export interface ToastContextValue {
+interface ToastContextValue {
   addToast: (type: string, message: string, duration?: number) => number;
   startUploadToast: (message: string) => UploadToastControls;
 }

@@ -1475,12 +1475,6 @@ select.setup-input {
 }
 
 /* ── DataTab extras ── */
-.data-tab-btn-sm {
-  font-size: 0.7rem;
-}
-.data-tab-btn-danger {
-  font-size: 0.7rem;
-}
 .data-tab-loading {
   display: flex;
   flex-direction: column;
@@ -1562,22 +1556,14 @@ select.setup-input {
 .admin-gap-sm {
   gap: 0.4rem;
 }
-.admin-pad-sm {
-  padding: 0.5rem 0.75rem;
-}
 .admin-text-mono {
   font-family: monospace;
-  font-size: 0.8rem;
-}
-.admin-text-sm {
   font-size: 0.8rem;
 }
 @media (max-width: 640px) {
   .support-grid {
     grid-template-columns: 1fr;
   }
-}
-@media (max-width: 640px) {
 }
 
 @media (max-width: 480px) {

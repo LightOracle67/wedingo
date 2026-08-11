@@ -25,7 +25,7 @@ const INVITE_PREFIXES = [INVITE_CACHE_PREFIX, AUDIO_PREFIX, "wedin_setup_token_"
 const PROTECTED_PREFIXES = ["wedin_a11y"];
 
 /** Resultado de una operación de datos. */
-export interface DataRequestResult {
+interface DataRequestResult {
   erasedKeys: string[];
   exported?: Record<string, string>;
 }

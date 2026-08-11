@@ -9,7 +9,7 @@ import { saveSession, getSession, clearSession } from "../lib/sessionVars";
 import { useSessionRenewal } from "../hooks/useSessionRenewal";
 import { SUPERADMIN_EMAIL, SUPERADMIN_ROUTE } from "../lib/superadmin";
 
-export interface SuperAdminValue {
+interface SuperAdminValue {
   isSuperAdmin: boolean;
   user: User | null;
   email: string;

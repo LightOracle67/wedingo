@@ -1,6 +1,6 @@
 import type { FieldValue } from "firebase/firestore";
 
-export interface RsvpFormLike {
+interface RsvpFormLike {
   guestName: string;
   attendance: string;
   companionCount: number;

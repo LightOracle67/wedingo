@@ -67,7 +67,7 @@ export function usePlatformSettings() {
 }
 
 /** Utilidades sobre los ajustes (listas separadas por comas). */
-export function tokenList(value: string): string[] {
+function tokenList(value: string): string[] {
   return value
     .split(",")
     .map((s) => s.trim().toLowerCase())
@@ -76,10 +76,4 @@ export function tokenList(value: string): string[] {
 
 export function tokenIsBlocked(token: string, blockedTokens: string): boolean {
   return tokenList(blockedTokens).includes(token.toLowerCase());
-}
-
-export function urlMatchesBlocked(url: string, blockedUrls: string): boolean {
-  if (!url) return false;
-  const lower = url.toLowerCase();
-  return tokenList(blockedUrls).some((pat) => lower.includes(pat.toLowerCase()));
 }

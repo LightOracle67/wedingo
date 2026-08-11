@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useRef, useSyncExternalStore } from "react";
+import { createContext, useContext, useMemo, useSyncExternalStore } from "react";
 
 /**
  * FormStore — Tienda de selectores por campo para el Setup.
@@ -82,13 +82,6 @@ export function createFormStore(initial: Record<string, string> = {}): FormStore
 
 /** Contexto que provee la tienda del Setup (creada por ConfigProvider). */
 export const FormStoreContext = createContext<FormStore | null>(null);
-
-/** Provee la tienda: se crea una vez por provider (ref estable). */
-export function FormStoreProvider({ children }: { children: React.ReactNode }) {
-  const storeRef = useRef<FormStore | null>(null);
-  if (!storeRef.current) storeRef.current = createFormStore();
-  return <FormStoreContext.Provider value={storeRef.current}>{children}</FormStoreContext.Provider>;
-}
 
 /** Devuelve la tienda del Setup (error si no hay provider). */
 export function useFormStore(): FormStore {

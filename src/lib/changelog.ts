@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.6",
+    date: "2026-08-11",
+    changes: [
+      "AUDITORÍA: sanitización, optimización y limpieza exhaustiva — corregidos 7 bugs de dependencias de hooks (lint 100% limpio); eliminados ~15 exports, 10 tipos y 1 provider muertos (FormStoreProvider, barrel utils.ts, urlMatchesBlocked, getConsentRecord, isRetryableFirestoreError, etc.); retiradas 18 reglas CSS sin uso (scrim de impresión, lang-popup, equalizer-bar, modales y estilos admin muertos) y 2 variables CSS; verificado XSS (sin dangerouslySetInnerHTML), secrets, CSP/firebase.json y reglas Firestore 19/19.",
+    ],
+  },
+  {
     version: "2.96.5",
     date: "2026-08-11",
     changes: [

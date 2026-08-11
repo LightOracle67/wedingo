@@ -12,7 +12,7 @@ import { excelDate, type ExcelSheet } from "./excel-utils";
 // ── Tipos de entrada (estructuras que ya usan los componentes) ──
 
 /** Fila de respuesta RSVP (subconjunto de RsvpEntry). */
-export interface RsvpRowLike {
+interface RsvpRowLike {
   guestName?: string;
   attendance?: string;
   mealChoice?: string;
@@ -27,14 +27,14 @@ export interface RsvpRowLike {
 }
 
 /** Mensaje del buzón privado (ya formateado por el componente). */
-export interface MailboxRowLike {
+interface MailboxRowLike {
   guestName: string;
   message: string;
   ts: string;
 }
 
 /** Mesa de una sección (solo los campos que se exportan). */
-export interface TableLike {
+interface TableLike {
   name: string;
   shape: string;
   w: number;
@@ -44,13 +44,13 @@ export interface TableLike {
 }
 
 /** Sección del plano de mesas. */
-export interface SectionLike {
+interface SectionLike {
   id: string;
   name: string;
 }
 
 /** Fila del embudo de métricas globales. */
-export interface MetricRowLike {
+interface MetricRowLike {
   id: string;
   firstName: string;
   secondName: string;
@@ -64,14 +64,14 @@ export interface MetricRowLike {
 }
 
 /** Invitación del superadmin (para el export global de confirmaciones). */
-export interface InviteRowLike {
+interface InviteRowLike {
   id: string;
   firstName: string;
   secondName: string;
 }
 
 /** Datos crudos de un documento RSVP (d.data() de Firestore). */
-export interface RsvpDocLike {
+interface RsvpDocLike {
   inviteToken?: unknown;
   guestName?: unknown;
   attendance?: unknown;
@@ -86,7 +86,7 @@ export interface RsvpDocLike {
 }
 
 /** Fila del registro de auditoría. */
-export interface AuditRowLike {
+interface AuditRowLike {
   action: string;
   detail: string;
   ts: string;
@@ -311,6 +311,3 @@ export function buildAuditSheet(auditRows: AuditRowLike[]): ExcelSheet {
     colWidths: [22, 60, 20],
   };
 }
-
-// Re-export para compatibilidad con imports existentes de admin-utils.
-export { excelDate } from "./excel-utils";

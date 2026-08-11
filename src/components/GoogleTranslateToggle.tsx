@@ -25,12 +25,13 @@ const GoogleTranslateToggle = memo(function GoogleTranslateToggle() {
     setLoading(true);
     // Callback global requerido por el widget antes de inyectar el elemento.
     window.googleTranslateElementInit = () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window as unknown as { google?: { translate?: { TranslateElement: new (a: object, b: string) => unknown } } })
-        .google?.translate?.TranslateElement &&
-        // eslint-disable-next-line no-new
-        new (window as unknown as { google: { translate: { TranslateElement: new (a: object, b: string) => unknown } } })
-          .google.translate.TranslateElement({ pageLanguage: "es" }, "google_translate_element");
+      const gt = (window as unknown as {
+        google?: { translate?: { TranslateElement: new (a: object, b: string) => unknown } };
+      }).google?.translate?.TranslateElement;
+      if (gt) {
+        // Instancia el widget en el contenedor reservado.
+        void new gt({ pageLanguage: "es" }, "google_translate_element");
+      }
       setActive(true);
       setLoading(false);
     };
