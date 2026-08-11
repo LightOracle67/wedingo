@@ -555,6 +555,7 @@
     "noResultsFilter": "No se encontraron resultados con ese filtro.",
     "noResults": "Todavía no hay respuestas de asistencia.",
     "exportPdf": "Exportar PDF",
+    "exportExcel": "Exportar Excel",
     "clearAttendance": "Vaciar asistencia",
     "tableAccompanies": "Acompaña a",
     "selectAll": "Seleccionar todo",
@@ -1486,7 +1487,16 @@
     "dayPhotos": "Fotos del día",
     "downloadDayPhotos": "Descargar fotos ({{count}})",
     "noDayPhotos": "Aún no hay fotos.",
-    "dayPhotosDownloaded": "{{count}} fotos descargadas."
+    "dayPhotosDownloaded": "{{count}} fotos descargadas.",
+    "exportGuests": "Exportar invitados",
+    "exportMailbox": "Exportar buzón",
+    "exportOk": "Exportado {{count}} fila(s) a Excel.",
+    "confirmedValue": "Confirmado",
+    "pendingValue": "Pendiente",
+    "nameValue": "Nombre",
+    "statusValue": "Estado",
+    "messageValue": "Mensaje",
+    "dateValue": "Fecha"
   },
   "voiceNotes": {
     "title": "Caja de recuerdos",
@@ -1573,6 +1583,13 @@
     "printTitle": "Etiquetas por mesa",
     "printNoGuests": "Asigna invitados a las mesas para poder imprimir etiquetas.",
     "labelThanks": "Gracias por acompañarnos",
-    "labelEnjoy": "¡Disfruta de la celebración!"
+    "labelEnjoy": "¡Disfruta de la celebración!",
+    "exportTables": "Exportar mesas",
+    "sectionValue": "Sección",
+    "tableValue": "Mesa",
+    "shapeValue": "Forma",
+    "sizeValue": "Tamaño (px)",
+    "capacityValue": "Plazas",
+    "guestValue": "Invitado"
   }
 }

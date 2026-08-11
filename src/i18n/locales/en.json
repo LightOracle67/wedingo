@@ -555,6 +555,7 @@
     "noResultsFilter": "No results found with this filter.",
     "noResults": "No attendance responses yet.",
     "exportPdf": "Export PDF",
+    "exportExcel": "Export Excel",
     "clearAttendance": "Clear attendance",
     "tableAccompanies": "Accompanies",
     "selectAll": "Select all",
@@ -1486,7 +1487,16 @@
     "dayPhotos": "Day photos",
     "downloadDayPhotos": "Download photos ({{count}})",
     "noDayPhotos": "No photos yet.",
-    "dayPhotosDownloaded": "{{count}} photos downloaded."
+    "dayPhotosDownloaded": "{{count}} photos downloaded.",
+    "exportGuests": "Export guests",
+    "exportMailbox": "Export mailbox",
+    "exportOk": "Exported {{count}} row(s) to Excel.",
+    "confirmedValue": "Confirmed",
+    "pendingValue": "Pending",
+    "nameValue": "Name",
+    "statusValue": "Status",
+    "messageValue": "Message",
+    "dateValue": "Date"
   },
   "voiceNotes": {
     "title": "Memory box",
@@ -1573,6 +1583,13 @@
     "printTitle": "Table place cards",
     "printNoGuests": "Assign guests to tables to print place cards.",
     "labelThanks": "Thank you for being with us",
-    "labelEnjoy": "Enjoy the celebration!"
+    "labelEnjoy": "Enjoy the celebration!",
+    "exportTables": "Export tables",
+    "sectionValue": "Section",
+    "tableValue": "Table",
+    "shapeValue": "Shape",
+    "sizeValue": "Size (px)",
+    "capacityValue": "Seats",
+    "guestValue": "Guest"
   }
 }

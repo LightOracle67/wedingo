@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.0",
+    date: "2026-08-11",
+    changes: [
+      "FEAT: exportación a Excel (.xlsx) en el panel — invitados con su estado de confirmación, buzón privado, asistencia completa con menús y dieta, y mesas por sección con invitados asignados, plazas y forma. Formato XLSX real, abierto en Excel, LibreOffice, Google Sheets y Numbers.",
+    ],
+  },
+  {
     version: "2.95.99",
     date: "2026-08-09",
     changes: [

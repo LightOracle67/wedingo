@@ -162,6 +162,28 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
     }
   }, [inviteToken, addToast, t]);
 
+  // ── Exportación XLSX (Excel/LibreOffice) de invitados y buzón ──
+  const exportGuestsXlsx = useCallback(async () => {
+    const { exportToXlsx } = await import("../../lib/excel-utils");
+    const rows: Array<Array<string>> = expected.map((name) => [
+      name,
+      confirmed.has(name.toLowerCase()) ? t("tools.confirmedValue") : t("tools.pendingValue"),
+    ]);
+    exportToXlsx(`invitados_${new Date().toISOString().slice(0, 10)}`, [
+      { name: "Invitados", headers: [t("tools.nameValue"), t("tools.statusValue")], rows, colWidths: [26, 18] },
+    ]);
+    addToast("success", t("tools.exportOk", { count: rows.length }));
+  }, [expected, confirmed, t, addToast]);
+
+  const exportMailboxXlsx = useCallback(async () => {
+    const { exportToXlsx, excelDate } = await import("../../lib/excel-utils");
+    const rows: Array<Array<string>> = (mailbox || []).map((m) => [m.guestName, m.message, excelDate(m.ts)]);
+    exportToXlsx(`buzon_${new Date().toISOString().slice(0, 10)}`, [
+      { name: "Buzón", headers: [t("tools.nameValue"), t("tools.messageValue"), t("tools.dateValue")], rows, colWidths: [26, 60, 20] },
+    ]);
+    addToast("success", t("tools.exportOk", { count: rows.length }));
+  }, [mailbox, t, addToast]);
+
   const openReminder = useCallback(() => {
     const text = reminder.trim() || `${t("tools.reminderDefault")} ${coupleName || ""}\n\n${inviteUrl}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
@@ -307,6 +329,11 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
         ) : (
           <p className="setup-help" style={{ margin: "0.4rem 0 0" }}>{t("tools.noMail")}</p>
         )}
+        {mailbox.length > 0 && (
+          <button className="setup-button setup-button--ghost setup-button--compact" style={{ marginTop: "0.6rem" }} type="button" onClick={() => void exportMailboxXlsx()}>
+            {t("tools.exportMailbox")}
+          </button>
+        )}
       </div>
 
       <div className="setup-background-panel">
@@ -314,6 +341,9 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
         <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
           <button className="setup-button setup-button--compact" type="button" onClick={() => void downloadDayPhotos()} disabled={dayPhotoCount === 0}>
             {t("tools.downloadDayPhotos", { count: dayPhotoCount })}
+          </button>
+          <button className="setup-button setup-button--compact" type="button" onClick={() => void exportGuestsXlsx()}>
+            {t("tools.exportGuests")}
           </button>
         </div>
       </div>

@@ -125,6 +125,45 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     }
   }, [filteredEntries]);
 
+  // Exportación a XLSX (Excel/LibreOffice): asistencia completa + menús.
+  const handleExportExcel = useCallback(async () => {
+    const { exportToXlsx, excelDate } = await import("../../lib/excel-utils");
+    const entries = filteredEntries || [];
+    const asis = entries.map((e: RsvpEntry) => [
+      e.guestName,
+      e.attendance === "yes" ? t("attendance.attendingValue") : t("attendance.notAttendingValue"),
+      e.mealChoice ? t("rsvp.menu" + e.mealChoice.charAt(0).toUpperCase() + e.mealChoice.slice(1)) : "",
+      e.dietaryInfo || "",
+      [e.phone, e.email].filter(Boolean).join(" / "),
+      e.submittedAt ? excelDate(e.submittedAt) : "",
+    ]);
+    const menus: Array<Array<string | number>> = [];
+    for (const e of entries) {
+      if (e.attendance !== "yes") continue;
+      if (e.attendees?.length) {
+        for (const a of e.attendees) {
+          menus.push([a.name, a.menu ? t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1)) : ""]);
+        }
+      } else if (e.mealChoice) {
+        menus.push([e.guestName, t("rsvp.menu" + e.mealChoice.charAt(0).toUpperCase() + e.mealChoice.slice(1))]);
+      }
+    }
+    exportToXlsx(`asistencia_${new Date().toISOString().slice(0, 10)}`, [
+      {
+        name: "Asistencia",
+        headers: [t("attendance.tableName"), t("attendance.tableAttendance"), t("attendance.tableMenu"), t("attendance.tableDiet"), t("attendance.tableContact"), t("attendance.tableDate")],
+        rows: asis,
+        colWidths: [24, 16, 20, 26, 28, 18],
+      },
+      {
+        name: "Menús",
+        headers: [t("attendance.tableName"), t("attendance.tableMenu")],
+        rows: menus,
+        colWidths: [24, 22],
+      },
+    ]);
+  }, [filteredEntries, t]);
+
   const departures = useMemo(() => {
     try {
       const parsed = JSON.parse(transportDepartures || "");
@@ -540,6 +579,13 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
             onClick={handleExportCsv}
           >
             {t("attendance.exportCsv")}
+          </button>
+          <button
+            className="setup-button setup-button--ghost setup-button--compact"
+            type="button"
+            onClick={() => void handleExportExcel()}
+          >
+            {t("attendance.exportExcel")}
           </button>
           <button
             className="setup-button setup-button--ghost setup-button--compact"
