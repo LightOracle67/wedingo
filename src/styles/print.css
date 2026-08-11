@@ -114,6 +114,9 @@
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  /* Suavizado: reescalado suave + micro blur que enmascara la pixelación. */
+  image-rendering: auto;
+  filter: blur(0.4px);
 }
 .print-card__content {
   position: relative;

@@ -409,7 +409,7 @@ const DistribucionTab = memo(function DistribucionTab({
       .lbl-page{width:210mm;height:297mm;display:grid;place-items:center;page-break-after:always;background:#fff;padding:14mm}
       .lbl-page:last-child{page-break-after:auto}
       .lbl-card{position:relative;width:min(78%,38rem);aspect-ratio:2/3;background-size:cover;background-position:center;border-radius:1.2rem;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.35)}
-      .lbl-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+      .lbl-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;image-rendering:auto;filter:blur(.4px)}
       .lbl-scrim{position:absolute;inset:0;background:transparent;z-index:1;pointer-events:none}
       .lbl-corner{position:absolute;width:60px;height:60px;z-index:2;opacity:.9}
       .lbl-corner--tl{top:10px;left:10px}

@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.95.99",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: suavizado del fondo personalizado (invitación, impresión y etiquetas) — reescalado suave (image-rendering: auto) con un micro blur que enmascara la pixelación al cubrir pantallas grandes; dimensión de compresión subida a 2880px.",
+    ],
+  },
+  {
     version: "2.95.98",
     date: "2026-08-09",
     changes: [

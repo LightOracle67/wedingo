@@ -1390,6 +1390,12 @@ a,
       transparent 70%
     );
   opacity: 0.55;
+  /* Suavizado del fondo: reescalado suave (image-rendering auto) y un micro
+     blur que enmascara la pixelación al cubrir pantallas grandes; scale(1.02)
+     evita el borde translúcido que deja el blur en los límites. */
+  image-rendering: auto;
+  filter: blur(0.4px);
+  transform: scale(1.02);
 }
 
 @supports not (backdrop-filter: blur(1px)) {

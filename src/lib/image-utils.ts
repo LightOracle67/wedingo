@@ -7,7 +7,7 @@ const TARGET_BYTES_DEFAULT = 300 * 1024;
 // crudos => data URL ≤ ~650KB => cifrado ~865KB, con margen seguro frente al
 // límite de 1MB. Dimensión máxima 2560px (2K) para que el fondo se vea nítido
 // incluso al imprimir.
-export const HIGH_QUALITY_MAX_DIMENSION = 2560;
+export const HIGH_QUALITY_MAX_DIMENSION = 2880;
 export const HIGH_QUALITY_TARGET_BYTES = 650 * 1024;
 // Cota de seguridad: el base64 cifrado no debe acercarse al límite de 1MB.
 export const MAX_ENCRYPTED_BYTES = 1000 * 1024;
