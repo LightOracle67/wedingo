@@ -23,14 +23,20 @@ if (!existsSync(distDir)) {
 }
 
 const LIMITS = {
-  "vendor-firebase": 650,
-  "vendor-react": 250,
-  "vendor-sentry": 150,
-  "index-": 200,
+  // Límites ajustados tras la optimización de v2.96.8 (xlsx/qrcode a chunks
+  // lazy): headroom ~1.5-2x sobre los tamaños actuales para que una regresión
+  // real se detecte en CI sin falsos positivos por crecimiento natural.
+  "vendor-firebase": 250,
+  "vendor-react": 120,
+  "vendor-sentry": 120,
+  "vendor-other": 60,
+  "vendor-xlsx": 180,
+  "vendor-qrcode": 40,
+  "index-": 80,
 };
 
 /** Límite total de JS inicial (gzip), calculado desde los <script> del HTML. */
-const TOTAL_JS_LIMIT_KB = 500;
+const TOTAL_JS_LIMIT_KB = 400;
 
 let failed = false;
 

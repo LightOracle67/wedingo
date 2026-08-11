@@ -2,14 +2,15 @@
  * excel-export.test.ts — Prueba de formato de TODOS los Excel descargables.
  *
  * Estrategia de ida y vuelta real: cada builder produce sus hojas, se genera
- * el libro con `buildWorkbook`, se serializa a XLSX (`XLSX.write`), se reabre
- * con `XLSX.read` y se verifican las celdas (cabeceras, filas, valores y tipos
- * numéricos). Así se comprueba que el fichero que recibe el usuario es correcto
- * y legible en Excel/LibreOffice/Google Sheets.
+ * el libro con `buildWorkbook`, se serializa a XLSX con el escritor propio
+ * (`writeWorkbookBuffer`), se reabre con `XLSX.read` (xlsx es devDependency,
+ * solo para validar) y se verifican las celdas (cabeceras, filas, valores y
+ * tipos numéricos). Así se comprueba que el fichero generado es válido y
+ * legible en Excel/LibreOffice/Google Sheets.
  */
 import { describe, it, expect } from "vitest";
 import * as XLSX from "xlsx";
-import { buildWorkbook } from "../excel-utils";
+import { buildWorkbook, writeWorkbookBuffer } from "../excel-utils";
 import {
   buildRSVPSheet,
   buildMenuSheet,
@@ -62,8 +63,8 @@ const t = (key: string): string => {
 /** Serializa las hojas a un .xlsx real y lo reabre en formato 2D (string[][]) por hoja. */
 function readBack(sheets: Parameters<typeof buildWorkbook>[0]) {
   const wb = buildWorkbook(sheets);
-  const buf = XLSX.write(wb, { type: "buffer", bookType: "xlsx" });
-  const reopened = XLSX.read(buf, { type: "buffer" });
+  const buf = writeWorkbookBuffer(wb);
+  const reopened = XLSX.read(buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength), { type: "buffer" });
   return reopened.SheetNames.map((name) => ({
     name,
     data: XLSX.utils.sheet_to_json<Array<string | number>>(reopened.Sheets[name] as XLSX.WorkSheet, { header: 1, defval: "" }),
@@ -305,27 +306,28 @@ describe("buildWorkbook (excel-utils)", () => {
   it("omite las hojas sin filas de datos (incluso con cabecera)", () => {
     // Hoja totalmente vacía.
     const empty = buildWorkbook([{ name: "Vacía", headers: [], rows: [] }]);
-    expect(empty.SheetNames).toEqual([]);
+    expect(empty.sheets).toEqual([]);
     // Hoja con cabecera pero sin datos: también se omite (no exportar vacío).
     const headerOnly = buildWorkbook([{ name: "SoloCabecera", headers: ["A", "B"], rows: [] }]);
-    expect(headerOnly.SheetNames).toEqual([]);
+    expect(headerOnly.sheets).toEqual([]);
     // Un libro con varias hojas donde solo una tiene datos conserva esa hoja.
     const mixed = buildWorkbook([
       { name: "SinDatos", headers: ["A"], rows: [] },
       { name: "ConDatos", headers: ["A"], rows: [["x"]] },
     ]);
-    expect(mixed.SheetNames).toEqual(["ConDatos"]);
+    expect(mixed.sheets.map((s) => s.name)).toEqual(["ConDatos"]);
   });
 
   it("respeta el límite de 31 caracteres del nombre de hoja", () => {
     const wb = buildWorkbook([{ name: "a".repeat(40), headers: ["H"], rows: [["x"]] }]);
-    expect(wb.SheetNames[0]!.length).toBe(31);
+    expect(wb.sheets[0]!.name.length).toBe(31);
   });
 
   it("aplica los anchos de columna para que el contenido sea legible", () => {
     const wb = buildWorkbook([{ name: "S", headers: ["A"], rows: [["x"]], colWidths: [40] }]);
-    const ws = wb.Sheets["S"] as XLSX.WorkSheet;
-    const cols = ws["!cols"];
-    expect(cols?.[0]?.wch).toBe(40);
+    expect(wb.sheets[0]!.colWidths?.[0]).toBe(40);
+    // El ancho se serializa dentro del worksheet generado.
+    const buf = new TextDecoder().decode(writeWorkbookBuffer(wb));
+    expect(buf).toContain('width="40"');
   });
 });

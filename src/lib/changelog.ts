@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.10",
+    date: "2026-08-11",
+    changes: [
+      "SEGURIDAD: eliminada la dependencia vulnerable xlsx/SheetJS (prototype pollution GHSA-4r6h-8v6p-xvw6 y ReDoS GHSA-5pgg-2g8v-p4x9, sin fix en npm) de producción — los exports Excel ahora usan un escritor OOXML mínimo propio (ZIP store + SpreadsheetML) verificado con la librería xlsx en tests (devDependency). npm audit --omit=dev: 0 vulnerabilidades. El chunk lazy vendor-xlsx (90KB) desaparece del build.",
+    ],
+  },
+  {
     version: "2.96.9",
     date: "2026-08-11",
     changes: [
