@@ -1529,7 +1529,8 @@
     "anonymous": "Anónimo",
     "uploadError": "No se pudo subir la foto.",
     "empty": "Aún no hay fotos. ¡Comparte las tuyas!",
-    "photo": "Foto del día"
+    "photo": "Foto del día",
+    "reveal": "Ver foto"
   },
   "mailbox": {
     "title": "Buzón de la pareja",

@@ -1529,7 +1529,8 @@
     "anonymous": "Anonymous",
     "uploadError": "Could not upload the photo.",
     "empty": "No photos yet. Share yours!",
-    "photo": "Day photo"
+    "photo": "Day photo",
+    "reveal": "View photo"
   },
   "mailbox": {
     "title": "Couple's mailbox",

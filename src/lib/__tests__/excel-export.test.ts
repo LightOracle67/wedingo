@@ -331,3 +331,52 @@ describe("buildWorkbook (excel-utils)", () => {
     expect(buf).toContain('width="40"');
   });
 });
+
+describe("Escritor XLSX: casos borde", () => {
+  const edge = readBack([
+    {
+      name: "Bordes",
+      headers: ["Texto", "Número", "Booleano", "Vacío"],
+      rows: [
+        // Caracteres que requieren escape XML y control-characters ilegales.
+        ['a & b < "c" > d \u0007\n\te\u0301', 3.14159, true, null],
+        // NaN e Infinity no deben producir XML inválido (se emiten vacías).
+        ["nan", Number.NaN, false, undefined],
+        ["inf", Number.POSITIVE_INFINITY, false, ""],
+        // Texto largo y acentos/emoji.
+        ["José & María ❤️ — muy larga ".repeat(40), 0, true, 42],
+      ],
+    },
+  ])[0]!;
+
+  it("escapa XML, sanea caracteres de control y conserva saltos/acentos/emoji", () => {
+    expect(edge.data[1]).toEqual(["a & b < \"c\" > d \n\té", 3.14159, true, ""]);
+    // El texto largo sobrevive completo y sin caracteres de control.
+    const long = edge.data[4]![0] as string;
+    expect(long).toContain("❤️");
+    expect(long).toContain("José & María");
+    expect(long.length).toBeGreaterThan(100);
+    expect(long).not.toContain("\u0007");
+  });
+
+  it("NaN e Infinity se emiten como celdas vacías (no rompen el XML)", () => {
+    expect(edge.data[2]).toEqual(["nan", "", false, ""]);
+    expect(edge.data[3]).toEqual(["inf", "", false, ""]);
+  });
+
+  it("mantiene números decimales y el valor 0", () => {
+    expect(edge.data[1]![1]).toBe(3.14159);
+    expect(edge.data[4]![3]).toBe(42);
+  });
+
+  it("trunca las filas al máximo de columnas de Excel (XFD, 16384)", () => {
+    const wide = [0, 1, 2];
+    const huge = Array.from({ length: 17000 }, (_, i) => `c${i}`);
+    const wb = buildWorkbook([{ name: "Ancha", headers: ["A"], rows: [huge] }]);
+    const xml = new TextDecoder().decode(writeWorkbookBuffer(wb));
+    // Máximo ref de columna válido: XFD (16384).
+    expect(xml).toContain('r="XFD2"');
+    expect(xml).not.toContain('r="XFE2"');
+    void wide;
+  });
+});

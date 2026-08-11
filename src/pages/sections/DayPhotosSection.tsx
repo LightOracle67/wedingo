@@ -89,7 +89,7 @@ const DayPhotosSection = memo(function DayPhotosSection({ inviteToken }: { invit
               {p.url ? (
                 <img src={p.url} alt={t("dayPhotos.photo")} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
               ) : (
-                <button type="button" onClick={() => reveal(p.id, items.find((i) => i.id === p.id)?.data || "")} style={{ width: "100%", height: "100%", background: "none", border: 0, cursor: "pointer", color: "var(--invite-copy-color)" }}>
+                <button type="button" onClick={() => reveal(p.id, items.find((i) => i.id === p.id)?.data || "")} aria-label={t("dayPhotos.reveal")} style={{ width: "100%", height: "100%", background: "none", border: 0, cursor: "pointer", color: "var(--invite-copy-color)" }}>
                   👁
                 </button>
               )}

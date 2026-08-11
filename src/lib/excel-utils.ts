@@ -60,9 +60,12 @@ function utf8(s: string): Uint8Array {
   return new TextEncoder().encode(s);
 }
 
-/** Escapa texto para un elemento XML. */
+/** Escapa texto para un elemento XML y elimina caracteres de control ilegales
+ *  en XML 1.0 (\x00-\x08, \x0B, \x0C, \x0E-\x1F), que romperían el fichero. */
 function escXml(v: string): string {
   return v
+    // eslint-disable-next-line no-control-regex -- sanitización intencional: elimina los caracteres de control ilegales en XML 1.0.
+    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
@@ -85,22 +88,34 @@ function colLetter(n: number): string {
 /** Serializa UNA celda con su tipo (número, booleano, texto inline o vacía). */
 function cellXml(ref: string, value: string | number | boolean | Date | null | undefined): string {
   if (value === null || value === undefined) return `<c r="${ref}"/>`;
-  if (typeof value === "number") return `<c r="${ref}"><v>${value}</v></c>`;
+  if (typeof value === "number") {
+    // NaN/Infinity no son números válidos en un XLSX: se emiten vacías en vez
+    // de escribir <v>NaN</v> (rompería el XML y abriría con error en Excel).
+    if (!Number.isFinite(value)) return `<c r="${ref}"/>`;
+    return `<c r="${ref}"><v>${value}</v></c>`;
+  }
   if (typeof value === "boolean") return `<c r="${ref}" t="b"><v>${value ? 1 : 0}</v></c>`;
   // Los Date se formatean como texto legible (los builders ya pasan excelDate).
   const text = typeof value === "object" ? excelDate(value) : String(value);
   return `<c r="${ref}" t="inlineStr"><is><t>${escXml(text)}</t></is></c>`;
 }
 
+/** Límite de columnas de Excel (XFD): las filas más anchas se truncan. */
+const MAX_COLS = 16384;
+
 /** XML de una hoja: columnas (anchos), cabecera y filas de datos. */
 function sheetXml(sheet: ExcelSheet): string {
   const cols = (sheet.colWidths || [])
+    .slice(0, MAX_COLS)
     .map((w, i) => `<col min="${i + 1}" max="${i + 1}" width="${Math.max(w, 8)}" customWidth="1"/>`)
     .join("");
   const colsXml = cols ? `<cols>${cols}</cols>` : "";
-  const headerRow = sheet.headers.map((h, i) => cellXml(`${colLetter(i)}1`, h)).join("");
+  const headerRow = sheet.headers.slice(0, MAX_COLS).map((h, i) => cellXml(`${colLetter(i)}1`, h)).join("");
   const dataRows = sheet.rows
-    .map((row, r) => `<row r="${r + 2}">${row.map((v, i) => cellXml(`${colLetter(i)}${r + 2}`, v)).join("")}</row>`)
+    .map((row, r) => {
+      const cells = row.slice(0, MAX_COLS).map((v, i) => cellXml(`${colLetter(i)}${r + 2}`, v)).join("");
+      return `<row r="${r + 2}">${cells}</row>`;
+    })
     .join("");
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">${colsXml}<sheetData><row r="1">${headerRow}</row>${dataRows}</sheetData></worksheet>`;
 }

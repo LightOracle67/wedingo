@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.11",
+    date: "2026-08-11",
+    changes: [
+      "HARDENING: escritor XLSX propio blindado — NaN/Infinity se emiten como celdas vacías (evita XML inválido), se sanean caracteres de control ilegales en XML 1.0, límite de columnas de Excel (XFD 16384); 4 tests nuevos de casos borde (22 en total). Accesibilidad: botón-ícono 👁 de Fotos del día sin aria-label corregido (clave dayPhotos.reveal). Límites de bundle ajustados a la realidad post-optimización.",
+    ],
+  },
+  {
     version: "2.96.10",
     date: "2026-08-11",
     changes: [
