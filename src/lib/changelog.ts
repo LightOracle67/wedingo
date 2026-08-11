@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.96",
+    date: "2026-08-09",
+    changes: [
+      "FIX (impresión): se elimina el scrim oscuro que quedaba detrás del texto — el fondo personalizado se ve completo, incluso detrás de las letras; la legibilidad se apoya en un text-shadow reforzado. Aplicado a la invitación y a las etiquetas de mesa.",
+    ],
+  },
+
+  {
     version: "2.95.95",
     date: "2026-08-09",
     changes: [

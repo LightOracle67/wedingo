@@ -391,7 +391,6 @@ const DistribucionTab = memo(function DistribucionTab({
         (g) => `<div class="lbl-page">
           <div class="lbl-card" style="${cardStyle}">
             ${bgImg}
-            <div class="lbl-scrim"></div>
             ${cornerImg}
             <div class="lbl-text">
               <p class="lbl-guest">${esc(g)}</p>
@@ -411,18 +410,18 @@ const DistribucionTab = memo(function DistribucionTab({
       .lbl-page:last-child{page-break-after:auto}
       .lbl-card{position:relative;width:min(78%,38rem);aspect-ratio:2/3;background-size:cover;background-position:center;border-radius:1.2rem;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.35)}
       .lbl-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-      .lbl-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,6,2,.15),rgba(10,6,2,.42));z-index:1}
+      .lbl-scrim{position:absolute;inset:0;background:transparent;z-index:1;pointer-events:none}
       .lbl-corner{position:absolute;width:60px;height:60px;z-index:2;opacity:.9}
       .lbl-corner--tl{top:10px;left:10px}
       .lbl-corner--tr{top:10px;right:10px;transform:scaleX(-1)}
       .lbl-corner--bl{bottom:10px;left:10px;transform:scaleY(-1)}
       .lbl-corner--br{bottom:10px;right:10px;transform:scale(-1)}
-      .lbl-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45rem;text-align:center;padding:1.6rem;z-index:3;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.7)}
+      .lbl-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45rem;text-align:center;padding:1.6rem;z-index:3;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.9),0 0 26px rgba(0,0,0,.55)}
       .lbl-guest{margin:0;font-family:'Great Vibes',Georgia,cursive;font-size:clamp(2rem,9vw,3.2rem);line-height:1.1}
       .lbl-table{margin:0;font-size:clamp(1rem,4.4vw,1.35rem);letter-spacing:.06em;text-transform:uppercase;opacity:.95}
       .lbl-thanks{margin:1rem 0 0;font-size:clamp(.85rem,3.4vw,1rem);font-style:italic;opacity:.95}
       .lbl-enjoy{margin:0;font-size:clamp(.85rem,3.4vw,1rem);font-style:italic;opacity:.9}
-      @media print{.lbl-scrim{background:linear-gradient(180deg,rgba(10,6,2,.04),rgba(10,6,2,.2)) !important}}
+      @media print{.lbl-scrim{background:transparent !important}}
     </style></head><body>${pages.join("")}</body></html>`;
     const win = window.open("", "_blank");
     if (!win) {

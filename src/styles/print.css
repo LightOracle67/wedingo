@@ -11,8 +11,8 @@
      El scrim se ACLARA al imprimir: los gradientes rgba semitransparentes se
      aplanan en el papel y un scrim oscuro salía casi negro. */
   /* La PÁGINA A4 sale en blanco; solo la tarjeta de la invitación lleva el
-     fondo/tema (color-adjust: exact). Antes el .print-root oscuro llenaba
-     todo el papel y salía negro. */
+     fondo/tema (color-adjust: exact). Sin scrim: el fondo personalizado se ve
+     completo y el texto se apoya solo en text-shadow. */
   .print-root {
     background: #ffffff !important;
   }
@@ -20,9 +20,11 @@
     background-color: var(--page-bg, #2a2418) !important;
     color: #f7f0e0 !important;
   }
-  /* Scrim aclarado en impresión: los rgba se aplanan en el papel. */
-  .print-card__scrim {
-    background: linear-gradient(180deg, rgba(10, 6, 2, 0.04), rgba(10, 6, 2, 0.2)) !important;
+  .print-card__content,
+  .print-couple-name,
+  .print-message,
+  .print-body {
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 0 26px rgba(0, 0, 0, 0.55) !important;
   }
   .print-card__content {
     color: #f7f0e0 !important;
@@ -104,8 +106,9 @@
 .print-card__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 6, 2, 0.15), rgba(10, 6, 2, 0.42));
+  background: transparent;
   z-index: 1;
+  pointer-events: none;
 }
 .print-card__bg {
   position: absolute;
@@ -123,7 +126,7 @@
   align-items: center;
   justify-content: center;
   min-height: 100%;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 0 26px rgba(0, 0, 0, 0.55);
 }
 .print-corner {
   position: absolute;

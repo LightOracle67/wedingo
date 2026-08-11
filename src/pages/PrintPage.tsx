@@ -136,7 +136,6 @@ export default function PrintPage() {
               }}
             />
           ) : null}
-          <div className="print-card__scrim" />
           {config.cornerDecoration ? (
             <>
               <img src={config.cornerDecoration} alt="" aria-hidden="true" className="print-corner print-corner--tl" />
