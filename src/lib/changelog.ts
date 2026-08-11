@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.9",
+    date: "2026-08-11",
+    changes: [
+      "AUDITORÍA de tercer nivel: eliminado asset muerto public/og-banner.svg (solo se sirve el PNG); verificado que los catches silenciosos son best-effort intencionados, todos los addEventListener/setInterval tienen cleanup, Sentry es lazy (import dinámico tras idle y consentimiento), el conteo de bundle lee los <script> reales, CI ejecuta lint:ci/format/consent/coverage/bundle y el SW precachea 251 assets sin incluir xlsx/qrcode/sentry.",
+    ],
+  },
+  {
     version: "2.96.8",
     date: "2026-08-11",
     changes: [
