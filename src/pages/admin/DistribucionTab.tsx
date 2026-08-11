@@ -13,6 +13,7 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { getDocs, collection, doc, addDoc, updateDoc, deleteDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { db, rsvpByInviteRef } from "../../lib/firebase";
+import { THEME_PREVIEW_COLORS } from "../../lib/constants";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 
@@ -88,12 +89,15 @@ const DistribucionTab = memo(function DistribucionTab({
   inviteToken,
   background,
   cornerDecoration,
+  theme,
 }: {
   inviteToken: string;
   /** Imagen de fondo personalizada (data-URL ya hidratada) para las etiquetas. */
   background?: string | undefined;
   /** Decoración de esquinas personalizada (data-URL) para las etiquetas. */
   cornerDecoration?: string | undefined;
+  /** Tema de la invitación (p. ej. "golden") para sus colores en las etiquetas. */
+  theme?: string | undefined;
 }) {
   const { t } = useTranslation();
   const { addToast } = useToast();
@@ -365,24 +369,32 @@ const DistribucionTab = memo(function DistribucionTab({
     }
     const esc = (v: string) =>
       v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    // Colores del TEMA establecido (fallback del fondo y acento de la etiqueta).
+    const themeColors = THEME_PREVIEW_COLORS[theme || ""] || THEME_PREVIEW_COLORS["golden"] || { accent: "#d8b24a", bg: "#2a2418" };
     const cornerImg = cornerDecoration
       ? `<img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--tl"/>
          <img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--tr"/>
          <img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--bl"/>
          <img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--br"/>`
-      : "";
-    const bgStyle = background ? `background-image:url("${esc(background)}");` : "";
+      : `<span class="lbl-corner lbl-corner--tl"></span>
+         <span class="lbl-corner lbl-corner--tr"></span>
+         <span class="lbl-corner lbl-corner--bl"></span>
+         <span class="lbl-corner lbl-corner--br"></span>`;
+    // Fondo: imagen personalizada si existe; siempre con el color del tema debajo.
+    const cardBg = background
+      ? `background-color:${themeColors.bg};background-image:url("${esc(background)}");`
+      : `background-color:${themeColors.bg};background-image:linear-gradient(160deg,${themeColors.bg},${themeColors.bg} 45%,${themeColors.accent}33);`;
     const thanks = esc(t("distribucion.labelThanks"));
     const enjoy = esc(t("distribucion.labelEnjoy"));
     const pages = withGuests.flatMap((tb) =>
       tb.guests.map(
         (g) => `<div class="lbl-page">
-          <div class="lbl-card" style="${bgStyle}">
+          <div class="lbl-card" style="${cardBg}">
             <div class="lbl-scrim"></div>
             ${cornerImg}
             <div class="lbl-text">
               <p class="lbl-guest">${esc(g)}</p>
-              <p class="lbl-table">${esc(tb.name)}</p>
+              <p class="lbl-table" style="color:${themeColors.accent}">${esc(tb.name)}</p>
               <p class="lbl-thanks">${thanks}</p>
               <p class="lbl-enjoy">${enjoy}</p>
             </div>

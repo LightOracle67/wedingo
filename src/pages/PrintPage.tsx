@@ -78,7 +78,40 @@ export default function PrintPage() {
 
     const doPrint = async () => {
       await document.fonts.ready;
-      await new Promise((r) => setTimeout(r, 400));
+      // Espera a que las imágenes (fondo y esquinas personalizadas) terminen
+      // de cargar antes de imprimir; con red de seguridad por si alguna falla.
+      const waitImages = () =>
+        new Promise<void>((resolve) => {
+          const imgs = Array.from(document.images);
+          if (imgs.length === 0 || imgs.every((img) => img.complete)) {
+            resolve();
+            return;
+          }
+          let loaded = 0;
+          let done = false;
+          const finish = () => {
+            if (done) return;
+            done = true;
+            resolve();
+          };
+          imgs.forEach((img) => {
+            if (img.complete) loaded++;
+            else {
+              img.addEventListener("load", () => {
+                loaded++;
+                if (loaded >= imgs.length) finish();
+              });
+              img.addEventListener("error", () => {
+                loaded++;
+                if (loaded >= imgs.length) finish();
+              });
+            }
+          });
+          if (loaded >= imgs.length) finish();
+          setTimeout(finish, 1500);
+        });
+      await waitImages();
+      await new Promise((r) => setTimeout(r, 250));
       const cleanup = () => {
         // Solo se cierra la pestaña si se abrió desde el panel (window.open):
         // una pestaña abierta directamente no se puede cerrar y el navegador
@@ -110,28 +143,46 @@ export default function PrintPage() {
   return (
     <div className="print-root">
       <div className="print-page">
-        <div className="print-card">
-          <p className="print-eyebrow">{t("hero.eyebrow")}</p>
-          <h1 className="print-couple-name">
-            {config.firstName}
-            <span className="print-couple-ampersand">&</span>
-            {config.secondName}
-          </h1>
-          <div className="print-divider" />
-          <p className="print-message">{message}</p>
-          <div className="print-divider" />
-          <p className="print-body">{formattedDate}</p>
-          {timeStr ? (
-            <p className="print-body" style={{ marginTop: "0.15rem" }}>
-              {timeStr}
-              {t("print.timeSuffix")}
-            </p>
+        <div
+          className="print-card"
+          style={
+            config.backgroundImage
+              ? { backgroundImage: `url("${config.backgroundImage}")` }
+              : undefined
+          }
+        >
+          <div className="print-card__scrim" />
+          {config.cornerDecoration ? (
+            <>
+              <img src={config.cornerDecoration} alt="" aria-hidden="true" className="print-corner print-corner--tl" />
+              <img src={config.cornerDecoration} alt="" aria-hidden="true" className="print-corner print-corner--tr" />
+              <img src={config.cornerDecoration} alt="" aria-hidden="true" className="print-corner print-corner--bl" />
+              <img src={config.cornerDecoration} alt="" aria-hidden="true" className="print-corner print-corner--br" />
+            </>
           ) : null}
-          {place ? (
-            <p className="print-body" style={{ marginTop: "0.15rem" }}>
-              {place}
-            </p>
-          ) : null}
+          <div className="print-card__content">
+            <p className="print-eyebrow">{t("hero.eyebrow")}</p>
+            <h1 className="print-couple-name">
+              {config.firstName}
+              <span className="print-couple-ampersand">&</span>
+              {config.secondName}
+            </h1>
+            <div className="print-divider" />
+            <p className="print-message">{message}</p>
+            <div className="print-divider" />
+            <p className="print-body">{formattedDate}</p>
+            {timeStr ? (
+              <p className="print-body" style={{ marginTop: "0.15rem" }}>
+                {timeStr}
+                {t("print.timeSuffix")}
+              </p>
+            ) : null}
+            {place ? (
+              <p className="print-body" style={{ marginTop: "0.15rem" }}>
+                {place}
+              </p>
+            ) : null}
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.92",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: la impresión de la invitación (PrintPage) ahora usa el fondo personalizado, las esquinas personalizadas y los colores del TEMA (se elimina el respaldo en blanco que anulaba el tema), tarjeta vertical 2:3 y espera a que carguen las imágenes antes de imprimir.",
+    ],
+  },
+
+  {
     version: "2.95.91",
     date: "2026-08-09",
     changes: [
