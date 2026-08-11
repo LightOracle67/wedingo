@@ -457,7 +457,37 @@ const DistribucionTab = memo(function DistribucionTab({
 
   return (
     <div className="admin-flex--col" style={{ gap: "0.75rem", height: "100%", minHeight: 0 }}>
-      {/* ── Menú superior de secciones ── */}
+      {/* ── Controles de mesas (sección activa) ── */}
+      {activeSectionId ? (
+        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
+          <label className="setup-label" style={{ margin: 0, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+            {t("distribucion.shape")}
+            <select className="setup-input" value={newShape} onChange={(e) => setNewShape(e.target.value as Shape)} style={{ marginLeft: "0.3rem" }}>
+              {SHAPES.map((s) => (
+                <option key={s.key} value={s.key}>
+                  {t(`distribucion.shape_${s.key}`)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <button type="button" className="setup-button setup-button--compact" onClick={() => void addTable()}>
+            {t("distribucion.addTable")}
+          </button>
+          <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={printLabels}>
+            {t("distribucion.printLabels")}
+          </button>
+          <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportTablesXlsx()}>
+            {t("distribucion.exportTables")}
+          </button>
+          <button type="button" className="setup-button setup-button--danger setup-button--ghost setup-button--compact" onClick={() => void deleteSection(activeSectionId)}>
+            {t("distribucion.deleteSection")}
+          </button>
+          <span style={{ flex: 1 }} />
+          <span className="setup-help" style={{ margin: 0 }}>{t("distribucion.dragHint")}</span>
+        </div>
+      ) : null}
+
+      {/* ── Selector de secciones (debajo de los controles de mesas) ── */}
       <div className="admin-flex" style={{ gap: "0.4rem", flexWrap: "wrap", alignItems: "center" }}>
         {sections.length === 0 ? (
           <span className="setup-help" style={{ margin: 0 }}>{t("distribucion.noSections")}</span>
@@ -491,36 +521,6 @@ const DistribucionTab = memo(function DistribucionTab({
       <p className="setup-help" style={{ margin: "0 0 0.1rem" }}>
         {t("distribucion.sectionsHint")}
       </p>
-
-      {/* ── Controles de mesas (sección activa) ── */}
-      {activeSectionId ? (
-        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
-          <label className="setup-label" style={{ margin: 0, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
-            {t("distribucion.shape")}
-            <select className="setup-input" value={newShape} onChange={(e) => setNewShape(e.target.value as Shape)} style={{ marginLeft: "0.3rem" }}>
-              {SHAPES.map((s) => (
-                <option key={s.key} value={s.key}>
-                  {t(`distribucion.shape_${s.key}`)}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button type="button" className="setup-button setup-button--compact" onClick={() => void addTable()}>
-            {t("distribucion.addTable")}
-          </button>
-          <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={printLabels}>
-            {t("distribucion.printLabels")}
-          </button>
-          <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportTablesXlsx()}>
-            {t("distribucion.exportTables")}
-          </button>
-          <button type="button" className="setup-button setup-button--danger setup-button--ghost setup-button--compact" onClick={() => void deleteSection(activeSectionId)}>
-            {t("distribucion.deleteSection")}
-          </button>
-          <span style={{ flex: 1 }} />
-          <span className="setup-help" style={{ margin: 0 }}>{t("distribucion.dragHint")}</span>
-        </div>
-      ) : null}
 
       {/* ── Mapa de la sección activa (ocupa todo el espacio) ── */}
       {activeSectionId ? (

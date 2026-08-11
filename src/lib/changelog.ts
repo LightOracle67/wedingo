@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.4",
+    date: "2026-08-11",
+    changes: [
+      "UI: el selector de secciones pasa a mostrarse debajo de los controles de mesas (forma, añadir mesa, imprimir, exportar, eliminar sección) en Distribución.",
+    ],
+  },
+  {
     version: "2.96.3",
     date: "2026-08-11",
     changes: [
