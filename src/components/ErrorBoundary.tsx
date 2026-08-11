@@ -2,7 +2,6 @@ import { Component } from "react";
 import { useTranslation } from "react-i18next";
 import { logError } from "../lib/error-utils";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 class ErrorBoundaryInner extends Component<
   { t: (key: string) => string; children: React.ReactNode },
   { error: Error | null }

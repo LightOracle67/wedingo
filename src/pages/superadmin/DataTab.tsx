@@ -4,6 +4,7 @@ import { getDocs, doc, collection, writeBatch, getDoc, query, where } from "fire
 import { db, INVITATIONS_COLLECTION_REF, RSVP_RESPONSES_GROUP, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadJson } from "../../lib/file-utils";
+import { escHtml } from "../../lib/utils";
 import { logAudit } from "../../lib/audit";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { SortableTh } from "../../components/SortableTh";
@@ -330,7 +331,7 @@ export default function DataTab() {
           ${rows
             .map(
               (r) =>
-                `<tr><td>${String(r.guestName || "")}</td><td>${String(r.attendance || "")}</td><td>${Number(r.companionCount) || 0}</td></tr>`,
+                `<tr><td>${escHtml(r.guestName)}</td><td>${escHtml(r.attendance)}</td><td>${Number(r.companionCount) || 0}</td></tr>`,
             )
             .join("")}
           </tbody></table></body></html>`;

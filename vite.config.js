@@ -62,9 +62,10 @@ function pwaPrecache() {
             const langMatch = file.match(/^([a-z]{2,4})-[A-Za-z0-9_-]{8,}\.js$/);
             // Excluye los 100 chunks de idioma del precache del service worker.
             if (langMatch && langCodes.has(langMatch[1])) return false;
-            // Estos chunks son lazy por ruta (superadmin/login/sentry/analytics):
-            // se cachean al primer uso, no al instalar, para no pagar 1.7MB.
-            if (/^(vendor-sentry|lazy-auth|lazy-storage|lazy-analytics)-/.test(file)) return false;
+            // Estos chunks son lazy por ruta/uso (superadmin/login/sentry/
+            // analytics/xlsx/qrcode): se cachean al primer uso, no al instalar,
+            // para no pagar ~1.7MB en el primer hit.
+            if (/^(vendor-sentry|lazy-auth|lazy-storage|lazy-analytics|vendor-xlsx|vendor-qrcode)-/.test(file)) return false;
             return true;
           })
           .map((file) => `/assets/${file}`);
@@ -110,6 +111,11 @@ export default defineConfig({
           if (id.includes("firebase/analytics")) return "lazy-analytics";
           if (id.includes("firebase/auth")) return "lazy-auth";
           if (id.includes("firebase/storage")) return "lazy-storage";
+          // xlsx y qrcode solo se importan dinámicamente (exports Excel y QR
+          // del panel): su propio chunk evita que entren en la ruta inicial
+          // a través del agrupador genérico de node_modules.
+          if (id.includes("/xlsx/")) return "vendor-xlsx";
+          if (id.includes("/qrcode/")) return "vendor-qrcode";
           if (id.includes("firebase")) return "vendor-firebase";
           if (id.includes("node_modules/.pnpm/react") || id.includes("node_modules/react")) return "vendor-react";
           if (id.includes("/node_modules/i18next/") || id.includes("/node_modules/react-i18next/")) return "i18n";

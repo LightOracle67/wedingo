@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.8",
+    date: "2026-08-11",
+    changes: [
+      "AUDITORÍA profunda: ruta inicial 382→284KB gzip (xlsx y qrcode pasan a chunks lazy bajo demanda, no se precachean); fix XSS en impresión de RSVP del superadmin (nombres/asistencia ahora se escapan); GDPR: fecha de corte de consentimiento parental actualizada en firestore.rules (2012-08-12, verificado por CI); eslint-disable huérfano eliminado; dependencias, functions/ y scripts de validación auditados.",
+    ],
+  },
+  {
     version: "2.96.7",
     date: "2026-08-11",
     changes: [
