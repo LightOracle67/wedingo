@@ -136,6 +136,10 @@ describe("DistribucionTab", () => {
     expect(html).toContain("data:image/png;base64,BG");
     expect(html).toContain("data:image/png;base64,CORNER");
     expect(html).toContain("lbl-page");
+    // Mensajes de agradecimiento y disfrute en líneas separadas, y tarjeta vertical.
+    expect(html).toContain("distribucion.labelThanks");
+    expect(html).toContain("distribucion.labelEnjoy");
+    expect(html).toContain("aspect-ratio:2/3");
     vi.unstubAllGlobals();
   });
 });

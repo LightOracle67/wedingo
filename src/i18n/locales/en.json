@@ -1571,6 +1571,8 @@
     "assignHint": "Only confirmed guests not yet assigned are listed.",
     "printLabels": "Print place cards",
     "printTitle": "Table place cards",
-    "printNoGuests": "Assign guests to tables to print place cards."
+    "printNoGuests": "Assign guests to tables to print place cards.",
+    "labelThanks": "Thank you for being with us",
+    "labelEnjoy": "Enjoy the celebration!"
   }
 }

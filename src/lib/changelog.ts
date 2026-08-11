@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.91",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: etiquetas de mesa en vertical (A4 vertical, tarjeta 2:3) con mensaje de agradecimiento por la asistencia y de disfrute en líneas separadas tras la mesa; la impresión espera a que carguen el fondo y las esquinas personalizadas antes de imprimir (con red de seguridad de 1.5s).",
+    ],
+  },
+
+  {
     version: "2.95.90",
     date: "2026-08-09",
     changes: [

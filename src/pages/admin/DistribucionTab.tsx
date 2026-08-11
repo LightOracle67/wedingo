@@ -356,7 +356,7 @@ const DistribucionTab = memo(function DistribucionTab({
     dragRef.current = null;
   }, [tables, persistTable]);
 
-  // ── Servicio de impresión de etiquetas por mesa (A4, una por página) ──
+  // ── Servicio de impresión de etiquetas por mesa (A4 vertical, una por página) ──
   const printLabels = useCallback(() => {
     const withGuests = tables.filter((tb) => tb.guests.length > 0);
     if (withGuests.length === 0) {
@@ -372,6 +372,8 @@ const DistribucionTab = memo(function DistribucionTab({
          <img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--br"/>`
       : "";
     const bgStyle = background ? `background-image:url("${esc(background)}");` : "";
+    const thanks = esc(t("distribucion.labelThanks"));
+    const enjoy = esc(t("distribucion.labelEnjoy"));
     const pages = withGuests.flatMap((tb) =>
       tb.guests.map(
         (g) => `<div class="lbl-page">
@@ -381,6 +383,8 @@ const DistribucionTab = memo(function DistribucionTab({
             <div class="lbl-text">
               <p class="lbl-guest">${esc(g)}</p>
               <p class="lbl-table">${esc(tb.name)}</p>
+              <p class="lbl-thanks">${thanks}</p>
+              <p class="lbl-enjoy">${enjoy}</p>
             </div>
           </div>
         </div>`,
@@ -392,17 +396,19 @@ const DistribucionTab = memo(function DistribucionTab({
       body{margin:0;font-family:Georgia,'Times New Roman',serif}
       .lbl-page{width:210mm;height:297mm;display:grid;place-items:center;page-break-after:always;background:#fff;padding:14mm}
       .lbl-page:last-child{page-break-after:auto}
-      .lbl-card{position:relative;width:min(90%,42rem);aspect-ratio:3/2;background-size:cover;background-position:center;border-radius:1.2rem;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.35)}
-      .lbl-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,6,2,.05),rgba(10,6,2,.38));z-index:1}
-      .lbl-corner{position:absolute;width:64px;height:64px;z-index:2;opacity:.9}
-      .lbl-corner--tl{top:8px;left:8px}
-      .lbl-corner--tr{top:8px;right:8px;transform:scaleX(-1)}
-      .lbl-corner--bl{bottom:8px;left:8px;transform:scaleY(-1)}
-      .lbl-corner--br{bottom:8px;right:8px;transform:scale(-1)}
-      .lbl-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;text-align:center;padding:1.5rem;z-index:3;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.7)}
-      .lbl-guest{margin:0;font-family:'Great Vibes',Georgia,cursive;font-size:clamp(2rem,9vw,3.4rem);line-height:1.1}
-      .lbl-table{margin:0;font-size:clamp(1rem,4vw,1.4rem);letter-spacing:.06em;text-transform:uppercase;opacity:.95}
-      @media print{.lbl-scrim{background:linear-gradient(180deg,rgba(10,6,2,.05),rgba(10,6,2,.4))}}
+      .lbl-card{position:relative;width:min(78%,38rem);aspect-ratio:2/3;background-size:cover;background-position:center;border-radius:1.2rem;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.35)}
+      .lbl-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,6,2,.05),rgba(10,6,2,.45));z-index:1}
+      .lbl-corner{position:absolute;width:60px;height:60px;z-index:2;opacity:.9}
+      .lbl-corner--tl{top:10px;left:10px}
+      .lbl-corner--tr{top:10px;right:10px;transform:scaleX(-1)}
+      .lbl-corner--bl{bottom:10px;left:10px;transform:scaleY(-1)}
+      .lbl-corner--br{bottom:10px;right:10px;transform:scale(-1)}
+      .lbl-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45rem;text-align:center;padding:1.6rem;z-index:3;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.7)}
+      .lbl-guest{margin:0;font-family:'Great Vibes',Georgia,cursive;font-size:clamp(2rem,9vw,3.2rem);line-height:1.1}
+      .lbl-table{margin:0;font-size:clamp(1rem,4.4vw,1.35rem);letter-spacing:.06em;text-transform:uppercase;opacity:.95}
+      .lbl-thanks{margin:1rem 0 0;font-size:clamp(.85rem,3.4vw,1rem);font-style:italic;opacity:.95}
+      .lbl-enjoy{margin:0;font-size:clamp(.85rem,3.4vw,1rem);font-style:italic;opacity:.9}
+      @media print{.lbl-scrim{background:linear-gradient(180deg,rgba(10,6,2,.05),rgba(10,6,2,.5))}}
     </style></head><body>${pages.join("")}</body></html>`;
     const win = window.open("", "_blank");
     if (!win) {
@@ -412,9 +418,39 @@ const DistribucionTab = memo(function DistribucionTab({
     win.document.write(html);
     win.document.close();
     win.focus();
-    setTimeout(() => {
-      win.print();
-    }, 400);
+    // Espera a que las imágenes (fondo y esquinas) terminen de cargar antes de
+    // imprimir: si no, los data-URL aún no decodificados no salen en el papel.
+    const waitForImages = () => {
+      const imgs = Array.from(win.document.images);
+      if (imgs.length === 0 || imgs.every((img) => img.complete)) {
+        win.print();
+        return;
+      }
+      let loaded = 0;
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        win.print();
+      };
+      imgs.forEach((img) => {
+        if (img.complete) loaded++;
+        else {
+          img.addEventListener("load", () => {
+            loaded++;
+            if (loaded >= imgs.length) finish();
+          });
+          img.addEventListener("error", () => {
+            loaded++;
+            if (loaded >= imgs.length) finish();
+          });
+        }
+      });
+      if (loaded >= imgs.length) finish();
+      // Red de seguridad: nunca bloquear la impresión más de 1.5s.
+      setTimeout(finish, 1500);
+    };
+    setTimeout(waitForImages, 250);
   }, [tables, background, cornerDecoration, addToast, t]);
 
   const selected = tables.find((tb) => tb.id === selectedId);

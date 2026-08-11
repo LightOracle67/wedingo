@@ -1571,6 +1571,8 @@
     "assignHint": "Solo aparecen invitados que hayan confirmado su asistencia y que aún no estén asignados.",
     "printLabels": "Imprimir etiquetas",
     "printTitle": "Etiquetas por mesa",
-    "printNoGuests": "Asigna invitados a las mesas para poder imprimir etiquetas."
+    "printNoGuests": "Asigna invitados a las mesas para poder imprimir etiquetas.",
+    "labelThanks": "Gracias por acompañarnos",
+    "labelEnjoy": "¡Disfruta de la celebración!"
   }
 }
