@@ -55,6 +55,9 @@ const baseInvitation = {
     verified: "false",
     adminNotes: "",
     manualExpiry: "",
+    // Sesión activa futura: habilita el botón de kill-session.
+    activeSession: { seconds: Math.floor(Date.now() / 1000) + 3600 },
+    sessionExpiresAt: { seconds: Math.floor(Date.now() / 1000) + 3600 },
   }),
 };
 
@@ -170,5 +173,64 @@ describe("ManageTab", () => {
     fireEvent.change(screen.getByLabelText("manage.compareB"), { target: { value: "cmpB" } });
     fireEvent.click(screen.getByText("manage.compareButton"));
     await vi.waitFor(() => expect(screen.getByText(/firstName/)).toBeInTheDocument());
+  });
+
+  it("clona una invitación (nuevo token) tras confirmar", async () => {
+    window.confirm = vi.fn(() => true);
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByText("manage.cloneButton")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("manage.cloneButton"));
+    // Clona la invitación y crea el setup token: 2 setDoc.
+    await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalledTimes(2));
+  });
+
+  it("no clona si el administrador cancela la confirmación", async () => {
+    window.confirm = vi.fn(() => false);
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByText("manage.cloneButton")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("manage.cloneButton"));
+    await new Promise((r) => setTimeout(r, 30));
+    expect(mockSetDoc).not.toHaveBeenCalled();
+  });
+
+  it("guarda las flags de verificación, etiquetas y aforo", async () => {
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByText("manage.saveFlags")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("manage.saveFlags"));
+    await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalled());
+  });
+
+  it("guarda la expiración manual", async () => {
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByText("manage.saveExpiry")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("manage.saveExpiry"));
+    await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalled());
+  });
+
+  it("cierra la sesión activa de la invitación (kill session)", async () => {
+    window.confirm = vi.fn(() => true);
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByText("manage.killSession")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("manage.killSession"));
+    await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalled());
+  });
+
+  it("pausa la invitación añadiéndola a los tokens bloqueados", async () => {
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByText("manage.pause")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("manage.pause"));
+    await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
   });
 });
