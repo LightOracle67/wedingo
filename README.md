@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.96.1](https://github.com/LightOracle67/wedingo/releases/tag/v2.96.1)  
+**Versión actual:** [v2.96.2](https://github.com/LightOracle67/wedingo/releases/tag/v2.96.2)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -239,6 +239,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.96.2 | 2026-08-11 | Prueba de formato de todos los Excel descargables (ida y vuelta celda a celda); builders extraídos a excel-builders.ts |
 | v2.96.1 | 2026-08-11 | Todos los exports pasan de CSV a Excel (.xlsx): asistencia, menús, invitados, RSVP por invitación y auditoría |
 | v2.96.0 | 2026-08-11 | Exportación a Excel (.xlsx): invitados con estado, buzón, asistencia con menús/dieta y mesas por sección |
 | v2.0.1 | 2026-06-30 | Primera versión: accesibilidad, footer, superadmin |

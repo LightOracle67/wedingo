@@ -88,7 +88,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   /** Descarga un Excel con todas las respuestas RSVP (filtradas o no). */
   const handleExportExcel = useCallback(async () => {
     try {
-      const { buildRSVPSheet, buildMenuSheet } = await import("../../lib/admin-utils");
+      const { buildRSVPSheet, buildMenuSheet } = await import("../../lib/excel-builders");
       const { exportToXlsx } = await import("../../lib/excel-utils");
       exportToXlsx(`asistencia_${new Date().toISOString().slice(0, 10)}`, [
         buildRSVPSheet(filteredEntries || [], t),

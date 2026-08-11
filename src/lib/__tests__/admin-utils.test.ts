@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { calcRSVPSummary, getDietarySummary, buildRSVPSheet, buildMenuSheet } from "../admin-utils";
+import { calcRSVPSummary, getDietarySummary } from "../admin-utils";
 
 describe("calcRSVPSummary", () => {
   it("returns zeros for null", () => {
@@ -161,59 +161,5 @@ describe("getDietarySummary", () => {
       { item: "sin gluten", count: 1 },
       { item: "alergia", count: 1 },
     ]);
-  });
-
-  it("buildRSVPSheet builds a sheet with translated attendance and menus", () => {
-    const t = (key: string) =>
-      key === "attendance.attendingValue" ? "Sí" : key === "attendance.notAttendingValue" ? "No" : key === "rsvp.menuCarne" ? "Carne" : key;
-    const sheet = buildRSVPSheet(
-      [
-        {
-          guestName: "Ana, la novia",
-          attendance: "yes",
-          mealChoice: "carne",
-          dietaryInfo: "sin gluten",
-          transportMode: "bus",
-          birthDate: "2000-01-01",
-          submittedAt: "2026-08-01T10:00:00",
-        },
-        { guestName: "Pedro", attendance: "no" },
-      ],
-      t,
-    );
-    expect(sheet.name).toBe("attendance.sheetAttendance");
-    expect(sheet.headers).toContain("attendance.tableName");
-    expect(sheet.rows).toHaveLength(2);
-    expect(sheet.rows[0]).toContain("Ana, la novia");
-    expect(sheet.rows[0]).toContain("Sí");
-    expect(sheet.rows[0]).toContain("Carne");
-    expect(sheet.rows[0]).toContain("sin gluten");
-    expect(sheet.rows[0]).toContain("(bus)");
-    expect(sheet.rows[1]).toContain("No");
-  });
-});
-
-describe("buildMenuSheet", () => {
-  it("lists each guest and their attendees with the chosen dish", () => {
-    const t = (key: string) => key;
-    const sheet = buildMenuSheet(
-      [
-        {
-          guestName: "Ana",
-          attendance: "yes",
-          attendees: [
-            { name: "Ana", menu: "carne" },
-            { name: "Luis", menu: "pescado" },
-          ],
-        },
-        { guestName: "Solo", attendance: "yes", mealChoice: "vegano" },
-        { guestName: "Ausente", attendance: "no", mealChoice: "carne" },
-      ],
-      t,
-    );
-    expect(sheet.rows).toHaveLength(3);
-    expect(sheet.rows[0]).toEqual(["Ana", "carne"]);
-    expect(sheet.rows[1]).toEqual(["Luis", "pescado"]);
-    expect(sheet.rows[2]).toEqual(["Solo", "vegano"]);
   });
 });

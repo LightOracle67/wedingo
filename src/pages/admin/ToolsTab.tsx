@@ -165,23 +165,18 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
   // ── Exportación XLSX (Excel/LibreOffice) de invitados y buzón ──
   const exportGuestsXlsx = useCallback(async () => {
     const { exportToXlsx } = await import("../../lib/excel-utils");
-    const rows: Array<Array<string>> = expected.map((name) => [
-      name,
-      confirmed.has(name.toLowerCase()) ? t("tools.confirmedValue") : t("tools.pendingValue"),
-    ]);
-    exportToXlsx(`invitados_${new Date().toISOString().slice(0, 10)}`, [
-      { name: "Invitados", headers: [t("tools.nameValue"), t("tools.statusValue")], rows, colWidths: [26, 18] },
-    ]);
-    addToast("success", t("tools.exportOk", { count: rows.length }));
+    const { buildGuestsSheet } = await import("../../lib/excel-builders");
+    const sheet = buildGuestsSheet(expected, confirmed, t);
+    exportToXlsx(`invitados_${new Date().toISOString().slice(0, 10)}`, [sheet]);
+    addToast("success", t("tools.exportOk", { count: sheet.rows.length }));
   }, [expected, confirmed, t, addToast]);
 
   const exportMailboxXlsx = useCallback(async () => {
-    const { exportToXlsx, excelDate } = await import("../../lib/excel-utils");
-    const rows: Array<Array<string>> = (mailbox || []).map((m) => [m.guestName, m.message, excelDate(m.ts)]);
-    exportToXlsx(`buzon_${new Date().toISOString().slice(0, 10)}`, [
-      { name: "Buzón", headers: [t("tools.nameValue"), t("tools.messageValue"), t("tools.dateValue")], rows, colWidths: [26, 60, 20] },
-    ]);
-    addToast("success", t("tools.exportOk", { count: rows.length }));
+    const { exportToXlsx } = await import("../../lib/excel-utils");
+    const { buildMailboxSheet } = await import("../../lib/excel-builders");
+    const sheet = buildMailboxSheet(mailbox || [], t);
+    exportToXlsx(`buzon_${new Date().toISOString().slice(0, 10)}`, [sheet]);
+    addToast("success", t("tools.exportOk", { count: sheet.rows.length }));
   }, [mailbox, t, addToast]);
 
   const openReminder = useCallback(() => {

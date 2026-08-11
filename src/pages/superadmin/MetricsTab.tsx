@@ -196,60 +196,22 @@ const MetricsTab = memo(function MetricsTab() {
   // ── Export Excel global ──
   const exportExcel = useCallback(async () => {
     const { exportToXlsx } = await import("../../lib/excel-utils");
-    const rows = funnel.map((r) => [
-      r.id,
-      `${r.firstName} ${r.secondName}`.trim(),
-      r.adminUsername,
-      r.weddingDateLabel,
-      r.visits,
-      r.rsvpCount,
-      r.confirmed,
-      r.rsvpCount - r.confirmed,
-      r.companions,
-      r.conversion,
-    ]);
-    exportToXlsx(`metricas_${new Date().toISOString().slice(0, 10)}`, [
-      {
-        name: "Métricas",
-        headers: ["Token", "Invitación", "Admin", "Fecha boda", "Visitas", "RSVP", "Confirmados", "Declinados", "Acompañantes", "Conversión(%)"],
-        rows,
-        colWidths: [12, 24, 16, 14, 10, 10, 12, 12, 14, 12],
-      },
-    ]);
+    const { buildMetricsSheet } = await import("../../lib/excel-builders");
+    exportToXlsx(`metricas_${new Date().toISOString().slice(0, 10)}`, [buildMetricsSheet(funnel)]);
   }, [funnel]);
 
   // ── Export Excel de invitados (todas las confirmaciones) ──
   const exportGuestsExcel = useCallback(async () => {
     const { exportToXlsx } = await import("../../lib/excel-utils");
-    const out: Array<Array<string | number>> = [];
+    const { buildGlobalGuestsSheet } = await import("../../lib/excel-builders");
+    const perInvite: Array<{ invite: { id: string; firstName: string; secondName: string }; rsvps: Array<Record<string, unknown>> }> = [];
     for (const r of rows) {
       try {
         const rsvpSnap = await getDocs(rsvpByInviteRef(r.id));
-        for (const d of rsvpSnap.docs) {
-          const rd = d.data();
-          if (rd.inviteToken !== r.id) continue;
-          out.push([
-            r.id,
-            `${r.firstName} ${r.secondName}`.trim(),
-            String(rd.guestName || ""),
-            String(rd.attendance || ""),
-            Array.isArray(rd.attendees) ? rd.attendees.map((a: { menu?: string }) => a.menu || "").join("; ") : String(rd.mealChoice || ""),
-            Array.isArray(rd.allergiesOther) ? rd.allergiesOther.join("; ") : String(rd.dietaryInfo || ""),
-            String(rd.phone || ""),
-            String(rd.email || ""),
-            String(rd.submittedAt || ""),
-          ]);
-        }
+        perInvite.push({ invite: r, rsvps: rsvpSnap.docs.map((d) => d.data() as Record<string, unknown>) });
       } catch {}
     }
-    exportToXlsx(`invitados_${new Date().toISOString().slice(0, 10)}`, [
-      {
-        name: "Invitados",
-        headers: ["Token", "Invitación", "Nombre", "Asistencia", "Menú", "Alergias", "Teléfono", "Email", "Fecha"],
-        rows: out,
-        colWidths: [12, 24, 22, 14, 22, 24, 16, 24, 20],
-      },
-    ]);
+    exportToXlsx(`invitados_${new Date().toISOString().slice(0, 10)}`, [buildGlobalGuestsSheet(perInvite)]);
   }, [rows]);
 
   // ── Analítica de funciones sociales (uso global) ──

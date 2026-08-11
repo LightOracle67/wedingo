@@ -29,13 +29,14 @@ export function excelDate(value: Date | string | number | undefined): string {
 }
 
 /**
- * Genera y descarga un fichero .xlsx con una o varias hojas.
- * @param filename Nombre del fichero (sin extensión).
- * @param sheets    Hojas a incluir (ordenadas).
+ * Construye el libro de trabajo XLSX a partir de las hojas (sin descargar).
+ * Función pura: se usa desde exportToXlsx y desde los tests para reabrir el
+ * fichero y verificar que cada celda conserva su valor y tipo.
  */
-export function exportToXlsx(filename: string, sheets: ExcelSheet[]): void {
+export function buildWorkbook(sheets: ExcelSheet[]): XLSX.WorkBook {
   const wb = XLSX.utils.book_new();
   for (const sheet of sheets) {
+    // Se omite la hoja si no aporta nada (evita hojas vacías en el fichero).
     if (sheet.rows.length === 0 && sheet.headers.length === 0) continue;
     const ws = XLSX.utils.aoa_to_sheet([sheet.headers, ...sheet.rows]);
     // Anchos de columna para que el contenido sea legible sin reajustar.
@@ -44,6 +45,16 @@ export function exportToXlsx(filename: string, sheets: ExcelSheet[]): void {
     }
     XLSX.utils.book_append_sheet(wb, ws, sheet.name.slice(0, 31));
   }
+  return wb;
+}
+
+/**
+ * Genera y descarga un fichero .xlsx con una o varias hojas.
+ * @param filename Nombre del fichero (sin extensión).
+ * @param sheets    Hojas a incluir (ordenadas).
+ */
+export function exportToXlsx(filename: string, sheets: ExcelSheet[]): void {
+  const wb = buildWorkbook(sheets);
   if (wb.SheetNames.length === 0) return;
   XLSX.writeFile(wb, `${filename}.xlsx`);
 }

@@ -345,26 +345,10 @@ export default function DataTab() {
     async (token: string) => {
       try {
         const { exportToXlsx } = await import("../../lib/excel-utils");
+        const { buildRsvpSheet } = await import("../../lib/excel-builders");
         const rsvpSnap = await getDocs(rsvpByInviteRef(token));
-        const rows: Array<Array<string | number>> = rsvpSnap.docs.map((d) => {
-          const r = d.data();
-          return [
-            String(r.guestName || ""),
-            String(r.attendance || ""),
-            Number(r.companionCount) || 0,
-            String(r.mealChoice || ""),
-            Array.isArray(r.allergiesOther) ? r.allergiesOther.join("; ") : String(r.allergiesOther || ""),
-            r.submittedAt ? new Date(String(r.submittedAt)).toLocaleDateString() : "",
-          ];
-        });
-        exportToXlsx(`${token}_rsvp`, [
-          {
-            name: "RSVP",
-            headers: ["Nombre", "Asistencia", "Acompañantes", "Menú", "Alergias", "Fecha"],
-            rows,
-            colWidths: [24, 14, 14, 20, 26, 14],
-          },
-        ]);
+        const sheet = buildRsvpSheet(token, rsvpSnap.docs.map((d) => d.data() as Record<string, unknown>));
+        exportToXlsx(`${token}_rsvp`, [sheet]);
         addToast("success", t("superadmin.data.exportedOne", { token }));
       } catch {
         addToast("error", t("superadmin.data.exportFailed"));

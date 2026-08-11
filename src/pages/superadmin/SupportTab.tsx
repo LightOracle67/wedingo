@@ -142,15 +142,8 @@ const SupportTab = memo(function SupportTab() {
   }, []);
   const exportAudit = useCallback(async () => {
     const { exportToXlsx } = await import("../../lib/excel-utils");
-    const rows: Array<Array<string>> = auditRows.map((r) => [r.action, r.detail, r.ts]);
-    exportToXlsx(`auditoria_${new Date().toISOString().slice(0, 10)}`, [
-      {
-        name: "Auditoría",
-        headers: ["Acción", "Detalle", "Fecha"],
-        rows,
-        colWidths: [22, 60, 20],
-      },
-    ]);
+    const { buildAuditSheet } = await import("../../lib/excel-builders");
+    exportToXlsx(`auditoria_${new Date().toISOString().slice(0, 10)}`, [buildAuditSheet(auditRows)]);
   }, [auditRows]);
 
   const searchToken = useCallback(async () => {

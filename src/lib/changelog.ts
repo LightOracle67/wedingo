@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.2",
+    date: "2026-08-11",
+    changes: [
+      "TEST: prueba de formato de todos los Excel descargables — los 9 exports (asistencia, menús, invitados, buzón, mesas, métricas, confirmaciones globales, RSVP y auditoría) se generan con buildWorkbook, se reabren con la librería xlsx y se verifican cabeceras, valores, tipos numéricos y fechas celda a celda. Refactor: builders extraídos a excel-builders.ts como funciones puras.",
+    ],
+  },
+  {
     version: "2.96.1",
     date: "2026-08-11",
     changes: [

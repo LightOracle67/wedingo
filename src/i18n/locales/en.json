@@ -1497,7 +1497,9 @@
     "nameValue": "Name",
     "statusValue": "Status",
     "messageValue": "Message",
-    "dateValue": "Date"
+    "dateValue": "Date",
+    "sheetGuests": "Guests",
+    "sheetMailbox": "Mailbox"
   },
   "voiceNotes": {
     "title": "Memory box",
@@ -1591,6 +1593,7 @@
     "shapeValue": "Shape",
     "sizeValue": "Size (px)",
     "capacityValue": "Seats",
-    "guestValue": "Guest"
+    "guestValue": "Guest",
+    "sheetTables": "Tables"
   }
 }

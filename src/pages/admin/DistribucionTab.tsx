@@ -447,34 +447,11 @@ const DistribucionTab = memo(function DistribucionTab({
   // ── Exportación XLSX (Excel/LibreOffice) de las mesas e invitados asignados ──
   const exportTablesXlsx = useCallback(async () => {
     const { exportToXlsx } = await import("../../lib/excel-utils");
-    const active = sections.find((s) => s.id === activeSectionId);
-    const rows: Array<Array<string | number>> = [];
-    for (const tb of tables) {
-      if (tb.guests.length === 0) {
-        rows.push([active?.name || "", tb.name, tb.shape, tb.w, tb.h, tb.seats, ""]);
-      } else {
-        for (const g of tb.guests) {
-          rows.push([active?.name || "", tb.name, tb.shape, tb.w, tb.h, tb.seats, g]);
-        }
-      }
-    }
-    exportToXlsx(`mesas_${(active?.name || "seccion").replace(/[^\p{L}\p{N}_-]/gu, "_").slice(0, 40)}`, [
-      {
-        name: "Mesas",
-        headers: [
-          t("distribucion.sectionValue"),
-          t("distribucion.tableValue"),
-          t("distribucion.shapeValue"),
-          t("distribucion.sizeValue"),
-          t("distribucion.capacityValue"),
-          t("distribucion.guestValue"),
-        ],
-        rows,
-        colWidths: [20, 18, 14, 12, 12, 24],
-      },
-    ]);
-    addToast("success", t("tools.exportOk", { count: rows.length }));
-  }, [tables, sections, activeSectionId, t, addToast]);
+    const { buildTablesSheet } = await import("../../lib/excel-builders");
+    const sheet = buildTablesSheet(sections, activeSectionId, tables, t);
+    exportToXlsx(`mesas_${(sections.find((s) => s.id === activeSectionId)?.name || "seccion").replace(/[^\p{L}\p{N}_-]/gu, "_").slice(0, 40)}`, [sheet]);
+    addToast("success", t("tools.exportOk", { count: sheet.rows.length }));
+  }, [sections, activeSectionId, tables, t, addToast]);
 
   const selected = tables.find((tb) => tb.id === selectedId);
   const availableGuests = confirmedGuests.filter((g) => !assignedNames.has(g.name));

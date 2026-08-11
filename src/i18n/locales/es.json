@@ -1497,7 +1497,9 @@
     "nameValue": "Nombre",
     "statusValue": "Estado",
     "messageValue": "Mensaje",
-    "dateValue": "Fecha"
+    "dateValue": "Fecha",
+    "sheetGuests": "Invitados",
+    "sheetMailbox": "Buzón"
   },
   "voiceNotes": {
     "title": "Caja de recuerdos",
@@ -1591,6 +1593,7 @@
     "shapeValue": "Forma",
     "sizeValue": "Tamaño (px)",
     "capacityValue": "Plazas",
-    "guestValue": "Invitado"
+    "guestValue": "Invitado",
+    "sheetTables": "Mesas"
   }
 }
