@@ -17,6 +17,8 @@ export interface SlotState {
 
 export interface InvitationConfig {
   adminUsername: string;
+  /** Número de invitados esperados (0..1000 como string; "" = sin definir). */
+  expectedGuests: string;
   firstName: string;
   secondName: string;
   inviteMessage: string;

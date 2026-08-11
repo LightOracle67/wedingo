@@ -153,22 +153,6 @@ export function buildMenuSheet(entries: RsvpRowLike[], t: (key: string) => strin
   };
 }
 
-// ── Admin: lista de invitados esperados ──
-
-/** Hoja "Invitados": cada esperado con su estado de confirmación. */
-export function buildGuestsSheet(expected: string[], confirmed: Set<string>, t: (key: string) => string): ExcelSheet {
-  const rows: Array<Array<string>> = (expected || []).map((name) => [
-    name,
-    confirmed.has(name.toLowerCase()) ? t("tools.confirmedValue") : t("tools.pendingValue"),
-  ]);
-  return {
-    name: t("tools.sheetGuests"),
-    headers: [t("tools.nameValue"), t("tools.statusValue")],
-    rows,
-    colWidths: [26, 18],
-  };
-}
-
 // ── Admin: buzón privado ──
 
 /** Hoja "Buzón": todos los mensajes privados de los invitados. */

@@ -43,6 +43,7 @@ import { useAutoSave } from "../useAutoSave";
 
 const sampleConfig: InvitationConfig = {
   adminUsername: "",
+  expectedGuests: "",
   firstName: "Alice",
   secondName: "Bob",
   inviteMessage: "Welcome",

@@ -258,6 +258,16 @@ export default function AdminPage() {
   const confirmedResponses = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "yes").length;
   const declinedResponses = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "no").length;
   const totalGuests = rsvpEntries.reduce((s: number, r: { companions?: number }) => s + (Number(r.companions) || 1), 0);
+  // Personas (confirmados/declinados) y total esperado (0..1000 desde config).
+  const confirmedPeople = rsvpEntries.reduce(
+    (s: number, r: { attendance: string; companions?: number }) => s + (r.attendance === "yes" ? Number(r.companions) || 1 : 0),
+    0,
+  );
+  const declinedPeople = rsvpEntries.reduce(
+    (s: number, r: { attendance: string; companions?: number }) => s + (r.attendance === "no" ? Number(r.companions) || 1 : 0),
+    0,
+  );
+  const expectedGuestsTotal = Math.min(Math.max(Number(config.expectedGuests) || 0, 0), 1000);
 
   /** Props agrupadas para PanelTab (reduce prop drilling). */
   const panelConfig = useMemo(
@@ -266,6 +276,9 @@ export default function AdminPage() {
       confirmedResponses,
       declinedResponses,
       totalGuests,
+      confirmedPeople,
+      declinedPeople,
+      expectedGuests: expectedGuestsTotal,
       rsvpEntries,
       setActiveTab: setActiveTabAndFilter,
       setAttendanceFilter: setAttendanceFilterValue,
@@ -280,6 +293,9 @@ export default function AdminPage() {
       confirmedResponses,
       declinedResponses,
       totalGuests,
+      confirmedPeople,
+      declinedPeople,
+      expectedGuestsTotal,
       rsvpEntries,
       setActiveTabAndFilter,
       setAttendanceFilterValue,
@@ -456,6 +472,8 @@ export default function AdminPage() {
                 weddingDate={{ year: config.weddingYear, month: config.weddingMonth, day: config.weddingDay, hour: config.weddingHour, minute: config.weddingMinute }}
                 weddingPlace={config.weddingPlace}
                 coupleName={coupleName}
+                expectedGuests={config.expectedGuests}
+                onExpectedGuestsSaved={reloadConfig}
               />
             )}
 

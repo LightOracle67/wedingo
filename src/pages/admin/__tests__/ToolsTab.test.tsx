@@ -22,7 +22,7 @@ if (!globalThis.localStorage) {
 const mockGetDocs = vi.fn();
 const mockSetDoc = vi.fn(() => Promise.resolve());
 const mockGetDoc = vi.fn(() => Promise.resolve({ exists: () => true, data: () => ({ internalNote: "" }) }));
-const mockUpdateDoc = vi.fn(() => Promise.resolve());
+const mockUpdateDoc = vi.fn((..._args: unknown[]) => Promise.resolve());
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -31,7 +31,7 @@ vi.mock("firebase/firestore", () => ({
   getDocs: (ref: unknown) => mockGetDocs(String(ref)),
   setDoc: () => mockSetDoc(),
   getDoc: () => mockGetDoc(),
-  updateDoc: () => mockUpdateDoc(),
+  updateDoc: (ref: unknown, data: unknown) => mockUpdateDoc(ref, data),
   doc: vi.fn(() => "doc-ref"),
   collection: vi.fn((_db: unknown, _p: string, _t: string, sub?: string) => sub || "guests"),
 }));
@@ -68,21 +68,24 @@ describe("ToolsTab", () => {
     expect(screen.getByText("tools.internalNote")).toBeInTheDocument();
   });
 
-  it("shows the missing-guests counter after loading expected guests", async () => {
-    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" />);
-    // El contador de pendientes siempre se renderiza tras cargar invitados.
-    await vi.waitFor(() => expect(screen.getByText(/tools.missingCount/)).toBeInTheDocument());
-    // getDocs se consultó para invitados (guests) y confirmaciones (rsvp-ref).
-    expect(mockGetDocs).toHaveBeenCalledWith("guests");
-    expect(mockGetDocs).toHaveBeenCalledWith("rsvp-ref");
+  it("saves the expected-guests number (0..1000)", async () => {
+    const onSaved = vi.fn();
+    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" expectedGuests="" onExpectedGuestsSaved={onSaved} />);
+    await vi.waitFor(() => expect(screen.getByLabelText("tools.expectedGuests")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("tools.expectedGuests"), { target: { value: "750" } });
+    fireEvent.blur(screen.getByLabelText("tools.expectedGuests"));
+    await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalled());
+    expect(mockUpdateDoc).toHaveBeenCalledWith("doc-ref", { expectedGuests: "750" });
+    expect(onSaved).toHaveBeenCalled();
   });
 
-  it("adds a new expected guest", async () => {
-    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" />);
-    await vi.waitFor(() => expect(screen.getByLabelText("tools.guestPlaceholder")).toBeInTheDocument());
-    fireEvent.change(screen.getByLabelText("tools.guestPlaceholder"), { target: { value: "Sara" } });
-    fireEvent.click(screen.getByText("tools.addGuest"));
-    await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
+  it("clamps expected guests to 1000 and rejects non-numeric input", async () => {
+    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" expectedGuests="" onExpectedGuestsSaved={vi.fn()} />);
+    const input = await screen.findByLabelText("tools.expectedGuests");
+    fireEvent.change(input, { target: { value: "2500" } });
+    fireEvent.blur(input);
+    await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalled());
+    expect(mockUpdateDoc).toHaveBeenCalledWith("doc-ref", { expectedGuests: "1000" });
   });
 
   it("opens WhatsApp with a customizable reminder", async () => {

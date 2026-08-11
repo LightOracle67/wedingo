@@ -91,6 +91,16 @@ const s = (v: unknown) => {
   return "";
 };
 
+/** Número de invitados esperados: entero 0..1000 ("" si vacío o inválido). */
+const EXPECTED_GUESTS_MAX = 1000;
+function normalizeExpectedGuests(value: unknown): string {
+  const raw = s(value);
+  if (!raw) return "";
+  const n = Math.floor(Number(raw));
+  if (!Number.isFinite(n) || n < 0) return "";
+  return n > EXPECTED_GUESTS_MAX ? String(EXPECTED_GUESTS_MAX) : String(n);
+}
+
 /** Normaliza un toggle *Enabled a "true" o "false". */
 const bool = (v: unknown): string => (s(v) === "true" ? "true" : "false");
 
@@ -102,6 +112,7 @@ const toggleWithLegacy = (enabled: unknown, content: unknown): string =>
 
 export const normalizeConfig = (value: Record<string, unknown> | undefined) => ({
   adminUsername: s(value?.adminUsername).toLowerCase(),
+  expectedGuests: normalizeExpectedGuests(value?.expectedGuests),
   firstName: s(value?.firstName),
   secondName: s(value?.secondName),
   inviteMessage: s(value?.inviteMessage),

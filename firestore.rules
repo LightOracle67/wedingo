@@ -131,6 +131,13 @@ service cloud.firestore {
            guardado y la renovación de sesión). El contenido se valida igual. */
         && (!data.keys().hasAny(['weddingDressCodeCustom']) || (data.weddingDressCodeCustom is string && data.weddingDressCodeCustom.size() <= 500 && isSafeText(data.weddingDressCodeCustom)))
         && (!data.keys().hasAny(['adminUsername']) || (data.adminUsername is string && data.adminUsername.size() <= 50 && data.adminUsername.matches('^[a-z0-9]*$')))
+        /* Número de invitados esperados (0..1000). Se guarda como string;
+           entero ≤ 4 dígitos y nunca mayor que 1000. */
+        && (!data.keys().hasAny(['expectedGuests']) || (
+          data.expectedGuests is string
+          && data.expectedGuests.matches('^[0-9]{0,4}$')
+          && (data.expectedGuests.size() < 4 || data.expectedGuests <= "1000")
+        ))
         /* Consentimiento del responsable: si se envía, debe ser true (la
            evidencia auditable de la versión aceptada se estampa en el cliente
            con privacyConsentAt de servidor). */

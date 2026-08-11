@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.97.0",
+    date: "2026-08-12",
+    changes: [
+      "FEAT: los invitados esperados pasan de una lista de nombres a un NÚMERO (0..1000, config.expectedGuests) — el panel calcula las estadísticas a partir de él: Total invitados = esperado, Sin responder = esperado − confirmados (personas), Confirmados/No asistirán en personas. Guardado con validación servidor en las reglas (solo 0..1000), normalización en normalize-config y tests de reglas/unitarios.",
+    ],
+  },
+  {
     version: "2.96.11",
     date: "2026-08-11",
     changes: [

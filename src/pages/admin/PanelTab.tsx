@@ -14,6 +14,12 @@ export interface PanelTabConfig {
   confirmedResponses: number;
   declinedResponses: number;
   totalGuests: number;
+  /** Personas que confirman (1 + acompañantes por respuesta "yes"). */
+  confirmedPeople: number;
+  /** Personas que declinan (1 + acompañantes por respuesta "no"). */
+  declinedPeople: number;
+  /** Nº de invitados esperados configurado (0..1000; 0 = sin definir). */
+  expectedGuests: number;
   rsvpEntries: Array<{ id: string; guestName: string; attendance: string; companions: number; submittedAt: unknown }>;
   formatDate: (date: unknown) => string;
   onRestore?: () => Promise<void>;
@@ -32,6 +38,9 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
     confirmedResponses,
     declinedResponses,
     totalGuests,
+    confirmedPeople,
+    declinedPeople,
+    expectedGuests,
     rsvpEntries,
     formatDate,
     onRestore,
@@ -45,6 +54,16 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
 
   const summary = useMemo(() => calcRSVPSummary(rsvpEntries), [rsvpEntries]);
   const dietary = useMemo(() => getDietarySummary(rsvpEntries).slice(0, 5), [rsvpEntries]);
+
+  // Estadísticas: si hay invitados esperados configurados (>0) se calculan en
+  // PERSONAS a partir de ese número (total = esperado, sin responder =
+  // esperado − confirmados). Sin configuración se mantiene el comportamiento
+  // anterior (resumen de familias por respuestas RSVP).
+  const useExpected = expectedGuests > 0;
+  const confirmed = useExpected ? confirmedPeople : confirmedResponses;
+  const declined = useExpected ? declinedPeople : declinedResponses;
+  const pending = useExpected ? Math.max(0, expectedGuests - confirmedPeople) : summary.pending;
+  const total = useExpected ? expectedGuests : totalGuests;
 
   const handleBackup = useCallback(async () => {
     try {
@@ -190,24 +209,24 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
   return (
     <>
       <div className="admin-stats-grid">
-        <StatsCard label={t("panel.confirmed")} value={confirmedResponses} />
-        <StatsCard label={t("panel.notAttending")} value={declinedResponses} />
-        <StatsCard label={t("panel.noResponse")} value={summary.pending} />
-        <StatsCard label={t("panel.totalGuests")} value={totalGuests} />
+        <StatsCard label={t("panel.confirmed")} value={confirmed} />
+        <StatsCard label={t("panel.notAttending")} value={declined} />
+        <StatsCard label={t("panel.noResponse")} value={pending} />
+        <StatsCard label={t("panel.totalGuests")} value={total} />
       </div>
 
       <div className="setup-help" style={{ marginBottom: "0.5rem", fontSize: "0.8rem", textAlign: "center" }}>
         {visitCount > 0 ? `👁 ${t("panel.visits", { count: visitCount })}` : t("panel.noVisits")}
       </div>
 
-      {summary.confirmed + summary.declined > 0 && (
+      {confirmed + declined > 0 && (
         <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "1rem", textAlign: "center" }}>
-          <DonutChart yes={summary.confirmed} no={summary.declined} pending={summary.pending} size={120} />
+          <DonutChart yes={confirmed} no={declined} pending={pending} size={120} />
           <Legend
             items={[
-              { label: t("panel.confirms"), value: summary.confirmed, color: "var(--accent, #22c55e)" },
-              { label: t("panel.declines"), value: summary.declined, color: "#ef4444" },
-              { label: t("panel.pending"), value: summary.pending, color: "#f59e0b" },
+              { label: t("panel.confirms"), value: confirmed, color: "var(--accent, #22c55e)" },
+              { label: t("panel.declines"), value: declined, color: "#ef4444" },
+              { label: t("panel.pending"), value: pending, color: "#f59e0b" },
             ]}
           />
         </div>

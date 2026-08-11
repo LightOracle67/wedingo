@@ -78,6 +78,11 @@ async function run() {
   // 7. Invitado SÍ puede leer una invitación por documento (público).
   await t("invitation get público", true, guestDb.collection("invitations").doc("AbCdEf1234").get());
 
+  // 7b. Invitados esperados: solo 0..1000 (string); se rechazan >1000 y no numéricos.
+  await t("expectedGuests 1000 (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", expectedGuests: "1000" }, { merge: true }));
+  await t("expectedGuests 1001 → NEGADO", false, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", expectedGuests: "1001" }, { merge: true }));
+  await t("expectedGuests no numérico → NEGADO", false, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", expectedGuests: "abc" }, { merge: true }));
+
   // 8. El superadmin puede borrar una invitación.
   await t("invitation delete (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").delete());
 

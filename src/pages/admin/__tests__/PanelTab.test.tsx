@@ -43,6 +43,9 @@ const baseConfig: PanelTabConfig = {
   confirmedResponses: 5,
   declinedResponses: 2,
   totalGuests: 10,
+  confirmedPeople: 9,
+  declinedPeople: 2,
+  expectedGuests: 0,
   rsvpEntries: [],
   formatDate: (d: unknown) => String(d),
   onRestore: vi.fn(() => Promise.resolve()),
@@ -78,6 +81,23 @@ describe("PanelTab", () => {
     expect(screen.getByText("panel.notAttending")).toBeDefined();
     expect(screen.getByText("panel.noResponse")).toBeDefined();
     expect(screen.getByText("panel.totalGuests")).toBeDefined();
+  });
+
+  it("computes stats from the expected-guests number when set", () => {
+    const cfg: PanelTabConfig = {
+      ...baseConfig,
+      // 120 esperados; 25 confirmados (personas) → 95 sin responder, total 120.
+      confirmedPeople: 25,
+      declinedPeople: 3,
+      expectedGuests: 120,
+    };
+    const { container } = render(<PanelTab config={cfg} />);
+    const values = Array.from(container.querySelectorAll(".admin-stats-card")).map((c) => c.textContent);
+    // Confirmados 25, No asistirán 3, Sin responder 95, Total 120.
+    expect(values.join(" ")).toContain("25");
+    expect(values.join(" ")).toContain("3");
+    expect(values.join(" ")).toContain("95");
+    expect(values.join(" ")).toContain("120");
   });
 
   it("shows visit count", () => {

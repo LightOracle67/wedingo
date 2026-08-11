@@ -74,8 +74,16 @@ describe("normalizeConfig", () => {
   });
 
   it("lowercases adminUsername", () => {
-    const result = normalizeConfig(FULL_CONFIG);
+    const result = normalizeConfig({ adminUsername: "USER123" });
     expect(result.adminUsername).toBe("user123");
+  });
+
+  it("clamps expectedGuests to 0..1000 and rejects non-numeric", () => {
+    expect(normalizeConfig({ expectedGuests: "42" }).expectedGuests).toBe("42");
+    expect(normalizeConfig({ expectedGuests: "2500" }).expectedGuests).toBe("1000");
+    expect(normalizeConfig({ expectedGuests: "abc" }).expectedGuests).toBe("");
+    expect(normalizeConfig({ expectedGuests: "" }).expectedGuests).toBe("");
+    expect(normalizeConfig({}).expectedGuests).toBe("");
   });
 
   it("falls back to golden theme for invalid theme", () => {

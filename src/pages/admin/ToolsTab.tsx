@@ -1,6 +1,6 @@
-import { memo, useCallback, useEffect, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, collection, doc, setDoc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { getDocs, collection, doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadText } from "../../lib/file-utils";
@@ -11,6 +11,10 @@ interface ToolsTabProps {
   weddingDate?: { year: string; month: string; day: string; hour?: string; minute?: string };
   weddingPlace?: string;
   coupleName?: string;
+  /** Nº de invitados esperados (config, string "0".."1000"; "" = sin definir). */
+  expectedGuests?: string;
+  /** Se invoca tras guardar expectedGuests (recarga la config para las stats). */
+  onExpectedGuestsSaved?: () => void | Promise<void>;
 }
 
 /** Guarda/lee la marca "última visita" para el badge de confirmaciones nuevas. */
@@ -29,17 +33,23 @@ const MONTH_TO_NUM: Record<string, number> = {
  * plazas restantes, .ics y nota interna. Sin datos de terceros; solo Firestore
  * + cliente (GDPR conforme).
  */
-const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, weddingPlace, coupleName }: ToolsTabProps) {
+const ToolsTab = memo(function ToolsTab({
+  inviteToken,
+  inviteUrl,
+  weddingDate,
+  weddingPlace,
+  coupleName,
+  expectedGuests = "",
+  onExpectedGuestsSaved,
+}: ToolsTabProps) {
   const { t } = useTranslation();
   const { addToast } = useToast();
 
   // ── Recordatorio WhatsApp ──
   const [reminder, setReminder] = useState("");
 
-  // ── Lista de invitados esperados ──
-  const [expected, setExpected] = useState<string[]>([]);
-  const [newGuest, setNewGuest] = useState("");
-  const [confirmed, setConfirmed] = useState<Set<string>>(new Set());
+  // ── Invitados esperados (número 0..1000, guardado en config) ──
+  const [guestsInput, setGuestsInput] = useState(expectedGuests);
 
   // ── Badge de confirmaciones nuevas ──
   const [newCount, setNewCount] = useState(0);
@@ -54,8 +64,7 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
 
   const load = useCallback(async () => {
     try {
-      const [guestsSnap, rsvpSnap, galSnap, mailboxSnap, daySnap] = await Promise.all([
-        getDocs(collection(db, "invitations", inviteToken, "guests")),
+      const [rsvpSnap, galSnap, mailboxSnap, daySnap] = await Promise.all([
         getDocs(rsvpByInviteRef(inviteToken)),
         getDocs(collection(db, "invitations", inviteToken, "gallery")),
         getDocs(collection(db, "invitations", inviteToken, "mailbox")),
@@ -70,15 +79,6 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
         })),
       );
       setDayPhotoCount(daySnap.size || 0);
-      setExpected(guestsSnap.docs.map((d) => String(d.data().name || "")));
-      const conf = new Set<string>();
-      let newest = 0;
-      for (const d of rsvpSnap.docs) {
-        conf.add(String(d.data().guestName || "").toLowerCase());
-        const raw = d.data().submittedAt as { seconds?: number } | undefined;
-        if (raw && typeof raw === "object" && "seconds" in raw) newest = Math.max(newest, Number(raw.seconds) * 1000);
-      }
-      setConfirmed(conf);
       setGalleryCount(galSnap.size || 0);
       // Badge: confirmaciones posteriores a la última visita. Aislado en su
       // propio try: si el almacenamiento local falla, NO aborta la carga.
@@ -105,20 +105,22 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
     };
   }, [load]);
 
-  const missing = useMemo(() => expected.filter((n) => !confirmed.has(n.toLowerCase())), [expected, confirmed]);
-
-  const addGuest = useCallback(async () => {
-    const name = newGuest.trim();
-    if (!name) return;
+  // ── Invitados esperados: guarda el número (0..1000) en la config ──
+  const saveExpectedGuests = useCallback(async () => {
     try {
-      await setDoc(doc(collection(db, "invitations", inviteToken, "guests")), { name: name.slice(0, 120) });
-      setExpected((prev) => [...prev, name.slice(0, 120)]);
-      setNewGuest("");
-      addToast("success", t("tools.guestAdded"));
+      // Se normaliza y acota (los no numéricos y >1000 se descartan).
+      const raw = guestsInput.replace(/[^0-9]/g, "");
+      const value = raw ? String(Math.min(Number(raw) || 0, 1000)) : "";
+      if (value !== expectedGuests) {
+        await updateDoc(doc(db, "invitations", inviteToken), { expectedGuests: value });
+        addToast("success", t("tools.expectedGuestsSaved"));
+        if (onExpectedGuestsSaved) await onExpectedGuestsSaved();
+      }
+      setGuestsInput(value);
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [newGuest, inviteToken, addToast, t]);
+  }, [guestsInput, expectedGuests, inviteToken, onExpectedGuestsSaved, addToast, t]);
 
   // ── Buzón privado ──
   const deleteMail = useCallback(
@@ -162,20 +164,7 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
     }
   }, [inviteToken, addToast, t]);
 
-  // ── Exportación XLSX (Excel/LibreOffice) de invitados y buzón ──
-  const exportGuestsXlsx = useCallback(async () => {
-    // Sin invitados esperados no hay nada que exportar.
-    if ((expected || []).length === 0) {
-      addToast("info", t("tools.noGuestsToExport"));
-      return;
-    }
-    const { exportToXlsx } = await import("../../lib/excel-utils");
-    const { buildGuestsSheet } = await import("../../lib/excel-builders");
-    const sheet = buildGuestsSheet(expected, confirmed, t);
-    exportToXlsx(`invitados_${new Date().toISOString().slice(0, 10)}`, [sheet]);
-    addToast("success", t("tools.exportOk", { count: sheet.rows.length }));
-  }, [expected, confirmed, t, addToast]);
-
+  // ── Exportación XLSX (Excel/LibreOffice) del buzón ──
   const exportMailboxXlsx = useCallback(async () => {
     // Sin mensajes privados no hay buzón que exportar.
     if ((mailbox || []).length === 0) {
@@ -272,26 +261,38 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
         </button>
       </div>
 
-      {/* Lista de invitados esperados */}
+      {/* Invitados esperados: número 0..1000 para las estadísticas */}
       <div className="setup-background-panel">
         <p className="setup-label">{t("tools.expectedGuests")}</p>
         <p className="setup-help">{t("tools.expectedHelp")}</p>
-        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
-          <input className="setup-input" value={newGuest} onChange={(e) => setNewGuest(e.target.value)} placeholder={t("tools.guestPlaceholder")} maxLength={120} aria-label={t("tools.guestPlaceholder")} />
-          <button className="setup-button setup-button--compact" type="button" onClick={() => void addGuest()}>{t("tools.addGuest")}</button>
+        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
+          <input
+            className="setup-input"
+            type="number"
+            inputMode="numeric"
+            min={0}
+            max={1000}
+            step={1}
+            value={guestsInput}
+            onChange={(e) => {
+              const digits = e.target.value.replace(/[^0-9]/g, "").slice(0, 4);
+              setGuestsInput(digits);
+            }}
+            onBlur={() => void saveExpectedGuests()}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") void saveExpectedGuests();
+            }}
+            placeholder="0"
+            aria-label={t("tools.expectedGuests")}
+            style={{ maxWidth: "8rem" }}
+          />
+          <button className="setup-button setup-button--compact" type="button" onClick={() => void saveExpectedGuests()}>
+            {t("tools.saveGuests")}
+          </button>
         </div>
         <p className="setup-help" style={{ margin: "0.5rem 0 0" }}>
-          {t("tools.missingCount", { count: missing.length })}
+          {t("tools.expectedGuestsMax")}
         </p>
-        {missing.length > 0 ? (
-          <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}>
-            {missing.slice(0, 30).map((n, i) => (
-              <li key={i}>{n}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="setup-success" style={{ margin: "0.3rem 0 0" }}>{t("tools.allConfirmed")}</p>
-        )}
       </div>
 
       {/* Acciones rápidas */}
@@ -351,9 +352,6 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
         <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
           <button className="setup-button setup-button--compact" type="button" onClick={() => void downloadDayPhotos()} disabled={dayPhotoCount === 0}>
             {t("tools.downloadDayPhotos", { count: dayPhotoCount })}
-          </button>
-          <button className="setup-button setup-button--compact" type="button" onClick={() => void exportGuestsXlsx()}>
-            {t("tools.exportGuests")}
           </button>
         </div>
       </div>

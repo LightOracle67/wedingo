@@ -14,7 +14,6 @@ import { buildWorkbook, writeWorkbookBuffer } from "../excel-utils";
 import {
   buildRSVPSheet,
   buildMenuSheet,
-  buildGuestsSheet,
   buildMailboxSheet,
   buildTablesSheet,
   buildMetricsSheet,
@@ -157,18 +156,6 @@ describe("Export Excel: Asistencia + Menús (AttendanceTab)", () => {
       ["Ana", "Carne"],
       ["Luis", "Pescado"],
       ["Solo", "Vegano"],
-    ]);
-  });
-});
-
-describe("Export Excel: invitados esperados (ToolsTab)", () => {
-  const sheet = readBack([buildGuestsSheet(["Ana García", "Luis"], new Set(["ana garcía"]), t)])[0]!;
-
-  it("cabecera y estado confirmado/pendiente (comparación sin mayúsculas)", () => {
-    expect(sheet.data).toEqual([
-      ["Nombre", "Estado"],
-      ["Ana García", "Confirmado"],
-      ["Luis", "Pendiente"],
     ]);
   });
 });
