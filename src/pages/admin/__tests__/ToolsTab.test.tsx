@@ -23,6 +23,7 @@ const mockGetDocs = vi.fn();
 const mockSetDoc = vi.fn(() => Promise.resolve());
 const mockGetDoc = vi.fn(() => Promise.resolve({ exists: () => true, data: () => ({ internalNote: "" }) }));
 const mockUpdateDoc = vi.fn((..._args: unknown[]) => Promise.resolve());
+const mockDeleteDoc = vi.fn(() => Promise.resolve());
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -32,6 +33,7 @@ vi.mock("firebase/firestore", () => ({
   setDoc: () => mockSetDoc(),
   getDoc: () => mockGetDoc(),
   updateDoc: (ref: unknown, data: unknown) => mockUpdateDoc(ref, data),
+  deleteDoc: () => mockDeleteDoc(),
   doc: vi.fn(() => "doc-ref"),
   collection: vi.fn((_db: unknown, _p: string, _t: string, sub?: string) => sub || "guests"),
 }));
@@ -103,5 +105,36 @@ describe("ToolsTab", () => {
     fireEvent.change(note, { target: { value: "Llamar para confirmar" } });
     fireEvent.click(screen.getByText("tools.saveNote"));
     await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalled());
+  });
+
+  it("genera el .ics cuando hay fecha de boda", async () => {
+    const { downloadText } = await import("../../../lib/file-utils");
+    render(
+      <ToolsTab
+        inviteToken="tok1234567"
+        inviteUrl="https://x/tok1234567"
+        weddingDate={{ year: "2026", month: "junio", day: "15", hour: "17", minute: "30" }}
+        weddingPlace="Iglesia San José"
+        coupleName="Ana & Luis"
+      />,
+    );
+    await screen.findByText("tools.icsButton");
+    fireEvent.click(screen.getByText("tools.icsButton"));
+    await vi.waitFor(() => expect(downloadText).toHaveBeenCalled());
+    expect(downloadText).toHaveBeenCalledWith("tok1234567.ics", expect.stringContaining("BEGIN:VCALENDAR"), "text/calendar;charset=utf-8");
+  });
+
+  it("borra un mensaje del buzón privado", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "mailbox")
+        return Promise.resolve({
+          docs: [{ id: "m1", data: () => ({ guestName: "Ana", message: "Felicidades", createdAt: new Date().toISOString() }) }],
+        });
+      return Promise.resolve({ docs: [], size: 0 });
+    });
+    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" />);
+    await screen.findByText("Felicidades");
+    fireEvent.click(screen.getAllByText("tools.delete")[0]!);
+    await vi.waitFor(() => expect(mockDeleteDoc).toHaveBeenCalled());
   });
 });

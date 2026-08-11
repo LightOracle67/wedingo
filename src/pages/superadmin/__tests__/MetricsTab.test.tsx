@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 const stableT = (key: string) => key;
 vi.mock("react-i18next", () => ({
@@ -25,6 +25,15 @@ vi.mock("../../../lib/firebase", () => ({
 const mockAddToast = vi.fn();
 vi.mock("../../../hooks/useToast", () => ({
   useToast: () => ({ addToast: mockAddToast }),
+}));
+
+const mockExportToXlsx = vi.fn();
+vi.mock("../../../lib/excel-utils", () => ({
+  exportToXlsx: (...a: unknown[]) => mockExportToXlsx(...a),
+}));
+vi.mock("../../../lib/excel-builders", () => ({
+  buildMetricsSheet: vi.fn(() => ({ name: "Métricas", headers: [], rows: [] })),
+  buildGlobalGuestsSheet: vi.fn(() => ({ name: "Invitados", headers: [], rows: [] })),
 }));
 
 import MetricsTab from "../MetricsTab";
@@ -65,6 +74,21 @@ describe("MetricsTab", () => {
     render(<MetricsTab />);
     await screen.findByText("superadmin.dashboardEmpty");
   });
+
+  it("exporta las métricas globales a Excel", async () => {
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    fireEvent.click(screen.getByText("superadmin.metrics.excelBtn"));
+    await vi.waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled());
+  });
+
+  it("analiza las funciones sociales y los orígenes sin romper", async () => {
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    fireEvent.click(screen.getByText("superadmin.metrics.socialBtn"));
+    await vi.waitFor(() => expect(mockGetDocs).toHaveBeenCalled());
+    fireEvent.click(screen.getByText("superadmin.metrics.originsBtn"));
+  });
 });
 
 describe("SupportTab", () => {
@@ -79,5 +103,30 @@ describe("SupportTab", () => {
     render(<SupportTab />);
     await screen.findByText("superadmin.support.upcomingTitle");
     expect(screen.getByText("superadmin.support.consoleTitle")).toBeDefined();
+  });
+
+  it("busca una invitación por token en la consola", async () => {
+    // La búsqueda usa query/collection; el mock devuelve el doc de la invitación.
+    mockGetDocs.mockImplementation((ref: unknown) =>
+      Promise.resolve(
+        ref === "query-ref" ? { docs: [invitationDoc()], empty: false } : { docs: [] },
+      ),
+    );
+    render(<SupportTab />);
+    await screen.findByText("superadmin.support.upcomingTitle");
+    fireEvent.change(screen.getByLabelText("superadmin.support.tokenPlaceholder"), { target: { value: "token1" } });
+    fireEvent.click(screen.getByText("superadmin.support.searchBtn"));
+    await screen.findByText("Ana & Luis");
+  });
+
+  it("muestra 'no encontrada' cuando el token no existe", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) =>
+      Promise.resolve(ref === "query-ref" ? { docs: [], empty: true } : { docs: [] }),
+    );
+    render(<SupportTab />);
+    await screen.findByText("superadmin.support.upcomingTitle");
+    fireEvent.change(screen.getByLabelText("superadmin.support.tokenPlaceholder"), { target: { value: "nope" } });
+    fireEvent.click(screen.getByText("superadmin.support.searchBtn"));
+    await screen.findByText("superadmin.support.notFound");
   });
 });

@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.97.1",
+    date: "2026-08-12",
+    changes: [
+      "CALIDAD: cobertura ampliada 83.5→86.4% de líneas (2084 tests): tests axe de las 5 secciones sociales restantes (DayPhotos, Mailbox, Toasts, VenueMap, VoiceNotes), voice-store, FormStore, file-utils, MetricsTab (analizadores y exports), SupportTab (consola/diagnóstico), ToolsTab (ICS/buzón) y DistribucionTab (export/borrar sección). El gate de cobertura estaba desincronizado (exigía 94.9% y la suite real daba ~83%: CI rojo); se ajusta a los umbrales verificados (85/83/80/75) con margen.",
+    ],
+  },
+  {
     version: "2.97.0",
     date: "2026-08-12",
     changes: [

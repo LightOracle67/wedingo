@@ -27,6 +27,13 @@ vi.mock("../../../lib/firebase", () => ({
 vi.mock("../../../hooks/useToast", () => ({
   useToast: () => ({ addToast: vi.fn() }),
 }));
+const mockExportToXlsx = vi.fn();
+vi.mock("../../../lib/excel-utils", () => ({
+  exportToXlsx: (...a: unknown[]) => mockExportToXlsx(...a),
+}));
+vi.mock("../../../lib/excel-builders", () => ({
+  buildTablesSheet: vi.fn(() => ({ name: "Mesas", headers: [], rows: [] })),
+}));
 
 import DistribucionTab from "../DistribucionTab";
 
@@ -141,5 +148,29 @@ describe("DistribucionTab", () => {
     expect(html).toContain("distribucion.labelEnjoy");
     expect(html).toContain("aspect-ratio:2/3");
     vi.unstubAllGlobals();
+  });
+
+  it("exporta las mesas e invitados asignados a Excel", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
+      if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
+      return Promise.resolve({
+        docs: [{ id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 8, guests: ["Ana García"] }) }],
+      });
+    });
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    await screen.findByText("Mesa 1");
+    fireEvent.click(screen.getByText("distribucion.exportTables"));
+    await vi.waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled());
+  });
+
+  it("elimina la sección activa", async () => {
+    window.confirm = vi.fn(() => true);
+    const { deleteDoc } = await import("firebase/firestore");
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    fireEvent.click(screen.getByText("distribucion.deleteSection"));
+    await vi.waitFor(() => expect(deleteDoc).toHaveBeenCalled());
   });
 });
