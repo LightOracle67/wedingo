@@ -8,7 +8,11 @@
     print-color-adjust: exact !important;
   }
   /* Los fondos y colores del tema SÍ se imprimen (color-adjust: exact).
-     El scrim garantiza que el texto sea legible sobre la imagen. */
+     El scrim se ACLARA al imprimir: los gradientes rgba semitransparentes se
+     aplanan en el papel y un scrim oscuro salía casi negro. */
+  .print-card__scrim {
+    background: linear-gradient(180deg, rgba(10, 6, 2, 0.04), rgba(10, 6, 2, 0.2)) !important;
+  }
   .print-root,
   .print-card {
     background-color: var(--page-bg, #2a2418) !important;

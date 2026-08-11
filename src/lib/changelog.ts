@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.94",
+    date: "2026-08-09",
+    changes: [
+      "FIX: al imprimir (invitación y etiquetas) los fondos ya no salen negros — el scrim semitransparente se aclara SOLO en impresión (@media print), porque los gradientes rgba se aplanan en el papel y un scrim oscuro salía casi negro; la previsualización en pantalla se mantiene igual.",
+    ],
+  },
+
+  {
     version: "2.95.93",
     date: "2026-08-09",
     changes: [

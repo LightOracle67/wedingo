@@ -421,7 +421,7 @@ const DistribucionTab = memo(function DistribucionTab({
       .lbl-table{margin:0;font-size:clamp(1rem,4.4vw,1.35rem);letter-spacing:.06em;text-transform:uppercase;opacity:.95}
       .lbl-thanks{margin:1rem 0 0;font-size:clamp(.85rem,3.4vw,1rem);font-style:italic;opacity:.95}
       .lbl-enjoy{margin:0;font-size:clamp(.85rem,3.4vw,1rem);font-style:italic;opacity:.9}
-      @media print{.lbl-scrim{background:linear-gradient(180deg,rgba(10,6,2,.05),rgba(10,6,2,.5))}}
+      @media print{.lbl-scrim{background:linear-gradient(180deg,rgba(10,6,2,.04),rgba(10,6,2,.2)) !important}}
     </style></head><body>${pages.join("")}</body></html>`;
     const win = window.open("", "_blank");
     if (!win) {
