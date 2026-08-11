@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.1",
+    date: "2026-08-11",
+    changes: [
+      "REFACTOR: todos los exports de CSV sustituidos por Excel (.xlsx) — Asistencia, menús, invitados globales, RSVP por invitación y auditoría; lógica centralizada en admin-utils con hojas tipadas.",
+    ],
+  },
+  {
     version: "2.96.0",
     date: "2026-08-11",
     changes: [

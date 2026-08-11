@@ -2,7 +2,6 @@ import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Pagination from "../../components/Pagination";
 import { useToast } from "../../hooks/useToast";
-import { formatRSVPsForCSV, formatMenuCateringCSV } from "../../lib/admin-utils";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { SortableTh } from "../../components/SortableTh";
 
@@ -86,83 +85,19 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const [pageSize, setPageSize] = useState(25);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 
-  /** Descarga un CSV con todas las respuestas RSVP (filtradas o no). */
-  const handleExportCsv = useCallback(() => {
-    try {
-      const csv = formatRSVPsForCSV(filteredEntries);
-      const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `asistencias_${new Date().toISOString().slice(0, 10)}.csv`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    } catch (err) {
-      // Antes se traga el error en silencio: sin aviso el admin no sabía que
-      // el CSV no se generó.
-      console.error("[app]", "[AttendanceTab]", "csv export error", { error: err });
-      addToast("error", t("attendance.csvExportError"));
-    }
-  }, [filteredEntries, addToast, t]);
-
-  // Export para el catering: qué plato eligió cada confirmado.
-  const handleExportMenu = useCallback(() => {
-    try {
-      const csv = formatMenuCateringCSV(filteredEntries);
-      const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `menu_${new Date().toISOString().slice(0, 10)}.csv`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    } catch {
-      /* export no disponible */
-    }
-  }, [filteredEntries]);
-
-  // Exportación a XLSX (Excel/LibreOffice): asistencia completa + menús.
+  /** Descarga un Excel con todas las respuestas RSVP (filtradas o no). */
   const handleExportExcel = useCallback(async () => {
-    const { exportToXlsx, excelDate } = await import("../../lib/excel-utils");
-    const entries = filteredEntries || [];
-    const asis = entries.map((e: RsvpEntry) => [
-      e.guestName,
-      e.attendance === "yes" ? t("attendance.attendingValue") : t("attendance.notAttendingValue"),
-      e.mealChoice ? t("rsvp.menu" + e.mealChoice.charAt(0).toUpperCase() + e.mealChoice.slice(1)) : "",
-      e.dietaryInfo || "",
-      [e.phone, e.email].filter(Boolean).join(" / "),
-      e.submittedAt ? excelDate(e.submittedAt) : "",
-    ]);
-    const menus: Array<Array<string | number>> = [];
-    for (const e of entries) {
-      if (e.attendance !== "yes") continue;
-      if (e.attendees?.length) {
-        for (const a of e.attendees) {
-          menus.push([a.name, a.menu ? t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1)) : ""]);
-        }
-      } else if (e.mealChoice) {
-        menus.push([e.guestName, t("rsvp.menu" + e.mealChoice.charAt(0).toUpperCase() + e.mealChoice.slice(1))]);
-      }
+    try {
+      const { buildRSVPSheet, buildMenuSheet } = await import("../../lib/admin-utils");
+      const { exportToXlsx } = await import("../../lib/excel-utils");
+      exportToXlsx(`asistencia_${new Date().toISOString().slice(0, 10)}`, [
+        buildRSVPSheet(filteredEntries || [], t),
+        buildMenuSheet(filteredEntries || [], t),
+      ]);
+    } catch {
+      addToast("error", t("attendance.exportExcelError"));
     }
-    exportToXlsx(`asistencia_${new Date().toISOString().slice(0, 10)}`, [
-      {
-        name: "Asistencia",
-        headers: [t("attendance.tableName"), t("attendance.tableAttendance"), t("attendance.tableMenu"), t("attendance.tableDiet"), t("attendance.tableContact"), t("attendance.tableDate")],
-        rows: asis,
-        colWidths: [24, 16, 20, 26, 28, 18],
-      },
-      {
-        name: "Menús",
-        headers: [t("attendance.tableName"), t("attendance.tableMenu")],
-        rows: menus,
-        colWidths: [24, 22],
-      },
-    ]);
-  }, [filteredEntries, t]);
+  }, [filteredEntries, t, addToast]);
 
   const departures = useMemo(() => {
     try {
@@ -576,23 +511,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
           <button
             className="setup-button setup-button--ghost setup-button--compact"
             type="button"
-            onClick={handleExportCsv}
-          >
-            {t("attendance.exportCsv")}
-          </button>
-          <button
-            className="setup-button setup-button--ghost setup-button--compact"
-            type="button"
             onClick={() => void handleExportExcel()}
           >
             {t("attendance.exportExcel")}
-          </button>
-          <button
-            className="setup-button setup-button--ghost setup-button--compact"
-            type="button"
-            onClick={handleExportMenu}
-          >
-            {t("attendance.exportMenu")}
           </button>
           <button
             className="setup-button setup-button--ghost setup-button--compact"

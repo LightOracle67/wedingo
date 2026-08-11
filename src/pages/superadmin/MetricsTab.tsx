@@ -193,64 +193,63 @@ const MetricsTab = memo(function MetricsTab() {
     setOriginLoading(false);
   }, [rows, t]);
 
-  // ── Export CSV global ──
-  const exportCsv = useCallback(() => {
-    const esc = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-    const header = "Token,Invitación,Admin,Fecha boda,Visitas,RSVP,Confirmados,Declinados,Acompañantes,Conversión(%)";
-    const lines = funnel.map((r) =>
-      [r.id, `${r.firstName} ${r.secondName}`.trim(), r.adminUsername, r.weddingDateLabel, r.visits, r.rsvpCount, r.confirmed, r.rsvpCount - r.confirmed, r.companions, r.conversion]
-        .map(esc)
-        .join(","),
-    );
-    const blob = new Blob(["\uFEFF" + [header, ...lines].join("\n")], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `metricas_${new Date().toISOString().slice(0, 10)}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
+  // ── Export Excel global ──
+  const exportExcel = useCallback(async () => {
+    const { exportToXlsx } = await import("../../lib/excel-utils");
+    const rows = funnel.map((r) => [
+      r.id,
+      `${r.firstName} ${r.secondName}`.trim(),
+      r.adminUsername,
+      r.weddingDateLabel,
+      r.visits,
+      r.rsvpCount,
+      r.confirmed,
+      r.rsvpCount - r.confirmed,
+      r.companions,
+      r.conversion,
+    ]);
+    exportToXlsx(`metricas_${new Date().toISOString().slice(0, 10)}`, [
+      {
+        name: "Métricas",
+        headers: ["Token", "Invitación", "Admin", "Fecha boda", "Visitas", "RSVP", "Confirmados", "Declinados", "Acompañantes", "Conversión(%)"],
+        rows,
+        colWidths: [12, 24, 16, 14, 10, 10, 12, 12, 14, 12],
+      },
+    ]);
   }, [funnel]);
 
-  // ── Export CSV de invitados (todas las confirmaciones) ──
-  const exportGuestsCsv = useCallback(async () => {
-    const esc = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-    const header = "Token,Invitación,Nombre,Asistencia,Menú,Alergias,Teléfono,Email,Fecha";
-    const out: string[] = [];
+  // ── Export Excel de invitados (todas las confirmaciones) ──
+  const exportGuestsExcel = useCallback(async () => {
+    const { exportToXlsx } = await import("../../lib/excel-utils");
+    const out: Array<Array<string | number>> = [];
     for (const r of rows) {
       try {
         const rsvpSnap = await getDocs(rsvpByInviteRef(r.id));
         for (const d of rsvpSnap.docs) {
           const rd = d.data();
           if (rd.inviteToken !== r.id) continue;
-          out.push(
-            [
-              r.id,
-              `${r.firstName} ${r.secondName}`.trim(),
-              rd.guestName,
-              rd.attendance,
-              Array.isArray(rd.attendees) ? rd.attendees.map((a: { menu?: string }) => a.menu || "").join("; ") : rd.mealChoice,
-              Array.isArray(rd.allergiesOther) ? rd.allergiesOther.join("; ") : rd.dietaryInfo,
-              rd.phone,
-              rd.email,
-              rd.submittedAt,
-            ]
-              .map(esc)
-              .join(","),
-          );
+          out.push([
+            r.id,
+            `${r.firstName} ${r.secondName}`.trim(),
+            String(rd.guestName || ""),
+            String(rd.attendance || ""),
+            Array.isArray(rd.attendees) ? rd.attendees.map((a: { menu?: string }) => a.menu || "").join("; ") : String(rd.mealChoice || ""),
+            Array.isArray(rd.allergiesOther) ? rd.allergiesOther.join("; ") : String(rd.dietaryInfo || ""),
+            String(rd.phone || ""),
+            String(rd.email || ""),
+            String(rd.submittedAt || ""),
+          ]);
         }
       } catch {}
     }
-    const blob = new Blob(["\uFEFF" + [header, ...out].join("\n")], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `invitados_${new Date().toISOString().slice(0, 10)}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
+    exportToXlsx(`invitados_${new Date().toISOString().slice(0, 10)}`, [
+      {
+        name: "Invitados",
+        headers: ["Token", "Invitación", "Nombre", "Asistencia", "Menú", "Alergias", "Teléfono", "Email", "Fecha"],
+        rows: out,
+        colWidths: [12, 24, 22, 14, 22, 24, 16, 24, 20],
+      },
+    ]);
   }, [rows]);
 
   // ── Analítica de funciones sociales (uso global) ──
@@ -348,11 +347,11 @@ const MetricsTab = memo(function MetricsTab() {
         <button type="button" className="setup-button setup-button--compact" onClick={() => void calculateStorage()} disabled={calcStorage}>
           {calcStorage ? t("common.loading") : t("superadmin.metrics.storageBtn")}
         </button>
-        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={exportCsv}>
-          {t("superadmin.metrics.csvBtn")}
+        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportExcel()}>
+          {t("superadmin.metrics.excelBtn")}
         </button>
-        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportGuestsCsv()}>
-          {t("superadmin.metrics.guestsCsvBtn")}
+        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportGuestsExcel()}>
+          {t("superadmin.metrics.guestsExcelBtn")}
         </button>
         <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void calculateSocial()} disabled={socialLoading}>
           {socialLoading ? t("common.loading") : t("superadmin.metrics.socialBtn")}

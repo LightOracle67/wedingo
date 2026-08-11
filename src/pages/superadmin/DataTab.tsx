@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { getDocs, doc, collection, writeBatch, getDoc, query, where } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, RSVP_RESPONSES_GROUP, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
-import { downloadJson, downloadText } from "../../lib/file-utils";
+import { downloadJson } from "../../lib/file-utils";
 import { logAudit } from "../../lib/audit";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { SortableTh } from "../../components/SortableTh";
@@ -340,27 +340,31 @@ export default function DataTab() {
     [addToast, t],
   );
 
-  /** Exporta las confirmaciones de una invitación en CSV (para hojas de cálculo). */
-  const exportCsv = useCallback(
+  /** Exporta las confirmaciones de una invitación en Excel (hoja de cálculo). */
+  const exportRsvpExcel = useCallback(
     async (token: string) => {
       try {
+        const { exportToXlsx } = await import("../../lib/excel-utils");
         const rsvpSnap = await getDocs(rsvpByInviteRef(token));
-        const esc = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-        const header = "Nombre,Asistencia,Acompañantes,Menú,Alergias,Fecha";
-        const rows = rsvpSnap.docs
-          .map((d) => {
-            const r = d.data();
-            return [
-              esc(r.guestName),
-              esc(r.attendance),
-              esc(Number(r.companionCount) || 0),
-              esc(r.mealChoice),
-              esc(Array.isArray(r.allergiesOther) ? r.allergiesOther.join("; ") : r.allergiesOther),
-              esc(r.submittedAt ? new Date(String(r.submittedAt)).toLocaleDateString() : ""),
-            ].join(",");
-          })
-          .join("\n");
-        downloadText(`${token}_rsvp.csv`, `${header}\n${rows}`, "text/csv;charset=utf-8");
+        const rows: Array<Array<string | number>> = rsvpSnap.docs.map((d) => {
+          const r = d.data();
+          return [
+            String(r.guestName || ""),
+            String(r.attendance || ""),
+            Number(r.companionCount) || 0,
+            String(r.mealChoice || ""),
+            Array.isArray(r.allergiesOther) ? r.allergiesOther.join("; ") : String(r.allergiesOther || ""),
+            r.submittedAt ? new Date(String(r.submittedAt)).toLocaleDateString() : "",
+          ];
+        });
+        exportToXlsx(`${token}_rsvp`, [
+          {
+            name: "RSVP",
+            headers: ["Nombre", "Asistencia", "Acompañantes", "Menú", "Alergias", "Fecha"],
+            rows,
+            colWidths: [24, 14, 14, 20, 26, 14],
+          },
+        ]);
         addToast("success", t("superadmin.data.exportedOne", { token }));
       } catch {
         addToast("error", t("superadmin.data.exportFailed"));
@@ -475,14 +479,14 @@ export default function DataTab() {
   }, [selected, confirmText, addToast, t]);
 
   // Acciones genéricas sobre la selección (fuera de la tabla). Imprimir,
-  // CSV y resumen de menús recorren las invitaciones seleccionadas.
+  // Excel y resumen de menús recorren las invitaciones seleccionadas.
   const handlePrintSelected = useCallback(async () => {
     for (const token of selected) await printRsvps(token);
   }, [selected, printRsvps]);
 
-  const handleCsvSelected = useCallback(async () => {
-    for (const token of selected) await exportCsv(token);
-  }, [selected, exportCsv]);
+  const handleExcelSelected = useCallback(async () => {
+    for (const token of selected) await exportRsvpExcel(token);
+  }, [selected, exportRsvpExcel]);
 
   const handleMenusSelected = useCallback(async () => {
     const parts: string[] = [];
@@ -714,10 +718,10 @@ export default function DataTab() {
             <button
               type="button"
               className="setup-button setup-button--ghost setup-button--compact"
-              onClick={() => void handleCsvSelected()}
+              onClick={() => void handleExcelSelected()}
               disabled={busy}
             >
-              CSV ({selectedCount})
+              {t("superadmin.data.excelBtn")} ({selectedCount})
             </button>
             <button
               type="button"

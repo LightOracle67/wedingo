@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { calcRSVPSummary, getDietarySummary, formatRSVPsForCSV, formatMenuCateringCSV } from "../admin-utils";
+import { calcRSVPSummary, getDietarySummary, buildRSVPSheet, buildMenuSheet } from "../admin-utils";
 
 describe("calcRSVPSummary", () => {
   it("returns zeros for null", () => {
@@ -163,34 +163,57 @@ describe("getDietarySummary", () => {
     ]);
   });
 
-  it("formatRSVPsForCSV builds a header row and escapes commas", () => {
-    const csv = formatRSVPsForCSV([
-      {
-        guestName: "Ana, la novia",
-        attendance: "yes",
-        companionNames: ["Luis"],
-        dietaryInfo: "sin gluten",
-        transportMode: "bus",
-        birthDate: "2000-01-01",
-      },
-      { guestName: "Pedro", attendance: "no" },
-    ]);
-    expect(csv).toContain('"Nombre","Asistencia"');
-    expect(csv).toContain('"Ana, la novia","Sí"');
-    expect(csv).toContain('"Pedro","No"');
-    expect(csv).toContain("sin gluten");
-    expect(csv).toContain("bus");
+  it("buildRSVPSheet builds a sheet with translated attendance and menus", () => {
+    const t = (key: string) =>
+      key === "attendance.attendingValue" ? "Sí" : key === "attendance.notAttendingValue" ? "No" : key === "rsvp.menuCarne" ? "Carne" : key;
+    const sheet = buildRSVPSheet(
+      [
+        {
+          guestName: "Ana, la novia",
+          attendance: "yes",
+          mealChoice: "carne",
+          dietaryInfo: "sin gluten",
+          transportMode: "bus",
+          birthDate: "2000-01-01",
+          submittedAt: "2026-08-01T10:00:00",
+        },
+        { guestName: "Pedro", attendance: "no" },
+      ],
+      t,
+    );
+    expect(sheet.name).toBe("attendance.sheetAttendance");
+    expect(sheet.headers).toContain("attendance.tableName");
+    expect(sheet.rows).toHaveLength(2);
+    expect(sheet.rows[0]).toContain("Ana, la novia");
+    expect(sheet.rows[0]).toContain("Sí");
+    expect(sheet.rows[0]).toContain("Carne");
+    expect(sheet.rows[0]).toContain("sin gluten");
+    expect(sheet.rows[0]).toContain("(bus)");
+    expect(sheet.rows[1]).toContain("No");
   });
 });
 
-describe("formatMenuCateringCSV", () => {
-  it("lists each guest and their companions with the chosen dish", () => {
-    const csv = formatMenuCateringCSV([
-      { guestName: "Ana", mealChoice: "carne", companionNames: ["Luis"], companionMenus: ["pescado"] },
-      { guestName: "Solo", mealChoice: "vegano" },
-    ]);
-    expect(csv).toContain('"Ana","carne"');
-    expect(csv).toContain('"Luis","pescado"');
-    expect(csv).toContain('"Solo","vegano"');
+describe("buildMenuSheet", () => {
+  it("lists each guest and their attendees with the chosen dish", () => {
+    const t = (key: string) => key;
+    const sheet = buildMenuSheet(
+      [
+        {
+          guestName: "Ana",
+          attendance: "yes",
+          attendees: [
+            { name: "Ana", menu: "carne" },
+            { name: "Luis", menu: "pescado" },
+          ],
+        },
+        { guestName: "Solo", attendance: "yes", mealChoice: "vegano" },
+        { guestName: "Ausente", attendance: "no", mealChoice: "carne" },
+      ],
+      t,
+    );
+    expect(sheet.rows).toHaveLength(3);
+    expect(sheet.rows[0]).toEqual(["Ana", "carne"]);
+    expect(sheet.rows[1]).toEqual(["Luis", "pescado"]);
+    expect(sheet.rows[2]).toEqual(["Solo", "vegano"]);
   });
 });

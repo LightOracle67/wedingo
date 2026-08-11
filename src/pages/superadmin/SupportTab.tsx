@@ -140,19 +140,17 @@ const SupportTab = memo(function SupportTab() {
       );
     } catch {}
   }, []);
-  const exportAudit = useCallback(() => {
-    const esc = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-    const header = "Acción,Detalle,Fecha";
-    const lines = auditRows.map((r) => [r.action, r.detail, r.ts].map(esc).join(","));
-    const blob = new Blob(["\uFEFF" + [header, ...lines].join("\n")], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `auditoria_${new Date().toISOString().slice(0, 10)}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
+  const exportAudit = useCallback(async () => {
+    const { exportToXlsx } = await import("../../lib/excel-utils");
+    const rows: Array<Array<string>> = auditRows.map((r) => [r.action, r.detail, r.ts]);
+    exportToXlsx(`auditoria_${new Date().toISOString().slice(0, 10)}`, [
+      {
+        name: "Auditoría",
+        headers: ["Acción", "Detalle", "Fecha"],
+        rows,
+        colWidths: [22, 60, 20],
+      },
+    ]);
   }, [auditRows]);
 
   const searchToken = useCallback(async () => {
@@ -280,7 +278,7 @@ const SupportTab = memo(function SupportTab() {
             <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void loadAudit()}>
               {t("superadmin.support.auditLoad")}
             </button>
-            <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={exportAudit} disabled={auditRows.length === 0}>
+            <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportAudit()} disabled={auditRows.length === 0}>
               {t("superadmin.support.auditExport")}
             </button>
           </div>

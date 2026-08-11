@@ -37,61 +37,79 @@ export function getDietarySummary(entries: { attendance: string; dietaryInfo?: s
     .map(([item, count]) => ({ item, count }));
 }
 
-/* formatRSVPsForCSV, groupRSVPsByAttendance, formatGuestDate, getCompanionList eliminados por dead code. */
+/* formatRSVPsForCSV, groupRSVPsByAttendance, formatGuestDate, getCompanionList
+ * eliminados: los exports de CSV se sustituyeron por Excel (ver excel-utils). */
 
-/**
- * Genera un CSV de las respuestas RSVP para exportar (Excel/Sheets).
- * Los campos con comas se escapan entre comillas dobles.
- */
-export function formatRSVPsForCSV(
-  entries: Array<{
-    guestName?: string;
-    attendance?: string;
-    dietaryInfo?: string;
-    companionNames?: string[];
-    transportChoice?: string;
-    transportMode?: string;
-    birthDate?: string;
-    mealChoice?: string;
-  }>,
-): string {
-  const header = ["Nombre", "Asistencia", "Acompañantes", "Alergias/Menú", "Transporte", "Fecha de nacimiento"];
-  const esc = (v: string) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-  const rows = entries.map((e) =>
-    [
-      e.guestName || "",
-      e.attendance === "yes" ? "Sí" : e.attendance === "no" ? "No" : "",
-      (e.companionNames || []).join("; "),
-      e.dietaryInfo || "",
-      `${e.transportChoice || ""}${e.transportMode && e.transportMode !== "own" ? ` (${e.transportMode})` : ""}`,
-      e.birthDate || "",
-    ]
-      .map(esc)
-      .join(","),
-  );
-  return [header.map(esc).join(","), ...rows].join("\n");
+import { excelDate, type ExcelSheet } from "./excel-utils";
+
+/** Devuelve la traducción de una clave de menú de RSVP (con fallback a la clave). */
+function menuLabel(menu: string, t: (key: string) => string): string {
+  if (!menu) return "";
+  const key = "rsvp.menu" + menu.charAt(0).toUpperCase() + menu.slice(1);
+  const label = t(key);
+  return label === key ? menu : label;
 }
 
-/**
- * Genera un CSV para el catering: qué plato eligió cada confirmado (y sus
- * acompañantes), a partir del mealChoice de cada respuesta.
- */
-export function formatMenuCateringCSV(
-  entries: Array<{
-    guestName?: string;
-    mealChoice?: string;
-    companionNames?: string[];
-    companionMenus?: string[];
-  }>,
-): string {
-  const esc = (v: string) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-  const header = ["Nombre", "Plato"];
-  const rows: string[] = [];
-  for (const e of entries) {
-    rows.push([e.guestName || "", e.mealChoice || "—"].map(esc).join(","));
-    const comps = e.companionNames || [];
-    const menus = e.companionMenus || [];
-    comps.forEach((c, i) => rows.push([c, menus[i] || "—"].map(esc).join(",")));
+export interface RsvpRowLike {
+  guestName?: string;
+  attendance?: string;
+  mealChoice?: string;
+  attendees?: Array<{ name: string; menu?: string; allergies?: string[] }>;
+  dietaryInfo?: string;
+  phone?: string;
+  email?: string;
+  submittedAt?: string;
+  transportChoice?: string;
+  transportMode?: string;
+  birthDate?: string;
+}
+
+/** Construye la hoja "Asistencia" de Excel con una fila por respuesta RSVP. */
+export function buildRSVPSheet(entries: RsvpRowLike[], t: (key: string) => string): ExcelSheet {
+  const rows: Array<Array<string | number>> = (entries || []).map((e) => [
+    e.guestName || "",
+    e.attendance === "yes" ? t("attendance.attendingValue") : e.attendance === "no" ? t("attendance.notAttendingValue") : "",
+    menuLabel(e.mealChoice || "", t),
+    e.dietaryInfo || "",
+    [e.transportChoice || "", e.transportMode && e.transportMode !== "own" ? `(${e.transportMode})` : ""].filter(Boolean).join(" "),
+    e.birthDate || "",
+    [e.phone, e.email].filter(Boolean).join(" / "),
+    e.submittedAt ? excelDate(e.submittedAt) : "",
+  ]);
+  return {
+    name: t("attendance.sheetAttendance"),
+    headers: [
+      t("attendance.tableName"),
+      t("attendance.tableAttendance"),
+      t("attendance.tableMenu"),
+      t("attendance.tableDiet"),
+      t("attendance.tableTransport"),
+      t("attendance.tableBirth"),
+      t("attendance.tableContact"),
+      t("attendance.tableDate"),
+    ],
+    rows,
+    colWidths: [24, 14, 20, 26, 20, 14, 28, 18],
+  };
+}
+
+/** Construye la hoja "Menús" de Excel: qué plato pidió cada confirmado. */
+export function buildMenuSheet(entries: RsvpRowLike[], t: (key: string) => string): ExcelSheet {
+  const rows: Array<Array<string>> = [];
+  for (const e of entries || []) {
+    if (e.attendance === "no") continue;
+    if (e.attendees && e.attendees.length > 0) {
+      for (const a of e.attendees) {
+        rows.push([a.name, menuLabel(a.menu || "", t)]);
+      }
+    } else if (e.mealChoice) {
+      rows.push([e.guestName || "", menuLabel(e.mealChoice, t)]);
+    }
   }
-  return [header.map(esc).join(","), ...rows].join("\n");
+  return {
+    name: t("attendance.sheetMenus"),
+    headers: [t("attendance.tableName"), t("attendance.tableMenu")],
+    rows,
+    colWidths: [24, 22],
+  };
 }
