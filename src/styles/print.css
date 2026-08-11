@@ -94,8 +94,16 @@
 .print-card__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10, 6, 2, 0.18), rgba(10, 6, 2, 0.55));
+  background: linear-gradient(180deg, rgba(10, 6, 2, 0.15), rgba(10, 6, 2, 0.42));
   z-index: 1;
+}
+.print-card__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 .print-card__content {
   position: relative;

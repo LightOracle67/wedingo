@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.93",
+    date: "2026-08-09",
+    changes: [
+      "FIX: los fondos personalizados de impresión (invitación y etiquetas) se renderizan con <img> en vez de background-image CSS — así se imprimen en todos los navegadores sin depender de 'imprimir fondos'; se aclara el scrim para evitar el aspecto demasiado oscuro.",
+    ],
+  },
+
+  {
     version: "2.95.92",
     date: "2026-08-09",
     changes: [

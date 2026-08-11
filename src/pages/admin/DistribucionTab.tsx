@@ -380,16 +380,16 @@ const DistribucionTab = memo(function DistribucionTab({
          <span class="lbl-corner lbl-corner--tr"></span>
          <span class="lbl-corner lbl-corner--bl"></span>
          <span class="lbl-corner lbl-corner--br"></span>`;
-    // Fondo: imagen personalizada si existe; siempre con el color del tema debajo.
-    const cardBg = background
-      ? `background-color:${themeColors.bg};background-image:url("${esc(background)}");`
-      : `background-color:${themeColors.bg};background-image:linear-gradient(160deg,${themeColors.bg},${themeColors.bg} 45%,${themeColors.accent}33);`;
+    // Fondo: se usa un <img> (las imágenes SÍ se imprimen en todos los
+    // navegadores; un background-image CSS requiere activar "imprimir fondos").
+    const bgImg = background ? `<img src="${esc(background)}" alt="" class="lbl-bg"/>` : "";
     const thanks = esc(t("distribucion.labelThanks"));
     const enjoy = esc(t("distribucion.labelEnjoy"));
     const pages = withGuests.flatMap((tb) =>
       tb.guests.map(
         (g) => `<div class="lbl-page">
-          <div class="lbl-card" style="${cardBg}">
+          <div class="lbl-card" style="background-color:${themeColors.bg}">
+            ${bgImg}
             <div class="lbl-scrim"></div>
             ${cornerImg}
             <div class="lbl-text">
@@ -409,7 +409,8 @@ const DistribucionTab = memo(function DistribucionTab({
       .lbl-page{width:210mm;height:297mm;display:grid;place-items:center;page-break-after:always;background:#fff;padding:14mm}
       .lbl-page:last-child{page-break-after:auto}
       .lbl-card{position:relative;width:min(78%,38rem);aspect-ratio:2/3;background-size:cover;background-position:center;border-radius:1.2rem;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.35)}
-      .lbl-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,6,2,.05),rgba(10,6,2,.45));z-index:1}
+      .lbl-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+      .lbl-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,6,2,.15),rgba(10,6,2,.42));z-index:1}
       .lbl-corner{position:absolute;width:60px;height:60px;z-index:2;opacity:.9}
       .lbl-corner--tl{top:10px;left:10px}
       .lbl-corner--tr{top:10px;right:10px;transform:scaleX(-1)}

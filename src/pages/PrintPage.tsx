@@ -143,14 +143,10 @@ export default function PrintPage() {
   return (
     <div className="print-root">
       <div className="print-page">
-        <div
-          className="print-card"
-          style={
-            config.backgroundImage
-              ? { backgroundImage: `url("${config.backgroundImage}")` }
-              : undefined
-          }
-        >
+        <div className="print-card">
+          {config.backgroundImage ? (
+            <img src={config.backgroundImage} alt="" aria-hidden="true" className="print-card__bg" />
+          ) : null}
           <div className="print-card__scrim" />
           {config.cornerDecoration ? (
             <>
