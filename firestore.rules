@@ -411,21 +411,6 @@ service cloud.firestore {
         allow read, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
 
-      /* Asignación de mesas (diferencial): el admin gestiona las mesas y el
-         invitado ve su mesa asignada. Lectura pública (solo nombres de mesa y
-         de invitados asignados), escritura solo admin/superadmin. */
-      match /tables/{tableId} {
-        allow read: if true;
-        allow create, update: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
-          && request.resource.data.keys().hasOnly(['name', 'seats', 'guests', 'createdAt'])
-          && request.resource.data.name is string && request.resource.data.name.size() <= 80
-          && request.resource.data.seats is int && request.resource.data.seats >= 0 && request.resource.data.seats <= 100
-          && request.resource.data.guests is list
-          && request.resource.data.guests.size() <= 200
-          && request.resource.data.guests.all(g, g is string && g.size() <= 120);
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
-      }
-
       /* Caja de recuerdos de voz (diferencial): los invitados graban una nota
          de voz corta para la pareja. Se trocea como el audio de música y se
          controla con el contador `voicenotes`. Lectura pública, creación

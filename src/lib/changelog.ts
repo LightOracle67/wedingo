@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.90",
+    date: "2026-08-09",
+    changes: [
+      "CLEANUP: se eliminan de Herramientas las funciones de mesas y mapa del recinto (ahora viven en Distribución); la búsqueda de 'tu mesa' del invitado lee de las secciones; se retiran la colección plana tables y sus claves i18n muertas.",
+    ],
+  },
+
+  {
     version: "2.95.89",
     date: "2026-08-09",
     changes: [

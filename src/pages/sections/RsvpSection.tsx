@@ -90,12 +90,23 @@ const RsvpSection = memo(function RsvpSection({
     let cancelled = false;
     void (async () => {
       try {
-        const snap = await getDocs(collection(db, "invitations", inviteToken, "tables"));
+        // Las mesas viven en Distribución: se busca en todas las secciones.
         const needle = attendingName.toLowerCase();
-        const found = snap.docs.find((d) =>
-          Array.isArray(d.data().guests) && (d.data().guests as string[]).some((g) => g.toLowerCase() === needle),
-        );
-        if (!cancelled) setAssignedTable(found ? String(found.data().name || "") : "");
+        const sectionsSnap = await getDocs(collection(db, "invitations", inviteToken, "sections"));
+        let foundName = "";
+        for (const section of sectionsSnap.docs) {
+          const tablesSnap = await getDocs(
+            collection(db, "invitations", inviteToken, "sections", section.id, "tables"),
+          );
+          const found = tablesSnap.docs.find((d) =>
+            Array.isArray(d.data().guests) && (d.data().guests as string[]).some((g) => g.toLowerCase() === needle),
+          );
+          if (found) {
+            foundName = String(found.data().name || "");
+            break;
+          }
+        }
+        if (!cancelled) setAssignedTable(foundName);
       } catch {
         if (!cancelled) setAssignedTable("");
       }

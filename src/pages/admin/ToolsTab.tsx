@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, collection, doc, setDoc, getDoc, updateDoc, addDoc, deleteDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { getDocs, collection, doc, setDoc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadText } from "../../lib/file-utils";
@@ -47,26 +47,18 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
   // ── Galería ──
   const [galleryCount, setGalleryCount] = useState(0);
 
-  // ── Asignador de mesas (diferencial) ──
-  const [tables, setTables] = useState<Array<{ id: string; name: string; seats: number; guests: string[] }>>([]);
-  const [newTableName, setNewTableName] = useState("");
-  const [newTableSeats, setNewTableSeats] = useState("8");
-
-  // ── Extras diferenciales: buzón, fotos del día, puntos del recinto ──
+  // ── Extras diferenciales: buzón y fotos del día (las mesas y el mapa del
+  // recinto viven en la pestaña Distribución) ──
   const [mailbox, setMailbox] = useState<Array<{ id: string; guestName: string; message: string; ts: string }>>([]);
-  const [venuePoints, setVenuePoints] = useState<Array<{ id: string; label: string; x: number; y: number }>>([]);
   const [dayPhotoCount, setDayPhotoCount] = useState(0);
-  const [pointLabel, setPointLabel] = useState("");
 
   const load = useCallback(async () => {
     try {
-      const [guestsSnap, rsvpSnap, galSnap, tablesSnap, mailboxSnap, pointsSnap, daySnap] = await Promise.all([
+      const [guestsSnap, rsvpSnap, galSnap, mailboxSnap, daySnap] = await Promise.all([
         getDocs(collection(db, "invitations", inviteToken, "guests")),
         getDocs(rsvpByInviteRef(inviteToken)),
         getDocs(collection(db, "invitations", inviteToken, "gallery")),
-        getDocs(collection(db, "invitations", inviteToken, "tables")),
         getDocs(collection(db, "invitations", inviteToken, "mailbox")),
-        getDocs(collection(db, "invitations", inviteToken, "venuepoints")),
         getDocs(collection(db, "invitations", inviteToken, "dayphotos")),
       ]);
       setMailbox(
@@ -77,23 +69,7 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
           ts: d.data().createdAt ? new Date(String(d.data().createdAt)).toLocaleString() : "",
         })),
       );
-      setVenuePoints(
-        pointsSnap.docs.map((d) => ({
-          id: d.id,
-          label: String(d.data().label || ""),
-          x: Number(d.data().x) || 0,
-          y: Number(d.data().y) || 0,
-        })),
-      );
       setDayPhotoCount(daySnap.size || 0);
-      setTables(
-        tablesSnap.docs.map((d) => ({
-          id: d.id,
-          name: String(d.data().name || ""),
-          seats: Number(d.data().seats) || 0,
-          guests: Array.isArray(d.data().guests) ? (d.data().guests as string[]) : [],
-        })),
-      );
       setExpected(guestsSnap.docs.map((d) => String(d.data().name || "")));
       const conf = new Set<string>();
       let newest = 0;
@@ -144,63 +120,6 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
     }
   }, [newGuest, inviteToken, addToast, t]);
 
-  // ── Asignador de mesas ──
-  const tablesRef = useCallback(() => collection(db, "invitations", inviteToken, "tables"), [inviteToken]);
-
-  const addTable = useCallback(async () => {
-    const name = newTableName.trim();
-    const seats = Math.min(100, Math.max(0, Number(newTableSeats) || 0));
-    if (!name) return;
-    try {
-      await addDoc(tablesRef(), { name: name.slice(0, 80), seats, guests: [], createdAt: new Date().toISOString() });
-      setNewTableName("");
-      setTables((prev) => [...prev, { id: `${Date.now()}`, name: name.slice(0, 80), seats, guests: [] }]);
-      addToast("success", t("tools.tableAdded"));
-    } catch {
-      addToast("error", t("errors.generic"));
-    }
-  }, [newTableName, newTableSeats, tablesRef, addToast, t]);
-
-  const deleteTable = useCallback(
-    async (id: string) => {
-      try {
-        await deleteDoc(doc(tablesRef(), id));
-        setTables((prev) => prev.filter((x) => x.id !== id));
-        addToast("success", t("tools.tableDeleted"));
-      } catch {
-        addToast("error", t("errors.generic"));
-      }
-    },
-    [tablesRef, addToast, t],
-  );
-
-  const assignGuest = useCallback(
-    async (tableId: string, name: string) => {
-      const clean = name.trim().slice(0, 120);
-      if (!clean) return;
-      try {
-        await updateDoc(doc(tablesRef(), tableId), { guests: arrayUnion(clean) });
-        setTables((prev) => prev.map((tb) => (tb.id === tableId ? { ...tb, guests: [...tb.guests, clean] } : tb)));
-        addToast("success", t("tools.guestAssigned"));
-      } catch {
-        addToast("error", t("errors.generic"));
-      }
-    },
-    [tablesRef, addToast, t],
-  );
-
-  const removeGuest = useCallback(
-    async (tableId: string, name: string) => {
-      try {
-        await updateDoc(doc(tablesRef(), tableId), { guests: arrayRemove(name) });
-        setTables((prev) => prev.map((tb) => (tb.id === tableId ? { ...tb, guests: tb.guests.filter((g) => g !== name) } : tb)));
-      } catch {
-        addToast("error", t("errors.generic"));
-      }
-    },
-    [tablesRef, addToast, t],
-  );
-
   // ── Buzón privado ──
   const deleteMail = useCallback(
     async (id: string) => {
@@ -208,40 +127,6 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
         await deleteDoc(doc(collection(db, "invitations", inviteToken, "mailbox"), id));
         setMailbox((prev) => prev.filter((m) => m.id !== id));
         addToast("success", t("tools.mailDeleted"));
-      } catch {
-        addToast("error", t("errors.generic"));
-      }
-    },
-    [inviteToken, addToast, t],
-  );
-
-  // ── Puntos del recinto ──
-  const addPoint = useCallback(async () => {
-    const label = pointLabel.trim();
-    if (!label) return;
-    const x = Number(window.prompt(t("tools.pointX"), "50"));
-    const y = Number(window.prompt(t("tools.pointY"), "50"));
-    if (Number.isNaN(x) || Number.isNaN(y)) return;
-    try {
-      const ref = await addDoc(collection(db, "invitations", inviteToken, "venuepoints"), {
-        label: label.slice(0, 80),
-        x: Math.min(100, Math.max(0, x)),
-        y: Math.min(100, Math.max(0, y)),
-        color: "#d8b24a",
-      });
-      setVenuePoints((prev) => [...prev, { id: ref.id, label: label.slice(0, 80), x: Math.min(100, Math.max(0, x)), y: Math.min(100, Math.max(0, y)) }]);
-      setPointLabel("");
-      addToast("success", t("tools.pointAdded"));
-    } catch {
-      addToast("error", t("errors.generic"));
-    }
-  }, [pointLabel, inviteToken, addToast, t]);
-
-  const deletePoint = useCallback(
-    async (id: string) => {
-      try {
-        await deleteDoc(doc(collection(db, "invitations", inviteToken, "venuepoints"), id));
-        setVenuePoints((prev) => prev.filter((p) => p.id !== id));
       } catch {
         addToast("error", t("errors.generic"));
       }
@@ -400,37 +285,7 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
         <button className="setup-button" type="button" onClick={() => void saveNote()}>{t("tools.saveNote")}</button>
       </div>
 
-      {/* Asignador de mesas (diferencial) */}
-      <div className="setup-background-panel">
-        <p className="setup-label">{t("tools.tables")}</p>
-        <p className="setup-help">{t("tools.tablesHelp")}</p>
-        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
-          <input className="setup-input" value={newTableName} onChange={(e) => setNewTableName(e.target.value)} placeholder={t("tools.tableNamePlaceholder")} maxLength={80} aria-label={t("tools.tableNamePlaceholder")} />
-          <input className="setup-input" type="number" min={0} max={100} style={{ width: "5rem" }} value={newTableSeats} onChange={(e) => setNewTableSeats(e.target.value)} aria-label={t("tools.tableSeats")} />
-          <button className="setup-button setup-button--compact" type="button" onClick={() => void addTable()}>{t("tools.addTable")}</button>
-        </div>
-        {tables.length > 0 ? (
-          <ul style={{ margin: "0.75rem 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: "0.6rem" }}>
-            {tables.map((tb) => (
-              <li key={tb.id} style={{ border: "1px solid var(--setup-border)", borderRadius: "0.5rem", padding: "0.5rem 0.7rem" }}>
-                <div className="admin-flex" style={{ gap: "0.5rem", justifyContent: "space-between", flexWrap: "wrap" }}>
-                  <p className="setup-label" style={{ margin: 0 }}>
-                    {tb.name} · {tb.guests.length}/{tb.seats}
-                  </p>
-                  <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void deleteTable(tb.id)}>
-                    {t("tools.deleteTable")}
-                  </button>
-                </div>
-                <TableAssignRow tableId={tb.id} guests={tb.guests} onAssign={assignGuest} onRemove={removeGuest} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="setup-help" style={{ margin: "0.5rem 0 0" }}>{t("tools.noTables")}</p>
-        )}
-      </div>
-
-      {/* Extras diferenciales: buzón, fotos del día, puntos del recinto */}
+      {/* Extras diferenciales: buzón y fotos del día (mesas y mapa → Distribución) */}
       <div className="setup-background-panel">
         <p className="setup-label">{t("tools.mailbox")}</p>
         <p className="setup-help">{t("tools.mailboxHelp")}</p>
@@ -455,27 +310,6 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
       </div>
 
       <div className="setup-background-panel">
-        <p className="setup-label">{t("tools.venueMap")}</p>
-        <p className="setup-help">{t("tools.venueMapHelp")}</p>
-        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
-          <input className="setup-input" value={pointLabel} onChange={(e) => setPointLabel(e.target.value)} placeholder={t("tools.pointLabelPlaceholder")} maxLength={80} style={{ flex: 1, minWidth: "10rem" }} aria-label={t("tools.pointLabelPlaceholder")} />
-          <button className="setup-button setup-button--compact" type="button" onClick={() => void addPoint()}>{t("tools.addPoint")}</button>
-        </div>
-        {venuePoints.length > 0 ? (
-          <ul style={{ margin: "0.5rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}>
-            {venuePoints.map((p) => (
-              <li key={p.id} style={{ marginBottom: "0.2rem" }}>
-                {p.label} ({p.x}%, {p.y}%)
-                <button type="button" className="setup-button setup-button--ghost setup-button--compact" style={{ marginLeft: "0.5rem", fontSize: "0.7rem" }} onClick={() => void deletePoint(p.id)}>
-                  ✕
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-      </div>
-
-      <div className="setup-background-panel">
         <p className="setup-label">{t("tools.dayPhotos")}</p>
         <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
           <button className="setup-button setup-button--compact" type="button" onClick={() => void downloadDayPhotos()} disabled={dayPhotoCount === 0}>
@@ -486,46 +320,5 @@ const ToolsTab = memo(function ToolsTab({ inviteToken, inviteUrl, weddingDate, w
     </div>
   );
 });
-
-/** Fila de una mesa: asigna/elimina invitados por nombre (buscable). */
-function TableAssignRow({  tableId,
-  guests,
-  onAssign,
-  onRemove,
-}: {
-  tableId: string;
-  guests: string[];
-  onAssign: (tableId: string, name: string) => void;
-  onRemove: (tableId: string, name: string) => void;
-}) {
-  const { t } = useTranslation();
-  const [value, setValue] = useState("");
-  const submit = () => {
-    if (value.trim()) {
-      onAssign(tableId, value);
-      setValue("");
-    }
-  };
-  return (
-    <div style={{ marginTop: "0.4rem", display: "flex", flexDirection: "column", gap: "0.35rem" }}>
-      <div className="admin-flex" style={{ gap: "0.4rem", flexWrap: "wrap" }}>
-        <input className="setup-input" value={value} onChange={(e) => setValue(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") submit(); }} placeholder={t("tools.assignPlaceholder")} maxLength={120} aria-label={t("tools.assignPlaceholder")} />
-        <button type="button" className="setup-button setup-button--compact" onClick={submit}>{t("tools.assign")}</button>
-      </div>
-      {guests.length > 0 ? (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
-          {guests.map((g, i) => (
-            <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: "0.3rem", fontSize: "0.78rem", border: "1px solid var(--setup-border)", borderRadius: "999px", padding: "0.15rem 0.5rem", color: "var(--setup-subtitle)" }}>
-              {g}
-              <button type="button" aria-label={t("tools.removeGuest")} onClick={() => onRemove(tableId, g)} style={{ background: "none", border: 0, cursor: "pointer", color: "#ef4444", fontSize: "0.85rem" }}>
-                ×
-              </button>
-            </span>
-          ))}
-        </div>
-      ) : null}
-    </div>
-  );
-}
 
 export default ToolsTab;
