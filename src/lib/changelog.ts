@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.95.95",
+    date: "2026-08-09",
+    changes: [
+      "FIX (impresión): la página A4 sale en BLANCO y solo la tarjeta lleva el fondo/tema (antes el fondo oscuro del contenedor llenaba el papel y salía negro); el fondo personalizado se espera DECODIFICADO (img.decode) antes de imprimir, con respaldo background-image y ocultando el <img> si falla (evita el cuadro negro). Aplicado a la invitación y a las etiquetas de mesa.",
+    ],
+  },
+
+  {
     version: "2.95.94",
     date: "2026-08-09",
     changes: [

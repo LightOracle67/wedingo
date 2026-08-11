@@ -383,12 +383,13 @@ const DistribucionTab = memo(function DistribucionTab({
     // Fondo: se usa un <img> (las imágenes SÍ se imprimen en todos los
     // navegadores; un background-image CSS requiere activar "imprimir fondos").
     const bgImg = background ? `<img src="${esc(background)}" alt="" class="lbl-bg"/>` : "";
+    const cardStyle = `background-color:${themeColors.bg}${background ? `;background-image:url("${esc(background)}")` : ""}`;
     const thanks = esc(t("distribucion.labelThanks"));
     const enjoy = esc(t("distribucion.labelEnjoy"));
     const pages = withGuests.flatMap((tb) =>
       tb.guests.map(
         (g) => `<div class="lbl-page">
-          <div class="lbl-card" style="background-color:${themeColors.bg}">
+          <div class="lbl-card" style="${cardStyle}">
             ${bgImg}
             <div class="lbl-scrim"></div>
             ${cornerImg}
@@ -431,39 +432,17 @@ const DistribucionTab = memo(function DistribucionTab({
     win.document.write(html);
     win.document.close();
     win.focus();
-    // Espera a que las imágenes (fondo y esquinas) terminen de cargar antes de
-    // imprimir: si no, los data-URL aún no decodificados no salen en el papel.
-    const waitForImages = () => {
-      const imgs = Array.from(win.document.images);
-      if (imgs.length === 0 || imgs.every((img) => img.complete)) {
-        win.print();
-        return;
-      }
-      let loaded = 0;
-      let done = false;
-      const finish = () => {
-        if (done) return;
-        done = true;
-        win.print();
-      };
-      imgs.forEach((img) => {
-        if (img.complete) loaded++;
-        else {
-          img.addEventListener("load", () => {
-            loaded++;
-            if (loaded >= imgs.length) finish();
-          });
-          img.addEventListener("error", () => {
-            loaded++;
-            if (loaded >= imgs.length) finish();
-          });
-        }
-      });
-      if (loaded >= imgs.length) finish();
-      // Red de seguridad: nunca bloquear la impresión más de 1.5s.
-      setTimeout(finish, 1500);
+    // Espera a que las imágenes (fondo y esquinas) estén DECODIFICADAS antes
+    // de imprimir: img.complete se cumple antes de decodificar y un fondo aún
+    // sin decodificar salía negro en el papel.
+    const waitForImages = async () => {
+      try {
+        await Promise.all(Array.from(win.document.images).map((img) => img.decode().catch(() => {})));
+      } catch {}
+      await new Promise((r) => setTimeout(r, 200));
+      win.print();
     };
-    setTimeout(waitForImages, 250);
+    void waitForImages();
   }, [tables, background, cornerDecoration, addToast, t]);
 
   const selected = tables.find((tb) => tb.id === selectedId);

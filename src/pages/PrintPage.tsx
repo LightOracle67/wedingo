@@ -78,40 +78,13 @@ export default function PrintPage() {
 
     const doPrint = async () => {
       await document.fonts.ready;
-      // Espera a que las imágenes (fondo y esquinas personalizadas) terminen
-      // de cargar antes de imprimir; con red de seguridad por si alguna falla.
-      const waitImages = () =>
-        new Promise<void>((resolve) => {
-          const imgs = Array.from(document.images);
-          if (imgs.length === 0 || imgs.every((img) => img.complete)) {
-            resolve();
-            return;
-          }
-          let loaded = 0;
-          let done = false;
-          const finish = () => {
-            if (done) return;
-            done = true;
-            resolve();
-          };
-          imgs.forEach((img) => {
-            if (img.complete) loaded++;
-            else {
-              img.addEventListener("load", () => {
-                loaded++;
-                if (loaded >= imgs.length) finish();
-              });
-              img.addEventListener("error", () => {
-                loaded++;
-                if (loaded >= imgs.length) finish();
-              });
-            }
-          });
-          if (loaded >= imgs.length) finish();
-          setTimeout(finish, 1500);
-        });
-      await waitImages();
-      await new Promise((r) => setTimeout(r, 250));
+      // Espera a que las imágenes (fondo y esquinas) estén DECODIFICADAS
+      // (img.decode()) antes de imprimir; img.complete se cumple antes de
+      // decodificar y un fondo aún sin decodificar salía negro en el papel.
+      try {
+        await Promise.all(Array.from(document.images).map((img) => img.decode().catch(() => {})));
+      } catch {}
+      await new Promise((r) => setTimeout(r, 300));
       const cleanup = () => {
         // Solo se cierra la pestaña si se abrió desde el panel (window.open):
         // una pestaña abierta directamente no se puede cerrar y el navegador
@@ -143,9 +116,25 @@ export default function PrintPage() {
   return (
     <div className="print-root">
       <div className="print-page">
-        <div className="print-card">
+        <div
+          className="print-card"
+          style={
+            config.backgroundImage
+              ? { backgroundImage: `url("${config.backgroundImage}")` }
+              : undefined
+          }
+        >
           {config.backgroundImage ? (
-            <img src={config.backgroundImage} alt="" aria-hidden="true" className="print-card__bg" />
+            <img
+              src={config.backgroundImage}
+              alt=""
+              aria-hidden="true"
+              className="print-card__bg"
+              onError={(e) => {
+                // Si la imagen falla, se oculta (un <img> vacío saldría negro).
+                e.currentTarget.style.display = "none";
+              }}
+            />
           ) : null}
           <div className="print-card__scrim" />
           {config.cornerDecoration ? (

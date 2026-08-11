@@ -10,13 +10,19 @@
   /* Los fondos y colores del tema SÍ se imprimen (color-adjust: exact).
      El scrim se ACLARA al imprimir: los gradientes rgba semitransparentes se
      aplanan en el papel y un scrim oscuro salía casi negro. */
-  .print-card__scrim {
-    background: linear-gradient(180deg, rgba(10, 6, 2, 0.04), rgba(10, 6, 2, 0.2)) !important;
+  /* La PÁGINA A4 sale en blanco; solo la tarjeta de la invitación lleva el
+     fondo/tema (color-adjust: exact). Antes el .print-root oscuro llenaba
+     todo el papel y salía negro. */
+  .print-root {
+    background: #ffffff !important;
   }
-  .print-root,
   .print-card {
     background-color: var(--page-bg, #2a2418) !important;
     color: #f7f0e0 !important;
+  }
+  /* Scrim aclarado en impresión: los rgba se aplanan en el papel. */
+  .print-card__scrim {
+    background: linear-gradient(180deg, rgba(10, 6, 2, 0.04), rgba(10, 6, 2, 0.2)) !important;
   }
   .print-card__content {
     color: #f7f0e0 !important;
