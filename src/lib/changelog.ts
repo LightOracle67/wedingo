@@ -1,5 +1,19 @@
 export const CHANGELOG = [
   {
+    version: "2.95.98",
+    date: "2026-08-09",
+    changes: [
+      "FIX: en la impresión de la invitación se ocultan los botones de accesibilidad (a11y-trigger/panel) y el texto sale en blanco puro (antes grisáceo).",
+    ],
+  },
+  {
+    version: "2.95.97",
+    date: "2026-08-09",
+    changes: [
+      "FEAT: mayor calidad del fondo personalizado (y foto de novios/galería) — dimensión máxima de 1920 a 2560px y target de compresión de 450KB a 650KB, con margen seguro bajo el límite de 1MB cifrado de Firestore.",
+    ],
+  },
+  {
     version: "2.95.96",
     date: "2026-08-09",
     changes: [
