@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.96.7",
+    date: "2026-08-11",
+    changes: [
+      "AUDITORÍA de segundo nivel: eliminadas 21 variables CSS muertas (spaces, colores, sombras, safe-area, dark-mode huérfano); verificado que las 240 claves i18n 'sin uso' son familias dinámicas reales (alergias, platos, dressCode, errores de validación, cookie.pointN, pestañas admin); sin console.log/debugger en producción; e2e typecheck limpio; bundle inicial 382KB gzip.",
+    ],
+  },
+  {
     version: "2.96.6",
     date: "2026-08-11",
     changes: [
