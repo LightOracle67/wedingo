@@ -41,6 +41,13 @@ vi.mock("../../../lib/file-utils", () => ({
   downloadJson: (...args: unknown[]) => mockDownloadJson(...args),
   downloadText: vi.fn(),
 }));
+const mockExportToXlsx = vi.fn();
+vi.mock("../../../lib/excel-utils", () => ({
+  exportToXlsx: (...a: unknown[]) => mockExportToXlsx(...a),
+}));
+vi.mock("../../../lib/excel-builders", () => ({
+  buildRsvpSheet: vi.fn(() => ({ name: "RSVP", headers: [], rows: [] })),
+}));
 vi.mock("../InvitationDetailModal", () => ({
   default: () => <div data-testid="detail-modal" />,
 }));
@@ -614,5 +621,67 @@ describe("DataTab avanzadas", () => {
     fireEvent.click(screen.getByText("superadmin.data.bulkTheme", { exact: false }));
     await vi.waitFor(() => expect(mockWriteBatch).toHaveBeenCalled());
     confirmSpy.mockRestore();
+  });
+
+  it("exporta el RSVP de una invitación seleccionada a Excel", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) =>
+      ref === "invitations-collection-ref"
+        ? Promise.resolve({ docs: [docData({ id: "tok1234567", firstName: "Ana", secondName: "Luis" })] })
+        : Promise.resolve({ docs: [{ data: () => ({ guestName: "Ana García", attendance: "yes", companionCount: 1 }) }] }),
+    );
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getAllByRole("checkbox").length).toBeGreaterThan(0));
+    fireEvent.click(screen.getAllByRole("checkbox")[0]!);
+    fireEvent.click(screen.getByText("superadmin.data.excelBtn", { exact: false }));
+    await vi.waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled());
+  });
+
+  it("resume los menús de las invitaciones seleccionadas", async () => {
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getAllByRole("checkbox").length).toBeGreaterThan(0));
+    fireEvent.click(screen.getAllByRole("checkbox")[0]!);
+    fireEvent.click(screen.getByText("superadmin.data.menusBtn", { exact: false }));
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("info", expect.any(String)));
+  });
+
+  it("aplica expiración masiva a las seleccionadas (prompt + batch)", async () => {
+    vi.spyOn(window, "prompt").mockReturnValue("2026-12-31");
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getAllByRole("checkbox").length).toBeGreaterThan(0));
+    fireEvent.click(screen.getAllByRole("checkbox")[0]!);
+    fireEvent.click(screen.getByText("superadmin.data.bulkExpiryBtn", { exact: false }));
+    await vi.waitFor(() => expect(mockWriteBatch).toHaveBeenCalled());
+  });
+
+  it("sella masivamente las invitaciones seleccionadas (confirm + batch)", async () => {
+    const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(true);
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getAllByRole("checkbox").length).toBeGreaterThan(0));
+    fireEvent.click(screen.getAllByRole("checkbox")[0]!);
+    fireEvent.click(screen.getByText("superadmin.data.bulkSealBtn", { exact: false }));
+    await vi.waitFor(() => expect(mockWriteBatch).toHaveBeenCalled());
+    confirmSpy.mockRestore();
+  });
+
+  it("exporta por rango de fechas (prompts + invitación en rango)", async () => {
+    vi.spyOn(window, "prompt").mockReturnValueOnce("2025-01-01").mockReturnValueOnce("2025-12-31");
+    mockGetDocs.mockImplementation((ref: unknown) =>
+      ref === "invitations-collection-ref"
+        ? Promise.resolve({
+            docs: [
+              docData({
+                id: "tok1234567",
+                firstName: "Ana",
+                secondName: "Luis",
+                createdAt: "2025-06-15T10:00:00.000Z",
+              }),
+            ],
+          })
+        : Promise.resolve({ docs: [] }),
+    );
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.data.rangeBtn")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.data.rangeBtn"));
+    await vi.waitFor(() => expect(mockDownloadJson).toHaveBeenCalled());
   });
 });

@@ -147,15 +147,12 @@ export default defineConfig({
         "src/**/__tests__/**",
       ],
       thresholds: {
-        // Ajustados al nivel REAL y verificado por la suite (2084 tests) en
-        // v2.97.1: líneas 86.4% / statements 84.3% / funcs 81.6% / branches
-        // 77.2%. Se deja un pequeño margen para variaciones de plataforma.
-        // Nota: 98% de cobertura no es un umbral realista para una SPA de UI
-        // con 2000+ tests; este gate es el "flawless" verificable en CI.
-        statements: 83,
-        branches: 75,
-        functions: 80,
-        lines: 85,
+        // Ajustados en v2.97.x conforme crece la suite: líneas 87.7% /
+        // statements 85.5% / funcs 82.6% / branches 77.9%. Margen para CI.
+        statements: 84,
+        branches: 76,
+        functions: 81,
+        lines: 86.5,
       },
     },
   },
