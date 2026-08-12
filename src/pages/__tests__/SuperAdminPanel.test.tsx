@@ -8,15 +8,15 @@ vi.mock("react-i18next", () => ({
 }));
 
 vi.mock("react-router", () => {
-  let params = new URLSearchParams("");
+  const params = new URLSearchParams("");
   return {
     Navigate: ({ to }: { to: string }) => <div>Redirect to {to}</div>,
-    useSearchParams: () => {
+    useSearchParams: vi.fn(() => {
       const set = (next: unknown, _opts?: unknown) => {
-        params = next instanceof URLSearchParams ? next : new URLSearchParams(String(next ?? ""));
+        params.set("tab", next instanceof URLSearchParams ? String(next.get("tab") || "") : String(next ?? ""));
       };
       return [params, set];
-    },
+    }),
   };
 });
 
@@ -47,6 +47,19 @@ vi.mock("../superadmin/ComplianceTab", () => ({
 
 vi.mock("../superadmin/DataTab", () => ({
   default: () => <div data-testid="data-tab" />,
+}));
+
+vi.mock("../superadmin/ManageTab", () => ({
+  default: () => <div data-testid="manage-tab" />,
+}));
+vi.mock("../superadmin/PlatformTab", () => ({
+  default: () => <div data-testid="platform-tab" />,
+}));
+vi.mock("../superadmin/MetricsTab", () => ({
+  default: () => <div data-testid="metrics-tab" />,
+}));
+vi.mock("../superadmin/SupportTab", () => ({
+  default: () => <div data-testid="support-tab" />,
 }));
 
 import SuperAdminPanel from "../SuperAdminPanel";
@@ -164,5 +177,50 @@ describe("SuperAdminPanel", () => {
     await screen.findByTestId("dashboard-tab");
     fireEvent.click(screen.getByText("superadmin.tabs.tokens"));
     expect(await screen.findByTestId("tokens-tab")).toBeDefined();
+  });
+
+  it("switches to the remaining tabs (manage, platform, metrics, support)", async () => {
+    render(
+      <Suspense fallback={null}>
+        <SuperAdminPanel />
+      </Suspense>,
+    );
+    await screen.findByTestId("dashboard-tab");
+    const cases: Array<[string, string]> = [
+      ["superadmin.tabs.manage", "manage-tab"],
+      ["superadmin.tabs.platform", "platform-tab"],
+      ["superadmin.tabs.metrics", "metrics-tab"],
+      ["superadmin.tabs.support", "support-tab"],
+    ];
+    for (const [tabLabel, testId] of cases) {
+      fireEvent.click(screen.getByText(tabLabel));
+      expect(await screen.findByTestId(testId)).toBeDefined();
+    }
+  });
+
+  it("navigates tabs with the keyboard (ArrowRight/ArrowLeft)", async () => {
+    render(
+      <Suspense fallback={null}>
+        <SuperAdminPanel />
+      </Suspense>,
+    );
+    await screen.findByTestId("dashboard-tab");
+    // ArrowRight desde dashboard → metricas.
+    fireEvent.keyDown(screen.getByText("superadmin.tabs.dashboard"), { key: "ArrowRight" });
+    expect(await screen.findByTestId("metrics-tab")).toBeDefined();
+    // ArrowLeft de vuelta a dashboard.
+    fireEvent.keyDown(screen.getByText("superadmin.tabs.metrics"), { key: "ArrowLeft" });
+    expect(await screen.findByTestId("dashboard-tab")).toBeDefined();
+  });
+
+  it("reconoce el parámetro ?tab= al arrancar", async () => {
+    const { useSearchParams } = await import("react-router");
+    (useSearchParams as ReturnType<typeof vi.fn>).mockImplementation(() => [new URLSearchParams("tab=datos"), vi.fn()]);
+    render(
+      <Suspense fallback={null}>
+        <SuperAdminPanel />
+      </Suspense>,
+    );
+    expect(await screen.findByTestId("data-tab")).toBeDefined();
   });
 });

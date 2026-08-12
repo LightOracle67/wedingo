@@ -3,6 +3,11 @@ import { render, screen, fireEvent } from "@testing-library/react";
 
 const mockDeleteDoc = vi.fn(() => Promise.resolve());
 const mockDoc = vi.fn(() => "doc-ref");
+const mockWriteBatch = vi.fn(() => ({
+  delete: vi.fn(),
+  set: vi.fn(),
+  commit: vi.fn().mockResolvedValue(undefined),
+}));
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -14,7 +19,7 @@ vi.mock("firebase/firestore", () => ({
   getDocs: (ref: unknown) => mockGetDocs(String(ref)),
   deleteDoc: () => mockDeleteDoc(),
   doc: () => mockDoc(),
-  writeBatch: vi.fn(() => ({ delete: vi.fn(), set: vi.fn(), commit: vi.fn().mockResolvedValue(undefined) })),
+  writeBatch: () => mockWriteBatch(),
 }));
 vi.mock("../../../lib/firebase", () => ({ db: "db-mock" }));
 const mockDownloadJson = vi.fn();
@@ -79,5 +84,23 @@ describe("InvitationDetailModal", () => {
     await screen.findAllByText(/Felicidades/);
     fireEvent.click(screen.getByText("manage.detailExportSocial"));
     expect(mockDownloadJson).toHaveBeenCalled();
+  });
+
+  it("resetea las respuestas RSVP tras confirmar (batch)", async () => {
+    const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(true);
+    render(<InvitationDetailModal token="tok1234567" onClose={() => {}} />);
+    await screen.findAllByText(/Ana/);
+    fireEvent.click(screen.getByText("manage.detailReset"));
+    await vi.waitFor(() => expect(mockWriteBatch).toHaveBeenCalled());
+    confirmSpy.mockRestore();
+  });
+
+  it("importa invitados desde un CSV", async () => {
+    render(<InvitationDetailModal token="tok1234567" onClose={() => {}} />);
+    await screen.findAllByText(/Ana/);
+    const file = new File(["nombre,asistencia\nLuis,yes\n", "María,no\n"], "invitados.csv", { type: "text/csv" });
+    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    fireEvent.change(input, { target: { files: [file] } });
+    await vi.waitFor(() => expect(mockWriteBatch).toHaveBeenCalled());
   });
 });
