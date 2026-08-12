@@ -31,6 +31,12 @@ vi.mock("../../../lib/firebase", () => ({ db: "db-mock", INVITATIONS_COLLECTION_
 vi.mock("../../../hooks/useToast", () => ({
   useToast: () => ({ addToast: vi.fn() }),
 }));
+const mockDownloadText = vi.fn();
+const mockDownloadJson = vi.fn();
+vi.mock("../../../lib/file-utils", () => ({
+  downloadText: (...a: unknown[]) => mockDownloadText(...a),
+  downloadJson: (...a: unknown[]) => mockDownloadJson(...a),
+}));
 vi.mock("../../../lib/setup-token", () => ({
   hashSetupToken: (...args: Parameters<typeof mockHashSetupToken>) => mockHashSetupToken(...args),
 }));
@@ -280,5 +286,54 @@ describe("ManageTab", () => {
     fireEvent.change(screen.getByLabelText("manage.autoRespondAttendance"), { target: { value: "yes" } });
     fireEvent.click(screen.getByText("manage.autoRespondButton"));
     await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
+  });
+
+  it("descarga el .ics con la fecha de boda", async () => {
+    mockGetDoc.mockResolvedValue({
+      exists: () => true,
+      data: () => ({
+        firstName: "John",
+        secondName: "Jane",
+        weddingYear: "2026",
+        weddingMonth: "junio",
+        weddingDay: "15",
+        weddingPlace: "Iglesia",
+      }),
+    });
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByText("manage.icsButton")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("manage.icsButton"));
+    await vi.waitFor(() => expect(mockDownloadText).toHaveBeenCalled());
+    expect(mockDownloadText).toHaveBeenCalledWith("AbCdEf1234.ics", expect.stringContaining("BEGIN:VCALENDAR"), "text/calendar;charset=utf-8");
+  });
+
+  it("avisa si no hay fecha de boda para el .ics", async () => {
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByText("manage.icsButton")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("manage.icsButton"));
+    expect(mockDownloadText).not.toHaveBeenCalled();
+  });
+
+  it("copia una subcolección de otra invitación", async () => {
+    const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(true);
+    mockGetDocs.mockResolvedValue({
+      docs: [
+        baseInvitation,
+        { id: "OTRO123456", data: () => ({ firstName: "X", secondName: "Y" }) },
+      ],
+    });
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.copySectionFrom")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.copySectionFrom"), { target: { value: "OTRO123456" } });
+    fireEvent.change(screen.getByLabelText("manage.copySectionSub"), { target: { value: "gallery" } });
+    fireEvent.click(screen.getByText("manage.copySectionButton"));
+    await vi.waitFor(() => expect(mockWriteBatch).toHaveBeenCalled());
+    confirmSpy.mockRestore();
   });
 });

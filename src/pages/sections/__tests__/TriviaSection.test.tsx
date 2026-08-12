@@ -32,4 +32,26 @@ describe("TriviaSection", () => {
     render(<TriviaSection trivia="[]" />);
     expect(screen.queryByText(/trivia/i)).toBeNull();
   });
+
+  it("marca la respuesta correcta con ✓ y no revela antes de adivinar", () => {
+    render(<TriviaSection trivia={TRIVIA} />);
+    const inputs = screen.getAllByPlaceholderText("trivia.guessPlaceholder");
+    fireEvent.change(inputs[1]!, { target: { value: "algo contigo" } });
+    // La respuesta correcta se marca con ✓.
+    expect(screen.getByText(/✓ Algo contigo/)).toBeDefined();
+    // La primera pregunta aún no se ha contestado: sin feedback.
+    expect(screen.queryByText(/En el parque/)).toBeNull();
+  });
+
+  it("marca con ✗ una respuesta incorrecta y revela la solución", () => {
+    render(<TriviaSection trivia={TRIVIA} />);
+    const inputs = screen.getAllByPlaceholderText("trivia.guessPlaceholder");
+    fireEvent.change(inputs[0]!, { target: { value: "Madrid" } });
+    expect(screen.getByText(/✗ En el parque/)).toBeDefined();
+  });
+
+  it("tolera el trivia JSON inválido", () => {
+    render(<TriviaSection trivia="no es json" />);
+    expect(screen.queryByText(/trivia/i)).toBeNull();
+  });
 });

@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.97.8",
+    date: "2026-08-12",
+    changes: [
+      "CALIDAD (más sesiones): cobertura a 91% de líneas (2142 tests). Tests añadidos en TriviaSection (respuesta correcta/incorrecta, JSON inválido) y ManageTab (.ics con/sin fecha, copia de subcolección). Umbrales CI subidos a 90.5/88/85.5/79.5.",
+    ],
+  },
+  {
     version: "2.97.7",
     date: "2026-08-12",
     changes: [
