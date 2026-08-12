@@ -24,4 +24,24 @@ describe("GoogleTranslateToggle", () => {
     s?.remove();
     delete (window as unknown as { googleTranslateElementInit?: unknown }).googleTranslateElementInit;
   });
+
+  it("instancia el widget cuando el script notifica (callback)", async () => {
+    const TranslateElement = vi.fn(function (_a: unknown, _b: unknown) {
+      // no-op
+    });
+    (window as unknown as { google?: { translate?: { TranslateElement?: unknown } } }).google = {
+      translate: { TranslateElement },
+    };
+    render(<GoogleTranslateToggle />);
+    fireEvent.click(screen.getByRole("button"));
+    // El callback global lo invoca Google al cargar el script.
+    (window as unknown as { googleTranslateElementInit?: () => void }).googleTranslateElementInit?.();
+    expect(TranslateElement).toHaveBeenCalledWith({ pageLanguage: "es" }, "google_translate_element");
+    // Al activarse se muestra el contenedor del widget.
+    await vi.waitFor(() => expect(document.getElementById("google_translate_element")).not.toBeNull());
+    // Limpieza.
+    document.querySelector('script[data-gt="1"]')?.remove();
+    delete (window as unknown as { google?: unknown }).google;
+    delete (window as unknown as { googleTranslateElementInit?: unknown }).googleTranslateElementInit;
+  });
 });

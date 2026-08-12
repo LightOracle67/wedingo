@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.97.3",
+    date: "2026-08-12",
+    changes: [
+      "CALIDAD (más sesiones): cobertura a 89% de líneas (2114 tests). Tests añadidos en VoiceNotes (lista/reproducir/borrar/error de micro), DayPhotos (subida y no-imagen), transport-utils (parseo robusto), useInertBackground (inert/aria-hidden) y GoogleTranslateToggle (callback del widget). Umbrales CI subidos a 88.5/86/83.5/78. Nota: el flujo de grabación por micrófono (MediaRecorder/getUserMedia) no es testeable en jsdom, queda documentado.",
+    ],
+  },
+  {
     version: "2.97.2",
     date: "2026-08-12",
     changes: [
