@@ -123,6 +123,36 @@ describe("RsvpSection", () => {
     expect(screen.getByText("rsvp.submittingButton")).toBeDefined();
   });
 
+  it("muestra el mensaje de validación con role=alert", () => {
+    render(<WrappedRsvp {...baseProps} rsvpMessage="El nombre es obligatorio" />);
+    expect(screen.getByText("El nombre es obligatorio")).toBeDefined();
+  });
+
+  it("muestra el error de carga con botón de reintento", () => {
+    const retry = vi.fn();
+    render(<WrappedRsvp {...baseProps} rsvpLoadError="boom" retryLoadRsvp={retry} />);
+    expect(screen.getByText("rsvp.loadError")).toBeDefined();
+    fireEvent.click(screen.getByText("common.retry"));
+    expect(retry).toHaveBeenCalled();
+  });
+
+  it("muestra los campos de contacto y el consentimiento de contacto", () => {
+    Object.assign(mockConfig, { rsvpContactEnabled: "true" });
+    render(<WrappedRsvp {...baseProps} />);
+    expect(screen.getByLabelText("rsvp.phonePlaceholder")).toBeDefined();
+    expect(screen.getByLabelText("rsvp.emailPlaceholder")).toBeDefined();
+    expect(screen.getByLabelText("rsvp.contactConsentLabel")).toBeDefined();
+    // Restaura para no contaminar otros tests (mockConfig es compartido).
+    delete mockConfig.rsvpContactEnabled;
+  });
+
+  it("envía el formulario al pulsar el botón", () => {
+    const submit = vi.fn((e: React.FormEvent) => e.preventDefault());
+    render(<WrappedRsvp {...baseProps} handleRsvpSubmit={submit} />);
+    fireEvent.click(screen.getByText("rsvp.submitButton"));
+    expect(submit).toHaveBeenCalled();
+  });
+
   it("shows confirmed state when already submitted", () => {
     render(<WrappedRsvp {...baseProps} hasSubmitted={true} />);
     expect(screen.getByText("rsvp.confirmedButton")).toBeDefined();
