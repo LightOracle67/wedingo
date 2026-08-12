@@ -26,7 +26,7 @@ export interface ExcelSheet {
 }
 
 /** Libro de trabajo: hojas ya filtradas (sin vacías) y con nombre ≤31 chars. */
-export interface ExcelWorkbook {
+interface ExcelWorkbook {
   sheets: ExcelSheet[];
 }
 

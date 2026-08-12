@@ -454,4 +454,42 @@ describe("a11y-page-audit", () => {
     const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
     expect(violations).toHaveLength(0);
   });
+
+  it("Pagination has no serious violations", async () => {
+    const Pagination = (await import("../../components/Pagination")).default;
+    const { container } = render(
+      <Pagination
+        page={0}
+        totalPages={3}
+        pageSize={10}
+        total={30}
+        pageSizes={[5, 10, 25]}
+        onPageChange={() => {}}
+        onPageSizeChange={() => {}}
+      />,
+    );
+    const results = await runAxe(container);
+    const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
+    expect(violations).toHaveLength(0);
+  });
+
+  it("LoadingOverlay has no serious violations", async () => {
+    const LoadingOverlay = (await import("../../components/LoadingOverlay")).default;
+    const { container } = render(<LoadingOverlay visible />);
+    const results = await runAxe(container);
+    const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
+    expect(violations).toHaveLength(0);
+  });
+
+  it("CollapsibleSection has no serious violations", async () => {
+    const CollapsibleSection = (await import("../../components/CollapsibleSection")).default;
+    const { container } = render(
+      <CollapsibleSection title="Mi sección" defaultOpen>
+        <p>Contenido</p>
+      </CollapsibleSection>,
+    );
+    const results = await runAxe(container);
+    const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
+    expect(violations).toHaveLength(0);
+  });
 });

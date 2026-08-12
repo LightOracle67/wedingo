@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.98.5",
+    date: "2026-08-12",
+    changes: [
+      "MEJORA (ronda completa): cobertura a 92.2% de líneas (2160 tests) — DistribucionTab (quitar invitado, forma legacy rect) y axe para Pagination, LoadingOverlay y CollapsibleSection; export muerto ExcelWorkbook des-exportado; cutoff de consentimiento parental GDPR actualizado a 2012-08-13. Umbrales CI a 91.8/89.5/86.5/80.",
+    ],
+  },
+  {
     version: "2.98.4",
     date: "2026-08-12",
     changes: [

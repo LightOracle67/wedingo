@@ -606,7 +606,7 @@ service cloud.firestore {
         && (
           !request.resource.data.keys().hasAny(['birthDate'])
           || request.resource.data.birthDate == ""
-          || request.resource.data.birthDate < "2012-08-12"
+          || request.resource.data.birthDate < "2012-08-13"
           || request.resource.data.parentalConsent == true
         )
         && exists(/databases/$(database)/documents/rsvpResponses/$(inviteToken))
