@@ -53,7 +53,7 @@ vi.mock("../../../hooks/useToast", () => ({
   useToast: () => ({ addToast: vi.fn() }),
 }));
 vi.mock("../../../contexts", () => ({
-  useAuth: () => ({ isAdminTokenLoggedIn: false }),
+  useAuth: () => ({ isAdminTokenLoggedIn: true }),
 }));
 
 import DayPhotosSection from "../DayPhotosSection";
@@ -187,5 +187,40 @@ describe("VoiceNotesSection", () => {
     const { container } = render(<VoiceNotesSection inviteToken="tok" />);
     await vi.waitFor(() => expect(screen.getByText(/Ana/)).toBeInTheDocument());
     expect(await runAxe(container)).toHaveLength(0);
+  });
+
+  it("reproduce una nota de voz", async () => {
+    mockVoiceList.mockResolvedValue([{ id: "n1", noteId: "n1", guestName: "Ana" }]);
+    mockVoiceLoad.mockResolvedValue("data:audio/webm;base64,AAA");
+    render(<VoiceNotesSection inviteToken="tok" />);
+    const btn = await screen.findByText("▶");
+    expect((btn as HTMLButtonElement).disabled).toBe(false);
+    fireEvent.click(btn);
+    await vi.waitFor(() => expect(mockVoiceLoad).toHaveBeenCalled());
+  });
+
+  it("borra una nota de voz tras confirmar", async () => {
+    mockVoiceList.mockResolvedValue([{ id: "n1", noteId: "n1", guestName: "Ana" }]);
+    window.confirm = vi.fn(() => true);
+    render(<VoiceNotesSection inviteToken="tok" />);
+    await vi.waitFor(() => expect(screen.getByText(/Ana/)).toBeInTheDocument());
+    fireEvent.click(screen.getByText("✕"));
+    await vi.waitFor(() => expect(mockVoiceDelete).toHaveBeenCalledWith("tok", "n1"));
+  });
+});
+
+describe("DayPhotosSection: subida", () => {
+  it("comprime, cifra y sube la foto elegida", async () => {
+    const { compressImage } = await import("../../../lib/image-utils");
+    const { encrypt } = await import("../../../lib/crypto-utils");
+    const add = vi.fn(async () => "new-id");
+    mockSub.mockReturnValue({ items: [], load: vi.fn(), add, busy: false });
+    render(<DayPhotosSection inviteToken="tok" />);
+    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    const file = new File(["x"], "foto.png", { type: "image/png" });
+    fireEvent.change(input, { target: { files: [file] } });
+    await vi.waitFor(() => expect(compressImage).toHaveBeenCalled());
+    await vi.waitFor(() => expect(encrypt).toHaveBeenCalled());
+    await vi.waitFor(() => expect(add).toHaveBeenCalled());
   });
 });

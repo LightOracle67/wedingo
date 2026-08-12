@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.97.2",
+    date: "2026-08-12",
+    changes: [
+      "CALIDAD (5 sesiones): cobertura 83.5→88.8% de líneas (2106 tests). Tests añadidos en ManageTab (clone/flags/expiración/kill-session/pausa), DataTab (excel por token, menús, expiración/sellado masivo, rango de fechas), InvitationDetailModal (reset, import CSV), SuperAdminPanel (pestañas restantes, navegación por teclado, ?tab=), PlatformTab (kill-switch, carga de ajustes), DashboardTab (Storage GC) y secciones sociales (VoiceNotes reproducir/borrar, DayPhotos subida). Umbrales de cobertura del CI subidos a 88/85.5/83/77.5 (verificados).",
+    ],
+  },
+  {
     version: "2.97.1",
     date: "2026-08-12",
     changes: [
