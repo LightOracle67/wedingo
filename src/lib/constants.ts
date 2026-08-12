@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.98.2";
+export const APP_VERSION = "2.98.3";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;

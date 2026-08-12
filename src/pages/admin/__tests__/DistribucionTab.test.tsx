@@ -24,8 +24,9 @@ vi.mock("../../../lib/firebase", () => ({
   db: "db-mock",
   rsvpByInviteRef: vi.fn(() => "rsvp-ref"),
 }));
+const mockAddToast = vi.fn();
 vi.mock("../../../hooks/useToast", () => ({
-  useToast: () => ({ addToast: vi.fn() }),
+  useToast: () => ({ addToast: mockAddToast }),
 }));
 const mockExportToXlsx = vi.fn();
 vi.mock("../../../lib/excel-utils", () => ({
@@ -88,6 +89,44 @@ describe("DistribucionTab", () => {
     expect(options).toContain("Ana");
     expect(options).toContain("Pepe");
     expect(options).not.toContain("Luis");
+  });
+
+  it("asigna un invitado confirmado a la mesa", async () => {
+    const { updateDoc } = await import("firebase/firestore");
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    const mesa1 = await screen.findByText("Mesa 1");
+    fireEvent.pointerDown(mesa1, { clientX: 0, clientY: 0 });
+    const select = screen.getByLabelText("distribucion.assignPlaceholder") as HTMLSelectElement;
+    fireEvent.change(select, { target: { value: "Ana" } });
+    await vi.waitFor(() => expect(updateDoc).toHaveBeenCalled());
+    // arrayUnion está mockeado a identidad: el valor llega crudo.
+    expect(updateDoc).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ guests: "Ana" }));
+  });
+
+  it("avisa cuando la mesa está llena", async () => {
+    mockAddToast.mockClear();
+    // Mesa con 1 plaza y 1 invitado ya asignado.
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "rsvp-ref")
+        return Promise.resolve({
+          docs: [
+            { data: () => ({ guestName: "Ana", attendance: "yes" }) },
+            { data: () => ({ guestName: "Pepe", attendance: "yes" }) },
+          ],
+        });
+      if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
+      return Promise.resolve({
+        docs: [{ id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 1, guests: ["Ana"] }) }],
+      });
+    });
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    const mesa1 = await screen.findByText("Mesa 1");
+    fireEvent.pointerDown(mesa1, { clientX: 0, clientY: 0 });
+    const select = screen.getByLabelText("distribucion.assignPlaceholder") as HTMLSelectElement;
+    fireEvent.change(select, { target: { value: "Pepe" } });
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "distribucion.tableFull"));
   });
 
   it("locks width and height to the same value on circle/square", async () => {

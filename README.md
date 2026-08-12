@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.98.2](https://github.com/LightOracle67/wedingo/releases/tag/v2.98.2)  
+**Versión actual:** [v2.98.3](https://github.com/LightOracle67/wedingo/releases/tag/v2.98.3)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -251,6 +251,7 @@ Hitos principales:
 | v2.98.0 | 2026-08-12 | Cobertura a 91.3% de líneas (2147 tests): impresión de confirmaciones en DataTab; umbrales CI a 91/88.5/85.5/79.5 |
 | v2.98.1 | 2026-08-12 | Cobertura a 91.4% de líneas (2149 tests): sentry — retirada de consentimiento y guard único |
 | v2.98.2 | 2026-08-12 | Cobertura a 91.4% de líneas (2151 tests): VoiceNotes — estado vacío y fecha |
+| v2.98.3 | 2026-08-12 | Cobertura a 91.5% de líneas (2153 tests): DistribucionTab — asignación y mesa llena |
 | v2.97.0 | 2026-08-12 | Invitados esperados como número (0..1000); estadísticas calculadas desde ese número |
 | v2.96.11 | 2026-08-11 | Hardening: escritor XLSX blindado (NaN/control-chars/límite columnas), fix a11y botón 👁, límites de bundle ajustados |
 | v2.96.10 | 2026-08-11 | Seguridad: xlsx/SheetJS (2 avisos alta) sustituido por escritor OOXML propio; npm audit prod 0 vulnerabilidades |
