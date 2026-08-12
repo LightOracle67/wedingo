@@ -34,6 +34,7 @@ vi.mock("firebase/storage", () => ({
 vi.mock("../../../lib/firebase", () => ({
   db: "db-mock",
   storage: "storage-mock",
+  getStorageInstance: vi.fn(() => Promise.resolve({})),
   RSVP_RESPONSES_GROUP: "rsvp-responses-group",
   rsvpByInviteRef: vi.fn(() => "rsvp-query-ref"),
   INVITATIONS_COLLECTION_REF: "invitations-collection-ref",
@@ -228,8 +229,7 @@ describe("DashboardTab", () => {
   it("does not clean when confirm is cancelled", async () => {
     const { getDocs, writeBatch } = await import("firebase/firestore");
     const getDocsMock = vi.mocked(getDocs);
-    const now = new Date();
-    const threeYearsAgo = new Date(now.getFullYear() - 3, 0, 1);
+    const now = new Date();    const threeYearsAgo = new Date(now.getFullYear() - 3, 0, 1);
     const year = threeYearsAgo.getFullYear();
     getDocsMock.mockResolvedValue({
       docs: [{ id: "inv1", data: () => ({ weddingYear: String(year), weddingMonth: "enero", weddingDay: "1" }) }],
@@ -285,5 +285,30 @@ describe("DashboardTab", () => {
     calcGlobalStatsMock.mockReturnValueOnce(null as never);
     render(<DashboardTab />);
     expect(screen.getByText("superadmin.dashboardLoading")).toBeDefined();
+  });
+
+  it("limpia el Storage huérfano (invitaciones borradas) tras confirmar", async () => {
+    const { getDocs } = await import("firebase/firestore");
+    const getDocsMock = vi.mocked(getDocs);
+    // Una invitación expirada hace que el panel (con gcStorage) se renderice.
+    const now = new Date();
+    const threeYearsAgo = new Date(now.getFullYear() - 3, 0, 1);
+    getDocsMock.mockResolvedValue({
+      docs: [{ id: "inv1", data: () => ({ weddingYear: String(threeYearsAgo.getFullYear()), weddingMonth: "enero", weddingDay: "1" }) }],
+    } as never);
+    const { ref, listAll } = await import("firebase/storage");
+    const refMock = vi.mocked(ref);
+    refMock.mockReturnValue("root-ref" as never);
+    vi.mocked(listAll).mockResolvedValueOnce({
+      prefixes: [{ name: "Orphan/", ...refMock }],
+      items: [{ ...refMock }],
+    } as never);
+    window.confirm = vi.fn(() => true);
+    render(<DashboardTab />);
+    const gcBtn = await waitFor(() => screen.getByText("superadmin.gcStorage"));
+    fireEvent.click(gcBtn);
+    await waitFor(() => {
+      expect(vi.mocked(listAll)).toHaveBeenCalled();
+    });
   });
 });
