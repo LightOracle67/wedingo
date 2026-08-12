@@ -233,4 +233,52 @@ describe("ManageTab", () => {
     fireEvent.click(screen.getByText("manage.pause"));
     await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
   });
+
+  it("muestra error al guardar un JSON inválido en el editor", async () => {
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.globalEditor")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.globalEditor"), { target: { value: "{no es json" } });
+    // "manage.saveConfig" está en varias secciones: se usa el del editor global.
+    fireEvent.click(screen.getAllByText("manage.saveConfig").at(-1)!);
+    const alert = await screen.findByRole("alert");
+    expect(alert.textContent).toContain("JSON inválido");
+    expect(mockSetDoc).not.toHaveBeenCalled();
+  });
+
+  it("guarda un JSON válido desde el editor global", async () => {
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.globalEditor")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.globalEditor"), {
+      target: { value: JSON.stringify({ firstName: "A", secondName: "B" }) },
+    });
+    fireEvent.click(screen.getAllByText("manage.saveConfig").at(-1)!);
+    await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
+  });
+
+  it("transfiere la titularidad generando un nuevo token de setup", async () => {
+    const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(true);
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByText("manage.transferButton")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("manage.transferButton"));
+    // Crea el nuevo setupToken y (mock de writeBatch) revoca los anteriores.
+    await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
+    confirmSpy.mockRestore();
+  });
+
+  it("configura la auto-respuesta de la invitación", async () => {
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.autoRespondName")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.autoRespondName"), { target: { value: "Familias" } });
+    fireEvent.change(screen.getByLabelText("manage.autoRespondAttendance"), { target: { value: "yes" } });
+    fireEvent.click(screen.getByText("manage.autoRespondButton"));
+    await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
+  });
 });
