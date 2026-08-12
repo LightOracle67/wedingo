@@ -3,11 +3,15 @@ import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 const mockInit = vi.hoisted(() => vi.fn());
 const mockBrowserTracingIntegration = vi.hoisted(() => vi.fn(() => "tracing"));
 const mockReplayIntegration = vi.hoisted(() => vi.fn(() => "replay"));
+const mockClose = vi.hoisted(() => vi.fn(() => Promise.resolve(true)));
+const mockGetReplay = vi.hoisted(() => vi.fn(() => ({ stop: vi.fn() })));
 
 vi.mock("@sentry/react", () => ({
   init: mockInit,
   browserTracingIntegration: mockBrowserTracingIntegration,
   replayIntegration: mockReplayIntegration,
+  getReplay: mockGetReplay,
+  close: mockClose,
 }));
 
 describe("sentry", () => {
@@ -120,5 +124,44 @@ describe("sentry", () => {
       expect(mockInit).toHaveBeenCalled();
     });
     expect(mockReplayIntegration).not.toHaveBeenCalled();
+  });
+
+  it("disableSentryTracking detiene el replay y cierra el cliente (GDPR art. 7.3)", async () => {
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_SENTRY_DSN", "https://dsn");
+    const idleCallback = vi.fn((cb: () => void) => {
+      cb();
+      return 0;
+    });
+    vi.stubGlobal("requestIdleCallback", idleCallback);
+    vi.resetModules();
+    const sentry = await import("../sentry");
+    await vi.waitFor(() => {
+      expect(mockInit).toHaveBeenCalled();
+    });
+    sentry.disableSentryTracking();
+    await vi.waitFor(() => {
+      expect(mockGetReplay).toHaveBeenCalled();
+    });
+    expect(mockClose).toHaveBeenCalled();
+  });
+
+  it("enableSentryTracking solo inicializa una vez (guard)", async () => {
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_SENTRY_DSN", "https://dsn");
+    const idleCallback = vi.fn((cb: () => void) => {
+      cb();
+      return 0;
+    });
+    vi.stubGlobal("requestIdleCallback", idleCallback);
+    vi.resetModules();
+    const sentry = await import("../sentry");
+    await vi.waitFor(() => {
+      expect(mockInit).toHaveBeenCalled();
+    });
+    const calls = mockInit.mock.calls.length;
+    // Segundo enable: no vuelve a inicializar.
+    await sentry.enableSentryTracking();
+    expect(mockInit.mock.calls.length).toBe(calls);
   });
 });

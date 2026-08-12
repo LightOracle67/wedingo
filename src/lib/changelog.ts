@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.98.1",
+    date: "2026-08-12",
+    changes: [
+      "CALIDAD (más sesiones): cobertura a 91.4% de líneas (2149 tests). Tests añadidos en sentry (disableSentryTracking con retirada de consentimiento GDPR y guard de inicialización única). Umbral CI de líneas a 91.1.",
+    ],
+  },
+  {
     version: "2.98.0",
     date: "2026-08-12",
     changes: [
