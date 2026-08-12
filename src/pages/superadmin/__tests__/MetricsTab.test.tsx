@@ -34,6 +34,7 @@ vi.mock("../../../lib/excel-utils", () => ({
 vi.mock("../../../lib/excel-builders", () => ({
   buildMetricsSheet: vi.fn(() => ({ name: "Métricas", headers: [], rows: [] })),
   buildGlobalGuestsSheet: vi.fn(() => ({ name: "Invitados", headers: [], rows: [] })),
+  buildAuditSheet: vi.fn(() => ({ name: "Auditoría", headers: [], rows: [] })),
 }));
 
 import MetricsTab from "../MetricsTab";
@@ -128,5 +129,57 @@ describe("SupportTab", () => {
     fireEvent.change(screen.getByLabelText("superadmin.support.tokenPlaceholder"), { target: { value: "nope" } });
     fireEvent.click(screen.getByText("superadmin.support.searchBtn"));
     await screen.findByText("superadmin.support.notFound");
+  });
+
+  it("carga la auditoría y la exporta a Excel", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) =>
+      Promise.resolve(
+        ref === "query-ref"
+          ? {
+              docs: [{ id: "a1", data: () => ({ action: "reset_token", detail: "TOK1", createdAt: { seconds: 1750000000 } }) }],
+            }
+          : { docs: [] },
+      ),
+    );
+    render(<SupportTab />);
+    await screen.findByText("superadmin.support.upcomingTitle");
+    fireEvent.click(screen.getByText("superadmin.support.auditLoad"));
+    // Espera a que la fila de auditoría se renderice (habilita el export).
+    await screen.findByText(/reset_token/);
+    fireEvent.click(screen.getByText("superadmin.support.auditExport"));
+    await vi.waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled());
+  });
+
+  it("no exporta la auditoría sin filas", async () => {
+    mockGetDocs.mockResolvedValue({ docs: [] });
+    render(<SupportTab />);
+    await screen.findByText("superadmin.support.upcomingTitle");
+    fireEvent.click(screen.getByText("superadmin.support.auditLoad"));
+    fireEvent.click(screen.getByText("superadmin.support.auditExport"));
+    await vi.waitFor(() => expect(mockExportToXlsx).not.toHaveBeenCalled());
+  });
+
+  it("ejecuta el diagnóstico de conectividad", async () => {
+    mockGetDocs.mockResolvedValue({ docs: [] });
+    render(<SupportTab />);
+    await screen.findByText("superadmin.support.upcomingTitle");
+    fireEvent.click(screen.getByText("superadmin.support.diagBtn"));
+    // El diagnóstico consulta invitaciones y setupTokens (query-ref).
+    await vi.waitFor(() => expect(mockGetDocs).toHaveBeenCalled());
+  });
+
+  it("detecta invitaciones abandonadas (visitas ≥ 50 sin respuesta)", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "invitations-collection-ref")
+        return Promise.resolve({
+          docs: [{ id: "abandon1", data: () => ({ firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2099", _visits: 60, adminUsername: "x" }) }],
+        });
+      // Las respuestas de "abandon1" están vacías → contador vacío → abandonada.
+      return Promise.resolve({ docs: [], size: 0, empty: true });
+    });
+    render(<SupportTab />);
+    await screen.findByText("superadmin.support.upcomingTitle");
+    fireEvent.click(screen.getByText("superadmin.support.abandonBtn"));
+    await vi.waitFor(() => expect(screen.getByText(/abandon1/)).toBeInTheDocument());
   });
 });
