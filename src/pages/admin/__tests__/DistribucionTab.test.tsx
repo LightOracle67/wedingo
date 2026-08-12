@@ -129,6 +129,40 @@ describe("DistribucionTab", () => {
     await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "distribucion.tableFull"));
   });
 
+  it("quita un invitado asignado de la mesa", async () => {
+    const { updateDoc } = await import("firebase/firestore");
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "rsvp-ref")
+        return Promise.resolve({
+          docs: [{ data: () => ({ guestName: "Ana", attendance: "yes" }) }],
+        });
+      if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
+      return Promise.resolve({
+        docs: [{ id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 8, guests: ["Ana"] }) }],
+      });
+    });
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    const mesa1 = await screen.findByText("Mesa 1");
+    fireEvent.pointerDown(mesa1, { clientX: 0, clientY: 0 });
+    fireEvent.click(screen.getByLabelText("distribucion.removeGuest"));
+    await vi.waitFor(() => expect(updateDoc).toHaveBeenCalled());
+    expect(updateDoc).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ guests: "Ana" }));
+  });
+
+  it("renderiza una mesa legada con forma rect en el mapa", async () => {
+    // Formas legacy (rect/oval) que siguen leyéndose para no romper datos viejos.
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
+      if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
+      return Promise.resolve({
+        docs: [{ id: "t1", data: () => ({ name: "Mesa Rect", shape: "rect", x: 50, y: 50, w: 130, h: 80, rotation: 0, seats: 8, guests: [] }) }],
+      });
+    });
+    render(<DistribucionTab inviteToken="tok" />);
+    expect(await screen.findByText("Mesa Rect")).toBeInTheDocument();
+  });
+
   it("locks width and height to the same value on circle/square", async () => {
     const { updateDoc } = await import("firebase/firestore");
     render(<DistribucionTab inviteToken="tok" />);
