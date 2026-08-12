@@ -208,6 +208,25 @@ describe("VoiceNotesSection", () => {
     fireEvent.click(screen.getByText("✕"));
     await vi.waitFor(() => expect(mockVoiceDelete).toHaveBeenCalledWith("tok", "n1"));
   });
+
+  it("no borra la nota si el usuario cancela", async () => {
+    mockVoiceList.mockResolvedValue([{ id: "n1", noteId: "n1", guestName: "Ana" }]);
+    window.confirm = vi.fn(() => false);
+    render(<VoiceNotesSection inviteToken="tok" />);
+    await vi.waitFor(() => expect(screen.getByText(/Ana/)).toBeInTheDocument());
+    fireEvent.click(screen.getByText("✕"));
+    await new Promise((r) => setTimeout(r, 30));
+    expect(mockVoiceDelete).not.toHaveBeenCalled();
+  });
+
+  it("muestra error si la nota no se puede descifrar al reproducir", async () => {
+    mockVoiceList.mockResolvedValue([{ id: "n1", noteId: "n1", guestName: "Ana" }]);
+    mockVoiceLoad.mockResolvedValue("");
+    render(<VoiceNotesSection inviteToken="tok" />);
+    const btn = await screen.findByText("▶");
+    fireEvent.click(btn);
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "voiceNotes.playError"));
+  });
 });
 
 describe("VoiceNotesSection: grabación", () => {

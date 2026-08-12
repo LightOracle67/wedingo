@@ -206,4 +206,30 @@ describe("DistribucionTab", () => {
     // La sección activa cambia y se muestran sus mesas.
     await vi.waitFor(() => expect(screen.getByText("Mesa Jardín")).toBeInTheDocument());
   });
+
+  it("arrastra una mesa y persiste su nueva posición", async () => {
+    const { updateDoc } = await import("firebase/firestore");
+    // El mapa usa getBoundingClientRect: se mockea con un rect fijo de 100x100.
+    vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({
+      width: 100,
+      height: 100,
+      left: 0,
+      top: 0,
+      right: 100,
+      bottom: 100,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    } as DOMRect);
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    const mesa = await screen.findByText("Mesa 1");
+    fireEvent.pointerDown(mesa, { pointerId: 1, clientX: 50, clientY: 50 });
+    // Arrastra hasta (80, 20) → persistTable → updateDoc.
+    const map = document.querySelector(".distribucion-map") as HTMLElement;
+    fireEvent.pointerMove(map, { pointerId: 1, clientX: 80, clientY: 20 });
+    fireEvent.pointerUp(map, { pointerId: 1 });
+    await vi.waitFor(() => expect(updateDoc).toHaveBeenCalled());
+    vi.restoreAllMocks();
+  });
 });

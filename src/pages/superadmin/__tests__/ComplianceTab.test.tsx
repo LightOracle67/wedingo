@@ -58,4 +58,11 @@ describe("ComplianceTab", () => {
     expect(screen.getByText("compliance.measureRetention")).toBeDefined();
     expect(screen.getByText("compliance.measureSuperadmin")).toBeDefined();
   });
+
+  it("renders the legal templates section", () => {
+    render(<ComplianceTab />);
+    expect(screen.getByText("compliance.templatesTitle")).toBeDefined();
+    // Al menos una plantilla de país con su contenido se muestra.
+    expect(screen.getAllByText(/compliance\.template/).length).toBeGreaterThan(0);
+  });
 });

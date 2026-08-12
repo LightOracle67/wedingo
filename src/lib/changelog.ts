@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.97.9",
+    date: "2026-08-12",
+    changes: [
+      "CALIDAD (más sesiones): cobertura a 91.2% de líneas (2146 tests). Tests añadidos en VoiceNotes (borrado cancelado, error de reproducción), ComplianceTab (plantillas legales) y DistribucionTab (arrastre de mesa con persistencia de posición, mockeando getBoundingClientRect). Umbrales CI subidos a 90.5/88.5/85.5/79.5.",
+    ],
+  },
+  {
     version: "2.97.8",
     date: "2026-08-12",
     changes: [
