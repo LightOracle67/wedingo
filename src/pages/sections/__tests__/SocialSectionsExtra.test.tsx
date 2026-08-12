@@ -49,8 +49,9 @@ vi.mock("firebase/firestore", () => ({
   doc: vi.fn(() => "doc-ref"),
 }));
 vi.mock("../../../lib/firebase", () => ({ db: "db-mock" }));
+const mockAddToast = vi.fn();
 vi.mock("../../../hooks/useToast", () => ({
-  useToast: () => ({ addToast: vi.fn() }),
+  useToast: () => ({ addToast: mockAddToast }),
 }));
 vi.mock("../../../contexts", () => ({
   useAuth: () => ({ isAdminTokenLoggedIn: true }),
@@ -209,6 +210,24 @@ describe("VoiceNotesSection", () => {
   });
 });
 
+describe("VoiceNotesSection: grabación", () => {
+  beforeEach(() => {
+    mockAddToast.mockClear();
+  });
+
+  it("no puede grabar sin micrófono (error manejado)", async () => {
+    // jsdom no expone mediaDevices de forma fiable: el acceso lanza y el
+    // componente muestra el aviso de error del micrófono.
+    Object.defineProperty(navigator, "mediaDevices", {
+      configurable: true,
+      value: { getUserMedia: vi.fn(async () => Promise.reject(new Error("denied"))) },
+    });
+    render(<VoiceNotesSection inviteToken="tok" />);
+    fireEvent.click(await screen.findByText("voiceNotes.record"));
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "voiceNotes.micError"));
+  });
+});
+
 describe("DayPhotosSection: subida", () => {
   it("comprime, cifra y sube la foto elegida", async () => {
     const { compressImage } = await import("../../../lib/image-utils");
@@ -222,5 +241,18 @@ describe("DayPhotosSection: subida", () => {
     await vi.waitFor(() => expect(compressImage).toHaveBeenCalled());
     await vi.waitFor(() => expect(encrypt).toHaveBeenCalled());
     await vi.waitFor(() => expect(add).toHaveBeenCalled());
+  });
+
+  it("no sube archivos que no sean imágenes", async () => {
+    const { compressImage } = await import("../../../lib/image-utils");
+    const add = vi.fn(async () => "new-id");
+    mockSub.mockReturnValue({ items: [], load: vi.fn(), add, busy: false });
+    render(<DayPhotosSection inviteToken="tok" />);
+    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    const file = new File(["x"], "nota.txt", { type: "text/plain" });
+    fireEvent.change(input, { target: { files: [file] } });
+    await new Promise((r) => setTimeout(r, 50));
+    expect(compressImage).not.toHaveBeenCalled();
+    expect(add).not.toHaveBeenCalled();
   });
 });
