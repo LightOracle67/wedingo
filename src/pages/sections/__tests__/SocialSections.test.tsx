@@ -116,6 +116,14 @@ describe("MusicPollSection", () => {
     expect(voteBtn.hasAttribute("disabled")).toBe(true);
     sessionStorage.clear();
   });
+
+  it("muestra error si falla la sugerencia", async () => {
+    mockCommit.mockRejectedValue(new Error("fail"));
+    render(<MusicPollSection inviteToken="tok" />);
+    fireEvent.change(screen.getByPlaceholderText("musicPoll.songPlaceholder"), { target: { value: "Algo contigo" } });
+    fireEvent.click(screen.getByText("musicPoll.suggest"));
+    expect(await screen.findByText("musicPoll.error")).toBeInTheDocument();
+  });
 });
 
 describe("GiftListSection", () => {
