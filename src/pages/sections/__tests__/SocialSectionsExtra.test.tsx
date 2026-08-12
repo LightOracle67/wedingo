@@ -190,6 +190,22 @@ describe("VoiceNotesSection", () => {
     expect(await runAxe(container)).toHaveLength(0);
   });
 
+  it("muestra el estado vacío sin notas", async () => {
+    mockVoiceList.mockResolvedValue([]);
+    render(<VoiceNotesSection inviteToken="tok" />);
+    expect(await screen.findByText("voiceNotes.empty")).toBeInTheDocument();
+  });
+
+  it("muestra la fecha de creación de la nota cuando existe", async () => {
+    mockVoiceList.mockResolvedValue([
+      { id: "n1", noteId: "n1", guestName: "Ana", createdAt: "2026-08-01T10:00:00.000Z" },
+    ]);
+    render(<VoiceNotesSection inviteToken="tok" />);
+    await vi.waitFor(() => expect(screen.getByText(/Ana/)).toBeInTheDocument());
+    // El año de creación se muestra (formato depende del locale de jsdom).
+    expect(screen.getByText(/2026/)).toBeInTheDocument();
+  });
+
   it("reproduce una nota de voz", async () => {
     mockVoiceList.mockResolvedValue([{ id: "n1", noteId: "n1", guestName: "Ana" }]);
     mockVoiceLoad.mockResolvedValue("data:audio/webm;base64,AAA");

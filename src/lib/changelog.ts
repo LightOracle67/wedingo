@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.98.2",
+    date: "2026-08-12",
+    changes: [
+      "CALIDAD (más sesiones): cobertura a 91.4% de líneas (2151 tests). Tests añadidos en VoiceNotesSection (estado vacío y fecha de creación). Umbral CI de líneas a 91.3.",
+    ],
+  },
+  {
     version: "2.98.1",
     date: "2026-08-12",
     changes: [
