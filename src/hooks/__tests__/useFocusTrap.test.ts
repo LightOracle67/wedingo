@@ -171,3 +171,26 @@ describe("useEscapeKey", () => {
     expect(onEscape).not.toHaveBeenCalled();
   });
 });
+
+describe("useInertBackground", () => {
+  it("hace inerte el resto del árbol y lo restaura al cerrar", async () => {
+    const { useInertBackground } = await import("../useFocusTrap");
+    document.body.innerHTML = "";
+    const root = document.createElement("div");
+    root.id = "root";
+    const sibling = document.createElement("button");
+    const modal = document.createElement("div");
+    root.append(sibling, modal);
+    document.body.appendChild(root);
+    const ref = { current: modal };
+
+    const { unmount } = renderHook(() => useInertBackground(true, ref));
+    // jsdom no implementa `inert` (es una propiedad plana); lo fiable es aria-hidden.
+    expect(sibling.getAttribute("aria-hidden")).toBe("true");
+    // El modal en sí no queda inerte.
+    expect(modal.getAttribute("aria-hidden")).toBeNull();
+
+    unmount();
+    expect(sibling.getAttribute("aria-hidden")).toBeNull();
+  });
+});
