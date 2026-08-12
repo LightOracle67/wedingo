@@ -684,4 +684,24 @@ describe("DataTab avanzadas", () => {
     fireEvent.click(screen.getByText("superadmin.data.rangeBtn"));
     await vi.waitFor(() => expect(mockDownloadJson).toHaveBeenCalled());
   });
+
+  it("imprime las confirmaciones de la selección", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) =>
+      ref === "invitations-collection-ref"
+        ? Promise.resolve({ docs: [docData({ id: "tok1234567", firstName: "Ana", secondName: "Luis" })] })
+        : Promise.resolve({
+            docs: [{ data: () => ({ guestName: "Ana García", attendance: "yes", companionCount: 1 }) }],
+          }),
+    );
+    const createObjectURL = vi.fn(() => "blob:print");
+    Object.defineProperty(URL, "createObjectURL", { configurable: true, value: createObjectURL });
+    const win = { addEventListener: vi.fn(), print: vi.fn() };
+    vi.stubGlobal("open", vi.fn(() => win));
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getAllByRole("checkbox").length).toBeGreaterThan(0));
+    fireEvent.click(screen.getAllByRole("checkbox")[0]!);
+    fireEvent.click(screen.getByText("superadmin.data.printBtn", { exact: false }));
+    await vi.waitFor(() => expect(createObjectURL).toHaveBeenCalled());
+    expect(win.addEventListener).toHaveBeenCalled();
+  });
 });

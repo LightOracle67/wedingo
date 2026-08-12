@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.98.0",
+    date: "2026-08-12",
+    changes: [
+      "CALIDAD (más sesiones): cobertura a 91.3% de líneas (2147 tests). Test de impresión de confirmaciones añadido en DataTab (window.open + blob con escape HTML). Umbrales CI subidos a 91/88.5/85.5/79.5.",
+    ],
+  },
+  {
     version: "2.97.9",
     date: "2026-08-12",
     changes: [
