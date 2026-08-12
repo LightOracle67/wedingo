@@ -9,7 +9,9 @@ vi.mock("react-i18next", () => ({
 const mockGetDocs = vi.fn();
 vi.mock("firebase/firestore", () => ({
   getDocs: (...args: unknown[]) => mockGetDocs(...args),
-  collection: vi.fn(() => "collection-ref"),
+  // collection devuelve el nombre de la subcolección (último argumento) para
+  // que getDocs pueda ramificar por tipo de consulta.
+  collection: (...args: unknown[]) => (args.length > 3 ? args[3] : "collection-ref"),
   query: vi.fn(() => "query-ref"),
   where: vi.fn(() => "where-ref"),
   limit: vi.fn(() => "limit-ref"),
@@ -89,6 +91,48 @@ describe("MetricsTab", () => {
     fireEvent.click(screen.getByText("superadmin.metrics.socialBtn"));
     await vi.waitFor(() => expect(mockGetDocs).toHaveBeenCalled());
     fireEvent.click(screen.getByText("superadmin.metrics.originsBtn"));
+  });
+
+  it("exporta todas las confirmaciones a Excel", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "invitations-collection-ref") return Promise.resolve({ docs: [invitationDoc()] });
+      // RSVP de la invitación: 1 confirmación con menú.
+      return Promise.resolve({
+        docs: [
+          {
+            id: "r1",
+            data: () => ({
+              inviteToken: "token1",
+              guestName: "Ana",
+              attendance: "yes",
+              mealChoice: "carne",
+              phone: "600",
+              email: "a@x.com",
+              submittedAt: "2026-01-01",
+            }),
+          },
+        ],
+      });
+    });
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    fireEvent.click(screen.getByText("superadmin.metrics.guestsExcelBtn"));
+    await vi.waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled());
+  });
+
+  it("estima el almacenamiento de galería y audio desde los metadatos", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "invitations-collection-ref") return Promise.resolve({ docs: [invitationDoc()] });
+      if (ref === "gallery") return Promise.resolve({ docs: [{ id: "g1" }, { id: "g2" }], size: 2 });
+      if (ref === "audio")
+        return Promise.resolve({ docs: [{ data: () => ({ data: "QUJD".repeat(1000) }) }] });
+      return Promise.resolve({ docs: [] });
+    });
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    fireEvent.click(screen.getByText("superadmin.metrics.storageBtn"));
+    // La tabla de almacenamiento se renderiza (cabecera "Imágenes").
+    await vi.waitFor(() => expect(screen.getByText("superadmin.metrics.images")).toBeInTheDocument());
   });
 });
 
