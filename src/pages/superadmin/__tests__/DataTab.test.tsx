@@ -14,6 +14,7 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: stableT }),
 }));
 
+const mockDeleteDoc = vi.fn(() => Promise.resolve());
 vi.mock("firebase/firestore", () => ({
   getDocs: (...args: unknown[]) => mockGetDocs(...args),
   getDoc: (...args: unknown[]) => mockGetDoc(...args),
@@ -23,6 +24,8 @@ vi.mock("firebase/firestore", () => ({
   query: vi.fn(() => "query-ref"),
   where: vi.fn(() => "where-ref"),
   collectionGroup: vi.fn(() => "cg-ref"),
+  deleteDoc: () => mockDeleteDoc(),
+  listCollections: vi.fn(() => Promise.resolve([])),
 }));
 
 vi.mock("../../../lib/firebase", () => ({
@@ -703,5 +706,43 @@ describe("DataTab avanzadas", () => {
     fireEvent.click(screen.getByText("superadmin.data.printBtn", { exact: false }));
     await vi.waitFor(() => expect(createObjectURL).toHaveBeenCalled());
     expect(win.addEventListener).toHaveBeenCalled();
+  });
+
+  it("purga invitaciones con boda antigua (prompt + confirm + cascadeDelete)", async () => {
+    vi.spyOn(window, "prompt").mockReturnValue("12");
+    const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(true);
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "invitations-collection-ref")
+        return Promise.resolve({
+          docs: [
+            docData({ id: "old1", firstName: "A", secondName: "B", weddingDay: "01", weddingMonth: "01", weddingYear: "2020" }),
+          ],
+        });
+      // cascadeDelete consulta subcolecciones: se devuelven vacías.
+      return Promise.resolve({ docs: [], size: 0 });
+    });
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("old1")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.data.purgeBtn"));
+    // Se elimina la invitación antigua (cascadeDelete con batches).
+    await vi.waitFor(() => expect(mockWriteBatch).toHaveBeenCalled());
+    confirmSpy.mockRestore();
+  });
+
+  it("no purga nada sin invitaciones antiguas", async () => {
+    vi.spyOn(window, "prompt").mockReturnValue("12");
+    mockGetDocs.mockImplementation((ref: unknown) =>
+      ref === "invitations-collection-ref"
+        ? Promise.resolve({
+            docs: [
+              docData({ id: "fut1", firstName: "A", secondName: "B", weddingDay: "01", weddingMonth: "01", weddingYear: "2099" }),
+            ],
+          })
+        : Promise.resolve({ docs: [] }),
+    );
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("fut1")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.data.purgeBtn"));
+    await vi.waitFor(() => expect(mockDeleteDoc).not.toHaveBeenCalled());
   });
 });

@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.98.4",
+    date: "2026-08-12",
+    changes: [
+      "CALIDAD (cierre de la campaña de cobertura): cobertura a 91.9% de líneas (2155 tests). Tests de DataTab (purga de invitaciones antiguas con cascadeDelete y el caso sin objetivos). Umbrales CI subidos a 91.5/89/86/80.",
+    ],
+  },
+  {
     version: "2.98.3",
     date: "2026-08-12",
     changes: [
