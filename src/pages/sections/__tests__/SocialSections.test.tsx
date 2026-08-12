@@ -160,4 +160,27 @@ describe("RideShareSection", () => {
     fireEvent.click(screen.getByText("rideShare.publish"));
     expect(mockCommit).toHaveBeenCalled();
   });
+
+  it("muestra el estado vacío sin ofertas", async () => {
+    render(<RideShareSection inviteToken="tok" />);
+    expect(await screen.findByText("rideShare.empty")).toBeInTheDocument();
+  });
+
+  it("muestra las ofertas publicadas", async () => {
+    mockGetDocs.mockResolvedValue({
+      docs: [
+        {
+          id: "r1",
+          data: () => ({ guestName: "Ana", origin: "Madrid", seats: 3 }),
+        },
+      ],
+    });
+    render(<RideShareSection inviteToken="tok" />);
+    expect(await screen.findByText("Madrid")).toBeInTheDocument();
+  });
+
+  it("no publica sin origen (botón deshabilitado)", () => {
+    render(<RideShareSection inviteToken="tok" />);
+    expect(screen.getByText("rideShare.publish")).toBeDisabled();
+  });
 });

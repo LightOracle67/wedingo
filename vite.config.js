@@ -147,8 +147,8 @@ export default defineConfig({
         "src/**/__tests__/**",
       ],
       thresholds: {
-        // Verificado en v2.97.4: líneas 90% / statements 87.9% / funcs 85%
-        // / branches 79.2%. Margen para variaciones de CI.
+        // Verificado en v2.97.5: líneas 90.2% / statements 88% / funcs 85.3%
+        // / branches 79.3%. Margen para variaciones de CI.
         statements: 87.5,
         branches: 78.5,
         functions: 84.5,

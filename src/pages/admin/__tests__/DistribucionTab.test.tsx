@@ -173,4 +173,37 @@ describe("DistribucionTab", () => {
     fireEvent.click(screen.getByText("distribucion.deleteSection"));
     await vi.waitFor(() => expect(deleteDoc).toHaveBeenCalled());
   });
+
+  it("añade una sección nueva y la activa", async () => {
+    mockAddDoc.mockResolvedValue({ id: "s9" });
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    fireEvent.change(screen.getByLabelText("distribucion.sectionPlaceholder"), { target: { value: "Jardín" } });
+    fireEvent.click(screen.getByText("distribucion.addSection"));
+    await vi.waitFor(() => expect(mockAddDoc).toHaveBeenCalled());
+    expect(mockAddDoc).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ name: "Jardín" }));
+  });
+
+  it("cambia a otra sección y carga sus mesas", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
+      if (ref === "sections-ref")
+        return Promise.resolve({
+          docs: [
+            { id: "s1", data: () => ({ name: "Salón" }) },
+            { id: "s2", data: () => ({ name: "Jardín" }) },
+          ],
+        });
+      // Mesas de la sección activa (cambian según activeSectionId; el mock
+      // devuelve la mesa de "Jardín" cuando se cambia).
+      return Promise.resolve({
+        docs: [{ id: "t2", data: () => ({ name: "Mesa Jardín", shape: "circle", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 6, guests: [] }) }],
+      });
+    });
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    fireEvent.click(screen.getByText("Jardín"));
+    // La sección activa cambia y se muestran sus mesas.
+    await vi.waitFor(() => expect(screen.getByText("Mesa Jardín")).toBeInTheDocument());
+  });
 });
