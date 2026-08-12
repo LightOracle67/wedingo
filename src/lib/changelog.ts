@@ -1,5 +1,12 @@
 export const CHANGELOG = [
   {
+    version: "2.97.7",
+    date: "2026-08-12",
+    changes: [
+      "CALIDAD (más sesiones): cobertura a 90.5% de líneas (2136 tests). Tests añadidos en RsvpSection (mensaje de validación con role=alert, error de carga con reintento, campos de contacto con consentimiento GDPR, envío del formulario).",
+    ],
+  },
+  {
     version: "2.97.6",
     date: "2026-08-12",
     changes: [
