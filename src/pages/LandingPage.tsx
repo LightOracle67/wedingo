@@ -1,7 +1,7 @@
 import { useAuth } from "../contexts";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { getDoc, serverTimestamp, runTransaction } from "firebase/firestore";
+import { getDoc, runTransaction } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import { db, invitationDocRef } from "../lib/firebase";
@@ -181,7 +181,10 @@ export default function LandingPage() {
           // auto-provisionar una sesión en el create).
           if (inviteSnapInTx.exists()) {
             transaction.update(inviteRefInTx, {
-              activeSession: serverTimestamp(),
+              // Timestamp explícito del cliente: la regla de sesión exige
+              // `activeSession is timestamp` y serverTimestamp() (REQUEST_TIME)
+              // no lo satisface en el runtime real de producción.
+              activeSession: new Date(),
               sessionExpiresAt: firestoreSessionExpiry(),
               setupTokenHash: tokenHash,
             });

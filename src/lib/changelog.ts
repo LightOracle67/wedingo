@@ -3,7 +3,7 @@ export const CHANGELOG = [
     version: "2.99.1",
     date: "2026-08-16",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "FIX sesión (permission-denied al activar/renovar/reparar): `activeSession` se escribe ahora como timestamp EXPLÍCITO del cliente en lugar de serverTimestamp(). En el runtime real de Firestore un valor REQUEST_TIME (serverTimestamp) no satisface `is timestamp` en la regla de sesión (el emulador sí, por eso los tests no lo detectaron). Se corrige en AuthContext (auto-login), useSetupAuth (repair, renovación 60s y login) y LandingPage (login). sessionExpiresAt sigue acotado 30min-48h y la escritura sigue exigiendo prueba de token (setupTokenValid).",
     ],
   },
 

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useLocation } from "react-router";
-import { serverTimestamp, updateDoc } from "firebase/firestore";
+import { updateDoc } from "firebase/firestore";
 import { invitationDocRef } from "../lib/firebase";
 import { firestoreSessionExpiry, saveSession } from "../lib/sessionVars";
 import { hashSetupToken } from "../lib/setup-token";
@@ -35,7 +35,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const tokenHash = storedToken ? await hashSetupToken(storedToken) : "";
 
         await updateDoc(invitationDocRef(inviteToken), {
-          activeSession: serverTimestamp(),
+          // Timestamp EXPLÍCITO del cliente, no serverTimestamp(): la regla de
+          // sesión exige `activeSession is timestamp` y en el runtime real de
+          // Firestore un valor REQUEST_TIME (serverTimestamp) NO satisface esa
+          // comprobación (el emulador sí, por eso el bug pasó los tests). El
+          // alcance sigue seguro: sessionExpiresAt queda acotado por las reglas
+          // y la escritura exige prueba de token (setupTokenValid).
+          activeSession: new Date(),
           sessionExpiresAt: firestoreSessionExpiry(),
           setupTokenHash: tokenHash,
         });

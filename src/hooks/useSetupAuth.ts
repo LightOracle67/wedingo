@@ -158,7 +158,9 @@ export function useSetupAuth(
             const storedToken = safeGetItem(storageKey, sessionStorage) || "";
             const tokenHash = storedToken ? await hashSetupToken(storedToken) : "";
             const repairPayload: Record<string, unknown> = {
-              activeSession: serverTimestamp(),
+              // Timestamp explícito: la regla exige `activeSession is timestamp`
+              // y serverTimestamp() (REQUEST_TIME) no lo satisface en producción.
+              activeSession: new Date(),
               sessionExpiresAt: firestoreSessionExpiry(),
               setupTokenHash: tokenHash,
             };
@@ -207,7 +209,9 @@ export function useSetupAuth(
           const storedToken = safeGetItem(storageKey, sessionStorage) || "";
           const tokenHash = storedToken ? await hashSetupToken(storedToken) : "";
           const renewPayload: Record<string, unknown> = {
-            activeSession: serverTimestamp(),
+            // Timestamp explícito del cliente (ver comentario de repair):
+            // serverTimestamp() no cumple `is timestamp` en el runtime real.
+            activeSession: new Date(),
             sessionExpiresAt: firestoreSessionExpiry(),
             setupTokenHash: tokenHash,
           };
@@ -365,7 +369,8 @@ export function useSetupAuth(
             if (!tokenRecord.exists()) throw new Error("Token no vÃ¡lido");
             if (_validateToken) _validateToken(data, data.adminUsername);
             const sessionUpdate: Record<string, unknown> = {
-              activeSession: serverTimestamp(),
+              // Timestamp explícito del cliente (ver comentario de repair).
+              activeSession: new Date(),
               sessionExpiresAt: firestoreSessionExpiry(),
               setupTokenHash: tokenHash,
             };
