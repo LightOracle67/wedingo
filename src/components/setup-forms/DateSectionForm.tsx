@@ -1,6 +1,6 @@
-import { useCallback, useMemo } from "react";
+import { memo, useCallback, useMemo  } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useFormField } from "../../contexts";
+import { useConfigActions, useFormField } from "../../contexts";
 import {
   MONTH_OPTIONS,
   MONTH_VALUE_TO_NUMBER,
@@ -11,6 +11,7 @@ import {
 import { isValidGoogleMapsUrl, convertToEmbedUrl, extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import { useJsonArrayField } from "../../hooks/useJsonArrayField";
 import MapUrlField from "../MapUrlField";
+import MapModeSelect from "../MapModeSelect";
 import SetupToggleField from "../SetupToggleField";
 
 interface ScheduleEvent {
@@ -19,8 +20,9 @@ interface ScheduleEvent {
   emoji: string;
 }
 
-export default function DateSectionForm({ prefix = "" }) {
-  const { updateFormField, handleDayChange, handleYearChange, handleTimeChange, handleTimeBlur, maxAllowedYear } = useConfig();
+const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?: string }) {
+  const { updateFormField, handleDayChange, handleYearChange, handleTimeChange, handleTimeBlur, maxAllowedYear } =
+    useConfigActions();
   const detailsMapMode = useFormField("detailsMapMode");
   const weddingDay = useFormField("weddingDay");
   const weddingHour = useFormField("weddingHour");
@@ -139,23 +141,12 @@ export default function DateSectionForm({ prefix = "" }) {
           </p>
         </div>
         <div>
-          <label className="setup-label" htmlFor={id("detailsMapMode")}>
-            {t("setup.mapModeLabel")}
-          </label>
-          <select
+          <MapModeSelect
             id={id("detailsMapMode")}
-            className="setup-input"
-            value={detailsMapMode || "iframe"}
-            onChange={(e) => updateFormField("detailsMapMode", e.target.value)}
-            aria-describedby={id("mapModeHint")}
-          >
-            <option value="iframe">{t("setup.mapModeIframe")}</option>
-            <option value="name">{t("setup.mapModeName")}</option>
-            <option value="hidden">{t("setup.mapModeHidden")}</option>
-          </select>
-          <p className="setup-help" id={id("mapModeHint")}>
-            {t("setup.mapModeHint")}
-          </p>
+            value={detailsMapMode}
+            onChange={(v) => updateFormField("detailsMapMode", v)}
+            hintId={id("mapModeHint")}
+          />
         </div>
         <label
           className="setup-checkbox-label"
@@ -175,7 +166,7 @@ export default function DateSectionForm({ prefix = "" }) {
             checked={weddingMapStatic === "true"}
             onChange={(e) => updateFormField("weddingMapStatic", e.target.checked ? "true" : "false")}
             style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
-            aria-describedby={id("mapStaticHint")}
+            aria-describedby={weddingMapStatic === "true" ? id("mapStaticHint") : undefined}
           />
           <span>{t("setup.mapStaticLabel")}</span>
         </label>
@@ -434,4 +425,7 @@ export default function DateSectionForm({ prefix = "" }) {
       ) : null}
     </>
   );
-}
+});
+
+export default DateSectionForm;
+

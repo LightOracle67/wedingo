@@ -1,10 +1,11 @@
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import CharacterCounter from "../../components/CharacterCounter";
-import { useConfig, useFormField } from "../../contexts";
+import { useConfigActions, useFormField } from "../../contexts";
 import SetupToggleField from "../SetupToggleField";
 
-export default function GiftsSectionForm({ prefix = "" }) {
-  const { updateFormField } = useConfig();
+const GiftsSectionForm = memo(function GiftsSectionForm({ prefix = "" }: { prefix?: string }) {
+  const { updateFormField } = useConfigActions();
   const bankInfo = useFormField("bankInfo");
   const giftsInfo = useFormField("giftsInfo");
   const { t } = useTranslation();
@@ -24,6 +25,7 @@ export default function GiftsSectionForm({ prefix = "" }) {
         enabledField="giftsInfoEnabled"
         label={t("setup.giftsInfoLabel")}
         hint={t("setup.giftsInfoHint")}
+        hintId={id("giftsInfoHint")}
         id={id}
       >
         <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
@@ -45,6 +47,7 @@ export default function GiftsSectionForm({ prefix = "" }) {
         enabledField="bankInfoEnabled"
         label={t("setup.bankInfoLabel")}
         hint={t("setup.bankInfoHint")}
+        hintId={id("bankInfoHint")}
         id={id}
       >
         <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
@@ -62,11 +65,14 @@ export default function GiftsSectionForm({ prefix = "" }) {
           aria-describedby={ibanLooksInvalid ? `${id("bankInfoHint")} ${id("ibanError")}` : id("bankInfoHint")}
         />
         {ibanLooksInvalid ? (
-          <p className="setup-help" id={id("ibanError")} style={{ color: "#ef4444" }}>
+          <p className="setup-help" id={id("ibanError")} style={{ color: "#ef4444" }} role="alert">
             {t("errors.ibanInvalid")}
           </p>
         ) : null}
       </SetupToggleField>
     </>
   );
-}
+});
+
+export default GiftsSectionForm;
+

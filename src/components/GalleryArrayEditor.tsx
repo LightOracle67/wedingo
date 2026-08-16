@@ -371,6 +371,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
                     }}
                   />
                   <label
+                    className="gallery-upload"
                     style={{
                       textAlign: "center",
                       cursor: isUploading ? "not-allowed" : "pointer",
@@ -384,7 +385,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
                     <input
                       type="file"
                       accept="image/jpeg,image/png,image/webp"
-                      style={{ display: "none" }}
+                      className="setup-upload__input"
                       onChange={(e) => handleUpload(e, i)}
                       disabled={isUploading}
                     />
@@ -392,6 +393,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
                 </div>
               ) : (
                 <label
+                  className="gallery-upload"
                   style={{
                     display: "flex",
                     flexDirection: "column",
@@ -412,7 +414,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
                   <input
                     type="file"
                     accept="image/jpeg,image/png,image/webp"
-                    style={{ display: "none" }}
+                    className="setup-upload__input"
                     onChange={(e) => handleUpload(e, i)}
                     disabled={isUploading}
                   />

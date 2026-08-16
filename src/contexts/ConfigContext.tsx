@@ -1,4 +1,13 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import {
+  useCallback,
+  useContext,
+  createContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router";
 import {
@@ -45,6 +54,41 @@ import { useAppUI } from "./useAppUI";
 /** Año máximo permitido al guardar la fecha de la boda (constante de módulo:
  *  no se recalcula en cada render). */
 const MAX_ALLOWED_YEAR = new Date().getFullYear() + MAX_YEARS_AHEAD;
+
+/**
+ * ConfigActionsContext — Contexto ESTABLE de acciones del editor.
+ *
+ * `ConfigContext` incluye `formData`/`config`, que cambian de identidad en
+ * CADA tecla (`updateFormField` → `setFormData`): cualquier consumidor de
+ * `useConfig()` re-renderiza en cada tecla, anulando el beneficio de
+ * `useFormField` (re-render acotado por campo). Este contexto separa las
+ * FUNCIONES (estables) y los pocos valores que cambian raramente
+ * (`inviteToken`, `hasStoredConfig`), de forma que los formularios solo
+ * re-renderizan cuando tocan sus propios campos, no en cada tecla del resto.
+ */
+export const ConfigActionsContext = createContext<ConfigActionsValue | null>(null);
+
+/** Valor expuesto por ConfigActionsContext (estable entre teclas). */
+export interface ConfigActionsValue {
+  updateFormField: (field: string, value: string) => void;
+  handleDayChange: (value: string) => void;
+  handleTimeChange: (value: string) => void;
+  handleTimeBlur: (value: string) => void;
+  handleYearChange: (value: string) => void;
+  /** Año máximo permitido al guardar la fecha de la boda. */
+  maxAllowedYear: number;
+  /** Token de la invitación en curso (cambia solo al navegar de ruta). */
+  inviteToken: string;
+  /** Indica si la invitación ya tiene configuración guardada. */
+  hasStoredConfig: boolean;
+}
+
+/** Hook para leer las acciones estables del editor (error si no hay provider). */
+export function useConfigActions(): ConfigActionsValue {
+  const ctx = useContext(ConfigActionsContext);
+  if (!ctx) throw new Error("useConfigActions debe usarse dentro de ConfigProvider");
+  return ctx;
+}
 
 export function ConfigProvider({ children }: { children: ReactNode }) {
   const { t } = useTranslation();
@@ -691,9 +735,36 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     ],
   );
 
+  // Valor de las acciones estables del editor: se memoiza SOLO con dependencias
+  // estables o que cambian raramente (token, hasStoredConfig), nunca con
+  // formData/config → los formularios no re-renderizan por cada tecla.
+  const configActionsValue = useMemo<ConfigActionsValue>(
+    () => ({
+      updateFormField,
+      handleDayChange,
+      handleTimeChange,
+      handleTimeBlur,
+      handleYearChange,
+      maxAllowedYear: MAX_ALLOWED_YEAR,
+      inviteToken,
+      hasStoredConfig,
+    }),
+    [
+      updateFormField,
+      handleDayChange,
+      handleTimeChange,
+      handleTimeBlur,
+      handleYearChange,
+      inviteToken,
+      hasStoredConfig,
+    ],
+  );
+
   return (
     <FormStoreContext.Provider value={formStore}>
-      <ConfigContext.Provider value={configValue}>{children}</ConfigContext.Provider>
+      <ConfigActionsContext.Provider value={configActionsValue}>
+        <ConfigContext.Provider value={configValue}>{children}</ConfigContext.Provider>
+      </ConfigActionsContext.Provider>
     </FormStoreContext.Provider>
   );
 }

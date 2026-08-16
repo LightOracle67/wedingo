@@ -1,8 +1,12 @@
-import { useConfig } from "../../contexts";
+import { memo } from "react";
+import { useConfigActions } from "../../contexts";
 import GalleryArrayEditor from "../GalleryArrayEditor";
 
-export default function GallerySectionForm() {
-  const { inviteToken } = useConfig();
+const GallerySectionForm = memo(function GallerySectionForm() {
+  const { inviteToken } = useConfigActions();
 
   return <GalleryArrayEditor inviteToken={inviteToken} />;
-}
+});
+
+export default GallerySectionForm;
+

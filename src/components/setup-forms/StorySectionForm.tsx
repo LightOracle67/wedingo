@@ -1,10 +1,11 @@
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import CharacterCounter from "../../components/CharacterCounter";
-import { useConfig, useFormField } from "../../contexts";
+import { useConfigActions, useFormField } from "../../contexts";
 import SetupToggleField from "../SetupToggleField";
 
-export default function StorySectionForm({ prefix = "" }) {
-  const { updateFormField } = useConfig();
+const StorySectionForm = memo(function StorySectionForm({ prefix = "" }: { prefix?: string }) {
+  const { updateFormField } = useConfigActions();
   const storyText = useFormField("storyText");
   const { t } = useTranslation();
 
@@ -16,6 +17,7 @@ export default function StorySectionForm({ prefix = "" }) {
         enabledField="storyTextEnabled"
         label={t("setup.storyLabel")}
         hint={t("setup.storyHint")}
+        hintId={id("storyHint")}
         id={id}
       >
         <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
@@ -34,4 +36,7 @@ export default function StorySectionForm({ prefix = "" }) {
       </SetupToggleField>
     </>
   );
-}
+});
+
+export default StorySectionForm;
+

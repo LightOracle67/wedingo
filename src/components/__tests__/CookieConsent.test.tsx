@@ -42,6 +42,17 @@ function useAppUIMock() {
 }
 
 vi.mock("../../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: "",
+    hasStoredConfig: false,
+  }),
+
   useAppUI: useAppUIMock,
   useConfig: () => ({ inviteToken: undefined }),
 }));

@@ -279,7 +279,7 @@ describe("useAutoSave", () => {
     });
 
     it("does not save a dress code 'Otro' without custom text", async () => {
-      const data = { ...sampleConfig, weddingDressCode: "Otro", weddingDressCodeCustom: "" };
+      const data = { ...sampleConfig, weddingDressCode: "custom", weddingDressCodeCustom: "" };
       const onSaveError = vi.fn();
       const { result } = renderHook(() =>
         useAutoSave(true, "test-token", data, data, vi.fn(), { current: false }, undefined, onSaveError),

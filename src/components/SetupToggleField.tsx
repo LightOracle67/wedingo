@@ -6,6 +6,8 @@ interface SetupToggleFieldProps {
   enabledField: string;
   label: string;
   hint?: string;
+  /** Id del hint (para aria-describedby desde el input asociado). */
+  hintId?: string;
   /** Función id(name) del formulario (añade el prefijo del paso del setup). */
   id: (name: string) => string;
   children: ReactNode;
@@ -20,7 +22,7 @@ interface SetupToggleFieldProps {
  * El valor del toggle se lee con useFormField (re-render acotado a este campo,
  * no a todo el árbol del Setup cuando se teclea en otro campo).
  */
-export default function SetupToggleField({ enabledField, label, hint, id, children }: SetupToggleFieldProps) {
+export default function SetupToggleField({ enabledField, label, hint, hintId, id, children }: SetupToggleFieldProps) {
   const { updateFormField } = useConfig();
   const enabledValue = useFormField(enabledField);
   const enabled = enabledValue === "true";
@@ -41,7 +43,13 @@ export default function SetupToggleField({ enabledField, label, hint, id, childr
           <label className="setup-label setup-label--tight" htmlFor={id(enabledField)}>
             {label}
           </label>
-          {hint ? <p className="setup-help setup-help--tight">{hint}</p> : null}
+          {/* El hint lleva id cuando el input asociado lo referencia con
+              aria-describedby (WCAG 1.3.1): si no, es una referencia rota. */}
+          {hint ? (
+            <p className="setup-help setup-help--tight" id={hintId}>
+              {hint}
+            </p>
+          ) : null}
         </div>
       </div>
       {enabled ? children : null}

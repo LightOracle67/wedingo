@@ -260,7 +260,7 @@ describe("validateConfigForSave", () => {
 
   it("requires a custom message when the dress code is 'Otro'", () => {
     const result = validateConfigForSave(
-      validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "" }),
+      validConfig({ weddingDressCode: "custom", weddingDressCodeCustom: "" }),
       true,
       2030,
     );
@@ -269,7 +269,7 @@ describe("validateConfigForSave", () => {
 
   it("accepts the dress code 'Otro' with a custom message", () => {
     const result = validateConfigForSave(
-      validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "Vestimenta vintage" }),
+      validConfig({ weddingDressCode: "custom", weddingDressCodeCustom: "Vestimenta vintage" }),
       true,
       2030,
     );
@@ -279,7 +279,7 @@ describe("validateConfigForSave", () => {
 
   it("rejects an overlong custom dress code message", () => {
     const result = validateConfigForSave(
-      validConfig({ weddingDressCode: "Otro", weddingDressCodeCustom: "x".repeat(501) }),
+      validConfig({ weddingDressCode: "custom", weddingDressCodeCustom: "x".repeat(501) }),
       true,
       2030,
     );
@@ -288,7 +288,7 @@ describe("validateConfigForSave", () => {
 
   it("discards the custom message when a predefined dress code is chosen", () => {
     const result = validateConfigForSave(
-      validConfig({ weddingDressCode: "Vestimenta formal", weddingDressCodeCustom: "Vestimenta vintage" }),
+      validConfig({ weddingDressCode: "formal", weddingDressCodeCustom: "Vestimenta vintage" }),
       true,
       2030,
     );

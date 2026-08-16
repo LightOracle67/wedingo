@@ -56,6 +56,9 @@ const rsvpDoc = (name: string, ts: number) => ({ data: () => ({ guestName: name,
 describe("ToolsTab", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    // El borrado del buzón confirma con useConfirm (degradado a window.confirm
+    // sin provider): se acepta la confirmación.
+    window.confirm = vi.fn(() => true);
     try {
       localStorage.clear();
     } catch {}

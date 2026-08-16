@@ -4,6 +4,7 @@ import { getDocs, collection, doc, getDoc, updateDoc, deleteDoc } from "firebase
 import { db, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadText } from "../../lib/file-utils";
+import { useConfirm } from "../../contexts/ConfirmContext";
 
 interface ToolsTabProps {
   inviteToken: string;
@@ -44,6 +45,7 @@ const ToolsTab = memo(function ToolsTab({
 }: ToolsTabProps) {
   const { t } = useTranslation();
   const { addToast } = useToast();
+  const { confirm } = useConfirm();
 
   // ── Recordatorio WhatsApp ──
   const [reminder, setReminder] = useState("");
@@ -125,6 +127,9 @@ const ToolsTab = memo(function ToolsTab({
   // ── Buzón privado ──
   const deleteMail = useCallback(
     async (id: string) => {
+      // Borrar un mensaje del buzón es destructivo: se confirma explícitamente
+      // (antes se borraba sin confirmación).
+      if (!(await confirm({ message: t("tools.mailDeleteConfirm"), danger: true }))) return;
       try {
         await deleteDoc(doc(collection(db, "invitations", inviteToken, "mailbox"), id));
         setMailbox((prev) => prev.filter((m) => m.id !== id));

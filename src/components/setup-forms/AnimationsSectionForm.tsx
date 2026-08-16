@@ -13,9 +13,9 @@
  * signifique "sí, quiero ver esto").
  */
 
-import { useCallback, useMemo } from "react";
+import { memo, useCallback, useMemo  } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useFormField } from "../../contexts";
+import { useConfigActions, useFormField } from "../../contexts";
 import AnimationChecklist from "../AnimationChecklist";
 import {
   ANIMATIONS,
@@ -24,9 +24,9 @@ import {
   toggleDisabledAnimations,
 } from "../../lib/animations";
 
-export default function AnimationsSectionForm({ prefix = "" }: { prefix?: string }) {
+const AnimationsSectionForm = memo(function AnimationsSectionForm({ prefix = "" }: { prefix?: string }) {
   const { t } = useTranslation();
-  const { updateFormField } = useConfig();
+  const { updateFormField } = useConfigActions();
   const disabledAnimations = useFormField("disabledAnimations");
 
   // Conjunto de ids desactivados por la pareja (derivado reactivo de la tienda).
@@ -96,4 +96,7 @@ export default function AnimationsSectionForm({ prefix = "" }: { prefix?: string
       </fieldset>
     </>
   );
-}
+});
+
+export default AnimationsSectionForm;
+

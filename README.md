@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.98.6](https://github.com/LightOracle67/wedingo/releases/tag/v2.98.6)  
+**Versión actual:** [v2.99.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.99.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -261,6 +261,7 @@ Hitos principales:
 | v2.98.4 | 2026-08-12 | Cobertura a 91.9% de líneas (2155 tests): DataTab — purga con cascadeDelete; umbrales CI a 91.5/89/86/80 |
 | v2.98.5 | 2026-08-12 | Ronda de mejora: cobertura a 92.2% (2160 tests), axe para Pagination/LoadingOverlay/CollapsibleSection, cutoff GDPR 2012-08-13 |
 | v2.98.6 | 2026-08-16 | Control de animaciones por checkboxes (43 animaciones, 12 grupos): base del admin + preferencia por invitado, con nombre y hint por animación; registro canónico, CSS de kill y modularización (Confetti, WeddingDecorations, SetupToggleRow, AnimationChecklist) |
+| v2.99.0 | 2026-08-16 | Mejora general de formularios y paneles: contexto estable de config (fin del re-render por tecla) + formularios memoizados; modal accesible de confirmación/prompt; tabs con sync de URL (botón atrás); paginación de listas largas; código de vestimenta i18n; accesibilidad (focus, targets táctiles, captions, file inputs) |
 | v2.97.0 | 2026-08-12 | Invitados esperados como número (0..1000); estadísticas calculadas desde ese número |
 | v2.96.11 | 2026-08-11 | Hardening: escritor XLSX blindado (NaN/control-chars/límite columnas), fix a11y botón 👁, límites de bundle ajustados |
 | v2.96.10 | 2026-08-11 | Seguridad: xlsx/SheetJS (2 avisos alta) sustituido por escritor OOXML propio; npm audit prod 0 vulnerabilidades |

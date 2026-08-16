@@ -18,13 +18,14 @@
  */
 
 import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
-import { Navigate, useParams, useLocation } from "react-router";
+import { Navigate, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useConfig, useAuth, useRsvpContext, useAppUI } from "../contexts";
 import { normalizeConfig } from "../lib/normalize-config";
 import { useToast } from "../hooks/useToast";
 import { formatDate } from "../lib/section-utils";
 import { escHtml } from "../lib/utils";
+import { useTabs } from "../hooks/useTabs";
 import "../styles/admin.css";
 
 // ─── Tabs de AdminPage (carga diferida) ────────────────────────────
@@ -120,7 +121,6 @@ export default function AdminPage() {
   }, [formData, config]);
 
   const { addToast } = useToast();
-  const location = useLocation();
 
   // ─── Muestra mensajes de auth como toasts ──────────────
   useEffect(() => {
@@ -136,24 +136,17 @@ export default function AdminPage() {
   }, [adminMessage, adminMessageType, addToast]);
 
   // ─── Estados locales de UI ─────────────────────────────
-  const tabFromUrl = new URLSearchParams(location.search).get("tab") || "panel";
-  const [activeTab, setActiveTab] = useState(tabFromUrl);
+  // Pestaña activa sincronizada con la URL (?tab=...) en AMBOS sentidos
+  // (el botón atrás del navegador también cambia de pestaña).
+  const TAB_KEYS = ["panel", "invitacion", "asistencia", "compartir", "herramientas", "distribucion", "acceso", "soporte"] as const;
+  const { activeTab, select: handleSetTab, tabPanelRef } = useTabs(TAB_KEYS, "panel");
   const [searchQuery, setSearchQuery] = useState("");
   const [attendanceFilter, setAttendanceFilter] = useState("all");
 
-  // Sync tab changes to URL
-  const handleSetTab = useCallback(
-    (tab: string) => {
-      setActiveTab(tab);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      const params = new URLSearchParams(location.search);
-      if (tab === "panel") params.delete("tab");
-      else params.set("tab", tab);
-      const qs = params.toString();
-      window.history.replaceState(null, "", qs ? `${location.pathname}?${qs}` : location.pathname);
-    },
-    [location.search, location.pathname],
-  );
+  // Al cambiar de pestaña se vuelve arriba (comportamiento del panel admin).
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [activeTab]);
 
   /**
    * Roving tabindex + flechas (ARIA tabs): mueve el foco entre pestañas
@@ -198,10 +191,13 @@ export default function AdminPage() {
     return result;
   }, [rsvpEntries, attendanceFilter, searchQuery]);
 
-  /** Callback memoizado para cambiar de pestaña. */
-  const setActiveTabAndFilter = useCallback((tab: string) => {
-    setActiveTab(tab);
-  }, []);
+  /** Callback memoizado para cambiar de pestaña (usado por PanelTab). */
+  const setActiveTabAndFilter = useCallback(
+    (tab: string) => {
+      handleSetTab(tab as (typeof TAB_KEYS)[number]);
+    },
+    [handleSetTab],
+  );
 
   /** Callback memoizado para cambiar el filtro de asistencia. */
   const setAttendanceFilterValue = useCallback((filter: string) => {
@@ -453,7 +449,14 @@ export default function AdminPage() {
         style={{ borderRadius: "1rem" }}
       >
         <Suspense fallback={<div className="page-loading" style={{ minHeight: "10rem", margin: "1rem" }} />}>
-          <div className="setup-form" role="tabpanel" id={"tabpanel-" + activeTab} aria-labelledby={"tab-" + activeTab}>
+          <div
+            className="setup-form"
+            role="tabpanel"
+            id={"tabpanel-" + activeTab}
+            aria-labelledby={"tab-" + activeTab}
+            ref={tabPanelRef}
+            tabIndex={-1}
+          >
             {/* Pestaña: Panel de control */}
             {activeTab === "panel" && <PanelTab config={panelConfig} />}
 

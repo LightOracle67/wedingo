@@ -38,6 +38,16 @@ vi.mock("../../hooks/useToast", () => ({
 }));
 
 vi.mock("../../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: typeof mockUpdateFormField !== "undefined" ? mockUpdateFormField : vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: mockUseApp().inviteToken ?? "",
+    hasStoredConfig: mockUseApp().hasStoredConfig === true,
+  }),
   // useFormField/useFormStore leen del formData que devuelve el mock de useConfig.
   useFormField: (field: string) => (mockUseApp().formData as Record<string, string | undefined>)?.[field] ?? "",
   useFormStore: () => ({ getField: (field: string) => (mockUseApp().formData as Record<string, string | undefined>)?.[field] ?? "" }),

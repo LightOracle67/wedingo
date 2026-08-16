@@ -8,6 +8,17 @@ vi.mock("react-i18next", () => ({
 
 const mockUseConfig = vi.fn();
 vi.mock("../../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: "",
+    hasStoredConfig: false,
+  }),
+
   useConfig: (...args: unknown[]) => mockUseConfig(...args),
 }));
 

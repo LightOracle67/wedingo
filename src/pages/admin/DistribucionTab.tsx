@@ -16,6 +16,7 @@ import { db, rsvpByInviteRef } from "../../lib/firebase";
 import { THEME_PREVIEW_COLORS } from "../../lib/constants";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
+import { useConfirm } from "../../contexts/ConfirmContext";
 
 type Shape = "circle" | "rect" | "oval" | "square";
 interface Section {
@@ -100,6 +101,7 @@ const DistribucionTab = memo(function DistribucionTab({
 }) {
   const { t } = useTranslation();
   const { addToast } = useToast();
+  const { confirm } = useConfirm();
   const [sections, setSections] = useState<Section[]>([]);
   const [activeSectionId, setActiveSectionId] = useState("");
   const [tables, setTables] = useState<ShapeTable[]>([]);
@@ -199,7 +201,7 @@ const DistribucionTab = memo(function DistribucionTab({
 
   const deleteSection = useCallback(
     async (id: string) => {
-      if (!window.confirm(t("distribucion.deleteSectionConfirm"))) return;
+      if (!(await confirm({ message: t("distribucion.deleteSectionConfirm"), danger: true }))) return;
       try {
         const tbSnap = await getDocs(tablesRef(id));
         for (let i = 0; i < tbSnap.docs.length; i += 400) {
@@ -255,7 +257,7 @@ const DistribucionTab = memo(function DistribucionTab({
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [activeSectionId, newShape, tablesRef, addToast, t]);
+  }, [activeSectionId, newShape, tablesRef, addToast, t, confirm]);
 
   const deleteTable = useCallback(
     async (id: string) => {

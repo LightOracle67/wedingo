@@ -61,8 +61,8 @@ export function useAutoSave(
           return null;
         }
         // Alineación con el guardado manual: no se autoguardan estados rotos
-        // (código de vestimenta "Otro" sin texto o salidas de transporte sin hora).
-        if (data.weddingDressCode === "Otro" && !data.weddingDressCodeCustom?.trim()) {
+        // (código de vestimenta "custom" sin texto o salidas sin hora).
+        if (data.weddingDressCode === "custom" && !data.weddingDressCodeCustom?.trim()) {
           if (onSaveError) onSaveError(t("errors.dressCodeCustomRequired"));
           return null;
         }

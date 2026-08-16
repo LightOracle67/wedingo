@@ -23,6 +23,17 @@ vi.mock("../contexts/ToastContext", () => ({
 
 const mockUseApp = vi.fn();
 vi.mock("../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: "",
+    hasStoredConfig: false,
+  }),
+
   useApp: (...args: unknown[]) => mockUseApp(...args),
   useConfig: (...args: unknown[]) => mockUseApp(...args),
   useAuth: (...args: unknown[]) => mockUseApp(...args),
@@ -32,6 +43,7 @@ vi.mock("../contexts", () => ({
   useFormField: (field: string) => (mockUseApp().formData as Record<string, string | undefined>)?.[field] ?? "",
   // Animaciones: provider de paso y prefs activas por defecto.
   AnimationsProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  ConfirmProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
   useAnimations: () => ({
     adminDisabled: new Set<string>(),
     guestDisabled: new Set<string>(),
@@ -41,6 +53,10 @@ vi.mock("../contexts", () => ({
     setGuestGroup: vi.fn(),
     setAllGuest: vi.fn(),
     resetGuest: vi.fn(),
+  }),
+  useConfirm: () => ({
+    confirm: vi.fn(async () => true),
+    prompt: vi.fn(async () => null),
   }),
 }));
 

@@ -50,14 +50,19 @@ const MapUrlField = memo(function MapUrlField({
         id={id}
         className={errorClass && url && !isValid ? "setup-input setup-input--error" : "setup-input"}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => onChange(e.target.value.slice(0, 1000))}
         placeholder={placeholder}
         autoComplete="off"
+        maxLength={1000}
         aria-describedby={isValid && placeHintId ? placeHintId : undefined}
         aria-invalid={url && !isValid ? true : undefined}
       />
       {url ? (
-        <p className="setup-help" style={!isValid ? { color: "#ef4444" } : { color: "#22c55e" }}>
+        <p
+          className="setup-help"
+          style={!isValid ? { color: "#ef4444" } : { color: "#22c55e" }}
+          role={!isValid ? "alert" : undefined}
+        >
           {isValid ? `${t("setup.mapUrlOk")}` : `${t("setup.mapUrlInvalid")}`}
         </p>
       ) : null}

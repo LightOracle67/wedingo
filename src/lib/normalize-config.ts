@@ -105,6 +105,34 @@ function normalizeExpectedGuests(value: unknown): string {
 /** Normaliza un toggle *Enabled a "true" o "false". */
 const bool = (v: unknown): string => (s(v) === "true" ? "true" : "false");
 
+/** Claves canónicas del código de vestimenta (independientes del idioma). */
+const DRESS_CODE_KEYS = new Set(["gala", "smart-casual", "formal", "cocktail", "comfortable", "custom"]);
+
+/** Valores legacy guardados en español → clave canónica (migración). */
+const DRESS_CODE_LEGACY: Record<string, string> = {
+  "Traje de gala": "gala",
+  "Etiqueta informal": "smart-casual",
+  "Vestimenta formal": "formal",
+  "Cóctel elegante": "cocktail",
+  "Ropa cómoda": "comfortable",
+  Otro: "custom",
+};
+
+/**
+ * Normaliza el código de vestimenta a su CLAVE canónica (antes se guardaba el
+ * texto en español, atando el valor almacenado al idioma y rompiendo la
+ * validación si se traducía). Los valores legacy se migran automáticamente.
+ * Un valor desconocido se preserva como "custom" solo si hay texto
+ * personalizado; si no, se limpia (evita mostrar una etiqueta inventada).
+ */
+function normalizeDressCode(value: unknown, custom: unknown): string {
+  const raw = s(value);
+  if (!raw) return "";
+  if (DRESS_CODE_KEYS.has(raw)) return raw;
+  if (DRESS_CODE_LEGACY[raw]) return DRESS_CODE_LEGACY[raw];
+  return s(custom) ? "custom" : "";
+}
+
 /** Normaliza un toggle *Enabled con compatibilidad para invitaciones ya
  *  guardadas: si el toggle no viene definido (config antigua) se activa solo
  *  si el campo de contenido asociado tiene valor. */
@@ -125,7 +153,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   weddingHour: s(value?.weddingHour),
   weddingMinute: s(value?.weddingMinute),
   weddingScheduleEvents: normalizeScheduleEvents(value?.weddingScheduleEvents),
-  weddingDressCode: s(value?.weddingDressCode),
+  weddingDressCode: normalizeDressCode(value?.weddingDressCode, value?.weddingDressCodeCustom),
   weddingDressCodeEnabled: toggleWithLegacy(value?.weddingDressCodeEnabled, value?.weddingDressCode),
   weddingDressCodeCustom: s(value?.weddingDressCodeCustom),
   theme: typeof value?.theme === "string" && THEME_VALUES.has(value.theme.trim()) ? value.theme.trim() : "golden",

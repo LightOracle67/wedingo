@@ -3,7 +3,7 @@ export const CHANGELOG = [
     version: "2.99.0",
     date: "2026-08-16",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "MEJORA GENERAL de formularios y paneles: ConfigActionsContext estable (fin del re-render del editor por tecla) + formularios memoizados; modal accesible de confirmación/prompt (ConfirmProvider) que reemplaza window.confirm/prompt en admin y superadmin; useTabs con sync URL↔estado (botón atrás) y foco en tabpanel; paginación de listas largas (invitaciones, tokens) + EmptyState + Pagination i18n; código de vestimenta por clave con migración de valores legacy; a11y (aria-describedby en hints, inputs de archivo por teclado, focus del acordeón, targets táctiles 24px, captions en métricas, role=alert en errores); placeholders traducidos y límites de longitud; estado de subida en imágenes de portada; MapModeSelect compartido.",
     ],
   },
 

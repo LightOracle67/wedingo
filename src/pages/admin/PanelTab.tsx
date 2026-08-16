@@ -8,6 +8,7 @@ import { calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
 import { DonutChart, Legend } from "../../components/AttendanceChart";
 import StatsCard from "./StatsCard";
 import type { InvitationConfig } from "../../types";
+import { useConfirm } from "../../contexts/ConfirmContext";
 
 export interface PanelTabConfig {
   inviteToken: string;
@@ -49,6 +50,7 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
   } = config;
   const { t } = useTranslation();
   const { addToast } = useToast();
+  const { confirm } = useConfirm();
   const inviteUrl = `${window.location.origin}/${inviteToken}`;
   const restoreRef = useRef<HTMLInputElement>(null);
 
@@ -125,7 +127,7 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
         if (typeof cfg.firstName !== "string" || typeof cfg.secondName !== "string") {
           throw new Error("Invalid backup file");
         }
-        if (!window.confirm(t("panel.restoreConfirm"))) {
+        if (!(await confirm({ message: t("panel.restoreConfirm"), danger: true }))) {
           e.target.value = "";
           return;
         }
@@ -203,7 +205,7 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
       }
       e.target.value = "";
     },
-    [inviteToken, onRestore, t, addToast],
+    [inviteToken, onRestore, t, addToast, confirm],
   );
 
   return (

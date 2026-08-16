@@ -29,9 +29,9 @@ const Pagination = memo(function Pagination({
   return (
     <div className="pagination-bar">
       <div className="pagination-controls">
-        <span className="setup-help pagination-meta">{t("attendance.show")}</span>
+        <span className="setup-help pagination-meta">{t("pagination.show")}</span>
         <select
-          aria-label={t("attendance.pageSizeLabel")}
+          aria-label={t("pagination.pageSizeLabel")}
           value={pageSize}
           onChange={(e) => {
             onPageSizeChange(Number(e.target.value));
@@ -45,27 +45,27 @@ const Pagination = memo(function Pagination({
             </option>
           ))}
         </select>
-        <span className="setup-help pagination-meta">&middot; {t("attendance.total", { count: total })}</span>
+        <span className="setup-help pagination-meta">&middot; {t("pagination.total", { count: total })}</span>
       </div>
       <div className="pagination-controls">
         <button
           className="setup-button setup-button--ghost setup-button--compact"
           type="button"
-          aria-label={t("attendance.prevPage")}
-          title={t("attendance.prevPage")}
+          aria-label={t("pagination.prevPage")}
+          title={t("pagination.prevPage")}
           disabled={safePage === 0}
           onClick={() => onPageChange(safePage - 1)}
         >
           ←
         </button>
         <span className="setup-help pagination-meta">
-          {t("attendance.page", { current: safePage + 1, total: safeTotal })}
+          {t("pagination.page", { current: safePage + 1, total: safeTotal })}
         </span>
         <button
           className="setup-button setup-button--ghost setup-button--compact"
           type="button"
-          aria-label={t("attendance.nextPage")}
-          title={t("attendance.nextPage")}
+          aria-label={t("pagination.nextPage")}
+          title={t("pagination.nextPage")}
           disabled={safePage >= totalPages - 1}
           onClick={() => onPageChange(safePage + 1)}
         >

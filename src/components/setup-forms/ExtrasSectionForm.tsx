@@ -1,6 +1,6 @@
-import { useCallback, type ReactNode } from "react";
+import { memo, useCallback, type ReactNode  } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useFormField, useFormStore } from "../../contexts";
+import { useConfigActions, useFormField, useFormStore } from "../../contexts";
 import SetupToggleRow from "../SetupToggleRow";
 
 /**
@@ -12,8 +12,8 @@ import SetupToggleRow from "../SetupToggleRow";
  * que la activaciÃ³n se vea a simple vista) y, cuando estÃ¡ activado, su input
  * aparece debajo del hint. Si el checkbox no estÃ¡ marcado, no hay input.
  */
-export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) {
-  const { updateFormField } = useConfig();
+const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) {
+  const { updateFormField } = useConfigActions();
   const formStore = useFormStore();
   const giftList = useFormField("giftList");
   const giftsListEnabled = useFormField("giftsListEnabled");
@@ -73,6 +73,8 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
     (text: string) => {
       const items = text
         .split("\n")
+        // Tope de líneas (evita que el JSON crezca sin límite en Firestore).
+        .slice(0, 50)
         .map((line) => line.trim())
         .filter(Boolean)
         .map((line) => {
@@ -103,6 +105,8 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
     (text: string) => {
       const items = text
         .split("\n")
+        // Tope de líneas (evita que el JSON crezca sin límite en Firestore).
+        .slice(0, 50)
         .map((line) => line.trim())
         .filter(Boolean)
         .map((line) => {
@@ -181,7 +185,7 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
             autoComplete="url"
             value={welcomeVideo || ""}
             onChange={(e) => updateFormField("welcomeVideo", e.target.value.slice(0, 1000))}
-            placeholder="https://..."
+            placeholder={t("setup.welcomeVideoPlaceholder")}
           />
         ) : null}
 
@@ -226,4 +230,7 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
       </fieldset>
     </>
   );
-}
+});
+
+export default ExtrasSectionForm;
+

@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useConfirm } from "../../contexts/ConfirmContext";
 import { useTranslation } from "react-i18next";
 
 export interface AccessTabProps {
@@ -15,6 +16,7 @@ const AccessTab = memo(function AccessTab({
   handleDeleteInvitation,
 }: AccessTabProps) {
   const { t } = useTranslation();
+  const { confirm } = useConfirm();
   return (
     <>
       <div className="setup-token-card">
@@ -37,7 +39,9 @@ const AccessTab = memo(function AccessTab({
             type="button"
             onClick={() => {
               // Regenerar el token invalida el actual: se confirma explícitamente.
-              if (window.confirm(t("access.regenConfirm"))) handleResetTokenFromAdmin();
+              void confirm({ message: t("access.regenConfirm") }).then((ok) => {
+                if (ok) handleResetTokenFromAdmin();
+              });
             }}
           >
             {t("access.generateToken")}

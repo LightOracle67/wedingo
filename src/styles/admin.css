@@ -325,9 +325,13 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
 .setup-collapsible__summary:hover {
   color: var(--setup-accent);
 }
-.setup-collapsible__summary:focus-visible {
+/* El indicador de foco va en el BOTÓN (elemento que recibe el foco real),
+   no en el div contenedor: el div .setup-collapsible__summary no es focable
+   y su :focus-visible era código muerto (WCAG 2.4.7). */
+.setup-collapsible__summary-btn:focus-visible {
   outline: 2px solid var(--setup-accent);
-  outline-offset: -2px;
+  outline-offset: 2px;
+  border-radius: var(--radius-md, 0.5rem);
 }
 .setup-collapsible__title {
   font-size: 0.95rem;
@@ -467,8 +471,9 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
 }
 .setup-toggle {
   flex-shrink: 0;
-  width: 1.05rem;
-  height: 1.05rem;
+  /* 1.5rem (24px): tamaño mínimo de objetivo táctil (WCAG 2.5.8). */
+  width: 1.5rem;
+  height: 1.5rem;
   accent-color: var(--invite-core-color, #c8a84e);
 }
 .setup-checkbox-label {
@@ -481,8 +486,10 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
 }
 .setup-checkbox-label input[type="checkbox"] {
   accent-color: var(--setup-accent);
-  width: 1rem;
-  height: 1rem;
+  /* 1.25rem (20px): más grande que antes manteniendo el equilibrio visual
+     (los toggles principales usan 24px). */
+  width: 1.25rem;
+  height: 1.25rem;
   flex-shrink: 0;
 }
 .setup-background-panel {
@@ -524,8 +531,29 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
   color: var(--setup-muted);
   font-size: 0.82rem;
 }
+/* El input de archivo NO se oculta con display:none (no sería enfocable por
+   teclado, WCAG 2.1.1): queda visualmente oculto pero focable, y el label
+   asociado muestra el anillo de foco cuando el input lo recibe. */
 .setup-upload__input {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.setup-upload:has(+ .setup-upload__input:focus-visible),
+.setup-upload:has(~ .setup-upload__input:focus-visible),
+.setup-upload:focus-within {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+/* Labels de subida con el input ANIDADO (galería): el anillo aparece al
+   recibir foco el input interno (label:focus-within). */
+.gallery-upload:focus-within {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
 }
 .setup-selected-background {
   display: grid;
@@ -866,8 +894,7 @@ select.setup-input {
   min-width: 0;
 }
 .admin-table-wrapper {
-  margin-top: 0.75rem;
-  overflow-x: auto;
+  margin-top: 0.75rem;  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   max-width: 100%;
 }
@@ -875,6 +902,18 @@ select.setup-input {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.92rem;
+}
+/* Caption de las tablas: título accesible del contenido (WCAG 1.3.1) con
+   estilo discreto alineado al inicio. */
+.admin-table__caption {
+  caption-side: top;
+  text-align: start;
+  padding: 0 0 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--setup-muted);
 }
 .admin-table th {
   text-align: start;
@@ -1900,4 +1939,69 @@ label.setup-label {
 .setup-form .setup-label + select,
 .setup-form .setup-label + textarea {
   width: 100%;
+}
+
+/* ── Modal de confirmación/prompt global (ConfirmProvider) ─────────────── */
+.confirm-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.confirm-modal__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--setup-title);
+}
+.confirm-modal__message {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--setup-subtitle);
+}
+.confirm-modal__require-text {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--setup-muted);
+}
+.confirm-modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+  flex-wrap: wrap;
+}
+
+/* ── Estado vacío compartido (EmptyState) ───────────────────────────────── */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1.6rem 1rem;
+  text-align: center;
+}
+.empty-state__icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.empty-state__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--setup-title);
+}
+.empty-state__description {
+  margin: 0;
+  max-width: 26rem;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--setup-muted);
+}
+
+/* Label de subida en curso: deshabilitado visualmente (aria-disabled). */
+.setup-upload--busy {
+  opacity: 0.55;
+  pointer-events: none;
+  cursor: wait;
 }

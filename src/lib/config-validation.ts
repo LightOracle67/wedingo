@@ -130,7 +130,7 @@ export function validateConfigForSave(
   }
   // Código de vestimenta: la opción "Otro" exige un mensaje personalizado
   // no vacío y acotado a MAX_DRESS_CODE_CUSTOM_LENGTH.
-  if (sanitized.weddingDressCode === "Otro") {
+  if (sanitized.weddingDressCode === "custom") {
     if (!sanitized.weddingDressCodeCustom.trim()) {
       return { sanitized, hiddenSet, errorKey: "errors.dressCodeCustomRequired" };
     }

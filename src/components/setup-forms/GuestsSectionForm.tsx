@@ -1,13 +1,14 @@
-import { useCallback } from "react";
+import { memo, useCallback  } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useFormField } from "../../contexts";
+import { useConfigActions, useFormField } from "../../contexts";
 import { MAX_DRESS_CODE_CUSTOM_LENGTH } from "../../lib/constants";
 import MenuDishEditor from "../MenuDishEditor";
 import MapUrlField from "../MapUrlField";
+import MapModeSelect from "../MapModeSelect";
 import SetupToggleField from "../SetupToggleField";
 
-export default function GuestsSectionForm({ prefix = "" }) {
-  const { updateFormField } = useConfig();
+const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { prefix?: string }) {
+  const { updateFormField } = useConfigActions();
   const accommodationMapMode = useFormField("accommodationMapMode");
   const accommodationURL = useFormField("accommodationURL");
   const kidsPolicy = useFormField("kidsPolicy");
@@ -100,13 +101,15 @@ export default function GuestsSectionForm({ prefix = "" }) {
         id={id}
       >
         <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))" }}>
+          {/* Valores por CLAVE (no texto en español): la etiqueta visible se
+              traduce y el valor almacenado es independiente del idioma. */}
           {[
-            { value: "Traje de gala", key: "setup.dressCodeGala" },
-            { value: "Etiqueta informal", key: "setup.dressCodeCasual" },
-            { value: "Vestimenta formal", key: "setup.dressCodeFormal" },
-            { value: "CÃ³ctel elegante", key: "setup.dressCodeCocktail" },
-            { value: "Ropa cÃ³moda", key: "setup.dressCodeComfortable" },
-            { value: "Otro", key: "setup.dressCodeOther" },
+            { value: "gala", key: "setup.dressCodeGala" },
+            { value: "smart-casual", key: "setup.dressCodeCasual" },
+            { value: "formal", key: "setup.dressCodeFormal" },
+            { value: "cocktail", key: "setup.dressCodeCocktail" },
+            { value: "comfortable", key: "setup.dressCodeComfortable" },
+            { value: "custom", key: "setup.dressCodeOther" },
           ].map(({ value, key }) => (
             <label
               key={value}
@@ -139,7 +142,7 @@ export default function GuestsSectionForm({ prefix = "" }) {
             </label>
           ))}
         </div>
-        {weddingDressCode === "Otro" ? (
+        {weddingDressCode === "custom" ? (
           <div className="setup-field" style={{ marginTop: "0.6rem" }}>
             <label className="setup-label" htmlFor={id("dressCodeCustom")}>
               {t("setup.dressCodeCustomLabel")}
@@ -246,24 +249,16 @@ export default function GuestsSectionForm({ prefix = "" }) {
           placeHintId={id("accommodationPlace")}
           placeLabel={t("setup.siteNameLabel")}
         />
-        <label className="setup-label" htmlFor={id("accommodationMapMode")} style={{ marginTop: "0.6rem" }}>
-          {t("setup.mapModeLabel")}
-        </label>
-        <select
+        <MapModeSelect
           id={id("accommodationMapMode")}
-          className="setup-input"
-          value={accommodationMapMode || "iframe"}
-          onChange={(e) => updateFormField("accommodationMapMode", e.target.value)}
-          aria-describedby={id("accommodationMapModeHint")}
-        >
-          <option value="iframe">{t("setup.mapModeIframe")}</option>
-          <option value="name">{t("setup.mapModeName")}</option>
-          <option value="hidden">{t("setup.mapModeHidden")}</option>
-        </select>
-        <p className="setup-help" id={id("accommodationMapModeHint")}>
-          {t("setup.mapModeHint")}
-        </p>
+          value={accommodationMapMode}
+          onChange={(v) => updateFormField("accommodationMapMode", v)}
+          hintId={id("accommodationMapModeHint")}
+        />
       </SetupToggleField>
     </>
   );
-}
+});
+
+export default GuestsSectionForm;
+

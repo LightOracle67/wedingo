@@ -88,7 +88,11 @@ const InfoSection = memo(function InfoSection({
             <h3 className="story-subheading">{t("info.dressCodeTitle")}</h3>
             {weddingDressCode ? (
               <p className="story-copy">
-                {weddingDressCode === "Otro" && weddingDressCodeCustom ? weddingDressCodeCustom : weddingDressCode}
+                {/* "custom" muestra el texto libre de la pareja; el resto se
+                    traduce desde la clave (independiente del idioma). */}
+                {weddingDressCode === "custom" && weddingDressCodeCustom
+                  ? weddingDressCodeCustom
+                  : t(`info.dressCodeOptions.${weddingDressCode}`)}
               </p>
             ) : (
               <p className="story-copy" style={{ fontStyle: "italic" }}>

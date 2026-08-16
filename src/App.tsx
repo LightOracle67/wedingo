@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { AppProvider } from "./contexts/AppContext";
-import { useConfig, useAuth, useAppUI, useFormField, AnimationsProvider } from "./contexts";
+import { useConfig, useAuth, useAppUI, useFormField, AnimationsProvider, ConfirmProvider } from "./contexts";
 import { safeGetItem, safeSetItem } from "./lib/storage";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
@@ -463,7 +463,9 @@ export default function App() {
       <SuperAdminProvider>
         <ToastProvider>
           <AnimationsProvider>
-            <AppShell />
+            <ConfirmProvider>
+              <AppShell />
+            </ConfirmProvider>
           </AnimationsProvider>
         </ToastProvider>
       </SuperAdminProvider>

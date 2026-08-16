@@ -9,6 +9,7 @@ import { logAudit } from "../../lib/audit";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { SortableTh } from "../../components/SortableTh";
 import InvitationDetailModal from "./InvitationDetailModal";
+import { useConfirm } from "../../contexts/ConfirmContext";
 
 interface InvitationData {
   id: string;
@@ -34,6 +35,8 @@ interface InvitationData {
 export default function DataTab() {
   const { t } = useTranslation();
   const { addToast } = useToast();
+  // Confirmaciones/prompts accesibles (Modal global con provider en la raíz).
+  const { confirm, prompt } = useConfirm();
 
   /** Lista completa de invitaciones con metadatos. */
   const [invitations, setInvitations] = useState<InvitationData[]>([]);
@@ -95,7 +98,8 @@ export default function DataTab() {
 
   const applyBulkTheme = useCallback(async () => {
     if (!selected.size) return;
-    if (!window.confirm(t("superadmin.data.bulkThemeConfirm", { count: selected.size }))) return;
+    if (!(await confirm({ title: t("superadmin.data.bulkThemeTitle"), message: t("superadmin.data.bulkThemeConfirm", { count: selected.size }) })))
+      return;
     setBulkingTheme(true);
     try {
       const { writeBatch: wb } = await import("firebase/firestore");
@@ -108,7 +112,7 @@ export default function DataTab() {
     } finally {
       setBulkingTheme(false);
     }
-  }, [selected, bulkTheme, addToast, t]);
+  }, [selected, bulkTheme, addToast, t, confirm]);
 
   /** Invitaciones filtradas por actividad (confirmaciones hoy/semana, sesión activa). */
   const filtered = useMemo(() => {
@@ -260,9 +264,9 @@ export default function DataTab() {
 
   /** Exporta las invitaciones creadas en un rango de fechas (YYYY-MM-DD). */
   const exportRange = useCallback(async () => {
-    const from = window.prompt(t("superadmin.data.rangeFromPrompt"), "");
+    const from = await prompt({ title: t("superadmin.data.rangeTitle"), message: t("superadmin.data.rangeFromPrompt"), inputLabel: t("superadmin.data.rangeFromPrompt") });
     if (!from) return;
-    const to = window.prompt(t("superadmin.data.rangeToPrompt"), "");
+    const to = await prompt({ title: t("superadmin.data.rangeTitle"), message: t("superadmin.data.rangeToPrompt"), inputLabel: t("superadmin.data.rangeToPrompt") });
     if (!to) return;
     const fromT = new Date(from).getTime();
     const toT = new Date(to).getTime();
@@ -305,7 +309,7 @@ export default function DataTab() {
     } finally {
       setBusy(false);
     }
-  }, [invitations, addToast, t]);
+  }, [invitations, addToast, t, prompt]);
 
   /** F5-1 (F12): abre una ventana imprimible con el resumen de confirmaciones
    *  de una invitación (para imprimir/guardar en PDF). */
@@ -505,7 +509,12 @@ export default function DataTab() {
   /** Aplica una fecha de expiración manual a las invitaciones seleccionadas. */
   const handleBulkExpiry = useCallback(async () => {
     if (!selected.size) return;
-    const dateStr = window.prompt(t("superadmin.data.bulkExpiryPrompt"), "");
+    const dateStr = await prompt({
+      title: t("superadmin.data.bulkExpiryTitle"),
+      message: t("superadmin.data.bulkExpiryPrompt"),
+      inputLabel: t("superadmin.data.bulkExpiryPrompt"),
+      placeholder: "2027-12-31",
+    });
     if (!dateStr) return;
     setBusy(true);
     try {
@@ -519,12 +528,13 @@ export default function DataTab() {
     } finally {
       setBusy(false);
     }
-  }, [selected, addToast, t]);
+  }, [selected, addToast, t, prompt]);
 
   /** Marca el sello de verificación en las invitaciones seleccionadas. */
   const handleBulkSeal = useCallback(async () => {
     if (!selected.size) return;
-    if (!window.confirm(t("superadmin.data.bulkSealConfirm", { count: selected.size }))) return;
+    if (!(await confirm({ title: t("superadmin.data.bulkSealTitle"), message: t("superadmin.data.bulkSealConfirm", { count: selected.size }) })))
+      return;
     setBusy(true);
     try {
       const batch = writeBatch(db);
@@ -537,7 +547,7 @@ export default function DataTab() {
     } finally {
       setBusy(false);
     }
-  }, [selected, addToast, t]);
+  }, [selected, addToast, t, confirm]);
 
   /** Convierte "dd/mm/yyyy" a una fecha comparable, o null si no es válida. */
   const parseDDMMYYYY = (value: string): Date | null => {
@@ -549,7 +559,13 @@ export default function DataTab() {
 
   /** Purga (GDPR) invitaciones con boda anterior a N meses: borra en cascada. */
   const handlePurgeOld = useCallback(async () => {
-    const monthsStr = window.prompt(t("superadmin.data.purgePrompt"), "12");
+    const monthsStr = await prompt({
+      title: t("superadmin.data.purgeTitle"),
+      message: t("superadmin.data.purgePrompt"),
+      inputLabel: t("superadmin.data.purgePrompt"),
+      placeholder: "12",
+      initial: "12",
+    });
     const months = Number(monthsStr);
     if (!Number.isFinite(months) || months < 1) return;
     const cutoff = new Date();
@@ -562,7 +578,8 @@ export default function DataTab() {
       addToast("info", t("superadmin.data.purgeEmpty"));
       return;
     }
-    if (!window.confirm(t("superadmin.data.purgeConfirm", { count: targets.length }))) return;
+    if (!(await confirm({ title: t("superadmin.data.purgeTitle"), message: t("superadmin.data.purgeConfirm", { count: targets.length }), danger: true })))
+      return;
     setBusy(true);
     try {
       for (const inv of targets) await cascadeDelete(inv.id);
@@ -576,7 +593,7 @@ export default function DataTab() {
     } finally {
       setBusy(false);
     }
-  }, [invitations, addToast, t]);
+  }, [invitations, addToast, t, confirm, prompt]);
 
   /** Elimina TODAS las invitaciones y datos del sistema. */
   const deleteAll = useCallback(async () => {
@@ -584,7 +601,8 @@ export default function DataTab() {
       addToast("error", t("superadmin.data.confirmRequired", { word: CONFIRM_WORD }));
       return;
     }
-    if (!window.confirm(t("superadmin.data.deleteAllConfirm"))) return;
+    if (!(await confirm({ title: t("superadmin.data.deleteAllTitle"), message: t("superadmin.data.deleteAllConfirm"), danger: true, requireText: CONFIRM_WORD })))
+      return;
     setBusy(true);
     try {
       const invSnap = await getDocs(INVITATIONS_COLLECTION_REF);
@@ -602,7 +620,7 @@ export default function DataTab() {
     } finally {
       setBusy(false);
     }
-  }, [confirmText, addToast, t]);
+  }, [confirmText, addToast, t, confirm]);
 
   // ── Render ────────────────────────────────────────────
 

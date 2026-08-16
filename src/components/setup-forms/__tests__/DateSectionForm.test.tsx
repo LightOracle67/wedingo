@@ -44,6 +44,16 @@ vi.mock("../../../lib/geo-utils", () => ({
 }));
 
 vi.mock("../../../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: typeof mockUpdateFormField !== "undefined" ? mockUpdateFormField : vi.fn(),
+    handleDayChange: typeof mockHandleDayChange !== "undefined" ? mockHandleDayChange : vi.fn(),
+    handleTimeChange: typeof mockHandleTimeChange !== "undefined" ? mockHandleTimeChange : vi.fn(),
+    handleTimeBlur: typeof mockHandleTimeBlur !== "undefined" ? mockHandleTimeBlur : vi.fn(),
+    handleYearChange: typeof mockHandleYearChange !== "undefined" ? mockHandleYearChange : vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: "",
+    hasStoredConfig: false,
+  }),
   useFormField: (field: string) => mockFormData[field] ?? "",
   useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
   useConfig: () => ({

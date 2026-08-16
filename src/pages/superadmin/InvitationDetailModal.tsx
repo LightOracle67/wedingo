@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { getDocs, collection, deleteDoc, doc, writeBatch } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
+import { useConfirm } from "../../contexts/ConfirmContext";
 import Modal from "../../components/Modal";
 import { downloadJson } from "../../lib/file-utils";
 
@@ -22,6 +23,7 @@ const SOCIAL_SUBS = ["notes", "songs", "rides", "gifts", "reactions"];
 const InvitationDetailModal = memo(function InvitationDetailModal({ token, onClose }: DetailModalProps) {
   const { t } = useTranslation();
   const { addToast } = useToast();
+  const { confirm } = useConfirm();
   const [rsvps, setRsvps] = useState<Array<Record<string, unknown>>>([]);
   const [social, setSocial] = useState<Record<string, Array<{ id: string; preview: string }>>>({});
   const [gallery, setGallery] = useState<Array<{ id: string; desc: string }>>([]);
@@ -71,7 +73,7 @@ const InvitationDetailModal = memo(function InvitationDetailModal({ token, onClo
 
   const deleteSocialDoc = useCallback(
     async (sub: string, id: string) => {
-      if (!window.confirm(t("manage.detailDeleteSocial"))) return;
+      if (!(await confirm({ message: t("manage.detailDeleteSocial") }))) return;
       try {
         await deleteDoc(doc(db, "invitations", token, sub, id));
         setSocial((prev) => ({ ...prev, [sub]: (prev[sub] || []).filter((s) => s.id !== id) }));
@@ -84,7 +86,7 @@ const InvitationDetailModal = memo(function InvitationDetailModal({ token, onClo
   );
 
   const resetRsvps = useCallback(async () => {
-    if (!window.confirm(t("manage.detailResetConfirm"))) return;
+    if (!(await confirm({ message: t("manage.detailResetConfirm") }))) return;
     setBusy(true);
     try {
       const snap = await getDocs(collection(db, "rsvpResponses", token, "responses"));
@@ -217,7 +219,7 @@ const InvitationDetailModal = memo(function InvitationDetailModal({ token, onClo
                   <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                     <strong>{sub}</strong> · {s.preview}
                   </span>
-                  <button type="button" className="setup-button setup-button--compact" style={{ fontSize: "0.7rem", color: "#f6c7c7", background: "transparent" }} onClick={() => deleteSocialDoc(sub, s.id)}>
+                  <button type="button" className="setup-button setup-button--compact" style={{ fontSize: "0.7rem", color: "#f6c7c7", background: "transparent" }} onClick={() => deleteSocialDoc(sub, s.id)} aria-label={t("manage.detailDeleteSocial", { sub })}>
                     ✕
                   </button>
                 </div>

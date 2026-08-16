@@ -9,6 +9,16 @@ const mockUpdateFormField = vi.fn();
 const mockFormData = vi.hoisted(() => ({}) as Record<string, string | undefined>);
 
 vi.mock("../../../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: typeof mockUpdateFormField !== "undefined" ? mockUpdateFormField : vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: "",
+    hasStoredConfig: false,
+  }),
   useFormField: (field: string) => mockFormData[field] ?? "",
   useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
   useConfig: () => ({
@@ -79,15 +89,15 @@ describe("ExtrasSectionForm", () => {
   it("updates the welcome video URL", () => {
     mockFormData.welcomeVideoEnabled = "true";
     render(<ExtrasSectionForm />);
-    fireEvent.change(screen.getByPlaceholderText("https://..."), { target: { value: "https://example.com/v.mp4" } });
+    fireEvent.change(screen.getByPlaceholderText("setup.welcomeVideoPlaceholder"), { target: { value: "https://example.com/v.mp4" } });
     expect(mockUpdateFormField).toHaveBeenCalledWith("welcomeVideo", "https://example.com/v.mp4");
   });
 
   it("hides the welcome video input until its checkbox is selected", () => {
     render(<ExtrasSectionForm />);
-    expect(screen.queryByPlaceholderText("https://...")).toBeNull();
+    expect(screen.queryByPlaceholderText("setup.welcomeVideoPlaceholder")).toBeNull();
     mockFormData.welcomeVideoEnabled = "true";
     render(<ExtrasSectionForm />);
-    expect(screen.getByPlaceholderText("https://...")).toBeDefined();
+    expect(screen.getByPlaceholderText("setup.welcomeVideoPlaceholder")).toBeDefined();
   });
 });

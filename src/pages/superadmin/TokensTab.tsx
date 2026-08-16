@@ -13,11 +13,13 @@ import {
 } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
+import { useConfirm } from "../../contexts/ConfirmContext";
 import { hashSetupToken } from "../../lib/setup-token";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { useRowSelection } from "../../hooks/useRowSelection";
 import { SortableTh } from "../../components/SortableTh";
 import { TableActionsBar } from "../../components/TableActionsBar";
+import Pagination from "../../components/Pagination";
 
 interface LegacyToken {
   id: string;
@@ -37,6 +39,7 @@ interface TokenRow {
 
 const TokensTab = memo(function TokensTab() {
   const { t } = useTranslation();
+  const { confirm } = useConfirm();
   // Tokens LEGACY: invitaciones con el campo `_activeSetupToken` (formato
   // anterior a v2.95.22). Los nuevos viven en setupTokens/{hash}.
   const [tokens, setTokens] = useState<LegacyToken[]>([]);
@@ -104,10 +107,10 @@ const TokensTab = memo(function TokensTab() {
       setMessage(t("superadmin.tokenRevoked"));
       await loadTokens();
     },
-    [loadTokens, t],
+    [loadTokens, t, confirm],
   );
 
-  const handleCleanup = useCallback(async () => {    if (!window.confirm(t("superadmin.cleanupConfirm"))) return;
+  const handleCleanup = useCallback(async () => {    if (!(await confirm({ message: t("superadmin.cleanupConfirm") }))) return;
     setError("");
     setMessage("");
     try {
@@ -128,7 +131,7 @@ const TokensTab = memo(function TokensTab() {
     } catch {
       setError(t("superadmin.tokenCleanError"));
     }
-  }, [loadTokens, t]);
+  }, [loadTokens, t, confirm]);
 
   /**
    * Migra un token legacy al esquema de hash: crea el registro setupTokens
@@ -148,7 +151,7 @@ const TokensTab = memo(function TokensTab() {
       setMessage(t("superadmin.tokenMigrated"));
       await loadTokens();
     },
-    [loadTokens, t],
+    [loadTokens, t, confirm],
   );
 
   // Unifica legacy y hashed en filas de tabla (sin exponer el token secreto).
@@ -187,6 +190,15 @@ const TokensTab = memo(function TokensTab() {
     ? sortedRows.filter((r) => r.inviteToken.toLowerCase().includes(search.toLowerCase()))
     : sortedRows;
 
+  // Paginación client-side: al cambiar la búsqueda se vuelve a la página 1.
+  const [page, setPage] = useState(0);
+  useEffect(() => {
+    setPage(0);
+  }, [search]);
+  const PAGE_SIZE = 50;
+  const totalPages = Math.max(1, Math.ceil(visibleRows.length / PAGE_SIZE));
+  const pagedRows = visibleRows.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+
   // Conflicto de tokens: dos hashes apuntando a la MISMA invitación, o dos
   // invitaciones con el MISMO token legacy (inseguro: cualquiera de ellas
   // acepta la sesión). El superadmin debe migrar/revocar estos casos.
@@ -213,7 +225,7 @@ const TokensTab = memo(function TokensTab() {
   // única confirmación.
   const handleBulkRevoke = useCallback(async () => {
     const count = selectedLegacy.length + selectedHashed.length;
-    if (count === 0 || !window.confirm(t("superadmin.revokeSelectedConfirm", { count }))) return;
+    if (count === 0 || !(await confirm({ message: t("superadmin.revokeSelectedConfirm", { count }) }))) return;
     setError("");
     setMessage("");
     try {
@@ -223,11 +235,11 @@ const TokensTab = memo(function TokensTab() {
     } catch {
       setError(t("superadmin.tokenRevokeError"));
     }
-  }, [selectedLegacy, selectedHashed, revokeOne, revokeHashedOne, selection, t]);
+  }, [selectedLegacy, selectedHashed, revokeOne, revokeHashedOne, selection, t, confirm]);
 
   // Migra en lote los tokens legacy seleccionados (los hashed ya están migrados).
   const handleBulkMigrate = useCallback(async () => {
-    if (selectedLegacy.length === 0 || !window.confirm(t("superadmin.migrateSelectedConfirm", { count: selectedLegacy.length }))) return;
+    if (selectedLegacy.length === 0 || !(await confirm({ message: t("superadmin.migrateSelectedConfirm", { count: selectedLegacy.length }) }))) return;
     setError("");
     setMessage("");
     try {
@@ -236,7 +248,7 @@ const TokensTab = memo(function TokensTab() {
     } catch {
       setError(t("superadmin.tokenMigrateError"));
     }
-  }, [selectedLegacy, migrateOne, selection, t]);
+  }, [selectedLegacy, migrateOne, selection, t, confirm]);
 
   if (loading) {
     return (
@@ -335,7 +347,7 @@ const TokensTab = memo(function TokensTab() {
                 </tr>
               </thead>
               <tbody>
-                {visibleRows.map((row: TokenRow) => (
+                {pagedRows.map((row: TokenRow) => (
                   <tr key={row.key}>
                     <td>
                       <input
@@ -360,6 +372,17 @@ const TokensTab = memo(function TokensTab() {
               </tbody>
             </table>
           </div>
+          {totalPages > 1 ? (
+            <Pagination
+              page={page}
+              totalPages={totalPages}
+              pageSize={PAGE_SIZE}
+              total={visibleRows.length}
+              pageSizes={[PAGE_SIZE]}
+              onPageChange={setPage}
+              onPageSizeChange={() => undefined}
+            />
+          ) : null}
         </>
       )}
 

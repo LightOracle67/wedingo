@@ -15,6 +15,16 @@ const mockFormData = vi.hoisted(
 );
 
 vi.mock("../../../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: typeof mockUpdateFormField !== "undefined" ? mockUpdateFormField : vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: "",
+    hasStoredConfig: false,
+  }),
   useFormField: (field: string) => mockFormData[field] ?? "",
   useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
   useConfig: () => ({
@@ -97,11 +107,11 @@ describe("GuestsSectionForm", () => {
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
     fireEvent.click(checkboxes[3]!);
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "Traje de gala");
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "gala");
   });
 
   it("calls updateFormField on dress code deselection", () => {
-    mockFormData.weddingDressCode = "Traje de gala";
+    mockFormData.weddingDressCode = "gala";
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
     fireEvent.click(checkboxes[3]!);
@@ -126,11 +136,11 @@ describe("GuestsSectionForm", () => {
   it("selects the 'Otro' dress code option", () => {
     render(<GuestsSectionForm />);
     fireEvent.click(screen.getByLabelText("setup.dressCodeOther"));
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "Otro");
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "custom");
   });
 
   it("updates the custom dress code message", () => {
-    mockFormData.weddingDressCode = "Otro";
+    mockFormData.weddingDressCode = "custom";
     render(<GuestsSectionForm />);
     const input = document.getElementById("dressCodeCustom") as HTMLInputElement;
     fireEvent.change(input, { target: { value: "Vestimenta vintage" } });
@@ -138,11 +148,11 @@ describe("GuestsSectionForm", () => {
   });
 
   it("keeps the custom message when another predefined option is chosen", () => {
-    mockFormData.weddingDressCode = "Otro";
+    mockFormData.weddingDressCode = "custom";
     mockFormData.weddingDressCodeCustom = "Vestimenta vintage";
     render(<GuestsSectionForm />);
     fireEvent.click(screen.getByLabelText("setup.dressCodeGala"));
-    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "Traje de gala");
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "gala");
     expect(mockUpdateFormField).not.toHaveBeenCalledWith("weddingDressCodeCustom", "");
   });
 

@@ -22,6 +22,17 @@ vi.mock("../../../components/MapEmbed", () => ({
 }));
 
 vi.mock("../../../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: "",
+    hasStoredConfig: false,
+  }),
+
   useConfig: () => ({
     config: {
       firstName: "John",

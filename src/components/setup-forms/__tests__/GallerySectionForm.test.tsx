@@ -15,6 +15,16 @@ vi.mock("react-i18next", () => ({
 const mockFormData = vi.hoisted(() => ({}) as Record<string, string | undefined>);
 
 vi.mock("../../../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: mockUseConfig().inviteToken ?? "",
+    hasStoredConfig: false,
+  }),
   useFormField: (field: string) => mockFormData[field] ?? "",
   useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
   useConfig: () => mockUseConfig(),

@@ -18,7 +18,7 @@ const FULL_CONFIG: Record<string, unknown> = {
   weddingSiteURL: "https://www.google.com/maps/place/Hacienda+Los+Olivos/@37.5,-4.7,17z",
   weddingMapView: "satellite",
   weddingMapStatic: "true",
-  weddingDressCode: "Traje de gala",
+  weddingDressCode: "gala",
   couplePhoto: "__cfgimg:couplePhoto",
   musicFile: "audio.mp3",
   musicUrl: "",

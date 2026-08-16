@@ -61,6 +61,16 @@ const mockFormData = vi.hoisted(
 );
 
 vi.mock("../../../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: typeof mockUpdateFormField !== "undefined" ? mockUpdateFormField : vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: "",
+    hasStoredConfig: false,
+  }),
   useFormField: (field: string) => mockFormData[field] ?? "",
   useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
   useConfig: () => ({

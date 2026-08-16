@@ -1,7 +1,7 @@
-import { useCallback } from "react";
+import { memo, useCallback, useState } from "react";
 import CharacterCounter from "../../components/CharacterCounter";
 import { useTranslation } from "react-i18next";
-import { useConfig, useFormField } from "../../contexts";
+import { useConfigActions, useFormField } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../../lib/constants";
 import { compressImageTransparent, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES } from "../../lib/image-utils";
@@ -10,8 +10,8 @@ import ThemePicker from "../ThemePicker";
 import MusicArrayEditor from "../MusicArrayEditor";
 import SetupToggleField from "../SetupToggleField";
 
-export default function CoverSectionForm({ prefix = "" }) {
-  const { updateFormField, inviteToken } = useConfig();
+const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefix?: string }) {
+  const { updateFormField, inviteToken } = useConfigActions();
   const backgroundImage = useFormField("backgroundImage");
   const couplePhoto = useFormField("couplePhoto");
   const customSeal = useFormField("customSeal");
@@ -35,6 +35,10 @@ export default function CoverSectionForm({ prefix = "" }) {
     inviteToken,
     cornerDecoration as string,
   );
+
+  // Campo de imagen en subida: deshabilita su label y muestra "Subiendo..."
+  // (antes las subidas de sello/fondo/esquinas no tenían estado de carga).
+  const [uploadingId, setUploadingId] = useState<string | null>(null);
 
   const id = (name: string) => `${prefix}${name}`;
   /** src seguro para las imÃ¡genes de config: si la URL resuelta no estÃ¡
@@ -93,6 +97,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         return null;
       }
       try {
+        setUploadingId(imageId);
         const { saveConfigImage } = await import("../../lib/image-store");
         const dataUrl = await compressImageTransparent(file);
         const ref = await saveConfigImage(inviteToken, imageId, dataUrl);
@@ -102,6 +107,8 @@ export default function CoverSectionForm({ prefix = "" }) {
         console.error("[app]", "[CoverSectionForm]", `${imageId} upload error:`, err);
         addToast("error", t("setup.photoUploadFailed"));
         return null;
+      } finally {
+        setUploadingId(null);
       }
     },
     [inviteToken, updateFormField, addToast, t],
@@ -144,6 +151,7 @@ export default function CoverSectionForm({ prefix = "" }) {
       }
       const upload = startUploadToast(t("setup.photoUploading"));
       try {
+        setUploadingId("couplePhoto");
         const ref = await uploadConfigImage("couplePhoto", file, (p: number) => upload.update(p));
         upload.update(90);
         updateFormField("couplePhoto", ref);
@@ -151,6 +159,8 @@ export default function CoverSectionForm({ prefix = "" }) {
       } catch (err) {
         console.error("[app]", "[CoverSectionForm]", "couplePhoto upload error:", err);
         upload.error(t("setup.photoUploadFailed"));
+      } finally {
+        setUploadingId(null);
       }
       if (input) input.value = "";
     },
@@ -286,6 +296,7 @@ export default function CoverSectionForm({ prefix = "" }) {
         enabledField="inviteMessageEnabled"
         label={t("setup.messageLabel")}
         hint={t("setup.messageHint")}
+        hintId={id("messageHint")}
         id={id}
       >
         <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
@@ -307,7 +318,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           className="setup-input"
           value={instagramUrl}
           onChange={(e) => updateFormField("instagramUrl", e.target.value.slice(0, 1000))}
-          placeholder="https://www.instagram.com/tunombre"
+          placeholder={t("setup.instagramPlaceholder")}
           inputMode="url"
           autoComplete="url"
         />
@@ -318,7 +329,7 @@ export default function CoverSectionForm({ prefix = "" }) {
           className="setup-input"
           value={facebookUrl}
           onChange={(e) => updateFormField("facebookUrl", e.target.value.slice(0, 1000))}
-          placeholder="https://www.facebook.com/tunombre"
+          placeholder={t("setup.facebookPlaceholder")}
           inputMode="url"
           autoComplete="url"
         />
@@ -357,8 +368,14 @@ export default function CoverSectionForm({ prefix = "" }) {
               </div>
             </div>
           ) : (
-            <label className="setup-upload" htmlFor={id("couplePhoto")}>
-              <span className="setup-upload__title">{t("setup.couplePhotoUpload")}</span>
+            <label
+              className={uploadingId === "couplePhoto" ? "setup-upload setup-upload--busy" : "setup-upload"}
+              htmlFor={id("couplePhoto")}
+              aria-disabled={uploadingId === "couplePhoto" || undefined}
+            >
+              <span className="setup-upload__title">
+                {uploadingId === "couplePhoto" ? t("setup.uploading") : t("setup.couplePhotoUpload")}
+              </span>
               <span className="setup-upload__subtitle">{t("setup.couplePhotoUploadHint")}</span>
             </label>
           )}
@@ -372,8 +389,12 @@ export default function CoverSectionForm({ prefix = "" }) {
           {couplePhoto ? (
             /* El label "Reemplazar" apunta al input Ãºnico (htmlFor); no se
                anida un segundo input para no duplicar el id. */
-            <label className="setup-upload" htmlFor={id("couplePhoto")}>
-              {t("setup.replaceImage")}
+            <label
+              className={uploadingId === "couplePhoto" ? "setup-upload setup-upload--busy" : "setup-upload"}
+              htmlFor={id("couplePhoto")}
+              aria-disabled={uploadingId === "couplePhoto" || undefined}
+            >
+              {uploadingId === "couplePhoto" ? t("setup.uploading") : t("setup.replaceImage")}
             </label>
           ) : null}
         </div>
@@ -410,8 +431,14 @@ export default function CoverSectionForm({ prefix = "" }) {
               </div>
             </div>
           ) : (
-            <label className="setup-upload" htmlFor={id("customSeal")}>
-              <span className="setup-upload__title">{t("setup.uploadSeal")}</span>
+            <label
+              className={uploadingId === "customSeal" ? "setup-upload setup-upload--busy" : "setup-upload"}
+              htmlFor={id("customSeal")}
+              aria-disabled={uploadingId === "customSeal" || undefined}
+            >
+              <span className="setup-upload__title">
+                {uploadingId === "customSeal" ? t("setup.uploading") : t("setup.uploadSeal")}
+              </span>
               <span className="setup-upload__subtitle">{t("setup.uploadSealHint")}</span>
             </label>
           )}
@@ -459,8 +486,14 @@ export default function CoverSectionForm({ prefix = "" }) {
               </button>
             </div>
           ) : (
-            <label className="setup-upload" htmlFor={id("backgroundImage")}>
-              <span className="setup-upload__title">{t("setup.backgroundUpload")}</span>
+            <label
+              className={uploadingId === "backgroundImage" ? "setup-upload setup-upload--busy" : "setup-upload"}
+              htmlFor={id("backgroundImage")}
+              aria-disabled={uploadingId === "backgroundImage" || undefined}
+            >
+              <span className="setup-upload__title">
+                {uploadingId === "backgroundImage" ? t("setup.uploading") : t("setup.backgroundUpload")}
+              </span>
               <span className="setup-upload__subtitle">{t("setup.backgroundUploadHint")}</span>
             </label>
           )}
@@ -510,8 +543,14 @@ export default function CoverSectionForm({ prefix = "" }) {
               />
             </div>
           ) : (
-            <label className="setup-upload" htmlFor={id("cornerDecoration")}>
-              <span className="setup-upload__title">{t("setup.uploadCorner")}</span>
+            <label
+              className={uploadingId === "cornerDecoration" ? "setup-upload setup-upload--busy" : "setup-upload"}
+              htmlFor={id("cornerDecoration")}
+              aria-disabled={uploadingId === "cornerDecoration" || undefined}
+            >
+              <span className="setup-upload__title">
+                {uploadingId === "cornerDecoration" ? t("setup.uploading") : t("setup.uploadCorner")}
+              </span>
               <span className="setup-upload__subtitle">{t("setup.cornerDecorationUploadHint")}</span>
             </label>
           )}
@@ -536,4 +575,7 @@ export default function CoverSectionForm({ prefix = "" }) {
       </SetupToggleField>
     </>
   );
-}
+});
+
+export default CoverSectionForm;
+

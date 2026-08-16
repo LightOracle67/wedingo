@@ -342,6 +342,7 @@ const MetricsTab = memo(function MetricsTab() {
       {storageRows.length > 0 ? (
         <div className="admin-table-wrapper">
           <table className="admin-table">
+            <caption className="admin-table__caption">{t("superadmin.metrics.storageTitle")}</caption>
             <thead>
               <tr>
                 <th>{t("superadmin.metrics.token")}</th>
@@ -366,6 +367,7 @@ const MetricsTab = memo(function MetricsTab() {
       {socialStats.length > 0 ? (
         <div className="admin-table-wrapper">
           <table className="admin-table">
+            <caption className="admin-table__caption">{t("superadmin.metrics.socialTitle")}</caption>
             <thead>
               <tr>
                 <th>{t("superadmin.metrics.token")}</th>
@@ -421,6 +423,7 @@ const MetricsTab = memo(function MetricsTab() {
       {/* ── Funnel por invitación ── */}
       <div className="admin-table-wrapper" style={{ flex: 1, minHeight: 0, overflow: "auto" }}>
         <table className="admin-table">
+          <caption className="admin-table__caption">{t("superadmin.metrics.funnelTitle")}</caption>
           <thead>
             <tr>
               <th>{t("superadmin.metrics.token")}</th>

@@ -17,7 +17,7 @@ describe("InfoSection", () => {
           { time: "16:00", text: "Ceremonia", emoji: "💍" },
           { time: "18:00", text: "Cóctel" },
         ])}
-        weddingDressCode="Formal"
+        weddingDressCode="formal"
         kidsPolicy="playArea"
       />,
     );
@@ -100,7 +100,7 @@ describe("InfoSection", () => {
       <InfoSection
         className="test"
         style={{}}
-        weddingDressCode="Otro"
+        weddingDressCode="custom"
         weddingDressCodeCustom="Vestimenta vintage"
         kidsPolicy=""
       />,
@@ -108,16 +108,17 @@ describe("InfoSection", () => {
     expect(screen.getByText("Vestimenta vintage")).toBeDefined();
   });
 
-  it("shows the predefined dress code as-is when not 'Otro'", () => {
+  it("shows the predefined dress code as-is when not 'custom'", () => {
     render(
       <InfoSection
         className="test"
         style={{}}
-        weddingDressCode="Vestimenta formal"
+        weddingDressCode="formal"
         weddingDressCodeCustom=""
         kidsPolicy=""
       />,
     );
-    expect(screen.getByText("Vestimenta formal")).toBeDefined();
+    // La clave se traduce: la etiqueta pública de "formal".
+    expect(screen.getByText("info.dressCodeOptions.formal")).toBeDefined();
   });
 });

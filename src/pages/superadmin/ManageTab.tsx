@@ -15,6 +15,7 @@ import {
 } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
+import { useConfirm } from "../../contexts/ConfirmContext";
 import { hashSetupToken } from "../../lib/setup-token";
 import { generateInviteToken, generateSetupToken } from "../../lib/token-utils";
 import { validateConfigForSave } from "../../lib/config-validation";
@@ -34,6 +35,7 @@ const CLONABLE_SUBS = ["gallery", "audio", "configImages"] as const;
 const ManageTab = memo(function ManageTab() {
   const { t } = useTranslation();
   const { addToast } = useToast();
+  const { confirm } = useConfirm();
 
   const [invitations, setInvitations] = useState<Array<{ id: string; name: string }>>([]);
   const [loading, setLoading] = useState(true);
@@ -190,7 +192,7 @@ const ManageTab = memo(function ManageTab() {
     } catch {
       addToast("error", t("errors.dataLoadFailed"));
     }
-  }, [token, addToast, t]);
+  }, [token, addToast, t, confirm]);
 
   // Al cambiar de invitación se recarga (loadInvitation depende de token).
   useEffect(() => {
@@ -228,13 +230,13 @@ const ManageTab = memo(function ManageTab() {
     } finally {
       setSaving(false);
     }
-  }, [json, token, verified, adminNotes, manualExpiry, loadInvitation, addToast, t]);
+  }, [json, token, verified, adminNotes, manualExpiry, loadInvitation, addToast, t, confirm]);
 
   /** F1-2: traspaso de titularidad — genera un NUEVO token de setup y revoca
    *  los anteriores (solo quien conozca el nuevo token podrá administrar). */
   const handleTransfer = useCallback(async () => {
     if (!token) return;
-    if (!window.confirm(t("manage.transferConfirm"))) return;
+    if (!(await confirm({ message: t("manage.transferConfirm") }))) return;
     setWorking(true);
     try {
       const newSetup = generateSetupToken();
@@ -259,12 +261,12 @@ const ManageTab = memo(function ManageTab() {
     } finally {
       setWorking(false);
     }
-  }, [token, addToast, t]);
+  }, [token, addToast, t, confirm]);
 
   /** F1-3: clona la invitación a un token nuevo con la misma configuración. */
   const handleClone = useCallback(async () => {
     if (!token || !docData) return;
-    if (!window.confirm(t("manage.cloneConfirm"))) return;
+    if (!(await confirm({ message: t("manage.cloneConfirm") }))) return;
     setWorking(true);
     try {
       const newInviteToken = generateInviteToken();
@@ -330,12 +332,12 @@ const ManageTab = memo(function ManageTab() {
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [token, addToast, t]);
+  }, [token, addToast, t, confirm]);
 
     /** F4-1: cierra la sesión activa de la invitación (revocación remota). */
   const handleKillSession = useCallback(async () => {
     if (!token) return;
-    if (!window.confirm(t("manage.killSessionConfirm"))) return;
+    if (!(await confirm({ message: t("manage.killSessionConfirm") }))) return;
     try {
       await updateDoc(doc(INVITATIONS_COLLECTION_REF, token), { activeSession: null, sessionExpiresAt: null });
       setHasSession(false);
@@ -343,7 +345,7 @@ const ManageTab = memo(function ManageTab() {
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [token, addToast, t]);
+  }, [token, addToast, t, confirm]);
 
   /** Pausa/reanuda la invitación: añade o quita el token de la lista bloqueada
    *  global (platform.blockedTokens), que la invitación pública ya respeta. */
@@ -360,7 +362,7 @@ const ManageTab = memo(function ManageTab() {
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [token, addToast, t]);
+  }, [token, addToast, t, confirm]);
 
   /** F4-5: abre la previsualización a pantalla completa (modo presentación). */
   const handlePresent = useCallback(() => {
@@ -379,7 +381,7 @@ const ManageTab = memo(function ManageTab() {
     } catch {
       addToast("error", t("errors.clipboardCopyFailed"));
     }
-  }, [token, addToast, t]);
+  }, [token, addToast, t, confirm]);
 
   /** Genera un .ics con la fecha y el lugar de la boda (agenda). */
   const handleDownloadIcs = useCallback(() => {
@@ -415,13 +417,13 @@ const ManageTab = memo(function ManageTab() {
       .join("\r\n");
     downloadText(`${token}.ics`, ics, "text/calendar;charset=utf-8");
     addToast("success", t("manage.icsDownloaded"));
-  }, [token, docData, addToast, t]);
+  }, [token, docData, addToast, t, confirm]);
 
   /** F5-2 (F14): restaura un backup JSON subido (config) en esta invitación. */
   const handleRestoreBackup = useCallback(
     async (file: File | undefined) => {
       if (!file || !token) return;
-      if (!window.confirm(t("manage.restoreConfirm"))) return;
+      if (!(await confirm({ message: t("manage.restoreConfirm") }))) return;
       try {
         const text = await file.text();
         let parsed: Record<string, unknown>;
@@ -488,11 +490,11 @@ const ManageTab = memo(function ManageTab() {
     } finally {
       setAutoSaving(false);
     }
-  }, [token, autoName, autoAttendance, addToast, t]);
+  }, [token, autoName, autoAttendance, addToast, t, confirm]);
 
   /** F1-6: copia una subcolección (galería/audio/configImages) de otra invitación. */
   const handleCopySection = useCallback(async () => {    if (!token || !copySource || copySource === token) return;
-    if (!window.confirm(t("manage.copySectionConfirm"))) return;
+    if (!(await confirm({ message: t("manage.copySectionConfirm") }))) return;
     setCopying(true);
     try {
       const src = await getDocs(collection(db, "invitations", copySource, copySub));
@@ -513,7 +515,7 @@ const ManageTab = memo(function ManageTab() {
     } finally {
       setCopying(false);
     }
-  }, [token, copySource, copySub, addToast, t]);
+  }, [token, copySource, copySub, addToast, t, confirm]);
 
   const [sim, setSim] = useState("");
 

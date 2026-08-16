@@ -1,8 +1,9 @@
-import { useCallback } from "react";
+import { memo, useCallback  } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useFormField } from "../../contexts";
+import { useConfigActions, useFormField } from "../../contexts";
 import { useJsonArrayField } from "../../hooks/useJsonArrayField";
 import MapUrlField from "../MapUrlField";
+import MapModeSelect from "../MapModeSelect";
 
 interface Departure {
   type: "bus" | "taxi";
@@ -12,8 +13,8 @@ interface Departure {
 
 const MAX_DEPARTURES = 4;
 
-export default function TransportSectionForm({ prefix = "" }) {
-  const { updateFormField } = useConfig();
+const TransportSectionForm = memo(function TransportSectionForm({ prefix = "" }: { prefix?: string }) {
+  const { updateFormField } = useConfigActions();
   const transportDepartures = useFormField("transportDepartures");
   const transportEnabled = useFormField("transportEnabled");
   const transportMapMode = useFormField("transportMapMode");
@@ -105,24 +106,12 @@ export default function TransportSectionForm({ prefix = "" }) {
       {enabled !== "none" ? (
         <>
           <div className="story-divider" />
-          <label className="setup-label" htmlFor={id("transportMapMode")}>
-            {t("setup.mapModeLabel")}
-          </label>
-          <select
+          <MapModeSelect
             id={id("transportMapMode")}
-            className="setup-input"
-            value={transportMapMode || "iframe"}
-            onChange={(e) => updateFormField("transportMapMode", e.target.value)}
-            aria-describedby={id("transportMapModeHint")}
-          >
-            <option value="iframe">{t("setup.mapModeIframe")}</option>
-            <option value="name">{t("setup.mapModeName")}</option>
-            <option value="hidden">{t("setup.mapModeHidden")}</option>
-          </select>
-          <p className="setup-help" id={id("transportMapModeHint")}>
-            {t("setup.mapModeHint")}
-          </p>
-
+            value={transportMapMode}
+            onChange={(v) => updateFormField("transportMapMode", v)}
+            hintId={id("transportMapModeHint")}
+          />
           <div className="story-divider" />
           <p className="setup-label">{t("setup.transportDeparturesLabel")}</p>
           <p className="setup-help">{t("setup.transportDeparturesHint")}</p>
@@ -177,7 +166,7 @@ export default function TransportSectionForm({ prefix = "" }) {
                   onChange={(url) =>
                     updateDeparture(i, { ...dep, url }, (json) => updateFormField("transportDepartures", json))
                   }
-                  placeholder="https://www.google.com/maps/place/..."
+                  placeholder={t("setup.transportUrlPlaceholder")}
                   placeHintId={id(`departurePlace${i}`)}
                   placeLabel={t("setup.siteNameLabel")}
                 />
@@ -211,4 +200,7 @@ export default function TransportSectionForm({ prefix = "" }) {
       ) : null}
     </>
   );
-}
+});
+
+export default TransportSectionForm;
+

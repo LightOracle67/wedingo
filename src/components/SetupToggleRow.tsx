@@ -14,6 +14,8 @@ interface SetupToggleRowProps {
   field: string;
   label: string;
   hint?: string;
+  /** Id del hint (para aria-describedby desde el input asociado). */
+  hintId?: string;
   checked: boolean;
   onToggle: () => void;
   /** Genera el id único del input a partir de un nombre base. */
@@ -21,7 +23,16 @@ interface SetupToggleRowProps {
   children?: ReactNode;
 }
 
-export default function SetupToggleRow({ field, label, hint, checked, onToggle, id, children }: SetupToggleRowProps) {
+export default function SetupToggleRow({
+  field,
+  label,
+  hint,
+  hintId,
+  checked,
+  onToggle,
+  id,
+  children,
+}: SetupToggleRowProps) {
   return (
     <div className="setup-toggle-row">
       <input
@@ -31,12 +42,17 @@ export default function SetupToggleRow({ field, label, hint, checked, onToggle, 
         checked={checked}
         onChange={onToggle}
         aria-label={label}
+        aria-describedby={hintId}
       />
       <div>
         <label className="setup-label setup-label--tight" htmlFor={id(`${field}Toggle`)}>
           {label}
         </label>
-        {hint ? <p className="setup-help setup-help--tight">{hint}</p> : null}
+        {hint ? (
+          <p className="setup-help setup-help--tight" id={hintId}>
+            {hint}
+          </p>
+        ) : null}
       </div>
       {children}
     </div>

@@ -25,6 +25,7 @@ import { usePlatformSettings } from "../../lib/platform-settings";
 import StatsCard from "../admin/StatsCard";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
+import { useConfirm } from "../../contexts/ConfirmContext";
 
 interface GlobalStats {
   rsvpTotal: number;
@@ -51,6 +52,7 @@ interface InvitationDoc {
 const DashboardTab = memo(function DashboardTab() {
   const { t } = useTranslation();
   const { addToast } = useToast();
+  const { confirm } = useConfirm();
   const [stats, setStats] = useState<GlobalStats | null>(null);
   const [invitations, setInvitations] = useState<InvitationDoc[]>([]);
   // F2-1 actividad reciente, F2-3 confirmaciones/día, F2-6 comparativa de temas,
@@ -165,7 +167,7 @@ const DashboardTab = memo(function DashboardTab() {
 
     setLoading(false);
     void baseOk;
-  }, [addToast, t]);
+  }, [addToast, t, confirm]);
 
   useEffect(() => {
     load();
@@ -213,7 +215,7 @@ const DashboardTab = memo(function DashboardTab() {
 
   /** F5-4 (F36): limpia archivos de Storage huérfanos (invitaciones ya borradas). */
   const handleStorageGC = useCallback(async () => {
-    if (!window.confirm(t("superadmin.gcStorageConfirm"))) return;
+    if (!(await confirm({ message: t("superadmin.gcStorageConfirm") }))) return;
     setCleaning(true);
     let removed = 0;
     try {
@@ -240,10 +242,10 @@ const DashboardTab = memo(function DashboardTab() {
     } finally {
       setCleaning(false);
     }
-  }, [addToast, t]);
+  }, [addToast, t, confirm]);
 
   const handleCleanup = useCallback(async () => {
-    if (!window.confirm(t("superadmin.cleanConfirm", { count: expired.length }))) return;
+    if (!(await confirm({ message: t("superadmin.cleanConfirm", { count: expired.length }) }))) return;
     setCleaning(true);
     let deleted = 0;
     let failed = 0;
@@ -303,7 +305,7 @@ const DashboardTab = memo(function DashboardTab() {
     }
     setCleaning(false);
     await load();
-  }, [expired, load, t, addToast]);
+  }, [expired, load, t, addToast, confirm]);
 
   if (loading)
     return (

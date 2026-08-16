@@ -3,10 +3,13 @@ import { doc, getDocs, writeBatch, collection, query, where } from "firebase/fir
 import { db, INVITATIONS_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
 import { searchInvitations, formatBytes } from "../../lib/superadmin-utils";
 import { useTranslation } from "react-i18next";
+import { useConfirm } from "../../contexts/ConfirmContext";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { useRowSelection } from "../../hooks/useRowSelection";
 import { SortableTh } from "../../components/SortableTh";
 import { TableActionsBar } from "../../components/TableActionsBar";
+import Pagination from "../../components/Pagination";
+import EmptyState from "../../components/EmptyState";
 
 interface InvitationRow {
   id: string;
@@ -18,13 +21,19 @@ interface InvitationRow {
   tags?: string;
 }
 
+/** Filas por página (paginación client-side; las invitaciones se cargan enteras). */
+const PAGE_SIZE = 50;
+
 const InvitationsTab = memo(function InvitationsTab() {
   const { t } = useTranslation();
+  const { confirm } = useConfirm();
   const [invitations, setInvitations] = useState<InvitationRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [tagFilter, setTagFilter] = useState("");
+  // Página actual: se reinicia al cambiar los filtros (useEffect abajo).
+  const [page, setPage] = useState(0);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -81,7 +90,7 @@ const InvitationsTab = memo(function InvitationsTab() {
   // Borrado en lote de las invitaciones seleccionadas (una sola confirmación).
   const handleBulkDelete = useCallback(async () => {
     const ids = [...selection.selected];
-    if (ids.length === 0 || !window.confirm(t("superadmin.deleteConfirmBulk", { count: ids.length }))) return;
+    if (ids.length === 0 || !(await confirm({ message: t("superadmin.deleteConfirmBulk", { count: ids.length }) }))) return;
     setError("");
     try {
       for (const id of ids) await deleteOne(id);
@@ -133,6 +142,14 @@ const InvitationsTab = memo(function InvitationsTab() {
     [],
   );
   const { sorted: sortedInvitations, toggleSort, getIndicator } = useColumnSort(filteredByTag, sortColumns);
+
+  // Al cambiar la búsqueda o las etiquetas se vuelve a la primera página.
+  useEffect(() => {
+    setPage(0);
+  }, [search, tagFilter]);
+
+  const totalPages = Math.max(1, Math.ceil(filteredByTag.length / PAGE_SIZE));
+  const pagedRows = sortedInvitations.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
   const totalBytes = invitations.reduce((acc, d) => {
     try {
       return acc + new Blob([JSON.stringify(d)]).size;
@@ -198,7 +215,11 @@ const InvitationsTab = memo(function InvitationsTab() {
 
       <div aria-live="polite" aria-atomic="true">
         {filteredByTag.length === 0 ? (
-          <p className="setup-help">{search ? t("superadmin.noResultsFilter") : t("superadmin.noInvitations")}</p>
+          search || tagFilter ? (
+            <EmptyState title={t("superadmin.noResultsFilter")} description={t("superadmin.noResultsFilterHint")} />
+          ) : (
+            <EmptyState title={t("superadmin.noInvitations")} />
+          )
         ) : (
           <>
             <TableActionsBar
@@ -237,7 +258,7 @@ const InvitationsTab = memo(function InvitationsTab() {
                   </tr>
                 </thead>
                 <tbody>
-                  {sortedInvitations.map(
+                  {pagedRows.map(
                     (inv: InvitationRow) => (
                       <tr key={inv.id}>
                         <td>
@@ -262,6 +283,17 @@ const InvitationsTab = memo(function InvitationsTab() {
                 </tbody>
               </table>
             </div>
+            {totalPages > 1 ? (
+              <Pagination
+                page={page}
+                totalPages={totalPages}
+                pageSize={PAGE_SIZE}
+                total={filteredByTag.length}
+                pageSizes={[PAGE_SIZE]}
+                onPageChange={setPage}
+                onPageSizeChange={() => undefined}
+              />
+            ) : null}
           </>
         )}
       </div>

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { memo, useState  } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useFormField, useAuth } from "../../contexts";
+import { useConfigActions, useFormField, useAuth } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
 
 interface AccessSectionFormProps {
@@ -11,12 +11,12 @@ interface AccessSectionFormProps {
   onTokenAcknowledge?: (checked: boolean) => void;
 }
 
-export default function AccessSectionForm({
+const AccessSectionForm = memo(function AccessSectionForm({
   prefix = "",
   tokenAcknowledged = false,
   onTokenAcknowledge,
 }: AccessSectionFormProps) {
-  const { updateFormField, hasStoredConfig } = useConfig();
+  const { updateFormField, hasStoredConfig } = useConfigActions();
   const adminUsername = useFormField("adminUsername");
   const { setupToken } = useAuth();
   const { t } = useTranslation();
@@ -137,4 +137,7 @@ export default function AccessSectionForm({
       ) : null}
     </>
   );
-}
+});
+
+export default AccessSectionForm;
+

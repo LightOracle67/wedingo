@@ -1,8 +1,9 @@
-import { lazy, Suspense, useCallback, useState } from "react";
-import { Navigate, useSearchParams } from "react-router";
+import { lazy, Suspense, useCallback } from "react";
+import { Navigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useSuperAdmin } from "../contexts/SuperAdminContext";
 import { SUPERADMIN_ROUTE } from "../lib/superadmin";
+import { useTabs } from "../hooks/useTabs";
 import "../styles/admin.css";
 
 // ─── Tabs de SuperAdmin (carga diferida) ───────────────────────────
@@ -46,17 +47,10 @@ const TABS = [
 export default function SuperAdminPanel() {
   const { t } = useTranslation();
   const { isSuperAdmin, isLoading } = useSuperAdmin();
-  // La pestaña activa se refleja en la URL (?tab=datos) para poder enlazarla.
-  const [searchParams, setSearchParams] = useSearchParams();
-  const tabParam = searchParams.get("tab");
-  const [activeTab, setActiveTab] = useState<string>(
-    TABS.some((tab) => tab.key === tabParam) ? (tabParam as string) : "dashboard",
-  );
-
-  const handleSetTab = useCallback((key: string) => {
-    setActiveTab(key);
-    setSearchParams(key === "dashboard" ? {} : { tab: key }, { replace: true });
-  }, [setSearchParams]);
+  // La pestaña activa se refleja en la URL (?tab=datos) en AMBOS sentidos:
+  // el botón atrás del navegador también cambia de pestaña (useTabs).
+  const TAB_KEYS = ["dashboard", "metricas", "invitaciones", "tokens", "datos", "gestion", "soporte", "plataforma", "ajustes", "cumplimiento"] as const;
+  const { activeTab, select: handleSetTab, tabPanelRef } = useTabs(TAB_KEYS, "dashboard");
 
   // Patrón ARIA de tabs operativo por teclado: flechas/Home/End con roving
   // tabindex (mismo comportamiento que el panel admin, WCAG 2.1.1).
@@ -71,7 +65,7 @@ export default function SuperAdminPanel() {
       if (nextIndex >= 0) {
         e.preventDefault();
         const next = TABS[nextIndex]!;
-        handleSetTab(next.key);
+        handleSetTab(next.key as (typeof TAB_KEYS)[number]);
         document.getElementById("sadm-tab-" + next.key)?.focus();
       }
     },
@@ -118,7 +112,7 @@ export default function SuperAdminPanel() {
               aria-controls={"sadm-tabpanel-" + tab.key}
               tabIndex={activeTab === tab.key ? 0 : -1}
               className={`admin-tab ${activeTab === tab.key ? "admin-tab--active" : ""}`}
-              onClick={() => handleSetTab(tab.key)}
+              onClick={() => handleSetTab(tab.key as (typeof TAB_KEYS)[number])}
               onKeyDown={(e) => handleTabKeyDown(e, tab.key)}
             >
               {t(`superadmin.tabs.${TAB_KEY_MAP[tab.key as keyof typeof TAB_KEY_MAP]}`)}
@@ -131,6 +125,8 @@ export default function SuperAdminPanel() {
           role="tabpanel"
           id={"sadm-tabpanel-" + activeTab}
           aria-labelledby={"sadm-tab-" + activeTab}
+          ref={tabPanelRef}
+          tabIndex={-1}
         >
           <Suspense fallback={<div className="page-loading" role="status" aria-label={t("common.loading")} />}>
             {activeTab === "dashboard" && <DashboardTab />}

@@ -11,11 +11,41 @@ let mockSearch = "";
 vi.mock("react-router", () => ({
   useParams: () => ({ inviteToken: "test-token" }),
   useLocation: () => ({ pathname: "/test-token/admin", search: mockSearch }),
+  // useTabs sincroniza la pestaña con la URL vía useSearchParams: el mock
+  // refleja los cambios en mockSearch (como haría el router real).
+  useSearchParams: () => {
+    const params = new URLSearchParams(mockSearch.replace(/^\?/, ""));
+    const set = (next: unknown) => {
+      if (next instanceof URLSearchParams) {
+        mockSearch = next.toString() ? `?${next.toString()}` : "";
+      } else if (next && typeof next === "object") {
+        const p = new URLSearchParams();
+        for (const [k, v] of Object.entries(next as Record<string, string>)) {
+          if (v) p.set(k, v);
+          else p.delete(k);
+        }
+        mockSearch = p.toString() ? `?${p.toString()}` : "";
+      } else {
+        mockSearch = "";
+      }
+    };
+    return [params, set];
+  },
   Navigate: ({ to }: { to: string }) => <div>Redirect to {to}</div>,
 }));
 
 const mockUseApp = vi.fn();
 vi.mock("../../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: "",
+    hasStoredConfig: false,
+  }),
   useConfig: (...args: unknown[]) => mockUseApp(...args),
   useAuth: (...args: unknown[]) => mockUseApp(...args),
   useRsvpContext: (...args: unknown[]) => mockUseApp(...args),
@@ -165,6 +195,9 @@ const baseMock = {
 describe("AdminPage", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    // Reset de la URL simulada: useTabs sincroniza la pestaña con mockSearch
+    // y un test que cambie de pestaña la deja modificada para el siguiente.
+    mockSearch = "";
     mockUseApp.mockReturnValue(baseMock);
   });
 
@@ -366,7 +399,9 @@ describe("AdminPage", () => {
     await screen.findByTestId("panel-tab");
     fireEvent.click(screen.getByText("admin.tabs.invitation"));
     await screen.findByTestId("invitation-tab");
-    expect(replaceStateSpy).toHaveBeenCalled();
+    // useTabs sincroniza la URL vía setSearchParams (mock que actualiza mockSearch).
+    expect(replaceStateSpy).not.toHaveBeenCalled();
+    expect(mockSearch).toContain("tab=invitacion");
 
     replaceStateSpy.mockRestore();
   });
@@ -509,7 +544,9 @@ describe("AdminPage", () => {
     fireEvent.click(screen.getByText("admin.tabs.panel"));
     await screen.findByTestId("panel-tab");
 
-    expect(replaceStateSpy).toHaveBeenCalled();
+    // Seleccionar la pestaña por defecto limpia el parámetro ?tab de la URL.
+    expect(replaceStateSpy).not.toHaveBeenCalled();
+    expect(mockSearch).not.toContain("tab=");
     replaceStateSpy.mockRestore();
     mockSearch = "";
   });

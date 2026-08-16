@@ -51,6 +51,16 @@ vi.mock("react-router", () => ({
 }));
 
 vi.mock("../../contexts", () => ({
+  useConfigActions: () => ({
+    updateFormField: vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: "",
+    hasStoredConfig: false,
+  }),
   useApp: () => ({
     config: { firstName: "John", secondName: "Jane", theme: "golden" },
     formData: {},

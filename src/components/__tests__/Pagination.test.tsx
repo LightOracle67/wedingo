@@ -24,17 +24,17 @@ describe("Pagination", () => {
 
   it("renders page info", () => {
     render(<Pagination {...defaultProps} />);
-    expect(screen.getByText("attendance.show")).toBeDefined();
+    expect(screen.getByText("pagination.show")).toBeDefined();
   });
 
   it("shows page number and total", () => {
     render(<Pagination {...defaultProps} />);
-    expect(screen.getByText(/attendance\.page/)).toBeDefined();
+    expect(screen.getByText(/pagination\.page/)).toBeDefined();
   });
 
   it("shows total count", () => {
     render(<Pagination {...defaultProps} />);
-    expect(screen.getByText(/attendance\.total/)).toBeDefined();
+    expect(screen.getByText(/pagination\.total/)).toBeDefined();
   });
 
   it("previous button is disabled on first page", () => {

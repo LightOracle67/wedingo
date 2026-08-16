@@ -7,13 +7,27 @@ vi.mock("react-i18next", () => ({
   initReactI18next: { type: "3rdParty", init: () => {} },
 }));
 
+// Estado de la URL simulada compartido: se resetea en cada beforeEach (el
+// cambio de pestaña muta `params` y no debe contaminar el siguiente test).
+const mockSearchParamsState = vi.hoisted(() => ({ params: new URLSearchParams("") }));
+
 vi.mock("react-router", () => {
-  const params = new URLSearchParams("");
   return {
     Navigate: ({ to }: { to: string }) => <div>Redirect to {to}</div>,
     useSearchParams: vi.fn(() => {
+      const params = mockSearchParamsState.params;
+      // El mock refleja el cambio de ?tab en el objeto compartido `params`
+      // (como haría el router real al navegar), tanto para objeto ({tab: x})
+      // como para URLSearchParams.
       const set = (next: unknown, _opts?: unknown) => {
-        params.set("tab", next instanceof URLSearchParams ? String(next.get("tab") || "") : String(next ?? ""));
+        for (const k of [...params.keys()]) params.delete(k);
+        if (next instanceof URLSearchParams) {
+          for (const [k, v] of next.entries()) params.set(k, v);
+        } else if (next && typeof next === "object") {
+          for (const [k, v] of Object.entries(next as Record<string, unknown>)) {
+            if (v) params.set(k, String(v));
+          }
+        }
       };
       return [params, set];
     }),
@@ -73,6 +87,7 @@ describe("SuperAdminPanel", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     mockUseSuperAdmin.mockReturnValue(baseMock);
+    mockSearchParamsState.params = new URLSearchParams("");
   });
 
   it("renders loading state", () => {

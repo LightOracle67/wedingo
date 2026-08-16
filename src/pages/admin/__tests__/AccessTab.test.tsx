@@ -40,12 +40,13 @@ describe("AccessTab", () => {
     expect(screen.getByPlaceholderText("access.newTokenPlaceholder")).toBeDefined();
   });
 
-  it("calls handleResetTokenFromAdmin on generate token click", () => {
+  it("calls handleResetTokenFromAdmin on generate token click", async () => {
     vi.spyOn(window, "confirm").mockReturnValue(true);
     const handleResetTokenFromAdmin = vi.fn();
     render(<AccessTab {...defaultProps} handleResetTokenFromAdmin={handleResetTokenFromAdmin} />);
     fireEvent.click(screen.getByText("access.generateToken"));
-    expect(handleResetTokenFromAdmin).toHaveBeenCalledOnce();
+    // La confirmación es asíncrona (promesa de useConfirm): se espera el tick.
+    await vi.waitFor(() => expect(handleResetTokenFromAdmin).toHaveBeenCalledOnce());
   });
 
   it("does not regenerate the token when the user cancels", () => {

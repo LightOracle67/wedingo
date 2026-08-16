@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
@@ -12,9 +12,36 @@ const mockFormData = vi.hoisted(() => ({
   transportDepartures: "",
 }) as Record<string, string | undefined>);
 
+// Mini-tienda reactiva para el mock: `useFormField` se suscribe y notifica al
+// actualizar mockFormData, de modo que el formulario (memoizado en producción)
+// re-renderiza como lo haría el FormStore real.
+const listeners = new Set<() => void>();
+const subscribeField = (cb: () => void) => {
+  listeners.add(cb);
+  return () => {
+    listeners.delete(cb);
+  };
+};
+const notify = () => {
+  listeners.forEach((l) => l());
+};
+
 vi.mock("../../../contexts", () => ({
-  useFormField: (field: string) => mockFormData[field] ?? "",
-  useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
+  useConfigActions: () => ({
+    updateFormField: typeof mockUpdateFormField !== "undefined" ? mockUpdateFormField : vi.fn(),
+    handleDayChange: vi.fn(),
+    handleTimeChange: vi.fn(),
+    handleTimeBlur: vi.fn(),
+    handleYearChange: vi.fn(),
+    maxAllowedYear: 2099,
+    inviteToken: "",
+    hasStoredConfig: false,
+  }),
+  useFormField: (field: string) => useSyncExternalStore(subscribeField, () => mockFormData[field] ?? ""),
+  useFormStore: () => ({
+    getField: (field: string) => mockFormData[field] ?? "",
+    subscribeField,
+  }),
   useConfig: () => ({
     formData: mockFormData,
     updateFormField: mockUpdateFormField,
@@ -35,18 +62,14 @@ function getStored() {
   return call ? JSON.parse(call[1] as string) : [];
 }
 
-// Harness: re-renderiza el form al actualizar formData (como harÃ­a el contexto real)
-function Harness() {
-  const [, force] = useState(0);
+// Harness: actualiza mockFormData y notifica a los suscriptores (como haría el
+// contexto real con FormStore) al llamar a updateFormField.
+function renderForm() {
   mockUpdateFormField.mockImplementation((field: string, value: unknown) => {
     (mockFormData as Record<string, unknown>)[field] = value;
-    force((x) => x + 1);
+    notify();
   });
-  return <TransportSectionForm />;
-}
-
-function renderForm() {
-  return render(<Harness />);
+  return render(<TransportSectionForm />);
 }
 
 describe("TransportSectionForm departures flow", () => {

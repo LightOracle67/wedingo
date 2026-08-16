@@ -36,7 +36,10 @@
     "updateAvailable": "Hay una nueva versión de Wedingo disponible.",
     "reload": "Actualizar",
     "goHome": "Volver al inicio",
-    "translate": "Traducir"
+    "translate": "Traducir",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "requireText": "Escribe {{text}} para confirmar"
   },
   "landing": {
     "title": "Wedingo — Invitaciones de boda",
@@ -96,7 +99,15 @@
     "dressCodeTitle": "Etiqueta sugerida",
     "dressCodePending": "El código de vestimenta se comunicará más adelante.",
     "kidsLabel": "Niños",
-    "kidsTitle": "Sobre los más pequeños"
+    "kidsTitle": "Sobre los más pequeños",
+    "dressCodeOptions": {
+      "gala": "Traje de gala",
+      "smart-casual": "Etiqueta informal",
+      "formal": "Vestimenta formal",
+      "cocktail": "Cóctel elegante",
+      "comfortable": "Ropa cómoda",
+      "custom": "Código personalizado"
+    }
   },
   "story": {
     "sectionLabel": "Nuestra historia",
@@ -481,7 +492,12 @@
     "toastsLabel": "Brindis y discursos",
     "toastsHint": "Los invitados se apuntan para brindar",
     "venueMapLabel": "Mapa del recinto",
-    "venueMapHint": "Puntos de interés dibujados por ti"
+    "venueMapHint": "Puntos de interés dibujados por ti",
+    "instagramPlaceholder": "https://www.instagram.com/tu_usuario",
+    "facebookPlaceholder": "https://www.facebook.com/tu_usuario",
+    "transportUrlPlaceholder": "https://www.google.com/maps/place/...",
+    "welcomeVideoPlaceholder": "https://...",
+    "uploading": "Subiendo..."
   },
   "admin": {
     "tabs": {
@@ -911,7 +927,13 @@
       "rangeFromPrompt": "Desde (AAAA-MM-DD):",
       "rangeToPrompt": "Hasta (AAAA-MM-DD):",
       "rangeInvalid": "Rango de fechas no válido.",
-      "rangeEmpty": "No hay invitaciones en ese rango."
+      "rangeEmpty": "No hay invitaciones en ese rango.",
+      "bulkThemeTitle": "Cambiar tema",
+      "rangeTitle": "Exportar por rango de fechas",
+      "bulkExpiryTitle": "Fecha de expiración",
+      "bulkSealTitle": "Sello de verificación",
+      "purgeTitle": "Purga GDPR",
+      "deleteAllTitle": "Eliminar todo el sistema"
     },
     "login": "Entrar",
     "emailLabel": "Email",
@@ -981,7 +1003,10 @@
       "socialGifts": "Regalos",
       "originsBtn": "Orígenes de invitados",
       "originsTitle": "De dónde vienen los invitados (coche compartido)",
-      "noData": "No hay datos para exportar."
+      "noData": "No hay datos para exportar.",
+      "storageTitle": "Uso de almacenamiento por invitación",
+      "socialTitle": "Uso de funciones sociales por invitación",
+      "funnelTitle": "Funnel por invitación"
     },
     "support": {
       "upcomingTitle": "Bodas próximas (≤14 días)",
@@ -1016,7 +1041,8 @@
     },
     "tokenConflictsTitle": "Conflictos de tokens detectados",
     "tokenConflictsLegacy": "Tokens legacy duplicados entre invitaciones",
-    "tokenConflictsHash": "Varios hashes apuntan a la misma invitación"
+    "tokenConflictsHash": "Varios hashes apuntan a la misma invitación",
+    "noResultsFilterHint": "Prueba con otro término de búsqueda o quita los filtros."
   },
   "compliance": {
     "title": "Registro de actividades de tratamiento (Art. 30 GDPR)",
@@ -1416,7 +1442,7 @@
     "noWeddingDate": "La invitación no tiene fecha configurada.",
     "icsDownloaded": "Archivo de agenda descargado.",
     "detailTitle": "Detalle de invitación",
-    "detailDeleteSocial": "¿Borrar esta aportación?",
+    "detailDeleteSocial": "Eliminar elemento de {sub}",
     "detailDeleted": "Aportación borrada.",
     "detailResetConfirm": "¿Anular TODAS las confirmaciones? Esta acción no se puede deshacer.",
     "detailResetDone": "Confirmaciones anuladas.",
@@ -1501,7 +1527,8 @@
     "nameValue": "Nombre",
     "messageValue": "Mensaje",
     "dateValue": "Fecha",
-    "sheetMailbox": "Buzón"
+    "sheetMailbox": "Buzón",
+    "mailDeleteConfirm": "¿Borrar este mensaje del buzón? Esta acción no se puede deshacer."
   },
   "voiceNotes": {
     "title": "Caja de recuerdos",
@@ -1796,5 +1823,13 @@
         "hint": "Los avisos breves (confirmaciones, errores...) aparecen y desaparecen con un deslizamiento."
       }
     }
+  },
+  "pagination": {
+    "show": "Mostrar",
+    "total": "{{count}} en total",
+    "page": "Página {{current}} de {{total}}",
+    "prevPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "pageSizeLabel": "Elementos por página"
   }
 }
