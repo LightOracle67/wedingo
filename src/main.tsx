@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router";
 import App from "./App";
 import "./index.css";
+import "./styles/animations.css";
 import "./i18n";
 import "./lib/sentry";
 import { reportWebVitals } from "./lib/vitals";

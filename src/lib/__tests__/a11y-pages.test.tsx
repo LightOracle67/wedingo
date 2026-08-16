@@ -184,6 +184,16 @@ vi.mock("../../contexts", () => ({
     setAdminMessage: vi.fn(),
     setAdminMessageType: vi.fn(),
   }),
+  useAnimations: () => ({
+    adminDisabled: new Set<string>(),
+    guestDisabled: new Set<string>(),
+    effectiveDisabled: new Set<string>(),
+    isDisabled: () => false,
+    toggleGuestAnimation: vi.fn(),
+    setGuestGroup: vi.fn(),
+    setAllGuest: vi.fn(),
+    resetGuest: vi.fn(),
+  }),
 }));
 
 const BASE_MOCK_CTX = {

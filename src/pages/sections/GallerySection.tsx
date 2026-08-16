@@ -13,6 +13,9 @@ interface GallerySectionProps {
   className?: string;
   inviteToken?: string;
   cornerDecoration?: string;
+  /** Conjunto EFECTIVO de animaciones desactivadas (base ∪ invitado): el
+   *  auto-avance del carrusel se gestiona por JS (el resto, por CSS). */
+  disabledAnimations?: ReadonlySet<string>;
   [key: string]: unknown;
 }
 
@@ -29,10 +32,14 @@ const GallerySection = memo(function GallerySection({
   className,
   inviteToken,
   cornerDecoration,
+  disabledAnimations,
 }: GallerySectionProps) {
   const { t } = useTranslation();
 
   const reducedMotion = useReducedMotion();
+  // Auto-avance: desactivado por movimiento reducido O por preferencia del
+  // usuario (base del admin o del invitado).
+  const autoAdvanceOff = reducedMotion || (disabledAnimations ?? new Set<string>()).has("gallery-auto-advance");
 
   /** Metadatos de la galería (sin descifrar): carga instantánea. */
   const [metas, setMetas] = useState<GalleryMeta[]>([]);
@@ -216,7 +223,7 @@ const GallerySection = memo(function GallerySection({
   }, [images.length]);
 
   useEffect(() => {
-    if (reducedMotion) return;
+    if (autoAdvanceOff) return;
     const start = () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
       // Avanza cada 5s solo si no está en pausa ni hay una sola imagen.
@@ -257,18 +264,18 @@ const GallerySection = memo(function GallerySection({
       io?.disconnect();
       document.removeEventListener("visibilitychange", onVisibility);
     };
-  }, [paused, reducedMotion, images.length, handleNextImage]);
+  }, [paused, autoAdvanceOff, images.length, handleNextImage]);
 
   // Pausa el carrusel al hacer hover sobre la galería
   const pause = useCallback(() => {
-    if (!reducedMotion) setPaused(true);
-  }, [reducedMotion]);
+    if (!autoAdvanceOff) setPaused(true);
+  }, [autoAdvanceOff]);
   const resume = useCallback(() => {
-    if (!reducedMotion) {
+    if (!autoAdvanceOff) {
       setPaused(false);
       lastAdvanceRef.current = Date.now();
     }
-  }, [reducedMotion]);
+  }, [autoAdvanceOff]);
 
   // ── Lightbox ───────────────────────────────────────
 

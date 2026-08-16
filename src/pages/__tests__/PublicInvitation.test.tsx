@@ -97,6 +97,17 @@ vi.mock("../../contexts", () => ({
   useConfig: () => mockUseAppValue,
   useRsvpContext: () => mockUseAppValue,
   useAuth: () => mockUseAppValue,
+  // Preferencias de animación: todo activo por defecto en los tests.
+  useAnimations: () => ({
+    adminDisabled: new Set<string>(),
+    guestDisabled: new Set<string>(),
+    effectiveDisabled: new Set<string>(),
+    isDisabled: () => false,
+    toggleGuestAnimation: vi.fn(),
+    setGuestGroup: vi.fn(),
+    setAllGuest: vi.fn(),
+    resetGuest: vi.fn(),
+  }),
 }));
 
 vi.mock("../../lib/image-store", () => ({

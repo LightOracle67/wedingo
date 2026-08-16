@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Link, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
 import { AppProvider } from "./contexts/AppContext";
-import { useConfig, useAuth, useAppUI, useFormField } from "./contexts";
+import { useConfig, useAuth, useAppUI, useFormField, AnimationsProvider } from "./contexts";
 import { safeGetItem, safeSetItem } from "./lib/storage";
 import { SuperAdminProvider } from "./contexts/SuperAdminContext";
 import { ToastProvider } from "./contexts/ToastContext";
@@ -20,6 +20,7 @@ const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"))
 const LegalModal = lazy(() => import("./components/LegalModal"));
 const ChangelogModal = lazy(() => import("./components/ChangelogModal"));
 import Fireflies from "./components/Fireflies";
+import AnimationPrefsApplier from "./components/AnimationPrefsApplier";
 import { APP_VERSION } from "./lib/constants";
 import { getSession } from "./lib/sessionVars";
 import "./styles/admin.css";
@@ -114,6 +115,8 @@ function AppShell() {
 
   return (
     <>
+      {/* Aplica las clases de animaciones desactivadas (base + invitado). */}
+      <AnimationPrefsApplier />
       {/* Enlace de salto directo al contenido principal (WCAG 2.4.1). */}
       <a href="#main-content" className="skip-link">
         {t("common.skipToContent")}
@@ -459,7 +462,9 @@ export default function App() {
     <AppProvider>
       <SuperAdminProvider>
         <ToastProvider>
-          <AppShell />
+          <AnimationsProvider>
+            <AppShell />
+          </AnimationsProvider>
         </ToastProvider>
       </SuperAdminProvider>
     </AppProvider>

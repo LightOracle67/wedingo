@@ -8,6 +8,7 @@ export const STORAGE_KEYS = {
   cookiePrefs: "wedin_cookie_prefs",
   inviteToken: "wedin_invite_token",
   a11y: "wedin_a11y",
+  animations: "wedin_animations",
   inviteCacheLegacy: "wedin_invite_cache",
   audio: (token: string) => `wedin_audio_${token}`,
   setupToken: (token: string) => `wedin_setup_token_${token}`,

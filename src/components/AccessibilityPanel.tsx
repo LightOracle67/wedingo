@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import Modal from "./Modal";
+import AnimationChecklist from "./AnimationChecklist";
+import { useAnimations } from "../contexts";
 import "../styles/a11y.css";
 import "../styles/modals.css";
 
@@ -69,6 +71,9 @@ function applyPrefs(prefs: A11yPrefs) {
 
 export default function AccessibilityPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { t } = useTranslation();
+  // Preferencias de animación del invitado (combina la base del admin con lo
+  // que este invitado desactiva en su dispositivo). Requiere AnimationsProvider.
+  const { isDisabled, adminDisabled, toggleGuestAnimation, setAllGuest, resetGuest } = useAnimations();
   const [prefs, setPrefs] = useState(() => {
     const loaded = loadPrefs();
 
@@ -215,6 +220,32 @@ export default function AccessibilityPanel({ open, onClose }: { open: boolean; o
           <span className="a11y-toggle__track" />
           <span>{t("a11y.strongFocus")}</span>
         </label>
+      </div>
+
+      {/* ── Animaciones: desactivar individualmente (del sobre al confeti) ── */}
+      <div className="a11y-section">
+        <p className="a11y-label">{t("a11y.animationsTitle")}</p>
+        <p className="a11y-animations-hint">{t("a11y.animationsHint")}</p>
+        <div className="a11y-animations-scroll">
+          <AnimationChecklist
+            checked={(id) => !isDisabled(id)}
+            onToggle={toggleGuestAnimation}
+            locked={adminDisabled}
+            idPrefix="guest-"
+            compact
+          />
+        </div>
+        <div className="anim-checklist__group-actions anim-checklist__group-actions--global">
+          <button type="button" className="a11y-btn" onClick={() => setAllGuest(true)}>
+            {t("animations.allOn")}
+          </button>
+          <button type="button" className="a11y-btn" onClick={() => setAllGuest(false)}>
+            {t("animations.allOff")}
+          </button>
+          <button type="button" className="a11y-btn" onClick={resetGuest}>
+            {t("a11y.animationsReset")}
+          </button>
+        </div>
       </div>
     </Modal>
   );

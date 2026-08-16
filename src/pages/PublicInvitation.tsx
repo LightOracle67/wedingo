@@ -20,7 +20,7 @@ import { lazy, Fragment, Suspense, useCallback, useEffect, useMemo, useRef, useS
 import { useLocation, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
-import { useConfig, useRsvpContext, useAuth } from "../contexts";
+import { useConfig, useRsvpContext, useAuth, useAnimations } from "../contexts";
 import { useStoryNavigation } from "../hooks/useStoryNavigation";
 import { usePlatformSettings, tokenIsBlocked, isFeatureDisabled } from "../lib/platform-settings";
 import { useReducedMotion } from "../hooks/useReducedMotion";
@@ -31,9 +31,6 @@ import { parseSectionOrder, sectionHasContent } from "../lib/section-utils";
 import { SITE_URL, applySocialMeta, resetSocialMeta } from "../lib/seo";
 import { trackEvent } from "../lib/analytics";
 
-// ─── Assets ──────────────────────────────────────────────
-import eucalyptusSrc from "../assets/eucalyptus.webp";
-
 // ─── Componentes de sección (visibles al inicio, carga directa) ────
 import HeroSection from "./sections/HeroSection";
 import DetailsSection from "./sections/DetailsSection";
@@ -41,6 +38,8 @@ import DetailsSection from "./sections/DetailsSection";
 // ─── Componentes globales ─────────────────────────────────────────
 import EnvelopeOverlay from "../components/EnvelopeOverlay";
 import ErrorBoundary from "../components/ErrorBoundary";
+import Confetti, { CONF_TOTAL_MS } from "../components/Confetti";
+import WeddingDecorations from "../components/WeddingDecorations";
 
 // ─── Secciones secundarias (carga diferida) ────────────────────────
 const TransportSection = lazy(() => import("./sections/TransportSection"));
@@ -84,48 +83,6 @@ const SECTION_COMPONENTS = {
 /** Props vacías compartidas (referencia estable, no rompe React.memo). */
 const EMPTY_PROPS: Record<string, unknown> = {};
 
-/** Duración (ms) de la caída de confeti: la caída es uniforme (misma
- *  duración y stagger corto) para que se vea elegante y no errática, y se
- *  ejecuta UNA sola vez detrás de la invitación. */
-const CONF_FALL_MS = 2200;
-const CONF_TOTAL_MS = CONF_FALL_MS + 900;
-
-/** Confeti decorativo al abrir el sobre: piezas CSS puras con una animación
- *  de caída (respetada por prefers-reduced-motion). Va DETRÁS de la
- *  invitación (z-index bajo) y cada pieza cae una única vez. Sin interacción. */
-function Confetti() {
-  const pieces = useMemo(
-    () =>
-      Array.from({ length: 48 }, (_, i) => ({
-        // Distribución uniforme (no aleatoria): el confeti se ve natural, no errático.
-        left: `${(i * 2.1) % 100}%`,
-        delay: `${(i % 9) * 0.1}s`,
-        duration: `${CONF_FALL_MS}ms`,
-        color: ["#d8b24a", "#e8d0d8", "#8fb8a8", "#f0e6d0", "#c8a84e"][i % 5],
-        size: `${7 + (i % 3) * 3}px`,
-      })),
-    [],
-  );
-  return (
-    <div className="confetti" aria-hidden="true">
-      {pieces.map((p, i) => (
-        <span
-          key={i}
-          className="confetti__piece"
-          style={{
-            left: p.left,
-            animationDelay: p.delay,
-            animationDuration: p.duration,
-            background: p.color,
-            width: p.size,
-            height: p.size,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 /**
  * Página principal de la invitación pública.
  * Muestra las secciones configuradas con navegación animada.
@@ -139,6 +96,11 @@ export default function PublicInvitation() {
   const searchParams = new URLSearchParams(location.search);
   const isInviteMode = searchParams.has("invitar");
   const reducedMotion = useReducedMotion();
+  // Preferencias de animación: base del admin ∪ preferencias del invitado.
+  // `isDisabled(id)` decide en runtime las animaciones gestionadas por JS
+  // (sobre, confeti, navegación, hero, galería); las de CSS las aplica
+  // AnimationPrefsApplier vía clases en <html>.
+  const { isDisabled, effectiveDisabled } = useAnimations();
 
   // Ajustes globales de la plataforma (kill-switch por función, banner,
   // bloqueos, mantenimiento). Se carga aquí (arriba) porque `hasExtras` y
@@ -378,6 +340,9 @@ export default function PublicInvitation() {
     // ya renderizado). Sin vídeo, se activa justo al terminar el sobre.
     enabled: !showEnvelope && !videoOpen,
     reducedMotion,
+    // Animaciones de navegación desactivadas (base ∪ invitado): el hook las
+    // respeta por código (transiciones, snap y entrada 3D).
+    animationsDisabled: effectiveDisabled,
   });
 
   // ─── Cuenta regresiva ──────────────────────────────────
@@ -544,6 +509,8 @@ export default function PublicInvitation() {
       gallery: {
         inviteToken,
         cornerDecoration: config.cornerDecoration,
+        // Conjunto efectivo: GallerySection lo usa para el auto-avance (JS).
+        disabledAnimations: effectiveDisabled,
       },
       rsvp: {
         menuEnabled: config.menuEnabled === "true",
@@ -600,6 +567,7 @@ export default function PublicInvitation() {
       config.accommodationMapMode,
       config.transportEnabled,
       config.transportDepartures,
+      effectiveDisabled,
     ],
   );
 
@@ -609,8 +577,15 @@ export default function PublicInvitation() {
    * re-renderizar la página cada segundo.
    */
   const heroProps = useMemo(
-    () => ({ weddingDate, inviteToken: inviteToken ?? "", schedule: config.weddingScheduleEvents ?? "[]" }),
-    [weddingDate, inviteToken, config.weddingScheduleEvents],
+    () => ({
+      weddingDate,
+      inviteToken: inviteToken ?? "",
+      schedule: config.weddingScheduleEvents ?? "[]",
+      // Conjunto efectivo de animaciones desactivadas: HeroSection lo usa para
+      // el countdown (tick), el anillo de la foto, el fundido y el resplandor.
+      disabledAnimations: effectiveDisabled,
+    }),
+    [weddingDate, inviteToken, config.weddingScheduleEvents, effectiveDisabled],
   );
 
   /**
@@ -801,11 +776,13 @@ export default function PublicInvitation() {
           secondName={config.secondName}
           customSeal={config.customSeal}
           inviteToken={inviteToken}
+          disabledAnimations={effectiveDisabled}
         />
       ) : null}
 
-      {/* Confeti al abrir el sobre (decoración, sin interacción). */}
-      {showConfetti ? <Confetti /> : null}
+      {/* Confeti al abrir el sobre (decoración, sin interacción). Si el confeti
+          está desactivado (base o invitado) no se monta: evita el coste. */}
+      {showConfetti && !isDisabled("confetti-fall") ? <Confetti /> : null}
 
       {/* Vídeo de bienvenida: entrada y salida animadas (el componente se
           mantiene montado durante la salida para que el fade no se corte). */}
@@ -841,38 +818,7 @@ export default function PublicInvitation() {
           pantalla (WCAG 1.3.2 / 2.4.3). display: contents no altera el layout. */}
       <div style={{ display: "contents" }} aria-hidden={showEnvelope || videoOpen || undefined} inert={showEnvelope || videoOpen || undefined}>
         {/* ── Decoraciones laterales (eucalipto) ── */}
-        <div
-          className="fixed top-0 pointer-events-none left-2 wedding-decoration--left wedding-decoration"
-          style={{ zIndex: 0 }}
-        >
-          {/* width/height reservan el layout del eucalipto (decorativo, 2000x2000
-              renderizado a ~250-400px) para evitar CLS (CLS == 0). */}
-          <img
-            src={eucalyptusSrc}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            width="2000"
-            height="2000"
-            className="wedding-decoration__image"
-          />
-        </div>
-        <div
-          className="fixed pointer-events-none right-2 bottom-2 wedding-decoration--right wedding-decoration"
-          style={{ zIndex: 0 }}
-        >
-          {/* width/height reservan el layout del eucalipto (decorativo, 2000x2000
-              renderizado a ~250-400px) para evitar CLS (CLS == 0). */}
-          <img
-            src={eucalyptusSrc}
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            width="2000"
-            height="2000"
-            className="wedding-decoration__image"
-          />
-        </div>
+        <WeddingDecorations />
 
         {/* ── Token bloqueado por el superadmin (F3-6) ── */}
         {tokenBlocked ? (

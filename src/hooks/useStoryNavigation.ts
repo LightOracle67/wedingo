@@ -22,7 +22,11 @@
  * mueve las secciones y el progreso se calcula a partir de su posición real.
  *
  * @param {string[]} visibleOrder - Claves de sección visibles en orden.
- * @param {{ enabled?: boolean, reducedMotion?: boolean }} options
+ * @param {{ enabled?: boolean, reducedMotion?: boolean, animationsDisabled?: ReadonlySet<string> }} options
+ *   `animationsDisabled` es el conjunto EFECTIVO (base del admin ∪ invitado):
+ *   contiene los ids `story-transitions`, `story-snap` y `story-reveal` si
+ *   esas animaciones están desactivadas, para que este hook las respete por
+ *   código (no son solo CSS).
  * @returns {{ getSectionStyle, getSectionClassName }}
  */
 import { useEffect, useRef, useState } from "react";
@@ -51,7 +55,7 @@ const EMPTY_STYLE: Record<string, string> = {};
 
 export function useStoryNavigation(
   visibleOrder: string[],
-  options: { enabled?: boolean; reducedMotion?: boolean } = {},
+  options: { enabled?: boolean; reducedMotion?: boolean; animationsDisabled?: ReadonlySet<string> } = {},
 ) {
   const [activeSection, setActiveSection] = useState<string>(visibleOrder[0] || "hero");
   // `revealing`: entrada 3D de la card de la primera sección al abrir el sobre.
@@ -105,6 +109,13 @@ export function useStoryNavigation(
     if (scene) scene.style.overflow = "";
 
     const reducedMotion = options.reducedMotion === true;
+    // El desactivado por el usuario de las transiciones equivale a "movimiento
+    // reducido": contenido siempre visible, sin paralaje ni desenfoque (pero
+    // mantiene la detección de sección activa).
+    const animationsDisabled = options.animationsDisabled ?? new Set<string>();
+    const transitionsOff = reducedMotion || animationsDisabled.has("story-transitions");
+    const snapOff = reducedMotion || animationsDisabled.has("story-snap");
+    const revealOff = reducedMotion || animationsDisabled.has("story-reveal");
     const primarySection = visibleOrder[0];
 
     // Al abrir el sobre (enabled pasa de false a true) se vuelve al inicio.
@@ -155,8 +166,9 @@ export function useStoryNavigation(
         progressMap[key] = progress;
 
         const wrap = wrapsRef.current[key];
-        if (reducedMotion) {
-          // Movimiento reducido: contenido siempre visible y sin filtros.
+        if (transitionsOff) {
+          // Movimiento reducido o transiciones desactivadas: contenido siempre
+          // visible y sin filtros (ni paralaje ni desenfoque).
           if (wrap) {
             wrap.style.opacity = "1";
             wrap.style.transform = "none";
@@ -209,7 +221,7 @@ export function useStoryNavigation(
     // cuando el usuario se detiene cerca del centro.
     let snapTimer: ReturnType<typeof setTimeout> | null = null;
     const scheduleSnap = () => {
-      if (reducedMotion) return;
+      if (snapOff) return;
       if (snapTimer) clearTimeout(snapTimer);
       snapTimer = setTimeout(() => {
         snapTimer = null;
@@ -241,7 +253,7 @@ export function useStoryNavigation(
     update();
 
     let revealTimer: ReturnType<typeof setTimeout> | null = null;
-    if (everDisabledRef.current && primarySection && !reducedMotion) {
+    if (everDisabledRef.current && primarySection && !revealOff) {
       setRevealing(true);
       revealTimer = setTimeout(() => setRevealing(false), REVEAL_MS);
     }
@@ -254,7 +266,7 @@ export function useStoryNavigation(
       if (revealTimer) clearTimeout(revealTimer);
       if (snapTimer) clearTimeout(snapTimer);
     };
-  }, [orderKey, visibleOrder, options.enabled, options.reducedMotion]);
+  }, [orderKey, visibleOrder, options.enabled, options.reducedMotion, options.animationsDisabled]);
 
   const getSectionStyle = (_sectionKey?: string) => EMPTY_STYLE;
 

@@ -269,6 +269,8 @@
     "giftsSectionHint": "Regalos y datos bancarios",
     "gallerySectionTitle": "Galería",
     "gallerySectionHint": "Fotos de la pareja",
+    "animationsSectionTitle": "Animaciones",
+    "animationsSectionHint": "Elige qué animaciones ven los invitados, desde el sobre hasta las más insignificantes.",
     "usernameLabel": "Nombre de usuario",
     "usernamePlaceholder": "Escribe un nombre de usuario",
     "usernameHint": "Usa letras y números. Lo necesitarás para acceder al panel cuando tu sesión expire.",
@@ -1088,7 +1090,10 @@
     "underlineLinks": "Subrayar todos los enlaces",
     "bigCursor": "Cursor grande",
     "desaturate": "Escala de grises",
-    "strongFocus": "Indicadores de foco visibles"
+    "strongFocus": "Indicadores de foco visibles",
+    "animationsTitle": "Animaciones",
+    "animationsHint": "Desactiva animaciones concretas en tu dispositivo. Los novios deciden la base; tú puedes desactivar más (no reactivar las que ellos apagaron).",
+    "animationsReset": "Restablecer mis ajustes"
   },
   "music": {
     "noMusic": "Sin música",
@@ -1594,5 +1599,202 @@
     "capacityValue": "Plazas",
     "guestValue": "Invitado",
     "sheetTables": "Mesas"
+  },
+  "animations": {
+    "sectionTitle": "Animaciones de la invitación",
+    "sectionHint": "Elige qué animaciones se reproducen en la invitación, del sobre a las más insignificantes. Cada casilla marcada significa que la animación se reproduce; desmarca la que quieras dejar estática para todos los invitados.",
+    "allOn": "Activar todas",
+    "allOff": "Desactivar todas",
+    "groupAll": "Todas",
+    "groupNone": "Ninguna",
+    "lockedByAdmin": "Desactivada por los novios: no puedes reactivarla.",
+    "groups": {
+      "envelope": "Sobre",
+      "confetti": "Confeti",
+      "welcomeVideo": "Vídeo de bienvenida",
+      "decorations": "Decoraciones",
+      "navigation": "Navegación",
+      "fireflies": "Luciérnagas",
+      "music": "Música",
+      "hero": "Portada",
+      "gallery": "Galería",
+      "micro": "Microinteracciones",
+      "background": "Fondos",
+      "toasts": "Avisos"
+    },
+    "items": {
+      "envelope-flap": {
+        "name": "Apertura de la solapa del sobre",
+        "hint": "Al primer toque, la solapa del sobre se abre con un giro en 3D. Desactivarla abre la invitación directamente con un solo toque."
+      },
+      "envelope-lights": {
+        "name": "Halos de luz alrededor del sobre",
+        "hint": "Tres halos dorados orbitan alrededor del sobre mientras está cerrado, aportando un resplandor cálido."
+      },
+      "envelope-flash": {
+        "name": "Destello blanco al abrir",
+        "hint": "Un destello blanco a pantalla completa ilumina la transición justo después de abrir la solapa."
+      },
+      "envelope-golden-text": {
+        "name": "Texto dorado de bienvenida",
+        "hint": "El mensaje dorado sube con un brillo pulsante al abrir el sobre y se desvanece al entrar. Sin él, ese mensaje no se muestra."
+      },
+      "envelope-hint-pulse": {
+        "name": "Pulso del texto «Toca para abrir»",
+        "hint": "El texto de ayuda que indica cómo abrir el sobre late suavemente para llamar la atención."
+      },
+      "envelope-letter-fade": {
+        "name": "Desvanecimiento de la carta interior",
+        "hint": "La carta del interior del sobre se desvanece al abrir la solapa para dejar ver el contenido."
+      },
+      "envelope-overlay-fade": {
+        "name": "Fundido de salida del sobre",
+        "hint": "Al terminar, el sobre completo se desvanece (opacidad y desenfoque) para dejar paso a la invitación."
+      },
+      "confetti-fall": {
+        "name": "Lluvia de confeti al abrir",
+        "hint": "48 piezas de colores caen una única vez detrás de la invitación al entrar, a modo de celebración."
+      },
+      "welcome-video-modal": {
+        "name": "Entrada y salida del vídeo de bienvenida",
+        "hint": "El marco donde se reproduce el vídeo de bienvenida aparece y desaparece con un movimiento suave y un fundido."
+      },
+      "decoration-sway": {
+        "name": "Bamboleo de las ramas de eucalipto",
+        "hint": "Las ramas decorativas laterales se mecen suavemente, como movidas por el viento, durante toda la invitación."
+      },
+      "decoration-float": {
+        "name": "Flotación de las ramas",
+        "hint": "Un movimiento vertical muy sutil de las ramas decorativas mientras estás en su sección."
+      },
+      "story-transitions": {
+        "name": "Transición entre secciones",
+        "hint": "Al hacer scroll, cada sección se desenfoca, se desplaza y cambia de opacidad según se acerca o se aleja del centro de la pantalla."
+      },
+      "story-reveal": {
+        "name": "Entrada 3D de la tarjeta al entrar",
+        "hint": "Cuando se abre el sobre, la primera sección entra con una pequeña rotación 3D y desenfoque que se disipa."
+      },
+      "story-smooth-scroll": {
+        "name": "Scroll suave",
+        "hint": "El desplazamiento entre secciones se desliza con una aceleración suave en lugar de saltar de golpe."
+      },
+      "story-snap": {
+        "name": "Auto-centrado de secciones",
+        "hint": "Al detener el scroll cerca de una sección, la invitación se desliza sola hasta centrarla en pantalla."
+      },
+      "story-hover": {
+        "name": "Elevación de la sección al pasar el ratón",
+        "hint": "La sección activa se eleva ligeramente con una sombra cuando pasas el ratón por encima."
+      },
+      "fireflies": {
+        "name": "Vuelo de las luciérnagas",
+        "hint": "20 luciérnagas con un halo de luz se mueven lentamente por el fondo de la pantalla."
+      },
+      "music-equalizer": {
+        "name": "Barras del ecualizador",
+        "hint": "Tres barras se mueven como un ecualizador en el botón de música mientras suena la canción."
+      },
+      "music-fab-pulse": {
+        "name": "Pulso del botón de música",
+        "hint": "Un halo pulsante rodea el botón flotante de música mientras se está reproduciendo."
+      },
+      "music-card-open": {
+        "name": "Apertura del reproductor",
+        "hint": "El panel del reproductor de música se despliega con una escala suave al pulsar el botón."
+      },
+      "music-icon-bounce": {
+        "name": "Rebote del icono de música",
+        "hint": "El icono de la nota musical rebota al abrir o cerrar el reproductor."
+      },
+      "music-fab-shift": {
+        "name": "Desplazamiento del botón de música",
+        "hint": "El botón flotante se desplaza hacia un lado al abrir el reproductor para no taparlo."
+      },
+      "music-dot-blink": {
+        "name": "Punto de notificación de música",
+        "hint": "El punto que avisa de un error o del estado del audio parpadea suavemente."
+      },
+      "music-play-glow": {
+        "name": "Halo del botón reproducir",
+        "hint": "El botón de reproducir o pausar del reproductor emite un halo que pulsa suavemente."
+      },
+      "music-spinner": {
+        "name": "Rueda de carga de la música",
+        "hint": "Una rueda gira en el botón mientras la canción se está cargando."
+      },
+      "music-fab-hover": {
+        "name": "Escala del botón de música",
+        "hint": "El botón flotante se agranda ligeramente al pasar el ratón por encima."
+      },
+      "music-status-shake": {
+        "name": "Sacudida del error de música",
+        "hint": "El mensaje de error de carga se sacude para llamar la atención."
+      },
+      "hero-photo-ring": {
+        "name": "Anillo dorado de la foto",
+        "hint": "Un anillo dorado pulsa alrededor de la foto de la pareja en la portada."
+      },
+      "hero-godparent-glow": {
+        "name": "Resplandor de los padrinos",
+        "hint": "El texto con los nombres de los padrinos emite un resplandor cálido que pulsa."
+      },
+      "hero-photo-fade": {
+        "name": "Fundido de la foto al cargar",
+        "hint": "La foto de la portada aparece con un fundido suave cuando termina de cargar."
+      },
+      "countdown-tick": {
+        "name": "Cuenta regresiva en directo",
+        "hint": "El contador de tiempo restante se actualiza cada segundo. Al desactivarlo se muestra el valor inicial estático."
+      },
+      "loading-spinner": {
+        "name": "Ruedas de carga",
+        "hint": "Las ruedas giratorias que aparecen mientras cargan la foto de la portada y otros contenidos."
+      },
+      "gallery-blur": {
+        "name": "Cambio de foto con desenfoque",
+        "hint": "Al navegar la galería, la foto anterior se desenfoca mientras la nueva entra nítida."
+      },
+      "gallery-caption": {
+        "name": "Entrada de la descripción de cada foto",
+        "hint": "La descripción de cada foto aparece con un pequeño deslizamiento hacia arriba."
+      },
+      "gallery-lightbox": {
+        "name": "Apertura del visor de fotos",
+        "hint": "El visor a pantalla completa de la galería aparece con un fundido de entrada."
+      },
+      "gallery-thumb-hover": {
+        "name": "Escala de las miniaturas",
+        "hint": "Las miniaturas de la galería se agrandan ligeramente al pasar el ratón por encima."
+      },
+      "gallery-nav-hover": {
+        "name": "Escala de las flechas de la galería",
+        "hint": "Las flechas de navegación de la galería se agrandan al pasar el ratón por encima."
+      },
+      "gallery-auto-advance": {
+        "name": "Avance automático del carrusel",
+        "hint": "La galería pasa de foto en foto cada 5 segundos. Al desactivarlo, solo cambia al pulsar las flechas."
+      },
+      "button-hover": {
+        "name": "Elevación de los botones",
+        "hint": "Los botones de la invitación (confirmar asistencia, compartir, enviar...) se elevan ligeramente con una sombra al pasar el ratón."
+      },
+      "reaction-hover": {
+        "name": "Escala de las reacciones",
+        "hint": "Los botones de reacción (❤️ 🎉 😂) se agrandan ligeramente al pasar el ratón por encima."
+      },
+      "theme-glow-depth": {
+        "name": "Resplandor del fondo",
+        "hint": "Un resplandor de luz recorre lentamente el fondo de la invitación dando sensación de profundidad."
+      },
+      "landing-pulse": {
+        "name": "Pulso de las pantallas de carga",
+        "hint": "El fondo de las pantallas de carga, error y mantenimiento pulsa suavemente."
+      },
+      "toast-animations": {
+        "name": "Avisos flotantes",
+        "hint": "Los avisos breves (confirmaciones, errores...) aparecen y desaparecen con un deslizamiento."
+      }
+    }
   }
 }

@@ -1,0 +1,375 @@
+/**
+ * animations.css — Reglas de «kill» por animación de la invitación pública.
+ *
+ * El Applier (AnimationPrefsApplier) añade a <html> una clase por cada
+ * animación desactivada (`wed-no-anim-<id>`). Estas reglas, con
+ * `!important`, anulan el animation/transition/transform de cada animación
+ * CSS sin tocar su marcado. Las animaciones gestionadas por JS (navegación de
+ * secciones, auto-avance de la galería, countdown, secuencia del sobre) se
+ * controlan por código en sus componentes usando `useAnimations()`.
+ *
+ * Convención: una clase por animación del registro (src/lib/animations.ts).
+ * Si se añade una animación CSS nueva, hay que registrar su regla aquí.
+ */
+
+/* ── Sobre: apertura de la solapa ───────────────────────────────────────── */
+html.wed-no-anim-envelope-flap .envelope__flap,
+html.wed-no-anim-envelope-flap .envelope-wrapper--open .envelope,
+html.wed-no-anim-envelope-flap .envelope-wrapper--open .envelope__flap,
+html.wed-no-anim-envelope-flap .envelope-wrapper--open .envelope__flap-inner {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ── Sobre: halos de luz orbitando el sobre ────────────────────────────── */
+html.wed-no-anim-envelope-lights .envelope-light {
+  animation: none !important;
+  opacity: 0;
+}
+
+/* ── Sobre: destello blanco a pantalla completa ────────────────────────── */
+html.wed-no-anim-envelope-flash .envelope-flash {
+  transition: none !important;
+  opacity: 0;
+}
+
+/* ── Sobre: texto dorado (entrada, brillo y salida) ────────────────────── */
+/* Si se desactiva se oculta por completo: es un ornamento animado sin
+   contenido informativo propio (el mensaje vive en la carta interior). */
+html.wed-no-anim-envelope-golden-text .envelope-golden,
+html.wed-no-anim-envelope-golden-text .envelope-golden--in,
+html.wed-no-anim-envelope-golden-text .envelope-golden--out,
+html.wed-no-anim-envelope-golden-text .envelope-golden__glow {
+  animation: none !important;
+  transition: none !important;
+  opacity: 0;
+}
+
+/* ── Sobre: pulso del texto «Toca para abrir» ──────────────────────────── */
+html.wed-no-anim-envelope-hint-pulse .envelope__hint {
+  animation: none !important;
+}
+
+/* ── Sobre: desvanecimiento de la carta interior ───────────────────────── */
+html.wed-no-anim-envelope-letter-fade .envelope__letter {
+  transition: none !important;
+  opacity: 1;
+}
+
+/* ── Sobre: fundido de salida del overlay completo ─────────────────────── */
+html.wed-no-anim-envelope-overlay-fade .envelope-overlay {
+  transition: none !important;
+}
+
+/* ── Confeti al abrir el sobre ─────────────────────────────────────────── */
+html.wed-no-anim-confetti-fall .confetti {
+  display: none;
+}
+
+/* ── Vídeo de bienvenida: entrada y salida del modal ───────────────────── */
+html.wed-no-anim-welcome-video-modal .welcome-video-overlay,
+html.wed-no-anim-welcome-video-modal .welcome-video-overlay--closing,
+html.wed-no-anim-welcome-video-modal .welcome-video-card,
+html.wed-no-anim-welcome-video-modal .welcome-video-card--closing {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ── Decoraciones: bamboleo y flotación de las ramas ───────────────────── */
+html.wed-no-anim-decoration-sway .wedding-decoration__image,
+html.wed-no-anim-decoration-float .wedding-decoration__image {
+  animation: none !important;
+}
+
+/* ── Navegación: entrada 3D de la tarjeta al abrir el sobre ────────────── */
+html.wed-no-anim-story-reveal .story-section--is-reveal .story-card-wrap {
+  animation: none !important;
+}
+
+/* ── Navegación: scroll suave (html y contenedor de secciones) ─────────── */
+html.wed-no-anim-story-smooth-scroll,
+html.wed-no-anim-story-smooth-scroll html,
+html.wed-no-anim-story-smooth-scroll .app-scene {
+  scroll-behavior: auto !important;
+}
+
+/* ── Navegación: elevación de la sección activa al pasar el ratón ──────── */
+html.wed-no-anim-story-hover .story-section--is-active .story-card-wrap:hover {
+  box-shadow: none !important;
+  transition: none !important;
+}
+
+/* ── Luciérnagas de fondo: deriva y halo ───────────────────────────────── */
+html.wed-no-anim-fireflies .firefly,
+html.wed-no-anim-fireflies .firefly::after {
+  animation: none !important;
+  opacity: 0.55;
+}
+
+/* ── Música: barras del ecualizador ────────────────────────────────────── */
+html.wed-no-anim-music-equalizer .music-player__fab-equalizer span {
+  animation: none !important;
+}
+
+/* ── Música: pulso del halo del botón flotante ─────────────────────────── */
+html.wed-no-anim-music-fab-pulse .music-player__fab--playing {
+  animation: none !important;
+}
+
+/* ── Música: apertura del reproductor ──────────────────────────────────── */
+html.wed-no-anim-music-card-open .music-player__card--open {
+  transition: none !important;
+}
+
+/* ── Música: rebote del icono al alternar ──────────────────────────────── */
+html.wed-no-anim-music-icon-bounce .music-player__fab-icon--spin {
+  animation: none !important;
+}
+
+/* ── Música: desplazamiento del botón al abrir el reproductor ──────────── */
+html.wed-no-anim-music-fab-shift .music-player__fab--shifted {
+  transition: none !important;
+}
+
+/* ── Música: punto de notificación parpadeante ─────────────────────────── */
+html.wed-no-anim-music-dot-blink .music-player__fab-dot {
+  animation: none !important;
+}
+
+/* ── Música: halo pulsante del botón reproducir ────────────────────────── */
+html.wed-no-anim-music-play-glow .music-player__play--active {
+  animation: none !important;
+}
+
+/* ── Música: rueda de carga ────────────────────────────────────────────── */
+html.wed-no-anim-music-spinner .music-player__spinner {
+  animation: none !important;
+}
+
+/* ── Música: escala del botón al pasar el ratón ────────────────────────── */
+html.wed-no-anim-music-fab-hover .music-player__fab {
+  transition: none !important;
+}
+html.wed-no-anim-music-fab-hover .music-player__fab:hover {
+  transform: none !important;
+}
+
+/* ── Música: sacudida del mensaje de error ─────────────────────────────── */
+html.wed-no-anim-music-status-shake .music-player__status {
+  animation: none !important;
+}
+
+/* ── Hero: anillo dorado alrededor de la foto ──────────────────────────── */
+html.wed-no-anim-hero-photo-ring .hero-couple-photo-ring {
+  animation: none !important;
+}
+
+/* ── Hero: resplandor del texto de los padrinos (estilo inline) ────────── */
+html.wed-no-anim-hero-godparent-glow [style*="godparent-glow"] {
+  animation: none !important;
+}
+
+/* ── Hero: fundido de la foto al cargar (transición inline) ────────────── */
+html.wed-no-anim-hero-photo-fade .hero-photo-media {
+  transition: none !important;
+}
+
+/* ── Hero: ruedas de carga (spinners) ──────────────────────────────────── */
+html.wed-no-anim-loading-spinner .page-loading::after,
+html.wed-no-anim-loading-spinner .music-player__spinner {
+  animation: none !important;
+}
+
+/* ── Galería: cambio de foto con desenfoque ────────────────────────────── */
+html.wed-no-anim-gallery-blur .gallery-blur-in,
+html.wed-no-anim-gallery-blur .gallery-blur-out {
+  animation: none !important;
+}
+
+/* ── Galería: entrada de la descripción de cada foto ───────────────────── */
+html.wed-no-anim-gallery-caption .gallery-caption-wrap {
+  animation: none !important;
+}
+
+/* ── Galería: apertura del visor de fotos (lightbox) ───────────────────── */
+html.wed-no-anim-gallery-lightbox .gallery-lightbox {
+  animation: none !important;
+}
+
+/* ── Galería: escala de las miniaturas al pasar el ratón ───────────────── */
+html.wed-no-anim-gallery-thumb-hover .gallery-thumb {
+  transition: none !important;
+}
+html.wed-no-anim-gallery-thumb-hover .gallery-thumb:hover {
+  transform: none !important;
+}
+
+/* ── Galería: escala de las flechas al pasar el ratón ──────────────────── */
+html.wed-no-anim-gallery-nav-hover .gallery-nav {
+  transition: none !important;
+}
+html.wed-no-anim-gallery-nav-hover .gallery-nav:hover {
+  transform: none !important;
+}
+
+/* ── Microinteracciones: elevación de los botones ──────────────────────── */
+html.wed-no-anim-button-hover .setup-button {
+  transition: none !important;
+}
+html.wed-no-anim-button-hover .setup-button:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Microinteracciones: escala de los botones de reacción ─────────────── */
+html.wed-no-anim-reaction-hover .reactions__btn {
+  transition: none !important;
+}
+html.wed-no-anim-reaction-hover .reactions__btn:hover {
+  transform: none !important;
+}
+
+/* ── Fondo: resplandor animado del body ────────────────────────────────── */
+html.wed-no-anim-theme-glow-depth body::after {
+  animation: none !important;
+}
+
+/* ── Fondo: pulso de las pantallas de carga/aviso ──────────────────────── */
+html.wed-no-anim-landing-pulse .landing-bg::before {
+  animation: none !important;
+}
+
+/* ── Avisos: aparición, salida y barra de progreso de los toasts ───────── */
+html.wed-no-anim-toast-animations .toast,
+html.wed-no-anim-toast-animations .toast--exiting,
+html.wed-no-anim-toast-animations .toast__progress-track,
+html.wed-no-anim-toast-animations .toast__progress-bar {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   UI de la lista de animaciones (AnimationChecklist).
+   Se comparte entre el panel del admin (setup) y el de accesibilidad.
+   ═══════════════════════════════════════════════════════════════════════ */
+.anim-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.anim-checklist__group {
+  border: 1px solid color-mix(in srgb, var(--setup-border) 45%, transparent);
+  border-radius: var(--radius-md, 0.6rem);
+  padding: 0.6rem 0.75rem 0.4rem;
+  margin: 0;
+}
+.anim-checklist__group-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--setup-title);
+  padding: 0 0 0.4rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 35%, transparent);
+}
+.anim-checklist__group-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.anim-checklist__group-actions--global {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.anim-checklist__group-btn {
+  all: unset;
+  cursor: pointer;
+  font-size: 0.72rem;
+  color: var(--setup-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.anim-checklist__group-btn:hover {
+  color: var(--setup-title);
+}
+.anim-checklist__group-sep {
+  color: var(--setup-muted);
+}
+.anim-checklist__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-top: 0.35rem;
+}
+.anim-checklist__row {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  padding: 0.3rem 0;
+}
+.anim-checklist__checkbox {
+  margin-top: 0.2rem;
+  accent-color: var(--setup-accent);
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+.anim-checklist__text {
+  min-width: 0;
+}
+.anim-checklist__name {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--setup-title);
+  cursor: pointer;
+}
+.anim-checklist__hint {
+  margin: 0.1rem 0 0;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: var(--setup-muted);
+}
+.anim-checklist__locked-note {
+  margin: 0.15rem 0 0;
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--setup-accent);
+}
+.anim-checklist--compact .anim-checklist__name {
+  font-size: 0.82rem;
+}
+.anim-checklist--compact .anim-checklist__hint {
+  font-size: 0.72rem;
+}
+.anim-checklist--compact .anim-checklist__group {
+  padding: 0.5rem 0.6rem 0.35rem;
+}
+
+/* Contenedor con scroll para la lista larga dentro del panel de
+   accesibilidad (ancho limitado: sin scroll el modal desbordaría). */
+.a11y-animations-scroll {
+  max-height: min(55vh, 24rem);
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  margin: 0.4rem 0 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--setup-border) 30%, transparent);
+  border-radius: var(--radius-md, 0.6rem);
+  padding: 0.6rem;
+}
+.a11y-animations-hint {
+  margin: 0 0 0.4rem;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--setup-muted);
+}
+

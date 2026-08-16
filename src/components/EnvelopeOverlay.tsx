@@ -2,6 +2,7 @@ import { memo, useEffect, useMemo, useState, useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 import { randomMessage } from "../lib/invite-messages";
+import { EMPTY_ANIMATION_SET } from "../lib/animations";
 import "../styles/envelope.css";
 
 const EnvelopeOverlay = memo(function EnvelopeOverlay({
@@ -11,6 +12,7 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({
   secondName,
   customSeal,
   inviteToken,
+  disabledAnimations,
 }: {
   onOpen: () => void;
   onConfetti?: () => void;
@@ -18,6 +20,10 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({
   secondName: string;
   customSeal?: string | undefined;
   inviteToken?: string | undefined;
+  /** Conjunto EFECTIVO de animaciones desactivadas (base del admin ∪
+   *  invitado): la secuencia del sobre se adapta por código porque sus
+   *  pasos (solapa, destello, texto dorado) son timing con estado. */
+  disabledAnimations?: ReadonlySet<string>;
 }) {
   const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -27,6 +33,12 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({
   // Ids de los setTimeout de la secuencia de apertura: se limpian al
   // desmontar para que el onOpen no se dispare sobre un sobre ya retirado.
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  // Preferencias de animación del sobre (resueltas en booleans una sola vez).
+  const disabled = disabledAnimations ?? EMPTY_ANIMATION_SET;
+  const flapEnabled = !disabled.has("envelope-flap");
+  const flashEnabled = !disabled.has("envelope-flash");
+  const goldenEnabled = !disabled.has("envelope-golden-text");
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -71,13 +83,29 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({
       timersRef.current.push(id);
     };
     if (!open) {
+      // Con la solapa desactivada, la secuencia de dos gestos no tiene
+      // sentido (la solapa ES la revelación): un solo toque abre la
+      // invitación al instante y dispara el confeti.
+      if (!flapEnabled) {
+        setOpen(true);
+        onConfetti?.();
+        document.body.style.overflow = "";
+        const main = document.getElementById("main-content");
+        if (main) main.focus({ preventScroll: true });
+        onOpen();
+        return;
+      }
       setOpen(true);
-      schedule(() => {
-        setShowWhite(true);
-      }, 600);
-      schedule(() => {
-        setShowText(true);
-      }, 1400);
+      if (flashEnabled) {
+        schedule(() => {
+          setShowWhite(true);
+        }, 600);
+      }
+      if (goldenEnabled) {
+        schedule(() => {
+          setShowText(true);
+        }, 1400);
+      }
       return;
     }
 
@@ -97,7 +125,7 @@ const EnvelopeOverlay = memo(function EnvelopeOverlay({
       if (main) main.focus({ preventScroll: true });
       onOpen();
     }, 2500);
-  }, [onOpen, onConfetti, open, exiting]);
+  }, [onOpen, onConfetti, open, exiting, flapEnabled, flashEnabled, goldenEnabled]);
 
   return (
     <div

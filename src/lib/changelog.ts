@@ -3,7 +3,7 @@ export const CHANGELOG = [
     version: "2.98.6",
     date: "2026-08-16",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "FEAT: control de animaciones de la invitación con checkboxes (nombre + hint por animación), del sobre al confeti y las microinteracciones. Base del admin en config.disabledAnimations (nueva sección «Animaciones» en el Setup) + preferencia adicional por invitado en el panel de accesibilidad (localStorage). Registro canónico src/lib/animations.ts, contexto AnimationsProvider, CSS de kill animations.css, y módulos extraídos (Confetti, WeddingDecorations, SetupToggleRow, AnimationChecklist). Respeta prefers-reduced-motion en todo.",
     ],
   },
 

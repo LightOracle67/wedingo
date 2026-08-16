@@ -57,6 +57,10 @@ interface HeroSectionProps {
   inviteToken?: string;
   /** Agenda del día (JSON de weddingScheduleEvents) para la pantalla en vivo. */
   schedule?: string;
+  /** Conjunto EFECTIVO de animaciones desactivadas (base ∪ invitado): el hero
+   *  respeta por código el countdown, el anillo de la foto, el fundido de
+   *  carga y el resplandor de los padrinos. */
+  disabledAnimations?: ReadonlySet<string>;
 }
 
 const HeroSection = memo(function HeroSection({
@@ -73,10 +77,19 @@ const HeroSection = memo(function HeroSection({
   verified,
   inviteToken,
   schedule,
+  disabledAnimations,
 }: HeroSectionProps) {
   const { t } = useTranslation();
   const [photoLoaded, setPhotoLoaded] = useState(false);
   const reducedMotion = useReducedMotion();
+
+  // Animaciones del hero desactivadas (resueltas a booleans para lecturas
+  // baratas en el render y en los efectos).
+  const animationsOff = disabledAnimations ?? new Set<string>();
+  const countdownOff = reducedMotion || animationsOff.has("countdown-tick");
+  const photoRingOff = animationsOff.has("hero-photo-ring");
+  const photoFadeOff = animationsOff.has("hero-photo-fade");
+  const godparentGlowOff = animationsOff.has("hero-godparent-glow");
 
   // Prueba social en vivo: nº de invitados que ya confirmaron. Se lee con
   // polling ligero (getDoc cada 20s) en lugar de onSnapshot: así no se abre un
@@ -169,7 +182,9 @@ const HeroSection = memo(function HeroSection({
       }
     };
     tick();
-    if (reducedMotion) return;
+    // Movimiento reducido o countdown desactivado: se pinta el valor inicial
+    // estático (se calcula en el primer render) sin el tick de 1s.
+    if (countdownOff) return;
     id = setInterval(tick, 1000);
     const onVisibility = () => {
       if (document.hidden && id) {
@@ -185,7 +200,7 @@ const HeroSection = memo(function HeroSection({
       if (id) clearInterval(id);
       document.removeEventListener("visibilitychange", onVisibility);
     };
-  }, [weddingDate, reducedMotion]);
+  }, [weddingDate, countdownOff]);
 
   return (
     <section
@@ -287,13 +302,16 @@ const HeroSection = memo(function HeroSection({
             ) : null}
             {couplePhoto ? (
               <div className="mx-auto" style={{ position: "relative", width: "min(70vw, 400px)", aspectRatio: "1/1" }}>
-                {photoLoaded && <div className="hero-couple-photo-ring" />}
+                {photoLoaded && !photoRingOff && <div className="hero-couple-photo-ring" />}
                 <div
+                  className="hero-photo-media"
                   style={{
                     position: "absolute",
                     inset: 0,
                     opacity: photoLoaded ? 1 : 0,
-                    transition: "opacity 0.5s ease",
+                    // El fundido de carga se omite si está desactivado: la foto
+                    // aparece directamente (sin transición).
+                    ...(photoFadeOff ? {} : { transition: "opacity 0.5s ease" }),
                     borderRadius: "50%",
                     overflow: "hidden",
                     WebkitMaskImage: "radial-gradient(circle at center, black 60%, transparent 100%)",
@@ -368,7 +386,11 @@ const HeroSection = memo(function HeroSection({
                   color: "var(--invite-copy-color, #c8b898)",
                   textShadow:
                     "0 0 8px color-mix(in srgb, var(--flower-accent, #d8b24a) 20%, transparent), 0 0 20px color-mix(in srgb, var(--flower-accent, #d8b24a) 8%, transparent)",
-                  animation: "godparent-glow 3s ease-in-out infinite",
+                  // El resplandor pulsante se omite si está desactivado (el
+                  // texto se mantiene estático con su text-shadow fijo).
+                  ...(godparentGlowOff
+                    ? {}
+                    : { animation: "godparent-glow 3s ease-in-out infinite" }),
                 }}
               >
                 {t("hero.withBlessing", { godparent1, godparent2 })}

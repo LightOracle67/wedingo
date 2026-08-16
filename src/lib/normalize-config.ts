@@ -1,5 +1,6 @@
 import { STORY_SECTION_ORDER, THEME_VALUES, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT } from "./constants";
 import { parseMenuDishes } from "./menu-utils";
+import { serializeDisabledAnimations, parseDisabledAnimations } from "./animations";
 
 /** Normaliza los campos JSON de arrays (lista de regalos, trivia): devuelve
  *  un JSON válido o "[]". */
@@ -140,6 +141,12 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
     return parts.join(",");
   })(),
   hiddenSections: s(value?.hiddenSections),
+  // Animaciones desactivadas: se sanitizan contra el registro canónico (solo
+  // ids válidos, ordenados y deduplicados) para que un valor corrupto o de
+  // una versión antigua no aplique toggles inexistentes.
+  disabledAnimations: serializeDisabledAnimations(
+    parseDisabledAnimations(typeof value?.disabledAnimations === "string" ? value.disabledAnimations : undefined),
+  ),
   storyText: s(value?.storyText),
   storyTextEnabled: toggleWithLegacy(value?.storyTextEnabled, value?.storyText),
   giftsInfo: s(value?.giftsInfo),

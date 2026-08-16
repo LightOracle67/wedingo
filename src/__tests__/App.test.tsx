@@ -35,6 +35,18 @@ vi.mock("../contexts", () => ({
   // App lee el theme del setup con useFormField (tienda por campo): devuelve
   // el valor del formData simulado por el test.
   useFormField: (field: string) => (mockUseApp().formData as Record<string, string | undefined>)?.[field] ?? "",
+  // Animaciones: provider de paso y prefs activas por defecto.
+  AnimationsProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  useAnimations: () => ({
+    adminDisabled: new Set<string>(),
+    guestDisabled: new Set<string>(),
+    effectiveDisabled: new Set<string>(),
+    isDisabled: () => false,
+    toggleGuestAnimation: vi.fn(),
+    setGuestGroup: vi.fn(),
+    setAllGuest: vi.fn(),
+    resetGuest: vi.fn(),
+  }),
 }));
 
 vi.mock("../components/AccessibilityPanel", () => ({

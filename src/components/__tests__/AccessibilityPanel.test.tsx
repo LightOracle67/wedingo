@@ -23,6 +23,21 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
+// Las preferencias de animación del invitado: sin proveedor, se mockean para
+// que el panel renderice con todo activo.
+vi.mock("../../contexts", () => ({
+  useAnimations: () => ({
+    adminDisabled: new Set<string>(),
+    guestDisabled: new Set<string>(),
+    effectiveDisabled: new Set<string>(),
+    isDisabled: () => false,
+    toggleGuestAnimation: vi.fn(),
+    setGuestGroup: vi.fn(),
+    setAllGuest: vi.fn(),
+    resetGuest: vi.fn(),
+  }),
+}));
+
 import AccessibilityPanel from "../AccessibilityPanel";
 
 afterEach(() => {

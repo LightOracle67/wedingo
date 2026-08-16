@@ -26,6 +26,7 @@ import GuestsSectionForm from "./setup-forms/GuestsSectionForm";
 import StorySectionForm from "./setup-forms/StorySectionForm";
 import GiftsSectionForm from "./setup-forms/GiftsSectionForm";
 import ExtrasSectionForm from "./setup-forms/ExtrasSectionForm";
+import AnimationsSectionForm from "./setup-forms/AnimationsSectionForm";
 import GallerySectionForm from "./setup-forms/GallerySectionForm";
 import "../styles/admin.css";
 
@@ -172,6 +173,12 @@ export default function SetupForm({ prefix = "" }) {
 
       <CollapsibleSection title={t("setup.extrasSectionTitle")} hint={t("setup.extrasSectionHint")}>
         <ExtrasSectionForm prefix={prefix} />
+      </CollapsibleSection>
+
+      {/* ── Sección de animaciones ── */}
+
+      <CollapsibleSection title={t("setup.animationsSectionTitle")} hint={t("setup.animationsSectionHint")}>
+        <AnimationsSectionForm prefix={prefix} />
       </CollapsibleSection>
 
       {/* ── Sección de galería de fotos (si no está oculta) ── */}

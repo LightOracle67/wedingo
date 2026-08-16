@@ -1,50 +1,7 @@
 import { useCallback, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useConfig, useFormField, useFormStore } from "../../contexts";
-
-/**
- * Fila de extra: checkbox primero y título + hint después.
- * Definida FUERA del componente (estable entre renders): una ToggleRow
- * definida dentro del cuerpo se re-creaba en cada render, provocando que
- * React desmontara/remontara el subárbol (pérdida de foco en inputs hijos).
- */
-function ToggleRow({
-  field,
-  label,
-  hint,
-  checked,
-  onToggle,
-  id,
-  children,
-}: {
-  field: string;
-  label: string;
-  hint?: string;
-  checked: boolean;
-  onToggle: () => void;
-  id: (name: string) => string;
-  children?: ReactNode;
-}) {
-  return (
-    <div className="setup-toggle-row">
-      <input
-        type="checkbox"
-        className="setup-toggle"
-        id={id(`${field}Toggle`)}
-        checked={checked}
-        onChange={onToggle}
-        aria-label={label}
-      />
-      <div>
-        <label className="setup-label setup-label--tight" htmlFor={id(`${field}Toggle`)}>
-          {label}
-        </label>
-        {hint ? <p className="setup-help setup-help--tight">{hint}</p> : null}
-      </div>
-      {children}
-    </div>
-  );
-}
+import SetupToggleRow from "../SetupToggleRow";
 
 /**
  * ExtrasSectionForm â€” Configura las funciones sociales de la invitaciÃ³n:
@@ -159,7 +116,7 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
 
   /** Renders una fila de extra con el ToggleRow estable del módulo. */
   const renderToggleRow = (field: string, label: string, hint?: string, children?: ReactNode) => (
-    <ToggleRow
+    <SetupToggleRow
       field={field}
       label={label}
       {...(hint !== undefined ? { hint } : {})}
@@ -168,7 +125,7 @@ export default function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) 
       id={id}
     >
       {children}
-    </ToggleRow>
+    </SetupToggleRow>
   );
 
   return (

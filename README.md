@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.98.5](https://github.com/LightOracle67/wedingo/releases/tag/v2.98.5)  
+**Versión actual:** [v2.98.6](https://github.com/LightOracle67/wedingo/releases/tag/v2.98.6)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 1934 tests, 145 test files |
+| Tests | 2178 tests, 163 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -82,9 +82,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 ### Temas (21)
 
-7 claros, 7 oscuros, 7 LGTBIQ+, cada uno con `--invite-core-color` único.
-
-| Claros | Oscuros | LGTBIQ+ |
+7 claros, 7 oscuros, 7 LGTBIQ+, cada uno con `--invite-core-color` único.| Claros | Oscuros | LGTBIQ+ |
 |---|---|---|
 | Golden, Forest, Rose | Amber-night, Onyx-gold, Midnight-royal | Rainbow, Trans, Nonbinary |
 | Linen-soft, Blush-pearl | Burgundy-velvet, Sapphire-night | Lesbian, Bi, Pan, Ace |
@@ -188,6 +186,14 @@ https://www.google.com/maps/place/Nombre+del+venue/@lat,lng,17z
 - **Envelope:** animación 3D (flap, sello cera, flash blanco, texto dorado, partículas orbitales)
 - **Fondo:** imagen semi-transparente en cada `.story-card` vía CSS `--story-card-user-bg`, ajustada a la card (cover) y estática frente al scroll
 
+### Control de animaciones
+
+Cada animación de la invitación (del sobre al confeti y las microinteracciones) se puede desactivar individualmente con un checkbox con nombre y hint:
+
+- **Base de los novios** (nueva sección «Animaciones» del editor): se guarda en `config.disabledAnimations` y aplica a todos los invitados.
+- **Preferencia del invitado** (panel de accesibilidad ♿): cada visitante puede desactivar más animaciones en su dispositivo; nunca reactiva las que la pareja apagó.
+- Catálogo canónico en `src/lib/animations.ts` (43 animaciones en 12 grupos), reglas CSS de kill en `src/styles/animations.css` y respeto total de `prefers-reduced-motion`.
+
 ---
 
 ## Rendimiento
@@ -254,6 +260,7 @@ Hitos principales:
 | v2.98.3 | 2026-08-12 | Cobertura a 91.5% de líneas (2153 tests): DistribucionTab — asignación y mesa llena |
 | v2.98.4 | 2026-08-12 | Cobertura a 91.9% de líneas (2155 tests): DataTab — purga con cascadeDelete; umbrales CI a 91.5/89/86/80 |
 | v2.98.5 | 2026-08-12 | Ronda de mejora: cobertura a 92.2% (2160 tests), axe para Pagination/LoadingOverlay/CollapsibleSection, cutoff GDPR 2012-08-13 |
+| v2.98.6 | 2026-08-16 | Control de animaciones por checkboxes (43 animaciones, 12 grupos): base del admin + preferencia por invitado, con nombre y hint por animación; registro canónico, CSS de kill y modularización (Confetti, WeddingDecorations, SetupToggleRow, AnimationChecklist) |
 | v2.97.0 | 2026-08-12 | Invitados esperados como número (0..1000); estadísticas calculadas desde ese número |
 | v2.96.11 | 2026-08-11 | Hardening: escritor XLSX blindado (NaN/control-chars/límite columnas), fix a11y botón 👁, límites de bundle ajustados |
 | v2.96.10 | 2026-08-11 | Seguridad: xlsx/SheetJS (2 avisos alta) sustituido por escritor OOXML propio; npm audit prod 0 vulnerabilidades |

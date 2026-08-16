@@ -48,6 +48,8 @@ export interface InvitationConfig {
   musicFileEnabled?: string;
   sectionOrder: string;
   hiddenSections: string;
+  /** Animaciones desactivadas por los novios (ids separados por comas). */
+  disabledAnimations?: string;
   storyText: string;
   storyTextEnabled?: string;
   giftsInfo: string;

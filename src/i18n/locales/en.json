@@ -269,6 +269,8 @@
     "giftsSectionHint": "Gifts and bank details",
     "gallerySectionTitle": "Gallery",
     "gallerySectionHint": "Photos of the couple",
+    "animationsSectionTitle": "Animations",
+    "animationsSectionHint": "Choose which animations guests see, from the envelope to the most minor ones.",
     "usernameLabel": "Username",
     "usernamePlaceholder": "Choose a username",
     "usernameHint": "Use letters and numbers. You'll need it to access the panel when your session expires.",
@@ -1088,7 +1090,10 @@
     "underlineLinks": "Underline all links",
     "bigCursor": "Big cursor",
     "desaturate": "Grayscale",
-    "strongFocus": "Visible focus indicators"
+    "strongFocus": "Visible focus indicators",
+    "animationsTitle": "Animations",
+    "animationsHint": "Turn off specific animations on your device. The couple decides the base; you can disable more (you cannot re-enable the ones they turned off).",
+    "animationsReset": "Reset my settings"
   },
   "music": {
     "noMusic": "No music",
@@ -1594,5 +1599,202 @@
     "capacityValue": "Seats",
     "guestValue": "Guest",
     "sheetTables": "Tables"
+  },
+  "animations": {
+    "sectionTitle": "Invitation animations",
+    "sectionHint": "Choose which animations play in the invitation, from the envelope to the most minor ones. Each checked box means the animation plays; untick the ones you want to keep static for all guests.",
+    "allOn": "Enable all",
+    "allOff": "Disable all",
+    "groupAll": "All",
+    "groupNone": "None",
+    "lockedByAdmin": "Turned off by the couple: you cannot re-enable it.",
+    "groups": {
+      "envelope": "Envelope",
+      "confetti": "Confetti",
+      "welcomeVideo": "Welcome video",
+      "decorations": "Decorations",
+      "navigation": "Navigation",
+      "fireflies": "Fireflies",
+      "music": "Music",
+      "hero": "Cover",
+      "gallery": "Gallery",
+      "micro": "Micro-interactions",
+      "background": "Backgrounds",
+      "toasts": "Notifications"
+    },
+    "items": {
+      "envelope-flap": {
+        "name": "Envelope flap opening",
+        "hint": "On first tap the envelope flap opens with a 3D rotation. Turning it off opens the invitation directly with a single tap."
+      },
+      "envelope-lights": {
+        "name": "Light halos around the envelope",
+        "hint": "Three golden halos orbit around the closed envelope, adding a warm glow."
+      },
+      "envelope-flash": {
+        "name": "White flash on opening",
+        "hint": "A full-screen white flash lights the transition right after the flap opens."
+      },
+      "envelope-golden-text": {
+        "name": "Golden welcome text",
+        "hint": "The golden message rises with a pulsing glow when the envelope opens and fades out on entry. Without it, that message is not shown."
+      },
+      "envelope-hint-pulse": {
+        "name": "“Tap to open” text pulse",
+        "hint": "The helper text that explains how to open the envelope pulses softly to draw attention."
+      },
+      "envelope-letter-fade": {
+        "name": "Inner letter fade",
+        "hint": "The letter inside the envelope fades away when the flap opens to reveal the content."
+      },
+      "envelope-overlay-fade": {
+        "name": "Envelope fade-out",
+        "hint": "When finished, the whole envelope fades out (opacity and blur) to reveal the invitation."
+      },
+      "confetti-fall": {
+        "name": "Confetti shower on entry",
+        "hint": "48 colorful pieces fall once behind the invitation on entry, as a celebration."
+      },
+      "welcome-video-modal": {
+        "name": "Welcome video enter/exit",
+        "hint": "The frame where the welcome video plays appears and disappears with a smooth motion and fade."
+      },
+      "decoration-sway": {
+        "name": "Eucalyptus branches sway",
+        "hint": "The decorative side branches sway softly, as if blown by the wind, throughout the invitation."
+      },
+      "decoration-float": {
+        "name": "Branches floating",
+        "hint": "A very subtle vertical motion of the decorative branches while you are in their section."
+      },
+      "story-transitions": {
+        "name": "Section transitions",
+        "hint": "On scroll, each section blurs, shifts and changes opacity depending on how close it is to the center of the screen."
+      },
+      "story-reveal": {
+        "name": "3D card entrance",
+        "hint": "When the envelope opens, the first section enters with a small 3D rotation and blur that dissipates."
+      },
+      "story-smooth-scroll": {
+        "name": "Smooth scrolling",
+        "hint": "Scrolling between sections glides with a smooth acceleration instead of jumping abruptly."
+      },
+      "story-snap": {
+        "name": "Section auto-centering",
+        "hint": "When you stop scrolling near a section, the invitation slides by itself to center it on screen."
+      },
+      "story-hover": {
+        "name": "Section lift on hover",
+        "hint": "The active section lifts slightly with a shadow when you hover over it."
+      },
+      "fireflies": {
+        "name": "Fireflies drifting",
+        "hint": "20 fireflies with a light halo drift slowly across the background of the screen."
+      },
+      "music-equalizer": {
+        "name": "Equalizer bars",
+        "hint": "Three bars move like an equalizer on the music button while the song plays."
+      },
+      "music-fab-pulse": {
+        "name": "Music button pulse",
+        "hint": "A pulsing halo surrounds the floating music button while audio is playing."
+      },
+      "music-card-open": {
+        "name": "Player opening",
+        "hint": "The music player panel unfolds with a soft scale when you tap the button."
+      },
+      "music-icon-bounce": {
+        "name": "Music icon bounce",
+        "hint": "The musical note icon bounces when you open or close the player."
+      },
+      "music-fab-shift": {
+        "name": "Music button shift",
+        "hint": "The floating button slides aside when the player opens so it does not cover it."
+      },
+      "music-dot-blink": {
+        "name": "Music notification dot",
+        "hint": "The dot that signals an error or the audio state blinks softly."
+      },
+      "music-play-glow": {
+        "name": "Play button glow",
+        "hint": "The player's play/pause button emits a softly pulsing glow."
+      },
+      "music-spinner": {
+        "name": "Music loading spinner",
+        "hint": "A spinner rotates on the button while the song is loading."
+      },
+      "music-fab-hover": {
+        "name": "Music button scale on hover",
+        "hint": "The floating button grows slightly when you hover over it."
+      },
+      "music-status-shake": {
+        "name": "Music error shake",
+        "hint": "The load-error message shakes to draw attention."
+      },
+      "hero-photo-ring": {
+        "name": "Golden photo ring",
+        "hint": "A golden ring pulses around the couple's photo on the cover."
+      },
+      "hero-godparent-glow": {
+        "name": "Godparents glow",
+        "hint": "The text with the godparents' names emits a warm pulsing glow."
+      },
+      "hero-photo-fade": {
+        "name": "Photo fade-in",
+        "hint": "The cover photo appears with a smooth fade once it finishes loading."
+      },
+      "countdown-tick": {
+        "name": "Live countdown",
+        "hint": "The remaining-time counter updates every second. When off, the static initial value is shown."
+      },
+      "loading-spinner": {
+        "name": "Loading spinners",
+        "hint": "The spinning wheels shown while the cover photo and other content load."
+      },
+      "gallery-blur": {
+        "name": "Blurred photo change",
+        "hint": "When browsing the gallery, the previous photo blurs out while the new one comes in sharp."
+      },
+      "gallery-caption": {
+        "name": "Photo caption entry",
+        "hint": "Each photo's description appears with a small upward slide."
+      },
+      "gallery-lightbox": {
+        "name": "Photo viewer opening",
+        "hint": "The gallery's full-screen viewer appears with a fade-in."
+      },
+      "gallery-thumb-hover": {
+        "name": "Thumbnail scale on hover",
+        "hint": "Gallery thumbnails grow slightly when you hover over them."
+      },
+      "gallery-nav-hover": {
+        "name": "Gallery arrows scale on hover",
+        "hint": "The gallery navigation arrows grow when you hover over them."
+      },
+      "gallery-auto-advance": {
+        "name": "Automatic carousel advance",
+        "hint": "The gallery advances every 5 seconds. When off, it only changes when you tap the arrows."
+      },
+      "button-hover": {
+        "name": "Button lift",
+        "hint": "Invitation buttons (confirm RSVP, share, send...) lift slightly with a shadow on hover."
+      },
+      "reaction-hover": {
+        "name": "Reactions scale on hover",
+        "hint": "The reaction buttons (❤️ 🎉 😂) grow slightly when you hover over them."
+      },
+      "theme-glow-depth": {
+        "name": "Background glow",
+        "hint": "A light glow slowly sweeps the invitation background for a sense of depth."
+      },
+      "landing-pulse": {
+        "name": "Loading screens pulse",
+        "hint": "The background of loading, error and maintenance screens pulses softly."
+      },
+      "toast-animations": {
+        "name": "Floating notifications",
+        "hint": "Brief notifications (confirmations, errors...) appear and disappear with a slide."
+      }
+    }
   }
 }
