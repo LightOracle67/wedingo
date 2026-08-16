@@ -168,7 +168,7 @@ describe("useSetupAuth", () => {
       expect(result.current.isTokenVerifying).toBe(false);
     });
 
-    it("proceeds even when activateSessionWithToken returns null (session exists but user cancels)", async () => {
+    it("does not log in when the user cancels overriding an existing session", async () => {
       mockGetDoc.mockImplementation(async (ref: unknown) => {
         if (String(ref).startsWith("token-ref-")) {
           return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };
@@ -183,9 +183,9 @@ describe("useSetupAuth", () => {
         await result.current.handleTokenLogin();
       });
 
-      // handleTokenLogin does not check the return value of activateSessionWithToken,
-      // so isTokenVerified becomes true even when user cancels session override
-      expect(result.current.isTokenVerified).toBe(true);
+      // El usuario canceló la sustitución de la sesión activa: no se loguea.
+      expect(window.confirm).toHaveBeenCalled();
+      expect(result.current.isTokenVerified).toBe(false);
     });
 
     it("confirms overriding an existing session and logs in", async () => {
@@ -195,16 +195,6 @@ describe("useSetupAuth", () => {
         }
         return { exists: () => true, data: () => ({ activeSession: true }) };
       });
-      mockRunTransaction
-        .mockRejectedValueOnce(new Error("sessionExists"))
-        .mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
-          const transaction = {
-            get: vi.fn().mockResolvedValue({ exists: () => true, data: () => ({}) }),
-            update: vi.fn(),
-          };
-          await cb(transaction);
-          return Promise.resolve();
-        });
       window.confirm = vi.fn(() => true);
       const { result } = setup();
       act(() => result.current.setSetupTokenInput("valid-token"));
@@ -218,17 +208,13 @@ describe("useSetupAuth", () => {
 
     it("confirms and replaces an existing active session", async () => {
       // La invitación ya tiene una sesión activa: se pregunta al usuario y,
-      // si confirma, se sustituye (cubre el flujo sessionExists).
-      mockRunTransaction.mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
-        const transaction = {
-          get: vi.fn().mockResolvedValue({
-            exists: () => true,
-            data: () => ({ activeSession: true, _activeSetupToken: "valid-token" }),
-          }),
-          update: vi.fn(),
-        };
-        await cb(transaction);
-        return undefined as unknown as void;
+      // si confirma, se sustituye (la activación usa updateDoc, no transacción).
+      mockUpdateDoc.mockReset();
+      mockGetDoc.mockImplementation(async (ref: unknown) => {
+        if (String(ref).startsWith("token-ref-")) {
+          return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };
+        }
+        return { exists: () => true, data: () => ({ activeSession: true, adminUsername: "admin" }) };
       });
       window.confirm = vi.fn(() => true);
       const { result } = setup();
@@ -239,6 +225,7 @@ describe("useSetupAuth", () => {
       });
 
       expect(window.confirm).toHaveBeenCalled();
+      expect(mockUpdateDoc).toHaveBeenCalled();
       expect(result.current.isTokenVerified).toBe(true);
     });
 
@@ -247,19 +234,9 @@ describe("useSetupAuth", () => {
         if (String(ref).startsWith("token-ref-")) {
           return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };
         }
-        return { exists: () => true, data: () => ({ _activeSetupToken: "valid-token" }) };
+        // La invitación NO existe: la activación falla sin recrearla.
+        return { exists: () => false };
       });
-      const setSpy = vi.fn();
-      mockRunTransaction.mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
-        const transaction = {
-          get: vi.fn().mockResolvedValue({ exists: () => false }),
-          set: setSpy,
-          update: vi.fn(),
-        };
-        await cb(transaction);
-        return Promise.resolve();
-      });
-
       const { result } = setup();
       act(() => result.current.setSetupTokenInput("valid-token"));
 
@@ -269,7 +246,6 @@ describe("useSetupAuth", () => {
 
       // No se recrea la invitación con defaultConfig (las reglas lo rechazan):
       // se avisa de que ya no existe.
-      expect(setSpy).not.toHaveBeenCalled();
       expect(result.current.isTokenVerified).toBe(false);
       expect(result.current.authMessage).toBe("auth.inviteNotFound");
     });
@@ -392,9 +368,11 @@ describe("useSetupAuth", () => {
     });
 
     it("handles codeUserMismatch error during admin login", async () => {
+      // El adminUsername de la invitación difiere del introducido: la
+      // activación (getDoc + updateDoc) lanza codeUserMismatch.
       mockGetDoc.mockResolvedValue({
         exists: () => true,
-        data: () => ({ _activeSetupToken: "admin-token" }),
+        data: () => ({ _activeSetupToken: "admin-token", adminUsername: "other" }),
       });
       window.confirm = vi.fn(() => true);
 
@@ -402,8 +380,6 @@ describe("useSetupAuth", () => {
       const { result } = setup({ config });
       act(() => result.current.setAdminLoginUsername("admin"));
       act(() => result.current.setSetupTokenInput("admin-token"));
-
-      mockRunTransaction.mockRejectedValue(new Error("codeUserMismatch"));
 
       await act(async () => {
         await result.current.handleAdminTokenLogin();
@@ -854,25 +830,16 @@ describe("useSetupAuth", () => {
     });
 
     it("handles renewal update error gracefully", async () => {
-      mockUpdateDoc.mockImplementation((_ref: unknown, payload?: unknown) => {
-        if (payload && typeof payload === "object" && "sessionExpiresAt" in payload) {
-          return Promise.reject(new Error("Renew error"));
-        }
-        return Promise.resolve();
-      });
+      // El login ahora también usa updateDoc (la activación ya no es una
+      // transacción): la 1ª llamada (login) resuelve; la renovación falla.
+      mockUpdateDoc.mockReset();
+      mockUpdateDoc.mockResolvedValueOnce();
+      mockUpdateDoc.mockRejectedValue(new Error("Renew error"));
       mockGetDoc.mockImplementation(async (ref: unknown) => {
         if (String(ref).startsWith("token-ref-")) {
           return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };
         }
         return { exists: () => true, data: () => ({ _activeSetupToken: "tok" }) };
-      });
-      mockRunTransaction.mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
-        const transaction = {
-          get: vi.fn().mockResolvedValue({ exists: () => true, data: () => ({ _activeSetupToken: "tok" }) }),
-          update: vi.fn(),
-        };
-        await cb(transaction);
-        return Promise.resolve();
       });
 
       const setAdminMessage = vi.fn();
@@ -891,22 +858,11 @@ describe("useSetupAuth", () => {
     it("cuts the session after two consecutive renewal failures", async () => {
       // Sesión zombi: si la renovación de Firestore falla dos veces seguidas
       // (reloj/reglas/red), se cierra la sesión en lugar de quedar "logada"
-      // sin permisos.
-      mockUpdateDoc.mockImplementation((_ref: unknown, payload?: unknown) => {
-        if (payload && typeof payload === "object" && "sessionExpiresAt" in payload) {
-          return Promise.reject(new Error("Renew error"));
-        }
-        return Promise.resolve();
-      });
+      // sin permisos. El login (1ª updateDoc) resuelve; las renovaciones fallan.
+      mockUpdateDoc.mockReset();
+      mockUpdateDoc.mockResolvedValueOnce();
+      mockUpdateDoc.mockRejectedValue(new Error("Renew error"));
       mockGetDoc.mockResolvedValue({ exists: () => true, data: () => ({ _activeSetupToken: "tok" }) });
-      mockRunTransaction.mockImplementation(async (_db: unknown, cb: (t: unknown) => Promise<void>) => {
-        const transaction = {
-          get: vi.fn().mockResolvedValue({ exists: () => true, data: () => ({ _activeSetupToken: "tok" }) }),
-          update: vi.fn(),
-        };
-        await cb(transaction);
-        return Promise.resolve();
-      });
 
       const { result } = setup();
       act(() => result.current.setSetupTokenInput("tok"));
@@ -930,12 +886,10 @@ describe("useSetupAuth", () => {
     });
 
     it("does not throw on renewal failure without message callbacks", async () => {
-      mockUpdateDoc.mockImplementation((_ref: unknown, payload?: unknown) => {
-        if (payload && typeof payload === "object" && "sessionExpiresAt" in payload) {
-          return Promise.reject(new Error("Renew error"));
-        }
-        return Promise.resolve();
-      });
+      // El login (1ª updateDoc) resuelve; la renovación falla sin callbacks.
+      mockUpdateDoc.mockReset();
+      mockUpdateDoc.mockResolvedValueOnce();
+      mockUpdateDoc.mockRejectedValue(new Error("Renew error"));
       mockGetDoc.mockImplementation(async (ref: unknown) => {
         if (String(ref).startsWith("token-ref-")) {
           return { exists: () => true, data: () => ({ inviteToken: "test-invite-token" }) };

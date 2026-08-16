@@ -3,7 +3,7 @@ export const CHANGELOG = [
     version: "2.99.2",
     date: "2026-08-16",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "FIX sesión (parte 2): el login (LandingPage y activateSessionWithToken) deja de usar runTransaction y activa la sesión con getDoc + updateDoc. En el runtime real de Firestore, escribir una sesión por transacción (currentDocument.updateTime) sobre una sesión YA existente es rechazado por las reglas (el emulador sí lo acepta), lo que bloqueaba el login cuando el invitado confirmaba sustituir la sesión activa. Se mantiene la confirmación previa y la escritura directa funciona sobre sesión existente o inexistente.",
     ],
   },
 

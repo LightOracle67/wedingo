@@ -17,7 +17,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
-import { getDoc, runTransaction, serverTimestamp, updateDoc, addDoc, collection, type DocumentData } from "firebase/firestore";
+import { getDoc, serverTimestamp, updateDoc, addDoc, collection, type DocumentData } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
 import { generateSetupToken, normalizeTokenValue } from "../lib/token-utils";
 import { createSetupTokenRecord, deleteSetupTokenRecord, hashSetupToken, setupTokenRef } from "../lib/setup-token";
@@ -331,9 +331,9 @@ export function useSetupAuth(
   );
 
   /**
-   * Intenta activar la sesiÃ³n usando un token de setup.
-   * Verifica el token contra la colecciÃ³n setupTokens (hash) y activa la
-   * sesiÃ³n. Retorna el username del token (si existe) o lanza error.
+   * Intenta activar la sesión usando un token de setup.
+   * Verifica el token contra la colección setupTokens (hash) y activa la
+   * sesión. Retorna el username del token (si existe) o lanza error.
    */
   const activateSessionWithToken = useCallback(
     async (enteredToken: string, _validateToken?: (tokenDoc: DocumentData, tu: string) => void) => {
@@ -341,59 +341,39 @@ export function useSetupAuth(
       const normalized = normalizeTokenValue(enteredToken);
       const tokenHash = await hashSetupToken(normalized);
 
-      // VerificaciÃ³n temprana: el token debe tener registro en setupTokens.
+      // Verificación temprana: el token debe tener registro en setupTokens.
       const tokenRecord = await getDoc(setupTokenRef(tokenHash));
       if (!tokenRecord.exists()) {
         throw new Error("Token no vÃ¡lido");
       }
 
-      let userConfirmed = false;
-
-      // eslint-disable-next-line no-constant-condition
-      while (true) {
-        try {
-          const outcome = await runTransaction(db, async (transaction) => {
-            const inviteSnap = await transaction.get(inviteRef);
-            if (!inviteSnap.exists()) {
-              // La invitaciÃ³n se crea en la landing antes del login: si no
-              // existe (borrada o token huÃ©rfano) no se recrea con defaultConfig
-              // (firstName vacÃ­o) porque las reglas lo rechazarÃ­an. Mejor un
-              // error claro que una escritura denegada en bucle.
-              throw new Error("inviteNotFound");
-            }
-
-            const data = inviteSnap.data();
-            if (data.activeSession && !userConfirmed) {
-              throw new Error("sessionExists");
-            }
-            if (!tokenRecord.exists()) throw new Error("Token no vÃ¡lido");
-            if (_validateToken) _validateToken(data, data.adminUsername);
-            const sessionUpdate: Record<string, unknown> = {
-              // Timestamp explícito del cliente (ver comentario de repair).
-              activeSession: new Date(),
-              sessionExpiresAt: firestoreSessionExpiry(),
-              setupTokenHash: tokenHash,
-            };
-            transaction.update(inviteRef, sessionUpdate);
-            return "";
-          });
-          return outcome;
-        } catch (err) {
-          if ((err as Error)?.message === "sessionExists") {
-            setIsTokenVerifying(false);
-            userConfirmed = window.confirm(t("auth.sessionExists"));
-            setIsTokenVerifying(true);
-            if (!userConfirmed) return null;
-          } else if ((err as Error)?.message === "inviteNotFound") {
-            // Token huÃ©rfano: la invitaciÃ³n ya no existe (borrada o nunca
-            // guardada). No se puede abrir sesiÃ³n sobre un doc inexistente.
-            setIsTokenVerifying(false);
-            throw new Error("inviteNotFound");
-          } else {
-            throw err;
-          }
-        }
+      // Lectura previa del documento (NO transacción): una escritura de sesión
+      // vía runTransaction con currentDocument.updateTime sobre una sesión YA
+      // existente es rechazada por las reglas en el runtime real de Firestore
+      // (el emulador sí la acepta). updateDoc funciona en todos los casos y la
+      // activación sigue siendo idempotente (las reglas exigen setupTokenValid).
+      const inviteSnap = await getDoc(inviteRef);
+      if (!inviteSnap.exists()) {
+        throw new Error("inviteNotFound");
       }
+      const data = inviteSnap.data();
+      if (data.activeSession) {
+        setIsTokenVerifying(false);
+        const userConfirmed = window.confirm(t("auth.sessionExists"));
+        setIsTokenVerifying(true);
+        if (!userConfirmed) return null;
+      }
+      if (!tokenRecord.exists()) throw new Error("Token no vÃ¡lido");
+      if (_validateToken) _validateToken(data, data.adminUsername);
+
+      // Timestamp explícito del cliente (ver comentario en repair): la regla
+      // exige `activeSession is timestamp` y serverTimestamp() no lo cumple.
+      await updateDoc(inviteRef, {
+        activeSession: new Date(),
+        sessionExpiresAt: firestoreSessionExpiry(),
+        setupTokenHash: tokenHash,
+      });
+      return "";
     },
     [inviteToken, t],
   );

@@ -106,7 +106,9 @@ vi.mock("../../lib/platform-settings", () => ({
 import LandingPage from "../LandingPage";
 
 beforeEach(() => {
-  vi.clearAllMocks();
+  // resetAllMocks (no clearAllMocks): los mockResolvedValue/mockRejectedValue
+  // de updateDoc/getDoc fijados por un test no deben contaminar el siguiente.
+  vi.resetAllMocks();
   mockFindInviteBySetupToken.mockResolvedValue(null);
   mockHashSetupToken.mockResolvedValue("mock-hash");
   mockCreateSetupTokenRecord.mockResolvedValue("mock-hash");
@@ -303,21 +305,14 @@ describe("LandingPage", () => {
     expect(screen.queryByText("landing.modalTitle")).toBeNull();
   });
 
-  it("handles transaction update path when invite exists", async () => {
+  it("handles session write path when invite exists", async () => {
     mockFindInviteBySetupToken.mockResolvedValue("target-invite");
-    const { getDoc, runTransaction } = await import("firebase/firestore");
+    const { getDoc, updateDoc } = await import("firebase/firestore");
     vi.mocked(getDoc).mockResolvedValue({
-      exists: () => false,
+      exists: () => true,
       data: () => ({}),
     } as any);
-    const txUpdate = vi.fn();
-    vi.mocked(runTransaction).mockImplementation(async (_db: any, cb: any) => {
-      await cb({
-        get: vi.fn().mockResolvedValue({ exists: () => true, data: () => ({}) }),
-        set: vi.fn(),
-        update: txUpdate,
-      });
-    });
+    vi.mocked(updateDoc).mockResolvedValue(undefined as never);
 
     render(<LandingPage />);
     fireEvent.click(screen.getByText("landing.haveInvitation"));
@@ -326,18 +321,18 @@ describe("LandingPage", () => {
     const form = screen.getByRole("dialog").querySelector("form")!;
     fireEvent.submit(form);
     await vi.waitFor(() => {
-      expect(txUpdate).toHaveBeenCalled();
+      expect(updateDoc).toHaveBeenCalled();
     });
   });
 
-  it("shows error on transaction failure", async () => {
+  it("shows error on session write failure", async () => {
     mockFindInviteBySetupToken.mockResolvedValue("target-invite");
-    const { getDoc, runTransaction } = await import("firebase/firestore");
+    const { getDoc, updateDoc } = await import("firebase/firestore");
     vi.mocked(getDoc).mockResolvedValue({
-      exists: () => false,
+      exists: () => true,
       data: () => ({}),
     } as any);
-    vi.mocked(runTransaction).mockRejectedValue(new Error("tx failed"));
+    vi.mocked(updateDoc).mockRejectedValue(new Error("tx failed"));
 
     render(<LandingPage />);
     fireEvent.click(screen.getByText("landing.haveInvitation"));

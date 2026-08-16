@@ -1,10 +1,10 @@
 import { useAuth } from "../contexts";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { getDoc, runTransaction } from "firebase/firestore";
+import { getDoc, updateDoc } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { STORAGE_KEYS } from "../lib/storage-keys";
-import { db, invitationDocRef } from "../lib/firebase";
+import { invitationDocRef } from "../lib/firebase";
 import { normalizeTokenValue, generateSetupToken } from "../lib/token-utils";
 import { usePlatformSettings } from "../lib/platform-settings";
 import { generateInviteToken } from "../lib/utils";
@@ -167,31 +167,33 @@ export default function LandingPage() {
         setIsLoading(true);
       }
 
-      // Prueba de conocimiento del token para activar la sesiÃ³n.
+      // Prueba de conocimiento del token para activar la sesión.
       const tokenHash = await hashSetupToken(normalized);
 
       try {
-        await runTransaction(db, async (transaction) => {
-          const inviteRefInTx = invitationDocRef(target);
-          const inviteSnapInTx = await transaction.get(inviteRefInTx);
-          // La sesión solo se renueva sobre una invitación que ya existe: si el
-          // documento aún no se ha guardado (token huérfano), la sesión se
-          // activará en el primer guardado del setup. Crear aquí la invitación
-          // con campos de sesión está prohibido por las reglas (no se puede
-          // auto-provisionar una sesión en el create).
-          if (inviteSnapInTx.exists()) {
-            transaction.update(inviteRefInTx, {
-              // Timestamp explícito del cliente: la regla de sesión exige
-              // `activeSession is timestamp` y serverTimestamp() (REQUEST_TIME)
-              // no lo satisface en el runtime real de producción.
-              activeSession: new Date(),
-              sessionExpiresAt: firestoreSessionExpiry(),
-              setupTokenHash: tokenHash,
-            });
-          }
-        });
+        // Escritura directa con updateDoc (NO transacción): una sesión ya
+        // existente se rechaza en producción si se escribe vía runTransaction
+        // con currentDocument.updateTime (el emulador sí la acepta). updateDoc
+        // funciona sobre sesión existente o inexistente por igual.
+        const inviteRef = invitationDocRef(target);
+        const inviteSnap = await getDoc(inviteRef);
+        // La sesión solo se renueva sobre una invitación que ya existe: si el
+        // documento aún no se ha guardado (token huérfano), la sesión se
+        // activará en el primer guardado del setup. Crear aquí la invitación
+        // con campos de sesión está prohibido por las reglas (no se puede
+        // auto-provisionar una sesión en el create).
+        if (inviteSnap.exists()) {
+          await updateDoc(inviteRef, {
+            // Timestamp explícito del cliente: la regla de sesión exige
+            // `activeSession is timestamp` y serverTimestamp() (REQUEST_TIME)
+            // no lo satisface en el runtime real de producción.
+            activeSession: new Date(),
+            sessionExpiresAt: firestoreSessionExpiry(),
+            setupTokenHash: tokenHash,
+          });
+        }
       } catch (err) {
-        console.error("[app]", "[LandingPage]", "transaction failed", { error: err });
+        console.error("[app]", "[LandingPage]", "session activation failed", { error: err });
         setError(t("landing.errorTransactionFailed"));
         loginAttemptsRef.current++;
         if (loginAttemptsRef.current >= 3) {
