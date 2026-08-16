@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Pagination from "../../components/Pagination";
+import EmptyState from "../../components/EmptyState";
 import { useToast } from "../../hooks/useToast";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { SortableTh } from "../../components/SortableTh";
@@ -311,6 +312,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
         {filterEntries.length > 0 ? (
           <div className="admin-table-wrapper" style={{ overflowX: "auto" }}>
             <table className="admin-table" style={{ fontSize: "0.8rem", minWidth: "800px" }}>
+              <caption className="admin-table__caption">{t("attendance.tableTitle")}</caption>
               <thead>
                 <tr>
                   <th scope="col" style={{ width: "2rem" }}>
@@ -500,8 +502,10 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
               onPageSizeChange={setPageSize}
             />
           </div>
+        ) : searchQuery ? (
+          <EmptyState title={t("attendance.noResultsFilter")} description={t("attendance.noResultsFilterHint")} />
         ) : (
-          <p className="setup-help">{searchQuery ? t("attendance.noResultsFilter") : t("attendance.noResults")}</p>
+          <EmptyState title={t("attendance.noResults")} />
         )}
       </div>
 

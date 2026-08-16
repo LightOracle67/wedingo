@@ -115,6 +115,7 @@ const ComplianceTab = memo(function ComplianceTab() {
 
       <div className="setup-background-panel" style={{ marginBottom: "0.75rem", overflowX: "auto" }}>
         <table className="admin-table" style={{ fontSize: "0.8rem", width: "100%", borderCollapse: "collapse" }}>
+          <caption className="admin-table__caption">{t("compliance.tableTitle")}</caption>
           <thead>
             <tr>
               <SortableTh columnKey="activity" order={getIndicator("activity")} onSort={toggleSort} style={thStyle}>

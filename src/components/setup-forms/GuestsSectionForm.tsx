@@ -70,15 +70,7 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
             <label
               key={value}
               className="setup-checkbox-label"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.4rem",
-                padding: "0.35rem 0",
-                cursor: "pointer",
-                fontSize: "0.9rem",
-                color: "var(--setup-title)",
-              }}
+              style={{ padding: "0.35rem 0" }}
             >
               <input
                 id={id("kids-" + value)}
@@ -86,7 +78,6 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
                 checked={kidsPolicy === value}
                 onChange={handleKidsPolicyChange}
                 value={value}
-                style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
               />
               {t(key)}
             </label>
@@ -115,15 +106,7 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
             <label
               key={value}
               className="setup-checkbox-label"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.4rem",
-                padding: "0.35rem 0",
-                cursor: "pointer",
-                fontSize: "0.9rem",
-                color: "var(--setup-title)",
-              }}
+              style={{ padding: "0.35rem 0" }}
             >
               <input
                 id={id(
@@ -137,7 +120,6 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
                 type="checkbox"
                 checked={weddingDressCode === value}
                 onChange={() => handleDressCodeChange(value)}
-                style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
               />
               {t(key)}
             </label>
@@ -173,22 +155,13 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
 
       <label
         className="setup-checkbox-label"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "0.5rem",
-          color: "var(--setup-title)",
-          fontSize: "0.9rem",
-          cursor: "pointer",
-          marginBottom: "0.5rem",
-        }}
+        style={{ marginBottom: "0.5rem" }}
       >
         <input
           id={id("menuEnabled")}
           type="checkbox"
           checked={menuEnabled === "true"}
           onChange={handleMenuEnabledChange}
-          style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
         />
         <span>{t("setup.menuEnabledLabel")}</span>
       </label>

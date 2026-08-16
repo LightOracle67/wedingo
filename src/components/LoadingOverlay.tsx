@@ -5,6 +5,8 @@ const LoadingOverlay = memo(function LoadingOverlay({ visible, zIndex }: { visib
   return (
     <div
       className="page-loading loading-overlay"
+      role="status"
+      aria-label="loading"
       style={{
         position: "absolute",
         inset: 0,

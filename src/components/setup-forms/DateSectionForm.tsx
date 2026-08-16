@@ -146,24 +146,12 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
           onChange={(v) => updateFormField("detailsMapMode", v)}
           hintId={id("mapModeHint")}
         />
-        <label
-          className="setup-checkbox-label"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-            color: "var(--setup-title)",
-            fontSize: "0.9rem",
-            cursor: "pointer",
-            marginTop: "1.5rem",
-          }}
-        >
+        <label className="setup-checkbox-label" style={{ marginTop: "1.5rem" }}>
           <input
             id={id("weddingMapStatic")}
             type="checkbox"
             checked={weddingMapStatic === "true"}
             onChange={(e) => updateFormField("weddingMapStatic", e.target.checked ? "true" : "false")}
-            style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
             aria-describedby={weddingMapStatic === "true" ? id("mapStaticHint") : undefined}
           />
           <span>{t("setup.mapStaticLabel")}</span>

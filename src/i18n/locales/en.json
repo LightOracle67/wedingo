@@ -39,7 +39,8 @@
     "translate": "Translate",
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "requireText": "Type {{text}} to confirm"
+    "requireText": "Type {{text}} to confirm",
+    "remainingChars": "{{remaining}} remaining"
   },
   "landing": {
     "title": "Wedingo — Wedding invitations",
@@ -593,7 +594,9 @@
     "filterYes": "Attending",
     "filterNo": "Not attending",
     "tableContact": "Contact",
-    "contactConsentOnly": "Consent only"
+    "contactConsentOnly": "Consent only",
+    "tableTitle": "Attendance list",
+    "noResultsFilterHint": "Try a different name or clear the filter."
   },
   "share": {
     "publishedAt": "Your invitation is published at:",
@@ -1042,7 +1045,9 @@
     "tokenConflictsTitle": "Token conflicts detected",
     "tokenConflictsLegacy": "Legacy tokens duplicated between invitations",
     "tokenConflictsHash": "Multiple hashes point to the same invitation",
-    "noResultsFilterHint": "Try a different search term or clear the filters."
+    "noResultsFilterHint": "Try a different search term or clear the filters.",
+    "tokensTableTitle": "Access tokens",
+    "invitationsTableTitle": "Invitations"
   },
   "compliance": {
     "title": "Record of processing activities (Art. 30 GDPR)",
@@ -1096,7 +1101,8 @@
     "measureSuperadmin": "Superadmin protected by Firebase Authentication + hidden route",
     "templatesTitle": "Privacy clause templates by country",
     "templatesHelp": "Ready-to-adapt summaries to copy into each invitation policy.",
-    "copyTemplate": "Copy"
+    "copyTemplate": "Copy",
+    "tableTitle": "Activity and consent record"
   },
   "a11y": {
     "title": "Accessibility",

@@ -14,7 +14,7 @@
  * @param rows   - Filas ya filtradas (la ordenación se aplica después de filtrar).
  * @param columns- Definición de columnas (key + type + getValue opcional).
  */
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 
 export type SortOrder = "asc" | "desc" | "default";
 export type ColumnType = "string" | "number" | "date" | "boolean";
@@ -60,14 +60,19 @@ export function useColumnSort<T>(rows: T[], columns: SortableColumn<T>[]) {
   const [sortOrder, setSortOrder] = useState<SortOrder>("default");
 
   // Ciclo asc → desc → default al pulsar la misma columna; columna nueva → asc.
-  const toggleSort = (key: string) => {
-    if (sortKey !== key) {
-      setSortKey(key);
-      setSortOrder("asc");
-      return;
-    }
-    setSortOrder((order) => (order === "asc" ? "desc" : "default"));
-  };
+  // Memoizado: solo cambia cuando cambia la columna ordenada (raro), no en
+  // cada render de la tabla (p. ej. al filtrar).
+  const toggleSort = useCallback(
+    (key: string) => {
+      if (sortKey !== key) {
+        setSortKey(key);
+        setSortOrder("asc");
+        return;
+      }
+      setSortOrder((order) => (order === "asc" ? "desc" : "default"));
+    },
+    [sortKey],
+  );
 
   const sorted = useMemo(() => {
     if (!sortKey || sortOrder === "default") return rows;
@@ -89,7 +94,10 @@ export function useColumnSort<T>(rows: T[], columns: SortableColumn<T>[]) {
   }, [rows, sortKey, sortOrder, columns]);
 
   // Estado de orden para un encabezado: "asc" | "desc" | "default".
-  const getIndicator = (key: string): SortOrder => (sortKey === key ? sortOrder : "default");
+  const getIndicator = useCallback((key: string): SortOrder => (sortKey === key ? sortOrder : "default"), [
+    sortKey,
+    sortOrder,
+  ]);
 
   return { sorted, sortKey, sortOrder, toggleSort, getIndicator };
 }

@@ -37,7 +37,11 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
   const [loading, setLoading] = useState(true);
   const [uploadingSlots, setUploadingSlots] = useState<Set<number>>(new Set<number>());
   const slotsRef = useRef<(SlotState | null)[]>(slots);
-  slotsRef.current = slots;
+  // Se sincroniza en un efecto (no durante el render: escribir una ref en el
+  // render puede quedar desincronizado en concurrent mode).
+  useEffect(() => {
+    slotsRef.current = slots;
+  }, [slots]);
 
   const loadGallery = useCallback(async () => {
     if (!inviteToken) {

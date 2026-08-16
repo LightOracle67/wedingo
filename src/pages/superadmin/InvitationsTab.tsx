@@ -240,6 +240,7 @@ const InvitationsTab = memo(function InvitationsTab() {
             </TableActionsBar>
             <div className="admin-table-wrapper">
               <table className="admin-table">
+                <caption className="admin-table__caption">{t("superadmin.invitationsTableTitle")}</caption>
                 <thead>
                   <tr>
                     <th scope="col" style={{ width: "2rem" }} />

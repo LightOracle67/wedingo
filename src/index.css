@@ -1185,7 +1185,6 @@ body {
   background-size: cover;
   background-attachment: scroll;
   color: #f7f2e8;
-  animation: body-fade-in 800ms ease-out both;
   scroll-behavior: smooth;
   transition:
     color 280ms ease,

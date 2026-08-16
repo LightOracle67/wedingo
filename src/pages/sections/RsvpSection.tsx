@@ -349,7 +349,7 @@ const RsvpSection = memo(function RsvpSection({
                 border: "1px solid color-mix(in srgb, var(--setup-accent) 30%, transparent)",
               }}
             >
-              <p style={{ color: "var(--setup-accent)", fontWeight: 600, fontSize: "0.95rem", margin: 0 }}>
+              <p style={{ color: "var(--setup-accent)", fontWeight: 600, fontSize: "0.95rem", margin: 0 }} role="status">
                 {t("rsvp.alreadySubmitted")}
               </p>
             </div>

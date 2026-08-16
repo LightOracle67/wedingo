@@ -39,7 +39,8 @@
     "translate": "Traducir",
     "cancel": "Cancelar",
     "confirm": "Confirmar",
-    "requireText": "Escribe {{text}} para confirmar"
+    "requireText": "Escribe {{text}} para confirmar",
+    "remainingChars": "{{remaining}} restantes"
   },
   "landing": {
     "title": "Wedingo — Invitaciones de boda",
@@ -593,7 +594,9 @@
     "filterYes": "Confirman",
     "filterNo": "No asisten",
     "tableContact": "Contacto",
-    "contactConsentOnly": "Solo consentimiento"
+    "contactConsentOnly": "Solo consentimiento",
+    "tableTitle": "Lista de asistencia",
+    "noResultsFilterHint": "Prueba con otro nombre o quita el filtro."
   },
   "share": {
     "publishedAt": "Tu invitación está publicada en:",
@@ -1042,7 +1045,9 @@
     "tokenConflictsTitle": "Conflictos de tokens detectados",
     "tokenConflictsLegacy": "Tokens legacy duplicados entre invitaciones",
     "tokenConflictsHash": "Varios hashes apuntan a la misma invitación",
-    "noResultsFilterHint": "Prueba con otro término de búsqueda o quita los filtros."
+    "noResultsFilterHint": "Prueba con otro término de búsqueda o quita los filtros.",
+    "tokensTableTitle": "Tokens de acceso",
+    "invitationsTableTitle": "Invitaciones"
   },
   "compliance": {
     "title": "Registro de actividades de tratamiento (Art. 30 GDPR)",
@@ -1096,7 +1101,8 @@
     "measureSuperadmin": "Superadmin protegido por Firebase Authentication + ruta oculta",
     "templatesTitle": "Plantillas de cláusula de privacidad por país",
     "templatesHelp": "Resúmenes listos para adaptar y copiar en la política de cada invitación.",
-    "copyTemplate": "Copiar"
+    "copyTemplate": "Copiar",
+    "tableTitle": "Registro de actividad y consentimiento"
   },
   "a11y": {
     "title": "Accesibilidad",

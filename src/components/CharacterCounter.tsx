@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 
 // Segmenter de grafemas creado UNA vez a nivel de módulo: antes se
 // instanciaba en cada render (coste innecesario en el editor con contador).
@@ -15,7 +16,8 @@ function getSegmenter(): Intl.Segmenter | null {
 }
 
 const CharacterCounter = memo(function CharacterCounter({ value, max }: { value: string; max: number }) {
-  // Cuenta grafemas visibles: un emoji ZWJ (👨👩👧👦) o una bandera valen 1.
+  const { t } = useTranslation();
+  // Cuenta grafemas visibles: un emoji ZWJ (👨‍👩‍👧‍👦) o una bandera valen 1.
   // El spread de code points los contaba como 7/2 y el límite se alcanzaba
   // antes de lo esperado.
   const current = (() => {
@@ -34,7 +36,8 @@ const CharacterCounter = memo(function CharacterCounter({ value, max }: { value:
   return (
     <span className="character-counter" aria-live="polite" title={`${current}/${max}`}>
       {current}/{max}
-      <span className="sr-only"> ({remaining} restantes)</span>
+      {/* Texto leído por lectores de pantalla, traducido. */}
+      <span className="sr-only"> {t("common.remainingChars", { remaining })}</span>
     </span>
   );
 });

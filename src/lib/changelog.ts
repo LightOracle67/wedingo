@@ -3,7 +3,7 @@ export const CHANGELOG = [
     version: "2.99.5",
     date: "2026-08-16",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "Ronda de mejora progresiva (22 iteraciones): consolidación de CSS (utility admin-flex) y eliminación de CSS muerto (keyframes branch-in, body-fade-in); clase .setup-token-section; checkboxes sin estilos inline (CSS); i18n del contador de caracteres; aria-live en la prueba social del hero y role=status en RSVP/loading; memoización de useColumnSort; captions accesibles en 4 tablas; EmptyState en asistencia; role=list en el editor de orden de secciones; slotsRef a useEffect; inputMode=url en el campo de mapa; tests para SetupField, ConfigImageField, SetupArrayEditor y CountedField (+13); auditoría de seguridad (XSS/secrets) verificada limpia.",
     ],
   },
 

@@ -335,6 +335,7 @@ const TokensTab = memo(function TokensTab() {
 
           <div className="admin-table-wrapper" style={{ overflowX: "auto" }}>
             <table className="admin-table">
+              <caption className="admin-table__caption">{t("superadmin.tokensTableTitle")}</caption>
               <thead>
                 <tr>
                   <th scope="col" style={{ width: "2rem" }} />

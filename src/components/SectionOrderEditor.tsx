@@ -133,7 +133,7 @@ export default function SectionOrderEditor({
     <div className="setup-token-card">
       <p className="setup-label setup-label--tight">{t("sectionOrder.title")}</p>
       <p className="setup-help setup-help--tight">{t("sectionOrder.help")}</p>
-      <div className="section-order-list">
+      <div className="section-order-list" role="list">
         {items.map((sectionKey: string, index: number) => {
           // La portada (primera) y el RSVP (último) están fijos: no se
           // reordenan y se muestran bloqueados con su mismo estilo.
@@ -143,6 +143,7 @@ export default function SectionOrderEditor({
           return (
             <div
               key={sectionKey}
+              role="listitem"
               className={`section-order-item ${isDragging ? "section-order-item--dragging" : ""} ${isFixed ? "section-order-item--fixed" : ""} ${getDropIndicator(index)} ${isHidden ? "section-order-item--hidden" : ""}`}
               draggable={!isFixed}
               onDragStart={(e) => handleDragStart(e, index)}

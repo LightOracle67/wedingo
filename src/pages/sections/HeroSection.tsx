@@ -238,6 +238,7 @@ const HeroSection = memo(function HeroSection({
             {confirmedCount > 0 && !weddingPassed ? (
               <p
                 className="hero-rsvp-live"
+                aria-live="polite"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",

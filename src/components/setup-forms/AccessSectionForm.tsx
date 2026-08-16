@@ -72,16 +72,7 @@ const AccessSectionForm = memo(function AccessSectionForm({
       </SetupField>
 
       {!hasStoredConfig ? (
-        <div
-          className="setup-token-section"
-          style={{
-            marginTop: "0.9rem",
-            padding: "0.9rem 1rem",
-            borderRadius: "var(--radius-md)",
-            background: "color-mix(in srgb, var(--setup-field-bg) 55%, transparent)",
-            border: "1px solid color-mix(in srgb, var(--setup-accent) 35%, transparent)",
-          }}
-        >
+        <div className="setup-token-section">
           <label className="setup-label" htmlFor={id("setupTokenReadonly")}>
             {t("setup.tokenFieldLabel")}
           </label>

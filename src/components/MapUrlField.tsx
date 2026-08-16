@@ -53,6 +53,7 @@ const MapUrlField = memo(function MapUrlField({
         onChange={(e) => onChange(e.target.value.slice(0, 1000))}
         placeholder={placeholder}
         autoComplete="off"
+        inputMode="url"
         maxLength={1000}
         aria-describedby={isValid && placeHintId ? placeHintId : undefined}
         aria-invalid={url && !isValid ? true : undefined}
