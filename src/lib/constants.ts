@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.98.5";
+export const APP_VERSION = "2.98.6";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -262,6 +262,9 @@ export const defaultConfig = {
 
   sectionOrder: STORY_SECTION_ORDER.join(","),
   hiddenSections: "",
+  // Animaciones desactivadas por los novios (ids kebab-case separados por
+  // comas, ver src/lib/animations.ts). Vacío = todas activas.
+  disabledAnimations: "",
   storyText: "",
   storyTextEnabled: "false",
   giftsInfo: "",
