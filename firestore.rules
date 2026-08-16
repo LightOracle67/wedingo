@@ -234,11 +234,20 @@ service cloud.firestore {
          siempre un poco anterior a request.time + TTL. Por eso el mínimo debe
          quedar cómodamente por debajo del TTL real del cliente (60 min) para
          no rechazar el login por unos milisegundos de diferencia. */
+      /* Creación/renovación de sesión: exige prueba de conocimiento del
+         token de setup (hash con registro en setupTokens). El token legacy
+         `_activeSetupToken` ya NO se acepta: era legible públicamente y
+         permitía forjar sesiones de administrador.
+         sessionExpiresAt se acota a 30min-48h respecto a request.time.
+         IMPORTANTE: NO usar `request.resource.data.activeSession is timestamp`
+         ni `sessionExpiresAt is timestamp`: en el runtime real de Firestore esos
+         checks fallan de forma INTERMITENTE para valores ESCRITOS por el SDK
+         web (el emulador los ve como timestamp y los tests de reglas no lo
+         detectaron), bloqueando login/renovación. Las COMPARACIONES de la cota
+         sí funcionan siempre (un valor no comparable se rechaza igualmente). */
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash'])
-        && request.resource.data.activeSession is timestamp
-        && request.resource.data.sessionExpiresAt is timestamp
-        && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
         && request.resource.data.sessionExpiresAt >= request.time + duration.value(30, 'm')
+        && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
         && setupTokenValid(tokenId, request.resource.data.setupTokenHash);
       /* Cierre de sesión: solo puede anularse una sesión existente (sin escalada). */
       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt'])

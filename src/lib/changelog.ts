@@ -3,7 +3,7 @@ export const CHANGELOG = [
     version: "2.99.3",
     date: "2026-08-16",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "FIX DEFINITIVO sesión (permission-denied intermitente en login/renovación/reparación): la regla de Firestore dejaba de exigir `request.resource.data.activeSession is timestamp` / `sessionExpiresAt is timestamp`, que en el runtime real fallan de forma INTERMITENTE para timestamps ESCRITOS por el SDK web (el emulador los ve como timestamp, por eso los tests no lo detectaron). La regla ahora acota sessionExpiresAt por COMPARACIÓN con request.time (30min-48h), que sí funciona siempre, mantiene setupTokenValid y hasOnly. Verificado contra producción: login y renovación OK, cotas y hash inválido denegados; emulador 22/22. Complementa los fixes 2.99.1 (timestamps explícitos) y 2.99.2 (getDoc+updateDoc en lugar de transacción).",
     ],
   },
 
