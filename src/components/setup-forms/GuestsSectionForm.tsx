@@ -6,6 +6,7 @@ import MenuDishEditor from "../MenuDishEditor";
 import MapUrlField from "../MapUrlField";
 import MapModeSelect from "../MapModeSelect";
 import SetupToggleField from "../SetupToggleField";
+import SetupField from "../SetupField";
 
 const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { prefix?: string }) {
   const { updateFormField } = useConfigActions();
@@ -143,10 +144,14 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
           ))}
         </div>
         {weddingDressCode === "custom" ? (
-          <div className="setup-field" style={{ marginTop: "0.6rem" }}>
-            <label className="setup-label" htmlFor={id("dressCodeCustom")}>
-              {t("setup.dressCodeCustomLabel")}
-            </label>
+          <SetupField
+            id={id("dressCodeCustom")}
+            label={t("setup.dressCodeCustomLabel")}
+            hint={t("setup.dressCodeCustomHint")}
+            hintId={id("dressCodeCustomHint")}
+            className="setup-field"
+            style={{ marginTop: "0.6rem" }}
+          >
             <input
               id={id("dressCodeCustom")}
               type="text"
@@ -159,10 +164,7 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
               maxLength={MAX_DRESS_CODE_CUSTOM_LENGTH}
               autoComplete="off"
             />
-            <p className="setup-help" id={id("dressCodeCustomHint")}>
-              {t("setup.dressCodeCustomHint")}
-            </p>
-          </div>
+          </SetupField>
         ) : null}
       </SetupToggleField>
       <p className="setup-label" style={{ marginBottom: "0.3rem" }}>

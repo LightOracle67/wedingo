@@ -98,7 +98,7 @@ const InvitationsTab = memo(function InvitationsTab() {
     } catch {
       setError(t("superadmin.deleteError"));
     }
-  }, [selection, deleteOne, t]);
+  }, [selection, deleteOne, t, confirm]);
 
   const handleExportAll = useCallback(async () => {
     try {

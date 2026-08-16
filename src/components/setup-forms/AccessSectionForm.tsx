@@ -2,6 +2,7 @@ import { memo, useState  } from "react";
 import { useTranslation } from "react-i18next";
 import { useConfigActions, useFormField, useAuth } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
+import SetupField from "../SetupField";
 
 interface AccessSectionFormProps {
   prefix?: string;
@@ -40,33 +41,35 @@ const AccessSectionForm = memo(function AccessSectionForm({
 
   return (
     <>
-      <label className="setup-label setup-label--required" htmlFor={id("adminUsername")}>
-        {t("setup.usernameLabel")}
-      </label>
-      <input
+      <SetupField
         id={id("adminUsername")}
-        className="setup-input"
-        value={adminUsername}
-        onChange={(e) =>
-          updateFormField(
-            "adminUsername",
-            e.target.value
-              .toLowerCase()
-              .replace(/[^a-z0-9]/g, "")
-              .slice(0, 50),
-          )
-        }
-        placeholder={t("setup.usernamePlaceholder")}
-        autoComplete="username"
-        name="username"
-        maxLength={50}
+        label={t("setup.usernameLabel")}
+        hint={t("setup.usernameHint")}
+        hintId={id("usernameHelp")}
         required
-        aria-required="true"
-        aria-describedby={id("usernameHelp")}
-      />
-      <p className="setup-help" id={id("usernameHelp")}>
-        {t("setup.usernameHint")}
-      </p>
+      >
+        <input
+          id={id("adminUsername")}
+          className="setup-input"
+          value={adminUsername}
+          onChange={(e) =>
+            updateFormField(
+              "adminUsername",
+              e.target.value
+                .toLowerCase()
+                .replace(/[^a-z0-9]/g, "")
+                .slice(0, 50),
+            )
+          }
+          placeholder={t("setup.usernamePlaceholder")}
+          autoComplete="username"
+          name="username"
+          maxLength={50}
+          required
+          aria-required="true"
+          aria-describedby={id("usernameHelp")}
+        />
+      </SetupField>
 
       {!hasStoredConfig ? (
         <div

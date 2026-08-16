@@ -3,7 +3,7 @@ export const CHANGELOG = [
     version: "2.99.4",
     date: "2026-08-16",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "MODULARIZACIÓN de los formularios del editor por primitivas de campo: SetupField (label+control+hint+error), ConfigImageField (subida de imagen de config, 4 bloques de CoverSectionForm), CountedField (textarea/input con contador), SetupArrayEditor (filas de agenda/salidas/platos), useLinesField (editor JSON↔líneas de regalos/trivia) y validateFile (validación de archivo unificada, incluye audio). CoverSectionForm pasa de 581 a 441 líneas y DateSectionForm de 431 a 399; comportamiento y tests intactos (+10 tests nuevos).",
     ],
   },
 

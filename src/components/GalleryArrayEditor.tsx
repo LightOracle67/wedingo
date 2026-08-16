@@ -9,9 +9,9 @@
  */
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../lib/constants";
 import { useToast } from "../hooks/useToast";
 import { withTimeout } from "../lib/async-utils";
+import { validateFile } from "../lib/upload-validation";
 import { SlotState } from "../types";
 
 const SLOT_COUNT = 10;
@@ -80,18 +80,9 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
       const input = e.target;
       if (!file) return;
 
-      if (file.size === 0) {
-        addToast("error", t("setup.errorEmptyFile"));
-        if (input) input.value = "";
-        return;
-      }
-      if (!ALLOWED_UPLOAD_TYPES.has(file.type)) {
-        addToast("error", t("setup.errorFileFormat"));
-        if (input) input.value = "";
-        return;
-      }
-      if (file.size > MAX_UPLOAD_SIZE_BYTES) {
-        addToast("error", t("setup.errorFileSize"));
+      const validation = validateFile(file);
+      if (!validation.ok) {
+        addToast("error", t(validation.errorKey));
         if (input) input.value = "";
         return;
       }

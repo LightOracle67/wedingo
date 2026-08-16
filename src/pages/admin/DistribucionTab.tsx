@@ -217,7 +217,7 @@ const DistribucionTab = memo(function DistribucionTab({
         addToast("error", t("errors.generic"));
       }
     },
-    [sectionsRef, tablesRef, sections, activeSectionId, addToast, t],
+    [sectionsRef, tablesRef, sections, activeSectionId, addToast, t, confirm],
   );
 
   // ── Mesas de la sección activa ──
@@ -257,7 +257,7 @@ const DistribucionTab = memo(function DistribucionTab({
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [activeSectionId, newShape, tablesRef, addToast, t, confirm]);
+  }, [activeSectionId, newShape, tablesRef, addToast, t]);
 
   const deleteTable = useCallback(
     async (id: string) => {

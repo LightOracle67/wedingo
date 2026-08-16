@@ -1,8 +1,8 @@
 import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import CharacterCounter from "../../components/CharacterCounter";
 import { useConfigActions, useFormField } from "../../contexts";
 import SetupToggleField from "../SetupToggleField";
+import { CountedTextarea } from "../CountedField";
 
 const StorySectionForm = memo(function StorySectionForm({ prefix = "" }: { prefix?: string }) {
   const { updateFormField } = useConfigActions();
@@ -20,18 +20,13 @@ const StorySectionForm = memo(function StorySectionForm({ prefix = "" }: { prefi
         hintId={id("storyHint")}
         id={id}
       >
-        <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
-          <CharacterCounter value={storyText || ""} max={500} />
-        </p>
-        <textarea
+        <CountedTextarea
           id={id("storyText")}
-          className="setup-textarea"
           value={storyText}
-          onChange={(e) => updateFormField("storyText", e.target.value.slice(0, 500))}
+          onChange={(v) => updateFormField("storyText", v)}
+          max={500}
           placeholder={t("setup.storyPlaceholder")}
-          rows={4}
-          maxLength={500}
-          aria-describedby={id("storyHint")}
+          ariaDescribedBy={id("storyHint")}
         />
       </SetupToggleField>
     </>

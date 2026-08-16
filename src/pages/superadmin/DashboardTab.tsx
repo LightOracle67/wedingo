@@ -167,7 +167,7 @@ const DashboardTab = memo(function DashboardTab() {
 
     setLoading(false);
     void baseOk;
-  }, [addToast, t, confirm]);
+  }, [addToast, t]);
 
   useEffect(() => {
     load();

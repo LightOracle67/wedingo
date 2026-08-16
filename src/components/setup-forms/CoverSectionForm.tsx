@@ -1,14 +1,16 @@
 import { memo, useCallback, useState } from "react";
-import CharacterCounter from "../../components/CharacterCounter";
 import { useTranslation } from "react-i18next";
 import { useConfigActions, useFormField } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
-import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "../../lib/constants";
 import { compressImageTransparent, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES } from "../../lib/image-utils";
+import { validateFile } from "../../lib/upload-validation";
 import { useConfigImage } from "../../hooks/useConfigImage";
 import ThemePicker from "../ThemePicker";
 import MusicArrayEditor from "../MusicArrayEditor";
 import SetupToggleField from "../SetupToggleField";
+import SetupField from "../SetupField";
+import ConfigImageField from "../ConfigImageField";
+import { CountedTextarea } from "../CountedField";
 
 const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefix?: string }) {
   const { updateFormField, inviteToken } = useConfigActions();
@@ -82,18 +84,12 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
       options: { maxBytes?: number; validateType?: boolean; onProgress?: (p: number) => void } = {},
     ): Promise<string | null> => {
       if (!file) return null;
-      if (file.size === 0) {
-        addToast("error", t("setup.errorEmptyFile"));
-        return null;
-      }
-      const validateType = options.validateType ?? true;
-      if (validateType && !ALLOWED_UPLOAD_TYPES.has(file.type)) {
-        addToast("error", t("setup.errorFileFormat"));
-        return null;
-      }
-      const maxBytes = options.maxBytes ?? MAX_UPLOAD_SIZE_BYTES;
-      if (file.size > maxBytes) {
-        addToast("error", t("setup.errorFileSize"));
+      const validation = validateFile(file, {
+        ...(options.maxBytes !== undefined ? { maxBytes: options.maxBytes } : {}),
+        ...(options.validateType !== undefined ? { validateType: options.validateType } : {}),
+      });
+      if (!validation.ok) {
+        addToast("error", t(validation.errorKey));
         return null;
       }
       try {
@@ -132,21 +128,12 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
   );
 
   const handleCouplePhotoUpload = useCallback(
-    async (e: React.ChangeEvent<HTMLInputElement>) => {
-      const file = e.target.files?.[0];
-      const input = e.target;
+    async (file: File | undefined) => {
       if (!file) return;
 
-      if (file.size === 0) {
-        addToast("error", t("setup.errorEmptyFile"));
-        return;
-      }
-      if (!ALLOWED_UPLOAD_TYPES.has(file.type)) {
-        addToast("error", t("setup.errorFileFormat"));
-        return;
-      }
-      if (file.size > MAX_UPLOAD_SIZE_BYTES) {
-        addToast("error", t("setup.errorFileSize"));
+      const validation = validateFile(file);
+      if (!validation.ok) {
+        addToast("error", t(validation.errorKey));
         return;
       }
       const upload = startUploadToast(t("setup.photoUploading"));
@@ -162,7 +149,6 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
       } finally {
         setUploadingId(null);
       }
-      if (input) input.value = "";
     },
     [updateFormField, startUploadToast, addToast, t, uploadConfigImage],
   );
@@ -201,13 +187,15 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
       <fieldset className="setup-name-group">
         <legend className="setup-label">{t("setup.namesLegend")}</legend>
         <div className="setup-name-grid">
-          <div className="setup-name-col">
-            <label className="setup-label setup-label--required" htmlFor={id("firstName")}>
-              {t("setup.firstNameLabel")}
-            </label>
-            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("firstNameHint")}>
-              {t("setup.nameOnlyHint")}
-            </p>
+          <SetupField
+            id={id("firstName")}
+            label={t("setup.firstNameLabel")}
+            hint={t("setup.nameOnlyHint")}
+            hintId={id("firstNameHint")}
+            hintPosition="before"
+            required
+            className="setup-name-col"
+          >
             <input
               id={id("firstName")}
               className="setup-input"
@@ -220,14 +208,16 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
               aria-required="true"
               aria-describedby={id("firstNameHint")}
             />
-          </div>
-          <div className="setup-name-col">
-            <label className="setup-label setup-label--required" htmlFor={id("secondName")}>
-              {t("setup.secondNameLabel")}
-            </label>
-            <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("secondNameHint")}>
-              {t("setup.nameOnlyHint")}
-            </p>
+          </SetupField>
+          <SetupField
+            id={id("secondName")}
+            label={t("setup.secondNameLabel")}
+            hint={t("setup.nameOnlyHint")}
+            hintId={id("secondNameHint")}
+            hintPosition="before"
+            required
+            className="setup-name-col"
+          >
             <input
               id={id("secondName")}
               className="setup-input"
@@ -240,7 +230,7 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
               aria-required="true"
               aria-describedby={id("secondNameHint")}
             />
-          </div>
+          </SetupField>
         </div>
       </fieldset>
 
@@ -252,13 +242,14 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
       >
         <fieldset className="setup-name-group">
           <div className="setup-name-grid">
-            <div className="setup-name-col">
-              <label className="setup-label" htmlFor={id("godparent1")}>
-                {t("setup.godparent1Label")}
-              </label>
-              <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("godparent1Hint")}>
-                {t("setup.nameOnlyHint")}
-              </p>
+            <SetupField
+              id={id("godparent1")}
+              label={t("setup.godparent1Label")}
+              hint={t("setup.nameOnlyHint")}
+              hintId={id("godparent1Hint")}
+              hintPosition="before"
+              className="setup-name-col"
+            >
               <input
                 id={id("godparent1")}
                 className="setup-input"
@@ -269,14 +260,15 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
                 maxLength={40}
                 aria-describedby={id("godparent1Hint")}
               />
-            </div>
-            <div className="setup-name-col">
-              <label className="setup-label" htmlFor={id("godparent2")}>
-                {t("setup.godparent2Label")}
-              </label>
-              <p className="setup-help" style={{ marginTop: "0.1rem", fontSize: "0.75rem" }} id={id("godparent2Hint")}>
-                {t("setup.nameOnlyHint")}
-              </p>
+            </SetupField>
+            <SetupField
+              id={id("godparent2")}
+              label={t("setup.godparent2Label")}
+              hint={t("setup.nameOnlyHint")}
+              hintId={id("godparent2Hint")}
+              hintPosition="before"
+              className="setup-name-col"
+            >
               <input
                 id={id("godparent2")}
                 className="setup-input"
@@ -287,7 +279,7 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
                 maxLength={40}
                 aria-describedby={id("godparent2Hint")}
               />
-            </div>
+            </SetupField>
           </div>
         </fieldset>
       </SetupToggleField>
@@ -299,16 +291,13 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
         hintId={id("messageHint")}
         id={id}
       >
-        <p className="setup-help setup-help--tight" style={{ textAlign: "right" }}>
-          <CharacterCounter value={inviteMessage || ""} max={500} />
-        </p>
-        <textarea
+        <CountedTextarea
           id={id("inviteMessage")}
-          className="setup-textarea"
           value={inviteMessage}
-          onChange={(e) => updateFormField("inviteMessage", e.target.value.slice(0, 500))}
+          onChange={(v) => updateFormField("inviteMessage", v)}
+          max={500}
           placeholder={t("setup.messagePlaceholder")}
-          aria-describedby={id("messageHint")}
+          ariaDescribedBy={id("messageHint")}
         />
       </SetupToggleField>
 
@@ -347,57 +336,23 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
         hint={t("setup.couplePhotoHint")}
         id={id}
       >
-        <div className="setup-background-panel">
-          {couplePhoto ? (
-            <div className="setup-selected-background">
-              <img
-                src={safeSrc(couplePhotoUrl, couplePhoto)}
-                alt={t("setup.couplePhotoLabel")}
-                className="setup-selected-background__image"
-                style={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }}
-              />
-              <div>
-                <p className="setup-selected-background__title">{t("setup.currentPhoto")}</p>
-                <button
-                  className="setup-button setup-button--ghost setup-button--compact"
-                  type="button"
-                  onClick={handleRemovePhoto}
-                >
-                  {t("setup.remove")}
-                </button>
-              </div>
-            </div>
-          ) : (
-            <label
-              className={uploadingId === "couplePhoto" ? "setup-upload setup-upload--busy" : "setup-upload"}
-              htmlFor={id("couplePhoto")}
-              aria-disabled={uploadingId === "couplePhoto" || undefined}
-            >
-              <span className="setup-upload__title">
-                {uploadingId === "couplePhoto" ? t("setup.uploading") : t("setup.couplePhotoUpload")}
-              </span>
-              <span className="setup-upload__subtitle">{t("setup.couplePhotoUploadHint")}</span>
-            </label>
-          )}
-          <input
-            id={id("couplePhoto")}
-            className="setup-upload__input"
-            type="file"
-            accept="image/jpeg,image/png,image/webp"
-            onChange={handleCouplePhotoUpload}
-          />
-          {couplePhoto ? (
-            /* El label "Reemplazar" apunta al input Ãºnico (htmlFor); no se
-               anida un segundo input para no duplicar el id. */
-            <label
-              className={uploadingId === "couplePhoto" ? "setup-upload setup-upload--busy" : "setup-upload"}
-              htmlFor={id("couplePhoto")}
-              aria-disabled={uploadingId === "couplePhoto" || undefined}
-            >
-              {uploadingId === "couplePhoto" ? t("setup.uploading") : t("setup.replaceImage")}
-            </label>
-          ) : null}
-        </div>
+        <ConfigImageField
+          id={id("couplePhoto")}
+          value={couplePhoto}
+          src={safeSrc(couplePhotoUrl, couplePhoto)}
+          alt={t("setup.couplePhotoLabel")}
+          previewStyle={{ borderRadius: "50%", aspectRatio: "1", width: "5rem" }}
+          currentLabel={t("setup.currentPhoto")}
+          uploadLabel={t("setup.couplePhotoUpload")}
+          uploadHint={t("setup.couplePhotoUploadHint")}
+          replaceLabel={t("setup.replaceImage")}
+          accept="image/jpeg,image/png,image/webp"
+          uploading={uploadingId === "couplePhoto"}
+          uploadingLabel={t("setup.uploading")}
+          removeLabel={t("setup.remove")}
+          onUpload={(f) => void handleCouplePhotoUpload(f)}
+          onRemove={() => void handleRemovePhoto()}
+        />
       </SetupToggleField>
 
       <div className="story-divider" />
@@ -408,54 +363,21 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
         hint={t("setup.customSealHint")}
         id={id}
       >
-        <div className="setup-background-panel">
-          {customSeal ? (
-            <div className="setup-selected-background">
-              <img
-                src={safeSrc(customSealUrl, customSeal)}
-                alt=""
-                className="setup-selected-background__image"
-                style={{ width: "3rem", height: "3rem", objectFit: "contain" }}
-              />
-              <div>
-                <p className="setup-selected-background__title">{t("setup.currentSeal")}</p>
-                <button
-                  className="setup-button setup-button--ghost setup-button--compact"
-                  type="button"
-                  onClick={() => {
-                    void removeConfigImage("customSeal");
-                  }}
-                >
-                  {t("setup.remove")}
-                </button>
-              </div>
-            </div>
-          ) : (
-            <label
-              className={uploadingId === "customSeal" ? "setup-upload setup-upload--busy" : "setup-upload"}
-              htmlFor={id("customSeal")}
-              aria-disabled={uploadingId === "customSeal" || undefined}
-            >
-              <span className="setup-upload__title">
-                {uploadingId === "customSeal" ? t("setup.uploading") : t("setup.uploadSeal")}
-              </span>
-              <span className="setup-upload__subtitle">{t("setup.uploadSealHint")}</span>
-            </label>
-          )}
-          <input
-            className="setup-upload__input"
-            id={id("customSeal")}
-            type="file"
-            accept="image/jpeg,image/png,image/svg+xml"
-            onChange={async (e) => {
-              await handleConfigImageUpload("customSeal", e.target.files?.[0], {
-                maxBytes: 1024 * 1024,
-                validateType: false,
-              });
-              e.target.value = "";
-            }}
-          />
-        </div>
+        <ConfigImageField
+          id={id("customSeal")}
+          value={customSeal}
+          src={safeSrc(customSealUrl, customSeal)}
+          previewStyle={{ width: "3rem", height: "3rem", objectFit: "contain" }}
+          currentLabel={t("setup.currentSeal")}
+          uploadLabel={t("setup.uploadSeal")}
+          uploadHint={t("setup.uploadSealHint")}
+          accept="image/jpeg,image/png,image/svg+xml"
+          uploading={uploadingId === "customSeal"}
+          uploadingLabel={t("setup.uploading")}
+          removeLabel={t("setup.remove")}
+          onUpload={(f) => void handleConfigImageUpload("customSeal", f, { maxBytes: 1024 * 1024, validateType: false })}
+          onRemove={() => void removeConfigImage("customSeal")}
+        />
       </SetupToggleField>
 
       <div className="story-divider" />
@@ -466,48 +388,20 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
         hint={t("setup.backgroundHint")}
         id={id}
       >
-        <div className="setup-background-panel">
-          {backgroundImage ? (
-            <div className="setup-selected-background">
-              <img
-                src={safeSrc(backgroundImageUrl, backgroundImage)}
-                alt=""
-                className="setup-selected-background__image"
-                style={{ width: "100%", maxHeight: "100px", objectFit: "cover", borderRadius: "0.35rem" }}
-              />
-              <button
-                className="setup-button setup-button--ghost setup-button--compact"
-                type="button"
-                onClick={() => {
-                  void removeConfigImage("backgroundImage");
-                }}
-              >
-                {t("setup.remove")}
-              </button>
-            </div>
-          ) : (
-            <label
-              className={uploadingId === "backgroundImage" ? "setup-upload setup-upload--busy" : "setup-upload"}
-              htmlFor={id("backgroundImage")}
-              aria-disabled={uploadingId === "backgroundImage" || undefined}
-            >
-              <span className="setup-upload__title">
-                {uploadingId === "backgroundImage" ? t("setup.uploading") : t("setup.backgroundUpload")}
-              </span>
-              <span className="setup-upload__subtitle">{t("setup.backgroundUploadHint")}</span>
-            </label>
-          )}
-          <input
-            className="setup-upload__input"
-            id={id("backgroundImage")}
-            type="file"
-            accept="image/jpeg,image/png,image/webp"
-            onChange={async (e) => {
-              await handleConfigImageUpload("backgroundImage", e.target.files?.[0]);
-              e.target.value = "";
-            }}
-          />
-        </div>
+        <ConfigImageField
+          id={id("backgroundImage")}
+          value={backgroundImage}
+          src={safeSrc(backgroundImageUrl, backgroundImage)}
+          previewStyle={{ width: "100%", maxHeight: "100px", objectFit: "cover", borderRadius: "0.35rem" }}
+          uploadLabel={t("setup.backgroundUpload")}
+          uploadHint={t("setup.backgroundUploadHint")}
+          accept="image/jpeg,image/png,image/webp"
+          uploading={uploadingId === "backgroundImage"}
+          uploadingLabel={t("setup.uploading")}
+          removeLabel={t("setup.remove")}
+          onUpload={(f) => void handleConfigImageUpload("backgroundImage", f)}
+          onRemove={() => void removeConfigImage("backgroundImage")}
+        />
       </SetupToggleField>
 
       <SetupToggleField
@@ -516,58 +410,24 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
         hint={t("setup.cornerDecorationsHint")}
         id={id}
       >
-        <div className="setup-background-panel" style={{ marginBottom: "0.5rem" }}>
-          <div className="setup-background-panel__header">
-            <span className="setup-label setup-label--tight" style={{ fontSize: "0.8rem" }}>
-              {t("setup.cornerDecorationLabel")}
-            </span>
-            {cornerDecoration ? (
-              <button
-                className="setup-button setup-button--ghost setup-button--compact"
-                type="button"
-                onClick={() => {
-                  void removeConfigImage("cornerDecoration");
-                }}
-                style={{ fontSize: "0.7rem" }}
-              >
-                {t("setup.remove")}
-              </button>
-            ) : null}
-          </div>
-          {cornerDecoration ? (
-            <div>
-              <img
-                src={safeSrc(cornerDecorationUrl, cornerDecoration as string)}
-                alt=""
-                style={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }}
-              />
-            </div>
-          ) : (
-            <label
-              className={uploadingId === "cornerDecoration" ? "setup-upload setup-upload--busy" : "setup-upload"}
-              htmlFor={id("cornerDecoration")}
-              aria-disabled={uploadingId === "cornerDecoration" || undefined}
-            >
-              <span className="setup-upload__title">
-                {uploadingId === "cornerDecoration" ? t("setup.uploading") : t("setup.uploadCorner")}
-              </span>
-              <span className="setup-upload__subtitle">{t("setup.cornerDecorationUploadHint")}</span>
-            </label>
-          )}
-          <input
-            className="setup-upload__input"
-            id={id("cornerDecoration")}
-            type="file"
-            accept="image/png,image/svg+xml"
-            onChange={async (e) => {
-              await handleConfigImageUpload("cornerDecoration", e.target.files?.[0], {
-                maxBytes: 1024 * 1024,
-                validateType: false,
-              });
-              e.target.value = "";
-            }}
-          />
-        </div>
+        <ConfigImageField
+          id={id("cornerDecoration")}
+          value={cornerDecoration as string}
+          src={safeSrc(cornerDecorationUrl, cornerDecoration as string)}
+          previewStyle={{ width: "2.5rem", height: "2.5rem", objectFit: "contain" }}
+          headerLabel={t("setup.cornerDecorationLabel")}
+          uploadLabel={t("setup.uploadCorner")}
+          uploadHint={t("setup.cornerDecorationUploadHint")}
+          accept="image/png,image/svg+xml"
+          uploading={uploadingId === "cornerDecoration"}
+          uploadingLabel={t("setup.uploading")}
+          removeLabel={t("setup.remove")}
+          style={{ marginBottom: "0.5rem" }}
+          onUpload={(f) =>
+            void handleConfigImageUpload("cornerDecoration", f, { maxBytes: 1024 * 1024, validateType: false })
+          }
+          onRemove={() => void removeConfigImage("cornerDecoration")}
+        />
       </SetupToggleField>
 
       <SetupToggleField enabledField="musicFileEnabled" label={t("setup.musicLabel")} id={id}>

@@ -4,6 +4,7 @@ import { useConfigActions, useFormField } from "../../contexts";
 import { useJsonArrayField } from "../../hooks/useJsonArrayField";
 import MapUrlField from "../MapUrlField";
 import MapModeSelect from "../MapModeSelect";
+import SetupArrayEditor from "../SetupArrayEditor";
 
 interface Departure {
   type: "bus" | "taxi";
@@ -116,86 +117,67 @@ const TransportSectionForm = memo(function TransportSectionForm({ prefix = "" }:
           <p className="setup-label">{t("setup.transportDeparturesLabel")}</p>
           <p className="setup-help">{t("setup.transportDeparturesHint")}</p>
 
-          {departures.map((dep, i) => (
-            <div
-              key={i}
-              style={{
-                display: "flex",
-                gap: "0.5rem",
-                alignItems: "flex-start",
-                marginTop: "0.5rem",
-                flexWrap: "wrap",
-              }}
-            >
-              <div style={{ flex: "0 0 120px" }}>
-                <label className="setup-label" htmlFor={id(`departureType${i}`)} style={{ fontSize: "0.75rem" }}>
-                  {t("setup.transportTypeLabel")}
-                </label>
-                <select
-                  id={id(`departureType${i}`)}
-                  className="setup-input"
-                  value={enabled === "both" ? dep.type : enabled}
-                  onChange={handleDepartureField(i, "type")}
-                  disabled={enabled !== "both"}
-                >
-                  <option value="bus">{t("setup.transportOptionBus")}</option>
-                  <option value="taxi">{t("setup.transportOptionTaxi")}</option>
-                </select>
-              </div>
-              <div style={{ flex: "0 0 90px" }}>
-                <label className="setup-label" htmlFor={id(`departureTime${i}`)} style={{ fontSize: "0.75rem" }}>
-                  {t("setup.transportTimeLabel")}
-                </label>
-                <input
-                  id={id(`departureTime${i}`)}
-                  className="setup-input"
-                  type="time"
-                  value={dep.time}
-                  onChange={handleDepartureField(i, "time")}
-                  required
-                  aria-required="true"
-                />
-              </div>
-              <div className="transport-departure-url">
-                <label className="setup-label" htmlFor={id(`departureUrl${i}`)} style={{ fontSize: "0.75rem" }}>
-                  {t("setup.transportUrlLabel")}
-                </label>
-                <MapUrlField
-                  id={id(`departureUrl${i}`)}
-                  value={dep.url}
-                  onChange={(url) =>
-                    updateDeparture(i, { ...dep, url }, (json) => updateFormField("transportDepartures", json))
-                  }
-                  placeholder={t("setup.transportUrlPlaceholder")}
-                  placeHintId={id(`departurePlace${i}`)}
-                  placeLabel={t("setup.siteNameLabel")}
-                />
-              </div>
-              <button
-                type="button"
-                className="setup-button setup-button--ghost setup-button--compact"
-                onClick={() => handleRemoveDeparture(i)}
-                style={{ marginTop: "1.4rem", flexShrink: 0 }}
-                aria-label={t("setup.transportRemoveDeparture")}
-              >
-                âœ•
-              </button>
-            </div>
-          ))}
-
-          {departures.length < MAX_DEPARTURES ? (
-            <button
-              type="button"
-              className="setup-button setup-button--ghost setup-button--compact"
-              onClick={handleAddDeparture}
-              style={{ marginTop: "0.6rem" }}
-            >
-              + {t("setup.transportAddDeparture")}
-            </button>
-          ) : null}
-          {departures.length >= MAX_DEPARTURES ? (
-            <p className="setup-help">{t("setup.transportMaxDepartures", { max: MAX_DEPARTURES })}</p>
-          ) : null}
+          <SetupArrayEditor
+            count={departures.length}
+            max={MAX_DEPARTURES}
+            addLabel={t("setup.transportAddDeparture")}
+            removeLabel={t("setup.transportRemoveDeparture")}
+            maxLabel={t("setup.transportMaxDepartures", { max: MAX_DEPARTURES })}
+            onAdd={handleAddDeparture}
+            onRemove={handleRemoveDeparture}
+            renderRow={(i) => (
+              <>
+                <div style={{ flex: "0 0 120px" }}>
+                  <label className="setup-label" htmlFor={id(`departureType${i}`)} style={{ fontSize: "0.75rem" }}>
+                    {t("setup.transportTypeLabel")}
+                  </label>
+                  <select
+                    id={id(`departureType${i}`)}
+                    className="setup-input"
+                    value={enabled === "both" ? departures[i]?.type ?? "bus" : enabled}
+                    onChange={handleDepartureField(i, "type")}
+                    disabled={enabled !== "both"}
+                  >
+                    <option value="bus">{t("setup.transportOptionBus")}</option>
+                    <option value="taxi">{t("setup.transportOptionTaxi")}</option>
+                  </select>
+                </div>
+                <div style={{ flex: "0 0 90px" }}>
+                  <label className="setup-label" htmlFor={id(`departureTime${i}`)} style={{ fontSize: "0.75rem" }}>
+                    {t("setup.transportTimeLabel")}
+                  </label>
+                  <input
+                    id={id(`departureTime${i}`)}
+                    className="setup-input"
+                    type="time"
+                    value={departures[i]?.time ?? ""}
+                    onChange={handleDepartureField(i, "time")}
+                    required
+                    aria-required="true"
+                  />
+                </div>
+                <div className="transport-departure-url">
+                  <label className="setup-label" htmlFor={id(`departureUrl${i}`)} style={{ fontSize: "0.75rem" }}>
+                    {t("setup.transportUrlLabel")}
+                  </label>
+                  <MapUrlField
+                    id={id(`departureUrl${i}`)}
+                    value={departures[i]?.url ?? ""}
+                    onChange={(url) =>
+                      updateDeparture(
+                        i,
+                        { ...(departures[i] ?? { type: "bus", time: "", url: "" }), url },
+                        (json) => updateFormField("transportDepartures", json),
+                      )
+                    }
+                    placeholder={t("setup.transportUrlPlaceholder")}
+                    placeHintId={id(`departurePlace${i}`)}
+                    placeLabel={t("setup.siteNameLabel")}
+                  />
+                </div>
+              </>
+            )}
+          />
         </>
       ) : null}
     </>

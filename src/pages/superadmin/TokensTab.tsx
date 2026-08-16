@@ -107,7 +107,7 @@ const TokensTab = memo(function TokensTab() {
       setMessage(t("superadmin.tokenRevoked"));
       await loadTokens();
     },
-    [loadTokens, t, confirm],
+    [loadTokens, t],
   );
 
   const handleCleanup = useCallback(async () => {    if (!(await confirm({ message: t("superadmin.cleanupConfirm") }))) return;
@@ -151,7 +151,7 @@ const TokensTab = memo(function TokensTab() {
       setMessage(t("superadmin.tokenMigrated"));
       await loadTokens();
     },
-    [loadTokens, t, confirm],
+    [loadTokens, t],
   );
 
   // Unifica legacy y hashed en filas de tabla (sin exponer el token secreto).

@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { MAX_MENU_DISHES, MAX_MENU_DISH_TEXT, MENU_DISH_ORDERS } from "../lib/constants";
 import { useJsonArrayField } from "../hooks/useJsonArrayField";
+import SetupArrayEditor from "./SetupArrayEditor";
 
 interface Dish {
   order: string;
@@ -65,67 +66,51 @@ export default function MenuDishEditor({
           {t("errors.menuParseError")}
         </p>
       ) : null}
-      {dishes.map((dish, i) => (
-        <div
-          key={i}
-          style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}
-        >
-          <div style={{ flex: "0 0 130px" }}>
-            <label className="setup-label" htmlFor={`${idBase}-order-${i}`} style={{ fontSize: "0.75rem" }}>
-              {t("setup.menuOrderLabel")}
-            </label>
-            <select
-              id={`${idBase}-order-${i}`}
-              className="setup-input"
-              value={dish.order}
-              onChange={handleField(i, "order")}
-            >
-              {MENU_DISH_ORDERS.map((order: string) => (
-                <option key={order} value={order}>
-                  {t("setup.menuOrder" + order.charAt(0).toUpperCase() + order.slice(1))}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div style={{ flex: 1 }}>
-            <label className="setup-label" htmlFor={`${idBase}-dish-${i}`} style={{ fontSize: "0.75rem" }}>
-              {t("setup.menuDishLabel")}
-            </label>
-            <input
-              id={`${idBase}-dish-${i}`}
-              className="setup-input"
-              type="text"
-              value={dish.text}
-              onChange={handleField(i, "text")}
-              placeholder={t("setup.menuDishPlaceholder")}
-              maxLength={MAX_MENU_DISH_TEXT}
-              autoComplete="off"
-            />
-          </div>
-          <button
-            type="button"
-            className="setup-button setup-button--ghost setup-button--compact"
-            onClick={() => handleRemove(i)}
-            style={{ marginTop: "1.4rem", flexShrink: 0 }}
-            aria-label={t("setup.menuRemoveDish")}
-          >
-            ✕
-          </button>
-        </div>
-      ))}
-      {dishes.length < MAX_MENU_DISHES ? (
-        <button
-          type="button"
-          className="setup-button setup-button--ghost setup-button--compact"
-          onClick={handleAdd}
-          style={{ marginTop: "0.6rem" }}
-        >
-          + {t("setup.menuAddDish")}
-        </button>
-      ) : null}
-      {dishes.length >= MAX_MENU_DISHES ? (
-        <p className="setup-help">{t("setup.menuMaxDishes", { max: MAX_MENU_DISHES })}</p>
-      ) : null}
+      <SetupArrayEditor
+        count={dishes.length}
+        max={MAX_MENU_DISHES}
+        addLabel={t("setup.menuAddDish")}
+        removeLabel={t("setup.menuRemoveDish")}
+        maxLabel={t("setup.menuMaxDishes", { max: MAX_MENU_DISHES })}
+        onAdd={handleAdd}
+        onRemove={handleRemove}
+        renderRow={(i) => (
+          <>
+            <div style={{ flex: "0 0 130px" }}>
+              <label className="setup-label" htmlFor={`${idBase}-order-${i}`} style={{ fontSize: "0.75rem" }}>
+                {t("setup.menuOrderLabel")}
+              </label>
+              <select
+                id={`${idBase}-order-${i}`}
+                className="setup-input"
+                value={dishes[i]?.order ?? "otro"}
+                onChange={handleField(i, "order")}
+              >
+                {MENU_DISH_ORDERS.map((order: string) => (
+                  <option key={order} value={order}>
+                    {t("setup.menuOrder" + order.charAt(0).toUpperCase() + order.slice(1))}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div style={{ flex: 1 }}>
+              <label className="setup-label" htmlFor={`${idBase}-dish-${i}`} style={{ fontSize: "0.75rem" }}>
+                {t("setup.menuDishLabel")}
+              </label>
+              <input
+                id={`${idBase}-dish-${i}`}
+                className="setup-input"
+                type="text"
+                value={dishes[i]?.text ?? ""}
+                onChange={handleField(i, "text")}
+                placeholder={t("setup.menuDishPlaceholder")}
+                maxLength={MAX_MENU_DISH_TEXT}
+                autoComplete="off"
+              />
+            </div>
+          </>
+        )}
+      />
     </div>
   );
 }

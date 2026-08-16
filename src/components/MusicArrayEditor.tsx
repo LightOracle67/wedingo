@@ -13,6 +13,7 @@ import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../hooks/useToast";
 import { withTimeout } from "../lib/async-utils";
+import { validateFile } from "../lib/upload-validation";
 
 const ALLOWED_AUDIO_TYPES = [
   "audio/mpeg",
@@ -80,18 +81,14 @@ const MusicArrayEditor = memo(function MusicArrayEditor({
       const input = e.target;
       if (!file) return;
 
-      if (file.size === 0) {
-        addToast("error", t("setup.errorEmptyFile"));
-        if (input) input.value = "";
-        return;
-      }
-      if (!ALLOWED_AUDIO_TYPES.includes(file.type)) {
-        addToast("error", t("setup.audioFormatError"));
-        if (input) input.value = "";
-        return;
-      }
-      if (file.size > MAX_AUDIO_SIZE) {
-        addToast("error", t("setup.audioSizeError"));
+      const validation = validateFile(file, {
+        allowedTypes: new Set(ALLOWED_AUDIO_TYPES),
+        maxBytes: MAX_AUDIO_SIZE,
+        errorTypeKey: "setup.audioFormatError",
+        errorSizeKey: "setup.audioSizeError",
+      });
+      if (!validation.ok) {
+        addToast("error", t(validation.errorKey));
         if (input) input.value = "";
         return;
       }

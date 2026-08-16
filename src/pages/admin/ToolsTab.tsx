@@ -138,7 +138,7 @@ const ToolsTab = memo(function ToolsTab({
         addToast("error", t("errors.generic"));
       }
     },
-    [inviteToken, addToast, t],
+    [inviteToken, addToast, t, confirm],
   );
 
   // ── Fotos del día: descarga y borrado ──

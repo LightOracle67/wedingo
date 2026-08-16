@@ -1,6 +1,7 @@
 import { memo, useCallback, type ReactNode  } from "react";
 import { useTranslation } from "react-i18next";
 import { useConfigActions, useFormField, useFormStore } from "../../contexts";
+import { useLinesField } from "../../hooks/useLinesField";
 import SetupToggleRow from "../SetupToggleRow";
 
 /**
@@ -56,66 +57,42 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
   );
 
   /** Editor de la lista de regalos (JSON de {id,name,description}): se edita
-   *  como lÃ­neas "nombre | descripciÃ³n" y se convierte a JSON al guardar. */
-  const giftListLines = (() => {
-    try {
-      const parsed = JSON.parse(giftList || "[]");
-      return Array.isArray(parsed)
-        ? parsed
-            .map((g: { name?: string; description?: string }) => `${g.name ?? ""} | ${g.description ?? ""}`)
-            .join("\n")
-        : "";
-    } catch {
-      return "";
-    }
-  })();
-  const setGiftList = useCallback(
-    (text: string) => {
-      const items = text
-        .split("\n")
-        // Tope de líneas (evita que el JSON crezca sin límite en Firestore).
-        .slice(0, 50)
-        .map((line) => line.trim())
-        .filter(Boolean)
-        .map((line) => {
-          const [name, ...rest] = line.split("|");
-          return {
-            id: `g${Math.random().toString(36).slice(2, 8)}`,
-            name: (name || "").trim().slice(0, 100),
-            description: rest.join("|").trim().slice(0, 200),
-          };
-        });
-      updateFormField("giftList", JSON.stringify(items));
+   *  como líneas "nombre | descripción" y se convierte a JSON al guardar. */
+  const { toLines: giftToLines, parseText: giftParseText } = useLinesField<{
+    id: string;
+    name: string;
+    description: string;
+  }>({
+    parseLine: (line) => {
+      const [name, ...rest] = line.split("|");
+      return {
+        id: `g${Math.random().toString(36).slice(2, 8)}`,
+        name: (name || "").trim().slice(0, 100),
+        description: rest.join("|").trim().slice(0, 200),
+      };
     },
-    [updateFormField],
+    itemToLine: (g) => `${g.name ?? ""} | ${g.description ?? ""}`,
+    maxLines: 50,
+  });
+  const giftListLines = giftToLines(giftList || "");
+  const setGiftList = useCallback(
+    (text: string) => updateFormField("giftList", giftParseText(text)),
+    [giftParseText, updateFormField],
   );
 
-  /** Editor de la trivia (JSON de {q,a}): lÃ­neas "pregunta | respuesta". */
-  const triviaLines = (() => {
-    try {
-      const parsed = JSON.parse(trivia || "[]");
-      return Array.isArray(parsed)
-        ? parsed.map((tr: { q?: string; a?: string }) => `${tr.q ?? ""} | ${tr.a ?? ""}`).join("\n")
-        : "";
-    } catch {
-      return "";
-    }
-  })();
-  const setTrivia = useCallback(
-    (text: string) => {
-      const items = text
-        .split("\n")
-        // Tope de líneas (evita que el JSON crezca sin límite en Firestore).
-        .slice(0, 50)
-        .map((line) => line.trim())
-        .filter(Boolean)
-        .map((line) => {
-          const [q, ...rest] = line.split("|");
-          return { q: (q || "").trim().slice(0, 200), a: rest.join("|").trim().slice(0, 200) };
-        });
-      updateFormField("trivia", JSON.stringify(items));
+  /** Editor de la trivia (JSON de {q,a}): líneas "pregunta | respuesta". */
+  const { toLines: triviaToLines, parseText: triviaParseText } = useLinesField<{ q: string; a: string }>({
+    parseLine: (line) => {
+      const [q, ...rest] = line.split("|");
+      return { q: (q || "").trim().slice(0, 200), a: rest.join("|").trim().slice(0, 200) };
     },
-    [updateFormField],
+    itemToLine: (tr) => `${tr.q ?? ""} | ${tr.a ?? ""}`,
+    maxLines: 50,
+  });
+  const triviaLines = triviaToLines(trivia || "");
+  const setTrivia = useCallback(
+    (text: string) => updateFormField("trivia", triviaParseText(text)),
+    [triviaParseText, updateFormField],
   );
 
   /** Renders una fila de extra con el ToggleRow estable del módulo. */

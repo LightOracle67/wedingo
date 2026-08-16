@@ -82,7 +82,7 @@ const InvitationDetailModal = memo(function InvitationDetailModal({ token, onClo
         addToast("error", t("errors.generic"));
       }
     },
-    [token, addToast, t],
+    [token, addToast, t, confirm],
   );
 
   const resetRsvps = useCallback(async () => {
@@ -101,7 +101,7 @@ const InvitationDetailModal = memo(function InvitationDetailModal({ token, onClo
     } finally {
       setBusy(false);
     }
-  }, [token, load, addToast, t]);
+  }, [token, load, addToast, t, confirm]);
 
   const exportSocial = useCallback(() => {
     const out: Record<string, Array<{ id: string; preview: string }>> = {};

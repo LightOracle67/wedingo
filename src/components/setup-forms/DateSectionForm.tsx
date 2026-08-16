@@ -13,6 +13,8 @@ import { useJsonArrayField } from "../../hooks/useJsonArrayField";
 import MapUrlField from "../MapUrlField";
 import MapModeSelect from "../MapModeSelect";
 import SetupToggleField from "../SetupToggleField";
+import SetupField from "../SetupField";
+import SetupArrayEditor from "../SetupArrayEditor";
 
 interface ScheduleEvent {
   time: string;
@@ -101,8 +103,6 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
     [scheduleEvents, updateScheduleEvent, updateFormField],
   );
 
-  const visibleScheduleEvents = scheduleEvents;
-
   return (
     <>
       <SetupToggleField
@@ -121,10 +121,12 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
       </SetupToggleField>
 
       <div className="setup-date-grid" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))" }}>
-        <div>
-          <label className="setup-label" htmlFor={id("weddingMapView")}>
-            {t("setup.mapViewLabel")}
-          </label>
+        <SetupField
+          id={id("weddingMapView")}
+          label={t("setup.mapViewLabel")}
+          hint={t("setup.mapViewHint")}
+          hintId={id("mapViewHint")}
+        >
           <select
             id={id("weddingMapView")}
             className="setup-input"
@@ -136,18 +138,14 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
             <option value="satellite">{t("setup.mapViewSatellite")}</option>
             <option value="hybrid">{t("setup.mapViewHybrid")}</option>
           </select>
-          <p className="setup-help" id={id("mapViewHint")}>
-            {t("setup.mapViewHint")}
-          </p>
-        </div>
-        <div>
-          <MapModeSelect
-            id={id("detailsMapMode")}
-            value={detailsMapMode}
-            onChange={(v) => updateFormField("detailsMapMode", v)}
-            hintId={id("mapModeHint")}
-          />
-        </div>
+        </SetupField>
+        {/* MapModeSelect es un campo autocontenido (label + select + hint). */}
+        <MapModeSelect
+          id={id("detailsMapMode")}
+          value={detailsMapMode}
+          onChange={(v) => updateFormField("detailsMapMode", v)}
+          hintId={id("mapModeHint")}
+        />
         <label
           className="setup-checkbox-label"
           style={{
@@ -237,10 +235,7 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
       <div className="story-divider" />
 
       <div className="setup-date-grid">
-        <div>
-          <label className="setup-label setup-label--required" htmlFor={id("weddingDay")}>
-            {t("setup.dayLabel")}
-          </label>
+        <SetupField id={id("weddingDay")} label={t("setup.dayLabel")} required>
           <input
             id={id("weddingDay")}
             value={weddingDay}
@@ -258,11 +253,8 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
             aria-required="true"
             className={dayError ? "setup-input setup-input--error" : "setup-input"}
           />
-        </div>
-        <div>
-          <label className="setup-label setup-label--required" htmlFor={id("weddingMonth")}>
-            {t("setup.monthLabel")}
-          </label>
+        </SetupField>
+        <SetupField id={id("weddingMonth")} label={t("setup.monthLabel")} required>
           <select
             id={id("weddingMonth")}
             className="setup-input"
@@ -281,11 +273,14 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
               </option>
             ))}
           </select>
-        </div>
-        <div>
-          <label className="setup-label setup-label--required" htmlFor={id("weddingYear")}>
-            {t("setup.yearLabel")}
-          </label>
+        </SetupField>
+        <SetupField
+          id={id("weddingYear")}
+          label={t("setup.yearLabel")}
+          required
+          hint={t("setup.yearMaxHint", { year: maxAllowedYear })}
+          hintId={id("yearMaxHint")}
+        >
           <input
             id={id("weddingYear")}
             value={weddingYear}
@@ -301,14 +296,8 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
             aria-required="true"
             className={yearError ? "setup-input setup-input--error" : "setup-input"}
           />
-          <p className="setup-help" id={id("yearMaxHint")}>
-            {t("setup.yearMaxHint", { year: maxAllowedYear })}
-          </p>
-        </div>
-        <div>
-          <label className="setup-label setup-label--required" htmlFor={id("weddingTime")}>
-            {t("setup.timeInputLabel")}
-          </label>
+        </SetupField>
+        <SetupField id={id("weddingTime")} label={t("setup.timeInputLabel")} required>
           <input
             id={id("weddingTime")}
             type="time"
@@ -322,7 +311,7 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
             aria-required="true"
             className={timeError ? "setup-input setup-input--error" : "setup-input"}
           />
-        </div>
+        </SetupField>
       </div>
 
       <p className="setup-help" id={id("dateHelp")}>
@@ -341,88 +330,67 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
       </p>
 
       <div role="group" aria-labelledby={id("scheduleEventsLabel")} aria-describedby={id("scheduleEventsHint")}>
-        {visibleScheduleEvents.map((ev, i) => (
-          <div
-            key={i}
-            style={{ display: "flex", gap: "0.5rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}
-          >
-            <div style={{ flex: "0 0 110px" }}>
-              <label className="setup-label" htmlFor={id(`scheduleEventTime${i}`)} style={{ fontSize: "0.75rem" }}>
-                {t("setup.scheduleEventTimeLabel")}
-              </label>
-              <input
-                id={id(`scheduleEventTime${i}`)}
-                className="setup-input"
-                type="time"
-                value={ev.time}
-                onChange={handleScheduleEventField(i, "time")}
-              />
-            </div>
-            <div>
-              <label className="setup-label" htmlFor={id(`scheduleEventEmoji${i}`)} style={{ fontSize: "0.75rem" }}>
-                {t("setup.scheduleEventEmojiLabel")}
-              </label>
-              <select
-                id={id(`scheduleEventEmoji${i}`)}
-                className="setup-input"
-                value={ev.emoji}
-                onChange={handleScheduleEventField(i, "emoji")}
-                style={{ width: "100%", textAlign: "center" }}
-              >
-                {/* Primera opciÃ³n vacÃ­a: evento sin emoji. */}
-                <option value="">â€”</option>
-                {SCHEDULE_EVENT_EMOJIS.map((emoji) => (
-                  <option key={emoji} value={emoji}>
-                    {emoji}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div style={{ flex: 1 }}>
-              <label className="setup-label" htmlFor={id(`scheduleEventText${i}`)} style={{ fontSize: "0.75rem" }}>
-                {t("setup.scheduleEventTextLabel")}
-              </label>
-              <input
-                id={id(`scheduleEventText${i}`)}
-                className="setup-input"
-                type="text"
-                value={ev.text}
-                onChange={handleScheduleEventField(i, "text")}
-                placeholder={t("setup.scheduleEventTextPlaceholder")}
-                maxLength={MAX_SCHEDULE_EVENT_TEXT}
-                autoComplete="off"
-              />
-            </div>
-            <button
-              type="button"
-              className="setup-button setup-button--ghost setup-button--compact"
-              onClick={() => removeScheduleEvent(i, (json) => updateFormField("weddingScheduleEvents", json))}
-              style={{ marginTop: "1.4rem", flexShrink: 0 }}
-              aria-label={t("setup.scheduleRemoveEvent")}
-            >
-              âœ•
-            </button>
-          </div>
-        ))}
+        <SetupArrayEditor
+          count={scheduleEvents.length}
+          max={MAX_SCHEDULE_EVENTS}
+          addLabel={t("setup.scheduleAddEvent")}
+          removeLabel={t("setup.scheduleRemoveEvent")}
+          maxLabel={t("setup.scheduleMaxEvents", { max: MAX_SCHEDULE_EVENTS })}
+          onAdd={() => addScheduleEvent({ time: "", text: "", emoji: "" }, (json) => updateFormField("weddingScheduleEvents", json))}
+          onRemove={(i) => removeScheduleEvent(i, (json) => updateFormField("weddingScheduleEvents", json))}
+          renderRow={(i) => (
+            <>
+              <div style={{ flex: "0 0 110px" }}>
+                <label className="setup-label" htmlFor={id(`scheduleEventTime${i}`)} style={{ fontSize: "0.75rem" }}>
+                  {t("setup.scheduleEventTimeLabel")}
+                </label>
+                <input
+                  id={id(`scheduleEventTime${i}`)}
+                  className="setup-input"
+                  type="time"
+                  value={scheduleEvents[i]?.time ?? ""}
+                  onChange={handleScheduleEventField(i, "time")}
+                />
+              </div>
+              <div>
+                <label className="setup-label" htmlFor={id(`scheduleEventEmoji${i}`)} style={{ fontSize: "0.75rem" }}>
+                  {t("setup.scheduleEventEmojiLabel")}
+                </label>
+                <select
+                  id={id(`scheduleEventEmoji${i}`)}
+                  className="setup-input"
+                  value={scheduleEvents[i]?.emoji ?? ""}
+                  onChange={handleScheduleEventField(i, "emoji")}
+                  style={{ width: "100%", textAlign: "center" }}
+                >
+                  {/* Primera opción vacía: evento sin emoji. */}
+                  <option value="">—</option>
+                  {SCHEDULE_EVENT_EMOJIS.map((emoji) => (
+                    <option key={emoji} value={emoji}>
+                      {emoji}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div style={{ flex: 1 }}>
+                <label className="setup-label" htmlFor={id(`scheduleEventText${i}`)} style={{ fontSize: "0.75rem" }}>
+                  {t("setup.scheduleEventTextLabel")}
+                </label>
+                <input
+                  id={id(`scheduleEventText${i}`)}
+                  className="setup-input"
+                  type="text"
+                  value={scheduleEvents[i]?.text ?? ""}
+                  onChange={handleScheduleEventField(i, "text")}
+                  placeholder={t("setup.scheduleEventTextPlaceholder")}
+                  maxLength={MAX_SCHEDULE_EVENT_TEXT}
+                  autoComplete="off"
+                />
+              </div>
+            </>
+          )}
+        />
       </div>
-
-      {visibleScheduleEvents.length < MAX_SCHEDULE_EVENTS ? (
-        <button
-          type="button"
-          className="setup-button setup-button--ghost setup-button--compact"
-          onClick={() =>
-            addScheduleEvent({ time: "", text: "", emoji: "" }, (json) =>
-              updateFormField("weddingScheduleEvents", json),
-            )
-          }
-          style={{ marginTop: "0.6rem" }}
-        >
-          + {t("setup.scheduleAddEvent")}
-        </button>
-      ) : null}
-      {visibleScheduleEvents.length >= MAX_SCHEDULE_EVENTS ? (
-        <p className="setup-help">{t("setup.scheduleMaxEvents", { max: MAX_SCHEDULE_EVENTS })}</p>
-      ) : null}
     </>
   );
 });

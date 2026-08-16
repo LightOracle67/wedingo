@@ -192,7 +192,7 @@ const ManageTab = memo(function ManageTab() {
     } catch {
       addToast("error", t("errors.dataLoadFailed"));
     }
-  }, [token, addToast, t, confirm]);
+  }, [token, addToast, t]);
 
   // Al cambiar de invitación se recarga (loadInvitation depende de token).
   useEffect(() => {
@@ -230,7 +230,7 @@ const ManageTab = memo(function ManageTab() {
     } finally {
       setSaving(false);
     }
-  }, [json, token, verified, adminNotes, manualExpiry, loadInvitation, addToast, t, confirm]);
+  }, [json, token, verified, adminNotes, manualExpiry, loadInvitation, addToast, t]);
 
   /** F1-2: traspaso de titularidad — genera un NUEVO token de setup y revoca
    *  los anteriores (solo quien conozca el nuevo token podrá administrar). */
@@ -286,7 +286,7 @@ const ManageTab = memo(function ManageTab() {
     } finally {
       setWorking(false);
     }
-  }, [token, docData, loadInvitations, addToast, t]);
+  }, [token, docData, loadInvitations, addToast, t, confirm]);
 
   /** F1-4: guarda la expiración manual. */
   const handleSaveExpiry = useCallback(async () => {
@@ -332,7 +332,7 @@ const ManageTab = memo(function ManageTab() {
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [token, addToast, t, confirm]);
+  }, [token, addToast, t]);
 
     /** F4-1: cierra la sesión activa de la invitación (revocación remota). */
   const handleKillSession = useCallback(async () => {
@@ -362,7 +362,7 @@ const ManageTab = memo(function ManageTab() {
     } catch {
       addToast("error", t("errors.generic"));
     }
-  }, [token, addToast, t, confirm]);
+  }, [token, addToast, t]);
 
   /** F4-5: abre la previsualización a pantalla completa (modo presentación). */
   const handlePresent = useCallback(() => {
@@ -381,7 +381,7 @@ const ManageTab = memo(function ManageTab() {
     } catch {
       addToast("error", t("errors.clipboardCopyFailed"));
     }
-  }, [token, addToast, t, confirm]);
+  }, [token, addToast, t]);
 
   /** Genera un .ics con la fecha y el lugar de la boda (agenda). */
   const handleDownloadIcs = useCallback(() => {
@@ -417,7 +417,7 @@ const ManageTab = memo(function ManageTab() {
       .join("\r\n");
     downloadText(`${token}.ics`, ics, "text/calendar;charset=utf-8");
     addToast("success", t("manage.icsDownloaded"));
-  }, [token, docData, addToast, t, confirm]);
+  }, [token, docData, addToast, t]);
 
   /** F5-2 (F14): restaura un backup JSON subido (config) en esta invitación. */
   const handleRestoreBackup = useCallback(
@@ -450,7 +450,7 @@ const ManageTab = memo(function ManageTab() {
         addToast("error", t("errors.generic"));
       }
     },
-    [token, loadInvitation, addToast, t],
+    [token, loadInvitation, addToast, t, confirm],
   );
 
   /** F4-6: registra una respuesta RSVP en nombre del invitado (auto-respuesta
@@ -490,7 +490,7 @@ const ManageTab = memo(function ManageTab() {
     } finally {
       setAutoSaving(false);
     }
-  }, [token, autoName, autoAttendance, addToast, t, confirm]);
+  }, [token, autoName, autoAttendance, addToast, t]);
 
   /** F1-6: copia una subcolección (galería/audio/configImages) de otra invitación. */
   const handleCopySection = useCallback(async () => {    if (!token || !copySource || copySource === token) return;
