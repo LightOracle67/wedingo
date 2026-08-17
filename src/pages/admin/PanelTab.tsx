@@ -1,10 +1,10 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
-import { setDoc, doc, collection, getDocs, query, orderBy, limit, documentId } from "firebase/firestore";
+import { setDoc, getDoc, doc, collection, getDocs, query, orderBy, limit, documentId } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 import { db, invitationDocRef, rsvpByInviteRef } from "../../lib/firebase";
 import { encrypt } from "../../lib/crypto-utils";
-import { buildAttendancePrediction, calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
+import { buildAttendancePrediction, buildConfirmationsPerDay, calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
 import { DonutChart, Legend } from "../../components/AttendanceChart";
 import StatsCard from "./StatsCard";
 import type { InvitationConfig } from "../../types";
@@ -67,6 +67,13 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
     [rsvpEntries, expectedGuests, weddingTimestamp],
   );
 
+  // Serie de confirmaciones por día (últimos 14 días) para el mini-gráfico.
+  const confirmationsPerDay = useMemo(
+    () => buildConfirmationsPerDay(rsvpEntries, 14, Date.now()),
+    [rsvpEntries],
+  );
+  const hasConfirmationsActivity = confirmationsPerDay.some((d) => d.count > 0);
+
   // Historial de visitas por día (F18): últimos 7 días ordenados por fecha.
   // La lectura falla silenciosamente si no hay subcolección (invitación
   // antigua): el bloque simplemente no se muestra.
@@ -114,11 +121,13 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
       // Backup completo: además de la config, se exportan las subcolecciones
       // CIFRADAS (galería, audio, imágenes de config y respuestas RSVP) tal y
       // como están en Firestore, para poder restaurarlas sin re-cifrar.
-      const [galSnap, audioSnap, cfgSnap, rsvpSnap] = await Promise.all([
+      const [galSnap, audioSnap, cfgSnap, rsvpSnap, visitSnap] = await Promise.all([
         getDocs(collection(db, "invitations", inviteToken, "gallery")),
         getDocs(collection(db, "invitations", inviteToken, "audio")),
         getDocs(collection(db, "invitations", inviteToken, "configImages")),
         getDocs(rsvpByInviteRef(inviteToken)),
+        // Historial de visitas por día (F18): se incluye en la copia.
+        getDocs(collection(db, "invitations", inviteToken, "visitLog")).catch(() => ({ docs: [] as Array<{ id: string; data: () => Record<string, unknown> }> })),
       ]);
       const readDocs = (snap: { docs: Array<{ id: string; data: () => Record<string, unknown> }> }) =>
         snap.docs.map((d) => ({ id: d.id, ...d.data() }));
@@ -130,6 +139,7 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
         audio: readDocs(audioSnap),
         configImages: readDocs(cfgSnap),
         rsvp: readDocs(rsvpSnap),
+        visitLog: readDocs(visitSnap),
       };
 
       const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
@@ -196,6 +206,7 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
           audio?: Array<{ id: string; [k: string]: unknown }>;
           configImages?: Array<{ id: string; [k: string]: unknown }>;
           rsvp?: Array<{ id: string; [k: string]: unknown }>;
+          visitLog?: Array<{ id: string; [k: string]: unknown }>;
         };
         const writeSub = async (path: string, docs: Array<{ id: string; [k: string]: unknown }> | undefined) => {
           if (!docs || !docs.length) return;
@@ -235,6 +246,18 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
         await writeSub("audio", sub.audio);
         await writeSub("configImages", sub.configImages);
         await writeSubRsvp(sub.rsvp);
+        // El historial de visitas es incremental por día: se restaura solo si
+        // el documento de ese día no existe todavía (nunca se sobrescribe).
+        if (sub.visitLog?.length) {
+          for (const d of sub.visitLog) {
+            const dayRef = doc(db, "invitations", inviteToken, "visitLog", d.id);
+            const existing = await getDoc(dayRef);
+            if (!existing.exists()) {
+              const { id: _id, ...restDoc } = d;
+              await setDoc(dayRef, { count: Number(restDoc.count) || 0 });
+            }
+          }
+        }
 
         if (onRestore) await onRestore();
         addToast("success", t("panel.restoreSuccess"));
@@ -293,6 +316,27 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
               {t("panel.predictionHint", { days: prediction.daysToWedding })}
             </p>
           ) : null}
+        </div>
+      ) : null}
+
+      {/* ── Confirmaciones por día (mini-gráfico, 14 días) ── */}
+      {hasConfirmationsActivity ? (
+        <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.9rem 1rem" }}>
+          <p className="setup-label" style={{ marginBottom: "0.4rem" }}>
+            {t("panel.confirmsPerDay")}
+          </p>
+          <div className="visits-bars" aria-label={t("panel.confirmsPerDay")}>
+            {confirmationsPerDay.map((d) => {
+              const max = Math.max(1, ...confirmationsPerDay.map((x) => x.count));
+              return (
+                <div key={d.day} className="visits-bars__col" title={`${d.day}: ${d.count}`}>
+                  <div className="visits-bars__bar" style={{ height: `${Math.max(8, (d.count / max) * 100)}%` }} />
+                  <span className="visits-bars__label">{d.day}</span>
+                  <span className="visits-bars__count">{d.count}</span>
+                </div>
+              );
+            })}
+          </div>
         </div>
       ) : null}
 

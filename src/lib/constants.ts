@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.102.0";
+export const APP_VERSION = "2.103.0";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -101,6 +101,12 @@ export const THEME_OPTIONS = [
     group: "claros",
   },
   {
+    value: "antique-ivory",
+    label: "Marfil antiguo",
+    hint: "Premium: marfil cálido y bronce sobrio, elegancia atemporal.",
+    group: "premium",
+  },
+  {
     value: "amber-night",
     label: "Noche ámbar",
     hint: "Oscuro y elegante, con destellos ámbar y dorados.",
@@ -143,6 +149,12 @@ export const THEME_OPTIONS = [
     group: "oscuros",
   },
   {
+    value: "deep-amethyst",
+    label: "Amatista profunda",
+    hint: "Premium: púrpura profundo con destellos plateados y refinados.",
+    group: "premium",
+  },
+  {
     value: "rainbow",
     label: "Arcoíris",
     hint: "Celebración del amor diverso con los colores del arcoíris.",
@@ -171,6 +183,8 @@ export const THEME_PREVIEW_COLORS: Record<string, { accent: string; bg: string }
   "blush-pearl": { accent: "#e8a0b4", bg: "#4a1e30" },
   "lavender-mist": { accent: "#b8a0d8", bg: "#2e1848" },
   "champagne-bubble": { accent: "#d4b86a", bg: "#52401e" },
+  "antique-ivory": { accent: "#c8a878", bg: "#5a4632" },
+  "deep-amethyst": { accent: "#b898d8", bg: "#1c0a28" },
   "amber-night": { accent: "#ddb24b", bg: "#1e140e" },
   "onyx-gold": { accent: "#d8ad43", bg: "#12100c" },
   "midnight-royal": { accent: "#e0b84b", bg: "#0a102a" },
@@ -190,6 +204,7 @@ export const THEME_PREVIEW_COLORS: Record<string, { accent: string; bg: string }
 export const THEME_GROUPS = [
   { value: "claros", label: "Temas claros" },
   { value: "oscuros", label: "Temas oscuros" },
+  { value: "premium", label: "Premium" },
   { value: "lgtbiq+", label: "LGTBIQ+" },
 ];
 

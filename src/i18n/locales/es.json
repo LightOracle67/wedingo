@@ -565,6 +565,7 @@
     "trendDown": "ritmo a la baja",
     "trendFlat": "ritmo estable",
     "visitsHistory": "Visitas por día (últimos 7 días)",
+    "confirmsPerDay": "Confirmaciones por día (últimos 14 días)",
     "visits_one": "1 visita",
     "visits_other": "{{count}} visitas",
     "viewInvitation": "Ver invitación",
@@ -1257,6 +1258,8 @@
     "sapphire-night": "Noche zafiro",
     "emerald-grove": "Bosque esmeralda",
     "plum-twilight": "Atardecer ciruela",
+    "antique-ivory": "Marfil antiguo",
+    "deep-amethyst": "Amatista profunda",
     "rainbow": "Arcoíris",
     "trans": "Trans",
     "nonbinary": "No binario",
@@ -1268,6 +1271,7 @@
   "themeGroups": {
     "claros": "Temas claros",
     "oscuros": "Temas oscuros",
+    "premium": "Premium",
     "lgtbiq+": "LGTBIQ+"
   },
   "envelope": {
@@ -1298,6 +1302,8 @@
     "sapphire-night": "Azul profundo con acentos plateados y presencia serena.",
     "emerald-grove": "Verde profundo natural con matices dorados y elegantes.",
     "plum-twilight": "Púrpura intenso con destellos rosados y románticos.",
+    "antique-ivory": "Premium: marfil cálido y bronce sobrio, elegancia atemporal.",
+    "deep-amethyst": "Premium: púrpura profundo con destellos plateados y refinados.",
     "rainbow": "Celebración del amor diverso con los colores del arcoíris.",
     "trans": "Azul, rosa y blanco en homenaje a la bandera trans.",
     "nonbinary": "Amarillo, blanco, morado y negro por la bandera no binaria.",

@@ -112,6 +112,50 @@ export function buildAttendancePrediction(
   };
 }
 
+/**
+ * buildConfirmationsPerDay — Serie de confirmaciones "yes" por día (últimos
+ * `days` días) para el mini-gráfico del dashboard. Los timestamps pueden ser
+ * números (ms o segundos) o Dates; los inválidos se ignoran. Cada día se
+ * etiqueta con la fecha corta local (MM-DD).
+ */
+export function buildConfirmationsPerDay(
+  entries: Array<{ attendance?: string; submittedAt?: unknown }>,
+  days = 14,
+  now: number = Date.now(),
+) {
+  const dayStart = (ts: number) => {
+    const d = new Date(ts);
+    d.setHours(0, 0, 0, 0);
+    return d.getTime();
+  };
+  const counts = new Map<number, number>();
+  for (const e of entries) {
+    if (e.attendance !== "yes") continue;
+    const raw = e.submittedAt;
+    if (raw === null || raw === undefined) continue;
+    // Números en ms o segundos; otros valores (Date, string ISO) se parsean.
+    const ms =
+      typeof raw === "number"
+        ? raw
+        : raw instanceof Date
+          ? raw.getTime()
+          : new Date(String(raw)).getTime();
+    if (!Number.isFinite(ms) || ms <= 0) continue;
+    const normalized = ms < 1e11 ? ms * 1000 : ms;
+    const day = dayStart(normalized);
+    if (now - day < days * 86400000 && day <= now) {
+      counts.set(day, (counts.get(day) || 0) + 1);
+    }
+  }
+  const out: Array<{ day: string; count: number }> = [];
+  for (let i = days - 1; i >= 0; i--) {
+    const d = new Date(dayStart(now) - i * 86400000);
+    const key = dayStart(d.getTime());
+    out.push({ day: `${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`, count: counts.get(key) || 0 });
+  }
+  return out;
+}
+
 /* formatRSVPsForCSV, groupRSVPsByAttendance, formatGuestDate, getCompanionList
  * eliminados: los exports de CSV se sustituyeron por Excel.
  * Los constructores de hojas Excel viven en ./excel-builders.ts. */

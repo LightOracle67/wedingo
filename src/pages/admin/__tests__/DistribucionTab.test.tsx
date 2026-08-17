@@ -86,7 +86,7 @@ describe("DistribucionTab", () => {
     // Se captura el batch creado (writeBatch) para inspeccionar sus updates.
     const batchSpies: Array<{ update: ReturnType<typeof vi.fn>; commit: ReturnType<typeof vi.fn> }> = [];
     vi.mocked(writeBatch).mockImplementation(() => {
-      const b = { update: vi.fn(), delete: vi.fn(), commit: vi.fn(() => Promise.resolve()) };
+      const b = { update: vi.fn(), delete: vi.fn(), set: vi.fn(), commit: vi.fn(() => Promise.resolve()) };
       batchSpies.push(b);
       return b;
     });

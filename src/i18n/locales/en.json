@@ -567,6 +567,7 @@
     "trendDown": "slowing pace",
     "trendFlat": "stable pace",
     "visitsHistory": "Visits per day (last 7 days)",
+    "confirmsPerDay": "Confirmations per day (last 14 days)",
     "viewInvitation": "View invitation",
     "restoreConfirm": "Restore the backup? Current data will be replaced."
   },
@@ -1257,6 +1258,8 @@
     "sapphire-night": "Sapphire Night",
     "emerald-grove": "Emerald Grove",
     "plum-twilight": "Plum Twilight",
+    "antique-ivory": "Antique Ivory",
+    "deep-amethyst": "Deep Amethyst",
     "rainbow": "Rainbow",
     "trans": "Trans",
     "nonbinary": "Non-binary",
@@ -1268,6 +1271,7 @@
   "themeGroups": {
     "claros": "Light themes",
     "oscuros": "Dark themes",
+    "premium": "Premium",
     "lgtbiq+": "LGTBIQ+"
   },
   "envelope": {
@@ -1298,6 +1302,8 @@
     "sapphire-night": "Deep blue with silver accents and serene presence.",
     "emerald-grove": "Deep natural green with golden and elegant hues.",
     "plum-twilight": "Intense purple with pink and romantic sparkles.",
+    "antique-ivory": "Premium: warm ivory and sober bronze, timeless elegance.",
+    "deep-amethyst": "Premium: deep purple with refined silver sparkles.",
     "rainbow": "Celebration of diverse love with rainbow colors.",
     "trans": "Blue, pink and white in tribute to the trans flag.",
     "nonbinary": "Yellow, white, purple and black for the non-binary flag.",

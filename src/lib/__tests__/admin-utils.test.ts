@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { calcRSVPSummary, getDietarySummary, buildAttendancePrediction } from "../admin-utils";
+import { calcRSVPSummary, getDietarySummary, buildAttendancePrediction, buildConfirmationsPerDay } from "../admin-utils";
 
 describe("calcRSVPSummary", () => {
   it("returns zeros for null", () => {
@@ -225,5 +225,53 @@ describe("buildAttendancePrediction", () => {
     const { entries } = base();
     const r = buildAttendancePrediction(entries, 100, Date.parse("2026-10-01"), now);
     expect(["up", "down", "flat"]).toContain(r.trend);
+  });
+});
+
+describe("buildConfirmationsPerDay", () => {
+  const now = Date.parse("2026-08-17T12:00:00");
+  // `now` es mediodía: restar días enteros mantiene la hora fija (12:00).
+  const dayTs = (daysAgo: number, extraHours = 0) => now - daysAgo * 86400000 + extraHours * 3600000;
+
+  it("returns a series of 14 consecutive days ending today", () => {
+    const series = buildConfirmationsPerDay([], 14, now);
+    expect(series).toHaveLength(14);
+    expect(series[13]!.day).toBe("08-17");
+  });
+
+  it("counts only 'yes' confirmations and groups them by day", () => {
+    const entries = [
+      { attendance: "yes", submittedAt: dayTs(2) },
+      { attendance: "yes", submittedAt: dayTs(2, 8) }, // mismo día (20:00)
+      { attendance: "no", submittedAt: dayTs(1) }, // no cuenta
+      { attendance: "yes", submittedAt: dayTs(0) },
+    ];
+    const series = buildConfirmationsPerDay(entries, 14, now);
+    const twoDaysAgo = series.find((d) => d.day === "08-15");
+    const today = series[13]!;
+    expect(twoDaysAgo?.count).toBe(2);
+    expect(today.count).toBe(1);
+  });
+
+  it("handles timestamps in seconds and invalid values", () => {
+    const entries = [
+      { attendance: "yes", submittedAt: dayTs(3) / 1000 }, // segundos
+      { attendance: "yes", submittedAt: Number.NaN },
+      { attendance: "yes", submittedAt: undefined },
+    ];
+    const series = buildConfirmationsPerDay(entries, 14, now);
+    const threeDaysAgo = series.find((d) => d.day === "08-14");
+    expect(threeDaysAgo?.count).toBe(1);
+  });
+
+  it("ignores future and very old entries", () => {
+    const entries = [
+      { attendance: "yes", submittedAt: now + 86400000 }, // futuro
+      { attendance: "yes", submittedAt: now - 30 * 86400000 }, // fuera de 14 días
+      { attendance: "yes", submittedAt: dayTs(5) },
+    ];
+    const series = buildConfirmationsPerDay(entries, 14, now);
+    const total = series.reduce((s, d) => s + d.count, 0);
+    expect(total).toBe(1);
   });
 });

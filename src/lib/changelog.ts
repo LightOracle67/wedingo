@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.103.0",
+    date: "2026-08-17",
+    changes: [
+      "Ronda final de funciones viables sin backend: (20) Temas premium: nuevo grupo «Premium» con dos temas (Marfil antiguo, claro/bronce sobrio; Amatista profunda, oscuro/plateado) integrados en el selector con preview, variables CSS, gradientes de tarjeta, page-bg y claves i18n; (impresión premium) la tarjeta imprimible hereda el tema de la invitación (se aplica data-wedding-theme en PrintPage); (dashboard) mini-gráfico de confirmaciones por día (últimos 14 días, helper puro buildConfirmationsPerDay con timestamps ms/segundos/Date y entradas inválidas ignoradas); (backup) la copia de seguridad incluye ahora el historial de visitas por día y el restore lo restaura sin sobrescribir días existentes. 2269 tests / 173 ficheros verdes + lint/typecheck/build/translations (1634 claves) + reglas 28/28 OK.",
+    ],
+  },
+
+  {
     version: "2.102.0",
     date: "2026-08-17",
     changes: [

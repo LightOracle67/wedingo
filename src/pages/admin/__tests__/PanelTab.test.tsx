@@ -39,12 +39,15 @@ const mocks = vi.hoisted(() => ({
     hasFutureWedding: false,
     trend: "flat" as const,
   })),
+  buildConfirmationsPerDay: vi.fn(() => [] as Array<{ day: string; count: number }>),
 }));
 vi.mock("../../../lib/admin-utils", () => ({
   calcRSVPSummary: (...args: Parameters<typeof mocks.calcRSVPSummary>) => mocks.calcRSVPSummary(...args),
   getDietarySummary: (...args: Parameters<typeof mocks.getDietarySummary>) => mocks.getDietarySummary(...args),
   buildAttendancePrediction: (...args: Parameters<typeof mocks.buildAttendancePrediction>) =>
     mocks.buildAttendancePrediction(...args),
+  buildConfirmationsPerDay: (...args: Parameters<typeof mocks.buildConfirmationsPerDay>) =>
+    mocks.buildConfirmationsPerDay(...args),
 }));
 
 import PanelTab, { type PanelTabConfig } from "../PanelTab";

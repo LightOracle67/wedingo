@@ -23,6 +23,15 @@ export default function PrintPage() {
     document.title = `${config.firstName} & ${config.secondName} — Wedingo`;
   }, [config.firstName, config.secondName]);
 
+  // Impresión premium: se aplica el tema de la invitación para que la tarjeta
+  // impresa herede sus colores (las variables CSS de los temas viven en
+  // index.css y print.css las usa con fallback). Un tema desconocido/ausente
+  // no rompe nada: el CSS tiene fallbacks.
+  useEffect(() => {
+    const theme = config.theme;
+    if (theme) document.documentElement.dataset.weddingTheme = theme;
+  }, [config.theme]);
+
   // URL pública de la invitación: base del sitio + token (si hay token).
   const inviteUrl = useMemo(() => (inviteToken ? `${SITE_URL}/${inviteToken}` : SITE_URL), [inviteToken]);
 

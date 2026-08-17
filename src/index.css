@@ -1005,6 +1005,83 @@ textarea {
   --wedding-decoration-right-opacity: 0.93;
 }
 
+/* ── Temas premium ──────────────────────────────────────────────────────── */
+
+/* Marfil antiguo (claro): marfil cálido con bronce sobrio. */
+:root[data-wedding-theme="antique-ivory"] {
+  --theme-glow:
+    radial-gradient(ellipse at 30% 40%, #d8bd90 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 60%, #c8a878 0%, transparent 55%);
+  --page-wash: rgba(255, 250, 240, 0.2);
+  --spark-1: rgba(216, 189, 144, 0.22);
+  --spark-2: rgba(200, 168, 120, 0.16);
+  --spark-size-1: 290px 290px;
+  --spark-size-2: 340px 340px;
+  --spark-opacity: 0.5;
+  --setup-grad-start: rgba(46, 36, 24, 0.9);
+  --setup-grad-end: rgba(120, 96, 64, 0.76);
+  --setup-border: rgba(228, 214, 190, 0.34);
+  --setup-accent: #c8a878;
+  --setup-accent-text: #2e2417;
+  --setup-field-bg: rgba(27, 21, 14, 0.32);
+  --setup-field-border: rgba(234, 222, 202, 0.26);
+  --setup-title: #fff9ee;
+  --setup-subtitle: rgba(246, 239, 228, 0.84);
+  --setup-muted: rgba(234, 226, 213, 0.85);
+  --invite-shell-bg: rgba(255, 251, 244, 0.42);
+  --invite-shell-border: rgba(220, 204, 178, 0.38);
+  --invite-shell-shadow: rgba(58, 43, 25, 0.3);
+  --invite-shell-glow: rgba(210, 186, 146, 0.18);
+  --invite-core-color: #c8a878;
+  --invite-core-border: rgba(238, 228, 210, 0.7);
+  --invite-core-glow: rgba(206, 176, 124, 0.18);
+  /* Título/copy claros: la tarjeta es un gradiente oscuro (contraste ≥4.5:1). */
+  --invite-title-color: #f5eedd;
+  --invite-copy-color: #d2c2a4;
+  --invite-text-shadow: rgba(30, 20, 10, 0.6);
+}
+
+/* Amatista profunda (oscuro): púrpura profundo con destellos plateados. */
+:root[data-wedding-theme="deep-amethyst"] {
+  --theme-glow:
+    radial-gradient(ellipse at 30% 40%, #8a6cc0 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 60%, #7a58b0 0%, transparent 55%);
+  --page-wash: rgba(24, 8, 44, 0.28);
+  --spark-1: rgba(206, 184, 240, 0.22);
+  --spark-2: rgba(184, 152, 216, 0.16);
+  --spark-size-1: 310px 310px;
+  --spark-size-2: 370px 370px;
+  --spark-opacity: 0.6;
+  --setup-grad-start: rgba(20, 4, 36, 0.94);
+  --setup-grad-end: rgba(48, 16, 80, 0.84);
+  --setup-border: rgba(202, 178, 230, 0.36);
+  --setup-accent: #b898d8;
+  --setup-accent-text: #1e1226;
+  --setup-field-bg: rgba(10, 2, 18, 0.44);
+  --setup-field-border: rgba(204, 182, 232, 0.28);
+  --setup-title: #f8f2ff;
+  --setup-subtitle: rgba(234, 220, 250, 0.84);
+  --setup-muted: rgba(220, 208, 240, 0.72);
+  --invite-shell-bg: rgba(20, 10, 34, 0.44);
+  --invite-shell-border: rgba(202, 178, 230, 0.36);
+  --invite-shell-shadow: rgba(0, 0, 0, 0.44);
+  --invite-shell-glow: rgba(190, 160, 224, 0.22);
+  --invite-core-color: #c8b0e8;
+  --invite-core-border: rgba(232, 216, 250, 0.58);
+  --invite-core-glow: rgba(184, 152, 224, 0.24);
+  --invite-title-color: #f8f2ff;
+  --invite-copy-color: #e4dcf2;
+  --invite-text-shadow: rgba(12, 2, 24, 0.65);
+  --wedding-decoration-left-transform: scale(-1, -1) scale(1.08);
+  --wedding-decoration-right-transform: scale(1.04) rotate(1deg);
+  --wedding-decoration-left-mobile-transform: translateY(0) scale(-1, -1) scale(1);
+  --wedding-decoration-right-mobile-transform: scale(0.98) rotate(1deg);
+  --wedding-decoration-left-filter: hue-rotate(250deg) saturate(1.06) brightness(1.05);
+  --wedding-decoration-right-filter: hue-rotate(256deg) saturate(1.02) brightness(1.03);
+  --wedding-decoration-left-opacity: 0.97;
+  --wedding-decoration-right-opacity: 0.94;
+}
+
 :root[data-wedding-theme="rainbow"] .story-card-wrap,
 :root[data-wedding-theme="rainbow"] .invite-shell {
   backdrop-filter: blur(8px);
@@ -1122,6 +1199,22 @@ textarea {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   background: linear-gradient(to top right, #52401ecc 0%, #7a6030aa 35%, #b8985099 70%, #d4b86a80 100%);
+}
+
+:root[data-wedding-theme="antique-ivory"] .story-card-wrap,
+:root[data-wedding-theme="antique-ivory"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  /* Gradiente uniformemente oscuro (criterio linen-soft): el texto claro del
+     marfil mantiene el contraste ≥4.5:1 en toda la tarjeta. */
+  background: linear-gradient(to top right, #5a4632cc 0%, #6e573acc 40%, #7a6342bb 75%, #8a714daa 100%);
+}
+
+:root[data-wedding-theme="deep-amethyst"] .story-card-wrap,
+:root[data-wedding-theme="deep-amethyst"] .invite-shell {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: linear-gradient(to top right, #1c0a28cc 0%, #321648aa 35%, #5c3a8899 70%, #b898d880 100%);
 }
 
 :root[data-wedding-theme="amber-night"] .story-card-wrap,
@@ -1247,6 +1340,8 @@ a,
 :root[data-wedding-theme="sapphire-night"],
 :root[data-wedding-theme="emerald-grove"],
 :root[data-wedding-theme="plum-twilight"],
+:root[data-wedding-theme="antique-ivory"],
+:root[data-wedding-theme="deep-amethyst"],
 :root[data-wedding-theme="rainbow"],
 :root[data-wedding-theme="trans"],
 :root[data-wedding-theme="nonbinary"],
@@ -2332,10 +2427,24 @@ a:focus-visible {
 }
 :root[data-wedding-theme="champagne-bubble"] {
   --page-bg: #52401e;
-  --page-bg-secondary: #6a542a;
-  --page-bg-gradient: linear-gradient(160deg, #52401e 0%, #6a542a 40%, #52401e 80%, #6a542a 100%);
+  --page-bg-secondary: #7a6030;
+  --page-bg-gradient: linear-gradient(160deg, #52401e 0%, #7a6030 40%, #52401e 80%, #7a6030 100%);
   --flower-accent: #d4b86a;
   --flower-accent-dim: color-mix(in srgb, #d4b86a 30%, transparent);
+}
+:root[data-wedding-theme="antique-ivory"] {
+  --page-bg: #5a4632;
+  --page-bg-secondary: #7a6342;
+  --page-bg-gradient: linear-gradient(160deg, #5a4632 0%, #7a6342 40%, #5a4632 80%, #7a6342 100%);
+  --flower-accent: #c8a878;
+  --flower-accent-dim: color-mix(in srgb, #c8a878 30%, transparent);
+}
+:root[data-wedding-theme="deep-amethyst"] {
+  --page-bg: #1c0a28;
+  --page-bg-secondary: #321648;
+  --page-bg-gradient: linear-gradient(160deg, #1c0a28 0%, #321648 40%, #1c0a28 80%, #321648 100%);
+  --flower-accent: #b898d8;
+  --flower-accent-dim: color-mix(in srgb, #b898d8 30%, transparent);
 }
 :root[data-wedding-theme="amber-night"] {
   --page-bg: #1e140e;
