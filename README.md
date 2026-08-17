@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.104.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.104.0)  
+**Versión actual:** [v2.105.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.105.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2270 tests, 173 test files |
+| Tests | 2276 tests, 173 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -82,6 +82,11 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 ### Funciones diferenciadoras (ronda v2.104)
 
 - **Lista de confirmados en la portada:** nuevo checkbox en Extras «Mostrar la lista de personas que han confirmado» que muestra los nombres de quienes confirmaron (chips de prueba social), además del contador numérico. Privacidad/GDPR: cada invitado puede optar por aparecer al responder el RSVP (consentimiento explícito art. 7), y la lista pública es de solo-creación (no se puede sobrescribir ni suplantar) con cap anti-spam. El toggle está oculto por defecto.
+
+### Ronda v2.105
+
+- **Fix de extras «no activables»:** activar SOLO alguno de voiceNotes / dayPhotos / mailbox / toasts / venueMap ocultaba la sección de extras (falta de esos toggles en `sectionHasContent`); ya se alinean todos.
+- **Trivia de la pareja mejorada:** botón «Comprobar», marcador de aciertos (X de N), felicitación al acertar todas, estado persistido en sessionStorage por invitación, pista y dificultad (fácil/media/difícil) por pregunta. El editor admite `pregunta | respuesta | pista | dificultad`.
 | **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -279,6 +284,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.105.0 | 2026-08-17 | Fix de extras no activables (sectionHasContent) + trivia de la pareja mejorada (comprobar, marcador, felicitación, persistencia, pista y dificultad) |
 | v2.104.0 | 2026-08-17 | Lista de confirmados en la portada: nuevo checkbox en Extras (prueba social con opt-in de nombres GDPR y colección create-only con cap anti-spam) |
 | v2.103.0 | 2026-08-17 | Ronda final sin backend: temas premium (grupo Premium con Marfil antiguo y Amatista profunda), impresión con el tema, confirmaciones por día en el Panel y backup con historial de visitas |
 | v2.102.0 | 2026-08-17 | Funciones diferenciadoras (bloque 3): mapa de mesas inteligente (auto-asignación equilibrada en batch), filtro por invitado en fotos del día y recordatorio automático a no confirmados |
