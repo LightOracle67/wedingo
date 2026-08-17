@@ -73,7 +73,7 @@ export default function AccessibilityPanel({ open, onClose }: { open: boolean; o
   const { t } = useTranslation();
   // Preferencias de animación del invitado (combina la base del admin con lo
   // que este invitado desactiva en su dispositivo). Requiere AnimationsProvider.
-  const { isDisabled, adminDisabled, toggleGuestAnimation, setAllGuest, resetGuest } = useAnimations();
+  const { isDisabled, adminDisabled, toggleGuestAnimation, setAllGuest, allOff } = useAnimations();
   const [prefs, setPrefs] = useState(() => {
     const loaded = loadPrefs();
 
@@ -233,18 +233,9 @@ export default function AccessibilityPanel({ open, onClose }: { open: boolean; o
             locked={adminDisabled}
             idPrefix="guest-"
             compact
+            allOff={allOff}
+            onToggleAll={setAllGuest}
           />
-        </div>
-        <div className="anim-checklist__group-actions anim-checklist__group-actions--global">
-          <button type="button" className="a11y-btn" onClick={() => setAllGuest(true)}>
-            {t("animations.allOn")}
-          </button>
-          <button type="button" className="a11y-btn" onClick={() => setAllGuest(false)}>
-            {t("animations.allOff")}
-          </button>
-          <button type="button" className="a11y-btn" onClick={resetGuest}>
-            {t("a11y.animationsReset")}
-          </button>
         </div>
       </div>
     </Modal>

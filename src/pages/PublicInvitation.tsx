@@ -100,7 +100,7 @@ export default function PublicInvitation() {
   // `isDisabled(id)` decide en runtime las animaciones gestionadas por JS
   // (sobre, confeti, navegación, hero, galería); las de CSS las aplica
   // AnimationPrefsApplier vía clases en <html>.
-  const { isDisabled, effectiveDisabled } = useAnimations();
+  const { isDisabled, effectiveDisabled, isGroupFullyDisabled } = useAnimations();
 
   // Ajustes globales de la plataforma (kill-switch por función, banner,
   // bloqueos, mantenimiento). Se carga aquí (arriba) porque `hasExtras` y
@@ -283,10 +283,18 @@ export default function PublicInvitation() {
   // romper el React.memo del EnvelopeOverlay.
   const handleEnvelopeOpen = useCallback(() => {
     setEnvelopeOpen(true);
-    if (config.welcomeVideo && config.welcomeVideoEnabled !== "false") setShowWelcomeVideo(true);
+    // El vídeo de bienvenida es un comportamiento animado: si su animación
+    // está desactivada (o `all`), no se abre al entrar.
+    if (
+      config.welcomeVideo &&
+      config.welcomeVideoEnabled !== "false" &&
+      !isDisabled("welcome-video-modal")
+    ) {
+      setShowWelcomeVideo(true);
+    }
     // Apertura del sobre: el gesto principal de la invitación.
     trackEvent("envelope_open", { method: "click" });
-  }, [config.welcomeVideo, config.welcomeVideoEnabled]);
+  }, [config.welcomeVideo, config.welcomeVideoEnabled, isDisabled]);
   const handleConfetti = useCallback(() => {
     // El confeti arranca justo al terminar el fade out del texto del sobre
     // (2.6s tras el segundo gesto) y cae una única vez detrás de la invitación.
@@ -328,8 +336,17 @@ export default function PublicInvitation() {
   const showMissingToken = !isConfigured && !hasHash && (Boolean(inviteToken) || isInviteMode);
   // F3-6: token bloqueado por el superadmin → la invitación no se muestra.
   const tokenBlocked = Boolean(inviteToken) && tokenIsBlocked(inviteToken || "", platform.blockedTokens);
+  // Si TODAS las animaciones del sobre están desactivadas (o `all`), el sobre
+  // no aparece: la invitación se muestra directamente y se salta su secuencia.
+  const envelopeFullyOff = isGroupFullyDisabled("envelope");
   const showEnvelope =
-    !isAdminTokenLoggedIn && !isConfigLoading && !configLoadError && !isEmpty && !showMissingToken && !envelopeOpen;
+    !isAdminTokenLoggedIn &&
+    !isConfigLoading &&
+    !configLoadError &&
+    !isEmpty &&
+    !showMissingToken &&
+    !envelopeOpen &&
+    !envelopeFullyOff;
   const {
     getSectionStyle: getStorySectionStyle,
     getSectionClassName: getStorySectionClassName,

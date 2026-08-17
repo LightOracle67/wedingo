@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { act } from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 
@@ -70,6 +70,18 @@ const mockUseAppValue = vi.hoisted(() => ({
 const mockUseParams = vi.hoisted(() => ({ inviteToken: "test" }));
 const mockUseLocation = vi.hoisted(() => ({ pathname: "/test", search: "", hash: "" }));
 
+const mockUseAnimationsValue = vi.hoisted(() => ({
+  adminDisabled: new Set<string>(),
+  guestDisabled: new Set<string>(),
+  effectiveDisabled: new Set<string>(),
+  isDisabled: ((_id: string) => false) as (id: string) => boolean,
+  isGroupFullyDisabled: ((_groupId: string) => false) as (groupId: string) => boolean,
+  toggleGuestAnimation: vi.fn(),
+  allOff: false,
+  setAllGuest: vi.fn(),
+  resetGuest: vi.fn(),
+}));
+
 const mockStoryNavigation = vi.hoisted(() => ({
   activeSection: "hero",
   isTransitioning: false,
@@ -107,17 +119,9 @@ vi.mock("../../contexts", () => ({
   useConfig: () => mockUseAppValue,
   useRsvpContext: () => mockUseAppValue,
   useAuth: () => mockUseAppValue,
-  // Preferencias de animación: todo activo por defecto en los tests.
-  useAnimations: () => ({
-    adminDisabled: new Set<string>(),
-    guestDisabled: new Set<string>(),
-    effectiveDisabled: new Set<string>(),
-    isDisabled: () => false,
-    toggleGuestAnimation: vi.fn(),
-    setGuestGroup: vi.fn(),
-    setAllGuest: vi.fn(),
-    resetGuest: vi.fn(),
-  }),
+  // Preferencias de animación: todo activo por defecto (los tests pueden
+  // mutar mockUseAnimationsValue para simular grupos desactivados).
+  useAnimations: () => mockUseAnimationsValue,
 }));
 
 vi.mock("../../lib/image-store", () => ({
@@ -176,6 +180,11 @@ vi.mock("../sections/RideShareSection", () => mockSection("rideshare"));
 import PublicInvitation from "../PublicInvitation";
 
 describe("PublicInvitation", () => {
+  beforeEach(() => {
+    mockUseAnimationsValue.isGroupFullyDisabled = () => false;
+    mockUseAnimationsValue.isDisabled = () => false;
+    mockUseAnimationsValue.allOff = false;
+  });
   afterEach(() => {
     const headScripts = document.head.querySelectorAll('script[type="application/ld+json"]');
     headScripts.forEach((s) => s.remove());
@@ -327,6 +336,16 @@ describe("PublicInvitation", () => {
     mockUseAppValue.isAdminTokenLoggedIn = false;
     render(<PublicInvitation />);
     expect(screen.getByLabelText("envelope.tapContinue")).toBeDefined();
+    mockUseAppValue.isAdminTokenLoggedIn = true;
+  });
+
+  it("skips the envelope entirely when the envelope group is fully disabled", () => {
+    // Si todas las animaciones del sobre están desactivadas, la invitación se
+    // muestra directamente (no aparece el sobre ni su secuencia).
+    mockUseAppValue.isAdminTokenLoggedIn = false;
+    mockUseAnimationsValue.isGroupFullyDisabled = (groupId: string) => groupId === "envelope";
+    render(<PublicInvitation />);
+    expect(screen.queryByLabelText("envelope.tapContinue")).toBeNull();
     mockUseAppValue.isAdminTokenLoggedIn = true;
   });
 

@@ -257,6 +257,16 @@ html.wed-no-anim-toast-animations .toast__progress-bar {
   flex-direction: column;
   gap: 1rem;
 }
+/* Checkbox maestro «desactivar todas»: destacado sobre el resto de grupos. */
+.anim-checklist__all {
+  display: flex;
+  gap: 0.55rem;
+  align-items: flex-start;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--setup-accent) 45%, transparent);
+  border-radius: var(--radius-md, 0.6rem);
+  background: color-mix(in srgb, var(--setup-accent) 10%, transparent);
+}
 .anim-checklist__group {
   border: 1px solid color-mix(in srgb, var(--setup-border) 45%, transparent);
   border-radius: var(--radius-md, 0.6rem);
@@ -276,33 +286,6 @@ html.wed-no-anim-toast-animations .toast__progress-bar {
   color: var(--setup-title);
   padding: 0 0 0.4rem;
   border-bottom: 1px solid color-mix(in srgb, var(--setup-border) 35%, transparent);
-}
-.anim-checklist__group-actions {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-weight: 500;
-  text-transform: none;
-  letter-spacing: 0;
-}
-.anim-checklist__group-actions--global {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-.anim-checklist__group-btn {
-  all: unset;
-  cursor: pointer;
-  font-size: 0.72rem;
-  color: var(--setup-accent);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-.anim-checklist__group-btn:hover {
-  color: var(--setup-title);
-}
-.anim-checklist__group-sep {
-  color: var(--setup-muted);
 }
 .anim-checklist__items {
   display: flex;

@@ -14,6 +14,8 @@ import {
   parseDisabledAnimations,
   serializeDisabledAnimations,
   toggleDisabledAnimations,
+  toggleAllDisabled,
+  ALL_ANIMATIONS_KEY,
   animationsByGroup,
 } from "../animations";
 import { normalizeConfig } from "../normalize-config";
@@ -79,6 +81,12 @@ describe("parseDisabledAnimations", () => {
     expect(set.size).toBe(1);
     expect(set.has("fireflies")).toBe(true);
   });
+
+  it("conserva la clave reservada `all`", () => {
+    const set = parseDisabledAnimations("all,fireflies");
+    expect(set.has(ALL_ANIMATIONS_KEY)).toBe(true);
+    expect(set.has("fireflies")).toBe(true);
+  });
 });
 
 describe("serializeDisabledAnimations", () => {
@@ -94,6 +102,20 @@ describe("serializeDisabledAnimations", () => {
 
   it("devuelve string vacío para un conjunto vacío", () => {
     expect(serializeDisabledAnimations([])).toBe("");
+  });
+
+  it("conserva `all` al serializar", () => {
+    expect(serializeDisabledAnimations([ALL_ANIMATIONS_KEY, "fireflies"])).toBe("all,fireflies");
+  });
+});
+
+describe("toggleAllDisabled", () => {
+  it("añade `all` sin borrar las individuales", () => {
+    expect(toggleAllDisabled("fireflies", true)).toBe("all,fireflies");
+  });
+
+  it("quita `all` y recupera las individuales", () => {
+    expect(toggleAllDisabled("all,fireflies,countdown-tick", false)).toBe("countdown-tick,fireflies");
   });
 });
 

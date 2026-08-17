@@ -1124,8 +1124,7 @@
     "desaturate": "Grayscale",
     "strongFocus": "Visible focus indicators",
     "animationsTitle": "Animations",
-    "animationsHint": "Turn off specific animations on your device. The couple decides the base; you can disable more (you cannot re-enable the ones they turned off).",
-    "animationsReset": "Reset my settings"
+    "animationsHint": "Turn off specific animations on your device. The couple decides the base; you can disable more (you cannot re-enable the ones they turned off)."
   },
   "music": {
     "noMusic": "No music",
@@ -1636,10 +1635,6 @@
   "animations": {
     "sectionTitle": "Invitation animations",
     "sectionHint": "Choose which animations play in the invitation, from the envelope to the most minor ones. Each checked box means the animation plays; untick the ones you want to keep static for all guests.",
-    "allOn": "Enable all",
-    "allOff": "Disable all",
-    "groupAll": "All",
-    "groupNone": "None",
     "lockedByAdmin": "Turned off by the couple: you cannot re-enable it.",
     "groups": {
       "envelope": "Envelope",
@@ -1828,7 +1823,10 @@
         "name": "Floating notifications",
         "hint": "Brief notifications (confirmations, errors...) appear and disappear with a slide."
       }
-    }
+    },
+    "allOffLabel": "Disable all animations",
+    "allOffHint": "When enabled, the invitation is shown with no animations: the envelope does not appear and there is no confetti or transitions. Disabling it restores your individual preferences.",
+    "allOffActive": "Disabled by the general setting."
   },
   "pagination": {
     "show": "Show",

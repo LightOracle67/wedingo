@@ -1124,8 +1124,7 @@
     "desaturate": "Escala de grises",
     "strongFocus": "Indicadores de foco visibles",
     "animationsTitle": "Animaciones",
-    "animationsHint": "Desactiva animaciones concretas en tu dispositivo. Los novios deciden la base; tú puedes desactivar más (no reactivar las que ellos apagaron).",
-    "animationsReset": "Restablecer mis ajustes"
+    "animationsHint": "Desactiva animaciones concretas en tu dispositivo. Los novios deciden la base; tú puedes desactivar más (no reactivar las que ellos apagaron)."
   },
   "music": {
     "noMusic": "Sin música",
@@ -1636,10 +1635,6 @@
   "animations": {
     "sectionTitle": "Animaciones de la invitación",
     "sectionHint": "Elige qué animaciones se reproducen en la invitación, del sobre a las más insignificantes. Cada casilla marcada significa que la animación se reproduce; desmarca la que quieras dejar estática para todos los invitados.",
-    "allOn": "Activar todas",
-    "allOff": "Desactivar todas",
-    "groupAll": "Todas",
-    "groupNone": "Ninguna",
     "lockedByAdmin": "Desactivada por los novios: no puedes reactivarla.",
     "groups": {
       "envelope": "Sobre",
@@ -1828,7 +1823,10 @@
         "name": "Avisos flotantes",
         "hint": "Los avisos breves (confirmaciones, errores...) aparecen y desaparecen con un deslizamiento."
       }
-    }
+    },
+    "allOffLabel": "Desactivar todas las animaciones",
+    "allOffHint": "Al activarla, la invitación se muestra sin ninguna animación: el sobre no aparece, no hay confeti ni transiciones. Al desactivarla vuelven tus preferencias individuales.",
+    "allOffActive": "Desactivada por el ajuste general."
   },
   "pagination": {
     "show": "Mostrar",

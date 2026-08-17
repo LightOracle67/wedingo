@@ -14,17 +14,8 @@
  */
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
-import {
-  parseDisabledAnimations,
-  serializeDisabledAnimations,
-  ANIMATIONS,
-  ANIMATION_IDS,
-  EMPTY_ANIMATION_SET,
-} from "../lib/animations";
+import { parseDisabledAnimations, serializeDisabledAnimations, ALL_ANIMATIONS_KEY, EMPTY_ANIMATION_SET } from "../lib/animations";
 import { STORAGE_KEYS } from "../lib/storage-keys";
-
-/** Mapa id → grupo (construido una vez para lookup O(1)). */
-const ANIM_GROUP_BY_ID: ReadonlyMap<string, string> = new Map(ANIMATIONS.map((a) => [a.id, a.groupId]));
 
 /** Forma persistida en localStorage (lista de ids desactivados, sanitizada). */
 interface StoredGuestPrefs {
@@ -37,11 +28,8 @@ export interface AnimationsContextValue {
   guestDisabled: ReadonlySet<string>;
   /** Activa/desactiva una animación concreta en este dispositivo. */
   toggleGuestAnimation: (id: string) => void;
-  /** Activa (`enabled=true`) o desactiva todas las de un grupo en este
-   *  dispositivo. Las bloqueadas por el admin no se tocan. */
-  setGuestGroup: (groupId: string, enabled: boolean) => void;
   /** Activa (`enabled=true`) o desactiva todas las animaciones en este
-   *  dispositivo. */
+   *  dispositivo mediante la clave reservada `all` (conserva las individuales). */
   setAllGuest: (enabled: boolean) => void;
   /** Restablece las preferencias de animación de este invitado. */
   resetGuest: () => void;
@@ -92,28 +80,13 @@ export function AnimationsProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  const setGuestGroup = useCallback((groupId: string, enabled: boolean) => {
-    setGuestDisabled((prev) => {
-      const next = new Set(prev);
-      // Aplica a todas las animaciones del grupo (la base del admin se respeta
-      // en el render; aquí solo se gestionan las del invitado).
-      for (const [id, gid] of ANIM_GROUP_BY_ID) {
-        if (gid === groupId) {
-          if (enabled) next.delete(id);
-          else next.add(id);
-        }
-      }
-      return next;
-    });
-  }, []);
-
+  // "Desactivar todas" usa la clave reservada `all` (conserva los ids
+  // individuales para poder recuperarlos al reactivar).
   const setAllGuest = useCallback((enabled: boolean) => {
     setGuestDisabled((prev) => {
       const next = new Set(prev);
-      for (const id of ANIMATION_IDS) {
-        if (enabled) next.delete(id);
-        else next.add(id);
-      }
+      if (enabled) next.add(ALL_ANIMATIONS_KEY);
+      else next.delete(ALL_ANIMATIONS_KEY);
       return next;
     });
   }, []);
@@ -124,11 +97,10 @@ export function AnimationsProvider({ children }: { children: ReactNode }) {
     () => ({
       guestDisabled,
       toggleGuestAnimation,
-      setGuestGroup,
       setAllGuest,
       resetGuest,
     }),
-    [guestDisabled, toggleGuestAnimation, setGuestGroup, setAllGuest, resetGuest],
+    [guestDisabled, toggleGuestAnimation, setAllGuest, resetGuest],
   );
 
   return <AnimationsContext.Provider value={value}>{children}</AnimationsContext.Provider>;

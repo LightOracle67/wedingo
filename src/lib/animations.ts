@@ -119,20 +119,37 @@ export function isAnimationId(id: string): boolean {
   return ANIMATION_IDS.has(id);
 }
 
+/**
+ * Clave reservada para "desactivar TODAS las animaciones" dentro del campo
+ * `disabledAnimations` (admin) o de las preferencias del invitado. Cuando está
+ * presente, el conjunto efectivo es el de todos los ids y, además, los
+ * comportamientos completos (p. ej. el sobre) se saltan por código.
+ */
+export const ALL_ANIMATIONS_KEY = "all";
+
 /** Anima a que un grupo esté vacío: nada que filtrar (optimización). */
 export const EMPTY_ANIMATION_SET: ReadonlySet<string> = new Set();
+
+/** Conjunto de TODOS los ids de animaciones reales (cuando `all` está activo). */
+export const ALL_ANIMATION_IDS: ReadonlySet<string> = new Set(ANIMATIONS.map((a) => a.id));
+
+/** Devuelve si un id es una animación real O la clave reservada `all`. */
+function isStoredAnimationKey(id: string): boolean {
+  return id === ALL_ANIMATIONS_KEY || isAnimationId(id);
+}
 
 /**
  * Parsea un campo `disabledAnimations` (string separado por comas) a un Set,
  * descartando ids no registrados (evita que un valor corrupto rompa la app o
- * que ids antiguos de animaciones eliminadas sigan aplicando).
+ * que ids antiguos de animaciones eliminadas sigan aplicando). La clave
+ * reservada `all` se conserva.
  */
 export function parseDisabledAnimations(raw: string | undefined | null): ReadonlySet<string> {
   if (!raw) return EMPTY_ANIMATION_SET;
   const ids = raw
     .split(",")
     .map((id) => id.trim())
-    .filter(isAnimationId);
+    .filter(isStoredAnimationKey);
   // Sin ids válidos se devuelve el set vacío compartido (sin alocaciones).
   if (ids.length === 0) return EMPTY_ANIMATION_SET;
   return new Set(ids);
@@ -140,14 +157,26 @@ export function parseDisabledAnimations(raw: string | undefined | null): Readonl
 
 /**
  * Serializa un iterable de ids desactivados a un string ordenado y deduplicado
- * (determinista: facilita diff de config y caché).
+ * (determinista: facilita diff de config y caché). Conserva `all`.
  */
 export function serializeDisabledAnimations(ids: Iterable<string>): string {
   const unique = new Set<string>();
   for (const id of ids) {
-    if (isAnimationId(id)) unique.add(id);
+    if (isStoredAnimationKey(id)) unique.add(id);
   }
   return Array.from(unique).sort().join(",");
+}
+
+/**
+ * Activa (`allOff=true`) o desactiva (`allOff=false`) la clave global `all`
+ * dentro de la lista actual, CONSERVANDO los ids individuales que hubiera:
+ * al volver a activar animaciones se recuperan las preferencias previas.
+ */
+export function toggleAllDisabled(raw: string | undefined, allOff: boolean): string {
+  const current = new Set(parseDisabledAnimations(raw));
+  if (allOff) current.add(ALL_ANIMATIONS_KEY);
+  else current.delete(ALL_ANIMATIONS_KEY);
+  return serializeDisabledAnimations(current);
 }
 
 /**

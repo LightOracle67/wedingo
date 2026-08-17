@@ -7,9 +7,11 @@
  *  - El panel de accesibilidad (AccessibilityPanel): cada invitado elige sus
  *    preferencias adicionales (ids bloqueados por la base del admin).
  *
- * Cada fila muestra el nombre informativo y un hint que explica exactamente
- * qué se desactiva. Los ids bloqueados (`locked`) se muestran deshabilitados
- * con una nota explicativa.
+ * Incluye un CHECKBOX MAESTRO «Desactivar todas las animaciones»: al activarlo
+ * todas las filas quedan desactivadas y los comportamientos completos (sobre,
+ * confeti...) se saltan en la invitación. Cada fila muestra el nombre y un hint
+ * que explica qué se desactiva; los ids bloqueados (`locked`) se muestran
+ * deshabilitados con una nota explicativa.
  */
 
 import { useTranslation } from "react-i18next";
@@ -27,10 +29,10 @@ interface AnimationChecklistProps {
   idPrefix?: string;
   /** Layout compacto (panel de accesibilidad, ancho limitado). */
   compact?: boolean;
-  /** Muestra botones «todas/ninguna» por grupo (config del admin). */
-  showGroupActions?: boolean;
-  /** Callback para el botón «todas/ninguna» de un grupo. */
-  onGroupToggle?: (groupId: string, enabled: boolean) => void;
+  /** ¿Está activado «desactivar todas»? Deshabilita las filas individuales. */
+  allOff?: boolean;
+  /** Alterna el checkbox maestro (todas las animaciones). */
+  onToggleAll?: (enabled: boolean) => void;
 }
 
 export default function AnimationChecklist({
@@ -39,13 +41,33 @@ export default function AnimationChecklist({
   locked = EMPTY_ANIMATION_SET,
   idPrefix = "",
   compact = false,
-  showGroupActions = false,
-  onGroupToggle,
+  allOff = false,
+  onToggleAll,
 }: AnimationChecklistProps) {
   const { t } = useTranslation();
+  const allInputId = `${idPrefix}anim-all`;
 
   return (
     <div className={`anim-checklist ${compact ? "anim-checklist--compact" : ""}`}>
+      {/* Checkbox maestro: desactiva todas las animaciones de un vistazo. */}
+      {onToggleAll ? (
+        <div className="anim-checklist__all">
+          <input
+            type="checkbox"
+            className="anim-checklist__checkbox"
+            id={allInputId}
+            checked={allOff}
+            onChange={(e) => onToggleAll(e.target.checked)}
+          />
+          <div className="anim-checklist__text">
+            <label className="anim-checklist__name" htmlFor={allInputId}>
+              {t("animations.allOffLabel")}
+            </label>
+            <p className="anim-checklist__hint">{t("animations.allOffHint")}</p>
+          </div>
+        </div>
+      ) : null}
+
       {ANIMATION_GROUPS.map((group) => {
         const animations = ANIMATIONS.filter((a) => a.groupId === group.id);
         if (animations.length === 0) return null;
@@ -53,32 +75,13 @@ export default function AnimationChecklist({
           <fieldset key={group.id} className="anim-checklist__group">
             <legend className="anim-checklist__group-title">
               <span>{t(`animations.groups.${group.id}`)}</span>
-              {showGroupActions && onGroupToggle ? (
-                <span className="anim-checklist__group-actions">
-                  <button
-                    type="button"
-                    className="anim-checklist__group-btn"
-                    onClick={() => onGroupToggle(group.id, true)}
-                  >
-                    {t("animations.groupAll")}
-                  </button>
-                  <span aria-hidden="true" className="anim-checklist__group-sep">
-                    ·
-                  </span>
-                  <button
-                    type="button"
-                    className="anim-checklist__group-btn"
-                    onClick={() => onGroupToggle(group.id, false)}
-                  >
-                    {t("animations.groupNone")}
-                  </button>
-                </span>
-              ) : null}
             </legend>
             <div className="anim-checklist__items">
               {animations.map((anim) => {
-                const isChecked = checked(anim.id);
-                const isLocked = locked.has(anim.id);
+                // Con «desactivar todas» activo, cada animación está apagada y
+                // no se puede tocar individualmente.
+                const isChecked = allOff ? false : checked(anim.id);
+                const isLocked = allOff || locked.has(anim.id);
                 const inputId = `${idPrefix}anim-${anim.id}`;
                 return (
                   <div className="anim-checklist__row" key={anim.id}>
@@ -98,7 +101,9 @@ export default function AnimationChecklist({
                       </label>
                       <p className="anim-checklist__hint">{t(`animations.items.${anim.id}.hint`)}</p>
                       {isLocked && !isChecked ? (
-                        <p className="anim-checklist__locked-note">{t("animations.lockedByAdmin")}</p>
+                        <p className="anim-checklist__locked-note">
+                          {allOff ? t("animations.allOffActive") : t("animations.lockedByAdmin")}
+                        </p>
                       ) : null}
                     </div>
                   </div>

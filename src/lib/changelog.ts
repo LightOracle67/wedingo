@@ -1,9 +1,9 @@
 export const CHANGELOG = [
   {
     version: "2.99.6",
-    date: "2026-08-17",
+    date: "2026-08-16",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "MEJORA checkboxes de animaciones: nuevo checkbox MAESTRO «Desactivar todas las animaciones» (clave reservada `all`) que sustituye a los botones Todas/Ninguna del admin y del panel de accesibilidad; al activarlo la invitación se muestra sin ninguna animación y se saltan los comportamientos completos: si todo el grupo del SOBRE está desactivado (o `all`), el sobre no aparece y la invitación se muestra directamente; el vídeo de bienvenida tampoco se abre si su animación está apagada. Al desactivar el maestro se recuperan las preferencias individuales. Se conservan las individuales con `toggleAllDisabled`; `isGroupFullyDisabled` en useAnimations; tests del sentinel y del salto del sobre.",
     ],
   },
 
