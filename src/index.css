@@ -1270,6 +1270,10 @@ body {
   font-family: var(--font-body);
   margin: 0;
   min-height: 100dvh;
+  /* Evita el scroll horizontal ESPURIO en pantallas pequeñas: cualquier hijo
+     que sobresalga del viewport (texto largo, badges nowrap, decoraciones)
+     se recorta en horizontal sin perder el scroll vertical. */
+  overflow-x: hidden;
   isolation: isolate;
   background-color: #1f1b14;
   background-image: var(--wedding-background-image);
@@ -1672,6 +1676,9 @@ a,
   line-height: 1.65;
   position: relative;
   z-index: var(--z-section-text, 2);
+  /* Textos largos y URLs no deben crear scroll horizontal en móviles. */
+  overflow-wrap: break-word;
+  word-break: break-word;
   text-shadow:
     0 0 20px color-mix(in srgb, var(--invite-text-shadow) 80%, transparent),
     0 2px 6px color-mix(in srgb, var(--invite-text-shadow) 60%, transparent);
@@ -1723,6 +1730,10 @@ a,
   border-radius: var(--radius-xs, 4px);
   padding: 0.1rem 0.4rem;
   white-space: nowrap;
+  /* En filas flex de la agenda: no se encoge y no provoca scroll horizontal
+     (el texto del evento sí se quiebra con overflow-wrap del párrafo). */
+  flex-shrink: 0;
+  max-width: 100%;
   margin-left: auto;
 }
 
@@ -1733,6 +1744,8 @@ a,
   line-height: 1.6;
   position: relative;
   z-index: var(--z-section-text, 2);
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 /* Sección conjunta de funciones sociales (extras): UNA sección al final con

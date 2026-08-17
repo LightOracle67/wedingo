@@ -98,7 +98,7 @@ export default function AdminPage() {
     handleAdminLogout,
     handleResetTokenFromAdmin,
   } = useAuth();
-  const { rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries } = useRsvpContext();
+  const { rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries, retryLoadRsvp } = useRsvpContext();
   const { adminMessage, adminMessageType, setAdminMessage, setAdminMessageType } = useAppUI();
 
   // Avisa antes de salir si hay cambios sin guardar en la invitación.
@@ -331,6 +331,9 @@ export default function AdminPage() {
       handleDeleteRsvpEntries,
       formatDate,
       transportDepartures: config.transportDepartures,
+      // Invitaciones físicas: el admin puede añadir/editar respuestas a mano.
+      inviteToken: inviteToken || "",
+      onDataChanged: retryLoadRsvp,
     }),
     [
       searchQuery,
@@ -342,7 +345,9 @@ export default function AdminPage() {
       rsvpEntries,
       handleClearRsvpEntries,
       handleDeleteRsvpEntries,
+      retryLoadRsvp,
       config.transportDepartures,
+      inviteToken,
     ],
   );
 

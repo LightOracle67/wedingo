@@ -1,10 +1,14 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { doc, writeBatch, serverTimestamp } from "firebase/firestore";
+import { db } from "../../lib/firebase";
 import Pagination from "../../components/Pagination";
 import EmptyState from "../../components/EmptyState";
+import Modal from "../../components/Modal";
 import { useToast } from "../../hooks/useToast";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { SortableTh } from "../../components/SortableTh";
+import { withWriteRetry } from "../../lib/async-utils";
 
 interface RsvpEntry {
   id: string;
@@ -45,6 +49,11 @@ export interface AttendanceTabProps {
   handleDeleteRsvpEntries: (ids: string[]) => void;
   formatDate: (date: string) => string;
   transportDepartures?: string;
+  /** Token de la invitación (para añadir/editar respuestas manuales,
+   *  p. ej. invitaciones físicas a personas sin dispositivo). */
+  inviteToken?: string;
+  /** Se invoca tras añadir/editar manualmente para recargar la lista. */
+  onDataChanged?: () => void;
 }
 
 const PAGE_SIZES = [10, 25, 50, 100];
@@ -79,12 +88,89 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     handleDeleteRsvpEntries,
     formatDate,
     transportDepartures,
+    inviteToken,
+    onDataChanged,
   } = props;
   const { t, i18n } = useTranslation();
   const { addToast } = useToast();
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+
+  // ── Añadir/editar respuesta manualmente (invitaciones físicas) ──
+  const [editing, setEditing] = useState<{ id?: string; name: string; attendance: "yes" | "no"; notes: string } | null>(null);
+  const [savingManual, setSavingManual] = useState(false);
+
+  const openEdit = useCallback((entry: RsvpEntry) => {
+    setEditing({
+      id: entry.id,
+      name: entry.guestName || "",
+      attendance: entry.attendance === "yes" ? "yes" : "no",
+      notes: entry.dietaryInfo || "",
+    });
+  }, []);
+
+  const openAdd = useCallback(() => {
+    setEditing({ name: "", attendance: "yes", notes: "" });
+  }, []);
+
+  /** Guarda la respuesta manual: crea si no tiene id, actualiza si lo tiene.
+   *  CASOS CATASTRÓFICOS: sin token o sin nombre → no hace nada; fallo de red
+   *  → toast de error sin corromper el estado. */
+  const saveManual = useCallback(async () => {
+    if (!editing || !inviteToken) return;
+    const name = editing.name.trim();
+    if (!name) {
+      addToast("error", t("attendance.manualNameRequired"));
+      return;
+    }
+    setSavingManual(true);
+    try {
+      // Esquema que cumple la regla create de rsvpResponses/.../responses
+      // (privacyConsent + el resto). En un batch: crear/actualizar el doc y
+      // ajustar el contador del grupo si es una creación.
+      const now = serverTimestamp();
+      const payload: Record<string, unknown> = {
+        rsvpType: "main",
+        guestName: name.slice(0, 120),
+        attendance: editing.attendance,
+        dietaryInfo: editing.notes.slice(0, 4000),
+        inviteToken,
+        submittedAt: now,
+        privacyConsent: true,
+        privacyConsentAt: now,
+      };
+      const batch = writeBatch(db);
+      if (editing.id) {
+        batch.update(doc(db, "rsvpResponses", inviteToken, "responses", editing.id), payload);
+      } else {
+        // Id determinista a partir del nombre (reintento idempotente y sin
+        // caracteres de ruta ilegales). Buffer no está disponible en el
+        // navegador SPA, así que se genera con codificación base64url local.
+        const norm = name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "_").slice(0, 30);
+        const id = `main_manual_${norm || "invitado"}_${Math.random().toString(36).slice(2, 6)}`;
+        batch.set(doc(db, "rsvpResponses", inviteToken, "responses", id), payload);
+        // El contador del grupo debe existir e incrementarse para que la regla
+        // create (exists + count < 500) valide.
+        await withWriteRetry(async () => {
+          const { getDoc } = await import("firebase/firestore");
+          const counterRef = doc(db, "rsvpResponses", inviteToken);
+          const snap = await getDoc(counterRef);
+          if (!snap.exists()) batch.set(counterRef, { count: 1 });
+          else batch.update(counterRef, { count: snap.data()!.count + 1 });
+        });
+      }
+      await withWriteRetry(() => batch.commit());
+      addToast("success", t(editing.id ? "attendance.manualUpdated" : "attendance.manualAdded"));
+      setEditing(null);
+      if (onDataChanged) onDataChanged();
+    } catch (err) {
+      const code = err && typeof err === "object" && "code" in err ? String((err as { code?: unknown }).code) : "";
+      addToast("error", code === "permission-denied" ? t("attendance.manualLimitReached") : t("attendance.manualError"));
+    } finally {
+      setSavingManual(false);
+    }
+  }, [editing, inviteToken, onDataChanged, addToast, t]);
 
   /** Descarga un Excel con todas las respuestas RSVP (filtradas o no). */
   const handleExportExcel = useCallback(async () => {
@@ -390,12 +476,24 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                   return (
                     <tr key={entry.id}>
                       <td>
-                        <input
-                          type="checkbox"
-                          checked={selectedIds.has(entry.id)}
-                          onChange={() => toggleOne(entry.id)}
-                          aria-label={t("attendance.selectEntry", { name: entry.guestName })}
-                        />
+                        <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem", alignItems: "center" }}>
+                          <input
+                            type="checkbox"
+                            checked={selectedIds.has(entry.id)}
+                            onChange={() => toggleOne(entry.id)}
+                            aria-label={t("attendance.selectEntry", { name: entry.guestName })}
+                          />
+                          {inviteToken && !isCompanion ? (
+                            <button
+                              type="button"
+                              className="setup-button setup-button--ghost setup-button--compact"
+                              style={{ fontSize: "0.7rem", padding: "0.1rem 0.4rem" }}
+                              onClick={() => openEdit(entry)}
+                            >
+                              {t("attendance.editManual")}
+                            </button>
+                          ) : null}
+                        </div>
                       </td>
                       <td className="admin-table__name" style={{ fontWeight: isCompanion ? 400 : 600 }}>
                         {entry.guestName}
@@ -514,6 +612,11 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
           className="setup-actions"
           style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center", marginTop: "1rem" }}
         >
+          {inviteToken ? (
+            <button className="setup-button setup-button--compact" type="button" onClick={openAdd}>
+              {t("attendance.addManual")}
+            </button>
+          ) : null}
           <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={exportPdf}>
             {t("attendance.exportPdf")}
           </button>
@@ -545,6 +648,67 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
           </button>
         </div>
       )}
+
+      {/* Modal de añadir/editar respuesta manual (invitaciones físicas). */}
+      {editing ? (
+        <Modal
+          title={editing.id ? t("attendance.manualEditTitle") : t("attendance.manualAddTitle")}
+          closeLabel={t("common.close")}
+          onClose={() => setEditing(null)}
+          style={{ maxWidth: "460px" }}
+        >
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              void saveManual();
+            }}
+          >
+            <label className="setup-label" htmlFor="manualRsvpName">
+              {t("attendance.manualNameLabel")}
+            </label>
+            <input
+              id="manualRsvpName"
+              className="setup-input"
+              value={editing.name}
+              onChange={(e) => setEditing({ ...editing, name: e.target.value })}
+              maxLength={120}
+              placeholder={t("attendance.manualNamePlaceholder")}
+              disabled={savingManual}
+            />
+            <label className="setup-label" htmlFor="manualRsvpAttendance" style={{ marginTop: "0.6rem" }}>
+              {t("attendance.manualAttendanceLabel")}
+            </label>
+            <select
+              id="manualRsvpAttendance"
+              className="setup-input"
+              value={editing.attendance}
+              onChange={(e) => setEditing({ ...editing, attendance: e.target.value as "yes" | "no" })}
+              disabled={savingManual}
+            >
+              <option value="yes">{t("attendance.filterYes")}</option>
+              <option value="no">{t("attendance.filterNo")}</option>
+            </select>
+            <label className="setup-label" htmlFor="manualRsvpNotes" style={{ marginTop: "0.6rem" }}>
+              {t("attendance.manualNotesLabel")}
+            </label>
+            <textarea
+              id="manualRsvpNotes"
+              className="setup-textarea"
+              rows={2}
+              value={editing.notes}
+              onChange={(e) => setEditing({ ...editing, notes: e.target.value })}
+              maxLength={4000}
+              placeholder={t("attendance.manualNotesPlaceholder")}
+              disabled={savingManual}
+            />
+            <div className="setup-actions" style={{ marginTop: "0.8rem" }}>
+              <button className="setup-button" type="submit" disabled={savingManual || !editing.name.trim()}>
+                {savingManual ? t("common.loading") : editing.id ? t("attendance.manualSave") : t("attendance.manualAdd")}
+              </button>
+            </div>
+          </form>
+        </Modal>
+      ) : null}
     </>
   );
 });

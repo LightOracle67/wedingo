@@ -10,6 +10,33 @@ vi.mock("../../../hooks/useToast", () => ({
   useToast: () => ({ addToast: mockAddToast }),
 }));
 
+// Firestore: solo se ejercitan en los callbacks de añadir/editar manual.
+// (vi.hoisted evita el error de hoisting de vi.mock con variables top-level).
+const fsMocks = vi.hoisted(() => ({
+  commit: vi.fn(() => Promise.resolve()),
+  update: vi.fn(),
+  setDoc: vi.fn(),
+  getDoc: vi.fn(),
+}));
+vi.mock("firebase/firestore", () => ({
+  doc: vi.fn(() => "doc-ref"),
+  writeBatch: () => ({ update: fsMocks.update, set: fsMocks.setDoc, commit: fsMocks.commit }),
+  serverTimestamp: () => "ts",
+  getDoc: fsMocks.getDoc,
+}));
+vi.mock("../../../lib/firebase", () => ({ db: "db-mock" }));
+vi.mock("../../../lib/async-utils", () => ({
+  withWriteRetry: <T,>(fn: () => Promise<T>) => fn(),
+}));
+vi.mock("../../components/Modal", () => ({
+  default: ({ title, children, onClose }: { title: string; children: React.ReactNode; onClose: () => void }) => (
+    <div role="dialog" aria-label={title}>
+      {children}
+      <button onClick={onClose}>close</button>
+    </div>
+  ),
+}));
+
 import AttendanceTab from "../AttendanceTab";
 import type { RsvpEntry } from "../../../types";
 
@@ -24,6 +51,8 @@ const baseConfig = {
   formatDate: (d: unknown) => String(d),
   handleClearRsvpEntries: vi.fn(() => undefined),
   handleDeleteRsvpEntries: vi.fn((_ids: string[]) => undefined),
+  inviteToken: "tok",
+  onDataChanged: vi.fn(() => undefined),
 };
 
 describe("AttendanceTab", () => {
@@ -836,5 +865,51 @@ describe("AttendanceTab", () => {
     );
     expect(screen.getByText("attendance.consentHealth")).toBeDefined();
     expect(screen.getAllByText("—").length).toBeGreaterThan(0);
+  });
+
+  it("opens the add-manual modal and saves a new guest via writeBatch", async () => {
+    fsMocks.getDoc.mockResolvedValueOnce({ exists: () => true, data: () => ({ count: 3 }) });
+    const withData = { ...baseConfig, rsvpEntries: [{ id: "x", guestName: "A", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" }] as never };
+    render(<AttendanceTab {...withData} />);
+    fireEvent.click(screen.getByText("attendance.addManual"));
+    // El modal aparece.
+    expect(screen.getByRole("dialog", { name: "attendance.manualAddTitle" })).toBeDefined();
+    // Rellena y guarda.
+    fireEvent.change(screen.getByLabelText("attendance.manualNameLabel"), { target: { value: "Manuel" } });
+    fireEvent.click(screen.getByText("attendance.manualAdd"));
+    await vi.waitFor(() => expect(fsMocks.setDoc).toHaveBeenCalled());
+    // commit es posterior al await del getDoc del contador: se espera también.
+    await vi.waitFor(() => expect(fsMocks.commit).toHaveBeenCalled());
+    expect(mockAddToast).toHaveBeenCalledWith("success", "attendance.manualAdded");
+    expect((withData.onDataChanged as ReturnType<typeof vi.fn>)).toHaveBeenCalled();
+  });
+
+  it("requires a name before saving manually", () => {
+    const withData = { ...baseConfig, rsvpEntries: [{ id: "x", guestName: "A", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" }] as never };
+    render(<AttendanceTab {...withData} />);
+    fireEvent.click(screen.getByText("attendance.addManual"));
+    // Sin nombre, el botón guardar está deshabilitado y no se envía nada.
+    const addBtn = screen.getByText("attendance.manualAdd").closest("button");
+    expect(addBtn).toBeDisabled();
+  });
+
+  it("edits an existing response via writeBatch update", async () => {
+    const entries = [
+      { id: "1", guestName: "Ana", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
+    ];
+    render(
+      <AttendanceTab
+        {...baseConfig}
+        filteredEntries={entries as never}
+        rsvpEntries={entries as never}
+      />,
+    );
+    // Botón de edición en la fila.
+    const editBtns = screen.getAllByText("attendance.editManual");
+    fireEvent.click(editBtns[0]!);
+    expect(screen.getByRole("dialog", { name: "attendance.manualEditTitle" })).toBeDefined();
+    fireEvent.click(screen.getByText("attendance.manualSave"));
+    await vi.waitFor(() => expect(fsMocks.update).toHaveBeenCalled());
+    expect(mockAddToast).toHaveBeenCalledWith("success", "attendance.manualUpdated");
   });
 });

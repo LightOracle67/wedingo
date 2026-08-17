@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.107.0",
+    date: "2026-08-17",
+    changes: [
+      "(1) Edición manual de respuestas RSVP desde la tabla de asistencia: los novios pueden AÑADIR invitados a mano (p. ej. invitaciones físicas a personas sin dispositivo) y EDITAR respuestas existentes (nombre, asistencia, notas de menú/alergias) directamente desde la fila y un modal. La escritura usa writeBatch atómico: crea/actualiza el doc en rsvpResponses/{tok}/responses y ajusta el contador del grupo si es una creación (cumpliendo la regla Firestore `create` con privacyConsent y el tope de 500), con id determinista por nombre para reintentos idempotentes; los fallos de red/permisos se avisan con toast sin corromper el estado. (2) Auditoría y corrección de overflows horizontales en pantallas pequeñas y tablet en TODA la app: se añadió `overflow-x: hidden` a body y a .app-scene (evita el scroll horizontal espurio de texto largo, badges nowrap y decoraciones), `overflow-wrap/word-break: break-word` a .story-copy y .story-note (textos largos y URLs ya no desbordan en móvil), y `flex-shrink:0 + max-width:100%` al badge de la agenda en vivo; la tabla de asistencia conserva su scroll interno horizontal (overflow-x:auto). Se añadió un spec e2e (overflow.spec.ts) que mide scrollWidth en 320/360/375/390/412/768px en la invitación y la landing. 2283 tests / 174 ficheros + lint/typecheck/build/translations (1690 claves) + reglas 34/34 OK.",
+    ],
+  },
+
+  {
     version: "2.106.0",
     date: "2026-08-17",
     changes: [
