@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.99.8";
+export const APP_VERSION = "2.99.9";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -290,6 +290,8 @@ export const defaultConfig = {
   rsvpDeadline: "",
   rsvpDeadlineEnabled: "false",
   reactionsEnabled: "false",
+  // Prueba social en vivo: muestra cuántos invitados han confirmado (portada).
+  liveConfirmedEnabled: "true",
   giftsListEnabled: "false",
   giftList: "[]",
   rideShareEnabled: "false",
