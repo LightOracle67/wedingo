@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.105.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.105.0)  
+**Versión actual:** [v2.106.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.106.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2276 tests, 173 test files |
+| Tests | 2280 tests, 174 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -87,6 +87,11 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 - **Fix de extras «no activables»:** activar SOLO alguno de voiceNotes / dayPhotos / mailbox / toasts / venueMap ocultaba la sección de extras (falta de esos toggles en `sectionHasContent`); ya se alinean todos.
 - **Trivia de la pareja mejorada:** botón «Comprobar», marcador de aciertos (X de N), felicitación al acertar todas, estado persistido en sessionStorage por invitación, pista y dificultad (fácil/media/difícil) por pregunta. El editor admite `pregunta | respuesta | pista | dificultad`.
+
+### Ronda v2.106
+
+- **Personalización completa de la invitación:** selectores de fuente para títulos y texto (Playfair, Lora, Georgia/Times, Great Vibes, OpenDyslexic — todas autoalojadas) e inputs de color para acento, títulos, texto y fondo. Se aplican solo en la vista del invitado y quedan sanitizadas (lista blanca + hex).
+- **Nuevo editor de trivia por tipos:** cada pregunta tiene tipo (texto libre, elección única o multirrespuesta) y, para elección, un editor de opciones con checkbox/radio para marcar cuáles son correctas. La sección pública renderiza cada tipo y evalúa el acierto correctamente. Retrocompatible con las preguntas antiguas.
 | **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -284,6 +289,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.106.0 | 2026-08-17 | Personalización completa (fuentes y colores del tema sanitizados) + nuevo editor de trivia por tipos (texto, elección única, multirrespuesta con opciones correctas) |
 | v2.105.0 | 2026-08-17 | Fix de extras no activables (sectionHasContent) + trivia de la pareja mejorada (comprobar, marcador, felicitación, persistencia, pista y dificultad) |
 | v2.104.0 | 2026-08-17 | Lista de confirmados en la portada: nuevo checkbox en Extras (prueba social con opt-in de nombres GDPR y colección create-only con cap anti-spam) |
 | v2.103.0 | 2026-08-17 | Ronda final sin backend: temas premium (grupo Premium con Marfil antiguo y Amatista profunda), impresión con el tema, confirmaciones por día en el Panel y backup con historial de visitas |
