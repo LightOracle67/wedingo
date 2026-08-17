@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.102.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.102.0)  
+**Versión actual:** [v2.103.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.103.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2265 tests, 173 test files |
+| Tests | 2269 tests, 173 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -71,6 +71,13 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 - **Mapa de mesas inteligente:** botón "Auto-asignar" en Distribución que reparte los confirmados sin mesa entre las mesas con hueco de forma equilibrada (round-robin) en un único batch atómico.
 - **Filtro por invitado en fotos del día:** desplegable con los autores para ver solo sus fotos.
 - **Recordatorio automático a no confirmados:** el panel muestra cuántas personas faltan y genera el texto del recordatorio con un clic.
+
+### Funciones diferenciadoras (ronda v2.103)
+
+- **Temas premium:** nuevo grupo «Premium» con «Marfil antiguo» (claro/bronce) y «Amatista profunda» (oscuro/plata), con vista previa en el selector.
+- **Impresión con el tema:** la tarjeta imprimible hereda los colores de la invitación.
+- **Confirmaciones por día:** mini-gráfico de 14 días en el Panel (ritmo real de confirmaciones).
+- **Backup completo:** la copia de seguridad incluye ahora el historial de visitas por día (restore sin sobrescribir días existentes).
 | **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -268,6 +275,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.103.0 | 2026-08-17 | Ronda final sin backend: temas premium (grupo Premium con Marfil antiguo y Amatista profunda), impresión con el tema, confirmaciones por día en el Panel y backup con historial de visitas |
 | v2.102.0 | 2026-08-17 | Funciones diferenciadoras (bloque 3): mapa de mesas inteligente (auto-asignación equilibrada en batch), filtro por invitado en fotos del día y recordatorio automático a no confirmados |
 | v2.101.0 | 2026-08-17 | Funciones diferenciadoras (bloque 2): dashboard predictivo de asistencia, confirmaciones en tiempo real (onSnapshot+fallback), regalos-experiencia, historial de visitas por día con regla segura y gráfico, idioma por invitación; tests de reglas 28/28 |
 | v2.100.0 | 2026-08-17 | Funciones diferenciadoras (bloque 1): calendario compartido .ics, ranking para el DJ con anti-CSV-injection, QR en impresión, modo sorpresa por secciones, agenda interactiva en vivo y narración por voz senior; 28 tests nuevos (2256) |
