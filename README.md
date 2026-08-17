@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.106.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.106.0)  
+**Versión actual:** [v2.107.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.107.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2280 tests, 174 test files |
+| Tests | 2283 tests, 174 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -92,6 +92,11 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 - **Personalización completa de la invitación:** selectores de fuente para títulos y texto (Playfair, Lora, Georgia/Times, Great Vibes, OpenDyslexic — todas autoalojadas) e inputs de color para acento, títulos, texto y fondo. Se aplican solo en la vista del invitado y quedan sanitizadas (lista blanca + hex).
 - **Nuevo editor de trivia por tipos:** cada pregunta tiene tipo (texto libre, elección única o multirrespuesta) y, para elección, un editor de opciones con checkbox/radio para marcar cuáles son correctas. La sección pública renderiza cada tipo y evalúa el acierto correctamente. Retrocompatible con las preguntas antiguas.
+
+### Ronda v2.107
+
+- **Edición manual de respuestas RSVP desde la tabla de asistencia:** los novios pueden añadir invitados a mano (invitaciones físicas a personas sin dispositivo) y editar respuestas existentes (nombre, asistencia, notas de menú/alergias) desde un modal. Escritura atómica con `writeBatch` que cumple la regla Firestore (contador del grupo, tope anti-spam).
+- **Auditoría de overflows horizontales en móvil/tablet:** se eliminó el scroll horizontal espurio en toda la app (textos largos, badges, decoraciones) con `overflow-x: hidden` en body y contenedor de scroll, quiebre de palabras en textos y snacks; plus un spec e2e que mide el desbordamiento en 320–768 px.
 | **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -289,6 +294,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.107.0 | 2026-08-17 | Edición manual de respuestas RSVP en la tabla + auditoría y corrección de overflows horizontales en móvil/tablet (overflow-x, quiebre de palabras, spec e2e) |
 | v2.106.0 | 2026-08-17 | Personalización completa (fuentes y colores del tema sanitizados) + nuevo editor de trivia por tipos (texto, elección única, multirrespuesta con opciones correctas) |
 | v2.105.0 | 2026-08-17 | Fix de extras no activables (sectionHasContent) + trivia de la pareja mejorada (comprobar, marcador, felicitación, persistencia, pista y dificultad) |
 | v2.104.0 | 2026-08-17 | Lista de confirmados en la portada: nuevo checkbox en Extras (prueba social con opt-in de nombres GDPR y colección create-only con cap anti-spam) |
