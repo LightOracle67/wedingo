@@ -14,6 +14,7 @@ export const STORAGE_KEYS = {
   setupToken: (token: string) => `wedin_setup_token_${token}`,
   inviteCache: (token: string) => `wedin_invite_cache_${token}`,
   rsvpCache: (token: string) => `wedin_rsvp_cache_${token}`,
+  triviaState: (token: string) => `wedin_trivia_${token}`,
 } as const;
 
 export const INVITE_CACHE_PREFIX = "wedin_invite_cache_";

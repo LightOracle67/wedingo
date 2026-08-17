@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.105.0",
+    date: "2026-08-17",
+    changes: [
+      "FIX de extras «no activables» + mejora de la trivia de la pareja. (BUG) En sectionHasContent el caso 'extras' solo contemplaba 8 de los 13 toggles: voiceNotesEnabled, dayPhotosEnabled, mailboxEnabled, toastsEnabled y venueMapEnabled quedaban fuera, por lo que activar SOLO uno de ellos hacía que la sección extras se considerara vacía, se ocultara en la invitación pública y se añadiera automáticamente a hiddenSections al guardar (el extra parecía no activable). Se alineó la lista con todos los toggles de ExtrasSectionForm (test de regresión). (MEJORA trivia) La trivia gana: botón «Comprobar» (más accesible que revelar al teclear), marcador de aciertos (X de N), felicitación al acertar todas, persistencia del estado en sessionStorage por invitación (un refresco no pierde el marcador), pista opcional y etiqueta de dificultad (fácil/media/difícil) por pregunta — el editor de trivia admite el formato 'pregunta | respuesta | pista | dificultad' con compatibilidad total con las líneas antiguas. 2276 tests / 173 ficheros verdes + lint/typecheck/build/translations (1646 claves) OK.",
+    ],
+  },
+
+  {
     version: "2.104.0",
     date: "2026-08-17",
     changes: [

@@ -493,7 +493,7 @@
     "musicPollHint": "Guests suggest and vote songs for the DJ.",
     "triviaLabel": "Couple trivia",
     "triviaHint": "A mini quiz with the couple's answers.",
-    "triviaEditorHint": "One question per line: Question | Answer",
+    "triviaEditorHint": "One question per line: Question | Answer. Optional: | Hint | difficulty (easy/medium/hard)",
     "voiceNotesLabel": "Voice memory box",
     "voiceNotesHint": "Guests record voice notes for the couple",
     "dayPhotosLabel": "Day photos",
@@ -1391,8 +1391,15 @@
     "error": "Could not send the song."
   },
   "trivia": {
-    "title": "¿Cuánto sabes de la pareja?",
-    "guessPlaceholder": "Escribe tu respuesta…"
+    "title": "How well do you know the couple?",
+    "guessPlaceholder": "Type your answer…",
+    "check": "Check",
+    "score": "Correct: {{correct}} of {{total}}",
+    "congrats": "You know everything about us!",
+    "hintLabel": "Hint",
+    "difficulty_easy": "easy",
+    "difficulty_medium": "medium",
+    "difficulty_hard": "hard"
   },
   "extras": {
     "ariaLabel": "More sections",

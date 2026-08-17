@@ -74,7 +74,11 @@ export function sectionHasContent(
       return config.transportEnabled !== "none" || !!config.transportDepartures;
     case "extras":
       // La sección de funciones sociales se desactiva si ningún extra está
-      // activado (ninguno de sus inputs/toggles se ha establecido).
+      // activado. IMPORTANTE: esta lista debe incluir TODOS los toggles de
+      // ExtrasSectionForm; si un extra activado no está listado aquí, la
+      // sección se considera vacía y se oculta al guardar (parecía "no
+      // activable"). Antes faltaban voiceNotes, dayPhotos, mailbox, toasts
+      // y venueMap: activar SOLO uno de ellos no mostraba la sección.
       return (
         config.rsvpDeadlineEnabled === "true" ||
         config.reactionsEnabled === "true" ||
@@ -83,7 +87,12 @@ export function sectionHasContent(
         config.welcomeVideoEnabled === "true" ||
         config.notesEnabled === "true" ||
         config.musicPollEnabled === "true" ||
-        config.triviaEnabled === "true"
+        config.triviaEnabled === "true" ||
+        config.voiceNotesEnabled === "true" ||
+        config.dayPhotosEnabled === "true" ||
+        config.mailboxEnabled === "true" ||
+        config.toastsEnabled === "true" ||
+        config.venueMapEnabled === "true"
       );
     case "gallery":
       // La galería se desactiva si no tiene ninguna imagen subida.

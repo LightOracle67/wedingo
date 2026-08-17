@@ -48,6 +48,30 @@ describe("sectionHasContent", () => {
     expect(sectionHasContent("hero", {})).toBe(true);
   });
 
+  it("extras has no content when no extra is enabled", () => {
+    expect(sectionHasContent("extras", {})).toBe(false);
+    expect(sectionHasContent("extras", { reactionsEnabled: "false", notesEnabled: "false" })).toBe(false);
+  });
+
+  it("extras has content when any of the classic extras is enabled", () => {
+    expect(sectionHasContent("extras", { reactionsEnabled: "true" })).toBe(true);
+    expect(sectionHasContent("extras", { giftsListEnabled: "true" })).toBe(true);
+    expect(sectionHasContent("extras", { musicPollEnabled: "true" })).toBe(true);
+    expect(sectionHasContent("extras", { triviaEnabled: "true" })).toBe(true);
+  });
+
+  it("extras has content when ONLY the newer extras are enabled (regresión no activable)", () => {
+    // Bug corregido: voiceNotes/dayPhotos/mailbox/toasts/venueMap activados en
+    // solitario hacían que la sección extras se considerara vacía y se ocultara.
+    expect(sectionHasContent("extras", { voiceNotesEnabled: "true" })).toBe(true);
+    expect(sectionHasContent("extras", { dayPhotosEnabled: "true" })).toBe(true);
+    expect(sectionHasContent("extras", { mailboxEnabled: "true" })).toBe(true);
+    expect(sectionHasContent("extras", { toastsEnabled: "true" })).toBe(true);
+    expect(sectionHasContent("extras", { venueMapEnabled: "true" })).toBe(true);
+    // VenueMap es la clave nueva (upstream), se cubre por cobertura defensiva.
+    expect(sectionHasContent("extras", { venueMapEnabled: "true" })).toBe(true);
+  });
+
   it("hides the gallery when it has no images and shows it with images", () => {
     // Por defecto (p. ej. en el guardado del admin) la galería es visible.
     expect(sectionHasContent("gallery", {})).toBe(true);

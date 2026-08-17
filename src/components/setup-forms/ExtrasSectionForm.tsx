@@ -106,13 +106,44 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
     [giftParseText, updateFormField],
   );
 
-  /** Editor de la trivia (JSON de {q,a}): líneas "pregunta | respuesta". */
-  const { toLines: triviaToLines, parseText: triviaParseText } = useLinesField<{ q: string; a: string }>({
+  /** Editor de la trivia (JSON de {q,a,hint,difficulty}): líneas
+   *  "pregunta | respuesta [| pista] [| dificultad: fácil/media/difícil]".
+   *  Los 2 primeros segmentos son obligatorios; pista y dificultad opcionales
+   *  (compatibilidad total con las líneas antiguas de 2 segmentos). */
+  const { toLines: triviaToLines, parseText: triviaParseText } = useLinesField<{
+    q: string;
+    a: string;
+    hint?: string;
+    difficulty?: "easy" | "medium" | "hard";
+  }>({
     parseLine: (line) => {
       const [q, ...rest] = line.split("|");
-      return { q: (q || "").trim().slice(0, 200), a: rest.join("|").trim().slice(0, 200) };
+      const answer = (rest[0] || "").trim().slice(0, 200);
+      const hint = (rest[1] || "").trim().slice(0, 200);
+      const diffRaw = (rest[2] || "").trim().toLowerCase();
+      const difficulty =
+        diffRaw === "fácil" || diffRaw === "facil" || diffRaw === "easy"
+          ? "easy"
+          : diffRaw === "media" || diffRaw === "medio" || diffRaw === "medium"
+            ? "medium"
+            : diffRaw === "difícil" || diffRaw === "dificil" || diffRaw === "hard"
+              ? "hard"
+              : undefined;
+      const out: { q: string; a: string; hint?: string; difficulty?: "easy" | "medium" | "hard" } = {
+        q: (q || "").trim().slice(0, 200),
+        a: answer,
+      };
+      // exactOptionalPropertyTypes: solo se añade la clave si hay valor.
+      if (hint) out.hint = hint;
+      if (difficulty) out.difficulty = difficulty;
+      return out;
     },
-    itemToLine: (tr) => `${tr.q ?? ""} | ${tr.a ?? ""}`,
+    itemToLine: (tr) => {
+      const base = `${tr.q ?? ""} | ${tr.a ?? ""}`;
+      const hint = tr.hint ? ` | ${tr.hint}` : "";
+      const diff = tr.difficulty ? ` | ${tr.difficulty}` : "";
+      return base + hint + diff;
+    },
     maxLines: 50,
   });
   const triviaLines = triviaToLines(trivia || "");

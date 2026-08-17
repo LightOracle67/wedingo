@@ -490,7 +490,7 @@
     "musicPollHint": "Los invitados sugieren y votan canciones para el DJ.",
     "triviaLabel": "Trivia de la pareja",
     "triviaHint": "Un mini-quiz con las respuestas de los novios.",
-    "triviaEditorHint": "Una pregunta por línea: Pregunta | Respuesta",
+    "triviaEditorHint": "Una pregunta por línea: Pregunta | Respuesta. Opcional: | Pista | dificultad (fácil/media/difícil)",
     "resetButton": "Restablecer",
     "resetConfirmInitial": "Todos los campos se restablecerán a sus valores por defecto, excepto tu token de acceso. ¿Continuar?",
     "resetConfirmAdmin": "Todos los campos se restablecerán a sus valores por defecto. ¿Continuar?",
@@ -1392,7 +1392,14 @@
   },
   "trivia": {
     "title": "¿Cuánto sabes de la pareja?",
-    "guessPlaceholder": "Escribe tu respuesta…"
+    "guessPlaceholder": "Escribe tu respuesta…",
+    "check": "Comprobar",
+    "score": "Aciertos: {{correct}} de {{total}}",
+    "congrats": "¡Lo sabes todo sobre nosotros!",
+    "hintLabel": "Pista",
+    "difficulty_easy": "fácil",
+    "difficulty_medium": "media",
+    "difficulty_hard": "difícil"
   },
   "extras": {
     "ariaLabel": "Más secciones",

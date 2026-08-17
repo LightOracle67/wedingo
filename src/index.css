@@ -2885,6 +2885,50 @@ body::after {
   margin-top: 0.35rem;
   font-style: italic;
 }
+/* Mejoras de la trivia: marcador, felicitación, dificultad, pista y estados */
+.trivia-score {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--setup-title, #f0e6d0);
+  text-align: center;
+}
+.trivia-congrats {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--setup-accent, #d8b24a);
+  font-weight: 600;
+}
+.trivia-q--correct {
+  border: 1px solid color-mix(in srgb, #22c55e 50%, transparent);
+  background: color-mix(in srgb, #22c55e 8%, transparent);
+}
+.trivia-q--wrong {
+  border: 1px solid color-mix(in srgb, #ef4444 45%, transparent);
+}
+.trivia-q__difficulty {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--setup-muted);
+  background: color-mix(in srgb, var(--setup-muted) 18%, transparent);
+  border-radius: 999px;
+  padding: 0.05rem 0.45rem;
+  vertical-align: middle;
+}
+.trivia-q__answer--ok {
+  color: #22c55e;
+}
+.trivia-q__answer--ko {
+  color: #ef4444;
+}
+.trivia-q__hint {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--setup-muted);
+}
 
 .gift-list {
   display: flex;

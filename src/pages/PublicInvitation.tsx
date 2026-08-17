@@ -251,7 +251,7 @@ export default function PublicInvitation() {
           ? { title: t("musicPoll.title"), node: <MusicPollSection inviteToken={inviteToken ?? ""} /> }
           : null,
         socialEnabled("trivia", config.triviaEnabled)
-          ? { title: t("trivia.title"), node: <TriviaSection trivia={config.trivia ?? "[]"} /> }
+          ? { title: t("trivia.title"), node: <TriviaSection inviteToken={inviteToken ?? ""} trivia={config.trivia ?? "[]"} /> }
           : null,
         socialEnabled("voiceNotes", config.voiceNotesEnabled)
           ? { title: t("voiceNotes.title"), node: <VoiceNotesSection inviteToken={inviteToken ?? ""} /> }
