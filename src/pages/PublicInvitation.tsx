@@ -128,6 +128,40 @@ export default function PublicInvitation() {
     return new Set(raw.split(",").filter(Boolean));
   }, [config.hiddenSections]);
 
+  // ─── Fecha de la boda (fuente única para countdown y modo sorpresa) ───
+  /**
+   * Construye el objeto Date de la boda a partir de los campos de configuración.
+   * Retorna null si algún campo no es válido o si la fecha no coincide con sus
+   * componentes ("31 de febrero" normaliza a 3 de marzo: se descarta).
+   */
+  const weddingDate = useMemo(() => {
+    const day = Number.parseInt(config.weddingDay, 10);
+    const month = MONTH_VALUE_TO_NUMBER[config.weddingMonth as keyof typeof MONTH_VALUE_TO_NUMBER];
+    const year = Number.parseInt(config.weddingYear, 10);
+    const hour = Number.parseInt(config.weddingHour, 10);
+    const minute = Number.parseInt(config.weddingMinute, 10);
+    if (!day || !month || !year || !Number.isFinite(hour) || !Number.isFinite(minute)) return null;
+    const date = new Date(year, month - 1, day, hour, minute);
+    if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return null;
+    return date;
+  }, [config]);
+
+  // ─── Modo sorpresa: secciones que se revelan el día del evento ──
+  // Las secciones marcadas como sorpresa esperan hasta la fecha de la boda.
+  // SEGURIDAD ANTES QUE CURIOSIDAD: si el modo está activo pero la fecha es
+  // inválida/ausente, las secciones NO se revelan nunca (nunca al revés,
+  // para no filtrar contenido antes de tiempo por un fallo de parseo).
+  const surpriseActive = config.surpriseMode === "true";
+  const surpriseSet = useMemo(() => {
+    if (!surpriseActive) return new Set<string>();
+    return new Set((config.surpriseSections || "").split(",").filter(Boolean));
+  }, [surpriseActive, config.surpriseSections]);
+  const revealSurpriseSections = useMemo(() => {
+    if (!surpriseActive) return true;
+    if (!weddingDate) return false;
+    return Date.now() >= weddingDate.getTime();
+  }, [surpriseActive, weddingDate]);
+
   // ─── Galería: ¿tiene imágenes? ─────────────────────────
   // La galería se desactiva si no tiene ninguna imagen subida (filtro de
   // secciones sin contenido aplicado a todas). Se consultan los metadatos al
@@ -243,6 +277,11 @@ export default function PublicInvitation() {
     let filtered = showRsvp ? sectionOrder : sectionOrder.filter((s: string) => s !== "rsvp");
     if (!isInviteMode) {
       filtered = filtered.filter((s: string) => !hiddenSet.has(s));
+      // Modo sorpresa: hasta el día del evento, las secciones marcadas quedan
+      // ocultas para los invitados (el admin y ?invitar las ven siempre).
+      if (!revealSurpriseSections) {
+        filtered = filtered.filter((s: string) => !surpriseSet.has(s));
+      }
     }
     // Oculta las secciones sin contenido configurado (aunque estén en el
     // orden) para no mostrar secciones vacías al invitado. Se aplica a
@@ -251,7 +290,7 @@ export default function PublicInvitation() {
     filtered = filtered.filter((s: string) => sectionHasContent(s, config, galleryHasImages));
     filtered = filtered.filter((s: string) => s !== "extras" || hasExtras);
     return filtered;
-  }, [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages, hasExtras]);
+  }, [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages, hasExtras, surpriseSet, revealSurpriseSections]);
 
   // ─── Estados de UI condicionales ───────────────────────
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
@@ -363,25 +402,6 @@ export default function PublicInvitation() {
   });
 
   // ─── Cuenta regresiva ──────────────────────────────────
-
-  /**
-   * Construye el objeto Date de la boda a partir de los campos de configuración.
-   * Retorna null si algún campo no es válido.
-   */
-  const weddingDate = useMemo(() => {
-    const day = Number.parseInt(config.weddingDay, 10);
-    const month = MONTH_VALUE_TO_NUMBER[config.weddingMonth as keyof typeof MONTH_VALUE_TO_NUMBER];
-    const year = Number.parseInt(config.weddingYear, 10);
-    const hour = Number.parseInt(config.weddingHour, 10);
-    const minute = Number.parseInt(config.weddingMinute, 10);
-    if (!day || !month || !year || !Number.isFinite(hour) || !Number.isFinite(minute)) return null;
-    const date = new Date(year, month - 1, day, hour, minute);
-    // Un "31 de febrero" normaliza a 3 de marzo en silencio: si la fecha no
-    // coincide con los componentes, se descarta (no se muestra un countdown
-    // a una fecha errónea).
-    if (date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) return null;
-    return date;
-  }, [config]);
 
   // ─── Schema.org JSON-LD ─────────────────────────────
   useEffect(() => {
@@ -506,6 +526,8 @@ export default function PublicInvitation() {
         weddingDressCodeCustom: config.weddingDressCodeCustom,
         kidsPolicy: config.kidsPolicy,
         cornerDecoration: config.cornerDecoration,
+        // Agenda interactiva: la fecha de la boda (null si falta/inválida).
+        weddingDate,
       },
       story: {
         storyText: config.storyText,
@@ -567,6 +589,7 @@ export default function PublicInvitation() {
       formattedTime,
       hasLocationData,
       locationDescription,
+      weddingDate,
       config.weddingPlace,
       config.weddingDay,
       config.weddingMonth,

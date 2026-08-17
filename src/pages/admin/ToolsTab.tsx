@@ -4,6 +4,7 @@ import { getDocs, collection, doc, getDoc, updateDoc, deleteDoc } from "firebase
 import { db, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadText } from "../../lib/file-utils";
+import { buildIcsFile } from "../../lib/calendar-utils";
 import { useConfirm } from "../../contexts/ConfirmContext";
 
 interface ToolsTabProps {
@@ -218,16 +219,31 @@ const ToolsTab = memo(function ToolsTab({
       return;
     }
     const monthNum = MONTH_TO_NUM[weddingDate.month] || 1;
-    const start = new Date(Date.UTC(Number(weddingDate.year), monthNum - 1, Number(weddingDate.day), Number(weddingDate.hour) || 12, Number(weddingDate.minute) || 0));
-    const stamp = start.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-    const end = new Date(start.getTime() + 3600000).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
-    const ics = [
-      "BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Wedingo//ES", "BEGIN:VEVENT",
-      `UID:${inviteToken}@wedingo`, `DTSTAMP:${stamp}`, `DTSTART:${stamp}`, `DTEND:${end}`,
-      `SUMMARY:${coupleName || "Boda"} — Wedingo`,
-      weddingPlace ? `LOCATION:${weddingPlace.replace(/[\n,;]/g, "\\,")}` : "",
-      "END:VEVENT", "END:VCALENDAR",
-    ].filter(Boolean).join("\r\n");
+    // COMPORTAMIENTO SEGURO: se valida el rollover de la fecha ("31 de
+    // febrero" normaliza a 3 de marzo); si no cuadra no se genera un .ics
+    // corrupto y se avisa al responsable.
+    const start = new Date(Number(weddingDate.year), monthNum - 1, Number(weddingDate.day), Number(weddingDate.hour) || 12, Number(weddingDate.minute) || 0);
+    if (
+      start.getFullYear() !== Number(weddingDate.year) ||
+      start.getMonth() !== monthNum - 1 ||
+      start.getDate() !== Number(weddingDate.day)
+    ) {
+      addToast("info", t("manage.noWeddingDate"));
+      return;
+    }
+    const end = new Date(start.getTime() + 3600000);
+    const ics = buildIcsFile({
+      title: `${coupleName || "Boda"} — Wedingo`,
+      place: weddingPlace || "",
+      description: "",
+      startDate: start,
+      endDate: end,
+      uid: `${inviteToken}@wedingo`,
+    });
+    if (!ics) {
+      addToast("info", t("manage.noWeddingDate"));
+      return;
+    }
     downloadText(`${inviteToken}.ics`, ics, "text/calendar;charset=utf-8");
   }, [weddingDate, weddingPlace, coupleName, inviteToken, addToast, t]);
 

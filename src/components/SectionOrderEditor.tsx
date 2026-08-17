@@ -7,15 +7,25 @@ export default function SectionOrderEditor({
   onChange,
   hiddenValue,
   onHiddenChange,
+  surpriseModeValue,
+  onSurpriseModeChange,
+  surpriseSectionsValue,
+  onSurpriseSectionsChange,
 }: {
   value: string;
   onChange: (key: string, val: string) => void;
   hiddenValue: string;
   onHiddenChange: (key: string, val: string) => void;
+  surpriseModeValue: string;
+  onSurpriseModeChange: (key: string, val: string) => void;
+  surpriseSectionsValue: string;
+  onSurpriseSectionsChange: (key: string, val: string) => void;
 }) {
   const { t } = useTranslation();
   const [items, setItems] = useState(() => parseOrder(value));
   const [hidden, setHidden] = useState(() => parseHidden(hiddenValue));
+  // Secciones sorpresa: set local sincronizado con el valor del formulario.
+  const [surprise, setSurprise] = useState(() => parseHidden(surpriseSectionsValue));
 
   useEffect(() => {
     setItems(parseOrder(value));
@@ -23,6 +33,9 @@ export default function SectionOrderEditor({
   useEffect(() => {
     setHidden(parseHidden(hiddenValue));
   }, [hiddenValue]);
+  useEffect(() => {
+    setSurprise(parseHidden(surpriseSectionsValue));
+  }, [surpriseSectionsValue]);
   const [dragIndex, setDragIndex] = useState<number | null>(null);
   const [overIndex, setOverIndex] = useState<number | null>(null);
 
@@ -50,6 +63,20 @@ export default function SectionOrderEditor({
       syncHidden(next);
     },
     [hidden, syncHidden],
+  );
+
+  /** Marca/desmarca una sección como sorpresa (solo se revela el día del
+   *  evento y solo si el modo sorpresa está activado). No puede coincidir
+   *  con una sección oculta (ese estado ya la elimina siempre). */
+  const toggleSurprise = useCallback(
+    (key: string) => {
+      const next = new Set(surprise);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      setSurprise(next);
+      onSurpriseSectionsChange("surpriseSections", [...next].join(","));
+    },
+    [surprise, onSurpriseSectionsChange],
   );
 
   const handleDragStart = useCallback(
@@ -140,6 +167,7 @@ export default function SectionOrderEditor({
           const isFixed = sectionKey === "hero" || sectionKey === "rsvp";
           const isDragging = dragIndex === index;
           const isHidden = hidden.has(sectionKey);
+          const isSurprise = surprise.has(sectionKey);
           return (
             <div
               key={sectionKey}
@@ -158,6 +186,11 @@ export default function SectionOrderEditor({
               <span className={`section-order-item__label ${isHidden ? "section-order-item__label--hidden" : ""}`}>
                 {t(sectionKey + ".sectionLabel")}
                 {isHidden && <span className="section-order-item__badge">{t("setup.hiddenSectionBadge")}</span>}
+                {!isHidden && isSurprise && (
+                  <span className="section-order-item__badge section-order-item__badge--surprise">
+                    {t("setup.surpriseBadge")} 🎁
+                  </span>
+                )}
               </span>
               {!isFixed && (
                 <span className="section-order-item__actions">
@@ -168,6 +201,17 @@ export default function SectionOrderEditor({
                     aria-label={`${isHidden ? t("common.show") : t("common.hide")} ${t(sectionKey + ".sectionLabel")}`}
                   >
                     {isHidden ? "✕" : "✓"}
+                  </button>
+                  <button
+                    type="button"
+                    className={`section-order-item__btn section-order-item__btn--surprise ${isSurprise ? "section-order-item__btn--surprise-active" : ""}`}
+                    onClick={() => toggleSurprise(sectionKey)}
+                    disabled={surpriseModeValue !== "true" || isHidden}
+                    aria-pressed={isSurprise}
+                    aria-label={`${isSurprise ? t("sectionOrder.surpriseRemove") : t("sectionOrder.surpriseAdd")} ${t(sectionKey + ".sectionLabel")}`}
+                    title={surpriseModeValue !== "true" ? t("sectionOrder.surpriseDisabledHint") : undefined}
+                  >
+                    🎁
                   </button>
                   <button
                     type="button"
@@ -194,6 +238,17 @@ export default function SectionOrderEditor({
           );
         })}
       </div>
+      {/* Modo sorpresa: activa las 🎁 de las secciones. Un checkbox independiente
+          del orden para no complicar el drag & drop. */}
+      <label className="a11y-toggle section-order-surprise-toggle">
+        <input
+          type="checkbox"
+          checked={surpriseModeValue === "true"}
+          onChange={() => onSurpriseModeChange("surpriseMode", surpriseModeValue === "true" ? "false" : "true")}
+        />
+        <span className="a11y-toggle__track" />
+        <span>{t("sectionOrder.surpriseModeLabel")}</span>
+      </label>
     </div>
   );
 }

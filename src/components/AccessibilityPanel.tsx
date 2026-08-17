@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import Modal from "./Modal";
@@ -70,7 +70,9 @@ function applyPrefs(prefs: A11yPrefs) {
 }
 
 export default function AccessibilityPanel({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  // Idioma para la voz (puede faltar en tests/mocks: se degrada a español).
+  const lang = (i18n?.language || "es").slice(0, 2);
   // Preferencias de animación del invitado (combina la base del admin con lo
   // que este invitado desactiva en su dispositivo). Requiere AnimationsProvider.
   const { isDisabled, adminDisabled, toggleGuestAnimation, setGuestGroup, setAllGuest, allOff } = useAnimations();
@@ -109,6 +111,107 @@ export default function AccessibilityPanel({ open, onClose }: { open: boolean; o
     });
   };
 
+  // ── Narración por voz (Web Speech API) para invitados senior/ciegos ──
+  // CUIDADO: speechSynthesis puede no existir (navegadores antiguos o
+  // headless); en ese caso el control no se muestra (no es un fallo).
+  const [narrationOn, setNarrationOn] = useState(false);
+  // Se guarda el texto a leer en un ref para no cancelar la voz si el idioma
+  // cambia a mitad de lectura (el aria-live de estado no debe interrumpir).
+  const narrationTextRef = useRef("");
+  const narrationOnRef = useRef(false);
+
+  /** Monta el texto de la invitación para leerlo (todas las secciones del
+   *  story). Se recorta a 2400 caracteres: narraciones completas más largas
+   *  no mejoran la accesibilidad y saturan la cola del lector. */
+  const buildNarrationText = () => {
+    const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-story-section]"));
+    const raw = sections
+      .map((s) => s.innerText || s.textContent || "")
+      .join(". ")
+      .replace(/\s+/g, " ")
+      .trim();
+    return raw.slice(0, 2400);
+  };
+
+  const stopNarration = useCallback(() => {
+    narrationOnRef.current = false;
+    setNarrationOn(false);
+    try {
+      window.speechSynthesis.cancel();
+    } catch {
+      /* voz no disponible */
+    }
+  }, []);
+
+  const startNarration = () => {
+    const text = buildNarrationText();
+    if (!text) return;
+    narrationTextRef.current = text;
+    narrationOnRef.current = true;
+    setNarrationOn(true);
+  };
+
+  // Arranca/para la lectura cuando el texto listo cambia (efecto dedicado,
+  // aislado de los re-renders del panel).
+  useEffect(() => {
+    if (!narrationOn) return;
+    const synth = window.speechSynthesis;
+    if (!synth || !narrationTextRef.current) {
+      setNarrationOn(false);
+      return;
+    }
+    // La voz del idioma activo (si hay voces cargadas); sin voz específica
+    // se usa la del sistema (calidad igualmente aceptable).
+    const utterance = new SpeechSynthesisUtterance(narrationTextRef.current);
+    const voices = synth.getVoices();
+    const preferred = voices.find((v) => v.lang && v.lang.startsWith(lang));
+    if (preferred) utterance.voice = preferred;
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+    // Al terminar (natural o por cancel), se limpia el estado si nadie lo
+    // está reiniciando (evita que un segundo clic "parar" no haga nada).
+    utterance.onend = () => {
+      setNarrationOn(false);
+    };
+    utterance.onerror = () => {
+      setNarrationOn(false);
+    };
+    try {
+      synth.speak(utterance);
+    } catch {
+      setNarrationOn(false);
+    }
+    return () => {
+      try {
+        synth.cancel();
+      } catch {
+        /* noop */
+      }
+    };
+  }, [narrationOn, lang]);
+
+  // Al cerrar el panel se detiene la narración (no sigue leyendo en segundo
+  // plano) y al desmontar se cancela todo.
+  useEffect(() => {
+    if (!open) stopNarration();
+  }, [open, stopNarration]);
+  useEffect(
+    () => () => {
+      narrationOnRef.current = false;
+      try {
+        window.speechSynthesis?.cancel();
+      } catch {
+        /* noop */
+      }
+    },
+    [],
+  );
+
+  const supportsSpeech =
+    typeof window !== "undefined" &&
+    typeof window.speechSynthesis !== "undefined" &&
+    typeof window.SpeechSynthesisUtterance !== "undefined";
+
   if (!open) return null;
 
   return (
@@ -125,6 +228,7 @@ export default function AccessibilityPanel({ open, onClose }: { open: boolean; o
             { val: "1", key: "fontNormal" },
             { val: "1.15", key: "fontLarge" },
             { val: "1.3", key: "fontExtraLarge" },
+            { val: "1.5", key: "fontHuge" },
           ].map((opt) => (
             <button
               key={opt.val}
@@ -137,6 +241,29 @@ export default function AccessibilityPanel({ open, onClose }: { open: boolean; o
           ))}
         </div>
       </div>
+
+      {/* Narración por voz: opción senior/lectura en voz alta. Solo se muestra
+          si el navegador la soporta; si no, el control no aparece (el resto
+          del panel funciona igual). */}
+      {supportsSpeech ? (
+        <div className="a11y-section">
+          <p className="a11y-label">{t("a11y.narrationTitle")}</p>
+          <button
+            type="button"
+            className={`a11y-btn ${narrationOn ? "a11y-btn--active" : ""}`}
+            onClick={narrationOn ? stopNarration : startNarration}
+          >
+            {narrationOn ? t("a11y.stopNarrate") : t("a11y.narrate")}
+          </button>
+          <p className="a11y-animations-hint" aria-live="polite">
+            {narrationOn ? t("a11y.narrating") : t("a11y.animationsHint")}
+          </p>
+        </div>
+      ) : (
+        <div className="a11y-section">
+          <p className="a11y-animations-hint">{t("a11y.narrationUnsupported")}</p>
+        </div>
+      )}
 
       <div className="a11y-section">
         <p className="a11y-label">{t("a11y.lineSpacing")}</p>

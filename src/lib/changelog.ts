@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.100.0",
+    date: "2026-08-17",
+    changes: [
+      "Ronda de funciones diferenciadoras (bloque 1/3): (1) Calendario desde la invitación: util compartida buildIcsFile (RFC 5545, escape de texto y validación de fecha/rollover) reutilizada por DetailsSection y ToolsTab (elimina el builder duplicado del .ics) más tests; (2) Ranking para el DJ: export del ranking de canciones (solo visible para el admin) con protección anti-CSV-injection (=,+,-,@) y texto legible; (3) Impresión profesional: QR de la invitación en la tarjeta impresa (carga lazy de qrcode, esperado con timeout antes de print() pero nunca bloquea la impresión); (4) Modo sorpresa: el editor de secciones permite marcar secciones con 🎁 que se ocultan a los invitados hasta el día del evento (con fecha inválida/ausente nunca se revelan por seguridad; el admin y ?invitar las ven siempre); (5) Agenda interactiva el día del evento: el itinerario resalta el evento en curso y muestra cuenta atrás por evento (badge EN CURSO / en X min) sin re-renders por segundo; (6) Modo invitado senior: opción de texto Muy grande (1.5) y narración de la invitación por voz (Web Speech API) con cierre/cancelación controlados. Ajustes de tests existentes (PrintPage, DetailsSection, SocialSections, SectionOrderEditor) y +28 tests nuevos. Traducciones ES/EN sincronizadas al 100% (1608 claves) y fix de un bloque musicPoll en EN que estaba sin traducir. 2256 tests/173 ficheros verdes + build/lint/typecheck/consent/translations OK.",
+    ],
+  },
+
+  {
     version: "2.99.9",
     date: "2026-08-17",
     changes: [

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import MapEmbed from "../../components/MapEmbed";
 import { isValidGoogleMapsUrl } from "../../lib/geo-utils";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
+import { buildIcsFile } from "../../lib/calendar-utils";
 import { trackEvent } from "../../lib/analytics";
 import CornerDecorations from "../../components/CornerDecorations";
 
@@ -61,39 +62,39 @@ const DetailsSection = memo(function DetailsSection({
     ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(weddingPlace)}`
     : weddingSiteURL || "";
 
-  /** Descarga el evento como archivo .ics (Apple Calendar/Outlook). */
+  /** Descarga el evento como archivo .ics (Apple Calendar/Outlook).
+   *  COMPORTAMIENTO SEGURO: si la fecha es inválida/incompleta no se genera
+   *  ningún archivo (evita un .ics corrupto) y el click es un no-op visible. */
   const handleDownloadIcs = () => {
     try {
-      const day = Number(weddingDay) || 1;
       const month = MONTH_VALUE_TO_NUMBER[weddingMonth as keyof typeof MONTH_VALUE_TO_NUMBER] || 1;
+      // Fallback histórico: día/año/hora ausentes usan 1/año actual/12:00 (los
+      // botones de calendario solo se muestran con fecha válida, así que este
+      // camino solo aplica a invitaciones sin datos; la validación siguiente
+      // impide un .ics con una fecha normalizada incorrecta).
+      const day = Number(weddingDay) || 1;
       const year = Number(weddingYear) || new Date().getFullYear();
       const hour = Number(weddingHour) || 12;
       const minute = Number(weddingMinute) || 0;
-      const pad = (n: number) => String(n).padStart(2, "0");
-      const dtstart = `${year}${pad(month)}${pad(day)}T${pad(hour)}${pad(minute)}00`;
+      // Se valida el rollover ("31 de febrero" → fecha normalizada distinta):
+      // sin fecha coherente no se construye el evento.
+      const start = new Date(year, month - 1, day, hour, minute);
+      if (start.getFullYear() !== year || start.getMonth() !== month - 1 || start.getDate() !== day) {
+        return;
+      }
       // DTEND = 1 h después del inicio (las bodas duran más, pero el evento
-      // del calendario necesita un fin válido para no ser rechazado).
-      const end = new Date(year, month - 1, day, hour, minute + 60);
-      const dtend = `${end.getFullYear()}${pad(end.getMonth() + 1)}${pad(end.getDate())}T${pad(end.getHours())}${pad(end.getMinutes())}00`;
+      // del calendario necesita un fin válido; el Date cruza el día si toca).
+      const end = new Date(start.getTime() + 3600000);
       const summary = `${coupleFirstName || ""} & ${coupleSecondName || ""}`.trim();
-      // RFC 5545: las comas y puntos y coma del texto se escapan.
-      const esc = (s: string) => s.replace(/\\/g, "\\\\").replace(/,/g, "\\,").replace(/;/g, "\\;");
-      const ics = [
-        "BEGIN:VCALENDAR",
-        "VERSION:2.0",
-        "PRODID:-//Wedingo//Wedding//ES",
-        "CALSCALE:GREGORIAN",
-        "BEGIN:VEVENT",
-        `UID:${dtstart}-wedingo-invite`,
-        `DTSTART:${dtstart}`,
-        `DTEND:${dtend}`,
-        `SUMMARY:${esc(summary)}`,
-        weddingPlace ? `LOCATION:${esc(weddingPlace)}` : "",
-        "END:VEVENT",
-        "END:VCALENDAR",
-      ]
-        .filter(Boolean)
-        .join("\r\n");
+      const ics = buildIcsFile({
+        title: summary || "Boda",
+        place: weddingPlace || "",
+        description: `Invitación Wedingo · ${window.location.origin}${window.location.pathname}`,
+        startDate: start,
+        endDate: end,
+        uid: `${window.location.pathname}.wedingo-ics`,
+      });
+      if (!ics) return;
       const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -105,7 +106,7 @@ const DetailsSection = memo(function DetailsSection({
       a.remove();
       URL.revokeObjectURL(url);
     } catch {
-      /* calendario no disponible */
+      /* calendario no disponible (p. ej. URL.createObjectURL bloqueado) */
     }
   };
   return (

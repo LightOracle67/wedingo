@@ -4,6 +4,9 @@ import { doc, updateDoc, increment } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { withWriteRetry } from "../../lib/async-utils";
 import { useInviteSubcollection } from "../../hooks/useInviteSubcollection";
+import { useAuth } from "../../contexts";
+import { buildDjRankingText } from "../../lib/dj-ranking";
+import { downloadText } from "../../lib/file-utils";
 
 interface Song {
   id: string;
@@ -26,6 +29,9 @@ const VOTED_KEY = "wedin_voted_songs";
  */
 const MusicPollSection = memo(function MusicPollSection({ inviteToken }: { inviteToken?: string }) {
   const { t } = useTranslation();
+  // El botón de exportar el ranking solo aparece para el responsable de la
+  // invitación (el DJ); los invitados no deben ver herramientas internas.
+  const { isAdminTokenLoggedIn } = useAuth();
   const {
     items: songs,
     setItems: setSongs,
@@ -97,6 +103,21 @@ const MusicPollSection = memo(function MusicPollSection({ inviteToken }: { invit
     [inviteToken, votedIds, setSongs],
   );
 
+  /** Exporta el ranking para el DJ: texto legible + CSV. Sin lista no hace
+   *  nada (evita descargar un archivo vacío inútil). Blob/URL blindados. */
+  const exportRanking = useCallback(() => {
+    const ranking = buildDjRankingText(songs);
+    if (!ranking) return;
+    try {
+      downloadText("ranking-dj.txt", ranking, "text/plain;charset=utf-8");
+    } catch {
+      /* descarga no disponible */
+    }
+  }, [songs]);
+
+  // El ranking para el DJ: solo si hay canciones (botón con estado seguro).
+  const canExport = songs.some((s) => s.song.trim().length > 0);
+
   return (
     <div>
       <div className="song-poll" aria-live="polite">
@@ -119,6 +140,18 @@ const MusicPollSection = memo(function MusicPollSection({ inviteToken }: { invit
           </div>
         ))}
       </div>
+      {/* Exportar ranking: herramienta interna solo para el responsable/DJ. */}
+      {isAdminTokenLoggedIn ? (
+        <button
+          className="setup-button setup-button--ghost setup-button--compact"
+          type="button"
+          onClick={exportRanking}
+          disabled={!canExport}
+          aria-label={t("musicPoll.exportRanking")}
+        >
+          {t("musicPoll.exportRanking")}
+        </button>
+      ) : null}
       <form className="notes-form" onSubmit={suggest}>
         <input
           className="setup-input"

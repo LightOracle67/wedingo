@@ -108,7 +108,11 @@
       "cocktail": "Elegant cocktail",
       "comfortable": "Comfortable clothing",
       "custom": "Custom dress code"
-    }
+    },
+    "liveNow": "NOW",
+    "imminent": "very soon",
+    "inMin_one": "in {{count}} min",
+    "inMin_other": "in {{count}} min"
   },
   "story": {
     "sectionLabel": "Our story",
@@ -385,6 +389,7 @@
     "photoUploading": "Uploading photo...",
     "replaceImage": "Change photo",
     "hiddenSectionBadge": "hidden",
+    "surpriseBadge": "surprise",
     "duplicateFileWarning": "This file has already been uploaded.",
     "galleryDescriptionSaveFailed": "Error saving description",
     "galleryDescriptionSaved": "Description saved",
@@ -1125,6 +1130,12 @@
     "bigCursor": "Big cursor",
     "desaturate": "Grayscale",
     "strongFocus": "Visible focus indicators",
+    "fontHuge": "Very large",
+    "narrationTitle": "Read aloud",
+    "narrate": "Read the invitation aloud",
+    "stopNarrate": "Stop narration",
+    "narrating": "Reading the invitation...",
+    "narrationUnsupported": "Your browser does not support reading aloud.",
     "animationsTitle": "Animations",
     "animationsHint": "Turn off specific animations on your device. The couple decides the base; you can disable more (you cannot re-enable the ones they turned off)."
   },
@@ -1139,13 +1150,19 @@
   },
   "print": {
     "preparing": "Preparing print…",
-    "timeSuffix": "h"
+    "timeSuffix": "h",
+    "qrLabel": "Invitation QR code to scan",
+    "qrHint": "Scan to view the invitation"
   },
   "sectionOrder": {
     "moveUp": "Move up",
     "moveDown": "Move down",
     "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
+    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off.",
+    "surpriseModeLabel": "Surprise mode: hide the sections marked 🎁 until the wedding day",
+    "surpriseAdd": "Mark as surprise",
+    "surpriseRemove": "Remove surprise mode",
+    "surpriseDisabledHint": "Enable surprise mode to mark sections"
   },
   "countdown": {
     "year_one": "{{count}} year",
@@ -1342,13 +1359,14 @@
     "error": "No se pudo enviar la dedicatoria."
   },
   "musicPoll": {
-    "title": "Canciones para el DJ",
-    "empty": "Aún no hay canciones sugeridas.",
-    "songPlaceholder": "Canción · Artista",
-    "namePlaceholder": "Tu nombre (opcional)",
-    "suggest": "Sugerir canción",
-    "vote": "Votar",
-    "error": "No se pudo enviar la canción."
+    "title": "Songs for the DJ",
+    "empty": "No songs have been suggested yet.",
+    "songPlaceholder": "Song · Artist",
+    "namePlaceholder": "Your name (optional)",
+    "suggest": "Suggest song",
+    "vote": "Vote",
+    "exportRanking": "Export ranking for the DJ",
+    "error": "Could not send the song."
   },
   "trivia": {
     "title": "¿Cuánto sabes de la pareja?",

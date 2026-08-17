@@ -108,7 +108,11 @@
       "cocktail": "Cóctel elegante",
       "comfortable": "Ropa cómoda",
       "custom": "Código personalizado"
-    }
+    },
+    "liveNow": "EN CURSO",
+    "imminent": "muy pronto",
+    "inMin_one": "en {{count}} min",
+    "inMin_other": "en {{count}} min"
   },
   "story": {
     "sectionLabel": "Nuestra historia",
@@ -382,6 +386,7 @@
     "galleryDescriptionPlaceholder": "Descripción de la imagen...",
     "replaceImage": "Cambiar foto",
     "hiddenSectionBadge": "oculta",
+    "surpriseBadge": "sorpresa",
     "duplicateFileWarning": "Este archivo ya ha sido subido.",
     "galleryDescriptionSaveFailed": "Error al guardar la descripción",
     "galleryDescriptionSaved": "Descripción guardada",
@@ -1125,6 +1130,12 @@
     "bigCursor": "Cursor grande",
     "desaturate": "Escala de grises",
     "strongFocus": "Indicadores de foco visibles",
+    "fontHuge": "Muy grande",
+    "narrationTitle": "Leer en voz alta",
+    "narrate": "Leer la invitación en voz alta",
+    "stopNarrate": "Detener la narración",
+    "narrating": "Leyendo la invitación...",
+    "narrationUnsupported": "Tu navegador no soporta la lectura por voz.",
     "animationsTitle": "Animaciones",
     "animationsHint": "Desactiva animaciones concretas en tu dispositivo. Los novios deciden la base; tú puedes desactivar más (no reactivar las que ellos apagaron)."
   },
@@ -1139,13 +1150,19 @@
   },
   "print": {
     "preparing": "Preparando impresión...",
-    "timeSuffix": "h"
+    "timeSuffix": "h",
+    "qrLabel": "Código QR de la invitación para escanear",
+    "qrHint": "Escanea para ver la invitación"
   },
   "sectionOrder": {
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo",
     "title": "Orden y visibilidad",
-    "help": "Arrastra para reordenar, usa los botones para mover, y activa o desactiva cada sección."
+    "help": "Arrastra para reordenar, usa los botones para mover, y activa o desactiva cada sección.",
+    "surpriseModeLabel": "Modo sorpresa: ocultar las secciones marcadas 🎁 hasta el día del evento",
+    "surpriseAdd": "Marcar como sorpresa",
+    "surpriseRemove": "Quitar modo sorpresa",
+    "surpriseDisabledHint": "Activa el modo sorpresa para marcar secciones"
   },
   "countdown": {
     "year_one": "{{count}} año",
@@ -1348,6 +1365,7 @@
     "namePlaceholder": "Tu nombre (opcional)",
     "suggest": "Sugerir canción",
     "vote": "Votar",
+    "exportRanking": "Exportar ranking para el DJ",
     "error": "No se pudo enviar la canción."
   },
   "trivia": {

@@ -1610,6 +1610,27 @@ a,
   text-align: center;
 }
 
+/* Itinerario en vivo (día del evento): el evento actual se resalta con el
+   acento de la invitación y un badge "EN CURSO" / "en X min". */
+.agenda-item--live {
+  background: color-mix(in srgb, var(--invite-accent, #b98d5e) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--invite-accent, #b98d5e) 35%, transparent);
+  border-radius: var(--radius-sm, 8px);
+  padding: 0.35rem 0.5rem;
+  margin-inline: -0.5rem;
+}
+.agenda-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--invite-accent, #b98d5e);
+  background: color-mix(in srgb, var(--invite-accent, #b98d5e) 15%, transparent);
+  border-radius: var(--radius-xs, 4px);
+  padding: 0.1rem 0.4rem;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
 .story-note {
   margin: 0;
   color: var(--setup-muted);

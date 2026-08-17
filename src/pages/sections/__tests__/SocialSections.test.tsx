@@ -25,6 +25,11 @@ vi.mock("../../../lib/firebase", () => ({ db: "db-mock" }));
 vi.mock("../../../lib/async-utils", () => ({
   withWriteRetry: (fn: () => Promise<unknown>) => fn(),
 }));
+// MusicPollSection usa useAuth para mostrar el botón de exportar el ranking:
+// en el test el invitado NO es admin (el botón no se muestra).
+vi.mock("../../../contexts", () => ({
+  useAuth: () => ({ isAdminTokenLoggedIn: false }),
+}));
 
 import ReactionsSection from "../ReactionsSection";
 import NotesSection from "../NotesSection";

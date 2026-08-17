@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.99.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.99.0)  
+**Versión actual:** [v2.100.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.100.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2178 tests, 163 test files |
+| Tests | 2256 tests, 173 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -47,8 +47,17 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 | Sección | Contenido |
 |---|---|
 | **Hero** | Foto de novios (circular, máscara radial 60-100%, borde dorado animado), countdown calendárico (años/meses/días), padrinos, mensaje |
-| **Details** | Fecha+hora, botón calendario, ubicación, mapa (Google Maps Embed sin API key), mensaje de confirmación |
-| **Info** | Horario, código de vestimenta, política infantil |
+| **Details** | Fecha+hora, botón calendario (Google + .ics compartido), ubicación, mapa (Google Maps Embed sin API key), mensaje de confirmación |
+
+### Funciones diferenciadoras (ronda v2.100)
+
+- **Calendario desde la invitación:** util compartida `buildIcsFile` (RFC 5545) reutilizada en Detalles y el panel; validación de fecha/rollover y escape de texto.
+- **Agenda interactiva:** el día del evento el itinerario resalta el evento en curso (badge EN CURSO) y muestra cuenta atrás por evento (en X min), sin re-renders por segundo.
+- **Ranking para el DJ:** export del ranking de canciones desde la encuesta de música (solo visible para el admin), texto legible + protección anti-CSV-injection.
+- **Impresión profesional con QR:** la tarjeta imprimible incluye el código QR de la invitación (carga lazy, no bloquea la impresión).
+- **Modo sorpresa:** el editor de secciones marca secciones con 🎁 que quedan ocultas a los invitados hasta el día del evento (con fecha inválida nunca se revelan).
+- **Modo invitado senior:** texto Muy grande (1.5×) y narración de la invitación por voz (Web Speech API) en el panel de accesibilidad.
+| **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
 | **Gifts** | Información de regalos + IBAN (cifrado) |
@@ -245,6 +254,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.100.0 | 2026-08-17 | Funciones diferenciadoras (bloque 1): calendario compartido .ics, ranking para el DJ con anti-CSV-injection, QR en impresión, modo sorpresa por secciones, agenda interactiva en vivo y narración por voz senior; 28 tests nuevos (2256) |
 | v2.97.1 | 2026-08-12 | Cobertura 83.5→86.4% líneas: axe en las 5 secciones sociales restantes, voice-store/FormStore/file-utils/MetricsTab/SupportTab/ToolsTab/DistribucionTab; gate de cobertura ajustado a umbrales verificados |
 | v2.97.2 | 2026-08-12 | Cobertura a 88.8% de líneas (2106 tests): ManageTab, DataTab, InvitationDetailModal, SuperAdminPanel, PlatformTab, DashboardTab y secciones sociales; umbrales CI subidos |
 | v2.97.3 | 2026-08-12 | Cobertura a 89% de líneas (2114 tests): VoiceNotes, DayPhotos, transport-utils, useInertBackground, GoogleTranslateToggle; umbrales CI a 88.5/86/83.5/78 |

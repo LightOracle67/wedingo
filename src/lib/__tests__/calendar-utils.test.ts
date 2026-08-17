@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { buildGoogleCalendarUrl } from "../calendar-utils";
+import { buildGoogleCalendarUrl, buildIcsFile } from "../calendar-utils";
 
 describe("buildGoogleCalendarUrl", () => {
   it("builds a valid Google Calendar URL", () => {
@@ -144,5 +144,95 @@ describe("buildGoogleCalendarUrl", () => {
     });
     expect(url).toContain("20260615T000000");
     expect(url).toContain("20260616T000000");
+  });
+});
+
+describe("buildIcsFile", () => {
+  const start = new Date(2026, 5, 15, 18, 0, 0);
+  const end = new Date(2026, 5, 15, 23, 0, 0);
+
+  it("generates a valid VEVENT with escaped text fields", () => {
+    const ics = buildIcsFile({
+      title: "Boda, Juan & María; Sánchez",
+      place: "C/ Mayor, 1; Madrid",
+      description: "Línea 1\nLínea 2",
+      startDate: start,
+      endDate: end,
+      uid: "token@wedingo",
+    });
+    expect(ics).not.toBeNull();
+    expect(ics).toContain("BEGIN:VCALENDAR");
+    expect(ics).toContain("VERSION:2.0");
+    expect(ics).toContain("BEGIN:VEVENT");
+    expect(ics).toContain("END:VEVENT");
+    expect(ics).toContain("DTSTART:20260615T180000");
+    expect(ics).toContain("DTEND:20260615T230000");
+    expect(ics).toContain("SUMMARY:Boda\\, Juan & María\\; Sánchez");
+    expect(ics).toContain("LOCATION:C/ Mayor\\, 1\\; Madrid");
+    // RFC 5545: el salto de línea de DESCRIPTION se escapa como \\n literal.
+    expect(ics).toContain("DESCRIPTION:Línea 1\\nLínea 2");
+    expect(ics).toContain("UID:token@wedingo");
+  });
+
+  it("escapes backslashes before commas/semicolons", () => {
+    const ics = buildIcsFile({
+      title: "A\\B, C",
+      place: "",
+      description: "",
+      startDate: start,
+      endDate: end,
+      uid: "u",
+    });
+    expect(ics).toContain("SUMMARY:A\\\\B\\, C");
+  });
+
+  it("returns null when the start date is invalid (no corrupt .ics)", () => {
+    const ics = buildIcsFile({
+      title: "X",
+      place: "",
+      description: "",
+      startDate: new Date("invalid"),
+      endDate: end,
+      uid: "u",
+    });
+    expect(ics).toBeNull();
+  });
+
+  it("returns null when the end date is invalid", () => {
+    const ics = buildIcsFile({
+      title: "X",
+      place: "",
+      description: "",
+      startDate: start,
+      endDate: new Date("invalid"),
+      uid: "u",
+    });
+    expect(ics).toBeNull();
+  });
+
+  it("omits optional empty fields (LOCATION/DESCRIPTION) cleanly", () => {
+    const ics = buildIcsFile({
+      title: "Boda",
+      place: "",
+      description: "",
+      startDate: start,
+      endDate: end,
+      uid: "u",
+    });
+    expect(ics).not.toContain("LOCATION:");
+    expect(ics).not.toContain("DESCRIPTION:");
+    expect(ics).toContain("SUMMARY:Boda");
+  });
+
+  it("includes DTSTAMP so calendars accept the event", () => {
+    const ics = buildIcsFile({
+      title: "Boda",
+      place: "",
+      description: "",
+      startDate: start,
+      endDate: end,
+      uid: "u",
+    });
+    expect(ics).toMatch(/^DTSTAMP:\d{8}T\d{6}Z?$/m);
   });
 });

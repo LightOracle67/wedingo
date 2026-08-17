@@ -89,6 +89,12 @@ export interface InvitationConfig {
   manualExpiry?: string;
   /** Reacciones a la invitación (❤️🎉😂) habilitadas. */
   reactionsEnabled?: string;
+  /** Modo sorpresa: "true" oculta las secciones en surpriseSections hasta el
+   *  día del evento (la fecha inválida deja todo oculto, nunca se filtra). */
+  surpriseMode?: string;
+  /** Secciones sorpresa (claves separadas por coma) que solo se revelan el
+   *  día del evento si surpriseMode === "true". */
+  surpriseSections?: string;
   /** Prueba social en vivo: mostrar cuántos han confirmado en la portada. */
   liveConfirmedEnabled?: string;
   /** Lista de regalos (JSON de items) + habilitada. */

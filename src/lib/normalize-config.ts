@@ -169,6 +169,15 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
     return parts.join(",");
   })(),
   hiddenSections: s(value?.hiddenSections),
+  // Modo sorpresa: solo "true" lo activa; las secciones se sanitizan contra
+  // el orden canónico (claves desconocidas o corruptas se ignoran) para que
+  // un valor inválido nunca oculte secciones por error ni filtre las válidas.
+  surpriseMode: s(value?.surpriseMode) === "true" ? "true" : "false",
+  surpriseSections: (() => {
+    const raw = typeof value?.surpriseSections === "string" ? value.surpriseSections : "";
+    const valid = new Set(STORY_SECTION_ORDER);
+    return [...new Set(raw.split(",").map((s) => s.trim()).filter((k) => valid.has(k)))].join(",");
+  })(),
   // Animaciones desactivadas: se sanitizan contra el registro canónico (solo
   // ids válidos, ordenados y deduplicados) para que un valor corrupto o de
   // una versión antigua no aplique toggles inexistentes.

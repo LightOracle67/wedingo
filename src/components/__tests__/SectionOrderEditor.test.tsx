@@ -13,6 +13,10 @@ describe("SectionOrderEditor", () => {
     onChange: vi.fn(),
     hiddenValue: "",
     onHiddenChange: vi.fn(),
+    surpriseModeValue: "false",
+    onSurpriseModeChange: vi.fn(),
+    surpriseSectionsValue: "",
+    onSurpriseSectionsChange: vi.fn(),
   };
 
   it("renders section order editor", () => {
@@ -245,5 +249,49 @@ describe("SectionOrderEditor", () => {
     expect(extrasEl).toBeDefined();
     expect(extrasEl!.getAttribute("draggable")).toBe("true");
     expect(extrasEl!.textContent).toContain("⠿");
+  });
+
+  it("marks and unmarks a section as surprise", () => {
+    const onSurpriseSectionsChange = vi.fn();
+    render(
+      <SectionOrderEditor
+        {...defaultProps}
+        surpriseModeValue="true"
+        onSurpriseSectionsChange={onSurpriseSectionsChange}
+      />,
+    );
+    const giftBtn = screen.getByRole("button", { name: "sectionOrder.surpriseAdd gifts.sectionLabel" });
+    fireEvent.click(giftBtn);
+    expect(onSurpriseSectionsChange).toHaveBeenCalledWith("surpriseSections", "gifts");
+    expect(giftBtn.getAttribute("aria-pressed")).toBe("true");
+  });
+
+  it("shows a surprise badge on marked sections", () => {
+    render(
+      <SectionOrderEditor
+        {...defaultProps}
+        surpriseModeValue="true"
+        surpriseSectionsValue="gifts"
+      />,
+    );
+    const badge = document.querySelector(".section-order-item__badge--surprise");
+    expect(badge).not.toBeNull();
+    expect(badge?.textContent).toContain("setup.surpriseBadge");
+    const item = badge?.closest(".section-order-item");
+    expect(item?.textContent).toContain("gifts.sectionLabel");
+  });
+
+  it("disables surprise marks when surprise mode is off", () => {
+    render(<SectionOrderEditor {...defaultProps} surpriseModeValue="false" />);
+    const giftBtn = screen.getByRole("button", { name: "sectionOrder.surpriseAdd gifts.sectionLabel" });
+    expect(giftBtn).toBeDisabled();
+  });
+
+  it("toggles the surprise master switch", () => {
+    const onSurpriseModeChange = vi.fn();
+    render(<SectionOrderEditor {...defaultProps} onSurpriseModeChange={onSurpriseModeChange} />);
+    const master = screen.getByRole("checkbox", { name: "sectionOrder.surpriseModeLabel" });
+    fireEvent.click(master);
+    expect(onSurpriseModeChange).toHaveBeenCalledWith("surpriseMode", "true");
   });
 });

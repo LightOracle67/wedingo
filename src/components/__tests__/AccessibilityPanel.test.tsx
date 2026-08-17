@@ -236,4 +236,49 @@ describe("AccessibilityPanel", () => {
     render(<AccessibilityPanel open={true} onClose={vi.fn()} />);
     expect(screen.getByText("a11y.title")).toBeDefined();
   });
+
+  it("starts narration when speechSynthesis is available", () => {
+    // Simula el Web Speech API (no existe en jsdom de serie).
+    const speak = vi.fn();
+    const cancel = vi.fn();
+    Object.defineProperty(window, "speechSynthesis", {
+      value: { getVoices: () => [], speak, cancel },
+      configurable: true,
+    });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", {
+      value: class {
+        onend: (() => void) | null = null;
+      },
+      configurable: true,
+    });
+    // La narración lee las secciones del story: se crea una en el DOM.
+    const section = document.createElement("section");
+    section.setAttribute("data-story-section", "details");
+    section.textContent = "Texto de la invitación para leer.";
+    document.body.appendChild(section);
+    render(<AccessibilityPanel open={true} onClose={vi.fn()} />);
+    const narrateBtn = screen.getByText("a11y.narrate");
+    fireEvent.click(narrateBtn);
+    expect(speak).toHaveBeenCalled();
+    expect(screen.getByText("a11y.stopNarrate")).toBeDefined();
+    // Detener la narración cancela la voz y restaura el botón inicial.
+    fireEvent.click(screen.getByText("a11y.stopNarrate"));
+    expect(cancel).toHaveBeenCalled();
+    expect(screen.getByText("a11y.narrate")).toBeDefined();
+    section.remove();
+  });
+
+  it("shows the unsupported hint when speechSynthesis is missing", () => {
+    Object.defineProperty(window, "speechSynthesis", { value: undefined, configurable: true });
+    Object.defineProperty(window, "SpeechSynthesisUtterance", { value: undefined, configurable: true });
+    render(<AccessibilityPanel open={true} onClose={vi.fn()} />);
+    expect(screen.getByText("a11y.narrationUnsupported")).toBeDefined();
+    expect(screen.queryByText("a11y.narrate")).toBeNull();
+  });
+
+  it("sets the extra large senior font size", () => {
+    render(<AccessibilityPanel open={true} onClose={vi.fn()} />);
+    fireEvent.click(screen.getByText("a11y.fontHuge"));
+    expect(document.documentElement.style.getPropertyValue("--a11y-font-scale")).toBe("1.5");
+  });
 });

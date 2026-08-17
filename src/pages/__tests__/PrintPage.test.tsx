@@ -26,6 +26,12 @@ vi.mock("../../lib/invite-messages", () => ({
   randomMessage: () => "A beautiful wedding message",
 }));
 
+// El QR es opcional en impresión: se mockea para que resuelva al instante y
+// no bloquee el flujo de impresión en los tests de timing.
+vi.mock("qrcode", () => ({
+  default: { toDataURL: vi.fn(() => Promise.resolve("data:image/png;base64,QR")) },
+}));
+
 import PrintPage from "../PrintPage";
 
 beforeAll(() => {
@@ -190,7 +196,7 @@ describe("PrintPage", () => {
       await Promise.resolve();
     });
     act(() => {
-      vi.advanceTimersByTime(400);
+      vi.advanceTimersByTime(1100);
     });
     await act(async () => {
       await Promise.resolve();
@@ -213,7 +219,7 @@ describe("PrintPage", () => {
       await Promise.resolve();
     });
     act(() => {
-      vi.advanceTimersByTime(400);
+      vi.advanceTimersByTime(1100);
     });
     await act(async () => {
       await Promise.resolve();
@@ -240,7 +246,7 @@ describe("PrintPage", () => {
       await Promise.resolve();
     });
     act(() => {
-      vi.advanceTimersByTime(400);
+      vi.advanceTimersByTime(1100);
     });
     await act(async () => {
       await Promise.resolve();

@@ -3,6 +3,7 @@ import { useConfig } from "../contexts";
 import { useTranslation } from "react-i18next";
 import { randomMessage } from "../lib/invite-messages";
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
+import { SITE_URL } from "../lib/seo";
 import "../styles/print.css";
 
 export default function PrintPage() {
@@ -11,10 +12,37 @@ export default function PrintPage() {
 
   const printed = useRef(false);
   const [loaded, setLoaded] = useState(false);
+  // QR de la invitación: se genera en lazy (no se precachea) y, si falla
+  // (canvas/worker bloqueado), la tarjeta se imprime igualmente sin QR.
+  const [qrDataUrl, setQrDataUrl] = useState<string | null>(null);
+  // Promesa del QR: el flujo de impresión la espera (con timeout) para que el
+  // PDF impreso incluya el QR, pero nunca bloquea la impresión si falla.
+  const qrPromiseRef = useRef<Promise<void>>(Promise.resolve());
 
   useEffect(() => {
     document.title = `${config.firstName} & ${config.secondName} — Wedingo`;
   }, [config.firstName, config.secondName]);
+
+  // URL pública de la invitación: base del sitio + token (si hay token).
+  const inviteUrl = useMemo(() => (inviteToken ? `${SITE_URL}/${inviteToken}` : SITE_URL), [inviteToken]);
+
+  useEffect(() => {
+    let cancelled = false;
+    qrPromiseRef.current = (async () => {
+      try {
+        const QRCode = (await import("qrcode")).default;
+        const dataUrl = await QRCode.toDataURL(inviteUrl, { width: 140, margin: 1, errorCorrectionLevel: "M" });
+        if (!cancelled) setQrDataUrl(dataUrl);
+      } catch {
+        if (!cancelled) setQrDataUrl(null);
+      }
+    })().catch(() => {
+      /* el QR es opcional: nunca bloquea la impresión */
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [inviteUrl]);
 
   // La fecha se construye con MONTH_VALUE_TO_NUMBER (fuente única) y se valida
   // el rollover: antes un monthMap local solo en español y un "31 de febrero"
@@ -84,6 +112,9 @@ export default function PrintPage() {
       try {
         await Promise.all(Array.from(document.images).map((img) => img.decode().catch(() => {})));
       } catch {}
+      // Espera (con límite) a que el QR esté listo: la impresión nunca se
+      // bloquea más de 800ms por un QR que tarda o falla.
+      await Promise.race([qrPromiseRef.current, new Promise((r) => setTimeout(r, 800))]);
       await new Promise((r) => setTimeout(r, 300));
       const cleanup = () => {
         // Solo se cierra la pestaña si se abrió desde el panel (window.open):
@@ -165,6 +196,13 @@ export default function PrintPage() {
               <p className="print-body" style={{ marginTop: "0.15rem" }}>
                 {place}
               </p>
+            ) : null}
+            {/* QR opcional: solo si se generó; un QR en blanco saldría roto. */}
+            {qrDataUrl ? (
+              <div className="print-qr" role="img" aria-label={t("print.qrLabel")}>
+                <img src={qrDataUrl} alt="" width={140} height={140} />
+                <p className="print-qr__hint">{t("print.qrHint")}</p>
+              </div>
             ) : null}
           </div>
         </div>

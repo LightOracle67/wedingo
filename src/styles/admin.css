@@ -1433,6 +1433,26 @@ select.setup-input {
   opacity: 0.3;
   cursor: default;
 }
+/* Botón 🎁 (modo sorpresa): activo con el acento del panel. */
+.section-order-item__btn--surprise {
+  color: var(--setup-muted);
+}
+.section-order-item__btn--surprise-active {
+  color: var(--setup-accent);
+  border-color: color-mix(in srgb, var(--setup-accent) 60%, transparent);
+  background: color-mix(in srgb, var(--setup-accent) 15%, transparent);
+}
+.section-order-item__badge--surprise {
+  color: var(--setup-accent);
+  background: color-mix(in srgb, var(--setup-accent) 18%, transparent);
+}
+/* Toggle maestro "Modo sorpresa" en el editor de secciones. */
+.section-order-surprise-toggle {
+  margin-top: 0.75rem;
+  padding-top: 0.6rem;
+  border-top: 1px dashed color-mix(in srgb, var(--setup-border) 50%, transparent);
+  font-size: 0.85rem;
+}
 .section-order-item__pos {
   font-size: 0.75rem;
   color: var(--setup-muted);
