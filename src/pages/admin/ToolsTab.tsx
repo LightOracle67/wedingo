@@ -56,6 +56,8 @@ const ToolsTab = memo(function ToolsTab({
 
   // ── Badge de confirmaciones nuevas ──
   const [newCount, setNewCount] = useState(0);
+  // Personas confirmadas (para el recordatorio con el nº de pendientes).
+  const [confirmedPeople, setConfirmedPeople] = useState(0);
 
   // ── Galería ──
   const [galleryCount, setGalleryCount] = useState(0);
@@ -83,6 +85,13 @@ const ToolsTab = memo(function ToolsTab({
       );
       setDayPhotoCount(daySnap.size || 0);
       setGalleryCount(galSnap.size || 0);
+      // Personas confirmadas (1 + acompañantes por "yes") para el recordatorio.
+      setConfirmedPeople(
+        rsvpSnap.docs.reduce(
+          (s, d) => s + (d.data().attendance === "yes" ? Number(d.data().companions) || 1 : 0),
+          0,
+        ),
+      );
       // Badge: confirmaciones posteriores a la última visita. Aislado en su
       // propio try: si el almacenamiento local falla, NO aborta la carga.
       try {
@@ -277,9 +286,24 @@ const ToolsTab = memo(function ToolsTab({
       <div className="setup-background-panel">
         <p className="setup-label">{t("tools.whatsappReminder")}</p>
         <textarea className="setup-textarea" rows={3} value={reminder} onChange={(e) => setReminder(e.target.value)} placeholder={t("tools.reminderPlaceholder")} aria-label={t("tools.whatsappReminder")} />
-        <button className="setup-button" type="button" onClick={openReminder}>
-          {t("tools.openWhatsapp")}
-        </button>
+        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
+          <button className="setup-button" type="button" onClick={openReminder}>
+            {t("tools.openWhatsapp")}
+          </button>
+          <button
+            className="setup-button setup-button--ghost setup-button--compact"
+            type="button"
+            onClick={() => setReminder(t("tools.reminderGenerated", { count: Math.max(0, Number(expectedGuests) - confirmedPeople) }))}
+            disabled={!Number(expectedGuests)}
+          >
+            {t("tools.generateReminder")}
+          </button>
+        </div>
+        {Number(expectedGuests) > 0 ? (
+          <p className="setup-help" style={{ margin: "0.4rem 0 0", fontSize: "0.75rem" }}>
+            {t("tools.pendingConfirm", { count: Math.max(0, Number(expectedGuests) - confirmedPeople) })}
+          </p>
+        ) : null}
       </div>
 
       {/* Invitados esperados: número 0..1000 para las estadísticas */}

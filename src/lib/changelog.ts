@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.102.0",
+    date: "2026-08-17",
+    changes: [
+      "Ronda de funciones diferenciadoras (bloque 3/3, sin backend): (9) Mapa de mesas inteligente: botón Auto-asignar en Distribución que reparte los invitados confirmados sin mesa entre las mesas con hueco de forma equilibrada (round-robin) y persiste en un único batch atómico (sin candidatos o sin huecos → aviso sin cambios); (4) Filtro por invitado en las fotos del día: desplegable con los nombres de los autores para ver solo las suyas (las subidas de la sesión actual siempre se muestran); (7-lite) Recordatorio a no confirmados mejorado: el panel muestra cuántas personas faltan por confirmar y un botón que genera el texto del recordatorio automáticamente. Buzón con respuestas (F5) NO implementado por diseño: el buzón es solo de escritura para invitados sin identidad verificada (mostrar respuestas filtraría mensajes ajenos). 2265 tests / 173 ficheros verdes + lint/typecheck/build/translations (1629 claves) OK.",
+    ],
+  },
+
+  {
     version: "2.101.0",
     date: "2026-08-17",
     changes: [

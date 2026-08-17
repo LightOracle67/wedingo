@@ -11,7 +11,7 @@
  * el mapa ocupa todo el espacio disponible.
  */
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { getDocs, collection, doc, addDoc, updateDoc, deleteDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { getDocs, collection, doc, addDoc, updateDoc, deleteDoc, arrayUnion, arrayRemove, writeBatch } from "firebase/firestore";
 import { db, rsvpByInviteRef } from "../../lib/firebase";
 import { THEME_PREVIEW_COLORS } from "../../lib/constants";
 import { useTranslation } from "react-i18next";
@@ -325,6 +325,59 @@ const DistribucionTab = memo(function DistribucionTab({
     [activeSectionId, tables, patchTable, tablesRef, addToast, t],
   );
 
+  // ── Auto-asignación de invitados a las mesas (F9) ──
+  // Reparte los confirmados sin mesa entre las mesas con hueco de forma
+  // EQUILIBRADA (round-robin): evita llenar una mesa entera y dejar el resto
+  // vacías. Persistencia en un único batch atómico.
+  // CASOS CATASTRÓFICOS: sin candidatos o sin huecos → aviso informativo sin
+  // cambios; un batch fallido (red) → toast de error y el estado local NO se
+  // actualiza (se evita la divergencia con Firestore).
+  const autoAssign = useCallback(async () => {
+    if (!activeSectionId) return;
+    const candidates = confirmedGuests.filter((g) => !assignedNames.has(g.name));
+    if (candidates.length === 0) {
+      addToast("info", t("distribucion.autoAssignNone"));
+      return;
+    }
+    const slots = tables
+      .map((tb) => ({ id: tb.id, slots: Math.max(0, tb.seats - (tb.guests?.length || 0)) }))
+      .filter((t) => t.slots > 0)
+      .sort((a, b) => b.slots - a.slots);
+    if (slots.length === 0) {
+      addToast("info", t("distribucion.tableFull"));
+      return;
+    }
+    const byTable = new Map<string, string[]>();
+    let cursor = 0;
+    for (const g of candidates) {
+      // Busca la siguiente mesa con hueco a partir del cursor (round-robin).
+      const withSlot = slots.find((f, idx) => idx >= cursor && (byTable.get(f.id)?.length ?? 0) < f.slots)
+        ?? slots.find((f) => (byTable.get(f.id)?.length ?? 0) < f.slots);
+      if (!withSlot) break;
+      const list = byTable.get(withSlot.id) || [];
+      list.push(g.name);
+      byTable.set(withSlot.id, list);
+      cursor = (slots.indexOf(withSlot) + 1) % slots.length;
+    }
+    if (byTable.size === 0) {
+      addToast("info", t("distribucion.tableFull"));
+      return;
+    }
+    const batch = writeBatch(db);
+    let assigned = 0;
+    for (const [tid, names] of byTable) {
+      batch.update(doc(tablesRef(activeSectionId), tid), { guests: arrayUnion(...names) });
+      patchTable(tid, { guests: [...(tables.find((x) => x.id === tid)?.guests || []), ...names] });
+      assigned += names.length;
+    }
+    try {
+      await batch.commit();
+      addToast("success", t("distribucion.autoAssignDone", { count: assigned }));
+    } catch {
+      addToast("error", t("errors.generic"));
+    }
+  }, [activeSectionId, confirmedGuests, assignedNames, tables, tablesRef, patchTable, addToast, t]);
+
   // ── Arrastre de mesas ──
   const onPointerDown = useCallback(
     (e: React.PointerEvent, id: string) => {
@@ -479,6 +532,9 @@ const DistribucionTab = memo(function DistribucionTab({
           </label>
           <button type="button" className="setup-button setup-button--compact" onClick={() => void addTable()}>
             {t("distribucion.addTable")}
+          </button>
+          <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void autoAssign()}>
+            {t("distribucion.autoAssign")}
           </button>
           <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={printLabels}>
             {t("distribucion.printLabels")}

@@ -1537,6 +1537,9 @@
     "reminderPlaceholder": "Reminder text (customizable)",
     "reminderDefault": "Hi! We invite you to our wedding",
     "openWhatsapp": "Open WhatsApp with the text",
+    "generateReminder": "Generate reminder",
+    "reminderGenerated": "Hi! We are getting married and we would love for you to be there. You have not confirmed yet whether you can come ({{count}} people still pending). Could you confirm your attendance on the invitation? Hugs.",
+    "pendingConfirm": "{{count}} person(s) still pending.",
     "expectedGuests": "Expected guests",
     "expectedHelp": "Set how many guests you expect: the panel calculates totals and pending confirmations from this number.",
     "expectedGuestsMax": "Maximum 1000 guests.",
@@ -1592,7 +1595,9 @@
     "uploadError": "Could not upload the photo.",
     "empty": "No photos yet. Share yours!",
     "photo": "Day photo",
-    "reveal": "View photo"
+    "reveal": "View photo",
+    "filterAll": "All guests",
+    "filterLabel": "Filter photos by guest"
   },
   "mailbox": {
     "title": "Couple's mailbox",
@@ -1634,6 +1639,9 @@
     "shape_square": "Square",
     "noTables": "No tables in this section to export.",
     "addTable": "Add table",
+    "autoAssign": "Auto-assign guests",
+    "autoAssignNone": "There are no confirmed guests without a table to assign.",
+    "autoAssignDone": "Assigned {{count}} guest(s) to tables.",
     "dragHint": "Drag tables to position them",
     "emptyMap": "Add tables to start drawing the floor plan",
     "selectedTable": "Selected table",

@@ -13,10 +13,14 @@ vi.mock("firebase/firestore", () => ({
   addDoc: (...args: unknown[]) => mockAddDoc(...args),
   updateDoc: vi.fn(() => Promise.resolve()),
   deleteDoc: vi.fn(() => Promise.resolve()),
-  writeBatch: vi.fn(() => ({ delete: vi.fn(), commit: vi.fn(() => Promise.resolve()) })),
+  writeBatch: vi.fn(() => ({
+    delete: vi.fn(),
+    update: vi.fn(),
+    commit: vi.fn(() => Promise.resolve()),
+  })),
   collection: (...args: unknown[]) => (args.length >= 6 ? "tables-ref" : "sections-ref"),
   doc: vi.fn(() => "doc-ref"),
-  arrayUnion: (v: unknown) => v,
+  arrayUnion: (...v: unknown[]) => v,
   arrayRemove: (v: unknown) => v,
 }));
 
@@ -37,6 +41,7 @@ vi.mock("../../../lib/excel-builders", () => ({
 }));
 
 import DistribucionTab from "../DistribucionTab";
+import { writeBatch } from "firebase/firestore";
 
 describe("DistribucionTab", () => {
   beforeEach(() => {
@@ -77,6 +82,32 @@ describe("DistribucionTab", () => {
     expect(mockAddDoc).toHaveBeenCalled();
   });
 
+  it("auto-assigns confirmed guests to tables with free seats", async () => {
+    // Se captura el batch creado (writeBatch) para inspeccionar sus updates.
+    const batchSpies: Array<{ update: ReturnType<typeof vi.fn>; commit: ReturnType<typeof vi.fn> }> = [];
+    vi.mocked(writeBatch).mockImplementation(() => {
+      const b = { update: vi.fn(), delete: vi.fn(), commit: vi.fn(() => Promise.resolve()) };
+      batchSpies.push(b);
+      return b;
+    });
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    await screen.findByText("Mesa 1");
+    // Espera a que los confirmados estén cargados antes de asignar.
+    fireEvent.pointerDown(await screen.findByText("Mesa 1"), { clientX: 0, clientY: 0 });
+    const select = await screen.findByLabelText("distribucion.assignPlaceholder") as HTMLSelectElement;
+    await vi.waitFor(() => expect(Array.from(select.options).some((o) => o.textContent === "Pepe")).toBe(true));
+    fireEvent.click(screen.getByText("distribucion.autoAssign"));
+    await vi.waitFor(() => expect(batchSpies.length).toBeGreaterThan(0));
+    // Ana y Pepe (confirmados) se asignan a la mesa con hueco; Luis no.
+    const allGuests = batchSpies.flatMap((b) => b.update.mock.calls.map((c) => c[1] as { guests?: unknown[] }).flatMap((x) => (x?.guests ?? []) as unknown[]));
+    expect(allGuests.length).toBeGreaterThan(0);
+    expect(allGuests).toContain("Ana");
+    expect(allGuests).toContain("Pepe");
+    expect(allGuests).not.toContain("Luis");
+    expect(mockAddToast).toHaveBeenCalledWith("success", expect.stringContaining("distribucion.autoAssignDone"));
+  });
+
   it("only lists confirmed guests in the assign dropdown", async () => {
     render(<DistribucionTab inviteToken="tok" />);
     await screen.findByText("Salón");
@@ -100,8 +131,8 @@ describe("DistribucionTab", () => {
     const select = screen.getByLabelText("distribucion.assignPlaceholder") as HTMLSelectElement;
     fireEvent.change(select, { target: { value: "Ana" } });
     await vi.waitFor(() => expect(updateDoc).toHaveBeenCalled());
-    // arrayUnion está mockeado a identidad: el valor llega crudo.
-    expect(updateDoc).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ guests: "Ana" }));
+    // arrayUnion (variádico) devuelve el array de nombres como hace Firestore.
+    expect(updateDoc).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ guests: ["Ana"] }));
   });
 
   it("avisa cuando la mesa está llena", async () => {

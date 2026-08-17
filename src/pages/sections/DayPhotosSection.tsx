@@ -23,12 +23,24 @@ const DayPhotosSection = memo(function DayPhotosSection({ inviteToken }: { invit
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [previews, setPreviews] = useState<Array<{ id: string; url: string }>>([]);
   const [guestName, setGuestName] = useState("");
+  // Filtro por invitado (F4): "" = todos. Se rellena con los nombres de las
+  // fotos existentes; si no hay fotos el filtro no aparece.
+  const [filterBy, setFilterBy] = useState("");
 
   const { items, load, add, busy } = useInviteSubcollection<DayPhoto>(
     inviteToken,
     "dayphotos",
     { map: (d) => ({ id: d.id, guestName: String(d.data.guestName || ""), data: String(d.data.data || "") }) },
   );
+
+  // Nombres únicos (con su nombre mostrado) para el desplegable del filtro.
+  const filterNames = useMemo(() => {
+    const seen = new Map<string, string>();
+    for (const it of items) {
+      if (!seen.has(it.guestName) && it.guestName) seen.set(it.guestName, it.guestName);
+    }
+    return Array.from(seen.values()).sort((a, b) => a.localeCompare(b));
+  }, [items]);
 
   // Descifra los thumbnails bajo demanda (solo los visibles).
   const [decrypted, setDecrypted] = useState<Record<string, string>>({});
@@ -63,7 +75,14 @@ const DayPhotosSection = memo(function DayPhotosSection({ inviteToken }: { invit
     [guestName, inviteToken, add, load, t, addToast],
   );
 
-  const shown = useMemo(() => [...previews, ...items.map((i) => ({ id: i.id, url: decrypted[i.id] || "" }))], [previews, items, decrypted]);
+  const shown = useMemo(() => {
+    // Las subidas de esta sesión siempre se muestran; las del álbum se filtran
+    // por invitado (si el filtro está activo).
+    const filteredItems = filterBy
+      ? items.filter((i) => i.guestName === filterBy)
+      : items;
+    return [...previews, ...filteredItems.map((i) => ({ id: i.id, url: decrypted[i.id] || "" }))];
+  }, [previews, items, decrypted, filterBy]);
 
   return (
     <div className="story-panel__inner">
@@ -81,6 +100,22 @@ const DayPhotosSection = memo(function DayPhotosSection({ inviteToken }: { invit
           {busy ? t("common.loading") : t("dayPhotos.upload")}
         </button>
         <input ref={inputRef} type="file" accept="image/*" multiple hidden onChange={(e) => void onFiles(e.target.files)} />
+        {filterNames.length > 1 ? (
+          <select
+            className="setup-input"
+            value={filterBy}
+            onChange={(e) => setFilterBy(e.target.value)}
+            style={{ minWidth: "8rem" }}
+            aria-label={t("dayPhotos.filterLabel")}
+          >
+            <option value="">{t("dayPhotos.filterAll")}</option>
+            {filterNames.map((n) => (
+              <option key={n} value={n}>
+                {n}
+              </option>
+            ))}
+          </select>
+        ) : null}
       </div>
       {shown.length > 0 ? (
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginTop: "0.6rem" }}>

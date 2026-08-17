@@ -1537,6 +1537,9 @@
     "reminderPlaceholder": "Texto del recordatorio (personalizable)",
     "reminderDefault": "¡Hola! Te invitamos a nuestra boda",
     "openWhatsapp": "Abrir WhatsApp con el texto",
+    "generateReminder": "Generar recordatorio",
+    "reminderGenerated": "¡Hola! Nos casamos y nos encantaría que estuvierais. Todavía no nos habéis confirmado si podréis venir (quedan {{count}} personas sin confirmar). ¿Podéis confirmar vuestra asistencia en la invitación? Un abrazo.",
+    "pendingConfirm": "Quedan {{count}} persona(s) sin confirmar.",
     "expectedGuests": "Invitados esperados",
     "expectedHelp": "Indica cuántos invitados esperáis: el panel calcula totales y pendientes de confirmar a partir de este número.",
     "expectedGuestsMax": "Máximo 1000 invitados.",
@@ -1592,7 +1595,9 @@
     "uploadError": "No se pudo subir la foto.",
     "empty": "Aún no hay fotos. ¡Comparte las tuyas!",
     "photo": "Foto del día",
-    "reveal": "Ver foto"
+    "reveal": "Ver foto",
+    "filterAll": "Todos los invitados",
+    "filterLabel": "Filtrar fotos por invitado"
   },
   "mailbox": {
     "title": "Buzón de la pareja",
@@ -1634,6 +1639,9 @@
     "shape_square": "Cuadrado",
     "noTables": "No hay mesas en esta sección para exportar.",
     "addTable": "Añadir mesa",
+    "autoAssign": "Auto-asignar invitados",
+    "autoAssignNone": "No hay invitados confirmados sin mesa para asignar.",
+    "autoAssignDone": "Asignados {{count}} invitado(s) a las mesas.",
     "dragHint": "Arrastra las mesas para colocarlas",
     "emptyMap": "Añade mesas para empezar a dibujar el plano",
     "selectedTable": "Mesa seleccionada",
