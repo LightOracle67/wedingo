@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.106.0",
+    date: "2026-08-17",
+    changes: [
+      "Personalización completa de la invitación + nuevo editor de trivia por tipos. (1) TIPOGRAFÍA: nuevos selects de fuente para títulos y texto (lista blanca de fuentes AUTOALOJADAS en /fonts — Playfair, Lora, Georgia/Times del sistema, Great Vibes, OpenDyslexic; el CSP font-src 'self' data: no permite Google Fonts y no se envía IP a Google por GDPR). (2) COLORES: inputs type=color para acento, título, texto y fondo, con botón de restablecer. Las personalizaciones sobrescriben las CSS vars del tema (--invite-core-color, --invite-title-color, --invite-copy-color, --page-bg y --font-heading/--font-body) solo en la vista de invitado (no en el editor); sanitizadas por normalizar (lista blanca + regex hex). (3) TRIVIA: el editor pasa de líneas de texto a un editor ESTRUCTURADO con tipo de pregunta (texto libre / elección única / multirrespuesta), pregunta, y —para elección— un editor de opciones con checkbox/radio para marcar cuáles son correctas (single solo permite una). La sección pública renderiza cada tipo (input texto, radio, checkboxes) y comprueba el acierto: por palabras para texto y coincidencia exacta de conjunto para elección. Retrocompatibilidad con las preguntas { q, a } antiguas (se leen como texto). 2280 tests / 174 ficheros + lint/typecheck/build/translations (1673 claves) OK.",
+    ],
+  },
+
+  {
     version: "2.105.0",
     date: "2026-08-17",
     changes: [

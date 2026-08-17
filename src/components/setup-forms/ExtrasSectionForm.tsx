@@ -2,6 +2,7 @@ import { memo, useCallback, type ReactNode  } from "react";
 import { useTranslation } from "react-i18next";
 import { useConfigActions, useFormField, useFormStore } from "../../contexts";
 import { useLinesField } from "../../hooks/useLinesField";
+import { useJsonArrayField } from "../../hooks/useJsonArrayField";
 import SetupToggleRow from "../SetupToggleRow";
 
 /**
@@ -106,50 +107,92 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
     [giftParseText, updateFormField],
   );
 
-  /** Editor de la trivia (JSON de {q,a,hint,difficulty}): líneas
-   *  "pregunta | respuesta [| pista] [| dificultad: fácil/media/difícil]".
-   *  Los 2 primeros segmentos son obligatorios; pista y dificultad opcionales
-   *  (compatibilidad total con las líneas antiguas de 2 segmentos). */
-  const { toLines: triviaToLines, parseText: triviaParseText } = useLinesField<{
+  /** Editor estructurado de la trivia. Modelo de pregunta:
+   *   - type "text": respuesta libre (correct como string).
+   *   - type "single": una opción correcta (correct como string[1]).
+   *   - type "multiple": varias opciones correctas (correct como string[]).
+   *   Compatibilidad: las preguntas antiguas { q, a } se leen como type "text".
+   */
+  const triviaModel = useJsonArrayField<{
     q: string;
-    a: string;
+    type: "text" | "single" | "multiple";
+    options?: string[];
+    correct?: string | string[];
+    a?: string;
     hint?: string;
     difficulty?: "easy" | "medium" | "hard";
-  }>({
-    parseLine: (line) => {
-      const [q, ...rest] = line.split("|");
-      const answer = (rest[0] || "").trim().slice(0, 200);
-      const hint = (rest[1] || "").trim().slice(0, 200);
-      const diffRaw = (rest[2] || "").trim().toLowerCase();
-      const difficulty =
-        diffRaw === "fácil" || diffRaw === "facil" || diffRaw === "easy"
-          ? "easy"
-          : diffRaw === "media" || diffRaw === "medio" || diffRaw === "medium"
-            ? "medium"
-            : diffRaw === "difícil" || diffRaw === "dificil" || diffRaw === "hard"
-              ? "hard"
-              : undefined;
-      const out: { q: string; a: string; hint?: string; difficulty?: "easy" | "medium" | "hard" } = {
-        q: (q || "").trim().slice(0, 200),
-        a: answer,
+  }>(
+    trivia,
+    (item: unknown) => {
+      if (!item || typeof item !== "object") return null;
+      const it = item as { q?: unknown; type?: unknown; options?: unknown; correct?: unknown; a?: unknown; hint?: unknown; difficulty?: unknown };
+      if (typeof it.q !== "string") return null;
+      // Normaliza una opción: se conservan las cadenas (vacías incluidas,
+      // para que el editor no pierda filas en blanco mientras se rellenan),
+      // recortadas y con límite.
+      const cleanOpts = (arr: unknown): string[] | undefined => {
+        if (!Array.isArray(arr)) return undefined;
+        const out = arr.map((o) => (typeof o === "string" ? o.trim() : "")).slice(0, 12);
+        return out;
       };
-      // exactOptionalPropertyTypes: solo se añade la clave si hay valor.
-      if (hint) out.hint = hint;
-      if (difficulty) out.difficulty = difficulty;
+      const cleanCorrect = (raw: unknown, type: string): string | string[] | undefined => {
+        if (type === "text") {
+          return typeof raw === "string" && raw.trim() ? raw.trim().slice(0, 200) : undefined;
+        }
+        if (Array.isArray(raw)) {
+          const arr = raw.map((x) => (typeof x === "string" ? x.trim() : "")).filter(Boolean).slice(0, 12);
+          return arr.length > 0 ? arr : undefined;
+        }
+        return undefined;
+      };
+      // type por defecto (retrocompatibilidad): si hay options → single, si no → text.
+      const rawType = typeof it.type === "string" ? it.type : "";
+      const type: "text" | "single" | "multiple" =
+        rawType === "single" || rawType === "multiple" ? rawType : "text";
+      const options = type === "text" ? undefined : cleanOpts(it.options);
+      const correct = cleanCorrect(type === "text" ? it.correct ?? it.a : it.correct, type);
+      const out: { q: string; type: "text" | "single" | "multiple"; options?: string[]; correct?: string | string[]; hint?: string; difficulty?: "easy" | "medium" | "hard" } = {
+        q: it.q.trim().slice(0, 200),
+        type,
+      };
+      // exactOptionalPropertyTypes: solo se añaden las claves con valor real.
+      if (options) out.options = options;
+      if (correct !== undefined && correct !== "") {
+        if (Array.isArray(correct) && correct.length === 0) out.correct = undefined as never;
+        else out.correct = correct;
+      }
+      if (typeof it.hint === "string" && it.hint.trim()) out.hint = it.hint.trim().slice(0, 200);
+      const d = typeof it.difficulty === "string" ? it.difficulty : "";
+      if (d === "easy" || d === "medium" || d === "hard") out.difficulty = d;
       return out;
     },
-    itemToLine: (tr) => {
-      const base = `${tr.q ?? ""} | ${tr.a ?? ""}`;
-      const hint = tr.hint ? ` | ${tr.hint}` : "";
-      const diff = tr.difficulty ? ` | ${tr.difficulty}` : "";
-      return base + hint + diff;
+    50,
+  );
+  const triviaItems = triviaModel.items;
+  // setItems es estable (no requiere re-ejecutar el callback cuando cambia).
+  const triviaSetItems = triviaModel.setItems;
+
+  /** Persiste un patch de una pregunta en el JSON del campo. */
+  const updateTriviaItem = useCallback(
+    (index: number, patch: Partial<{ q: string; type: "text" | "single" | "multiple"; options: string[]; correct: string | string[]; hint: string; difficulty: "easy" | "medium" | "hard" }>) => {
+      const current = triviaItems[index];
+      if (!current) return;
+      updateFormField("trivia", triviaSetItems(triviaItems.map((it, i) => (i === index ? { ...it, ...patch } : it))));
     },
-    maxLines: 50,
-  });
-  const triviaLines = triviaToLines(trivia || "");
-  const setTrivia = useCallback(
-    (text: string) => updateFormField("trivia", triviaParseText(text)),
-    [triviaParseText, updateFormField],
+    [triviaItems, triviaSetItems, updateFormField],
+  );
+
+  /** Añade una pregunta nueva (por defecto tipo texto). */
+  const addTriviaItem = useCallback(() => {
+    // useJsonArrayField espera un callback (json:string)=>void; actualizamos
+    // el campo "trivia" con el JSON nuevo.
+    triviaModel.addItem({ q: "", type: "text" }, (json) => updateFormField("trivia", json));
+  }, [triviaModel, updateFormField]);
+
+  /** Elimina la pregunta del índice dado. */
+  const removeTriviaItem = useCallback(
+    (index: number) => triviaModel.removeItem(index, (json) => updateFormField("trivia", json)),
+    [triviaModel, updateFormField],
   );
 
   /** Renders una fila de extra con el ToggleRow estable del módulo. */
@@ -238,19 +281,83 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
         {/* Trivia */}
         {renderToggleRow("trivia", t("setup.triviaLabel"), t("setup.triviaHint"))}
         {triviaEnabled === "true" ? (
-          <>
+          <div className="setup-token-card" style={{ marginTop: "0.4rem", padding: "0.6rem" }}>
             <p className="setup-help" id={id("triviaHint")}>
               {t("setup.triviaEditorHint")}
             </p>
-            <textarea
-              id={id("trivia")}
-              className="setup-textarea"
-              rows={4}
-              value={triviaLines}
-              onChange={(e) => setTrivia(e.target.value)}
-              aria-describedby={id("triviaHint")}
-            />
-          </>
+            {triviaItems.length === 0 ? (
+              <p className="setup-help">{t("setup.triviaEmpty")}</p>
+            ) : null}
+            {triviaItems.map((item, index) => {
+              const isChoice = item.type !== "text";
+              // correct: para texto es string; para elección, array de opciones.
+              const correctArr = Array.isArray(item.correct) ? item.correct : isChoice && typeof item.correct === "string" ? [item.correct] : [];
+              return (
+                <div key={index} className="setup-token-card" style={{ margin: "0.4rem 0", padding: "0.6rem" }}>
+                  <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
+                    <input
+                      className="setup-input"
+                      style={{ flex: "1 1 14rem" }}
+                      value={item.q}
+                      maxLength={200}
+                      onChange={(e) => updateTriviaItem(index, { q: e.target.value })}
+                      placeholder={t("setup.triviaQuestionPlaceholder")}
+                      aria-label={t("setup.triviaQuestionPlaceholder")}
+                    />
+                    <select
+                      className="setup-input"
+                      style={{ minWidth: "8rem" }}
+                      value={item.type}
+                      onChange={(e) => updateTriviaItem(index, { type: e.target.value as "text" | "single" | "multiple" })}
+                      aria-label={t("setup.triviaTypeLabel")}
+                    >
+                      <option value="text">{t("setup.triviaTypeText")}</option>
+                      <option value="single">{t("setup.triviaTypeSingle")}</option>
+                      <option value="multiple">{t("setup.triviaTypeMultiple")}</option>
+                    </select>
+                    <button
+                      type="button"
+                      className="setup-button setup-button--danger setup-button--ghost setup-button--compact"
+                      onClick={() => removeTriviaItem(index)}
+                      aria-label={t("setup.triviaRemove")}
+                    >
+                      {t("setup.triviaDeleteRow")}
+                    </button>
+                  </div>
+
+                  {item.type === "text" ? (
+                    <input
+                      className="setup-input"
+                      style={{ marginTop: "0.4rem" }}
+                      value={typeof item.correct === "string" ? item.correct : ""}
+                      maxLength={200}
+                      onChange={(e) => updateTriviaItem(index, { correct: e.target.value })}
+                      placeholder={t("setup.triviaAnswerPlaceholder")}
+                      aria-label={t("setup.triviaAnswerPlaceholder")}
+                    />
+                  ) : (
+                    <TriviaOptionsEditor
+                      type={item.type}
+                      options={item.options || []}
+                      correct={correctArr}
+                      onChange={(patch: { options: string[]; correct: string[] }) =>
+                        updateTriviaItem(index, { options: patch.options, correct: patch.correct })
+                      }
+                      t={t}
+                    />
+                  )}
+                </div>
+              );
+            })}
+            <button
+              type="button"
+              className="setup-button setup-button--compact"
+              onClick={addTriviaItem}
+              disabled={triviaItems.length >= 50}
+            >
+              {t("setup.triviaAdd")}
+            </button>
+          </div>
         ) : null}
 
         {/* Caja de recuerdos de voz */}
@@ -274,3 +381,88 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
 
 export default ExtrasSectionForm;
 
+/** Editor de las opciones de una pregunta de trivia de elección (single o
+ *  multiple): lista de opciones + checkbox/radio para marcar cuáles son
+ *  correctas. Actualiza el JSON de la pregunta vía `onChange`. */
+function TriviaOptionsEditor({
+  type,
+  options,
+  correct,
+  onChange,
+  t,
+}: {
+  type: "single" | "multiple";
+  options: string[];
+  correct: string[];
+  onChange: (patch: { options: string[]; correct: string[] }) => void;
+  t: (key: string) => string;
+}) {
+  const setOption = (i: number, value: string) => {
+    const next = options.map((o, idx) => (idx === i ? value : o));
+    onChange({ options: next, correct });
+  };
+  const toggleCorrect = (option: string) => {
+    // single: solo puede haber UNA correcta (al marcar una se limpia el resto);
+    // multiple: se puede marcar/desmarcar cualquiera.
+    if (type === "single") {
+      onChange({ options, correct: [option] });
+      return;
+    }
+    const next = correct.includes(option) ? correct.filter((c) => c !== option) : [...correct, option];
+    onChange({ options, correct: next });
+  };
+  const addOption = () => onChange({ options: [...options, ""], correct });
+  const removeOption = (i: number) => {
+    const removed = options[i] || "";
+    const next = options.filter((_, idx) => idx !== i);
+    onChange({ options: next, correct: correct.filter((c) => c !== removed) });
+  };
+
+  return (
+    <div style={{ marginTop: "0.4rem" }} aria-label={t("setup.triviaOptionsLabel")}>
+      <p className="setup-help" style={{ margin: "0 0 0.3rem" }}>
+        {t("setup.triviaOptionsLabel")}
+      </p>
+      {options.map((opt, i) => {
+        const inputType = type === "multiple" ? "checkbox" : "radio";
+        const isCorrect = correct.includes(opt);
+        return (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: "0.4rem", marginBottom: "0.3rem" }}>
+            <input
+              type={inputType}
+              checked={isCorrect}
+              onChange={() => toggleCorrect(opt)}
+              aria-label={`${t("setup.triviaCorrectOption")} ${opt || `#${i + 1}`}`}
+              style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+            />
+            <input
+              className="setup-input"
+              style={{ flex: 1 }}
+              value={opt}
+              maxLength={200}
+              onChange={(e) => setOption(i, e.target.value)}
+              placeholder={t("setup.triviaOptionPlaceholder")}
+              aria-label={t("setup.triviaOptionPlaceholder")}
+            />
+            <button
+              type="button"
+              className="setup-button setup-button--danger setup-button--ghost setup-button--compact"
+              onClick={() => removeOption(i)}
+              aria-label={t("setup.triviaOptionRemove")}
+            >
+              {t("setup.triviaDeleteRow")}
+            </button>
+          </div>
+        );
+      })}
+      <button
+        type="button"
+        className="setup-button setup-button--ghost setup-button--compact"
+        onClick={addOption}
+        disabled={options.length >= 12}
+      >
+        + {t("setup.triviaAddOption")}
+      </button>
+    </div>
+  );
+}

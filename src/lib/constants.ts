@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.105.0";
+export const APP_VERSION = "2.106.0";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -201,6 +201,31 @@ export const THEME_PREVIEW_COLORS: Record<string, { accent: string; bg: string }
   ace: { accent: "#b088c8", bg: "#121212" },
 };
 
+/** Fuentes personalizables (lista blanca → familia CSS). Solo se ofrecen
+ *  fuentes AUTOALOJADAS en /fonts (Playfair, Lora, Great Vibes) o genéricas
+ *  del sistema (Georgia/Times serif): el CSP `font-src 'self' data:` no permite
+ *  Google Fonts, y no se envía la IP del visitante a Google (GDPR/CNIL). */
+export const FONT_OPTIONS = [
+  { value: "playfair", label: "Playfair Display", family: `"Playfair Display", Georgia, serif` },
+  { value: "lora", label: "Lora", family: `"Lora", Georgia, serif` },
+  { value: "georgia", label: "Georgia", family: "Georgia, 'Times New Roman', serif" },
+  { value: "times", label: "Times New Roman", family: "'Times New Roman', Times, serif" },
+  { value: "great-vibes", label: "Great Vibes (script)", family: "'Great Vibes', cursive" },
+  { value: "open-dyslexic", label: "OpenDyslexic", family: "'OpenDyslexic', Georgia, serif" },
+] as const;
+
+export const FONT_FAMILY: Record<string, string> = Object.fromEntries(
+  FONT_OPTIONS.map((f) => [f.value, f.family]),
+);
+
+/** Claves de color personalizables → nombre de la variable CSS que sobrescribe. */
+export const COLOR_FIELDS: Array<{ field: "colorAccent" | "colorTitle" | "colorCopy" | "colorBackground"; cssVar: string }> = [
+  { field: "colorAccent", cssVar: "--invite-core-color" },
+  { field: "colorTitle", cssVar: "--invite-title-color" },
+  { field: "colorCopy", cssVar: "--invite-copy-color" },
+  { field: "colorBackground", cssVar: "--page-bg" },
+];
+
 export const THEME_GROUPS = [
   { value: "claros", label: "Temas claros" },
   { value: "oscuros", label: "Temas oscuros" },
@@ -266,6 +291,13 @@ export const defaultConfig = {
   weddingDressCodeCustom: "",
 
   theme: "golden",
+  // Personalización de tipografía y colores (vacío = el del tema).
+  fontHeading: "",
+  fontBody: "",
+  colorAccent: "",
+  colorTitle: "",
+  colorCopy: "",
+  colorBackground: "",
   couplePhoto: "",
   couplePhotoEnabled: "false",
   backgroundImage: "",

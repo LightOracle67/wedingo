@@ -5,6 +5,7 @@ import { useToast } from "../../hooks/useToast";
 import { compressImageTransparent, HIGH_QUALITY_MAX_DIMENSION, HIGH_QUALITY_TARGET_BYTES } from "../../lib/image-utils";
 import { validateFile } from "../../lib/upload-validation";
 import { useConfigImage } from "../../hooks/useConfigImage";
+import { FONT_OPTIONS } from "../../lib/constants";
 import ThemePicker from "../ThemePicker";
 import MusicArrayEditor from "../MusicArrayEditor";
 import SetupToggleField from "../SetupToggleField";
@@ -27,6 +28,13 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
   const secondName = useFormField("secondName");
   const theme = useFormField("theme");
   const cornerDecoration = useFormField("cornerDecoration");
+  // Personalización de tipografía y colores del usuario.
+  const fontHeading = useFormField("fontHeading");
+  const fontBody = useFormField("fontBody");
+  const colorAccent = useFormField("colorAccent");
+  const colorTitle = useFormField("colorTitle");
+  const colorCopy = useFormField("colorCopy");
+  const colorBackground = useFormField("colorBackground");
   const { t } = useTranslation();
   const { addToast, startUploadToast } = useToast();
 
@@ -329,6 +337,83 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
       <p className="setup-help" id={id("themeHint")}>
         {t("setup.themeHint")}
       </p>
+
+      {/* ── Personalización de tipografía ── */}
+      <p className="setup-label">{t("setup.typographyLabel")}</p>
+      <p className="setup-help" id={id("typographyHint")}>
+        {t("setup.typographyHint")}
+      </p>
+      <label className="setup-label" htmlFor={id("fontHeading")}>
+        {t("setup.fontHeadingLabel")}
+      </label>
+      <select
+        id={id("fontHeading")}
+        className="setup-input"
+        value={fontHeading || ""}
+        onChange={(e) => updateFormField("fontHeading", e.target.value)}
+      >
+        <option value="">{t("setup.fontDefault")}</option>
+        {FONT_OPTIONS.map((f) => (
+          <option key={f.value} value={f.value}>
+            {f.label}
+          </option>
+        ))}
+      </select>
+      <label className="setup-label" htmlFor={id("fontBody")}>
+        {t("setup.fontBodyLabel")}
+      </label>
+      <select
+        id={id("fontBody")}
+        className="setup-input"
+        value={fontBody || ""}
+        onChange={(e) => updateFormField("fontBody", e.target.value)}
+      >
+        <option value="">{t("setup.fontDefault")}</option>
+        {FONT_OPTIONS.map((f) => (
+          <option key={f.value} value={f.value}>
+            {f.label}
+          </option>
+        ))}
+      </select>
+
+      {/* ── Personalización de colores ── */}
+      <p className="setup-label">{t("setup.colorsLabel")}</p>
+      <p className="setup-help" id={id("colorsHint")}>
+        {t("setup.colorsHint")}
+      </p>
+      {[
+        { field: "colorAccent" as const, label: t("setup.colorAccentLabel") },
+        { field: "colorTitle" as const, label: t("setup.colorTitleLabel") },
+        { field: "colorCopy" as const, label: t("setup.colorCopyLabel") },
+        { field: "colorBackground" as const, label: t("setup.colorBackgroundLabel") },
+      ].map(({ field, label }) => {
+        const value = field === "colorAccent" ? colorAccent : field === "colorTitle" ? colorTitle : field === "colorCopy" ? colorCopy : colorBackground;
+        return (
+          <div key={field} className="setup-color-row" style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.4rem" }}>
+            <input
+              type="color"
+              id={id(field)}
+              className="setup-color-input"
+              value={/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(value) ? value : "#000000"}
+              onChange={(e) => updateFormField(field, e.target.value)}
+              aria-label={label}
+              style={{ width: "2.4rem", height: "2.4rem", padding: 0, border: "1px solid var(--setup-border)", background: "none", cursor: "pointer" }}
+            />
+            <label className="setup-label" htmlFor={id(field)} style={{ margin: 0, flex: 1 }}>
+              {label}
+            </label>
+            {value ? (
+              <button
+                type="button"
+                className="setup-button setup-button--ghost setup-button--compact"
+                onClick={() => updateFormField(field, "")}
+              >
+                {t("setup.colorReset")}
+              </button>
+            ) : null}
+          </div>
+        );
+      })}
 
       <SetupToggleField
         enabledField="couplePhotoEnabled"

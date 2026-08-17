@@ -98,6 +98,17 @@ export interface InvitationConfig {
   /** Idioma por defecto de la invitación ("es" | "en" | "" = automático).
    *  Se aplica al invitado SOLO si no ha elegido idioma en su dispositivo. */
   language?: string;
+  /** Personalización de tipografía: fuente de los títulos (familia CSS).
+   *  Vacío = usar la fuente del tema por defecto. */
+  fontHeading?: string;
+  /** Personalización de tipografía: fuente del cuerpo (familia CSS). */
+  fontBody?: string;
+  /** Personalización de colores (equivalen a --invite-core-color etc.).
+   *  Vacío = usar el color del tema por defecto. */
+  colorAccent?: string;
+  colorTitle?: string;
+  colorCopy?: string;
+  colorBackground?: string;
   /** Prueba social en vivo: mostrar cuántos han confirmado en la portada. */
   liveConfirmedEnabled?: string;
   /** Mostrar la LISTA de personas que ya han confirmado en la portada.

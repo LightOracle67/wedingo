@@ -4,7 +4,14 @@ import { STORAGE_KEYS } from "../../lib/storage-keys";
 
 interface TriviaItem {
   q: string;
-  a: string;
+  /** "text" (respuesta libre), "single" (una opción) o "multiple" (varias). */
+  type?: "text" | "single" | "multiple";
+  /** Opciones de elección (single/multiple). */
+  options?: string[];
+  /** Respuesta correcta: string (text) o string[] (single/multiple). */
+  correct?: string | string[];
+  /** Retrocompatibilidad: respuesta de texto de las preguntas antiguas. */
+  a?: string;
   hint?: string;
   difficulty?: "easy" | "medium" | "hard";
 }
@@ -19,15 +26,12 @@ function normalizeTriviaText(text: string): string {
 }
 
 /**
- * Comprueba si el intento del invitado acierta la respuesta de la pareja.
+ * Comprueba si el intento del invitado acierta la respuesta de texto.
  * Comparación INDULGENTE pero por PALABRAS COMPLETAS: se divide tanto la
- * respuesta como el intento en tokens de palabras y se exige que cada
- * palabra del intento aparezca como palabra entera en la respuesta.
- *
- * Evita el falso positivo del substring ("boda" acertaba "bodega") sin
- * exigir exactitud total ("París 2024" acerta "París").
+ * respuesta como el intento en tokens y se exige que cada palabra del intento
+ * aparezca como palabra entera en la respuesta.
  */
-function isTriviaMatch(guess: string, answer: string): boolean {
+function isTextMatch(guess: string, answer: string): boolean {
   const g = normalizeTriviaText(guess);
   const a = normalizeTriviaText(answer);
   if (!g) return false;
@@ -38,14 +42,27 @@ function isTriviaMatch(guess: string, answer: string): boolean {
   return guessTokens.every((word) => tokens.includes(word));
 }
 
+/**
+ * Comprueba si las opciones marcadas acertan (single/multiple):
+ * exactamente las mismas opciones correctas (orden irrelevante).
+ */
+function isChoiceMatch(marked: string[], correct: string[]): boolean {
+  const a = new Set(marked.map(normalizeTriviaText).filter(Boolean));
+  const b = new Set(correct.map(normalizeTriviaText).filter(Boolean));
+  if (a.size === 0) return false;
+  if (a.size !== b.size) return false;
+  for (const x of a) if (!b.has(x)) return false;
+  return true;
+}
+
 const DIFFICULTY_ORDER: Record<string, number> = { easy: 0, medium: 1, hard: 2 };
 
 /**
- * TriviaSection — Mini-quiz de la pareja (diferenciador). Cada pregunta se
- * responde con un botón de "comprobar" (más accesible que revelar al teclear):
- * el estado "respondida + acierto" se persiste en sessionStorage para que un
- * refresco no pierda el marcador. Incluye marcador de aciertos, pista
- * opcional, etiqueta de dificultad y felicitación al acertar todas.
+ * TriviaSection — Mini-quiz de la pareja. Soporta tres tipos de pregunta:
+ * respuesta de texto libre ("text"), elección única ("single") y
+ * multirrespuesta ("multiple"). El acierto se persiste en sessionStorage por
+ * invitación (un refresco no pierde el marcador). Incluye marcador,
+ * felicitación, pista opcional y dificultad.
  */
 const TriviaSection = memo(function TriviaSection({ trivia, inviteToken }: { trivia?: string; inviteToken?: string }) {
   const { t } = useTranslation();
@@ -54,26 +71,24 @@ const TriviaSection = memo(function TriviaSection({ trivia, inviteToken }: { tri
     try {
       const parsed = JSON.parse(trivia || "[]");
       return Array.isArray(parsed)
-        ? parsed.filter((x): x is TriviaItem => !!x && typeof x.q === "string" && typeof x.a === "string")
+        ? parsed.filter((x): x is TriviaItem => !!x && typeof (x as TriviaItem).q === "string")
         : [];
     } catch {
       return [];
     }
   }, [trivia]);
 
-  // Estado por pregunta: respuesta escrita (no persistido) + si ya se comprobó
-  // y si acertó (persistido en sessionStorage por invitación).
+  // Borradores (no persistidos) y estado de comprobado/acierto (persistido).
   const [drafts, setDrafts] = useState<Record<number, string>>({});
+  const [marked, setMarked] = useState<Record<number, string[]>>({});
   const [revealed, setRevealed] = useState<Record<number, boolean>>({});
   const [correctMap, setCorrectMap] = useState<Record<number, boolean>>({});
 
-  // Clave de persistencia por invitación (evita mezclar invitaciones).
   const storageKey = useMemo(
     () => (inviteToken ? STORAGE_KEYS.triviaState(inviteToken) : ""),
     [inviteToken],
   );
 
-  // Restaura el estado guardado al montar (una sola vez por carga).
   useEffect(() => {
     if (!storageKey) return;
     try {
@@ -85,22 +100,20 @@ const TriviaSection = memo(function TriviaSection({ trivia, inviteToken }: { tri
         setCorrectMap((parsed.correct as Record<number, boolean>) || {});
       }
     } catch {
-      /* almacenamiento no disponible o corrupto: se ignora */
+      /* almacenamiento no disponible o corrupto */
     }
   }, [storageKey]);
 
-  // Persiste el estado revelado tras cada cambio (solo en el invitado).
   useEffect(() => {
     if (!storageKey) return;
     const data = { revealed, correct: correctMap };
     try {
       sessionStorage.setItem(storageKey, JSON.stringify(data));
     } catch {
-      /* cuota llena o modo privado: no crítico */
+      /* cuota llena o modo privado */
     }
   }, [storageKey, revealed, correctMap]);
 
-  // Marca "mejores" preguntas (las más difíciles primero).
   const sorted = useMemo(
     () =>
       items
@@ -111,13 +124,35 @@ const TriviaSection = memo(function TriviaSection({ trivia, inviteToken }: { tri
 
   if (items.length === 0) return null;
 
-  const correctCount = items.reduce((acc, _, i) => acc + (correctMap[i] ? 1 : 0), 0);
-  const allCorrect = correctCount === items.length;
+  const typeOf = (item: TriviaItem): "text" | "single" | "multiple" =>
+    item.type === "single" || item.type === "multiple" ? item.type : "text";
 
-  const check = (index: number, guess: string) => {
-    setCorrectMap((p) => ({ ...p, [index]: isTriviaMatch(guess, items[index]!.a) }));
+  const answerOf = (item: TriviaItem): string => (typeof item.correct === "string" ? item.correct : item.a || "");
+
+  const correctAnswers = (item: TriviaItem): string[] => {
+    const type = typeOf(item);
+    if (type !== "text") {
+      const c = Array.isArray(item.correct) ? item.correct : typeof item.correct === "string" ? [item.correct] : [];
+      return c;
+    }
+    return answerOf(item) ? [answerOf(item)] : [];
+  };
+
+  const check = (index: number) => {
+    const item = items[index]!;
+    const type = typeOf(item);
+    let ok: boolean;
+    if (type === "text") {
+      ok = isTextMatch((drafts[index] || "").trim(), answerOf(item));
+    } else {
+      ok = isChoiceMatch(marked[index] || [], correctAnswers(item));
+    }
+    setCorrectMap((p) => ({ ...p, [index]: ok }));
     setRevealed((p) => ({ ...p, [index]: true }));
   };
+
+  const correctCount = items.reduce((acc, _item, i) => acc + (correctMap[i] ? 1 : 0), 0);
+  const allCorrect = correctCount === items.length;
 
   const difficultyLabel = (d: TriviaItem["difficulty"] | undefined): string | null => {
     if (!d) return null;
@@ -126,7 +161,6 @@ const TriviaSection = memo(function TriviaSection({ trivia, inviteToken }: { tri
 
   return (
     <div className="trivia-quiz">
-      {/* Marcador de aciertos + felicitación al completar */}
       <div className="trivia-score" role="status" aria-live="polite">
         {t("trivia.score", { correct: correctCount, total: items.length })}
       </div>
@@ -137,10 +171,11 @@ const TriviaSection = memo(function TriviaSection({ trivia, inviteToken }: { tri
       ) : null}
 
       {sorted.map(({ it, i }) => {
-        const guess = (drafts[i] || "").trim();
+        const type = typeOf(it);
         const isCorrect = revealed[i] && correctMap[i];
         const isWrong = revealed[i] && !correctMap[i];
         const diff = difficultyLabel(it.difficulty);
+        const shownAnswer = type === "text" ? answerOf(it) : correctAnswers(it).join(", ");
         return (
           <div className={`trivia-q ${isCorrect ? "trivia-q--correct" : ""} ${isWrong ? "trivia-q--wrong" : ""}`} key={i}>
             <p className="trivia-q__text">
@@ -151,29 +186,65 @@ const TriviaSection = memo(function TriviaSection({ trivia, inviteToken }: { tri
                 </span>
               ) : null}
             </p>
-            <input
-              className="setup-input"
-              style={{ marginTop: "0.4rem" }}
-              value={drafts[i] || ""}
-              onChange={(e) => setDrafts((p) => ({ ...p, [i]: e.target.value }))}
-              placeholder={t("trivia.guessPlaceholder")}
-              aria-label={t("trivia.guessPlaceholder")}
-              disabled={revealed[i]}
-            />
+
+            {type === "text" ? (
+              <input
+                className="setup-input"
+                style={{ marginTop: "0.4rem" }}
+                value={drafts[i] || ""}
+                onChange={(e) => setDrafts((p) => ({ ...p, [i]: e.target.value }))}
+                placeholder={t("trivia.guessPlaceholder")}
+                aria-label={t("trivia.guessPlaceholder")}
+                disabled={revealed[i]}
+              />
+            ) : (
+              <div style={{ marginTop: "0.4rem" }}>
+                {(it.options || []).map((opt) => {
+                  const checked = (marked[i] || []).includes(opt);
+                  const inputType = type === "multiple" ? "checkbox" : "radio";
+                  return (
+                    <label key={opt} style={{ display: "flex", alignItems: "center", gap: "0.4rem", margin: "0.15rem 0", cursor: revealed[i] ? "default" : "pointer" }}>
+                      <input
+                        type={inputType}
+                        checked={checked}
+                        disabled={revealed[i]}
+                        name={`trivia-q-${i}`}
+                        onChange={() =>
+                          setMarked((p) => {
+                            const cur = p[i] || [];
+                            if (type === "multiple") {
+                              const next = cur.includes(opt) ? cur.filter((x) => x !== opt) : [...cur, opt];
+                              return { ...p, [i]: next };
+                            }
+                            return { ...p, [i]: [opt] };
+                          })
+                        }
+                        aria-label={opt}
+                        style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+                      />
+                      <span className="setup-subtitle" style={{ fontSize: "0.85rem" }}>
+                        {opt}
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+            )}
+
             {!revealed[i] ? (
               <button
                 type="button"
                 className="setup-button setup-button--compact"
                 style={{ marginTop: "0.4rem" }}
-                onClick={() => check(i, guess)}
-                disabled={!guess}
+                onClick={() => check(i)}
+                disabled={type === "text" ? !(drafts[i] || "").trim() : (marked[i] || []).length === 0}
               >
                 {t("trivia.check")}
               </button>
             ) : null}
             {revealed[i] ? (
               <p className={`trivia-q__answer ${isCorrect ? "trivia-q__answer--ok" : "trivia-q__answer--ko"}`}>
-                {isCorrect ? "✓" : "✗"} {it.a}
+                {isCorrect ? "✓" : "✗"} {shownAnswer}
               </p>
             ) : null}
             {!revealed[i] && it.hint ? (

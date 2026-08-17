@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router";
-import { APP_VERSION, THEME_PREVIEW_COLORS } from "../lib/constants";
+import { APP_VERSION, THEME_PREVIEW_COLORS, FONT_FAMILY, COLOR_FIELDS } from "../lib/constants";
 import { logError } from "../lib/error-utils";
 
 const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ckb", "dv"]);
@@ -13,7 +13,17 @@ const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ckb", "dv"]);
  * (componente de 320 líneas).
  */
 export function useAppShellEffects(
-  config: { firstName?: string; secondName?: string; theme?: string },
+  config: {
+    firstName?: string;
+    secondName?: string;
+    theme?: string;
+    fontHeading?: string;
+    fontBody?: string;
+    colorAccent?: string;
+    colorTitle?: string;
+    colorCopy?: string;
+    colorBackground?: string;
+  },
   formData: { theme?: string },
   inviteToken: string | undefined,
   isEditingRoute: boolean,
@@ -70,6 +80,36 @@ export function useAppShellEffects(
     }
     meta.setAttribute("content", color);
   }, [formData.theme, config.theme, isEditingRoute]);
+
+  // Personalización de tipografía y colores del usuario: sobrescribe las
+  // variables CSS del tema. Los valores llegan ya sanitizados (lista blanca
+  // de fuentes y colores hex) por normalize-config; en ningún caso se inyecta
+  // CSS arbitrario. Un valor vacío = se deja la del tema. En el editor
+  // (isEditingRoute) el tema es "golden" pero la personalización del invitado
+  // NO debe aplicarse (es una vista de configuración).
+  useEffect(() => {
+    if (isEditingRoute) return;
+    const root = document.documentElement;
+    const { fontHeading, fontBody, colorAccent, colorTitle, colorCopy, colorBackground } = config;
+    if (fontHeading) {
+      root.style.setProperty("--font-heading", FONT_FAMILY[fontHeading] || `"${fontHeading}", serif`);
+    }
+    if (fontBody) {
+      root.style.setProperty("--font-body", FONT_FAMILY[fontBody] || `"${fontBody}", serif`);
+    }
+    if (colorAccent) root.style.setProperty("--invite-core-color", colorAccent);
+    if (colorTitle) root.style.setProperty("--invite-title-color", colorTitle);
+    if (colorCopy) root.style.setProperty("--invite-copy-color", colorCopy);
+    if (colorBackground) root.style.setProperty("--page-bg", colorBackground);
+    // No se limpian las variables al retirar la personalización: cada tema
+    // define las suyas en :root[data-wedding-theme] y un dataset cambio
+    // recalcula las del tema.
+    return () => {
+      if (fontHeading) root.style.removeProperty("--font-heading");
+      if (fontBody) root.style.removeProperty("--font-body");
+      for (const { cssVar } of COLOR_FIELDS) root.style.removeProperty(cssVar);
+    };
+  }, [config.fontHeading, config.fontBody, config.colorAccent, config.colorTitle, config.colorCopy, config.colorBackground, isEditingRoute]);
 
   // Fondo por defecto al arrancar.
   useEffect(() => {

@@ -14,6 +14,23 @@ function normalizeJsonArray(value: unknown): string {
   }
 }
 
+/** Fuentes permitidas para el usuario (lista blanca, alineadas con FONT_OPTIONS
+ *  de constants.ts). Cualquier otro valor (incluido CSS arbitrario) se descarta
+ *  por seguridad anti-inyección. */
+const ALLOWED_FONTS = new Set([
+  "playfair", "lora", "georgia", "times", "great-vibes", "open-dyslexic",
+]);
+function normalizeFont(value: unknown): string {
+  const v = typeof value === "string" ? value.trim().toLowerCase() : "";
+  return ALLOWED_FONTS.has(v) ? v : "";
+}
+
+/** Valida un color hex (#RRGGBB o #RGB). Cualquier otro formato se desecha. */
+function normalizeColor(value: unknown): string {
+  const v = typeof value === "string" ? value.trim() : "";
+  return /^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(v) ? v : "";
+}
+
 /** Modos de visualización del mapa (iframe por defecto). */
 const MAP_MODES = new Set(["iframe", "name", "hidden"]);
 function normalizeMapMode(value: unknown): string {
@@ -157,6 +174,14 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   weddingDressCodeEnabled: toggleWithLegacy(value?.weddingDressCodeEnabled, value?.weddingDressCode),
   weddingDressCodeCustom: s(value?.weddingDressCodeCustom),
   theme: typeof value?.theme === "string" && THEME_VALUES.has(value.theme.trim()) ? value.theme.trim() : "golden",
+  // Personalización: solo se aceptan fuentes de una lista blanca (no se puede
+  // inyectar CSS arbitrario) y colores hex válidos (pattern #RRGGBB).
+  fontHeading: normalizeFont(value?.fontHeading),
+  fontBody: normalizeFont(value?.fontBody),
+  colorAccent: normalizeColor(value?.colorAccent),
+  colorTitle: normalizeColor(value?.colorTitle),
+  colorCopy: normalizeColor(value?.colorCopy),
+  colorBackground: normalizeColor(value?.colorBackground),
   couplePhoto: s(value?.couplePhoto),
   couplePhotoEnabled: toggleWithLegacy(value?.couplePhotoEnabled, value?.couplePhoto),
   sectionOrder: (() => {

@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
+import { useSyncExternalStore } from "react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -7,6 +8,15 @@ vi.mock("react-i18next", () => ({
 
 const mockUpdateFormField = vi.fn();
 const mockFormData = vi.hoisted(() => ({}) as Record<string, string | undefined>);
+// Snapshot por campo para replicar useSyncExternalStore y permitir re-renders
+// al persistir un campo (como hace FormStore en producción).
+let triviaVersion = 0;
+const triviaListeners = new Set<() => void>();
+const subscribeTrivia = (cb: () => void) => {
+  triviaListeners.add(cb);
+  return () => triviaListeners.delete(cb);
+};
+const getTriviaSnapshot = () => `${(mockFormData.trivia ?? "")}__v${triviaVersion}`;
 
 vi.mock("../../../contexts", () => ({
   useConfigActions: () => ({
@@ -19,7 +29,13 @@ vi.mock("../../../contexts", () => ({
     inviteToken: "",
     hasStoredConfig: false,
   }),
-  useFormField: (field: string) => mockFormData[field] ?? "",
+  useFormField: (field: string) => {
+    // Replicamos useSyncExternalStore para el campo trivia (re-renderiza al
+    // persistir). Se llama SIEMPRE (reglas de hooks): el snapshot es estable
+    // para el resto de campos por lo que no provoca renders extra.
+    useSyncExternalStore(subscribeTrivia, getTriviaSnapshot);
+    return mockFormData[field] ?? "";
+  },
   useFormStore: () => ({ getField: (field: string) => mockFormData[field] ?? "" }),
   useConfig: () => ({
     config: {},
@@ -34,6 +50,16 @@ describe("ExtrasSectionForm", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     Object.keys(mockFormData).forEach((k) => delete mockFormData[k]);
+    // updateFormField real en producción persiste en el store; aquí escribimos
+    // en mockFormData (fuente de useFormField) y notificamos el snapshot de la
+    // trivia para que el editor estructurado re-renderice al persistir.
+    mockUpdateFormField.mockImplementation((field: string, value: string) => {
+      mockFormData[field] = value;
+      if (field === "trivia") {
+        triviaVersion += 1;
+        triviaListeners.forEach((cb) => cb());
+      }
+    });
   });
 
   it("toggles the deadline", () => {
@@ -88,15 +114,39 @@ describe("ExtrasSectionForm", () => {
     expect(mockUpdateFormField).toHaveBeenCalledWith("giftList", expect.stringContaining("Tostadora"));
   });
 
-  it("toggles trivia and edits its lines to JSON", () => {
+  it("toggles trivia and adds a text question to JSON", () => {
     mockFormData.triviaEnabled = "true";
     mockFormData.trivia = "[]";
     render(<ExtrasSectionForm />);
-    fireEvent.change(
-      screen.getAllByRole("textbox").find((el) => el.tagName === "TEXTAREA")!,
-      { target: { value: "Â¿DÃ³nde? | En el parque" } },
-    );
+    // Añade una pregunta nueva (por defecto texto libre).
+    fireEvent.click(screen.getByText("setup.triviaAdd"));
+    const qInput = screen.getByPlaceholderText("setup.triviaQuestionPlaceholder");
+    const aInput = screen.getByPlaceholderText("setup.triviaAnswerPlaceholder");
+    fireEvent.change(qInput, { target: { value: "¿Dónde?" } });
+    fireEvent.change(aInput, { target: { value: "En el parque" } });
     expect(mockUpdateFormField).toHaveBeenCalledWith("trivia", expect.stringContaining("En el parque"));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("trivia", expect.stringContaining('"type":"text"'));
+  });
+
+  it("adds a single-choice trivia question with options and marks the correct one", () => {
+    mockFormData.triviaEnabled = "true";
+    mockFormData.trivia = "[]";
+    render(<ExtrasSectionForm />);
+    fireEvent.click(screen.getByText("setup.triviaAdd"));
+    // Cambia el tipo a "single": debe mostrar el editor de opciones.
+    fireEvent.change(screen.getByLabelText("setup.triviaTypeLabel"), { target: { value: "single" } });
+    fireEvent.change(screen.getByPlaceholderText("setup.triviaQuestionPlaceholder"), { target: { value: "¿Color?" } });
+    // Añade dos opciones (el botón muestra "+ setup.triviaAddOption").
+    const addOpt = () => screen.getByText((c: string) => c.includes("setup.triviaAddOption"));
+    act(() => addOpt().click());
+    act(() => addOpt().click());
+    const opts = screen.getAllByPlaceholderText("setup.triviaOptionPlaceholder");
+    fireEvent.change(opts[0]!, { target: { value: "Rojo" } });
+    fireEvent.change(opts[1]!, { target: { value: "Azul" } });
+    // Marca "Rojo" como correcta.
+    fireEvent.click(screen.getByLabelText("setup.triviaCorrectOption Rojo"));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("trivia", expect.stringContaining('"type":"single"'));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("trivia", expect.stringContaining('"correct":["Rojo"]'));
   });
 
   it("updates the welcome video URL", () => {
