@@ -296,6 +296,7 @@ describe("a11y-page-audit", () => {
   phone: "",
   email: "",
   contactConsent: false,
+    showNameInConfirmed: false,
     };
     const { container } = render(
       <RsvpFormContext.Provider

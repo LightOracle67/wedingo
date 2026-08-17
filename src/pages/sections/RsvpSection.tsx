@@ -1059,8 +1059,7 @@ const RsvpSection = memo(function RsvpSection({
 
             {/* Contacto opcional con consentimiento explícito (GDPR art. 7):
                 SOLO se guarda si el invitado marca el consentimiento. */}
-            {config?.rsvpContactEnabled === "true" && !isAlreadySubmitted ? (
-              <div style={{ borderTop: "1px solid var(--setup-border)", paddingTop: "0.75rem" }}>
+            {config?.rsvpContactEnabled === "true" && !isAlreadySubmitted ? (              <div style={{ borderTop: "1px solid var(--setup-border)", paddingTop: "0.75rem" }}>
                 <p className="setup-label" style={{ fontSize: "0.85rem" }}>
                   {t("rsvp.contactOptional")}
                 </p>
@@ -1098,6 +1097,25 @@ const RsvpSection = memo(function RsvpSection({
                   <span>{t("rsvp.contactConsentLabel")}</span>
                 </label>
               </div>
+            ) : null}
+
+            {/* Publicar nombre en la lista de confirmados (prueba social):
+                opt-in explícito. Solo se publica si el invitado asiste Y marca
+                este consentimiento (y la pareja activa el toggle en Extras). */}
+            {!isAlreadySubmitted && (config?.showConfirmedPeople === "true") ? (
+              <label
+                className="setup-checkbox-label"
+                style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8rem", color: "var(--setup-subtitle)", cursor: isDisabled ? "default" : "pointer", borderTop: "1px solid var(--setup-border)", paddingTop: "0.75rem" }}
+              >
+                <input
+                  type="checkbox"
+                  checked={Boolean(rsvpForm.showNameInConfirmed)}
+                  onChange={(e) => updateRsvpField("showNameInConfirmed", e.target.checked)}
+                  style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+                  disabled={isDisabled}
+                />
+                <span>{t("rsvp.showNameInConfirmedLabel")}</span>
+              </label>
             ) : null}
 
             {isBlocked ? (

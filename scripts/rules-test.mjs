@@ -87,6 +87,16 @@ async function run() {
   await t("visitLog lectura pública → NEGADO", false, guestDb.collection("invitations").doc("AbCdEf1234").collection("visitLog").get());
   await t("visitLog lectura admin SÍ", true, emailDb.collection("invitations").doc("AbCdEf1234").collection("visitLog").get());
 
+  // 7c. Lista pública de confirmados (prueba social con opt-in).
+  const confirmedRef = (name) =>
+    guestDb.collection("invitations").doc("AbCdEf1234").collection("confirmedPeople").doc("c_" + name);
+  await t("confirmedPeople create (invitado) SÍ", true, confirmedRef("ana").set({ name: "Ana", createdAt: new Date() }));
+  await t("confirmedPeople re-create (misma id) → NEGADO", false, confirmedRef("ana").set({ name: "Otro", createdAt: new Date() }));
+  await t("confirmedPeople create nombre vacío → NEGADO", false, confirmedRef("x").set({ name: "", createdAt: new Date() }));
+  await t("confirmedPeople update → NEGADO", false, confirmedRef("ana").update({ name: "Cambiado" }));
+  await t("confirmedPeople lectura pública SÍ", true, guestDb.collection("invitations").doc("AbCdEf1234").collection("confirmedPeople").get());
+  await t("confirmedPeople delete invitado → NEGADO", false, confirmedRef("ana").delete());
+
   // 7b. Invitados esperados: solo 0..1000 (string); se rechazan >1000 y no numéricos.
   await t("expectedGuests 1000 (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", expectedGuests: "1000" }, { merge: true }));
   await t("expectedGuests 1001 → NEGADO", false, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", expectedGuests: "1001" }, { merge: true }));

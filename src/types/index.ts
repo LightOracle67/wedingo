@@ -100,6 +100,10 @@ export interface InvitationConfig {
   language?: string;
   /** Prueba social en vivo: mostrar cuántos han confirmado en la portada. */
   liveConfirmedEnabled?: string;
+  /** Mostrar la LISTA de personas que ya han confirmado en la portada.
+   *  Solo se publican nombres (doblemente opt-in: quien confirma acepta y la
+   *  pareja activa el toggle); "true" visible, "false" (o ausente) oculta. */
+  showConfirmedPeople?: string;
   /** Lista de regalos (JSON de items) + habilitada. */
   giftsListEnabled?: string;
   giftList?: string;

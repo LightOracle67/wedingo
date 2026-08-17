@@ -224,6 +224,9 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   // Prueba social en vivo: por defecto VISIBLE (las invitaciones existentes no
   // tenían el campo y ya mostraban el contador); solo se oculta con "false".
   liveConfirmedEnabled: s(value?.liveConfirmedEnabled) === "false" ? "false" : "true",
+  // Lista de confirmados: SOLO "true" la muestra (opt-in estricto; ausente se
+  // oculta para no revelar identidades sin consentimiento explícito).
+  showConfirmedPeople: s(value?.showConfirmedPeople) === "true" ? "true" : "false",
   giftsListEnabled: s(value?.giftsListEnabled) === "true" ? "true" : "false",
   giftList: normalizeJsonArray(value?.giftList),
   rideShareEnabled: s(value?.rideShareEnabled) === "true" ? "true" : "false",

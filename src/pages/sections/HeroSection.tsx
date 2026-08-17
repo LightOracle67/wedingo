@@ -60,6 +60,9 @@ interface HeroSectionProps {
   /** Prueba social en vivo: mostrar el nº de confirmaciones en la portada
    *  (los novios lo controlan desde Extras). */
   liveConfirmedEnabled?: boolean;
+  /** Mostrar la LISTA de personas confirmadas en la portada (los novios lo
+   *  controlan desde Extras; solo se muestran los nombres con opt-in). */
+  showConfirmedPeople?: boolean;
   /** Conjunto EFECTIVO de animaciones desactivadas (base ∪ invitado): el hero
    *  respeta por código el countdown, el anillo de la foto, el fundido de
    *  carga y el resplandor de los padrinos. */
@@ -81,6 +84,7 @@ const HeroSection = memo(function HeroSection({
   inviteToken,
   schedule,
   liveConfirmedEnabled = true,
+  showConfirmedPeople = false,
   disabledAnimations,
 }: HeroSectionProps) {
   const { t } = useTranslation();
@@ -149,6 +153,55 @@ const HeroSection = memo(function HeroSection({
       if (timer) clearInterval(timer);
     };
   }, [inviteToken]);
+
+  // Lista pública de confirmados (prueba social con opt-in): se lee en
+  // tiempo real desde confirmedPeople. Solo se monta la suscripción cuando el
+  // toggle de la pareja la muestra (evita leer la colección si está oculta);
+  // si el canal falla, degrade a una lectura única vía getDocs.
+  const [confirmedPeople, setConfirmedPeople] = useState<string[]>([]);
+  useEffect(() => {
+    if (!inviteToken || !showConfirmedPeople) {
+      setConfirmedPeople([]);
+      return;
+    }
+    let cancelled = false;
+    let unsub: (() => void) | undefined;
+    const apply = (list: string[]) => {
+      if (cancelled) return;
+      setConfirmedPeople(list);
+    };
+    const loadOnce = async () => {
+      if (cancelled || unsub) return;
+      const fs = await import("firebase/firestore");
+      const fb = await import("../../lib/firebase");
+      try {
+        const snap = await fs.getDocs(fs.collection(fb.db, "invitations", inviteToken, "confirmedPeople"));
+        apply(snap.docs.map((d) => String(d.data().name || "")).filter(Boolean));
+      } catch {
+        /* lista opcional: se deja vacía */
+      }
+    };
+    const subscribe = async () => {
+      try {
+        const fs = await import("firebase/firestore");
+        const fb = await import("../../lib/firebase");
+        const q = fs.collection(fb.db, "invitations", inviteToken, "confirmedPeople");
+        unsub = fs.onSnapshot(
+          q,
+          (snap) => apply(snap.docs.map((d) => String(d.data().name || "")).filter(Boolean)),
+          () => void loadOnce(),
+        );
+      } catch {
+        void loadOnce();
+      }
+    };
+    void subscribe();
+    return () => {
+      cancelled = true;
+      if (unsub) unsub();
+      setConfirmedPeople([]);
+    };
+  }, [inviteToken, showConfirmedPeople]);
 
   // Inicialización síncrona: el countdown se pinta en el primer render (evita
   // el CLS de que el bloque del hero aparezca tras el mount).
@@ -282,6 +335,36 @@ const HeroSection = memo(function HeroSection({
               >
                 {t("hero.liveConfirmed", { count: confirmedCount })}
               </p>
+            ) : null}
+            {confirmedPeople.length > 0 && !weddingPassed && showConfirmedPeople ? (
+              <div
+                className="hero-confirmed-people"
+                aria-live="polite"
+                style={{ margin: "0.5rem auto 0", maxWidth: "26rem", textAlign: "center" }}
+              >
+                <p className="hero-confirmed-people__hint" style={{ margin: 0, fontSize: "0.72rem", color: "var(--invite-copy-color, #c3b193)" }}>
+                  {t("hero.confirmedPeopleHint", { count: confirmedPeople.length })}
+                </p>
+                <div className="hero-confirmed-people__chips" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.3rem", marginTop: "0.3rem" }}>
+                  {confirmedPeople.slice(0, 12).map((name) => (
+                    <span
+                      key={name}
+                      className="hero-confirmed-chip"
+                      style={{
+                        display: "inline-block",
+                        fontSize: "0.7rem",
+                        padding: "0.12rem 0.55rem",
+                        borderRadius: "999px",
+                        color: "var(--invite-copy-color, #c3b193)",
+                        border: "1px solid color-mix(in srgb, var(--setup-accent) 28%, transparent)",
+                        background: "color-mix(in srgb, var(--setup-accent) 8%, transparent)",
+                      }}
+                    >
+                      ✓ {name}
+                    </span>
+                  ))}
+                </div>
+              </div>
             ) : null}
             {weddingPassed ? (
               <p

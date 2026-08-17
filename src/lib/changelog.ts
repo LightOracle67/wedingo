@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.104.0",
+    date: "2026-08-17",
+    changes: [
+      "Nuevo checkbox en Extras: «Mostrar la lista de personas que han confirmado» (campo showConfirmedPeople). Ahora la portada puede mostrar, además del contador, los nombres de quienes confirmaron como chips (prueba social reforzada). PRIVACIDAD/GDPR: cada invitado debe marcar un opt-in explícito al responder el RSVP («Acepto que mi nombre aparezca en la lista pública de confirmados», art. 7); la lista pública se guarda en la subcolección invitations/{token}/confirmedPeople (colección create-only + cap anti-spam: un documento por nombre no se puede sobrescribir ni suplantar; lectura pública solo cuando el toggle está activo). El toggle está OCULTO por defecto (opt-in estricto de la pareja) y es independiente del contador numérico existente. 2270 tests / 173 ficheros verdes + lint/typecheck/build/translations (1640 claves) + reglas 34/34 (6 tests nuevos de confirmedPeople) OK.",
+    ],
+  },
+
+  {
     version: "2.103.0",
     date: "2026-08-17",
     changes: [

@@ -75,6 +75,7 @@
     "sectionLabel": "Portada",
     "verifiedBadge": "Verificada",
     "liveConfirmed": "{{count}} invitados ya han confirmado",
+    "confirmedPeopleHint": "Ya han confirmado {{count}} persona(s)",
     "thanksPost": "Gracias por compartir este día con nosotros. Tu mensaje y vuestro cariño son el mejor recuerdo.",
     "todayAgenda": "Agenda de hoy",
     "now": "Ahora"
@@ -220,6 +221,7 @@
     "phonePlaceholder": "Teléfono (opcional)",
     "emailPlaceholder": "Email (opcional)",
     "contactConsentLabel": "Autorizo a guardar mi contacto solo para la logística del evento (GDPR art. 7).",
+    "showNameInConfirmedLabel": "Acepto que mi nombre aparezca en la lista pública de confirmados de la portada (GDPR art. 7).",
     "policyVersion": "Política de privacidad versión {{version}}",
     "capacityLeft": "Quedan {{count}} plazas",
     "daysLeft": "{{count}} días para confirmar",
@@ -508,7 +510,9 @@
     "welcomeVideoPlaceholder": "https://...",
     "uploading": "Subiendo...",
     "liveConfirmedLabel": "Mostrar cuántos han confirmado",
-    "liveConfirmedHint": "Muestra en la portada el número de invitados que ya han confirmado (prueba social en directo)."
+    "liveConfirmedHint": "Muestra en la portada el número de invitados que ya han confirmado (prueba social en directo).",
+    "showConfirmedPeopleLabel": "Mostrar la lista de personas que han confirmado",
+    "showConfirmedPeopleHint": "Muestra en la portada los nombres de quienes confirmaron. Solo aparecen los invitados que marcaron el consentimiento al responder el RSVP (opt-in, GDPR art. 7)."
   },
   "admin": {
     "tabs": {

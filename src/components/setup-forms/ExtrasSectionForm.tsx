@@ -37,6 +37,8 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
   const musicPollEnabled = useFormField("musicPollEnabled");
   // Prueba social en vivo en la portada.
   const liveConfirmedEnabled = useFormField("liveConfirmedEnabled");
+  // Lista pública de confirmados en la portada (opt-in de nombres).
+  const showConfirmedPeople = useFormField("showConfirmedPeople");
   const { t } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
@@ -57,6 +59,7 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
     notesEnabled,
     musicPollEnabled,
     liveConfirmedEnabled,
+    showConfirmedPeople,
   };
 
   // Toggle genérico para los switches: lee el valor ACTUAL del campo desde la
@@ -155,6 +158,9 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
 
         {/* Prueba social en vivo: cuántos han confirmado */}
         {renderToggleRow("liveConfirmed", t("setup.liveConfirmedLabel"), t("setup.liveConfirmedHint"))}
+
+        {/* Visibilidad de la lista de confirmados (opt-in de nombres) */}
+        {renderToggleRow("showConfirmedPeople", t("setup.showConfirmedPeopleLabel"), t("setup.showConfirmedPeopleHint"))}
 
         {/* Lista de regalos */}
         {renderToggleRow("giftsList", t("setup.giftsListLabel"), t("setup.giftsListHint"))}

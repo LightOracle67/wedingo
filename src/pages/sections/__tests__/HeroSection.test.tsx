@@ -53,6 +53,14 @@ describe("HeroSection", () => {
     vi.useRealTimers();
   });
 
+  it("does not crash when the confirmed-people toggle is on but there is no token", () => {
+    // Sin inviteToken no se lanza la suscripción a confirmedPeople; no debe
+    // fallar el render ni mostrar la lista.
+    render(<HeroSection {...baseProps} weddingDate={null} couplePhoto="" showConfirmedPeople />);
+    expect(screen.getByText((c: string) => c.includes("John") && c.includes("Jane"))).toBeDefined();
+    expect(document.querySelector(".hero-confirmed-people")).toBeNull();
+  });
+
   it("renders without couple photo", () => {
     render(<HeroSection {...baseProps} weddingDate={null} couplePhoto="" />);
     expect(screen.getByText((c: string) => c.includes("John") && c.includes("Jane"))).toBeDefined();

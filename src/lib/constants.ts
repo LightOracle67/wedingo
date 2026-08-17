@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.103.0";
+export const APP_VERSION = "2.104.0";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -312,6 +312,8 @@ export const defaultConfig = {
   reactionsEnabled: "false",
   // Prueba social en vivo: muestra cuántos invitados han confirmado (portada).
   liveConfirmedEnabled: "true",
+  // Lista de confirmados en la portada: por defecto OCULTA (opt-in).
+  showConfirmedPeople: "false",
   giftsListEnabled: "false",
   giftList: "[]",
   rideShareEnabled: "false",

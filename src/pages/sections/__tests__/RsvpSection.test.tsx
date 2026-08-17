@@ -63,6 +63,7 @@ const baseForm = {
   phone: "",
   email: "",
   contactConsent: false,
+    showNameInConfirmed: false,
 };
 
 const baseProps = {
