@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.101.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.101.0)  
+**Versión actual:** [v2.102.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.102.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2264 tests, 173 test files |
+| Tests | 2265 tests, 173 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -65,6 +65,12 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 - **Regalos-experiencia:** la lista de regalos admite el sufijo `| experiencia` (insignia 🎁) conservando las líneas antiguas.
 - **Historial de visitas por día:** cada visita se registra por día (subcolección segura con incremento acotado) y el Panel muestra los últimos 7 días como gráfico de barras.
 - **Idioma por invitación:** la pareja fija el idioma base (es/en/automático) que se aplica a los invitados que no eligieron idioma en su dispositivo.
+
+### Funciones diferenciadoras (ronda v2.102)
+
+- **Mapa de mesas inteligente:** botón "Auto-asignar" en Distribución que reparte los confirmados sin mesa entre las mesas con hueco de forma equilibrada (round-robin) en un único batch atómico.
+- **Filtro por invitado en fotos del día:** desplegable con los autores para ver solo sus fotos.
+- **Recordatorio automático a no confirmados:** el panel muestra cuántas personas faltan y genera el texto del recordatorio con un clic.
 | **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -262,6 +268,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.102.0 | 2026-08-17 | Funciones diferenciadoras (bloque 3): mapa de mesas inteligente (auto-asignación equilibrada en batch), filtro por invitado en fotos del día y recordatorio automático a no confirmados |
 | v2.101.0 | 2026-08-17 | Funciones diferenciadoras (bloque 2): dashboard predictivo de asistencia, confirmaciones en tiempo real (onSnapshot+fallback), regalos-experiencia, historial de visitas por día con regla segura y gráfico, idioma por invitación; tests de reglas 28/28 |
 | v2.100.0 | 2026-08-17 | Funciones diferenciadoras (bloque 1): calendario compartido .ics, ranking para el DJ con anti-CSV-injection, QR en impresión, modo sorpresa por secciones, agenda interactiva en vivo y narración por voz senior; 28 tests nuevos (2256) |
 | v2.97.1 | 2026-08-12 | Cobertura 83.5→86.4% líneas: axe en las 5 secciones sociales restantes, voice-store/FormStore/file-utils/MetricsTab/SupportTab/ToolsTab/DistribucionTab; gate de cobertura ajustado a umbrales verificados |
