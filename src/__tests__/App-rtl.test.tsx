@@ -51,6 +51,7 @@ vi.mock("../contexts", () => ({
     isDisabled: () => false,
     isGroupFullyDisabled: () => false,
     toggleGuestAnimation: vi.fn(),
+    setGuestGroup: vi.fn(),
     allOff: false,
     setAllGuest: vi.fn(),
     resetGuest: vi.fn(),

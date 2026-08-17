@@ -73,7 +73,7 @@ export default function AccessibilityPanel({ open, onClose }: { open: boolean; o
   const { t } = useTranslation();
   // Preferencias de animación del invitado (combina la base del admin con lo
   // que este invitado desactiva en su dispositivo). Requiere AnimationsProvider.
-  const { isDisabled, adminDisabled, toggleGuestAnimation, setAllGuest, allOff } = useAnimations();
+  const { isDisabled, adminDisabled, toggleGuestAnimation, setGuestGroup, setAllGuest, allOff } = useAnimations();
   const [prefs, setPrefs] = useState(() => {
     const loaded = loadPrefs();
 
@@ -235,6 +235,7 @@ export default function AccessibilityPanel({ open, onClose }: { open: boolean; o
             compact
             allOff={allOff}
             onToggleAll={setAllGuest}
+            onGroupToggle={setGuestGroup}
           />
         </div>
       </div>

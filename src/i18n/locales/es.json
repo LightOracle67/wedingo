@@ -1826,7 +1826,8 @@
     },
     "allOffLabel": "Desactivar todas las animaciones",
     "allOffHint": "Al activarla, la invitación se muestra sin ninguna animación: el sobre no aparece, no hay confeti ni transiciones. Al desactivarla vuelven tus preferencias individuales.",
-    "allOffActive": "Desactivada por el ajuste general."
+    "allOffActive": "Desactivada por el ajuste general.",
+    "groupOffActive": "Desactivada por el ajuste de la sección."
   },
   "pagination": {
     "show": "Mostrar",

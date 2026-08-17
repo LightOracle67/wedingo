@@ -29,10 +29,13 @@ interface AnimationChecklistProps {
   idPrefix?: string;
   /** Layout compacto (panel de accesibilidad, ancho limitado). */
   compact?: boolean;
-  /** ¿Está activado «desactivar todas»? Deshabilita las filas individuales. */
+  /** ¿Está activado «desactivar todas»? Deshabilita filas y grupos. */
   allOff?: boolean;
   /** Alterna el checkbox maestro (todas las animaciones). */
   onToggleAll?: (enabled: boolean) => void;
+  /** Alterna una SECCIÓN (grupo) completa: `enabled=true` activa todos sus
+   *  ids; `false` los desactiva todos (el comportamiento se salta). */
+  onGroupToggle?: (groupId: string, enabled: boolean) => void;
 }
 
 export default function AnimationChecklist({
@@ -43,6 +46,7 @@ export default function AnimationChecklist({
   compact = false,
   allOff = false,
   onToggleAll,
+  onGroupToggle,
 }: AnimationChecklistProps) {
   const { t } = useTranslation();
   const allInputId = `${idPrefix}anim-all`;
@@ -71,17 +75,43 @@ export default function AnimationChecklist({
       {ANIMATION_GROUPS.map((group) => {
         const animations = ANIMATIONS.filter((a) => a.groupId === group.id);
         if (animations.length === 0) return null;
+        const groupIds = animations.map((a) => a.id);
+        // Estado del grupo: marcado si TODAS activas, intermedio si algunas,
+        // desmarcado si TODAS desactivadas (el comportamiento se salta).
+        const anyEnabled = groupIds.some((id) => checked(id));
+        const allEnabled = groupIds.every((id) => checked(id));
+        const groupChecked = allEnabled && !allOff;
+        const groupIndeterminate = !allEnabled && anyEnabled;
+        const groupOff = !anyEnabled;
+        const groupInputId = `${idPrefix}group-${group.id}`;
         return (
           <fieldset key={group.id} className="anim-checklist__group">
             <legend className="anim-checklist__group-title">
-              <span>{t(`animations.groups.${group.id}`)}</span>
+              {/* Checkbox de la SECCIÓN: activa/desactiva todo el grupo. */}
+              {onGroupToggle ? (
+                <input
+                  type="checkbox"
+                  className="anim-checklist__group-checkbox"
+                  id={groupInputId}
+                  checked={groupChecked}
+                  disabled={allOff}
+                  ref={(el) => {
+                    if (el) el.indeterminate = groupIndeterminate && !allOff;
+                  }}
+                  aria-label={t(`animations.groups.${group.id}`)}
+                  onChange={() => onGroupToggle(group.id, groupChecked ? false : true)}
+                />
+              ) : null}
+              <label className="anim-checklist__group-label" htmlFor={groupInputId}>
+                {t(`animations.groups.${group.id}`)}
+              </label>
             </legend>
             <div className="anim-checklist__items">
               {animations.map((anim) => {
-                // Con «desactivar todas» activo, cada animación está apagada y
-                // no se puede tocar individualmente.
-                const isChecked = allOff ? false : checked(anim.id);
-                const isLocked = allOff || locked.has(anim.id);
+                // Con «desactivar todas» o la sección apagada, cada animación
+                // está desactivada y no se puede tocar individualmente.
+                const isChecked = allOff || groupOff ? false : checked(anim.id);
+                const isLocked = allOff || groupOff || locked.has(anim.id);
                 const inputId = `${idPrefix}anim-${anim.id}`;
                 return (
                   <div className="anim-checklist__row" key={anim.id}>
@@ -102,7 +132,7 @@ export default function AnimationChecklist({
                       <p className="anim-checklist__hint">{t(`animations.items.${anim.id}.hint`)}</p>
                       {isLocked && !isChecked ? (
                         <p className="anim-checklist__locked-note">
-                          {allOff ? t("animations.allOffActive") : t("animations.lockedByAdmin")}
+                          {allOff ? t("animations.allOffActive") : groupOff && !locked.has(anim.id) ? t("animations.groupOffActive") : t("animations.lockedByAdmin")}
                         </p>
                       ) : null}
                     </div>

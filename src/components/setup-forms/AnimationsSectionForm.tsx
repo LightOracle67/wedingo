@@ -23,7 +23,9 @@ import { useTranslation } from "react-i18next";
 import { useConfigActions, useFormField } from "../../contexts";
 import AnimationChecklist from "../AnimationChecklist";
 import {
+  ANIMATIONS,
   parseDisabledAnimations,
+  serializeDisabledAnimations,
   toggleAllDisabled,
   toggleDisabledAnimations,
   ALL_ANIMATIONS_KEY,
@@ -51,6 +53,20 @@ const AnimationsSectionForm = memo(function AnimationsSectionForm({ prefix = "" 
     [disabledAnimations, updateFormField],
   );
 
+  /** Checkbox de SECCIÓN: activa/desactiva todos los ids del grupo a la vez. */
+  const onGroupToggle = useCallback(
+    (groupId: string, enabled: boolean) => {
+      const next = new Set(disabledSet);
+      for (const anim of ANIMATIONS) {
+        if (anim.groupId !== groupId) continue;
+        if (enabled) next.delete(anim.id);
+        else next.add(anim.id);
+      }
+      updateFormField("disabledAnimations", serializeDisabledAnimations(next));
+    },
+    [disabledSet, updateFormField],
+  );
+
   /** Checkbox maestro: activa/desactiva TODAS conservando las individuales. */
   const onToggleAll = useCallback(
     (enabled: boolean) => {
@@ -71,6 +87,7 @@ const AnimationsSectionForm = memo(function AnimationsSectionForm({ prefix = "" 
           idPrefix={prefix}
           allOff={allOff}
           onToggleAll={onToggleAll}
+          onGroupToggle={onGroupToggle}
         />
       </fieldset>
     </>

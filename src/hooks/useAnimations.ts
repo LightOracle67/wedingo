@@ -37,7 +37,7 @@ const GROUP_IDS_BY_GROUP: ReadonlyMap<string, readonly string[]> = (() => {
 })();
 
 export function useAnimations() {
-  const { guestDisabled, toggleGuestAnimation, setAllGuest, resetGuest } = useAnimationsContext();
+  const { guestDisabled, toggleGuestAnimation, setGuestGroup, setAllGuest, resetGuest } = useAnimationsContext();
   const { config } = useConfig();
 
   // Base global decidida por los novios (ids sanitizados al cargar config).
@@ -82,6 +82,7 @@ export function useAnimations() {
     isDisabled,
     isGroupFullyDisabled,
     toggleGuestAnimation,
+    setGuestGroup,
     setAllGuest,
     resetGuest,
   };

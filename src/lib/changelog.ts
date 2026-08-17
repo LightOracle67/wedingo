@@ -1,9 +1,9 @@
 export const CHANGELOG = [
   {
     version: "2.99.7",
-    date: "2026-08-17",
+    date: "2026-08-16",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "Checkboxes de animaciones POR SECCIÓN: cada uno de los 12 grupos (sobre, confeti, vídeo, decoraciones, navegación, luciérnagas, música, portada, galería, micro, fondos, avisos) tiene su propio checkbox que activa/desactiva todos sus ids de una vez, con estado intermedio cuando solo hay algunas desactivadas. Si una sección queda totalmente desactivada, su comportamiento se salta (el sobre no aparece). Se mantienen el checkbox maestro «Desactivar todas» y las filas individuales. `setGuestGroup` restaurado en el contexto; tests del checkbox de grupo (6 nuevos).",
     ],
   },
 

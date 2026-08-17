@@ -1826,7 +1826,8 @@
     },
     "allOffLabel": "Disable all animations",
     "allOffHint": "When enabled, the invitation is shown with no animations: the envelope does not appear and there is no confetti or transitions. Disabling it restores your individual preferences.",
-    "allOffActive": "Disabled by the general setting."
+    "allOffActive": "Disabled by the general setting.",
+    "groupOffActive": "Disabled by the section setting."
   },
   "pagination": {
     "show": "Show",

@@ -77,6 +77,7 @@ const mockUseAnimationsValue = vi.hoisted(() => ({
   isDisabled: ((_id: string) => false) as (id: string) => boolean,
   isGroupFullyDisabled: ((_groupId: string) => false) as (groupId: string) => boolean,
   toggleGuestAnimation: vi.fn(),
+  setGuestGroup: vi.fn(),
   allOff: false,
   setAllGuest: vi.fn(),
   resetGuest: vi.fn(),
