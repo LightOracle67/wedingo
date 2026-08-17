@@ -498,7 +498,9 @@
     "facebookPlaceholder": "https://www.facebook.com/your_user",
     "transportUrlPlaceholder": "https://www.google.com/maps/place/...",
     "welcomeVideoPlaceholder": "https://...",
-    "uploading": "Uploading..."
+    "uploading": "Uploading...",
+    "liveConfirmedLabel": "Show how many have confirmed",
+    "liveConfirmedHint": "Shows on the cover how many guests have already confirmed (live social proof)."
   },
   "admin": {
     "tabs": {

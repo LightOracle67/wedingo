@@ -209,6 +209,9 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   rsvpDeadline: s(value?.rsvpDeadline).slice(0, 10),
   rsvpDeadlineEnabled: s(value?.rsvpDeadlineEnabled) === "true" ? "true" : "false",
   reactionsEnabled: s(value?.reactionsEnabled) === "true" ? "true" : "false",
+  // Prueba social en vivo: por defecto VISIBLE (las invitaciones existentes no
+  // tenían el campo y ya mostraban el contador); solo se oculta con "false".
+  liveConfirmedEnabled: s(value?.liveConfirmedEnabled) === "false" ? "false" : "true",
   giftsListEnabled: s(value?.giftsListEnabled) === "true" ? "true" : "false",
   giftList: normalizeJsonArray(value?.giftList),
   rideShareEnabled: s(value?.rideShareEnabled) === "true" ? "true" : "false",

@@ -43,6 +43,19 @@ describe("ExtrasSectionForm", () => {
     expect(mockUpdateFormField).toHaveBeenCalledWith("rsvpDeadlineEnabled", "true");
   });
 
+  it("toggles la prueba social en vivo (liveConfirmed)", () => {
+    render(<ExtrasSectionForm />);
+    const cb = screen.getByLabelText("setup.liveConfirmedLabel") as HTMLInputElement;
+    fireEvent.click(cb);
+    expect(mockUpdateFormField).toHaveBeenCalledWith("liveConfirmedEnabled", "true");
+  });
+
+  it("marca liveConfirmed como activo cuando el campo vale true", () => {
+    mockFormData.liveConfirmedEnabled = "true";
+    render(<ExtrasSectionForm />);
+    expect((screen.getByLabelText("setup.liveConfirmedLabel") as HTMLInputElement).checked).toBe(true);
+  });
+
   it("places the checkbox before its title", () => {
     render(<ExtrasSectionForm />);
     // Para cada fila de extra, el checkbox es el primer hijo del .setup-toggle-row.

@@ -598,11 +598,13 @@ export default function PublicInvitation() {
       weddingDate,
       inviteToken: inviteToken ?? "",
       schedule: config.weddingScheduleEvents ?? "[]",
+      // Prueba social en vivo: los novios pueden ocultarla desde Extras.
+      liveConfirmedEnabled: config.liveConfirmedEnabled !== "false",
       // Conjunto efectivo de animaciones desactivadas: HeroSection lo usa para
       // el countdown (tick), el anillo de la foto, el fundido y el resplandor.
       disabledAnimations: effectiveDisabled,
     }),
-    [weddingDate, inviteToken, config.weddingScheduleEvents, effectiveDisabled],
+    [weddingDate, inviteToken, config.weddingScheduleEvents, config.liveConfirmedEnabled, effectiveDisabled],
   );
 
   /**

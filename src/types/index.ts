@@ -89,6 +89,8 @@ export interface InvitationConfig {
   manualExpiry?: string;
   /** Reacciones a la invitación (❤️🎉😂) habilitadas. */
   reactionsEnabled?: string;
+  /** Prueba social en vivo: mostrar cuántos han confirmado en la portada. */
+  liveConfirmedEnabled?: string;
   /** Lista de regalos (JSON de items) + habilitada. */
   giftsListEnabled?: string;
   giftList?: string;

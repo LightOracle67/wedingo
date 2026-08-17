@@ -57,6 +57,9 @@ interface HeroSectionProps {
   inviteToken?: string;
   /** Agenda del día (JSON de weddingScheduleEvents) para la pantalla en vivo. */
   schedule?: string;
+  /** Prueba social en vivo: mostrar el nº de confirmaciones en la portada
+   *  (los novios lo controlan desde Extras). */
+  liveConfirmedEnabled?: boolean;
   /** Conjunto EFECTIVO de animaciones desactivadas (base ∪ invitado): el hero
    *  respeta por código el countdown, el anillo de la foto, el fundido de
    *  carga y el resplandor de los padrinos. */
@@ -77,6 +80,7 @@ const HeroSection = memo(function HeroSection({
   verified,
   inviteToken,
   schedule,
+  liveConfirmedEnabled = true,
   disabledAnimations,
 }: HeroSectionProps) {
   const { t } = useTranslation();
@@ -235,7 +239,7 @@ const HeroSection = memo(function HeroSection({
                 ✓ {t("hero.verifiedBadge")}
               </p>
             ) : null}
-            {confirmedCount > 0 && !weddingPassed ? (
+            {confirmedCount > 0 && !weddingPassed && liveConfirmedEnabled ? (
               <p
                 className="hero-rsvp-live"
                 aria-live="polite"

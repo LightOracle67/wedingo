@@ -3,7 +3,7 @@ export const CHANGELOG = [
     version: "2.99.9",
     date: "2026-08-17",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "FEAT: toggle en Extras para controlar la prueba social en vivo («Mostrar cuántos han confirmado») en la portada (campo liveConfirmedEnabled, visible por defecto). Fix de toggles sociales en Extras: los checkboxes de reacciones, compartir coche, dedicatorias y encuesta de música no reflejaban su estado guardado (faltaban los useFormField); ahora se sincronizan.",
     ],
   },
 

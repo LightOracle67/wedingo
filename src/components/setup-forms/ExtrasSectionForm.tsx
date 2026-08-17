@@ -29,6 +29,14 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
   const mailboxEnabled = useFormField("mailboxEnabled");
   const toastsEnabled = useFormField("toastsEnabled");
   const venueMapEnabled = useFormField("venueMapEnabled");
+  // Toggles de funciones sociales (estado visible: antes faltaban los hooks y
+  // el checkbox nunca reflejaba el valor guardado).
+  const reactionsEnabled = useFormField("reactionsEnabled");
+  const rideShareEnabled = useFormField("rideShareEnabled");
+  const notesEnabled = useFormField("notesEnabled");
+  const musicPollEnabled = useFormField("musicPollEnabled");
+  // Prueba social en vivo en la portada.
+  const liveConfirmedEnabled = useFormField("liveConfirmedEnabled");
   const { t } = useTranslation();
   const id = (name: string) => `${prefix}${name}`;
 
@@ -44,6 +52,11 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
     mailboxEnabled,
     toastsEnabled,
     venueMapEnabled,
+    reactionsEnabled,
+    rideShareEnabled,
+    notesEnabled,
+    musicPollEnabled,
+    liveConfirmedEnabled,
   };
 
   // Toggle genérico para los switches: lee el valor ACTUAL del campo desde la
@@ -129,6 +142,9 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
 
         {/* Reacciones */}
         {renderToggleRow("reactions", t("setup.reactionsLabel"), t("setup.reactionsHint"))}
+
+        {/* Prueba social en vivo: cuántos han confirmado */}
+        {renderToggleRow("liveConfirmed", t("setup.liveConfirmedLabel"), t("setup.liveConfirmedHint"))}
 
         {/* Lista de regalos */}
         {renderToggleRow("giftsList", t("setup.giftsListLabel"), t("setup.giftsListHint"))}
