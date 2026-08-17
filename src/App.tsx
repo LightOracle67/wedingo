@@ -191,12 +191,14 @@ function AppShell() {
               <Link
                 className={`admin-bar__link ${location.pathname === `/${inviteToken}` ? "admin-bar__link--active" : ""}`}
                 to={`/${inviteToken}`}
+                aria-current={location.pathname === `/${inviteToken}` ? "page" : undefined}
               >
                 {t("admin.tabs.invitation")}
               </Link>
               <Link
                 className={`admin-bar__link ${location.pathname === `/${inviteToken}/admin` ? "admin-bar__link--active" : ""}`}
                 to={`/${inviteToken}/admin`}
+                aria-current={location.pathname === `/${inviteToken}/admin` ? "page" : undefined}
               >
                 {t("admin.tabs.panel")}
               </Link>

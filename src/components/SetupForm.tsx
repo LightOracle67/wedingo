@@ -104,7 +104,7 @@ export default function SetupForm({ prefix = "" }) {
   }, [hiddenSections]);
 
   return (
-    <form ref={formRef} className="setup-form setup-form--nested" onSubmit={handleSubmit}>
+    <form ref={formRef} className="setup-form setup-form--nested" onSubmit={handleSubmit} aria-busy={isSaving || undefined}>
       {/* ── Editor de orden de secciones ── */}
       <SectionOrderEditor
         value={sectionOrder}

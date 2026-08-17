@@ -3,7 +3,7 @@ export const CHANGELOG = [
     version: "2.99.8",
     date: "2026-08-17",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "Ronda de mejora progresiva: confirmaciones accesibles (useConfirm) en DataRequestModal, VoiceNotesSection, GalleryArrayEditor y LandingPage (sustituye window.confirm); cutoff de consentimiento parental GDPR actualizado a 2012-08-18 (consent:check verde); aria-current=page en la barra de admin; decoding=async en miniaturas; aria-busy en el formulario del editor; aria-hidden en el ecualizador; preready y typecheck:e2e verdes; tests nuevos para useAnimations (allOff/isGroupFullyDisabled), AnimationsSectionForm (maestro+grupo) y useTabs (sync URL↔estado).",
     ],
   },
 

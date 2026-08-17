@@ -12,6 +12,7 @@ import { memo } from "react";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../hooks/useToast";
 import { useRsvpContext } from "../contexts";
+import { useConfirm } from "../contexts/ConfirmContext";
 import { eraseGuestLocalData, exportGuestLocalData } from "../lib/data-request";
 import Modal from "./Modal";
 import "../styles/modals.css";
@@ -26,6 +27,7 @@ interface DataRequestModalProps {
 const DataRequestModal = memo(function DataRequestModal({ inviteToken, onClose }: DataRequestModalProps) {
   const { t } = useTranslation();
   const { addToast } = useToast();
+  const { confirm } = useConfirm();
   // Respuestas del invitado ya cargadas (caché/descifradas): se incluyen en
   // el export de portabilidad cuando están disponibles.
   const { rsvpEntries } = useRsvpContext();
@@ -51,9 +53,9 @@ const DataRequestModal = memo(function DataRequestModal({ inviteToken, onClose }
   };
 
   /** Elimina los datos locales y el consentimiento, con confirmación. */
-  const handleErase = () => {
+  const handleErase = async () => {
     // Confirmación explícita antes de destruir datos (no reversible).
-    if (!window.confirm(t("dataRequest.eraseConfirm"))) return;
+    if (!(await confirm({ message: t("dataRequest.eraseConfirm"), danger: true }))) return;
     const { erasedKeys } = eraseGuestLocalData(inviteToken);
     // El borrado retira el consentimiento: Sentry debe detenerse.
     import("../lib/sentry").then(({ disableSentryTracking }) => disableSentryTracking());

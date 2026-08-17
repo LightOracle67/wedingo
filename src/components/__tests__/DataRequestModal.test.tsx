@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen, fireEvent, act } from "@testing-library/react";
+import { render, screen, fireEvent, act, waitFor } from "@testing-library/react";
 
 const mockAddToast = vi.hoisted(() => vi.fn());
 const mockErase = vi.hoisted(() => vi.fn(() => ({ erasedKeys: ["a", "b"] })));
@@ -69,12 +69,13 @@ describe("DataRequestModal", () => {
     expect(onClose).not.toHaveBeenCalled();
   });
 
-  it("erases local data, shows toast and closes after confirmation", () => {
+  it("erases local data, shows toast and closes after confirmation", async () => {
     vi.spyOn(window, "confirm").mockReturnValue(true);
     const onClose = vi.fn();
     render(<DataRequestModal inviteToken="abc" onClose={onClose} />);
     fireEvent.click(screen.getByTestId("data-request-erase"));
-    expect(mockErase).toHaveBeenCalledWith("abc");
+    // La confirmación ahora es asíncrona (useConfirm): se espera el microtask.
+    await waitFor(() => expect(mockErase).toHaveBeenCalledWith("abc"));
     expect(mockAddToast).toHaveBeenCalledWith("success", "dataRequest.eraseDone");
     expect(onClose).toHaveBeenCalledTimes(1);
   });

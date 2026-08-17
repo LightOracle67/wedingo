@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { addVoiceNote, listVoiceNotes, loadVoiceNote, deleteVoiceNote } from "../../lib/voice-store";
 import { useToast } from "../../hooks/useToast";
 import { useAuth } from "../../contexts";
+import { useConfirm } from "../../contexts/ConfirmContext";
 
 interface VoiceNote {
   id: string;
@@ -21,6 +22,7 @@ interface VoiceNote {
 const VoiceNotesSection = memo(function VoiceNotesSection({ inviteToken }: { inviteToken: string }) {
   const { t } = useTranslation();
   const { addToast } = useToast();
+  const { confirm } = useConfirm();
   const { isAdminTokenLoggedIn } = useAuth();
   const [notes, setNotes] = useState<VoiceNote[]>([]);
   const [recording, setRecording] = useState(false);
@@ -119,11 +121,11 @@ const VoiceNotesSection = memo(function VoiceNotesSection({ inviteToken }: { inv
 
   const remove = useCallback(
     async (noteId: string) => {
-      if (!window.confirm(t("voiceNotes.deleteConfirm"))) return;
+      if (!(await confirm({ message: t("voiceNotes.deleteConfirm"), danger: true }))) return;
       await deleteVoiceNote(inviteToken, noteId);
       await refresh();
     },
-    [inviteToken, refresh, t],
+    [inviteToken, refresh, t, confirm],
   );
 
   return (

@@ -613,6 +613,7 @@ const GallerySection = memo(function GallerySection({
                       onError={handleThumbLoad}
                       data-index={i}
                       loading="lazy"
+                      decoding="async"
                       className="gallery-thumb__img"
                       style={{ opacity: thumbLoaded[i] && img.url ? 1 : 0, transition: "opacity 0.3s ease" }}
                     />

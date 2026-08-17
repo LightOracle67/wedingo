@@ -16,6 +16,7 @@ import { safeSetItem } from "../lib/storage";
 import { clearExpiredCache } from "../lib/storage-utils";
 import { saveSession, firestoreSessionExpiry } from "../lib/sessionVars";
 import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
+import { useConfirm } from "../contexts/ConfirmContext";
 import "../styles/landing.css";
 import "../styles/admin.css";
 import "../styles/modals.css";
@@ -26,6 +27,7 @@ export default function LandingPage() {
   const { setIsTokenVerified, setTokenLoginUsername } = useAuth();
   // F3-4: modo mantenimiento global (la creación se desactiva).
   const { settings: platform } = usePlatformSettings();
+  const { confirm } = useConfirm();
   const maintenance = platform.maintenance === "true";
   const [showModal, setShowModal] = useState(false);
   const [usernameInput, setUsernameInput] = useState("");
@@ -160,7 +162,7 @@ export default function LandingPage() {
 
       if (matchedData?.activeSession) {
         setIsLoading(false);
-        if (!window.confirm(t("landing.sessionExists"))) {
+        if (!(await confirm({ message: t("landing.sessionExists") }))) {
           return;
         }
 

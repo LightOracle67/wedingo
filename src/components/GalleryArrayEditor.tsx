@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { useToast } from "../hooks/useToast";
 import { withTimeout } from "../lib/async-utils";
 import { validateFile } from "../lib/upload-validation";
+import { useConfirm } from "../contexts/ConfirmContext";
 import { SlotState } from "../types";
 
 const SLOT_COUNT = 10;
@@ -33,6 +34,7 @@ interface GalleryArrayEditorProps {
 const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: GalleryArrayEditorProps) {
   const { t } = useTranslation();
   const { addToast, startUploadToast } = useToast();
+  const { confirm } = useConfirm();
   const [slots, setSlots] = useState<(SlotState | null)[]>(Array.from({ length: SLOT_COUNT }, () => null));
   const [loading, setLoading] = useState(true);
   const [uploadingSlots, setUploadingSlots] = useState<Set<number>>(new Set<number>());
@@ -164,7 +166,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
       if (!existing?.id) {
         return;
       }
-      if (!window.confirm(t("setup.deleteImageConfirm"))) {
+      if (!(await confirm({ message: t("setup.deleteImageConfirm"), danger: true }))) {
         return;
       }
       try {
@@ -180,7 +182,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
         addToast("error", t("errors.galleryDeleteFailed"));
       }
     },
-    [inviteToken, slots, t, addToast],
+    [inviteToken, slots, t, addToast, confirm],
   );
 
   const handleDescriptionChange = useCallback((slotIndex: number, val: string) => {
