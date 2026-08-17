@@ -69,22 +69,32 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
     [formStore, updateFormField],
   );
 
-  /** Editor de la lista de regalos (JSON de {id,name,description}): se edita
-   *  como líneas "nombre | descripción" y se convierte a JSON al guardar. */
+  /** Editor de la lista de regalos (JSON de {id,name,description,type}): se
+   *  edita como líneas "nombre | descripción | tipo" y se convierte a JSON al
+   *  guardar. El tipo es opcional: solo se escribe cuando es "experiencia"
+   *  (las líneas antiguas siguen siendo "nombre | descripción"). */
   const { toLines: giftToLines, parseText: giftParseText } = useLinesField<{
     id: string;
     name: string;
     description: string;
+    type?: string;
   }>({
     parseLine: (line) => {
       const [name, ...rest] = line.split("|");
+      const lastSeg = (rest[rest.length - 1] ?? "").trim().toLowerCase();
+      // El tercer segmento solo es una experiencia si dice "experiencia"
+      // (o su equivalente en inglés); en cualquier otro caso es descripción.
+      const isExperience = lastSeg === "experiencia" || lastSeg === "experience";
+      const description = (isExperience ? rest.slice(0, -1).join("|") : rest.join("|")).trim().slice(0, 200);
       return {
         id: `g${Math.random().toString(36).slice(2, 8)}`,
         name: (name || "").trim().slice(0, 100),
-        description: rest.join("|").trim().slice(0, 200),
+        description,
+        type: isExperience ? "experiencia" : "regalo",
       };
     },
-    itemToLine: (g) => `${g.name ?? ""} | ${g.description ?? ""}`,
+    itemToLine: (g) =>
+      g.type === "experiencia" ? `${g.name ?? ""} | ${g.description ?? ""} | experiencia` : `${g.name ?? ""} | ${g.description ?? ""}`,
     maxLines: 50,
   });
   const giftListLines = giftToLines(giftList || "");

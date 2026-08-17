@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { calcRSVPSummary, getDietarySummary } from "../admin-utils";
+import { calcRSVPSummary, getDietarySummary, buildAttendancePrediction } from "../admin-utils";
 
 describe("calcRSVPSummary", () => {
   it("returns zeros for null", () => {
@@ -161,5 +161,69 @@ describe("getDietarySummary", () => {
       { item: "sin gluten", count: 1 },
       { item: "alergia", count: 1 },
     ]);
+  });
+});
+
+describe("buildAttendancePrediction", () => {
+  const now = Date.parse("2026-08-17T12:00:00");
+  const entry = (attendance: "yes" | "no", companions: number, submittedAt: number) => ({
+    attendance,
+    companions,
+    submittedAt,
+  });
+
+  const base = (wedding = Date.parse("2026-10-01T12:00:00")) => {
+    const entries = [
+      entry("yes", 2, now - 20 * 86400000),
+      entry("yes", 1, now - 15 * 86400000),
+      entry("yes", 1, now - 3 * 86400000),
+    ];
+    return { entries, wedding };
+  };
+
+  it("computes confirmed people and a projected total above current", () => {
+    const { entries, wedding } = base();
+    const r = buildAttendancePrediction(entries, 100, wedding, now);
+    expect(r.confirmedPeople).toBe(4); // 3 respuestas "yes": 2+1+1
+    expect(r.projected).toBeGreaterThanOrEqual(4);
+    expect(r.hasFutureWedding).toBe(true);
+    expect(r.daysToWedding).toBeGreaterThan(0);
+    expect(r.capacityPct).toBe(4);
+  });
+
+  it("caps the projection at 110% of expected capacity", () => {
+    const { entries, wedding } = base();
+    const r = buildAttendancePrediction(entries, 5, wedding, now);
+    expect(r.projected).toBeLessThanOrEqual(Math.ceil(5 * 1.1));
+  });
+
+  it("does not divide by zero with an empty list", () => {
+    const r = buildAttendancePrediction([], 0, Date.parse("2026-10-01"), now);
+    expect(r.confirmedPeople).toBe(0);
+    expect(r.projected).toBe(0);
+    expect(r.capacityPct).toBeNull();
+  });
+
+  it("returns the current people when the wedding already passed", () => {
+    const { entries } = base();
+    const r = buildAttendancePrediction(entries, 100, now - 86400000, now);
+    expect(r.projected).toBe(r.confirmedPeople);
+    expect(r.hasFutureWedding).toBe(false);
+  });
+
+  it("handles timestamps in seconds and invalid values", () => {
+    const entries = [
+      entry("yes", 2, (now - 10 * 86400000) / 1000), // en segundos
+      entry("yes", 1, Number.NaN), // inválido: se ignora
+    ];
+    const r = buildAttendancePrediction(entries, 50, Date.parse("2026-10-01"), now);
+    expect(r.confirmedPeople).toBe(3);
+    expect(r.pacePerDay).toBeGreaterThan(0);
+  });
+
+  it("reports a trend among up/down/flat", () => {
+    const { entries } = base();
+    const r = buildAttendancePrediction(entries, 100, Date.parse("2026-10-01"), now);
+    expect(["up", "down", "flat"]).toContain(r.trend);
   });
 });

@@ -36,7 +36,13 @@ vi.mock("firebase/firestore", () => ({
   doc: vi.fn(() => ({ id: "test" })),
   collection: vi.fn(() => ({ id: "test" })),
   getDocs: vi.fn(() => Promise.resolve({ docs: [], empty: true })),
-  writeBatch: vi.fn(() => ({ delete: vi.fn(), commit: vi.fn() })),
+  writeBatch: vi.fn(() => ({
+    delete: vi.fn(),
+    // trackVisit usa batch.update + batch.set (historial por día) + commit.
+    update: mockUpdateDoc,
+    set: mockSetDoc,
+    commit: vi.fn(() => Promise.resolve()),
+  })),
   increment: vi.fn(() => 1),
   query: vi.fn(),
   where: vi.fn(),

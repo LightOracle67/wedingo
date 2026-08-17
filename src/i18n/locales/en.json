@@ -390,6 +390,9 @@
     "replaceImage": "Change photo",
     "hiddenSectionBadge": "hidden",
     "surpriseBadge": "surprise",
+    "languageLabel": "Default invitation language",
+    "languageHint": "Applies to guests who have not chosen a language on their device. Guests can always switch with the footer selector.",
+    "languageAuto": "Automatic (browser-based)",
     "duplicateFileWarning": "This file has already been uploaded.",
     "galleryDescriptionSaveFailed": "Error saving description",
     "galleryDescriptionSaved": "Description saved",
@@ -477,7 +480,7 @@
     "reactionsHint": "Guests can react to the invitation.",
     "giftsListLabel": "Gift list with reservation",
     "giftsListHint": "Guests reserve a gift to avoid duplicates.",
-    "giftListEditorHint": "One gift per line: Name | Description",
+    "giftListEditorHint": "One gift per line: Name | Description. Add '| experience' at the end to mark it as an experience.",
     "rideShareLabel": "Carpooling",
     "rideShareHint": "Guests offer and look for car seats.",
     "welcomeVideoLabel": "Welcome video",
@@ -555,6 +558,15 @@
     "confirms": "Confirm",
     "declines": "Decline",
     "pending": "Pending",
+    "predictionTitle": "Attendance projection",
+    "predictedPeople": "expected attendees",
+    "predictedCapacity": "of expected capacity",
+    "predictedPace": "confirmations/day",
+    "predictionHint": "{{days}} days left until the event. Estimate based on the current confirmation pace.",
+    "trendUp": "growing pace",
+    "trendDown": "slowing pace",
+    "trendFlat": "stable pace",
+    "visitsHistory": "Visits per day (last 7 days)",
     "viewInvitation": "View invitation",
     "restoreConfirm": "Restore the backup? Current data will be replaced."
   },
@@ -1377,11 +1389,12 @@
     "sectionLabel": "Extras"
   },
   "giftList": {
-    "title": "Lista de regalos",
-    "namePlaceholder": "Tu nombre",
-    "reserve": "Reservar",
-    "taken": "Reservado",
-    "reservedBy": "Reservado por {{name}}"
+    "title": "Gift list",
+    "namePlaceholder": "Your name",
+    "reserve": "Reserve",
+    "taken": "Reserved",
+    "reservedBy": "Reserved by {{name}}",
+    "experienceBadge": "experience"
   },
   "rideShare": {
     "title": "Compartir coche",

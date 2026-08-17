@@ -22,6 +22,7 @@ import { Navigate, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import { useConfig, useAuth, useRsvpContext, useAppUI } from "../contexts";
 import { normalizeConfig } from "../lib/normalize-config";
+import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { useToast } from "../hooks/useToast";
 import { formatDate } from "../lib/section-utils";
 import { escHtml } from "../lib/utils";
@@ -265,6 +266,18 @@ export default function AdminPage() {
   );
   const expectedGuestsTotal = Math.min(Math.max(Number(config.expectedGuests) || 0, 0), 1000);
 
+  // Timestamp de la boda (ms) para el dashboard predictivo; null sin fecha
+  // válida (se valida el rollover para no proyectar sobre una fecha errónea).
+  const weddingTimestamp = useMemo(() => {
+    const day = Number(config.weddingDay);
+    const month = MONTH_VALUE_TO_NUMBER[config.weddingMonth as keyof typeof MONTH_VALUE_TO_NUMBER];
+    const year = Number(config.weddingYear);
+    if (!day || !month || !year || !Number.isFinite(day) || !Number.isFinite(year)) return null;
+    const d = new Date(year, month - 1, day, Number(config.weddingHour) || 12, Number(config.weddingMinute) || 0);
+    if (d.getFullYear() !== year || d.getMonth() !== month - 1 || d.getDate() !== day) return null;
+    return d.getTime();
+  }, [config.weddingDay, config.weddingMonth, config.weddingYear, config.weddingHour, config.weddingMinute]);
+
   /** Props agrupadas para PanelTab (reduce prop drilling). */
   const panelConfig = useMemo(
     () => ({
@@ -282,6 +295,7 @@ export default function AdminPage() {
       formatDate: formatDate as (date: unknown) => string,
       onRestore: reloadConfig,
       visitCount,
+      weddingTimestamp,
       exportData: config,
     }),
     [
@@ -299,6 +313,7 @@ export default function AdminPage() {
       reloadConfig,
       config,
       visitCount,
+      weddingTimestamp,
     ],
   );
 

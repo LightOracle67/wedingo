@@ -2796,6 +2796,20 @@ body::after {
   font-weight: 600;
   color: var(--setup-title, #f0e6d0);
 }
+.gift-list__type-badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--setup-accent, #d8b24a);
+  background: color-mix(in srgb, var(--setup-accent, #d8b24a) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-accent, #d8b24a) 40%, transparent);
+  border-radius: 999px;
+  padding: 0.05rem 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
 .gift-list__desc {
   font-size: 0.8rem;
   color: var(--setup-muted, #a99f8e);

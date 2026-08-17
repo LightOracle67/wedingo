@@ -62,6 +62,7 @@ export default function SetupForm({ prefix = "" }) {
   const sectionOrder = useFormField("sectionOrder");
   const surpriseMode = useFormField("surpriseMode");
   const surpriseSections = useFormField("surpriseSections");
+  const language = useFormField("language");
   const { isTokenVerified, isRestoringSession } = useAuth();
   const { saveMessage, saveError, setLegalModal } = useAppUI();
   const { addToast } = useToast();
@@ -107,6 +108,24 @@ export default function SetupForm({ prefix = "" }) {
 
   return (
     <form ref={formRef} className="setup-form setup-form--nested" onSubmit={handleSubmit} aria-busy={isSaving || undefined}>
+      {/* ── Idioma por defecto de la invitación ── */}
+      <div className="setup-token-card">
+        <label className="setup-label setup-label--tight" htmlFor="wedingo-lang">
+          {t("setup.languageLabel")}
+        </label>
+        <p className="setup-help setup-help--tight">{t("setup.languageHint")}</p>
+        <select
+          id="wedingo-lang"
+          className="setup-input"
+          value={language || "auto"}
+          onChange={(e) => updateFormField("language", e.target.value === "auto" ? "" : e.target.value)}
+        >
+          <option value="auto">{t("setup.languageAuto")}</option>
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+
       {/* ── Editor de orden de secciones ── */}
       <SectionOrderEditor
         value={sectionOrder}

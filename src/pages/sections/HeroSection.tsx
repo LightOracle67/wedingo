@@ -95,33 +95,57 @@ const HeroSection = memo(function HeroSection({
   const photoFadeOff = animationsOff.has("hero-photo-fade");
   const godparentGlowOff = animationsOff.has("hero-godparent-glow");
 
-  // Prueba social en vivo: nº de invitados que ya confirmaron. Se lee con
-  // polling ligero (getDoc cada 20s) en lugar de onSnapshot: así no se abre un
-  // canal WebChannel persistente de Firestore (más robusto ante redes/CORS).
+  // Prueba social en vivo: nº de invitados que ya confirmaron. Se lee en
+  // TIEMPO REAL con onSnapshot (cuando un invitado confirma, el contador se
+  // actualiza al instante sin esperar el tick). Si el canal de Firestore
+  // falla (red/CORS), se degrada automáticamente al polling ligero de 20s:
+  // la UI nunca se queda con el contador congelado si el WebChannel falla.
   const [confirmedCount, setConfirmedCount] = useState(0);
   useEffect(() => {
     if (!inviteToken) return;
     let cancelled = false;
+    let unsub: (() => void) | undefined;
     let timer: ReturnType<typeof setInterval> | undefined;
-    const init = async () => {
+    const apply = (n: number) => {
+      if (cancelled) return;
+      setConfirmedCount(Number.isFinite(n) && n > 0 ? n : 0);
+    };
+    // Fallback robusto: lee el contador con getDoc cada 20s (sin canal abierto).
+    const startPolling = async () => {
+      if (cancelled || unsub) return;
       const fs = await import("firebase/firestore");
       const fb = await import("../../lib/firebase");
       const tick = async () => {
         try {
           const snap = await fs.getDoc(fs.doc(fb.db, "rsvpResponses", inviteToken));
           if (cancelled) return;
-          const n = Number(snap.data()?.count || 0);
-          setConfirmedCount(n > 0 ? n : 0);
+          apply(Number(snap.data()?.count || 0));
         } catch {
-          /* si falla, se reintenta en el siguiente tick */
+          /* se reintenta en el siguiente tick */
         }
       };
       await tick();
       timer = setInterval(() => void tick(), 20000);
     };
-    void init();
+    const subscribe = async () => {
+      try {
+        const fs = await import("firebase/firestore");
+        const fb = await import("../../lib/firebase");
+        const ref = fs.doc(fb.db, "rsvpResponses", inviteToken);
+        unsub = fs.onSnapshot(
+          ref,
+          (snap) => apply(Number(snap.data()?.count || 0)),
+          // Error del canal en vivo → fallback imperceptible al polling.
+          () => void startPolling(),
+        );
+      } catch {
+        void startPolling();
+      }
+    };
+    void subscribe();
     return () => {
       cancelled = true;
+      if (unsub) unsub();
       if (timer) clearInterval(timer);
     };
   }, [inviteToken]);

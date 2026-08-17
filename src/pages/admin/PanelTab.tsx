@@ -1,10 +1,10 @@
-import { memo, useCallback, useMemo, useRef, type ChangeEvent } from "react";
-import { setDoc, doc, collection, getDocs } from "firebase/firestore";
+import { memo, useCallback, useEffect, useMemo, useRef, useState, type ChangeEvent } from "react";
+import { setDoc, doc, collection, getDocs, query, orderBy, limit, documentId } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 import { db, invitationDocRef, rsvpByInviteRef } from "../../lib/firebase";
 import { encrypt } from "../../lib/crypto-utils";
-import { calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
+import { buildAttendancePrediction, calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
 import { DonutChart, Legend } from "../../components/AttendanceChart";
 import StatsCard from "./StatsCard";
 import type { InvitationConfig } from "../../types";
@@ -25,6 +25,8 @@ export interface PanelTabConfig {
   formatDate: (date: unknown) => string;
   onRestore?: () => Promise<void>;
   visitCount: number;
+  /** Timestamp (ms) de la fecha de la boda; null si no está configurada. */
+  weddingTimestamp?: number | null;
   exportData?: InvitationConfig;
 }
 
@@ -46,6 +48,7 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
     formatDate,
     onRestore,
     visitCount,
+    weddingTimestamp,
     exportData,
   } = config;
   const { t } = useTranslation();
@@ -56,6 +59,42 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
 
   const summary = useMemo(() => calcRSVPSummary(rsvpEntries), [rsvpEntries]);
   const dietary = useMemo(() => getDietarySummary(rsvpEntries).slice(0, 5), [rsvpEntries]);
+
+  // Proyección de asistencia (F6): estimación del total final, % de aforo y
+  // tendencia a partir del ritmo real de confirmaciones.
+  const prediction = useMemo(
+    () => buildAttendancePrediction(rsvpEntries, expectedGuests, weddingTimestamp ?? null, Date.now()),
+    [rsvpEntries, expectedGuests, weddingTimestamp],
+  );
+
+  // Historial de visitas por día (F18): últimos 7 días ordenados por fecha.
+  // La lectura falla silenciosamente si no hay subcolección (invitación
+  // antigua): el bloque simplemente no se muestra.
+  const [lastVisits, setLastVisits] = useState<Array<{ day: string; count: number }>>([]);
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const q = query(
+          collection(db, "invitations", inviteToken, "visitLog"),
+          orderBy(documentId(), "desc"),
+          limit(7),
+        );
+        const snap = await getDocs(q);
+        if (cancelled) return;
+        const items = snap.docs
+          .map((d) => ({ day: d.id, count: Number(d.data().count) || 0 }))
+          .filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d.day))
+          .sort((a, b) => a.day.localeCompare(b.day));
+        setLastVisits(items);
+      } catch {
+        /* el historial es opcional */
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [inviteToken]);
 
   // Estadísticas: si hay invitados esperados configurados (>0) se calculan en
   // PERSONAS a partir de ese número (total = esperado, sin responder =
@@ -220,6 +259,64 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
       <div className="setup-help" style={{ marginBottom: "0.5rem", fontSize: "0.8rem", textAlign: "center" }}>
         {visitCount > 0 ? `👁 ${t("panel.visits", { count: visitCount })}` : t("panel.noVisits")}
       </div>
+
+      {/* ── Proyección de asistencia (F6) ── */}
+      {prediction.projected > 0 ? (
+        <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.9rem 1rem" }}>
+          <p className="setup-label" style={{ marginBottom: "0.4rem" }}>
+            {t("panel.predictionTitle")}
+          </p>
+          <div className="panel-prediction">
+            <div className="panel-prediction__main">
+              <span className="panel-prediction__big">{prediction.projected}</span>
+              <span className="panel-prediction__tag">{t("panel.predictedPeople")}</span>
+            </div>
+            {prediction.capacityPct !== null ? (
+              <div className="panel-prediction__metric">
+                <span className="panel-prediction__value">{prediction.capacityPct}%</span>
+                <span className="panel-prediction__label">{t("panel.predictedCapacity")}</span>
+              </div>
+            ) : null}
+            <div className="panel-prediction__metric">
+              <span className="panel-prediction__value">{prediction.pacePerDay}</span>
+              <span className="panel-prediction__label">{t("panel.predictedPace")}</span>
+            </div>
+            <div className="panel-prediction__metric">
+              <span className="panel-prediction__value">{prediction.trend === "up" ? "↗" : prediction.trend === "down" ? "↘" : "→"}</span>
+              <span className="panel-prediction__label">
+                {t(prediction.trend === "up" ? "panel.trendUp" : prediction.trend === "down" ? "panel.trendDown" : "panel.trendFlat")}
+              </span>
+            </div>
+          </div>
+          {prediction.hasFutureWedding ? (
+            <p className="setup-help" style={{ marginTop: "0.4rem", fontSize: "0.75rem" }}>
+              {t("panel.predictionHint", { days: prediction.daysToWedding })}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
+
+      {/* ── Historial de visitas por día (F18) ── */}
+      {lastVisits.length > 0 ? (
+        <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "0.9rem 1rem" }}>
+          <p className="setup-label" style={{ marginBottom: "0.4rem" }}>
+            {t("panel.visitsHistory")}
+          </p>
+          <div className="visits-bars" aria-label={t("panel.visitsHistory")}>
+            {lastVisits.map((d: { day: string; count: number }) => {
+              const max = Math.max(1, ...lastVisits.map((x: { count: number }) => x.count));
+              const short = d.day.slice(5); // MM-DD
+              return (
+                <div key={d.day} className="visits-bars__col" title={`${short}: ${d.count}`}>
+                  <div className="visits-bars__bar" style={{ height: `${Math.max(8, (d.count / max) * 100)}%` }} />
+                  <span className="visits-bars__label">{short}</span>
+                  <span className="visits-bars__count">{d.count}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : null}
 
       {confirmed + declined > 0 && (
         <div className="setup-token-card" style={{ marginBottom: "1rem", padding: "1rem", textAlign: "center" }}>

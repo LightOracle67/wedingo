@@ -78,6 +78,15 @@ async function run() {
   // 7. Invitado SÍ puede leer una invitación por documento (público).
   await t("invitation get público", true, guestDb.collection("invitations").doc("AbCdEf1234").get());
 
+  // 7b. Historial de visitas por día (F18): incremento público acotado.
+  const visitLogRef = () => guestDb.collection("invitations").doc("AbCdEf1234").collection("visitLog").doc("2026-08-17");
+  await t("visitLog create count 1 (invitado) SÍ", true, visitLogRef().set({ count: 1 }));
+  await t("visitLog update +5 SÍ", true, visitLogRef().update({ count: 6 }));
+  await t("visitLog update +25 → NEGADO", false, visitLogRef().update({ count: 31 }));
+  await t("visitLog id inválido → NEGADO", false, guestDb.collection("invitations").doc("AbCdEf1234").collection("visitLog").doc("not-a-date").set({ count: 1 }));
+  await t("visitLog lectura pública → NEGADO", false, guestDb.collection("invitations").doc("AbCdEf1234").collection("visitLog").get());
+  await t("visitLog lectura admin SÍ", true, emailDb.collection("invitations").doc("AbCdEf1234").collection("visitLog").get());
+
   // 7b. Invitados esperados: solo 0..1000 (string); se rechazan >1000 y no numéricos.
   await t("expectedGuests 1000 (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", expectedGuests: "1000" }, { merge: true }));
   await t("expectedGuests 1001 → NEGADO", false, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", expectedGuests: "1001" }, { merge: true }));

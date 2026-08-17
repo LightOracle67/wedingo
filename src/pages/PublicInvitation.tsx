@@ -128,6 +128,25 @@ export default function PublicInvitation() {
     return new Set(raw.split(",").filter(Boolean));
   }, [config.hiddenSections]);
 
+  // ─── Idioma por defecto de la invitación ───
+  // La pareja fija el idioma base (config.language); se aplica SOLO si el
+  // visitante no ha elegido idioma en su dispositivo (clave de i18next en
+  // localStorage) y el admin mantiene el suyo. Un cambio de idioma durante
+  // la visita (selector del pie) no se pisa: el efecto se ejecuta una vez al
+  // cargar (config carga una sola vez por token).
+  useEffect(() => {
+    const inviteLang = config.language;
+    if (!inviteLang || isAdminTokenLoggedIn) return;
+    let userPreference = false;
+    try {
+      userPreference = Boolean(localStorage.getItem("i18nextLng"));
+    } catch {
+      /* almacenamiento no disponible */
+    }
+    if (userPreference) return;
+    void i18n.changeLanguage(inviteLang).catch(() => {});
+  }, [config.language, isAdminTokenLoggedIn, i18n]);
+
   // ─── Fecha de la boda (fuente única para countdown y modo sorpresa) ───
   /**
    * Construye el objeto Date de la boda a partir de los campos de configuración.

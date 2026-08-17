@@ -15,7 +15,6 @@ import {
   setDoc,
   doc,
   increment,
-  updateDoc,
   getDocs,
   writeBatch,
   addDoc,
@@ -173,7 +172,16 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
     try {
       const ref = invitationDocRef(token);
-      await updateDoc(ref, { _visits: increment(1) });
+      // Día local (no UTC) para que el historial coincida con el calendario
+      // del responsable: "2026-08-17" para el 17 de agosto de 2026.
+      const now = new Date();
+      const day = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+      // Batch atómico: si una de las dos escrituras falla, ninguna se aplica
+      // (el contador total y el historial por día nunca quedan desincronizados).
+      const batch = writeBatch(db);
+      batch.update(ref, { _visits: increment(1) });
+      batch.set(doc(db, "invitations", token, "visitLog", day), { count: increment(1) }, { merge: true });
+      await batch.commit();
     } catch (e) {
       console.warn("[app]", "[ConfigProvider]", "trackVisit failed:", getFirestoreErrorMessage(e));
     }

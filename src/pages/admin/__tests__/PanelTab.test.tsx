@@ -30,10 +30,21 @@ vi.mock("../../../lib/crypto-utils", () => ({
 const mocks = vi.hoisted(() => ({
   calcRSVPSummary: vi.fn(() => ({ confirmed: 5, declined: 2, pending: 3 })),
   getDietarySummary: vi.fn(() => [] as { item: string; count: number }[]),
+  buildAttendancePrediction: vi.fn(() => ({
+    confirmedPeople: 0,
+    projected: 0,
+    capacityPct: null,
+    pacePerDay: 0,
+    daysToWedding: 0,
+    hasFutureWedding: false,
+    trend: "flat" as const,
+  })),
 }));
 vi.mock("../../../lib/admin-utils", () => ({
   calcRSVPSummary: (...args: Parameters<typeof mocks.calcRSVPSummary>) => mocks.calcRSVPSummary(...args),
   getDietarySummary: (...args: Parameters<typeof mocks.getDietarySummary>) => mocks.getDietarySummary(...args),
+  buildAttendancePrediction: (...args: Parameters<typeof mocks.buildAttendancePrediction>) =>
+    mocks.buildAttendancePrediction(...args),
 }));
 
 import PanelTab, { type PanelTabConfig } from "../PanelTab";
@@ -58,10 +69,19 @@ const baseConfig: PanelTabConfig = {
 
 beforeEach(() => {
   vi.clearAllMocks();
-  // El restore pide confirmaciÃ³n (v2.81): se acepta en los tests.
+  // El restore pide confirmación (v2.81): se acepta en los tests.
   window.confirm = vi.fn(() => true);
   mocks.calcRSVPSummary.mockImplementation(() => ({ confirmed: 5, declined: 2, pending: 3 }));
   mocks.getDietarySummary.mockImplementation(() => []);
+  mocks.buildAttendancePrediction.mockReturnValue({
+    confirmedPeople: 0,
+    projected: 0,
+    capacityPct: null,
+    pacePerDay: 0,
+    daysToWedding: 0,
+    hasFutureWedding: false,
+    trend: "flat" as const,
+  });
 });
 
 describe("PanelTab", () => {
@@ -114,6 +134,29 @@ describe("PanelTab", () => {
     render(<PanelTab config={baseConfig} />);
     expect(screen.getByText("panel.downloadBackup")).toBeDefined();
     expect(screen.getByText("panel.restoreBackup")).toBeDefined();
+  });
+
+  it("renders the attendance projection block when there is a projection", () => {
+    // Con proyección > 0 el bloque aparece con la métrica principal.
+    mocks.buildAttendancePrediction.mockReturnValue({
+      confirmedPeople: 12,
+      projected: 20,
+      capacityPct: 60,
+      pacePerDay: 1.4,
+      daysToWedding: 45,
+      hasFutureWedding: true,
+      trend: "up",
+    } as never);
+    render(<PanelTab config={{ ...baseConfig, expectedGuests: 30 }} />);
+    expect(screen.getByText("panel.predictionTitle")).toBeDefined();
+    expect(screen.getByText("panel.predictedPeople")).toBeDefined();
+    expect(screen.getByText("panel.predictedCapacity")).toBeDefined();
+    expect(screen.getByText("panel.predictedPace")).toBeDefined();
+  });
+
+  it("hides the projection block when there is nothing to project", () => {
+    render(<PanelTab config={baseConfig} />);
+    expect(screen.queryByText("panel.predictionTitle")).toBeNull();
   });
 
   it("shows no responses message when rsvpEntries is empty", () => {

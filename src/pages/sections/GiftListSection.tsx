@@ -6,6 +6,7 @@ interface GiftItem {
   id: string;
   name: string;
   description: string;
+  type?: string;
 }
 
 /**
@@ -84,7 +85,14 @@ const GiftListSection = memo(function GiftListSection({ inviteToken, gifts }: { 
           return (
             <div className="gift-list__item" key={item.id}>
               <div>
-                <p className="gift-list__name">{item.name}</p>
+                <p className="gift-list__name">
+                  {item.name}
+                  {item.type === "experiencia" ? (
+                    <span className="gift-list__type-badge" aria-label={t("giftList.experienceBadge")}>
+                      🎁 {t("giftList.experienceBadge")}
+                    </span>
+                  ) : null}
+                </p>
                 {item.description ? <p className="gift-list__desc">{item.description}</p> : null}
                 {taken ? (
                   <p className="gift-list__reserved">{t("giftList.reservedBy", { name: reserved[item.id] })}</p>

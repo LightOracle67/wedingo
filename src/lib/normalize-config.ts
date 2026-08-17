@@ -178,6 +178,9 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
     const valid = new Set(STORY_SECTION_ORDER);
     return [...new Set(raw.split(",").map((s) => s.trim()).filter((k) => valid.has(k)))].join(",");
   })(),
+  // Idioma de la invitación: solo se aceptan es/en (los únicos disponibles);
+  // cualquier otro valor se resuelve a vacío (detección automática).
+  language: s(value?.language) === "en" ? "en" : s(value?.language) === "es" ? "es" : "",
   // Animaciones desactivadas: se sanitizan contra el registro canónico (solo
   // ids válidos, ordenados y deduplicados) para que un valor corrupto o de
   // una versión antigua no aplique toggles inexistentes.

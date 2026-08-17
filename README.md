@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.100.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.100.0)  
+**Versión actual:** [v2.101.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.101.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2256 tests, 173 test files |
+| Tests | 2264 tests, 173 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -57,6 +57,14 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 - **Impresión profesional con QR:** la tarjeta imprimible incluye el código QR de la invitación (carga lazy, no bloquea la impresión).
 - **Modo sorpresa:** el editor de secciones marca secciones con 🎁 que quedan ocultas a los invitados hasta el día del evento (con fecha inválida nunca se revelan).
 - **Modo invitado senior:** texto Muy grande (1.5×) y narración de la invitación por voz (Web Speech API) en el panel de accesibilidad.
+
+### Funciones diferenciadoras (ronda v2.101)
+
+- **Dashboard predictivo de asistencia:** el Panel proyecta el total final según el ritmo real de confirmaciones (personas/día), % del aforo estimado, tendencia (alza/baja/estable) y días restantes.
+- **Confirmaciones en tiempo real:** el contador de la portada se actualiza al instante (onSnapshot) y se degrada a polling de 20s si el canal de Firestore falla.
+- **Regalos-experiencia:** la lista de regalos admite el sufijo `| experiencia` (insignia 🎁) conservando las líneas antiguas.
+- **Historial de visitas por día:** cada visita se registra por día (subcolección segura con incremento acotado) y el Panel muestra los últimos 7 días como gráfico de barras.
+- **Idioma por invitación:** la pareja fija el idioma base (es/en/automático) que se aplica a los invitados que no eligieron idioma en su dispositivo.
 | **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -254,6 +262,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.101.0 | 2026-08-17 | Funciones diferenciadoras (bloque 2): dashboard predictivo de asistencia, confirmaciones en tiempo real (onSnapshot+fallback), regalos-experiencia, historial de visitas por día con regla segura y gráfico, idioma por invitación; tests de reglas 28/28 |
 | v2.100.0 | 2026-08-17 | Funciones diferenciadoras (bloque 1): calendario compartido .ics, ranking para el DJ con anti-CSV-injection, QR en impresión, modo sorpresa por secciones, agenda interactiva en vivo y narración por voz senior; 28 tests nuevos (2256) |
 | v2.97.1 | 2026-08-12 | Cobertura 83.5→86.4% líneas: axe en las 5 secciones sociales restantes, voice-store/FormStore/file-utils/MetricsTab/SupportTab/ToolsTab/DistribucionTab; gate de cobertura ajustado a umbrales verificados |
 | v2.97.2 | 2026-08-12 | Cobertura a 88.8% de líneas (2106 tests): ManageTab, DataTab, InvitationDetailModal, SuperAdminPanel, PlatformTab, DashboardTab y secciones sociales; umbrales CI subidos |

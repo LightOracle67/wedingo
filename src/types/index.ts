@@ -95,6 +95,9 @@ export interface InvitationConfig {
   /** Secciones sorpresa (claves separadas por coma) que solo se revelan el
    *  día del evento si surpriseMode === "true". */
   surpriseSections?: string;
+  /** Idioma por defecto de la invitación ("es" | "en" | "" = automático).
+   *  Se aplica al invitado SOLO si no ha elegido idioma en su dispositivo. */
+  language?: string;
   /** Prueba social en vivo: mostrar cuántos han confirmado en la portada. */
   liveConfirmedEnabled?: string;
   /** Lista de regalos (JSON de items) + habilitada. */

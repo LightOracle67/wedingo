@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.101.0",
+    date: "2026-08-17",
+    changes: [
+      "Ronda de funciones diferenciadoras (bloque 2/3, sin backend): (6) Dashboard predictivo de asistencia en el Panel: estimación del total final según el ritmo real de confirmaciones (personas/día), % del aforo esperado, tendencia (alza/baja/estable) y días restantes, con límites sanos (nunca >110% del aforo) y todos los casos de datos vacíos/rotos cubiertos; (1) Contador de confirmaciones de la portada en TIEMPO REAL (onSnapshot sobre el contador de rsvpResponses) con degradación automática a polling de 20s si el canal de Firestore falla; (11) Regalos-experiencia: la lista de regalos admite un tercer campo opcional '| experiencia' (insignia 🎁 itinerario/experiencia en la lista del invitado), con compatibilidad total con las líneas antiguas; (18) Historial de visitas por día: la visita de cada invitado se registra además en invitations/{token}/visitLog/{YYYY-MM-DD} (batch atómico con el contador total) con regla de Firestore propia (incremento acotado a +20/día, lectura solo admin/superadmin) y gráfico de barras de los últimos 7 días en el Panel; (14) Idioma por invitación: la pareja fija el idioma base (config.language, es/en/automático) que se aplica a los invitados que no hayan elegido idioma en su dispositivo. Tests de predicción y reglas (28/28 con los nuevos casos de visitLog) + ajustes de tests existentes. 2264 tests / 173 ficheros verdes + lint/typecheck/build/translations (1621 claves) OK.",
+    ],
+  },
+
+  {
     version: "2.100.0",
     date: "2026-08-17",
     changes: [

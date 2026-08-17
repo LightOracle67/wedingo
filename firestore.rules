@@ -396,6 +396,29 @@ service cloud.firestore {
         allow read, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
 
+      /* Historial de visitas por día (F18): invitations/{token}/visitLog/{day}
+         con { count }. Cualquiera puede incrementarlo (como _visits) pero solo
+         en pasos razonables por día (máx +20 por request sobre el valor
+         actual) y con el id del documento en formato fecha YYYY-MM-DD. La
+         lectura es solo admin/superadmin (dato interno de la pareja). */
+      match /visitLog/{day} {
+        allow read: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+        allow create: if day.matches('\\d{4}-\\d{2}-\\d{2}')
+          && request.resource.data.keys().hasOnly(['count'])
+          && request.resource.data.count is int
+          && request.resource.data.count >= 0
+          && request.resource.data.count <= 20;
+        allow update: if day.matches('\\d{4}-\\d{2}-\\d{2}')
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['count'])
+          && request.resource.data.count is int
+          && request.resource.data.count >= 0
+          && request.resource.data.count <= 100000
+          && (resource.data.keys().hasAny(['count'])
+            ? (request.resource.data.count >= resource.data.count
+              && request.resource.data.count <= resource.data.count + 20)
+            : request.resource.data.count <= 20);
+      }
+
       match /_counters/{counterName} {
         allow read: if true;
         // create limitado a count 0/1: 0 es la inicialización de ConfigContext

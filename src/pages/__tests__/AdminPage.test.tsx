@@ -67,6 +67,10 @@ vi.mock("../../hooks/useToast", () => ({
 vi.mock("../../lib/constants", () => ({
   STORY_SECTION_ORDER: ["hero", "details", "info", "story", "gifts", "accommodation", "gallery", "rsvp"],
   THEME_VALUES: new Set(["golden", "silver", "rose"]),
+  MONTH_VALUE_TO_NUMBER: {
+    enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6,
+    julio: 7, agosto: 8, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12,
+  },
 }));
 
 vi.mock("../admin/PanelTab", () => ({

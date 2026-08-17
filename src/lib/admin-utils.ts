@@ -37,6 +37,81 @@ export function getDietarySummary(entries: { attendance: string; dietaryInfo?: s
     .map(([item, count]) => ({ item, count }));
 }
 
+/**
+ * buildAttendancePrediction — Proyección de asistencia para el dashboard.
+ *
+ * Estima las confirmaciones finales a partir del ritmo real de confirmaciones
+ * (personas por día desde la primera respuesta) y la proximidad del evento.
+ * Se aplica una tasa de conversión decreciente (los invitados que quedan
+ * confirman más despacio) y un límite superior sano de 1.1× el aforo esperado.
+ *
+ * CASOS CATASTRÓFICOS CUBIERTOS:
+ * - Sin entradas o sin fecha válida → proyección = confirmados actuales.
+ * - expectedGuests = 0 (sin configurar) → % de aforo null (no se divide).
+ * - Fecha ya pasada o en curso → sin días restantes → proyección = actual.
+ * - Entradas sin submittedAt válido → se ignoran para el ritmo.
+ * - Fechas en el futuro lejano con 0 días transcurridos → ritmo 0 (sin div/0).
+ */
+export function buildAttendancePrediction(
+  entries: Array<{ attendance?: string; companions?: number; submittedAt?: unknown }>,
+  expectedGuests: number,
+  weddingTimestamp: number | null,
+  now: number = Date.now(),
+) {
+  const confirmedPeople = entries.reduce(
+    (s, e) => s + (e.attendance === "yes" ? Number(e.companions) || 1 : 0),
+    0,
+  );
+  // Ritmo real: personas confirmadas por día transcurrido desde la primera
+  // respuesta (timestamp en ms o segundos — se normaliza por magnitud).
+  const timestamps = entries
+    .map((e) => e.submittedAt)
+    .filter((t): t is number | Date => t !== null && t !== undefined)
+    .map((t) => {
+      const ms = typeof t === "number" ? t : new Date(t).getTime();
+      return Number.isFinite(ms) && ms > 0 ? (ms < 1e11 ? ms * 1000 : ms) : 0;
+    })
+    .filter((ms) => ms > 0);
+  const firstTs = timestamps.length ? Math.min(...timestamps) : now;
+  const daysElapsed = Math.max(1, (now - firstTs) / 86400000);
+  const pacePerDay = confirmedPeople / daysElapsed;
+
+  const daysToWedding =
+    weddingTimestamp && Number.isFinite(weddingTimestamp)
+      ? Math.max(0, (weddingTimestamp - now) / 86400000)
+      : 0;
+  const hasFutureWedding = weddingTimestamp ? weddingTimestamp > now : false;
+  // Conversión decaída: a medida que se acerca la fecha, cada día restante
+  // aporta menos confirmaciones (los "de última hora" no compensan el ritmo).
+  const decay = hasFutureWedding ? Math.max(0, daysToWedding) * 0.5 + 1 : 0;
+  const projectedRaw = confirmedPeople + pacePerDay * decay;
+  const projected = hasFutureWedding
+    ? Math.min(projectedRaw, expectedGuests > 0 ? Math.ceil(expectedGuests * 1.1) : Math.ceil(projectedRaw * 1.1))
+    : confirmedPeople;
+
+  const capacityPct =
+    expectedGuests > 0
+      ? Math.min(100, Math.round((confirmedPeople / expectedGuests) * 100))
+      : null;
+
+  // Tendencia: comparativa de confirmaciones en los últimos 7 días vs los 7
+  // anteriores (si hay suficientes datos) para el texto "sube/baja/mantiene".
+  const recent7 = timestamps.filter((ms) => now - ms <= 7 * 86400000).length;
+  const previous7 = timestamps.filter((ms) => now - ms > 7 * 86400000 && now - ms <= 14 * 86400000).length;
+  const trend: "up" | "down" | "flat" =
+    timestamps.length < 7 ? "flat" : recent7 === previous7 ? "flat" : recent7 > previous7 ? "up" : "down";
+
+  return {
+    confirmedPeople,
+    projected: Math.max(confirmedPeople, Math.round(projected)),
+    capacityPct,
+    pacePerDay: Math.round(pacePerDay * 10) / 10,
+    daysToWedding: Math.round(daysToWedding),
+    hasFutureWedding,
+    trend,
+  };
+}
+
 /* formatRSVPsForCSV, groupRSVPsByAttendance, formatGuestDate, getCompanionList
  * eliminados: los exports de CSV se sustituyeron por Excel.
  * Los constructores de hojas Excel viven en ./excel-builders.ts. */
