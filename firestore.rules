@@ -65,7 +65,10 @@ service cloud.firestore {
     /* Tope anti-spam por subcolección social (notes/songs/gifts/rides).
        voicenotes: 200 notas de voz por invitación (cap como notes). */
     function socialCounterCap(name) {
-      return name == 'rides' ? 100 : 200;
+      // La lista pública de confirmados puede superar ampliamente 200 (tantos
+      // como invitados confirmen con opt-in); el resto de subcolecciones
+      // sociales usa 200.
+      return name == 'rides' ? 100 : name == 'confirmedPeople' ? 2000 : 200;
     }
 
     /* El contador invitations/{id}/_counters/{name} debe estar por debajo del

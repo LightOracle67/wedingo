@@ -22,7 +22,7 @@ const ReactionsSection = memo(function ReactionsSection({ inviteToken }: { invit
 
   // Lectura de contadores: el hook maneja la subcolección; aquí se convierte
   // la lista de {id, count} a un Record<emoji, number>.
-  const { items: reactionDocs } = useInviteSubcollection<{ id: string; count: number }>(inviteToken, "reactions", {
+  const { items: reactionDocs, setItems: setReactionDocs } = useInviteSubcollection<{ id: string; count: number }>(inviteToken, "reactions", {
     map: ({ id, data }) => ({ id, count: typeof data.count === "number" ? data.count : 0 }),
   });
   const counts = useMemo(() => {
@@ -44,6 +44,14 @@ const ReactionsSection = memo(function ReactionsSection({ inviteToken }: { invit
     async (emoji: string) => {
       if (!inviteToken || voted.has(emoji)) return;
       const ref = doc(db, "invitations", inviteToken, "reactions", emoji);
+      // Actualiza el contador local INMEDIATAMENTE (UX: el invitado ve el +1
+      // sin esperar a la red; antes había que recargar para ver el nuevo nº).
+      const current = reactionDocs.find((r) => r.id === emoji);
+      setReactionDocs(
+        current
+          ? reactionDocs.map((r) => (r.id === emoji ? { ...r, count: r.count + 1 } : r))
+          : [...reactionDocs, { id: emoji, count: 1 }],
+      );
       try {
         await withWriteRetry(() => updateDoc(ref, { count: increment(1) }));
       } catch {
@@ -59,7 +67,7 @@ const ReactionsSection = memo(function ReactionsSection({ inviteToken }: { invit
         sessionStorage.setItem(VOTE_KEY, JSON.stringify([...voted]));
       } catch {}
     },
-    [inviteToken, voted],
+    [inviteToken, voted, reactionDocs, setReactionDocs],
   );
 
   return (

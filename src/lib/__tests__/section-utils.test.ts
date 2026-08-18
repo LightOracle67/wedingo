@@ -78,6 +78,15 @@ describe("sectionHasContent", () => {
     expect(sectionHasContent("extras", { venueMapEnabled: "true" })).toBe(false);
   });
 
+  it("welcomeVideo and rsvpDeadline do NOT render in the extras section (v2.111)", () => {
+    // Son un overlay y un límite de RSVP, no bloques apilados en "extras".
+    // Contarlos dejaba la sección visible pero VACÍA (bug de visualización).
+    expect(sectionHasContent("extras", { welcomeVideoEnabled: "true" })).toBe(false);
+    expect(sectionHasContent("extras", { rsvpDeadlineEnabled: "true" })).toBe(false);
+    // Sí cuentan los bloques reales que sí se apilan en la sección.
+    expect(sectionHasContent("extras", { reactionsEnabled: "true" })).toBe(true);
+  });
+
   it("hides the gallery when it has no images and shows it with images", () => {
     // Por defecto (p. ej. en el guardado del admin) la galería es visible.
     expect(sectionHasContent("gallery", {})).toBe(true);

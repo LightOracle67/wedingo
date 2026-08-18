@@ -57,6 +57,16 @@ describe("ReactionsSection", () => {
     expect(mockUpdateDoc).toHaveBeenCalled();
   });
 
+  it("shows the local counter increment immediately after reacting (UX)", async () => {
+    render(<ReactionsSection inviteToken="tok" />);
+    const btn = await screen.findAllByRole("button");
+    // El primer botón es ❤️ (sin doc inicial); tras reaccionar muestra 1 al
+    // instante (antes requería recargar para ver el nuevo contador).
+    expect(btn[0]!.textContent).toContain("0");
+    fireEvent.click(btn[0]!);
+    expect(btn[0]!.textContent).toContain("1");
+  });
+
   it("creates the reaction doc when the update fails (first vote)", async () => {
     mockUpdateDoc.mockRejectedValueOnce(new Error("missing doc"));
     render(<ReactionsSection inviteToken="tok" />);

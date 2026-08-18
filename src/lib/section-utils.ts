@@ -78,17 +78,18 @@ export function sectionHasContent(
       return config.venueMapEnabled === "true";
     case "extras":
       // La sección de funciones sociales se desactiva si ningún extra está
-      // activado. IMPORTANTE: esta lista debe incluir TODOS los toggles de
-      // ExtrasSectionForm; si un extra activado no está listado aquí, la
-      // sección se considera vacía y se oculta al guardar (parecía "no
-      // activable"). El mapa del recinto (venueMapEnabled) ya NO está aquí:
-      // desde v2.109 es una sección PROPIA (venuemap), no un extra.
+      // activado. IMPORTANTE: esta lista DEBE coincidir exactamente con los
+      // bloques que se renderizan en la sección "extras" de PublicInvitation
+      // (`extraBlocks`/`hasExtras`). Si se incluye aquí un extra que NO se
+      // apila en la sección (p. ej. welcomeVideo, que es un overlay, o
+      // rsvpDeadline, que solo afecta al RSVP), la sección se muestra como
+      // "con contenido" pero queda VACÍA (bug de visualización). Se mantienen
+      // también los 0 elementos nulos por si un extra válido activado no está
+      // listado (regresión "no activable").
       return (
-        config.rsvpDeadlineEnabled === "true" ||
         config.reactionsEnabled === "true" ||
         config.giftsListEnabled === "true" ||
         config.rideShareEnabled === "true" ||
-        config.welcomeVideoEnabled === "true" ||
         config.notesEnabled === "true" ||
         config.musicPollEnabled === "true" ||
         config.triviaEnabled === "true" ||

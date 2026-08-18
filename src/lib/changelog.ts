@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.111.0",
+    date: "2026-08-17",
+    changes: [
+      "Fix de la sección de extras y errores profundos. (CAUSA RAIZ extras) `sectionHasContent('extras')` incluía welcomeVideoEnabled y rsvpDeadlineEnabled, que NO se renderizan en la sección (el vídeo es un overlay y la fecha límite solo afecta al RSVP): cuando el único 'extra' activo era uno de esos dos, la sección se marcaba 'con contenido' pero quedaba VACÍA (o invisible, según el orden de filtros), y al guardar no se auto-desactivaba. Se extraen ambos de la lista. Además se UNIFICÓ `hasExtras` (que duplicaba la lista con un conjunto distinto) a `extraBlocks.length > 0`, fuente única alineada con lo que se renderiza. (ERRADICA más) (a) El contador anti-spam de `confirmedPeople` tenía tope 200 aunque la lista pública de confirmados puede superar ese número (potencial ruptura de las confirmaciones en bodas grandes) → tope subido a 2000. (b) La trivia no persistía las opciones marcadas (elección única/multirrespuesta) entre recargas → ahora se guardan `marked` también; la pregunta se ve tal y como la dejó el invitado. (c) Las reacciones no actualizaban el contador local al reaccionar (había que recargar) → ahora el +1 se refleja al instante (setItems local). Tests de regresión: welcomeVideo/rsvpDeadline ya no cuentan como contenido de extras, contador local de reacciones, y persisten los tests de secciones/trivia. 2290 tests / 174 ficheros + lint/typecheck/build/translations + reglas 34/34 OK.",
+    ],
+  },
+
+  {
     version: "2.110.0",
     date: "2026-08-17",
     changes: [

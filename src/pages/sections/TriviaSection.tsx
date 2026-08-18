@@ -98,6 +98,10 @@ const TriviaSection = memo(function TriviaSection({ trivia, inviteToken }: { tri
       if (parsed && typeof parsed === "object") {
         setRevealed((parsed.revealed as Record<number, boolean>) || {});
         setCorrectMap((parsed.correct as Record<number, boolean>) || {});
+        // Se restauran también las opciones marcadas (elección única/
+        // multirrespuesta) para que la pregunta se vea tal y como la dejó el
+        // invitado (evita incoherencia visual tras recargar).
+        setMarked((parsed.marked as Record<number, string[]>) || {});
       }
     } catch {
       /* almacenamiento no disponible o corrupto */
@@ -106,13 +110,13 @@ const TriviaSection = memo(function TriviaSection({ trivia, inviteToken }: { tri
 
   useEffect(() => {
     if (!storageKey) return;
-    const data = { revealed, correct: correctMap };
+    const data = { revealed, correct: correctMap, marked };
     try {
       sessionStorage.setItem(storageKey, JSON.stringify(data));
     } catch {
       /* cuota llena o modo privado */
     }
-  }, [storageKey, revealed, correctMap]);
+  }, [storageKey, revealed, correctMap, marked]);
 
   const sorted = useMemo(
     () =>

@@ -218,20 +218,10 @@ export default function PublicInvitation() {
     [platform],
   );
 
-  const hasExtras =
-    socialEnabled("gifts", config.giftsListEnabled) ||
-    socialEnabled("rides", config.rideShareEnabled) ||
-    socialEnabled("reactions", config.reactionsEnabled) ||
-    socialEnabled("notes", config.notesEnabled) ||
-    socialEnabled("songs", config.musicPollEnabled) ||
-    socialEnabled("trivia", config.triviaEnabled) ||
-    socialEnabled("voiceNotes", config.voiceNotesEnabled) ||
-    socialEnabled("dayPhotos", config.dayPhotosEnabled) ||
-    socialEnabled("mailbox", config.mailboxEnabled) ||
-    socialEnabled("toasts", config.toastsEnabled);
-
   // Bloques de las funciones sociales activas: se agrupan en la sección
   // conjunta "extras" (renderizados por config para no duplicar el JSX).
+  // `hasExtras` se deriva de la LONGITUD de estos bloques (fuente única),
+  // evitando que una lista duplicada discrepe y deje la sección vacía.
   const extraBlocks = useMemo<Array<{ title: string; node: React.JSX.Element }>>(
     () =>
       [
@@ -268,6 +258,11 @@ export default function PublicInvitation() {
       ].filter((b): b is { title: string; node: React.JSX.Element } => b !== null),
     [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.voiceNotesEnabled, config.dayPhotosEnabled, config.mailboxEnabled, config.toastsEnabled, config.giftList, config.trivia, t, inviteToken, socialEnabled],
   );
+
+  // Fuente única de "hay extras": coincide con los bloques renderizados.
+  // (Antes había una lista duplicada que podía discrepar con sectionHasContent
+  // y dejar la sección de extras vacía o sin mostrar.)
+  const hasExtras = extraBlocks.length > 0;
 
   // ─── Orden de secciones visible ────────────────────────
   /**
