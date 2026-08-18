@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.107.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.107.0)  
+**Versión actual:** [v2.108.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.108.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2283 tests, 174 test files |
+| Tests | 2284 tests, 174 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -97,6 +97,10 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 - **Edición manual de respuestas RSVP desde la tabla de asistencia:** los novios pueden añadir invitados a mano (invitaciones físicas a personas sin dispositivo) y editar respuestas existentes (nombre, asistencia, notas de menú/alergias) desde un modal. Escritura atómica con `writeBatch` que cumple la regla Firestore (contador del grupo, tope anti-spam).
 - **Auditoría de overflows horizontales en móvil/tablet:** se eliminó el scroll horizontal espurio en toda la app (textos largos, badges, decoraciones) con `overflow-x: hidden` en body y contenedor de scroll, quiebre de palabras en textos y snacks; plus un spec e2e que mide el desbordamiento en 320–768 px.
+
+### Ronda v2.108
+
+- **Fix del RSVP con acompañantes en pantallas muy pequeñas:** el selector de asistencia («Con acompañantes» + botón «+ Añadir acompañante») ahora hace wrap (el botón baja de línea si no cabe) y el select usa `min-width: min(180px, 100%)`; el grid no crea celdas más estrechas que el contenido; y los labels de consentimiento con texto largo ya quiebran las palabras sin desbordar. Test de regresión unitario + test e2e de overflow con 2 acompañantes a 320 px.
 | **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -294,6 +298,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.108.0 | 2026-08-17 | Fix de visualización del RSVP con acompañantes en pantallas muy pequeñas (flexWrap del selector, min-width responsive, quiebre de texto en consentimientos) |
 | v2.107.0 | 2026-08-17 | Edición manual de respuestas RSVP en la tabla + auditoría y corrección de overflows horizontales en móvil/tablet (overflow-x, quiebre de palabras, spec e2e) |
 | v2.106.0 | 2026-08-17 | Personalización completa (fuentes y colores del tema sanitizados) + nuevo editor de trivia por tipos (texto, elección única, multirrespuesta con opciones correctas) |
 | v2.105.0 | 2026-08-17 | Fix de extras no activables (sectionHasContent) + trivia de la pareja mejorada (comprobar, marcador, felicitación, persistencia, pista y dificultad) |
