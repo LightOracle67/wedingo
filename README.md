@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.112.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.112.0)  
+**Versión actual:** [v2.113.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.113.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -123,6 +123,11 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 ### Ronda v2.112
 
 - **Nueva sección pública «Distribución de mesas»:** los invitados ven el plano de mesas que preparas en Distribución, con selector de zona y **lupa a pantalla completa** (modal). Se destaca la mesa del invitado si está asignado. Se activa desde Extras («Distribución de mesas»). La geometría es compartida con el editor para que ambas vistas dibujen el plano idéntico.
+
+### Ronda v2.113
+
+- **Confirmaciones accesibles:** se migraron los últimos `window.confirm` nativos (inaccesibles) al modal accesible con focus-trap: el guardado del editor con cambios de menú y los tres flujos de borrado de RSVP (retirar, eliminar en lote, vaciar). Se reordenó `ConfirmProvider` para envolver `AppProvider`.
+- **UX RSVP:** aviso accesible con el número total de personas a confirmar al asistir con acompañantes («Confirmarás N personas»).
 | **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -320,6 +325,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.113.0 | 2026-08-17 | Ronda de mejora general: confirmaciones accesibles (AppContext + RSVP) y resumen de personas en el RSVP |
 | v2.112.0 | 2026-08-17 | Nueva sección pública de distribución de mesas con lupa a pantalla completa (zona + plano idéntico al editor) |
 | v2.111.0 | 2026-08-17 | Fix de la sección de extras (causa raíz: welcomeVideo/rsvpDeadline) + errores profundos (cap de confirmados, persistencia de trivia, contador de reacciones) |
 | v2.110.0 | 2026-08-17 | Ronda de mejora UI/UX: botón volver arriba, tabs con scroll en móvil, reset de filtros y contador, copiar enlace, feedback táctil y animaciones, barra de aforo |
