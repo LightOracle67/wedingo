@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.109.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.109.0)  
+**Versión actual:** [v2.110.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.110.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2285 tests, 174 test files |
+| Tests | 2288 tests, 174 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -106,6 +106,14 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 - **Fix de la sección de extras:** se eliminó el scroll interior (max-height + overflow-y) que cortaba el contenido y rompía la visualización; ahora la sección crece de forma natural con el scroll de la invitación y tiene eyebrow general.
 - **Nueva sección «Mapa del recinto» (venuemap):** el mapa sale de la sección de extras y pasa a ser una sección **propia y reordenable** en el editor de secciones, con su propia tarjeta (eyebrow + título + mapa 16:9). `normalize-config` la añade automáticamente al orden de invitaciones existentes.
+
+### Ronda v2.110 (UI/UX)
+
+- **Botón «Volver arriba»** en la invitación pública (scroll suave en el contenedor real).
+- **Pestañas del admin** en una sola fila con scroll horizontal en móvil (sin wraps).
+- **Reset de filtros** y **contador de resultados** (aria-live) en la tabla de asistencia.
+- **Copiar enlace** en el Panel; **scroll-to-top real** al cambiar de pestaña.
+- **Feedback táctil `:active`** en botones, animación «pop» en reacciones, **contador de caracteres** en dedicatorias y **barra de aforo** accesible en la proyección; + `type="button"` donde falltaba.
 | **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -303,6 +311,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.110.0 | 2026-08-17 | Ronda de mejora UI/UX: botón volver arriba, tabs con scroll en móvil, reset de filtros y contador, copiar enlace, feedback táctil y animaciones, barra de aforo |
 | v2.109.0 | 2026-08-17 | Fix de la sección de extras (scroll natural + eyebrow) y nueva sección propia reordenable del mapa del recinto (venuemap) |
 | v2.108.0 | 2026-08-17 | Fix de visualización del RSVP con acompañantes en pantallas muy pequeñas (flexWrap del selector, min-width responsive, quiebre de texto en consentimientos) |
 | v2.107.0 | 2026-08-17 | Edición manual de respuestas RSVP en la tabla + auditoría y corrección de overflows horizontales en móvil/tablet (overflow-x, quiebre de palabras, spec e2e) |
