@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.108.0";
+export const APP_VERSION = "2.109.0";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -242,6 +242,7 @@ export const STORY_SECTION_ORDER = [
   "gallery",
   "gifts",
   "accommodation",
+  "venuemap",
   "extras",
   "rsvp",
 ];

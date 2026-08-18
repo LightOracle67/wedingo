@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.109.0",
+    date: "2026-08-17",
+    changes: [
+      "(1) Fix de la sección de extras: el panel agrupaba las funciones sociales con un scroll interior (max-height 92dvh + overflow-y:auto) que, con el scroll libre de la invitación, cortaba el contenido y rompía la visualización. Ahora la sección crece de forma natural y se desplaza con la página, y se añadió un eyebrow general («Extras»). (2) NUEVA SECCIÓN «Mapa del recinto» (venuemap): el mapa del recinto sale de la sección de extras y pasa a ser una sección PROPIA y reordenable en el editor de secciones (STORY_SECTION_ORDER), con su propia tarjeta (eyebrow + título + mapa 16/9) coherente con el resto. `sectionHasContent` cubre 'venuemap' (solo si venueMapEnabled=true), 'extras' ya no cuenta el mapa del recinto (evita una sección vacía si solo está activo el mapa), `normalize-config` añade la sección al orden de invitaciones existentes automáticamente y el editor la muestra con su clave i18n 'venuemap.sectionLabel'. 2285 tests / 174 ficheros + lint/typecheck/build/translations OK.",
+    ],
+  },
+
+  {
     version: "2.108.0",
     date: "2026-08-17",
     changes: [

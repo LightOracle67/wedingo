@@ -1448,6 +1448,9 @@
     "ariaLabel": "Más secciones",
     "sectionLabel": "Extras"
   },
+  "venuemap": {
+    "sectionLabel": "Mapa del recinto"
+  },
   "giftList": {
     "title": "Lista de regalos",
     "namePlaceholder": "Tu nombre",

@@ -61,15 +61,21 @@ describe("sectionHasContent", () => {
   });
 
   it("extras has content when ONLY the newer extras are enabled (regresión no activable)", () => {
-    // Bug corregido: voiceNotes/dayPhotos/mailbox/toasts/venueMap activados en
+    // Bug corregido: voiceNotes/dayPhotos/mailbox/toasts activados en
     // solitario hacían que la sección extras se considerara vacía y se ocultara.
     expect(sectionHasContent("extras", { voiceNotesEnabled: "true" })).toBe(true);
     expect(sectionHasContent("extras", { dayPhotosEnabled: "true" })).toBe(true);
     expect(sectionHasContent("extras", { mailboxEnabled: "true" })).toBe(true);
     expect(sectionHasContent("extras", { toastsEnabled: "true" })).toBe(true);
-    expect(sectionHasContent("extras", { venueMapEnabled: "true" })).toBe(true);
-    // VenueMap es la clave nueva (upstream), se cubre por cobertura defensiva.
-    expect(sectionHasContent("extras", { venueMapEnabled: "true" })).toBe(true);
+  });
+
+  it("venue map is a standalone section (not part of extras) since v2.109", () => {
+    // El mapa del recinto es una sección PROPIA: solo se muestra si está
+    // activado, y ya no hace que "extras" tenga contenido.
+    expect(sectionHasContent("venuemap", { venueMapEnabled: "true" })).toBe(true);
+    expect(sectionHasContent("venuemap", { venueMapEnabled: "false" })).toBe(false);
+    expect(sectionHasContent("venuemap", {})).toBe(false);
+    expect(sectionHasContent("extras", { venueMapEnabled: "true" })).toBe(false);
   });
 
   it("hides the gallery when it has no images and shows it with images", () => {

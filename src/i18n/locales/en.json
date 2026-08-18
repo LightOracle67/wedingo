@@ -1448,6 +1448,9 @@
     "ariaLabel": "More sections",
     "sectionLabel": "Extras"
   },
+  "venuemap": {
+    "sectionLabel": "Venue map"
+  },
   "giftList": {
     "title": "Gift list",
     "namePlaceholder": "Your name",

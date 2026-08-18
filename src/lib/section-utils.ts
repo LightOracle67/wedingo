@@ -72,13 +72,17 @@ export function sectionHasContent(
       return !!config.accommodationURL;
     case "transport":
       return config.transportEnabled !== "none" || !!config.transportDepartures;
+    case "venuemap":
+      // El mapa del recinto es una sección PROPIA (desde v2.109): se muestra
+      // solo si la pareja la activa. Antes vivía dentro de "extras".
+      return config.venueMapEnabled === "true";
     case "extras":
       // La sección de funciones sociales se desactiva si ningún extra está
       // activado. IMPORTANTE: esta lista debe incluir TODOS los toggles de
       // ExtrasSectionForm; si un extra activado no está listado aquí, la
       // sección se considera vacía y se oculta al guardar (parecía "no
-      // activable"). Antes faltaban voiceNotes, dayPhotos, mailbox, toasts
-      // y venueMap: activar SOLO uno de ellos no mostraba la sección.
+      // activable"). El mapa del recinto (venueMapEnabled) ya NO está aquí:
+      // desde v2.109 es una sección PROPIA (venuemap), no un extra.
       return (
         config.rsvpDeadlineEnabled === "true" ||
         config.reactionsEnabled === "true" ||
@@ -91,8 +95,7 @@ export function sectionHasContent(
         config.voiceNotesEnabled === "true" ||
         config.dayPhotosEnabled === "true" ||
         config.mailboxEnabled === "true" ||
-        config.toastsEnabled === "true" ||
-        config.venueMapEnabled === "true"
+        config.toastsEnabled === "true"
       );
     case "gallery":
       // La galería se desactiva si no tiene ninguna imagen subida.

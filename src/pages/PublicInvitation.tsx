@@ -77,6 +77,7 @@ const SECTION_COMPONENTS = {
   gifts: GiftsSection,
   accommodation: AccommodationSection,
   gallery: GallerySection,
+  venuemap: VenueMapSection,
   rsvp: RsvpSection,
 };
 
@@ -227,8 +228,7 @@ export default function PublicInvitation() {
     socialEnabled("voiceNotes", config.voiceNotesEnabled) ||
     socialEnabled("dayPhotos", config.dayPhotosEnabled) ||
     socialEnabled("mailbox", config.mailboxEnabled) ||
-    socialEnabled("toasts", config.toastsEnabled) ||
-    socialEnabled("venueMap", config.venueMapEnabled);
+    socialEnabled("toasts", config.toastsEnabled);
 
   // Bloques de las funciones sociales activas: se agrupan en la sección
   // conjunta "extras" (renderizados por config para no duplicar el JSX).
@@ -265,11 +265,8 @@ export default function PublicInvitation() {
         socialEnabled("toasts", config.toastsEnabled)
           ? { title: t("toasts.title"), node: <ToastsSection inviteToken={inviteToken ?? ""} /> }
           : null,
-        socialEnabled("venueMap", config.venueMapEnabled)
-          ? { title: t("venueMap.title"), node: <VenueMapSection inviteToken={inviteToken ?? ""} background={config.backgroundImage} /> }
-          : null,
       ].filter((b): b is { title: string; node: React.JSX.Element } => b !== null),
-    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.voiceNotesEnabled, config.dayPhotosEnabled, config.mailboxEnabled, config.toastsEnabled, config.venueMapEnabled, config.giftList, config.trivia, config.backgroundImage, t, inviteToken, socialEnabled],
+    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.voiceNotesEnabled, config.dayPhotosEnabled, config.mailboxEnabled, config.toastsEnabled, config.giftList, config.trivia, t, inviteToken, socialEnabled],
   );
 
   // ─── Orden de secciones visible ────────────────────────
@@ -580,6 +577,12 @@ export default function PublicInvitation() {
         transportDepartures: config.transportDepartures,
         cornerDecoration: config.cornerDecoration,
       },
+      // Mapa del recinto: sección propia (reordenable) desde v2.109.
+      venuemap: {
+        inviteToken: inviteToken ?? "",
+        background: config.backgroundImage,
+        cornerDecoration: config.cornerDecoration,
+      },
     }),
     [
       config.firstName,
@@ -603,6 +606,7 @@ export default function PublicInvitation() {
       config.menuVeganoDishes,
       config.menuTextoDishes,
       config.cornerDecoration,
+      config.backgroundImage,
       config.verified,
       formattedDate,
       formattedTime,
@@ -943,6 +947,7 @@ export default function PublicInvitation() {
                       aria-label={t("extras.ariaLabel")}
                     >
                       <div className="story-panel story-panel--extras w-full">
+                        <p className="story-eyebrow">{t("extras.sectionLabel")}</p>
                         {extraBlocks.map((b, i) => (
                           <Fragment key={b.title}>
                             {i > 0 ? <div className="story-divider" /> : null}

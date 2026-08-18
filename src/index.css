@@ -1756,9 +1756,10 @@ a,
 }
 .story-panel--extras {
   width: min(92%, 44rem);
-  max-height: 92dvh;
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
+  /* Scroll NATURAL (sin max-height interior): con el scroll libre de la
+     invitación, un panel con scroll interno rompía la navegación y la sección
+     no se mostraba correctamente (cortaba el contenido). Los bloques se
+     apilan y la página se desplaza como en cualquier otra sección. */
 }
 .story-extra-block {
   margin: 0 auto;
