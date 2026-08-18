@@ -60,6 +60,7 @@ const ToastsSection = lazy(() => import("./sections/ToastsSection"));
 const VenueMapSection = lazy(() => import("./sections/VenueMapSection"));
 const GiftListSection = lazy(() => import("./sections/GiftListSection"));
 const RideShareSection = lazy(() => import("./sections/RideShareSection"));
+const TableSeatingSection = lazy(() => import("./sections/TableSeatingSection"));
 import "../styles/decorations.css";
 import "../styles/admin.css";
 import "../styles/landing.css";
@@ -78,6 +79,7 @@ const SECTION_COMPONENTS = {
   accommodation: AccommodationSection,
   gallery: GallerySection,
   venuemap: VenueMapSection,
+  tables: TableSeatingSection,
   rsvp: RsvpSection,
 };
 
@@ -588,6 +590,11 @@ export default function PublicInvitation() {
       venuemap: {
         inviteToken: inviteToken ?? "",
         background: config.backgroundImage,
+        cornerDecoration: config.cornerDecoration,
+      },
+      // Distribución de mesas para invitados (sección propia).
+      tables: {
+        inviteToken: inviteToken ?? "",
         cornerDecoration: config.cornerDecoration,
       },
     }),

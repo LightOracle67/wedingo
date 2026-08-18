@@ -87,6 +87,14 @@ describe("sectionHasContent", () => {
     expect(sectionHasContent("extras", { reactionsEnabled: "true" })).toBe(true);
   });
 
+  it("tables is a standalone public section controlled by tablesEnabled", () => {
+    expect(sectionHasContent("tables", { tablesEnabled: "true" })).toBe(true);
+    expect(sectionHasContent("tables", { tablesEnabled: "false" })).toBe(false);
+    expect(sectionHasContent("tables", {})).toBe(false);
+    // No es un extra de la sección "extras".
+    expect(sectionHasContent("extras", { tablesEnabled: "true" })).toBe(false);
+  });
+
   it("hides the gallery when it has no images and shows it with images", () => {
     // Por defecto (p. ej. en el guardado del admin) la galería es visible.
     expect(sectionHasContent("gallery", {})).toBe(true);

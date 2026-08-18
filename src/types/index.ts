@@ -111,6 +111,8 @@ export interface InvitationConfig {
   colorBackground?: string;
   /** Prueba social en vivo: mostrar cuántos han confirmado en la portada. */
   liveConfirmedEnabled?: string;
+  /** Distribución de mesas en la invitación pública (sección propia "tables"). */
+  tablesEnabled?: string;
   /** Mostrar la LISTA de personas que ya han confirmado en la portada.
    *  Solo se publican nombres (doblemente opt-in: quien confirma acepta y la
    *  pareja activa el toggle); "true" visible, "false" (o ausente) oculta. */

@@ -264,6 +264,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   mailboxEnabled: s(value?.mailboxEnabled) === "true" ? "true" : "false",
   toastsEnabled: s(value?.toastsEnabled) === "true" ? "true" : "false",
   venueMapEnabled: s(value?.venueMapEnabled) === "true" ? "true" : "false",
+  tablesEnabled: s(value?.tablesEnabled) === "true" ? "true" : "false",
   triviaEnabled: s(value?.triviaEnabled) === "true" ? "true" : "false",
   trivia: normalizeJsonArray(value?.trivia),
   weddingSiteURL: s(value?.weddingSiteURL ?? value?.weddingMapUrl),

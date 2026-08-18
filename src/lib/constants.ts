@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.111.0";
+export const APP_VERSION = "2.112.0";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -243,6 +243,7 @@ export const STORY_SECTION_ORDER = [
   "gifts",
   "accommodation",
   "venuemap",
+  "tables",
   "extras",
   "rsvp",
 ];
@@ -359,6 +360,8 @@ export const defaultConfig = {
   mailboxEnabled: "false",
   toastsEnabled: "false",
   venueMapEnabled: "false",
+  // Distribución de mesas en la invitación pública (sección propia).
+  tablesEnabled: "false",
   triviaEnabled: "false",
   trivia: "[]",
   privacyPolicyVersion: "",

@@ -76,6 +76,10 @@ export function sectionHasContent(
       // El mapa del recinto es una sección PROPIA (desde v2.109): se muestra
       // solo si la pareja la activa. Antes vivía dentro de "extras".
       return config.venueMapEnabled === "true";
+    case "tables":
+      // Distribución de mesas para los invitados: se muestra solo si la pareja
+      // la activa (el plano en sí vive en Firestore y se lee en la sección).
+      return config.tablesEnabled === "true";
     case "extras":
       // La sección de funciones sociales se desactiva si ningún extra está
       // activado. IMPORTANTE: esta lista DEBE coincidir exactamente con los

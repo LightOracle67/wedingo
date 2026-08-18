@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.112.0",
+    date: "2026-08-17",
+    changes: [
+      "Nueva sección pública «Distribución de mesas» (tables): los invitados ven el plano de mesas que el admin dibuja en la pestaña Distribución, con selector de zona y LUPA a PANTALLA COMPLETA (modal con zoom-out para ver detalles). Se destaca la mesa del invitado si su nombre está asignado (borde dorado). Se añade como sección propia y reodenable (STORY_SECTION_ORDER + tablesEnabled en Extras), por lo que el admin decide mostrarla; `sectionHasContent('tables')` la activa/desactiva. La geometría de las mesas (chairPositions + tipos) se extrae a lib/table-geometry.ts compartida con el editor del admin para que ambas vistas dibujen el plano idéntico. La lectura de sections/tables ya era pública por reglas (sin cambios en firestore.rules). Tests del componente (render, lupa, cambio de zona) y de sectionHasContent. 2294 tests / 175 ficheros + lint/typecheck/build/translations (1702 claves) + reglas 34/34 OK.",
+    ],
+  },
+
+  {
     version: "2.111.0",
     date: "2026-08-17",
     changes: [

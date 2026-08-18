@@ -30,6 +30,8 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
   const mailboxEnabled = useFormField("mailboxEnabled");
   const toastsEnabled = useFormField("toastsEnabled");
   const venueMapEnabled = useFormField("venueMapEnabled");
+  // Distribución de mesas en la invitación pública.
+  const tablesEnabled = useFormField("tablesEnabled");
   // Toggles de funciones sociales (estado visible: antes faltaban los hooks y
   // el checkbox nunca reflejaba el valor guardado).
   const reactionsEnabled = useFormField("reactionsEnabled");
@@ -55,6 +57,7 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
     mailboxEnabled,
     toastsEnabled,
     venueMapEnabled,
+    tablesEnabled,
     reactionsEnabled,
     rideShareEnabled,
     notesEnabled,
@@ -374,6 +377,9 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
 
         {/* Mapa del recinto */}
         {renderToggleRow("venueMap", t("setup.venueMapLabel"), t("setup.venueMapHint"))}
+
+        {/* Distribución de mesas en la invitación pública */}
+        {renderToggleRow("tables", t("setup.tablesLabel"), t("setup.tablesHint"))}
       </fieldset>
     </>
   );

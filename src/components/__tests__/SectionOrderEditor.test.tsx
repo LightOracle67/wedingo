@@ -58,7 +58,7 @@ describe("SectionOrderEditor", () => {
     fireEvent.click(infoUp);
     expect(onChange).toHaveBeenCalledWith(
       "sectionOrder",
-      "hero,details,info,transport,story,gifts,gallery,accommodation,venuemap,extras,rsvp",
+      "hero,details,info,transport,story,gifts,gallery,accommodation,venuemap,tables,extras,rsvp",
     );
   });
 
@@ -70,7 +70,7 @@ describe("SectionOrderEditor", () => {
     fireEvent.click(infoDown);
     expect(onChange).toHaveBeenCalledWith(
       "sectionOrder",
-      "hero,details,transport,story,info,gifts,gallery,accommodation,venuemap,extras,rsvp",
+      "hero,details,transport,story,info,gifts,gallery,accommodation,venuemap,tables,extras,rsvp",
     );
   });
 
@@ -197,7 +197,7 @@ describe("SectionOrderEditor", () => {
     fireEvent.click(storyUp);
     expect(onChange).toHaveBeenCalledWith(
       "sectionOrder",
-      "hero,details,transport,story,info,gifts,gallery,accommodation,venuemap,extras,rsvp",
+      "hero,details,transport,story,info,gifts,gallery,accommodation,venuemap,tables,extras,rsvp",
     );
   });
 
@@ -209,7 +209,7 @@ describe("SectionOrderEditor", () => {
     fireEvent.click(storyDown);
     expect(onChange).toHaveBeenCalledWith(
       "sectionOrder",
-      "hero,details,transport,info,gifts,story,gallery,accommodation,venuemap,extras,rsvp",
+      "hero,details,transport,info,gifts,story,gallery,accommodation,venuemap,tables,extras,rsvp",
     );
   });
 

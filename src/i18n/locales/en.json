@@ -531,6 +531,9 @@
     "toastsLabel": "Toasts & speeches",
     "toastsHint": "Guests sign up to toast",
     "venueMapLabel": "Venue map",
+    "venueMapHint": "Points of interest drawn by you",
+    "tablesLabel": "Seating chart",
+    "tablesHint": "Shows guests the seating plan (the one you set up in Distribution), with fullscreen magnifier.",
     "venueMapHint": "Points of interest you draw",
     "instagramPlaceholder": "https://www.instagram.com/your_user",
     "facebookPlaceholder": "https://www.facebook.com/your_user",
@@ -1456,6 +1459,12 @@
   },
   "venuemap": {
     "sectionLabel": "Venue map"
+  },
+  "tables": {
+    "sectionLabel": "Seating chart",
+    "title": "Where you sit",
+    "fullscreen": "View the plan fullscreen",
+    "fullscreenTitle": "Seating plan — {{zone}}"
   },
   "giftList": {
     "title": "Gift list",

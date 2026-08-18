@@ -532,6 +532,8 @@
     "toastsHint": "Los invitados se apuntan para brindar",
     "venueMapLabel": "Mapa del recinto",
     "venueMapHint": "Puntos de interés dibujados por ti",
+    "tablesLabel": "Distribución de mesas",
+    "tablesHint": "Muestra a los invitados el plano de mesas (el que preparas en Distribución), con lupa a pantalla completa.",
     "instagramPlaceholder": "https://www.instagram.com/tu_usuario",
     "facebookPlaceholder": "https://www.facebook.com/tu_usuario",
     "transportUrlPlaceholder": "https://www.google.com/maps/place/...",
@@ -1456,6 +1458,12 @@
   },
   "venuemap": {
     "sectionLabel": "Mapa del recinto"
+  },
+  "tables": {
+    "sectionLabel": "Distribución de mesas",
+    "title": "Dónde te sientas",
+    "fullscreen": "Ver plano en grande",
+    "fullscreenTitle": "Plano de mesas — {{zone}}"
   },
   "giftList": {
     "title": "Lista de regalos",
