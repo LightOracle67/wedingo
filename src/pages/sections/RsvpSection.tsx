@@ -382,13 +382,20 @@ const RsvpSection = memo(function RsvpSection({
 
             <div
               className="setup-date-grid rsvp-choice-grid"
-              style={{ gridTemplateColumns: "repeat(auto-fill, minmax(140px, 1fr))" }}
+              style={{ gridTemplateColumns: "repeat(auto-fill, minmax(min(280px, 100%), 1fr))" }}
             >
               <div>
                 <label className="setup-label" htmlFor="rsvpAttendance">
                   {t("rsvp.attendanceOptions")} *
                 </label>
-                <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "0.5rem",
+                    alignItems: "center",
+                  }}
+                >
                   <select
                     id="rsvpAttendance"
                     className="setup-input"
@@ -396,7 +403,14 @@ const RsvpSection = memo(function RsvpSection({
                     onChange={handleAttendanceChange}
                     required
                     disabled={isAlreadySubmitted}
-                    style={{ width: "auto", minWidth: "180px" }}
+                    // En móvil el min-width no debe superar el ancho del panel:
+                    // min(180px, 100%) evita el overflow horizontal.
+                    style={{
+                      width: "auto",
+                      minWidth: "min(180px, 100%)",
+                      maxWidth: "100%",
+                      flex: "1 1 auto",
+                    }}
                   >
                     <option value="alone">{t("rsvp.attendingAlone")}</option>
                     <option value="with">{t("rsvp.attendingWithCompanions")}</option>
@@ -407,7 +421,7 @@ const RsvpSection = memo(function RsvpSection({
                       type="button"
                       className="setup-button setup-button--ghost setup-button--compact"
                       onClick={() => updateRsvpField("companionCount", (rsvpForm.companionCount || 0) + 1)}
-                      style={{ whiteSpace: "nowrap", fontSize: "0.8rem" }}
+                      style={{ whiteSpace: "nowrap", fontSize: "0.8rem", flexShrink: 0 }}
                     >
                       + {t("rsvp.addCompanion")}
                     </button>

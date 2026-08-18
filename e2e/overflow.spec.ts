@@ -76,4 +76,35 @@ test.describe("Overflow horizontal (pantallas pequeñas y tablet)", () => {
       expect(overflow, `landing desborda ${overflow}px a ${w}px`).toBeLessThanOrEqual(1);
     }
   });
+
+  test("RSVP con acompañantes sin desbordar a 320px", async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 640 });
+    await openInvitation(page, invite.inviteToken);
+    // Va a la sección RSVP (presente gracias a ?invitar).
+    const rsvp = page.locator("[data-story-section='rsvp']");
+    await rsvp.scrollIntoViewIfNeeded();
+    await expect(page.locator(".rsvp-form")).toBeVisible({ timeout: 15000 });
+    // Elige "Con acompañantes" y añade dos (el botón es hermano del select,
+    // con texto traducido según idioma: selector por relación estructural).
+    await page.locator("#rsvpAttendance").selectOption("with");
+    const addBtn = page.locator("#rsvpAttendance ~ button").first();
+    await addBtn.click();
+    await addBtn.click();
+    // Rellena los nombres para que el layout sea el real (con tarjetas).
+    const cards = page.locator(".rsvp-attendee-card");
+    await expect(cards).toHaveCount(2, { timeout: 5000 });
+    await page.locator("#companion-name-0").fill("Acompañante Uno");
+    await page.locator("#companion-name-1").fill("Acompañante Dos");
+    // Mide el overflow con las tarjetas desplegadas.
+    const overflow = await page.evaluate(() => {
+      const doc = document.documentElement;
+      const scene = document.querySelector<HTMLElement>(".app-scene");
+      return {
+        docOverflow: doc.scrollWidth - doc.clientWidth,
+        sceneOverflow: scene ? scene.scrollWidth - scene.clientWidth : 0,
+      };
+    });
+    expect(overflow.docOverflow, `documento desborda ${overflow.docOverflow}px con acompañantes a 320px`).toBeLessThanOrEqual(1);
+    expect(overflow.sceneOverflow, `app-scene desborda ${overflow.sceneOverflow}px con acompañantes`).toBeLessThanOrEqual(1);
+  });
 });

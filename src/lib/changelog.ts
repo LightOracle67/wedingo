@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.108.0",
+    date: "2026-08-17",
+    changes: [
+      "Fix de visualización del RSVP al asistir con acompañantes en pantallas muy pequeñas. (1) El contenedor flex del selector de asistencia («Con acompañantes» + botón «+ Añadir acompañante») no tenía flexWrap y el select imponía min-width 180px fijo: en móvil el conjunto desbordaba horizontalmente. Ahora el contenedor permite wrap (el botón baja de línea si no cabe) y el select usa min-width min(180px, 100%) con flex:1 1 auto y max-width:100%. (2) El grid del selector pasa de minmax(140px,1fr) a minmax(min(280px,100%),1fr) para no crear celdas más estrechas que el contenido. (3) Los labels de consentimiento (.setup-checkbox-label) con texto largo (privacidad con enlace, contacto, publicar nombre, consentimientos de acompañantes) ya rompen las palabras y pueden encogerse (min-width:0 + overflow-wrap: break-word) sin desbordar. Se añadió un test de regresión unitario (verifica flexWrap + min-width responsive) y un test e2e en overflow.spec.ts que mide scrollWidth con 2 acompañantes a 320px. 2284 tests / 174 ficheros + lint/typecheck/build OK.",
+    ],
+  },
+
+  {
     version: "2.107.0",
     date: "2026-08-17",
     changes: [

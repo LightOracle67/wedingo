@@ -486,6 +486,16 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
   color: var(--setup-title, inherit);
   font-size: 0.85rem;
   cursor: pointer;
+  /* En pantallas muy pequeñas el texto largo (consentimientos) no debe
+     desbordar: el flex-item puede encogerse y las palabras se quiebran. */
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.setup-checkbox-label > span {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 .setup-checkbox-label input[type="checkbox"] {
   accent-color: var(--setup-accent);

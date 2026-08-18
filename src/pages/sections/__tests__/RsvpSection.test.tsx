@@ -177,6 +177,23 @@ describe("RsvpSection", () => {
     expect(screen.getByText("rsvp.attendingWithCompanions")).toBeDefined();
   });
 
+  it("wraps the attendance select and add-companion button on very small screens", () => {
+    // Regresión de overflow horizontal: el contenedor flex del select + botón
+    // debe permitir wrap y el select no debe imponer un min-width mayor que el
+    // ancho del panel (min(180px, 100%)). En 320px, si el botón no cabe a la
+    // derecha, baja de línea en lugar de desbordar.
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with" }} />);
+    const select = document.getElementById("rsvpAttendance") as HTMLSelectElement;
+    expect(select).not.toBeNull();
+    const selectStyle = select.getAttribute("style") || "";
+    expect(selectStyle).toContain("flex");
+    expect(selectStyle).toContain("min(180px, 100%)");
+    expect(selectStyle).toContain("max-width: 100%");
+    // El contenedor padre (flex con el botón) debe tener flexWrap: wrap.
+    const container = select.parentElement as HTMLElement;
+    expect(container.style.flexWrap).toBe("wrap");
+  });
+
   it("shows companion cards when companionCount > 0", () => {
     render(<WrappedRsvp         {...baseProps}
         rsvpForm={{
