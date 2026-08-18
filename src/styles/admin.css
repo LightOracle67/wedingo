@@ -725,6 +725,15 @@ select.setup-input {
   transform: translateY(-1px);
   opacity: 0.95;
 }
+/* Feedback táctil al pulsar (UX): el botón "se hunde" en el clic. */
+.setup-button:active:not(:disabled) {
+  transform: translateY(1px) scale(0.98);
+}
+@media (prefers-reduced-motion: reduce) {
+  .setup-button:active:not(:disabled) {
+    transform: none;
+  }
+}
 .setup-button--ghost {
   background: color-mix(in srgb, var(--setup-title) 10%, transparent);
   color: var(--setup-title);
@@ -1064,10 +1073,20 @@ select.setup-input {
     margin-right: -0.5rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    /* En móvil las pestañas NO se envuelven: una sola fila con scroll
+       horizontal (la barra se oculta; el indicador se mantiene accesible). */
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .admin-tabs::-webkit-scrollbar {
+    display: none;
   }
   .admin-tab {
     font-size: 0.85rem;
     padding: 0.5rem 0.7rem;
+    white-space: nowrap;
   }
   .admin-stats-card {
     padding: 0.65rem;
@@ -2109,4 +2128,12 @@ label.setup-label {
   font-size: 0.68rem;
   font-weight: 600;
   color: var(--setup-title);
+}
+
+/* Barra de progreso de aforo (PanelTab): contenedor neutro para el relleno. */
+.panel-capacity-bar {
+  height: 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--setup-muted) 22%, transparent);
+  overflow: hidden;
 }

@@ -311,6 +311,28 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
               </span>
             </div>
           </div>
+          {prediction.capacityPct !== null ? (
+            // Barra de progreso de aforo: visual y accesible (aria attrs).
+            <div
+              className="panel-capacity-bar"
+              role="progressbar"
+              aria-valuenow={prediction.capacityPct}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label={t("panel.predictedCapacity")}
+              style={{ marginTop: "0.7rem" }}
+            >
+              <div
+                style={{
+                  width: `${Math.min(100, prediction.capacityPct)}%`,
+                  height: "0.55rem",
+                  borderRadius: "999px",
+                  background: "linear-gradient(90deg, var(--setup-accent), color-mix(in srgb, var(--setup-accent) 55%, #fff))",
+                  transition: "width 400ms ease",
+                }}
+              />
+            </div>
+          ) : null}
           {prediction.hasFutureWedding ? (
             <p className="setup-help" style={{ marginTop: "0.4rem", fontSize: "0.75rem" }}>
               {t("panel.predictionHint", { days: prediction.daysToWedding })}
@@ -410,10 +432,24 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
             {inviteUrl}
           </a>
         </div>
-        <div style={{ marginTop: "0.5rem" }}>
+        <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginTop: "0.5rem" }}>
           <a className="setup-button setup-button--compact" href={inviteUrl} target="_blank" rel="noreferrer">
             {t("panel.viewInvitation")}
           </a>
+          <button
+            type="button"
+            className="setup-button setup-button--ghost setup-button--compact"
+            onClick={async () => {
+              try {
+                await navigator.clipboard.writeText(inviteUrl);
+                addToast("success", t("panel.linkCopied"));
+              } catch {
+                addToast("error", t("errors.clipboardCopyFailed"));
+              }
+            }}
+          >
+            {t("panel.copyLink")}
+          </button>
         </div>
       </div>
 

@@ -74,6 +74,10 @@ const NotesSection = memo(function NotesSection({ inviteToken }: { inviteToken?:
           maxLength={500}
           aria-label={t("notes.messagePlaceholder")}
         />
+        {/* Contador de caracteres: el invitado sabe cuánto texto le queda (UX). */}
+        <p className="setup-help" style={{ margin: "0.1rem 0 0", fontSize: "0.7rem", textAlign: "right" }}>
+          {message.length}/{500}
+        </p>
         {error ? (
           <p className="setup-error" role="alert">
             {error}

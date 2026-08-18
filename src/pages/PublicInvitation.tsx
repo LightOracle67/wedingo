@@ -316,6 +316,18 @@ export default function PublicInvitation() {
   // componente se desmonta tras la animación de salida (evita el corte).
   const [videoClosing, setVideoClosing] = useState(false);
 
+  // Botón "volver arriba": aparece al bajar del primer tramo del scroll del
+  // contenedor de la invitación (.app-scene). UX de navegación en móvil.
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  useEffect(() => {
+    const scene = document.querySelector<HTMLElement>(".app-scene");
+    if (!scene) return;
+    const onScroll = () => setShowBackToTop(scene.scrollTop > 400);
+    onScroll();
+    scene.addEventListener("scroll", onScroll, { passive: true });
+    return () => scene.removeEventListener("scroll", onScroll);
+  }, []);
+
   // Cierre animado del vídeo de bienvenida: la clase --closing se aplica y el
   // componente se desmonta tras la animación de salida (evita el corte).
   const videoClosingRef = useRef(false);
@@ -869,7 +881,7 @@ export default function PublicInvitation() {
             className={`welcome-video-card ${videoClosing ? "welcome-video-card--closing" : ""}`}
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="modal-close" onClick={closeWelcomeVideo} aria-label={t("common.close")}>
+            <button type="button" className="modal-close" onClick={closeWelcomeVideo} aria-label={t("common.close")}>
               &times;
             </button>
             <video className="welcome-video" src={config.welcomeVideo} controls autoPlay playsInline />
@@ -994,6 +1006,23 @@ export default function PublicInvitation() {
             title={t("public.share")}
           >
             <span aria-hidden="true">↗</span>
+          </button>
+        ) : null}
+
+        {/* Botón "volver arriba": aparece al hacer scroll y suaviza la vuelta
+            al inicio (UX de navegación en invitaciones largas). */}
+        {showBackToTop && !showEnvelope ? (
+          <button
+            type="button"
+            className="invite-back-top"
+            onClick={() => {
+              const scene = document.querySelector<HTMLElement>(".app-scene");
+              if (scene) scene.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            aria-label={t("public.backToTop")}
+            title={t("public.backToTop")}
+          >
+            <span aria-hidden="true">↑</span>
           </button>
         ) : null}
       </div>

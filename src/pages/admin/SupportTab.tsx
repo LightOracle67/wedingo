@@ -38,10 +38,10 @@ const SupportTab = memo(function SupportTab() {
             {t("support.rightsDescription")}
           </p>
           <div className="legal-actions">
-            <button className="setup-button" onClick={handleDeleteMail}>
+            <button type="button" className="setup-button" onClick={handleDeleteMail}>
               {t("support.deleteButton")}
             </button>
-            <button className="setup-button" onClick={handleExportMail}>
+            <button type="button" className="setup-button" onClick={handleExportMail}>
               {t("support.exportButton")}
             </button>
           </div>

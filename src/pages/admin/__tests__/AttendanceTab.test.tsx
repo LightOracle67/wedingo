@@ -912,4 +912,36 @@ describe("AttendanceTab", () => {
     await vi.waitFor(() => expect(fsMocks.update).toHaveBeenCalled());
     expect(mockAddToast).toHaveBeenCalledWith("success", "attendance.manualUpdated");
   });
+
+  it("shows the filtered results counter", () => {
+    const entries = [
+      { id: "1", guestName: "Ana", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
+      { id: "2", guestName: "Luis", attendance: "no", companions: 0, dietaryInfo: "", submittedAt: "2024-01-02" },
+    ];
+    render(
+      <AttendanceTab
+        {...baseConfig}
+        filteredEntries={entries as never}
+        rsvpEntries={entries as never}
+      />,
+    );
+    const counter = document.querySelector("[data-testid='attendance-results-count']");
+    expect(counter).not.toBeNull();
+    expect(counter?.textContent).toContain("2");
+  });
+
+  it("shows the reset-filters button only when a filter/search is active", () => {
+    const entries = [
+      { id: "1", guestName: "Ana", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
+    ];
+    render(
+      <AttendanceTab
+        {...baseConfig}
+        filteredEntries={entries as never}
+        rsvpEntries={entries as never}
+        attendanceFilter="yes"
+      />,
+    );
+    expect(screen.getByText("attendance.resetFilters")).toBeDefined();
+  });
 });

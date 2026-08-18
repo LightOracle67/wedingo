@@ -36,7 +36,7 @@ class ErrorBoundaryInner extends Component<
             <p style={{ color: "var(--setup-muted)", marginTop: "0.5rem" }}>
               {import.meta.env.DEV ? this.state.error.message : t("common.errorBoundary.message")}
             </p>
-            <button className="setup-button" style={{ marginTop: "1rem" }} onClick={() => window.location.reload()}>
+            <button type="button" className="setup-button" style={{ marginTop: "1rem" }} onClick={() => window.location.reload()}>
               {t("common.errorBoundary.reload")}
             </button>
           </section>

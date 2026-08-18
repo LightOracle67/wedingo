@@ -794,4 +794,11 @@ describe("PublicInvitation", () => {
     render(<PublicInvitation />);
     expect(screen.queryByTestId("section-reactions")).toBeNull();
   });
+
+  it("renders without crashing when the back-to-top scene is absent", () => {
+    // En jsdom no existe `.app-scene`; el efecto que detecta el scroll lo
+    // protege (querySelector nulo) y el render no debe fallar.
+    render(<PublicInvitation />);
+    expect(document.querySelector(".invite-back-top")).toBeNull();
+  });
 });

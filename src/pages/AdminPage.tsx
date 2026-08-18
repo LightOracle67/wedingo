@@ -145,8 +145,12 @@ export default function AdminPage() {
   const [attendanceFilter, setAttendanceFilter] = useState("all");
 
   // Al cambiar de pestaña se vuelve arriba (comportamiento del panel admin).
+  // El scroll vive en el contenedor fijo `.app-scene`, no en `window`: sin
+  // esto, tras hacer scroll en una tabla larga, cambiar de pestaña dejaba el
+  // panel en la misma posición.
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const scene = document.querySelector<HTMLElement>(".app-scene");
+    if (scene) scene.scrollTo({ top: 0, behavior: "smooth" });
   }, [activeTab]);
 
   /**

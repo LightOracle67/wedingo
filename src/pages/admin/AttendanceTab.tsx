@@ -381,6 +381,19 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
           <option value="yes">{t("attendance.filterYes")}</option>
           <option value="no">{t("attendance.filterNo")}</option>
         </select>
+        {/* Restablece búsqueda y filtro con un solo toque (UX de listas). */}
+        {searchQuery || attendanceFilter !== "all" ? (
+          <button
+            type="button"
+            className="setup-button setup-button--ghost setup-button--compact"
+            onClick={() => {
+              setSearchQuery("");
+              setAttendanceFilter("all");
+            }}
+          >
+            {t("attendance.resetFilters")}
+          </button>
+        ) : null}
       </div>
 
       <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>
@@ -391,6 +404,14 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
             companions: stats.totalCompanions,
             diet: stats.withDietary,
           })}
+        </span>
+      </div>
+
+      {/* Contador de resultados filtrados (UX: el admin sabe cuántas filas
+          coinciden con la búsqueda/filtro actuales, aria-live incluido). */}
+      <div aria-live="polite" style={{ marginBottom: "0.5rem" }}>
+        <span className="setup-help" style={{ margin: 0, fontSize: "0.78rem" }} data-testid="attendance-results-count">
+          {filterEntries.length} {t("attendance.resultsCount", { count: filterEntries.length })}
         </span>
       </div>
 

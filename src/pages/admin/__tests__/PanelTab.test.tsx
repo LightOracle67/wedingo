@@ -155,6 +155,10 @@ describe("PanelTab", () => {
     expect(screen.getByText("panel.predictedPeople")).toBeDefined();
     expect(screen.getByText("panel.predictedCapacity")).toBeDefined();
     expect(screen.getByText("panel.predictedPace")).toBeDefined();
+    // Barra de progreso de aforo accesible (Mejora UX).
+    const bar = screen.getByRole("progressbar");
+    expect(bar).toBeDefined();
+    expect(bar.getAttribute("aria-valuenow")).toBe("60");
   });
 
   it("hides the projection block when there is nothing to project", () => {

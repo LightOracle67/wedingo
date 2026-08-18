@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.110.0",
+    date: "2026-08-17",
+    changes: [
+      "Ronda de mejora UI/UX (12 mejoras en toda la app): (1) Botón 'Volver arriba' en la invitación pública (aparece al bajar del primer tramo, scroll suave en el contenedor .app-scene, respeta prefers-reduced-motion). (2) Pestañas del panel admin en una sola fila con scroll horizontal en móvil (sin wraps desordenados; scrollbar oculta, indicador accesible). (3) Botón 'Restablecer filtros' en la tabla de asistencia (búsqueda + filtro con un toque). (4) Contador de resultados filtrados con aria-live en la tabla. (5) Export: botón 'Copiar enlace' junto a 'Ver invitación' en el Panel. (6) Scroll-to-top al cambiar de pestaña admin SCIUVIDO a .app-scene (antes window.scrollTo no funcionaba con el contenedor fijo). (7) Feedback táctil ':active' en .setup-button (el botón se hunde; sin movimiento con prefers-reduced-motion). (8) Animación 'pop' en las reacciones de la invitación al reaccionar. (9) Contador de caracteres (X/500) en el muro de dedicatorias. (10) Barra de progreso de aforo (role=progressbar, aria-valuenow) en la proyección del Panel. (11) type='button' en botones que podían causar submit accidental (SupportTab, ErrorBoundary, cierre del vídeo de bienvenida). (12) Botones de idioma/otros ya gestionados. Tests añadidos (barra de progreso, contador de resultados, reset de filtros, back-to-top sin .app-scene). 2288 tests / 174 ficheros + lint/typecheck/build/translations (1696 claves) OK.",
+    ],
+  },
+
+  {
     version: "2.109.0",
     date: "2026-08-17",
     changes: [
