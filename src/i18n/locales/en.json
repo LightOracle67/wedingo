@@ -195,6 +195,8 @@
     "clearSuccess": "All responses have been cleared.",
     "clearError": "We could not clear the responses. Please try again.",
     "addCompanion": "Add companion",
+    "confirmCount_one": "You will confirm 1 person (yourself).",
+    "confirmCount_other": "You will confirm {{count}} people (you and your companions).",
     "attendeeNamePlaceholder": "Full name",
     "menuPlaceholder": "Select menu...",
     "allergies": {

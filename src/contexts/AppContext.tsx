@@ -9,6 +9,7 @@ import { useAuth } from "./useAuth";
 import { RsvpProvider } from "./RsvpContext";
 import { useRsvpContext } from "./useRsvpContext";
 import { AppContext } from "./useApp";
+import { useConfirm } from "./ConfirmContext";
 
 function AppMerger({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
@@ -16,6 +17,10 @@ function AppMerger({ children }: { children: React.ReactNode }) {
   const auth = useAuth();
   const rsvp = useRsvpContext();
   const ui = useAppUI();
+  // Confirmación accesible (modal con focus-trap). El ConfirmProvider envuelve
+  // AppProvider (v2.113) para que este flujo de guardado use el modal en vez
+  // del window.confirm nativo (inaccesible).
+  const { confirm } = useConfirm();
 
   const handleSaveSetup = useCallback(
     async (event: React.FormEvent) => {
@@ -35,13 +40,13 @@ function AppMerger({ children }: { children: React.ReactNode }) {
           config.formData?.menuPescadoDishes !== config.config?.menuPescadoDishes ||
           config.formData?.menuVeganoDishes !== config.config?.menuVeganoDishes;
 
-        if (hasMenuChanges && !window.confirm(t("settings.menuChangeConfirm", { count: rsvpCount }))) {
+        if (hasMenuChanges && !(await confirm({ message: t("settings.menuChangeConfirm", { count: rsvpCount }) }))) {
           return;
         }
       }
       await config.handleSaveSetup(event);
     },
-    [config, auth, rsvp, ui, t],
+    [config, auth, rsvp, ui, t, confirm],
   );
 
   const value = useMemo(() => {

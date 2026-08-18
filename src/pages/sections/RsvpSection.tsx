@@ -804,6 +804,14 @@ const RsvpSection = memo(function RsvpSection({
               </div>
             )}
 
+            {/* Resumen de personas a confirmar (UX): el invitado ve cuántos
+                asientos va a reservar antes de enviar. */}
+            {isAttending && rsvpForm.attendance === "with" && rsvpForm.companionCount > 0 ? (
+              <p className="setup-help" role="status" style={{ margin: "0.4rem 0 0", fontSize: "0.8rem" }}>
+                {t("rsvp.confirmCount", { count: (rsvpForm.companionCount || 0) + 1 })}
+              </p>
+            ) : null}
+
             {isAttending && hasStructuredMenu && (
               <div className="setup-field" style={{ marginTop: "0.75rem" }}>
                 <label className="setup-label" htmlFor="rsvpMenu">

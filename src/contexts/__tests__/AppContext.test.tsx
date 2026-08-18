@@ -145,7 +145,7 @@ describe("AppProvider", () => {
     expect(mockHandleSaveSetup).toHaveBeenCalled();
   });
 
-  it("shows confirm dialog when menu changes and rsvp exists", () => {
+  it("shows confirm dialog when menu changes and rsvp exists", async () => {
     mockRsvpEntries = [{ attendance: "yes" }, { attendance: "no" }];
     mockMenuEnabled = "true";
     mockConfigMenuEnabled = "false";
@@ -156,7 +156,8 @@ describe("AppProvider", () => {
     );
     fireEvent.click(screen.getByTestId("save-btn"));
     expect(mockConfirm).toHaveBeenCalledWith("settings.menuChangeConfirm");
-    expect(mockHandleSaveSetup).toHaveBeenCalled();
+    // El handler es async (usa useConfirm): se espera que el guardado ocurra.
+    await vi.waitFor(() => expect(mockHandleSaveSetup).toHaveBeenCalled());
   });
 
   it("cancels save when user declines menu change confirm", () => {

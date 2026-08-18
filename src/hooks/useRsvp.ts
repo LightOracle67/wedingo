@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useConfirm } from "../contexts/ConfirmContext";
 import {
   writeBatch,
   deleteDoc,
@@ -171,6 +172,9 @@ export function useRsvp(
   canRead = false,
 ) {
   const { t } = useTranslation();
+  // Confirmaciones accesibles (modal con focus-trap); degrada a window.confirm
+  // en entornos sin ConfirmProvider (tests).
+  const { confirm } = useConfirm();
   const [rsvpEntries, setRsvpEntries] = useState<RsvpEntryData[]>([]);
   const [rsvpForm, setRsvpForm] = useState<RsvpFormData>(RsvpFormDefault());
   const [rsvpMessage, setRsvpMessage] = useState("");
@@ -869,7 +873,7 @@ export function useRsvp(
 
   const handleDeleteRsvp = useCallback(async () => {
     if (!alreadySubmittedEntry?.id || deletingRef.current) return;
-    if (!window.confirm(t("rsvp.withdrawConfirm"))) {
+    if (!(await confirm({ message: t("rsvp.withdrawConfirm"), danger: true }))) {
       return;
     }
     deletingRef.current = true;
@@ -898,12 +902,12 @@ export function useRsvp(
     } finally {
       deletingRef.current = false;
     }
-  }, [alreadySubmittedEntry, t, inviteToken]);
+  }, [alreadySubmittedEntry, t, inviteToken, confirm]);
 
   const handleDeleteRsvpEntries = useCallback(
     async (ids: string[]) => {
       if (!ids.length || deletingRef.current) return;
-      if (!window.confirm(t("attendance.deleteSelectedConfirm", { count: ids.length }))) {
+      if (!(await confirm({ message: t("attendance.deleteSelectedConfirm", { count: ids.length }), danger: true }))) {
         return;
       }
       deletingRef.current = true;
@@ -925,12 +929,12 @@ export function useRsvp(
         deletingRef.current = false;
       }
     },
-    [setAdminMessage, setAdminMessageType, t, inviteToken],
+    [setAdminMessage, setAdminMessageType, t, inviteToken, confirm],
   );
 
   const handleClearRsvpEntries = useCallback(async () => {
     if (deletingRef.current) return;
-    if (!window.confirm(t("rsvp.clearConfirm"))) {
+    if (!(await confirm({ message: t("rsvp.clearConfirm"), danger: true }))) {
       return;
     }
     deletingRef.current = true;
@@ -954,7 +958,7 @@ export function useRsvp(
     } finally {
       deletingRef.current = false;
     }
-  }, [inviteToken, setAdminMessage, setAdminMessageType, t]);
+  }, [inviteToken, setAdminMessage, setAdminMessageType, t, confirm]);
 
   // Memoizado: un objeto literal nuevo en cada render invalidaba el value del
   // AppContext (que depende de este objeto) y re-renderizaba a todos los

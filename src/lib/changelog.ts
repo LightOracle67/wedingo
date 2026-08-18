@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.113.0",
+    date: "2026-08-17",
+    changes: [
+      "Ronda de mejora general (accesibilidad + UX). Se migraron los últimos diálogos NATIVOS inaccesibles a confirmaciones accesibles (modal con focus-trap): se reordenó ConfirmProvider para que envuelva AppProvider (no dependía de él), permitiendo que (a) el guardado del editor con cambios de menú (AppContext.handleSaveSetup) y (b) los tres flujos de borrado de RSVP (retirar asistencia, eliminar en lote, vaciar asistencia en useRsvp) usen useConfirm en vez de window.confirm. (UX RSVP) Añadido un aviso accesible con el número total de personas a confirmar («Confirmarás N personas (tú y tus acompañantes)») al asistir con acompañantes, con pluralización ES/EN. Sin cambios de reglas. Tests actualizados (AppContext async para el flujo de confirmación). 2294 tests / 175 ficheros + lint/typecheck/build/translations (1704 claves) + reglas 34/34 OK.",
+    ],
+  },
+
+  {
     version: "2.112.0",
     date: "2026-08-17",
     changes: [

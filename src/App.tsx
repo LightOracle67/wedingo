@@ -461,16 +461,16 @@ function AppShell() {
 
 export default function App() {
   return (
-    <AppProvider>
-      <SuperAdminProvider>
-        <ToastProvider>
-          <AnimationsProvider>
-            <ConfirmProvider>
+    <ConfirmProvider>
+      <AppProvider>
+        <SuperAdminProvider>
+          <ToastProvider>
+            <AnimationsProvider>
               <AppShell />
-            </ConfirmProvider>
-          </AnimationsProvider>
-        </ToastProvider>
-      </SuperAdminProvider>
-    </AppProvider>
+            </AnimationsProvider>
+          </ToastProvider>
+        </SuperAdminProvider>
+      </AppProvider>
+    </ConfirmProvider>
   );
 }

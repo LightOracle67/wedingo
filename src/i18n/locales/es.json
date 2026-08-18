@@ -195,6 +195,8 @@
     "clearSuccess": "Todas las respuestas han sido borradas.",
     "clearError": "No pudimos borrar las respuestas. Inténtalo de nuevo.",
     "addCompanion": "Añadir acompañante",
+    "confirmCount_one": "Confirmarás 1 persona (tú).",
+    "confirmCount_other": "Confirmarás {{count}} personas (tú y tus acompañantes).",
     "attendeeNamePlaceholder": "Nombre completo",
     "menuPlaceholder": "Seleccionar menú...",
     "allergies": {
