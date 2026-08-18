@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.110.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.110.0)  
+**Versión actual:** [v2.111.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.111.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2288 tests, 174 test files |
+| Tests | 2290 tests, 174 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -114,6 +114,11 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 - **Reset de filtros** y **contador de resultados** (aria-live) en la tabla de asistencia.
 - **Copiar enlace** en el Panel; **scroll-to-top real** al cambiar de pestaña.
 - **Feedback táctil `:active`** en botones, animación «pop» en reacciones, **contador de caracteres** en dedicatorias y **barra de aforo** accesible en la proyección; + `type="button"` donde falltaba.
+
+### Ronda v2.111
+
+- **Fix de la sección de extras (causa raíz):** `welcomeVideo` y `rsvpDeadline` se contaban como «contenido» de la sección extras aunque no se renderizan en ella (el vídeo es un overlay y la fecha límite afecta solo al RSVP). Cuando eran el único extra activo, la sección quedaba vacía o invisible. `hasExtras` ahora se deriva de los bloques reales (`extraBlocks.length > 0`), fuente única.
+- **Errores profundos:** tope del contador de la lista de confirmados subido a 2000 (evita ruptura en bodas grandes), la trivia persiste las opciones marcadas al recargar, y las reacciones actualizan el contador al instante (+1 inmediato).
 | **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -311,6 +316,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.111.0 | 2026-08-17 | Fix de la sección de extras (causa raíz: welcomeVideo/rsvpDeadline) + errores profundos (cap de confirmados, persistencia de trivia, contador de reacciones) |
 | v2.110.0 | 2026-08-17 | Ronda de mejora UI/UX: botón volver arriba, tabs con scroll en móvil, reset de filtros y contador, copiar enlace, feedback táctil y animaciones, barra de aforo |
 | v2.109.0 | 2026-08-17 | Fix de la sección de extras (scroll natural + eyebrow) y nueva sección propia reordenable del mapa del recinto (venuemap) |
 | v2.108.0 | 2026-08-17 | Fix de visualización del RSVP con acompañantes en pantallas muy pequeñas (flexWrap del selector, min-width responsive, quiebre de texto en consentimientos) |
