@@ -91,13 +91,19 @@ service cloud.firestore {
        se guarde y rompa el renderizado o se use para inyección de estilos. */
     function isValidTheme(theme) {
       return theme is string
-        && theme.matches('^(golden|forest|rose|linen-soft|blush-pearl|lavender-mist|champagne-bubble|amber-night|onyx-gold|midnight-royal|burgundy-velvet|sapphire-night|emerald-grove|plum-twilight|rainbow|trans|nonbinary|lesbian|bi|pan|ace)$');
+        && theme.matches('^(golden|forest|rose|linen-soft|blush-pearl|lavender-mist|champagne-bubble|amber-night|onyx-gold|midnight-royal|burgundy-velvet|sapphire-night|emerald-grove|plum-twilight|antique-ivory|deep-amethyst|rainbow|trans|nonbinary|lesbian|bi|pan|ace)$');
     }
 
-    /* URL visible en la invitación: acotada y sin esquemas peligrosos
-       (bloquea javascript: e inyección vía atributos). */
+    /* URL visible en la invitación: acotada y sin esquemas peligrosos.
+       Bloquea javascript:, data:, vbscript: y protocol-relative (//evil).
+       En RE2 el . NO cruza saltos de línea, así que se descarta además a todo
+       valor que contenga \n\r\t (un atacante podía colar "java\nscript:...").
+       Solo se aceptan enlaces http(s) absolutos con host. */
     function isValidSafeUrl(url) {
-      return url is string && url.size() <= 1000 && !url.matches('(?i).*javascript:.*');
+      return url is string
+        && url.size() <= 1000
+        && !url.matches('.*[\\n\\r\\t].*')
+        && url.matches('^https?://[^\\s/$.?#].[^\\s]*$');
     }
 
     /* Validación de la configuración para create y update (el admin ya tiene
