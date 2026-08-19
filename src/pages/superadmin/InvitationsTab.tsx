@@ -68,10 +68,16 @@ const InvitationsTab = memo(function InvitationsTab() {
     const refs: Array<{ ref: unknown }> = [];
     const snap = await getDocs(rsvpByInviteRef(id));
     for (const d of snap.docs) refs.push(d.ref as never);
-    const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog"];
+    const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog", "accessLog", "confirmedPeople", "_backup", "venuepoints", "dayphotos", "mailbox", "toasts", "visitLog", "sections"];
     for (const name of SUB_COLLECTIONS) {
       const subSnap = await getDocs(collection(db, "invitations", id, name));
       for (const d of subSnap.docs) refs.push(d.ref as never);
+    }
+    // Mesas (guardan nombres completos, GDPR art. 17).
+    const secSnap = await getDocs(collection(db, "invitations", id, "sections"));
+    for (const sec of secSnap.docs) {
+      const tbSnap = await getDocs(collection(db, "invitations", id, "sections", sec.id, "tables"));
+      for (const tb of tbSnap.docs) refs.push(tb.ref as never);
     }
     const tokenSnap = await getDocs(query(collection(db, "setupTokens"), where("inviteToken", "==", id)));
     for (const d of tokenSnap.docs) refs.push(d.ref as never);

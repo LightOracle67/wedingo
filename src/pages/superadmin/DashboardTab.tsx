@@ -258,10 +258,17 @@ const DashboardTab = memo(function DashboardTab() {
         // Subcolecciones de la invitación (medios y FUNCIONES SOCIALES con
         // datos de invitados) + consentLog (consentimiento de cookies): no
         // dejar datos personales huérfanos (GDPR art. 17).
-        const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog"];
+        const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog", "accessLog", "confirmedPeople", "_backup", "venuepoints", "dayphotos", "mailbox", "toasts", "visitLog", "sections"];
         for (const name of SUB_COLLECTIONS) {
           const subSnap = await getDocs(collection(db, "invitations", invitation.id, name));
           subSnap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
+        }
+        // Las mesas de cada sección guardan nombres completos de invitados
+        // (GDPR art. 17): se recorren y añaden al batch de borrado.
+        const sectionsSnap = await getDocs(collection(db, "invitations", invitation.id, "sections"));
+        for (const sec of sectionsSnap.docs) {
+          const tablesSnap = await getDocs(collection(db, "invitations", invitation.id, "sections", sec.id, "tables"));
+          tablesSnap.docs.forEach((t: QueryDocumentSnapshot<DocumentData>) => batch.delete(t.ref));
         }
         // Registros de tokens de setup (hash → inviteToken): sin borrarlos
         // quedan hashes huérfanos apuntando a una invitación inexistente.

@@ -4,11 +4,15 @@ import { serializeDisabledAnimations, parseDisabledAnimations } from "./animatio
 
 /** Normaliza los campos JSON de arrays (lista de regalos, trivia): devuelve
  *  un JSON válido o "[]". */
-function normalizeJsonArray(value: unknown): string {
+function normalizeJsonArray(value: unknown, maxItems = 50): string {
   if (typeof value !== "string" || !value.trim()) return "[]";
   try {
     const parsed = JSON.parse(value);
-    return Array.isArray(parsed) ? JSON.stringify(parsed) : "[]";
+    if (!Array.isArray(parsed)) return "[]";
+    // Cap de tamaño: un array legacy/corrupto con miles de entradas (o
+    // entradas gigantes) se parseaba entero y congelaba el editor/render
+    // además de acercarse al límite de 1 MB del doc Firestore.
+    return JSON.stringify(parsed.slice(0, maxItems));
   } catch {
     return "[]";
   }

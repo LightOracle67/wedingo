@@ -273,8 +273,10 @@ const ManageTab = memo(function ManageTab() {
       const newSetup = generateSetupToken();
       const hash = await hashSetupToken(newSetup);
       // Se copia la configuración pero NO el bankInfo (cifrado con el token
-      // original) ni los campos de sesión/tokens.
-      const { bankInfo: _b, activeSession: _s, sessionExpiresAt: _e, setupTokenHash: _h, _visits: _v, ...clone } = docData;
+      // original) ni los campos de sesión/tokens, incluidos los tokens LEGACY
+      // (_activeSetupToken, legacyToken): sin esto el clon expondría la
+      // credencial del padre en un documento público (riesgo de takeover).
+      const { bankInfo: _b, activeSession: _s, sessionExpiresAt: _e, setupTokenHash: _h, _visits: _v, _activeSetupToken: _at, legacyToken: _lt, ...clone } = docData;
       await setDoc(doc(INVITATIONS_COLLECTION_REF, newInviteToken), { ...clone, bankInfo: "", firstName: String(docData.firstName || "") || "Clone", secondName: String(docData.secondName || "") || "Copy" });
       await setDoc(doc(db, "setupTokens", hash), { inviteToken: newInviteToken, createdAt: new Date().toISOString() });
       setNewToken(newInviteToken);

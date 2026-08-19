@@ -277,7 +277,11 @@ export default function AdminPage() {
     const month = MONTH_VALUE_TO_NUMBER[config.weddingMonth as keyof typeof MONTH_VALUE_TO_NUMBER];
     const year = Number(config.weddingYear);
     if (!day || !month || !year || !Number.isFinite(day) || !Number.isFinite(year)) return null;
-    const d = new Date(year, month - 1, day, Number(config.weddingHour) || 12, Number(config.weddingMinute) || 0);
+    // Hora "0" (medianoche) es válida y no debe tratarse como vacía (|| la
+    // convertía en mediodía).
+    const hour = config.weddingHour && config.weddingHour !== "" ? Number(config.weddingHour) : 12;
+    const minute = config.weddingMinute && config.weddingMinute !== "" ? Number(config.weddingMinute) : 0;
+    const d = new Date(year, month - 1, day, hour, minute);
     if (d.getFullYear() !== year || d.getMonth() !== month - 1 || d.getDate() !== day) return null;
     return d.getTime();
   }, [config.weddingDay, config.weddingMonth, config.weddingYear, config.weddingHour, config.weddingMinute]);

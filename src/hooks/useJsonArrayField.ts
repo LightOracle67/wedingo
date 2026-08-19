@@ -19,7 +19,9 @@ import { useCallback, useMemo } from "react";
  */
 export function useJsonArrayField<T>(raw: string | undefined, normalize: (item: unknown) => T | null, max: number) {
   const { items, parseError } = useMemo(() => {
-    const text = (raw || "").trim();
+    // Un `raw` que llegue como objeto/booleano (dato legacy corrupto) no tiene
+    // .trim y antes rompÃ­a el useMemo; se descarta si no es string.
+    const text = typeof raw === "string" ? raw.trim() : "";
     if (text === "") return { items: [] as T[], parseError: false };
     let parsed: unknown;
     try {
@@ -30,10 +32,15 @@ export function useJsonArrayField<T>(raw: string | undefined, normalize: (item: 
     if (!Array.isArray(parsed)) return { items: [] as T[], parseError: true };
     const normalized: T[] = [];
     for (const item of parsed) {
-      const n = normalize(item);
-      if (n !== null) {
-        normalized.push(n);
-        if (normalized.length >= max) break;
+      // Un normalize futuro no-robusto no debe tumbar el editor.
+      try {
+        const n = normalize(item);
+        if (n !== null) {
+          normalized.push(n);
+          if (normalized.length >= max) break;
+        }
+      } catch {
+        // ítem corrupto: se descarta y se sigue con el resto.
       }
     }
     return { items: normalized, parseError: false };

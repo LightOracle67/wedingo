@@ -206,12 +206,25 @@ const ToolsTab = memo(function ToolsTab({
     }
     try {
       const snap = await getDocs(collection(db, "invitations", inviteToken, "gallery"));
-      const urls = snap.docs.map((d) => ({ id: d.id, data: String(d.data().data || "") }));
-      for (const img of urls) {
+      const { decrypt } = await import("../../lib/crypto-utils");
+      const imgs = snap.docs.map((d) => ({ id: d.id, data: String(d.data().data || "") }));
+      // Las imágenes de la galería se guardan CIFRADAS (AES-GCM): antes se
+      // usaba `img.data` (ciphertext) como href, descargando basura ilegible
+      // y una ruta relativa rota. Ahora se descifran una a una.
+      const urls: Array<{ id: string; url: string }> = [];
+      for (const img of imgs) {
         if (!img.data) continue;
+        const url = await decrypt(img.data, inviteToken);
+        if (url) urls.push({ id: img.id, url });
+      }
+      if (urls.length === 0) {
+        addToast("info", t("tools.noGalleryPhotos"));
+        return;
+      }
+      for (const { id, url } of urls) {
         const a = document.createElement("a");
-        a.href = img.data;
-        a.download = `wedingo-${img.id}.webp`;
+        a.href = url;
+        a.download = `wedingo-${id}.webp`;
         document.body.appendChild(a);
         a.click();
         a.remove();
@@ -231,7 +244,11 @@ const ToolsTab = memo(function ToolsTab({
     // COMPORTAMIENTO SEGURO: se valida el rollover de la fecha ("31 de
     // febrero" normaliza a 3 de marzo); si no cuadra no se genera un .ics
     // corrupto y se avisa al responsable.
-    const start = new Date(Number(weddingDate.year), monthNum - 1, Number(weddingDate.day), Number(weddingDate.hour) || 12, Number(weddingDate.minute) || 0);
+    // Hora/miunte: "" o ausente → 12:00 por defecto; pero la hora "0"
+    // (medianoche, válida) NO debe tratarse como vacía (fix: ?? en vez de ||).
+    const hour = weddingDate.hour && weddingDate.hour !== "" ? Number(weddingDate.hour) : 12;
+    const minute = weddingDate.minute && weddingDate.minute !== "" ? Number(weddingDate.minute) : 0;
+    const start = new Date(Number(weddingDate.year), monthNum - 1, Number(weddingDate.day), hour, minute);
     if (
       start.getFullYear() !== Number(weddingDate.year) ||
       start.getMonth() !== monthNum - 1 ||

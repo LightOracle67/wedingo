@@ -32,7 +32,10 @@ export function useLinesField<T>({ parseLine, itemToLine, maxLines = 50 }: Lines
     try {
       const parsed = JSON.parse(json || "[]");
       if (!Array.isArray(parsed)) return "";
-      return parsed.map((item: T) => itemToLineRef.current(item)).join("\n");
+      const safe = (parsed as unknown[]).filter(
+        (item): item is T => item !== null && item !== undefined && typeof item === "object",
+      );
+      return safe.map((item) => itemToLineRef.current(item)).join("\n");
     } catch {
       return "";
     }

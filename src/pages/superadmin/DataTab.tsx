@@ -1018,10 +1018,19 @@ async function cascadeDelete(token: string) {
   // interno _counters. Las sociales guardan datos personales de los invitados
   // y, si no se borran, quedan huérfanas y legibles para siempre (derecho de
   // supresión, GDPR art. 17).
-  const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog"];
+  const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog", "accessLog", "confirmedPeople", "_backup", "venuepoints", "dayphotos", "mailbox", "toasts", "visitLog", "sections"];
   for (const name of SUB_COLLECTIONS) {
     const subSnap = await getDocs(collection(db, "invitations", token, name));
     for (const d of subSnap.docs) refsToDelete.push(d.ref);
+  }
+
+  // Las mesas de cada sección (sections/{id}/tables) guardan los NOMBRES
+  // COMPLETOS de los invitados asignados: deben borrarse junto a la sección
+  // para cumplir el derecho de supresión (GDPR art. 17).
+  const sectionsSnap = await getDocs(collection(db, "invitations", token, "sections"));
+  for (const sec of sectionsSnap.docs) {
+    const tablesSnap = await getDocs(collection(db, "invitations", token, "sections", sec.id, "tables"));
+    for (const tb of tablesSnap.docs) refsToDelete.push(tb.ref);
   }
 
   // Registros de tokens de setup (hash → inviteToken): sin esto quedaban

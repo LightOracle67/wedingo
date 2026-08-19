@@ -88,6 +88,10 @@ export function useSetupAuth(
   const resettingRef = useRef(false);
   /** Fallos consecutivos de renovaciÃ³n: al segundo se corta la sesiÃ³n. */
   const renewFailureRef = useRef(false);
+  /** Ref de "sesiÃ³n viva": el logout lo pone a false ANTES del updateDoc, y el
+   *  renew lo comprueba antes de escribir; evita que una renovaciÃ³n en vuelo
+   *  resucite la sesiÃ³n Firestore tras un logout explÃ­cito (sesiÃ³n zombi). */
+  const sessionAliveRef = useRef(false);
 
   /** Derivado: el usuario estÃ¡ autenticado si el token fue verificado. */
   const isAdminTokenLoggedIn = useMemo(() => isTokenVerified, [isTokenVerified]);
@@ -203,7 +207,12 @@ export function useSetupAuth(
   useSessionRenewal(isTokenVerified);
   useEffect(() => {
     if (isTokenVerified) {
+      // Marca la sesiÃ³n como viva: el logout la apagarÃ¡ antes de borrar.
+      sessionAliveRef.current = true;
       const doRenew = async () => {
+        // No renovar si la sesiÃ³n ya se cerrÃ³ (logout en vuelo): un renew
+        // tardÃ­o no debe resucitar la sesiÃ³n Firestore.
+        if (!sessionAliveRef.current) return;
         try {
           const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
           const storedToken = safeGetItem(storageKey, sessionStorage) || "";
@@ -493,6 +502,12 @@ export function useSetupAuth(
    */
   const handleAdminLogout = useCallback(async () => {
     const token = inviteToken;
+    // Apaga la "sesiÃ³n viva" ANTES de borrar: cualquier renovaciÃ³n en vuelo
+    // no resucitarÃ¡ la sesiÃ³n Firestore (fix sesiÃ³n zombi).
+    sessionAliveRef.current = false;
+    // Reinicia el contador de fallos de renovaciÃ³n para el prÃ³ximo login.
+    renewFailureRef.current = false;
+    if (renewRef.current) clearInterval(renewRef.current);
     setIsTokenVerified(false);
     setTokenLoginUsername("");
     sessionTypeRef.current = "";

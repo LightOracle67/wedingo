@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.114.0",
+    date: "2026-08-17",
+    changes: [
+      "Ronda de mayor estabilidad (auditoría profunda de arranque, sesiones, superadmin, galería/export y parseo). Correcciones aplicadas: (ALTA) la descarga de la galería en Herramientas volcaba el CIFRADO (AES-GCM) como .webp → ahora se descifra cada imagen antes de descargar (como las fotos del día); handleClone dejaba de exponer los tokens LEGACY del padre (ahora se omiten _activeSetupToken y legacyToken); cascade delete de invitación ampliado con accessLog, confirmedPeople, _backup, venuepoints, dayphotos, mailbox, toasts, visitLog, sections y sus MESAS (nombres completos, GDPR), en DataTab/InvitationsTab/DashboardTab. (MEDIA) hora medianoche '0' ya no se convierte a mediodía en el .ics de Herramientas ni en el timestamp de predicción del Panel; renovación de sesión Firestore blindada contra sesión 'zombi' tras logout (sessionAliveRef) y renewFailureRef reseteado al reloguear y en logout; normalizeJsonArray limita giftList/trivia a 50 ítems (evita freeze y exceso de 1 MB); useJsonArrayField tolera raw no-string y normalize que lance; useLinesField descarta ítems null (el textarea de regalos ya no se ve vacío y no se pierde la lista al guardar). 2294 tests / 175 ficheros + lint/typecheck/build/translations OK. Pendiente en próximas rondas (documentado): métricas superadmin con N+1, restore sin limpiar subcolecciones, backup con PII en claro, batch único >500 en resetRsvps.",
+    ],
+  },
+
+  {
     version: "2.113.0",
     date: "2026-08-17",
     changes: [
