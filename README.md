@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.114.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.114.0)  
+**Versión actual:** [v2.115.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.115.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -128,6 +128,11 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 - **Confirmaciones accesibles:** se migraron los últimos `window.confirm` nativos (inaccesibles) al modal accesible con focus-trap: el guardado del editor con cambios de menú y los tres flujos de borrado de RSVP (retirar, eliminar en lote, vaciar). Se reordenó `ConfirmProvider` para envolver `AppProvider`.
 - **UX RSVP:** aviso accesible con el número total de personas a confirmar al asistir con acompañantes («Confirmarás N personas»).
+
+### Ronda v2.115 (seguridad reglas)
+
+- **Endurecido `isValidSafeUrl` en Firestore:** la regex `javascript:` era bypaseable con saltos de línea (RE2 no cruza `\n`) y no bloqueaba `data:`/`vbscript:` ni protocol-relative; ahora se exige URL `http(s)://` absoluta y se descarta cualquier valor con `\n\r\t` (XSS almacenado en href).
+- **Sincronizados los temas premium** (`antique-ivory`, `deep-amethyst`) con la regla `isValidTheme` para que guardarlos no dé `permission-denied`.
 
 ### Ronda v2.114 (estabilidad)
 
@@ -333,6 +338,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.115.0 | 2026-08-19 | Seguridad de reglas: `isValidSafeUrl` endurecido (XSS por nueva línea, data/vbscript) + temas premium sincronizados |
 | v2.114.0 | 2026-08-17 | Ronda de estabilidad (auditoría profunda): fix descarga galería cifrada, cascade delete GDPR, sesión zombi, hora medianoche, caps de parseo |
 | v2.113.0 | 2026-08-17 | Ronda de mejora general: confirmaciones accesibles (AppContext + RSVP) y resumen de personas en el RSVP |
 | v2.112.0 | 2026-08-17 | Nueva sección pública de distribución de mesas con lupa a pantalla completa (zona + plano idéntico al editor) |
