@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.113.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.113.0)  
+**Versión actual:** [v2.114.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.114.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -128,6 +128,14 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 - **Confirmaciones accesibles:** se migraron los últimos `window.confirm` nativos (inaccesibles) al modal accesible con focus-trap: el guardado del editor con cambios de menú y los tres flujos de borrado de RSVP (retirar, eliminar en lote, vaciar). Se reordenó `ConfirmProvider` para envolver `AppProvider`.
 - **UX RSVP:** aviso accesible con el número total de personas a confirmar al asistir con acompañantes («Confirmarás N personas»).
+
+### Ronda v2.114 (estabilidad)
+
+- **Fix descarga de galería cifrada:** en Herramientas la galería se descargaba como ciphertext ilegible (AES-GCM); ahora se descifra cada imagen antes de descargar.
+- **Cascade delete GDPR:** el borrado de una invitación ahora limpia también accessLog, confirmedPeople, `_backup`, mesas (nombres de invitados), visitas, etc. en los 3 paneles del superadmin.
+- **Sesión «zombi»:** una renovación de sesión Firestore en vuelo ya no resucita la sesión tras un logout; y el contador de fallos de renovación se resetea al reloguear.
+- **Hora medianoche:** la hora `"0"` ya no se convierte a mediodía en el `.ics` ni en la predicción de asistencia.
+- **Caps de parseo:** `giftList`/`trivia` limitados a 50 ítems y parsers tolerantes ante datos corruptos (evita freezes y listas perdidas).
 | **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
 | **Story** | Historia de amor (texto libre) |
 | **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
@@ -325,6 +333,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.114.0 | 2026-08-17 | Ronda de estabilidad (auditoría profunda): fix descarga galería cifrada, cascade delete GDPR, sesión zombi, hora medianoche, caps de parseo |
 | v2.113.0 | 2026-08-17 | Ronda de mejora general: confirmaciones accesibles (AppContext + RSVP) y resumen de personas en el RSVP |
 | v2.112.0 | 2026-08-17 | Nueva sección pública de distribución de mesas con lupa a pantalla completa (zona + plano idéntico al editor) |
 | v2.111.0 | 2026-08-17 | Fix de la sección de extras (causa raíz: welcomeVideo/rsvpDeadline) + errores profundos (cap de confirmados, persistencia de trivia, contador de reacciones) |
