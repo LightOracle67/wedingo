@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.115.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.115.0)  
+**Versión actual:** [v2.116.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.116.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -128,6 +128,12 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 - **Confirmaciones accesibles:** se migraron los últimos `window.confirm` nativos (inaccesibles) al modal accesible con focus-trap: el guardado del editor con cambios de menú y los tres flujos de borrado de RSVP (retirar, eliminar en lote, vaciar). Se reordenó `ConfirmProvider` para envolver `AppProvider`.
 - **UX RSVP:** aviso accesible con el número total de personas a confirmar al asistir con acompañantes («Confirmarás N personas»).
+
+### Ronda v2.116 (seguridad: criticos auditoría)
+
+- **Fix carrera crítica del autosave:** un autosave programado para la invitación A ya no puede dispararse tras navegar a B y volcar los datos de A dentro del documento de B. `useAutoSave` recibe ahora el ref del token activo y aborta la escritura a Firestore si el usuario cambió de invitación durante el debounce.
+- **Cifrado con token (documentado C1):** se aclara que el cifrado AES-GCM deriva del token de invitación por diseño (token = credencial de acceso compartida con los invitados); aporta ofuscación en reposo, no confidencialidad frente al poseedor legítimo. La protección real se centra en NO filtrar el token.
+- **Mitigada la fuga del token en Sentry:** las URLs (ruta `/<token>` y query `?t=/invitar`) y el hash se redactan (`[redacted]`) en errores, breadcrumbs y session replay vía `beforeSend`/`beforeBreadcrumb` + `redactSecretsFromUrl`, para que la credencial no salga del navegador.
 
 ### Ronda v2.115 (seguridad reglas)
 
@@ -338,6 +344,7 @@ Hitos principales:
 
 | Versión | Fecha | Hito |
 |---|---|---|
+| v2.116.0 | 2026-08-19 | Seguridad: fix carrera crítica del autosave entre invitaciones + mitigación de la fuga del token en Sentry (cifrado con token documentado) |
 | v2.115.0 | 2026-08-19 | Seguridad de reglas: `isValidSafeUrl` endurecido (XSS por nueva línea, data/vbscript) + temas premium sincronizados |
 | v2.114.0 | 2026-08-17 | Ronda de estabilidad (auditoría profunda): fix descarga galería cifrada, cascade delete GDPR, sesión zombi, hora medianoche, caps de parseo |
 | v2.113.0 | 2026-08-17 | Ronda de mejora general: confirmaciones accesibles (AppContext + RSVP) y resumen de personas en el RSVP |
