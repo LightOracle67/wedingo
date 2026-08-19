@@ -1,3 +1,31 @@
+/**
+ * crypto-utils.ts
+ * ─────────────────────────────────────────────────────────────
+ * Cifrado AES-GCM para datos sensibles de la invitación (bankInfo/IBAN y
+ * multimedia) usando WebCrypto (PBKDF2-SHA256 + AES-GCM-256).
+ *
+ * NATURALEZA DEL CIFRADO (decisión C1 — ofuscación intencional):
+ * La clave se deriva del `token` de la invitación. Ese token NO es un secreto
+ * de servidor: es la CREDENCIAL DE ACCESO que se comparte con los invitados a
+ * través de la URL (`/TOKEN`). Cualquiera que posea el token legítimamente ya
+ * puede leer el IBAN desde la app pública, por lo que este cifrado NO aporta
+ * confidencialidad frente a quien tiene acceso; su propósito real es:
+ *   1) Mantener los datos ilegibles en reposo para quien NO tiene el token
+ *      (Firestore/documento expuesto, copias, respaldos, inspección).
+ *   2) Que un leak pasivo de un único dato (p.ej. el payload de un doc) sea
+ *      ilegible sin conocer la URL de acceso.
+ * El resto de protección (quién lee) lo garantizan las reglas de Firestore.
+ *
+ * RIESGO RESIDUAL y mitigación: al ser la clave derivada del token público,
+ * la confidencialidad real NO depende de este cifrado sino de que el token
+ * no se filtre. Por eso NO se registra el token en logs ni se envía a
+ * analytics/Sentry (ver redactSecretsFromUrl en sentry.ts), y las URLs se
+ * redactan antes de salir del navegador. No añadir nunca el token en claro
+ * a mensajes de error o eventos.
+ *
+ * @module crypto-utils
+ */
+
 const ALGORITHM = { name: "AES-GCM", length: 256 };
 const SALT_LEN = 16;
 const IV_LEN = 12;

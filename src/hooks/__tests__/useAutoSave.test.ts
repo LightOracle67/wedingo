@@ -558,6 +558,47 @@ describe("useAutoSave", () => {
       expect(mockSetDoc).not.toHaveBeenCalled();
     });
 
+    it("does not save when currentTokenRef no longer matches the inviteToken", async () => {
+      // Carrera A→B: el autosave se programó para "token-a" pero el ref actual
+      // ya apunta a "token-b" (el usuario navegó dentro del debounce). No debe
+      // escribirse nada en Firestore para evitar corromper el doc de B.
+      const currentTokenRef = { current: "token-b" };
+      const onSaveError = vi.fn();
+      const { result } = renderHook(() =>
+        useAutoSave(
+          true,
+          "token-a",
+          sampleConfig,
+          sampleConfig,
+          vi.fn(),
+          { current: false },
+          undefined,
+          onSaveError,
+          currentTokenRef,
+        ),
+      );
+
+      await act(async () => {
+        const output = await result.current.doSave(sampleConfig);
+        expect(output).toBeNull();
+      });
+
+      expect(mockSetDoc).not.toHaveBeenCalled();
+    });
+
+    it("saves normally when currentTokenRef still matches the inviteToken", async () => {
+      const currentTokenRef = { current: "token-a" };
+      const { result } = renderHook(() =>
+        useAutoSave(true, "token-a", sampleConfig, sampleConfig, vi.fn(), { current: false }, undefined, undefined, currentTokenRef),
+      );
+
+      await act(async () => {
+        await result.current.doSave(sampleConfig);
+      });
+
+      expect(mockSetDoc).toHaveBeenCalled();
+    });
+
     it("notifies onAutoSaved after a successful save", async () => {
       const onAutoSaved = vi.fn();
       const { result } = renderHook(() =>

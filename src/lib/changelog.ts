@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.116.0",
+    date: "2026-08-19",
+    changes: [
+      "Ronda de seguridad: resolución de los 2 CRÍTICOS de la auditoría definitiva. (AUTO-SAVE RACE) El autosave programado para la invitación A podía dispararse tras navegar a B y volcar los datos de A dentro del documento de B (corrupción entre invitaciones): ahora useAutoSave recibe currentTokenRef (el token activo del provider) y comprueba ANTES de escribir en Firestore que el token sigue siendo el que programó el guardado; si el usuario cambió de invitación, se aborta la escritura. (CIFRADO con token) Se documenta explícitamente que Cypher cifra con el token de invitación por DISEÑO (token = credencial de acceso compartida con los invitados): es ofuscación en reposo frente a quien no posee la URL, no confidencialidad frente al poseedor legítimo; la protección real se desplaza a NO filtrar el token. Por ello se mitiga la fuga del propio token en Sentry: nuevo redactSecretsFromUrl + beforeSend/beforeBreadcrumb que sustituyen por [redacted] el token de la ruta (/<token>, /<token>/admin …) y de los query params (t/token/invitar/invite) y del hash, para que la credencial no salga del navegador en errores, breadcrumbs ni session replay (la URL con token se capturaba por defecto). Se añadieron tests de la carrera (useAutoSave: no escribe si el ref cambió, sí escribe si coincide) y de redacción. 2299 tests / 175 ficheros + lint/typecheck/build/translations (1704 claves) OK.",
+    ],
+  },
+
+  {
     version: "2.114.0",
     date: "2026-08-17",
     changes: [

@@ -17,6 +17,11 @@ export function useAutoSave(
   isSavingRef: { current: boolean } | null,
   onAutoSaved?: (data: InvitationConfig) => void,
   onSaveError?: (msg: string) => void,
+  /** Ref al token ACTUALMENTE activo (el provider actualiza currentRef al
+   *  hidratar/cambiar de invitación). Sin esto, un autosave programado para A
+   *  podía dispararse con el token de B y escribir los datos de A en el doc de
+   *  B (corrupción de datos entre invitaciones). */
+  currentTokenRef?: { current: string },
 ) {
   const { t } = useTranslation();
   const autoSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -105,6 +110,13 @@ export function useAutoSave(
 
         if (payload.bankInfo) payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
         delete (payload as Record<string, unknown>).musicFile;
+        // GUARD CRÍTICO de carrera A→B: si entre que se programó el autosave y
+        // ahora el usuario navegó a otra invitación, NO se escribe (evita
+        // volcar los datos de A dentro del doc de B).
+        if (currentTokenRef?.current && currentTokenRef.current !== inviteToken) {
+          lastSaveFailedRef.current = true;
+          return null;
+        }
         await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
         // Actualiza el config en memoria para que la vista previa del admin
         // muestre los cambios autoguardados sin recargar.
@@ -124,7 +136,7 @@ export function useAutoSave(
         if (isSavingRef) isSavingRef.current = false;
       }
     },
-    [inviteToken, isSavingRef, t, onAutoSaved, onSaveError],
+    [inviteToken, isSavingRef, t, onAutoSaved, onSaveError, currentTokenRef],
   );
 
   // Comparaciones memoizadas: se evita re-serializar todo el config en cada

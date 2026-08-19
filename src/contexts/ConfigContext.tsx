@@ -155,6 +155,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       if (currentTokenRef.current === inviteToken) setConfig(data);
     },
     setSaveError,
+    // Guard de carrera crítica: impide que un autosave programado para la
+    // invitación A se escriba dentro del documento de B al navegar sin guardar.
+    currentTokenRef,
   );
 
   const onFirstSaveCallbacksRef = useRef<(() => void)[]>([]);

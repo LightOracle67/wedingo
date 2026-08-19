@@ -25,6 +25,78 @@ const SENTRY_DSN =
 let initialized = false;
 
 /**
+ * Redacta el token de invitación que viaja en la URL (ruta `/<token>` y en
+ * query como `?t=`/`invitar`), además de cualquier hash. El token es la
+ * credencial de acceso a la invitación: nunca debe salir del navegador hacia
+ * Sentry ni en errores ni en breadcrumbs ni en el session replay.
+ *
+ * @param str - Cadena de URL o texto a sanear.
+ */
+export function redactSecretsFromUrl(str: string): string {
+  if (!str) return str;
+  let out = str;
+  // El token es el PRIMER segmento del pathname. Se redacta para las rutas
+  // de invitación: "/TOKEN", "/TOKEN/admin", "/TOKEN/setup", … El dominio y
+  // el resto de rutas (landing, misc) se dejan intactos.
+  try {
+    // solo aplica a URLs absolutas con http(s)
+    if (/^https?:\/\//i.test(out) && out.includes("/")) {
+      out = out.replace(/^(https?:\/\/[^/]+)\/([A-Za-z0-9_-]{4,32})(\/[^?#]*)?([?#].*)?$/, (m, origin, seg, tail, rest) => {
+        // No redactar rutas internas conocidas (landing, superadmin).
+        const base = seg.toLowerCase();
+        if (
+          ["setup", "admin", "superadmin", "superadmin-login", "login", "landing", "privacy", "terms"].includes(
+            base,
+          )
+        ) {
+          return m;
+        }
+        return `${origin}/[redacted]${tail || ""}${rest || ""}`;
+      });
+    }
+  } catch {
+    /* formato inválido: se deja tal cual */
+  }
+  // Query params: t, token, invitar, invite
+  out = out.replace(/([?&](?:t|token|invitar|invite)=)[^&#]*/g, "$1[redacted]");
+  // Hash (config de invitación cifrada/legacy)
+  out = out.replace(/(#[^]*)/, "#[redacted]");
+  return out;
+}
+
+/**
+ * Redacta un evento de Sentry (error o transacción) sustituyendo el token de
+ * la URL por "[redacted]" en los campos sensibles. best-effort: si lanza, se
+ * devuelve el evento sin tocar para no perder el reporte.
+ *
+ * @param event - Evento de Sentry antes de enviarse.
+ */
+function redactEvent(event: Record<string, unknown>): Record<string, unknown> {
+  try {
+    const request = (event.request ?? {}) as Record<string, unknown>;
+    if (typeof request.url === "string") request.url = redactSecretsFromUrl(request.url);
+    event.request = request;
+    if (typeof event.transaction === "string") event.transaction = redactSecretsFromUrl(event.transaction);
+    if (event.tags && typeof event.tags === "object") {
+      const tags = event.tags as Record<string, string>;
+      for (const k of Object.keys(tags)) {
+        tags[k] = redactSecretsFromUrl(String(tags[k]));
+      }
+    }
+    if (event.contexts && typeof event.contexts === "object") {
+      for (const ctx of Object.values(event.contexts as Record<string, Record<string, unknown>>)) {
+        if (ctx && typeof ctx === "object" && typeof (ctx as Record<string, unknown>).url === "string") {
+          (ctx as Record<string, unknown>).url = redactSecretsFromUrl(String((ctx as Record<string, unknown>).url));
+        }
+      }
+    }
+    return event;
+  } catch {
+    return event;
+  }
+}
+
+/**
  * Ejecuta una función cuando el navegador está ocioso (o tras el load).
  *
  * @param fn - Función a diferir.
@@ -66,6 +138,20 @@ export function enableSentryTracking() {
       tracePropagationTargets: ["localhost"],
       replaysSessionSampleRate: isProd ? 0.1 : 0,
       replaysOnErrorSampleRate: isProd ? 1.0 : 0,
+      // Redacta el token de invitación (credencial de acceso) de las URLs
+      // antes de enviar errores/transacciones a Sentry (C1).
+      beforeSend: (event) => redactEvent(event as unknown as Record<string, unknown>) as unknown as typeof event,
+      beforeBreadcrumb: (breadcrumb) => {
+        try {
+          const data = (breadcrumb.data ?? {}) as Record<string, unknown>;
+          if (typeof data.url === "string") data.url = redactSecretsFromUrl(data.url);
+          if (typeof data.message === "string") data.message = redactSecretsFromUrl(data.message);
+          if (typeof breadcrumb.message === "string") breadcrumb.message = redactSecretsFromUrl(breadcrumb.message);
+          return breadcrumb;
+        } catch {
+          return null;
+        }
+      },
     });
   });
 }
