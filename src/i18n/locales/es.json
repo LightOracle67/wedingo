@@ -143,7 +143,8 @@
     "thumbnailAria": "Foto {{number}}",
     "thumbnailAlt": "Miniatura de foto de la galería",
     "download": "Descargar foto",
-    "imageUnavailable": "Esta foto no está disponible."
+    "imageUnavailable": "Esta foto no está disponible.",
+    "thumbnailsAria": "Miniaturas de la galería"
   },
   "rsvp": {
     "sectionLabel": "Confirmación de asistencia",

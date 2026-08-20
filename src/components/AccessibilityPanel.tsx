@@ -43,6 +43,12 @@ function savePrefs(prefs: A11yPrefs) {
   }
 }
 
+/** Valores permitidos para --a11y-font-scale (whitelist: un localStorage
+ *  manipulado no puede inyectar CSS arbitrario en las custom properties). */
+const FONT_SCALES = new Set(["1", "1.15", "1.3", "1.5"]);
+/** Valores permitidos para --a11y-line-spacing. */
+const LINE_SPACINGS = new Set(["0", "0.4"]);
+
 function applyPrefs(prefs: A11yPrefs) {
   const root = document.documentElement;
   root.classList.toggle("a11y-high-contrast", !!prefs.highContrast);
@@ -53,15 +59,19 @@ function applyPrefs(prefs: A11yPrefs) {
   root.classList.toggle("a11y-big-cursor", !!prefs.bigCursor);
   root.classList.toggle("a11y-desaturate", !!prefs.desaturate);
   root.classList.toggle("a11y-strong-focus", !!prefs.strongFocus);
-  if (prefs.fontSize && prefs.fontSize !== "1") {
-    root.style.setProperty("--a11y-font-scale", prefs.fontSize);
+  // Solo se aplican valores de la whitelist; cualquier otro (incluido un
+  // valor corrupto/inyectado en localStorage) se ignora.
+  const fontScale = prefs.fontSize && FONT_SCALES.has(prefs.fontSize) ? prefs.fontSize : "1";
+  if (fontScale !== "1") {
+    root.style.setProperty("--a11y-font-scale", fontScale);
     root.classList.add("a11y-font-scale");
   } else {
     root.style.removeProperty("--a11y-font-scale");
     root.classList.remove("a11y-font-scale");
   }
-  if (prefs.lineSpacing && prefs.lineSpacing !== "0") {
-    root.style.setProperty("--a11y-line-spacing", prefs.lineSpacing);
+  const lineSpacing = prefs.lineSpacing && LINE_SPACINGS.has(prefs.lineSpacing) ? prefs.lineSpacing : "0";
+  if (lineSpacing !== "0") {
+    root.style.setProperty("--a11y-line-spacing", lineSpacing);
     root.classList.add("a11y-line-spacing");
   } else {
     root.style.removeProperty("--a11y-line-spacing");

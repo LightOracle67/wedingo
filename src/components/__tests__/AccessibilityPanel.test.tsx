@@ -281,4 +281,16 @@ describe("AccessibilityPanel", () => {
     fireEvent.click(screen.getByText("a11y.fontHuge"));
     expect(document.documentElement.style.getPropertyValue("--a11y-font-scale")).toBe("1.5");
   });
+
+  it("ignora un valor manipulado en localStorage (whitelist anti-inyección CSS)", () => {
+    // Un atacante/localStorage corrupto inyecta un fontSize arbitrario.
+    localStorageMock.setItem(
+      "wedin_a11y",
+      JSON.stringify({ fontSize: "1; background:url(//evil)", lineSpacing: "999" }),
+    );
+    render(<AccessibilityPanel open={true} onClose={vi.fn()} />);
+    // El panel NO debe aplicarlo como custom property CSS.
+    expect(document.documentElement.style.getPropertyValue("--a11y-font-scale")).toBe("");
+    expect(document.documentElement.style.getPropertyValue("--a11y-line-spacing")).toBe("");
+  });
 });

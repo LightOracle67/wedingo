@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.123.0",
+    date: "2026-08-20",
+    changes: [
+      "Ronda 5 (accesibilidad media). (2.1.1/2.4.7) La fila de miniaturas de la galería ahora es operativa por teclado: con role=group + aria-label, las flechas ←/→ seleccionan la imagen adyacente y mueven el foco a la miniatura correspondiente; cada miniatura marca aria-current cuando está activa. (Seguridad UI) AccessibilityPanel valida los valores de --a11y-font-scale y --a11y-line-spacing contra una WHITELIST ('1'|'1.15'|'1.3'|'1.5' y '0'|'0.4'): un localStorage manipulado ya no puede inyectar CSS arbitrario en las custom properties (endurecido frente a inyección por preferencias de accesibilidad). Nuevo test que lo verifica. 2325 tests / 178 ficheros + lint/typecheck/build/translations/consent OK.",
+    ],
+  },
+
+  {
     version: "2.122.0",
     date: "2026-08-20",
     changes: [

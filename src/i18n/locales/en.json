@@ -143,7 +143,8 @@
     "thumbnailAria": "Photo {{number}}",
     "thumbnailAlt": "Gallery photo thumbnail",
     "download": "Download photo",
-    "imageUnavailable": "This photo is not available."
+    "imageUnavailable": "This photo is not available.",
+    "thumbnailsAria": "Gallery thumbnails"
   },
   "rsvp": {
     "sectionLabel": "RSVP",

@@ -399,6 +399,28 @@ const GallerySection = memo(function GallerySection({
     if (idx != null) setThumbLoaded((p: Record<number, boolean>) => ({ ...p, [parseInt(idx, 10)]: true }));
   }, []);
 
+  // Navegación por teclado de la fila de miniaturas (WCAG 2.1.1/2.4.7): con
+  // la fila enfocada, las flechas ←/→ seleccionan y mueven el foco a la
+  // miniatura adyacente (Aplicación de teclado horizontal típica de galerías).
+  const handleThumbRowKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      e.preventDefault();
+      const currentEl = e.target as HTMLElement;
+      const currentIdx = Number(currentEl?.dataset?.index ?? NaN);
+      const dir = e.key === "ArrowRight" ? 1 : -1;
+      if (Number.isNaN(currentIdx) || images.length === 0) return;
+      const target = (currentIdx + dir + images.length) % images.length;
+      goTo(target);
+      // Mueve el foco a la miniatura de destino (rol de grupo: sin roving, el
+      // TAB sigue funcionando; esto mejora la fluidez sin romper el flujo).
+      const row = currentEl.closest('[role="group"]');
+      const nextThumb = row?.querySelector<HTMLButtonElement>(`.gallery-thumb[data-index="${target}"]`);
+      nextThumb?.focus();
+    },
+    [goTo, images.length],
+  );
+
   const handleContainerKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
@@ -582,6 +604,9 @@ const GallerySection = memo(function GallerySection({
 
           {/* ── Miniaturas ── */}
           <div
+            role="group"
+            aria-label={t("gallery.thumbnailsAria")}
+            onKeyDown={handleThumbRowKeyDown}
             style={{ display: "flex", justifyContent: "center", gap: "0.4rem", marginTop: "0.6rem", flexWrap: "wrap" }}
           >
             {images.map((img, i) => {
@@ -592,6 +617,7 @@ const GallerySection = memo(function GallerySection({
                   onClick={handleThumbClick}
                   data-index={i}
                   aria-label={t("gallery.thumbnailAria", { number: i + 1 })}
+                  aria-current={i === clamped ? "true" : undefined}
                   className="gallery-thumb"
                   style={{
                     border: i === clamped ? "2px solid var(--setup-accent)" : "2px solid transparent",
