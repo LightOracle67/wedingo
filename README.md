@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.118.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.118.0)  
+**Versión actual:** [v2.119.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.119.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -343,6 +343,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.119.0 | 2026-08-20 | Ronda 1 accesibilidad AAA: teclado en editor de mesas + campos X/Y, focus trap en modales anidados + scroll-lock, contraste footer/menú/trivia, labels 'otras alergias', h2-fuera-de-button, aria-live gracias |
 | v2.118.0 | 2026-08-20 | Fase 2 de la auditoría: utilidad safe-href (XSS reflejado), checksum IBAN mod-97, isEncryptedMedia en dayphotos/voicenotes, clave por token en cifrado (N→1 derivaciones), O(n) en asistencia, preload Lora, claves i18n |
 | v2.117.0 | 2026-08-20 | Auditoría integral: fix GDPR retención (scheduler no borraba), cutoff parental 2012-08-21, suite tests al verde (2303), lint:ci OK, versionado unificado |
 |---|---|---|

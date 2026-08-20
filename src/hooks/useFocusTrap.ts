@@ -53,8 +53,9 @@ export function useFocusTrap<T extends HTMLElement = HTMLElement>(open: boolean)
       if (e.key !== "Tab") return;
       // Si hay un modal ABIERTO ENCIMA de este (estado transient de doble
       // modal), no robar su Tab.
-      const openAbove = Array.from(document.querySelectorAll("[aria-modal='true']"))
-        .some((m) => m !== el && el.contains(m));
+      const openAbove = Array.from(document.querySelectorAll("[aria-modal='true']")).some(
+        (m) => m !== el && el.contains(m),
+      );
       if (openAbove) return;
       const current = el.querySelectorAll(FOCUSABLE);
       const f = current[0];
@@ -92,23 +93,62 @@ export function useFocusTrap<T extends HTMLElement = HTMLElement>(open: boolean)
  * @param {boolean} open - Si el resto del árbol debe quedar inerte.
  * @param {React.RefObject<HTMLElement|null>} keepRef - Ref del modal que permanece activo.
  */
-export function useInertBackground<T extends HTMLElement = HTMLElement>(open: boolean, keepRef: React.RefObject<T | null>) {
+export function useInertBackground<T extends HTMLElement = HTMLElement>(
+  open: boolean,
+  keepRef: React.RefObject<T | null>,
+) {
   useEffect(() => {
     if (!open) return;
     const keep = keepRef.current;
-    if (!keep) return;
-    const root = document.getElementById("root");
-    if (!root) return;
-    // Aislar el contenedor del modal de sus hermanos dentro de #root.
+    if (!keep || !keep.parentElement) return;
+
     const inerted: { el: HTMLElement; prevInert: boolean }[] = [];
-    for (const child of Array.from(root.children)) {
-      const el = child as HTMLElement;
-      if (el === keep || el.contains(keep) || keep.contains(el)) continue;
+    const record = (el: HTMLElement) => {
+      if (el === keep || el.inert) return;
       inerted.push({ el, prevInert: el.inert });
       el.inert = true;
       el.setAttribute("aria-hidden", "true");
+    };
+
+    // Columna de ancestros hasta (sin incluir) body.
+    const body = document.body;
+    const ancestors: HTMLElement[] = [];
+    let node: HTMLElement | null = keep;
+    while (node && node !== body) {
+      ancestors.unshift(node);
+      node = node.parentElement;
     }
+
+    // Recorre desde los hijos de body; inerta todo lo que no esté en la rama
+    // activa (ancestro del modal) y, dentro de ella, cada hermano que no
+    // conduzca al modal.
+    const visit = (el: HTMLElement) => {
+      const isActiveAncestor = el !== keep && ancestors.includes(el);
+      if (el === keep) {
+        // El propio modal permanece activo: su contenido NO se inerta nunca.
+        return;
+      }
+      if (!isActiveAncestor) {
+        record(el);
+        return;
+      }
+      for (const child of Array.from(el.children)) {
+        const c = child as HTMLElement;
+        const holdsModal = c.contains(keep) || c === keep;
+        if (!holdsModal) {
+          record(c);
+        } else {
+          visit(c);
+        }
+      }
+    };
+    for (const child of Array.from(body.children)) visit(child as HTMLElement);
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
     return () => {
+      document.body.style.overflow = prevOverflow;
       for (const { el, prevInert } of inerted) {
         el.inert = prevInert;
         el.removeAttribute("aria-hidden");

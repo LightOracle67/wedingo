@@ -80,9 +80,10 @@ const RsvpSection = memo(function RsvpSection({
   // configuradas por el admin y se muestra tras confirmar.
   const [assignedTable, setAssignedTable] = useState<string>("");
   useEffect(() => {
-    const attendingName = alreadySubmittedEntry && (alreadySubmittedEntry as Record<string, unknown>).attendance === "yes"
-      ? String((alreadySubmittedEntry as Record<string, unknown>).guestName || "")
-      : "";
+    const attendingName =
+      alreadySubmittedEntry && (alreadySubmittedEntry as Record<string, unknown>).attendance === "yes"
+        ? String((alreadySubmittedEntry as Record<string, unknown>).guestName || "")
+        : "";
     if (!attendingName || !inviteToken) {
       setAssignedTable("");
       return;
@@ -98,8 +99,9 @@ const RsvpSection = memo(function RsvpSection({
           const tablesSnap = await getDocs(
             collection(db, "invitations", inviteToken, "sections", section.id, "tables"),
           );
-          const found = tablesSnap.docs.find((d) =>
-            Array.isArray(d.data().guests) && (d.data().guests as string[]).some((g) => g.toLowerCase() === needle),
+          const found = tablesSnap.docs.find(
+            (d) =>
+              Array.isArray(d.data().guests) && (d.data().guests as string[]).some((g) => g.toLowerCase() === needle),
           );
           if (found) {
             foundName = String(found.data().name || "");
@@ -143,7 +145,8 @@ const RsvpSection = memo(function RsvpSection({
   // confirmación de asistencia (sí / con acompañantes).
   const capacity = Number(config?.rsvpCapacity) || 0;
   const capacityReached = capacity > 0 && (rsvpConfirmedCount ?? 0) >= capacity;
-  const isDisabled = isRsvpSubmitting || hasSubmitted || isAlreadySubmitted || deadlinePassed || isBlocked || weddingPassed;
+  const isDisabled =
+    isRsvpSubmitting || hasSubmitted || isAlreadySubmitted || deadlinePassed || isBlocked || weddingPassed;
   const isAttending = rsvpForm.attendance !== "no";
 
   const age = useMemo(() => computeAge(rsvpForm.birthDate), [rsvpForm.birthDate, computeAge]);
@@ -349,7 +352,10 @@ const RsvpSection = memo(function RsvpSection({
                 border: "1px solid color-mix(in srgb, var(--setup-accent) 30%, transparent)",
               }}
             >
-              <p style={{ color: "var(--setup-accent)", fontWeight: 600, fontSize: "0.95rem", margin: 0 }} role="status">
+              <p
+                style={{ color: "var(--setup-accent)", fontWeight: 600, fontSize: "0.95rem", margin: 0 }}
+                role="status"
+              >
                 {t("rsvp.alreadySubmitted")}
               </p>
             </div>
@@ -683,7 +689,11 @@ const RsvpSection = memo(function RsvpSection({
                           </label>
                         ))}
                       </div>
+                      <label className="sr-only" htmlFor={`companion-other-allergies-${i}`}>
+                        {t("rsvp.allergiesOtherLabel")}
+                      </label>
                       <input
+                        id={`companion-other-allergies-${i}`}
                         className="setup-input"
                         type="text"
                         value={rsvpForm.companionAllergiesOther?.[i] || ""}
@@ -911,7 +921,11 @@ const RsvpSection = memo(function RsvpSection({
                     </label>
                   ))}
                 </div>
+                <label className="sr-only" htmlFor="rsvpAllergiesOther">
+                  {t("rsvp.allergiesOtherLabel")}
+                </label>
                 <input
+                  id="rsvpAllergiesOther"
                   className="setup-input"
                   type="text"
                   value={rsvpForm.allergiesOther || ""}
@@ -1021,15 +1035,15 @@ const RsvpSection = memo(function RsvpSection({
                 >
                   {t("public.privacyPolicy")}
                 </span>
-                 {t("rsvp.privacyConsentAfter")}
-               </span>
-             </label>
-             {/* Versión de la política vigente (transparencia, GDPR 5.1/12). */}
-             {config?.privacyPolicyVersion ? (
-               <p className="setup-help" style={{ fontSize: "0.65rem", margin: "0.1rem 0 0" }}>
-                 {t("rsvp.policyVersion", { version: config.privacyPolicyVersion })}
-               </p>
-             ) : null}
+                {t("rsvp.privacyConsentAfter")}
+              </span>
+            </label>
+            {/* Versión de la política vigente (transparencia, GDPR 5.1/12). */}
+            {config?.privacyPolicyVersion ? (
+              <p className="setup-help" style={{ fontSize: "0.65rem", margin: "0.1rem 0 0" }}>
+                {t("rsvp.policyVersion", { version: config.privacyPolicyVersion })}
+              </p>
+            ) : null}
 
             {showHealthConsent ? (
               <label
@@ -1081,7 +1095,8 @@ const RsvpSection = memo(function RsvpSection({
 
             {/* Contacto opcional con consentimiento explícito (GDPR art. 7):
                 SOLO se guarda si el invitado marca el consentimiento. */}
-            {config?.rsvpContactEnabled === "true" && !isAlreadySubmitted ? (              <div style={{ borderTop: "1px solid var(--setup-border)", paddingTop: "0.75rem" }}>
+            {config?.rsvpContactEnabled === "true" && !isAlreadySubmitted ? (
+              <div style={{ borderTop: "1px solid var(--setup-border)", paddingTop: "0.75rem" }}>
                 <p className="setup-label" style={{ fontSize: "0.85rem" }}>
                   {t("rsvp.contactOptional")}
                 </p>
@@ -1107,7 +1122,14 @@ const RsvpSection = memo(function RsvpSection({
                 />
                 <label
                   className="setup-checkbox-label"
-                  style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8rem", color: "var(--setup-subtitle)", cursor: isDisabled ? "default" : "pointer" }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    fontSize: "0.8rem",
+                    color: "var(--setup-subtitle)",
+                    cursor: isDisabled ? "default" : "pointer",
+                  }}
                 >
                   <input
                     type="checkbox"
@@ -1124,10 +1146,19 @@ const RsvpSection = memo(function RsvpSection({
             {/* Publicar nombre en la lista de confirmados (prueba social):
                 opt-in explícito. Solo se publica si el invitado asiste Y marca
                 este consentimiento (y la pareja activa el toggle en Extras). */}
-            {!isAlreadySubmitted && (config?.showConfirmedPeople === "true") ? (
+            {!isAlreadySubmitted && config?.showConfirmedPeople === "true" ? (
               <label
                 className="setup-checkbox-label"
-                style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.8rem", color: "var(--setup-subtitle)", cursor: isDisabled ? "default" : "pointer", borderTop: "1px solid var(--setup-border)", paddingTop: "0.75rem" }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  fontSize: "0.8rem",
+                  color: "var(--setup-subtitle)",
+                  cursor: isDisabled ? "default" : "pointer",
+                  borderTop: "1px solid var(--setup-border)",
+                  paddingTop: "0.75rem",
+                }}
               >
                 <input
                   type="checkbox"
@@ -1164,7 +1195,12 @@ const RsvpSection = memo(function RsvpSection({
                 ) : null}
                 {config?.rsvpDeadline ? (
                   <p className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
-                    {t("rsvp.daysLeft", { days: Math.max(0, Math.ceil((new Date(`${config.rsvpDeadline}T23:59:59`).getTime() - Date.now()) / 86400000)) })}
+                    {t("rsvp.daysLeft", {
+                      days: Math.max(
+                        0,
+                        Math.ceil((new Date(`${config.rsvpDeadline}T23:59:59`).getTime() - Date.now()) / 86400000),
+                      ),
+                    })}
                   </p>
                 ) : null}
               </div>
@@ -1173,10 +1209,20 @@ const RsvpSection = memo(function RsvpSection({
             {/* Resumen de la respuesta tras enviar (el invitado ve lo elegido). */}
             {hasSubmitted && !isAlreadySubmitted ? (
               <div className="rsvp-summary" style={{ marginTop: "0.6rem", fontSize: "0.85rem", lineHeight: 1.7 }}>
-                <p className="setup-label" style={{ fontSize: "0.8rem" }}>{t("rsvp.summaryTitle")}</p>
-                <p style={{ margin: 0 }}>{t("rsvp.summaryAttendance", { v: rsvpForm.attendance === "no" ? t("rsvp.notAttending") : t("rsvp.attendingAlone") })}</p>
-                {rsvpForm.menuSelection ? <p style={{ margin: 0 }}>{t("rsvp.summaryMenu", { m: rsvpForm.menuSelection })}</p> : null}
-                {rsvpForm.companionCount > 0 ? <p style={{ margin: 0 }}>{t("rsvp.summaryCompanions", { c: rsvpForm.companionCount })}</p> : null}
+                <p className="setup-label" style={{ fontSize: "0.8rem" }}>
+                  {t("rsvp.summaryTitle")}
+                </p>
+                <p style={{ margin: 0 }}>
+                  {t("rsvp.summaryAttendance", {
+                    v: rsvpForm.attendance === "no" ? t("rsvp.notAttending") : t("rsvp.attendingAlone"),
+                  })}
+                </p>
+                {rsvpForm.menuSelection ? (
+                  <p style={{ margin: 0 }}>{t("rsvp.summaryMenu", { m: rsvpForm.menuSelection })}</p>
+                ) : null}
+                {rsvpForm.companionCount > 0 ? (
+                  <p style={{ margin: 0 }}>{t("rsvp.summaryCompanions", { c: rsvpForm.companionCount })}</p>
+                ) : null}
               </div>
             ) : null}
 
@@ -1221,7 +1267,12 @@ const RsvpSection = memo(function RsvpSection({
           {/* Mensaje de agradecimiento configurado por el admin: se muestra
               tras confirmar (F1-9). */}
           {hasSubmitted && config?.rsvpThanks ? (
-            <p className="rsvp-feedback rsvp-feedback--thanks" style={{ marginTop: "0.5rem" }}>
+            <p
+              className="rsvp-feedback rsvp-feedback--thanks"
+              style={{ marginTop: "0.5rem" }}
+              role="status"
+              aria-live="polite"
+            >
               {config.rsvpThanks}
             </p>
           ) : null}

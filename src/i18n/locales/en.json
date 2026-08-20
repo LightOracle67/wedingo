@@ -232,7 +232,8 @@
     "summaryAttendance": "Attendance: {{v}}",
     "summaryMenu": "Menu: {{m}}",
     "summaryCompanions": "Companions: {{c}}",
-    "yourTable": "You are at table {table}"
+    "yourTable": "You are at table {table}",
+    "allergiesOtherLabel": "Other allergies"
   },
   "public": {
     "loadingInvitation": "Loading invitation…",
@@ -1730,6 +1731,9 @@
     "name": "Name",
     "seats": "Seats",
     "rotation": "Rotation (°)",
+    "positionX": "Position X (%)",
+    "positionY": "Position Y (%)",
+    "tableAccessible": "Table {{name}}. Use arrow keys to move it and the fields below to adjust it.",
     "deleteTable": "Delete table",
     "guests": "Guests (confirmed)",
     "noGuestsAssigned": "No guests assigned.",

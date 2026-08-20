@@ -351,12 +351,7 @@ function AppShell() {
                 {t("public.cookiePreferences")}
               </button>
               <span className="app-footer__sep">·</span>
-              <button
-                type="button"
-                onClick={() => setShowChangelog(true)}
-                className="app-footer__link"
-                style={{ opacity: 0.4 }}
-              >
+              <button type="button" onClick={() => setShowChangelog(true)} className="app-footer__link">
                 {t("common.version", { version: APP_VERSION })}
               </button>
             </div>

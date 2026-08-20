@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.119.0",
+    date: "2026-08-20",
+    changes: [
+      "Ronda 1 de mejoras AAA (accesibilidad WCAG). (2.1.1/2.4.7) El editor de mesas de Distribución era solo arrastrable con puntero: ahora las mesas son enfocables (role=button, tabIndex) y se mueven con las flechas del teclado (paso 2,5%, Shift = 0,5%, persiste el cambio); además se añaden campos numéricos X/Y (%) al panel de la mesa seleccionada y el botón de borrar mesa pasa de 20x20 a 28x28 px (2.5.8). (1.3.1/2.4.3) useInertBackground ahora aísla TODOS los modales, incluidos los renderizados DENTRO de <main> (tabla asistencia, lightbox, vídeo de bienvenida), inertando el resto de la página y añadiendo scroll-lock de body; nuevo test de modal anidado. (1.4.3 AAA) Contraste corregido: texto de versión del footer (antes ≈1.9:1) a blanco 0.92; versión del menú móvil (≈3.3:1) a color 0.92; rojo/verde de la trivia a ≥7:1; botón de borrar invitación de AccessTab a rojo más oscuro. (3.3.2) Inputs de 'otras alergias' del RSVP (principal y por acompañante) ahora tienen label asociada (antes solo placeholder). (4.1.1) CollapsibleSection: el h2 salía de dentro del <button> (HTML inválido) a un <span> conservando el nombre accesible. (4.1.3) El mensaje de agradecimiento post-RSVP anuncia con role=status. 2310 tests / 177 ficheros + lint/typecheck/functions/build/translations (1712 claves)/consent OK.",
+    ],
+  },
+
+  {
     version: "2.118.0",
     date: "2026-08-20",
     changes: [

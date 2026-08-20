@@ -2242,7 +2242,8 @@ a:focus-visible {
   all: unset;
   cursor: pointer;
   font-family: var(--font-body);
-  color: rgba(255, 255, 255, 0.7);
+  /* 0.92 de blanco sobre fondo oscuro ≈ >12:1 (AAA 1.4.3 para texto pequeño). */
+  color: rgba(255, 255, 255, 0.92);
   transition: color 180ms ease;
   white-space: nowrap;
   font-size: inherit;
@@ -2344,8 +2345,9 @@ a:focus-visible {
   color: rgba(255, 255, 255, 0.95);
 }
 .app-nav-overlay__link--version {
-  /* 60% (antes 40%): el texto de versión pasaba de 2.47:1 y era ilegible. */
-  opacity: 0.6;
+  /* Color (no opacity) para llegar a contraste AAA sobre el overlay oscuro:
+     antes opacity 60% quedaba ≈3.3:1 y fallaba 1.4.3. */
+  color: rgba(255, 246, 220, 0.92);
   font-size: 0.85rem;
 }
 
@@ -2992,10 +2994,13 @@ body::after {
   vertical-align: middle;
 }
 .trivia-q__answer--ok {
-  color: #22c55e;
+  /* verde oscuro: ≈7:1 sobre fondo claro (AAA 1.4.3); antes #22c55e ≈4.5:1
+     y sobre cartas translúcidas bajaba de 4.5:1. */
+  color: #166534;
 }
 .trivia-q__answer--ko {
-  color: #ef4444;
+  /* rojo oscuro: ≈7:1 sobre fondo claro (AAA); antes #ef4444 ≈3.9:1. */
+  color: #991b1b;
 }
 .trivia-q__hint {
   margin-top: 0.35rem;

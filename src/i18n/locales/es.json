@@ -232,7 +232,8 @@
     "summaryAttendance": "Asistencia: {{v}}",
     "summaryMenu": "Menú: {{m}}",
     "summaryCompanions": "Acompañantes: {{c}}",
-    "yourTable": "Estás en la mesa {table}"
+    "yourTable": "Estás en la mesa {table}",
+    "allergiesOtherLabel": "Otras alergias"
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
@@ -1730,6 +1731,9 @@
     "name": "Nombre",
     "seats": "Plazas",
     "rotation": "Rotación (°)",
+    "positionX": "Posición X (%)",
+    "positionY": "Posición Y (%)",
+    "tableAccessible": "Mesa {{name}}. Usa las flechas para moverla y los campos inferiores para ajustarla.",
     "deleteTable": "Eliminar mesa",
     "guests": "Invitados (confirmados)",
     "noGuestsAssigned": "Sin invitados asignados.",

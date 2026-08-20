@@ -11,7 +11,17 @@
  * el mapa ocupa todo el espacio disponible.
  */
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { getDocs, collection, doc, addDoc, updateDoc, deleteDoc, arrayUnion, arrayRemove, writeBatch } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  doc,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  arrayUnion,
+  arrayRemove,
+  writeBatch,
+} from "firebase/firestore";
 import { db, rsvpByInviteRef } from "../../lib/firebase";
 import { THEME_PREVIEW_COLORS } from "../../lib/constants";
 import { useTranslation } from "react-i18next";
@@ -43,6 +53,11 @@ const SHAPES: Array<{ key: Shape; label: string }> = [
   { key: "circle", label: "Círculo" },
   { key: "square", label: "Cuadrado" },
 ];
+
+/** Acota un porcentaje de posición (x/y) de la mesa a [0, 100]. */
+function clampPercent(v: number): number {
+  return Math.min(100, Math.max(0, v));
+}
 
 /** Posiciones (%) de las sillas alrededor de la mesa según forma y plazas. */
 function chairPositions(shape: Shape, _w: number, _h: number, seats: number): Array<{ x: number; y: number }> {
@@ -251,7 +266,18 @@ const DistribucionTab = memo(function DistribucionTab({
       });
       setTables((prev) => [
         ...prev,
-        { id: ref.id, name: t("distribucion.defaultTable"), shape: newShape, x: 50, y: 50, w: size.w, h: size.h, rotation: 0, seats: 8, guests: [] },
+        {
+          id: ref.id,
+          name: t("distribucion.defaultTable"),
+          shape: newShape,
+          x: 50,
+          y: 50,
+          w: size.w,
+          h: size.h,
+          rotation: 0,
+          seats: 8,
+          guests: [],
+        },
       ]);
       setSelectedId(ref.id);
     } catch {
@@ -273,12 +299,9 @@ const DistribucionTab = memo(function DistribucionTab({
     [activeSectionId, tablesRef, selectedId, addToast, t],
   );
 
-  const patchTable = useCallback(
-    (id: string, patch: Partial<ShapeTable>) => {
-      setTables((prev) => prev.map((tb) => (tb.id === id ? { ...tb, ...patch } : tb)));
-    },
-    [],
-  );
+  const patchTable = useCallback((id: string, patch: Partial<ShapeTable>) => {
+    setTables((prev) => prev.map((tb) => (tb.id === id ? { ...tb, ...patch } : tb)));
+  }, []);
 
   const persistTable = useCallback(
     async (id: string, patch: Partial<ShapeTable>) => {
@@ -351,8 +374,9 @@ const DistribucionTab = memo(function DistribucionTab({
     let cursor = 0;
     for (const g of candidates) {
       // Busca la siguiente mesa con hueco a partir del cursor (round-robin).
-      const withSlot = slots.find((f, idx) => idx >= cursor && (byTable.get(f.id)?.length ?? 0) < f.slots)
-        ?? slots.find((f) => (byTable.get(f.id)?.length ?? 0) < f.slots);
+      const withSlot =
+        slots.find((f, idx) => idx >= cursor && (byTable.get(f.id)?.length ?? 0) < f.slots) ??
+        slots.find((f) => (byTable.get(f.id)?.length ?? 0) < f.slots);
       if (!withSlot) break;
       const list = byTable.get(withSlot.id) || [];
       list.push(g.name);
@@ -379,17 +403,14 @@ const DistribucionTab = memo(function DistribucionTab({
   }, [activeSectionId, confirmedGuests, assignedNames, tables, tablesRef, patchTable, addToast, t]);
 
   // ── Arrastre de mesas ──
-  const onPointerDown = useCallback(
-    (e: React.PointerEvent, id: string) => {
-      e.preventDefault();
-      const map = mapRef.current;
-      if (!map) return;
-      dragRef.current = { id, moved: false };
-      (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
-      setSelectedId(id);
-    },
-    [],
-  );
+  const onPointerDown = useCallback((e: React.PointerEvent, id: string) => {
+    e.preventDefault();
+    const map = mapRef.current;
+    if (!map) return;
+    dragRef.current = { id, moved: false };
+    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+    setSelectedId(id);
+  }, []);
 
   const onPointerMove = useCallback(
     (e: React.PointerEvent) => {
@@ -414,6 +435,30 @@ const DistribucionTab = memo(function DistribucionTab({
     dragRef.current = null;
   }, [tables, persistTable]);
 
+  // Accesibilidad teclado (WCAG 2.1.1): las mesas eran solo arrastrables con
+  // puntero. Ahora, con la mesa enfocada, las flechas la mueven en pasos de
+  // ~2,5% (Shift = paso fino de 0,5%) y se persiste el cambio, igual que el drag.
+  const moveSelectedByKey = useCallback(
+    (e: React.KeyboardEvent, id: string) => {
+      const tb = tables.find((x) => x.id === id);
+      if (!tb) return;
+      const step = e.shiftKey ? 0.5 : 2.5;
+      const verticalKeys = ["ArrowUp", "ArrowDown"];
+      const horizontalKeys = ["ArrowLeft", "ArrowRight"];
+      if (!verticalKeys.includes(e.key) && !horizontalKeys.includes(e.key)) return;
+      e.preventDefault();
+      setSelectedId(id);
+      const next: { x?: number; y?: number } = {};
+      if (e.key === "ArrowUp") next.y = clampPercent(tb.y - step);
+      if (e.key === "ArrowDown") next.y = clampPercent(tb.y + step);
+      if (e.key === "ArrowLeft") next.x = clampPercent(tb.x - step);
+      if (e.key === "ArrowRight") next.x = clampPercent(tb.x + step);
+      patchTable(id, next);
+      void persistTable(id, next);
+    },
+    [tables, patchTable, persistTable],
+  );
+
   // ── Servicio de impresión de etiquetas por mesa (A4 vertical, una por página) ──
   const printLabels = useCallback(() => {
     const withGuests = tables.filter((tb) => tb.guests.length > 0);
@@ -424,7 +469,8 @@ const DistribucionTab = memo(function DistribucionTab({
     const esc = (v: string) =>
       v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     // Colores del TEMA establecido (fallback del fondo y acento de la etiqueta).
-    const themeColors = THEME_PREVIEW_COLORS[theme || ""] || THEME_PREVIEW_COLORS["golden"] || { accent: "#d8b24a", bg: "#2a2418" };
+    const themeColors = THEME_PREVIEW_COLORS[theme || ""] ||
+      THEME_PREVIEW_COLORS["golden"] || { accent: "#d8b24a", bg: "#2a2418" };
     const cornerImg = cornerDecoration
       ? `<img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--tl"/>
          <img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--tr"/>
@@ -508,7 +554,10 @@ const DistribucionTab = memo(function DistribucionTab({
     const { exportToXlsx } = await import("../../lib/excel-utils");
     const { buildTablesSheet } = await import("../../lib/excel-builders");
     const sheet = buildTablesSheet(sections, activeSectionId, tables, t);
-    exportToXlsx(`mesas_${(sections.find((s) => s.id === activeSectionId)?.name || "seccion").replace(/[^\p{L}\p{N}_-]/gu, "_").slice(0, 40)}`, [sheet]);
+    exportToXlsx(
+      `mesas_${(sections.find((s) => s.id === activeSectionId)?.name || "seccion").replace(/[^\p{L}\p{N}_-]/gu, "_").slice(0, 40)}`,
+      [sheet],
+    );
     addToast("success", t("tools.exportOk", { count: sheet.rows.length }));
   }, [sections, activeSectionId, tables, t, addToast]);
 
@@ -520,9 +569,17 @@ const DistribucionTab = memo(function DistribucionTab({
       {/* ── Controles de mesas (sección activa) ── */}
       {activeSectionId ? (
         <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
-          <label className="setup-label" style={{ margin: 0, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+          <label
+            className="setup-label"
+            style={{ margin: 0, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}
+          >
             {t("distribucion.shape")}
-            <select className="setup-input" value={newShape} onChange={(e) => setNewShape(e.target.value as Shape)} style={{ marginLeft: "0.3rem" }}>
+            <select
+              className="setup-input"
+              value={newShape}
+              onChange={(e) => setNewShape(e.target.value as Shape)}
+              style={{ marginLeft: "0.3rem" }}
+            >
               {SHAPES.map((s) => (
                 <option key={s.key} value={s.key}>
                   {t(`distribucion.shape_${s.key}`)}
@@ -533,27 +590,47 @@ const DistribucionTab = memo(function DistribucionTab({
           <button type="button" className="setup-button setup-button--compact" onClick={() => void addTable()}>
             {t("distribucion.addTable")}
           </button>
-          <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void autoAssign()}>
+          <button
+            type="button"
+            className="setup-button setup-button--ghost setup-button--compact"
+            onClick={() => void autoAssign()}
+          >
             {t("distribucion.autoAssign")}
           </button>
-          <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={printLabels}>
+          <button
+            type="button"
+            className="setup-button setup-button--ghost setup-button--compact"
+            onClick={printLabels}
+          >
             {t("distribucion.printLabels")}
           </button>
-          <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportTablesXlsx()}>
+          <button
+            type="button"
+            className="setup-button setup-button--ghost setup-button--compact"
+            onClick={() => void exportTablesXlsx()}
+          >
             {t("distribucion.exportTables")}
           </button>
-          <button type="button" className="setup-button setup-button--danger setup-button--ghost setup-button--compact" onClick={() => void deleteSection(activeSectionId)}>
+          <button
+            type="button"
+            className="setup-button setup-button--danger setup-button--ghost setup-button--compact"
+            onClick={() => void deleteSection(activeSectionId)}
+          >
             {t("distribucion.deleteSection")}
           </button>
           <span style={{ flex: 1 }} />
-          <span className="setup-help" style={{ margin: 0 }}>{t("distribucion.dragHint")}</span>
+          <span className="setup-help" style={{ margin: 0 }}>
+            {t("distribucion.dragHint")}
+          </span>
         </div>
       ) : null}
 
       {/* ── Selector de secciones (debajo de los controles de mesas) ── */}
       <div className="admin-flex" style={{ gap: "0.4rem", flexWrap: "wrap", alignItems: "center" }}>
         {sections.length === 0 ? (
-          <span className="setup-help" style={{ margin: 0 }}>{t("distribucion.noSections")}</span>
+          <span className="setup-help" style={{ margin: 0 }}>
+            {t("distribucion.noSections")}
+          </span>
         ) : (
           sections.map((s) => (
             <button
@@ -613,7 +690,11 @@ const DistribucionTab = memo(function DistribucionTab({
               <div
                 key={tb.id}
                 data-table-id={tb.id}
+                role="button"
+                tabIndex={0}
+                aria-label={t("distribucion.tableAccessible", { name: tb.name })}
                 onPointerDown={(e) => onPointerDown(e, tb.id)}
+                onKeyDown={(e) => moveSelectedByKey(e, tb.id)}
                 style={{
                   position: "absolute",
                   left: `${tb.x}%`,
@@ -638,14 +719,14 @@ const DistribucionTab = memo(function DistribucionTab({
                       top: -8,
                       right: -8,
                       zIndex: 3,
-                      width: 20,
-                      height: 20,
+                      width: 28,
+                      height: 28,
                       borderRadius: "50%",
                       background: "#ef4444",
                       color: "#fff",
                       border: 0,
                       cursor: "pointer",
-                      fontSize: "0.75rem",
+                      fontSize: "0.8rem",
                       lineHeight: 1,
                       boxShadow: "0 2px 6px rgba(0,0,0,0.5)",
                     }}
@@ -679,8 +760,7 @@ const DistribucionTab = memo(function DistribucionTab({
                     inset: 0,
                     borderRadius: tb.shape === "rect" || tb.shape === "square" ? "0.35rem" : "50%",
                     border: `2px solid ${selectedId === tb.id ? "var(--setup-accent)" : "rgba(255,255,255,0.55)"}`,
-                    background:
-                      "linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08))",
+                    background: "linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08))",
                     boxShadow: selectedId === tb.id ? "0 0 0 3px var(--setup-accent)" : "0 6px 16px rgba(0,0,0,0.45)",
                     display: "flex",
                     flexDirection: "column",
@@ -690,7 +770,14 @@ const DistribucionTab = memo(function DistribucionTab({
                     zIndex: 2,
                   }}
                 >
-                  <span style={{ fontWeight: 700, fontSize: "0.72rem", color: "#fff", textShadow: "0 1px 3px rgba(0,0,0,0.6)" }}>
+                  <span
+                    style={{
+                      fontWeight: 700,
+                      fontSize: "0.72rem",
+                      color: "#fff",
+                      textShadow: "0 1px 3px rgba(0,0,0,0.6)",
+                    }}
+                  >
                     {tb.name}
                   </span>
                   <span style={{ opacity: 0.9, fontSize: "0.62rem", color: "#fff" }}>
@@ -701,7 +788,17 @@ const DistribucionTab = memo(function DistribucionTab({
             );
           })}
           {tables.length === 0 ? (
-            <p style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", margin: 0 }}>
+            <p
+              style={{
+                position: "absolute",
+                inset: 0,
+                display: "grid",
+                placeItems: "center",
+                color: "rgba(255,255,255,0.5)",
+                fontSize: "0.85rem",
+                margin: 0,
+              }}
+            >
               {t("distribucion.emptyMap")}
             </p>
           ) : null}
@@ -718,22 +815,54 @@ const DistribucionTab = memo(function DistribucionTab({
           <p className="setup-label">
             {t("distribucion.selectedTable")}: {selected.name}
           </p>
-          <div className="admin-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "0.5rem" }}>
+          <div
+            className="admin-grid"
+            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: "0.5rem" }}
+          >
             <label className="setup-label" style={{ margin: 0 }}>
               {t("distribucion.name")}
-              <input className="setup-input" value={selected.name} maxLength={80} onChange={(e) => { patchTable(selected.id, { name: e.target.value }); void persistTable(selected.id, { name: e.target.value }); }} />
+              <input
+                className="setup-input"
+                value={selected.name}
+                maxLength={80}
+                onChange={(e) => {
+                  patchTable(selected.id, { name: e.target.value });
+                  void persistTable(selected.id, { name: e.target.value });
+                }}
+              />
             </label>
             <label className="setup-label" style={{ margin: 0 }}>
               {t("distribucion.shape")}
-              <select className="setup-input" value={selected.shape} onChange={(e) => { const shape = e.target.value as Shape; patchTable(selected.id, { shape }); void persistTable(selected.id, { shape }); }}>
+              <select
+                className="setup-input"
+                value={selected.shape}
+                onChange={(e) => {
+                  const shape = e.target.value as Shape;
+                  patchTable(selected.id, { shape });
+                  void persistTable(selected.id, { shape });
+                }}
+              >
                 {SHAPES.map((s) => (
-                  <option key={s.key} value={s.key}>{t(`distribucion.shape_${s.key}`)}</option>
+                  <option key={s.key} value={s.key}>
+                    {t(`distribucion.shape_${s.key}`)}
+                  </option>
                 ))}
               </select>
             </label>
             <label className="setup-label" style={{ margin: 0 }}>
               {t("distribucion.seats")}
-              <input className="setup-input" type="number" min={0} max={100} value={selected.seats} onChange={(e) => { const seats = Math.min(100, Math.max(0, Number(e.target.value) || 0)); patchTable(selected.id, { seats }); void persistTable(selected.id, { seats }); }} />
+              <input
+                className="setup-input"
+                type="number"
+                min={0}
+                max={100}
+                value={selected.seats}
+                onChange={(e) => {
+                  const seats = Math.min(100, Math.max(0, Number(e.target.value) || 0));
+                  patchTable(selected.id, { seats });
+                  void persistTable(selected.id, { seats });
+                }}
+              />
             </label>
             {selected.shape === "circle" || selected.shape === "square" ? (
               <label className="setup-label" style={{ margin: 0 }}>
@@ -788,26 +917,96 @@ const DistribucionTab = memo(function DistribucionTab({
             )}
             <label className="setup-label" style={{ margin: 0 }}>
               {t("distribucion.rotation")}
-              <input className="setup-input" type="number" min={-180} max={180} value={selected.rotation} onChange={(e) => { const rotation = Math.min(180, Math.max(-180, Number(e.target.value) || 0)); patchTable(selected.id, { rotation }); void persistTable(selected.id, { rotation }); }} />
+              <input
+                className="setup-input"
+                type="number"
+                min={-180}
+                max={180}
+                value={selected.rotation}
+                onChange={(e) => {
+                  const rotation = Math.min(180, Math.max(-180, Number(e.target.value) || 0));
+                  patchTable(selected.id, { rotation });
+                  void persistTable(selected.id, { rotation });
+                }}
+              />
+            </label>
+            <label className="setup-label" style={{ margin: 0 }}>
+              {t("distribucion.positionX")}
+              <input
+                className="setup-input"
+                type="number"
+                min={0}
+                max={100}
+                step={0.5}
+                value={selected.x}
+                onChange={(e) => {
+                  const x = clampPercent(Number(e.target.value) || 0);
+                  patchTable(selected.id, { x });
+                  void persistTable(selected.id, { x });
+                }}
+              />
+            </label>
+            <label className="setup-label" style={{ margin: 0 }}>
+              {t("distribucion.positionY")}
+              <input
+                className="setup-input"
+                type="number"
+                min={0}
+                max={100}
+                step={0.5}
+                value={selected.y}
+                onChange={(e) => {
+                  const y = clampPercent(Number(e.target.value) || 0);
+                  patchTable(selected.id, { y });
+                  void persistTable(selected.id, { y });
+                }}
+              />
             </label>
           </div>
 
           {/* Invitados asignados (solo confirmados) */}
           <div style={{ marginTop: "0.6rem" }}>
-            <p className="setup-label" style={{ fontSize: "0.85rem" }}>{t("distribucion.guests")}</p>
+            <p className="setup-label" style={{ fontSize: "0.85rem" }}>
+              {t("distribucion.guests")}
+            </p>
             {selected.guests.length > 0 ? (
               <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
                 {selected.guests.map((g, i) => (
-                  <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: "0.3rem", fontSize: "0.78rem", border: "1px solid var(--setup-border)", borderRadius: "999px", padding: "0.15rem 0.5rem", color: "var(--setup-subtitle)" }}>
+                  <span
+                    key={i}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.3rem",
+                      fontSize: "0.78rem",
+                      border: "1px solid var(--setup-border)",
+                      borderRadius: "999px",
+                      padding: "0.15rem 0.5rem",
+                      color: "var(--setup-subtitle)",
+                    }}
+                  >
                     {g}
-                    <button type="button" aria-label={t("distribucion.removeGuest")} onClick={() => void removeGuest(selected.id, g)} style={{ background: "none", border: 0, cursor: "pointer", color: "#ef4444", fontSize: "0.85rem" }}>
+                    <button
+                      type="button"
+                      aria-label={t("distribucion.removeGuest")}
+                      onClick={() => void removeGuest(selected.id, g)}
+                      style={{
+                        background: "none",
+                        border: 0,
+                        cursor: "pointer",
+                        color: "#ef4444",
+                        fontSize: "0.85rem",
+                      }}
+                    >
                       ×
                     </button>
                   </span>
                 ))}
               </div>
             ) : (
-              <p className="setup-help" style={{ margin: "0.2rem 0 0" }}>{t("distribucion.noGuestsAssigned")}</p>
+              <p className="setup-help" style={{ margin: "0.2rem 0 0" }}>
+                {t("distribucion.noGuestsAssigned")}
+              </p>
             )}
             <select
               className="setup-input"
@@ -830,7 +1029,12 @@ const DistribucionTab = memo(function DistribucionTab({
             </p>
           </div>
 
-          <button type="button" className="setup-button setup-button--danger setup-button--compact" style={{ marginTop: "0.6rem" }} onClick={() => void deleteTable(selected.id)}>
+          <button
+            type="button"
+            className="setup-button setup-button--danger setup-button--compact"
+            style={{ marginTop: "0.6rem" }}
+            onClick={() => void deleteTable(selected.id)}
+          >
             {t("distribucion.deleteTable")}
           </button>
         </div>

@@ -61,7 +61,7 @@ const AccessTab = memo(function AccessTab({
           className="setup-button setup-button--ghost"
           type="button"
           onClick={handleDeleteInvitation}
-          style={{ borderColor: "#e06060", color: "#e06060" }}
+          style={{ borderColor: "#dc2626", color: "#dc2626" }}
         >
           {t("access.deleteInvitation")}
         </button>

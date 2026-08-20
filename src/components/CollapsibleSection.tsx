@@ -66,8 +66,10 @@ export default function CollapsibleSection({
         <button type="button" className="setup-collapsible__summary-btn" onClick={toggle} aria-expanded={isOpen}>
           <span className="setup-collapsible__summary-text">
             {isHidden ? <span className="setup-collapsible__hidden-badge">{t("common.hidden")}</span> : null}
-            {/* h2: el título es el encabezado de la sección (HTML válido en <button>). */}
-            <h2 className="setup-collapsible__title">{title}</h2>
+            {/* El título va en un <span> (no <h2>): un <button> solo admite
+                phrasing content y un heading anidado rompía la semántica
+                (WCAG 4.1.1). El texto compone el nombre accesible del botón. */}
+            <span className="setup-collapsible__title">{title}</span>
           </span>
           {hint ? <span className="setup-collapsible__hint">{hint}</span> : null}
         </button>
