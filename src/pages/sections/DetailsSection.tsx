@@ -6,6 +6,7 @@ import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 import { buildIcsFile } from "../../lib/calendar-utils";
 import { trackEvent } from "../../lib/analytics";
 import CornerDecorations from "../../components/CornerDecorations";
+import { safeHref, safeSocialUrl } from "../../lib/safe-href";
 
 const DetailsSection = memo(function DetailsSection({
   style,
@@ -57,10 +58,16 @@ const DetailsSection = memo(function DetailsSection({
   const { t } = useTranslation();
   // Modo de visualización del mapa: iframe (por defecto), solo nombre u oculto.
   const mapMode = detailsMapMode === "name" || detailsMapMode === "hidden" ? detailsMapMode : "iframe";
+  // Sanitización defensiva en el render (independiente de normalizeConfig):
+  // estos valores pueden llegar via props/hash de URL, así que se descartan
+  // los esquemas no-http(s) y los hosts no whitelist antes de usarlos en href.
+  const safeInstagram = safeSocialUrl(instagramUrl, "instagram.com");
+  const safeFacebook = safeSocialUrl(facebookUrl, "facebook.com");
+  const safeWeddingSiteURL = safeHref(weddingSiteURL);
   // "Cómo llegar": abre Google Maps con navegación al lugar (o a la URL del mapa).
   const directionsUrl = weddingPlace
     ? `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(weddingPlace)}`
-    : weddingSiteURL || "";
+    : safeWeddingSiteURL || "";
 
   /** Descarga el evento como archivo .ics (Apple Calendar/Outlook).
    *  COMPORTAMIENTO SEGURO: si la fecha es inválida/incompleta no se genera
@@ -158,14 +165,14 @@ const DetailsSection = memo(function DetailsSection({
           <div className="story-divider" />
 
           {/* Redes sociales de los novios (opcional). */}
-          {instagramUrl || facebookUrl ? (
+          {safeInstagram || safeFacebook ? (
             <div
               className="story-social-actions"
               style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}
             >
-              {instagramUrl ? (
+              {safeInstagram ? (
                 <a
-                  href={instagramUrl}
+                  href={safeInstagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   referrerPolicy="no-referrer"
@@ -193,9 +200,9 @@ const DetailsSection = memo(function DetailsSection({
                   </svg>
                 </a>
               ) : null}
-              {facebookUrl ? (
+              {safeFacebook ? (
                 <a
-                  href={facebookUrl}
+                  href={safeFacebook}
                   target="_blank"
                   rel="noopener noreferrer"
                   referrerPolicy="no-referrer"

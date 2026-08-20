@@ -1,6 +1,8 @@
 import { normalizeConfig } from "./normalize-config";
 import { validateWeddingDate } from "./date-utils";
 import { isValidGoogleMapsUrl, extractPlaceNameFromUrl } from "./geo-utils";
+import { isValidIBAN } from "./iban-utils";
+import { safeSocialUrl } from "./safe-href";
 import {
   STORY_SECTION_ORDER,
   THEME_VALUES,
@@ -112,7 +114,7 @@ export function validateConfigForSave(
   if (sanitized.bankInfo) {
     const upper = sanitized.bankInfo.toUpperCase();
     const looksLikeIban = /^[A-Z]{2}\d/.test(upper);
-    if (looksLikeIban && !/^[A-Z]{2}\d{2}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{4}[ ]?\d{0,4}$/.test(upper)) {
+    if (looksLikeIban && !isValidIBAN(sanitized.bankInfo)) {
       return { sanitized, hiddenSet, errorKey: "errors.ibanInvalid" };
     }
   }
@@ -186,13 +188,17 @@ export function validateConfigForSave(
   if (sanitized.weddingSiteURL && !isValidGoogleMapsUrl(sanitized.weddingSiteURL)) {
     return { sanitized, hiddenSet, errorKey: "errors.mapUrlInvalid" };
   }
-  // Redes sociales: si se rellenan deben ser URL de Instagram/Facebook.
-  const socialUrl = (url: string | undefined, host: "instagram.com" | "facebook.com") =>
-    !url || /^https:\/\/(www\.)?(instagram|facebook)\.com\//.test(url) || url.startsWith(`https://${host}/`);
-  if (sanitized.instagramUrl && !socialUrl(sanitized.instagramUrl, "instagram.com")) {
+  // Redes sociales: si se rellenan deben ser URL válidas y de Instagram/Facebook.
+  // Se valida sobre el VALOR BRUTO del formulario: normalizeConfig deja en
+  // blanco ante un host sospechoso, así que para que el usuario reciba el
+  // aviso (en vez de un borrado silencioso) comprobamos el input original.
+  const socialUrl = (value: unknown): string | undefined => (typeof value === "string" ? value : undefined);
+  const instagramRaw = socialUrl(formData["instagramUrl"]);
+  const facebookRaw = socialUrl(formData["facebookUrl"]);
+  if (instagramRaw && !safeSocialUrl(instagramRaw, "instagram.com")) {
     return { sanitized, hiddenSet, errorKey: "errors.socialUrlInvalid" };
   }
-  if (sanitized.facebookUrl && !socialUrl(sanitized.facebookUrl, "facebook.com")) {
+  if (facebookRaw && !safeSocialUrl(facebookRaw, "facebook.com")) {
     return { sanitized, hiddenSet, errorKey: "errors.socialUrlInvalid" };
   }
 

@@ -34,21 +34,46 @@ const HEADER_LEN = SALT_LEN + IV_LEN + ITER_LEN;
 // Format: salt(16B) || iv(12B) || iterations(3B) || AES-GCM ciphertext
 const ITERATIONS_NEW = 600000;
 
-// Caché de claves derivadas: el MISMO dato (mismo salt) se descifra varias
-// veces (reload, re-hidratación) y cada vez re-derivaba PBKDF2-600k (~0.1-0.5s
-// en móvil). Se cachea por secret|salt|iterations.
-const KEY_CACHE = new Map<string, CryptoKey>();
+// ── PERF (P1) ────────────────────────────────────────────────
+// Antes se derivaba una clave PBKDF2-600k POR SALT ALEATORIO: como cada
+// `encrypt` genera un salt distinto, una galería de N fotos pagaba N
+// derivaciones (~0.1-0.5 s c/u en móvil) la primera vez que se descifraba.
+// Ahora la clave se deriva UNA vez por TOKEN (salt derivado estable del
+// token) y se reutiliza con un IV aleatorio por mensaje (el esquema correcto
+// de AES-GCM). La caché por token la hace virtualmente gratuita en el resto
+// de descifrados (reload, re-hidratación) sin repetir PBKDF2.
+
+/** Salt fijo derivado del token que identifica el formato "clave por token".
+ *  Es determinista (mismo token → mismo salt) y bien distribuido (FNV-1a 32-bit
+ *  extendido a 16 bytes). NO es un secreto adicional: el token ya es la
+ *  credencial, así que esto solo garantiza salts estables por token sin
+ *  depender de `crypto.subtle.digest` (que no es síncrono en todos los motores). */
+function tokenSalt(token: string): Uint8Array<ArrayBuffer> {
+  const out = new Uint8Array(SALT_LEN);
+  let h = 0x811c9dc5;
+  for (let i = 0; i < token.length; i++) {
+    h ^= token.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  // Extiende los 32 bits del hash a 16 bytes con un mezclador de avalanche.
+  let seed = h >>> 0;
+  for (let i = 0; i < SALT_LEN; i++) {
+    seed = Math.imul(seed ^ (seed >>> 15), 0x2c1b3c6d);
+    seed = Math.imul(seed ^ (seed >>> 12), 0x297a2d39);
+    seed ^= seed >>> 15;
+    out[i] = seed & 0xff;
+  }
+  return out;
+}
+
+/** Caché de claves: por `token` (formato nuevo) y por `secret|salt|iterations`
+ *  (formato legacy con salt aleatorio). Se mantienen ambas para descifrar
+ *  correctamente datos viejos sin re-derivar innecesariamente. */
+const TOKEN_KEY_CACHE = new Map<string, CryptoKey>();
+const LEGACY_KEY_CACHE = new Map<string, CryptoKey>();
 const MAX_KEYS = 20;
 
-async function getKey(secret: string, salt: BufferSource, iterations: number) {
-  const saltBytes = new Uint8Array(salt as ArrayBuffer);
-  const key = Array.from(saltBytes)
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-  const cacheKey = `${secret}|${key}|${iterations}`;
-  const cached = KEY_CACHE.get(cacheKey);
-  if (cached) return cached;
-
+async function deriveKeyFromSecret(secret: string, salt: BufferSource, iterations: number) {
   const enc = new TextEncoder();
   const keyMaterial = await crypto.subtle.importKey(
     "raw",
@@ -57,19 +82,45 @@ async function getKey(secret: string, salt: BufferSource, iterations: number) {
     false,
     ["deriveKey"],
   );
-  const derived = await crypto.subtle.deriveKey(
-    { name: "PBKDF2", salt, iterations, hash: "SHA-256" },
-    keyMaterial,
-    ALGORITHM,
-    false,
-    ["encrypt", "decrypt"],
-  );
-  KEY_CACHE.set(cacheKey, derived);
-  if (KEY_CACHE.size > MAX_KEYS) {
-    const oldest = KEY_CACHE.keys().next().value;
-    if (oldest !== undefined) KEY_CACHE.delete(oldest);
-  }
-  return derived;
+  return crypto.subtle.deriveKey({ name: "PBKDF2", salt, iterations, hash: "SHA-256" }, keyMaterial, ALGORITHM, false, [
+    "encrypt",
+    "decrypt",
+  ]);
+}
+
+/** Clave nueva por token (salt estable): se deriva una sola vez por token y
+ *  se cachea. Todos los mensajes del mismo token la comparten, con IV propio. */
+function getTokenKey(secret: string, iterations: number): Promise<CryptoKey> {
+  const cached = TOKEN_KEY_CACHE.get(secret);
+  if (cached) return Promise.resolve(cached);
+  const salt = tokenSalt(secret);
+  return deriveKeyFromSecret(secret, salt, iterations).then((key) => {
+    if (TOKEN_KEY_CACHE.size >= MAX_KEYS) {
+      const oldest = TOKEN_KEY_CACHE.keys().next().value;
+      if (oldest !== undefined) TOKEN_KEY_CACHE.delete(oldest);
+    }
+    TOKEN_KEY_CACHE.set(secret, key);
+    return key;
+  });
+}
+
+/** Clave legacy por salt aleatorio (datos cifrados antes de P1). */
+function getLegacyKey(secret: string, salt: BufferSource, iterations: number): Promise<CryptoKey> {
+  const saltBytes = new Uint8Array(salt as ArrayBuffer);
+  const saltHex = Array.from(saltBytes)
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+  const cacheKey = `${secret}|${saltHex}|${iterations}`;
+  const cached = LEGACY_KEY_CACHE.get(cacheKey);
+  if (cached) return Promise.resolve(cached);
+  return deriveKeyFromSecret(secret, salt, iterations).then((key) => {
+    if (LEGACY_KEY_CACHE.size >= MAX_KEYS) {
+      const oldest = LEGACY_KEY_CACHE.keys().next().value;
+      if (oldest !== undefined) LEGACY_KEY_CACHE.delete(oldest);
+    }
+    LEGACY_KEY_CACHE.set(cacheKey, key);
+    return key;
+  });
 }
 
 function uint8ToBase64(bytes: Uint8Array) {
@@ -88,11 +139,13 @@ export async function encrypt(text: string, token: string) {
   if (!text) return text;
   if (!token) throw new Error("encrypt: token required");
   try {
-    const salt = crypto.getRandomValues(new Uint8Array(SALT_LEN));
-    const key = await getKey(token, salt, ITERATIONS_NEW);
+    // Clave por token (una derivación PBKDF2-600k por token, cacheada) con IV
+    // aleatorio por mensaje: la galería deja de pagar N derivaciones.
+    const key = await getTokenKey(token, ITERATIONS_NEW);
     const iv = crypto.getRandomValues(new Uint8Array(IV_LEN));
     const encoded = new TextEncoder().encode(text);
     const encrypted = await crypto.subtle.encrypt({ ...ALGORITHM, iv }, key, encoded);
+    const salt = tokenSalt(token);
     const iterBytes = new Uint8Array(ITER_LEN);
     iterBytes[0] = ITERATIONS_NEW & 0xff;
     iterBytes[1] = (ITERATIONS_NEW >> 8) & 0xff;
@@ -124,7 +177,13 @@ export async function decrypt(ciphertext: string, token: string) {
       // ANTES de derivar: fuera de él se pasa directo al formato antiguo.
       if (iterations < 1000 || iterations > 2_000_000) throw new Error("invalid iterations");
       if (data.length === 0) throw new Error("empty ciphertext");
-      const key = await getKey(token, salt, iterations);
+
+      // Ruta rápida (P1): si el mensaje usa el salt derivado del token (formato
+      // nuevo), se descifra con la clave cacheada por token (1 sola derivación).
+      const expectedSalt = tokenSalt(token);
+      const isTokenSalt = expectedSalt.every((b, i) => b === salt[i]);
+      const key = isTokenSalt ? await getTokenKey(token, iterations) : await getLegacyKey(token, salt, iterations);
+
       const decrypted = await crypto.subtle.decrypt({ ...ALGORITHM, iv }, key, data);
       return new TextDecoder().decode(decrypted);
     }

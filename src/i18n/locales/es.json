@@ -159,6 +159,7 @@
     "menuCarne": "Carne",
     "menuPescado": "Pescado",
     "menuVegano": "Vegano/Vegetariano",
+    "menuOtro": "Otro",
     "menuLabel": "Menú",
     "allergiesLegend": "Alergias e intolerancias",
     "allergiesPlaceholder": "Otra alergia (especificar)",
@@ -588,7 +589,7 @@
     "noResponses": "Todavía no hay respuestas de asistencia.",
     "attends": "Sí",
     "notAttends": "No asistirá",
-    "withCompanions": "Sí ({{count}} acompañante(s))",
+    "withCompanions": "Sí ({{count}} acompañante)",
     "confirms": "Confirman",
     "declines": "Declinan",
     "pending": "Pendientes",
@@ -607,7 +608,9 @@
     "viewInvitation": "Ver invitación",
     "copyLink": "Copiar enlace",
     "linkCopied": "Enlace copiado.",
-    "restoreConfirm": "¿Restaurar la copia? Se reemplazarán los datos actuales."
+    "restoreConfirm": "¿Restaurar la copia? Se reemplazarán los datos actuales.",
+    "withCompanions_one": "Sí ({{count}} acompañante)",
+    "withCompanions_other": "Sí ({{count}} acompañantes)"
   },
   "attendance": {
     "searchLabel": "Buscar por nombre",

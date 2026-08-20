@@ -98,7 +98,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 
   // ── Añadir/editar respuesta manualmente (invitaciones físicas) ──
-  const [editing, setEditing] = useState<{ id?: string; name: string; attendance: "yes" | "no"; notes: string } | null>(null);
+  const [editing, setEditing] = useState<{ id?: string; name: string; attendance: "yes" | "no"; notes: string } | null>(
+    null,
+  );
   const [savingManual, setSavingManual] = useState(false);
 
   const openEdit = useCallback((entry: RsvpEntry) => {
@@ -147,7 +149,12 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
         // Id determinista a partir del nombre (reintento idempotente y sin
         // caracteres de ruta ilegales). Buffer no está disponible en el
         // navegador SPA, así que se genera con codificación base64url local.
-        const norm = name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "_").slice(0, 30);
+        const norm = name
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9]+/g, "_")
+          .slice(0, 30);
         const id = `main_manual_${norm || "invitado"}_${Math.random().toString(36).slice(2, 6)}`;
         batch.set(doc(db, "rsvpResponses", inviteToken, "responses", id), payload);
         // El contador del grupo debe existir e incrementarse para que la regla
@@ -166,7 +173,10 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
       if (onDataChanged) onDataChanged();
     } catch (err) {
       const code = err && typeof err === "object" && "code" in err ? String((err as { code?: unknown }).code) : "";
-      addToast("error", code === "permission-denied" ? t("attendance.manualLimitReached") : t("attendance.manualError"));
+      addToast(
+        "error",
+        code === "permission-denied" ? t("attendance.manualLimitReached") : t("attendance.manualError"),
+      );
     } finally {
       setSavingManual(false);
     }
@@ -200,6 +210,22 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
       return [];
     }
   }, [transportDepartures]);
+
+  // Nombres únicos para el select de búsqueda, memoizados con un Set (O(n)
+  // en vez del O(n²) de findIndex por render anterior: con 500 respuestas
+  // eran ~250k comparaciones en cada renderización del tab).
+  const uniqueGuestNames = useMemo(() => {
+    const seen = new Set<string>();
+    const out: RsvpEntry[] = [];
+    for (const e of rsvpEntries || []) {
+      const n = e.guestName || "";
+      const key = n.toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push(e);
+    }
+    return out;
+  }, [rsvpEntries]);
 
   const resolveTransportLabel = useCallback(
     (mode: string, choice: string, storedTime: string) => {
@@ -258,7 +284,10 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
         type: "string",
         getValue: (e: RsvpEntry) => {
           if (e.attendees?.length) {
-            return e.attendees.filter((a) => a.allergies?.length).map((a) => `${a.name}: ${a.allergies.join(", ")}`).join(", ");
+            return e.attendees
+              .filter((a) => a.allergies?.length)
+              .map((a) => `${a.name}: ${a.allergies.join(", ")}`)
+              .join(", ");
           }
           return e.attendance === "yes" ? getDietaryItems(e.dietaryInfo || "").join(", ") : "";
         },
@@ -267,7 +296,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
         key: "transport",
         type: "string",
         getValue: (e: RsvpEntry) =>
-          e.attendance === "yes" ? resolveTransportLabel(e.transportMode || "", e.transportChoice || "", e.transportTime || "") : "",
+          e.attendance === "yes"
+            ? resolveTransportLabel(e.transportMode || "", e.transportChoice || "", e.transportTime || "")
+            : "",
       },
       { key: "birth", type: "date", getValue: (e: RsvpEntry) => e.birthDate || "" },
       {
@@ -354,16 +385,11 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
           style={{ maxWidth: "250px", fontSize: "0.85rem" }}
         >
           <option value="">{t("attendance.all")}</option>
-          {(rsvpEntries || [])
-            .filter(
-              (e: RsvpEntry, i: number, arr: RsvpEntry[]) =>
-                arr.findIndex((x: RsvpEntry) => x.guestName === e.guestName) === i,
-            )
-            .map((e: RsvpEntry) => (
-              <option key={e.id} value={e.guestName}>
-                {e.guestName}
-              </option>
-            ))}
+          {uniqueGuestNames.map((e: RsvpEntry) => (
+            <option key={e.id} value={e.guestName}>
+              {e.guestName}
+            </option>
+          ))}
         </select>
         {/* Filtro de asistencia: el estado existía pero no había UI para
               cambiarlo (feature muerta). */}
@@ -430,34 +456,84 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                       aria-label={t("attendance.selectAll")}
                     />
                   </th>
-                  <SortableTh columnKey="name" order={getIndicator("name")} onSort={toggleSort} style={{ minWidth: "100px" }}>
+                  <SortableTh
+                    columnKey="name"
+                    order={getIndicator("name")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "100px" }}
+                  >
                     {t("attendance.tableName")}
                   </SortableTh>
-                  <SortableTh columnKey="accompanies" order={getIndicator("accompanies")} onSort={toggleSort} style={{ minWidth: "120px" }}>
+                  <SortableTh
+                    columnKey="accompanies"
+                    order={getIndicator("accompanies")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "120px" }}
+                  >
                     {t("attendance.tableAccompanies")}
                   </SortableTh>
-                  <SortableTh columnKey="attendance" order={getIndicator("attendance")} onSort={toggleSort} style={{ minWidth: "70px" }}>
+                  <SortableTh
+                    columnKey="attendance"
+                    order={getIndicator("attendance")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "70px" }}
+                  >
                     {t("attendance.tableAttendance")}
                   </SortableTh>
-                  <SortableTh columnKey="menu" order={getIndicator("menu")} onSort={toggleSort} style={{ minWidth: "120px" }}>
+                  <SortableTh
+                    columnKey="menu"
+                    order={getIndicator("menu")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "120px" }}
+                  >
                     {t("attendance.tableMenu")}
                   </SortableTh>
-                  <SortableTh columnKey="diet" order={getIndicator("diet")} onSort={toggleSort} style={{ minWidth: "140px" }}>
+                  <SortableTh
+                    columnKey="diet"
+                    order={getIndicator("diet")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "140px" }}
+                  >
                     {t("attendance.tableDiet")}
                   </SortableTh>
-                  <SortableTh columnKey="transport" order={getIndicator("transport")} onSort={toggleSort} style={{ minWidth: "120px" }}>
+                  <SortableTh
+                    columnKey="transport"
+                    order={getIndicator("transport")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "120px" }}
+                  >
                     {t("attendance.tableTransport")}
                   </SortableTh>
-                  <SortableTh columnKey="birth" order={getIndicator("birth")} onSort={toggleSort} style={{ minWidth: "110px" }}>
+                  <SortableTh
+                    columnKey="birth"
+                    order={getIndicator("birth")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "110px" }}
+                  >
                     {t("attendance.tableBirth")}
                   </SortableTh>
-                  <SortableTh columnKey="consents" order={getIndicator("consents")} onSort={toggleSort} style={{ minWidth: "120px" }}>
+                  <SortableTh
+                    columnKey="consents"
+                    order={getIndicator("consents")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "120px" }}
+                  >
                     {t("attendance.tableConsents")}
                   </SortableTh>
-                  <SortableTh columnKey="contact" order={getIndicator("contact")} onSort={toggleSort} style={{ minWidth: "120px" }}>
+                  <SortableTh
+                    columnKey="contact"
+                    order={getIndicator("contact")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "120px" }}
+                  >
                     {t("attendance.tableContact")}
                   </SortableTh>
-                  <SortableTh columnKey="submittedAt" order={getIndicator("submittedAt")} onSort={toggleSort} style={{ minWidth: "120px" }}>
+                  <SortableTh
+                    columnKey="submittedAt"
+                    order={getIndicator("submittedAt")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "120px" }}
+                  >
                     {t("attendance.tableDate")}
                   </SortableTh>
                 </tr>
@@ -595,7 +671,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                               {entry.phone ? <span style={{ fontSize: "0.75rem" }}>{entry.phone}</span> : null}
                               {entry.email ? <span style={{ fontSize: "0.75rem" }}>{entry.email}</span> : null}
                               {!entry.phone && !entry.email ? (
-                                <span style={{ fontSize: "0.75rem", color: "var(--setup-muted)" }}>{t("attendance.contactConsentOnly")}</span>
+                                <span style={{ fontSize: "0.75rem", color: "var(--setup-muted)" }}>
+                                  {t("attendance.contactConsentOnly")}
+                                </span>
                               ) : null}
                             </div>
                           ) : (
@@ -724,7 +802,11 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
             />
             <div className="setup-actions" style={{ marginTop: "0.8rem" }}>
               <button className="setup-button" type="submit" disabled={savingManual || !editing.name.trim()}>
-                {savingManual ? t("common.loading") : editing.id ? t("attendance.manualSave") : t("attendance.manualAdd")}
+                {savingManual
+                  ? t("common.loading")
+                  : editing.id
+                    ? t("attendance.manualSave")
+                    : t("attendance.manualAdd")}
               </button>
             </div>
           </form>

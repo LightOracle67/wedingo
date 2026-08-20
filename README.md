@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.117.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.117.0)  
+**Versión actual:** [v2.118.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.118.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2303 tests, 176 test files |
+| Tests | 2310 tests, 177 test files |
 | Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
@@ -343,6 +343,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.118.0 | 2026-08-20 | Fase 2 de la auditoría: utilidad safe-href (XSS reflejado), checksum IBAN mod-97, isEncryptedMedia en dayphotos/voicenotes, clave por token en cifrado (N→1 derivaciones), O(n) en asistencia, preload Lora, claves i18n |
 | v2.117.0 | 2026-08-20 | Auditoría integral: fix GDPR retención (scheduler no borraba), cutoff parental 2012-08-21, suite tests al verde (2303), lint:ci OK, versionado unificado |
 |---|---|---|
 | v2.116.0 | 2026-08-19 | Seguridad: fix carrera crítica del autosave entre invitaciones + mitigación de la fuga del token en Sentry (cifrado con token documentado) |

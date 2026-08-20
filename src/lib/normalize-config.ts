@@ -1,6 +1,7 @@
 import { STORY_SECTION_ORDER, THEME_VALUES, MAX_SCHEDULE_EVENTS, MAX_SCHEDULE_EVENT_TEXT } from "./constants";
 import { parseMenuDishes } from "./menu-utils";
 import { serializeDisabledAnimations, parseDisabledAnimations } from "./animations";
+import { safeSocialUrl, safeHref } from "./safe-href";
 
 /** Normaliza los campos JSON de arrays (lista de regalos, trivia): devuelve
  *  un JSON válido o "[]". */
@@ -21,9 +22,7 @@ function normalizeJsonArray(value: unknown, maxItems = 50): string {
 /** Fuentes permitidas para el usuario (lista blanca, alineadas con FONT_OPTIONS
  *  de constants.ts). Cualquier otro valor (incluido CSS arbitrario) se descarta
  *  por seguridad anti-inyección. */
-const ALLOWED_FONTS = new Set([
-  "playfair", "lora", "georgia", "times", "great-vibes", "open-dyslexic",
-]);
+const ALLOWED_FONTS = new Set(["playfair", "lora", "georgia", "times", "great-vibes", "open-dyslexic"]);
 function normalizeFont(value: unknown): string {
   const v = typeof value === "string" ? value.trim().toLowerCase() : "";
   return ALLOWED_FONTS.has(v) ? v : "";
@@ -205,7 +204,14 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   surpriseSections: (() => {
     const raw = typeof value?.surpriseSections === "string" ? value.surpriseSections : "";
     const valid = new Set(STORY_SECTION_ORDER);
-    return [...new Set(raw.split(",").map((s) => s.trim()).filter((k) => valid.has(k)))].join(",");
+    return [
+      ...new Set(
+        raw
+          .split(",")
+          .map((s) => s.trim())
+          .filter((k) => valid.has(k)),
+      ),
+    ].join(",");
   })(),
   // Idioma de la invitación: solo se aceptan es/en (los únicos disponibles);
   // cualquier otro valor se resuelve a vacío (detección automática).
@@ -271,11 +277,14 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   tablesEnabled: s(value?.tablesEnabled) === "true" ? "true" : "false",
   triviaEnabled: s(value?.triviaEnabled) === "true" ? "true" : "false",
   trivia: normalizeJsonArray(value?.trivia),
-  weddingSiteURL: s(value?.weddingSiteURL ?? value?.weddingMapUrl),
+  // URLs desde el hash de URL o Firestore: se validan como http(s) seguras
+  // (y host whitelist para redes) para evitar `javascript:`/`data:` reflejado
+  // en `href` del render (XSS). Ver safe-href.ts.
+  weddingSiteURL: safeHref(s(value?.weddingSiteURL ?? value?.weddingMapUrl)),
   weddingSiteURLEnabled: toggleWithLegacy(value?.weddingSiteURLEnabled, value?.weddingSiteURL ?? value?.weddingMapUrl),
-  instagramUrl: s(value?.instagramUrl).slice(0, 1000),
+  instagramUrl: safeSocialUrl(s(value?.instagramUrl).slice(0, 1000), "instagram.com"),
   instagramEnabled: toggleWithLegacy(value?.instagramEnabled, value?.instagramUrl),
-  facebookUrl: s(value?.facebookUrl).slice(0, 1000),
+  facebookUrl: safeSocialUrl(s(value?.facebookUrl).slice(0, 1000), "facebook.com"),
   facebookEnabled: toggleWithLegacy(value?.facebookEnabled, value?.facebookUrl),
   weddingMapView: ["roadmap", "satellite", "hybrid"].includes(s(value?.weddingMapView))
     ? s(value?.weddingMapView)

@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.118.0",
+    date: "2026-08-20",
+    changes: [
+      "Fase 2 de la auditoría integral (2026-08-20): endurecimiento defensivo y rendimiento. (XSS reflejado) Nueva utilidad central src/lib/safe-href.ts: isSafeUrl/safeHref/safeSocialUrl. normalizeConfig ahora sanea weddingSiteURL/instagramUrl/facebookUrl (solo http(s) y host whitelist) y DetailsSection re-valida en el render (defensa en profundidad ante un hash de URL malicioso); validateConfigForSave valida el valor BRUTO para que el usuario vea el aviso y no un borrado silencioso de la URL. (IBAN) La validación real de la configuración usa ahora isValidIBAN (checksum mod-97 completo) en lugar del regex de solo formato que aceptaba dígitos de control incorrectos. (Seguridad reglas) dayphotos y voicenotes exigen isEncryptedMedia (base64 AES-GCM) como gallery/audio/configImages: impide alojar texto arbitrario/data URLs/SVG en claro bajo una invitación. (Rendimiento P1) crypto-utils deriva UNA clave PBKDF2-600k por TOKEN (iv aleatorio por mensaje) en vez de una por salt aleatorio: una galería de N fotos pasa de N derivaciones (~0,1-0,5 s c/u en móvil) a 1; se mantiene compat con el formato legacy de salt aleatorio. (Rendimiento P3) Select de búsqueda de asistencia deduplica nombres con un Set memoizado (O(n) en vez de O(n²)). (Rendimiento P2) Preload de la fuente Lora (cuerpo de la invitación) para evitar FOUT. (i18n) Añadidas las claves rsvp.menuOtro y los plurales panel.withCompanions_one/_other. 2310 tests / 177 ficheros + lint/typecheck/functions/build/translations (1707 claves)/consent OK, reglas 34/34.",
+    ],
+  },
+
+  {
     version: "2.117.0",
     date: "2026-08-20",
     changes: [

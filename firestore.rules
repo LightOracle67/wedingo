@@ -488,20 +488,25 @@ service cloud.firestore {
           && request.resource.data.noteId is string && request.resource.data.noteId.size() <= 40
           && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60
           && request.resource.data.chunkIndex is int && request.resource.data.chunkIndex >= 0 && request.resource.data.chunkIndex < 400
-          && request.resource.data.data is string && request.resource.data.data.size() <= 524288
-          && request.resource.data.totalChunks is int && request.resource.data.totalChunks > 0 && request.resource.data.totalChunks <= 400;
+           && request.resource.data.data is string && request.resource.data.data.size() <= 524288
+           && isEncryptedMedia(request.resource.data.data)
+           && request.resource.data.totalChunks is int && request.resource.data.totalChunks > 0 && request.resource.data.totalChunks <= 400;
         allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
 
       /* Muro de fotos del día (diferencial): los invitados suben fotos a un
          álbum compartido durante la boda. Cifradas como la galería (data
-         base64), lectura pública, creación pública con cap, borrado admin. */
+         base64 AES-GCM), lectura pública, creación pública con cap, borrado
+         admin. Se exige isEncryptedMedia (alfabeto base64 + longitud mínima)
+         tanto como en gallery/audio/configImages para impedir alojar texto
+         arbitrario, data URLs o SVG en claro bajo la invitación. */
       match /dayphotos/{photoId} {
         allow read: if true;
         allow create: if socialCounterBelow(tokenId, 'dayphotos')
           && request.resource.data.keys().hasOnly(['guestName', 'data', 'createdAt'])
           && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60
-          && request.resource.data.data is string && request.resource.data.data.size() <= 1048576;
+          && request.resource.data.data is string && request.resource.data.data.size() <= 1048576
+          && isEncryptedMedia(request.resource.data.data);
         allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
 
