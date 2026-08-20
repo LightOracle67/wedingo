@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.122.0",
+    date: "2026-08-20",
+    changes: [
+      "Ronda 4 (infraestructura y legal). (Build) vite.config: target fijado a es2022 (alineado con BROWSER_COMPAT 120+); manualChunks reordenado para que react-i18next/i18next entren en el chunk i18n (antes la regla de react los absorbía por el prefijo 'node_modules/react'): el chunk i18n ahora es completo (18KB gz) y vendor-react baja a 67KB gz. (Tooling) Se elimina el override roto de uuid (^11 forzaba una versión que universal-analytics no acepta): npm ls limpio con uuid 9 (gaxios) y 14 (universal-analytics); check-bundle-size elimina la entrada muerta vendor-xlsx y añade el límite del chunk i18n. (Legal) LegalModal muestra la VERSIÓN y fecha de la política de privacidad (una línea separada, coherente con el re-consentimiento vía PRIVACY_POLICY_VERSION) y añade una sección nueva de 'Cookies y almacenamiento' con el inventario real (localStorage/IndexedDB, GA, Sentry, Maps y traductor bajo clic, service worker, retención 12 meses) en es/en. Nota: la purga automática de logs (accessLog/visitLog/consentLog…) sigue pendiente de desplegarse en el plan Blaze (functions). 2324 tests / 178 ficheros + lint/typecheck/build/translations (1715 claves)/bundle (293KB inicial) OK.",
+    ],
+  },
+
+  {
     version: "2.121.0",
     date: "2026-08-20",
     changes: [

@@ -11,7 +11,7 @@ function buildTimestamp() {
     transformIndexHtml(html) {
       return html.replace(
         "</head>",
-        `<meta name="deploy-id" content="${ts}" />\n  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />\n  <meta http-equiv="Pragma" content="no-cache" />\n  <meta http-equiv="Expires" content="0" />\n  </head>`
+        `<meta name="deploy-id" content="${ts}" />\n  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />\n  <meta http-equiv="Pragma" content="no-cache" />\n  <meta http-equiv="Expires" content="0" />\n  </head>`,
       );
     },
   };
@@ -75,8 +75,10 @@ function pwaPrecache() {
       const version = createHash("sha1").update(assets.join("|")).digest("hex").slice(0, 8);
       const swSource = readFileSync(join(root, "public", "sw.js"), "utf8");
       const finalSw = swSource
-        .split("__SW_VERSION__").join(version)
-        .split("__PRECACHE_ASSETS__").join(JSON.stringify(assets));
+        .split("__SW_VERSION__")
+        .join(version)
+        .split("__PRECACHE_ASSETS__")
+        .join(JSON.stringify(assets));
       writeFileSync(join(root, "dist", "sw.js"), finalSw);
     },
   };
@@ -94,6 +96,10 @@ export default defineConfig({
     },
   },
   build: {
+    // Target transpilado a ES2022 (alineado con BROWSER_COMPAT.md: Chrome/
+    // Firefox/Safari/Edge 120+). Evita dejar sintaxis que motores antiguos
+    // parseen lento, manteniendo módulos nativos y top-level await.
+    target: "es2022",
     sourcemap: process.env.SENTRY_AUTH_TOKEN ? "hidden" : false,
     chunkSizeWarningLimit: 650,
     // No modulepreloadar lazy-analytics en el primer hit: se arrastra por un
@@ -115,8 +121,13 @@ export default defineConfig({
           // chunk evita que entre en la ruta inicial vía el agrupador genérico.
           if (id.includes("/qrcode/")) return "vendor-qrcode";
           if (id.includes("firebase")) return "vendor-firebase";
-          if (id.includes("node_modules/.pnpm/react") || id.includes("node_modules/react")) return "vendor-react";
+          // i18next/react-i18next ANTES de la regla de react: el subpath
+          // "node_modules/react-i18next" contiene "node_modules/react" como
+          // prefijo, así que sin reordenar, react-i18next acababa en vendor-react
+          // y el chunk i18n quedaba incompleto (i18n core separado de react-i18next).
           if (id.includes("/node_modules/i18next/") || id.includes("/node_modules/react-i18next/")) return "i18n";
+          if (id.includes("/node_modules/react/") || id.includes("/node_modules/react-dom/")) return "vendor-react";
+          if (id.includes("/node_modules/react-router")) return "vendor-react";
           if (id.includes("/node_modules/@sentry/")) return "vendor-sentry";
           if (id.includes("node_modules")) return "vendor-other";
         },
@@ -140,12 +151,7 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "html", "lcov"],
       include: ["src/**/*.{ts,tsx}"],
-      exclude: [
-        "src/**/*.test.{ts,tsx}",
-        "src/**/*.spec.{ts,tsx}",
-        "src/i18n/locales/**",
-        "src/**/__tests__/**",
-      ],
+      exclude: ["src/**/*.test.{ts,tsx}", "src/**/*.spec.{ts,tsx}", "src/i18n/locales/**", "src/**/__tests__/**"],
       thresholds: {
         // Verificado en v2.98.5 (ronda de mejora): líneas 92.2% / statements
         // 90% / funcs 87% / branches 80.7%. Margen para variaciones de CI.

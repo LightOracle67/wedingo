@@ -2,7 +2,13 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string) => key }),
+  useTranslation: () => ({
+    t: (key: string, opts?: Record<string, string>) => {
+      // Interpolación simple para los tests ({{var}}).
+      if (!opts) return key;
+      return key.replace(/\{\{\s*(\w+)\s*\}\}/g, (_, name) => String(opts[name] ?? ""));
+    },
+  }),
 }));
 
 import LegalModal from "../LegalModal";
@@ -17,6 +23,7 @@ describe("LegalModal", () => {
   it("renders all sections", () => {
     render(<LegalModal section="privacy" onClose={vi.fn()} />);
     expect(screen.getByText("legal.sectionPrivacy")).toBeDefined();
+    expect(screen.getByText("legal.sectionCookies")).toBeDefined();
     expect(screen.getByText("legal.sectionTerms")).toBeDefined();
     expect(screen.getByText("legal.sectionLegal")).toBeDefined();
   });
@@ -35,6 +42,9 @@ describe("LegalModal", () => {
     render(<LegalModal section="" onClose={vi.fn()} />);
     const button = screen.getByText("legal.sectionPrivacy");
     fireEvent.click(button);
+    // El contenido abre mostrando la versión de la política y el texto (la
+    // versión es un span aparte para no romper el nodo de contenido exacto).
+    expect(screen.getByText(/legal\.versionPrefix/)).toBeDefined();
     expect(screen.getByText("legal.privacyPolicy")).toBeDefined();
   });
 

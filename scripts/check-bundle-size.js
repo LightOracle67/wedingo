@@ -30,7 +30,7 @@ const LIMITS = {
   "vendor-react": 120,
   "vendor-sentry": 120,
   "vendor-other": 60,
-  "vendor-xlsx": 180,
+  "i18n-": 120,
   "vendor-qrcode": 40,
   "index-": 80,
 };

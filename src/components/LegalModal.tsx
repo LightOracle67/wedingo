@@ -1,6 +1,7 @@
 import { memo, useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "./Modal";
+import { PRIVACY_POLICY_VERSION } from "../lib/constants";
 
 import "../styles/modals.css";
 
@@ -8,8 +9,24 @@ const LegalModal = memo(function LegalModal({ section, onClose }: { section: str
   const { t } = useTranslation();
   const [open, setOpen] = useState(section || "");
 
+  // Cabecera de la política CON su versión (coherente con el re-consentimiento:
+  // CookieConsent exige que el registro lleve la misma versión para no volver
+  // a preguntar). Se muestra aquí para que el usuario sepa exactamente qué
+  // política aceptó (transparencia, art. 12 GDPR).
+  const privacyVersionLine = `${t("legal.versionPrefix", { version: PRIVACY_POLICY_VERSION })} · ${t(
+    "legal.updatedAtPrefix",
+    {
+      date: new Date(`${PRIVACY_POLICY_VERSION}T00:00:00Z`).toLocaleDateString(navigator.language || "es", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+    },
+  )}`;
+
   const SECTIONS = [
-    { id: "privacy", label: t("legal.sectionPrivacy"), content: t("legal.privacyPolicy") },
+    { id: "privacy", label: t("legal.sectionPrivacy"), content: t("legal.privacyPolicy"), versioned: true },
+    { id: "cookies", label: t("legal.sectionCookies"), content: t("legal.cookiesPolicy") },
     { id: "terms", label: t("legal.sectionTerms"), content: t("legal.termsText") },
     { id: "legal", label: t("legal.sectionLegal"), content: t("legal.legalText") },
   ];
@@ -89,6 +106,15 @@ const LegalModal = memo(function LegalModal({ section, onClose }: { section: str
                   whiteSpace: "pre-line",
                 }}
               >
+                {"versioned" in s && s.versioned ? (
+                  <span
+                    role="status"
+                    aria-live="polite"
+                    style={{ display: "block", fontWeight: 600, marginBottom: "0.4rem", color: "var(--setup-title)" }}
+                  >
+                    {privacyVersionLine}
+                  </span>
+                ) : null}
                 {s.content}
               </div>
             </div>

@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.121.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.121.0)  
+**Versión actual:** [v2.122.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.122.0)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,8 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2324 tests, 178 test files |
-| Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
+| Tests | 2324 tests, 178 test files || Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
 | `any` en source | 0 |
@@ -343,6 +342,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.122.0 | 2026-08-20 | Ronda 4 infra+legal: target es2022, manualChunks i18n correcto, fix override uuid, política versionada con fecha, sección Cookies y almacenamiento |
 | v2.121.0 | 2026-08-20 | Ronda 3 robustez: crypto.randomUUID en IDs, aviso en encrypt fallido, tests useSessionRenewal/Modal/axe (Modal, CollapsibleSection) |
 | v2.120.0 | 2026-08-20 | Ronda 2 seguridad del logging: safe-error (redacta token en errores y logs), elimina dump de objetos/paths, sin PII (email) en logs, dead code loggingInRef |
 | v2.119.0 | 2026-08-20 | Ronda 1 accesibilidad AAA: teclado en editor de mesas + campos X/Y, focus trap en modales anidados + scroll-lock, contraste footer/menú/trivia, labels 'otras alergias', h2-fuera-de-button, aria-live gracias |

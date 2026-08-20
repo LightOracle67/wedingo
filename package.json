@@ -1,7 +1,7 @@
 {
   "name": "wedingo",
   "private": true,
-  "version": "2.121.0",
+  "version": "2.122.0",
   "type": "module",
   "engines": {
     "node": ">=22.22.2"
@@ -78,7 +78,6 @@
     "xlsx": "^0.18.5"
   },
   "overrides": {
-    "@opentelemetry/core": "^2.8.0",
-    "uuid": "^11.1.1"
+    "@opentelemetry/core": "^2.8.0"
   }
 }
