@@ -916,7 +916,18 @@ export function useRsvp(
         for (const id of ids) {
           batch.delete(rsvpResponseRef(inviteToken, id));
         }
-        batch.update(doc(db, "rsvpResponses", inviteToken), { count: increment(-ids.length) });
+        // El contador rsvpResponses/{token}.count se incrementa +1 POR
+        // CONFIRMACIÓN (no por fila): una confirmación crea la fila principal +
+        // una fila por cada acompañante, pero solo suma 1 al tope anti-spam.
+        // Al borrar en lote, `ids` puede incluir filas de acompañantes (el
+        // admin las expande), así que se decrementa por el número de entradas
+        // PRINCIPALES borradas y no por ids.length (evita sobre-decrementar el
+        // contador y dejar el tope anti-spam desincronizado).
+        const mainDeleted = ids.filter((id) => {
+          const entry = rsvpEntries.find((e) => e.id === id);
+          return !entry || entry.rsvpType !== "companion";
+        }).length;
+        batch.update(doc(db, "rsvpResponses", inviteToken), { count: increment(-mainDeleted) });
         await withWriteRetry(() => batch.commit());
         setRsvpEntries((current) => current.filter((e) => !ids.includes(e.id)));
         setAdminMessage(t("attendance.deleteSelectedSuccess", { count: ids.length }));
@@ -929,7 +940,7 @@ export function useRsvp(
         deletingRef.current = false;
       }
     },
-    [setAdminMessage, setAdminMessageType, t, inviteToken, confirm],
+    [setAdminMessage, setAdminMessageType, t, inviteToken, confirm, rsvpEntries],
   );
 
   const handleClearRsvpEntries = useCallback(async () => {

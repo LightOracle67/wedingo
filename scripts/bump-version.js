@@ -11,6 +11,7 @@ import { execSync } from "child_process";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const pkgPath = resolve(root, "package.json");
+const pkgLockPath = resolve(root, "package-lock.json");
 const constantsPath = resolve(root, "src/lib/constants.ts");
 const changelogPath = resolve(root, "src/lib/changelog.ts");
 
@@ -42,6 +43,15 @@ if (/^\d+\.\d+\.\d+$/.test(arg)) {
 pkg.version = next;
 writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
 
+// 1b. package-lock.json (versión raíz y la del paquete raíz) para que no
+// quede desincronizado del package.json (el lock sí se versiona).
+const pkgLock = JSON.parse(readFileSync(pkgLockPath, "utf8"));
+pkgLock.version = next;
+if (pkgLock.packages?.[""]) {
+  pkgLock.packages[""].version = next;
+}
+writeFileSync(pkgLockPath, JSON.stringify(pkgLock, null, 2) + "\n");
+
 // 2. constants.ts
 let constants = readFileSync(constantsPath, "utf8");
 constants = constants.replace(/APP_VERSION = "[^"]+"/, `APP_VERSION = "${next}"`);
@@ -62,13 +72,16 @@ const updated = changelog.replace(/export const CHANGELOG = \[/, `export const C
 writeFileSync(changelogPath, updated);
 
 console.log(`✅ v${current} → v${next}`);
-console.log("   - package.json actualizado");
+console.log("   - package.json + package-lock.json actualizados");
 console.log("   - constants.ts (APP_VERSION) actualizado");
 console.log("   - changelog.ts nuevo entry añadido (edita el TODO)");
 
 // 4. commit + tag
 try {
-  execSync(`git add package.json src/lib/constants.ts src/lib/changelog.ts && git commit -m "chore: bump v${next}"`, { stdio: "inherit", cwd: root });
+  execSync(
+    `git add package.json package-lock.json src/lib/constants.ts src/lib/changelog.ts && git commit -m "chore: bump v${next}"`,
+    { stdio: "inherit", cwd: root },
+  );
   execSync(`git tag v${next}`, { stdio: "inherit", cwd: root });
   console.log(`✅ Commit + tag v${next} creados`);
   console.log("   Ejecuta: git push && git push origin v" + next);

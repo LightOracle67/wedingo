@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.117.0",
+    date: "2026-08-20",
+    changes: [
+      "Ronda de auditoría integral (2026-08-20): resolución de los bloqueadores críticos detectados. (GDPR art. 8) La fecha de corte de consentimiento parental se actualiza a 2012-08-21 (hoy - 14 años + 1 día) para que la regla siga exigiendo consentimiento a menores de 14 en España. (GDPR art. 5.1.e) La limpieza automática de invitaciones expiradas (>12 meses tras la boda) NO borraba nada: parseaba el mes en español ('enero'…'diciembre') con 'new Date(\"...1, 2000\")', que en Node (locale inglés) devuelve Invalid Date → NaN → `eventTime > 0` nunca se cumplía (retención indefinida). Nuevo mapa SPANISH_MONTH_INDEX + helper weddingTimestamp con validación de día real + test de regresión para los 12 meses. (CI) lint:ci vuelve a pasar: import duplicado de firebase/firestore fusionado en invitation-subcollections.ts y allowExportNames para los hooks/contextos co-localizados por diseño. Tests: suite al verde (2303 tests/176 ficheros): actualizados los asserts del export de mesas al formato real 'ancho×alto' (celda única) y blindado main.tsx para no montar la app en tests (mountApp bajo demanda). Versionado unificado: package.json y package-lock.json sincronizados con APP_VERSION (ya no quedan 3 versiones distintas) y bump-version.js escribe también el lock. 2303 tests / 176 ficheros + lint/typecheck/functions/build/translations (1704 claves)/consent OK, reglas 34/34.",
+    ],
+  },
+
+  {
     version: "2.116.0",
     date: "2026-08-19",
     changes: [

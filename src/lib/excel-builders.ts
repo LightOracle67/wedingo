@@ -181,11 +181,14 @@ export function buildTablesSheet(
   const active = sections.find((s) => s.id === activeSectionId);
   const rows: Array<Array<string | number>> = [];
   for (const tb of tables || []) {
+    // Tamaño en una sola celda (w × h) para que las 6 columnas coincidan con
+    // los 6 encabezados: sección, mesa, forma, tamaño (px), plazas, invitado.
+    const size = `${tb.w ?? ""}×${tb.h ?? ""}`;
     if (tb.guests.length === 0) {
-      rows.push([active?.name || "", tb.name, tb.shape, tb.w, tb.h, tb.seats, ""]);
+      rows.push([active?.name || "", tb.name, tb.shape, size, tb.seats, ""]);
     } else {
       for (const g of tb.guests) {
-        rows.push([active?.name || "", tb.name, tb.shape, tb.w, tb.h, tb.seats, g]);
+        rows.push([active?.name || "", tb.name, tb.shape, size, tb.seats, g]);
       }
     }
   }
@@ -272,7 +275,10 @@ export function buildRsvpSheet(token: string, docs: RsvpDocLike[]): ExcelSheet {
     Number(r.companionCount) || 0,
     String(r.mealChoice || ""),
     Array.isArray(r.allergiesOther) ? (r.allergiesOther as string[]).join("; ") : String(r.allergiesOther || ""),
-    r.submittedAt ? new Date(String(r.submittedAt)).toLocaleDateString() : "",
+    // submittedAt puede ser string ISO, epoch numérico o un Firestore
+    // Timestamp. Sin este parser, new Date("[object Object]") daba "Invalid
+    // Date" en la exportación del superadmin.
+    formatSubmittedDate(r.submittedAt),
   ]);
   void token;
   return {
@@ -281,6 +287,34 @@ export function buildRsvpSheet(token: string, docs: RsvpDocLike[]): ExcelSheet {
     rows,
     colWidths: [24, 14, 14, 20, 26, 14],
   };
+}
+
+/**
+ * Normaliza una fecha almacenada (string ISO, epoch ms/s o Timestamp de
+ * Firestore) a una cadena legible, o cadena vacía si es inválida. Evita el
+ * "Invalid Date" en las exportaciones cuando el dato es un Timestamp.
+ */
+function formatSubmittedDate(raw: unknown): string {
+  if (raw === null || raw === undefined) return "";
+  // Firestore Timestamp: { seconds, nanoseconds } o con toString()/toDate().
+  if (typeof raw === "object") {
+    const asObj = raw as { seconds?: unknown; toDate?: () => unknown };
+    const secs = typeof asObj.seconds === "number" ? asObj.seconds : null;
+    const ms = secs !== null ? secs * 1000 : null;
+    const date =
+      ms !== null
+        ? new Date(ms)
+        : typeof asObj.toDate === "function"
+          ? (asObj.toDate() as Date)
+          : null;
+    return date && !Number.isNaN(date.getTime()) ? date.toLocaleDateString() : "";
+  }
+  if (typeof raw === "number") {
+    const date = new Date(raw);
+    return Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString();
+  }
+  const date = new Date(String(raw));
+  return Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString();
 }
 
 // ── Superadmin: registro de auditoría ──

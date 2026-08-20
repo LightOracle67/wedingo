@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, doc, collection, writeBatch, getDoc, query, where } from "firebase/firestore";
+import { getDocs, doc, collection, writeBatch, getDoc } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, RSVP_RESPONSES_GROUP, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadJson } from "../../lib/file-utils";
@@ -1006,51 +1006,11 @@ function sanitizeInvitationForExport(data: Record<string, unknown>): Record<stri
  * @param {string} token - Token/ID de la invitación.
  */
 async function cascadeDelete(token: string) {
-  const BATCH_SIZE = 500;
-  const refsToDelete = [];
-
-  // RSVPs
-  const rsvpSnap = await getDocs(rsvpByInviteRef(token));
-  for (const d of rsvpSnap.docs) refsToDelete.push(d.ref);
-
-  // Subcolecciones de la invitación: medios (galería, audio, configImages) y
-  // las FUNCIONES SOCIALES (reactions/notes/songs/rides/gifts) más el contador
-  // interno _counters. Las sociales guardan datos personales de los invitados
-  // y, si no se borran, quedan huérfanas y legibles para siempre (derecho de
-  // supresión, GDPR art. 17).
-  const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog", "accessLog", "confirmedPeople", "_backup", "venuepoints", "dayphotos", "mailbox", "toasts", "visitLog", "sections"];
-  for (const name of SUB_COLLECTIONS) {
-    const subSnap = await getDocs(collection(db, "invitations", token, name));
-    for (const d of subSnap.docs) refsToDelete.push(d.ref);
-  }
-
-  // Las mesas de cada sección (sections/{id}/tables) guardan los NOMBRES
-  // COMPLETOS de los invitados asignados: deben borrarse junto a la sección
-  // para cumplir el derecho de supresión (GDPR art. 17).
-  const sectionsSnap = await getDocs(collection(db, "invitations", token, "sections"));
-  for (const sec of sectionsSnap.docs) {
-    const tablesSnap = await getDocs(collection(db, "invitations", token, "sections", sec.id, "tables"));
-    for (const tb of tablesSnap.docs) refsToDelete.push(tb.ref);
-  }
-
-  // Registros de tokens de setup (hash → inviteToken): sin esto quedaban
-  // hashes huérfanos apuntando a una invitación inexistente.
-  const setupTokenSnap = await getDocs(query(collection(db, "setupTokens"), where("inviteToken", "==", token)));
-  for (const d of setupTokenSnap.docs) refsToDelete.push(d.ref);
-
-  // Contador RSVP
-  refsToDelete.push(doc(db, "rsvpResponses", token));
-
-  // Invitation doc (siempre al final)
-  refsToDelete.push(doc(db, "invitations", token));
-
-  // Firestore permite un máximo de 500 operaciones por batch.
-  // Troceamos las referencias en lotes y confirmamos cada uno por separado
-  // para evitar que invitaciones con muchos RSVPs/imágenes fallen silenciosamente.
-  for (let i = 0; i < refsToDelete.length; i += BATCH_SIZE) {
-    const chunk = refsToDelete.slice(i, i + BATCH_SIZE);
-    const batch = writeBatch(db);
-    for (const ref of chunk) batch.delete(ref);
-    await batch.commit();
-  }
+  // Borrado en cascada completo y centralizado: RSVPs, todas las
+  // subcolecciones (incluidas las sociales con PII), mesas con nombres de
+  // invitados, tokens de setup, contador RSVP y el documento de invitación,
+  // troceado en lotes de 500. Usa el helper compartido para no duplicar la
+  // lógica en cada panel del superadmin.
+  const { deleteInvitationCascade } = await import("../../lib/invitation-subcollections");
+  await deleteInvitationCascade(token, db);
 }

@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useState } from "react";
-import { doc, getDocs, writeBatch, collection, query, where } from "firebase/firestore";
-import { db, INVITATIONS_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
+import { getDocs } from "firebase/firestore";
+import { db, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
 import { searchInvitations, formatBytes } from "../../lib/superadmin-utils";
 import { useTranslation } from "react-i18next";
 import { useConfirm } from "../../contexts/ConfirmContext";
@@ -59,37 +59,12 @@ const InvitationsTab = memo(function InvitationsTab() {
   const selection = useRowSelection();
 
   // Borrado en cascada COMPLETO (sin confirmación: la gestiona quien llama):
-  // sin esto las subcolecciones (RSVP, galería, audio, configImages,
-  // setupTokens) quedaban huérfanas. Las FUNCIONES SOCIALES
-  // (reactions/notes/songs/rides/gifts) y _counters guardan datos personales
-  // de los invitados: si no se borran, quedan huérfanas y legibles para
-  // siempre (GDPR art. 17). El consentLog también debe limpiarse.
+  // centralizado en el helper compartido, que cubre RSVP, todas las
+  // subcolecciones (incluidas las sociales con PII), mesas con nombres de
+  // invitados, tokens de setup, contador y el documento (GDPR art. 17).
   const deleteOne = useCallback(async (id: string) => {
-    const refs: Array<{ ref: unknown }> = [];
-    const snap = await getDocs(rsvpByInviteRef(id));
-    for (const d of snap.docs) refs.push(d.ref as never);
-    const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog", "accessLog", "confirmedPeople", "_backup", "venuepoints", "dayphotos", "mailbox", "toasts", "visitLog", "sections"];
-    for (const name of SUB_COLLECTIONS) {
-      const subSnap = await getDocs(collection(db, "invitations", id, name));
-      for (const d of subSnap.docs) refs.push(d.ref as never);
-    }
-    // Mesas (guardan nombres completos, GDPR art. 17).
-    const secSnap = await getDocs(collection(db, "invitations", id, "sections"));
-    for (const sec of secSnap.docs) {
-      const tbSnap = await getDocs(collection(db, "invitations", id, "sections", sec.id, "tables"));
-      for (const tb of tbSnap.docs) refs.push(tb.ref as never);
-    }
-    const tokenSnap = await getDocs(query(collection(db, "setupTokens"), where("inviteToken", "==", id)));
-    for (const d of tokenSnap.docs) refs.push(d.ref as never);
-    refs.push(doc(db, "rsvpResponses", id) as never);
-    refs.push(doc(INVITATIONS_COLLECTION_REF, id) as never);
-    // Firestore limita a 500 operaciones por batch: se trocea.
-    for (let i = 0; i < refs.length; i += 400) {
-      const chunk = refs.slice(i, i + 400);
-      const batch = writeBatch(db);
-      for (const r of chunk) batch.delete(r.ref as never);
-      await batch.commit();
-    }
+    const { deleteInvitationCascade } = await import("../../lib/invitation-subcollections");
+    await deleteInvitationCascade(id, db);
     setInvitations((prev) => prev.filter((i) => i.id !== id));
   }, []);
 

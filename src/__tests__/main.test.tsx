@@ -1,13 +1,9 @@
-import { describe, it, expect, beforeAll } from "vitest";
-describe("main", () => {
-  beforeAll(() => {
-    const root = document.createElement("div");
-    root.id = "root";
-    document.body.appendChild(root);
-  });
+import { describe, it, expect } from "vitest";
 
-  it("imports without error", async () => {
+describe("main", () => {
+  it("importa sin error y expone mountApp (sin montar la app real en tests)", async () => {
     const mod = await import("../main");
     expect(mod).toBeDefined();
+    expect(typeof mod.mountApp).toBe("function");
   });
 });

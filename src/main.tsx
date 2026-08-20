@@ -9,10 +9,23 @@ import { reportWebVitals } from "./lib/vitals";
 
 reportWebVitals();
 
-const container = document.getElementById("root")!;
-const root = createRoot(container);
-root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-);
+/**
+ * Monta la aplicación en el contenedor raíz. Se exporta para poder invocarla
+ * desde los tests de integración sin depender del side-effect de import.
+ *
+ * @param container Elemento DOM que hace de raíz de React.
+ */
+export function mountApp(container: HTMLElement) {
+  createRoot(container).render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+  );
+}
+
+// En tests (vitest) el contenedor no existe o no debe montarse la app real:
+// evita el render completo del árbol y los unhandled errors de React DOM.
+if (import.meta.env.MODE !== "test") {
+  const container = document.getElementById("root");
+  if (container) mountApp(container);
+}

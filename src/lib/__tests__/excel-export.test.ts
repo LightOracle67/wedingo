@@ -66,7 +66,10 @@ function readBack(sheets: Parameters<typeof buildWorkbook>[0]) {
   const reopened = XLSX.read(buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength), { type: "buffer" });
   return reopened.SheetNames.map((name) => ({
     name,
-    data: XLSX.utils.sheet_to_json<Array<string | number>>(reopened.Sheets[name] as XLSX.WorkSheet, { header: 1, defval: "" }),
+    data: XLSX.utils.sheet_to_json<Array<string | number>>(reopened.Sheets[name] as XLSX.WorkSheet, {
+      header: 1,
+      defval: "",
+    }),
   }));
 }
 
@@ -200,29 +203,64 @@ describe("Export Excel: mesas (DistribucionTab)", () => {
     // El encabezado queda con el ancho máximo (7 columnas) por la fila de invitado.
     expect(sheet.data[0]!.slice(0, 6)).toEqual(["Sección", "Mesa", "Forma", "Tamaño (px)", "Plazas", "Invitado"]);
     expect(sheet.data.slice(1)).toEqual([
-      ["Salón principal", "Mesa 1", "rect", 400, 200, 8, "Ana"],
-      ["Salón principal", "Mesa 1", "rect", 400, 200, 8, "Luis"],
-      ["Salón principal", "Mesa vacía", "circle", 250, 250, 6, ""],
+      ["Salón principal", "Mesa 1", "rect", "400×200", 8, "Ana"],
+      ["Salón principal", "Mesa 1", "rect", "400×200", 8, "Luis"],
+      ["Salón principal", "Mesa vacía", "circle", "250×250", 6, ""],
     ]);
   });
 
-  it("mantiene los tamaños y plazas como números", () => {
-    expect(typeof sheet.data[1]![3]).toBe("number");
-    expect(typeof sheet.data[1]![5]).toBe("number");
+  it("mantiene el tamaño como cadena 'ancho×alto' y las plazas como números", () => {
+    expect(typeof sheet.data[1]![3]).toBe("string");
+    expect(sheet.data[1]![3]).toBe("400×200");
+    expect(typeof sheet.data[1]![4]).toBe("number");
+    expect(sheet.data[1]![4]).toBe(8);
   });
 });
 
 describe("Export Excel: métricas globales (MetricsTab)", () => {
   const sheet = readBack([
     buildMetricsSheet([
-      { id: "TOK1", firstName: "Ana", secondName: "García", adminUsername: "wedingotesting", weddingDateLabel: "15/08/2026", visits: 42, rsvpCount: 10, confirmed: 7, companions: 4, conversion: 70 },
-      { id: "TOK2", firstName: "Luis", secondName: "Pérez", adminUsername: "admin2", weddingDateLabel: "", visits: 3, rsvpCount: 0, confirmed: 0, companions: 0, conversion: 0 },
+      {
+        id: "TOK1",
+        firstName: "Ana",
+        secondName: "García",
+        adminUsername: "wedingotesting",
+        weddingDateLabel: "15/08/2026",
+        visits: 42,
+        rsvpCount: 10,
+        confirmed: 7,
+        companions: 4,
+        conversion: 70,
+      },
+      {
+        id: "TOK2",
+        firstName: "Luis",
+        secondName: "Pérez",
+        adminUsername: "admin2",
+        weddingDateLabel: "",
+        visits: 3,
+        rsvpCount: 0,
+        confirmed: 0,
+        companions: 0,
+        conversion: 0,
+      },
     ]),
   ])[0]!;
 
   it("cabecera y embudo: declinados = RSVP − confirmados", () => {
     expect(sheet.data).toEqual([
-      ["Token", "Invitación", "Admin", "Fecha boda", "Visitas", "RSVP", "Confirmados", "Declinados", "Acompañantes", "Conversión(%)"],
+      [
+        "Token",
+        "Invitación",
+        "Admin",
+        "Fecha boda",
+        "Visitas",
+        "RSVP",
+        "Confirmados",
+        "Declinados",
+        "Acompañantes",
+        "Conversión(%)",
+      ],
       ["TOK1", "Ana García", "wedingotesting", "15/08/2026", 42, 10, 7, 3, 4, 70],
       ["TOK2", "Luis Pérez", "admin2", "", 3, 0, 0, 0, 0, 0],
     ]);
@@ -240,7 +278,16 @@ describe("Export Excel: todas las confirmaciones (MetricsTab)", () => {
       {
         invite: { id: "TOK1", firstName: "Ana", secondName: "García" },
         rsvps: [
-          { inviteToken: "TOK1", guestName: "Ana", attendance: "yes", attendees: [{ menu: "carne" }, { menu: "pescado" }], allergiesOther: ["sin gluten"], phone: "6001", email: "a@x.com", submittedAt: "2026-08-01" },
+          {
+            inviteToken: "TOK1",
+            guestName: "Ana",
+            attendance: "yes",
+            attendees: [{ menu: "carne" }, { menu: "pescado" }],
+            allergiesOther: ["sin gluten"],
+            phone: "6001",
+            email: "a@x.com",
+            submittedAt: "2026-08-01",
+          },
           { inviteToken: "OTRO", guestName: "Intruso", attendance: "yes" },
         ],
       },
@@ -258,7 +305,14 @@ describe("Export Excel: todas las confirmaciones (MetricsTab)", () => {
 describe("Export Excel: RSVP por invitación (DataTab)", () => {
   const sheet = readBack([
     buildRsvpSheet("TOK1", [
-      { guestName: "Ana", attendance: "yes", companionCount: 2, mealChoice: "carne", allergiesOther: "frutos secos", submittedAt: "2026-08-01T10:00:00" },
+      {
+        guestName: "Ana",
+        attendance: "yes",
+        companionCount: 2,
+        mealChoice: "carne",
+        allergiesOther: "frutos secos",
+        submittedAt: "2026-08-01T10:00:00",
+      },
       { guestName: "Luis", attendance: "no", companionCount: 0 },
     ]),
   ])[0]!;
@@ -337,7 +391,7 @@ describe("Escritor XLSX: casos borde", () => {
   ])[0]!;
 
   it("escapa XML, sanea caracteres de control y conserva saltos/acentos/emoji", () => {
-    expect(edge.data[1]).toEqual(["a & b < \"c\" > d \n\té", 3.14159, true, ""]);
+    expect(edge.data[1]).toEqual(['a & b < "c" > d \n\té', 3.14159, true, ""]);
     // El texto largo sobrevive completo y sin caracteres de control.
     const long = edge.data[4]![0] as string;
     expect(long).toContain("❤️");

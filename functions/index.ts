@@ -12,6 +12,53 @@ const storage: Storage = getStorage();
 const BATCH_LIMIT = 400;
 
 /**
+ * Mapa de meses en español → índice de `Date` (0-based).
+ * Los valores de la invitación se persisten con MESES EN ESPAÑOL ("enero"…
+ * "diciembre", ver firestore.rules y MONTH_VALUE_TO_NUMBER en constants.ts).
+ * NO se puede usar `new Date(`${month} 1, 2000`).getMonth()`: el parser de
+ * fechas de V8/Node solo entiende meses en inglés, así que "enero", "abril",
+ * "agosto" y "diciembre" producen Invalid Date → `NaN` → el cálculo de
+ * expiración nunca borraba invitaciones (retención indefinida, GDPR art. 5.1.e).
+ */
+export const SPANISH_MONTH_INDEX: Record<string, number> = {
+  enero: 0,
+  febrero: 1,
+  marzo: 2,
+  abril: 3,
+  mayo: 4,
+  junio: 5,
+  julio: 6,
+  agosto: 7,
+  septiembre: 8,
+  octubre: 9,
+  noviembre: 10,
+  diciembre: 11,
+};
+
+/**
+ * Timestamp (ms) de la fecha de la boda a partir de los campos persistidos
+ * (día numérico, mes en español, año). Devuelve -1 si la fecha es inválida o
+ * faltan datos (la entrada no es una invitación real o está incompleta).
+ *
+ * @param data Datos del documento de la invitación.
+ * @returns Timestamp en ms de la boda, o -1 si no se puede determinar.
+ */
+export function weddingTimestamp(data: Record<string, unknown>): number {
+  const day = Number(data.weddingDay);
+  const monthStr = typeof data.weddingMonth === "string" ? data.weddingMonth : "";
+  const month = SPANISH_MONTH_INDEX[monthStr];
+  const year = Number(data.weddingYear);
+  if (!day || month === undefined || !year) return -1;
+  const date = new Date(year, month, day);
+  // Valida que el día no "desborde" el mes (p. ej. 35 de enero -> 4 de febrero):
+  // el constructor de Date normaliza días fuera de rango y daría un timestamp
+  // válido para una fecha inexistente.
+  if (date.getFullYear() !== year || date.getMonth() !== month || date.getDate() !== day) return -1;
+  const ts = date.getTime();
+  return Number.isFinite(ts) ? ts : -1;
+}
+
+/**
  * Elimina en cascada una invitación expirada y todos sus datos asociados.
  * Se procesa de forma aislada por invitación: crea batches frescos y, si un
  * batch se llena, hace commit y RE-CONSULTA las subcolecciones restantes
@@ -107,13 +154,8 @@ export const cleanupExpiredData = onSchedule({ schedule: "0 0 1 * *" } satisfies
 
   for (const doc of snapshot.docs) {
     const data = doc.data() as Record<string, unknown>;
-    const day = Number(data.weddingDay);
-    const month = typeof data.weddingMonth === "string" ? new Date(`${data.weddingMonth} 1, 2000`).getMonth() : -1;
-    const year = Number(data.weddingYear);
-    if (!day || month < 0 || !year) continue;
-
-    const weddingDate = new Date(year, month, day);
-    const eventTime = weddingDate.getTime();
+    // Fecha de la boda como timestamp; -1 si la invitación no tiene fecha válida.
+    const eventTime = weddingTimestamp(data);
     if (eventTime > 0 && now - eventTime > twelveMonthsAgo) {
       await cascadeDeleteInvitation(doc.id);
       processed++;

@@ -15,15 +15,12 @@ import {
   setDoc,
   doc,
   increment,
-  getDocs,
   writeBatch,
   addDoc,
   collection,
   serverTimestamp,
-  type DocumentData,
-  type QueryDocumentSnapshot,
 } from "firebase/firestore";
-import { db, invitationDocRef, rsvpByInviteRef } from "../lib/firebase";
+import { db, invitationDocRef } from "../lib/firebase";
 import {
   defaultConfig,
   MAX_YEARS_AHEAD,
@@ -661,9 +658,14 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       return;
     }
     try {
-      const snap = await getDocs(rsvpByInviteRef(inviteToken));
-      const batch = writeBatch(db);
-      snap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
+      // Borrado en cascada completo (GDPR art. 17): respuestas RSVP, todas las
+      // subcolecciones sociales con PII (reactions, notes, songs, rides, gifts,
+      // mailbox, confirmedPeople…), mesas con nombres de invitados, tokens de
+      // setup asociados, contador RSVP y el documento de invitación. Antes
+      // solo se borraban las respuestas y el doc: el resto de datos de
+      // invitados quedaba huérfano y legible para siempre.
+      const { deleteInvitationCascade } = await import("../lib/invitation-subcollections");
+      await deleteInvitationCascade(inviteToken, db);
       const { deleteGallery, deleteAllConfigImages } = await import("../lib/image-store");
       const { deleteAudio } = await import("../lib/music-store");
       await deleteGallery(inviteToken);
@@ -671,9 +673,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       // El audio (chunks cifrados) también se elimina: sin esto quedaban
       // huérfanos para siempre (incumplía el borrado completo de datos).
       await deleteAudio(inviteToken);
-      batch.delete(doc(db, "rsvpResponses", inviteToken));
-      batch.delete(invitationDocRef(inviteToken));
-      await batch.commit();
       // El registro setupTokens/{hash} también se elimina (si el token de
       // setup sigue en esta sesión): sin esto quedaba un hash huérfano que
       // apuntaba a una invitación inexistente.
