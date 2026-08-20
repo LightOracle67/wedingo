@@ -1,8 +1,42 @@
 # Auditoría Completa de Mejora Progresiva — Wedingo
 
-**Fecha:** 2026-08-20 · **Versión actual:** v2.116.0 · **Auditoría integral sin límite de profundidad**
+**Fecha:** 2026-08-20 · **Versión actual:** v2.122.0 · **Rondas AAA: 4 desplegadas**
 
 ---
+
+## Rondas de mejora AAA (2026-08-20) — estado
+
+Se ejecutaron y DESPLEGARON 4 rondas de mejora continua (2310 → 2324 tests). Cada ronda con lint/typecheck/build/translations en verde y deploy a producción + push.
+
+### ✅ R1 — Accesibilidad WCAG (v2.119.0)
+- Editor de mesas (Distribución) accesible por teclado: mesas `role=button`+`tabIndex`, flechas mueven (paso 2,5%, Shift 0,5%), campos numéricos X/Y en el panel, botón borrar 20→28px.
+- Focus trap interior: `useInertBackground` aísla TODOS los modales (incl. dentro de `<main>`) e inert el resto; scroll-lock de body. Test de modal anidado.
+- Contraste AAA: footer (≈1.9:1→0.92 blanco), versión menú móvil (≈3.3:1), rojo/verde trivia ≥7:1, botón AccessTab.
+- Labels de "otras alergias" del RSVP (principal y acompañantes); `<h2>` salido de `<button>` (CollapsibleSection); aria-live en gracias post-RSVP.
+
+### ✅ R2 — Seguridad del logging (v2.120.0)
+- Nuevo `src/lib/safe-error.ts`: `toSafeErrorMessage`/`safeLogError` redactan el token de la ruta/query (incluso embebido) y loggean name+message+code, nunca el objeto completo. Sustituidos ~40 `console.error(..., {error})`.
+- ErrorBoundary ya no vuelca `{ error, info }`; useRsvp deja de loggear el `err` del batch.
+- Sin PII: SuperAdminContext no loggea el email; dead code `loggingInRef` eliminado.
+
+### ✅ R3 — Robustez de código (v2.121.0)
+- `crypto.randomUUID()` sustituye `Math.random().toString(36)` en AttendanceTab, ExtrasSectionForm y voice-store (+polyfill en vitest.setup).
+- `encrypt` de crypto-utils avisa (sin token) en vez de fallar en silencio.
+- Tests nuevos: useSessionRenewal (fake timers), Modal (dialog/aria/focus/Escape), regresión axe real (Modal sin violaciones, CollapsibleSection sin heading-en-button).
+
+### ✅ R4 — Infraestructura + Legal (v2.122.0)
+- `build.target: es2022`; `manualChunks` reordenado → chunk i18n completo (react-i18next+i18next, 18KB gz), vendor-react baja a 67KB gz.
+- Override roto de `uuid` eliminado (npm ls limpio); `check-bundle-size` sin entrada muerta + límite i18n.
+- LegalModal muestra la VERSIÓN/fecha de la política y nueva sección "Cookies y almacenamiento" (inventario real) en es/en.
+
+### Pendiente (documentado, no bloqueante)
+- **Plan Blaze (functions):** deploy del scheduler de retención (v2.117.0 ya lo arregló en código; falta activar Blaze para ejecutarlo en producción) y purga automática de logs (`accessLog`/`visitLog`/`consentLog`/`configLog`/`auditLog`).
+- **Refactor de componentes grandes** (RsvpSection 1249 líneas, PublicInvitation, DataTab, useRsvp…) — baja prioridad.
+- **Consolidar fecha en un único helper** `formatDate` en date-utils (pasando locale) para los ~13 formateos dispersos (baja).
+- **Eliminar dead code** de exports de `lib/` usados solo en tests (baja).
+
+---
+
 
 ## Auditoría Integral 2026-08-20 (v2.116.0)
 
