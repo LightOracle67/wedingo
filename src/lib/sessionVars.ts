@@ -1,5 +1,6 @@
 import { STORAGE_KEYS } from "./storage-keys";
 import { SESSION_DURATION_MS } from "./constants";
+import { safeLogError } from "./safe-error";
 
 const STORAGE_KEY = STORAGE_KEYS.session;
 /** Duración de la sesión local (sessionStorage): 60 minutos. */
@@ -37,7 +38,7 @@ export function saveSession(type: string, identifier: string, extra: Record<stri
     };
     ss()?.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (err) {
-    console.error("[app]", "[sessionVars]", "saveSession error", { error: err });
+    safeLogError(["[app]", "[sessionVars]", "saveSession error"], err);
   }
 }
 
@@ -55,7 +56,7 @@ export function getSession() {
     clearSession();
     return null;
   } catch (err) {
-    console.error("[app]", "[sessionVars]", "getSession error, clearing", { error: err });
+    safeLogError(["[app]", "[sessionVars]", "getSession error, clearing"], err);
     clearSession();
     return null;
   }
@@ -71,7 +72,7 @@ export function renewSession() {
     data.expiresAt = Date.now() + SESSION_DURATION;
     ss()?.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (err) {
-    console.error("[app]", "[sessionVars]", "renewSession error", { error: err });
+    safeLogError(["[app]", "[sessionVars]", "renewSession error"], err);
   }
 }
 
@@ -79,6 +80,6 @@ export function clearSession() {
   try {
     ss()?.removeItem(STORAGE_KEY);
   } catch (err) {
-    console.error("[app]", "[sessionVars]", "clearSession error", { error: err });
+    safeLogError(["[app]", "[sessionVars]", "clearSession error"], err);
   }
 }

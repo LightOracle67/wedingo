@@ -14,6 +14,7 @@ import { useTranslation } from "react-i18next";
 import { useToast } from "../hooks/useToast";
 import { withTimeout } from "../lib/async-utils";
 import { validateFile } from "../lib/upload-validation";
+import { safeLogError } from "../lib/safe-error";
 
 const ALLOWED_AUDIO_TYPES = [
   "audio/mpeg",
@@ -67,7 +68,7 @@ const MusicArrayEditor = memo(function MusicArrayEditor({
         } else {
         }
       } catch (err) {
-        console.error("[app]", "[MusicArrayEditor]", "load error", { error: err });
+        safeLogError(["[app]", "[MusicArrayEditor]", "load error"], err);
         addToast("error", t("errors.musicLoadFailed"));
       } finally {
         setLoading(false);
@@ -114,7 +115,7 @@ const MusicArrayEditor = memo(function MusicArrayEditor({
         onChange(dataUrl);
         upload.complete(t("setup.musicUploadSuccess"));
       } catch (err) {
-        console.error("[app]", "[MusicArrayEditor]", "upload error", { error: err });
+        safeLogError(["[app]", "[MusicArrayEditor]", "upload error"], err);
         upload.error(t("setup.musicUploadFailed"));
       } finally {
         setUploading(false);
@@ -152,7 +153,7 @@ const MusicArrayEditor = memo(function MusicArrayEditor({
       setFileSize(0);
       onChange("");
     } catch (err) {
-      console.error("[app]", "[MusicArrayEditor]", "delete error", { error: err });
+      safeLogError(["[app]", "[MusicArrayEditor]", "delete error"], err);
       addToast("error", t("errors.musicDeleteFailed"));
     }
   }, [audioId, inviteToken, onChange, addToast, t]);

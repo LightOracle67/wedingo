@@ -14,6 +14,7 @@ import { withTimeout } from "../lib/async-utils";
 import { validateFile } from "../lib/upload-validation";
 import { useConfirm } from "../contexts/ConfirmContext";
 import { SlotState } from "../types";
+import { safeLogError } from "../lib/safe-error";
 
 const SLOT_COUNT = 10;
 
@@ -68,7 +69,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
       }
       setSlots(newSlots);
     } catch (err) {
-      console.error("[app]", "[GalleryArrayEditor]", "loadGallery error", { error: err });
+      safeLogError(["[app]", "[GalleryArrayEditor]", "loadGallery error"], err);
       addToast("error", t("errors.galleryLoadFailed"));
     } finally {
       setLoading(false);
@@ -178,7 +179,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
           return next;
         });
       } catch (err) {
-        console.error("[app]", "[GalleryArrayEditor]", "delete error", { error: err });
+        safeLogError(["[app]", "[GalleryArrayEditor]", "delete error"], err);
         addToast("error", t("errors.galleryDeleteFailed"));
       }
     },
@@ -213,7 +214,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
         addToast("success", t("setup.galleryDescriptionSaved"));
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : String(err);
-        console.error("[app]", "[GalleryArrayEditor]", "description save error", { error: msg });
+        safeLogError(["[app]", "[GalleryArrayEditor]", "description save error"], msg);
         addToast("error", `${t("setup.galleryDescriptionSaveFailed")}: ${msg}`);
       }
     },
@@ -240,7 +241,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
           next.map((s, i) => ({ id: s?.id ?? "", position: i })).filter((x) => x.id !== ""),
         );
       } catch (err) {
-        console.error("[app]", "[GalleryArrayEditor]", "reorder error", { error: err });
+        safeLogError(["[app]", "[GalleryArrayEditor]", "reorder error"], err);
         addToast("error", t("errors.generic"));
         // Revertir al estado previo si falla la persistencia.
         setSlots(slots);

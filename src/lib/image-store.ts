@@ -21,6 +21,7 @@ import {
 import { encrypt, decrypt } from "./crypto-utils";
 import { withWriteRetry } from "./async-utils";
 import { MAX_UPLOAD_SIZE_BYTES } from "./constants";
+import { safeLogError } from "./safe-error";
 
 function galCol(token: string) {
   return collection(db, "invitations", token, "gallery");
@@ -146,7 +147,7 @@ export async function loadGallery(inviteToken: string) {
     result.sort((a, b) => (a.position ?? 99) - (b.position ?? 99));
     return result;
   } catch (err) {
-    console.error("[app]", "[image-store]", "loadGallery error", { error: err });
+    safeLogError(["[app]", "[image-store]", "loadGallery error"], err);
     return [];
   }
 }
@@ -215,7 +216,7 @@ export async function loadGalleryMeta(inviteToken: string): Promise<GalleryMeta[
     META_CACHE.set(inviteToken, { at: Date.now(), metas: items });
     return items;
   } catch (err) {
-    console.error("[app]", "[image-store]", "loadGalleryMeta error", { error: err });
+    safeLogError(["[app]", "[image-store]", "loadGalleryMeta error"], err);
     return [];
   }
 }
@@ -361,7 +362,11 @@ export async function getConfigImage(inviteToken: string, imageId: string): Prom
 }
 
 /** Lectura + descifrado de una imagen de configuración con reintentos. */
-async function loadConfigImageWithRetry(inviteToken: string, imageId: string, cacheKey: string): Promise<string | null> {
+async function loadConfigImageWithRetry(
+  inviteToken: string,
+  imageId: string,
+  cacheKey: string,
+): Promise<string | null> {
   const attempts = CONFIG_IMAGE_RETRY_DELAYS_MS.length + 1;
   let lastError: unknown;
   for (let attempt = 0; attempt < attempts; attempt++) {

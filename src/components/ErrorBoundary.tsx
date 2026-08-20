@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { useTranslation } from "react-i18next";
 import { logError } from "../lib/error-utils";
+import { toSafeErrorMessage } from "../lib/safe-error";
 
 class ErrorBoundaryInner extends Component<
   { t: (key: string) => string; children: React.ReactNode },
@@ -15,7 +16,7 @@ class ErrorBoundaryInner extends Component<
     return { error };
   }
 
-  override componentDidCatch(error: Error, info: React.ErrorInfo) {
+  override componentDidCatch(error: Error, _info: React.ErrorInfo) {
     // Registra el error para diagnóstico (Sentry gated por consentimiento).
     // Import estático: error-utils ya está en el grafo (no rompe chunks).
     try {
@@ -23,7 +24,7 @@ class ErrorBoundaryInner extends Component<
     } catch {
       /* logging opcional */
     }
-    console.error("[app]", "[ErrorBoundary]", "caught error", { error, info });
+    console.error("[app]", "[ErrorBoundary]", "caught error", toSafeErrorMessage(error));
   }
 
   override render() {
@@ -36,7 +37,12 @@ class ErrorBoundaryInner extends Component<
             <p style={{ color: "var(--setup-muted)", marginTop: "0.5rem" }}>
               {import.meta.env.DEV ? this.state.error.message : t("common.errorBoundary.message")}
             </p>
-            <button type="button" className="setup-button" style={{ marginTop: "1rem" }} onClick={() => window.location.reload()}>
+            <button
+              type="button"
+              className="setup-button"
+              style={{ marginTop: "1rem" }}
+              onClick={() => window.location.reload()}
+            >
               {t("common.errorBoundary.reload")}
             </button>
           </section>

@@ -1,25 +1,7 @@
-import {
-  useCallback,
-  useContext,
-  createContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useCallback, useContext, createContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router";
-import {
-  getDoc,
-  setDoc,
-  doc,
-  increment,
-  writeBatch,
-  addDoc,
-  collection,
-  serverTimestamp,
-} from "firebase/firestore";
+import { getDoc, setDoc, doc, increment, writeBatch, addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db, invitationDocRef } from "../lib/firebase";
 import {
   defaultConfig,
@@ -46,6 +28,7 @@ import { getFirestoreErrorMessage } from "../lib/error-utils";
 import { ConfigContext } from "./useConfig";
 import { FormStoreContext, createFormStore, type FormStore } from "./FormStore";
 import { useAppUI } from "./useAppUI";
+import { safeLogError } from "../lib/safe-error";
 
 /** Año máximo permitido al guardar la fecha de la boda (constante de módulo:
  *  no se recalcula en cada render). */
@@ -370,7 +353,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           trackVisit(inviteToken);
         }
       } catch (e) {
-        console.error("[app]", "[ConfigProvider]", "hydrateConfig error", { error: e });
+        safeLogError(["[app]", "[ConfigProvider]", "hydrateConfig error"], e);
         if (!hasStoredConfig) {
           setConfigLoadError(getFirestoreErrorMessage(e, t));
         }
@@ -418,7 +401,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       formStore.setAll(hydrated);
       setHasStoredConfig(true);
     } catch (e) {
-      console.error("[app]", "[ConfigProvider]", "reloadConfig error", { error: e });
+      safeLogError(["[app]", "[ConfigProvider]", "reloadConfig error"], e);
       setSaveError(getFirestoreErrorMessage(e, t));
     }
   }, [inviteToken, t, setSaveError, formStore]);
@@ -564,7 +547,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
             await withWriteRetry(() => setDoc(groupRef, { count: 0 }));
           }
         } catch (counterErr) {
-          console.error("[app]", "[ConfigProvider]", "RSVP counter create failed", { error: counterErr });
+          safeLogError(["[app]", "[ConfigProvider]", "RSVP counter create failed"], counterErr);
           setSaveError(t("errors.rsvpCounterFailed"));
         }
 
@@ -586,7 +569,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
             }),
           );
         } catch (counterErr) {
-          console.error("[app]", "[ConfigProvider]", "social counters create failed", { error: counterErr });
+          safeLogError(["[app]", "[ConfigProvider]", "social counters create failed"], counterErr);
         }
 
         if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
@@ -609,7 +592,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
         setSaveMessage(deactivatedMsg || t("errors.configSaved"));
       } catch (e) {
-        console.error("[app]", "[ConfigProvider]", "save error", { error: e });
+        safeLogError(["[app]", "[ConfigProvider]", "save error"], e);
         // Un permission-denied al guardar suele significar sesión expirada o
         // token no verificado: se avisa de forma útil en vez del genérico.
         const code = (e as { code?: string })?.code;
@@ -688,7 +671,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
       navigate("/");
     } catch (e) {
-      console.error("[app]", "[ConfigProvider]", "delete invitation error", { error: e });
+      safeLogError(["[app]", "[ConfigProvider]", "delete invitation error"], e);
       setSaveError(getFirestoreErrorMessage(e, t));
     }
   }, [inviteToken, navigate, t, setSaveError]);

@@ -26,6 +26,7 @@ import { buildMainGuestData, buildCompanionData } from "./rsvp-payloads";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import { withWriteRetry } from "../lib/async-utils";
 import type { Attendee } from "../types";
+import { safeLogError, toSafeErrorMessage } from "../lib/safe-error";
 
 /**
  * Cache de alergias descifradas por (inviteToken, docId).
@@ -341,7 +342,7 @@ export function useRsvp(
           setRsvpEntries(entries);
         }
       } catch (err) {
-        console.error("[app]", "[useRsvp]", "hydrate error", { error: err });
+        safeLogError(["[app]", "[useRsvp]", "hydrate error"], err);
         if (!cancelled) {
           setRsvpEntries([]);
           setRsvpLoadError(true);
@@ -375,7 +376,7 @@ export function useRsvp(
           });
       },
       (err) => {
-        console.error("[app]", "[useRsvp]", "live listen error", { error: err });
+        safeLogError(["[app]", "[useRsvp]", "live listen error"], err);
       },
     );
     return () => {
@@ -764,7 +765,7 @@ export function useRsvp(
             await setDoc(counterRef, { count: 0 });
           }
         } catch (counterErr) {
-          console.error("[app]", "[useRsvp]", "RSVP counter setup failed", { error: counterErr });
+          safeLogError(["[app]", "[useRsvp]", "RSVP counter setup failed"], counterErr);
         }
 
         const batch = writeBatch(db);
@@ -776,17 +777,17 @@ export function useRsvp(
         // explícito (GDPR art. 7). La regla es create-only (id estable del
         // nombre), así que un reintento no duplica ni suplanta.
         if (isAttending && form.showNameInConfirmed) {
-          batch.set(
-            doc(db, "invitations", inviteToken, "confirmedPeople", `c_${stableGuestId(single)}`),
-            { name: single.slice(0, 60), createdAt: nowTimestamp },
-          );
+          batch.set(doc(db, "invitations", inviteToken, "confirmedPeople", `c_${stableGuestId(single)}`), {
+            name: single.slice(0, 60),
+            createdAt: nowTimestamp,
+          });
         }
         // Incremento atómico: dos invitados a la vez ya no pisan el contador
         // (el set con un valor leído perdía un envío completo por carrera).
         batch.update(counterRef, { count: increment(1) });
         await withWriteRetry(() => batch.commit());
       } catch (err) {
-        console.error("[app]", "[useRsvp]", "RSVP batch write failed:", err);
+        console.error("[app]", "[useRsvp]", "RSVP batch write failed:", toSafeErrorMessage(err));
         // El tope anti-spam (RSVP_MAX_RESPONSES) lo aplican las reglas en el
         // increment del contador: se traduce como permission-denied en el lote.
         // Se distingue del resto de fallos para dar un aviso claro en vez del
@@ -897,7 +898,7 @@ export function useRsvp(
         sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken));
       } catch {}
     } catch (err) {
-      console.error("[app]", "[useRsvp]", "withdraw error", { error: err });
+      safeLogError(["[app]", "[useRsvp]", "withdraw error"], err);
       setRsvpMessage(t("rsvp.withdrawError"));
     } finally {
       deletingRef.current = false;
@@ -933,7 +934,7 @@ export function useRsvp(
         setAdminMessage(t("attendance.deleteSelectedSuccess", { count: ids.length }));
         setAdminMessageType("success");
       } catch (err) {
-        console.error("[app]", "[useRsvp]", "delete selected error", { error: err });
+        safeLogError(["[app]", "[useRsvp]", "delete selected error"], err);
         setAdminMessage(t("attendance.deleteSelectedError"));
         setAdminMessageType("error");
       } finally {
@@ -963,7 +964,7 @@ export function useRsvp(
         sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken));
       } catch {}
     } catch (err) {
-      console.error("[app]", "[useRsvp]", "clear error", { error: err });
+      safeLogError(["[app]", "[useRsvp]", "clear error"], err);
       setAdminMessage(t("rsvp.clearError"));
       setAdminMessageType("error");
     } finally {

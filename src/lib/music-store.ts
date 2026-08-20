@@ -2,6 +2,7 @@ import { getDocs, collection, writeBatch, doc, query, orderBy } from "firebase/f
 import { db } from "./firebase";
 import { encrypt, decrypt } from "./crypto-utils";
 import { AUDIO_CHUNK_SIZE_BYTES, MAX_UPLOAD_SIZE_BYTES } from "./constants";
+import { safeLogError } from "./safe-error";
 
 const CHUNK_SIZE = AUDIO_CHUNK_SIZE_BYTES;
 function audioCol(token: string) {
@@ -114,7 +115,7 @@ export async function loadAudio(inviteToken: string) {
 
     return null;
   } catch (err) {
-    console.error("[app]", "[music-store]", "loadAudio error", { error: err });
+    safeLogError(["[app]", "[music-store]", "loadAudio error"], err);
     return null;
   }
 }
@@ -131,7 +132,7 @@ export async function deleteAudio(inviteToken: string) {
   } catch (err) {
     // Un borrado parcial dejaría chunks huérfanos: se relanza para que el
     // llamador (cascada de borrado) lo trate como fallo.
-    console.error("[app]", "[music-store]", "deleteAudio error", { error: err });
+    safeLogError(["[app]", "[music-store]", "deleteAudio error"], err);
     throw err;
   }
 }

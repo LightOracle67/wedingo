@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useConfig } from "./useConfig";
 import { useAppUI } from "./useAppUI";
 import { AuthContext } from "./useAuth";
+import { safeLogError } from "../lib/safe-error";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
@@ -52,7 +53,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           saveSession("admin", displayName, { inviteToken });
         }
       } catch (err) {
-        console.error("[app]", "[AuthProvider]", "onFirstSave error", { error: err });
+        safeLogError(["[app]", "[AuthProvider]", "onFirstSave error"], err);
         if (setAdminMessage && setAdminMessageType) {
           setAdminMessageType("error");
           setAdminMessage(t("auth.sessionUpdateFailed"));

@@ -20,6 +20,7 @@ import { useConfirm } from "../contexts/ConfirmContext";
 import "../styles/landing.css";
 import "../styles/admin.css";
 import "../styles/modals.css";
+import { safeLogError } from "../lib/safe-error";
 
 export default function LandingPage() {
   const { t } = useTranslation();
@@ -77,7 +78,7 @@ export default function LandingPage() {
     try {
       await createSetupTokenRecord(token, setupToken);
     } catch (err) {
-      console.error("[app]", "[LandingPage]", "create setup token failed", { error: err });
+      safeLogError(["[app]", "[LandingPage]", "create setup token failed"], err);
       setCreateError(t("landing.errorCreateFailed"));
       setCreating(false);
       return;
@@ -195,7 +196,7 @@ export default function LandingPage() {
           });
         }
       } catch (err) {
-        console.error("[app]", "[LandingPage]", "session activation failed", { error: err });
+        safeLogError(["[app]", "[LandingPage]", "session activation failed"], err);
         setError(t("landing.errorTransactionFailed"));
         loginAttemptsRef.current++;
         if (loginAttemptsRef.current >= 3) {
@@ -218,7 +219,7 @@ export default function LandingPage() {
       // admin y no debe replicarse/sincronizarse por el sistema operativo.
       navigate(`/${target}`);
     } catch (err) {
-      console.error("[app]", "[LandingPage]", "login verify failed", { error: err });
+      safeLogError(["[app]", "[LandingPage]", "login verify failed"], err);
       setError(t("landing.errorVerifyFailed"));
       loginAttemptsRef.current++;
       if (loginAttemptsRef.current >= 3) {

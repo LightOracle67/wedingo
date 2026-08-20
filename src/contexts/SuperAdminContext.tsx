@@ -1,4 +1,4 @@
-import { createContext, useContext, useCallback, useEffect, useMemo, useState, useRef } from "react";
+import { createContext, useContext, useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import type { User } from "firebase/auth";
@@ -27,8 +27,6 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  /** Flag para evitar que onAuthStateChanged cierre sesión durante el login. */
-  const loggingInRef = useRef(false);
 
   // Renovación de la sesión local cada 60s mientras haya sesión de superadmin.
   useSessionRenewal(user !== null);
@@ -67,7 +65,9 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
           // sin el claim de email): best-effort.
           if (firebaseUser.uid) {
             try {
-              setDoc(doc(db, "platform", "settings"), { superadminUid: firebaseUser.uid }, { merge: true }).catch(() => {});
+              setDoc(doc(db, "platform", "settings"), { superadminUid: firebaseUser.uid }, { merge: true }).catch(
+                () => {},
+              );
             } catch {}
           }
           setUser(firebaseUser);
@@ -90,16 +90,15 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
   const login = useCallback(
     async (email: string, password: string) => {
       setError("");
-      loggingInRef.current = true;
       try {
         const authInstance = await getAuthInstance();
         const { signInWithEmailAndPassword, signOut } = await import("firebase/auth");
         const result = await signInWithEmailAndPassword(authInstance, email, password);
         if (result.user.email !== SUPERADMIN_EMAIL) {
-          console.error("[app]", "[SuperAdminContext]", "login error: no permissions", { email: result.user.email });
+          // No se loggea el email: es PII del responsable (art. 4 GDPR).
+          console.error("[app]", "[SuperAdminContext]", "login error: no permissions");
           await signOut(authInstance);
           setError(t("auth.superadminNoPermissions"));
-          loggingInRef.current = false;
           return false;
         }
         saveSession("superadmin", result.user.email ?? "", { uid: result.user.uid });
@@ -108,7 +107,6 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
           setDoc(doc(db, "platform", "settings"), { superadminUid: result.user.uid }, { merge: true }).catch(() => {});
         } catch {}
         setUser(result.user);
-        loggingInRef.current = false;
 
         try {
           const cred = new PasswordCredential({ id: email, password, name: email });
@@ -116,7 +114,6 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
         } catch {}
         return true;
       } catch (err) {
-        loggingInRef.current = false;
         const code =
           err && typeof err === "object" && "code" in err ? String((err as Record<string, unknown>).code) : "";
         console.error("[app]", "[SuperAdminContext]", "login error", { code });

@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.120.0",
+    date: "2026-08-20",
+    changes: [
+      "Ronda 2 (seguridad del logging + higiene). (S2 — fuga del token en logs) Nuevo src/lib/safe-error.ts: toSafeErrorMessage/safeLogError convierten el error a su representación segura (name+message+code, NUNCA el objeto completo) y redactan el token de invitación de la ruta/query tanto al inicio como EMBEBIDO en el texto (p. ej. errores de Firestore que incluyen el path con el token). Se sustituyeron los ~40 `console.error(..., { error: err })` de LandingPage, useSetupAuth, ConfigContext, useRsvp, stores de imagen/audio/música, editores, sessionVars y AuthContext por safeLogError; ErrorBoundary ya no vuelca `{ error, info }` y useRsvp deja de loggear el `err` completo del batch. (S5 — PII) SuperAdminContext ya no loggea el email del responsable en el error de permisos. (Higiene) Se elimina la variable muerta `loggingInRef` de SuperAdminContext. 2315 tests / 178 ficheros + lint/typecheck/build/translations/consent OK.",
+    ],
+  },
+
+  {
     version: "2.119.0",
     date: "2026-08-20",
     changes: [

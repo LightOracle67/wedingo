@@ -26,6 +26,7 @@ import { useSessionRenewal } from "../hooks/useSessionRenewal";
 import { safeSetItem, safeGetItem, safeRemoveItem } from "../lib/storage";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import type { InvitationConfig } from "../types";
+import { safeLogError } from "../lib/safe-error";
 
 /**
  * Hook de autenticaciÃ³n del panel de configuraciÃ³n.
@@ -175,7 +176,7 @@ export function useSetupAuth(
             setSetupTokenInput("");
             setIsTokenVerified(true);
           } catch (repairErr) {
-            console.error("[app]", "[useSetupAuth]", "session repair failed", { error: repairErr });
+            safeLogError(["[app]", "[useSetupAuth]", "session repair failed"], repairErr);
 
             clearSession();
             markSessionExpired();
@@ -191,7 +192,7 @@ export function useSetupAuth(
         setIsRestoringSession(false);
       })
       .catch((err) => {
-        console.error("[app]", "[useSetupAuth]", "session restoration Firestore error", { error: err });
+        safeLogError(["[app]", "[useSetupAuth]", "session restoration Firestore error"], err);
 
         setIsRestoringSession(false);
       });
@@ -228,7 +229,7 @@ export function useSetupAuth(
           // RenovaciÃ³n correcta: se reinicia el contador de fallos.
           renewFailureRef.current = false;
         } catch (err) {
-          console.error("[app]", "[useSetupAuth]", "session renewal error", { error: err });
+          safeLogError(["[app]", "[useSetupAuth]", "session renewal error"], err);
           if (setAdminMessage && setAdminMessageType) {
             setAdminMessageType("error");
             setAdminMessage(t("auth.sessionUpdateFailed"));
@@ -326,7 +327,7 @@ export function useSetupAuth(
             } catch {}
           }
         } catch (err) {
-          console.error("[app]", "[useSetupAuth]", "token save to Firestore failed", { error: err });
+          safeLogError(["[app]", "[useSetupAuth]", "token save to Firestore failed"], err);
           if (setAdminMessage && setAdminMessageType) {
             setAdminMessageType("error");
             setAdminMessage(t("auth.tokenCreateFailed"));
@@ -426,7 +427,7 @@ export function useSetupAuth(
       setAuthMessage(t("auth.codeVerified"));
     } catch (err) {
       logAccess(inviteToken, "login_failed", "setup");
-      console.error("[app]", "[useSetupAuth]", "token login failed", { error: err });
+      safeLogError(["[app]", "[useSetupAuth]", "token login failed"], err);
       setAuthMessage(
         (err as Error)?.message === "inviteNotFound" ? t("auth.inviteNotFound") : t("auth.codeVerifyError"),
       );
@@ -520,7 +521,7 @@ export function useSetupAuth(
         safeRemoveItem(STORAGE_KEYS.inviteCache(token));
         await updateDoc(invitationDocRef(token), { activeSession: null, sessionExpiresAt: null });
       } catch (err) {
-        console.error("[app]", "[useSetupAuth]", "logout Firestore update failed", { error: err });
+        safeLogError(["[app]", "[useSetupAuth]", "logout Firestore update failed"], err);
         if (setAdminMessage && setAdminMessageType) {
           setAdminMessageType("error");
           setAdminMessage(t("auth.logoutFailed"));

@@ -14,7 +14,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import {useConfig, useAuth, useAppUI, useFormField} from "../contexts";
+import { useConfig, useAuth, useAppUI, useFormField } from "../contexts";
 import { useToast } from "../hooks/useToast";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
@@ -29,6 +29,7 @@ import ExtrasSectionForm from "./setup-forms/ExtrasSectionForm";
 import AnimationsSectionForm from "./setup-forms/AnimationsSectionForm";
 import GallerySectionForm from "./setup-forms/GallerySectionForm";
 import "../styles/admin.css";
+import { safeLogError } from "../lib/safe-error";
 
 /**
  * Componente del formulario de configuración.
@@ -79,7 +80,7 @@ export default function SetupForm({ prefix = "" }) {
 
   useEffect(() => {
     if (saveError) {
-      console.error("[app]", "[SetupForm]", "save error", { error: saveError });
+      safeLogError(["[app]", "[SetupForm]", "save error"], saveError);
       addToast("error", saveError);
     }
   }, [saveError, addToast]);
@@ -107,7 +108,12 @@ export default function SetupForm({ prefix = "" }) {
   }, [hiddenSections]);
 
   return (
-    <form ref={formRef} className="setup-form setup-form--nested" onSubmit={handleSubmit} aria-busy={isSaving || undefined}>
+    <form
+      ref={formRef}
+      className="setup-form setup-form--nested"
+      onSubmit={handleSubmit}
+      aria-busy={isSaving || undefined}
+    >
       {/* ── Idioma por defecto de la invitación ── */}
       <div className="setup-token-card">
         <label className="setup-label setup-label--tight" htmlFor="wedingo-lang">

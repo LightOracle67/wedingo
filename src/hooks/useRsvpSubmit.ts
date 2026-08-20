@@ -41,8 +41,7 @@ export function useRsvpSubmit({ token: _token, onSubmit, validate }: UseRsvpSubm
         const message = err instanceof Error ? err.message : "Error submitting RSVP";
         console.error("[app]", "[useRsvpSubmit]", "submit error", { message });
         setSubmitError(message);
-        return false;
-      } finally {
+        return false;      } finally {
         lockRef.current = false;
         setSubmitting(false);
       }
