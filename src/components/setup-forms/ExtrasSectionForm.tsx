@@ -1,4 +1,4 @@
-import { memo, useCallback, type ReactNode  } from "react";
+import { memo, useCallback, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useConfigActions, useFormField, useFormStore } from "../../contexts";
 import { useLinesField } from "../../hooks/useLinesField";
@@ -94,14 +94,16 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
       const isExperience = lastSeg === "experiencia" || lastSeg === "experience";
       const description = (isExperience ? rest.slice(0, -1).join("|") : rest.join("|")).trim().slice(0, 200);
       return {
-        id: `g${Math.random().toString(36).slice(2, 8)}`,
+        id: `g${crypto.randomUUID()}`,
         name: (name || "").trim().slice(0, 100),
         description,
         type: isExperience ? "experiencia" : "regalo",
       };
     },
     itemToLine: (g) =>
-      g.type === "experiencia" ? `${g.name ?? ""} | ${g.description ?? ""} | experiencia` : `${g.name ?? ""} | ${g.description ?? ""}`,
+      g.type === "experiencia"
+        ? `${g.name ?? ""} | ${g.description ?? ""} | experiencia`
+        : `${g.name ?? ""} | ${g.description ?? ""}`,
     maxLines: 50,
   });
   const giftListLines = giftToLines(giftList || "");
@@ -128,7 +130,15 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
     trivia,
     (item: unknown) => {
       if (!item || typeof item !== "object") return null;
-      const it = item as { q?: unknown; type?: unknown; options?: unknown; correct?: unknown; a?: unknown; hint?: unknown; difficulty?: unknown };
+      const it = item as {
+        q?: unknown;
+        type?: unknown;
+        options?: unknown;
+        correct?: unknown;
+        a?: unknown;
+        hint?: unknown;
+        difficulty?: unknown;
+      };
       if (typeof it.q !== "string") return null;
       // Normaliza una opción: se conservan las cadenas (vacías incluidas,
       // para que el editor no pierda filas en blanco mientras se rellenan),
@@ -143,18 +153,27 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
           return typeof raw === "string" && raw.trim() ? raw.trim().slice(0, 200) : undefined;
         }
         if (Array.isArray(raw)) {
-          const arr = raw.map((x) => (typeof x === "string" ? x.trim() : "")).filter(Boolean).slice(0, 12);
+          const arr = raw
+            .map((x) => (typeof x === "string" ? x.trim() : ""))
+            .filter(Boolean)
+            .slice(0, 12);
           return arr.length > 0 ? arr : undefined;
         }
         return undefined;
       };
       // type por defecto (retrocompatibilidad): si hay options → single, si no → text.
       const rawType = typeof it.type === "string" ? it.type : "";
-      const type: "text" | "single" | "multiple" =
-        rawType === "single" || rawType === "multiple" ? rawType : "text";
+      const type: "text" | "single" | "multiple" = rawType === "single" || rawType === "multiple" ? rawType : "text";
       const options = type === "text" ? undefined : cleanOpts(it.options);
-      const correct = cleanCorrect(type === "text" ? it.correct ?? it.a : it.correct, type);
-      const out: { q: string; type: "text" | "single" | "multiple"; options?: string[]; correct?: string | string[]; hint?: string; difficulty?: "easy" | "medium" | "hard" } = {
+      const correct = cleanCorrect(type === "text" ? (it.correct ?? it.a) : it.correct, type);
+      const out: {
+        q: string;
+        type: "text" | "single" | "multiple";
+        options?: string[];
+        correct?: string | string[];
+        hint?: string;
+        difficulty?: "easy" | "medium" | "hard";
+      } = {
         q: it.q.trim().slice(0, 200),
         type,
       };
@@ -177,7 +196,17 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
 
   /** Persiste un patch de una pregunta en el JSON del campo. */
   const updateTriviaItem = useCallback(
-    (index: number, patch: Partial<{ q: string; type: "text" | "single" | "multiple"; options: string[]; correct: string | string[]; hint: string; difficulty: "easy" | "medium" | "hard" }>) => {
+    (
+      index: number,
+      patch: Partial<{
+        q: string;
+        type: "text" | "single" | "multiple";
+        options: string[];
+        correct: string | string[];
+        hint: string;
+        difficulty: "easy" | "medium" | "hard";
+      }>,
+    ) => {
       const current = triviaItems[index];
       if (!current) return;
       updateFormField("trivia", triviaSetItems(triviaItems.map((it, i) => (i === index ? { ...it, ...patch } : it))));
@@ -237,7 +266,11 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
         {renderToggleRow("liveConfirmed", t("setup.liveConfirmedLabel"), t("setup.liveConfirmedHint"))}
 
         {/* Visibilidad de la lista de confirmados (opt-in de nombres) */}
-        {renderToggleRow("showConfirmedPeople", t("setup.showConfirmedPeopleLabel"), t("setup.showConfirmedPeopleHint"))}
+        {renderToggleRow(
+          "showConfirmedPeople",
+          t("setup.showConfirmedPeopleLabel"),
+          t("setup.showConfirmedPeopleHint"),
+        )}
 
         {/* Lista de regalos */}
         {renderToggleRow("giftsList", t("setup.giftsListLabel"), t("setup.giftsListHint"))}
@@ -288,13 +321,15 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
             <p className="setup-help" id={id("triviaHint")}>
               {t("setup.triviaEditorHint")}
             </p>
-            {triviaItems.length === 0 ? (
-              <p className="setup-help">{t("setup.triviaEmpty")}</p>
-            ) : null}
+            {triviaItems.length === 0 ? <p className="setup-help">{t("setup.triviaEmpty")}</p> : null}
             {triviaItems.map((item, index) => {
               const isChoice = item.type !== "text";
               // correct: para texto es string; para elección, array de opciones.
-              const correctArr = Array.isArray(item.correct) ? item.correct : isChoice && typeof item.correct === "string" ? [item.correct] : [];
+              const correctArr = Array.isArray(item.correct)
+                ? item.correct
+                : isChoice && typeof item.correct === "string"
+                  ? [item.correct]
+                  : [];
               return (
                 <div key={index} className="setup-token-card" style={{ margin: "0.4rem 0", padding: "0.6rem" }}>
                   <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
@@ -311,7 +346,9 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
                       className="setup-input"
                       style={{ minWidth: "8rem" }}
                       value={item.type}
-                      onChange={(e) => updateTriviaItem(index, { type: e.target.value as "text" | "single" | "multiple" })}
+                      onChange={(e) =>
+                        updateTriviaItem(index, { type: e.target.value as "text" | "single" | "multiple" })
+                      }
                       aria-label={t("setup.triviaTypeLabel")}
                     >
                       <option value="text">{t("setup.triviaTypeText")}</option>

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import axe from "axe-core";
 
 function runAxe(html: HTMLElement): Promise<axe.AxeResults> {
@@ -77,5 +77,25 @@ describe("a11y-axe", () => {
     const { container } = render(<LoadingOverlay visible />);
     const results = await runAxe(container);
     expect(results.violations).toHaveLength(0);
+  });
+
+  it("Modal es accesible (dialog + focus + label) y sin violaciones", async () => {
+    const Modal = (await import("../../components/Modal")).default;
+    const { container } = render(
+      <Modal title="Diálogo accesible" onClose={() => {}} closeLabel="Cerrar">
+        <button type="button">Aceptar</button>
+      </Modal>,
+    );
+    expect(screen.getByRole("dialog", { name: "Diálogo accesible" })).toHaveAttribute("aria-modal", "true");
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
+  });
+
+  it("CollapsibleSection no contiene un heading dentro del botón (HTML válido)", async () => {
+    const CollapsibleSection = (await import("../../components/CollapsibleSection")).default;
+    const { container } = render(<CollapsibleSection title="Mi sección" />);
+    // No debe haber heading anidado dentro del button (violación de HTML semántico).
+    const headingInButton = container.querySelector("button h2, button h1, button h3");
+    expect(headingInButton).toBeNull();
   });
 });

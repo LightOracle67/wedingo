@@ -155,7 +155,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
           .replace(/[\u0300-\u036f]/g, "")
           .replace(/[^a-z0-9]+/g, "_")
           .slice(0, 30);
-        const id = `main_manual_${norm || "invitado"}_${Math.random().toString(36).slice(2, 6)}`;
+        const id = `main_manual_${norm || "invitado"}_${crypto.randomUUID()}`;
         batch.set(doc(db, "rsvpResponses", inviteToken, "responses", id), payload);
         // El contador del grupo debe existir e incrementarse para que la regla
         // create (exists + count < 500) valide.

@@ -157,6 +157,10 @@ export async function encrypt(text: string, token: string) {
     combined.set(new Uint8Array(encrypted), HEADER_LEN);
     return uint8ToBase64(combined);
   } catch {
+    // Un fallo aquí PONE EN BLANCO el dato cifrado (bankInfo/multimedia) en
+    // silencio → pérdida de dato sin aviso. Se loggea SIN el token (es la
+    // credencial de acceso, ver safe-error.ts) para diagnosticar.
+    console.warn("[crypto-utils]", "encrypt failed; dato en blanco (token redactado)");
     return "";
   }
 }

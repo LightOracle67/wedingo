@@ -35,4 +35,14 @@ if (globalThis.crypto && !globalThis.crypto.subtle) {
   Object.defineProperty(globalThis, "crypto", { configurable: true, value: webcrypto });
 }
 
+// jsdom NO implementa crypto.randomUUID (solo getRandomValues/subtle). Se
+// rellena con el de Node para que los IDs generados con randomUUID funcionen
+// en los tests sin duplicar seeds ni colisionar (patrón anti-Math.random).
+if (globalThis.crypto && typeof globalThis.crypto.randomUUID !== "function") {
+  Object.defineProperty(globalThis.crypto, "randomUUID", {
+    configurable: true,
+    value: () => webcrypto.randomUUID(),
+  });
+}
+
 afterEach(() => cleanup());

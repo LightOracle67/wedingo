@@ -1,5 +1,13 @@
 export const CHANGELOG = [
   {
+    version: "2.121.0",
+    date: "2026-08-20",
+    changes: [
+      "Ronda 3 (robustez de código y tests). (ID) Los IDs generados con Math.random().toString(36) se sustituyen por crypto.randomUUID() (colisiones y predecibilidad) en AttendanceTab (entrada manual), ExtrasSectionForm (gift item) y voice-store (noteId); se añade polyfill de randomUUID en vitest.setup y se actualiza el test de voice-store al formato UUID. (Señal de error) encrypt de crypto-utils ya no falla en silencio: loggea un 'encrypt failed; dato en blanco' (sin el token) para no perder bankInfo/multimedia sin diagnóstico. (Tests) Nuevos tests: useSessionRenewal (fake timers, renueva cada 60s y limpia al deshabilitar/desmontar), Modal (dialog+aria-modal, botón cierre con animación, Escape, focus inicial) y regresión axe real: Modal sin violaciones y CollapsibleSection sin heading dentro del <button>. 2324 tests / 178 ficheros + lint/typecheck/build/translations/consent OK.",
+    ],
+  },
+
+  {
     version: "2.120.0",
     date: "2026-08-20",
     changes: [

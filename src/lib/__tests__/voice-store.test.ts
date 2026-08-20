@@ -43,7 +43,9 @@ describe("voice-store", () => {
     const setSpy = vi.fn();
     mockWriteBatch.mockReturnValue({ set: setSpy, commit: mockCommit });
     const id = await addVoiceNote("tok", "Ana", new Blob([DATA_URL], { type: "audio/webm" }));
-    expect(id).toMatch(/^[a-z0-9]+$/);
+    // noteId es un UUID (crypto.randomUUID): 36 caracteres, formato xxxxxxxx-….
+    expect(id).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/);
+    expect(id.length).toBeLessThanOrEqual(40);
     expect(mockEncrypt).toHaveBeenCalledWith(expect.stringContaining("data:audio/webm"), "tok");
     expect(mockCommit).toHaveBeenCalled();
     expect(setSpy).toHaveBeenCalledWith("doc-ref", expect.objectContaining({ guestName: "Ana", totalChunks: 1, chunkIndex: 0 }));

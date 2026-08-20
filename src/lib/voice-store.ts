@@ -39,7 +39,7 @@ export async function addVoiceNote(inviteToken: string, guestName: string, blob:
   const encrypted = await encrypt(dataUrl, inviteToken);
   if (!encrypted) throw new Error("Encryption failed");
 
-  const noteId = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
+  const noteId = crypto.randomUUID();
   const chunks: string[] = [];
   for (let i = 0; i < encrypted.length; i += CHUNK_SIZE) chunks.push(encrypted.slice(i, i + CHUNK_SIZE));
   if (chunks.length === 0) throw new Error("Empty note");
