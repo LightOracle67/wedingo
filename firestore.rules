@@ -486,7 +486,7 @@ service cloud.firestore {
         allow create: if socialCounterBelow(tokenId, 'voicenotes')
           && request.resource.data.keys().hasOnly(['noteId', 'guestName', 'chunkIndex', 'data', 'totalChunks', 'attempt', 'createdAt'])
           && request.resource.data.noteId is string && request.resource.data.noteId.size() <= 40
-          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60
+          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60 && isSafeText(request.resource.data.guestName)
           && request.resource.data.chunkIndex is int && request.resource.data.chunkIndex >= 0 && request.resource.data.chunkIndex < 400
            && request.resource.data.data is string && request.resource.data.data.size() <= 524288
            && isEncryptedMedia(request.resource.data.data)
@@ -504,7 +504,7 @@ service cloud.firestore {
         allow read: if true;
         allow create: if socialCounterBelow(tokenId, 'dayphotos')
           && request.resource.data.keys().hasOnly(['guestName', 'data', 'createdAt'])
-          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60
+          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60 && isSafeText(request.resource.data.guestName)
           && request.resource.data.data is string && request.resource.data.data.size() <= 1048576
           && isEncryptedMedia(request.resource.data.data);
         allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
@@ -516,7 +516,7 @@ service cloud.firestore {
       match /mailbox/{messageId} {
         allow create: if socialCounterBelow(tokenId, 'mailbox')
           && request.resource.data.keys().hasOnly(['guestName', 'message', 'createdAt'])
-          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60
+          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60 && isSafeText(request.resource.data.guestName)
           && request.resource.data.message is string && request.resource.data.message.size() <= 600 && !request.resource.data.message.matches('.*[<>].*');
         allow read, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
@@ -527,8 +527,8 @@ service cloud.firestore {
         allow read: if true;
         allow create: if socialCounterBelow(tokenId, 'toasts')
           && request.resource.data.keys().hasOnly(['guestName', 'time', 'createdAt'])
-          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60
-          && request.resource.data.time is string && request.resource.data.time.size() <= 20;
+          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60 && isSafeText(request.resource.data.guestName)
+          && request.resource.data.time is string && request.resource.data.time.size() <= 20 && !request.resource.data.time.matches('.*[<>].*');
         allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
 
