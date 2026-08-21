@@ -877,35 +877,74 @@ const RsvpSection = memo(function RsvpSection({
                       disabled={isAlreadySubmitted}
                       style={{ marginTop: "0.25rem", width: "min(120px, 100%)" }}
                     />
-                    <fieldset style={{ border: "none", padding: 0, margin: "0.5rem 0 0 0" }}>
+<fieldset style={{ border: "none", padding: 0, margin: "0.5rem 0 0 0" }}>
                       <legend className="setup-label" style={{ fontSize: "0.85rem" }}>
                         {t("rsvp.childrenAllergiesLegend")}
                       </legend>
-                      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-                        {ALLERGIES.map((a) => (
-                          <label
-                            key={a}
-                            style={{
-                              display: "flex",
-                              alignItems: "center",
-                              gap: "0.25rem",
-                              fontSize: "0.85rem",
-                              cursor: isAlreadySubmitted ? "default" : "pointer",
-                            }}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={(rsvpForm.childrenAllergies || []).includes(a)}
-                              onChange={() => {
-                                const current = rsvpForm.childrenAllergies || [];
-                                const updated = current.includes(a) ? current.filter((x: string) => x !== a) : [...current, a];
-                                updateRsvpField("childrenAllergies", updated);
+                      <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
+                        {ALLERGIES.map((a) => {
+                          const childAllergies = rsvpForm.childrenAllergies || {};
+                          const hasAllergy = (childAllergies[a] || 0) > 0;
+                          const allergyCount = childAllergies[a] || 1;
+                          return (
+                            <label
+                              key={a}
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "0.5rem",
+                                fontSize: "0.85rem",
+                                cursor: isAlreadySubmitted ? "default" : "pointer",
+                                flexWrap: "wrap",
                               }}
-                              disabled={isAlreadySubmitted}
-                            />
-                            {t(`rsvp.allergies.${a}`, { defaultValue: a })}
-                          </label>
-                        ))}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={hasAllergy}
+                                onChange={(e) => {
+                                  const current = { ...childAllergies };
+                                  if (e.target.checked) {
+                                    current[a] = 1;
+                                  } else {
+                                    delete current[a];
+                                  }
+                                  updateRsvpField("childrenAllergies", current);
+                                }}
+                                disabled={isAlreadySubmitted}
+                                style={{
+                                  accentColor: "var(--setup-accent)",
+                                  width: "1rem",
+                                  height: "1rem",
+                                  flexShrink: 0,
+                                }}
+                              />
+                              <span style={{ flex: "1 1 auto", minWidth: "120px" }}>
+                                {t(`rsvp.allergies.${a}`, { defaultValue: a })}
+                              </span>
+                              {hasAllergy && (
+                                <input
+                                  type="number"
+                                  min="1"
+                                  max={rsvpForm.childrenCount}
+                                  className="setup-input"
+                                  value={allergyCount}
+                                  onChange={(e) => {
+                                    const val = Math.max(1, Math.min(rsvpForm.childrenCount, Number(e.target.value) || 1));
+                                    const current = { ...childAllergies };
+                                    current[a] = val;
+                                    updateRsvpField("childrenAllergies", current);
+                                  }}
+                                  disabled={isAlreadySubmitted}
+                                  style={{
+                                    width: "min(70px, 100%)",
+                                    marginLeft: "0.5rem",
+                                  }}
+                                  aria-label={t("rsvp.childrenAllergyCountLabel", { allergy: t(`rsvp.allergies.${a}`, { defaultValue: a }) })}
+                                />
+                              )}
+                            </label>
+                          );
+                        })}
                       </div>
                       <label className="sr-only" htmlFor="rsvpChildrenAllergiesOther">
                         {t("rsvp.childrenAllergiesOtherLabel")}

@@ -283,7 +283,7 @@ describe("a11y-page-audit", () => {
       companionTransportTimes: [""],
       companionTransportPlaces: [""],
       childrenCount: 0,
-      childrenAllergies: [],
+      childrenAllergies: {},
       childrenAllergiesOther: "",
       menuSelection: "",
       allergies: [],

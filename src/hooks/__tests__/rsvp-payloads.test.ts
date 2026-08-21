@@ -15,7 +15,7 @@ const form = {
   companionTransportTimes: ["", "14:30"],
   companionTransportPlaces: ["", "Estación Norte"],
   childrenCount: 0,
-  childrenAllergies: [],
+  childrenAllergies: {},
   childrenAllergiesOther: "",
   menuSelection: "carne",
   allergiesOther: "intolerancia",

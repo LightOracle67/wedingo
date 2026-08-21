@@ -54,7 +54,7 @@ interface RsvpFormData {
   companionTransportTimes: string[];
   companionTransportPlaces: string[];
   childrenCount: number;
-  childrenAllergies: string[];
+  childrenAllergies: Record<string, number>;
   childrenAllergiesOther: string;
   menuSelection: string;
   allergies: string[];
@@ -146,7 +146,7 @@ function RsvpFormDefault(): RsvpFormData {
     companionTransportTimes: [],
     companionTransportPlaces: [],
     childrenCount: 0,
-    childrenAllergies: [],
+    childrenAllergies: {},
     childrenAllergiesOther: "",
     menuSelection: "",
     allergies: [],

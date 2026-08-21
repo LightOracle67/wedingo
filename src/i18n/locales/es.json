@@ -241,7 +241,8 @@
     "childrenCountPlaceholder": "0",
     "childrenAllergiesLegend": "Alergias de los niños",
     "childrenAllergiesPlaceholder": "Otras alergias (especificar)",
-    "childrenAllergiesHint": "Indica solo alergias e intolerancias alimentarias de los niños."
+    "childrenAllergiesHint": "Indica solo alergias e intolerancias alimentarias de los niños.",
+    "childrenAllergyCountLabel": "¿Cuántos niños tienen {{allergy}}?"
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
