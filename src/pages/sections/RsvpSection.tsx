@@ -154,6 +154,9 @@ const RsvpSection = memo(function RsvpSection({
   const hasDietaryData = (rsvpForm.allergies || []).length > 0 || (rsvpForm.allergiesOther || "").trim().length > 0;
   const showHealthConsent = isAttending && hasDietaryData;
 
+  // Niños permitidos según configuración: kidsPolicyEnabled=true y no es adultOnly.
+  const kidsAllowed = config?.kidsPolicyEnabled === "true" && config?.kidsPolicy !== "adultOnly";
+
   const hasStructuredMenu = menuEnabled && (menuCarneDishes || menuPescadoDishes || menuVeganoDishes);
 
   const formatDishes = useCallback(
@@ -823,7 +826,7 @@ const RsvpSection = memo(function RsvpSection({
             ) : null}
 
             {/* Niños: selector que muestra contador y alergias al activarse. */}
-            {isAttending && (
+            {isAttending && kidsAllowed && (
               <div style={{ marginTop: "0.75rem" }}>
                 <label
                   className="setup-checkbox-label"
@@ -842,7 +845,7 @@ const RsvpSection = memo(function RsvpSection({
                     onChange={(e) => {
                       updateRsvpField("childrenCount", e.target.checked ? 1 : 0);
                       if (!e.target.checked) {
-                        updateRsvpField("childrenAllergies", []);
+                        updateRsvpField("childrenAllergies", {});
                         updateRsvpField("childrenAllergiesOther", "");
                       }
                     }}
@@ -961,7 +964,15 @@ const RsvpSection = memo(function RsvpSection({
                       />
                     </fieldset>
                   </div>
-                )}
+)}
+               </div>
+            )}
+
+            {isAttending && !kidsAllowed && config?.kidsPolicyEnabled === "true" && config?.kidsPolicy === "adultOnly" && (
+              <div style={{ marginTop: "0.75rem" }}>
+                <p className="setup-help" style={{ fontSize: "0.85rem", color: "var(--setup-subtitle)" }}>
+                  {t("rsvp.childrenNotAllowed")}
+                </p>
               </div>
             )}
 

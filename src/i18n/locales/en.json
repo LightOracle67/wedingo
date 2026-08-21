@@ -242,7 +242,8 @@
     "childrenAllergiesLegend": "Children's allergies",
     "childrenAllergiesPlaceholder": "Other allergies (specify)",
     "childrenAllergiesHint": "Only indicate food allergies and intolerances for children.",
-    "childrenAllergyCountLabel": "How many children have {{allergy}}?"
+    "childrenAllergyCountLabel": "How many children have {{allergy}}?",
+    "childrenNotAllowed": "This wedding is adults-only; children cannot be included in the RSVP."
   },
   "public": {
     "loadingInvitation": "Loading invitation…",

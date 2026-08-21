@@ -242,7 +242,8 @@
     "childrenAllergiesLegend": "Alergias de los niños",
     "childrenAllergiesPlaceholder": "Otras alergias (especificar)",
     "childrenAllergiesHint": "Indica solo alergias e intolerancias alimentarias de los niños.",
-    "childrenAllergyCountLabel": "¿Cuántos niños tienen {{allergy}}?"
+    "childrenAllergyCountLabel": "¿Cuántos niños tienen {{allergy}}?",
+    "childrenNotAllowed": "Esta boda es solo para adultos; no se pueden incluir niños en la confirmación."
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",
