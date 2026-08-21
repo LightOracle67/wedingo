@@ -822,6 +822,110 @@ const RsvpSection = memo(function RsvpSection({
               </p>
             ) : null}
 
+            {/* Niños: selector que muestra contador y alergias al activarse. */}
+            {isAttending && (
+              <div style={{ marginTop: "0.75rem" }}>
+                <label
+                  className="setup-checkbox-label"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5rem",
+                    color: "var(--setup-title)",
+                    fontSize: "0.85rem",
+                    cursor: isAlreadySubmitted ? "default" : "pointer",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={rsvpForm.childrenCount > 0}
+                    onChange={(e) => {
+                      updateRsvpField("childrenCount", e.target.checked ? 1 : 0);
+                      if (!e.target.checked) {
+                        updateRsvpField("childrenAllergies", []);
+                        updateRsvpField("childrenAllergiesOther", "");
+                      }
+                    }}
+                    disabled={isAlreadySubmitted}
+                    style={{
+                      accentColor: "var(--setup-accent)",
+                      width: "1rem",
+                      height: "1rem",
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span>{t("rsvp.childrenLabel")}</span>
+                </label>
+                <p className="setup-help" style={{ marginTop: "0.2rem", fontSize: "0.75rem" }}>
+                  {t("rsvp.childrenHint")}
+                </p>
+                {rsvpForm.childrenCount > 0 && (
+                  <div style={{ marginTop: "0.5rem" }}>
+                    <label className="setup-label" htmlFor="rsvpChildrenCount" style={{ marginTop: "0.5rem" }}>
+                      {t("rsvp.childrenCountLabel")} *
+                    </label>
+                    <input
+                      id="rsvpChildrenCount"
+                      type="number"
+                      min="1"
+                      max="10"
+                      className="setup-input"
+                      value={rsvpForm.childrenCount}
+                      onChange={(e) => updateRsvpField("childrenCount", Math.max(1, Math.min(10, Number(e.target.value) || 1)))}
+                      placeholder={t("rsvp.childrenCountPlaceholder")}
+                      required
+                      disabled={isAlreadySubmitted}
+                      style={{ marginTop: "0.25rem", width: "min(120px, 100%)" }}
+                    />
+                    <fieldset style={{ border: "none", padding: 0, margin: "0.5rem 0 0 0" }}>
+                      <legend className="setup-label" style={{ fontSize: "0.85rem" }}>
+                        {t("rsvp.childrenAllergiesLegend")}
+                      </legend>
+                      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                        {ALLERGIES.map((a) => (
+                          <label
+                            key={a}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "0.25rem",
+                              fontSize: "0.85rem",
+                              cursor: isAlreadySubmitted ? "default" : "pointer",
+                            }}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={(rsvpForm.childrenAllergies || []).includes(a)}
+                              onChange={() => {
+                                const current = rsvpForm.childrenAllergies || [];
+                                const updated = current.includes(a) ? current.filter((x: string) => x !== a) : [...current, a];
+                                updateRsvpField("childrenAllergies", updated);
+                              }}
+                              disabled={isAlreadySubmitted}
+                            />
+                            {t(`rsvp.allergies.${a}`, { defaultValue: a })}
+                          </label>
+                        ))}
+                      </div>
+                      <label className="sr-only" htmlFor="rsvpChildrenAllergiesOther">
+                        {t("rsvp.childrenAllergiesOtherLabel")}
+                      </label>
+                      <input
+                        id="rsvpChildrenAllergiesOther"
+                        className="setup-input"
+                        type="text"
+                        value={rsvpForm.childrenAllergiesOther || ""}
+                        onChange={(e) => updateRsvpField("childrenAllergiesOther", e.target.value.slice(0, 200))}
+                        placeholder={t("rsvp.childrenAllergiesPlaceholder")}
+                        disabled={isAlreadySubmitted}
+                        style={{ marginTop: "0.35rem", fontSize: "0.85rem" }}
+                      />
+                    </fieldset>
+                  </div>
+                )}
+              </div>
+            )}
+
             {isAttending && hasStructuredMenu && (
               <div className="setup-field" style={{ marginTop: "0.75rem" }}>
                 <label className="setup-label" htmlFor="rsvpMenu">

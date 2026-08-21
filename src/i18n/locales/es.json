@@ -234,7 +234,14 @@
     "summaryMenu": "Menú: {{m}}",
     "summaryCompanions": "Acompañantes: {{c}}",
     "yourTable": "Estás en la mesa {table}",
-    "allergiesOtherLabel": "Otras alergias"
+    "allergiesOtherLabel": "Otras alergias",
+    "childrenLabel": "¿Vienen niños?",
+    "childrenHint": "Marca esta casilla si traes niños a la celebración.",
+    "childrenCountLabel": "Número de niños",
+    "childrenCountPlaceholder": "0",
+    "childrenAllergiesLegend": "Alergias de los niños",
+    "childrenAllergiesPlaceholder": "Otras alergias (especificar)",
+    "childrenAllergiesHint": "Indica solo alergias e intolerancias alimentarias de los niños."
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",

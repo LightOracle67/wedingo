@@ -13,6 +13,9 @@ interface RsvpFormLike {
   companionTransportModes: string[];
   companionTransportTimes: string[];
   companionTransportPlaces: string[];
+  childrenCount: number;
+  childrenAllergies: string[];
+  childrenAllergiesOther: string;
   menuSelection: string;
   allergiesOther: string;
   healthConsent: boolean;
@@ -47,6 +50,9 @@ export function buildMainGuestData(input: {
     companionMenus: data.companionMenus.slice(0, companionCount),
     companionAllergies: data.companionAllergies.slice(0, companionCount).map((a) => a.join(" | ")),
     companionAllergiesOther: (data.companionAllergiesOther || []).slice(0, companionCount),
+    childrenCount: data.childrenCount || 0,
+    childrenAllergies: (data.childrenAllergies || []).join(" | "),
+    childrenAllergiesOther: data.childrenAllergiesOther || "",
     allergiesOther: data.allergiesOther || "",
     dietaryInfo: encryptedDietaryInfo,
     inviteToken,
