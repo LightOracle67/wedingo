@@ -2,7 +2,7 @@ import { memo, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import CornerDecorations from "../../components/CornerDecorations";
 
-const KNOWN_KIDS = new Set(["playArea", "supervised", "adultOnly"]);
+const KNOWN_KIDS = new Set(["playArea", "supervised"]);
 
 interface ScheduleEvent {
   time: string;

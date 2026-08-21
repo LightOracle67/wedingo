@@ -154,8 +154,8 @@ const RsvpSection = memo(function RsvpSection({
   const hasDietaryData = (rsvpForm.allergies || []).length > 0 || (rsvpForm.allergiesOther || "").trim().length > 0;
   const showHealthConsent = isAttending && hasDietaryData;
 
-  // Niños permitidos según configuración: kidsPolicyEnabled=true y no es adultOnly.
-  const kidsAllowed = config?.kidsPolicyEnabled === "true" && config?.kidsPolicy !== "adultOnly";
+  // Niños permitidos si la opción está activada en configuración.
+  const kidsAllowed = config?.kidsPolicyEnabled === "true";
 
   const hasStructuredMenu = menuEnabled && (menuCarneDishes || menuPescadoDishes || menuVeganoDishes);
 
@@ -966,14 +966,6 @@ const RsvpSection = memo(function RsvpSection({
                   </div>
 )}
                </div>
-            )}
-
-            {isAttending && !kidsAllowed && config?.kidsPolicyEnabled === "true" && config?.kidsPolicy === "adultOnly" && (
-              <div style={{ marginTop: "0.75rem" }}>
-                <p className="setup-help" style={{ fontSize: "0.85rem", color: "var(--setup-subtitle)" }}>
-                  {t("rsvp.childrenNotAllowed")}
-                </p>
-              </div>
             )}
 
             {isAttending && hasStructuredMenu && (

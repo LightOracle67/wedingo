@@ -62,7 +62,6 @@ describe("GuestsSectionForm", () => {
     render(<GuestsSectionForm />);
     expect(screen.getByText("kidsPolicy.options.playArea")).toBeDefined();
     expect(screen.getByText("kidsPolicy.options.supervised")).toBeDefined();
-    expect(screen.getByText("kidsPolicy.options.adultOnly")).toBeDefined();
   });
 
   it("renders dress code section", () => {
@@ -105,23 +104,21 @@ describe("GuestsSectionForm", () => {
 
   it("calls updateFormField on dress code selection", () => {
     render(<GuestsSectionForm />);
-    const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[3]!);
+    fireEvent.click(screen.getByLabelText("setup.dressCodeGala"));
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "gala");
   });
 
   it("calls updateFormField on dress code deselection", () => {
     mockFormData.weddingDressCode = "gala";
     render(<GuestsSectionForm />);
-    const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[3]!);
+    fireEvent.click(screen.getByLabelText("setup.dressCodeGala"));
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingDressCode", "");
   });
 
   it("calls updateFormField on menu enabled toggle", () => {
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[9]!);
+    fireEvent.click(checkboxes[8]!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuEnabled", "true");
   });
 
@@ -129,7 +126,7 @@ describe("GuestsSectionForm", () => {
     mockFormData.menuEnabled = "true";
     render(<GuestsSectionForm />);
     const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[9]!);
+    fireEvent.click(checkboxes[8]!);
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuEnabled", "false");
   });
 

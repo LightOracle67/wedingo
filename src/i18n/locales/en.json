@@ -1390,8 +1390,7 @@
   "kidsPolicy": {
     "options": {
       "playArea": "Welcome with play area",
-      "supervised": "Welcome under supervision",
-      "adultOnly": "Adults only"
+      "supervised": "Welcome under supervision"
     }
   },
   "app": {

@@ -65,7 +65,6 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
           {[
             { value: "playArea", key: "kidsPolicy.options.playArea" },
             { value: "supervised", key: "kidsPolicy.options.supervised" },
-            { value: "adultOnly", key: "kidsPolicy.options.adultOnly" },
           ].map(({ value, key }) => (
             <label
               key={value}

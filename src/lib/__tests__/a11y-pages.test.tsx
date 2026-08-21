@@ -458,7 +458,7 @@ describe("a11y-page-audit", () => {
           { time: "20:00", text: "Banquete" },
         ])}
         weddingDressCode="Vestimenta formal"
-        kidsPolicy="adultOnly"
+        kidsPolicy="playArea"
       />,
     );
     const results = await runAxe(container);
