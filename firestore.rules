@@ -106,57 +106,37 @@ service cloud.firestore {
         && url.matches('^https?://[^\\s/$.?#].[^\\s]*$');
     }
 
-    /* Validación de la configuración para create y update (el admin ya tiene
-       sesión activa, que es la garantía real de autorización). Se mantiene
-       compacta para no superar el límite de 1000 expresiones de Firestore al
-       combinarse con hasActiveSession, pero incluye la validación estricta de
-       los campos críticos: nombres, fecha, tema, URLs y texto largo seguro. */
+/* Validación de configuración: solo campos críticos de seguridad.
+   Validaciones de formato/UX se hacen en cliente (normalizeConfig).
+   Se mantiene compacta para no superar el límite de 1000 expresiones. */
     function isValidInvitationUpdate(data) {
       return data.keys().hasAll(['firstName', 'secondName'])
         && data.firstName is string && data.firstName.size() > 0 && data.firstName.size() <= 100 && isSafeText(data.firstName)
         && data.secondName is string && data.secondName.size() > 0 && data.secondName.size() <= 100 && isSafeText(data.secondName)
-        && (!data.keys().hasAny(['weddingDay']) || (data.weddingDay is string && data.weddingDay.matches('^(0?[1-9]|[12][0-9]|3[01])$')))
-        && (!data.keys().hasAny(['weddingMonth']) || (data.weddingMonth is string && data.weddingMonth.matches('^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre)$')))
-        && (!data.keys().hasAny(['weddingYear']) || (data.weddingYear is string && data.weddingYear.matches('^[12][0-9]{3}$')))
         && (!data.keys().hasAny(['theme']) || isValidTheme(data.theme))
+        /* Textos visibles: longitud acotada y sin HTML/JS (XSS almacenado). */
         && (!data.keys().hasAny(['inviteMessage']) || (data.inviteMessage is string && data.inviteMessage.size() <= 500 && isSafeText(data.inviteMessage)))
-        /* Texto largo visible en la invitación: longitud acotada y sin HTML/JS
-           (XSS almacenado). */
         && (!data.keys().hasAny(['storyText']) || isValidLongSafeText(data.storyText))
         && (!data.keys().hasAny(['giftsInfo']) || isValidLongSafeText(data.giftsInfo))
         && (!data.keys().hasAny(['accommodationInfo']) || isValidLongSafeText(data.accommodationInfo))
         && (!data.keys().hasAny(['menuTexto']) || isValidLongSafeText(data.menuTexto))
         && (!data.keys().hasAny(['kidsPolicy']) || isValidLongSafeText(data.kidsPolicy))
-        /* URLs de la invitación: acotadas y sin javascript: (XSS). */
+        /* URLs: acotadas y sin javascript: (XSS). */
         && (!data.keys().hasAny(['weddingSiteURL']) || isValidSafeUrl(data.weddingSiteURL))
         && (!data.keys().hasAny(['instagramUrl']) || isValidSafeUrl(data.instagramUrl))
         && (!data.keys().hasAny(['facebookUrl']) || isValidSafeUrl(data.facebookUrl))
         && (!data.keys().hasAny(['accommodationURL']) || isValidSafeUrl(data.accommodationURL))
-        && (!data.keys().hasAny(['bankInfo']) || (data.bankInfo is string && data.bankInfo.size() <= 2000))
-        /* Los toggles *Enabled de los campos opcionales del setup NO se
-           validan aquí: normalizeConfig los normaliza SIEMPRE a "true"/"false"
-           en el cliente, y validarlos añadía ~85 expresiones que superaban el
-           límite de complejidad de Firestore con docs grandes (rompía el
-           guardado y la renovación de sesión). El contenido se valida igual. */
-        && (!data.keys().hasAny(['weddingDressCodeCustom']) || (data.weddingDressCodeCustom is string && data.weddingDressCodeCustom.size() <= 500 && isSafeText(data.weddingDressCodeCustom)))
+        /* adminUsername: solo alfanumérico minúsculas, máx 50. */
         && (!data.keys().hasAny(['adminUsername']) || (data.adminUsername is string && data.adminUsername.size() <= 50 && data.adminUsername.matches('^[a-z0-9]*$')))
-        /* Número de invitados esperados (0..1000). Se guarda como string;
-           entero ≤ 4 dígitos y nunca mayor que 1000. */
+        /* expectedGuests: entero 0..1000 como string. */
         && (!data.keys().hasAny(['expectedGuests']) || (
           data.expectedGuests is string
           && data.expectedGuests.matches('^[0-9]{0,4}$')
           && (data.expectedGuests.size() < 4 || data.expectedGuests <= "1000")
         ))
-        /* Consentimiento del responsable: si se envía, debe ser true (la
-           evidencia auditable de la versión aceptada se estampa en el cliente
-           con privacyConsentAt de servidor). */
+        /* privacyConsent: si se envía, debe ser true. */
         && (!data.keys().hasAny(['privacyConsent']) || data.privacyConsent == true)
-        && (!data.keys().hasAny(['detailsMapMode']) || data.detailsMapMode in ['iframe', 'name', 'hidden'])
-        && (!data.keys().hasAny(['transportMapMode']) || data.transportMapMode in ['iframe', 'name', 'hidden'])
-        && (!data.keys().hasAny(['accommodationMapMode']) || data.accommodationMapMode in ['iframe', 'name', 'hidden'])
-        && (!data.keys().hasAny(['rsvpDeadline']) || data.rsvpDeadline == '' || data.rsvpDeadline.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$'))
-        && (!data.keys().hasAny(['welcomeVideo']) || data.welcomeVideo == '' || (data.welcomeVideo is string && data.welcomeVideo.size() <= 1000 && data.welcomeVideo.matches('^https://.*')))
-        && (!data.keys().hasAny(['welcomeVideoEnabled']) || data.welcomeVideoEnabled == 'true' || data.welcomeVideoEnabled == 'false')
+        /* giftList/trivia: solo límite de tamaño (validación de estructura en cliente). */
         && (!data.keys().hasAny(['giftList']) || (data.giftList is string && data.giftList.size() <= 10000))
         && (!data.keys().hasAny(['trivia']) || (data.trivia is string && data.trivia.size() <= 10000));
     }
