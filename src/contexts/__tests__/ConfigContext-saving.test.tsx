@@ -18,13 +18,15 @@ const mockLoadAudio = vi.hoisted(() => vi.fn(() => Promise.resolve({ url: "" }))
 const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve("")));
 const mockSetSaveError = vi.hoisted(() => vi.fn());
 const mockSetSaveMessage = vi.hoisted(() => vi.fn());
-const mockSetDoc = vi.hoisted(() => vi.fn());
+const mockSetDoc = vi.hoisted(() => vi.fn(() => new Promise((r) => setTimeout(r, 50))));
+const mockAddDoc = vi.hoisted(() => vi.fn());
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 vi.mock("react-router", () => ({ useLocation: () => mockLocation, useNavigate: () => vi.fn() }));
 vi.mock("firebase/firestore", () => ({
   getDoc: mockGetDoc,
   setDoc: mockSetDoc,
+  addDoc: mockAddDoc,
   updateDoc: vi.fn(),
   doc: vi.fn(() => ({ id: "test" })),
   collection: vi.fn(() => ({ id: "test" })),
@@ -666,8 +668,9 @@ describe("ConfigProvider", () => {
     await waitFor(() => {
       expect(mockSetDoc).toHaveBeenCalled();
     });
-    const payload = mockSetDoc.mock.calls[0]![1];
-    expect(payload.menuCarneDishes).toBe(JSON.stringify([{ order: "segundo", text: "Solomillo" }]));
+    const call0 = mockSetDoc.mock.calls[0] as unknown[];
+    const payload = call0[1] as Record<string, unknown> | undefined;
+    expect(payload?.menuCarneDishes).toBe(JSON.stringify([{ order: "segundo", text: "Solomillo" }]));
 
     // Un orden inválido ya no bloquea el guardado: normalizeConfig lo
     // corrige a "otro" en producción (aquí el mock es identidad, se guarda crudo).
@@ -677,8 +680,10 @@ describe("ConfigProvider", () => {
     await waitFor(() => {
       expect(mockSetDoc).toHaveBeenCalled();
     });
-    const payload2 = mockSetDoc.mock.calls[0]![1];
-    expect(JSON.parse(payload2.menuCarneDishes)[0].order).toBe("desayuno");
+    const call1 = mockSetDoc.mock.calls[0] as unknown[];
+    const payload2 = call1[1] as Record<string, unknown> | undefined;
+    expect(payload2?.menuCarneDishes).toBeDefined();
+    expect(JSON.parse(String(payload2?.menuCarneDishes))[0].order).toBe("desayuno");
     mockLocation.pathname = "/test";
   });
 

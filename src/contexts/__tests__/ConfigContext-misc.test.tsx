@@ -18,13 +18,15 @@ const mockLoadAudio = vi.hoisted(() => vi.fn(() => Promise.resolve({ url: "" }))
 const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve("")));
 const mockSetSaveError = vi.hoisted(() => vi.fn());
 const mockSetSaveMessage = vi.hoisted(() => vi.fn());
-const mockSetDoc = vi.hoisted(() => vi.fn());
+const mockSetDoc = vi.hoisted(() => vi.fn(() => new Promise((r) => setTimeout(r, 50))));
+const mockAddDoc = vi.hoisted(() => vi.fn());
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 vi.mock("react-router", () => ({ useLocation: () => mockLocation, useNavigate: () => vi.fn() }));
 vi.mock("firebase/firestore", () => ({
   getDoc: mockGetDoc,
   setDoc: mockSetDoc,
+  addDoc: mockAddDoc,
   updateDoc: vi.fn(),
   doc: vi.fn(() => ({ id: "test" })),
   collection: vi.fn(() => ({ id: "test" })),

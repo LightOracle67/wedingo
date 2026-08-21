@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { render, screen, waitFor, fireEvent, act } from "@testing-library/react";
 
 const mockGetDoc = vi.hoisted(() =>
   vi.fn((): Promise<{ exists: () => boolean; data?: () => Record<string, unknown> }> =>
@@ -18,8 +18,9 @@ const mockLoadAudio = vi.hoisted(() => vi.fn(() => Promise.resolve({ url: "" }))
 const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve("")));
 const mockSetSaveError = vi.hoisted(() => vi.fn());
 const mockSetSaveMessage = vi.hoisted(() => vi.fn());
-const mockSetDoc = vi.hoisted(() => vi.fn());
+const mockSetDoc = vi.hoisted(() => vi.fn(() => new Promise((r) => setTimeout(r, 50))));
 const mockUpdateDoc = vi.hoisted(() => vi.fn((_ref: unknown, _data: Record<string, unknown>) => Promise.resolve()));
+const mockAddDoc = vi.hoisted(() => vi.fn());
 const mockResolveAllConfigImages = vi.hoisted(() => vi.fn(() => Promise.resolve({})));
 const mockDecrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockSaveConfigImage = vi.hoisted(() =>
@@ -32,6 +33,7 @@ vi.mock("react-router", () => ({ useLocation: () => mockLocation, useNavigate: (
 vi.mock("firebase/firestore", () => ({
   getDoc: mockGetDoc,
   setDoc: mockSetDoc,
+  addDoc: mockAddDoc,
   updateDoc: mockUpdateDoc,
   doc: vi.fn(() => ({ id: "test" })),
   collection: vi.fn(() => ({ id: "test" })),
@@ -708,6 +710,7 @@ describe("ConfigProvider", () => {
         weddingDressCode: "",
         accommodationURL: "",
         transportEnabled: "none",
+        sectionOrder: "hero,details,info,story,gifts,accommodation,gallery,rsvp",
       }),
     });
     render(
@@ -724,6 +727,9 @@ describe("ConfigProvider", () => {
     fireEvent.click(screen.getByTestId("ss_order"));
     fireEvent.click(screen.getByTestId("ss_gp1"));
     fireEvent.click(screen.getByTestId("ss_gp2"));
+    await act(async () => {
+      await new Promise((r) => setTimeout(r, 1000));
+    });
     fireEvent.click(screen.getByTestId("ss_save"));
     await vi.waitFor(() => {
       expect(mockSetSaveMessage).toHaveBeenCalledWith(expect.stringContaining("errors.sectionsDeactivated"));

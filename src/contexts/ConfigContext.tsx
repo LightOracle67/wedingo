@@ -417,6 +417,8 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         setSaveError(t("errors.alreadySaving"));
         return;
       }
+      isSavingRef.current = true;
+      setIsSaving(true);
       setSaveError("");
       setSaveMessage("");
 
@@ -426,109 +428,133 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         MAX_ALLOWED_YEAR,
       );
       if (errorKey) {
+        isSavingRef.current = false;
+        setIsSaving(false);
         setSaveError(errorParams ? t(errorKey, errorParams) : t(errorKey));
         return;
       }
 
-      const payload = { ...defaultConfig, ...sanitized } as InvitationConfig;
+      // Calcula campos cambiados ANTES de mutar sanitized (para auditoría y payload incremental)
+      const baseForDiff = { ...defaultConfig, ...config } as InvitationConfig;
+      const candidate = { ...defaultConfig, ...sanitized } as InvitationConfig;
 
       // Desactiva automáticamente las secciones habilitadas sin contenido:
-      // se añaden a hiddenSections (mantiene válido el orden) y se informa.
       const orderSections = (formData.sectionOrder || "").split(",").filter(Boolean);
       const alreadyHidden = new Set((formData.hiddenSections || "").split(",").filter(Boolean));
       const emptyEnabled = orderSections.filter((s) => !alreadyHidden.has(s) && !sectionHasContent(s, formData));
-
       let deactivatedMsg: string | null = null;
+
       if (emptyEnabled.length > 0) {
         const nextHidden = [...alreadyHidden, ...emptyEnabled].join(",");
-        payload.hiddenSections = nextHidden;
+        candidate.hiddenSections = nextHidden;
         updateFormField("hiddenSections", nextHidden);
         deactivatedMsg = t("errors.sectionsDeactivated", { sections: emptyEnabled.join(", ") });
+        setSaveMessage(deactivatedMsg);
       }
 
       if (hiddenSet.has("details") && hasStoredConfig) {
-        payload.weddingDay = config.weddingDay;
-        payload.weddingMonth = config.weddingMonth;
-        payload.weddingYear = config.weddingYear;
-        payload.weddingHour = config.weddingHour;
-        payload.weddingMinute = config.weddingMinute;
+        candidate.weddingDay = config.weddingDay;
+        candidate.weddingMonth = config.weddingMonth;
+        candidate.weddingYear = config.weddingYear;
+        candidate.weddingHour = config.weddingHour;
+        candidate.weddingMinute = config.weddingMinute;
       }
+
+      // Detecta campos cambiados comparando candidate vs config actual (no vs defaultConfig)
+      const changed: string[] = [];
+      for (const key of Object.keys(candidate)) {
+        const newVal = String(candidate[key as keyof InvitationConfig] ?? "");
+        const oldVal = String((baseForDiff as Record<string, unknown>)[key] ?? "");
+        if (newVal !== oldVal) {
+          changed.push(key);
+        }
+      }
+
+      // Campos que SIEMPRE se envían aunque no hayan cambiado (requeridos por reglas/seguridad)
+      const alwaysInclude = new Set<string>([
+        "privacyConsent",
+        "privacyConsentAt",
+        "privacyPolicyVersion",
+        "firstName",
+        "secondName",
+      ]);
+      if (!hasStoredConfig) {
+        alwaysInclude.add("createdAt");
+        alwaysInclude.add("setupTokenHash");
+      }
+
+      // Construye payload incremental: solo campos cambiados + alwaysInclude + migraciones
+      const payload: Record<string, unknown> = {};
+      const originalImages: Record<string, string> = {};
+      for (const key of changed) {
+        if (key in candidate) {
+          payload[key] = (candidate as Record<string, unknown>)[key];
+        }
+      }
+      // Añade campos obligatorios aunque no hayan cambiado
+      for (const key of alwaysInclude) {
+        if (!(key in payload) && key in candidate) {
+          payload[key] = (candidate as Record<string, unknown>)[key];
+        }
+      }
+
+      // Migración de imágenes data-URL → configImages (solo si cambiaron)
+      const { saveConfigImage } = await import("../lib/image-store");
+      for (const imageId of ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"] as const) {
+        const val = (candidate as Record<string, unknown>)[imageId];
+        if (typeof val === "string" && val.startsWith("data:")) {
+          originalImages[imageId] = val;
+          payload[imageId] = await saveConfigImage(inviteToken, imageId, val);
+        }
+      }
+
+      // Cifrado bankInfo (solo si cambió)
+      if (changed.includes("bankInfo") || alwaysInclude.has("bankInfo")) {
+        const val = (candidate as Record<string, unknown>).bankInfo;
+        if (val) payload.bankInfo = await encrypt(val as string, inviteToken);
+      }
+
+      // Campos obligatorios de consentimiento/versionado (siempre)
+      payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
+      payload.privacyConsent = true;
+      payload.privacyConsentAt = serverTimestamp();
+      if (!hasStoredConfig) {
+        payload.createdAt = serverTimestamp();
+        const storedToken = (() => {
+          try {
+            return sessionStorage.getItem(STORAGE_KEYS.setupToken(inviteToken || "")) || "";
+          } catch {
+            return "";
+          }
+        })();
+        if (storedToken) {
+          payload.setupTokenHash = await hashSetupToken(storedToken);
+        }
+      }
+
+      // Campos de SUPERADMIN: nunca los toca el admin
+      const superAdminFields = [
+        "verified", "adminNotes", "manualExpiry", "status", "tags", "rsvpCapacity", "rsvpSignatureEnabled",
+      ];
+      for (const k of superAdminFields) {
+        delete payload[k];
+      }
+      delete (payload as Record<string, unknown>).musicFile;
 
       isSavingRef.current = true;
       setIsSaving(true);
 
       try {
-        if (payload.bankInfo) {
-          payload.bankInfo = await encrypt(payload.bankInfo, inviteToken);
-        }
-        // Migrate any data-URL image fields to configImages subcollection
-        const { saveConfigImage } = await import("../lib/image-store");
-        const originalImages: Record<string, string> = {};
-        for (const imageId of ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"]) {
-          const val = payload[imageId];
-          if (typeof val === "string" && val.startsWith("data:")) {
-            originalImages[imageId] = val;
-            payload[imageId] = await saveConfigImage(inviteToken, imageId, val);
-          }
-        }
-        delete (payload as { musicFile?: string }).musicFile;
-        // Evidencia auditable del consentimiento del responsable (GDPR art.
-        // 7.1): se estampa la versión aceptada y un timestamp de servidor.
-        payload.privacyPolicyVersion = PRIVACY_POLICY_VERSION;
-        payload.privacyConsent = true;
-        payload.privacyConsentAt = serverTimestamp();
-        // Fecha de creación: solo en el primer guardado (create).
-        if (!hasStoredConfig) {
-          payload.createdAt = serverTimestamp();
+        // Auditoría: registra solo los campos que realmente cambiaron
+        if (changed.length > 0) {
+          await addDoc(collection(db, "invitations", inviteToken, "configLog"), {
+            fields: changed.slice(0, 60).join(", "),
+            ts: serverTimestamp(),
+            userAgent: navigator.userAgent.slice(0, 200),
+          });
         }
 
-        // Primer guardado (create): las reglas exigen la prueba de conocimiento
-        // del token de setup (setupTokenValid) para no alojar invitaciones
-        // falsas. Se adjunta el hash del token guardado en sessionStorage.
-        if (!hasStoredConfig) {
-          const storedToken = (() => {
-            try {
-              return sessionStorage.getItem(STORAGE_KEYS.setupToken(inviteToken || "")) || "";
-            } catch {
-              return "";
-            }
-          })();
-          if (storedToken) {
-            payload.setupTokenHash = await hashSetupToken(storedToken);
-          }
-        }
-
-        // Campos de SUPERADMIN: el guardado del admin NO debe tocarlos (con
-        // setDoc + merge, si no viajan en el payload se conservan intactos y
-        // las reglas no los ven en el diff). Los gestiona solo la pestaña
-        // Gestión del superadmin.
-        delete payload.verified;
-        delete payload.adminNotes;
-        delete payload.manualExpiry;
-        delete payload.status;
-        delete payload.tags;
-        delete payload.rsvpCapacity;
-        delete payload.rsvpSignatureEnabled;
-
-        // F5-3: auditoría por sección — se registran los campos que cambiaron
-        // respecto al config actual (subcolección configLog, solo lectura
-        // admin/superadmin). Best-effort.
-        try {
-          const changed: string[] = [];
-          for (const key of Object.keys(payload)) {
-            if (String(payload[key] ?? "") !== String((config as Record<string, unknown>)[key] ?? "")) {
-              changed.push(key);
-            }
-          }
-          if (changed.length > 0) {
-            await addDoc(collection(db, "invitations", inviteToken, "configLog"), {
-              fields: changed.slice(0, 60).join(", "),
-              ts: serverTimestamp(),
-              userAgent: navigator.userAgent.slice(0, 200),
-            });
-          }
-        } catch {}
-
+        // Guardado incremental: solo campos en payload (merge: true respeta lo no enviado)
         await setDoc(invitationDocRef(inviteToken), payload, { merge: true });
 
         // Invalida la caché de invitación: sin esto, un guardado y recarga
@@ -572,22 +598,39 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           safeLogError(["[app]", "[ConfigProvider]", "social counters create failed"], counterErr);
         }
 
-        if (payload.bankInfo) payload.bankInfo = await decrypt(payload.bankInfo, inviteToken);
-        // Restore data URLs in memory for the current session
-        for (const [k, v] of Object.entries(originalImages)) {
-          payload[k] = v;
+        // Reconstruye el config completo en memoria: merge de cambios + config actual
+        const savedConfig = { ...config };
+        for (const key of changed) {
+          if (key in payload) {
+            (savedConfig as Record<string, unknown>)[key] = payload[key];
+          }
         }
-        // El musicFile se persiste en la subcolección audio (chunks), no en el
-        // documento: se restaura en memoria para que el editor no quede vacío.
+        // Campos obligatorios siempre incluidos
+        for (const key of alwaysInclude) {
+          if (key in payload) {
+            (savedConfig as Record<string, unknown>)[key] = payload[key];
+          }
+        }
+        // Campos de sesión/setup que no están en config pero se guardaron
+        if (!hasStoredConfig) {
+          savedConfig.createdAt = payload.createdAt as any;
+          savedConfig.setupTokenHash = payload.setupTokenHash as string;
+        }
+        // Restore data URLs en memoria (para sesión actual)
+        for (const [k, v] of Object.entries(originalImages)) {
+          (savedConfig as Record<string, unknown>)[k] = v;
+        }
+
+        // musicFile se restaura desde formData (no se guarda en el doc principal)
         const musicFileValue = (formData as Record<string, unknown>).musicFile;
-        setConfig(musicFileValue ? { ...payload, musicFile: musicFileValue as string } : payload);
-        setFormData(musicFileValue ? { ...payload, musicFile: musicFileValue as string } : payload);
+        if (musicFileValue) (savedConfig as Record<string, unknown>).musicFile = musicFileValue as string;
+
+        setConfig(savedConfig);
+        setFormData(savedConfig);
+        formStore.setAll(savedConfig as unknown as Record<string, string>);
         setHasStoredConfig(true);
 
         for (const cb of onFirstSaveCallbacksRef.current) cb();
-        // Solo deben ejecutarse UNA vez (tras el primer guardado). Se vacía la
-        // lista para que un remount del proveedor (StrictMode, lazy) no acumule
-        // duplicados que se dispararían en cada guardado posterior.
         onFirstSaveCallbacksRef.current = [];
 
         setSaveMessage(deactivatedMsg || t("errors.configSaved"));
@@ -613,6 +656,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       setSaveError,
       setSaveMessage,
       updateFormField,
+      formStore,
     ],
   );
 
