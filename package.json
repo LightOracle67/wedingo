@@ -39,7 +39,7 @@
     "test:rules": "firebase emulators:exec --only firestore --project demo-wedingo \"node scripts/rules-test.mjs\""
   },
   "dependencies": {
-    "@sentry/react": "^10.68.0",
+    "@sentry/react": "^10.70.0",
     "firebase": "^12.16.0",
     "i18next": "^26.3.4",
     "i18next-browser-languagedetector": "^8.2.1",
