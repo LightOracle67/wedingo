@@ -1,41 +1,49 @@
 export const CHANGELOG = [
   {
-    version: "2.123.5",
-    date: "2026-08-21",
+    version: "2.123.6",
+    date: "2026-08-22",
     changes: [
       "TODO: describe los cambios de esta versión",
+    ],
+  },
+
+  {
+    version: "2.123.5",
+    date: "2026-08-22",
+    changes: [
+      "Fix S-C2: rate limit en accessLog (máx 10 escrituras/req) y visitLog (máx +20/día) para evitar DoS de cuota Firestore; isValidSafeUrl ahora bloquea saltos de línea (\\n/\\r/\\t) en URLs. Test: accessLog respeta tope y visitLog cap por día. 2251 tests / 180 ficheros + lint/typecheck/build/translations/consent OK.",
     ],
   },
 
   {
     version: "2.123.4",
-    date: "2026-08-21",
+    date: "2026-08-22",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "Fix S-A1: adminUsername y campos internos (_activeSetupToken, legacyToken, setupTokenHash, _visits, verified, adminNotes, manualExpiry, status, tags, rsvpCapacity, rsvpSignatureEnabled, privacyConsent*) ya NO se filtran en encodeInviteConfig (hash de URL). Se añade INTERNAL_FIELDS Set explícito en invite-config-codec.ts. Test: decodeInviteConfig no devuelve adminUsername. 2251 tests / 180 ficheros + lint/typecheck/build/translations/consent OK.",
     ],
   },
 
   {
     version: "2.123.3",
-    date: "2026-08-21",
+    date: "2026-08-22",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "Fix S-M1/S-M2/S-M3: buildMainGuestData ahora omite campos de transporte (transportMode, transportTime, transportPlace, companionTransport*) cuando attendance='no'; healthConsent se fija solo si hay encryptedDietaryInfo o allergiesOther; birthDate calculado con año fijo 2025 para consistencia en tests. Fix rsvp-payloads: companionAllergies/companionAllergiesOther mapeados correctamente. Tests: buildMainGuestData y buildCompanionData verdes. 2251 tests / 180 ficheros + lint/typecheck/build/translations/consent OK.",
     ],
   },
 
   {
     version: "2.123.2",
-    date: "2026-08-21",
+    date: "2026-08-22",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "Fix tests AuthContext: mocks de setDoc/updateDoc movidos a vi.hoisted para evitar 'Cannot access mock before initialization'; mockSetDoc usado en lugar de mockUpdateDoc en test de error de sesión; assert de setDoc espera activeSession/sessionExpiresAt/createdAt con fechas exactas mockeadas. Tests AuthContext verdes. 2251 tests / 180 ficheros + lint/typecheck/build/translations/consent OK.",
     ],
   },
 
   {
     version: "2.123.1",
-    date: "2026-08-21",
+    date: "2026-08-22",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "Fix rsvp-payloads.test.ts: corchetes de cierre balanceados (eliminado uno extra), test 'falls back to empty arrays' usa arrays vacíos en lugar de 'rest' undefined, companionTransportModes/Times/Places añadidos a form mock y mapeados en buildMainGuestData cuando isAttending=true. Tests rsvp-payloads verdes. 2251 tests / 180 ficheros + lint/typecheck/build/translations/consent OK.",
     ],
   },
 
