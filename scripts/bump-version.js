@@ -57,14 +57,18 @@ let constants = readFileSync(constantsPath, "utf8");
 constants = constants.replace(/APP_VERSION = "[^"]+"/, `APP_VERSION = "${next}"`);
 writeFileSync(constantsPath, constants);
 
-// 3. changelog.ts — inserta nuevo entry al inicio del array
+// 3. changelog.ts — inserta nuevo entry al inicio del array.
+// Si se pasa una descripción (2º argumento) se usa directamente; si no,
+// queda el placeholder "TODO:" que `check-changelog.js` bloquea hasta
+// rellenarlo — así ninguna versión se publica sin descripción real.
+const description = process.argv[3] || "TODO: describe los cambios de esta versión";
 const changelog = readFileSync(changelogPath, "utf8");
 const today = new Date().toISOString().slice(0, 10);
 const newEntry = `  {
     version: "${next}",
     date: "${today}",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      ${JSON.stringify(description)},
     ],
   },
 `;
