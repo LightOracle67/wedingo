@@ -1,4 +1,5 @@
 import { STORAGE_KEYS } from "./storage-keys";
+import { safeLogError } from "./safe-error";
 
 const STORAGE_CONSENT_KEY = STORAGE_KEYS.cookieConsent;
 
@@ -36,7 +37,7 @@ function getConsentRecord(): ConsentRecord | null {
   try {
     return parseConsent(localStorage.getItem(STORAGE_CONSENT_KEY));
   } catch (err) {
-    console.error("[app]", "[storage]", "consent check error", err);
+    safeLogError(["[app]", "[storage]", "consent check error"], err);
     return null;
   }
 }
@@ -47,7 +48,7 @@ export function hasStorageConsent() {
   try {
     return localStorage.getItem(STORAGE_CONSENT_KEY) === "accepted";
   } catch (err) {
-    console.error("[app]", "[storage]", "consent check error", err);
+    safeLogError(["[app]", "[storage]", "consent check error"], err);
     return false;
   }
 }
@@ -107,7 +108,7 @@ export function safeSetItem(key: string, value: string, storage: Storage = local
     storage.setItem(key, value);
     return true;
   } catch (err) {
-    console.error("[app]", "[storage]", "safeSetItem error", { key, error: err });
+    safeLogError(["[app]", "[storage]", "safeSetItem error"], err);
     return false;
   }
 }
@@ -120,7 +121,7 @@ export function safeGetItem(key: string, storage: Storage = localStorage) {
     const value = storage.getItem(key);
     return value;
   } catch (err) {
-    console.error("[app]", "[storage]", "safeGetItem error", { key, error: err });
+    safeLogError(["[app]", "[storage]", "safeGetItem error"], err);
     return null;
   }
 }
@@ -129,7 +130,7 @@ export function safeRemoveItem(key: string, storage: Storage = localStorage) {
   try {
     storage.removeItem(key);
   } catch (err) {
-    console.error("[app]", "[storage]", "safeRemoveItem error", { key, error: err });
+    safeLogError(["[app]", "[storage]", "safeRemoveItem error"], err);
   }
 }
 
@@ -141,6 +142,6 @@ export function clearAllStorage() {
     localKeys.forEach((k) => localStorage.removeItem(k));
     sessionKeys.forEach((k) => sessionStorage.removeItem(k));
   } catch (err) {
-    console.error("[app]", "[storage]", "clearAllStorage error", err);
+    safeLogError(["[app]", "[storage]", "clearAllStorage error"], err);
   }
 }

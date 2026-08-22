@@ -1680,6 +1680,8 @@
     "micError": "No se pudo acceder al micrófono.",
     "playError": "No se pudo reproducir.",
     "playing": "Reproduciendo…",
+    "play": "Reproducir nota",
+    "delete": "Eliminar nota",
     "empty": "Aún no hay recuerdos. ¡Sé el primero!",
     "deleteConfirm": "¿Eliminar esta nota de voz?"
   },

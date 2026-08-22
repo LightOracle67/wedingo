@@ -1,9 +1,9 @@
 export const CHANGELOG = [
   {
     version: "2.123.6",
-    date: "2026-08-22",
+    date: "2026-08-23",
     changes: [
-      "TODO: describe los cambios de esta versión",
+      "AUDITORÍA ronda 2: LEGAL en firestore.rules (TTL accessLog 90d, ownerKey autoservicio notes/songs/rides/gifts, voiceConsent obligatorio, consentLog.lang); CALIDAD (Q-A1 todos los console crudos→safeLogError, Q-A2 catches silenciosos de seguridad, Q-A3 decrypt registra fallo sin token); nuevo módulo redact.ts que rompe el ciclo storage→safe-error→sentry; i18n (fechas localizadas VoiceNotes/Excel, mojibake=0 en 7 ficheros incl. 'Token no válido' y regex username); A11Y aria-label en icon-buttons. 2251 tests / 180 ficheros + lint OK.",
     ],
   },
 

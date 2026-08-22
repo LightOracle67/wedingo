@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { safeLogError } from "../lib/safe-error";
 
 /**
  * Resuelve el valor de una imagen de configuración de la invitación.
@@ -39,7 +40,7 @@ export function useConfigImage(
           }
         })
         .catch((err) => {
-          console.error("[app]", "[useConfigImage]", "resolve error", { imageId, error: err });
+          safeLogError(["[app]", "[useConfigImage]", "resolve error"], err);
         });
     })();
 

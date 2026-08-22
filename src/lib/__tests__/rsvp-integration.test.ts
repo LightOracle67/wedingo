@@ -122,19 +122,13 @@ describe("RSVP Integration", () => {
       result.current.updateRsvpField("companionNames[1]", "Bob Carlos Jones");
     });
     act(() => {
-      result.current.updateRsvpField("companionBirthDates", ["2000-01-01", "2000-01-01"]);
+      result.current.updateRsvpField("companionAllergies[0]", ["sin gluten"]);
     });
     act(() => {
-      result.current.updateRsvpField("companionAllergiesOther", ["", "alergia a mariscos"]);
-    });
-    act(() => {
-      result.current.updateRsvpField("companionHealthConsents", [false, true]);
+      result.current.updateRsvpField("companionAllergies[1]", ["alergia a mariscos"]);
     });
     act(() => {
       result.current.updateRsvpField("privacyConsent", true);
-    });
-    act(() => {
-      result.current.updateRsvpField("birthDate", "1990-01-01");
     });
     act(() => {
       result.current.updateRsvpField("transportChoice", "0");
@@ -147,24 +141,6 @@ describe("RSVP Integration", () => {
     });
     act(() => {
       result.current.updateRsvpField("transportPlace", "Plaza Mayor");
-    });
-    act(() => {
-      result.current.updateRsvpField("companionTransportChoices[0]", "own");
-    });
-    act(() => {
-      result.current.updateRsvpField("companionTransportModes[0]", "own");
-    });
-    act(() => {
-      result.current.updateRsvpField("companionTransportChoices[1]", "1");
-    });
-    act(() => {
-      result.current.updateRsvpField("companionTransportModes[1]", "taxi");
-    });
-    act(() => {
-      result.current.updateRsvpField("companionTransportTimes[1]", "14:30");
-    });
-    act(() => {
-      result.current.updateRsvpField("companionTransportPlaces[1]", "Estación Norte");
     });
 
     const event = { preventDefault: vi.fn() } as unknown as React.FormEvent;
@@ -183,18 +159,17 @@ describe("RSVP Integration", () => {
     expect(payload.transportMode).toBe("bus");
     expect(payload.transportTime).toBe("12:00");
     expect(payload.transportPlace).toBe("Plaza Mayor");
-    expect(payload.companionTransportChoices).toEqual(["own", "1"]);
-    expect(payload.companionTransportModes).toEqual(["own", "taxi"]);
-    expect(payload.companionTransportTimes).toEqual(["", "14:30"]);
-    expect(payload.companionTransportPlaces).toEqual(["", "Estación Norte"]);
-    expect(payload.companionAllergiesOther).toEqual(["", "alergia a mariscos"]);
-    const compPayload = batch.set.mock.calls[1][1];
-    expect(compPayload.transportChoice).toBe("own");
-    expect(compPayload.transportMode).toBe("own");
-    const compPayload2 = batch.set.mock.calls[2][1];
-    expect(compPayload2.transportTime).toBe("14:30");
-    expect(compPayload2.transportPlace).toBe("Estación Norte");
-    expect(compPayload2.allergiesOther).toBe("alergia a mariscos");
+    expect(payload.companionAllergies).toEqual(["sin gluten", "alergia a mariscos"]);
+    const compPayload = batch.set.mock.calls[2][1];
+    expect(compPayload.rsvpType).toBe("companion");
+    expect(compPayload.guestName).toBe("Bob Carlos Jones");
+    expect(compPayload.attendance).toBe("yes");
+    expect(compPayload.dietaryInfo).toBe("encrypted-alergia a mariscos");
+    expect(compPayload.inviteToken).toBe("test-token");
+    expect(compPayload.submittedAt).toBeDefined();
+    expect(compPayload.privacyConsent).toBe(true);
+    expect(compPayload.mainGuestDocId).toBe("main_101n9co");
+    expect(compPayload.mainGuestName).toBe("García Pérez López");
     // 1 main + 2 companions = 3 set calls (el contador usa increment/update).
     expect(batch.set).toHaveBeenCalledTimes(3);
   });

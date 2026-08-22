@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import { useLocation } from "react-router";
-import { updateDoc } from "firebase/firestore";
-import { invitationDocRef } from "../lib/firebase";
+import { setDoc, serverTimestamp } from "firebase/firestore";
+import { privateSessionDocRef } from "../lib/firebase";
 import { firestoreSessionExpiry, saveSession } from "../lib/sessionVars";
 import { hashSetupToken } from "../lib/setup-token";
 import { safeGetItem } from "../lib/storage";
@@ -28,24 +28,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return;
     }
     (async () => {
-      try {
+try {
         // El token de setup se obtiene de sessionStorage y se envía su hash
         // para que las reglas verifiquen la prueba de conocimiento del token.
         // Es el MISMO token mostrado en el formulario: no se regenera.
         const storedToken = safeGetItem(STORAGE_KEYS.setupToken(inviteToken), sessionStorage) || "";
         const tokenHash = storedToken ? await hashSetupToken(storedToken) : "";
 
-        await updateDoc(invitationDocRef(inviteToken), {
+        await setDoc(privateSessionDocRef(inviteToken), {
           // Timestamp EXPLÍCITO del cliente, no serverTimestamp(): la regla de
           // sesión exige `activeSession is timestamp` y en el runtime real de
           // Firestore un valor REQUEST_TIME (serverTimestamp) NO satisface esa
-          // comprobación (el emulador sí, por eso el bug pasó los tests). El
+          // comprobación (el emulador sí, por qué el bug pasó los tests). El
           // alcance sigue seguro: sessionExpiresAt queda acotado por las reglas
           // y la escritura exige prueba de token (setupTokenValid).
           activeSession: new Date(),
           sessionExpiresAt: firestoreSessionExpiry(),
           setupTokenHash: tokenHash,
+          createdAt: serverTimestamp(),
         });
+        // Solo marcar como verificado si el guardado en Firestore fue exitoso
         auth.setIsTokenVerified(true);
         const displayName = config.adminUsername || inviteToken;
         if (displayName) {
@@ -73,7 +75,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     (async () => {
       try {
         await refreshToken();
-      } catch {}
+      } catch (err) {
+        safeLogError(["[app]", "[AuthProvider]", "refreshToken failed"], err);
+      }
     })();
   }, [inviteToken, refreshToken]);
 

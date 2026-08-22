@@ -26,7 +26,7 @@ import { buildMainGuestData, buildCompanionData } from "./rsvp-payloads";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import { withWriteRetry } from "../lib/async-utils";
 import type { Attendee } from "../types";
-import { safeLogError, toSafeErrorMessage } from "../lib/safe-error";
+import { safeLogError } from "../lib/safe-error";
 
 /**
  * Cache de alergias descifradas por (inviteToken, docId).
@@ -49,20 +49,17 @@ interface RsvpFormData {
   companionBirthDates: string[];
   companionParentalConsents: boolean[];
   companionHealthConsents: boolean[];
-  companionTransportChoices: string[];
   companionTransportModes: string[];
-  companionTransportTimes: string[];
-  companionTransportPlaces: string[];
+  companionTransportChoices: string[];
+  childrenNames: string[];
+  childrenAllergies: string[];
+  childrenAllergiesOther: string[];
   childrenCount: number;
-  childrenAllergies: Record<string, number>;
-  childrenAllergiesOther: string;
   menuSelection: string;
   allergies: string[];
   allergiesOther: string;
   privacyConsent: boolean;
   healthConsent: boolean;
-  birthDate: string;
-  parentalConsent: boolean;
   transportChoice: string;
   transportMode: string;
   transportTime: string;
@@ -108,6 +105,8 @@ interface RsvpEntryData {
   companionDocIds?: string[];
   mainGuestDocId?: string;
   mainGuestName?: string;
+  childrenNames?: string[];
+  childrenAllergies?: string[];
 }
 
 /** Hash estable (FNV-1a) de un nombre normalizado, para derivar los ids de
@@ -141,20 +140,17 @@ function RsvpFormDefault(): RsvpFormData {
     companionBirthDates: [],
     companionParentalConsents: [],
     companionHealthConsents: [],
-    companionTransportChoices: [],
     companionTransportModes: [],
-    companionTransportTimes: [],
-    companionTransportPlaces: [],
+    companionTransportChoices: [],
+    childrenNames: [],
+    childrenAllergies: [],
+    childrenAllergiesOther: [],
     childrenCount: 0,
-    childrenAllergies: {},
-    childrenAllergiesOther: "",
     menuSelection: "",
     allergies: [],
     allergiesOther: "",
     privacyConsent: false,
     healthConsent: false,
-    birthDate: "",
-    parentalConsent: false,
     transportChoice: "own",
     transportMode: "own",
     transportTime: "",
@@ -508,16 +504,9 @@ export function useRsvp(
         attendance: value as string,
         companionCount: value === "no" ? 0 : value === "alone" ? 0 : current.companionCount || 1,
         companionNames: value === "no" || value === "alone" ? [] : current.companionNames,
-        companionMenus: value === "no" || value === "alone" ? [] : current.companionMenus,
         companionAllergies: value === "no" || value === "alone" ? [] : current.companionAllergies,
-        companionAllergiesOther: value === "no" || value === "alone" ? [] : current.companionAllergiesOther,
-        companionBirthDates: value === "no" || value === "alone" ? [] : current.companionBirthDates,
-        companionParentalConsents: value === "no" || value === "alone" ? [] : current.companionParentalConsents,
-        companionHealthConsents: value === "no" || value === "alone" ? [] : current.companionHealthConsents,
-        companionTransportChoices: value === "no" || value === "alone" ? [] : current.companionTransportChoices,
-        companionTransportModes: value === "no" || value === "alone" ? [] : current.companionTransportModes,
-        companionTransportTimes: value === "no" || value === "alone" ? [] : current.companionTransportTimes,
-        companionTransportPlaces: value === "no" || value === "alone" ? [] : current.companionTransportPlaces,
+        childrenNames: value === "no" || value === "alone" ? [] : current.childrenNames,
+        childrenAllergies: value === "no" || value === "alone" ? [] : current.childrenAllergies,
       }));
       return;
     }
@@ -525,43 +514,16 @@ export function useRsvp(
       const count = Math.max(0, Math.min(10, Number(value) || 0));
       setRsvpForm((current) => {
         const names = current.companionNames.slice(0, count);
-        const menus = current.companionMenus.slice(0, count);
         const allergies = current.companionAllergies.slice(0, count);
-        const allergiesOther = current.companionAllergiesOther.slice(0, count);
-        const birthDates = current.companionBirthDates.slice(0, count);
-        const parentalConsents = current.companionParentalConsents.slice(0, count);
-        const healthConsents = current.companionHealthConsents.slice(0, count);
-        const transportChoices = current.companionTransportChoices.slice(0, count);
-        const transportModes = current.companionTransportModes.slice(0, count);
-        const transportTimes = current.companionTransportTimes.slice(0, count);
-        const transportPlaces = current.companionTransportPlaces.slice(0, count);
         while (names.length < count) {
           names.push("");
-          menus.push("");
           allergies.push([]);
-          allergiesOther.push("");
-          birthDates.push("");
-          parentalConsents.push(false);
-          healthConsents.push(false);
-          transportChoices.push("own");
-          transportModes.push("own");
-          transportTimes.push("");
-          transportPlaces.push("");
         }
         return {
           ...current,
           companionCount: count,
           companionNames: names,
-          companionMenus: menus,
           companionAllergies: allergies,
-          companionAllergiesOther: allergiesOther,
-          companionBirthDates: birthDates,
-          companionParentalConsents: parentalConsents,
-          companionHealthConsents: healthConsents,
-          companionTransportChoices: transportChoices,
-          companionTransportModes: transportModes,
-          companionTransportTimes: transportTimes,
-          companionTransportPlaces: transportPlaces,
         };
       });
       return;
@@ -593,42 +555,6 @@ export function useRsvp(
       });
       return;
     }
-    if (field.startsWith("companionTransportChoices[")) {
-      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
-      setRsvpForm((current) => {
-        const choices = [...current.companionTransportChoices];
-        choices[idx] = String(value);
-        return { ...current, companionTransportChoices: choices };
-      });
-      return;
-    }
-    if (field.startsWith("companionTransportModes[")) {
-      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
-      setRsvpForm((current) => {
-        const modes = [...current.companionTransportModes];
-        modes[idx] = String(value);
-        return { ...current, companionTransportModes: modes };
-      });
-      return;
-    }
-    if (field.startsWith("companionTransportTimes[")) {
-      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
-      setRsvpForm((current) => {
-        const times = [...current.companionTransportTimes];
-        times[idx] = String(value);
-        return { ...current, companionTransportTimes: times };
-      });
-      return;
-    }
-    if (field.startsWith("companionTransportPlaces[")) {
-      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
-      setRsvpForm((current) => {
-        const places = [...current.companionTransportPlaces];
-        places[idx] = String(value);
-        return { ...current, companionTransportPlaces: places };
-      });
-      return;
-    }
     if (field === "guestName") {
       prefillRef.current = null;
     }
@@ -643,9 +569,6 @@ export function useRsvp(
       if (!isValidFullName(data.guestName)) {
         return t("rsvp.validation.nameFullRequired");
       }
-      if (data.attendance !== "no" && !data.birthDate) {
-        return t("rsvp.validation.birthDateRequired");
-      }
       if (data.attendance === "with" && data.companionCount > 0) {
         for (let i = 0; i < data.companionCount; i++) {
           if (!data.companionNames[i]?.trim()) {
@@ -653,22 +576,6 @@ export function useRsvp(
           }
           if (!isValidFullName(data.companionNames[i]!)) {
             return t("rsvp.validation.nameFullRequired");
-          }
-          if (!data.companionBirthDates?.[i]) {
-            return t("rsvp.validation.birthDateRequired");
-          }
-          if (menuEnabled && !data.companionMenus?.[i]) {
-            return t("rsvp.validation.menuRequired");
-          }
-          const compAge = computeAge(data.companionBirthDates[i]!);
-          if (compAge !== null && compAge < 14 && !data.companionParentalConsents?.[i]) {
-            return t("rsvp.validation.ageUnder14");
-          }
-          const hasCompAllergies =
-            (data.companionAllergies?.[i] || []).length > 0 ||
-            (data.companionAllergiesOther?.[i] || "").trim().length > 0;
-          if (hasCompAllergies && !data.companionHealthConsents?.[i]) {
-            return t("rsvp.validation.healthConsentRequired");
           }
         }
       }
@@ -678,20 +585,6 @@ export function useRsvp(
       if (!data.privacyConsent) {
         return t("rsvp.validation.privacyRequired");
       }
-      if (data.attendance !== "no") {
-        const age = computeAge(data.birthDate);
-        if (age !== null && age < 14 && !data.parentalConsent) {
-          return t("rsvp.validation.ageUnder14");
-        }
-        // Las alergias del campo libre (allergiesOther) también son datos de
-        // salud: requieren consentimiento explícito (GDPR art. 9).
-        const hasHealthData =
-          (data.allergies && data.allergies.length > 0) || (data.allergiesOther || "").trim().length > 0;
-        if (hasHealthData && !data.healthConsent) {
-          return t("rsvp.validation.healthConsentRequired");
-        }
-      }
-
       return null;
     },
     [t, menuEnabled],
@@ -704,6 +597,7 @@ export function useRsvp(
         ...data,
         guestName: normalizeFullName(data.guestName),
         companionNames: (data.companionNames || []).map(normalizeFullName),
+        childrenNames: (data.childrenNames || []).map(normalizeFullName),
       };
       const allergies = form.allergies || [];
       // El texto libre de alergias (allergiesOther) es también dato de salud:
@@ -711,7 +605,7 @@ export function useRsvp(
       const other = (form.allergiesOther || "").trim();
       const dietaryInfo = [allergies.filter(Boolean).join(" | "), other].filter(Boolean).join(" | ");
       const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
-      const age = computeAge(form.birthDate);
+      // No hay birthDate ni edad en el formulario simplificado
       const single = form.guestName.trim();
       const now = new Date().toISOString();
       const isAttending = form.attendance !== "no";
@@ -728,7 +622,7 @@ export function useRsvp(
         companionCount,
         single,
         encryptedDietaryInfo,
-        age,
+        age: null, // No hay edad en el formulario simplificado
         inviteToken,
         nowTimestamp,
       });
@@ -742,16 +636,13 @@ export function useRsvp(
         const compAllergies = form.companionAllergies[i] || [];
         const compDietaryInfo = compAllergies.filter(Boolean).join(" | ");
         const encCompDietary = await encrypt(compDietaryInfo, inviteToken);
-        const compBirthDate = form.companionBirthDates?.[i] || "";
-        const compAge = computeAge(compBirthDate);
+        // Sin fecha de nacimiento en compañeros
         const companionData = buildCompanionData({
           data: form,
           i,
           single,
           mainGuestId,
           encCompDietary,
-          compBirthDate,
-          compAge,
           nowTimestamp,
           inviteToken,
         });
@@ -793,7 +684,7 @@ export function useRsvp(
         batch.update(counterRef, { count: increment(1) });
         await withWriteRetry(() => batch.commit());
       } catch (err) {
-        console.error("[app]", "[useRsvp]", "RSVP batch write failed:", toSafeErrorMessage(err));
+        safeLogError(["[app]", "[useRsvp]", "RSVP batch write failed"], err);
         // El tope anti-spam (RSVP_MAX_RESPONSES) lo aplican las reglas en el
         // increment del contador: se traduce como permission-denied en el lote.
         // Se distingue del resto de fallos para dar un aviso claro en vez del
@@ -830,6 +721,8 @@ export function useRsvp(
         companionTransportTimes: mainGuestData.companionTransportTimes as string[],
         companionTransportPlaces: mainGuestData.companionTransportPlaces as string[],
         companionDocIds,
+        childrenNames: mainGuestData.childrenNames as string[],
+        childrenAllergies: mainGuestData.childrenAllergies as string[],
       };
 
       setRsvpEntries((current) => [mainEntry, ...current]);
@@ -840,7 +733,9 @@ export function useRsvp(
       // módulo ya está en el grafo).
       try {
         trackEvent("rsvp_submit", { attendance: isAttending ? "yes" : "no" });
-      } catch {}
+      } catch (err) {
+        safeLogError(["[app]", "[useRsvp]", "trackEvent failed"], err);
+      }
       setRsvpForm(RsvpFormDefault());
       setHasSubmitted(true);
       setAlreadySubmittedEntry(null);

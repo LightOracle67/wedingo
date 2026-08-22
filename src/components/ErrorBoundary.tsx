@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { useTranslation } from "react-i18next";
 import { logError } from "../lib/error-utils";
-import { toSafeErrorMessage } from "../lib/safe-error";
+import { safeLogError } from "../lib/safe-error";
 
 class ErrorBoundaryInner extends Component<
   { t: (key: string) => string; children: React.ReactNode },
@@ -24,7 +24,7 @@ class ErrorBoundaryInner extends Component<
     } catch {
       /* logging opcional */
     }
-    console.error("[app]", "[ErrorBoundary]", "caught error", toSafeErrorMessage(error));
+    safeLogError(["[app]", "[ErrorBoundary]", "caught error"], error);
   }
 
   override render() {

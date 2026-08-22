@@ -1680,6 +1680,8 @@
     "micError": "Could not access the microphone.",
     "playError": "Could not play.",
     "playing": "Playing…",
+    "play": "Play note",
+    "delete": "Delete note",
     "empty": "No memories yet. Be the first!",
     "deleteConfirm": "Delete this voice note?"
   },

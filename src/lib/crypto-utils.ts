@@ -26,6 +26,8 @@
  * @module crypto-utils
  */
 
+import { safeLogError } from "./safe-error";
+
 const ALGORITHM = { name: "AES-GCM", length: 256 };
 const SALT_LEN = 16;
 const IV_LEN = 12;
@@ -160,7 +162,7 @@ export async function encrypt(text: string, token: string) {
     // Un fallo aquí PONE EN BLANCO el dato cifrado (bankInfo/multimedia) en
     // silencio → pérdida de dato sin aviso. Se loggea SIN el token (es la
     // credencial de acceso, ver safe-error.ts) para diagnosticar.
-    console.warn("[crypto-utils]", "encrypt failed; dato en blanco (token redactado)");
+    safeLogError(["[crypto-utils]"], new Error("encrypt failed; dato en blanco (token redactado)"));
     return "";
   }
 }
@@ -215,6 +217,9 @@ export async function decrypt(ciphertext: string, token: string) {
     const decrypted = await crypto.subtle.decrypt({ ...ALGORITHM, iv }, key, data);
     return new TextDecoder().decode(decrypted);
   } catch {
+    // Fallo de descifrado (ni formato nuevo ni legacy): se registra sin el
+    // token para diagnóstico y se devuelve vacío para no romper el render.
+    safeLogError(["[crypto-utils]", "decrypt failed; returning empty"], new Error("decrypt failed"));
     return "";
   }
 }

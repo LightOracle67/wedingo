@@ -149,8 +149,6 @@ const RsvpSection = memo(function RsvpSection({
     isRsvpSubmitting || hasSubmitted || isAlreadySubmitted || deadlinePassed || isBlocked || weddingPassed;
   const isAttending = rsvpForm.attendance !== "no";
 
-  const age = useMemo(() => computeAge(rsvpForm.birthDate), [rsvpForm.birthDate, computeAge]);
-  const isUnder14 = age !== null && age < 14;
   const hasDietaryData = (rsvpForm.allergies || []).length > 0 || (rsvpForm.allergiesOther || "").trim().length > 0;
   const showHealthConsent = isAttending && hasDietaryData;
 
@@ -1082,55 +1080,6 @@ const RsvpSection = memo(function RsvpSection({
                 />
               </fieldset>
             )}
-
-            <label className="setup-label" htmlFor="rsvpBirthDate" style={{ marginTop: "0.5rem" }}>
-              {t("rsvp.birthDateLabel")} *
-            </label>
-            <input
-              id="rsvpBirthDate"
-              type="date"
-              max={new Date().toISOString().split("T")[0]}
-              className="setup-input"
-              value={rsvpForm.birthDate}
-              onChange={handleBirthDateChange}
-              style={{ colorScheme: "light" }}
-              required
-              disabled={isAlreadySubmitted}
-              aria-invalid={Boolean(rsvpMessage) || undefined}
-              aria-describedby={rsvpMessage ? "rsvpFeedback" : undefined}
-            />
-            <p className="setup-help" style={{ marginTop: "0.2rem" }}>
-              {t("rsvp.birthDateHint")}
-            </p>
-
-            {isUnder14 ? (
-              <p style={{ fontSize: "0.82rem", color: "#d97b18", margin: "0.3rem 0" }}>{t("rsvp.ageUnder14Warning")}</p>
-            ) : null}
-
-            {isUnder14 ? (
-              <label
-                className="setup-checkbox-label"
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                  color: "var(--setup-title)",
-                  fontSize: "0.85rem",
-                  cursor: isAlreadySubmitted ? "default" : "pointer",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                <input
-                  type="checkbox"
-                  checked={rsvpForm.parentalConsent}
-                  onChange={handleParentalConsentChange}
-                  style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
-                  required={isUnder14}
-                  disabled={isAlreadySubmitted}
-                />
-                <span>{t("rsvp.parentalConsent")}</span>
-              </label>
-            ) : null}
 
             <label
               className="setup-checkbox-label"

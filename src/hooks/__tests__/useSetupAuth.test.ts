@@ -54,6 +54,7 @@ vi.mock("../../lib/firebase", () => ({
   app: {},
   db: {},
   invitationDocRef: vi.fn(() => "invite-ref"),
+  privateSessionDocRef: vi.fn(() => "private-session-ref"),
 }));
 
 vi.mock("../../lib/constants", () => ({
@@ -646,7 +647,7 @@ describe("useSetupAuth", () => {
         exists: () => true,
         data: () => ({ activeSession: false, sessionExpiresAt: null }),
       });
-      mockUpdateDoc.mockRejectedValueOnce(new Error("repair failed"));
+      mockSetDoc.mockRejectedValueOnce(new Error("repair failed"));
 
       setup();
 
@@ -661,7 +662,7 @@ describe("useSetupAuth", () => {
         exists: () => true,
         data: () => ({ activeSession: false, sessionExpiresAt: null }),
       });
-      mockUpdateDoc.mockRejectedValueOnce(new Error("repair failed"));
+      mockSetDoc.mockRejectedValueOnce(new Error("repair failed"));
 
       const { result } = setup();
 
@@ -703,11 +704,11 @@ describe("useSetupAuth", () => {
       setup();
 
       await waitFor(() => {
-        expect(mockUpdateDoc).toHaveBeenCalledWith("invite-ref", {
+        expect(mockSetDoc).toHaveBeenCalledWith("private-session-ref", expect.objectContaining({
           activeSession: expect.any(Object),
           sessionExpiresAt: expect.any(Object),
           setupTokenHash: "",
-        });
+        }));
       });
     });
 
@@ -830,10 +831,10 @@ describe("useSetupAuth", () => {
     });
 
     it("handles renewal update error gracefully", async () => {
-      // El login ahora también usa updateDoc (la activación ya no es una
-      // transacción): la 1ª llamada (login) resuelve; la renovación falla.
+      // El login ahora usa setDoc (creación sesión); la renovación usa updateDoc y falla.
+      mockSetDoc.mockReset();
       mockUpdateDoc.mockReset();
-      mockUpdateDoc.mockResolvedValueOnce();
+      mockSetDoc.mockResolvedValueOnce();
       mockUpdateDoc.mockRejectedValue(new Error("Renew error"));
       mockGetDoc.mockImplementation(async (ref: unknown) => {
         if (String(ref).startsWith("token-ref-")) {

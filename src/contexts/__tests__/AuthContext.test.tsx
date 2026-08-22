@@ -1,12 +1,57 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 
-const mockUpdateDoc = vi.fn(() => Promise.resolve());
-const mockGetSession = vi.fn(() => null as { identifier: string; expiresAt: number } | null);
-const mockSaveSession = vi.fn();
-const mockRegisterOnFirstSave = vi.fn();
-const mockSetAdminMessage = vi.fn();
-const mockSetAdminMessageType = vi.fn();
+// Use vi.hoisted to define mocks that need to be referenced in both mock factories and tests
+const { mockGetSession, mockSaveSession, mockRegisterOnFirstSave, mockSetAdminMessage, mockSetAdminMessageType, mockSetIsTokenVerified, mockSetTokenLoginUsername, mockRefreshSetupToken, mockSetSetupToken, mockSetSetupTokenInput, mockSetDoc, mockUpdateDoc, mockUseConfig, mockUseAppUI, mockUseSetupAuth } = vi.hoisted(() => {
+  const mockGetSession = vi.fn(() => null as { identifier: string; expiresAt: number } | null);
+  const mockSaveSession = vi.fn();
+  const mockRegisterOnFirstSave = vi.fn();
+  const mockSetAdminMessage = vi.fn();
+  const mockSetAdminMessageType = vi.fn();
+  const mockSetIsTokenVerified = vi.fn();
+  const mockSetTokenLoginUsername = vi.fn();
+  const mockRefreshSetupToken = vi.fn();
+  const mockSetSetupToken = vi.fn();
+  const mockSetSetupTokenInput = vi.fn();
+  const mockSetDoc = vi.fn(() => Promise.resolve());
+  const mockUpdateDoc = vi.fn(() => Promise.resolve());
+  const mockUseConfig = vi.fn(() => ({
+    inviteToken: "test-token",
+    config: { adminUsername: "admin" },
+    setHasStoredConfig: vi.fn(),
+    registerOnFirstSave: mockRegisterOnFirstSave,
+  }));
+  const mockUseAppUI = vi.fn(() => ({
+    setAdminMessage: mockSetAdminMessage,
+    setAdminMessageType: mockSetAdminMessageType,
+  }));
+  const mockUseSetupAuth = vi.fn(() => ({
+    setupToken: "",
+    setupTokenInput: "",
+    isTokenVerifying: false,
+    isTokenVerified: false,
+    tokenLoginUsername: "",
+    adminLoginUsername: "",
+    isAdminTokenLoggedIn: false,
+    confirmTokenInput: "",
+    authMessage: "",
+    authMessageType: "success",
+    refreshSetupToken: mockRefreshSetupToken,
+    handleTokenLogin: vi.fn(),
+    handleAdminTokenLogin: vi.fn(),
+    handleAdminLogout: vi.fn(),
+    handleResetSetupToken: vi.fn(),
+    handleResetTokenFromAdmin: vi.fn(),
+    setSetupTokenInput: vi.fn(),
+    setIsTokenVerified: mockSetIsTokenVerified,
+    setTokenLoginUsername: mockSetTokenLoginUsername,
+    setAdminLoginUsername: vi.fn(),
+    setConfirmTokenInput: vi.fn(),
+    setSetupToken: mockSetSetupToken,
+    setAuthMessage: vi.fn(),
+  }));
+  return { mockGetSession, mockSaveSession, mockRegisterOnFirstSave, mockSetAdminMessage, mockSetAdminMessageType, mockSetIsTokenVerified, mockSetTokenLoginUsername, mockRefreshSetupToken, mockSetSetupToken, mockSetSetupTokenInput, mockSetDoc, mockUpdateDoc, mockUseConfig, mockUseAppUI, mockUseSetupAuth };
+});
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -16,55 +61,12 @@ vi.mock("react-router", () => ({
   useLocation: () => ({ pathname: "/test" }),
 }));
 
-const mockUseConfig = vi.fn(() => ({
-  inviteToken: "test-token",
-  config: { adminUsername: "admin" },
-  setHasStoredConfig: vi.fn(),
-  registerOnFirstSave: mockRegisterOnFirstSave,
-}));
-
 vi.mock("../useConfig", () => ({
   useConfig: () => mockUseConfig(),
 }));
 
-const mockUseAppUI = vi.fn(() => ({
-  setAdminMessage: mockSetAdminMessage,
-  setAdminMessageType: mockSetAdminMessageType,
-}));
 vi.mock("../useAppUI", () => ({
   useAppUI: (...args: Parameters<typeof mockUseAppUI>) => mockUseAppUI(...args),
-}));
-
-const mockSetSetupToken = vi.fn();
-const mockSetSetupTokenInput = vi.fn();
-const mockSetIsTokenVerified = vi.fn();
-const mockSetTokenLoginUsername = vi.fn();
-const mockRefreshSetupToken = vi.fn();
-
-const mockUseSetupAuth = vi.fn(() => ({
-  setupToken: "",
-  setupTokenInput: "",
-  isTokenVerifying: false,
-  isTokenVerified: false,
-  tokenLoginUsername: "",
-  adminLoginUsername: "",
-  isAdminTokenLoggedIn: false,
-  confirmTokenInput: "",
-  authMessage: "",
-  authMessageType: "success",
-  refreshSetupToken: mockRefreshSetupToken,
-  handleTokenLogin: vi.fn(),
-  handleAdminTokenLogin: vi.fn(),
-  handleAdminLogout: vi.fn(),
-  handleResetSetupToken: vi.fn(),
-  handleResetTokenFromAdmin: vi.fn(),
-  setSetupTokenInput: mockSetSetupTokenInput,
-  setIsTokenVerified: mockSetIsTokenVerified,
-  setTokenLoginUsername: mockSetTokenLoginUsername,
-  setAdminLoginUsername: vi.fn(),
-  setConfirmTokenInput: vi.fn(),
-  setSetupToken: mockSetSetupToken,
-  setAuthMessage: vi.fn(),
 }));
 
 vi.mock("../../hooks/useSetupAuth", () => ({
@@ -72,13 +74,15 @@ vi.mock("../../hooks/useSetupAuth", () => ({
 }));
 
 vi.mock("firebase/firestore", () => ({
-  updateDoc: (...args: Parameters<typeof mockUpdateDoc>) => mockUpdateDoc(...args),
+  setDoc: mockSetDoc,
+  updateDoc: mockUpdateDoc,
   serverTimestamp: vi.fn(() => new Date("2026-01-01")),
   doc: vi.fn(),
 }));
 
 vi.mock("../../lib/firebase", () => ({
   invitationDocRef: vi.fn(() => "invitations/test-token"),
+  privateSessionDocRef: vi.fn(() => "private-session-ref"),
 }));
 
 vi.mock("../../lib/setup-token", () => ({
@@ -154,10 +158,11 @@ describe("AuthProvider", () => {
     await onFirstSave();
     // El token ya no se borra: el auto-login usa las credenciales previas.
     expect(mockSetSetupToken).not.toHaveBeenCalledWith("");
-    expect(mockUpdateDoc).toHaveBeenCalledWith("invitations/test-token", {
+    expect(mockSetDoc).toHaveBeenCalledWith("private-session-ref", {
       activeSession: expect.any(Date),
-      sessionExpiresAt: expect.any(Date),
+      sessionExpiresAt: new Date("2027-01-01"),
       setupTokenHash: "",
+      createdAt: new Date("2026-01-01"),
     });
     await vi.waitFor(() => {
       expect(mockSetIsTokenVerified).toHaveBeenCalledWith(true);
@@ -165,7 +170,7 @@ describe("AuthProvider", () => {
   });
 
   it("handles session update error gracefully", async () => {
-    mockUpdateDoc.mockRejectedValueOnce(new Error("update failed"));
+    mockSetDoc.mockRejectedValueOnce(new Error("update failed"));
     render(
       <AuthProvider>
         <div>child</div>
@@ -276,7 +281,7 @@ describe("AuthProvider", () => {
       setAdminMessage: null,
       setAdminMessageType: null,
     } as unknown as ReturnType<typeof mockUseAppUI>);
-    mockUpdateDoc.mockRejectedValueOnce(new Error("update failed"));
+    mockSetDoc.mockRejectedValueOnce(new Error("set failed"));
     render(
       <AuthProvider>
         <div>child</div>
@@ -284,7 +289,7 @@ describe("AuthProvider", () => {
     );
     const onFirstSave = mockRegisterOnFirstSave.mock.calls[0]![0];
     await onFirstSave();
-    // updateDoc failed, so setIsTokenVerified should NOT be called
+    // setDoc failed, so setIsTokenVerified should NOT be called
     // (session is only set on client after Firestore write succeeds)
     await vi.waitFor(() => {
       expect(mockSetIsTokenVerified).not.toHaveBeenCalled();

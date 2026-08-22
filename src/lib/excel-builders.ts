@@ -8,6 +8,7 @@
  * comprobar que todas las celdas conservan su valor, orden y tipo.
  */
 import { excelDate, type ExcelSheet } from "./excel-utils";
+import i18n from "../i18n";
 
 // ── Tipos de entrada (estructuras que ya usan los componentes) ──
 
@@ -307,14 +308,14 @@ function formatSubmittedDate(raw: unknown): string {
         : typeof asObj.toDate === "function"
           ? (asObj.toDate() as Date)
           : null;
-    return date && !Number.isNaN(date.getTime()) ? date.toLocaleDateString() : "";
+    return date && !Number.isNaN(date.getTime()) ? date.toLocaleDateString(i18n.language || "es") : "";
   }
   if (typeof raw === "number") {
     const date = new Date(raw);
-    return Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString();
+    return Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString(i18n.language || "es");
   }
   const date = new Date(String(raw));
-  return Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString();
+  return Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString(i18n.language || "es");
 }
 
 // ── Superadmin: registro de auditoría ──

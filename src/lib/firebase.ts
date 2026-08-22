@@ -93,6 +93,15 @@ try {
 export function invitationDocRef(token: string) {
   return doc(db, "invitations", token);
 }
+
+/**
+ * Referencia al documento de sesión privado en la subcolección _private/session.
+ * Este documento NO es legible públicamente y almacena activeSession, sessionExpiresAt,
+ * y setupTokenHash de forma segura (evita forja de sesión S-C1).
+ */
+export function privateSessionDocRef(token: string) {
+  return doc(db, "invitations", token, "_private", "session");
+}
 export const INVITATIONS_COLLECTION_REF = collection(db, "invitations");
 // Todas las respuestas RSVP (collectionGroup "responses") para agregaciones
 // del superadmin. Las respuestas viven en la subcolección por invitación.

@@ -42,8 +42,37 @@ function fromBase64Url(str: string) {
   return atob(padded.replace(/-/g, "+").replace(/_/g, "/"));
 }
 
+const INTERNAL_FIELDS = new Set<string>([
+  "adminUsername",
+  "backgroundImageLabel",
+  "backgroundImageSource",
+  "activeSession",
+  "sessionExpiresAt",
+  "setupTokenHash",
+  "_visits",
+  "_activeSetupToken",
+  "legacyToken",
+  "verified",
+  "adminNotes",
+  "manualExpiry",
+  "status",
+  "tags",
+  "rsvpCapacity",
+  "rsvpSignatureEnabled",
+  "createdAt",
+  "privacyConsent",
+  "privacyConsentAt",
+  "privacyPolicyVersion",
+  "musicFile",
+]);
+
 export function encodeInviteConfig(config: Record<string, unknown>) {
-  const { backgroundImageLabel: _bgl, backgroundImageSource: _bgs, adminUsername: _au, ...rest } = config;
+  const rest: Record<string, unknown> = {};
+  for (const [key, val] of Object.entries(config)) {
+    if (!INTERNAL_FIELDS.has(key)) {
+      rest[key] = val;
+    }
+  }
   const compact: Record<string, unknown> = {};
   for (const [key, val] of Object.entries(rest)) {
     const short = INVITE_KEY_REV[key];

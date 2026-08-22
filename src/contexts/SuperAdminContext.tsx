@@ -8,6 +8,7 @@ import { INVITE_CACHE_PREFIX } from "../lib/storage-keys";
 import { saveSession, getSession, clearSession } from "../lib/sessionVars";
 import { useSessionRenewal } from "../hooks/useSessionRenewal";
 import { SUPERADMIN_EMAIL, SUPERADMIN_ROUTE } from "../lib/superadmin";
+import { safeLogError } from "../lib/safe-error";
 
 interface SuperAdminValue {
   isSuperAdmin: boolean;
@@ -65,8 +66,8 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
           // sin el claim de email): best-effort.
           if (firebaseUser.uid) {
             try {
-              setDoc(doc(db, "platform", "settings"), { superadminUid: firebaseUser.uid }, { merge: true }).catch(
-                () => {},
+              setDoc(doc(db, "platform", "settings"), { superadminUid: firebaseUser.uid }, { merge: true }).catch((err) =>
+                safeLogError(["[app]", "[SuperAdminContext]", "persist superadminUid failed"], err),
               );
             } catch {}
           }
@@ -96,7 +97,7 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
         const result = await signInWithEmailAndPassword(authInstance, email, password);
         if (result.user.email !== SUPERADMIN_EMAIL) {
           // No se loggea el email: es PII del responsable (art. 4 GDPR).
-          console.error("[app]", "[SuperAdminContext]", "login error: no permissions");
+          safeLogError(["[app]", "[SuperAdminContext]", "login error: no permissions"], new Error("no permissions"));
           await signOut(authInstance);
           setError(t("auth.superadminNoPermissions"));
           return false;
@@ -104,7 +105,9 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
         saveSession("superadmin", result.user.email ?? "", { uid: result.user.uid });
         // Registra el UID (respaldo de las reglas ante tokens sin claim email).
         try {
-          setDoc(doc(db, "platform", "settings"), { superadminUid: result.user.uid }, { merge: true }).catch(() => {});
+          setDoc(doc(db, "platform", "settings"), { superadminUid: result.user.uid }, { merge: true }).catch((err) =>
+            safeLogError(["[app]", "[SuperAdminContext]", "persist superadminUid failed"], err),
+          );
         } catch {}
         setUser(result.user);
 
@@ -116,7 +119,7 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
       } catch (err) {
         const code =
           err && typeof err === "object" && "code" in err ? String((err as Record<string, unknown>).code) : "";
-        console.error("[app]", "[SuperAdminContext]", "login error", { code });
+        safeLogError(["[app]", "[SuperAdminContext]", "login error"], err);
         if (code === "auth/user-not-found" || code === "auth/wrong-password" || code === "auth/invalid-credential") {
           setError(t("auth.superadminWrongCredentials"));
         } else if (code === "auth/too-many-requests") {

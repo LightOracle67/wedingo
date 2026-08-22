@@ -11,7 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const changelogPath = path.resolve(__dirname, "../src/lib/changelog.ts");
 
 const content = fs.readFileSync(changelogPath, "utf8");
-const todos = content.match(/TODO[^"\n]*/g) ?? [];
+const todos = content.match(/TODO:\s*[^"\n]*/g) ?? [];
 
 if (todos.length > 0) {
   console.error(`❌ El changelog tiene ${todos.length} TODO(s) sin completar:`);

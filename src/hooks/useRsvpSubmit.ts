@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from "react";
+import { safeLogError } from "../lib/safe-error";
 
 interface UseRsvpSubmitOptions {
   token: string;
@@ -39,7 +40,7 @@ export function useRsvpSubmit({ token: _token, onSubmit, validate }: UseRsvpSubm
         return true;
       } catch (err) {
         const message = err instanceof Error ? err.message : "Error submitting RSVP";
-        console.error("[app]", "[useRsvpSubmit]", "submit error", { message });
+        safeLogError(["[app]", "[useRsvpSubmit]", "submit error"], err);
         setSubmitError(message);
         return false;      } finally {
         lockRef.current = false;

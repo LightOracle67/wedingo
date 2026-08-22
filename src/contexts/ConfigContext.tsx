@@ -166,7 +166,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       batch.set(doc(db, "invitations", token, "visitLog", day), { count: increment(1) }, { merge: true });
       await batch.commit();
     } catch (e) {
-      console.warn("[app]", "[ConfigProvider]", "trackVisit failed:", getFirestoreErrorMessage(e));
+      safeLogError(["[app]", "[ConfigProvider]", "trackVisit failed"], e);
     }
   }, []);
 

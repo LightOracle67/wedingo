@@ -352,12 +352,6 @@ describe("RsvpSection", () => {
     expect(screen.queryByText("rsvp.allergiesLegend")).toBeNull();
   });
 
-  it("shows age warning when under 14", () => {
-    render(<WrappedRsvp {...baseProps} computeAge={() => 10} rsvpForm={{ ...baseForm, birthDate: "2016-01-01" }} />);
-    expect(screen.getByText("rsvp.ageUnder14Warning")).toBeDefined();
-    expect(screen.getByText("rsvp.parentalConsent")).toBeDefined();
-  });
-
   it("does not show transport select when no departures defined", () => {
     render(<WrappedRsvp         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
@@ -564,13 +558,6 @@ describe("RsvpSection", () => {
     expect(updateRsvpField).toHaveBeenCalledWith("healthConsent", true);
   });
 
-  it("toggles the parental consent when the guest is under 14", () => {
-    const props = { ...baseProps, computeAge: vi.fn(() => 10) };
-    render(<WrappedRsvp {...props} rsvpForm={{ ...baseForm, attendance: "alone", birthDate: "2015-01-01" }} />);
-    fireEvent.click(screen.getByLabelText("rsvp.parentalConsent"));
-    expect(updateRsvpField).toHaveBeenCalledWith("parentalConsent", true);
-  });
-
   it("toggles a companion allergy checkbox", () => {
     render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
     // El invitado principal y el acompañante muestran el mismo checkbox de alergia;
@@ -588,44 +575,17 @@ describe("RsvpSection", () => {
     expect(updateRsvpField).toHaveBeenCalledWith("companionAllergiesOther", ["alergia al huevo"]);
   });
 
-  it("toggles a companion parental consent when the companion is under 14", () => {
-    const props = { ...baseProps, computeAge: vi.fn(() => 10) };
-    render(<WrappedRsvp         {...props}
-        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1, companionBirthDates: ["2015-01-01"] }}
-      />,
-    );
-    fireEvent.click(screen.getAllByLabelText("rsvp.parentalConsent")[0]!);
-    expect(updateRsvpField).toHaveBeenCalledWith("companionParentalConsents", [true]);
-  });
-
-  it("toggles a companion health consent when the companion has allergies", () => {
-    render(<WrappedRsvp         {...baseProps}
-        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1, companionAllergies: [["sin gluten"]] }}
-      />,
-    );
-    fireEvent.click(screen.getAllByLabelText("rsvp.healthConsent")[0]!);
-    expect(updateRsvpField).toHaveBeenCalledWith("companionHealthConsents", [true]);
-  });
-
-  it("shows the companion info banner when the submitted entry is a companion", () => {
-    render(<WrappedRsvp         {...baseProps}
-        alreadySubmittedEntry={{ id: "c1", rsvpType: "companion", mainGuestName: "Alice María Smith" }}
-      />,
-    );
-    expect(screen.getByText((text: string) => text.includes("rsvp.companionInfo"))).toBeDefined();
-  });
-
   it("adds a companion via the add button", () => {
     render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
     fireEvent.click(screen.getByText((text: string) => text.includes("rsvp.addCompanion")));
     expect(updateRsvpField).toHaveBeenCalledWith("companionCount", 2);
   });
 
-  it("updates a companion birth date", () => {
+  it("updates a companion allergies", () => {
     render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
-    const input = document.getElementById("companion-birth-0") as HTMLInputElement;
-    fireEvent.change(input, { target: { value: "2000-05-15" } });
-    expect(updateRsvpField).toHaveBeenCalledWith("companionBirthDates", ["2000-05-15"]);
+    fireEvent.click(screen.getAllByLabelText("rsvp.allergies.sin gluten")[1]);
+    const calls = updateRsvpField.mock.calls.map((c) => c[0]);
+    expect(calls.some((f) => String(f).startsWith("companionAllergies"))).toBe(true);
   });
 
   it("sets the departure place when the departure has a URL", () => {

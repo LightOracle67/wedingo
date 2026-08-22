@@ -20,6 +20,7 @@ import {
 } from "../../lib/firebase";
 import { calcGlobalStats, formatBytes } from "../../lib/superadmin-utils";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
+import { safeLogError } from "../../lib/safe-error";
 import { logAudit } from "../../lib/audit";
 import { usePlatformSettings } from "../../lib/platform-settings";
 import StatsCard from "../admin/StatsCard";
@@ -94,7 +95,7 @@ const DashboardTab = memo(function DashboardTab() {
       setStats(calcGlobalStats(invitationDocs, rsvps, tokens));
     } catch (err) {
       baseOk = false;
-      console.error("[app]", "[superadmin]", "stats base load failed", err);
+      safeLogError(["[app]", "[superadmin]", "stats base load failed"], err);
       addToast("error", t("errors.statsLoadFailed"));
     }
 
@@ -161,7 +162,7 @@ const DashboardTab = memo(function DashboardTab() {
         }),
       );
     } catch (err) {
-      console.error("[app]", "[superadmin]", "stats auditLog failed", err);
+      safeLogError(["[app]", "[superadmin]", "stats auditLog failed"], err);
       setRecentActivity([]);
     }
 
@@ -299,7 +300,7 @@ const DashboardTab = memo(function DashboardTab() {
         deleted++;
       } catch (err) {
         failed++;
-        console.error("[app]", "[superadmin]", "cleanup delete failed", { id: invitation.id, error: err });
+        safeLogError(["[app]", "[superadmin]", "cleanup delete failed"], err);
       }
     }
     // Registro honesto del resultado en la auditoría (sin falsear el conteo).

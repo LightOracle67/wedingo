@@ -41,9 +41,9 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
   );
 
   /**
-   * Cambia el cÃ³digo de vestimenta. La opciÃ³n "Otro" abre un input de texto
-   * personalizado; el texto se conserva al cambiar de opciÃ³n (se ignora si
-   * no es "Otro") para no destruir la ediciÃ³n con un clic accidental.
+   * Cambia el código de vestimenta. La opción "Otro" abre un input de texto
+   * personalizado; el texto se conserva al cambiar de opción (se ignora si
+   * no es "Otro") para no destruir la edición con un clic accidental.
    */
   const handleDressCodeChange = useCallback(
     (value: string) => {

@@ -18,8 +18,11 @@ const mockLoadAudio = vi.hoisted(() => vi.fn(() => Promise.resolve({ url: "" }))
 const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve("")));
 const mockSetSaveError = vi.hoisted(() => vi.fn());
 const mockSetSaveMessage = vi.hoisted(() => vi.fn());
-const mockSetDoc = vi.hoisted(() => vi.fn(() => new Promise((r) => setTimeout(r, 50))));
-const mockAddDoc = vi.hoisted(() => vi.fn());
+const mockSetDoc = vi.hoisted(() => vi.fn((_path: unknown, _payload: Record<string, unknown>, _options?: unknown) => {
+    console.log("mockSetDoc called with:", { _path, _payload });
+    return Promise.resolve();
+  }));
+const mockAddDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));
 vi.mock("react-router", () => ({ useLocation: () => mockLocation, useNavigate: () => vi.fn() }));
@@ -668,7 +671,7 @@ describe("ConfigProvider", () => {
     await waitFor(() => {
       expect(mockSetDoc).toHaveBeenCalled();
     });
-    const call0 = mockSetDoc.mock.calls[0] as unknown[];
+    const call0 = mockSetDoc.mock.calls[0];
     const payload = call0[1] as Record<string, unknown> | undefined;
     expect(payload?.menuCarneDishes).toBe(JSON.stringify([{ order: "segundo", text: "Solomillo" }]));
 
@@ -680,7 +683,7 @@ describe("ConfigProvider", () => {
     await waitFor(() => {
       expect(mockSetDoc).toHaveBeenCalled();
     });
-    const call1 = mockSetDoc.mock.calls[0] as unknown[];
+    const call1 = mockSetDoc.mock.calls.find((c: unknown[]) => c[1]?.menuCarneDishes) as unknown[];
     const payload2 = call1[1] as Record<string, unknown> | undefined;
     expect(payload2?.menuCarneDishes).toBeDefined();
     expect(JSON.parse(String(payload2?.menuCarneDishes))[0].order).toBe("desayuno");

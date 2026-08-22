@@ -5,6 +5,7 @@ import { randomMessage } from "../lib/invite-messages";
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { SITE_URL } from "../lib/seo";
 import "../styles/print.css";
+import { safeLogError } from "../lib/safe-error";
 
 export default function PrintPage() {
   const { t, i18n } = useTranslation();
@@ -133,7 +134,7 @@ export default function PrintPage() {
           try {
             window.close();
           } catch (err) {
-            console.error("[app]", "[PrintPage]", "window close error", err);
+            safeLogError(["[app]", "[PrintPage]", "window close error"], err);
           }
         }
       };
@@ -142,7 +143,7 @@ export default function PrintPage() {
 
       window.print();
     };
-    doPrint().catch((err) => console.error("[app]", "[PrintPage]", "PDF generation error", err));
+    doPrint().catch((err) => safeLogError(["[app]", "[PrintPage]", "PDF generation error"], err));
   }, [loaded]);
 
   if (isConfigLoading || !loaded) {

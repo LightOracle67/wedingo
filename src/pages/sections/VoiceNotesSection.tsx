@@ -20,7 +20,7 @@ interface VoiceNote {
 }
 
 const VoiceNotesSection = memo(function VoiceNotesSection({ inviteToken }: { inviteToken: string }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { addToast } = useToast();
   const { confirm } = useConfirm();
   const { isAdminTokenLoggedIn } = useAuth();
@@ -153,16 +153,16 @@ const VoiceNotesSection = memo(function VoiceNotesSection({ inviteToken }: { inv
                 🎙 {n.guestName}
                 {n.createdAt ? (
                   <span style={{ color: "var(--invite-copy-color)", fontSize: "0.72rem", marginLeft: "0.35rem" }}>
-                    {new Date(n.createdAt).toLocaleDateString()}
+                    {new Date(n.createdAt).toLocaleDateString(i18n?.language || "es")}
                   </span>
                 ) : null}
               </span>
               <span style={{ display: "flex", gap: "0.35rem", alignItems: "center" }}>
-                <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void play(n.noteId)} disabled={playingId !== "" && playingId !== n.noteId}>
+                <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void play(n.noteId)} disabled={playingId !== "" && playingId !== n.noteId} aria-label={t("voiceNotes.play")}>
                   {playingId === n.noteId ? t("voiceNotes.playing") : "▶"}
                 </button>
                 {isAdminTokenLoggedIn ? (
-                  <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void remove(n.noteId)}>
+                  <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void remove(n.noteId)} aria-label={t("voiceNotes.delete")}>
                     ✕
                   </button>
                 ) : null}

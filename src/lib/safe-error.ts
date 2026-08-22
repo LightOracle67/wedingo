@@ -17,7 +17,7 @@
  * @module safe-error
  */
 
-import { redactSecretsFromUrl } from "./sentry";
+import { redactSecretsFromUrl } from "./redact";
 
 /** Estructura mínima reconocible de un error de Firestore/Firebase. */
 interface SafeErrorLike {

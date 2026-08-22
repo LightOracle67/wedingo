@@ -12,6 +12,7 @@ import SetupToggleField from "../SetupToggleField";
 import SetupField from "../SetupField";
 import ConfigImageField from "../ConfigImageField";
 import { CountedTextarea } from "../CountedField";
+import { safeLogError } from "../../lib/safe-error";
 
 const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefix?: string }) {
   const { updateFormField, inviteToken } = useConfigActions();
@@ -51,8 +52,8 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
   const [uploadingId, setUploadingId] = useState<string | null>(null);
 
   const id = (name: string) => `${prefix}${name}`;
-  /** src seguro para las imÃ¡genes de config: si la URL resuelta no estÃ¡
-   *  disponible y el valor crudo es una referencia __cfgimg: (aÃºn sin
+  /** src seguro para las imágenes de config: si la URL resuelta no está
+   *  disponible y el valor crudo es una referencia __cfgimg: (aún sin
    *  descifrar), no se usa como src (antes mostraba un icono roto). */
   const safeSrc = (url: string | undefined, raw: string | undefined) =>
     url || (raw && !raw.startsWith("__cfgimg:") ? raw : undefined) || "";
@@ -108,7 +109,7 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
         updateFormField(imageId, ref);
         return ref;
       } catch (err) {
-        console.error("[app]", "[CoverSectionForm]", `${imageId} upload error:`, err);
+        safeLogError(["[app]", "[CoverSectionForm]", `${imageId} upload error`], err);
         addToast("error", t("setup.photoUploadFailed"));
         return null;
       } finally {
@@ -152,7 +153,7 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
         updateFormField("couplePhoto", ref);
         upload.complete(t("setup.photoUploaded"));
       } catch (err) {
-        console.error("[app]", "[CoverSectionForm]", "couplePhoto upload error:", err);
+        safeLogError(["[app]", "[CoverSectionForm]", "couplePhoto upload error"], err);
         upload.error(t("setup.photoUploadFailed"));
       } finally {
         setUploadingId(null);

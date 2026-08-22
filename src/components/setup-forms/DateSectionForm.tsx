@@ -189,7 +189,7 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
             lineHeight: 1.4,
           }}
         >
-          âœ“ {t("setup.mapUrlValidInfo")}
+          ✓ {t("setup.mapUrlValidInfo")}
         </div>
       ) : null}
 

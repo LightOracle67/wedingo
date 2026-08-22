@@ -13,6 +13,13 @@
  */
 
 import { hasAnalyticsConsent } from "./storage";
+import { redactSecretsFromUrl } from "./redact";
+
+// Re-export para mantener la superficie pública: `redactSecretsFromUrl`
+// vive en `./redact` (módulo sin dependencia de `storage`) para romper el
+// ciclo de importes storage → safe-error → sentry → storage. Se re-exporta
+// aquí para no romper los callers/tests existentes.
+export { redactSecretsFromUrl };
 
 const isProd = import.meta.env.PROD;
 
@@ -23,46 +30,6 @@ const SENTRY_DSN =
 
 /** Evita inicializar Sentry más de una vez. */
 let initialized = false;
-
-/**
- * Redacta el token de invitación que viaja en la URL (ruta `/<token>` y en
- * query como `?t=`/`invitar`), además de cualquier hash. El token es la
- * credencial de acceso a la invitación: nunca debe salir del navegador hacia
- * Sentry ni en errores ni en breadcrumbs ni en el session replay.
- *
- * @param str - Cadena de URL o texto a sanear.
- */
-export function redactSecretsFromUrl(str: string): string {
-  if (!str) return str;
-  let out = str;
-  // El token es el PRIMER segmento del pathname. Se redacta para las rutas
-  // de invitación: "/TOKEN", "/TOKEN/admin", "/TOKEN/setup", … El dominio y
-  // el resto de rutas (landing, misc) se dejan intactos.
-  try {
-    // solo aplica a URLs absolutas con http(s)
-    if (/^https?:\/\//i.test(out) && out.includes("/")) {
-      out = out.replace(/^(https?:\/\/[^/]+)\/([A-Za-z0-9_-]{4,32})(\/[^?#]*)?([?#].*)?$/, (m, origin, seg, tail, rest) => {
-        // No redactar rutas internas conocidas (landing, superadmin).
-        const base = seg.toLowerCase();
-        if (
-          ["setup", "admin", "superadmin", "superadmin-login", "login", "landing", "privacy", "terms"].includes(
-            base,
-          )
-        ) {
-          return m;
-        }
-        return `${origin}/[redacted]${tail || ""}${rest || ""}`;
-      });
-    }
-  } catch {
-    /* formato inválido: se deja tal cual */
-  }
-  // Query params: t, token, invitar, invite
-  out = out.replace(/([?&](?:t|token|invitar|invite)=)[^&#]*/g, "$1[redacted]");
-  // Hash (config de invitación cifrada/legacy)
-  out = out.replace(/(#[^]*)/, "#[redacted]");
-  return out;
-}
 
 /**
  * Redacta un evento de Sentry (error o transacción) sustituyendo el token de

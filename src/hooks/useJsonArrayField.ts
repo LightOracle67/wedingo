@@ -20,7 +20,7 @@ import { useCallback, useMemo } from "react";
 export function useJsonArrayField<T>(raw: string | undefined, normalize: (item: unknown) => T | null, max: number) {
   const { items, parseError } = useMemo(() => {
     // Un `raw` que llegue como objeto/booleano (dato legacy corrupto) no tiene
-    // .trim y antes rompÃ­a el useMemo; se descarta si no es string.
+    // .trim y antes rompía el useMemo; se descarta si no es string.
     const text = typeof raw === "string" ? raw.trim() : "";
     if (text === "") return { items: [] as T[], parseError: false };
     let parsed: unknown;

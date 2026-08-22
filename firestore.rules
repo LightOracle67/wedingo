@@ -17,11 +17,16 @@ service cloud.firestore {
       return exists(/databases/$(database)/documents/invitations/$(tokenId));
     }
 
+    /* Referencia al documento de sesión privado (subcolección _private/session).
+       Existe solo cuando hay una sesión activa. No es legible públicamente. */
+    function privateSessionRef(tokenId) {
+      return /databases/$(database)/documents/invitations/$(tokenId)/_private/session;
+    }
+
+    /* Sesión activa: existe el documento de sesión privada y no ha expirado. */
     function hasActiveSession(tokenId) {
-      return sessionExists(tokenId)
-        && get(/databases/$(database)/documents/invitations/$(tokenId)).data.activeSession is timestamp
-        && get(/databases/$(database)/documents/invitations/$(tokenId)).data.sessionExpiresAt is timestamp
-        && get(/databases/$(database)/documents/invitations/$(tokenId)).data.sessionExpiresAt > request.time;
+      return exists(privateSessionRef(tokenId))
+        && get(privateSessionRef(tokenId)).data.sessionExpiresAt > request.time;
     }
 
     function isAuthenticatedAdmin(tokenId) {
@@ -213,43 +218,41 @@ service cloud.firestore {
           ? (request.resource.data._visits >= resource.data._visits
             && request.resource.data._visits <= resource.data._visits + 10)
           : request.resource.data._visits <= 10);
-      /* Creación/renovación de sesión: exige prueba de conocimiento del
-         token de setup (hash con registro en setupTokens). El token legacy
-         `_activeSetupToken` ya NO se acepta: era legible públicamente y
-         permitía forjar sesiones de administrador. sessionExpiresAt
-         limitado a 30min-48h.
-         IMPORTANTE: request.time es la hora del SERVIDOR. El cliente envía
-         sessionExpiresAt = (hora del cliente) + TTL, que por latencia/reloj es
-         siempre un poco anterior a request.time + TTL. Por eso el mínimo debe
-         quedar cómodamente por debajo del TTL real del cliente (60 min) para
-         no rechazar el login por unos milisegundos de diferencia. */
-      /* Creación/renovación de sesión: exige prueba de conocimiento del
-         token de setup (hash con registro en setupTokens). El token legacy
-         `_activeSetupToken` ya NO se acepta: era legible públicamente y
-         permitía forjar sesiones de administrador.
-         sessionExpiresAt se acota a 30min-48h respecto a request.time.
-         IMPORTANTE: NO usar `request.resource.data.activeSession is timestamp`
-         ni `sessionExpiresAt is timestamp`: en el runtime real de Firestore esos
-         checks fallan de forma INTERMITENTE para valores ESCRITOS por el SDK
-         web (el emulador los ve como timestamp y los tests de reglas no lo
-         detectaron), bloqueando login/renovación. Las COMPARACIONES de la cota
-         sí funcionan siempre (un valor no comparable se rechaza igualmente). */
-      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash'])
-        && request.resource.data.sessionExpiresAt >= request.time + duration.value(30, 'm')
-        && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
-        && setupTokenValid(tokenId, request.resource.data.setupTokenHash);
-      /* Cierre de sesión: solo puede anularse una sesión existente (sin escalada). */
-      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt'])
-        && resource.data.activeSession is timestamp
-        && request.resource.data.activeSession == null
-        && request.resource.data.sessionExpiresAt == null;
-      /* Limpieza del token legacy: solo el superadmin retira los campos
-         `_activeSetupToken` y `legacyToken` del documento público. */
-      allow update: if isSuperAdmin()
-        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['_activeSetupToken', 'legacyToken']);
-      allow delete: if isSuperAdmin();
 
-      match /gallery/{imageId} {
+/* Limpieza del token legacy: solo el superadmin retira los campos
+          `_activeSetupToken` y `legacyToken` del documento público. */
+       allow update: if isSuperAdmin()
+         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['_activeSetupToken', 'legacyToken']);
+       allow delete: if isSuperAdmin();
+
+       /* ── Subcolección privada de sesión ─────────────────────────────────────
+          Almacena activeSession, sessionExpiresAt y setupTokenHash de forma
+          privada (no legible públicamente). Evita forja de sesión (S-C1).
+          ───────────────────────────────────────────────────────────────────── */
+       match /_private/session {
+         /* Creación/renovación de sesión: exige prueba de conocimiento del
+            token de setup (hash con registro en setupTokens). sessionExpiresAt
+            acotada a 30min-48h respecto a request.time. */
+         allow create: if setupTokenValid(tokenId, request.resource.data.setupTokenHash)
+           && request.resource.data.sessionExpiresAt >= request.time + duration.value(30, 'm')
+           && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
+           && request.resource.data.keys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash', 'createdAt']);
+         /* Renovación: solo si hay sesión activa O se aporta prueba de token válida. */
+         allow update: if (hasActiveSession(tokenId) || setupTokenValid(tokenId, request.resource.data.setupTokenHash))
+           && request.resource.data.sessionExpiresAt >= request.time + duration.value(30, 'm')
+           && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
+           && request.resource.data.keys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash']);
+         /* Cierre de sesión (logout): solo admin con sesión activa o superadmin. */
+         allow update: if (hasActiveSession(tokenId) || isSuperAdmin())
+           && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt'])
+           && request.resource.data.activeSession == null
+           && request.resource.data.sessionExpiresAt == null;
+         /* Lectura: solo admin autenticado o superadmin. */
+         allow get: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+         allow delete: if isSuperAdmin();
+       }
+
+       match /gallery/{imageId} {
         allow read: if true;
         allow create: if request.resource.data.keys().hasOnly(['data', 'description', 'position', 'createdAt', 'originalName', 'originalSize'])
           && request.resource.data.data is string
@@ -315,49 +318,57 @@ service cloud.firestore {
       }
       match /notes/{noteId} {
         allow read: if true;
-        allow create: if request.resource.data.keys().hasOnly(['guestName', 'message', 'createdAt'])
+        allow create: if request.resource.data.keys().hasOnly(['guestName', 'message', 'createdAt', 'ownerKey'])
           && isSafeText(request.resource.data.guestName)
           && request.resource.data.guestName.size() <= 60
           && isSafeText(request.resource.data.message)
           && request.resource.data.message.size() <= 500
+          && (!request.resource.data.keys().hasAny(['ownerKey']) || (request.resource.data.ownerKey is string && request.resource.data.ownerKey.size() <= 64))
           && socialCounterBelow(tokenId, 'notes');
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+          || (resource.data.keys().hasAny(['ownerKey']) && request.resource.data.ownerKey == resource.data.ownerKey);
       }
       match /songs/{songId} {
         allow read: if true;
-        allow create: if request.resource.data.keys().hasOnly(['guestName', 'song', 'votes', 'createdAt'])
+        allow create: if request.resource.data.keys().hasOnly(['guestName', 'song', 'votes', 'createdAt', 'ownerKey'])
           && isSafeText(request.resource.data.guestName)
           && request.resource.data.guestName.size() <= 60
           && isSafeText(request.resource.data.song)
           && request.resource.data.song.size() <= 200
           && request.resource.data.votes is int && request.resource.data.votes == 1
+          && (!request.resource.data.keys().hasAny(['ownerKey']) || (request.resource.data.ownerKey is string && request.resource.data.ownerKey.size() <= 64))
           && socialCounterBelow(tokenId, 'songs');
         allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['votes'])
           && request.resource.data.votes is int
           && request.resource.data.votes == resource.data.votes + 1
           && request.resource.data.votes <= 10000;
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+          || (resource.data.keys().hasAny(['ownerKey']) && request.resource.data.ownerKey == resource.data.ownerKey);
       }
       match /rides/{rideId} {
         allow read: if true;
-        allow create: if request.resource.data.keys().hasOnly(['guestName', 'origin', 'seats', 'createdAt'])
+        allow create: if request.resource.data.keys().hasOnly(['guestName', 'origin', 'seats', 'createdAt', 'ownerKey'])
           && isSafeText(request.resource.data.guestName)
           && request.resource.data.guestName.size() <= 60
           && isSafeText(request.resource.data.origin)
           && request.resource.data.origin.size() <= 200
           && request.resource.data.seats is int
           && request.resource.data.seats >= 1 && request.resource.data.seats <= 8
+          && (!request.resource.data.keys().hasAny(['ownerKey']) || (request.resource.data.ownerKey is string && request.resource.data.ownerKey.size() <= 64))
           && socialCounterBelow(tokenId, 'rides');
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+          || (resource.data.keys().hasAny(['ownerKey']) && request.resource.data.ownerKey == resource.data.ownerKey);
       }
       match /gifts/{giftId} {
         allow read: if true;
-        allow create: if request.resource.data.keys().hasOnly(['itemId', 'reservedBy', 'createdAt'])
+        allow create: if request.resource.data.keys().hasOnly(['itemId', 'reservedBy', 'createdAt', 'ownerKey'])
           && request.resource.data.itemId is string && request.resource.data.itemId.size() <= 100
           && isSafeText(request.resource.data.reservedBy)
           && request.resource.data.reservedBy.size() <= 60
+          && (!request.resource.data.keys().hasAny(['ownerKey']) || (request.resource.data.ownerKey is string && request.resource.data.ownerKey.size() <= 64))
           && socialCounterBelow(tokenId, 'gifts');
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+          || (resource.data.keys().hasAny(['ownerKey']) && request.resource.data.ownerKey == resource.data.ownerKey);
       }
       /* Lista pública de confirmados (prueba social): invitations/{token}/
          confirmedPeople/{itemId} con { name }. Solo nombres, creados una vez
@@ -385,7 +396,9 @@ service cloud.firestore {
          el primer documento de la versión que introduce los contadores. */
       /* Registro de acceso/sesiones por invitación (F4-2/F4-8): quién y cuándo
          intentó entrar al setup/admin (login fallido o exitoso). Sin IP (solo
-         userAgent anonimizado); lectura solo admin/superadmin. */
+         userAgent anonimizado); lectura solo admin/superadmin.
+         L2: TTL automático 90 días (requiere Cloud Function en plan Blaze).
+         La regla de retención se implementa en functions/index.ts (cleanupExpiredData). */
       match /accessLog/{entryId} {
         allow create: if request.resource.data.keys().hasOnly(['action', 'detail', 'ts', 'userAgent'])
           && request.resource.data.action in ['login_success', 'login_failed', 'session_created', 'session_revoked']
@@ -448,11 +461,13 @@ service cloud.firestore {
          demostrable): cada decisión del banner de cookies (aceptar/rechazar/
          preferencias) se registra en el servidor con la versión de la política
          y timestamp. Sin datos personales del visitante (solo estado+versión),
-         con documentId auto-generado. Lectura/gestión solo admin/superadmin. */
+         con documentId auto-generado. Lectura/gestión solo admin/superadmin.
+         L5: Política ES - versión de política en español (v2026.1) y tracking de idioma. */
       match /consentLog/{entryId} {
-        allow create: if request.resource.data.keys().hasOnly(['status', 'version', 'ts'])
+        allow create: if request.resource.data.keys().hasOnly(['status', 'version', 'ts', 'lang'])
           && request.resource.data.status in ['accepted', 'rejected']
           && request.resource.data.version is string && request.resource.data.version.size() <= 20
+          && (!request.resource.data.keys().hasAny(['lang']) || (request.resource.data.lang is string && request.resource.data.lang.matches('^(es|en)$')))
           && request.resource.data.ts is timestamp;
         allow read, update, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
       }
@@ -460,18 +475,22 @@ service cloud.firestore {
       /* Caja de recuerdos de voz (diferencial): los invitados graban una nota
          de voz corta para la pareja. Se trocea como el audio de música y se
          controla con el contador `voicenotes`. Lectura pública, creación
-         pública (con cap), borrado solo admin/superadmin. */
+         pública (con cap), borrado solo admin/superadmin.
+         L4: Consentimiento de voz - el invitado debe confirmar que su nota
+         puede usarse (GDPR art. 6.1.a consentimiento explícito). */
       match /voicenotes/{entryId} {
         allow read: if true;
         allow create: if socialCounterBelow(tokenId, 'voicenotes')
-          && request.resource.data.keys().hasOnly(['noteId', 'guestName', 'chunkIndex', 'data', 'totalChunks', 'attempt', 'createdAt'])
+          && request.resource.data.keys().hasOnly(['noteId', 'guestName', 'chunkIndex', 'data', 'totalChunks', 'attempt', 'createdAt', 'voiceConsent'])
           && request.resource.data.noteId is string && request.resource.data.noteId.size() <= 40
           && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60 && isSafeText(request.resource.data.guestName)
           && request.resource.data.chunkIndex is int && request.resource.data.chunkIndex >= 0 && request.resource.data.chunkIndex < 400
            && request.resource.data.data is string && request.resource.data.data.size() <= 524288
            && isEncryptedMedia(request.resource.data.data)
-           && request.resource.data.totalChunks is int && request.resource.data.totalChunks > 0 && request.resource.data.totalChunks <= 400;
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
+           && request.resource.data.totalChunks is int && request.resource.data.totalChunks > 0 && request.resource.data.totalChunks <= 400
+           && request.resource.data.voiceConsent == true;
+        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
+          || (resource.data.keys().hasAny(['ownerKey']) && request.resource.data.ownerKey == resource.data.ownerKey);
       }
 
       /* Muro de fotos del día (diferencial): los invitados suben fotos a un

@@ -1,10 +1,10 @@
 import { useAuth } from "../contexts";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
-import { getDoc, updateDoc } from "firebase/firestore";
+import { getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { STORAGE_KEYS } from "../lib/storage-keys";
-import { invitationDocRef } from "../lib/firebase";
+import { invitationDocRef, privateSessionDocRef } from "../lib/firebase";
 import { normalizeTokenValue, generateSetupToken } from "../lib/token-utils";
 import { usePlatformSettings } from "../lib/platform-settings";
 import { generateInviteToken } from "../lib/utils";
@@ -42,7 +42,7 @@ export default function LandingPage() {
   const loginAttemptsRef = useRef(0);
   const loginBlockedUntilRef = useRef(0);
   const [creating, setCreating] = useState(false);
-  /** Error de la creaciÃ³n de invitaciÃ³n (visible en la vista principal,
+  /** Error de la creación de invitación (visible en la vista principal,
    *  no en el modal de login). */
   const [createError, setCreateError] = useState("");
 
@@ -51,9 +51,9 @@ export default function LandingPage() {
     setCreateError("");
     setCreating(true);
 
-    // Si ya hay una invitaciÃ³n en curso (recarga de la landing), se retoma en
+    // Si ya hay una invitación en curso (recarga de la landing), se retoma en
     // lugar de crear otra con un token nuevo (evita registros setupTokens
-    // huÃ©rfanos y pÃ©rdida del acceso previo).
+    // huérfanos y pérdida del acceso previo).
     const existing = (() => {
       try {
         return sessionStorage.getItem(STORAGE_KEYS.inviteToken);
@@ -69,7 +69,7 @@ export default function LandingPage() {
 
     const token = generateInviteToken();
     // Token de setup generado y registrado (hash) antes de que exista la
-    // invitaciÃ³n, de modo que la activaciÃ³n de sesiÃ³n pueda verificarse.
+    // invitación, de modo que la activación de sesión pueda verificarse.
     const setupToken = normalizeTokenValue(generateSetupToken());
 
     safeSetItem(STORAGE_KEYS.inviteToken, token, sessionStorage);
@@ -125,7 +125,7 @@ export default function LandingPage() {
     }
 
     try {
-      // Localiza la invitaciÃ³n por el hash del token (sin enumerar la colecciÃ³n).
+      // Localiza la invitación por el hash del token (sin enumerar la colección).
       const target = await findInviteBySetupToken(normalized);
       if (!target) {
         setError(t("landing.errorTokenNotFound"));
@@ -186,13 +186,14 @@ export default function LandingPage() {
         // con campos de sesión está prohibido por las reglas (no se puede
         // auto-provisionar una sesión en el create).
         if (inviteSnap.exists()) {
-          await updateDoc(inviteRef, {
+          await setDoc(privateSessionDocRef(target), {
             // Timestamp explícito del cliente: la regla de sesión exige
             // `activeSession is timestamp` y serverTimestamp() (REQUEST_TIME)
             // no lo satisface en el runtime real de producción.
             activeSession: new Date(),
             sessionExpiresAt: firestoreSessionExpiry(),
             setupTokenHash: tokenHash,
+            createdAt: serverTimestamp(),
           });
         }
       } catch (err) {
@@ -215,7 +216,7 @@ export default function LandingPage() {
       setIsTokenVerified(true);
 
       // NOTA: el token de setup NO se guarda en el Credential Manager del
-      // navegador: es una credencial de tipo bearer que concede sesiÃ³n de
+      // navegador: es una credencial de tipo bearer que concede sesión de
       // admin y no debe replicarse/sincronizarse por el sistema operativo.
       navigate(`/${target}`);
     } catch (err) {
@@ -319,7 +320,7 @@ export default function LandingPage() {
                 type="text"
                 value={usernameInput}
                 onChange={(e) =>
-                  setUsernameInput(e.target.value.replace(/[^a-zA-Z0-9\sÃ¡Ã©Ã­Ã³ÃºÃ±ÃÃ‰ÃÃ“ÃšÃ‘]/g, "").slice(0, 50))
+                  setUsernameInput(e.target.value.replace(/[^a-zA-Z0-9\sáéíóúñÁÉÍÓÚÑ]/g, "").slice(0, 50))
                 }
                 placeholder={t("landing.usernamePlaceholder")}
                 autoComplete="username"

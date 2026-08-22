@@ -146,7 +146,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
         });
         upload.complete(t("setup.galleryUploadSuccess", { count: 1 }));
       } catch (err) {
-        console.error("[app]", "[GalleryArrayEditor]", "upload error", { slotIndex, error: err });
+        safeLogError(["[app]", "[GalleryArrayEditor]", "upload error"], err);
         upload.error(t("setup.galleryUploadFailed"));
       } finally {
         setUploadingSlots((prev: Set<number>) => {

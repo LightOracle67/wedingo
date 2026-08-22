@@ -6,13 +6,13 @@ import { useJsonArrayField } from "../../hooks/useJsonArrayField";
 import SetupToggleRow from "../SetupToggleRow";
 
 /**
- * ExtrasSectionForm â€” Configura las funciones sociales de la invitaciÃ³n:
- * fecha lÃ­mite de RSVP, reacciones, lista de regalos, compartir coche,
- * vÃ­deo de bienvenida, muro de dedicatorias, encuesta de mÃºsica y trivia.
+ * ExtrasSectionForm — Configura las funciones sociales de la invitación:
+ * fecha límite de RSVP, reacciones, lista de regalos, compartir coche,
+ * vídeo de bienvenida, muro de dedicatorias, encuesta de música y trivia.
  *
- * Layout de cada extra: el checkbox va SIEMPRE delante de su tÃ­tulo (para
- * que la activaciÃ³n se vea a simple vista) y, cuando estÃ¡ activado, su input
- * aparece debajo del hint. Si el checkbox no estÃ¡ marcado, no hay input.
+ * Layout de cada extra: el checkbox va SIEMPRE delante de su título (para
+ * que la activación se vea a simple vista) y, cuando está activado, su input
+ * aparece debajo del hint. Si el checkbox no está marcado, no hay input.
  */
 const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { prefix?: string }) {
   const { updateFormField } = useConfigActions();
@@ -247,7 +247,7 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
         <legend className="setup-label">{t("setup.extrasLegend")}</legend>
         <p className="setup-help">{t("setup.extrasHint")}</p>
 
-        {/* Fecha lÃ­mite de RSVP */}
+        {/* Fecha límite de RSVP */}
         {renderToggleRow("rsvpDeadline", t("setup.rsvpDeadlineLabel"), t("setup.rsvpDeadlineHint"))}
         {rsvpDeadlineEnabled === "true" ? (
           <input
@@ -293,7 +293,7 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
         {/* Compartir coche */}
         {renderToggleRow("rideShare", t("setup.rideShareLabel"), t("setup.rideShareHint"))}
 
-        {/* VÃ­deo de bienvenida */}
+        {/* Vídeo de bienvenida */}
         {renderToggleRow("welcomeVideo", t("setup.welcomeVideoLabel"), t("setup.welcomeVideoHint"))}
         {welcomeVideoEnabled === "true" ? (
           <input
@@ -311,7 +311,7 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
         {/* Muro de dedicatorias */}
         {renderToggleRow("notes", t("setup.notesLabel"), t("setup.notesHint"))}
 
-        {/* Encuesta de mÃºsica */}
+        {/* Encuesta de música */}
         {renderToggleRow("musicPoll", t("setup.musicPollLabel"), t("setup.musicPollHint"))}
 
         {/* Trivia */}

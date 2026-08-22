@@ -24,7 +24,7 @@ export async function uploadAudio(inviteToken: string, file: File, onProgress?: 
   onProgress?.(40);
   const encrypted = await encrypt(dataUrl, inviteToken);
   if (!encrypted) {
-    console.error("[app]", "[music-store]", "uploadAudio encrypt failed", {});
+    safeLogError(["[app]", "[music-store]", "uploadAudio encrypt failed"], new Error("encrypt returned empty"));
     throw new Error("Encryption failed");
   }
 

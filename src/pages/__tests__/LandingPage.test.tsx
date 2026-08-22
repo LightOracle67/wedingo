@@ -27,11 +27,13 @@ vi.mock("firebase/firestore", () => ({
   serverTimestamp: vi.fn(() => "mocked-ts"),
   runTransaction: vi.fn(),
   updateDoc: vi.fn(),
+  setDoc: vi.fn(),
 }));
 
 vi.mock("../../lib/firebase", () => ({
   db: {},
   invitationDocRef: vi.fn(() => ({ id: "test-ref" })),
+  privateSessionDocRef: vi.fn(() => ({ id: "private-session-ref" })),
   INVITATIONS_COLLECTION_REF: {},
 }));
 
@@ -307,12 +309,12 @@ describe("LandingPage", () => {
 
   it("handles session write path when invite exists", async () => {
     mockFindInviteBySetupToken.mockResolvedValue("target-invite");
-    const { getDoc, updateDoc } = await import("firebase/firestore");
+    const { getDoc, setDoc } = await import("firebase/firestore");
     vi.mocked(getDoc).mockResolvedValue({
       exists: () => true,
       data: () => ({}),
     } as any);
-    vi.mocked(updateDoc).mockResolvedValue(undefined as never);
+    vi.mocked(setDoc).mockResolvedValue(undefined as never);
 
     render(<LandingPage />);
     fireEvent.click(screen.getByText("landing.haveInvitation"));
@@ -321,18 +323,18 @@ describe("LandingPage", () => {
     const form = screen.getByRole("dialog").querySelector("form")!;
     fireEvent.submit(form);
     await vi.waitFor(() => {
-      expect(updateDoc).toHaveBeenCalled();
+      expect(setDoc).toHaveBeenCalled();
     });
   });
 
   it("shows error on session write failure", async () => {
     mockFindInviteBySetupToken.mockResolvedValue("target-invite");
-    const { getDoc, updateDoc } = await import("firebase/firestore");
+    const { getDoc, setDoc } = await import("firebase/firestore");
     vi.mocked(getDoc).mockResolvedValue({
       exists: () => true,
       data: () => ({}),
     } as any);
-    vi.mocked(updateDoc).mockRejectedValue(new Error("tx failed"));
+    vi.mocked(setDoc).mockRejectedValue(new Error("tx failed"));
 
     render(<LandingPage />);
     fireEvent.click(screen.getByText("landing.haveInvitation"));
