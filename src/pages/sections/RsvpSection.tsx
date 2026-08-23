@@ -698,16 +698,33 @@ const RsvpSection = memo(function RsvpSection({
                     <label className="setup-label" htmlFor={`companion-child-${i}`} style={{ marginTop: "0.5rem" }}>
                       {t("rsvp.childQuestion")} *
                     </label>
-                    <select
-                      id={`companion-child-${i}`}
-                      className="setup-input"
-                      value={rsvpForm.companionIsChildren?.[i] || "no"}
-                      onChange={(e) => updateRsvpField(`companionIsChildren[${i}]`, e.target.value)}
-                      disabled={isAlreadySubmitted}
+                    {/* Checkbox en lugar de select: un solo toque para el
+                        caso común (adulto marcado por defecto = desmarcado). */}
+                    <label
+                      className="setup-checkbox-label"
+                      htmlFor={`companion-child-${i}`}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.5rem",
+                        marginTop: "0.5rem",
+                        color: "var(--setup-title)",
+                        fontSize: "0.85rem",
+                        cursor: isAlreadySubmitted ? "default" : "pointer",
+                      }}
                     >
-                      <option value="no">{t("rsvp.childNo")}</option>
-                      <option value="yes">{t("rsvp.childYes")}</option>
-                    </select>
+                      <input
+                        id={`companion-child-${i}`}
+                        type="checkbox"
+                        checked={rsvpForm.companionIsChildren?.[i] === "yes"}
+                        onChange={(e) =>
+                          updateRsvpField(`companionIsChildren[${i}]`, e.target.checked ? "yes" : "no")
+                        }
+                        style={{ accentColor: "var(--setup-accent)", width: "1rem", height: "1rem", flexShrink: 0 }}
+                        disabled={isAlreadySubmitted}
+                      />
+                      <span>{t("rsvp.childQuestion")}</span>
+                    </label>
 
                     {(() => {
                       // El consentimiento parental ya no depende de una edad

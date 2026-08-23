@@ -612,15 +612,29 @@ describe("RsvpSection", () => {
     expect(updateRsvpField).toHaveBeenCalledWith("transportChoice", "0");
   });
 
-  it("muestra el selector ¿es niño? por acompañante con valor por defecto no", () => {
+  it("muestra el checkbox ¿es niño? por acompañante desmarcado por defecto", () => {
     render(
       <WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />,
     );
-    const select = screen.getByLabelText("rsvp.childQuestion *") as HTMLSelectElement;
-    expect(select).toBeDefined();
-    expect(select.value).toBe("no");
-    fireEvent.change(select, { target: { value: "yes" } });
+    const check = screen.getByLabelText("rsvp.childQuestion") as HTMLInputElement;
+    expect(check).toBeDefined();
+    expect(check.type).toBe("checkbox");
+    expect(check.checked).toBe(false);
+    fireEvent.click(check);
     expect(updateRsvpField).toHaveBeenCalledWith("companionIsChildren[0]", "yes");
+  });
+
+  it("al desmarcar el checkbox de niño emite no", () => {
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1, companionIsChildren: ["yes"] }}
+      />,
+    );
+    const check = screen.getByLabelText("rsvp.childQuestion") as HTMLInputElement;
+    expect(check.checked).toBe(true);
+    fireEvent.click(check);
+    expect(updateRsvpField).toHaveBeenCalledWith("companionIsChildren[0]", "no");
   });
 
   it("exige consentimiento parental cuando el acompañante es niño", () => {

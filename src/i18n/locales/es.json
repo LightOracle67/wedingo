@@ -158,8 +158,6 @@
     "notAttending": "No podré asistir",
     "companionHeading": "Acompañante {{number}}",
     "childQuestion": "¿Es niño?",
-    "childYes": "Sí",
-    "childNo": "No",
     "childParentalHint": "Al ser un niño, se requiere el consentimiento de sus padres o tutores.",
     "menuCarne": "Carne",
     "menuPescado": "Pescado",
