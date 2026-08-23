@@ -238,10 +238,16 @@ service cloud.firestore {
            && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
            && request.resource.data.keys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash', 'createdAt']);
          /* Renovación: solo si hay sesión activa O se aporta prueba de token válida. */
+         /* La reactivación sobre un doc existente llega como update vía
+            setDoc con la MISMA forma de 4 claves que el create (incluye
+            createdAt). Se aceptan ambas formas: 3 claves (renovación pura)
+            o 4 claves (reactivación completa). Sin esto, todo segundo login
+            sobre una invitación con sesión previa era permission-denied. */
          allow update: if (hasActiveSession(tokenId) || setupTokenValid(tokenId, request.resource.data.setupTokenHash))
            && request.resource.data.sessionExpiresAt >= request.time + duration.value(30, 'm')
            && request.resource.data.sessionExpiresAt <= request.time + duration.value(48, 'h')
-           && request.resource.data.keys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash']);
+           && (request.resource.data.keys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash'])
+             || request.resource.data.keys().hasOnly(['activeSession', 'sessionExpiresAt', 'setupTokenHash', 'createdAt']));
          /* Cierre de sesión (logout): solo admin con sesión activa o superadmin. */
          allow update: if (hasActiveSession(tokenId) || isSuperAdmin())
            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['activeSession', 'sessionExpiresAt'])
