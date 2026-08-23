@@ -680,7 +680,8 @@
     "manualError": "Could not save the response. Try again.",
     "manualLimitReached": "Response limit reached for this invitation.",
     "tableChild": "Child",
-    "childYes": "Yes"
+    "childYes": "Yes",
+    "childrenConfirmed": "Confirmed children: {{count}}"
   },
   "share": {
     "publishedAt": "Your invitation is published at:",

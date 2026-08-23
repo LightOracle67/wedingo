@@ -546,6 +546,19 @@ export function useRsvp(
     if (field === "guestName") {
       prefillRef.current = null;
     }
+    // Flag ¿es niño? por índice: sin este handler la clave indexada caería
+    // al fallback genérico y se guardaría como propiedad literal
+    // "companionIsChildren[0]" en vez de dentro del array.
+    if (field.startsWith("companionIsChildren[")) {
+      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
+      setRsvpForm((current) => {
+        const flags = [...current.companionIsChildren];
+        while (flags.length <= idx) flags.push("no");
+        flags[idx] = String(value) === "yes" ? "yes" : "no";
+        return { ...current, companionIsChildren: flags };
+      });
+      return;
+    }
     setRsvpForm((current) => ({ ...current, [field]: value }));
   }, []);
 

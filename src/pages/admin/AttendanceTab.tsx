@@ -322,7 +322,11 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     const no = mainEntries.filter((e: RsvpEntry) => e.attendance === "no").length;
     const totalCompanions = entries.filter((e: RsvpEntry) => e.rsvpType === "companion").length;
     const withDietary = entries.filter((e: RsvpEntry) => e.attendance === "yes" && e.dietaryInfo?.trim()).length;
-    return { yes, no, totalCompanions, withDietary };
+    // Niños confirmados: acompañantes con el flag isChild y asistencia sí.
+    const children = entries.filter(
+      (e: RsvpEntry) => e.rsvpType === "companion" && e.isChild === true && e.attendance === "yes",
+    ).length;
+    return { yes, no, totalCompanions, withDietary, children };
   }, [rsvpEntries]);
 
   const toggleAll = () => {
@@ -420,6 +424,10 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
             companions: stats.totalCompanions,
             diet: stats.withDietary,
           })}
+        </span>
+        {/* Estadística de niños confirmados (flag isChild del nuevo modelo). */}
+        <span className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
+          {t("attendance.childrenConfirmed", { count: stats.children })}
         </span>
       </div>
 

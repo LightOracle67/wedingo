@@ -680,7 +680,8 @@
     "manualError": "No se pudo guardar la respuesta. Inténtalo de nuevo.",
     "manualLimitReached": "Límite de respuestas alcanzado para esta invitación.",
     "tableChild": "Niño",
-    "childYes": "Sí"
+    "childYes": "Sí",
+    "childrenConfirmed": "Niños confirmados: {{count}}"
   },
   "share": {
     "publishedAt": "Tu invitación está publicada en:",
