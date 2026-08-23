@@ -170,6 +170,10 @@ try {
               setupTokenHash: tokenHash,
               createdAt: serverTimestamp(),
             };
+            // Sin token de invitación no existe documento privado de sesión
+            // (ruta inválida invitations/_private/session): la consola
+            // superadmin usa Firebase Auth y no necesita esta reparación.
+            if (!inviteToken) throw new Error("session-repair-skipped-no-invite-token");
             await setDoc(privateSessionDocRef(inviteToken), repairPayload);
             setTokenLoginUsername(session.identifier);
             sessionTypeRef.current = session.type;
@@ -215,6 +219,9 @@ try {
         // No renovar si la sesión ya se cerró (logout en vuelo): un renew
         // tardío no debe resucitar la sesión Firestore.
         if (!sessionAliveRef.current) return;
+        // Sin token de invitación no se renueva: privateSessionDocRef("")
+        // construiría una ruta inválida (3 segmentos) y fallaría siempre.
+        if (!inviteToken) return;
         try {
           const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");
           const storedToken = safeGetItem(storageKey, sessionStorage) || "";
