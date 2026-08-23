@@ -42,7 +42,6 @@ const baseForm = {
   companionAllergies: [],
   companionAllergiesOther: [],
   companionIsChildren: [],
-  companionParentalConsents: [],
   companionHealthConsents: [],
   companionTransportChoices: [],
   companionTransportModes: [],
@@ -637,22 +636,11 @@ describe("RsvpSection", () => {
     expect(updateRsvpField).toHaveBeenCalledWith("companionIsChildren[0]", "no");
   });
 
-  it("exige consentimiento parental cuando el acompañante es niño", () => {
+  it("nunca muestra consentimiento parental: se asume tutor en el invitado principal", () => {
     render(
       <WrappedRsvp
         {...baseProps}
         rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1, companionIsChildren: ["yes"] }}
-      />,
-    );
-    expect(screen.getByText("rsvp.childParentalHint")).toBeDefined();
-    expect(screen.getByLabelText("rsvp.parentalConsent")).toBeDefined();
-  });
-
-  it("no muestra consentimiento parental para un acompañante adulto", () => {
-    render(
-      <WrappedRsvp
-        {...baseProps}
-        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1, companionIsChildren: ["no"] }}
       />,
     );
     expect(screen.queryByText("rsvp.childParentalHint")).toBeNull();

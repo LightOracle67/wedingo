@@ -11,7 +11,6 @@ interface RsvpFormLike {
   // Flag por acompañante ("yes" | "no"): sustituye a la fecha de nacimiento
   // (minimización GDPR). En Firestore solo se persiste el booleano isChild.
   companionIsChildren: string[];
-  companionParentalConsents: boolean[];
   companionHealthConsents: boolean[];
   companionTransportModes: string[];
   companionTransportChoices: string[];
@@ -116,11 +115,6 @@ export function buildCompanionData(input: {
   // de nacimiento ni edades (GDPR: mínimo dato necesario).
   const isChild = data.companionIsChildren?.[i] === "yes";
   companionData.isChild = isChild;
-  // El consentimiento parental solo se persiste cuando aplica (niño y
-  // checkbox marcado): evidencia del consentimiento art. 7 GDPR.
-  if (isChild && data.companionParentalConsents?.[i]) {
-    companionData.parentalConsent = true;
-  }
   const compAllergies = data.companionAllergies[i] || [];
   const hasCompDietary = compAllergies.length > 0;
   if (hasCompDietary) {

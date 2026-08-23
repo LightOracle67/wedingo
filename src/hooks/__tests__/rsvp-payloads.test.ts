@@ -13,7 +13,6 @@ const form = {
   companionAllergies: [["sin gluten"], ["alergia a mariscos"]],
   companionAllergiesOther: ["", ""],
   companionIsChildren: ["no", "yes"],
-  companionParentalConsents: [false, true],
   companionHealthConsents: [true, false],
   menuSelection: "carne",
   allergies: ["sin gluten"],
@@ -120,9 +119,10 @@ describe("buildCompanionData", () => {
     expect(doc.attendance).toBe("yes");
     expect(doc.mainGuestDocId).toBe("main-id");
     expect(doc.mainGuestName).toBe("García Pérez López");
-    // Nuevo modelo: flag booleano + evidencia del consentimiento (art. 7).
+    // Nuevo modelo: flag booleano; el consentimiento parental se asume
+    // (el invitado principal es el responsable del niño) y no se persiste.
     expect(doc.isChild).toBe(true);
-    expect(doc.parentalConsent).toBe(true);
+    expect(doc.parentalConsent).toBeUndefined();
     expect(doc.birthDate).toBeUndefined();
     expect(doc.healthConsent).toBe(true);
   });
@@ -142,9 +142,9 @@ describe("buildCompanionData", () => {
     expect(doc.healthConsent).toBe(true);
   });
 
-  it("omits parentalConsent when the child checkbox is unchecked", () => {
+  it("never persists parentalConsent even for children", () => {
     const doc = buildCompanionData({
-      data: { ...form, companionParentalConsents: [false, false] },
+      data: { ...form },
       i: 1,
       single: "García Pérez López",
       mainGuestId: "main-id",

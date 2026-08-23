@@ -158,7 +158,6 @@
     "notAttending": "No podré asistir",
     "companionHeading": "Acompañante {{number}}",
     "childQuestion": "¿Es niño?",
-    "childParentalHint": "Al ser un niño, se requiere el consentimiento de sus padres o tutores.",
     "menuCarne": "Carne",
     "menuPescado": "Pescado",
     "menuVegano": "Vegano/Vegetariano",
@@ -176,15 +175,13 @@
     "companionInfo": "Acompañas a {{name}}",
     "alreadySubmitted": "Ya has confirmado tu asistencia",
     "withdrawButton": "Retirar mi confirmación",
-    "parentalConsent": "Mis padres o tutores consienten mi participación",
     "validation": {
       "nameRequired": "Escribe tu nombre para que sepamos quién eres.",
       "menuRequired": "Dinos qué menú prefieres para preparar tu comida.",
       "privacyRequired": "Acepta la Política de Privacidad para continuar.",
       "ageUnder14": "Al ser menor de 14 años, necesitamos el consentimiento de tus padres o tutores.",
       "healthConsentRequired": "Dinos si podemos usar tu información de alergias para adaptar el menú.",
-      "nameFullRequired": "Introduce el nombre completo: nombre y dos apellidos.",
-      "parentalConsentRequired": "Confirma el consentimiento parental para los acompañantes niños"
+      "nameFullRequired": "Introduce el nombre completo: nombre y dos apellidos."
     },
     "successAttending": "¡Gracias, {{name}}! Nos alegra mucho que vengas.",
     "successNotAttending": "Gracias, {{name}}. Te echaremos de menos.",

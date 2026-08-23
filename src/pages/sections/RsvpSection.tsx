@@ -729,52 +729,14 @@ const RsvpSection = memo(function RsvpSection({
                     </label>
 
                     {(() => {
-                      // El consentimiento parental ya no depende de una edad
-                      // calculada, sino del selector explícito ¿es niño?.
-                      const isCompChild = rsvpForm.companionIsChildren?.[i] === "yes";
                       const hasCompAllergies =
                         (rsvpForm.companionAllergies?.[i] || []).length > 0 ||
                         (rsvpForm.companionAllergiesOther?.[i] || "").trim().length > 0;
                       return (
                         <>
-                          {isCompChild ? (
-                            <>
-                              <p style={{ fontSize: "0.82rem", color: "#d97b18", margin: "0.3rem 0" }}>
-                                {t("rsvp.childParentalHint")}
-                              </p>
-                              <label
-                                className="setup-checkbox-label"
-                                style={{
-                                  display: "flex",
-                                  alignItems: "center",
-                                  gap: "0.5rem",
-                                  color: "var(--setup-title)",
-                                  fontSize: "0.85rem",
-                                  cursor: isAlreadySubmitted ? "default" : "pointer",
-                                  marginBottom: "0.5rem",
-                                }}
-                              >
-                                <input
-                                  type="checkbox"
-                                  checked={rsvpForm.companionParentalConsents?.[i] || false}
-                                  onChange={(e) => {
-                                    const current = [...(rsvpForm.companionParentalConsents || [])];
-                                    current[i] = e.target.checked;
-                                    updateRsvpField("companionParentalConsents", current);
-                                  }}
-                                  style={{
-                                    accentColor: "var(--setup-accent)",
-                                    width: "1rem",
-                                    height: "1rem",
-                                    flexShrink: 0,
-                                  }}
-                                  required={isCompChild}
-                                  disabled={isAlreadySubmitted}
-                                />
-                                <span>{t("rsvp.parentalConsent")}</span>
-                              </label>
-                            </>
-                          ) : null}
+                          {/* El invitado principal se asume tutor/legal o
+                              responsable del niño durante la celebración: no
+                              se exige checkbox de consentimiento parental. */}
                           {hasCompAllergies ? (
                             <label
                               className="setup-checkbox-label"

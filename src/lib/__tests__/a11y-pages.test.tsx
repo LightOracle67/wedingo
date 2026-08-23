@@ -273,7 +273,6 @@ describe("a11y-page-audit", () => {
       companionAllergies: [[]],
       companionAllergiesOther: [""],
       companionIsChildren: [],
-      companionParentalConsents: [false],
       companionHealthConsents: [false],
       companionTransportChoices: ["0"],
       companionTransportModes: ["bus"],

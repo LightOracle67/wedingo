@@ -47,8 +47,9 @@ interface RsvpFormData {
   companionAllergiesOther: string[];
   // Flag por acompañante: "yes" | "no". Sustituye a la fecha de nacimiento
   // (minimización GDPR): solo se guarda un booleano derivado en Firestore.
+  // El consentimiento parental se asume: el invitado principal es el
+  // tutor/legal o responsable del niño durante la celebración.
   companionIsChildren: string[];
-  companionParentalConsents: boolean[];
   companionHealthConsents: boolean[];
   companionTransportModes: string[];
   companionTransportChoices: string[];
@@ -134,7 +135,6 @@ function RsvpFormDefault(): RsvpFormData {
     companionAllergies: [],
     companionAllergiesOther: [],
     companionIsChildren: [],
-    companionParentalConsents: [],
     companionHealthConsents: [],
     companionTransportModes: [],
     companionTransportChoices: [],
@@ -415,7 +415,6 @@ export function useRsvp(
           companionMenus: [],
           companionAllergies: [],
           companionIsChildren: [],
-          companionParentalConsents: [],
           companionHealthConsents: [],
           companionTransportChoices: [],
           companionTransportModes: [],
@@ -446,7 +445,6 @@ export function useRsvp(
         const linkedCompanions = rsvpEntries.filter((e) => e.mainGuestDocId === match.id);
         // Documentos antiguos sin isChild se tratan como adultos ("no").
         const companionIsChildren = linkedCompanions.map((c) => (c.isChild ? "yes" : "no"));
-        const companionParentalConsents = linkedCompanions.map((c) => c.parentalConsent || false);
         const companionHealthConsents = linkedCompanions.map((c) => c.healthConsent || false);
         const parsed = parseDietaryInfo(match.dietaryInfo, !!match.mealChoice);
         setRsvpForm((current) => ({
@@ -458,7 +456,6 @@ export function useRsvp(
           companionAllergies: match.companionAllergies || [],
           companionAllergiesOther: match.companionAllergiesOther || [],
           companionIsChildren,
-          companionParentalConsents,
           companionHealthConsents,
           companionTransportChoices: match.companionTransportChoices || [],
           companionTransportModes: match.companionTransportModes || [],
@@ -577,11 +574,6 @@ export function useRsvp(
           }
           if (!isValidFullName(data.companionNames[i]!)) {
             return t("rsvp.validation.nameFullRequired");
-          }
-          // Un acompañante marcado como niño exige el consentimiento parental:
-          // sin él, el envío se bloquea (requisito GDPR para menores).
-          if (data.companionIsChildren?.[i] === "yes" && !data.companionParentalConsents?.[i]) {
-            return t("rsvp.validation.parentalConsentRequired");
           }
         }
       }
