@@ -68,7 +68,7 @@ const RsvpSection = memo(function RsvpSection({
   // El formulario (rsvpForm/updateRsvpField/submit) viene del contexto anidado
   // RsvpFormContext: solo esta sección lo consume, de modo que teclear en el
   // RSVP NO re-renderiza PublicInvitation ni el resto de secciones.
-  const { rsvpForm, updateRsvpField, handleRsvpSubmit, computeAge } = useRsvpFormContext();
+  const { rsvpForm, updateRsvpField, handleRsvpSubmit } = useRsvpFormContext();
   // El botón "Retirar respuesta" solo funciona con sesión de admin (las reglas
   // Firestore exigen isSuperAdmin o hasActiveSession): para el invitado sin
   // sesión se oculta, ya que de otro modo se mostraría un botón que siempre
@@ -151,9 +151,6 @@ const RsvpSection = memo(function RsvpSection({
 
   const hasDietaryData = (rsvpForm.allergies || []).length > 0 || (rsvpForm.allergiesOther || "").trim().length > 0;
   const showHealthConsent = isAttending && hasDietaryData;
-
-  // Niños permitidos si la opción está activada en configuración.
-  const kidsAllowed = config?.kidsPolicyEnabled === "true";
 
   const hasStructuredMenu = menuEnabled && (menuCarneDishes || menuPescadoDishes || menuVeganoDishes);
 
@@ -276,20 +273,6 @@ const RsvpSection = memo(function RsvpSection({
       updateRsvpField("allergies", updated);
     },
     [rsvpForm.allergies, updateRsvpField],
-  );
-
-  const handleBirthDateChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-      updateRsvpField("birthDate", e.target.value);
-    },
-    [updateRsvpField],
-  );
-
-  const handleParentalConsentChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      updateRsvpField("parentalConsent", e.target.checked);
-    },
-    [updateRsvpField],
   );
 
   const handlePrivacyConsentChange = useCallback(
@@ -709,37 +692,36 @@ const RsvpSection = memo(function RsvpSection({
                       />
                     </fieldset>
 
-                    <label className="setup-label" htmlFor={`companion-birth-${i}`} style={{ marginTop: "0.5rem" }}>
-                      {t("rsvp.birthDateLabel")} *
+                    {/* Selector ¿es niño?: sustituye a la fecha de nacimiento
+                        (minimización de datos GDPR). Solo guarda un flag
+                        booleano, nunca datos de edad. */}
+                    <label className="setup-label" htmlFor={`companion-child-${i}`} style={{ marginTop: "0.5rem" }}>
+                      {t("rsvp.childQuestion")} *
                     </label>
-                    <input
-                      id={`companion-birth-${i}`}
-                      type="date"
-                      max={new Date().toISOString().split("T")[0]}
+                    <select
+                      id={`companion-child-${i}`}
                       className="setup-input"
-                      value={rsvpForm.companionBirthDates?.[i] || ""}
-                      onChange={(e) => {
-                        const current = [...(rsvpForm.companionBirthDates || [])];
-                        current[i] = e.target.value;
-                        updateRsvpField("companionBirthDates", current);
-                      }}
-                      style={{ colorScheme: "light" }}
-                      required
+                      value={rsvpForm.companionIsChildren?.[i] || "no"}
+                      onChange={(e) => updateRsvpField(`companionIsChildren[${i}]`, e.target.value)}
                       disabled={isAlreadySubmitted}
-                    />
+                    >
+                      <option value="no">{t("rsvp.childNo")}</option>
+                      <option value="yes">{t("rsvp.childYes")}</option>
+                    </select>
 
                     {(() => {
-                      const compAge = computeAge(rsvpForm.companionBirthDates?.[i] || "");
-                      const isCompUnder14 = compAge !== null && compAge < 14;
+                      // El consentimiento parental ya no depende de una edad
+                      // calculada, sino del selector explícito ¿es niño?.
+                      const isCompChild = rsvpForm.companionIsChildren?.[i] === "yes";
                       const hasCompAllergies =
                         (rsvpForm.companionAllergies?.[i] || []).length > 0 ||
                         (rsvpForm.companionAllergiesOther?.[i] || "").trim().length > 0;
                       return (
                         <>
-                          {isCompUnder14 ? (
+                          {isCompChild ? (
                             <>
                               <p style={{ fontSize: "0.82rem", color: "#d97b18", margin: "0.3rem 0" }}>
-                                {t("rsvp.ageUnder14Warning")}
+                                {t("rsvp.childParentalHint")}
                               </p>
                               <label
                                 className="setup-checkbox-label"
@@ -767,7 +749,7 @@ const RsvpSection = memo(function RsvpSection({
                                     height: "1rem",
                                     flexShrink: 0,
                                   }}
-                                  required={isCompUnder14}
+                                  required={isCompChild}
                                   disabled={isAlreadySubmitted}
                                 />
                                 <span>{t("rsvp.parentalConsent")}</span>
@@ -822,149 +804,6 @@ const RsvpSection = memo(function RsvpSection({
                 {t("rsvp.confirmCount", { count: (rsvpForm.companionCount || 0) + 1 })}
               </p>
             ) : null}
-
-            {/* Niños: selector que muestra contador y alergias al activarse. */}
-            {isAttending && kidsAllowed && (
-              <div style={{ marginTop: "0.75rem" }}>
-                <label
-                  className="setup-checkbox-label"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    color: "var(--setup-title)",
-                    fontSize: "0.85rem",
-                    cursor: isAlreadySubmitted ? "default" : "pointer",
-                  }}
-                >
-                  <input
-                    type="checkbox"
-                    checked={rsvpForm.childrenCount > 0}
-                    onChange={(e) => {
-                      updateRsvpField("childrenCount", e.target.checked ? 1 : 0);
-                      if (!e.target.checked) {
-                        updateRsvpField("childrenAllergies", {});
-                        updateRsvpField("childrenAllergiesOther", "");
-                      }
-                    }}
-                    disabled={isAlreadySubmitted}
-                    style={{
-                      accentColor: "var(--setup-accent)",
-                      width: "1rem",
-                      height: "1rem",
-                      flexShrink: 0,
-                    }}
-                  />
-                  <span>{t("rsvp.childrenLabel")}</span>
-                </label>
-                <p className="setup-help" style={{ marginTop: "0.2rem", fontSize: "0.75rem" }}>
-                  {t("rsvp.childrenHint")}
-                </p>
-                {rsvpForm.childrenCount > 0 && (
-                  <div style={{ marginTop: "0.5rem" }}>
-                    <label className="setup-label" htmlFor="rsvpChildrenCount" style={{ marginTop: "0.5rem" }}>
-                      {t("rsvp.childrenCountLabel")} *
-                    </label>
-                    <input
-                      id="rsvpChildrenCount"
-                      type="number"
-                      min="1"
-                      max="10"
-                      className="setup-input"
-                      value={rsvpForm.childrenCount}
-                      onChange={(e) => updateRsvpField("childrenCount", Math.max(1, Math.min(10, Number(e.target.value) || 1)))}
-                      placeholder={t("rsvp.childrenCountPlaceholder")}
-                      required
-                      disabled={isAlreadySubmitted}
-                      style={{ marginTop: "0.25rem", width: "min(120px, 100%)" }}
-                    />
-<fieldset style={{ border: "none", padding: 0, margin: "0.5rem 0 0 0" }}>
-                      <legend className="setup-label" style={{ fontSize: "0.85rem" }}>
-                        {t("rsvp.childrenAllergiesLegend")}
-                      </legend>
-                      <div style={{ display: "flex", flexDirection: "column", gap: "0.35rem" }}>
-                        {ALLERGIES.map((a) => {
-                          const childAllergies = rsvpForm.childrenAllergies || {};
-                          const hasAllergy = (childAllergies[a] || 0) > 0;
-                          const allergyCount = childAllergies[a] || 1;
-                          return (
-                            <label
-                              key={a}
-                              style={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "0.5rem",
-                                fontSize: "0.85rem",
-                                cursor: isAlreadySubmitted ? "default" : "pointer",
-                                flexWrap: "wrap",
-                              }}
-                            >
-                              <input
-                                type="checkbox"
-                                checked={hasAllergy}
-                                onChange={(e) => {
-                                  const current = { ...childAllergies };
-                                  if (e.target.checked) {
-                                    current[a] = 1;
-                                  } else {
-                                    delete current[a];
-                                  }
-                                  updateRsvpField("childrenAllergies", current);
-                                }}
-                                disabled={isAlreadySubmitted}
-                                style={{
-                                  accentColor: "var(--setup-accent)",
-                                  width: "1rem",
-                                  height: "1rem",
-                                  flexShrink: 0,
-                                }}
-                              />
-                              <span style={{ flex: "1 1 auto", minWidth: "120px" }}>
-                                {t(`rsvp.allergies.${a}`, { defaultValue: a })}
-                              </span>
-                              {hasAllergy && (
-                                <input
-                                  type="number"
-                                  min="1"
-                                  max={rsvpForm.childrenCount}
-                                  className="setup-input"
-                                  value={allergyCount}
-                                  onChange={(e) => {
-                                    const val = Math.max(1, Math.min(rsvpForm.childrenCount, Number(e.target.value) || 1));
-                                    const current = { ...childAllergies };
-                                    current[a] = val;
-                                    updateRsvpField("childrenAllergies", current);
-                                  }}
-                                  disabled={isAlreadySubmitted}
-                                  style={{
-                                    width: "min(70px, 100%)",
-                                    marginLeft: "0.5rem",
-                                  }}
-                                  aria-label={t("rsvp.childrenAllergyCountLabel", { allergy: t(`rsvp.allergies.${a}`, { defaultValue: a }) })}
-                                />
-                              )}
-                            </label>
-                          );
-                        })}
-                      </div>
-                      <label className="sr-only" htmlFor="rsvpChildrenAllergiesOther">
-                        {t("rsvp.childrenAllergiesOtherLabel")}
-                      </label>
-                      <input
-                        id="rsvpChildrenAllergiesOther"
-                        className="setup-input"
-                        type="text"
-                        value={rsvpForm.childrenAllergiesOther || ""}
-                        onChange={(e) => updateRsvpField("childrenAllergiesOther", e.target.value.slice(0, 200))}
-                        placeholder={t("rsvp.childrenAllergiesPlaceholder")}
-                        disabled={isAlreadySubmitted}
-                        style={{ marginTop: "0.35rem", fontSize: "0.85rem" }}
-                      />
-                    </fieldset>
-                  </div>
-)}
-               </div>
-            )}
 
             {isAttending && hasStructuredMenu && (
               <div className="setup-field" style={{ marginTop: "0.75rem" }}>

@@ -36,22 +36,18 @@ import { RsvpFormContext, type RsvpFormValue } from "../../../contexts/useRsvpCo
 const baseForm = {
   guestName: "",
   attendance: "alone",
-  birthDate: "",
   companionCount: 0,
   companionNames: [],
   companionMenus: [],
   companionAllergies: [],
   companionAllergiesOther: [],
-  companionBirthDates: [],
+  companionIsChildren: [],
   companionParentalConsents: [],
   companionHealthConsents: [],
   companionTransportChoices: [],
   companionTransportModes: [],
   companionTransportTimes: [],
   companionTransportPlaces: [],
-  childrenCount: 0,
-  childrenAllergies: {},
-  childrenAllergiesOther: "",
   menuSelection: "",
   allergies: [],
   allergiesOther: "",
@@ -87,7 +83,6 @@ const baseProps = {
   menuPescadoDishes: "",
   menuVeganoDishes: "",
   menuTextoDishes: "",
-  computeAge: vi.fn((_d: string) => 0),
 };
 
 const updateRsvpField = baseProps.updateRsvpField as ReturnType<typeof vi.fn>;
@@ -95,17 +90,16 @@ const updateRsvpField = baseProps.updateRsvpField as ReturnType<typeof vi.fn>;
 /**
  * Wrapper que provee el formulario vía RsvpFormContext (el componente ya no lo
  * recibe por props): los tests siguen controlando rsvpForm/updateRsvpField/
- * handleRsvpSubmit/computeAge como si fueran props del wrapper.
+ * handleRsvpSubmit como si fueran props del wrapper.
  */
 function WrappedRsvp(props: Record<string, unknown>) {
-  const { rsvpForm: _f, updateRsvpField: _u, handleRsvpSubmit: _h, computeAge: _c, ...rest } = props;
+  const { rsvpForm: _f, updateRsvpField: _u, handleRsvpSubmit: _h, ...rest } = props;
   return (
     <RsvpFormContext.Provider
       value={{
         rsvpForm: (props.rsvpForm as typeof baseForm) ?? baseForm,
         updateRsvpField: (props.updateRsvpField as RsvpFormValue["updateRsvpField"]) ?? (updateRsvpField as unknown as RsvpFormValue["updateRsvpField"]),
         handleRsvpSubmit: (props.handleRsvpSubmit as (e: React.FormEvent) => void) ?? (() => {}),
-        computeAge: (props.computeAge as (d: string) => number | null) ?? (() => 0),
       }}
     >
       <RsvpSection {...(rest as unknown as React.ComponentProps<typeof RsvpSection>)} />
@@ -583,7 +577,10 @@ describe("RsvpSection", () => {
 
   it("updates a companion allergies", () => {
     render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
-    fireEvent.click(screen.getAllByLabelText("rsvp.allergies.sin gluten")[1]);
+    // Dos checkboxes de "sin gluten": invitado principal + acompañante.
+    const allergyChecks = screen.getAllByLabelText("rsvp.allergies.sin gluten");
+    expect(allergyChecks.length).toBeGreaterThan(1);
+    fireEvent.click(allergyChecks[1]!);
     const calls = updateRsvpField.mock.calls.map((c) => c[0]);
     expect(calls.some((f) => String(f).startsWith("companionAllergies"))).toBe(true);
   });
@@ -615,11 +612,43 @@ describe("RsvpSection", () => {
     expect(updateRsvpField).toHaveBeenCalledWith("transportChoice", "0");
   });
 
-  it("does not require parental consent for guests aged 14 or older", () => {
-    const props = { ...baseProps, computeAge: vi.fn(() => 20) };
-    render(<WrappedRsvp {...props} rsvpForm={{ ...baseForm, attendance: "alone", birthDate: "2000-01-01" }} />);
-    expect(screen.queryByText("rsvp.ageUnder14Warning")).toBeNull();
+  it("muestra el selector ¿es niño? por acompañante con valor por defecto no", () => {
+    render(
+      <WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />,
+    );
+    const select = screen.getByLabelText("rsvp.childQuestion *") as HTMLSelectElement;
+    expect(select).toBeDefined();
+    expect(select.value).toBe("no");
+    fireEvent.change(select, { target: { value: "yes" } });
+    expect(updateRsvpField).toHaveBeenCalledWith("companionIsChildren[0]", "yes");
+  });
+
+  it("exige consentimiento parental cuando el acompañante es niño", () => {
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1, companionIsChildren: ["yes"] }}
+      />,
+    );
+    expect(screen.getByText("rsvp.childParentalHint")).toBeDefined();
+    expect(screen.getByLabelText("rsvp.parentalConsent")).toBeDefined();
+  });
+
+  it("no muestra consentimiento parental para un acompañante adulto", () => {
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1, companionIsChildren: ["no"] }}
+      />,
+    );
+    expect(screen.queryByText("rsvp.childParentalHint")).toBeNull();
     expect(screen.queryByLabelText("rsvp.parentalConsent")).toBeNull();
+  });
+
+  it("no renderiza la sección antigua de niños (childrenCount)", () => {
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
+    expect(screen.queryByLabelText("rsvp.childrenLabel")).toBeNull();
+    expect(screen.queryByLabelText("rsvp.childrenCountLabel")).toBeNull();
   });
 
   it("renders no menu options when no dishes are configured", () => {

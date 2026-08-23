@@ -45,7 +45,6 @@ export function RsvpProvider({ children }: { children: React.ReactNode }) {
       rsvpForm: rsvp.rsvpForm,
       updateRsvpField: rsvp.updateRsvpField,
       handleRsvpSubmit: rsvp.handleRsvpSubmit,
-      computeAge: rsvp.computeAge,
     }),
     [rsvp],
   );

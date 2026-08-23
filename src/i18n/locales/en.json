@@ -157,6 +157,10 @@
     "attendingWithCompanions": "I'll attend with companions",
     "notAttending": "I can't attend",
     "companionHeading": "Companion {{number}}",
+    "childQuestion": "Is this guest a child?",
+    "childYes": "Yes",
+    "childNo": "No",
+    "childParentalHint": "As a child, parental or guardian consent is required.",
     "menuCarne": "Meat",
     "menuPescado": "Fish",
     "menuVegano": "Vegan/Vegetarian",
@@ -174,17 +178,15 @@
     "companionInfo": "You are accompanying {{name}}",
     "alreadySubmitted": "You have already confirmed your attendance",
     "withdrawButton": "Withdraw my confirmation",
-    "birthDateLabel": "Date of birth",
-    "ageUnder14Warning": "You are under 14 years of age. You need your parents' or guardians' consent.",
     "parentalConsent": "My parents or guardians consent to my participation",
     "validation": {
       "nameRequired": "Please write your name so we know who you are.",
       "menuRequired": "Let us know your menu choice so we can prepare your meal.",
       "privacyRequired": "Please accept the Privacy Policy to continue.",
-      "birthDateRequired": "We need your date of birth to complete your response.",
       "ageUnder14": "Since you are under 14, we need your parents' or guardians' consent to confirm.",
       "healthConsentRequired": "Please let us know if we can use your allergy info to adapt the menu.",
-      "nameFullRequired": "Enter your full name: first name and two surnames."
+      "nameFullRequired": "Enter your full name: first name and two surnames.",
+      "parentalConsentRequired": "Confirm parental consent for child companions"
     },
     "successAttending": "Thank you, {{name}}! We are so happy you will be there.",
     "successNotAttending": "Thank you, {{name}}. We will miss you!",
@@ -208,7 +210,6 @@
       "alergia mariscos": "Shellfish allergy"
     },
     "nameHint": "Enter your first name and your two surnames.",
-    "birthDateHint": "Only needed to know if you are under 14 years old.",
     "transportLabel": "Transport",
     "transportHint": "Choose how you will get to the celebration.",
     "transportOwnCarOption": "I'll use my own car",
@@ -235,14 +236,7 @@
     "summaryCompanions": "Companions: {{c}}",
     "yourTable": "You are at table {table}",
     "allergiesOtherLabel": "Other allergies",
-    "childrenLabel": "Are children coming?",
-    "childrenHint": "Check this box if you are bringing children to the celebration.",
-    "childrenCountLabel": "Number of children",
-    "childrenCountPlaceholder": "0",
-    "childrenAllergiesLegend": "Children's allergies",
-    "childrenAllergiesPlaceholder": "Other allergies (specify)",
     "childrenAllergiesHint": "Only indicate food allergies and intolerances for children.",
-    "childrenAllergyCountLabel": "How many children have {{allergy}}?",
     "childrenNotAllowed": "This wedding is adults-only; children cannot be included in the RSVP."
   },
   "public": {
@@ -633,7 +627,6 @@
     "tableDiet": "Diet info",
     "tableDate": "Date",
     "tableTransport": "Transport",
-    "tableBirth": "Birth date",
     "tableConsents": "Consents",
     "transportOwnCar": "Own car",
     "consentParental": "Parental",
@@ -687,7 +680,9 @@
     "manualUpdated": "Response updated.",
     "manualNameRequired": "Name is required.",
     "manualError": "Could not save the response. Try again.",
-    "manualLimitReached": "Response limit reached for this invitation."
+    "manualLimitReached": "Response limit reached for this invitation.",
+    "tableChild": "Child",
+    "childYes": "Yes"
   },
   "share": {
     "publishedAt": "Your invitation is published at:",

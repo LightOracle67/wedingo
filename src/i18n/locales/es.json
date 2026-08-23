@@ -157,6 +157,10 @@
     "attendingWithCompanions": "Asistiré con acompañantes",
     "notAttending": "No podré asistir",
     "companionHeading": "Acompañante {{number}}",
+    "childQuestion": "¿Es niño?",
+    "childYes": "Sí",
+    "childNo": "No",
+    "childParentalHint": "Al ser un niño, se requiere el consentimiento de sus padres o tutores.",
     "menuCarne": "Carne",
     "menuPescado": "Pescado",
     "menuVegano": "Vegano/Vegetariano",
@@ -174,17 +178,15 @@
     "companionInfo": "Acompañas a {{name}}",
     "alreadySubmitted": "Ya has confirmado tu asistencia",
     "withdrawButton": "Retirar mi confirmación",
-    "birthDateLabel": "Fecha de nacimiento",
-    "ageUnder14Warning": "Eres menor de 14 años. Necesitas el consentimiento de tus padres o tutores.",
     "parentalConsent": "Mis padres o tutores consienten mi participación",
     "validation": {
       "nameRequired": "Escribe tu nombre para que sepamos quién eres.",
       "menuRequired": "Dinos qué menú prefieres para preparar tu comida.",
       "privacyRequired": "Acepta la Política de Privacidad para continuar.",
-      "birthDateRequired": "Necesitamos tu fecha de nacimiento para completar tu respuesta.",
       "ageUnder14": "Al ser menor de 14 años, necesitamos el consentimiento de tus padres o tutores.",
       "healthConsentRequired": "Dinos si podemos usar tu información de alergias para adaptar el menú.",
-      "nameFullRequired": "Introduce el nombre completo: nombre y dos apellidos."
+      "nameFullRequired": "Introduce el nombre completo: nombre y dos apellidos.",
+      "parentalConsentRequired": "Confirma el consentimiento parental para los acompañantes niños"
     },
     "successAttending": "¡Gracias, {{name}}! Nos alegra mucho que vengas.",
     "successNotAttending": "Gracias, {{name}}. Te echaremos de menos.",
@@ -208,7 +210,6 @@
       "alergia mariscos": "Alergia a mariscos"
     },
     "nameHint": "Escribe tu nombre y tus dos apellidos.",
-    "birthDateHint": "Necesaria solo para saber si eres menor de 14 años.",
     "transportLabel": "Transporte",
     "transportHint": "Elige cómo llegarás a la celebración.",
     "transportOwnCarOption": "Usaré mi coche propio",
@@ -235,14 +236,7 @@
     "summaryCompanions": "Acompañantes: {{c}}",
     "yourTable": "Estás en la mesa {table}",
     "allergiesOtherLabel": "Otras alergias",
-    "childrenLabel": "¿Vienen niños?",
-    "childrenHint": "Marca esta casilla si traes niños a la celebración.",
-    "childrenCountLabel": "Número de niños",
-    "childrenCountPlaceholder": "0",
-    "childrenAllergiesLegend": "Alergias de los niños",
-    "childrenAllergiesPlaceholder": "Otras alergias (especificar)",
     "childrenAllergiesHint": "Indica solo alergias e intolerancias alimentarias de los niños.",
-    "childrenAllergyCountLabel": "¿Cuántos niños tienen {{allergy}}?",
     "childrenNotAllowed": "Esta boda es solo para adultos; no se pueden incluir niños en la confirmación."
   },
   "public": {
@@ -633,7 +627,6 @@
     "tableDiet": "Info alimentaria",
     "tableDate": "Fecha",
     "tableTransport": "Transporte",
-    "tableBirth": "Nacimiento",
     "tableConsents": "Consentimientos",
     "transportOwnCar": "Coche propio",
     "consentParental": "Tutores",
@@ -687,7 +680,9 @@
     "manualUpdated": "Respuesta actualizada.",
     "manualNameRequired": "El nombre es obligatorio.",
     "manualError": "No se pudo guardar la respuesta. Inténtalo de nuevo.",
-    "manualLimitReached": "Límite de respuestas alcanzado para esta invitación."
+    "manualLimitReached": "Límite de respuestas alcanzado para esta invitación.",
+    "tableChild": "Niño",
+    "childYes": "Sí"
   },
   "share": {
     "publishedAt": "Tu invitación está publicada en:",

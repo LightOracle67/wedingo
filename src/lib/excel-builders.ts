@@ -24,7 +24,8 @@ interface RsvpRowLike {
   submittedAt?: string;
   transportChoice?: string;
   transportMode?: string;
-  birthDate?: string;
+  // Flag de niño (nuevo modelo RSVP).
+  isChild?: boolean;
 }
 
 /** Mensaje del buzón privado (ya formateado por el componente). */
@@ -111,7 +112,7 @@ export function buildRSVPSheet(entries: RsvpRowLike[], t: (key: string) => strin
     menuLabel(e.mealChoice || "", t),
     e.dietaryInfo || "",
     [e.transportChoice || "", e.transportMode && e.transportMode !== "own" ? `(${e.transportMode})` : ""].filter(Boolean).join(" "),
-    e.birthDate || "",
+    e.isChild ? t("attendance.childYes") : "",
     [e.phone, e.email].filter(Boolean).join(" / "),
     e.submittedAt ? excelDate(e.submittedAt) : "",
   ]);
@@ -123,7 +124,7 @@ export function buildRSVPSheet(entries: RsvpRowLike[], t: (key: string) => strin
       t("attendance.tableMenu"),
       t("attendance.tableDiet"),
       t("attendance.tableTransport"),
-      t("attendance.tableBirth"),
+      t("attendance.tableChild"),
       t("attendance.tableContact"),
       t("attendance.tableDate"),
     ],

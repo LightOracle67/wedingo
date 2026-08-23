@@ -23,7 +23,8 @@ interface RsvpEntry {
   submittedAt: string;
   mainGuestName?: string;
   companionDocIds?: string[];
-  birthDate?: string;
+  // Flag de niño (nuevo modelo): sustituye a la columna de fecha nacimiento.
+  isChild?: boolean;
   parentalConsent?: boolean;
   healthConsent?: boolean;
   transportChoice?: string;
@@ -91,7 +92,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     inviteToken,
     onDataChanged,
   } = props;
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { addToast } = useToast();
   const [page, setPage] = useState(0);
   const [pageSize, setPageSize] = useState(25);
@@ -241,17 +242,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     [departures, t],
   );
 
-  const formatBirthDate = useCallback(
-    (iso: string) => {
-      if (!iso) return "—";
-      try {
-        return new Date(iso.length <= 10 ? `${iso}T00:00:00` : iso).toLocaleDateString(i18n.language || "es");
-      } catch {
-        return iso;
-      }
-    },
-    [i18n.language],
-  );
 
   const filterEntries = filteredEntries || [];
 
@@ -300,7 +290,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
             ? resolveTransportLabel(e.transportMode || "", e.transportChoice || "", e.transportTime || "")
             : "",
       },
-      { key: "birth", type: "date", getValue: (e: RsvpEntry) => e.birthDate || "" },
+      { key: "child", type: "boolean", getValue: (e: RsvpEntry) => Boolean(e.isChild) },
       {
         key: "consents",
         type: "boolean",
@@ -510,7 +500,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                     onSort={toggleSort}
                     style={{ minWidth: "110px" }}
                   >
-                    {t("attendance.tableBirth")}
+                    {t("attendance.tableChild")}
                   </SortableTh>
                   <SortableTh
                     columnKey="consents"
@@ -645,7 +635,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                       <td>
                         <div style={crossed}>
                           <span style={{ fontSize: "0.78rem" }}>
-                            {entry.birthDate ? formatBirthDate(entry.birthDate) : "—"}
+                            {/* Columna "Niño": muestra el flag isChild del doc
+                                (los docs antiguos, sin flag, muestran "—"). */}
+                            {entry.isChild ? t("attendance.childYes") : "—"}
                           </span>
                         </div>
                       </td>

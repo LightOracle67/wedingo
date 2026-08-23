@@ -32,14 +32,14 @@ export function useRsvpContext() {
 }
 
 /**
- * Formulario RSVP (rsvpForm + updateRsvpField + submit + computeAge): cambia
+ * Formulario RSVP (rsvpForm + updateRsvpField + submit): cambia
  * con cada tecla y lo consume únicamente RsvpSection. Al estar aislado en su
  * propio contexto anidado, teclear en el formulario no re-renderiza el resto
  * del árbol (PublicInvitation dejó de re-renderizarse por tecla).
  */
 export type RsvpFormValue = Pick<
   ReturnType<typeof useRsvp>,
-  "rsvpForm" | "updateRsvpField" | "handleRsvpSubmit" | "computeAge"
+  "rsvpForm" | "updateRsvpField" | "handleRsvpSubmit"
 >;
 
 export const RsvpFormContext = createContext<RsvpFormValue | null>(null);

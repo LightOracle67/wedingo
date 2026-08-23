@@ -8,17 +8,15 @@ interface RsvpFormLike {
   companionMenus: string[];
   companionAllergies: string[][];
   companionAllergiesOther: string[];
-  companionBirthDates: string[];
+  // Flag por acompañante ("yes" | "no"): sustituye a la fecha de nacimiento
+  // (minimización GDPR). En Firestore solo se persiste el booleano isChild.
+  companionIsChildren: string[];
   companionParentalConsents: boolean[];
   companionHealthConsents: boolean[];
   companionTransportModes: string[];
   companionTransportChoices: string[];
-  companionTransportTimes: string[];
-  companionTransportPlaces: string[];
-  childrenNames: string[];
-  childrenAllergies: string[];
-  childrenAllergiesOther: string[];
-  childrenCount: number;
+  companionTransportTimes?: string[];
+  companionTransportPlaces?: string[];
   menuSelection: string;
   allergies: string[];
   allergiesOther: string;
@@ -41,13 +39,10 @@ export function buildMainGuestData(input: {
   companionCount: number;
   single: string;
   encryptedDietaryInfo: string;
-  age: number | null;
   inviteToken: string;
   nowTimestamp: FieldValue;
 }): Record<string, unknown> {
-  const { data, isAttending, companionCount, single, encryptedDietaryInfo, age, inviteToken, nowTimestamp } = input;
-  // Calcula birthDate desde edad: año de referencia 2025 para consistencia con tests
-  const birthDate = age ? `${2025 - age}-01-01` : undefined;
+  const { data, isAttending, companionCount, single, encryptedDietaryInfo, inviteToken, nowTimestamp } = input;
   const mainGuestData: Record<string, unknown> = {
     rsvpType: "main",
     guestName: single,
@@ -56,8 +51,6 @@ export function buildMainGuestData(input: {
     companionNames: data.companionNames.slice(0, companionCount),
     companionAllergies: data.companionAllergies.slice(0, companionCount).map((a) => a.join(" | ")),
     companionAllergiesOther: (data.companionAllergiesOther || []).slice(0, companionCount),
-    childrenNames: data.childrenNames.slice(0, data.childrenNames.length),
-    childrenAllergies: (data.childrenAllergies || []).join(" | "),
     allergiesOther: data.allergiesOther || "",
     dietaryInfo: encryptedDietaryInfo,
     inviteToken,
@@ -67,7 +60,6 @@ export function buildMainGuestData(input: {
     // F2-8: estadísticas de dispositivo (anonimizado: solo UA, sin IP).
     userAgent: navigator.userAgent.slice(0, 200),
   };
-  if (birthDate) mainGuestData.birthDate = birthDate;
   // Health consent cuando hay info dietética (alergias/intolerancias)
   if (encryptedDietaryInfo || data.allergiesOther) {
     mainGuestData.healthConsent = true;
@@ -120,6 +112,15 @@ export function buildCompanionData(input: {
     mainGuestDocId: mainGuestId,
     mainGuestName: single,
   };
+  // Flag de niño derivado del select del formulario: nunca se guardan fechas
+  // de nacimiento ni edades (GDPR: mínimo dato necesario).
+  const isChild = data.companionIsChildren?.[i] === "yes";
+  companionData.isChild = isChild;
+  // El consentimiento parental solo se persiste cuando aplica (niño y
+  // checkbox marcado): evidencia del consentimiento art. 7 GDPR.
+  if (isChild && data.companionParentalConsents?.[i]) {
+    companionData.parentalConsent = true;
+  }
   const compAllergies = data.companionAllergies[i] || [];
   const hasCompDietary = compAllergies.length > 0;
   if (hasCompDietary) {
