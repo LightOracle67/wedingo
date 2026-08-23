@@ -700,9 +700,11 @@ const RsvpSection = memo(function RsvpSection({
                     </label>
                     {/* Checkbox en lugar de select: un solo toque para el
                         caso común (adulto marcado por defecto = desmarcado). */}
+                    {/* SIN htmlFor: el label ya envuelve al input; añadir
+                        htmlFor duplicaría la activación (doble toggle) y el
+                        checkbox parecería no responder al clic. */}
                     <label
                       className="setup-checkbox-label"
-                      htmlFor={`companion-child-${i}`}
                       style={{
                         display: "flex",
                         alignItems: "center",
