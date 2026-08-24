@@ -613,7 +613,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         }
         // Campos de sesión/setup que no están en config pero se guardaron
         if (!hasStoredConfig) {
-          savedConfig.createdAt = payload.createdAt as any;
+          savedConfig.createdAt = String(payload.createdAt);
           savedConfig.setupTokenHash = payload.setupTokenHash as string;
         }
         // Restore data URLs en memoria (para sesión actual)

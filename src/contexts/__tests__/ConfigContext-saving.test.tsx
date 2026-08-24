@@ -671,8 +671,8 @@ describe("ConfigProvider", () => {
     await waitFor(() => {
       expect(mockSetDoc).toHaveBeenCalled();
     });
-    const call0 = mockSetDoc.mock.calls[0];
-    const payload = call0[1] as Record<string, unknown> | undefined;
+    const call0 = mockSetDoc.mock.calls[0] as unknown[] | undefined;
+    const payload = call0?.[1] as Record<string, unknown> | undefined;
     expect(payload?.menuCarneDishes).toBe(JSON.stringify([{ order: "segundo", text: "Solomillo" }]));
 
     // Un orden inválido ya no bloquea el guardado: normalizeConfig lo
@@ -683,8 +683,11 @@ describe("ConfigProvider", () => {
     await waitFor(() => {
       expect(mockSetDoc).toHaveBeenCalled();
     });
-    const call1 = mockSetDoc.mock.calls.find((c: unknown[]) => c[1]?.menuCarneDishes) as unknown[];
-    const payload2 = call1[1] as Record<string, unknown> | undefined;
+    // Búsqueda tipada: el callback accede a la posición 1 como registro.
+    const call1 = mockSetDoc.mock.calls.find((c) =>
+      Boolean((c[1] as Record<string, unknown> | undefined)?.menuCarneDishes),
+    ) as unknown[] | undefined;
+    const payload2 = call1?.[1] as Record<string, unknown> | undefined;
     expect(payload2?.menuCarneDishes).toBeDefined();
     expect(JSON.parse(String(payload2?.menuCarneDishes))[0].order).toBe("desayuno");
     mockLocation.pathname = "/test";
