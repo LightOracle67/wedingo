@@ -434,7 +434,9 @@ const HeroSection = memo(function HeroSection({
             ) : null}
             {countdown ? (
               <div className="mt-6">
-                <p className="text-[clamp(0.8rem,2.2vw,1rem)] font-sans tracking-widest uppercase text-boda-texto/60">
+                {/* Etiqueta del cuenta atrás: opacidad 80% (antes 60%) para
+                    mantener ≥4.5:1 sobre fotos claras del hero (WCAG 1.4.3). */}
+                <p className="text-[clamp(0.8rem,2.2vw,1rem)] font-sans tracking-widest uppercase text-boda-texto/80">
                   {countdown.expired ? t("hero.todayIsWedding") : t("hero.missing")}
                 </p>
                 {!countdown.expired ? (
