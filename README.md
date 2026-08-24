@@ -154,13 +154,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 - **Cascade delete GDPR:** el borrado de una invitación ahora limpia también accessLog, confirmedPeople, `_backup`, mesas (nombres de invitados), visitas, etc. en los 3 paneles del superadmin.
 - **Sesión «zombi»:** una renovación de sesión Firestore en vuelo ya no resucita la sesión tras un logout; y el contador de fallos de renovación se resetea al reloguear.
 - **Hora medianoche:** la hora `"0"` ya no se convierte a mediodía en el `.ics` ni en la predicción de asistencia.
-- **Caps de parseo:** `giftList`/`trivia` limitados a 50 ítems y parsers tolerantes ante datos corruptos (evita freezes y listas perdidas).
-| **Info** | Itinerario con agenda interactiva (evento en curso y cuenta atrás el día del evento), código de vestimenta, política infantil |
-| **Story** | Historia de amor (texto libre) |
-| **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
-| **Gifts** | Información de regalos + IBAN (cifrado) |
-| **Accommodation** | Información de alojamiento |
-| **Transport** | Opciones de transporte (autobús/taxi/ambos), salidas con hora y mapa, o mensaje de coche propio |
+- **Caps de parseo:** parsers tolerantes ante datos corruptos (evita freezes y listas perdidas).
 
 ### RSVP
 
