@@ -535,4 +535,23 @@ describe("CoverSectionForm", () => {
     render(<CoverSectionForm />);
     expect(screen.getByLabelText("setup.instagramLabel")).toBeDefined();
   });
+
+  it("renders welcome video toggle and URL input when enabled", () => {
+    // Toggle activo + URL guardada: el input debe mostrarse con su valor.
+    mockFormData.welcomeVideoEnabled = "true";
+    mockFormData.welcomeVideo = "https://ejemplo.com/video.mp4";
+    render(<CoverSectionForm />);
+    expect(screen.getByText("setup.welcomeVideoLabel")).toBeDefined();
+    const input = screen.getByPlaceholderText("setup.welcomeVideoPlaceholder") as HTMLInputElement;
+    expect(input.value).toBe("https://ejemplo.com/video.mp4");
+    delete mockFormData.welcomeVideoEnabled;
+    delete mockFormData.welcomeVideo;
+  });
+
+  it("does not render welcome video input when disabled", () => {
+    // Sin toggle activo: ni label visible como toggle abierto ni input.
+    render(<CoverSectionForm />);
+    expect(screen.queryByPlaceholderText("setup.welcomeVideoPlaceholder")).toBeNull();
+  });
+
 });

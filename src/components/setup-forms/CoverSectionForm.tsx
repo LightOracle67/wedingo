@@ -24,6 +24,9 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
   const godparent2 = useFormField("godparent2");
   const instagramUrl = useFormField("instagramUrl");
   const inviteMessage = useFormField("inviteMessage");
+  // Vídeo de bienvenida: overlay que se reproduce sobre la portada al abrir
+  // la invitación (solo si el toggle welcomeVideoEnabled está activo).
+  const welcomeVideo = useFormField("welcomeVideo");
   const musicFile = useFormField("musicFile");
   const secondName = useFormField("secondName");
   const theme = useFormField("theme");
@@ -506,6 +509,29 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
 
       <SetupToggleField enabledField="musicFileEnabled" label={t("setup.musicLabel")} id={id}>
         <MusicArrayEditor inviteToken={inviteToken} value={musicFile} onChange={handleMusicChange} />
+      </SetupToggleField>
+
+      {/* Vídeo de bienvenida: al activarse muestra el input de URL; la
+          invitación lo reproduce como overlay sobre la portada. Se limita a
+          1000 caracteres igual que normalize-config hace al guardar. */}
+      <SetupToggleField
+        enabledField="welcomeVideoEnabled"
+        label={t("setup.welcomeVideoLabel")}
+        hint={t("setup.welcomeVideoHint")}
+        hintId={id("welcomeVideoHint")}
+        id={id}
+      >
+        <input
+          id={id("welcomeVideo")}
+          className="setup-input"
+          value={welcomeVideo}
+          onChange={(e) => updateFormField("welcomeVideo", e.target.value.slice(0, 1000))}
+          placeholder={t("setup.welcomeVideoPlaceholder")}
+          type="url"
+          inputMode="url"
+          autoComplete="url"
+          aria-describedby={id("welcomeVideoHint")}
+        />
       </SetupToggleField>
     </>
   );
