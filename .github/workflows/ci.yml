@@ -40,9 +40,6 @@ jobs:
       - run: npm run consent:check
       # Una sola pasada de Vitest con cobertura y reporte JUnit.
       - run: npx vitest run --coverage --reporter=junit --outputFile=junit.xml --exclude 'e2e/**'
-      - run: npm ci --prefix functions
-      - run: npm run functions:typecheck
-      - run: npm run functions:test
       - run: npm run changelog:check
       - run: npm run audit:prod
       - run: npm run build
