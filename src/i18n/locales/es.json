@@ -1022,7 +1022,9 @@
       "bulkExpiryTitle": "Fecha de expiración",
       "bulkSealTitle": "Sello de verificación",
       "purgeTitle": "Purga GDPR",
-      "deleteAllTitle": "Eliminar todo el sistema"
+      "deleteAllTitle": "Eliminar todo el sistema",
+      "exportTitle": "Confirmaciones — {{token}}",
+      "exportCount": "{{count}} respuesta(s)"
     },
     "login": "Entrar",
     "emailLabel": "Email",

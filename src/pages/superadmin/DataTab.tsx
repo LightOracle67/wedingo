@@ -329,13 +329,15 @@ export default function DataTab() {
           table{border-collapse:collapse;width:100%;font-size:0.85rem}
           th,td{border:1px solid #ccc;padding:0.4rem 0.5rem;text-align:left}
           th{background:#f4f4f4}</style></head><body>
-          <h1>Confirmaciones — ${token}</h1>
-          <h2>${rows.length} respuesta(s)</h2>
-          <table><thead><tr><th>Nombre</th><th>Asistencia</th><th>Acompañantes</th></tr></thead><tbody>
+          {/* Cabeceras del informe traducidas; asistencia con las mismas
+              etiquetas que el Excel del admin para consistencia. */}
+          <h1>${t("superadmin.data.exportTitle", { token })}</h1>
+          <h2>${t("superadmin.data.exportCount", { count: rows.length })}</h2>
+          <table><thead><tr><th>${t("attendance.tableName")}</th><th>${t("attendance.tableAttendance")}</th><th>${t("attendance.tableAccompanies")}</th></tr></thead><tbody>
           ${rows
             .map(
               (r) =>
-                `<tr><td>${escHtml(r.guestName)}</td><td>${escHtml(r.attendance)}</td><td>${Number(r.companionCount) || 0}</td></tr>`,
+                `<tr><td>${escHtml(r.guestName)}</td><td>${escHtml(r.attendance === "yes" ? t("attendance.attendingValue") : r.attendance === "no" ? t("attendance.notAttendingValue") : escHtml(r.attendance))}</td><td>${Number(r.companionCount) || 0}</td></tr>`,
             )
             .join("")}
           </tbody></table></body></html>`;

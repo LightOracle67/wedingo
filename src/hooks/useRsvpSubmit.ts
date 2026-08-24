@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { safeLogError } from "../lib/safe-error";
 
 interface UseRsvpSubmitOptions {
@@ -15,6 +16,8 @@ interface UseRsvpSubmitReturn {
 }
 
 export function useRsvpSubmit({ token: _token, onSubmit, validate }: UseRsvpSubmitOptions): UseRsvpSubmitReturn {
+  // Mensajes de error del submit localizados para el invitado.
+  const { t } = useTranslation();
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   // Candado de re-entrada: dos clics rápidos en el mismo tick pasarían el
@@ -39,7 +42,7 @@ export function useRsvpSubmit({ token: _token, onSubmit, validate }: UseRsvpSubm
 
         return true;
       } catch (err) {
-        const message = err instanceof Error ? err.message : "Error submitting RSVP";
+        const message = err instanceof Error ? err.message : t("rsvp.saveError");
         safeLogError(["[app]", "[useRsvpSubmit]", "submit error"], err);
         setSubmitError(message);
         return false;      } finally {
@@ -47,7 +50,7 @@ export function useRsvpSubmit({ token: _token, onSubmit, validate }: UseRsvpSubm
         setSubmitting(false);
       }
     },
-    [onSubmit, validate],
+    [onSubmit, validate, t],
   );
 
   const resetError = useCallback(() => setSubmitError(null), []);

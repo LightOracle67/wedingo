@@ -1022,7 +1022,9 @@
       "bulkExpiryTitle": "Expiration date",
       "bulkSealTitle": "Verification seal",
       "purgeTitle": "GDPR purge",
-      "deleteAllTitle": "Delete the whole system"
+      "deleteAllTitle": "Delete the whole system",
+      "exportTitle": "Confirmations — {{token}}",
+      "exportCount": "{{count}} response(s)"
     },
     "login": "Login",
     "emailLabel": "Email",

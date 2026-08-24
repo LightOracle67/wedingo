@@ -57,7 +57,7 @@ describe("useRsvpSubmit", () => {
     await act(async () => {
       await result.current.handleSubmit({});
     });
-    expect(result.current.submitError).toBe("Error submitting RSVP");
+    expect(result.current.submitError).toBe("rsvp.saveError");
   });
 
   it("resets error via resetError", () => {
