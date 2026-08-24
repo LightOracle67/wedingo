@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.124.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.123.9)  
+**Versión actual:** [v2.124.2](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -12,14 +12,14 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2325 tests, 178 test files || Cobertura | 95.1% statements / 92.5% branches / 94.1% functions / 96.7% lines |
+| Tests | 2166 tests (vitest) + suite Playwright e2e || Cobertura | 86.0% statements / 75.1% branches / 83.2% functions / 88.1% lines |
 | Lint | 0 warnings (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
 | `any` en source | 0 |
 | `!important` en CSS | 41 |
 | Idiomas | 100 |
 | Temas | 21 (7 claros, 7 oscuros, 7 LGTBIQ+) |
-| Bundle (crítico) | ~317KB gzip (JS inicial, analytics y Sentry en chunks lazy) |
+| Bundle (crítico) | ~272KB gzip (JS inicial: index+vendors; Sentry/changelog/idiomas en chunks lazy) |
 
 ---
 
@@ -28,7 +28,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 | Ruta | Componente | Descripción |
 |---|---|---|
 | `/` | `LandingPage` | Crear invitación o acceder con código |
-| `/:inviteToken` | `PublicInvitation` | Invitación pública (8 secciones dinámicas) |
+| `/:inviteToken` | `PublicInvitation` | Invitación pública (11 secciones dinámicas) |
 | `/:inviteToken/setup` | `SetupPage` | Configuración inicial |
 | `/:inviteToken/admin` | `AdminPage` | Panel de administración (6 pestañas) |
 | `/:inviteToken/print` | `PrintPage` | Tarjeta imprimible |
@@ -41,12 +41,21 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 ### Invitación pública
 
-8 secciones renderizadas dinámicamente según `config.sectionOrder`:
+11 secciones renderizadas dinámicamente según `config.sectionOrder`:
 
 | Sección | Contenido |
 |---|---|
 | **Hero** | Foto de novios (circular, máscara radial 60-100%, borde dorado animado), countdown calendárico (años/meses/días), padrinos, mensaje |
 | **Details** | Fecha+hora, botón calendario (Google + .ics compartido), ubicación, mapa (Google Maps Embed sin API key), mensaje de confirmación |
+| **Transport** | Opciones de transporte (autobús/taxi), salidas con hora y mapa |
+| **Info** | Itinerario con agenda interactiva, código de vestimenta, política infantil |
+| **Story** | Historia de amor (texto libre) |
+| **Gallery** | Galería de fotos con lightbox, carrusel automático, descripciones |
+| **Gifts** | Información de regalos + IBAN (cifrado) |
+| **Accommodation** | Alojamiento |
+| **VenueMap** | Mapa del recinto (sección propia reordenable) |
+| **Tables** | Distribución de mesas con lupa a pantalla completa |
+| **RSVP** | Confirmación de asistencia con acompañantes |
 
 ### Funciones diferenciadoras (ronda v2.100)
 
@@ -156,10 +165,10 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 ### RSVP
 
 - Modelo individual: cada persona elige `solo/a` / `con acompañantes` / `no asiste`
-- Acompañantes con nombre + menú + alergias (checkboxes + texto libre "otras alergias")
+- Acompañantes con nombre + menú + alergias (checkboxes + texto libre "otras alergias") + checkbox «¿es niño?»
 - **Cada acompañante tiene su propio documento Firestore** (writeBatch), vinculado al principal
 - Primer acompañante obligatorio (sin botón ✕)
-- Validación completa: fecha nacimiento, consentimiento parental (<14), consentimiento salud (si alergias), menú (si activado)
+- Validación completa: consentimiento salud (si alergias), menú (si activado); los niños se marcan con el checkbox «¿es niño?» (sin fechas de nacimiento ni consentimiento parental: el invitado principal actúa como tutor)
 - Prefill al escribir el nombre: restaura datos del invitado y acompañantes
 - Banner informativo "Acompañas a X" para acompañantes
 - Cache local sin sobrescritura de datos de acompañantes
@@ -342,6 +351,8 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.124.2 | 2026-08-24 | Toggle «Vídeo de bienvenida» en Portada del setup: por fin es configurable desde la UI (URL + activación) con i18n completo y tests |
+| v2.124.1 | 2026-08-24 | Eliminada la sección extras: regalos/trivia fuera, toggles reubicados (rsvpDeadline+confirmados→Invitados, recinto→nuevo formulario Recinto) |
 | v2.124.0 | 2026-08-24 | Poda bloatware: eliminadas 11 funciones sin uso real (sorpresas, reacciones, encuesta musical, notas, buzón, brindis, notas de voz, fotos del día, coche compartido, confirmados en vivo, Facebook) + limpieza i18n (193 claves), ruta crypto legacy y legacyToken; datos de producción depurados; rules endurecidas |
 | v2.123.9 | 2026-08-24 | Limpieza: eliminada carpeta functions/ (cleanupExpiredData imposible en plan Spark), firebase.json/package.json/CI depurados, informe de candidatos a eliminación con uso real medido en producción |
 | v2.123.7 | 2026-08-23 | RSVP: select ¿es niño? por acompañante (isChild persistido) sustituye fechas de nacimiento, consentimiento parental condicionado al select, eliminada sección childrenCount y lógica muerta age/birthDate, columna Niño en admin+Excel |
