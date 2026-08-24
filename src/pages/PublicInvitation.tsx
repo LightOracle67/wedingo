@@ -49,17 +49,9 @@ const GiftsSection = lazy(() => import("./sections/GiftsSection"));
 const AccommodationSection = lazy(() => import("./sections/AccommodationSection"));
 const GallerySection = lazy(() => import("./sections/GallerySection"));
 const RsvpSection = lazy(() => import("./sections/RsvpSection"));
-const ReactionsSection = lazy(() => import("./sections/ReactionsSection"));
-const NotesSection = lazy(() => import("./sections/NotesSection"));
-const MusicPollSection = lazy(() => import("./sections/MusicPollSection"));
 const TriviaSection = lazy(() => import("./sections/TriviaSection"));
-const VoiceNotesSection = lazy(() => import("./sections/VoiceNotesSection"));
-const DayPhotosSection = lazy(() => import("./sections/DayPhotosSection"));
-const MailboxSection = lazy(() => import("./sections/MailboxSection"));
-const ToastsSection = lazy(() => import("./sections/ToastsSection"));
 const VenueMapSection = lazy(() => import("./sections/VenueMapSection"));
 const GiftListSection = lazy(() => import("./sections/GiftListSection"));
-const RideShareSection = lazy(() => import("./sections/RideShareSection"));
 const TableSeatingSection = lazy(() => import("./sections/TableSeatingSection"));
 import "../styles/decorations.css";
 import "../styles/admin.css";
@@ -173,16 +165,6 @@ export default function PublicInvitation() {
   // SEGURIDAD ANTES QUE CURIOSIDAD: si el modo está activo pero la fecha es
   // inválida/ausente, las secciones NO se revelan nunca (nunca al revés,
   // para no filtrar contenido antes de tiempo por un fallo de parseo).
-  const surpriseActive = config.surpriseMode === "true";
-  const surpriseSet = useMemo(() => {
-    if (!surpriseActive) return new Set<string>();
-    return new Set((config.surpriseSections || "").split(",").filter(Boolean));
-  }, [surpriseActive, config.surpriseSections]);
-  const revealSurpriseSections = useMemo(() => {
-    if (!surpriseActive) return true;
-    if (!weddingDate) return false;
-    return Date.now() >= weddingDate.getTime();
-  }, [surpriseActive, weddingDate]);
 
   // ─── Galería: ¿tiene imágenes? ─────────────────────────
   // La galería se desactiva si no tiene ninguna imagen subida (filtro de
@@ -214,7 +196,7 @@ export default function PublicInvitation() {
   // invitación Y no desactivada globalmente por el superadmin.
   const socialEnabled = useCallback(
     (
-      feature: "gifts" | "rides" | "reactions" | "notes" | "songs" | "trivia" | "voiceNotes" | "dayPhotos" | "mailbox" | "toasts" | "venueMap",
+      feature: "gifts" | "trivia" | "venueMap",
       flag?: string,
     ) => flag === "true" && !isFeatureDisabled(platform, feature),
     [platform],
@@ -230,35 +212,11 @@ export default function PublicInvitation() {
         socialEnabled("gifts", config.giftsListEnabled)
           ? { title: t("giftList.title"), node: <GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} /> }
           : null,
-        socialEnabled("rides", config.rideShareEnabled)
-          ? { title: t("rideShare.title"), node: <RideShareSection inviteToken={inviteToken ?? ""} /> }
-          : null,
-        socialEnabled("reactions", config.reactionsEnabled)
-          ? { title: t("reactions.title"), node: <ReactionsSection inviteToken={inviteToken ?? ""} /> }
-          : null,
-        socialEnabled("notes", config.notesEnabled)
-          ? { title: t("notes.title"), node: <NotesSection inviteToken={inviteToken ?? ""} /> }
-          : null,
-        socialEnabled("songs", config.musicPollEnabled)
-          ? { title: t("musicPoll.title"), node: <MusicPollSection inviteToken={inviteToken ?? ""} /> }
-          : null,
         socialEnabled("trivia", config.triviaEnabled)
           ? { title: t("trivia.title"), node: <TriviaSection inviteToken={inviteToken ?? ""} trivia={config.trivia ?? "[]"} /> }
           : null,
-        socialEnabled("voiceNotes", config.voiceNotesEnabled)
-          ? { title: t("voiceNotes.title"), node: <VoiceNotesSection inviteToken={inviteToken ?? ""} /> }
-          : null,
-        socialEnabled("dayPhotos", config.dayPhotosEnabled)
-          ? { title: t("dayPhotos.title"), node: <DayPhotosSection inviteToken={inviteToken ?? ""} /> }
-          : null,
-        socialEnabled("mailbox", config.mailboxEnabled)
-          ? { title: t("mailbox.title"), node: <MailboxSection inviteToken={inviteToken ?? ""} /> }
-          : null,
-        socialEnabled("toasts", config.toastsEnabled)
-          ? { title: t("toasts.title"), node: <ToastsSection inviteToken={inviteToken ?? ""} /> }
-          : null,
       ].filter((b): b is { title: string; node: React.JSX.Element } => b !== null),
-    [config.giftsListEnabled, config.rideShareEnabled, config.reactionsEnabled, config.notesEnabled, config.musicPollEnabled, config.triviaEnabled, config.voiceNotesEnabled, config.dayPhotosEnabled, config.mailboxEnabled, config.toastsEnabled, config.giftList, config.trivia, t, inviteToken, socialEnabled],
+    [config.giftsListEnabled, config.triviaEnabled, config.giftList, config.trivia, t, inviteToken, socialEnabled],
   );
 
   // Fuente única de "hay extras": coincide con los bloques renderizados.
@@ -292,9 +250,6 @@ export default function PublicInvitation() {
       filtered = filtered.filter((s: string) => !hiddenSet.has(s));
       // Modo sorpresa: hasta el día del evento, las secciones marcadas quedan
       // ocultas para los invitados (el admin y ?invitar las ven siempre).
-      if (!revealSurpriseSections) {
-        filtered = filtered.filter((s: string) => !surpriseSet.has(s));
-      }
     }
     // Oculta las secciones sin contenido configurado (aunque estén en el
     // orden) para no mostrar secciones vacías al invitado. Se aplica a
@@ -303,7 +258,7 @@ export default function PublicInvitation() {
     filtered = filtered.filter((s: string) => sectionHasContent(s, config, galleryHasImages));
     filtered = filtered.filter((s: string) => s !== "extras" || hasExtras);
     return filtered;
-  }, [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages, hasExtras, surpriseSet, revealSurpriseSections]);
+  }, [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages, hasExtras]);
 
   // ─── Estados de UI condicionales ───────────────────────
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
@@ -531,7 +486,6 @@ export default function PublicInvitation() {
         calendarLink,
         weddingSiteURL: config.weddingSiteURL,
         instagramUrl: config.instagramUrl,
-        facebookUrl: config.facebookUrl,
         mapView: config.weddingMapView,
         staticMap: config.weddingMapStatic === "true",
         detailsMapMode: config.detailsMapMode,
@@ -636,7 +590,6 @@ export default function PublicInvitation() {
       calendarLink,
       config.weddingSiteURL,
       config.instagramUrl,
-      config.facebookUrl,
       config.weddingMapView,
       config.weddingMapStatic,
       config.detailsMapMode,
@@ -658,15 +611,13 @@ export default function PublicInvitation() {
       weddingDate,
       inviteToken: inviteToken ?? "",
       schedule: config.weddingScheduleEvents ?? "[]",
-      // Prueba social en vivo: los novios pueden ocultarla desde Extras.
-      liveConfirmedEnabled: config.liveConfirmedEnabled !== "false",
       // Lista de confirmados: solo si la pareja la activa (opt-in de nombres).
       showConfirmedPeople: config.showConfirmedPeople === "true",
       // Conjunto efectivo de animaciones desactivadas: HeroSection lo usa para
       // el countdown (tick), el anillo de la foto, el fundido y el resplandor.
       disabledAnimations: effectiveDisabled,
     }),
-    [weddingDate, inviteToken, config.weddingScheduleEvents, config.liveConfirmedEnabled, config.showConfirmedPeople, effectiveDisabled],
+    [weddingDate, inviteToken, config.weddingScheduleEvents, config.showConfirmedPeople, effectiveDisabled],
   );
 
   /**

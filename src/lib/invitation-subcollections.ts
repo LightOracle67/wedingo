@@ -7,8 +7,8 @@
  * `handleDeleteInvitation` del organizador (setup).
  *
  * Racional (GDPR art. 17 / UK GDPR / LGPD / CCPA / POPIA): algunas
- * subcolecciones sociales (`reactions`, `notes`, `songs`, `rides`, `gifts`,
- * `mailbox`, `confirmedPeople`…) guardan DATOS PERSONALES de invitados. Si
+ * subcolecciones sociales (`gifts`, `confirmedPeople`…) guardan DATOS
+ * PERSONALES de invitados. Si
  * no se borran al eliminar la invitación, quedan huérfanas y legibles para
  * siempre. Este helper garantiza que ningún dato quede atrás.
  *
@@ -28,19 +28,14 @@ import {
 
 /**
  * Todas las subcolecciones existentes bajo `invitations/{id}`. Incluye los
- * medios (gallery, audio, configImages, voicenotes, dayphotos), las
- * funciones sociales con PII (reactions, notes, songs, rides, gifts,
- * mailbox, confirmedPeople, venuepoints) y los internos/auditoría
+ * medios (gallery, audio, configImages), las funciones sociales con PII
+ * (gifts, confirmedPeople, venuepoints) y los internos/auditoría
  * (_counters, _backup, consentLog, accessLog, visitLog, configLog, sections).
  */
 export const INVITATION_SUBCOLLECTIONS = [
   "gallery",
   "audio",
   "configImages",
-  "reactions",
-  "notes",
-  "songs",
-  "rides",
   "gifts",
   "_counters",
   "consentLog",
@@ -48,12 +43,8 @@ export const INVITATION_SUBCOLLECTIONS = [
   "confirmedPeople",
   "_backup",
   "venuepoints",
-  "dayphotos",
-  "mailbox",
-  "toasts",
   "visitLog",
   "configLog",
-  "voicenotes",
   "sections",
 ] as const;
 

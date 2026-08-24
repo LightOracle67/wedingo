@@ -298,7 +298,7 @@ describe("validateConfigForSave", () => {
 
   it("accepts valid social media URLs", () => {
     const result = validateConfigForSave(
-      validConfig({ instagramUrl: "https://www.instagram.com/ana", facebookUrl: "https://www.facebook.com/ana" }),
+      validConfig({ instagramUrl: "https://www.instagram.com/ana" }),
       true,
       2030,
     );

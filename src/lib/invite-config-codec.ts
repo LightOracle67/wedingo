@@ -51,7 +51,6 @@ const INTERNAL_FIELDS = new Set<string>([
   "setupTokenHash",
   "_visits",
   "_activeSetupToken",
-  "legacyToken",
   "verified",
   "adminNotes",
   "manualExpiry",

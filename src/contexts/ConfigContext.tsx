@@ -583,7 +583,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         // primer documento (merge+increment), pero inicializarlos aquí hace
         // que el tope aplique desde el primer guardado de la invitación.
         try {
-          const counterRefs = ["notes", "songs", "gifts", "rides"].map((name) =>
+          const counterRefs = ["gifts"].map((name) =>
             doc(db, "invitations", inviteToken, "_counters", name),
           );
           const counterSnaps = await Promise.all(counterRefs.map((ref) => getDoc(ref)));

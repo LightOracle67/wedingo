@@ -37,18 +37,12 @@ const mockUseAppValue = vi.hoisted(() => ({
     menuTexto: "",
     rsvpDeadline: "",
     rsvpDeadlineEnabled: "false",
-    reactionsEnabled: "false",
     giftsListEnabled: "false",
     giftList: "[]",
-    rideShareEnabled: "false",
     welcomeVideo: "",
     welcomeVideoEnabled: "false",
-    notesEnabled: "false",
-    musicPollEnabled: "false",
     triviaEnabled: "false",
     trivia: "[]",
-    surpriseMode: "false",
-    surpriseSections: "",
   },
   isConfigLoading: false,
   configLoadError: "",
@@ -173,8 +167,6 @@ vi.mock("../sections/GiftsSection", () => mockSection("gifts"));
 vi.mock("../sections/AccommodationSection", () => mockSection("accommodation"));
 vi.mock("../sections/GallerySection", () => mockSection("gallery"));
 vi.mock("../sections/RsvpSection", () => mockSection("rsvp"));
-vi.mock("../sections/ReactionsSection", () => mockSection("reactions"));
-vi.mock("../sections/NotesSection", () => mockSection("notes"));
 vi.mock("../sections/MusicPollSection", () => mockSection("musicpoll"));
 vi.mock("../sections/TriviaSection", () => mockSection("trivia"));
 vi.mock("../sections/GiftListSection", () => mockSection("giftlist"));
@@ -613,97 +605,6 @@ describe("PublicInvitation", () => {
     mockUseAppValue.config.sectionOrder = "";
   });
 
-  it("hides surprise sections before the wedding day", async () => {
-    // Boda en el futuro lejano (2999): las secciones sorpresa quedan ocultas.
-    mockUseAppValue.config.hiddenSections = "";
-    mockUseAppValue.config.sectionOrder = "hero,gifts,accommodation,rsvp";
-    mockUseAppValue.config.firstName = "Test";
-    mockUseAppValue.config.secondName = "User";
-    mockUseAppValue.config.weddingYear = "2999";
-    mockUseAppValue.config.weddingMonth = "diciembre";
-    mockUseAppValue.config.weddingDay = "31";
-    mockUseAppValue.config.weddingHour = "20";
-    mockUseAppValue.config.weddingMinute = "0";
-    mockUseAppValue.config.giftsInfo = "Regalos";
-    mockUseAppValue.config.accommodationURL = "https://www.google.com/maps/place/Hotel";
-    mockUseAppValue.config.surpriseMode = "true";
-    mockUseAppValue.config.surpriseSections = "gifts";
-    render(<PublicInvitation />);
-    await vi.waitFor(() => {
-      expect(screen.queryByTestId("section-gifts")).toBeNull();
-      expect(screen.getByTestId("section-accommodation")).toBeDefined();
-    });
-    mockUseAppValue.config.weddingYear = "";
-    mockUseAppValue.config.weddingMonth = "";
-    mockUseAppValue.config.weddingDay = "";
-    mockUseAppValue.config.weddingHour = "";
-    mockUseAppValue.config.weddingMinute = "";
-    mockUseAppValue.config.surpriseMode = "false";
-    mockUseAppValue.config.surpriseSections = "";
-    mockUseAppValue.config.giftsInfo = "";
-    mockUseAppValue.config.accommodationURL = "";
-  });
-
-  it("reveals surprise sections on/after the wedding day", async () => {
-    // Boda en el pasado (año 2000): las secciones sorpresa ya son visibles.
-    mockUseAppValue.config.hiddenSections = "";
-    mockUseAppValue.config.sectionOrder = "hero,gifts,accommodation,rsvp";
-    mockUseAppValue.config.firstName = "Test";
-    mockUseAppValue.config.secondName = "User";
-    mockUseAppValue.config.weddingYear = "2000";
-    mockUseAppValue.config.weddingMonth = "enero";
-    mockUseAppValue.config.weddingDay = "1";
-    mockUseAppValue.config.weddingHour = "20";
-    mockUseAppValue.config.weddingMinute = "0";
-    mockUseAppValue.config.giftsInfo = "Regalos";
-    mockUseAppValue.config.accommodationURL = "https://www.google.com/maps/place/Hotel";
-    mockUseAppValue.config.surpriseMode = "true";
-    mockUseAppValue.config.surpriseSections = "gifts";
-    render(<PublicInvitation />);
-    await vi.waitFor(() => {
-      expect(screen.getByTestId("section-gifts")).toBeDefined();
-      expect(screen.getByTestId("section-accommodation")).toBeDefined();
-    });
-    mockUseAppValue.config.weddingYear = "";
-    mockUseAppValue.config.weddingMonth = "";
-    mockUseAppValue.config.weddingDay = "";
-    mockUseAppValue.config.weddingHour = "";
-    mockUseAppValue.config.weddingMinute = "";
-    mockUseAppValue.config.surpriseMode = "false";
-    mockUseAppValue.config.surpriseSections = "";
-    mockUseAppValue.config.giftsInfo = "";
-    mockUseAppValue.config.accommodationURL = "";
-  });
-
-  it("keeps surprise sections hidden when the wedding date is invalid (safe default)", async () => {
-    // Fecha corrupta ("31 de febrero"): el modo sorpresa NO revela nada por
-    // defecto de seguridad (nunca filtra contenido antes de tiempo).
-    mockUseAppValue.config.hiddenSections = "";
-    mockUseAppValue.config.sectionOrder = "hero,gifts,rsvp";
-    mockUseAppValue.config.firstName = "Test";
-    mockUseAppValue.config.secondName = "User";
-    mockUseAppValue.config.weddingYear = "2999";
-    mockUseAppValue.config.weddingMonth = "febrero";
-    mockUseAppValue.config.weddingDay = "31";
-    mockUseAppValue.config.weddingHour = "20";
-    mockUseAppValue.config.weddingMinute = "0";
-    mockUseAppValue.config.giftsInfo = "Regalos";
-    mockUseAppValue.config.surpriseMode = "true";
-    mockUseAppValue.config.surpriseSections = "gifts";
-    render(<PublicInvitation />);
-    await vi.waitFor(() => {
-      expect(screen.queryByTestId("section-gifts")).toBeNull();
-    });
-    mockUseAppValue.config.weddingYear = "";
-    mockUseAppValue.config.weddingMonth = "";
-    mockUseAppValue.config.weddingDay = "";
-    mockUseAppValue.config.weddingHour = "";
-    mockUseAppValue.config.weddingMinute = "";
-    mockUseAppValue.config.surpriseMode = "false";
-    mockUseAppValue.config.surpriseSections = "";
-    mockUseAppValue.config.giftsInfo = "";
-  });
-
   it("respects section order from config", async () => {
     mockUseAppValue.config.sectionOrder = "rsvp,gallery,accommodation,gifts";
     mockUseAppValue.config.hiddenSections = "";
@@ -756,43 +657,27 @@ describe("PublicInvitation", () => {
     mockUseAppValue.config.hiddenSections = "";
     mockUseAppValue.config.firstName = "Test";
     mockUseAppValue.config.secondName = "User";
-    mockUseAppValue.config.reactionsEnabled = "true";
-    mockUseAppValue.config.notesEnabled = "true";
-    mockUseAppValue.config.musicPollEnabled = "true";
     mockUseAppValue.config.triviaEnabled = "true";
     mockUseAppValue.config.giftsListEnabled = "true";
-    mockUseAppValue.config.rideShareEnabled = "true";
     render(<PublicInvitation />);
     await vi.waitFor(() => {
-      expect(screen.getByTestId("section-reactions")).toBeDefined();
-      expect(screen.getByTestId("section-notes")).toBeDefined();
-      expect(screen.getByTestId("section-musicpoll")).toBeDefined();
       expect(screen.getByTestId("section-trivia")).toBeDefined();
       expect(screen.getByTestId("section-giftlist")).toBeDefined();
-      expect(screen.getByTestId("section-rideshare")).toBeDefined();
     });
     // Los extras se agrupan en UNA sección conjunta (no una por función).
     expect(document.querySelector('[data-story-section="extras"]')).not.toBeNull();
     const extrasPanel = document.querySelector(".story-panel--extras");
     expect(extrasPanel).not.toBeNull();
-    expect(extrasPanel!.querySelectorAll(".story-extra-block").length).toBe(6);
-    mockUseAppValue.config.reactionsEnabled = "false";
-    mockUseAppValue.config.notesEnabled = "false";
-    mockUseAppValue.config.musicPollEnabled = "false";
+    expect(extrasPanel!.querySelectorAll(".story-extra-block").length).toBe(2);
     mockUseAppValue.config.triviaEnabled = "false";
     mockUseAppValue.config.giftsListEnabled = "false";
-    mockUseAppValue.config.rideShareEnabled = "false";
   });
 
   it("does not render social sections when disabled", () => {
-    mockUseAppValue.config.reactionsEnabled = "false";
-    mockUseAppValue.config.notesEnabled = "false";
-    mockUseAppValue.config.musicPollEnabled = "false";
     mockUseAppValue.config.triviaEnabled = "false";
     mockUseAppValue.config.giftsListEnabled = "false";
-    mockUseAppValue.config.rideShareEnabled = "false";
     render(<PublicInvitation />);
-    expect(screen.queryByTestId("section-reactions")).toBeNull();
+    expect(screen.queryByTestId("section-giftlist")).toBeNull();
   });
 
   it("renders without crashing when the back-to-top scene is absent", () => {

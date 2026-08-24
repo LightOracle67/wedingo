@@ -1,11 +1,10 @@
 import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, collection, doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
+import { getDocs, collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db, rsvpByInviteRef } from "../../lib/firebase";
 import { useToast } from "../../hooks/useToast";
 import { downloadText } from "../../lib/file-utils";
 import { buildIcsFile } from "../../lib/calendar-utils";
-import { useConfirm } from "../../contexts/ConfirmContext";
 
 interface ToolsTabProps {
   inviteToken: string;
@@ -46,7 +45,6 @@ const ToolsTab = memo(function ToolsTab({
 }: ToolsTabProps) {
   const { t } = useTranslation();
   const { addToast } = useToast();
-  const { confirm } = useConfirm();
 
   // ── Recordatorio WhatsApp ──
   const [reminder, setReminder] = useState("");
@@ -62,28 +60,14 @@ const ToolsTab = memo(function ToolsTab({
   // ── Galería ──
   const [galleryCount, setGalleryCount] = useState(0);
 
-  // ── Extras diferenciales: buzón y fotos del día (las mesas y el mapa del
-  // recinto viven en la pestaña Distribución) ──
-  const [mailbox, setMailbox] = useState<Array<{ id: string; guestName: string; message: string; ts: string }>>([]);
-  const [dayPhotoCount, setDayPhotoCount] = useState(0);
 
   const load = useCallback(async () => {
     try {
-      const [rsvpSnap, galSnap, mailboxSnap, daySnap] = await Promise.all([
+      const [rsvpSnap, galSnap] = await Promise.all([
         getDocs(rsvpByInviteRef(inviteToken)),
         getDocs(collection(db, "invitations", inviteToken, "gallery")),
-        getDocs(collection(db, "invitations", inviteToken, "mailbox")),
-        getDocs(collection(db, "invitations", inviteToken, "dayphotos")),
       ]);
-      setMailbox(
-        mailboxSnap.docs.map((d) => ({
-          id: d.id,
-          guestName: String(d.data().guestName || ""),
-          message: String(d.data().message || ""),
-          ts: d.data().createdAt ? new Date(String(d.data().createdAt)).toLocaleString() : "",
-        })),
-      );
-      setDayPhotoCount(daySnap.size || 0);
+
       setGalleryCount(galSnap.size || 0);
       // Personas confirmadas (1 + acompañantes por "yes") para el recordatorio.
       setConfirmedPeople(
@@ -134,64 +118,7 @@ const ToolsTab = memo(function ToolsTab({
     }
   }, [guestsInput, expectedGuests, inviteToken, onExpectedGuestsSaved, addToast, t]);
 
-  // ── Buzón privado ──
-  const deleteMail = useCallback(
-    async (id: string) => {
-      // Borrar un mensaje del buzón es destructivo: se confirma explícitamente
-      // (antes se borraba sin confirmación).
-      if (!(await confirm({ message: t("tools.mailDeleteConfirm"), danger: true }))) return;
-      try {
-        await deleteDoc(doc(collection(db, "invitations", inviteToken, "mailbox"), id));
-        setMailbox((prev) => prev.filter((m) => m.id !== id));
-        addToast("success", t("tools.mailDeleted"));
-      } catch {
-        addToast("error", t("errors.generic"));
-      }
-    },
-    [inviteToken, addToast, t, confirm],
-  );
 
-  // ── Fotos del día: descarga y borrado ──
-  const downloadDayPhotos = useCallback(async () => {
-    try {
-      const snap = await getDocs(collection(db, "invitations", inviteToken, "dayphotos"));
-      const { decrypt } = await import("../../lib/crypto-utils");
-      const urls: string[] = [];
-      for (const d of snap.docs) {
-        const data = String(d.data().data || "");
-        if (!data) continue;
-        const url = await decrypt(data, inviteToken);
-        if (url) urls.push(url);
-      }
-      if (urls.length === 0) {
-        addToast("info", t("tools.noDayPhotos"));
-        return;
-      }
-      const blob = new Blob([JSON.stringify(urls)], { type: "application/json" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = `${inviteToken}_fotos_dia.json`;
-      link.click();
-      URL.revokeObjectURL(link.href);
-      addToast("success", t("tools.dayPhotosDownloaded", { count: urls.length }));
-    } catch {
-      addToast("error", t("errors.generic"));
-    }
-  }, [inviteToken, addToast, t]);
-
-  // ── Exportación XLSX (Excel/LibreOffice) del buzón ──
-  const exportMailboxXlsx = useCallback(async () => {
-    // Sin mensajes privados no hay buzón que exportar.
-    if ((mailbox || []).length === 0) {
-      addToast("info", t("tools.noMail"));
-      return;
-    }
-    const { exportToXlsx } = await import("../../lib/excel-utils");
-    const { buildMailboxSheet } = await import("../../lib/excel-builders");
-    const sheet = buildMailboxSheet(mailbox || [], t);
-    exportToXlsx(`buzon_${new Date().toISOString().slice(0, 10)}`, [sheet]);
-    addToast("success", t("tools.exportOk", { count: sheet.rows.length }));
-  }, [mailbox, t, addToast]);
 
   const openReminder = useCallback(() => {
     const text = reminder.trim() || `${t("tools.reminderDefault")} ${coupleName || ""}\n\n${inviteUrl}`;
@@ -380,43 +307,6 @@ const ToolsTab = memo(function ToolsTab({
         <button className="setup-button" type="button" onClick={() => void saveNote()}>{t("tools.saveNote")}</button>
       </div>
 
-      {/* Extras diferenciales: buzón y fotos del día (mesas y mapa → Distribución) */}
-      <div className="setup-background-panel">
-        <p className="setup-label">{t("tools.mailbox")}</p>
-        <p className="setup-help">{t("tools.mailboxHelp")}</p>
-        {mailbox.length > 0 ? (
-          <ul style={{ margin: "0.5rem 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: "0.4rem" }}>
-            {mailbox.map((m) => (
-              <li key={m.id} style={{ border: "1px solid var(--setup-border)", borderRadius: "0.5rem", padding: "0.45rem 0.6rem" }}>
-                <div className="admin-flex" style={{ gap: "0.5rem", justifyContent: "space-between", flexWrap: "wrap" }}>
-                  <strong style={{ fontSize: "0.8rem" }}>{m.guestName}</strong>
-                  <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void deleteMail(m.id)}>
-                    {t("tools.delete")}
-                  </button>
-                </div>
-                <p style={{ margin: "0.25rem 0 0", fontSize: "0.82rem", color: "var(--setup-subtitle)", whiteSpace: "pre-wrap" }}>{m.message}</p>
-                {m.ts ? <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.7rem" }}>{m.ts}</p> : null}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="setup-help" style={{ margin: "0.4rem 0 0" }}>{t("tools.noMail")}</p>
-        )}
-        {mailbox.length > 0 && (
-          <button className="setup-button setup-button--ghost setup-button--compact" style={{ marginTop: "0.6rem" }} type="button" onClick={() => void exportMailboxXlsx()}>
-            {t("tools.exportMailbox")}
-          </button>
-        )}
-      </div>
-
-      <div className="setup-background-panel">
-        <p className="setup-label">{t("tools.dayPhotos")}</p>
-        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
-          <button className="setup-button setup-button--compact" type="button" onClick={() => void downloadDayPhotos()} disabled={dayPhotoCount === 0}>
-            {t("tools.downloadDayPhotos", { count: dayPhotoCount })}
-          </button>
-        </div>
-      </div>
     </div>
   );
 });

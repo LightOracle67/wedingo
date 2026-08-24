@@ -19,7 +19,6 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
   const backgroundImage = useFormField("backgroundImage");
   const couplePhoto = useFormField("couplePhoto");
   const customSeal = useFormField("customSeal");
-  const facebookUrl = useFormField("facebookUrl");
   const firstName = useFormField("firstName");
   const godparent1 = useFormField("godparent1");
   const godparent2 = useFormField("godparent2");
@@ -317,17 +316,6 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
           value={instagramUrl}
           onChange={(e) => updateFormField("instagramUrl", e.target.value.slice(0, 1000))}
           placeholder={t("setup.instagramPlaceholder")}
-          inputMode="url"
-          autoComplete="url"
-        />
-      </SetupToggleField>
-      <SetupToggleField enabledField="facebookEnabled" label={t("setup.facebookLabel")} id={id}>
-        <input
-          id={id("facebookUrl")}
-          className="setup-input"
-          value={facebookUrl}
-          onChange={(e) => updateFormField("facebookUrl", e.target.value.slice(0, 1000))}
-          placeholder={t("setup.facebookPlaceholder")}
           inputMode="url"
           autoComplete="url"
         />

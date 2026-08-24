@@ -32,7 +32,6 @@ export interface InvitationConfig {
   weddingSiteURL: string;
   /** Redes sociales de los novios (opcional). */
   instagramUrl: string;
-  facebookUrl: string;
   weddingMapView: string;
   weddingMapStatic: string;
   detailsMapMode: string;
@@ -68,7 +67,6 @@ export interface InvitationConfig {
   inviteMessageEnabled?: string;
   weddingSiteURLEnabled?: string;
   instagramEnabled?: string;
-  facebookEnabled?: string;
   backgroundImageEnabled?: string;
   customSealEnabled?: string;
   cornerDecorationEnabled?: string;
@@ -87,14 +85,6 @@ export interface InvitationConfig {
   verified?: string;
   adminNotes?: string;
   manualExpiry?: string;
-  /** Reacciones a la invitación (❤️🎉😂) habilitadas. */
-  reactionsEnabled?: string;
-  /** Modo sorpresa: "true" oculta las secciones en surpriseSections hasta el
-   *  día del evento (la fecha inválida deja todo oculto, nunca se filtra). */
-  surpriseMode?: string;
-  /** Secciones sorpresa (claves separadas por coma) que solo se revelan el
-   *  día del evento si surpriseMode === "true". */
-  surpriseSections?: string;
   /** Idioma por defecto de la invitación ("es" | "en" | "" = automático).
    *  Se aplica al invitado SOLO si no ha elegido idioma en su dispositivo. */
   language?: string;
@@ -109,8 +99,6 @@ export interface InvitationConfig {
   colorTitle?: string;
   colorCopy?: string;
   colorBackground?: string;
-  /** Prueba social en vivo: mostrar cuántos han confirmado en la portada. */
-  liveConfirmedEnabled?: string;
   /** Distribución de mesas en la invitación pública (sección propia "tables"). */
   tablesEnabled?: string;
   /** Mostrar la LISTA de personas que ya han confirmado en la portada.
@@ -120,20 +108,10 @@ export interface InvitationConfig {
   /** Lista de regalos (JSON de items) + habilitada. */
   giftsListEnabled?: string;
   giftList?: string;
-  /** Encuesta de compartir coche. */
-  rideShareEnabled?: string;
   /** Vídeo de bienvenida de los novios (URL MP4). */
   welcomeVideo?: string;
   /** Habilita la sección del vídeo de bienvenida. */
   welcomeVideoEnabled?: string;
-  /** Muro de dedicatorias de los invitados. */
-  notesEnabled?: string;
-  /** Encuesta de música para el DJ. */
-  musicPollEnabled?: string;
-  voiceNotesEnabled?: string;
-  dayPhotosEnabled?: string;
-  mailboxEnabled?: string;
-  toastsEnabled?: string;
   venueMapEnabled?: string;
   /** Trivia de la pareja. */
   triviaEnabled?: string;

@@ -8,15 +8,7 @@ import { usePlatformSettings, isFeatureDisabled, type PlatformSettings } from ".
 // Funciones sociales que se pueden desactivar globalmente (kill-switch).
 const SOCIAL_FEATURES: Array<{ key: string; labelKey: string }> = [
   { key: "gifts", labelKey: "giftList.title" },
-  { key: "rides", labelKey: "rideShare.title" },
-  { key: "reactions", labelKey: "reactions.title" },
-  { key: "notes", labelKey: "notes.title" },
-  { key: "songs", labelKey: "musicPoll.title" },
   { key: "trivia", labelKey: "trivia.title" },
-  { key: "voiceNotes", labelKey: "voiceNotes.title" },
-  { key: "dayPhotos", labelKey: "dayPhotos.title" },
-  { key: "mailbox", labelKey: "mailbox.title" },
-  { key: "toasts", labelKey: "toasts.title" },
   { key: "venueMap", labelKey: "venueMap.title" },
 ];
 

@@ -392,7 +392,6 @@
     "galleryDescriptionPlaceholder": "Descripción de la imagen...",
     "replaceImage": "Cambiar foto",
     "hiddenSectionBadge": "oculta",
-    "surpriseBadge": "sorpresa",
     "languageLabel": "Idioma por defecto de la invitación",
     "languageHint": "Se aplica a los invitados que no hayan elegido idioma en su dispositivo. Los invitados siempre pueden cambiarlo con el selector del pie.",
     "languageAuto": "Automático (según el navegador)",
@@ -1241,11 +1240,7 @@
     "moveUp": "Mover hacia arriba",
     "moveDown": "Mover hacia abajo",
     "title": "Orden y visibilidad",
-    "help": "Arrastra para reordenar, usa los botones para mover, y activa o desactiva cada sección.",
-    "surpriseModeLabel": "Modo sorpresa: ocultar las secciones marcadas 🎁 hasta el día del evento",
-    "surpriseAdd": "Marcar como sorpresa",
-    "surpriseRemove": "Quitar modo sorpresa",
-    "surpriseDisabledHint": "Activa el modo sorpresa para marcar secciones"
+    "help": "Arrastra para reordenar, usa los botones para mover, y activa o desactiva cada sección."
   },
   "countdown": {
     "year_one": "{{count}} año",

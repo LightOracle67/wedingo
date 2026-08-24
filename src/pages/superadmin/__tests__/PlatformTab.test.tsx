@@ -59,12 +59,12 @@ describe("PlatformTab", () => {
   it("carga los ajustes existentes (modo mantenimiento y features activas)", async () => {
     mockGetDoc.mockResolvedValue({
       exists: () => true,
-      data: () => ({ maintenance: "true", bannerText: "Bienvenidos", disabledFeatures: "gifts,toasts", blockedUrls: "x.com" }),
+      data: () => ({ maintenance: "true", bannerText: "Bienvenidos", disabledFeatures: "gifts,trivia", blockedUrls: "x.com" }),
     });
     render(<PlatformTab />);
     const toggle = await screen.findByLabelText("platform.maintenanceToggle");
     await vi.waitFor(() => expect((toggle as HTMLInputElement).checked).toBe(true));
     expect((screen.getByLabelText("giftList.title") as HTMLInputElement).checked).toBe(true);
-    expect((screen.getByLabelText("toasts.title") as HTMLInputElement).checked).toBe(true);
+    expect((screen.getByLabelText("trivia.title") as HTMLInputElement).checked).toBe(true);
   });
 });

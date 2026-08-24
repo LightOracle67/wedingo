@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.123.9](https://github.com/LightOracle67/wedingo/releases/tag/v2.123.9)  
+**Versión actual:** [v2.124.0](https://github.com/LightOracle67/wedingo/releases/tag/v2.123.9)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -342,6 +342,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.124.0 | 2026-08-24 | Poda bloatware: eliminadas 11 funciones sin uso real (sorpresas, reacciones, encuesta musical, notas, buzón, brindis, notas de voz, fotos del día, coche compartido, confirmados en vivo, Facebook) + limpieza i18n (193 claves), ruta crypto legacy y legacyToken; datos de producción depurados; rules endurecidas |
 | v2.123.9 | 2026-08-24 | Limpieza: eliminada carpeta functions/ (cleanupExpiredData imposible en plan Spark), firebase.json/package.json/CI depurados, informe de candidatos a eliminación con uso real medido en producción |
 | v2.123.7 | 2026-08-23 | RSVP: select ¿es niño? por acompañante (isChild persistido) sustituye fechas de nacimiento, consentimiento parental condicionado al select, eliminada sección childrenCount y lógica muerta age/birthDate, columna Niño en admin+Excel |
 | v2.123.6 | 2026-08-23 | Auditoría ronda 2: LEGAL en rules (TTL accessLog, ownerKey autoservicio, voiceConsent, consentLog.lang), CALIDAD logs/catches/decrypt→safeLogError + redact.ts anti-ciclo, i18n fechas localizadas y mojibake=0, A11Y aria-labels icon-buttons |

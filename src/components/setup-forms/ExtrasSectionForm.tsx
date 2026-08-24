@@ -25,21 +25,12 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
   const triviaEnabled = useFormField("triviaEnabled");
   const welcomeVideo = useFormField("welcomeVideo");
   const welcomeVideoEnabled = useFormField("welcomeVideoEnabled");
-  const voiceNotesEnabled = useFormField("voiceNotesEnabled");
-  const dayPhotosEnabled = useFormField("dayPhotosEnabled");
-  const mailboxEnabled = useFormField("mailboxEnabled");
-  const toastsEnabled = useFormField("toastsEnabled");
   const venueMapEnabled = useFormField("venueMapEnabled");
   // Distribución de mesas en la invitación pública.
   const tablesEnabled = useFormField("tablesEnabled");
   // Toggles de funciones sociales (estado visible: antes faltaban los hooks y
   // el checkbox nunca reflejaba el valor guardado).
-  const reactionsEnabled = useFormField("reactionsEnabled");
-  const rideShareEnabled = useFormField("rideShareEnabled");
-  const notesEnabled = useFormField("notesEnabled");
-  const musicPollEnabled = useFormField("musicPollEnabled");
   // Prueba social en vivo en la portada.
-  const liveConfirmedEnabled = useFormField("liveConfirmedEnabled");
   // Lista pública de confirmados en la portada (opt-in de nombres).
   const showConfirmedPeople = useFormField("showConfirmedPeople");
   const { t } = useTranslation();
@@ -52,17 +43,8 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
     rsvpDeadlineEnabled,
     triviaEnabled,
     welcomeVideoEnabled,
-    voiceNotesEnabled,
-    dayPhotosEnabled,
-    mailboxEnabled,
-    toastsEnabled,
     venueMapEnabled,
     tablesEnabled,
-    reactionsEnabled,
-    rideShareEnabled,
-    notesEnabled,
-    musicPollEnabled,
-    liveConfirmedEnabled,
     showConfirmedPeople,
   };
 
@@ -259,12 +241,6 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
           />
         ) : null}
 
-        {/* Reacciones */}
-        {renderToggleRow("reactions", t("setup.reactionsLabel"), t("setup.reactionsHint"))}
-
-        {/* Prueba social en vivo: cuántos han confirmado */}
-        {renderToggleRow("liveConfirmed", t("setup.liveConfirmedLabel"), t("setup.liveConfirmedHint"))}
-
         {/* Visibilidad de la lista de confirmados (opt-in de nombres) */}
         {renderToggleRow(
           "showConfirmedPeople",
@@ -290,9 +266,6 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
           </>
         ) : null}
 
-        {/* Compartir coche */}
-        {renderToggleRow("rideShare", t("setup.rideShareLabel"), t("setup.rideShareHint"))}
-
         {/* Vídeo de bienvenida */}
         {renderToggleRow("welcomeVideo", t("setup.welcomeVideoLabel"), t("setup.welcomeVideoHint"))}
         {welcomeVideoEnabled === "true" ? (
@@ -307,12 +280,6 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
             placeholder={t("setup.welcomeVideoPlaceholder")}
           />
         ) : null}
-
-        {/* Muro de dedicatorias */}
-        {renderToggleRow("notes", t("setup.notesLabel"), t("setup.notesHint"))}
-
-        {/* Encuesta de música */}
-        {renderToggleRow("musicPoll", t("setup.musicPollLabel"), t("setup.musicPollHint"))}
 
         {/* Trivia */}
         {renderToggleRow("trivia", t("setup.triviaLabel"), t("setup.triviaHint"))}
@@ -399,18 +366,6 @@ const ExtrasSectionForm = memo(function ExtrasSectionForm({ prefix = "" }: { pre
             </button>
           </div>
         ) : null}
-
-        {/* Caja de recuerdos de voz */}
-        {renderToggleRow("voiceNotes", t("setup.voiceNotesLabel"), t("setup.voiceNotesHint"))}
-
-        {/* Fotos del día */}
-        {renderToggleRow("dayPhotos", t("setup.dayPhotosLabel"), t("setup.dayPhotosHint"))}
-
-        {/* Buzón privado */}
-        {renderToggleRow("mailbox", t("setup.mailboxLabel"), t("setup.mailboxHint"))}
-
-        {/* Brindis */}
-        {renderToggleRow("toasts", t("setup.toastsLabel"), t("setup.toastsHint"))}
 
         {/* Mapa del recinto */}
         {renderToggleRow("venueMap", t("setup.venueMapLabel"), t("setup.venueMapHint"))}

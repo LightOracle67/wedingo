@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.123.9";
+export const APP_VERSION = "2.124.0";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -275,8 +275,6 @@ export const defaultConfig = {
   weddingSiteURLEnabled: "false",
   instagramUrl: "",
   instagramEnabled: "false",
-  facebookUrl: "",
-  facebookEnabled: "false",
   weddingMapView: "roadmap",
   weddingMapStatic: "false",
   detailsMapMode: "iframe",
@@ -312,8 +310,6 @@ export const defaultConfig = {
   sectionOrder: STORY_SECTION_ORDER.join(","),
   hiddenSections: "",
   // Modo sorpresa: por defecto desactivado y sin secciones a revelar.
-  surpriseMode: "false",
-  surpriseSections: "",
   // Idioma por defecto de la invitación (vacío = detectar del navegador).
   language: "",
   // Animaciones desactivadas por los novios (ids kebab-case separados por
@@ -343,22 +339,13 @@ export const defaultConfig = {
   menuVeganoDishes: "",
   rsvpDeadline: "",
   rsvpDeadlineEnabled: "false",
-  reactionsEnabled: "false",
   // Prueba social en vivo: muestra cuántos invitados han confirmado (portada).
-  liveConfirmedEnabled: "true",
   // Lista de confirmados en la portada: por defecto OCULTA (opt-in).
   showConfirmedPeople: "false",
   giftsListEnabled: "false",
   giftList: "[]",
-  rideShareEnabled: "false",
   welcomeVideo: "",
   welcomeVideoEnabled: "false",
-  notesEnabled: "false",
-  musicPollEnabled: "false",
-  voiceNotesEnabled: "false",
-  dayPhotosEnabled: "false",
-  mailboxEnabled: "false",
-  toastsEnabled: "false",
   venueMapEnabled: "false",
   // Distribución de mesas en la invitación pública (sección propia).
   tablesEnabled: "false",

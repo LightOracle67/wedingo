@@ -11,7 +11,7 @@ export interface PlatformSettings {
   blockedTokens: string;
   expiringDays: string;
   /** Funciones sociales desactivadas GLOBALMENTE (lista separada por comas):
-   *  gifts, rides, reactions, notes, songs, trivia. Kill-switch por función. */
+   *  gifts, trivia. Kill-switch por función. */
   disabledFeatures: string;
 }
 

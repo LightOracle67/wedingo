@@ -169,21 +169,18 @@ describe("DetailsSection", () => {
     vi.unstubAllGlobals();
   });
 
-  it("renders social media links when provided", () => {
+  it("renders the Instagram link when provided", () => {
     render(
       <DetailsSection
         {...baseProps}
         instagramUrl="https://www.instagram.com/ana"
-        facebookUrl="https://www.facebook.com/ana"
       />,
     );
     expect(screen.getByLabelText("details.instagramLabel")).toBeDefined();
-    expect(screen.getByLabelText("details.facebookLabel")).toBeDefined();
   });
 
   it("does not render social links when empty", () => {
     render(<DetailsSection {...baseProps} />);
     expect(screen.queryByLabelText("details.instagramLabel")).toBeNull();
-    expect(screen.queryByLabelText("details.facebookLabel")).toBeNull();
   });
 });

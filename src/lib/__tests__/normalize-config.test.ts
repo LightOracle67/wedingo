@@ -288,27 +288,19 @@ describe("normalizeConfig social fields", () => {
       theme: "golden",
       rsvpDeadline: "2026-06-01",
       rsvpDeadlineEnabled: "true",
-      reactionsEnabled: "true",
       giftsListEnabled: "true",
       giftList: JSON.stringify([{ id: "g1", name: "Tostadora", description: "Roja" }]),
-      rideShareEnabled: "true",
       welcomeVideo: "https://example.com/v.mp4",
       welcomeVideoEnabled: "true",
-      notesEnabled: "true",
-      musicPollEnabled: "true",
       triviaEnabled: "true",
       trivia: JSON.stringify([{ q: "¿Dónde?", a: "En el parque" }]),
     });
     expect(result.rsvpDeadline).toBe("2026-06-01");
     expect(result.rsvpDeadlineEnabled).toBe("true");
-    expect(result.reactionsEnabled).toBe("true");
     expect(result.giftsListEnabled).toBe("true");
     expect(result.giftList).toContain("Tostadora");
-    expect(result.rideShareEnabled).toBe("true");
     expect(result.welcomeVideo).toBe("https://example.com/v.mp4");
     expect(result.welcomeVideoEnabled).toBe("true");
-    expect(result.notesEnabled).toBe("true");
-    expect(result.musicPollEnabled).toBe("true");
     expect(result.triviaEnabled).toBe("true");
     expect(result.trivia).toContain("En el parque");
   });
@@ -320,8 +312,7 @@ describe("normalizeConfig social fields", () => {
   });
 
   it("normalizes the enabled flags to true/false", () => {
-    const result = normalizeConfig({ rsvpDeadlineEnabled: "yes", reactionsEnabled: "on" });
+    const result = normalizeConfig({ rsvpDeadlineEnabled: "yes" });
     expect(result.rsvpDeadlineEnabled).toBe("false");
-    expect(result.reactionsEnabled).toBe("false");
   });
 });

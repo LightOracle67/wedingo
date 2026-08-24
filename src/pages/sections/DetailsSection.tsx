@@ -18,7 +18,6 @@ const DetailsSection = memo(function DetailsSection({
   calendarLink,
   weddingSiteURL,
   instagramUrl,
-  facebookUrl,
   mapView,
   staticMap,
   detailsMapMode,
@@ -41,7 +40,6 @@ const DetailsSection = memo(function DetailsSection({
   calendarLink?: string;
   weddingSiteURL?: string;
   instagramUrl?: string;
-  facebookUrl?: string;
   mapView?: string;
   staticMap?: boolean;
   detailsMapMode?: string;
@@ -62,7 +60,6 @@ const DetailsSection = memo(function DetailsSection({
   // estos valores pueden llegar via props/hash de URL, así que se descartan
   // los esquemas no-http(s) y los hosts no whitelist antes de usarlos en href.
   const safeInstagram = safeSocialUrl(instagramUrl, "instagram.com");
-  const safeFacebook = safeSocialUrl(facebookUrl, "facebook.com");
   const safeWeddingSiteURL = safeHref(weddingSiteURL);
   // "Cómo llegar": abre Google Maps con navegación al lugar (o a la URL del mapa).
   const directionsUrl = weddingPlace
@@ -165,7 +162,7 @@ const DetailsSection = memo(function DetailsSection({
           <div className="story-divider" />
 
           {/* Redes sociales de los novios (opcional). */}
-          {safeInstagram || safeFacebook ? (
+          {safeInstagram ? (
             <div
               className="story-social-actions"
               style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}
@@ -197,34 +194,6 @@ const DetailsSection = memo(function DetailsSection({
                     <rect x="3" y="3" width="18" height="18" rx="5" />
                     <circle cx="12" cy="12" r="4" />
                     <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                  </svg>
-                </a>
-              ) : null}
-              {safeFacebook ? (
-                <a
-                  href={safeFacebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  referrerPolicy="no-referrer"
-                  aria-label={t("details.facebookLabel")}
-                  title={t("details.facebookLabel")}
-                  style={{
-                    color: "var(--invite-title-color)",
-                    fontSize: "1.3rem",
-                    textDecoration: "none",
-                    opacity: 0.9,
-                  }}
-                >
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    aria-hidden="true"
-                  >
-                    <path d="M14 8h3V5h-3a4 4 0 0 0-4 4v2H7v3h3v7h3v-7h3l1-3h-4V9a1 1 0 0 1 1-1z" />
                   </svg>
                 </a>
               ) : null}

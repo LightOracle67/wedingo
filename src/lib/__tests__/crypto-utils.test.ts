@@ -41,33 +41,4 @@ describe("crypto-utils", () => {
     expect(result).toBe("");
     vi.restoreAllMocks();
   });
-
-  it("decrypts legacy format ciphertext", async () => {
-    const token = "test-token-legacy";
-    const text = "x";
-    const enc = new TextEncoder();
-    const salt = enc.encode("wedingo-" + token.slice(0, 16));
-    const keyMaterial = await crypto.subtle.importKey(
-      "raw",
-      enc.encode(token.padEnd(32, "x").slice(0, 32)),
-      { name: "PBKDF2" },
-      false,
-      ["deriveKey"],
-    );
-    const key = await crypto.subtle.deriveKey(
-      { name: "PBKDF2", salt, iterations: 10000, hash: "SHA-256" },
-      keyMaterial,
-      { name: "AES-GCM", length: 256 },
-      false,
-      ["encrypt"],
-    );
-    const iv = crypto.getRandomValues(new Uint8Array(12));
-    const encrypted = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, enc.encode(text));
-    const combined = new Uint8Array(12 + encrypted.byteLength);
-    combined.set(iv, 0);
-    combined.set(new Uint8Array(encrypted), 12);
-    const legacyCiphertext = btoa(String.fromCharCode(...combined));
-    const result = await decrypt(legacyCiphertext, token);
-    expect(result).toBe(text);
-  });
 });

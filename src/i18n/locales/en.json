@@ -395,7 +395,6 @@
     "photoUploading": "Uploading photo...",
     "replaceImage": "Change photo",
     "hiddenSectionBadge": "hidden",
-    "surpriseBadge": "surprise",
     "languageLabel": "Default invitation language",
     "languageHint": "Applies to guests who have not chosen a language on their device. Guests can always switch with the footer selector.",
     "languageAuto": "Automatic (browser-based)",
@@ -1241,11 +1240,7 @@
     "moveUp": "Move up",
     "moveDown": "Move down",
     "title": "Order & visibility",
-    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off.",
-    "surpriseModeLabel": "Surprise mode: hide the sections marked 🎁 until the wedding day",
-    "surpriseAdd": "Mark as surprise",
-    "surpriseRemove": "Remove surprise mode",
-    "surpriseDisabledHint": "Enable surprise mode to mark sections"
+    "help": "Drag to reorder, use the buttons to move, and toggle each section on or off."
   },
   "countdown": {
     "year_one": "{{count}} year",

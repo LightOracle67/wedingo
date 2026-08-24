@@ -56,7 +56,6 @@ const sampleConfig: InvitationConfig = {
   weddingPlace: "Church",
   weddingSiteURL: "",
   instagramUrl: "",
-  facebookUrl: "",
   weddingMapView: "roadmap",
   weddingMapStatic: "false",
   detailsMapMode: "iframe",

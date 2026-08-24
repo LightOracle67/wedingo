@@ -131,20 +131,6 @@ describe("ToolsTab", () => {
     expect(downloadText).toHaveBeenCalledWith("tok1234567.ics", expect.stringContaining("BEGIN:VCALENDAR"), "text/calendar;charset=utf-8");
   });
 
-  it("borra un mensaje del buzón privado", async () => {
-    mockGetDocs.mockImplementation((ref: string) => {
-      if (ref === "mailbox")
-        return Promise.resolve({
-          docs: [{ id: "m1", data: () => ({ guestName: "Ana", message: "Felicidades", createdAt: new Date().toISOString() }) }],
-        });
-      return Promise.resolve({ docs: [], size: 0 });
-    });
-    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" />);
-    await screen.findByText("Felicidades");
-    fireEvent.click(screen.getAllByText("tools.delete")[0]!);
-    await vi.waitFor(() => expect(mockDeleteDoc).toHaveBeenCalled());
-  });
-
   it("descarga las fotos de la galería", async () => {
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "gallery")
@@ -157,19 +143,5 @@ describe("ToolsTab", () => {
     await vi.waitFor(() => expect(btn).not.toBeDisabled());
     fireEvent.click(btn);
     await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("success", expect.stringContaining("tools.galleryDownloaded")));
-  });
-
-  it("descarga las fotos del día descifradas", async () => {
-    const { decrypt } = await import("../../../lib/crypto-utils");
-    mockGetDocs.mockImplementation((ref: string) => {
-      if (ref === "dayphotos")
-        return Promise.resolve({ docs: [{ id: "d1", data: () => ({ data: "enc" }) }], size: 1 });
-      return Promise.resolve({ docs: [], size: 0 });
-    });
-    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" />);
-    const btn = await screen.findByText("tools.downloadDayPhotos", { exact: false });
-    await vi.waitFor(() => expect(btn).not.toBeDisabled());
-    fireEvent.click(btn);
-    await vi.waitFor(() => expect(decrypt).toHaveBeenCalled());
   });
 });

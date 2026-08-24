@@ -91,16 +91,8 @@ export function sectionHasContent(
       // también los 0 elementos nulos por si un extra válido activado no está
       // listado (regresión "no activable").
       return (
-        config.reactionsEnabled === "true" ||
         config.giftsListEnabled === "true" ||
-        config.rideShareEnabled === "true" ||
-        config.notesEnabled === "true" ||
-        config.musicPollEnabled === "true" ||
-        config.triviaEnabled === "true" ||
-        config.voiceNotesEnabled === "true" ||
-        config.dayPhotosEnabled === "true" ||
-        config.mailboxEnabled === "true" ||
-        config.toastsEnabled === "true"
+        config.triviaEnabled === "true"
       );
     case "gallery":
       // La galería se desactiva si no tiene ninguna imagen subida.

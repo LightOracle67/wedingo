@@ -194,11 +194,7 @@ export function validateConfigForSave(
   // aviso (en vez de un borrado silencioso) comprobamos el input original.
   const socialUrl = (value: unknown): string | undefined => (typeof value === "string" ? value : undefined);
   const instagramRaw = socialUrl(formData["instagramUrl"]);
-  const facebookRaw = socialUrl(formData["facebookUrl"]);
   if (instagramRaw && !safeSocialUrl(instagramRaw, "instagram.com")) {
-    return { sanitized, hiddenSet, errorKey: "errors.socialUrlInvalid" };
-  }
-  if (facebookRaw && !safeSocialUrl(facebookRaw, "facebook.com")) {
     return { sanitized, hiddenSet, errorKey: "errors.socialUrlInvalid" };
   }
 

@@ -68,11 +68,9 @@ function tokenSalt(token: string): Uint8Array<ArrayBuffer> {
   return out;
 }
 
-/** Caché de claves: por `token` (formato nuevo) y por `secret|salt|iterations`
- *  (formato legacy con salt aleatorio). Se mantienen ambas para descifrar
- *  correctamente datos viejos sin re-derivar innecesariamente. */
+/** Caché de claves por `token` (formato nuevo): se deriva una sola vez por
+ *  invitación y se reutiliza en todos sus mensajes. */
 const TOKEN_KEY_CACHE = new Map<string, CryptoKey>();
-const LEGACY_KEY_CACHE = new Map<string, CryptoKey>();
 const MAX_KEYS = 20;
 
 async function deriveKeyFromSecret(secret: string, salt: BufferSource, iterations: number) {
@@ -102,25 +100,6 @@ function getTokenKey(secret: string, iterations: number): Promise<CryptoKey> {
       if (oldest !== undefined) TOKEN_KEY_CACHE.delete(oldest);
     }
     TOKEN_KEY_CACHE.set(secret, key);
-    return key;
-  });
-}
-
-/** Clave legacy por salt aleatorio (datos cifrados antes de P1). */
-function getLegacyKey(secret: string, salt: BufferSource, iterations: number): Promise<CryptoKey> {
-  const saltBytes = new Uint8Array(salt as ArrayBuffer);
-  const saltHex = Array.from(saltBytes)
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-  const cacheKey = `${secret}|${saltHex}|${iterations}`;
-  const cached = LEGACY_KEY_CACHE.get(cacheKey);
-  if (cached) return Promise.resolve(cached);
-  return deriveKeyFromSecret(secret, salt, iterations).then((key) => {
-    if (LEGACY_KEY_CACHE.size >= MAX_KEYS) {
-      const oldest = LEGACY_KEY_CACHE.keys().next().value;
-      if (oldest !== undefined) LEGACY_KEY_CACHE.delete(oldest);
-    }
-    LEGACY_KEY_CACHE.set(cacheKey, key);
     return key;
   });
 }
@@ -171,55 +150,32 @@ export async function decrypt(ciphertext: string, token: string) {
   if (!ciphertext || !token || ciphertext.length < 24) return ciphertext;
   try {
     const raw = Uint8Array.from(atob(ciphertext), (c) => c.charCodeAt(0));
-    if (raw.length >= HEADER_LEN) {
-      const salt = raw.slice(0, SALT_LEN);
-      const iv = raw.slice(SALT_LEN, SALT_LEN + IV_LEN);
-      const iterBytes = raw.slice(SALT_LEN + IV_LEN, HEADER_LEN);
-      const iterations = iterBytes[0]! | (iterBytes[1]! << 8) | (iterBytes[2]! << 16);
-      const data = raw.slice(HEADER_LEN);
-      // Un ciphertext legacy (>31 bytes) se malinterpretaba como formato nuevo
-      // con iteraciones "basura" (hasta 16M) y ejecutaba un PBKDF2 lentísimo
-      // antes de fallar y reintentar con el formato legacy. Se valida el rango
-      // ANTES de derivar: fuera de él se pasa directo al formato antiguo.
-      if (iterations < 1000 || iterations > 2_000_000) throw new Error("invalid iterations");
-      if (data.length === 0) throw new Error("empty ciphertext");
+    if (raw.length < HEADER_LEN) throw new Error("too short");
+    const salt = raw.slice(0, SALT_LEN);
+    const iv = raw.slice(SALT_LEN, SALT_LEN + IV_LEN);
+    const iterBytes = raw.slice(SALT_LEN + IV_LEN, HEADER_LEN);
+    const iterations = iterBytes[0]! | (iterBytes[1]! << 8) | (iterBytes[2]! << 16);
+    const data = raw.slice(HEADER_LEN);
+    // Validación temprana del rango de iteraciones: evita derivar PBKDF2 con
+    // valores basura si el ciphertext está corrupto o truncado.
+    if (iterations < 1000 || iterations > 2_000_000) throw new Error("invalid iterations");
+    if (data.length === 0) throw new Error("empty ciphertext");
 
-      // Ruta rápida (P1): si el mensaje usa el salt derivado del token (formato
-      // nuevo), se descifra con la clave cacheada por token (1 sola derivación).
-      const expectedSalt = tokenSalt(token);
-      const isTokenSalt = expectedSalt.every((b, i) => b === salt[i]);
-      const key = isTokenSalt ? await getTokenKey(token, iterations) : await getLegacyKey(token, salt, iterations);
-
-      const decrypted = await crypto.subtle.decrypt({ ...ALGORITHM, iv }, key, data);
-      return new TextDecoder().decode(decrypted);
+    // Formato único vigente (P1): salt derivado del token y clave cacheada.
+    // Los datos verificados en producción ya están todos en este formato;
+    // cualquier otro se rechaza sin rutas heredadas.
+    const expectedSalt = tokenSalt(token);
+    for (let i = 0; i < SALT_LEN; i++) {
+      if (expectedSalt[i] !== salt[i]) throw new Error("unknown salt");
     }
-  } catch {}
-  try {
-    const enc = new TextEncoder();
-    const salt = enc.encode("wedingo-" + token.slice(0, 16));
-    const keyMaterial = await crypto.subtle.importKey(
-      "raw",
-      enc.encode(token.padEnd(32, "x").slice(0, 32)),
-      { name: "PBKDF2" },
-      false,
-      ["deriveKey"],
-    );
-    const key = await crypto.subtle.deriveKey(
-      { name: "PBKDF2", salt, iterations: 10000, hash: "SHA-256" },
-      keyMaterial,
-      ALGORITHM,
-      false,
-      ["encrypt", "decrypt"],
-    );
-    const raw = Uint8Array.from(atob(ciphertext), (c) => c.charCodeAt(0));
-    const iv = raw.slice(0, 12);
-    const data = raw.slice(12);
+    const key = await getTokenKey(token, iterations);
+
     const decrypted = await crypto.subtle.decrypt({ ...ALGORITHM, iv }, key, data);
     return new TextDecoder().decode(decrypted);
-  } catch {
-    // Fallo de descifrado (ni formato nuevo ni legacy): se registra sin el
-    // token para diagnóstico y se devuelve vacío para no romper el render.
-    safeLogError(["[crypto-utils]", "decrypt failed; returning empty"], new Error("decrypt failed"));
+  } catch (err) {
+    // Fallo de descifrado: se registra sin el token para diagnóstico y se
+    // devuelve vacío para no romper el render.
+    safeLogError(["[crypto-utils]", "decrypt failed; returning empty"], err instanceof Error ? err : new Error("decrypt failed"));
     return "";
   }
 }

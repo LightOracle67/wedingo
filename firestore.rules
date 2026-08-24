@@ -67,13 +67,12 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/setupTokens/$(hash)).data.inviteToken == tokenId;
     }
 
-    /* Tope anti-spam por subcolección social (notes/songs/gifts/rides).
-       voicenotes: 200 notas de voz por invitación (cap como notes). */
+    /* Tope anti-spam por subcolección social (gifts/confirmedPeople). */
     function socialCounterCap(name) {
       // La lista pública de confirmados puede superar ampliamente 200 (tantos
       // como invitados confirmen con opt-in); el resto de subcolecciones
       // sociales usa 200.
-      return name == 'rides' ? 100 : name == 'confirmedPeople' ? 2000 : 200;
+      return name == 'confirmedPeople' ? 2000 : 200;
     }
 
     /* El contador invitations/{id}/_counters/{name} debe estar por debajo del
@@ -129,7 +128,6 @@ service cloud.firestore {
         /* URLs: acotadas y sin javascript: (XSS). */
         && (!data.keys().hasAny(['weddingSiteURL']) || isValidSafeUrl(data.weddingSiteURL))
         && (!data.keys().hasAny(['instagramUrl']) || isValidSafeUrl(data.instagramUrl))
-        && (!data.keys().hasAny(['facebookUrl']) || isValidSafeUrl(data.facebookUrl))
         && (!data.keys().hasAny(['accommodationURL']) || isValidSafeUrl(data.accommodationURL))
         /* adminUsername: solo alfanumérico minúsculas, máx 50. */
         && (!data.keys().hasAny(['adminUsername']) || (data.adminUsername is string && data.adminUsername.size() <= 50 && data.adminUsername.matches('^[a-z0-9]*$')))
@@ -305,66 +303,8 @@ service cloud.firestore {
       }
 
       /* ── Contribuciones de los invitados (funciones sociales) ────────────
-         Reacciones (contador por emoji), dedicatorias, canciones votadas,
-         ofertas de coche compartido y reservas de regalo. El texto público se
-         sanea con isSafeText; solo el admin/superadmin puede borrar. */
-      match /reactions/{emoji} {
-        /* El id se restringe a los emojis soportados por la UI (❤️ 🎉 😂):
-           un atacante no puede crear documentos de reacciones con ids
-           arbitrarios para inflar el almacenamiento ni llenar la subcolección. */
-        allow read: if true;
-        allow create: if emoji in ['❤️', '🎉', '😂']
-          && request.resource.data.keys().hasOnly(['count'])
-          && request.resource.data.count is int && request.resource.data.count == 1;
-        allow update: if emoji in ['❤️', '🎉', '😂']
-          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['count'])
-          && request.resource.data.count is int
-          && request.resource.data.count == resource.data.count + 1
-          && request.resource.data.count <= 10000;
-      }
-      match /notes/{noteId} {
-        allow read: if true;
-        allow create: if request.resource.data.keys().hasOnly(['guestName', 'message', 'createdAt', 'ownerKey'])
-          && isSafeText(request.resource.data.guestName)
-          && request.resource.data.guestName.size() <= 60
-          && isSafeText(request.resource.data.message)
-          && request.resource.data.message.size() <= 500
-          && (!request.resource.data.keys().hasAny(['ownerKey']) || (request.resource.data.ownerKey is string && request.resource.data.ownerKey.size() <= 64))
-          && socialCounterBelow(tokenId, 'notes');
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
-          || (resource.data.keys().hasAny(['ownerKey']) && request.resource.data.ownerKey == resource.data.ownerKey);
-      }
-      match /songs/{songId} {
-        allow read: if true;
-        allow create: if request.resource.data.keys().hasOnly(['guestName', 'song', 'votes', 'createdAt', 'ownerKey'])
-          && isSafeText(request.resource.data.guestName)
-          && request.resource.data.guestName.size() <= 60
-          && isSafeText(request.resource.data.song)
-          && request.resource.data.song.size() <= 200
-          && request.resource.data.votes is int && request.resource.data.votes == 1
-          && (!request.resource.data.keys().hasAny(['ownerKey']) || (request.resource.data.ownerKey is string && request.resource.data.ownerKey.size() <= 64))
-          && socialCounterBelow(tokenId, 'songs');
-        allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['votes'])
-          && request.resource.data.votes is int
-          && request.resource.data.votes == resource.data.votes + 1
-          && request.resource.data.votes <= 10000;
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
-          || (resource.data.keys().hasAny(['ownerKey']) && request.resource.data.ownerKey == resource.data.ownerKey);
-      }
-      match /rides/{rideId} {
-        allow read: if true;
-        allow create: if request.resource.data.keys().hasOnly(['guestName', 'origin', 'seats', 'createdAt', 'ownerKey'])
-          && isSafeText(request.resource.data.guestName)
-          && request.resource.data.guestName.size() <= 60
-          && isSafeText(request.resource.data.origin)
-          && request.resource.data.origin.size() <= 200
-          && request.resource.data.seats is int
-          && request.resource.data.seats >= 1 && request.resource.data.seats <= 8
-          && (!request.resource.data.keys().hasAny(['ownerKey']) || (request.resource.data.ownerKey is string && request.resource.data.ownerKey.size() <= 64))
-          && socialCounterBelow(tokenId, 'rides');
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
-          || (resource.data.keys().hasAny(['ownerKey']) && request.resource.data.ownerKey == resource.data.ownerKey);
-      }
+         Reservas de regalo. El texto público se sanea con isSafeText; solo el
+         admin/superadmin puede borrar. */
       match /gifts/{giftId} {
         allow read: if true;
         allow create: if request.resource.data.keys().hasOnly(['itemId', 'reservedBy', 'createdAt', 'ownerKey'])
@@ -484,20 +424,6 @@ service cloud.firestore {
          pública (con cap), borrado solo admin/superadmin.
          L4: Consentimiento de voz - el invitado debe confirmar que su nota
          puede usarse (GDPR art. 6.1.a consentimiento explícito). */
-      match /voicenotes/{entryId} {
-        allow read: if true;
-        allow create: if socialCounterBelow(tokenId, 'voicenotes')
-          && request.resource.data.keys().hasOnly(['noteId', 'guestName', 'chunkIndex', 'data', 'totalChunks', 'attempt', 'createdAt', 'voiceConsent'])
-          && request.resource.data.noteId is string && request.resource.data.noteId.size() <= 40
-          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60 && isSafeText(request.resource.data.guestName)
-          && request.resource.data.chunkIndex is int && request.resource.data.chunkIndex >= 0 && request.resource.data.chunkIndex < 400
-           && request.resource.data.data is string && request.resource.data.data.size() <= 524288
-           && isEncryptedMedia(request.resource.data.data)
-           && request.resource.data.totalChunks is int && request.resource.data.totalChunks > 0 && request.resource.data.totalChunks <= 400
-           && request.resource.data.voiceConsent == true;
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
-          || (resource.data.keys().hasAny(['ownerKey']) && request.resource.data.ownerKey == resource.data.ownerKey);
-      }
 
       /* Muro de fotos del día (diferencial): los invitados suben fotos a un
          álbum compartido durante la boda. Cifradas como la galería (data
@@ -505,37 +431,13 @@ service cloud.firestore {
          admin. Se exige isEncryptedMedia (alfabeto base64 + longitud mínima)
          tanto como en gallery/audio/configImages para impedir alojar texto
          arbitrario, data URLs o SVG en claro bajo la invitación. */
-      match /dayphotos/{photoId} {
-        allow read: if true;
-        allow create: if socialCounterBelow(tokenId, 'dayphotos')
-          && request.resource.data.keys().hasOnly(['guestName', 'data', 'createdAt'])
-          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60 && isSafeText(request.resource.data.guestName)
-          && request.resource.data.data is string && request.resource.data.data.size() <= 1048576
-          && isEncryptedMedia(request.resource.data.data);
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
-      }
 
       /* Buzón de mensajes privados (diferencial): mensajes que SOLO lee la
          pareja (admin). Creación pública con cap; lectura/borrado solo
          admin/superadmin (privacidad). */
-      match /mailbox/{messageId} {
-        allow create: if socialCounterBelow(tokenId, 'mailbox')
-          && request.resource.data.keys().hasOnly(['guestName', 'message', 'createdAt'])
-          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60 && isSafeText(request.resource.data.guestName)
-          && request.resource.data.message is string && request.resource.data.message.size() <= 600 && !request.resource.data.message.matches('.*[<>].*');
-        allow read, delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
-      }
 
       /* Programa de brindis/discursos (diferencial): los invitados se apuntan
          a hablar. Lectura pública, creación pública con cap, borrado admin. */
-      match /toasts/{toastId} {
-        allow read: if true;
-        allow create: if socialCounterBelow(tokenId, 'toasts')
-          && request.resource.data.keys().hasOnly(['guestName', 'time', 'createdAt'])
-          && request.resource.data.guestName is string && request.resource.data.guestName.size() <= 60 && isSafeText(request.resource.data.guestName)
-          && request.resource.data.time is string && request.resource.data.time.size() <= 20 && !request.resource.data.time.matches('.*[<>].*');
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin();
-      }
 
       /* Mapa del recinto (diferencial): puntos de interés dibujados por el
          admin (coordenadas en %) visibles para los invitados. */

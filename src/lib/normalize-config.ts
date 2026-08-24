@@ -200,19 +200,6 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   // Modo sorpresa: solo "true" lo activa; las secciones se sanitizan contra
   // el orden canónico (claves desconocidas o corruptas se ignoran) para que
   // un valor inválido nunca oculte secciones por error ni filtre las válidas.
-  surpriseMode: s(value?.surpriseMode) === "true" ? "true" : "false",
-  surpriseSections: (() => {
-    const raw = typeof value?.surpriseSections === "string" ? value.surpriseSections : "";
-    const valid = new Set(STORY_SECTION_ORDER);
-    return [
-      ...new Set(
-        raw
-          .split(",")
-          .map((s) => s.trim())
-          .filter((k) => valid.has(k)),
-      ),
-    ].join(",");
-  })(),
   // Idioma de la invitación: solo se aceptan es/en (los únicos disponibles);
   // cualquier otro valor se resuelve a vacío (detección automática).
   language: s(value?.language) === "en" ? "en" : s(value?.language) === "es" ? "es" : "",
@@ -255,24 +242,15 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   cornerDecorationEnabled: toggleWithLegacy(value?.cornerDecorationEnabled, value?.cornerDecoration),
   rsvpDeadline: s(value?.rsvpDeadline).slice(0, 10),
   rsvpDeadlineEnabled: s(value?.rsvpDeadlineEnabled) === "true" ? "true" : "false",
-  reactionsEnabled: s(value?.reactionsEnabled) === "true" ? "true" : "false",
   // Prueba social en vivo: por defecto VISIBLE (las invitaciones existentes no
   // tenían el campo y ya mostraban el contador); solo se oculta con "false".
-  liveConfirmedEnabled: s(value?.liveConfirmedEnabled) === "false" ? "false" : "true",
   // Lista de confirmados: SOLO "true" la muestra (opt-in estricto; ausente se
   // oculta para no revelar identidades sin consentimiento explícito).
   showConfirmedPeople: s(value?.showConfirmedPeople) === "true" ? "true" : "false",
   giftsListEnabled: s(value?.giftsListEnabled) === "true" ? "true" : "false",
   giftList: normalizeJsonArray(value?.giftList),
-  rideShareEnabled: s(value?.rideShareEnabled) === "true" ? "true" : "false",
   welcomeVideo: s(value?.welcomeVideo).slice(0, 1000),
   welcomeVideoEnabled: s(value?.welcomeVideoEnabled) === "true" ? "true" : "false",
-  notesEnabled: s(value?.notesEnabled) === "true" ? "true" : "false",
-  musicPollEnabled: s(value?.musicPollEnabled) === "true" ? "true" : "false",
-  voiceNotesEnabled: s(value?.voiceNotesEnabled) === "true" ? "true" : "false",
-  dayPhotosEnabled: s(value?.dayPhotosEnabled) === "true" ? "true" : "false",
-  mailboxEnabled: s(value?.mailboxEnabled) === "true" ? "true" : "false",
-  toastsEnabled: s(value?.toastsEnabled) === "true" ? "true" : "false",
   venueMapEnabled: s(value?.venueMapEnabled) === "true" ? "true" : "false",
   tablesEnabled: s(value?.tablesEnabled) === "true" ? "true" : "false",
   triviaEnabled: s(value?.triviaEnabled) === "true" ? "true" : "false",
@@ -284,8 +262,6 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   weddingSiteURLEnabled: toggleWithLegacy(value?.weddingSiteURLEnabled, value?.weddingSiteURL ?? value?.weddingMapUrl),
   instagramUrl: safeSocialUrl(s(value?.instagramUrl).slice(0, 1000), "instagram.com"),
   instagramEnabled: toggleWithLegacy(value?.instagramEnabled, value?.instagramUrl),
-  facebookUrl: safeSocialUrl(s(value?.facebookUrl).slice(0, 1000), "facebook.com"),
-  facebookEnabled: toggleWithLegacy(value?.facebookEnabled, value?.facebookUrl),
   weddingMapView: ["roadmap", "satellite", "hybrid"].includes(s(value?.weddingMapView))
     ? s(value?.weddingMapView)
     : "roadmap",

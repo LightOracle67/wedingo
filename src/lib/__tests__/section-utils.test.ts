@@ -53,21 +53,16 @@ describe("sectionHasContent", () => {
     expect(sectionHasContent("extras", { reactionsEnabled: "false", notesEnabled: "false" })).toBe(false);
   });
 
-  it("extras has content when any of the classic extras is enabled", () => {
-    expect(sectionHasContent("extras", { reactionsEnabled: "true" })).toBe(true);
+  it("extras has content when any remaining extra is enabled", () => {
     expect(sectionHasContent("extras", { giftsListEnabled: "true" })).toBe(true);
-    expect(sectionHasContent("extras", { musicPollEnabled: "true" })).toBe(true);
     expect(sectionHasContent("extras", { triviaEnabled: "true" })).toBe(true);
+    // Extras eliminados (reacciones, encuesta musical, notas, buzón, brindis,
+    // notas de voz, fotos del día y compartir coche) ya no aportan contenido.
+    expect(sectionHasContent("extras", { reactionsEnabled: "true" })).toBe(false);
+    expect(sectionHasContent("extras", { musicPollEnabled: "true" })).toBe(false);
   });
 
-  it("extras has content when ONLY the newer extras are enabled (regresión no activable)", () => {
-    // Bug corregido: voiceNotes/dayPhotos/mailbox/toasts activados en
-    // solitario hacían que la sección extras se considerara vacía y se ocultara.
-    expect(sectionHasContent("extras", { voiceNotesEnabled: "true" })).toBe(true);
-    expect(sectionHasContent("extras", { dayPhotosEnabled: "true" })).toBe(true);
-    expect(sectionHasContent("extras", { mailboxEnabled: "true" })).toBe(true);
-    expect(sectionHasContent("extras", { toastsEnabled: "true" })).toBe(true);
-  });
+
 
   it("venue map is a standalone section (not part of extras) since v2.109", () => {
     // El mapa del recinto es una sección PROPIA: solo se muestra si está
@@ -83,8 +78,8 @@ describe("sectionHasContent", () => {
     // Contarlos dejaba la sección visible pero VACÍA (bug de visualización).
     expect(sectionHasContent("extras", { welcomeVideoEnabled: "true" })).toBe(false);
     expect(sectionHasContent("extras", { rsvpDeadlineEnabled: "true" })).toBe(false);
-    // Sí cuentan los bloques reales que sí se apilan en la sección.
-    expect(sectionHasContent("extras", { reactionsEnabled: "true" })).toBe(true);
+    // Los bloques reales restantes siguen contando.
+    expect(sectionHasContent("extras", { giftsListEnabled: "true" })).toBe(true);
   });
 
   it("tables is a standalone public section controlled by tablesEnabled", () => {

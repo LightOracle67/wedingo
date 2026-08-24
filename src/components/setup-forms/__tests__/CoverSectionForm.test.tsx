@@ -51,7 +51,6 @@ const mockFormData = vi.hoisted(
       godparentsEnabled: "true",
       inviteMessageEnabled: "true",
       instagramEnabled: "true",
-      facebookEnabled: "true",
       couplePhotoEnabled: "true",
       customSealEnabled: "true",
       backgroundImageEnabled: "true",
@@ -532,9 +531,8 @@ describe("CoverSectionForm", () => {
     expect(screen.getAllByText("setup.remove").length).toBeGreaterThan(0);
   });
 
-  it("renders social media URL inputs", () => {
+  it("renders the Instagram URL input", () => {
     render(<CoverSectionForm />);
     expect(screen.getByLabelText("setup.instagramLabel")).toBeDefined();
-    expect(screen.getByLabelText("setup.facebookLabel")).toBeDefined();
   });
 });

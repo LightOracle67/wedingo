@@ -252,7 +252,7 @@ const ManageTab = memo(function ManageTab() {
       oldSnap.docs.forEach((d) => {
         if (d.id !== hash) batch.delete(d.ref);
       });
-      batch.update(doc(INVITATIONS_COLLECTION_REF, token), { _activeSetupToken: "", legacyToken: "" });
+      batch.update(doc(INVITATIONS_COLLECTION_REF, token), { _activeSetupToken: "" });
       await batch.commit();
       setNewSetupToken(newSetup);
       addToast("success", t("manage.transferDone"));

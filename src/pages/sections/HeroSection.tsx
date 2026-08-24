@@ -59,7 +59,6 @@ interface HeroSectionProps {
   schedule?: string;
   /** Prueba social en vivo: mostrar el nº de confirmaciones en la portada
    *  (los novios lo controlan desde Extras). */
-  liveConfirmedEnabled?: boolean;
   /** Mostrar la LISTA de personas confirmadas en la portada (los novios lo
    *  controlan desde Extras; solo se muestran los nombres con opt-in). */
   showConfirmedPeople?: boolean;
@@ -83,7 +82,6 @@ const HeroSection = memo(function HeroSection({
   verified,
   inviteToken,
   schedule,
-  liveConfirmedEnabled = true,
   showConfirmedPeople = false,
   disabledAnimations,
 }: HeroSectionProps) {
@@ -99,60 +97,6 @@ const HeroSection = memo(function HeroSection({
   const photoFadeOff = animationsOff.has("hero-photo-fade");
   const godparentGlowOff = animationsOff.has("hero-godparent-glow");
 
-  // Prueba social en vivo: nº de invitados que ya confirmaron. Se lee en
-  // TIEMPO REAL con onSnapshot (cuando un invitado confirma, el contador se
-  // actualiza al instante sin esperar el tick). Si el canal de Firestore
-  // falla (red/CORS), se degrada automáticamente al polling ligero de 20s:
-  // la UI nunca se queda con el contador congelado si el WebChannel falla.
-  const [confirmedCount, setConfirmedCount] = useState(0);
-  useEffect(() => {
-    if (!inviteToken) return;
-    let cancelled = false;
-    let unsub: (() => void) | undefined;
-    let timer: ReturnType<typeof setInterval> | undefined;
-    const apply = (n: number) => {
-      if (cancelled) return;
-      setConfirmedCount(Number.isFinite(n) && n > 0 ? n : 0);
-    };
-    // Fallback robusto: lee el contador con getDoc cada 20s (sin canal abierto).
-    const startPolling = async () => {
-      if (cancelled || unsub) return;
-      const fs = await import("firebase/firestore");
-      const fb = await import("../../lib/firebase");
-      const tick = async () => {
-        try {
-          const snap = await fs.getDoc(fs.doc(fb.db, "rsvpResponses", inviteToken));
-          if (cancelled) return;
-          apply(Number(snap.data()?.count || 0));
-        } catch {
-          /* se reintenta en el siguiente tick */
-        }
-      };
-      await tick();
-      timer = setInterval(() => void tick(), 20000);
-    };
-    const subscribe = async () => {
-      try {
-        const fs = await import("firebase/firestore");
-        const fb = await import("../../lib/firebase");
-        const ref = fs.doc(fb.db, "rsvpResponses", inviteToken);
-        unsub = fs.onSnapshot(
-          ref,
-          (snap) => apply(Number(snap.data()?.count || 0)),
-          // Error del canal en vivo → fallback imperceptible al polling.
-          () => void startPolling(),
-        );
-      } catch {
-        void startPolling();
-      }
-    };
-    void subscribe();
-    return () => {
-      cancelled = true;
-      if (unsub) unsub();
-      if (timer) clearInterval(timer);
-    };
-  }, [inviteToken]);
 
   // Lista pública de confirmados (prueba social con opt-in): se lee en
   // tiempo real desde confirmedPeople. Solo se monta la suscripción cuando el
@@ -314,26 +258,6 @@ const HeroSection = memo(function HeroSection({
                 }}
               >
                 ✓ {t("hero.verifiedBadge")}
-              </p>
-            ) : null}
-            {confirmedCount > 0 && !weddingPassed && liveConfirmedEnabled ? (
-              <p
-                className="hero-rsvp-live"
-                aria-live="polite"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.3rem",
-                  margin: "0.4rem 0 0",
-                  padding: "0.25rem 0.8rem",
-                  borderRadius: "999px",
-                  fontSize: "0.75rem",
-                  color: "var(--invite-copy-color, #c3b193)",
-                  border: "1px solid color-mix(in srgb, var(--setup-accent) 30%, transparent)",
-                  background: "color-mix(in srgb, var(--setup-accent) 10%, transparent)",
-                }}
-              >
-                {t("hero.liveConfirmed", { count: confirmedCount })}
               </p>
             ) : null}
             {confirmedPeople.length > 0 && !weddingPassed && showConfirmedPeople ? (

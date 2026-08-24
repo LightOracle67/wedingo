@@ -137,7 +137,6 @@ export async function seedTestInvite(): Promise<SeededInvite> {
     inviteMessageEnabled: "true",
     weddingSiteURLEnabled: "false",
     instagramEnabled: "false",
-    facebookEnabled: "false",
     couplePhotoEnabled: "false",
     backgroundImageEnabled: "false",
     customSealEnabled: "false",

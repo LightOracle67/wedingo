@@ -61,8 +61,6 @@ export default function SetupForm({ prefix = "" }) {
   const _privacyConsent = useFormField("_privacyConsent");
   const hiddenSections = useFormField("hiddenSections");
   const sectionOrder = useFormField("sectionOrder");
-  const surpriseMode = useFormField("surpriseMode");
-  const surpriseSections = useFormField("surpriseSections");
   const language = useFormField("language");
   const { isTokenVerified, isRestoringSession } = useAuth();
   const { saveMessage, saveError, setLegalModal } = useAppUI();
@@ -138,10 +136,6 @@ export default function SetupForm({ prefix = "" }) {
         onChange={updateFormField}
         hiddenValue={hiddenSections}
         onHiddenChange={updateFormField}
-        surpriseModeValue={surpriseMode}
-        onSurpriseModeChange={updateFormField}
-        surpriseSectionsValue={surpriseSections}
-        onSurpriseSectionsChange={updateFormField}
       />
 
       {/* ── Sección de acceso (solo visible antes del primer guardado) ── */}
