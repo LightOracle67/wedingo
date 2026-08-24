@@ -20,12 +20,14 @@ const SupportTab = lazy(() => import("./superadmin/SupportTab"));
 
 const TAB_KEY_MAP = {
   dashboard: "dashboard",
-  metricas: "metrics",
+  /* metricsTab/supportTab: etiquetas string; 'metrics'/'support' son dicts
+     de subclaves usadas por MetricsTab/SupportTab y no pueden ser labels. */
+  metricas: "metricsTab",
   invitaciones: "invitations",
   tokens: "tokens",
   datos: "data",
   gestion: "manage",
-  soporte: "support",
+  soporte: "supportTab",
   plataforma: "platform",
   ajustes: "session",
   cumplimiento: "compliance",

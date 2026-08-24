@@ -843,6 +843,7 @@
       "data": "Data",
       "manage": "Manage",
       "platform": "Platform",
+      "metricsTab": "Metrics",
       "metrics": {
         "invitations": "Invitations",
         "visits": "Visits",
@@ -862,6 +863,7 @@
         "wedding": "Wedding",
         "date": "Date"
       },
+      "supportTab": "Support",
       "support": {
         "upcomingTitle": "Upcoming weddings (≤14 days)",
         "days": "days",

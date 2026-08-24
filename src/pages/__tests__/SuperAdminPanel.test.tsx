@@ -204,8 +204,8 @@ describe("SuperAdminPanel", () => {
     const cases: Array<[string, string]> = [
       ["superadmin.tabs.manage", "manage-tab"],
       ["superadmin.tabs.platform", "platform-tab"],
-      ["superadmin.tabs.metrics", "metrics-tab"],
-      ["superadmin.tabs.support", "support-tab"],
+      ["superadmin.tabs.metricsTab", "metrics-tab"],
+      ["superadmin.tabs.supportTab", "support-tab"],
     ];
     for (const [tabLabel, testId] of cases) {
       fireEvent.click(screen.getByText(tabLabel));
@@ -224,7 +224,7 @@ describe("SuperAdminPanel", () => {
     fireEvent.keyDown(screen.getByText("superadmin.tabs.dashboard"), { key: "ArrowRight" });
     expect(await screen.findByTestId("metrics-tab")).toBeDefined();
     // ArrowLeft de vuelta a dashboard.
-    fireEvent.keyDown(screen.getByText("superadmin.tabs.metrics"), { key: "ArrowLeft" });
+    fireEvent.keyDown(screen.getByText("superadmin.tabs.metricsTab"), { key: "ArrowLeft" });
     expect(await screen.findByTestId("dashboard-tab")).toBeDefined();
   });
 

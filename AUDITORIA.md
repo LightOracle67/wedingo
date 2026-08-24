@@ -1,5 +1,29 @@
 # AUDITORÍA — Wedingo
 
+**Fecha:** 24/08/2026 · **Versión:** v2.123.8 · **Suite:** 2255 tests ✓ · Lint ✓ · tsc ✓
+
+## Ronda 0→100% (24/08/2026) — multi-dimensional
+
+| Dimensión | Resultado | Detalle |
+|---|---|---|
+| Secretos (repo+historial) | ✅ Limpio | Solo `apiKey` web pública en scripts/e2e (diseño Firebase); sin tokens OAuth/PAT en historial |
+| Dependencias (`npm audit --omit=dev`) | ✅ 0 CVEs | 131 deps prod, 0 vulnerabilidades |
+| Cabeceras HTTP (`firebase.json`) | ✅ Completas | CSP, HSTS, XFO, X-Content-Type-Options, COOP/CORP, Referrer/Permissions-Policy |
+| Firestore rules (ronda 4) | ✅ Endurecidas | setupTokens no falsificable (alta solo si invitación inexistente/sesión activa); sesión acotada 30min–48h; RSVP whitelist con `isChild`; contador cap 500; `_visits` con incremento máx +10 |
+| XSS (sinks) | ✅ Limpio | Único `document.write` (DistribucionTab) con todo interpolado vía `esc()`; sin `dangerouslySetInnerHTML` |
+| Usabilidad E2E prod (invitado) | ✅ | Token inválido → mensaje elegante; landing/RSVP completos; 0 errores JS; sin overflow horizontal |
+| Usabilidad E2E prod (superadmin) | ⚠️→✅ | Login OK, métricas OK. **BUG corregido:** pestañas Métricas/Soporte mostraban `key 'superadmin.tabs.metrics' returned an object…` (dicts usados como labels) → nuevas claves string `metricsTab`/`supportTab` + fix `TAB_KEY_MAP` |
+| Resiliencia | ✅ | Firestore bloqueado → app renderiza desde caché local, sin pantalla blanca; localStorage corrupto → sin crash |
+| Admin sin sesión | ℹ️ | `/TOKEN/admin` redirige a vista pública (acceso admin desde dentro); UX aceptable |
+
+### Recomendaciones (no aplicadas — requieren decisión)
+- **R1 (medio):** validar entradas de `companions` server-side (tamaño/tipo de lista) para acotar crecimiento de documento.
+- **R2 (medio):** Firebase App Check en escrituras públicas RSVP/logs (mitiga inflado de contador y spam de `accessLog`).
+- **R3 (bajo):** mover `apiKey` de scripts/e2e a variables de entorno.
+- **R4 (info):** la invitación de pruebas `TtCgt9n8VT` ya no existe en producción (AGENTS.md desactualizado).
+
+---
+
 **Fecha:** 23/08/2026 · **Versión:** v2.123.6 · **Suite:** 2251 tests ✓ · Lint ✓
 
 ## Resumen de remediación (esta ronda)
