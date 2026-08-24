@@ -25,7 +25,7 @@ import TransportSectionForm from "./setup-forms/TransportSectionForm";
 import GuestsSectionForm from "./setup-forms/GuestsSectionForm";
 import StorySectionForm from "./setup-forms/StorySectionForm";
 import GiftsSectionForm from "./setup-forms/GiftsSectionForm";
-import ExtrasSectionForm from "./setup-forms/ExtrasSectionForm";
+import VenueSectionForm from "./setup-forms/VenueSectionForm";
 import AnimationsSectionForm from "./setup-forms/AnimationsSectionForm";
 import GallerySectionForm from "./setup-forms/GallerySectionForm";
 import "../styles/admin.css";
@@ -196,8 +196,9 @@ export default function SetupForm({ prefix = "" }) {
         </CollapsibleSection>
       ) : null}
 
-      <CollapsibleSection title={t("setup.extrasSectionTitle")} hint={t("setup.extrasSectionHint")}>
-        <ExtrasSectionForm prefix={prefix} />
+      {/* ── Sección de recinto (venueMap + mesas) ── */}
+      <CollapsibleSection title={t("setup.venueSectionTitle")} hint={t("setup.venueSectionHint")}>
+        <VenueSectionForm prefix={prefix} />
       </CollapsibleSection>
 
       {/* ── Sección de animaciones ── */}

@@ -653,22 +653,16 @@ describe("PublicInvitation", () => {
     mockUseAppValue.config.accommodationURL = "";
   });
 
-  it("renders the social sections when enabled", async () => {
+  it("does not render an extras section (removed feature)", async () => {
     mockUseAppValue.config.hiddenSections = "";
-    mockUseAppValue.config.firstName = "Test";
-    mockUseAppValue.config.secondName = "User";
     mockUseAppValue.config.triviaEnabled = "true";
     mockUseAppValue.config.giftsListEnabled = "true";
     render(<PublicInvitation />);
     await vi.waitFor(() => {
-      expect(screen.getByTestId("section-trivia")).toBeDefined();
-      expect(screen.getByTestId("section-giftlist")).toBeDefined();
+      expect(screen.queryByTestId("section-trivia")).toBeNull();
+      expect(screen.queryByTestId("section-giftlist")).toBeNull();
+      expect(document.querySelector('[data-story-section="extras"]')).toBeNull();
     });
-    // Los extras se agrupan en UNA sección conjunta (no una por función).
-    expect(document.querySelector('[data-story-section="extras"]')).not.toBeNull();
-    const extrasPanel = document.querySelector(".story-panel--extras");
-    expect(extrasPanel).not.toBeNull();
-    expect(extrasPanel!.querySelectorAll(".story-extra-block").length).toBe(2);
     mockUseAppValue.config.triviaEnabled = "false";
     mockUseAppValue.config.giftsListEnabled = "false";
   });

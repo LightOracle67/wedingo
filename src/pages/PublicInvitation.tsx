@@ -16,13 +16,13 @@
  * @module PublicInvitation
  */
 
-import { lazy, Fragment, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {lazy, Suspense, useMemo, useState, useEffect, useRef, useCallback} from "react";
 import { useLocation, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import { useConfig, useRsvpContext, useAuth, useAnimations } from "../contexts";
 import { useStoryNavigation } from "../hooks/useStoryNavigation";
-import { usePlatformSettings, tokenIsBlocked, isFeatureDisabled } from "../lib/platform-settings";
+import { usePlatformSettings, tokenIsBlocked } from "../lib/platform-settings";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 
@@ -49,9 +49,7 @@ const GiftsSection = lazy(() => import("./sections/GiftsSection"));
 const AccommodationSection = lazy(() => import("./sections/AccommodationSection"));
 const GallerySection = lazy(() => import("./sections/GallerySection"));
 const RsvpSection = lazy(() => import("./sections/RsvpSection"));
-const TriviaSection = lazy(() => import("./sections/TriviaSection"));
 const VenueMapSection = lazy(() => import("./sections/VenueMapSection"));
-const GiftListSection = lazy(() => import("./sections/GiftListSection"));
 const TableSeatingSection = lazy(() => import("./sections/TableSeatingSection"));
 import "../styles/decorations.css";
 import "../styles/admin.css";
@@ -191,38 +189,8 @@ export default function PublicInvitation() {
   }, [inviteToken]);
 
   /** ¿Hay alguna función social activa? Se agrupan en la sección conjunta
-   *  "extras" (reordenable en el editor, siempre antes del RSVP). */
-  // Kill-switch por función social: una función debe estar activa en la
-  // invitación Y no desactivada globalmente por el superadmin.
-  const socialEnabled = useCallback(
-    (
-      feature: "gifts" | "trivia" | "venueMap",
-      flag?: string,
-    ) => flag === "true" && !isFeatureDisabled(platform, feature),
-    [platform],
-  );
+   *  (reordenable en el editor, siempre antes del RSVP). */
 
-  // Bloques de las funciones sociales activas: se agrupan en la sección
-  // conjunta "extras" (renderizados por config para no duplicar el JSX).
-  // `hasExtras` se deriva de la LONGITUD de estos bloques (fuente única),
-  // evitando que una lista duplicada discrepe y deje la sección vacía.
-  const extraBlocks = useMemo<Array<{ title: string; node: React.JSX.Element }>>(
-    () =>
-      [
-        socialEnabled("gifts", config.giftsListEnabled)
-          ? { title: t("giftList.title"), node: <GiftListSection inviteToken={inviteToken ?? ""} gifts={config.giftList ?? "[]"} /> }
-          : null,
-        socialEnabled("trivia", config.triviaEnabled)
-          ? { title: t("trivia.title"), node: <TriviaSection inviteToken={inviteToken ?? ""} trivia={config.trivia ?? "[]"} /> }
-          : null,
-      ].filter((b): b is { title: string; node: React.JSX.Element } => b !== null),
-    [config.giftsListEnabled, config.triviaEnabled, config.giftList, config.trivia, t, inviteToken, socialEnabled],
-  );
-
-  // Fuente única de "hay extras": coincide con los bloques renderizados.
-  // (Antes había una lista duplicada que podía discrepar con sectionHasContent
-  // y dejar la sección de extras vacía o sin mostrar.)
-  const hasExtras = extraBlocks.length > 0;
 
   // ─── Orden de secciones visible ────────────────────────
   /**
@@ -248,17 +216,13 @@ export default function PublicInvitation() {
     let filtered = showRsvp ? sectionOrder : sectionOrder.filter((s: string) => s !== "rsvp");
     if (!isInviteMode) {
       filtered = filtered.filter((s: string) => !hiddenSet.has(s));
-      // Modo sorpresa: hasta el día del evento, las secciones marcadas quedan
-      // ocultas para los invitados (el admin y ?invitar las ven siempre).
     }
     // Oculta las secciones sin contenido configurado (aunque estén en el
     // orden) para no mostrar secciones vacías al invitado. Se aplica a
-    // TODAS: la galería se desactiva si no tiene imágenes y los extras si
-    // no hay ninguna función social activa.
+    // TODAS: p. ej. la galería se desactiva si no tiene imágenes.
     filtered = filtered.filter((s: string) => sectionHasContent(s, config, galleryHasImages));
-    filtered = filtered.filter((s: string) => s !== "extras" || hasExtras);
     return filtered;
-  }, [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages, hasExtras]);
+  }, [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages]);
 
   // ─── Estados de UI condicionales ───────────────────────
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
@@ -899,34 +863,7 @@ export default function PublicInvitation() {
           <>
             {/* ── Invitación completa: renderiza cada sección en orden ── */}
             <Suspense fallback={null}>
-              {visibleOrder.map((sectionKey: string) => {
-                // La sección "extras" (funciones sociales) se renderiza en el
-                // orden configurado, agrupada en una única sección scrollable.
-                if (sectionKey === "extras") {
-                  return (
-                    <section
-                      key="extras"
-                      data-story-section="extras"
-                      className={getStorySectionClassName("extras")}
-                      style={getStorySectionStyle("extras")}
-                      aria-label={t("extras.ariaLabel")}
-                    >
-                      <div className="story-panel story-panel--extras w-full">
-                        <p className="story-eyebrow">{t("extras.sectionLabel")}</p>
-                        {extraBlocks.map((b, i) => (
-                          <Fragment key={b.title}>
-                            {i > 0 ? <div className="story-divider" /> : null}
-                            <div className="story-extra-block">
-                              <h2 className="story-title">{b.title}</h2>
-                              <Suspense fallback={null}>{b.node}</Suspense>
-                            </div>
-                          </Fragment>
-                        ))}
-                      </div>
-                    </section>
-                  );
-                }
-                const Component = (
+              {visibleOrder.map((sectionKey: string) => {                const Component = (
                   SECTION_COMPONENTS as unknown as Record<string, React.ComponentType<Record<string, unknown>>>
                 )[sectionKey];
                 if (!Component) {

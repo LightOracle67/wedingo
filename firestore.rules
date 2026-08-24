@@ -305,17 +305,6 @@ service cloud.firestore {
       /* ── Contribuciones de los invitados (funciones sociales) ────────────
          Reservas de regalo. El texto público se sanea con isSafeText; solo el
          admin/superadmin puede borrar. */
-      match /gifts/{giftId} {
-        allow read: if true;
-        allow create: if request.resource.data.keys().hasOnly(['itemId', 'reservedBy', 'createdAt', 'ownerKey'])
-          && request.resource.data.itemId is string && request.resource.data.itemId.size() <= 100
-          && isSafeText(request.resource.data.reservedBy)
-          && request.resource.data.reservedBy.size() <= 60
-          && (!request.resource.data.keys().hasAny(['ownerKey']) || (request.resource.data.ownerKey is string && request.resource.data.ownerKey.size() <= 64))
-          && socialCounterBelow(tokenId, 'gifts');
-        allow delete: if isAuthenticatedAdmin(tokenId) || isSuperAdmin()
-          || (resource.data.keys().hasAny(['ownerKey']) && request.resource.data.ownerKey == resource.data.ownerKey);
-      }
       /* Lista pública de confirmados (prueba social): invitations/{token}/
          confirmedPeople/{itemId} con { name }. Solo nombres, creados una vez
          (create-only: un documento ya existente no se puede sobrescribir, por

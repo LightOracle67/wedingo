@@ -7,8 +7,8 @@
  * `handleDeleteInvitation` del organizador (setup).
  *
  * Racional (GDPR art. 17 / UK GDPR / LGPD / CCPA / POPIA): algunas
- * subcolecciones sociales (`gifts`, `confirmedPeople`…) guardan DATOS
- * PERSONALES de invitados. Si
+ * subcolecciones sociales (`confirmedPeople`) guardan DATOS PERSONALES
+ * de invitados. Si
  * no se borran al eliminar la invitación, quedan huérfanas y legibles para
  * siempre. Este helper garantiza que ningún dato quede atrás.
  *
@@ -29,14 +29,13 @@ import {
 /**
  * Todas las subcolecciones existentes bajo `invitations/{id}`. Incluye los
  * medios (gallery, audio, configImages), las funciones sociales con PII
- * (gifts, confirmedPeople, venuepoints) y los internos/auditoría
+ * (confirmedPeople, venuepoints) y los internos/auditoría
  * (_counters, _backup, consentLog, accessLog, visitLog, configLog, sections).
  */
 export const INVITATION_SUBCOLLECTIONS = [
   "gallery",
   "audio",
   "configImages",
-  "gifts",
   "_counters",
   "consentLog",
   "accessLog",

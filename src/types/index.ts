@@ -105,17 +105,11 @@ export interface InvitationConfig {
    *  Solo se publican nombres (doblemente opt-in: quien confirma acepta y la
    *  pareja activa el toggle); "true" visible, "false" (o ausente) oculta. */
   showConfirmedPeople?: string;
-  /** Lista de regalos (JSON de items) + habilitada. */
-  giftsListEnabled?: string;
-  giftList?: string;
   /** Vídeo de bienvenida de los novios (URL MP4). */
   welcomeVideo?: string;
   /** Habilita la sección del vídeo de bienvenida. */
   welcomeVideoEnabled?: string;
   venueMapEnabled?: string;
-  /** Trivia de la pareja. */
-  triviaEnabled?: string;
-  trivia?: string;
   _activeSetupToken?: string;
   _visits?: number;
   [key: string]: unknown;

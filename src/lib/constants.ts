@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.124.0";
+export const APP_VERSION = "2.124.1";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -244,7 +244,6 @@ export const STORY_SECTION_ORDER = [
   "accommodation",
   "venuemap",
   "tables",
-  "extras",
   "rsvp",
 ];
 
@@ -342,15 +341,11 @@ export const defaultConfig = {
   // Prueba social en vivo: muestra cuántos invitados han confirmado (portada).
   // Lista de confirmados en la portada: por defecto OCULTA (opt-in).
   showConfirmedPeople: "false",
-  giftsListEnabled: "false",
-  giftList: "[]",
   welcomeVideo: "",
   welcomeVideoEnabled: "false",
   venueMapEnabled: "false",
   // Distribución de mesas en la invitación pública (sección propia).
   tablesEnabled: "false",
-  triviaEnabled: "false",
-  trivia: "[]",
   privacyPolicyVersion: "",
   // ── Campos de superadmin (no editables por el admin normal) ──
   // Mensaje de agradecimiento mostrado tras confirmar el RSVP (config del admin).

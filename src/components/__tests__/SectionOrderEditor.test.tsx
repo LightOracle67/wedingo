@@ -54,7 +54,7 @@ describe("SectionOrderEditor", () => {
     fireEvent.click(infoUp);
     expect(onChange).toHaveBeenCalledWith(
       "sectionOrder",
-      "hero,details,info,transport,story,gifts,gallery,accommodation,venuemap,tables,extras,rsvp",
+      "hero,details,info,transport,story,gifts,gallery,accommodation,venuemap,tables,rsvp",
     );
   });
 
@@ -66,7 +66,7 @@ describe("SectionOrderEditor", () => {
     fireEvent.click(infoDown);
     expect(onChange).toHaveBeenCalledWith(
       "sectionOrder",
-      "hero,details,transport,story,info,gifts,gallery,accommodation,venuemap,tables,extras,rsvp",
+      "hero,details,transport,story,info,gifts,gallery,accommodation,venuemap,tables,rsvp",
     );
   });
 
@@ -179,7 +179,7 @@ describe("SectionOrderEditor", () => {
     const onChange = vi.fn();
     render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
 
-    const lastDownBtn = screen.getByRole("button", { name: `sectionOrder.moveDown extras.sectionLabel` });
+    const lastDownBtn = screen.getByRole("button", { name: `sectionOrder.moveDown tables.sectionLabel` });
     expect(lastDownBtn).toBeDisabled();
     fireEvent.click(lastDownBtn);
     expect(onChange).not.toHaveBeenCalled();
@@ -193,7 +193,7 @@ describe("SectionOrderEditor", () => {
     fireEvent.click(storyUp);
     expect(onChange).toHaveBeenCalledWith(
       "sectionOrder",
-      "hero,details,transport,story,info,gifts,gallery,accommodation,venuemap,tables,extras,rsvp",
+      "hero,details,transport,story,info,gifts,gallery,accommodation,venuemap,tables,rsvp",
     );
   });
 
@@ -205,7 +205,7 @@ describe("SectionOrderEditor", () => {
     fireEvent.click(storyDown);
     expect(onChange).toHaveBeenCalledWith(
       "sectionOrder",
-      "hero,details,transport,info,gifts,story,gallery,accommodation,venuemap,tables,extras,rsvp",
+      "hero,details,transport,info,gifts,story,gallery,accommodation,venuemap,tables,rsvp",
     );
   });
 
@@ -222,7 +222,7 @@ describe("SectionOrderEditor", () => {
     const onChange = vi.fn();
     render(<SectionOrderEditor {...defaultProps} onChange={onChange} />);
 
-    const lastDownBtn = screen.getByRole("button", { name: "sectionOrder.moveDown extras.sectionLabel" });
+    const lastDownBtn = screen.getByRole("button", { name: "sectionOrder.moveDown tables.sectionLabel" });
     lastDownBtn.dispatchEvent(new MouseEvent("click", { bubbles: true }));
     expect(onChange).not.toHaveBeenCalled();
   });
@@ -238,14 +238,6 @@ describe("SectionOrderEditor", () => {
     expect(last.querySelectorAll("button").length).toBe(0);
   });
 
-  it("shows the extras section as reorderable", () => {
-    render(<SectionOrderEditor {...defaultProps} />);
-    const items = Array.from(document.querySelectorAll(".section-order-item"));
-    const extrasEl = items.find((el) => el.textContent?.includes("extras.sectionLabel"));
-    expect(extrasEl).toBeDefined();
-    expect(extrasEl!.getAttribute("draggable")).toBe("true");
-    expect(extrasEl!.textContent).toContain("⠿");
-  });
 
 
 

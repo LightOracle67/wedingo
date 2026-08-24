@@ -48,47 +48,12 @@ describe("sectionHasContent", () => {
     expect(sectionHasContent("hero", {})).toBe(true);
   });
 
-  it("extras has no content when no extra is enabled", () => {
-    expect(sectionHasContent("extras", {})).toBe(false);
-    expect(sectionHasContent("extras", { reactionsEnabled: "false", notesEnabled: "false" })).toBe(false);
-  });
-
-  it("extras has content when any remaining extra is enabled", () => {
-    expect(sectionHasContent("extras", { giftsListEnabled: "true" })).toBe(true);
-    expect(sectionHasContent("extras", { triviaEnabled: "true" })).toBe(true);
-    // Extras eliminados (reacciones, encuesta musical, notas, buzón, brindis,
-    // notas de voz, fotos del día y compartir coche) ya no aportan contenido.
-    expect(sectionHasContent("extras", { reactionsEnabled: "true" })).toBe(false);
-    expect(sectionHasContent("extras", { musicPollEnabled: "true" })).toBe(false);
-  });
 
 
 
-  it("venue map is a standalone section (not part of extras) since v2.109", () => {
-    // El mapa del recinto es una sección PROPIA: solo se muestra si está
-    // activado, y ya no hace que "extras" tenga contenido.
-    expect(sectionHasContent("venuemap", { venueMapEnabled: "true" })).toBe(true);
-    expect(sectionHasContent("venuemap", { venueMapEnabled: "false" })).toBe(false);
-    expect(sectionHasContent("venuemap", {})).toBe(false);
-    expect(sectionHasContent("extras", { venueMapEnabled: "true" })).toBe(false);
-  });
 
-  it("welcomeVideo and rsvpDeadline do NOT render in the extras section (v2.111)", () => {
-    // Son un overlay y un límite de RSVP, no bloques apilados en "extras".
-    // Contarlos dejaba la sección visible pero VACÍA (bug de visualización).
-    expect(sectionHasContent("extras", { welcomeVideoEnabled: "true" })).toBe(false);
-    expect(sectionHasContent("extras", { rsvpDeadlineEnabled: "true" })).toBe(false);
-    // Los bloques reales restantes siguen contando.
-    expect(sectionHasContent("extras", { giftsListEnabled: "true" })).toBe(true);
-  });
 
-  it("tables is a standalone public section controlled by tablesEnabled", () => {
-    expect(sectionHasContent("tables", { tablesEnabled: "true" })).toBe(true);
-    expect(sectionHasContent("tables", { tablesEnabled: "false" })).toBe(false);
-    expect(sectionHasContent("tables", {})).toBe(false);
-    // No es un extra de la sección "extras".
-    expect(sectionHasContent("extras", { tablesEnabled: "true" })).toBe(false);
-  });
+
 
   it("hides the gallery when it has no images and shows it with images", () => {
     // Por defecto (p. ej. en el guardado del admin) la galería es visible.

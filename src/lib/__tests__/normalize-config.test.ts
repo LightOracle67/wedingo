@@ -103,7 +103,7 @@ describe("normalizeConfig", () => {
 
   it("returns default sectionOrder when not provided", () => {
     const result = normalizeConfig({});
-    expect(result.sectionOrder).toBe("hero,details,transport,info,story,gallery,gifts,accommodation,venuemap,tables,extras,rsvp");
+    expect(result.sectionOrder).toBe("hero,details,transport,info,story,gallery,gifts,accommodation,venuemap,tables,rsvp");
   });
 
   it("normalizes menuEnabled to string boolean", () => {
@@ -288,28 +288,15 @@ describe("normalizeConfig social fields", () => {
       theme: "golden",
       rsvpDeadline: "2026-06-01",
       rsvpDeadlineEnabled: "true",
-      giftsListEnabled: "true",
-      giftList: JSON.stringify([{ id: "g1", name: "Tostadora", description: "Roja" }]),
       welcomeVideo: "https://example.com/v.mp4",
       welcomeVideoEnabled: "true",
-      triviaEnabled: "true",
-      trivia: JSON.stringify([{ q: "¿Dónde?", a: "En el parque" }]),
     });
     expect(result.rsvpDeadline).toBe("2026-06-01");
     expect(result.rsvpDeadlineEnabled).toBe("true");
-    expect(result.giftsListEnabled).toBe("true");
-    expect(result.giftList).toContain("Tostadora");
     expect(result.welcomeVideo).toBe("https://example.com/v.mp4");
     expect(result.welcomeVideoEnabled).toBe("true");
-    expect(result.triviaEnabled).toBe("true");
-    expect(result.trivia).toContain("En el parque");
   });
 
-  it("sanitizes invalid JSON in giftList/trivia to []", () => {
-    const result = normalizeConfig({ giftList: "{broken", trivia: "nope" });
-    expect(result.giftList).toBe("[]");
-    expect(result.trivia).toBe("[]");
-  });
 
   it("normalizes the enabled flags to true/false", () => {
     const result = normalizeConfig({ rsvpDeadlineEnabled: "yes" });

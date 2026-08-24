@@ -80,20 +80,6 @@ export function sectionHasContent(
       // Distribución de mesas para los invitados: se muestra solo si la pareja
       // la activa (el plano en sí vive en Firestore y se lee en la sección).
       return config.tablesEnabled === "true";
-    case "extras":
-      // La sección de funciones sociales se desactiva si ningún extra está
-      // activado. IMPORTANTE: esta lista DEBE coincidir exactamente con los
-      // bloques que se renderizan en la sección "extras" de PublicInvitation
-      // (`extraBlocks`/`hasExtras`). Si se incluye aquí un extra que NO se
-      // apila en la sección (p. ej. welcomeVideo, que es un overlay, o
-      // rsvpDeadline, que solo afecta al RSVP), la sección se muestra como
-      // "con contenido" pero queda VACÍA (bug de visualización). Se mantienen
-      // también los 0 elementos nulos por si un extra válido activado no está
-      // listado (regresión "no activable").
-      return (
-        config.giftsListEnabled === "true" ||
-        config.triviaEnabled === "true"
-      );
     case "gallery":
       // La galería se desactiva si no tiene ninguna imagen subida.
       return galleryHasImages;

@@ -46,25 +46,5 @@ describe("PlatformTab", () => {
     expect(arg.blockedUrls).toContain("youtube.com");
   });
 
-  it("desactiva una función social (kill-switch) y la guarda", async () => {
-    render(<PlatformTab />);
-    await screen.findByLabelText("platform.maintenanceToggle");
-    fireEvent.click(screen.getByLabelText("giftList.title"));
-    fireEvent.click(screen.getByText("manage.saveConfig"));
-    await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
-    const arg = mockSetDoc.mock.calls[0]![1] as Record<string, string>;
-    expect(arg.disabledFeatures).toContain("gifts");
-  });
 
-  it("carga los ajustes existentes (modo mantenimiento y features activas)", async () => {
-    mockGetDoc.mockResolvedValue({
-      exists: () => true,
-      data: () => ({ maintenance: "true", bannerText: "Bienvenidos", disabledFeatures: "gifts,trivia", blockedUrls: "x.com" }),
-    });
-    render(<PlatformTab />);
-    const toggle = await screen.findByLabelText("platform.maintenanceToggle");
-    await vi.waitFor(() => expect((toggle as HTMLInputElement).checked).toBe(true));
-    expect((screen.getByLabelText("giftList.title") as HTMLInputElement).checked).toBe(true);
-    expect((screen.getByLabelText("trivia.title") as HTMLInputElement).checked).toBe(true);
-  });
 });

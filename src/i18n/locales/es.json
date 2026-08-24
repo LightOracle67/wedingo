@@ -544,7 +544,11 @@
     "liveConfirmedLabel": "Mostrar cuántos han confirmado",
     "liveConfirmedHint": "Muestra en la portada el número de invitados que ya han confirmado (prueba social en directo).",
     "showConfirmedPeopleLabel": "Mostrar la lista de personas que han confirmado",
-    "showConfirmedPeopleHint": "Muestra en la portada los nombres de quienes confirmaron. Solo aparecen los invitados que marcaron el consentimiento al responder el RSVP (opt-in, GDPR art. 7)."
+    "showConfirmedPeopleHint": "Muestra en la portada los nombres de quienes confirmaron. Solo aparecen los invitados que marcaron el consentimiento al responder el RSVP (opt-in, GDPR art. 7).",
+    "venueLegend": "Recinto",
+    "venueHint": "Mapa del recinto y distribución de mesas visibles para los invitados.",
+    "venueSectionTitle": "Recinto",
+    "venueSectionHint": "Mapa del recinto y mesas en la invitación pública."
   },
   "admin": {
     "tabs": {

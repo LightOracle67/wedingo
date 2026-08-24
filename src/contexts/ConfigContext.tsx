@@ -577,26 +577,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           setSaveError(t("errors.rsvpCounterFailed"));
         }
 
-        // Crea los contadores anti-spam de las subcolecciones sociales
-        // (_counters/notes, songs, gifts, rides). Igual que rsvpResponses:
-        // sin contador, la regla permite escribir y lo crea el cliente en el
-        // primer documento (merge+increment), pero inicializarlos aquí hace
-        // que el tope aplique desde el primer guardado de la invitación.
-        try {
-          const counterRefs = ["gifts"].map((name) =>
-            doc(db, "invitations", inviteToken, "_counters", name),
-          );
-          const counterSnaps = await Promise.all(counterRefs.map((ref) => getDoc(ref)));
-          await Promise.all(
-            counterSnaps.map(async (snap, i) => {
-              if (!snap.exists()) {
-                await withWriteRetry(() => setDoc(counterRefs[i]!, { count: 0 }));
-              }
-            }),
-          );
-        } catch (counterErr) {
-          safeLogError(["[app]", "[ConfigProvider]", "social counters create failed"], counterErr);
-        }
 
         // Reconstruye el config completo en memoria: merge de cambios + config actual
         const savedConfig = { ...config };

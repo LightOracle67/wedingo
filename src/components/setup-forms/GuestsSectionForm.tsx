@@ -1,15 +1,20 @@
-import { memo, useCallback  } from "react";
+import { memo, useCallback, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfigActions, useFormField } from "../../contexts";
+import { useConfigActions, useFormStore, useFormField } from "../../contexts";
 import { MAX_DRESS_CODE_CUSTOM_LENGTH } from "../../lib/constants";
 import MenuDishEditor from "../MenuDishEditor";
 import MapUrlField from "../MapUrlField";
 import MapModeSelect from "../MapModeSelect";
 import SetupToggleField from "../SetupToggleField";
+import SetupToggleRow from "../SetupToggleRow";
 import SetupField from "../SetupField";
 
 const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { prefix?: string }) {
   const { updateFormField } = useConfigActions();
+  const formStore = useFormStore();
+  // Fecha límite de RSVP (movida desde Extras) y visibilidad de confirmados.
+  const rsvpDeadline = useFormField("rsvpDeadline");
+  const rsvpDeadlineEnabled = useFormField("rsvpDeadlineEnabled");
   const accommodationMapMode = useFormField("accommodationMapMode");
   const accommodationURL = useFormField("accommodationURL");
   const kidsPolicy = useFormField("kidsPolicy");
@@ -25,6 +30,29 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
   const dishValues: Record<string, string> = { menuCarneDishes, menuPescadoDishes, menuVeganoDishes };
   const id = (name: string) => `${prefix}${name}`;
   const { t } = useTranslation();
+
+  // Toggle genérico para switches simples (lectura síncrona del store).
+  const toggle = useCallback(
+    (field: string) => () => {
+      const current = formStore.getField(field);
+      updateFormField(field, current === "true" ? "false" : "true");
+    },
+    [formStore, updateFormField],
+  );
+
+  /** Fila de toggle estable reutilizando SetupToggleRow. */
+  const renderToggleRow = (field: string, label: string, hint?: string, children?: ReactNode) => (
+    <SetupToggleRow
+      field={field}
+      label={label}
+      {...(hint !== undefined ? { hint } : {})}
+      checked={formStore.getField(`${field}Enabled`) === "true"}
+      onToggle={toggle(`${field}Enabled`)}
+      id={id}
+    >
+      {children}
+    </SetupToggleRow>
+  );
 
   const handleKidsPolicyChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -207,6 +235,25 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
           </p>
         </>
       )}
+
+      {/* Fecha límite de RSVP (movida desde Extras) */}
+      {renderToggleRow(
+        "rsvpDeadline",
+        t("setup.rsvpDeadlineLabel"),
+        t("setup.rsvpDeadlineHint"),
+        rsvpDeadlineEnabled === "true" ? (
+          <input
+            id={id("rsvpDeadline")}
+            className="setup-input"
+            type="date"
+            value={rsvpDeadline || ""}
+            onChange={(e) => updateFormField("rsvpDeadline", e.target.value)}
+          />
+        ) : undefined,
+      )}
+
+      {/* Visibilidad de la lista de confirmados (opt-in de nombres) */}
+      {renderToggleRow("showConfirmedPeople", t("setup.showConfirmedPeopleLabel"), t("setup.showConfirmedPeopleHint"))}
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
       <SetupToggleField

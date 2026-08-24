@@ -458,21 +458,6 @@ describe("a11y-page-audit", () => {
     expect(violations).toHaveLength(0);
   });
 
-  it("TriviaSection (real) has no serious violations", async () => {
-    const TriviaSection = (await import("../../pages/sections/TriviaSection")).default;
-    const { container } = render(
-      <TriviaSection
-        trivia={JSON.stringify([
-          { q: "¿Dónde nos conocimos?", a: "París" },
-          { q: "¿Primera cita?", a: "Madrid" },
-        ])}
-      />,
-    );
-    const results = await runAxe(container);
-    const violations = results.violations.filter((v) => v.impact === "critical" || v.impact === "serious");
-    expect(violations).toHaveLength(0);
-  });
-
   it("Pagination has no serious violations", async () => {
     const Pagination = (await import("../../components/Pagination")).default;
     const { container } = render(

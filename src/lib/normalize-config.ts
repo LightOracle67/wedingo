@@ -3,22 +3,6 @@ import { parseMenuDishes } from "./menu-utils";
 import { serializeDisabledAnimations, parseDisabledAnimations } from "./animations";
 import { safeSocialUrl, safeHref } from "./safe-href";
 
-/** Normaliza los campos JSON de arrays (lista de regalos, trivia): devuelve
- *  un JSON válido o "[]". */
-function normalizeJsonArray(value: unknown, maxItems = 50): string {
-  if (typeof value !== "string" || !value.trim()) return "[]";
-  try {
-    const parsed = JSON.parse(value);
-    if (!Array.isArray(parsed)) return "[]";
-    // Cap de tamaño: un array legacy/corrupto con miles de entradas (o
-    // entradas gigantes) se parseaba entero y congelaba el editor/render
-    // además de acercarse al límite de 1 MB del doc Firestore.
-    return JSON.stringify(parsed.slice(0, maxItems));
-  } catch {
-    return "[]";
-  }
-}
-
 /** Fuentes permitidas para el usuario (lista blanca, alineadas con FONT_OPTIONS
  *  de constants.ts). Cualquier otro valor (incluido CSS arbitrario) se descarta
  *  por seguridad anti-inyección. */
@@ -247,14 +231,10 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   // Lista de confirmados: SOLO "true" la muestra (opt-in estricto; ausente se
   // oculta para no revelar identidades sin consentimiento explícito).
   showConfirmedPeople: s(value?.showConfirmedPeople) === "true" ? "true" : "false",
-  giftsListEnabled: s(value?.giftsListEnabled) === "true" ? "true" : "false",
-  giftList: normalizeJsonArray(value?.giftList),
   welcomeVideo: s(value?.welcomeVideo).slice(0, 1000),
   welcomeVideoEnabled: s(value?.welcomeVideoEnabled) === "true" ? "true" : "false",
   venueMapEnabled: s(value?.venueMapEnabled) === "true" ? "true" : "false",
   tablesEnabled: s(value?.tablesEnabled) === "true" ? "true" : "false",
-  triviaEnabled: s(value?.triviaEnabled) === "true" ? "true" : "false",
-  trivia: normalizeJsonArray(value?.trivia),
   // URLs desde el hash de URL o Firestore: se validan como http(s) seguras
   // (y host whitelist para redes) para evitar `javascript:`/`data:` reflejado
   // en `href` del render (XSS). Ver safe-href.ts.

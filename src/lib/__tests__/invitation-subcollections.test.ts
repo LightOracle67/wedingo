@@ -39,7 +39,6 @@ describe("invitation-subcollections", () => {
   });
 
   it("enumera todas las subcolecciones de la invitación (incluidas las sociales)", () => {
-    expect(INVITATION_SUBCOLLECTIONS).toContain("gifts");
     expect(INVITATION_SUBCOLLECTIONS).toContain("confirmedPeople");
     expect(INVITATION_SUBCOLLECTIONS).toContain("sections");
     expect(INVITATION_SUBCOLLECTIONS).toContain("_counters");
