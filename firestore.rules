@@ -584,7 +584,32 @@ service cloud.firestore {
         && (!request.resource.data.keys().hasAny(['companionTransportChoices']) || request.resource.data.companionTransportChoices is list)
         && (!request.resource.data.keys().hasAny(['companionTransportModes']) || request.resource.data.companionTransportModes is list)
         && (!request.resource.data.keys().hasAny(['companionTransportTimes']) || request.resource.data.companionTransportTimes is list)
-        && (!request.resource.data.keys().hasAny(['companionTransportPlaces']) || request.resource.data.companionTransportPlaces is list);
+        /* Cotas y tipos de los agregados RSVP: la app escribe `companions` como
+           número (recuento de acompañantes), `companionCount`/`childrenCount`/
+           `notAttendingCount` como números, `attendees` como lista y las familias
+           companionX como listas paralelas alineadas. Sin estas guardas un cliente
+           sin autenticar podía persistir strings/objetos arbitrarios (p. ej.
+           companions:"pwned", demostrado en pre-producción) o listas desmesuradas.
+           El patrón !hasAny || (tipo && cota) solo aplica cuando el campo viene en
+           el write, así que las escrituras parciales siguen válidas. Las cotas
+           (100 acompañantes / 500 asistentes) son superiores a cualquier límite
+           de la UI y conviven con el tope global del contador (<500). */
+        && (!request.resource.data.keys().hasAny(['companions']) || (request.resource.data.companions is number && request.resource.data.companions >= 0 && request.resource.data.companions <= 100))
+        && (!request.resource.data.keys().hasAny(['companionCount']) || (request.resource.data.companionCount is number && request.resource.data.companionCount >= 0 && request.resource.data.companionCount <= 100))
+        && (!request.resource.data.keys().hasAny(['notAttendingCount']) || (request.resource.data.notAttendingCount is number && request.resource.data.notAttendingCount >= 0 && request.resource.data.notAttendingCount <= 500))
+        && (!request.resource.data.keys().hasAny(['childrenCount']) || (request.resource.data.childrenCount is number && request.resource.data.childrenCount >= 0 && request.resource.data.childrenCount <= 500))
+        && (!request.resource.data.keys().hasAny(['attendees']) || (request.resource.data.attendees is list && request.resource.data.attendees.size() <= 500))
+        && (!request.resource.data.keys().hasAny(['menuHeadcounts']) || (request.resource.data.menuHeadcounts is list && request.resource.data.menuHeadcounts.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['guestNames']) || (request.resource.data.guestNames is string && request.resource.data.guestNames.size() <= 200))
+        && (!request.resource.data.keys().hasAny(['companionNames']) || (request.resource.data.companionNames is list && request.resource.data.companionNames.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionMenus']) || (request.resource.data.companionMenus is list && request.resource.data.companionMenus.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionAllergies']) || (request.resource.data.companionAllergies is list && request.resource.data.companionAllergies.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionAllergiesOther']) || (request.resource.data.companionAllergiesOther is list && request.resource.data.companionAllergiesOther.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionDocIds']) || (request.resource.data.companionDocIds is list && request.resource.data.companionDocIds.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionTransportChoices']) || (request.resource.data.companionTransportChoices is list && request.resource.data.companionTransportChoices.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionTransportModes']) || (request.resource.data.companionTransportModes is list && request.resource.data.companionTransportModes.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionTransportTimes']) || (request.resource.data.companionTransportTimes is list && request.resource.data.companionTransportTimes.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionTransportPlaces']) || (request.resource.data.companionTransportPlaces is list && request.resource.data.companionTransportPlaces.size() <= 100));
 
       allow read: if isSuperAdmin()
         || hasActiveSession(inviteToken);
@@ -597,6 +622,26 @@ service cloud.firestore {
         && hasActiveSession(inviteToken)
         && request.resource.data.privacyConsent == true
         && (!request.resource.data.keys().hasAny(['guestName']) || (request.resource.data.guestName is string && request.resource.data.guestName.size() <= 120 && isSafeText(request.resource.data.guestName)))
+        /* Mismas guardas de tipos y cotas que en create: la edición de una
+           respuesta (con sesión activa) tampoco puede introducir tipos
+           incoherentes ni listas desmesuradas. Patrón !hasAny || para no
+           afectar a actualizaciones parciales que omiten estos campos. */
+        && (!request.resource.data.keys().hasAny(['companions']) || (request.resource.data.companions is number && request.resource.data.companions >= 0 && request.resource.data.companions <= 100))
+        && (!request.resource.data.keys().hasAny(['companionCount']) || (request.resource.data.companionCount is number && request.resource.data.companionCount >= 0 && request.resource.data.companionCount <= 100))
+        && (!request.resource.data.keys().hasAny(['notAttendingCount']) || (request.resource.data.notAttendingCount is number && request.resource.data.notAttendingCount >= 0 && request.resource.data.notAttendingCount <= 500))
+        && (!request.resource.data.keys().hasAny(['childrenCount']) || (request.resource.data.childrenCount is number && request.resource.data.childrenCount >= 0 && request.resource.data.childrenCount <= 500))
+        && (!request.resource.data.keys().hasAny(['attendees']) || (request.resource.data.attendees is list && request.resource.data.attendees.size() <= 500))
+        && (!request.resource.data.keys().hasAny(['menuHeadcounts']) || (request.resource.data.menuHeadcounts is list && request.resource.data.menuHeadcounts.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['guestNames']) || (request.resource.data.guestNames is string && request.resource.data.guestNames.size() <= 200))
+        && (!request.resource.data.keys().hasAny(['companionNames']) || (request.resource.data.companionNames is list && request.resource.data.companionNames.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionMenus']) || (request.resource.data.companionMenus is list && request.resource.data.companionMenus.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionAllergies']) || (request.resource.data.companionAllergies is list && request.resource.data.companionAllergies.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionAllergiesOther']) || (request.resource.data.companionAllergiesOther is list && request.resource.data.companionAllergiesOther.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionDocIds']) || (request.resource.data.companionDocIds is list && request.resource.data.companionDocIds.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionTransportChoices']) || (request.resource.data.companionTransportChoices is list && request.resource.data.companionTransportChoices.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionTransportModes']) || (request.resource.data.companionTransportModes is list && request.resource.data.companionTransportModes.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionTransportTimes']) || (request.resource.data.companionTransportTimes is list && request.resource.data.companionTransportTimes.size() <= 100))
+        && (!request.resource.data.keys().hasAny(['companionTransportPlaces']) || (request.resource.data.companionTransportPlaces is list && request.resource.data.companionTransportPlaces.size() <= 100))
         && request.resource.data.keys().hasOnly(['attendance', 'dietaryInfo', 'privacyConsent', 'privacyConsentAt', 'healthConsent', 'healthConsentAt', 'birthDate', 'parentalConsent', 'menuSelection', 'mealChoice', 'guestName', 'submittedAt', 'inviteToken', 'companions', 'menuHeadcounts', 'guestNames', 'attendees', 'notAttendingCount', 'companionCount', 'companionNames', 'companionMenus', 'companionAllergies', 'companionAllergiesOther', 'allergiesOther', 'isChild', 'rsvpType', 'mainGuestDocId', 'mainGuestName', 'companionDocIds', 'transportChoice', 'transportMode', 'transportTime', 'transportPlace', 'companionTransportChoices', 'companionTransportModes', 'companionTransportTimes', 'companionTransportPlaces', 'userAgent', 'digitalSignature', 'phone', 'email', 'contactConsent', 'childrenCount', 'childrenAllergies', 'childrenAllergiesOther']);
 
       allow delete: if isSuperAdmin()

@@ -114,6 +114,25 @@ async function run() {
   await t("section table delete (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").collection("sections").doc("s2").collection("tables").doc("t1").delete());
   await t("section table delete (invitado) → NEGADO", false, guestDb.collection("invitations").doc("AbCdEf1234").collection("sections").doc("s2").collection("tables").doc("t1").delete());
 
+  // 10. RSVP: creación por invitado (sin auth) con agregados coherentes.
+  //     `companions` es un NÚMERO (recuento de acompañantes) y las familias
+  //     companionX son listas paralelas acotadas; las guardas de reglas deben
+  //     rechazar tipos incoherentes (string) y cotas desmesuradas (>100).
+  const rsvpBase = {
+    guestName: "Ana",
+    attendance: "no",
+    dietaryInfo: "",
+    submittedAt: new Date(),
+    inviteToken: "AbCdEf1234",
+    privacyConsent: true,
+    privacyConsentAt: new Date(),
+  };
+  const responses = guestDb.collection("rsvpResponses").doc("AbCdEf1234").collection("responses");
+  await t("rsvp create válido (invitado)", true, responses.doc("r2").set({ ...rsvpBase, companions: 2, companionNames: ["B", "C"] }));
+  await t("rsvp create companions:string (invitado) → NEGADO", false, responses.doc("r3").set({ ...rsvpBase, companions: "pwned" }));
+  await t("rsvp create companions>100 (invitado) → NEGADO", false, responses.doc("r4").set({ ...rsvpBase, companions: 101 }));
+  await t("rsvp create companionNames>100 elems (invitado) → NEGADO", false, responses.doc("r5").set({ ...rsvpBase, companions: 0, companionNames: Array(101).fill("x") }));
+
   await testEnv.cleanup();
 
   console.log("\n=== RESULTADOS REGLAS ===");
