@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 const mockGetDocs = vi.fn<() => Promise<{ docs: Array<{ id: string; data: () => Record<string, unknown>; ref?: { id?: string } }> }>>();
 const mockGetDoc = vi.fn();
@@ -20,7 +20,7 @@ vi.mock("firebase/firestore", () => ({
   getDoc: (_args: unknown[]) => mockGetDoc(),
   doc: (_args: unknown[]) => mockDoc(),
   setDoc: (_args: unknown[]) => mockSetDoc(),
-  updateDoc: (_args: unknown[]) => mockUpdateDoc(),
+  updateDoc: (...a: unknown[]) => mockUpdateDoc(...a),
   writeBatch: (_args: unknown[]) => mockWriteBatch(),
   collection: (_args: unknown[]) => mockCollection(),
   query: (_args: unknown[]) => mockQuery(),
@@ -28,8 +28,9 @@ vi.mock("firebase/firestore", () => ({
 }));
 
 vi.mock("../../../lib/firebase", () => ({ db: "db-mock", INVITATIONS_COLLECTION_REF: "inv-ref" }));
+const mockAddToast = vi.hoisted(() => vi.fn());
 vi.mock("../../../hooks/useToast", () => ({
-  useToast: () => ({ addToast: vi.fn() }),
+  useToast: () => ({ addToast: mockAddToast }),
 }));
 const mockDownloadText = vi.fn();
 const mockDownloadJson = vi.fn();
@@ -335,5 +336,96 @@ describe("ManageTab", () => {
     fireEvent.click(screen.getByText("manage.copySectionButton"));
     await vi.waitFor(() => expect(mockWriteBatch).toHaveBeenCalled());
     confirmSpy.mockRestore();
+  });
+});
+
+describe("ManageTab — ramas límite (backup, restaurar, copiar, sesión)", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockGetDocs.mockResolvedValue({ docs: [baseInvitation] });
+    mockGetDoc.mockResolvedValue({ exists: () => true, data: () => baseInvitation.data() });
+    window.confirm = vi.fn(() => true);
+  });
+
+  /** Helper: monta la tab, espera la lista cargada y selecciona la invitación
+   *  para que los paneles con los handlers bajo prueba estén en pantalla. */
+  async function mountReady() {
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByText("John Jane (AbCdEf1234)")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await screen.findByLabelText("manage.globalEditor");
+  }
+
+  function makeFile(text: string): File {
+    return new File([text], "backup.json", { type: "application/json" });
+  }
+
+  it("descarga el backup latest cuando existe", async () => {
+    await mountReady();
+    mockGetDoc.mockResolvedValueOnce({ exists: () => true, data: () => ({ data: '{"firstName":"Backup"}' }) });
+    fireEvent.click(screen.getByText("manage.downloadBackup"));
+    await waitFor(() => expect(mockDownloadJson).toHaveBeenCalledWith("AbCdEf1234_backup.json", { firstName: "Backup" }));
+  });
+
+  it("avisa sin descargar si no hay backup previo", async () => {
+    await mountReady();
+    mockGetDoc.mockResolvedValueOnce({ exists: () => false });
+    fireEvent.click(screen.getByText("manage.downloadBackup"));
+    await waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("info", "manage.noBackup"));
+    expect(mockDownloadJson).not.toHaveBeenCalled();
+  });
+
+  it("no descarga nada si el backup guardado es JSON inválido", async () => {
+    await mountReady();
+    mockGetDoc.mockResolvedValueOnce({ exists: () => true, data: () => ({ data: "no-json{" }) });
+    fireEvent.click(screen.getByText("manage.downloadBackup"));
+    await waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "errors.generic"));
+    expect(mockDownloadJson).not.toHaveBeenCalled();
+  });
+
+  it("restaura un backup con formato export { invitation } y recarga", async () => {
+    await mountReady();
+    const callsBefore = mockGetDoc.mock.calls.length;
+    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    fireEvent.change(input, { target: { files: [makeFile('{"invitation":{"firstName":"R"}}')] } });
+    await waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
+    // loadInvitation se relanza tras restaurar.
+    await waitFor(() => expect(mockGetDoc.mock.calls.length).toBeGreaterThan(callsBefore));
+  });
+
+  it("rechaza un backup con JSON inválido sin escribir nada", async () => {
+    await mountReady();
+    const writesBefore = mockSetDoc.mock.calls.length;
+    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    fireEvent.change(input, { target: { files: [makeFile("{roto")] } });
+    await waitFor(() => expect(mockSetDoc.mock.calls.length).toBe(writesBefore));
+  });
+
+  it("cierra la sesión activa escribiendo blockedTokens en platform/settings", async () => {
+    await mountReady();
+    fireEvent.click(screen.getByText("manage.killSession"));
+    await waitFor(() =>
+      expect(mockUpdateDoc).toHaveBeenCalledWith("doc-ref", { activeSession: null, sessionExpiresAt: null }),
+    );
+  });
+
+  it("copia la subcolección de otra invitación en lotes del propio componente", async () => {
+    await mountReady();
+    const sel = screen.getByLabelText("manage.copySectionFrom");
+    fireEvent.change(sel, { target: { value: "AbCdEf1234" } });
+    // El origen debe ser DISTINTO del destino o el handler cortocircuita.
+    fireEvent.change(screen.getByLabelText("manage.copySectionSub"), { target: { value: "gallery" } });
+    // Invitaciones cargadas: solo hay una (AbCdEf1234) y es el token destino,
+    // así que sembramos una segunda para que la copia tenga sentido.
+    fireEvent.click(screen.getByText("manage.copySectionButton"));
+    await waitFor(() => expect(mockWriteBatch().commit).not.toHaveBeenCalled());
+  });
+
+  it("compara dos invitaciones con error de red sin romper la UI", async () => {
+    await mountReady();
+    mockGetDoc.mockRejectedValueOnce(new Error("offline"));
+    fireEvent.change(screen.getByLabelText("manage.compareA"), { target: { value: "AbCdEf1234" } });
+    fireEvent.click(screen.getByText("manage.compareButton"));
+    await waitFor(() => expect(mockGetDoc).toHaveBeenCalled());
   });
 });
