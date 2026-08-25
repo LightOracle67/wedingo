@@ -224,4 +224,35 @@ describe("compressImageTransparent", () => {
     const result = await promise;
     expect(result).toContain("data:image");
   });
+
+  it("degrades to PNG when the canvas cannot encode WebP", async () => {
+    // canvasToType re-encodea a PNG cuando el prefijo del dataURL no coincide
+    // con el tipo pedido (navegadores sin soporte real de toDataURL webp).
+    installCanvasMocks();
+    const pngOnly = vi.fn(() => "data:image/png;base64,ZZ");
+    HTMLCanvasElement.prototype.toDataURL = pngOnly as typeof HTMLCanvasElement.prototype.toDataURL;
+    const promise = compressImage(makeFile("image/png", 500 * 1024));
+    imgInstance!.onload?.();
+    const result = await promise;
+    expect(result.startsWith("data:image/png")).toBe(true);
+  });
+
+  it("iterates the quality ladder and shrinks oversized encodes", async () => {
+    // Con un objetivo minúsculo (targetBytes=10) ningún encode cabe: cubre el
+    // bucle de calidad (0.7→0.1) y shrinkToFit reduciendo dimensiones ×0.75
+    // hasta que el lienzo queda bajo el mínimo de 200px.
+    installCanvasMocks();
+    const alwaysWebp = vi.fn(() => "data:image/webp;base64," + "A".repeat(4000));
+    HTMLCanvasElement.prototype.toDataURL = alwaysWebp as typeof HTMLCanvasElement.prototype.toDataURL;
+    // imgInstance solo existe tras llamar a compressImage (ahí se construye el
+    // Image); dimensionamos el lienzo simulado antes de disparar el onload.
+    const promise = compressImage(makeFile("image/jpeg", 500 * 1024), 1600, 10);
+    imgInstance!.width = 1000;
+    imgInstance!.height = 1000;
+    imgInstance!.onload?.();
+    const result = await promise;
+    expect(result).toContain("webp");
+    // ~7 llamadas del escalado de calidad + ~7 del encogido de dimensiones.
+    expect(alwaysWebp.mock.calls.length).toBeGreaterThan(12);
+  });
 });
