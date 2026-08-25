@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    // Incremental: cachea el grafo de tipos en .tsbuildinfo; los siguientes
+    // npx tsc --noEmit re-tipean solo lo cambiado (de ~40s a segundos).
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
     "target": "ES2022",
     "lib": [
       "ES2022",

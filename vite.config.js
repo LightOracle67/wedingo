@@ -149,7 +149,7 @@ export default defineConfig({
     exclude: ["e2e/**", "functions/**", "node_modules/**", "dist/**"],
     coverage: {
       provider: "v8",
-      reporter: ["text", "html", "lcov"],
+      reporter: ["text", "lcov"], // sin "html": es el reportero más caro y no aporta al gate
       include: ["src/**/*.{ts,tsx}"],
       exclude: ["src/**/*.test.{ts,tsx}", "src/**/*.spec.{ts,tsx}", "src/i18n/locales/**", "src/**/__tests__/**"],
       thresholds: {

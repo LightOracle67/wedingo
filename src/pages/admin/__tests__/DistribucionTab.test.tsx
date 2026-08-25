@@ -338,6 +338,11 @@ describe("DistribucionTab", () => {
   });
 
 describe("DistribucionTab — ramas límite (teclado, etiquetas, export)", () => {
+  // Limpieza por test: updateDoc es un mock de módulo compartido y acumularía
+  // llamadas entre tests volviendo no deterministas el assert "no llamado".
+  beforeEach(() => {
+    vi.mocked(updateDoc).mockClear();
+  });
   /** Monta la tab con la mesa por defecto y devuelve su elemento accesible. */
   async function mountWithTable(guests: string[] = []) {
     mockGetDocs.mockImplementation((ref: unknown) => {
