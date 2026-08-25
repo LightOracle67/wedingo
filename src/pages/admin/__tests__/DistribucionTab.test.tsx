@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 const stableT = (key: string) => key;
 vi.mock("react-i18next", () => ({
@@ -41,7 +41,7 @@ vi.mock("../../../lib/excel-builders", () => ({
 }));
 
 import DistribucionTab from "../DistribucionTab";
-import { writeBatch } from "firebase/firestore";
+import { writeBatch, updateDoc } from "firebase/firestore";
 
 describe("DistribucionTab", () => {
   beforeEach(() => {
@@ -336,4 +336,72 @@ describe("DistribucionTab", () => {
     await vi.waitFor(() => expect(updateDoc).toHaveBeenCalled());
     vi.restoreAllMocks();
   });
+
+describe("DistribucionTab — ramas límite (teclado, etiquetas, export)", () => {
+  /** Monta la tab con la mesa por defecto y devuelve su elemento accesible. */
+  async function mountWithTable(guests: string[] = []) {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "rsvp-ref")
+        return Promise.resolve({ docs: [{ data: () => ({ guestName: "Ana", attendance: "yes" }) }] });
+      if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
+      return Promise.resolve({
+        docs: [
+          { id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 12, h: 12, rotation: 0, seats: 8, guests }) },
+        ],
+      });
+    });
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+  }
+
+  it("mueve la mesa con flechas (paso normal) y persiste", async () => {
+    await mountWithTable();
+    const tb = screen.getByRole("button", { name: "distribucion.tableAccessible" });
+    fireEvent.keyDown(tb, { key: "ArrowUp" });
+    await waitFor(() => expect(updateDoc).toHaveBeenCalled());
+  });
+
+  it("ignora teclas que no sean flechas", async () => {
+    await mountWithTable();
+    const writes = updateDoc.mock.calls.length;
+    fireEvent.keyDown(screen.getByRole("button", { name: "distribucion.tableAccessible" }), { key: "k" });
+    expect(updateDoc.mock.calls.length).toBe(writes);
+  });
+
+  it("avisa al imprimir etiquetas si ninguna mesa tiene invitados", async () => {
+    await mountWithTable([]);
+    fireEvent.click(screen.getByText("distribucion.printLabels"));
+    await waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("info", "distribucion.printNoGuests"));
+  });
+
+  it("imprime etiquetas con invitados vía ventana emergente", async () => {
+    await mountWithTable(["Ana"]);
+    const printSpy = vi.fn();
+    const winStub = { document: { write: vi.fn(), close: vi.fn(), images: [] }, focus: vi.fn(), print: printSpy };
+    const openSpy = vi.spyOn(window, "open").mockReturnValue(winStub as unknown as Window);
+    fireEvent.click(screen.getByText("distribucion.printLabels"));
+    await waitFor(() => expect(printSpy).toHaveBeenCalled(), { timeout: 3000 });
+    const html = winStub.document.write.mock.calls[0][0] as string;
+    expect(html).toContain("Ana");
+    openSpy.mockRestore();
+  });
+
+  it("exporta XLSX cuando hay mesas en la sección activa", async () => {
+    await mountWithTable();
+    fireEvent.click(screen.getByText("distribucion.exportTables"));
+    await waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled());
+  });
+
+  it("avisa si no hay mesas que exportar", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
+      if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
+      return Promise.resolve({ docs: [] });
+    });
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    fireEvent.click(screen.getByText("distribucion.exportTables"));
+    await waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("info", "distribucion.noTables"));
+  });
+});
 });
