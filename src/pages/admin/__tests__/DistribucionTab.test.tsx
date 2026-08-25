@@ -358,14 +358,14 @@ describe("DistribucionTab — ramas límite (teclado, etiquetas, export)", () =>
     await mountWithTable();
     const tb = screen.getByRole("button", { name: "distribucion.tableAccessible" });
     fireEvent.keyDown(tb, { key: "ArrowUp" });
-    await waitFor(() => expect(updateDoc).toHaveBeenCalled());
+    await waitFor(() => expect(vi.mocked(updateDoc)).toHaveBeenCalled());
   });
 
   it("ignora teclas que no sean flechas", async () => {
     await mountWithTable();
-    const writes = updateDoc.mock.calls.length;
+    const writes = vi.mocked(updateDoc).mock.calls.length;
     fireEvent.keyDown(screen.getByRole("button", { name: "distribucion.tableAccessible" }), { key: "k" });
-    expect(updateDoc.mock.calls.length).toBe(writes);
+    expect(vi.mocked(updateDoc).mock.calls.length).toBe(writes);
   });
 
   it("avisa al imprimir etiquetas si ninguna mesa tiene invitados", async () => {
@@ -381,7 +381,7 @@ describe("DistribucionTab — ramas límite (teclado, etiquetas, export)", () =>
     const openSpy = vi.spyOn(window, "open").mockReturnValue(winStub as unknown as Window);
     fireEvent.click(screen.getByText("distribucion.printLabels"));
     await waitFor(() => expect(printSpy).toHaveBeenCalled(), { timeout: 3000 });
-    const html = winStub.document.write.mock.calls[0][0] as string;
+    const html = winStub.document.write.mock.calls[0]![0] as string;
     expect(html).toContain("Ana");
     openSpy.mockRestore();
   });

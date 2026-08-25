@@ -4,7 +4,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 const mockGetDocs = vi.fn<() => Promise<{ docs: Array<{ id: string; data: () => Record<string, unknown>; ref?: { id?: string } }> }>>();
 const mockGetDoc = vi.fn();
 const mockSetDoc = vi.fn(() => Promise.resolve());
-const mockUpdateDoc = vi.fn(() => Promise.resolve());
+const mockUpdateDoc = vi.fn((..._a: unknown[]) => Promise.resolve());
 const mockDoc = vi.fn(() => "doc-ref");
 const mockWriteBatch = vi.fn(() => ({ set: vi.fn(), delete: vi.fn(), update: vi.fn(), commit: vi.fn().mockResolvedValue(undefined) }));
 const mockQuery = vi.fn(() => "query-ref");
