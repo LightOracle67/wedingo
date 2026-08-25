@@ -110,6 +110,10 @@ function SaveSetupConsumer() {
   const ctx = useConfig();
   return (
     <div>
+      {/* Indicador de isSaving: permite esperar al finally del primer guardado
+          en vuelo antes de desmontar (si el test termina antes, setIsSaving(false)
+          resuelve fuera del entorno jsdom y provoca una unhandled rejection). */}
+      <span data-testid="ss_isSaving">{String(ctx.isSaving)}</span>
       <button data-testid="ss_save" onClick={(e) => ctx.handleSaveSetup(e)}>
         Save
       </button>
@@ -497,6 +501,10 @@ describe("ConfigProvider", () => {
     await waitFor(() => {
       expect(mockSetSaveError).toHaveBeenCalledWith("errors.alreadySaving");
     });
+    // El PRIMER guardado sigue en vuelo: su finally hace setIsSaving(false).
+    // Si el test termina sin esperar ese finally, el setState resuelve tras el
+    // teardown (window destruido) y vitest registra una unhandled rejection.
+    await waitFor(() => expect(screen.getByTestId("ss_isSaving").textContent).toBe("false"));
     mockSetSaveError.mockClear();
     mockLocation.pathname = "/test";
   });

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -14,6 +14,17 @@ vi.mock("../../../lib/platform-settings", () => ({
   }),
   tokenIsBlocked: () => false,
 }));
+
+// Mocks Firestore para el efecto de mesa asignada: el hook consulta
+// invitaciones/{token}/sections y sus tables buscando al confirmado por nombre.
+const rsvpFb = vi.hoisted(() => ({ getDocs: vi.fn() }));
+
+vi.mock("firebase/firestore", () => ({
+  collection: (..._a: unknown[]) => ({}),
+  getDocs: (...a: unknown[]) => rsvpFb.getDocs(...a),
+}));
+
+vi.mock("../../../lib/firebase", () => ({ db: {} }));
 
 
 
@@ -807,6 +818,59 @@ describe("RsvpSection", () => {
     );
     expect(screen.getByText(/rsvp.capacityLeft/)).toBeInTheDocument();
     expect(screen.getByText(/rsvp.daysLeft/)).toBeInTheDocument();
+  });
+
+  it("resuelve la mesa asignada buscando al confirmado en Distribución", async () => {
+    // Primera llamada: secciones; segunda: mesas de esa sección con el invitado.
+    rsvpFb.getDocs
+      .mockResolvedValueOnce({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] })
+      .mockResolvedValueOnce({
+        docs: [{ id: "t1", data: () => ({ name: "Mesa Uno", guests: ["ana garcia"] }) }],
+      });
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        inviteToken="tok1"
+        alreadySubmittedEntry={{ id: "e1", attendance: "yes", guestName: "Ana Garcia" }}
+      />,
+    );
+    await waitFor(() => expect(screen.getByText(/rsvp.yourTable/)).toBeInTheDocument());
+    expect(rsvpFb.getDocs).toHaveBeenCalledTimes(2);
+  });
+
+  it("no consulta mesas si el confirmado no asiste o falta el token", () => {
+    // El mock conserva llamadas entre tests: se limpia para asertar en limpio.
+    rsvpFb.getDocs.mockClear();
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        inviteToken="tok1"
+        alreadySubmittedEntry={{ id: "e1", attendance: "no", guestName: "Ana Garcia" }}
+      />,
+    );
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        alreadySubmittedEntry={{ id: "e2", attendance: "yes", guestName: "Ana Garcia" }}
+      />,
+    );
+    // Sin asistencia confirmada (o sin token) el efecto corta antes de Firestore.
+    expect(rsvpFb.getDocs).not.toHaveBeenCalled();
+  });
+
+  it("tolera el fallo de Firestore al buscar la mesa sin romper el render", async () => {
+    rsvpFb.getDocs.mockClear();
+    rsvpFb.getDocs.mockRejectedValueOnce(new Error("offline"));
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        inviteToken="tok1"
+        alreadySubmittedEntry={{ id: "e1", attendance: "yes", guestName: "Ana Garcia" }}
+      />,
+    );
+    await waitFor(() => expect(rsvpFb.getDocs).toHaveBeenCalled());
+    // El catch del efecto deja assignedTable vacío: no aparece el bloque de mesa.
+    expect(screen.queryByText(/rsvp.yourTable/)).toBeNull();
   });
 });
 

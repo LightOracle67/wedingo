@@ -138,7 +138,10 @@ export function disableSentryTracking() {
       } catch {
         /* integración de replay no disponible */
       }
-      void Sentry.close();
+      // close() puede rechazar (p. ej. transporte caído); se traga el rechazo
+      // para no generar un unhandled rejection justo cuando el usuario retira
+      // el consentimiento.
+      void Sentry.close().catch(() => {});
     })
     .catch(() => {});
 }

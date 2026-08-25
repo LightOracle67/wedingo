@@ -143,7 +143,23 @@ export function ConfirmProvider({ children }: { children: ReactNode }) {
             ) : null}
 
             {confirmOpts?.requireText != null ? (
-              <p className="confirm-modal__require-text">{t("common.requireText", { text: confirmOpts.requireText })}</p>
+              <>
+                <p className="confirm-modal__require-text">{t("common.requireText", { text: confirmOpts.requireText })}</p>
+                {/* Input de verificación del texto exigido: sin él `canConfirm`
+                    sería falso para siempre (no hay dónde escribir) y acciones
+                    destructivas con requireText quedarían bloqueadas — bug real
+                    detectado en DataTab (borrado total inaccesible). El
+                    aria-label reutiliza el propio hint para accesibilidad. */}
+                <input
+                  id="confirm-modal-input"
+                  className="setup-input"
+                  type="text"
+                  value={inputValue}
+                  aria-label={t("common.requireText", { text: confirmOpts.requireText })}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  autoFocus
+                />
+              </>
             ) : null}
 
             <div className="confirm-modal__actions">

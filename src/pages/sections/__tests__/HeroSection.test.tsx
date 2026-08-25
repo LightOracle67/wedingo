@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -15,6 +15,24 @@ vi.mock("../../../lib/platform-settings", () => ({
 }));
 
 
+
+const heroFb = vi.hoisted(() => ({
+  snapOk: undefined as undefined | ((s: unknown) => void),
+  snapErr: undefined as undefined | ((e: unknown) => void),
+}));
+
+// Firestore falso: getDocs responde con un confirmado y onSnapshot entrega sus
+// callbacks al test para ejercitar tanto el camino en vivo como el de error.
+vi.mock("firebase/firestore", () => ({
+  collection: (...a: unknown[]) => ({ parts: a }),
+  getDocs: vi.fn(async () => ({ docs: [{ data: () => ({ name: "Ana Garcia" }) }] })),
+  onSnapshot: vi.fn((_q: unknown, ok?: (s: unknown) => void, err?: (e: unknown) => void) => {
+    heroFb.snapOk = ok;
+    heroFb.snapErr = err;
+    return () => undefined;
+  }),
+}));
+vi.mock("../../../lib/firebase", () => ({ db: {} }));
 
 import HeroSection from "../HeroSection";
 
@@ -159,5 +177,41 @@ describe("HeroSection", () => {
   it("shows only days when everything else is zero", () => {
     render(<HeroSection {...baseProps} weddingDate={futureDate({ d: 3 })} couplePhoto="" />);
     expect(screen.getByText(/countdown\.day/)).toBeDefined();
+  });
+
+
+  it("suscribe confirmados en vivo y pinta el snapshot recibido", async () => {
+    // Con token y toggle activo el efecto se suscribe a confirmedPeople; el
+    // callback en vivo debe reflejarse en la UI sin recargar la página.
+    render(<HeroSection {...baseProps} weddingDate={null} couplePhoto="" inviteToken="tok1" showConfirmedPeople />);
+    await act(async () => {});
+    expect(heroFb.snapOk).toBeTypeOf("function");
+    await act(async () => {
+      heroFb.snapOk?.({ docs: [{ data: () => ({ name: "Beto Perez" }) }] });
+    });
+    expect(screen.getByText(/Beto/)).toBeDefined();
+  });
+
+  it("si la suscripción falla cae a la carga puntual vía getDocs", async () => {
+    // Si onSnapshot lanza de forma síncrona, el catch del efecto invoca
+    // loadOnce y la lista se rellena con getDocs.
+    const { onSnapshot } = await import("firebase/firestore");
+    vi.mocked(onSnapshot).mockImplementationOnce(() => {
+      throw new Error("suscripción KO");
+    });
+    render(<HeroSection {...baseProps} weddingDate={null} couplePhoto="" inviteToken="tok1" showConfirmedPeople />);
+    await act(async () => {});
+    expect(screen.getByText(/Ana/)).toBeDefined();
+  });
+
+  it("el callback de error del listener no rompe el render", async () => {
+    // El errCb de onSnapshot solo registra el fallo: la UI debe permanecer
+    // estable y sin lista cuando el canal en vivo se cae.
+    render(<HeroSection {...baseProps} weddingDate={null} couplePhoto="" inviteToken="tok1" showConfirmedPeople />);
+    await act(async () => {});
+    await act(async () => {
+      heroFb.snapErr?.(new Error("listen KO"));
+    });
+    expect(document.querySelector(".hero-confirmed-people")).toBeNull();
   });
 });

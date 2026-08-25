@@ -422,3 +422,115 @@ describe("Escritor XLSX: casos borde", () => {
     void wide;
   });
 });
+
+/**
+ * Ramas límite de los builders: cada combinación de ternarios/guardas que la
+ * suite previa no ejercitaba. Son tests de caracterización: fijan el
+ * comportamiento observable actual (incluidos los "camino feliz vacío") para
+ * que el umbral global de ramas del proyecto tenga cobertura real detrás.
+ */
+describe("Ramas límite de los builders", () => {
+  it("RSVP: asistencia indefinida, modo propio, niño, contactos parciales y menú sin traducción", () => {
+    const sheet = buildRSVPSheet(
+      [
+        // attendance ni yes/no → celda vacía; transportMode undefined; sin niño.
+        { guestName: "A", mealChoice: "", dietaryInfo: "", submittedAt: null as unknown as string },
+        // attendance no + transportMode "own" → sin sufijo; isChild true; solo teléfono.
+        { guestName: "B", attendance: "no", mealChoice: "", transportChoice: "Coche", transportMode: "own", isChild: true, phone: "600" },
+        // attendance yes + bus → "(bus)"; solo email; menú desconocido → crudo; con fecha.
+        { guestName: "C", attendance: "yes", mealChoice: "pollo", transportMode: "bus", email: "c@x.es", submittedAt: "2026-08-24T10:00:00Z" },
+      ],
+      t,
+    );
+    expect(sheet.rows[0]).toEqual(["A", "", "", "", "", "", "", ""]);
+    expect(sheet.rows[1]?.[1]).toBe("No");
+    expect(sheet.rows[1]?.[4]).toBe("Coche");
+    expect(sheet.rows[1]?.[5]).toBe("Sí");
+    expect(sheet.rows[1]?.[6]).toBe("600");
+    expect(sheet.rows[2]?.[1]).toBe("Sí");
+    expect(sheet.rows[2]?.[2]).toBe("pollo");
+    expect(sheet.rows[2]?.[4]).toBe("(bus)");
+    expect(sheet.rows[2]?.[6]).toBe("c@x.es");
+    expect(String(sheet.rows[2]?.[7])).not.toBe("");
+  });
+
+  it("Menús: declinados fuera, asistentes expanden, mealChoice como respaldo y sin plato", () => {
+    const sheet = buildMenuSheet(
+      [
+        { guestName: "Declina", attendance: "no" },
+        { guestName: "ConAcomp", attendance: "yes", attendees: [{ name: "Hijo", menu: "vegano" }] },
+        { guestName: "SoloPlato", attendance: "yes", mealChoice: "carne" },
+        { guestName: "Nada", attendance: "yes" },
+      ],
+      t,
+    );
+    expect(sheet.rows).toEqual([["Hijo", "Vegano"], ["SoloPlato", "Carne"]]);
+  });
+
+  it("Mesas: sección inexistente, mesa vacía y varias asignaciones", () => {
+    const sheet = buildTablesSheet(
+      [{ id: "s1", name: "Salón" }],
+      "sINEXISTENTE",
+      [
+        { name: "M1", shape: "square", w: 90, h: 90, seats: 8, guests: [] },
+        { name: "M2", shape: "round", w: undefined as unknown as number, h: 80, seats: 4, guests: ["Ana", "Beto"] },
+      ],
+      t,
+    );
+    expect(sheet.rows).toHaveLength(3);
+    expect(sheet.rows[0]?.[0]).toBe("");
+    expect(sheet.rows[0]?.[3]).toBe("90×90");
+    expect(sheet.rows[1]?.[3]).toBe("×80");
+    expect(sheet.rows[2]?.[5]).toBe("Beto");
+  });
+
+  it("Invitados globales: filtro por token, menús de asistentes y alergias alternativas", () => {
+    const invite = { id: "T1", firstName: "Ana", secondName: "Beta", adminUsername: "ad", weddingDateLabel: "01/01/2026", visits: 3, rsvpCount: 2, confirmed: 1, companions: 1, conversion: 50 };
+    const sheet = buildGlobalGuestsSheet([
+      { invite, rsvps: [
+        { inviteToken: "OTRO", guestName: "Fuera" },
+        { inviteToken: "T1", guestName: "Uno", attendance: "yes", attendees: [{ menu: "carne" }, {}], allergiesOther: ["Nueces"], phone: 600, email: null },
+        { inviteToken: "T1", guestName: "Dos", attendance: "no", mealChoice: "pescado", dietaryInfo: "sin sal", submittedAt: "hoy" },
+      ] },
+    ]);
+    expect(sheet.rows).toHaveLength(2);
+    expect(sheet.rows[0]?.[2]).toBe("Uno");
+    expect(sheet.rows[0]?.[4]).toBe("carne; ");
+    expect(sheet.rows[0]?.[5]).toBe("Nueces");
+    expect(sheet.rows[0]?.[6]).toBe("600");
+    // email null cae al respaldo "" (String(null || "")).
+    expect(sheet.rows[0]?.[7]).toBe("");
+    expect(sheet.rows[1]?.[4]).toBe("pescado");
+    expect(sheet.rows[1]?.[5]).toBe("sin sal");
+  });
+
+  it("Fecha RSVP: nulos, Timestamp por segundos, toDate(), epoch e inválidos", () => {
+    const toDate = () => new Date("2026-03-05T00:00:00Z");
+    const sheet = buildRsvpSheet(
+      "X",
+      [
+        { guestName: "nulo" },
+        { guestName: "secs", companionCount: "2", submittedAt: { seconds: 1770000000 } },
+        { guestName: "toDate", submittedAt: { toDate } },
+        { guestName: "epoch", submittedAt: new Date("2026-01-02T00:00:00Z").getTime() },
+        { guestName: "malNum", submittedAt: Number.NaN },
+        { guestName: "textoMal", submittedAt: "no-fecha" },
+      ],
+    );
+    expect(sheet.rows[0]?.[5]).toBe("");
+    expect(sheet.rows[0]?.[2]).toBe(0);
+    expect(sheet.rows[1]?.[2]).toBe(2);
+    expect(String(sheet.rows[1]?.[5])).not.toBe("");
+    expect(String(sheet.rows[2]?.[5])).not.toBe("");
+    expect(String(sheet.rows[3]?.[5])).not.toBe("");
+    // Accesos indexados con ?. porque noUncheckedIndexedAccess tipa las celdas
+    // como posiblemente undefined (fila/columna fuera de rango en runtime).
+    expect(sheet.rows[4]?.[5]).toBe("");
+    expect(sheet.rows[5]?.[5]).toBe("");
+  });
+
+  it("Auditoría: mapea acción/detalle/fecha tal cual", () => {
+    const sheet = buildAuditSheet([{ action: "login", detail: "sesión creada", ts: "ayer" }]);
+    expect(sheet.rows).toEqual([["login", "sesión creada", "ayer"]]);
+  });
+});

@@ -165,6 +165,164 @@ describe("sentry", () => {
     expect(mockInit.mock.calls.length).toBe(calls);
   });
 
+  it("beforeSend redacta URLs de request, transacción, tags y contextos", async () => {
+    // Inicialización en producción para obtener las opciones reales pasadas a
+    // Sentry.init (ahí viven beforeSend/beforeBreadcrumb cerradas sobre los
+    // redactores). El stub de idle ejecuta el callback al instante.
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_SENTRY_DSN", "https://dsn");
+    vi.stubGlobal(
+      "requestIdleCallback",
+      vi.fn((cb: () => void) => {
+        cb();
+        return 0;
+      }),
+    );
+    vi.resetModules();
+    await import("../sentry");
+    await vi.waitFor(() => {
+      expect(mockInit).toHaveBeenCalled();
+    });
+    const options = mockInit.mock.calls.at(-1)![0] as Record<string, unknown>;
+    const beforeSend = options.beforeSend as (e: unknown) => unknown;
+
+    // Evento completo con token en cada campo redactable: la ruta del
+    // navegador, la transacción, un tag string y un tag numérico (coerción
+    // String()), más el contexto trace con URL.
+    const event = {
+      request: { url: "https://wedingo-6c26a.web.app/TtCgt9n8VT" },
+      transaction: "https://x.app/invitaciones/TtCgt9n8VT",
+      tags: { page: "https://x.app/?invitar=TtCgt9n8VT", attempt: 5 },
+      contexts: { trace: { url: "https://x.app/?t=TtCgt9n8VT" } },
+    };
+    const out = beforeSend(event) as typeof event;
+    expect(out.request.url).toBe("https://wedingo-6c26a.web.app/[redacted]");
+    expect(out.transaction).toBe("https://x.app/[redacted]/TtCgt9n8VT");
+    expect(out.tags.page).toBe("https://x.app/?invitar=[redacted]");
+    expect(out.tags.attempt).toBe("5"); // coerción a string sin redacción
+    expect(out.contexts.trace.url).toBe("https://x.app/?t=[redacted]");
+
+    // Evento malformado: tipos inesperados no deben romper el pipeline.
+    const malformed = { transaction: 42, tags: "no-objeto", contexts: null };
+    expect(beforeSend(malformed)).toBe(malformed);
+
+    // Getter que lanza: el catch devuelte el evento tal cual (sin filtrar).
+    const hostile: Record<string, unknown> = {};
+    Object.defineProperty(hostile, "request", {
+      get() {
+        throw new Error("boom");
+      },
+    });
+    expect(beforeSend(hostile)).toBe(hostile);
+  });
+
+  it("beforeBreadcrumb redacta data/mensaje y devuelve null si el getter lanza", async () => {
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_SENTRY_DSN", "https://dsn");
+    vi.stubGlobal(
+      "requestIdleCallback",
+      vi.fn((cb: () => void) => {
+        cb();
+        return 0;
+      }),
+    );
+    vi.resetModules();
+    await import("../sentry");
+    await vi.waitFor(() => {
+      expect(mockInit).toHaveBeenCalled();
+    });
+    const options = mockInit.mock.calls.at(-1)![0] as Record<string, unknown>;
+    const beforeBreadcrumb = options.beforeBreadcrumb as (b: unknown) => unknown;
+
+    // Breadcrumb con tokens en data.url, data.message y message superior.
+    const crumb = {
+      data: { url: "https://x.app/TtCgt9n8VT", message: "?invitar=TtCgt9n8VT" },
+      message: "https://x.app/invitaciones/TtCgt9n8VT",
+    };
+    const out = beforeBreadcrumb(crumb) as typeof crumb;
+    expect(out.data.url).toBe("https://x.app/[redacted]");
+    expect(out.data.message).toBe("?invitar=[redacted]");
+    expect(out.message).toBe("https://x.app/[redacted]/TtCgt9n8VT");
+
+    // Sin data: se devuelve intacto (rama breadcrumb.data ?? {}).
+    const bare = { message: "limpio" };
+    expect(beforeBreadcrumb(bare)).toEqual(bare);
+
+    // Getter hostil en data: el catch devuelve null (descarta el crumb).
+    const hostile = {};
+    Object.defineProperty(hostile, "data", {
+      get() {
+        throw new Error("boom");
+      },
+    });
+    expect(beforeBreadcrumb(hostile)).toBeNull();
+  });
+
+  it("init en desarrollo usa rates 0 y environment development", async () => {
+    // En dev Sentry solo sirve para depurar localmente: sin muestreo y con
+    // etiqueta explícita de entorno para no contaminar métricas de prod.
+    vi.stubEnv("PROD", false);
+    vi.stubEnv("VITE_SENTRY_DSN", "https://dsn");
+    vi.stubEnv("VITE_APP_VERSION", "2.125.0-test");
+    vi.stubGlobal(
+      "requestIdleCallback",
+      vi.fn((cb: () => void) => {
+        cb();
+        return 0;
+      }),
+    );
+    vi.resetModules();
+    await import("../sentry");
+    await vi.waitFor(() => {
+      expect(mockInit).toHaveBeenCalled();
+    });
+    const options = mockInit.mock.calls.at(-1)![0] as Record<string, number | string | boolean>;
+    expect(options.tracesSampleRate).toBe(0);
+    expect(options.replaysSessionSampleRate).toBe(0);
+    expect(options.environment).toBe("development");
+    expect(options.release).toBe("wedingo@2.125.0-test");
+  });
+
+  it("disableSentryTracking traga errores del replay y del cierre", async () => {
+    vi.stubEnv("PROD", true);
+    vi.stubEnv("VITE_SENTRY_DSN", "https://dsn");
+    vi.stubGlobal(
+      "requestIdleCallback",
+      vi.fn((cb: () => void) => {
+        cb();
+        return 0;
+      }),
+    );
+    vi.resetModules();
+    const sentry = await import("../sentry");
+    await vi.waitFor(() => {
+      expect(mockInit).toHaveBeenCalled();
+    });
+
+    // getReplay lanza: la retirada de consentimiento no debe propagar el error
+    // (el usuario ya ha retirado el consentimiento; fallar aquí sería peor).
+    mockGetReplay.mockImplementationOnce(() => {
+      throw new Error("replay roto");
+    });
+    sentry.disableSentryTracking();
+    await new Promise((r) => setTimeout(r, 0));
+
+    // Re-inicialización en un módulo fresco para ejercitar close() rechazado.
+    vi.resetModules();
+    const sentry2 = await import("../sentry");
+    await sentry2.enableSentryTracking();
+    await vi.waitFor(() => {
+      expect(mockInit).toHaveBeenCalled();
+    });
+    mockClose.mockReturnValueOnce(Promise.reject(new Error("close roto")));
+    sentry2.disableSentryTracking();
+    await new Promise((r) => setTimeout(r, 0));
+
+    // Segundo disable consecutivo: guard initialized=false → early return.
+    sentry2.disableSentryTracking();
+    await new Promise((r) => setTimeout(r, 0));
+  });
+
   describe("redactSecretsFromUrl", () => {
     it("redacta el token de la ruta de invitación", async () => {
       const { redactSecretsFromUrl } = await import("../sentry");

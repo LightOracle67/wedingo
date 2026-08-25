@@ -623,8 +623,15 @@ describe("GalleryArrayEditor", () => {
     await screen.findByDisplayValue("desc");
     const input = screen.getByDisplayValue("desc");
     fireEvent.blur(input);
-    await waitFor(() => {
-      expect(mockUpdateGalleryDescription).toHaveBeenCalledWith("test-token", "img-1", "desc");
-    });
+    // Timeout ampliado: handleDescriptionBlur resuelve un import() dinámico de
+    // image-store antes de invocar updateGalleryDescription; bajo la carga del
+    // run completo con cobertura ese import puede superar el timeout por
+    // defecto de waitFor (1s) y provocar un falso negativo intermitente.
+    await waitFor(
+      () => {
+        expect(mockUpdateGalleryDescription).toHaveBeenCalledWith("test-token", "img-1", "desc");
+      },
+      { timeout: 5000 },
+    );
   });
 });
