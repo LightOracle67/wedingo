@@ -503,8 +503,11 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                     {t("attendance.tableTransport")}
                   </SortableTh>
                   <SortableTh
-                    columnKey="birth"
-                    order={getIndicator("birth")}
+                    // La clave DEBE coincidir con el key "child" de sortColumns:
+                    // con el antiguo "birth" el find() fallaba, caía al fallback
+                    // row["birth"] (siempre undefined) y la columna nunca ordenaba.
+                    columnKey="child"
+                    order={getIndicator("child")}
                     onSort={toggleSort}
                     style={{ minWidth: "110px" }}
                   >

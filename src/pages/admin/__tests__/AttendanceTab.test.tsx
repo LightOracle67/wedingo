@@ -944,4 +944,203 @@ describe("AttendanceTab", () => {
     );
     expect(screen.getByText("attendance.resetFilters")).toBeDefined();
   });
+
+  // Matriz de ordenación: un clic por cada cabecera ejercita el getValue de
+  // las 10 columnas de sortColumns (incluidas las variantes attendees vs
+  // mealChoice/dietaryInfo) y el segundo clic cubre el orden descendente.
+  it("sorts by every column header with main and companion rows", () => {
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={[
+          {
+            id: "m1",
+            rsvpType: "main",
+            guestName: "Ana García López",
+            attendance: "yes",
+            companions: 1,
+            dietaryInfo: "Sin gluten|Lactosa",
+            mealChoice: "",
+            attendees: [{ name: "Ana", menu: "pollo", allergies: ["Gluten"] }],
+            transportMode: "bus",
+            transportChoice: "Coche",
+            transportTime: "12:00",
+            isChild: false,
+            parentalConsent: true,
+            phone: "600111222",
+            email: "ana@x.es",
+            submittedAt: "2024-01-02T10:00:00Z",
+          },
+          {
+            id: "c1",
+            rsvpType: "companion",
+            guestName: "Beto Ruiz Soler",
+            mainGuestName: "Ana García López",
+            attendance: "yes",
+            companions: 0,
+            dietaryInfo: "Vegano",
+            mealChoice: "cerdo",
+            isChild: true,
+            healthConsent: true,
+            submittedAt: "2024-01-01T09:00:00Z",
+          },
+        ]}
+        rsvpEntries={[]}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
+      />,
+    );
+
+    const headers = [
+      "attendance.tableName",
+      "attendance.tableAccompanies",
+      "attendance.tableAttendance",
+      "attendance.tableMenu",
+      "attendance.tableDiet",
+      "attendance.tableTransport",
+      "attendance.tableChild",
+      "attendance.tableConsents",
+      "attendance.tableContact",
+      "attendance.tableDate",
+    ];
+
+    for (const label of headers) {
+      const btn = screen.getByRole("button", { name: new RegExp(`^${label}\\. Pulsa para ordenar$`) });
+      // Ascendente: el th pasa a aria-sort="ascending".
+      fireEvent.click(btn);
+      expect(btn.closest("th")).toHaveAttribute("aria-sort", "ascending");
+      // Descendente: segundo clic sobre la misma columna.
+      fireEvent.click(btn);
+      expect(btn.closest("th")).toHaveAttribute("aria-sort", "descending");
+      // Tercer clic resetea a sin orden (cubre la rama "none" del indicador).
+      fireEvent.click(btn);
+      expect(btn.closest("th")).toHaveAttribute("aria-sort", "none");
+    }
+
+    // Sanidad: ambas filas siguen visibles tras tantas reordenaciones.
+    expect(screen.getAllByText("Ana García López").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Beto Ruiz Soler").length).toBeGreaterThan(0);
+  });
+});
+  
+
+describe("AttendanceTab — matriz de ordenación", () => {
+  // Tres entradas diseñadas para que cada columna tenga un orden determinista:
+  // una main con attendees (menú y alergias por acompañante), una main con
+  // campos planos (mealChoice/dietaryInfo/transporte propio/contacto) y una
+  // companion sin consentimientos (para que los booleanos tengan único true).
+  const entries = [
+    {
+      id: "1", guestName: "Ana", attendance: "yes", companions: 1, rsvpType: "main",
+      attendees: [{ name: "C1", menu: "pollo", allergies: ["Gluten"] }],
+      dietaryInfo: "", mealChoice: "",
+      transportMode: "bus", transportChoice: "Bus 5", transportTime: "18:00",
+      phone: "600", email: "", submittedAt: "2024-02-01",
+    },
+    {
+      id: "2", guestName: "Beto", attendance: "yes", companions: 0, rsvpType: "main",
+      attendees: [], dietaryInfo: "Lactosa", mealChoice: "pescado",
+      transportMode: "own", transportChoice: "", transportTime: "",
+      phone: "", email: "b@x.es", submittedAt: "2024-01-01",
+      isChild: true, healthConsent: true,
+    },
+    {
+      id: "3", guestName: "Carla", attendance: "yes", companions: 0, rsvpType: "companion",
+      mainGuestName: "Zoe", attendees: [], dietaryInfo: "", mealChoice: "",
+      submittedAt: "2024-03-01",
+    },
+  ];
+
+  const mount = () =>
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={entries as unknown as RsvpEntry[]}
+        rsvpEntries={entries as unknown as RsvpEntry[]}
+        exportPdf={vi.fn()}
+        formatDate={(d: unknown) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
+      />,
+    );
+
+  // Filas SOLO de la tabla principal: el componente renderiza un segundo
+  // <tbody> (panel lateral) que contaminaría el índice si se lee del contenedor.
+  const rowNames = (c: HTMLElement) =>
+    Array.from(c.querySelectorAll("table.admin-table tbody tr")).map((r) => r.textContent || "");
+
+  const clickHeader = (label: string) => {
+    const btn = screen.getByText(label).closest("button");
+    if (!btn) throw new Error(`sin botón de cabecera para ${label}`);
+    fireEvent.click(btn);
+  };
+
+  it("ciclo asc→desc→default por cabecera cubre los getValue de las columnas", () => {
+    const { container } = mount();
+    // [cabecera, primera fila en asc, primera fila en desc]. Los valores vacíos
+    // quedan SIEMPRE al final, así que en desc sube el mayor NO vacío.
+    const casos: Array<[string, string, string]> = [
+      ["attendance.tableName", "Ana", "Carla"],
+      ["attendance.tableAccompanies", "Carla", "Carla"],
+      ["attendance.tableMenu", "Ana", "Beto"],
+      ["attendance.tableDiet", "Ana", "Beto"],
+      ["attendance.tableContact", "Ana", "Beto"],
+      ["attendance.tableDate", "Beto", "Carla"],
+    ];
+    for (const [label, primeroAsc, primeroDesc] of casos) {
+      clickHeader(label);
+      expect(rowNames(container)[0], `asc ${label}`).toContain(primeroAsc);
+      clickHeader(label);
+      expect(rowNames(container)[0], `desc ${label}`).toContain(primeroDesc);
+      // Tercer clic: sin orden → vuelve el orden de entrada (estable).
+      clickHeader(label);
+      expect(rowNames(container)[0], `default ${label}`).toContain("Ana");
+    }
+    // Asistencia idéntica en las tres filas: la ordenación es estable y no
+    // altera el orden original en ninguna dirección.
+    clickHeader("attendance.tableAttendance");
+    expect(rowNames(container)[0]).toContain("Ana");
+    expect(rowNames(container)).toHaveLength(3);
+  });
+
+  it("transporte ordena con el guion de sin-transporte primero (no es vacío)", () => {
+    const { container } = mount();
+    clickHeader("attendance.tableTransport");
+    // resolveTransportLabel devuelve "—" cuando no hay modo/elección/hora:
+    // ese guion es un string no vacío y se ordena antes que las etiquetas.
+    let rows = rowNames(container);
+    expect(rows[0]).toContain("Carla");
+    expect(rows[rows.length - 1]).toContain("Ana");
+    clickHeader("attendance.tableTransport");
+    rows = rowNames(container);
+    // Desc: se invierten los no vacíos.
+    expect(rows[0]).toContain("Ana");
+    expect(rows[rows.length - 1]).toContain("Carla");
+  });
+
+  it("la columna ¿niño? ordena booleanos asc y desc", () => {
+    const { container } = mount();
+    clickHeader("attendance.tableChild");
+    // asc: falsos primero, el niño (Beto) último.
+    expect(rowNames(container)[rowNames(container).length - 1]).toContain("Beto");
+    clickHeader("attendance.tableChild");
+    // desc: el niño primero.
+    expect(rowNames(container)[0]).toContain("Beto");
+  });
+
+  it("consentimientos ordena poniendo el único consentimiento al final en asc", () => {
+    const { container } = mount();
+    clickHeader("attendance.tableConsents");
+    expect(rowNames(container)[rowNames(container).length - 1]).toContain("Beto");
+    clickHeader("attendance.tableConsents");
+    expect(rowNames(container)[0]).toContain("Beto");
+  });
 });
