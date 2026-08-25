@@ -653,7 +653,7 @@ export default function DataTab() {
     ],
     [],
   );
-  const { sorted: sortedInvitations, toggleSort, getIndicator } = useColumnSort(invitations, sortColumns);
+  const { sorted: sortedInvitations, toggleSort, getIndicator } = useColumnSort(filtered, sortColumns);
 
   if (loading) {
     return (

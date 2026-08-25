@@ -745,4 +745,106 @@ describe("DataTab avanzadas", () => {
     fireEvent.click(screen.getByText("superadmin.data.purgeBtn"));
     await vi.waitFor(() => expect(mockDeleteDoc).not.toHaveBeenCalled());
   });
+
+  // ── Ramas límite: errores y cortocircuitos de los handlers masivos ──
+
+  /** Monta la pestaña con dos invitaciones (una con boda antigua para purga). */
+  async function mountTwo() {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({
+          docs: [
+            docData({ id: "old1", firstName: "Old", secondName: "One", weddingDay: "1", weddingMonth: "1", weddingYear: "2020" }),
+            docData({ id: "new1", firstName: "New", secondName: "One", weddingDay: "1", weddingMonth: "1", weddingYear: "2030" }),
+          ],
+        });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("old1")).toBeInTheDocument());
+  }
+
+  it("PII: exige mínimo de caracteres antes de consultar", async () => {
+    await mountTwo();
+    fireEvent.change(screen.getByLabelText("superadmin.data.piiPlaceholder"), { target: { value: "ab" } });
+    fireEvent.click(screen.getByText("superadmin.data.piiSearch"));
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("info", "superadmin.data.piiMinChars"));
+  });
+
+  it("PII: avisa cuando no hay resultados", async () => {
+    await mountTwo();
+    fireEvent.change(screen.getByLabelText("superadmin.data.piiPlaceholder"), { target: { value: "Zzz" } });
+    fireEvent.click(screen.getByText("superadmin.data.piiSearch"));
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("info", "superadmin.data.piiNone"));
+  });
+
+  it("PII: convierte fallos de consulta en toast de error", async () => {
+    await mountTwo();
+    mockGetDocs.mockRejectedValueOnce(new Error("cg down"));
+    fireEvent.change(screen.getByLabelText("superadmin.data.piiPlaceholder"), { target: { value: "Ana" } });
+    fireEvent.click(screen.getByText("superadmin.data.piiSearch"));
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "errors.dataLoadFailed"));
+  });
+
+  it("tema masivo: sin selección no abre confirmación", async () => {
+    await mountTwo();
+    const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(true);
+    // Sin selección el handler cortocircuita antes de pedir confirmación.
+    fireEvent.click(screen.getByText("superadmin.data.bulkTheme", { exact: false }));
+    expect(confirmSpy).not.toHaveBeenCalled();
+    confirmSpy.mockRestore();
+  });
+
+  it("expiración masiva: prompt cancelado no escribe nada", async () => {
+    await mountTwo();
+    vi.spyOn(window, "prompt").mockReturnValue("");
+    fireEvent.click(screen.getByText("superadmin.data.selectAll"));
+    fireEvent.click(screen.getByText("superadmin.data.bulkExpiryBtn", { exact: false }));
+    expect(mockWriteBatch).not.toHaveBeenCalled();
+  });
+
+  it("sello masivo: confirmación denegada no aplica el lote", async () => {
+    await mountTwo();
+    window.confirm = vi.fn(() => false);
+    fireEvent.click(screen.getByText("superadmin.data.selectAll"));
+    fireEvent.click(screen.getByText("superadmin.data.bulkSealBtn", { exact: false }));
+    expect(mockWriteBatch).not.toHaveBeenCalled();
+  });
+
+  it("purga: meses inválidos cortocircuitan sin borrar", async () => {
+    await mountTwo();
+    vi.spyOn(window, "prompt").mockReturnValue("0");
+    fireEvent.click(screen.getByText("superadmin.data.purgeBtn"));
+    expect(mockDeleteDoc).not.toHaveBeenCalled();
+  });
+
+  it("purga: solo elimina las bodas anteriores al corte y avisa", async () => {
+    await mountTwo();
+    vi.spyOn(window, "prompt").mockReturnValue("12");
+    window.confirm = vi.fn(() => true);
+    fireEvent.click(screen.getByText("superadmin.data.purgeBtn"));
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("success", expect.stringContaining("purgeDone")));
+  });
+
+  it("filtro de actividad: sesión activa oculta las demás filas", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({
+          docs: [
+            docData({ id: "ses1", firstName: "S", secondName: "A", activeSession: { user: "jj" } }),
+            docData({ id: "nos1", firstName: "N", secondName: "B" }),
+          ],
+        });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("nos1")).toBeInTheDocument());
+    // El filtro es único en la pestaña; el cambio debe ocultar las filas sin sesión.
+    const filter = screen.getByLabelText("superadmin.data.activityFilter") as HTMLSelectElement;
+    fireEvent.change(filter, { target: { value: "sesion" } });
+    await vi.waitFor(() => expect(screen.queryByText("nos1")).not.toBeInTheDocument());
+    expect(screen.getByText("ses1")).toBeInTheDocument();
+  });
 });
