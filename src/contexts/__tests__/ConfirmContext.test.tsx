@@ -13,8 +13,7 @@
  */
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, waitFor, fireEvent, within } from "@testing-library/react";
-import { ConfirmProvider, useConfirm } from "../ConfirmContext";
-import type { ConfirmOptions, PromptOptions } from "../ConfirmContext";
+import { ConfirmProvider, useConfirm, type ConfirmOptions, type PromptOptions } from "../ConfirmContext";
 
 /** Sonda: expone la API del contexto a los tests vía un botón. */
 function Probe({

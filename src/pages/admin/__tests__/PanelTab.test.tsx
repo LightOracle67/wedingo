@@ -57,7 +57,6 @@ vi.mock("../../../lib/admin-utils", () => ({
 }));
 
 import { getDocs } from "firebase/firestore";
-import { vi as vitestCore } from "vitest";
 import PanelTab, { type PanelTabConfig } from "../PanelTab";
 
 const baseConfig: PanelTabConfig = {
@@ -394,13 +393,13 @@ describe("PanelTab — ramas límite", () => {
     Object.assign(navigator, { clipboard: { writeText } });
     render(<PanelTab config={baseConfig} />);
     fireEvent.click(screen.getByText("panel.copyLink"));
-    await vitestCore.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("success", "panel.linkCopied"));
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("success", "panel.linkCopied"));
   });
 
   it("avisa con toast de error si el portapapeles falla", async () => {
     Object.assign(navigator, { clipboard: { writeText: vi.fn(() => Promise.reject(new Error("denied"))) } });
     render(<PanelTab config={baseConfig} />);
     fireEvent.click(screen.getByText("panel.copyLink"));
-    await vitestCore.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "errors.clipboardCopyFailed"));
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "errors.clipboardCopyFailed"));
   });
 });

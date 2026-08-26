@@ -4,8 +4,7 @@ import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useConfig, useAppUI, useAuth, useRsvpFormContext } from "../../contexts";
 import CornerDecorations from "../../components/CornerDecorations";
-import { deriveRsvpState, buildMenuOptions, buildModeOptions, buildDepartures, formatDishesText } from "./rsvp/derive";
-import type { RsvpConfigLike } from "./rsvp/derive";
+import { deriveRsvpState, buildMenuOptions, buildModeOptions, buildDepartures, formatDishesText, type RsvpConfigLike } from "./rsvp/derive";
 import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import AttendanceSelector from "./rsvp/AttendanceSelector";
 import TransportPicker from "./rsvp/TransportPicker";
@@ -172,7 +171,7 @@ const RsvpSection = memo(function RsvpSection({
         },
         t,
       ),
-    [config, t],
+    [menuCarneDishes, menuPescadoDishes, menuVeganoDishes, t],
   );
   const modeOptions = useMemo(
     () => buildModeOptions({ transportEnabled: transportEnabled ?? "" }, t),
