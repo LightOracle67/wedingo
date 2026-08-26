@@ -101,6 +101,8 @@ async function run() {
   await t("expectedGuests 1000 (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", expectedGuests: "1000" }, { merge: true }));
   await t("expectedGuests 1001 → NEGADO", false, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", expectedGuests: "1001" }, { merge: true }));
   await t("expectedGuests no numérico → NEGADO", false, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", expectedGuests: "abc" }, { merge: true }));
+  await t("URL vacía en update (email) SÍ", true, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", weddingSiteURL: "" }, { merge: true }));
+  await t("URL inválida en update → NEGADO", false, emailDb.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B", weddingSiteURL: "www.x.com" }, { merge: true }));
 
   // 8. El superadmin puede borrar una invitación.
   await t("invitation delete (email)", true, emailDb.collection("invitations").doc("AbCdEf1234").delete());

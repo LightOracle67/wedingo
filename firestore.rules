@@ -106,8 +106,9 @@ service cloud.firestore {
     function isValidSafeUrl(url) {
       return url is string
         && url.size() <= 1000
-        && !url.matches('.*[\\n\\r\\t].*')
-        && url.matches('^https?://[^\\s/$.?#].[^\\s]*$');
+        && (url == ''
+          || (!url.matches('.*[\\n\\r\\t].*')
+            && url.matches('^https?://[^\\s/$.?#].[^\\s]*$')));
     }
 
 /* Validación de configuración: solo campos críticos de seguridad.
