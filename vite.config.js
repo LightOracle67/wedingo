@@ -84,6 +84,49 @@ function pwaPrecache() {
   };
 }
 
+// Guarda de seguridad de build: si las credenciales web de Firebase no están
+// presentes (p. ej. build desde un clon limpio sin .env), el bundle sale con
+// projectId vacío y TODA la app pierde Firestore ("Invalid segment
+// projects//databases/..."). Fallar aquí, en el build, es infinitamente mejor
+// que descubrirlo en producción. Lección del incidente v2.133.0.
+const REQUIRED_FIREBASE_ENV = [
+  "VITE_FIREBASE_API_KEY",
+  "VITE_FIREBASE_AUTH_DOMAIN",
+  "VITE_FIREBASE_PROJECT_ID",
+  "VITE_FIREBASE_STORAGE_BUCKET",
+  "VITE_FIREBASE_MESSAGING_SENDER_ID",
+  "VITE_FIREBASE_APP_ID",
+];
+
+/** Lee .env (y variantes) sin dependencias: pares CLAVE=VALOR simples. */
+function readDotEnvKeys() {
+  const found = {};
+  for (const file of [".env", ".env.local", ".env.production"]) {
+    try {
+      const raw = readFileSync(new URL(`./${file}`, import.meta.url), "utf8");
+      for (const line of raw.split("\n")) {
+        const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
+        // Última definición gana; recorta comillas envolventes si existen.
+        if (m) found[m[1]] = m[2].replace(/^["']|["']$/g, "");
+      }
+    } catch {
+      // Ausencia de una variante concreta es normal; se continúa.
+    }
+  }
+  return found;
+}
+
+const dotEnvKeys = readDotEnvKeys();
+const missingFirebaseEnv = REQUIRED_FIREBASE_ENV.filter(
+  (k) => !process.env[k] || !dotEnvKeys[k],
+);
+if (missingFirebaseEnv.length > 0) {
+  throw new Error(
+    `[build] Faltan variables de entorno de Firebase en el entorno/.env: ${missingFirebaseEnv.join(", ")}. ` +
+      "Sin ellas el bundle no puede hablar con Firestore. Genera el .env (firebase apps:sdkconfig) antes de compilar.",
+  );
+}
+
 export default defineConfig({
   plugins: [react(), tailwindcss(), buildTimestamp(), pwaPrecache(), sentryPlugin].filter(Boolean),
   base: "/",
