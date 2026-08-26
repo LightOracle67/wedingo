@@ -10,7 +10,7 @@ test.describe("App Shell", () => {
     await page.addInitScript(() => {
       window.localStorage.setItem(
         "wedin_cookie_consent",
-        JSON.stringify({ status: "accepted", ts: Date.now(), version: "test" }),
+        JSON.stringify({ status: "accepted", ts: Date.now(), version: "2026-08-10" }),
       );
       window.localStorage.setItem(
         "wedin_cookie_prefs",
