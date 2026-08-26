@@ -490,6 +490,10 @@ describe("DistribucionTab", () => {
       });
       render(<DistribucionTab inviteToken="tok" />);
       await screen.findByText("Salón");
+      // Las mesas se cargan en un efecto aparte (depende de activeSectionId),
+      // un commit después de las secciones: esperar la mesa evita carreras
+      // en runners lentos (CI node 22) donde getByRole llegaba antes.
+      await screen.findByRole("button", { name: "distribucion.tableAccessible" });
     }
 
     it("mueve la mesa con flechas (paso normal) y persiste", async () => {
