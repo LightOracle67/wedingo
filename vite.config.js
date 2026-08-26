@@ -98,12 +98,15 @@ const REQUIRED_FIREBASE_ENV = [
   "VITE_FIREBASE_APP_ID",
 ];
 
-/** Lee .env (y variantes) sin dependencias: pares CLAVE=VALOR simples. */
+/** Lee .env (y variantes) sin dependencias: pares CLAVE=VALOR simples.
+ *  IMPORTANTE: relativo a process.cwd() y NO a import.meta.url, porque vite
+ *  evalúa esta config desde un bundle temporal (.vite-temp/) cuya URL no
+ *  coincide con el raíz del proyecto. */
 function readDotEnvKeys() {
   const found = {};
   for (const file of [".env", ".env.local", ".env.production"]) {
     try {
-      const raw = readFileSync(new URL(`./${file}`, import.meta.url), "utf8");
+      const raw = readFileSync(join(process.cwd(), file), "utf8");
       for (const line of raw.split("\n")) {
         const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
         // Última definición gana; recorta comillas envolventes si existen.
