@@ -2,7 +2,23 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 
 // Use vi.hoisted to define mocks that need to be referenced in both mock factories and tests
-const { mockGetSession, mockSaveSession, mockRegisterOnFirstSave, mockSetAdminMessage, mockSetAdminMessageType, mockSetIsTokenVerified, mockSetTokenLoginUsername, mockRefreshSetupToken, mockSetSetupToken, mockSetSetupTokenInput, mockSetDoc, mockUpdateDoc, mockUseConfig, mockUseAppUI, mockUseSetupAuth } = vi.hoisted(() => {
+const {
+  mockGetSession,
+  mockSaveSession,
+  mockRegisterOnFirstSave,
+  mockSetAdminMessage,
+  mockSetAdminMessageType,
+  mockSetIsTokenVerified,
+  mockSetTokenLoginUsername,
+  mockRefreshSetupToken,
+  mockSetSetupToken,
+  mockSetSetupTokenInput,
+  mockSetDoc,
+  mockUpdateDoc,
+  mockUseConfig,
+  mockUseAppUI,
+  mockUseSetupAuth,
+} = vi.hoisted(() => {
   const mockGetSession = vi.fn(() => null as { identifier: string; expiresAt: number } | null);
   const mockSaveSession = vi.fn();
   const mockRegisterOnFirstSave = vi.fn();
@@ -50,7 +66,23 @@ const { mockGetSession, mockSaveSession, mockRegisterOnFirstSave, mockSetAdminMe
     setSetupToken: mockSetSetupToken,
     setAuthMessage: vi.fn(),
   }));
-  return { mockGetSession, mockSaveSession, mockRegisterOnFirstSave, mockSetAdminMessage, mockSetAdminMessageType, mockSetIsTokenVerified, mockSetTokenLoginUsername, mockRefreshSetupToken, mockSetSetupToken, mockSetSetupTokenInput, mockSetDoc, mockUpdateDoc, mockUseConfig, mockUseAppUI, mockUseSetupAuth };
+  return {
+    mockGetSession,
+    mockSaveSession,
+    mockRegisterOnFirstSave,
+    mockSetAdminMessage,
+    mockSetAdminMessageType,
+    mockSetIsTokenVerified,
+    mockSetTokenLoginUsername,
+    mockRefreshSetupToken,
+    mockSetSetupToken,
+    mockSetSetupTokenInput,
+    mockSetDoc,
+    mockUpdateDoc,
+    mockUseConfig,
+    mockUseAppUI,
+    mockUseSetupAuth,
+  };
 });
 
 vi.mock("react-i18next", () => ({

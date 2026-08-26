@@ -29,18 +29,19 @@ export function redactSecretsFromUrl(str: string): string {
   try {
     // solo aplica a URLs absolutas con http(s)
     if (/^https?:\/\//i.test(out) && out.includes("/")) {
-      out = out.replace(/^(https?:\/\/[^/]+)\/([A-Za-z0-9_-]{4,32})(\/[^?#]*)?([?#].*)?$/, (m, origin, seg, tail, rest) => {
-        // No redactar rutas internas conocidas (landing, superadmin).
-        const base = seg.toLowerCase();
-        if (
-          ["setup", "admin", "superadmin", "superadmin-login", "login", "landing", "privacy", "terms"].includes(
-            base,
-          )
-        ) {
-          return m;
-        }
-        return `${origin}/[redacted]${tail || ""}${rest || ""}`;
-      });
+      out = out.replace(
+        /^(https?:\/\/[^/]+)\/([A-Za-z0-9_-]{4,32})(\/[^?#]*)?([?#].*)?$/,
+        (m, origin, seg, tail, rest) => {
+          // No redactar rutas internas conocidas (landing, superadmin).
+          const base = seg.toLowerCase();
+          if (
+            ["setup", "admin", "superadmin", "superadmin-login", "login", "landing", "privacy", "terms"].includes(base)
+          ) {
+            return m;
+          }
+          return `${origin}/[redacted]${tail || ""}${rest || ""}`;
+        },
+      );
     }
   } catch {
     /* formato inválido: se deja tal cual */

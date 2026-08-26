@@ -966,7 +966,8 @@ select.setup-input {
   min-width: 0;
 }
 .admin-table-wrapper {
-  margin-top: 0.75rem;  overflow-x: auto;
+  margin-top: 0.75rem;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   max-width: 100%;
 }

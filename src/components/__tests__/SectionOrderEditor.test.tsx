@@ -237,9 +237,4 @@ describe("SectionOrderEditor", () => {
     expect(last.textContent).toContain("🔒");
     expect(last.querySelectorAll("button").length).toBe(0);
   });
-
-
-
-
-
 });

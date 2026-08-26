@@ -93,11 +93,10 @@ describe("useInviteSubcollection", () => {
     });
     expect(returnedId).toBe("new-doc-1");
     // Dos sets: documento nuevo (con createdAt server) y contador merge.
-    expect(mockBatchSet).toHaveBeenNthCalledWith(
-      1,
-      expect.objectContaining({ __doc: expect.any(Array) }),
-      { text: "hola", createdAt: "SERVER_TIMESTAMP" },
-    );
+    expect(mockBatchSet).toHaveBeenNthCalledWith(1, expect.objectContaining({ __doc: expect.any(Array) }), {
+      text: "hola",
+      createdAt: "SERVER_TIMESTAMP",
+    });
     // Segundo set: contador atómico con merge (3 argumentos).
     expect(mockBatchSet).toHaveBeenNthCalledWith(
       2,

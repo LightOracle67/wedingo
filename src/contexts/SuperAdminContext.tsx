@@ -66,8 +66,8 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
           // sin el claim de email): best-effort.
           if (firebaseUser.uid) {
             try {
-              setDoc(doc(db, "platform", "settings"), { superadminUid: firebaseUser.uid }, { merge: true }).catch((err) =>
-                safeLogError(["[app]", "[SuperAdminContext]", "persist superadminUid failed"], err),
+              setDoc(doc(db, "platform", "settings"), { superadminUid: firebaseUser.uid }, { merge: true }).catch(
+                (err) => safeLogError(["[app]", "[SuperAdminContext]", "persist superadminUid failed"], err),
               );
             } catch {}
           }

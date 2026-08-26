@@ -39,9 +39,7 @@ const InvitationDetailModal = memo(function InvitationDetailModal({ token, onClo
         getDocs(collection(db, "invitations", token, "configLog")),
       ]);
       setRsvps(rsvpSnap.docs.map((d) => ({ id: d.id, ...d.data() })));
-      setGallery(
-        galSnap.docs.map((d) => ({ id: d.id, desc: String(d.data().description || "") })),
-      );
+      setGallery(galSnap.docs.map((d) => ({ id: d.id, desc: String(d.data().description || "") })));
       setMediaBytes(galSnap.docs.reduce((acc, d) => acc + (String(d.data().data || "").length * 3) / 4, 0));
       setConfigLog(
         logSnap.docs.map((d) => {
@@ -165,23 +163,57 @@ const InvitationDetailModal = memo(function InvitationDetailModal({ token, onClo
   }
 
   return (
-    <Modal title={`${t("manage.detailTitle")} — ${token}`} closeLabel={t("common.close")} onClose={onClose} style={{ width: 680, maxWidth: "100%" }}>
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.9rem", maxHeight: "70vh", overflowY: "auto", paddingRight: "0.25rem" }}>
+    <Modal
+      title={`${t("manage.detailTitle")} — ${token}`}
+      closeLabel={t("common.close")}
+      onClose={onClose}
+      style={{ width: 680, maxWidth: "100%" }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.9rem",
+          maxHeight: "70vh",
+          overflowY: "auto",
+          paddingRight: "0.25rem",
+        }}
+      >
         {/* Confirmaciones + menús */}
         <section>
           <p className="setup-label">
             {t("manage.detailRsvps", { count: rsvps.length })}
             {Object.keys(menuCounts).length
-              ? ` · ${Object.entries(menuCounts).map(([k, v]) => `${k}: ${v}`).join(" · ")}`
+              ? ` · ${Object.entries(menuCounts)
+                  .map(([k, v]) => `${k}: ${v}`)
+                  .join(" · ")}`
               : ""}
           </p>
-          <div style={{ maxHeight: "10rem", overflowY: "auto", border: "1px solid var(--setup-border)", borderRadius: "0.5rem" }}>
+          <div
+            style={{
+              maxHeight: "10rem",
+              overflowY: "auto",
+              border: "1px solid var(--setup-border)",
+              borderRadius: "0.5rem",
+            }}
+          >
             {rsvps.map((r) => (
-              <div key={String(r.id)} style={{ padding: "0.35rem 0.6rem", fontSize: "0.8rem", borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)" }}>
+              <div
+                key={String(r.id)}
+                style={{
+                  padding: "0.35rem 0.6rem",
+                  fontSize: "0.8rem",
+                  borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)",
+                }}
+              >
                 {String(r.guestName || "")} — {String(r.attendance || "")} · {Number(r.companionCount) || 0} acc.
               </div>
             ))}
-            {rsvps.length === 0 ? <p className="setup-help" style={{ padding: "0.5rem" }}>{t("manage.detailNoRsvps")}</p> : null}
+            {rsvps.length === 0 ? (
+              <p className="setup-help" style={{ padding: "0.5rem" }}>
+                {t("manage.detailNoRsvps")}
+              </p>
+            ) : null}
           </div>
         </section>
 
@@ -198,35 +230,78 @@ const InvitationDetailModal = memo(function InvitationDetailModal({ token, onClo
         {/* Auditoría de cambios */}
         <section>
           <p className="setup-label">{t("manage.detailConfigLog")}</p>
-          <div style={{ maxHeight: "8rem", overflowY: "auto", border: "1px solid var(--setup-border)", borderRadius: "0.5rem" }}>
+          <div
+            style={{
+              maxHeight: "8rem",
+              overflowY: "auto",
+              border: "1px solid var(--setup-border)",
+              borderRadius: "0.5rem",
+            }}
+          >
             {configLog.map((c, i) => (
-              <div key={i} style={{ padding: "0.3rem 0.6rem", fontSize: "0.72rem", borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)" }}>
+              <div
+                key={i}
+                style={{
+                  padding: "0.3rem 0.6rem",
+                  fontSize: "0.72rem",
+                  borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)",
+                }}
+              >
                 {c.fields}
-                {c.ts ? <span style={{ color: "var(--setup-muted)" }}> · {new Date(c.ts).toLocaleString()}</span> : null}
+                {c.ts ? (
+                  <span style={{ color: "var(--setup-muted)" }}> · {new Date(c.ts).toLocaleString()}</span>
+                ) : null}
               </div>
             ))}
-            {configLog.length === 0 ? <p className="setup-help" style={{ padding: "0.5rem" }}>{t("manage.detailNoLog")}</p> : null}
+            {configLog.length === 0 ? (
+              <p className="setup-help" style={{ padding: "0.5rem" }}>
+                {t("manage.detailNoLog")}
+              </p>
+            ) : null}
           </div>
         </section>
 
         {/* Muro social con moderación */}
         <section>
           <p className="setup-label">{t("manage.detailSocial")}</p>
-          <div style={{ maxHeight: "10rem", overflowY: "auto", border: "1px solid var(--setup-border)", borderRadius: "0.5rem" }}>
+          <div
+            style={{
+              maxHeight: "10rem",
+              overflowY: "auto",
+              border: "1px solid var(--setup-border)",
+              borderRadius: "0.5rem",
+            }}
+          >
             {SOCIAL_SUBS.map((sub) =>
               (social[sub] || []).map((s) => (
-                <div key={sub + s.id} className="admin-flex admin-flex--between" style={{ padding: "0.35rem 0.6rem", fontSize: "0.78rem", borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)" }}>
+                <div
+                  key={sub + s.id}
+                  className="admin-flex admin-flex--between"
+                  style={{
+                    padding: "0.35rem 0.6rem",
+                    fontSize: "0.78rem",
+                    borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)",
+                  }}
+                >
                   <span style={{ minWidth: 0, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                     <strong>{sub}</strong> · {s.preview}
                   </span>
-                  <button type="button" className="setup-button setup-button--compact" style={{ fontSize: "0.7rem", color: "#f6c7c7", background: "transparent" }} onClick={() => deleteSocialDoc(sub, s.id)} aria-label={t("manage.detailDeleteSocial", { sub })}>
+                  <button
+                    type="button"
+                    className="setup-button setup-button--compact"
+                    style={{ fontSize: "0.7rem", color: "#f6c7c7", background: "transparent" }}
+                    onClick={() => deleteSocialDoc(sub, s.id)}
+                    aria-label={t("manage.detailDeleteSocial", { sub })}
+                  >
                     ✕
                   </button>
                 </div>
               )),
             )}
             {Object.values(social).every((a) => a.length === 0) ? (
-              <p className="setup-help" style={{ padding: "0.5rem" }}>{t("manage.detailNoSocial")}</p>
+              <p className="setup-help" style={{ padding: "0.5rem" }}>
+                {t("manage.detailNoSocial")}
+              </p>
             ) : null}
           </div>
         </section>
@@ -236,12 +311,28 @@ const InvitationDetailModal = memo(function InvitationDetailModal({ token, onClo
           <button className="setup-button setup-button--compact" type="button" onClick={exportSocial} disabled={busy}>
             {t("manage.detailExportSocial")}
           </button>
-          <button className="setup-button setup-button--danger setup-button--compact" type="button" onClick={resetRsvps} disabled={busy}>
+          <button
+            className="setup-button setup-button--danger setup-button--compact"
+            type="button"
+            onClick={resetRsvps}
+            disabled={busy}
+          >
             {t("manage.detailReset")}
           </button>
-          <label className="setup-button setup-button--ghost setup-button--compact" style={{ cursor: "pointer", margin: 0 }}>
+          <label
+            className="setup-button setup-button--ghost setup-button--compact"
+            style={{ cursor: "pointer", margin: 0 }}
+          >
             {t("manage.detailImportCsv")}
-            <input type="file" accept=".csv" style={{ display: "none" }} onChange={(e) => { void importCsv(e.target.files?.[0]); e.target.value = ""; }} />
+            <input
+              type="file"
+              accept=".csv"
+              style={{ display: "none" }}
+              onChange={(e) => {
+                void importCsv(e.target.files?.[0]);
+                e.target.value = "";
+              }}
+            />
           </label>
         </section>
       </div>

@@ -25,9 +25,11 @@ const GoogleTranslateToggle = memo(function GoogleTranslateToggle() {
     setLoading(true);
     // Callback global requerido por el widget antes de inyectar el elemento.
     window.googleTranslateElementInit = () => {
-      const gt = (window as unknown as {
-        google?: { translate?: { TranslateElement: new (a: object, b: string) => unknown } };
-      }).google?.translate?.TranslateElement;
+      const gt = (
+        window as unknown as {
+          google?: { translate?: { TranslateElement: new (a: object, b: string) => unknown } };
+        }
+      ).google?.translate?.TranslateElement;
       if (gt) {
         // Instancia el widget en el contenedor reservado.
         void new gt({ pageLanguage: "es" }, "google_translate_element");
@@ -50,7 +52,13 @@ const GoogleTranslateToggle = memo(function GoogleTranslateToggle() {
   return (
     <div className="lang-wrapper">
       {!active ? (
-        <button type="button" className="lang-trigger" onClick={enable} disabled={loading} aria-label={t("common.translate")}>
+        <button
+          type="button"
+          className="lang-trigger"
+          onClick={enable}
+          disabled={loading}
+          aria-label={t("common.translate")}
+        >
           🌐
         </button>
       ) : (

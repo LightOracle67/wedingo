@@ -159,11 +159,7 @@ export default function PrintPage() {
       <div className="print-page">
         <div
           className="print-card"
-          style={
-            config.backgroundImage
-              ? { backgroundImage: `url("${config.backgroundImage}")` }
-              : undefined
-          }
+          style={config.backgroundImage ? { backgroundImage: `url("${config.backgroundImage}")` } : undefined}
         >
           {config.backgroundImage ? (
             <img

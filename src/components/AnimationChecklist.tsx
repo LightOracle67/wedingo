@@ -132,7 +132,11 @@ export default function AnimationChecklist({
                       <p className="anim-checklist__hint">{t(`animations.items.${anim.id}.hint`)}</p>
                       {isLocked && !isChecked ? (
                         <p className="anim-checklist__locked-note">
-                          {allOff ? t("animations.allOffActive") : groupOff && !locked.has(anim.id) ? t("animations.groupOffActive") : t("animations.lockedByAdmin")}
+                          {allOff
+                            ? t("animations.allOffActive")
+                            : groupOff && !locked.has(anim.id)
+                              ? t("animations.groupOffActive")
+                              : t("animations.lockedByAdmin")}
                         </p>
                       ) : null}
                     </div>

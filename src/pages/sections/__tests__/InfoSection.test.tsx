@@ -110,13 +110,7 @@ describe("InfoSection", () => {
 
   it("shows the predefined dress code as-is when not 'custom'", () => {
     render(
-      <InfoSection
-        className="test"
-        style={{}}
-        weddingDressCode="formal"
-        weddingDressCodeCustom=""
-        kidsPolicy=""
-      />,
+      <InfoSection className="test" style={{}} weddingDressCode="formal" weddingDressCodeCustom="" kidsPolicy="" />,
     );
     // La clave se traduce: la etiqueta pública de "formal".
     expect(screen.getByText("info.dressCodeOptions.formal")).toBeDefined();

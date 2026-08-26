@@ -123,8 +123,6 @@ const PlatformTab = memo(function PlatformTab() {
         />
       </div>
 
-
-
       <div className="setup-actions">
         <button className="setup-button" type="button" onClick={handleSave} disabled={saving}>
           {saving ? t("common.loading") : t("manage.saveConfig")}

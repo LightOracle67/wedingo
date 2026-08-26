@@ -71,7 +71,8 @@ const InvitationsTab = memo(function InvitationsTab() {
   // Borrado en lote de las invitaciones seleccionadas (una sola confirmación).
   const handleBulkDelete = useCallback(async () => {
     const ids = [...selection.selected];
-    if (ids.length === 0 || !(await confirm({ message: t("superadmin.deleteConfirmBulk", { count: ids.length }) }))) return;
+    if (ids.length === 0 || !(await confirm({ message: t("superadmin.deleteConfirmBulk", { count: ids.length }) })))
+      return;
     setError("");
     try {
       for (const id of ids) await deleteOne(id);
@@ -101,7 +102,10 @@ const InvitationsTab = memo(function InvitationsTab() {
     }
   }, [t]);
 
-  const filtered = searchInvitations(invitations as unknown as Record<string, unknown>[], search) as unknown as InvitationRow[];
+  const filtered = searchInvitations(
+    invitations as unknown as Record<string, unknown>[],
+    search,
+  ) as unknown as InvitationRow[];
   // F3-5: filtro por etiquetas del superadmin.
   const filteredByTag = tagFilter
     ? filtered.filter((inv) => (inv.tags || "").toLowerCase().includes(tagFilter.toLowerCase()))
@@ -240,28 +244,26 @@ const InvitationsTab = memo(function InvitationsTab() {
                   </tr>
                 </thead>
                 <tbody>
-                  {pagedRows.map(
-                    (inv: InvitationRow) => (
-                      <tr key={inv.id}>
-                        <td>
-                          <input
-                            type="checkbox"
-                            aria-label={t("superadmin.selectInvitation", { id: inv.id })}
-                            checked={selection.isSelected(inv.id)}
-                            onChange={() => selection.toggle(inv.id)}
-                          />
-                        </td>
-                        <td style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>{inv.id}</td>
-                        <td>{inv.theme || "—"}</td>
-                        <td className="admin-table__date">
-                          {inv.weddingDay && inv.weddingMonth && inv.weddingYear
-                            ? `${inv.weddingDay} ${inv.weddingMonth} ${inv.weddingYear}`
-                            : "—"}
-                        </td>
-                        <td>{inv.adminUsername ? `@${inv.adminUsername}` : "—"}</td>
-                      </tr>
-                    ),
-                  )}
+                  {pagedRows.map((inv: InvitationRow) => (
+                    <tr key={inv.id}>
+                      <td>
+                        <input
+                          type="checkbox"
+                          aria-label={t("superadmin.selectInvitation", { id: inv.id })}
+                          checked={selection.isSelected(inv.id)}
+                          onChange={() => selection.toggle(inv.id)}
+                        />
+                      </td>
+                      <td style={{ fontSize: "0.7rem", fontFamily: "monospace" }}>{inv.id}</td>
+                      <td>{inv.theme || "—"}</td>
+                      <td className="admin-table__date">
+                        {inv.weddingDay && inv.weddingMonth && inv.weddingYear
+                          ? `${inv.weddingDay} ${inv.weddingMonth} ${inv.weddingYear}`
+                          : "—"}
+                      </td>
+                      <td>{inv.adminUsername ? `@${inv.adminUsername}` : "—"}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>

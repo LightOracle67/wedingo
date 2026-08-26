@@ -18,10 +18,12 @@ const mockLoadAudio = vi.hoisted(() => vi.fn(() => Promise.resolve({ url: "" }))
 const mockLoadDecryptedField = vi.hoisted(() => vi.fn(() => Promise.resolve("")));
 const mockSetSaveError = vi.hoisted(() => vi.fn());
 const mockSetSaveMessage = vi.hoisted(() => vi.fn());
-const mockSetDoc = vi.hoisted(() => vi.fn((_path: unknown, _payload: Record<string, unknown>, _options?: unknown) => {
+const mockSetDoc = vi.hoisted(() =>
+  vi.fn((_path: unknown, _payload: Record<string, unknown>, _options?: unknown) => {
     console.log("mockSetDoc called with:", { _path, _payload });
     return Promise.resolve();
-  }));
+  }),
+);
 const mockAddDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 
 vi.mock("react-i18next", () => ({ useTranslation: () => ({ t: (key: string) => key }) }));

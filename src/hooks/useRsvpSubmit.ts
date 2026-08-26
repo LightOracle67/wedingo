@@ -45,7 +45,8 @@ export function useRsvpSubmit({ token: _token, onSubmit, validate }: UseRsvpSubm
         const message = err instanceof Error ? err.message : t("rsvp.saveError");
         safeLogError(["[app]", "[useRsvpSubmit]", "submit error"], err);
         setSubmitError(message);
-        return false;      } finally {
+        return false;
+      } finally {
         lockRef.current = false;
         setSubmitting(false);
       }

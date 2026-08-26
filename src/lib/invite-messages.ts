@@ -52,12 +52,6 @@ export const EN_MESSAGES = [
   "Because love multiplies when shared, we want you to be with us on the day we unite our souls. It will be a celebration full of emotion, music, and moments that will remain etched in our memory forever.",
 ];
 
-
-
-
-
-
-
 export function randomMessage(lang = "es") {
   // El idioma llega con región (p. ej. "pt-BR"): se usa la lengua base.
   const base = (lang || "es").split("-")[0] as string;

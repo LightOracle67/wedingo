@@ -51,7 +51,18 @@ export default function SuperAdminPanel() {
   const { isSuperAdmin, isLoading } = useSuperAdmin();
   // La pestaña activa se refleja en la URL (?tab=datos) en AMBOS sentidos:
   // el botón atrás del navegador también cambia de pestaña (useTabs).
-  const TAB_KEYS = ["dashboard", "metricas", "invitaciones", "tokens", "datos", "gestion", "soporte", "plataforma", "ajustes", "cumplimiento"] as const;
+  const TAB_KEYS = [
+    "dashboard",
+    "metricas",
+    "invitaciones",
+    "tokens",
+    "datos",
+    "gestion",
+    "soporte",
+    "plataforma",
+    "ajustes",
+    "cumplimiento",
+  ] as const;
   const { activeTab, select: handleSetTab, tabPanelRef } = useTabs(TAB_KEYS, "dashboard");
 
   // Patrón ARIA de tabs operativo por teclado: flechas/Home/End con roving

@@ -45,6 +45,4 @@ describe("PlatformTab", () => {
     expect(arg.bannerText).toBe("Mantenimiento programado");
     expect(arg.blockedUrls).toContain("youtube.com");
   });
-
-
 });

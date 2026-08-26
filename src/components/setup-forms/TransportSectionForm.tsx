@@ -1,4 +1,4 @@
-import { memo, useCallback  } from "react";
+import { memo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import { useConfigActions, useFormField } from "../../contexts";
 import { useJsonArrayField } from "../../hooks/useJsonArrayField";
@@ -134,7 +134,7 @@ const TransportSectionForm = memo(function TransportSectionForm({ prefix = "" }:
                   <select
                     id={id(`departureType${i}`)}
                     className="setup-input"
-                    value={enabled === "both" ? departures[i]?.type ?? "bus" : enabled}
+                    value={enabled === "both" ? (departures[i]?.type ?? "bus") : enabled}
                     onChange={handleDepartureField(i, "type")}
                     disabled={enabled !== "both"}
                   >
@@ -164,10 +164,8 @@ const TransportSectionForm = memo(function TransportSectionForm({ prefix = "" }:
                     id={id(`departureUrl${i}`)}
                     value={departures[i]?.url ?? ""}
                     onChange={(url) =>
-                      updateDeparture(
-                        i,
-                        { ...(departures[i] ?? { type: "bus", time: "", url: "" }), url },
-                        (json) => updateFormField("transportDepartures", json),
+                      updateDeparture(i, { ...(departures[i] ?? { type: "bus", time: "", url: "" }), url }, (json) =>
+                        updateFormField("transportDepartures", json),
                       )
                     }
                     placeholder={t("setup.transportUrlPlaceholder")}
@@ -185,4 +183,3 @@ const TransportSectionForm = memo(function TransportSectionForm({ prefix = "" }:
 });
 
 export default TransportSectionForm;
-

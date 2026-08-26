@@ -34,7 +34,12 @@ export interface TableSection {
  * Círculo: sillas en círculo (radio ~46% de la caja). Rectángulo/cuadrado:
  * repartidas por el perímetro. Igual que el editor para que el plano coincida.
  */
-export function chairPositions(shape: TableShape, _w: number, _h: number, seats: number): Array<{ x: number; y: number }> {
+export function chairPositions(
+  shape: TableShape,
+  _w: number,
+  _h: number,
+  seats: number,
+): Array<{ x: number; y: number }> {
   const n = Math.min(Math.max(seats || 0, 0), 24);
   if (n === 0) return [];
   if (shape === "circle" || shape === "oval") {

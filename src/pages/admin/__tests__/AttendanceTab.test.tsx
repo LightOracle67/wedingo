@@ -869,7 +869,12 @@ describe("AttendanceTab", () => {
 
   it("opens the add-manual modal and saves a new guest via writeBatch", async () => {
     fsMocks.getDoc.mockResolvedValueOnce({ exists: () => true, data: () => ({ count: 3 }) });
-    const withData = { ...baseConfig, rsvpEntries: [{ id: "x", guestName: "A", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" }] as never };
+    const withData = {
+      ...baseConfig,
+      rsvpEntries: [
+        { id: "x", guestName: "A", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
+      ] as never,
+    };
     render(<AttendanceTab {...withData} />);
     fireEvent.click(screen.getByText("attendance.addManual"));
     // El modal aparece.
@@ -881,11 +886,16 @@ describe("AttendanceTab", () => {
     // commit es posterior al await del getDoc del contador: se espera también.
     await vi.waitFor(() => expect(fsMocks.commit).toHaveBeenCalled());
     expect(mockAddToast).toHaveBeenCalledWith("success", "attendance.manualAdded");
-    expect((withData.onDataChanged as ReturnType<typeof vi.fn>)).toHaveBeenCalled();
+    expect(withData.onDataChanged as ReturnType<typeof vi.fn>).toHaveBeenCalled();
   });
 
   it("requires a name before saving manually", () => {
-    const withData = { ...baseConfig, rsvpEntries: [{ id: "x", guestName: "A", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" }] as never };
+    const withData = {
+      ...baseConfig,
+      rsvpEntries: [
+        { id: "x", guestName: "A", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
+      ] as never,
+    };
     render(<AttendanceTab {...withData} />);
     fireEvent.click(screen.getByText("attendance.addManual"));
     // Sin nombre, el botón guardar está deshabilitado y no se envía nada.
@@ -897,13 +907,7 @@ describe("AttendanceTab", () => {
     const entries = [
       { id: "1", guestName: "Ana", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
     ];
-    render(
-      <AttendanceTab
-        {...baseConfig}
-        filteredEntries={entries as never}
-        rsvpEntries={entries as never}
-      />,
-    );
+    render(<AttendanceTab {...baseConfig} filteredEntries={entries as never} rsvpEntries={entries as never} />);
     // Botón de edición en la fila.
     const editBtns = screen.getAllByText("attendance.editManual");
     fireEvent.click(editBtns[0]!);
@@ -918,13 +922,7 @@ describe("AttendanceTab", () => {
       { id: "1", guestName: "Ana", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
       { id: "2", guestName: "Luis", attendance: "no", companions: 0, dietaryInfo: "", submittedAt: "2024-01-02" },
     ];
-    render(
-      <AttendanceTab
-        {...baseConfig}
-        filteredEntries={entries as never}
-        rsvpEntries={entries as never}
-      />,
-    );
+    render(<AttendanceTab {...baseConfig} filteredEntries={entries as never} rsvpEntries={entries as never} />);
     const counter = document.querySelector("[data-testid='attendance-results-count']");
     expect(counter).not.toBeNull();
     expect(counter?.textContent).toContain("2");
@@ -1027,7 +1025,6 @@ describe("AttendanceTab", () => {
     expect(screen.getAllByText("Beto Ruiz Soler").length).toBeGreaterThan(0);
   });
 });
-  
 
 describe("AttendanceTab — matriz de ordenación", () => {
   // Tres entradas diseñadas para que cada columna tenga un orden determinista:
@@ -1036,22 +1033,49 @@ describe("AttendanceTab — matriz de ordenación", () => {
   // companion sin consentimientos (para que los booleanos tengan único true).
   const entries = [
     {
-      id: "1", guestName: "Ana", attendance: "yes", companions: 1, rsvpType: "main",
+      id: "1",
+      guestName: "Ana",
+      attendance: "yes",
+      companions: 1,
+      rsvpType: "main",
       attendees: [{ name: "C1", menu: "pollo", allergies: ["Gluten"] }],
-      dietaryInfo: "", mealChoice: "",
-      transportMode: "bus", transportChoice: "Bus 5", transportTime: "18:00",
-      phone: "600", email: "", submittedAt: "2024-02-01",
+      dietaryInfo: "",
+      mealChoice: "",
+      transportMode: "bus",
+      transportChoice: "Bus 5",
+      transportTime: "18:00",
+      phone: "600",
+      email: "",
+      submittedAt: "2024-02-01",
     },
     {
-      id: "2", guestName: "Beto", attendance: "yes", companions: 0, rsvpType: "main",
-      attendees: [], dietaryInfo: "Lactosa", mealChoice: "pescado",
-      transportMode: "own", transportChoice: "", transportTime: "",
-      phone: "", email: "b@x.es", submittedAt: "2024-01-01",
-      isChild: true, healthConsent: true,
+      id: "2",
+      guestName: "Beto",
+      attendance: "yes",
+      companions: 0,
+      rsvpType: "main",
+      attendees: [],
+      dietaryInfo: "Lactosa",
+      mealChoice: "pescado",
+      transportMode: "own",
+      transportChoice: "",
+      transportTime: "",
+      phone: "",
+      email: "b@x.es",
+      submittedAt: "2024-01-01",
+      isChild: true,
+      healthConsent: true,
     },
     {
-      id: "3", guestName: "Carla", attendance: "yes", companions: 0, rsvpType: "companion",
-      mainGuestName: "Zoe", attendees: [], dietaryInfo: "", mealChoice: "",
+      id: "3",
+      guestName: "Carla",
+      attendance: "yes",
+      companions: 0,
+      rsvpType: "companion",
+      mainGuestName: "Zoe",
+      attendees: [],
+      dietaryInfo: "",
+      mealChoice: "",
       submittedAt: "2024-03-01",
     },
   ];

@@ -234,7 +234,8 @@ describe("DashboardTab", () => {
   it("does not clean when confirm is cancelled", async () => {
     const { getDocs, writeBatch } = await import("firebase/firestore");
     const getDocsMock = vi.mocked(getDocs);
-    const now = new Date();    const threeYearsAgo = new Date(now.getFullYear() - 3, 0, 1);
+    const now = new Date();
+    const threeYearsAgo = new Date(now.getFullYear() - 3, 0, 1);
     const year = threeYearsAgo.getFullYear();
     getDocsMock.mockResolvedValue({
       docs: [{ id: "inv1", data: () => ({ weddingYear: String(year), weddingMonth: "enero", weddingDay: "1" }) }],
@@ -299,7 +300,12 @@ describe("DashboardTab", () => {
     const now = new Date();
     const threeYearsAgo = new Date(now.getFullYear() - 3, 0, 1);
     getDocsMock.mockResolvedValue({
-      docs: [{ id: "inv1", data: () => ({ weddingYear: String(threeYearsAgo.getFullYear()), weddingMonth: "enero", weddingDay: "1" }) }],
+      docs: [
+        {
+          id: "inv1",
+          data: () => ({ weddingYear: String(threeYearsAgo.getFullYear()), weddingMonth: "enero", weddingDay: "1" }),
+        },
+      ],
     } as never);
     const { ref, listAll } = await import("firebase/storage");
     const refMock = vi.mocked(ref);
@@ -325,19 +331,40 @@ describe("DashboardTab", () => {
     const seedAll = () => {
       vi.mocked(getDocs).mockImplementation(async (arg?: unknown) => {
         if (arg === "rsvp-responses-group") {
-          return { docs: [
-            { id: "r1", data: () => ({ inviteToken: "tok1", submittedAt: { seconds: Math.floor(Date.now() / 1000) - 86400 } }) },
-            { id: "r2", data: () => ({ inviteToken: "tok1", submittedAt: { seconds: Math.floor(Date.now() / 1000) } }) },
-          ] } as never;
+          return {
+            docs: [
+              {
+                id: "r1",
+                data: () => ({ inviteToken: "tok1", submittedAt: { seconds: Math.floor(Date.now() / 1000) - 86400 } }),
+              },
+              {
+                id: "r2",
+                data: () => ({ inviteToken: "tok1", submittedAt: { seconds: Math.floor(Date.now() / 1000) } }),
+              },
+            ],
+          } as never;
         }
         if (arg === "invitations-collection-ref") {
-          return { docs: [
-            { id: "tok1", data: () => ({ _visits: 3 }) },
-            { id: "tok2", data: () => ({ _visits: 9 }) },
-          ] } as never;
+          return {
+            docs: [
+              { id: "tok1", data: () => ({ _visits: 3 }) },
+              { id: "tok2", data: () => ({ _visits: 9 }) },
+            ],
+          } as never;
         }
         if (arg === "setup-tokens-col") return { docs: [] } as never;
-        return { docs: [{ id: "a1", data: () => ({ action: "login", detail: "sesión iniciada", createdAt: { seconds: Math.floor(Date.now() / 1000) - 60 } }) }] } as never;
+        return {
+          docs: [
+            {
+              id: "a1",
+              data: () => ({
+                action: "login",
+                detail: "sesión iniciada",
+                createdAt: { seconds: Math.floor(Date.now() / 1000) - 60 },
+              }),
+            },
+          ],
+        } as never;
       });
     };
 
@@ -358,10 +385,22 @@ describe("DashboardTab", () => {
       const mes = Object.entries(MONTH_VALUE_TO_NUMBER).find(([, v]) => v === tomorrow.getMonth() + 1)?.[0] ?? "enero";
       vi.mocked(getDocs).mockImplementation(async (arg?: unknown) => {
         if (arg === "invitations-collection-ref") {
-          return { docs: [
-            { id: "soon1", data: () => ({ weddingDay: String(tomorrow.getDate()), weddingMonth: mes, weddingYear: String(tomorrow.getFullYear()) }) },
-            { id: "oldman", data: () => ({ manualExpiry: new Date(now.getTime() - 86400000).toISOString().slice(0, 10) }) },
-          ] } as never;
+          return {
+            docs: [
+              {
+                id: "soon1",
+                data: () => ({
+                  weddingDay: String(tomorrow.getDate()),
+                  weddingMonth: mes,
+                  weddingYear: String(tomorrow.getFullYear()),
+                }),
+              },
+              {
+                id: "oldman",
+                data: () => ({ manualExpiry: new Date(now.getTime() - 86400000).toISOString().slice(0, 10) }),
+              },
+            ],
+          } as never;
         }
         if (arg === "rsvp-responses-group") return { docs: [] } as never;
         if (arg === "setup-tokens-col") return { docs: [] } as never;
@@ -378,11 +417,16 @@ describe("DashboardTab", () => {
       vi.spyOn(window, "confirm").mockReturnValue(true);
       vi.mocked(getDocs).mockImplementation(async (arg?: unknown) => {
         if (arg === "invitations-collection-ref") {
-          return { docs: [
-            // Caducada manualmente: hace visible el botón de limpieza de storage.
-            { id: "oldman", data: () => ({ manualExpiry: new Date(Date.now() - 86400000).toISOString().slice(0, 10) }) },
-            { id: "tok1", data: () => ({}) },
-          ] } as never;
+          return {
+            docs: [
+              // Caducada manualmente: hace visible el botón de limpieza de storage.
+              {
+                id: "oldman",
+                data: () => ({ manualExpiry: new Date(Date.now() - 86400000).toISOString().slice(0, 10) }),
+              },
+              { id: "tok1", data: () => ({}) },
+            ],
+          } as never;
         }
         return { docs: [] } as never;
       });

@@ -64,10 +64,7 @@ const ConfirmContext = createContext<ConfirmContextValue | null>(null);
 export function useConfirm(): ConfirmContextValue {
   // Fallbacks estables (rules-of-hooks: se llaman SIEMPRE, antes del early
   // return del provider).
-  const confirmFallback = useCallback(
-    async (options: ConfirmOptions) => window.confirm(options.message),
-    [],
-  );
+  const confirmFallback = useCallback(async (options: ConfirmOptions) => window.confirm(options.message), []);
   const promptFallback = useCallback(
     async (options: PromptOptions) => window.prompt(options.message, options.initial ?? ""),
     [],
@@ -108,11 +105,10 @@ export function ConfirmProvider({ children }: { children: ReactNode }) {
   const promptOpts = state && isPrompt ? (state.options as PromptOptions) : null;
 
   // Una confirmación con requireText exige escribir ese texto exacto.
-  const requireOk =
-    confirmOpts?.requireText != null && inputValue.trim() === confirmOpts.requireText.trim();
+  const requireOk = confirmOpts?.requireText != null && inputValue.trim() === confirmOpts.requireText.trim();
   const canConfirm = confirmOpts ? !confirmOpts.requireText || requireOk : inputValue.trim().length > 0;
 
-  const title = isPrompt && promptOpts ? promptOpts.title : confirmOpts?.title ?? t("common.confirm");
+  const title = isPrompt && promptOpts ? promptOpts.title : (confirmOpts?.title ?? t("common.confirm"));
 
   return (
     <ConfirmContext.Provider value={{ confirm, prompt }}>
@@ -122,7 +118,7 @@ export function ConfirmProvider({ children }: { children: ReactNode }) {
           <div className="confirm-modal">
             <p className="confirm-modal__title">{title}</p>
             <p className="confirm-modal__message">
-              {isPrompt && promptOpts ? promptOpts.message : confirmOpts?.message ?? ""}
+              {isPrompt && promptOpts ? promptOpts.message : (confirmOpts?.message ?? "")}
             </p>
 
             {isPrompt && promptOpts ? (
@@ -144,7 +140,9 @@ export function ConfirmProvider({ children }: { children: ReactNode }) {
 
             {confirmOpts?.requireText != null ? (
               <>
-                <p className="confirm-modal__require-text">{t("common.requireText", { text: confirmOpts.requireText })}</p>
+                <p className="confirm-modal__require-text">
+                  {t("common.requireText", { text: confirmOpts.requireText })}
+                </p>
                 {/* Input de verificación del texto exigido: sin él `canConfirm`
                     sería falso para siempre (no hay dónde escribir) y acciones
                     destructivas con requireText quedarían bloqueadas — bug real
@@ -164,7 +162,7 @@ export function ConfirmProvider({ children }: { children: ReactNode }) {
 
             <div className="confirm-modal__actions">
               <button type="button" className="setup-button setup-button--ghost" onClick={() => close(false)}>
-                {isPrompt ? t("common.cancel") : confirmOpts?.cancelLabel ?? t("common.cancel")}
+                {isPrompt ? t("common.cancel") : (confirmOpts?.cancelLabel ?? t("common.cancel"))}
               </button>
               <button
                 type="button"
@@ -172,7 +170,7 @@ export function ConfirmProvider({ children }: { children: ReactNode }) {
                 onClick={() => close(isPrompt ? inputValue : true)}
                 disabled={!canConfirm}
               >
-                {isPrompt ? t("common.confirm") : confirmOpts?.confirmLabel ?? t("common.confirm")}
+                {isPrompt ? t("common.confirm") : (confirmOpts?.confirmLabel ?? t("common.confirm"))}
               </button>
             </div>
           </div>

@@ -44,10 +44,7 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
   const couplePhotoUrl = useConfigImage(inviteToken, couplePhoto);
   const customSealUrl = useConfigImage(inviteToken, customSeal);
   const backgroundImageUrl = useConfigImage(inviteToken, backgroundImage);
-  const cornerDecorationUrl = useConfigImage(
-    inviteToken,
-    cornerDecoration as string,
-  );
+  const cornerDecorationUrl = useConfigImage(inviteToken, cornerDecoration as string);
 
   // Campo de imagen en subida: deshabilita su label y muestra "Subiendo..."
   // (antes las subidas de sello/fondo/esquinas no tenían estado de carga).
@@ -379,9 +376,20 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
         { field: "colorCopy" as const, label: t("setup.colorCopyLabel") },
         { field: "colorBackground" as const, label: t("setup.colorBackgroundLabel") },
       ].map(({ field, label }) => {
-        const value = field === "colorAccent" ? colorAccent : field === "colorTitle" ? colorTitle : field === "colorCopy" ? colorCopy : colorBackground;
+        const value =
+          field === "colorAccent"
+            ? colorAccent
+            : field === "colorTitle"
+              ? colorTitle
+              : field === "colorCopy"
+                ? colorCopy
+                : colorBackground;
         return (
-          <div key={field} className="setup-color-row" style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.4rem" }}>
+          <div
+            key={field}
+            className="setup-color-row"
+            style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.4rem" }}
+          >
             <input
               type="color"
               id={id(field)}
@@ -389,7 +397,14 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
               value={/^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(value) ? value : "#000000"}
               onChange={(e) => updateFormField(field, e.target.value)}
               aria-label={label}
-              style={{ width: "2.4rem", height: "2.4rem", padding: 0, border: "1px solid var(--setup-border)", background: "none", cursor: "pointer" }}
+              style={{
+                width: "2.4rem",
+                height: "2.4rem",
+                padding: 0,
+                border: "1px solid var(--setup-border)",
+                background: "none",
+                cursor: "pointer",
+              }}
             />
             <label className="setup-label" htmlFor={id(field)} style={{ margin: 0, flex: 1 }}>
               {label}
@@ -452,7 +467,9 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
           uploading={uploadingId === "customSeal"}
           uploadingLabel={t("setup.uploading")}
           removeLabel={t("setup.remove")}
-          onUpload={(f) => void handleConfigImageUpload("customSeal", f, { maxBytes: 1024 * 1024, validateType: false })}
+          onUpload={(f) =>
+            void handleConfigImageUpload("customSeal", f, { maxBytes: 1024 * 1024, validateType: false })
+          }
           onRemove={() => void removeConfigImage("customSeal")}
         />
       </SetupToggleField>
@@ -538,4 +555,3 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
 });
 
 export default CoverSectionForm;
-

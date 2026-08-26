@@ -24,7 +24,7 @@ function setupScene(order: string[], initial: Record<string, number> = {}) {
     el.appendChild(wrap);
     rects[key] = { top: initial[key] ?? order.indexOf(key) * VH, height: VH };
     el.getBoundingClientRect = () =>
-      ({ top: rects[key]!.top, height: rects[key]!.height, bottom: rects[key]!.top + rects[key]!.height } as DOMRect);
+      ({ top: rects[key]!.top, height: rects[key]!.height, bottom: rects[key]!.top + rects[key]!.height }) as DOMRect;
     scene.appendChild(el);
     els[key] = el;
   }
@@ -176,7 +176,7 @@ describe("useStoryNavigation", () => {
     rects["gallery"]! = { top: VH, height: VH };
     const galleryRect = rects["gallery"]!;
     g.getBoundingClientRect = () =>
-      ({ top: galleryRect.top, height: galleryRect.height, bottom: galleryRect.top + galleryRect.height } as DOMRect);
+      ({ top: galleryRect.top, height: galleryRect.height, bottom: galleryRect.top + galleryRect.height }) as DOMRect;
     scene.appendChild(g);
     els["gallery"]! = g;
     // Espera a que el MutationObserver la cachee, luego un scroll la evalúa.

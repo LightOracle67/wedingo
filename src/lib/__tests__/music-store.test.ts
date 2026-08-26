@@ -58,7 +58,9 @@ describe("music-store", () => {
         mockImplementationOnce: (fn: () => Promise<string | null>) => void;
       }
     ).mockImplementationOnce(mockEncrypt);
-    await expect(uploadAudio("token", new File([], "test.mp3", { type: "audio/mpeg" }))).rejects.toThrow("Encryption failed");
+    await expect(uploadAudio("token", new File([], "test.mp3", { type: "audio/mpeg" }))).rejects.toThrow(
+      "Encryption failed",
+    );
   });
 
   it("addAudio chunks and writes to firestore", async () => {

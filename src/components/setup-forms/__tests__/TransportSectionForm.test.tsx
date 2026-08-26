@@ -7,10 +7,13 @@ vi.mock("react-i18next", () => ({
 }));
 
 const mockUpdateFormField = vi.fn();
-const mockFormData = vi.hoisted(() => ({
-  transportEnabled: "both",
-  transportDepartures: "",
-}) as Record<string, string | undefined>);
+const mockFormData = vi.hoisted(
+  () =>
+    ({
+      transportEnabled: "both",
+      transportDepartures: "",
+    }) as Record<string, string | undefined>,
+);
 
 // Mini-tienda reactiva para el mock: `useFormField` se suscribe y notifica al
 // actualizar mockFormData, de modo que el formulario (memoizado en producción)

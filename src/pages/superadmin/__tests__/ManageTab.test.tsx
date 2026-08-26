@@ -1,12 +1,18 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
-const mockGetDocs = vi.fn<() => Promise<{ docs: Array<{ id: string; data: () => Record<string, unknown>; ref?: { id?: string } }> }>>();
+const mockGetDocs =
+  vi.fn<() => Promise<{ docs: Array<{ id: string; data: () => Record<string, unknown>; ref?: { id?: string } }> }>>();
 const mockGetDoc = vi.fn();
 const mockSetDoc = vi.fn(() => Promise.resolve());
 const mockUpdateDoc = vi.fn((..._a: unknown[]) => Promise.resolve());
 const mockDoc = vi.fn(() => "doc-ref");
-const mockWriteBatch = vi.fn(() => ({ set: vi.fn(), delete: vi.fn(), update: vi.fn(), commit: vi.fn().mockResolvedValue(undefined) }));
+const mockWriteBatch = vi.fn(() => ({
+  set: vi.fn(),
+  delete: vi.fn(),
+  update: vi.fn(),
+  commit: vi.fn().mockResolvedValue(undefined),
+}));
 const mockQuery = vi.fn(() => "query-ref");
 const mockCollection = vi.fn(() => "collection-ref");
 const mockHashSetupToken = vi.fn((t: string) => Promise.resolve(`hash-${t}`));
@@ -153,12 +159,16 @@ describe("ManageTab", () => {
 
   it("flags an invalid config JSON in the validator", async () => {
     // validateConfigForSave se mockea para que falle en este caso concreto.
-    mockValidate.mockReturnValueOnce({ sanitized: { firstName: "", secondName: "" }, hiddenSet: new Set(), errorKey: "errors.firstNameRequired" });
+    mockValidate.mockReturnValueOnce({
+      sanitized: { firstName: "", secondName: "" },
+      hiddenSet: new Set(),
+      errorKey: "errors.firstNameRequired",
+    });
     render(<ManageTab />);
     await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
     fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
     const editor = await screen.findByLabelText("manage.validatorTitle");
-    fireEvent.change(editor, { target: { value: '{}' } });
+    fireEvent.change(editor, { target: { value: "{}" } });
     fireEvent.click(screen.getByText("manage.validatorButton"));
     await vi.waitFor(() => expect(screen.getByText("errors.firstNameRequired")).toBeInTheDocument());
   });
@@ -307,7 +317,11 @@ describe("ManageTab", () => {
     await vi.waitFor(() => expect(screen.getByText("manage.icsButton")).toBeInTheDocument());
     fireEvent.click(screen.getByText("manage.icsButton"));
     await vi.waitFor(() => expect(mockDownloadText).toHaveBeenCalled());
-    expect(mockDownloadText).toHaveBeenCalledWith("AbCdEf1234.ics", expect.stringContaining("BEGIN:VCALENDAR"), "text/calendar;charset=utf-8");
+    expect(mockDownloadText).toHaveBeenCalledWith(
+      "AbCdEf1234.ics",
+      expect.stringContaining("BEGIN:VCALENDAR"),
+      "text/calendar;charset=utf-8",
+    );
   });
 
   it("avisa si no hay fecha de boda para el .ics", async () => {
@@ -322,10 +336,7 @@ describe("ManageTab", () => {
   it("copia una subcolección de otra invitación", async () => {
     const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(true);
     mockGetDocs.mockResolvedValue({
-      docs: [
-        baseInvitation,
-        { id: "OTRO123456", data: () => ({ firstName: "X", secondName: "Y" }) },
-      ],
+      docs: [baseInvitation, { id: "OTRO123456", data: () => ({ firstName: "X", secondName: "Y" }) }],
     });
     render(<ManageTab />);
     await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
@@ -364,7 +375,9 @@ describe("ManageTab — ramas límite (backup, restaurar, copiar, sesión)", () 
     await mountReady();
     mockGetDoc.mockResolvedValueOnce({ exists: () => true, data: () => ({ data: '{"firstName":"Backup"}' }) });
     fireEvent.click(screen.getByText("manage.downloadBackup"));
-    await waitFor(() => expect(mockDownloadJson).toHaveBeenCalledWith("AbCdEf1234_backup.json", { firstName: "Backup" }));
+    await waitFor(() =>
+      expect(mockDownloadJson).toHaveBeenCalledWith("AbCdEf1234_backup.json", { firstName: "Backup" }),
+    );
   });
 
   it("avisa sin descargar si no hay backup previo", async () => {

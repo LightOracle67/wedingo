@@ -534,7 +534,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
 
       // Campos de SUPERADMIN: nunca los toca el admin
       const superAdminFields = [
-        "verified", "adminNotes", "manualExpiry", "status", "tags", "rsvpCapacity", "rsvpSignatureEnabled",
+        "verified",
+        "adminNotes",
+        "manualExpiry",
+        "status",
+        "tags",
+        "rsvpCapacity",
+        "rsvpSignatureEnabled",
       ];
       for (const k of superAdminFields) {
         delete payload[k];
@@ -576,7 +582,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           safeLogError(["[app]", "[ConfigProvider]", "RSVP counter create failed"], counterErr);
           setSaveError(t("errors.rsvpCounterFailed"));
         }
-
 
         // Reconstruye el config completo en memoria: merge de cambios + config actual
         const savedConfig = { ...config };

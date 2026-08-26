@@ -44,7 +44,9 @@ const snap = (docs: Array<{ id: string; data: () => Record<string, unknown> }>) 
   size: docs.length,
 });
 
-const rsvpSnap = snap([{ id: "r1", data: () => ({ guestName: "Ana", attendance: "yes", companionCount: 1, mealChoice: "carne" }) }]);
+const rsvpSnap = snap([
+  { id: "r1", data: () => ({ guestName: "Ana", attendance: "yes", companionCount: 1, mealChoice: "carne" }) },
+]);
 const gallerySnap = snap([{ id: "g1", data: () => ({ description: "Foto", data: "aGVsbG8=" }) }]);
 const logSnap = snap([{ id: "c1", data: () => ({ fields: "firstName, theme" }) }]);
 const socialSnap = snap([{ id: "n1", data: () => ({ message: "Felicidades" }) }]);

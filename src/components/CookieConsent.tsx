@@ -233,19 +233,13 @@ const CookieConsent = memo(function CookieConsent() {
                 </p>
               ))}
             </div>
-            <button
-              type="button"
-              className="cookie-consent-policy"
-              onClick={handlePrivacyClick}
-            >
+            <button type="button" className="cookie-consent-policy" onClick={handlePrivacyClick}>
               {t("cookie.policyLink")}
             </button>
           </>
         ) : (
           <>
-            <p className="cookie-consent-text cookie-consent-text--sub">
-              {t("cookie.settingsTitle")}
-            </p>
+            <p className="cookie-consent-text cookie-consent-text--sub">{t("cookie.settingsTitle")}</p>
             {/* Preferencias en secciones accordion (patrón del modal legal):
                 cada categoría se despliega para mostrar su descripción y su
                 control, evitando un modal demasiado largo. */}
@@ -268,7 +262,11 @@ const CookieConsent = memo(function CookieConsent() {
                   desc: t("cookie.analyticsDesc"),
                   control: (
                     <label className="cookie-settings-item">
-                      <input type="checkbox" checked={preferences.analytics} onChange={() => togglePreference("analytics")} />
+                      <input
+                        type="checkbox"
+                        checked={preferences.analytics}
+                        onChange={() => togglePreference("analytics")}
+                      />
                       <span>{t("cookie.analytics")}</span>
                     </label>
                   ),
@@ -298,7 +296,7 @@ const CookieConsent = memo(function CookieConsent() {
                   >
                     {/* Label con flex:1 + minWidth:0: ocupa el espacio disponible y
                       envuelve si es largo (sin empujar el ancho del modal). */}
-                  <span style={{ flex: 1, minWidth: 0, textAlign: "left" }}>{s.label}</span>
+                    <span style={{ flex: 1, minWidth: 0, textAlign: "left" }}>{s.label}</span>
                     <span
                       style={{
                         transform: openSection === s.id ? "rotate(135deg)" : "rotate(0deg)",

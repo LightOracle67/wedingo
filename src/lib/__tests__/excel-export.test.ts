@@ -436,9 +436,24 @@ describe("Ramas límite de los builders", () => {
         // attendance ni yes/no → celda vacía; transportMode undefined; sin niño.
         { guestName: "A", mealChoice: "", dietaryInfo: "", submittedAt: null as unknown as string },
         // attendance no + transportMode "own" → sin sufijo; isChild true; solo teléfono.
-        { guestName: "B", attendance: "no", mealChoice: "", transportChoice: "Coche", transportMode: "own", isChild: true, phone: "600" },
+        {
+          guestName: "B",
+          attendance: "no",
+          mealChoice: "",
+          transportChoice: "Coche",
+          transportMode: "own",
+          isChild: true,
+          phone: "600",
+        },
         // attendance yes + bus → "(bus)"; solo email; menú desconocido → crudo; con fecha.
-        { guestName: "C", attendance: "yes", mealChoice: "pollo", transportMode: "bus", email: "c@x.es", submittedAt: "2026-08-24T10:00:00Z" },
+        {
+          guestName: "C",
+          attendance: "yes",
+          mealChoice: "pollo",
+          transportMode: "bus",
+          email: "c@x.es",
+          submittedAt: "2026-08-24T10:00:00Z",
+        },
       ],
       t,
     );
@@ -464,7 +479,10 @@ describe("Ramas límite de los builders", () => {
       ],
       t,
     );
-    expect(sheet.rows).toEqual([["Hijo", "Vegano"], ["SoloPlato", "Carne"]]);
+    expect(sheet.rows).toEqual([
+      ["Hijo", "Vegano"],
+      ["SoloPlato", "Carne"],
+    ]);
   });
 
   it("Mesas: sección inexistente, mesa vacía y varias asignaciones", () => {
@@ -485,13 +503,42 @@ describe("Ramas límite de los builders", () => {
   });
 
   it("Invitados globales: filtro por token, menús de asistentes y alergias alternativas", () => {
-    const invite = { id: "T1", firstName: "Ana", secondName: "Beta", adminUsername: "ad", weddingDateLabel: "01/01/2026", visits: 3, rsvpCount: 2, confirmed: 1, companions: 1, conversion: 50 };
+    const invite = {
+      id: "T1",
+      firstName: "Ana",
+      secondName: "Beta",
+      adminUsername: "ad",
+      weddingDateLabel: "01/01/2026",
+      visits: 3,
+      rsvpCount: 2,
+      confirmed: 1,
+      companions: 1,
+      conversion: 50,
+    };
     const sheet = buildGlobalGuestsSheet([
-      { invite, rsvps: [
-        { inviteToken: "OTRO", guestName: "Fuera" },
-        { inviteToken: "T1", guestName: "Uno", attendance: "yes", attendees: [{ menu: "carne" }, {}], allergiesOther: ["Nueces"], phone: 600, email: null },
-        { inviteToken: "T1", guestName: "Dos", attendance: "no", mealChoice: "pescado", dietaryInfo: "sin sal", submittedAt: "hoy" },
-      ] },
+      {
+        invite,
+        rsvps: [
+          { inviteToken: "OTRO", guestName: "Fuera" },
+          {
+            inviteToken: "T1",
+            guestName: "Uno",
+            attendance: "yes",
+            attendees: [{ menu: "carne" }, {}],
+            allergiesOther: ["Nueces"],
+            phone: 600,
+            email: null,
+          },
+          {
+            inviteToken: "T1",
+            guestName: "Dos",
+            attendance: "no",
+            mealChoice: "pescado",
+            dietaryInfo: "sin sal",
+            submittedAt: "hoy",
+          },
+        ],
+      },
     ]);
     expect(sheet.rows).toHaveLength(2);
     expect(sheet.rows[0]?.[2]).toBe("Uno");
@@ -506,17 +553,14 @@ describe("Ramas límite de los builders", () => {
 
   it("Fecha RSVP: nulos, Timestamp por segundos, toDate(), epoch e inválidos", () => {
     const toDate = () => new Date("2026-03-05T00:00:00Z");
-    const sheet = buildRsvpSheet(
-      "X",
-      [
-        { guestName: "nulo" },
-        { guestName: "secs", companionCount: "2", submittedAt: { seconds: 1770000000 } },
-        { guestName: "toDate", submittedAt: { toDate } },
-        { guestName: "epoch", submittedAt: new Date("2026-01-02T00:00:00Z").getTime() },
-        { guestName: "malNum", submittedAt: Number.NaN },
-        { guestName: "textoMal", submittedAt: "no-fecha" },
-      ],
-    );
+    const sheet = buildRsvpSheet("X", [
+      { guestName: "nulo" },
+      { guestName: "secs", companionCount: "2", submittedAt: { seconds: 1770000000 } },
+      { guestName: "toDate", submittedAt: { toDate } },
+      { guestName: "epoch", submittedAt: new Date("2026-01-02T00:00:00Z").getTime() },
+      { guestName: "malNum", submittedAt: Number.NaN },
+      { guestName: "textoMal", submittedAt: "no-fecha" },
+    ]);
     expect(sheet.rows[0]?.[5]).toBe("");
     expect(sheet.rows[0]?.[2]).toBe(0);
     expect(sheet.rows[1]?.[2]).toBe(2);

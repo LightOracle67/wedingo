@@ -53,7 +53,10 @@ describe("UIProvider", () => {
       const ctx = useContext(UIContext);
       const opened = useRef(false);
       useEffect(() => {
-        if (!opened.current) { opened.current = true; ctx?.setLegalModal("privacy"); }
+        if (!opened.current) {
+          opened.current = true;
+          ctx?.setLegalModal("privacy");
+        }
       }, [ctx]);
       return null;
     }

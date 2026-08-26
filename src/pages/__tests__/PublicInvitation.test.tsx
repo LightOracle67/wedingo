@@ -143,15 +143,21 @@ vi.mock("../../lib/utils", () => ({
 
 vi.mock("../../lib/platform-settings", () => ({
   usePlatformSettings: () => ({
-    settings: { maintenance: "false", bannerEnabled: "false", bannerText: "", blockedUrls: "", blockedTokens: "", expiringDays: "30", disabledFeatures: "" },
+    settings: {
+      maintenance: "false",
+      bannerEnabled: "false",
+      bannerText: "",
+      blockedUrls: "",
+      blockedTokens: "",
+      expiringDays: "30",
+      disabledFeatures: "",
+    },
     loaded: true,
     reload: () => undefined,
   }),
   tokenIsBlocked: () => false,
   isFeatureDisabled: () => false,
 }));
-
-
 
 const mockSectionComponents: Record<string, ReturnType<typeof vi.fn>> = {};
 function mockSection(name: string) {

@@ -52,7 +52,6 @@ export default function SectionOrderEditor({
     [hidden, syncHidden],
   );
 
-
   const handleDragStart = useCallback(
     (e: React.DragEvent, index: number) => {
       const key = items[index];

@@ -16,7 +16,7 @@
  * @module PublicInvitation
  */
 
-import {lazy, Suspense, useMemo, useState, useEffect, useRef, useCallback} from "react";
+import { lazy, Suspense, useMemo, useState, useEffect, useRef, useCallback } from "react";
 import { useLocation, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
@@ -192,7 +192,6 @@ export default function PublicInvitation() {
   /** ¿Hay alguna función social activa? Se agrupan en la sección conjunta
    *  (reordenable en el editor, siempre antes del RSVP). */
 
-
   // ─── Orden de secciones visible ────────────────────────
   /**
    * Calcula el orden de secciones a mostrar.
@@ -269,11 +268,7 @@ export default function PublicInvitation() {
     setEnvelopeOpen(true);
     // El vídeo de bienvenida es un comportamiento animado: si su animación
     // está desactivada (o `all`), no se abre al entrar.
-    if (
-      config.welcomeVideo &&
-      config.welcomeVideoEnabled !== "false" &&
-      !isDisabled("welcome-video-modal")
-    ) {
+    if (config.welcomeVideo && config.welcomeVideoEnabled !== "false" && !isDisabled("welcome-video-modal")) {
       setShowWelcomeVideo(true);
     }
     // Apertura del sobre: el gesto principal de la invitación.
@@ -293,7 +288,10 @@ export default function PublicInvitation() {
   useEffect(() => {
     if (!videoOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") { e.preventDefault(); closeWelcomeVideo(); }
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeWelcomeVideo();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -331,20 +329,20 @@ export default function PublicInvitation() {
     !showMissingToken &&
     !envelopeOpen &&
     !envelopeFullyOff;
-  const {
-    getSectionStyle: getStorySectionStyle,
-    getSectionClassName: getStorySectionClassName,
-  } = useStoryNavigation(visibleOrder, {
-    // `enabled` requiere que el sobre esté fuera Y que el vídeo de bienvenida
-    // esté cerrado: así la animación de entrada del hero no se ejecuta detrás
-    // del vídeo (el usuario la vería perdida y al cerrarlo el hero aparecería
-    // ya renderizado). Sin vídeo, se activa justo al terminar el sobre.
-    enabled: !showEnvelope && !videoOpen,
-    reducedMotion,
-    // Animaciones de navegación desactivadas (base ∪ invitado): el hook las
-    // respeta por código (transiciones, snap y entrada 3D).
-    animationsDisabled: effectiveDisabled,
-  });
+  const { getSectionStyle: getStorySectionStyle, getSectionClassName: getStorySectionClassName } = useStoryNavigation(
+    visibleOrder,
+    {
+      // `enabled` requiere que el sobre esté fuera Y que el vídeo de bienvenida
+      // esté cerrado: así la animación de entrada del hero no se ejecuta detrás
+      // del vídeo (el usuario la vería perdida y al cerrarlo el hero aparecería
+      // ya renderizado). Sin vídeo, se activa justo al terminar el sobre.
+      enabled: !showEnvelope && !videoOpen,
+      reducedMotion,
+      // Animaciones de navegación desactivadas (base ∪ invitado): el hook las
+      // respeta por código (transiciones, snap y entrada 3D).
+      animationsDisabled: effectiveDisabled,
+    },
+  );
 
   // ─── Cuenta regresiva ──────────────────────────────────
 
@@ -403,7 +401,8 @@ export default function PublicInvitation() {
     applySocialMeta({
       title: `${coupleName} — Wedingo`,
       description:
-        config.inviteMessage || t("seo.inviteFallback", { names: `${config.firstName} & ${config.secondName || ""}`.trim() }),
+        config.inviteMessage ||
+        t("seo.inviteFallback", { names: `${config.firstName} & ${config.secondName || ""}`.trim() }),
       url: `${SITE_URL}/${inviteToken}`,
       image: config.couplePhoto,
       locale: i18n?.language,
@@ -813,7 +812,11 @@ export default function PublicInvitation() {
       {/* Mientras el sobre está cerrado o el vídeo de bienvenida está abierto,
           el contenido trasero queda inerte e invisible para lectores de
           pantalla (WCAG 1.3.2 / 2.4.3). display: contents no altera el layout. */}
-      <div style={{ display: "contents" }} aria-hidden={showEnvelope || videoOpen || undefined} inert={showEnvelope || videoOpen || undefined}>
+      <div
+        style={{ display: "contents" }}
+        aria-hidden={showEnvelope || videoOpen || undefined}
+        inert={showEnvelope || videoOpen || undefined}
+      >
         {/* ── Decoraciones laterales (eucalipto) ── */}
         <WeddingDecorations />
 
@@ -864,7 +867,8 @@ export default function PublicInvitation() {
           <>
             {/* ── Invitación completa: renderiza cada sección en orden ── */}
             <Suspense fallback={null}>
-              {visibleOrder.map((sectionKey: string) => {                const Component = (
+              {visibleOrder.map((sectionKey: string) => {
+                const Component = (
                   SECTION_COMPONENTS as unknown as Record<string, React.ComponentType<Record<string, unknown>>>
                 )[sectionKey];
                 if (!Component) {
@@ -887,9 +891,7 @@ export default function PublicInvitation() {
             </Suspense>
           </>
         )}
-        {envelopeOpen && !isEmpty && !showMissingToken && showRsvp ? (
-          <FloatingRsvpCta targetId="rsvp" />
-        ) : null}
+        {envelopeOpen && !isEmpty && !showMissingToken && showRsvp ? <FloatingRsvpCta targetId="rsvp" /> : null}
         {/* Botón de compartir de la invitación pública (aparece tras el sobre). */}
         {!isEmpty && !showMissingToken ? (
           <button

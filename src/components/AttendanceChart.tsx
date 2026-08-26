@@ -113,7 +113,6 @@ export function DonutChart({
   );
 }
 
-
 export function Legend({ items }: { items: Array<{ label: string; value: number; color: string }> }) {
   return (
     <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center", marginTop: "0.5rem" }}>

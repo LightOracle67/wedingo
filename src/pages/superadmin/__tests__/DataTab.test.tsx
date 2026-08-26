@@ -65,7 +65,12 @@ const docData = (overrides: Record<string, unknown> = {}) => ({
 describe("DataTab", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    mockWriteBatch.mockReturnValue({ delete: vi.fn(), update: vi.fn(), set: vi.fn(), commit: vi.fn().mockResolvedValue(undefined) });
+    mockWriteBatch.mockReturnValue({
+      delete: vi.fn(),
+      update: vi.fn(),
+      set: vi.fn(),
+      commit: vi.fn().mockResolvedValue(undefined),
+    });
   });
 
   it("renders loading state initially", () => {
@@ -583,7 +588,9 @@ describe("DataTab avanzadas", () => {
     vi.clearAllMocks();
     mockGetDocs.mockImplementation((ref: string) => {
       if (ref === "invitations-collection-ref") {
-        return Promise.resolve({ docs: [docData({ id: "tok1234567", firstName: "Ana", secondName: "Luis", visits: 42, _visits: 42 })] });
+        return Promise.resolve({
+          docs: [docData({ id: "tok1234567", firstName: "Ana", secondName: "Luis", visits: 42, _visits: 42 })],
+        });
       }
       return Promise.resolve({ docs: [] });
     });
@@ -630,7 +637,9 @@ describe("DataTab avanzadas", () => {
     mockGetDocs.mockImplementation((ref: unknown) =>
       ref === "invitations-collection-ref"
         ? Promise.resolve({ docs: [docData({ id: "tok1234567", firstName: "Ana", secondName: "Luis" })] })
-        : Promise.resolve({ docs: [{ data: () => ({ guestName: "Ana García", attendance: "yes", companionCount: 1 }) }] }),
+        : Promise.resolve({
+            docs: [{ data: () => ({ guestName: "Ana García", attendance: "yes", companionCount: 1 }) }],
+          }),
     );
     render(<DataTab />);
     await vi.waitFor(() => expect(screen.getAllByRole("checkbox").length).toBeGreaterThan(0));
@@ -699,7 +708,10 @@ describe("DataTab avanzadas", () => {
     const createObjectURL = vi.fn(() => "blob:print");
     Object.defineProperty(URL, "createObjectURL", { configurable: true, value: createObjectURL });
     const win = { addEventListener: vi.fn(), print: vi.fn() };
-    vi.stubGlobal("open", vi.fn(() => win));
+    vi.stubGlobal(
+      "open",
+      vi.fn(() => win),
+    );
     render(<DataTab />);
     await vi.waitFor(() => expect(screen.getAllByRole("checkbox").length).toBeGreaterThan(0));
     fireEvent.click(screen.getAllByRole("checkbox")[0]!);
@@ -715,7 +727,14 @@ describe("DataTab avanzadas", () => {
       if (ref === "invitations-collection-ref")
         return Promise.resolve({
           docs: [
-            docData({ id: "old1", firstName: "A", secondName: "B", weddingDay: "01", weddingMonth: "01", weddingYear: "2020" }),
+            docData({
+              id: "old1",
+              firstName: "A",
+              secondName: "B",
+              weddingDay: "01",
+              weddingMonth: "01",
+              weddingYear: "2020",
+            }),
           ],
         });
       // cascadeDelete consulta subcolecciones: se devuelven vacías.
@@ -735,7 +754,14 @@ describe("DataTab avanzadas", () => {
       ref === "invitations-collection-ref"
         ? Promise.resolve({
             docs: [
-              docData({ id: "fut1", firstName: "A", secondName: "B", weddingDay: "01", weddingMonth: "01", weddingYear: "2099" }),
+              docData({
+                id: "fut1",
+                firstName: "A",
+                secondName: "B",
+                weddingDay: "01",
+                weddingMonth: "01",
+                weddingYear: "2099",
+              }),
             ],
           })
         : Promise.resolve({ docs: [] }),
@@ -754,8 +780,22 @@ describe("DataTab avanzadas", () => {
       if (ref === "invitations-collection-ref") {
         return Promise.resolve({
           docs: [
-            docData({ id: "old1", firstName: "Old", secondName: "One", weddingDay: "1", weddingMonth: "1", weddingYear: "2020" }),
-            docData({ id: "new1", firstName: "New", secondName: "One", weddingDay: "1", weddingMonth: "1", weddingYear: "2030" }),
+            docData({
+              id: "old1",
+              firstName: "Old",
+              secondName: "One",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2020",
+            }),
+            docData({
+              id: "new1",
+              firstName: "New",
+              secondName: "One",
+              weddingDay: "1",
+              weddingMonth: "1",
+              weddingYear: "2030",
+            }),
           ],
         });
       }

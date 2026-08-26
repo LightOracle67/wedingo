@@ -278,10 +278,6 @@ describe("GuestsSectionForm", () => {
     render(<GuestsSectionForm />);
     const section = screen.getByText(label).parentElement as HTMLElement;
     fireEvent.click(section.querySelector("button") as HTMLButtonElement);
-    expect(mockUpdateFormField).toHaveBeenCalledWith(
-      field,
-      JSON.stringify([{ order: "entrante", text: "" }]),
-    );
+    expect(mockUpdateFormField).toHaveBeenCalledWith(field, JSON.stringify([{ order: "entrante", text: "" }]));
   });
-
 });

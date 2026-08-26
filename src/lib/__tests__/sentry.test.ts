@@ -339,17 +339,13 @@ describe("sentry", () => {
 
     it("redacta el token en query params", async () => {
       const { redactSecretsFromUrl } = await import("../sentry");
-      expect(redactSecretsFromUrl("https://x.app/?t=ABC123&lang=es")).toBe(
-        "https://x.app/?t=[redacted]&lang=es",
-      );
-      expect(redactSecretsFromUrl("https://x.app/?invitar=TtCgt9n8VT")).toBe(
-        "https://x.app/?invitar=[redacted]",
-      );
+      expect(redactSecretsFromUrl("https://x.app/?t=ABC123&lang=es")).toBe("https://x.app/?t=[redacted]&lang=es");
+      expect(redactSecretsFromUrl("https://x.app/?invitar=TtCgt9n8VT")).toBe("https://x.app/?invitar=[redacted]");
     });
 
     it("redacta el hash y deja intactas las URLs sin datos sensibles", async () => {
       const { redactSecretsFromUrl } = await import("../sentry");
-      expect(redactSecretsFromUrl("https://x.app/#someConfig"),).toBe("https://x.app/#[redacted]");
+      expect(redactSecretsFromUrl("https://x.app/#someConfig")).toBe("https://x.app/#[redacted]");
       expect(redactSecretsFromUrl("https://x.app/foo/bar")).toBe("https://x.app/foo/bar");
       expect(redactSecretsFromUrl("")).toBe("");
     });

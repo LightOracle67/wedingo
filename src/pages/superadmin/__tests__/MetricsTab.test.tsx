@@ -124,8 +124,7 @@ describe("MetricsTab", () => {
     mockGetDocs.mockImplementation((ref: unknown) => {
       if (ref === "invitations-collection-ref") return Promise.resolve({ docs: [invitationDoc()] });
       if (ref === "gallery") return Promise.resolve({ docs: [{ id: "g1" }, { id: "g2" }], size: 2 });
-      if (ref === "audio")
-        return Promise.resolve({ docs: [{ data: () => ({ data: "QUJD".repeat(1000) }) }] });
+      if (ref === "audio") return Promise.resolve({ docs: [{ data: () => ({ data: "QUJD".repeat(1000) }) }] });
       return Promise.resolve({ docs: [] });
     });
     render(<MetricsTab />);
@@ -135,7 +134,6 @@ describe("MetricsTab", () => {
     await vi.waitFor(() => expect(screen.getByText("superadmin.metrics.images")).toBeInTheDocument());
   });
 });
-
 
 describe("MetricsTab — ramas límite", () => {
   beforeEach(() => {
@@ -200,15 +198,18 @@ describe("MetricsTab — ramas límite", () => {
     mockGetDocs.mockImplementation((ref: unknown) => {
       if (ref === "invitations-collection-ref") return Promise.resolve({ docs: [invitationDoc()] });
       if (ref === "notes")
-        return Promise.resolve({ docs: [{ id: "n1", data: () => ({}) }, { id: "n2", data: () => ({}) }] });
+        return Promise.resolve({
+          docs: [
+            { id: "n1", data: () => ({}) },
+            { id: "n2", data: () => ({}) },
+          ],
+        });
       return Promise.resolve({ docs: [] });
     });
     render(<MetricsTab />);
     await screen.findByText("superadmin.metrics.invitations");
     fireEvent.click(screen.getByText("superadmin.metrics.socialBtn"));
-    await vi.waitFor(() =>
-      expect(screen.getAllByText(/token1/).length).toBeGreaterThan(0),
-    );
+    await vi.waitFor(() => expect(screen.getAllByText(/token1/).length).toBeGreaterThan(0));
   });
 
   it("agrupa orígenes de invitados descartando vacíos", async () => {
@@ -229,7 +230,6 @@ describe("MetricsTab — ramas límite", () => {
     fireEvent.click(screen.getByText("superadmin.metrics.originsBtn"));
     await screen.findByText(/Sevilla · 2/);
   });
-
 });
 
 describe("SupportTab", () => {
@@ -249,9 +249,7 @@ describe("SupportTab", () => {
   it("busca una invitación por token en la consola", async () => {
     // La búsqueda usa query/collection; el mock devuelve el doc de la invitación.
     mockGetDocs.mockImplementation((ref: unknown) =>
-      Promise.resolve(
-        ref === "query-ref" ? { docs: [invitationDoc()], empty: false } : { docs: [] },
-      ),
+      Promise.resolve(ref === "query-ref" ? { docs: [invitationDoc()], empty: false } : { docs: [] }),
     );
     render(<SupportTab />);
     await screen.findByText("superadmin.support.upcomingTitle");
@@ -276,7 +274,12 @@ describe("SupportTab", () => {
       Promise.resolve(
         ref === "query-ref"
           ? {
-              docs: [{ id: "a1", data: () => ({ action: "reset_token", detail: "TOK1", createdAt: { seconds: 1750000000 } }) }],
+              docs: [
+                {
+                  id: "a1",
+                  data: () => ({ action: "reset_token", detail: "TOK1", createdAt: { seconds: 1750000000 } }),
+                },
+              ],
             }
           : { docs: [] },
       ),
@@ -312,7 +315,20 @@ describe("SupportTab", () => {
     mockGetDocs.mockImplementation((ref: unknown) => {
       if (ref === "invitations-collection-ref")
         return Promise.resolve({
-          docs: [{ id: "abandon1", data: () => ({ firstName: "A", secondName: "B", weddingDay: "1", weddingMonth: "1", weddingYear: "2099", _visits: 60, adminUsername: "x" }) }],
+          docs: [
+            {
+              id: "abandon1",
+              data: () => ({
+                firstName: "A",
+                secondName: "B",
+                weddingDay: "1",
+                weddingMonth: "1",
+                weddingYear: "2099",
+                _visits: 60,
+                adminUsername: "x",
+              }),
+            },
+          ],
         });
       // Las respuestas de "abandon1" están vacías → contador vacío → abandonada.
       return Promise.resolve({ docs: [], size: 0, empty: true });

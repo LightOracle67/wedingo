@@ -242,7 +242,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     [departures, t],
   );
 
-
   const filterEntries = filteredEntries || [];
 
   // Ordenación por columnas de la tabla de asistencias (checkbox no). Cada

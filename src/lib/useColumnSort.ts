@@ -94,10 +94,10 @@ export function useColumnSort<T>(rows: T[], columns: SortableColumn<T>[]) {
   }, [rows, sortKey, sortOrder, columns]);
 
   // Estado de orden para un encabezado: "asc" | "desc" | "default".
-  const getIndicator = useCallback((key: string): SortOrder => (sortKey === key ? sortOrder : "default"), [
-    sortKey,
-    sortOrder,
-  ]);
+  const getIndicator = useCallback(
+    (key: string): SortOrder => (sortKey === key ? sortOrder : "default"),
+    [sortKey, sortOrder],
+  );
 
   return { sorted, sortKey, sortOrder, toggleSort, getIndicator };
 }

@@ -17,7 +17,9 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () =
     import("../lib/changelog").then((m) => {
       if (!cancelled) setEntries(m.CHANGELOG);
     });
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const handleClose = useCallback(() => onClose(), [onClose]);

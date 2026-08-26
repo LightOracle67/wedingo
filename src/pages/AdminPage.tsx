@@ -139,7 +139,16 @@ export default function AdminPage() {
   // ─── Estados locales de UI ─────────────────────────────
   // Pestaña activa sincronizada con la URL (?tab=...) en AMBOS sentidos
   // (el botón atrás del navegador también cambia de pestaña).
-  const TAB_KEYS = ["panel", "invitacion", "asistencia", "compartir", "herramientas", "distribucion", "acceso", "soporte"] as const;
+  const TAB_KEYS = [
+    "panel",
+    "invitacion",
+    "asistencia",
+    "compartir",
+    "herramientas",
+    "distribucion",
+    "acceso",
+    "soporte",
+  ] as const;
   const { activeTab, select: handleSetTab, tabPanelRef } = useTabs(TAB_KEYS, "panel");
   const [searchQuery, setSearchQuery] = useState("");
   const [attendanceFilter, setAttendanceFilter] = useState("all");
@@ -261,11 +270,13 @@ export default function AdminPage() {
   const totalGuests = rsvpEntries.reduce((s: number, r: { companions?: number }) => s + (Number(r.companions) || 1), 0);
   // Personas (confirmados/declinados) y total esperado (0..1000 desde config).
   const confirmedPeople = rsvpEntries.reduce(
-    (s: number, r: { attendance: string; companions?: number }) => s + (r.attendance === "yes" ? Number(r.companions) || 1 : 0),
+    (s: number, r: { attendance: string; companions?: number }) =>
+      s + (r.attendance === "yes" ? Number(r.companions) || 1 : 0),
     0,
   );
   const declinedPeople = rsvpEntries.reduce(
-    (s: number, r: { attendance: string; companions?: number }) => s + (r.attendance === "no" ? Number(r.companions) || 1 : 0),
+    (s: number, r: { attendance: string; companions?: number }) =>
+      s + (r.attendance === "no" ? Number(r.companions) || 1 : 0),
     0,
   );
   const expectedGuestsTotal = Math.min(Math.max(Number(config.expectedGuests) || 0, 0), 1000);
@@ -500,7 +511,13 @@ export default function AdminPage() {
               <ToolsTab
                 inviteToken={inviteToken || ""}
                 inviteUrl={`${window.location.origin}/${inviteToken}`}
-                weddingDate={{ year: config.weddingYear, month: config.weddingMonth, day: config.weddingDay, hour: config.weddingHour, minute: config.weddingMinute }}
+                weddingDate={{
+                  year: config.weddingYear,
+                  month: config.weddingMonth,
+                  day: config.weddingDay,
+                  hour: config.weddingHour,
+                  minute: config.weddingMinute,
+                }}
                 weddingPlace={config.weddingPlace}
                 coupleName={coupleName}
                 expectedGuests={config.expectedGuests}

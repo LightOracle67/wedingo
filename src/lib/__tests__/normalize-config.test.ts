@@ -103,7 +103,9 @@ describe("normalizeConfig", () => {
 
   it("returns default sectionOrder when not provided", () => {
     const result = normalizeConfig({});
-    expect(result.sectionOrder).toBe("hero,details,transport,info,story,gallery,gifts,accommodation,venuemap,tables,rsvp");
+    expect(result.sectionOrder).toBe(
+      "hero,details,transport,info,story,gallery,gifts,accommodation,venuemap,tables,rsvp",
+    );
   });
 
   it("normalizes menuEnabled to string boolean", () => {
@@ -296,7 +298,6 @@ describe("normalizeConfig social fields", () => {
     expect(result.welcomeVideo).toBe("https://example.com/v.mp4");
     expect(result.welcomeVideoEnabled).toBe("true");
   });
-
 
   it("normalizes the enabled flags to true/false", () => {
     const result = normalizeConfig({ rsvpDeadlineEnabled: "yes" });

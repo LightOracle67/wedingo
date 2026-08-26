@@ -98,7 +98,12 @@ export default function DataTab() {
 
   const applyBulkTheme = useCallback(async () => {
     if (!selected.size) return;
-    if (!(await confirm({ title: t("superadmin.data.bulkThemeTitle"), message: t("superadmin.data.bulkThemeConfirm", { count: selected.size }) })))
+    if (
+      !(await confirm({
+        title: t("superadmin.data.bulkThemeTitle"),
+        message: t("superadmin.data.bulkThemeConfirm", { count: selected.size }),
+      }))
+    )
       return;
     setBulkingTheme(true);
     try {
@@ -157,9 +162,10 @@ export default function DataTab() {
           const data = d.data();
           const token = d.id;
           const sessionAt = data.activeSession as { seconds?: number } | null | undefined;
-          const lastActivity = sessionAt && typeof sessionAt === "object" && "seconds" in sessionAt
-            ? new Date(Number(sessionAt.seconds) * 1000).toISOString()
-            : String(data.createdAt || "");
+          const lastActivity =
+            sessionAt && typeof sessionAt === "object" && "seconds" in sessionAt
+              ? new Date(Number(sessionAt.seconds) * 1000).toISOString()
+              : String(data.createdAt || "");
           return {
             id: token,
             firstName: String(data.firstName || ""),
@@ -224,7 +230,7 @@ export default function DataTab() {
    *
    * @param {string} token - Token/ID de la invitación.
    */
-    /** Exporta todas las invitaciones seleccionadas en un solo JSON. */
+  /** Exporta todas las invitaciones seleccionadas en un solo JSON. */
   const exportSelected = useCallback(async () => {
     if (!selected.size) return;
     setBusy(true);
@@ -264,9 +270,17 @@ export default function DataTab() {
 
   /** Exporta las invitaciones creadas en un rango de fechas (YYYY-MM-DD). */
   const exportRange = useCallback(async () => {
-    const from = await prompt({ title: t("superadmin.data.rangeTitle"), message: t("superadmin.data.rangeFromPrompt"), inputLabel: t("superadmin.data.rangeFromPrompt") });
+    const from = await prompt({
+      title: t("superadmin.data.rangeTitle"),
+      message: t("superadmin.data.rangeFromPrompt"),
+      inputLabel: t("superadmin.data.rangeFromPrompt"),
+    });
     if (!from) return;
-    const to = await prompt({ title: t("superadmin.data.rangeTitle"), message: t("superadmin.data.rangeToPrompt"), inputLabel: t("superadmin.data.rangeToPrompt") });
+    const to = await prompt({
+      title: t("superadmin.data.rangeTitle"),
+      message: t("superadmin.data.rangeToPrompt"),
+      inputLabel: t("superadmin.data.rangeToPrompt"),
+    });
     if (!to) return;
     const fromT = new Date(from).getTime();
     const toT = new Date(to).getTime();
@@ -296,9 +310,18 @@ export default function DataTab() {
         ]);
         result.push({
           invitation: { id: token, ...(invDoc.exists() ? sanitizeInvitationForExport(invDoc.data()) : {}) },
-          rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
-          gallery: gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
-          audio: audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({ id: d.id, ...d.data() })),
+          rsvps: rsvpSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+            id: d.id,
+            ...d.data(),
+          })),
+          gallery: gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+            id: d.id,
+            ...d.data(),
+          })),
+          audio: audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
+            id: d.id,
+            ...d.data(),
+          })),
         });
       }
       downloadJson(`wedingo_export_rango_${from}_${to}.json`, result);
@@ -364,7 +387,10 @@ export default function DataTab() {
         }
         const { exportToXlsx } = await import("../../lib/excel-utils");
         const { buildRsvpSheet } = await import("../../lib/excel-builders");
-        const sheet = buildRsvpSheet(token, rsvpSnap.docs.map((d) => d.data() as Record<string, unknown>));
+        const sheet = buildRsvpSheet(
+          token,
+          rsvpSnap.docs.map((d) => d.data() as Record<string, unknown>),
+        );
         exportToXlsx(`${token}_rsvp`, [sheet]);
         addToast("success", t("superadmin.data.exportedOne", { token }));
       } catch {
@@ -499,7 +525,11 @@ export default function DataTab() {
     const parts: string[] = [];
     for (const token of selected) {
       const s = await menuSummary(token);
-      parts.push(`${token}: ${Object.entries(s).map(([k, v]) => `${k}: ${v}`).join(" · ")}`);
+      parts.push(
+        `${token}: ${Object.entries(s)
+          .map(([k, v]) => `${k}: ${v}`)
+          .join(" · ")}`,
+      );
     }
     addToast("info", parts.join("  //  ") || t("superadmin.data.noMenuData"));
   }, [selected, menuSummary, addToast, t]);
@@ -535,7 +565,12 @@ export default function DataTab() {
   /** Marca el sello de verificación en las invitaciones seleccionadas. */
   const handleBulkSeal = useCallback(async () => {
     if (!selected.size) return;
-    if (!(await confirm({ title: t("superadmin.data.bulkSealTitle"), message: t("superadmin.data.bulkSealConfirm", { count: selected.size }) })))
+    if (
+      !(await confirm({
+        title: t("superadmin.data.bulkSealTitle"),
+        message: t("superadmin.data.bulkSealConfirm", { count: selected.size }),
+      }))
+    )
       return;
     setBusy(true);
     try {
@@ -580,7 +615,13 @@ export default function DataTab() {
       addToast("info", t("superadmin.data.purgeEmpty"));
       return;
     }
-    if (!(await confirm({ title: t("superadmin.data.purgeTitle"), message: t("superadmin.data.purgeConfirm", { count: targets.length }), danger: true })))
+    if (
+      !(await confirm({
+        title: t("superadmin.data.purgeTitle"),
+        message: t("superadmin.data.purgeConfirm", { count: targets.length }),
+        danger: true,
+      }))
+    )
       return;
     setBusy(true);
     try {
@@ -603,7 +644,14 @@ export default function DataTab() {
       addToast("error", t("superadmin.data.confirmRequired", { word: CONFIRM_WORD }));
       return;
     }
-    if (!(await confirm({ title: t("superadmin.data.deleteAllTitle"), message: t("superadmin.data.deleteAllConfirm"), danger: true, requireText: CONFIRM_WORD })))
+    if (
+      !(await confirm({
+        title: t("superadmin.data.deleteAllTitle"),
+        message: t("superadmin.data.deleteAllConfirm"),
+        danger: true,
+        requireText: CONFIRM_WORD,
+      }))
+    )
       return;
     setBusy(true);
     try {
@@ -694,7 +742,12 @@ export default function DataTab() {
         <button type="button" className="setup-button setup-button--compact" onClick={exportAll} disabled={busy}>
           {t("superadmin.data.exportAllBtn")} ({totalCount})
         </button>
-        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportRange()} disabled={busy}>
+        <button
+          type="button"
+          className="setup-button setup-button--ghost setup-button--compact"
+          onClick={() => void exportRange()}
+          disabled={busy}
+        >
           {t("superadmin.data.rangeBtn")}
         </button>
 
@@ -843,13 +896,18 @@ export default function DataTab() {
       </div>
 
       {/* ── Búsqueda global de PII (derechos GDPR) ── */}
-      <div className="admin-filters" style={{ marginBottom: "0.75rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+      <div
+        className="admin-filters"
+        style={{ marginBottom: "0.75rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}
+      >
         <input
           className="setup-input"
           style={{ flex: 1, minWidth: "12rem" }}
           value={piiQuery}
           onChange={(e) => setPiiQuery(e.target.value)}
-          onKeyDown={(e) => { if (e.key === "Enter") void searchPii(); }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") void searchPii();
+          }}
           placeholder={t("superadmin.data.piiPlaceholder")}
           aria-label={t("superadmin.data.piiPlaceholder")}
         />
@@ -863,9 +921,24 @@ export default function DataTab() {
         ) : null}
       </div>
       {piiResults.length > 0 ? (
-        <div style={{ marginBottom: "0.75rem", maxHeight: "8rem", overflowY: "auto", border: "1px solid var(--setup-border)", borderRadius: "0.5rem" }}>
+        <div
+          style={{
+            marginBottom: "0.75rem",
+            maxHeight: "8rem",
+            overflowY: "auto",
+            border: "1px solid var(--setup-border)",
+            borderRadius: "0.5rem",
+          }}
+        >
           {piiResults.map((r, i) => (
-            <div key={i} style={{ padding: "0.3rem 0.6rem", fontSize: "0.78rem", borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)" }}>
+            <div
+              key={i}
+              style={{
+                padding: "0.3rem 0.6rem",
+                fontSize: "0.78rem",
+                borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)",
+              }}
+            >
               {r.name} — {r.attendance} · <code>{r.token}</code>
             </div>
           ))}
@@ -874,12 +947,47 @@ export default function DataTab() {
 
       {/* ── Tema en bloque para la selección ── */}
       <div className="admin-flex" style={{ marginBottom: "0.75rem", gap: "0.5rem", flexWrap: "wrap" }}>
-        <select className="setup-input" value={bulkTheme} onChange={(e) => setBulkTheme(e.target.value)} aria-label={t("superadmin.data.bulkTheme")} style={{ maxWidth: "12rem" }}>
-          {["golden", "forest", "rose", "linen-soft", "blush-pearl", "lavender-mist", "champagne-bubble", "amber-night", "onyx-gold", "midnight-royal", "burgundy-velvet", "sapphire-night", "emerald-grove", "plum-twilight", "rainbow", "trans", "nonbinary", "lesbian", "bi", "pan", "ace"].map((th) => (
-            <option key={th} value={th}>{th}</option>
+        <select
+          className="setup-input"
+          value={bulkTheme}
+          onChange={(e) => setBulkTheme(e.target.value)}
+          aria-label={t("superadmin.data.bulkTheme")}
+          style={{ maxWidth: "12rem" }}
+        >
+          {[
+            "golden",
+            "forest",
+            "rose",
+            "linen-soft",
+            "blush-pearl",
+            "lavender-mist",
+            "champagne-bubble",
+            "amber-night",
+            "onyx-gold",
+            "midnight-royal",
+            "burgundy-velvet",
+            "sapphire-night",
+            "emerald-grove",
+            "plum-twilight",
+            "rainbow",
+            "trans",
+            "nonbinary",
+            "lesbian",
+            "bi",
+            "pan",
+            "ace",
+          ].map((th) => (
+            <option key={th} value={th}>
+              {th}
+            </option>
           ))}
         </select>
-        <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => void applyBulkTheme()} disabled={!selected.size || bulkingTheme}>
+        <button
+          className="setup-button setup-button--ghost setup-button--compact"
+          type="button"
+          onClick={() => void applyBulkTheme()}
+          disabled={!selected.size || bulkingTheme}
+        >
           {t("superadmin.data.bulkTheme", { count: selected.size })}
         </button>
       </div>
@@ -915,10 +1023,20 @@ export default function DataTab() {
               <SortableTh columnKey="visits" order={getIndicator("visits")} onSort={toggleSort} className="data-tab-th">
                 {t("superadmin.data.colVisits")}
               </SortableTh>
-              <SortableTh columnKey="session" order={getIndicator("session")} onSort={toggleSort} className="data-tab-th">
+              <SortableTh
+                columnKey="session"
+                order={getIndicator("session")}
+                onSort={toggleSort}
+                className="data-tab-th"
+              >
                 {t("superadmin.data.colSession")}
               </SortableTh>
-              <SortableTh columnKey="activity" order={getIndicator("activity")} onSort={toggleSort} className="data-tab-th">
+              <SortableTh
+                columnKey="activity"
+                order={getIndicator("activity")}
+                onSort={toggleSort}
+                className="data-tab-th"
+              >
                 {t("superadmin.data.colActivity")}
               </SortableTh>
             </tr>

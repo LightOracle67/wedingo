@@ -63,7 +63,8 @@ describe("ToolsTab", () => {
       localStorage.clear();
     } catch {}
     mockGetDocs.mockImplementation((ref: string) => {
-      if (ref === "guests") return Promise.resolve({ docs: [{ data: () => ({ name: "Ana" }) }, { data: () => ({ name: "Luis" }) }] });
+      if (ref === "guests")
+        return Promise.resolve({ docs: [{ data: () => ({ name: "Ana" }) }, { data: () => ({ name: "Luis" }) }] });
       if (ref === "rsvp-ref") return Promise.resolve({ docs: [rsvpDoc("Ana", Math.floor(Date.now() / 1000))] });
       return Promise.resolve({ docs: [], size: 0 });
     });
@@ -79,7 +80,14 @@ describe("ToolsTab", () => {
 
   it("saves the expected-guests number (0..1000)", async () => {
     const onSaved = vi.fn();
-    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" expectedGuests="" onExpectedGuestsSaved={onSaved} />);
+    render(
+      <ToolsTab
+        inviteToken="tok1234567"
+        inviteUrl="https://x/tok1234567"
+        expectedGuests=""
+        onExpectedGuestsSaved={onSaved}
+      />,
+    );
     await vi.waitFor(() => expect(screen.getByLabelText("tools.expectedGuests")).toBeInTheDocument());
     fireEvent.change(screen.getByLabelText("tools.expectedGuests"), { target: { value: "750" } });
     fireEvent.blur(screen.getByLabelText("tools.expectedGuests"));
@@ -89,7 +97,14 @@ describe("ToolsTab", () => {
   });
 
   it("clamps expected guests to 1000 and rejects non-numeric input", async () => {
-    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" expectedGuests="" onExpectedGuestsSaved={vi.fn()} />);
+    render(
+      <ToolsTab
+        inviteToken="tok1234567"
+        inviteUrl="https://x/tok1234567"
+        expectedGuests=""
+        onExpectedGuestsSaved={vi.fn()}
+      />,
+    );
     const input = await screen.findByLabelText("tools.expectedGuests");
     fireEvent.change(input, { target: { value: "2500" } });
     fireEvent.blur(input);
@@ -128,7 +143,11 @@ describe("ToolsTab", () => {
     await screen.findByText("tools.icsButton");
     fireEvent.click(screen.getByText("tools.icsButton"));
     await vi.waitFor(() => expect(downloadText).toHaveBeenCalled());
-    expect(downloadText).toHaveBeenCalledWith("tok1234567.ics", expect.stringContaining("BEGIN:VCALENDAR"), "text/calendar;charset=utf-8");
+    expect(downloadText).toHaveBeenCalledWith(
+      "tok1234567.ics",
+      expect.stringContaining("BEGIN:VCALENDAR"),
+      "text/calendar;charset=utf-8",
+    );
   });
 
   it("descarga las fotos de la galería", async () => {
@@ -142,6 +161,8 @@ describe("ToolsTab", () => {
     // Espera a que se habilite (galleryCount = 1).
     await vi.waitFor(() => expect(btn).not.toBeDisabled());
     fireEvent.click(btn);
-    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("success", expect.stringContaining("tools.galleryDownloaded")));
+    await vi.waitFor(() =>
+      expect(mockAddToast).toHaveBeenCalledWith("success", expect.stringContaining("tools.galleryDownloaded")),
+    );
   });
 });

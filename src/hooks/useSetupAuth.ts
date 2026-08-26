@@ -146,8 +146,7 @@ export function useSetupAuth(
       .then(async (snap) => {
         const data = snap.data();
         const sessionExpiresAt = data?.sessionExpiresAt?.toDate?.() ?? data?.sessionExpiresAt;
-        const isValid =
-          snap.exists() && sessionExpiresAt && new Date(sessionExpiresAt).getTime() > Date.now();
+        const isValid = snap.exists() && sessionExpiresAt && new Date(sessionExpiresAt).getTime() > Date.now();
 
         if (isValid) {
           setTokenLoginUsername(session.identifier);
@@ -156,7 +155,7 @@ export function useSetupAuth(
           setSetupTokenInput("");
           setIsTokenVerified(true);
         } else if (snap.exists()) {
-try {
+          try {
             // La reparación/renovación de sesión necesita la prueba de
             // conocimiento del token (hash) para que las reglas la acepten.
             const storageKey = STORAGE_KEYS.setupToken(inviteToken || "");

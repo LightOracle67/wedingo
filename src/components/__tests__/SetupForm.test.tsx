@@ -50,7 +50,9 @@ vi.mock("../../contexts", () => ({
   }),
   // useFormField/useFormStore leen del formData que devuelve el mock de useConfig.
   useFormField: (field: string) => (mockUseApp().formData as Record<string, string | undefined>)?.[field] ?? "",
-  useFormStore: () => ({ getField: (field: string) => (mockUseApp().formData as Record<string, string | undefined>)?.[field] ?? "" }),
+  useFormStore: () => ({
+    getField: (field: string) => (mockUseApp().formData as Record<string, string | undefined>)?.[field] ?? "",
+  }),
   useConfig: () => mockUseApp(),
   useAuth: () => mockUseApp(),
   useAppUI: () => mockUseApp(),

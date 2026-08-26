@@ -1,4 +1,4 @@
-import { memo, useState  } from "react";
+import { memo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useConfigActions, useFormField, useAuth } from "../../contexts";
 import { useToast } from "../../hooks/useToast";
@@ -134,4 +134,3 @@ const AccessSectionForm = memo(function AccessSectionForm({
 });
 
 export default AccessSectionForm;
-

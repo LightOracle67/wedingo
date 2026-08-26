@@ -110,7 +110,8 @@ const TokensTab = memo(function TokensTab() {
     [loadTokens, t],
   );
 
-  const handleCleanup = useCallback(async () => {    if (!(await confirm({ message: t("superadmin.cleanupConfirm") }))) return;
+  const handleCleanup = useCallback(async () => {
+    if (!(await confirm({ message: t("superadmin.cleanupConfirm") }))) return;
     setError("");
     setMessage("");
     try {
@@ -239,7 +240,11 @@ const TokensTab = memo(function TokensTab() {
 
   // Migra en lote los tokens legacy seleccionados (los hashed ya están migrados).
   const handleBulkMigrate = useCallback(async () => {
-    if (selectedLegacy.length === 0 || !(await confirm({ message: t("superadmin.migrateSelectedConfirm", { count: selectedLegacy.length }) }))) return;
+    if (
+      selectedLegacy.length === 0 ||
+      !(await confirm({ message: t("superadmin.migrateSelectedConfirm", { count: selectedLegacy.length }) }))
+    )
+      return;
     setError("");
     setMessage("");
     try {
@@ -262,11 +267,18 @@ const TokensTab = memo(function TokensTab() {
     <div>
       <div className="setup-token-card" style={{ marginBottom: "1rem" }}>
         <p style={{ margin: 0, color: "var(--setup-title)", fontSize: "0.9rem" }}>
-          {t("superadmin.tokensStats", { total: tokens.length + hashedTokens.length, used: 0, available: tokens.length + hashedTokens.length })}
+          {t("superadmin.tokensStats", {
+            total: tokens.length + hashedTokens.length,
+            used: 0,
+            available: tokens.length + hashedTokens.length,
+          })}
         </p>
       </div>
 
-      <div className="setup-actions" style={{ marginBottom: "1rem", display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
+      <div
+        className="setup-actions"
+        style={{ marginBottom: "1rem", display: "flex", gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}
+      >
         <button className="setup-button setup-button--ghost" type="button" onClick={handleCleanup}>
           {t("superadmin.cleanUnused")}
         </button>
@@ -281,12 +293,19 @@ const TokensTab = memo(function TokensTab() {
         />
       </div>
 
-      {(conflicts.duplicateInvites.length > 0 || conflicts.duplicateLegacy.length > 0) ? (
+      {conflicts.duplicateInvites.length > 0 || conflicts.duplicateLegacy.length > 0 ? (
         <div
           className="setup-background-panel"
-          style={{ marginBottom: "1rem", borderColor: "#f6c7c7", borderLeft: "3px solid #ef4444", padding: "0.6rem 0.9rem" }}
+          style={{
+            marginBottom: "1rem",
+            borderColor: "#f6c7c7",
+            borderLeft: "3px solid #ef4444",
+            padding: "0.6rem 0.9rem",
+          }}
         >
-          <p className="setup-label" style={{ color: "#ef4444" }}>{t("superadmin.tokenConflictsTitle")}</p>
+          <p className="setup-label" style={{ color: "#ef4444" }}>
+            {t("superadmin.tokenConflictsTitle")}
+          </p>
           {conflicts.duplicateLegacy.length > 0 ? (
             <p className="setup-help" style={{ margin: "0.2rem 0 0" }}>
               {t("superadmin.tokenConflictsLegacy")}: {conflicts.duplicateLegacy.join(", ")}

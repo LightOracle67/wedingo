@@ -48,13 +48,6 @@ describe("sectionHasContent", () => {
     expect(sectionHasContent("hero", {})).toBe(true);
   });
 
-
-
-
-
-
-
-
   it("hides the gallery when it has no images and shows it with images", () => {
     // Por defecto (p. ej. en el guardado del admin) la galería es visible.
     expect(sectionHasContent("gallery", {})).toBe(true);

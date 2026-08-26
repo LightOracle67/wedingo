@@ -108,10 +108,16 @@ function menuLabel(menu: string, t: (key: string) => string): string {
 export function buildRSVPSheet(entries: RsvpRowLike[], t: (key: string) => string): ExcelSheet {
   const rows: Array<Array<string | number>> = (entries || []).map((e) => [
     e.guestName || "",
-    e.attendance === "yes" ? t("attendance.attendingValue") : e.attendance === "no" ? t("attendance.notAttendingValue") : "",
+    e.attendance === "yes"
+      ? t("attendance.attendingValue")
+      : e.attendance === "no"
+        ? t("attendance.notAttendingValue")
+        : "",
     menuLabel(e.mealChoice || "", t),
     e.dietaryInfo || "",
-    [e.transportChoice || "", e.transportMode && e.transportMode !== "own" ? `(${e.transportMode})` : ""].filter(Boolean).join(" "),
+    [e.transportChoice || "", e.transportMode && e.transportMode !== "own" ? `(${e.transportMode})` : ""]
+      .filter(Boolean)
+      .join(" "),
     e.isChild ? t("attendance.childYes") : "",
     [e.phone, e.email].filter(Boolean).join(" / "),
     e.submittedAt ? excelDate(e.submittedAt) : "",
@@ -227,7 +233,18 @@ export function buildMetricsSheet(funnel: MetricRowLike[]): ExcelSheet {
   ]);
   return {
     name: "Métricas",
-    headers: ["Token", "Invitación", "Admin", "Fecha boda", "Visitas", "RSVP", "Confirmados", "Declinados", "Acompañantes", "Conversión(%)"],
+    headers: [
+      "Token",
+      "Invitación",
+      "Admin",
+      "Fecha boda",
+      "Visitas",
+      "RSVP",
+      "Confirmados",
+      "Declinados",
+      "Acompañantes",
+      "Conversión(%)",
+    ],
     rows,
     colWidths: [12, 24, 16, 14, 10, 10, 12, 12, 14, 12],
   };
@@ -239,9 +256,7 @@ export function buildMetricsSheet(funnel: MetricRowLike[]): ExcelSheet {
  * Hoja "Invitados": cada confirmación de cada invitación (se aplica el mismo
  * filtro de invitación que usaba el CSV: solo respuestas del token en curso).
  */
-export function buildGlobalGuestsSheet(
-  perInvite: Array<{ invite: InviteRowLike; rsvps: RsvpDocLike[] }>,
-): ExcelSheet {
+export function buildGlobalGuestsSheet(perInvite: Array<{ invite: InviteRowLike; rsvps: RsvpDocLike[] }>): ExcelSheet {
   const rows: Array<Array<string | number>> = [];
   for (const { invite, rsvps } of perInvite || []) {
     for (const rd of rsvps || []) {
@@ -251,7 +266,9 @@ export function buildGlobalGuestsSheet(
         `${invite.firstName} ${invite.secondName}`.trim(),
         String(rd.guestName || ""),
         String(rd.attendance || ""),
-        Array.isArray(rd.attendees) ? (rd.attendees as Array<{ menu?: string }>).map((a) => a.menu || "").join("; ") : String(rd.mealChoice || ""),
+        Array.isArray(rd.attendees)
+          ? (rd.attendees as Array<{ menu?: string }>).map((a) => a.menu || "").join("; ")
+          : String(rd.mealChoice || ""),
         Array.isArray(rd.allergiesOther) ? (rd.allergiesOther as string[]).join("; ") : String(rd.dietaryInfo || ""),
         String(rd.phone || ""),
         String(rd.email || ""),
@@ -303,12 +320,7 @@ function formatSubmittedDate(raw: unknown): string {
     const asObj = raw as { seconds?: unknown; toDate?: () => unknown };
     const secs = typeof asObj.seconds === "number" ? asObj.seconds : null;
     const ms = secs !== null ? secs * 1000 : null;
-    const date =
-      ms !== null
-        ? new Date(ms)
-        : typeof asObj.toDate === "function"
-          ? (asObj.toDate() as Date)
-          : null;
+    const date = ms !== null ? new Date(ms) : typeof asObj.toDate === "function" ? (asObj.toDate() as Date) : null;
     return date && !Number.isNaN(date.getTime()) ? date.toLocaleDateString(i18n.language || "es") : "";
   }
   if (typeof raw === "number") {

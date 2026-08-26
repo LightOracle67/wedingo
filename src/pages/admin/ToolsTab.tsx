@@ -23,8 +23,18 @@ const LAST_SEEN_KEY = "wedin_last_seen_rsvp";
 
 /** Meses en español → número (para el .ics del responsable). */
 const MONTH_TO_NUM: Record<string, number> = {
-  enero: 1, febrero: 2, marzo: 3, abril: 4, mayo: 5, junio: 6,
-  julio: 7, agosto: 8, septiembre: 9, octubre: 10, noviembre: 11, diciembre: 12,
+  enero: 1,
+  febrero: 2,
+  marzo: 3,
+  abril: 4,
+  mayo: 5,
+  junio: 6,
+  julio: 7,
+  agosto: 8,
+  septiembre: 9,
+  octubre: 10,
+  noviembre: 11,
+  diciembre: 12,
 };
 
 /**
@@ -60,7 +70,6 @@ const ToolsTab = memo(function ToolsTab({
   // ── Galería ──
   const [galleryCount, setGalleryCount] = useState(0);
 
-
   const load = useCallback(async () => {
     try {
       const [rsvpSnap, galSnap] = await Promise.all([
@@ -71,10 +80,7 @@ const ToolsTab = memo(function ToolsTab({
       setGalleryCount(galSnap.size || 0);
       // Personas confirmadas (1 + acompañantes por "yes") para el recordatorio.
       setConfirmedPeople(
-        rsvpSnap.docs.reduce(
-          (s, d) => s + (d.data().attendance === "yes" ? Number(d.data().companions) || 1 : 0),
-          0,
-        ),
+        rsvpSnap.docs.reduce((s, d) => s + (d.data().attendance === "yes" ? Number(d.data().companions) || 1 : 0), 0),
       );
       // Badge: confirmaciones posteriores a la última visita. Aislado en su
       // propio try: si el almacenamiento local falla, NO aborta la carga.
@@ -117,8 +123,6 @@ const ToolsTab = memo(function ToolsTab({
       addToast("error", t("errors.generic"));
     }
   }, [guestsInput, expectedGuests, inviteToken, onExpectedGuestsSaved, addToast, t]);
-
-
 
   const openReminder = useCallback(() => {
     const text = reminder.trim() || `${t("tools.reminderDefault")} ${coupleName || ""}\n\n${inviteUrl}`;
@@ -229,7 +233,14 @@ const ToolsTab = memo(function ToolsTab({
       {/* Recordatorio WhatsApp */}
       <div className="setup-background-panel">
         <p className="setup-label">{t("tools.whatsappReminder")}</p>
-        <textarea className="setup-textarea" rows={3} value={reminder} onChange={(e) => setReminder(e.target.value)} placeholder={t("tools.reminderPlaceholder")} aria-label={t("tools.whatsappReminder")} />
+        <textarea
+          className="setup-textarea"
+          rows={3}
+          value={reminder}
+          onChange={(e) => setReminder(e.target.value)}
+          placeholder={t("tools.reminderPlaceholder")}
+          aria-label={t("tools.whatsappReminder")}
+        />
         <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
           <button className="setup-button" type="button" onClick={openReminder}>
             {t("tools.openWhatsapp")}
@@ -237,7 +248,11 @@ const ToolsTab = memo(function ToolsTab({
           <button
             className="setup-button setup-button--ghost setup-button--compact"
             type="button"
-            onClick={() => setReminder(t("tools.reminderGenerated", { count: Math.max(0, Number(expectedGuests) - confirmedPeople) }))}
+            onClick={() =>
+              setReminder(
+                t("tools.reminderGenerated", { count: Math.max(0, Number(expectedGuests) - confirmedPeople) }),
+              )
+            }
             disabled={!Number(expectedGuests)}
           >
             {t("tools.generateReminder")}
@@ -275,7 +290,11 @@ const ToolsTab = memo(function ToolsTab({
             aria-label={t("tools.expectedGuests")}
             style={{ maxWidth: "8rem" }}
           />
-          <button className="setup-button setup-button--compact" type="button" onClick={() => void saveExpectedGuests()}>
+          <button
+            className="setup-button setup-button--compact"
+            type="button"
+            onClick={() => void saveExpectedGuests()}
+          >
             {t("tools.saveGuests")}
           </button>
         </div>
@@ -288,13 +307,23 @@ const ToolsTab = memo(function ToolsTab({
       <div className="setup-background-panel">
         <p className="setup-label">{t("tools.quickActions")}</p>
         <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
-          <button className="setup-button setup-button--compact" type="button" onClick={() => void downloadGallery()} disabled={galleryCount === 0}>
+          <button
+            className="setup-button setup-button--compact"
+            type="button"
+            onClick={() => void downloadGallery()}
+            disabled={galleryCount === 0}
+          >
             {t("tools.downloadGallery", { count: galleryCount })}
           </button>
           <button className="setup-button setup-button--compact" type="button" onClick={downloadIcs}>
             {t("tools.icsButton")}
           </button>
-          <a className="setup-button setup-button--ghost setup-button--compact" href={`${inviteUrl}`} target="_blank" rel="noreferrer">
+          <a
+            className="setup-button setup-button--ghost setup-button--compact"
+            href={`${inviteUrl}`}
+            target="_blank"
+            rel="noreferrer"
+          >
             {t("tools.present")}
           </a>
         </div>
@@ -303,10 +332,18 @@ const ToolsTab = memo(function ToolsTab({
       {/* Nota interna */}
       <div className="setup-background-panel">
         <p className="setup-label">{t("tools.internalNote")}</p>
-        <textarea className="setup-textarea" rows={3} value={internalNote} onChange={(e) => setInternalNote(e.target.value)} placeholder={t("tools.internalNotePlaceholder")} aria-label={t("tools.internalNote")} />
-        <button className="setup-button" type="button" onClick={() => void saveNote()}>{t("tools.saveNote")}</button>
+        <textarea
+          className="setup-textarea"
+          rows={3}
+          value={internalNote}
+          onChange={(e) => setInternalNote(e.target.value)}
+          placeholder={t("tools.internalNotePlaceholder")}
+          aria-label={t("tools.internalNote")}
+        />
+        <button className="setup-button" type="button" onClick={() => void saveNote()}>
+          {t("tools.saveNote")}
+        </button>
       </div>
-
     </div>
   );
 });

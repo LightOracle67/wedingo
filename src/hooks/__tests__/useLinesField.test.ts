@@ -28,7 +28,10 @@ describe("useLinesField", () => {
   it("convierte líneas a JSON (parseText) descartando las vacías", () => {
     const { result } = renderHook(() => useLinesField<Gift>(giftOptions));
     expect(result.current.parseText("Tostadora | Nueva\n\nTaza | Azul")).toBe(
-      JSON.stringify([{ name: "Tostadora", description: "Nueva" }, { name: "Taza", description: "Azul" }]),
+      JSON.stringify([
+        { name: "Tostadora", description: "Nueva" },
+        { name: "Taza", description: "Azul" },
+      ]),
     );
   });
 
@@ -50,6 +53,11 @@ describe("useLinesField", () => {
         itemToLine: (g) => g.name,
       }),
     );
-    expect(result.current.parseText("A\nB\nC")).toBe(JSON.stringify([{ name: "A", description: "" }, { name: "C", description: "" }]));
+    expect(result.current.parseText("A\nB\nC")).toBe(
+      JSON.stringify([
+        { name: "A", description: "" },
+        { name: "C", description: "" },
+      ]),
+    );
   });
 });

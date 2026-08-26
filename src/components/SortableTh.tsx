@@ -36,8 +36,7 @@ export function SortableTh({ columnKey, order, onSort, children, className, styl
   // aria-sort acepta: "none" | "ascending" | "descending" | "other".
   const ariaSort = order === "asc" ? "ascending" : order === "desc" ? "descending" : "none";
   const label = ariaLabel ?? (typeof children === "string" ? children : "");
-  const sortHint =
-    order === "asc" ? " · ordenado ascendente" : order === "desc" ? " · ordenado descendente" : "";
+  const sortHint = order === "asc" ? " · ordenado ascendente" : order === "desc" ? " · ordenado descendente" : "";
 
   return (
     <th scope="col" aria-sort={ariaSort} className={className} style={style}>

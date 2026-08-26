@@ -97,7 +97,6 @@ const HeroSection = memo(function HeroSection({
   const photoFadeOff = animationsOff.has("hero-photo-fade");
   const godparentGlowOff = animationsOff.has("hero-godparent-glow");
 
-
   // Lista pública de confirmados (prueba social con opt-in): se lee en
   // tiempo real desde confirmedPeople. Solo se monta la suscripción cuando el
   // toggle de la pareja la muestra (evita leer la colección si está oculta);
@@ -155,9 +154,7 @@ const HeroSection = memo(function HeroSection({
   // Boda ya pasada → la invitación se convierte en "recuerdo" (agradecimiento).
   const weddingPassed = weddingDate ? weddingDate.getTime() < Date.now() : false;
   // "Hoy es la boda": pantalla en vivo con la agenda del día.
-  const isWeddingDay = weddingDate
-    ? weddingDate.toDateString() === new Date().toDateString()
-    : false;
+  const isWeddingDay = weddingDate ? weddingDate.toDateString() === new Date().toDateString() : false;
   const agenda = useMemo<Array<{ time: string; text: string; emoji: string }>>(() => {
     try {
       const parsed = JSON.parse(schedule || "[]");
@@ -266,10 +263,22 @@ const HeroSection = memo(function HeroSection({
                 aria-live="polite"
                 style={{ margin: "0.5rem auto 0", maxWidth: "26rem", textAlign: "center" }}
               >
-                <p className="hero-confirmed-people__hint" style={{ margin: 0, fontSize: "0.72rem", color: "var(--invite-copy-color, #c3b193)" }}>
+                <p
+                  className="hero-confirmed-people__hint"
+                  style={{ margin: 0, fontSize: "0.72rem", color: "var(--invite-copy-color, #c3b193)" }}
+                >
                   {t("hero.confirmedPeopleHint", { count: confirmedPeople.length })}
                 </p>
-                <div className="hero-confirmed-people__chips" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0.3rem", marginTop: "0.3rem" }}>
+                <div
+                  className="hero-confirmed-people__chips"
+                  style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    justifyContent: "center",
+                    gap: "0.3rem",
+                    marginTop: "0.3rem",
+                  }}
+                >
                   {confirmedPeople.slice(0, 12).map((name) => (
                     <span
                       key={name}
@@ -317,7 +326,10 @@ const HeroSection = memo(function HeroSection({
                   padding: "0.6rem 0.9rem",
                 }}
               >
-                <p className="setup-label" style={{ margin: 0, fontSize: "0.78rem", color: "var(--invite-copy-color)" }}>
+                <p
+                  className="setup-label"
+                  style={{ margin: 0, fontSize: "0.78rem", color: "var(--invite-copy-color)" }}
+                >
                   {t("hero.todayAgenda")}
                 </p>
                 {agenda.map((ev, i) => (
@@ -331,7 +343,9 @@ const HeroSection = memo(function HeroSection({
                     }}
                   >
                     {ev.emoji} {ev.time ? <strong>{ev.time}</strong> : null} {ev.text}
-                    {i === currentIndex ? <span style={{ marginLeft: "0.35rem", color: "var(--setup-accent)" }}>● {t("hero.now")}</span> : null}
+                    {i === currentIndex ? (
+                      <span style={{ marginLeft: "0.35rem", color: "var(--setup-accent)" }}>● {t("hero.now")}</span>
+                    ) : null}
                   </p>
                 ))}
               </div>
@@ -424,9 +438,7 @@ const HeroSection = memo(function HeroSection({
                     "0 0 8px color-mix(in srgb, var(--flower-accent, #d8b24a) 20%, transparent), 0 0 20px color-mix(in srgb, var(--flower-accent, #d8b24a) 8%, transparent)",
                   // El resplandor pulsante se omite si está desactivado (el
                   // texto se mantiene estático con su text-shadow fijo).
-                  ...(godparentGlowOff
-                    ? {}
-                    : { animation: "godparent-glow 3s ease-in-out infinite" }),
+                  ...(godparentGlowOff ? {} : { animation: "godparent-glow 3s ease-in-out infinite" }),
                 }}
               >
                 {t("hero.withBlessing", { godparent1, godparent2 })}

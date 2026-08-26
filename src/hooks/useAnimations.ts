@@ -41,10 +41,7 @@ export function useAnimations() {
   const { config } = useConfig();
 
   // Base global decidida por los novios (ids sanitizados al cargar config).
-  const adminDisabled = useMemo(
-    () => parseDisabledAnimations(config.disabledAnimations),
-    [config.disabledAnimations],
-  );
+  const adminDisabled = useMemo(() => parseDisabledAnimations(config.disabledAnimations), [config.disabledAnimations]);
 
   // "Todo apagado" si lo pide el admin O el invitado.
   const allOff = adminDisabled.has(ALL_ANIMATIONS_KEY) || guestDisabled.has(ALL_ANIMATIONS_KEY);

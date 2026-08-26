@@ -121,10 +121,7 @@ describe("AnimationsContext", () => {
   });
 
   it("setGuestGroup(true) reactiva el grupo completo (set vacío)", () => {
-    window.localStorage.setItem(
-      "wedin_animations",
-      JSON.stringify({ disabled: "envelope-flap,envelope-lights" }),
-    );
+    window.localStorage.setItem("wedin_animations", JSON.stringify({ disabled: "envelope-flap,envelope-lights" }));
     render(
       <AnimationsProvider>
         <Probe />

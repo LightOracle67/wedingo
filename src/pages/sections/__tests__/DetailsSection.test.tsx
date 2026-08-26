@@ -170,12 +170,7 @@ describe("DetailsSection", () => {
   });
 
   it("renders the Instagram link when provided", () => {
-    render(
-      <DetailsSection
-        {...baseProps}
-        instagramUrl="https://www.instagram.com/ana"
-      />,
-    );
+    render(<DetailsSection {...baseProps} instagramUrl="https://www.instagram.com/ana" />);
     expect(screen.getByLabelText("details.instagramLabel")).toBeDefined();
   });
 

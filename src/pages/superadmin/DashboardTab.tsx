@@ -128,7 +128,11 @@ const DashboardTab = memo(function DashboardTab() {
         const th = String(inv.theme || "sin tema");
         themes[th] = (themes[th] || 0) + 1;
       }
-      setThemeCounts(Object.entries(themes).sort((a, b) => b[1] - a[1]).map(([theme, count]) => ({ theme, count })));
+      setThemeCounts(
+        Object.entries(themes)
+          .sort((a, b) => b[1] - a[1])
+          .map(([theme, count]) => ({ theme, count })),
+      );
     } catch {}
 
     // F2-2: invitaciones con más visitas sin confirmar (embudo).
@@ -186,7 +190,10 @@ const DashboardTab = memo(function DashboardTab() {
       if (!(d > 0)) return false;
       return d >= Date.now() && d <= Date.now() + expiringDays * 86400000;
     })
-    .map((inv) => `${String(inv.weddingDay || 1)} ${String(inv.weddingMonth || "")} ${String(inv.weddingYear || "")} (${inv.id})`)
+    .map(
+      (inv) =>
+        `${String(inv.weddingDay || 1)} ${String(inv.weddingMonth || "")} ${String(inv.weddingYear || "")} (${inv.id})`,
+    )
     .slice(0, 8);
 
   // Agenda de bodas: próximos eventos ordenados por fecha.
@@ -196,7 +203,10 @@ const DashboardTab = memo(function DashboardTab() {
       const monthIndex = (inv.weddingMonth ? MONTH_VALUE_TO_NUMBER[inv.weddingMonth] || 1 : 1) - 1;
       const day = Number(inv.weddingDay) || 1;
       const ts = new Date(Number(inv.weddingYear), monthIndex, day).getTime();
-      return { ts, label: `${String(inv.firstName || "?")} & ${String(inv.secondName || "?")} — ${day}/${inv.weddingMonth}/${inv.weddingYear} (${inv.id})` };
+      return {
+        ts,
+        label: `${String(inv.firstName || "?")} & ${String(inv.secondName || "?")} — ${day}/${inv.weddingMonth}/${inv.weddingYear} (${inv.id})`,
+      };
     })
     .filter((w) => w.ts > 0)
     .sort((a, b) => a.ts - b.ts)
@@ -235,7 +245,12 @@ const DashboardTab = memo(function DashboardTab() {
           const subFiles = await listAll(sub);
           await Promise.allSettled(subFiles.items.map((item) => deleteObject(item)));
         }
-        removed += files.items.length + (await Promise.all(files.prefixes.map(async (sub) => (await listAll(sub)).items.length))).reduce((a, b) => a + b, 0);
+        removed +=
+          files.items.length +
+          (await Promise.all(files.prefixes.map(async (sub) => (await listAll(sub)).items.length))).reduce(
+            (a, b) => a + b,
+            0,
+          );
       }
       addToast("success", t("superadmin.gcStorageDone", { count: removed }));
     } catch {
@@ -259,7 +274,27 @@ const DashboardTab = memo(function DashboardTab() {
         // Subcolecciones de la invitación (medios y FUNCIONES SOCIALES con
         // datos de invitados) + consentLog (consentimiento de cookies): no
         // dejar datos personales huérfanos (GDPR art. 17).
-        const SUB_COLLECTIONS = ["gallery", "audio", "configImages", "reactions", "notes", "songs", "rides", "gifts", "_counters", "consentLog", "accessLog", "confirmedPeople", "_backup", "venuepoints", "dayphotos", "mailbox", "toasts", "visitLog", "sections"];
+        const SUB_COLLECTIONS = [
+          "gallery",
+          "audio",
+          "configImages",
+          "reactions",
+          "notes",
+          "songs",
+          "rides",
+          "gifts",
+          "_counters",
+          "consentLog",
+          "accessLog",
+          "confirmedPeople",
+          "_backup",
+          "venuepoints",
+          "dayphotos",
+          "mailbox",
+          "toasts",
+          "visitLog",
+          "sections",
+        ];
         for (const name of SUB_COLLECTIONS) {
           const subSnap = await getDocs(collection(db, "invitations", invitation.id, name));
           subSnap.docs.forEach((d: QueryDocumentSnapshot<DocumentData>) => batch.delete(d.ref));
@@ -447,7 +482,9 @@ const DashboardTab = memo(function DashboardTab() {
       {topVisits.length > 0 ? (
         <div className="setup-background-panel" style={{ marginTop: "0.75rem" }}>
           <p className="setup-label">{t("superadmin.topVisits")}</p>
-          <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}>
+          <ul
+            style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}
+          >
             {topVisits.map((v) => (
               <li key={v.id} style={{ marginBottom: "0.2rem" }}>
                 {v.id} — {v.visits} {t("superadmin.visitsWord")} · {v.rsvp} {t("superadmin.rsvpsWord")}
@@ -477,7 +514,9 @@ const DashboardTab = memo(function DashboardTab() {
       {expiringSoon.length > 0 ? (
         <div className="setup-background-panel" style={{ marginTop: "0.75rem", borderColor: "#e0a54a" }}>
           <p className="setup-label">{t("superadmin.expiringSoon", { days: expiringDays })}</p>
-          <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}>
+          <ul
+            style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}
+          >
             {expiringSoon.map((e, i) => (
               <li key={i} style={{ marginBottom: "0.2rem" }}>
                 {e}
@@ -491,7 +530,9 @@ const DashboardTab = memo(function DashboardTab() {
       {upcomingWeddings.length > 0 ? (
         <div className="setup-background-panel" style={{ marginTop: "0.75rem" }}>
           <p className="setup-label">{t("superadmin.upcomingWeddings")}</p>
-          <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}>
+          <ul
+            style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}
+          >
             {upcomingWeddings.map((w, i) => (
               <li key={i} style={{ marginBottom: "0.2rem" }}>
                 {w.label}
@@ -509,12 +550,16 @@ const DashboardTab = memo(function DashboardTab() {
             {t("superadmin.noActivity")}
           </p>
         ) : (
-          <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}>
+          <ul
+            style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.8rem", color: "var(--setup-subtitle)" }}
+          >
             {recentActivity.map((a, i) => (
               <li key={i} style={{ marginBottom: "0.2rem" }}>
                 <strong>{a.action}</strong>
                 {a.detail ? ` — ${a.detail}` : ""}
-                {a.ts ? <span style={{ color: "var(--setup-muted)" }}> · {new Date(a.ts).toLocaleString()}</span> : null}
+                {a.ts ? (
+                  <span style={{ color: "var(--setup-muted)" }}> · {new Date(a.ts).toLocaleString()}</span>
+                ) : null}
               </li>
             ))}
           </ul>

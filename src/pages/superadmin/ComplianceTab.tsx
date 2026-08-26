@@ -197,7 +197,9 @@ const ComplianceTab = memo(function ComplianceTab() {
         <div className="support-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
           {templates.map((tp) => (
             <div key={tp.code} className="setup-background-panel" style={{ padding: "0.6rem" }}>
-              <p className="setup-label" style={{ fontSize: "0.8rem" }}>{tp.label}</p>
+              <p className="setup-label" style={{ fontSize: "0.8rem" }}>
+                {tp.label}
+              </p>
               <p className="setup-help" style={{ fontSize: "0.72rem", lineHeight: 1.5, whiteSpace: "pre-line" }}>
                 {tp.text}
               </p>

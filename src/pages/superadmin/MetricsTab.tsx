@@ -188,7 +188,9 @@ const MetricsTab = memo(function MetricsTab() {
           }
         } catch {}
       }
-      setOriginStats([...counts.entries()].map(([origin, count]) => ({ origin, count })).sort((a, b) => b.count - a.count));
+      setOriginStats(
+        [...counts.entries()].map(([origin, count]) => ({ origin, count })).sort((a, b) => b.count - a.count),
+      );
     } catch {
       setError(t("superadmin.metrics.storageError"));
     }
@@ -216,7 +218,10 @@ const MetricsTab = memo(function MetricsTab() {
     }
     const { exportToXlsx } = await import("../../lib/excel-utils");
     const { buildGlobalGuestsSheet } = await import("../../lib/excel-builders");
-    const perInvite: Array<{ invite: { id: string; firstName: string; secondName: string }; rsvps: Array<Record<string, unknown>> }> = [];
+    const perInvite: Array<{
+      invite: { id: string; firstName: string; secondName: string };
+      rsvps: Array<Record<string, unknown>>;
+    }> = [];
     for (const r of rows) {
       try {
         const rsvpSnap = await getDocs(rsvpByInviteRef(r.id));
@@ -239,7 +244,8 @@ const MetricsTab = memo(function MetricsTab() {
   const calculateSocial = useCallback(async () => {
     setSocialLoading(true);
     setError("");
-    const out: Array<{ token: string; reactions: number; notes: number; songs: number; rides: number; gifts: number }> = [];
+    const out: Array<{ token: string; reactions: number; notes: number; songs: number; rides: number; gifts: number }> =
+      [];
     try {
       for (const r of rows) {
         const counts = { reactions: 0, notes: 0, songs: 0, rides: 0, gifts: 0 };
@@ -255,8 +261,7 @@ const MetricsTab = memo(function MetricsTab() {
       }
       out.sort(
         (a, b) =>
-          b.reactions + b.notes + b.songs + b.rides + b.gifts -
-          (a.reactions + a.notes + a.songs + a.rides + a.gifts),
+          b.reactions + b.notes + b.songs + b.rides + b.gifts - (a.reactions + a.notes + a.songs + a.rides + a.gifts),
       );
       setSocialStats(out);
     } catch {
@@ -312,7 +317,14 @@ const MetricsTab = memo(function MetricsTab() {
         <div className="admin-flex admin-gap-sm" style={{ flexWrap: "wrap", gap: "0.5rem 0" }}>
           {growth.map((m) => (
             <div key={m.label} style={{ flex: "1 1 0", minWidth: "52px", textAlign: "center" }}>
-              <div style={{ height: `${Math.max(4, m.count * 14)}px`, background: "var(--setup-accent)", borderRadius: "0.25rem", opacity: m.count ? 1 : 0.25 }} />
+              <div
+                style={{
+                  height: `${Math.max(4, m.count * 14)}px`,
+                  background: "var(--setup-accent)",
+                  borderRadius: "0.25rem",
+                  opacity: m.count ? 1 : 0.25,
+                }}
+              />
               <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.62rem" }}>
                 {m.label} · {m.count}
               </p>
@@ -323,19 +335,42 @@ const MetricsTab = memo(function MetricsTab() {
 
       {/* ── Almacenamiento (bajo demanda) ── */}
       <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
-        <button type="button" className="setup-button setup-button--compact" onClick={() => void calculateStorage()} disabled={calcStorage}>
+        <button
+          type="button"
+          className="setup-button setup-button--compact"
+          onClick={() => void calculateStorage()}
+          disabled={calcStorage}
+        >
           {calcStorage ? t("common.loading") : t("superadmin.metrics.storageBtn")}
         </button>
-        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportExcel()}>
+        <button
+          type="button"
+          className="setup-button setup-button--ghost setup-button--compact"
+          onClick={() => void exportExcel()}
+        >
           {t("superadmin.metrics.excelBtn")}
         </button>
-        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportGuestsExcel()}>
+        <button
+          type="button"
+          className="setup-button setup-button--ghost setup-button--compact"
+          onClick={() => void exportGuestsExcel()}
+        >
           {t("superadmin.metrics.guestsExcelBtn")}
         </button>
-        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void calculateSocial()} disabled={socialLoading}>
+        <button
+          type="button"
+          className="setup-button setup-button--ghost setup-button--compact"
+          onClick={() => void calculateSocial()}
+          disabled={socialLoading}
+        >
           {socialLoading ? t("common.loading") : t("superadmin.metrics.socialBtn")}
         </button>
-        <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void calculateOrigins()} disabled={originLoading}>
+        <button
+          type="button"
+          className="setup-button setup-button--ghost setup-button--compact"
+          onClick={() => void calculateOrigins()}
+          disabled={originLoading}
+        >
           {originLoading ? t("common.loading") : t("superadmin.metrics.originsBtn")}
         </button>
       </div>
@@ -353,7 +388,9 @@ const MetricsTab = memo(function MetricsTab() {
             <tbody>
               {storageRows.map((s) => (
                 <tr key={s.token}>
-                  <td className="admin-text-mono" style={{ fontSize: "0.78rem" }}>{s.token}</td>
+                  <td className="admin-text-mono" style={{ fontSize: "0.78rem" }}>
+                    {s.token}
+                  </td>
                   <td>{s.images}</td>
                   <td>{s.totalMB} MB</td>
                 </tr>
@@ -381,7 +418,9 @@ const MetricsTab = memo(function MetricsTab() {
             <tbody>
               {socialStats.map((s) => (
                 <tr key={s.token}>
-                  <td className="admin-text-mono" style={{ fontSize: "0.78rem" }}>{s.token}</td>
+                  <td className="admin-text-mono" style={{ fontSize: "0.78rem" }}>
+                    {s.token}
+                  </td>
                   <td>{s.reactions}</td>
                   <td>{s.notes}</td>
                   <td>{s.songs}</td>
@@ -400,7 +439,16 @@ const MetricsTab = memo(function MetricsTab() {
           <p className="setup-label">{t("superadmin.metrics.originsTitle")}</p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
             {originStats.slice(0, 30).map((o) => (
-              <span key={o.origin} style={{ fontSize: "0.78rem", border: "1px solid var(--setup-border)", borderRadius: "999px", padding: "0.15rem 0.6rem", color: "var(--setup-subtitle)" }}>
+              <span
+                key={o.origin}
+                style={{
+                  fontSize: "0.78rem",
+                  border: "1px solid var(--setup-border)",
+                  borderRadius: "999px",
+                  padding: "0.15rem 0.6rem",
+                  color: "var(--setup-subtitle)",
+                }}
+              >
                 {o.origin} · {o.count}
               </span>
             ))}
@@ -411,10 +459,14 @@ const MetricsTab = memo(function MetricsTab() {
       {/* ── Ranking por visitas ── */}
       <div className="setup-background-panel">
         <p className="setup-label">{t("superadmin.metrics.topVisitsTitle")}</p>
-        <ol style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.85rem", color: "var(--setup-subtitle)" }}>
+        <ol
+          style={{ margin: "0.3rem 0 0", paddingLeft: "1.2rem", fontSize: "0.85rem", color: "var(--setup-subtitle)" }}
+        >
           {topByVisits.slice(0, 10).map((r) => (
             <li key={r.id} style={{ marginBottom: "0.2rem" }}>
-              <code>{r.id}</code> — {r.firstName ? `${r.firstName} & ${r.secondName}` : t("superadmin.data.emptyInvitation")} · {r.visits} {t("superadmin.visitsWord")}
+              <code>{r.id}</code> —{" "}
+              {r.firstName ? `${r.firstName} & ${r.secondName}` : t("superadmin.data.emptyInvitation")} · {r.visits}{" "}
+              {t("superadmin.visitsWord")}
             </li>
           ))}
         </ol>
@@ -438,7 +490,9 @@ const MetricsTab = memo(function MetricsTab() {
           <tbody>
             {funnel.map((r) => (
               <tr key={r.id}>
-                <td className="admin-text-mono" style={{ fontSize: "0.75rem" }}>{r.id}</td>
+                <td className="admin-text-mono" style={{ fontSize: "0.75rem" }}>
+                  {r.id}
+                </td>
                 <td>{r.firstName ? `${r.firstName} & ${r.secondName}` : t("superadmin.data.emptyInvitation")}</td>
                 <td>{r.weddingDateLabel}</td>
                 <td>{r.visits}</td>

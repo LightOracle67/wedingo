@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo  } from "react";
+import { memo, useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useConfigActions, useFormField } from "../../contexts";
 import {
@@ -213,9 +213,7 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-            {weddingMapStatic === "true" ? (
-              <div aria-hidden="true" style={{ position: "absolute", inset: 0 }} />
-            ) : null}
+            {weddingMapStatic === "true" ? <div aria-hidden="true" style={{ position: "absolute", inset: 0 }} /> : null}
           </div>
         </div>
       ) : null}
@@ -324,7 +322,11 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
           addLabel={t("setup.scheduleAddEvent")}
           removeLabel={t("setup.scheduleRemoveEvent")}
           maxLabel={t("setup.scheduleMaxEvents", { max: MAX_SCHEDULE_EVENTS })}
-          onAdd={() => addScheduleEvent({ time: "", text: "", emoji: "" }, (json) => updateFormField("weddingScheduleEvents", json))}
+          onAdd={() =>
+            addScheduleEvent({ time: "", text: "", emoji: "" }, (json) =>
+              updateFormField("weddingScheduleEvents", json),
+            )
+          }
           onRemove={(i) => removeScheduleEvent(i, (json) => updateFormField("weddingScheduleEvents", json))}
           renderRow={(i) => (
             <>
@@ -384,4 +386,3 @@ const DateSectionForm = memo(function DateSectionForm({ prefix = "" }: { prefix?
 });
 
 export default DateSectionForm;
-

@@ -214,12 +214,13 @@ export const FONT_OPTIONS = [
   { value: "open-dyslexic", label: "OpenDyslexic", family: "'OpenDyslexic', Georgia, serif" },
 ] as const;
 
-export const FONT_FAMILY: Record<string, string> = Object.fromEntries(
-  FONT_OPTIONS.map((f) => [f.value, f.family]),
-);
+export const FONT_FAMILY: Record<string, string> = Object.fromEntries(FONT_OPTIONS.map((f) => [f.value, f.family]));
 
 /** Claves de color personalizables → nombre de la variable CSS que sobrescribe. */
-export const COLOR_FIELDS: Array<{ field: "colorAccent" | "colorTitle" | "colorCopy" | "colorBackground"; cssVar: string }> = [
+export const COLOR_FIELDS: Array<{
+  field: "colorAccent" | "colorTitle" | "colorCopy" | "colorBackground";
+  cssVar: string;
+}> = [
   { field: "colorAccent", cssVar: "--invite-core-color" },
   { field: "colorTitle", cssVar: "--invite-title-color" },
   { field: "colorCopy", cssVar: "--invite-copy-color" },

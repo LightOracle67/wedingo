@@ -96,14 +96,19 @@ vi.mock("../../hooks/useFocusTrap", () => ({
 
 vi.mock("../../lib/platform-settings", () => ({
   usePlatformSettings: () => ({
-    settings: { maintenance: "false", bannerEnabled: "false", bannerText: "", blockedUrls: "", blockedTokens: "", expiringDays: "30" },
+    settings: {
+      maintenance: "false",
+      bannerEnabled: "false",
+      bannerText: "",
+      blockedUrls: "",
+      blockedTokens: "",
+      expiringDays: "30",
+    },
     loaded: true,
     reload: () => undefined,
   }),
   tokenIsBlocked: () => false,
 }));
-
-
 
 import LandingPage from "../LandingPage";
 

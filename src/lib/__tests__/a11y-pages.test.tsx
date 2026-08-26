@@ -289,10 +289,10 @@ describe("a11y-page-audit", () => {
       transportTime: "",
       transportPlace: "",
       digitalSignature: false,
-  phone: "",
-  email: "",
-  contactConsent: false,
-    showNameInConfirmed: false,
+      phone: "",
+      email: "",
+      contactConsent: false,
+      showNameInConfirmed: false,
     };
     const { container } = render(
       <RsvpFormContext.Provider

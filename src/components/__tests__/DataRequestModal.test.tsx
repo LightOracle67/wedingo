@@ -24,8 +24,6 @@ vi.mock("../../lib/data-request", () => ({
 
 vi.mock("../../lib/sentry", () => ({ enableSentryTracking: vi.fn(), disableSentryTracking: vi.fn() }));
 
-
-
 import DataRequestModal from "../DataRequestModal";
 
 describe("DataRequestModal", () => {
@@ -49,7 +47,6 @@ describe("DataRequestModal", () => {
 
   it("exports even when the local export returns no data", () => {
     const create = vi.fn(() => ({ toString: () => "blob:url" }));
-
 
     const revoke = vi.fn();
     vi.stubGlobal("URL", { createObjectURL: create, revokeObjectURL: revoke });

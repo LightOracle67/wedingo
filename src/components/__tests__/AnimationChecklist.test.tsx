@@ -29,13 +29,7 @@ describe("AnimationChecklist", () => {
 
   it("marca el checkbox de la sección cuando todos sus ids están activos", () => {
     const active = new Set(envelopeIds);
-    render(
-      <AnimationChecklist
-        checked={(id) => active.has(id)}
-        onToggle={() => {}}
-        onGroupToggle={() => {}}
-      />,
-    );
+    render(<AnimationChecklist checked={(id) => active.has(id)} onToggle={() => {}} onGroupToggle={() => {}} />);
     const group = document.getElementById("group-envelope") as HTMLInputElement;
     expect(group).toBeDefined();
     expect(group.checked).toBe(true);
@@ -44,13 +38,7 @@ describe("AnimationChecklist", () => {
 
   it("desmarca el checkbox de la sección cuando TODOS sus ids están desactivados y deshabilita las filas", () => {
     const checkedAll = new Set(envelopeIds);
-    render(
-      <AnimationChecklist
-        checked={(id) => !checkedAll.has(id)}
-        onToggle={() => {}}
-        onGroupToggle={() => {}}
-      />,
-    );
+    render(<AnimationChecklist checked={(id) => !checkedAll.has(id)} onToggle={() => {}} onGroupToggle={() => {}} />);
     const group = document.getElementById("group-envelope") as HTMLInputElement;
     expect(group.checked).toBe(false);
     // Las filas individuales del grupo quedan deshabilitadas.
@@ -60,13 +48,7 @@ describe("AnimationChecklist", () => {
 
   it("llama a onGroupToggle al marcar/desmarcar la sección", () => {
     const onGroupToggle = vi.fn();
-    render(
-      <AnimationChecklist
-        checked={() => true}
-        onToggle={() => {}}
-        onGroupToggle={onGroupToggle}
-      />,
-    );
+    render(<AnimationChecklist checked={() => true} onToggle={() => {}} onGroupToggle={onGroupToggle} />);
     fireEvent.click(document.getElementById("group-envelope") as HTMLInputElement);
     expect(onGroupToggle).toHaveBeenCalledWith("envelope", false);
   });
@@ -74,13 +56,7 @@ describe("AnimationChecklist", () => {
   it("muestra estado intermedio (indeterminate) cuando solo algunos ids están desactivados", () => {
     // Desactiva solo el primer id del grupo → estado mixto.
     const disabledOne = new Set([envelopeIds[0]]);
-    render(
-      <AnimationChecklist
-        checked={(id) => !disabledOne.has(id)}
-        onToggle={() => {}}
-        onGroupToggle={() => {}}
-      />,
-    );
+    render(<AnimationChecklist checked={(id) => !disabledOne.has(id)} onToggle={() => {}} onGroupToggle={() => {}} />);
     const group = document.getElementById("group-envelope") as HTMLInputElement;
     expect(group.checked).toBe(false);
     expect(group.indeterminate).toBe(true);

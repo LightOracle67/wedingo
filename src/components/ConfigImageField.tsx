@@ -97,7 +97,11 @@ const ConfigImageField = memo(function ConfigImageField({
           {currentLabel ? (
             <div>
               <p className="setup-selected-background__title">{currentLabel}</p>
-              <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={onRemove}>
+              <button
+                className="setup-button setup-button--ghost setup-button--compact"
+                type="button"
+                onClick={onRemove}
+              >
                 {removeLabel}
               </button>
             </div>

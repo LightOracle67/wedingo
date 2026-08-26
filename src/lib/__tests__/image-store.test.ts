@@ -114,18 +114,24 @@ describe("image-store", () => {
 
   it("uploadImage throws when encrypt returns null", async () => {
     mockEncrypt.mockResolvedValueOnce(null as unknown as string);
-    await expect(uploadImage("token", new File([], "test.jpg", { type: "image/jpeg" }))).rejects.toThrow("errors.encryptFailed");
+    await expect(uploadImage("token", new File([], "test.jpg", { type: "image/jpeg" }))).rejects.toThrow(
+      "errors.encryptFailed",
+    );
   });
 
   it("uploadImage throws on encrypt failure", async () => {
     mockEncrypt.mockRejectedValueOnce(new Error("errors.encryptFailed"));
-    await expect(uploadImage("token", new File([], "test.jpg", { type: "image/jpeg" }))).rejects.toThrow("errors.encryptFailed");
+    await expect(uploadImage("token", new File([], "test.jpg", { type: "image/jpeg" }))).rejects.toThrow(
+      "errors.encryptFailed",
+    );
   });
 
   it("uploadImage throws when image exceeds size limit", async () => {
     const largeData = "x".repeat(1300000);
     mockEncrypt.mockResolvedValueOnce(largeData);
-    await expect(uploadImage("token", new File([], "test.jpg", { type: "image/jpeg" }))).rejects.toThrow("errors.imageTooLarge");
+    await expect(uploadImage("token", new File([], "test.jpg", { type: "image/jpeg" }))).rejects.toThrow(
+      "errors.imageTooLarge",
+    );
   });
 
   it("addGalleryImage adds a document and returns id and dataUrl", async () => {

@@ -175,7 +175,10 @@ export async function decrypt(ciphertext: string, token: string) {
   } catch (err) {
     // Fallo de descifrado: se registra sin el token para diagnóstico y se
     // devuelve vacío para no romper el render.
-    safeLogError(["[crypto-utils]", "decrypt failed; returning empty"], err instanceof Error ? err : new Error("decrypt failed"));
+    safeLogError(
+      ["[crypto-utils]", "decrypt failed; returning empty"],
+      err instanceof Error ? err : new Error("decrypt failed"),
+    );
     return "";
   }
 }

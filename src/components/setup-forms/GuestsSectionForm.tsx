@@ -94,11 +94,7 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
             { value: "playArea", key: "kidsPolicy.options.playArea" },
             { value: "supervised", key: "kidsPolicy.options.supervised" },
           ].map(({ value, key }) => (
-            <label
-              key={value}
-              className="setup-checkbox-label"
-              style={{ padding: "0.35rem 0" }}
-            >
+            <label key={value} className="setup-checkbox-label" style={{ padding: "0.35rem 0" }}>
               <input
                 id={id("kids-" + value)}
                 type="checkbox"
@@ -130,11 +126,7 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
             { value: "comfortable", key: "setup.dressCodeComfortable" },
             { value: "custom", key: "setup.dressCodeOther" },
           ].map(({ value, key }) => (
-            <label
-              key={value}
-              className="setup-checkbox-label"
-              style={{ padding: "0.35rem 0" }}
-            >
+            <label key={value} className="setup-checkbox-label" style={{ padding: "0.35rem 0" }}>
               <input
                 id={id(
                   "dressCode-" +
@@ -180,10 +172,7 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
         {t("setup.menuCelebrationLabel")}
       </p>
 
-      <label
-        className="setup-checkbox-label"
-        style={{ marginBottom: "0.5rem" }}
-      >
+      <label className="setup-checkbox-label" style={{ marginBottom: "0.5rem" }}>
         <input
           id={id("menuEnabled")}
           type="checkbox"
@@ -282,4 +271,3 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
 });
 
 export default GuestsSectionForm;
-

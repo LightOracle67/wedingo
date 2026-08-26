@@ -704,11 +704,14 @@ describe("useSetupAuth", () => {
       setup();
 
       await waitFor(() => {
-        expect(mockSetDoc).toHaveBeenCalledWith("private-session-ref", expect.objectContaining({
-          activeSession: expect.any(Object),
-          sessionExpiresAt: expect.any(Object),
-          setupTokenHash: "",
-        }));
+        expect(mockSetDoc).toHaveBeenCalledWith(
+          "private-session-ref",
+          expect.objectContaining({
+            activeSession: expect.any(Object),
+            sessionExpiresAt: expect.any(Object),
+            setupTokenHash: "",
+          }),
+        );
       });
     });
 

@@ -554,7 +554,6 @@ describe("CoverSectionForm", () => {
     expect(screen.queryByPlaceholderText("setup.welcomeVideoPlaceholder")).toBeNull();
   });
 
-
   // Campos de personalización sin cobertura previa: cada test verifica el
   // wiring completo etiqueta→onChange→updateFormField (persisten vía store).
   it("updates fontHeading on change", () => {
@@ -586,5 +585,4 @@ describe("CoverSectionForm", () => {
     fireEvent.change(input, { target: { value: "https://instagram.com/boda" } });
     expect(mockUpdateFormField).toHaveBeenCalledWith("instagramUrl", "https://instagram.com/boda");
   });
-
 });

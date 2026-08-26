@@ -18,13 +18,7 @@ import CornerDecorations from "../../components/CornerDecorations";
 import { chairPositions, type ShapeTable, type TableSection } from "../../lib/table-geometry";
 
 /** Mesa individual dibujada en el plano (sillas + cuerpo + nombre). */
-function SeatingPlanTable({
-  tb,
-  highlightName,
-}: {
-  tb: ShapeTable;
-  highlightName?: string | undefined;
-}) {
+function SeatingPlanTable({ tb, highlightName }: { tb: ShapeTable; highlightName?: string | undefined }) {
   const chairs = chairPositions(tb.shape, tb.w, tb.h, tb.seats);
   const isHighlighted = !!highlightName && tb.guests.some((g) => g.trim() === highlightName);
   return (
@@ -84,13 +78,7 @@ function SeatingPlanTable({
 }
 
 /** Plano de mesas reutilizable (vista embebida y pantalla completa). */
-function SeatingPlan({
-  tables,
-  highlightName,
-}: {
-  tables: ShapeTable[];
-  highlightName?: string | undefined;
-}) {
+function SeatingPlan({ tables, highlightName }: { tables: ShapeTable[]; highlightName?: string | undefined }) {
   return (
     <div
       style={{
@@ -107,7 +95,17 @@ function SeatingPlan({
         <SeatingPlanTable key={tb.id} tb={tb} highlightName={highlightName} />
       ))}
       {tables.length === 0 ? (
-        <p style={{ position: "absolute", inset: 0, display: "grid", placeItems: "center", color: "rgba(255,255,255,0.5)", fontSize: "0.85rem", margin: 0 }}>
+        <p
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "grid",
+            placeItems: "center",
+            color: "rgba(255,255,255,0.5)",
+            fontSize: "0.85rem",
+            margin: 0,
+          }}
+        >
           {null}
         </p>
       ) : null}
@@ -151,7 +149,7 @@ const TableSeatingSection = memo(function TableSeatingSection({
             return {
               id: d.id,
               name: String(data.name || ""),
-              shape: (String(data.shape || "circle") as ShapeTable["shape"]),
+              shape: String(data.shape || "circle") as ShapeTable["shape"],
               x: Number(data.x) || 0,
               y: Number(data.y) || 0,
               w: Number(data.w) || 80,
@@ -195,7 +193,10 @@ const TableSeatingSection = memo(function TableSeatingSection({
 
           {/* Selector de zona (si hay más de una). */}
           {sections.length > 1 ? (
-            <div className="admin-flex" style={{ gap: "0.4rem", flexWrap: "wrap", justifyContent: "center", marginBottom: "0.6rem" }}>
+            <div
+              className="admin-flex"
+              style={{ gap: "0.4rem", flexWrap: "wrap", justifyContent: "center", marginBottom: "0.6rem" }}
+            >
               {sections.map((s) => (
                 <button
                   key={s.id}
@@ -212,11 +213,10 @@ const TableSeatingSection = memo(function TableSeatingSection({
 
           {active ? (
             <>
-              <p className="story-note" style={{ margin: "0.2rem 0 0.5rem" }}>{active.name}</p>
-              <SeatingPlan
-                tables={active.tables}
-                {...(normalizedGuest ? { highlightName: normalizedGuest } : {})}
-              />
+              <p className="story-note" style={{ margin: "0.2rem 0 0.5rem" }}>
+                {active.name}
+              </p>
+              <SeatingPlan tables={active.tables} {...(normalizedGuest ? { highlightName: normalizedGuest } : {})} />
               {/* Botón "lupa": abre el plano a pantalla completa. */}
               <button
                 type="button"
@@ -252,15 +252,10 @@ const TableSeatingSection = memo(function TableSeatingSection({
             cursor: "zoom-out",
           }}
         >
-          <p style={{ color: "#fff", fontSize: "1rem", fontWeight: 600, margin: 0 }}>
-            {active.name}
-          </p>
+          <p style={{ color: "#fff", fontSize: "1rem", fontWeight: 600, margin: 0 }}>{active.name}</p>
           {/* Plano grande: el contenido se escala al ancho disponible. */}
           <div style={{ width: "min(96vw, 900px)" }} onClick={(e) => e.stopPropagation()}>
-            <SeatingPlan
-              tables={active.tables}
-              {...(normalizedGuest ? { highlightName: normalizedGuest } : {})}
-            />
+            <SeatingPlan tables={active.tables} {...(normalizedGuest ? { highlightName: normalizedGuest } : {})} />
           </div>
           <button
             type="button"

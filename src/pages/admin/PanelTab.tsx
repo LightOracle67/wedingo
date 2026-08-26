@@ -4,7 +4,12 @@ import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 import { db, invitationDocRef, rsvpByInviteRef } from "../../lib/firebase";
 import { encrypt } from "../../lib/crypto-utils";
-import { buildAttendancePrediction, buildConfirmationsPerDay, calcRSVPSummary, getDietarySummary } from "../../lib/admin-utils";
+import {
+  buildAttendancePrediction,
+  buildConfirmationsPerDay,
+  calcRSVPSummary,
+  getDietarySummary,
+} from "../../lib/admin-utils";
 import { DonutChart, Legend } from "../../components/AttendanceChart";
 import StatsCard from "./StatsCard";
 import type { InvitationConfig } from "../../types";
@@ -68,10 +73,7 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
   );
 
   // Serie de confirmaciones por día (últimos 14 días) para el mini-gráfico.
-  const confirmationsPerDay = useMemo(
-    () => buildConfirmationsPerDay(rsvpEntries, 14, Date.now()),
-    [rsvpEntries],
-  );
+  const confirmationsPerDay = useMemo(() => buildConfirmationsPerDay(rsvpEntries, 14, Date.now()), [rsvpEntries]);
   const hasConfirmationsActivity = confirmationsPerDay.some((d) => d.count > 0);
 
   // Historial de visitas por día (F18): últimos 7 días ordenados por fecha.
@@ -127,7 +129,9 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
         getDocs(collection(db, "invitations", inviteToken, "configImages")),
         getDocs(rsvpByInviteRef(inviteToken)),
         // Historial de visitas por día (F18): se incluye en la copia.
-        getDocs(collection(db, "invitations", inviteToken, "visitLog")).catch(() => ({ docs: [] as Array<{ id: string; data: () => Record<string, unknown> }> })),
+        getDocs(collection(db, "invitations", inviteToken, "visitLog")).catch(() => ({
+          docs: [] as Array<{ id: string; data: () => Record<string, unknown> }>,
+        })),
       ]);
       const readDocs = (snap: { docs: Array<{ id: string; data: () => Record<string, unknown> }> }) =>
         snap.docs.map((d) => ({ id: d.id, ...d.data() }));
@@ -231,7 +235,9 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
           }
           if (Array.isArray(value)) return value.map(reviveTimestamp);
           if (value && typeof value === "object") {
-            return Object.fromEntries(Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, reviveTimestamp(v)]));
+            return Object.fromEntries(
+              Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, reviveTimestamp(v)]),
+            );
           }
           return value;
         };
@@ -305,9 +311,17 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
               <span className="panel-prediction__label">{t("panel.predictedPace")}</span>
             </div>
             <div className="panel-prediction__metric">
-              <span className="panel-prediction__value">{prediction.trend === "up" ? "↗" : prediction.trend === "down" ? "↘" : "→"}</span>
+              <span className="panel-prediction__value">
+                {prediction.trend === "up" ? "↗" : prediction.trend === "down" ? "↘" : "→"}
+              </span>
               <span className="panel-prediction__label">
-                {t(prediction.trend === "up" ? "panel.trendUp" : prediction.trend === "down" ? "panel.trendDown" : "panel.trendFlat")}
+                {t(
+                  prediction.trend === "up"
+                    ? "panel.trendUp"
+                    : prediction.trend === "down"
+                      ? "panel.trendDown"
+                      : "panel.trendFlat",
+                )}
               </span>
             </div>
           </div>
@@ -327,7 +341,8 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
                   width: `${Math.min(100, prediction.capacityPct)}%`,
                   height: "0.55rem",
                   borderRadius: "999px",
-                  background: "linear-gradient(90deg, var(--setup-accent), color-mix(in srgb, var(--setup-accent) 55%, #fff))",
+                  background:
+                    "linear-gradient(90deg, var(--setup-accent), color-mix(in srgb, var(--setup-accent) 55%, #fff))",
                   transition: "width 400ms ease",
                 }}
               />

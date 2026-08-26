@@ -182,7 +182,8 @@ export function useStoryNavigation(
             // está visible (no se ocultan contenedores vacíos).
             wrap.style.opacity = String(progress);
             wrap.style.transform = `translateY(${(-dist * PARALLAX).toFixed(2)}px) scale(${(
-              MIN_SCALE + (1 - MIN_SCALE) * progress
+              MIN_SCALE +
+              (1 - MIN_SCALE) * progress
             ).toFixed(3)})`;
             wrap.style.filter = `blur(${(MAX_BLUR * (1 - progress)).toFixed(2)}px)`;
           }

@@ -9,4 +9,3 @@ const GallerySectionForm = memo(function GallerySectionForm() {
 });
 
 export default GallerySectionForm;
-

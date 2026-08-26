@@ -136,7 +136,11 @@ const SupportTab = memo(function SupportTab() {
           action: String(d.data().action || ""),
           detail: String(d.data().detail || ""),
           ts: d.data().createdAt
-            ? new Date((d.data().createdAt as { seconds?: number })?.seconds ? Number((d.data().createdAt as { seconds: number }).seconds) * 1000 : Date.now()).toLocaleString()
+            ? new Date(
+                (d.data().createdAt as { seconds?: number })?.seconds
+                  ? Number((d.data().createdAt as { seconds: number }).seconds) * 1000
+                  : Date.now(),
+              ).toLocaleString()
             : "",
         })),
       );
@@ -219,8 +223,12 @@ const SupportTab = memo(function SupportTab() {
       <div className="support-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}>
         <div className="setup-background-panel">
           <p className="setup-label">{t("superadmin.support.upcomingTitle")}</p>
-          <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: 0 }}>{upcoming.length}</p>
-          <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.1rem", fontSize: "0.78rem", color: "var(--setup-subtitle)" }}>
+          <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: 0 }}>
+            {upcoming.length}
+          </p>
+          <ul
+            style={{ margin: "0.3rem 0 0", paddingLeft: "1.1rem", fontSize: "0.78rem", color: "var(--setup-subtitle)" }}
+          >
             {upcoming.slice(0, 6).map((a) => (
               <li key={a.id}>
                 <code>{a.id}</code> — {a.weddingLabel} ({a.daysLeft} {t("superadmin.support.days")})
@@ -231,17 +239,25 @@ const SupportTab = memo(function SupportTab() {
         <div className="setup-background-panel">
           <p className="setup-label">{t("superadmin.support.emptyTitle")}</p>
           <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: 0 }}>{empty.length}</p>
-          <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.78rem" }}>{t("superadmin.support.emptyHint")}</p>
+          <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.78rem" }}>
+            {t("superadmin.support.emptyHint")}
+          </p>
         </div>
         <div className="setup-background-panel">
           <p className="setup-label">{t("superadmin.support.legacyTitle")}</p>
           <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: 0 }}>{legacy.length}</p>
-          <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.78rem" }}>{t("superadmin.support.legacyHint")}</p>
+          <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.78rem" }}>
+            {t("superadmin.support.legacyHint")}
+          </p>
         </div>
         <div className="setup-background-panel">
           <p className="setup-label">{t("superadmin.support.sessionsTitle")}</p>
-          <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: 0 }}>{sessions.length}</p>
-          <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.78rem" }}>{t("superadmin.support.sessionsHint")}</p>
+          <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: 0 }}>
+            {sessions.length}
+          </p>
+          <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.78rem" }}>
+            {t("superadmin.support.sessionsHint")}
+          </p>
         </div>
       </div>
 
@@ -249,21 +265,39 @@ const SupportTab = memo(function SupportTab() {
       <div className="support-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))" }}>
         <div className="setup-background-panel">
           <p className="setup-label">{t("superadmin.support.privacyTitle")}</p>
-          <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: 0 }}>{mapIframe.length}</p>
-          <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.78rem" }}>{t("superadmin.support.privacyHint")}</p>
+          <p style={{ fontSize: "1.3rem", fontWeight: 700, color: "var(--setup-title)", margin: 0 }}>
+            {mapIframe.length}
+          </p>
+          <p className="setup-help" style={{ margin: "0.2rem 0 0", fontSize: "0.78rem" }}>
+            {t("superadmin.support.privacyHint")}
+          </p>
         </div>
         <div className="setup-background-panel">
           <p className="setup-label">{t("superadmin.support.abandonTitle")}</p>
           <div className="admin-flex" style={{ gap: "0.4rem", alignItems: "center", flexWrap: "wrap" }}>
-            <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void analyzeAbandoned()} disabled={abandonLoading}>
+            <button
+              type="button"
+              className="setup-button setup-button--ghost setup-button--compact"
+              onClick={() => void analyzeAbandoned()}
+              disabled={abandonLoading}
+            >
               {abandonLoading ? t("common.loading") : t("superadmin.support.abandonBtn")}
             </button>
             {abandoned.length > 0 ? (
-              <span className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>{abandoned.length}</span>
+              <span className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
+                {abandoned.length}
+              </span>
             ) : null}
           </div>
           {abandoned.length > 0 ? (
-            <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.1rem", fontSize: "0.75rem", color: "var(--setup-subtitle)" }}>
+            <ul
+              style={{
+                margin: "0.3rem 0 0",
+                paddingLeft: "1.1rem",
+                fontSize: "0.75rem",
+                color: "var(--setup-subtitle)",
+              }}
+            >
               {abandoned.slice(0, 8).map((a) => (
                 <li key={a.id}>
                   <code>{a.id}</code> — {a.visits} {t("superadmin.visitsWord")}
@@ -275,15 +309,33 @@ const SupportTab = memo(function SupportTab() {
         <div className="setup-background-panel">
           <p className="setup-label">{t("superadmin.support.auditTitle")}</p>
           <div className="admin-flex" style={{ gap: "0.4rem", alignItems: "center", flexWrap: "wrap" }}>
-            <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void loadAudit()}>
+            <button
+              type="button"
+              className="setup-button setup-button--ghost setup-button--compact"
+              onClick={() => void loadAudit()}
+            >
               {t("superadmin.support.auditLoad")}
             </button>
-            <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void exportAudit()} disabled={auditRows.length === 0}>
+            <button
+              type="button"
+              className="setup-button setup-button--ghost setup-button--compact"
+              onClick={() => void exportAudit()}
+              disabled={auditRows.length === 0}
+            >
               {t("superadmin.support.auditExport")}
             </button>
           </div>
           {auditRows.length > 0 ? (
-            <ul style={{ margin: "0.3rem 0 0", paddingLeft: "1.1rem", fontSize: "0.72rem", color: "var(--setup-subtitle)", maxHeight: "8rem", overflowY: "auto" }}>
+            <ul
+              style={{
+                margin: "0.3rem 0 0",
+                paddingLeft: "1.1rem",
+                fontSize: "0.72rem",
+                color: "var(--setup-subtitle)",
+                maxHeight: "8rem",
+                overflowY: "auto",
+              }}
+            >
               {auditRows.slice(0, 12).map((r, i) => (
                 <li key={i} style={{ marginBottom: "0.15rem" }}>
                   <strong>{r.action}</strong> — {r.detail.slice(0, 40)} · {r.ts}
@@ -311,7 +363,12 @@ const SupportTab = memo(function SupportTab() {
             aria-label={t("superadmin.support.tokenPlaceholder")}
             autoComplete="off"
           />
-          <button type="button" className="setup-button setup-button--compact" onClick={() => void searchToken()} disabled={searching || !queryToken.trim()}>
+          <button
+            type="button"
+            className="setup-button setup-button--compact"
+            onClick={() => void searchToken()}
+            disabled={searching || !queryToken.trim()}
+          >
             {searching ? t("common.loading") : t("superadmin.support.searchBtn")}
           </button>
         </div>
@@ -319,19 +376,33 @@ const SupportTab = memo(function SupportTab() {
           <div className="setup-background-panel" style={{ marginTop: "0.6rem", fontSize: "0.85rem" }}>
             <p className="setup-label">{result.names}</p>
             <p className="setup-help" style={{ margin: "0.2rem 0 0" }}>
-              {t("superadmin.support.token")}: <code>{result.id}</code> · {t("superadmin.tableUser")}: {result.adminUsername}
+              {t("superadmin.support.token")}: <code>{result.id}</code> · {t("superadmin.tableUser")}:{" "}
+              {result.adminUsername}
             </p>
             <p className="setup-help" style={{ margin: "0.2rem 0 0" }}>
-              {t("superadmin.tableDate")}: {result.weddingLabel} · {t("superadmin.metrics.visits")}: {result.visits} · {t("superadmin.metrics.rsvps")}: {result.rsvpCount}
+              {t("superadmin.tableDate")}: {result.weddingLabel} · {t("superadmin.metrics.visits")}: {result.visits} ·{" "}
+              {t("superadmin.metrics.rsvps")}: {result.rsvpCount}
             </p>
             <p className="setup-help" style={{ margin: "0.2rem 0 0" }}>
-              {t("superadmin.support.session")}: {result.hasSession ? t("superadmin.sessionActive") : t("superadmin.sessionInactive")} · {t("superadmin.support.lastActivity")}: {result.lastActivity}
+              {t("superadmin.support.session")}:{" "}
+              {result.hasSession ? t("superadmin.sessionActive") : t("superadmin.sessionInactive")} ·{" "}
+              {t("superadmin.support.lastActivity")}: {result.lastActivity}
             </p>
             <div className="admin-flex" style={{ gap: "0.5rem", marginTop: "0.5rem", flexWrap: "wrap" }}>
-              <a className="setup-button setup-button--ghost setup-button--compact" href={`/${result.id}`} target="_blank" rel="noreferrer">
+              <a
+                className="setup-button setup-button--ghost setup-button--compact"
+                href={`/${result.id}`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {t("superadmin.support.openInvitation")}
               </a>
-              <a className="setup-button setup-button--ghost setup-button--compact" href={`/${result.id}/admin`} target="_blank" rel="noreferrer">
+              <a
+                className="setup-button setup-button--ghost setup-button--compact"
+                href={`/${result.id}/admin`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 {t("superadmin.data.adminLink")}
               </a>
             </div>
@@ -343,12 +414,17 @@ const SupportTab = memo(function SupportTab() {
       <div className="setup-background-panel">
         <p className="setup-label">{t("superadmin.support.diagTitle")}</p>
         <div className="admin-flex" style={{ gap: "0.5rem", marginTop: "0.4rem", flexWrap: "wrap" }}>
-          <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={() => void runDiagnostics()}>
+          <button
+            type="button"
+            className="setup-button setup-button--ghost setup-button--compact"
+            onClick={() => void runDiagnostics()}
+          >
             {t("superadmin.support.diagBtn")}
           </button>
           {diag ? (
             <span className="setup-help" style={{ margin: 0 }}>
-              {t("superadmin.support.invitations")}: {diag.invitations ? "✅" : "❌"} · {t("superadmin.support.tokens")}: {diag.tokens ? "✅" : "❌"}
+              {t("superadmin.support.invitations")}: {diag.invitations ? "✅" : "❌"} · {t("superadmin.support.tokens")}
+              : {diag.tokens ? "✅" : "❌"}
             </span>
           ) : null}
         </div>

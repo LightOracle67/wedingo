@@ -20,7 +20,11 @@ vi.mock("firebase/firestore", () => ({
   getFirestore: mockGetFirestore,
 }));
 
-import { deleteInvitationCascade, collectInvitationDeleteRefs, INVITATION_SUBCOLLECTIONS } from "../invitation-subcollections";
+import {
+  deleteInvitationCascade,
+  collectInvitationDeleteRefs,
+  INVITATION_SUBCOLLECTIONS,
+} from "../invitation-subcollections";
 import type { Firestore } from "firebase/firestore";
 
 /** Instancia de Firestore simulada (solo importan los mocks de firebase). */

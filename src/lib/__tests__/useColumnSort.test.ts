@@ -60,9 +60,7 @@ describe("useColumnSort", () => {
 
   it("ordena texto con locale (números embebidos)", () => {
     const rows = [{ n: "v2.10" }, { n: "v2.9" }, { n: "v1.5" }];
-    const { result } = renderHook(() =>
-      useColumnSort(rows, [{ key: "n", type: "string" }]),
-    );
+    const { result } = renderHook(() => useColumnSort(rows, [{ key: "n", type: "string" }]));
     act(() => result.current.toggleSort("n"));
     expect(result.current.sorted.map((r) => r.n)).toEqual(["v1.5", "v2.9", "v2.10"]);
   });
@@ -92,7 +90,10 @@ describe("useColumnSort", () => {
   });
 
   it("usa getValue cuando la celda muestra un valor derivado", () => {
-    const rows = [{ a: "x", b: 2 }, { a: "y", b: 1 }];
+    const rows = [
+      { a: "x", b: 2 },
+      { a: "y", b: 1 },
+    ];
     const columns: SortableColumn<{ a: string; b: number }>[] = [
       { key: "derived", type: "number", getValue: (r: { a: string; b: number }) => r.b },
     ];

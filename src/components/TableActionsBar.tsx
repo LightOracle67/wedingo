@@ -39,14 +39,11 @@ export function TableActionsBar({
   return (
     <div className="table-actions-bar">
       <label className="table-actions-bar__select">
-        <input
-          type="checkbox"
-          checked={isAll}
-          onChange={onToggleAll}
-          aria-label={selectAllLabel}
-        />
+        <input type="checkbox" checked={isAll} onChange={onToggleAll} aria-label={selectAllLabel} />
         <span className="table-actions-bar__count" aria-live="polite">
-          {selectedCount > 0 ? selectedLabel.replace("{{count}}", String(selectedCount)).replace("{{total}}", String(total)) : String(total)}
+          {selectedCount > 0
+            ? selectedLabel.replace("{{count}}", String(selectedCount)).replace("{{total}}", String(total))
+            : String(total)}
         </span>
       </label>
       {children ? <div className="table-actions-bar__buttons">{children}</div> : null}

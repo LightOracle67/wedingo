@@ -111,7 +111,11 @@ const ManageTab = memo(function ManageTab() {
       return;
     }
     const { errorKey, sanitized } = validateConfigForSave(parsed, true, new Date().getFullYear() + MAX_YEARS_AHEAD);
-    setValidatorResult(errorKey ? { ok: false, msg: t(errorKey) } : { ok: true, msg: t("manage.validatorOk") + ` (${Object.keys(sanitized).length} campos)` });
+    setValidatorResult(
+      errorKey
+        ? { ok: false, msg: t(errorKey) }
+        : { ok: true, msg: t("manage.validatorOk") + ` (${Object.keys(sanitized).length} campos)` },
+    );
   }, [validatorJson, t]);
   // F4-5: ref del iframe de previsualización (para modo presentación).
   const previewFrameRef = useRef<HTMLIFrameElement | null>(null);
@@ -276,8 +280,22 @@ const ManageTab = memo(function ManageTab() {
       // original) ni los campos de sesión/tokens, incluidos los tokens LEGACY
       // (_activeSetupToken, legacyToken): sin esto el clon expondría la
       // credencial del padre en un documento público (riesgo de takeover).
-      const { bankInfo: _b, activeSession: _s, sessionExpiresAt: _e, setupTokenHash: _h, _visits: _v, _activeSetupToken: _at, legacyToken: _lt, ...clone } = docData;
-      await setDoc(doc(INVITATIONS_COLLECTION_REF, newInviteToken), { ...clone, bankInfo: "", firstName: String(docData.firstName || "") || "Clone", secondName: String(docData.secondName || "") || "Copy" });
+      const {
+        bankInfo: _b,
+        activeSession: _s,
+        sessionExpiresAt: _e,
+        setupTokenHash: _h,
+        _visits: _v,
+        _activeSetupToken: _at,
+        legacyToken: _lt,
+        ...clone
+      } = docData;
+      await setDoc(doc(INVITATIONS_COLLECTION_REF, newInviteToken), {
+        ...clone,
+        bankInfo: "",
+        firstName: String(docData.firstName || "") || "Clone",
+        secondName: String(docData.secondName || "") || "Copy",
+      });
       await setDoc(doc(db, "setupTokens", hash), { inviteToken: newInviteToken, createdAt: new Date().toISOString() });
       setNewToken(newInviteToken);
       setNewSetupToken(newSetup);
@@ -336,7 +354,7 @@ const ManageTab = memo(function ManageTab() {
     }
   }, [token, addToast, t]);
 
-    /** F4-1: cierra la sesión activa de la invitación (revocación remota). */
+  /** F4-1: cierra la sesión activa de la invitación (revocación remota). */
   const handleKillSession = useCallback(async () => {
     if (!token) return;
     if (!(await confirm({ message: t("manage.killSessionConfirm") }))) return;
@@ -356,7 +374,10 @@ const ManageTab = memo(function ManageTab() {
     try {
       const snap = await getDoc(doc(db, "platform", "settings"));
       const data = (snap.exists() ? snap.data() : {}) as { blockedTokens?: string };
-      const blocked = (data.blockedTokens || "").split(",").map((s) => s.trim()).filter(Boolean);
+      const blocked = (data.blockedTokens || "")
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
       const isBlocked = blocked.includes(token);
       const next = isBlocked ? blocked.filter((x) => x !== token) : [...blocked, token];
       await setDoc(doc(db, "platform", "settings"), { ...data, blockedTokens: next.join(",") }, { merge: true });
@@ -397,9 +418,15 @@ const ManageTab = memo(function ManageTab() {
     }
     const monthNum = MONTH_VALUE_TO_NUMBER[month] || 1;
     const start = new Date(Date.UTC(Number(year), monthNum - 1, Number(day), 12, 0, 0));
-    const stamp = start.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+    const stamp = start
+      .toISOString()
+      .replace(/[-:]/g, "")
+      .replace(/\.\d{3}/, "");
     const end = new Date(start.getTime() + 3600000);
-    const endIcs = end.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+    const endIcs = end
+      .toISOString()
+      .replace(/[-:]/g, "")
+      .replace(/\.\d{3}/, "");
     const place = String(docData.weddingPlace || "");
     const ics = [
       "BEGIN:VCALENDAR",
@@ -436,10 +463,9 @@ const ManageTab = memo(function ManageTab() {
           return;
         }
         // Acepta { invitation: {...} } (formato de export) o la config directa.
-        const config = (parsed.invitation && typeof parsed.invitation === "object" ? parsed.invitation : parsed) as Record<
-          string,
-          unknown
-        >;
+        const config = (
+          parsed.invitation && typeof parsed.invitation === "object" ? parsed.invitation : parsed
+        ) as Record<string, unknown>;
         const { sanitized, errorKey } = validateConfigForSave(config, true, new Date().getFullYear() + MAX_YEARS_AHEAD);
         if (errorKey) {
           addToast("error", t(errorKey));
@@ -462,7 +488,10 @@ const ManageTab = memo(function ManageTab() {
     setAutoSaving(true);
     try {
       const now = new Date();
-      const id = `main_${autoName.trim().toLowerCase().replace(/[^a-z0-9]/g, "")}_${Date.now()}`;
+      const id = `main_${autoName
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "")}_${Date.now()}`;
       await setDoc(doc(db, "rsvpResponses", token, "responses", id), {
         rsvpType: "main",
         guestName: autoName.trim().slice(0, 120),
@@ -495,7 +524,8 @@ const ManageTab = memo(function ManageTab() {
   }, [token, autoName, autoAttendance, addToast, t]);
 
   /** F1-6: copia una subcolección (galería/audio/configImages) de otra invitación. */
-  const handleCopySection = useCallback(async () => {    if (!token || !copySource || copySource === token) return;
+  const handleCopySection = useCallback(async () => {
+    if (!token || !copySource || copySource === token) return;
     if (!(await confirm({ message: t("manage.copySectionConfirm") }))) return;
     setCopying(true);
     try {
@@ -611,7 +641,12 @@ const ManageTab = memo(function ManageTab() {
             <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap", marginTop: "0.4rem" }}>
               <label className="setup-label" style={{ margin: 0 }}>
                 {t("manage.status")}
-                <select className="setup-input" value={status} onChange={(e) => setStatus(e.target.value)} style={{ marginLeft: "0.4rem" }}>
+                <select
+                  className="setup-input"
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                  style={{ marginLeft: "0.4rem" }}
+                >
                   <option value="active">{t("manage.statusActive")}</option>
                   <option value="review">{t("manage.statusReview")}</option>
                   <option value="blocked">{t("manage.statusBlocked")}</option>
@@ -690,7 +725,12 @@ const ManageTab = memo(function ManageTab() {
               <button className="setup-button" type="button" onClick={handleTransfer} disabled={working}>
                 {t("manage.transferButton")}
               </button>
-              <button className="setup-button setup-button--ghost" type="button" onClick={handleClone} disabled={working}>
+              <button
+                className="setup-button setup-button--ghost"
+                type="button"
+                onClick={handleClone}
+                disabled={working}
+              >
                 {t("manage.cloneButton")}
               </button>
             </div>
@@ -718,19 +758,36 @@ const ManageTab = memo(function ManageTab() {
               {hasSession ? t("manage.sessionActiveLabel") : t("manage.sessionInactiveLabel")}
             </p>
             {hasSession ? (
-              <button className="setup-button setup-button--danger setup-button--compact" type="button" onClick={handleKillSession}>
+              <button
+                className="setup-button setup-button--danger setup-button--compact"
+                type="button"
+                onClick={handleKillSession}
+              >
                 {t("manage.killSession")}
               </button>
             ) : null}
-            <button className="setup-button setup-button--ghost setup-button--compact" type="button" onClick={() => void handlePause()}>
+            <button
+              className="setup-button setup-button--ghost setup-button--compact"
+              type="button"
+              onClick={() => void handlePause()}
+            >
               {t("manage.pause")}
             </button>
             {accessLog.length > 0 ? (
-              <ul style={{ margin: "0.5rem 0 0", paddingLeft: "1.2rem", fontSize: "0.75rem", color: "var(--setup-subtitle)" }}>
+              <ul
+                style={{
+                  margin: "0.5rem 0 0",
+                  paddingLeft: "1.2rem",
+                  fontSize: "0.75rem",
+                  color: "var(--setup-subtitle)",
+                }}
+              >
                 {accessLog.map((a, i) => (
                   <li key={i} style={{ marginBottom: "0.15rem" }}>
                     <strong>{a.action}</strong> — {a.detail.slice(0, 60)}
-                    {a.ts ? <span style={{ color: "var(--setup-muted)" }}> · {new Date(a.ts).toLocaleTimeString()}</span> : null}
+                    {a.ts ? (
+                      <span style={{ color: "var(--setup-muted)" }}> · {new Date(a.ts).toLocaleTimeString()}</span>
+                    ) : null}
                   </li>
                 ))}
               </ul>
@@ -745,7 +802,12 @@ const ManageTab = memo(function ManageTab() {
             <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
               <label className="setup-label" style={{ margin: 0 }}>
                 {t("manage.deviceWidth")}
-                <select className="setup-input" value={deviceWidth} onChange={(e) => setDeviceWidth(Number(e.target.value))} style={{ marginLeft: "0.4rem" }}>
+                <select
+                  className="setup-input"
+                  value={deviceWidth}
+                  onChange={(e) => setDeviceWidth(Number(e.target.value))}
+                  style={{ marginLeft: "0.4rem" }}
+                >
                   <option value={360}>{t("manage.deviceMobile")}</option>
                   <option value={768}>{t("manage.deviceTablet")}</option>
                   <option value={1200}>{t("manage.deviceDesktop")}</option>
@@ -764,7 +826,9 @@ const ManageTab = memo(function ManageTab() {
                 <option value="expired">{t("manage.simExpired")}</option>
               </select>
             </div>
-            <div style={{ display: "flex", gap: "1rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}>
+            <div
+              style={{ display: "flex", gap: "1rem", alignItems: "flex-start", marginTop: "0.5rem", flexWrap: "wrap" }}
+            >
               <div
                 style={{
                   width: Math.min(deviceWidth, 900),
@@ -786,7 +850,12 @@ const ManageTab = memo(function ManageTab() {
                   <button className="setup-button setup-button--compact" type="button" onClick={handlePresent}>
                     {t("manage.presentMode")}
                   </button>
-                  <a className="setup-button setup-button--ghost setup-button--compact" href={previewUrl} target="_blank" rel="noreferrer">
+                  <a
+                    className="setup-button setup-button--ghost setup-button--compact"
+                    href={previewUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {t("manage.assistMode")}
                   </a>
                 </div>
@@ -795,13 +864,28 @@ const ManageTab = memo(function ManageTab() {
                 <div style={{ textAlign: "center" }}>
                   <img src={qrDataUrl} alt={t("manage.qrAlt")} width={140} height={140} />
                   <div className="admin-flex" style={{ gap: "0.4rem", justifyContent: "center", flexWrap: "wrap" }}>
-                    <a className="setup-button setup-button--compact" href={qrDataUrl} download={`${token}.png`} style={{ fontSize: "0.7rem" }}>
+                    <a
+                      className="setup-button setup-button--compact"
+                      href={qrDataUrl}
+                      download={`${token}.png`}
+                      style={{ fontSize: "0.7rem" }}
+                    >
                       {t("manage.qrDownload")}
                     </a>
-                    <button className="setup-button setup-button--compact" type="button" onClick={handleCopyLink} style={{ fontSize: "0.7rem" }}>
+                    <button
+                      className="setup-button setup-button--compact"
+                      type="button"
+                      onClick={handleCopyLink}
+                      style={{ fontSize: "0.7rem" }}
+                    >
                       {t("manage.copyLink")}
                     </button>
-                    <button className="setup-button setup-button--compact" type="button" onClick={handleDownloadIcs} style={{ fontSize: "0.7rem" }}>
+                    <button
+                      className="setup-button setup-button--compact"
+                      type="button"
+                      onClick={handleDownloadIcs}
+                      style={{ fontSize: "0.7rem" }}
+                    >
                       {t("manage.icsButton")}
                     </button>
                   </div>
@@ -825,11 +909,21 @@ const ManageTab = memo(function ManageTab() {
                 maxLength={120}
                 aria-label={t("manage.autoRespondName")}
               />
-              <select className="setup-input" value={autoAttendance} onChange={(e) => setAutoAttendance(e.target.value)} aria-label={t("manage.autoRespondAttendance")}>
+              <select
+                className="setup-input"
+                value={autoAttendance}
+                onChange={(e) => setAutoAttendance(e.target.value)}
+                aria-label={t("manage.autoRespondAttendance")}
+              >
                 <option value="yes">{t("rsvp.attendingAlone")}</option>
                 <option value="no">{t("rsvp.notAttending")}</option>
               </select>
-              <button className="setup-button setup-button--compact" type="button" onClick={handleAutoRespond} disabled={autoSaving || !autoName.trim()}>
+              <button
+                className="setup-button setup-button--compact"
+                type="button"
+                onClick={handleAutoRespond}
+                disabled={autoSaving || !autoName.trim()}
+              >
                 {autoSaving ? t("common.loading") : t("manage.autoRespondButton")}
               </button>
             </div>
@@ -839,28 +933,65 @@ const ManageTab = memo(function ManageTab() {
           <div className="setup-background-panel">
             <p className="setup-label">{t("manage.compareTitle")}</p>
             <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
-              <select className="setup-input" value={cmpA} onChange={(e) => setCmpA(e.target.value)} aria-label={t("manage.compareA")} style={{ maxWidth: "100%" }}>
+              <select
+                className="setup-input"
+                value={cmpA}
+                onChange={(e) => setCmpA(e.target.value)}
+                aria-label={t("manage.compareA")}
+                style={{ maxWidth: "100%" }}
+              >
                 <option value="">A —</option>
-                {invitations.map((inv) => <option key={inv.id} value={inv.id}>{inv.id}</option>)}
+                {invitations.map((inv) => (
+                  <option key={inv.id} value={inv.id}>
+                    {inv.id}
+                  </option>
+                ))}
               </select>
-              <select className="setup-input" value={cmpB} onChange={(e) => setCmpB(e.target.value)} aria-label={t("manage.compareB")} style={{ maxWidth: "100%" }}>
+              <select
+                className="setup-input"
+                value={cmpB}
+                onChange={(e) => setCmpB(e.target.value)}
+                aria-label={t("manage.compareB")}
+                style={{ maxWidth: "100%" }}
+              >
                 <option value="">B —</option>
-                {invitations.map((inv) => <option key={inv.id} value={inv.id}>{inv.id}</option>)}
+                {invitations.map((inv) => (
+                  <option key={inv.id} value={inv.id}>
+                    {inv.id}
+                  </option>
+                ))}
               </select>
               <button className="setup-button setup-button--compact" type="button" onClick={() => void handleCompare()}>
                 {t("manage.compareButton")}
               </button>
             </div>
             {cmpDiff.length > 0 ? (
-              <div style={{ marginTop: "0.5rem", maxHeight: "10rem", overflowY: "auto", border: "1px solid var(--setup-border)", borderRadius: "0.5rem" }}>
+              <div
+                style={{
+                  marginTop: "0.5rem",
+                  maxHeight: "10rem",
+                  overflowY: "auto",
+                  border: "1px solid var(--setup-border)",
+                  borderRadius: "0.5rem",
+                }}
+              >
                 {cmpDiff.map((d) => (
-                  <div key={d.key} style={{ padding: "0.3rem 0.6rem", fontSize: "0.75rem", borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)" }}>
+                  <div
+                    key={d.key}
+                    style={{
+                      padding: "0.3rem 0.6rem",
+                      fontSize: "0.75rem",
+                      borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)",
+                    }}
+                  >
                     <strong>{d.key}</strong>: <code>{d.a}</code> → <code>{d.b}</code>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="setup-help" style={{ margin: "0.4rem 0 0" }}>{t("manage.compareNone")}</p>
+              <p className="setup-help" style={{ margin: "0.4rem 0 0" }}>
+                {t("manage.compareNone")}
+              </p>
             )}
           </div>
 
@@ -920,7 +1051,12 @@ const ManageTab = memo(function ManageTab() {
                   </option>
                 ))}
               </select>
-              <button className="setup-button setup-button--ghost" type="button" onClick={handleCopySection} disabled={copying}>
+              <button
+                className="setup-button setup-button--ghost"
+                type="button"
+                onClick={handleCopySection}
+                disabled={copying}
+              >
                 {copying ? t("common.loading") : t("manage.copySectionButton")}
               </button>
             </div>

@@ -357,7 +357,6 @@ describe("PanelTab", () => {
       expect(mockAddToast).toHaveBeenCalledWith("error", expect.stringContaining("errors.restoreFailed"));
     });
   });
-
 });
 
 describe("PanelTab — ramas límite", () => {

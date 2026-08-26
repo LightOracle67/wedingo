@@ -81,10 +81,14 @@ export function buildMainGuestData(input: {
     if (data.transportMode) mainGuestData.transportMode = String(data.transportMode).slice(0, 10);
     if (data.transportTime) mainGuestData.transportTime = String(data.transportTime).slice(0, 5);
     if (data.transportPlace) mainGuestData.transportPlace = String(data.transportPlace).slice(0, 120);
-    if (data.companionTransportModes) mainGuestData.companionTransportModes = data.companionTransportModes.slice(0, companionCount);
-    if (data.companionTransportChoices) mainGuestData.companionTransportChoices = data.companionTransportChoices.slice(0, companionCount);
-    if (data.companionTransportTimes) mainGuestData.companionTransportTimes = data.companionTransportTimes.slice(0, companionCount);
-    if (data.companionTransportPlaces) mainGuestData.companionTransportPlaces = data.companionTransportPlaces.slice(0, companionCount);
+    if (data.companionTransportModes)
+      mainGuestData.companionTransportModes = data.companionTransportModes.slice(0, companionCount);
+    if (data.companionTransportChoices)
+      mainGuestData.companionTransportChoices = data.companionTransportChoices.slice(0, companionCount);
+    if (data.companionTransportTimes)
+      mainGuestData.companionTransportTimes = data.companionTransportTimes.slice(0, companionCount);
+    if (data.companionTransportPlaces)
+      mainGuestData.companionTransportPlaces = data.companionTransportPlaces.slice(0, companionCount);
   }
   return mainGuestData;
 }

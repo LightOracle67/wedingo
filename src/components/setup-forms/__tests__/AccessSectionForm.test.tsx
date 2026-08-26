@@ -30,7 +30,9 @@ vi.mock("../../../contexts", () => ({
     hasStoredConfig: false,
   }),
   useFormField: (field: string) => (mockAppState.formData as Record<string, string | undefined>)?.[field] ?? "",
-  useFormStore: () => ({ getField: (field: string) => (mockAppState.formData as Record<string, string | undefined>)?.[field] ?? "" }),
+  useFormStore: () => ({
+    getField: (field: string) => (mockAppState.formData as Record<string, string | undefined>)?.[field] ?? "",
+  }),
   useConfig: () => mockAppState,
   useAuth: () => mockAppState,
 }));

@@ -47,9 +47,7 @@ export function excelDate(value: Date | string | number | undefined): string {
  */
 export function buildWorkbook(sheets: ExcelSheet[]): ExcelWorkbook {
   return {
-    sheets: sheets
-      .filter((s) => s.rows.length > 0)
-      .map((s) => ({ ...s, name: s.name.slice(0, 31) })),
+    sheets: sheets.filter((s) => s.rows.length > 0).map((s) => ({ ...s, name: s.name.slice(0, 31) })),
   };
 }
 
@@ -63,14 +61,16 @@ function utf8(s: string): Uint8Array {
 /** Escapa texto para un elemento XML y elimina caracteres de control ilegales
  *  en XML 1.0 (\x00-\x08, \x0B, \x0C, \x0E-\x1F), que romperían el fichero. */
 function escXml(v: string): string {
-  return v
-    // eslint-disable-next-line no-control-regex -- sanitización intencional: elimina los caracteres de control ilegales en XML 1.0.
-    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&apos;");
+  return (
+    v
+      // eslint-disable-next-line no-control-regex -- sanitización intencional: elimina los caracteres de control ilegales en XML 1.0.
+      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&apos;")
+  );
 }
 
 /** Convierte un índice de columna (0-based) a la letra de la hoja (A, B, …, Z, AA…). */
@@ -110,10 +110,16 @@ function sheetXml(sheet: ExcelSheet): string {
     .map((w, i) => `<col min="${i + 1}" max="${i + 1}" width="${Math.max(w, 8)}" customWidth="1"/>`)
     .join("");
   const colsXml = cols ? `<cols>${cols}</cols>` : "";
-  const headerRow = sheet.headers.slice(0, MAX_COLS).map((h, i) => cellXml(`${colLetter(i)}1`, h)).join("");
+  const headerRow = sheet.headers
+    .slice(0, MAX_COLS)
+    .map((h, i) => cellXml(`${colLetter(i)}1`, h))
+    .join("");
   const dataRows = sheet.rows
     .map((row, r) => {
-      const cells = row.slice(0, MAX_COLS).map((v, i) => cellXml(`${colLetter(i)}${r + 2}`, v)).join("");
+      const cells = row
+        .slice(0, MAX_COLS)
+        .map((v, i) => cellXml(`${colLetter(i)}${r + 2}`, v))
+        .join("");
       return `<row r="${r + 2}">${cells}</row>`;
     })
     .join("");
@@ -208,7 +214,12 @@ export function writeWorkbookBuffer(wb: ExcelWorkbook): Uint8Array {
     `<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>` +
     `<Default Extension="xml" ContentType="application/xml"/>` +
     `<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>` +
-    wb.sheets.map((_, i) => `<Override PartName="/xl/worksheets/sheet${i + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join("") +
+    wb.sheets
+      .map(
+        (_, i) =>
+          `<Override PartName="/xl/worksheets/sheet${i + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`,
+      )
+      .join("") +
     `</Types>`;
   const rootRels =
     `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>` +
@@ -224,7 +235,12 @@ export function writeWorkbookBuffer(wb: ExcelWorkbook): Uint8Array {
   const workbookRels =
     `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>` +
     `<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">` +
-    wb.sheets.map((_, i) => `<Relationship Id="rId${i + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i + 1}.xml"/>`).join("") +
+    wb.sheets
+      .map(
+        (_, i) =>
+          `<Relationship Id="rId${i + 1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i + 1}.xml"/>`,
+      )
+      .join("") +
     `</Relationships>`;
   const entries = [
     { name: "[Content_Types].xml", data: utf8(contentTypes) },

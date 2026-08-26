@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 
-const mockFormData = vi.hoisted(() => ({ storyTextEnabled: "true" } as Record<string, string | undefined>));
+const mockFormData = vi.hoisted(() => ({ storyTextEnabled: "true" }) as Record<string, string | undefined>);
 import { render, screen, fireEvent } from "@testing-library/react";
 
 const mockUpdateFormField = vi.hoisted(() => vi.fn());
@@ -21,7 +21,9 @@ vi.mock("../../../contexts", () => ({
     hasStoredConfig: false,
   }),
   useFormField: (field: string) => (mockFormData as Record<string, string | undefined>)?.[field] ?? "",
-  useFormStore: () => ({ getField: (field: string) => (mockFormData as Record<string, string | undefined>)?.[field] ?? "" }),
+  useFormStore: () => ({
+    getField: (field: string) => (mockFormData as Record<string, string | undefined>)?.[field] ?? "",
+  }),
   useConfig: () => ({
     config: { theme: "golden", menuEnabled: "true" },
     formData: mockFormData,

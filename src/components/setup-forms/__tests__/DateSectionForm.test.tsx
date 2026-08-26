@@ -365,5 +365,4 @@ describe("DateSectionForm", () => {
     fireEvent.change(screen.getByLabelText("setup.mapViewLabel"), { target: { value: "satellite" } });
     expect(mockUpdateFormField).toHaveBeenCalledWith("weddingMapView", "satellite");
   });
-
 });

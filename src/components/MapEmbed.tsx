@@ -52,7 +52,9 @@ export default function MapEmbed({
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-            {staticMap ? <div aria-hidden="true" style={{ position: "absolute", inset: 0, cursor: "default" }} /> : null}
+            {staticMap ? (
+              <div aria-hidden="true" style={{ position: "absolute", inset: 0, cursor: "default" }} />
+            ) : null}
           </>
         ) : (
           // Placeholder con consentimiento explícito: no se carga Google Maps
@@ -68,8 +70,7 @@ export default function MapEmbed({
               display: "grid",
               placeItems: "center",
               cursor: "pointer",
-              background:
-                "color-mix(in srgb, var(--invite-shell-bg, rgba(255,255,255,0.45)) 85%, transparent)",
+              background: "color-mix(in srgb, var(--invite-shell-bg, rgba(255,255,255,0.45)) 85%, transparent)",
               border: "1px solid color-mix(in srgb, var(--invite-shell-border) 70%, transparent)",
               borderRadius: "1.2rem",
               color: "var(--invite-copy-color, #c3b193)",

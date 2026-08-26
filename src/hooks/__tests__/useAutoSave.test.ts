@@ -588,7 +588,17 @@ describe("useAutoSave", () => {
     it("saves normally when currentTokenRef still matches the inviteToken", async () => {
       const currentTokenRef = { current: "token-a" };
       const { result } = renderHook(() =>
-        useAutoSave(true, "token-a", sampleConfig, sampleConfig, vi.fn(), { current: false }, undefined, undefined, currentTokenRef),
+        useAutoSave(
+          true,
+          "token-a",
+          sampleConfig,
+          sampleConfig,
+          vi.fn(),
+          { current: false },
+          undefined,
+          undefined,
+          currentTokenRef,
+        ),
       );
 
       await act(async () => {

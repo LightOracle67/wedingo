@@ -58,10 +58,7 @@ export function buildAttendancePrediction(
   weddingTimestamp: number | null,
   now: number = Date.now(),
 ) {
-  const confirmedPeople = entries.reduce(
-    (s, e) => s + (e.attendance === "yes" ? Number(e.companions) || 1 : 0),
-    0,
-  );
+  const confirmedPeople = entries.reduce((s, e) => s + (e.attendance === "yes" ? Number(e.companions) || 1 : 0), 0);
   // Ritmo real: personas confirmadas por día transcurrido desde la primera
   // respuesta (timestamp en ms o segundos — se normaliza por magnitud).
   const timestamps = entries
@@ -77,9 +74,7 @@ export function buildAttendancePrediction(
   const pacePerDay = confirmedPeople / daysElapsed;
 
   const daysToWedding =
-    weddingTimestamp && Number.isFinite(weddingTimestamp)
-      ? Math.max(0, (weddingTimestamp - now) / 86400000)
-      : 0;
+    weddingTimestamp && Number.isFinite(weddingTimestamp) ? Math.max(0, (weddingTimestamp - now) / 86400000) : 0;
   const hasFutureWedding = weddingTimestamp ? weddingTimestamp > now : false;
   // Conversión decaída: a medida que se acerca la fecha, cada día restante
   // aporta menos confirmaciones (los "de última hora" no compensan el ritmo).
@@ -89,10 +84,7 @@ export function buildAttendancePrediction(
     ? Math.min(projectedRaw, expectedGuests > 0 ? Math.ceil(expectedGuests * 1.1) : Math.ceil(projectedRaw * 1.1))
     : confirmedPeople;
 
-  const capacityPct =
-    expectedGuests > 0
-      ? Math.min(100, Math.round((confirmedPeople / expectedGuests) * 100))
-      : null;
+  const capacityPct = expectedGuests > 0 ? Math.min(100, Math.round((confirmedPeople / expectedGuests) * 100)) : null;
 
   // Tendencia: comparativa de confirmaciones en los últimos 7 días vs los 7
   // anteriores (si hay suficientes datos) para el texto "sube/baja/mantiene".
@@ -134,12 +126,7 @@ export function buildConfirmationsPerDay(
     const raw = e.submittedAt;
     if (raw === null || raw === undefined) continue;
     // Números en ms o segundos; otros valores (Date, string ISO) se parsean.
-    const ms =
-      typeof raw === "number"
-        ? raw
-        : raw instanceof Date
-          ? raw.getTime()
-          : new Date(String(raw)).getTime();
+    const ms = typeof raw === "number" ? raw : raw instanceof Date ? raw.getTime() : new Date(String(raw)).getTime();
     if (!Number.isFinite(ms) || ms <= 0) continue;
     const normalized = ms < 1e11 ? ms * 1000 : ms;
     const day = dayStart(normalized);
@@ -151,7 +138,10 @@ export function buildConfirmationsPerDay(
   for (let i = days - 1; i >= 0; i--) {
     const d = new Date(dayStart(now) - i * 86400000);
     const key = dayStart(d.getTime());
-    out.push({ day: `${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`, count: counts.get(key) || 0 });
+    out.push({
+      day: `${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`,
+      count: counts.get(key) || 0,
+    });
   }
   return out;
 }

@@ -55,7 +55,6 @@ const mockTokenSnapshots = (
   );
 };
 
-
 describe("TokensTab", () => {
   beforeEach(() => {
     vi.clearAllMocks();

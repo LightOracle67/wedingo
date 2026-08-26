@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { calcRSVPSummary, getDietarySummary, buildAttendancePrediction, buildConfirmationsPerDay } from "../admin-utils";
+import {
+  calcRSVPSummary,
+  getDietarySummary,
+  buildAttendancePrediction,
+  buildConfirmationsPerDay,
+} from "../admin-utils";
 
 describe("calcRSVPSummary", () => {
   it("returns zeros for null", () => {

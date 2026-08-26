@@ -109,7 +109,15 @@ export function useAppShellEffects(
       if (fontBody) root.style.removeProperty("--font-body");
       for (const { cssVar } of COLOR_FIELDS) root.style.removeProperty(cssVar);
     };
-  }, [config.fontHeading, config.fontBody, config.colorAccent, config.colorTitle, config.colorCopy, config.colorBackground, isEditingRoute]);
+  }, [
+    config.fontHeading,
+    config.fontBody,
+    config.colorAccent,
+    config.colorTitle,
+    config.colorCopy,
+    config.colorBackground,
+    isEditingRoute,
+  ]);
 
   // Fondo por defecto al arrancar.
   useEffect(() => {

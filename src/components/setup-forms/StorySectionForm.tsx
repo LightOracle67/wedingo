@@ -34,4 +34,3 @@ const StorySectionForm = memo(function StorySectionForm({ prefix = "" }: { prefi
 });
 
 export default StorySectionForm;
-

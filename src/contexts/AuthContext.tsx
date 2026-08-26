@@ -28,7 +28,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return;
     }
     (async () => {
-try {
+      try {
         // El token de setup se obtiene de sessionStorage y se envía su hash
         // para que las reglas verifiquen la prueba de conocimiento del token.
         // Es el MISMO token mostrado en el formulario: no se regenera.

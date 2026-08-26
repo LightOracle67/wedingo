@@ -312,7 +312,10 @@ export async function saveConfigImage(
   // El campo `data` guarda el base64 cifrado y Firestore limita a 1MB por valor;
   // se valida aquí con un error amigable antes de que Firestore lo rechace.
   if (enc.length > MAX_ENCRYPTED_BYTES) {
-      safeLogError(["[app]", "[image-store]", "saveConfigImage too large"], new Error(`imageId=${imageId} size=${enc.length}`));
+    safeLogError(
+      ["[app]", "[image-store]", "saveConfigImage too large"],
+      new Error(`imageId=${imageId} size=${enc.length}`),
+    );
     throw new Error(i18n.t("errors.imageTooLarge"));
   }
 
@@ -320,7 +323,7 @@ export async function saveConfigImage(
   try {
     await withWriteRetry(() => setDoc(ref, { data: enc, createdAt: serverTimestamp() }));
   } catch (e) {
-      safeLogError(["[app]", "[image-store]", "saveConfigImage setDoc FAILED"], e);
+    safeLogError(["[app]", "[image-store]", "saveConfigImage setDoc FAILED"], e);
     throw e;
   }
   // Ref con revisión nueva: invalida la caché de URLs y hace que el preview
