@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.134.1](https://github.com/LightOracle67/wedingo/releases)  
+**Versión actual:** [v2.135.0](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.135.0 | 2026-08-26 | Corregidos los errores al guardar la configuración: secciones ocultas legacy (p. ej. «extras») ya no invalidan el guardado, y los textos con comillas dobles/acentos graves se convierten a variantes tipográficas seguras con aviso claro de caracteres no permitidos (<, >, javascript:). El changelog de la página ahora se descarga de GitHub (CHANGELOG.md) con caché local en vez de viajar en el bundle |
 | v2.134.1 | 2026-08-26 | Corregido el contador de confirmaciones del RSVP: el incremento atómico era rechazado por las reglas y toda confirmación nueva fallaba con «límite alcanzado»; el contador se guarda con escritura directa count+1. Permitidas URLs vacías al guardar la configuración (errores al guardar). Botón de añadir acompañante con el mismo estilo que los chips de alergias |
 | v2.134.0 | 2026-08-26 | RSVP regenerado desde cero: UI moderna (control segmentado de asistencia, chips de transporte y alergias, tarjetas de acompañante) conservando todos los campos y contratos; verificados los 14 flujos de Firestore campo a campo |
 | v2.133.0 | 2026-08-25 | Mejoras del RSVP: validación de consentimiento de salud, reconocimiento de nombres sin acentos, borrador autoguardado, resumen fiel tras enviar, foco en errores y respeto a prefers-reduced-motion |
