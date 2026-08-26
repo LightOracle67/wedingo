@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { isValidFullName, normalizeFullName , nameKey } from "../name-utils";
+import { isValidFullName, normalizeFullName, nameKey } from "../name-utils";
 
 describe("isValidFullName", () => {
   it("accepts exactly 3 words (name + two surnames)", () => {

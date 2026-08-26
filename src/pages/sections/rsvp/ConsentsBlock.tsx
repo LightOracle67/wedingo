@@ -72,9 +72,7 @@ const ConsentsBlock = memo(function ConsentsBlock({
       </label>
 
       {/* Transparencia GDPR: versión de política vigente */}
-      {policyVersion ? (
-        <p className="rv2-policyver">{t("rsvp.policyVersion", { version: policyVersion })}</p>
-      ) : null}
+      {policyVersion ? <p className="rv2-policyver">{t("rsvp.policyVersion", { version: policyVersion })}</p> : null}
 
       {showHealthConsent ? (
         <label className="rv2-check">

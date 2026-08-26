@@ -54,7 +54,9 @@ describe("MapModeSelect", () => {
 describe("MapUrlField", () => {
   it("marca la URL válida y notifica el cambio", () => {
     const onChange = vi.fn();
-    render(<MapUrlField id="u" value="https://maps.google.com/maps/place/Plaza+Mayor" onChange={onChange} placeholder="p" />);
+    render(
+      <MapUrlField id="u" value="https://maps.google.com/maps/place/Plaza+Mayor" onChange={onChange} placeholder="p" />,
+    );
     const input = screen.getByRole("textbox");
     expect(screen.getByText("setup.mapUrlOk")).toBeInTheDocument();
     fireEvent.change(input, { target: { value: "https://maps.google.com/maps/place/Retiro" } });

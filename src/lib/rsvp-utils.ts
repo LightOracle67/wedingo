@@ -54,13 +54,11 @@ export interface HealthConsentsInput {
  */
 export function missingHealthConsent(d: HealthConsentsInput): boolean {
   if (d.attendance === "no") return false;
-  const mainNeeds =
-    (d.allergies || []).length > 0 || (d.allergiesOther || "").trim().length > 0;
+  const mainNeeds = (d.allergies || []).length > 0 || (d.allergiesOther || "").trim().length > 0;
   if (mainNeeds && !d.healthConsent) return true;
   for (let i = 0; i < d.companionCount; i++) {
     const compNeeds =
-      (d.companionAllergies[i] || []).length > 0 ||
-      (d.companionAllergiesOther?.[i] || "").trim().length > 0;
+      (d.companionAllergies[i] || []).length > 0 || (d.companionAllergiesOther?.[i] || "").trim().length > 0;
     if (compNeeds && !d.companionHealthConsents[i]) return true;
   }
   return false;

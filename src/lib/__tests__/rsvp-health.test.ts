@@ -15,9 +15,7 @@ const base = {
 describe("missingHealthConsent", () => {
   it("exige consentimiento del principal cuando marca alergias", () => {
     expect(missingHealthConsent({ ...base, allergies: ["sin gluten"] })).toBe(true);
-    expect(
-      missingHealthConsent({ ...base, allergies: ["sin gluten"], healthConsent: true }),
-    ).toBe(false);
+    expect(missingHealthConsent({ ...base, allergies: ["sin gluten"], healthConsent: true })).toBe(false);
   });
 
   it("cuenta también el texto libre de alergias del principal", () => {

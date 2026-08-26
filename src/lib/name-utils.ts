@@ -23,8 +23,5 @@ export function isValidFullName(name: string): boolean {
  * stableGuestId sobre normalizeFullName (hashes congelados en producción).
  */
 export function nameKey(name: string): string {
-  return normalizeFullName(name)
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/\p{M}/gu, "");
+  return normalizeFullName(name).toLowerCase().normalize("NFD").replace(/\p{M}/gu, "");
 }

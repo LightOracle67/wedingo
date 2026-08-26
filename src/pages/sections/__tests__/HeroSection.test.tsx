@@ -7,14 +7,19 @@ vi.mock("react-i18next", () => ({
 
 vi.mock("../../../lib/platform-settings", () => ({
   usePlatformSettings: () => ({
-    settings: { maintenance: "false", bannerEnabled: "false", bannerText: "", blockedUrls: "", blockedTokens: "", expiringDays: "30" },
+    settings: {
+      maintenance: "false",
+      bannerEnabled: "false",
+      bannerText: "",
+      blockedUrls: "",
+      blockedTokens: "",
+      expiringDays: "30",
+    },
     loaded: true,
     reload: () => undefined,
   }),
   tokenIsBlocked: () => false,
 }));
-
-
 
 const heroFb = vi.hoisted(() => ({
   snapOk: undefined as undefined | ((s: unknown) => void),
@@ -178,7 +183,6 @@ describe("HeroSection", () => {
     render(<HeroSection {...baseProps} weddingDate={futureDate({ d: 3 })} couplePhoto="" />);
     expect(screen.getByText(/countdown\.day/)).toBeDefined();
   });
-
 
   it("suscribe confirmados en vivo y pinta el snapshot recibido", async () => {
     // Con token y toggle activo el efecto se suscribe a confirmedPeople; el

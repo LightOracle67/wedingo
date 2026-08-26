@@ -33,9 +33,7 @@ function Probe({
         // Lanza el diálogo elegido y reporta el valor resuelto (o el error).
         try {
           onResult(
-            mode === "confirm"
-              ? await confirm(options as ConfirmOptions)
-              : await prompt(options as PromptOptions),
+            mode === "confirm" ? await confirm(options as ConfirmOptions) : await prompt(options as PromptOptions),
           );
         } catch (e) {
           onResult(`error:${String(e)}`);

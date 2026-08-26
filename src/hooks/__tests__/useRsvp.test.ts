@@ -9,9 +9,7 @@ type SeededSnapshot = {
   forEach?: unknown;
   size?: number;
 };
-const mockGetDocs = vi.hoisted(() =>
-  vi.fn((): Promise<SeededSnapshot> => Promise.resolve({ docs: [] })),
-);
+const mockGetDocs = vi.hoisted(() => vi.fn((): Promise<SeededSnapshot> => Promise.resolve({ docs: [] })));
 const mockDoc = vi.hoisted(() =>
   vi.fn((_col?: unknown, id?: string) => (id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` })),
 );
@@ -32,7 +30,9 @@ const mockParseDietaryInfo = vi.hoisted(() =>
   vi.fn(() => ({ mealChoice: "", dietarySelection: [] as string[], dietaryOther: "" })),
 );
 type SnapshotCb = (snap: unknown) => void;
-const mockOnSnapshot = vi.hoisted(() => vi.fn((_q: unknown, _cb?: SnapshotCb, _errCb?: (e: unknown) => void) => () => {}));
+const mockOnSnapshot = vi.hoisted(() =>
+  vi.fn((_q: unknown, _cb?: SnapshotCb, _errCb?: (e: unknown) => void) => () => {}),
+);
 
 vi.mock("firebase/firestore", () => ({
   writeBatch: mockWriteBatch,
@@ -119,7 +119,7 @@ describe("useRsvp", () => {
     expect(result.current.rsvpForm.attendance).toBe("alone");
     expect(result.current.rsvpForm.companionCount).toBe(0);
     expect(result.current.rsvpForm.companionNames).toEqual([]);
-        expect(result.current.rsvpForm.companionAllergies).toEqual([]);
+    expect(result.current.rsvpForm.companionAllergies).toEqual([]);
     expect(result.current.rsvpForm.menuSelection).toBe("");
     expect(result.current.rsvpForm.allergies).toEqual([]);
     expect(result.current.rsvpForm.privacyConsent).toBe(false);
@@ -211,7 +211,7 @@ describe("useRsvp", () => {
     expect(result.current.rsvpForm.allergies).toEqual(["sin gluten"]);
   });
 
-      it("handles companionAllergies[N] field updates", () => {
+  it("handles companionAllergies[N] field updates", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 2));
     act(() => result.current.updateRsvpField("companionAllergies[0]", ["sin gluten"]));
@@ -359,7 +359,6 @@ describe("useRsvp", () => {
     await vi.waitFor(() => expect(mockGetDocs.mock.calls.length).toBeGreaterThanOrEqual(2));
   });
 
-
   describe("Acciones del hook: update de campos", () => {
     // Helper: monta el hook fresco por test (beforeEach ya restauró mocks).
     const mount = () => renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
@@ -503,8 +502,24 @@ describe("useRsvp", () => {
     const seedEntries = () => {
       mockGetDocs.mockResolvedValue({
         docs: [
-          { id: "m1", data: () => ({ guestName: "Ana García López", attendance: "yes", rsvpType: "main", inviteToken: "test-token" }) },
-          { id: "c1", data: () => ({ guestName: "Bea Ruiz Soler", mainGuestDocId: "m1", rsvpType: "companion", inviteToken: "test-token" }) },
+          {
+            id: "m1",
+            data: () => ({
+              guestName: "Ana García López",
+              attendance: "yes",
+              rsvpType: "main",
+              inviteToken: "test-token",
+            }),
+          },
+          {
+            id: "c1",
+            data: () => ({
+              guestName: "Bea Ruiz Soler",
+              mainGuestDocId: "m1",
+              rsvpType: "companion",
+              inviteToken: "test-token",
+            }),
+          },
         ],
         forEach: vi.fn(),
         // size lo consume el vaciado total para decrementar el contador (-N).
@@ -564,9 +579,7 @@ describe("useRsvp", () => {
   it("onSnapshot: el callback de error del listener se traga sin romper", async () => {
     // Ejercita la rama errCb del listener en vivo (~372): un fallo de red de
     // Firestore no debe propagarse ni desmontar el hook.
-    const { result } = renderHook(() =>
-      useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true),
-    );
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     await act(async () => {});
     const errCb = mockOnSnapshot.mock.calls.at(-1)?.[2];
     if (!errCb) throw new Error("onSnapshot no recibió callback de error");
@@ -578,50 +591,110 @@ describe("useRsvp", () => {
     // Main con dos acompañantes enlazados: el efecto de prefill reconstruye
     // el formulario completo (attendance with, count, isChild, nombres).
     mockGetDocs.mockResolvedValue({
-      docs: [{ id: "main_ana", data: () => ({
-          rsvpType: "main", guestName: "Ana García López", attendance: "yes",
-          dietaryInfo: "", inviteToken: "test-token", privacyConsent: true,
-          companions: 2, companionCount: 2,
-          companionNames: ["Beto Ruiz Díaz", "Carla Gil Rey"],
-          companionMenus: ["menu1", ""], mealChoice: "menu1",
-          transportMode: "bus",
-        }) }, { id: "comp_b", data: () => ({
-          rsvpType: "companion", guestName: "Beto Ruiz Díaz", mainGuestDocId: "main_ana",
-          attendance: "yes", dietaryInfo: "", inviteToken: "test-token",
-          privacyConsent: true, isChild: true, healthConsent: true, mealChoice: "menu1",
-        }) }, { id: "comp_c", data: () => ({
-          rsvpType: "companion", guestName: "Carla Gil Rey", mainGuestDocId: "main_ana",
-          attendance: "yes", dietaryInfo: "", inviteToken: "test-token",
-          privacyConsent: true,
-        }) }],
+      docs: [
+        {
+          id: "main_ana",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Ana García López",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+            companions: 2,
+            companionCount: 2,
+            companionNames: ["Beto Ruiz Díaz", "Carla Gil Rey"],
+            companionMenus: ["menu1", ""],
+            mealChoice: "menu1",
+            transportMode: "bus",
+          }),
+        },
+        {
+          id: "comp_b",
+          data: () => ({
+            rsvpType: "companion",
+            guestName: "Beto Ruiz Díaz",
+            mainGuestDocId: "main_ana",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+            isChild: true,
+            healthConsent: true,
+            mealChoice: "menu1",
+          }),
+        },
+        {
+          id: "comp_c",
+          data: () => ({
+            rsvpType: "companion",
+            guestName: "Carla Gil Rey",
+            mainGuestDocId: "main_ana",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        },
+      ],
       size: 3,
       forEach: (cb: (d: unknown) => void) => {
-        cb({ id: "main_ana", data: () => ({
-          rsvpType: "main", guestName: "Ana García López", attendance: "yes",
-          dietaryInfo: "", inviteToken: "test-token", privacyConsent: true,
-          companions: 2, companionCount: 2,
-          companionNames: ["Beto Ruiz Díaz", "Carla Gil Rey"],
-          companionMenus: ["menu1", ""], mealChoice: "menu1",
-          transportMode: "bus",
-        }) });
-        cb({ id: "comp_b", data: () => ({
-          rsvpType: "companion", guestName: "Beto Ruiz Díaz", mainGuestDocId: "main_ana",
-          attendance: "yes", dietaryInfo: "", inviteToken: "test-token",
-          privacyConsent: true, isChild: true, healthConsent: true, mealChoice: "menu1",
-        }) });
-        cb({ id: "comp_c", data: () => ({
-          rsvpType: "companion", guestName: "Carla Gil Rey", mainGuestDocId: "main_ana",
-          attendance: "yes", dietaryInfo: "", inviteToken: "test-token",
-          privacyConsent: true,
-        }) });
+        cb({
+          id: "main_ana",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Ana García López",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+            companions: 2,
+            companionCount: 2,
+            companionNames: ["Beto Ruiz Díaz", "Carla Gil Rey"],
+            companionMenus: ["menu1", ""],
+            mealChoice: "menu1",
+            transportMode: "bus",
+          }),
+        });
+        cb({
+          id: "comp_b",
+          data: () => ({
+            rsvpType: "companion",
+            guestName: "Beto Ruiz Díaz",
+            mainGuestDocId: "main_ana",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+            isChild: true,
+            healthConsent: true,
+            mealChoice: "menu1",
+          }),
+        });
+        cb({
+          id: "comp_c",
+          data: () => ({
+            rsvpType: "companion",
+            guestName: "Carla Gil Rey",
+            mainGuestDocId: "main_ana",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        });
       },
     });
-    const { result } = renderHook(() =>
-      useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true),
-    );
-    await act(async () => { await Promise.resolve(); });
-    act(() => { result.current.updateRsvpField("guestName", "ana garcía lópez"); });
-    await act(async () => { await Promise.resolve(); });
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+    await act(async () => {
+      await Promise.resolve();
+    });
+    act(() => {
+      result.current.updateRsvpField("guestName", "ana garcía lópez");
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
     expect(result.current.rsvpForm.attendance).toBe("with");
     expect(result.current.rsvpForm.companionCount).toBe(2);
     expect(result.current.rsvpForm.companionIsChildren).toHaveLength(2);
@@ -632,33 +705,70 @@ describe("useRsvp", () => {
   it("prefill COMPANION: asistente ya inscrito como acompañante va a solo/a", async () => {
     // Rama del match companion (~405-410): attendance alone y count 0.
     mockGetDocs.mockResolvedValue({
-      docs: [{ id: "main_otro", data: () => ({
-          rsvpType: "main", guestName: "Marta Pons Vila", attendance: "yes",
-          dietaryInfo: "", inviteToken: "test-token", privacyConsent: true,
-        }) }, { id: "comp_x", data: () => ({
-          rsvpType: "companion", guestName: "Luis Soto Cano", mainGuestDocId: "main_otro",
-          attendance: "yes", dietaryInfo: "", inviteToken: "test-token",
-          privacyConsent: true, mealChoice: "menu2",
-        }) }],
+      docs: [
+        {
+          id: "main_otro",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Marta Pons Vila",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        },
+        {
+          id: "comp_x",
+          data: () => ({
+            rsvpType: "companion",
+            guestName: "Luis Soto Cano",
+            mainGuestDocId: "main_otro",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+            mealChoice: "menu2",
+          }),
+        },
+      ],
       size: 1,
       forEach: (cb: (d: unknown) => void) => {
-        cb({ id: "main_otro", data: () => ({
-          rsvpType: "main", guestName: "Marta Pons Vila", attendance: "yes",
-          dietaryInfo: "", inviteToken: "test-token", privacyConsent: true,
-        }) });
-        cb({ id: "comp_x", data: () => ({
-          rsvpType: "companion", guestName: "Luis Soto Cano", mainGuestDocId: "main_otro",
-          attendance: "yes", dietaryInfo: "", inviteToken: "test-token",
-          privacyConsent: true, mealChoice: "menu2",
-        }) });
+        cb({
+          id: "main_otro",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Marta Pons Vila",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        });
+        cb({
+          id: "comp_x",
+          data: () => ({
+            rsvpType: "companion",
+            guestName: "Luis Soto Cano",
+            mainGuestDocId: "main_otro",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+            mealChoice: "menu2",
+          }),
+        });
       },
     });
-    const { result } = renderHook(() =>
-      useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true),
-    );
-    await act(async () => { await Promise.resolve(); });
-    act(() => { result.current.updateRsvpField("guestName", "luis soto cano"); });
-    await act(async () => { await Promise.resolve(); });
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+    await act(async () => {
+      await Promise.resolve();
+    });
+    act(() => {
+      result.current.updateRsvpField("guestName", "luis soto cano");
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
     expect(result.current.rsvpForm.attendance).toBe("alone");
     expect(result.current.rsvpForm.companionCount).toBe(0);
     expect(result.current.alreadySubmittedEntry?.id).toBe("comp_x");
@@ -667,27 +777,51 @@ describe("useRsvp", () => {
   it("prefill: nombre vacío resetea alreadySubmittedEntry a null", async () => {
     // Rama !name del efecto (~420): limpiar el campo limpia el match.
     mockGetDocs.mockResolvedValue({
-      docs: [{ id: "main_z", data: () => ({
-          rsvpType: "main", guestName: "Ana García López", attendance: "yes",
-          dietaryInfo: "", inviteToken: "test-token", privacyConsent: true,
-        }) }],
+      docs: [
+        {
+          id: "main_z",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Ana García López",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        },
+      ],
       size: 1,
       forEach: (cb: (d: unknown) => void) => {
-        cb({ id: "main_z", data: () => ({
-          rsvpType: "main", guestName: "Ana García López", attendance: "yes",
-          dietaryInfo: "", inviteToken: "test-token", privacyConsent: true,
-        }) });
+        cb({
+          id: "main_z",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Ana García López",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        });
       },
     });
-    const { result } = renderHook(() =>
-      useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true),
-    );
-    await act(async () => { await Promise.resolve(); });
-    act(() => { result.current.updateRsvpField("guestName", "ana garcía lópez"); });
-    await act(async () => { await Promise.resolve(); });
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+    await act(async () => {
+      await Promise.resolve();
+    });
+    act(() => {
+      result.current.updateRsvpField("guestName", "ana garcía lópez");
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
     expect(result.current.alreadySubmittedEntry?.id).toBe("main_z");
-    act(() => { result.current.updateRsvpField("guestName", ""); });
-    await act(async () => { await Promise.resolve(); });
+    act(() => {
+      result.current.updateRsvpField("guestName", "");
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
     expect(result.current.alreadySubmittedEntry).toBeNull();
   });
 
@@ -696,36 +830,77 @@ describe("useRsvp", () => {
     // contador, reset de form/hasSubmitted y limpieza de caché de sesión.
     sessionStorage.setItem("rsvp_test-token", "x");
     mockGetDocs.mockResolvedValue({
-      docs: [{ id: "main_del", data: () => ({
-          rsvpType: "main", guestName: "Ana García López", attendance: "yes",
-          dietaryInfo: "", inviteToken: "test-token", privacyConsent: true,
-          companions: 1, companionCount: 1, companionNames: ["Beto Ruiz Díaz"],
-        }) }, { id: "comp_bd", data: () => ({
-          rsvpType: "companion", guestName: "Beto Ruiz Díaz", mainGuestDocId: "main_del",
-          attendance: "yes", dietaryInfo: "", inviteToken: "test-token",
-          privacyConsent: true,
-        }) }],
+      docs: [
+        {
+          id: "main_del",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Ana García López",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+            companions: 1,
+            companionCount: 1,
+            companionNames: ["Beto Ruiz Díaz"],
+          }),
+        },
+        {
+          id: "comp_bd",
+          data: () => ({
+            rsvpType: "companion",
+            guestName: "Beto Ruiz Díaz",
+            mainGuestDocId: "main_del",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        },
+      ],
       size: 2,
       forEach: (cb: (d: unknown) => void) => {
-        cb({ id: "main_del", data: () => ({
-          rsvpType: "main", guestName: "Ana García López", attendance: "yes",
-          dietaryInfo: "", inviteToken: "test-token", privacyConsent: true,
-          companions: 1, companionCount: 1, companionNames: ["Beto Ruiz Díaz"],
-        }) });
-        cb({ id: "comp_bd", data: () => ({
-          rsvpType: "companion", guestName: "Beto Ruiz Díaz", mainGuestDocId: "main_del",
-          attendance: "yes", dietaryInfo: "", inviteToken: "test-token",
-          privacyConsent: true,
-        }) });
+        cb({
+          id: "main_del",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Ana García López",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+            companions: 1,
+            companionCount: 1,
+            companionNames: ["Beto Ruiz Díaz"],
+          }),
+        });
+        cb({
+          id: "comp_bd",
+          data: () => ({
+            rsvpType: "companion",
+            guestName: "Beto Ruiz Díaz",
+            mainGuestDocId: "main_del",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        });
       },
     });
-    const { result } = renderHook(() =>
-      useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true),
-    );
-    await act(async () => { await Promise.resolve(); });
-    act(() => { result.current.updateRsvpField("guestName", "Ana García López"); });
-    await act(async () => { await Promise.resolve(); });
-    await act(async () => { await result.current.handleDeleteRsvp(); });
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+    await act(async () => {
+      await Promise.resolve();
+    });
+    act(() => {
+      result.current.updateRsvpField("guestName", "Ana García López");
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+    await act(async () => {
+      await result.current.handleDeleteRsvp();
+    });
     expect(mockWriteBatch().delete).toHaveBeenCalled();
     expect(mockWriteBatch().commit).toHaveBeenCalled();
     expect(result.current.hasSubmitted).toBe(false);
@@ -736,25 +911,47 @@ describe("useRsvp", () => {
     // Rama de cancelación: confirm false → return temprano sin batch.
     window.confirm = vi.fn(() => false);
     mockGetDocs.mockResolvedValue({
-      docs: [{ id: "main_del2", data: () => ({
-          rsvpType: "main", guestName: "Nora Vega Luna", attendance: "yes",
-          dietaryInfo: "", inviteToken: "test-token", privacyConsent: true,
-        }) }],
+      docs: [
+        {
+          id: "main_del2",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Nora Vega Luna",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        },
+      ],
       size: 1,
       forEach: (cb: (d: unknown) => void) => {
-        cb({ id: "main_del2", data: () => ({
-          rsvpType: "main", guestName: "Nora Vega Luna", attendance: "yes",
-          dietaryInfo: "", inviteToken: "test-token", privacyConsent: true,
-        }) });
+        cb({
+          id: "main_del2",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Nora Vega Luna",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        });
       },
     });
-    const { result } = renderHook(() =>
-      useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true),
-    );
-    await act(async () => { await Promise.resolve(); });
-    act(() => { result.current.updateRsvpField("guestName", "Nora Vega Luna"); });
-    await act(async () => { await Promise.resolve(); });
-    await act(async () => { await result.current.handleDeleteRsvp(); });
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+    await act(async () => {
+      await Promise.resolve();
+    });
+    act(() => {
+      result.current.updateRsvpField("guestName", "Nora Vega Luna");
+    });
+    await act(async () => {
+      await Promise.resolve();
+    });
+    await act(async () => {
+      await result.current.handleDeleteRsvp();
+    });
     expect(mockWriteBatch().commit).not.toHaveBeenCalled();
   });
 
@@ -763,17 +960,19 @@ describe("useRsvp", () => {
      de los manejadores de limpieza. */
   it("submit con attendance 'no' ejercita ternarios del payload sin transporte", async () => {
     mockGetDocs.mockResolvedValue({ docs: [], size: 0, forEach: () => {} });
-    const { result } = renderHook(() =>
-      useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true),
-    );
-    await act(async () => { await Promise.resolve(); });
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+    await act(async () => {
+      await Promise.resolve();
+    });
     act(() => {
       result.current.updateRsvpField("guestName", "Pablo Ruiz Picasso");
       result.current.updateRsvpField("attendance", "no");
       // El consentimiento de privacidad es obligatorio para que el submit pase
       result.current.updateRsvpField("privacyConsent", true);
     });
-    await act(async () => { result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as unknown as React.FormEvent); });
+    await act(async () => {
+      result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as unknown as React.FormEvent);
+    });
     // El set del lote debe haberse llamado con attendance 'no' y sin acompañantes
     // (patrón del fichero: recuperar la ÚLTIMA instancia real devuelta por writeBatch)
     const batch = mockWriteBatch.mock.results.at(-1)!.value as {
@@ -788,15 +987,17 @@ describe("useRsvp", () => {
 
   it("validación exige selección de menú cuando menuEnabled y no hay elección", async () => {
     mockGetDocs.mockResolvedValue({ docs: [], size: 0, forEach: () => {} });
-    const { result } = renderHook(() =>
-      useRsvp("test-token", setAdminMessage, setAdminMessageType, true, true),
-    );
-    await act(async () => { await Promise.resolve(); });
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, true, true));
+    await act(async () => {
+      await Promise.resolve();
+    });
     act(() => {
       result.current.updateRsvpField("guestName", "Ana García López");
       result.current.updateRsvpField("privacyConsent", true);
     });
-    await act(async () => { result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as unknown as React.FormEvent); });
+    await act(async () => {
+      result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as unknown as React.FormEvent);
+    });
     // Sin menuSelection el submit se bloquea con mensaje de validación
     expect(mockWriteBatch().commit).not.toHaveBeenCalled();
     expect(result.current.rsvpMessage).toBeTruthy();
@@ -804,36 +1005,62 @@ describe("useRsvp", () => {
 
   it("handleDeleteRsvp sin entrada previa no hace nada", async () => {
     mockGetDocs.mockResolvedValue({ docs: [], size: 0, forEach: () => {} });
-    const { result } = renderHook(() =>
-      useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true),
-    );
-    await act(async () => { await Promise.resolve(); });
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+    await act(async () => {
+      await Promise.resolve();
+    });
     // Sin alreadySubmittedEntry la retirada retorna temprano (guard)
-    await act(async () => { await result.current.handleDeleteRsvp(); });
+    await act(async () => {
+      await result.current.handleDeleteRsvp();
+    });
     expect(mockWriteBatch().delete).not.toHaveBeenCalled();
   });
 
   it("handleDeleteRsvpEntries captura errores del batch sin propagarlos", async () => {
     mockGetDocs.mockResolvedValue({
-      docs: [{ id: "main_err", data: () => ({ rsvpType: "main", guestName: "Eva Err One", attendance: "yes", dietaryInfo: "", inviteToken: "test-token", privacyConsent: true }) }],
+      docs: [
+        {
+          id: "main_err",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Eva Err One",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        },
+      ],
       size: 1,
       forEach: (cb: (d: unknown) => void) => {
-        cb({ id: "main_err", data: () => ({ rsvpType: "main", guestName: "Eva Err One", attendance: "yes", dietaryInfo: "", inviteToken: "test-token", privacyConsent: true }) });
+        cb({
+          id: "main_err",
+          data: () => ({
+            rsvpType: "main",
+            guestName: "Eva Err One",
+            attendance: "yes",
+            dietaryInfo: "",
+            inviteToken: "test-token",
+            privacyConsent: true,
+          }),
+        });
       },
     });
     // Forzamos fallo del commit para ejercitar el catch
     mockWriteBatch().commit.mockRejectedValueOnce(new Error("boom"));
-    const { result } = renderHook(() =>
-      useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true),
-    );
-    await act(async () => { await Promise.resolve(); });
-    await act(async () => { await result.current.handleDeleteRsvpEntries(["main_err"]); });
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+    await act(async () => {
+      await Promise.resolve();
+    });
+    await act(async () => {
+      await result.current.handleDeleteRsvpEntries(["main_err"]);
+    });
     // El error se traduce en mensaje admin de tipo error
     expect(setAdminMessageType).toHaveBeenCalledWith("error");
     expect(setAdminMessage).toHaveBeenCalledWith(expect.stringContaining(""));
   });
 
-  it('submit con acompañantes cubre ternarios del payload y commitea', async () => {
+  it("submit con acompañantes cubre ternarios del payload y commitea", async () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     await act(async () => {
       result.current.updateRsvpField("guestName", "Ana García López");
@@ -846,47 +1073,67 @@ describe("useRsvp", () => {
       result.current.updateRsvpField("menuSelection", "Vegano");
       result.current.updateRsvpField("privacyConsent", true);
     });
-    await act(async () => { await result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as unknown as React.FormEvent); });
+    await act(async () => {
+      await result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as unknown as React.FormEvent);
+    });
     // El commit del lote confirma que el payload completo pasó la validación
     expect(mockWriteBatch().commit).toHaveBeenCalled();
   });
 
-  it('submit con commit rechazado propaga mensaje de error', async () => {
-    mockWriteBatch.mockImplementationOnce(() => ({ set: vi.fn(), update: vi.fn(), delete: vi.fn(), commit: vi.fn().mockRejectedValueOnce(new Error("x")) }));
+  it("submit con commit rechazado propaga mensaje de error", async () => {
+    mockWriteBatch.mockImplementationOnce(() => ({
+      set: vi.fn(),
+      update: vi.fn(),
+      delete: vi.fn(),
+      commit: vi.fn().mockRejectedValueOnce(new Error("x")),
+    }));
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     await act(async () => {
       result.current.updateRsvpField("guestName", "Ana García López");
       result.current.updateRsvpField("attendance", "alone");
       result.current.updateRsvpField("privacyConsent", true);
     });
-    await act(async () => { await result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as unknown as React.FormEvent); });
+    await act(async () => {
+      await result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as unknown as React.FormEvent);
+    });
     // El fallo del batch se comunica por el mensaje interno del formulario
     expect(result.current.rsvpMessage).toBeTruthy();
   });
 
-  it('handleDeleteRsvp con commit rechazado muestra withdrawError sin crash', async () => {
+  it("handleDeleteRsvp con commit rechazado muestra withdrawError sin crash", async () => {
     const docs = [{ id: "main_abc", data: () => ({ guestName: "Ana García López", rsvpType: "main" }) }];
     mockGetDocs.mockResolvedValue({ size: 1, docs, forEach: (cb: (d: unknown) => void) => docs.forEach(cb) });
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     // Seed: el prefill fija alreadySubmittedEntry al coincidir nombre e invitación hidratada
-    await act(async () => { result.current.updateRsvpField("guestName", "ana garcía lópez"); });
+    await act(async () => {
+      result.current.updateRsvpField("guestName", "ana garcía lópez");
+    });
     await act(async () => {});
     if (!result.current.alreadySubmittedEntry) return; // sin seed no hay nada que retirar
-    mockWriteBatch.mockImplementationOnce(() => ({ set: vi.fn(), update: vi.fn(), delete: vi.fn(), commit: vi.fn().mockRejectedValueOnce(new Error("x")) }));
-    await act(async () => { await result.current.handleDeleteRsvp(); });
+    mockWriteBatch.mockImplementationOnce(() => ({
+      set: vi.fn(),
+      update: vi.fn(),
+      delete: vi.fn(),
+      commit: vi.fn().mockRejectedValueOnce(new Error("x")),
+    }));
+    await act(async () => {
+      await result.current.handleDeleteRsvp();
+    });
     // El error de retirada se reporta sin lanzar (mensaje interno)
     expect(result.current.rsvpMessage).toBeTruthy();
   });
 
-  it('handleClearRsvpEntries con getDocs rechazado muestra clearError', async () => {
+  it("handleClearRsvpEntries con getDocs rechazado muestra clearError", async () => {
     mockGetDocs.mockRejectedValueOnce(new Error("boom"));
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
-    await act(async () => { await result.current.handleClearRsvpEntries(); });
+    await act(async () => {
+      await result.current.handleClearRsvpEntries();
+    });
     // El fallo del vaciado se comunica vía mensaje admin de tipo error
     expect(setAdminMessageType).toHaveBeenCalledWith("error");
   });
 
-  it('menú habilitado y seleccionado valida y commitea', async () => {
+  it("menú habilitado y seleccionado valida y commitea", async () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, true, true));
     await act(async () => {
       result.current.updateRsvpField("guestName", "Ana García López");
@@ -894,9 +1141,10 @@ describe("useRsvp", () => {
       result.current.updateRsvpField("menuSelection", "Vegano");
       result.current.updateRsvpField("privacyConsent", true);
     });
-    await act(async () => { await result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as unknown as React.FormEvent); });
+    await act(async () => {
+      await result.current.handleRsvpSubmit({ preventDefault: vi.fn() } as unknown as React.FormEvent);
+    });
     // Con menú válido la validación no bloquea y el lote se confirma
     expect(mockWriteBatch().commit).toHaveBeenCalled();
   });
-
 });

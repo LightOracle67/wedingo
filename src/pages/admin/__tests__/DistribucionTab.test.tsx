@@ -65,7 +65,20 @@ describe("DistribucionTab", () => {
       // mesas de la sección activa
       return Promise.resolve({
         docs: [
-          { id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 12, h: 12, rotation: 0, seats: 8, guests: [] }) },
+          {
+            id: "t1",
+            data: () => ({
+              name: "Mesa 1",
+              shape: "circle",
+              x: 50,
+              y: 50,
+              w: 12,
+              h: 12,
+              rotation: 0,
+              seats: 8,
+              guests: [],
+            }),
+          },
         ],
       });
     });
@@ -98,12 +111,14 @@ describe("DistribucionTab", () => {
     await screen.findByText("Mesa 1");
     // Espera a que los confirmados estén cargados antes de asignar.
     fireEvent.pointerDown(await screen.findByText("Mesa 1"), { clientX: 0, clientY: 0 });
-    const select = await screen.findByLabelText("distribucion.assignPlaceholder") as HTMLSelectElement;
+    const select = (await screen.findByLabelText("distribucion.assignPlaceholder")) as HTMLSelectElement;
     await vi.waitFor(() => expect(Array.from(select.options).some((o) => o.textContent === "Pepe")).toBe(true));
     fireEvent.click(screen.getByText("distribucion.autoAssign"));
     await vi.waitFor(() => expect(batchSpies.length).toBeGreaterThan(0));
     // Ana y Pepe (confirmados) se asignan a la mesa con hueco; Luis no.
-    const allGuests = batchSpies.flatMap((b) => b.update.mock.calls.map((c) => c[1] as { guests?: unknown[] }).flatMap((x) => (x?.guests ?? []) as unknown[]));
+    const allGuests = batchSpies.flatMap((b) =>
+      b.update.mock.calls.map((c) => c[1] as { guests?: unknown[] }).flatMap((x) => (x?.guests ?? []) as unknown[]),
+    );
     expect(allGuests.length).toBeGreaterThan(0);
     expect(allGuests).toContain("Ana");
     expect(allGuests).toContain("Pepe");
@@ -151,7 +166,22 @@ describe("DistribucionTab", () => {
         });
       if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
       return Promise.resolve({
-        docs: [{ id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 1, guests: ["Ana"] }) }],
+        docs: [
+          {
+            id: "t1",
+            data: () => ({
+              name: "Mesa 1",
+              shape: "circle",
+              x: 50,
+              y: 50,
+              w: 90,
+              h: 90,
+              rotation: 0,
+              seats: 1,
+              guests: ["Ana"],
+            }),
+          },
+        ],
       });
     });
     render(<DistribucionTab inviteToken="tok" />);
@@ -172,7 +202,22 @@ describe("DistribucionTab", () => {
         });
       if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
       return Promise.resolve({
-        docs: [{ id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 8, guests: ["Ana"] }) }],
+        docs: [
+          {
+            id: "t1",
+            data: () => ({
+              name: "Mesa 1",
+              shape: "circle",
+              x: 50,
+              y: 50,
+              w: 90,
+              h: 90,
+              rotation: 0,
+              seats: 8,
+              guests: ["Ana"],
+            }),
+          },
+        ],
       });
     });
     render(<DistribucionTab inviteToken="tok" />);
@@ -190,7 +235,22 @@ describe("DistribucionTab", () => {
       if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
       if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
       return Promise.resolve({
-        docs: [{ id: "t1", data: () => ({ name: "Mesa Rect", shape: "rect", x: 50, y: 50, w: 130, h: 80, rotation: 0, seats: 8, guests: [] }) }],
+        docs: [
+          {
+            id: "t1",
+            data: () => ({
+              name: "Mesa Rect",
+              shape: "rect",
+              x: 50,
+              y: 50,
+              w: 130,
+              h: 80,
+              rotation: 0,
+              seats: 8,
+              guests: [],
+            }),
+          },
+        ],
       });
     });
     render(<DistribucionTab inviteToken="tok" />);
@@ -206,7 +266,10 @@ describe("DistribucionTab", () => {
     // La mesa del mock es círculo (w:12,h:12) → un único control de tamaño.
     const size = screen.getByLabelText("distribucion.sizePx") as HTMLInputElement;
     fireEvent.change(size, { target: { value: "120" } });
-    expect((updateDoc as ReturnType<typeof vi.fn>)).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ w: 120, h: 120 }));
+    expect(updateDoc as ReturnType<typeof vi.fn>).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ w: 120, h: 120 }),
+    );
   });
 
   it("deletes a table from the map", async () => {
@@ -226,7 +289,22 @@ describe("DistribucionTab", () => {
       if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
       if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
       return Promise.resolve({
-        docs: [{ id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 8, guests: ["Ana García"] }) }],
+        docs: [
+          {
+            id: "t1",
+            data: () => ({
+              name: "Mesa 1",
+              shape: "circle",
+              x: 50,
+              y: 50,
+              w: 90,
+              h: 90,
+              rotation: 0,
+              seats: 8,
+              guests: ["Ana García"],
+            }),
+          },
+        ],
       });
     });
     let html = "";
@@ -240,8 +318,17 @@ describe("DistribucionTab", () => {
       focus: () => {},
       print: () => {},
     };
-    vi.stubGlobal("open", vi.fn(() => fakeWin));
-    render(<DistribucionTab inviteToken="tok" background="data:image/png;base64,BG" cornerDecoration="data:image/png;base64,CORNER" />);
+    vi.stubGlobal(
+      "open",
+      vi.fn(() => fakeWin),
+    );
+    render(
+      <DistribucionTab
+        inviteToken="tok"
+        background="data:image/png;base64,BG"
+        cornerDecoration="data:image/png;base64,CORNER"
+      />,
+    );
     await screen.findByText("Salón");
     await screen.findByText("Mesa 1");
     fireEvent.click(screen.getByText("distribucion.printLabels"));
@@ -262,7 +349,22 @@ describe("DistribucionTab", () => {
       if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
       if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
       return Promise.resolve({
-        docs: [{ id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 8, guests: ["Ana García"] }) }],
+        docs: [
+          {
+            id: "t1",
+            data: () => ({
+              name: "Mesa 1",
+              shape: "circle",
+              x: 50,
+              y: 50,
+              w: 90,
+              h: 90,
+              rotation: 0,
+              seats: 8,
+              guests: ["Ana García"],
+            }),
+          },
+        ],
       });
     });
     render(<DistribucionTab inviteToken="tok" />);
@@ -304,7 +406,22 @@ describe("DistribucionTab", () => {
       // Mesas de la sección activa (cambian según activeSectionId; el mock
       // devuelve la mesa de "Jardín" cuando se cambia).
       return Promise.resolve({
-        docs: [{ id: "t2", data: () => ({ name: "Mesa Jardín", shape: "circle", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 6, guests: [] }) }],
+        docs: [
+          {
+            id: "t2",
+            data: () => ({
+              name: "Mesa Jardín",
+              shape: "circle",
+              x: 50,
+              y: 50,
+              w: 90,
+              h: 90,
+              rotation: 0,
+              seats: 6,
+              guests: [],
+            }),
+          },
+        ],
       });
     });
     render(<DistribucionTab inviteToken="tok" />);
@@ -340,77 +457,90 @@ describe("DistribucionTab", () => {
     vi.restoreAllMocks();
   });
 
-describe("DistribucionTab — ramas límite (teclado, etiquetas, export)", () => {
-  // Limpieza por test: updateDoc es un mock de módulo compartido y acumularía
-  // llamadas entre tests volviendo no deterministas el assert "no llamado".
-  beforeEach(() => {
-    vi.mocked(updateDoc).mockClear();
-  });
-  /** Monta la tab con la mesa por defecto y devuelve su elemento accesible. */
-  async function mountWithTable(guests: string[] = []) {
-    mockGetDocs.mockImplementation((ref: unknown) => {
-      if (ref === "rsvp-ref")
-        return Promise.resolve({ docs: [{ data: () => ({ guestName: "Ana", attendance: "yes" }) }] });
-      if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
-      return Promise.resolve({
-        docs: [
-          { id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 12, h: 12, rotation: 0, seats: 8, guests }) },
-        ],
+  describe("DistribucionTab — ramas límite (teclado, etiquetas, export)", () => {
+    // Limpieza por test: updateDoc es un mock de módulo compartido y acumularía
+    // llamadas entre tests volviendo no deterministas el assert "no llamado".
+    beforeEach(() => {
+      vi.mocked(updateDoc).mockClear();
+    });
+    /** Monta la tab con la mesa por defecto y devuelve su elemento accesible. */
+    async function mountWithTable(guests: string[] = []) {
+      mockGetDocs.mockImplementation((ref: unknown) => {
+        if (ref === "rsvp-ref")
+          return Promise.resolve({ docs: [{ data: () => ({ guestName: "Ana", attendance: "yes" }) }] });
+        if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
+        return Promise.resolve({
+          docs: [
+            {
+              id: "t1",
+              data: () => ({
+                name: "Mesa 1",
+                shape: "circle",
+                x: 50,
+                y: 50,
+                w: 12,
+                h: 12,
+                rotation: 0,
+                seats: 8,
+                guests,
+              }),
+            },
+          ],
+        });
       });
+      render(<DistribucionTab inviteToken="tok" />);
+      await screen.findByText("Salón");
+    }
+
+    it("mueve la mesa con flechas (paso normal) y persiste", async () => {
+      await mountWithTable();
+      const tb = screen.getByRole("button", { name: "distribucion.tableAccessible" });
+      fireEvent.keyDown(tb, { key: "ArrowUp" });
+      await waitFor(() => expect(vi.mocked(updateDoc)).toHaveBeenCalled(), { timeout: 15000 });
     });
-    render(<DistribucionTab inviteToken="tok" />);
-    await screen.findByText("Salón");
-  }
 
-  it("mueve la mesa con flechas (paso normal) y persiste", async () => {
-    await mountWithTable();
-    const tb = screen.getByRole("button", { name: "distribucion.tableAccessible" });
-    fireEvent.keyDown(tb, { key: "ArrowUp" });
-    await waitFor(() => expect(vi.mocked(updateDoc)).toHaveBeenCalled(), { timeout: 15000 });
-  });
-
-  it("ignora teclas que no sean flechas", async () => {
-    await mountWithTable();
-    const writes = vi.mocked(updateDoc).mock.calls.length;
-    fireEvent.keyDown(screen.getByRole("button", { name: "distribucion.tableAccessible" }), { key: "k" });
-    expect(vi.mocked(updateDoc).mock.calls.length).toBe(writes);
-  });
-
-  it("avisa al imprimir etiquetas si ninguna mesa tiene invitados", async () => {
-    await mountWithTable([]);
-    fireEvent.click(screen.getByText("distribucion.printLabels"));
-    await waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("info", "distribucion.printNoGuests"));
-  });
-
-  it("imprime etiquetas con invitados vía ventana emergente", async () => {
-    await mountWithTable(["Ana"]);
-    const printSpy = vi.fn();
-    const winStub = { document: { write: vi.fn(), close: vi.fn(), images: [] }, focus: vi.fn(), print: printSpy };
-    const openSpy = vi.spyOn(window, "open").mockReturnValue(winStub as unknown as Window);
-    fireEvent.click(screen.getByText("distribucion.printLabels"));
-    await waitFor(() => expect(printSpy).toHaveBeenCalled(), { timeout: 15000 });
-    const html = winStub.document.write.mock.calls[0]![0] as string;
-    expect(html).toContain("Ana");
-    openSpy.mockRestore();
-  });
-
-  it("exporta XLSX cuando hay mesas en la sección activa", async () => {
-    await mountWithTable();
-    fireEvent.click(screen.getByText("distribucion.exportTables"));
-    // El export usa import() dinámico de excel-utils: 1s default se queda corto.
-    await waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled(), { timeout: 15000 });
-  });
-
-  it("avisa si no hay mesas que exportar", async () => {
-    mockGetDocs.mockImplementation((ref: unknown) => {
-      if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
-      if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
-      return Promise.resolve({ docs: [] });
+    it("ignora teclas que no sean flechas", async () => {
+      await mountWithTable();
+      const writes = vi.mocked(updateDoc).mock.calls.length;
+      fireEvent.keyDown(screen.getByRole("button", { name: "distribucion.tableAccessible" }), { key: "k" });
+      expect(vi.mocked(updateDoc).mock.calls.length).toBe(writes);
     });
-    render(<DistribucionTab inviteToken="tok" />);
-    await screen.findByText("Salón");
-    fireEvent.click(screen.getByText("distribucion.exportTables"));
-    await waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("info", "distribucion.noTables"));
+
+    it("avisa al imprimir etiquetas si ninguna mesa tiene invitados", async () => {
+      await mountWithTable([]);
+      fireEvent.click(screen.getByText("distribucion.printLabels"));
+      await waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("info", "distribucion.printNoGuests"));
+    });
+
+    it("imprime etiquetas con invitados vía ventana emergente", async () => {
+      await mountWithTable(["Ana"]);
+      const printSpy = vi.fn();
+      const winStub = { document: { write: vi.fn(), close: vi.fn(), images: [] }, focus: vi.fn(), print: printSpy };
+      const openSpy = vi.spyOn(window, "open").mockReturnValue(winStub as unknown as Window);
+      fireEvent.click(screen.getByText("distribucion.printLabels"));
+      await waitFor(() => expect(printSpy).toHaveBeenCalled(), { timeout: 15000 });
+      const html = winStub.document.write.mock.calls[0]![0] as string;
+      expect(html).toContain("Ana");
+      openSpy.mockRestore();
+    });
+
+    it("exporta XLSX cuando hay mesas en la sección activa", async () => {
+      await mountWithTable();
+      fireEvent.click(screen.getByText("distribucion.exportTables"));
+      // El export usa import() dinámico de excel-utils: 1s default se queda corto.
+      await waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled(), { timeout: 15000 });
+    });
+
+    it("avisa si no hay mesas que exportar", async () => {
+      mockGetDocs.mockImplementation((ref: unknown) => {
+        if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
+        if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
+        return Promise.resolve({ docs: [] });
+      });
+      render(<DistribucionTab inviteToken="tok" />);
+      await screen.findByText("Salón");
+      fireEvent.click(screen.getByText("distribucion.exportTables"));
+      await waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("info", "distribucion.noTables"));
+    });
   });
-});
 });

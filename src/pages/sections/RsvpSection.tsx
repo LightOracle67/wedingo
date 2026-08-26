@@ -4,7 +4,14 @@ import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import { useConfig, useAppUI, useAuth, useRsvpFormContext } from "../../contexts";
 import CornerDecorations from "../../components/CornerDecorations";
-import { deriveRsvpState, buildMenuOptions, buildModeOptions, buildDepartures, formatDishesText, type RsvpConfigLike } from "./rsvp/derive";
+import {
+  deriveRsvpState,
+  buildMenuOptions,
+  buildModeOptions,
+  buildDepartures,
+  formatDishesText,
+  type RsvpConfigLike,
+} from "./rsvp/derive";
 import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import AttendanceSelector from "./rsvp/AttendanceSelector";
 import TransportPicker from "./rsvp/TransportPicker";
@@ -40,33 +47,35 @@ interface RsvpSectionProps {
 }
 
 /** Claves conocidas del borrador autoguardado (espejo tipado de RsvpFormData). */
-const DRAFT_KEYS: Array<{ key: keyof RsvpFormData; kind: "string" | "number" | "boolean" | "stringArray" | "boolArray" | "matrix" }> =
-  [
-    { key: "guestName", kind: "string" },
-    { key: "attendance", kind: "string" },
-    { key: "companionCount", kind: "number" },
-    { key: "companionNames", kind: "stringArray" },
-    { key: "companionMenus", kind: "stringArray" },
-    { key: "companionAllergies", kind: "matrix" },
-    { key: "companionAllergiesOther", kind: "stringArray" },
-    { key: "companionIsChildren", kind: "stringArray" },
-    { key: "companionHealthConsents", kind: "boolArray" },
-    { key: "companionTransportModes", kind: "stringArray" },
-    { key: "companionTransportChoices", kind: "stringArray" },
-    { key: "menuSelection", kind: "string" },
-    { key: "allergies", kind: "stringArray" },
-    { key: "allergiesOther", kind: "string" },
-    { key: "privacyConsent", kind: "boolean" },
-    { key: "healthConsent", kind: "boolean" },
-    { key: "transportChoice", kind: "string" },
-    { key: "transportMode", kind: "string" },
-    { key: "transportTime", kind: "string" },
-    { key: "transportPlace", kind: "string" },
-    { key: "digitalSignature", kind: "boolean" },
-    { key: "phone", kind: "string" },
-    { key: "email", kind: "string" },
-    { key: "contactConsent", kind: "boolean" },
-    { key: "showNameInConfirmed", kind: "boolean" },
+const DRAFT_KEYS: Array<{
+  key: keyof RsvpFormData;
+  kind: "string" | "number" | "boolean" | "stringArray" | "boolArray" | "matrix";
+}> = [
+  { key: "guestName", kind: "string" },
+  { key: "attendance", kind: "string" },
+  { key: "companionCount", kind: "number" },
+  { key: "companionNames", kind: "stringArray" },
+  { key: "companionMenus", kind: "stringArray" },
+  { key: "companionAllergies", kind: "matrix" },
+  { key: "companionAllergiesOther", kind: "stringArray" },
+  { key: "companionIsChildren", kind: "stringArray" },
+  { key: "companionHealthConsents", kind: "boolArray" },
+  { key: "companionTransportModes", kind: "stringArray" },
+  { key: "companionTransportChoices", kind: "stringArray" },
+  { key: "menuSelection", kind: "string" },
+  { key: "allergies", kind: "stringArray" },
+  { key: "allergiesOther", kind: "string" },
+  { key: "privacyConsent", kind: "boolean" },
+  { key: "healthConsent", kind: "boolean" },
+  { key: "transportChoice", kind: "string" },
+  { key: "transportMode", kind: "string" },
+  { key: "transportTime", kind: "string" },
+  { key: "transportPlace", kind: "string" },
+  { key: "digitalSignature", kind: "boolean" },
+  { key: "phone", kind: "string" },
+  { key: "email", kind: "string" },
+  { key: "contactConsent", kind: "boolean" },
+  { key: "showNameInConfirmed", kind: "boolean" },
 ];
 
 /** ¿Prefiere el usuario movimiento reducido? (los scrolls pasan a 'auto'). */
@@ -327,7 +336,9 @@ const RsvpSection = memo(function RsvpSection({
           (alreadySubmittedEntry as Record<string, unknown>)?.rsvpType === "companion" ? (
             <div className="rv2-banner">
               <p style={{ margin: 0 }}>
-                {t("rsvp.companionInfo", { name: (alreadySubmittedEntry as Record<string, unknown>)?.mainGuestName || "" })}
+                {t("rsvp.companionInfo", {
+                  name: (alreadySubmittedEntry as Record<string, unknown>)?.mainGuestName || "",
+                })}
               </p>
             </div>
           ) : derived.isAlreadySubmitted ? (
@@ -434,7 +445,7 @@ const RsvpSection = memo(function RsvpSection({
             {/* Menú del titular */}
             {isAttending && menuEnabled && menuOptions.length > 0 ? (
               <MenuPicker
-              name="rv2MenuMain"
+                name="rv2MenuMain"
                 value={rsvpForm.menuSelection}
                 options={menuOptions}
                 onChange={(k) => updateRsvpField("menuSelection", k)}
@@ -484,7 +495,8 @@ const RsvpSection = memo(function RsvpSection({
               form={rsvpForm}
               onField={updateRsvpField}
               showHealthConsent={
-                isAttending && ((rsvpForm.allergies || []).length > 0 || (rsvpForm.allergiesOther || "").trim().length > 0)
+                isAttending &&
+                ((rsvpForm.allergies || []).length > 0 || (rsvpForm.allergiesOther || "").trim().length > 0)
               }
               signatureEnabled={config?.rsvpSignatureEnabled === "true"}
               contactEnabled={config?.rsvpContactEnabled === "true"}
@@ -534,7 +546,11 @@ const RsvpSection = memo(function RsvpSection({
 
             {/* Resumen post-envío */}
             {hasSubmitted && !derived.isAlreadySubmitted ? (
-              <div ref={summaryRef} className="rsvp-summary" style={{ marginTop: "0.6rem", fontSize: "0.85rem", lineHeight: 1.7 }}>
+              <div
+                ref={summaryRef}
+                className="rsvp-summary"
+                style={{ marginTop: "0.6rem", fontSize: "0.85rem", lineHeight: 1.7 }}
+              >
                 <p className="setup-label" style={{ fontSize: "0.8rem" }}>
                   {t("rsvp.summaryTitle")}
                 </p>
@@ -549,7 +565,11 @@ const RsvpSection = memo(function RsvpSection({
                   })}
                 </p>
                 {rsvpForm.menuSelection ? (
-                  <p style={{ margin: 0 }}>{t("rsvp.summaryMenu", { m: menuOptions.find((o) => o.key === rsvpForm.menuSelection)?.label || rsvpForm.menuSelection })}</p>
+                  <p style={{ margin: 0 }}>
+                    {t("rsvp.summaryMenu", {
+                      m: menuOptions.find((o) => o.key === rsvpForm.menuSelection)?.label || rsvpForm.menuSelection,
+                    })}
+                  </p>
                 ) : null}
                 {rsvpForm.companionCount > 0 ? (
                   <p style={{ margin: 0 }}>{t("rsvp.summaryCompanions", { c: rsvpForm.companionCount })}</p>
@@ -559,9 +579,17 @@ const RsvpSection = memo(function RsvpSection({
 
             {/* Acciones: retirar (admin) o enviar */}
             {derived.isAlreadySubmitted ? (
-              <div className="setup-actions" style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}>
+              <div
+                className="setup-actions"
+                style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", justifyContent: "center" }}
+              >
                 {isAdminTokenLoggedIn ? (
-                  <button className="setup-button" type="button" onClick={handleDeleteRsvp} style={{ background: "#b91c1c", color: "#fff" }}>
+                  <button
+                    className="setup-button"
+                    type="button"
+                    onClick={handleDeleteRsvp}
+                    style={{ background: "#b91c1c", color: "#fff" }}
+                  >
                     {t("rsvp.withdrawButton")}
                   </button>
                 ) : null}
@@ -588,7 +616,12 @@ const RsvpSection = memo(function RsvpSection({
 
           {/* Agradecimiento configurable */}
           {hasSubmitted && config?.rsvpThanks ? (
-            <p className="rsvp-feedback rsvp-feedback--thanks" style={{ marginTop: "0.5rem" }} role="status" aria-live="polite">
+            <p
+              className="rsvp-feedback rsvp-feedback--thanks"
+              style={{ marginTop: "0.5rem" }}
+              role="status"
+              aria-live="polite"
+            >
               {config.rsvpThanks}
             </p>
           ) : null}
