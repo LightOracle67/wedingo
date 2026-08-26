@@ -3181,3 +3181,102 @@ body::after {
   outline: 2px solid #fff;
   outline-offset: 2px;
 }
+
+/* ============================================================
+   RSVP v2 (.rv2-*): rediseño moderno del formulario de
+   confirmación. Chips pill, segmented control de asistencia,
+   tarjetas por acompañante y barra de envío. Todo hereda las
+   variables del tema (accent, title, field-bg) para respetar
+   la personalización por invitación.
+   ============================================================ */
+.rv2-stack > * + * { margin-top: 0.85rem; }
+
+/* Segmentado de asistencia: 3 opciones en píldoras */
+.rv2-seg { border: none; padding: 0; margin: 0; }
+.rv2-seg__group { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.4rem; }
+.rv2-seg__opt {
+  display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
+  padding: 0.55rem 0.3rem; border-radius: 0.8rem; cursor: pointer;
+  background: color-mix(in srgb, var(--setup-field-bg) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.rv2-seg__opt--active {
+  background: color-mix(in srgb, var(--setup-accent) 18%, transparent);
+  border-color: color-mix(in srgb, var(--setup-accent) 65%, transparent);
+}
+.rv2-seg__input { position: absolute; opacity: 0; pointer-events: none; }
+.rv2-seg__input:focus-visible + .rv2-seg__icon { outline: 2px solid var(--setup-accent); outline-offset: 2px; }
+.rv2-seg__icon { font-size: 1.25rem; line-height: 1; }
+.rv2-seg__label { font-size: 0.78rem; color: var(--setup-title); text-align: center; }
+
+/* Chips genéricos (transporte y alergias) */
+.rv2-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.rv2-chip {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.32rem 0.75rem; border-radius: 999px; font-size: 0.82rem;
+  cursor: pointer; user-select: none;
+  background: color-mix(in srgb, var(--setup-field-bg) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-border) 70%, transparent);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.rv2-chip--on {
+  background: color-mix(in srgb, var(--setup-accent) 20%, transparent);
+  border-color: color-mix(in srgb, var(--setup-accent) 70%, transparent);
+  font-weight: 600;
+}
+.rv2-chip input { position: absolute; opacity: 0; pointer-events: none; }
+.rv2-chip input:focus-visible ~ span { outline: 2px solid var(--setup-accent); outline-offset: 2px; }
+
+/* Tarjetas de acompañante */
+.rv2-cards { display: flex; flex-direction: column; gap: 0.9rem; }
+.rv2-card {
+  padding: 0.9rem; border-radius: 1rem; text-align: left;
+  background: color-mix(in srgb, var(--setup-field-bg) 40%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-border) 50%, transparent);
+}
+.rv2-card__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+.rv2-card__head h3 { margin: 0; font-size: 0.95rem; }
+.rv2-x {
+  width: 1.7rem; height: 1.7rem; border-radius: 999px; line-height: 1;
+  border: 1px solid color-mix(in srgb, var(--setup-border) 70%, transparent);
+  background: transparent; color: var(--setup-subtitle); cursor: pointer;
+}
+.rv2-x:hover { color: #b91c1c; border-color: #b91c1c; }
+
+/* Selector de menú como tarjetas-radio */
+.rv2-menu { border: none; padding: 0; margin: 0; }
+.rv2-menu__list { display: flex; flex-direction: column; gap: 0.45rem; }
+.rv2-menu__opt {
+  padding: 0.6rem 0.8rem; border-radius: 0.8rem; cursor: pointer;
+  background: color-mix(in srgb, var(--setup-field-bg) 45%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
+}
+.rv2-menu__opt--active { border-color: color-mix(in srgb, var(--setup-accent) 70%, transparent); }
+.rv2-menu__input { position: absolute; opacity: 0; pointer-events: none; }
+.rv2-menu__desc { margin: 0.35rem 0 0; font-size: 0.8rem; color: var(--setup-subtitle); white-space: pre-line; }
+
+/* Filas de checkbox y enlaces legales */
+.rv2-check { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.84rem; color: var(--setup-title); cursor: pointer; }
+.rv2-check input { accent-color: var(--setup-accent); width: 1rem; height: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+.rv2-link { color: var(--setup-accent); text-decoration: underline; cursor: pointer; }
+.rv2-policyver { font-size: 0.65rem; margin: 0.15rem 0 0; color: var(--setup-subtitle); }
+
+/* Bloques informativos y banners */
+.rv2-banner {
+  padding: 0.5rem 1rem; border-radius: 0.6rem; margin-bottom: 0.9rem;
+  background: color-mix(in srgb, var(--setup-accent) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--setup-accent) 30%, transparent);
+}
+.rv2-banner p { margin: 0; color: var(--setup-accent); font-weight: 600; font-size: 0.95rem; }
+.rv2-menutext { padding: 0.6rem; border-radius: 0.6rem; background: color-mix(in srgb, var(--setup-field-bg) 60%, transparent); }
+
+/* Acciones finales */
+.rv2-actions { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.1rem; }
+.rv2-submit { min-width: min(240px, 100%); }
+.rv2-add { white-space: nowrap; font-size: 0.8rem; flex-shrink: 0; }
+.rv2-select { max-width: 100%; }
+
+@media (max-width: 380px) {
+  .rv2-seg__group { grid-template-columns: 1fr; }
+}

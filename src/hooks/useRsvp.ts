@@ -38,7 +38,7 @@ import { stableGuestId } from "../lib/guest-id";
  */
 const dietaryInfoCache = new Map<string, string>();
 
-interface RsvpFormData {
+export interface RsvpFormData {
   guestName: string;
   attendance: string;
   companionCount: number;

@@ -46,8 +46,9 @@ vi.mock("../../../contexts", async (importOriginal) => {
 
 import RsvpSection from "../RsvpSection";
 import { RsvpFormContext, type RsvpFormValue } from "../../../contexts/useRsvpContext";
+import type { RsvpFormData } from "../../../hooks/useRsvp";
 
-const baseForm = {
+const baseForm: RsvpFormData = {
   guestName: "",
   attendance: "alone",
   companionCount: 0,
@@ -59,12 +60,9 @@ const baseForm = {
   companionHealthConsents: [],
   companionTransportChoices: [],
   companionTransportModes: [],
-  companionTransportTimes: [],
-  companionTransportPlaces: [],
   menuSelection: "",
   allergies: [],
   allergiesOther: "",
-  parentalConsent: false,
   privacyConsent: false,
   healthConsent: false,
   transportChoice: "own",
@@ -189,21 +187,12 @@ describe("RsvpSection", () => {
     expect(screen.getByText("rsvp.attendingWithCompanions")).toBeDefined();
   });
 
-  it("wraps the attendance select and add-companion button on very small screens", () => {
-    // Regresión de overflow horizontal: el contenedor flex del select + botón
-    // debe permitir wrap y el select no debe imponer un min-width mayor que el
-    // ancho del panel (min(180px, 100%)). En 320px, si el botón no cabe a la
-    // derecha, baja de línea en lugar de desbordar.
+  it("mantiene el control segmentado y el botón añadir en pantallas pequeñas", () => {
+    // Regresión de overflow horizontal: el segmented ocupa la fila y el botón
+    // añadir acompaña; nada debe imponer anchos mayores que el panel.
     render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with" }} />);
-    const select = document.getElementById("rsvpAttendance") as HTMLSelectElement;
-    expect(select).not.toBeNull();
-    const selectStyle = select.getAttribute("style") || "";
-    expect(selectStyle).toContain("flex");
-    expect(selectStyle).toContain("min(180px, 100%)");
-    expect(selectStyle).toContain("max-width: 100%");
-    // El contenedor padre (flex con el botón) debe tener flexWrap: wrap.
-    const container = select.parentElement as HTMLElement;
-    expect(container.style.flexWrap).toBe("wrap");
+    expect(document.querySelector(".rv2-seg__track")).not.toBeNull();
+    expect(screen.getByText((text: string) => text.includes("rsvp.addCompanion"))).toBeDefined();
   });
 
   it("shows companion cards when companionCount > 0", () => {
@@ -382,10 +371,10 @@ describe("RsvpSection", () => {
         ])}
       />,
     );
-    expect(screen.getByLabelText("rsvp.transportOwnCarOption")).toBeDefined();
-    expect(screen.getByLabelText("rsvp.transportBusOption")).toBeDefined();
-    expect(screen.getByLabelText("rsvp.transportTaxiOption")).toBeDefined();
-    expect(document.getElementById("rsvpTransportDeparture")).toBeNull();
+    expect(document.querySelector('input[name="rv2Mode"][value="own"]')).not.toBeNull();
+    expect(document.querySelector('input[name="rv2Mode"][value="bus"]')).not.toBeNull();
+    expect(document.querySelector('input[name="rv2Mode"][value="taxi"]')).not.toBeNull();
+    expect(document.getElementById("rsvpDeparture")).toBeNull();
   });
 
   it("hides bus option when only taxi is enabled", () => {
@@ -395,9 +384,9 @@ describe("RsvpSection", () => {
         transportDepartures={JSON.stringify([{ type: "taxi", time: "14:30", url: "" }])}
       />,
     );
-    expect(screen.getByLabelText("rsvp.transportOwnCarOption")).toBeDefined();
-    expect(screen.getByLabelText("rsvp.transportTaxiOption")).toBeDefined();
-    expect(screen.queryByLabelText("rsvp.transportBusOption")).toBeNull();
+    expect(document.querySelector('input[name="rv2Mode"][value="own"]')).not.toBeNull();
+    expect(document.querySelector('input[name="rv2Mode"][value="taxi"]')).not.toBeNull();
+    expect(document.querySelector('input[name="rv2Mode"][value="bus"]')).toBeNull();
   });
 
   it("shows the departure select after choosing bus and preselects the first departure", () => {
@@ -412,7 +401,7 @@ describe("RsvpSection", () => {
         ])}
       />,
     );
-    fireEvent.click(screen.getByLabelText("rsvp.transportBusOption"));
+    fireEvent.click(document.querySelector('input[name="rv2Mode"][value="bus"]')!);
     expect(update).toHaveBeenCalledWith("transportMode", "bus");
     expect(update).toHaveBeenCalledWith("transportChoice", "0");
   });
@@ -428,10 +417,10 @@ describe("RsvpSection", () => {
         ])}
       />,
     );
-    const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
+    const select = document.getElementById("rsvpDeparture") as HTMLSelectElement;
     expect(select).toBeDefined();
     expect([...select.options].map((o) => o.textContent)).toEqual(["14:30 (transport.typeTaxi)"]);
-    fireEvent.click(screen.getByLabelText("rsvp.transportBusOption"));
+    fireEvent.click(document.querySelector('input[name="rv2Mode"][value="bus"]')!);
     expect(update).toHaveBeenCalledWith("transportMode", "bus");
     expect(update).toHaveBeenCalledWith("transportChoice", "0");
   });
@@ -445,7 +434,7 @@ describe("RsvpSection", () => {
         ])}
       />,
     );
-    const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
+    const select = document.getElementById("rsvpDeparture") as HTMLSelectElement;
     expect([...select.options].map((o) => o.textContent)).toEqual(["Plaza Mayor (12:00)"]);
   });
 
@@ -460,7 +449,7 @@ describe("RsvpSection", () => {
         ])}
       />,
     );
-    fireEvent.change(document.getElementById("rsvpTransportDeparture")!, { target: { value: "1" } });
+    fireEvent.change(document.getElementById("rsvpDeparture")!, { target: { value: "1" } });
     expect(update).toHaveBeenCalledWith("transportChoice", "1");
     expect(update).toHaveBeenCalledWith("transportTime", "16:00");
     expect(update).toHaveBeenCalledWith("transportPlace", "Estación Norte");
@@ -476,7 +465,7 @@ describe("RsvpSection", () => {
         ])}
       />,
     );
-    const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
+    const select = document.getElementById("rsvpDeparture") as HTMLSelectElement;
     expect([...select.options].map((o) => o.textContent)).toEqual([
       "08:30 (transport.typeBus)",
       "22:00 (transport.typeBus)",
@@ -490,28 +479,28 @@ describe("RsvpSection", () => {
         transportDepartures={JSON.stringify([{ type: "bus", time: "12:00", url: "" }])}
       />,
     );
-    expect(screen.getAllByLabelText("rsvp.transportOwnCarOption")).toHaveLength(2);
-    fireEvent.click(screen.getAllByLabelText("rsvp.transportBusOption")[1]!);
-    const companionSelect = document.getElementById("companion-departure-0");
+    expect(document.querySelectorAll('input[value="own"][name^="rv2Mode"]')).toHaveLength(2);
+    fireEvent.click(document.querySelector('input[name="rv2Mode-0"][value="bus"]')!);
+    const companionSelect = document.getElementById("rsvpDeparture-0");
     expect(companionSelect).toBeDefined();
   });
 
-  it("updates attendance via the attendance select", () => {
+  it("updates attendance via the segmented control", () => {
     render(<WrappedRsvp {...baseProps} />);
-    const select = document.getElementById("rsvpAttendance") as HTMLSelectElement;
-    fireEvent.change(select, { target: { value: "with" } });
+    // La asistencia ya no es un select: es un radio por opción envuelto en label.
+    const withRadio = document.querySelector('input[name="rsvpAttendance"][value="with"]') as HTMLInputElement;
+    fireEvent.click(withRadio);
     expect(updateRsvpField).toHaveBeenCalledWith("attendance", "with");
   });
 
-  it("updates the menu selection via the menu select", () => {
+  it("updates the menu selection via the menu cards", () => {
     render(<WrappedRsvp         {...baseProps}
         menuEnabled
         menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
         rsvpForm={{ ...baseForm, attendance: "alone" }}
       />,
     );
-    const select = document.getElementById("rsvpMenu") as HTMLSelectElement;
-    fireEvent.change(select, { target: { value: "carne" } });
+    fireEvent.click(document.querySelector('input[name="rv2MenuMain"][value="carne"]')!);
     expect(updateRsvpField).toHaveBeenCalledWith("menuSelection", "carne");
   });
 
@@ -525,7 +514,7 @@ describe("RsvpSection", () => {
         ])}
       />,
     );
-    const select = document.getElementById("rsvpTransportDeparture") as HTMLSelectElement;
+    const select = document.getElementById("rsvpDeparture") as HTMLSelectElement;
     fireEvent.change(select, { target: { value: "1" } });
     expect(updateRsvpField).toHaveBeenCalledWith("transportChoice", "1");
   });
@@ -545,8 +534,10 @@ describe("RsvpSection", () => {
         rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }}
       />,
     );
-    const select = document.getElementById("companion-menu-0") as HTMLSelectElement;
-    fireEvent.change(select, { target: { value: "pescado" } });
+    // El picker del acompañante vive en su tarjeta: se busca el radio dentro de ella.
+    const card = document.querySelector("section.rv2-card")!;
+    const radio = card.querySelector('input[name="rv2Menu0"][value="pescado"]') as HTMLInputElement;
+    fireEvent.click(radio);
     expect(updateRsvpField).toHaveBeenCalledWith("companionMenus[0]", "pescado");
   });
 
@@ -610,7 +601,7 @@ describe("RsvpSection", () => {
         ])}
       />,
     );
-    fireEvent.click(screen.getByLabelText("rsvp.transportBusOption"));
+    fireEvent.click(document.querySelector('input[name="rv2Mode"][value="bus"]')!);
     expect(updateRsvpField).toHaveBeenCalledWith("transportMode", "bus");
     expect(updateRsvpField).toHaveBeenCalledWith("transportPlace", "Plaza Mayor");
   });
@@ -700,7 +691,7 @@ describe("RsvpSection", () => {
         transportDepartures={JSON.stringify([{ type: "taxi", time: "12:30", url: "" }])}
       />,
     );
-    fireEvent.click(screen.getByLabelText("rsvp.transportTaxiOption"));
+    fireEvent.click(document.querySelector('input[name="rv2Mode"][value="taxi"]')!);
     expect(updateRsvpField).toHaveBeenCalledWith("transportMode", "taxi");
   });
 
@@ -711,7 +702,7 @@ describe("RsvpSection", () => {
         transportDepartures={JSON.stringify([{ time: "12:00", url: "" }])}
       />,
     );
-    fireEvent.click(screen.getByLabelText("rsvp.transportBusOption"));
+    fireEvent.click(document.querySelector('input[name="rv2Mode"][value="bus"]')!);
     expect(updateRsvpField).toHaveBeenCalledWith("transportChoice", "0");
   });
 
@@ -801,7 +792,7 @@ describe("RsvpSection", () => {
         transportDepartures={JSON.stringify([{ type: "bus", time: "12:00", url: "" }])}
       />,
     );
-    const busRadio = document.querySelector('input[name="companionTransportMode0"][value="bus"]') as HTMLInputElement;
+    const busRadio = document.querySelector('input[name="rv2Mode-0"][value="bus"]') as HTMLInputElement;
     expect(busRadio?.checked).toBe(true);
   });
 
