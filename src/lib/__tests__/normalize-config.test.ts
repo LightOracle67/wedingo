@@ -53,6 +53,21 @@ describe("normalizeConfig", () => {
     expect(result.weddingSiteURL).toBe("https://www.google.com/maps/place/Iglesia+San+Jos%C3%A9/@40.4,-3.7,15z");
   });
 
+  // Compatibilidad legacy: una sección eliminada (p. ej. "extras" tras la
+  // poda v2.124.1) en hiddenSections debe descartarse, no invalidar el
+  // guardado (errors.hiddenSectionsInvalid bloqueaba TODO el formulario).
+  it("filters legacy sections out of hiddenSections", () => {
+    const result = normalizeConfig({
+      hiddenSections: "transport,story,extras,gifts",
+    });
+    expect(result.hiddenSections).toBe("transport,story,gifts");
+  });
+
+  it("keeps valid hiddenSections order and trims entries", () => {
+    const result = normalizeConfig({ hiddenSections: "  gifts  , rsvp " });
+    expect(result.hiddenSections).toBe("gifts,rsvp");
+  });
+
   it("normalizes weddingMapView to valid values", () => {
     expect(normalizeConfig({ weddingMapView: "satellite" }).weddingMapView).toBe("satellite");
     expect(normalizeConfig({ weddingMapView: "hybrid" }).weddingMapView).toBe("hybrid");
@@ -303,4 +318,17 @@ describe("normalizeConfig social fields", () => {
     const result = normalizeConfig({ rsvpDeadlineEnabled: "yes" });
     expect(result.rsvpDeadlineEnabled).toBe("false");
   });
+
+  it("replaces double quotes and backticks with safe typographic variants", () => {
+    const result = normalizeConfig({
+      inviteMessage: "Dijeron \"sí quiero\" y `usaron` acentos graves",
+    });
+    expect(result.inviteMessage).toBe("Dijeron «sí quiero» y 'usaron' acentos graves");
+  });
+
+  it("keeps dangerous characters untouched so validation can report them", () => {
+    const result = normalizeConfig({ storyText: "Hola <script>alert(1)</script> y onerror=x" });
+    expect(result.storyText).toBe("Hola <script>alert(1)</script> y onerror=x");
+  });
 });
+

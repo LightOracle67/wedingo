@@ -96,6 +96,34 @@ const s = (v: unknown) => {
   return "";
 };
 
+/**
+ * Sanea texto libre (campos de contenido) para que sea aceptado por las reglas
+ * de Firestore (isSafeText): las comillas dobles y los acentos graves no son
+ * peligrosos porque React escapa el render, pero la regla los rechaza, y un
+ * texto normal de boda los usa con frecuencia ("Dijeron «sí quiero»" o un
+ * backtick al citar código). Se sustituyen por variantes tipográficas seguras:
+ * comillas dobles → « » (abriendo/cerrando alternadas) y backtick → apóstrofo.
+ * Los caracteres realmente peligrosos (< > y los patrones javascript:/onXxx=)
+ * NO se neutralizan aquí: se validan en config-validation para avisar al
+ * usuario en lugar de mutar su texto silenciosamente.
+ */
+function sanitizeRichText(value: unknown): string {
+  const raw = s(value);
+  let out = "";
+  let opening = true;
+  for (const ch of raw) {
+    if (ch === '"') {
+      out += opening ? "«" : "»";
+      opening = !opening;
+    } else if (ch === "`") {
+      out += "'";
+    } else {
+      out += ch;
+    }
+  }
+  return out;
+}
+
 /** Número de invitados esperados: entero 0..1000 ("" si vacío o inválido). */
 const EXPECTED_GUESTS_MAX = 1000;
 function normalizeExpectedGuests(value: unknown): string {
@@ -148,7 +176,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   expectedGuests: normalizeExpectedGuests(value?.expectedGuests),
   firstName: s(value?.firstName),
   secondName: s(value?.secondName),
-  inviteMessage: s(value?.inviteMessage),
+  inviteMessage: sanitizeRichText(value?.inviteMessage),
   inviteMessageEnabled: toggleWithLegacy(value?.inviteMessageEnabled, value?.inviteMessage),
   weddingPlace: s(value?.weddingPlace),
   weddingDay: s(value?.weddingDay),
@@ -180,7 +208,20 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
     }
     return parts.join(",");
   })(),
-  hiddenSections: s(value?.hiddenSections),
+  // Secciones ocultas: se filtran contra el registro canónico para que un
+  // valor legacy (p. ej. "extras", sección eliminada en v2.124.1) no invalide
+  // el guardado completo del formulario (errors.hiddenSectionsInvalid) ni
+  // oculte secciones por error. Las desconocidas se descartan; las válidas
+  // se conservan en su orden.
+  hiddenSections: (() => {
+    const stored = typeof value?.hiddenSections === "string" ? value.hiddenSections.trim() : "";
+    const validSet = new Set(STORY_SECTION_ORDER);
+    return stored
+      .split(",")
+      .map((sec) => sec.trim())
+      .filter((sec) => sec && validSet.has(sec))
+      .join(",");
+  })(),
   // Modo sorpresa: solo "true" lo activa; las secciones se sanitizan contra
   // el orden canónico (claves desconocidas o corruptas se ignoran) para que
   // un valor inválido nunca oculte secciones por error ni filtre las válidas.
@@ -193,9 +234,9 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   disabledAnimations: serializeDisabledAnimations(
     parseDisabledAnimations(typeof value?.disabledAnimations === "string" ? value.disabledAnimations : undefined),
   ),
-  storyText: s(value?.storyText),
+  storyText: sanitizeRichText(value?.storyText),
   storyTextEnabled: toggleWithLegacy(value?.storyTextEnabled, value?.storyText),
-  giftsInfo: s(value?.giftsInfo),
+  giftsInfo: sanitizeRichText(value?.giftsInfo),
   giftsInfoEnabled: toggleWithLegacy(value?.giftsInfoEnabled, value?.giftsInfo),
   bankInfo: s(value?.bankInfo),
   bankInfoEnabled: toggleWithLegacy(value?.bankInfoEnabled, value?.bankInfo),
@@ -210,7 +251,7 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   godparentsEnabled: toggleWithLegacy(value?.godparentsEnabled, value?.godparent1 || value?.godparent2),
   musicFile: s(value?.musicFile),
   musicFileEnabled: toggleWithLegacy(value?.musicFileEnabled, value?.musicFile),
-  kidsPolicy: s(value?.kidsPolicy),
+  kidsPolicy: sanitizeRichText(value?.kidsPolicy),
   kidsPolicyEnabled: toggleWithLegacy(value?.kidsPolicyEnabled, value?.kidsPolicy),
   menuEnabled: s(value?.menuEnabled) === "true" ? "true" : "false",
   privacyPolicyVersion: s(value?.privacyPolicyVersion),

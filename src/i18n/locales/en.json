@@ -324,8 +324,8 @@
     "remove": "Remove",
     "musicLabel": "Background music",
     "welcomeVideoLabel": "Welcome video",
-    "welcomeVideoHint": "Direct link to the video (MP4 or WebM) played over the cover when the invitation opens.",
-    "welcomeVideoPlaceholder": "https://example.com/video.mp4",
+    "welcomeVideoHint": "MP4 video URL (optional) played when the envelope opens.",
+    "welcomeVideoPlaceholder": "https://...",
     "audioHint": "Upload an audio file to play on the cover (MP3, WAV, OGG, M4A — max 5 MB).",
     "audioFormatError": "Audio format not supported. Use MP3, WAV, OGG or M4A.",
     "audioSizeError": "Audio file exceeds the 5 MB limit.",
@@ -505,8 +505,6 @@
     "giftListEditorHint": "One gift per line: Name | Description. Add '| experience' at the end to mark it as an experience.",
     "rideShareLabel": "Carpooling",
     "rideShareHint": "Guests offer and look for car seats.",
-    "welcomeVideoLabel": "Welcome video",
-    "welcomeVideoHint": "MP4 video URL (optional) played when the envelope opens.",
     "notesLabel": "Dedications wall",
     "notesHint": "Guests leave messages shown on the invitation.",
     "musicPollLabel": "Music poll",
@@ -544,7 +542,6 @@
     "instagramPlaceholder": "https://www.instagram.com/your_user",
     "facebookPlaceholder": "https://www.facebook.com/your_user",
     "transportUrlPlaceholder": "https://www.google.com/maps/place/...",
-    "welcomeVideoPlaceholder": "https://...",
     "uploading": "Uploading...",
     "liveConfirmedLabel": "Show how many have confirmed",
     "liveConfirmedHint": "Shows on the cover how many guests have already confirmed (live social proof).",
@@ -839,7 +836,8 @@
     "saveSessionExpired": "Your session expired or access is not verified. Reload the page and sign in again.",
     "deleteImageFailed": "Could not delete the image. Please try again.",
     "errorFileFormat": "File format not allowed",
-    "errorFileSize": "File exceeds the maximum size"
+    "errorFileSize": "File exceeds the maximum size",
+    "unsafeText": "The text contains characters that are not allowed (<, >, javascript: or event attributes). Please check the text fields."
   },
   "superadmin": {
     "tabs": {

@@ -175,9 +175,10 @@ describe("validateConfigForSave", () => {
     expect(result.hiddenSet.has("rsvp")).toBe(true);
   });
 
-  it("rejects hidden sections with an unknown key", () => {
+  it("filters unknown keys out of hidden sections (legacy compatibility)", () => {
     const result = validateConfigForSave(validConfig({ hiddenSections: "hero,bogus" }), true, 2030);
-    expect(result.errorKey).toBe("errors.hiddenSectionsInvalid");
+    expect(result.errorKey).toBeNull();
+    expect(result.sanitized.hiddenSections).toBe("hero");
   });
 
   it("rejects a section order with the wrong length", () => {
@@ -305,4 +306,23 @@ describe("validateConfigForSave", () => {
     const result = validateConfigForSave(validConfig({ instagramUrl: "https://evil.example.com" }), true, 2030);
     expect(result.errorKey).toBe("errors.socialUrlInvalid");
   });
+
+  it("rejects dangerous characters in long text fields with a clear error", () => {
+    const result = validateConfigForSave(validConfig({ storyText: "Hola <script>alert(1)</script>" }), true, 2030);
+    expect(result.errorKey).toBe("errors.unsafeText");
+  });
+
+  it("rejects javascript: and event-handler patterns", () => {
+    const bad1 = validateConfigForSave(validConfig({ giftsInfo: "click javascript:alert(1)" }), true, 2030);
+    expect(bad1.errorKey).toBe("errors.unsafeText");
+    const bad2 = validateConfigForSave(validConfig({ kidsPolicy: "img onerror='alert(1)'" }), true, 2030);
+    expect(bad2.errorKey).toBe("errors.unsafeText");
+  });
+
+  it("accepts ordinary text with double quotes (normalized to typographic ones)", () => {
+    const result = validateConfigForSave(validConfig({ storyText: "Dijeron \"sí quiero\"" }), true, 2030);
+    expect(result.errorKey).toBeNull();
+    expect(result.sanitized.storyText).toBe("Dijeron «sí quiero»");
+  });
 });
+

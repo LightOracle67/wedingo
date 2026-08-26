@@ -165,6 +165,23 @@ export function validateConfigForSave(
   if (sanitized.giftsInfo && sanitized.giftsInfo.length > MAX_LONG_TEXT_LENGTH) {
     return { sanitized, hiddenSet, errorKey: "errors.giftsTooLong" };
   }
+  // Texto seguro: las reglas de Firestore (isSafeText) rechazan < > y los
+  // patrones javascript:/onXxx=, y antes el guardado devolvía un 403 que se
+  // traducía en el mensaje engañoso "sesión expirada". normalizeConfig ya
+  // sustituyó comillas dobles y backticks por variantes tipográficas; aquí se
+  // avisa del resto (que no se puede reescribir sin cambiar el significado)
+  // con un mensaje claro en lugar de un fallo silencioso del servidor.
+  const longTextFields: Array<[string, string]> = [
+    ["storyText", sanitized.storyText],
+    ["giftsInfo", sanitized.giftsInfo],
+    ["kidsPolicy", sanitized.kidsPolicy],
+    ["inviteMessage", sanitized.inviteMessage],
+  ];
+  for (const [field, text] of longTextFields) {
+    if (text && /[<>]|javascript:|on\w+=['"]/i.test(text)) {
+      return { sanitized, hiddenSet, errorKey: "errors.unsafeText", errorParams: { field } };
+    }
+  }
   if (sanitized.transportDepartures) {
     // normalizeConfig garantiza un array JSON válido; solo se valida hora y URL.
     const parsed = JSON.parse(sanitized.transportDepartures) as Array<Record<string, unknown>>;
