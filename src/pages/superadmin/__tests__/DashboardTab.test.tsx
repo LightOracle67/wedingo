@@ -22,6 +22,8 @@ vi.mock("firebase/firestore", () => ({
   writeBatch: vi.fn(() => ({ delete: vi.fn(), commit: vi.fn() })),
   query: vi.fn(),
   where: vi.fn(),
+  orderBy: (...a: unknown[]) => a,
+  limit: (...a: unknown[]) => a,
   collection: vi.fn(() => "setup-tokens-col"),
 }));
 
@@ -82,6 +84,9 @@ vi.mock("../../../lib/superadmin-utils", () => ({
 }));
 
 import DashboardTab from "../DashboardTab";
+import { getDocs } from "firebase/firestore";
+import { MONTH_VALUE_TO_NUMBER } from "../../../lib/constants";
+import { listAll, deleteObject } from "firebase/storage";
 
 describe("DashboardTab", () => {
   beforeEach(() => {
@@ -309,6 +314,87 @@ describe("DashboardTab", () => {
     fireEvent.click(gcBtn);
     await waitFor(() => {
       expect(vi.mocked(listAll)).toHaveBeenCalled();
+    });
+  });
+
+  // ─── Ramas límite: agregación de visitas/actividad y limpieza de storage ───
+  describe("DashboardTab — ramas límite", () => {
+    // Sembrado por colección: el mock de query devuelve undefined, así que el
+    // último getDocs (auditLog) llega con argumento undefined y sirve como
+    // cuarta vía del dispatch.
+    const seedAll = () => {
+      vi.mocked(getDocs).mockImplementation(async (arg?: unknown) => {
+        if (arg === "rsvp-responses-group") {
+          return { docs: [
+            { id: "r1", data: () => ({ inviteToken: "tok1", submittedAt: { seconds: Math.floor(Date.now() / 1000) - 86400 } }) },
+            { id: "r2", data: () => ({ inviteToken: "tok1", submittedAt: { seconds: Math.floor(Date.now() / 1000) } }) },
+          ] } as never;
+        }
+        if (arg === "invitations-collection-ref") {
+          return { docs: [
+            { id: "tok1", data: () => ({ _visits: 3 }) },
+            { id: "tok2", data: () => ({ _visits: 9 }) },
+          ] } as never;
+        }
+        if (arg === "setup-tokens-col") return { docs: [] } as never;
+        return { docs: [{ id: "a1", data: () => ({ action: "login", detail: "sesión iniciada", createdAt: { seconds: Math.floor(Date.now() / 1000) - 60 } }) }] } as never;
+      });
+    };
+
+    it("agrega confirmaciones diarias, top de visitas y actividad reciente", async () => {
+      seedAll();
+      render(<DashboardTab />);
+      expect(await screen.findByText("superadmin.topVisits")).toBeTruthy();
+      // tok2 (9 visitas) debe aparecer por encima en la lista de visitas.
+      expect(screen.getByText(/tok2/)).toBeTruthy();
+      expect(screen.getByText("superadmin.recentActivity")).toBeTruthy();
+      // La entrada del auditLog se pinta con su acción.
+      expect(screen.getByText(/login/)).toBeTruthy();
+    });
+
+    it("clasifica invitaciones por caducidad manual y próxima boda", async () => {
+      const now = new Date();
+      const tomorrow = new Date(now.getTime() + 86400000);
+      const mes = Object.entries(MONTH_VALUE_TO_NUMBER).find(([, v]) => v === tomorrow.getMonth() + 1)?.[0] ?? "enero";
+      vi.mocked(getDocs).mockImplementation(async (arg?: unknown) => {
+        if (arg === "invitations-collection-ref") {
+          return { docs: [
+            { id: "soon1", data: () => ({ weddingDay: String(tomorrow.getDate()), weddingMonth: mes, weddingYear: String(tomorrow.getFullYear()) }) },
+            { id: "oldman", data: () => ({ manualExpiry: new Date(now.getTime() - 86400000).toISOString().slice(0, 10) }) },
+          ] } as never;
+        }
+        if (arg === "rsvp-responses-group") return { docs: [] } as never;
+        if (arg === "setup-tokens-col") return { docs: [] } as never;
+        return { docs: [] } as never;
+      });
+      render(<DashboardTab />);
+      expect(await screen.findByText("superadmin.expiredInvitations")).toBeTruthy();
+      // La boda de mañana entra en la lista de próximas a caducar con su id.
+      await waitFor(() => expect(screen.getAllByText(/soon1/).length).toBeGreaterThanOrEqual(1));
+      expect(screen.getAllByText("superadmin.expiredInvitations").length).toBeGreaterThan(0);
+    });
+
+    it("la limpieza de storage borra prefijos huérfanos de forma recursiva", async () => {
+      vi.spyOn(window, "confirm").mockReturnValue(true);
+      vi.mocked(getDocs).mockImplementation(async (arg?: unknown) => {
+        if (arg === "invitations-collection-ref") {
+          return { docs: [
+            // Caducada manualmente: hace visible el botón de limpieza de storage.
+            { id: "oldman", data: () => ({ manualExpiry: new Date(Date.now() - 86400000).toISOString().slice(0, 10) }) },
+            { id: "tok1", data: () => ({}) },
+          ] } as never;
+        }
+        return { docs: [] } as never;
+      });
+      // Raíz: un prefijo huérfano 'ghost'; dentro: 1 fichero + subprefijo con 2 ficheros.
+      vi.mocked(listAll)
+        .mockResolvedValueOnce({ items: [], prefixes: [{ name: "ghost" }] } as never)
+        .mockResolvedValue({ items: [{ fullPath: "ghost/f1" }, { fullPath: "ghost/f2" }], prefixes: [] } as never);
+      render(<DashboardTab />);
+      fireEvent.click(await screen.findByText("superadmin.gcStorage"));
+      await waitFor(() => expect(vi.mocked(deleteObject)).toHaveBeenCalledTimes(2));
+      // El subprefijo también se recorrió (segunda listAll sobre 'ghost/sub').
+      expect(vi.mocked(listAll).mock.calls.length).toBeGreaterThanOrEqual(2);
     });
   });
 });

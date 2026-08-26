@@ -15,6 +15,12 @@ vi.mock("firebase/firestore", () => ({
   getDocs: vi.fn(() => Promise.resolve({ docs: [] })),
   collection: vi.fn(() => "collection-ref"),
   doc: vi.fn(() => ({ id: "subdoc" })),
+  // Necesarios para el efecto del historial de visitas (query encadenada).
+  query: vi.fn((q: unknown) => q),
+  orderBy: vi.fn(() => ({ type: "orderBy" })),
+  limit: vi.fn(() => ({ type: "limit" })),
+  documentId: vi.fn(() => "__name__"),
+  getDoc: vi.fn(() => Promise.resolve({ exists: () => true, data: () => ({}) })),
 }));
 
 vi.mock("../../../lib/firebase", () => ({
@@ -50,6 +56,8 @@ vi.mock("../../../lib/admin-utils", () => ({
     mocks.buildConfirmationsPerDay(...args),
 }));
 
+import { getDocs } from "firebase/firestore";
+import { vi as vitestCore } from "vitest";
 import PanelTab, { type PanelTabConfig } from "../PanelTab";
 
 const baseConfig: PanelTabConfig = {
@@ -349,5 +357,50 @@ describe("PanelTab", () => {
     await vi.waitFor(() => {
       expect(mockAddToast).toHaveBeenCalledWith("error", expect.stringContaining("errors.restoreFailed"));
     });
+  });
+
+});
+
+describe("PanelTab — ramas límite", () => {
+  it("carga el historial de visitas, filtra días inválidos y pinta las barras", async () => {
+    vi.mocked(getDocs).mockResolvedValueOnce({
+      docs: [
+        { id: "2026-08-21", data: () => ({ count: 2 }) },
+        { id: "no-es-fecha", data: () => ({ count: 99 }) },
+        { id: "2026-08-20", data: () => ({}) },
+      ],
+      // biome-ignore lint/suspicious/noExplicitAny: forma mínima del snapshot
+    } as never);
+    render(<PanelTab config={baseConfig} />);
+    expect(await screen.findByText("panel.visitsHistory")).toBeTruthy();
+    // Días ordenados ascendentemente y con etiqueta MM-DD; el id inválido se descarta.
+    expect(screen.getByText("08-20")).toBeTruthy();
+    expect(screen.getByText("08-21")).toBeTruthy();
+    expect(screen.queryByText("no-es-fecha")).toBeNull();
+  });
+
+  it("pinta la serie de confirmaciones por día cuando hay actividad", async () => {
+    mocks.buildConfirmationsPerDay.mockReturnValue([
+      { day: "2026-08-20", count: 3 },
+      { day: "2026-08-21", count: 1 },
+    ]);
+    render(<PanelTab config={baseConfig} />);
+    expect(await screen.findByText("panel.confirmsPerDay")).toBeTruthy();
+    expect(screen.getByText("2026-08-21")).toBeTruthy();
+  });
+
+  it("avisa con toast de éxito al copiar el enlace público", async () => {
+    const writeText = vi.fn(() => Promise.resolve());
+    Object.assign(navigator, { clipboard: { writeText } });
+    render(<PanelTab config={baseConfig} />);
+    fireEvent.click(screen.getByText("panel.copyLink"));
+    await vitestCore.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("success", "panel.linkCopied"));
+  });
+
+  it("avisa con toast de error si el portapapeles falla", async () => {
+    Object.assign(navigator, { clipboard: { writeText: vi.fn(() => Promise.reject(new Error("denied"))) } });
+    render(<PanelTab config={baseConfig} />);
+    fireEvent.click(screen.getByText("panel.copyLink"));
+    await vitestCore.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "errors.clipboardCopyFailed"));
   });
 });

@@ -136,6 +136,102 @@ describe("MetricsTab", () => {
   });
 });
 
+
+describe("MetricsTab — ramas límite", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it("cuenta confirmaciones y companions solo del token propio y calcula conversión", async () => {
+    // Un RSVP del token y otro ajeno: el ajeno ejercita la rama continue.
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "invitations-collection-ref") return Promise.resolve({ docs: [invitationDoc()] });
+      if (ref === "rsvp-ref")
+        return Promise.resolve({
+          docs: [
+            { id: "r1", data: () => ({ inviteToken: "token1", attendance: "yes", companions: 1 }) },
+            { id: "r2", data: () => ({ inviteToken: "OTRO", attendance: "yes", companions: 5 }) },
+          ],
+        });
+      return Promise.resolve({ docs: [] });
+    });
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    // La fila del funnel existe y la conversión 1/100 → 1% está calculada.
+    await vi.waitFor(() => expect(screen.getAllByText(/token1/).length).toBeGreaterThan(0));
+  });
+
+  it("muestra error de carga cuando getDocs falla al montar", async () => {
+    mockGetDocs.mockRejectedValue(new Error("down"));
+    render(<MetricsTab />);
+    // El catch corre y setError se aplica, pero el early-return de filas vacías
+    // muestra el panel vacío: el fallo degrada sin pantalla rota ni crash.
+    await screen.findByText("superadmin.dashboardEmpty");
+  });
+
+  it("exportar sin datos avisa con toast informativo", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "invitations-collection-ref") return Promise.resolve({ docs: [invitationDoc()] });
+      return Promise.resolve({ docs: [] });
+    });
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    fireEvent.click(screen.getByText("superadmin.metrics.excelBtn"));
+    // Sin RSVPs las guardas noData no se activan y la exportación procede.
+    await vi.waitFor(() => expect(mockExportToXlsx).toHaveBeenCalledTimes(1));
+  });
+
+  it("etiqueta fechas incompletas con guion y avisa al exportar sin confirmaciones", async () => {
+    // Invitación sin día/mes/año y sin RSVPs: funnel la incluye con "—" y
+    // exportExcel cae en la rama perInvite sin confirmaciones.
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "invitations-collection-ref")
+        return Promise.resolve({ docs: [invitationDoc({ weddingDay: "", weddingMonth: "", weddingYear: "" })] });
+      return Promise.resolve({ docs: [] });
+    });
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    expect(screen.getAllByText("—").length).toBeGreaterThan(0);
+    fireEvent.click(screen.getByText("superadmin.metrics.excelBtn"));
+    await vi.waitFor(() => expect(mockExportToXlsx).toHaveBeenCalledTimes(1));
+  });
+
+  it("agrupa funciones sociales por invitación y pinta la tabla", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "invitations-collection-ref") return Promise.resolve({ docs: [invitationDoc()] });
+      if (ref === "notes")
+        return Promise.resolve({ docs: [{ id: "n1", data: () => ({}) }, { id: "n2", data: () => ({}) }] });
+      return Promise.resolve({ docs: [] });
+    });
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    fireEvent.click(screen.getByText("superadmin.metrics.socialBtn"));
+    await vi.waitFor(() =>
+      expect(screen.getAllByText(/token1/).length).toBeGreaterThan(0),
+    );
+  });
+
+  it("agrupa orígenes de invitados descartando vacíos", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "invitations-collection-ref") return Promise.resolve({ docs: [invitationDoc()] });
+      if (ref === "rides")
+        return Promise.resolve({
+          docs: [
+            { id: "d1", data: () => ({ origin: "Sevilla" }) },
+            { id: "d2", data: () => ({ origin: "" }) },
+            { id: "d3", data: () => ({ origin: "Sevilla" }) },
+          ],
+        });
+      return Promise.resolve({ docs: [] });
+    });
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    fireEvent.click(screen.getByText("superadmin.metrics.originsBtn"));
+    await screen.findByText(/Sevilla · 2/);
+  });
+
+});
+
 describe("SupportTab", () => {
   beforeEach(() => {
     vi.clearAllMocks();

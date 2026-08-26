@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.131.0](https://github.com/LightOracle67/wedingo/releases)  
+**Versión actual:** [v2.132.0](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -345,7 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
-| v2.131.0 | 2026-08-24 | Toggle «Vídeo de bienvenida» en Portada del setup: por fin es configurable desde la UI (URL + activación) con i18n completo y tests |
+| v2.132.0 | 2026-08-24 | Toggle «Vídeo de bienvenida» en Portada del setup: por fin es configurable desde la UI (URL + activación) con i18n completo y tests |
 | v2.124.1 | 2026-08-24 | Eliminada la sección extras: regalos/trivia fuera, toggles reubicados (rsvpDeadline+confirmados→Invitados, recinto→nuevo formulario Recinto) |
 | v2.124.0 | 2026-08-24 | Poda bloatware: eliminadas 11 funciones sin uso real (sorpresas, reacciones, encuesta musical, notas, buzón, brindis, notas de voz, fotos del día, coche compartido, confirmados en vivo, Facebook) + limpieza i18n (193 claves), ruta crypto legacy y legacyToken; datos de producción depurados; rules endurecidas |
 | v2.123.9 | 2026-08-24 | Limpieza: eliminada carpeta functions/ (cleanupExpiredData imposible en plan Spark), firebase.json/package.json/CI depurados, informe de candidatos a eliminación con uso real medido en producción |
