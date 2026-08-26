@@ -2,6 +2,7 @@ import { memo, useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "./Modal";
 import "../styles/modals.css";
+import type { ChangelogEntry } from "../lib/changelog-types";
 
 /** Número de versiones mostradas por defecto (el resto queda bajo "ver todo"). */
 const DEFAULT_VISIBLE = 5;
@@ -9,14 +10,14 @@ const DEFAULT_VISIBLE = 5;
 const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
-  // Los datos del changelog se cargan al abrir (import dinámico): así el chunk
-  // del modal no arrastra el historial completo (~80 entradas).
-  const [entries, setEntries] = useState<Array<{ version: string; date: string; changes: string[] }>>([]);
+  // El changelog se carga al abrir desde GitHub (raw CHANGELOG.md) con caché en
+  // localStorage y respaldo al bundle empaquetado si no hay red ni caché.
+  const [entries, setEntries] = useState<ChangelogEntry[]>([]);
   useEffect(() => {
     let cancelled = false;
-    import("../lib/changelog").then((m) => {
-      if (!cancelled) setEntries(m.CHANGELOG);
-    });
+    void import("../lib/remote-changelog").then((m) => m.loadChangelog().then((loaded) => {
+      if (!cancelled) setEntries(loaded);
+    }));
     return () => {
       cancelled = true;
     };

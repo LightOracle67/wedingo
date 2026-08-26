@@ -5,16 +5,19 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
 }));
 
-vi.mock("../../lib/changelog", () => ({
-  CHANGELOG: [
-    { version: "7.0.0", date: "2026-07-01", changes: ["Seven"] },
-    { version: "6.0.0", date: "2026-06-01", changes: ["Six"] },
-    { version: "5.0.0", date: "2026-05-01", changes: ["Five"] },
-    { version: "4.0.0", date: "2026-04-01", changes: ["Four"] },
-    { version: "3.0.0", date: "2026-03-01", changes: ["Three"] },
-    { version: "2.0.0", date: "2026-01-01", changes: ["First change"] },
-    { version: "1.0.0", date: "2025-06-01", changes: ["Initial release"] },
-  ],
+// El modal ahora carga el changelog desde GitHub (remote-changelog): se mockea
+// el cargador para que el test sea determinista y no dependa de red.
+vi.mock("../../lib/remote-changelog", () => ({
+  loadChangelog: () =>
+    Promise.resolve([
+      { version: "7.0.0", date: "2026-07-01", changes: ["Seven"] },
+      { version: "6.0.0", date: "2026-06-01", changes: ["Six"] },
+      { version: "5.0.0", date: "2026-05-01", changes: ["Five"] },
+      { version: "4.0.0", date: "2026-04-01", changes: ["Four"] },
+      { version: "3.0.0", date: "2026-03-01", changes: ["Three"] },
+      { version: "2.0.0", date: "2026-01-01", changes: ["First change"] },
+      { version: "1.0.0", date: "2025-06-01", changes: ["Initial release"] },
+    ]),
 }));
 
 import ChangelogModal from "../ChangelogModal";
