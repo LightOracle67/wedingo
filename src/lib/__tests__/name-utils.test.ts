@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { isValidFullName, normalizeFullName } from "../name-utils";
+import { isValidFullName, normalizeFullName , nameKey } from "../name-utils";
 
 describe("isValidFullName", () => {
   it("accepts exactly 3 words (name + two surnames)", () => {
@@ -38,5 +38,21 @@ describe("isValidFullName", () => {
 describe("normalizeFullName", () => {
   it("trims and collapses spaces", () => {
     expect(normalizeFullName("  Ana   María  García  ")).toBe("Ana María García");
+  });
+});
+
+describe("nameKey — clave de emparejamiento tolerante", () => {
+  // El matching de respuesta previa debe tolerar acentos y mayúsculas:
+  // así "jose garcia" encuentra la entrada guardada como "José García".
+  it("pliega acentos y mayúsculas", () => {
+    expect(nameKey("José García López")).toBe("jose garcia lopez");
+  });
+
+  it("normaliza ñ/Ü a la letra base para comparar", () => {
+    expect(nameKey("ANA MUÑOZ ÜBER")).toBe("ana munoz uber");
+  });
+
+  it("colapsa espacios como normalizeFullName", () => {
+    expect(nameKey("  Juan   Pérez  ")).toBe("juan perez");
   });
 });

@@ -1,8 +1,11 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { useState } from "react";
+
+const tRsvp = vi.hoisted(() => vi.fn((key: string) => key));
 
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string) => key }),
+  useTranslation: () => ({ t: tRsvp }),
   Trans: ({ i18nKey }: { i18nKey: string }) => i18nKey,
 }));
 
@@ -815,7 +818,7 @@ describe("RsvpSection", () => {
   });
 
   it("shows remaining capacity and days-to-confirm when configured", async () => {
-    Object.assign(mockConfig, { rsvpCapacity: "5", rsvpDeadline: "2099-01-01" });
+    Object.assign(mockConfig, { rsvpCapacity: "5", rsvpDeadlineEnabled: "true", rsvpDeadline: "2099-01-01" });
     render(
       <WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} rsvpConfirmedCount={2} />,
     );
@@ -918,5 +921,131 @@ describe("RsvpSection", () => {
       delete (Element.prototype as unknown as Record<string, unknown>).scrollIntoView;
     }
   });
+describe("RSVP — resumen, borrador, foco y movimiento reducido", () => {
+  afterEach(() => {
+    // Restaura la traducción por claves tras los tests que la sobreescriben.
+    tRsvp.mockImplementation((key: string) => key);
+  });
+
+  it("resume correctamente la asistencia con acompañantes y el menú traducido", () => {
+    tRsvp.mockImplementation((key: string, opts?: Record<string, unknown>) => {
+      if (key === "rsvp.summaryAttendance" && opts && "v" in opts) return `${key}|${String(opts.v)}`;
+      if (key === "rsvp.summaryMenu" && opts && "m" in opts) return `${key}|${String(opts.m)}`;
+      return key;
+    });
+    const { container } = render(
+      <WrappedRsvp
+        {...baseProps}
+        hasSubmitted={true}
+        menuCarneDishes={'[{"order":"carne","text":"Solomillo"}]'}
+        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 2, menuSelection: "carne" }}
+      />,
+    );
+    const text = container.textContent || "";
+    // Antes decía attendingAlone con acompañantes y mostraba la clave cruda del menú.
+    expect(text).toContain("rsvp.summaryAttendance|rsvp.attendingWithCompanions");
+    expect(text).toContain("rsvp.summaryMenu|rsvp.menuCarne");
+  });
+
+  it("mueve el foco al feedback cuando aparece un error de validación", async () => {
+    render(<WrappedRsvp {...baseProps} rsvpMessage="rsvp.validation.privacyRequired" />);
+    await waitFor(() => expect((document.activeElement as HTMLElement | null)?.id).toBe("rsvpFeedback"));
+  });
+
+  it("no roba el foco cuando el mensaje es de éxito", () => {
+    render(<WrappedRsvp {...baseProps} rsvpMessage="ok" hasSubmitted={true} />);
+    expect((document.activeElement as HTMLElement | null)?.id).not.toBe("rsvpFeedback");
+  });
 });
 
+describe("RSVP — autosave del borrador en sessionStorage", () => {
+  let mem: Record<string, string>;
+  beforeEach(() => {
+    mem = {};
+    Object.defineProperty(window, "sessionStorage", {
+      configurable: true,
+      value: {
+        getItem: (k: string) => (k in mem ? mem[k] : null),
+        setItem: (k: string, v: string) => { mem[k] = String(v); },
+        removeItem: (k: string) => { delete mem[k]; },
+        clear: () => { mem = {}; },
+      } as unknown as Storage,
+    });
+  });
+
+  /** Host con estado REAL del formulario para ejercitar guardar/restaurar. */
+  function DraftHost({ inviteToken = "", hasSubmitted = false }: { inviteToken?: string; hasSubmitted?: boolean }) {
+    const [form, setForm] = useState<typeof baseForm>(baseForm);
+    // Aplica campos planos e indexados (companionNames[0]) como haría useRsvp.
+    const applyField = (prev: typeof baseForm, field: string, value: unknown): typeof baseForm => {
+      const m = field.match(/^(.+)\[(\d+)\]$/);
+      if (!m) return { ...prev, [field]: value } as typeof baseForm;
+      const base = m[1] as keyof typeof baseForm;
+      const idx = Number(m[2]);
+      const arr = [...(((prev[base] as unknown) as unknown[]) ?? [])];
+      arr[idx] = value;
+      return { ...prev, [base]: arr } as typeof baseForm;
+    };
+    return (
+      <RsvpFormContext.Provider
+        value={{
+          rsvpForm: form,
+          updateRsvpField: (f, v) => setForm((p) => applyField(p, f, v)),
+          handleRsvpSubmit: () => {},
+          setRsvpForm: setForm,
+        }}
+      >
+        <RsvpSection
+          {...({ ...baseProps, inviteToken, hasSubmitted } as unknown as React.ComponentProps<typeof RsvpSection>)}
+        />
+      </RsvpFormContext.Provider>
+    );
+  }
+
+  it("guarda el borrador al escribir", () => {
+    render(<DraftHost inviteToken="tokA" />);
+    fireEvent.change(screen.getByLabelText(/rsvp.nameLabel/), { target: { value: "Ana García López" } });
+    expect(mem["wedin_rsvp_draft_tokA"]).toContain("Ana García López");
+  });
+
+  it("restaura el borrador guardado al montar", () => {
+    mem["wedin_rsvp_draft_tokB"] = JSON.stringify({ ...baseForm, guestName: "Beto Ruiz Soto" });
+    render(<DraftHost inviteToken="tokB" />);
+    expect((screen.getByLabelText(/rsvp.nameLabel/) as HTMLInputElement).value).toBe("Beto Ruiz Soto");
+  });
+
+  it("ignora un borrador corrupto sin romper el formulario", () => {
+    mem["wedin_rsvp_draft_tokC"] = "{no-es-json";
+    render(<DraftHost inviteToken="tokC" />);
+    expect((screen.getByLabelText(/rsvp.nameLabel/) as HTMLInputElement).value).toBe("");
+  });
+
+  it("limpia el borrador tras confirmar la asistencia", () => {
+    mem["wedin_rsvp_draft_tokD"] = JSON.stringify({ ...baseForm, guestName: "X Y Z" });
+    render(<DraftHost inviteToken="tokD" hasSubmitted={true} />);
+    expect(mem["wedin_rsvp_draft_tokD"]).toBeUndefined();
+  });
+});
+
+describe("RSVP — movimiento reducido", () => {
+  it("usa salto instantáneo con prefers-reduced-motion activo", async () => {
+    Object.defineProperty(window, "matchMedia", {
+      configurable: true,
+      writable: true,
+      // matches=true activa la vía behavior:"auto" del efecto post-envío.
+      value: vi.fn().mockReturnValue({ matches: true }),
+    });
+    const spy = vi.fn();
+    Element.prototype.scrollIntoView = spy as unknown as typeof Element.prototype.scrollIntoView;
+    try {
+      render(<WrappedRsvp {...baseProps} hasSubmitted={true} />);
+      await waitFor(() => expect(spy).toHaveBeenCalled());
+      expect(spy.mock.calls[0]?.[0]).toMatchObject({ behavior: "auto", block: "center" });
+    } finally {
+      delete (Element.prototype as { scrollIntoView?: unknown }).scrollIntoView;
+      // @ts-expect-error limpieza deliberada del stub de matchMedia en jsdom
+      delete window.matchMedia;
+    }
+  });
+});
+});

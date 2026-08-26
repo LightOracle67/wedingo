@@ -63,4 +63,22 @@ describe("FloatingRsvpCta", () => {
     act(() => fireIntersect?.([{ isIntersecting: false }]));
     expect(screen.queryByText("rsvp.floatingCta")).toBeNull();
   });
+
+  it("respeta prefers-reduced-motion con salto instantáneo", () => {
+    // Stub de matchMedia: jsdom no lo implementa; matches=true pide menos animación.
+    Object.defineProperty(window, "matchMedia", {
+      configurable: true,
+      writable: true,
+      value: vi.fn().mockReturnValue({ matches: true }),
+    });
+    try {
+      render(<FloatingRsvpCta />);
+      act(() => fireIntersect?.([{ isIntersecting: false }]));
+      fireEvent.click(screen.getByText("rsvp.floatingCta"));
+      expect(scrollSpy).toHaveBeenCalledWith({ behavior: "auto" });
+    } finally {
+      // @ts-expect-error limpieza deliberada del stub en jsdom
+      delete window.matchMedia;
+    }
+  });
 });

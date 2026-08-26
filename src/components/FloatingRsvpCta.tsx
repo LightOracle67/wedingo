@@ -41,7 +41,12 @@ const FloatingRsvpCta = memo(({ targetId = "rsvp", hidden = false }: FloatingRsv
     <button
       type="button"
       className="floating-rsvp-cta"
-      onClick={() => document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" })}
+      onClick={() => {
+        // Respeta prefers-reduced-motion: salto instantáneo si el usuario
+        // pide menos animación en su sistema.
+        const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+        document.getElementById(targetId)?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
+      }}
     >
       {t("rsvp.floatingCta")}
     </button>

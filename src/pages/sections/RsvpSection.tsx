@@ -295,10 +295,70 @@ const RsvpSection = memo(function RsvpSection({
 
   // Ref del resumen post-envío: al confirmarse el envío, el navegador lleva
   // el resultado a la vista (sin él, el mensaje queda fuera del viewport).
+  // Respeta prefers-reduced-motion: si está activo, el salto es instantáneo.
   const summaryRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    if (hasSubmitted) summaryRef.current?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (hasSubmitted) summaryRef.current?.scrollIntoView?.({ behavior: reduced ? "auto" : "smooth", block: "center" });
   }, [hasSubmitted]);
+
+  // Ref del feedback de validación: al aparecer un error, el foco se mueve a
+  // él para que lectores de pantalla y teclado lo reciban de inmediato (en
+  // éxito NO se roba el foco: el resumen ya se anuncia por aria-live).
+  const feedbackRef = useRef<HTMLParagraphElement | null>(null);
+  useEffect(() => {
+    if (rsvpMessage && !hasSubmitted) feedbackRef.current?.focus();
+  }, [rsvpMessage, hasSubmitted]);
+
+  // ---- Autosave del borrador (sessionStorage, por token) ----
+  // Restaurar UNA vez al montar: evita perder un formulario largo por un
+  // refresco o cierre accidental. Solo se fusionan claves conocidas del
+  // formulario y valores simples (defensa ante JSON corrupto/fabricado).
+  useEffect(() => {
+    if (!inviteToken) return;
+    try {
+      const raw = window.sessionStorage.getItem(`wedin_rsvp_draft_${inviteToken}`);
+      if (!raw) return;
+      const parsed: unknown = JSON.parse(raw);
+      if (!parsed || typeof parsed !== "object") return;
+      setRsvpForm((prev) => {
+        const src = parsed as Partial<Record<keyof typeof prev, unknown>>;
+        const next = { ...prev };
+        // Copia campo a campo: escalares tal cual; listas (arrays paralelos de
+        // acompañantes, allergies) solo si son arrays válidos.
+        (Object.keys(prev) as (keyof typeof prev)[]).forEach((k) => {
+          const v = src[k];
+          if (v === null || v === undefined) return;
+          if (Array.isArray(v)) Object.assign(next, { [k]: v });
+          else if (typeof v !== "object") Object.assign(next, { [k]: v });
+        });
+        return next;
+      });
+    } catch {
+      // Borrador corrupto: se ignora sin bloquear el formulario.
+    }
+    // Sin inviteToken en deps de restauración múltiple: se ejecuta una vez por token.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [inviteToken]);
+
+  // Guardar en cada cambio mientras el formulario está vivo (ni enviado ni bloqueado).
+  useEffect(() => {
+    if (!inviteToken || hasSubmitted || isAlreadySubmitted) return;
+    try {
+      window.sessionStorage.setItem(`wedin_rsvp_draft_${inviteToken}`, JSON.stringify(rsvpForm));
+    } catch {
+      // Cuota llena o storage no disponible: el flujo sigue funcionando igual.
+    }
+  }, [rsvpForm, inviteToken, hasSubmitted, isAlreadySubmitted]);
+
+  // Tras confirmar, el borrador pierde sentido: se limpia para que una futura
+  // visita empiece limpia y no restaure datos viejos.
+  useEffect(() => {
+    if (!hasSubmitted || !inviteToken) return;
+    try {
+      window.sessionStorage.removeItem(`wedin_rsvp_draft_${inviteToken}`);
+    } catch {}
+  }, [hasSubmitted, inviteToken]);
 
   // Elimina el acompañante del índice indicado recortando TODOS los arrays
   // paralelos en la misma pasada: el botón genérico anterior solo decrementaba
@@ -1134,7 +1194,9 @@ const RsvpSection = memo(function RsvpSection({
                     {t("rsvp.capacityLeft", { count: Math.max(0, capacity - (rsvpConfirmedCount ?? 0)) })}
                   </p>
                 ) : null}
-                {config?.rsvpDeadline ? (
+                {/* El contador de días solo aplica con el plazo ACTIVADO:
+                    antes bastaba tener fecha guardada aunque el toggle estuviera off. */}
+                {config?.rsvpDeadlineEnabled === "true" && config?.rsvpDeadline ? (
                   <p className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
                     {t("rsvp.daysLeft", {
                       days: Math.max(
@@ -1158,12 +1220,24 @@ const RsvpSection = memo(function RsvpSection({
                   {t("rsvp.summaryTitle")}
                 </p>
                 <p style={{ margin: 0 }}>
+                  {/* "with" tiene su propia etiqueta: antes caía en attendingAlone
+                      y el resumen mentía cuando había acompañantes. */}
                   {t("rsvp.summaryAttendance", {
-                    v: rsvpForm.attendance === "no" ? t("rsvp.notAttending") : t("rsvp.attendingAlone"),
+                    v:
+                      rsvpForm.attendance === "no"
+                        ? t("rsvp.notAttending")
+                        : rsvpForm.attendance === "with"
+                          ? t("rsvp.attendingWithCompanions")
+                          : t("rsvp.attendingAlone"),
                   })}
                 </p>
                 {rsvpForm.menuSelection ? (
-                  <p style={{ margin: 0 }}>{t("rsvp.summaryMenu", { m: rsvpForm.menuSelection })}</p>
+                  /* Etiqueta traducida del menú (antes imprimía la clave cruda "carne"). */
+                  <p style={{ margin: 0 }}>
+                    {t("rsvp.summaryMenu", {
+                      m: menuOptions.find((m) => m.key === rsvpForm.menuSelection)?.label || rsvpForm.menuSelection,
+                    })}
+                  </p>
                 ) : null}
                 {rsvpForm.companionCount > 0 ? (
                   <p style={{ margin: 0 }}>{t("rsvp.summaryCompanions", { c: rsvpForm.companionCount })}</p>
@@ -1204,7 +1278,7 @@ const RsvpSection = memo(function RsvpSection({
             /* role="alert" para errores de validación: se anuncia de forma
                inmediata y prioritaria (el aria-live polite del éxito es menos
                intrusivo para confirmaciones). */
-            <p className="rsvp-feedback" id="rsvpFeedback" role="alert">
+            <p className="rsvp-feedback" id="rsvpFeedback" role="alert" tabIndex={-1} ref={feedbackRef}>
               {rsvpMessage}
             </p>
           ) : null}

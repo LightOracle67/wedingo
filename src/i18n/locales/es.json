@@ -180,6 +180,7 @@
       "nameRequired": "Escribe tu nombre para que sepamos quién eres.",
       "menuRequired": "Dinos qué menú prefieres para preparar tu comida.",
       "privacyRequired": "Acepta la Política de Privacidad para continuar.",
+      "healthRequired": "Marca el consentimiento de datos de salud (alergias) para continuar.",
       "ageUnder14": "Al ser menor de 14 años, necesitamos el consentimiento de tus padres o tutores.",
       "healthConsentRequired": "Dinos si podemos usar tu información de alergias para adaptar el menú.",
       "nameFullRequired": "Introduce el nombre completo: nombre y dos apellidos."

@@ -127,6 +127,11 @@ describe("RSVP Integration", () => {
     act(() => {
       result.current.updateRsvpField("companionAllergies[1]", ["alergia a mariscos"]);
     });
+    // Con alergias, la validación en cliente exige el consentimiento de salud
+    // por acompañante (antes lo rechazaban solo las reglas del servidor).
+    act(() => {
+      result.current.updateRsvpField("companionHealthConsents", [true, true]);
+    });
     act(() => {
       result.current.updateRsvpField("privacyConsent", true);
     });

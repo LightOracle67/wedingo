@@ -30,3 +30,6 @@ coverage
 junit.xml
 test-results
 .tsbuildinfo
+
+# Core dumps de crashes OOM
+/core

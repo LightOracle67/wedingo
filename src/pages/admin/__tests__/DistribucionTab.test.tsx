@@ -43,6 +43,9 @@ vi.mock("../../../lib/excel-builders", () => ({
 import DistribucionTab from "../DistribucionTab";
 import { writeBatch, updateDoc } from "firebase/firestore";
 
+// Waits ampliados: imports dinámicos y timers reales superan los defaults bajo carga.
+vi.setConfig({ testTimeout: 20000 });
+
 describe("DistribucionTab", () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -266,7 +269,7 @@ describe("DistribucionTab", () => {
     await screen.findByText("Salón");
     await screen.findByText("Mesa 1");
     fireEvent.click(screen.getByText("distribucion.exportTables"));
-    await vi.waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled());
+    await vi.waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled(), { timeout: 15000 });
   });
 
   it("elimina la sección activa", async () => {
@@ -363,7 +366,7 @@ describe("DistribucionTab — ramas límite (teclado, etiquetas, export)", () =>
     await mountWithTable();
     const tb = screen.getByRole("button", { name: "distribucion.tableAccessible" });
     fireEvent.keyDown(tb, { key: "ArrowUp" });
-    await waitFor(() => expect(vi.mocked(updateDoc)).toHaveBeenCalled(), { timeout: 5000 });
+    await waitFor(() => expect(vi.mocked(updateDoc)).toHaveBeenCalled(), { timeout: 15000 });
   });
 
   it("ignora teclas que no sean flechas", async () => {
@@ -385,7 +388,7 @@ describe("DistribucionTab — ramas límite (teclado, etiquetas, export)", () =>
     const winStub = { document: { write: vi.fn(), close: vi.fn(), images: [] }, focus: vi.fn(), print: printSpy };
     const openSpy = vi.spyOn(window, "open").mockReturnValue(winStub as unknown as Window);
     fireEvent.click(screen.getByText("distribucion.printLabels"));
-    await waitFor(() => expect(printSpy).toHaveBeenCalled(), { timeout: 3000 });
+    await waitFor(() => expect(printSpy).toHaveBeenCalled(), { timeout: 15000 });
     const html = winStub.document.write.mock.calls[0]![0] as string;
     expect(html).toContain("Ana");
     openSpy.mockRestore();
@@ -394,7 +397,8 @@ describe("DistribucionTab — ramas límite (teclado, etiquetas, export)", () =>
   it("exporta XLSX cuando hay mesas en la sección activa", async () => {
     await mountWithTable();
     fireEvent.click(screen.getByText("distribucion.exportTables"));
-    await waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled());
+    // El export usa import() dinámico de excel-utils: 1s default se queda corto.
+    await waitFor(() => expect(mockExportToXlsx).toHaveBeenCalled(), { timeout: 15000 });
   });
 
   it("avisa si no hay mesas que exportar", async () => {

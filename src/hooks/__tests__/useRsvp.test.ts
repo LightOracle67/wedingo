@@ -70,6 +70,9 @@ vi.mock("../../lib/date-utils", () => ({
 vi.mock("../../lib/rsvp-utils", () => ({
   DIETARY_OPTIONS: [],
   parseDietaryInfo: mockParseDietaryInfo,
+  // Validación añadida después: los tests antiguos no la ejercitan
+  // (la cobertura real vive en rsvp-health.test.ts).
+  missingHealthConsent: () => false,
 }));
 
 // Mock de storage: sin caché real para mantener los tests deterministas.

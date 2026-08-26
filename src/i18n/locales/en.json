@@ -180,6 +180,7 @@
       "nameRequired": "Please write your name so we know who you are.",
       "menuRequired": "Let us know your menu choice so we can prepare your meal.",
       "privacyRequired": "Please accept the Privacy Policy to continue.",
+      "healthRequired": "Check the health-data consent box (allergies) to continue.",
       "ageUnder14": "Since you are under 14, we need your parents' or guardians' consent to confirm.",
       "healthConsentRequired": "Please let us know if we can use your allergy info to adapt the menu.",
       "nameFullRequired": "Enter your full name: first name and two surnames."

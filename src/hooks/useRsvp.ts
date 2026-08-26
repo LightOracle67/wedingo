@@ -17,8 +17,8 @@ import {
 } from "firebase/firestore";
 import { db, rsvpByInviteRef, rsvpResponseRef } from "../lib/firebase";
 import { encrypt, decrypt } from "../lib/crypto-utils";
-import { DIETARY_OPTIONS, parseDietaryInfo } from "../lib/rsvp-utils";
-import { isValidFullName, normalizeFullName } from "../lib/name-utils";
+import { missingHealthConsent, DIETARY_OPTIONS, parseDietaryInfo } from "../lib/rsvp-utils";
+import { isValidFullName, nameKey, normalizeFullName } from "../lib/name-utils";
 import { useRsvpSubmit } from "./useRsvpSubmit";
 import { trackEvent } from "../lib/analytics";
 import { buildMainGuestData, buildCompanionData } from "./rsvp-payloads";
@@ -365,7 +365,9 @@ export function useRsvp(
   const entriesByName = useMemo(() => {
     const map = new Map<string, RsvpEntryData>();
     for (const e of rsvpEntries) {
-      const n = normalizeFullName(e.guestName).toLowerCase();
+      // Clave tolerante: sin acentos ni mayúsculas, para que "jose garcia"
+      // encuentre la respuesta guardada como "José García".
+      const n = nameKey(e.guestName);
       if (n && !map.has(n)) map.set(n, e);
     }
     return map;
@@ -375,7 +377,7 @@ export function useRsvp(
     // Se normaliza igual que al guardar (normalizeFullName colapsa espacios
     // internos) para que "Juan  Pérez" coincida con la respuesta guardada y
     // no se cree un segundo documento por error.
-    const name = normalizeFullName(rsvpForm.guestName).toLowerCase();
+    const name = nameKey(rsvpForm.guestName);
 
     if (!name) {
       setAlreadySubmittedEntry(null);
@@ -564,6 +566,16 @@ export function useRsvp(
       }
       if (!data.privacyConsent) {
         return t("rsvp.validation.privacyRequired");
+      }
+      // Consentimiento de datos de salud validado EN CLIENTE: si falta y hay
+      // alergias, las reglas Firestore rechazarían el lote con un error
+      // genérico (mapeado además como "límite alcanzado"); así el invitado ve
+      // el motivo real antes de enviar. Aplica al principal y a cada
+      // acompañante con alergias marcadas o texto libre.
+      // Consentimiento de salud (alergias) validado vía función pura:
+      // sin él, las reglas rechazarían el lote con un error genérico.
+      if (missingHealthConsent(data)) {
+        return t("rsvp.validation.healthRequired");
       }
       return null;
     },
