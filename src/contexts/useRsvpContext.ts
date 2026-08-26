@@ -39,7 +39,7 @@ export function useRsvpContext() {
  */
 export type RsvpFormValue = Pick<
   ReturnType<typeof useRsvp>,
-  "rsvpForm" | "updateRsvpField" | "handleRsvpSubmit"
+  "rsvpForm" | "updateRsvpField" | "handleRsvpSubmit" | "setRsvpForm"
 >;
 
 export const RsvpFormContext = createContext<RsvpFormValue | null>(null);

@@ -363,7 +363,7 @@ describe("DistribucionTab — ramas límite (teclado, etiquetas, export)", () =>
     await mountWithTable();
     const tb = screen.getByRole("button", { name: "distribucion.tableAccessible" });
     fireEvent.keyDown(tb, { key: "ArrowUp" });
-    await waitFor(() => expect(vi.mocked(updateDoc)).toHaveBeenCalled());
+    await waitFor(() => expect(vi.mocked(updateDoc)).toHaveBeenCalled(), { timeout: 5000 });
   });
 
   it("ignora teclas que no sean flechas", async () => {

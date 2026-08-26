@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../lib/firebase";
@@ -68,7 +68,7 @@ const RsvpSection = memo(function RsvpSection({
   // El formulario (rsvpForm/updateRsvpField/submit) viene del contexto anidado
   // RsvpFormContext: solo esta sección lo consume, de modo que teclear en el
   // RSVP NO re-renderiza PublicInvitation ni el resto de secciones.
-  const { rsvpForm, updateRsvpField, handleRsvpSubmit } = useRsvpFormContext();
+  const { rsvpForm, updateRsvpField, handleRsvpSubmit, setRsvpForm } = useRsvpFormContext();
   // El botón "Retirar respuesta" solo funciona con sesión de admin (las reglas
   // Firestore exigen isSuperAdmin o hasActiveSession): para el invitado sin
   // sesión se oculta, ya que de otro modo se mostraría un botón que siempre
@@ -293,8 +293,36 @@ const RsvpSection = memo(function RsvpSection({
     setLegalModal("privacy");
   }, [setLegalModal]);
 
+  // Ref del resumen post-envío: al confirmarse el envío, el navegador lleva
+  // el resultado a la vista (sin él, el mensaje queda fuera del viewport).
+  const summaryRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (hasSubmitted) summaryRef.current?.scrollIntoView?.({ behavior: "smooth", block: "center" });
+  }, [hasSubmitted]);
+
+  // Elimina el acompañante del índice indicado recortando TODOS los arrays
+  // paralelos en la misma pasada: el botón genérico anterior solo decrementaba
+  // el contador y perdía los datos de acompañantes intermedios.
+  const removeCompanionAt = useCallback(
+    (index: number) => {
+      setRsvpForm((prev) => ({
+        ...prev,
+        companionNames: prev.companionNames.filter((_, idx) => idx !== index),
+        companionMenus: prev.companionMenus.filter((_, idx) => idx !== index),
+        companionAllergies: prev.companionAllergies.filter((_, idx) => idx !== index),
+        companionIsChildren: prev.companionIsChildren.filter((_, idx) => idx !== index),
+        companionHealthConsents: prev.companionHealthConsents.filter((_, idx) => idx !== index),
+        companionTransportChoices: prev.companionTransportChoices.filter((_, idx) => idx !== index),
+        companionTransportModes: prev.companionTransportModes.filter((_, idx) => idx !== index),
+        companionCount: Math.max(0, prev.companionCount - 1),
+      }));
+    },
+    [setRsvpForm],
+  );
+
   return (
     <section
+      id="rsvp"
       data-story-section="rsvp"
       className={`${className} flex items-center justify-center px-3 py-4 sm:px-6 sm:py-8 lg:px-8 lg:py-10`}
       style={style}
@@ -504,17 +532,15 @@ const RsvpSection = memo(function RsvpSection({
                       }}
                     >
                       <h3 style={{ margin: 0 }}>{t("rsvp.companionHeading", { number: i + 1 })}</h3>
-                      {i > 0 && (
-                        <button
-                          type="button"
-                          className="rsvp-remove-btn"
-                          aria-label={t("common.remove")}
-                          onClick={() => updateRsvpField("companionCount", rsvpForm.companionCount - 1)}
-                          disabled={isAlreadySubmitted}
-                        >
-                          ✕
-                        </button>
-                      )}
+                      <button
+                        type="button"
+                        className="rsvp-remove-btn"
+                        aria-label={t("common.remove")}
+                        onClick={() => removeCompanionAt(i)}
+                        disabled={isAlreadySubmitted}
+                      >
+                        ✕
+                      </button>
                     </div>
 
                     <label className="setup-label" htmlFor={`companion-name-${i}`}>
@@ -1123,7 +1149,11 @@ const RsvpSection = memo(function RsvpSection({
 
             {/* Resumen de la respuesta tras enviar (el invitado ve lo elegido). */}
             {hasSubmitted && !isAlreadySubmitted ? (
-              <div className="rsvp-summary" style={{ marginTop: "0.6rem", fontSize: "0.85rem", lineHeight: 1.7 }}>
+              <div
+                ref={summaryRef}
+                className="rsvp-summary"
+                style={{ marginTop: "0.6rem", fontSize: "0.85rem", lineHeight: 1.7 }}
+              >
                 <p className="setup-label" style={{ fontSize: "0.8rem" }}>
                   {t("rsvp.summaryTitle")}
                 </p>

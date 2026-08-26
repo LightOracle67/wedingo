@@ -300,6 +300,7 @@ describe("a11y-page-audit", () => {
           rsvpForm: rsvpForm,
           updateRsvpField: vi.fn(),
           handleRsvpSubmit: vi.fn(),
+          setRsvpForm: vi.fn(),
         }}
       >
         <RsvpSection

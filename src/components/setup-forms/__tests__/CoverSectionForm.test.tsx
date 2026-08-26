@@ -554,4 +554,37 @@ describe("CoverSectionForm", () => {
     expect(screen.queryByPlaceholderText("setup.welcomeVideoPlaceholder")).toBeNull();
   });
 
+
+  // Campos de personalización sin cobertura previa: cada test verifica el
+  // wiring completo etiqueta→onChange→updateFormField (persisten vía store).
+  it("updates fontHeading on change", () => {
+    render(<CoverSectionForm />);
+    fireEvent.change(screen.getByLabelText("setup.fontHeadingLabel"), { target: { value: "playfair" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("fontHeading", "playfair");
+  });
+
+  it("updates fontBody on change", () => {
+    render(<CoverSectionForm />);
+    fireEvent.change(screen.getByLabelText("setup.fontBodyLabel"), { target: { value: "lora" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("fontBody", "lora");
+  });
+
+  it.each([
+    ["colorAccent", "setup.colorAccentLabel"],
+    ["colorTitle", "setup.colorTitleLabel"],
+    ["colorCopy", "setup.colorCopyLabel"],
+    ["colorBackground", "setup.colorBackgroundLabel"],
+  ])("updates %s from the palette picker", (field, label) => {
+    render(<CoverSectionForm />);
+    fireEvent.change(screen.getByLabelText(label), { target: { value: "#a1b2c3" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith(field, "#a1b2c3");
+  });
+
+  it("updates instagramUrl on change", () => {
+    render(<CoverSectionForm />);
+    const input = screen.getByPlaceholderText("setup.instagramPlaceholder");
+    fireEvent.change(input, { target: { value: "https://instagram.com/boda" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("instagramUrl", "https://instagram.com/boda");
+  });
+
 });

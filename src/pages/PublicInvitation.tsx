@@ -21,6 +21,7 @@ import { useLocation, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
 import { useConfig, useRsvpContext, useAuth, useAnimations } from "../contexts";
+import FloatingRsvpCta from "../components/FloatingRsvpCta";
 import { useStoryNavigation } from "../hooks/useStoryNavigation";
 import { usePlatformSettings, tokenIsBlocked } from "../lib/platform-settings";
 import { useReducedMotion } from "../hooks/useReducedMotion";
@@ -886,6 +887,9 @@ export default function PublicInvitation() {
             </Suspense>
           </>
         )}
+        {envelopeOpen && !isEmpty && !showMissingToken && showRsvp ? (
+          <FloatingRsvpCta targetId="rsvp" />
+        ) : null}
         {/* Botón de compartir de la invitación pública (aparece tras el sobre). */}
         {!isEmpty && !showMissingToken ? (
           <button

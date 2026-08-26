@@ -358,4 +358,12 @@ describe("DateSectionForm", () => {
     render(<DateSectionForm />);
     expect(document.querySelector(".setup-input--error")).toBeDefined();
   });
+
+  // Vista del mapa del recinto: select con etiqueta propia.
+  it("updates weddingMapView on change", () => {
+    render(<DateSectionForm />);
+    fireEvent.change(screen.getByLabelText("setup.mapViewLabel"), { target: { value: "satellite" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("weddingMapView", "satellite");
+  });
+
 });

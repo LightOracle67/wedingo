@@ -103,13 +103,15 @@ const updateRsvpField = baseProps.updateRsvpField as ReturnType<typeof vi.fn>;
  * handleRsvpSubmit como si fueran props del wrapper.
  */
 function WrappedRsvp(props: Record<string, unknown>) {
-  const { rsvpForm: _f, updateRsvpField: _u, handleRsvpSubmit: _h, ...rest } = props;
+  const { rsvpForm: _f, updateRsvpField: _u, handleRsvpSubmit: _h, setRsvpForm: _s, ...rest } = props;
   return (
     <RsvpFormContext.Provider
       value={{
         rsvpForm: (props.rsvpForm as typeof baseForm) ?? baseForm,
         updateRsvpField: (props.updateRsvpField as RsvpFormValue["updateRsvpField"]) ?? (updateRsvpField as unknown as RsvpFormValue["updateRsvpField"]),
         handleRsvpSubmit: (props.handleRsvpSubmit as (e: React.FormEvent) => void) ?? (() => {}),
+        setRsvpForm:
+          (props.setRsvpForm as RsvpFormValue["setRsvpForm"]) ?? vi.fn(),
       }}
     >
       <RsvpSection {...(rest as unknown as React.ComponentProps<typeof RsvpSection>)} />
@@ -338,7 +340,8 @@ describe("RsvpSection", () => {
         }}
       />,
     );
-    expect(screen.getAllByText("✕")).toHaveLength(1);
+    // Con el borrado específico, cada tarjeta de acompañante tiene su ✕.
+    expect(screen.getAllByText("✕")).toHaveLength(2);
   });
 
   it("shows allergies hint when not menuEnabled and attending", () => {
@@ -871,6 +874,49 @@ describe("RsvpSection", () => {
     await waitFor(() => expect(rsvpFb.getDocs).toHaveBeenCalled());
     // El catch del efecto deja assignedTable vacío: no aparece el bloque de mesa.
     expect(screen.queryByText(/rsvp.yourTable/)).toBeNull();
+  });
+
+  it("quita el acompañante concreto pulsado, no siempre el último", () => {
+    // setRsvpForm escribe en un mock para poder aplicar el updater funcional
+    // y verificar el estado resultante sin depender del hook real.
+    const setRsvpForm = vi.fn();
+    const seed = {
+      ...baseForm,
+      attendance: "with" as const,
+      companionCount: 3,
+      companionNames: ["B1", "B2", "B3"],
+      companionMenus: ["", "", ""],
+      companionAllergies: [[], [], []] as string[][],
+      companionIsChildren: ["no", "no", "no"],
+      companionHealthConsents: [false, false, false],
+      companionTransportChoices: ["", "", ""],
+      companionTransportModes: ["own", "own", "own"],
+      companionTransportTimes: ["", "", ""],
+      companionTransportPlaces: ["", "", ""],
+    };
+    render(<WrappedRsvp {...baseProps} setRsvpForm={setRsvpForm} rsvpForm={seed} />);
+    // Ahora los tres acompañantes tienen botón ✕ (antes solo existía desde el segundo).
+    const removeBtns = screen.getAllByLabelText("common.remove");
+    expect(removeBtns).toHaveLength(3);
+    // Pulsar la ✕ del PRIMERO debe eliminar su índice, preservando B2 y B3.
+    fireEvent.click(removeBtns[0]!);
+    expect(setRsvpForm).toHaveBeenCalledTimes(1);
+    const updater = setRsvpForm.mock.calls[0]![0] as (prev: typeof seed) => typeof seed;
+    const next = updater(seed);
+    expect(next.companionNames).toEqual(["B2", "B3"]);
+    expect(next.companionCount).toBe(2);
+  });
+
+  it("hace scroll al resumen tras un envío correcto", () => {
+    // jsdom carece de scrollIntoView: sustitución directa con espía propio.
+    const scrollSpy = vi.fn();
+    Element.prototype.scrollIntoView = scrollSpy;
+    try {
+      render(<WrappedRsvp {...baseProps} hasSubmitted={true} />);
+      expect(scrollSpy).toHaveBeenCalledWith({ behavior: "smooth", block: "center" });
+    } finally {
+      delete (Element.prototype as unknown as Record<string, unknown>).scrollIntoView;
+    }
   });
 });
 

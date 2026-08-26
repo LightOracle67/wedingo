@@ -251,4 +251,37 @@ describe("GuestsSectionForm", () => {
     expect(screen.getByText(/setup.siteNameLabel/)).toBeDefined();
     expect(screen.getByText((text: string) => text.includes("Hotel Sol"))).toBeDefined();
   });
+
+  // Fecha límite: el toggle habilita el input date; verificar ambas piezas.
+  it("toggles rsvpDeadlineEnabled from its row switch", () => {
+    render(<GuestsSectionForm />);
+    fireEvent.click(screen.getByLabelText("setup.rsvpDeadlineLabel"));
+    expect(mockUpdateFormField).toHaveBeenCalledWith("rsvpDeadlineEnabled", "true");
+  });
+
+  it("updates rsvpDeadline when enabled", () => {
+    mockFormData.rsvpDeadlineEnabled = "true";
+    render(<GuestsSectionForm />);
+    const input = document.querySelector('input[type="date"]') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: "2030-06-01" } });
+    expect(mockUpdateFormField).toHaveBeenCalledWith("rsvpDeadline", "2030-06-01");
+  });
+
+  // Editores de platos por tipo de menú: localizar el botón añadir dentro del
+  // bloque de su etiqueta evita depender del orden global de los editores.
+  const dishCases: Array<[string, string]> = [
+    ["setup.menuPescadoLabel", "menuPescadoDishes"],
+    ["setup.menuVeganoLabel", "menuVeganoDishes"],
+  ];
+  it.each(dishCases)("adds a dish to the %s editor", (label, field) => {
+    mockFormData.menuEnabled = "true";
+    render(<GuestsSectionForm />);
+    const section = screen.getByText(label).parentElement as HTMLElement;
+    fireEvent.click(section.querySelector("button") as HTMLButtonElement);
+    expect(mockUpdateFormField).toHaveBeenCalledWith(
+      field,
+      JSON.stringify([{ order: "entrante", text: "" }]),
+    );
+  });
+
 });

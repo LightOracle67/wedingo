@@ -45,6 +45,8 @@ export function RsvpProvider({ children }: { children: React.ReactNode }) {
       rsvpForm: rsvp.rsvpForm,
       updateRsvpField: rsvp.updateRsvpField,
       handleRsvpSubmit: rsvp.handleRsvpSubmit,
+      // Necesario para el borrado específico de acompañante en RsvpSection.
+      setRsvpForm: rsvp.setRsvpForm,
     }),
     [rsvp],
   );
