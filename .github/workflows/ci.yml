@@ -5,6 +5,11 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  # Deploy manual desde GitHub Actions (respaldo a la CLI local): se dispara
+  # desde la API/UI con el job "deploy" cuando el entorno local no puede
+  # construir (p. ej. sandbox con límite de memoria). Los secrets ya están
+  # configurados en el repo.
+  workflow_dispatch:
 
 # Cancela ejecuciones anteriores del mismo PR/rama al empujar nuevos commits.
 concurrency:
