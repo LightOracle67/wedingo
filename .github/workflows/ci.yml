@@ -162,6 +162,6 @@ jobs:
           VITE_ADMIN_EMAILS: ${{ secrets.VITE_ADMIN_EMAILS }}
           VITE_SUPERADMIN_ROUTE: ${{ secrets.VITE_SUPERADMIN_ROUTE }}
       - name: Deploy to Firebase (hosting + security rules)
-        run: npx firebase-tools deploy --only hosting,firestore:rules,storage:rules --token "$FIREBASE_TOKEN" --non-interactive
+        run: npx firebase-tools deploy --only hosting,firestore:rules --token "$FIREBASE_TOKEN" --non-interactive
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
