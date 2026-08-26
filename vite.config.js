@@ -1,5 +1,5 @@
 /// <reference types="vitest" />
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { sentryVitePlugin } from "@sentry/vite-plugin";
@@ -98,39 +98,25 @@ const REQUIRED_FIREBASE_ENV = [
   "VITE_FIREBASE_APP_ID",
 ];
 
-/** Lee .env (y variantes) sin dependencias: pares CLAVE=VALOR simples.
- *  IMPORTANTE: relativo a process.cwd() y NO a import.meta.url, porque vite
- *  evalúa esta config desde un bundle temporal (.vite-temp/) cuya URL no
- *  coincide con el raíz del proyecto. */
-function readDotEnvKeys() {
-  const found = {};
-  for (const file of [".env", ".env.local", ".env.production"]) {
-    try {
-      const raw = readFileSync(join(process.cwd(), file), "utf8");
-      for (const line of raw.split("\n")) {
-        const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)\s*$/);
-        // Última definición gana; recorta comillas envolventes si existen.
-        if (m) found[m[1]] = m[2].replace(/^["']|["']$/g, "");
-      }
-    } catch {
-      // Ausencia de una variante concreta es normal; se continúa.
-    }
+/** Valida las credenciales web de Firebase ANTES de compilar: un bundle sin
+ *  projectId produce rutas "projects//databases/..." y deja toda la app sin
+ *  Firestore (incidente v2.133.0: build desde clon sin .env). Se usa loadEnv,
+ *  la API oficial de vite, porque el config-loader moderno evalúa este
+ *  fichero en un contexto donde leer .env a mano no es fiable. */
+function assertFirebaseEnv(env) {
+  const missing = REQUIRED_FIREBASE_ENV.filter((k) => !env[k] && !process.env[k]);
+  if (missing.length > 0) {
+    throw new Error(
+      `[build] Faltan variables de entorno de Firebase en el entorno/.env: ${missing.join(", ")}. ` +
+        "Sin ellas el bundle no puede hablar con Firestore. Genera el .env (firebase apps:sdkconfig) antes de compilar.",
+    );
   }
-  return found;
 }
 
-const dotEnvKeys = readDotEnvKeys();
-const missingFirebaseEnv = REQUIRED_FIREBASE_ENV.filter(
-  (k) => !process.env[k] || !dotEnvKeys[k],
-);
-if (missingFirebaseEnv.length > 0) {
-  throw new Error(
-    `[build] Faltan variables de entorno de Firebase en el entorno/.env: ${missingFirebaseEnv.join(", ")}. ` +
-      "Sin ellas el bundle no puede hablar con Firestore. Genera el .env (firebase apps:sdkconfig) antes de compilar.",
-  );
-}
+export default defineConfig(({ mode }) => {
+  assertFirebaseEnv(loadEnv(mode, process.cwd(), ""));
 
-export default defineConfig({
+  return {
   plugins: [react(), tailwindcss(), buildTimestamp(), pwaPrecache(), sentryPlugin].filter(Boolean),
   base: "/",
   define: {
@@ -208,4 +194,6 @@ export default defineConfig({
       },
     },
   },
+
+};
 });
