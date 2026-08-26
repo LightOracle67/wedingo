@@ -646,10 +646,18 @@ export function useRsvp(
         // guarda el contador (las reglas exigen que exista y esté por debajo de
         // RSVP_MAX_RESPONSES) y se incrementa en el mismo lote para mantener el tope anti-spam.
         const counterRef = doc(db, "rsvpResponses", inviteToken);
+        // El incremento atómico (fieldTransform) es INVISIBLE para las reglas
+        // (request.resource.data llega vacío) y desde v2.125 provocaba
+        // permission-denied en TODO RSVP nuevo. Se sustituye por lectura +
+        // escritura directa count+1, que las reglas sí permiten (==actual+1).
+        let nextCount = 1;
         try {
           const counterSnap = await getDoc(counterRef);
           if (!counterSnap.exists()) {
             await setDoc(counterRef, { count: 0 });
+          } else {
+            const raw = Number((counterSnap.data() as Record<string, unknown> | undefined)?.count ?? 0);
+            nextCount = Number.isFinite(raw) ? raw + 1 : 1;
           }
         } catch (counterErr) {
           safeLogError(["[app]", "[useRsvp]", "RSVP counter setup failed"], counterErr);
@@ -669,9 +677,9 @@ export function useRsvp(
             createdAt: nowTimestamp,
           });
         }
-        // Incremento atómico: dos invitados a la vez ya no pisan el contador
-        // (el set con un valor leído perdía un envío completo por carrera).
-        batch.update(counterRef, { count: increment(1) });
+        // Escritura directa del nuevo valor: las reglas exigen exactamente
+        // count == valor_previo + 1 para escrituras públicas.
+        batch.set(counterRef, { count: nextCount });
         await withWriteRetry(() => batch.commit());
       } catch (err) {
         safeLogError(["[app]", "[useRsvp]", "RSVP batch write failed"], err);

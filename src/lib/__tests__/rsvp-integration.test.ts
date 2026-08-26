@@ -175,8 +175,8 @@ describe("RSVP Integration", () => {
     expect(compPayload.privacyConsent).toBe(true);
     expect(compPayload.mainGuestDocId).toBe("main_101n9co");
     expect(compPayload.mainGuestName).toBe("García Pérez López");
-    // 1 main + 2 companions = 3 set calls (el contador usa increment/update).
-    expect(batch.set).toHaveBeenCalledTimes(3);
+    // 1 main + 2 companions + contador (set directo count+1) = 4 set calls.
+    expect(batch.set).toHaveBeenCalledTimes(4);
   });
 
   it("shows error when guestName is empty", async () => {

@@ -487,13 +487,14 @@ describe("useRsvp", () => {
       });
       // El submit es asíncrono: esperamos a que el flag de éxito cambie.
       await vi.waitFor(() => expect(result.current.hasSubmitted).toBe(true));
-      // Se creó exactamente un lote con el doc principal y el +1 del contador.
+      // Se creó exactamente un lote con el doc principal y el +1 del contador
+      // (escritura directa: el increment atómico chocaba con las reglas).
       const batch = mockWriteBatch.mock.results.at(-1)!.value as {
         set: ReturnType<typeof vi.fn>;
         update: ReturnType<typeof vi.fn>;
       };
       expect(batch.set).toHaveBeenCalled();
-      expect(batch.update).toHaveBeenCalledWith(expect.anything(), { count: 1 });
+      expect(batch.set).toHaveBeenCalledWith(expect.anything(), { count: 1 });
     });
   });
 
