@@ -28,20 +28,6 @@ export default defineConfig({
   use: {
     baseURL: "http://localhost:4173",
     headless: true,
-    // Acepta las cookies en todas las pruebas: el banner de consentimiento es
-    // modal y en CI interceptaba los clics de forma intermitente (carrera con
-    // su render). El valor replica el formato que guarda CookieConsent
-    // (status/ts/version + preferencias) para que parseConsent lo valide.
-    addInitScript: () => {
-      window.localStorage.setItem(
-        "wedin_cookie_consent",
-        JSON.stringify({ status: "accepted", ts: Date.now(), version: "test" }),
-      );
-      window.localStorage.setItem(
-        "wedin_cookie_prefs",
-        JSON.stringify({ necessary: true, analytics: false }),
-      );
-    },
   },
   webServer: {
     cwd: "..",

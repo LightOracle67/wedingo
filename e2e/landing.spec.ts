@@ -1,6 +1,24 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("App Shell", () => {
+  // El banner de consentimiento es un modal que intercepta los clics en CI de
+  // forma intermitente (carrera con su render). Pre-aceptar cookies en
+  // localStorage (mismo formato que guarda CookieConsent: status/ts/version
+  // + preferencias) hace las pruebas deterministas; addInitScript corre antes
+  // de cada navegación, igual que en setup.spec.ts.
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      window.localStorage.setItem(
+        "wedin_cookie_consent",
+        JSON.stringify({ status: "accepted", ts: Date.now(), version: "test" }),
+      );
+      window.localStorage.setItem(
+        "wedin_cookie_prefs",
+        JSON.stringify({ necessary: true, analytics: false }),
+      );
+    });
+  });
+
   test("renders root element", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("#root")).toBeAttached();
