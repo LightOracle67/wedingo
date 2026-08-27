@@ -754,6 +754,27 @@ select.setup-input {
 .setup-date-grid .setup-help {
   margin-top: 0.15rem;
 }
+/* Rejilla genérica para campos relacionados en línea (patrón setup-date-grid):
+   en pantallas ≤640px colapsa a una sola columna (UX móvil: nada se oculta,
+   solo se apila; los formularios se siguen rellenando igual). */
+.setup-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+.setup-fields-grid .setup-label {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.setup-fields-grid .setup-help {
+  margin-top: 0.15rem;
+}
+@media (max-width: 640px) {
+  .setup-fields-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .setup-button {
   border: 0;
   border-radius: 999px;

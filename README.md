@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.137.0 | 2026-08-27 | Los inputs relacionados de los formularios del setup (tipografía de la portada, menús, enlace y modo del mapa de alojamiento) ahora se muestran en línea y se apilan en una sola columna en móvil, sin perder funcionalidades |
 | v2.136.0 | 2026-08-27 | Changelog de la página al día hasta v2.135.0 (295 versiones, descargado de GitHub con caché local, historial recortado a 60 con enlace al fichero completo); modales con cuerpo scrolleable enfocable por teclado y cabecera fija (el botón de cierre ya no se desplaza al hacer scroll, WCAG 2.1.1) |
 | v2.135.0 | 2026-08-26 | Corregidos los errores al guardar la configuración: secciones ocultas legacy (p. ej. «extras») ya no invalidan el guardado, y los textos con comillas dobles/acentos graves se convierten a variantes tipográficas seguras con aviso claro de caracteres no permitidos (<, >, javascript:). El changelog de la página ahora se descarga de GitHub (CHANGELOG.md) con caché local en vez de viajar en el bundle |
 | v2.134.1 | 2026-08-26 | Corregido el contador de confirmaciones del RSVP: el incremento atómico era rechazado por las reglas y toda confirmación nueva fallaba con «límite alcanzado»; el contador se guarda con escritura directa count+1. Permitidas URLs vacías al guardar la configuración (errores al guardar). Botón de añadir acompañante con el mismo estilo que los chips de alergias |

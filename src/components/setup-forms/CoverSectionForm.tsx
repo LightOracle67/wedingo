@@ -332,38 +332,44 @@ const CoverSectionForm = memo(function CoverSectionForm({ prefix = "" }: { prefi
       <p className="setup-help" id={id("typographyHint")}>
         {t("setup.typographyHint")}
       </p>
-      <label className="setup-label" htmlFor={id("fontHeading")}>
-        {t("setup.fontHeadingLabel")}
-      </label>
-      <select
-        id={id("fontHeading")}
-        className="setup-input"
-        value={fontHeading || ""}
-        onChange={(e) => updateFormField("fontHeading", e.target.value)}
-      >
-        <option value="">{t("setup.fontDefault")}</option>
-        {FONT_OPTIONS.map((f) => (
-          <option key={f.value} value={f.value}>
-            {f.label}
-          </option>
-        ))}
-      </select>
-      <label className="setup-label" htmlFor={id("fontBody")}>
-        {t("setup.fontBodyLabel")}
-      </label>
-      <select
-        id={id("fontBody")}
-        className="setup-input"
-        value={fontBody || ""}
-        onChange={(e) => updateFormField("fontBody", e.target.value)}
-      >
-        <option value="">{t("setup.fontDefault")}</option>
-        {FONT_OPTIONS.map((f) => (
-          <option key={f.value} value={f.value}>
-            {f.label}
-          </option>
-        ))}
-      </select>
+      <div className="setup-fields-grid">
+        <div>
+          <label className="setup-label" htmlFor={id("fontHeading")}>
+            {t("setup.fontHeadingLabel")}
+          </label>
+          <select
+            id={id("fontHeading")}
+            className="setup-input"
+            value={fontHeading || ""}
+            onChange={(e) => updateFormField("fontHeading", e.target.value)}
+          >
+            <option value="">{t("setup.fontDefault")}</option>
+            {FONT_OPTIONS.map((f) => (
+              <option key={f.value} value={f.value}>
+                {f.label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label className="setup-label" htmlFor={id("fontBody")}>
+            {t("setup.fontBodyLabel")}
+          </label>
+          <select
+            id={id("fontBody")}
+            className="setup-input"
+            value={fontBody || ""}
+            onChange={(e) => updateFormField("fontBody", e.target.value)}
+          >
+            <option value="">{t("setup.fontDefault")}</option>
+            {FONT_OPTIONS.map((f) => (
+              <option key={f.value} value={f.value}>
+                {f.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
 
       {/* ── Personalización de colores ── */}
       <p className="setup-label">{t("setup.colorsLabel")}</p>

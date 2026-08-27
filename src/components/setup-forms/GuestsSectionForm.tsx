@@ -187,26 +187,28 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
           <p className="setup-help" id={id("menuHint")} style={{ marginBottom: "0.4rem" }}>
             {t("setup.menuHint")}
           </p>
-          {[
-            { dishes: "menuCarneDishes", labelKey: "setup.menuCarneLabel" },
-            { dishes: "menuPescadoDishes", labelKey: "setup.menuPescadoLabel" },
-            { dishes: "menuVeganoDishes", labelKey: "setup.menuVeganoLabel" },
-          ].map(({ dishes, labelKey }) => (
-            <div key={dishes} style={{ marginBottom: "0.5rem" }}>
-              <p
-                className="setup-label"
-                id={id(dishes + "Label")}
-                style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}
-              >
-                {t(labelKey)}
-              </p>
-              <MenuDishEditor
-                value={dishValues[dishes] || ""}
-                onChange={(json) => updateFormField(dishes, json)}
-                idBase={id(dishes)}
-              />
-            </div>
-          ))}
+          <div className="setup-fields-grid">
+            {[
+              { dishes: "menuCarneDishes", labelKey: "setup.menuCarneLabel" },
+              { dishes: "menuPescadoDishes", labelKey: "setup.menuPescadoLabel" },
+              { dishes: "menuVeganoDishes", labelKey: "setup.menuVeganoLabel" },
+            ].map(({ dishes, labelKey }) => (
+              <div key={dishes}>
+                <p
+                  className="setup-label"
+                  id={id(dishes + "Label")}
+                  style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}
+                >
+                  {t(labelKey)}
+                </p>
+                <MenuDishEditor
+                  value={dishValues[dishes] || ""}
+                  onChange={(json) => updateFormField(dishes, json)}
+                  idBase={id(dishes)}
+                />
+              </div>
+            ))}
+          </div>
           <p className="setup-help">{t("setup.menuRequiredText")}</p>
         </>
       ) : (
@@ -251,20 +253,22 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
         hint={t("setup.accommodationUrlHint")}
         id={id}
       >
-        <MapUrlField
-          id={id("accommodationURL")}
-          value={accommodationURL || ""}
-          onChange={(url) => updateFormField("accommodationURL", url)}
-          placeholder={t("setup.accommodationUrlPlaceholder")}
-          placeHintId={id("accommodationPlace")}
-          placeLabel={t("setup.siteNameLabel")}
-        />
-        <MapModeSelect
-          id={id("accommodationMapMode")}
-          value={accommodationMapMode}
-          onChange={(v) => updateFormField("accommodationMapMode", v)}
-          hintId={id("accommodationMapModeHint")}
-        />
+        <div className="setup-fields-grid">
+          <MapUrlField
+            id={id("accommodationURL")}
+            value={accommodationURL || ""}
+            onChange={(url) => updateFormField("accommodationURL", url)}
+            placeholder={t("setup.accommodationUrlPlaceholder")}
+            placeHintId={id("accommodationPlace")}
+            placeLabel={t("setup.siteNameLabel")}
+          />
+          <MapModeSelect
+            id={id("accommodationMapMode")}
+            value={accommodationMapMode}
+            onChange={(v) => updateFormField("accommodationMapMode", v)}
+            hintId={id("accommodationMapModeHint")}
+          />
+        </div>
       </SetupToggleField>
     </>
   );
