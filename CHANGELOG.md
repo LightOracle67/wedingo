@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.149.0 — 2026-08-27
+- Modal de edición de asistencias (y cualquier modal anidado en el panel): renderizado en un portal para que cubra toda la pantalla y tome el foco global (antes quedaba recortado a la tarjeta de la tabla por el backdrop-filter del contenedor).
+- La tabla de asistencias muestra dos columnas nuevas: ¿Trae niños? (contador declarado en el RSVP) e Intolerancias de los niños (alergias del grupo), recogidas del doc principal; la estadística de niños confirmados ahora suma ambos modelos (flag legacy isChild y contador childrenCount).
 ## 2.148.0 — 2026-08-27
 - El invitado ya confirmado ve su respuesta rellenada también desde el servidor: al escribir su nombre, la app lee su propia respuesta (get individual, sin poder listar las de otros) con el id derivado del nombre.
 - El título del toggle de fecha límite ya no se encoge a una letra por línea al activarlo (los controles hijos bajan a su propia línea).

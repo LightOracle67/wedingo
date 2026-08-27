@@ -682,6 +682,8 @@
     "manualError": "Could not save the response. Try again.",
     "manualLimitReached": "Response limit reached for this invitation.",
     "tableChild": "Child",
+    "tableChildren": "Brings children?",
+    "tableChildrenDiet": "Children allergies",
     "childYes": "Yes",
     "childrenConfirmed": "Confirmed children: {{count}}",
     "manualCompanionsLabel": "Companions",

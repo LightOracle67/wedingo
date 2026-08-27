@@ -1,4 +1,5 @@
 import { memo, useCallback, useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
+import { createPortal } from "react-dom";
 import { useFocusTrap, useInertBackground, useEscapeKey } from "../hooks/useFocusTrap";
 import "../styles/modals.css";
 
@@ -63,7 +64,14 @@ const Modal = memo(function Modal({
 
   useEscapeKey(handleClose, true);
 
-  return (
+  // El overlay usa `position: fixed`, pero un ancestro con `backdrop-filter`,
+  // `transform` o `filter` (el `.setup-card` del panel admin lleva
+  // `backdrop-filter: blur(4px)`) crea un *containing block* para el elemento
+  // fijo: el modal quedaría recortado a la tarjeta y el foco visual solo
+  // cubriría la tabla. Renderizar en un portal sobre `document.body` libera el
+  // overlay para que abarque toda la pantalla (mismo fix aplicado al modal de
+  // soporte del superadmin).
+  return createPortal(
     <div
       className={`modal-overlay ${closing ? "modal-overlay--closing" : ""} ${overlayClassName || ""}`}
       onClick={handleClose}
@@ -91,7 +99,8 @@ const Modal = memo(function Modal({
           {children}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 });
 

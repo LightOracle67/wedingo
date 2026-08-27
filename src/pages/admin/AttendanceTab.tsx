@@ -47,6 +47,10 @@ interface RsvpEntry {
   companionAllergies?: string[][];
   companionAllergiesOther?: string[];
   companionIsChildren?: string[];
+  /// Niños declarados por el invitado principal (contador + alergias de grupo).
+  childrenCount?: number;
+  childrenAllergies?: string[];
+  childrenAllergiesOther?: string;
 }
 
 export interface AttendanceTabProps {
@@ -83,6 +87,14 @@ function parseDietaryItems(dietaryInfo: string): string[] {
 
 function getDietaryItems(dietaryInfo: string): string[] {
   return parseDietaryItems(dietaryInfo);
+}
+
+/** Alergias e intolerancias de los niños, como lista plana para la columna. */
+function getChildrenDietary(entry: RsvpEntry): string[] {
+  const list = Array.isArray(entry.childrenAllergies) ? entry.childrenAllergies.filter(Boolean) : [];
+  const other = (entry.childrenAllergiesOther || "").trim();
+  if (other) list.push(other);
+  return list;
 }
 
 function formatMenuLabel(mealChoice: string, t: (key: string) => string): string | null {
@@ -482,6 +494,12 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
             : "",
       },
       { key: "child", type: "boolean", getValue: (e: RsvpEntry) => Boolean(e.isChild) },
+      { key: "children", type: "number", getValue: (e: RsvpEntry) => Number(e.childrenCount) || 0 },
+      {
+        key: "childrenDiet",
+        type: "string",
+        getValue: (e: RsvpEntry) => getChildrenDietary(e).join(", "),
+      },
       {
         key: "consents",
         type: "boolean",
@@ -513,10 +531,15 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     const no = mainEntries.filter((e: RsvpEntry) => e.attendance === "no").length;
     const totalCompanions = entries.filter((e: RsvpEntry) => e.rsvpType === "companion").length;
     const withDietary = entries.filter((e: RsvpEntry) => e.attendance === "yes" && e.dietaryInfo?.trim()).length;
-    // Niños confirmados: acompañantes con el flag isChild y asistencia sí.
-    const children = entries.filter(
+    // Niños confirmados: acompañantes legacy con isChild + contador de niños
+    // del nuevo modelo (childrenCount en el doc del invitado principal).
+    const legacyChildren = entries.filter(
       (e: RsvpEntry) => e.rsvpType === "companion" && e.isChild === true && e.attendance === "yes",
     ).length;
+    const declaredChildren = mainEntries
+      .filter((e: RsvpEntry) => e.attendance === "yes")
+      .reduce((acc: number, e: RsvpEntry) => acc + (Number(e.childrenCount) || 0), 0);
+    const children = legacyChildren + declaredChildren;
     return { yes, no, totalCompanions, withDietary, children };
   }, [rsvpEntries]);
 
@@ -686,14 +709,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                     {t("attendance.tableDiet")}
                   </SortableTh>
                   <SortableTh
-                    columnKey="transport"
-                    order={getIndicator("transport")}
-                    onSort={toggleSort}
-                    style={{ minWidth: "120px" }}
-                  >
-                    {t("attendance.tableTransport")}
-                  </SortableTh>
-                  <SortableTh
                     // La clave DEBE coincidir con el key "child" de sortColumns:
                     // con el antiguo "birth" el find() fallaba, caía al fallback
                     // row["birth"] (siempre undefined) y la columna nunca ordenaba.
@@ -703,6 +718,30 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                     style={{ minWidth: "110px" }}
                   >
                     {t("attendance.tableChild")}
+                  </SortableTh>
+                  <SortableTh
+                    columnKey="children"
+                    order={getIndicator("children")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "90px" }}
+                  >
+                    {t("attendance.tableChildren")}
+                  </SortableTh>
+                  <SortableTh
+                    columnKey="childrenDiet"
+                    order={getIndicator("childrenDiet")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "140px" }}
+                  >
+                    {t("attendance.tableChildrenDiet")}
+                  </SortableTh>
+                  <SortableTh
+                    columnKey="transport"
+                    order={getIndicator("transport")}
+                    onSort={toggleSort}
+                    style={{ minWidth: "120px" }}
+                  >
+                    {t("attendance.tableTransport")}
                   </SortableTh>
                   <SortableTh
                     columnKey="consents"
@@ -857,6 +896,29 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                                 (los docs antiguos, sin flag, muestran "—"). */}
                             {entry.isChild ? t("attendance.childYes") : "—"}
                           </span>
+                        </div>
+                      </td>
+                      <td>
+                        <div style={crossed}>
+                          <span style={{ fontSize: "0.78rem" }}>
+                            {/* ¿Trae niños? (nuevo modelo): contador del
+                                principal; los acompañantes legacy lo muestran
+                                solo si van marcados arriba. */}
+                            {attending && Number(entry.childrenCount) > 0
+                              ? String(entry.childrenCount)
+                              : "—"}
+                          </span>
+                        </div>
+                      </td>
+                      <td>
+                        <div style={crossed}>
+                          {attending && getChildrenDietary(entry).length > 0 ? (
+                            <span style={{ fontSize: "0.78rem" }}>
+                              {getChildrenDietary(entry).join(", ")}
+                            </span>
+                          ) : (
+                            <span style={{ fontSize: "0.78rem" }}>—</span>
+                          )}
                         </div>
                       </td>
                       <td>

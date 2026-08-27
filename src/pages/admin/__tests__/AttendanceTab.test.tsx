@@ -1257,3 +1257,69 @@ describe("AttendanceTab — matriz de ordenación", () => {
     });
   });
 });
+
+describe("AttendanceTab — niños en la tabla", () => {
+  function mountConNinos() {
+    const entries = [
+      {
+        id: "m1",
+        rsvpType: "main",
+        guestName: "Ana García",
+        attendance: "yes",
+        companions: 0,
+        dietaryInfo: "",
+        submittedAt: "2024-01-02T10:00:00Z",
+        childrenCount: 3,
+        childrenAllergies: ["sin gluten", "alergia frutos secos"],
+        childrenAllergiesOther: "cacahuete",
+      },
+      {
+        id: "m2",
+        rsvpType: "main",
+        guestName: "Beto Ruiz",
+        attendance: "yes",
+        companions: 0,
+        dietaryInfo: "",
+        submittedAt: "2024-01-01T09:00:00Z",
+      },
+    ];
+    return render(
+      <AttendanceTab {...baseConfig} filteredEntries={entries as never} rsvpEntries={entries as never} />,
+    );
+  }
+
+  it("muestra el contador de niños del invitado principal en su columna", () => {
+    mountConNinos();
+    // Fila de Ana: su celda de "trae niños" muestra "3"; la de Beto "—".
+    expect(screen.getByText("attendance.tableChildren")).toBeDefined();
+    expect(screen.getByText("3")).toBeDefined();
+  });
+
+  it("muestra las intolerancias de los niños junto a la columna de contador", () => {
+    mountConNinos();
+    expect(
+      screen.getByText("sin gluten, alergia frutos secos, cacahuete"),
+    ).toBeDefined();
+  });
+
+  it("contabiliza los niños declarados en la estadística de confirmados", () => {
+    mountConNinos();
+    // Ana declara 3 y Beto 0: la estadística suma 3 (sin acompañantes
+    // legacy con isChild).
+    expect(screen.getByText("attendance.childrenConfirmed")).toBeDefined();
+    // La línea de estadística recibe el count como parámetro de la clave.
+    expect(screen.getByText(/childrenConfirmed/)).toBeDefined();
+  });
+
+  it("ordena la columna de niños por contador (ausencia de datos como cero)", () => {
+    const { container } = mountConNinos();
+    const header = screen
+      .getByText("attendance.tableChildren")
+      .closest("button") as HTMLButtonElement;
+    // Ascendente: 0 (Beto) delante de 3 (Ana).
+    fireEvent.click(header);
+    const rows = Array.from(container.querySelectorAll("tbody tr"));
+    expect(rows[0]?.textContent).toContain("Beto Ruiz");
+    expect(rows[1]?.textContent).toContain("Ana García");
+  });
+});

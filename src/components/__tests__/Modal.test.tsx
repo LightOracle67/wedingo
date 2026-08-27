@@ -8,7 +8,6 @@ describe("Modal (a11y)", () => {
   });
   afterEach(() => {
     vi.useRealTimers();
-    document.body.innerHTML = "";
   });
 
   it("renderiza un diálogo accesible con aria-modal y el título", () => {
@@ -83,5 +82,20 @@ describe("Modal (a11y)", () => {
     );
     const region = screen.getByRole("region", { name: "Anidado" });
     expect(region).toContainElement(screen.getByText("hijo"));
+  });
+
+  it("renderiza el overlay en un portal a document.body (cubre toda la pantalla)", () => {
+    render(
+      <Modal title="Portal" onClose={() => {}} closeLabel="Cerrar">
+        <p>contenido</p>
+      </Modal>,
+    );
+    // El overlay es position:fixed; si quedara dentro del contenedor del render
+    // (p. ej. una tarjeta .setup-card con backdrop-filter) el containing block
+    // recortaría la cortina al tamaño de la tarjeta. El portal a document.body
+    // lo libera del ancestro para que tome el foco de toda la pantalla.
+    expect(document.querySelector(".modal-overlay")?.parentElement).toBe(document.body);
+    // El foco global se captura nada más montar (lo confirma el focus trap).
+    expect(document.activeElement).toBe(screen.getByRole("button", { name: "Cerrar" }));
   });
 });
