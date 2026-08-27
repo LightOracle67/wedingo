@@ -551,7 +551,9 @@
     "venueLegend": "Venue",
     "venueHint": "Venue map and seating chart visibility for guests.",
     "venueSectionTitle": "Venue",
-    "venueSectionHint": "Venue map and tables on the public invitation."
+    "venueSectionHint": "Venue map and tables on the public invitation.",
+    "venueHiddenAllHint": "Venue map and seating disabled: the Venue section will not appear on the invitation.",
+    "venueReactivate": "Enable venue map"
   },
   "admin": {
     "tabs": {

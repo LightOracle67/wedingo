@@ -62,6 +62,12 @@ export default function SetupForm({ prefix = "" }) {
   const hiddenSections = useFormField("hiddenSections");
   const sectionOrder = useFormField("sectionOrder");
   const language = useFormField("language");
+  // Estado reactivo de las dos opciones del recinto: la sección solo se
+  // muestra si alguna de las dos está activa (regla de negocio del usuario:
+  // si mapa y mesas están desactivados, el bloque no ocupa espacio en el
+  // formulario; se conserva un cierre de reactivación para poder volver).
+  const venueMapEnabled = useFormField("venueMapEnabled");
+  const tablesEnabled = useFormField("tablesEnabled");
   const { isTokenVerified, isRestoringSession } = useAuth();
   const { saveMessage, saveError, setLegalModal } = useAppUI();
   const { addToast } = useToast();
@@ -197,9 +203,22 @@ export default function SetupForm({ prefix = "" }) {
       ) : null}
 
       {/* ── Sección de recinto (venueMap + mesas) ── */}
-      <CollapsibleSection title={t("setup.venueSectionTitle")} hint={t("setup.venueSectionHint")}>
-        <VenueSectionForm prefix={prefix} />
-      </CollapsibleSection>
+      {venueMapEnabled === "true" || tablesEnabled === "true" ? (
+        <CollapsibleSection title={t("setup.venueSectionTitle")} hint={t("setup.venueSectionHint")}>
+          <VenueSectionForm prefix={prefix} />
+        </CollapsibleSection>
+      ) : (
+        <div className="setup-token-card">
+          <p className="setup-help">{t("setup.venueHiddenAllHint")}</p>
+          <button
+            type="button"
+            className="setup-button setup-button--ghost setup-button--compact"
+            onClick={() => updateFormField("venueMapEnabled", "true")}
+          >
+            {t("setup.venueReactivate")}
+          </button>
+        </div>
+      )}
 
       {/* ── Sección de animaciones ── */}
 

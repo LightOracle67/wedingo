@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.142.0 — 2026-08-27
+- Si el mapa del recinto y la distribución de mesas están desactivados, la sección Recinto se oculta del formulario de configuración, con un botón para volver a activarla.
+
 ## 2.141.0 — 2026-08-27
 - Los toggles del recinto (mapa) y de la distribución de mesas se deshabilitan cuando su sección está marcada como oculta en el editor de orden, con un aviso que indica cómo mostrarla.
 ## 2.140.0 — 2026-08-27

@@ -551,7 +551,9 @@
     "venueLegend": "Recinto",
     "venueHint": "Mapa del recinto y distribución de mesas visibles para los invitados.",
     "venueSectionTitle": "Recinto",
-    "venueSectionHint": "Mapa del recinto y mesas en la invitación pública."
+    "venueSectionHint": "Mapa del recinto y mesas en la invitación pública.",
+    "venueHiddenAllHint": "Mapa del recinto y distribución desactivados: la sección Recinto no aparecerá en la invitación.",
+    "venueReactivate": "Activar mapa del recinto"
   },
   "admin": {
     "tabs": {
