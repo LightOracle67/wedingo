@@ -8,9 +8,9 @@ interface RsvpFormLike {
   companionMenus: string[];
   companionAllergies: string[][];
   companionAllergiesOther: string[];
-  // Flag por acompañante ("yes" | "no"): sustituye a la fecha de nacimiento
-  // (minimización GDPR). En Firestore solo se persiste el booleano isChild.
-  companionIsChildren: string[];
+  childrenCount: string;
+  childrenAllergies: string[];
+  childrenAllergiesOther: string;
   companionHealthConsents: boolean[];
   companionTransportModes: string[];
   companionTransportChoices: string[];
@@ -82,6 +82,15 @@ export function buildMainGuestData(input: {
       mainGuestData.companionTransportTimes = data.companionTransportTimes.slice(0, companionCount);
     if (data.companionTransportPlaces)
       mainGuestData.companionTransportPlaces = data.companionTransportPlaces.slice(0, companionCount);
+    // Niños: solo se guardan si el invitado los declara; las alergias del grupo
+    // viajan en el doc del principal (mismo criterio de minimización GDPR que
+    // las del invitado: sin fechas de nacimiento).
+    const children = Number(data.childrenCount) || 0;
+    if (children > 0) {
+      mainGuestData.childrenCount = children;
+      mainGuestData.childrenAllergies = (data.childrenAllergies || []).slice(0, 10);
+      if (data.childrenAllergiesOther) mainGuestData.childrenAllergiesOther = String(data.childrenAllergiesOther).slice(0, 200);
+    }
   }
   return mainGuestData;
 }
@@ -108,10 +117,6 @@ export function buildCompanionData(input: {
     mainGuestDocId: mainGuestId,
     mainGuestName: single,
   };
-  // Flag de niño derivado del select del formulario: nunca se guardan fechas
-  // de nacimiento ni edades (GDPR: mínimo dato necesario).
-  const isChild = data.companionIsChildren?.[i] === "yes";
-  companionData.isChild = isChild;
   const compAllergies = data.companionAllergies[i] || [];
   const hasCompDietary = compAllergies.length > 0;
   if (hasCompDietary) {

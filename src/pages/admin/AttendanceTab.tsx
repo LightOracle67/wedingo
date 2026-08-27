@@ -327,8 +327,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
           else batch.update(counterRef, { count: snap.data()!.count + 1 });
         });
       }
-      // Acompañantes: cada uno se guarda en su doc (con isChild, menú y
-      // alergias) igual que hace el flujo público, enlazado al main.
+      // Acompañantes: cada uno se guarda en su doc (con menú y alergias) igual
+      // que hace el flujo público, enlazado al main. Los niños ya no son
+      // compañeros individuales: se declaran con contador en el principal.
       if (attending && complements.length) {
         complements.forEach((c) => {
           const compId = c.docId ?? `comp_manual_${norm || "invitado"}_${crypto.randomUUID()}`;
@@ -344,7 +345,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
             privacyConsentAt: now,
             mainGuestDocId: mainId,
             mainGuestName: name.slice(0, 120),
-            isChild: c.isChild,
           };
           if (compAllergyText) {
             compPayload.healthConsent = true;
@@ -1135,14 +1135,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                         </select>
                       ) : null}
                       <div style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap", alignItems: "center" }}>
-                        <label className="setup-checkbox-label" style={{ fontWeight: 400 }}>
-                          <input
-                            type="checkbox"
-                            checked={comp.isChild}
-                            onChange={(e) => patchCompanion(ci, { isChild: e.target.checked })}
-                          />
-                          {t("rsvp.childQuestion")}
-                        </label>
                         {ALLERGIES.map((a) => (
                           <label key={a} className="setup-checkbox-label" style={{ fontWeight: 400, fontSize: "0.85rem" }}>
                             <input

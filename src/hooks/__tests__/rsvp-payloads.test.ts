@@ -1,9 +1,8 @@
 import { describe, it, expect } from "vitest";
 import { buildMainGuestData, buildCompanionData } from "../rsvp-payloads";
 
-// Formulario base según el nuevo modelo: sin fechas de nacimiento; el flag
-// de niño viaja en companionIsChildren ("yes" | "no") y su consentimiento
-// parental asociado en companionParentalConsents.
+// Formulario base según el nuevo modelo: sin fechas de nacimiento; los niños
+// se declaran con un contador (childrenCount) y alergias del grupo.
 const form = {
   guestName: "García Pérez López",
   attendance: "with",
@@ -12,7 +11,9 @@ const form = {
   companionMenus: ["carne", ""],
   companionAllergies: [["sin gluten"], ["alergia a mariscos"]],
   companionAllergiesOther: ["", ""],
-  companionIsChildren: ["no", "yes"],
+  childrenCount: "2",
+  childrenAllergies: ["sin gluten"],
+  childrenAllergiesOther: "frutos secos",
   companionHealthConsents: [true, false],
   menuSelection: "carne",
   allergies: ["sin gluten"],
@@ -90,6 +91,59 @@ describe("buildMainGuestData", () => {
     expect((doc.transportPlace as string).length).toBe(120);
   });
 
+  it("persists children count and group allergies only when declared", () => {
+    const doc = buildMainGuestData({
+      data: form,
+      isAttending: true,
+      companionCount: 2,
+      single: "García Pérez López",
+      encryptedDietaryInfo: "",
+      inviteToken: "tok",
+      nowTimestamp: now,
+    });
+    expect(doc.childrenCount).toBe(2);
+    expect(doc.childrenAllergies).toEqual(["sin gluten"]);
+    expect(doc.childrenAllergiesOther).toBe("frutos secos");
+  });
+
+  it("omits children fields when no children are declared", () => {
+    const doc = buildMainGuestData({
+      data: { ...form, childrenCount: "0", childrenAllergies: [], childrenAllergiesOther: "" },
+      isAttending: true,
+      companionCount: 0,
+      single: "García Pérez López",
+      encryptedDietaryInfo: "",
+      inviteToken: "tok",
+      nowTimestamp: now,
+    });
+    expect(doc.childrenCount).toBeUndefined();
+    expect(doc.childrenAllergies).toBeUndefined();
+  });
+
+  it("caps children allergies list and skips children when not attending", () => {
+    const doc = buildMainGuestData({
+      data: { ...form, childrenAllergies: Array.from({ length: 12 }, (_, i) => `a${i}`) },
+      isAttending: false,
+      companionCount: 0,
+      single: "García Pérez López",
+      encryptedDietaryInfo: "",
+      inviteToken: "tok",
+      nowTimestamp: now,
+    });
+    expect(doc.childrenCount).toBeUndefined();
+    expect(doc.childrenAllergies).toBeUndefined();
+    const attending = buildMainGuestData({
+      data: { ...form, childrenAllergies: Array.from({ length: 12 }, (_, i) => `a${i}`) },
+      isAttending: true,
+      companionCount: 0,
+      single: "García Pérez López",
+      encryptedDietaryInfo: "",
+      inviteToken: "tok",
+      nowTimestamp: now,
+    });
+    expect((attending.childrenAllergies as string[]).length).toBe(10);
+  });
+
   it("falls back to empty arrays when companion optional lists are missing", () => {
     buildMainGuestData({
       data: { ...form, companionNames: [], companionAllergies: [] },
@@ -104,7 +158,7 @@ describe("buildMainGuestData", () => {
 });
 
 describe("buildCompanionData", () => {
-  it("persists isChild=true and parentalConsent for a child companion", () => {
+  it("never persists isChild nor parentalConsent (children are counted on the main doc)", () => {
     const doc = buildCompanionData({
       data: form,
       i: 1,
@@ -119,15 +173,13 @@ describe("buildCompanionData", () => {
     expect(doc.attendance).toBe("yes");
     expect(doc.mainGuestDocId).toBe("main-id");
     expect(doc.mainGuestName).toBe("García Pérez López");
-    // Nuevo modelo: flag booleano; el consentimiento parental se asume
-    // (el invitado principal es el responsable del niño) y no se persiste.
-    expect(doc.isChild).toBe(true);
+    expect(doc.isChild).toBeUndefined();
     expect(doc.parentalConsent).toBeUndefined();
     expect(doc.birthDate).toBeUndefined();
     expect(doc.healthConsent).toBe(true);
   });
 
-  it("marks adult companions with isChild=false and no parentalConsent", () => {
+  it("marks adult companions with no isChild flag and health consent on allergies", () => {
     const doc = buildCompanionData({
       data: form,
       i: 0,
@@ -137,24 +189,21 @@ describe("buildCompanionData", () => {
       nowTimestamp: now,
       inviteToken: "tok",
     });
-    expect(doc.isChild).toBe(false);
+    expect(doc.isChild).toBeUndefined();
     expect(doc.parentalConsent).toBeUndefined();
     expect(doc.healthConsent).toBe(true);
   });
 
-  it("never persists parentalConsent even for children", () => {
+  it("skips health consent when the companion has no allergies", () => {
     const doc = buildCompanionData({
-      data: { ...form },
-      i: 1,
+      data: { ...form, companionAllergies: [], companionAllergiesOther: [] },
+      i: 0,
       single: "García Pérez López",
       mainGuestId: "main-id",
       encCompDietary: "",
       nowTimestamp: now,
       inviteToken: "tok",
     });
-    expect(doc.isChild).toBe(true);
-    expect(doc.parentalConsent).toBeUndefined();
-    // Sin cambio de modelo: la alergia del fixture sigue generando healthConsent.
-    expect(doc.healthConsent).toBe(true);
+    expect(doc.healthConsent).toBeUndefined();
   });
 });

@@ -27,6 +27,7 @@ import { withWriteRetry } from "../lib/async-utils";
 import type { Attendee } from "../types";
 import { safeLogError } from "../lib/safe-error";
 import { stableGuestId } from "../lib/guest-id";
+import { MAX_CHILDREN, MAX_COMPANIONS } from "../pages/sections/rsvp/constants";
 
 /**
  * Cache de alergias descifradas por (inviteToken, docId).
@@ -46,11 +47,11 @@ export interface RsvpFormData {
   companionMenus: string[];
   companionAllergies: string[][];
   companionAllergiesOther: string[];
-  // Flag por acompañante: "yes" | "no". Sustituye a la fecha de nacimiento
-  // (minimización GDPR): solo se guarda un booleano derivado en Firestore.
-  // El consentimiento parental se asume: el invitado principal es el
-  // tutor/legal o responsable del niño durante la celebración.
-  companionIsChildren: string[];
+  /** Nº de niños que asisten como acompañantes del principal ("0" = ninguno). */
+  childrenCount: string;
+  /** Alergias del grupo de niños (chips + texto libre). */
+  childrenAllergies: string[];
+  childrenAllergiesOther: string;
   companionHealthConsents: boolean[];
   companionTransportModes: string[];
   companionTransportChoices: string[];
@@ -66,8 +67,6 @@ export interface RsvpFormData {
   digitalSignature: boolean;
   phone: string;
   email: string;
-  /** Opt-in: mostrar el nombre en la lista pública de confirmados (portada).
-   *  Solo se publica si es true (GDPR art. 7: consentimiento afirmativo). */
 }
 
 interface RsvpEntryData {
@@ -88,6 +87,10 @@ interface RsvpEntryData {
   guestNames: string;
   note: string;
   submittedAt: string;
+  /** Nº de niños del principal (lectura legacy de docs que ya lo guardan). */
+  childrenCount?: number;
+  childrenAllergies?: string[];
+  childrenAllergiesOther?: string;
   // Flag de niño leído del doc del acompañante (hidratación del formulario).
   isChild?: boolean;
   parentalConsent?: boolean;
@@ -114,7 +117,9 @@ function RsvpFormDefault(): RsvpFormData {
     companionMenus: [],
     companionAllergies: [],
     companionAllergiesOther: [],
-    companionIsChildren: [],
+    childrenCount: "0",
+    childrenAllergies: [],
+    childrenAllergiesOther: "",
     companionHealthConsents: [],
     companionTransportModes: [],
     companionTransportChoices: [],
@@ -130,7 +135,6 @@ function RsvpFormDefault(): RsvpFormData {
     digitalSignature: false,
     phone: "",
     email: "",
-    // Por defecto NO se publica el nombre (opt-in estricto).
   };
 }
 
@@ -394,7 +398,10 @@ export function useRsvp(
           companionNames: [],
           companionMenus: [],
           companionAllergies: [],
-          companionIsChildren: [],
+          companionAllergiesOther: [],
+          childrenCount: "0",
+          childrenAllergies: [],
+          childrenAllergiesOther: "",
           companionHealthConsents: [],
           companionTransportChoices: [],
           companionTransportModes: [],
@@ -423,8 +430,6 @@ export function useRsvp(
         setAlreadySubmittedEntry(match);
         const companionCount = match.companionNames?.length || 0;
         const linkedCompanions = rsvpEntries.filter((e) => e.mainGuestDocId === match.id);
-        // Documentos antiguos sin isChild se tratan como adultos ("no").
-        const companionIsChildren = linkedCompanions.map((c) => (c.isChild ? "yes" : "no"));
         const companionHealthConsents = linkedCompanions.map((c) => c.healthConsent || false);
         const parsed = parseDietaryInfo(match.dietaryInfo, !!match.mealChoice);
         setRsvpForm((current) => ({
@@ -435,7 +440,9 @@ export function useRsvp(
           companionMenus: match.companionMenus || [],
           companionAllergies: match.companionAllergies || [],
           companionAllergiesOther: match.companionAllergiesOther || [],
-          companionIsChildren,
+          childrenCount: String(match.childrenCount ?? 0),
+          childrenAllergies: match.childrenAllergies || [],
+          childrenAllergiesOther: match.childrenAllergiesOther || "",
           companionHealthConsents,
           companionTransportChoices: match.companionTransportChoices || [],
           companionTransportModes: match.companionTransportModes || [],
@@ -472,11 +479,14 @@ export function useRsvp(
         companionCount: value === "no" ? 0 : value === "alone" ? 0 : current.companionCount || 1,
         companionNames: value === "no" || value === "alone" ? [] : current.companionNames,
         companionAllergies: value === "no" || value === "alone" ? [] : current.companionAllergies,
+        childrenCount: value === "no" || value === "alone" ? "0" : current.childrenCount,
+        childrenAllergies: value === "no" || value === "alone" ? [] : current.childrenAllergies,
+        childrenAllergiesOther: value === "no" || value === "alone" ? "" : current.childrenAllergiesOther,
       }));
       return;
     }
     if (field === "companionCount") {
-      const count = Math.max(0, Math.min(10, Number(value) || 0));
+      const count = Math.max(0, Math.min(MAX_COMPANIONS, Number(value) || 0));
       setRsvpForm((current) => {
         const names = current.companionNames.slice(0, count);
         const allergies = current.companionAllergies.slice(0, count);
@@ -523,17 +533,11 @@ export function useRsvp(
     if (field === "guestName") {
       prefillRef.current = null;
     }
-    // Flag ¿es niño? por índice: sin este handler la clave indexada caería
-    // al fallback genérico y se guardaría como propiedad literal
-    // "companionIsChildren[0]" en vez de dentro del array.
-    if (field.startsWith("companionIsChildren[")) {
-      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
-      setRsvpForm((current) => {
-        const flags = [...current.companionIsChildren];
-        while (flags.length <= idx) flags.push("no");
-        flags[idx] = String(value) === "yes" ? "yes" : "no";
-        return { ...current, companionIsChildren: flags };
-      });
+    if (field === "childrenCount") {
+      setRsvpForm((current) => ({
+        ...current,
+        childrenCount: String(Number.isFinite(Number(value)) ? Math.max(0, Math.min(MAX_CHILDREN, Number(value))) : 0),
+      }));
       return;
     }
     setRsvpForm((current) => ({ ...current, [field]: value }));
@@ -592,7 +596,8 @@ export function useRsvp(
       const other = (form.allergiesOther || "").trim();
       const dietaryInfo = [allergies.filter(Boolean).join(" | "), other].filter(Boolean).join(" | ");
       const encryptedDietaryInfo = await encrypt(dietaryInfo, inviteToken);
-      // Sin fechas de nacimiento (GDPR): solo el flag booleano isChild por acompañante.
+      // Los niños se declaran con un contador (childrenCount) y sus alergias
+      // del grupo (childrenAllergies), no como fechas de nacimiento (GDPR).
       const single = form.guestName.trim();
       const now = new Date().toISOString();
       const isAttending = form.attendance !== "no";

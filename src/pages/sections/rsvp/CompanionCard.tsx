@@ -146,18 +146,6 @@ const CompanionCard = memo(function CompanionCard({
           </label>
         );
       })()}
-
-      {/* ¿Es niño? Checkbox único toque (adulto = desmarcado). El label envuelve
-          al input: añadir htmlFor duplicaría la activación. */}
-      <label className="rv2-check">
-        <input
-          type="checkbox"
-          checked={form.companionIsChildren?.[i] === "yes"}
-          onChange={(e) => onField(`companionIsChildren[${i}]`, e.target.checked ? "yes" : "no")}
-          disabled={frozen}
-        />
-        <span>{t("rsvp.childQuestion")}</span>
-      </label>
     </section>
   );
 });

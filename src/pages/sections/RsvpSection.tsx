@@ -18,7 +18,7 @@ import TransportPicker from "./rsvp/TransportPicker";
 import { MenuPicker, AllergiesChips } from "./rsvp/MenuAndAllergies";
 import CompanionCard from "./rsvp/CompanionCard";
 import ConsentsBlock from "./rsvp/ConsentsBlock";
-import { MAX_COMPANIONS } from "./rsvp/constants";
+import { MAX_CHILDREN, MAX_COMPANIONS } from "./rsvp/constants";
 import type { RsvpFormData } from "../../hooks/useRsvp";
 
 interface RsvpSectionProps {
@@ -58,7 +58,9 @@ const DRAFT_KEYS: Array<{
   { key: "companionMenus", kind: "stringArray" },
   { key: "companionAllergies", kind: "matrix" },
   { key: "companionAllergiesOther", kind: "stringArray" },
-  { key: "companionIsChildren", kind: "stringArray" },
+  { key: "childrenCount", kind: "string" },
+  { key: "childrenAllergies", kind: "stringArray" },
+  { key: "childrenAllergiesOther", kind: "string" },
   { key: "companionHealthConsents", kind: "boolArray" },
   { key: "companionTransportModes", kind: "stringArray" },
   { key: "companionTransportChoices", kind: "stringArray" },
@@ -230,7 +232,6 @@ const RsvpSection = memo(function RsvpSection({
         companionNames: prev.companionNames.filter((_, idx) => idx !== index),
         companionMenus: prev.companionMenus.filter((_, idx) => idx !== index),
         companionAllergies: prev.companionAllergies.filter((_, idx) => idx !== index),
-        companionIsChildren: prev.companionIsChildren.filter((_, idx) => idx !== index),
         companionHealthConsents: prev.companionHealthConsents.filter((_, idx) => idx !== index),
         companionTransportChoices: prev.companionTransportChoices.filter((_, idx) => idx !== index),
         companionTransportModes: prev.companionTransportModes.filter((_, idx) => idx !== index),
@@ -314,6 +315,16 @@ const RsvpSection = memo(function RsvpSection({
   }, [rsvpMessage, hasSubmitted]);
 
   const frozen = derived.fieldsFrozen;
+
+  // Los niños se declaran con un contador y cuentan para el aforo (decisión de
+  // negocio): las plazas restantes restan también los niños del formulario.
+  const childrenCount = Number(rsvpForm.childrenCount || "0");
+  const capacityWithChildren = Math.max(
+    0,
+    derived.capacity > 0 ? derived.capacity - (rsvpConfirmedCount ?? 0) - childrenCount : 0,
+  );
+  const capacityReachedWithChildren =
+    derived.capacity > 0 && (rsvpConfirmedCount ?? 0) + childrenCount >= derived.capacity;
 
   return (
     <section
@@ -440,6 +451,60 @@ const RsvpSection = memo(function RsvpSection({
               </p>
             ) : null}
 
+            {/* Niños acompañantes: pregunta + contador + alergias del grupo */}
+            {isAttending ? (
+              <div className="rv2-children" style={{ marginTop: "0.5rem" }}>
+                <label className="rv2-check" style={{ marginBottom: "0.1rem" }}>
+                  <input
+                    type="checkbox"
+                    checked={childrenCount > 0}
+                    onChange={(e) => updateRsvpField("childrenCount", e.target.checked ? "1" : "0")}
+                    disabled={frozen}
+                  />
+                  <span>{t("rsvp.childrenQuestion")}</span>
+                </label>
+                {childrenCount > 0 ? (
+                  <>
+                    <label
+                      className="setup-label"
+                      htmlFor="rsvpChildrenCount"
+                      style={{ display: "block", marginBottom: "0.2rem" }}
+                    >
+                      {t("rsvp.childrenCountLabel")}
+                    </label>
+                    <input
+                      id="rsvpChildrenCount"
+                      className="setup-input"
+                      type="number"
+                      min={0}
+                      max={MAX_CHILDREN}
+                      inputMode="numeric"
+                      value={rsvpForm.childrenCount}
+                      onChange={(e) => updateRsvpField("childrenCount", e.target.value)}
+                      required
+                      disabled={frozen}
+                    />
+                    <p className="setup-help" style={{ marginTop: "0.2rem" }}>
+                      {t("rsvp.childrenMaxHint", { count: MAX_CHILDREN })}
+                    </p>
+                    <AllergiesChips
+                      selected={rsvpForm.childrenAllergies || []}
+                      other={rsvpForm.childrenAllergiesOther || ""}
+                      onToggle={(a) => {
+                        const current = rsvpForm.childrenAllergies || [];
+                        const updated = current.includes(a) ? current.filter((x) => x !== a) : [...current, a];
+                        updateRsvpField("childrenAllergies", updated);
+                      }}
+                      onOtherChange={(v) => updateRsvpField("childrenAllergiesOther", v)}
+                      idSuffix="-children"
+                      frozen={frozen}
+                      t={t}
+                    />
+                  </>
+                ) : null}
+              </div>
+            ) : null}
+
             {/* Menú del titular */}
             {isAttending && menuEnabled && menuOptions.length > 0 ? (
               <MenuPicker
@@ -513,7 +578,7 @@ const RsvpSection = memo(function RsvpSection({
               <p className="setup-error" role="alert">
                 {t("rsvp.weddingPassedNotice")}
               </p>
-            ) : derived.capacityReached && rsvpForm.attendance !== "no" ? (
+            ) : capacityReachedWithChildren && rsvpForm.attendance !== "no" ? (
               <p className="setup-error" role="alert">
                 {t("rsvp.capacityReached")}
               </p>
@@ -524,7 +589,7 @@ const RsvpSection = memo(function RsvpSection({
               <div className="admin-flex" style={{ gap: "0.75rem", flexWrap: "wrap", marginTop: "0.4rem" }}>
                 {derived.capacity > 0 ? (
                   <p className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
-                    {t("rsvp.capacityLeft", { count: Math.max(0, derived.capacity - (rsvpConfirmedCount ?? 0)) })}
+                    {t("rsvp.capacityLeft", { count: capacityWithChildren })}
                   </p>
                 ) : null}
                 {config?.rsvpDeadlineEnabled === "true" && config?.rsvpDeadline ? (
@@ -592,7 +657,11 @@ const RsvpSection = memo(function RsvpSection({
               </div>
             ) : (
               <div className="setup-actions rv2-actions">
-                <button className="setup-button rv2-submit" type="submit" disabled={derived.isDisabled}>
+                <button
+                  className="setup-button rv2-submit"
+                  type="submit"
+                  disabled={derived.isDisabled || capacityReachedWithChildren}
+                >
                   {isRsvpSubmitting
                     ? t("rsvp.submittingButton")
                     : derived.isDisabled

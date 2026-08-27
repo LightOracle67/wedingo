@@ -136,8 +136,8 @@ describe("useRsvp", () => {
   it("sets companionCount and resizes companionNames", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 3));
-    expect(result.current.rsvpForm.companionCount).toBe(3);
-    expect(result.current.rsvpForm.companionNames).toHaveLength(3);
+    expect(result.current.rsvpForm.companionCount).toBe(2);
+    expect(result.current.rsvpForm.companionNames).toHaveLength(2);
   });
 
   it("sets individual companion name via companionNames[N]", () => {
@@ -161,7 +161,7 @@ describe("useRsvp", () => {
   it("clamps companionCount between 0 and 10", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 15));
-    expect(result.current.rsvpForm.companionCount).toBe(10);
+    expect(result.current.rsvpForm.companionCount).toBe(2);
     act(() => result.current.updateRsvpField("companionCount", -1));
     expect(result.current.rsvpForm.companionCount).toBe(0);
   });
@@ -195,7 +195,8 @@ describe("useRsvp", () => {
     const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
     act(() => result.current.updateRsvpField("companionCount", 3));
     act(() => result.current.updateRsvpField("attendance", "with"));
-    expect(result.current.rsvpForm.companionCount).toBe(3);
+    // El límite de adultos es 2: el valor se acota al escribir.
+    expect(result.current.rsvpForm.companionCount).toBe(2);
   });
 
   it("clears guestName prefill ref when guestName field is updated", () => {
@@ -377,12 +378,12 @@ describe("useRsvp", () => {
       expect(result.current.rsvpForm.companionCount).toBe(1);
     });
 
-    it("companionCount acota a 0..10 y poda/rellena nombres+alergias", () => {
+    it("companionCount acota a 0..2 y poda/rellena nombres+alergias", () => {
       const { result } = mount();
-      // Valor fuera de rango por arriba se acota a 10 (tope UI).
+      // Valor fuera de rango por arriba se acota a 2 (tope UI: adultos).
       act(() => result.current.updateRsvpField("companionCount", "25"));
-      expect(result.current.rsvpForm.companionCount).toBe(10);
-      expect(result.current.rsvpForm.companionNames).toHaveLength(10);
+      expect(result.current.rsvpForm.companionCount).toBe(2);
+      expect(result.current.rsvpForm.companionNames).toHaveLength(2);
       // Rellena un nombre y luego reduce: la lista debe podarse, no crecer.
       act(() => result.current.updateRsvpField("companionNames[0]", "Ana García López"));
       act(() => result.current.updateRsvpField("companionCount", "1"));
@@ -390,14 +391,22 @@ describe("useRsvp", () => {
       // Negativos y basura caen a 0 vía Math.max(0, Number(value)||0).
       act(() => result.current.updateRsvpField("companionCount", "-3"));
       expect(result.current.rsvpForm.companionCount).toBe(0);
+      // Máximo de acompañantes adultos = 2 (los niños se declaran aparte).
+      act(() => result.current.updateRsvpField("companionCount", "5"));
+      expect(result.current.rsvpForm.companionCount).toBe(2);
+      expect(result.current.rsvpForm.companionNames).toHaveLength(2);
     });
 
-    it("campos indexados escriben dentro de arrays y companionIsChildren rellena 'no'", () => {
+    it("campos indexados escriben dentro de arrays y childrenCount se limita a 10", () => {
       const { result } = mount();
-      act(() => result.current.updateRsvpField("companionCount", "3"));
-      // Índice superior al array existente: los huecos se rellenan con 'no'.
-      act(() => result.current.updateRsvpField("companionIsChildren[2]", "yes"));
-      expect(result.current.rsvpForm.companionIsChildren).toEqual(["no", "no", "yes"]);
+      act(() => result.current.updateRsvpField("companionCount", "2"));
+      // childrenCount: clamp 0..10 (las reglas permiten más; la UI y el hook no).
+      act(() => result.current.updateRsvpField("childrenCount", "25"));
+      expect(result.current.rsvpForm.childrenCount).toBe("10");
+      act(() => result.current.updateRsvpField("childrenCount", "-2"));
+      expect(result.current.rsvpForm.childrenCount).toBe("0");
+      act(() => result.current.updateRsvpField("childrenCount", "3"));
+      expect(result.current.rsvpForm.childrenCount).toBe("3");
       // Nombres/menús/alergias indexados actualizan su posición exacta.
       act(() => result.current.updateRsvpField("companionNames[1]", "Beto Ruiz Núñez"));
       expect(result.current.rsvpForm.companionNames[1]).toBe("Beto Ruiz Núñez");
@@ -697,7 +706,7 @@ describe("useRsvp", () => {
     });
     expect(result.current.rsvpForm.attendance).toBe("with");
     expect(result.current.rsvpForm.companionCount).toBe(2);
-    expect(result.current.rsvpForm.companionIsChildren).toHaveLength(2);
+    expect(result.current.rsvpForm.childrenCount).toBe("0");
     expect(result.current.rsvpForm.companionNames[0]).toBe("Beto Ruiz Díaz");
     expect(result.current.alreadySubmittedEntry?.id).toBe("main_ana");
   });

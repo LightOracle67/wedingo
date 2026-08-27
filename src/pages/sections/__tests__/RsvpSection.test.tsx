@@ -61,7 +61,9 @@ const baseForm: RsvpFormData = {
   companionMenus: [],
   companionAllergies: [],
   companionAllergiesOther: [],
-  companionIsChildren: [],
+  childrenCount: "0",
+  childrenAllergies: [],
+  childrenAllergiesOther: "",
   companionHealthConsents: [],
   companionTransportChoices: [],
   companionTransportModes: [],
@@ -673,44 +675,45 @@ describe("RsvpSection", () => {
     expect(updateRsvpField).toHaveBeenCalledWith("transportChoice", "0");
   });
 
-  it("muestra el checkbox ¿es niño? por acompañante desmarcado por defecto", () => {
+  it("muestra el toggle de niños desmarcado y al marcarlo emite childrenCount=1", () => {
     render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
-    const check = screen.getByLabelText("rsvp.childQuestion") as HTMLInputElement;
+    const check = screen.getByLabelText("rsvp.childrenQuestion") as HTMLInputElement;
     expect(check).toBeDefined();
     expect(check.type).toBe("checkbox");
     expect(check.checked).toBe(false);
     fireEvent.click(check);
-    expect(updateRsvpField).toHaveBeenCalledWith("companionIsChildren[0]", "yes");
+    expect(updateRsvpField).toHaveBeenCalledWith("childrenCount", "1");
   });
 
-  it("al desmarcar el checkbox de niño emite no", () => {
-    render(
-      <WrappedRsvp
-        {...baseProps}
-        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1, companionIsChildren: ["yes"] }}
-      />,
-    );
-    const check = screen.getByLabelText("rsvp.childQuestion") as HTMLInputElement;
-    expect(check.checked).toBe(true);
-    fireEvent.click(check);
-    expect(updateRsvpField).toHaveBeenCalledWith("companionIsChildren[0]", "no");
+  it("con niños declarados muestra contador y alergias del grupo, y emite el número", () => {
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone", childrenCount: "3" }} />);
+    const input = screen.getByLabelText("rsvp.childrenCountLabel") as HTMLInputElement;
+    expect(input).toBeDefined();
+    expect(input.type).toBe("number");
+    expect(input.value).toBe("3");
+    // El campo de otra alergia del grupo usa el sufijo -children (sin colisión).
+    expect(document.querySelector("#rv2OtherAllergies-children")).toBeDefined();
+    fireEvent.change(input, { target: { value: "5" } });
+    expect(updateRsvpField).toHaveBeenCalledWith("childrenCount", "5");
   });
 
-  it("nunca muestra consentimiento parental: se asume tutor en el invitado principal", () => {
-    render(
-      <WrappedRsvp
-        {...baseProps}
-        rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1, companionIsChildren: ["yes"] }}
-      />,
-    );
-    expect(screen.queryByText("rsvp.childParentalHint")).toBeNull();
-    expect(screen.queryByLabelText("rsvp.parentalConsent")).toBeNull();
-  });
-
-  it("no renderiza la sección antigua de niños (childrenCount)", () => {
+  it("sin niños no muestra el contador ni las alergias del grupo", () => {
     render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
-    expect(screen.queryByLabelText("rsvp.childrenLabel")).toBeNull();
     expect(screen.queryByLabelText("rsvp.childrenCountLabel")).toBeNull();
+    expect(screen.queryByLabelText("rsvp.childrenQuestion")).toBeDefined();
+  });
+
+  it("las plazas restantes restan los niños declarados", async () => {
+    Object.assign(mockConfig, { rsvpCapacity: "5" });
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone", childrenCount: "2" }}
+        rsvpConfirmedCount={2}
+      />,
+    );
+    // 5 - 2 confirmados - 2 niños = 1 plaza restante.
+    expect(screen.getByText(/rsvp.capacityLeft/)).toBeInTheDocument();
   });
 
   it("renders no menu options when no dishes are configured", () => {
@@ -937,7 +940,9 @@ describe("RsvpSection", () => {
       companionNames: ["B1", "B2", "B3"],
       companionMenus: ["", "", ""],
       companionAllergies: [[], [], []] as string[][],
-      companionIsChildren: ["no", "no", "no"],
+      childrenCount: "0",
+      childrenAllergies: [],
+      childrenAllergiesOther: "",
       companionHealthConsents: [false, false, false],
       companionTransportChoices: ["", "", ""],
       companionTransportModes: ["own", "own", "own"],
