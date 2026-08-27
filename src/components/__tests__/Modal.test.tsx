@@ -58,4 +58,30 @@ describe("Modal (a11y)", () => {
     // El botón de cierre es el primer elemento enfocable del panel.
     expect(document.activeElement).toBe(screen.getByRole("button", { name: "Cerrar" }));
   });
+
+  it("expone el cuerpo como región scrolleable enfocable por teclado", () => {
+    render(
+      <Modal title="Región" onClose={() => {}} closeLabel="Cerrar">
+        <p>contenido largo</p>
+      </Modal>,
+    );
+    // La región envuelve el contenido (WCAG 2.1.1: scroll operativo por teclado).
+    const region = screen.getByRole("region", { name: "Región" });
+    expect(region).toHaveAttribute("tabindex", "0");
+    expect(region).toContainElement(screen.getByText("contenido largo"));
+    // El botón de cierre queda fuera de la región scrolleable (no se desplaza).
+    expect(region).not.toContainElement(screen.getByRole("button", { name: "Cerrar" }));
+  });
+
+  it("envuelve los hijos en la región scrolleable (los modales derivados no la duplican)", () => {
+    render(
+      <Modal title="Anidado" onClose={() => {}} closeLabel="Cerrar">
+        <div className="cookie-consent-body">
+          <p>hijo</p>
+        </div>
+      </Modal>,
+    );
+    const region = screen.getByRole("region", { name: "Anidado" });
+    expect(region).toContainElement(screen.getByText("hijo"));
+  });
 });

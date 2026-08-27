@@ -53,7 +53,7 @@ const LegalModal = memo(function LegalModal({ section, onClose }: { section: str
         padding: "1.2rem 1rem 1rem",
       }}
     >
-      <div style={{ overflowY: "auto", overflowX: "hidden", flex: 1, marginTop: "0.5rem", wordBreak: "break-word" }}>
+      <div style={{ marginTop: "0.5rem", wordBreak: "break-word" }}>
         {SECTIONS.map((s: { id: string; label: string; content: string }) => (
           <div key={s.id}>
             <button

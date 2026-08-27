@@ -67,7 +67,15 @@ const Modal = memo(function Modal({
           &times;
         </button>
         {!hideTitle ? <p className="modal-title">{title}</p> : null}
-        {children}
+        {/*
+          El cuerpo scrolleable vive en su propia región enfocable: con el scroll
+          confinado aquí, el botón de cierre y el título permanecen fijos, y el
+          área es navegable por teclado (WCAG 2.1.1) ya que el foco puede entrar
+          en ella con Tab.
+        */}
+        <div className="modal-body" role="region" aria-label={title} tabIndex={0}>
+          {children}
+        </div>
       </div>
     </div>
   );

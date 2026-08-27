@@ -78,7 +78,7 @@ const DataRequestModal = memo(function DataRequestModal({ inviteToken, onClose }
         padding: "1.2rem 1rem 1rem",
       }}
     >
-      <div style={{ overflowY: "auto", overflowX: "hidden", flex: 1, marginTop: "0.5rem", wordBreak: "break-word" }}>
+      <div style={{ marginTop: "0.5rem", wordBreak: "break-word" }}>
         <p className="data-request-text">{t("dataRequest.intro")}</p>
 
         <div className="data-request-actions">

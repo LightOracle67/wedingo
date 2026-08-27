@@ -57,9 +57,9 @@
   width: 100%;
   max-width: 380px;
   max-height: calc(100dvh - 2rem);
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
@@ -67,6 +67,22 @@
 }
 .modal-card--closing {
   animation: modal-exit 200ms ease forwards;
+}
+/* El cuerpo scrolleable del modal: ocupa el espacio restante bajo cabecera y
+   botón de cierre (que quedan fijos), es enfocable por teclado para que el
+   scroll funcione con Tab/WCAG 2.1.1 y muestra el anillo de foco al navegar. */
+.modal-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.modal-body:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: -2px;
+  border-radius: var(--radius-md, 8px);
 }
 .modal-close {
   position: absolute;
@@ -92,13 +108,11 @@
 }
 /* El modal de cookies usa el componente Modal compartido (mismo estilo que
    LegalModal): solo se conservan los estilos de su cuerpo y pie. */
+/* El cuerpo del modal de cookies ya no scrollea por sí mismo: el scroll lo
+   gestiona .modal-body (región enfocable del Modal base). Se conserva el
+   padding y el overscroll para no romper el layout interno. */
 .cookie-consent-body {
-  flex: 1;
   min-width: 0;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  overscroll-behavior-y: contain;
   padding: 0.2rem 0.2rem 0.6rem;
 }
 .cookie-consent-body::-webkit-scrollbar {
