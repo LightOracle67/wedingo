@@ -243,6 +243,22 @@ describe("RsvpSection", () => {
     expect(screen.getByText("rsvp.allergiesHint")).toBeDefined();
   });
 
+  it("el título del menú usa su clase propia (no la etiqueta pequeña del setup)", () => {
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        menuEnabled={true}
+        menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
+      />,
+    );
+    // El legend debe llevar rv2-menu__title SIN .setup-label: la regla del
+    // setup (.story-section--is-active .rsvp-form .setup-label, 0.85rem) tiene
+    // más especificidad que cualquier override en el legend.
+    const legend = document.querySelector(".rv2-menu > legend");
+    expect(legend?.className).toBe("rv2-menu__title");
+    expect(legend?.className).not.toContain("setup-label");
+  });
+
   it("shows menu dishes when no structured menu", () => {
     render(
       <WrappedRsvp

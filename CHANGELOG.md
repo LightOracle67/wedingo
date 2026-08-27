@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.156.0 — 2026-08-27
+- El título de la sección del menú del RSVP se muestra ahora más grande y en negrita como cabecera ('Menú'), sin cambiar el texto original: antes la regla de etiquetas del setup lo fijaba pequeño con mayor especificidad CSS.
 ## 2.155.0 — 2026-08-27
 - La sección del menú del RSVP se mueve justo debajo del nombre del invitado (para decidir el plato antes de la asistencia) y su título se amplía y agranda: «Elige tu menú» como cabecera visible en lugar de una etiqueta pequeña.
 ## 2.154.0 — 2026-08-27

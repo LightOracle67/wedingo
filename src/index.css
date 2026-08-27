@@ -3324,11 +3324,14 @@ body::after {
   margin: 0;
 }
 /* El título del menú debe verse como cabecera de sección, no como etiqueta
-   pequeña: tamaño y peso mayores + separación respecto a las opciones. */
-.rv2-menu > legend {
-  font-size: 1rem;
+   pequeña: tamaño y peso mayores + separación respecto a las opciones.
+   NO lleva la clase .setup-label (la regla .story-section--is-active .rsvp-form
+   .setup-label la fijaba a 0.85rem con mayor especificidad). */
+.rv2-menu > legend.rv2-menu__title {
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--setup-title, inherit);
+  line-height: 1.4;
   margin-bottom: 0.35rem;
   padding: 0;
 }

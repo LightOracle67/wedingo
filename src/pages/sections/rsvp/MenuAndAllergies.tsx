@@ -23,7 +23,7 @@ const MenuPicker = memo(function MenuPicker({ value, options, onChange, frozen, 
   const selected = options.find((m) => m.key === value) || null;
   return (
     <fieldset className={"rv2-menu" + (compact ? " rv2-compact" : "")} disabled={frozen}>
-      <legend className="setup-label rv2-sublabel">{t("rsvp.menuLabel")}</legend>
+      <legend className="rv2-menu__title">{t("rsvp.menuLabel")}</legend>
       <div className="rv2-menulist" role="radiogroup">
         {options.map((m) => {
           const active = value === m.key;
