@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.144.0 — 2026-08-27
+- La sección Recinto desaparece de la configuración solo cuando los dos toggles (mapa y mesas) están desactivados y las dos secciones están ocultas en el editor de orden; se elimina el botón de reactivación que no se pidió.
 ## 2.143.0 — 2026-08-27
 - La sección Recinto del configuración muestra el estado real de la pestaña Distribución: contador de secciones y mesas creadas, o aviso cuando aún no hay mesas (solo informativo; la visibilidad sigue mandada por los toggles).
 ## 2.142.0 — 2026-08-27

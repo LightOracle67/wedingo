@@ -202,23 +202,21 @@ export default function SetupForm({ prefix = "" }) {
         </CollapsibleSection>
       ) : null}
 
-      {/* ── Sección de recinto (venueMap + mesas) ── */}
-      {venueMapEnabled === "true" || tablesEnabled === "true" ? (
+      {/* ── Sección de recinto (venueMap + mesas) ──
+          La sección desaparece del formulario solo cuando el usuario la ha
+          desactivado por completo: ambos toggles en off Y las dos secciones
+          (venuemap + tables) ocultas en el editor de orden. Si falta
+          cualquiera de las dos condiciones, se muestra para permitir su
+          configuración; se recupera activando un toggle o mostrando la
+          sección en el editor de orden. */}
+      {venueMapEnabled === "true" ||
+      tablesEnabled === "true" ||
+      !hiddenSet.has("venuemap") ||
+      !hiddenSet.has("tables") ? (
         <CollapsibleSection title={t("setup.venueSectionTitle")} hint={t("setup.venueSectionHint")}>
           <VenueSectionForm prefix={prefix} />
         </CollapsibleSection>
-      ) : (
-        <div className="setup-token-card">
-          <p className="setup-help">{t("setup.venueHiddenAllHint")}</p>
-          <button
-            type="button"
-            className="setup-button setup-button--ghost setup-button--compact"
-            onClick={() => updateFormField("venueMapEnabled", "true")}
-          >
-            {t("setup.venueReactivate")}
-          </button>
-        </div>
-      )}
+      ) : null}
 
       {/* ── Sección de animaciones ── */}
 

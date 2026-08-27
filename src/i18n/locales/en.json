@@ -552,8 +552,6 @@
     "venueHint": "Venue map and seating chart visibility for guests.",
     "venueSectionTitle": "Venue",
     "venueSectionHint": "Venue map and tables on the public invitation.",
-    "venueHiddenAllHint": "Venue map and seating disabled: the Venue section will not appear on the invitation.",
-    "venueReactivate": "Enable venue map",
     "venueTablesInfo": "{{sections}} sections · {{tables}} tables in the Distribution tab",
     "venueNoTablesHint": "No tables yet: create sections and tables in the Distribution tab for them to appear on the invitation."
   },

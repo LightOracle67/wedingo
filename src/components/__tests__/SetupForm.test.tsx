@@ -291,21 +291,52 @@ describe("SetupForm", () => {
   });
 
   describe("Sección Recinto con ambas opciones desactivadas", () => {
-    it("oculta la sección recinto cuando mapa y mesas están desactivadas", () => {
+    it("oculta la sección solo cuando los toggles están apagados Y ambas secciones ocultas en el orden", () => {
+      // Condición completa: ambos toggles off + venuemap y tables en hiddenSections.
+      mockUseApp.mockReturnValue({
+        ...baseUseApp,
+        formData: {
+          venueMapEnabled: "false",
+          tablesEnabled: "false",
+          hiddenSections: "transport,venuemap,tables",
+        },
+      });
+      render(<SetupForm />);
+      expect(screen.queryByText("setup.venueSectionTitle")).toBeNull();
+      // Sin botón de reactivación: no se pidió; se recupera desde el editor de orden.
+      expect(screen.queryByRole("button", { name: "setup.venueReactivate" })).toBeNull();
+    });
+
+    it("mantiene visible la sección con toggles off si las secciones del orden NO están ocultas", () => {
       mockUseApp.mockReturnValue({
         ...baseUseApp,
         formData: { venueMapEnabled: "false", tablesEnabled: "false" },
       });
       render(<SetupForm />);
-      expect(screen.queryByText("setup.venueSectionTitle")).toBeNull();
-      expect(screen.getByText("setup.venueHiddenAllHint")).toBeInTheDocument();
-      expect(screen.getByRole("button", { name: "setup.venueReactivate" })).toBeInTheDocument();
+      expect(screen.getByText("setup.venueSectionTitle")).toBeInTheDocument();
     });
 
-    it("muestra la sección recinto cuando el mapa está activado", () => {
+    it("mantiene visible la sección si solo una de las dos secciones del orden está oculta", () => {
       mockUseApp.mockReturnValue({
         ...baseUseApp,
-        formData: { venueMapEnabled: "true", tablesEnabled: "false" },
+        formData: {
+          venueMapEnabled: "false",
+          tablesEnabled: "false",
+          hiddenSections: "venuemap",
+        },
+      });
+      render(<SetupForm />);
+      expect(screen.getByText("setup.venueSectionTitle")).toBeInTheDocument();
+    });
+
+    it("muestra la sección recinto cuando el mapa está activado aunque las secciones estén ocultas", () => {
+      mockUseApp.mockReturnValue({
+        ...baseUseApp,
+        formData: {
+          venueMapEnabled: "true",
+          tablesEnabled: "false",
+          hiddenSections: "venuemap,tables",
+        },
       });
       render(<SetupForm />);
       expect(screen.getByText("setup.venueSectionTitle")).toBeInTheDocument();
@@ -318,16 +349,6 @@ describe("SetupForm", () => {
       });
       render(<SetupForm />);
       expect(screen.getByText("setup.venueSectionTitle")).toBeInTheDocument();
-    });
-
-    it("el botón de reactivar activa el mapa del recinto", () => {
-      mockUseApp.mockReturnValue({
-        ...baseUseApp,
-        formData: { venueMapEnabled: "false", tablesEnabled: "false" },
-      });
-      render(<SetupForm />);
-      fireEvent.click(screen.getByRole("button", { name: "setup.venueReactivate" }));
-      expect(mockUpdateFormField).toHaveBeenCalledWith("venueMapEnabled", "true");
     });
   });
 });

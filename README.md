@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.143.0](https://github.com/LightOracle67/wedingo/releases)  
+**Versión actual:** [v2.144.0](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.144.0 | 2026-08-27 | La sección Recinto solo desaparece de la configuración cuando toggles y secciones del orden están desactivados a la vez; fuera el botón de reactivación |
 | v2.143.0 | 2026-08-27 | La configuración del Recinto informa del estado real de la pestaña Distribución: contador de secciones y mesas, o aviso cuando no hay mesas (informativo) |
 | v2.142.0 | 2026-08-27 | Si el mapa del recinto y la distribución de mesas están desactivados, la sección Recinto se oculta del formulario de configuración y muestra un botón para reactivarla |
 | v2.141.0 | 2026-08-27 | Los toggles del recinto y de las mesas se deshabilitan cuando su sección está oculta en el editor de orden, con aviso para mostrarla |
