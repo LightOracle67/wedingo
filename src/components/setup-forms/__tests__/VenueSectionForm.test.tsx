@@ -14,6 +14,20 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
 }));
 
+// La sección del recinto consulta Firestore (subcolecciones sections y
+// tables de la invitación) SOLO para mostrar el contador informativo de la
+// pestaña Distribución. Se mockea collection/getDocs para simular los conteos
+// reales y validar que el componente degrada sin crash si la lectura falla.
+const mockGetDocs = vi.hoisted(() => vi.fn());
+vi.mock("firebase/firestore", () => ({
+  collection: (...args: unknown[]) =>
+    args.join("/").includes("/tables")
+      ? `tables-col:${String(args[args.length - 2])}`
+      : "sections-col",
+  getDocs: mockGetDocs,
+}));
+vi.mock("../../../lib/firebase", () => ({ db: {} }));
+
 vi.mock("../../../contexts", async () => {
   const { useFormField, useFormStore } = await import("../../../contexts/FormStore");
   return {
@@ -27,6 +41,9 @@ vi.mock("../../../contexts", async () => {
       inviteToken: "",
       hasStoredConfig: false,
     }),
+    // Token fijo de invitación de pruebas para que la consulta de secciones
+    // y mesas del contador tenga una ruta determinista en los mocks.
+    useConfig: () => ({ inviteToken: "tok1" }),
     useFormField,
     useFormStore,
   };
@@ -47,6 +64,16 @@ function renderWithStore(store: ReturnType<typeof createFormStore>) {
 describe("VenueSectionForm", () => {
   beforeEach(() => {
     storeBox.current = createFormStore({});
+    // Estado por defecto: 2 secciones (s1 con 3 mesas, s2 con 1) que el
+    // contador informativo debe mostrar como 2 secciones · 4 mesas.
+    mockGetDocs.mockReset();
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      const r = String(ref);
+      if (r === "sections-col") return Promise.resolve({ docs: [{ id: "s1" }, { id: "s2" }] });
+      if (r === "tables-col:s1") return Promise.resolve({ docs: [{ id: "t1" }, { id: "t2" }, { id: "t3" }] });
+      if (r === "tables-col:s2") return Promise.resolve({ docs: [{ id: "t4" }] });
+      return Promise.resolve({ docs: [] });
+    });
   });
 
   it("activa el toggle del mapa del recinto al pulsarlo (bug de re-render)", () => {
@@ -121,5 +148,30 @@ describe("VenueSectionForm", () => {
     // fireEvent sigue disparando los handlers incluso en controles
     // deshabilitados, así que no se puede asertar el estado post-click aquí.
     expect(mapToggle.checked).toBe(false);
+  });
+
+  it("muestra el contador de secciones y mesas de la pestaña Distribución", async () => {
+    renderWithStore(storeBox.current!);
+    // El contador informativo consulta las subcolecciones reales (2 secciones,
+    // s1 con 3 mesas y s2 con 1) y lo anuncia como estado accesible.
+    const status = await screen.findByText("setup.venueTablesInfo");
+    expect(status.getAttribute("role")).toBe("status");
+    expect(screen.queryByText("setup.venueNoTablesHint")).toBeNull();
+  });
+
+  it("muestra el aviso cuando aún no hay mesas creadas", async () => {
+    mockGetDocs.mockImplementation(() => Promise.resolve({ docs: [] }));
+    renderWithStore(storeBox.current!);
+    expect(await screen.findByText("setup.venueNoTablesHint")).toBeTruthy();
+    expect(screen.queryByText("setup.venueTablesInfo")).toBeNull();
+  });
+
+  it("no rompe el formulario si la lectura del contador falla", async () => {
+    mockGetDocs.mockRejectedValueOnce(new Error("boom"));
+    renderWithStore(storeBox.current!);
+    // El fallo degrada al aviso (0 secciones · 0 mesas): nunca debe bloquear
+    // los toggles, que son quien decide la visibilidad pública real.
+    expect(await screen.findByText("setup.venueNoTablesHint")).toBeTruthy();
+    expect(screen.getByRole("checkbox", { name: "setup.venueMapLabel" })).toBeTruthy();
   });
 });

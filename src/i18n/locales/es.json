@@ -553,7 +553,9 @@
     "venueSectionTitle": "Recinto",
     "venueSectionHint": "Mapa del recinto y mesas en la invitación pública.",
     "venueHiddenAllHint": "Mapa del recinto y distribución desactivados: la sección Recinto no aparecerá en la invitación.",
-    "venueReactivate": "Activar mapa del recinto"
+    "venueReactivate": "Activar mapa del recinto",
+    "venueTablesInfo": "{{sections}} secciones · {{tables}} mesas en la pestaña Distribución",
+    "venueNoTablesHint": "Aún no hay mesas creadas: crea secciones y mesas en la pestaña Distribución para que aparezcan en la invitación."
   },
   "admin": {
     "tabs": {

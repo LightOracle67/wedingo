@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.143.0 — 2026-08-27
+- La sección Recinto del configuración muestra el estado real de la pestaña Distribución: contador de secciones y mesas creadas, o aviso cuando aún no hay mesas (solo informativo; la visibilidad sigue mandada por los toggles).
 ## 2.142.0 — 2026-08-27
 - Si el mapa del recinto y la distribución de mesas están desactivados, la sección Recinto se oculta del formulario de configuración, con un botón para volver a activarla.
 
