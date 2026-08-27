@@ -34,7 +34,7 @@ export default function SetupToggleRow({
   children,
 }: SetupToggleRowProps) {
   return (
-    <div className="setup-toggle-row">
+    <div className={`setup-toggle-row${checked ? "" : " setup-toggle-row--off"}`}>
       <input
         type="checkbox"
         className="setup-toggle"

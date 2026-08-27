@@ -1,6 +1,6 @@
-import { memo, useCallback } from "react";
+import { memo } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfigActions, useFormStore } from "../../contexts";
+import { useConfigActions, useFormField } from "../../contexts";
 import SetupToggleRow from "../SetupToggleRow";
 
 /**
@@ -11,25 +11,23 @@ import SetupToggleRow from "../SetupToggleRow";
 const VenueSectionForm = memo(function VenueSectionForm({ prefix = "" }: { prefix?: string }) {
   const { t } = useTranslation();
   const { updateFormField } = useConfigActions();
-  const formStore = useFormStore();
-  /** Genera el id único del input a partir del nombre base. */
   const id = (name: string) => `${prefix}${name}`;
-  // Toggle genérico: lee el valor actual síncrono y lo invierte.
-  const toggle = useCallback(
-    (field: string) => () => {
-      const current = formStore.getField(field);
-      updateFormField(field, current === "true" ? "false" : "true");
-    },
-    [formStore, updateFormField],
-  );
-  // Fila estable con el ToggleRow común del módulo.
-  const renderToggleRow = (field: string, label: string, hint?: string) => (
+  // Lectura REACTIVA de cada toggle: useFormField se suscribe al campo y
+  // re-renderiza esta sección cuando cambia. Antes se leía con getField() de
+  // useFormStore() (objeto estable del contexto, sin suscripción) y el
+  // checkbox nunca reflejaba el nuevo estado al pulsarlo: parecía que los
+  // toggles no se activaban nunca. Cada toggle necesita su propia llamada
+  // porque los hooks no pueden declararse dentro del render auxiliar.
+  const venueMapEnabled = useFormField("venueMapEnabled");
+  const tablesEnabled = useFormField("tablesEnabled");
+
+  const renderToggleRow = (field: string, label: string, hint: string, checked: boolean) => (
     <SetupToggleRow
       field={field}
       label={label}
-      {...(hint !== undefined ? { hint } : {})}
-      checked={formStore.getField(`${field}Enabled`) === "true"}
-      onToggle={toggle(`${field}Enabled`)}
+      hint={hint}
+      checked={checked}
+      onToggle={() => updateFormField(`${field}Enabled`, checked ? "false" : "true")}
       id={id}
     />
   );
@@ -40,10 +38,10 @@ const VenueSectionForm = memo(function VenueSectionForm({ prefix = "" }: { prefi
       <p className="setup-help">{t("setup.venueHint")}</p>
 
       {/* Mapa del recinto (sección propia v2.109) */}
-      {renderToggleRow("venueMap", t("setup.venueMapLabel"), t("setup.venueMapHint"))}
+      {renderToggleRow("venueMap", t("setup.venueMapLabel"), t("setup.venueMapHint"), venueMapEnabled === "true")}
 
       {/* Distribución de mesas en la invitación pública */}
-      {renderToggleRow("tables", t("setup.tablesLabel"), t("setup.tablesHint"))}
+      {renderToggleRow("tables", t("setup.tablesLabel"), t("setup.tablesHint"), tablesEnabled === "true")}
     </fieldset>
   );
 });

@@ -529,6 +529,12 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
   opacity: 0.55;
   cursor: default;
 }
+/* Zona atenuada cuando la sección está desactivada: la fila del toggle del
+   recinto/mesas se comunica visualmente con el estado apagado (el usuario
+   pidió que la zona del formulario refleje la desactivación). */
+.setup-toggle-row--off > div {
+  opacity: 0.55;
+}
 .setup-checkbox-label {
   display: flex;
   align-items: center;

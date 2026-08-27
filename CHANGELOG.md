@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.140.0 — 2026-08-27
+- Corregidos los toggles del recinto y las mesas: no se activaban nunca porque el checkbox leía el estado con una lectura síncrona sin suscripción (el componente no se re-renderizaba al pulsarlo). Ahora leen el campo con suscripción reactiva y la fila se atenúa visualmente cuando la sección está desactivada. Los toggles de fecha límite del RSVP y lista de confirmados (Invitados) tenían el mismo defecto.
 ## 2.139.0 — 2026-08-27
 - Los toggles del setup ahora ocultan realmente sus campos en la invitación pública (antes ocultaban solo el formulario del admin).
 - Verificado que los toggles del formulario /admin persisten su estado al guardar (tests de regresión).

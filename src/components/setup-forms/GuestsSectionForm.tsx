@@ -1,6 +1,6 @@
 import { memo, useCallback, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfigActions, useFormStore, useFormField } from "../../contexts";
+import { useConfigActions, useFormField } from "../../contexts";
 import { MAX_DRESS_CODE_CUSTOM_LENGTH } from "../../lib/constants";
 import MenuDishEditor from "../MenuDishEditor";
 import MapUrlField from "../MapUrlField";
@@ -11,10 +11,10 @@ import SetupField from "../SetupField";
 
 const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { prefix?: string }) {
   const { updateFormField } = useConfigActions();
-  const formStore = useFormStore();
   // Fecha límite de RSVP (movida desde Extras) y visibilidad de confirmados.
   const rsvpDeadline = useFormField("rsvpDeadline");
   const rsvpDeadlineEnabled = useFormField("rsvpDeadlineEnabled");
+  const showConfirmedPeopleEnabled = useFormField("showConfirmedPeopleEnabled");
   const accommodationMapMode = useFormField("accommodationMapMode");
   const accommodationURL = useFormField("accommodationURL");
   const kidsPolicy = useFormField("kidsPolicy");
@@ -31,23 +31,17 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
   const id = (name: string) => `${prefix}${name}`;
   const { t } = useTranslation();
 
-  // Toggle genérico para switches simples (lectura síncrona del store).
-  const toggle = useCallback(
-    (field: string) => () => {
-      const current = formStore.getField(field);
-      updateFormField(field, current === "true" ? "false" : "true");
-    },
-    [formStore, updateFormField],
-  );
-
-  /** Fila de toggle estable reutilizando SetupToggleRow. */
-  const renderToggleRow = (field: string, label: string, hint?: string, children?: ReactNode) => (
+  // Toggle genérico para switches simples: recibe el valor ya leído de forma
+  // reactiva (useFormField) y lo invierte; el checkbox solo funciona si el
+  // componente se re-renderiza al cambiar el campo, así que la fuente de
+  // verdad es SIEMPRE la suscripción, nunca una lectura síncrona del store.
+  const renderToggleRow = (field: string, label: string, hint: string, checked: boolean, children?: ReactNode) => (
     <SetupToggleRow
       field={field}
       label={label}
-      {...(hint !== undefined ? { hint } : {})}
-      checked={formStore.getField(`${field}Enabled`) === "true"}
-      onToggle={toggle(`${field}Enabled`)}
+      hint={hint}
+      checked={checked}
+      onToggle={() => updateFormField(`${field}Enabled`, checked ? "false" : "true")}
       id={id}
     >
       {children}
@@ -232,6 +226,7 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
         "rsvpDeadline",
         t("setup.rsvpDeadlineLabel"),
         t("setup.rsvpDeadlineHint"),
+        rsvpDeadlineEnabled === "true",
         rsvpDeadlineEnabled === "true" ? (
           <input
             id={id("rsvpDeadline")}
@@ -244,7 +239,12 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
       )}
 
       {/* Visibilidad de la lista de confirmados (opt-in de nombres) */}
-      {renderToggleRow("showConfirmedPeople", t("setup.showConfirmedPeopleLabel"), t("setup.showConfirmedPeopleHint"))}
+      {renderToggleRow(
+        "showConfirmedPeople",
+        t("setup.showConfirmedPeopleLabel"),
+        t("setup.showConfirmedPeopleHint"),
+        showConfirmedPeopleEnabled === "true",
+      )}
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
       <SetupToggleField
