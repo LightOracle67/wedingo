@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.150.0 — 2026-08-27
+- La tabla de asistencias mostraba los datos descolocados: el transporte aparecía en la columna Niño y las columnas ¿Trae niños?/Intolerancias siempre vacías. Corregido el orden de las celdas para que coincida con el thead y el mapeo de los niños del invitado principal (childrenCount y alergias del grupo) en el procesamiento de respuestas.
 ## 2.149.0 — 2026-08-27
 - Modal de edición de asistencias (y cualquier modal anidado en el panel): renderizado en un portal para que cubra toda la pantalla y tome el foco global (antes quedaba recortado a la tarjeta de la tabla por el backdrop-filter del contenedor).
 - La tabla de asistencias muestra dos columnas nuevas: ¿Trae niños? (contador declarado en el RSVP) e Intolerancias de los niños (alergias del grupo), recogidas del doc principal; la estadística de niños confirmados ahora suma ambos modelos (flag legacy isChild y contador childrenCount).

@@ -229,6 +229,20 @@ export function useRsvp(
             guestNames: data.guestNames || "",
             note: data.note || "",
             submittedAt,
+            // Niños declarados por el principal (nuevo modelo): el contador y
+            // las alergias del grupo viajan en el doc del invitado principal,
+            // no como acompañantes individuales. Se leen aquí para que la
+            // tabla de asistencias pueda mostrarlos.
+            childrenCount: Number(data.childrenCount) || 0,
+            childrenAllergies: Array.isArray(data.childrenAllergies)
+              ? (data.childrenAllergies as string[])
+              : [],
+            childrenAllergiesOther:
+              typeof data.childrenAllergiesOther === "string" ? data.childrenAllergiesOther : "",
+            // Flag legacy del modelo anterior (isChild en acompañantes): se
+            // conserva para que los docs viejos sigan mostrando la columna
+            // "Niño"; los nuevos ya no lo escriben.
+            isChild: data.isChild === true,
             parentalConsent: data.parentalConsent || false,
             healthConsent: data.healthConsent || false,
             transportChoice: data.transportChoice || "",

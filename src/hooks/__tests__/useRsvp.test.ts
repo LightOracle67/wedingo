@@ -305,6 +305,45 @@ describe("useRsvp", () => {
     expect(byName["Tío"]?.companions).toBe(7);
   });
 
+  it("hydrate: mapea los niños declarados del principal (childrenCount y alergias de grupo)", async () => {
+    mockGetDocs.mockResolvedValue({
+      docs: [
+        // Principal con niños del nuevo modelo (contador + alergias del grupo).
+        fakeDoc("mKids", {
+          guestName: "Ana",
+          rsvpType: "main",
+          attendance: "yes",
+          childrenCount: 2,
+          childrenAllergies: ["sin gluten"],
+          childrenAllergiesOther: "cacahuete",
+        }),
+        // Acompañante legacy con isChild del modelo anterior.
+        fakeDoc("cLegacy", {
+          guestName: "Nerea",
+          rsvpType: "companion",
+          mainGuestDocId: "mKids",
+          attendance: "yes",
+          isChild: true,
+        }),
+      ],
+      forEach: vi.fn(),
+    });
+    const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+    await vi.waitFor(() => expect(result.current.rsvpEntries).toHaveLength(2));
+    const main = result.current.rsvpEntries.find((e) => e.id === "mKids");
+    const legacy = result.current.rsvpEntries.find((e) => e.id === "cLegacy");
+    // Los niños de grupo viajan en el doc principal (nuevo modelo).
+    expect(main?.childrenCount).toBe(2);
+    expect(main?.childrenAllergies).toEqual(["sin gluten"]);
+    expect(main?.childrenAllergiesOther).toBe("cacahuete");
+    // El flag legacy del acompañante se conserva para la columna "Niño".
+    expect(legacy?.isChild).toBe(true);
+    // Sin campos de niños el acompañante queda con ceros (columna "—").
+    expect(legacy?.childrenCount).toBe(0);
+    expect(legacy?.childrenAllergies).toEqual([]);
+    expect(legacy?.childrenAllergiesOther).toBe("");
+  });
+
   it("hydrate: enlaza acompañantes al principal y genera entradas propias", async () => {
     // Con alergia "otra" para ejercitar la rama [...selection, other].
     mockParseDietaryInfo.mockReturnValue({ mealChoice: "", dietarySelection: ["Sin gluten"], dietaryOther: "Kiwi" });

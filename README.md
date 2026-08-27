@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.149.0](https://github.com/LightOracle67/wedingo/releases)  
+**Versión actual:** [v2.150.0](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.150.0 | 2026-08-27 | La tabla de asistencias se alineó con sus cabeceras: los niños del invitado principal (¿Trae niños? e intolerancias) ya se muestran y el transporte aparece en su columna, antes la fila se descuadraba |
 | v2.149.0 | 2026-08-27 | El modal de edición de asistentes cubre toda la pantalla (portal) y la tabla de asistencias muestra ¿Trae niños? e intolerancias de los niños con la estadística sumando ambos modelos |
 | v2.148.0 | 2026-08-27 | El invitado ya confirmado ve su respuesta rellenada desde el servidor al escribir su nombre (get individual, sin listar la de otros); el título del toggle de fecha límite ya no se encoge al activarlo; alergias del principal bajo su nombre; un único consentimiento de salud cubre todo el grupo |
 | v2.147.0 | 2026-08-27 | Aforo real del invitado: el RSVP cuenta solo a los confirmados (campo attendingCount); recordatorio de confirmación en local (no lee datos del servidor); contador separado de asistentes |

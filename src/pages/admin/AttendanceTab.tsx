@@ -886,11 +886,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                       </td>
                       <td>
                         <div style={crossed}>
-                          <span style={{ fontSize: "0.78rem" }}>{attending ? transportLabel : "—"}</span>
-                        </div>
-                      </td>
-                      <td>
-                        <div style={crossed}>
                           <span style={{ fontSize: "0.78rem" }}>
                             {/* Columna "Niño": muestra el flag isChild del doc
                                 (los docs antiguos, sin flag, muestran "—"). */}
@@ -919,6 +914,15 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                           ) : (
                             <span style={{ fontSize: "0.78rem" }}>—</span>
                           )}
+                        </div>
+                      </td>
+                      <td>
+                        {/* Transporte después de las columnas de niños: el
+                            orden de las celdas DEBE reflejar el del thead
+                            (child, children, childrenDiet, transport); antes
+                            iba primero y desalineaba toda la fila. */}
+                        <div style={crossed}>
+                          <span style={{ fontSize: "0.78rem" }}>{attending ? transportLabel : "—"}</span>
                         </div>
                       </td>
                       <td>

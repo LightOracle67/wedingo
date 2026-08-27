@@ -1323,3 +1323,65 @@ describe("AttendanceTab — niños en la tabla", () => {
     expect(rows[1]?.textContent).toContain("Ana García");
   });
 });
+
+describe("AttendanceTab — alineación de columnas y snapshot (bug v2.149)", () => {
+  // Regresión del bug donde el TBODY ponía el transporte antes que las
+  // columnas de niños mientras el THEAD las tenía después: la fila quedaba
+  // desalineada ("Coche propio" bajo la cabecera "Niño").
+  it("las celdas de cada fila reflejan el orden exacto del thead", () => {
+    const entries = [
+      {
+        id: "m1",
+        rsvpType: "main",
+        guestName: "Ana García",
+        attendance: "yes",
+        companions: 0,
+        dietaryInfo: "",
+        submittedAt: "2026-08-27T12:00:00.000Z",
+        transportMode: "own",
+        childrenCount: 3,
+        childrenAllergies: ["sin gluten"],
+        childrenAllergiesOther: "cacahuete",
+      },
+    ];
+    const { container } = render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={entries as never}
+        rsvpEntries={entries as never}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
+        inviteToken="tok"
+      />,
+    );
+    const heads = Array.from(container.querySelectorAll("thead th")).map((h) =>
+      (h.textContent || "").trim().replace(/↕/g, ""),
+    );
+    const row = Array.from(container.querySelectorAll("tbody tr")[0]!.querySelectorAll("td"));
+    // Se conserva el texto completo: trunca en 14 cortaría claves como
+    // "attendance.transportOwnCarOption" a "attendance.tra".
+    const cellTexts = row.map((td) => (td.textContent || "").trim());
+    // El thead comienza con una celda vacía (acciones): cada cabecera debe
+    // tener su celda correspondiente en la posición exacta.
+    expect(heads[0]).toBe("");
+    expect(cellTexts[0]).toBe("");
+    expect(heads[1]).toBe("attendance.tableName");
+    expect(cellTexts[1]).toBe("Ana García");
+    expect(heads[6]).toBe("attendance.tableChild");
+    expect(heads[7]).toBe("attendance.tableChildren");
+    expect(heads[8]).toBe("attendance.tableChildrenDiet");
+    expect(heads[9]).toBe("attendance.tableTransport");
+    // La celda de transporte está después de las de niños (posición 9).
+    expect(cellTexts[9]).toContain("attendance.transport");
+    expect(cellTexts[6]).not.toContain("attendance.transport");
+    // Las columnas nuevas muestran los datos del doc principal.
+    expect(cellTexts[7]).toBe("3");
+    expect(cellTexts[8]).toContain("sin gluten");
+  });
+
+});
