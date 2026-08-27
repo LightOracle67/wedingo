@@ -74,8 +74,6 @@ const DRAFT_KEYS: Array<{
   { key: "digitalSignature", kind: "boolean" },
   { key: "phone", kind: "string" },
   { key: "email", kind: "string" },
-  { key: "contactConsent", kind: "boolean" },
-  { key: "showNameInConfirmed", kind: "boolean" },
 ];
 
 /** ¿Prefiere el usuario movimiento reducido? (los scrolls pasan a 'auto'). */
@@ -499,8 +497,6 @@ const RsvpSection = memo(function RsvpSection({
                 ((rsvpForm.allergies || []).length > 0 || (rsvpForm.allergiesOther || "").trim().length > 0)
               }
               signatureEnabled={config?.rsvpSignatureEnabled === "true"}
-              contactEnabled={config?.rsvpContactEnabled === "true"}
-              showNameOption={config?.showConfirmedPeople === "true"}
               policyVersion={typeof config?.privacyPolicyVersion === "string" ? config.privacyPolicyVersion : undefined}
               frozen={frozen}
               disabled={derived.isDisabled}

@@ -38,4 +38,19 @@ describe("Locale consistency", () => {
     const bad = entries.filter(([, mod]) => hasArrayValue(mod)).map(([key]) => key.split("/").pop());
     expect(bad).toEqual([]);
   });
+
+  // Regresión: el código del RSVP llama t('rsvp.daysLeft', { days }) (RsvpSection.tsx
+  // ~536-541) pero la plantilla usaba {{count}}, por lo que la UI mostraba el texto
+  // crudo '{{count}} días para confirmar'. Fijamos que la plantilla internacionalizada
+  // usa la variable {{days}} en ambos idiomas para que la interpolación no deje el
+  // marcador sin sustituir.
+  it("rsvp.daysLeft interpolates the {{days}} variable in both locales", () => {
+    for (const [, mod] of entries) {
+      const key = (mod as Record<string, unknown>).rsvp as Record<string, unknown> | undefined;
+      const template = key?.daysLeft as string | undefined;
+      expect(template).toBeTypeOf("string");
+      expect(template).toContain("{{days}}");
+      expect(template).not.toContain("{{count}}");
+    }
+  });
 });

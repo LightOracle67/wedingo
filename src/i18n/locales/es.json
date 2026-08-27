@@ -219,14 +219,9 @@
     "blockedNotice": "La confirmación de asistencia está temporalmente desactivada.",
     "capacityReached": "Se ha alcanzado el aforo máximo. No hay plazas disponibles.",
     "weddingPassedNotice": "El evento ya ha pasado: no se aceptan nuevas confirmaciones.",
-    "contactOptional": "Contacto opcional (para el organizador)",
-    "phonePlaceholder": "Teléfono (opcional)",
-    "emailPlaceholder": "Email (opcional)",
-    "contactConsentLabel": "Autorizo a guardar mi contacto solo para la logística del evento (GDPR art. 7).",
-    "showNameInConfirmedLabel": "Acepto que mi nombre aparezca en la lista pública de confirmados de la portada (GDPR art. 7).",
     "policyVersion": "Política de privacidad versión {{version}}",
     "capacityLeft": "Quedan {{count}} plazas",
-    "daysLeft": "{{count}} días para confirmar",
+    "daysLeft": "{{days}} días para confirmar",
     "summaryTitle": "Tu respuesta",
     "summaryAttendance": "Asistencia: {{v}}",
     "summaryMenu": "Menú: {{m}}",
@@ -686,7 +681,11 @@
     "manualLimitReached": "Límite de respuestas alcanzado para esta invitación.",
     "tableChild": "Niño",
     "childYes": "Sí",
-    "childrenConfirmed": "Niños confirmados: {{count}}"
+    "childrenConfirmed": "Niños confirmados: {{count}}",
+    "manualCompanionsLabel": "Acompañantes",
+    "manualAddCompanion": "Añadir acompañante",
+    "manualRemoveCompanion": "Quitar acompañante",
+    "deleteEntry": "Eliminar entrada"
   },
   "share": {
     "publishedAt": "Tu invitación está publicada en:",

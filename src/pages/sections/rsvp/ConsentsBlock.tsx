@@ -8,8 +8,6 @@ interface ConsentsBlockProps {
   onField: (field: string, value: unknown) => void;
   showHealthConsent: boolean;
   signatureEnabled: boolean;
-  contactEnabled: boolean;
-  showNameOption: boolean;
   policyVersion?: string | undefined;
   frozen: boolean;
   disabled: boolean;
@@ -27,8 +25,6 @@ const ConsentsBlock = memo(function ConsentsBlock({
   onField,
   showHealthConsent,
   signatureEnabled,
-  contactEnabled,
-  showNameOption,
   policyVersion,
   frozen,
   disabled,
@@ -99,53 +95,6 @@ const ConsentsBlock = memo(function ConsentsBlock({
         </label>
       ) : null}
 
-      {/* Contacto opcional GDPR art.7: solo viaja si hay consentimiento explícito */}
-      {contactEnabled && !frozen ? (
-        <div className="rv2-contact">
-          <p className="setup-label rv2-sublabel">{t("rsvp.contactOptional")}</p>
-          <input
-            className="setup-input"
-            value={form.phone}
-            onChange={(e) => onField("phone", e.target.value.slice(0, 30))}
-            placeholder={t("rsvp.phonePlaceholder")}
-            inputMode="tel"
-            autoComplete="tel"
-            aria-label={t("rsvp.phonePlaceholder")}
-            disabled={disabled}
-          />
-          <input
-            className="setup-input"
-            value={form.email}
-            onChange={(e) => onField("email", e.target.value.slice(0, 200))}
-            placeholder={t("rsvp.emailPlaceholder")}
-            type="email"
-            autoComplete="email"
-            aria-label={t("rsvp.emailPlaceholder")}
-            disabled={disabled}
-          />
-          <label className="rv2-check rv2-check--muted">
-            <input
-              type="checkbox"
-              checked={form.contactConsent}
-              onChange={(e) => onField("contactConsent", e.target.checked)}
-              disabled={disabled}
-            />
-            <span>{t("rsvp.contactConsentLabel")}</span>
-          </label>
-        </div>
-      ) : null}
-
-      {showNameOption && !frozen ? (
-        <label className="rv2-check rv2-check--muted">
-          <input
-            type="checkbox"
-            checked={Boolean(form.showNameInConfirmed)}
-            onChange={(e) => onField("showNameInConfirmed", e.target.checked)}
-            disabled={disabled}
-          />
-          <span>{t("rsvp.showNameInConfirmedLabel")}</span>
-        </label>
-      ) : null}
     </div>
   );
 });

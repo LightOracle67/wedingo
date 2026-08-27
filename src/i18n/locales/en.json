@@ -219,14 +219,9 @@
     "blockedNotice": "RSVP confirmation is temporarily disabled.",
     "capacityReached": "Maximum capacity reached. No places available.",
     "weddingPassedNotice": "The event has passed: no more confirmations are accepted.",
-    "contactOptional": "Optional contact (for the organizer)",
-    "phonePlaceholder": "Phone (optional)",
-    "emailPlaceholder": "Email (optional)",
-    "contactConsentLabel": "I authorize storing my contact only for event logistics (GDPR art. 7).",
-    "showNameInConfirmedLabel": "I accept that my name appears in the public confirmed list on the cover (GDPR art. 7).",
     "policyVersion": "Privacy policy version {{version}}",
     "capacityLeft": "{{count}} places left",
-    "daysLeft": "{{count}} days to confirm",
+    "daysLeft": "{{days}} days to confirm",
     "summaryTitle": "Your response",
     "summaryAttendance": "Attendance: {{v}}",
     "summaryMenu": "Menu: {{m}}",
@@ -686,7 +681,11 @@
     "manualLimitReached": "Response limit reached for this invitation.",
     "tableChild": "Child",
     "childYes": "Yes",
-    "childrenConfirmed": "Confirmed children: {{count}}"
+    "childrenConfirmed": "Confirmed children: {{count}}",
+    "manualCompanionsLabel": "Companions",
+    "manualAddCompanion": "Add companion",
+    "manualRemoveCompanion": "Remove companion",
+    "deleteEntry": "Delete entry"
   },
   "share": {
     "publishedAt": "Your invitation is published at:",

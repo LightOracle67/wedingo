@@ -343,10 +343,14 @@ export default function PublicInvitation() {
     visibleOrder,
     {
       // `enabled` requiere que el sobre esté fuera Y que el vídeo de bienvenida
-      // esté cerrado: así la animación de entrada del hero no se ejecuta detrás
-      // del vídeo (el usuario la vería perdida y al cerrarlo el hero aparecería
-      // ya renderizado). Sin vídeo, se activa justo al terminar el sobre.
-      enabled: !showEnvelope && !videoOpen,
+      // esté cerrado. Se usa `showWelcomeVideo` (no `videoOpen`) para que la
+      // animación de SALIDA del vídeo (videoClosing) NO bloquee el contenido:
+      // así, en cuanto el usuario cierra (o la salida empieza) la invitación
+      // vuelve a scrollear y a activar secciones. Mostrar el vídeo modales
+      // encima y bloquear el fondo es correcto; bloquea solo mientras está
+      // visible, no durante su cierre. Regla del usuario: el formulario RSVP
+      // debe ser accesible en móvil/desktop tras cerrar el vídeo.
+      enabled: !showEnvelope && !showWelcomeVideo,
       reducedMotion,
       // Animaciones de navegación desactivadas (base ∪ invitado): el hook las
       // respeta por código (transiciones, snap y entrada 3D).
@@ -794,7 +798,7 @@ export default function PublicInvitation() {
           mantiene montado durante la salida para que el fade no se corte). */}
       {envelopeOpen &&
       (showWelcomeVideo || videoClosing) &&
-      config.welcomeVideo &&
+      publicConfig.welcomeVideo &&
       config.welcomeVideoEnabled !== "false" ? (
         <div
           ref={welcomeVideoRef}

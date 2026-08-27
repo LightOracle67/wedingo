@@ -77,8 +77,6 @@ const baseForm: RsvpFormData = {
   digitalSignature: false,
   phone: "",
   email: "",
-  contactConsent: false,
-  showNameInConfirmed: false,
 };
 
 const baseProps = {
@@ -153,14 +151,18 @@ describe("RsvpSection", () => {
     expect(retry).toHaveBeenCalled();
   });
 
-  it("muestra los campos de contacto y el consentimiento de contacto", () => {
-    Object.assign(mockConfig, { rsvpContactEnabled: "true" });
+  it("no pide teléfono ni email ni el consentimiento de la lista pública", () => {
+    // Decisión de producto: el contacto opcional y la lista pública de
+    // confirmados no se implantan; no hay campos que pedir al invitado.
+    Object.assign(mockConfig, { rsvpContactEnabled: "true", showConfirmedPeople: "true" });
     render(<WrappedRsvp {...baseProps} />);
-    expect(screen.getByLabelText("rsvp.phonePlaceholder")).toBeDefined();
-    expect(screen.getByLabelText("rsvp.emailPlaceholder")).toBeDefined();
-    expect(screen.getByLabelText("rsvp.contactConsentLabel")).toBeDefined();
+    expect(screen.queryByLabelText("rsvp.phonePlaceholder")).toBeNull();
+    expect(screen.queryByLabelText("rsvp.emailPlaceholder")).toBeNull();
+    expect(screen.queryByLabelText("rsvp.contactConsentLabel")).toBeNull();
+    expect(screen.queryByLabelText("rsvp.showNameInConfirmedLabel")).toBeNull();
     // Restaura para no contaminar otros tests (mockConfig es compartido).
     delete mockConfig.rsvpContactEnabled;
+    delete mockConfig.showConfirmedPeople;
   });
 
   it("envía el formulario al pulsar el botón", () => {

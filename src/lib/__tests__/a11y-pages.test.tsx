@@ -291,8 +291,6 @@ describe("a11y-page-audit", () => {
       digitalSignature: false,
       phone: "",
       email: "",
-      contactConsent: false,
-      showNameInConfirmed: false,
     };
     const { container } = render(
       <RsvpFormContext.Provider

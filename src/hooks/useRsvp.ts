@@ -66,10 +66,8 @@ export interface RsvpFormData {
   digitalSignature: boolean;
   phone: string;
   email: string;
-  contactConsent: boolean;
   /** Opt-in: mostrar el nombre en la lista pública de confirmados (portada).
    *  Solo se publica si es true (GDPR art. 7: consentimiento afirmativo). */
-  showNameInConfirmed: boolean;
 }
 
 interface RsvpEntryData {
@@ -132,9 +130,7 @@ function RsvpFormDefault(): RsvpFormData {
     digitalSignature: false,
     phone: "",
     email: "",
-    contactConsent: false,
     // Por defecto NO se publica el nombre (opt-in estricto).
-    showNameInConfirmed: false,
   };
 }
 
@@ -667,15 +663,6 @@ export function useRsvp(
         batch.set(rsvpResponseRef(inviteToken, mainGuestId), mainGuestData);
         for (let i = 0; i < companionCount; i++) {
           batch.set(rsvpResponseRef(inviteToken, companionDocIds[i]!), companionPayloads[i]);
-        }
-        // Lista pública de confirmados: solo cuando asiste Y da consentimiento
-        // explícito (GDPR art. 7). La regla es create-only (id estable del
-        // nombre), así que un reintento no duplica ni suplanta.
-        if (isAttending && form.showNameInConfirmed) {
-          batch.set(doc(db, "invitations", inviteToken, "confirmedPeople", `c_${stableGuestId(single)}`), {
-            name: single.slice(0, 60),
-            createdAt: nowTimestamp,
-          });
         }
         // Escritura directa del nuevo valor: las reglas exigen exactamente
         // count == valor_previo + 1 para escrituras públicas.

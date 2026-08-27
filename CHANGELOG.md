@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.145.0 — 2026-08-27
+- Botones de editar y eliminar como iconos en filas de la tabla de asistencia (eliminar con confirmación); el editor permite cambiar todos los datos del invitado y de sus acompañantes (nombre, asistencia, menú, alergias, transporte y crear/quitar acompañantes) con pruebas.
+- Dejado de pedir teléfono y email en el RSVP (contacto opcional eliminado) y quitado el consentimiento de la lista pública de confirmados (no se va a implementar).
+- Corregido el RSVP en pantallas pequeñas: la invitación se quedaba bloqueada al abrir el vídeo de bienvenida (sin scroll ni secciones activables); ahora se desbloquea al cerrar el vídeo.
 ## 2.144.0 — 2026-08-27
 - La sección Recinto desaparece de la configuración solo cuando los dos toggles (mapa y mesas) están desactivados y las dos secciones están ocultas en el editor de orden; se elimina el botón de reactivación que no se pidió.
 ## 2.143.0 — 2026-08-27

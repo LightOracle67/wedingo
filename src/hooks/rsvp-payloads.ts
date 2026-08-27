@@ -26,10 +26,8 @@ interface RsvpFormLike {
   digitalSignature?: boolean;
   phone?: string;
   email?: string;
-  contactConsent?: boolean;
   privacyConsent?: boolean;
   healthConsent?: boolean;
-  showNameInConfirmed?: boolean;
 }
 
 export function buildMainGuestData(input: {
@@ -68,11 +66,6 @@ export function buildMainGuestData(input: {
   if (data.digitalSignature) mainGuestData.digitalSignature = true;
   // Contacto opcional: SOLO se guarda si el invitado dio consentimiento
   // explícito (GDPR art. 7). Sin consentimiento, ni teléfono ni email viajan.
-  if (data.contactConsent) {
-    if (data.phone) mainGuestData.phone = String(data.phone).slice(0, 30);
-    if (data.email) mainGuestData.email = String(data.email).slice(0, 200);
-    mainGuestData.contactConsent = true;
-  }
   // Solo añadir campos de transporte si el invitado ASISTE (isAttending=true).
   // Cuando attendance="no", no se guardan preferencias de transporte.
   if (isAttending) {

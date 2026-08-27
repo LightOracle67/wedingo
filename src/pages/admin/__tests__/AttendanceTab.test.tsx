@@ -17,14 +17,16 @@ const fsMocks = vi.hoisted(() => ({
   update: vi.fn(),
   setDoc: vi.fn(),
   getDoc: vi.fn(),
+  delete: vi.fn(),
 }));
 vi.mock("firebase/firestore", () => ({
   doc: vi.fn(() => "doc-ref"),
-  writeBatch: () => ({ update: fsMocks.update, set: fsMocks.setDoc, commit: fsMocks.commit }),
+  writeBatch: () => ({ update: fsMocks.update, set: fsMocks.setDoc, delete: fsMocks.delete, commit: fsMocks.commit }),
   serverTimestamp: () => "ts",
   getDoc: fsMocks.getDoc,
 }));
 vi.mock("../../../lib/firebase", () => ({ db: "db-mock" }));
+vi.mock("../../../lib/crypto-utils", () => ({ encrypt: vi.fn((text: string) => `enc:${text}`) }));
 vi.mock("../../../lib/async-utils", () => ({
   withWriteRetry: <T,>(fn: () => Promise<T>) => fn(),
 }));
@@ -909,7 +911,7 @@ describe("AttendanceTab", () => {
     ];
     render(<AttendanceTab {...baseConfig} filteredEntries={entries as never} rsvpEntries={entries as never} />);
     // Botón de edición en la fila.
-    const editBtns = screen.getAllByText("attendance.editManual");
+    const editBtns = screen.getAllByLabelText(/attendance[.]editManual/);
     fireEvent.click(editBtns[0]!);
     expect(screen.getByRole("dialog", { name: "attendance.manualEditTitle" })).toBeDefined();
     fireEvent.click(screen.getByText("attendance.manualSave"));
@@ -1166,5 +1168,92 @@ describe("AttendanceTab — matriz de ordenación", () => {
     expect(rowNames(container)[rowNames(container).length - 1]).toContain("Beto");
     clickHeader("attendance.tableConsents");
     expect(rowNames(container)[0]).toContain("Beto");
+  });
+
+  describe("AttendanceTab — acciones de la fila", () => {
+    it("muestra iconos de editar y eliminar por fila y eliminar borra la entrada", () => {
+      const entries = [
+        { id: "1", guestName: "Ana", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
+      ];
+      render(<AttendanceTab {...baseConfig} filteredEntries={entries as never} rsvpEntries={entries as never} />);
+      // Iconos como botones con aria-label que incluye el nombre del invitado.
+      expect(screen.getByLabelText("attendance.editManual: Ana")).toBeDefined();
+      fireEvent.click(screen.getByLabelText("attendance.deleteEntry: Ana"));
+      expect(baseConfig.handleDeleteRsvpEntries).toHaveBeenCalledWith(["1"]);
+    });
+
+    it("carga los acompañantes del invitado al editar", () => {
+      const entries = [
+        {
+          id: "1",
+          guestName: "Ana García",
+          attendance: "yes",
+          companions: 2,
+          dietaryInfo: "",
+          submittedAt: "2024-01-01",
+          companionNames: ["Carlos Ruiz", "Lucía Gómez"],
+          companionMenus: ["pescado", "vegano"],
+          companionAllergies: [["sin-lactosa"], []],
+          companionAllergiesOther: ["", ""],
+          companionIsChildren: ["no", "yes"],
+          companionDocIds: ["c1", "c2"],
+        },
+      ];
+      render(<AttendanceTab {...baseConfig} menuEnabled={true} filteredEntries={entries as never} rsvpEntries={entries as never} />);
+      fireEvent.click(screen.getByLabelText("attendance.editManual: Ana García"));
+      // El modal (dialog) expone los campos de cada acompañante con su orden.
+      const name1 = screen.getByLabelText("attendance.manualCompanionsLabel 1 - attendance.manualNameLabel") as HTMLInputElement;
+      const name2 = screen.getByLabelText("attendance.manualCompanionsLabel 2 - attendance.manualNameLabel") as HTMLInputElement;
+      expect(name1.value).toBe("Carlos Ruiz");
+      expect(name2.value).toBe("Lucía Gómez");
+      const menu1 = screen.getByLabelText("attendance.manualCompanionsLabel 1 - rsvp.menuLabel") as HTMLSelectElement;
+      expect(menu1.value).toBe("pescado");
+    });
+
+    it("crea el documento del acompañante al guardar con uno nuevo", async () => {
+      const entries = [
+        { id: "1", guestName: "Ana", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
+      ];
+      render(<AttendanceTab {...baseConfig} menuEnabled={true} filteredEntries={entries as never} rsvpEntries={entries as never} />);
+      fireEvent.click(screen.getByLabelText("attendance.editManual: Ana"));
+      fireEvent.click(screen.getByText("attendance.manualAddCompanion"));
+      fireEvent.change(screen.getByLabelText("attendance.manualCompanionsLabel 1 - attendance.manualNameLabel"), {
+        target: { value: "Nuevo Comp" },
+      });
+      fireEvent.click(screen.getByText("attendance.manualSave"));
+      await vi.waitFor(() => expect(fsMocks.commit).toHaveBeenCalled());
+      // El lote incluye un doc con rsvpType companion enlazado al main.
+      expect(fsMocks.setDoc.mock.calls.some((c: unknown[]) => (c[1] as { rsvpType?: string })?.rsvpType === "companion")).toBe(true);
+    });
+
+    it("elimina el documento del acompañante quitado al guardar", async () => {
+      const entries = [
+        {
+          id: "1",
+          guestName: "Ana",
+          attendance: "yes",
+          companions: 1,
+          dietaryInfo: "",
+          submittedAt: "2024-01-01",
+          companionNames: ["Viejo"],
+          companionDocIds: ["comp_old"],
+        },
+      ];
+      render(<AttendanceTab {...baseConfig} filteredEntries={entries as never} rsvpEntries={entries as never} />);
+      fireEvent.click(screen.getByLabelText("attendance.editManual: Ana"));
+      fireEvent.click(screen.getByLabelText("attendance.manualRemoveCompanion 1"));
+      fireEvent.click(screen.getByText("attendance.manualSave"));
+      await vi.waitFor(() => expect(fsMocks.commit).toHaveBeenCalled());
+      expect(fsMocks.delete).toHaveBeenCalledWith("doc-ref");
+    });
+
+    it("no muestra el selector de menú cuando la invitación no lo tiene activo", () => {
+      const entries = [
+        { id: "1", guestName: "Ana", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" },
+      ];
+      render(<AttendanceTab {...baseConfig} menuEnabled={false} filteredEntries={entries as never} rsvpEntries={entries as never} />);
+      fireEvent.click(screen.getByLabelText("attendance.editManual: Ana"));
+      expect(screen.queryByLabelText("rsvp.menuLabel")).toBeNull();
+    });
   });
 });

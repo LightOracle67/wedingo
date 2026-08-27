@@ -9,6 +9,11 @@ import { useToast } from "../../hooks/useToast";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { SortableTh } from "../../components/SortableTh";
 import { withWriteRetry } from "../../lib/async-utils";
+import { encrypt } from "../../lib/crypto-utils";
+import { parseDietaryInfo } from "../../lib/rsvp-utils";
+import { parseTransportDepartures } from "../../lib/transport-utils";
+import { departureLabel, type Departure } from "../sections/rsvp/derive";
+import { ALLERGIES } from "../sections/rsvp/constants";
 
 interface RsvpEntry {
   id: string;
@@ -36,6 +41,12 @@ interface RsvpEntry {
   companionTransportChoices?: string[];
   companionTransportModes?: string[];
   mainGuestDocId?: string;
+  /// Datos de acompañantes (arrays paralelos que guarda el doc principal).
+  companionNames?: string[];
+  companionMenus?: string[];
+  companionAllergies?: string[][];
+  companionAllergiesOther?: string[];
+  companionIsChildren?: string[];
 }
 
 export interface AttendanceTabProps {
@@ -55,6 +66,9 @@ export interface AttendanceTabProps {
   inviteToken?: string;
   /** Se invoca tras añadir/editar manualmente para recargar la lista. */
   onDataChanged?: () => void;
+  /** Si la invitación tiene menú (menuEnabled === true) el modal de edición
+   *  ofrece la selección de plato (carne/pescado/vegano). */
+  menuEnabled?: boolean;
 }
 
 const PAGE_SIZES = [10, 25, 50, 100];
@@ -76,6 +90,29 @@ function formatMenuLabel(mealChoice: string, t: (key: string) => string): string
   return t("rsvp.menu" + mealChoice.charAt(0).toUpperCase() + mealChoice.slice(1));
 }
 
+/** Icono de lápiz (editar). SVG inline: sin dependencias ni emojis. */
+function IconEdit() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 20h9" />
+      <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+    </svg>
+  );
+}
+
+/** Icono de papelera (eliminar). SVG inline: sin dependencias ni emojis. */
+function IconTrash() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 6h18" />
+      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+      <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+      <line x1="10" y1="11" x2="10" y2="17" />
+      <line x1="14" y1="11" x2="14" y2="17" />
+    </svg>
+  );
+}
+
 const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const {
     searchQuery,
@@ -91,6 +128,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     transportDepartures,
     inviteToken,
     onDataChanged,
+    menuEnabled,
   } = props;
   const { t } = useTranslation();
   const { addToast } = useToast();
@@ -99,22 +137,123 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
 
   // ── Añadir/editar respuesta manualmente (invitaciones físicas) ──
-  const [editing, setEditing] = useState<{ id?: string; name: string; attendance: "yes" | "no"; notes: string } | null>(
-    null,
-  );
+  // El estado de edición incluye TODOS los datos modificables del invitado
+  // (menú, alergias, transporte y acompañantes) para poder corregir cualquier
+  // campo, también de respuestas enviadas por los propios invitados.
+  interface EditingCompanion {
+    /** Id del doc del acompañante si ya existía; si no, se crea al guardar. */
+    docId?: string | undefined;
+    name: string;
+    menu: string;
+    allergies: string[];
+    other: string;
+    isChild: boolean;
+  }
+  interface EditingState {
+    id?: string;
+    /** Ids de docs de acompañantes existentes (para borrar los que se quitan). */
+    companionDocIds: string[];
+    name: string;
+    attendance: "yes" | "no";
+    notes: string;
+    mealChoice: string;
+    allergySelection: string[];
+    allergyOther: string;
+    transportMode: string;
+    transportChoice: string;
+    companions: EditingCompanion[];
+  }
+  const [editing, setEditing] = useState<EditingState | null>(null);
   const [savingManual, setSavingManual] = useState(false);
 
+  /** Lista de salidas de transporte (se parsea de la config de la invitación). */
+  const departuresList: Departure[] = useMemo(() => {
+    try {
+      return parseTransportDepartures(transportDepartures || "");
+    } catch {
+      return [];
+    }
+  }, [transportDepartures]);
+
   const openEdit = useCallback((entry: RsvpEntry) => {
+    const parsed = parseDietaryInfo(entry.dietaryInfo || "", !!entry.mealChoice);
+    // Acompañantes: el hook de RSVP reconstruye los arrays paralelos del main
+    // desde los docs de acompañantes, así que aquí se leen tal cual.
+    const companions: EditingCompanion[] = (entry.companionNames ?? []).map((name: string, i: number) => {
+      const rawAl: unknown = entry.companionAllergies?.[i] ?? "";
+      const selection = Array.isArray(rawAl)
+        ? rawAl.filter((x): x is string => typeof x === "string")
+        : parseDietaryInfo(String(rawAl), false).dietarySelection;
+      return {
+        docId: entry.companionDocIds?.[i],
+        name: name ?? "",
+        menu: entry.companionMenus?.[i] ?? "",
+        allergies: selection,
+        other: entry.companionAllergiesOther?.[i] ?? "",
+        isChild: entry.companionIsChildren?.[i] === "yes",
+      };
+    });
     setEditing({
       id: entry.id,
+      companionDocIds: entry.companionDocIds ?? [],
       name: entry.guestName || "",
       attendance: entry.attendance === "yes" ? "yes" : "no",
       notes: entry.dietaryInfo || "",
+      mealChoice: entry.mealChoice || "",
+      allergySelection: parsed.dietarySelection,
+      allergyOther: parsed.dietaryOther || "",
+      transportMode: entry.transportMode || "own",
+      transportChoice: entry.transportChoice || "",
+      companions,
     });
   }, []);
 
   const openAdd = useCallback(() => {
-    setEditing({ name: "", attendance: "yes", notes: "" });
+    setEditing({
+      companionDocIds: [],
+      name: "",
+      attendance: "yes",
+      notes: "",
+      mealChoice: "",
+      allergySelection: [],
+      allergyOther: "",
+      transportMode: "own",
+      transportChoice: "",
+      companions: [],
+    });
+  }, []);
+
+  /** CRUD del estado del modal sobre la lista de acompañantes. */
+  const addCompanion = useCallback(() => {
+    setEditing((prev) =>
+      prev ? { ...prev, companions: [...prev.companions, { name: "", menu: "", allergies: [], other: "", isChild: false }] } : prev,
+    );
+  }, []);
+  const removeCompanionAt = useCallback((index: number) => {
+    setEditing((prev) =>
+      prev ? { ...prev, companions: prev.companions.filter((_, i) => i !== index) } : prev,
+    );
+  }, []);
+  const patchCompanion = useCallback((index: number, patch: Partial<EditingCompanion>) => {
+    setEditing((prev) =>
+      prev
+        ? { ...prev, companions: prev.companions.map((c, i) => (i === index ? { ...c, ...patch } : c)) }
+        : prev,
+    );
+  }, []);
+  const toggleCompanionAllergy = useCallback((index: number, allergy: string) => {
+    setEditing((prev) =>
+      prev
+        ? {
+            ...prev,
+            companions: prev.companions.map((c, i) =>
+              i === index
+                ? { ...c, allergies: c.allergies.includes(allergy) ? c.allergies.filter((a) => a !== allergy) : [...c.allergies, allergy] }
+                : c,
+            ),
+          }
+        : prev,
+    );
   }, []);
 
   /** Guarda la respuesta manual: crea si no tiene id, actualiza si lo tiene.
@@ -129,35 +268,55 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     }
     setSavingManual(true);
     try {
-      // Esquema que cumple la regla create de rsvpResponses/.../responses
-      // (privacyConsent + el resto). En un batch: crear/actualizar el doc y
-      // ajustar el contador del grupo si es una creación.
       const now = serverTimestamp();
+      const isUpdate = Boolean(editing.id);
+      // Id determinista para nuevos mains (misma convención que antes).
+      const norm = name
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "_")
+        .slice(0, 30);
+      const mainId = editing.id ?? `main_manual_${norm || "invitado"}_${crypto.randomUUID()}`;
+      const attending = editing.attendance === "yes";
+      // Las alergias se aplanan igual que el RSVP (join " | ") y se cifran
+      // como hace el cliente: las reglas exigen dietaryInfo cifrado o vacío.
+      const allergyText = [...editing.allergySelection, editing.allergyOther].filter((a: string) => a.trim()).join(" | ");
+      const encryptedDietary = allergyText ? encrypt(allergyText, inviteToken) : "";
+      const complements = editing.companions.filter((c) => c.name.trim());
+      // Esquema que cumple la regla create/update de rsvpResponses/.../responses
+      // (whitelist de campos; todos los usados están permitidos).
       const payload: Record<string, unknown> = {
         rsvpType: "main",
         guestName: name.slice(0, 120),
         attendance: editing.attendance,
-        dietaryInfo: editing.notes.slice(0, 4000),
+        dietaryInfo: encryptedDietary,
         inviteToken,
         submittedAt: now,
         privacyConsent: true,
         privacyConsentAt: now,
       };
+      if (attending) {
+        if (editing.mealChoice) payload.mealChoice = editing.mealChoice.slice(0, 30);
+        if (allergyText) {
+          payload.healthConsent = true;
+          payload.healthConsentAt = now;
+        }
+        payload.transportMode = editing.transportMode.slice(0, 10);
+        if (editing.transportChoice) payload.transportChoice = editing.transportChoice.slice(0, 20);
+        if (complements.length) {
+          payload.companionCount = complements.length;
+          payload.companionNames = complements.map((c) => c.name.trim().slice(0, 120));
+          payload.companionMenus = complements.map((c) => (c.menu ? c.menu.slice(0, 30) : ""));
+          payload.companionAllergies = complements.map((c) => [...c.allergies, c.other].filter((a: string) => a.trim()).join(" | "));
+          payload.companionAllergiesOther = complements.map((c) => c.other.slice(0, 200));
+        }
+      }
       const batch = writeBatch(db);
-      if (editing.id) {
-        batch.update(doc(db, "rsvpResponses", inviteToken, "responses", editing.id), payload);
+      if (isUpdate) {
+        batch.update(doc(db, "rsvpResponses", inviteToken, "responses", editing.id!), payload);
       } else {
-        // Id determinista a partir del nombre (reintento idempotente y sin
-        // caracteres de ruta ilegales). Buffer no está disponible en el
-        // navegador SPA, así que se genera con codificación base64url local.
-        const norm = name
-          .toLowerCase()
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .replace(/[^a-z0-9]+/g, "_")
-          .slice(0, 30);
-        const id = `main_manual_${norm || "invitado"}_${crypto.randomUUID()}`;
-        batch.set(doc(db, "rsvpResponses", inviteToken, "responses", id), payload);
+        batch.set(doc(db, "rsvpResponses", inviteToken, "responses", mainId), payload);
         // El contador del grupo debe existir e incrementarse para que la regla
         // create (exists + count < 500) valide.
         await withWriteRetry(async () => {
@@ -168,8 +327,41 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
           else batch.update(counterRef, { count: snap.data()!.count + 1 });
         });
       }
+      // Acompañantes: cada uno se guarda en su doc (con isChild, menú y
+      // alergias) igual que hace el flujo público, enlazado al main.
+      if (attending && complements.length) {
+        complements.forEach((c) => {
+          const compId = c.docId ?? `comp_manual_${norm || "invitado"}_${crypto.randomUUID()}`;
+          const compAllergyText = [...c.allergies, c.other].filter((a: string) => a.trim()).join(" | ");
+          const compPayload: Record<string, unknown> = {
+            rsvpType: "companion",
+            guestName: c.name.trim().slice(0, 120),
+            attendance: "yes",
+            dietaryInfo: compAllergyText ? encrypt(compAllergyText, inviteToken) : "",
+            inviteToken,
+            submittedAt: now,
+            privacyConsent: true,
+            privacyConsentAt: now,
+            mainGuestDocId: mainId,
+            mainGuestName: name.slice(0, 120),
+            isChild: c.isChild,
+          };
+          if (compAllergyText) {
+            compPayload.healthConsent = true;
+            compPayload.healthConsentAt = now;
+          }
+          if (c.docId) batch.update(doc(db, "rsvpResponses", inviteToken, "responses", compId), compPayload);
+          else batch.set(doc(db, "rsvpResponses", inviteToken, "responses", compId), compPayload);
+        });
+      }
+      // Borra los docs de acompañantes que ya no están en la lista: evita
+      // filas huérfanas en la tabla (la sesión de admin lo permite).
+      const keptDocIds = new Set(complements.map((c) => c.docId).filter((d): d is string => Boolean(d)));
+      for (const oldId of editing.companionDocIds) {
+        if (!keptDocIds.has(oldId)) batch.delete(doc(db, "rsvpResponses", inviteToken, "responses", oldId));
+      }
       await withWriteRetry(() => batch.commit());
-      addToast("success", t(editing.id ? "attendance.manualUpdated" : "attendance.manualAdded"));
+      addToast("success", t(isUpdate ? "attendance.manualUpdated" : "attendance.manualAdded"));
       setEditing(null);
       if (onDataChanged) onDataChanged();
     } catch (err) {
@@ -573,22 +765,38 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                   return (
                     <tr key={entry.id}>
                       <td>
-                        <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem", alignItems: "center" }}>
+                        {/* Acciones en línea: seleccionar, editar (icono lápiz) y
+                            eliminar (icono papelera, pide confirmación). */}
+                        <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", justifyContent: "center" }}>
                           <input
                             type="checkbox"
                             checked={selectedIds.has(entry.id)}
                             onChange={() => toggleOne(entry.id)}
                             aria-label={t("attendance.selectEntry", { name: entry.guestName })}
                           />
-                          {inviteToken && !isCompanion ? (
-                            <button
-                              type="button"
-                              className="setup-button setup-button--ghost setup-button--compact"
-                              style={{ fontSize: "0.7rem", padding: "0.1rem 0.4rem" }}
-                              onClick={() => openEdit(entry)}
-                            >
-                              {t("attendance.editManual")}
-                            </button>
+                          {inviteToken ? (
+                            <>
+                              <button
+                                type="button"
+                                className="setup-button setup-button--ghost setup-button--compact"
+                                style={{ padding: "0.2rem 0.45rem", display: "inline-flex", alignItems: "center" }}
+                                onClick={() => openEdit(entry)}
+                                aria-label={`${t("attendance.editManual")}: ${entry.guestName}`}
+                                title={t("attendance.editManual")}
+                              >
+                                <IconEdit />
+                              </button>
+                              <button
+                                type="button"
+                                className="setup-button setup-button--ghost setup-button--compact"
+                                style={{ padding: "0.2rem 0.45rem", display: "inline-flex", alignItems: "center", color: "var(--danger, #c0392b)" }}
+                                onClick={() => handleDeleteRsvpEntries([entry.id])}
+                                aria-label={`${t("attendance.deleteEntry")}: ${entry.guestName}`}
+                                title={t("attendance.deleteEntry")}
+                              >
+                                <IconTrash />
+                              </button>
+                            </>
                           ) : null}
                         </div>
                       </td>
@@ -750,13 +958,14 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
         </div>
       )}
 
-      {/* Modal de añadir/editar respuesta manual (invitaciones físicas). */}
+      {/* Modal de añadir/editar respuesta manual (invitaciones físicas y
+          corrección de respuestas de invitados): todos los datos editables. */}
       {editing ? (
         <Modal
           title={editing.id ? t("attendance.manualEditTitle") : t("attendance.manualAddTitle")}
           closeLabel={t("common.close")}
           onClose={() => setEditing(null)}
-          style={{ maxWidth: "460px" }}
+          style={{ maxWidth: "560px" }}
         >
           <form
             onSubmit={(e) => {
@@ -789,19 +998,180 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
               <option value="yes">{t("attendance.filterYes")}</option>
               <option value="no">{t("attendance.filterNo")}</option>
             </select>
-            <label className="setup-label" htmlFor="manualRsvpNotes" style={{ marginTop: "0.6rem" }}>
-              {t("attendance.manualNotesLabel")}
-            </label>
-            <textarea
-              id="manualRsvpNotes"
-              className="setup-textarea"
-              rows={2}
-              value={editing.notes}
-              onChange={(e) => setEditing({ ...editing, notes: e.target.value })}
-              maxLength={4000}
-              placeholder={t("attendance.manualNotesPlaceholder")}
-              disabled={savingManual}
-            />
+
+            {/* Solo si asiste: menú, alergias y transporte. */}
+            {editing.attendance === "yes" ? (
+              <>
+                {menuEnabled ? (
+                  <>
+                    <label className="setup-label" htmlFor="manualRsvpMeal" style={{ marginTop: "0.6rem" }}>
+                      {t("rsvp.menuLabel")}
+                    </label>
+                    <select
+                      id="manualRsvpMeal"
+                      className="setup-input"
+                      value={editing.mealChoice}
+                      onChange={(e) => setEditing({ ...editing, mealChoice: e.target.value })}
+                      disabled={savingManual}
+                    >
+                      <option value="">{t("rsvp.menuPlaceholder")}</option>
+                      <option value="carne">{t("rsvp.menuCarne")}</option>
+                      <option value="pescado">{t("rsvp.menuPescado")}</option>
+                      <option value="vegano">{t("rsvp.menuVegano")}</option>
+                    </select>
+                  </>
+                ) : null}
+                <fieldset style={{ border: "none", padding: 0, marginTop: "0.6rem" }}>
+                  <legend className="setup-label">{t("rsvp.allergiesLegend")}</legend>
+                  {ALLERGIES.map((a) => (
+                    <label key={a} className="setup-checkbox-label" style={{ fontWeight: 400 }}>
+                      <input
+                        type="checkbox"
+                        checked={editing.allergySelection.includes(a)}
+                        onChange={(e) =>
+                          setEditing({
+                            ...editing,
+                            allergySelection: e.target.checked
+                              ? [...editing.allergySelection, a]
+                              : editing.allergySelection.filter((x) => x !== a),
+                          })
+                        }
+                      />
+                      {t("rsvp.allergies." + a)}
+                    </label>
+                  ))}
+                  <input
+                    className="setup-input"
+                    value={editing.allergyOther}
+                    onChange={(e) => setEditing({ ...editing, allergyOther: e.target.value })}
+                    maxLength={200}
+                    placeholder={t("rsvp.allergiesPlaceholder")}
+                    style={{ marginTop: "0.3rem" }}
+                    disabled={savingManual}
+                  />
+                </fieldset>
+                <label className="setup-label" htmlFor="manualRsvpTransport" style={{ marginTop: "0.6rem" }}>
+                  {t("rsvp.transportLabel")}
+                </label>
+                <select
+                  id="manualRsvpTransport"
+                  className="setup-input"
+                  value={editing.transportMode}
+                  onChange={(e) => setEditing({ ...editing, transportMode: e.target.value })}
+                  disabled={savingManual}
+                >
+                  <option value="own">{t("rsvp.transportOwnCarOption")}</option>
+                  <option value="bus">{t("rsvp.transportBusOption")}</option>
+                  <option value="taxi">{t("rsvp.transportTaxiOption")}</option>
+                </select>
+                {editing.transportMode !== "own" && departuresList.length > 0 ? (
+                  <>
+                    <label className="setup-label" htmlFor="manualRsvpDeparture" style={{ marginTop: "0.6rem" }}>
+                      {t("rsvp.transportDepartureLabel")}
+                    </label>
+                    <select
+                      id="manualRsvpDeparture"
+                      className="setup-input"
+                      value={editing.transportChoice}
+                      onChange={(e) => setEditing({ ...editing, transportChoice: e.target.value })}
+                      disabled={savingManual}
+                    >
+                      {departuresList.map((d, i) => (
+                        <option key={String(i)} value={String(i)}>
+                          {departureLabel(d, t)}
+                        </option>
+                      ))}
+                    </select>
+                  </>
+                ) : null}
+
+                {/* Acompañantes: lista editable con todos sus campos. */}
+                <fieldset style={{ border: "none", padding: 0, marginTop: "0.6rem" }}>
+                  <legend className="setup-label">{t("attendance.manualCompanionsLabel")}</legend>
+                  {editing.companions.map((comp, ci) => (
+                    <div
+                      key={String(ci)}
+                      style={{
+                        border: "1px solid var(--setup-border)",
+                        borderRadius: "8px",
+                        padding: "0.5rem",
+                        marginBottom: "0.4rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "0.3rem",
+                      }}
+                    >
+                      <div style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}>
+                        <input
+                          className="setup-input"
+                          style={{ flex: 1 }}
+                          value={comp.name}
+                          onChange={(e) => patchCompanion(ci, { name: e.target.value })}
+                          maxLength={120}
+                          placeholder={t("attendance.manualNamePlaceholder")}
+                          aria-label={`${t("attendance.manualCompanionsLabel")} ${ci + 1} - ${t("attendance.manualNameLabel")}`}
+                        />
+                        <button
+                          type="button"
+                          className="setup-button setup-button--ghost setup-button--compact"
+                          onClick={() => removeCompanionAt(ci)}
+                          aria-label={`${t("attendance.manualRemoveCompanion")} ${ci + 1}`}
+                          title={t("attendance.manualRemoveCompanion")}
+                        >
+                          ✕
+                        </button>
+                      </div>
+                      {menuEnabled ? (
+                        <select
+                          className="setup-input"
+                          value={comp.menu}
+                          onChange={(e) => patchCompanion(ci, { menu: e.target.value })}
+                          aria-label={`${t("attendance.manualCompanionsLabel")} ${ci + 1} - ${t("rsvp.menuLabel")}`}
+                        >
+                          <option value="">{t("rsvp.menuPlaceholder")}</option>
+                          <option value="carne">{t("rsvp.menuCarne")}</option>
+                          <option value="pescado">{t("rsvp.menuPescado")}</option>
+                          <option value="vegano">{t("rsvp.menuVegano")}</option>
+                        </select>
+                      ) : null}
+                      <div style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap", alignItems: "center" }}>
+                        <label className="setup-checkbox-label" style={{ fontWeight: 400 }}>
+                          <input
+                            type="checkbox"
+                            checked={comp.isChild}
+                            onChange={(e) => patchCompanion(ci, { isChild: e.target.checked })}
+                          />
+                          {t("rsvp.childQuestion")}
+                        </label>
+                        {ALLERGIES.map((a) => (
+                          <label key={a} className="setup-checkbox-label" style={{ fontWeight: 400, fontSize: "0.85rem" }}>
+                            <input
+                              type="checkbox"
+                              checked={comp.allergies.includes(a)}
+                              onChange={() => toggleCompanionAllergy(ci, a)}
+                            />
+                            {t("rsvp.allergies." + a)}
+                          </label>
+                        ))}
+                        <input
+                          className="setup-input"
+                          style={{ flex: 1, minWidth: "8rem" }}
+                          value={comp.other}
+                          onChange={(e) => patchCompanion(ci, { other: e.target.value })}
+                          maxLength={200}
+                          placeholder={t("rsvp.allergiesPlaceholder")}
+                          aria-label={`${t("attendance.manualCompanionsLabel")} ${ci + 1} - ${t("rsvp.allergiesPlaceholder")}`}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                  <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={addCompanion}>
+                    {t("attendance.manualAddCompanion")}
+                  </button>
+                </fieldset>
+              </>
+            ) : null}
+
             <div className="setup-actions" style={{ marginTop: "0.8rem" }}>
               <button className="setup-button" type="submit" disabled={savingManual || !editing.name.trim()}>
                 {savingManual
