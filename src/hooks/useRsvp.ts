@@ -52,7 +52,6 @@ export interface RsvpFormData {
   /** Alergias del grupo de niños (chips + texto libre). */
   childrenAllergies: string[];
   childrenAllergiesOther: string;
-  companionHealthConsents: boolean[];
   companionTransportModes: string[];
   companionTransportChoices: string[];
   menuSelection: string;
@@ -120,7 +119,6 @@ function RsvpFormDefault(): RsvpFormData {
     childrenCount: "0",
     childrenAllergies: [],
     childrenAllergiesOther: "",
-    companionHealthConsents: [],
     companionTransportModes: [],
     companionTransportChoices: [],
     menuSelection: "",
@@ -395,6 +393,128 @@ export function useRsvp(
     }
   }, [canRead, inviteToken, setRsvpForm, hasSubmitted]);
 
+  /**
+   * Aplica el rellenado del formulario cuando el nombre introducido coincide
+   * con una respuesta principal guardada. Se usa tanto en el efecto de
+   * autorrelleno (lector admin, desde rsvpEntries) como en el de estado
+   * previo del invitado (H3, getDoc individual del id derivado del nombre).
+   * El consentimiento de salud es ÚNICO por confirmación, así que se lee
+   * directamente de match.healthConsent (antes se recalculaba por compañero).
+   */
+  const applyMainPrefill = useCallback((match: RsvpEntryData) => {
+    if (match.id !== prefillRef.current) {
+      prefillRef.current = match.id;
+      setAlreadySubmittedEntry(match);
+      const companionCount = match.companionNames?.length || 0;
+      const parsed = parseDietaryInfo(match.dietaryInfo, !!match.mealChoice);
+      setRsvpForm((current) => ({
+        ...current,
+        attendance: companionCount > 0 ? "with" : "alone",
+        companionCount,
+        companionNames: match.companionNames || [],
+        companionMenus: match.companionMenus || [],
+        companionAllergies: match.companionAllergies || [],
+        companionAllergiesOther: match.companionAllergiesOther || [],
+        childrenCount: String(match.childrenCount ?? 0),
+        childrenAllergies: match.childrenAllergies || [],
+        childrenAllergiesOther: match.childrenAllergiesOther || "",
+        companionTransportChoices: match.companionTransportChoices || [],
+        companionTransportModes: match.companionTransportModes || [],
+        companionTransportTimes: match.companionTransportTimes || [],
+        companionTransportPlaces: match.companionTransportPlaces || [],
+        menuSelection: match.mealChoice || "",
+        allergies: parsed.dietarySelection,
+        allergiesOther: parsed.dietaryOther || match.allergiesOther || "",
+        privacyConsent: true,
+        healthConsent: match.healthConsent || false,
+        parentalConsent: match.parentalConsent || false,
+        transportChoice: match.transportChoice || "own",
+        transportMode: match.transportMode || "own",
+        transportTime: match.transportTime || "",
+        transportPlace: match.transportPlace || "",
+      }));
+    } else {
+      setAlreadySubmittedEntry(match);
+    }
+  }, []);
+  // H3 (servidor): si el invitado público ya confirmó en OTRO dispositivo o
+  // navegador, su respuesta existe con id determinista main_<hash(nombre)>.
+  // Al escribir el nombre (o al cargar con él, p. ej. autosave) se hace un
+  // getDoc individual — las reglas solo permiten get de docs main_ de esta
+  // invitación, nunca listar — y si existe se rellena el formulario como
+  // "ya confirmaste". Con debounce para no disparar una lectura por tecla.
+  useEffect(() => {
+    if (canRead || !inviteToken || hasSubmitted) return;
+    const single = normalizeFullName(rsvpForm.guestName).trim();
+    if (single === "") return;
+    const candidateId = `main_${stableGuestId(single)}`;
+    const timer = window.setTimeout(() => {
+      void (async () => {
+        try {
+          const snap = await getDoc(rsvpResponseRef(inviteToken, candidateId));
+          if (!snap.exists()) return;
+          const d = snap.data() as Record<string, unknown>;
+          if (d.inviteToken !== inviteToken) return;
+          // La dietaryInfo viaja cifrada; se descifra igual que el lector admin.
+          let dietaryInfo = typeof d.dietaryInfo === "string" ? d.dietaryInfo : "";
+          if (dietaryInfo !== "") dietaryInfo = await decrypt(dietaryInfo, inviteToken);
+          const match: RsvpEntryData = {
+            id: candidateId,
+            rsvpType: (d.rsvpType as RsvpEntryData["rsvpType"]) || "main",
+            guestName: (d.guestName as string) || single,
+            attendance: (d.attendance as "yes" | "no") || "no",
+            dietaryInfo,
+            attendees: [],
+            companions: Number(d.companionCount) || 0,
+            companionCount: Number(d.companionCount) || 0,
+            companionNames: Array.isArray(d.companionNames) ? (d.companionNames as string[]) : [],
+            companionMenus: Array.isArray(d.companionMenus) ? (d.companionMenus as string[]) : [],
+            companionAllergies: Array.isArray(d.companionAllergies)
+              ? (d.companionAllergies as string[][])
+              : [],
+            companionAllergiesOther: Array.isArray(d.companionAllergiesOther)
+              ? (d.companionAllergiesOther as string[])
+              : [],
+            childrenCount: Number(d.childrenCount) || 0,
+            childrenAllergies: Array.isArray(d.childrenAllergies)
+              ? (d.childrenAllergies as string[])
+              : [],
+            childrenAllergiesOther: typeof d.childrenAllergiesOther === "string" ? d.childrenAllergiesOther : "",
+            allergiesOther: typeof d.allergiesOther === "string" ? d.allergiesOther : "",
+            mealChoice: typeof d.mealChoice === "string" ? d.mealChoice : "",
+            guestNames: "",
+            note: "",
+            submittedAt: "",
+            healthConsent: d.healthConsent === true,
+            transportChoice: typeof d.transportChoice === "string" ? d.transportChoice : "own",
+            transportMode: typeof d.transportMode === "string" ? d.transportMode : "own",
+            transportTime: typeof d.transportTime === "string" ? d.transportTime : "",
+            transportPlace: typeof d.transportPlace === "string" ? d.transportPlace : "",
+            companionTransportChoices: Array.isArray(d.companionTransportChoices)
+              ? (d.companionTransportChoices as string[])
+              : [],
+            companionTransportModes: Array.isArray(d.companionTransportModes)
+              ? (d.companionTransportModes as string[])
+              : [],
+            companionTransportTimes: Array.isArray(d.companionTransportTimes)
+              ? (d.companionTransportTimes as string[])
+              : [],
+            companionTransportPlaces: Array.isArray(d.companionTransportPlaces)
+              ? (d.companionTransportPlaces as string[])
+              : [],
+          };
+          applyMainPrefill(match);
+          setHasSubmitted(true);
+        } catch (err) {
+          // Sin permiso, sin red o doc ajeno: se ignora; el marcador local
+          // sigue cubriendo el caso de este mismo navegador.
+          safeLogError(["[app]", "[useRsvp]", "server restore failed"], err);
+        }
+      })();
+    }, 500);
+    return () => window.clearTimeout(timer);
+  }, [canRead, inviteToken, hasSubmitted, rsvpForm.guestName, applyMainPrefill]);
+
   // Aforo real para el invitado (H2): lee attendingCount del contador público
   // (reglas permiten leer el doc agrupador); se refresca al cambiar el token o
   // cuando cambia el número de respuestas (p. ej. tras un envío).
@@ -422,6 +542,7 @@ export function useRsvp(
     };
   }, [inviteToken, rsvpEntries.length]);
 
+
   // Índice por nombre normalizado (evita recorrer todas las entradas en cada
   // tecla del formulario RSVP cuando hay muchas respuestas).
   const entriesByName = useMemo(() => {
@@ -434,6 +555,7 @@ export function useRsvp(
     }
     return map;
   }, [rsvpEntries]);
+
 
   useEffect(() => {
     // Se normaliza igual que al guardar (normalizeFullName colapsa espacios
@@ -455,6 +577,7 @@ export function useRsvp(
         const parsed = parseDietaryInfo(match.dietaryInfo, !!match.mealChoice);
         setRsvpForm((current) => ({
           ...current,
+
           attendance: "alone",
           companionCount: 0,
           companionNames: [],
@@ -464,7 +587,6 @@ export function useRsvp(
           childrenCount: "0",
           childrenAllergies: [],
           childrenAllergiesOther: "",
-          companionHealthConsents: [],
           companionTransportChoices: [],
           companionTransportModes: [],
           companionTransportTimes: [],
@@ -487,48 +609,12 @@ export function useRsvp(
     }
 
     if (match) {
-      if (match.id !== prefillRef.current) {
-        prefillRef.current = match.id;
-        setAlreadySubmittedEntry(match);
-        const companionCount = match.companionNames?.length || 0;
-        const linkedCompanions = rsvpEntries.filter((e) => e.mainGuestDocId === match.id);
-        const companionHealthConsents = linkedCompanions.map((c) => c.healthConsent || false);
-        const parsed = parseDietaryInfo(match.dietaryInfo, !!match.mealChoice);
-        setRsvpForm((current) => ({
-          ...current,
-          attendance: companionCount > 0 ? "with" : "alone",
-          companionCount,
-          companionNames: match.companionNames || [],
-          companionMenus: match.companionMenus || [],
-          companionAllergies: match.companionAllergies || [],
-          companionAllergiesOther: match.companionAllergiesOther || [],
-          childrenCount: String(match.childrenCount ?? 0),
-          childrenAllergies: match.childrenAllergies || [],
-          childrenAllergiesOther: match.childrenAllergiesOther || "",
-          companionHealthConsents,
-          companionTransportChoices: match.companionTransportChoices || [],
-          companionTransportModes: match.companionTransportModes || [],
-          companionTransportTimes: match.companionTransportTimes || [],
-          companionTransportPlaces: match.companionTransportPlaces || [],
-          menuSelection: match.mealChoice || "",
-          allergies: parsed.dietarySelection,
-          allergiesOther: parsed.dietaryOther || match.allergiesOther || "",
-          privacyConsent: true,
-          healthConsent: match.healthConsent || false,
-          parentalConsent: match.parentalConsent || false,
-          transportChoice: match.transportChoice || "own",
-          transportMode: match.transportMode || "own",
-          transportTime: match.transportTime || "",
-          transportPlace: match.transportPlace || "",
-        }));
-      } else {
-        setAlreadySubmittedEntry(match);
-      }
+      applyMainPrefill(match);
     } else {
       setAlreadySubmittedEntry(null);
       prefillRef.current = null;
     }
-  }, [rsvpForm.guestName, entriesByName, rsvpEntries]);
+  }, [rsvpForm.guestName, entriesByName, rsvpEntries, applyMainPrefill]);
 
   const updateRsvpField = useCallback((field: string, value: unknown) => {
     // Al editar cualquier campo se oculta el error del último submit.
@@ -629,13 +715,10 @@ export function useRsvp(
       if (!data.privacyConsent) {
         return t("rsvp.validation.privacyRequired");
       }
-      // Consentimiento de datos de salud validado EN CLIENTE: si falta y hay
-      // alergias, las reglas Firestore rechazarían el lote con un error
-      // genérico (mapeado además como "límite alcanzado"); así el invitado ve
-      // el motivo real antes de enviar. Aplica al principal y a cada
-      // acompañante con alergias marcadas o texto libre.
-      // Consentimiento de salud (alergias) validado vía función pura:
-      // sin él, las reglas rechazarían el lote con un error genérico.
+      // Consentimiento de datos de salud validado EN CLIENTE: UN checkbox
+      // cubre a todo el grupo (principal, acompañantes y niños). Si falta y
+      // cualquiera tiene alergias, las reglas Firestore rechazarían el lote
+      // con un error genérico mal traducido; así el invitado ve el motivo.
       if (missingHealthConsent(data)) {
         return t("rsvp.validation.healthRequired");
       }

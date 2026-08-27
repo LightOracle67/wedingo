@@ -628,7 +628,23 @@ service cloud.firestore {
         && (!request.resource.data.keys().hasAny(['companionTransportTimes']) || (request.resource.data.companionTransportTimes is list && request.resource.data.companionTransportTimes.size() <= 100))
         && (!request.resource.data.keys().hasAny(['companionTransportPlaces']) || (request.resource.data.companionTransportPlaces is list && request.resource.data.companionTransportPlaces.size() <= 100));
 
-      allow read: if isSuperAdmin()
+      /* Lectura separada en get (doc individual) y list (consultas):
+         el invitado público (sin sesión) puede hacer getDoc SOLO de su
+         propia respuesta, cuyo id deriva deterministamente de su nombre
+         normalizado (main_<hash>). La regla no puede comprobar el hash
+         del nombre pedido, así que el mínimo de exposición es restringir
+         (a) a docs principales de esta misma invitación y (b) a un get
+         individual: un list/query seguiría devolviendo TODOS los docs de
+         la invitación y lo bloqueamos. Así, el invitado escribe su
+         nombre, la app deriva el id y hace getDoc; sin conocer el id
+         derivado de otro invitado (nombre normalizado exacto) no hay
+         fuga, y las alergias siguen cifradas en dietaryInfo. Los docs de
+         acompañantes (comp_*) siguen restringidos a sesión/superadmin. */
+      allow get: if isSuperAdmin()
+        || hasActiveSession(inviteToken)
+        || (resource.data.inviteToken == inviteToken
+          && resource.data.rsvpType == 'main');
+      allow list: if isSuperAdmin()
         || hasActiveSession(inviteToken);
 
       allow update: if request.resource.data.attendance in ['yes', 'no']

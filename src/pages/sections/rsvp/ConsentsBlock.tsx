@@ -16,9 +16,9 @@ interface ConsentsBlockProps {
 }
 
 /**
- * Bloque de consentimientos y datos opcionales del titular: privacidad
- * (obligatoria, con enlace operable a la política), salud condicional,
- * firma digital opcional, contacto opt-in y publicar nombre.
+ * Bloque de consentimientos del RSVP: privacidad (obligatoria, con enlace
+ * operable a la política), salud condicional (UN checkbox cubre a todo el
+ * grupo declarado: principal, acompañantes y niños) y firma digital opcional.
  */
 const ConsentsBlock = memo(function ConsentsBlock({
   form,

@@ -2,6 +2,11 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.148.0 — 2026-08-27
+- El invitado ya confirmado ve su respuesta rellenada también desde el servidor: al escribir su nombre, la app lee su propia respuesta (get individual, sin poder listar las de otros) con el id derivado del nombre.
+- El título del toggle de fecha límite ya no se encoge a una letra por línea al activarlo (los controles hijos bajan a su propia línea).
+- Las alergias del invitado principal se muestran ahora justo debajo de su nombre, antes del selector de asistencia.
+- Un único consentimiento de datos de salud cubre a toda la confirmación (principal, acompañantes y niños); se elimina el checkbox por acompañante.
 ## 2.147.0 — 2026-08-27
 - Aforo real del invitado: el RSVP ahora muestra las plazas restantes contando solo a los confirmados (campo attendingCount del contador) en vez del total que incluía a los que declinaron.
 - Recordatorio de confirmación: el invitado que ya confirmó y recarga la invitación ve su respuesta rellenada (guardado local, sin leer datos del servidor).

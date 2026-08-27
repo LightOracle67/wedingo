@@ -64,7 +64,6 @@ const baseForm: RsvpFormData = {
   childrenCount: "0",
   childrenAllergies: [],
   childrenAllergiesOther: "",
-  companionHealthConsents: [],
   companionTransportChoices: [],
   companionTransportModes: [],
   menuSelection: "",
@@ -623,8 +622,10 @@ describe("RsvpSection", () => {
 
   it("updates a companion allergiesOther field", () => {
     render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "with", companionCount: 1 }} />);
+    // El primer input es el del titulo (ahora se muestra bajo su nombre);
+    // el del acompañante queda en segundo lugar por orden de aparición.
     const inputs = screen.getAllByPlaceholderText("rsvp.allergiesPlaceholder");
-    fireEvent.change(inputs[0]!, { target: { value: "alergia al huevo" } });
+    fireEvent.change(inputs[1]!, { target: { value: "alergia al huevo" } });
     expect(updateRsvpField).toHaveBeenCalledWith("companionAllergiesOther", ["alergia al huevo"]);
   });
 
@@ -943,7 +944,6 @@ describe("RsvpSection", () => {
       childrenCount: "0",
       childrenAllergies: [],
       childrenAllergiesOther: "",
-      companionHealthConsents: [false, false, false],
       companionTransportChoices: ["", "", ""],
       companionTransportModes: ["own", "own", "own"],
       companionTransportTimes: ["", "", ""],

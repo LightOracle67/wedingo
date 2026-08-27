@@ -21,7 +21,7 @@ const mockWriteBatch = vi.hoisted(() =>
     commit: vi.fn(() => Promise.resolve()),
   })),
 );
-const mockGetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve({ exists: () => true, data: () => ({ count: 0 }) })));
+const mockGetDoc = vi.hoisted(() => vi.fn((_ref?: unknown): Promise<{ exists: () => boolean; data: () => Record<string, unknown> }> => Promise.resolve({ exists: () => true, data: () => ({ count: 0 }) })));
 const mockSetDoc = vi.hoisted(() => vi.fn(() => Promise.resolve()));
 const mockEncrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
 const mockDecrypt = vi.hoisted(() => vi.fn((v: string) => Promise.resolve(v)));
@@ -1202,6 +1202,72 @@ describe("useRsvp", () => {
       mockGetDoc.mockResolvedValueOnce({ exists: () => true, data: () => ({ count: 5, attendingCount: 3 }) });
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, false));
       await vi.waitFor(() => expect(result.current.liveAttendingCount).toBe(3));
+    });
+
+    it("restaura la respuesta del servidor al escribir el nombre (H3-read)", async () => {
+      // Emula la respuesta principal guardada en Firestore con id derivado
+      // del nombre normalizado (main_<hash>), como haría otro dispositivo.
+      // Se discrimina por la forma del ref: el de respuesta lleva path,
+      // el del contador H2 no (doc(db,...) con id plano).
+      mockGetDoc.mockImplementation(async (ref: unknown) => {
+        const r = ref as { path?: string; id?: string };
+        if (typeof r.path === "string") {
+          return {
+            exists: () => true,
+            data: () => ({
+              inviteToken: "test-token",
+              rsvpType: "main",
+              guestName: "Ana García López",
+              attendance: "yes",
+              companionCount: 2,
+              companionNames: ["Carlos Ruiz", "Lucía Gómez"],
+              companionMenus: ["pescado", ""],
+              companionAllergies: [["sin gluten"], []],
+              companionAllergiesOther: ["", ""],
+              childrenCount: 2,
+              childrenAllergies: ["sin gluten"],
+              childrenAllergiesOther: "frutos secos",
+              mealChoice: "carne",
+              allergiesOther: "",
+              transportMode: "bus",
+              transportChoice: "0",
+              transportTime: "12:00",
+              transportPlace: "Plaza Mayor",
+              healthConsent: true,
+            }),
+          };
+        }
+        return { exists: () => true, data: () => ({ count: 0 }) };
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, false));
+      // El efecto tiene debounce de 500ms: se escribe el nombre y se espera.
+      act(() => {
+        result.current.updateRsvpField("guestName", "Ana García López");
+      });
+      await vi.waitFor(() => expect(result.current.hasSubmitted).toBe(true), { timeout: 3000 });
+      expect(result.current.rsvpForm.attendance).toBe("with");
+      expect(result.current.rsvpForm.companionCount).toBe(2);
+      expect(result.current.rsvpForm.companionNames).toEqual(["Carlos Ruiz", "Lucía Gómez"]);
+      expect(result.current.rsvpForm.childrenCount).toBe("2");
+      expect(result.current.rsvpForm.menuSelection).toBe("carne");
+    });
+
+    it("no restaura nada si no existe la respuesta del servidor (H3-read)", async () => {
+      mockGetDoc.mockImplementation(async (ref: unknown) => {
+        const r = ref as { path?: string; id?: string };
+        if (typeof r.path === "string") {
+          return { exists: () => false, data: () => ({}) };
+        }
+        return { exists: () => true, data: () => ({ count: 0 }) };
+      });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, false));
+      act(() => {
+        result.current.updateRsvpField("guestName", "Juan Desconocido");
+      });
+      await act(async () => {
+        await new Promise((r) => setTimeout(r, 700));
+      });
+      expect(result.current.hasSubmitted).toBe(false);
     });
   });
 });

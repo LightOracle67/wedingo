@@ -472,6 +472,17 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
   flex: 1;
   min-width: 0;
 }
+/* Los controles hijos de una fila de toggle (p. ej. el input de fecha límite
+   del RSVP al activarlo) bajan a su propia línea completa: sin esto compiten
+   por el ancho con el título, que se encoge hasta una letra por línea. */
+.setup-toggle-row {
+  flex-wrap: wrap;
+}
+.setup-toggle-row > .setup-input,
+.setup-toggle-row > .setup-select {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
 .setup-toggle {
   flex-shrink: 0;
   /* 1.5rem (24px): tamaño mínimo de objetivo táctil (WCAG 2.5.8). */

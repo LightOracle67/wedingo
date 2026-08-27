@@ -1,6 +1,9 @@
 /**
  * Tests puros del consentimiento de salud en RSVP (sin montar hooks):
- * cubre principal, acompañantes y la salida temprana por "no asiste".
+ * desde v2.148.0 el consentimiento es ÚNICO por confirmación — un checkbox
+ * cubre a todo el grupo (principal, acompañantes y niños) — así que la
+ * validación mira si CUALQUIERA tiene datos de salud y si el checkbox único
+ * está marcado. Cubre también la salida temprana por "no asiste".
  */
 import { describe, it, expect } from "vitest";
 import { missingHealthConsent } from "../rsvp-utils";
@@ -9,11 +12,12 @@ const base = {
   attendance: "alone",
   companionCount: 0,
   companionAllergies: [] as Array<string[] | undefined>,
-  companionHealthConsents: [] as boolean[],
+  childrenAllergies: [] as string[],
+  childrenAllergiesOther: "",
 };
 
 describe("missingHealthConsent", () => {
-  it("exige consentimiento del principal cuando marca alergias", () => {
+  it("exige el consentimiento único cuando el principal marca alergias", () => {
     expect(missingHealthConsent({ ...base, allergies: ["sin gluten"] })).toBe(true);
     expect(missingHealthConsent({ ...base, allergies: ["sin gluten"], healthConsent: true })).toBe(false);
   });
@@ -23,17 +27,27 @@ describe("missingHealthConsent", () => {
     expect(missingHealthConsent({ ...base, allergiesOther: "   " })).toBe(false);
   });
 
-  it("exige consentimiento por acompañante con alergias o texto libre", () => {
+  it("exige UN único consentimiento cuando cualquier acompañante tiene alergias", () => {
     const d = {
       ...base,
       attendance: "with",
       companionCount: 2,
       companionAllergies: [["sin lactosa"], undefined],
       companionAllergiesOther: ["", "Sésamo"],
-      companionHealthConsents: [true, false],
     };
     expect(missingHealthConsent(d)).toBe(true);
-    expect(missingHealthConsent({ ...d, companionHealthConsents: [true, true] })).toBe(false);
+    expect(missingHealthConsent({ ...d, healthConsent: true })).toBe(false);
+  });
+
+  it("exige el consentimiento único cuando los niños tienen alergias", () => {
+    const d = {
+      ...base,
+      attendance: "with",
+      childrenAllergies: ["sin gluten"],
+      childrenAllergiesOther: "frutos secos",
+    };
+    expect(missingHealthConsent(d)).toBe(true);
+    expect(missingHealthConsent({ ...d, healthConsent: true })).toBe(false);
   });
 
   it("no pide nada si el invitado no asiste", () => {
@@ -44,7 +58,7 @@ describe("missingHealthConsent", () => {
         allergies: ["sin gluten"],
         companionCount: 1,
         companionAllergies: [["x"]],
-        companionHealthConsents: [false],
+        childrenAllergies: ["y"],
       }),
     ).toBe(false);
   });

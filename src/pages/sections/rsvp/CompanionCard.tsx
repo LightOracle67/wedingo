@@ -123,29 +123,6 @@ const CompanionCard = memo(function CompanionCard({
         frozen={frozen}
         t={t}
       />
-
-      {/* Consentimiento de salud del acompañante: obligatorio solo si declaró alergias. */}
-      {(() => {
-        const hasAllergies =
-          (form.companionAllergies[i] || []).length > 0 || (form.companionAllergiesOther?.[i] || "").trim().length > 0;
-        if (!hasAllergies) return null;
-        return (
-          <label className="rv2-check">
-            <input
-              type="checkbox"
-              checked={form.companionHealthConsents?.[i] || false}
-              required={hasAllergies}
-              onChange={(e) => {
-                const current = [...(form.companionHealthConsents || [])];
-                current[i] = e.target.checked;
-                onField("companionHealthConsents", current);
-              }}
-              disabled={frozen}
-            />
-            <span>{t("rsvp.healthConsent")}</span>
-          </label>
-        );
-      })()}
     </section>
   );
 });

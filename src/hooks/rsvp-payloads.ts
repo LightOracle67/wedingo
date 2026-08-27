@@ -11,7 +11,6 @@ interface RsvpFormLike {
   childrenCount: string;
   childrenAllergies: string[];
   childrenAllergiesOther: string;
-  companionHealthConsents: boolean[];
   companionTransportModes: string[];
   companionTransportChoices: string[];
   companionTransportTimes?: string[];

@@ -170,7 +170,7 @@
     "allergiesHint": "Only indicate food allergies and intolerances.",
     "privacyConsentBefore": "I have been informed and I accept the ",
     "privacyConsentAfter": "",
-    "healthConsent": "I consent to the processing of my health data (allergies and intolerances) to adapt the menu",
+    "healthConsent": "I consent to the processing of the health data (allergies and intolerances) of the whole party —myself, companions and children— to adapt the menu",
     "submitButton": "Confirm attendance",
     "submittingButton": "Sending...",
     "confirmedButton": "Attendance confirmed",

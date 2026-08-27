@@ -40,6 +40,10 @@ async function run() {
     await db.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B" });
     await db.collection("rsvpResponses").doc("AbCdEf1234").set({ count: 0, attendingCount: 0 });
     await db.collection("rsvpResponses").doc("AbCdEf1234").collection("responses").doc("r1").set({ guestName: "Ana", inviteToken: "AbCdEf1234" });
+    // Docs para el H3-read: un principal legible por el invitado por id y un
+    // acompañante que NO debe ser legible sin sesión (get/list separados).
+    await db.collection("rsvpResponses").doc("AbCdEf1234").collection("responses").doc("main_1").set({ guestName: "Ana García", inviteToken: "AbCdEf1234", rsvpType: "main" });
+    await db.collection("rsvpResponses").doc("AbCdEf1234").collection("responses").doc("comp_1").set({ guestName: "Carlos", inviteToken: "AbCdEf1234", rsvpType: "companion", mainGuestDocId: "main_1" });
     await db.collection("setupTokens").doc("a".repeat(64)).set({ inviteToken: "AbCdEf1234" });
     await db.collection("auditLog").doc("log1").set({ action: "test", createdAt: new Date() });
     await db.collection("platform").doc("settings").set({ superadminUid: SUPER_UID });
@@ -134,6 +138,12 @@ async function run() {
   await t("rsvp create companions:string (invitado) → NEGADO", false, responses.doc("r3").set({ ...rsvpBase, companions: "pwned" }));
   await t("rsvp create companions>100 (invitado) → NEGADO", false, responses.doc("r4").set({ ...rsvpBase, companions: 101 }));
   await t("rsvp create companionNames>100 elems (invitado) → NEGADO", false, responses.doc("r5").set({ ...rsvpBase, companions: 0, companionNames: Array(101).fill("x") }));
+
+  // H3-read: el invitado público puede hacer get de SU respuesta principal
+  // (id determinista main_<hash>) pero NUNCA listar/consultar todas.
+  await t("rsvp get main propio (invitado) → PERMITIDO", true, responses.doc("main_1").get().then(() => "ok"));
+  await t("rsvp get companion (invitado) → NEGADO", false, responses.doc("comp_1").get().then(() => "ok"));
+  await t("rsvp list de todas (invitado) → NEGADO", false, responses.get().then(() => "ok"));
 
   await testEnv.cleanup();
 

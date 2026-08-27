@@ -42,24 +42,25 @@ export interface HealthConsentsInput {
   companionCount: number;
   companionAllergies: Array<string[] | undefined>;
   companionAllergiesOther?: string[];
-  companionHealthConsents: boolean[];
+  childrenAllergies?: string[];
+  childrenAllergiesOther?: string;
 }
 
 /**
  * Valida en CLIENTE el consentimiento de datos de salud (GDPR art. 9):
- * con alergias marcadas o texto libre, el invitado principal y cada
- * acompañante necesitan su checkbox. Si falta, las reglas Firestore
- * rechazarían el lote con un error genérico mal traducido al usuario.
- * Devuelve true si falta algún consentimiento.
+ * UN único checkbox por confirmación cubre a todo el grupo (principal,
+ * acompañantes y niños) porque las reglas Firestore exigen healthConsent
+ * en cada doc con alergias y el usuario no debe marcar uno por persona.
+ * Devuelve true si CUALQUIERA tiene datos de salud y el consentimiento
+ * único no está marcado.
  */
 export function missingHealthConsent(d: HealthConsentsInput): boolean {
   if (d.attendance === "no") return false;
   const mainNeeds = (d.allergies || []).length > 0 || (d.allergiesOther || "").trim().length > 0;
-  if (mainNeeds && !d.healthConsent) return true;
-  for (let i = 0; i < d.companionCount; i++) {
-    const compNeeds =
-      (d.companionAllergies[i] || []).length > 0 || (d.companionAllergiesOther?.[i] || "").trim().length > 0;
-    if (compNeeds && !d.companionHealthConsents[i]) return true;
-  }
-  return false;
+  const anyCompanionNeeds = (d.companionAllergies || []).some(
+    (a, idx) => (a || []).length > 0 || (d.companionAllergiesOther?.[idx] || "").trim().length > 0,
+  );
+  const childrenNeeds =
+    (d.childrenAllergies || []).length > 0 || (d.childrenAllergiesOther || "").trim().length > 0;
+  return mainNeeds || anyCompanionNeeds || childrenNeeds ? !d.healthConsent : false;
 }

@@ -14,7 +14,6 @@ const form = {
   childrenCount: "2",
   childrenAllergies: ["sin gluten"],
   childrenAllergiesOther: "frutos secos",
-  companionHealthConsents: [true, false],
   menuSelection: "carne",
   allergies: ["sin gluten"],
   allergiesOther: "intolerancia",

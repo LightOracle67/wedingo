@@ -275,7 +275,6 @@ describe("a11y-page-audit", () => {
       childrenCount: "0",
       childrenAllergies: [],
       childrenAllergiesOther: "",
-      companionHealthConsents: [false],
       companionTransportChoices: ["0"],
       companionTransportModes: ["bus"],
       companionTransportTimes: [""],

@@ -61,7 +61,6 @@ const DRAFT_KEYS: Array<{
   { key: "childrenCount", kind: "string" },
   { key: "childrenAllergies", kind: "stringArray" },
   { key: "childrenAllergiesOther", kind: "string" },
-  { key: "companionHealthConsents", kind: "boolArray" },
   { key: "companionTransportModes", kind: "stringArray" },
   { key: "companionTransportChoices", kind: "stringArray" },
   { key: "menuSelection", kind: "string" },
@@ -232,7 +231,6 @@ const RsvpSection = memo(function RsvpSection({
         companionNames: prev.companionNames.filter((_, idx) => idx !== index),
         companionMenus: prev.companionMenus.filter((_, idx) => idx !== index),
         companionAllergies: prev.companionAllergies.filter((_, idx) => idx !== index),
-        companionHealthConsents: prev.companionHealthConsents.filter((_, idx) => idx !== index),
         companionTransportChoices: prev.companionTransportChoices.filter((_, idx) => idx !== index),
         companionTransportModes: prev.companionTransportModes.filter((_, idx) => idx !== index),
         companionCount: Math.max(0, prev.companionCount - 1),
@@ -386,6 +384,23 @@ const RsvpSection = memo(function RsvpSection({
               {t("rsvp.nameHint")}
             </p>
 
+            {/* Alergias del titular: junto al nombre para que se declaren
+                antes de elegir asistencia/menú */}
+            {isAttending ? (
+              <AllergiesChips
+                selected={rsvpForm.allergies || []}
+                other={rsvpForm.allergiesOther || ""}
+                onToggle={(a) => {
+                  const current = rsvpForm.allergies || [];
+                  const updated = current.includes(a) ? current.filter((x) => x !== a) : [...current, a];
+                  updateRsvpField("allergies", updated);
+                }}
+                onOtherChange={(v) => updateRsvpField("allergiesOther", v)}
+                frozen={frozen}
+                t={t}
+              />
+            ) : null}
+
             {/* Asistencia: segmented control grande */}
             <AttendanceSelector
               value={rsvpForm.attendance}
@@ -537,29 +552,21 @@ const RsvpSection = memo(function RsvpSection({
               </p>
             ) : null}
 
-            {/* Alergias del titular */}
-            {isAttending ? (
-              <AllergiesChips
-                selected={rsvpForm.allergies || []}
-                other={rsvpForm.allergiesOther || ""}
-                onToggle={(a) => {
-                  const current = rsvpForm.allergies || [];
-                  const updated = current.includes(a) ? current.filter((x) => x !== a) : [...current, a];
-                  updateRsvpField("allergies", updated);
-                }}
-                onOtherChange={(v) => updateRsvpField("allergiesOther", v)}
-                frozen={frozen}
-                t={t}
-              />
-            ) : null}
-
             {/* Consentimientos y opcionales */}
             <ConsentsBlock
               form={rsvpForm}
               onField={updateRsvpField}
               showHealthConsent={
                 isAttending &&
-                ((rsvpForm.allergies || []).length > 0 || (rsvpForm.allergiesOther || "").trim().length > 0)
+                ((rsvpForm.allergies || []).length > 0 ||
+                  (rsvpForm.allergiesOther || "").trim().length > 0 ||
+                  (rsvpForm.childrenAllergies || []).length > 0 ||
+                  (rsvpForm.childrenAllergiesOther || "").trim().length > 0 ||
+                  (rsvpForm.companionAllergies || []).some(
+                    (a, idx) =>
+                      (a || []).length > 0 ||
+                      ((rsvpForm.companionAllergiesOther || [])[idx] || "").trim().length > 0,
+                  ))
               }
               signatureEnabled={config?.rsvpSignatureEnabled === "true"}
               policyVersion={typeof config?.privacyPolicyVersion === "string" ? config.privacyPolicyVersion : undefined}
