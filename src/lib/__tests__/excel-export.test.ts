@@ -20,10 +20,11 @@ import {
   buildGlobalGuestsSheet,
   buildRsvpSheet,
   buildAuditSheet,
+  type Translate,
 } from "../excel-builders";
 
-/** t() de prueba: traduce las claves conocidas y deja el resto tal cual. */
-const t = (key: string): string => {
+/** t() de prueba: traduce las claves conocidas, deja el resto tal cual e interpola {{count}}. */
+const t = ((key: string, options?: Record<string, unknown>): string => {
   const map: Record<string, string> = {
     "attendance.sheetAttendance": "Asistencia",
     "attendance.sheetMenus": "Menús",
@@ -32,8 +33,14 @@ const t = (key: string): string => {
     "attendance.tableName": "Nombre",
     "attendance.tableAttendance": "Asistencia",
     "attendance.tableMenu": "Menú",
-    "attendance.tableDiet": "Info alimentaria",
+    "attendance.tableDiet": "Intolerancias",
     "attendance.tableTransport": "Transporte",
+    "attendance.tableChildrenDiet": "Intolerancias (Niños)",
+    "attendance.childrenYes": "Sí, {{count}}",
+    "attendance.transportOwnCar": "Coche propio",
+    "rsvp.menuPredefined": "Predefinido",
+    "transport.typeBus": "Autobús",
+    "transport.typeTaxi": "Taxi",
     "attendance.tableChild": "Niño",
     "attendance.childYes": "Sí",
     "attendance.tableContact": "Contacto",
@@ -57,8 +64,13 @@ const t = (key: string): string => {
     "distribucion.capacityValue": "Plazas",
     "distribucion.guestValue": "Invitado",
   };
-  return map[key] ?? key;
-};
+  const value = map[key] ?? key;
+  // Interpola {{count}} para childrenYes (el t real de i18next lo hace igual).
+  if (options && Object.keys(options).length > 0) {
+    return value.replace(/\{\{(\w+)\}\}/g, (_, k: string) => String(options[k] ?? ""));
+  }
+  return value;
+}) as unknown as Translate;
 
 /** Serializa las hojas a un .xlsx real y lo reabre en formato 2D (string[][]) por hoja. */
 function readBack(sheets: Parameters<typeof buildWorkbook>[0]) {
@@ -118,9 +130,9 @@ describe("Export Excel: Asistencia + Menús (AttendanceTab)", () => {
       "attendance.tableAccompanies",
       "Asistencia",
       "Menú",
-      "Info alimentaria",
+      "Intolerancias",
       "attendance.tableChildren",
-      "attendance.tableChildrenDiet",
+      "Intolerancias (Niños)",
       "Transporte",
       "attendance.tableConsents",
       "Fecha",
@@ -137,7 +149,7 @@ describe("Export Excel: Asistencia + Menús (AttendanceTab)", () => {
       "sin gluten | menú: infantil",
       "",
       "",
-      "(bus)",
+      "Autobús",
       "",
       "01/08/2026 10:00",
     ]);
@@ -172,9 +184,9 @@ describe("Export Excel: Asistencia + Menús (AttendanceTab)", () => {
     const row = sheet[0]!.data[1]!;
     // Acompaña a, niños, intolerancias y consentimientos ahora se exportan.
     expect(row[1]).toBe("Elisa");
-    expect(row[5]).toBe("2");
+    expect(row[5]).toBe("Sí, 2");
     expect(row[6]).toBe("sin gluten, frutos secos");
-    expect(row[7]).toBe("(taxi)");
+    expect(row[7]).toBe("Taxi");
     expect(row[8]).toBe("attendance.consentHealth");
   });
 
@@ -473,7 +485,7 @@ describe("Ramas límite de los builders", () => {
           transportChoice: "Coche",
           transportMode: "own",
         },
-        // attendance yes + bus → "(bus)"; solo email; menú desconocido → crudo; con fecha.
+        // attendance yes + bus → "Autobús"; solo email; menú desconocido → crudo; con fecha.
         {
           guestName: "C",
           attendance: "yes",
@@ -488,10 +500,10 @@ describe("Ramas límite de los builders", () => {
     // intolerancias, transporte, consentimientos, fecha.
     expect(sheet.rows[0]).toEqual(["A", "", "", "", "", "", "", "", "", ""]);
     expect(sheet.rows[1]?.[2]).toBe("No");
-    expect(sheet.rows[1]?.[7]).toBe("Coche");
+    expect(sheet.rows[1]?.[7]).toBe("Coche propio");
     expect(sheet.rows[2]?.[2]).toBe("Sí");
     expect(sheet.rows[2]?.[3]).toBe("pollo");
-    expect(sheet.rows[2]?.[7]).toBe("(bus)");
+    expect(sheet.rows[2]?.[7]).toBe("Autobús");
     expect(String(sheet.rows[2]?.[9])).not.toBe("");
   });
 

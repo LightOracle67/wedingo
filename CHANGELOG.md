@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.153.0 — 2026-08-27
+- El Excel de asistencias ahora es legible: transporte traducido (Coche propio/Autobús/Taxi con hora), niños como "Sí, N", menú predefinido como "Predefinido", y columnas renombradas a Intolerancias e Intolerancias (Niños).
+- El menú elegido del RSVP se muestra en una etiqueta separada bajo las opciones (la descripción ya no estira la tarjeta al seleccionar).
 ## 2.152.0 — 2026-08-27
 - La vista de impresión de asistencias ahora incluye todas las columnas de la tabla (nombre, acompañamiento, asistencia, menú, alergias, niños, intolerancias de los niños, transporte, consentimientos y fecha).
 - El Excel de asistencias añade las columnas que faltaban: acompañamiento (a quién acompaña), ¿trae niños?, intolerancias de los niños y consentimientos, para una lectura clara.

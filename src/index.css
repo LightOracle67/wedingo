@@ -3349,6 +3349,26 @@ body::after {
   color: var(--setup-subtitle);
   white-space: pre-line;
 }
+/* Detalle del menú elegido: etiqueta y descripción en conjunto, separado
+   de las tarjetas de opción (antes la descripción se expandía dentro del
+   label del radio y estiraba la tarjeta al seleccionar). */
+.rv2-menu__sel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.8rem;
+  border: 1px solid color-mix(in srgb, var(--setup-accent) 45%, transparent);
+  background: color-mix(in srgb, var(--setup-field-bg) 35%, transparent);
+}
+.rv2-menu__sel-label {
+  color: var(--setup-accent);
+  font-size: 0.78rem;
+}
+.rv2-menu__sel .rv2-menu__desc {
+  margin: 0;
+}
 
 /* Filas de checkbox y enlaces legales */
 .rv2-check {

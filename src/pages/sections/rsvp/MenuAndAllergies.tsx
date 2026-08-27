@@ -20,6 +20,7 @@ interface MenuPickerProps {
  * select + panel separado, menos descubrible).
  */
 const MenuPicker = memo(function MenuPicker({ value, options, onChange, frozen, compact, t, name }: MenuPickerProps) {
+  const selected = options.find((m) => m.key === value) || null;
   return (
     <fieldset className={"rv2-menu" + (compact ? " rv2-compact" : "")} disabled={frozen}>
       <legend className="setup-label rv2-sublabel">{t("rsvp.menuLabel")}</legend>
@@ -38,12 +39,19 @@ const MenuPicker = memo(function MenuPicker({ value, options, onChange, frozen, 
                 disabled={frozen}
               />
               <span className="rv2-menu__label">{m.label}</span>
-              {/* Descripción solo cuando está activa: evita paredes de texto. */}
-              {active ? <span className="rv2-menu__desc">{m.desc}</span> : null}
             </label>
           );
         })}
       </div>
+      {/* El menú elegido se detalla en una etiqueta propia, separada de las
+          tarjetas: antes la descripción se expandía dentro del label del
+          radio y estiraba la tarjeta (error visual) al seleccionar. */}
+      {selected ? (
+        <div className="rv2-menu__sel" role="status">
+          <span className="rv2-menu__sel-label">{t("rsvp.menuSelected", { m: selected.label })}</span>
+          {selected.desc ? <span className="rv2-menu__desc">{selected.desc}</span> : null}
+        </div>
+      ) : null}
     </fieldset>
   );
 });

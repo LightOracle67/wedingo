@@ -9,6 +9,10 @@
  */
 import { excelDate, type ExcelSheet } from "./excel-utils";
 import i18n from "../i18n";
+import type { TFunction } from "i18next";
+
+/** Traductor usado por los constructores: `t` real de i18next (mismo tipo que derive.ts). */
+export type Translate = TFunction<"translation", undefined>;
 
 // ── Tipos de entrada (estructuras que ya usan los componentes) ──
 
@@ -22,6 +26,8 @@ interface RsvpRowLike {
   submittedAt?: string;
   transportChoice?: string;
   transportMode?: string;
+  /** Hora de salida elegida que se guarda junto al modo de transporte. */
+  transportTime?: string;
   /** Invitado al que acompaña (solo compañeros); undefined en principales. */
   mainGuestName?: string;
   /** Niños declarados por el invitado principal (contador del nuevo modelo). */
@@ -100,7 +106,7 @@ interface AuditRowLike {
 }
 
 /** Traduce la clave de un plato; si no hay traducción devuelve el plato crudo. */
-function menuLabel(menu: string, t: (key: string) => string): string {
+function menuLabel(menu: string, t: Translate): string {
   if (!menu) return "";
   const key = "rsvp.menu" + menu.charAt(0).toUpperCase() + menu.slice(1);
   const label = t(key);
@@ -110,11 +116,22 @@ function menuLabel(menu: string, t: (key: string) => string): string {
 // ── Admin: asistencia y menús ──
 
 /** Hoja "Asistencia": una fila por respuesta RSVP. */
-export function buildRSVPSheet(entries: RsvpRowLike[], t: (key: string) => string): ExcelSheet {
+export function buildRSVPSheet(entries: RsvpRowLike[], t: Translate): ExcelSheet {
   const childrenTexto = (e: RsvpRowLike) => {
     const base = (e.childrenAllergies || []).filter(Boolean).join(", ");
     const extra = (e.childrenAllergiesOther || "").trim();
     return [base, extra].filter(Boolean).join(", ");
+  };
+  // Modo de transporte legible: own se traduce a "Coche propio" y bus/taxi a
+  // "Autobús"/"Taxi" con la hora de salida si está guardada (los valores
+  // crudos "bus"/"taxi" eran ilegibles para el anfitrión en el Excel).
+  const transporte = (e: RsvpRowLike) => {
+    const mode = e.transportMode || "";
+    if (!mode) return "";
+    if (mode === "own") return t("attendance.transportOwnCar");
+    const tipo = t(mode === "taxi" ? "transport.typeTaxi" : "transport.typeBus");
+    const hora = e.transportTime || "";
+    return hora ? `${tipo} (${hora})` : tipo;
   };
   const rows: Array<Array<string | number>> = (entries || []).map((e) => [
     e.guestName || "",
@@ -125,14 +142,18 @@ export function buildRSVPSheet(entries: RsvpRowLike[], t: (key: string) => strin
       : e.attendance === "no"
         ? t("attendance.notAttendingValue")
         : "",
-    menuLabel(e.mealChoice || "", t),
+    // Menú legible: si asiste sin haber elegido plato entra la opción
+    // predefinida del anfitrión (antes quedaba vacía y no informaba).
+    e.attendance === "yes" && !e.mealChoice
+      ? t("rsvp.menuPredefined")
+      : menuLabel(e.mealChoice || "", t),
     e.dietaryInfo || "",
-    // Niños del nuevo modelo: contador y alergias de grupo del principal.
-    e.attendance === "yes" && (e.childrenCount || 0) > 0 ? String(e.childrenCount) : "",
+    // Niños del nuevo modelo: "Sí, N" en vez del número suelto.
+    e.attendance === "yes" && (e.childrenCount || 0) > 0
+      ? t("attendance.childrenYes", { count: e.childrenCount })
+      : "",
     e.attendance === "yes" && childrenTexto(e) ? childrenTexto(e) : "",
-    [e.transportChoice || "", e.transportMode && e.transportMode !== "own" ? `(${e.transportMode})` : ""]
-      .filter(Boolean)
-      .join(" "),
+    transporte(e),
     // Consentimientos: los mismos badges que muestra la tabla
     // (tutores + salud), separados por coma.
     [e.parentalConsent ? t("attendance.consentParental") : "",
@@ -161,7 +182,7 @@ export function buildRSVPSheet(entries: RsvpRowLike[], t: (key: string) => strin
 }
 
 /** Hoja "Menús": qué plato pidió cada confirmado (y sus acompañantes). */
-export function buildMenuSheet(entries: RsvpRowLike[], t: (key: string) => string): ExcelSheet {
+export function buildMenuSheet(entries: RsvpRowLike[], t: Translate): ExcelSheet {
   const rows: Array<Array<string>> = [];
   for (const e of entries || []) {
     // Los que declinan no comen: no aportan fila al catering.
@@ -185,7 +206,7 @@ export function buildMenuSheet(entries: RsvpRowLike[], t: (key: string) => strin
 // ── Admin: buzón privado ──
 
 /** Hoja "Buzón": todos los mensajes privados de los invitados. */
-export function buildMailboxSheet(mailbox: MailboxRowLike[], t: (key: string) => string): ExcelSheet {
+export function buildMailboxSheet(mailbox: MailboxRowLike[], t: Translate): ExcelSheet {
   const rows: Array<Array<string>> = (mailbox || []).map((m) => [m.guestName, m.message, m.ts]);
   return {
     name: t("tools.sheetMailbox"),
@@ -205,7 +226,7 @@ export function buildTablesSheet(
   sections: SectionLike[],
   activeSectionId: string,
   tables: TableLike[],
-  t: (key: string) => string,
+  t: Translate,
 ): ExcelSheet {
   const active = sections.find((s) => s.id === activeSectionId);
   const rows: Array<Array<string | number>> = [];
