@@ -3442,8 +3442,18 @@ body::after {
   max-width: 100%;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 640px) {
+  /* En móvil los tres segmentos siguen en una única fila (anchuras iguales,
+     grid 3 columnas), solo se compactan padding y tipo: el usuario pidió
+     explícitamente que la asistencia nunca se apile en líneas distintas. */
   .rv2-seg__group {
-    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .rv2-seg__opt {
+    padding: 0.45rem 0.2rem;
+  }
+  .rv2-seg__label {
+    font-size: 0.68rem;
+    word-break: break-word;
   }
 }

@@ -2,6 +2,14 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.138.0 — 2026-08-27
+
+- Los botones de asistencia del RSVP (solo/a, con acompañantes, no podré asistir) se muestran siempre en una única línea con anchuras iguales, también en móvil (antes se apilaban en columnas en pantallas muy estrechas).
+
+## 2.137.0 — 2026-08-27
+
+- Los inputs relacionados de los formularios del setup (tipografía de la portada, menús, enlace y modo del mapa de alojamiento) ahora se muestran en línea y se apilan en una sola columna en móvil, sin perder funcionalidades.
+
 ## 2.135.0 — 2026-08-27
 
 - Corregidos los errores al guardar la configuración: las secciones ocultas legacy (p. ej. «extras», eliminada en la poda) ya no invalidan el guardado, y los textos con comillas dobles o acentos graves se convierten a variantes tipográficas seguras con un aviso claro de caracteres no permitidos (<, >, javascript:). El changelog de la página ahora se descarga de GitHub (CHANGELOG.md) con caché local en vez de viajar en el bundle.

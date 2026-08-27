@@ -1,4 +1,4 @@
-import { memo, useCallback, useState, type ReactNode, type CSSProperties } from "react";
+import { memo, useCallback, useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
 import { useFocusTrap, useInertBackground, useEscapeKey } from "../hooks/useFocusTrap";
 import "../styles/modals.css";
 
@@ -38,10 +38,24 @@ const Modal = memo(function Modal({
   // Mientras el modal está abierto, el resto del documento queda `inert`:
   // el lector de pantalla y el cursor virtual ya no leen el fondo (WCAG 1.3.1).
   useInertBackground(true, modalRef);
+  // Referencia al temporizador de la animación de salida para poder
+  // cancelarlo si el modal se desmonta antes de los 200 ms (evita que el
+  // callback actualice estado de un componente ya desmontado).
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current !== null) {
+        clearTimeout(closeTimerRef.current);
+        closeTimerRef.current = null;
+      }
+    };
+  }, []);
 
   const handleClose = useCallback(() => {
     setClosing(true);
-    setTimeout(() => {
+    closeTimerRef.current = setTimeout(() => {
+      closeTimerRef.current = null;
       setClosing(false);
       onClose();
     }, 200);
