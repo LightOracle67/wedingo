@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.158.0 — 2026-08-27
+- En pantallas móviles, los editores de platos de los menús del administrador (carne/pescado/vegano) apilan cada campo a ancho completo en vez de quedarse con los anchos fijos del escritorio, que dejaban el campo de texto estrecho.
 ## 2.157.0 — 2026-08-27
 - El título del menú del RSVP se fija con estilo directo (verificado en producción: 1.05rem en negrita) para que ninguna regla de tema pueda volver a encogerlo.
 ## 2.156.0 — 2026-08-27

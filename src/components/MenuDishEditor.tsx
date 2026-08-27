@@ -76,7 +76,7 @@ export default function MenuDishEditor({
         onRemove={handleRemove}
         renderRow={(i) => (
           <>
-            <div style={{ flex: "0 0 130px" }}>
+            <div className="menu-dish-field" style={{ flex: "0 0 130px" }}>
               <label className="setup-label" htmlFor={`${idBase}-order-${i}`} style={{ fontSize: "0.75rem" }}>
                 {t("setup.menuOrderLabel")}
               </label>
@@ -93,7 +93,7 @@ export default function MenuDishEditor({
                 ))}
               </select>
             </div>
-            <div style={{ flex: 1 }}>
+            <div className="menu-dish-field menu-dish-field--text" style={{ flex: 1 }}>
               <label className="setup-label" htmlFor={`${idBase}-dish-${i}`} style={{ fontSize: "0.75rem" }}>
                 {t("setup.menuDishLabel")}
               </label>

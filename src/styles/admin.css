@@ -799,6 +799,14 @@ select.setup-input {
   .setup-fields-grid {
     grid-template-columns: 1fr;
   }
+  /* Editor de platos de los menús independientes: en pantallas estrechas
+     las filas (select de tipo + campo de texto) se apilan a ancho completo
+     en vez de quedarse con anchos fijos que dejan el campo corto. */
+  .menu-dish-field {
+    flex: 1 1 100% !important;
+    min-width: 0;
+    margin-bottom: 0.3rem;
+  }
 }
 .setup-button {
   border: 0;
