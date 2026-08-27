@@ -384,6 +384,39 @@ const RsvpSection = memo(function RsvpSection({
               {t("rsvp.nameHint")}
             </p>
 
+            {/* Menú del titular: justo debajo del nombre para decidir el
+                plato antes de la asistencia */}
+            {isAttending && menuEnabled && menuOptions.length > 0 ? (
+              <MenuPicker
+                name="rv2MenuMain"
+                value={rsvpForm.menuSelection}
+                options={menuOptions}
+                onChange={(k) => updateRsvpField("menuSelection", k)}
+                frozen={frozen}
+                t={t}
+              />
+            ) : null}
+            {isAttending && !menuEnabled ? (
+              <p className="setup-help" style={{ fontSize: "0.8rem", marginTop: "0.5rem" }}>
+                {t("rsvp.allergiesHint")}
+              </p>
+            ) : null}
+            {isAttending && !(menuEnabled && menuOptions.length > 0) && menuTextoDishes ? (
+              <div className="rv2-menutext">
+                <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>
+                  {t("rsvp.menuLabel")}
+                </p>
+                <pre className="story-note whitespace-pre-line" style={{ font: "inherit", whiteSpace: "pre-line" }}>
+                  {(menuTextoDishes && formatDishesText(menuTextoDishes, t)) || ""}
+                </pre>
+              </div>
+            ) : null}
+            {isAttending && menuEnabled ? (
+              <p className="setup-help" style={{ fontSize: "0.8rem" }}>
+                {t("rsvp.allergiesHint")}
+              </p>
+            ) : null}
+
             {/* Alergias del titular: junto al nombre para que se declaren
                 antes de elegir asistencia/menú */}
             {isAttending ? (
@@ -518,38 +551,6 @@ const RsvpSection = memo(function RsvpSection({
                   </>
                 ) : null}
               </div>
-            ) : null}
-
-            {/* Menú del titular */}
-            {isAttending && menuEnabled && menuOptions.length > 0 ? (
-              <MenuPicker
-                name="rv2MenuMain"
-                value={rsvpForm.menuSelection}
-                options={menuOptions}
-                onChange={(k) => updateRsvpField("menuSelection", k)}
-                frozen={frozen}
-                t={t}
-              />
-            ) : null}
-            {isAttending && !menuEnabled ? (
-              <p className="setup-help" style={{ fontSize: "0.8rem", marginTop: "0.5rem" }}>
-                {t("rsvp.allergiesHint")}
-              </p>
-            ) : null}
-            {isAttending && !(menuEnabled && menuOptions.length > 0) && menuTextoDishes ? (
-              <div className="rv2-menutext">
-                <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>
-                  {t("rsvp.menuLabel")}
-                </p>
-                <pre className="story-note whitespace-pre-line" style={{ font: "inherit", whiteSpace: "pre-line" }}>
-                  {(menuTextoDishes && formatDishesText(menuTextoDishes, t)) || ""}
-                </pre>
-              </div>
-            ) : null}
-            {isAttending && menuEnabled ? (
-              <p className="setup-help" style={{ fontSize: "0.8rem" }}>
-                {t("rsvp.allergiesHint")}
-              </p>
             ) : null}
 
             {/* Consentimientos y opcionales */}

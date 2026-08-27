@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.155.0 — 2026-08-27
+- La sección del menú del RSVP se mueve justo debajo del nombre del invitado (para decidir el plato antes de la asistencia) y su título se amplía y agranda: «Elige tu menú» como cabecera visible en lugar de una etiqueta pequeña.
 ## 2.154.0 — 2026-08-27
 - Si la app captura un error de import de módulo obsoleto tras un despliegue (el service worker conservaba chunks de la versión anterior), ahora se limpia el SW y las cachés y se recarga la página automáticamente (con tope de dos intentos para evitar bucles), en vez de mostrar el error de carga.
 ## 2.153.0 — 2026-08-27

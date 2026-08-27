@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.154.0](https://github.com/LightOracle67/wedingo/releases)  
+**Versión actual:** [v2.155.0](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.155.0 | 2026-08-27 | El menú del RSVP se muestra justo debajo del nombre y su título se amplía a «Elige tu menú» visible como cabecera de sección |
 | v2.154.0 | 2026-08-27 | Recarga automática al detectar módulos obsoletos del service worker tras un despliegue (limpia SW y cachés, con tope de dos intentos) en vez de mostrar el error de carga |
 | v2.153.0 | 2026-08-27 | El Excel de asistencias muestra datos legibles (transporte traducido con hora, niños como «Sí, N», menú predefinido como «Predefinido», columnas Intolerancias / Intolerancias (Niños)) y el menú elegido del RSVP se muestra en etiqueta separada |
 | v2.152.0 | 2026-08-27 | La impresión y el Excel de asistencias muestran todas las columnas de la tabla: acompañamiento, menú, alergias, niños, intolerancias, transporte, consentimientos y fecha |
