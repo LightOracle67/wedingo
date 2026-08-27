@@ -64,8 +64,6 @@ export interface RsvpFormData {
   transportTime: string;
   transportPlace: string;
   digitalSignature: boolean;
-  phone: string;
-  email: string;
 }
 
 interface RsvpEntryData {
@@ -129,8 +127,6 @@ function RsvpFormDefault(): RsvpFormData {
     transportTime: "",
     transportPlace: "",
     digitalSignature: false,
-    phone: "",
-    email: "",
   };
 }
 

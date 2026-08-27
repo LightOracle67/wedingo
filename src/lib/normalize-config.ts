@@ -267,11 +267,6 @@ export const normalizeConfig = (value: Record<string, unknown> | undefined) => (
   cornerDecorationEnabled: toggleWithLegacy(value?.cornerDecorationEnabled, value?.cornerDecoration),
   rsvpDeadline: s(value?.rsvpDeadline).slice(0, 10),
   rsvpDeadlineEnabled: s(value?.rsvpDeadlineEnabled) === "true" ? "true" : "false",
-  // Prueba social en vivo: por defecto VISIBLE (las invitaciones existentes no
-  // tenían el campo y ya mostraban el contador); solo se oculta con "false".
-  // Lista de confirmados: SOLO "true" la muestra (opt-in estricto; ausente se
-  // oculta para no revelar identidades sin consentimiento explícito).
-  showConfirmedPeople: s(value?.showConfirmedPeople) === "true" ? "true" : "false",
   welcomeVideo: s(value?.welcomeVideo).slice(0, 1000),
   welcomeVideoEnabled: s(value?.welcomeVideoEnabled) === "true" ? "true" : "false",
   venueMapEnabled: s(value?.venueMapEnabled) === "true" ? "true" : "false",

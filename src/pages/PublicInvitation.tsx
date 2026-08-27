@@ -588,15 +588,12 @@ export default function PublicInvitation() {
   const heroProps = useMemo(
     () => ({
       weddingDate,
-      inviteToken: inviteToken ?? "",
       schedule: config.weddingScheduleEvents ?? "[]",
-      // Lista de confirmados: solo si la pareja la activa (opt-in de nombres).
-      showConfirmedPeople: config.showConfirmedPeople === "true",
       // Conjunto efectivo de animaciones desactivadas: HeroSection lo usa para
       // el countdown (tick), el anillo de la foto, el fundido y el resplandor.
       disabledAnimations: effectiveDisabled,
     }),
-    [weddingDate, inviteToken, config.weddingScheduleEvents, config.showConfirmedPeople, effectiveDisabled],
+    [weddingDate, config.weddingScheduleEvents, effectiveDisabled],
   );
 
   /**

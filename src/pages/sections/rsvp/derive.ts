@@ -26,7 +26,6 @@ export interface RsvpConfigLike {
   privacyPolicyVersion?: string;
   rsvpSignatureEnabled?: string;
   rsvpContactEnabled?: string;
-  showConfirmedPeople?: string;
   rsvpThanks?: string;
 }
 

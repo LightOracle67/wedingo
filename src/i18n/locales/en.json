@@ -75,7 +75,6 @@
     "sectionLabel": "Cover",
     "verifiedBadge": "Verified",
     "liveConfirmed": "{{count}} guests have already confirmed",
-    "confirmedPeopleHint": "{{count}} person(s) have confirmed so far",
     "thanksPost": "Thank you for sharing this day with us. Your messages and love are the best memory.",
     "todayAgenda": "Today's agenda",
     "now": "Now"
@@ -545,8 +544,6 @@
     "uploading": "Uploading...",
     "liveConfirmedLabel": "Show how many have confirmed",
     "liveConfirmedHint": "Shows on the cover how many guests have already confirmed (live social proof).",
-    "showConfirmedPeopleLabel": "Show the list of confirmed guests",
-    "showConfirmedPeopleHint": "Shows on the cover the names of those who confirmed. Only guests who opted in when answering the RSVP appear (explicit consent, GDPR art. 7).",
     "venueLegend": "Venue",
     "venueHint": "Venue map and seating chart visibility for guests.",
     "venueSectionTitle": "Venue",

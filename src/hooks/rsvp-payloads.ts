@@ -23,8 +23,6 @@ interface RsvpFormLike {
   transportTime: string;
   transportPlace: string;
   digitalSignature?: boolean;
-  phone?: string;
-  email?: string;
   privacyConsent?: boolean;
   healthConsent?: boolean;
 }
@@ -63,8 +61,6 @@ export function buildMainGuestData(input: {
   }
   // F3-8: firma digital extra (si el admin la exige).
   if (data.digitalSignature) mainGuestData.digitalSignature = true;
-  // Contacto opcional: SOLO se guarda si el invitado dio consentimiento
-  // explícito (GDPR art. 7). Sin consentimiento, ni teléfono ni email viajan.
   // Solo añadir campos de transporte si el invitado ASISTE (isAttending=true).
   // Cuando attendance="no", no se guardan preferencias de transporte.
   if (isAttending) {

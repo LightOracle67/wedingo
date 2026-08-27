@@ -101,10 +101,6 @@ export interface InvitationConfig {
   colorBackground?: string;
   /** Distribución de mesas en la invitación pública (sección propia "tables"). */
   tablesEnabled?: string;
-  /** Mostrar la LISTA de personas que ya han confirmado en la portada.
-   *  Solo se publican nombres (doblemente opt-in: quien confirma acepta y la
-   *  pareja activa el toggle); "true" visible, "false" (o ausente) oculta. */
-  showConfirmedPeople?: string;
   /** Vídeo de bienvenida de los novios (URL MP4). */
   welcomeVideo?: string;
   /** Habilita la sección del vídeo de bienvenida. */

@@ -2,6 +2,13 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.159.0 — 2026-08-27
+- El RSVP muestra los botones de asistencia justo debajo del campo del nombre del invitado (antes aparecían después de las alergias del invitado principal).
+- El toggle de los menús de la celebración usa ahora el mismo switch moderno que el resto de toggles del administrador (y el del mapa estático de la fecha, que también era un checkbox antiguo).
+- Retirada la lista pública de confirmados de la portada: eliminada la suscripción en vivo de la sección hero, el toggle del administrador y los campos de configuración asociados (la app ya no genera nuevos documentos de consentimiento de aparición).
+- Nueva verificación automática de enlace formulario-reglas (scripts/check-fields-vs-rules.mjs): comprueba que todos los campos que la aplicación escribe en las respuestas RSVP siguen permitidos por firestore.rules.
+- El panel del administrador se ajusta en pantallas pequeñas: las tarjetas de estadísticas hacen wrap dentro del viewport y las barras de visitas son deslizables sin ocultar datos.
+
 ## 2.158.0 — 2026-08-27
 - En pantallas móviles, los editores de platos de los menús del administrador (carne/pescado/vegano) apilan cada campo a ancho completo en vez de quedarse con los anchos fijos del escritorio, que dejaban el campo de texto estrecho.
 ## 2.157.0 — 2026-08-27

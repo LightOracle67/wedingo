@@ -1,4 +1,4 @@
-export const APP_VERSION = "2.158.0";
+export const APP_VERSION = "2.159.0";
 
 export const MAX_INVITE_MESSAGE_LENGTH = 500;
 export const MAX_DRESS_CODE_CUSTOM_LENGTH = 500;
@@ -339,9 +339,6 @@ export const defaultConfig = {
   menuVeganoDishes: "",
   rsvpDeadline: "",
   rsvpDeadlineEnabled: "false",
-  // Prueba social en vivo: muestra cuántos invitados han confirmado (portada).
-  // Lista de confirmados en la portada: por defecto OCULTA (opt-in).
-  showConfirmedPeople: "false",
   welcomeVideo: "",
   welcomeVideoEnabled: "false",
   venueMapEnabled: "false",

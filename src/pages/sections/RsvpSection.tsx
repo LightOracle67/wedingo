@@ -73,8 +73,6 @@ const DRAFT_KEYS: Array<{
   { key: "transportTime", kind: "string" },
   { key: "transportPlace", kind: "string" },
   { key: "digitalSignature", kind: "boolean" },
-  { key: "phone", kind: "string" },
-  { key: "email", kind: "string" },
 ];
 
 /** ¿Prefiere el usuario movimiento reducido? (los scrolls pasan a 'auto'). */
@@ -384,8 +382,16 @@ const RsvpSection = memo(function RsvpSection({
               {t("rsvp.nameHint")}
             </p>
 
-            {/* Menú del titular: justo debajo del nombre para decidir el
-                plato antes de la asistencia */}
+            {/* Asistencia: justo debajo del nombre para decidir la respuesta
+                antes de ver el resto del formulario */}
+            <AttendanceSelector
+              value={rsvpForm.attendance}
+              onChange={(v) => updateRsvpField("attendance", v)}
+              frozen={frozen}
+              t={t}
+            />
+
+            {/* Menú del titular: tras la asistencia (solo si asiste) */}
             {isAttending && menuEnabled && menuOptions.length > 0 ? (
               <MenuPicker
                 name="rv2MenuMain"
@@ -417,8 +423,8 @@ const RsvpSection = memo(function RsvpSection({
               </p>
             ) : null}
 
-            {/* Alergias del titular: junto al nombre para que se declaren
-                antes de elegir asistencia/menú */}
+            {/* Alergias del titular: junto al menú para que se declaren al
+                elegir plato */}
             {isAttending ? (
               <AllergiesChips
                 selected={rsvpForm.allergies || []}
@@ -433,14 +439,6 @@ const RsvpSection = memo(function RsvpSection({
                 t={t}
               />
             ) : null}
-
-            {/* Asistencia: segmented control grande */}
-            <AttendanceSelector
-              value={rsvpForm.attendance}
-              onChange={(v) => updateRsvpField("attendance", v)}
-              frozen={frozen}
-              t={t}
-            />
 
             {/* Añadir acompañante */}
             {rsvpForm.attendance === "with" && !frozen && (rsvpForm.companionCount || 0) < MAX_COMPANIONS ? (

@@ -1789,8 +1789,23 @@ select.setup-input {
     white-space: nowrap;
   }
   .admin-stats-grid {
-    grid-template-columns: 1fr 1fr;
+    /* La resta de tarjetas se apila: dos columnas de ancho mínimo cero
+       (minmax(0, 1fr)) para que los títulos hagan wrap en vez de
+       desbordar el viewport en teléfonos pequeños. */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.4rem;
+  }
+  .panel-prediction__metric {
+    flex: 1 1 40%;
+    min-width: 0;
+  }
+  .visits-bars {
+    overflow-x: auto;
+  }
+  .visits-bars__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 5.5rem;
   }
   .data-tab-table-wrap {
     overflow: visible !important;

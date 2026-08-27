@@ -14,7 +14,6 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
   // Fecha límite de RSVP (movida desde Extras) y visibilidad de confirmados.
   const rsvpDeadline = useFormField("rsvpDeadline");
   const rsvpDeadlineEnabled = useFormField("rsvpDeadlineEnabled");
-  const showConfirmedPeopleEnabled = useFormField("showConfirmedPeopleEnabled");
   const accommodationMapMode = useFormField("accommodationMapMode");
   const accommodationURL = useFormField("accommodationURL");
   const kidsPolicy = useFormField("kidsPolicy");
@@ -53,13 +52,6 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
       updateFormField("kidsPolicy", kidsPolicy === e.currentTarget.value ? "" : e.currentTarget.value);
     },
     [updateFormField, kidsPolicy],
-  );
-
-  const handleMenuEnabledChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      updateFormField("menuEnabled", e.target.checked ? "true" : "false");
-    },
-    [updateFormField],
   );
 
   /**
@@ -166,46 +158,39 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
         {t("setup.menuCelebrationLabel")}
       </p>
 
-      <label className="setup-checkbox-label" style={{ marginBottom: "0.5rem" }}>
-        <input
-          id={id("menuEnabled")}
-          type="checkbox"
-          checked={menuEnabled === "true"}
-          onChange={handleMenuEnabledChange}
-        />
-        <span>{t("setup.menuEnabledLabel")}</span>
-      </label>
+      {/* El toggle del menú usa el mismo switch moderno (SetupToggleField)
+          que el resto de campos opcionales: el flag es el PROPIO menuEnabled
+          (no un *Enabled) porque la app pública lo lee directamente. */}
+      <SetupToggleField enabledField="menuEnabled" label={t("setup.menuEnabledLabel")} id={id}>
+        <p className="setup-help" id={id("menuHint")} style={{ marginBottom: "0.4rem" }}>
+          {t("setup.menuHint")}
+        </p>
+        <div className="setup-fields-grid">
+          {[
+            { dishes: "menuCarneDishes", labelKey: "setup.menuCarneLabel" },
+            { dishes: "menuPescadoDishes", labelKey: "setup.menuPescadoLabel" },
+            { dishes: "menuVeganoDishes", labelKey: "setup.menuVeganoLabel" },
+          ].map(({ dishes, labelKey }) => (
+            <div key={dishes}>
+              <p
+                className="setup-label"
+                id={id(dishes + "Label")}
+                style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}
+              >
+                {t(labelKey)}
+              </p>
+              <MenuDishEditor
+                value={dishValues[dishes] || ""}
+                onChange={(json) => updateFormField(dishes, json)}
+                idBase={id(dishes)}
+              />
+            </div>
+          ))}
+        </div>
+        <p className="setup-help">{t("setup.menuRequiredText")}</p>
+      </SetupToggleField>
 
-      {menuEnabled === "true" ? (
-        <>
-          <p className="setup-help" id={id("menuHint")} style={{ marginBottom: "0.4rem" }}>
-            {t("setup.menuHint")}
-          </p>
-          <div className="setup-fields-grid">
-            {[
-              { dishes: "menuCarneDishes", labelKey: "setup.menuCarneLabel" },
-              { dishes: "menuPescadoDishes", labelKey: "setup.menuPescadoLabel" },
-              { dishes: "menuVeganoDishes", labelKey: "setup.menuVeganoLabel" },
-            ].map(({ dishes, labelKey }) => (
-              <div key={dishes}>
-                <p
-                  className="setup-label"
-                  id={id(dishes + "Label")}
-                  style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}
-                >
-                  {t(labelKey)}
-                </p>
-                <MenuDishEditor
-                  value={dishValues[dishes] || ""}
-                  onChange={(json) => updateFormField(dishes, json)}
-                  idBase={id(dishes)}
-                />
-              </div>
-            ))}
-          </div>
-          <p className="setup-help">{t("setup.menuRequiredText")}</p>
-        </>
-      ) : (
+      {menuEnabled !== "true" ? (
         <>
           <p className="setup-label" id={id("menuTextoLabel")} style={{ fontSize: "0.85rem", marginBottom: "0.2rem" }}>
             {t("setup.menuTextoLabel")}
@@ -219,7 +204,7 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
             {t("setup.menuTextoHint")}
           </p>
         </>
-      )}
+      ) : null}
 
       {/* Fecha límite de RSVP (movida desde Extras) */}
       {renderToggleRow(
@@ -238,13 +223,10 @@ const GuestsSectionForm = memo(function GuestsSectionForm({ prefix = "" }: { pre
         ) : undefined,
       )}
 
-      {/* Visibilidad de la lista de confirmados (opt-in de nombres) */}
-      {renderToggleRow(
-        "showConfirmedPeople",
-        t("setup.showConfirmedPeopleLabel"),
-        t("setup.showConfirmedPeopleHint"),
-        showConfirmedPeopleEnabled === "true",
-      )}
+      {/* Visibilidad de la lista de confirmados eliminada: la lista pública
+          ya no se genera (los invitados no hacen opt-in) y el toggle estaba
+          desconectado del render (escribía showConfirmedPeopleEnabled pero
+          la portada leía showConfirmedPeople). Queda fuera por completo. */}
 
       <div className="story-divider" style={{ margin: "0.75rem 0" }} />
       <SetupToggleField

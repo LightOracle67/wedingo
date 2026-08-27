@@ -116,17 +116,17 @@ describe("GuestsSectionForm", () => {
   });
 
   it("calls updateFormField on menu enabled toggle", () => {
+    // El toggle del menú es un SetupToggleField (switch moderno): se encuentra
+    // por su aria-label, como el resto de toggles del formulario.
     render(<GuestsSectionForm />);
-    const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[8]!);
+    fireEvent.click(screen.getByLabelText("setup.menuEnabledLabel"));
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuEnabled", "true");
   });
 
   it("calls updateFormField to disable menu", () => {
     mockFormData.menuEnabled = "true";
     render(<GuestsSectionForm />);
-    const checkboxes = getAllCheckboxes();
-    fireEvent.click(checkboxes[8]!);
+    fireEvent.click(screen.getByLabelText("setup.menuEnabledLabel"));
     expect(mockUpdateFormField).toHaveBeenCalledWith("menuEnabled", "false");
   });
 
