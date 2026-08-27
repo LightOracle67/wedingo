@@ -232,12 +232,47 @@ export default function AdminPage() {
       return;
     }
     // El PDF respeta la búsqueda y el filtro de asistencia (antes imprimía
-    // siempre la lista completa).
+    // siempre la lista completa). Se imprimen las mismas columnas que la
+    // tabla (sin acciones): nombre, acompaña a, asistencia, menú, dieta,
+    // niños, intolerancias, transporte, consentimientos y fecha.
     const rows = filteredEntries
-      .map(
-        (e: { guestName: string; attendance: string; companions?: number; dietaryInfo?: string }) =>
-          `<tr><td>${escHtml(e.guestName)}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${e.attendance === "yes" ? e.companions : 0}</td><td>${escHtml(e.dietaryInfo || "")}</td></tr>`,
-      )
+      .map((e) => {
+        const niños = e.attendance === "yes" && Number(e.childrenCount) > 0 ? String(e.childrenCount) : "";
+        const niñosDiet = [
+          ...(Array.isArray(e.childrenAllergies) ? e.childrenAllergies : []),
+          (e.childrenAllergiesOther || "").trim(),
+        ]
+          .filter(Boolean)
+          .join(", ");
+        const consentimientos = [
+          e.parentalConsent ? t("attendance.consentParental") : "",
+          e.healthConsent ? t("attendance.consentHealth") : "",
+        ]
+          .filter(Boolean)
+          .join(", ");
+        // Etiqueta de transporte igual que la tabla: si no hay modo es "—",
+        // si es propio va la etiqueta, y si hay salida se añade la hora.
+        const tipoTransporte = e.transportMode
+          ? t(e.transportMode === "taxi" ? "transport.typeTaxi" : "transport.typeBus")
+          : "";
+        const transporte =
+          e.attendance !== "yes" || (!e.transportMode && !e.transportChoice && !e.transportTime)
+            ? "—"
+            : !e.transportMode || e.transportMode === "own"
+              ? t("attendance.transportOwnCar")
+              : e.transportTime
+                ? `${tipoTransporte} (${e.transportTime})`
+                : tipoTransporte;
+        return `<tr><td>${escHtml(e.guestName || "")}</td><td>${escHtml(
+          e.mainGuestName || "",
+        )}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${escHtml(
+          e.mealChoice ? t(`rsvp.menu${e.mealChoice.charAt(0).toUpperCase()}${e.mealChoice.slice(1)}`) : "",
+        )}</td><td>${escHtml(e.dietaryInfo || "")}</td><td>${niños}</td><td>${escHtml(
+          niñosDiet,
+        )}</td><td>${escHtml(transporte)}</td><td>${escHtml(consentimientos)}</td><td>${escHtml(
+          formatDate(e.submittedAt),
+        )}</td></tr>`;
+      })
       .join("");
     const tc = filteredEntries.filter((e: { attendance: string }) => e.attendance === "yes").length;
     const td = filteredEntries.filter((e: { attendance: string }) => e.attendance === "no").length;
@@ -248,7 +283,7 @@ export default function AdminPage() {
     <h1>${t("admin.pdfTitle", { name: escHtml(coupleName) })}</h1>
     <p style="color:#666;font-size:13px">${new Date().toLocaleDateString(i18n.language, { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}</p>
     <div class="stats"><div class="stat">${tc} ${t("admin.pdfConfirmed")}</div><div class="stat">${td} ${t("admin.pdfNotAttending")}</div><div class="stat">${filteredEntries.length} ${t("admin.pdfResponses")}</div></div>
-    <table><thead><tr><th>${t("admin.pdfTableName")}</th><th>${t("admin.pdfTableAttendance")}</th><th>${t("admin.pdfTableCompanions")}</th><th>${t("admin.pdfTableDiet")}</th></tr></thead><tbody>${rows}</tbody></table>
+    <table><thead><tr><th>${t("admin.pdfTableName")}</th><th>${t("attendance.tableAccompanies")}</th><th>${t("admin.pdfTableAttendance")}</th><th>${t("attendance.tableMenu")}</th><th>${t("attendance.tableDiet")}</th><th>${t("attendance.tableChildren")}</th><th>${t("attendance.tableChildrenDiet")}</th><th>${t("attendance.tableTransport")}</th><th>${t("attendance.tableConsents")}</th><th>${t("attendance.tableDate")}</th></tr></thead><tbody>${rows}</tbody></table>
     <p style="margin-top:12px;color:#888;font-size:11px">${t("support.appTitle")}</p>
     </body></html>`;
     const blob = new Blob([html], { type: "text/html;charset=utf-8" });
@@ -368,6 +403,7 @@ export default function AdminPage() {
       handleDeleteRsvpEntries,
       retryLoadRsvp,
       config.transportDepartures,
+      config.menuEnabled,
       inviteToken,
     ],
   );

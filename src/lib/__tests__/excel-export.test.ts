@@ -115,10 +115,14 @@ describe("Export Excel: Asistencia + Menús (AttendanceTab)", () => {
   it("cabecera completa de asistencia", () => {
     expect(sheets[0]!.data[0]!).toEqual([
       "Nombre",
+      "attendance.tableAccompanies",
       "Asistencia",
       "Menú",
       "Info alimentaria",
+      "attendance.tableChildren",
+      "attendance.tableChildrenDiet",
       "Transporte",
+      "attendance.tableConsents",
       "Fecha",
     ]);
   });
@@ -127,24 +131,57 @@ describe("Export Excel: Asistencia + Menús (AttendanceTab)", () => {
     const row = sheets[0]!.data[1]!;
     expect(row).toEqual([
       "Ana, la novia",
+      "",
       "Sí",
       "Carne",
       "sin gluten | menú: infantil",
+      "",
+      "",
       "(bus)",
+      "",
       "01/08/2026 10:00",
     ]);
   });
 
   it("declinado queda como No y conserva el plato que eligió", () => {
     const row = sheets[0]!.data[2]!;
-    expect(row[1]).toBe("No");
-    expect(row[2]).toBe("Pescado");
+    expect(row[2]).toBe("No");
+    expect(row[3]).toBe("Pescado");
+  });
+
+  it("muestra acompañamiento, niños del principal y consentimientos", () => {
+    const sheet = readBack([
+      buildRSVPSheet(
+        [
+          {
+            guestName: "Gonzalo",
+            attendance: "yes",
+            mainGuestName: "Elisa",
+            mealChoice: "vegano",
+            childrenCount: 2,
+            childrenAllergies: ["sin gluten"],
+            childrenAllergiesOther: "frutos secos",
+            transportMode: "taxi",
+            healthConsent: true,
+            submittedAt: "2026-08-02T09:00:00",
+          },
+        ],
+        t,
+      ),
+    ]);
+    const row = sheet[0]!.data[1]!;
+    // Acompaña a, niños, intolerancias y consentimientos ahora se exportan.
+    expect(row[1]).toBe("Elisa");
+    expect(row[5]).toBe("2");
+    expect(row[6]).toBe("sin gluten, frutos secos");
+    expect(row[7]).toBe("(taxi)");
+    expect(row[8]).toBe("attendance.consentHealth");
   });
 
   it("fila sin respuesta queda vacía en asistencia/menú", () => {
     const row = sheets[0]!.data[3]!;
-    expect(row[1]).toBe("");
     expect(row[2]).toBe("");
+    expect(row[3]).toBe("");
   });
 
   it("la hoja Menús expande acompañantes y excluye a los que declinan", () => {
@@ -447,13 +484,15 @@ describe("Ramas límite de los builders", () => {
       ],
       t,
     );
-    expect(sheet.rows[0]).toEqual(["A", "", "", "", "", ""]);
-    expect(sheet.rows[1]?.[1]).toBe("No");
-    expect(sheet.rows[1]?.[4]).toBe("Coche");
-    expect(sheet.rows[2]?.[1]).toBe("Sí");
-    expect(sheet.rows[2]?.[2]).toBe("pollo");
-    expect(sheet.rows[2]?.[4]).toBe("(bus)");
-    expect(String(sheet.rows[2]?.[5])).not.toBe("");
+    // 10 columnas: nombre, acompaña, asistencia, menú, dieta, niños,
+    // intolerancias, transporte, consentimientos, fecha.
+    expect(sheet.rows[0]).toEqual(["A", "", "", "", "", "", "", "", "", ""]);
+    expect(sheet.rows[1]?.[2]).toBe("No");
+    expect(sheet.rows[1]?.[7]).toBe("Coche");
+    expect(sheet.rows[2]?.[2]).toBe("Sí");
+    expect(sheet.rows[2]?.[3]).toBe("pollo");
+    expect(sheet.rows[2]?.[7]).toBe("(bus)");
+    expect(String(sheet.rows[2]?.[9])).not.toBe("");
   });
 
   it("Menús: declinados fuera, asistentes expanden, mealChoice como respaldo y sin plato", () => {

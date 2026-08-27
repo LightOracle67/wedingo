@@ -22,6 +22,15 @@ interface RsvpRowLike {
   submittedAt?: string;
   transportChoice?: string;
   transportMode?: string;
+  /** Invitado al que acompaña (solo compañeros); undefined en principales. */
+  mainGuestName?: string;
+  /** Niños declarados por el invitado principal (contador del nuevo modelo). */
+  childrenCount?: number;
+  childrenAllergies?: string[];
+  childrenAllergiesOther?: string;
+  /** Consentimientos de la confirmación (salud/privacidad). */
+  healthConsent?: boolean;
+  parentalConsent?: boolean;
 }
 
 /** Mensaje del buzón privado (ya formateado por el componente). */
@@ -102,8 +111,15 @@ function menuLabel(menu: string, t: (key: string) => string): string {
 
 /** Hoja "Asistencia": una fila por respuesta RSVP. */
 export function buildRSVPSheet(entries: RsvpRowLike[], t: (key: string) => string): ExcelSheet {
+  const childrenTexto = (e: RsvpRowLike) => {
+    const base = (e.childrenAllergies || []).filter(Boolean).join(", ");
+    const extra = (e.childrenAllergiesOther || "").trim();
+    return [base, extra].filter(Boolean).join(", ");
+  };
   const rows: Array<Array<string | number>> = (entries || []).map((e) => [
     e.guestName || "",
+    // Acompaña a: solo para compañeros; los principales quedan vacíos.
+    e.mainGuestName || "",
     e.attendance === "yes"
       ? t("attendance.attendingValue")
       : e.attendance === "no"
@@ -111,23 +127,36 @@ export function buildRSVPSheet(entries: RsvpRowLike[], t: (key: string) => strin
         : "",
     menuLabel(e.mealChoice || "", t),
     e.dietaryInfo || "",
+    // Niños del nuevo modelo: contador y alergias de grupo del principal.
+    e.attendance === "yes" && (e.childrenCount || 0) > 0 ? String(e.childrenCount) : "",
+    e.attendance === "yes" && childrenTexto(e) ? childrenTexto(e) : "",
     [e.transportChoice || "", e.transportMode && e.transportMode !== "own" ? `(${e.transportMode})` : ""]
       .filter(Boolean)
       .join(" "),
+    // Consentimientos: los mismos badges que muestra la tabla
+    // (tutores + salud), separados por coma.
+    [e.parentalConsent ? t("attendance.consentParental") : "",
+      e.healthConsent ? t("attendance.consentHealth") : ""]
+      .filter(Boolean)
+      .join(", "),
     e.submittedAt ? excelDate(e.submittedAt) : "",
   ]);
   return {
     name: t("attendance.sheetAttendance"),
     headers: [
       t("attendance.tableName"),
+      t("attendance.tableAccompanies"),
       t("attendance.tableAttendance"),
       t("attendance.tableMenu"),
       t("attendance.tableDiet"),
+      t("attendance.tableChildren"),
+      t("attendance.tableChildrenDiet"),
       t("attendance.tableTransport"),
+      t("attendance.tableConsents"),
       t("attendance.tableDate"),
     ],
     rows,
-    colWidths: [24, 14, 20, 26, 20, 18],
+    colWidths: [24, 20, 14, 20, 26, 14, 28, 20, 22, 18],
   };
 }
 

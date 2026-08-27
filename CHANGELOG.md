@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.152.0 — 2026-08-27
+- La vista de impresión de asistencias ahora incluye todas las columnas de la tabla (nombre, acompañamiento, asistencia, menú, alergias, niños, intolerancias de los niños, transporte, consentimientos y fecha).
+- El Excel de asistencias añade las columnas que faltaban: acompañamiento (a quién acompaña), ¿trae niños?, intolerancias de los niños y consentimientos, para una lectura clara.
 ## 2.151.0 — 2026-08-27
 - La tabla de asistencias y el Excel ya no muestran las columnas Niño (flag legacy isChild que ya no se escribe) y Contacto (teléfono/email dejaron de recogerse en el RSVP): siempre aparecían vacías.
 ## 2.150.0 — 2026-08-27

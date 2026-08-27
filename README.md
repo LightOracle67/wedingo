@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.151.0](https://github.com/LightOracle67/wedingo/releases)  
+**Versión actual:** [v2.152.0](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.152.0 | 2026-08-27 | La impresión y el Excel de asistencias muestran todas las columnas de la tabla: acompañamiento, menú, alergias, niños, intolerancias, transporte, consentimientos y fecha |
 | v2.151.0 | 2026-08-27 | Eliminadas las columnas Niño (legacy sin uso) y Contacto (teléfono/email ya no se piden en el RSVP) de la tabla de asistencias y del Excel |
 | v2.150.0 | 2026-08-27 | La tabla de asistencias se alineó con sus cabeceras: los niños del invitado principal (¿Trae niños? e intolerancias) ya se muestran y el transporte aparece en su columna, antes la fila se descuadraba |
 | v2.149.0 | 2026-08-27 | El modal de edición de asistentes cubre toda la pantalla (portal) y la tabla de asistencias muestra ¿Trae niños? e intolerancias de los niños con la estadística sumando ambos modelos |
