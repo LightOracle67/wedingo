@@ -1,6 +1,6 @@
 import { memo } from "react";
 import TransportPicker from "./TransportPicker";
-import { MenuPicker, AllergiesChips } from "./MenuAndAllergies";
+import { AllergiesChips } from "./MenuAndAllergies";
 import type { RsvpFormData } from "../../../hooks/useRsvp";
 import type { Translate } from "./derive";
 
@@ -17,6 +17,8 @@ interface CompanionCardProps {
   modes: { value: string; label: string }[];
   departures: { type?: "bus" | "taxi"; time: string; url: string }[];
   menuOptions: { key: string; label: string; desc: string }[];
+  /** Abre el modal del menú de ESTE acompañante (con índice). */
+  onOpenMenu: (index: number, option: { key: string; label: string; desc: string }) => void;
   hasTransportChoices: boolean;
   hasStructuredMenu: boolean;
   frozen: boolean;
@@ -39,6 +41,7 @@ const CompanionCard = memo(function CompanionCard({
   modes,
   departures,
   menuOptions,
+  onOpenMenu,
   hasTransportChoices,
   hasStructuredMenu,
   frozen,
@@ -94,15 +97,24 @@ const CompanionCard = memo(function CompanionCard({
       ) : null}
 
       {hasStructuredMenu && menuOptions.length > 0 ? (
-        <MenuPicker
-          name={`rv2Menu${index}`}
-          compact
-          value={form.companionMenus[i] || ""}
-          options={menuOptions}
-          onChange={(k) => onField(`companionMenus[${i}]`, k)}
-          frozen={frozen}
-          t={t}
-        />
+        <div className="rv2-menubtns rv2-menubtns--compact">
+          {menuOptions.map((m) => {
+            const active = (form.companionMenus[i] || "") === m.key;
+            return (
+              <button
+                key={m.key}
+                type="button"
+                className={"rv2-menu-btn" + (active ? " rv2-menu-btn--active" : "")}
+                aria-pressed={active}
+                disabled={frozen}
+                onClick={() => onOpenMenu(i, m)}
+              >
+                <span>{m.label}</span>
+                {active ? <span className="rv2-menu-btn__check">✓</span> : null}
+              </button>
+            );
+          })}
+        </div>
       ) : null}
 
       <AllergiesChips

@@ -227,12 +227,14 @@
     "summaryAttendance": "Asistencia: {{v}}",
     "summaryMenu": "Menú: {{m}}",
     "menuPredefined": "Predefinido",
-    "menuSelected": "Menú elegido: {{m}}",
     "summaryCompanions": "Acompañantes: {{c}}",
     "yourTable": "Estás en la mesa {table}",
     "allergiesOtherLabel": "Otras alergias",
     "childrenAllergiesHint": "Indica solo alergias e intolerancias alimentarias de los niños.",
-    "childrenNotAllowed": "Esta boda es solo para adultos; no se pueden incluir niños en la confirmación."
+    "childrenNotAllowed": "Esta boda es solo para adultos; no se pueden incluir niños en la confirmación.",
+    "seeMenu": "Pulsa para ver el menú",
+    "chooseMenu": "Elegir este menú",
+    "menuChosenBadge": "Elegido"
   },
   "public": {
     "loadingInvitation": "Cargando invitación…",

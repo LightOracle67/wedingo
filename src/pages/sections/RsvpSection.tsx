@@ -15,7 +15,7 @@ import {
 import { extractPlaceNameFromUrl } from "../../lib/geo-utils";
 import AttendanceSelector from "./rsvp/AttendanceSelector";
 import TransportPicker from "./rsvp/TransportPicker";
-import { MenuPicker, AllergiesChips } from "./rsvp/MenuAndAllergies";
+import { AllergiesChips, MenuModal } from "./rsvp/MenuAndAllergies";
 import CompanionCard from "./rsvp/CompanionCard";
 import ConsentsBlock from "./rsvp/ConsentsBlock";
 import { MAX_CHILDREN, MAX_COMPANIONS } from "./rsvp/constants";
@@ -167,6 +167,16 @@ const RsvpSection = memo(function RsvpSection({
   // Asistencia efectiva (con acompañantes / solo / no).
   const isAttending = rsvpForm.attendance !== "no";
 
+  // Menú abierto en el modal (titular o un acompañante): key null significa
+  // menú fijo (sin selector), owner distingue titular de acompañante.
+  const [menuModal, setMenuModal] = useState<{
+    owner: "main" | string;
+    key: string | null;
+    label: string;
+    desc: string;
+    selectable: boolean;
+  } | null>(null);
+
   const menuOptions = useMemo(
     () =>
       buildMenuOptions(
@@ -179,6 +189,10 @@ const RsvpSection = memo(function RsvpSection({
       ),
     [menuCarneDishes, menuPescadoDishes, menuVeganoDishes, t],
   );
+  // Menús estructurados con platos: solo estos son seleccionables.
+  const selectableOptions = menuOptions.filter((m) => m.desc.trim() !== "");
+  // Menú fijo (texto libre) formateado: abre el modal con la lupa.
+  const textMenuDesc = menuTextoDishes ? formatDishesText(menuTextoDishes, t) : "";
   const modeOptions = useMemo(
     () => buildModeOptions({ transportEnabled: transportEnabled ?? "" }, t),
     [transportEnabled, t],
@@ -391,31 +405,68 @@ const RsvpSection = memo(function RsvpSection({
               t={t}
             />
 
-            {/* Menú del titular: tras la asistencia (solo si asiste) */}
-            {isAttending && menuEnabled && menuOptions.length > 0 ? (
-              <MenuPicker
-                name="rv2MenuMain"
-                value={rsvpForm.menuSelection}
-                options={menuOptions}
-                onChange={(k) => updateRsvpField("menuSelection", k)}
-                frozen={frozen}
-                t={t}
-              />
+            {/* Menú del titular: botones que abren el modal con los platos */}
+            {isAttending && menuEnabled && selectableOptions.length > 0 ? (
+              <fieldset className="rv2-menu">
+                {/* Estilo inline: cualquier regla CSS del tema (p. ej. la
+                    etiqueta del setup a 0.85rem) lo sobreescribe por
+                    especificidad; inline gana siempre (ver v2.157). */}
+                <legend
+                  className="rv2-menu__title"
+                  style={{ fontSize: "1.05rem", fontWeight: 600, lineHeight: 1.4, marginBottom: "0.35rem", padding: 0 }}
+                >
+                  {t("rsvp.menuLabel")}
+                </legend>
+                <div className="rv2-menubtns">
+                  {selectableOptions.map((m) => {
+                    const active = rsvpForm.menuSelection === m.key;
+                    return (
+                      <button
+                        key={m.key}
+                        type="button"
+                        className={"rv2-menu-btn" + (active ? " rv2-menu-btn--active" : "")}
+                        aria-pressed={active}
+                        disabled={frozen}
+                        onClick={() => setMenuModal({ owner: "main", key: m.key, label: m.label, desc: m.desc, selectable: true })}
+                      >
+                        <span>{m.label}</span>
+                        {active ? (
+                          <svg className="rv2-menu-btn__check" aria-hidden="true" viewBox="0 0 16 16" width="14" height="14">
+                            <path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                          </svg>
+                        ) : null}
+                      </button>
+                    );
+                  })}
+                </div>
+              </fieldset>
+            ) : null}
+            {/* Menú fijo (texto libre): botón con lupa que abre el modal */}
+            {isAttending && textMenuDesc ? (
+              <div className="rv2-menubtns rv2-menubtns--fixed">
+                <button
+                  type="button"
+                  className="rv2-menu-text-btn"
+                  disabled={frozen}
+                  onClick={() => setMenuModal({ owner: "main", key: null, label: t("rsvp.menuLabel"), desc: textMenuDesc, selectable: false })}
+                >
+                  <svg aria-hidden="true" viewBox="0 0 16 16" width="15" height="15">
+                    <path
+                      d="M6.5 10.5a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm7.5 2.5l-4.2-4.2"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                  {t("rsvp.seeMenu")}
+                </button>
+              </div>
             ) : null}
             {isAttending && !menuEnabled ? (
               <p className="setup-help" style={{ fontSize: "0.8rem", marginTop: "0.5rem" }}>
                 {t("rsvp.allergiesHint")}
               </p>
-            ) : null}
-            {isAttending && !(menuEnabled && menuOptions.length > 0) && menuTextoDishes ? (
-              <div className="rv2-menutext">
-                <p className="story-eyebrow" style={{ fontSize: "0.72rem", marginBottom: "0.2rem" }}>
-                  {t("rsvp.menuLabel")}
-                </p>
-                <pre className="story-note whitespace-pre-line" style={{ font: "inherit", whiteSpace: "pre-line" }}>
-                  {(menuTextoDishes && formatDishesText(menuTextoDishes, t)) || ""}
-                </pre>
-              </div>
             ) : null}
             {isAttending && menuEnabled ? (
               <p className="setup-help" style={{ fontSize: "0.8rem" }}>
@@ -478,6 +529,7 @@ const RsvpSection = memo(function RsvpSection({
                     onRemove={removeCompanionAt}
                     onModeChange={(idx, m) => handleTransportModeChange("companion", idx, m)}
                     onDepartureChange={(idx, c) => handleDepartureChange("companion", idx, c)}
+                    onOpenMenu={(idx, opt) => setMenuModal({ owner: `companion-${idx}`, key: opt.key, label: opt.label, desc: opt.desc, selectable: true })}
                     modes={modeOptions}
                     departures={departures}
                     menuOptions={menuOptions}
@@ -677,6 +729,31 @@ const RsvpSection = memo(function RsvpSection({
               </div>
             )}
           </form>
+
+          {/* Modal del menú: muestra los platos y permite elegir en un gesto */}
+          {menuModal ? (
+            <MenuModal
+              title={menuModal.label}
+              desc={menuModal.desc}
+              selectable={menuModal.selectable}
+              selected={
+                menuModal.key !== null &&
+                (menuModal.owner === "main"
+                  ? rsvpForm.menuSelection === menuModal.key
+                  : (rsvpForm.companionMenus[Number(menuModal.owner.split("-")[1])] || "") === menuModal.key)
+              }
+              onChoose={
+                menuModal.selectable && menuModal.key !== null
+                  ? () => {
+                      updateRsvpField(menuModal.owner === "main" ? "menuSelection" : `companionMenus[${Number(menuModal.owner.split("-")[1])}]`, menuModal.key);
+                      setMenuModal(null);
+                    }
+                  : undefined
+              }
+              onClose={() => setMenuModal(null)}
+              t={t}
+            />
+          ) : null}
 
           {/* Feedback de validación/error */}
           {rsvpMessage ? (

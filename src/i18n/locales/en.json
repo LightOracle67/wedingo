@@ -227,12 +227,14 @@
     "summaryAttendance": "Attendance: {{v}}",
     "summaryMenu": "Menu: {{m}}",
     "menuPredefined": "Predefined",
-    "menuSelected": "Selected menu: {{m}}",
     "summaryCompanions": "Companions: {{c}}",
     "yourTable": "You are at table {table}",
     "allergiesOtherLabel": "Other allergies",
     "childrenAllergiesHint": "Only indicate food allergies and intolerances for children.",
-    "childrenNotAllowed": "This wedding is adults-only; children cannot be included in the RSVP."
+    "childrenNotAllowed": "This wedding is adults-only; children cannot be included in the RSVP.",
+    "seeMenu": "Pulsa para ver el menú",
+    "chooseMenu": "Elegir este menú",
+    "menuChosenBadge": "Elegido"
   },
   "public": {
     "loadingInvitation": "Loading invitation…",

@@ -2,6 +2,11 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.161.0 — 2026-08-27
+- El menú del RSVP se muestra en un modal: los botones de carne, pescado y vegano abren la descripción de platos y quedan marcados al elegir (un solo gesto para elegir y cerrar, con el distintivo Elegido cuando ya estaba seleccionado). Solo aparecen los menús con platos definidos.
+- Si el menú es fijo (sin opciones), un botón con una lupa abre el modal informativo con los platos.
+- Eliminados el selector de tarjetas anterior y su CSS huérfano.
+
 ## 2.160.0 — 2026-08-27
 - Eliminado todo el código legacy y muerto restante: el consentimiento parental (tutores) solo se leía de documentos antiguos porque la aplicación ya no lo escribe, y los campos de teléfono y email del RSVP (retirados con el bloque de contacto) ya no tenían ningún consumidor. Se eliminaron de las tablas, el PDF, el Excel (incluida la hoja global de invitados, que queda con 7 columnas) y del modelo del formulario.
 - La verificación de campos formulario-reglas (scripts/check-fields-vs-rules.mjs) confirma que los 21 campos que la aplicación escribe en las respuestas siguen permitidos por firestore.rules.

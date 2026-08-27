@@ -3335,51 +3335,93 @@ body::after {
   margin-bottom: 0.35rem;
   padding: 0;
 }
-.rv2-menu__list {
+/* Botones de menú: abren el modal con los platos y quedan marcados al elegir */
+.rv2-menubtns {
   display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
 }
-.rv2-menu__opt {
-  padding: 0.6rem 0.8rem;
+.rv2-menubtns--fixed {
+  margin-top: 0.5rem;
+}
+.rv2-menubtns--compact {
+  margin-top: 0.3rem;
+}
+.rv2-menu-btn {
+  flex: 1 1 30%;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.55rem 0.7rem;
   border-radius: 0.8rem;
-  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: var(--setup-title);
   background: color-mix(in srgb, var(--setup-field-bg) 45%, transparent);
   border: 1px solid color-mix(in srgb, var(--setup-border) 60%, transparent);
+  cursor: pointer;
+  transition: background 150ms, border-color 150ms, transform 150ms;
 }
-.rv2-menu__opt--active {
-  border-color: color-mix(in srgb, var(--setup-accent) 70%, transparent);
+.rv2-menu-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--setup-accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--setup-accent) 55%, transparent);
 }
-.rv2-menu__input {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
+.rv2-menu-btn--active {
+  border-color: color-mix(in srgb, var(--setup-accent) 75%, transparent);
+  background: color-mix(in srgb, var(--setup-accent) 16%, transparent);
+  font-weight: 600;
 }
-.rv2-menu__desc {
-  margin: 0.35rem 0 0;
-  font-size: 0.8rem;
-  color: var(--setup-subtitle);
-  white-space: pre-line;
+.rv2-menu-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
-/* Detalle del menú elegido: etiqueta y descripción en conjunto, separado
-   de las tarjetas de opción (antes la descripción se expandía dentro del
-   label del radio y estiraba la tarjeta al seleccionar). */
-.rv2-menu__sel {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  margin-top: 0.5rem;
-  padding: 0.6rem 0.8rem;
-  border-radius: 0.8rem;
-  border: 1px solid color-mix(in srgb, var(--setup-accent) 45%, transparent);
-  background: color-mix(in srgb, var(--setup-field-bg) 35%, transparent);
-}
-.rv2-menu__sel-label {
+.rv2-menu-btn__check {
+  flex-shrink: 0;
   color: var(--setup-accent);
-  font-size: 0.78rem;
 }
-.rv2-menu__sel .rv2-menu__desc {
+/* Botón del menú fijo (no seleccionable): píldora con la lupa al inicio */
+.rv2-menu-text-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.83rem;
+  font-family: inherit;
+  color: var(--setup-title);
+  background: color-mix(in srgb, var(--setup-field-bg) 40%, transparent);
+  border: 1px dashed color-mix(in srgb, var(--setup-accent) 60%, transparent);
+  cursor: pointer;
+}
+.rv2-menu-text-btn:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--setup-accent) 12%, transparent);
+}
+.rv2-menu-text-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* Modal del menú: badge de elegido, platos y botón de elección */
+.rv2-menu-badge {
+  display: inline-block;
+  margin: 0 0 0.5rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--setup-accent);
+  background: color-mix(in srgb, var(--setup-accent) 14%, transparent);
+}
+.rv2-menu-desc {
   margin: 0;
+  font-size: 0.88rem;
+  color: var(--setup-subtitle, inherit);
+  line-height: 1.5;
+}
+.rv2-menu-choose {
+  width: 100%;
+  margin-top: 0.9rem;
 }
 
 /* Filas de checkbox y enlaces legales */
@@ -3423,12 +3465,6 @@ body::after {
   font-weight: 600;
   font-size: 0.95rem;
 }
-.rv2-menutext {
-  padding: 0.6rem;
-  border-radius: 0.6rem;
-  background: color-mix(in srgb, var(--setup-field-bg) 60%, transparent);
-}
-
 /* Acciones finales */
 .rv2-actions {
   display: flex;

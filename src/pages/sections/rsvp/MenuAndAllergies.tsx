@@ -1,67 +1,52 @@
 import { memo } from "react";
+import Modal from "../../../components/Modal";
 import { ALLERGIES } from "./constants";
 import type { Translate } from "./derive";
 
-interface MenuPickerProps {
-  /** Nombre único del grupo de radios: main y cada acompañante necesitan el suyo. */
-  name: string;
-  /** Valor seleccionado (clave de menú o ""). */
-  value: string;
-  options: { key: string; label: string; desc: string }[];
-  onChange: (key: string) => void;
-  frozen: boolean;
-  compact?: boolean;
+interface MenuModalProps {
+  /** Título del modal: etiqueta del menú abierto o la del bloque. */
+  title: string;
+  /** Platos formateados del menú (una línea por plato). */
+  desc: string;
+  /** Si es un menú elegible, se muestra el botón Elegir y el estado elegido. */
+  selectable: boolean;
+  /** Qué menú está elegido ahora (muestra el badge si coincide con este modal). */
+  selected: boolean;
+  /** Cierra el modal confirmando la elección (solo menús seleccionables). */
+  onChoose?: (() => void) | undefined;
+  /** Cierra el modal sin cambios. */
+  onClose: () => void;
   t: Translate;
 }
 
 /**
- * Selector de menú tipo tarjetas-radio: cada opción muestra su etiqueta y,
- * al estar activa, la descripción de platos desplegada debajo (antes era un
- * select + panel separado, menos descubrible).
+ * Modal que muestra los platos de un menú. En los menús seleccionables el
+ * invitado elige aquí (un único gesto: Elegir cierra y la selección queda
+ * marcada en el botón exterior); en el menú fijo (texto libre) es solo
+ * informativo y se cierra con el botón de cerrar.
  */
-const MenuPicker = memo(function MenuPicker({ value, options, onChange, frozen, compact, t, name }: MenuPickerProps) {
-  const selected = options.find((m) => m.key === value) || null;
+const MenuModal = memo(function MenuModal({ title, desc, selectable, selected, onChoose, onClose, t }: MenuModalProps) {
   return (
-    <fieldset className={"rv2-menu" + (compact ? " rv2-compact" : "")} disabled={frozen}>
-      {/* Estilo inline: cualquier regla CSS del tema (p. ej. la etiqueta del
-          formulario a 0.85rem) lo sobreescribiría por especificidad; inline
-          gana siempre y conserva la variable de color del tema. */}
-      <legend className="rv2-menu__title" style={{ fontSize: "1.05rem", fontWeight: 600, lineHeight: 1.4, marginBottom: "0.35rem", padding: 0 }}>
-        {t("rsvp.menuLabel")}
-      </legend>
-      <div className="rv2-menulist" role="radiogroup">
-        {options.map((m) => {
-          const active = value === m.key;
-          return (
-            <label key={m.key} className={"rv2-menu__opt" + (active ? " rv2-menu__opt--active" : "")}>
-              <input
-                type="radio"
-                name={name}
-                className="rv2-seg__input"
-                value={m.key}
-                checked={active}
-                onChange={() => onChange(m.key)}
-                disabled={frozen}
-              />
-              <span className="rv2-menu__label">{m.label}</span>
-            </label>
-          );
-        })}
-      </div>
-      {/* El menú elegido se detalla en una etiqueta propia, separada de las
-          tarjetas: antes la descripción se expandía dentro del label del
-          radio y estiraba la tarjeta (error visual) al seleccionar. */}
-      {selected ? (
-        <div className="rv2-menu__sel" role="status">
-          <span className="rv2-menu__sel-label">{t("rsvp.menuSelected", { m: selected.label })}</span>
-          {selected.desc ? <span className="rv2-menu__desc">{selected.desc}</span> : null}
-        </div>
+    <Modal title={title} closeLabel={t("common.close")} onClose={onClose} style={{ maxWidth: "min(95vw, 480px)" }}>
+      {selectable && selected ? (
+        <p className="rv2-menu-badge" role="status">
+          {t("rsvp.menuChosenBadge")}
+        </p>
       ) : null}
-    </fieldset>
+      {/* Platos formateados: se conserva el salto de línea de cada plato. */}
+      <pre className="story-note whitespace-pre-line rv2-menu-desc" style={{ font: "inherit", whiteSpace: "pre-line" }}>
+        {desc}
+      </pre>
+      {selectable && onChoose ? (
+        <button type="button" className="setup-button rv2-menu-choose" onClick={onChoose}>
+          {t("rsvp.chooseMenu")}
+        </button>
+      ) : null}
+    </Modal>
   );
 });
 
-export { MenuPicker };
+export { MenuModal };
 
 /** Chips de alergías reutilizables (titular y acompañantes). */
 export const AllergiesChips = memo(function AllergiesChips({

@@ -264,6 +264,8 @@ describe("RsvpSection", () => {
         menuTextoDishes={JSON.stringify([{ order: "entrante", text: "Ensalada" }])}
       />,
     );
+    // El menú fijo se muestra en un modal al pulsar el botón con la lupa.
+    fireEvent.click(document.querySelector(".rv2-menu-text-btn")!);
     expect(screen.getByText("rsvp.menuLabel")).toBeDefined();
     expect(screen.getByText(/setup.menuOrderEntrante: Ensalada/)).toBeDefined();
   });
@@ -279,6 +281,7 @@ describe("RsvpSection", () => {
         ])}
       />,
     );
+    fireEvent.click(document.querySelector(".rv2-menu-text-btn")!);
     expect(screen.getByText(/setup.menuOrderEntrante: Ensalada/)).toBeDefined();
     expect(screen.getByText(/setup.menuOrderPostre: Tarta/)).toBeDefined();
   });
@@ -295,6 +298,7 @@ describe("RsvpSection", () => {
         ])}
       />,
     );
+    fireEvent.click(document.querySelector(".rv2-menu-text-btn")!);
     expect(screen.getByText("rsvp.menuLabel")).toBeDefined();
     expect(screen.getByText(/setup.menuOrderEntrante: Ensalada/)).toBeDefined();
     expect(screen.getByText(/setup.menuOrderPrimero: Lubina/)).toBeDefined();
@@ -316,7 +320,38 @@ describe("RsvpSection", () => {
         menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
       />,
     );
+    // Antes el detalle se expandía dentro de la tarjeta; ahora se abre un modal.
+    fireEvent.click(document.querySelector(".rv2-menubtns .rv2-menu-btn")!);
     expect(screen.getByText(/setup.menuOrderPrimero: Solomillo/)).toBeDefined();
+    expect(screen.getByText("rsvp.menuChosenBadge")).toBeDefined();
+  });
+
+  it("marca el botón del menú elegido con aria-pressed", () => {
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        rsvpForm={{ ...baseForm, attendance: "alone", menuSelection: "carne" }}
+        menuEnabled={true}
+        menuCarneDishes={JSON.stringify([{ order: "primero", text: "Solomillo" }])}
+      />,
+    );
+    const btn = Array.from(document.querySelectorAll(".rv2-menubtns .rv2-menu-btn")).find(
+      (b) => (b.textContent || "").includes("rsvp.menuCarne"),
+    );
+    expect((btn as HTMLButtonElement)?.getAttribute("aria-pressed")).toBe("true");
+  });
+
+  it("el modal del menú fijo no ofrece botón de elegir (solo lectura)", () => {
+    render(
+      <WrappedRsvp
+        {...baseProps}
+        menuEnabled={true}
+        menuTextoDishes={JSON.stringify([{ order: "entrante", text: "Ensalada" }])}
+      />,
+    );
+    fireEvent.click(document.querySelector(".rv2-menu-text-btn")!);
+    expect(screen.getByText("rsvp.seeMenu")).toBeDefined();
+    expect(screen.queryByText("rsvp.chooseMenu")).toBeNull();
   });
 
   it("shows health consent when allergies exist", () => {
@@ -560,7 +595,8 @@ describe("RsvpSection", () => {
         rsvpForm={{ ...baseForm, attendance: "alone" }}
       />,
     );
-    fireEvent.click(document.querySelector('input[name="rv2MenuMain"][value="carne"]')!);
+    fireEvent.click(document.querySelector(".rv2-menubtns .rv2-menu-btn")!);
+    fireEvent.click(screen.getByText("rsvp.chooseMenu")!);
     expect(updateRsvpField).toHaveBeenCalledWith("menuSelection", "carne");
   });
 
@@ -600,8 +636,10 @@ describe("RsvpSection", () => {
     );
     // El picker del acompañante vive en su tarjeta: se busca el radio dentro de ella.
     const card = document.querySelector("section.rv2-card")!;
-    const radio = card.querySelector('input[name="rv2Menu0"][value="pescado"]') as HTMLInputElement;
-    fireEvent.click(radio);
+    const menuBtns = Array.from(card.querySelectorAll(".rv2-menubtns--compact .rv2-menu-btn"));
+    const menuBtn = menuBtns.find((b) => (b.textContent || "").includes("rsvp.menuPescado")) as HTMLButtonElement;
+    fireEvent.click(menuBtn);
+    fireEvent.click(screen.getByText("rsvp.chooseMenu")!);
     expect(updateRsvpField).toHaveBeenCalledWith("companionMenus[0]", "pescado");
   });
 
@@ -825,6 +863,7 @@ describe("RsvpSection", () => {
         rsvpForm={{ ...baseForm, attendance: "alone" }}
       />,
     );
+    fireEvent.click(document.querySelector(".rv2-menu-text-btn")!);
     expect(screen.getByText("rsvp.menuLabel")).toBeDefined();
     expect(screen.getByText(/Entrante/)).toBeDefined();
   });
@@ -839,6 +878,7 @@ describe("RsvpSection", () => {
       />,
     );
     expect(screen.getByText((text: string) => text.includes("rsvp.menuCarne"))).toBeDefined();
+    fireEvent.click(document.querySelector(".rv2-menubtns .rv2-menu-btn")!);
     expect(screen.getByText((text: string) => text.includes("Solomillo"))).toBeDefined();
   });
 
