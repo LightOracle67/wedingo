@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.139.0 | 2026-08-27 | Los toggles del setup ahora ocultan realmente sus campos en la invitación pública (antes ocultaban solo el formulario del admin) |
 | v2.138.0 | 2026-08-27 | Los botones de asistencia del RSVP se muestran siempre en una única línea con anchuras iguales, también en móvil |
 | v2.137.0 | 2026-08-27 | Los inputs relacionados de los formularios del setup (tipografía de la portada, menús, enlace y modo del mapa de alojamiento) ahora se muestran en línea y se apilan en una sola columna en móvil, sin perder funcionalidades |
 | v2.136.0 | 2026-08-27 | Changelog de la página al día hasta v2.135.0 (295 versiones, descargado de GitHub con caché local, historial recortado a 60 con enlace al fichero completo); modales con cuerpo scrolleable enfocable por teclado y cabecera fija (el botón de cierre ya no se desplaza al hacer scroll, WCAG 2.1.1) |

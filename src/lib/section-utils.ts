@@ -88,4 +88,46 @@ export function sectionHasContent(
   }
 }
 
+/**
+ * Aplica los toggles *Enabled a la configuración para la invitación pública:
+ * cuando un campo tiene su flag `*Enabled === 'false'`, se entrega como cadena
+ * vacía (o imagen ausente) para que el render por presencia lo oculte.
+ *
+ * Compatibilidad con documentos antiguos: `undefined` (flag no guardado) se
+ * interpreta como "visible" → el valor por presencia se mantiene. Nunca borra
+ * el valor persistido: solo afecta a la copia usada para renderizar.
+ */
+export function applyEnabledToggles<T extends InvitationConfig | Partial<InvitationConfig>>(
+  config: T,
+): T {
+  const clone: T = { ...config };
+  // Pares campo → flag: si el flag es exactamente 'false', el campo se oculta.
+  const FIELD_TOGGLES: Record<string, string[]> = {
+    storyText: ["storyTextEnabled"],
+    giftsInfo: ["giftsInfoEnabled"],
+    bankInfo: ["giftsInfoEnabled"],
+    inviteMessage: ["inviteMessageEnabled"],
+    instagramUrl: ["instagramEnabled"],
+    kidsPolicy: ["kidsPolicyEnabled"],
+    weddingDressCode: ["weddingDressCodeEnabled"],
+    weddingDressCodeCustom: ["weddingDressCodeEnabled"],
+    weddingSiteURL: ["weddingSiteURLEnabled"],
+    accommodationURL: ["accommodationURLEnabled"],
+    godparent1: ["godparentsEnabled"],
+    godparent2: ["godparentsEnabled"],
+    couplePhoto: ["couplePhotoEnabled"],
+    backgroundImage: ["backgroundImageEnabled"],
+    cornerDecoration: ["cornerDecorationEnabled"],
+    customSeal: ["customSealEnabled"],
+  };
+  for (const [field, flags] of Object.entries(FIELD_TOGGLES)) {
+    const disabled = flags.some((flag) => clone[flag as keyof typeof clone] === "false");
+    if (disabled) {
+      // Cast seguro: InvitationConfig acepta un valor vacío para estos campos.
+      (clone as Record<string, unknown>)[field] = "";
+    }
+  }
+  return clone;
+}
+
 export { formatDate } from "./superadmin";

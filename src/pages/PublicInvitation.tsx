@@ -28,7 +28,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useFocusTrap } from "../hooks/useFocusTrap";
 
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
-import { parseSectionOrder, sectionHasContent } from "../lib/section-utils";
+import { parseSectionOrder, sectionHasContent, applyEnabledToggles } from "../lib/section-utils";
 import { SITE_URL, applySocialMeta, resetSocialMeta } from "../lib/seo";
 import { trackEvent } from "../lib/analytics";
 
@@ -103,6 +103,15 @@ export default function PublicInvitation() {
 
   // ─── Estado global del contexto (hooks granulares por dominio) ──
   const { config, isConfigLoading, configLoadError, formattedDate, formattedTime, calendarLink } = useConfig();
+  // Copia de la configuración con los campos desactivados desde el panel admin
+  // (toggles *Enabled) puestos a cadena vacía: la invitación pública decide qué
+  // secciones muestran por presencia de contenido (sectionHasContent), así que
+  // un campo desactivado debe desaparecer de la vista del invitado sin borrar
+  // el valor guardado.
+  // La copia pública debe ser memoizada: applyEnabledToggles crea un objeto
+  // nuevo en cada render, y tanto el orden de secciones visibles como las
+  // props de las secciones dependen de ella.
+  const publicConfig = useMemo(() => applyEnabledToggles(config), [config]);
   const {
     rsvpEntries,
     rsvpMessage,
@@ -206,7 +215,7 @@ export default function PublicInvitation() {
   }, [config.sectionOrder, isAdminTokenLoggedIn, isInviteMode]);
 
   /** Indica si se debe mostrar la sección RSVP. */
-  const showRsvp = !!(config.firstName || config.secondName);
+  const showRsvp = !!(publicConfig.firstName || publicConfig.secondName);
 
   /**
    * Orden final de secciones visibles, excluyendo las ocultas
@@ -220,9 +229,9 @@ export default function PublicInvitation() {
     // Oculta las secciones sin contenido configurado (aunque estén en el
     // orden) para no mostrar secciones vacías al invitado. Se aplica a
     // TODAS: p. ej. la galería se desactiva si no tiene imágenes.
-    filtered = filtered.filter((s: string) => sectionHasContent(s, config, galleryHasImages));
+    filtered = filtered.filter((s: string) => sectionHasContent(s, publicConfig, galleryHasImages));
     return filtered;
-  }, [sectionOrder, showRsvp, hiddenSet, isInviteMode, config, galleryHasImages]);
+  }, [sectionOrder, showRsvp, hiddenSet, isInviteMode, publicConfig, galleryHasImages]);
 
   // ─── Estados de UI condicionales ───────────────────────
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
@@ -267,13 +276,14 @@ export default function PublicInvitation() {
   const handleEnvelopeOpen = useCallback(() => {
     setEnvelopeOpen(true);
     // El vídeo de bienvenida es un comportamiento animado: si su animación
-    // está desactivada (o `all`), no se abre al entrar.
-    if (config.welcomeVideo && config.welcomeVideoEnabled !== "false" && !isDisabled("welcome-video-modal")) {
+    // está desactivada (o `all`), no se abre al entrar. Se lee de publicConfig
+    // porque el toggle de campo ya está resuelto ahí ('' si está desactivado).
+    if (publicConfig.welcomeVideo && config.welcomeVideoEnabled !== "false" && !isDisabled("welcome-video-modal")) {
       setShowWelcomeVideo(true);
     }
     // Apertura del sobre: el gesto principal de la invitación.
     trackEvent("envelope_open", { method: "click" });
-  }, [config.welcomeVideo, config.welcomeVideoEnabled, isDisabled]);
+  }, [publicConfig.welcomeVideo, config.welcomeVideoEnabled, isDisabled]);
   const handleConfetti = useCallback(() => {
     // El confeti arranca justo al terminar el fade out del texto del sobre
     // (2.6s tras el segundo gesto) y cae una única vez detrás de la invitación.
@@ -361,17 +371,17 @@ export default function PublicInvitation() {
       "@context": "https://schema.org",
       "@type": "Event",
       name: coupleName,
-      description: config.inviteMessage || coupleName,
+      description: publicConfig.inviteMessage || coupleName,
       url: `${SITE_URL}/${inviteToken}`,
       image:
-        config.couplePhoto && /^https?:/.test(config.couplePhoto) ? config.couplePhoto : `${SITE_URL}/og-banner.png`,
+        publicConfig.couplePhoto && /^https?:/.test(publicConfig.couplePhoto) ? publicConfig.couplePhoto : `${SITE_URL}/og-banner.png`,
       organizer: { "@type": "Person", name: coupleName },
       eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
       eventStatus: "https://schema.org/EventScheduled",
     };
     if (startDate) schema.startDate = startDate;
-    if (config.weddingPlace) {
-      schema.location = { "@type": "Place", name: config.weddingPlace, address: config.weddingPlace };
+    if (publicConfig.weddingPlace) {
+      schema.location = { "@type": "Place", name: publicConfig.weddingPlace, address: publicConfig.weddingPlace };
     }
     const script = document.createElement("script");
     script.type = "application/ld+json";
@@ -383,36 +393,36 @@ export default function PublicInvitation() {
   }, [
     config.firstName,
     config.secondName,
-    config.inviteMessage,
+    publicConfig.inviteMessage,
     config.weddingYear,
     config.weddingMonth,
     config.weddingDay,
     config.weddingHour,
     config.weddingMinute,
-    config.weddingPlace,
-    config.couplePhoto,
+    publicConfig.weddingPlace,
+    publicConfig.couplePhoto,
     inviteToken,
   ]);
 
   // ─── Metadatos sociales Open Graph / Twitter (SEO) ─────
   useEffect(() => {
-    if (!config.firstName) return;
-    const coupleName = `${config.firstName} ${config.secondName || ""}`.trim();
+    if (!publicConfig.firstName) return;
+    const coupleName = `${publicConfig.firstName} ${publicConfig.secondName || ""}`.trim();
     applySocialMeta({
       title: `${coupleName} — Wedingo`,
       description:
-        config.inviteMessage ||
-        t("seo.inviteFallback", { names: `${config.firstName} & ${config.secondName || ""}`.trim() }),
+        publicConfig.inviteMessage ||
+        t("seo.inviteFallback", { names: `${publicConfig.firstName} & ${publicConfig.secondName || ""}`.trim() }),
       url: `${SITE_URL}/${inviteToken}`,
-      image: config.couplePhoto,
+      image: publicConfig.couplePhoto,
       locale: i18n?.language,
     });
     return () => resetSocialMeta();
-  }, [config.firstName, config.secondName, config.inviteMessage, config.couplePhoto, inviteToken, i18n, t]);
+  }, [publicConfig.firstName, publicConfig.secondName, publicConfig.inviteMessage, publicConfig.couplePhoto, inviteToken, i18n, t]);
 
   // ─── Datos de ubicación derivados ──────────────────────
-  const hasLocationData = Boolean(config.weddingPlace || config.weddingSiteURL);
-  const locationDescription = config.weddingPlace || "";
+  const hasLocationData = Boolean(publicConfig.weddingPlace || publicConfig.weddingSiteURL);
+  const locationDescription = publicConfig.weddingPlace || "";
 
   // ═══════════════════════════════════════════════════════
   // PROPS PARA CADA SECCIÓN (MEMOIZADOS)
@@ -425,142 +435,142 @@ export default function PublicInvitation() {
   const configSectionProps = useMemo(
     () => ({
       hero: {
-        firstName: config.firstName,
-        secondName: config.secondName,
-        inviteMessage: config.inviteMessage,
-        couplePhoto: config.couplePhoto,
-        godparent1: config.godparent1,
-        godparent2: config.godparent2,
-        cornerDecoration: config.cornerDecoration,
-        verified: config.verified,
+        firstName: publicConfig.firstName,
+        secondName: publicConfig.secondName,
+        inviteMessage: publicConfig.inviteMessage,
+        couplePhoto: publicConfig.couplePhoto,
+        godparent1: publicConfig.godparent1,
+        godparent2: publicConfig.godparent2,
+        cornerDecoration: publicConfig.cornerDecoration,
+        verified: publicConfig.verified,
       },
       details: {
         formattedDate,
         formattedTime,
         hasLocationData,
         locationDescription,
-        weddingPlace: config.weddingPlace,
-        weddingDay: config.weddingDay,
-        weddingMonth: config.weddingMonth,
-        weddingYear: config.weddingYear,
-        weddingHour: config.weddingHour,
-        weddingMinute: config.weddingMinute,
-        coupleFirstName: config.firstName,
-        coupleSecondName: config.secondName,
+        weddingPlace: publicConfig.weddingPlace,
+        weddingDay: publicConfig.weddingDay,
+        weddingMonth: publicConfig.weddingMonth,
+        weddingYear: publicConfig.weddingYear,
+        weddingHour: publicConfig.weddingHour,
+        weddingMinute: publicConfig.weddingMinute,
+        coupleFirstName: publicConfig.firstName,
+        coupleSecondName: publicConfig.secondName,
         calendarLink,
-        weddingSiteURL: config.weddingSiteURL,
-        instagramUrl: config.instagramUrl,
-        mapView: config.weddingMapView,
-        staticMap: config.weddingMapStatic === "true",
-        detailsMapMode: config.detailsMapMode,
-        cornerDecoration: config.cornerDecoration,
+        weddingSiteURL: publicConfig.weddingSiteURL,
+        instagramUrl: publicConfig.instagramUrl,
+        mapView: publicConfig.weddingMapView,
+        staticMap: publicConfig.weddingMapStatic === "true",
+        detailsMapMode: publicConfig.detailsMapMode,
+        cornerDecoration: publicConfig.cornerDecoration,
       },
       transport: {
-        transportEnabled: config.transportEnabled,
-        transportDepartures: config.transportDepartures,
-        mapView: config.weddingMapView,
-        staticMap: config.weddingMapStatic === "true",
-        transportMapMode: config.transportMapMode,
-        cornerDecoration: config.cornerDecoration,
+        transportEnabled: publicConfig.transportEnabled,
+        transportDepartures: publicConfig.transportDepartures,
+        mapView: publicConfig.weddingMapView,
+        staticMap: publicConfig.weddingMapStatic === "true",
+        transportMapMode: publicConfig.transportMapMode,
+        cornerDecoration: publicConfig.cornerDecoration,
       },
       info: {
-        weddingScheduleEvents: config.weddingScheduleEvents,
-        weddingDressCode: config.weddingDressCode,
-        weddingDressCodeCustom: config.weddingDressCodeCustom,
-        kidsPolicy: config.kidsPolicy,
-        cornerDecoration: config.cornerDecoration,
+        weddingScheduleEvents: publicConfig.weddingScheduleEvents,
+        weddingDressCode: publicConfig.weddingDressCode,
+        weddingDressCodeCustom: publicConfig.weddingDressCodeCustom,
+        kidsPolicy: publicConfig.kidsPolicy,
+        cornerDecoration: publicConfig.cornerDecoration,
         // Agenda interactiva: la fecha de la boda (null si falta/inválida).
         weddingDate,
       },
       story: {
-        storyText: config.storyText,
-        cornerDecoration: config.cornerDecoration,
+        storyText: publicConfig.storyText,
+        cornerDecoration: publicConfig.cornerDecoration,
       },
       gifts: {
-        giftsInfo: config.giftsInfo,
-        bankInfo: config.bankInfo,
-        cornerDecoration: config.cornerDecoration,
+        giftsInfo: publicConfig.giftsInfo,
+        bankInfo: publicConfig.bankInfo,
+        cornerDecoration: publicConfig.cornerDecoration,
       },
       accommodation: {
-        accommodationURL: config.accommodationURL,
-        mapView: config.weddingMapView,
-        staticMap: config.weddingMapStatic === "true",
-        accommodationMapMode: config.accommodationMapMode,
-        cornerDecoration: config.cornerDecoration,
+        accommodationURL: publicConfig.accommodationURL,
+        mapView: publicConfig.weddingMapView,
+        staticMap: publicConfig.weddingMapStatic === "true",
+        accommodationMapMode: publicConfig.accommodationMapMode,
+        cornerDecoration: publicConfig.cornerDecoration,
       },
       gallery: {
         inviteToken,
-        cornerDecoration: config.cornerDecoration,
+        cornerDecoration: publicConfig.cornerDecoration,
         // Conjunto efectivo: GallerySection lo usa para el auto-avance (JS).
         disabledAnimations: effectiveDisabled,
       },
       rsvp: {
-        menuEnabled: config.menuEnabled === "true",
-        menuCarneDishes: config.menuCarneDishes,
-        menuPescadoDishes: config.menuPescadoDishes,
-        menuVeganoDishes: config.menuVeganoDishes,
-        menuTextoDishes: config.menuTextoDishes,
-        transportEnabled: config.transportEnabled,
-        transportDepartures: config.transportDepartures,
-        cornerDecoration: config.cornerDecoration,
+        menuEnabled: publicConfig.menuEnabled === "true",
+        menuCarneDishes: publicConfig.menuCarneDishes,
+        menuPescadoDishes: publicConfig.menuPescadoDishes,
+        menuVeganoDishes: publicConfig.menuVeganoDishes,
+        menuTextoDishes: publicConfig.menuTextoDishes,
+        transportEnabled: publicConfig.transportEnabled,
+        transportDepartures: publicConfig.transportDepartures,
+        cornerDecoration: publicConfig.cornerDecoration,
       },
       // Mapa del recinto: sección propia (reordenable) desde v2.109.
       venuemap: {
         inviteToken: inviteToken ?? "",
-        background: config.backgroundImage,
-        cornerDecoration: config.cornerDecoration,
+        background: publicConfig.backgroundImage,
+        cornerDecoration: publicConfig.cornerDecoration,
       },
       // Distribución de mesas para invitados (sección propia).
       tables: {
         inviteToken: inviteToken ?? "",
-        cornerDecoration: config.cornerDecoration,
+        cornerDecoration: publicConfig.cornerDecoration,
       },
     }),
     [
-      config.firstName,
-      config.secondName,
-      config.inviteMessage,
-      config.weddingScheduleEvents,
-      config.weddingDressCode,
-      config.weddingDressCodeCustom,
-      config.kidsPolicy,
-      config.storyText,
-      config.giftsInfo,
-      config.accommodationURL,
-      config.godparent1,
-      config.godparent2,
+      publicConfig.firstName,
+      publicConfig.secondName,
+      publicConfig.inviteMessage,
+      publicConfig.weddingScheduleEvents,
+      publicConfig.weddingDressCode,
+      publicConfig.weddingDressCodeCustom,
+      publicConfig.kidsPolicy,
+      publicConfig.storyText,
+      publicConfig.giftsInfo,
+      publicConfig.accommodationURL,
+      publicConfig.godparent1,
+      publicConfig.godparent2,
       inviteToken,
-      config.couplePhoto,
-      config.bankInfo,
-      config.menuEnabled,
-      config.menuCarneDishes,
-      config.menuPescadoDishes,
-      config.menuVeganoDishes,
-      config.menuTextoDishes,
-      config.cornerDecoration,
-      config.backgroundImage,
-      config.verified,
+      publicConfig.couplePhoto,
+      publicConfig.bankInfo,
+      publicConfig.menuEnabled,
+      publicConfig.menuCarneDishes,
+      publicConfig.menuPescadoDishes,
+      publicConfig.menuVeganoDishes,
+      publicConfig.menuTextoDishes,
+      publicConfig.cornerDecoration,
+      publicConfig.backgroundImage,
+      publicConfig.verified,
       formattedDate,
       formattedTime,
       hasLocationData,
       locationDescription,
       weddingDate,
-      config.weddingPlace,
-      config.weddingDay,
-      config.weddingMonth,
-      config.weddingYear,
-      config.weddingHour,
-      config.weddingMinute,
+      publicConfig.weddingPlace,
+      publicConfig.weddingDay,
+      publicConfig.weddingMonth,
+      publicConfig.weddingYear,
+      publicConfig.weddingHour,
+      publicConfig.weddingMinute,
       calendarLink,
-      config.weddingSiteURL,
-      config.instagramUrl,
-      config.weddingMapView,
-      config.weddingMapStatic,
-      config.detailsMapMode,
-      config.transportMapMode,
-      config.accommodationMapMode,
-      config.transportEnabled,
-      config.transportDepartures,
+      publicConfig.weddingSiteURL,
+      publicConfig.instagramUrl,
+      publicConfig.weddingMapView,
+      publicConfig.weddingMapStatic,
+      publicConfig.detailsMapMode,
+      publicConfig.transportMapMode,
+      publicConfig.accommodationMapMode,
+      publicConfig.transportEnabled,
+      publicConfig.transportDepartures,
       effectiveDisabled,
     ],
   );

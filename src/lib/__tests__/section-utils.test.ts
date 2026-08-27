@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { sectionHasContent } from "../section-utils";
+import { sectionHasContent, applyEnabledToggles } from "../section-utils";
 
 describe("sectionHasContent", () => {
   it("always shows hero", () => {
@@ -54,5 +54,57 @@ describe("sectionHasContent", () => {
     expect(sectionHasContent("gallery", {}, true)).toBe(true);
     // En la invitación pública, sin imágenes subidas, la sección se oculta.
     expect(sectionHasContent("gallery", {}, false)).toBe(false);
+  });
+});
+
+describe("applyEnabledToggles", () => {
+  it("clears fields whose toggle is disabled", () => {
+    const out = applyEnabledToggles({ storyText: "x", storyTextEnabled: "false" });
+    expect(out.storyText).toBe("");
+    expect(out.storyTextEnabled).toBe("false");
+  });
+
+  it("clears both dress code fields when the dress code toggle is off", () => {
+    const out = applyEnabledToggles({
+      weddingDressCode: "formal",
+      weddingDressCodeCustom: "elegante",
+      weddingDressCodeEnabled: "false",
+    });
+    expect(out.weddingDressCode).toBe("");
+    expect(out.weddingDressCodeCustom).toBe("");
+  });
+
+  it("leaves fields intact when the toggle is on or absent (legacy compatibility)", () => {
+    expect(applyEnabledToggles({ storyText: "x", storyTextEnabled: "true" }).storyText).toBe("x");
+    expect(applyEnabledToggles({ storyText: "x" }).storyText).toBe("x");
+    expect(applyEnabledToggles({ inviteMessage: "hola" }).inviteMessage).toBe("hola");
+  });
+
+  it("does not mutate the original object", () => {
+    const input = { storyText: "x", storyTextEnabled: "false" };
+    const out = applyEnabledToggles(input);
+    expect(input.storyText).toBe("x");
+    expect(out).not.toBe(input);
+  });
+
+  it("maps each toggle to its intended field", () => {
+    const out = applyEnabledToggles({
+      giftsInfo: "regalo",
+      bankInfo: "ES00",
+      giftsInfoEnabled: "false",
+      instagramUrl: "https://instagram.com/x",
+      instagramEnabled: "false",
+      kidsPolicy: "ok",
+      kidsPolicyEnabled: "false",
+      godparent1: "Ana",
+      godparent2: "Luis",
+      godparentsEnabled: "false",
+    });
+    expect(out.giftsInfo).toBe("");
+    expect(out.bankInfo).toBe("");
+    expect(out.instagramUrl).toBe("");
+    expect(out.kidsPolicy).toBe("");
+    expect(out.godparent1).toBe("");
+    expect(out.godparent2).toBe("");
   });
 });

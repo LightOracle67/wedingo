@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.139.0 — 2026-08-27
+- Los toggles del setup ahora ocultan realmente sus campos en la invitación pública (antes ocultaban solo el formulario del admin).
+
 ## 2.138.0 — 2026-08-27
 
 - Los botones de asistencia del RSVP (solo/a, con acompañantes, no podré asistir) se muestran siempre en una única línea con anchuras iguales, también en móvil (antes se apilaban en columnas en pantallas muy estrechas).
