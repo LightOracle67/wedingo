@@ -968,10 +968,7 @@ describe("AttendanceTab", () => {
             transportMode: "bus",
             transportChoice: "Coche",
             transportTime: "12:00",
-            isChild: false,
             parentalConsent: true,
-            phone: "600111222",
-            email: "ana@x.es",
             submittedAt: "2024-01-02T10:00:00Z",
           },
           {
@@ -983,7 +980,6 @@ describe("AttendanceTab", () => {
             companions: 0,
             dietaryInfo: "Vegano",
             mealChoice: "cerdo",
-            isChild: true,
             healthConsent: true,
             submittedAt: "2024-01-01T09:00:00Z",
           },
@@ -1003,9 +999,7 @@ describe("AttendanceTab", () => {
       "attendance.tableMenu",
       "attendance.tableDiet",
       "attendance.tableTransport",
-      "attendance.tableChild",
       "attendance.tableConsents",
-      "attendance.tableContact",
       "attendance.tableDate",
     ];
 
@@ -1118,7 +1112,6 @@ describe("AttendanceTab — matriz de ordenación", () => {
       ["attendance.tableAccompanies", "Carla", "Carla"],
       ["attendance.tableMenu", "Ana", "Beto"],
       ["attendance.tableDiet", "Ana", "Beto"],
-      ["attendance.tableContact", "Ana", "Beto"],
       ["attendance.tableDate", "Beto", "Carla"],
     ];
     for (const [label, primeroAsc, primeroDesc] of casos) {
@@ -1150,16 +1143,6 @@ describe("AttendanceTab — matriz de ordenación", () => {
     // Desc: se invierten los no vacíos.
     expect(rows[0]).toContain("Ana");
     expect(rows[rows.length - 1]).toContain("Carla");
-  });
-
-  it("la columna ¿niño? ordena booleanos asc y desc", () => {
-    const { container } = mount();
-    clickHeader("attendance.tableChild");
-    // asc: falsos primero, el niño (Beto) último.
-    expect(rowNames(container)[rowNames(container).length - 1]).toContain("Beto");
-    clickHeader("attendance.tableChild");
-    // desc: el niño primero.
-    expect(rowNames(container)[0]).toContain("Beto");
   });
 
   it("consentimientos ordena poniendo el único consentimiento al final en asc", () => {
@@ -1372,16 +1355,16 @@ describe("AttendanceTab — alineación de columnas y snapshot (bug v2.149)", ()
     expect(cellTexts[0]).toBe("");
     expect(heads[1]).toBe("attendance.tableName");
     expect(cellTexts[1]).toBe("Ana García");
-    expect(heads[6]).toBe("attendance.tableChild");
-    expect(heads[7]).toBe("attendance.tableChildren");
-    expect(heads[8]).toBe("attendance.tableChildrenDiet");
-    expect(heads[9]).toBe("attendance.tableTransport");
-    // La celda de transporte está después de las de niños (posición 9).
-    expect(cellTexts[9]).toContain("attendance.transport");
+    expect(heads[6]).toBe("attendance.tableChildren");
+    expect(heads[7]).toBe("attendance.tableChildrenDiet");
+    expect(heads[8]).toBe("attendance.tableTransport");
+    expect(heads[9]).toBe("attendance.tableConsents");
+    // La celda de transporte está después de las de niños (posición 8).
+    expect(cellTexts[8]).toContain("attendance.transport");
     expect(cellTexts[6]).not.toContain("attendance.transport");
     // Las columnas nuevas muestran los datos del doc principal.
-    expect(cellTexts[7]).toBe("3");
-    expect(cellTexts[8]).toContain("sin gluten");
+    expect(cellTexts[6]).toBe("3");
+    expect(cellTexts[7]).toContain("sin gluten");
   });
 
 });

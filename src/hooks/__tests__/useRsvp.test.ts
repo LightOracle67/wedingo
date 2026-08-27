@@ -317,13 +317,12 @@ describe("useRsvp", () => {
           childrenAllergies: ["sin gluten"],
           childrenAllergiesOther: "cacahuete",
         }),
-        // Acompañante legacy con isChild del modelo anterior.
+        // Acompañante del principal (los docs del nuevo modelo no llevan isChild).
         fakeDoc("cLegacy", {
           guestName: "Nerea",
           rsvpType: "companion",
           mainGuestDocId: "mKids",
           attendance: "yes",
-          isChild: true,
         }),
       ],
       forEach: vi.fn(),
@@ -336,9 +335,7 @@ describe("useRsvp", () => {
     expect(main?.childrenCount).toBe(2);
     expect(main?.childrenAllergies).toEqual(["sin gluten"]);
     expect(main?.childrenAllergiesOther).toBe("cacahuete");
-    // El flag legacy del acompañante se conserva para la columna "Niño".
-    expect(legacy?.isChild).toBe(true);
-    // Sin campos de niños el acompañante queda con ceros (columna "—").
+    // El acompañante queda sin campos de niños (columna "—" en la tabla).
     expect(legacy?.childrenCount).toBe(0);
     expect(legacy?.childrenAllergies).toEqual([]);
     expect(legacy?.childrenAllergiesOther).toBe("");

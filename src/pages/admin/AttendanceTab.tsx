@@ -28,14 +28,9 @@ interface RsvpEntry {
   submittedAt: string;
   mainGuestName?: string;
   companionDocIds?: string[];
-  // Flag de niño (nuevo modelo): sustituye a la columna de fecha nacimiento.
-  isChild?: boolean;
   parentalConsent?: boolean;
   healthConsent?: boolean;
   transportChoice?: string;
-  phone?: string;
-  email?: string;
-  contactConsent?: boolean;
   transportMode?: string;
   transportTime?: string;
   companionTransportChoices?: string[];
@@ -46,7 +41,6 @@ interface RsvpEntry {
   companionMenus?: string[];
   companionAllergies?: string[][];
   companionAllergiesOther?: string[];
-  companionIsChildren?: string[];
   /// Niños declarados por el invitado principal (contador + alergias de grupo).
   childrenCount?: number;
   childrenAllergies?: string[];
@@ -159,7 +153,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     menu: string;
     allergies: string[];
     other: string;
-    isChild: boolean;
   }
   interface EditingState {
     id?: string;
@@ -202,7 +195,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
         menu: entry.companionMenus?.[i] ?? "",
         allergies: selection,
         other: entry.companionAllergiesOther?.[i] ?? "",
-        isChild: entry.companionIsChildren?.[i] === "yes",
       };
     });
     setEditing({
@@ -238,7 +230,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   /** CRUD del estado del modal sobre la lista de acompañantes. */
   const addCompanion = useCallback(() => {
     setEditing((prev) =>
-      prev ? { ...prev, companions: [...prev.companions, { name: "", menu: "", allergies: [], other: "", isChild: false }] } : prev,
+      prev ? { ...prev, companions: [...prev.companions, { name: "", menu: "", allergies: [], other: "" }] } : prev,
     );
   }, []);
   const removeCompanionAt = useCallback((index: number) => {
@@ -493,7 +485,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
             ? resolveTransportLabel(e.transportMode || "", e.transportChoice || "", e.transportTime || "")
             : "",
       },
-      { key: "child", type: "boolean", getValue: (e: RsvpEntry) => Boolean(e.isChild) },
       { key: "children", type: "number", getValue: (e: RsvpEntry) => Number(e.childrenCount) || 0 },
       {
         key: "childrenDiet",
@@ -504,11 +495,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
         key: "consents",
         type: "boolean",
         getValue: (e: RsvpEntry) => Boolean(e.parentalConsent || e.healthConsent),
-      },
-      {
-        key: "contact",
-        type: "string",
-        getValue: (e: RsvpEntry) => [e.phone, e.email].filter(Boolean).join(" "),
       },
       { key: "submittedAt", type: "date", getValue: (e: RsvpEntry) => e.submittedAt },
     ],
@@ -531,15 +517,12 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     const no = mainEntries.filter((e: RsvpEntry) => e.attendance === "no").length;
     const totalCompanions = entries.filter((e: RsvpEntry) => e.rsvpType === "companion").length;
     const withDietary = entries.filter((e: RsvpEntry) => e.attendance === "yes" && e.dietaryInfo?.trim()).length;
-    // Niños confirmados: acompañantes legacy con isChild + contador de niños
-    // del nuevo modelo (childrenCount en el doc del invitado principal).
-    const legacyChildren = entries.filter(
-      (e: RsvpEntry) => e.rsvpType === "companion" && e.isChild === true && e.attendance === "yes",
-    ).length;
+    // Niños confirmados: contador del nuevo modelo (childrenCount en el doc
+    // del invitado principal, declarado en el RSVP).
     const declaredChildren = mainEntries
       .filter((e: RsvpEntry) => e.attendance === "yes")
       .reduce((acc: number, e: RsvpEntry) => acc + (Number(e.childrenCount) || 0), 0);
-    const children = legacyChildren + declaredChildren;
+    const children = declaredChildren;
     return { yes, no, totalCompanions, withDietary, children };
   }, [rsvpEntries]);
 
@@ -639,7 +622,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
             diet: stats.withDietary,
           })}
         </span>
-        {/* Estadística de niños confirmados (flag isChild del nuevo modelo). */}
+        {/* Estadística de niños confirmados (contador declarado en el RSVP). */}
         <span className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
           {t("attendance.childrenConfirmed", { count: stats.children })}
         </span>
@@ -709,17 +692,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                     {t("attendance.tableDiet")}
                   </SortableTh>
                   <SortableTh
-                    // La clave DEBE coincidir con el key "child" de sortColumns:
-                    // con el antiguo "birth" el find() fallaba, caía al fallback
-                    // row["birth"] (siempre undefined) y la columna nunca ordenaba.
-                    columnKey="child"
-                    order={getIndicator("child")}
-                    onSort={toggleSort}
-                    style={{ minWidth: "110px" }}
-                  >
-                    {t("attendance.tableChild")}
-                  </SortableTh>
-                  <SortableTh
                     columnKey="children"
                     order={getIndicator("children")}
                     onSort={toggleSort}
@@ -750,14 +722,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                     style={{ minWidth: "120px" }}
                   >
                     {t("attendance.tableConsents")}
-                  </SortableTh>
-                  <SortableTh
-                    columnKey="contact"
-                    order={getIndicator("contact")}
-                    onSort={toggleSort}
-                    style={{ minWidth: "120px" }}
-                  >
-                    {t("attendance.tableContact")}
                   </SortableTh>
                   <SortableTh
                     columnKey="submittedAt"
@@ -887,15 +851,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                       <td>
                         <div style={crossed}>
                           <span style={{ fontSize: "0.78rem" }}>
-                            {/* Columna "Niño": muestra el flag isChild del doc
-                                (los docs antiguos, sin flag, muestran "—"). */}
-                            {entry.isChild ? t("attendance.childYes") : "—"}
-                          </span>
-                        </div>
-                      </td>
-                      <td>
-                        <div style={crossed}>
-                          <span style={{ fontSize: "0.78rem" }}>
                             {/* ¿Trae niños? (nuevo modelo): contador del
                                 principal; los acompañantes legacy lo muestran
                                 solo si van marcados arriba. */}
@@ -934,23 +889,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                                   {b}
                                 </span>
                               ))}
-                            </div>
-                          ) : (
-                            <span style={{ fontSize: "0.78rem" }}>—</span>
-                          )}
-                        </div>
-                      </td>
-                      <td>
-                        <div style={crossed}>
-                          {entry.contactConsent ? (
-                            <div style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
-                              {entry.phone ? <span style={{ fontSize: "0.75rem" }}>{entry.phone}</span> : null}
-                              {entry.email ? <span style={{ fontSize: "0.75rem" }}>{entry.email}</span> : null}
-                              {!entry.phone && !entry.email ? (
-                                <span style={{ fontSize: "0.75rem", color: "var(--setup-muted)" }}>
-                                  {t("attendance.contactConsentOnly")}
-                                </span>
-                              ) : null}
                             </div>
                           ) : (
                             <span style={{ fontSize: "0.78rem" }}>—</span>

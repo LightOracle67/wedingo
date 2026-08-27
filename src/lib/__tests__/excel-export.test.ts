@@ -84,9 +84,6 @@ describe("Export Excel: Asistencia + Menús (AttendanceTab)", () => {
           mealChoice: "carne",
           dietaryInfo: "sin gluten | menú: infantil",
           transportMode: "bus",
-          isChild: true,
-          phone: "600123456",
-          email: "ana@correo.com",
           submittedAt: "2026-08-01T10:00:00",
         },
         { guestName: "Pedro", attendance: "no", mealChoice: "pescado" },
@@ -122,8 +119,6 @@ describe("Export Excel: Asistencia + Menús (AttendanceTab)", () => {
       "Menú",
       "Info alimentaria",
       "Transporte",
-      "Niño",
-      "Contacto",
       "Fecha",
     ]);
   });
@@ -136,8 +131,6 @@ describe("Export Excel: Asistencia + Menús (AttendanceTab)", () => {
       "Carne",
       "sin gluten | menú: infantil",
       "(bus)",
-      "Sí",
-      "600123456 / ana@correo.com",
       "01/08/2026 10:00",
     ]);
   });
@@ -442,8 +435,6 @@ describe("Ramas límite de los builders", () => {
           mealChoice: "",
           transportChoice: "Coche",
           transportMode: "own",
-          isChild: true,
-          phone: "600",
         },
         // attendance yes + bus → "(bus)"; solo email; menú desconocido → crudo; con fecha.
         {
@@ -451,22 +442,18 @@ describe("Ramas límite de los builders", () => {
           attendance: "yes",
           mealChoice: "pollo",
           transportMode: "bus",
-          email: "c@x.es",
           submittedAt: "2026-08-24T10:00:00Z",
         },
       ],
       t,
     );
-    expect(sheet.rows[0]).toEqual(["A", "", "", "", "", "", "", ""]);
+    expect(sheet.rows[0]).toEqual(["A", "", "", "", "", ""]);
     expect(sheet.rows[1]?.[1]).toBe("No");
     expect(sheet.rows[1]?.[4]).toBe("Coche");
-    expect(sheet.rows[1]?.[5]).toBe("Sí");
-    expect(sheet.rows[1]?.[6]).toBe("600");
     expect(sheet.rows[2]?.[1]).toBe("Sí");
     expect(sheet.rows[2]?.[2]).toBe("pollo");
     expect(sheet.rows[2]?.[4]).toBe("(bus)");
-    expect(sheet.rows[2]?.[6]).toBe("c@x.es");
-    expect(String(sheet.rows[2]?.[7])).not.toBe("");
+    expect(String(sheet.rows[2]?.[5])).not.toBe("");
   });
 
   it("Menús: declinados fuera, asistentes expanden, mealChoice como respaldo y sin plato", () => {

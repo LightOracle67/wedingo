@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.151.0 — 2026-08-27
+- La tabla de asistencias y el Excel ya no muestran las columnas Niño (flag legacy isChild que ya no se escribe) y Contacto (teléfono/email dejaron de recogerse en el RSVP): siempre aparecían vacías.
 ## 2.150.0 — 2026-08-27
 - La tabla de asistencias mostraba los datos descolocados: el transporte aparecía en la columna Niño y las columnas ¿Trae niños?/Intolerancias siempre vacías. Corregido el orden de las celdas para que coincida con el thead y el mapeo de los niños del invitado principal (childrenCount y alergias del grupo) en el procesamiento de respuestas.
 ## 2.149.0 — 2026-08-27

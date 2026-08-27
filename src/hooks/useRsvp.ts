@@ -90,8 +90,6 @@ interface RsvpEntryData {
   childrenCount?: number;
   childrenAllergies?: string[];
   childrenAllergiesOther?: string;
-  // Flag de niño leído del doc del acompañante (hidratación del formulario).
-  isChild?: boolean;
   parentalConsent?: boolean;
   healthConsent?: boolean;
   transportChoice?: string;
@@ -239,10 +237,6 @@ export function useRsvp(
               : [],
             childrenAllergiesOther:
               typeof data.childrenAllergiesOther === "string" ? data.childrenAllergiesOther : "",
-            // Flag legacy del modelo anterior (isChild en acompañantes): se
-            // conserva para que los docs viejos sigan mostrando la columna
-            // "Niño"; los nuevos ya no lo escriben.
-            isChild: data.isChild === true,
             parentalConsent: data.parentalConsent || false,
             healthConsent: data.healthConsent || false,
             transportChoice: data.transportChoice || "",
