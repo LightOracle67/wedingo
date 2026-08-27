@@ -28,7 +28,6 @@ interface RsvpEntry {
   submittedAt: string;
   mainGuestName?: string;
   companionDocIds?: string[];
-  parentalConsent?: boolean;
   healthConsent?: boolean;
   transportChoice?: string;
   transportMode?: string;
@@ -494,7 +493,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
       {
         key: "consents",
         type: "boolean",
-        getValue: (e: RsvpEntry) => Boolean(e.parentalConsent || e.healthConsent),
+        getValue: (e: RsvpEntry) => Boolean(e.healthConsent),
       },
       { key: "submittedAt", type: "date", getValue: (e: RsvpEntry) => e.submittedAt },
     ],
@@ -762,7 +761,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                     entry.transportTime || "",
                   );
                   const consentBadges: string[] = [];
-                  if (entry.parentalConsent) consentBadges.push(t("attendance.consentParental"));
                   if (entry.healthConsent) consentBadges.push(t("attendance.consentHealth"));
 
                   return (

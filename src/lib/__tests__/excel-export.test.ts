@@ -327,8 +327,6 @@ describe("Export Excel: todas las confirmaciones (MetricsTab)", () => {
             attendance: "yes",
             attendees: [{ menu: "carne" }, { menu: "pescado" }],
             allergiesOther: ["sin gluten"],
-            phone: "6001",
-            email: "a@x.com",
             submittedAt: "2026-08-01",
           },
           { inviteToken: "OTRO", guestName: "Intruso", attendance: "yes" },
@@ -339,8 +337,8 @@ describe("Export Excel: todas las confirmaciones (MetricsTab)", () => {
 
   it("filtra respuestas de otras invitaciones y une menús y alergias", () => {
     expect(sheet.data).toEqual([
-      ["Token", "Invitación", "Nombre", "Asistencia", "Menú", "Alergias", "Teléfono", "Email", "Fecha"],
-      ["TOK1", "Ana García", "Ana", "yes", "carne; pescado", "sin gluten", "6001", "a@x.com", "2026-08-01"],
+      ["Token", "Invitación", "Nombre", "Asistencia", "Menú", "Alergias", "Fecha"],
+      ["TOK1", "Ana García", "Ana", "yes", "carne; pescado", "sin gluten", "2026-08-01"],
     ]);
   });
 });
@@ -477,7 +475,7 @@ describe("Ramas límite de los builders", () => {
       [
         // attendance ni yes/no → celda vacía; transportMode undefined; sin niño.
         { guestName: "A", mealChoice: "", dietaryInfo: "", submittedAt: null as unknown as string },
-        // attendance no + transportMode "own" → sin sufijo; isChild true; solo teléfono.
+        // attendance no + transportMode "own" → sin sufijo de transporte.
         {
           guestName: "B",
           attendance: "no",
@@ -485,7 +483,7 @@ describe("Ramas límite de los builders", () => {
           transportChoice: "Coche",
           transportMode: "own",
         },
-        // attendance yes + bus → "Autobús"; solo email; menú desconocido → crudo; con fecha.
+        // attendance yes + bus → "Autobús"; menú desconocido → crudo; con fecha.
         {
           guestName: "C",
           attendance: "yes",
@@ -564,8 +562,6 @@ describe("Ramas límite de los builders", () => {
             attendance: "yes",
             attendees: [{ menu: "carne" }, {}],
             allergiesOther: ["Nueces"],
-            phone: 600,
-            email: null,
           },
           {
             inviteToken: "T1",
@@ -582,9 +578,6 @@ describe("Ramas límite de los builders", () => {
     expect(sheet.rows[0]?.[2]).toBe("Uno");
     expect(sheet.rows[0]?.[4]).toBe("carne; ");
     expect(sheet.rows[0]?.[5]).toBe("Nueces");
-    expect(sheet.rows[0]?.[6]).toBe("600");
-    // email null cae al respaldo "" (String(null || "")).
-    expect(sheet.rows[0]?.[7]).toBe("");
     expect(sheet.rows[1]?.[4]).toBe("pescado");
     expect(sheet.rows[1]?.[5]).toBe("sin sal");
   });

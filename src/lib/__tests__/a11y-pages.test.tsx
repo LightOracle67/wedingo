@@ -75,7 +75,6 @@ vi.mock("../../contexts", () => ({
       attendance: "yes",
       privacyConsent: false,
       healthConsent: false,
-      parentalConsent: false,
     },
     rsvpEntries: [],
     rsvpMessage: "",
@@ -170,7 +169,6 @@ vi.mock("../../contexts", () => ({
       attendance: "yes",
       privacyConsent: false,
       healthConsent: false,
-      parentalConsent: false,
     },
     rsvpEntries: [],
     rsvpMessage: "",
@@ -282,7 +280,6 @@ describe("a11y-page-audit", () => {
       menuSelection: "",
       allergies: [],
       allergiesOther: "",
-      parentalConsent: false,
       privacyConsent: false,
       healthConsent: false,
       transportChoice: "0",
@@ -290,8 +287,6 @@ describe("a11y-page-audit", () => {
       transportTime: "",
       transportPlace: "",
       digitalSignature: false,
-      phone: "",
-      email: "",
     };
     const { container } = render(
       <RsvpFormContext.Provider

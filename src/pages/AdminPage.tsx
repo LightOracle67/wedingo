@@ -244,12 +244,7 @@ export default function AdminPage() {
         ]
           .filter(Boolean)
           .join(", ");
-        const consentimientos = [
-          e.parentalConsent ? t("attendance.consentParental") : "",
-          e.healthConsent ? t("attendance.consentHealth") : "",
-        ]
-          .filter(Boolean)
-          .join(", ");
+        const consentimientos = e.healthConsent ? t("attendance.consentHealth") : "";
         // Etiqueta de transporte igual que la tabla: si no hay modo es "—",
         // si es propio va la etiqueta, y si hay salida se añade la hora.
         const tipoTransporte = e.transportMode

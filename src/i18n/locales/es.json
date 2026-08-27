@@ -628,7 +628,6 @@
     "tableTransport": "Transporte",
     "tableConsents": "Consentimientos",
     "transportOwnCar": "Coche propio",
-    "consentParental": "Tutores",
     "consentHealth": "Salud",
     "show": "Mostrar",
     "total": "{{count}} en total",

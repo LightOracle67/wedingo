@@ -628,7 +628,6 @@
     "tableTransport": "Transport",
     "tableConsents": "Consents",
     "transportOwnCar": "Own car",
-    "consentParental": "Parental",
     "consentHealth": "Health",
     "show": "Show",
     "total": "{{count}} total",

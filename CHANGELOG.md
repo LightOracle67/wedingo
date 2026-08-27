@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.160.0 — 2026-08-27
+- Eliminado todo el código legacy y muerto restante: el consentimiento parental (tutores) solo se leía de documentos antiguos porque la aplicación ya no lo escribe, y los campos de teléfono y email del RSVP (retirados con el bloque de contacto) ya no tenían ningún consumidor. Se eliminaron de las tablas, el PDF, el Excel (incluida la hoja global de invitados, que queda con 7 columnas) y del modelo del formulario.
+- La verificación de campos formulario-reglas (scripts/check-fields-vs-rules.mjs) confirma que los 21 campos que la aplicación escribe en las respuestas siguen permitidos por firestore.rules.
+
 ## 2.159.0 — 2026-08-27
 - El RSVP muestra los botones de asistencia justo debajo del campo del nombre del invitado (antes aparecían después de las alergias del invitado principal).
 - El toggle de los menús de la celebración usa ahora el mismo switch moderno que el resto de toggles del administrador (y el del mapa estático de la fecha, que también era un checkbox antiguo).

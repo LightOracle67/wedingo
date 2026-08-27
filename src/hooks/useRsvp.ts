@@ -88,7 +88,6 @@ interface RsvpEntryData {
   childrenCount?: number;
   childrenAllergies?: string[];
   childrenAllergiesOther?: string;
-  parentalConsent?: boolean;
   healthConsent?: boolean;
   transportChoice?: string;
   transportMode?: string;
@@ -233,7 +232,6 @@ export function useRsvp(
               : [],
             childrenAllergiesOther:
               typeof data.childrenAllergiesOther === "string" ? data.childrenAllergiesOther : "",
-            parentalConsent: data.parentalConsent || false,
             healthConsent: data.healthConsent || false,
             transportChoice: data.transportChoice || "",
             transportMode: data.transportMode || "",
@@ -431,7 +429,6 @@ export function useRsvp(
         allergiesOther: parsed.dietaryOther || match.allergiesOther || "",
         privacyConsent: true,
         healthConsent: match.healthConsent || false,
-        parentalConsent: match.parentalConsent || false,
         transportChoice: match.transportChoice || "own",
         transportMode: match.transportMode || "own",
         transportTime: match.transportTime || "",
@@ -600,7 +597,6 @@ export function useRsvp(
           allergiesOther: parsed.dietaryOther || match.allergiesOther || "",
           privacyConsent: true,
           healthConsent: match.healthConsent || false,
-          parentalConsent: match.parentalConsent || false,
           transportChoice: match.transportChoice || "own",
           transportMode: match.transportMode || "own",
           transportTime: match.transportTime || "",

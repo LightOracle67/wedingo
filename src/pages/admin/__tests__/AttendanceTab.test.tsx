@@ -714,7 +714,7 @@ describe("AttendanceTab", () => {
         companions: 1,
         dietaryInfo: "",
         submittedAt: "2024-01-01",
-        parentalConsent: true,
+        healthConsent: true,
         attendees: [{ name: "Child", menu: "carne" }, { name: "NoMenu" }],
       },
     ];
@@ -732,7 +732,7 @@ describe("AttendanceTab", () => {
         handleDeleteRsvpEntries={vi.fn()}
       />,
     );
-    expect(screen.getByText("attendance.consentParental")).toBeDefined();
+    expect(screen.getByText("attendance.consentHealth")).toBeDefined();
   });
 
   it("does not crash with non-array transport departures", () => {
@@ -968,7 +968,6 @@ describe("AttendanceTab", () => {
             transportMode: "bus",
             transportChoice: "Coche",
             transportTime: "12:00",
-            parentalConsent: true,
             submittedAt: "2024-01-02T10:00:00Z",
           },
           {
@@ -1040,8 +1039,6 @@ describe("AttendanceTab — matriz de ordenación", () => {
       transportMode: "bus",
       transportChoice: "Bus 5",
       transportTime: "18:00",
-      phone: "600",
-      email: "",
       submittedAt: "2024-02-01",
     },
     {
@@ -1056,10 +1053,7 @@ describe("AttendanceTab — matriz de ordenación", () => {
       transportMode: "own",
       transportChoice: "",
       transportTime: "",
-      phone: "",
-      email: "b@x.es",
       submittedAt: "2024-01-01",
-      isChild: true,
       healthConsent: true,
     },
     {
@@ -1287,8 +1281,7 @@ describe("AttendanceTab — niños en la tabla", () => {
 
   it("contabiliza los niños declarados en la estadística de confirmados", () => {
     mountConNinos();
-    // Ana declara 3 y Beto 0: la estadística suma 3 (sin acompañantes
-    // legacy con isChild).
+    // Ana declara 3 y Beto 0: la estadística suma solo el contador declarado.
     expect(screen.getByText("attendance.childrenConfirmed")).toBeDefined();
     // La línea de estadística recibe el count como parámetro de la clave.
     expect(screen.getByText(/childrenConfirmed/)).toBeDefined();

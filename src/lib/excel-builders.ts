@@ -34,9 +34,8 @@ interface RsvpRowLike {
   childrenCount?: number;
   childrenAllergies?: string[];
   childrenAllergiesOther?: string;
-  /** Consentimientos de la confirmación (salud/privacidad). */
+  /** Consentimiento de salud de la confirmación (alergias declaradas). */
   healthConsent?: boolean;
-  parentalConsent?: boolean;
 }
 
 /** Mensaje del buzón privado (ya formateado por el componente). */
@@ -92,8 +91,6 @@ interface RsvpDocLike {
   mealChoice?: unknown;
   allergiesOther?: unknown;
   dietaryInfo?: unknown;
-  phone?: unknown;
-  email?: unknown;
   submittedAt?: unknown;
   attendees?: unknown;
 }
@@ -154,12 +151,8 @@ export function buildRSVPSheet(entries: RsvpRowLike[], t: Translate): ExcelSheet
       : "",
     e.attendance === "yes" && childrenTexto(e) ? childrenTexto(e) : "",
     transporte(e),
-    // Consentimientos: los mismos badges que muestra la tabla
-    // (tutores + salud), separados por coma.
-    [e.parentalConsent ? t("attendance.consentParental") : "",
-      e.healthConsent ? t("attendance.consentHealth") : ""]
-      .filter(Boolean)
-      .join(", "),
+    // Consentimiento de salud (alergias declaradas) con la etiqueta de la tabla.
+    e.healthConsent ? t("attendance.consentHealth") : "",
     e.submittedAt ? excelDate(e.submittedAt) : "",
   ]);
   return {
@@ -312,17 +305,15 @@ export function buildGlobalGuestsSheet(perInvite: Array<{ invite: InviteRowLike;
           ? (rd.attendees as Array<{ menu?: string }>).map((a) => a.menu || "").join("; ")
           : String(rd.mealChoice || ""),
         Array.isArray(rd.allergiesOther) ? (rd.allergiesOther as string[]).join("; ") : String(rd.dietaryInfo || ""),
-        String(rd.phone || ""),
-        String(rd.email || ""),
         String(rd.submittedAt || ""),
       ]);
     }
   }
   return {
     name: "Invitados",
-    headers: ["Token", "Invitación", "Nombre", "Asistencia", "Menú", "Alergias", "Teléfono", "Email", "Fecha"],
+    headers: ["Token", "Invitación", "Nombre", "Asistencia", "Menú", "Alergias", "Fecha"],
     rows,
-    colWidths: [12, 24, 22, 14, 22, 24, 16, 24, 20],
+    colWidths: [12, 24, 22, 14, 22, 24, 20],
   };
 }
 

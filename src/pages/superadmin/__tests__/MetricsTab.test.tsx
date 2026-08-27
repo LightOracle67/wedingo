@@ -106,8 +106,6 @@ describe("MetricsTab", () => {
               guestName: "Ana",
               attendance: "yes",
               mealChoice: "carne",
-              phone: "600",
-              email: "a@x.com",
               submittedAt: "2026-01-01",
             }),
           },
