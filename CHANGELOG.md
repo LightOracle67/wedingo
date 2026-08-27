@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.154.0 — 2026-08-27
+- Si la app captura un error de import de módulo obsoleto tras un despliegue (el service worker conservaba chunks de la versión anterior), ahora se limpia el SW y las cachés y se recarga la página automáticamente (con tope de dos intentos para evitar bucles), en vez de mostrar el error de carga.
 ## 2.153.0 — 2026-08-27
 - El Excel de asistencias ahora es legible: transporte traducido (Coche propio/Autobús/Taxi con hora), niños como "Sí, N", menú predefinido como "Predefinido", y columnas renombradas a Intolerancias e Intolerancias (Niños).
 - El menú elegido del RSVP se muestra en una etiqueta separada bajo las opciones (la descripción ya no estira la tarjeta al seleccionar).

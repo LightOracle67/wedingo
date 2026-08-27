@@ -25,6 +25,7 @@ import { useCalendar } from "../hooks/useCalendar";
 import { useFieldHandlers } from "../hooks/useFieldHandlers";
 import { useAutoSave } from "../hooks/useAutoSave";
 import { getFirestoreErrorMessage } from "../lib/error-utils";
+import { recoverFromStaleChunk } from "../lib/stale-chunk-recovery";
 import { ConfigContext } from "./useConfig";
 import { FormStoreContext, createFormStore, type FormStore } from "./FormStore";
 import { useAppUI } from "./useAppUI";
@@ -354,8 +355,14 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         }
       } catch (e) {
         safeLogError(["[app]", "[ConfigProvider]", "hydrateConfig error"], e);
-        if (!hasStoredConfig) {
-          setConfigLoadError(getFirestoreErrorMessage(e, t));
+        // Error de import de módulo: el SW conserva chunks de la versión
+        // anterior que ya no existen en el hosting. En vez de mostrar solo el
+        // mensaje de error, se desregistra el SW y se recarga limpio (con
+        // tope de intentos para no entrar en bucle).
+        if (!recoverFromStaleChunk(e)) {
+          if (!hasStoredConfig) {
+            setConfigLoadError(getFirestoreErrorMessage(e, t));
+          }
         }
       } finally {
         setIsConfigLoading(false);

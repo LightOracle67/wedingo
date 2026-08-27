@@ -2,6 +2,7 @@ import { Component } from "react";
 import { useTranslation } from "react-i18next";
 import { logError } from "../lib/error-utils";
 import { safeLogError } from "../lib/safe-error";
+import { recoverFromStaleChunk } from "../lib/stale-chunk-recovery";
 
 class ErrorBoundaryInner extends Component<
   { t: (key: string) => string; children: React.ReactNode },
@@ -25,6 +26,10 @@ class ErrorBoundaryInner extends Component<
       /* logging opcional */
     }
     safeLogError(["[app]", "[ErrorBoundary]", "caught error"], error);
+    // Chunk obsoleto tras un despliegue: un módulo del SW anterior ya no
+    // existe en el hosting y se recarga limpio en vez de mostrar la pantalla
+    // de error (con tope de intentos para no entrar en bucle).
+    recoverFromStaleChunk(error);
   }
 
   override render() {
