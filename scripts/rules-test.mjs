@@ -38,7 +38,7 @@ async function run() {
   await testEnv.withSecurityRulesDisabled(async (ctx) => {
     const db = ctx.firestore();
     await db.collection("invitations").doc("AbCdEf1234").set({ firstName: "A", secondName: "B" });
-    await db.collection("rsvpResponses").doc("AbCdEf1234").set({ count: 0 });
+    await db.collection("rsvpResponses").doc("AbCdEf1234").set({ count: 0, attendingCount: 0 });
     await db.collection("rsvpResponses").doc("AbCdEf1234").collection("responses").doc("r1").set({ guestName: "Ana", inviteToken: "AbCdEf1234" });
     await db.collection("setupTokens").doc("a".repeat(64)).set({ inviteToken: "AbCdEf1234" });
     await db.collection("auditLog").doc("log1").set({ action: "test", createdAt: new Date() });

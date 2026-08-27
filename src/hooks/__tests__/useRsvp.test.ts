@@ -502,7 +502,7 @@ describe("useRsvp", () => {
         update: ReturnType<typeof vi.fn>;
       };
       expect(batch.set).toHaveBeenCalled();
-      expect(batch.set).toHaveBeenCalledWith(expect.anything(), { count: 1 });
+      expect(batch.set).toHaveBeenCalledWith(expect.anything(), { count: 1, attendingCount: 1 });
     });
   });
 
@@ -551,7 +551,7 @@ describe("useRsvp", () => {
       // Dos deletes (uno por id)…
       expect(batch.delete).toHaveBeenCalledTimes(2);
       // …pero solo -1 de contador: c1 es companion y libera hueco su main.
-      expect(batch.update).toHaveBeenCalledWith(expect.anything(), { count: -1 });
+      expect(batch.update).toHaveBeenCalledWith(expect.anything(), { count: -1, attendingCount: -1 });
       expect(setAdminMessageType).toHaveBeenCalledWith("success");
     });
 
@@ -576,7 +576,7 @@ describe("useRsvp", () => {
       });
       // Vaciado usa deleteDoc directo (uno por doc) y updateDoc con -N total.
       expect(mockDeleteDoc).toHaveBeenCalledTimes(2);
-      expect(vi.mocked(firestore.updateDoc)).toHaveBeenCalledWith(expect.anything(), { count: -2 });
+      expect(vi.mocked(firestore.updateDoc)).toHaveBeenCalledWith(expect.anything(), { count: -2, attendingCount: -1 });
       // El estado local se limpia por completo.
       expect(result.current.rsvpEntries).toEqual([]);
       expect(setAdminMessageType).toHaveBeenCalledWith("success");
@@ -1155,5 +1155,53 @@ describe("useRsvp", () => {
     });
     // Con menú válido la validación no bloquea y el lote se confirma
     expect(mockWriteBatch().commit).toHaveBeenCalled();
+  });
+
+  describe("Estado previo y aforo del invitado", () => {
+    // jsdom no expone localStorage por defecto: se respalda con un Map para
+    // poder emular el marcador local del invitado (H3) de forma determinista.
+    const storageMap = new Map<string, string>();
+    beforeEach(() => {
+      storageMap.clear();
+      Object.defineProperty(globalThis, "localStorage", {
+        configurable: true,
+        value: {
+          getItem: (k: string) => storageMap.get(k) ?? null,
+          setItem: (k: string, v: string) => void storageMap.set(k, String(v)),
+          removeItem: (k: string) => void storageMap.delete(k),
+          clear: () => storageMap.clear(),
+        },
+      });
+    });
+
+    it("restaura el resumen 'ya confirmaste' del marcador local (H3)", async () => {
+      // Emula el envío previo del invitado guardado en localStorage.
+      localStorage.setItem(
+        "wedin_rsvp_submitted_test-token",
+        JSON.stringify({ guestName: "Ana García López", attendance: "alone", menuSelection: "carne", companionCount: 1 }),
+      );
+      // Invitado público (canRead=false): el marcador restaura el estado.
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, false));
+      await vi.waitFor(() => expect(result.current.hasSubmitted).toBe(true));
+      expect(result.current.rsvpForm.guestName).toBe("Ana García López");
+      expect(result.current.rsvpForm.attendance).toBe("alone");
+      expect(result.current.rsvpForm.companionCount).toBe(1);
+      localStorage.removeItem("wedin_rsvp_submitted_test-token");
+    });
+
+    it("no restaura nada sin marcador ni para el admin", async () => {
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
+      await act(async () => {
+        await Promise.resolve();
+      });
+      expect(result.current.hasSubmitted).toBe(false);
+    });
+
+    it("expone aforo real (attendingCount) para el invitado (H2)", async () => {
+      // El contador público devuelve 3 asistentes (sin filas de respuesta).
+      mockGetDoc.mockResolvedValueOnce({ exists: () => true, data: () => ({ count: 5, attendingCount: 3 }) });
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, false));
+      await vi.waitFor(() => expect(result.current.liveAttendingCount).toBe(3));
+    });
   });
 });

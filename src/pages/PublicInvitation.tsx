@@ -122,6 +122,7 @@ export default function PublicInvitation() {
     retryLoadRsvp,
     handleDeleteRsvp,
     DIETARY_OPTIONS,
+    liveAttendingCount,
   } = useRsvpContext();
   const { isAdminTokenLoggedIn } = useAuth();
 
@@ -613,8 +614,12 @@ export default function PublicInvitation() {
       retryLoadRsvp,
       handleDeleteRsvp,
       DIETARY_OPTIONS,
-      // F3-7: confirmaciones "sí" actuales para el control de aforo.
-      rsvpConfirmedCount: rsvpEntries.filter((e) => e.attendance === "yes").length,
+      // F3-7: confirmaciones "sí" actuales para el control de aforo. El admin
+      // con sesión lee las filas (exacto); el invitado usa el contador público
+      // attendingCount (no puede leer respuestas individuales).
+      rsvpConfirmedCount: isAdminTokenLoggedIn
+        ? rsvpEntries.filter((e) => e.attendance === "yes").length
+        : liveAttendingCount ?? 0,
       // Diferencial: token para localizar la mesa asignada al invitado.
       inviteToken: inviteToken ?? "",
     }),
@@ -629,6 +634,8 @@ export default function PublicInvitation() {
       handleDeleteRsvp,
       DIETARY_OPTIONS,
       inviteToken,
+      liveAttendingCount,
+      isAdminTokenLoggedIn,
     ],
   );
 

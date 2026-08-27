@@ -14,6 +14,9 @@ export const STORAGE_KEYS = {
   setupToken: (token: string) => `wedin_setup_token_${token}`,
   inviteCache: (token: string) => `wedin_invite_cache_${token}`,
   rsvpCache: (token: string) => `wedin_rsvp_cache_${token}`,
+  /** Recordatorio local del envío RSVP del invitado: solo el nombre y el tipo
+   *  de asistencia, para mostrar "ya confirmaste" al volver (sin leer datos). */
+  rsvpSubmitted: (token: string) => `wedin_rsvp_submitted_${token}`,
   triviaState: (token: string) => `wedin_trivia_${token}`,
 } as const;
 

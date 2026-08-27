@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.147.0 — 2026-08-27
+- Aforo real del invitado: el RSVP ahora muestra las plazas restantes contando solo a los confirmados (campo attendingCount del contador) en vez del total que incluía a los que declinaron.
+- Recordatorio de confirmación: el invitado que ya confirmó y recarga la invitación ve su respuesta rellenada (guardado local, sin leer datos del servidor).
+- El contador del RSVP guarda un campo attendingCount separado (asistentes) para que el aforo sea exacto.
 ## 2.146.0 — 2026-08-27
 - Formulario RSVP rediseñado: máximo 2 acompañantes adultos (antes 10), eliminado el checkbox «es niño» por acompañante y añadido un bloque «¿Viene con niños?» con contador (0-10) y alergias del grupo.
 - Los niños cuentan para el aforo: las plazas restantes y el aviso de aforo lleno restan los niños declarados.

@@ -167,6 +167,10 @@ export function useRsvp(
   const deletingRef = useRef(false);
   /** Contador para forzar la re-hidratación (botón "Reintentar" del invitado). */
   const [hydrateTick, setHydrateTick] = useState(0);
+  /** Aforo real (confirmaciones que asisten) leído del contador público. El
+   *  invitado no puede leer respuestas individuales (reglas), así que el aforo
+   *  que ve se calcula con attendingCount, no con las filas. */
+  const [liveAttendingCount, setLiveAttendingCount] = useState<number | null>(null);
   const prefillRef = useRef<string | null>(null);
 
   /** Vuelve a cargar las respuestas RSVP tras un fallo de red. */
@@ -359,6 +363,64 @@ export function useRsvp(
       unsub();
     };
   }, [inviteToken, canRead, processRsvpSnapshot]);
+
+  // H3: si el invitado ya envió en este navegador (marcador local, sin leer
+  // datos del servidor), restaura el resumen "ya confirmaste" al recargar.
+  // Solo aplica al invitado público (canRead=false) y sin duplicar.
+  useEffect(() => {
+    if (canRead || !inviteToken || hasSubmitted) return;
+    try {
+      const raw = localStorage.getItem(STORAGE_KEYS.rsvpSubmitted(inviteToken));
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as {
+        guestName?: string;
+        attendance?: string;
+        menuSelection?: string;
+        companionCount?: number;
+      };
+      if (!parsed.guestName) return;
+      setRsvpForm((prev) => ({
+        ...prev,
+        guestName: typeof parsed.guestName === "string" ? parsed.guestName : prev.guestName,
+        attendance:
+          parsed.attendance === "alone" || parsed.attendance === "with" || parsed.attendance === "no"
+            ? parsed.attendance
+            : prev.attendance,
+        menuSelection: typeof parsed.menuSelection === "string" ? parsed.menuSelection : prev.menuSelection,
+        companionCount: typeof parsed.companionCount === "number" ? parsed.companionCount : prev.companionCount,
+      }));
+      setHasSubmitted(true);
+    } catch {
+      // Marcador ilegible: se ignora sin romper el flujo.
+    }
+  }, [canRead, inviteToken, setRsvpForm, hasSubmitted]);
+
+  // Aforo real para el invitado (H2): lee attendingCount del contador público
+  // (reglas permiten leer el doc agrupador); se refresca al cambiar el token o
+  // cuando cambia el número de respuestas (p. ej. tras un envío).
+  useEffect(() => {
+    if (!inviteToken) {
+      setLiveAttendingCount(null);
+      return;
+    }
+    let cancelled = false;
+    void (async () => {
+      try {
+        const snap = await getDoc(doc(db, "rsvpResponses", inviteToken));
+        const d = snap.data() as Record<string, unknown> | undefined;
+        // Si el doc legacy aún no tiene attendingCount, se cae al total (count)
+        // para no mostrar un aforo vacío; a partir de la primera escritura
+        // nueva el campo ya se mantiene en valor exacto.
+        const raw = Number(d?.attendingCount ?? d?.count ?? 0);
+        if (!cancelled) setLiveAttendingCount(Number.isFinite(raw) ? raw : 0);
+      } catch {
+        if (!cancelled) setLiveAttendingCount(0);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [inviteToken, rsvpEntries.length]);
 
   // Índice por nombre normalizado (evita recorrer todas las entradas en cada
   // tecla del formulario RSVP cuando hay muchas respuestas).
@@ -652,13 +714,19 @@ export function useRsvp(
         // permission-denied en TODO RSVP nuevo. Se sustituye por lectura +
         // escritura directa count+1, que las reglas sí permiten (==actual+1).
         let nextCount = 1;
+        let nextAttending = 0;
         try {
           const counterSnap = await getDoc(counterRef);
           if (!counterSnap.exists()) {
-            await setDoc(counterRef, { count: 0 });
+            await setDoc(counterRef, { count: 0, attendingCount: 0 });
           } else {
-            const raw = Number((counterSnap.data() as Record<string, unknown> | undefined)?.count ?? 0);
+            const data = counterSnap.data() as Record<string, unknown> | undefined;
+            const raw = Number(data?.count ?? 0);
             nextCount = Number.isFinite(raw) ? raw + 1 : 1;
+            // attendingCount (aforo real) cuenta solo quien asiste; las
+            // respuestas legacy sin el campo se tratan como 0.
+            const rawAttending = Number(data?.attendingCount ?? 0);
+            nextAttending = (Number.isFinite(rawAttending) ? rawAttending : 0) + (isAttending ? 1 : 0);
           }
         } catch (counterErr) {
           safeLogError(["[app]", "[useRsvp]", "RSVP counter setup failed"], counterErr);
@@ -670,8 +738,9 @@ export function useRsvp(
           batch.set(rsvpResponseRef(inviteToken, companionDocIds[i]!), companionPayloads[i]);
         }
         // Escritura directa del nuevo valor: las reglas exigen exactamente
-        // count == valor_previo + 1 para escrituras públicas.
-        batch.set(counterRef, { count: nextCount });
+        // count == valor_previo + 1 para escrituras públicas. attendingCount
+        // acompaña para reflejar el aforo real (solo quien asiste).
+        batch.set(counterRef, { count: nextCount, attendingCount: nextAttending });
         await withWriteRetry(() => batch.commit());
       } catch (err) {
         safeLogError(["[app]", "[useRsvp]", "RSVP batch write failed"], err);
@@ -732,6 +801,19 @@ export function useRsvp(
       try {
         sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken));
       } catch {}
+      // H3: recuerda el envío del invitado en su navegador (localStorage, sin
+      // leer datos del servidor) para mostrar "ya confirmaste" al volver.
+      try {
+        localStorage.setItem(
+          STORAGE_KEYS.rsvpSubmitted(inviteToken),
+          JSON.stringify({
+            guestName: single,
+            attendance: form.attendance,
+            menuSelection: form.menuSelection || "",
+            companionCount: form.companionCount || 0,
+          }),
+        );
+      } catch {}
     },
     [inviteToken, t],
   );
@@ -773,8 +855,13 @@ export function useRsvp(
       for (const cid of alreadySubmittedEntry.companionDocIds || []) {
         batch.delete(rsvpResponseRef(inviteToken, cid));
       }
-      // Retirar libera un hueco del tope anti-spam (increment -1).
-      batch.update(doc(db, "rsvpResponses", inviteToken), { count: increment(-1) });
+      // Retirar libera un hueco del tope anti-spam (increment -1) y, si la
+      // confirmación era "asistiré", también baja el aforo real attendingCount.
+      const wasAttending = alreadySubmittedEntry.attendance === "yes" ? 1 : 0;
+      batch.update(doc(db, "rsvpResponses", inviteToken), {
+        count: increment(-1),
+        attendingCount: increment(-wasAttending),
+      });
       await withWriteRetry(() => batch.commit());
       const idsToRemove = new Set([alreadySubmittedEntry.id, ...(alreadySubmittedEntry.companionDocIds || [])]);
       setRsvpEntries((current) => current.filter((e) => !idsToRemove.has(e.id)));
@@ -785,6 +872,7 @@ export function useRsvp(
       setHasSubmitted(false);
       try {
         sessionStorage.removeItem(STORAGE_KEYS.rsvpCache(inviteToken));
+        localStorage.removeItem(STORAGE_KEYS.rsvpSubmitted(inviteToken));
       } catch {}
     } catch (err) {
       safeLogError(["[app]", "[useRsvp]", "withdraw error"], err);
@@ -817,7 +905,16 @@ export function useRsvp(
           const entry = rsvpEntries.find((e) => e.id === id);
           return !entry || entry.rsvpType !== "companion";
         }).length;
-        batch.update(doc(db, "rsvpResponses", inviteToken), { count: increment(-mainDeleted) });
+        // attendingDeleted = confirmaciones "asistiré" que se borran: también
+        // el aforo real que ve el invitado debe bajar en consecuencia.
+        const attendingDeleted = ids.filter((id) => {
+          const entry = rsvpEntries.find((e) => e.id === id);
+          return entry?.rsvpType !== "companion" && entry?.attendance === "yes";
+        }).length;
+        batch.update(doc(db, "rsvpResponses", inviteToken), {
+          count: increment(-mainDeleted),
+          attendingCount: increment(-attendingDeleted),
+        });
         await withWriteRetry(() => batch.commit());
         setRsvpEntries((current) => current.filter((e) => !ids.includes(e.id)));
         setAdminMessage(t("attendance.deleteSelectedSuccess", { count: ids.length }));
@@ -843,8 +940,16 @@ export function useRsvp(
       const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
 
       await Promise.all(snapshot.docs.map((entryDoc) => deleteDoc(entryDoc.ref)));
+      // Al vaciar se libera el tope anti-spam (count) y se recalcula el aforo
+      // real atendiendo solo a las confirmaciones que asistían.
+      const attendingDeleted = snapshot.docs.filter(
+        (d) => (d.data().rsvpType as string | undefined) !== "companion" && d.data().attendance === "yes",
+      ).length;
       await withWriteRetry(() =>
-        updateDoc(doc(db, "rsvpResponses", inviteToken), { count: increment(-snapshot.size) }),
+        updateDoc(doc(db, "rsvpResponses", inviteToken), {
+          count: increment(-snapshot.size),
+          attendingCount: increment(-attendingDeleted),
+        }),
       );
       setRsvpEntries([]);
       setAdminMessage(t("rsvp.clearSuccess"));
@@ -880,6 +985,7 @@ export function useRsvp(
       handleClearRsvpEntries,
       handleDeleteRsvp,
       DIETARY_OPTIONS,
+      liveAttendingCount,
       setRsvpMessage,
       setRsvpForm,
     }),
@@ -897,6 +1003,7 @@ export function useRsvp(
       handleDeleteRsvpEntries,
       handleClearRsvpEntries,
       handleDeleteRsvp,
+      liveAttendingCount,
       setRsvpMessage,
       setRsvpForm,
     ],

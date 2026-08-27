@@ -516,21 +516,37 @@ service cloud.firestore {
          la lectura aquí rompía el RSVP a partir de la segunda respuesta
          (el cliente siempre veía count 0 y el batch fallaba). */
       allow read: if true;
-      allow create: if request.resource.data.keys().hasOnly(['count'])
-        && request.resource.data.count is int
-        && request.resource.data.count >= 0
-        && request.resource.data.count <= 1;
-      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['count'])
-        && request.resource.data.count is int
-        && request.resource.data.count >= 0
-        && request.resource.data.count <= 500
-        && (request.resource.data.count == resource.data.count + 1
-          /* Decremento al retirar/borrar respuestas: solo con sesión activa o
-             superadmin. Se permite cualquier decremento (>=1) porque un borrado
-             en lote o un vaciado eliminan varios documentos a la vez
-             (increment(-N)), no solo uno. */
-          || ((isSuperAdmin() || hasActiveSession(inviteToken))
-            && request.resource.data.count <= resource.data.count - 1));
+       /* El contador público se compone de `count` (total de respuestas, tope
+          500 anti-spam) y `attendingCount` (solo confirmaciones que asisten,
+          para el aforo real que ve el invitado). `attendingCount` debe ser un
+          entero no negativo y nunca superar `count`. Los incrementos públicos
+          suman exactamente +1 a `count` (==actual+1, exigido por las reglas);
+          los decrementos quedan restringidos a sesión activa o superadmin.
+          Un cliente malicioso solo podría alterar `attendingCount` dentro del
+          rango [0, count], que es un campo de DISPLAY (el tope anti-spam real
+          es `count`), así que el daño posible es limitado a la información de
+          aforo que reciben los demás, nunca a la capacidad real de escritura. */
+       allow create: if request.resource.data.keys().hasOnly(['count', 'attendingCount'])
+         && request.resource.data.count is int
+         && request.resource.data.count >= 0
+         && request.resource.data.count <= 1
+         && request.resource.data.attendingCount is int
+         && request.resource.data.attendingCount >= 0
+         && request.resource.data.attendingCount <= request.resource.data.count;
+       allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['count', 'attendingCount'])
+         && request.resource.data.count is int
+         && request.resource.data.count >= 0
+         && request.resource.data.count <= 500
+         && request.resource.data.attendingCount is int
+         && request.resource.data.attendingCount >= 0
+         && request.resource.data.attendingCount <= request.resource.data.count
+         && (request.resource.data.count == resource.data.count + 1
+           /* Decremento al retirar/borrar respuestas: solo con sesión activa o
+              superadmin. Se permite cualquier decremento (>=1) porque un borrado
+              en lote o un vaciado eliminan varios documentos a la vez
+              (increment(-N)), no solo uno. */
+           || ((isSuperAdmin() || hasActiveSession(inviteToken))
+             && request.resource.data.count <= resource.data.count - 1));
       allow delete: if isSuperAdmin();
     }
 

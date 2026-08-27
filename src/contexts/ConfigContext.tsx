@@ -576,7 +576,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           const groupRef = doc(db, "rsvpResponses", inviteToken);
           const groupSnap = await getDoc(groupRef);
           if (!groupSnap.exists()) {
-            await withWriteRetry(() => setDoc(groupRef, { count: 0 }));
+            await withWriteRetry(() => setDoc(groupRef, { count: 0, attendingCount: 0 }));
           }
         } catch (counterErr) {
           safeLogError(["[app]", "[ConfigProvider]", "RSVP counter create failed"], counterErr);
