@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { useEffect } from "react";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 
@@ -206,6 +206,18 @@ function SaveSetupConsumer() {
       </button>
       <button data-testid="ss_storyText" onClick={() => ctx.updateFormField("storyText", "x".repeat(2500))}>
         ST
+      </button>
+      <button
+        data-testid="ss_storyToggle"
+        onClick={() => ctx.updateFormField("storyTextEnabled", "false")}
+      >
+        STG
+      </button>
+      <button
+        data-testid="ss_storyTextOk"
+        onClick={() => ctx.updateFormField("storyText", "Historia corta")}
+      >
+        STOk
       </button>
       <button data-testid="ss_giftsInfo" onClick={() => ctx.updateFormField("giftsInfo", "x".repeat(2500))}>
         GI
@@ -1041,5 +1053,135 @@ describe("ConfigProvider", () => {
     expect(window.confirm).toHaveBeenCalled();
     window.confirm = originalConfirm;
     mockLocation.pathname = "/test";
+  });
+});
+
+// Tests del interruptor «Historia» (storyTextEnabled): el toggle del setup debe
+// persistir su estado en Firestore y no reescribir (ni borrar) el valor del
+// campo al guardar. Cubre el flujo real: desactivar el toggle y guardar.
+describe("storyTextEnabled toggle", () => {
+  beforeEach(() => {
+    mockSetDoc.mockClear();
+    mockSetSaveError.mockClear();
+    mockLocation.pathname = "/abcdefghij";
+  });
+
+  afterEach(() => {
+    mockLocation.pathname = "/test";
+  });
+
+  // Helper de montaje: carga el doc (devuelto por el mock) y marca la
+  // invitación como almacenada, imitando el flujo real del setup.
+  async function mountWithDoc(data: Record<string, unknown>) {
+    mockGetDoc.mockResolvedValueOnce({ exists: () => true, data: () => data });
+    render(
+      <ConfigProvider>
+        <SaveSetupConsumer />
+      </ConfigProvider>,
+    );
+    await waitFor(() =>
+      expect(screen.getByTestId("ss_inviteToken").textContent).toBe("abcdefghij"),
+    );
+    fireEvent.click(screen.getByTestId("ss_stored"));
+    await waitFor(() => expect(screen.getByTestId("ss_hasConfig").textContent).toBe("true"));
+    // El formulario del setup exige que los campos base estén rellenados
+    // (nombre de la pareja, tema, orden de secciones y padrinos) para pasar
+    // la validación antes de escribir en Firestore. Replicamos ese flujo
+    // para aislar el comportamiento del toggle de la historia.
+    fireEvent.click(screen.getByTestId("ss_first"));
+    fireEvent.click(screen.getByTestId("ss_second"));
+    fireEvent.click(screen.getByTestId("ss_theme"));
+    fireEvent.click(screen.getByTestId("ss_order"));
+    fireEvent.click(screen.getByTestId("ss_gp1"));
+    fireEvent.click(screen.getByTestId("ss_gp2"));
+  }
+
+  it("persiste el toggle desactivado al guardar (apagado del usuario se respeta)", async () => {
+    await mountWithDoc({
+      firstName: "John",
+      secondName: "Jane",
+      _visits: 0,
+      weddingDay: "15",
+      weddingMonth: "enero",
+      weddingYear: "2026",
+      weddingHour: "18",
+      weddingMinute: "30",
+      weddingSiteURL: "https://www.google.com/maps/place/Madrid",
+      storyText: "Historia",
+      giftsInfo: "Regalos",
+      weddingDressCode: "Formal",
+      accommodationURL: "https://www.google.com/maps/place/Hotel",
+      transportEnabled: "bus",
+      _privacyConsent: "true",
+      theme: "golden",
+      sectionOrder: "hero,details,transport,info,story,gallery,gifts,accommodation,venuemap,tables,rsvp",
+    });
+    // El usuario desactiva el interruptor de la historia y guarda.
+    fireEvent.click(screen.getByTestId("ss_storyToggle"));
+    fireEvent.click(screen.getByTestId("ss_save"));
+    await waitFor(() => expect(mockSetDoc).toHaveBeenCalled(), { timeout: 3000 });
+    const payload = mockSetDoc.mock.calls[0]![1] as Record<string, unknown>;
+    // El valor nuevo debe viajar en el payload incremental.
+    expect(payload).toMatchObject({ storyTextEnabled: "false" });
+  });
+
+  it("no incluye el toggle en el payload si el usuario no lo tocó", async () => {
+    await mountWithDoc({
+      firstName: "John",
+      secondName: "Jane",
+      _visits: 0,
+      weddingDay: "15",
+      weddingMonth: "enero",
+      weddingYear: "2026",
+      weddingHour: "18",
+      weddingMinute: "30",
+      weddingSiteURL: "https://www.google.com/maps/place/Madrid",
+      storyText: "Historia",
+      giftsInfo: "Regalos",
+      weddingDressCode: "Formal",
+      accommodationURL: "https://www.google.com/maps/place/Hotel",
+      transportEnabled: "bus",
+      _privacyConsent: "true",
+      theme: "golden",
+      sectionOrder: "hero,details,transport,info,story,gallery,gifts,accommodation,venuemap,tables,rsvp",
+    });
+    // Solo se cambia el nombre: el toggle no debe reescribirse.
+    fireEvent.click(screen.getByTestId("ss_first"));
+    fireEvent.click(screen.getByTestId("ss_save"));
+    await waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
+    const payload = mockSetDoc.mock.calls[0]![1] as Record<string, unknown>;
+    expect(payload).not.toHaveProperty("storyTextEnabled");
+  });
+
+  it("conserva el texto de la historia en el payload cuando el toggle está apagado", async () => {
+    await mountWithDoc({
+      firstName: "John",
+      secondName: "Jane",
+      _visits: 0,
+      weddingDay: "15",
+      weddingMonth: "enero",
+      weddingYear: "2026",
+      weddingHour: "18",
+      weddingMinute: "30",
+      weddingSiteURL: "https://www.google.com/maps/place/Madrid",
+      storyText: "Historia",
+      giftsInfo: "Regalos",
+      weddingDressCode: "Formal",
+      accommodationURL: "https://www.google.com/maps/place/Hotel",
+      transportEnabled: "bus",
+      _privacyConsent: "true",
+      theme: "golden",
+      sectionOrder: "hero,details,transport,info,story,gallery,gifts,accommodation,venuemap,tables,rsvp",
+    });
+    // El usuario escribe la historia (campo) y desactiva el interruptor.
+    fireEvent.click(screen.getByTestId("ss_storyTextOk"));
+    fireEvent.click(screen.getByTestId("ss_storyToggle"));
+    fireEvent.click(screen.getByTestId("ss_save"));
+    await waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
+    const payload = mockSetDoc.mock.calls[0]![1] as Record<string, unknown>;
+    // El texto NO se borra: el toggle solo oculta en la invitación pública
+    // (applyEnabledToggles es una vista derivada, no una mutación del doc).
+    expect(payload).toHaveProperty("storyText");
+    expect(payload).toMatchObject({ storyTextEnabled: "false" });
   });
 });

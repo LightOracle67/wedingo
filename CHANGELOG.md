@@ -4,6 +4,7 @@ Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación 
 
 ## 2.139.0 — 2026-08-27
 - Los toggles del setup ahora ocultan realmente sus campos en la invitación pública (antes ocultaban solo el formulario del admin).
+- Verificado que los toggles del formulario /admin persisten su estado al guardar (tests de regresión).
 
 ## 2.138.0 — 2026-08-27
 
