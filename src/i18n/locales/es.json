@@ -397,6 +397,7 @@
     "galleryDescriptionPlaceholder": "Descripción de la imagen...",
     "replaceImage": "Cambiar foto",
     "hiddenSectionBadge": "oculta",
+    "hiddenSectionToggleHint": "Sección oculta en el editor de orden: muéstrala para poder activarla.",
     "languageLabel": "Idioma por defecto de la invitación",
     "languageHint": "Se aplica a los invitados que no hayan elegido idioma en su dispositivo. Los invitados siempre pueden cambiarlo con el selector del pie.",
     "languageAuto": "Automático (según el navegador)",

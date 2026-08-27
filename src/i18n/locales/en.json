@@ -400,6 +400,7 @@
     "photoUploading": "Uploading photo...",
     "replaceImage": "Change photo",
     "hiddenSectionBadge": "hidden",
+    "hiddenSectionToggleHint": "Section hidden in the order editor: show it to enable it.",
     "languageLabel": "Default invitation language",
     "languageHint": "Applies to guests who have not chosen a language on their device. Guests can always switch with the footer selector.",
     "languageAuto": "Automatic (browser-based)",

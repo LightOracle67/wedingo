@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.141.0 | 2026-08-27 | Los toggles del recinto y de las mesas se deshabilitan cuando su sección está oculta en el editor de orden, con aviso para mostrarla |
 | v2.140.0 | 2026-08-27 | Corregidos los toggles del recinto y mesas (no se activaban: el checkbox leía el estado sin suscripción reactiva); la fila se atenúa cuando la sección está desactivada; mismo defecto corregido en fecha límite de RSVP y lista de confirmados |
 | v2.139.0 | 2026-08-27 | Los toggles del setup ahora ocultan realmente sus campos en la invitación pública (antes ocultaban solo el formulario del admin) |
 | v2.138.0 | 2026-08-27 | Los botones de asistencia del RSVP se muestran siempre en una única línea con anchuras iguales, también en móvil |

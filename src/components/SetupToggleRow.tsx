@@ -20,6 +20,8 @@ interface SetupToggleRowProps {
   onToggle: () => void;
   /** Genera el id único del input a partir de un nombre base. */
   id: (name: string) => string;
+  /** Deshabilita el toggle: la sección está oculta en el editor de orden. */
+  disabled?: boolean;
   children?: ReactNode;
 }
 
@@ -31,15 +33,19 @@ export default function SetupToggleRow({
   checked,
   onToggle,
   id,
+  disabled = false,
   children,
 }: SetupToggleRowProps) {
   return (
-    <div className={`setup-toggle-row${checked ? "" : " setup-toggle-row--off"}`}>
+    <div
+      className={`setup-toggle-row${checked ? "" : " setup-toggle-row--off"}${disabled ? " setup-toggle-row--locked" : ""}`}
+    >
       <input
         type="checkbox"
         className="setup-toggle"
         id={id(`${field}Toggle`)}
         checked={checked}
+        disabled={disabled}
         onChange={onToggle}
         aria-label={label}
         aria-describedby={hintId}

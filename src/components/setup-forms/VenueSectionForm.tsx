@@ -1,6 +1,7 @@
-import { memo } from "react";
+import { memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useConfigActions, useFormField } from "../../contexts";
+import { parseHidden } from "../../lib/section-utils";
 import SetupToggleRow from "../SetupToggleRow";
 
 /**
@@ -20,13 +21,25 @@ const VenueSectionForm = memo(function VenueSectionForm({ prefix = "" }: { prefi
   // porque los hooks no pueden declararse dentro del render auxiliar.
   const venueMapEnabled = useFormField("venueMapEnabled");
   const tablesEnabled = useFormField("tablesEnabled");
+  // Secciones ocultas en el editor de orden (hiddenSections). Los toggles de
+  // una sección oculta se deshabilitan: no tiene sentido activar la
+  // visibilidad de una sección que el usuario ha marcado como oculta.
+  const hiddenSections = useFormField("hiddenSections");
+  const hiddenSet = useMemo(() => parseHidden(hiddenSections || ""), [hiddenSections]);
 
-  const renderToggleRow = (field: string, label: string, hint: string, checked: boolean) => (
+  const renderToggleRow = (
+    field: string,
+    label: string,
+    hint: string,
+    checked: boolean,
+    sectionHidden: boolean,
+  ) => (
     <SetupToggleRow
       field={field}
       label={label}
-      hint={hint}
+      hint={sectionHidden ? t("setup.hiddenSectionToggleHint") : hint}
       checked={checked}
+      disabled={sectionHidden}
       onToggle={() => updateFormField(`${field}Enabled`, checked ? "false" : "true")}
       id={id}
     />
@@ -38,10 +51,22 @@ const VenueSectionForm = memo(function VenueSectionForm({ prefix = "" }: { prefi
       <p className="setup-help">{t("setup.venueHint")}</p>
 
       {/* Mapa del recinto (sección propia v2.109) */}
-      {renderToggleRow("venueMap", t("setup.venueMapLabel"), t("setup.venueMapHint"), venueMapEnabled === "true")}
+      {renderToggleRow(
+        "venueMap",
+        t("setup.venueMapLabel"),
+        t("setup.venueMapHint"),
+        venueMapEnabled === "true",
+        hiddenSet.has("venuemap"),
+      )}
 
       {/* Distribución de mesas en la invitación pública */}
-      {renderToggleRow("tables", t("setup.tablesLabel"), t("setup.tablesHint"), tablesEnabled === "true")}
+      {renderToggleRow(
+        "tables",
+        t("setup.tablesLabel"),
+        t("setup.tablesHint"),
+        tablesEnabled === "true",
+        hiddenSet.has("tables"),
+      )}
     </fieldset>
   );
 });

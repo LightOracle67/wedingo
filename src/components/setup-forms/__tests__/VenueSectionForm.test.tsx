@@ -88,4 +88,38 @@ describe("VenueSectionForm", () => {
     expect((screen.getByRole("checkbox", { name: "setup.venueMapLabel" }) as HTMLInputElement).checked).toBe(true);
     expect((screen.getByRole("checkbox", { name: "setup.tablesLabel" }) as HTMLInputElement).checked).toBe(false);
   });
+
+  it("deshabilita el toggle del mapa cuando la sección venuemap está oculta", () => {
+    storeBox.current = createFormStore({ hiddenSections: "venuemap" });
+    renderWithStore(storeBox.current!);
+    expect((screen.getByRole("checkbox", { name: "setup.venueMapLabel" }) as HTMLInputElement).disabled).toBe(true);
+    expect((screen.getByRole("checkbox", { name: "setup.tablesLabel" }) as HTMLInputElement).disabled).toBe(false);
+  });
+
+  it("deshabilita el toggle de mesas cuando la sección tables está oculta", () => {
+    storeBox.current = createFormStore({ hiddenSections: "transport,tables" });
+    renderWithStore(storeBox.current!);
+    expect((screen.getByRole("checkbox", { name: "setup.tablesLabel" }) as HTMLInputElement).disabled).toBe(true);
+    expect((screen.getByRole("checkbox", { name: "setup.venueMapLabel" }) as HTMLInputElement).disabled).toBe(false);
+  });
+
+  it("no deshabilita los toggles si la sección oculta no es del recinto", () => {
+    storeBox.current = createFormStore({ hiddenSections: "story,info" });
+    renderWithStore(storeBox.current!);
+    expect((screen.getByRole("checkbox", { name: "setup.venueMapLabel" }) as HTMLInputElement).disabled).toBe(false);
+    expect((screen.getByRole("checkbox", { name: "setup.tablesLabel" }) as HTMLInputElement).disabled).toBe(false);
+  });
+
+  it("muestra el toggle deshabilitado y el hint cuando la sección está oculta", () => {
+    storeBox.current = createFormStore({ hiddenSections: "venuemap" });
+    renderWithStore(storeBox.current!);
+    const mapToggle = screen.getByRole("checkbox", { name: "setup.venueMapLabel" }) as HTMLInputElement;
+    expect(mapToggle.disabled).toBe(true);
+    expect(screen.getByText("setup.hiddenSectionToggleHint")).toBeTruthy();
+    // El gate real del "no cambia al pulsar" es el atributo disabled (el
+    // navegador ignora todo click en un control deshabilitado). jsdom con
+    // fireEvent sigue disparando los handlers incluso en controles
+    // deshabilitados, así que no se puede asertar el estado post-click aquí.
+    expect(mapToggle.checked).toBe(false);
+  });
 });

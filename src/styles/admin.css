@@ -535,6 +535,14 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
 .setup-toggle-row--off > div {
   opacity: 0.55;
 }
+/* Fila bloqueada cuando su sección está oculta en el editor de orden: el
+   toggle (y su contenido) se atenúan para comunicar que no se puede activar
+   hasta mostrar la sección (requisito del usuario: si las secciones están
+   desactivadas, sus toggles se deshabilitan). */
+.setup-toggle-row--locked > div,
+.setup-toggle-row--locked > .setup-toggle {
+  opacity: 0.55;
+}
 .setup-checkbox-label {
   display: flex;
   align-items: center;
