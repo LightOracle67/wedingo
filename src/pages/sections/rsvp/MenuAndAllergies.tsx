@@ -23,7 +23,12 @@ const MenuPicker = memo(function MenuPicker({ value, options, onChange, frozen, 
   const selected = options.find((m) => m.key === value) || null;
   return (
     <fieldset className={"rv2-menu" + (compact ? " rv2-compact" : "")} disabled={frozen}>
-      <legend className="rv2-menu__title">{t("rsvp.menuLabel")}</legend>
+      {/* Estilo inline: cualquier regla CSS del tema (p. ej. la etiqueta del
+          formulario a 0.85rem) lo sobreescribiría por especificidad; inline
+          gana siempre y conserva la variable de color del tema. */}
+      <legend className="rv2-menu__title" style={{ fontSize: "1.05rem", fontWeight: 600, lineHeight: 1.4, marginBottom: "0.35rem", padding: 0 }}>
+        {t("rsvp.menuLabel")}
+      </legend>
       <div className="rv2-menulist" role="radiogroup">
         {options.map((m) => {
           const active = value === m.key;
