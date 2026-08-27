@@ -8,7 +8,7 @@ vi.mock("react-i18next", () => ({
 // El modal ahora carga el changelog desde GitHub (remote-changelog): se mockea
 // el cargador para que el test sea determinista y no dependa de red.
 vi.mock("../../lib/remote-changelog", () => ({
-  loadChangelog: () =>
+  loadChangelog: vi.fn(() =>
     Promise.resolve([
       { version: "7.0.0", date: "2026-07-01", changes: ["Seven"] },
       { version: "6.0.0", date: "2026-06-01", changes: ["Six"] },
@@ -18,6 +18,7 @@ vi.mock("../../lib/remote-changelog", () => ({
       { version: "2.0.0", date: "2026-01-01", changes: ["First change"] },
       { version: "1.0.0", date: "2025-06-01", changes: ["Initial release"] },
     ]),
+  ),
 }));
 
 import ChangelogModal from "../ChangelogModal";
@@ -68,5 +69,27 @@ describe("ChangelogModal", () => {
     fireEvent.click(screen.getByText("changelog.showAll"));
     expect(screen.getByText("2025-06-01")).toBeDefined();
     expect(screen.queryByText("changelog.showAll")).toBeNull();
+  });
+
+  it("caps the full history and offers the GitHub link when it exceeds the limit", async () => {
+    // 70 entradas: al abrir "ver todo" solo se renderizan 60 y aparece la nota
+    // con enlace a GitHub para el historial completo.
+    const many = Array.from({ length: 70 }, (_, i) => ({
+      version: `2.${i}.0`,
+      date: `2026-01-${String((i % 28) + 1).padStart(2, "0")}`,
+      changes: [`Change ${i}`],
+    }));
+    vi.mocked(await import("../../lib/remote-changelog")).loadChangelog.mockResolvedValue(many);
+
+    render(<ChangelogModal onClose={vi.fn()} />);
+    expect(await screen.findByText("changelog.showAll")).toBeDefined();
+    fireEvent.click(screen.getByText("changelog.showAll"));
+    // El tope recorta: la entrada 2.69.0 no llega a pintarse, la 2.10.0 sí.
+    expect(screen.queryByText("Change 69")).toBeNull();
+    expect(screen.getByText("Change 10")).toBeDefined();
+    // La nota con el enlace al historial completo aparece.
+    expect(screen.getByText("changelog.seeMoreInGitHub")).toBeDefined();
+    const link = screen.getByRole("link", { name: "GitHub" });
+    expect(link.getAttribute("href")).toContain("CHANGELOG.md");
   });
 });

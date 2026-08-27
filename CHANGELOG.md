@@ -2,6 +2,82 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.135.0 — 2026-08-27
+
+- Corregidos los errores al guardar la configuración: las secciones ocultas legacy (p. ej. «extras», eliminada en la poda) ya no invalidan el guardado, y los textos con comillas dobles o acentos graves se convierten a variantes tipográficas seguras con un aviso claro de caracteres no permitidos (<, >, javascript:). El changelog de la página ahora se descarga de GitHub (CHANGELOG.md) con caché local en vez de viajar en el bundle.
+
+## 2.134.1 — 2026-08-26
+
+- Corregido el contador de confirmaciones del RSVP: el incremento atómico era rechazado por las reglas y toda confirmación nueva fallaba con «límite alcanzado»; el contador se guarda con escritura directa count+1. Permitidas URLs vacías al guardar la configuración (errores al guardar). Botón de añadir acompañante con el mismo estilo que los chips de alergias.
+
+## 2.134.0 — 2026-08-26
+
+- RSVP regenerado desde cero: UI moderna (control segmentado de asistencia, chips de transporte y alergias, tarjetas de acompañante) conservando todos los campos y contratos; verificados los 14 flujos de Firestore campo a campo.
+
+## 2.133.0 — 2026-08-26
+
+- Mejoras del RSVP: validación de consentimiento de salud, reconocimiento de nombres sin acentos, borrador autoguardado, resumen fiel tras enviar, foco en errores y respeto a prefers-reduced-motion.
+
+## 2.132.0 — 2026-08-26
+
+- Ampliados los tests límite de los paneles PanelTab, DashboardTab y MetricsTab.
+
+## 2.131.0 — 2026-08-26
+
+- Mejorado el RSVP: borrado específico de acompañantes (antes solo el último), CTA flotante que salta al formulario y scroll automático al resultado tras confirmar. Auditoría de formularios: +20 tests de campos y primitivas.
+
+## 2.130.0 — 2026-08-25
+
+- Arreglado el filtro de actividad del panel de datos, que era decorativo: ahora filtra de verdad la tabla de invitaciones.
+
+## 2.129.0 — 2026-08-25
+
+- Ampliados los tests límite de image-utils: re-encode a PNG cuando el canvas no soporta WebP y escalera de calidad con reducción de dimensiones.
+
+## 2.128.0 — 2026-08-25
+
+- Corregida la ordenación por la columna ¿niño? del panel de asistencias (la cabecera usaba una clave distinta a la columna y nunca ordenaba) y ampliada su matriz de ordenación.
+
+## 2.127.0 — 2026-08-25
+
+- Ronda de calidad: librería guest-id extraída con hashes de producción congelados y más tests límite (ManageTab, DistribucionTab).
+
+## 2.126.0 — 2026-08-25
+
+- Recuperada la puerta de cobertura propia con 2253 tests y fixes de ConfirmContext (campo de confirmación obligatoria) y Sentry (cierre con captura de errores).
+
+## 2.125.0 — 2026-08-24
+
+- Actualizadas dependencias menores y verificado el rendimiento en producción.
+
+## 2.124.3 — 2026-08-24
+
+- Mejorado el contraste del hero (WCAG 1.4.3) y ampliada la cobertura de tests.
+
+## 2.124.2 — 2026-08-24
+
+- Toggle de vídeo de bienvenida en Portada del setup con i18n completo y tests.
+
+## 2.124.1 — 2026-08-24
+
+- Eliminada la sección extras: regalos/trivia fuera, toggles reubicados (rsvpDeadline+confirmados→Invitados, recinto→nuevo formulario Recinto).
+
+## 2.124.0 — 2026-08-24
+
+- Poda bloatware: eliminadas 11 funciones sin uso real (sorpresas, reacciones, encuesta musical, notas, buzón, brindis, notas de voz, fotos del día, coche compartido, confirmados en vivo, Facebook) + limpieza i18n (193 claves), ruta crypto legacy y legacyToken; datos de producción depurados; rules endurecidas.
+
+## 2.123.9 — 2026-08-24
+
+- Limpieza: eliminada carpeta functions/ (cleanupExpiredData imposible en plan Spark), firebase.json/package.json/CI depurados, informe de candidatos a eliminación con uso real medido en producción.
+
+## 2.123.8 — 2026-08-24
+
+- Auditoría 0-100%: fix de etiquetas de pestañas superadmin (metricsTab/supportTab) y AUDITORIA.md renovada.
+
+## 2.123.7 — 2026-08-24
+
+- RSVP: select ¿es niño? por acompañante (isChild persistido) sustituye fechas de nacimiento, consentimiento parental condicionado al select, eliminada sección childrenCount y lógica muerta age/birthDate, columna Niño en admin+Excel.
+
 ## 2.123.6 — 2026-08-23
 
 - AUDITORÍA ronda 2: LEGAL en firestore.rules (TTL accessLog 90d, ownerKey autoservicio notes/songs/rides/gifts, voiceConsent obligatorio, consentLog.lang); CALIDAD (Q-A1 todos los console crudos→safeLogError, Q-A2 catches silenciosos de seguridad, Q-A3 decrypt registra fallo sin token); nuevo módulo redact.ts que rompe el ciclo storage→safe-error→sentry; i18n (fechas localizadas VoiceNotes/Excel, mojibake=0 en 7 ficheros incl. 'Token no válido' y regex username); A11Y aria-label en icon-buttons. 2251 tests / 180 ficheros + lint OK.

@@ -7,6 +7,13 @@ import type { ChangelogEntry } from "../lib/changelog-types";
 /** Número de versiones mostradas por defecto (el resto queda bajo "ver todo"). */
 const DEFAULT_VISIBLE = 5;
 
+/**
+ * Tope de entradas renderizadas cuando el usuario pide el historial completo.
+ * Evita pintar cientos de versiones en el DOM (el changelog remoto supera con
+ * creces esta cifra); el resto se ofrece desde el enlace a GitHub.
+ */
+const MAX_ALL_VISIBLE = 60;
+
 const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () => void }) {
   const { t } = useTranslation();
   const [showAll, setShowAll] = useState(false);
@@ -26,8 +33,9 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () =
   const handleClose = useCallback(() => onClose(), [onClose]);
 
   // Solo se renderizan las últimas versiones hasta que el usuario pide ver
-  // el historial completo (80 entradas es un DOM pesado).
-  const visible = showAll ? entries : entries.slice(0, DEFAULT_VISIBLE);
+  // el historial completo, con tope MAX_ALL_VISIBLE para no saturar el DOM.
+  const visible = showAll ? entries.slice(0, MAX_ALL_VISIBLE) : entries.slice(0, DEFAULT_VISIBLE);
+  const hasMoreThanVisible = entries.length > (showAll ? MAX_ALL_VISIBLE : DEFAULT_VISIBLE);
 
   return (
     <Modal
@@ -36,7 +44,7 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () =
       onClose={handleClose}
       style={{ width: "40%", height: "80%", display: "flex", flexDirection: "column", padding: "1.2rem 1rem 1rem" }}
     >
-      <div style={{ overflowY: "auto", flex: 1, marginTop: "0.5rem" }}>
+      <div style={{ marginTop: "0.5rem" }}>
         {visible.map((entry) => (
           <div
             key={entry.version}
@@ -79,6 +87,26 @@ const ChangelogModal = memo(function ChangelogModal({ onClose }: { onClose: () =
           >
             {t("changelog.showAll")}
           </button>
+        ) : null}
+        {showAll && hasMoreThanVisible ? (
+          <p
+            style={{
+              margin: "0.5rem 0 0",
+              fontSize: "0.8rem",
+              color: "var(--setup-muted)",
+              lineHeight: 1.5,
+            }}
+          >
+            {t("changelog.seeMoreInGitHub")}{" "}
+            <a
+              href="https://github.com/LightOracle67/wedingo/blob/main/CHANGELOG.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--setup-accent)" }}
+            >
+              GitHub
+            </a>
+          </p>
         ) : null}
       </div>
     </Modal>

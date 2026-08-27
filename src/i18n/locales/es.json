@@ -1273,7 +1273,8 @@
   "changelog": {
     "title": "Changelog",
     "close": "Cerrar",
-    "showAll": "Ver historial completo"
+    "showAll": "Ver historial completo",
+    "seeMoreInGitHub": "El historial completo está disponible en"
   },
   "auth": {
     "sessionExists": "Ya hay una sesión activa para esta invitación. ¿Quieres iniciar sesión de todos modos? La sesión anterior se cerrará.",
