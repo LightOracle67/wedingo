@@ -43,6 +43,7 @@ const ConsentsBlock = memo(function ConsentsBlock({
           required
           disabled={frozen}
         />
+        <span className="rv2-switch" aria-hidden="true" />
         <span>
           {t("rsvp.privacyConsentBefore")}
           <span
@@ -79,6 +80,7 @@ const ConsentsBlock = memo(function ConsentsBlock({
             onChange={(e) => onField("healthConsent", e.target.checked)}
             disabled={frozen}
           />
+          <span className="rv2-switch" aria-hidden="true" />
           <span>{t("rsvp.healthConsent")}</span>
         </label>
       ) : null}
@@ -91,6 +93,7 @@ const ConsentsBlock = memo(function ConsentsBlock({
             onChange={(e) => onField("digitalSignature", e.target.checked)}
             disabled={disabled}
           />
+          <span className="rv2-switch" aria-hidden="true" />
           <span>{t("rsvp.digitalSignature")}</span>
         </label>
       ) : null}

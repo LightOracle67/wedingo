@@ -551,6 +551,7 @@ const RsvpSection = memo(function RsvpSection({
                     onChange={(e) => updateRsvpField("childrenCount", e.target.checked ? "1" : "0")}
                     disabled={frozen}
                   />
+                  <span className="rv2-switch" aria-hidden="true" />
                   <span>{t("rsvp.childrenQuestion")}</span>
                 </label>
                 {childrenCount > 0 ? (

@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.165.0 — 2026-08-28
+- Los consentimientos del RSVP se dibujan como interruptores (switches) en todos los navegadores: el dibujo ya no usa pseudo-elementos sobre el input, que solo renderizaban en Chrome y Edge y hacían que el interruptor se viera siempre apagado en Safari/Firefox.
+- Al recargar tras confirmar, el formulario restaura todo lo confirmado (incluidos los interruptores de consentimiento, los niños y el transporte), no solo el nombre y la asistencia: el marcador local guarda el formulario completo y lo aplica validando el tipo de cada campo.
+
 ## 2.164.0 — 2026-08-28
 - Los consentimientos del RSVP (privacidad, salud, firma digital y ¿viene con niños?) se muestran como interruptores (switch) en lugar de casillas cuadradas, igual que los toggles del administrador. El control nativo y su accesibilidad se conservan.
 

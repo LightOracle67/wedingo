@@ -366,28 +366,85 @@ export function useRsvp(
   // H3: si el invitado ya envió en este navegador (marcador local, sin leer
   // datos del servidor), restaura el resumen "ya confirmaste" al recargar.
   // Solo aplica al invitado público (canRead=false) y sin duplicar.
+  /** Aplica un marcador guardado (form completo) sobre el estado previo,
+   * validando el tipo de cada campo conocido. Devuelve el estado restaurado
+   * sin tocar campos ausentes ni valores corruptos. */
+  function applyRestoredForm(prev: RsvpFormData, parsed: Record<string, unknown>): RsvpFormData {
+    const next: RsvpFormData = { ...prev };
+    const str = (k: string): boolean => {
+      const v = parsed[k];
+      if (typeof v === "string") {
+        (next as unknown as Record<string, unknown>)[k] = v;
+        return true;
+      }
+      return false;
+    };
+    const strArr = (k: string): boolean => {
+      const v = parsed[k];
+      if (Array.isArray(v) && v.every((x) => typeof x === "string")) {
+        (next as unknown as Record<string, unknown>)[k] = v;
+        return true;
+      }
+      return false;
+    };
+    const strArr2 = (k: string): boolean => {
+      const v = parsed[k];
+      if (Array.isArray(v) && v.every((x) => Array.isArray(x) && x.every((y) => typeof y === "string"))) {
+        (next as unknown as Record<string, unknown>)[k] = v;
+        return true;
+      }
+      return false;
+    };
+    const bool = (k: string): boolean => {
+      const v = parsed[k];
+      if (typeof v === "boolean") {
+        (next as unknown as Record<string, unknown>)[k] = v;
+        return true;
+      }
+      return false;
+    };
+    const num = (k: string): boolean => {
+      const v = parsed[k];
+      if (typeof v === "number" && Number.isFinite(v)) {
+        (next as unknown as Record<string, unknown>)[k] = v;
+        return true;
+      }
+      return false;
+    };
+    const letters: Array<[string, "str" | "arr" | "arr2" | "bool" | "num"]> = [
+      ["guestName", "str"], ["attendance", "str"], ["childrenCount", "str"],
+      ["childrenAllergiesOther", "str"], ["menuSelection", "str"], ["allergiesOther", "str"],
+      ["transportChoice", "str"], ["transportMode", "str"], ["transportTime", "str"],
+      ["transportPlace", "str"], ["companionCount", "num"], ["companionNames", "arr"],
+      ["companionMenus", "arr"], ["companionAllergies", "arr2"], ["companionAllergiesOther", "arr"],
+      ["childrenAllergies", "arr"], ["allergies", "arr"],
+      ["companionTransportModes", "arr"], ["companionTransportChoices", "arr"],
+      ["privacyConsent", "bool"], ["healthConsent", "bool"], ["digitalSignature", "bool"],
+    ];
+    for (const [k, kind] of letters) {
+      if (kind === "str") str(k);
+      else if (kind === "arr") strArr(k);
+      else if (kind === "arr2") strArr2(k);
+      else if (kind === "bool") bool(k);
+      else num(k);
+    }
+    // La asistencia solo admite los tres valores del modelo.
+    if (next.attendance !== "alone" && next.attendance !== "with" && next.attendance !== "no") {
+      next.attendance = prev.attendance;
+    }
+    return next;
+  }
+
   useEffect(() => {
     if (canRead || !inviteToken || hasSubmitted) return;
     try {
       const raw = localStorage.getItem(STORAGE_KEYS.rsvpSubmitted(inviteToken));
       if (!raw) return;
-      const parsed = JSON.parse(raw) as {
-        guestName?: string;
-        attendance?: string;
-        menuSelection?: string;
-        companionCount?: number;
-      };
-      if (!parsed.guestName) return;
-      setRsvpForm((prev) => ({
-        ...prev,
-        guestName: typeof parsed.guestName === "string" ? parsed.guestName : prev.guestName,
-        attendance:
-          parsed.attendance === "alone" || parsed.attendance === "with" || parsed.attendance === "no"
-            ? parsed.attendance
-            : prev.attendance,
-        menuSelection: typeof parsed.menuSelection === "string" ? parsed.menuSelection : prev.menuSelection,
-        companionCount: typeof parsed.companionCount === "number" ? parsed.companionCount : prev.companionCount,
-      }));
+      const parsed = JSON.parse(raw) as Record<string, unknown>;
+      // Siéntese el marcador solo si trae un nombre válido (firma de que se
+      // escribió con este formulario y no con un formato antiguo corrompido).
+      if (typeof parsed.guestName !== "string" || !parsed.guestName.trim()) return;
+      setRsvpForm((prev) => applyRestoredForm(prev, parsed));
       setHasSubmitted(true);
     } catch {
       // Marcador ilegible: se ignora sin romper el flujo.
@@ -861,12 +918,7 @@ export function useRsvp(
       try {
         localStorage.setItem(
           STORAGE_KEYS.rsvpSubmitted(inviteToken),
-          JSON.stringify({
-            guestName: single,
-            attendance: form.attendance,
-            menuSelection: form.menuSelection || "",
-            companionCount: form.companionCount || 0,
-          }),
+          JSON.stringify(form),
         );
       } catch {}
     },

@@ -3437,13 +3437,23 @@ body::after {
    que los toggles del administrador: el input sigue siendo un checkbox nativo
    (semántica, teclado y aria intactos) pero se ve como track + thumb. */
 .rv2-check input {
-  appearance: none;
-  -webkit-appearance: none;
-  position: relative;
+  /* El input sigue siendo el checkbox semántico, pero se oculta del fujo:
+     el dibujo lo hace .rv2-switch (span real, visible también en Safari y
+     Firefox, donde los pseudo-elementos sobre <input> no se renderizan). */
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  pointer-events: none;
+}
+.rv2-check:has(input:focus-visible) .rv2-switch {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+.rv2-switch {
   flex-shrink: 0;
-  cursor: pointer;
-  /* 2.6rem × 1.5rem: tamaño estándar de switch; 24px de alto mantiene el
-     objetivo táctil mínimo (WCAG 2.5.8). */
+  position: relative;
   width: 2.6rem;
   height: 1.5rem;
   margin-top: 0.15rem;
@@ -3451,7 +3461,7 @@ body::after {
   background: color-mix(in srgb, var(--setup-title) 28%, transparent);
   transition: background-color 200ms ease;
 }
-.rv2-check input::before {
+.rv2-switch::before {
   content: "";
   position: absolute;
   top: 0.15rem;
@@ -3463,22 +3473,18 @@ body::after {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   transition: transform 200ms ease;
 }
-.rv2-check input:hover {
+.rv2-check input:hover + .rv2-switch {
   background: color-mix(in srgb, var(--setup-title) 40%, transparent);
 }
-.rv2-check input:checked {
-  background: var(--setup-accent);
+.rv2-check input:checked + .rv2-switch {
+  background: var(--setup-accent, #8c64b8);
 }
-.rv2-check input:checked::before {
+.rv2-check input:checked + .rv2-switch::before {
   transform: translateX(1.1rem);
 }
-.rv2-check input:focus-visible {
-  outline: 2px solid var(--setup-accent);
-  outline-offset: 2px;
-}
-.rv2-check input:disabled {
+.rv2-check input:disabled + .rv2-switch {
   opacity: 0.55;
-  cursor: default;
+  cursor: not-allowed;
 }
 .rv2-link {
   color: var(--setup-accent);

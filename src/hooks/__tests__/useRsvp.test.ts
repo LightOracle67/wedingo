@@ -1225,6 +1225,62 @@ describe("useRsvp", () => {
       localStorage.removeItem("wedin_rsvp_submitted_test-token");
     });
 
+    it("restaura el formulario completo del marcador, incluidos toggles de consentimiento (H3)", async () => {
+      // El marcador nuevo guarda el form completo: al recargar los interruptores
+      // de consentimiento deben reconstruirse con lo confirmado.
+      localStorage.setItem(
+        "wedin_rsvp_submitted_test-token",
+        JSON.stringify({
+          guestName: "Ana García López",
+          attendance: "with",
+          companionCount: 2,
+          companionNames: ["Carlos Ruiz", "Lucía Gómez"],
+          companionMenus: ["pescado", ""],
+          childrenCount: "2",
+          childrenAllergies: ["sin gluten"],
+          childrenAllergiesOther: "frutos secos",
+          privacyConsent: true,
+          healthConsent: true,
+          digitalSignature: true,
+          menuSelection: "carne",
+          allergies: ["sin lactosa"],
+          allergiesOther: "",
+          transportChoice: "0",
+          transportMode: "bus",
+          transportTime: "12:00",
+          transportPlace: "",
+          companionTransportChoices: ["", ""],
+          companionTransportModes: ["own", "own"],
+        }),
+      );
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, false));
+      await vi.waitFor(() => expect(result.current.hasSubmitted).toBe(true));
+      const form = result.current.rsvpForm;
+      expect(form.childrenCount).toBe("2");
+      expect(form.childrenAllergies).toEqual(["sin gluten"]);
+      expect(form.childrenAllergiesOther).toBe("frutos secos");
+      expect(form.privacyConsent).toBe(true);
+      expect(form.healthConsent).toBe(true);
+      expect(form.digitalSignature).toBe(true);
+      expect(form.companionNames).toEqual(["Carlos Ruiz", "Lucía Gómez"]);
+      expect(form.companionMenus).toEqual(["pescado", ""]);
+      expect(form.allergies).toEqual(["sin lactosa"]);
+      expect(form.transportMode).toBe("bus");
+      localStorage.removeItem("wedin_rsvp_submitted_test-token");
+    });
+
+    it("descarta valores corruptos del marcador sin romper la asistencia", async () => {
+      localStorage.setItem(
+        "wedin_rsvp_submitted_test-token",
+        JSON.stringify({ guestName: "Ana García López", attendance: "banana", privacyConsent: "si" }),
+      );
+      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, false));
+      await vi.waitFor(() => expect(result.current.hasSubmitted).toBe(true));
+      expect(result.current.rsvpForm.attendance).toBe("alone"); // default del formulario, no "banana"
+      expect(result.current.rsvpForm.privacyConsent).toBe(false); // string "si" → no se aplica
+      localStorage.removeItem("wedin_rsvp_submitted_test-token");
+    });
+
     it("no restaura nada sin marcador ni para el admin", async () => {
       const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, true));
       await act(async () => {
