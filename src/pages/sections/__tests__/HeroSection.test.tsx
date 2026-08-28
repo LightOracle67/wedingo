@@ -158,6 +158,23 @@ describe("HeroSection", () => {
     expect(screen.getByText(/countdown\.day/)).toBeDefined();
   });
 
+  it("no muestra el enlace de Instagram cuando la URL es inválida", () => {
+    // La URL debe pasar el saneamiento de redes sociales (solo instagram.com).
+    render(<HeroSection {...baseProps} instagramUrl="www.x.com" />);
+    expect(screen.queryByLabelText("hero.instagramLabel")).toBeNull();
+  });
+
+  it("muestra el enlace de Instagram validado con su divisor", () => {
+    render(<HeroSection {...baseProps} instagramUrl="https://instagram.com/couple" />);
+    expect(screen.getByLabelText("hero.instagramLabel")).toBeDefined();
+  });
+
+  it("no muestra el divisor de redes sociales sin Instagram", () => {
+    render(<HeroSection {...baseProps} instagramUrl="" />);
+    // El divisor solo acompaña al enlace: sin Instagram no hay separador.
+    expect(document.querySelectorAll(".story-divider").length).toBe(0);
+  });
+
   it("no muestra nunca la lista pública de confirmados (característica retirada)", () => {
     // La lista pública de confirmados se retiró en v2.159: el hero ya no se
     // suscribe a confirmedPeople ni pinta chips, haya opt-in o no.

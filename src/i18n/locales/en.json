@@ -77,7 +77,8 @@
     "liveConfirmed": "{{count}} guests have already confirmed",
     "thanksPost": "Thank you for sharing this day with us. Your messages and love are the best memory.",
     "todayAgenda": "Today's agenda",
-    "now": "Now"
+    "now": "Now",
+    "instagramLabel": "Couple Instagram"
   },
   "details": {
     "sectionLabel": "Date & venue",
@@ -90,7 +91,6 @@
     "locationLabel": "Location",
     "directions": "Directions",
     "addToIcs": "Add to Apple/Outlook",
-    "instagramLabel": "Couple Instagram",
     "facebookLabel": "Couple Facebook"
   },
   "info": {
@@ -1418,8 +1418,7 @@
   },
   "map": {
     "embedTitle": "Location map",
-    "openInMaps": "Open in Google Maps",
-    "loadButton": "Load Google Map"
+    "openInMaps": "Open in Google Maps"
   },
   "dataRequest": {
     "title": "My data & privacy",

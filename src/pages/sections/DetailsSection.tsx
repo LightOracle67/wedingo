@@ -6,7 +6,7 @@ import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 import { buildIcsFile } from "../../lib/calendar-utils";
 import { trackEvent } from "../../lib/analytics";
 import CornerDecorations from "../../components/CornerDecorations";
-import { safeHref, safeSocialUrl } from "../../lib/safe-href";
+import { safeHref } from "../../lib/safe-href";
 
 const DetailsSection = memo(function DetailsSection({
   style,
@@ -17,7 +17,6 @@ const DetailsSection = memo(function DetailsSection({
   locationDescription,
   calendarLink,
   weddingSiteURL,
-  instagramUrl,
   mapView,
   staticMap,
   detailsMapMode,
@@ -39,7 +38,6 @@ const DetailsSection = memo(function DetailsSection({
   locationDescription?: string;
   calendarLink?: string;
   weddingSiteURL?: string;
-  instagramUrl?: string;
   mapView?: string;
   staticMap?: boolean;
   detailsMapMode?: string;
@@ -59,7 +57,7 @@ const DetailsSection = memo(function DetailsSection({
   // Sanitización defensiva en el render (independiente de normalizeConfig):
   // estos valores pueden llegar via props/hash de URL, así que se descartan
   // los esquemas no-http(s) y los hosts no whitelist antes de usarlos en href.
-  const safeInstagram = safeSocialUrl(instagramUrl, "instagram.com");
+
   const safeWeddingSiteURL = safeHref(weddingSiteURL);
   // "Cómo llegar": abre Google Maps con navegación al lugar (o a la URL del mapa).
   const directionsUrl = weddingPlace
@@ -161,50 +159,19 @@ const DetailsSection = memo(function DetailsSection({
 
           <div className="story-divider" />
 
-          {/* Redes sociales de los novios (opcional). */}
-          {safeInstagram ? (
-            <div
-              className="story-social-actions"
-              style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}
-            >
-              {safeInstagram ? (
-                <a
-                  href={safeInstagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  referrerPolicy="no-referrer"
-                  aria-label={t("details.instagramLabel")}
-                  title={t("details.instagramLabel")}
-                  style={{
-                    color: "var(--invite-title-color)",
-                    fontSize: "1.3rem",
-                    textDecoration: "none",
-                    opacity: 0.9,
-                  }}
-                >
-                  <svg
-                    width="22"
-                    height="22"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    aria-hidden="true"
-                  >
-                    <rect x="3" y="3" width="18" height="18" rx="5" />
-                    <circle cx="12" cy="12" r="4" />
-                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                  </svg>
-                </a>
-              ) : null}
-            </div>
-          ) : null}
-
-          <div className="story-divider" />
-
           {mapMode !== "hidden" ? (
             <>
-              <p className="story-eyebrow" style={{ fontSize: "0.82rem" }}>
+              <p
+                className="story-eyebrow"
+                style={{
+                  // La etiqueta de ubicación es un título de bloque, no una
+                  // cabecera de sección script: tamaño legible y peso medio
+                  // como la cabecera del menú del RSVP (mismo defecto resuelto).
+                  fontSize: "1.05rem",
+                  fontWeight: 600,
+                  fontFamily: "inherit",
+                }}
+              >
                 {t("details.locationLabel")}
               </p>
               {hasLocationData ? (

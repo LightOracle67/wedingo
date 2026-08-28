@@ -447,6 +447,7 @@ export default function PublicInvitation() {
         godparent2: publicConfig.godparent2,
         cornerDecoration: publicConfig.cornerDecoration,
         verified: publicConfig.verified,
+        instagramUrl: publicConfig.instagramUrl,
       },
       details: {
         formattedDate,
@@ -463,7 +464,6 @@ export default function PublicInvitation() {
         coupleSecondName: publicConfig.secondName,
         calendarLink,
         weddingSiteURL: publicConfig.weddingSiteURL,
-        instagramUrl: publicConfig.instagramUrl,
         mapView: publicConfig.weddingMapView,
         staticMap: publicConfig.weddingMapStatic === "true",
         detailsMapMode: publicConfig.detailsMapMode,

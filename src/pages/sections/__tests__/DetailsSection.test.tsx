@@ -169,13 +169,4 @@ describe("DetailsSection", () => {
     vi.unstubAllGlobals();
   });
 
-  it("renders the Instagram link when provided", () => {
-    render(<DetailsSection {...baseProps} instagramUrl="https://www.instagram.com/ana" />);
-    expect(screen.getByLabelText("details.instagramLabel")).toBeDefined();
-  });
-
-  it("does not render social links when empty", () => {
-    render(<DetailsSection {...baseProps} />);
-    expect(screen.queryByLabelText("details.instagramLabel")).toBeNull();
-  });
 });

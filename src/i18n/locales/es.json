@@ -77,7 +77,8 @@
     "liveConfirmed": "{{count}} invitados ya han confirmado",
     "thanksPost": "Gracias por compartir este día con nosotros. Tu mensaje y vuestro cariño son el mejor recuerdo.",
     "todayAgenda": "Agenda de hoy",
-    "now": "Ahora"
+    "now": "Ahora",
+    "instagramLabel": "Instagram de los novios"
   },
   "details": {
     "sectionLabel": "Fecha y lugar",
@@ -90,7 +91,6 @@
     "locationLabel": "Ubicación",
     "directions": "Cómo llegar",
     "addToIcs": "Añadir a Apple/Outlook",
-    "instagramLabel": "Instagram de los novios",
     "facebookLabel": "Facebook de los novios"
   },
   "info": {
@@ -1418,8 +1418,7 @@
   },
   "map": {
     "embedTitle": "Mapa de la ubicación",
-    "openInMaps": "Abrir en Google Maps",
-    "loadButton": "Cargar mapa de Google"
+    "openInMaps": "Abrir en Google Maps"
   },
   "dataRequest": {
     "title": "Mis datos y privacidad",

@@ -2,6 +2,11 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.166.0 — 2026-08-28
+- El enlace de Instagram pasa a la portada (debajo de la cuenta atrás, con línea divisoria) y desaparece de la sección Fecha y lugar; si no hay Instagram configurado no se muestra nada de esto.
+- Los mapas de Google se cargan automáticamente al mostrarse la sección (antes pedían un clic de consentimiento previo al incrustar el iframe).
+- La etiqueta de ubicación de la sección Fecha y lugar se muestra con el tamaño correcto (mismo defecto visual que tenía el título del menú del RSVP).
+
 ## 2.165.0 — 2026-08-28
 - Los consentimientos del RSVP se dibujan como interruptores (switches) en todos los navegadores: el dibujo ya no usa pseudo-elementos sobre el input, que solo renderizaban en Chrome y Edge y hacían que el interruptor se viera siempre apagado en Safari/Firefox.
 - Al recargar tras confirmar, el formulario restaura todo lo confirmado (incluidos los interruptores de consentimiento, los niños y el transporte), no solo el nombre y la asistencia: el marcador local guarda el formulario completo y lo aplica validando el tipo de cada campo.

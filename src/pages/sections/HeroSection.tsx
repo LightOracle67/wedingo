@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import CornerDecorations from "../../components/CornerDecorations";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
+import { safeSocialUrl } from "../../lib/safe-href";
 
 /** Estado de la cuenta atrás (años/meses/días + horas/min/seg). */
 interface CountdownState {
@@ -59,6 +60,8 @@ interface HeroSectionProps {
    *  respeta por código el countdown, el anillo de la foto, el fundido de
    *  carga y el resplandor de los padrinos. */
   disabledAnimations?: ReadonlySet<string>;
+  /** Instagram de los novios: solo se pinta si pasó el saneamiento de URL. */
+  instagramUrl?: string;
 }
 
 const HeroSection = memo(function HeroSection({
@@ -75,9 +78,11 @@ const HeroSection = memo(function HeroSection({
   verified,
   schedule,
   disabledAnimations,
+  instagramUrl,
 }: HeroSectionProps) {
   const { t } = useTranslation();
   const [photoLoaded, setPhotoLoaded] = useState(false);
+  const safeInstagram = safeSocialUrl(instagramUrl, "instagram.com");
   const reducedMotion = useReducedMotion();
 
   // Animaciones del hero desactivadas (resueltas a booleans para lecturas
@@ -390,6 +395,47 @@ const HeroSection = memo(function HeroSection({
                   </p>
                 )}
               </div>
+            ) : null}
+
+            {/* Instagram de los novios al final del hero (solo si está
+                establecido y es un enlace válido; el divisor acompaña). */}
+            {safeInstagram ? (
+              <>
+                <div className="story-divider" />
+                <div
+                  className="story-social-actions"
+                  style={{ display: "flex", justifyContent: "center", gap: "0.75rem", marginTop: "0.5rem" }}
+                >
+                  <a
+                    href={safeInstagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    referrerPolicy="no-referrer"
+                    aria-label={t("hero.instagramLabel")}
+                    title={t("hero.instagramLabel")}
+                    style={{
+                      color: "var(--invite-title-color)",
+                      fontSize: "1.3rem",
+                      textDecoration: "none",
+                      opacity: 0.9,
+                    }}
+                  >
+                    <svg
+                      width="22"
+                      height="22"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      aria-hidden="true"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="5" />
+                      <circle cx="12" cy="12" r="4" />
+                      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                    </svg>
+                  </a>
+                </div>
+              </>
             ) : null}
           </div>
         </div>
