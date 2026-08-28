@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.164.0 — 2026-08-28
+- Los consentimientos del RSVP (privacidad, salud, firma digital y ¿viene con niños?) se muestran como interruptores (switch) en lugar de casillas cuadradas, igual que los toggles del administrador. El control nativo y su accesibilidad se conservan.
+
 ## 2.163.0 — 2026-08-28
 - El resumen del RSVP indica «Predefinido» cuando el menú de la celebración es fijo (sin opciones seleccionables), en lugar de mostrar la clave de un plato concreto.
 
