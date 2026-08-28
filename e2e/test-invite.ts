@@ -45,7 +45,7 @@ export interface SeededInvite {
 }
 
 /** Genera tokens con el mismo formato que la app. */
-export function generateSeededTokens(): { inviteToken: string; rawSetup: string; setupToken: string } {
+function generateSeededTokens(): { inviteToken: string; rawSetup: string; setupToken: string } {
   const inviteToken = randomString(INVITE_ALPHABET, 10);
   const rawSetup = randomString(SETUP_ALPHABET, 32);
   const setupToken = rawSetup.match(/.{1,4}/g)?.join("-") ?? rawSetup;

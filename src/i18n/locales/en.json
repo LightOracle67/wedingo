@@ -1649,22 +1649,10 @@
     "internalNote": "Internal note",
     "internalNotePlaceholder": "Notes only visible to you",
     "saveNote": "Save note",
-    "mailbox": "Private mailbox",
-    "mailboxHelp": "Messages guests send ONLY to you",
-    "noMail": "No messages.",
-    "mailDeleted": "Message deleted.",
-    "delete": "Delete",
-    "dayPhotos": "Day photos",
-    "downloadDayPhotos": "Download photos ({{count}})",
-    "noDayPhotos": "No photos yet.",
-    "dayPhotosDownloaded": "{{count}} photos downloaded.",
-    "exportMailbox": "Export mailbox",
     "exportOk": "Exported {{count}} row(s) to Excel.",
     "nameValue": "Name",
     "messageValue": "Message",
-    "dateValue": "Date",
-    "sheetMailbox": "Mailbox",
-    "mailDeleteConfirm": "Delete this mailbox message? This action cannot be undone."
+    "dateValue": "Date"
   },
   "voiceNotes": {
     "title": "Memory box",

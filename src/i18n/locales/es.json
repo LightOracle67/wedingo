@@ -1649,22 +1649,10 @@
     "internalNote": "Nota interna",
     "internalNotePlaceholder": "Apuntes solo visibles para ti",
     "saveNote": "Guardar nota",
-    "mailbox": "Buzón privado",
-    "mailboxHelp": "Mensajes que los invitados envían SOLO para vosotros",
-    "noMail": "No hay mensajes.",
-    "mailDeleted": "Mensaje eliminado.",
-    "delete": "Eliminar",
-    "dayPhotos": "Fotos del día",
-    "downloadDayPhotos": "Descargar fotos ({{count}})",
-    "noDayPhotos": "Aún no hay fotos.",
-    "dayPhotosDownloaded": "{{count}} fotos descargadas.",
-    "exportMailbox": "Exportar buzón",
     "exportOk": "Exportado {{count}} fila(s) a Excel.",
     "nameValue": "Nombre",
     "messageValue": "Mensaje",
-    "dateValue": "Fecha",
-    "sheetMailbox": "Buzón",
-    "mailDeleteConfirm": "¿Borrar este mensaje del buzón? Esta acción no se puede deshacer."
+    "dateValue": "Fecha"
   },
   "voiceNotes": {
     "title": "Caja de recuerdos",

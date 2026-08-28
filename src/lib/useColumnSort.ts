@@ -17,7 +17,7 @@
 import { useCallback, useMemo, useState } from "react";
 
 export type SortOrder = "asc" | "desc" | "default";
-export type ColumnType = "string" | "number" | "date" | "boolean";
+type ColumnType = "string" | "number" | "date" | "boolean";
 
 export interface SortableColumn<T> {
   /** Clave única de la columna (la usa el encabezado para ordenar). */

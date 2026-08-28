@@ -10,7 +10,7 @@
 import { ALLOWED_UPLOAD_TYPES, MAX_UPLOAD_SIZE_BYTES } from "./constants";
 
 /** Resultado de la validación: ok, o clave i18n del error a mostrar. */
-export type FileValidationResult = { ok: true } | { ok: false; errorKey: string };
+type FileValidationResult = { ok: true } | { ok: false; errorKey: string };
 
 interface ValidateFileOptions {
   /** Tipos MIME permitidos (por defecto los de imágenes de configuración). */

@@ -1,6 +1,6 @@
 import { MENU_DISH_ORDERS, MAX_MENU_DISHES, MAX_MENU_DISH_TEXT } from "./constants";
 
-export interface MenuDish {
+interface MenuDish {
   order: string;
   text: string;
 }

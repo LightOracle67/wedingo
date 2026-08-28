@@ -18,7 +18,7 @@
 export const MAX_AUTO_RELOAD_ATTEMPTS = 2;
 
 /** Clave usada para contar los intentos de recuperación en sessionStorage. */
-export const RELOAD_ATTEMPT_KEY = "wedin_stale_reload_attempts";
+const RELOAD_ATTEMPT_KEY = "wedin_stale_reload_attempts";
 
 /** Mensajes de error que indican un chunk obsoleto tras el despliegue. */
 const STALE_CHUNK_MESSAGES = [
@@ -50,7 +50,7 @@ export function isStaleChunkError(error: unknown): boolean {
  *
  * @returns true si todavía se puede intentar una recarga automática.
  */
-export function canAttemptRecovery(): boolean {
+function canAttemptRecovery(): boolean {
   try {
     const raw = globalThis.sessionStorage?.getItem(RELOAD_ATTEMPT_KEY);
     const attempts = raw ? Number.parseInt(raw, 10) || 0 : 0;
@@ -67,7 +67,7 @@ export function canAttemptRecovery(): boolean {
  *
  * @returns true si se puede continuar con la recarga.
  */
-export function markRecoveryAttempt(): boolean {
+function markRecoveryAttempt(): boolean {
   try {
     const raw = globalThis.sessionStorage?.getItem(RELOAD_ATTEMPT_KEY);
     const attempts = raw ? Number.parseInt(raw, 10) || 0 : 0;
@@ -84,7 +84,7 @@ export function markRecoveryAttempt(): boolean {
  * cachés de la aplicación y recarga la página. Todo en try/catch para no
  * bloquear la recarga si algún paso falla.
  */
-export function performStaleChunkReload(): void {
+function performStaleChunkReload(): void {
   try {
     void (async () => {
       if (globalThis.navigator?.serviceWorker?.getRegistrations) {

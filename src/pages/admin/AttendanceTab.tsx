@@ -46,7 +46,7 @@ interface RsvpEntry {
   childrenAllergiesOther?: string;
 }
 
-export interface AttendanceTabProps {
+interface AttendanceTabProps {
   searchQuery: string;
   setSearchQuery: (value: string) => void;
   attendanceFilter: string;

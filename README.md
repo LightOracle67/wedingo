@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.167.0](https://github.com/LightOracle67/wedingo/releases)  
+**Versión actual:** [v2.168.0](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.168.0 | 2026-08-28 | Debloat: eliminado el código de buzón muerto y 20 exports sin uso, el changelog embebido pasa a un marcador vacío (fuente real: GitHub con caché local) |
 | v2.167.0 | 2026-08-28 | Debloat: eliminados 16 ficheros sin uso (scripts de migración ya ejecutados, storage.rules sin Firebase Storage, índices vacíos, informe de poda obsoleto) y actualizados ARCHITECTURE.md y AUDITORIA.md a la realidad |
 | v2.166.0 | 2026-08-28 | El enlace de Instagram pasa a la portada bajo la cuenta atrás con divisor (desaparece de Fecha y lugar); los mapas de Google se cargan automáticamente sin clic previo; etiqueta de ubicación con el tamaño correcto |
 | v2.165.0 | 2026-08-28 | Los consentimientos del RSVP se dibujan como interruptores en todos los navegadores (el dibujo anterior solo se veía en Chrome/Edge y parecía siempre apagado); al recargar tras confirmar se restaura el formulario completo con lo confirmado |

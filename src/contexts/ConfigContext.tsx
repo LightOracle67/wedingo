@@ -49,7 +49,7 @@ const MAX_ALLOWED_YEAR = new Date().getFullYear() + MAX_YEARS_AHEAD;
 export const ConfigActionsContext = createContext<ConfigActionsValue | null>(null);
 
 /** Valor expuesto por ConfigActionsContext (estable entre teclas). */
-export interface ConfigActionsValue {
+interface ConfigActionsValue {
   updateFormField: (field: string, value: string) => void;
   handleDayChange: (value: string) => void;
   handleTimeChange: (value: string) => void;

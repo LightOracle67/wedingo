@@ -14,7 +14,6 @@ import { buildWorkbook, writeWorkbookBuffer } from "../excel-utils";
 import {
   buildRSVPSheet,
   buildMenuSheet,
-  buildMailboxSheet,
   buildTablesSheet,
   buildMetricsSheet,
   buildGlobalGuestsSheet,
@@ -49,7 +48,6 @@ const t = ((key: string, options?: Record<string, unknown>): string => {
     "rsvp.menuPescado": "Pescado",
     "rsvp.menuVegano": "Vegano",
     "tools.sheetGuests": "Invitados",
-    "tools.sheetMailbox": "Buzón",
     "tools.nameValue": "Nombre",
     "tools.statusValue": "Estado",
     "tools.messageValue": "Mensaje",
@@ -202,26 +200,6 @@ describe("Export Excel: Asistencia + Menús (AttendanceTab)", () => {
       ["Ana", "Carne"],
       ["Luis", "Pescado"],
       ["Solo", "Vegano"],
-    ]);
-  });
-});
-
-describe("Export Excel: buzón (ToolsTab)", () => {
-  const sheet = readBack([
-    buildMailboxSheet(
-      [
-        { guestName: "Ana", message: "Felicidades, Ana, Luis", ts: "01/08/2026 09:30" },
-        { guestName: "Anónimo", message: "Mensaje con, comas", ts: "" },
-      ],
-      t,
-    ),
-  ])[0]!;
-
-  it("preserva el mensaje literal (comas incluidas) y la fecha", () => {
-    expect(sheet.data).toEqual([
-      ["Nombre", "Mensaje", "Fecha"],
-      ["Ana", "Felicidades, Ana, Luis", "01/08/2026 09:30"],
-      ["Anónimo", "Mensaje con, comas", ""],
     ]);
   });
 });

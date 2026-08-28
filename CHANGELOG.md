@@ -2,6 +2,12 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.168.0 — 2026-08-28
+- Eliminado el código muerto de la antigua función de buzón: buildMailboxSheet/MailboxRowLike (solo quedaban en el export de Excel) y las 12 claves de textos de la herramienta de buzón.
+- Des-exportados 20 símbolos que solo se usaban en su propio módulo (tipos de contextos, definiciones de animaciones, utilidades del recargador de módulos obsoletos, tipos de props, etc.).
+- El changelog embebido en el bundle (55 KB comprimido, congelado en la versión 2.123.6) se sustituye por un marcador vacío: la fuente real es el CHANGELOG.md de GitHub con caché local, y el marcador solo evita que el modal falle sin conexión.
+- generateSeededTokens pasa a ser interno del fichero de prueba E2E.
+
 ## 2.167.0 — 2026-08-28
 - Debloat: eliminados 16 ficheros sin uso — 13 scripts de migración/verificación de una sola vez ya ejecutados (incluido el helper firebase-adc), storage.rules (Firebase Storage no está activado en el proyecto), firestore.indexes.json (sin índices compuestos) y el informe de candidatos de la poda anterior (LIMPIEZA-CANDIDATOS.md); firebase.json queda con hosting y firestore.rules únicamente.
 - Documentos actualizados a la realidad: ARCHITECTURE.md (comandos de verificación actuales) y AUDITORIA.md (v2.166.0, 2411 tests, menciona el modelo de contador en vez del flag isChild retirado).

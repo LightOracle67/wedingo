@@ -1,5 +1,5 @@
 /** Salida de transporte (bus/taxi) configurada por el admin. */
-export interface TransportDeparture {
+interface TransportDeparture {
   type?: "bus" | "taxi";
   time: string;
   url: string;

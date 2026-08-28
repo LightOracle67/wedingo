@@ -38,12 +38,7 @@ interface RsvpRowLike {
   healthConsent?: boolean;
 }
 
-/** Mensaje del buzón privado (ya formateado por el componente). */
-interface MailboxRowLike {
-  guestName: string;
-  message: string;
-  ts: string;
-}
+
 
 /** Mesa de una sección (solo los campos que se exportan). */
 interface TableLike {
@@ -197,17 +192,6 @@ export function buildMenuSheet(entries: RsvpRowLike[], t: Translate): ExcelSheet
 }
 
 // ── Admin: buzón privado ──
-
-/** Hoja "Buzón": todos los mensajes privados de los invitados. */
-export function buildMailboxSheet(mailbox: MailboxRowLike[], t: Translate): ExcelSheet {
-  const rows: Array<Array<string>> = (mailbox || []).map((m) => [m.guestName, m.message, m.ts]);
-  return {
-    name: t("tools.sheetMailbox"),
-    headers: [t("tools.nameValue"), t("tools.messageValue"), t("tools.dateValue")],
-    rows,
-    colWidths: [26, 60, 20],
-  };
-}
 
 // ── Admin: mesas por sección ──
 

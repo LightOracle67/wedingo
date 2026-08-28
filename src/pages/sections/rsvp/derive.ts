@@ -35,7 +35,7 @@ export interface Departure {
 }
 
 /** Estados de bloqueo y derivados que gobiernan la UI del formulario. */
-export interface DerivedState {
+interface DerivedState {
   deadlinePassed: boolean;
   isAlreadySubmitted: boolean;
   isBlocked: boolean;

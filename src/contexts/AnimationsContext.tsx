@@ -32,7 +32,7 @@ interface StoredGuestPrefs {
 }
 
 /** Estado y mutadores de las preferencias del invitado. */
-export interface AnimationsContextValue {
+interface AnimationsContextValue {
   /** Ids de animaciones desactivadas por este invitado en este dispositivo. */
   guestDisabled: ReadonlySet<string>;
   /** Activa/desactiva una animación concreta en este dispositivo. */

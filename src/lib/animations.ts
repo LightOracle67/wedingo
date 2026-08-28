@@ -18,12 +18,12 @@
  * desactivaron (la config del admin es la base).
  */
 
-export interface AnimationGroupDef {
+interface AnimationGroupDef {
   /** Identificador único del grupo (kebab-case). */
   id: string;
 }
 
-export interface AnimationDef {
+interface AnimationDef {
   /** Identificador único de la animación (kebab-case). */
   id: string;
   /** Grupo al que pertenece (ver ANIMATION_GROUPS). */

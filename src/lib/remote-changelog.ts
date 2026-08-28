@@ -6,7 +6,7 @@
  * mostrarlo sin conexión (y para no descargarlo en cada apertura).
  */
 import type { ChangelogEntry } from "./changelog-types";
-export const CHANGELOG_RAW_URL =
+const CHANGELOG_RAW_URL =
   "https://raw.githubusercontent.com/LightOracle67/wedingo/main/CHANGELOG.md";
 
 /** Clave de localStorage donde se guarda el changelog descargado + timestamp. */

@@ -34,7 +34,7 @@ export function parseDietaryInfo(dietaryInfo: string | null | undefined, menuEna
 }
 
 /** Datos mínimos que exige la validación de consentimiento de salud. */
-export interface HealthConsentsInput {
+interface HealthConsentsInput {
   attendance: string;
   allergies?: string[];
   allergiesOther?: string;

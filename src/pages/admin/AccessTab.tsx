@@ -2,7 +2,7 @@ import { memo } from "react";
 import { useConfirm } from "../../contexts/ConfirmContext";
 import { useTranslation } from "react-i18next";
 
-export interface AccessTabProps {
+interface AccessTabProps {
   setupToken?: string;
   handleResetTokenFromAdmin: () => void;
   handleAdminLogout: () => void;

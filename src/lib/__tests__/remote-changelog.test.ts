@@ -126,6 +126,8 @@ describe("loadChangelog", () => {
   it("falls back to the bundled changelog when fetch fails and there is no cache", async () => {
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("offline")));
     const entries = await loadChangelog();
-    expect(entries.length).toBeGreaterThan(0);
+    // El stub offline quedó vacío en v2.168 (debloat: la fuente real es GitHub):
+    // sin red ni caché el historial desaparece, pero el modal no falla.
+    expect(entries.length).toBe(0);
   });
 });

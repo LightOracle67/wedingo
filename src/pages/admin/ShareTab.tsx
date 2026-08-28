@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 import { randomMessage } from "../../lib/invite-messages";
 
-export interface ShareTabProps {
+interface ShareTabProps {
   inviteToken: string;
   addToast?: (type: string, message: string, duration?: number) => number;
 }
