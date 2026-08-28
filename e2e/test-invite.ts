@@ -4,9 +4,8 @@
  * Helper para sembrar y limpiar una invitación de pruebas en el
  * backend real (producción) durante los E2E del flujo de setup y RSVP.
  *
- * Usa el mismo enfoque que scripts/create-test-invite.mjs: crea primero
- * el registro setupTokens (antes de que exista la invitación, permitido por
- * reglas), después la invitación y el contador de RSVP.
+ * Crea primero el registro setupTokens (antes de que exista la invitación,
+ * permitido por reglas), después la invitación y el contador de RSVP.
  *
  * IMPORTANTE: estos tests se ejecutan solo si WEDINGO_E2E_LIVE=1 (guard
  * en las specs) para no escribir datos de prueba en cada ejecución de CI.

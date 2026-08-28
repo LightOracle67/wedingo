@@ -45,8 +45,9 @@ src/
 ## Comandos
 
 ```bash
-npx vitest run          # suite completa (2251 tests)
-npm run lint:ci         # oxlint --deny-warnings
+npx vitest run --coverage   # gate de calidad (umbrales 89.5/80/86.5/91.8)
+npm run lint:ci             # oxlint --deny-warnings
 npm run typecheck && npm run build
 npx firebase-tools deploy --only hosting[,firestore:rules]
+git push origin main        # sin CI: el deploy es local
 ```

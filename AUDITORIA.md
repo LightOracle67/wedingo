@@ -1,6 +1,6 @@
 # AUDITORÍA — Wedingo
 
-**Fecha:** 24/08/2026 · **Versión:** v2.123.8 · **Suite:** 2255 tests ✓ · Lint ✓ · tsc ✓
+**Fecha:** 28/08/2026 · **Versión:** v2.166.0 · **Suite:** 2411 tests ✓ · Lint ✓ · tsc ✓
 
 ## Ronda 0→100% (24/08/2026) — multi-dimensional
 
@@ -9,7 +9,7 @@
 | Secretos (repo+historial) | ✅ Limpio | Solo `apiKey` web pública en scripts/e2e (diseño Firebase); sin tokens OAuth/PAT en historial |
 | Dependencias (`npm audit --omit=dev`) | ✅ 0 CVEs | 131 deps prod, 0 vulnerabilidades |
 | Cabeceras HTTP (`firebase.json`) | ✅ Completas | CSP, HSTS, XFO, X-Content-Type-Options, COOP/CORP, Referrer/Permissions-Policy |
-| Firestore rules (ronda 4) | ✅ Endurecidas | setupTokens no falsificable (alta solo si invitación inexistente/sesión activa); sesión acotada 30min–48h; RSVP whitelist con `isChild`; contador cap 500; `_visits` con incremento máx +10 |
+| Firestore rules (ronda 4) | ✅ Endurecidas | setupTokens no falsificable (alta solo si invitación inexistente/sesión activa); sesión acotada 30min–48h; RSVP whitelist (contador cap 500 y contador de asistentes en `count`/`attendingCount`); `_visits` con incremento máx +10 |
 | XSS (sinks) | ✅ Limpio | Único `document.write` (DistribucionTab) con todo interpolado vía `esc()`; sin `dangerouslySetInnerHTML` |
 | Usabilidad E2E prod (invitado) | ✅ | Token inválido → mensaje elegante; landing/RSVP completos; 0 errores JS; sin overflow horizontal |
 | Usabilidad E2E prod (superadmin) | ⚠️→✅ | Login OK, métricas OK. **BUG corregido:** pestañas Métricas/Soporte mostraban `key 'superadmin.tabs.metrics' returned an object…` (dicts usados como labels) → nuevas claves string `metricsTab`/`supportTab` + fix `TAB_KEY_MAP` |

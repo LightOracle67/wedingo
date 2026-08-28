@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.167.0 — 2026-08-28
+- Debloat: eliminados 16 ficheros sin uso — 13 scripts de migración/verificación de una sola vez ya ejecutados (incluido el helper firebase-adc), storage.rules (Firebase Storage no está activado en el proyecto), firestore.indexes.json (sin índices compuestos) y el informe de candidatos de la poda anterior (LIMPIEZA-CANDIDATOS.md); firebase.json queda con hosting y firestore.rules únicamente.
+- Documentos actualizados a la realidad: ARCHITECTURE.md (comandos de verificación actuales) y AUDITORIA.md (v2.166.0, 2411 tests, menciona el modelo de contador en vez del flag isChild retirado).
+
 ## 2.166.0 — 2026-08-28
 - El enlace de Instagram pasa a la portada (debajo de la cuenta atrás, con línea divisoria) y desaparece de la sección Fecha y lugar; si no hay Instagram configurado no se muestra nada de esto.
 - Los mapas de Google se cargan automáticamente al mostrarse la sección (antes pedían un clic de consentimiento previo al incrustar el iframe).
