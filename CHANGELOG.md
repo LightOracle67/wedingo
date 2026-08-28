@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.163.0 — 2026-08-28
+- El resumen del RSVP indica «Predefinido» cuando el menú de la celebración es fijo (sin opciones seleccionables), en lugar de mostrar la clave de un plato concreto.
+
 ## 2.162.0 — 2026-08-27
 - El aforo del RSVP es informativo solo para el administrador: la invitación pública ya no muestra «Quedan X plazas» ni bloquea el envío al alcanzar el límite (el panel de asistencias indica las plazas usadas de la capacidad configurada).
 - Eliminado el código de la cadena de aforo público (estado del contador y prop de confirmaciones) que quedaba sin uso.

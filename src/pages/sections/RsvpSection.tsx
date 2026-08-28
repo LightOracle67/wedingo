@@ -666,11 +666,15 @@ const RsvpSection = memo(function RsvpSection({
                           : t("rsvp.attendingAlone"),
                   })}
                 </p>
-                {rsvpForm.menuSelection ? (
+                {selectableOptions.length > 0 && rsvpForm.menuSelection ? (
                   <p style={{ margin: 0 }}>
                     {t("rsvp.summaryMenu", {
                       m: menuOptions.find((o) => o.key === rsvpForm.menuSelection)?.label || rsvpForm.menuSelection,
                     })}
+                  </p>
+                ) : textMenuDesc ? (
+                  <p style={{ margin: 0 }}>
+                    {t("rsvp.summaryMenu", { m: t("rsvp.menuPredefined") })}
                   </p>
                 ) : null}
                 {rsvpForm.companionCount > 0 ? (

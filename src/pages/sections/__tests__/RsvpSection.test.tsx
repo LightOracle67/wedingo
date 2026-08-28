@@ -1038,6 +1038,23 @@ describe("RsvpSection", () => {
       expect(text).toContain("rsvp.summaryMenu|rsvp.menuCarne");
     });
 
+    it("el resumen anuncia Predefinido cuando el menú es fijo", () => {
+      tRsvp.mockImplementation((key: string, opts?: Record<string, unknown>) => {
+        if (key === "rsvp.summaryMenu" && opts && "m" in opts) return `${key}|${String(opts.m)}`;
+        return key;
+      });
+      const { container } = render(
+        <WrappedRsvp
+          {...baseProps}
+          hasSubmitted={true}
+          menuEnabled={false}
+          menuTextoDishes={JSON.stringify([{ order: "primero", text: "Lubina" }])}
+          rsvpForm={{ ...baseForm, attendance: "alone" }}
+        />,
+      );
+      expect(container.textContent).toContain("rsvp.summaryMenu|rsvp.menuPredefined");
+    });
+
     it("mueve el foco al feedback cuando aparece un error de validación", async () => {
       render(<WrappedRsvp {...baseProps} rsvpMessage="rsvp.validation.privacyRequired" />);
       await waitFor(() => expect((document.activeElement as HTMLElement | null)?.id).toBe("rsvpFeedback"));
