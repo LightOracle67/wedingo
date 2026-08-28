@@ -66,6 +66,8 @@ export interface AttendanceTabProps {
   /** Si la invitación tiene menú (menuEnabled === true) el modal de edición
    *  ofrece la selección de plato (carne/pescado/vegano). */
   menuEnabled?: boolean;
+  /** Límite de plazas configurado (informativo: el canal ya no bloquea el RSVP). */
+  rsvpCapacity?: string;
 }
 
 const PAGE_SIZES = [10, 25, 50, 100];
@@ -134,6 +136,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     inviteToken,
     onDataChanged,
     menuEnabled,
+    rsvpCapacity,
   } = props;
   const { t } = useTranslation();
   const { addToast } = useToast();
@@ -621,6 +624,11 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
             diet: stats.withDietary,
           })}
         </span>
+        {Number(rsvpCapacity) > 0 ? (
+          <span className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
+            {t("attendance.capacityInfo", { used: stats.yes, capacity: Number(rsvpCapacity) })}
+          </span>
+        ) : null}
         {/* Estadística de niños confirmados (contador declarado en el RSVP). */}
         <span className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
           {t("attendance.childrenConfirmed", { count: stats.children })}

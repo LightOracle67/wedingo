@@ -1193,7 +1193,7 @@ describe("useRsvp", () => {
     expect(mockWriteBatch().commit).toHaveBeenCalled();
   });
 
-  describe("Estado previo y aforo del invitado", () => {
+  describe("Estado previo del invitado", () => {
     // jsdom no expone localStorage por defecto: se respalda con un Map para
     // poder emular el marcador local del invitado (H3) de forma determinista.
     const storageMap = new Map<string, string>();
@@ -1231,13 +1231,6 @@ describe("useRsvp", () => {
         await Promise.resolve();
       });
       expect(result.current.hasSubmitted).toBe(false);
-    });
-
-    it("expone aforo real (attendingCount) para el invitado (H2)", async () => {
-      // El contador público devuelve 3 asistentes (sin filas de respuesta).
-      mockGetDoc.mockResolvedValueOnce({ exists: () => true, data: () => ({ count: 5, attendingCount: 3 }) });
-      const { result } = renderHook(() => useRsvp("test-token", setAdminMessage, setAdminMessageType, false, false));
-      await vi.waitFor(() => expect(result.current.liveAttendingCount).toBe(3));
     });
 
     it("restaura la respuesta del servidor al escribir el nombre (H3-read)", async () => {

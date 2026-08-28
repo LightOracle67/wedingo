@@ -218,10 +218,8 @@
     "deadlinePassed": "The RSVP deadline has passed. Thanks for your interest.",
     "digitalSignature": "I confirm and electronically sign this response.",
     "blockedNotice": "RSVP confirmation is temporarily disabled.",
-    "capacityReached": "Maximum capacity reached. No places available.",
     "weddingPassedNotice": "The event has passed: no more confirmations are accepted.",
     "policyVersion": "Privacy policy version {{version}}",
-    "capacityLeft": "{{count}} places left",
     "daysLeft": "{{days}} days to confirm",
     "summaryTitle": "Your response",
     "summaryAttendance": "Attendance: {{v}}",
@@ -686,7 +684,8 @@
     "manualCompanionsLabel": "Companions",
     "manualAddCompanion": "Add companion",
     "manualRemoveCompanion": "Remove companion",
-    "deleteEntry": "Delete entry"
+    "deleteEntry": "Delete entry",
+    "capacityInfo": "{{used}} of {{capacity}} seats used"
   },
   "share": {
     "publishedAt": "Your invitation is published at:",

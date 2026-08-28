@@ -21,7 +21,6 @@ export type RsvpValue = Pick<
   | "handleDeleteRsvp"
   | "handleDeleteRsvpEntries"
   | "handleClearRsvpEntries"
-  | "liveAttendingCount"
 >;
 
 export const RsvpContext = createContext<RsvpValue | null>(null);

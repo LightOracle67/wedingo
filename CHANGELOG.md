@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.162.0 — 2026-08-27
+- El aforo del RSVP es informativo solo para el administrador: la invitación pública ya no muestra «Quedan X plazas» ni bloquea el envío al alcanzar el límite (el panel de asistencias indica las plazas usadas de la capacidad configurada).
+- Eliminado el código de la cadena de aforo público (estado del contador y prop de confirmaciones) que quedaba sin uso.
+
 ## 2.161.0 — 2026-08-27
 - El menú del RSVP se muestra en un modal: los botones de carne, pescado y vegano abren la descripción de platos y quedan marcados al elegir (un solo gesto para elegir y cerrar, con el distintivo Elegido cuando ya estaba seleccionado). Solo aparecen los menús con platos definidos.
 - Si el menú es fijo (sin opciones), un botón con una lupa abre el modal informativo con los platos.

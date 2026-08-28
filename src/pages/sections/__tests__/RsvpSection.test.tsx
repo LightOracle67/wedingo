@@ -755,19 +755,6 @@ describe("RsvpSection", () => {
     expect(screen.queryByLabelText("rsvp.childrenQuestion")).toBeDefined();
   });
 
-  it("las plazas restantes restan los niños declarados", async () => {
-    Object.assign(mockConfig, { rsvpCapacity: "5" });
-    render(
-      <WrappedRsvp
-        {...baseProps}
-        rsvpForm={{ ...baseForm, attendance: "alone", childrenCount: "2" }}
-        rsvpConfirmedCount={2}
-      />,
-    );
-    // 5 - 2 confirmados - 2 niños = 1 plaza restante.
-    expect(screen.getByText(/rsvp.capacityLeft/)).toBeInTheDocument();
-  });
-
   it("renders no menu options when no dishes are configured", () => {
     render(<WrappedRsvp {...baseProps} menuEnabled rsvpForm={{ ...baseForm, attendance: "alone" }} />);
     expect(screen.queryByText("rsvp.menuCarne")).toBeNull();
@@ -926,10 +913,9 @@ describe("RsvpSection", () => {
     expect(screen.queryByLabelText("rsvp.phonePlaceholder")).toBeNull();
   });
 
-  it("shows remaining capacity and days-to-confirm when configured", async () => {
-    Object.assign(mockConfig, { rsvpCapacity: "5", rsvpDeadlineEnabled: "true", rsvpDeadline: "2099-01-01" });
-    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} rsvpConfirmedCount={2} />);
-    expect(screen.getByText(/rsvp.capacityLeft/)).toBeInTheDocument();
+  it("shows the days-to-confirm when configured", () => {
+    Object.assign(mockConfig, { rsvpDeadlineEnabled: "true", rsvpDeadline: "2099-01-01" });
+    render(<WrappedRsvp {...baseProps} rsvpForm={{ ...baseForm, attendance: "alone" }} />);
     expect(screen.getByText(/rsvp.daysLeft/)).toBeInTheDocument();
   });
 

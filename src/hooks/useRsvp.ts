@@ -161,7 +161,6 @@ export function useRsvp(
   /** Aforo real (confirmaciones que asisten) leído del contador público. El
    *  invitado no puede leer respuestas individuales (reglas), así que el aforo
    *  que ve se calcula con attendingCount, no con las filas. */
-  const [liveAttendingCount, setLiveAttendingCount] = useState<number | null>(null);
   const prefillRef = useRef<string | null>(null);
 
   /** Vuelve a cargar las respuestas RSVP tras un fallo de red. */
@@ -515,33 +514,6 @@ export function useRsvp(
     }, 500);
     return () => window.clearTimeout(timer);
   }, [canRead, inviteToken, hasSubmitted, rsvpForm.guestName, applyMainPrefill]);
-
-  // Aforo real para el invitado (H2): lee attendingCount del contador público
-  // (reglas permiten leer el doc agrupador); se refresca al cambiar el token o
-  // cuando cambia el número de respuestas (p. ej. tras un envío).
-  useEffect(() => {
-    if (!inviteToken) {
-      setLiveAttendingCount(null);
-      return;
-    }
-    let cancelled = false;
-    void (async () => {
-      try {
-        const snap = await getDoc(doc(db, "rsvpResponses", inviteToken));
-        const d = snap.data() as Record<string, unknown> | undefined;
-        // Si el doc legacy aún no tiene attendingCount, se cae al total (count)
-        // para no mostrar un aforo vacío; a partir de la primera escritura
-        // nueva el campo ya se mantiene en valor exacto.
-        const raw = Number(d?.attendingCount ?? d?.count ?? 0);
-        if (!cancelled) setLiveAttendingCount(Number.isFinite(raw) ? raw : 0);
-      } catch {
-        if (!cancelled) setLiveAttendingCount(0);
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
-  }, [inviteToken, rsvpEntries.length]);
 
 
   // Índice por nombre normalizado (evita recorrer todas las entradas en cada
@@ -1068,7 +1040,6 @@ export function useRsvp(
       handleClearRsvpEntries,
       handleDeleteRsvp,
       DIETARY_OPTIONS,
-      liveAttendingCount,
       setRsvpMessage,
       setRsvpForm,
     }),
@@ -1086,7 +1057,6 @@ export function useRsvp(
       handleDeleteRsvpEntries,
       handleClearRsvpEntries,
       handleDeleteRsvp,
-      liveAttendingCount,
       setRsvpMessage,
       setRsvpForm,
     ],

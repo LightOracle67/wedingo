@@ -17,7 +17,6 @@ export interface RsvpConfigLike {
   weddingYear?: string;
   weddingMonth?: string;
   weddingDay?: string;
-  rsvpCapacity?: string;
   menuCarneDishes?: string;
   menuPescadoDishes?: string;
   menuVeganoDishes?: string;
@@ -41,8 +40,6 @@ export interface DerivedState {
   isAlreadySubmitted: boolean;
   isBlocked: boolean;
   weddingPassed: boolean;
-  capacity: number;
-  capacityReached: boolean;
   /** El formulario completo queda inerte (enviando, ya enviado, bloqueado…). */
   isDisabled: boolean;
   /** Campos editables concretos congelados aunque el envío pudiera proceder. */
@@ -109,9 +106,9 @@ export function deriveRsvpState(params: {
   alreadySubmittedEntry?: unknown;
   isRsvpSubmitting?: boolean | undefined;
   hasSubmitted?: boolean | undefined;
-  rsvpConfirmedCount?: number | undefined;
+
 }): DerivedState {
-  const { config, alreadySubmittedEntry, isRsvpSubmitting, hasSubmitted, rsvpConfirmedCount } = params;
+  const { config, alreadySubmittedEntry, isRsvpSubmitting, hasSubmitted } = params;
 
   // Fecha límite pasada (o simulación ?sim=expired del superadmin).
   const deadlinePassed =
@@ -135,27 +132,21 @@ export function deriveRsvpState(params: {
     return d.getTime() > 0 && d.getTime() < Date.now();
   })();
 
-  const capacity = Number(config?.rsvpCapacity) || 0;
-  const capacityReached = capacity > 0 && (rsvpConfirmedCount ?? 0) >= capacity;
-
   const isDisabled =
     Boolean(isRsvpSubmitting) ||
     Boolean(hasSubmitted) ||
     isAlreadySubmitted ||
     deadlinePassed ||
     isBlocked ||
-    weddingPassed ||
-    capacityReached;
+    weddingPassed;
 
   return {
     deadlinePassed,
     isAlreadySubmitted,
     isBlocked,
     weddingPassed,
-    capacity,
-    capacityReached,
     isDisabled,
-    fieldsFrozen: isAlreadySubmitted || deadlinePassed || isBlocked || weddingPassed || capacityReached,
+    fieldsFrozen: isAlreadySubmitted || deadlinePassed || isBlocked || weddingPassed,
     hasStructuredMenu: Boolean(config?.menuCarneDishes || config?.menuPescadoDishes || config?.menuVeganoDishes),
   };
 }

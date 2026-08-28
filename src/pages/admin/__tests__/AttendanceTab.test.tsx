@@ -55,12 +55,27 @@ const baseConfig = {
   handleDeleteRsvpEntries: vi.fn((_ids: string[]) => undefined),
   inviteToken: "tok",
   onDataChanged: vi.fn(() => undefined),
+  rsvpCapacity: "",
 };
 
 describe("AttendanceTab", () => {
   it("renders stats line", () => {
     render(<AttendanceTab {...baseConfig} />);
     expect(screen.getByText("attendance.statsLine")).toBeDefined();
+  });
+  it("muestra el aforo informativo solo si hay capacidad configurada", () => {
+    // El aforo es solo informativo para el admin: con capacidad 5 y 2 sí
+    // confirma aparece la frase; sin capacidad no se muestra el bloque.
+    const { rerender } = render(
+      <AttendanceTab
+        {...baseConfig}
+        rsvpCapacity="5"
+        rsvpEntries={[{ id: "1", rsvpType: "main", guestName: "Ana", attendance: "yes" }] as never}
+      />,
+    );
+    expect(screen.getByText("attendance.capacityInfo")).toBeDefined();
+    rerender(<AttendanceTab {...baseConfig} />);
+    expect(screen.queryByText("attendance.capacityInfo")).toBeNull();
   });
   it("shows empty state when no entries", () => {
     render(<AttendanceTab {...baseConfig} />);

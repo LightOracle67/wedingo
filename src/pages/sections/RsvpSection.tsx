@@ -98,7 +98,6 @@ const RsvpSection = memo(function RsvpSection({
   transportEnabled,
   transportDepartures,
   cornerDecoration,
-  rsvpConfirmedCount,
   inviteToken,
 }: RsvpSectionProps) {
   const { t } = useTranslation();
@@ -159,9 +158,8 @@ const RsvpSection = memo(function RsvpSection({
         alreadySubmittedEntry,
         isRsvpSubmitting,
         hasSubmitted,
-        rsvpConfirmedCount,
       }),
-    [config, alreadySubmittedEntry, isRsvpSubmitting, hasSubmitted, rsvpConfirmedCount],
+    [config, alreadySubmittedEntry, isRsvpSubmitting, hasSubmitted],
   );
 
   // Asistencia efectiva (con acompañantes / solo / no).
@@ -329,12 +327,6 @@ const RsvpSection = memo(function RsvpSection({
   // Los niños se declaran con un contador y cuentan para el aforo (decisión de
   // negocio): las plazas restantes restan también los niños del formulario.
   const childrenCount = Number(rsvpForm.childrenCount || "0");
-  const capacityWithChildren = Math.max(
-    0,
-    derived.capacity > 0 ? derived.capacity - (rsvpConfirmedCount ?? 0) - childrenCount : 0,
-  );
-  const capacityReachedWithChildren =
-    derived.capacity > 0 && (rsvpConfirmedCount ?? 0) + childrenCount >= derived.capacity;
 
   return (
     <section
@@ -636,20 +628,11 @@ const RsvpSection = memo(function RsvpSection({
               <p className="setup-error" role="alert">
                 {t("rsvp.weddingPassedNotice")}
               </p>
-            ) : capacityReachedWithChildren && rsvpForm.attendance !== "no" ? (
-              <p className="setup-error" role="alert">
-                {t("rsvp.capacityReached")}
-              </p>
             ) : null}
 
             {/* Aforo restante + días para confirmar */}
             {!derived.isAlreadySubmitted && !derived.isBlocked && !derived.weddingPassed ? (
               <div className="admin-flex" style={{ gap: "0.75rem", flexWrap: "wrap", marginTop: "0.4rem" }}>
-                {derived.capacity > 0 ? (
-                  <p className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
-                    {t("rsvp.capacityLeft", { count: capacityWithChildren })}
-                  </p>
-                ) : null}
                 {config?.rsvpDeadlineEnabled === "true" && config?.rsvpDeadline ? (
                   <p className="setup-help" style={{ margin: 0, fontSize: "0.8rem" }}>
                     {t("rsvp.daysLeft", {
@@ -718,7 +701,7 @@ const RsvpSection = memo(function RsvpSection({
                 <button
                   className="setup-button rv2-submit"
                   type="submit"
-                  disabled={derived.isDisabled || capacityReachedWithChildren}
+                  disabled={derived.isDisabled}
                 >
                   {isRsvpSubmitting
                     ? t("rsvp.submittingButton")

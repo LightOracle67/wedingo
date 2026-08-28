@@ -35,7 +35,6 @@ export function RsvpProvider({ children }: { children: React.ReactNode }) {
       handleDeleteRsvp: rsvp.handleDeleteRsvp,
       handleDeleteRsvpEntries: rsvp.handleDeleteRsvpEntries,
       handleClearRsvpEntries: rsvp.handleClearRsvpEntries,
-      liveAttendingCount: rsvp.liveAttendingCount,
     }),
     [rsvp],
   );

@@ -382,6 +382,7 @@ export default function AdminPage() {
       transportDepartures: config.transportDepartures,
       // El modal de edición ofrece los platos solo si el menú está activo en la invitación.
       menuEnabled: config.menuEnabled === "true",
+      rsvpCapacity: typeof config.rsvpCapacity === "string" ? config.rsvpCapacity : "",
       // Invitaciones físicas: el admin puede añadir/editar respuestas a mano.
       inviteToken: inviteToken || "",
       onDataChanged: retryLoadRsvp,
@@ -399,6 +400,7 @@ export default function AdminPage() {
       retryLoadRsvp,
       config.transportDepartures,
       config.menuEnabled,
+      config.rsvpCapacity,
       inviteToken,
     ],
   );

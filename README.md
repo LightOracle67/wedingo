@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.161.0](https://github.com/LightOracle67/wedingo/releases)  
+**Versión actual:** [v2.162.0](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.162.0 | 2026-08-27 | El aforo del RSVP pasa a ser informativo solo para el administrador: la invitación ya no muestra las plazas restantes ni bloquea el envío al alcanzar el límite; el panel de asistencias muestra las plazas usadas de la capacidad configurada |
 | v2.161.0 | 2026-08-27 | El menú del RSVP se muestra en un modal: los botones de carne, pescado y vegano abren los platos y quedan marcados al elegir (con distintivo Elegido); los menús fijos se abren con un botón de lupa |
 | v2.160.0 | 2026-08-27 | Eliminado el código legacy restante: consentimiento parental (solo lectura de documentos antiguos) y los campos de teléfono/email del RSVP sin consumidores; la hoja global del Excel queda con 7 columnas y se verifica con scripts/check-fields-vs-rules.mjs que los campos escritos siguen permitidos por las reglas |
 | v2.159.0 | 2026-08-27 | Los botones de asistencia del RSVP se muestran bajo el nombre del invitado; los toggles de menús y mapa estático usan el switch moderno; retirada la lista pública de confirmados y sus campos; verificación automática formulario→reglas; el panel del administrador se ajusta en pantallas pequeñas |
