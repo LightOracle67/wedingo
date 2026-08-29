@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.174.0 — 2026-08-28
+- Modularización: las utilidades de exportación y borrado de la pestaña Datos (resumen de menús, galería/audio para el backup, saneado de tokens y borrado en cascada) pasan a un helper puro (data-tab-helpers).
+
 ## 2.173.0 — 2026-08-28
 - Modularización: el procesado de respuestas RSVP (descifrado de dietas y asociación de acompañantes) se extrae del hook a un helper puro, reduciendo useRsvp a la orquestación.
 

@@ -10,6 +10,7 @@ import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { SortableTh } from "../../components/SortableTh";
 import InvitationDetailModal from "./InvitationDetailModal";
 import { useConfirm } from "../../contexts/ConfirmContext";
+import { menuSummary, loadMediaForToken, sanitizeInvitationForExport, cascadeDelete } from "./data-tab-helpers";
 
 interface InvitationData {
   id: string;
@@ -401,36 +402,7 @@ export default function DataTab() {
   );
 
   /** Resumen de menús (cuántos pidieron carne/pescado/vegano) de una invitación. */
-  const menuSummary = useCallback(async (token: string) => {
-    const rsvpSnap = await getDocs(rsvpByInviteRef(token));
-    const counts: Record<string, number> = {};
-    for (const d of rsvpSnap.docs) {
-      const m = String(d.data().mealChoice || "");
-      if (m) counts[m] = (counts[m] || 0) + 1;
-    }
-    return counts;
-  }, []);
 
-  /**
-   * Lee la galería y el audio de una invitación (para exportar el backup
-   * completo con las fotos y la música).
-   */
-  const loadMediaForToken = useCallback(async (token: string) => {
-    const [gallerySnap, audioSnap] = await Promise.all([
-      getDocs(collection(db, "invitations", token, "gallery")),
-      getDocs(collection(db, "invitations", token, "audio")),
-    ]);
-    return {
-      gallery: gallerySnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
-        id: d.id,
-        ...d.data(),
-      })),
-      audio: audioSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => ({
-        id: d.id,
-        ...d.data(),
-      })),
-    };
-  }, []);
 
   /** Exporta TODAS las invitaciones con sus datos (incluida galería/audio). */
   const exportAll = useCallback(async () => {
@@ -477,7 +449,7 @@ export default function DataTab() {
     } finally {
       setBusy(false);
     }
-  }, [addToast, t, loadMediaForToken]);
+  }, [addToast, t]);
 
   // ── Delete ────────────────────────────────────────────
 
@@ -532,7 +504,7 @@ export default function DataTab() {
       );
     }
     addToast("info", parts.join("  //  ") || t("superadmin.data.noMenuData"));
-  }, [selected, menuSummary, addToast, t]);
+  }, [selected, addToast, t]);
 
   // El detalle y el enlace al panel del admin solo tienen sentido con UNA
   // invitación seleccionada.
@@ -1112,12 +1084,7 @@ export default function DataTab() {
 // HELPERS
 // ═══════════════════════════════════════════════════════
 
-/** Elimina los campos sensibles de un documento de invitación antes de
- *  exportarlo: los tokens de setup no deben viajar en claro en un JSON. */
-function sanitizeInvitationForExport(data: Record<string, unknown>): Record<string, unknown> {
-  const { _activeSetupToken: _t, legacyToken: _l, activeSession: _s, setupTokenHash: _h, ...safe } = data;
-  return safe;
-}
+
 
 /**
  * Elimina en cascada una invitación y todos sus datos asociados:
@@ -1125,12 +1092,4 @@ function sanitizeInvitationForExport(data: Record<string, unknown>): Record<stri
  *
  * @param {string} token - Token/ID de la invitación.
  */
-async function cascadeDelete(token: string) {
-  // Borrado en cascada completo y centralizado: RSVPs, todas las
-  // subcolecciones (incluidas las sociales con PII), mesas con nombres de
-  // invitados, tokens de setup, contador RSVP y el documento de invitación,
-  // troceado en lotes de 500. Usa el helper compartido para no duplicar la
-  // lógica en cada panel del superadmin.
-  const { deleteInvitationCascade } = await import("../../lib/invitation-subcollections");
-  await deleteInvitationCascade(token, db);
-}
+
