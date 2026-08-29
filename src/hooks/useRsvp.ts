@@ -24,7 +24,6 @@ import { STORAGE_KEYS } from "../lib/storage-keys";
 import { withWriteRetry } from "../lib/async-utils";
 import { safeLogError } from "../lib/safe-error";
 import { stableGuestId } from "../lib/guest-id";
-import { MAX_CHILDREN, MAX_COMPANIONS } from "../pages/sections/rsvp/constants";
 
 /**
  * Cache de alergias descifradas por (inviteToken, docId).
@@ -36,7 +35,7 @@ import { MAX_CHILDREN, MAX_COMPANIONS } from "../pages/sections/rsvp/constants";
  */
 const dietaryInfoCache = new Map<string, string>();
 
-import { RsvpFormData, RsvpEntryData, RsvpFormDefault, applyRestoredForm, processRsvpSnapshot } from "./rsvp-core";
+import { RsvpFormData, RsvpEntryData, RsvpFormDefault, applyRestoredForm, processRsvpSnapshot, applyRsvpFieldUpdate } from "./rsvp-core";
 export type { RsvpFormData, RsvpEntryData } from "./rsvp-core";
 
 /**
@@ -373,76 +372,11 @@ export function useRsvp(
   const updateRsvpField = useCallback((field: string, value: unknown) => {
     // Al editar cualquier campo se oculta el error del último submit.
     resetErrorRef.current?.();
-
-    if (field === "attendance") {
-      setRsvpForm((current) => ({
-        ...current,
-        attendance: value as string,
-        companionCount: value === "no" ? 0 : value === "alone" ? 0 : current.companionCount || 1,
-        companionNames: value === "no" || value === "alone" ? [] : current.companionNames,
-        companionAllergies: value === "no" || value === "alone" ? [] : current.companionAllergies,
-        childrenCount: value === "no" || value === "alone" ? "0" : current.childrenCount,
-        childrenAllergies: value === "no" || value === "alone" ? [] : current.childrenAllergies,
-        childrenAllergiesOther: value === "no" || value === "alone" ? "" : current.childrenAllergiesOther,
-      }));
-      return;
-    }
-    if (field === "companionCount") {
-      const count = Math.max(0, Math.min(MAX_COMPANIONS, Number(value) || 0));
-      setRsvpForm((current) => {
-        const names = current.companionNames.slice(0, count);
-        const allergies = current.companionAllergies.slice(0, count);
-        while (names.length < count) {
-          names.push("");
-          allergies.push([]);
-        }
-        return {
-          ...current,
-          companionCount: count,
-          companionNames: names,
-          companionAllergies: allergies,
-        };
-      });
-      return;
-    }
-    if (field.startsWith("companionNames[")) {
-      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
-      setRsvpForm((current) => {
-        const names = [...current.companionNames];
-        names[idx] = String(value).slice(0, 120);
-        return { ...current, companionNames: names };
-      });
-      return;
-    }
-    if (field.startsWith("companionMenus[")) {
-      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
-      setRsvpForm((current) => {
-        const menus = [...current.companionMenus];
-        menus[idx] = String(value);
-        return { ...current, companionMenus: menus };
-      });
-      return;
-    }
-    if (field.startsWith("companionAllergies[")) {
-      const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
-      setRsvpForm((current) => {
-        const all = [...current.companionAllergies];
-        all[idx] = value as string[];
-        return { ...current, companionAllergies: all };
-      });
-      return;
-    }
+    // Al cambiar el nombre se pierde la coincidencia de respuesta previa.
     if (field === "guestName") {
       prefillRef.current = null;
     }
-    if (field === "childrenCount") {
-      setRsvpForm((current) => ({
-        ...current,
-        childrenCount: String(Number.isFinite(Number(value)) ? Math.max(0, Math.min(MAX_CHILDREN, Number(value))) : 0),
-      }));
-      return;
-    }
-    setRsvpForm((current) => ({ ...current, [field]: value }));
+    setRsvpForm((current) => applyRsvpFieldUpdate(current, field, value));
   }, []);
 
   const validateRsvpData = useCallback(

@@ -27,7 +27,7 @@ import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 import { useConfirm } from "../../contexts/ConfirmContext";
 import { chairPositions } from "../../lib/table-geometry";
-import { clampPercent, buildLabelsHtml } from "./distribucion-helpers";
+import { clampPercent, buildLabelsHtml, assignGuestsToTables } from "./distribucion-helpers";
 
 type Shape = "circle" | "rect" | "oval" | "square";
 interface Section {
@@ -325,26 +325,17 @@ const DistribucionTab = memo(function DistribucionTab({
       addToast("info", t("distribucion.tableFull"));
       return;
     }
-    const byTable = new Map<string, string[]>();
-    let cursor = 0;
-    for (const g of candidates) {
-      // Busca la siguiente mesa con hueco a partir del cursor (round-robin).
-      const withSlot =
-        slots.find((f, idx) => idx >= cursor && (byTable.get(f.id)?.length ?? 0) < f.slots) ??
-        slots.find((f) => (byTable.get(f.id)?.length ?? 0) < f.slots);
-      if (!withSlot) break;
-      const list = byTable.get(withSlot.id) || [];
-      list.push(g.name);
-      byTable.set(withSlot.id, list);
-      cursor = (slots.indexOf(withSlot) + 1) % slots.length;
-    }
-    if (byTable.size === 0) {
+    const byTable = assignGuestsToTables(
+      candidates.map((g) => g.name),
+      slots,
+    );
+    if (Object.keys(byTable).length === 0) {
       addToast("info", t("distribucion.tableFull"));
       return;
     }
     const batch = writeBatch(db);
     let assigned = 0;
-    for (const [tid, names] of byTable) {
+    for (const [tid, names] of Object.entries(byTable)) {
       batch.update(doc(tablesRef(activeSectionId), tid), { guests: arrayUnion(...names) });
       patchTable(tid, { guests: [...(tables.find((x) => x.id === tid)?.guests || []), ...names] });
       assigned += names.length;

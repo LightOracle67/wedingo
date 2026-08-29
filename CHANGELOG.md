@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.177.0 — 2026-08-29
+- Modularización: la actualización de campos del formulario RSVP (incluidos los límites de acompañantes y niños) pasa a una función pura en el núcleo RSVP, y la asignación automática de invitados a mesas se extrae como helper puro, ambos con tests propios.
+
 ## 2.176.0 — 2026-08-29
 - Modularización: la generación del HTML de etiquetas de impresión de la pestaña Distribución pasa a un helper puro (distribucion-helpers.ts), eliminada una función de conversión de archivos sin uso (readFileAsDataUrl) y des-exportadas utilidades de uso interno.
 

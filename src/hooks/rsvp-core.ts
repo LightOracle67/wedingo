@@ -7,6 +7,7 @@
  * sin acoplar a React ni a la suscripción de Firestore.
  */
 
+import { MAX_CHILDREN, MAX_COMPANIONS } from "../pages/sections/rsvp/constants";
 import type { Attendee } from "../types";
 import type { QueryDocumentSnapshot, DocumentData } from "firebase/firestore";
 
@@ -293,4 +294,69 @@ export async function processRsvpSnapshot(
   return [...companionAsEntries, ...mainEntries].sort(
     (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime(),
   );
+}
+
+/**
+ * Aplica un cambio de campo del formulario RSVP sobre el estado actual.
+ *
+ * Es la lógica pura de `updateRsvpField`: recibe el formulario actual y
+ * devuelve el nuevo sin tocar refs del hook (la limpieza de prefill se
+ * resuelve en el hook). Los cambios de asistencia recalcularán los campos
+ * de acompañantes/niños para que no queden restos de un modo anterior.
+ */
+export function applyRsvpFieldUpdate(
+  current: RsvpFormData,
+  field: string,
+  value: unknown,
+): RsvpFormData {
+  if (field === "attendance") {
+    const a = value as string;
+    const noComps = a === "no" || a === "alone";
+    return {
+      ...current,
+      attendance: a,
+      companionCount: noComps ? 0 : current.companionCount || 1,
+      companionNames: noComps ? [] : current.companionNames,
+      companionAllergies: noComps ? [] : current.companionAllergies,
+      childrenCount: noComps ? "0" : current.childrenCount,
+      childrenAllergies: noComps ? [] : current.childrenAllergies,
+      childrenAllergiesOther: noComps ? "" : current.childrenAllergiesOther,
+    };
+  }
+  if (field === "companionCount") {
+    const count = Math.max(0, Math.min(MAX_COMPANIONS, Number(value) || 0));
+    const names = current.companionNames.slice(0, count);
+    const allergies = current.companionAllergies.slice(0, count);
+    while (names.length < count) {
+      names.push("");
+      allergies.push([]);
+    }
+    return { ...current, companionCount: count, companionNames: names, companionAllergies: allergies };
+  }
+  if (field.startsWith("companionNames[")) {
+    const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
+    const names = [...current.companionNames];
+    names[idx] = String(value).slice(0, 120);
+    return { ...current, companionNames: names };
+  }
+  if (field.startsWith("companionMenus[")) {
+    const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
+    const menus = [...current.companionMenus];
+    menus[idx] = String(value);
+    return { ...current, companionMenus: menus };
+  }
+  if (field.startsWith("companionAllergies[")) {
+    const idx = parseInt(field.match(/\d+/)?.[0] || "0", 10);
+    const all = [...current.companionAllergies];
+    all[idx] = value as string[];
+    return { ...current, companionAllergies: all };
+  }
+  if (field === "childrenCount") {
+    const n = Number(value);
+    return {
+      ...current,
+      childrenCount: String(Number.isFinite(n) ? Math.max(0, Math.min(MAX_CHILDREN, n)) : 0),
+    };
+  }
+  return { ...current, [field]: value };
 }

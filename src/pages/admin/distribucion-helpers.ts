@@ -32,6 +32,40 @@ export function clampPercent(v: number): number {
   return Math.max(0, Math.min(100, v));
 }
 
+/** Mesa con hueco disponible para la asignación automática de invitados. */
+export interface AssignableTable {
+  id: string;
+  /** Plazas libres (asientos menos invitados ya asignados). */
+  slots: number;
+}
+
+/**
+ * Asigna invitados a mesas con hueco de forma equitativa (round-robin).
+ * @param guests Nombres de invitados sin mesa asignada.
+ * @param tables Mesas con plazas libres (ya filtradas y ordenadas de más a menos).
+ * @returns Mapa mesa→nombres asignados, en el orden de reparto.
+ */
+export function assignGuestsToTables(
+  guests: string[],
+  tables: AssignableTable[],
+): Record<string, string[]> {
+  const byTable = new Map<string, string[]>();
+  let cursor = 0;
+  for (const g of guests) {
+    // Busca la siguiente mesa con hueco a partir del cursor (round-robin);
+    // si no queda ninguna, se detiene.
+    const withSlot =
+      tables.find((f, idx) => idx >= cursor && (byTable.get(f.id)?.length ?? 0) < f.slots) ??
+      tables.find((f) => (byTable.get(f.id)?.length ?? 0) < f.slots);
+    if (!withSlot) break;
+    const list = byTable.get(withSlot.id) || [];
+    list.push(g);
+    byTable.set(withSlot.id, list);
+    cursor = (tables.indexOf(withSlot) + 1) % tables.length;
+  }
+  return Object.fromEntries(byTable);
+}
+
 /** Colores por defecto (clave "golden") cuando el tema no está en el mapa. */
 const FALLBACK_COLORS = { accent: "#d8b24a", bg: "#2a2418" };
 
