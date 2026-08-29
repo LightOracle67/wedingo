@@ -8,13 +8,13 @@
  */
 
 /** Mesa a imprimir en una etiqueta (solo necesitamos nombre e invitados). */
-export interface LabelTable {
+interface LabelTable {
   name: string;
   guests: string[];
 }
 
 /** Conjunto de opciones visuales para generar las etiquetas de impresión. */
-export interface LabelOptions {
+interface LabelOptions {
   /** Clave del tema (o vacío) para resolver los colores de fondo y acento. */
   theme: string | undefined;
   /** URL de un fondo opcional para las tarjetas. */
@@ -33,7 +33,7 @@ export function clampPercent(v: number): number {
 }
 
 /** Mesa con hueco disponible para la asignación automática de invitados. */
-export interface AssignableTable {
+interface AssignableTable {
   id: string;
   /** Plazas libres (asientos menos invitados ya asignados). */
   slots: number;

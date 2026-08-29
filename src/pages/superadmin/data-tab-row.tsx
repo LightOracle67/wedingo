@@ -1,7 +1,7 @@
 import { memo } from "react";
 import type { TFunction } from "i18next";
 
-export interface InvitationRowData {
+interface InvitationRowData {
   id: string;
   firstName: string;
   secondName: string;

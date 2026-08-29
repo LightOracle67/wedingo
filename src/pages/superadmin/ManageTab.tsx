@@ -21,7 +21,7 @@ import { generateInviteToken, generateSetupToken } from "../../lib/token-utils";
 import { validateConfigForSave } from "../../lib/config-validation";
 import { MAX_YEARS_AHEAD } from "../../lib/constants";
 import { downloadJson, downloadText } from "../../lib/file-utils";
-import { buildInvitationIcs } from "./manage-tab-helpers";
+import { buildInvitationIcs, diffInvitations } from "./manage-tab-helpers";
 import { ToolboxPanel } from "./toolbox-panel";
 
 /** Subcolecciones duplicables entre invitaciones (copiar sección). */
@@ -90,14 +90,7 @@ const ManageTab = memo(function ManageTab() {
       ]);
       const da = sa.exists() ? sa.data() : {};
       const db = sb.exists() ? sb.data() : {};
-      const keys = new Set([...Object.keys(da), ...Object.keys(db)]);
-      const diff: Array<{ key: string; a: string; b: string }> = [];
-      for (const k of keys) {
-        const va = String((da as Record<string, unknown>)[k] ?? "");
-        const vb = String((db as Record<string, unknown>)[k] ?? "");
-        if (va !== vb) diff.push({ key: k, a: va.slice(0, 80), b: vb.slice(0, 80) });
-      }
-      setCmpDiff(diff);
+      setCmpDiff(diffInvitations(da, db));
     } catch {
       addToast("error", t("errors.dataLoadFailed"));
     }

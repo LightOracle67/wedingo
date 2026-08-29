@@ -3,7 +3,7 @@ import type { TFunction } from "i18next";
 import { chairPositions } from "../../lib/table-geometry";
 
 /** Forma de mesa soportada por la cuadrícula (misma unión que DistribucionTab). */
-export type CanvasShape = "circle" | "rect" | "oval" | "square";
+type CanvasShape = "circle" | "rect" | "oval" | "square";
 
 /** Tipo de mesa de la cuadrícula de la pestaña Distribución. */
 export interface CanvasTable {
@@ -20,7 +20,7 @@ export interface CanvasTable {
 }
 
 /** Props del visualizador interactivo de mesas (canvas de la sección activa). */
-export interface TableCanvasProps {
+interface TableCanvasProps {
   /** Mesas que se dibujan dentro de la sección activa. */
   tables: CanvasTable[];
   /** Id de la mesa seleccionada (para resaltar borde y borrador). */

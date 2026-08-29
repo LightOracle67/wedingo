@@ -59,3 +59,28 @@ export function buildInvitationIcs(input: InvitationIcsInput): string | null {
     .filter(Boolean)
     .join("\r\n");
 }
+
+
+/**
+ * Construye la lista de diferencias entre dos documentos de invitación,
+ * para el panel de comparación de la pestaña Gestión.
+ *
+ * Recorre la unión de claves y recorta cada valor a 80 caracteres para que
+ * la lista no crezca sin límite en la interfaz. Devuelve las claves que
+ * difieren; si los dos documentos son idénticos, la lista es vacía.
+ */
+export function diffInvitations(
+  a: Record<string, unknown> | undefined,
+  b: Record<string, unknown> | undefined,
+): Array<{ key: string; a: string; b: string }> {
+  const da = a ?? {};
+  const db = b ?? {};
+  const keys = new Set([...Object.keys(da), ...Object.keys(db)]);
+  const diff: Array<{ key: string; a: string; b: string }> = [];
+  for (const k of keys) {
+    const va = String(da[k] ?? "");
+    const vb = String(db[k] ?? "");
+    if (va !== vb) diff.push({ key: k, a: va.slice(0, 80), b: vb.slice(0, 80) });
+  }
+  return diff;
+}

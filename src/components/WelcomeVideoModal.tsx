@@ -2,7 +2,7 @@ import { type Ref } from "react";
 import { useTranslation } from "react-i18next";
 
 /** Props del modal de vídeo de bienvenida. */
-export interface WelcomeVideoModalProps {
+interface WelcomeVideoModalProps {
   /** Controla si el modal está visible (sobre abierto + vídeo mostrándose). */
   show: boolean;
   /** Fase de salida: mantiene el modal montado para que el fade no se corte. */

@@ -3,7 +3,7 @@ import type { InvitationConfig } from "../types";
 /**
  * Resultado del cálculo de cambios de configuración para el guardado incremental.
  */
-export interface SetupChanges {
+interface SetupChanges {
   /** Claves del formulario que difieren del estado persistido (auditoría + payload). */
   changed: string[];
   /** Campos que siempre viajan en el payload aunque no hayan cambiado (reglas/seguridad). */

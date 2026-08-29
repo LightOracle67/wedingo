@@ -73,7 +73,6 @@ export interface InvitationData {
 }
 
 /** Filtro de actividad aplicado a la tabla ("todas" | "hoy" | "semana" | "sesion"). */
-export type ActivityFilter = "todas" | "hoy" | "semana" | "sesion";
 
 /**
  * Construye la lista de filas de invitaciones a partir de los documentos

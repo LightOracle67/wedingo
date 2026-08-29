@@ -39,7 +39,7 @@ export function formatMenuLabel(mealChoice: string, t: (key: string) => string):
 }
 
 /** Datos de un invitado principal editado manualmente (alta/edición). */
-export interface ManualMainInput {
+interface ManualMainInput {
   name: string;
   attendance: string;
   mealChoice?: string;
