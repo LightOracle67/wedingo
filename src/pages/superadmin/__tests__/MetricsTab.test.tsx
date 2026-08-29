@@ -228,6 +228,27 @@ describe("MetricsTab — ramas límite", () => {
     fireEvent.click(screen.getByText("superadmin.metrics.originsBtn"));
     await screen.findByText(/Sevilla · 2/);
   });
+  it("muestra la fila de almacenamiento cuando hay datos", async () => {
+    // La rama de populateStorageRows: con getDocs de storage que devuelve
+    // filas, debe pintar la tabla de almacenamiento con su título.
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "gallery")
+        return Promise.resolve({
+          docs: [
+            { id: "img1", data: () => ({ url: "https://x/img.jpg" }) },
+          ],
+          size: 1,
+        });
+      if (ref === "audio") return Promise.resolve({ docs: [], size: 0 });
+      if (ref === "invitations-collection-ref") return Promise.resolve({ docs: [invitationDoc()] });
+      if (ref === "rides") return Promise.resolve({ docs: [] });
+      return Promise.resolve({ docs: [] });
+    });
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    fireEvent.click(screen.getByText("superadmin.metrics.storageBtn"));
+    await screen.findByText("superadmin.metrics.storageTitle");
+  });
 });
 
 describe("SupportTab", () => {

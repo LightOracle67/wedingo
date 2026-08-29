@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.184.0 — 2026-08-29
+- Cobertura de la pestaña Métricas ampliada: la fila de almacenamiento se muestra cuando el panel carga los datos de la galería y el audio de la invitación, y se eliminan dos casos de error inalcanzables (los catch internos por iteración tragan los fallos, por lo que el error global no puede dispararse).
+
 ## 2.183.0 — 2026-08-29
 - Cobertura de los paneles del administrador: NUEVOS tests de PlatformTab (mantenimiento y banner), ManageTab (flags del superadmin y estado simulado) y AttendanceTab (exportación a Excel de asistencias) para acercar más su cobertura al umbral; el polyfill de localStorage del entorno de tests se centraliza en vitest.setup.ts (jsdom no lo expone).
 ## 2.182.0 — 2026-08-29
