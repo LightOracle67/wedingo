@@ -11,21 +11,7 @@ import { SortableTh } from "../../components/SortableTh";
 import InvitationDetailModal from "./InvitationDetailModal";
 import { DataTabRow } from "./data-tab-row";
 import { useConfirm } from "../../contexts/ConfirmContext";
-import { menuSummary, loadMediaForToken, sanitizeInvitationForExport, cascadeDelete } from "./data-tab-helpers";
-
-interface InvitationData {
-  id: string;
-  firstName: string;
-  secondName: string;
-  adminUsername: string;
-  rsvpCount: number;
-  tokenCount: number;
-  weddingDate: string;
-  hasSession: boolean;
-  visits: number;
-  lastActivity: string;
-  createdAt: string;
-}
+import { menuSummary, loadMediaForToken, sanitizeInvitationForExport, cascadeDelete, buildInvitationData, filterByActivity, type InvitationData } from "./data-tab-helpers";
 
 /**
  * Pestaña de gestión de datos para el superadmin.
@@ -122,24 +108,7 @@ export default function DataTab() {
   }, [selected, bulkTheme, addToast, t, confirm]);
 
   /** Invitaciones filtradas por actividad (confirmaciones hoy/semana, sesión activa). */
-  const filtered = useMemo(() => {
-    const now = Date.now();
-    const todayStart = new Date();
-    todayStart.setHours(0, 0, 0, 0);
-    const weekAgo = now - 7 * 86400000;
-    return invitations.filter((inv) => {
-      if (activityFilter === "sesion") return inv.hasSession;
-      if (activityFilter === "hoy") {
-        const a = inv.lastActivity ? Date.parse(inv.lastActivity) : 0;
-        return a >= todayStart.getTime();
-      }
-      if (activityFilter === "semana") {
-        const a = inv.lastActivity ? Date.parse(inv.lastActivity) : 0;
-        return a >= weekAgo;
-      }
-      return true;
-    });
-  }, [invitations, activityFilter]);
+  const filtered = useMemo(() => filterByActivity(invitations, activityFilter), [invitations, activityFilter]);
 
   // ── Carga de datos ────────────────────────────────────
 
@@ -160,32 +129,7 @@ export default function DataTab() {
           if (tk) rsvpCounts[tk] = (rsvpCounts[tk] || 0) + 1;
         }
 
-        const list = invSnap.docs.map((d: { id: string; data: () => Record<string, unknown> }) => {
-          const data = d.data();
-          const token = d.id;
-          const sessionAt = data.activeSession as { seconds?: number } | null | undefined;
-          const lastActivity =
-            sessionAt && typeof sessionAt === "object" && "seconds" in sessionAt
-              ? new Date(Number(sessionAt.seconds) * 1000).toISOString()
-              : String(data.createdAt || "");
-          return {
-            id: token,
-            firstName: String(data.firstName || ""),
-            secondName: String(data.secondName || ""),
-            adminUsername: String(data.adminUsername || ""),
-            rsvpCount: rsvpCounts[token] || 0,
-            tokenCount: 0,
-            weddingDate:
-              data.weddingDay && data.weddingMonth && data.weddingYear
-                ? `${String(data.weddingDay)}/${String(data.weddingMonth)}/${String(data.weddingYear)}`
-                : "",
-            hasSession: !!data.activeSession,
-            visits: Number(data._visits) || 0,
-            lastActivity,
-            createdAt: String(data.createdAt || ""),
-          };
-        });
-        list.sort((a, b) => (b.weddingDate || "").localeCompare(a.weddingDate || ""));
+        const list = buildInvitationData(invSnap.docs as Array<{ id: string; data: () => Record<string, unknown> }>, rsvpCounts);
         setInvitations(list);
       } catch {
         if (!cancelled) addToast("error", t("errors.dataLoadFailed"));

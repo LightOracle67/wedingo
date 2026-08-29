@@ -2,6 +2,14 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.181.0 — 2026-08-29
+
+- Modularización: la pestaña Datos extrae a un helper puro la construcción
+  de las filas de invitaciones (buildInvitationData) y el filtro por actividad
+  (filterByActivity), reduciendo el componente y haciendo testeable esa lógica.
+- Depuradas pequeñas reglas CSS muertas de funciones ya retiradas y añadidos
+  tests unitarios de estos nuevos helpers.
+
 ## 2.180.0 — 2026-08-29
 - Modularización: el modal de vídeo de bienvenida de la invitación pública pasa a un subcomponente presentacional (WelcomeVideoModal) y se purgan bloques CSS muertos de funciones ya retiradas (reacciones, extras y filtros obsoletos del administrador).
 
