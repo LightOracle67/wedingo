@@ -4,7 +4,6 @@ import { doc, writeBatch, serverTimestamp } from "firebase/firestore";
 import { db } from "../../lib/firebase";
 import Pagination from "../../components/Pagination";
 import EmptyState from "../../components/EmptyState";
-import Modal from "../../components/Modal";
 import { useToast } from "../../hooks/useToast";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { SortableTh } from "../../components/SortableTh";
@@ -12,9 +11,10 @@ import { withWriteRetry } from "../../lib/async-utils";
 import { encrypt } from "../../lib/crypto-utils";
 import { parseDietaryInfo } from "../../lib/rsvp-utils";
 import { parseTransportDepartures } from "../../lib/transport-utils";
-import { departureLabel, type Departure } from "../sections/rsvp/derive";
-import { ALLERGIES } from "../sections/rsvp/constants";
+import { type Departure } from "../sections/rsvp/derive";
 import { getDietaryItems, getChildrenDietary, formatMenuLabel, normalizeManualName, buildManualMainPayload, buildManualCompanionPayload } from "./attendance-core";
+import { AttendanceEditModal } from "./AttendanceEditModal";
+import type { EditingState, EditingCompanion } from "./attendance-edit-types";
 
 interface RsvpEntry {
   id: string;
@@ -124,28 +124,6 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   // El estado de edición incluye TODOS los datos modificables del invitado
   // (menú, alergias, transporte y acompañantes) para poder corregir cualquier
   // campo, también de respuestas enviadas por los propios invitados.
-  interface EditingCompanion {
-    /** Id del doc del acompañante si ya existía; si no, se crea al guardar. */
-    docId?: string | undefined;
-    name: string;
-    menu: string;
-    allergies: string[];
-    other: string;
-  }
-  interface EditingState {
-    id?: string;
-    /** Ids de docs de acompañantes existentes (para borrar los que se quitan). */
-    companionDocIds: string[];
-    name: string;
-    attendance: "yes" | "no";
-    notes: string;
-    mealChoice: string;
-    allergySelection: string[];
-    allergyOther: string;
-    transportMode: string;
-    transportChoice: string;
-    companions: EditingCompanion[];
-  }
   const [editing, setEditing] = useState<EditingState | null>(null);
   const [savingManual, setSavingManual] = useState(false);
 
@@ -918,220 +896,19 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
       {/* Modal de añadir/editar respuesta manual (invitaciones físicas y
           corrección de respuestas de invitados): todos los datos editables. */}
       {editing ? (
-        <Modal
-          title={editing.id ? t("attendance.manualEditTitle") : t("attendance.manualAddTitle")}
-          closeLabel={t("common.close")}
+        <AttendanceEditModal
+          editing={editing}
+          savingManual={savingManual}
+          menuEnabled={Boolean(menuEnabled)}
+          departuresList={departuresList}
           onClose={() => setEditing(null)}
-          style={{ maxWidth: "560px" }}
-        >
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              void saveManual();
-            }}
-          >
-            <label className="setup-label" htmlFor="manualRsvpName">
-              {t("attendance.manualNameLabel")}
-            </label>
-            <input
-              id="manualRsvpName"
-              className="setup-input"
-              value={editing.name}
-              onChange={(e) => setEditing({ ...editing, name: e.target.value })}
-              maxLength={120}
-              placeholder={t("attendance.manualNamePlaceholder")}
-              disabled={savingManual}
-            />
-            <label className="setup-label" htmlFor="manualRsvpAttendance" style={{ marginTop: "0.6rem" }}>
-              {t("attendance.manualAttendanceLabel")}
-            </label>
-            <select
-              id="manualRsvpAttendance"
-              className="setup-input"
-              value={editing.attendance}
-              onChange={(e) => setEditing({ ...editing, attendance: e.target.value as "yes" | "no" })}
-              disabled={savingManual}
-            >
-              <option value="yes">{t("attendance.filterYes")}</option>
-              <option value="no">{t("attendance.filterNo")}</option>
-            </select>
-
-            {/* Solo si asiste: menú, alergias y transporte. */}
-            {editing.attendance === "yes" ? (
-              <>
-                {menuEnabled ? (
-                  <>
-                    <label className="setup-label" htmlFor="manualRsvpMeal" style={{ marginTop: "0.6rem" }}>
-                      {t("rsvp.menuLabel")}
-                    </label>
-                    <select
-                      id="manualRsvpMeal"
-                      className="setup-input"
-                      value={editing.mealChoice}
-                      onChange={(e) => setEditing({ ...editing, mealChoice: e.target.value })}
-                      disabled={savingManual}
-                    >
-                      <option value="">{t("rsvp.menuPlaceholder")}</option>
-                      <option value="carne">{t("rsvp.menuCarne")}</option>
-                      <option value="pescado">{t("rsvp.menuPescado")}</option>
-                      <option value="vegano">{t("rsvp.menuVegano")}</option>
-                    </select>
-                  </>
-                ) : null}
-                <fieldset style={{ border: "none", padding: 0, marginTop: "0.6rem" }}>
-                  <legend className="setup-label">{t("rsvp.allergiesLegend")}</legend>
-                  {ALLERGIES.map((a) => (
-                    <label key={a} className="setup-checkbox-label" style={{ fontWeight: 400 }}>
-                      <input
-                        type="checkbox"
-                        checked={editing.allergySelection.includes(a)}
-                        onChange={(e) =>
-                          setEditing({
-                            ...editing,
-                            allergySelection: e.target.checked
-                              ? [...editing.allergySelection, a]
-                              : editing.allergySelection.filter((x) => x !== a),
-                          })
-                        }
-                      />
-                      {t("rsvp.allergies." + a)}
-                    </label>
-                  ))}
-                  <input
-                    className="setup-input"
-                    value={editing.allergyOther}
-                    onChange={(e) => setEditing({ ...editing, allergyOther: e.target.value })}
-                    maxLength={200}
-                    placeholder={t("rsvp.allergiesPlaceholder")}
-                    style={{ marginTop: "0.3rem" }}
-                    disabled={savingManual}
-                  />
-                </fieldset>
-                <label className="setup-label" htmlFor="manualRsvpTransport" style={{ marginTop: "0.6rem" }}>
-                  {t("rsvp.transportLabel")}
-                </label>
-                <select
-                  id="manualRsvpTransport"
-                  className="setup-input"
-                  value={editing.transportMode}
-                  onChange={(e) => setEditing({ ...editing, transportMode: e.target.value })}
-                  disabled={savingManual}
-                >
-                  <option value="own">{t("rsvp.transportOwnCarOption")}</option>
-                  <option value="bus">{t("rsvp.transportBusOption")}</option>
-                  <option value="taxi">{t("rsvp.transportTaxiOption")}</option>
-                </select>
-                {editing.transportMode !== "own" && departuresList.length > 0 ? (
-                  <>
-                    <label className="setup-label" htmlFor="manualRsvpDeparture" style={{ marginTop: "0.6rem" }}>
-                      {t("rsvp.transportDepartureLabel")}
-                    </label>
-                    <select
-                      id="manualRsvpDeparture"
-                      className="setup-input"
-                      value={editing.transportChoice}
-                      onChange={(e) => setEditing({ ...editing, transportChoice: e.target.value })}
-                      disabled={savingManual}
-                    >
-                      {departuresList.map((d, i) => (
-                        <option key={String(i)} value={String(i)}>
-                          {departureLabel(d, t)}
-                        </option>
-                      ))}
-                    </select>
-                  </>
-                ) : null}
-
-                {/* Acompañantes: lista editable con todos sus campos. */}
-                <fieldset style={{ border: "none", padding: 0, marginTop: "0.6rem" }}>
-                  <legend className="setup-label">{t("attendance.manualCompanionsLabel")}</legend>
-                  {editing.companions.map((comp, ci) => (
-                    <div
-                      key={String(ci)}
-                      style={{
-                        border: "1px solid var(--setup-border)",
-                        borderRadius: "8px",
-                        padding: "0.5rem",
-                        marginBottom: "0.4rem",
-                        display: "flex",
-                        flexDirection: "column",
-                        gap: "0.3rem",
-                      }}
-                    >
-                      <div style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}>
-                        <input
-                          className="setup-input"
-                          style={{ flex: 1 }}
-                          value={comp.name}
-                          onChange={(e) => patchCompanion(ci, { name: e.target.value })}
-                          maxLength={120}
-                          placeholder={t("attendance.manualNamePlaceholder")}
-                          aria-label={`${t("attendance.manualCompanionsLabel")} ${ci + 1} - ${t("attendance.manualNameLabel")}`}
-                        />
-                        <button
-                          type="button"
-                          className="setup-button setup-button--ghost setup-button--compact"
-                          onClick={() => removeCompanionAt(ci)}
-                          aria-label={`${t("attendance.manualRemoveCompanion")} ${ci + 1}`}
-                          title={t("attendance.manualRemoveCompanion")}
-                        >
-                          ✕
-                        </button>
-                      </div>
-                      {menuEnabled ? (
-                        <select
-                          className="setup-input"
-                          value={comp.menu}
-                          onChange={(e) => patchCompanion(ci, { menu: e.target.value })}
-                          aria-label={`${t("attendance.manualCompanionsLabel")} ${ci + 1} - ${t("rsvp.menuLabel")}`}
-                        >
-                          <option value="">{t("rsvp.menuPlaceholder")}</option>
-                          <option value="carne">{t("rsvp.menuCarne")}</option>
-                          <option value="pescado">{t("rsvp.menuPescado")}</option>
-                          <option value="vegano">{t("rsvp.menuVegano")}</option>
-                        </select>
-                      ) : null}
-                      <div style={{ display: "flex", gap: "0.6rem", flexWrap: "wrap", alignItems: "center" }}>
-                        {ALLERGIES.map((a) => (
-                          <label key={a} className="setup-checkbox-label" style={{ fontWeight: 400, fontSize: "0.85rem" }}>
-                            <input
-                              type="checkbox"
-                              checked={comp.allergies.includes(a)}
-                              onChange={() => toggleCompanionAllergy(ci, a)}
-                            />
-                            {t("rsvp.allergies." + a)}
-                          </label>
-                        ))}
-                        <input
-                          className="setup-input"
-                          style={{ flex: 1, minWidth: "8rem" }}
-                          value={comp.other}
-                          onChange={(e) => patchCompanion(ci, { other: e.target.value })}
-                          maxLength={200}
-                          placeholder={t("rsvp.allergiesPlaceholder")}
-                          aria-label={`${t("attendance.manualCompanionsLabel")} ${ci + 1} - ${t("rsvp.allergiesPlaceholder")}`}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                  <button type="button" className="setup-button setup-button--ghost setup-button--compact" onClick={addCompanion}>
-                    {t("attendance.manualAddCompanion")}
-                  </button>
-                </fieldset>
-              </>
-            ) : null}
-
-            <div className="setup-actions" style={{ marginTop: "0.8rem" }}>
-              <button className="setup-button" type="submit" disabled={savingManual || !editing.name.trim()}>
-                {savingManual
-                  ? t("common.loading")
-                  : editing.id
-                    ? t("attendance.manualSave")
-                    : t("attendance.manualAdd")}
-              </button>
-            </div>
-          </form>
-        </Modal>
+          onSave={() => void saveManual()}
+          onChange={(key, value) => setEditing((prev) => (prev ? { ...prev, [key]: value } : prev))}
+          onAddCompanion={addCompanion}
+          onRemoveCompanion={removeCompanionAt}
+          onPatchCompanion={patchCompanion}
+          onToggleCompanionAllergy={toggleCompanionAllergy}
+        />
       ) : null}
     </>
   );

@@ -9,6 +9,7 @@ import { logAudit } from "../../lib/audit";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
 import { SortableTh } from "../../components/SortableTh";
 import InvitationDetailModal from "./InvitationDetailModal";
+import { DataTabRow } from "./data-tab-row";
 import { useConfirm } from "../../contexts/ConfirmContext";
 import { menuSummary, loadMediaForToken, sanitizeInvitationForExport, cascadeDelete } from "./data-tab-helpers";
 
@@ -1015,59 +1016,16 @@ export default function DataTab() {
           </thead>
           <tbody>
             {sortedInvitations.map((inv) => (
-              <tr key={inv.id} className="data-tab-tr" style={{ opacity: emptyIds.has(inv.id) ? 0.7 : 1 }}>
-                <td className="data-tab-td">
-                  <input
-                    type="checkbox"
-                    checked={selected.has(inv.id)}
-                    onChange={() => toggleSelect(inv.id)}
-                    disabled={busy}
-                    aria-label={`${t("superadmin.data.select")} ${inv.id}`}
-                  />
-                </td>
-                <td className="data-tab-td">
-                  {/* Token copiable con teclado: role=button + Enter/Espacio
-                      (WCAG 2.1.1), además del clic. */}
-                  <code
-                    className="data-tab-code-copy"
-                    role="button"
-                    tabIndex={0}
-                    onClick={() => navigator.clipboard?.writeText(inv.id)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        navigator.clipboard?.writeText(inv.id);
-                      }
-                    }}
-                    aria-label={`${t("superadmin.data.copyToken")}: ${inv.id}`}
-                  >
-                    {inv.id}
-                  </code>
-                </td>
-                <td className="data-tab-td">
-                  {inv.firstName ? (
-                    `${inv.firstName} & ${inv.secondName}`
-                  ) : (
-                    <span className="data-tab-empty-name">{t("superadmin.data.emptyInvitation")}</span>
-                  )}
-                  {inv.adminUsername ? <span className="data-tab-admin-user">@{inv.adminUsername}</span> : null}
-                </td>
-                <td className="data-tab-td" style={{ whiteSpace: "nowrap" }}>
-                  {inv.weddingDate || "—"}
-                </td>
-                <td className="data-tab-td" style={{ textAlign: "center" }}>
-                  {inv.rsvpCount}
-                </td>
-                <td className="data-tab-td" style={{ textAlign: "center" }}>
-                  {inv.visits}
-                </td>
-                <td className="data-tab-td" style={{ textAlign: "center" }}>
-                  {inv.hasSession ? "🟢" : "—"}
-                </td>
-                <td className="data-tab-td" style={{ fontSize: "0.7rem", color: "var(--setup-muted)" }}>
-                  {inv.lastActivity ? new Date(inv.lastActivity).toLocaleString() : "—"}
-                </td>
-              </tr>
+              <DataTabRow
+                key={inv.id}
+                inv={inv}
+                isSelected={selected.has(inv.id)}
+                isGhost={emptyIds.has(inv.id)}
+                disabled={busy}
+                onToggle={toggleSelect}
+                onCopyToken={(id) => void navigator.clipboard?.writeText(id)}
+                t={t}
+              />
             ))}
           </tbody>
         </table>

@@ -26,7 +26,7 @@ import { db, rsvpByInviteRef } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 import { useConfirm } from "../../contexts/ConfirmContext";
-import { chairPositions } from "../../lib/table-geometry";
+import { TableCanvas, type CanvasTable } from "./table-canvas";
 import { clampPercent, buildLabelsHtml, assignGuestsToTables } from "./distribucion-helpers";
 
 type Shape = "circle" | "rect" | "oval" | "square";
@@ -464,244 +464,118 @@ const DistribucionTab = memo(function DistribucionTab({
     <div className="admin-flex--col" style={{ gap: "0.75rem", height: "100%", minHeight: 0 }}>
       {/* ── Controles de mesas (sección activa) ── */}
       {activeSectionId ? (
-        <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap", alignItems: "center" }}>
-          <label
-            className="setup-label"
-            style={{ margin: 0, display: "inline-flex", alignItems: "center", gap: "0.4rem" }}
-          >
-            {t("distribucion.shape")}
-            <select
-              className="setup-input"
-              value={newShape}
-              onChange={(e) => setNewShape(e.target.value as Shape)}
-              style={{ marginLeft: "0.3rem" }}
-            >
-              {SHAPES.map((s) => (
-                <option key={s.key} value={s.key}>
-                  {t(`distribucion.shape_${s.key}`)}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button type="button" className="setup-button setup-button--compact" onClick={() => void addTable()}>
-            {t("distribucion.addTable")}
-          </button>
-          <button
-            type="button"
-            className="setup-button setup-button--ghost setup-button--compact"
-            onClick={() => void autoAssign()}
-          >
-            {t("distribucion.autoAssign")}
-          </button>
-          <button
-            type="button"
-            className="setup-button setup-button--ghost setup-button--compact"
-            onClick={printLabels}
-          >
-            {t("distribucion.printLabels")}
-          </button>
-          <button
-            type="button"
-            className="setup-button setup-button--ghost setup-button--compact"
-            onClick={() => void exportTablesXlsx()}
-          >
-            {t("distribucion.exportTables")}
-          </button>
-          <button
-            type="button"
-            className="setup-button setup-button--danger setup-button--ghost setup-button--compact"
-            onClick={() => void deleteSection(activeSectionId)}
-          >
-            {t("distribucion.deleteSection")}
-          </button>
-          <span style={{ flex: 1 }} />
-          <span className="setup-help" style={{ margin: 0 }}>
-            {t("distribucion.dragHint")}
-          </span>
-        </div>
-      ) : null}
-
-      {/* ── Selector de secciones (debajo de los controles de mesas) ── */}
-      <div className="admin-flex" style={{ gap: "0.4rem", flexWrap: "wrap", alignItems: "center" }}>
-        {sections.length === 0 ? (
-          <span className="setup-help" style={{ margin: 0 }}>
-            {t("distribucion.noSections")}
-          </span>
-        ) : (
-          sections.map((s) => (
+        <>
+          {/* ── Selector de secciones activas (con borrar sección) ── */}
+          <div className="admin-toolbar" style={{ flexWrap: "wrap", gap: "0.4rem", alignItems: "center" }}>
+            <label className="setup-label" style={{ margin: 0 }}>
+              {t("distribucion.section")}
+              <select
+                className="setup-input"
+                value={activeSectionId}
+                onChange={(e) => setActiveSectionId(e.target.value)}
+                aria-label={t("distribucion.section")}
+                style={{ marginLeft: "0.4rem" }}
+              >
+                {sections.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="setup-label" style={{ margin: 0 }}>
+              {t("distribucion.sectionPlaceholder")}
+              <input
+                className="setup-input"
+                value={newSectionName}
+                maxLength={60}
+                onChange={(e) => setNewSectionName(e.target.value)}
+                style={{ marginLeft: "0.4rem" }}
+              />
+            </label>
             <button
-              key={s.id}
               type="button"
-              className={`admin-tab ${activeSectionId === s.id ? "admin-tab--active" : ""}`}
-              onClick={() => setActiveSectionId(s.id)}
-              style={{ padding: "0.35rem 0.8rem", fontSize: "0.82rem" }}
+              className="setup-button setup-button--compact"
+              onClick={() => void addSection()}
             >
-              {s.name}
+              {t("distribucion.addSection")}
             </button>
-          ))
-        )}
-        <span style={{ flex: 1 }} />
-        <input
-          className="setup-input"
-          value={newSectionName}
-          onChange={(e) => setNewSectionName(e.target.value)}
-          placeholder={t("distribucion.sectionPlaceholder")}
-          maxLength={80}
-          style={{ maxWidth: "14rem" }}
-          aria-label={t("distribucion.sectionPlaceholder")}
-        />
-        <button type="button" className="setup-button setup-button--compact" onClick={() => void addSection()}>
-          {t("distribucion.addSection")}
-        </button>
-      </div>
-      <p className="setup-help" style={{ margin: "0 0 0.1rem" }}>
-        {t("distribucion.sectionsHint")}
-      </p>
+            <button
+              type="button"
+              className="setup-button setup-button--ghost--compact"
+              onClick={() => void deleteSection(activeSectionId)}
+            >
+              {t("distribucion.deleteSection")}
+            </button>
+          </div>
 
-      {/* ── Mapa de la sección activa (ocupa todo el espacio) ── */}
-      {activeSectionId ? (
-        <div
+          {/* ── Controles de mesas (sección activa) ── */}
+          <div className="admin-toolbar" style={{ flexWrap: "wrap", gap: "0.4rem" }}>
+            <button type="button" className="setup-button setup-button--compact" onClick={() => void addTable()}>
+              {t("distribucion.addTable")}
+            </button>
+            <button type="button" className="setup-button setup-button--compact" onClick={() => void autoAssign()}>
+              {t("distribucion.autoAssign")}
+            </button>
+            <button type="button" className="setup-button setup-button--compact" onClick={() => void printLabels()}>
+              {t("distribucion.printLabels")}
+            </button>
+            <button type="button" className="setup-button setup-button--compact" onClick={() => void exportTablesXlsx()}>
+              {t("distribucion.exportTables")}
+            </button>
+            <div className="admin-filter" style={{ display: "inline-flex", gap: "0.4rem", alignItems: "center" }}>
+              <label className="setup-label" style={{ margin: 0 }}>
+                {t("distribucion.shape")}
+              </label>
+              <select
+                className="setup-input"
+                value={newShape}
+                onChange={(e) => setNewShape(e.target.value as Shape)}
+                aria-label={t("distribucion.shape")}
+              >
+                {SHAPES.map((s) => (
+                  <option key={s.key} value={s.key}>
+                    {t(`distribucion.shape_${s.key}`)}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+        <TableCanvas
           ref={mapRef}
-          className="distribucion-map"
+          tables={tables as CanvasTable[]}
+          selectedId={selectedId}
+          onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
-          onPointerLeave={onPointerUp}
-          style={{
-            position: "relative",
-            flex: 1,
-            width: "100%",
-            minHeight: "24rem",
-            borderRadius: "1rem",
-            overflow: "hidden",
-            background: "linear-gradient(160deg, #241c12, #3a2d1c)",
-            border: "1px solid var(--setup-border)",
-            touchAction: "none",
-            userSelect: "none",
-          }}
-        >
-          {tables.map((tb) => {
-            // Maquetación: sillas alrededor de la mesa según su forma y nº de plazas.
-            const chairs = chairPositions(tb.shape, tb.w, tb.h, tb.seats);
-            return (
-              <div
-                key={tb.id}
-                data-table-id={tb.id}
-                role="button"
-                tabIndex={0}
-                aria-label={t("distribucion.tableAccessible", { name: tb.name })}
-                onPointerDown={(e) => onPointerDown(e, tb.id)}
-                onKeyDown={(e) => moveSelectedByKey(e, tb.id)}
-                style={{
-                  position: "absolute",
-                  left: `${tb.x}%`,
-                  top: `${tb.y}%`,
-                  width: `${tb.w}px`,
-                  height: `${tb.h}px`,
-                  transform: `translate(-50%, -50%) rotate(${tb.rotation}deg)`,
-                  cursor: "grab",
-                }}
-              >
-                {selectedId === tb.id ? (
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      void deleteTable(tb.id);
-                    }}
-                    title={t("distribucion.deleteTable")}
-                    aria-label={t("distribucion.deleteTable")}
-                    style={{
-                      position: "absolute",
-                      top: -8,
-                      right: -8,
-                      zIndex: 3,
-                      width: 28,
-                      height: 28,
-                      borderRadius: "50%",
-                      background: "#ef4444",
-                      color: "#fff",
-                      border: 0,
-                      cursor: "pointer",
-                      fontSize: "0.8rem",
-                      lineHeight: 1,
-                      boxShadow: "0 2px 6px rgba(0,0,0,0.5)",
-                    }}
-                  >
-                    ✕
-                  </button>
-                ) : null}
-                {/* Sillas alrededor */}
-                {chairs.map((c, i) => (
-                  <span
-                    key={i}
-                    aria-hidden="true"
-                    style={{
-                      position: "absolute",
-                      left: `${c.x}%`,
-                      top: `${c.y}%`,
-                      width: 11,
-                      height: 11,
-                      transform: "translate(-50%, -50%)",
-                      borderRadius: "50%",
-                      background: "rgba(255,255,255,0.35)",
-                      border: "1px solid rgba(255,255,255,0.5)",
-                      zIndex: 1,
-                    }}
-                  />
-                ))}
-                {/* Cuerpo de la mesa */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    borderRadius: tb.shape === "rect" || tb.shape === "square" ? "0.35rem" : "50%",
-                    border: `2px solid ${selectedId === tb.id ? "var(--setup-accent)" : "rgba(255,255,255,0.55)"}`,
-                    background: "linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08))",
-                    boxShadow: selectedId === tb.id ? "0 0 0 3px var(--setup-accent)" : "0 6px 16px rgba(0,0,0,0.45)",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "0.1rem",
-                    zIndex: 2,
-                  }}
-                >
-                  <span
-                    style={{
-                      fontWeight: 700,
-                      fontSize: "0.72rem",
-                      color: "#fff",
-                      textShadow: "0 1px 3px rgba(0,0,0,0.6)",
-                    }}
-                  >
-                    {tb.name}
-                  </span>
-                  <span style={{ opacity: 0.9, fontSize: "0.62rem", color: "#fff" }}>
-                    {tb.guests.length}/{tb.seats}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
-          {tables.length === 0 ? (
-            <p
-              style={{
-                position: "absolute",
-                inset: 0,
-                display: "grid",
-                placeItems: "center",
-                color: "rgba(255,255,255,0.5)",
-                fontSize: "0.85rem",
-                margin: 0,
-              }}
-            >
-              {t("distribucion.emptyMap")}
-            </p>
-          ) : null}
-        </div>
+          onDeleteTable={(id) => void deleteTable(id)}
+          onMoveSelectedByKey={moveSelectedByKey}
+          emptyMapLabel={t("distribucion.emptyMap")}
+          t={t}
+        />
+        </>
       ) : (
         <div className="setup-background-panel" style={{ textAlign: "center", padding: "2rem" }}>
           <p className="setup-help">{t("distribucion.createSectionFirst")}</p>
+          <div style={{ display: "flex", gap: "0.5rem", justifyContent: "center", alignItems: "flex-end" }}>
+            <label
+              style={{ fontSize: "0.75rem", display: "block", textAlign: "left" }}
+              htmlFor="distribucion.newSection"
+            >
+              {t("distribucion.sectionPlaceholder")}
+              <input
+                id="distribucion.newSection"
+                className="setup-input"
+                value={newSectionName}
+                maxLength={60}
+                onChange={(e) => setNewSectionName(e.target.value)}
+              />
+            </label>
+            <button type="button" className="setup-button setup-button--compact" onClick={() => void addSection()}>
+              {t("distribucion.addSection")}
+            </button>
+          </div>
         </div>
       )}
 

@@ -22,6 +22,7 @@ import { validateConfigForSave } from "../../lib/config-validation";
 import { MAX_YEARS_AHEAD } from "../../lib/constants";
 import { downloadJson, downloadText } from "../../lib/file-utils";
 import { buildInvitationIcs } from "./manage-tab-helpers";
+import { ToolboxPanel } from "./toolbox-panel";
 
 /** Subcolecciones duplicables entre invitaciones (copiar sección). */
 const CLONABLE_SUBS = ["gallery", "audio", "configImages"] as const;
@@ -909,94 +910,19 @@ const ManageTab = memo(function ManageTab() {
           </div>
 
           {/* Comparar invitaciones + validador de configuración */}
-          <div className="setup-background-panel">
-            <p className="setup-label">{t("manage.compareTitle")}</p>
-            <div className="admin-flex" style={{ gap: "0.5rem", flexWrap: "wrap" }}>
-              <select
-                className="setup-input"
-                value={cmpA}
-                onChange={(e) => setCmpA(e.target.value)}
-                aria-label={t("manage.compareA")}
-                style={{ maxWidth: "100%" }}
-              >
-                <option value="">A —</option>
-                {invitations.map((inv) => (
-                  <option key={inv.id} value={inv.id}>
-                    {inv.id}
-                  </option>
-                ))}
-              </select>
-              <select
-                className="setup-input"
-                value={cmpB}
-                onChange={(e) => setCmpB(e.target.value)}
-                aria-label={t("manage.compareB")}
-                style={{ maxWidth: "100%" }}
-              >
-                <option value="">B —</option>
-                {invitations.map((inv) => (
-                  <option key={inv.id} value={inv.id}>
-                    {inv.id}
-                  </option>
-                ))}
-              </select>
-              <button className="setup-button setup-button--compact" type="button" onClick={() => void handleCompare()}>
-                {t("manage.compareButton")}
-              </button>
-            </div>
-            {cmpDiff.length > 0 ? (
-              <div
-                style={{
-                  marginTop: "0.5rem",
-                  maxHeight: "10rem",
-                  overflowY: "auto",
-                  border: "1px solid var(--setup-border)",
-                  borderRadius: "0.5rem",
-                }}
-              >
-                {cmpDiff.map((d) => (
-                  <div
-                    key={d.key}
-                    style={{
-                      padding: "0.3rem 0.6rem",
-                      fontSize: "0.75rem",
-                      borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)",
-                    }}
-                  >
-                    <strong>{d.key}</strong>: <code>{d.a}</code> → <code>{d.b}</code>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="setup-help" style={{ margin: "0.4rem 0 0" }}>
-                {t("manage.compareNone")}
-              </p>
-            )}
-          </div>
-
-          <div className="setup-background-panel">
-            <p className="setup-label">{t("manage.validatorTitle")}</p>
-            <p className="setup-help">{t("manage.validatorHelp")}</p>
-            <textarea
-              className="setup-textarea"
-              value={validatorJson}
-              onChange={(e) => setValidatorJson(e.target.value)}
-              rows={5}
-              spellCheck={false}
-              style={{ fontFamily: "monospace", fontSize: "0.75rem" }}
-              aria-label={t("manage.validatorTitle")}
-            />
-            <div className="setup-actions">
-              <button className="setup-button setup-button--compact" type="button" onClick={handleValidate}>
-                {t("manage.validatorButton")}
-              </button>
-            </div>
-            {validatorResult ? (
-              <p className={validatorResult.ok ? "setup-success" : "setup-error"} role="alert">
-                {validatorResult.msg}
-              </p>
-            ) : null}
-          </div>
+          <ToolboxPanel
+            invitations={invitations}
+            cmpA={cmpA}
+            cmpB={cmpB}
+            onCmpA={setCmpA}
+            onCmpB={setCmpB}
+            cmpDiff={cmpDiff}
+            onCompare={() => void handleCompare()}
+            validatorJson={validatorJson}
+            onValidatorJson={setValidatorJson}
+            validatorResult={validatorResult}
+            onValidate={handleValidate}
+          />
 
           {/* F1-6: duplicar sección desde otra invitación */}
           <div className="setup-background-panel">

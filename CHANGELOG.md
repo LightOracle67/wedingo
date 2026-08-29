@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.179.0 — 2026-08-29
+- Modularización: la interfaz de las páginas del administrador se divide en subcomponentes de presentación (modal de edición de asistencias, fila de la tabla de datos, panel de herramientas de Gestión y lienzo de mesas de Distribución), cada uno memoizado y testado por separado.
+
 ## 2.178.0 — 2026-08-29
 - Modularización: el cálculo del contador del RSVP, la construcción de los documentos de un invitado guardado manualmente y el cálculo de cambios del guardado de la configuración se extraen a helpers puros (rsvp-core, attendance-core, save-config-core), con tests unitarios propios.
 ## 2.177.0 — 2026-08-29
