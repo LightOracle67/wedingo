@@ -14,6 +14,7 @@ import { parseDietaryInfo } from "../../lib/rsvp-utils";
 import { parseTransportDepartures } from "../../lib/transport-utils";
 import { departureLabel, type Departure } from "../sections/rsvp/derive";
 import { ALLERGIES } from "../sections/rsvp/constants";
+import { getDietaryItems, getChildrenDietary, formatMenuLabel } from "./attendance-core";
 
 interface RsvpEntry {
   id: string;
@@ -71,31 +72,6 @@ interface AttendanceTabProps {
 }
 
 const PAGE_SIZES = [10, 25, 50, 100];
-
-function parseDietaryItems(dietaryInfo: string): string[] {
-  if (!dietaryInfo) return [];
-  return dietaryInfo
-    .split(" | ")
-    .map((s) => s.trim())
-    .filter((s) => s && !s.startsWith("Menú:"));
-}
-
-function getDietaryItems(dietaryInfo: string): string[] {
-  return parseDietaryItems(dietaryInfo);
-}
-
-/** Alergias e intolerancias de los niños, como lista plana para la columna. */
-function getChildrenDietary(entry: RsvpEntry): string[] {
-  const list = Array.isArray(entry.childrenAllergies) ? entry.childrenAllergies.filter(Boolean) : [];
-  const other = (entry.childrenAllergiesOther || "").trim();
-  if (other) list.push(other);
-  return list;
-}
-
-function formatMenuLabel(mealChoice: string, t: (key: string) => string): string | null {
-  if (!mealChoice) return null;
-  return t("rsvp.menu" + mealChoice.charAt(0).toUpperCase() + mealChoice.slice(1));
-}
 
 /** Icono de lápiz (editar). SVG inline: sin dependencias ni emojis. */
 function IconEdit() {

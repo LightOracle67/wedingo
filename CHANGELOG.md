@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.172.0 — 2026-08-28
+- Modularización (fase 2): la lógica de presentación del panel de asistencias (cálculo de alergias, menú e intolerancias de los niños) se extrae a un módulo puro attendance-core, sin dependencia de React.
+
 ## 2.171.0 — 2026-08-28
 - Modularización del RSVP: el núcleo del hook useRsvp (tipos RsvpFormData/RsvpEntryData, valores por defecto del formulario y la restauración del borrador guardado) se extrae a un módulo separado src/hooks/rsvp-core.ts, lo que deja useRsvp.ts únicamente con la lógica del hook y reduce su tamaño.
 
