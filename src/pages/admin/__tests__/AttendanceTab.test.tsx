@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
@@ -59,6 +59,17 @@ const baseConfig = {
 };
 
 describe("AttendanceTab", () => {
+  beforeEach(() => {
+    // El guardado manual llama a varios mocks del lote y del toast; limpiamos
+    // entre tests para que los asserts de "toHaveBeenCalledWith" no vean
+    // llamadas acumuladas de casos anteriores (los que añaden acompañante
+    // mezclaban su contador con los asertos de edición).
+    fsMocks.update.mockClear();
+    fsMocks.setDoc.mockClear();
+    fsMocks.commit.mockClear();
+    fsMocks.delete.mockClear();
+    mockAddToast.mockClear();
+  });
   it("renders stats line", () => {
     render(<AttendanceTab {...baseConfig} />);
     expect(screen.getByText("attendance.statsLine")).toBeDefined();

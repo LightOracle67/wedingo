@@ -360,3 +360,26 @@ export function applyRsvpFieldUpdate(
   }
   return { ...current, [field]: value };
 }
+
+/**
+ * Calcula el siguiente valor del contador de confirmaciones de una invitación.
+ *
+ * Lógica pura del bloque de contador de `submitRsvpData`: a partir del
+ * contador actual persistido calcula el nuevo `count` (total de respuestas,
+ * que las reglas exigen exactamente == valor_previo + 1 en escrituras
+ * públicas) y el nuevo `attendingCount` (aforo real: solo suma si esta
+ * respuesta asiste). Separa esta aritmética del hook para poder testearla
+ * sin Firestore y para que `useRsvp` solo alcance la escritura.
+ */
+export function computeNextCounter(
+  existing: { count?: unknown; attendingCount?: unknown } | undefined,
+  isAttending: boolean,
+): { count: number; attendingCount: number } {
+  const raw = Number(existing?.count ?? 0);
+  const count = Number.isFinite(raw) ? raw + 1 : 1;
+  // attendingCount refleja solo a quien asiste; si un doc legacy no tiene el
+  // campo, se trata como 0 para no inflar el aforo.
+  const rawAttending = Number(existing?.attendingCount ?? 0);
+  const attendingCount = (Number.isFinite(rawAttending) ? rawAttending : 0) + (isAttending ? 1 : 0);
+  return { count, attendingCount };
+}

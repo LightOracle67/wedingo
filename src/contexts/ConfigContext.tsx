@@ -16,6 +16,7 @@ import { validateConfigForSave } from "../lib/config-validation";
 import { sectionHasContent } from "../lib/section-utils";
 import type { InvitationConfig } from "../types";
 import { decodeInviteConfig } from "../lib/invite-config-codec";
+import { computeSetupChanges, SUPER_ADMIN_FIELDS } from "./save-config-core";
 import { clearSession } from "../lib/sessionVars";
 import { deleteSetupTokenRecord, hashSetupToken } from "../lib/setup-token";
 import { safeGetItem, safeRemoveItem, hasAnalyticsConsent, hasRejectedConsent } from "../lib/storage";
@@ -467,45 +468,12 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         candidate.weddingMinute = config.weddingMinute;
       }
 
-      // Detecta campos cambiados comparando candidate vs config actual (no vs defaultConfig)
-      const changed: string[] = [];
-      for (const key of Object.keys(candidate)) {
-        const newVal = String(candidate[key as keyof InvitationConfig] ?? "");
-        const oldVal = String((baseForDiff as Record<string, unknown>)[key] ?? "");
-        if (newVal !== oldVal) {
-          changed.push(key);
-        }
-      }
-
-      // Campos que SIEMPRE se envían aunque no hayan cambiado (requeridos por reglas/seguridad)
-      const alwaysInclude = new Set<string>([
-        "privacyConsent",
-        "privacyConsentAt",
-        "privacyPolicyVersion",
-        "firstName",
-        "secondName",
-      ]);
-      if (!hasStoredConfig) {
-        alwaysInclude.add("createdAt");
-        alwaysInclude.add("setupTokenHash");
-      }
-
-      // Construye payload incremental: solo campos cambiados + alwaysInclude + migraciones
-      const payload: Record<string, unknown> = {};
-      const originalImages: Record<string, string> = {};
-      for (const key of changed) {
-        if (key in candidate) {
-          payload[key] = (candidate as Record<string, unknown>)[key];
-        }
-      }
-      // Añade campos obligatorios aunque no hayan cambiado
-      for (const key of alwaysInclude) {
-        if (!(key in payload) && key in candidate) {
-          payload[key] = (candidate as Record<string, unknown>)[key];
-        }
-      }
+      // Detecta campos cambiados, campos obligatorios y el payload incremental
+      // (lógica pura en save-config-core: testable sin React ni Firestore).
+      const { changed, alwaysInclude, payload } = computeSetupChanges(candidate, baseForDiff, hasStoredConfig);
 
       // Migración de imágenes data-URL → configImages (solo si cambiaron)
+      const originalImages: Record<string, string> = {};
       const { saveConfigImage } = await import("../lib/image-store");
       for (const imageId of ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"] as const) {
         const val = (candidate as Record<string, unknown>)[imageId];
@@ -540,16 +508,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       }
 
       // Campos de SUPERADMIN: nunca los toca el admin
-      const superAdminFields = [
-        "verified",
-        "adminNotes",
-        "manualExpiry",
-        "status",
-        "tags",
-        "rsvpCapacity",
-        "rsvpSignatureEnabled",
-      ];
-      for (const k of superAdminFields) {
+      for (const k of SUPER_ADMIN_FIELDS) {
         delete payload[k];
       }
       delete (payload as Record<string, unknown>).musicFile;

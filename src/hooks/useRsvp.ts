@@ -35,7 +35,7 @@ import { stableGuestId } from "../lib/guest-id";
  */
 const dietaryInfoCache = new Map<string, string>();
 
-import { RsvpFormData, RsvpEntryData, RsvpFormDefault, applyRestoredForm, processRsvpSnapshot, applyRsvpFieldUpdate } from "./rsvp-core";
+import { RsvpFormData, RsvpEntryData, RsvpFormDefault, applyRestoredForm, processRsvpSnapshot, applyRsvpFieldUpdate, computeNextCounter } from "./rsvp-core";
 export type { RsvpFormData, RsvpEntryData } from "./rsvp-core";
 
 /**
@@ -492,12 +492,9 @@ export function useRsvp(
             await setDoc(counterRef, { count: 0, attendingCount: 0 });
           } else {
             const data = counterSnap.data() as Record<string, unknown> | undefined;
-            const raw = Number(data?.count ?? 0);
-            nextCount = Number.isFinite(raw) ? raw + 1 : 1;
-            // attendingCount (aforo real) cuenta solo quien asiste; las
-            // respuestas legacy sin el campo se tratan como 0.
-            const rawAttending = Number(data?.attendingCount ?? 0);
-            nextAttending = (Number.isFinite(rawAttending) ? rawAttending : 0) + (isAttending ? 1 : 0);
+            const { count: c, attendingCount: a } = computeNextCounter(data, isAttending);
+            nextCount = c;
+            nextAttending = a;
           }
         } catch (counterErr) {
           safeLogError(["[app]", "[useRsvp]", "RSVP counter setup failed"], counterErr);

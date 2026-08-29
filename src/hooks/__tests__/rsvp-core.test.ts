@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { applyRsvpFieldUpdate, RsvpFormDefault } from "../rsvp-core";
+import { applyRsvpFieldUpdate, RsvpFormDefault, computeNextCounter } from "../rsvp-core";
 import { MAX_CHILDREN, MAX_COMPANIONS } from "../../pages/sections/rsvp/constants";
 
 describe("applyRsvpFieldUpdate", () => {
@@ -41,5 +41,23 @@ describe("applyRsvpFieldUpdate", () => {
     const base = RsvpFormDefault();
     const next = applyRsvpFieldUpdate(base, "transportMode", "bus");
     expect(next.transportMode).toBe("bus");
+  });
+
+  describe("computeNextCounter", () => {
+    it("incrementa el total y suma al aforo cuando la respuesta asiste", () => {
+      expect(computeNextCounter({ count: 4, attendingCount: 3 }, true)).toEqual({ count: 5, attendingCount: 4 });
+    });
+
+    it("incrementa el total sin sumar al aforo cuando el invitado declina", () => {
+      expect(computeNextCounter({ count: 4, attendingCount: 3 }, false)).toEqual({ count: 5, attendingCount: 3 });
+    });
+
+    it("arranca en 1 cuando no existe contador previo", () => {
+      expect(computeNextCounter(undefined, true)).toEqual({ count: 1, attendingCount: 1 });
+    });
+
+    it("trata docs legacy sin attendingCount como 0 (no infla el aforo)", () => {
+      expect(computeNextCounter({ count: 7 }, true)).toEqual({ count: 8, attendingCount: 1 });
+    });
   });
 });

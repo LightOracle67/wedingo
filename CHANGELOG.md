@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.178.0 — 2026-08-29
+- Modularización: el cálculo del contador del RSVP, la construcción de los documentos de un invitado guardado manualmente y el cálculo de cambios del guardado de la configuración se extraen a helpers puros (rsvp-core, attendance-core, save-config-core), con tests unitarios propios.
 ## 2.177.0 — 2026-08-29
 - Modularización: la actualización de campos del formulario RSVP (incluidos los límites de acompañantes y niños) pasa a una función pura en el núcleo RSVP, y la asignación automática de invitados a mesas se extrae como helper puro, ambos con tests propios.
 

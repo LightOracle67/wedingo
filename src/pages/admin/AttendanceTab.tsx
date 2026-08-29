@@ -14,7 +14,7 @@ import { parseDietaryInfo } from "../../lib/rsvp-utils";
 import { parseTransportDepartures } from "../../lib/transport-utils";
 import { departureLabel, type Departure } from "../sections/rsvp/derive";
 import { ALLERGIES } from "../sections/rsvp/constants";
-import { getDietaryItems, getChildrenDietary, formatMenuLabel } from "./attendance-core";
+import { getDietaryItems, getChildrenDietary, formatMenuLabel, normalizeManualName, buildManualMainPayload, buildManualCompanionPayload } from "./attendance-core";
 
 interface RsvpEntry {
   id: string;
@@ -253,47 +253,27 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
       const now = serverTimestamp();
       const isUpdate = Boolean(editing.id);
       // Id determinista para nuevos mains (misma convención que antes).
-      const norm = name
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]+/g, "_")
-        .slice(0, 30);
+      const norm = normalizeManualName(name);
       const mainId = editing.id ?? `main_manual_${norm || "invitado"}_${crypto.randomUUID()}`;
       const attending = editing.attendance === "yes";
-      // Las alergias se aplanan igual que el RSVP (join " | ") y se cifran
-      // como hace el cliente: las reglas exigen dietaryInfo cifrado o vacío.
-      const allergyText = [...editing.allergySelection, editing.allergyOther].filter((a: string) => a.trim()).join(" | ");
-      const encryptedDietary = allergyText ? encrypt(allergyText, inviteToken) : "";
       const complements = editing.companions.filter((c) => c.name.trim());
       // Esquema que cumple la regla create/update de rsvpResponses/.../responses
       // (whitelist de campos; todos los usados están permitidos).
-      const payload: Record<string, unknown> = {
-        rsvpType: "main",
-        guestName: name.slice(0, 120),
-        attendance: editing.attendance,
-        dietaryInfo: encryptedDietary,
+      const payload = await buildManualMainPayload(
+        {
+          name,
+          attendance: editing.attendance,
+          mealChoice: editing.mealChoice,
+          allergySelection: editing.allergySelection,
+          allergyOther: editing.allergyOther,
+          transportMode: editing.transportMode,
+          transportChoice: editing.transportChoice,
+          companions: complements.map((c) => ({ name: c.name, menu: c.menu, allergies: c.allergies, other: c.other })),
+        },
         inviteToken,
-        submittedAt: now,
-        privacyConsent: true,
-        privacyConsentAt: now,
-      };
-      if (attending) {
-        if (editing.mealChoice) payload.mealChoice = editing.mealChoice.slice(0, 30);
-        if (allergyText) {
-          payload.healthConsent = true;
-          payload.healthConsentAt = now;
-        }
-        payload.transportMode = editing.transportMode.slice(0, 10);
-        if (editing.transportChoice) payload.transportChoice = editing.transportChoice.slice(0, 20);
-        if (complements.length) {
-          payload.companionCount = complements.length;
-          payload.companionNames = complements.map((c) => c.name.trim().slice(0, 120));
-          payload.companionMenus = complements.map((c) => (c.menu ? c.menu.slice(0, 30) : ""));
-          payload.companionAllergies = complements.map((c) => [...c.allergies, c.other].filter((a: string) => a.trim()).join(" | "));
-          payload.companionAllergiesOther = complements.map((c) => c.other.slice(0, 200));
-        }
-      }
+        now,
+        encrypt,
+      );
       const batch = writeBatch(db);
       if (isUpdate) {
         batch.update(doc(db, "rsvpResponses", inviteToken, "responses", editing.id!), payload);
@@ -313,28 +293,19 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
       // que hace el flujo público, enlazado al main. Los niños ya no son
       // compañeros individuales: se declaran con contador en el principal.
       if (attending && complements.length) {
-        complements.forEach((c) => {
+        for (const c of complements) {
           const compId = c.docId ?? `comp_manual_${norm || "invitado"}_${crypto.randomUUID()}`;
-          const compAllergyText = [...c.allergies, c.other].filter((a: string) => a.trim()).join(" | ");
-          const compPayload: Record<string, unknown> = {
-            rsvpType: "companion",
-            guestName: c.name.trim().slice(0, 120),
-            attendance: "yes",
-            dietaryInfo: compAllergyText ? encrypt(compAllergyText, inviteToken) : "",
+          const compPayload = await buildManualCompanionPayload(
+            { name: c.name, allergies: c.allergies, other: c.other },
             inviteToken,
-            submittedAt: now,
-            privacyConsent: true,
-            privacyConsentAt: now,
-            mainGuestDocId: mainId,
-            mainGuestName: name.slice(0, 120),
-          };
-          if (compAllergyText) {
-            compPayload.healthConsent = true;
-            compPayload.healthConsentAt = now;
-          }
+            now,
+            mainId,
+            name.slice(0, 120),
+            encrypt,
+          );
           if (c.docId) batch.update(doc(db, "rsvpResponses", inviteToken, "responses", compId), compPayload);
           else batch.set(doc(db, "rsvpResponses", inviteToken, "responses", compId), compPayload);
-        });
+        }
       }
       // Borra los docs de acompañantes que ya no están en la lista: evita
       // filas huérfanas en la tabla (la sesión de admin lo permite).
