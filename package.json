@@ -20,7 +20,6 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css,json}\"",
     "preview": "vite preview",
     "translations:check": "node scripts/check-translations.js",
-    "consent:check": "node scripts/check-consent-cutoff.js",
     "audit": "npm audit",
     "audit:prod": "npm audit --production",
     "analyze": "vite-bundle-visualizer",
@@ -32,7 +31,7 @@
     "deploy": "npm run lint && npm run build && firebase deploy --only hosting,firestore:rules",
     "bump": "node scripts/bump-version.js",
     "loadtest": "k6 run scripts/load-test.js",
-    "preready": "npm run lint && npm run build && npm run changelog:check && npm run consent:check && npm run translations:check",
+    "preready": "npm run lint && npm run build && npm run changelog:check && npm run translations:check",
     "changelog:check": "node scripts/check-changelog.js",
     "test:rules": "firebase emulators:exec --only firestore --project demo-wedingo \"node scripts/rules-test.mjs\"",
     "check:fields": "node scripts/check-fields-vs-rules.mjs"

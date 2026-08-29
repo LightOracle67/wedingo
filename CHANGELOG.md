@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.170.0 — 2026-08-28
+- Migrados a Firestore los datos de producción: eliminados los 11 campos heredados de las respuestas RSVP (fechas de nacimiento, consentimiento parental, compañeros del modelo antiguo, contactos, etc.) y reducida la whitelist de firestore.rules a los 34 campos que la aplicación realmente escribe.
+- Eliminado el script de corte de consentimiento parental (la cláusula ya no existe) y su paso del preready.
+
 ## 2.169.0 — 2026-08-28
 - Debloat profundo: eliminadas 8 funciones muertas (animaciones por grupo, tamaño del audio, edad y fecha pasadas del antiguo modelo de niños, helper de descifrado de imágenes sin uso, resolución de campos de imagen, lector de ficheros a data-URL), su cobertura asociada y el fichero de política de privacidad duplicado en el código.
 - Eliminadas 57 claves de textos huérfanos en es/en (restos de las funciones retiradas: extras, reacciones, regalos, coche compartido, notas, encuesta musical, trivia, notas de voz, fotos del día, buzón, brindis, Facebook y confirmados en vivo, además de claves de paginación y del PDF antiguo).
