@@ -221,14 +221,6 @@ html.wed-no-anim-button-hover .setup-button:hover {
   box-shadow: none !important;
 }
 
-/* ── Microinteracciones: escala de los botones de reacción ─────────────── */
-html.wed-no-anim-reaction-hover .reactions__btn {
-  transition: none !important;
-}
-html.wed-no-anim-reaction-hover .reactions__btn:hover {
-  transform: none !important;
-}
-
 /* ── Fondo: resplandor animado del body ────────────────────────────────── */
 html.wed-no-anim-theme-glow-depth body::after {
   animation: none !important;

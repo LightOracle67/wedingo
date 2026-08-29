@@ -41,6 +41,7 @@ import EnvelopeOverlay from "../components/EnvelopeOverlay";
 import ErrorBoundary from "../components/ErrorBoundary";
 import Confetti, { CONF_TOTAL_MS } from "../components/Confetti";
 import WeddingDecorations from "../components/WeddingDecorations";
+import WelcomeVideoModal from "../components/WelcomeVideoModal";
 
 // ─── Secciones secundarias (carga diferida) ────────────────────────
 const TransportSection = lazy(() => import("./sections/TransportSection"));
@@ -791,29 +792,13 @@ export default function PublicInvitation() {
 
       {/* Vídeo de bienvenida: entrada y salida animadas (el componente se
           mantiene montado durante la salida para que el fade no se corte). */}
-      {envelopeOpen &&
-      (showWelcomeVideo || videoClosing) &&
-      publicConfig.welcomeVideo &&
-      config.welcomeVideoEnabled !== "false" ? (
-        <div
-          ref={welcomeVideoRef}
-          className={`welcome-video-overlay ${videoClosing ? "welcome-video-overlay--closing" : ""}`}
-          onClick={closeWelcomeVideo}
-          role="dialog"
-          aria-modal="true"
-          aria-label={t("welcomeVideo.title")}
-        >
-          <div
-            className={`welcome-video-card ${videoClosing ? "welcome-video-card--closing" : ""}`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button type="button" className="modal-close" onClick={closeWelcomeVideo} aria-label={t("common.close")}>
-              &times;
-            </button>
-            <video className="welcome-video" src={config.welcomeVideo} controls autoPlay playsInline />
-          </div>
-        </div>
-      ) : null}
+      <WelcomeVideoModal
+        show={Boolean(envelopeOpen && (showWelcomeVideo || videoClosing) && publicConfig.welcomeVideo && config.welcomeVideoEnabled !== "false")}
+        closing={videoClosing}
+        src={config.welcomeVideo || ""}
+        overlayRef={welcomeVideoRef}
+        onClose={closeWelcomeVideo}
+      />
 
       {/* Mientras el sobre está cerrado, el contenido trasero queda inerte e
           invisible para lectores de pantalla (WCAG 1.3.2 / 2.4.3). display:

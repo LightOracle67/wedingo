@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.180.0 — 2026-08-29
+- Modularización: el modal de vídeo de bienvenida de la invitación pública pasa a un subcomponente presentacional (WelcomeVideoModal) y se purgan bloques CSS muertos de funciones ya retiradas (reacciones, extras y filtros obsoletos del administrador).
+
 ## 2.179.0 — 2026-08-29
 - Modularización: la interfaz de las páginas del administrador se divide en subcomponentes de presentación (modal de edición de asistencias, fila de la tabla de datos, panel de herramientas de Gestión y lienzo de mesas de Distribución), cada uno memoizado y testado por separado.
 

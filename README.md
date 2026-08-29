@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.180.0 | 2026-08-29 | El modal de vídeo de bienvenida se extrae a un subcomponente y se purgan bloques CSS de funciones retiradas (reacciones, extras, filtros obsoletos). |
 | v2.179.0 | 2026-08-29 | La interfaz del administrador se modulariza en subcomponentes de presentación (modal de asistencias, fila de datos, panel de herramientas y lienzo de mesas), cada uno con tests propios |
 | v2.178.0 | 2026-08-29 | El contador del RSVP, los documentos de invitados manuales y el cálculo del guardado de configuración pasan a helpers puros con tests unitarios |
 | v2.177.0 | 2026-08-29 | Modularización: la actualización de campos del RSVP (con límites de acompañantes y niños) y la asignación automática de invitados a mesas pasan a helpers puros con tests propios |

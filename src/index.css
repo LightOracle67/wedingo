@@ -1479,12 +1479,6 @@
   word-break: break-word;
 }
 
-/* Sección conjunta de funciones sociales (extras): UNA sección al final con
-   todos los extras activos apilados. Si el contenido excede la pantalla, la
-   sección hace scroll INTERIOR (independiente del scroll general). */.story-extra-block .story-title{
-  margin-bottom: 0.5rem;
-}
-
 /* text-boda-texto: color de texto de la boda (heredado del tema). Estas
    clases Tailwind se usan en las páginas de la invitación pero no venían
    definidas, así que el texto muted no aplicaba. */.text-boda-texto{

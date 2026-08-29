@@ -1141,9 +1141,6 @@ select.setup-input {
   .admin-filters .setup-input {
     flex: 1 1 100%;
   }
-  .admin-filter-buttons .setup-button {
-    flex: 1;
-  }
   .admin-table th,
   .admin-table td {
     padding: 0.5rem 0.6rem;
@@ -1553,9 +1550,6 @@ select.setup-input {
   .gallery-array-editor__grid {
     grid-template-columns: 1fr;
   }
-}
-.cookie-consent-actions .setup-button {
-  flex: 1;
 }
 .legal-actions .setup-button {
   font-size: 0.8rem;
