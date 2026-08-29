@@ -14,14 +14,6 @@ export const MAX_ENCRYPTED_BYTES = 1000 * 1024;
 export const MAX_IMAGE_DIMENSION = 1600;
 export const TARGET_BYTES = TARGET_BYTES_DEFAULT;
 
-export const readFileAsDataUrl = (file: File) =>
-  new Promise<string>((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result as string);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-
 function canvasToType(canvas: HTMLCanvasElement, type: string, quality: number): string {
   let dataUrl = canvas.toDataURL(`image/${type}`, quality);
   if (!dataUrl.startsWith(`data:image/${type}`)) {

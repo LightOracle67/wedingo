@@ -8,7 +8,7 @@
  */
 
 /** Alergias e intolerancias de un invitado, descartando el prefijo de menú. */
-export function parseDietaryItems(dietaryInfo: string): string[] {
+function parseDietaryItems(dietaryInfo: string): string[] {
   if (!dietaryInfo) return [];
   return dietaryInfo
     .split(" | ")

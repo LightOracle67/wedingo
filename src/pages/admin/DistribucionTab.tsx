@@ -23,12 +23,11 @@ import {
   writeBatch,
 } from "firebase/firestore";
 import { db, rsvpByInviteRef } from "../../lib/firebase";
-import { THEME_PREVIEW_COLORS } from "../../lib/constants";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 import { useConfirm } from "../../contexts/ConfirmContext";
 import { chairPositions } from "../../lib/table-geometry";
-import { clampPercent } from "./distribucion-helpers";
+import { clampPercent, buildLabelsHtml } from "./distribucion-helpers";
 
 type Shape = "circle" | "rect" | "oval" | "square";
 interface Section {
@@ -422,63 +421,13 @@ const DistribucionTab = memo(function DistribucionTab({
       addToast("info", t("distribucion.printNoGuests"));
       return;
     }
-    const esc = (v: string) =>
-      v.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-    // Colores del TEMA establecido (fallback del fondo y acento de la etiqueta).
-    const themeColors = THEME_PREVIEW_COLORS[theme || ""] ||
-      THEME_PREVIEW_COLORS["golden"] || { accent: "#d8b24a", bg: "#2a2418" };
-    const cornerImg = cornerDecoration
-      ? `<img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--tl"/>
-         <img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--tr"/>
-         <img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--bl"/>
-         <img src="${esc(cornerDecoration)}" alt="" class="lbl-corner lbl-corner--br"/>`
-      : `<span class="lbl-corner lbl-corner--tl"></span>
-         <span class="lbl-corner lbl-corner--tr"></span>
-         <span class="lbl-corner lbl-corner--bl"></span>
-         <span class="lbl-corner lbl-corner--br"></span>`;
-    // Fondo: se usa un <img> (las imágenes SÍ se imprimen en todos los
-    // navegadores; un background-image CSS requiere activar "imprimir fondos").
-    const bgImg = background ? `<img src="${esc(background)}" alt="" class="lbl-bg"/>` : "";
-    const cardStyle = `background-color:${themeColors.bg}${background ? `;background-image:url("${esc(background)}")` : ""}`;
-    const thanks = esc(t("distribucion.labelThanks"));
-    const enjoy = esc(t("distribucion.labelEnjoy"));
-    const pages = withGuests.flatMap((tb) =>
-      tb.guests.map(
-        (g) => `<div class="lbl-page">
-          <div class="lbl-card" style="${cardStyle}">
-            ${bgImg}
-            ${cornerImg}
-            <div class="lbl-text">
-              <p class="lbl-guest">${esc(g)}</p>
-              <p class="lbl-table" style="color:${themeColors.accent}">${esc(tb.name)}</p>
-              <p class="lbl-thanks">${thanks}</p>
-              <p class="lbl-enjoy">${enjoy}</p>
-            </div>
-          </div>
-        </div>`,
-      ),
+    // La generación del HTML de las etiquetas es lógica pura: vive en el
+    // helper `buildLabelsHtml` para poder cubrirla con tests unitarios.
+    const html = buildLabelsHtml(
+      tables,
+      { theme, background: background || "", cornerDecoration: cornerDecoration || "" },
+      t,
     );
-    const html = `<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${esc(t("distribucion.printTitle"))}</title><style>
-      @page{size:A4 portrait;margin:0}
-      *{box-sizing:border-box}
-      body{margin:0;font-family:Georgia,'Times New Roman',serif}
-      .lbl-page{width:210mm;height:297mm;display:grid;place-items:center;page-break-after:always;background:#fff;padding:14mm}
-      .lbl-page:last-child{page-break-after:auto}
-      .lbl-card{position:relative;width:min(78%,38rem);aspect-ratio:2/3;background-size:cover;background-position:center;border-radius:1.2rem;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.35)}
-      .lbl-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;image-rendering:auto;filter:blur(.4px)}
-      .lbl-scrim{position:absolute;inset:0;background:transparent;z-index:1;pointer-events:none}
-      .lbl-corner{position:absolute;width:60px;height:60px;z-index:2;opacity:.9}
-      .lbl-corner--tl{top:10px;left:10px}
-      .lbl-corner--tr{top:10px;right:10px;transform:scaleX(-1)}
-      .lbl-corner--bl{bottom:10px;left:10px;transform:scaleY(-1)}
-      .lbl-corner--br{bottom:10px;right:10px;transform:scale(-1)}
-      .lbl-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.45rem;text-align:center;padding:1.6rem;z-index:3;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.9),0 0 26px rgba(0,0,0,.55)}
-      .lbl-guest{margin:0;font-family:'Great Vibes',Georgia,cursive;font-size:clamp(2rem,9vw,3.2rem);line-height:1.1}
-      .lbl-table{margin:0;font-size:clamp(1rem,4.4vw,1.35rem);letter-spacing:.06em;text-transform:uppercase;opacity:.95}
-      .lbl-thanks{margin:1rem 0 0;font-size:clamp(.85rem,3.4vw,1rem);font-style:italic;opacity:.95}
-      .lbl-enjoy{margin:0;font-size:clamp(.85rem,3.4vw,1rem);font-style:italic;opacity:.9}
-      @media print{.lbl-scrim{background:transparent !important}}
-    </style></head><body>${pages.join("")}</body></html>`;
     const win = window.open("", "_blank");
     if (!win) {
       addToast("error", t("errors.generic"));

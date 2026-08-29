@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.176.0 — 2026-08-29
+- Modularización: la generación del HTML de etiquetas de impresión de la pestaña Distribución pasa a un helper puro (distribucion-helpers.ts), eliminada una función de conversión de archivos sin uso (readFileAsDataUrl) y des-exportadas utilidades de uso interno.
+
 ## 2.175.0 — 2026-08-28
 - Modularización: la pestaña Distribución usa las posiciones de sillas de la librería compartida (se eliminó una copia duplicada) y la pestaña Gestión construye el archivo de calendario en un helper puro, corregido el escape de punto y coma en la ubicación del calendario.
 

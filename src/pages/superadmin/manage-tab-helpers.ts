@@ -9,7 +9,7 @@
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 
 /** Datos de la invitación necesarios para construir el archivo de calendario. */
-export interface InvitationIcsInput {
+interface InvitationIcsInput {
   token: string;
   weddingYear?: unknown;
   weddingMonth?: unknown;
