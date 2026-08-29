@@ -45,7 +45,7 @@ import {
   addGalleryImage,
   updateGalleryDescription,
   updateGalleryOrder,
-  loadDecryptedField,
+
   loadGallery,
   getGalleryImageUrl,
   deleteGallery,
@@ -55,7 +55,7 @@ import {
   saveConfigImage,
   getConfigImage,
   deleteConfigImage,
-  resolveConfigImageField,
+
   resolveAllConfigImages,
   deleteAllConfigImages,
   clearGalleryCache,
@@ -88,9 +88,6 @@ describe("image-store", () => {
   });
   it("exports updateGalleryOrder", () => {
     expect(typeof updateGalleryOrder).toBe("function");
-  });
-  it("exports loadDecryptedField", () => {
-    expect(typeof loadDecryptedField).toBe("function");
   });
   it("exports loadGallery", () => {
     expect(typeof loadGallery).toBe("function");
@@ -186,22 +183,6 @@ describe("image-store", () => {
 
   it("updateGalleryOrder does nothing for empty items", async () => {
     await expect(updateGalleryOrder("token", [])).resolves.toBeUndefined();
-  });
-
-  it("loadDecryptedField decrypts encrypted data", async () => {
-    const result = await loadDecryptedField("token", "encrypted-string");
-    expect(result).toBe("data:image/jpeg;base64,decoded");
-  });
-
-  it("loadDecryptedField returns empty string for falsy input", async () => {
-    const result = await loadDecryptedField("token", "");
-    expect(result).toBe("");
-  });
-
-  it("loadDecryptedField returns empty string on decrypt failure", async () => {
-    mockDecrypt.mockRejectedValueOnce(new Error("Decrypt failed"));
-    const result = await loadDecryptedField("token", "bad-data");
-    expect(result).toBe("");
   });
 
   it("loadGallery returns empty array on empty snapshot", async () => {
@@ -459,27 +440,8 @@ describe("image-store", () => {
       await expect(deleteConfigImage("token", "couplePhoto")).rejects.toThrow("net");
     });
 
-    it("resolveConfigImageField returns the value untouched for non-refs", async () => {
-      await expect(resolveConfigImageField("token", "data:image/png;base64,x")).resolves.toBe(
-        "data:image/png;base64,x",
-      );
-      await expect(resolveConfigImageField(undefined, "x")).resolves.toBe("x");
-    });
 
-    it("resolveConfigImageField resolves a config image ref", async () => {
-      vi.mocked(firestore.getDoc).mockResolvedValueOnce({
-        exists: () => true,
-        data: () => ({ data: "enc" }),
-      } as never);
-      await expect(resolveConfigImageField("token", "__cfgimg:couplePhoto")).resolves.toBe(
-        "data:image/jpeg;base64,decoded",
-      );
-    });
 
-    it("resolveConfigImageField returns undefined when the ref has no doc", async () => {
-      vi.mocked(firestore.getDoc).mockResolvedValueOnce({ exists: () => false } as never);
-      await expect(resolveConfigImageField("token", "__cfgimg:couplePhoto")).resolves.toBeUndefined();
-    });
 
     it("resolveAllConfigImages skips refs without a doc", async () => {
       vi.mocked(firestore.getDoc).mockResolvedValueOnce({ exists: () => false } as never);

@@ -16,7 +16,6 @@ import {
   toggleDisabledAnimations,
   toggleAllDisabled,
   ALL_ANIMATIONS_KEY,
-  animationsByGroup,
 } from "../animations";
 import { normalizeConfig } from "../normalize-config";
 import { defaultConfig } from "../constants";
@@ -41,11 +40,6 @@ describe("Registro de animaciones", () => {
     }
   });
 
-  it("animationsByGroup agrupa todas las animaciones sin perder ninguna", () => {
-    const map = animationsByGroup();
-    const total = Array.from(map.values()).reduce((n, list) => n + list.length, 0);
-    expect(total).toBe(ANIMATIONS.length);
-  });
 
   it("todos los ids del registro tienen nombre y hint en es.json y en.json", () => {
     type JsonLocale = { animations?: { items?: Record<string, { name?: string; hint?: string }> } };

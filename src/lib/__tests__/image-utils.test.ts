@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { compressImage, compressImageTransparent, readFileAsDataUrl } from "../image-utils";
+import { compressImage, compressImageTransparent } from "../image-utils";
 
 // ── Mocks del DOM (canvas, Image, FileReader, URL) ─────────────────────
 let imgInstance: {
@@ -57,34 +57,6 @@ afterEach(() => {
   URL.revokeObjectURL = origRevokeObjectURL;
 });
 
-describe("readFileAsDataUrl", () => {
-  it("resolves with the file data URL", async () => {
-    const FakeReader = class {
-      result = "data:text/plain;base64,AAA";
-      onload: (() => void) | null = null;
-      onerror: (() => void) | null = null;
-      readAsDataURL() {
-        this.onload?.();
-      }
-    };
-    vi.stubGlobal("FileReader", FakeReader);
-    await expect(readFileAsDataUrl(makeFile("text/plain", 10))).resolves.toBe("data:text/plain;base64,AAA");
-    vi.unstubAllGlobals();
-  });
-
-  it("rejects when the reader errors", async () => {
-    const FakeReader = class {
-      onload: (() => void) | null = null;
-      onerror: ((e?: unknown) => void) | null = null;
-      readAsDataURL() {
-        this.onerror?.(new Error("read failed"));
-      }
-    };
-    vi.stubGlobal("FileReader", FakeReader);
-    await expect(readFileAsDataUrl(makeFile("text/plain", 10))).rejects.toThrow("read failed");
-    vi.unstubAllGlobals();
-  });
-});
 
 describe("compressImage", () => {
   it("uses the fast path for a small JPEG", async () => {

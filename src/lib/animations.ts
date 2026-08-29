@@ -195,13 +195,3 @@ export function toggleDisabledAnimations(raw: string | undefined, id: string, en
   return serializeDisabledAnimations(current);
 }
 
-/** Agrupa las animaciones del registro por grupo, respetando el orden. */
-export function animationsByGroup(): Map<string, readonly AnimationDef[]> {
-  const map = new Map<string, AnimationDef[]>();
-  for (const group of ANIMATION_GROUPS) map.set(group.id, []);
-  for (const anim of ANIMATIONS) {
-    const bucket = map.get(anim.groupId);
-    if (bucket) bucket.push(anim);
-  }
-  return map;
-}

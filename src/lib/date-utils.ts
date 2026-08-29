@@ -5,47 +5,6 @@ import { MONTH_OPTIONS, MONTH_VALUE_TO_NUMBER } from "./constants";
  * @param {string} birthDateStr - Fecha en formato YYYY-MM-DD.
  * @returns {number|null}
  */
-export function isDateInPast(year: string, month: string, day: string): boolean {
-  const monthIndex = [
-    "enero",
-    "febrero",
-    "marzo",
-    "abril",
-    "mayo",
-    "junio",
-    "julio",
-    "agosto",
-    "septiembre",
-    "octubre",
-    "noviembre",
-    "diciembre",
-  ].indexOf(month);
-  if (monthIndex === -1) {
-    return false;
-  }
-  const date = new Date(Number(year), monthIndex, Number(day));
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const result = date < today;
-
-  return result;
-}
-
-export function computeAge(birthDateStr: string) {
-  if (!birthDateStr) {
-    return null;
-  }
-  const birth = new Date(birthDateStr + "T00:00:00");
-  const today = new Date();
-  let age = today.getFullYear() - birth.getFullYear();
-  const m = today.getMonth() - birth.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
-    age--;
-  }
-
-  return age;
-}
-
 /**
  * Valida los campos de fecha de una configuración de boda.
  * @param {object} config - Configuración con weddingDay, weddingMonth, weddingYear, etc.

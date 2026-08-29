@@ -34,7 +34,8 @@
     "loadtest": "k6 run scripts/load-test.js",
     "preready": "npm run lint && npm run build && npm run changelog:check && npm run consent:check && npm run translations:check",
     "changelog:check": "node scripts/check-changelog.js",
-    "test:rules": "firebase emulators:exec --only firestore --project demo-wedingo \"node scripts/rules-test.mjs\""
+    "test:rules": "firebase emulators:exec --only firestore --project demo-wedingo \"node scripts/rules-test.mjs\"",
+    "check:fields": "node scripts/check-fields-vs-rules.mjs"
   },
   "dependencies": {
     "@sentry/react": "^10.71.0",

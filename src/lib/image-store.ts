@@ -113,15 +113,6 @@ export async function updateGalleryOrder(inviteToken: string, items: { id: strin
   META_CACHE.delete(inviteToken);
 }
 
-export async function loadDecryptedField(inviteToken: string, encrypted: string) {
-  if (!encrypted) return "";
-  try {
-    return await decrypt(encrypted, inviteToken);
-  } catch {
-    return "";
-  }
-}
-
 export async function loadGallery(inviteToken: string) {
   try {
     const metas = await loadGalleryMeta(inviteToken);
@@ -407,16 +398,6 @@ async function loadConfigImageWithRetry(
 export async function deleteConfigImage(inviteToken: string, imageId: string): Promise<void> {
   await deleteDoc(doc(cfgImgCol(inviteToken), imageId));
   CONFIG_IMG_CACHE.delete(`${inviteToken}:${imageId}`);
-}
-
-export async function resolveConfigImageField(
-  inviteToken: string | undefined,
-  fieldValue: string | undefined,
-): Promise<string | undefined> {
-  if (!fieldValue || !inviteToken) return fieldValue;
-  if (!isConfigImageRef(fieldValue)) return fieldValue;
-  const imageId = configImageIdFromRef(fieldValue);
-  return (await getConfigImage(inviteToken, imageId)) || undefined;
 }
 
 const CONFIG_IMAGE_IDS = ["couplePhoto", "backgroundImage", "customSeal", "cornerDecoration"] as const;

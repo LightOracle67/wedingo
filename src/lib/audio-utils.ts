@@ -76,9 +76,3 @@ export async function compressAudio(file: File): Promise<string> {
   return `data:audio/wav;base64,${btoa(binary)}`;
 }
 
-export function estimateAudioSize(durationSec: number): number {
-  const rawBytes = TARGET_SAMPLE_RATE * 2 * durationSec + 44;
-  const dataUrlLen = Math.round((rawBytes * 4) / 3) + 22;
-  const encryptedLen = dataUrlLen + 35;
-  return Math.round((encryptedLen * 4) / 3);
-}

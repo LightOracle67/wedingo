@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { compressAudio, estimateAudioSize } from "../audio-utils";
+import { compressAudio } from "../audio-utils";
 
 // ── Mocks del Web Audio API ────────────────────────────────────────────
 const origAudioContext = globalThis.AudioContext;
@@ -48,11 +48,3 @@ describe("compressAudio", () => {
   });
 });
 
-describe("estimateAudioSize", () => {
-  it("returns a positive growing size with duration", () => {
-    expect(estimateAudioSize(0)).toBeGreaterThan(0);
-    const a = estimateAudioSize(30);
-    const b = estimateAudioSize(120);
-    expect(b).toBeGreaterThan(a);
-  });
-});

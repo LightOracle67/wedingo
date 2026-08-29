@@ -46,7 +46,7 @@ const MAX_ALLOWED_YEAR = new Date().getFullYear() + MAX_YEARS_AHEAD;
  * (`inviteToken`, `hasStoredConfig`), de forma que los formularios solo
  * re-renderizan cuando tocan sus propios campos, no en cada tecla del resto.
  */
-export const ConfigActionsContext = createContext<ConfigActionsValue | null>(null);
+const ConfigActionsContext = createContext<ConfigActionsValue | null>(null);
 
 /** Valor expuesto por ConfigActionsContext (estable entre teclas). */
 interface ConfigActionsValue {

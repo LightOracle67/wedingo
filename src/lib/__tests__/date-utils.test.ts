@@ -1,66 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { isDateInPast, computeAge, validateWeddingDate } from "../date-utils";
+import { validateWeddingDate } from "../date-utils";
 
 describe("date-utils", () => {
-  it("isDateInPast returns true for past dates", () => {
-    expect(isDateInPast("2020", "enero", "1")).toBe(true);
-  });
-
-  it("isDateInPast returns false for future dates", () => {
-    const futureYear = String(new Date().getFullYear() + 1);
-    expect(isDateInPast(futureYear, "enero", "1")).toBe(false);
-  });
-
-  it("isDateInPast returns false for invalid month", () => {
-    expect(isDateInPast("2024", "notamonth", "1")).toBe(false);
-  });
-
-  it("isDateInPast returns false for today's date", () => {
-    const today = new Date();
-    const months = [
-      "enero",
-      "febrero",
-      "marzo",
-      "abril",
-      "mayo",
-      "junio",
-      "julio",
-      "agosto",
-      "septiembre",
-      "octubre",
-      "noviembre",
-      "diciembre",
-    ];
-    expect(isDateInPast(String(today.getFullYear()), months[today.getMonth()]!, String(today.getDate()))).toBe(false);
-  });
-
-  it("computeAge returns correct age for birthdate", () => {
-    const birthDate = new Date();
-    birthDate.setFullYear(birthDate.getFullYear() - 25);
-    expect(computeAge(birthDate.toISOString().split("T")[0]!)).toBe(25);
-  });
-
-  it("computeAge returns null for empty string", () => {
-    expect(computeAge("")).toBeNull();
-  });
-
-  it("computeAge handles birthday today", () => {
-    const today = new Date();
-    const birthDate = new Date(today.getFullYear() - 30, today.getMonth(), today.getDate());
-    const iso = birthDate.toISOString().split("T")[0]!;
-    expect(computeAge(iso)).toBe(30);
-  });
-
-  it("computeAge handles birthday later this year (not yet)", () => {
-    const today = new Date();
-    const birthDate = new Date(today.getFullYear() - 30, today.getMonth() + 1, today.getDate());
-    const iso = birthDate.toISOString().split("T")[0]!;
-    expect(computeAge(iso)).toBe(29);
-  });
-
-  it("computeAge handles leap year birthday (Feb 29)", () => {
-    expect(computeAge("2000-02-29")).toBeGreaterThanOrEqual(0);
-  });
 
   it("validateWeddingDate returns null for valid future date", () => {
     const config = {

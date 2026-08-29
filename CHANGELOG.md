@@ -2,6 +2,12 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.169.0 — 2026-08-28
+- Debloat profundo: eliminadas 8 funciones muertas (animaciones por grupo, tamaño del audio, edad y fecha pasadas del antiguo modelo de niños, helper de descifrado de imágenes sin uso, resolución de campos de imagen, lector de ficheros a data-URL), su cobertura asociada y el fichero de política de privacidad duplicado en el código.
+- Eliminadas 57 claves de textos huérfanos en es/en (restos de las funciones retiradas: extras, reacciones, regalos, coche compartido, notas, encuesta musical, trivia, notas de voz, fotos del día, buzón, brindis, Facebook y confirmados en vivo, además de claves de paginación y del PDF antiguo).
+- Eliminadas ~90 reglas CSS sin uso (restos de funciones retiradas y del formulario RSVP anterior a la versión 2.134).
+- Añadido el script npm check:fields para validar el enlace formulario → reglas de Firestore en cada edición.
+
 ## 2.168.0 — 2026-08-28
 - Eliminado el código muerto de la antigua función de buzón: buildMailboxSheet/MailboxRowLike (solo quedaban en el export de Excel) y las 12 claves de textos de la herramienta de buzón.
 - Des-exportados 20 símbolos que solo se usaban en su propio módulo (tipos de contextos, definiciones de animaciones, utilidades del recargador de módulos obsoletos, tipos de props, etc.).
