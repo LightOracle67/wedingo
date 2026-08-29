@@ -19,8 +19,9 @@ import { useConfirm } from "../../contexts/ConfirmContext";
 import { hashSetupToken } from "../../lib/setup-token";
 import { generateInviteToken, generateSetupToken } from "../../lib/token-utils";
 import { validateConfigForSave } from "../../lib/config-validation";
-import { MAX_YEARS_AHEAD, MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
+import { MAX_YEARS_AHEAD } from "../../lib/constants";
 import { downloadJson, downloadText } from "../../lib/file-utils";
+import { buildInvitationIcs } from "./manage-tab-helpers";
 
 /** Subcolecciones duplicables entre invitaciones (copiar sección). */
 const CLONABLE_SUBS = ["gallery", "audio", "configImages"] as const;
@@ -409,41 +410,19 @@ const ManageTab = memo(function ManageTab() {
   /** Genera un .ics con la fecha y el lugar de la boda (agenda). */
   const handleDownloadIcs = useCallback(() => {
     if (!token || !docData) return;
-    const year = String(docData.weddingYear || "");
-    const month = String(docData.weddingMonth || "");
-    const day = String(docData.weddingDay || "");
-    if (!year || !month || !day) {
+    const ics = buildInvitationIcs({
+      token,
+      weddingYear: docData.weddingYear,
+      weddingMonth: docData.weddingMonth,
+      weddingDay: docData.weddingDay,
+      weddingPlace: docData.weddingPlace,
+      firstName: docData.firstName,
+      secondName: docData.secondName,
+    });
+    if (!ics) {
       addToast("info", t("manage.noWeddingDate"));
       return;
     }
-    const monthNum = MONTH_VALUE_TO_NUMBER[month] || 1;
-    const start = new Date(Date.UTC(Number(year), monthNum - 1, Number(day), 12, 0, 0));
-    const stamp = start
-      .toISOString()
-      .replace(/[-:]/g, "")
-      .replace(/\.\d{3}/, "");
-    const end = new Date(start.getTime() + 3600000);
-    const endIcs = end
-      .toISOString()
-      .replace(/[-:]/g, "")
-      .replace(/\.\d{3}/, "");
-    const place = String(docData.weddingPlace || "");
-    const ics = [
-      "BEGIN:VCALENDAR",
-      "VERSION:2.0",
-      "PRODID:-//Wedingo//ES",
-      "BEGIN:VEVENT",
-      `UID:${token}@wedingo`,
-      `DTSTAMP:${stamp}`,
-      `DTSTART:${stamp}`,
-      `DTEND:${endIcs}`,
-      `SUMMARY:${String(docData.firstName || "")} & ${String(docData.secondName || "")} — Boda`,
-      place ? `LOCATION:${place.replace(/[\n,;]/g, "\\,")}` : "",
-      "END:VEVENT",
-      "END:VCALENDAR",
-    ]
-      .filter(Boolean)
-      .join("\r\n");
     downloadText(`${token}.ics`, ics, "text/calendar;charset=utf-8");
     addToast("success", t("manage.icsDownloaded"));
   }, [token, docData, addToast, t]);

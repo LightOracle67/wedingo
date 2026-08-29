@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.174.0](https://github.com/LightOracle67/wedingo/releases)  
+**Versión actual:** [v2.175.0](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
 
@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.175.0 | 2026-08-28 | Modularización: la pestaña Distribución usa las posiciones de sillas compartidas (sin duplicado) y Gestión construye el calendario en un helper puro con el escape de punto y coma corregido |
 | v2.174.0 | 2026-08-28 | Modularización: las utilidades de exportación y borrado de la pestaña Datos pasan a un helper puro |
 | v2.173.0 | 2026-08-28 | Modularización: el procesado de respuestas RSVP (descifrado de dietas y asociación de acompañantes) se extrae del hook a un helper puro, reduciendo useRsvp a la orquestación |
 | v2.172.0 | 2026-08-28 | Modularización del panel de asistencias: lógica de alergias/menú/niños extraída a un módulo puro |

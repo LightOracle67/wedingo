@@ -27,6 +27,8 @@ import { THEME_PREVIEW_COLORS } from "../../lib/constants";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 import { useConfirm } from "../../contexts/ConfirmContext";
+import { chairPositions } from "../../lib/table-geometry";
+import { clampPercent } from "./distribucion-helpers";
 
 type Shape = "circle" | "rect" | "oval" | "square";
 interface Section {
@@ -53,52 +55,6 @@ const SHAPES: Array<{ key: Shape; label: string }> = [
   { key: "circle", label: "Círculo" },
   { key: "square", label: "Cuadrado" },
 ];
-
-/** Acota un porcentaje de posición (x/y) de la mesa a [0, 100]. */
-function clampPercent(v: number): number {
-  return Math.min(100, Math.max(0, v));
-}
-
-/** Posiciones (%) de las sillas alrededor de la mesa según forma y plazas. */
-function chairPositions(shape: Shape, _w: number, _h: number, seats: number): Array<{ x: number; y: number }> {
-  const n = Math.min(Math.max(seats || 0, 0), 24);
-  if (n === 0) return [];
-  if (shape === "circle" || shape === "oval") {
-    // Sillas en círculo alrededor del centro (radio ~46% de la caja).
-    const out: Array<{ x: number; y: number }> = [];
-    for (let i = 0; i < n; i++) {
-      const ang = (i / n) * Math.PI * 2;
-      out.push({ x: 50 + Math.cos(ang) * 46, y: 50 + Math.sin(ang) * 46 });
-    }
-    return out;
-  }
-  // Rectángulo/cuadrado: sillas repartidas por el perímetro de la caja.
-  const W = 100;
-  const H = 100;
-  const P = 2 * (W + H);
-  const out: Array<{ x: number; y: number }> = [];
-  for (let i = 0; i < n; i++) {
-    const t = n === 1 ? 0.25 : i / n;
-    const d = t * P;
-    let x: number;
-    let y: number;
-    if (d < W) {
-      x = d;
-      y = 0;
-    } else if (d < W + H) {
-      x = W;
-      y = d - W;
-    } else if (d < 2 * W + H) {
-      x = W - (d - W - H);
-      y = H;
-    } else {
-      x = 0;
-      y = H - (d - 2 * W - H);
-    }
-    out.push({ x, y });
-  }
-  return out;
-}
 
 const DistribucionTab = memo(function DistribucionTab({
   inviteToken,
