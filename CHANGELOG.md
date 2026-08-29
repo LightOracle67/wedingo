@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.171.0 — 2026-08-28
+- Modularización del RSVP: el núcleo del hook useRsvp (tipos RsvpFormData/RsvpEntryData, valores por defecto del formulario y la restauración del borrador guardado) se extrae a un módulo separado src/hooks/rsvp-core.ts, lo que deja useRsvp.ts únicamente con la lógica del hook y reduce su tamaño.
+
 ## 2.170.0 — 2026-08-28
 - Migrados a Firestore los datos de producción: eliminados los 11 campos heredados de las respuestas RSVP (fechas de nacimiento, consentimiento parental, compañeros del modelo antiguo, contactos, etc.) y reducida la whitelist de firestore.rules a los 34 campos que la aplicación realmente escribe.
 - Eliminado el script de corte de consentimiento parental (la cláusula ya no existe) y su paso del preready.

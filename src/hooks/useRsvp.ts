@@ -24,7 +24,6 @@ import { trackEvent } from "../lib/analytics";
 import { buildMainGuestData, buildCompanionData } from "./rsvp-payloads";
 import { STORAGE_KEYS } from "../lib/storage-keys";
 import { withWriteRetry } from "../lib/async-utils";
-import type { Attendee } from "../types";
 import { safeLogError } from "../lib/safe-error";
 import { stableGuestId } from "../lib/guest-id";
 import { MAX_CHILDREN, MAX_COMPANIONS } from "../pages/sections/rsvp/constants";
@@ -39,96 +38,14 @@ import { MAX_CHILDREN, MAX_COMPANIONS } from "../pages/sections/rsvp/constants";
  */
 const dietaryInfoCache = new Map<string, string>();
 
-export interface RsvpFormData {
-  guestName: string;
-  attendance: string;
-  companionCount: number;
-  companionNames: string[];
-  companionMenus: string[];
-  companionAllergies: string[][];
-  companionAllergiesOther: string[];
-  /** Nº de niños que asisten como acompañantes del principal ("0" = ninguno). */
-  childrenCount: string;
-  /** Alergias del grupo de niños (chips + texto libre). */
-  childrenAllergies: string[];
-  childrenAllergiesOther: string;
-  companionTransportModes: string[];
-  companionTransportChoices: string[];
-  menuSelection: string;
-  allergies: string[];
-  allergiesOther: string;
-  privacyConsent: boolean;
-  healthConsent: boolean;
-  transportChoice: string;
-  transportMode: string;
-  transportTime: string;
-  transportPlace: string;
-  digitalSignature: boolean;
-}
+import { RsvpFormData, RsvpEntryData, RsvpFormDefault, applyRestoredForm } from "./rsvp-core";
+export type { RsvpFormData, RsvpEntryData } from "./rsvp-core";
 
-interface RsvpEntryData {
-  id: string;
-  rsvpType?: "main" | "companion";
-  guestName: string;
-  attendance: string;
-  dietaryInfo: string;
-  attendees: Attendee[];
-  companions: number;
-  companionCount: number;
-  companionNames: string[];
-  companionMenus: string[];
-  companionAllergies: string[][];
-  companionAllergiesOther: string[];
-  allergiesOther: string;
-  mealChoice: string;
-  guestNames: string;
-  note: string;
-  submittedAt: string;
-  /** Nº de niños del principal (lectura legacy de docs que ya lo guardan). */
-  childrenCount?: number;
-  childrenAllergies?: string[];
-  childrenAllergiesOther?: string;
-  healthConsent?: boolean;
-  transportChoice?: string;
-  transportMode?: string;
-  transportTime?: string;
-  transportPlace?: string;
-  companionTransportChoices?: string[];
-  companionTransportModes?: string[];
-  companionTransportTimes?: string[];
-  companionTransportPlaces?: string[];
-  companionDocIds?: string[];
-  mainGuestDocId?: string;
-  mainGuestName?: string;
-}
-
-function RsvpFormDefault(): RsvpFormData {
-  return {
-    guestName: "",
-    attendance: "alone",
-    companionCount: 0,
-    companionNames: [],
-    companionMenus: [],
-    companionAllergies: [],
-    companionAllergiesOther: [],
-    childrenCount: "0",
-    childrenAllergies: [],
-    childrenAllergiesOther: "",
-    companionTransportModes: [],
-    companionTransportChoices: [],
-    menuSelection: "",
-    allergies: [],
-    allergiesOther: "",
-    privacyConsent: false,
-    healthConsent: false,
-    transportChoice: "own",
-    transportMode: "own",
-    transportTime: "",
-    transportPlace: "",
-    digitalSignature: false,
-  };
-}
-
+/**
+ * Estado del formulario RSVP y de su entrada persistida, movidos a rsvp-core
+ * (núcleo puro sin hooks). El hook useRsvp solo gestiona la orquestación
+ * (efectos, listeners, validación y envío) delegando la forma de los datos.
+ */
 export function useRsvp(
   inviteToken: string,
   setAdminMessage: (msg: string) => void,
@@ -366,74 +283,7 @@ export function useRsvp(
   // H3: si el invitado ya envió en este navegador (marcador local, sin leer
   // datos del servidor), restaura el resumen "ya confirmaste" al recargar.
   // Solo aplica al invitado público (canRead=false) y sin duplicar.
-  /** Aplica un marcador guardado (form completo) sobre el estado previo,
-   * validando el tipo de cada campo conocido. Devuelve el estado restaurado
-   * sin tocar campos ausentes ni valores corruptos. */
-  function applyRestoredForm(prev: RsvpFormData, parsed: Record<string, unknown>): RsvpFormData {
-    const next: RsvpFormData = { ...prev };
-    const str = (k: string): boolean => {
-      const v = parsed[k];
-      if (typeof v === "string") {
-        (next as unknown as Record<string, unknown>)[k] = v;
-        return true;
-      }
-      return false;
-    };
-    const strArr = (k: string): boolean => {
-      const v = parsed[k];
-      if (Array.isArray(v) && v.every((x) => typeof x === "string")) {
-        (next as unknown as Record<string, unknown>)[k] = v;
-        return true;
-      }
-      return false;
-    };
-    const strArr2 = (k: string): boolean => {
-      const v = parsed[k];
-      if (Array.isArray(v) && v.every((x) => Array.isArray(x) && x.every((y) => typeof y === "string"))) {
-        (next as unknown as Record<string, unknown>)[k] = v;
-        return true;
-      }
-      return false;
-    };
-    const bool = (k: string): boolean => {
-      const v = parsed[k];
-      if (typeof v === "boolean") {
-        (next as unknown as Record<string, unknown>)[k] = v;
-        return true;
-      }
-      return false;
-    };
-    const num = (k: string): boolean => {
-      const v = parsed[k];
-      if (typeof v === "number" && Number.isFinite(v)) {
-        (next as unknown as Record<string, unknown>)[k] = v;
-        return true;
-      }
-      return false;
-    };
-    const letters: Array<[string, "str" | "arr" | "arr2" | "bool" | "num"]> = [
-      ["guestName", "str"], ["attendance", "str"], ["childrenCount", "str"],
-      ["childrenAllergiesOther", "str"], ["menuSelection", "str"], ["allergiesOther", "str"],
-      ["transportChoice", "str"], ["transportMode", "str"], ["transportTime", "str"],
-      ["transportPlace", "str"], ["companionCount", "num"], ["companionNames", "arr"],
-      ["companionMenus", "arr"], ["companionAllergies", "arr2"], ["companionAllergiesOther", "arr"],
-      ["childrenAllergies", "arr"], ["allergies", "arr"],
-      ["companionTransportModes", "arr"], ["companionTransportChoices", "arr"],
-      ["privacyConsent", "bool"], ["healthConsent", "bool"], ["digitalSignature", "bool"],
-    ];
-    for (const [k, kind] of letters) {
-      if (kind === "str") str(k);
-      else if (kind === "arr") strArr(k);
-      else if (kind === "arr2") strArr2(k);
-      else if (kind === "bool") bool(k);
-      else num(k);
-    }
-    // La asistencia solo admite los tres valores del modelo.
-    if (next.attendance !== "alone" && next.attendance !== "with" && next.attendance !== "no") {
-      next.attendance = prev.attendance;
-    }
-    return next;
-  }
+  
 
   useEffect(() => {
     if (canRead || !inviteToken || hasSubmitted) return;
