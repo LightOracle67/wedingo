@@ -45,4 +45,23 @@ if (globalThis.crypto && typeof globalThis.crypto.randomUUID !== "function") {
   });
 }
 
+// jsdom NO expone localStorage de forma fiable en todos los entornos: algunos
+// módulos (consentimiento de cookies) leen window.localStorage al importarse.
+// Se rellena con un respaldo Map para que getItem/setItem/removeItem/clear
+// funcionen sin 'Cannot read properties of undefined (reading getItem)'.
+const localStorageMock = (() => {
+  const map = new Map<string, string>();
+  return {
+    getItem: (k: string) => (map.has(k) ? map.get(k)! : null),
+    setItem: (k: string, v: string) => map.set(k, String(v)),
+    removeItem: (k: string) => map.delete(k),
+    clear: () => map.clear(),
+    key: (i: number) => Array.from(map.keys())[i] ?? null,
+    get length() {
+      return map.size;
+    },
+  };
+})();
+Object.defineProperty(globalThis, "localStorage", { configurable: true, value: localStorageMock });
+
 afterEach(() => cleanup());

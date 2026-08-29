@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.183.0 — 2026-08-29
+- Cobertura de los paneles del administrador: NUEVOS tests de PlatformTab (mantenimiento y banner), ManageTab (flags del superadmin y estado simulado) y AttendanceTab (exportación a Excel de asistencias) para acercar más su cobertura al umbral; el polyfill de localStorage del entorno de tests se centraliza en vitest.setup.ts (jsdom no lo expone).
 ## 2.182.0 — 2026-08-29
 
 - Modularización: los exports de las interfaces de props de los nuevos

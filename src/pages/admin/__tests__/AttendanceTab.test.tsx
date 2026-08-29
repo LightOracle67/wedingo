@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key, i18n: { language: "es" } }),
@@ -38,9 +38,26 @@ vi.mock("../../components/Modal", () => ({
     </div>
   ),
 }));
+// Hoisted: los builders y el export de Excel se mockean para probar la acción
+// handleExportExcel sin depender de la librería xlsx (solo se espera el output
+// de los constructores y la llamada a exportToXlsx).
+const mockBuildRSVPSheet = vi.hoisted(() => vi.fn(() => [["header"]]));
+const mockBuildMenuSheet = vi.hoisted(() => vi.fn(() => [["menu"]]));
+const mockExportToXlsx = vi.hoisted(() => vi.fn());
+vi.mock("../../../lib/excel-builders", () => ({
+  buildRSVPSheet: mockBuildRSVPSheet,
+  buildMenuSheet: mockBuildMenuSheet,
+}));
+vi.mock("../../../lib/excel-utils", () => ({
+  exportToXlsx: (...a: unknown[]) => mockExportToXlsx(...a),
+}));
 
 import AttendanceTab from "../AttendanceTab";
 import type { RsvpEntry } from "../../../types";
+
+// Los imports dinámicos (excel-builders/excel-utils) y timers reales superan
+// los timeouts por defecto bajo carga: ampliamos el de este fichero.
+vi.setConfig({ testTimeout: 20000 });
 
 const baseConfig = {
   searchQuery: "",
@@ -1384,6 +1401,37 @@ describe("AttendanceTab — alineación de columnas y snapshot (bug v2.149)", ()
     // Las columnas nuevas muestran los datos del doc principal.
     expect(cellTexts[6]).toBe("3");
     expect(cellTexts[7]).toContain("sin gluten");
+  });
+
+});
+
+describe("AttendanceTab — exportación a Excel", () => {
+  const renderWithEntries = () =>
+    render(
+      <AttendanceTab
+        searchQuery=""
+        setSearchQuery={vi.fn()}
+        attendanceFilter="all"
+        setAttendanceFilter={vi.fn()}
+        filteredEntries={[{ id: "1", guestName: "Ana García", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" }]}
+        rsvpEntries={[{ id: "1", guestName: "Ana García", attendance: "yes", companions: 0, dietaryInfo: "", submittedAt: "2024-01-01" }]}
+        exportPdf={vi.fn()}
+        formatDate={(d: string) => String(d)}
+        handleClearRsvpEntries={vi.fn()}
+        handleDeleteRsvpEntries={vi.fn()}
+        inviteToken="tok"
+      />,
+    );
+
+  it("exporta la hoja de asistencias y de menús al pulsar el botón Excel", async () => {
+    renderWithEntries();
+    fireEvent.click(screen.getByText("attendance.exportExcel"));
+    // El import() dinámico de excel-builders/excel-utils tarda más que el
+    // timeout por defecto (1000ms) bajo carga; esperamos 15s como en
+    // DistribucionTab.test para que resuelva sin flakiness.
+    await waitFor(() => expect(mockExportToXlsx).toHaveBeenCalledTimes(1), { timeout: 15000 });
+    expect(mockBuildRSVPSheet).toHaveBeenCalledTimes(1);
+    expect(mockBuildMenuSheet).toHaveBeenCalledTimes(1);
   });
 
 });

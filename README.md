@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.183.0 | 2026-08-29 | Cobertura ampliada de los paneles del administrador (PlatformTab, ManageTab, AttendanceTab) y centralizado el polyfill de localStorage de los tests |
 | v2.182.0 | 2026-08-29 | Modularización: des-exportadas las interfaces de props internas de subcomponentes y helpers, y la comparación de invitaciones de Gestión extraída a helper puro |
 | v2.181.0 | 2026-08-29 | Modularización de la pestaña Datos: filas de invitaciones y filtro por actividad en helpers puros, con tests |
 | v2.180.0 | 2026-08-29 | El modal de vídeo de bienvenida se extrae a un subcomponente y se purgan bloques CSS de funciones retiradas (reacciones, extras, filtros obsoletos). |

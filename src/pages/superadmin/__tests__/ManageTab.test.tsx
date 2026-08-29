@@ -441,4 +441,31 @@ describe("ManageTab — ramas límite (backup, restaurar, copiar, sesión)", () 
     fireEvent.click(screen.getByText("manage.compareButton"));
     await waitFor(() => expect(mockGetDoc).toHaveBeenCalled());
   });
+
+  // F4-5: el panel de flags del superadmin guarda los campos superAdminFields
+  // (verified/status/tags/rsvpCapacity/rsvpSignature/adminNotes) vía updateDoc.
+  it("guarda los flags del superadmin al pulsar Guardar", async () => {
+    await mountReady();
+    fireEvent.change(screen.getByLabelText("manage.tags"), { target: { value: "VIP" } });
+    fireEvent.change(screen.getByLabelText("manage.rsvpCapacity"), { target: { value: "120" } });
+    fireEvent.click(screen.getByText("manage.saveFlags"));
+    await waitFor(() =>
+      expect(mockUpdateDoc).toHaveBeenCalledWith(
+        expect.anything(),
+        expect.objectContaining({
+          tags: "VIP",
+          rsvpCapacity: "120",
+        }),
+      ),
+    );
+  });
+
+  // F4-6: el panel de previsualización de dispositivo cambia el estado
+  // simulado del invitado (select con aria-label, sin tocar datos reales).
+  it("cambia el estado simulado del invitado", async () => {
+    await mountReady();
+    const simSelect = screen.getByLabelText("manage.simulate") as HTMLSelectElement;
+    fireEvent.change(simSelect, { target: { value: "responded" } });
+    expect(simSelect.value).toBe("responded");
+  });
 });
