@@ -64,7 +64,21 @@ export function useCalendar(config: {
       .join("\n");
 
     return buildGoogleCalendarUrl({ title, description, place, startDate, endDate });
-  }, [config, formattedTime, t]);
+    // Deps POR CAMPO (v2.189): se recalculaba con cada identidad nueva de
+    // `config` (p. ej. tras cada autosave), aunque la fecha no hubiera
+    // cambiado.
+  }, [
+    config.weddingDay,
+    config.weddingMonth,
+    config.weddingYear,
+    config.weddingHour,
+    config.weddingMinute,
+    config.firstName,
+    config.secondName,
+    config.weddingPlace,
+    formattedTime,
+    t,
+  ]);
 
   return { formattedDate, formattedTime, calendarLink };
 }

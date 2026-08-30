@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.189.0 | 2026-08-30 | useCalendar memoizado por campo y baseline Lighthouse registrado (Performance 73 / Accesibilidad 100 / SEO 100; TBT 0 ms, CLS 0). |
 | v2.188.0 | 2026-08-30 | SEO/DOM micro-optimizado (caché de meta tags, título de pestaña idempotente), animación de secciones sin layout thrash (batch de lecturas antes de escrituras) y auditoría de dependencias documentada (vulnerabilidades solo en dev tooling). |
 | v2.187.0 | 2026-08-30 | Tabla de asistencia con filas memoizadas (AttendanceRow), contexto de mensajes UI separado (useUIMessages), scroll de la invitación con rAF, hidratación sin re-ejecución por idioma/hasStoredConfig y SetupForm memoizado. |
 | v2.186.0 | 2026-08-30 | Duplicados unificados (menú, fechas con safe-date.ts y locale pinneado, tipos de mesa, compresión de imagen), CSS crítico dividido (invitado ya no carga los estilos admin: 27,95→20,85 KB gzip), hook muerto eliminado, OpenDyslexic a WOFF2 y observer de animaciones acotado. |

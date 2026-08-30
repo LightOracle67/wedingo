@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.189.0 — 2026-08-30
+- useCalendar: el enlace de Google Calendar se memoiza POR CAMPO (weddingDay/Month/Year/Hour/Minute/nombre/lugar) — antes se recalculaba con cada identidad nueva de config (p. ej. tras cada autosave), aunque la fecha no cambiara.
+- Baseline Lighthouse documentado (build local, simulación móvil/4G): Performance 73 (FCP 2,6 s, LCP 5,7 s, TBT 0 ms, CLS 0, SI 4,4 s), Accesibilidad 100, SEO 100. El coste del LCP es el grafo de módulos inicial (vendor-firebase 156 KB gz es insustituible con persistencia local de Firestore) + fuentes; no hay bloques render-blocking ni JS sin usar real (los 108 KB "unused" de vendor-firebase son heurística de ejecución en la ruta landing).
 ## 2.188.0 — 2026-08-30
 - Micro-optimizaciones de render y DOM: seo.ts cachea las meta tags y solo escribe cuando cambia el contenido (antes ~11 querySelector de <head> + escrituras redundantes con cada cambio de config); el título de pestaña solo se reescribe si cambia (en /setup y /admin se reescribía con cada tecla del editor); la animación de secciones de useStoryNavigation agrupa TODAS las lecturas de getBoundingClientRect antes de escribir estilos (elimina reflows forzados por sección, layout thrash en cada frame de scroll).
 - Dependencias: documentadas en SECURITY.md las 4 vulnerabilidades de npm audit, todas en tooling de desarrollo (xlsx solo en tests como validador del escritor propio; uuid vía firebase-tools en la CLI de deploy) — ninguna entra al bundle de producción.
