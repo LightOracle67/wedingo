@@ -38,6 +38,13 @@ vi.mock("../contexts", () => ({
   useConfig: (...args: unknown[]) => mockUseApp(...args),
   useAuth: (...args: unknown[]) => mockUseApp(...args),
   useAppUI: () => ({ setCookiePrefsOpen: vi.fn() }),
+
+  useUIMessages: () => ({
+    saveMessage: "", setSaveMessage: vi.fn(),
+    saveError: "", setSaveError: vi.fn(),
+    adminMessage: "", setAdminMessage: vi.fn(),
+    adminMessageType: "success", setAdminMessageType: vi.fn(),
+  }),
   // App lee el theme del setup con useFormField (tienda por campo): devuelve
   // el valor del formData simulado por el test.
   useFormField: (field: string) => (mockUseApp().formData as Record<string, string | undefined>)?.[field] ?? "",

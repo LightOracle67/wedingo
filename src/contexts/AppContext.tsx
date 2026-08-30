@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { UIProvider } from "./UIContext";
-import { useAppUI } from "./useAppUI";
+import { useAppUI, useUIMessages } from "./useAppUI";
 import { ConfigProvider } from "./ConfigContext";
 import { useConfig, useFormData } from "./useConfig";
 import { AuthProvider } from "./AuthContext";
@@ -21,7 +21,8 @@ function AppMerger({ children }: { children: React.ReactNode }) {
   const { formData: draft } = useFormData();
   const auth = useAuth();
   const rsvp = useRsvpContext();
-  const ui = useAppUI();
+  const uiRare = useAppUI();
+  const ui = useUIMessages();
   const { confirm } = useConfirm();
 
   const handleSaveSetup = useCallback(
@@ -58,10 +59,11 @@ function AppMerger({ children }: { children: React.ReactNode }) {
       ...config,
       ...auth,
       ...rsvp,
+      ...uiRare,
       ...ui,
       handleSaveSetup,
     };
-  }, [config, auth, rsvp, ui, handleSaveSetup]);
+  }, [config, auth, rsvp, uiRare, ui, handleSaveSetup]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

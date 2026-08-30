@@ -44,6 +44,13 @@ vi.mock("../../../contexts", async (importOriginal) => {
     ...actual,
     useApp: () => ({ setLegalModal: vi.fn() }),
     useAppUI: () => ({ setLegalModal: vi.fn() }),
+
+    useUIMessages: () => ({
+    saveMessage: "", setSaveMessage: vi.fn(),
+    saveError: "", setSaveError: vi.fn(),
+    adminMessage: "", setAdminMessage: vi.fn(),
+    adminMessageType: "success", setAdminMessageType: vi.fn(),
+  }),
     useConfig: () => ({ config: mockConfig }),
     useAuth: () => ({ isAdminTokenLoggedIn: true }),
   };

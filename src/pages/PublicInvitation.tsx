@@ -87,7 +87,8 @@ export default function PublicInvitation() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const { inviteToken } = useParams();
-  const searchParams = new URLSearchParams(location.search);
+  // Memoizado (v2.187): se reconstruía en cada render.
+  const searchParams = useMemo(() => new URLSearchParams(location.search), [location.search]);
   const isInviteMode = searchParams.has("invitar");
   const reducedMotion = useReducedMotion();
   // Preferencias de animación: base del admin ∪ preferencias del invitado.
@@ -243,14 +244,27 @@ export default function PublicInvitation() {
 
   // Botón "volver arriba": aparece al bajar del primer tramo del scroll del
   // contenedor de la invitación (.app-scene). UX de navegación en móvil.
+  // v2.187: el handler se agrupa con requestAnimationFrame — antes corría en
+  // CADA evento scroll (poco coste gracias al bail-out de React, pero el
+  // estado se actualizaba muchas veces por segundo en móvil).
   const [showBackToTop, setShowBackToTop] = useState(false);
   useEffect(() => {
     const scene = document.querySelector<HTMLElement>(".app-scene");
     if (!scene) return;
-    const onScroll = () => setShowBackToTop(scene.scrollTop > 400);
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        setShowBackToTop(scene.scrollTop > 400);
+      });
+    };
     onScroll();
     scene.addEventListener("scroll", onScroll, { passive: true });
-    return () => scene.removeEventListener("scroll", onScroll);
+    return () => {
+      scene.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   // Cierre animado del vídeo de bienvenida: la clase --closing se aplica y el
@@ -633,7 +647,7 @@ export default function PublicInvitation() {
    * Comparte la invitación: navegador nativo si está disponible, si no,
    * enlace de WhatsApp. Registra el evento en analítica (con consentimiento).
    */
-  const handleShare = async () => {
+  const handleShare = useCallback(async () => {
     const url = `${SITE_URL}/${inviteToken}`;
     // Texto traducido (antes estaba en español para toda la UI).
     const text = t("public.shareInvite", { firstName: config.firstName, secondName: config.secondName });
@@ -657,7 +671,7 @@ export default function PublicInvitation() {
         trackEvent("share_invite", { method: "whatsapp" });
       }
     }
-  };
+  }, [inviteToken, t, config.firstName, config.secondName]);
 
   // ═══════════════════════════════════════════════════════
   // RENDERIZADO CONDICIONAL

@@ -11,6 +11,8 @@ vi.mock("../useConfig", () => ({
 
 vi.mock("../useAppUI", () => ({
   useAppUI: () => ({ setAdminMessage: vi.fn(), setAdminMessageType: vi.fn() }),
+
+  useUIMessages: () => ({ setAdminMessage: vi.fn(), setAdminMessageType: vi.fn() }),
 }));
 
 vi.mock("../useAuth", () => ({

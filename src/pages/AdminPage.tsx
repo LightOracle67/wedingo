@@ -20,7 +20,7 @@
 import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Navigate, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
-import { useConfig, useAuth, useRsvpContext, useAppUI, useFormData } from "../contexts";
+import { useConfig, useAuth, useRsvpContext, useFormData, useUIMessages } from "../contexts";
 import { normalizeConfig } from "../lib/normalize-config";
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { useToast } from "../hooks/useToast";
@@ -104,7 +104,7 @@ export default function AdminPage() {
     handleResetTokenFromAdmin,
   } = useAuth();
   const { rsvpEntries, handleClearRsvpEntries, handleDeleteRsvpEntries, retryLoadRsvp } = useRsvpContext();
-  const { adminMessage, adminMessageType, setAdminMessage, setAdminMessageType } = useAppUI();
+  const { adminMessage, adminMessageType, setAdminMessage, setAdminMessageType } = useUIMessages();
 
   // Avisa antes de salir si hay cambios sin guardar en la invitación.
   // El listener se registra UNA sola vez (se leen formData/config por ref):

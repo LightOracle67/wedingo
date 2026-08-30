@@ -2,6 +2,12 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.187.0 — 2026-08-30
+- Render del admin: la tabla de asistencia extrae filas memoizadas (AttendanceRow, v2.187) — antes TODAS las filas se re-renderizaban y recalculaban etiquetas en cada interacción (checkbox/página/edición), con toggleOne como useCallback para que el memo funcione.
+- UIContext dividido: los mensajes frecuentes (autosave/admin) viven en su contexto propio (useUIMessages); antes cada toast re-renderizaba a TODOS los consumidores de useAppUI (AppShell, AdminPage, SetupForm, RsvpSection, AuthProvider, ConfigProvider, RsvpProvider…).
+- Invitación pública: listener de scroll del botón "volver arriba" agrupado con requestAnimationFrame, URLSearchParams memoizado y handleShare como useCallback.
+- Hidratación (ConfigContext): el efecto ya no se re-ejecuta al cambiar de idioma ni al cambiar hasStoredConfig (refs estables t/hasStoredConfig) — un cambio de idioma re-leía la caché y re-hidrataba el FormStore.
+- SetupForm memoizado (props primitivas; sus suscripciones ya eran granulares) y SetupPage/AdminPage protegidos de re-renders del padre.
 ## 2.186.0 — 2026-08-30
 - Reducción de duplicados y CSS crítico: unificadas la etiqueta de menú (4 copias → menu-utils), la conversión Timestamp→ms y los formateadores de fecha (nuevo safe-date.ts, con locale PINNEADO es-ES/en-US que elimina una carrera real del idioma asíncrono de i18n en celdas Excel/fechas), los tipos de mesa (DistribucionTab importa de table-geometry) y compressImage/compressImageTransparent en una función con opciones.
 - CSS crítico dividido (admin.css → public-shell.css 7KB + admin.css 44KB): la ruta del invitado ya no arrastra los estilos de los paneles; el admin/setup los cargan en sus chunks lazy (CSS crítico global 27,95 → 20,85 KB gzip). MusicPlayer/Fireflies/GoogleTranslateToggle ya tenían su propio CSS lazy.

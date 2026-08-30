@@ -96,6 +96,182 @@ function IconTrash() {
   );
 }
 
+/**
+ * Fila memoizada de la tabla de asistencia (v2.187): antes TODAS las filas
+ * paginadas se re-renderizaban e recalculaban sus etiquetas (menú, dietas,
+ * transporte) en cada interacción (checkbox, cambio de página, edición).
+ * Con props estables (misma entrada, mismo estado, callbacks memoizados),
+ * solo cambia la fila afectada.
+ */
+const AttendanceRow = memo(function AttendanceRow({
+  entry,
+  isSelected,
+  inviteToken,
+  onToggle,
+  onEdit,
+  onDelete,
+  resolveTransportLabel,
+  formatDate: formatDateFn,
+}: {
+  entry: RsvpEntry;
+  isSelected: boolean;
+  inviteToken: string | undefined;
+  onToggle: (id: string) => void;
+  onEdit: (entry: RsvpEntry) => void;
+  onDelete: (ids: string[]) => void;
+  resolveTransportLabel: (mode: string, choice: string, time: string) => string;
+  formatDate: (submittedAt: string) => string;
+}) {
+  const { t } = useTranslation();
+  const isCompanion = entry.rsvpType === "companion";
+  const attending = entry.attendance === "yes";
+  const menuLines = entry.attendees?.length
+    ? entry.attendees
+        .map((a) => (a.menu ? `${a.name}: ${formatMenuLabel(a.menu || "", t)}` : null))
+        .filter((x): x is string => x !== null)
+    : formatMenuLabel(entry.mealChoice || "", t)
+      ? [formatMenuLabel(entry.mealChoice || "", t)!]
+      : [];
+  const dietLines = entry.attendees?.length
+    ? entry.attendees
+        .filter((a) => a.allergies?.length)
+        .map((a) => `${a.name}: ${a.allergies.join(", ")}`)
+    : attending
+      ? getDietaryItems(entry.dietaryInfo || "")
+      : [];
+  const crossed = !attending ? { textDecoration: "line-through", opacity: 0.4 } : {};
+  const transportLabel = resolveTransportLabel(
+    entry.transportMode || "",
+    entry.transportChoice || "",
+    entry.transportTime || "",
+  );
+  const consentBadges: string[] = [];
+  if (entry.healthConsent) consentBadges.push(t("attendance.consentHealth"));
+
+  return (
+    <tr>
+      <td>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", justifyContent: "center" }}>
+          <input
+            type="checkbox"
+            checked={isSelected}
+            onChange={() => onToggle(entry.id)}
+            aria-label={t("attendance.selectEntry", { name: entry.guestName })}
+          />
+          {inviteToken ? (
+            <>
+              <button
+                type="button"
+                className="setup-button setup-button--ghost setup-button--compact"
+                style={{ padding: "0.2rem 0.45rem", display: "inline-flex", alignItems: "center" }}
+                onClick={() => onEdit(entry)}
+                aria-label={`${t("attendance.editManual")}: ${entry.guestName}`}
+                title={t("attendance.editManual")}
+              >
+                <IconEdit />
+              </button>
+              <button
+                type="button"
+                className="setup-button setup-button--ghost setup-button--compact"
+                style={{ padding: "0.2rem 0.45rem", display: "inline-flex", alignItems: "center", color: "var(--danger, #c0392b)" }}
+                onClick={() => onDelete([entry.id])}
+                aria-label={`${t("attendance.deleteEntry")}: ${entry.guestName}`}
+                title={t("attendance.deleteEntry")}
+              >
+                <IconTrash />
+              </button>
+            </>
+          ) : null}
+        </div>
+      </td>
+      <td className="admin-table__name" style={{ fontWeight: isCompanion ? 400 : 600 }}>
+        {entry.guestName}
+      </td>
+      <td style={{ fontSize: "0.78rem", color: "var(--setup-muted)" }}>
+        {isCompanion && entry.mainGuestName ? entry.mainGuestName : "—"}
+      </td>
+      <td>
+        <span className={`admin-badge admin-badge--${entry.attendance}`}>
+          {attending ? t("attendance.attendingValue") : t("attendance.notAttendingValue")}
+        </span>
+      </td>
+      <td>
+        <div style={crossed}>
+          {attending ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+              {menuLines.length > 0 ? (
+                menuLines.map((line, i) => (
+                  <span key={i} style={{ fontSize: "0.78rem" }}>
+                    {line}
+                  </span>
+                ))
+              ) : (
+                <span style={{ fontSize: "0.78rem" }}>—</span>
+              )}
+            </div>
+          ) : (
+            <span style={{ fontSize: "0.78rem" }}>—</span>
+          )}
+        </div>
+      </td>
+      <td>
+        <div style={crossed}>
+          {attending && dietLines.length > 0 ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+              {dietLines.map((line, i) => (
+                <span key={i} style={{ fontSize: "0.78rem" }}>
+                  {line}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <span style={{ fontSize: "0.78rem" }}>—</span>
+          )}
+        </div>
+      </td>
+      <td>
+        <div style={crossed}>
+          <span style={{ fontSize: "0.78rem" }}>
+            {attending && Number(entry.childrenCount) > 0 ? String(entry.childrenCount) : "—"}
+          </span>
+        </div>
+      </td>
+      <td>
+        <div style={crossed}>
+          {attending && getChildrenDietary(entry).length > 0 ? (
+            <span style={{ fontSize: "0.78rem" }}>{getChildrenDietary(entry).join(", ")}</span>
+          ) : (
+            <span style={{ fontSize: "0.78rem" }}>—</span>
+          )}
+        </div>
+      </td>
+      <td>
+        <div style={crossed}>
+          <span style={{ fontSize: "0.78rem" }}>{attending ? transportLabel : "—"}</span>
+        </div>
+      </td>
+      <td>
+        <div style={crossed}>
+          {attending && consentBadges.length > 0 ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
+              {consentBadges.map((b, i) => (
+                <span key={i} style={{ fontSize: "0.72rem", color: "var(--setup-accent)" }}>
+                  {b}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <span style={{ fontSize: "0.78rem" }}>—</span>
+          )}
+        </div>
+      </td>
+      <td className="admin-table__date" style={{ whiteSpace: "nowrap", fontSize: "0.78rem" }}>
+        {formatDateFn(entry.submittedAt)}
+      </td>
+    </tr>
+  );
+});
+
 const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
   const {
     searchQuery,
@@ -455,14 +631,16 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     }
   };
 
-  const toggleOne = (id: string) => {
+  // useCallback (v2.187): las filas memoizadas (AttendanceRow) reciben este
+  // handler como prop; sin memo cambiaría en cada render y rompería el memo.
+  const toggleOne = useCallback((id: string) => {
     setSelectedIds((prev) => {
       const next = new Set(prev);
       if (next.has(id)) next.delete(id);
       else next.add(id);
       return next;
     });
-  };
+  }, []);
 
   const handleBatchDelete = () => {
     const mainIds = [...selectedIds].filter((id) => {
@@ -660,172 +838,19 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                 </tr>
               </thead>
               <tbody>
-                {paginated.map((entry: RsvpEntry) => {
-                  const isCompanion = entry.rsvpType === "companion";
-                  const attending = entry.attendance === "yes";
-                  const menuLines = entry.attendees?.length
-                    ? entry.attendees
-                        .map((a) =>
-                          a.menu
-                            ? `${a.name}: ${formatMenuLabel(a.menu || "", t)}`
-                            : null,
-                        )
-                        .filter((x): x is string => x !== null)
-                    : formatMenuLabel(entry.mealChoice || "", t)
-                      ? [formatMenuLabel(entry.mealChoice || "", t)!]
-                      : [];
-                  const dietLines = entry.attendees?.length
-                    ? entry.attendees
-                        .filter((a) => a.allergies?.length)
-                        .map((a) => `${a.name}: ${a.allergies.join(", ")}`)
-                    : attending
-                      ? getDietaryItems(entry.dietaryInfo || "")
-                      : [];
-                  const crossed = !attending ? { textDecoration: "line-through", opacity: 0.4 } : {};
-                  const transportLabel = resolveTransportLabel(
-                    entry.transportMode || "",
-                    entry.transportChoice || "",
-                    entry.transportTime || "",
-                  );
-                  const consentBadges: string[] = [];
-                  if (entry.healthConsent) consentBadges.push(t("attendance.consentHealth"));
-
-                  return (
-                    <tr key={entry.id}>
-                      <td>
-                        {/* Acciones en línea: seleccionar, editar (icono lápiz) y
-                            eliminar (icono papelera, pide confirmación). */}
-                        <div style={{ display: "flex", alignItems: "center", gap: "0.3rem", justifyContent: "center" }}>
-                          <input
-                            type="checkbox"
-                            checked={selectedIds.has(entry.id)}
-                            onChange={() => toggleOne(entry.id)}
-                            aria-label={t("attendance.selectEntry", { name: entry.guestName })}
-                          />
-                          {inviteToken ? (
-                            <>
-                              <button
-                                type="button"
-                                className="setup-button setup-button--ghost setup-button--compact"
-                                style={{ padding: "0.2rem 0.45rem", display: "inline-flex", alignItems: "center" }}
-                                onClick={() => openEdit(entry)}
-                                aria-label={`${t("attendance.editManual")}: ${entry.guestName}`}
-                                title={t("attendance.editManual")}
-                              >
-                                <IconEdit />
-                              </button>
-                              <button
-                                type="button"
-                                className="setup-button setup-button--ghost setup-button--compact"
-                                style={{ padding: "0.2rem 0.45rem", display: "inline-flex", alignItems: "center", color: "var(--danger, #c0392b)" }}
-                                onClick={() => handleDeleteRsvpEntries([entry.id])}
-                                aria-label={`${t("attendance.deleteEntry")}: ${entry.guestName}`}
-                                title={t("attendance.deleteEntry")}
-                              >
-                                <IconTrash />
-                              </button>
-                            </>
-                          ) : null}
-                        </div>
-                      </td>
-                      <td className="admin-table__name" style={{ fontWeight: isCompanion ? 400 : 600 }}>
-                        {entry.guestName}
-                      </td>
-                      <td style={{ fontSize: "0.78rem", color: "var(--setup-muted)" }}>
-                        {isCompanion && entry.mainGuestName ? entry.mainGuestName : "—"}
-                      </td>
-                      <td>
-                        <span className={`admin-badge admin-badge--${entry.attendance}`}>
-                          {attending ? t("attendance.attendingValue") : t("attendance.notAttendingValue")}
-                        </span>
-                      </td>
-                      <td>
-                        <div style={crossed}>
-                          {attending ? (
-                            <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                              {menuLines.length > 0 ? (
-                                menuLines.map((line, i) => (
-                                  <span key={i} style={{ fontSize: "0.78rem" }}>
-                                    {line}
-                                  </span>
-                                ))
-                              ) : (
-                                <span style={{ fontSize: "0.78rem" }}>—</span>
-                              )}
-                            </div>
-                          ) : (
-                            <span style={{ fontSize: "0.78rem" }}>—</span>
-                          )}
-                        </div>
-                      </td>
-                      <td>
-                        <div style={crossed}>
-                          {attending && dietLines.length > 0 ? (
-                            <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                              {dietLines.map((line, i) => (
-                                <span key={i} style={{ fontSize: "0.78rem" }}>
-                                  {line}
-                                </span>
-                              ))}
-                            </div>
-                          ) : (
-                            <span style={{ fontSize: "0.78rem" }}>—</span>
-                          )}
-                        </div>
-                      </td>
-                      <td>
-                        <div style={crossed}>
-                          <span style={{ fontSize: "0.78rem" }}>
-                            {/* ¿Trae niños? (nuevo modelo): contador del
-                                principal; los acompañantes legacy lo muestran
-                                solo si van marcados arriba. */}
-                            {attending && Number(entry.childrenCount) > 0
-                              ? String(entry.childrenCount)
-                              : "—"}
-                          </span>
-                        </div>
-                      </td>
-                      <td>
-                        <div style={crossed}>
-                          {attending && getChildrenDietary(entry).length > 0 ? (
-                            <span style={{ fontSize: "0.78rem" }}>
-                              {getChildrenDietary(entry).join(", ")}
-                            </span>
-                          ) : (
-                            <span style={{ fontSize: "0.78rem" }}>—</span>
-                          )}
-                        </div>
-                      </td>
-                      <td>
-                        {/* Transporte después de las columnas de niños: el
-                            orden de las celdas DEBE reflejar el del thead
-                            (child, children, childrenDiet, transport); antes
-                            iba primero y desalineaba toda la fila. */}
-                        <div style={crossed}>
-                          <span style={{ fontSize: "0.78rem" }}>{attending ? transportLabel : "—"}</span>
-                        </div>
-                      </td>
-                      <td>
-                        <div style={crossed}>
-                          {attending && consentBadges.length > 0 ? (
-                            <div style={{ display: "flex", flexDirection: "column", gap: "0.15rem" }}>
-                              {consentBadges.map((b, i) => (
-                                <span key={i} style={{ fontSize: "0.72rem", color: "var(--setup-accent)" }}>
-                                  {b}
-                                </span>
-                              ))}
-                            </div>
-                          ) : (
-                            <span style={{ fontSize: "0.78rem" }}>—</span>
-                          )}
-                        </div>
-                      </td>
-                      <td className="admin-table__date" style={{ whiteSpace: "nowrap", fontSize: "0.78rem" }}>
-                        {formatDate(entry.submittedAt)}
-                      </td>
-                    </tr>
-                  );
-                })}
+                {paginated.map((entry: RsvpEntry) => (
+                  <AttendanceRow
+                    key={entry.id}
+                    entry={entry}
+                    isSelected={selectedIds.has(entry.id)}
+                    inviteToken={inviteToken}
+                    onToggle={toggleOne}
+                    onEdit={openEdit}
+                    onDelete={handleDeleteRsvpEntries}
+                    resolveTransportLabel={resolveTransportLabel}
+                    formatDate={formatDate}
+                  />
+                ))}
               </tbody>
             </table>
             <Pagination

@@ -12,9 +12,9 @@
  * @module SetupForm
  */
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useConfigActions, useAuth, useAppUI, useFormField } from "../contexts";
+import { useConfig, useConfigActions, useAuth, useAppUI, useFormField, useUIMessages } from "../contexts";
 import { useToast } from "../hooks/useToast";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
@@ -38,8 +38,12 @@ import { safeLogError } from "../lib/safe-error";
  * @param {{ prefix?: string }} props - Prefijo opcional para IDs de campos
  *                                      (útil cuando hay múltiples formularios en la página).
  * @returns {JSX.Element} Formulario con todas las secciones de configuración.
+ *
+ * Memoizado (v2.187): la única prop (prefix) es un string; sus suscripciones
+ * internas (useConfigActions/useFormField…) ya son granulares, y el memo
+ * protege el wrapper de los re-renders del padre (SetupPage/AdminPage).
  */
-export default function SetupForm({ prefix = "" }) {
+const SetupForm = memo(function SetupForm({ prefix = "" }: { prefix?: string }) {
   const { t } = useTranslation();
   // Ref al <form> real: .setup-form también lo usan los div contenedores de
   // SetupPage/AdminPage, por lo que un querySelector podía devolver un <div>
@@ -73,7 +77,8 @@ export default function SetupForm({ prefix = "" }) {
   const venueMapEnabled = useFormField("venueMapEnabled");
   const tablesEnabled = useFormField("tablesEnabled");
   const { isTokenVerified, isRestoringSession } = useAuth();
-  const { saveMessage, saveError, setLegalModal } = useAppUI();
+  const { saveMessage, saveError } = useUIMessages();
+  const { setLegalModal } = useAppUI();
   const { addToast } = useToast();
 
   /** Confirmación de haber guardado el token de acceso (solo primer guardado). */
@@ -296,4 +301,6 @@ export default function SetupForm({ prefix = "" }) {
       </div>
     </form>
   );
-}
+});
+
+export default SetupForm;

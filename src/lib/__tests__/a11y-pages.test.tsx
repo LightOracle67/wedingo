@@ -190,6 +190,13 @@ vi.mock("../../contexts", () => ({
     setAdminMessage: vi.fn(),
     setAdminMessageType: vi.fn(),
   }),
+
+  useUIMessages: () => ({
+    saveMessage: "", setSaveMessage: vi.fn(),
+    saveError: "", setSaveError: vi.fn(),
+    adminMessage: "", setAdminMessage: vi.fn(),
+    adminMessageType: "success", setAdminMessageType: vi.fn(),
+  }),
   useAnimations: () => ({
     adminDisabled: new Set<string>(),
     guestDisabled: new Set<string>(),

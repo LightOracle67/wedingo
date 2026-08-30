@@ -56,6 +56,12 @@ vi.mock("../../contexts", () => ({
     setAdminMessage: mockSetAdminMessage,
     setAdminMessageType: mockSetAdminMessageType,
   }),
+
+  useUIMessages: () => ({
+    ...mockUseApp(),
+    setAdminMessage: mockSetAdminMessage,
+    setAdminMessageType: mockSetAdminMessageType,
+  }),
 }));
 
 const mockSetAdminMessage = vi.fn();

@@ -29,7 +29,7 @@ import { getFirestoreErrorMessage } from "../lib/error-utils";
 import { recoverFromStaleChunk } from "../lib/stale-chunk-recovery";
 import { ConfigContext, FormDataContext } from "./useConfig";
 import { FormStoreContext, createFormStore, type FormStore } from "./FormStore";
-import { useAppUI } from "./useAppUI";
+import { useUIMessages } from "./useAppUI";
 import { safeLogError } from "../lib/safe-error";
 
 /** Año máximo permitido al guardar la fecha de la boda (constante de módulo:
@@ -73,13 +73,22 @@ export function useConfigActions(): ConfigActionsValue {
 
 export function ConfigProvider({ children }: { children: ReactNode }) {
   const { t } = useTranslation();
-  const { setSaveMessage, setSaveError } = useAppUI();
+  // Ref estable de t (v2.187): el efecto de hidratación NO debe re-ejecutarse
+  // al cambiar de idioma (t es una dependencia que cambiaba y re-leía la caché
+  // y los "formStore.setAll" por un cambio de idioma).
+  const tRef = useRef(t);
+  tRef.current = t;
+  const { setSaveMessage, setSaveError } = useUIMessages();
   const location = useLocation();
   const navigate = useNavigate();
 
   const [config, setConfig] = useState<InvitationConfig>(defaultConfig as InvitationConfig);
   const [formData, setFormData] = useState<InvitationConfig>(defaultConfig as InvitationConfig);
   const [hasStoredConfig, setHasStoredConfig] = useState(false);
+  // Ref estable de hasStoredConfig (v2.187): el efecto de hidratación se
+  // ejecuta al navegar/cambiar de token, no cuando cambia el booleano.
+  const hasStoredConfigRef = useRef(hasStoredConfig);
+  hasStoredConfigRef.current = hasStoredConfig;
   const [isConfigLoading, setIsConfigLoading] = useState(true);
   const [configLoadError, setConfigLoadError] = useState("");
   const [inviteToken, setInviteToken] = useState("");
@@ -204,7 +213,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       } catch {
         if (isInvite) {
           setIsConfigLoading(false);
-          setConfigLoadError(t("errors.invalidLink"));
+          setConfigLoadError(tRef.current("errors.invalidLink"));
           return;
         }
       }
@@ -236,7 +245,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
           return;
         }
 
-        if (inviteToken === loadedTokenRef.current && hasStoredConfig) {
+        if (inviteToken === loadedTokenRef.current && hasStoredConfigRef.current) {
           setIsConfigLoading(false);
           return;
         }
@@ -375,8 +384,8 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         // mensaje de error, se desregistra el SW y se recarga limpio (con
         // tope de intentos para no entrar en bucle).
         if (!recoverFromStaleChunk(e)) {
-          if (!hasStoredConfig) {
-            setConfigLoadError(getFirestoreErrorMessage(e, t));
+          if (!hasStoredConfigRef.current) {
+            setConfigLoadError(getFirestoreErrorMessage(e, tRef.current));
           }
         }
       } finally {
@@ -384,7 +393,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       }
     };
     hydrateConfig();
-  }, [location.pathname, location.search, location.hash, inviteToken, hasStoredConfig, trackVisit, t, formStore]);
+  }, [location.pathname, location.search, location.hash, inviteToken, trackVisit, formStore]);
 
   const reloadConfig = useCallback(async () => {
     if (!inviteToken) {

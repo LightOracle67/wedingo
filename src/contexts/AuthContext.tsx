@@ -9,13 +9,13 @@ import { STORAGE_KEYS } from "../lib/storage-keys";
 import { useSetupAuth } from "../hooks/useSetupAuth";
 import { useTranslation } from "react-i18next";
 import { useConfig } from "./useConfig";
-import { useAppUI } from "./useAppUI";
+import { useUIMessages } from "./useAppUI";
 import { AuthContext } from "./useAuth";
 import { safeLogError } from "../lib/safe-error";
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
-  const { setAdminMessage, setAdminMessageType } = useAppUI();
+  const { setAdminMessage, setAdminMessageType } = useUIMessages();
   const { inviteToken, config, setHasStoredConfig, registerOnFirstSave } = useConfig();
   const location = useLocation();
 

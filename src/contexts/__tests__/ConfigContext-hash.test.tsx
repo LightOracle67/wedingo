@@ -52,6 +52,8 @@ vi.mock("firebase/firestore", () => ({
 }));
 vi.mock("../useAppUI", () => ({
   useAppUI: () => ({ setSaveMessage: mockSetSaveMessage, setSaveError: mockSetSaveError }),
+
+  useUIMessages: () => ({ setSaveMessage: mockSetSaveMessage, setSaveError: mockSetSaveError, saveMessage: "", saveError: "", adminMessage: "", adminMessageType: "success" }),
 }));
 vi.mock("../../hooks/useCalendar", () => ({
   useCalendar: () => ({ formattedDate: "", formattedTime: "", calendarLink: null }),

@@ -38,6 +38,8 @@ vi.mock("../../hooks/useToast", () => ({
 }));
 
 vi.mock("../../contexts", () => ({
+  // Los mensajes se leen del mismo mockUseApp que usa el test (saveMessage…).
+  useUIMessages: () => mockUseApp(),
   useConfigActions: () => ({
     updateFormField: typeof mockUpdateFormField !== "undefined" ? mockUpdateFormField : vi.fn(),
     handleDayChange: vi.fn(),

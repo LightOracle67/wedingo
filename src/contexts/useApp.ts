@@ -2,12 +2,13 @@ import { createContext, useContext, type FormEvent } from "react";
 import type { ConfigContextValue } from "./useConfig";
 import type { AuthValue } from "./useAuth";
 import type { RsvpValue } from "./useRsvpContext";
-import type { UIValue } from "./useAppUI";
+import type { UIValue, UIMessagesValue } from "./useAppUI";
 
 export type AppValue = ConfigContextValue &
   AuthValue &
   RsvpValue &
-  UIValue & {
+  UIValue &
+  UIMessagesValue & {
     handleSaveSetup: (event: FormEvent) => Promise<void>;
   };
 

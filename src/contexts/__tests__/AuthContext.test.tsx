@@ -99,6 +99,7 @@ vi.mock("../useConfig", () => ({
 
 vi.mock("../useAppUI", () => ({
   useAppUI: (...args: Parameters<typeof mockUseAppUI>) => mockUseAppUI(...args),
+  useUIMessages: (...args: Parameters<typeof mockUseAppUI>) => mockUseAppUI(...args),
 }));
 
 vi.mock("../../hooks/useSetupAuth", () => ({

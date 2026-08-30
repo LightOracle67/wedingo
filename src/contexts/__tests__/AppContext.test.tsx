@@ -61,7 +61,10 @@ vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: mockT }),
 }));
 
-vi.mock("../useAppUI", () => ({ useAppUI: () => mockUseAppUI() }));
+vi.mock("../useAppUI", () => ({
+  useAppUI: () => mockUseAppUI(),
+  useUIMessages: () => mockUseAppUI(),
+}));
 vi.mock("../useConfig", () => ({
   useConfig: () => mockUseConfig(),
   // formData vive en su contexto separado (v2.185): AppMerger lo lee aquí.

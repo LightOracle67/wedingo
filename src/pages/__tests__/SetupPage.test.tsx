@@ -20,6 +20,12 @@ vi.mock("../../contexts", () => ({
   useApp: (...args: unknown[]) => mockUseApp(...args),
   // formData vive en su contexto separado (v2.185).
   useFormData: () => ({ formData: mockUseApp().formData, updateFormField: vi.fn() }),
+  useUIMessages: () => ({
+    saveMessage: "", setSaveMessage: vi.fn(),
+    saveError: "", setSaveError: vi.fn(),
+    adminMessage: "", setAdminMessage: vi.fn(),
+    adminMessageType: "success", setAdminMessageType: vi.fn(),
+  }),
 }));
 
 const mockUseToast = vi.fn(() => ({ addToast: vi.fn() }));

@@ -1,5 +1,5 @@
 export { useApp } from "./useApp";
-export { useAppUI } from "./useAppUI";
+export { useAppUI, useUIMessages } from "./useAppUI";
 export { useConfig, useFormData } from "./useConfig";
 export { useConfigActions } from "./ConfigContext";
 export { useAuth } from "./useAuth";

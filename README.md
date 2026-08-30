@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.187.0 | 2026-08-30 | Tabla de asistencia con filas memoizadas (AttendanceRow), contexto de mensajes UI separado (useUIMessages), scroll de la invitación con rAF, hidratación sin re-ejecución por idioma/hasStoredConfig y SetupForm memoizado. |
 | v2.186.0 | 2026-08-30 | Duplicados unificados (menú, fechas con safe-date.ts y locale pinneado, tipos de mesa, compresión de imagen), CSS crítico dividido (invitado ya no carga los estilos admin: 27,95→20,85 KB gzip), hook muerto eliminado, OpenDyslexic a WOFF2 y observer de animaciones acotado. |
 | v2.185.0 | 2026-08-30 | Optimización global de rendimiento: code-splitting de Firebase corregido (analytics/auth/storage 100% lazy), formData fuera del contexto principal, autosave incremental con firma ligera, caché de invitación con refs (~1 KB vs 3,4 MB), audio cacheado en memoria, RSVP con una sola lectura, zonas/mesas en paralelo, miniaturas de galería cifradas de 128 px, componentes lazy, SW precache reducido a la ruta del invitado y caché HTTP para fuentes/favicons. |
 | v2.184.0 | 2026-08-29 | Cobertura de la pestaña Métricas ampliada (la fila de almacenamiento se muestra con los datos de galería y audio) y descartados dos casos de error inalcanzables. |
