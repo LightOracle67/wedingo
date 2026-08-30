@@ -6,7 +6,7 @@ import "../../styles/gallery.css";
 import LoadingOverlay from "../../components/LoadingOverlay";
 import CornerDecorations from "../../components/CornerDecorations";
 import type { GalleryImage } from "../../types";
-import { getGalleryImageUrl, type GalleryMeta } from "../../lib/image-store";
+import { getGalleryImageUrl, getGalleryThumbUrl, type GalleryMeta } from "../../lib/image-store";
 
 interface GallerySectionProps {
   style?: React.CSSProperties;
@@ -45,6 +45,9 @@ const GallerySection = memo(function GallerySection({
   const [metas, setMetas] = useState<GalleryMeta[]>([]);
   /** URLs descifradas por id (descifrado bajo demanda). */
   const [urls, setUrls] = useState<Record<string, string>>({});
+  /** URLs de MINIATURAS descifradas por id (128px, v2.185): la fila de
+   *  miniaturas ya no maneja la imagen completa (~866KB) por foto. */
+  const [thumbUrls, setThumbUrls] = useState<Record<string, string>>({});
   /** Indica si la galería está cargando (solo espera los METADATOS). */
   const [loading, setLoading] = useState(true);
   /** Ids ya solicitados (evita re-descifrar por re-render). */
@@ -61,12 +64,13 @@ const GallerySection = memo(function GallerySection({
       metas.map((m) => ({
         id: m.id,
         url: urls[m.id] || "",
+        thumbUrl: thumbUrls[m.id] || "",
         description: m.description,
         ...(m.position !== undefined ? { position: m.position } : {}),
         ...(m.originalName !== undefined ? { originalName: m.originalName } : {}),
         ...(m.originalSize !== undefined ? { originalSize: m.originalSize } : {}),
       })),
-    [metas, urls],
+    [metas, urls, thumbUrls],
   );
 
   /** Pide el descifrado de una imagen (deduplicado por id). */
@@ -77,6 +81,18 @@ const GallerySection = memo(function GallerySection({
       void getGalleryImageUrl(inviteToken, meta).then((url) => {
         setUrls((p) => (url ? { ...p, [meta.id]: url } : p));
         if (!url) setFailedIds((p) => new Set(p).add(meta.id));
+      });
+    },
+    [inviteToken],
+  );
+
+  /** Pide el descifrado de la MINIATURA (deduplicado por id, v2.185). */
+  const requestThumbDecrypt = useCallback(
+    (meta: GalleryMeta) => {
+      if (!inviteToken || !meta.thumbEncrypted || requestedRef.current.has(`thumb:${meta.id}`)) return;
+      requestedRef.current.add(`thumb:${meta.id}`);
+      void getGalleryThumbUrl(inviteToken, meta).then((url) => {
+        if (url) setThumbUrls((p) => ({ ...p, [meta.id]: url }));
       });
     },
     [inviteToken],
@@ -157,21 +173,27 @@ const GallerySection = memo(function GallerySection({
   }, [clamped, lightboxIndex, metas, requestDecrypt]);
 
   // ── Miniaturas: descifrado perezoso según visibilidad ──
+  // v2.185: se descifran las MINIATURAS (128px); sin miniatura disponible
+  // (fotos antiguas) se cae a la imagen completa (requestDecrypt).
 
   useEffect(() => {
     if (!metas.length) return;
+    const decryptVisible = (m: GalleryMeta) => {
+      if (m.thumbEncrypted) requestThumbDecrypt(m);
+      else requestDecrypt(m);
+    };
     if (typeof IntersectionObserver === "undefined") {
       // Sin IO: se descifran las primeras 4 y el resto en idle.
-      for (let i = 0; i < Math.min(4, metas.length); i++) requestDecrypt(metas[i]!);
+      for (let i = 0; i < Math.min(4, metas.length); i++) decryptVisible(metas[i]!);
       const idle = window.requestIdleCallback?.((deadline) => {
         let n = 4;
         while (n < metas.length && deadline.timeRemaining() > 8) {
-          requestDecrypt(metas[n]!);
+          decryptVisible(metas[n]!);
           n++;
         }
       });
       if (idle !== undefined) return;
-      for (let i = 4; i < metas.length; i++) requestDecrypt(metas[i]!);
+      for (let i = 4; i < metas.length; i++) decryptVisible(metas[i]!);
       return;
     }
     const els = Array.from(sectionRef.current?.querySelectorAll<HTMLElement>(".gallery-thumb") ?? []);
@@ -181,7 +203,7 @@ const GallerySection = memo(function GallerySection({
           if (e.isIntersecting) {
             const i = Number((e.target as HTMLElement).dataset.index);
             const m = metas[i];
-            if (m) requestDecrypt(m);
+            if (m) decryptVisible(m);
           }
         }
       },
@@ -189,7 +211,10 @@ const GallerySection = memo(function GallerySection({
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();
-  }, [metas, requestDecrypt]);
+  }, [metas, requestDecrypt, requestThumbDecrypt]);
+
+  // Las imágenes "activas" del carrusel (no las miniaturas) siguen pidiendo
+  // la versión COMPLETA: se descifran bajo demanda en el efecto de arriba.
 
   // ── Limpieza de timers al desmontar ───────────────────
 
@@ -624,7 +649,7 @@ const GallerySection = memo(function GallerySection({
                     opacity: i === clamped ? 1 : 0.55,
                   }}
                 >
-                  {(!thumbLoaded[i] || !img.url) && !failedIds.has(img.id) ? (
+                  {(!thumbLoaded[i] || !(img.thumbUrl || img.url)) && !failedIds.has(img.id) ? (
                     <div className="page-loading" style={{ width: "100%", height: "100%", minHeight: 0 }} />
                   ) : null}
                   {failedIds.has(img.id) ? (
@@ -633,7 +658,10 @@ const GallerySection = memo(function GallerySection({
                     </span>
                   ) : (
                     <img
-                      src={img.url || TRANSPARENT_GIF}
+                      // La fila de miniaturas usa la MINIATURA (128px) y solo
+                      // cae a la imagen completa si la foto es anterior a
+                      // v2.185 (sin thumb).
+                      src={img.thumbUrl || img.url || TRANSPARENT_GIF}
                       alt={img.description || t("gallery.thumbnailAlt")}
                       onLoad={handleThumbLoad}
                       onError={handleThumbLoad}
@@ -641,7 +669,10 @@ const GallerySection = memo(function GallerySection({
                       loading="lazy"
                       decoding="async"
                       className="gallery-thumb__img"
-                      style={{ opacity: thumbLoaded[i] && img.url ? 1 : 0, transition: "opacity 0.3s ease" }}
+                      style={{
+                        opacity: thumbLoaded[i] && (img.thumbUrl || img.url) ? 1 : 0,
+                        transition: "opacity 0.3s ease",
+                      }}
                     />
                   )}
                 </button>

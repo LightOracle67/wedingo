@@ -27,7 +27,7 @@ vi.mock("firebase/firestore", () => ({
   collection: vi.fn(() => "setup-tokens-col"),
 }));
 
-vi.mock("firebase/storage", () => ({
+vi.mock("@firebase/storage", () => ({
   ref: vi.fn(),
   deleteObject: vi.fn(),
   listAll: vi.fn(() => Promise.resolve({ items: [], prefixes: [] })),
@@ -86,7 +86,7 @@ vi.mock("../../../lib/superadmin-utils", () => ({
 import DashboardTab from "../DashboardTab";
 import { getDocs } from "firebase/firestore";
 import { MONTH_VALUE_TO_NUMBER } from "../../../lib/constants";
-import { listAll, deleteObject } from "firebase/storage";
+import { listAll, deleteObject } from "@firebase/storage";
 
 describe("DashboardTab", () => {
   beforeEach(() => {
@@ -307,7 +307,7 @@ describe("DashboardTab", () => {
         },
       ],
     } as never);
-    const { ref, listAll } = await import("firebase/storage");
+    const { ref, listAll } = await import("@firebase/storage");
     const refMock = vi.mocked(ref);
     refMock.mockReturnValue("root-ref" as never);
     vi.mocked(listAll).mockResolvedValueOnce({

@@ -53,7 +53,11 @@ export const db = initializeFirestore(app, {
 let authPromise: Promise<Auth> | null = null;
 export function getAuthInstance(): Promise<Auth> {
   if (!authPromise) {
-    authPromise = import("firebase/auth").then(({ getAuth }) => getAuth(app));
+    // Import dinámico del paquete INTERNO @firebase/auth (no del wrapper
+    // "firebase/auth"): el wrapper es un re-export que rolldown convertía en
+    // un facade estático en el chunk eager y provocaba que vendor-firebase
+    // descargara el SDK de auth en el primer hit (bug de bundle v2.185).
+    authPromise = import("@firebase/auth").then(({ getAuth }) => getAuth(app));
   }
   return authPromise;
 }
@@ -66,7 +70,8 @@ export function getAuthInstance(): Promise<Auth> {
 let storagePromise: Promise<FirebaseStorage> | null = null;
 export function getStorageInstance(): Promise<FirebaseStorage> {
   if (!storagePromise) {
-    storagePromise = import("firebase/storage").then(({ getStorage }) => getStorage(app));
+    // Import dinámico del paquete interno (ver comentario en getAuthInstance).
+    storagePromise = import("@firebase/storage").then(({ getStorage }) => getStorage(app));
   }
   return storagePromise;
 }
@@ -79,7 +84,8 @@ export function getStorageInstance(): Promise<FirebaseStorage> {
 try {
   const siteKey = import.meta.env.VITE_APPCHECK_SITE_KEY;
   if (siteKey) {
-    void import("firebase/app-check").then(({ initializeAppCheck, ReCaptchaEnterpriseProvider }) => {
+    // Import dinámico del paquete interno (ver comentario en getAuthInstance).
+    void import("@firebase/app-check").then(({ initializeAppCheck, ReCaptchaEnterpriseProvider }) => {
       initializeAppCheck(app, {
         provider: new ReCaptchaEnterpriseProvider(siteKey),
         isTokenAutoRefreshEnabled: true,

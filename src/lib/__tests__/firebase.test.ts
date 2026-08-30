@@ -15,11 +15,11 @@ vi.mock("firebase/firestore", () => ({
   persistentMultipleTabManager: vi.fn(() => ({ kind: "multi-tab" })),
 }));
 
-vi.mock("firebase/auth", () => ({
+vi.mock("@firebase/auth", () => ({
   getAuth: vi.fn(() => ({ mocked: true })),
 }));
 
-vi.mock("firebase/storage", () => ({
+vi.mock("@firebase/storage", () => ({
   getStorage: vi.fn(() => ({ mockedStorage: true })),
 }));
 

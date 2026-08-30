@@ -9,7 +9,7 @@ type SeededSnapshot = {
   forEach?: unknown;
   size?: number;
 };
-const mockGetDocs = vi.hoisted(() => vi.fn((): Promise<SeededSnapshot> => Promise.resolve({ docs: [] })));
+const mockGetDocs = vi.hoisted(() => vi.fn((_q: unknown): Promise<SeededSnapshot> => Promise.resolve({ docs: [] })));
 const mockDoc = vi.hoisted(() =>
   vi.fn((_col?: unknown, id?: string) => (id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` })),
 );
@@ -30,8 +30,22 @@ const mockParseDietaryInfo = vi.hoisted(() =>
   vi.fn(() => ({ mealChoice: "", dietarySelection: [] as string[], dietaryOther: "" })),
 );
 type SnapshotCb = (snap: unknown) => void;
+// v2.185: el hook ya no hidrata con getDocs — usa SOLO el onSnapshot (su
+// primer snapshot trae todas las respuestas). El mock delega en mockGetDocs
+// para que los tests que siembran datos con getDocs sigan funcionando: el
+// listener llama al callback de éxito con ese snapshot (o al de error si la
+// lectura rechaza), imitando el comportamiento real de Firestore.
 const mockOnSnapshot = vi.hoisted(() =>
-  vi.fn((_q: unknown, _cb?: SnapshotCb, _errCb?: (e: unknown) => void) => () => {}),
+  vi.fn((_q: unknown, _cb?: SnapshotCb, _errCb?: (e: unknown) => void) => {
+    void mockGetDocs(_q)
+      .then((snap) => {
+        _cb?.({ docs: snap.docs, size: snap.size, forEach: snap.forEach });
+      })
+      .catch((err) => {
+        _errCb?.(err);
+      });
+    return () => {};
+  }),
 );
 
 vi.mock("firebase/firestore", () => ({
@@ -92,14 +106,26 @@ describe("useRsvp", () => {
   beforeEach(() => {
     vi.resetAllMocks();
     mockDocIdCounter = 0;
+    // resetAllMocks borra las implementaciones: se restaura el delegado del
+    // listener (v2.185: el hook carga SOLO por onSnapshot, que delega en
+    // mockGetDocs para que cada test siga sembrando datos con getDocs).
+    mockOnSnapshot.mockClear();
+    mockOnSnapshot.mockImplementation((_q: unknown, _cb?: SnapshotCb, _errCb?: (e: unknown) => void) => {
+      void mockGetDocs(_q)
+        .then((snap) => {
+          _cb?.({ docs: snap.docs, size: snap.size, forEach: snap.forEach });
+        })
+        .catch((err) => {
+          _errCb?.(err);
+        });
+      return () => {};
+    });
     mockDeleteDoc.mockResolvedValue(undefined);
     mockGetDocs.mockResolvedValue({ docs: [], forEach: vi.fn() });
     mockSafeGetItem.mockImplementation(() => null);
     mockDoc.mockImplementation((_col?: unknown, id?: string) =>
       id ? { id } : { id: `auto-doc-${++mockDocIdCounter}` },
     );
-    mockOnSnapshot.mockClear();
-    mockOnSnapshot.mockImplementation(() => () => {});
     mockWriteBatch.mockReturnValue({
       set: vi.fn(),
       update: vi.fn(),

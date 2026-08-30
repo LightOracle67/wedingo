@@ -89,44 +89,14 @@ export function useRsvp(
     // de la invitación anterior (datos de salud que no deben persistir entre
     // invitaciones ni reutilizarse con otra clave).
     dietaryInfoCache.clear();
-    // El invitado público no puede leer respuestas (reglas): la hidratación
-    // y el prefill quedan reservados al admin con sesión. Esto elimina el
-    // banner de error falso y la caché con datos de salud descifrados.
-    if (!canRead) return;
+    // v2.185: la hidratación con getDocs se ELIMINÓ — el onSnapshot del
+    // efecto siguiente entrega su primer snapshot con TODAS las respuestas,
+    // así que el getDocs duplicaba 1 lectura completa + 1 procesado
+    // (descifrados) al montar el panel. El error de lectura lo gestiona el
+    // callback de error del propio listener.
+  }, [inviteToken]);
 
-    let cancelled = false;
-
-    const hydrateRsvp = async () => {
-      if (!inviteToken) {
-        return;
-      }
-
-      // Sin caché en sessionStorage: el admin siempre lee datos frescos de
-      // Firestore (no se persisten alergias descifradas localmente).
-      try {
-        const snapshot = await getDocs(rsvpByInviteRef(inviteToken));
-        if (cancelled) return;
-        const entries = await processRsvpSnapshot(snapshot, inviteToken, decrypt, parseDietaryInfo);
-        if (!cancelled) {
-          setRsvpEntries(entries);
-        }
-      } catch (err) {
-        safeLogError(["[app]", "[useRsvp]", "hydrate error"], err);
-        if (!cancelled) {
-          setRsvpEntries([]);
-          setRsvpLoadError(true);
-          setAdminMessageType("error");
-          setAdminMessage(t("rsvp.saveError"));
-        }
-      }
-    };
-    hydrateRsvp();
-    return () => {
-      cancelled = true;
-    };
-  }, [inviteToken, t, setAdminMessage, setAdminMessageType, hydrateTick, canRead]);
-
-  // ── Stats en vivo: listener solo para el admin con sesión ──
+  // ── Stats en vivo (y carga inicial): listener solo para el admin ──
   // Las respuestas llegan en tiempo real (otro dispositivo, el propio
   // formulario) sin recargar. El invitado no se suscribe (las reglas no se
   // lo permiten); el listener se cancela al desmontar o al cambiar de token.
@@ -145,14 +115,22 @@ export function useRsvp(
           });
       },
       (err) => {
-        safeLogError(["[app]", "[useRsvp]", "live listen error"], err);
+        // Error del listener (p. ej. reglas/red): se muestra el mismo estado
+        // de error que antes reportaba el getDocs de la hidratación.
+        safeLogError(["[app]", "[useRsvp]", "hydrate/listen error"], err);
+        if (!cancelled) {
+          setRsvpEntries([]);
+          setRsvpLoadError(true);
+          setAdminMessageType("error");
+          setAdminMessage(t("rsvp.saveError"));
+        }
       },
     );
     return () => {
       cancelled = true;
       unsub();
     };
-  }, [inviteToken, canRead]);
+  }, [inviteToken, canRead, hydrateTick, setAdminMessage, setAdminMessageType, t]);
 
   // H3: si el invitado ya envió en este navegador (marcador local, sin leer
   // datos del servidor), restaura el resumen "ya confirmaste" al recargar.

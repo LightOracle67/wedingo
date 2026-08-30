@@ -325,15 +325,9 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
     }
   }, [filteredEntries, t, addToast]);
 
-  const departures = useMemo(() => {
-    try {
-      const parsed = JSON.parse(transportDepartures || "");
-      if (!Array.isArray(parsed)) return [];
-      return parsed.filter((d) => d && typeof d === "object");
-    } catch {
-      return [];
-    }
-  }, [transportDepartures]);
+  // v2.185: se reutiliza departuresList (parseo único de la config); antes el
+  // JSON.parse se hacía DOS veces por render (departures + departuresList).
+  const departures = useMemo(() => departuresList, [departuresList]);
 
   // Nombres únicos para el select de búsqueda, memoizados con un Set (O(n)
   // en vez del O(n²) de findIndex por render anterior: con 500 respuestas

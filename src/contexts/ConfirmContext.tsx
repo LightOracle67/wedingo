@@ -8,7 +8,7 @@
  * promesas, sin gestionar estado de modal por componente.
  */
 
-import { createContext, useCallback, useContext, useRef, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "../components/Modal";
 /** Opciones de una confirmación simple. */
@@ -110,8 +110,14 @@ export function ConfirmProvider({ children }: { children: ReactNode }) {
 
   const title = isPrompt && promptOpts ? promptOpts.title : (confirmOpts?.title ?? t("common.confirm"));
 
+  // Value memoizado del contexto: teclear en el input del prompt (inputValue)
+  // re-renderiza este provider, y sin memo el objeto `{confirm, prompt}` era
+  // nuevo en cada render → TODOS los consumidores de useConfirm() (useRsvp,
+  // LandingPage, paneles admin/superadmin) se re-renderizaban por keystroke.
+  const contextValue = useMemo(() => ({ confirm, prompt }), [confirm, prompt]);
+
   return (
-    <ConfirmContext.Provider value={{ confirm, prompt }}>
+    <ConfirmContext.Provider value={contextValue}>
       {children}
       {state ? (
         <Modal title={title} closeLabel={t("common.close")} onClose={() => close(null)} hideTitle>

@@ -13,10 +13,13 @@ vi.mock("firebase/firestore", () => ({
 vi.mock("../../../lib/firebase", () => ({ db: "db-mock" }));
 
 import TableSeatingSection from "../TableSeatingSection";
+import { clearSectionsCache } from "../../../lib/invitation-subcollections";
 
 describe("TableSeatingSection", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    // La caché de módulo de zonas/mesas (v2.185) persiste entre tests.
+    clearSectionsCache();
     // Se usa /tables para distinguir las consultas de mesas de las de secciones.
     mockGetDocs.mockImplementation((path: unknown) => {
       if (String(path).includes("/tables")) {

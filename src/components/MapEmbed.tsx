@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { isValidGoogleMapsUrl, convertToEmbedUrl } from "../lib/geo-utils";
 
@@ -27,7 +28,12 @@ export default function MapEmbed({
   height?: number;
 }) {
   const { t, i18n } = useTranslation();
-  const embedSrc = mapUrl && isValidGoogleMapsUrl(mapUrl) ? convertToEmbedUrl(mapUrl, mapView, i18n.language) : "";
+  // Memoizado (v2.185): convertToEmbedUrl reconstruía la URL en cada render
+  // de la sección (varias decenas de renders con datos en vivo).
+  const embedSrc = useMemo(
+    () => (mapUrl && isValidGoogleMapsUrl(mapUrl) ? convertToEmbedUrl(mapUrl, mapView, i18n.language) : ""),
+    [mapUrl, mapView, i18n.language],
+  );
   const showIframe = embedSrc && canEmbed(embedSrc);
 
   return (

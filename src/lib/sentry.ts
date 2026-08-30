@@ -71,7 +71,9 @@ function redactEvent(event: Record<string, unknown>): Record<string, unknown> {
 function scheduleWhenIdle(fn: () => void) {
   const w = globalThis as unknown as { requestIdleCallback?: (cb: () => void, opts: { timeout: number }) => number };
   if (typeof w.requestIdleCallback === "function") {
-    w.requestIdleCallback(fn, { timeout: 2000 });
+    // Timeout amplio (v2.185): con 2000 ms el import de ~100 KB gzip de
+    // Sentry competía con el LCP en dispositivos lentos.
+    w.requestIdleCallback(fn, { timeout: 8000 });
     return;
   }
   if (document.readyState === "complete") {

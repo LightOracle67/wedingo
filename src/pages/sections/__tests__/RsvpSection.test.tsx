@@ -52,6 +52,7 @@ vi.mock("../../../contexts", async (importOriginal) => {
 import RsvpSection from "../RsvpSection";
 import { RsvpFormContext, type RsvpFormValue } from "../../../contexts/useRsvpContext";
 import type { RsvpFormData } from "../../../hooks/useRsvp";
+import { clearSectionsCache } from "../../../lib/invitation-subcollections";
 
 const baseForm: RsvpFormData = {
   guestName: "",
@@ -124,6 +125,11 @@ function WrappedRsvp(props: Record<string, unknown>) {
 }
 
 describe("RsvpSection", () => {
+  // La caché de módulo de zonas/mesas (v2.185) persiste entre tests: se
+  // limpia para que cada caso aísle sus lecturas de Firestore.
+  beforeEach(() => {
+    clearSectionsCache();
+  });
   it("renders the form in default state", () => {
     render(<WrappedRsvp {...baseProps} />);
     expect(screen.getByText("rsvp.sectionLabel")).toBeDefined();
@@ -1069,6 +1075,8 @@ describe("RsvpSection", () => {
   describe("RSVP — autosave del borrador en sessionStorage", () => {
     let mem: Record<string, string>;
     beforeEach(() => {
+      // La caché de módulo de zonas/mesas (v2.185) persiste entre tests.
+      clearSectionsCache();
       mem = {};
       Object.defineProperty(window, "sessionStorage", {
         configurable: true,
@@ -1116,10 +1124,11 @@ describe("RsvpSection", () => {
       );
     }
 
-    it("guarda el borrador al escribir", () => {
+    it("guarda el borrador al escribir (con debounce de 500 ms)", async () => {
       render(<DraftHost inviteToken="tokA" />);
       fireEvent.change(screen.getByLabelText(/rsvp.nameLabel/), { target: { value: "Ana García López" } });
-      expect(mem["wedin_rsvp_draft_tokA"]).toContain("Ana García López");
+      // v2.185: el guardado se debouncea; el draft aparece tras el timer.
+      await waitFor(() => expect(mem["wedin_rsvp_draft_tokA"]).toContain("Ana García López"));
     });
 
     it("restaura el borrador guardado al montar", () => {

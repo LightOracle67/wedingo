@@ -89,9 +89,13 @@ async function deriveKeyFromSecret(secret: string, salt: BufferSource, iteration
 }
 
 /** Clave nueva por token (salt estable): se deriva una sola vez por token y
- *  se cachea. Todos los mensajes del mismo token la comparten, con IV propio. */
+ *  se cachea. Todos los mensajes del mismo token la comparten, con IV propio.
+ *  La clave de caché incluye las ITERACIONES (v2.185): antes se cacheaba solo
+ *  por secret, así que un ciphertext legacy con otro número de iteraciones
+ *  reutilizaba la clave de 600k y decrypt devolvía "" en silencio. */
 function getTokenKey(secret: string, iterations: number): Promise<CryptoKey> {
-  const cached = TOKEN_KEY_CACHE.get(secret);
+  const cacheKey = `${secret}:${iterations}`;
+  const cached = TOKEN_KEY_CACHE.get(cacheKey);
   if (cached) return Promise.resolve(cached);
   const salt = tokenSalt(secret);
   return deriveKeyFromSecret(secret, salt, iterations).then((key) => {
@@ -99,7 +103,7 @@ function getTokenKey(secret: string, iterations: number): Promise<CryptoKey> {
       const oldest = TOKEN_KEY_CACHE.keys().next().value;
       if (oldest !== undefined) TOKEN_KEY_CACHE.delete(oldest);
     }
-    TOKEN_KEY_CACHE.set(secret, key);
+    TOKEN_KEY_CACHE.set(cacheKey, key);
     return key;
   });
 }

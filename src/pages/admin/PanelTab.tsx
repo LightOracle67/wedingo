@@ -363,16 +363,19 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
             {t("panel.confirmsPerDay")}
           </p>
           <div className="visits-bars" aria-label={t("panel.confirmsPerDay")}>
-            {confirmationsPerDay.map((d) => {
+            {/* Máximo calculado fuera del map (v2.185): era O(n²) por render. */}
+            {(() => {
               const max = Math.max(1, ...confirmationsPerDay.map((x) => x.count));
-              return (
+              return confirmationsPerDay.map((d) => {
+                return (
                 <div key={d.day} className="visits-bars__col" title={`${d.day}: ${d.count}`}>
                   <div className="visits-bars__bar" style={{ height: `${Math.max(8, (d.count / max) * 100)}%` }} />
                   <span className="visits-bars__label">{d.day}</span>
                   <span className="visits-bars__count">{d.count}</span>
                 </div>
-              );
-            })}
+                );
+              });
+            })()}
           </div>
         </div>
       ) : null}
@@ -384,8 +387,10 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
             {t("panel.visitsHistory")}
           </p>
           <div className="visits-bars" aria-label={t("panel.visitsHistory")}>
-            {lastVisits.map((d: { day: string; count: number }) => {
+            {/* Máximo calculado fuera del map (v2.185): era O(n²) por render. */}
+            {(() => {
               const max = Math.max(1, ...lastVisits.map((x: { count: number }) => x.count));
+              return lastVisits.map((d: { day: string; count: number }) => {
               const short = d.day.slice(5); // MM-DD
               return (
                 <div key={d.day} className="visits-bars__col" title={`${short}: ${d.count}`}>
@@ -394,7 +399,8 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
                   <span className="visits-bars__count">{d.count}</span>
                 </div>
               );
-            })}
+              });
+            })()}
           </div>
         </div>
       ) : null}

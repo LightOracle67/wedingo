@@ -381,10 +381,14 @@ describe("useAutoSave", () => {
       expect(onSaveError).not.toHaveBeenCalled();
     });
 
-    it("encrypts bankInfo when present", async () => {
+    it("encrypts bankInfo only when it changed (diff incremental)", async () => {
       const dataWithBank = { ...sampleConfig, bankInfo: "ES1234567890" };
+      // Base persistida SIN bankInfo: el diff detecta el campo nuevo y lo
+      // cifra. Si la base ya tuviera el mismo valor, no habría nada que
+      // escribir (el doc ya lo guarda cifrado).
+      const persisted = { ...sampleConfig, bankInfo: "" };
       const { result } = renderHook(() =>
-        useAutoSave(true, "test-token", dataWithBank, dataWithBank, vi.fn(), { current: false }),
+        useAutoSave(true, "test-token", dataWithBank, persisted, vi.fn(), { current: false }),
       );
 
       await act(async () => {
@@ -392,10 +396,14 @@ describe("useAutoSave", () => {
       });
 
       expect(mockEncrypt).toHaveBeenCalledWith("ES1234567890", "test-token");
+      expect(mockSetDoc).toHaveBeenCalled();
     });
 
     it("migrates a data-URI couplePhoto to the configImages subcollection", async () => {
       const dataWithPhoto = { ...sampleConfig, couplePhoto: "data:image/png;base64,abc" };
+      // Base persistida con el ref antigua: el diff detecta el cambio
+      // (data-URL nueva) y migra la imagen a la subcolección.
+      const persistedWithOldRef = { ...sampleConfig, couplePhoto: "__cfgimg:couplePhoto:1" };
       // El payload se restaura en memoria tras setDoc; capturamos una copia
       // en el momento de la llamada para comprobar el __cfgimg: escrito.
       let written: Record<string, unknown> = {};
@@ -404,7 +412,7 @@ describe("useAutoSave", () => {
         return Promise.resolve();
       }) as never);
       const { result } = renderHook(() =>
-        useAutoSave(true, "test-token", dataWithPhoto, dataWithPhoto, vi.fn(), { current: false }),
+        useAutoSave(true, "test-token", dataWithPhoto, persistedWithOldRef, vi.fn(), { current: false }),
       );
 
       await act(async () => {

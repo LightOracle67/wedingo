@@ -48,7 +48,7 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
     // Auth se inicializa de forma diferida (solo ruta de superadmin); el
     // SDK se importa aquí para no cargarlo en el arranque de la app.
     getAuthInstance().then(async (instance) => {
-      const { onAuthStateChanged, signOut } = await import("firebase/auth");
+      const { onAuthStateChanged, signOut } = await import("@firebase/auth");
       unsubscribe = onAuthStateChanged(instance, (firebaseUser) => {
         const local = getSession();
         const isSuper = !!firebaseUser && firebaseUser.email === SUPERADMIN_EMAIL;
@@ -93,7 +93,7 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
       setError("");
       try {
         const authInstance = await getAuthInstance();
-        const { signInWithEmailAndPassword, signOut } = await import("firebase/auth");
+        const { signInWithEmailAndPassword, signOut } = await import("@firebase/auth");
         const result = await signInWithEmailAndPassword(authInstance, email, password);
         if (result.user.email !== SUPERADMIN_EMAIL) {
           // No se loggea el email: es PII del responsable (art. 4 GDPR).
@@ -138,7 +138,7 @@ export function SuperAdminProvider({ children }: { children: React.ReactNode }) 
   const logout = useCallback(async () => {
     clearSession();
     const authInstance = await getAuthInstance();
-    const { signOut } = await import("firebase/auth");
+    const { signOut } = await import("@firebase/auth");
     await signOut(authInstance);
     setUser(null);
     try {

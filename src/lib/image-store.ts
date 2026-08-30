@@ -17,6 +17,8 @@ import {
   HIGH_QUALITY_MAX_DIMENSION,
   HIGH_QUALITY_TARGET_BYTES,
   MAX_ENCRYPTED_BYTES,
+  THUMB_MAX_DIMENSION,
+  THUMB_TARGET_BYTES,
 } from "./image-utils";
 import { encrypt, decrypt } from "./crypto-utils";
 import { withWriteRetry } from "./async-utils";
@@ -67,6 +69,21 @@ export async function uploadImage(
   return { encrypted, dataUrl };
 }
 
+/**
+ * Genera la MINIATURA cifrada de una imagen de galería (v2.185): 128px y
+ * ~24KB (frente a los ~650KB de la imagen completa). La fila de miniaturas
+ * de la invitación usa estas copias pequeñas: con 30 fotos se pasa de
+ * ~26MB de data-URLs en memoria/DOM a ~1MB.
+ */
+export async function prepareGalleryThumb(
+  inviteToken: string,
+  file: File,
+): Promise<{ thumbDataUrl: string; thumbEncrypted: string }> {
+  const thumbDataUrl = await compressImage(file, THUMB_MAX_DIMENSION, THUMB_TARGET_BYTES);
+  const thumbEncrypted = await encrypt(thumbDataUrl, inviteToken);
+  return { thumbDataUrl, thumbEncrypted };
+}
+
 export async function addGalleryImage(
   inviteToken: string,
   encrypted: string,
@@ -75,6 +92,8 @@ export async function addGalleryImage(
   onProgress: (p: number) => void,
   originalName?: string,
   originalSize?: number,
+  /** Miniaturas cifrada ("" si la imagen se subió antes de v2.185). */
+  thumbEncrypted?: string,
 ) {
   onProgress?.(85);
   const docRef = await withWriteRetry(() =>
@@ -85,6 +104,7 @@ export async function addGalleryImage(
       createdAt: new Date().toISOString(),
       originalName: originalName || "",
       originalSize: originalSize || 0,
+      thumb: thumbEncrypted || "",
     }),
   );
   onProgress?.(95);
@@ -147,14 +167,16 @@ export async function loadGallery(inviteToken: string) {
 export interface GalleryMeta {
   id: string;
   encrypted: string;
+  /** Miniatura cifrada ("" para imágenes subidas antes de v2.185). */
+  thumbEncrypted: string;
   position?: number;
   description: string;
   originalName?: string;
   originalSize?: number;
 }
 
-/** Imagen de la galería con su data URL descifrada. */
-interface GalleryLoadedImage extends Omit<GalleryMeta, "encrypted"> {
+/** Imagen de la galería con su data URL descifrada (sin la miniatura). */
+interface GalleryLoadedImage extends Omit<GalleryMeta, "encrypted" | "thumbEncrypted"> {
   url: string;
 }
 
@@ -196,6 +218,7 @@ export async function loadGalleryMeta(inviteToken: string): Promise<GalleryMeta[
         items.push({
           id: d.id,
           encrypted: enc,
+          thumbEncrypted: typeof d.data().thumb === "string" ? d.data().thumb : "",
           position: d.data().position,
           description: d.data().description || "",
           originalName: d.data().originalName || "",
@@ -227,6 +250,37 @@ export async function getGalleryImageUrl(inviteToken: string, meta: GalleryMeta)
         URL_CACHE.set(key, url);
         // LRU simple: al exceder la cota se descarta la entrada más antigua.
         if (URL_CACHE.size > MAX_CACHE) {
+          const oldest = URL_CACHE.keys().next().value;
+          if (oldest !== undefined) URL_CACHE.delete(oldest);
+        }
+      }
+      return url;
+    } catch {
+      return "";
+    } finally {
+      INFLIGHT.delete(key);
+    }
+  })();
+  INFLIGHT.set(key, promise);
+  return promise;
+}
+
+/**
+ * Descifra UNA miniatura con caché y single-flight (misma mecánica que
+ * getGalleryImageUrl, clave `${token}:${id}:thumb`). Sin miniatura (foto
+ * anterior a v2.185) devuelve "" y el llamador cae a la imagen completa.
+ */
+export async function getGalleryThumbUrl(inviteToken: string, meta: GalleryMeta): Promise<string> {
+  if (!meta.thumbEncrypted) return "";
+  const key = `${inviteToken}:${meta.id}:thumb`;
+  if (URL_CACHE.has(key)) return URL_CACHE.get(key)!;
+  if (INFLIGHT.has(key)) return INFLIGHT.get(key)!;
+  const promise = (async () => {
+    try {
+      const url = await decrypt(meta.thumbEncrypted, inviteToken);
+      if (url) {
+        URL_CACHE.set(key, url);
+        if (URL_CACHE.size > MAX_CACHE + 40) {
           const oldest = URL_CACHE.keys().next().value;
           if (oldest !== undefined) URL_CACHE.delete(oldest);
         }
@@ -406,14 +460,20 @@ export async function resolveAllConfigImages(
   inviteToken: string,
   config: Record<string, unknown>,
 ): Promise<Record<string, string | undefined>> {
+  // Todas en paralelo (v2.185): antes era secuencial y en el peor caso
+  // añadía ~2 s a la hidratación (4 lecturas+descifrados en serie). El
+  // single-flight CONFIG_IMG_INFLIGHT ya evita duplicar trabajo entre llamadas.
+  const entries = await Promise.all(
+    CONFIG_IMAGE_IDS.map(async (id) => {
+      const val = config[id] as string | undefined;
+      if (val && isConfigImageRef(val)) {
+        return [id, (await getConfigImage(inviteToken, id)) || undefined] as const;
+      }
+      return [id, undefined] as const;
+    }),
+  );
   const result: Record<string, string | undefined> = {};
-  for (const id of CONFIG_IMAGE_IDS) {
-    const val = config[id] as string | undefined;
-    if (val && isConfigImageRef(val)) {
-      result[id] = (await getConfigImage(inviteToken, id)) || undefined;
-    }
-  }
-
+  for (const [id, url] of entries) result[id] = url;
   return result;
 }
 

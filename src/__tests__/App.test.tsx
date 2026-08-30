@@ -255,7 +255,7 @@ describe("App", () => {
     expect(screen.getByText("admin.tabs.panel")).toBeDefined();
   });
 
-  it("renders music player when musicFile is configured", () => {
+  it("renders music player when musicFile is configured", async () => {
     mockUseApp.mockReturnValue({
       ...baseUseApp,
       inviteToken: "abc123",
@@ -269,7 +269,8 @@ describe("App", () => {
         </Suspense>
       </MemoryRouter>,
     );
-    expect(screen.getByTestId("music-player")).toBeDefined();
+    // MusicPlayer es lazy (v2.185): se espera su chunk al montarse.
+    expect(await screen.findByTestId("music-player")).toBeDefined();
   });
 
   it("does not render admin bar when no admin token", () => {

@@ -80,11 +80,50 @@ export async function addAudio(
     prev.docs.forEach((d) => cleanup.delete(d.ref));
     await cleanup.commit();
   }
+  // Invalida la caché de módulo: el audio recién subido debe reemplazar al viejo.
+  AUDIO_CACHE.delete(inviteToken);
 
   return { id: `${inviteToken}_audio`, dataUrl, chunks: chunks.length };
 }
 
+// Caché de módulo del audio descargado/descifrado (clave: token). v2.185:
+// antes CADA carga de invitación (incluido el cache-hit de <2 min) re-leía
+// ~40-53 chunks de 200 KB (~8-10 MB) de Firestore y los re-descifraba. No se
+// persiste en localStorage (el resultado es un data-URL de ~10 MB); vive solo
+// en memoria y se invalida al subir/borrar audio en la misma sesión.
+const AUDIO_CACHE = new Map<string, { at: number; url: string }>();
+/** TTL corto: la caché evita re-descargas en la misma sesión sin arriesgar
+ *  que una subida desde otra pestaña quede oculta demasiado tiempo. */
+const AUDIO_CACHE_TTL_MS = 60_000;
+/** Promesas en curso (single-flight): dos hidrataciones no descargan doble. */
+const AUDIO_INFLIGHT = new Map<string, Promise<{ id: string; url: string } | null>>();
+
+export function clearAudioCache() {
+  AUDIO_CACHE.clear();
+  AUDIO_INFLIGHT.clear();
+}
+
 export async function loadAudio(inviteToken: string) {
+  const hit = AUDIO_CACHE.get(inviteToken);
+  if (hit && Date.now() - hit.at < AUDIO_CACHE_TTL_MS) {
+    return { id: `${inviteToken}_audio`, url: hit.url };
+  }
+  const inflight = AUDIO_INFLIGHT.get(inviteToken);
+  if (inflight) return inflight;
+  const promise = loadAudioUncached(inviteToken);
+  AUDIO_INFLIGHT.set(inviteToken, promise);
+  promise
+    .then((res) => {
+      if (res?.url) {
+        AUDIO_CACHE.set(inviteToken, { at: Date.now(), url: res.url });
+      }
+    })
+    .finally(() => AUDIO_INFLIGHT.delete(inviteToken))
+    .catch(() => {});
+  return promise;
+}
+
+async function loadAudioUncached(inviteToken: string) {
   try {
     const q = query(audioCol(inviteToken), orderBy("chunkIndex", "asc"));
     const snap = await getDocs(q);
@@ -121,6 +160,8 @@ export async function loadAudio(inviteToken: string) {
 }
 
 export async function deleteAudio(inviteToken: string) {
+  // Invalida la caché de módulo: nada que reproducir tras el borrado.
+  AUDIO_CACHE.delete(inviteToken);
   try {
     const snap = await getDocs(audioCol(inviteToken));
     if (snap.empty) {

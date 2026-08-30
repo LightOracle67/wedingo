@@ -20,6 +20,10 @@ vi.mock("firebase/firestore", () => ({
   getFirestore: mockGetFirestore,
 }));
 
+// v2.185: invitation-subcollections importa `db` (no recibe la instancia) para
+// el loader de zonas/mesas; se mockea para no inicializar Firestore de verdad.
+vi.mock("../firebase", () => ({ db: "mock-db" }));
+
 import {
   deleteInvitationCascade,
   collectInvitationDeleteRefs,

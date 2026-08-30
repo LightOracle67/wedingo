@@ -187,81 +187,105 @@ export async function processRsvpSnapshot(
   decrypt: (value: string, key: string) => Promise<string>,
   parseDietaryInfo: (dietaryInfo: string, hasMeal: boolean) => { dietarySelection: string[]; dietaryOther: string | null },
 ): Promise<RsvpEntryData[]> {
-  const allDocs = await Promise.all(
-    snapshot.docs.map(async (entryDoc) => {
-      const data = entryDoc.data();
-      const submittedAt =
-        typeof data.submittedAt?.toDate === "function"
-          ? data.submittedAt.toDate().toISOString()
-          : typeof data.submittedAt === "string"
-            ? data.submittedAt
-            : data.submittedAt?.seconds
-              ? new Date(data.submittedAt.seconds * 1000).toISOString()
-              : new Date().toISOString();
+  // Procesa UN documento de respuesta (descifra dietaryInfo con caché).
+  const processDoc = async (entryDoc: QueryDocumentSnapshot<DocumentData>): Promise<RsvpEntryData> => {
+    const data = entryDoc.data();
+    const submittedAt =
+      typeof data.submittedAt?.toDate === "function"
+        ? data.submittedAt.toDate().toISOString()
+        : typeof data.submittedAt === "string"
+          ? data.submittedAt
+          : data.submittedAt?.seconds
+            ? new Date(data.submittedAt.seconds * 1000).toISOString()
+            : new Date().toISOString();
 
-      const cacheKey = `${inviteToken}|${entryDoc.id}`;
-      let decryptedDietaryInfo = typeof data.dietaryInfo === "string" ? data.dietaryInfo : "";
-      if (typeof data.dietaryInfo === "string" && data.dietaryInfo !== "") {
-        const cached = dietaryInfoCache.get(cacheKey);
-        if (cached !== undefined) {
-          decryptedDietaryInfo = cached;
-        } else {
-          decryptedDietaryInfo = await decrypt(data.dietaryInfo, inviteToken);
-          dietaryInfoCache.set(cacheKey, decryptedDietaryInfo);
-        }
+    const cacheKey = `${inviteToken}|${entryDoc.id}`;
+    let decryptedDietaryInfo = typeof data.dietaryInfo === "string" ? data.dietaryInfo : "";
+    if (typeof data.dietaryInfo === "string" && data.dietaryInfo !== "") {
+      const cached = dietaryInfoCache.get(cacheKey);
+      if (cached !== undefined) {
+        decryptedDietaryInfo = cached;
+      } else {
+        decryptedDietaryInfo = await decrypt(data.dietaryInfo, inviteToken);
+        dietaryInfoCache.set(cacheKey, decryptedDietaryInfo);
       }
+    }
 
-      const attendees = data.attendees || [];
+    const attendees = data.attendees || [];
 
-      return {
-        id: entryDoc.id,
-        rsvpType: (data.rsvpType as "main" | "companion") || (data.mainGuestDocId ? "companion" : "main"),
-        guestName: data.guestName || "",
-        attendance: data.attendance || "no",
-        dietaryInfo: decryptedDietaryInfo,
-        attendees,
-        companions:
-          attendees.length > 0 ? attendees.length : Number.isFinite(data.companions) ? data.companions : 0,
-        companionCount: data.companionCount || 0,
-        companionNames: data.companionNames || [],
-        companionMenus: data.companionMenus || [],
-        companionAllergies: data.companionAllergies || [],
-        companionAllergiesOther: data.companionAllergiesOther || [],
-        allergiesOther: data.allergiesOther || "",
-        mealChoice: data.mealChoice || "",
-        guestNames: data.guestNames || "",
-        note: data.note || "",
-        submittedAt,
-        // Niños declarados por el principal (nuevo modelo): el contador y
-        // las alergias del grupo viajan en el doc del invitado principal.
-        childrenCount: Number(data.childrenCount) || 0,
-        childrenAllergies: Array.isArray(data.childrenAllergies)
-          ? (data.childrenAllergies as string[])
-          : [],
-        childrenAllergiesOther:
-          typeof data.childrenAllergiesOther === "string" ? data.childrenAllergiesOther : "",
-        healthConsent: data.healthConsent || false,
-        transportChoice: data.transportChoice || "",
-        transportMode: data.transportMode || "",
-        transportTime: data.transportTime || "",
-        transportPlace: data.transportPlace || "",
-        companionTransportChoices: data.companionTransportChoices || [],
-        companionTransportModes: data.companionTransportModes || [],
-        companionTransportTimes: data.companionTransportTimes || [],
-        companionTransportPlaces: data.companionTransportPlaces || [],
-        companionDocIds: data.companionDocIds || [],
-        mainGuestDocId: data.mainGuestDocId || "",
-        mainGuestName: data.mainGuestName || "",
-      };
-    }),
-  );
+    return {
+      id: entryDoc.id,
+      rsvpType: (data.rsvpType as "main" | "companion") || (data.mainGuestDocId ? "companion" : "main"),
+      guestName: data.guestName || "",
+      attendance: data.attendance || "no",
+      dietaryInfo: decryptedDietaryInfo,
+      attendees,
+      companions:
+        attendees.length > 0 ? attendees.length : Number.isFinite(data.companions) ? data.companions : 0,
+      companionCount: data.companionCount || 0,
+      companionNames: data.companionNames || [],
+      companionMenus: data.companionMenus || [],
+      companionAllergies: data.companionAllergies || [],
+      companionAllergiesOther: data.companionAllergiesOther || [],
+      allergiesOther: data.allergiesOther || "",
+      mealChoice: data.mealChoice || "",
+      guestNames: data.guestNames || "",
+      note: data.note || "",
+      submittedAt,
+      // Niños declarados por el principal (nuevo modelo): el contador y
+      // las alergias del grupo viajan en el doc del invitado principal.
+      childrenCount: Number(data.childrenCount) || 0,
+      childrenAllergies: Array.isArray(data.childrenAllergies)
+        ? (data.childrenAllergies as string[])
+        : [],
+      childrenAllergiesOther:
+        typeof data.childrenAllergiesOther === "string" ? data.childrenAllergiesOther : "",
+      healthConsent: data.healthConsent || false,
+      transportChoice: data.transportChoice || "",
+      transportMode: data.transportMode || "",
+      transportTime: data.transportTime || "",
+      transportPlace: data.transportPlace || "",
+      companionTransportChoices: data.companionTransportChoices || [],
+      companionTransportModes: data.companionTransportModes || [],
+      companionTransportTimes: data.companionTransportTimes || [],
+      companionTransportPlaces: data.companionTransportPlaces || [],
+      companionDocIds: data.companionDocIds || [],
+      mainGuestDocId: data.mainGuestDocId || "",
+      mainGuestName: data.mainGuestName || "",
+    };
+  };
+
+  // Descifrado por LOTES (v2.185): antes se lanzaban N descifrados AES en
+  // paralelo (500 respuestas → pico de memoria de varios MB de data-URLs a la
+  // vez). Con lotes de 25 se mantiene el paralelismo útil y se acota la
+  // memoria. El cache por (token, docId) ya evita re-descifrar.
+  const MAX_PARALLEL_DECRYPTS = 25;
+  const allDocs: RsvpEntryData[] = [];
+  for (let i = 0; i < snapshot.docs.length; i += MAX_PARALLEL_DECRYPTS) {
+    const chunk = snapshot.docs.slice(i, i + MAX_PARALLEL_DECRYPTS);
+    const processed = await Promise.all(chunk.map((entryDoc) => processDoc(entryDoc)));
+    for (const p of processed) allDocs.push(p);
+  }
 
   const mainEntries = allDocs.filter((d) => d.rsvpType === "main" || (!d.rsvpType && !d.mainGuestDocId));
   const companionEntries = allDocs.filter((d) => d.rsvpType === "companion" || d.mainGuestDocId);
 
+  // Emparejamiento O(N) (v2.185): antes era O(N²) — por cada invitado
+  // principal se filtraba TODA la lista de acompañantes (.filter por main).
+  const companionsByMain = new Map<string, RsvpEntryData[]>();
+  for (const c of companionEntries) {
+    const id = c.mainGuestDocId || "";
+    const list = companionsByMain.get(id);
+    if (list) {
+      list.push(c);
+    } else {
+      companionsByMain.set(id, [c]);
+    }
+  }
+
   const companionAsEntries: RsvpEntryData[] = [];
   for (const main of mainEntries) {
-    const linkedCompanions = companionEntries.filter((c) => c.mainGuestDocId === main.id);
+    const linkedCompanions = companionsByMain.get(main.id) ?? [];
     if (linkedCompanions.length > 0) {
       main.companions = linkedCompanions.length;
       main.companionCount = linkedCompanions.length;

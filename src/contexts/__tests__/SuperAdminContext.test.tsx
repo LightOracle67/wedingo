@@ -30,7 +30,7 @@ vi.mock("firebase/firestore", () => ({
   setDoc: vi.fn(() => Promise.resolve()),
 }));
 
-vi.mock("firebase/auth", () => ({
+vi.mock("@firebase/auth", () => ({
   signInWithEmailAndPassword: (...args: unknown[]) => mockSignInWithEmailAndPassword(...args),
   signOut: (...args: unknown[]) => mockSignOut(...args),
   onAuthStateChanged: (...args: unknown[]) => mockOnAuthStateChanged(...args),

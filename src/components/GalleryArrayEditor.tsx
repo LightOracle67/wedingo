@@ -106,12 +106,17 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
       setUploadingSlots((prev: Set<number>) => new Set(prev).add(slotIndex));
       const upload = startUploadToast(t("setup.galleryUploading", { total: 1 }));
       try {
-        const { uploadImage, addGalleryImage, deleteGalleryImage } = await import("../lib/image-store");
+        const { uploadImage, addGalleryImage, deleteGalleryImage, prepareGalleryThumb } = await import(
+          "../lib/image-store"
+        );
         const { encrypted, dataUrl } = await withTimeout(
           uploadImage(inviteToken, file, (p: number) => upload.update(p)),
           30000,
           "Image upload timed out",
         );
+        // Miniatura cifrada (v2.185): la fila de miniaturas de la invitación
+        // muestra 128px (~24KB) en vez de la imagen completa (~650KB) por foto.
+        const { thumbEncrypted } = await prepareGalleryThumb(inviteToken, file);
 
         // Añadir primero y borrar la anterior después: si el alta falla, la
         // foto previa no se pierde (antes se borraba primero).
@@ -123,6 +128,7 @@ const GalleryArrayEditor = memo(function GalleryArrayEditor({ inviteToken }: Gal
           (p: number) => upload.update(85 + Math.round(p * 0.1)),
           file.name,
           file.size,
+          thumbEncrypted,
         );
         const existing = slots[slotIndex];
         if (existing?.id && existing.id !== saved.id) {

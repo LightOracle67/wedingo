@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { UIProvider } from "./UIContext";
 import { useAppUI } from "./useAppUI";
 import { ConfigProvider } from "./ConfigContext";
-import { useConfig } from "./useConfig";
+import { useConfig, useFormData } from "./useConfig";
 import { AuthProvider } from "./AuthContext";
 import { useAuth } from "./useAuth";
 import { RsvpProvider } from "./RsvpContext";
@@ -14,12 +14,14 @@ import { useConfirm } from "./ConfirmContext";
 function AppMerger({ children }: { children: React.ReactNode }) {
   const { t } = useTranslation();
   const config = useConfig();
+  // formData (borrador del editor) se lee de su contexto separado (v2.185):
+  // el value principal de ConfigContext ya no cambia por cada tecla, así que
+  // los demás consumidores se quedan quietos. AppMerger solo re-renderiza
+  // cuando cambia el borrador (necesario: el guardado compara menú vs config).
+  const { formData: draft } = useFormData();
   const auth = useAuth();
   const rsvp = useRsvpContext();
   const ui = useAppUI();
-  // Confirmación accesible (modal con focus-trap). El ConfirmProvider envuelve
-  // AppProvider (v2.113) para que este flujo de guardado use el modal en vez
-  // del window.confirm nativo (inaccesible).
   const { confirm } = useConfirm();
 
   const handleSaveSetup = useCallback(
@@ -34,11 +36,11 @@ function AppMerger({ children }: { children: React.ReactNode }) {
       const rsvpCount = (rsvp.rsvpEntries || []).filter((e: { attendance: string }) => e.attendance === "yes").length;
       if (rsvpCount > 0) {
         const hasMenuChanges =
-          config.formData?.menuEnabled !== config.config?.menuEnabled ||
-          config.formData?.menuTextoDishes !== config.config?.menuTextoDishes ||
-          config.formData?.menuCarneDishes !== config.config?.menuCarneDishes ||
-          config.formData?.menuPescadoDishes !== config.config?.menuPescadoDishes ||
-          config.formData?.menuVeganoDishes !== config.config?.menuVeganoDishes;
+          draft.menuEnabled !== config.config.menuEnabled ||
+          draft.menuTextoDishes !== config.config.menuTextoDishes ||
+          draft.menuCarneDishes !== config.config.menuCarneDishes ||
+          draft.menuPescadoDishes !== config.config.menuPescadoDishes ||
+          draft.menuVeganoDishes !== config.config.menuVeganoDishes;
 
         if (hasMenuChanges && !(await confirm({ message: t("settings.menuChangeConfirm", { count: rsvpCount }) }))) {
           return;
@@ -46,7 +48,9 @@ function AppMerger({ children }: { children: React.ReactNode }) {
       }
       await config.handleSaveSetup(event);
     },
-    [config, auth, rsvp, ui, t, confirm],
+    // draft (borrador) participa en el diff de menú: debe estar en deps para
+    // que el closure no use un borrador obsoleto al confirmar el cambio.
+    [config, auth, rsvp, ui, t, confirm, draft],
   );
 
   const value = useMemo(() => {

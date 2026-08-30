@@ -12,9 +12,8 @@
  */
 import { memo, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, collection } from "firebase/firestore";
-import { db } from "../../lib/firebase";
 import CornerDecorations from "../../components/CornerDecorations";
+import { loadSectionsWithTables } from "../../lib/invitation-subcollections";
 import { chairPositions, type ShapeTable, type TableSection } from "../../lib/table-geometry";
 
 /** Mesa individual dibujada en el plano (sillas + cuerpo + nombre). */
@@ -139,34 +138,17 @@ const TableSeatingSection = memo(function TableSeatingSection({
     if (!inviteToken) return;
     let cancelled = false;
     (async () => {
-      try {
-        const sectionsSnap = await getDocs(collection(db, "invitations", inviteToken, "sections"));
-        const list: TableSection[] = [];
-        for (const s of sectionsSnap.docs) {
-          const tablesSnap = await getDocs(collection(db, "invitations", inviteToken, "sections", s.id, "tables"));
-          const tables: ShapeTable[] = tablesSnap.docs.map((d) => {
-            const data = d.data();
-            return {
-              id: d.id,
-              name: String(data.name || ""),
-              shape: String(data.shape || "circle") as ShapeTable["shape"],
-              x: Number(data.x) || 0,
-              y: Number(data.y) || 0,
-              w: Number(data.w) || 80,
-              h: Number(data.h) || 80,
-              rotation: Number(data.rotation) || 0,
-              seats: Number(data.seats) || 0,
-              guests: Array.isArray(data.guests) ? (data.guests as string[]) : [],
-            };
-          });
-          if (tables.length > 0) list.push({ id: s.id, name: String(s.data().name || ""), tables });
-        }
-        if (cancelled) return;
-        setSections(list);
-        if (list.length > 0) setActiveId((prev) => prev || list[0]!.id);
-      } catch {
-        /* datos no disponibles: la sección no muestra nada */
-      }
+      // Loader compartido y cacheado (v2.185): zonas+mesas en paralelo y una
+      // sola lectura por visita (RsvpSection consulta los mismos datos).
+      const loaded = await loadSectionsWithTables(inviteToken);
+      if (cancelled) return;
+      // Se conserva el tipo local (ShapeTable) que ya usaba el componente.
+      const list: TableSection[] = loaded.map((s) => ({
+        ...s,
+        tables: s.tables as ShapeTable[],
+      }));
+      setSections(list);
+      if (list.length > 0) setActiveId((prev) => prev || list[0]!.id);
     })();
     return () => {
       cancelled = true;

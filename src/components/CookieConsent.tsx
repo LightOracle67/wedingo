@@ -7,6 +7,7 @@ import Modal from "./Modal";
 import { INVITE_CACHE_PREFIX, AUDIO_PREFIX, STORAGE_KEYS } from "../lib/storage-keys";
 import { PRIVACY_POLICY_VERSION } from "../lib/constants";
 import { grantAnalyticsConsent } from "../lib/analytics";
+import { invalidateConsentCache } from "../lib/storage";
 import "../styles/modals.css";
 
 const STORAGE_KEY = STORAGE_KEYS.cookieConsent;
@@ -61,6 +62,8 @@ function revokeAnalytics() {
 function saveConsent(status: "accepted" | "rejected", analytics: boolean) {
   ls.set(STORAGE_KEY, JSON.stringify({ status, ts: Date.now(), version: PRIVACY_POLICY_VERSION }));
   ls.set(PREF_STORAGE_KEY, JSON.stringify({ necessary: true, analytics }));
+  // La caché de storage.ts no debe servir la decisión ANTERIOR tras escribir.
+  invalidateConsentCache();
 }
 
 function acceptCookies() {

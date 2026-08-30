@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
-import { useApp } from "../contexts";
+import { useApp, useFormData } from "../contexts";
 import { normalizeConfig } from "../lib/normalize-config";
 import { useToast } from "../hooks/useToast";
 import { safeGetItem } from "../lib/storage";
@@ -22,10 +22,12 @@ export default function SetupPage() {
     authMessageType,
     saveMessage,
     config,
-    formData,
     setupToken,
     generateNewToken,
   } = useApp();
+  // formData vive en su contexto separado (v2.185): solo esta página y
+  // AdminPage necesitan el borrador en vivo (aviso beforeunload).
+  const { formData } = useFormData();
 
   const { addToast } = useToast();
   // El token de acceso único, para recordarlo en la tarjeta de éxito (la
@@ -46,13 +48,19 @@ export default function SetupPage() {
   }, [authMessage, authMessageType, addToast]);
 
   // Avisa antes de salir de la página si hay cambios sin guardar.
+  // El listener se registra UNA sola vez (refs para formData/config): con
+  // deps [formData, config] el efecto re-hacía add/remove en cada tecla.
+  const formDataRef = useRef(formData);
+  formDataRef.current = formData;
+  const configRef = useRef(config);
+  configRef.current = config;
   useEffect(() => {
     const onBeforeUnload = (e: BeforeUnloadEvent) => {
       try {
         // Comparación normalizada: el autosave trimea, un espacio final ya
         // guardado no debe disparar el aviso.
-        const norm = (v: typeof formData) => JSON.stringify(normalizeConfig(v));
-        if (norm(formData) !== norm(config)) {
+        const norm = (v: typeof formDataRef.current) => JSON.stringify(normalizeConfig(v));
+        if (norm(formDataRef.current) !== norm(configRef.current)) {
           e.preventDefault();
           e.returnValue = "";
         }
@@ -62,7 +70,7 @@ export default function SetupPage() {
     };
     window.addEventListener("beforeunload", onBeforeUnload);
     return () => window.removeEventListener("beforeunload", onBeforeUnload);
-  }, [formData, config]);
+  }, []);
 
   const [showSuccess, setShowSuccess] = useState(false);
   const hasRedirectedRef = useRef(false);

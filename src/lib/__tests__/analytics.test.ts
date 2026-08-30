@@ -4,7 +4,7 @@ const mockLogEvent = vi.hoisted(() => vi.fn());
 const mockGetAnalytics = vi.hoisted(() => vi.fn(() => ({})));
 const mockIsSupported = vi.hoisted(() => vi.fn(() => Promise.resolve(false)));
 
-vi.mock("firebase/analytics", () => ({
+vi.mock("@firebase/analytics", () => ({
   getAnalytics: mockGetAnalytics,
   logEvent: mockLogEvent,
   isSupported: mockIsSupported,

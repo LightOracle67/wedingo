@@ -14,7 +14,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useConfig, useAuth, useAppUI, useFormField } from "../contexts";
+import { useConfig, useConfigActions, useAuth, useAppUI, useFormField } from "../contexts";
 import { useToast } from "../hooks/useToast";
 import CollapsibleSection from "./CollapsibleSection";
 import SectionOrderEditor from "./SectionOrderEditor";
@@ -57,7 +57,10 @@ export default function SetupForm({ prefix = "" }) {
     };
   }, []);
   // ─── Extrae estado y handlers del contexto global (hooks granulares) ──
-  const { updateFormField, handleSaveSetup, hasStoredConfig, isSaving, handleResetForm } = useConfig();
+  // updateFormField se lee de useConfigActions (contexto estable, v2.185):
+  // leerlo de useConfig() re-suscribía este componente al value principal.
+  const { updateFormField, hasStoredConfig } = useConfigActions();
+  const { handleSaveSetup, isSaving, handleResetForm } = useConfig();
   const _privacyConsent = useFormField("_privacyConsent");
   const hiddenSections = useFormField("hiddenSections");
   const sectionOrder = useFormField("sectionOrder");

@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.185.0 | 2026-08-30 | Optimización global de rendimiento: code-splitting de Firebase corregido (analytics/auth/storage 100% lazy), formData fuera del contexto principal, autosave incremental con firma ligera, caché de invitación con refs (~1 KB vs 3,4 MB), audio cacheado en memoria, RSVP con una sola lectura, zonas/mesas en paralelo, miniaturas de galería cifradas de 128 px, componentes lazy, SW precache reducido a la ruta del invitado y caché HTTP para fuentes/favicons. |
 | v2.184.0 | 2026-08-29 | Cobertura de la pestaña Métricas ampliada (la fila de almacenamiento se muestra con los datos de galería y audio) y descartados dos casos de error inalcanzables. |
 | v2.183.0 | 2026-08-29 | Cobertura ampliada de los paneles del administrador (PlatformTab, ManageTab, AttendanceTab) y centralizado el polyfill de localStorage de los tests |
 | v2.182.0 | 2026-08-29 | Modularización: des-exportadas las interfaces de props internas de subcomponentes y helpers, y la comparación de invitaciones de Gestión extraída a helper puro |

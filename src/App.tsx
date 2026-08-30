@@ -11,15 +11,18 @@ import AdminBarHeightSync from "./components/AdminBarHeightSync";
 const CookieConsent = lazy(() => import("./components/CookieConsent"));
 const DataRequestModal = lazy(() => import("./components/DataRequestModal"));
 import LanguageSwitcher from "./components/LanguageSwitcher";
-import GoogleTranslateToggle from "./components/GoogleTranslateToggle";
-import MusicPlayer from "./components/MusicPlayer";
+// Música, traductor de Google y luciérnagas SOLO se usan en rutas/casos
+// concretos (v2.185): como imports estáticos viajaban en el entry. Ahora son
+// chunks de bajo peso que se descargan al montarse realmente.
+const GoogleTranslateToggle = lazy(() => import("./components/GoogleTranslateToggle"));
+const MusicPlayer = lazy(() => import("./components/MusicPlayer"));
+const Fireflies = lazy(() => import("./components/Fireflies"));
 import { useFocusTrap, useEscapeKey } from "./hooks/useFocusTrap";
 import { useAppShellEffects } from "./hooks/useAppShellEffects";
 
 const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
 const LegalModal = lazy(() => import("./components/LegalModal"));
 const ChangelogModal = lazy(() => import("./components/ChangelogModal"));
-import Fireflies from "./components/Fireflies";
 import AnimationPrefsApplier from "./components/AnimationPrefsApplier";
 import { APP_VERSION } from "./lib/constants";
 import { getSession } from "./lib/sessionVars";
@@ -217,7 +220,9 @@ function AppShell() {
       />
 
       {inviteToken && location.pathname === `/${inviteToken}` && config.musicFile ? (
-        <MusicPlayer musicUrl={config.musicFile} />
+        <Suspense fallback={null}>
+          <MusicPlayer musicUrl={config.musicFile} />
+        </Suspense>
       ) : null}
 
       {!isEditingRoute && !isAdminTokenLoggedIn && (
@@ -438,7 +443,11 @@ function AppShell() {
 
       {/* Fireflies solo en la landing y en la invitación pública: su
           animación continua no debe ejecutarse en rutas de trabajo. */}
-      {location.pathname === "/" || (inviteToken && location.pathname === `/${inviteToken}`) ? <Fireflies /> : null}
+      {location.pathname === "/" || (inviteToken && location.pathname === `/${inviteToken}`) ? (
+        <Suspense fallback={null}>
+          <Fireflies />
+        </Suspense>
+      ) : null}
       <AccessibilityPanel open={showA11y} onClose={() => setShowA11y(false)} />
 
       {/* Modales bajo demanda: su chunk se descarga solo al abrirlos. */}

@@ -1,7 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { getDocs, collection } from "firebase/firestore";
-import { db } from "../../lib/firebase";
+import { loadSectionsWithTables } from "../../lib/invitation-subcollections";
 import { useConfig, useAppUI, useAuth, useRsvpFormContext } from "../../contexts";
 import CornerDecorations from "../../components/CornerDecorations";
 import {
@@ -125,18 +124,16 @@ const RsvpSection = memo(function RsvpSection({
     void (async () => {
       try {
         const needle = attendingName.toLowerCase();
-        const sectionsSnap = await getDocs(collection(db, "invitations", inviteToken, "sections"));
+        // Loader compartido y cacheado (v2.185): las mismas zonas+mesas que
+        // consulta TableSeatingSection se leen UNA vez por visita y en paralelo.
+        const sections = await loadSectionsWithTables(inviteToken);
         let foundName = "";
-        for (const section of sectionsSnap.docs) {
-          const tablesSnap = await getDocs(
-            collection(db, "invitations", inviteToken, "sections", section.id, "tables"),
-          );
-          const found = tablesSnap.docs.find(
-            (d) =>
-              Array.isArray(d.data().guests) && (d.data().guests as string[]).some((g) => g.toLowerCase() === needle),
+        for (const section of sections) {
+          const found = section.tables.find(
+            (t) => t.guests.some((g) => g.toLowerCase() === needle),
           );
           if (found) {
-            foundName = String(found.data().name || "");
+            foundName = found.name || "";
             break;
           }
         }
@@ -290,14 +287,20 @@ const RsvpSection = memo(function RsvpSection({
     }
   }, [draftKey, setRsvpForm]);
 
-  // Guardado continuo mientras el invitado rellena (no tras enviar ni congelado).
+  // Guardado continuo del borrador con DEBOUNCE (v2.185): el setItem síncrono
+  // con JSON.stringify(rsvpForm) se ejecutaba en CADA tecla del formulario;
+  // con 500 ms la escritura es imperceptible y el borrador sigue siendo
+  // tolerante a pérdidas (se re-guarda tras la última pulsación).
   useEffect(() => {
     if (!draftKey || hasSubmitted || derived.isAlreadySubmitted) return;
-    try {
-      sessionStorage.setItem(draftKey, JSON.stringify(rsvpForm));
-    } catch {
-      // Cuota llena o storage bloqueado: el flujo sigue funcionando igual.
-    }
+    const timer = setTimeout(() => {
+      try {
+        sessionStorage.setItem(draftKey, JSON.stringify(rsvpForm));
+      } catch {
+        // Cuota llena o storage bloqueado: el flujo sigue funcionando igual.
+      }
+    }, 500);
+    return () => clearTimeout(timer);
   }, [rsvpForm, draftKey, hasSubmitted, derived.isAlreadySubmitted]);
 
   // Al enviar con éxito el borrador deja de tener sentido.

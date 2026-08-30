@@ -53,21 +53,54 @@ function pwaPrecache() {
           .filter((file) => file.endsWith(".json"))
           .map((file) => file.replace(".json", "")),
       );
+      // v2.185: el precache ya NO mete TODA la SPA (~81 chunks, 1,3-1,7 MB que
+      // un invitado jamás usará: paneles admin, superadmin, print…). Se
+      // precachean:
+      //  1. El entry + sus modulepreloads (leídos de dist/index.html).
+      //  2. La ruta del INVITADO: PublicInvitation y sus secciones lazy.
+      // El resto (admin, superadmin, modales, sentry…) se cachea bajo demanda
+      // con el fetch handler cache-first del SW (funciona igual en offline
+      // tras la primera visita).
+      const guestSectionPrefixes = [
+        "PublicInvitation-",
+        "HeroSection-",
+        "DetailsSection-",
+        "InfoSection-",
+        "StorySection-",
+        "GiftsSection-",
+        "AccommodationSection-",
+        "GallerySection-",
+        "TransportSection-",
+        "RsvpSection-",
+        "VenueMapSection-",
+        "TableSeatingSection-",
+        "WelcomeVideoModal-",
+      ];
       let assets = [];
       try {
-        assets = readdirSync(assetsDir)
-          .filter((file) => /\.(js|css|woff2?)$/.test(file))
-          .sort()
+        // 1) Entry + modulepreloads reales de dist/index.html (lo que el
+        //    navegador descarga al cargar la app, sin adivinanzas).
+        const html = readFileSync(join(root, "dist", "index.html"), "utf8");
+        const referenced = new Set();
+        for (const m of html.matchAll(/(?:src|href)="\/assets\/([^"]+\.(?:js|css))"/g)) {
+          referenced.add(m[1]);
+        }
+        // 2) Chunks de la invitación pública (lazy por ruta).
+        for (const file of readdirSync(assetsDir)) {
+          if (guestSectionPrefixes.some((p) => file.startsWith(p))) referenced.add(file);
+        }
+        assets = [...referenced]
           .filter((file) => {
             const langMatch = file.match(/^([a-z]{2,4})-[A-Za-z0-9_-]{8,}\.js$/);
-            // Excluye los 100 chunks de idioma del precache del service worker.
+            // Excluye los chunks de idioma del precache del service worker.
             if (langMatch && langCodes.has(langMatch[1])) return false;
-            // Estos chunks son lazy por ruta/uso (superadmin/login/sentry/
-            // analytics/qrcode): se cachean al primer uso, no al instalar,
-            // para no pagar ~1.7MB en el primer hit.
-            if (/^(vendor-sentry|lazy-auth|lazy-storage|lazy-analytics|vendor-qrcode)-/.test(file)) return false;
+            // Sentry/qrcode/superadmin login: bajo demanda tras consentimiento.
+            const lazyOnlyPrefixes =
+              /^(vendor-sentry|lazy-auth|lazy-storage|lazy-analytics|vendor-qrcode|SuperAdminLogin|SuperAdminPanel|PrintPage|AdminPage|SetupPage|SetupForm|DashboardTab|DataTab|ManageTab|MetricsTab|ComplianceTab|PlatformTab|SettingsTab|SupportTab|TokensTab|InvitationsTab|InvitationDetailModal|AccessibilityPanel|LegalModal|ChangelogModal|CookieConsent|DataRequestModal|AttendanceTab|DistribucionTab|PanelTab|InvitationTab|ShareTab|AccessTab|ToolsTab|StatsCard|TableActionsBar|SortableTh|Pagination)-/;
+            if (lazyOnlyPrefixes.test(file)) return false;
             return true;
           })
+          .sort()
           .map((file) => `/assets/${file}`);
       } catch {
         // Sin directorio de assets el SW se deja con la lista vacía.
@@ -140,28 +173,56 @@ export default defineConfig(({ mode }) => {
         polyfill: true,
         resolveDependencies: (_filename, deps) => deps.filter((d) => !d.includes("lazy-analytics")),
       },
-      rollupOptions: {
+      // Vite 8 usa rolldown: la API moderna de code-splitting manual es
+      // output.codeSplitting.groups (manualChunks quedó deprecado y, con
+      // módulos compartidos, producía el bug de v2.185: rolldown fusionaba el
+      // core compartido de Firebase —@firebase/util, /component, /logger,
+      // /webchannel-wrapper, importados por firestore en la ruta crítica—
+      // DENTRO del chunk lazy-analytics, de modo que vendor-firebase lo
+      // importaba estáticamente y el SDK de GA (~15 KB gzip) se descargaba en
+      // el primer hit aunque el visitante rechazara las cookies).
+      rolldownOptions: {
         output: {
-          manualChunks(id) {
-            // firebase/analytics, auth y storage se cargan bajo demanda (fuera
-            // de la ruta crítica): analytics en el primer evento, auth/storage
-            // solo en rutas de superadmin.
-            if (id.includes("firebase/analytics")) return "lazy-analytics";
-            if (id.includes("firebase/auth")) return "lazy-auth";
-            if (id.includes("firebase/storage")) return "lazy-storage";
-            // qrcode solo se importa dinámicamente (QR del panel): su propio
-            // chunk evita que entre en la ruta inicial vía el agrupador genérico.
-            if (id.includes("/qrcode/")) return "vendor-qrcode";
-            if (id.includes("firebase")) return "vendor-firebase";
-            // i18next/react-i18next ANTES de la regla de react: el subpath
-            // "node_modules/react-i18next" contiene "node_modules/react" como
-            // prefijo, así que sin reordenar, react-i18next acababa en vendor-react
-            // y el chunk i18n quedaba incompleto (i18n core separado de react-i18next).
-            if (id.includes("/node_modules/i18next/") || id.includes("/node_modules/react-i18next/")) return "i18n";
-            if (id.includes("/node_modules/react/") || id.includes("/node_modules/react-dom/")) return "vendor-react";
-            if (id.includes("/node_modules/react-router")) return "vendor-react";
-            if (id.includes("/node_modules/@sentry/")) return "vendor-sentry";
-            if (id.includes("node_modules")) return "vendor-other";
+          codeSplitting: {
+            groups: [
+              // Los SDKs lazy se priorizan sobre el grupo genérico de
+              // firebase: analytics+installations, auth y storage SOLO se
+              // descargan bajo demanda (consentimiento / ruta superadmin).
+              // `includeDependenciesRecursively: false` es CLAVE: por defecto
+              // un grupo captura también sus dependencias (util, component,
+              // logger…) aunque otro grupo las capture, y eso hacía que el
+              // core compartido acabara en lazy-analytics y vendor-firebase
+              // lo importara estáticamente (bug de bundle v2.185).
+              { name: "lazy-analytics", test: /@firebase\/(analytics|installations)/, priority: 60, includeDependenciesRecursively: false },
+              { name: "lazy-auth", test: /@firebase\/auth/, priority: 60, includeDependenciesRecursively: false },
+              { name: "lazy-storage", test: /@firebase\/storage/, priority: 60, includeDependenciesRecursively: false },
+              // Core de Firebase (app, firestore, util, component, logger,
+              // webchannel-wrapper…): ruta crítica. Los chunks lazy dependen
+              // DE él, nunca al revés (verificación post-build: ningún
+              // vendor-* debe importar un chunk "lazy-*").
+              { name: "vendor-firebase", test: /@firebase\/|firebase\//, priority: 40 },
+              // qrcode solo se importa dinámicamente (QR del panel): su
+              // propio chunk lo mantiene fuera de la ruta inicial.
+              { name: "vendor-qrcode", test: /qrcode/, priority: 30 },
+              // Sentry: includeDependenciesRecursively: false es OBLIGATORIO —
+              // @sentry/react tiene `react` como dependencia (peer) y con el
+              // modo recursivo capturaba react (+react-dom) dentro del chunk
+              // lazy de Sentry; como el entry usa react en el primer render,
+              // el chunk vendor-sentry acababa importado ESTÁTICAMENTE por
+              // index (vendía el "lazy" de Sentry: +103 KB gzip en ruta
+              // crítica). Sus dependencias internas @sentry/* siguen
+              // coincidiendo con el test y se capturan igual.
+              { name: "vendor-sentry", test: /@sentry/, priority: 30, includeDependenciesRecursively: false },
+              // i18next/react-i18next ANTES de la regla de react: el subpath
+              // "node_modules/react-i18next" contiene "node_modules/react"
+              // como prefijo, así que sin separar, react-i18next acabaría en
+              // vendor-react y el chunk i18n quedaría incompleto.
+              { name: "i18n", test: /node_modules\/(i18next|react-i18next|i18next-browser-languagedetector|i18next-resources-to-backend)/, priority: 30 },
+              // React con prioridad 40: debe ganar a vendor-sentry en los
+              // conflictos de captura (react es peer dep de @sentry/react).
+              { name: "vendor-react", test: /node_modules\/(react|react-dom|react-router)/, priority: 40 },
+              { name: "vendor-other", test: /node_modules/, priority: 10 },
+            ],
           },
         },
       },

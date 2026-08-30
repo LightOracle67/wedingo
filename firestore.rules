@@ -259,10 +259,16 @@ service cloud.firestore {
 
        match /gallery/{imageId} {
         allow read: if true;
-        allow create: if request.resource.data.keys().hasOnly(['data', 'description', 'position', 'createdAt', 'originalName', 'originalSize'])
+        /* v2.185: campo `thumb` (miniatura cifrada 128px/~24KB del editor).
+           Es opcional ("" para fotos anteriores) y se valida igual que la
+           imagen: string cifrado de tamaño acotado. */
+        allow create: if request.resource.data.keys().hasOnly(['data', 'description', 'position', 'createdAt', 'originalName', 'originalSize', 'thumb'])
           && request.resource.data.data is string
           && isEncryptedMedia(request.resource.data.data)
           && request.resource.data.data.size() <= 1048576
+          && request.resource.data.thumb is string
+          && request.resource.data.thumb.size() <= 131072
+          && (request.resource.data.thumb == '' || isEncryptedMedia(request.resource.data.thumb))
           && request.resource.data.description is string && request.resource.data.description.size() <= 200
           && request.resource.data.position is int
           && isAuthenticatedAdmin(tokenId);

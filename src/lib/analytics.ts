@@ -69,7 +69,11 @@ function getAnalyticsInstance(): Promise<Analytics | null> {
     initStarted = true;
     analyticsPromise = (async () => {
       try {
-        const mod = await import("firebase/analytics");
+        // Import del paquete interno @firebase/analytics (no del wrapper
+        // "firebase/analytics"): el wrapper es un re-export que rolldown
+        // convertía en un facade estático en el chunk eager, descargando el
+        // SDK de GA sin consentimiento (bug de bundle v2.185).
+        const mod = await import("@firebase/analytics");
         if (!import.meta.env.PROD || !MEASUREMENT_ID) return null;
         const supported = await mod.isSupported();
         if (!supported) return null;
@@ -104,7 +108,7 @@ export function trackEvent(eventName: string, params?: Record<string, unknown>) 
   getAnalyticsInstance()
     .then(async (analytics) => {
       if (!analytics) return;
-      const { logEvent } = await import("firebase/analytics");
+      const { logEvent } = await import("@firebase/analytics");
       logEvent(analytics, eventName, params);
     })
     .catch(() => {});

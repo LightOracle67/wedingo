@@ -33,9 +33,29 @@ function parseConsent(value: string | null): ConsentRecord | null {
   return null;
 }
 
+// Caché del registro de consentimiento: `getConsentRecord` hacía
+// localStorage.getItem + JSON.parse en CADA llamada, y `hasAnalyticsConsent`
+// se invoca desde cada trackEvent (frecuente). Un TTL corto mantiene la
+// decisión fresca (la escritura del banner invalida explícitamente) sin
+// lecturas síncronas repetidas del storage en el hilo principal.
+const CONSENT_CACHE_TTL_MS = 2000;
+let consentCache: { value: ConsentRecord | null; at: number } | null = null;
+
+/** Invalida la caché del consentimiento (llamado al guardar una decisión
+ *  nueva del banner de cookies: aceptar/rechazar/preferencias). */
+export function invalidateConsentCache() {
+  consentCache = null;
+}
+
 function getConsentRecord(): ConsentRecord | null {
+  const now = Date.now();
+  if (consentCache && now - consentCache.at < CONSENT_CACHE_TTL_MS) {
+    return consentCache.value;
+  }
   try {
-    return parseConsent(localStorage.getItem(STORAGE_CONSENT_KEY));
+    const value = parseConsent(localStorage.getItem(STORAGE_CONSENT_KEY));
+    consentCache = { value, at: now };
+    return value;
   } catch (err) {
     safeLogError(["[app]", "[storage]", "consent check error"], err);
     return null;

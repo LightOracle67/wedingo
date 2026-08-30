@@ -17,10 +17,10 @@
  * @module AdminPage
  */
 
-import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Navigate, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
-import { useConfig, useAuth, useRsvpContext, useAppUI } from "../contexts";
+import { useConfig, useAuth, useRsvpContext, useAppUI, useFormData } from "../contexts";
 import { normalizeConfig } from "../lib/normalize-config";
 import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { useToast } from "../hooks/useToast";
@@ -82,11 +82,14 @@ export default function AdminPage() {
     isConfigLoading,
     configLoadError,
     config,
-    formData,
     handleDeleteInvitation,
     reloadConfig,
     visitCount,
   } = useConfig();
+  // formData vive en su contexto separado (v2.185): esta página necesita el
+  // borrador EN VIVO para el aviso beforeunload, pero el resto de consumidores
+  // de useConfig() ya no re-renderizan por cada tecla del editor.
+  const { formData } = useFormData();
   const {
     isAdminTokenLoggedIn,
     isRestoringSession,
@@ -102,14 +105,21 @@ export default function AdminPage() {
   const { adminMessage, adminMessageType, setAdminMessage, setAdminMessageType } = useAppUI();
 
   // Avisa antes de salir si hay cambios sin guardar en la invitación.
+  // El listener se registra UNA sola vez (se leen formData/config por ref):
+  // con deps [formData, config] el efecto hacía add/remove listener en cada
+  // tecla del editor.
+  const formDataRef = useRef(formData);
+  formDataRef.current = formData;
+  const configRef = useRef(config);
+  configRef.current = config;
   useEffect(() => {
     const onBeforeUnload = (e: BeforeUnloadEvent) => {
       try {
         // Se comparan los estados NORMALIZADOS: el autosave persiste con trim,
         // así que un espacio final ("Ana ") ya guardado no debe disparar el
         // aviso de "cambios sin guardar".
-        const norm = (v: typeof formData) => JSON.stringify(normalizeConfig(v));
-        if (norm(formData) !== norm(config)) {
+        const norm = (v: typeof formDataRef.current) => JSON.stringify(normalizeConfig(v));
+        if (norm(formDataRef.current) !== norm(configRef.current)) {
           e.preventDefault();
           e.returnValue = "";
         }
@@ -119,7 +129,7 @@ export default function AdminPage() {
     };
     window.addEventListener("beforeunload", onBeforeUnload);
     return () => window.removeEventListener("beforeunload", onBeforeUnload);
-  }, [formData, config]);
+  }, []);
 
   const { addToast } = useToast();
 
@@ -295,20 +305,36 @@ export default function AdminPage() {
   }, [filteredEntries, coupleName, t, i18n.language, addToast]);
 
   // ─── Cálculo de estadísticas de asistencia ─────────────
-  const confirmedResponses = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "yes").length;
-  const declinedResponses = rsvpEntries.filter((e: { attendance: string }) => e.attendance === "no").length;
-  const totalGuests = rsvpEntries.reduce((s: number, r: { companions?: number }) => s + (Number(r.companions) || 1), 0);
-  // Personas (confirmados/declinados) y total esperado (0..1000 desde config).
-  const confirmedPeople = rsvpEntries.reduce(
-    (s: number, r: { attendance: string; companions?: number }) =>
-      s + (r.attendance === "yes" ? Number(r.companions) || 1 : 0),
-    0,
-  );
-  const declinedPeople = rsvpEntries.reduce(
-    (s: number, r: { attendance: string; companions?: number }) =>
-      s + (r.attendance === "no" ? Number(r.companions) || 1 : 0),
-    0,
-  );
+  // Memoizado: antes se recalculaban (2 filtros + 3 reduces sobre toda la
+  // lista de RSVPs) en CADA render — con cientos de respuestas y renders
+  // frecuentes (teclas del editor, snapshots en vivo, toasts) era trabajo
+  // O(n) × N renders. Un solo recorrido en el memo.
+  const {
+    confirmedResponses,
+    declinedResponses,
+    totalGuests,
+    confirmedPeople,
+    declinedPeople,
+  } = useMemo(() => {
+    let confirmedResponses = 0;
+    let declinedResponses = 0;
+    let totalGuests = 0;
+    let confirmedPeople = 0;
+    let declinedPeople = 0;
+    for (const r of rsvpEntries) {
+      const attendance = (r as { attendance?: string }).attendance;
+      const people = Number((r as { companions?: number }).companions) || 1;
+      totalGuests += people;
+      if (attendance === "yes") {
+        confirmedResponses += 1;
+        confirmedPeople += people;
+      } else if (attendance === "no") {
+        declinedResponses += 1;
+        declinedPeople += people;
+      }
+    }
+    return { confirmedResponses, declinedResponses, totalGuests, confirmedPeople, declinedPeople };
+  }, [rsvpEntries]);
   const expectedGuestsTotal = Math.min(Math.max(Number(config.expectedGuests) || 0, 0), 1000);
 
   // Timestamp de la boda (ms) para el dashboard predictivo; null sin fecha

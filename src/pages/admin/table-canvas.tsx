@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { memo, forwardRef, useMemo } from "react";
 import type { TFunction } from "i18next";
 import { chairPositions } from "../../lib/table-geometry";
 
@@ -51,63 +51,53 @@ interface TableCanvasProps {
  * DistribucionTab y testear la UI de forma aislada. Exponer la ref del div
  * permite al padre calcular los límites del arrastre (getBoundingClientRect).
  */
-export const TableCanvas = forwardRef<HTMLDivElement, TableCanvasProps>(function TableCanvas(
-  {
-    tables,
-    selectedId,
-    onPointerDown,
-    onPointerMove,
-    onPointerUp,
-    onDeleteTable,
-    onMoveSelectedByKey,
-    emptyMapLabel,
-    t,
-  },
-  ref,
-) {
+/**
+ * Subcomponente memoizado por mesa (v2.185): durante el arrastre el padre
+ * actualiza `tables` en cada pointermove y el canvas completo se re-renderiza;
+ * sin memo, CADA mesa recalculaba sus sillas (chairPositions) y se re-creaba
+ * su subárbol DOM en cada frame. Con props estables (mesa intacta, mismo
+ * selectedId), solo la mesa arrastrada se re-renderiza.
+ */
+const TableItem = memo(function TableItem({
+  tb,
+  isSelected,
+  onPointerDown,
+  onDeleteTable,
+  onMoveSelectedByKey,
+  t,
+}: {
+  tb: CanvasTable;
+  isSelected: boolean;
+  onPointerDown: (e: React.PointerEvent, id: string) => void;
+  onDeleteTable: (id: string) => void;
+  onMoveSelectedByKey: (e: React.KeyboardEvent, id: string) => void;
+  t: TFunction;
+}) {
+  // Geometría memoizada por mesa: solo cambia con shape/w/h/seats (no durante
+  // el arrastre, que solo modifica x/y).
+  const chairs = useMemo(
+    () => chairPositions(tb.shape, tb.w, tb.h, tb.seats),
+    [tb.shape, tb.w, tb.h, tb.seats],
+  );
   return (
     <div
-      ref={ref}
-      className="distribucion-map"
-      onPointerMove={onPointerMove}
-      onPointerUp={onPointerUp}
-      onPointerLeave={onPointerUp}
+      data-table-id={tb.id}
+      role="button"
+      tabIndex={0}
+      aria-label={t("distribucion.tableAccessible", { name: tb.name })}
+      onPointerDown={(e) => onPointerDown(e, tb.id)}
+      onKeyDown={(e) => onMoveSelectedByKey(e, tb.id)}
       style={{
-        position: "relative",
-        flex: 1,
-        width: "100%",
-        minHeight: "24rem",
-        borderRadius: "1rem",
-        overflow: "hidden",
-        background: "linear-gradient(160deg, #241c12, #3a2d1c)",
-        border: "1px solid var(--setup-border)",
-        touchAction: "none",
-        userSelect: "none",
+        position: "absolute",
+        left: `${tb.x}%`,
+        top: `${tb.y}%`,
+        width: `${tb.w}px`,
+        height: `${tb.h}px`,
+        transform: `translate(-50%, -50%) rotate(${tb.rotation}deg)`,
+        cursor: "grab",
       }}
     >
-      {tables.map((tb) => {
-        // Maquetación: sillas alrededor de la mesa según su forma y nº de plazas.
-        const chairs = chairPositions(tb.shape, tb.w, tb.h, tb.seats);
-        return (
-          <div
-            key={tb.id}
-            data-table-id={tb.id}
-            role="button"
-            tabIndex={0}
-            aria-label={t("distribucion.tableAccessible", { name: tb.name })}
-            onPointerDown={(e) => onPointerDown(e, tb.id)}
-            onKeyDown={(e) => onMoveSelectedByKey(e, tb.id)}
-            style={{
-              position: "absolute",
-              left: `${tb.x}%`,
-              top: `${tb.y}%`,
-              width: `${tb.w}px`,
-              height: `${tb.h}px`,
-              transform: `translate(-50%, -50%) rotate(${tb.rotation}deg)`,
-              cursor: "grab",
-            }}
-          >
-            {selectedId === tb.id ? (
+            {isSelected ? (
               <button
                 type="button"
                 onClick={(e) => {
@@ -161,9 +151,9 @@ export const TableCanvas = forwardRef<HTMLDivElement, TableCanvasProps>(function
                 position: "absolute",
                 inset: 0,
                 borderRadius: tb.shape === "rect" || tb.shape === "square" ? "0.35rem" : "50%",
-                border: `2px solid ${selectedId === tb.id ? "var(--setup-accent)" : "rgba(255,255,255,0.55)"}`,
+                border: `2px solid ${isSelected ? "var(--setup-accent)" : "rgba(255,255,255,0.55)"}`,
                 background: "linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08))",
-                boxShadow: selectedId === tb.id ? "0 0 0 3px var(--setup-accent)" : "0 6px 16px rgba(0,0,0,0.45)",
+                boxShadow: isSelected ? "0 0 0 3px var(--setup-accent)" : "0 6px 16px rgba(0,0,0,0.45)",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -188,7 +178,54 @@ export const TableCanvas = forwardRef<HTMLDivElement, TableCanvasProps>(function
             </div>
           </div>
         );
-      })}
+      }
+);
+
+export const TableCanvas = forwardRef<HTMLDivElement, TableCanvasProps>(function TableCanvas(
+  {
+    tables,
+    selectedId,
+    onPointerDown,
+    onPointerMove,
+    onPointerUp,
+    onDeleteTable,
+    onMoveSelectedByKey,
+    emptyMapLabel,
+    t,
+  },
+  ref,
+) {
+  return (
+    <div
+      ref={ref}
+      className="distribucion-map"
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerLeave={onPointerUp}
+      style={{
+        position: "relative",
+        flex: 1,
+        width: "100%",
+        minHeight: "24rem",
+        borderRadius: "1rem",
+        overflow: "hidden",
+        background: "linear-gradient(160deg, #241c12, #3a2d1c)",
+        border: "1px solid var(--setup-border)",
+        touchAction: "none",
+        userSelect: "none",
+      }}
+    >
+      {tables.map((tb) => (
+        <TableItem
+          key={tb.id}
+          tb={tb}
+          isSelected={selectedId === tb.id}
+          onPointerDown={onPointerDown}
+          onDeleteTable={onDeleteTable}
+          onMoveSelectedByKey={onMoveSelectedByKey}
+          t={t}
+        />
+      ))}
       {tables.length === 0 ? (
         <p
           style={{

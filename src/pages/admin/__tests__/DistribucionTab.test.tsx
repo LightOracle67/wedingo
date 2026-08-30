@@ -40,6 +40,13 @@ vi.mock("../../../lib/excel-builders", () => ({
   buildTablesSheet: vi.fn(() => ({ name: "Mesas", headers: [], rows: [] })),
 }));
 
+// Confirmados del contexto RSVP compartido (v2.185): DistribucionTab ya no
+// lee la colección por su cuenta; consume el onSnapshot en vivo de useRsvp.
+const mockRsvpEntries = vi.hoisted(() => [] as Array<Record<string, unknown>>);
+vi.mock("../../../contexts", () => ({
+  useRsvpContext: () => ({ rsvpEntries: mockRsvpEntries }),
+}));
+
 import DistribucionTab from "../DistribucionTab";
 import { writeBatch, updateDoc } from "firebase/firestore";
 
@@ -49,16 +56,15 @@ vi.setConfig({ testTimeout: 20000 });
 describe("DistribucionTab", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    // Confirmados por defecto (Ana/Pepe sí, Luis no) para el contexto RSVP.
+    mockRsvpEntries.splice(
+      0,
+      mockRsvpEntries.length,
+      { id: "e1", guestName: "Ana", attendance: "yes", companions: 1 },
+      { id: "e2", guestName: "Luis", attendance: "no", companions: 1 },
+      { id: "e3", guestName: "Pepe", attendance: "yes", companions: 1 },
+    );
     mockGetDocs.mockImplementation((ref: unknown) => {
-      if (ref === "rsvp-ref") {
-        return Promise.resolve({
-          docs: [
-            { data: () => ({ guestName: "Ana", attendance: "yes" }) },
-            { data: () => ({ guestName: "Luis", attendance: "no" }) },
-            { data: () => ({ guestName: "Pepe", attendance: "yes" }) },
-          ],
-        });
-      }
       if (ref === "sections-ref") {
         return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
       }
@@ -156,14 +162,14 @@ describe("DistribucionTab", () => {
   it("avisa cuando la mesa está llena", async () => {
     mockAddToast.mockClear();
     // Mesa con 1 plaza y 1 invitado ya asignado.
+    mockRsvpEntries.splice(
+      0,
+      mockRsvpEntries.length,
+      { id: "e1", guestName: "Ana", attendance: "yes" },
+      { id: "e2", guestName: "Pepe", attendance: "yes" },
+    );
     mockGetDocs.mockImplementation((ref: unknown) => {
-      if (ref === "rsvp-ref")
-        return Promise.resolve({
-          docs: [
-            { data: () => ({ guestName: "Ana", attendance: "yes" }) },
-            { data: () => ({ guestName: "Pepe", attendance: "yes" }) },
-          ],
-        });
+      if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
       if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
       return Promise.resolve({
         docs: [
@@ -195,11 +201,13 @@ describe("DistribucionTab", () => {
 
   it("quita un invitado asignado de la mesa", async () => {
     const { updateDoc } = await import("firebase/firestore");
+    mockRsvpEntries.splice(
+      0,
+      mockRsvpEntries.length,
+      { id: "e1", guestName: "Ana", attendance: "yes" },
+    );
     mockGetDocs.mockImplementation((ref: unknown) => {
-      if (ref === "rsvp-ref")
-        return Promise.resolve({
-          docs: [{ data: () => ({ guestName: "Ana", attendance: "yes" }) }],
-        });
+      if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
       if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
       return Promise.resolve({
         docs: [
@@ -231,6 +239,7 @@ describe("DistribucionTab", () => {
 
   it("renderiza una mesa legada con forma rect en el mapa", async () => {
     // Formas legacy (rect/oval) que siguen leyéndose para no romper datos viejos.
+    mockRsvpEntries.splice(0, mockRsvpEntries.length);
     mockGetDocs.mockImplementation((ref: unknown) => {
       if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
       if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
@@ -285,6 +294,7 @@ describe("DistribucionTab", () => {
 
   it("prints one place card per guest with table name and custom style", async () => {
     // Una mesa con un invitado asignado.
+    mockRsvpEntries.splice(0, mockRsvpEntries.length);
     mockGetDocs.mockImplementation((ref: unknown) => {
       if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
       if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
@@ -465,9 +475,13 @@ describe("DistribucionTab", () => {
     });
     /** Monta la tab con la mesa por defecto y devuelve su elemento accesible. */
     async function mountWithTable(guests: string[] = []) {
+      mockRsvpEntries.splice(
+        0,
+        mockRsvpEntries.length,
+        { id: "e1", guestName: "Ana", attendance: "yes" },
+      );
       mockGetDocs.mockImplementation((ref: unknown) => {
-        if (ref === "rsvp-ref")
-          return Promise.resolve({ docs: [{ data: () => ({ guestName: "Ana", attendance: "yes" }) }] });
+        if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
         if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
         return Promise.resolve({
           docs: [
@@ -536,6 +550,7 @@ describe("DistribucionTab", () => {
     });
 
     it("avisa si no hay mesas que exportar", async () => {
+      mockRsvpEntries.splice(0, mockRsvpEntries.length);
       mockGetDocs.mockImplementation((ref: unknown) => {
         if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
         if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });

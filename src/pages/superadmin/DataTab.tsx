@@ -161,6 +161,13 @@ export default function DataTab() {
     });
   }, []);
 
+  // Handler estable de copia de token: DataTabRow está memoizada y una arrow
+  // inline cambia de identidad en cada render → teclear en búsqueda/confirmación
+  // re-renderizaba TODAS las filas de la tabla.
+  const handleCopyToken = useCallback((id: string) => {
+    void navigator.clipboard?.writeText(id);
+  }, []);
+
   const selectAll = useCallback(() => {
     setSelected(new Set<string>(invitations.map((i: InvitationData) => i.id)));
   }, [invitations]);
@@ -847,9 +854,11 @@ export default function DataTab() {
             borderRadius: "0.5rem",
           }}
         >
-          {piiResults.map((r, i) => (
+          {piiResults.map((r) => (
             <div
-              key={i}
+              // Key estable (token+nombre): evita remounts si la lista cambia
+              // de orden o se refiltra.
+              key={`${r.token}-${r.name}`}
               style={{
                 padding: "0.3rem 0.6rem",
                 fontSize: "0.78rem",
@@ -967,7 +976,7 @@ export default function DataTab() {
                 isGhost={emptyIds.has(inv.id)}
                 disabled={busy}
                 onToggle={toggleSelect}
-                onCopyToken={(id) => void navigator.clipboard?.writeText(id)}
+                onCopyToken={handleCopyToken}
                 t={t}
               />
             ))}

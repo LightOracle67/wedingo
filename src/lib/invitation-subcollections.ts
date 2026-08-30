@@ -25,6 +25,8 @@ import {
   type DocumentReference,
   type Firestore,
 } from "firebase/firestore";
+import { db } from "./firebase";
+import { safeLogError } from "./safe-error";
 
 /**
  * Todas las subcolecciones existentes bajo `invitations/{id}`. Incluye los
@@ -106,5 +108,89 @@ export async function deleteInvitationCascade(token: string, db: Firestore): Pro
     const batch = writeBatch(db);
     for (const ref of chunk) batch.delete(ref);
     await batch.commit();
+  }
+}
+
+// ─── Zonas + mesas (vista pública) ───────────────────────────────────────────
+
+/** Zona del plano de mesas con sus mesas resueltas (forma pública). */
+export interface PublicTableSection {
+  id: string;
+  name: string;
+  tables: PublicTable[];
+}
+
+/** Mesa en su forma pública (la misma del plano de invitados). */
+export interface PublicTable {
+  id: string;
+  name: string;
+  shape: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  rotation: number;
+  seats: number;
+  guests: string[];
+}
+
+// Caché de módulo (TTL corto, patrón de META_CACHE en image-store): la
+// invitación pública monta las secciones TableSeatingSection y RsvpSection,
+// que consultaban las MISMAS zonas+mesas de forma independiente (N lecturas
+// secuenciales en serie, dos veces). Con este loader único y cacheado se
+// paga UNA vez por visita (v2.185).
+const SECTIONS_CACHE = new Map<string, { at: number; data: PublicTableSection[] }>();
+const SECTIONS_TTL_MS = 30_000;
+
+/** Invalida la caché de zonas/mesas (tras guardados del plano en el admin). */
+export function clearSectionsCache() {
+  SECTIONS_CACHE.clear();
+}
+
+/**
+ * Carga las zonas con sus mesas en PARALELO (antes: N lecturas secuenciales
+ * en serie) con caché de módulo compartida entre secciones.
+ *
+ * @param inviteToken - Token de la invitación.
+ * @returns Zonas con mesas (las zonas sin mesas se omiten).
+ */
+export async function loadSectionsWithTables(inviteToken: string): Promise<PublicTableSection[]> {
+  if (!inviteToken) return [];
+  const hit = SECTIONS_CACHE.get(inviteToken);
+  if (hit && Date.now() - hit.at < SECTIONS_TTL_MS) return hit.data;
+  try {
+    const sectionsSnap = await getDocs(collection(db, "invitations", inviteToken, "sections"));
+    // Todas las lecturas de mesas en paralelo (Promise.all): elimina el N+1
+    // secuencial que alargaba la carga con muchas zonas.
+    const sectionsWithTables = await Promise.all(
+      sectionsSnap.docs.map(async (s) => {
+        const tablesSnap = await getDocs(
+          collection(db, "invitations", inviteToken, "sections", s.id, "tables"),
+        );
+        const tables: PublicTable[] = tablesSnap.docs.map((d) => {
+          const data = d.data();
+          return {
+            id: d.id,
+            name: String(data.name || ""),
+            shape: String(data.shape || "circle"),
+            x: Number(data.x) || 0,
+            y: Number(data.y) || 0,
+            w: Number(data.w) || 80,
+            h: Number(data.h) || 80,
+            rotation: Number(data.rotation) || 0,
+            seats: Number(data.seats) || 0,
+            guests: Array.isArray(data.guests) ? (data.guests as string[]) : [],
+          };
+        });
+        if (tables.length === 0) return null;
+        return { id: s.id, name: String(s.data().name || ""), tables };
+      }),
+    );
+    const result = sectionsWithTables.filter((s): s is PublicTableSection => s !== null);
+    SECTIONS_CACHE.set(inviteToken, { at: Date.now(), data: result });
+    return result;
+  } catch (err) {
+    safeLogError(["[app]", "[invitation-subcollections]", "loadSectionsWithTables error"], err);
+    return [];
   }
 }

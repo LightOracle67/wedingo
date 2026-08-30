@@ -442,7 +442,7 @@ export function useSetupAuth(
     } finally {
       setIsTokenVerifying(false);
     }
-  }, [activateSessionWithToken, setupTokenInput, inviteToken, setHasStoredConfig, config, adminLoginUsername, t]);
+  }, [activateSessionWithToken, setupTokenInput, inviteToken, setHasStoredConfig, config.adminUsername, adminLoginUsername, t]);
 
   /**
    * Inicia sesión como administrador (requiere usuario + token).
@@ -498,7 +498,7 @@ export function useSetupAuth(
     } finally {
       setIsTokenVerifying(false);
     }
-  }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config, setHasStoredConfig, inviteToken, t]);
+  }, [activateSessionWithToken, adminLoginUsername, setupTokenInput, config.adminUsername, setHasStoredConfig, inviteToken, t]);
 
   /**
    * Genera un nuevo token de acceso vinculado a un usuario administrador.
@@ -590,34 +590,64 @@ export function useSetupAuth(
     }
   }, [generateNewToken, setAdminMessage, setAdminMessageType, t, inviteToken, setupToken]);
 
-  return {
-    setupToken,
-    setSetupToken,
-    setupTokenInput,
-    setSetupTokenInput,
-    isTokenVerifying,
-    isTokenVerified,
-    setIsTokenVerified,
-    tokenLoginUsername,
-    setTokenLoginUsername,
-    adminLoginUsername,
-    setAdminLoginUsername,
-    authMessage,
-    setAuthMessage,
-    authMessageType,
-    setAuthMessageType,
-    confirmTokenInput,
-    setConfirmTokenInput,
-    isAdminTokenLoggedIn,
-    isRestoringSession,
-    sessionExpired,
-    clearSessionExpired,
-    refreshSetupToken,
-    generateNewToken,
-    handleTokenLogin,
-    handleAdminTokenLogin,
-    handleAdminLogout,
-    handleResetSetupToken,
-    handleResetTokenFromAdmin,
-  };
+  // Return memoizado: AuthContext hace `useMemo(() => ({...auth}), [auth])`,
+  // así que la identidad de este objeto determina si TODOS los consumidores
+  // de useAuth() re-renderizan. Sin este useMemo, cada render del provider
+  // (p. ej. cada tecla del editor) invalidaba el memo y provocaba una cascada
+  // de re-renders en AppShell/AdminPage/PublicInvitation/RsvpSection…
+  // Los setters de useState y los callbacks ya son estables (useCallback).
+  return useMemo(
+    () => ({
+      setupToken,
+      setSetupToken,
+      setupTokenInput,
+      setSetupTokenInput,
+      isTokenVerifying,
+      isTokenVerified,
+      setIsTokenVerified,
+      tokenLoginUsername,
+      setTokenLoginUsername,
+      adminLoginUsername,
+      setAdminLoginUsername,
+      authMessage,
+      setAuthMessage,
+      authMessageType,
+      setAuthMessageType,
+      confirmTokenInput,
+      setConfirmTokenInput,
+      isAdminTokenLoggedIn,
+      isRestoringSession,
+      sessionExpired,
+      clearSessionExpired,
+      refreshSetupToken,
+      generateNewToken,
+      handleTokenLogin,
+      handleAdminTokenLogin,
+      handleAdminLogout,
+      handleResetSetupToken,
+      handleResetTokenFromAdmin,
+    }),
+    [
+      setupToken,
+      setupTokenInput,
+      isTokenVerifying,
+      isTokenVerified,
+      tokenLoginUsername,
+      adminLoginUsername,
+      authMessage,
+      authMessageType,
+      confirmTokenInput,
+      isAdminTokenLoggedIn,
+      isRestoringSession,
+      sessionExpired,
+      clearSessionExpired,
+      refreshSetupToken,
+      generateNewToken,
+      handleTokenLogin,
+      handleAdminTokenLogin,
+      handleAdminLogout,
+      handleResetSetupToken,
+      handleResetTokenFromAdmin,
+    ],
+  );
 }

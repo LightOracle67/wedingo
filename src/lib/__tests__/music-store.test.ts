@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 
 vi.mock("firebase/firestore", () => ({
   getDocs: vi.fn(() => Promise.resolve({ empty: true, docs: [] })),
@@ -27,9 +27,16 @@ vi.mock("../audio-utils", () => ({
 }));
 
 import { getDocs } from "firebase/firestore";
-import { uploadAudio, addAudio, loadAudio, deleteAudio } from "../music-store";
+import { uploadAudio, addAudio, loadAudio, deleteAudio, clearAudioCache } from "../music-store";
 
 describe("music-store", () => {
+  beforeEach(() => {
+    // La caché de módulo de loadAudio (v2.185) es por token y vive entre
+    // tests: se limpia para que cada caso aísle lecturas/descifrados reales.
+    clearAudioCache();
+    vi.clearAllMocks();
+  });
+
   it("exports uploadAudio", () => {
     expect(typeof uploadAudio).toBe("function");
   });

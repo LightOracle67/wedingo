@@ -231,7 +231,7 @@ const DashboardTab = memo(function DashboardTab() {
     let removed = 0;
     try {
       const storageInstance = await getStorageInstance();
-      const { ref, listAll, deleteObject } = await import("firebase/storage");
+      const { ref, listAll, deleteObject } = await import("@firebase/storage");
       const rootRef = ref(storageInstance, "invitations/");
       const root = await listAll(rootRef);
       const existing = new Set((await getDocs(INVITATIONS_COLLECTION_REF)).docs.map((d) => d.id));
@@ -328,7 +328,7 @@ const DashboardTab = memo(function DashboardTab() {
           const storageInstance = await getStorageInstance();
           // firebase/storage se importa solo aquí (uso exclusivo de superadmin)
           // para no cargar su SDK en el bundle inicial de la app.
-          const { ref, listAll, deleteObject } = await import("firebase/storage");
+          const { ref, listAll, deleteObject } = await import("@firebase/storage");
           const list = await listAll(ref(storageInstance, prefix));
           await Promise.allSettled(list.items.map((item) => deleteObject(item)));
         } catch {}

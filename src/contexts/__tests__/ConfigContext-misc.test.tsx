@@ -104,10 +104,11 @@ vi.mock("../../lib/crypto-utils", () => ({
 vi.mock("../../lib/error-utils", () => ({ getFirestoreErrorMessage: vi.fn(() => "error") }));
 
 import { ConfigProvider } from "../ConfigContext";
-import { useConfig } from "../useConfig";
+import { useConfig, useFormData } from "../useConfig";
 
 function SaveSetupConsumer() {
   const ctx = useConfig();
+  const { updateFormField } = useFormData();
   return (
     <div>
       {/* Indicador de isSaving: permite esperar al finally del primer guardado
@@ -117,85 +118,85 @@ function SaveSetupConsumer() {
       <button data-testid="ss_save" onClick={(e) => ctx.handleSaveSetup(e)}>
         Save
       </button>
-      <button data-testid="ss_first" onClick={() => ctx.updateFormField("firstName", "John")}>
+      <button data-testid="ss_first" onClick={() => updateFormField("firstName", "John")}>
         F
       </button>
-      <button data-testid="ss_second" onClick={() => ctx.updateFormField("secondName", "Jane")}>
+      <button data-testid="ss_second" onClick={() => updateFormField("secondName", "Jane")}>
         S
       </button>
-      <button data-testid="ss_theme" onClick={() => ctx.updateFormField("theme", "golden")}>
+      <button data-testid="ss_theme" onClick={() => updateFormField("theme", "golden")}>
         T
       </button>
       <button
         data-testid="ss_order"
-        onClick={() => ctx.updateFormField("sectionOrder", "hero,details,info,story,gifts,accommodation,gallery,rsvp")}
+        onClick={() => updateFormField("sectionOrder", "hero,details,info,story,gifts,accommodation,gallery,rsvp")}
       >
         O
       </button>
-      <button data-testid="ss_gp1" onClick={() => ctx.updateFormField("godparent1", "GP1")}>
+      <button data-testid="ss_gp1" onClick={() => updateFormField("godparent1", "GP1")}>
         G1
       </button>
-      <button data-testid="ss_gp2" onClick={() => ctx.updateFormField("godparent2", "GP2")}>
+      <button data-testid="ss_gp2" onClick={() => updateFormField("godparent2", "GP2")}>
         G2
       </button>
       <button data-testid="ss_stored" onClick={() => ctx.setHasStoredConfig(true)}>
         Stored
       </button>
-      <button data-testid="ss_menuEnabled" onClick={() => ctx.updateFormField("menuEnabled", "true")}>
+      <button data-testid="ss_menuEnabled" onClick={() => updateFormField("menuEnabled", "true")}>
         ME
       </button>
-      <button data-testid="ss_menuPostre" onClick={() => ctx.updateFormField("menuPostre", "Flan")}>
+      <button data-testid="ss_menuPostre" onClick={() => updateFormField("menuPostre", "Flan")}>
         MP
       </button>
-      <button data-testid="ss_menuCarne" onClick={() => ctx.updateFormField("menuCarne", "Steak")}>
+      <button data-testid="ss_menuCarne" onClick={() => updateFormField("menuCarne", "Steak")}>
         MC
       </button>
-      <button data-testid="ss_bankInfo" onClick={() => ctx.updateFormField("bankInfo", "some-bank-info")}>
+      <button data-testid="ss_bankInfo" onClick={() => updateFormField("bankInfo", "some-bank-info")}>
         BI
       </button>
-      <button data-testid="ss_bankIban" onClick={() => ctx.updateFormField("bankInfo", "ES12345678")}>
+      <button data-testid="ss_bankIban" onClick={() => updateFormField("bankInfo", "ES12345678")}>
         IB
       </button>
-      <button data-testid="ss_hiddenSections" onClick={() => ctx.updateFormField("hiddenSections", "invalid_section")}>
+      <button data-testid="ss_hiddenSections" onClick={() => updateFormField("hiddenSections", "invalid_section")}>
         HS
       </button>
-      <button data-testid="ss_orderWrongLen" onClick={() => ctx.updateFormField("sectionOrder", "hero,details")}>
+      <button data-testid="ss_orderWrongLen" onClick={() => updateFormField("sectionOrder", "hero,details")}>
         OW
       </button>
       <button
         data-testid="ss_orderNoHero"
-        onClick={() => ctx.updateFormField("sectionOrder", "details,info,story,gifts,accommodation,gallery,rsvp,hero")}
+        onClick={() => updateFormField("sectionOrder", "details,info,story,gifts,accommodation,gallery,rsvp,hero")}
       >
         NH
       </button>
-      <button data-testid="ss_consent" onClick={() => ctx.updateFormField("_privacyConsent", "true")}>
+      <button data-testid="ss_consent" onClick={() => updateFormField("_privacyConsent", "true")}>
         PC
       </button>
-      <button data-testid="ss_username" onClick={() => ctx.updateFormField("adminUsername", "admin1")}>
+      <button data-testid="ss_username" onClick={() => updateFormField("adminUsername", "admin1")}>
         UN
       </button>
-      <button data-testid="ss_usernameInvalid" onClick={() => ctx.updateFormField("adminUsername", "invalid user!")}>
+      <button data-testid="ss_usernameInvalid" onClick={() => updateFormField("adminUsername", "invalid user!")}>
         UI
       </button>
-      <button data-testid="ss_usernameLong" onClick={() => ctx.updateFormField("adminUsername", "a".repeat(51))}>
+      <button data-testid="ss_usernameLong" onClick={() => updateFormField("adminUsername", "a".repeat(51))}>
         UL
       </button>
-      <button data-testid="ss_musicUrl" onClick={() => ctx.updateFormField("musicUrl", "data:audio/mp3;base64,xxx")}>
+      <button data-testid="ss_musicUrl" onClick={() => updateFormField("musicUrl", "data:audio/mp3;base64,xxx")}>
         MU
       </button>
-      <button data-testid="ss_inviteMsg" onClick={() => ctx.updateFormField("inviteMessage", "x".repeat(2500))}>
+      <button data-testid="ss_inviteMsg" onClick={() => updateFormField("inviteMessage", "x".repeat(2500))}>
         IM
       </button>
-      <button data-testid="ss_storyText" onClick={() => ctx.updateFormField("storyText", "x".repeat(2500))}>
+      <button data-testid="ss_storyText" onClick={() => updateFormField("storyText", "x".repeat(2500))}>
         ST
       </button>
-      <button data-testid="ss_giftsInfo" onClick={() => ctx.updateFormField("giftsInfo", "x".repeat(2500))}>
+      <button data-testid="ss_giftsInfo" onClick={() => updateFormField("giftsInfo", "x".repeat(2500))}>
         GI
       </button>
       <button
         data-testid="ss_transportDepartures"
         onClick={() =>
-          ctx.updateFormField("transportDepartures", JSON.stringify([{ type: "bus", time: "25:00", url: "" }]))
+          updateFormField("transportDepartures", JSON.stringify([{ type: "bus", time: "25:00", url: "" }]))
         }
       >
         TD
@@ -403,34 +404,35 @@ describe("ConfigProvider", () => {
     });
     function PreserveConsumer() {
       const ctx = useConfig();
+  const { updateFormField } = useFormData();
       return (
         <div>
           <span data-testid="pc_hasConfig">{String(ctx.hasStoredConfig)}</span>
           <span data-testid="pc_inviteToken">{ctx.inviteToken}</span>
-          <button data-testid="pc_first" onClick={() => ctx.updateFormField("firstName", "John")}>
+          <button data-testid="pc_first" onClick={() => updateFormField("firstName", "John")}>
             F
           </button>
-          <button data-testid="pc_second" onClick={() => ctx.updateFormField("secondName", "Jane")}>
+          <button data-testid="pc_second" onClick={() => updateFormField("secondName", "Jane")}>
             S
           </button>
-          <button data-testid="pc_theme" onClick={() => ctx.updateFormField("theme", "golden")}>
+          <button data-testid="pc_theme" onClick={() => updateFormField("theme", "golden")}>
             T
           </button>
           <button
             data-testid="pc_order"
             onClick={() =>
-              ctx.updateFormField("sectionOrder", "hero,details,info,story,gifts,accommodation,gallery,rsvp")
+              updateFormField("sectionOrder", "hero,details,info,story,gifts,accommodation,gallery,rsvp")
             }
           >
             O
           </button>
-          <button data-testid="pc_gp1" onClick={() => ctx.updateFormField("godparent1", "GP1")}>
+          <button data-testid="pc_gp1" onClick={() => updateFormField("godparent1", "GP1")}>
             G1
           </button>
-          <button data-testid="pc_gp2" onClick={() => ctx.updateFormField("godparent2", "GP2")}>
+          <button data-testid="pc_gp2" onClick={() => updateFormField("godparent2", "GP2")}>
             G2
           </button>
-          <button data-testid="pc_hidden" onClick={() => ctx.updateFormField("hiddenSections", "details")}>
+          <button data-testid="pc_hidden" onClick={() => updateFormField("hiddenSections", "details")}>
             HD
           </button>
           <button data-testid="pc_save" onClick={(e) => ctx.handleSaveSetup(e)}>

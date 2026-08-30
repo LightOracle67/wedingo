@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState, type TransitionEvent } from "react";
+import React, { memo, useCallback, useRef, useState, type TransitionEvent } from "react";
 import { useTranslation } from "react-i18next";
 
 interface CollapsibleSectionProps {
@@ -11,7 +11,10 @@ interface CollapsibleSectionProps {
   onToggleVisibility?: (key: string) => void;
 }
 
-export default function CollapsibleSection({
+// Memoizado (v2.185): el Setup tiene ~10 secciones colapsables; sin memo se
+// re-renderizaban en cada tecla del editor (sus hijos sí estaban memoizados,
+// pero el wrapper no).
+const CollapsibleSection = memo(function CollapsibleSection({
   title,
   hint,
   defaultOpen = false,
@@ -100,4 +103,6 @@ export default function CollapsibleSection({
       </div>
     </div>
   );
-}
+});
+
+export default CollapsibleSection;

@@ -102,14 +102,21 @@ const InvitationsTab = memo(function InvitationsTab() {
     }
   }, [t]);
 
-  const filtered = searchInvitations(
-    invitations as unknown as Record<string, unknown>[],
-    search,
-  ) as unknown as InvitationRow[];
+  // Filtros memoizados: antes se recalculaban en cada render (p. ej. por tecla
+  // en el buscador), filtrando toda la lista de invitaciones dos veces.
+  const filtered = useMemo(
+    () =>
+      searchInvitations(invitations as unknown as Record<string, unknown>[], search) as unknown as InvitationRow[],
+    [invitations, search],
+  );
   // F3-5: filtro por etiquetas del superadmin.
-  const filteredByTag = tagFilter
-    ? filtered.filter((inv) => (inv.tags || "").toLowerCase().includes(tagFilter.toLowerCase()))
-    : filtered;
+  const filteredByTag = useMemo(
+    () =>
+      tagFilter
+        ? filtered.filter((inv) => (inv.tags || "").toLowerCase().includes(tagFilter.toLowerCase()))
+        : filtered,
+    [filtered, tagFilter],
+  );
 
   // Ordenación por columnas: Token, Tema, Fecha y Usuario (Acciones no).
   const sortColumns = useMemo<SortableColumn<InvitationRow>[]>(
@@ -135,13 +142,20 @@ const InvitationsTab = memo(function InvitationsTab() {
 
   const totalPages = Math.max(1, Math.ceil(filteredByTag.length / PAGE_SIZE));
   const pagedRows = sortedInvitations.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
-  const totalBytes = invitations.reduce((acc, d) => {
-    try {
-      return acc + new Blob([JSON.stringify(d)]).size;
-    } catch {
-      return acc;
-    }
-  }, 0);
+  // Tamaño total memoizado: `new Blob([JSON.stringify(d)])` por fila es caro
+  // (serialización + asignación) y solo depende de `invitations` — antes se
+  // recomputaba en cada render (por tecla en búsqueda/filtros).
+  const totalBytes = useMemo(
+    () =>
+      invitations.reduce((acc, d) => {
+        try {
+          return acc + new Blob([JSON.stringify(d)]).size;
+        } catch {
+          return acc;
+        }
+      }, 0),
+    [invitations],
+  );
 
   if (loading)
     return (

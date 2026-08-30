@@ -47,6 +47,8 @@ vi.mock("../../contexts", () => ({
     hasStoredConfig: false,
   }),
   useConfig: (...args: unknown[]) => mockUseApp(...args),
+  // formData vive en su contexto separado (v2.185).
+  useFormData: () => ({ formData: mockUseApp().formData, updateFormField: vi.fn() }),
   useAuth: (...args: unknown[]) => mockUseApp(...args),
   useRsvpContext: (...args: unknown[]) => mockUseApp(...args),
   useAppUI: () => ({

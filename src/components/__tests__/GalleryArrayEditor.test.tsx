@@ -32,6 +32,9 @@ vi.mock("../../lib/image-store", () => ({
   deleteGalleryImage: (...args: unknown[]) => mockDeleteGalleryImage(...args),
   updateGalleryDescription: (...args: unknown[]) => mockUpdateGalleryDescription(...args),
   updateGalleryOrder: (...args: unknown[]) => mockUpdateGalleryOrder(...args),
+  // v2.185: el editor genera la miniatura cifrada antes de guardar.
+  prepareGalleryThumb: (inviteToken: string) =>
+    Promise.resolve({ thumbDataUrl: "data:image/webp;base64,thumb", thumbEncrypted: "enc-thumb-" + inviteToken }),
 }));
 
 const mockT = vi.hoisted(() => (key: string) => key);

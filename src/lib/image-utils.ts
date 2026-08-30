@@ -13,6 +13,10 @@ export const HIGH_QUALITY_TARGET_BYTES = 650 * 1024;
 export const MAX_ENCRYPTED_BYTES = 1000 * 1024;
 export const MAX_IMAGE_DIMENSION = 1600;
 export const TARGET_BYTES = TARGET_BYTES_DEFAULT;
+// Miniaturas de galería (v2.185): 128px y ~24KB — la fila de miniaturas de la
+// invitación ya no descifra/muestra la imagen COMPLETA (~866KB) por foto.
+export const THUMB_MAX_DIMENSION = 128;
+export const THUMB_TARGET_BYTES = 24 * 1024;
 
 function canvasToType(canvas: HTMLCanvasElement, type: string, quality: number): string {
   let dataUrl = canvas.toDataURL(`image/${type}`, quality);

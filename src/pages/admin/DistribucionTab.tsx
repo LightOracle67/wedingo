@@ -22,10 +22,11 @@ import {
   arrayRemove,
   writeBatch,
 } from "firebase/firestore";
-import { db, rsvpByInviteRef } from "../../lib/firebase";
+import { db } from "../../lib/firebase";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 import { useConfirm } from "../../contexts/ConfirmContext";
+import { useRsvpContext } from "../../contexts";
 import { TableCanvas, type CanvasTable } from "./table-canvas";
 import { clampPercent, buildLabelsHtml, assignGuestsToTables } from "./distribucion-helpers";
 
@@ -79,7 +80,6 @@ const DistribucionTab = memo(function DistribucionTab({
   const [newSectionName, setNewSectionName] = useState("");
   const [newShape, setNewShape] = useState<Shape>("circle");
   // Invitados CONFIRMADOS (attendance yes) disponibles para asignar.
-  const [confirmedGuests, setConfirmedGuests] = useState<Array<{ name: string; assigned: boolean }>>([]);
   const mapRef = useRef<HTMLDivElement | null>(null);
   const dragRef = useRef<{ id: string; moved: boolean } | null>(null);
 
@@ -89,7 +89,7 @@ const DistribucionTab = memo(function DistribucionTab({
     [inviteToken],
   );
 
-  // ── Carga de secciones y confirmados ──
+  // ── Carga de secciones ──
   const loadSections = useCallback(async () => {
     try {
       const snap = await getDocs(sectionsRef());
@@ -103,24 +103,21 @@ const DistribucionTab = memo(function DistribucionTab({
     }
   }, [sectionsRef, activeSectionId]);
 
-  const loadConfirmed = useCallback(async () => {
-    try {
-      const snap = await getDocs(rsvpByInviteRef(inviteToken));
-      const names = new Set<string>();
-      for (const d of snap.docs) {
-        const data = d.data();
-        if (data.attendance === "yes") names.add(String(data.guestName || "").trim());
-      }
-      setConfirmedGuests([...names].filter(Boolean).map((name) => ({ name, assigned: false })));
-    } catch {
-      /* sin confirmados */
+  // Confirmados derivados del contexto RSVP compartido (v2.185): antes esta
+  // pestaña re-leía TODA la colección de respuestas por su cuenta; ahora usa
+  // los mismos datos que ya mantiene useRsvp con su onSnapshot en vivo.
+  const { rsvpEntries } = useRsvpContext();
+  const confirmedGuests = useMemo(() => {
+    const names = new Set<string>();
+    for (const entry of rsvpEntries) {
+      if (entry.attendance === "yes") names.add(String(entry.guestName || "").trim());
     }
-  }, [inviteToken]);
+    return [...names].filter(Boolean).map((name) => ({ name, assigned: false }));
+  }, [rsvpEntries]);
 
   useEffect(() => {
     void loadSections();
-    void loadConfirmed();
-  }, [loadSections, loadConfirmed]);
+  }, [loadSections]);
 
   // ── Carga de mesas de la sección activa ──
   const loadTables = useCallback(async () => {

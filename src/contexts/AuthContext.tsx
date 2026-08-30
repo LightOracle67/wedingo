@@ -82,9 +82,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [inviteToken, refreshToken]);
 
   // ── Clear auth messages on route change ──
+  // Solo se dependen del pathname y del setter (estable): con la identidad
+  // `auth` entera el efecto se re-ejecutaba en cada render y llamaba
+  // setAuthMessage("") en cada uno (un setState por render innecesario).
+  const { setAuthMessage: setAuthMessageStable } = auth;
   useEffect(() => {
-    auth.setAuthMessage("");
-  }, [location.pathname, auth]);
+    setAuthMessageStable("");
+  }, [location.pathname, setAuthMessageStable]);
 
   const authValue = useMemo(
     () => ({

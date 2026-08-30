@@ -1,6 +1,6 @@
 export { useApp } from "./useApp";
 export { useAppUI } from "./useAppUI";
-export { useConfig } from "./useConfig";
+export { useConfig, useFormData } from "./useConfig";
 export { useConfigActions } from "./ConfigContext";
 export { useAuth } from "./useAuth";
 export { useRsvpContext, useRsvpFormContext } from "./useRsvpContext";

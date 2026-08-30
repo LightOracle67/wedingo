@@ -2,6 +2,13 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.185.0 — 2026-08-30
+- OPTIMIZACIÓN GLOBAL DE RENDIMIENTO (auditoría completa): corregido el code-splitting de Firebase (Vite 8/Rolldown) — el SDK de Analytics se descargaba en el primer hit pese al "lazy" (vendor-firebase importaba el chunk lazy-analytics); ahora analytics/auth/storage son chunks 100% diferidos y el core compartido queda en la ruta crítica, con verificaciones post-build.
+- Rutas de edición: formData sale del value principal de ConfigContext (contexto separado useFormData), return de useSetupAuth memoizado (cascada de re-renders por tecla), autosave con firma ligera y guardado INCREMENTAL (sin re-cifrar bankInfo ni reescribir el doc completo), callbacks estables y estadísticas/contextos memoizados (ConfirmContext, AdminPage, DataTab, InvitationsTab).
+- Datos: la caché de invitación guarda refs de imágenes (~1 KB) en vez de 4 data-URLs (~3,4 MB), el audio se cachea en memoria (TTL 60 s, single-flight), el RSVP hidrata solo con onSnapshot (sin getDocs duplicado), zonas/mesas en paralelo con caché compartida, descifrados por lotes y emparejamiento O(N).
+- Galería: miniaturas cifradas de 128 px (~24 KB) generadas al subir (reglas Firestore actualizadas) — la fila de miniaturas deja de usar la imagen completa.
+- Cargas: MusicPlayer/Fireflies/GoogleTranslateToggle a chunks lazy, precache del service worker reducido a la ruta del invitado (81 → 31 assets), Sentry fuera de la ruta crítica (verificado), caché HTTP de fontes/favicons/og-banner, robots.txt con comodines de rutas con token, index.html limpio (iconos/duplicados, preconnect real) y más optimizaciones (MapEmbed, PanelTab, CollapsibleSection, debounce del borrador RSVP, caché de claves PBKDF2 por iteraciones).
+
 ## 2.184.0 — 2026-08-29
 - Cobertura de la pestaña Métricas ampliada: la fila de almacenamiento se muestra cuando el panel carga los datos de la galería y el audio de la invitación, y se eliminan dos casos de error inalcanzables (los catch internos por iteración tragan los fallos, por lo que el error global no puede dispararse).
 

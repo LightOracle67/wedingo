@@ -283,7 +283,7 @@ describe("image-store", () => {
 
   describe("getGalleryImageUrl (descifrado bajo demanda)", () => {
     it("returns the cached URL on repeated calls (no re-decrypt)", async () => {
-      const meta = { id: "g1", encrypted: "enc1", description: "" };
+      const meta = { id: "g1", encrypted: "enc1", thumbEncrypted: "", description: "" };
       const first = await getGalleryImageUrl("token", meta);
       expect(first).toBe("data:image/jpeg;base64,decoded");
       expect(mockDecrypt).toHaveBeenCalledTimes(1);
@@ -292,7 +292,7 @@ describe("image-store", () => {
     });
 
     it("deduplicates concurrent requests (single-flight)", async () => {
-      const meta = { id: "g2", encrypted: "enc2", description: "" };
+      const meta = { id: "g2", encrypted: "enc2", thumbEncrypted: "", description: "" };
       const [a, b] = await Promise.all([getGalleryImageUrl("token", meta), getGalleryImageUrl("token", meta)]);
       expect(a).toBe("data:image/jpeg;base64,decoded");
       expect(b).toBe("data:image/jpeg;base64,decoded");
@@ -301,7 +301,7 @@ describe("image-store", () => {
 
     it("returns empty and does not cache when decrypt fails", async () => {
       mockDecrypt.mockRejectedValueOnce(new Error("boom"));
-      const meta = { id: "g3", encrypted: "enc3", description: "" };
+      const meta = { id: "g3", encrypted: "enc3", thumbEncrypted: "", description: "" };
       const url = await getGalleryImageUrl("token", meta);
       expect(url).toBe("");
       // El fallo no se cachea: un segundo intento re-descifra.

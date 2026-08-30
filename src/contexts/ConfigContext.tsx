@@ -27,7 +27,7 @@ import { useFieldHandlers } from "../hooks/useFieldHandlers";
 import { useAutoSave } from "../hooks/useAutoSave";
 import { getFirestoreErrorMessage } from "../lib/error-utils";
 import { recoverFromStaleChunk } from "../lib/stale-chunk-recovery";
-import { ConfigContext } from "./useConfig";
+import { ConfigContext, FormDataContext } from "./useConfig";
 import { FormStoreContext, createFormStore, type FormStore } from "./FormStore";
 import { useAppUI } from "./useAppUI";
 import { safeLogError } from "../lib/safe-error";
@@ -124,6 +124,18 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     MAX_ALLOWED_YEAR,
   );
 
+  // Callback estable: useAutoSave lo incluye en las deps de doSave, y un
+  // arrow inline cambiaba en cada render → el efecto del autosave se
+  // limpiaba/reprogramaba (reset del timer de 1,5 s) en cada render.
+  const handleAutoSaved = useCallback(
+    (data: InvitationConfig) => {
+      // Protege la carrera: un autosave de A que resuelve tras navegar a B no
+      // debe pisar el estado de B.
+      if (currentTokenRef.current === inviteToken) setConfig(data);
+    },
+    [inviteToken],
+  );
+
   const { autoSaveTimerRef } = useAutoSave(
     hasStoredConfig,
     inviteToken,
@@ -131,11 +143,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     config,
     setSaveMessage,
     isSavingRef,
-    (data) => {
-      // Protege la carrera: un autosave de A que resuelve tras navegar a B no
-      // debe pisar el estado de B.
-      if (currentTokenRef.current === inviteToken) setConfig(data);
-    },
+    handleAutoSaved,
     setSaveError,
     // Guard de carrera crítica: impide que un autosave programado para la
     // invitación A se escriba dentro del documento de B al navegar sin guardar.
@@ -303,6 +311,12 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         if (parsed.bankInfo) {
           parsed.bankInfo = await decrypt(parsed.bankInfo, inviteToken);
         }
+        // Snapshot con los REFS (__cfgimg:) ANTES de resolver (v2.185): la
+        // caché local guarda los refs (~1 KB) en vez de las 4 imágenes
+        // descifradas (~3,4 MB) que se reparseaban/reescribían en cada visita
+        // y rozaban la cuota de 5 MB de localStorage. El cache-hit resuelve
+        // los refs contra Firestore (servido por su caché persistente local).
+        const refsSnapshot = { ...parsed };
         const { resolveAllConfigImages } = await import("../lib/image-store");
         const resolved = await resolveAllConfigImages(inviteToken, parsed);
         for (const [key, url] of Object.entries(resolved)) {
@@ -320,11 +334,11 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         setConfig(hydrated);
         setFormData(hydrated);
         formStore.setAll(hydrated);
-        // La caché guarda el shell + el bankInfo CIFRADO (no el descifrado):
-        // el cache-hit descifra localmente sin Firestore. hydrated.bankInfo ya
-        // está en claro, así que se omite explícitamente (antes quedaba el
-        // IBAN en localStorage).
-        const { bankInfo: _omitBank, musicFile: _omitAudio, ...cacheSafe } = hydrated;
+        // La caché guarda el shell (con refs) + el bankInfo CIFRADO (no el
+        // descifrado): el cache-hit descifra localmente sin Firestore.
+        // hydrated.bankInfo ya está en claro, así que se omite explícitamente
+        // (antes quedaba el IBAN en localStorage).
+        const { bankInfo: _omitBank, musicFile: _omitAudio, ...cacheSafe } = refsSnapshot;
         // ePrivacy art. 5.3: tras REChazar el consentimiento no se vuelve a
         // cachear la invitación en localStorage (el rechazo es persistente).
         if (!hasRejectedConsent()) {
@@ -671,10 +685,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     }
   }, [inviteToken, navigate, t, setSaveError]);
 
+  // Value principal SIN formData (v2.185): formData cambia de identidad en
+  // cada tecla y re-renderizaba a los 16 consumidores de useConfig() (AppShell,
+  // RsvpProvider, AuthProvider, PrintPage, secciones…). Solo quien necesita el
+  // borrador en vivo se suscribe a FormDataContext con useFormData().
   const configValue = useMemo(
     () => ({
       config,
-      formData,
       hasStoredConfig,
       isConfigLoading,
       configLoadError,
@@ -684,7 +701,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       formattedTime,
       calendarLink,
       visitCount,
-      updateFormField,
       reloadConfig,
       handleSaveSetup: handleSaveSetupCore,
       handleDayChange,
@@ -699,7 +715,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     }),
     [
       config,
-      formData,
       hasStoredConfig,
       isConfigLoading,
       configLoadError,
@@ -708,7 +723,6 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       formattedTime,
       calendarLink,
       visitCount,
-      updateFormField,
       reloadConfig,
       handleSaveSetupCore,
       handleDayChange,
@@ -722,6 +736,11 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
       isSaving,
     ],
   );
+
+  // Value del contexto del borrador del editor: formData + updateFormField.
+  // updateFormField es estable por diseño (useCallback con deps [formStore]),
+  // así que el valor solo cambia cuando cambia formData (una tecla).
+  const formDataValue = useMemo(() => ({ formData, updateFormField }), [formData, updateFormField]);
 
   // Valor de las acciones estables del editor: se memoiza SOLO con dependencias
   // estables o que cambian raramente (token, hasStoredConfig), nunca con
@@ -751,7 +770,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
   return (
     <FormStoreContext.Provider value={formStore}>
       <ConfigActionsContext.Provider value={configActionsValue}>
-        <ConfigContext.Provider value={configValue}>{children}</ConfigContext.Provider>
+        <FormDataContext.Provider value={formDataValue}>
+          <ConfigContext.Provider value={configValue}>{children}</ConfigContext.Provider>
+        </FormDataContext.Provider>
       </ConfigActionsContext.Provider>
     </FormStoreContext.Provider>
   );

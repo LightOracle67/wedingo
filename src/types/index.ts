@@ -1,6 +1,8 @@
 export interface GalleryImage {
   id: string;
   url: string;
+  /** Miniatura descifrada (128px, v2.185); "" si la foto no la tiene. */
+  thumbUrl?: string;
   description?: string;
   position?: number;
   originalName?: string;

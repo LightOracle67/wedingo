@@ -2,19 +2,13 @@
 <html lang="es" dir="auto">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon16.png" media="(max-width: 640px)" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/favicon32.png"
-      media="(min-width: 641px) and (max-width: 1279px)"
-    />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon96.png" media="(min-width: 1280px)" />
+    <!-- Iconos con media duplicados eliminados (v2.185): el navegador elige
+         la talla por sí solo y las 8 etiquetas previas solo añadían ruido. -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon32.png" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon96.png" />
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon512.png" />
     <link rel="apple-touch-icon" href="/favicon192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
     <meta
@@ -46,7 +40,9 @@
       content="Crea y comparte invitaciones de boda únicas con RSVP, galería de fotos, mapa interactivo y música."
     />
     <meta property="og:url" content="https://wedingo-6c26a.web.app" />
-    <link rel="preconnect" href="https://*.firebaseapp.com" crossorigin />
+    <!-- El comodín "https://*.firebaseapp.com" no es resolvible por
+         preconnect (v2.185): se sustituye por el host real que usa Auth. -->
+    <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin />
     <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
     <link rel="manifest" href="/manifest.json" />
