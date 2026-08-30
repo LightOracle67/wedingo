@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.190.0 — 2026-08-30
+- Modularización (misma línea que v2.177–v2.184): las pantallas estáticas de la invitación pública salen de PublicInvitation.tsx a invitation-screens.tsx (carga, mantenimiento, error de carga con retry/goHome, bloqueada, token no encontrado y vacía) — componentes memoizados y testables aisladamente; PublicInvitation baja ~150 líneas.
+- Cobertura ampliada (+24 tests): ConsentsBlock del RSVP (8 tests: privacidad obligatoria, enlace a política con teclado, salud condicional, firma digital, congelado/disabled; 27% → 100% stmts), DataTabRow (8 tests: selección, copia de token con teclado, fila fantasma, invitación vacía, sesión activa; 57% → 100% stmts) y pantallas de la invitación (8 tests).
+- Global: statements 91,42 % | branches 82,61 % | functions 89,60 % | lines 93,30 % (umbrales 89,5/80/86,5/91,8).
 ## 2.189.0 — 2026-08-30
 - useCalendar: el enlace de Google Calendar se memoiza POR CAMPO (weddingDay/Month/Year/Hour/Minute/nombre/lugar) — antes se recalculaba con cada identidad nueva de config (p. ej. tras cada autosave), aunque la fecha no cambiara.
 - Baseline Lighthouse documentado (build local, simulación móvil/4G): Performance 73 (FCP 2,6 s, LCP 5,7 s, TBT 0 ms, CLS 0, SI 4,4 s), Accesibilidad 100, SEO 100. El coste del LCP es el grafo de módulos inicial (vendor-firebase 156 KB gz es insustituible con persistencia local de Firestore) + fuentes; no hay bloques render-blocking ni JS sin usar real (los 108 KB "unused" de vendor-firebase son heurística de ejecución en la ruta landing).

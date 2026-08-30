@@ -35,6 +35,14 @@ import { trackEvent } from "../lib/analytics";
 // ─── Componentes de sección (visibles al inicio, carga directa) ────
 import HeroSection from "./sections/HeroSection";
 import DetailsSection from "./sections/DetailsSection";
+import {
+  InvitationLoadingScreen,
+  MaintenanceScreen,
+  InvitationLoadErrorScreen,
+  InvitationBlockedScreen,
+  InvitationNotFoundScreen,
+  InvitationEmptyScreen,
+} from "./invitation-screens";
 
 // ─── Componentes globales ─────────────────────────────────────────
 import EnvelopeOverlay from "../components/EnvelopeOverlay";
@@ -679,21 +687,7 @@ export default function PublicInvitation() {
 
   // ── Estado de carga ──
   if (isConfigLoading) {
-    return (
-      <div className="app-scene">
-        <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-          <div
-            className="w-full max-w-md text-center story-panel story-panel--hero"
-            aria-live="polite"
-            aria-busy="true"
-          >
-            <p className="font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/60 leading-relaxed">
-              {t("public.loadingInvitation")}
-            </p>
-          </div>
-        </section>
-      </div>
-    );
+    return <InvitationLoadingScreen t={t} />;
   }
 
   // ── Kill-switch global: mantenimiento de la plataforma ──
@@ -701,55 +695,15 @@ export default function PublicInvitation() {
   // sobre): se presenta una pantalla de mantenimiento al visitante. Es la
   // respuesta rápida del superadmin ante un incidente (sin Blaze).
   if (platform.maintenance === "true" && !isAdminTokenLoggedIn) {
-    return (
-      <div className="app-scene">
-        <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-          <div className="w-full max-w-md text-center story-panel story-panel--hero">
-            <p className="story-eyebrow">{t("public.maintenanceEyebrow")}</p>
-            <h1 className="story-title">{t("public.maintenanceTitle")}</h1>
-            <p className="story-copy">{t("public.maintenanceText")}</p>
-          </div>
-        </section>
-      </div>
-    );
+    return <MaintenanceScreen t={t} />;
   }
 
   // ── Error de carga ──
   if (configLoadError) {
-    // Un enlace corrupto no se arregla recargando: mostrar el inicio en vez
-    // de un botón "Reintentar" que provoca un bucle infinito.
+    // Un enlace corrupto (invalid link) no se arregla recargando: la pantalla
+    // ofrece volver al inicio (evita el bucle infinito de "Reintentar").
     const invalidLink = configLoadError === t("errors.invalidLink");
-    return (
-      <div className="app-scene">
-        <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-          <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
-            <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-              {t("public.emptyTitle")}
-            </h1>
-            <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
-              {t("setup.errorTitle")}
-            </p>
-            <div className="my-6 story-divider" />
-            <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">{configLoadError}</p>
-            <div className="flex flex-wrap justify-center gap-3 mt-8">
-              <button
-                className="text-sm setup-button"
-                type="button"
-                onClick={() => {
-                  if (invalidLink) {
-                    window.location.assign("/");
-                  } else {
-                    window.location.reload();
-                  }
-                }}
-              >
-                {invalidLink ? t("common.goHome") : t("common.retry")}
-              </button>
-            </div>
-          </div>
-        </section>
-      </div>
-    );
+    return <InvitationLoadErrorScreen t={t} error={configLoadError} isInvalidLink={invalidLink} />;
   }
 
   /** ¿Mostrar pantalla de token no encontrado o invitación vacía? */
@@ -829,47 +783,12 @@ export default function PublicInvitation() {
 
         {/* ── Token bloqueado por el superadmin (F3-6) ── */}
         {tokenBlocked ? (
-          <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-            <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
-              <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-                {t("public.blockedTitle")}
-              </h1>
-              <div className="my-6 story-divider" />
-              <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">{t("public.blockedText")}</p>
-            </div>
-          </section>
+          <InvitationBlockedScreen t={t} />
         ) : showMissingToken ? (
-          <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-            <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
-              <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-                {t("public.emptyTitle")}
-              </h1>
-              <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
-                {t("public.notFoundTitle")}
-              </p>
-              <div className="my-6 story-divider" />
-              <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">{t("public.notFoundText")}</p>
-            </div>
-          </section>
+          <InvitationNotFoundScreen t={t} />
         ) : isEmpty ? (
           /* ── Invitación vacía (sin configurar) ── */
-          <section className="flex items-center justify-center min-h-screen px-4 story-section story-section--is-active landing-bg">
-            <div className="w-full max-w-md text-center story-panel story-panel--hero" aria-live="assertive">
-              <h1 className="font-serif text-[clamp(2.5rem,8vw,4.5rem)] text-boda-texto leading-tight hero-title invite-title">
-                {t("public.emptyTitle")}
-              </h1>
-              <p className="mt-4 font-serif text-[clamp(1rem,3vw,1.35rem)] text-boda-texto/80 leading-relaxed">
-                {t("public.emptyText")}
-              </p>
-              <div className="my-6 story-divider" />
-              <p className="text-[0.95rem] text-boda-texto/60 leading-relaxed">{t("public.emptyDescription")}</p>
-              <div className="flex flex-wrap justify-center gap-3 mt-8">
-                <a href="/" className="text-sm setup-button">
-                  {t("public.createLink")}
-                </a>
-              </div>
-            </div>
-          </section>
+          <InvitationEmptyScreen t={t} />
         ) : (
           <>
             {/* ── Invitación completa: renderiza cada sección en orden ── */}
