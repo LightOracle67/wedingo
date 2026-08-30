@@ -345,6 +345,7 @@ Consulta el [`CHANGELOG`](./src/lib/changelog.ts) completo o las [releases en Gi
 Hitos principales:
 
 | Versión | Fecha | Hito |
+| v2.191.0 | 2026-08-30 | Cobertura ampliada (+46 tests; useAppUI y derive al 100%/97%), umbrales del gate subidos (90,5/82/88/92,5) y settings de la landing diferidos al idle con revalidación fresca en el clic (mantenimiento infranqueable). |
 | v2.190.0 | 2026-08-30 | Modularización de las pantallas estáticas de la invitación (invitation-screens.tsx) y cobertura ampliada (+24 tests): ConsentsBlock y DataTabRow al 100% de statements; global 91,42/82,61/89,60/93,30. |
 | v2.189.0 | 2026-08-30 | useCalendar memoizado por campo y baseline Lighthouse registrado (Performance 73 / Accesibilidad 100 / SEO 100; TBT 0 ms, CLS 0). |
 | v2.188.0 | 2026-08-30 | SEO/DOM micro-optimizado (caché de meta tags, título de pestaña idempotente), animación de secciones sin layout thrash (batch de lecturas antes de escrituras) y auditoría de dependencias documentada (vulnerabilidades solo en dev tooling). |

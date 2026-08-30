@@ -8,11 +8,17 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import ConsentsBlock from "../ConsentsBlock";
 
-const baseForm = {
+interface FormLike {
+  privacyConsent: boolean;
+  healthConsent: boolean;
+  digitalSignature: boolean;
+}
+
+const baseForm: FormLike = {
   privacyConsent: false,
   healthConsent: false,
   digitalSignature: false,
-} as never;
+};
 
 const t = ((key: string, opts?: Record<string, unknown>) =>
   key + (opts?.version ? `:${String(opts.version)}` : "")) as never;
@@ -31,8 +37,9 @@ function setup(overrides: Record<string, unknown> = {}) {
     t,
     ...overrides,
   };
-  const view = render(<ConsentsBlock {...(props as never)} />);
-  return { ...view, onField, onOpenPrivacy, props };
+  const finalProps = { ...props, form: props.form as never } as unknown as Parameters<typeof ConsentsBlock>[0];
+  const view = render(<ConsentsBlock {...finalProps} />);
+  return { ...view, onField, onOpenPrivacy, finalProps };
 }
 
 describe("ConsentsBlock", () => {
@@ -54,14 +61,14 @@ describe("ConsentsBlock", () => {
   });
 
   it("muestra la versión de la política cuando llega", () => {
-    const { rerender, props } = setup();
+    const { rerender, finalProps } = setup();
     expect(screen.queryByText(/rsvp.policyVersion/)).toBeNull();
-    rerender(<ConsentsBlock {...{ ...props, policyVersion: "2026-03" } as never} />);
+    rerender(<ConsentsBlock {...({ ...finalProps, policyVersion: "2026-03" } as Parameters<typeof ConsentsBlock>[0])} />);
     expect(screen.getByText("rsvp.policyVersion:2026-03")).toBeDefined();
   });
 
   it("muestra el consentimiento de salud SOLO si está habilitado y es obligatorio", () => {
-    const { onField } = setup({ showHealthConsent: true, form: { ...baseForm, healthConsent: true } });
+    const { onField } = setup({ showHealthConsent: true, form: { ...baseForm, healthConsent: true } as never });
     const input = screen.getByRole("checkbox", { name: /rsvp.healthConsent/ });
     expect(input).toBeDefined();
     expect((input as HTMLInputElement).required).toBe(true);
@@ -75,7 +82,7 @@ describe("ConsentsBlock", () => {
   });
 
   it("firma digital: visible solo si está habilitada y no congelado", () => {
-    const { onField } = setup({ signatureEnabled: true, form: { ...baseForm, digitalSignature: true } });
+    const { onField } = setup({ signatureEnabled: true, form: { ...baseForm, digitalSignature: true } as never });
     const input = screen.getByRole("checkbox", { name: /rsvp.digitalSignature/ });
     fireEvent.click(input);
     expect(onField).toHaveBeenCalledWith("digitalSignature", false);

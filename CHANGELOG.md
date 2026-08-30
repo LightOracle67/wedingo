@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.191.0 — 2026-08-30
+- Cobertura ampliada (+46 tests): useAppUI/useUIMessages (60% → 100% stmts incl. reseteo de mensajes al cambiar de ruta), derive del RSVP (73,7% → 97,4%: salidas de transporte, modos both/bus/taxi, fecha límite, simulación ?sim=expired/responded, boda pasada), safe-date (84,3% → 92,2%: nanosegundos exactos, toMillis/toDate, inválidos, locale pinneado), storage (84,6% → 85,9%: consentimiento legacy plano, prefs de analytics, invalidación de caché) e image-store (81,7% → 89,2%: minis, borrados en lote, orden de galería).
+- Umbrales del gate de cobertura SUBIDOS a statements 90,5 / branches 82 / functions 88 / lines 92,5 (medido 91,72/83,07/89,74/93,55; margen ~1 pp).
+- Rendimiento del arranque: la lectura de platform/settings en la LANDING se difiere al idle (tope 3 s) para no competir con el LCP, y handleCreate REVALIDA los ajustes en el momento del clic (getDoc fresco) — el modo mantenimiento sigue infranqueable sin lecturas que bloqueen el primer pintado.
 ## 2.190.0 — 2026-08-30
 - Modularización (misma línea que v2.177–v2.184): las pantallas estáticas de la invitación pública salen de PublicInvitation.tsx a invitation-screens.tsx (carga, mantenimiento, error de carga con retry/goHome, bloqueada, token no encontrado y vacía) — componentes memoizados y testables aisladamente; PublicInvitation baja ~150 líneas.
 - Cobertura ampliada (+24 tests): ConsentsBlock del RSVP (8 tests: privacidad obligatoria, enlace a política con teclado, salud condicional, firma digital, congelado/disabled; 27% → 100% stmts), DataTabRow (8 tests: selección, copia de token con teclado, fila fantasma, invitación vacía, sesión activa; 57% → 100% stmts) y pantallas de la invitación (8 tests).

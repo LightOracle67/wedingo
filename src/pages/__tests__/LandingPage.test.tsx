@@ -105,7 +105,9 @@ vi.mock("../../lib/platform-settings", () => ({
       expiringDays: "30",
     },
     loaded: true,
-    reload: () => undefined,
+    // v2.191: handleCreate revalida en el clic (refresh) — debe devolver
+    // los settings frescos para no bloquear la creación en los tests.
+    reload: () => Promise.resolve({ maintenance: "false", bannerEnabled: "false", bannerText: "", blockedUrls: "", blockedTokens: "", expiringDays: "30", disabledFeatures: "" }),
   }),
   tokenIsBlocked: () => false,
 }));

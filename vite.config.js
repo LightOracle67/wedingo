@@ -246,12 +246,13 @@ export default defineConfig(({ mode }) => {
         include: ["src/**/*.{ts,tsx}"],
         exclude: ["src/**/*.test.{ts,tsx}", "src/**/*.spec.{ts,tsx}", "src/i18n/locales/**", "src/**/__tests__/**"],
         thresholds: {
-          // Verificado en v2.98.5 (ronda de mejora): líneas 92.2% / statements
-          // 90% / funcs 87% / branches 80.7%. Margen para variaciones de CI.
-          statements: 89.5,
-          branches: 80,
-          functions: 86.5,
-          lines: 91.8,
+          // v2.191 (rondas de cobertura: +46 tests en useAppUI/derive/
+          // safe-date/storage/image-store): medido 91.73/83.07/89.78/93.55.
+          // Umbrales con ~1 pp de margen para variaciones de CI.
+          statements: 90.5,
+          branches: 82,
+          functions: 88,
+          lines: 92.5,
         },
       },
     },

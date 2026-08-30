@@ -26,7 +26,7 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const { setIsTokenVerified, setTokenLoginUsername } = useAuth();
   // F3-4: modo mantenimiento global (la creación se desactiva).
-  const { settings: platform } = usePlatformSettings();
+  const { settings: platform, reload: platformReload } = usePlatformSettings();
   const { confirm } = useConfirm();
   const maintenance = platform.maintenance === "true";
   const [showModal, setShowModal] = useState(false);
@@ -46,7 +46,16 @@ export default function LandingPage() {
   const [createError, setCreateError] = useState("");
 
   const handleCreate = async () => {
-    if (creating || maintenance) return;
+    if (creating) return;
+    // v2.191: revalidación FRESCA del estado de la plataforma en el momento
+    // del clic. La lectura inicial de settings se difiere al idle (para no
+    // competir con el LCP) y sin esta revalidación un clic TEMPRANO podría
+    // crear una invitación durante un mantenimiento activo.
+    const fresh = await platformReload();
+    if (fresh.maintenance === "true") {
+      setCreateError(t("platform.maintenanceNotice"));
+      return;
+    }
     setCreateError("");
     setCreating(true);
 

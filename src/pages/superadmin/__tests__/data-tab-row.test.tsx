@@ -34,7 +34,7 @@ function setup(overrides: Record<string, unknown> = {}) {
     t,
     ...overrides,
   };
-  const view = render(<DataTabRow {...(props as never)} />);
+  const view = render(<DataTabRow {...(props as Parameters<typeof DataTabRow>[0])} />);
   return { ...view, onToggle, onCopyToken, props };
 }
 

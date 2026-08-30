@@ -8,7 +8,16 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { safeSetItem, safeGetItem, safeRemoveItem, clearAllStorage, hasStorageConsent } from "../storage";
+import {
+  safeSetItem,
+  safeGetItem,
+  safeRemoveItem,
+  clearAllStorage,
+  hasStorageConsent,
+  hasRejectedConsent,
+  hasAnalyticsConsent,
+  invalidateConsentCache,
+} from "../storage";
 
 /**
  * Crea un mock de Storage que usa un objeto interno como backing store
@@ -239,6 +248,63 @@ describe("storage", () => {
       });
       expect(() => safeRemoveItem("wedin_test")).not.toThrow();
       localMock.removeItem = origRemoveItem;
+    });
+  });
+  it("hasRejectedConsent detecta el formato legacy plano", () => {
+    localMock.setItem("wedin_cookie_consent", "rejected");
+    expect(hasRejectedConsent()).toBe(true);
+    expect(hasStorageConsent()).toBe(false);
+  });
+
+  it("hasAnalyticsConsent legacy sin cookiePrefs devuelve true", () => {
+    localMock.setItem("wedin_cookie_consent", "accepted");
+    localMock.removeItem("wedin_cookie_prefs");
+    expect(hasAnalyticsConsent()).toBe(true);
+  });
+
+  it("hasAnalyticsConsent legacy con prefs donde analytics=false", () => {
+    localMock.setItem("wedin_cookie_consent", "accepted");
+    localMock.setItem("wedin_cookie_prefs", JSON.stringify({ necessary: true, analytics: false }));
+    expect(hasAnalyticsConsent()).toBe(false);
+  });
+
+  it("invalidar la caché refleja una nueva decisión", () => {
+    localMock.setItem("wedin_cookie_consent", "accepted");
+    expect(hasAnalyticsConsent()).toBe(true);
+    // Simula que el banner escribe una decisión nueva…
+    localMock.setItem("wedin_cookie_consent", "rejected");
+    invalidateConsentCache();
+    expect(hasAnalyticsConsent()).toBe(false);
+    expect(hasRejectedConsent()).toBe(true);
+  });
+
+    describe("consentimiento (v2.191: legacy + invalidation)", () => {
+    it("hasRejectedConsent detecta el formato legacy plano", () => {
+      localMock.setItem("wedin_cookie_consent", "rejected");
+      expect(hasRejectedConsent()).toBe(true);
+      expect(hasStorageConsent()).toBe(false);
+    });
+
+    it("hasAnalyticsConsent legacy sin cookiePrefs devuelve true", () => {
+      localMock.setItem("wedin_cookie_consent", "accepted");
+      localMock.removeItem("wedin_cookie_prefs");
+      expect(hasAnalyticsConsent()).toBe(true);
+    });
+
+    it("hasAnalyticsConsent legacy con prefs donde analytics=false", () => {
+      localMock.setItem("wedin_cookie_consent", "accepted");
+      localMock.setItem("wedin_cookie_prefs", JSON.stringify({ necessary: true, analytics: false }));
+      expect(hasAnalyticsConsent()).toBe(false);
+    });
+
+    it("invalidar la caché refleja una nueva decisión", () => {
+      localMock.setItem("wedin_cookie_consent", "accepted");
+      expect(hasAnalyticsConsent()).toBe(true);
+      // Simula que el banner escribe una decisión nueva…
+      localMock.setItem("wedin_cookie_consent", "rejected");
+      invalidateConsentCache();
+      expect(hasAnalyticsConsent()).toBe(false);
+      expect(hasRejectedConsent()).toBe(true);
     });
   });
 });
