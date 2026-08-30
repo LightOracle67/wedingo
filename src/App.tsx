@@ -26,7 +26,6 @@ const ChangelogModal = lazy(() => import("./components/ChangelogModal"));
 import AnimationPrefsApplier from "./components/AnimationPrefsApplier";
 import { APP_VERSION } from "./lib/constants";
 import { getSession } from "./lib/sessionVars";
-import "./styles/admin.css";
 import "./styles/rtl.css";
 import LandingPage from "./pages/LandingPage";
 import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";

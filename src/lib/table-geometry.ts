@@ -5,7 +5,7 @@
  * dibujen el plano exactamente igual.
  */
 
-type TableShape = "circle" | "rect" | "oval" | "square";
+export type TableShape = "circle" | "rect" | "oval" | "square";
 
 export interface ShapeTable {
   id: string;

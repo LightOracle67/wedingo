@@ -5,6 +5,7 @@ import { useSuperAdmin } from "../contexts/SuperAdminContext";
 import { SUPERADMIN_ROUTE } from "../lib/superadmin";
 import { useTabs } from "../hooks/useTabs";
 import "../styles/admin.css";
+import "../styles/public-shell.css";
 
 // ─── Tabs de SuperAdmin (carga diferida) ───────────────────────────
 const DashboardTab = lazy(() => import("./superadmin/DashboardTab"));

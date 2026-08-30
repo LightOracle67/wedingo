@@ -7,6 +7,7 @@
  */
 import { getDocs, collection } from "firebase/firestore";
 import { db, rsvpByInviteRef } from "../../lib/firebase";
+import { firestoreIso } from "../../lib/safe-date";
 
 /** Cuenta las elecciones de menú (mealChoice) de las respuestas RSVP de una invitación. */
 export async function menuSummary(token: string): Promise<Record<string, number>> {
@@ -87,10 +88,7 @@ export function buildInvitationData(
     const data = d.data();
     const token = d.id;
     const sessionAt = data.activeSession as { seconds?: number } | null | undefined;
-    const lastActivity =
-      sessionAt && typeof sessionAt === "object" && "seconds" in sessionAt
-        ? new Date(Number(sessionAt.seconds) * 1000).toISOString()
-        : String(data.createdAt || "");
+    const lastActivity = firestoreIso(sessionAt) || String(data.createdAt || "");
     return {
       id: token,
       firstName: String(data.firstName || ""),

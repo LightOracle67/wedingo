@@ -2,6 +2,7 @@ import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getDocs, collection, deleteDoc, doc, writeBatch } from "firebase/firestore";
 import { db } from "../../lib/firebase";
+import { firestoreMillis } from "../../lib/safe-date";
 import { useToast } from "../../hooks/useToast";
 import { useConfirm } from "../../contexts/ConfirmContext";
 import Modal from "../../components/Modal";
@@ -45,7 +46,7 @@ const InvitationDetailModal = memo(function InvitationDetailModal({ token, onClo
         logSnap.docs.map((d) => {
           const data = d.data();
           const raw = data.ts as { seconds?: number } | null | undefined;
-          const ts = raw && typeof raw === "object" && "seconds" in raw ? Number(raw.seconds) * 1000 : 0;
+          const ts = firestoreMillis(raw) ?? 0;
           return { fields: String(data.fields || ""), ts };
         }),
       );

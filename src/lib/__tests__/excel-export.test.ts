@@ -8,7 +8,8 @@
  * tipos numéricos). Así se comprueba que el fichero generado es válido y
  * legible en Excel/LibreOffice/Google Sheets.
  */
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, beforeAll } from "vitest";
+import i18n from "../../i18n";
 import * as XLSX from "xlsx";
 import { buildWorkbook, writeWorkbookBuffer } from "../excel-utils";
 import {
@@ -84,6 +85,13 @@ function readBack(sheets: Parameters<typeof buildWorkbook>[0]) {
   }));
 }
 
+// v2.186: el idioma de i18n se resuelve de forma ASÍNCRONA (detector) y las
+// fechas formateadas dependían de si la inicialización había terminado al
+// ejecutar el builder (carrera real: a veces es-ES, a veces en-US). Se fija
+// explícitamente para que las expectativas es-ES sean deterministas.
+beforeAll(async () => {
+  await i18n.changeLanguage("es");
+});
 describe("Export Excel: Asistencia + Menús (AttendanceTab)", () => {
   const sheets = readBack([
     buildRSVPSheet(
@@ -322,21 +330,27 @@ describe("Export Excel: todas las confirmaciones (MetricsTab)", () => {
 });
 
 describe("Export Excel: RSVP por invitación (DataTab)", () => {
-  const sheet = readBack([
-    buildRsvpSheet("TOK1", [
-      {
-        guestName: "Ana",
-        attendance: "yes",
-        companionCount: 2,
-        mealChoice: "carne",
-        allergiesOther: "frutos secos",
-        submittedAt: "2026-08-01T10:00:00",
-      },
-      { guestName: "Luis", attendance: "no", companionCount: 0 },
-    ]),
-  ])[0]!;
+  // La fecha localizada se formatea con el idioma activo de i18n, que se
+  // resuelve de forma asíncrona: la hoja se construye DENTRO del test (tras
+  // antesAll → changeLanguage("es")) para que la expectativa es-ES sea
+  // determinista (v2.186, ver beforeAll del fichero).
+  const buildSheet = () =>
+    readBack([
+      buildRsvpSheet("TOK1", [
+        {
+          guestName: "Ana",
+          attendance: "yes",
+          companionCount: 2,
+          mealChoice: "carne",
+          allergiesOther: "frutos secos",
+          submittedAt: "2026-08-01T10:00:00",
+        },
+        { guestName: "Luis", attendance: "no", companionCount: 0 },
+      ]),
+    ])[0]!;
 
   it("cabecera y valores con acompañantes numérico y fecha localizada", () => {
+    const sheet = buildSheet();
     expect(sheet.data).toEqual([
       ["Nombre", "Asistencia", "Acompañantes", "Menú", "Alergias", "Fecha"],
       ["Ana", "yes", 2, "carne", "frutos secos", "1/8/2026"],

@@ -37,7 +37,7 @@ const PRECACHE_URLS = [
   "/fonts/Lora-italic-400.woff2",
   "/fonts/Lora-normal-700.woff2",
   "/fonts/GreatVibes-normal-400.woff2",
-  "/fonts/OpenDyslexic-Regular.otf",
+  "/fonts/OpenDyslexic-Regular.woff2",
   ...__PRECACHE_ASSETS__,
 ];
 

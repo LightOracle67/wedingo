@@ -9,6 +9,7 @@
  */
 import { excelDate, type ExcelSheet } from "./excel-utils";
 import i18n from "../i18n";
+import { formatDateLocalized } from "./safe-date";
 import type { TFunction } from "i18next";
 
 /** Traductor usado por los constructores: `t` real de i18next (mismo tipo que derive.ts). */
@@ -97,13 +98,9 @@ interface AuditRowLike {
   ts: string;
 }
 
-/** Traduce la clave de un plato; si no hay traducción devuelve el plato crudo. */
-function menuLabel(menu: string, t: Translate): string {
-  if (!menu) return "";
-  const key = "rsvp.menu" + menu.charAt(0).toUpperCase() + menu.slice(1);
-  const label = t(key);
-  return label === key ? menu : label;
-}
+// Etiqueta de plato unificada en menu-utils (v2.186): antes había una copia
+// local aquí además de la de attendance-core/AdminPage/AttendanceTab.
+import { formatMenuLabel as menuLabel } from "./menu-utils";
 
 // ── Admin: asistencia y menús ──
 
@@ -327,25 +324,12 @@ export function buildRsvpSheet(token: string, docs: RsvpDocLike[]): ExcelSheet {
 
 /**
  * Normaliza una fecha almacenada (string ISO, epoch ms/s o Timestamp de
- * Firestore) a una cadena legible, o cadena vacía si es inválida. Evita el
- * "Invalid Date" en las exportaciones cuando el dato es un Timestamp.
+ * Firestore) a una cadena legible, o cadena vacía si es inválida. Helper
+ * unificado en safe-date (v2.186): el locale queda PINNEADO a es-ES / en-US
+ * para eliminar la carrera del idioma asíncrono de i18n.
  */
 function formatSubmittedDate(raw: unknown): string {
-  if (raw === null || raw === undefined) return "";
-  // Firestore Timestamp: { seconds, nanoseconds } o con toString()/toDate().
-  if (typeof raw === "object") {
-    const asObj = raw as { seconds?: unknown; toDate?: () => unknown };
-    const secs = typeof asObj.seconds === "number" ? asObj.seconds : null;
-    const ms = secs !== null ? secs * 1000 : null;
-    const date = ms !== null ? new Date(ms) : typeof asObj.toDate === "function" ? (asObj.toDate() as Date) : null;
-    return date && !Number.isNaN(date.getTime()) ? date.toLocaleDateString(i18n.language || "es") : "";
-  }
-  if (typeof raw === "number") {
-    const date = new Date(raw);
-    return Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString(i18n.language || "es");
-  }
-  const date = new Date(String(raw));
-  return Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString(i18n.language || "es");
+  return formatDateLocalized(raw, i18n.language);
 }
 
 // ── Superadmin: registro de auditoría ──

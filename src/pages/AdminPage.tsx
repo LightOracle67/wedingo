@@ -26,8 +26,10 @@ import { MONTH_VALUE_TO_NUMBER } from "../lib/constants";
 import { useToast } from "../hooks/useToast";
 import { formatDate } from "../lib/section-utils";
 import { escHtml } from "../lib/utils";
+import { formatMenuLabel } from "../lib/menu-utils";
 import { useTabs } from "../hooks/useTabs";
 import "../styles/admin.css";
+import "../styles/public-shell.css";
 
 // ─── Tabs de AdminPage (carga diferida) ────────────────────────────
 const PanelTab = lazy(() => import("./admin/PanelTab"));
@@ -271,7 +273,7 @@ export default function AdminPage() {
         return `<tr><td>${escHtml(e.guestName || "")}</td><td>${escHtml(
           e.mainGuestName || "",
         )}</td><td>${e.attendance === "yes" ? t("panel.attends") : t("panel.notAttends")}</td><td>${escHtml(
-          e.mealChoice ? t(`rsvp.menu${e.mealChoice.charAt(0).toUpperCase()}${e.mealChoice.slice(1)}`) : "",
+          e.mealChoice ? formatMenuLabel(e.mealChoice, t) : "",
         )}</td><td>${escHtml(e.dietaryInfo || "")}</td><td>${niños}</td><td>${escHtml(
           niñosDiet,
         )}</td><td>${escHtml(transporte)}</td><td>${escHtml(consentimientos)}</td><td>${escHtml(

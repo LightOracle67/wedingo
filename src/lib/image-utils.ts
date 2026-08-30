@@ -57,55 +57,32 @@ function loadImage(file: File): Promise<HTMLImageElement> {
   });
 }
 
-/** Comprime una imagen preservando transparencia.
- *  Exporta a WebP (soporta alpha), con fallback a PNG.
- *  Reduce calidad/dimensiones hasta encajar en el target (por defecto 300KB). */
+/** Comprime una imagen preservando transparencia. La variante "transparente"
+ *  era casi idéntica a compressImage (menos el fast-path JPEG); unificadas en
+ *  v2.186 con la opción `jpegFastPath` (ver compressImage). */
 export const compressImageTransparent = async (
   file: File,
   maxDimension = MAX_IMAGE_DIMENSION,
   targetBytes = TARGET_BYTES,
 ): Promise<string> => {
-  const img = await loadImage(file);
-  let { width, height } = img;
-  if (width > maxDimension || height > maxDimension) {
-    const ratio = Math.min(maxDimension / width, maxDimension / height);
-    width = Math.round(width * ratio);
-    height = Math.round(height * ratio);
-  }
-  const canvas = document.createElement("canvas");
-  canvas.width = width;
-  canvas.height = height;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) throw new Error(i18n.t("errors.uploadImageFailed"));
-  ctx.drawImage(img, 0, 0, width, height);
-  URL.revokeObjectURL(img.src);
-
-  let dataUrl = canvasToType(canvas, "webp", 0.8);
-  let estimatedBytes = Math.round((dataUrl.length * 3) / 4);
-
-  if (estimatedBytes > targetBytes) {
-    let quality = 0.7;
-    while (quality >= 0.1 && estimatedBytes > targetBytes) {
-      dataUrl = canvasToType(canvas, "webp", quality);
-      estimatedBytes = Math.round((dataUrl.length * 3) / 4);
-      quality -= 0.1;
-    }
-  }
-
-  if (estimatedBytes > targetBytes) {
-    dataUrl = shrinkToFit(canvas, targetBytes);
-  }
-
-  return dataUrl;
+  return compressImage(file, maxDimension, targetBytes, { jpegFastPath: false });
 };
 
-/** Comprime una imagen: elimina fondo blanco, preserva transparencia,
- *  reduce calidad/dimensiones hasta encajar en el target (por defecto 300KB).
- *  Exporta a WebP (con alpha si existe), con fallback a JPEG. */
+interface CompressOptions {
+  /** Fast-path de JPEG (pasar tal cual si ya es pequeño). Solo debe
+   *  activarse cuando NO importa la transparencia (v2.186: la variante
+   *  transparente la desactiva). */
+  jpegFastPath?: boolean;
+}
+
+/** Comprime una imagen: preserva transparencia, reduce calidad/dimensiones
+ *  hasta encajar en el target (por defecto 300KB). Exporta a WebP (soporta
+ *  alpha), con fallback a PNG. */
 export const compressImage = async (
   file: File,
   maxDimension = MAX_IMAGE_DIMENSION,
   targetBytes = TARGET_BYTES,
+  options: CompressOptions = {},
 ): Promise<string> => {
   const img = await loadImage(file);
 
@@ -114,6 +91,7 @@ export const compressImage = async (
   // cliente y no es fiable; el contenido se vuelve a validar en canvas en el
   // camino lento si no pasa.
   if (
+    options.jpegFastPath !== false &&
     file.size <= targetBytes &&
     file.type === "image/jpeg" &&
     img.width <= maxDimension &&

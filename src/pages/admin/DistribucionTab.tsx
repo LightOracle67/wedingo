@@ -28,25 +28,19 @@ import { useToast } from "../../hooks/useToast";
 import { useConfirm } from "../../contexts/ConfirmContext";
 import { useRsvpContext } from "../../contexts";
 import { TableCanvas, type CanvasTable } from "./table-canvas";
+import type { TableShape, ShapeTable as ShapeTableShared } from "../../lib/table-geometry";
 import { clampPercent, buildLabelsHtml, assignGuestsToTables } from "./distribucion-helpers";
 
-type Shape = "circle" | "rect" | "oval" | "square";
+// Tipos IMPORTADOS de table-geometry (v2.186): aquí estaban redefinidos
+// Shape/ShapeTable idénticos y divergían de la vista pública. `Section`
+// (solo id+nombre) sigue siendo local: aquí las secciones se cargan sin
+// mesas (se cargan por separado).
+type Shape = TableShape;
+type ShapeTable = ShapeTableShared;
+/** Zona del plano en el editor (sin mesas: se cargan aparte). */
 interface Section {
   id: string;
   name: string;
-}
-
-interface ShapeTable {
-  id: string;
-  name: string;
-  shape: Shape;
-  x: number;
-  y: number;
-  w: number;
-  h: number;
-  rotation: number;
-  seats: number;
-  guests: string[];
 }
 
 const SHAPES: Array<{ key: Shape; label: string }> = [

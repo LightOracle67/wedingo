@@ -32,11 +32,10 @@ export function getChildrenDietary(entry: {
   return list;
 }
 
-/** Etiqueta legible del plato seleccionado (p. ej. carne → "Carne"). */
-export function formatMenuLabel(mealChoice: string, t: (key: string) => string): string | null {
-  if (!mealChoice) return null;
-  return t("rsvp.menu" + mealChoice.charAt(0).toUpperCase() + mealChoice.slice(1));
-}
+// Etiqueta de plato unificada (v2.186): attendance-core re-exporta la de
+// menu-utils para no romper los imports existentes. Devuelve "" en vacío
+// (antes null): los callers ya lo tratan como falsy.
+export { formatMenuLabel } from "../../lib/menu-utils";
 
 /** Datos de un invitado principal editado manualmente (alta/edición). */
 interface ManualMainInput {

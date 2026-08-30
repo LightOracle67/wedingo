@@ -12,6 +12,7 @@
 import { memo, useCallback, useEffect, useState } from "react";
 import { getDocs, collection, query, where, limit } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF, rsvpByInviteRef } from "../../lib/firebase";
+import { firestoreMillis } from "../../lib/safe-date";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
 
@@ -135,13 +136,7 @@ const SupportTab = memo(function SupportTab() {
         snap.docs.map((d) => ({
           action: String(d.data().action || ""),
           detail: String(d.data().detail || ""),
-          ts: d.data().createdAt
-            ? new Date(
-                (d.data().createdAt as { seconds?: number })?.seconds
-                  ? Number((d.data().createdAt as { seconds: number }).seconds) * 1000
-                  : Date.now(),
-              ).toLocaleString()
-            : "",
+          ts: d.data().createdAt ? new Date((firestoreMillis(d.data().createdAt) ?? Date.now())).toLocaleString() : "",
         })),
       );
     } catch {}
@@ -184,10 +179,7 @@ const SupportTab = memo(function SupportTab() {
         visits: Number(data._visits) || 0,
         rsvpCount: rsvpSnap.docs.length,
         hasSession: !!data.activeSession,
-        lastActivity:
-          sessionAt && typeof sessionAt === "object" && "seconds" in sessionAt
-            ? new Date(Number(sessionAt.seconds) * 1000).toLocaleString()
-            : "—",
+        lastActivity: sessionAt ? new Date(firestoreMillis(sessionAt) ?? 0).toLocaleString() : "—",
         createdAt: String(data.createdAt || "—"),
       });
     } catch {

@@ -140,7 +140,15 @@ export function useStoryNavigation(
           if (key && sectionsRef.current[key] !== el) cacheSection(el);
         });
       });
-      mutationObserver.observe(document.body, { childList: true, subtree: true });
+      // v2.186: se observa el CONTENEDOR de la invitación (.app-scene, el
+      // mismo que usa este hook) en vez de `document.body` completo: el
+      // observer corría en CADA mutación del body (toasts, modales, banner
+      // de cookies…) aunque nada de eso cambia la estructura de las
+      // secciones. Fallback a #root / body si no hay scene.
+      mutationObserver.observe(scene ?? document.getElementById("root") ?? document.body, {
+        childList: true,
+        subtree: true,
+      });
     }
 
     let raf = 0;

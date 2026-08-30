@@ -2,6 +2,7 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState, type ChangeEve
 import { setDoc, getDoc, doc, collection, getDocs, query, orderBy, limit, documentId } from "firebase/firestore";
 import { useTranslation } from "react-i18next";
 import { useToast } from "../../hooks/useToast";
+import { firestoreMillis } from "../../lib/safe-date";
 import { db, invitationDocRef, rsvpByInviteRef } from "../../lib/firebase";
 import { encrypt } from "../../lib/crypto-utils";
 import {
@@ -230,8 +231,8 @@ const PanelTab = memo(function PanelTab({ config }: { config: PanelTabConfig }) 
             typeof (value as { seconds?: unknown }).seconds === "number" &&
             typeof (value as { nanoseconds?: unknown }).nanoseconds === "number"
           ) {
-            const { seconds, nanoseconds } = value as { seconds: number; nanoseconds: number };
-            return new Date(seconds * 1000 + Math.round(nanoseconds / 1e6));
+            const ms = firestoreMillis(value);
+            if (ms !== null) return new Date(ms);
           }
           if (Array.isArray(value)) return value.map(reviveTimestamp);
           if (value && typeof value === "object") {

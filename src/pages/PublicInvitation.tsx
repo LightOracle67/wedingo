@@ -54,7 +54,6 @@ const RsvpSection = lazy(() => import("./sections/RsvpSection"));
 const VenueMapSection = lazy(() => import("./sections/VenueMapSection"));
 const TableSeatingSection = lazy(() => import("./sections/TableSeatingSection"));
 import "../styles/decorations.css";
-import "../styles/admin.css";
 import "../styles/landing.css";
 
 /**

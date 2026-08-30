@@ -9,6 +9,7 @@ import { STORAGE_KEYS } from "../lib/storage-keys";
 import SetupForm from "../components/SetupForm";
 import MusicPlayer from "../components/MusicPlayer";
 import "../styles/admin.css";
+import "../styles/public-shell.css";
 
 export default function SetupPage() {
   const { t } = useTranslation();

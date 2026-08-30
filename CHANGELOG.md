@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.186.0 — 2026-08-30
+- Reducción de duplicados y CSS crítico: unificadas la etiqueta de menú (4 copias → menu-utils), la conversión Timestamp→ms y los formateadores de fecha (nuevo safe-date.ts, con locale PINNEADO es-ES/en-US que elimina una carrera real del idioma asíncrono de i18n en celdas Excel/fechas), los tipos de mesa (DistribucionTab importa de table-geometry) y compressImage/compressImageTransparent en una función con opciones.
+- CSS crítico dividido (admin.css → public-shell.css 7KB + admin.css 44KB): la ruta del invitado ya no arrastra los estilos de los paneles; el admin/setup los cargan en sus chunks lazy (CSS crítico global 27,95 → 20,85 KB gzip). MusicPlayer/Fireflies/GoogleTranslateToggle ya tenían su propio CSS lazy.
+- Limpieza: hook muerto useInviteSubcollection eliminado (solo lo usaban sus tests); OpenDyslexic convertida de OTF (49KB) a WOFF2 (32KB) y actualizados @font-face y precache del SW; observer de useStoryNavigation acotado al .app-scene (no a todo el body).
 ## 2.185.0 — 2026-08-30
 - OPTIMIZACIÓN GLOBAL DE RENDIMIENTO (auditoría completa): corregido el code-splitting de Firebase (Vite 8/Rolldown) — el SDK de Analytics se descargaba en el primer hit pese al "lazy" (vendor-firebase importaba el chunk lazy-analytics); ahora analytics/auth/storage son chunks 100% diferidos y el core compartido queda en la ruta crítica, con verificaciones post-build.
 - Rutas de edición: formData sale del value principal de ConfigContext (contexto separado useFormData), return de useSetupAuth memoizado (cascada de re-renders por tecla), autosave con firma ligera y guardado INCREMENTAL (sin re-cifrar bankInfo ni reescribir el doc completo), callbacks estables y estadísticas/contextos memoizados (ConfirmContext, AdminPage, DataTab, InvitationsTab).

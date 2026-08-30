@@ -10,6 +10,7 @@
 import { MAX_CHILDREN, MAX_COMPANIONS } from "../pages/sections/rsvp/constants";
 import type { Attendee } from "../types";
 import type { QueryDocumentSnapshot, DocumentData } from "firebase/firestore";
+import { firestoreIso } from "../lib/safe-date";
 
 export interface RsvpFormData {
   guestName: string;
@@ -190,14 +191,9 @@ export async function processRsvpSnapshot(
   // Procesa UN documento de respuesta (descifra dietaryInfo con caché).
   const processDoc = async (entryDoc: QueryDocumentSnapshot<DocumentData>): Promise<RsvpEntryData> => {
     const data = entryDoc.data();
-    const submittedAt =
-      typeof data.submittedAt?.toDate === "function"
-        ? data.submittedAt.toDate().toISOString()
-        : typeof data.submittedAt === "string"
-          ? data.submittedAt
-          : data.submittedAt?.seconds
-            ? new Date(data.submittedAt.seconds * 1000).toISOString()
-            : new Date().toISOString();
+    // Normalización unificada de Timestamp/ISO/Date (v2.186, safe-date):
+    // antes había 3 ramas con parseos ligeramente distintos.
+    const submittedAt = firestoreIso(data.submittedAt) || new Date().toISOString();
 
     const cacheKey = `${inviteToken}|${entryDoc.id}`;
     let decryptedDietaryInfo = typeof data.dietaryInfo === "string" ? data.dietaryInfo : "";

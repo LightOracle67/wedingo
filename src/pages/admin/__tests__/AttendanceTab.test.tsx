@@ -456,7 +456,7 @@ describe("AttendanceTab", () => {
       />,
     );
     expect(screen.getAllByText(/Grace/).length).toBeGreaterThanOrEqual(1);
-    expect(screen.getByText((text: string) => text.includes("rsvp.menuCarne"))).toBeDefined();
+    expect(screen.getByText((text: string) => text.includes("carne"))).toBeDefined();
   });
 
   it("renders attendees with allergies data", () => {
@@ -551,7 +551,7 @@ describe("AttendanceTab", () => {
         handleDeleteRsvpEntries={vi.fn()}
       />,
     );
-    expect(screen.getByText("rsvp.menuCarne")).toBeDefined();
+    expect(screen.getByText("carne")).toBeDefined();
   });
 
   it("resolves transport labels for each mode", () => {

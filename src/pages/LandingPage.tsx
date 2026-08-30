@@ -18,7 +18,6 @@ import { saveSession, firestoreSessionExpiry } from "../lib/sessionVars";
 import { useFocusTrap, useEscapeKey } from "../hooks/useFocusTrap";
 import { useConfirm } from "../contexts/ConfirmContext";
 import "../styles/landing.css";
-import "../styles/admin.css";
 import "../styles/modals.css";
 import { safeLogError } from "../lib/safe-error";
 

@@ -14,6 +14,7 @@ import {
   limit,
 } from "firebase/firestore";
 import { db, INVITATIONS_COLLECTION_REF } from "../../lib/firebase";
+import { firestoreMillis } from "../../lib/safe-date";
 import { useToast } from "../../hooks/useToast";
 import { useConfirm } from "../../contexts/ConfirmContext";
 import { hashSetupToken } from "../../lib/setup-token";
@@ -172,7 +173,7 @@ const ManageTab = memo(function ManageTab() {
           accessSnap.docs.map((d) => {
             const dd = d.data();
             const raw = dd.ts as { seconds?: unknown } | null | undefined;
-            const ts = raw && typeof raw === "object" && "seconds" in raw ? Number(raw.seconds) * 1000 : 0;
+            const ts = firestoreMillis(raw) ?? 0;
             return { action: String(dd.action || ""), detail: String(dd.detail || ""), ts };
           }),
         );

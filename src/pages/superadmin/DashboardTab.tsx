@@ -19,6 +19,7 @@ import {
   INVITATIONS_COLLECTION_REF,
 } from "../../lib/firebase";
 import { calcGlobalStats, formatBytes } from "../../lib/superadmin-utils";
+import { firestoreMillis } from "../../lib/safe-date";
 import { MONTH_VALUE_TO_NUMBER } from "../../lib/constants";
 import { safeLogError } from "../../lib/safe-error";
 import { logAudit } from "../../lib/audit";
@@ -109,12 +110,8 @@ const DashboardTab = memo(function DashboardTab() {
       }
       for (const r of rsvps) {
         const raw = r.submittedAt as unknown;
-        let ts = 0;
-        if (raw && typeof raw === "object" && "seconds" in (raw as { seconds?: unknown })) {
-          ts = Number((raw as { seconds: number }).seconds) * 1000;
-        } else if (typeof raw === "number") ts = raw;
-        else if (typeof raw === "string") ts = Date.parse(raw);
-        if (!ts) continue;
+        const ts = firestoreMillis(raw);
+        if (ts === null || ts === 0) continue;
         const key = new Date(ts).toISOString().slice(0, 10);
         if (key in days) days[key] = (days[key] || 0) + 1;
       }
@@ -160,8 +157,7 @@ const DashboardTab = memo(function DashboardTab() {
       setRecentActivity(
         auditSnap.docs.map((d) => {
           const data = d.data();
-          const raw = data.createdAt as { seconds?: unknown } | null | undefined;
-          const ts = raw && typeof raw === "object" && "seconds" in raw ? Number(raw.seconds) * 1000 : 0;
+          const ts = firestoreMillis(data.createdAt) ?? 0;
           return { action: String(data.action || ""), detail: String(data.detail || ""), ts };
         }),
       );

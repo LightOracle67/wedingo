@@ -1,0 +1,337 @@
+.story-card,
+.setup-card,
+.invite-shell {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.story-card p,
+.setup-card p,
+.invite-shell p {
+  max-width: 100%;
+}
+
+.app-scene {
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  top: 0px;
+  overflow-y: scroll;
+  /* Sin scroll horizontal en móviles: el contenido que exceda el ancho se
+     recorta (los paneles gestionan su propio scroll con overflow-x:auto). */
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  overscroll-behavior-y: contain;
+  display: flex;
+  flex-direction: column;
+  background: var(--page-bg, #1f1b14);
+  /* Scroll LIBRE y SUAVE por toda la invitación (sin snap por sección):
+     se aprecian las animaciones de entrada/salida de cada sección. Se respeta
+     prefers-reduced-motion (el media query global lo neutraliza). */
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+.story-section--details.story-section--is-active .story-map__actions .setup-button {
+  font-size: 0.82rem;
+  padding: 0.45rem 0.8rem;
+}
+
+.story-section--details.story-section--is-active .story-calendar-actions .setup-button {
+  font-size: 0.82rem;
+  padding: 0.45rem 0.8rem;
+}
+
+.story-calendar-actions .setup-button,
+.story-map__actions .setup-button {
+  padding: 2%;
+  text-decoration: none;
+}
+
+.setup-error {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  color: var(--setup-accent, #c62828);
+}
+
+.setup-card {
+  animation: story-card-enter 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.setup-button {
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.setup-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.setup-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.setup-button--ghost:hover {
+  background: color-mix(in srgb, var(--setup-accent) 14%, transparent);
+}
+
+.setup-input,
+.setup-textarea {
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    background-color 200ms ease;
+}
+
+.setup-input:focus-visible,
+.setup-textarea:focus-visible {
+  border-color: var(--setup-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--setup-accent) 20%, transparent);
+  background: color-mix(in srgb, var(--setup-field-bg) 90%, transparent);
+}
+
+.setup-layout {
+  position: relative;
+  min-height: calc(100dvh - var(--navbar-height, 0px));
+  display: grid;
+  place-items: safe center;
+  padding: clamp(0.75rem, 2.5vw, 1.5rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.setup-card {
+  position: relative;
+  padding: clamp(0.6rem, 2vw, 1.2rem);
+  box-sizing: border-box;
+  background: linear-gradient(150deg, var(--setup-grad-start), var(--setup-grad-end));
+  border-radius: 1.4rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.setup-button--compact {
+  padding-inline: 0.85rem;
+  padding-block: 0.52rem;
+}
+
+.setup-label {
+  font-size: 0.95rem;
+  color: var(--setup-title);
+  line-height: 1.4;
+}
+
+.setup-input,
+.setup-textarea {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--setup-field-border);
+  background: var(--setup-field-bg);
+  color: var(--setup-title);
+  border-radius: var(--radius-lg);
+  padding: 0.72rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.setup-input:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+
+.setup-input:focus,
+.setup-textarea:focus {
+  border-color: var(--setup-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--setup-accent) 25%, transparent);
+}
+
+.setup-actions {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+}
+
+.setup-button {
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--setup-accent) 82%, #fff), var(--setup-accent));
+  color: var(--setup-accent-text);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.1rem;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.setup-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.setup-button:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.setup-button:active:not(:disabled) {
+  transform: translateY(1px) scale(0.98);
+}
+
+.setup-button--ghost {
+  background: color-mix(in srgb, var(--setup-title) 10%, transparent);
+  color: var(--setup-title);
+  border: 1px solid color-mix(in srgb, var(--setup-title) 30%, transparent);
+}
+
+.setup-button:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+
+.setup-input:focus-visible,
+.setup-textarea:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 1px;
+}
+
+.setup-help,
+.setup-success,
+.setup-error {
+  margin: 0.4rem 0 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.setup-help {
+  color: var(--setup-muted);
+}
+
+.setup-error {
+  color: var(--color-red);
+}
+
+.admin-bar {
+  z-index: var(--z-admin-bar, 600);
+  -webkit-backdrop-filter: blur(8px);
+  font-family: var(--font-body);
+  background: color-mix(in srgb, var(--color-dark-bg) 92%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-gold-light) 20%, transparent);
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-gold-light) 20%, transparent);
+  font-family: var(--font-body);
+}
+
+.admin-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0.45rem 0.75rem;
+  flex-wrap: wrap;
+}
+
+.admin-bar__title {
+  color: var(--setup-accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.admin-bar__links {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.setup-card {
+  border: 1px solid color-mix(in srgb, var(--setup-accent) 20%, transparent);
+  box-shadow:
+    0 25px 60px #00000061,
+    0 0 0 1px color-mix(in srgb, var(--setup-accent) 8%, transparent),
+    inset 0 1px 0 #ffffff2e;
+  width: 95%;
+}
+
+.setup-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--setup-accent), transparent);
+  border-radius: 0 0 2px 2px;
+  opacity: 0.6;
+}
+
+.admin-flex {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.setup-input,
+.setup-textarea {
+  padding: 0.6rem 0.8rem;
+  font-size: 0.92rem;
+  border-radius: var(--radius-md);
+}
+
+.setup-button--ghost {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--setup-border) 75%, transparent);
+}
+
+.setup-help {
+  font-size: 0.8rem;
+}
+
+.setup-actions {
+  margin-top: 0.6rem;
+}
+
+.admin-flex,
+.admin-flex--between,
+.admin-grid {
+  min-width: 0;
+}
+
+.admin-flex > *,
+.admin-grid > * {
+  min-width: 0;
+}
+
+.admin-flex .setup-input,
+.admin-flex select.setup-input,
+.admin-grid .setup-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.setup-label[style*="min-width"] {
+  max-width: 100%;
+}

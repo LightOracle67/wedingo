@@ -29,6 +29,7 @@ import VenueSectionForm from "./setup-forms/VenueSectionForm";
 import AnimationsSectionForm from "./setup-forms/AnimationsSectionForm";
 import GallerySectionForm from "./setup-forms/GallerySectionForm";
 import "../styles/admin.css";
+import "../styles/public-shell.css";
 import { safeLogError } from "../lib/safe-error";
 
 /**

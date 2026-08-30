@@ -2,6 +2,7 @@ import { memo, useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { getDocs, collection, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db, rsvpByInviteRef } from "../../lib/firebase";
+import { firestoreMillis } from "../../lib/safe-date";
 import { useToast } from "../../hooks/useToast";
 import { downloadText } from "../../lib/file-utils";
 import { buildIcsFile } from "../../lib/calendar-utils";
@@ -88,7 +89,8 @@ const ToolsTab = memo(function ToolsTab({
         const lastSeen = Number(localStorage.getItem(LAST_SEEN_KEY) || 0);
         const recent = rsvpSnap.docs.filter((d) => {
           const raw = d.data().submittedAt as { seconds?: number } | undefined;
-          return raw && typeof raw === "object" && "seconds" in raw && Number(raw.seconds) * 1000 > lastSeen;
+          const ms = firestoreMillis(raw);
+          return ms !== null && ms > lastSeen;
         }).length;
         setNewCount(recent);
       } catch {}

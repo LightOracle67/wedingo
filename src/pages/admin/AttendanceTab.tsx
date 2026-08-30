@@ -667,7 +667,7 @@ const AttendanceTab = memo(function AttendanceTab(props: AttendanceTabProps) {
                     ? entry.attendees
                         .map((a) =>
                           a.menu
-                            ? `${a.name}: ${t("rsvp.menu" + a.menu.charAt(0).toUpperCase() + a.menu.slice(1))}`
+                            ? `${a.name}: ${formatMenuLabel(a.menu || "", t)}`
                             : null,
                         )
                         .filter((x): x is string => x !== null)

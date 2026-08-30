@@ -3,6 +3,10 @@ import { BrowserRouter } from "react-router";
 import App from "./App";
 import "./index.css";
 import "./styles/animations.css";
+// Estilos de la CASCO PÚBLICA que vivían en admin.css (app-scene, story-card,
+// invite-shell, admin-bar…): v2.186, la ruta del invitado ya no arrastra los
+// 44 KB de estilos de los paneles admin/setup.
+import "./styles/public-shell.css";
 import "./i18n";
 import "./lib/sentry";
 import { reportWebVitals } from "./lib/vitals";
