@@ -61,7 +61,12 @@ function pwaPrecache() {
       // El resto (admin, superadmin, modales, sentry…) se cachea bajo demanda
       // con el fetch handler cache-first del SW (funciona igual en offline
       // tras la primera visita).
+      // v2.192: las rutas son bundles propios (ruta-*.js) que envuelven las
+      // páginas con sus providers; el invitado necesita "landing-"/"invitation-"
+      // y las secciones lazy. Admin/setup/print/superadmin quedan on-demand.
       const guestSectionPrefixes = [
+        "landing-",
+        "invitation-",
         "PublicInvitation-",
         "HeroSection-",
         "DetailsSection-",
@@ -96,7 +101,7 @@ function pwaPrecache() {
             if (langMatch && langCodes.has(langMatch[1])) return false;
             // Sentry/qrcode/superadmin login: bajo demanda tras consentimiento.
             const lazyOnlyPrefixes =
-              /^(vendor-sentry|lazy-auth|lazy-storage|lazy-analytics|vendor-qrcode|SuperAdminLogin|SuperAdminPanel|PrintPage|AdminPage|SetupPage|SetupForm|DashboardTab|DataTab|ManageTab|MetricsTab|ComplianceTab|PlatformTab|SettingsTab|SupportTab|TokensTab|InvitationsTab|InvitationDetailModal|AccessibilityPanel|LegalModal|ChangelogModal|CookieConsent|DataRequestModal|AttendanceTab|DistribucionTab|PanelTab|InvitationTab|ShareTab|AccessTab|ToolsTab|StatsCard|TableActionsBar|SortableTh|Pagination)-/;
+              /^(vendor-sentry|lazy-auth|lazy-storage|lazy-analytics|vendor-qrcode|superadmin-login-|superadmin-panel-|setup-|admin-|print-|SuperAdminLogin|SuperAdminPanel|PrintPage|AdminPage|SetupPage|SetupForm|DashboardTab|DataTab|ManageTab|MetricsTab|ComplianceTab|PlatformTab|SettingsTab|SupportTab|TokensTab|InvitationsTab|InvitationDetailModal|AccessibilityPanel|LegalModal|ChangelogModal|CookieConsent|DataRequestModal|AttendanceTab|DistribucionTab|PanelTab|InvitationTab|ShareTab|AccessTab|ToolsTab|StatsCard|TableActionsBar|SortableTh|Pagination)-/;
             if (lazyOnlyPrefixes.test(file)) return false;
             return true;
           })

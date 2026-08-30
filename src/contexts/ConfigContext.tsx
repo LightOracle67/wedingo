@@ -1,4 +1,4 @@
-import { useCallback, useContext, createContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router";
 import { getDoc, setDoc, doc, increment, writeBatch, addDoc, collection, serverTimestamp } from "firebase/firestore";
@@ -28,6 +28,7 @@ import { useAutoSave } from "../hooks/useAutoSave";
 import { getFirestoreErrorMessage } from "../lib/error-utils";
 import { recoverFromStaleChunk } from "../lib/stale-chunk-recovery";
 import { ConfigContext, FormDataContext } from "./useConfig";
+import { ConfigActionsContext, type ConfigActionsValue } from "./useConfigActions";
 import { FormStoreContext, createFormStore, type FormStore } from "./FormStore";
 import { useUIMessages } from "./useAppUI";
 import { safeLogError } from "../lib/safe-error";
@@ -35,41 +36,6 @@ import { safeLogError } from "../lib/safe-error";
 /** Año máximo permitido al guardar la fecha de la boda (constante de módulo:
  *  no se recalcula en cada render). */
 const MAX_ALLOWED_YEAR = new Date().getFullYear() + MAX_YEARS_AHEAD;
-
-/**
- * ConfigActionsContext — Contexto ESTABLE de acciones del editor.
- *
- * `ConfigContext` incluye `formData`/`config`, que cambian de identidad en
- * CADA tecla (`updateFormField` → `setFormData`): cualquier consumidor de
- * `useConfig()` re-renderiza en cada tecla, anulando el beneficio de
- * `useFormField` (re-render acotado por campo). Este contexto separa las
- * FUNCIONES (estables) y los pocos valores que cambian raramente
- * (`inviteToken`, `hasStoredConfig`), de forma que los formularios solo
- * re-renderizan cuando tocan sus propios campos, no en cada tecla del resto.
- */
-const ConfigActionsContext = createContext<ConfigActionsValue | null>(null);
-
-/** Valor expuesto por ConfigActionsContext (estable entre teclas). */
-interface ConfigActionsValue {
-  updateFormField: (field: string, value: string) => void;
-  handleDayChange: (value: string) => void;
-  handleTimeChange: (value: string) => void;
-  handleTimeBlur: (value: string) => void;
-  handleYearChange: (value: string) => void;
-  /** Año máximo permitido al guardar la fecha de la boda. */
-  maxAllowedYear: number;
-  /** Token de la invitación en curso (cambia solo al navegar de ruta). */
-  inviteToken: string;
-  /** Indica si la invitación ya tiene configuración guardada. */
-  hasStoredConfig: boolean;
-}
-
-/** Hook para leer las acciones estables del editor (error si no hay provider). */
-export function useConfigActions(): ConfigActionsValue {
-  const ctx = useContext(ConfigActionsContext);
-  if (!ctx) throw new Error("useConfigActions debe usarse dentro de ConfigProvider");
-  return ctx;
-}
 
 export function ConfigProvider({ children }: { children: ReactNode }) {
   const { t } = useTranslation();

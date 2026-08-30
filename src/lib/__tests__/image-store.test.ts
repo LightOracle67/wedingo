@@ -531,3 +531,25 @@ describe("image-store", () => {
       expect(true).toBe(true);
     });
   });
+
+  describe("v2.191: refs, LRU de mini y limpiezas", () => {
+    it("configImageIdFromRef extrae el id con y sin revisión", async () => {
+      const { configImageIdFromRef } = await import("../image-store");
+      expect(configImageIdFromRef("__cfgimg:couplePhoto:123")).toBe("couplePhoto");
+      expect(configImageIdFromRef("__cfgimg:gallery")).toBe("gallery");
+    });
+
+    it("resolveAllConfigImages con Promise.all devuelve undefined para valores no-ref", async () => {
+      const { resolveAllConfigImages } = await import("../image-store");
+      const res = await resolveAllConfigImages("token", { couplePhoto: "data:image/png;base64,x" });
+      expect(res.couplePhoto).toBeUndefined();
+    });
+
+    it("prepareGalleryThumb rechaza si compressImage falla (sin canvas)", async () => {
+      const { prepareGalleryThumb } = await import("../image-store");
+      await expect(
+        prepareGalleryThumb("token", new File(["x"], "a.png", { type: "image/png" })),
+      ).rejects.toThrow();
+    });
+  });
+

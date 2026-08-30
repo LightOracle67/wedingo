@@ -37,6 +37,18 @@ export function useConfig() {
 }
 
 /**
+ * InviteToken OPCIONAL (v2.192, rama firebase-lazy): componentes globales del
+ * shell (banner de cookies, modal de borrado de datos) pueden existir fuera
+ * de los providers de ruta. Sin ConfigProvider devuelven "" y los flujos se
+ * degradan con elegancia (consentimiento sin token de invitación = solo
+ * local).
+ */
+export function useOptionalInviteToken(): string {
+  const ctx = useContext(ConfigContext);
+  return ctx?.inviteToken ?? "";
+}
+
+/**
  * Contexto separado del estado del EDITOR (formData + updateFormField).
  *
  * Razón (v2.185): formData cambia de identidad en CADA tecla del editor. Si

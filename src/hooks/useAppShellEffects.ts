@@ -1,10 +1,7 @@
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router";
+import { useTranslation } from "react-i18next";
 import { APP_VERSION, THEME_PREVIEW_COLORS, FONT_FAMILY, COLOR_FIELDS } from "../lib/constants";
-import { logError } from "../lib/error-utils";
-
-const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ckb", "dv"]);
 
 /**
  * useAppShellEffects — Agrupa los efectos de documento del shell de la app:
@@ -28,33 +25,8 @@ export function useAppShellEffects(
   inviteToken: string | undefined,
   isEditingRoute: boolean,
 ) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const location = useLocation();
-
-  // Idioma + dirección (RTL) del documento.
-  useEffect(() => {
-    const lang = i18n.language?.split("-")[0] || "es";
-    document.documentElement.lang = lang;
-    document.documentElement.dir = RTL_LANGS.has(lang) ? "rtl" : "ltr";
-    document.documentElement.translate = true;
-  }, [i18n.language]);
-
-  // noindex dinámico: solo la landing es indexable. Las invitaciones son
-  // secretas y /admin, /setup, /print y el superadmin no deben indexarse
-  // (defensa en profundidad junto a robots.txt).
-  useEffect(() => {
-    let meta = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
-    if (location.pathname === "/") {
-      if (meta) meta.remove();
-      return;
-    }
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "robots");
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute("content", "noindex, nofollow");
-  }, [location.pathname]);
 
   // Título de pestaña por ruta. v2.188: solo se escribe cuando cambia
   // realmente (antes, en /setup y /admin, cada tecla del editor re-escribía
@@ -128,27 +100,6 @@ export function useAppShellEffects(
   useEffect(() => {
     document.documentElement.style.setProperty("--wedding-background-image", "none");
   }, []);
-
-  // Registro global de errores (Sentry-gated).
-  useEffect(() => {
-    const handler = (event: ErrorEvent) => {
-      logError(event.error || event.message, "global");
-    };
-    const rejectionHandler = (event: PromiseRejectionEvent) => {
-      logError(event.reason, "unhandledRejection");
-    };
-    window.addEventListener("error", handler);
-    window.addEventListener("unhandledrejection", rejectionHandler);
-    return () => {
-      window.removeEventListener("error", handler);
-      window.removeEventListener("unhandledrejection", rejectionHandler);
-    };
-  }, []);
-
-  // Scroll-to-top al cambiar de ruta.
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
 
   return APP_VERSION;
 }

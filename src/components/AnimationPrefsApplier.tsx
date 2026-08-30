@@ -10,7 +10,7 @@
  */
 
 import { useEffect } from "react";
-import { useAnimations } from "../contexts";
+import { useAnimations } from "../hooks/useAnimations";
 
 /** Prefijo de las clases que gestiona este componente. */
 const CLASS_PREFIX = "wed-no-anim-";

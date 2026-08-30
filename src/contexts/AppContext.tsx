@@ -68,16 +68,29 @@ function AppMerger({ children }: { children: React.ReactNode }) {
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
 
+/**
+ * Árbol de providers que dependen de Firestore (Config > Auth > Rsvp +
+ * AppMerger). v2.192 (rama firebase-lazy): este árbol se monta POR RUTA
+ * (providers.tsx / App.tsx) para que `vendor-firebase` no viaje en el primer
+ * pintado del shell. UIProvider queda FUERA (lo envuelve AppProvider o,
+ * en la composición nueva, el shell global).
+ */
+export function AppProvidersTree({ children }: { children: React.ReactNode }) {
+  return (
+    <ConfigProvider>
+      <AuthProvider>
+        <RsvpProvider>
+          <AppMerger>{children}</AppMerger>
+        </RsvpProvider>
+      </AuthProvider>
+    </ConfigProvider>
+  );
+}
+
 export function AppProvider({ children }: { children: React.ReactNode }) {
   return (
     <UIProvider>
-      <ConfigProvider>
-        <AuthProvider>
-          <RsvpProvider>
-            <AppMerger>{children}</AppMerger>
-          </RsvpProvider>
-        </AuthProvider>
-      </ConfigProvider>
+      <AppProvidersTree>{children}</AppProvidersTree>
     </UIProvider>
   );
 }

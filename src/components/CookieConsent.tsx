@@ -2,7 +2,8 @@ import { memo, useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../lib/firebase";
-import { useAppUI, useConfig } from "../contexts";
+import { useAppUI } from "../contexts";
+import { useOptionalInviteToken } from "../contexts/useConfig";
 import Modal from "./Modal";
 import { INVITE_CACHE_PREFIX, AUDIO_PREFIX, STORAGE_KEYS } from "../lib/storage-keys";
 import { PRIVACY_POLICY_VERSION } from "../lib/constants";
@@ -126,7 +127,10 @@ const CookieConsent = memo(function CookieConsent() {
   // solapen) y se reabre cuando se cierra la política, sin decidir aún.
   const { legalModal, setLegalModal, cookiePrefsOpen, setCookiePrefsOpen } = useAppUI();
   // inviteToken (si hay invitación): para registrar la decisión en el servidor.
-  const { inviteToken } = useConfig();
+  // v2.192: el banner vive en el SHELL (sin providers), así que el token se
+  // lee de forma OPCIONAL ("" fuera de las rutas de invitación → registro
+  // solo local).
+  const inviteToken = useOptionalInviteToken();
   const wasHiddenForPolicyRef = useRef(false);
 
   useEffect(() => {

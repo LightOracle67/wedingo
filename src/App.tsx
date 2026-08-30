@@ -1,61 +1,117 @@
-import { lazy, Suspense, useEffect, useState } from "react";
-import { Routes, Route, Link, useLocation } from "react-router";
+import { lazy, Suspense, useEffect, useState, useSyncExternalStore } from "react";
+import { Routes, Route, useLocation } from "react-router";
 import { useTranslation } from "react-i18next";
-import { AppProvider } from "./contexts/AppContext";
-import { useConfig, useAuth, useAppUI, useFormField, AnimationsProvider, ConfirmProvider } from "./contexts";
-import { safeGetItem, safeSetItem } from "./lib/storage";
-import { SuperAdminProvider } from "./contexts/SuperAdminContext";
+import { useAppUI } from "./contexts/useAppUI";
+import { AnimationsProvider } from "./contexts/AnimationsContext";
+import { ConfirmProvider } from "./contexts/ConfirmContext";
+import { UIProvider } from "./contexts/UIContext";
 import { ToastProvider } from "./contexts/ToastContext";
 import ErrorBoundary from "./components/ErrorBoundary";
-import AdminBarHeightSync from "./components/AdminBarHeightSync";
+import { safeGetItem, safeSetItem } from "./lib/storage";
+import { getFooterVisible, getAdminMode, subscribeFooterVisible } from "./lib/chrome-store";
+import { APP_VERSION } from "./lib/constants";
+import { logError } from "./lib/error-utils";
+import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
+import "./styles/rtl.css";
+import { useOptionalInviteToken } from "./contexts/useConfig";
+
 const CookieConsent = lazy(() => import("./components/CookieConsent"));
 const DataRequestModal = lazy(() => import("./components/DataRequestModal"));
-import LanguageSwitcher from "./components/LanguageSwitcher";
-// Música, traductor de Google y luciérnagas SOLO se usan en rutas/casos
-// concretos (v2.185): como imports estáticos viajaban en el entry. Ahora son
-// chunks de bajo peso que se descargan al montarse realmente.
+const LanguageSwitcher = lazy(() => import("./components/LanguageSwitcher"));
 const GoogleTranslateToggle = lazy(() => import("./components/GoogleTranslateToggle"));
-const MusicPlayer = lazy(() => import("./components/MusicPlayer"));
 const Fireflies = lazy(() => import("./components/Fireflies"));
 import { useFocusTrap, useEscapeKey } from "./hooks/useFocusTrap";
-import { useAppShellEffects } from "./hooks/useAppShellEffects";
 
 const AccessibilityPanel = lazy(() => import("./components/AccessibilityPanel"));
 const LegalModal = lazy(() => import("./components/LegalModal"));
 const ChangelogModal = lazy(() => import("./components/ChangelogModal"));
 import AnimationPrefsApplier from "./components/AnimationPrefsApplier";
-import { APP_VERSION } from "./lib/constants";
-import { getSession } from "./lib/sessionVars";
-import "./styles/rtl.css";
-import LandingPage from "./pages/LandingPage";
-import { SUPERADMIN_ROUTE, SUPERADMIN_DASHBOARD } from "./lib/superadmin";
 
-const PublicInvitation = lazy(() => import("./pages/PublicInvitation"));
-const SetupPage = lazy(() => import("./pages/SetupPage"));
-const AdminPage = lazy(() => import("./pages/AdminPage"));
-const SuperAdminLogin = lazy(() => import("./pages/SuperAdminLogin"));
-const SuperAdminPanel = lazy(() => import("./pages/SuperAdminPanel"));
-const PrintPage = lazy(() => import("./pages/PrintPage"));
+// v2.192: cada ruta es un BUNDLE perezoso que envuelve la página con sus
+// providers (Config/Auth/Rsvp) — el shell ya no importa Firebase de forma
+// estática; vendor-firebase se descarga al navegar a la primera ruta que lo
+// necesita (en paralelo con el chunk de la página).
+const LandingRoute = lazy(() => import("./routes/landing"));
+const PublicInvitationRoute = lazy(() => import("./routes/invitation"));
+const SetupRoute = lazy(() => import("./routes/setup"));
+const AdminRoute = lazy(() => import("./routes/admin"));
+const PrintRoute = lazy(() => import("./routes/print"));
+const SuperAdminLoginRoute = lazy(() => import("./routes/superadmin-login"));
+const SuperAdminPanelRoute = lazy(() => import("./routes/superadmin-panel"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
-function AppShell() {
+const RTL_LANGS = new Set(["ar", "he", "fa", "ps", "ur", "sd", "ckb", "dv"]);
+
+/**
+ * Efectos de documento INDEPENDIENTES de la config (v2.192): idioma/RTL
+ * (global, también en la landing), noindex por ruta, scroll-to-top y los
+ * listeners globales de error. Antes vivían en useAppShellEffects (que ahora
+ * solo corre en rutas con InviteChrome).
+ */
+function useDocumentBasics() {
   const { t } = useTranslation();
-  // Hooks granulares (no useApp): evitan que AppShell re-renderice con cada
-  // tecla del formulario RSVP o cada tick del countdown (contexto fusionado).
-  const { config, inviteToken } = useConfig();
-  // theme se lee de la tienda por campo: cambiar el tema en el setup NO debe
-  // re-renderizar AppShell con cada tecla (solo cuando cambia el tema).
-  const setupTheme = useFormField("theme");
-  const { isAdminTokenLoggedIn, tokenLoginUsername } = useAuth();
-  const { setCookiePrefsOpen } = useAppUI();
-  const [username, setUsername] = useState("");
+  const { i18n } = useTranslation();
+  const location = useLocation();
 
   useEffect(() => {
-    const session = getSession();
-    if (session?.identifier && session.identifier.length > 10) {
-      setUsername(session.identifier);
+    const lang = i18n.language?.split("-")[0] || "es";
+    document.documentElement.lang = lang;
+    document.documentElement.dir = RTL_LANGS.has(lang) ? "rtl" : "ltr";
+    document.documentElement.translate = true;
+  }, [i18n.language]);
+
+  useEffect(() => {
+    let meta = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    if (location.pathname === "/") {
+      if (meta) meta.remove();
+      return;
     }
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "robots");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", "noindex, nofollow");
+  }, [location.pathname]);
+
+  // Título por defecto de la landing (las rutas de invitación lo sobrescriben
+  // en InviteChrome con el nombre de la pareja).
+  useEffect(() => {
+    if (location.pathname === "/") document.title = t("app.titleLanding");
+  }, [location.pathname, t]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handler = (event: ErrorEvent) => {
+      logError(event.error || event.message, "global");
+    };
+    const rejectionHandler = (event: PromiseRejectionEvent) => {
+      logError(event.reason, "unhandledRejection");
+    };
+    window.addEventListener("error", handler);
+    window.addEventListener("unhandledrejection", rejectionHandler);
+    return () => {
+      window.removeEventListener("error", handler);
+      window.removeEventListener("unhandledrejection", rejectionHandler);
+    };
   }, []);
+}
+
+/**
+ * Shell global SIN providers de Firebase (v2.192, rama firebase-lazy):
+ * los providers que dependen de Firestore (Config/Auth/Rsvp) se montan DENTRO
+ * de cada ruta (providers.tsx), así `vendor-firebase` no viaja en el primer
+ * pintado. El chrome público (nav/footer) se oculta cuando el admin navega
+ * con sesión vía micro-store (chrome-store.ts) avisado por InviteChrome.
+ */
+function AppShell() {
+  useDocumentBasics();
+  const { t } = useTranslation();
+  const { setCookiePrefsOpen } = useAppUI();
+  const inviteToken = useOptionalInviteToken();
   const location = useLocation();
   const [showA11y, setShowA11y] = useState(false);
   const [legalSection, setLegalSection] = useState("");
@@ -71,19 +127,17 @@ function AppShell() {
   // Escape cierra el menú móvil (patrón de diálogo accesible).
   useEscapeKey(() => setNavOpen(false), navOpen);
 
-  const isEditingRoute =
-    location.pathname.endsWith("/setup") || (location.pathname.endsWith("/admin") && isAdminTokenLoggedIn);
+  // Footer público visible salvo que el admin con sesión esté navegando.
+  const footerVisible = useSyncExternalStore(subscribeFooterVisible, getFooterVisible, () => true);
+  const adminMode = useSyncExternalStore(
+    subscribeFooterVisible,
+    getAdminMode,
+    () => false,
+  );
 
-  // Efectos de documento (idioma/RTL, título, tema, robots, errores, scroll).
-  useAppShellEffects(config, { theme: setupTheme }, inviteToken, isEditingRoute);
-
+  const onOnline = () => setIsOnline(true);
+  const onOffline = () => setIsOnline(false);
   useEffect(() => {
-    const onOnline = () => {
-      setIsOnline(true);
-    };
-    const onOffline = () => {
-      setIsOnline(false);
-    };
     window.addEventListener("online", onOnline);
     window.addEventListener("offline", onOffline);
     return () => {
@@ -104,9 +158,6 @@ function AppShell() {
     const deployId = document.querySelector('meta[name="deploy-id"]')?.getAttribute("content");
     if (!deployId) return;
     try {
-      // localStorage: sobrevive al relaunch de la PWA (sessionStorage no).
-      // Escritura técnica con safeSetItem: respeta el consentimiento de
-      // almacenamiento (ePrivacy art. 5.3) sin romper el aviso de actualización.
       const last = safeGetItem("wedin_deploy_id");
       if (last && last !== deployId) setUpdateAvailable(true);
       safeSetItem("wedin_deploy_id", deployId);
@@ -160,17 +211,12 @@ function AppShell() {
             padding: "0.5rem",
             fontSize: "0.85rem",
             fontWeight: 600,
-            transition: "transform 0.3s ease, opacity 0.3s ease",
-            transform: "translateY(0)",
-            opacity: 1,
           }}
         >
           {t("common.offline")}
         </div>
       ) : null}
 
-      {/* Nueva versión disponible: se ofrece recargar (evita la actualización
-          silenciosa del service worker). */}
       {updateAvailable ? (
         <div className="update-banner" role="status">
           <span>{t("common.updateAvailable")}</span>
@@ -180,51 +226,18 @@ function AppShell() {
         </div>
       ) : null}
 
-      {isAdminTokenLoggedIn &&
-      inviteToken &&
-      !location.pathname.endsWith("/setup") &&
-      !location.pathname.endsWith("/print") ? (
-        <nav className="admin-bar" aria-label={t("common.adminBar.ariaLabel")}>
-          <div className="admin-bar__inner">
-            <span className="admin-bar__title">
-              {username || tokenLoginUsername || config.adminUsername || t("common.adminBar.fallback")}
-            </span>
-            <div className="admin-bar__links">
-              <Link
-                className={`admin-bar__link ${location.pathname === `/${inviteToken}` ? "admin-bar__link--active" : ""}`}
-                to={`/${inviteToken}`}
-                aria-current={location.pathname === `/${inviteToken}` ? "page" : undefined}
-              >
-                {t("admin.tabs.invitation")}
-              </Link>
-              <Link
-                className={`admin-bar__link ${location.pathname === `/${inviteToken}/admin` ? "admin-bar__link--active" : ""}`}
-                to={`/${inviteToken}/admin`}
-                aria-current={location.pathname === `/${inviteToken}/admin` ? "page" : undefined}
-              >
-                {t("admin.tabs.panel")}
-              </Link>
-              <LanguageSwitcher />
-            </div>
-          </div>
-        </nav>
-      ) : null}
-      <AdminBarHeightSync
-        show={Boolean(
-          isAdminTokenLoggedIn &&
-          inviteToken &&
-          !location.pathname.endsWith("/setup") &&
-          !location.pathname.endsWith("/print"),
-        )}
-      />
-
-      {inviteToken && location.pathname === `/${inviteToken}` && config.musicFile ? (
-        <Suspense fallback={null}>
-          <MusicPlayer musicUrl={config.musicFile} />
-        </Suspense>
+      {adminMode ? (
+        <button
+          type="button"
+          className="a11y-trigger a11y-trigger--admin"
+          onClick={() => setShowA11y(true)}
+          aria-label={t("common.accessibility")}
+        >
+          ♿
+        </button>
       ) : null}
 
-      {!isEditingRoute && !isAdminTokenLoggedIn && (
+      {footerVisible ? (
         <>
           <button
             type="button"
@@ -252,7 +265,9 @@ function AppShell() {
             aria-label={t("common.menu")}
           >
             <div className="app-nav-overlay__content">
-              <LanguageSwitcher />
+              <Suspense fallback={null}>
+                <LanguageSwitcher />
+              </Suspense>
               <button
                 type="button"
                 className="app-nav-overlay__link"
@@ -319,12 +334,12 @@ function AppShell() {
 
           <footer className="app-footer">
             <div className="app-footer__left">
-              <LanguageSwitcher />
-              {/* Traducción con el widget de Google, cargada SOLO si el usuario
-                  lo solicita (ePrivacy: sin scripts de terceros previos a la
-                  acción del usuario). El texto se envía a Google al traducir;
-                  se disclose en la política. */}
-              <GoogleTranslateToggle />
+              <Suspense fallback={null}>
+                <LanguageSwitcher />
+              </Suspense>
+              <Suspense fallback={null}>
+                <GoogleTranslateToggle />
+              </Suspense>
               <button
                 type="button"
                 className="a11y-trigger"
@@ -361,18 +376,7 @@ function AppShell() {
             </div>
           </footer>
         </>
-      )}
-
-      {isAdminTokenLoggedIn && (
-        <button
-          type="button"
-          className="a11y-trigger a11y-trigger--admin"
-          onClick={() => setShowA11y(true)}
-          aria-label={t("common.accessibility")}
-        >
-          ♿
-        </button>
-      )}
+      ) : null}
 
       <main id="main-content" tabIndex={-1}>
         <Suspense fallback={<div className="page-loading" />}>
@@ -381,7 +385,7 @@ function AppShell() {
               path="/"
               element={
                 <ErrorBoundary>
-                  <LandingPage />
+                  <LandingRoute />
                 </ErrorBoundary>
               }
             />
@@ -389,7 +393,7 @@ function AppShell() {
               path="/:inviteToken"
               element={
                 <ErrorBoundary key={location.pathname}>
-                  <PublicInvitation />
+                  <PublicInvitationRoute />
                 </ErrorBoundary>
               }
             />
@@ -397,7 +401,7 @@ function AppShell() {
               path="/:inviteToken/setup"
               element={
                 <ErrorBoundary key={location.pathname}>
-                  <SetupPage />
+                  <SetupRoute />
                 </ErrorBoundary>
               }
             />
@@ -405,7 +409,7 @@ function AppShell() {
               path="/:inviteToken/admin"
               element={
                 <ErrorBoundary key={location.pathname}>
-                  <AdminPage />
+                  <AdminRoute />
                 </ErrorBoundary>
               }
             />
@@ -413,7 +417,7 @@ function AppShell() {
               path={SUPERADMIN_ROUTE}
               element={
                 <ErrorBoundary>
-                  <SuperAdminLogin />
+                  <SuperAdminLoginRoute />
                 </ErrorBoundary>
               }
             />
@@ -421,7 +425,7 @@ function AppShell() {
               path="/:inviteToken/print"
               element={
                 <ErrorBoundary key={location.pathname}>
-                  <PrintPage />
+                  <PrintRoute />
                 </ErrorBoundary>
               }
             />
@@ -430,7 +434,7 @@ function AppShell() {
                 path={SUPERADMIN_DASHBOARD}
                 element={
                   <ErrorBoundary>
-                    <SuperAdminPanel />
+                    <SuperAdminPanelRoute />
                   </ErrorBoundary>
                 }
               />
@@ -465,15 +469,15 @@ function AppShell() {
 export default function App() {
   return (
     <ConfirmProvider>
-      <AppProvider>
-        <SuperAdminProvider>
-          <ToastProvider>
-            <AnimationsProvider>
-              <AppShell />
-            </AnimationsProvider>
-          </ToastProvider>
-        </SuperAdminProvider>
-      </AppProvider>
+      {/* UIProvider separado del árbol de Firebase (v2.192): el shell lo usa
+          (nav, footer, modales) y las rutas solo montan Config/Auth/Rsvp. */}
+      <UIProvider>
+        <ToastProvider>
+          <AnimationsProvider>
+            <AppShell />
+          </AnimationsProvider>
+        </ToastProvider>
+      </UIProvider>
     </ConfirmProvider>
   );
 }

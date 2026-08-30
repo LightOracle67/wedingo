@@ -11,8 +11,9 @@ import AnimationPrefsApplier from "../AnimationPrefsApplier";
 /** Set efectivo controlable desde cada test (re-mockeado por caso). */
 const mockUseAnimations = vi.hoisted(() => vi.fn(() => ({ effectiveDisabled: new Set<string>() })));
 
-// El componente lee el hook combinado desde el barrel de contexts.
-vi.mock("../../contexts", () => ({
+// v2.192: AnimationPrefsApplier importa useAnimations directamente desde el
+// hook (no del barrel de contexts) para no arrastrar Firebase al shell.
+vi.mock("../../hooks/useAnimations", () => ({
   useAnimations: mockUseAnimations,
 }));
 

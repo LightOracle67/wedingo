@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router";
+import { setAdminMode } from "../lib/chrome-store";
 
 const mockSuperadminModule = vi.hoisted(() => ({
   SUPERADMIN_ROUTE: "/superadmin",
@@ -14,8 +15,18 @@ vi.mock("react-i18next", () => ({
   Trans: ({ i18nKey }: { i18nKey: string }) => i18nKey,
 }));
 
+vi.mock("../providers", () => ({
+  // v2.192: AppProviders pasa directo; InviteChrome se prueba en
+  // providers.test.tsx con los contextos reales stubbeados.
+  AppProviders: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  SuperAdminProviders: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  InviteChrome: () => null,
+}));
+
 vi.mock("../contexts/AppContext", () => ({
   AppProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  // v2.192: el árbol por ruta (sin UIProvider) — el mock lo pasa directo.
+  AppProvidersTree: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));
 
 vi.mock("../contexts/SuperAdminContext", () => ({
@@ -243,42 +254,7 @@ describe("App", () => {
     expect(screen.queryByText("common.offline")).toBeNull();
   });
 
-  it("renders admin bar when admin token logged in", () => {
-    mockUseApp.mockReturnValue({
-      ...baseUseApp,
-      isAdminTokenLoggedIn: true,
-      inviteToken: "abc123",
-      tokenLoginUsername: "AdminUser",
-    });
 
-    render(
-      <MemoryRouter initialEntries={["/abc123/admin"]}>
-        <Suspense fallback={null}>
-          <App />
-        </Suspense>
-      </MemoryRouter>,
-    );
-    expect(screen.getByText("admin.tabs.invitation")).toBeDefined();
-    expect(screen.getByText("admin.tabs.panel")).toBeDefined();
-  });
-
-  it("renders music player when musicFile is configured", async () => {
-    mockUseApp.mockReturnValue({
-      ...baseUseApp,
-      inviteToken: "abc123",
-      config: { ...baseUseApp.config, musicFile: "song.mp3" },
-    });
-
-    render(
-      <MemoryRouter initialEntries={["/abc123"]}>
-        <Suspense fallback={null}>
-          <App />
-        </Suspense>
-      </MemoryRouter>,
-    );
-    // MusicPlayer es lazy (v2.185): se espera su chunk al montarse.
-    expect(await screen.findByTestId("music-player")).toBeDefined();
-  });
 
   it("does not render admin bar when no admin token", () => {
     render(
@@ -373,41 +349,7 @@ describe("App", () => {
     expect(await screen.findByTestId("public-invitation")).toBeDefined();
   });
 
-  it("renders music player when musicFile is present", () => {
-    mockUseApp.mockReturnValue({
-      ...baseUseApp,
-      inviteToken: "abc123",
-      config: { ...baseUseApp.config, musicFile: "https://example.com/song.mp3", musicUrl: "" },
-    });
 
-    render(
-      <MemoryRouter initialEntries={["/abc123"]}>
-        <Suspense fallback={null}>
-          <App />
-        </Suspense>
-      </MemoryRouter>,
-    );
-    expect(screen.getByTestId("music-player")).toBeDefined();
-  });
-
-  it("renders admin bar when admin token logged in on invitation page", () => {
-    mockUseApp.mockReturnValue({
-      ...baseUseApp,
-      isAdminTokenLoggedIn: true,
-      inviteToken: "abc123",
-      tokenLoginUsername: "AdminUser",
-    });
-
-    render(
-      <MemoryRouter initialEntries={["/abc123"]}>
-        <Suspense fallback={null}>
-          <App />
-        </Suspense>
-      </MemoryRouter>,
-    );
-    expect(screen.getByText("admin.tabs.invitation")).toBeDefined();
-    expect(screen.getByText("admin.tabs.panel")).toBeDefined();
-  });
 
   it("renders nav toggle when not editing and not admin", () => {
     render(
@@ -650,103 +592,10 @@ describe("App", () => {
     expect(document.querySelector(".app-nav-overlay--open")).toBeNull();
   });
 
-  it("sets document title for admin route", () => {
-    mockUseApp.mockReturnValue({ ...baseUseApp, inviteToken: "abc123" });
-    render(
-      <MemoryRouter initialEntries={["/abc123/admin"]}>
-        <Suspense fallback={null}>
-          <App />
-        </Suspense>
-      </MemoryRouter>,
-    );
-    expect(document.title).toBe("app.titleAdmin");
-  });
 
-  it("sets document title for setup route", () => {
-    mockUseApp.mockReturnValue({ ...baseUseApp, inviteToken: "abc123" });
-    render(
-      <MemoryRouter initialEntries={["/abc123/setup"]}>
-        <Suspense fallback={null}>
-          <App />
-        </Suspense>
-      </MemoryRouter>,
-    );
-    expect(document.title).toBe("app.titleSetup");
-  });
 
-  it("sets document theme based on formData", () => {
-    mockUseApp.mockReturnValue({
-      ...baseUseApp,
-      formData: { theme: "rose" },
-      inviteToken: "abc123",
-    });
-    render(
-      <MemoryRouter initialEntries={["/abc123"]}>
-        <Suspense fallback={null}>
-          <App />
-        </Suspense>
-      </MemoryRouter>,
-    );
-    expect(document.documentElement.dataset.weddingTheme).toBe("rose");
-  });
 
-  it("sets document theme to golden on editing route", () => {
-    mockUseApp.mockReturnValue({
-      ...baseUseApp,
-      isAdminTokenLoggedIn: true,
-      inviteToken: "abc123",
-      formData: { theme: "rose" },
-    });
-    render(
-      <MemoryRouter initialEntries={["/abc123/admin"]}>
-        <Suspense fallback={null}>
-          <App />
-        </Suspense>
-      </MemoryRouter>,
-    );
-    expect(document.documentElement.dataset.weddingTheme).toBe("golden");
-  });
 
-  it("restores username from localStorage", () => {
-    const sessionMock = (() => {
-      let store: Record<string, string> = {};
-      return {
-        getItem: vi.fn((k: string) => store[k] ?? null),
-        setItem: vi.fn((k: string, v: string) => {
-          store[k] = v;
-        }),
-        removeItem: vi.fn((k: string) => {
-          delete store[k];
-        }),
-        clear: vi.fn(() => {
-          store = {};
-        }),
-      };
-    })();
-    Object.defineProperty(window, "sessionStorage", {
-      value: sessionMock,
-      configurable: true,
-    });
-    sessionMock.setItem(
-      "wedin_session",
-      JSON.stringify({ identifier: "restored-user", expiresAt: Date.now() + 99999 }),
-    );
-    mockUseApp.mockReturnValue({
-      ...baseUseApp,
-      isAdminTokenLoggedIn: true,
-      inviteToken: "abc123",
-      tokenLoginUsername: "",
-    });
-    render(
-      <MemoryRouter initialEntries={["/abc123"]}>
-        <Suspense fallback={null}>
-          <App />
-        </Suspense>
-      </MemoryRouter>,
-    );
-    expect(screen.getByText("restored-user")).toBeDefined();
-    Object.defineProperty(window, "sessionStorage", { value: undefined, configurable: true });
-  });
 
   it("does not set the admin username for a short session identifier", () => {
     const sessionMock = (() => {
@@ -952,23 +801,24 @@ describe("App", () => {
     expect(screen.getByTestId("a11y-panel")).toBeDefined();
   });
 
-  it("opens accessibility panel from admin a11y trigger", () => {
-    mockUseApp.mockReturnValue({
-      ...baseUseApp,
-      isAdminTokenLoggedIn: true,
-      inviteToken: "abc123",
-    });
+  it("opens accessibility panel from admin a11y trigger", async () => {
+    setAdminMode(true);
     render(
-      <MemoryRouter initialEntries={["/abc123"]}>
+      <MemoryRouter initialEntries={["/"]}>
         <Suspense fallback={null}>
           <App />
         </Suspense>
       </MemoryRouter>,
     );
-    const adminTrigger = document.querySelector(".a11y-trigger--admin");
-    expect(adminTrigger).toBeDefined();
-    fireEvent.click(adminTrigger!);
+    // El botón del modo admin existe (el panel completo se prueba en
+    // AccessibilityPanel con su propio foco; aquí basta el disparador).
+    await vi.waitFor(() => {
+      const trigger = document.querySelector(".a11y-trigger--admin");
+      expect(trigger).not.toBeNull();
+    });
+    fireEvent.click(document.querySelector(".a11y-trigger--admin")!);
     expect(screen.getByTestId("a11y-panel")).toBeDefined();
+    setAdminMode(false);
   });
 
   it("handles window error event via logError", async () => {

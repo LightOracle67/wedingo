@@ -14,7 +14,7 @@
  * secciones), no fuera. Separado del proveedor para preservar fast-refresh.
  */
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useContext, useMemo } from "react";
 import {
   parseDisabledAnimations,
   EMPTY_ANIMATION_SET,
@@ -22,7 +22,8 @@ import {
   ALL_ANIMATIONS_KEY,
   ANIMATIONS,
 } from "../lib/animations";
-import { useConfig } from "../contexts/useConfig";
+import { ConfigContext } from "../contexts/useConfig";
+import type { InvitationConfig } from "../types";
 import { useAnimationsContext } from "../contexts/AnimationsContext";
 
 /** Conjunto de los ids de un grupo (construido una vez). */
@@ -38,7 +39,13 @@ const GROUP_IDS_BY_GROUP: ReadonlyMap<string, readonly string[]> = (() => {
 
 export function useAnimations() {
   const { guestDisabled, toggleGuestAnimation, setGuestGroup, setAllGuest, resetGuest } = useAnimationsContext();
-  const { config } = useConfig();
+  // v2.192 (rama firebase-lazy): la BASE del admin vive en la config de la
+  // invitación (ConfigProvider, montado POR RUTA). El shell (nav/footer,
+  // AnimationPrefsApplier) usa este hook SIN provider: en ese caso la base
+  // del admin se trata como vacía (solo aplican las preferencias del
+  // invitado, que sí viven en AnimationsProvider).
+  const optionalCtx = useContext(ConfigContext);
+  const config = optionalCtx?.config ?? ({} as InvitationConfig);
 
   // Base global decidida por los novios (ids sanitizados al cargar config).
   const adminDisabled = useMemo(() => parseDisabledAnimations(config.disabledAnimations), [config.disabledAnimations]);

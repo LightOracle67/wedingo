@@ -307,4 +307,61 @@ describe("storage", () => {
       expect(hasRejectedConsent()).toBe(true);
     });
   });
+
+  describe("ramas de error del consentimiento (v2.191)", () => {
+    it("hasAnalyticsConsent: si localStorage lanza al leer el consentimiento → false", () => {
+      const orig = localMock.getItem;
+      localMock.getItem = vi.fn(() => {
+        throw new Error("SecurityError");
+      }) as never;
+      expect(hasAnalyticsConsent()).toBe(false);
+      localMock.getItem = orig;
+    });
+
+    it("hasAnalyticsConsent: si localStorage lanza al leer las prefs → true (legacy)", () => {
+      const orig = localMock.getItem;
+      localMock.setItem("wedin_cookie_consent", "accepted");
+      localMock.removeItem("wedin_cookie_prefs");
+      localMock.getItem = vi.fn((k: string) => {
+        if (k === "wedin_cookie_consent") return "accepted";
+        throw new Error("SecurityError");
+      }) as never;
+      expect(hasAnalyticsConsent()).toBe(true);
+      localMock.getItem = orig;
+    });
+
+    it("hasAnalyticsConsent: prefs JSON corrupto → true (best-effort)", () => {
+      localMock.setItem("wedin_cookie_consent", "accepted");
+      localMock.setItem("wedin_cookie_prefs", "{not-json");
+      expect(hasAnalyticsConsent()).toBe(true);
+      expect(hasAnalyticsConsent()).toBe(true); // caché estable
+    });
+  });
+
+  describe("ramas legacy restantes (v2.191 fin)", () => {
+    it("parseConsent con JSON basura cae a la rama legacy", () => {
+      invalidateConsentCache();
+      localMock.setItem("wedin_cookie_consent", "{corrupt");
+      expect(hasStorageConsent()).toBe(false);
+      expect(hasRejectedConsent()).toBe(false);
+    });
+
+    it("hasRejectedConsent/hasStorageConsent legacy plano (caché invalidada)", () => {
+      invalidateConsentCache();
+      localMock.setItem("wedin_cookie_consent", "rejected");
+      expect(hasRejectedConsent()).toBe(true);
+      expect(hasStorageConsent()).toBe(false);
+    });
+
+    it("hasStorageConsent con getItem lanzando → false", () => {
+      invalidateConsentCache();
+      const orig = localMock.getItem;
+      localMock.getItem = vi.fn(() => {
+        throw new Error("err");
+      }) as never;
+      expect(hasStorageConsent()).toBe(false);
+      localMock.getItem = orig;
+    });
+  });
+
 });

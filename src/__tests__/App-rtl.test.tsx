@@ -11,6 +11,8 @@ vi.mock("react-i18next", () => ({
 
 vi.mock("../contexts/AppContext", () => ({
   AppProvider: ({ children }: { children: React.ReactNode }) => <>{children}</>,
+  // v2.192: el árbol por ruta (sin UIProvider) — el mock lo pasa directo.
+  AppProvidersTree: ({ children }: { children: React.ReactNode }) => <>{children}</>,
 }));
 
 vi.mock("../contexts/SuperAdminContext", () => ({

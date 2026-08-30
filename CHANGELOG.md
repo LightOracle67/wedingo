@@ -2,6 +2,12 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.0 — EN VERIFICACIÓN (rama feature/firebase-lazy-providers)
+- Arquitectura de carga por ruta: ConfigProvider/AuthProvider/RsvpProvider/AppMerger dejan de envolver TODA la app y se montan dentro de bundles de ruta perezosos (src/routes/): provider tree SIN Firebase en el shell.
+- JS INICIAL: 289 KB gz → 107 KB gz (−63 %; vendor-firebase 156 KB pasa a chunk bajo demanda, fuera de los modulepreloads — verificado 0 referencias en el entry). Firestore se descarga en paralelo con la primera ruta que lo necesita.
+- Ajustes derivados: efectos de documento divididos (idioma/RTL/noindex/scroll/errores globales → shell; título/tema/custom CSS → InviteChrome por ruta), barra admin + música + footer visible/oculto vía micro-store chrome-store, CookieConsent/DataRequestModal con token opcional, useAnimations tolerante sin ConfigProvider, barrel de contexts ya no arrastra Firebase (useConfigActions extraído a su propio módulo sin Firebase; analytics importa `app` dinámicamente).
+- Tests: providers.test.tsx (arquitectura: barra admin, música, títulos/temas, señales del chrome), mocks de App.test actualizados; 2514 tests verdes; cobertura 91,78/83,06/89,80/93,63.
+- PRECAUCIÓN: sin deploy. Verificación manual recomendada antes de fusionar: sesión admin (login/renew/logout), flujo setup completo, invitación pública (sobre/confeti/galería/RSVP), superadmin, y el modo mantenimiento de la landing.
 ## 2.191.0 — 2026-08-30
 - Cobertura ampliada (+46 tests): useAppUI/useUIMessages (60% → 100% stmts incl. reseteo de mensajes al cambiar de ruta), derive del RSVP (73,7% → 97,4%: salidas de transporte, modos both/bus/taxi, fecha límite, simulación ?sim=expired/responded, boda pasada), safe-date (84,3% → 92,2%: nanosegundos exactos, toMillis/toDate, inválidos, locale pinneado), storage (84,6% → 85,9%: consentimiento legacy plano, prefs de analytics, invalidación de caché) e image-store (81,7% → 89,2%: minis, borrados en lote, orden de galería).
 - Umbrales del gate de cobertura SUBIDOS a statements 90,5 / branches 82 / functions 88 / lines 92,5 (medido 91,72/83,07/89,74/93,55; margen ~1 pp).

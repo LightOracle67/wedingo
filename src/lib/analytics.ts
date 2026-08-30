@@ -12,7 +12,6 @@
 
 import type { FirebaseApp } from "firebase/app";
 import type { Analytics } from "firebase/analytics";
-import { app } from "./firebase";
 import { hasAnalyticsConsent as hasConsent } from "./storage";
 
 /** ID de medición de Google Analytics. */
@@ -72,8 +71,11 @@ function getAnalyticsInstance(): Promise<Analytics | null> {
         // Import del paquete interno @firebase/analytics (no del wrapper
         // "firebase/analytics"): el wrapper es un re-export que rolldown
         // convertía en un facade estático en el chunk eager, descargando el
-        // SDK de GA sin consentimiento (bug de bundle v2.185).
-        const mod = await import("@firebase/analytics");
+        // SDK de GA sin consentimiento (bug de bundle v2.185). v2.192: `app`
+        // también se importa AQUÍ (antes en el módulo, y analytics se importa
+        // estáticamente desde vitals/main → vendor-firebase viajaba en el
+        // primer pintado aunque no hubiera consentimiento).
+        const [{ app }, mod] = await Promise.all([import("./firebase"), import("@firebase/analytics")]);
         if (!import.meta.env.PROD || !MEASUREMENT_ID) return null;
         const supported = await mod.isSupported();
         if (!supported) return null;

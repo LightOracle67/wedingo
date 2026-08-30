@@ -80,3 +80,14 @@ describe("formatDateLocalized", () => {
     expect(formatDateLocalized("no-date", "es")).toBe("");
   });
 });
+
+describe("ramas finales de safe-date (v2.191)", () => {
+  it("objeto con getTime() que devuelve NaN → null", () => {
+    expect(firestoreMillis({ getTime: () => NaN })).toBeNull();
+  });
+
+  it("Timestamp con toDate() inválida → null y firestoreIso → ''", () => {
+    expect(firestoreMillis({ toDate: () => new Date("nope") })).toBeNull();
+    expect(firestoreIso({ toDate: () => new Date("nope") })).toBe("");
+  });
+});
