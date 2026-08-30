@@ -22,18 +22,38 @@ const DEFAULT_DESCRIPTION =
 /** Atributo que identifica las meta tags gestionadas por este módulo. */
 const META_MARKER = "data-wedingo-seo";
 
+// Caché de los elementos meta gestionados (v2.188): applySocialMeta se invoca
+// con cada cambio de config y antes se hacía un querySelector de <head> por
+// cada etiqueta (~11) en cada llamada, además de escribir atributos aunque el
+// contenido no cambiara (generaba registros de mutación innecesarios).
+const metaCache = new Map<string, Element>();
+
+const getOrCreateMeta = (attr: "property" | "name", key: string): HTMLMetaElement => {
+  const cacheKey = `${attr}:${key}`;
+  let el = metaCache.get(cacheKey) as HTMLMetaElement | undefined;
+  if (!el) {
+    el =
+      document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`) ??
+      (() => {
+        const created = document.createElement("meta");
+        created.setAttribute(attr, key);
+        document.head.appendChild(created);
+        return created;
+      })();
+    metaCache.set(cacheKey, el);
+  }
+  return el;
+};
+
 /**
  * Crea (o actualiza) una meta tag en <head> con el atributo indicado.
  * Marca la tag con data-wedingo-seo (también al reutilizar una existente de
  * index.html) para que clearSocialMeta la limpie al desmontar.
  */
 function upsertMeta(attr: "property" | "name", key: string, content: string) {
-  let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute(attr, key);
-    document.head.appendChild(el);
-  }
+  const el = getOrCreateMeta(attr, key);
+  // Escritura solo si cambió (o si aún no está marcada como SEO dinámico).
+  if (el.getAttribute("content") === content && el.hasAttribute(META_MARKER)) return;
   el.setAttribute(META_MARKER, "true");
   el.setAttribute("content", content);
 }
@@ -42,12 +62,16 @@ function upsertMeta(attr: "property" | "name", key: string, content: string) {
  * Crea (o actualiza) el <link rel="canonical"> del documento.
  */
 function upsertCanonical(href: string) {
-  let link = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+  let link =
+    (metaCache.get("rel:canonical") as HTMLLinkElement | undefined) ??
+    document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
   if (!link) {
     link = document.createElement("link");
     link.setAttribute("rel", "canonical");
     document.head.appendChild(link);
+    metaCache.set("rel:canonical", link);
   }
+  if (link.getAttribute("href") === href && link.hasAttribute(META_MARKER)) return;
   link.setAttribute(META_MARKER, "true");
   link.setAttribute("href", href);
 }
@@ -58,6 +82,7 @@ function upsertCanonical(href: string) {
  */
 export function clearSocialMeta() {
   document.head.querySelectorAll(`[${META_MARKER}]`).forEach((el) => el.remove());
+  metaCache.clear();
 }
 
 interface SocialMetaInput {

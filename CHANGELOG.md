@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.188.0 — 2026-08-30
+- Micro-optimizaciones de render y DOM: seo.ts cachea las meta tags y solo escribe cuando cambia el contenido (antes ~11 querySelector de <head> + escrituras redundantes con cada cambio de config); el título de pestaña solo se reescribe si cambia (en /setup y /admin se reescribía con cada tecla del editor); la animación de secciones de useStoryNavigation agrupa TODAS las lecturas de getBoundingClientRect antes de escribir estilos (elimina reflows forzados por sección, layout thrash en cada frame de scroll).
+- Dependencias: documentadas en SECURITY.md las 4 vulnerabilidades de npm audit, todas en tooling de desarrollo (xlsx solo en tests como validador del escritor propio; uuid vía firebase-tools en la CLI de deploy) — ninguna entra al bundle de producción.
 ## 2.187.0 — 2026-08-30
 - Render del admin: la tabla de asistencia extrae filas memoizadas (AttendanceRow, v2.187) — antes TODAS las filas se re-renderizaban y recalculaban etiquetas en cada interacción (checkbox/página/edición), con toggleOne como useCallback para que el memo funcione.
 - UIContext dividido: los mensajes frecuentes (autosave/admin) viven en su contexto propio (useUIMessages); antes cada toast re-renderizaba a TODOS los consumidores de useAppUI (AppShell, AdminPage, SetupForm, RsvpSection, AuthProvider, ConfigProvider, RsvpProvider…).

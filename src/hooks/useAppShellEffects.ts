@@ -56,14 +56,19 @@ export function useAppShellEffects(
     meta.setAttribute("content", "noindex, nofollow");
   }, [location.pathname]);
 
-  // Título de pestaña por ruta.
+  // Título de pestaña por ruta. v2.188: solo se escribe cuando cambia
+  // realmente (antes, en /setup y /admin, cada tecla del editor re-escribía
+  // el mismo título porque las deps incluyen firstName/secondName).
   useEffect(() => {
     const path = location.pathname;
-    if (path === "/") document.title = t("app.titleLanding");
-    else if (path.includes("/admin")) document.title = t("app.titleAdmin");
-    else if (path.includes("/setup")) document.title = t("app.titleSetup");
+    let next: string;
+    if (path === "/") next = t("app.titleLanding");
+    else if (path.includes("/admin")) next = t("app.titleAdmin");
+    else if (path.includes("/setup")) next = t("app.titleSetup");
     else if (inviteToken)
-      document.title = `${config.firstName || t("app.titleInvitation")} & ${config.secondName || ""} — Wedingo`;
+      next = `${config.firstName || t("app.titleInvitation")} & ${config.secondName || ""} — Wedingo`;
+    else next = t("app.titleLanding");
+    if (document.title !== next) document.title = next;
   }, [location.pathname, inviteToken, config.firstName, config.secondName, t]);
 
   // Tema del wedding + theme-color de la barra del navegador.

@@ -161,19 +161,35 @@ export function useStoryNavigation(
       const progressMap: Record<string, number> = {};
       let best = "";
       let bestProgress = -1;
+      // v2.188: PRIMERO se leen todos los rects (batch de lecturas de layout)
+      // y DESPUÉS se escriben los estilos. Antes lectura+escritura se
+      // alternaban por sección, lo que forzaba un reflow forzado por sección
+      // (layout thrash) en cada frame de scroll.
+      const metrics: Array<{
+        key: string;
+        sec: HTMLElement;
+        wrap: HTMLElement | null | undefined;
+        progress: number;
+        dist: number;
+      }> = [];
       for (const key of visibleOrder) {
         const sec = sectionsRef.current[key];
         if (!sec) continue;
         const rect = sec.getBoundingClientRect();
         const center = rect.top + rect.height / 2;
         const dist = center - vpCenter;
-        // Progreso 0..1: 1 = centrada, 0 = a una pantalla del centro.
         let progress = 1 - Math.abs(dist) / norm;
         if (progress < 0) progress = 0;
         else if (progress > 1) progress = 1;
         progressMap[key] = progress;
+        metrics.push({ key, sec, wrap: wrapsRef.current[key], progress, dist });
+        if (progress > bestProgress) {
+          bestProgress = progress;
+          best = key;
+        }
+      }
 
-        const wrap = wrapsRef.current[key];
+      for (const { sec, wrap, progress, dist } of metrics) {
         if (transitionsOff) {
           // Movimiento reducido o transiciones desactivadas: contenido siempre
           // visible y sin filtros (ni paralaje ni desenfoque).
@@ -197,11 +213,6 @@ export function useStoryNavigation(
           }
           // Accesibilidad: la sección fuera de pantalla no es enfocable.
           sec.style.visibility = progress <= 0.001 ? "hidden" : "visible";
-        }
-
-        if (progress > bestProgress) {
-          bestProgress = progress;
-          best = key;
         }
       }
 

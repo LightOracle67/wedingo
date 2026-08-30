@@ -47,3 +47,21 @@ required.
 | Guest contributions (RSVP, notes, reactions, songs, rides, gifts) | Public create with strict field whitelists + `isSafeText` (XSS), admin-only delete |
 | Sensitive fields at rest | AES-256-GCM keyed on invite token (see above) |
 | Telemetry (analytics, Sentry) | Consent-gated; never loaded before explicit consent |
+
+### Nota de auditoría de dependencias (2026-08-30, rondas de optimización v2.185–v2.188)
+
+`npm audit` reporta 4 vulnerabilidades, TODAS en dependencias de DESARROLLO
+(no empaquetadas en el bundle de producción):
+
+- **xlsx (high)** — Prototype pollution (GHSA-4r6h-8v6p-xvw6) y ReDoS
+  (GHSA-5pgg-2g8v-p4x9). Sin fix en el registry de npm. Solo se usa en
+  `src/lib/__tests__/excel-export.test.ts` para REABRIR los .xlsx generados
+  por el escritor propio (`excel-utils`, ~2 KB gz) y validar celdas; el input
+  es siempre un documento generado por la propia app (trusted), nunca
+  contenido externo. No viaja al cliente.
+- **uuid (moderate, ×3)** — vía `gaxios` → `firebase-tools` (CLI de deploy).
+  El fix "automático" sugiere bajar a firebase-tools@13.13.3 (breaking);
+  se mantiene la versión actual y se monitoriza.
+
+Verificación de que xlsx no entra al bundle: no aparece en `dist/assets`
+(búsqueda por contenido); el export de cliente usa el escritor OOXML propio.
