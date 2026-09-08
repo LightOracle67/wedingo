@@ -982,5 +982,32 @@ describe("useSetupAuth", () => {
       expect(mockDeleteSetupTokenRecord).toHaveBeenCalledWith("old-token-123");
       expect(mockCreateSetupTokenRecord).toHaveBeenCalled();
     });
+
+    it("la doble llamada síncrona ignora el segundo reset en curso (guarda resettingRef)", async () => {
+      mockSafeGetItem.mockReturnValue("stored-token");
+      const { result } = setup();
+      act(() => result.current.setSetupToken("tok"));
+      act(() => result.current.setConfirmTokenInput("tok"));
+      const before = mockGenerateSetupToken.mock.calls.length;
+      await act(async () => {
+        const p1 = result.current.handleResetSetupToken();
+        const p2 = result.current.handleResetSetupToken();
+        await Promise.all([p1, p2]);
+      });
+      expect(mockGenerateSetupToken.mock.calls.length).toBe(before + 1);
+      expect(result.current.authMessage).toBe("auth.tokenRenewed");
+    });
+
+    it("la doble llamada síncrona ignora el segundo reset desde el admin en curso", async () => {
+      mockSafeGetItem.mockReturnValue("stored-token");
+      const { result } = setup();
+      const before = mockGenerateSetupToken.mock.calls.length;
+      await act(async () => {
+        const p1 = result.current.handleResetTokenFromAdmin();
+        const p2 = result.current.handleResetTokenFromAdmin();
+        await Promise.all([p1, p2]);
+      });
+      expect(mockGenerateSetupToken.mock.calls.length).toBe(before + 1);
+    });
   });
 });

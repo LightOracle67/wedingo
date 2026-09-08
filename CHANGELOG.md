@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.20 — 2026-09-08
+- `useSetupAuth`: doble llamada síncrona al reset de token (setup y admin) → la segunda se ignora mientras la primera está en curso (`resettingRef`).
+- Medido 92,63/84,00/91,45/94,44 · **2591 tests** (209 ficheros) · tsc/oxlint 0/0. Ramas por encima del 84%.
 ## 2.192.19 — 2026-09-08
 - `rsvp-core.computeNextCounter`: contadores corruptos (NaN) caen a 1/0 sin explotar. `rsvp-payloads.buildMainGuestData`: asistencia sin transporte ni menú → no persiste campos vacíos.
 - Medido 92,61/83,98/91,45/94,42 · **2589 tests** (209 ficheros) · tsc/oxlint 0/0.
