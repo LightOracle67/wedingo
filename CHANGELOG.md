@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.11 — 2026-09-08
+- `PanelTab`: test rico de restore de backup versión 1 — subcolecciones (galería, configImages, respuestas RSVP y visitLog con día nuevo), Timestamps serializados reconstruidos como `Date` y omisión de `mediaKeys` (couplePhoto en data: URL) en el merge del documento principal.
+- Medido 92,43/83,59/90,82/94,24 · **2575 tests** (208 ficheros) · tsc/oxlint 0/0.
 ## 2.192.10 — 2026-09-08
 - +6 tests límite: `AdminPage` (memo de estadísticas con asistencia no-yes/no y companions 0/ausentes, weddingTimestamp con fecha inválida y medianoche, expectedGuests >1000) y `ToolsTab` (guardar invitados con Enter, generar recordatorio con pendientes, botón deshabilitado sin invitados esperados).
 - Medido 92,34/83,48/90,82/94,16 · **2574 tests** (208 ficheros) · tsc/oxlint 0/0.

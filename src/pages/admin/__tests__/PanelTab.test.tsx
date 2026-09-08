@@ -401,4 +401,37 @@ describe("PanelTab — ramas límite", () => {
     fireEvent.click(screen.getByText("panel.copyLink"));
     await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "errors.clipboardCopyFailed"));
   });
+
+  it("restaura un backup v1 con subcolecciones (galería, RSVP y visitLog con día nuevo)", async () => {
+    const { setDoc, getDoc } = await import("firebase/firestore");
+    vi.mocked(setDoc).mockClear();
+    // El visitLog solo restaura el día si el documento NO existe todavía.
+    vi.mocked(getDoc).mockResolvedValue({ exists: () => false, data: () => ({}) } as never);
+    render(<PanelTab config={baseConfig} />);
+    const fileInput = document.querySelector('input[type="file"]')!;
+    const validData = JSON.stringify({
+      _wedingoBackupVersion: 1,
+      config: { firstName: "Ana", secondName: "Luis", couplePhoto: "data:image/png;base64,AAA", bankInfo: "[REDACTED]" },
+      gallery: [{ id: "g1", url: "https://x/img.png" }],
+      audio: [],
+      configImages: [{ id: "c1", data: "data:image/webp;base64,AAA" }],
+      rsvp: [{ id: "r1", guestName: "Pepe", attendance: "yes", submittedAt: { seconds: 1680000000, nanoseconds: 0 } }],
+      visitLog: [{ id: "2026-01-01", count: 7 }],
+    });
+    fireEvent.change(fileInput, { target: { files: [new File([validData], "backup.json", { type: "application/json" })] } });
+    // La escritura principal + subcolecciones (galería, configImages, rsvp y visitLog).
+    await vi.waitFor(() => expect(vi.mocked(setDoc).mock.calls.length).toBeGreaterThanOrEqual(5));
+    // La foto en data: URL se OMITE del documento principal (mediaKeys): nunca
+    // se vuelca la imagen en claro al merge de la invitación.
+    const mainCall = vi.mocked(setDoc).mock.calls[0]?.[1] as { couplePhoto?: unknown };
+    expect(mainCall.couplePhoto).toBeUndefined();
+    // El Timestamp serializado se reconstruye como Date en la respuesta RSVP.
+    const rsvpCall = vi.mocked(setDoc).mock.calls.find((c) => {
+      const d = c[1] as { guestName?: string; submittedAt?: unknown };
+      return d?.guestName === "Pepe";
+    });
+    expect(rsvpCall).toBeDefined();
+    expect((rsvpCall?.[1] as { submittedAt: unknown }).submittedAt).toBeInstanceOf(Date);
+    expect(mockAddToast).toHaveBeenCalledWith("success", expect.stringContaining("panel.restoreSuccess"));
+  });
 });

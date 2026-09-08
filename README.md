@@ -2,7 +2,7 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.192.10](https://github.com/LightOracle67/wedingo/releases)  
+**Versión actual:** [v2.192.11](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
 **Tests:** Vitest + Playwright + axe-core | **CI/CD:** desactivado (2026-08-26) — flujo local: tests → build → deploy Firebase → push  
 
@@ -12,7 +12,7 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2574 tests (vitest, 208 ficheros) + suite Playwright e2e live (18) || Cobertura | 92.34% statements / 83.48% branches / 90.82% functions / 94.16% lines (gate 91.5/82.5/89.5/93.5) |
+| Tests | 2575 tests (vitest, 208 ficheros) + suite Playwright e2e live (18) || Cobertura | 92.43% statements / 83.59% branches / 90.82% functions / 94.24% lines (gate 91.5/82.5/89.5/93.5) |
 | Lint | 0 errores (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
 | `any` en source | 0 |
