@@ -2,6 +2,12 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.27 — 2026-09-09
+- Rendimiento (LCP invitado): tras el build se inyectan `<link rel="modulepreload">` de la ruta crítica de Firestore (`vendor-firebase`, `providers`, `invitation-`, `landing-`, `PublicInvitation-`) para arrancar la descarga del chunk más pesado en paralelo al entry y eliminar el waterfall.
+- Tests: última tanda al máximo — **2620 → 2641 tests** (212 ficheros). Cobertura **93,37 / 84,73 / 92,93 / 95,18**.
+- Seguridad: se documenta la auditoría de dependencias (0 vulns en producción; los 8 hallazgos restantes son dev-only: `firebase-tools` transitivas y sheetJS `xlsx`) y la política de runtime.
+- `npm audit` de producción: **0 vulnerabilidades**.
+
 ## 2.192.26 — 2026-09-08
 - Cierre de la campaña de tests: 2521 → **2620** tests (211 ficheros). Cobertura **93,07 / 84,50 / 92,38 / 94,85**.
 - Nuevas suites/lotes (cola fina): VenueMapSection (de 0 % a cubierto), InvitationDetailModal (errores de carga/reset/CSV), redact (rutas internas, hash, URLs no-http), PlatformTab (maintenance on→off), normalize-config/token-utils/InfoSection/storage-keys/ShareTab/derive/AttendanceEditModal con bordes límite.
