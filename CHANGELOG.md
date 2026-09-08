@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.17 — 2026-09-08
+- `ToolsTab`: el recordatorio de WhatsApp se edita por teclado y `openWhatsapp` abre `wa.me` con el texto escrito (URL-encoded).
+- Medido 92,62/83,74/91,50/94,42 · **2584 tests** (209 ficheros) · tsc/oxlint 0/0.
 ## 2.192.16 — 2026-09-08
 - `safe-date`: casos límite de `firestoreMillis` (boolean, bigint, función, `seconds:NaN`, `getTime:NaN` y `toMillis:undefined` → `null`).
 - Medido 92,61/83,74/91,45/94,41 · **2583 tests** (209 ficheros) · tsc/oxlint 0/0.

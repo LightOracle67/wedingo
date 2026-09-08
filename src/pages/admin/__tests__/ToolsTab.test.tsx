@@ -198,4 +198,18 @@ describe("ToolsTab", () => {
       ),
     );
   });
+
+  it("el recordatorio se edita y abre WhatsApp con el texto escrito", async () => {
+    const openSpy = vi.spyOn(window, "open").mockReturnValue(null);
+    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" />);
+    const ta = await screen.findByLabelText("tools.whatsappReminder");
+    fireEvent.change(ta, { target: { value: "Recordatorio personalizado" } });
+    fireEvent.click(screen.getByText("tools.openWhatsapp"));
+    expect(openSpy).toHaveBeenCalledWith(
+      expect.stringContaining("Recordatorio%20personalizado"),
+      "_blank",
+      "noopener,noreferrer",
+    );
+    openSpy.mockRestore();
+  });
 });
