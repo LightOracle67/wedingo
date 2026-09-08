@@ -127,4 +127,15 @@ describe("PlatformTab", () => {
     expect(arg.blockedTokens).toBe("x".repeat(25));
     expect(arg.expiringDays).toBe("123");
   });
+
+  it("mantenimiento apagado (clic on→off) persiste 'false'", async () => {
+    render(<PlatformTab />);
+    const toggle = await screen.findByLabelText("platform.maintenanceToggle");
+    fireEvent.click(toggle); // on
+    fireEvent.click(toggle); // off
+    fireEvent.click(screen.getByText("manage.saveConfig"));
+    await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
+    const arg = mockSetDoc.mock.calls[0]![1] as Record<string, string>;
+    expect(arg.maintenance).toBe("false");
+  });
 });

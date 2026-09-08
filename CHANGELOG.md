@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.26 — 2026-09-08
+- Cierre de la campaña de tests: 2521 → **2620** tests (211 ficheros). Cobertura **93,07 / 84,50 / 92,38 / 94,85**.
+- Nuevas suites/lotes (cola fina): VenueMapSection (de 0 % a cubierto), InvitationDetailModal (errores de carga/reset/CSV), redact (rutas internas, hash, URLs no-http), PlatformTab (maintenance on→off), normalize-config/token-utils/InfoSection/storage-keys/ShareTab/derive/AttendanceEditModal con bordes límite.
+- Umbrales del gate SUBIDOS a **statements 92,5 / branches 83,9 / functions 91,8 / lines 94,4** (margen ~0,4-0,5 pp sobre lo medido).
 ## 2.192.25 — 2026-09-08
 - `InvitationsTab`: búsqueda sin resultados → EmptyState de filtro y botón de exportar deshabilitado cuando no hay invitaciones.
 - Medido 92,82/84,26/91,92/94,60 · **2600 tests** (209 ficheros) · tsc/oxlint 0/0.

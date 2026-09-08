@@ -126,4 +126,20 @@ describe("deriveRsvpState", () => {
     const s2 = deriveRsvpState({ config: {} as never, isRsvpSubmitting: true });
     expect(s2.isDisabled).toBe(true);
   });
+
+  it("lugar + hora con URL parseable: agrupa 'Lugar (hora)'", () => {
+    const depOk = { type: "bus" as const, time: "10:30", url: "https://maps.google.com/maps/place/Salida+Sur" };
+    expect(departureLabel(depOk as never, t)).toBe("Salida Sur (10:30)");
+  });
+
+  it("weddingPassed trata un mes inválido como enero (fallback month/day)", () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date("2026-05-01T12:00:00Z"));
+    const s = deriveRsvpState({
+      config: { weddingYear: "2025", weddingMonth: "mes-inexistente", weddingDay: "10" } as never,
+    });
+    // 2025-01-10 < ahora → boda pasada (con day fallback).
+    expect(s.weddingPassed).toBe(true);
+    vi.useRealTimers();
+  });
 });

@@ -214,4 +214,34 @@ describe("InfoSection", () => {
     );
     expect(screen.getByText("Fiesta")).toBeDefined();
   });
+
+  it("JSON válido pero no array: no muestra la agenda", () => {
+    render(
+      <InfoSection
+        className="test"
+        style={{}}
+        weddingScheduleEvents={JSON.stringify({ plan: "manual" })}
+        weddingDressCode=""
+        kidsPolicy=""
+      />,
+    );
+    expect(screen.queryByText("info.scheduleTitle")).toBeNull();
+  });
+
+  it("limita la agenda a los primeros 10 eventos", () => {
+    const many = Array.from({ length: 12 }, (_, i) => ({ time: `${i}:00`, text: `Evento ${i + 1}` }));
+    render(
+      <InfoSection
+        className="test"
+        style={{}}
+        weddingScheduleEvents={JSON.stringify(many)}
+        weddingDressCode=""
+        kidsPolicy=""
+      />,
+    );
+    expect(screen.getByText("Evento 1")).toBeDefined();
+    expect(screen.getByText("Evento 10")).toBeDefined();
+    expect(screen.queryByText("Evento 11")).toBeNull();
+    expect(screen.queryByText("Evento 12")).toBeNull();
+  });
 });

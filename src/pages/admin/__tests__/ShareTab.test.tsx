@@ -272,4 +272,32 @@ describe("ShareTab", () => {
     await vi.waitFor(() => expect(addToast).toHaveBeenCalledWith("error", "share.copyQrFailed"));
     Object.defineProperty(navigator, "clipboard", { value: undefined, configurable: true, writable: true });
   });
+
+  it("copiar el mensaje falla → toast de error", async () => {
+    Object.defineProperty(navigator, "clipboard", {
+      value: { writeText: vi.fn(() => Promise.reject(new Error("x"))) },
+      configurable: true,
+    });
+    const addToast = vi.fn();
+    render(<ShareTab {...baseProps} addToast={addToast} />);
+    const btn = await screen.findByText("share.copyMessage");
+    fireEvent.click(btn);
+    await vi.waitFor(() => expect(addToast).toHaveBeenCalledWith("error", "errors.clipboardCopyFailed"));
+    Object.defineProperty(navigator, "clipboard", { value: undefined, configurable: true, writable: true });
+  });
+
+  it("tras copiar el QR, el botón cambia a 'copyQrDone'", async () => {
+    mockToDataURL.mockResolvedValueOnce("data:image/png;base64,cXJkYXRh");
+    Object.defineProperty(navigator, "clipboard", {
+      value: { write: vi.fn(() => Promise.resolve()) },
+      configurable: true,
+    });
+    (globalThis as Record<string, unknown>).ClipboardItem = class {
+      constructor(public data: Record<string, Blob>) {}
+    };
+    render(<ShareTab {...baseProps} />);
+    fireEvent.click(await screen.findByText("share.copyQr"));
+    await vi.waitFor(() => expect(screen.getByText("share.copyQrDone")).toBeDefined());
+    Object.defineProperty(navigator, "clipboard", { value: undefined, configurable: true, writable: true });
+  });
 });

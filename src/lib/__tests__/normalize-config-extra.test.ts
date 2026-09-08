@@ -46,4 +46,29 @@ describe("normalizeConfig extra", () => {
     const result = normalizeConfig({});
     expect(result.theme).toBe("golden");
   });
+
+  it("normaliza campos de superadmin, mapas y recortes de longitud", () => {
+    const out = normalizeConfig({
+      status: "bogus",
+      verified: "false",
+      rsvpSignatureEnabled: "true",
+      detailsMapMode: "banana", // no válido → iframe
+      transportMapMode: "hidden",
+      accommodationMapMode: "name",
+      rsvpCapacity: "123456", // slice(0,5)
+      manualExpiry: "2027-12-31x", // slice(0,10)
+      adminNotes: "x".repeat(2100),
+      tags: "a".repeat(510),
+    });
+    expect(out.status).toBe("active");
+    expect(out.verified).toBe("false");
+    expect(out.rsvpSignatureEnabled).toBe("true");
+    expect(out.detailsMapMode).toBe("iframe");
+    expect(out.transportMapMode).toBe("hidden");
+    expect(out.accommodationMapMode).toBe("name");
+    expect(out.rsvpCapacity).toBe("12345");
+    expect(out.manualExpiry).toBe("2027-12-31");
+    expect(out.adminNotes.length).toBe(2000);
+    expect(out.tags.length).toBe(500);
+  });
 });

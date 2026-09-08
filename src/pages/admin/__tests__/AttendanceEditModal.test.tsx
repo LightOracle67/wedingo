@@ -135,4 +135,19 @@ describe("AttendanceEditModal", () => {
     expect(btn.disabled).toBe(true);
     onSave.mockClear();
   });
+
+  it("edita menú del principal, transporte y menú/otra del acompañante", () => {
+    const h = renderModal();
+    fireEvent.change(screen.getByLabelText("rsvp.menuLabel"), { target: { value: "carne" } });
+    expect(h.onChange).toHaveBeenCalledWith("mealChoice", "carne");
+    fireEvent.change(screen.getByLabelText("attendance.manualCompanionsLabel 1 - rsvp.menuLabel"), {
+      target: { value: "pescado" },
+    });
+    expect(h.onPatchCompanion).toHaveBeenCalledWith(0, { menu: "pescado" });
+    fireEvent.change(screen.getByLabelText("attendance.manualCompanionsLabel 1 - rsvp.allergiesPlaceholder"), {
+      target: { value: "fruto seco" },
+    });
+    expect(h.onPatchCompanion).toHaveBeenCalledWith(0, { other: "fruto seco" });
+  });
 });
+

@@ -343,6 +343,20 @@ describe("sentry", () => {
       expect(redactSecretsFromUrl("https://x.app/?invitar=TtCgt9n8VT")).toBe("https://x.app/?invitar=[redacted]");
     });
 
+    it("no redacta rutas internas conocidas ni URLs relativas/no-http", async () => {
+      const { redactSecretsFromUrl } = await import("../sentry");
+      expect(redactSecretsFromUrl("https://x.app/setup/abc")).toBe("https://x.app/setup/abc");
+      expect(redactSecretsFromUrl("https://x.app/privacy")).toBe("https://x.app/privacy");
+      expect(redactSecretsFromUrl("/TtCgt9n8VT/admin")).toBe("/TtCgt9n8VT/admin");
+      expect(redactSecretsFromUrl("ftp://x/TtCgt9n8VT")).toBe("ftp://x/TtCgt9n8VT");
+    });
+
+    it("redacta el hash y deja el texto corto intacto", async () => {
+      const { redactSecretsFromUrl } = await import("../sentry");
+      expect(redactSecretsFromUrl("https://x.app/TtCgt9n8VT#abc")).toBe("https://x.app/[redacted]#[redacted]");
+      expect(redactSecretsFromUrl("")).toBe("");
+    });
+
     it("redacta el hash y deja intactas las URLs sin datos sensibles", async () => {
       const { redactSecretsFromUrl } = await import("../sentry");
       expect(redactSecretsFromUrl("https://x.app/#someConfig")).toBe("https://x.app/#[redacted]");

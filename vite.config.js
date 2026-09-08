@@ -253,12 +253,12 @@ export default defineConfig(({ mode }) => {
         thresholds: {
           // v2.192.5 (ronda "tests al máximo"): 2541 tests, medido 92.13/83.11/90.40/93.97.
           // Umbrales con margen para variaciones de CI (medido - ~0.6 pp).
-          // v2.192.12 (cierre "tests al máximo"): medido 92.43/83.59/90.82/94.24.
-          // Umbrales subidos a 92/83/90/93.8 (margen ~0.4-0.6 pp).
-          statements: 92,
-          branches: 83,
-          functions: 90,
-          lines: 93.8,
+          // Cierre de la campaña de tests (2026-09-08): medido 93.07/84.48/92.38/94.85.
+          // Umbrales subidos a 92.5/83.9/91.8/94.4 (margen ~0.4-0.5 pp).
+          statements: 92.5,
+          branches: 83.9,
+          functions: 91.8,
+          lines: 94.4,
         },
       },
     },

@@ -27,8 +27,9 @@ vi.mock("../../../lib/file-utils", () => ({
   downloadJson: (...args: unknown[]) => mockDownloadJson(...args),
   downloadText: vi.fn(),
 }));
+const mockAddToast = vi.hoisted(() => vi.fn());
 vi.mock("../../../hooks/useToast", () => ({
-  useToast: () => ({ addToast: vi.fn() }),
+  useToast: () => ({ addToast: mockAddToast }),
 }));
 vi.mock("../../../components/Modal", () => ({
   default: ({ children }: { children: React.ReactNode }) => <div role="dialog">{children}</div>,
@@ -104,5 +105,30 @@ describe("InvitationDetailModal", () => {
     const input = document.querySelector('input[type="file"]') as HTMLInputElement;
     fireEvent.change(input, { target: { files: [file] } });
     await vi.waitFor(() => expect(mockWriteBatch).toHaveBeenCalled());
+  });
+
+  it("falla la carga de subcolecciones → toast dataLoadFailed", async () => {
+    mockGetDocs.mockRejectedValueOnce(new Error("offline"));
+    render(<InvitationDetailModal token="tok1234567" onClose={() => {}} />);
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "errors.dataLoadFailed"));
+  });
+
+  it("el reset RSVP fallido muestra errors.generic", async () => {
+    const confirmSpy = vi.spyOn(window, "confirm").mockReturnValue(true);
+    mockWriteBatch.mockReturnValue({ delete: vi.fn(), set: vi.fn(), commit: vi.fn(() => Promise.reject(new Error("x"))) });
+    render(<InvitationDetailModal token="tok1234567" onClose={() => {}} />);
+    await screen.findAllByText(/Ana/);
+    fireEvent.click(screen.getByText("manage.detailReset"));
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "errors.generic"));
+    confirmSpy.mockRestore();
+  });
+
+  it("CSV sin suficientes líneas → restoreInvalidJson", async () => {
+    render(<InvitationDetailModal token="tok1234567" onClose={() => {}} />);
+    await screen.findAllByText(/Ana/);
+    const file = new File(["solo un login\\n"], "invitados.csv", { type: "text/csv" });
+    const input = document.querySelector('input[type="file"]') as HTMLInputElement;
+    fireEvent.change(input, { target: { files: [file] } });
+    await vi.waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "manage.restoreInvalidJson"));
   });
 });
