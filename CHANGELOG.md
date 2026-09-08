@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.6 — 2026-09-08
+- +8 tests límite: `GoogleTranslateToggle` (botón deshabilitado mientras carga, rama "script ya presente" sin duplicar, clic no-op estando activo) y `CompanionCard` (edición de nombre por índice, eliminar acompañante, `frozen` bloquea, selector de transporte, menú estructurado con `aria-pressed`, toggle de alergias y alergia "otra").
+- Medido 92,16/83,15/90,49/93,99 · **2548 tests** (207 ficheros) · tsc/oxlint 0/0.
 ## 2.192.5 — 2026-09-08
 - Ronda "tests al máximo" (+20 tests límite y bordes): `platform-settings` (doc existente/ausente/error + isFeatureDisabled/tokenIsBlocked), `useConfigActions` (sin provider lanza), `main.mountApp`, `stale-chunk-recovery` (SW+cachés presentes y agotamiento de intentos), proveedores por ruta (`AppProviders`/`SuperAdminProviders`), `DetailsSection` (fecha inválida no genera .ics; trackEvent calendario/indicaciones), `DistribucionTab` (panel de propiedades: tamaño/plazas/rotación/posición con acotación) y `excel-utils.exportToXlsx` real (antes solo mockeado).
 - Umbrales del gate de cobertura SUBIDOS a **statements 91,5 / branches 82,5 / functions 89,5 / lines 93,5** (medido 92,14/83,11/90,45/93,97; margen ~0,6 pp). Gate: **2540 tests** verdes (206 ficheros) · tsc/oxlint 0/0.
