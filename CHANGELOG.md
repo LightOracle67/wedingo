@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.15 — 2026-09-08
+- Nuevo test de `SupportTab` (superadmin): carga de avisos (boda próxima ≤14 días, fila con mapa no-iframe, sesión activa, 60 visitas) y búsqueda de invitación por token con Enter sobre Firestore.
+- Medido 92,58/83,70/91,41/94,40 · **2582 tests** (209 ficheros) · tsc/oxlint 0/0.
 ## 2.192.14 — 2026-09-08
 - +2 tests límite: `PlatformTab` (edición de lista negra de tokens y umbral de expiración con `slice` de 2000/3) y `SettingsTab` (rama de uid ausente → fallback y sesión inactiva).
 - Medido 92,55/83,62/91,33/94,37 · **2580 tests** (208 ficheros) · tsc/oxlint 0/0.
