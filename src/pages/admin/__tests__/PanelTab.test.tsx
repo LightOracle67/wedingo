@@ -431,7 +431,7 @@ describe("PanelTab — ramas límite", () => {
       return d?.guestName === "Pepe";
     });
     expect(rsvpCall).toBeDefined();
-    expect((rsvpCall?.[1] as { submittedAt: unknown }).submittedAt).toBeInstanceOf(Date);
+    expect((rsvpCall![1] as { submittedAt: unknown }).submittedAt).toBeInstanceOf(Date);
     expect(mockAddToast).toHaveBeenCalledWith("success", expect.stringContaining("panel.restoreSuccess"));
   });
 });
