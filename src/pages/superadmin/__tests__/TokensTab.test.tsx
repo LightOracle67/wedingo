@@ -253,4 +253,46 @@ describe("TokensTab", () => {
     fireEvent.click(screen.getByText("superadmin.migrateSelected"));
     await vi.waitFor(() => expect(screen.getByText("superadmin.tokenMigrateError")).toBeInTheDocument());
   });
+
+  it("no migra en lote si se cancela la confirmación", async () => {
+    mockConfirm.mockReturnValue(false);
+    mockTokenSnapshots([{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }]);
+    mockDoc.mockReturnValue("doc-ref");
+    mockUpdateDoc.mockResolvedValue(undefined);
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeInTheDocument());
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
+    fireEvent.click(screen.getByText("superadmin.migrateSelected"));
+    expect(mockConfirm).toHaveBeenCalled();
+    expect(mockHashSetupToken).not.toHaveBeenCalled();
+    expect(mockUpdateDoc).not.toHaveBeenCalled();
+  });
+
+  it("filtra los tokens por el término de búsqueda y lo limpia", async () => {
+    mockTokenSnapshots([
+      { id: "inv1", data: () => ({ _activeSetupToken: "token1" }) },
+      { id: "inv2", data: () => ({ _activeSetupToken: "token2" }) },
+    ]);
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeInTheDocument());
+    const input = screen.getByLabelText("superadmin.searchTokenPlaceholder");
+    fireEvent.change(input, { target: { value: "inv2" } });
+    await vi.waitFor(() => expect(screen.queryByText("inv1")).not.toBeInTheDocument());
+    expect(screen.getByText("inv2")).toBeInTheDocument();
+    fireEvent.change(input, { target: { value: "" } });
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeInTheDocument());
+  });
+
+  it("pagina al haber más de 50 tokens", async () => {
+    const docs = Array.from({ length: 55 }, (_, i) => ({
+      id: `inv${i}`,
+      data: () => ({ _activeSetupToken: `tok${i}` }),
+    }));
+    mockTokenSnapshots(docs);
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("inv0")).toBeInTheDocument());
+    expect(screen.queryByText("inv54")).not.toBeInTheDocument();
+    fireEvent.click(screen.getByLabelText("pagination.nextPage"));
+    await vi.waitFor(() => expect(screen.getByText("inv54")).toBeInTheDocument());
+  });
 });

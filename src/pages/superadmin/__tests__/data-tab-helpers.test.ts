@@ -4,6 +4,7 @@ import {
   filterByActivity,
   sanitizeInvitationForExport,
   menuSummary,
+  loadMediaForToken,
   type InvitationData,
 } from "../data-tab-helpers";
 
@@ -105,6 +106,20 @@ describe("filterByActivity", () => {
     // 'a' y 'b' están dentro de los últimos 7 días respecto a 'c'.
     expect(result.map((i) => i.id).sort()).toEqual(["a", "b"]);
   });
+
+  it("filtra por actividad de hoy si el filtro es 'hoy' (excluye ayer y sin fecha)", () => {
+    const hoy = base.map((i) => ({
+      ...i,
+      lastActivity:
+        i.id === "a"
+          ? new Date().toISOString() // hoy → incluida
+          : i.id === "b"
+            ? iso(2 * 86400000) // antier → excluida (Date.parse válido pero fuera)
+            : "", // sin fecha → excluida
+    }));
+    const result = filterByActivity(hoy, "hoy");
+    expect(result.map((i) => i.id)).toEqual(["a"]);
+  });
 });
 
 describe("sanitizeInvitationForExport", () => {
@@ -146,5 +161,39 @@ describe("menuSummary", () => {
     });
     const result = await menuSummary("tok");
     expect(result).toEqual({ carne: 2, pescado: 1 });
+  });
+});
+
+describe("loadMediaForToken", () => {
+  beforeEach(() => {
+    mockGetDocs.mockReset();
+  });
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("carga galería y audio con id + datos completos", async () => {
+    mockGetDocs
+      .mockResolvedValueOnce({
+        docs: [
+          { id: "foto1", data: () => ({ url: "https://x/f1.jpg" }) },
+          { id: "foto2", data: () => ({ url: "https://x/f2.jpg" }) },
+        ],
+      })
+      .mockResolvedValueOnce({
+        docs: [{ id: "song1", data: () => ({ url: "https://x/s1.mp3", name: "canción" }) }],
+      });
+    const result = await loadMediaForToken("tok");
+    expect(result.gallery).toHaveLength(2);
+    expect(result.gallery[0]).toMatchObject({ id: "foto1", url: "https://x/f1.jpg" });
+    expect(result.audio).toHaveLength(1);
+    expect(result.audio[0]).toMatchObject({ id: "song1", url: "https://x/s1.mp3", name: "canción" });
+  });
+
+  it("devuelve listas vacías cuando no hay media", async () => {
+    mockGetDocs.mockResolvedValue({ docs: [] });
+    const result = await loadMediaForToken("tok");
+    expect(result.gallery).toEqual([]);
+    expect(result.audio).toEqual([]);
   });
 });

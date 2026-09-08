@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach, vi } from "vitest";
-import { eraseGuestLocalData, exportGuestLocalData } from "../data-request";
+import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { eraseGuestLocalData, exportGuestLocalData, eraseFirestoreIndexedDB } from "../data-request";
 
 /** Mock de Storage para jsdom: los datos son propiedades enumerables del
  * propio objeto para que Object.keys() (usado en eraseGuestLocalData)
@@ -133,5 +133,64 @@ describe("data-request", () => {
     const { exported } = exportGuestLocalData("abc");
     expect(exported).toEqual({});
     spy.mockRestore();
+  });
+});
+
+describe("eraseFirestoreIndexedDB", () => {
+  const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID || "proyecto-prueba";
+
+  function mockIndexedDB(databasesImpl: () => Promise<Array<{ name?: string }>>) {
+    const deleteDatabase = vi.fn();
+    Object.defineProperty(globalThis, "indexedDB", {
+      configurable: true,
+      value: { databases: databasesImpl, deleteDatabase },
+    });
+    return { deleteDatabase };
+  }
+
+  const realIndexedDB = (globalThis as Record<string, unknown>).indexedDB;
+
+  afterEach(() => {
+    if (realIndexedDB === undefined) {
+      Reflect.deleteProperty(globalThis, "indexedDB");
+    } else {
+      Object.defineProperty(globalThis, "indexedDB", { configurable: true, value: realIndexedDB });
+    }
+    vi.unstubAllEnvs();
+  });
+
+  it("borra solo las bases firestore del proyecto actual", async () => {
+    const { deleteDatabase } = mockIndexedDB(() =>
+      Promise.resolve([
+        { name: `firestore/${projectId}/main` },
+        { name: "firestore/otra-app/xyz" },
+        { name: "cache/irrelevante" },
+        { name: "" },
+      ]),
+    );
+    eraseFirestoreIndexedDB();
+    await vi.waitFor(() => expect(deleteDatabase).toHaveBeenCalledTimes(1));
+    expect(deleteDatabase).toHaveBeenCalledWith(`firestore/${projectId}/main`);
+  });
+
+  it("sin projectId configurado elimina todas las bases firestore*", async () => {
+    vi.stubEnv("VITE_FIREBASE_PROJECT_ID", "");
+    const { deleteDatabase } = mockIndexedDB(() =>
+      Promise.resolve([{ name: "firestore/app-a/main" }, { name: "firestore/app-b/main" }, { name: "notfire/db" }]),
+    );
+    eraseFirestoreIndexedDB();
+    await vi.waitFor(() => expect(deleteDatabase).toHaveBeenCalledTimes(2));
+  });
+
+  it("tolera que indexedDB.databases() falle", async () => {
+    mockIndexedDB(() => {
+      throw new Error("indexedDB no disponible");
+    });
+    expect(() => eraseFirestoreIndexedDB()).not.toThrow();
+  });
+
+  it("hace no-op si indexedDB no existe en el entorno", () => {
+    Reflect.deleteProperty(globalThis, "indexedDB");
+    expect(() => eraseFirestoreIndexedDB()).not.toThrow();
   });
 });

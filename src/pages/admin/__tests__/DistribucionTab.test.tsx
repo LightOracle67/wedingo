@@ -637,4 +637,33 @@ describe("DistribucionTab", () => {
     fireEvent.click(screen.getByText("distribucion.deleteTable"));
     await waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "errors.generic"));
   });
+
+  it("cambia la forma nueva desde la barra y la aplica al añadir una mesa", async () => {
+    mockAddDoc.mockResolvedValue({ id: "new2" });
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    // Sin mesa seleccionada solo existe el selector de forma de la barra.
+    const sel = screen.getByLabelText("distribucion.shape") as HTMLSelectElement;
+    fireEvent.change(sel, { target: { value: "square" } });
+    fireEvent.click(screen.getByText("distribucion.addTable"));
+    await vi.waitFor(() => expect(mockAddDoc).toHaveBeenCalled());
+    expect(mockAddDoc).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ shape: "square" }));
+  });
+
+  it("edita el nombre y la forma de la mesa desde el panel de la seleccionada", async () => {
+    const { updateDoc: u } = await import("firebase/firestore");
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    fireEvent.pointerDown(await screen.findByText("Mesa 1"), { clientX: 0, clientY: 0 });
+    const nameInput = await screen.findByLabelText("distribucion.name");
+    fireEvent.change(nameInput, { target: { value: "Mesa VIP" } });
+    const shapeSelects = screen.getAllByLabelText("distribucion.shape");
+    // El primero en el DOM es el del panel de la seleccionada (persiste);
+    // el segundo es el de la barra (solo define la forma de mesas nuevas).
+    fireEvent.change(shapeSelects[0]!, { target: { value: "square" } });
+    await vi.waitFor(() => expect(vi.mocked(u)).toHaveBeenCalled());
+    const updates = vi.mocked(u).mock.calls.map((c) => c[1] as unknown as Record<string, unknown>);
+    expect(updates).toContainEqual(expect.objectContaining({ name: "Mesa VIP" }));
+    expect(updates).toContainEqual(expect.objectContaining({ shape: "square" }));
+  });
 });

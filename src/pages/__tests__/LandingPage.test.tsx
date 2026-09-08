@@ -247,6 +247,38 @@ describe("LandingPage", () => {
     });
   });
 
+  it("cierra el modal de mantenimiento con el botón X (common.close)", async () => {
+    mockPlatformReload.mockResolvedValue({
+      maintenance: "true",
+      bannerEnabled: "false",
+      bannerText: "",
+      blockedUrls: "",
+      blockedTokens: "",
+      expiringDays: "30",
+    });
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.createInvitation"));
+    await vi.waitFor(() => expect(screen.getByText("landing.maintenanceTitle")).toBeDefined());
+    fireEvent.click(screen.getByLabelText("common.close"));
+    await vi.waitFor(() => expect(screen.queryByText("landing.maintenanceTitle")).toBeNull());
+  });
+
+  it("cierra el modal de mantenimiento al hacer clic en el fondo", async () => {
+    mockPlatformReload.mockResolvedValue({
+      maintenance: "true",
+      bannerEnabled: "false",
+      bannerText: "",
+      blockedUrls: "",
+      blockedTokens: "",
+      expiringDays: "30",
+    });
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.createInvitation"));
+    await vi.waitFor(() => expect(screen.getByText("landing.maintenanceTitle")).toBeDefined());
+    fireEvent.click(screen.getByRole("dialog"));
+    await vi.waitFor(() => expect(screen.queryByText("landing.maintenanceTitle")).toBeNull());
+  });
+
   it("opens login modal when have invitation is clicked", () => {
     render(<LandingPage />);
     expect(screen.queryByText("landing.modalTitle")).toBeNull();

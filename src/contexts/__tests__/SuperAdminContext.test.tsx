@@ -202,6 +202,36 @@ describe("SuperAdminProvider", () => {
     expect(mockSaveSession).toHaveBeenCalledWith("superadmin", FALLBACK_ADMIN_EMAIL, { uid: "uid-123" });
   });
 
+  it("avisa (safeLogError) si falla el guardado del UID tras el login", async () => {
+    const { setDoc } = await import("firebase/firestore");
+    vi.mocked(setDoc).mockRejectedValueOnce(new Error("boom"));
+    const safeError = await import("../../lib/safe-error");
+    const spy = vi.spyOn(safeError, "safeLogError").mockImplementation(() => {});
+    mockSignInWithEmailAndPassword.mockResolvedValue({
+      user: { email: FALLBACK_ADMIN_EMAIL, uid: "uid-123" },
+    });
+    renderProvider();
+    await vi.waitFor(() => expect(screen.getByTestId("isLoading").textContent).toBe("false"));
+    fireEvent.click(screen.getByTestId("login-btn"));
+    await vi.waitFor(() => expect(mockSignInWithEmailAndPassword).toHaveBeenCalled());
+    await vi.waitFor(() => expect(spy).toHaveBeenCalled());
+    spy.mockRestore();
+  });
+
+  it("avisa (safeLogError) si falla el guardado del UID al hidratar la sesión", async () => {
+    const { setDoc } = await import("firebase/firestore");
+    vi.mocked(setDoc).mockRejectedValueOnce(new Error("boom"));
+    const safeError = await import("../../lib/safe-error");
+    const spy = vi.spyOn(safeError, "safeLogError").mockImplementation(() => {});
+    mockOnAuthStateChanged.mockImplementation((_auth: unknown, cb: (u: unknown) => void) => {
+      setTimeout(() => cb({ email: FALLBACK_ADMIN_EMAIL, uid: "uid-hydra" } as never), 0);
+      return () => {};
+    });
+    renderProvider();
+    await vi.waitFor(() => expect(spy).toHaveBeenCalled());
+    spy.mockRestore();
+  });
+
   it("rejects login with wrong (non-admin) email", async () => {
     mockSignInWithEmailAndPassword.mockResolvedValue({
       user: { email: "other@admin.com", uid: "uid-456" },

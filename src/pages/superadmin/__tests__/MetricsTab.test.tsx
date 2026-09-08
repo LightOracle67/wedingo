@@ -379,4 +379,22 @@ describe("SupportTab", () => {
     fireEvent.click(screen.getByText("superadmin.metrics.storageBtn"));
     await vi.waitFor(() => expect(screen.getByText("superadmin.metrics.images")).toBeInTheDocument());
   });
+
+  it("pinta la tabla de uso social con varias invitaciones (conteos y orden por total)", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "invitations-collection-ref") return Promise.resolve({ docs: [invitationDoc()] });
+      if (["reactions", "notes", "songs", "rides", "gifts"].includes(String(ref))) {
+        const size = String(ref) === "reactions" ? 3 : 1;
+        return Promise.resolve({ docs: [], size });
+      }
+      return Promise.resolve({ docs: [], size: 0 });
+    });
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    fireEvent.click(screen.getByText("superadmin.metrics.socialBtn"));
+    await vi.waitFor(() => expect(screen.getByText("superadmin.metrics.socialTitle")).toBeInTheDocument());
+    // Celda de reacciones (3) y las demás columnas con sus totales.
+    expect(screen.getAllByText("3").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("1").length).toBeGreaterThan(0);
+  });
 });

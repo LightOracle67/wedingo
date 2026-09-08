@@ -718,6 +718,22 @@ describe("AdminPage", () => {
     expect(createObjectURL).toHaveBeenCalled();
   });
 
+  it("handles exportPdf sin respuestas filtradas (toast sin imprimir)", async () => {
+    const openSpy = vi.spyOn(window, "open");
+    const createObjectURL = vi.spyOn(URL, "createObjectURL");
+    mockUseApp.mockReturnValue({ ...baseMock, rsvpEntries: [] });
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>,
+    );
+    await screen.findByTestId("panel-tab");
+    fireEvent.click(screen.getByTestId("export-pdf-btn"));
+    expect(mockAddToast).toHaveBeenCalledWith("info", "attendance.noResults");
+    expect(createObjectURL).not.toHaveBeenCalled();
+    expect(openSpy).not.toHaveBeenCalled();
+  });
+
   it("filters by attendance filter 'no' in filteredEntries", () => {
     mockUseApp.mockReturnValue({
       ...baseMock,
