@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.22 — 2026-09-08
+- `MetricsTab`: fila social con conteos > 0 (ordenación + render) y estimación de almacenamiento con docs de audio sin campo `data` (suma 0) y galería con imágenes.
+- Medido 92,69/84,06/91,67/94,49 · **2594 tests** (209 ficheros) · tsc/oxlint 0/0.
 ## 2.192.21 — 2026-09-08
 - `DataTab`: seleccionar vacías con clic, apertura del modal de detalle de la invitación seleccionada y ordenación pinchando las cabeceras (activa los `getValue` de `sortColumns`).
 - Medido 92,68/84,04/91,62/94,49 · **2593 tests** (209 ficheros) · tsc/oxlint 0/0.

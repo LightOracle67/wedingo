@@ -357,4 +357,26 @@ describe("SupportTab", () => {
     fireEvent.click(screen.getByText("superadmin.support.abandonBtn"));
     await vi.waitFor(() => expect(screen.getByText(/abandon1/)).toBeInTheDocument());
   });
+
+  it("social: fila con conteos > 0 se ordena y se renderiza; audio sin campo data suma 0", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "invitations-collection-ref") return Promise.resolve({ docs: [invitationDoc()] });
+      if (ref === "gallery") return Promise.resolve({ docs: [{ id: "g1" }], size: 1 });
+      // Doc de audio con data vacía/ausente: la reducción cae a 0 bytes.
+      if (ref === "audio") return Promise.resolve({ docs: [{ data: () => ({}) }] });
+      // Conteos sociales del token: reacciones 2 + notas 1 → fila visible.
+      if (ref === "social") {
+        return Promise.resolve({
+          docs: [{ id: "s1", data: () => ({ reactions: 2, notes: 1, songs: 0, rides: 0, gifts: 0 }) }],
+        });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    render(<MetricsTab />);
+    await screen.findByText("superadmin.metrics.invitations");
+    fireEvent.click(screen.getByText("superadmin.metrics.socialBtn"));
+    await vi.waitFor(() => expect(screen.getAllByText("token1").length).toBeGreaterThan(0));
+    fireEvent.click(screen.getByText("superadmin.metrics.storageBtn"));
+    await vi.waitFor(() => expect(screen.getByText("superadmin.metrics.images")).toBeInTheDocument());
+  });
 });
