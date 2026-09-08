@@ -2,7 +2,7 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
-## 2.192.0 — EN VERIFICACIÓN (rama feature/firebase-lazy-providers)
+## 2.192.0 — 2026-09-08
 - Arquitectura de carga por ruta: ConfigProvider/AuthProvider/RsvpProvider/AppMerger dejan de envolver TODA la app y se montan dentro de bundles de ruta perezosos (src/routes/): provider tree SIN Firebase en el shell.
 - JS INICIAL: 289 KB gz → 107 KB gz (−63 %; vendor-firebase 156 KB pasa a chunk bajo demanda, fuera de los modulepreloads — verificado 0 referencias en el entry). Firestore se descarga en paralelo con la primera ruta que lo necesita.
 - Ajustes derivados: efectos de documento divididos (idioma/RTL/noindex/scroll/errores globales → shell; título/tema/custom CSS → InviteChrome por ruta), barra admin + música + footer visible/oculto vía micro-store chrome-store, CookieConsent/DataRequestModal con token opcional, useAnimations tolerante sin ConfigProvider, barrel de contexts ya no arrastra Firebase (useConfigActions extraído a su propio módulo sin Firebase; analytics importa `app` dinámicamente).
@@ -12,7 +12,7 @@ Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación 
 - Footer público: con sesión admin se oculta SIEMPRE (antes solo fuera de rutas de edición → en /admin aparecía el footer de invitado por encima del contenido admin; restaura comportamiento de main).
 - Landing: si el modo mantenimiento está activo y se pulsa "Crear tu invitación" se abre un MODAL informativo (motivo + botón "Entendido); el botón ya no queda desactivado en mantenimiento (sin feedback). Reutilizada la snapshot de validación en el login (se eliminó una getDoc redundante: el login encadenaba 4 lecturas ~200-300 ms c/u).
 - Editor de la invitación en /admin (pestaña Invitación): eliminado el DOBLE scroll anidado — la tarjeta interna usaba `height:-webkit-fill-available; overflow:auto` dentro del contenedor padre que ya scrollea; en Safari los scrollbars superpuestos recalcularon esa altura y la tarjeta "saltaba" continua. La tarjeta interna ahora es de altura natural (height:auto; overflow:visible) y solo `.setup-card--content` hace scroll.
-- PRECAUCIÓN: sin deploy. Verificación manual recomendada antes de fusionar: sesión admin (login/renew/logout), flujo setup completo, invitación pública (sobre/confeti/galería/RSVP), superadmin, y el modo mantenimiento de la landing.
+- Desplegada a producción el 2026-09-08 (deploy hosting) tras verificación manual completa.
 ## 2.191.0 — 2026-08-30
 - Cobertura ampliada (+46 tests): useAppUI/useUIMessages (60% → 100% stmts incl. reseteo de mensajes al cambiar de ruta), derive del RSVP (73,7% → 97,4%: salidas de transporte, modos both/bus/taxi, fecha límite, simulación ?sim=expired/responded, boda pasada), safe-date (84,3% → 92,2%: nanosegundos exactos, toMillis/toDate, inválidos, locale pinneado), storage (84,6% → 85,9%: consentimiento legacy plano, prefs de analytics, invalidación de caché) e image-store (81,7% → 89,2%: minis, borrados en lote, orden de galería).
 - Umbrales del gate de cobertura SUBIDOS a statements 90,5 / branches 82 / functions 88 / lines 92,5 (medido 91,72/83,07/89,74/93,55; margen ~1 pp).

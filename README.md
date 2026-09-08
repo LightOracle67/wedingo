@@ -2,9 +2,9 @@
 
 Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
-**Versión actual:** [v2.178.0](https://github.com/LightOracle67/wedingo/releases)  
+**Versión actual:** [v2.192.0](https://github.com/LightOracle67/wedingo/releases)  
 **Stack:** React 19 + TypeScript 7 + Vite 8 + Firebase (Firestore, Auth, Hosting)  
-**Tests:** Vitest + Playwright + axe-core | **CI/CD:** GitHub Actions  
+**Tests:** Vitest + Playwright + axe-core | **CI/CD:** desactivado (2026-08-26) — flujo local: tests → build → deploy Firebase → push  
 
 ---
 
@@ -12,14 +12,14 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 | Aspecto | Estado |
 |---|---|
-| Tests | 2269 tests (vitest) + suite Playwright e2e || Cobertura | 86.0% statements / 75.1% branches / 83.2% functions / 88.1% lines |
-| Lint | 0 warnings (oxlint) |
+| Tests | 2515 tests (vitest) + suite Playwright e2e live (18) || Cobertura | 91.77% statements / 83.07% branches / 89.7% functions / 93.63% lines |
+| Lint | 0 errores (oxlint) |
 | TypeScript | 0 errors (`strict`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `skipLibCheck=true` — solo .d.ts de terceros) |
 | `any` en source | 0 |
-| `!important` en CSS | 41 |
+| `!important` en CSS | 128 |
 | Idiomas | 100 |
 | Temas | 21 (7 claros, 7 oscuros, 7 LGTBIQ+) |
-| Bundle (crítico) | ~272KB gzip (JS inicial: index+vendors; Sentry/changelog/idiomas en chunks lazy) |
+| Bundle (crítico) | ~107KB gzip JS inicial (Firebase en chunks perezosos por ruta; vendor-firebase 156KB bajo demanda) |
 
 ---
 
