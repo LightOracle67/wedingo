@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.9 — 2026-09-08
+- +5 tests de la barra de acciones de `DataTableSection` (superadmin): exportar todo/rango, botones con selección (detalle, enlace admin, export/print/excel/menús/expiración/sello), borrado masivo con palabra obligatoria, purga, borrar todo, seleccionar vacías y bloqueo del tema en bloque.
+- Medido 92,28/83,25/90,74/94,11 · **2568 tests** (208 ficheros) · tsc/oxlint 0/0.
 ## 2.192.8 — 2026-09-08
 - +4 tests límite en `TokensTab`: cleanup conserva las invitaciones con sesión activa (filtra solo los nunca usados), cleanup cancelado no toca nada, error de limpieza y error de migración en lote.
 - Medido 92,28/83,25/90,74/94,11 · **2563 tests** (208 ficheros) · tsc/oxlint 0/0.

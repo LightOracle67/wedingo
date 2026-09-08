@@ -32,12 +32,28 @@ interface SectionArgs {
   selected?: Set<string>;
   emptyIds?: Set<string>;
   piiResults?: PiiResult[];
+  confirmText?: string;
+  bulkThemeBusy?: boolean;
+  singleSelected?: string;
   onSelectAll?: () => void;
   onDeselectAll?: () => void;
   onActivityFilterChange?: (v: string) => void;
   onApplyBulkTheme?: () => void;
   onSearchPii?: () => void;
   onOpenDetail?: (token: string) => void;
+  onSelectEmpty?: () => void;
+  onExportAll?: () => void;
+  onExportRange?: () => void;
+  onExportSelected?: () => void;
+  onPrintSelected?: () => void;
+  onExcelSelected?: () => void;
+  onMenusSelected?: () => void;
+  onBulkExpiry?: () => void;
+  onBulkSeal?: () => void;
+  onDeleteSelected?: () => void;
+  onDeleteAll?: () => void;
+  onPurgeOld?: () => void;
+  onConfirmTextChange?: (v: string) => void;
 }
 
 /** Renderiza el componente con props por defecto + overrides. */
@@ -51,6 +67,19 @@ function renderSection(args: SectionArgs = {}) {
   const onApplyBulkTheme = args.onApplyBulkTheme ?? vi.fn();
   const onSearchPii = args.onSearchPii ?? vi.fn();
   const onOpenDetail = args.onOpenDetail ?? vi.fn();
+  const onSelectEmpty = args.onSelectEmpty ?? vi.fn();
+  const onExportAll = args.onExportAll ?? vi.fn();
+  const onExportRange = args.onExportRange ?? vi.fn();
+  const onExportSelected = args.onExportSelected ?? vi.fn();
+  const onPrintSelected = args.onPrintSelected ?? vi.fn();
+  const onExcelSelected = args.onExcelSelected ?? vi.fn();
+  const onMenusSelected = args.onMenusSelected ?? vi.fn();
+  const onBulkExpiry = args.onBulkExpiry ?? vi.fn();
+  const onBulkSeal = args.onBulkSeal ?? vi.fn();
+  const onDeleteSelected = args.onDeleteSelected ?? vi.fn();
+  const onDeleteAll = args.onDeleteAll ?? vi.fn();
+  const onPurgeOld = args.onPurgeOld ?? vi.fn();
+  const onConfirmTextChange = args.onConfirmTextChange ?? vi.fn();
   render(
     <DataTableSection
       invitations={invitations}
@@ -61,12 +90,12 @@ function renderSection(args: SectionArgs = {}) {
       totalCount={invitations.length}
       emptyIds={args.emptyIds ?? new Set()}
       isEmptyCount={(args.emptyIds ?? new Set()).size}
-      singleSelected=""
+      singleSelected={args.singleSelected ?? (args.selected?.size === 1 ? [...args.selected][0] ?? "" : "")}
       busy={false}
       activityFilter="todas"
       onActivityFilterChange={onActivityFilterChange}
-      confirmText=""
-      onConfirmTextChange={() => {}}
+      confirmText={args.confirmText ?? ""}
+      onConfirmTextChange={onConfirmTextChange}
       piiQuery=""
       onPiiQueryChange={() => {}}
       piiResults={args.piiResults ?? []}
@@ -74,22 +103,22 @@ function renderSection(args: SectionArgs = {}) {
       bulkTheme="golden"
       onBulkThemeChange={() => {}}
       onApplyBulkTheme={onApplyBulkTheme}
-      bulkThemeBusy={false}
+      bulkThemeBusy={args.bulkThemeBusy ?? false}
       onSelectAll={onSelectAll}
       onDeselectAll={onDeselectAll}
-      onSelectEmpty={() => {}}
-      onExportAll={() => {}}
-      onExportRange={() => {}}
+      onSelectEmpty={onSelectEmpty}
+      onExportAll={onExportAll}
+      onExportRange={onExportRange}
       onOpenDetail={onOpenDetail}
-      onExportSelected={() => {}}
-      onPrintSelected={() => {}}
-      onExcelSelected={() => {}}
-      onMenusSelected={() => {}}
-      onBulkExpiry={() => {}}
-      onBulkSeal={() => {}}
-      onDeleteSelected={() => {}}
-      onDeleteAll={() => {}}
-      onPurgeOld={() => {}}
+      onExportSelected={onExportSelected}
+      onPrintSelected={onPrintSelected}
+      onExcelSelected={onExcelSelected}
+      onMenusSelected={onMenusSelected}
+      onBulkExpiry={onBulkExpiry}
+      onBulkSeal={onBulkSeal}
+      onDeleteSelected={onDeleteSelected}
+      onDeleteAll={onDeleteAll}
+      onPurgeOld={onPurgeOld}
       onToggleSelect={() => {}}
       onCopyToken={() => {}}
       onToggleSort={() => {}}
@@ -97,7 +126,28 @@ function renderSection(args: SectionArgs = {}) {
       t={stableT}
     />,
   );
-  return { onSelectAll, onDeselectAll, onActivityFilterChange, onApplyBulkTheme, onSearchPii, onOpenDetail };
+  return {
+    onSelectAll,
+    onDeselectAll,
+    onActivityFilterChange,
+    onApplyBulkTheme,
+    onSearchPii,
+    onOpenDetail,
+    onSelectEmpty,
+    onExportAll,
+    onExportRange,
+    onExportSelected,
+    onPrintSelected,
+    onExcelSelected,
+    onMenusSelected,
+    onBulkExpiry,
+    onBulkSeal,
+    onDeleteSelected,
+    onDeleteAll,
+    onPurgeOld,
+    onConfirmTextChange,
+    onToggleSelect: vi.fn(),
+  };
 }
 
 describe("DataTableSection", () => {
@@ -154,7 +204,73 @@ describe("DataTableSection", () => {
   it("aplica el tema en bloque desde el selector", () => {
     // El botón solo está activo con selección no vacía.
     const h = renderSection({ selected: new Set(["abc123"]) });
-    fireEvent.click(screen.getByText("superadmin.data.bulkTheme"));
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.bulkTheme/ }));
     expect(h.onApplyBulkTheme).toHaveBeenCalledTimes(1);
+  });
+
+  it("exporta todo y por rango desde la barra de acciones", () => {
+    const h = renderSection({ invitations: [makeInv("a")] });
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.exportAllBtn/ }));
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.rangeBtn/ }));
+    expect(h.onExportAll).toHaveBeenCalledTimes(1);
+    expect(h.onExportRange).toHaveBeenCalledTimes(1);
+  });
+
+  it("con UNA selección muestra detalle, enlace admin y exporta/print/excel/menús/expiración/sello", () => {
+    const h = renderSection({ invitations: [makeInv("abc123")], selected: new Set(["abc123"]) });
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.detailBtn/ }));
+    expect(h.onOpenDetail).toHaveBeenCalledWith("abc123");
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.exportSelectedBtn/ }));
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.printBtn/ }));
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.excelBtn/ }));
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.menusBtn/ }));
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.bulkExpiryBtn/ }));
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.bulkSealBtn/ }));
+    expect(h.onExportSelected).toHaveBeenCalled();
+    expect(h.onPrintSelected).toHaveBeenCalled();
+    expect(h.onExcelSelected).toHaveBeenCalled();
+    expect(h.onMenusSelected).toHaveBeenCalled();
+    expect(h.onBulkExpiry).toHaveBeenCalled();
+    expect(h.onBulkSeal).toHaveBeenCalled();
+    // El enlace al admin lleva a la invitación seleccionada (target _blank).
+    const link = screen.getByText("superadmin.data.adminLink");
+    expect(link.getAttribute("href")).toBe("/abc123/admin");
+  });
+
+  it("borrar en lote exige la palabra de confirmación y la purga muestra el modal", () => {
+    const h = renderSection({ invitations: [makeInv("a")], selected: new Set(["a"]) });
+    const del = screen.getByRole("button", { name: /superadmin\.data\.deleteSelectedBtn/ }) as HTMLButtonElement;
+    expect(del.disabled).toBe(true);
+    // Se escribe la palabra y el botón se habilita y dispara.
+    const input = screen.getByLabelText("superadmin.data.confirmInputLabel");
+    fireEvent.change(input, { target: { value: "ELIMINAR" } });
+    expect(h.onConfirmTextChange).toHaveBeenCalledWith("ELIMINAR");
+    cleanup();
+    const h2 = renderSection({
+      invitations: [makeInv("a")],
+      selected: new Set(["a"]),
+      confirmText: "ELIMINAR",
+    });
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.deleteSelectedBtn/ }));
+    expect(h2.onDeleteSelected).toHaveBeenCalled();
+    fireEvent.click(screen.getByText("superadmin.data.purgeBtn"));
+    expect(h2.onPurgeOld).toHaveBeenCalled();
+    // Borrar todo también exige la palabra.
+    fireEvent.click(screen.getAllByText("superadmin.data.deleteAllBtn")[0]!);
+    expect(h2.onDeleteAll).toHaveBeenCalled();
+  });
+
+  it("selecciona solo las invitaciones vacías cuando las hay", () => {
+    const h = renderSection({ invitations: [makeInv("a"), makeInv("b")], emptyIds: new Set(["b"]) });
+    fireEvent.click(screen.getByRole("button", { name: /superadmin\.data\.selectEmpty/ }));
+    expect(h.onSelectEmpty).toHaveBeenCalled();
+  });
+
+  it("bloquea el tema en bloque sin selección y con bulkThemeBusy", () => {
+    renderSection();
+    expect((screen.getByRole("button", { name: /superadmin\.data\.bulkTheme/ }) as HTMLButtonElement).disabled).toBe(true);
+    cleanup();
+    renderSection({ selected: new Set(["a"]), bulkThemeBusy: true });
+    expect((screen.getByRole("button", { name: /superadmin\.data\.bulkTheme/ }) as HTMLButtonElement).disabled).toBe(true);
   });
 });
