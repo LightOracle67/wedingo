@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.19 — 2026-09-08
+- `rsvp-core.computeNextCounter`: contadores corruptos (NaN) caen a 1/0 sin explotar. `rsvp-payloads.buildMainGuestData`: asistencia sin transporte ni menú → no persiste campos vacíos.
+- Medido 92,61/83,98/91,45/94,42 · **2589 tests** (209 ficheros) · tsc/oxlint 0/0.
 ## 2.192.18 — 2026-09-08
 - `admin-utils` (ramas límite): proyección con `weddingTimestamp` nulo, tendencia 'up'/'down' con ≥7 timestamps y `buildConfirmationsPerDay` con Date/ISO/inválidos.
 - Medido 92,61/83,89/91,45/94,42 · **2587 tests** (209 ficheros) · tsc/oxlint 0/0.

@@ -59,5 +59,13 @@ describe("applyRsvpFieldUpdate", () => {
     it("trata docs legacy sin attendingCount como 0 (no infla el aforo)", () => {
       expect(computeNextCounter({ count: 7 }, true)).toEqual({ count: 8, attendingCount: 1 });
     });
+
+    it("contadores corruptos (NaN) caen a 1/0 sin explotar", () => {
+      expect(computeNextCounter({ count: "abc" as unknown as number, attendingCount: "x" as unknown as number }, false)).toEqual({
+        count: 1,
+        attendingCount: 0,
+      });
+    });
   });
 });
+

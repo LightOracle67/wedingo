@@ -156,6 +156,32 @@ describe("buildMainGuestData", () => {
   });
 });
 
+
+  it("asiste sin transporte ni menú: no persiste campos de transporte vacíos ni mealChoice", () => {
+    const doc = buildMainGuestData({
+      data: {
+        ...form,
+        menuSelection: "",
+        transportChoice: "",
+        transportMode: "",
+        transportTime: "",
+        transportPlace: "",
+        companionTransportModes: undefined as never,
+        companionTransportChoices: undefined as never,
+      },
+      isAttending: true,
+      companionCount: 2,
+      single: "García Pérez López",
+      encryptedDietaryInfo: "",
+      inviteToken: "tok",
+      nowTimestamp: now,
+    });
+    expect(doc.transportMode).toBeUndefined();
+    expect(doc.transportTime).toBeUndefined();
+    expect(doc.companionTransportModes).toBeUndefined();
+    expect(doc.mealChoice).toBeUndefined();
+  });
+
 describe("buildCompanionData", () => {
   it("never persists isChild nor parentalConsent (children are counted on the main doc)", () => {
     const doc = buildCompanionData({
