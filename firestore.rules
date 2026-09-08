@@ -599,17 +599,31 @@ service cloud.firestore {
            !hasAny || (tipo && cota) solo aplica cuando el campo viene en el
            write, así que las escrituras parciales siguen válidas. */
 
-        && (!request.resource.data.keys().hasAny(['companionCount']) || (request.resource.data.companionCount is number && request.resource.data.companionCount >= 0 && request.resource.data.companionCount <= 100))
-        && (!request.resource.data.keys().hasAny(['childrenCount']) || (request.resource.data.childrenCount is number && request.resource.data.childrenCount >= 0 && request.resource.data.childrenCount <= 500))
-        && (!request.resource.data.keys().hasAny(['companionNames']) || (request.resource.data.companionNames is list && request.resource.data.companionNames.size() <= 100))
-        && (!request.resource.data.keys().hasAny(['companionMenus']) || (request.resource.data.companionMenus is list && request.resource.data.companionMenus.size() <= 100))
-        && (!request.resource.data.keys().hasAny(['companionAllergies']) || (request.resource.data.companionAllergies is list && request.resource.data.companionAllergies.size() <= 100))
-        && (!request.resource.data.keys().hasAny(['companionAllergiesOther']) || (request.resource.data.companionAllergiesOther is list && request.resource.data.companionAllergiesOther.size() <= 100))
-        && (!request.resource.data.keys().hasAny(['companionDocIds']) || (request.resource.data.companionDocIds is list && request.resource.data.companionDocIds.size() <= 100))
-        && (!request.resource.data.keys().hasAny(['companionTransportChoices']) || (request.resource.data.companionTransportChoices is list && request.resource.data.companionTransportChoices.size() <= 100))
-        && (!request.resource.data.keys().hasAny(['companionTransportModes']) || (request.resource.data.companionTransportModes is list && request.resource.data.companionTransportModes.size() <= 100))
-        && (!request.resource.data.keys().hasAny(['companionTransportTimes']) || (request.resource.data.companionTransportTimes is list && request.resource.data.companionTransportTimes.size() <= 100))
-        && (!request.resource.data.keys().hasAny(['companionTransportPlaces']) || (request.resource.data.companionTransportPlaces is list && request.resource.data.companionTransportPlaces.size() <= 100));
+        /* R1 (auditoría 2026-09-08): cotas acotadas y ALINEACIÓN de los
+           agregados de acompañantes/niños. La UI permite MAX_COMPANIONS=2 y
+           MAX_CHILDREN=10; el servidor admite 20/50 por tolerancia con
+           familiares/promociones antiguas, pero exige que la lista de nombres
+           coincida 1:1 con el contador declarado (los elementos no se pueden
+           inspeccionar en rules, así que la cota de tamaño + alineación + el
+           límite duro de 1 MiB de documento acotan el crecimiento). Las
+           guardas !hasAny || (tipo && cota) solo aplican cuando el campo viene
+           en el write, así que las escrituras parciales siguen válidas. */
+        && (!request.resource.data.keys().hasAny(['companionCount']) || (request.resource.data.companionCount is number && request.resource.data.companionCount >= 0 && request.resource.data.companionCount <= 20))
+        && (!request.resource.data.keys().hasAny(['childrenCount']) || (request.resource.data.childrenCount is number && request.resource.data.childrenCount >= 0 && request.resource.data.childrenCount <= 50))
+        && (!request.resource.data.keys().hasAll(['companionCount', 'companionNames']) || request.resource.data.companionNames.size() == request.resource.data.companionCount)
+        && (!request.resource.data.keys().hasAll(['companionCount', 'companionMenus']) || (request.resource.data.companionMenus is list && request.resource.data.companionMenus.size() == request.resource.data.companionCount))
+        && (!request.resource.data.keys().hasAll(['companionCount', 'companionAllergies']) || (request.resource.data.companionAllergies is list && request.resource.data.companionAllergies.size() == request.resource.data.companionCount))
+        && (!request.resource.data.keys().hasAny(['companionNames']) || (request.resource.data.companionNames is list && request.resource.data.companionNames.size() <= 20))
+        && (!request.resource.data.keys().hasAny(['companionMenus']) || (request.resource.data.companionMenus is list && request.resource.data.companionMenus.size() <= 20))
+        && (!request.resource.data.keys().hasAny(['companionAllergies']) || (request.resource.data.companionAllergies is list && request.resource.data.companionAllergies.size() <= 20))
+        && (!request.resource.data.keys().hasAny(['companionAllergiesOther']) || (request.resource.data.companionAllergiesOther is list && request.resource.data.companionAllergiesOther.size() <= 20))
+        && (!request.resource.data.keys().hasAny(['companionDocIds']) || (request.resource.data.companionDocIds is list && request.resource.data.companionDocIds.size() <= 20))
+        && (!request.resource.data.keys().hasAny(['companionTransportChoices']) || (request.resource.data.companionTransportChoices is list && request.resource.data.companionTransportChoices.size() <= 20))
+        && (!request.resource.data.keys().hasAny(['companionTransportModes']) || (request.resource.data.companionTransportModes is list && request.resource.data.companionTransportModes.size() <= 20))
+        && (!request.resource.data.keys().hasAny(['companionTransportTimes']) || (request.resource.data.companionTransportTimes is list && request.resource.data.companionTransportTimes.size() <= 20))
+        && (!request.resource.data.keys().hasAny(['companionTransportPlaces']) || (request.resource.data.companionTransportPlaces is list && request.resource.data.companionTransportPlaces.size() <= 20))
+        && (!request.resource.data.keys().hasAny(['childrenAllergies']) || (request.resource.data.childrenAllergies is list && request.resource.data.childrenAllergies.size() <= 50))
+        && (!request.resource.data.keys().hasAny(['childrenAllergiesOther']) || (request.resource.data.childrenAllergiesOther is list && request.resource.data.childrenAllergiesOther.size() <= 50));
 
       /* Lectura separada en get (doc individual) y list (consultas):
          el invitado público (sin sesión) puede hacer getDoc SOLO de su

@@ -7,9 +7,8 @@ import { downloadJson } from "../../lib/file-utils";
 import { escHtml } from "../../lib/utils";
 import { logAudit } from "../../lib/audit";
 import { useColumnSort, type SortableColumn } from "../../lib/useColumnSort";
-import { SortableTh } from "../../components/SortableTh";
 import InvitationDetailModal from "./InvitationDetailModal";
-import { DataTabRow } from "./data-tab-row";
+import { DataTableSection, type PiiResult } from "./DataTableSection";
 import { useConfirm } from "../../contexts/ConfirmContext";
 import { menuSummary, loadMediaForToken, sanitizeInvitationForExport, cascadeDelete, buildInvitationData, filterByActivity, type InvitationData } from "./data-tab-helpers";
 
@@ -45,7 +44,7 @@ export default function DataTab() {
   const [detailToken, setDetailToken] = useState<string | null>(null);
   /** Búsqueda global de PII (invitados por nombre en todas las invitaciones). */
   const [piiQuery, setPiiQuery] = useState("");
-  const [piiResults, setPiiResults] = useState<Array<{ token: string; name: string; attendance: string }>>([]);
+  const [piiResults, setPiiResults] = useState<PiiResult[]>([]);
   /** Tema a aplicar en bloque a las invitaciones seleccionadas. */
   const [bulkTheme, setBulkTheme] = useState("golden");
   const [bulkingTheme, setBulkingTheme] = useState(false);
@@ -459,8 +458,9 @@ export default function DataTab() {
   }, [selected, addToast, t]);
 
   // El detalle y el enlace al panel del admin solo tienen sentido con UNA
-  // invitación seleccionada.
-  const singleSelected = selected.size === 1 ? [...selected][0] : "";
+  // invitación seleccionada. `?? ""` protege el índice bajo
+  // noUncheckedIndexedAccess (la lista procede de un Set con tamaño 1).
+  const singleSelected = selected.size === 1 ? [...selected][0] ?? "" : "";
 
   /** Aplica una fecha de expiración manual a las invitaciones seleccionadas. */
   const handleBulkExpiry = useCallback(async () => {
@@ -636,371 +636,56 @@ export default function DataTab() {
     );
   }
 
-  const selectedCount = selected.size;
-  const totalCount = invitations.length;
-  const isEmptyCount = emptyIds.size;
-
   return (
-    <div className="admin-flex--col" style={{ height: "100%", minHeight: 0 }}>
-      {/* ── Acciones en lote ── */}
-      <div className="data-tab-actions">
-        <button
-          type="button"
-          className="setup-button setup-button--ghost setup-button--compact"
-          onClick={selectAll}
-          disabled={busy}
-        >
-          {t("superadmin.data.selectAll")}
-        </button>
-        <button
-          type="button"
-          className="setup-button setup-button--ghost setup-button--compact"
-          onClick={deselectAll}
-          disabled={busy}
-        >
-          {t("superadmin.data.deselectAll")}
-        </button>
-
-        <span style={{ flex: 1, minWidth: "0.5rem" }} />
-
-        <button type="button" className="setup-button setup-button--compact" onClick={exportAll} disabled={busy}>
-          {t("superadmin.data.exportAllBtn")} ({totalCount})
-        </button>
-        <button
-          type="button"
-          className="setup-button setup-button--ghost setup-button--compact"
-          onClick={() => void exportRange()}
-          disabled={busy}
-        >
-          {t("superadmin.data.rangeBtn")}
-        </button>
-
-        {selectedCount > 0 && (
-          <>
-            {singleSelected ? (
-              <button
-                type="button"
-                className="setup-button setup-button--ghost setup-button--compact"
-                onClick={() => setDetailToken(singleSelected)}
-                disabled={busy}
-              >
-                {t("superadmin.data.detailBtn")}
-              </button>
-            ) : null}
-            {singleSelected ? (
-              <a
-                className="setup-button setup-button--ghost setup-button--compact"
-                href={`/${singleSelected}/admin`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t("superadmin.data.adminLink")}
-              </a>
-            ) : null}
-            <button
-              type="button"
-              className="setup-button setup-button--compact"
-              onClick={exportSelected}
-              disabled={busy}
-            >
-              {t("superadmin.data.exportSelectedBtn", { count: selectedCount })}
-            </button>
-            <button
-              type="button"
-              className="setup-button setup-button--ghost setup-button--compact"
-              onClick={() => void handlePrintSelected()}
-              disabled={busy}
-            >
-              {t("superadmin.data.printBtn")} ({selectedCount})
-            </button>
-            <button
-              type="button"
-              className="setup-button setup-button--ghost setup-button--compact"
-              onClick={() => void handleExcelSelected()}
-              disabled={busy}
-            >
-              {t("superadmin.data.excelBtn")} ({selectedCount})
-            </button>
-            <button
-              type="button"
-              className="setup-button setup-button--ghost setup-button--compact"
-              onClick={() => void handleMenusSelected()}
-              disabled={busy}
-            >
-              {t("superadmin.data.menusBtn")} ({selectedCount})
-            </button>
-            <button
-              type="button"
-              className="setup-button setup-button--ghost setup-button--compact"
-              onClick={() => void handleBulkExpiry()}
-              disabled={busy}
-            >
-              {t("superadmin.data.bulkExpiryBtn")} ({selectedCount})
-            </button>
-            <button
-              type="button"
-              className="setup-button setup-button--ghost setup-button--compact"
-              onClick={() => void handleBulkSeal()}
-              disabled={busy}
-            >
-              {t("superadmin.data.bulkSealBtn")} ({selectedCount})
-            </button>
-            <button
-              type="button"
-              className="setup-button setup-button--danger setup-button--compact"
-              onClick={deleteSelected}
-              disabled={busy || confirmText !== CONFIRM_WORD}
-            >
-              {t("superadmin.data.deleteSelectedBtn", { count: selectedCount })}
-            </button>
-          </>
-        )}
-
-        {isEmptyCount > 0 && (
-          <button
-            type="button"
-            className="setup-button setup-button--danger setup-button--compact"
-            onClick={() => {
-              setSelected(emptyIds);
-            }}
-            disabled={busy}
-          >
-            {t("superadmin.data.selectEmpty", { count: isEmptyCount })}
-          </button>
-        )}
-      </div>
-
-      {/* ── Confirmación ── */}
-      <div className="data-tab-confirm">
-        <input
-          type="text"
-          className="setup-input"
-          value={confirmText}
-          onChange={(e) => setConfirmText(e.target.value)}
-          placeholder={t("superadmin.data.confirmPlaceholder", { word: CONFIRM_WORD })}
-          aria-label={t("superadmin.data.confirmInputLabel")}
-          disabled={busy}
-        />
-        <button
-          type="button"
-          className="setup-button setup-button--danger"
-          onClick={deleteAll}
-          disabled={busy || confirmText !== CONFIRM_WORD}
-          aria-busy={busy}
-        >
-          {busy ? t("common.loading") : t("superadmin.data.deleteAllBtn")}
-        </button>
-        <button
-          type="button"
-          className="setup-button setup-button--danger setup-button--ghost"
-          onClick={() => void handlePurgeOld()}
-          disabled={busy}
-        >
-          {t("superadmin.data.purgeBtn")}
-        </button>
-      </div>
-
-      {/* ── Filtro de actividad ── */}
-      <div className="admin-filters" style={{ marginBottom: "0.75rem" }}>
-        <select
-          className="setup-input"
-          value={activityFilter}
-          onChange={(e) => setActivityFilter(e.target.value)}
-          aria-label={t("superadmin.data.activityFilter")}
-          style={{ maxWidth: "16rem" }}
-        >
-          <option value="todas">{t("superadmin.data.activityAll")}</option>
-          <option value="hoy">{t("superadmin.data.activityToday")}</option>
-          <option value="semana">{t("superadmin.data.activityWeek")}</option>
-          <option value="sesion">{t("superadmin.data.activitySession")}</option>
-        </select>
-        <span className="setup-help" style={{ margin: 0 }}>
-          {t("superadmin.data.filteredCount", { count: filtered.length, total: totalCount })}
-        </span>
-      </div>
-
-      {/* ── Búsqueda global de PII (derechos GDPR) ── */}
-      <div
-        className="admin-filters"
-        style={{ marginBottom: "0.75rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}
-      >
-        <input
-          className="setup-input"
-          style={{ flex: 1, minWidth: "12rem" }}
-          value={piiQuery}
-          onChange={(e) => setPiiQuery(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") void searchPii();
-          }}
-          placeholder={t("superadmin.data.piiPlaceholder")}
-          aria-label={t("superadmin.data.piiPlaceholder")}
-        />
-        <button className="setup-button setup-button--compact" type="button" onClick={() => void searchPii()}>
-          {t("superadmin.data.piiSearch")}
-        </button>
-        {piiResults.length > 0 ? (
-          <span className="setup-help" style={{ margin: 0 }}>
-            {t("superadmin.data.piiCount", { count: piiResults.length })}
-          </span>
-        ) : null}
-      </div>
-      {piiResults.length > 0 ? (
-        <div
-          style={{
-            marginBottom: "0.75rem",
-            maxHeight: "8rem",
-            overflowY: "auto",
-            border: "1px solid var(--setup-border)",
-            borderRadius: "0.5rem",
-          }}
-        >
-          {piiResults.map((r) => (
-            <div
-              // Key estable (token+nombre): evita remounts si la lista cambia
-              // de orden o se refiltra.
-              key={`${r.token}-${r.name}`}
-              style={{
-                padding: "0.3rem 0.6rem",
-                fontSize: "0.78rem",
-                borderBottom: "1px solid color-mix(in srgb, var(--setup-border) 50%, transparent)",
-              }}
-            >
-              {r.name} — {r.attendance} · <code>{r.token}</code>
-            </div>
-          ))}
-        </div>
-      ) : null}
-
-      {/* ── Tema en bloque para la selección ── */}
-      <div className="admin-flex" style={{ marginBottom: "0.75rem", gap: "0.5rem", flexWrap: "wrap" }}>
-        <select
-          className="setup-input"
-          value={bulkTheme}
-          onChange={(e) => setBulkTheme(e.target.value)}
-          aria-label={t("superadmin.data.bulkTheme")}
-          style={{ maxWidth: "12rem" }}
-        >
-          {[
-            "golden",
-            "forest",
-            "rose",
-            "linen-soft",
-            "blush-pearl",
-            "lavender-mist",
-            "champagne-bubble",
-            "amber-night",
-            "onyx-gold",
-            "midnight-royal",
-            "burgundy-velvet",
-            "sapphire-night",
-            "emerald-grove",
-            "plum-twilight",
-            "rainbow",
-            "trans",
-            "nonbinary",
-            "lesbian",
-            "bi",
-            "pan",
-            "ace",
-          ].map((th) => (
-            <option key={th} value={th}>
-              {th}
-            </option>
-          ))}
-        </select>
-        <button
-          className="setup-button setup-button--ghost setup-button--compact"
-          type="button"
-          onClick={() => void applyBulkTheme()}
-          disabled={!selected.size || bulkingTheme}
-        >
-          {t("superadmin.data.bulkTheme", { count: selected.size })}
-        </button>
-      </div>
-
-      {/* ── Tabla de invitaciones ── */}
-      <div className="data-tab-table-wrap">
-        <table className="data-tab-table">
-          {/* caption visible solo para lectores de pantalla (WCAG 1.3.1). */}
-          <caption className="sr-only">{t("superadmin.data.tableCaption")}</caption>
-          <thead>
-            <tr className="data-tab-sticky-header">
-              <th scope="col" className="data-tab-th">
-                <input
-                  type="checkbox"
-                  checked={selectedCount === totalCount && totalCount > 0}
-                  onChange={() => (selectedCount === totalCount ? deselectAll() : selectAll())}
-                  disabled={busy}
-                  aria-label={t("superadmin.data.selectAll")}
-                />
-              </th>
-              <SortableTh columnKey="token" order={getIndicator("token")} onSort={toggleSort} className="data-tab-th">
-                {t("superadmin.data.colToken")}
-              </SortableTh>
-              <SortableTh columnKey="names" order={getIndicator("names")} onSort={toggleSort} className="data-tab-th">
-                {t("superadmin.data.colNames")}
-              </SortableTh>
-              <SortableTh columnKey="date" order={getIndicator("date")} onSort={toggleSort} className="data-tab-th">
-                {t("superadmin.data.colDate")}
-              </SortableTh>
-              <SortableTh columnKey="rsvps" order={getIndicator("rsvps")} onSort={toggleSort} className="data-tab-th">
-                {t("superadmin.data.colRsvps")}
-              </SortableTh>
-              <SortableTh columnKey="visits" order={getIndicator("visits")} onSort={toggleSort} className="data-tab-th">
-                {t("superadmin.data.colVisits")}
-              </SortableTh>
-              <SortableTh
-                columnKey="session"
-                order={getIndicator("session")}
-                onSort={toggleSort}
-                className="data-tab-th"
-              >
-                {t("superadmin.data.colSession")}
-              </SortableTh>
-              <SortableTh
-                columnKey="activity"
-                order={getIndicator("activity")}
-                onSort={toggleSort}
-                className="data-tab-th"
-              >
-                {t("superadmin.data.colActivity")}
-              </SortableTh>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedInvitations.map((inv) => (
-              <DataTabRow
-                key={inv.id}
-                inv={inv}
-                isSelected={selected.has(inv.id)}
-                isGhost={emptyIds.has(inv.id)}
-                disabled={busy}
-                onToggle={toggleSelect}
-                onCopyToken={handleCopyToken}
-                t={t}
-              />
-            ))}
-          </tbody>
-        </table>
-        {!invitations.length && <p className="data-tab-empty-msg">{t("superadmin.data.noInvitations")}</p>}
-      </div>
+    <>
+      <DataTableSection
+        invitations={invitations}
+        filtered={filtered}
+        sortedInvitations={sortedInvitations}
+        selected={selected}
+        selectedCount={selected.size}
+        totalCount={invitations.length}
+        emptyIds={emptyIds}
+        isEmptyCount={emptyIds.size}
+        singleSelected={singleSelected}
+        busy={busy}
+        activityFilter={activityFilter}
+        onActivityFilterChange={setActivityFilter}
+        confirmText={confirmText}
+        onConfirmTextChange={setConfirmText}
+        piiQuery={piiQuery}
+        onPiiQueryChange={setPiiQuery}
+        piiResults={piiResults}
+        onSearchPii={() => void searchPii()}
+        bulkTheme={bulkTheme}
+        onBulkThemeChange={setBulkTheme}
+        onApplyBulkTheme={() => void applyBulkTheme()}
+        bulkThemeBusy={bulkingTheme}
+        onSelectAll={selectAll}
+        onDeselectAll={deselectAll}
+        onSelectEmpty={() => setSelected(emptyIds)}
+        onExportAll={() => void exportAll()}
+        onExportRange={() => void exportRange()}
+        onOpenDetail={(token) => setDetailToken(token)}
+        onExportSelected={() => void exportSelected()}
+        onPrintSelected={() => void handlePrintSelected()}
+        onExcelSelected={() => void handleExcelSelected()}
+        onMenusSelected={() => void handleMenusSelected()}
+        onBulkExpiry={() => void handleBulkExpiry()}
+        onBulkSeal={() => void handleBulkSeal()}
+        onDeleteSelected={() => void deleteSelected()}
+        onDeleteAll={() => void deleteAll()}
+        onPurgeOld={() => void handlePurgeOld()}
+        onToggleSelect={toggleSelect}
+        onCopyToken={handleCopyToken}
+        onToggleSort={toggleSort}
+        getIndicator={getIndicator}
+        t={t}
+      />
 
       {/* Modal de detalle de invitación (moderación social, RSVP, configLog…). */}
       {detailToken ? <InvitationDetailModal token={detailToken} onClose={() => setDetailToken(null)} /> : null}
-    </div>
+    </>
   );
 }
-
-// ═══════════════════════════════════════════════════════
-// HELPERS
-// ═══════════════════════════════════════════════════════
-
-
-
-/**
- * Elimina en cascada una invitación y todos sus datos asociados:
- * RSVPs, imágenes de galería, tokens de setup, y el documento principal.
- *
- * @param {string} token - Token/ID de la invitación.
- */
 

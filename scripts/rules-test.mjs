@@ -134,10 +134,10 @@ async function run() {
     privacyConsentAt: new Date(),
   };
   const responses = guestDb.collection("rsvpResponses").doc("AbCdEf1234").collection("responses");
-  await t("rsvp create válido (invitado)", true, responses.doc("r2").set({ ...rsvpBase, companions: 2, companionNames: ["B", "C"] }));
-  await t("rsvp create companions:string (invitado) → NEGADO", false, responses.doc("r3").set({ ...rsvpBase, companions: "pwned" }));
-  await t("rsvp create companions>100 (invitado) → NEGADO", false, responses.doc("r4").set({ ...rsvpBase, companions: 101 }));
-  await t("rsvp create companionNames>100 elems (invitado) → NEGADO", false, responses.doc("r5").set({ ...rsvpBase, companions: 0, companionNames: Array(101).fill("x") }));
+  await t("rsvp create válido (invitado)", true, responses.doc("r2").set({ ...rsvpBase, companionCount: 2, companionNames: ["B", "C"] }));
+  await t("rsvp create companions:string (invitado) → NEGADO", false, responses.doc("r3").set({ ...rsvpBase, companionCount: "pwned" }));
+  await t("rsvp create companions>100 (invitado) → NEGADO", false, responses.doc("r4").set({ ...rsvpBase, companionCount: 101 }));
+  await t("rsvp create companionNames>100 elems (invitado) → NEGADO", false, responses.doc("r5").set({ ...rsvpBase, companionCount: 0, companionNames: Array(101).fill("x") }));
 
   // H3-read: el invitado público puede hacer get de SU respuesta principal
   // (id determinista main_<hash>) pero NUNCA listar/consultar todas.
