@@ -181,6 +181,50 @@ describe("DataTab", () => {
     });
     render(<DataTab />);
     await vi.waitFor(() => expect(screen.getByText("superadmin.data.selectEmpty")).toBeInTheDocument());
+    // Al pulsarlo se seleccionan las vacías (la fila "emptytoken" queda checked).
+    fireEvent.click(screen.getByText("superadmin.data.selectEmpty"));
+    await vi.waitFor(() => {
+      const boxes = screen.getAllByRole("checkbox") as HTMLInputElement[];
+      // checkbox[0] = cabecera; al menos una fila (la vacía) queda checked.
+      expect(boxes.slice(1).some((b) => b.checked)).toBe(true);
+    });
+  });
+
+  it("abre el modal de detalle de la invitación seleccionada", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({
+          docs: [docData({ id: "t1", firstName: "A", secondName: "B" })],
+        });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("t1")).toBeInTheDocument());
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
+    fireEvent.click(screen.getByText("superadmin.data.detailBtn"));
+    expect(await screen.findByTestId("detail-modal")).toBeDefined();
+  });
+
+  it("ordena pinchando las cabeceras (activa los getValue de sortColumns)", async () => {
+    mockGetDocs.mockImplementation((ref: string) => {
+      if (ref === "invitations-collection-ref") {
+        return Promise.resolve({
+          docs: [
+            docData({ id: "t2", firstName: "B", secondName: "B", weddingDay: "2", weddingMonth: "2", weddingYear: "2026" }),
+            docData({ id: "t1", firstName: "A", secondName: "A", weddingDay: "1", weddingMonth: "1", weddingYear: "2025" }),
+          ],
+        });
+      }
+      return Promise.resolve({ docs: [] });
+    });
+    render(<DataTab />);
+    await vi.waitFor(() => expect(screen.getByText("t1")).toBeInTheDocument());
+    for (const h of ["superadmin.data.colToken", "superadmin.data.colNames", "superadmin.data.colDate"]) {
+      const btn = screen.getByText(h).closest("button")!;
+      fireEvent.click(btn);
+      expect(btn.closest("th")?.getAttribute("aria-sort")).toBe("ascending");
+    }
   });
 
   it("exports the selected invitations", async () => {
