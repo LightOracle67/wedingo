@@ -72,7 +72,7 @@
     "typescript": "^7.0.2",
     "vite": "^8.1.0",
     "vite-bundle-visualizer": "^1.2.1",
-    "vitest": "^4.1.9",
+    "vitest": "^4.1.11",
     "xlsx": "^0.18.5"
   },
   "overrides": {
