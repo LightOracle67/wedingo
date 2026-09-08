@@ -496,4 +496,19 @@ describe("ManageTab — ramas límite (backup, restaurar, copiar, sesión)", () 
       ).toBe(true),
     );
   });
+
+  it("alterna el estado 'verificada' y cambia el estatus de acceso", async () => {
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByText("manage.saveFlags")).toBeInTheDocument());
+    // Checkbox "verificada": on→off (cubre el onChange → setVerified(false)).
+    const verified = screen.getByLabelText("manage.verifiedLabel") as HTMLInputElement;
+    fireEvent.click(verified);
+    // Estatus de acceso: active → blocked (cubre setStatus).
+    const status = screen.getByLabelText("manage.status") as HTMLSelectElement;
+    fireEvent.change(status, { target: { value: "blocked" } });
+    fireEvent.click(screen.getByText("manage.saveFlags"));
+    await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalled());
+  });
 });

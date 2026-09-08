@@ -27,14 +27,16 @@
     "e2e": "playwright test --config e2e/playwright.config.ts",
     "firebase:login": "firebase login",
     "firebase:use": "firebase use --add",
-    "deploy:hosting": "npm run build && firebase deploy --only hosting",
+    "deploy:hosting": "npm run build && npm run check:no-runtime-xlsx && firebase deploy --only hosting",
     "deploy": "npm run lint && npm run build && firebase deploy --only hosting,firestore:rules",
     "bump": "node scripts/bump-version.js",
     "loadtest": "k6 run scripts/load-test.js",
-    "preready": "npm run lint && npm run build && npm run changelog:check && npm run translations:check",
+    "preready": "npm run lint && npm run build && npm run check:no-runtime-xlsx && npm run changelog:check && npm run translations:check && npm run translations:validate",
     "changelog:check": "node scripts/check-changelog.js",
     "test:rules": "firebase emulators:exec --only firestore --project demo-wedingo \"node scripts/rules-test.mjs\"",
-    "check:fields": "node scripts/check-fields-vs-rules.mjs"
+    "check:fields": "node scripts/check-fields-vs-rules.mjs",
+    "check:no-runtime-xlsx": "node scripts/check-no-runtime-xlsx.mjs",
+    "translations:validate": "node scripts/validate-translations.mjs"
   },
   "dependencies": {
     "@sentry/react": "^10.71.0",
