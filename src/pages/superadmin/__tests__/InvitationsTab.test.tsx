@@ -29,8 +29,9 @@ vi.mock("../../../lib/firebase", () => ({
   rsvpByInviteRef: vi.fn(() => "rsvp-ref"),
 }));
 
+const mockSearchInvitations = vi.hoisted(() => vi.fn((invitations: unknown[]) => invitations));
 vi.mock("../../../lib/superadmin-utils", () => ({
-  searchInvitations: (invitations: unknown[], _search: string) => invitations,
+  searchInvitations: (invitations: unknown[], _search: string) => mockSearchInvitations(invitations),
   formatBytes: (bytes: number) => `${(bytes / 1024).toFixed(1)} KB`,
 }));
 
@@ -138,5 +139,28 @@ describe("InvitationsTab", () => {
   it("renders search input", async () => {
     render(<InvitationsTab />);
     await vi.waitFor(() => expect(screen.getByPlaceholderText("superadmin.searchTokenPlaceholder")).toBeDefined());
+  });
+
+  it("buscar sin resultados muestra el EmptyState de filtro", async () => {
+    const { getDocs } = await getFirestore();
+    (getDocs as ReturnType<typeof vi.fn>).mockResolvedValue({
+      docs: [{ id: "inv1", data: () => ({ theme: "golden" }) }],
+    });
+    // El filtro real devuelve vacío para una búsqueda sin coincidencias.
+    mockSearchInvitations.mockReturnValue([]);
+    mockSearchInvitations.mockImplementation((inv: unknown[]) => inv);
+    render(<InvitationsTab />);
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeDefined());
+    mockSearchInvitations.mockReturnValue([]);
+    fireEvent.change(screen.getByLabelText("superadmin.searchTokenPlaceholder"), { target: { value: "zzz" } });
+    await vi.waitFor(() => expect(screen.getByText("superadmin.noResultsFilter")).toBeDefined());
+  });
+
+  it("sin invitaciones el botón de exportar está deshabilitado", async () => {
+    const { getDocs } = await getFirestore();
+    (getDocs as ReturnType<typeof vi.fn>).mockResolvedValue({ docs: [] });
+    render(<InvitationsTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.data.exportAllBtn")).toBeDefined());
+    expect((screen.getByText("superadmin.data.exportAllBtn") as HTMLButtonElement).disabled).toBe(true);
   });
 });
