@@ -1,8 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 
+const mockLang = vi.hoisted(() => ({ value: "es" }));
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string) => key, i18n: { language: "es" } }),
+  useTranslation: () => ({ t: (key: string) => key, i18n: { language: mockLang.value } }),
 }));
 
 import ComplianceTab from "../ComplianceTab";
@@ -96,5 +97,14 @@ describe("ComplianceTab", () => {
     fireEvent.click(screen.getAllByText("compliance.copyTemplate")[0]!);
     // Copia el texto de la plantilla en el idioma activo (es en el mock).
     expect(writeText).toHaveBeenCalledWith(expect.stringContaining("RGPD"));
+  });
+
+  it("en inglés (no es) se usan las plantillas y etiquetas en EN (rama es=false)", () => {
+    mockLang.value = "en";
+    render(<ComplianceTab />);
+    // Las plantillas por jurisdicción usan el texto inglés literal.
+    expect(screen.getByText("GDPR (EU)")).toBeDefined();
+    expect(screen.getByText("UK GDPR (United Kingdom)")).toBeDefined();
+    mockLang.value = "es";
   });
 });

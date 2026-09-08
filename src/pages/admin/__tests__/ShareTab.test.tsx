@@ -258,4 +258,18 @@ describe("ShareTab", () => {
       expect(baseProps.addToast).toHaveBeenCalledWith("error", "errors.clipboardCopyFailed");
     });
   });
+
+  it("si clipboard.write LANZA, se muestra el toast de error (rama catch)", async () => {
+    mockToDataURL.mockResolvedValueOnce("data:image/png;base64,cXJkYXRh");
+    Object.defineProperty(navigator, "clipboard", {
+      value: { write: vi.fn(() => Promise.reject(new Error("boom"))) },
+      configurable: true,
+    });
+    const addToast = vi.fn();
+    render(<ShareTab {...baseProps} addToast={addToast} />);
+    const copyBtn = await screen.findByText("share.copyQr");
+    fireEvent.click(copyBtn);
+    await vi.waitFor(() => expect(addToast).toHaveBeenCalledWith("error", "share.copyQrFailed"));
+    Object.defineProperty(navigator, "clipboard", { value: undefined, configurable: true, writable: true });
+  });
 });
