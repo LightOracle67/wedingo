@@ -279,4 +279,55 @@ describe("buildConfirmationsPerDay", () => {
     const total = series.reduce((s, d) => s + d.count, 0);
     expect(total).toBe(1);
   });
+
+describe("buildAttendancePrediction (bordes)", () => {
+  it("sin fecha de boda (null): sin futuro, 0 días y proyección = confirmados", () => {
+    const now = 1_800_000_000_000;
+    const r = buildAttendancePrediction(
+      [{ attendance: "yes", companions: 2 }, { attendance: "no" }],
+      100,
+      null,
+      now,
+    );
+    expect(r.hasFutureWedding).toBe(false);
+    expect(r.daysToWedding).toBe(0);
+    expect(r.projected).toBe(2); // solo confirmados ya contados (yes + 2 acompañantes)
+  });
+
+  it("tendencia 'up' cuando la última semana confirma más que la anterior", () => {
+    const now = 1_800_000_000_000;
+    const recent = now - 2 * 86400000;
+    const past = now - 10 * 86400000;
+    const entries = [
+      ...Array(6).fill({ attendance: "yes" as const, submittedAt: recent }),
+      ...Array(3).fill({ attendance: "yes" as const, submittedAt: past }),
+    ];
+    expect(buildAttendancePrediction(entries, 100, now + 30 * 86400000, now).trend).toBe("up");
+    // Caso inverso → down.
+    const down = [
+      ...Array(2).fill({ attendance: "yes" as const, submittedAt: recent }),
+      ...Array(6).fill({ attendance: "yes" as const, submittedAt: past }),
+    ];
+    expect(buildAttendancePrediction(down, 100, now + 30 * 86400000, now).trend).toBe("down");
+  });
+
+  it("buildConfirmationsPerDay acepta Date y string ISO y descarta entradas inválidas", () => {
+    const now = 1_750_000_000_000 + 2 * 86400000;
+    const ok = now - 3 * 86400000;
+    const out = buildConfirmationsPerDay(
+      [
+        { attendance: "yes", submittedAt: new Date(ok) },
+        { attendance: "yes", submittedAt: new Date(ok).toISOString() },
+        { attendance: "yes", submittedAt: "cadena inválida" },
+        { attendance: "yes", submittedAt: 0 },
+        { attendance: "no", submittedAt: new Date(ok) },
+      ],
+      14,
+      now,
+    );
+    // Los dos yes válidos caen el mismo día → count 2; los inválidos se ignoran.
+    const total = out.reduce((sum, d) => sum + d.count, 0);
+    expect(total).toBe(2);
+  });
+});
 });

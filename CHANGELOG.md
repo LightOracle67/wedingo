@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.18 — 2026-09-08
+- `admin-utils` (ramas límite): proyección con `weddingTimestamp` nulo, tendencia 'up'/'down' con ≥7 timestamps y `buildConfirmationsPerDay` con Date/ISO/inválidos.
+- Medido 92,61/83,89/91,45/94,42 · **2587 tests** (209 ficheros) · tsc/oxlint 0/0.
 ## 2.192.17 — 2026-09-08
 - `ToolsTab`: el recordatorio de WhatsApp se edita por teclado y `openWhatsapp` abre `wa.me` con el texto escrito (URL-encoded).
 - Medido 92,62/83,74/91,50/94,42 · **2584 tests** (209 ficheros) · tsc/oxlint 0/0.
