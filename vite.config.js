@@ -118,6 +118,37 @@ function pwaPrecache() {
         .split("__PRECACHE_ASSETS__")
         .join(JSON.stringify(assets));
       writeFileSync(join(root, "dist", "sw.js"), finalSw);
+
+      // LCP del invitado: prefetch de la ruta crítica de Firestore en paralelo.
+      // `vendor-firebase` (core de Firestore) y `providers` NO se preloadan por
+      // defecto: están en la lista de preload intra-JS de un import dinámico
+      // (ruta del invitado), así que el navegador los descarga DESPUÉS de
+      // resolver React → waterfall que retrasa el primer pintado de datos.
+      // Un <link rel="modulepreload"> en el HTML arranca su descarga durante
+      // el parseo, en paralelo al entry (ruta invitado y landing).
+      // v2.193.
+      const PRELOAD_PREFIXES = ["vendor-firebase-", "providers-", "invitation-", "landing-", "PublicInvitation-"];
+      const preloadHtmlPath = join(root, "dist", "index.html");
+      const preloadHtml = readFileSync(preloadHtmlPath, "utf8");
+      const existingHrefs = new Set(
+        [...preloadHtml.matchAll(/href="(\/assets\/[^"]+\.js)"/g)].map((m) => m[1]),
+      );
+      const toPreload = [];
+      for (const file of readdirSync(assetsDir)) {
+        if (file.endsWith(".js") && PRELOAD_PREFIXES.some((p) => file.startsWith(p))) {
+          const href = `/assets/${file}`;
+          if (!existingHrefs.has(href)) toPreload.push(`    <link rel="modulepreload" crossorigin href="${href}" />`);
+        }
+      }
+      if (toPreload.length > 0) {
+        // Se insertan ANTES del <link rel="stylesheet"> para no retrasar el CSS
+        // crítico y que los chunks arranquen tan pronto como parsee el HTML.
+        const nextHtml = preloadHtml.replace(
+          '<link rel="stylesheet"',
+          `${toPreload.join("\n")}\n    <link rel="stylesheet"`,
+        );
+        writeFileSync(preloadHtmlPath, nextHtml);
+      }
     },
   };
 }
