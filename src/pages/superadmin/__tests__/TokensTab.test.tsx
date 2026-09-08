@@ -192,4 +192,65 @@ describe("TokensTab", () => {
     fireEvent.click(screen.getByText("superadmin.cleanUnused"));
     expect(mockConfirm).toHaveBeenCalled();
   });
+
+  it("limpia SOLO los tokens nunca usados (conserva los de sesión activa)", async () => {
+    const batchUpdates: unknown[][] = [];
+    mockWriteBatch.mockImplementation(() => {
+      const b = { update: (...a: unknown[]) => batchUpdates.push(a), commit: vi.fn().mockResolvedValue(undefined) };
+      return b;
+    });
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      // La consulta del cleanup devuelve ambas invitaciones con token.
+      if (ref === "query-ref") {
+        return Promise.resolve({
+          docs: [
+            { id: "inv1", ref: "r1", data: () => ({ _activeSetupToken: "t1", activeSession: new Date() }) },
+            { id: "inv2", ref: "r2", data: () => ({ _activeSetupToken: "t2" }) },
+          ],
+          size: 2,
+          empty: false,
+        });
+      }
+      return Promise.resolve({ docs: [], size: 0, empty: true });
+    });
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.cleanUnused")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.cleanUnused"));
+    // Solo inv2 (sin sesión) entra en el batch; inv1 con sesión se preserva.
+    await vi.waitFor(() =>
+      expect(screen.getByText("superadmin.tokensCleaned", { exact: false })).toBeInTheDocument(),
+    );
+    expect(batchUpdates.length).toBe(1);
+    expect(batchUpdates[0]?.[0]).toBe("r2");
+  });
+
+  it("no limpia nada si se cancela la confirmación", async () => {
+    mockConfirm.mockReturnValue(false);
+    mockTokenSnapshots([{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }]);
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.cleanUnused")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.cleanUnused"));
+    expect(mockWriteBatch).not.toHaveBeenCalled();
+  });
+
+  it("muestra error si falla la limpieza", async () => {
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "query-ref") return Promise.reject(new Error("boom"));
+      return Promise.resolve({ docs: [], size: 0, empty: true });
+    });
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("superadmin.cleanUnused")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("superadmin.cleanUnused"));
+    await vi.waitFor(() => expect(screen.getByText("superadmin.tokenCleanError")).toBeInTheDocument());
+  });
+
+  it("muestra error si falla la migración en lote", async () => {
+    mockTokenSnapshots([{ id: "inv1", data: () => ({ _activeSetupToken: "token1" }) }]);
+    mockUpdateDoc.mockRejectedValue(new Error("migrate fail"));
+    render(<TokensTab />);
+    await vi.waitFor(() => expect(screen.getByText("inv1")).toBeInTheDocument());
+    fireEvent.click(screen.getAllByRole("checkbox")[1]!);
+    fireEvent.click(screen.getByText("superadmin.migrateSelected"));
+    await vi.waitFor(() => expect(screen.getByText("superadmin.tokenMigrateError")).toBeInTheDocument());
+  });
 });
