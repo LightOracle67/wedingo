@@ -3,7 +3,7 @@
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
 ## 2.192.21 — 2026-09-08
-- `DataTab`: sel… che seleccionar vacías con clic, apertura del modal de detalle de la invitación seleccionada y ordenación pinchando las cabeceras (activa los `getValue` de `sortColumns`).
+- `DataTab`: seleccionar vacías con clic, apertura del modal de detalle de la invitación seleccionada y ordenación pinchando las cabeceras (activa los `getValue` de `sortColumns`).
 - Medido 92,68/84,04/91,62/94,49 · **2593 tests** (209 ficheros) · tsc/oxlint 0/0.
 ## 2.192.20 — 2026-09-08
 - `useSetupAuth`: doble llamada síncrona al reset de token (setup y admin) → la segunda se ignora mientras la primera está en curso (`resettingRef`).
