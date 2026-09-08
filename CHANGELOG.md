@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.14 — 2026-09-08
+- +2 tests límite: `PlatformTab` (edición de lista negra de tokens y umbral de expiración con `slice` de 2000/3) y `SettingsTab` (rama de uid ausente → fallback y sesión inactiva).
+- Medido 92,55/83,62/91,33/94,37 · **2580 tests** (208 ficheros) · tsc/oxlint 0/0.
 ## 2.192.13 — 2026-09-08
 - +3 tests límite: `ComplianceTab` (activación de los 6 `getValue` de ordenación con ciclo asc/desc/none + copia de plantilla al portapapeles) y `ManageTab` (edición de firma de RSVP, notas del admin y expiración manual con persistencia en Firestore).
 - Medido 92,54/83,61/91,29/94,35 · **2578 tests** (208 ficheros) · tsc/oxlint 0/0.

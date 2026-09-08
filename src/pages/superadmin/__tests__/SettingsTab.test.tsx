@@ -18,9 +18,10 @@ vi.mock("../../../lib/sessionVars", () => ({
   clearSession: () => mockClearSession(),
 }));
 
+const mockUser = vi.hoisted(() => ({ value: { uid: "test-uid" } as { uid?: string } | null }));
 vi.mock("../../../contexts/SuperAdminContext", () => ({
   useSuperAdmin: () => ({
-    user: { uid: "test-uid" },
+    user: mockUser.value,
     logout: () => mockLogout(),
   }),
 }));
@@ -111,5 +112,13 @@ describe("SettingsTab", () => {
     render(<SettingsTab />);
     expect(screen.getByText("superadmin.firebaseLink")).toBeInTheDocument();
     expect(screen.getByText("superadmin.firebaseAccount")).toBeInTheDocument();
+  });
+
+  it("sin usuario logueado muestra el fallback de uid y sesión inactiva", () => {
+    mockUser.value = null;
+    render(<SettingsTab />);
+    expect(screen.getByText("superadmin.accountEmail")).toBeDefined();
+    expect(screen.getByText("superadmin.sessionInactive")).toBeDefined();
+    mockUser.value = { uid: "test-uid" };
   });
 });

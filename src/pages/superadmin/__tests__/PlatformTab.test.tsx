@@ -111,4 +111,20 @@ describe("PlatformTab", () => {
     fireEvent.change(screen.getByLabelText("platform.globalBanner"), { target: { value: "B".repeat(510) } });
     expect((screen.getByLabelText("platform.globalBanner") as HTMLTextAreaElement).value).toHaveLength(500);
   });
+
+  it("edita la lista negra de tokens y el umbral de expiración y los persiste (slice)", async () => {
+    render(<PlatformTab />);
+    await screen.findByLabelText("platform.maintenanceToggle");
+    // La lista de tokens se recorta a 2000; se escribe texto corto primero.
+    fireEvent.change(screen.getByLabelText("platform.blockedTokens"), { target: { value: "abc123" } });
+    fireEvent.change(screen.getByLabelText("platform.blockedTokens"), { target: { value: "x".repeat(25) } });
+    // Días de expiración se recorta a 3 dígitos.
+    fireEvent.change(screen.getByLabelText("platform.expiringDays"), { target: { value: "45" } });
+    fireEvent.change(screen.getByLabelText("platform.expiringDays"), { target: { value: "12345" } });
+    fireEvent.click(screen.getByText("manage.saveConfig"));
+    await vi.waitFor(() => expect(mockSetDoc).toHaveBeenCalled());
+    const arg = mockSetDoc.mock.calls[0]![1] as Record<string, string>;
+    expect(arg.blockedTokens).toBe("x".repeat(25));
+    expect(arg.expiringDays).toBe("123");
+  });
 });
