@@ -1,5 +1,12 @@
 import { test, expect, type Page } from "@playwright/test";
-import { seedTestInvite, cleanupTestInvite, type SeededInvite } from "./test-invite";
+import {
+  seedTestInvite,
+  cleanupTestInvite,
+  dismissCookieBanner,
+  enableRsvpBridge,
+  setRsvpField,
+  type SeededInvite,
+} from "./test-invite";
 
 /**
  * Auditoría de overflows horizontales en pantallas pequeñas/tablet.
@@ -22,11 +29,13 @@ const VIEWPORTS = [
 
 async function openInvitation(page: Page, token: string): Promise<void> {
   await page.goto(`/${token}?invitar`);
+  await dismissCookieBanner(page);
   // El sobre bloquea hasta abrirlo; si aparece, se abre.
   const envelope = page.locator(".envelope-overlay");
-  if (await envelope.isVisible().catch(() => false)) {
-    await envelope.click();
-  }
+  await expect(envelope).toBeVisible({ timeout: 30000 });
+  // Clic DOM nativo en el panel frontal (la apertura dispara el desmontaje).
+  await page.locator(".envelope__panel--front").evaluate((el) => (el as HTMLElement).click());
+  await page.locator(".envelope-overlay").waitFor({ state: "detached", timeout: 15000 }).catch(() => {});
   // Espera a que se vea una sección con contenido.
   await expect(page.locator("[data-story-section]").first()).toBeVisible({ timeout: 30000 });
 }
@@ -79,22 +88,22 @@ test.describe("Overflow horizontal (pantallas pequeñas y tablet)", () => {
 
   test("RSVP con acompañantes sin desbordar a 320px", async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 640 });
+    // El flag __e2e debe existir ANTES de que monte RsvpSection (registra el
+    // puente __updateRsvpField en window).
+    await enableRsvpBridge(page);
     await openInvitation(page, invite.inviteToken);
     // Va a la sección RSVP (presente gracias a ?invitar).
     const rsvp = page.locator("[data-story-section='rsvp']");
     await rsvp.scrollIntoViewIfNeeded();
-    await expect(page.locator(".rsvp-form")).toBeVisible({ timeout: 15000 });
-    // Elige "Con acompañantes" y añade dos (el botón es hermano del select,
-    // con texto traducido según idioma: selector por relación estructural).
-    await page.locator("#rsvpAttendance").selectOption("with");
-    const addBtn = page.locator("#rsvpAttendance ~ button").first();
-    await addBtn.click();
-    await addBtn.click();
+    await expect(page.locator(".rv2-form")).toBeVisible({ timeout: 15000 });
+    // Elige "Con acompañantes" y añade dos (vía bridge, sin depender del botón frágil).
+    await setRsvpField(page, "attendance", "with");
+    await setRsvpField(page, "companionCount", 2);
+    await page.waitForTimeout(500);
     // Rellena los nombres para que el layout sea el real (con tarjetas).
-    const cards = page.locator(".rsvp-attendee-card");
+    await setRsvpField(page, "companionNames", ["Acompañante Uno", "Acompañante Dos"]);
+    const cards = page.locator(".rv2-card");
     await expect(cards).toHaveCount(2, { timeout: 5000 });
-    await page.locator("#companion-name-0").fill("Acompañante Uno");
-    await page.locator("#companion-name-1").fill("Acompañante Dos");
     // Mide el overflow con las tarjetas desplegadas.
     const overflow = await page.evaluate(() => {
       const doc = document.documentElement;

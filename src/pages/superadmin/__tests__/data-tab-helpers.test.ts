@@ -78,10 +78,16 @@ describe("buildInvitationData", () => {
 });
 
 describe("filterByActivity", () => {
+  // Fechas relativas a ahora para que el test pase cualquier día del año
+  // (antes usaban fechas hardcodeadas de agosto 2026 y quedaban fuera de la
+  // ventana "últimos 7 días" de la fecha del sistema).
+  const now = Date.now();
+  const iso = (msAgo: number) => new Date(now - msAgo).toISOString();
   const base: InvitationData[] = [
-    { id: "a", firstName: "A", secondName: "A", adminUsername: "", rsvpCount: 0, tokenCount: 0, weddingDate: "2030-01-01", hasSession: true, visits: 1, lastActivity: "2026-08-29T10:00:00Z", createdAt: "" },
-    { id: "b", firstName: "B", secondName: "B", adminUsername: "", rsvpCount: 0, tokenCount: 0, weddingDate: "2030-02-02", hasSession: false, visits: 2, lastActivity: "2026-08-28T10:00:00Z", createdAt: "" },
-    { id: "c", firstName: "C", secondName: "C", adminUsername: "", rsvpCount: 0, tokenCount: 0, weddingDate: "2030-03-03", hasSession: false, visits: 3, lastActivity: "2026-08-20T10:00:00Z", createdAt: "" },
+    // 'a' y 'b' dentro de la última semana; 'c' hace 10 días (fuera).
+    { id: "a", firstName: "A", secondName: "A", adminUsername: "", rsvpCount: 0, tokenCount: 0, weddingDate: "2030-01-01", hasSession: true, visits: 1, lastActivity: iso(2 * 86400000), createdAt: "" },
+    { id: "b", firstName: "B", secondName: "B", adminUsername: "", rsvpCount: 0, tokenCount: 0, weddingDate: "2030-02-02", hasSession: false, visits: 2, lastActivity: iso(3 * 86400000), createdAt: "" },
+    { id: "c", firstName: "C", secondName: "C", adminUsername: "", rsvpCount: 0, tokenCount: 0, weddingDate: "2030-03-03", hasSession: false, visits: 3, lastActivity: iso(10 * 86400000), createdAt: "" },
   ];
 
   it("devuelve todas si el filtro es 'todas'", () => {

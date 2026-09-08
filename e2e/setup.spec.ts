@@ -1,5 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
-import { seedTestInvite, cleanupTestInvite, type SeededInvite } from "./test-invite";
+import { seedFreshInvite, cleanupTestInvite, dismissCookieBanner, type SeededInvite } from "./test-invite";
 
 /**
  * Flujo de configuración (/setup): smoke test que verifica que la página de
@@ -16,7 +16,7 @@ test.describe("Setup flow", () => {
   test.skip(!LIVE, "WEDINGO_E2E_LIVE=1 no está definido");
 
   test.beforeAll(async () => {
-    invite = await seedTestInvite();
+    invite = await seedFreshInvite();
   });
 
   test.afterAll(async () => {
@@ -24,8 +24,9 @@ test.describe("Setup flow", () => {
   });
 
   test("setup page loads and shows the access section", async ({ page }: { page: Page }) => {
-    // La app guarda el token de setup en sessionStorage (mismo patrón que la
-    // landing al crear la invitación).
+    // Invitación NUEVA (sin doc): el setup muestra el formulario de alta con
+    // la sección de acceso y el token. La app guarda el token de setup en
+    // sessionStorage (mismo patrón que la landing al crear la invitación).
     await page.addInitScript(
       ({ token, setupToken }) => {
         sessionStorage.setItem(`wedin_invite_token`, token);
@@ -35,6 +36,9 @@ test.describe("Setup flow", () => {
     );
 
     await page.goto(`/${invite.inviteToken}/setup`);
+
+    // El banner de cookies (modal con inert) debe cerrarse antes de interactuar.
+    await dismissCookieBanner(page);
 
     // El formulario de setup se renderiza.
     const firstName = page.locator("#setupfirstName");

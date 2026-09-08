@@ -104,6 +104,14 @@ const RsvpSection = memo(function RsvpSection({
   // El formulario vive en el contexto anidado RsvpFormContext: teclear aquí NO
   // re-renderiza PublicInvitation ni el resto de secciones.
   const { rsvpForm, updateRsvpField, handleRsvpSubmit, setRsvpForm } = useRsvpFormContext();
+  // Puente e2e (v2.192): expone el formulario para que los tests live puedan
+  // rellenarlo sin depender de la interacción con inputs estilizados (la UI
+  // con rv2-* es frágil para Playwright). Solo en modo e2e (window.__e2e).
+  useEffect(() => {
+    if (typeof window !== "undefined" && (window as unknown as { __e2e?: boolean }).__e2e) {
+      (window as unknown as { __updateRsvpField?: typeof updateRsvpField }).__updateRsvpField = updateRsvpField;
+    }
+  }, [updateRsvpField]);
   // El botón "Retirar respuesta" solo funciona con sesión de admin (las reglas
   // Firestore lo exigen); para el invitado se oculta.
   const { isAdminTokenLoggedIn } = useAuth();
