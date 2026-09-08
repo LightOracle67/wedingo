@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.4 — 2026-09-08
+- Auditoría de `!important` en CSS (128 → **127**): se eliminó la única redundancia comprobable (`.print-card { background-color }` en `print.css` ya definido después, mismo selector y valor, ganaba sin `!important`). El resto son overrides **deliberados** (accesibilidad alto-contraste, `prefers-reduced-motion`, print y RTL) cuya retirada rompería estilos; se revisan y se documentan.
+- Gate: 2521 tests verdes · cobertura 91,80/83,10/89,77/93,66 · tsc/oxlint 0/0 · e2e live 18/18.
 ## 2.192.3 — 2026-09-08
 - Dependencias dev/minor actualizadas dentro de sus rangos (`npm update`): Playwright 1.63, Vite 8.2.2, vitest/coverage 4.1.11, oxlint 1.82, firebase-tools 15.29, jsdom, axe-core, tipos, etc. Browsers de Playwright reinstalados. (Majors vitest 5/coverage 5 quedan fuera del rango declarado.)
 - Lint con oxlint 1.82 (trae las rules del React Compiler): se aplicaron los avisos CON valor — `exhaustive-deps` en `useAppShellEffects` (destructuring fuera del efecto, mantiene deps granulares de v2.189), 3 imports muertos eliminados en `e2e/test-invite.ts` y `no-redeclare` resuelto en `src/types/dom.d.ts` (disable dirigido: fusión interface+var es el patrón lib.dom, legal en TS). Las rules refs/purity/globals/set-state-in-effect (falsos positivos en patrones deliberados) se desactivan de forma documentada en `.oxlintrc.json` para mantener el bar de 0 avisos.

@@ -17,7 +17,6 @@
     background: #ffffff !important;
   }
   .print-card {
-    background-color: var(--page-bg, #2a2418) !important;
     color: #ffffff !important;
   }
   /* Texto de la tarjeta en BLANCO puro (no gris) sobre el fondo impreso. */
