@@ -145,6 +145,18 @@ body:has(.admin-bar) main#main-content:has(> .setup-layout--full) > .setup-layou
   overflow: auto;
 }
 
+/* Editor anidado en el panel admin (InvitationTab, dentro de
+   .setup-card--content): el PADRE ya es el único contenedor de scroll.
+   `height: -webkit-fill-available` + `overflow: auto` aquí crean DOS scrolls
+   anidados y en Safari (scrollbars superpuestos) la tarjeta re-resuelve su
+   altura cada vez que aparece/desaparece la barra → "la altura cambia sola".
+   Con altura natural (auto) el padre hace todo el scroll y no hay salto. */
+.setup-card--content .setup-layout--full .setup-card--full {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+}
+
 .setup-header {
   display: flex;
   align-items: center;
