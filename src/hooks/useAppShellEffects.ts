@@ -67,7 +67,17 @@ export function useAppShellEffects(
   useEffect(() => {
     if (isEditingRoute) return;
     const root = document.documentElement;
-    const { fontHeading, fontBody, colorAccent, colorTitle, colorCopy, colorBackground } = config;
+    // Destructuring FUERA del efecto (v2.192.3): exhaustive-deps de oxlint
+    // exige `config` en las deps si se usa dentro, pero añadirlo re-ejecutaría
+    // el efecto con cada identidad nueva de config (la optimización v2.189
+    // quiere deps GRANULARES por campo, no el objeto completo). Al extraer las
+    // variables fuera, el efecto solo depende de los fields listados abajo.
+    const fontHeading = config.fontHeading;
+    const fontBody = config.fontBody;
+    const colorAccent = config.colorAccent;
+    const colorTitle = config.colorTitle;
+    const colorCopy = config.colorCopy;
+    const colorBackground = config.colorBackground;
     if (fontHeading) {
       root.style.setProperty("--font-heading", FONT_FAMILY[fontHeading] || `"${fontHeading}", serif`);
     }

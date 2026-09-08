@@ -16,9 +16,6 @@ import {
   getFirestore,
   doc,
   setDoc,
-  deleteDoc,
-  collection,
-  getDocs,
 } from "firebase/firestore";
 import { createHash, randomBytes } from "node:crypto";
 import { readFileSync } from "node:fs";
