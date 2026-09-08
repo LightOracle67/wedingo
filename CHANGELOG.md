@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.24 — 2026-09-08
+- `DistribucionTab`: mesa `rect` (legacy) con ancho/alto por separado persistidos, y borrado de mesa con éxito (deleteDoc + deselección) y error (toast).
+- Medido 92,81/84,25/91,88/94,59 · **2598 tests** (209 ficheros) · tsc/oxlint 0/0.
 ## 2.192.23 — 2026-09-08
 - `ComplianceTab`: rama de idioma inglés (plantillas/etiquetas EN) y `ShareTab`: `clipboard.write` lanzando → toast de error (rama catch).
 - Medido 92,70/84,20/91,62/94,50 · **2596 tests** (209 ficheros) · tsc/oxlint 0/0.

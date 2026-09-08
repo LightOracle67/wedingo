@@ -590,4 +590,51 @@ describe("DistribucionTab", () => {
       expect(updates).toContainEqual(expect.objectContaining({ w: 500, h: 500 }));
     });
   });
+
+  it("cambia la forma a rectángulo (sizePx→w/h px) y borra la mesa", async () => {
+    const { updateDoc: u, deleteDoc: del } = await import("firebase/firestore");
+    vi.mocked(u).mockClear();
+    vi.mocked(del).mockClear();
+    mockRsvpEntries.splice(0, mockRsvpEntries.length, { id: "e1", guestName: "Ana", attendance: "yes" });
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
+      if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
+      return Promise.resolve({
+        docs: [{ id: "t1", data: () => ({ name: "Mesa 1", shape: "rect", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 8, guests: [] }) }],
+      });
+    });
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    fireEvent.pointerDown(await screen.findByText("Mesa 1"), { clientX: 0, clientY: 0 });
+    await waitFor(() => expect(screen.queryByLabelText("distribucion.assignPlaceholder")).not.toBeNull());
+    // Mesa rect (legacy): existen los inputs de ancho/alto por separado.
+    fireEvent.change(screen.getByLabelText("distribucion.widthPx"), { target: { value: "300" } });
+    fireEvent.change(screen.getByLabelText("distribucion.heightPx"), { target: { value: "200" } });
+    expect(vi.mocked(u)).toHaveBeenCalled();
+    const updates = vi.mocked(u).mock.calls.map((c) => c[1] as unknown as Record<string, unknown>);
+    expect(updates).toContainEqual(expect.objectContaining({ w: 300 }));
+    expect(updates).toContainEqual(expect.objectContaining({ h: 200 }));
+    // Borra la mesa: deleteDoc se llama y la tarjeta desaparece.
+    fireEvent.click(screen.getByText("distribucion.deleteTable"));
+    await waitFor(() => expect(vi.mocked(del)).toHaveBeenCalled());
+  });
+
+  it("el borrado de mesa fallido muestra error sin romper", async () => {
+    const { deleteDoc: del } = await import("firebase/firestore");
+    vi.mocked(del).mockRejectedValueOnce(new Error("boom"));
+    mockRsvpEntries.splice(0, mockRsvpEntries.length, { id: "e1", guestName: "Ana", attendance: "yes" });
+    mockGetDocs.mockImplementation((ref: unknown) => {
+      if (ref === "rsvp-ref") return Promise.resolve({ docs: [] });
+      if (ref === "sections-ref") return Promise.resolve({ docs: [{ id: "s1", data: () => ({ name: "Salón" }) }] });
+      return Promise.resolve({
+        docs: [{ id: "t1", data: () => ({ name: "Mesa 1", shape: "circle", x: 50, y: 50, w: 90, h: 90, rotation: 0, seats: 8, guests: [] }) }],
+      });
+    });
+    render(<DistribucionTab inviteToken="tok" />);
+    await screen.findByText("Salón");
+    fireEvent.pointerDown(await screen.findByText("Mesa 1"), { clientX: 0, clientY: 0 });
+    await waitFor(() => expect(screen.getByText("distribucion.deleteTable")).toBeInTheDocument());
+    fireEvent.click(screen.getByText("distribucion.deleteTable"));
+    await waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("error", "errors.generic"));
+  });
 });
