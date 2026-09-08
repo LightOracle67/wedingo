@@ -348,4 +348,29 @@ describe("SetupPage", () => {
     expect(transitionDiv).toBeDefined();
     expect(transitionDiv?.className).toContain("setup-page-hidden");
   });
+
+  it("avisa en beforeunload cuando hay cambios sin guardar", () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      formData: { theme: "golden", firstName: "Ana editable" },
+      config: { theme: "golden", firstName: "Ana" },
+    });
+    render(<SetupPage />);
+    // El listener se registra al montar; la comparación normaliza ambos.
+    const evt = new Event("beforeunload", { cancelable: true });
+    window.dispatchEvent(evt);
+    expect(evt.defaultPrevented).toBe(true);
+  });
+
+  it("no avisa en beforeunload cuando el formulario está al día", () => {
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      formData: { theme: "golden", firstName: "Ana" },
+      config: { theme: "golden", firstName: "Ana" },
+    });
+    render(<SetupPage />);
+    const evt = new Event("beforeunload", { cancelable: true });
+    window.dispatchEvent(evt);
+    expect(evt.defaultPrevented).toBe(false);
+  });
 });
