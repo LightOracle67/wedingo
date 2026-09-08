@@ -65,3 +65,23 @@ required.
 
 Verificación de que xlsx no entra al bundle: no aparece en `dist/assets`
 (búsqueda por contenido); el export de cliente usa el escritor OOXML propio.
+
+### Actualización de auditoría de dependencias (2026-09-09)
+
+`npm audit` **--omit=dev: 0 vulnerabilidades**. `npm audit` completo reporta
+**8** (7 moderate, 1 high), **todas en dependencias de desarrollo/CLI**, no
+empaquetadas en el bundle de producción:
+
+- **sheetJS `xlsx` (high, sin fix)** — sigue solo en devDependencies. Se usa
+  únicamente en `src/lib/__tests__/excel-export.test.ts` para reabrir los
+  .xlsx generados por el escritor propio (`excel-utils`, ~2 KB gz). No viaja
+  al cliente (guard: ningún `src/**` hace `import ... from "xlsx"`).
+- **Transitivas de `firebase-tools` (7 moderate)** — `csv-parse`,
+  `express/qs`, `stream-json` y `uuid` vía `gaxios`. `firebase-tools` es
+  devDependency (deploy/emulador); ningún paquete de producción las arrastra
+  (verificado con `npm ls --omit=dev`). El fix "automático" de npm exigiría
+  degradar a firebase-tools@10.x (breaking) y se descarta; se monitoriza.
+
+Política: **las dependencias de runtime (dependencies) deben mantenerse en
+`npm audit --omit=dev` = 0**. Los hallazgos solo de dev se documentan aquí y
+se revisan periódicamente, pero **no bloquean el deploy**.
