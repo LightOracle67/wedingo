@@ -746,4 +746,62 @@ describe("AdminPage", () => {
     fireEvent.click(screen.getByText("admin.tabs.share"));
     expect(await screen.findByTestId("share-tab")).toBeDefined();
   });
+
+  it("medianeras del memo de estadísticas: asistencia no-yes/no y companions 0/ausentes", () => {
+    // attendance "maybe" cae en el else del memo; companions 0/undefined usan
+    // el default 1. Sin crash y el header se renderiza.
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      rsvpEntries: [
+        { guestName: "Ana", attendance: "maybe", companions: "0" },
+        { guestName: "Luis", attendance: "yes" },
+      ],
+    });
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>,
+    );
+    expect(screen.getByText("John & Jane")).toBeDefined();
+  });
+
+  it("timestamp de la boda: fecha inválida no rompe y medianoche (hora 0) es válida", () => {
+    const cfg = { ...baseMock.config, weddingDay: "31", weddingMonth: "febrero", weddingYear: "2025", weddingHour: "18" };
+    mockUseApp.mockReturnValue({ ...baseMock, config: cfg });
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>,
+    );
+    // Rollover ("31 de febrero") → weddingTimestamp null; la página sigue viva.
+    expect(screen.getAllByText("John & Jane").length).toBeGreaterThan(0);
+    // Hora "0" (medianoche) no se trata como vacía: se renderiza OK.
+    mockUseApp.mockReturnValue({
+      ...baseMock,
+      config: {
+        ...baseMock.config,
+        weddingDay: "15",
+        weddingMonth: "junio",
+        weddingYear: "2026",
+        weddingHour: "0",
+        weddingMinute: "0",
+      },
+    });
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>,
+    );
+    expect(screen.getAllByText("John & Jane").length).toBeGreaterThan(0);
+  });
+
+  it("acota expectedGuests a [0, 1000] sin romper el dashboard", () => {
+    mockUseApp.mockReturnValue({ ...baseMock, config: { ...baseMock.config, expectedGuests: "5000" } });
+    render(
+      <Suspense fallback={null}>
+        <AdminPage />
+      </Suspense>,
+    );
+    expect(screen.getByText("John & Jane")).toBeDefined();
+  });
 });

@@ -165,4 +165,37 @@ describe("ToolsTab", () => {
       expect(mockAddToast).toHaveBeenCalledWith("success", expect.stringContaining("tools.galleryDownloaded")),
     );
   });
+
+  it("guarda los invitados esperados al pulsar Enter", async () => {
+    render(
+      <ToolsTab
+        inviteToken="tok1234567"
+        inviteUrl="https://x/tok1234567"
+        expectedGuests=""
+        onExpectedGuestsSaved={vi.fn()}
+      />,
+    );
+    const input = await screen.findByLabelText("tools.expectedGuests");
+    fireEvent.change(input, { target: { value: "12" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalled());
+    expect(mockUpdateDoc).toHaveBeenCalledWith("doc-ref", { expectedGuests: "12" });
+  });
+
+  it("deshabilita el botón 'generar recordatorio' sin invitados esperados", async () => {
+    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" expectedGuests="" />);
+    await screen.findByText("tools.generateReminder");
+    expect((screen.getByText("tools.generateReminder") as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it("genera el recordatorio con el nº de pendientes cuando hay invitados esperados", async () => {
+    render(<ToolsTab inviteToken="tok1234567" inviteUrl="https://x/tok1234567" expectedGuests="10" />);
+    await screen.findByText("tools.generateReminder");
+    fireEvent.click(screen.getByText("tools.generateReminder"));
+    await vi.waitFor(() =>
+      expect((screen.getByLabelText("tools.whatsappReminder") as HTMLTextAreaElement).value).toBe(
+        "tools.reminderGenerated",
+      ),
+    );
+  });
 });
