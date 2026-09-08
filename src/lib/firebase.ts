@@ -76,26 +76,6 @@ export function getStorageInstance(): Promise<FirebaseStorage> {
   return storagePromise;
 }
 
-// App Check: se activa automáticamente si se define VITE_APPCHECK_SITE_KEY
-// (reCAPTCHA Enterprise) en el entorno. El import es dinámico y solo ocurre
-// si hay clave, evitando arrastrar el SDK de app-check en la ruta crítica
-// de la invitación pública. Mantener desactivado sin la clave evita
-// bloquear todas las peticiones de la app.
-try {
-  const siteKey = import.meta.env.VITE_APPCHECK_SITE_KEY;
-  if (siteKey) {
-    // Import dinámico del paquete interno (ver comentario en getAuthInstance).
-    void import("@firebase/app-check").then(({ initializeAppCheck, ReCaptchaEnterpriseProvider }) => {
-      initializeAppCheck(app, {
-        provider: new ReCaptchaEnterpriseProvider(siteKey),
-        isTokenAutoRefreshEnabled: true,
-      });
-    });
-  }
-} catch {
-  // App Check es opcional; sin clave no se inicializa.
-}
-
 export function invitationDocRef(token: string) {
   return doc(db, "invitations", token);
 }

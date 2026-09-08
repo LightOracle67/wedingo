@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.2 — 2026-09-08
+- **Firebase App Check eliminado** (R2 descartado por decisión del dueño): retirado el bloque de auto-activación en `src/lib/firebase.ts`, la variable `VITE_APPCHECK_SITE_KEY` de `.env.example` y las instrucciones de `AGENTS.md`. Sin cambios de comportamiento (sin la clave nunca se activaba).
+- Gate: 2521 tests verdes · cobertura 91,81/83,10/89,81/93,65 · tsc/oxlint OK.
 ## 2.192.1 — 2026-09-08
 - Seguridad (R1 de la auditoría): `firestore.rules` endurecidas para los agregados RSVP — cotas acotadas (`companionCount` ≤20, `childrenCount` ≤50, listas paralelas ≤20/50) y **alineación contador↔lista** (`companionNames.size()==companionCount`) para que el documento no pueda inflarse ni desincronizarse; listas `childrenAllergies`/`childrenAllergiesOther` acotadas por primera vez.
 - Tests de reglas actualizados: la suite de emulador (`test:rules`) usaba el campo obsoleto `companions`; migrada a `companionCount` → **43/43 correctos** (antes 42/43).
