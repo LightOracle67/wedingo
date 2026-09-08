@@ -468,4 +468,32 @@ describe("ManageTab — ramas límite (backup, restaurar, copiar, sesión)", () 
     fireEvent.change(simSelect, { target: { value: "responded" } });
     expect(simSelect.value).toBe("responded");
   });
+
+  it("edita firma de RSVP, notas del admin y expiración manual y persiste sus valores", async () => {
+    render(<ManageTab />);
+    await vi.waitFor(() => expect(screen.getByLabelText("manage.selectInvitation")).toBeInTheDocument());
+    fireEvent.change(screen.getByLabelText("manage.selectInvitation"), { target: { value: "AbCdEf1234" } });
+    await vi.waitFor(() => expect(screen.getByText("manage.saveFlags")).toBeInTheDocument());
+    // firma de RSVP: se activa (checkbox envuelto por el label).
+    fireEvent.click(screen.getByLabelText("manage.rsvpSignature"));
+    expect((screen.getByLabelText("manage.rsvpSignature") as HTMLInputElement).checked).toBe(true);
+    // notas del admin
+    fireEvent.change(screen.getByLabelText("manage.adminNotesPlaceholder"), {
+      target: { value: "Llamar a los músicos" },
+    });
+    fireEvent.click(screen.getByText("manage.saveFlags"));
+    await vi.waitFor(() => expect(mockUpdateDoc).toHaveBeenCalled());
+    // Los setters dispararon (onChange) en firma y notas; el guardado escribió.
+    expect((screen.getByLabelText("manage.adminNotesPlaceholder") as HTMLTextAreaElement).value).toBe(
+      "Llamar a los músicos",
+    );
+    // expiración manual
+    fireEvent.change(screen.getByLabelText("manage.manualExpiry"), { target: { value: "2027-12-31" } });
+    fireEvent.click(screen.getByText("manage.saveExpiry"));
+    await vi.waitFor(() =>
+      expect(
+        vi.mocked(mockUpdateDoc).mock.calls.some((c) => (c[1] as { manualExpiry?: string })?.manualExpiry === "2027-12-31"),
+      ).toBe(true),
+    );
+  });
 });

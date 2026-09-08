@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key, i18n: { language: "es" } }),
@@ -64,5 +64,37 @@ describe("ComplianceTab", () => {
     expect(screen.getByText("compliance.templatesTitle")).toBeDefined();
     // Al menos una plantilla de país con su contenido se muestra.
     expect(screen.getAllByText(/compliance\.template/).length).toBeGreaterThan(0);
+  });
+
+  it("ordena por cada columna (activa todos los getValue de sortColumns)", () => {
+    render(<ComplianceTab />);
+    const headers = [
+      "compliance.tableActivity",
+      "compliance.tableData",
+      "compliance.tableLegalBasis",
+      "compliance.tablePurpose",
+      "compliance.tableRetention",
+      "compliance.tableRecipients",
+    ];
+    for (const h of headers) {
+      const btn = screen.getByText(h).closest("button")!;
+      fireEvent.click(btn);
+      // Un clic → ascendente; segundo clic → descendente; tercero → default.
+      expect(btn.closest("th")?.getAttribute("aria-sort")).toBe("ascending");
+      fireEvent.click(btn);
+      expect(btn.closest("th")?.getAttribute("aria-sort")).toBe("descending");
+      fireEvent.click(btn);
+      expect(btn.closest("th")?.getAttribute("aria-sort")).toBe("none");
+    }
+  });
+
+  it("copia la plantilla legal al portapapeles", () => {
+    const writeText = vi.fn();
+    const clipboard = { writeText };
+    Object.defineProperty(navigator, "clipboard", { value: clipboard, configurable: true });
+    render(<ComplianceTab />);
+    fireEvent.click(screen.getAllByText("compliance.copyTemplate")[0]!);
+    // Copia el texto de la plantilla en el idioma activo (es en el mock).
+    expect(writeText).toHaveBeenCalledWith(expect.stringContaining("RGPD"));
   });
 });

@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.13 — 2026-09-08
+- +3 tests límite: `ComplianceTab` (activación de los 6 `getValue` de ordenación con ciclo asc/desc/none + copia de plantilla al portapapeles) y `ManageTab` (edición de firma de RSVP, notas del admin y expiración manual con persistencia en Firestore).
+- Medido 92,54/83,61/91,29/94,35 · **2578 tests** (208 ficheros) · tsc/oxlint 0/0.
 ## 2.192.12 — 2026-09-08
 - Cierre del sprint 'tests al máximo' (v2.192.5→v2.192.12): **+54 tests** (2521→2575) y cobertura por encima de los umbrales anteriores. Umbrales del gate SUBIDOS a **statements 92 / branches 83 / functions 90 / lines 93,8** (medido 92,43/83,59/90,82/94,24). Gate: 2575 tests (208 ficheros) · tsc/oxlint 0/0.
 ## 2.192.11 — 2026-09-08
