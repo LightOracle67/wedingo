@@ -47,7 +47,12 @@ vi.mock("../../../contexts", () => ({
   }),
 }));
 
+vi.mock("../../../lib/analytics", () => ({
+  trackEvent: vi.fn(),
+}));
+
 import DetailsSection from "../DetailsSection";
+import { trackEvent } from "../../../lib/analytics";
 
 const baseProps = {
   style: {},
@@ -156,17 +161,46 @@ describe("DetailsSection", () => {
     expect(screen.queryByText("details.viewGoogleMaps")).toBeNull();
   });
 
-  it("downloads an .ics file with the wedding event", async () => {
+  it("does NOT download an .ics with an invalid (rollover) date", async () => {
     const createUrl = vi.fn(() => "blob:ics");
-    const revokeUrl = vi.fn();
-    vi.stubGlobal("URL", { createObjectURL: createUrl, revokeObjectURL: revokeUrl });
+    vi.stubGlobal("URL", { createObjectURL: createUrl, revokeObjectURL: vi.fn() });
     const clickSpy = vi.spyOn(HTMLAnchorElement.prototype, "click").mockImplementation(() => {});
-    render(<DetailsSection {...baseProps} />);
+    // "31 de febrero" → fecha normalizada distinta: el evento se descarta.
+    render(
+      <DetailsSection
+        style={{}}
+        className="test"
+        formattedDate=""
+        formattedTime=""
+        hasLocationData={false}
+        calendarLink="https://calendar.example.com"
+        weddingSiteURL=""
+        weddingDay="31"
+        weddingMonth="febrero"
+        weddingYear="2025"
+        weddingHour="18"
+        weddingMinute="30"
+      />,
+    );
     fireEvent.click(screen.getByText("details.addToIcs"));
-    expect(createUrl).toHaveBeenCalled();
-    expect(clickSpy).toHaveBeenCalled();
+    expect(createUrl).not.toHaveBeenCalled();
+    expect(clickSpy).not.toHaveBeenCalled();
     clickSpy.mockRestore();
     vi.unstubAllGlobals();
+  });
+
+  it("registra la analítica al abrir el calendario y al pedir indicaciones", () => {
+    vi.mocked(trackEvent).mockClear();
+    // Mapa embebible: el botón del calendario está presente.
+    render(<DetailsSection {...baseProps} weddingPlace="Madrid" />);
+    fireEvent.click(screen.getByText("details.addToCalendar"));
+    expect(vi.mocked(trackEvent)).toHaveBeenCalledWith("calendar_click");
+    // Sin URL embebible pero con lugar: "Cómo llegar" se muestra y registra.
+    render(<DetailsSection {...baseProps} weddingSiteURL="" weddingPlace="Toledo" />);
+    // El primer render también pinta un enlace de direcciones: usamos el del
+    // segundo render (último de la lista).
+    fireEvent.click(screen.getAllByText("details.directions").pop() as HTMLElement);
+    expect(vi.mocked(trackEvent)).toHaveBeenCalledWith("directions_click");
   });
 
 });

@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.5 — 2026-09-08
+- Ronda "tests al máximo" (+20 tests límite y bordes): `platform-settings` (doc existente/ausente/error + isFeatureDisabled/tokenIsBlocked), `useConfigActions` (sin provider lanza), `main.mountApp`, `stale-chunk-recovery` (SW+cachés presentes y agotamiento de intentos), proveedores por ruta (`AppProviders`/`SuperAdminProviders`), `DetailsSection` (fecha inválida no genera .ics; trackEvent calendario/indicaciones), `DistribucionTab` (panel de propiedades: tamaño/plazas/rotación/posición con acotación) y `excel-utils.exportToXlsx` real (antes solo mockeado).
+- Umbrales del gate de cobertura SUBIDOS a **statements 91,5 / branches 82,5 / functions 89,5 / lines 93,5** (medido 92,14/83,11/90,45/93,97; margen ~0,6 pp). Gate: **2540 tests** verdes (206 ficheros) · tsc/oxlint 0/0.
 ## 2.192.4 — 2026-09-08
 - Auditoría de `!important` en CSS (128 → **127**): se eliminó la única redundancia comprobable (`.print-card { background-color }` en `print.css` ya definido después, mismo selector y valor, ganaba sin `!important`). El resto son overrides **deliberados** (accesibilidad alto-contraste, `prefers-reduced-motion`, print y RTL) cuya retirada rompería estilos; se revisan y se documentan.
 - Gate: 2521 tests verdes · cobertura 91,80/83,10/89,77/93,66 · tsc/oxlint 0/0 · e2e live 18/18.

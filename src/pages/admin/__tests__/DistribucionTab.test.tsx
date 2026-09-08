@@ -561,5 +561,33 @@ describe("DistribucionTab", () => {
       fireEvent.click(screen.getByText("distribucion.exportTables"));
       await waitFor(() => expect(mockAddToast).toHaveBeenCalledWith("info", "distribucion.noTables"));
     });
+
+    it("edita las propiedades numéricas de la mesa (panel de propiedades)", async () => {
+      const { updateDoc: updateDocReal } = await import("firebase/firestore");
+      vi.mocked(updateDocReal).mockClear();
+      await mountWithTable();
+      // Selecciona la mesa (círculo por defecto) → panel de propiedades.
+      const mesa1 = await screen.findByText("Mesa 1");
+      fireEvent.pointerDown(mesa1, { clientX: 0, clientY: 0 });
+      await waitFor(() => expect(screen.queryByLabelText("distribucion.assignPlaceholder")).not.toBeNull());
+      // Tamaño (círculo/cuadrado: ancho=alto), capacidad, rotación, posición.
+      fireEvent.change(screen.getByLabelText("distribucion.sizePx"), { target: { value: "320" } });
+      fireEvent.change(screen.getByLabelText("distribucion.seats"), { target: { value: "10" } });
+      fireEvent.change(screen.getByLabelText("distribucion.rotation"), { target: { value: "45" } });
+      fireEvent.change(screen.getByLabelText("distribucion.positionX"), { target: { value: "60" } });
+      fireEvent.change(screen.getByLabelText("distribucion.positionY"), { target: { value: "30" } });
+      // Se acotan los valores fuera de rango (500, 180, 100) y se persisten.
+      fireEvent.change(screen.getByLabelText("distribucion.sizePx"), { target: { value: "999" } });
+      expect(updateDocReal).toHaveBeenCalled();
+      const updates = vi.mocked(updateDocReal).mock.calls.map((c) => c[1] as unknown as Record<string, unknown>);
+      // Cada campo se persiste en su propia llamada; los valores fuera de rango
+      // se acotan (tamaño 999 → 500).
+      expect(updates).toContainEqual(expect.objectContaining({ w: 320, h: 320 }));
+      expect(updates).toContainEqual(expect.objectContaining({ seats: 10 }));
+      expect(updates).toContainEqual(expect.objectContaining({ rotation: 45 }));
+      expect(updates).toContainEqual(expect.objectContaining({ x: 60 }));
+      expect(updates).toContainEqual(expect.objectContaining({ y: 30 }));
+      expect(updates).toContainEqual(expect.objectContaining({ w: 500, h: 500 }));
+    });
   });
 });
