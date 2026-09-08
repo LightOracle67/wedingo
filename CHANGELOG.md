@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.12 — 2026-09-08
+- Cierre del sprint 'tests al máximo' (v2.192.5→v2.192.12): **+54 tests** (2521→2575) y cobertura por encima de los umbrales anteriores. Umbrales del gate SUBIDOS a **statements 92 / branches 83 / functions 90 / lines 93,8** (medido 92,43/83,59/90,82/94,24). Gate: 2575 tests (208 ficheros) · tsc/oxlint 0/0.
 ## 2.192.11 — 2026-09-08
 - `PanelTab`: test rico de restore de backup versión 1 — subcolecciones (galería, configImages, respuestas RSVP y visitLog con día nuevo), Timestamps serializados reconstruidos como `Date` y omisión de `mediaKeys` (couplePhoto en data: URL) en el merge del documento principal.
 - Medido 92,43/83,59/90,82/94,24 · **2575 tests** (208 ficheros) · tsc/oxlint 0/0.
