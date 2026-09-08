@@ -90,4 +90,13 @@ describe("ramas finales de safe-date (v2.191)", () => {
     expect(firestoreMillis({ toDate: () => new Date("nope") })).toBeNull();
     expect(firestoreIso({ toDate: () => new Date("nope") })).toBe("");
   });
+
+  it("casos límite: boolean, bigint, función, seconds NaN y getTime NaN → null", () => {
+    expect(firestoreMillis(true)).toBeNull();
+    expect(firestoreMillis(5n as unknown as number)).toBeNull();
+    expect(firestoreMillis(() => 1)).toBeNull();
+    expect(firestoreMillis({ seconds: NaN, nanoseconds: 0 })).toBeNull();
+    expect(firestoreMillis({ getTime: () => Number.NaN })).toBeNull();
+    expect(firestoreMillis({ toMillis: () => undefined })).toBeNull();
+  });
 });

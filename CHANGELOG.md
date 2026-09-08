@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.16 — 2026-09-08
+- `safe-date`: casos límite de `firestoreMillis` (boolean, bigint, función, `seconds:NaN`, `getTime:NaN` y `toMillis:undefined` → `null`).
+- Medido 92,61/83,74/91,45/94,41 · **2583 tests** (209 ficheros) · tsc/oxlint 0/0.
 ## 2.192.15 — 2026-09-08
 - Nuevo test de `SupportTab` (superadmin): carga de avisos (boda próxima ≤14 días, fila con mapa no-iframe, sesión activa, 60 visitas) y búsqueda de invitación por token con Enter sobre Firestore.
 - Medido 92,58/83,70/91,41/94,40 · **2582 tests** (209 ficheros) · tsc/oxlint 0/0.
