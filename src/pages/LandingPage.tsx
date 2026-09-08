@@ -30,6 +30,8 @@ export default function LandingPage() {
   const { confirm } = useConfirm();
   const maintenance = platform.maintenance === "true";
   const [showModal, setShowModal] = useState(false);
+  /** Aviso modal cuando el modo mantenimiento impide crear la invitación. */
+  const [showMaintenance, setShowMaintenance] = useState(false);
   const [usernameInput, setUsernameInput] = useState("");
   const [tokenInput, setTokenInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -37,6 +39,8 @@ export default function LandingPage() {
 
   const modalRef = useFocusTrap(showModal);
   useEscapeKey(() => setShowModal(false), showModal);
+  const maintenanceRef = useFocusTrap(showMaintenance);
+  useEscapeKey(() => setShowMaintenance(false), showMaintenance);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
   const loginAttemptsRef = useRef(0);
   const loginBlockedUntilRef = useRef(0);
@@ -53,7 +57,9 @@ export default function LandingPage() {
     // crear una invitación durante un mantenimiento activo.
     const fresh = await platformReload();
     if (fresh.maintenance === "true") {
-      setCreateError(t("platform.maintenanceNotice"));
+      // Aviso modal (no solo texto inline): explica que la creación está
+      // desactivada mientras el mantenimiento esté activo.
+      setShowMaintenance(true);
       return;
     }
     setCreateError("");
@@ -186,14 +192,12 @@ export default function LandingPage() {
         // existente se rechaza en producción si se escribe vía runTransaction
         // con currentDocument.updateTime (el emulador sí la acepta). updateDoc
         // funciona sobre sesión existente o inexistente por igual.
-        const inviteRef = invitationDocRef(target);
-        const inviteSnap = await getDoc(inviteRef);
-        // La sesión solo se renueva sobre una invitación que ya existe: si el
+        // La sesión solo se renueva sobre una invitación que YA existe: si el
         // documento aún no se ha guardado (token huérfano), la sesión se
-        // activará en el primer guardado del setup. Crear aquí la invitación
-        // con campos de sesión está prohibido por las reglas (no se puede
-        // auto-provisionar una sesión en el create).
-        if (inviteSnap.exists()) {
+        // activará en el primer guardado del setup. Reutilizamos `matchedData`
+        // (el snapshot leído arriba) en lugar de repetir un getDoc — el login
+        // encadena 3-4 lecturas y cada una cuesta ~200-300 ms de red.
+        if (matchedData) {
           await setDoc(privateSessionDocRef(target), {
             // Timestamp explícito del cliente: la regla de sesión exige
             // `activeSession is timestamp` y serverTimestamp() (REQUEST_TIME)
@@ -269,7 +273,10 @@ export default function LandingPage() {
               type="button"
               className="setup-button text-sm"
               onClick={handleCreate}
-              disabled={creating || maintenance}
+              // El botón se mantiene clicable en mantenimiento para poder
+              // mostrar el aviso modal (antes quedaba desactivado y el clic
+              // no daba ningún feedback).
+              disabled={creating}
               aria-busy={creating}
               data-testid="create-invitation-btn"
             >
@@ -367,6 +374,53 @@ export default function LandingPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {showMaintenance && (
+        <div
+          className="modal-overlay"
+          onClick={() => {
+            setShowMaintenance(false);
+          }}
+          role="dialog"
+          aria-modal="true"
+          aria-label={t("landing.maintenanceTitle")}
+        >
+          <div
+            className="modal-card"
+            ref={maintenanceRef as React.RefObject<HTMLDivElement>}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="modal-close"
+              onClick={() => {
+                setShowMaintenance(false);
+              }}
+              aria-label={t("common.close")}
+            >
+              &times;
+            </button>
+            <div className="modal-body">
+              <p className="modal-title">{t("landing.maintenanceTitle")}</p>
+              {/* Explica POR QUÉ no se puede crear: el modo mantenimiento
+                  desactiva la creación de nuevas invitaciones. */}
+              <p className="text-[0.95rem] leading-relaxed text-boda-texto/70">
+                {t("platform.maintenanceNotice")}
+              </p>
+              <div className="setup-actions">
+                <button
+                  type="button"
+                  className="setup-button"
+                  onClick={() => {
+                    setShowMaintenance(false);
+                  }}
+                >
+                  {t("landing.maintenanceOk")}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       )}

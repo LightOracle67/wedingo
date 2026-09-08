@@ -49,6 +49,8 @@
     "createInvitation": "Crear tu invitación",
     "haveInvitation": "Ya tengo una invitación",
     "modalTitle": "Acceder a tu invitación",
+    "maintenanceTitle": "La creación está desactivada",
+    "maintenanceOk": "Entendido",
     "usernameLabel": "Nombre de usuario",
     "usernamePlaceholder": "Tu nombre de usuario",
     "tokenLabel": "Código de acceso",

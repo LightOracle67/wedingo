@@ -49,6 +49,8 @@
     "createInvitation": "Create your invitation",
     "haveInvitation": "I already have an invitation",
     "modalTitle": "Access your invitation",
+    "maintenanceTitle": "Creation is disabled",
+    "maintenanceOk": "Got it",
     "usernameLabel": "Username",
     "usernamePlaceholder": "Your username",
     "tokenLabel": "Access code",

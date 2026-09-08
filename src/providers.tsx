@@ -56,16 +56,18 @@ export const InviteChrome = memo(function InviteChrome() {
 
   // El footer público se oculta y se activa el modo admin cuando el invitado
   // es, en realidad, el admin con sesión (antes el shell leía useAuth();
-  // ahora avisa por micro-store useSyncExternalStore).
+  // ahora avisa por micro-store useSyncExternalStore). El footer SOLO es
+  // para el invitado sin sesión: con sesión admin se oculta siempre (también
+  // en /admin — antes se mostraba en las rutas de edición y el footer público
+  // aparecía por encima del contenido de administración).
   useEffect(() => {
-    const hide = isAdminTokenLoggedIn && !isEditingRoute;
-    setFooterVisible(!hide);
+    setFooterVisible(!isAdminTokenLoggedIn);
     setAdminMode(isAdminTokenLoggedIn);
     return () => {
       setFooterVisible(true);
       setAdminMode(false);
     };
-  }, [isAdminTokenLoggedIn, isEditingRoute]);
+  }, [isAdminTokenLoggedIn]);
 
   const showAdminBar =
     isAdminTokenLoggedIn &&

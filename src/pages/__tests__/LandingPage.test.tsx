@@ -94,20 +94,22 @@ vi.mock("../../hooks/useFocusTrap", () => ({
   useEscapeKey: () => {},
 }));
 
+const mockPlatformReload = vi.hoisted(() => vi.fn());
+const mockPlatformSettings = vi.hoisted(() => ({
+  maintenance: "false",
+  bannerEnabled: "false",
+  bannerText: "",
+  blockedUrls: "",
+  blockedTokens: "",
+  expiringDays: "30",
+}));
 vi.mock("../../lib/platform-settings", () => ({
   usePlatformSettings: () => ({
-    settings: {
-      maintenance: "false",
-      bannerEnabled: "false",
-      bannerText: "",
-      blockedUrls: "",
-      blockedTokens: "",
-      expiringDays: "30",
-    },
+    settings: mockPlatformSettings,
     loaded: true,
     // v2.191: handleCreate revalida en el clic (refresh) — debe devolver
     // los settings frescos para no bloquear la creación en los tests.
-    reload: () => Promise.resolve({ maintenance: "false", bannerEnabled: "false", bannerText: "", blockedUrls: "", blockedTokens: "", expiringDays: "30", disabledFeatures: "" }),
+    reload: mockPlatformReload,
   }),
   tokenIsBlocked: () => false,
 }));
@@ -121,6 +123,15 @@ beforeEach(() => {
   mockFindInviteBySetupToken.mockResolvedValue(null);
   mockHashSetupToken.mockResolvedValue("mock-hash");
   mockCreateSetupTokenRecord.mockResolvedValue("mock-hash");
+  // Estado por defecto del mock de plataforma: sin mantenimiento.
+  mockPlatformReload.mockResolvedValue({
+    maintenance: "false",
+    bannerEnabled: "false",
+    bannerText: "",
+    blockedUrls: "",
+    blockedTokens: "",
+    expiringDays: "30",
+  });
   Object.defineProperty(globalThis, "crypto", {
     value: {
       getRandomValues: (arr: Uint8Array) => {
@@ -207,6 +218,33 @@ describe("LandingPage", () => {
     });
     // El botón vuelve a estar habilitado tras el error.
     expect(screen.getByText("landing.createInvitation")).toBeDefined();
+  });
+
+  it("muestra el modal de mantenimiento y no crea la invitación", async () => {
+    // El clic revalida la plataforma: si el mantenimiento está activo se abre
+    // un modal informativo (no se crea la invitación ni hay navegación).
+    mockPlatformReload.mockResolvedValue({
+      maintenance: "true",
+      bannerEnabled: "false",
+      bannerText: "",
+      blockedUrls: "",
+      blockedTokens: "",
+      expiringDays: "30",
+    });
+    render(<LandingPage />);
+    fireEvent.click(screen.getByText("landing.createInvitation"));
+    await vi.waitFor(() => {
+      expect(screen.getByText("landing.maintenanceTitle")).toBeDefined();
+    });
+    // Explica el porqué y NUNCA crea el token ni navega.
+    expect(screen.getByText("platform.maintenanceNotice")).toBeDefined();
+    expect(mockCreateSetupTokenRecord).not.toHaveBeenCalled();
+    expect(mockNavigate).not.toHaveBeenCalled();
+    // Cerrar con el botón "Entendido" deja la landing utilizable.
+    fireEvent.click(screen.getByText("landing.maintenanceOk"));
+    await vi.waitFor(() => {
+      expect(screen.queryByText("landing.maintenanceTitle")).toBeNull();
+    });
   });
 
   it("opens login modal when have invitation is clicked", () => {

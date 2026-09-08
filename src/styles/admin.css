@@ -1214,32 +1214,6 @@ select.setup-input {
   }
 }
 
-.admin-bar__link {
-  display: inline-block;
-  padding: 0.45rem 0.75rem;
-  font-size: 0.9rem;
-  color: rgba(255, 246, 220, 0.75);
-  text-decoration: none;
-  border-radius: 0.4rem;
-  transition:
-    background 150ms ease,
-    color 150ms ease;
-}
-
-.admin-bar__link:hover,
-.admin-bar__link:focus-visible {
-  background: rgba(247, 227, 170, 0.12);
-  color: var(--setup-title);
-  outline: 2px solid var(--setup-accent);
-  outline-offset: 2px;
-}
-
-.admin-bar__link--active {
-  background: rgba(247, 227, 170, 0.1);
-  color: var(--setup-accent);
-  font-weight: 600;
-}
-
 .theme-picker__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));

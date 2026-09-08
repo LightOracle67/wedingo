@@ -265,6 +265,37 @@
   gap: var(--spacing-xs);
 }
 
+/* Enlaces de la barra del admin ("Invitación" / "Panel"). Viven aquí (no en
+   admin.css) porque la barra admin se renderiza también en la página PÚBLICA
+   del invitado cuando el admin navega con sesión: admin.css solo se carga en
+   rutas de edición (setup/admin) y sin estas reglas los botones aparecen sin
+   estilo hasta que se pulsan (regresión heredada del split de CSS v2.186). */
+.admin-bar__link {
+  display: inline-block;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.9rem;
+  color: rgba(255, 246, 220, 0.75);
+  text-decoration: none;
+  border-radius: 0.4rem;
+  transition:
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.admin-bar__link:hover,
+.admin-bar__link:focus-visible {
+  background: rgba(247, 227, 170, 0.12);
+  color: var(--setup-title);
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
+
+.admin-bar__link--active {
+  background: rgba(247, 227, 170, 0.1);
+  color: var(--setup-accent);
+  font-weight: 600;
+}
+
 .setup-card {
   border: 1px solid color-mix(in srgb, var(--setup-accent) 20%, transparent);
   box-shadow:
