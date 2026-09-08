@@ -2,6 +2,13 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.1 — 2026-09-08
+- Seguridad (R1 de la auditoría): `firestore.rules` endurecidas para los agregados RSVP — cotas acotadas (`companionCount` ≤20, `childrenCount` ≤50, listas paralelas ≤20/50) y **alineación contador↔lista** (`companionNames.size()==companionCount`) para que el documento no pueda inflarse ni desincronizarse; listas `childrenAllergies`/`childrenAllergiesOther` acotadas por primera vez.
+- Tests de reglas actualizados: la suite de emulador (`test:rules`) usaba el campo obsoleto `companions`; migrada a `companionCount` → **43/43 correctos** (antes 42/43).
+- Refactor del plan pendiente: `DataTab.tsx` (~1005 → 689 líneas) extrae la sección de datos a `DataTableSection.tsx` (herramientas en lote, confirmación destructiva, filtro de actividad, búsqueda PII, tema en bloque y tabla ordenable), con 6 tests nuevos.
+- Documentación: App Check (R2) con pasos de activación y estado en `AGENTS.md`; bloque de invitación de prueba obsoleta `TtCgt9n8VT` eliminado (ya no existe en producción; los seeds e2e crean invitaciones dinámicas).
+- `AUDITORIA.md` archivado y eliminado del repo (por decisión del dueño); resumen de rondas y pendientes consolidado en `AGENTS.md`.
+- Gate: 2521 tests verdes (201 ficheros) · cobertura 91,78/83,09/89,73/93,65 · tsc/oxlint OK.
 ## 2.192.0 — 2026-09-08
 - Arquitectura de carga por ruta: ConfigProvider/AuthProvider/RsvpProvider/AppMerger dejan de envolver TODA la app y se montan dentro de bundles de ruta perezosos (src/routes/): provider tree SIN Firebase en el shell.
 - JS INICIAL: 289 KB gz → 107 KB gz (−63 %; vendor-firebase 156 KB pasa a chunk bajo demanda, fuera de los modulepreloads — verificado 0 referencias en el entry). Firestore se descarga en paralelo con la primera ruta que lo necesita.
