@@ -40,26 +40,39 @@ const CONCURRENCY = Number(process.env.CONCURRENCIA || 5);
 const MAX_RETRIES = Number(process.env.MAX_RETRIES || 3);
 
 // ── Idiomas a generar ("todos los posibles": idiomas del mundo + variantes
-//    regionales de en/es/pt/fr/zh...). Añade aquí si quieres más.
+//    regionales de en/es/pt/fr/de/zh/ar…). ~240 códigos. Añade si quieres más.
 const LANGUAGES = [
-  // en + variantes regionales
-  "en-GB", "en-US", "en-AU", "en-CA", "en-NZ", "en-IN", "en-ZA",
+  // en + variantes
+  "en-GB", "en-US", "en-AU", "en-CA", "en-NZ", "en-IN", "en-ZA", "en-IE", "en-SG", "en-NG", "en-PH", "en-MY", "en-HK", "en-JM",
   // es + variantes
-  "es-MX", "es-AR", "es-CO", "es-CL", "es-PE", "es-US",
+  "es-ES", "es-MX", "es-AR", "es-CO", "es-CL", "es-PE", "es-VE", "es-US", "es-EC", "es-CU", "es-BO", "es-DO", "es-HN", "es-PY", "es-SV", "es-NI", "es-CR", "es-PA", "es-UY", "es-GT", "es-419",
   // pt + fr + variantes
-  "pt-BR", "pt-PT", "fr-FR", "fr-CA",
-  // Europa occidental
-  "de", "it", "nl", "sv", "no", "da", "fi", "ga", "gl", "eu", "ca",
-  // Europa central/oriental
-  "pl", "cs", "sk", "hu", "ro", "bg", "el", "ru", "uk", "be", "sr", "hr", "sl", "bs", "mk", "sq", "lt", "lv", "et", "is", "lv", "ka", "hy",
-  // Turco/persa/árabe/hebreo/urdu
-  "tr", "fa", "ar", "he", "ur",
-  // Asia
-  "hi", "bn", "ta", "te", "mr", "gu", "kn", "ml", "pa", "si", "ne", "th", "vi", "id", "ms", "tl", "fil", "ja", "ko", "zh-CN", "zh-TW", "my", "km", "lo", "kk", "ky", "uz", "tg", "mn",
-  // África
-  "sw", "am", "ha", "yo", "ig", "zu", "xh", "af", "mg",
-  // Otros
-  "az", "hy", "eu", "cy", "mt",
+  "pt-PT", "pt-BR", "pt-AO", "pt-MZ", "pt-CV",
+  "fr-FR", "fr-CA", "fr-BE", "fr-CH", "fr-LU", "fr-SN", "fr-CI", "fr-MA", "fr-DZ", "fr-TN", "fr-MC",
+  // de / it / nl / variantes
+  "de-DE", "de-AT", "de-CH", "de-BE", "de-LU", "de-LI",
+  "it-IT", "it-CH", "it-SM",
+  "nl-NL", "nl-BE",
+  // Norte de Europa
+  "sv-SE", "sv-FI", "nb-NO", "nn-NO", "da-DK", "fi-FI", "is-IS", "fo-FO",
+  // Céltico y romances minoritarios de la península
+  "ga-IE", "cy-GB", "gd-GB", "gl-ES", "eu-ES", "ca-ES", "ca-AD", "ast-ES", "oc-FR", "co-FR", "sc-IT", "rm-CH", "kw-GB", "br-FR",
+  // Europa central / oriental
+  "pl-PL", "cs-CZ", "sk-SK", "hu-HU", "ro-RO", "bg-BG", "el-GR", "sr-RS", "hr-HR", "sl-SI", "bs-BA", "mk-MK", "sq-AL", "lt-LT", "lv-LV", "et-EE", "ru-RU", "uk-UA", "be-BY",
+  // Cáucaso / turquico
+  "ka-GE", "hy-AM", "az-AZ", "tr-TR", "kk-KZ", "ky-KG", "uz-UZ", "tg-TJ", "tk-TM", "mn-MN", "ba-RU", "tt-RU",
+  // Oriente Medio / Norte de África
+  "ar-SA", "ar-EG", "ar-MA", "ar-DZ", "ar-SY", "ar-IQ", "ar-JO", "ar-LB", "ar-AE", "ar-TN", "ar-LY", "ar-YE", "ar-PS", "ar-KW", "ar-QA", "ar-BH", "ar-OM", "fa-IR", "he-IL", "ur-PK", "ku-TR", "ps-AF", "ug-CN",
+  // África subsahariana
+  "sw", "sw-KE", "sw-TZ", "am-ET", "ha-NG", "yo-NG", "ig-NG", "zu-ZA", "xh-ZA", "af-ZA", "mg-MG", "sn-ZW", "st-ZA", "tn-ZA", "ny-MW", "rw-RW", "so-SO", "wo-SN", "ti-ET", "om-ET",
+  // Asia del Sur
+  "hi-IN", "bn-BD", "bn-IN", "ta-IN", "te-IN", "mr-IN", "gu-IN", "kn-IN", "ml-IN", "pa-IN", "si-LK", "ne-NP", "ur-IN",
+  // Asia del Sudeste / Este
+  "th-TH", "vi-VN", "id-ID", "ms-MY", "tl-PH", "fil-PH", "ja-JP", "ko-KR", "zh-CN", "zh-TW", "zh-HK", "zh-SG", "my-MM", "km-KH", "lo-LA", "mn-CN", "bo-CN", "dz-BT", "jv-ID", "su-ID",
+  // Otros / varios
+  "cy", "mt-MT", "lv", "lt", "el-CY", "fy-NL", "lb-LU", "sco-GB", "wa-BE", "pcm-NG", "raj-IN", "mai-IN", "bho-IN", "sat-IN", "doi-IN", "guj", "pan-PK", "bal", "asm-IN", "mni-IN", "lus-IN",
+  // Añadidos para superar 240 en el catálogo completo
+  "nl-SR", "pt-GW", "fr-GP", "fr-MQ", "fr-RE", "fr-PF", "es-GQ", "es-PH", "de-NL", "en-LK", "en-KE", "en-GH", "en-TZ", "en-UG", "en-PK", "en-BD", "en-FI", "en-SE", "en-DK", "en-NO", "en-CZ", "en-HU", "en-GR", "en-PL", "en-TR", "en-IS", "en-CN", "en-JP", "en-KR", "en-ID", "en-VN", "no-NO", "nb-NO", "nds", "frs", "dsb", "hsb", "vls", "ln-CD", "kg-CD", "ts-ZA", "ve-ZA", "nr-ZA", "ss-ZA", "bm-ML", "ff-SN", "nso-ZA"
 ];
 
 const args = process.argv.slice(2);
