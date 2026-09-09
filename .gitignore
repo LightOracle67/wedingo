@@ -33,3 +33,6 @@ test-results
 
 # Core dumps de crashes OOM
 /core
+
+# logs del generador de traducciones
+.translation-log
