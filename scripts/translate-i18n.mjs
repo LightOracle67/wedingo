@@ -110,7 +110,7 @@ function toNested(m) {
 }
 
 let lastErrorFromModel = null;
-async function callOllama(promptItems, lang) {
+async function callOllama(promptItems, lang, extra = "") {
   const prompt = `Traduce al idioma "${lang}" manteniendo el tono de una invitación de boda.\n` +
     promptItems.map((it, i) => `${i}: ${it.text}`).join("\n");
   const system =
@@ -118,7 +118,8 @@ async function callOllama(promptItems, lang) {
     "y debes traducirlos al idioma pedido. Devuelve EXCLUSIVAMENTE JSON: un objeto con el índice como " +
     'clave y la traducción como valor, p.ej. {"0":"texto","1":"texto2"}. Reglas: preserva SIEMPRE los ' +
     "placeholders {{...}} tal cual; tono natural y cálido de boda; los nombres propios, URLs y códigos NO " +
-    "se traducen; NO añadas ni omitas elementos; NO añadas nada fuera del JSON.";
+    "se traducen; NO añadas ni omitas elementos; NO añadas nada fuera del JSON." +
+    extra;
   const res = await fetch(OLLAMA_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -148,7 +149,7 @@ async function callOllama(promptItems, lang) {
 }
 
 /** Traduce un lote, con retries y sub-división; devuelve array de traducciones (fallback al texto es). */
-async function translateBatch(items, lang) {
+async function translateBatch(items, lang, extra = "") {
   const out = new Array(items.length);
   async function rec(seg, offset, depth) {
     if (seg.length === 0) return;
@@ -156,7 +157,7 @@ async function translateBatch(items, lang) {
     let lastErr = null;
     for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
       try {
-        parsed = await callOllama(seg, lang);
+        parsed = await callOllama(seg, lang, extra);
         break;
       } catch (e) {
         lastErr = e;
@@ -244,6 +245,36 @@ async function generateLanguage(lang) {
   }
   const nested = toNested(flatResult);
   const fallbackPct = (fallbacks / ITEMS.length) * 100;
+
+  // REPAIR: a veces el modelo devuelve el texto original en español (p.ej.
+  // bloques legal/errors). Si un ítem quedó "idéntico al es" y lleva
+  // caracteres inequívocamente españoles (tildes/¿¡/ñ), se re-traduce con un
+  // prompt reforzado antes de dar el idioma por bueno.
+  const spanishRe = /[áéíóúñüÁÉÍÓÚÑ¿¡]/;
+  const suspicious = ITEMS.filter(
+    (it) =>
+      String(flatResult[it.key]) === it.text &&
+      it.text !== "" &&
+      !it.text.includes("{{") &&
+      !/^https?:|^@|^www\./.test(it.text) &&
+      spanishRe.test(it.text),
+  );
+  if (suspicious.length > 0) {
+    log(`⚠️ ${lang}: ${suspicious.length} cadenas quedaron en español; reintento con prompt reforzado…`);
+    const reinforced =
+      " REFUERZO: traduce SIEMPRE al idioma objetivo; está PROHIBIDO devolver texto en español. " +
+      "Si la traducción coincidiría con el original, reescríbela correctamente en el idioma objetivo.";
+    for (let b = 0; b < suspicious.length; b += 50) {
+      const seg = suspicious.slice(b, b + 50);
+      const trans = await translateBatch(seg, lang, reinforced);
+      seg.forEach((it, j) => {
+        const v = trans[j];
+        // Solo sustituir si la nueva NO es idéntica al es o NO tiene español inequívoco.
+        if (v !== it.text || !spanishRe.test(v)) flatResult[it.key] = v;
+      });
+    }
+  }
+
   const file = join(localesDir, `${lang}.json`);
   writeFileSync(file, JSON.stringify(nested, null, 2) + "\n");
 
