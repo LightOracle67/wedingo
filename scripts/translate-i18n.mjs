@@ -273,9 +273,6 @@ async function generateLanguage(lang) {
     log(`⚠️ ${lang}: ${undefinedSeen} claves undefined reparadas (1ª: ${firstUndefined}) → fallback a es.`);
   }
 
-  const nested = toNested(flatResult);
-  const fallbackPct = (fallbacks / ITEMS.length) * 100;
-
   void undefinedSeen;
   void firstUndefined;
 
@@ -313,9 +310,6 @@ async function generateLanguage(lang) {
     }
   }
 
-  const file = join(localesDir, `${lang}.json`);
-  writeFileSync(file, JSON.stringify(nested, null, 2) + "\n");
-
   // QA de placeholders: una traducción que rompe los {{vars}} es inusable
   // (el renderizado de la UI depende de ellos). Se revierten a es las claves
   // cuyos placeholders no coinciden EXACTAMENTE con los de es (el modelo a
@@ -331,6 +325,13 @@ async function generateLanguage(lang) {
   if (placeholdersFixed > 0) {
     log(`⚠️ ${lang}: ${placeholdersFixed} claves con placeholders rotos → revertidas a es.`);
   }
+
+  // nested se calcula DESPUÉS de aplicar todos los fixes (undefined, repair de
+  // español y placeholders) para que las correcciones lleguen AL FICHERO.
+  const nested = toNested(flatResult);
+  const fallbackPct = (fallbacks / ITEMS.length) * 100;
+  const file = join(localesDir, `${lang}.json`);
+  writeFileSync(file, JSON.stringify(nested, null, 2) + "\n");
 
   const secs = ((Date.now() - t0) / 1000).toFixed(0);
   // Al llegar aquí todas las claves existen y sus placeholders son idénticos
