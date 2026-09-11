@@ -173,7 +173,10 @@ async function translateBatch(items, lang, extra = "") {
     }
     // Fallo total: subdividir (evita repetir el batch entero y garantiza cobertura).
     if (seg.length === 1 || depth > 4) {
-      out[offset] = seg[0].text;
+      // Rellenar TODAS las posiciones del segmento (no solo seg[0]): rellenar
+      // solo la primera dejaba el resto `undefined` → JSON.stringify los perdía
+      // y el locale salía con ~594 claves FALTANTES de forma determinista.
+      for (let j = 0; j < seg.length; j++) out[offset + j] = seg[j].text;
       return;
     }
     const mid = Math.ceil(seg.length / 2);
@@ -243,8 +246,29 @@ async function generateLanguage(lang) {
     });
     log(`⌛ ${lang} · lote ${Math.round(b / BATCH) + 1}/${Math.ceil(ITEMS.length / BATCH)} (${batch.length})`);
   }
+  // GARANTÍA anti-ficheros-truncados: JSON.stringify OMITE las claves con
+  // valor `undefined`/`null`. Se rellenan ANTES de toNested para que ningún
+  // locale salga incompleto (fallback seguro al texto es).
+  let undefinedSeen = 0;
+  let firstUndefined = null;
+  for (const it of ITEMS) {
+    if (flatResult[it.key] === undefined || flatResult[it.key] === null) {
+      if (flatResult[it.key] === undefined) {
+        undefinedSeen++;
+        if (firstUndefined === null) firstUndefined = it.key;
+      }
+      flatResult[it.key] = it.text;
+    }
+  }
+  if (undefinedSeen > 0) {
+    log(`⚠️ ${lang}: ${undefinedSeen} claves undefined reparadas (1ª: ${firstUndefined}) → fallback a es.`);
+  }
+
   const nested = toNested(flatResult);
   const fallbackPct = (fallbacks / ITEMS.length) * 100;
+
+  void undefinedSeen;
+  void firstUndefined;
 
   // REPAIR: a veces el modelo devuelve el texto original en español (p.ej.
   // bloques legal/errors). Si un ítem quedó "idéntico al es" y lleva
