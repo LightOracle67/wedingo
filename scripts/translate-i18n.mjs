@@ -78,6 +78,30 @@ const esFlat = flat(es);
 const ITEMS = Object.entries(esFlat).map(([key, text]) => ({ key, text: String(text) }));
 console.log(`Base: ${ITEMS.length} claves · modelo ${MODEL} · lote ${BATCH} · conc ${CONCURRENCY}`);
 
+// Nombres de idioma legibles (evita que el modelo malinterprete códigos ISO
+// ambiguos como "de"=preposición española, "el", "ms", "yo", "ha", "am"…).
+const LANG_NAMES = {
+  // en / es + variantes ya generadas
+  "en": "inglés", "en-GB": "inglés británico", "en-US": "inglés americano",
+  "en-AU": "inglés australiano", "en-CA": "inglés canadiense", "en-NZ": "inglés de Nueva Zelanda",
+  "en-IN": "inglés de la India", "en-IE": "inglés irlandés", "en-SG": "inglés de Singapur",
+  "en-NG": "inglés de Nigeria", "en-PH": "inglés filipino", "en-MY": "inglés de Malasia",
+  "en-HK": "inglés de Hong Kong", "en-JM": "inglés jamaicano", "en-ZA": "inglés sudafricano",
+  // Europa
+  "fr": "francés", "de": "alemán", "it": "italiano", "pt-PT": "portugués de Portugal",
+  "nl": "neerlandés", "ru": "ruso", "uk": "ucraniano", "pl": "polaco", "tr": "turco", "el": "griego",
+  // Asia
+  "zh-CN": "chino simplificado", "zh-TW": "chino tradicional", "ja": "japonés", "ko": "coreano",
+  "hi": "hindi", "bn": "bengalí", "ta": "tamil", "id": "indonesio", "ms": "malayo",
+  "th": "tailandés", "vi": "vietnamita",
+  // Oriente Medio / Asia SO
+  "ar-SA": "árabe", "fa": "persa", "he": "hebreo", "ur": "urdu", "tl": "tagalo",
+  // África
+  "sw": "suajili", "am": "amárico", "ha": "hausa", "yo": "yoruba", "zu": "zulú", "af-ZA": "afrikáans",
+  // Américas
+  "fr-CA": "francés canadiense", "pt-BR": "portugués brasileño",
+};
+
 function toNested(m) {
   const out = {};
   for (const [k, v] of Object.entries(m)) {
@@ -95,7 +119,8 @@ function toNested(m) {
 
 let lastErrorFromModel = null;
 async function callOllama(promptItems, lang, extra = "") {
-  const prompt = `Traduce al idioma "${lang}" manteniendo el tono de una invitación de boda.\n` +
+  const langName = LANG_NAMES[lang] || lang;
+  const prompt = `Traduce al idioma "${langName}" (código ISO "${lang}") manteniendo el tono de una invitación de boda.\n` +
     promptItems.map((it, i) => `${i}: ${it.text}`).join("\n");
   const system =
     "Eres un traductor profesional de invitaciones de boda. Recibes una lista de textos en español " +
