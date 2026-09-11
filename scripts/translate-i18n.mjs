@@ -74,7 +74,7 @@ const LANGUAGES = [
   // Otros / varios
   "cy", "mt-MT", "lv", "lt", "el-CY", "fy-NL", "lb-LU", "sco-GB", "wa-BE", "pcm-NG", "raj-IN", "mai-IN", "bho-IN", "sat-IN", "doi-IN", "guj", "pan-PK", "bal", "asm-IN", "mni-IN", "lus-IN",
   // Añadidos para superar 240 en el catálogo completo
-  "nl-SR", "pt-GW", "fr-GP", "fr-MQ", "fr-RE", "fr-PF", "es-GQ", "es-PH", "de-NL", "en-LK", "en-KE", "en-GH", "en-TZ", "en-UG", "en-PK", "en-BD", "en-FI", "en-SE", "en-DK", "en-NO", "en-CZ", "en-HU", "en-GR", "en-PL", "en-TR", "en-IS", "en-CN", "en-JP", "en-KR", "en-ID", "en-VN", "no-NO", "nb-NO", "nds", "frs", "dsb", "hsb", "vls", "ln-CD", "kg-CD", "ts-ZA", "ve-ZA", "nr-ZA", "ss-ZA", "bm-ML", "ff-SN", "nso-ZA"
+  "nl-SR", "pt-GW", "fr-GP", "fr-MQ", "fr-RE", "fr-PF", "de-NL", "en-LK", "en-KE", "en-GH", "en-TZ", "en-UG", "en-PK", "en-BD", "en-FI", "en-SE", "en-DK", "en-NO", "en-CZ", "en-HU", "en-GR", "en-PL", "en-TR", "en-IS", "en-CN", "en-JP", "en-KR", "en-ID", "en-VN", "no-NO", "nb-NO", "nds", "frs", "dsb", "hsb", "vls", "ln-CD", "kg-CD", "ts-ZA", "ve-ZA", "nr-ZA", "ss-ZA", "bm-ML", "ff-SN", "nso-ZA"
 ];
 
 const args = process.argv.slice(2);
