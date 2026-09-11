@@ -44,8 +44,10 @@ const MAX_RETRIES = Number(process.env.MAX_RETRIES || 3);
 const LANGUAGES = [
   // en + variantes
   "en-GB", "en-US", "en-AU", "en-CA", "en-NZ", "en-IN", "en-ZA", "en-IE", "en-SG", "en-NG", "en-PH", "en-MY", "en-HK", "en-JM",
-  // es + variantes
-  "es-ES", "es-MX", "es-AR", "es-CO", "es-CL", "es-PE", "es-VE", "es-US", "es-EC", "es-CU", "es-BO", "es-DO", "es-HN", "es-PY", "es-SV", "es-NI", "es-CR", "es-PA", "es-UY", "es-GT", "es-419",
+  // es: la base ya es Español (es). Las variantes es-MX/es-AR/es-419… son
+  // redundantes y el repair anti-español-residual disputaba sobre ellas en
+  // falso (retardo + re-traducción sin sentido). Se deja SOLO es.
+  // es + variantes (eliminadas en v2.193 — ver comité)
   // pt + fr + variantes
   "pt-PT", "pt-BR", "pt-AO", "pt-MZ", "pt-CV",
   "fr-FR", "fr-CA", "fr-BE", "fr-CH", "fr-LU", "fr-SN", "fr-CI", "fr-MA", "fr-DZ", "fr-TN", "fr-MC",
@@ -275,8 +277,13 @@ async function generateLanguage(lang) {
   // caracteres inequívocamente españoles (tildes/¿¡/ñ), se re-traduce con un
   // prompt reforzado antes de dar el idioma por bueno.
   const spanishRe = /[áéíóúñüÁÉÍÓÚÑ¿¡]/;
+  // El repair anti-español-residual SOLO aplica a idiomas NO españoles: para
+  // variantes es-* (y no se generan) la coincidencia con es es normal y
+  // re-traducir con "prohibido el español" no tiene sentido.
+  const isSpanishLang = /^es(-|$)/.test(lang || "");
   const suspicious = ITEMS.filter(
     (it) =>
+      !isSpanishLang &&
       String(flatResult[it.key]) === it.text &&
       it.text !== "" &&
       !it.text.includes("{{") &&
