@@ -2,6 +2,12 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.28 — 2026-09-14
+- **Selector de idioma multilingüe**: 35 idiomas (33 continental-generales + es/en) agrupados por continente, con nombre nativo y opción **Auto** (detección del navegador).
+- **i18n**: corregida la carga de variantes de región (`load:"all"`; antes `pt-BR`/`zh-CN`/`fr-CA` caían a `es`), y `<html lang>`/`<html dir>` dinámicos con **RTL** para árabe/hebreo/urdu/persa.
+- **Nuevos locales**: fr, de, it, pt-PT, pt-BR, nl, ru, uk, pl, tr, el, zh-CN, ja, ko, hi, bn, ta, id, ms, th, vi, ar-SA, fa, he, ur, tl, sw, am, ha, yo, zu, af-ZA, fr-CA (+ variantes `en-*`).
+- **Tooling**: generador de traducciones (nombre de idioma, repair de placeholders/residuo español) y **validador de QA** (`translations:validate`) integrado en `preready`.
+
 ## 2.192.27 — 2026-09-09
 - Rendimiento (LCP invitado): tras el build se inyectan `<link rel="modulepreload">` de la ruta crítica de Firestore (`vendor-firebase`, `providers`, `invitation-`, `landing-`, `PublicInvitation-`) para arrancar la descarga del chunk más pesado en paralelo al entry y eliminar el waterfall.
 - Tests: última tanda al máximo — **2620 → 2641 tests** (212 ficheros). Cobertura **93,37 / 84,73 / 92,93 / 95,18**.
