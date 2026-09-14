@@ -131,3 +131,48 @@
 [dir="rtl"] .story-map {
   text-align: right;
 }
+
+/* ── Pulido RTL v2.192.31 ─────────────────────────────────────────────── */
+/* Toggle-switch: el knob y el desplazamiento se espejan en RTL. */
+[dir="rtl"] .setup-toggle::before {
+  left: auto;
+  right: 0.15rem;
+}
+[dir="rtl"] .setup-toggle:checked::before {
+  transform: translateX(-1.1rem);
+}
+[dir="rtl"] .setup-toggle-row {
+  direction: rtl;
+}
+
+/* Empujes y separaciones inline → espejo (inline-end). */
+[dir="rtl"] .table-actions-bar__buttons {
+  margin-left: 0;
+  margin-right: auto;
+}
+[dir="rtl"] .character-counter {
+  margin-left: 0;
+  margin-right: 0.4rem;
+}
+[dir="rtl"] .section-order-item__badge {
+  margin-left: 0;
+  margin-right: 0.35rem;
+}
+
+/* Formularios y tablas del admin/setup: texto fluye a la derecha en RTL. */
+[dir="rtl"] .setup-label,
+[dir="rtl"] .admin-table th,
+[dir="rtl"] .admin-table td {
+  text-align: right;
+}
+
+/* Pestañas del admin: en móvil el scroll empieza por el final en RTL. */
+@media (max-width: 720px) {
+  [dir="rtl"] .admin-tabs {
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+  [dir="rtl"] .admin-tab {
+    flex-shrink: 0;
+  }
+}
