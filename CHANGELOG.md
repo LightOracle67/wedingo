@@ -2,6 +2,11 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.29 — 2026-09-14
+- **SEO multiidioma**: enlaces `hreflang` alternativos + `canonical` dinámicos y soporte de `?lang=<code>` (URLs compartibles por idioma).
+- **RGPD**: «eliminar mis datos» borra también la preferencia de idioma del selector.
+- **Eliminado el widget de Google Translate** (redundante con el selector multilingüe nativo); deja de cargarse un tercero.
+
 ## 2.192.28 — 2026-09-14
 - **Selector de idioma multilingüe**: 35 idiomas (33 continental-generales + es/en) agrupados por continente, con nombre nativo y opción **Auto** (detección del navegador).
 - **i18n**: corregida la carga de variantes de región (`load:"all"`; antes `pt-BR`/`zh-CN`/`fr-CA` caían a `es`), y `<html lang>`/`<html dir>` dinámicos con **RTL** para árabe/hebreo/urdu/persa.
