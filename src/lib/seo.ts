@@ -10,6 +10,7 @@
  *
  * @module seo
  */
+import { LANGUAGE_GROUPS } from "../i18n/languages";
 
 /** Prefijo base de las URLs públicas del sitio. */
 export const SITE_URL = "https://wedingo-6c26a.web.app";
@@ -163,4 +164,43 @@ export function resetSocialMeta() {
     description: DEFAULT_DESCRIPTION,
     url: SITE_URL,
   });
+}
+
+// ── hreflang multiidioma ──────────────────────────────────────────────────
+// La app es una SPA sin rutas por idioma: cada idioma se expone con `?lang=<code>`
+// (soportado por el detector de i18n). Se inyectan los <link rel="alternate"
+// hreflang> de los idiomas disponibles + `x-default` para que los buscadores
+// conozcan las variantes. Marcados aparte (data-wedin-i18n-seo) para poder
+// reemplazarlos sin tocar las meta sociales (que usan otro marker).
+const HREFLANG_MARK = "data-wedin-i18n-seo";
+const HREFLANG_CODES = LANGUAGE_GROUPS.flatMap((g) => g.languages.map((l) => l.code));
+
+/** Reemplaza los enlaces hreflang alternativos del documento. */
+export function applyHreflangLinks(): void {
+  if (typeof document === "undefined" || typeof window === "undefined") return;
+  const head = document.head;
+  head.querySelectorAll(`link[${HREFLANG_MARK}]`).forEach((el) => el.remove());
+
+  const url = new URL(window.location.href);
+  url.searchParams.delete("lang");
+  const base = `${url.origin}${url.pathname}${url.search}`;
+
+  const frag = document.createDocumentFragment();
+  for (const code of HREFLANG_CODES) {
+    const link = document.createElement("link");
+    link.rel = "alternate";
+    link.hreflang = code;
+    const u = new URL(base);
+    u.searchParams.set("lang", code);
+    link.href = u.toString();
+    link.setAttribute(HREFLANG_MARK, "");
+    frag.appendChild(link);
+  }
+  const xDefault = document.createElement("link");
+  xDefault.rel = "alternate";
+  xDefault.hreflang = "x-default";
+  xDefault.href = base;
+  xDefault.setAttribute(HREFLANG_MARK, "");
+  frag.appendChild(xDefault);
+  head.appendChild(frag);
 }

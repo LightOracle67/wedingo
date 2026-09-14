@@ -3,20 +3,22 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { isRtlLang } from "./languages";
+import { applyHreflangLinks } from "../lib/seo";
 
 // Idiomas realmente disponibles (los ficheros locales existentes).
 const localeModules = import.meta.glob("./locales/*.json");
 const supportedLngs = Object.keys(localeModules).map((p) => p.replace("./locales/", "").replace(/\.json$/, ""));
 
-// Sincroniza <html lang> y <html dir> (RTL para árabe/hebreo/urdu/persa).
-function syncHtmlLangDir() {
+// Sincroniza <html lang>/<html dir> (RTL) y los enlaces hreflang/canonical (SEO).
+function syncDocumentMeta() {
   if (typeof document === "undefined") return;
   const lng = i18n.resolvedLanguage || i18n.language || "es";
   document.documentElement.lang = lng;
   document.documentElement.dir = isRtlLang(lng) ? "rtl" : "ltr";
+  applyHreflangLinks();
 }
 
-i18n.on("languageChanged", syncHtmlLangDir);
+i18n.on("languageChanged", syncDocumentMeta);
 
 i18n
   .use(LanguageDetector)
@@ -31,13 +33,20 @@ i18n
     load: "all",
     // es-US se resuelve a es (evita peticiones a locales inexistentes).
     nonExplicitSupportedLngs: true,
+    // `?lang=xx` es prioritario (enlaces compartibles + hreflang), luego la
+    // preferencia guardada y, por último, el idioma del navegador.
+    detection: {
+      order: ["querystring", "localStorage", "navigator", "htmlTag"],
+      lookupQuerystring: "lang",
+      caches: ["localStorage"],
+    },
     interpolation: { escapeValue: false },
     returnObjects: false,
     returnNull: false,
   });
 
-// Aplicar lang/dir también en el arranque (el evento languageChanged puede no
-// dispararse al inicializar).
-syncHtmlLangDir();
+// Aplicar lang/dir y hreflang también en el arranque (el evento languageChanged
+// puede no dispararse al inicializar).
+syncDocumentMeta();
 
 export default i18n;
