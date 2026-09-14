@@ -10,6 +10,8 @@ export const STORAGE_KEYS = {
   a11y: "wedin_a11y",
   animations: "wedin_animations",
   inviteCacheLegacy: "wedin_invite_cache",
+  /** Preferencia de idioma del selector (clave por defecto de i18next-browser-languagedetector). */
+  language: "i18nextLng",
   audio: (token: string) => `wedin_audio_${token}`,
   setupToken: (token: string) => `wedin_setup_token_${token}`,
   inviteCache: (token: string) => `wedin_invite_cache_${token}`,

@@ -75,6 +75,9 @@ export function eraseGuestLocalData(inviteToken?: string): DataRequestResult {
       if (key === STORAGE_KEYS.cookiePrefs) return true;
       if (key === STORAGE_KEYS.inviteToken) return true;
       if (key === STORAGE_KEYS.inviteCacheLegacy) return true;
+      // Preferencia de idioma del selector: es un dato del visitante, se borra
+      // con "eliminar mis datos" (RGPD) para volver a la detección del navegador.
+      if (key === STORAGE_KEYS.language) return true;
       if (key === STORAGE_KEYS.rsvpCache(inviteToken ?? "")) return true;
       if (key === STORAGE_KEYS.inviteCache(inviteToken ?? "")) return true;
       if (key === STORAGE_KEYS.setupToken(inviteToken ?? "")) return true;

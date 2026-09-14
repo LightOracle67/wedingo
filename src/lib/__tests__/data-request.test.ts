@@ -68,6 +68,14 @@ describe("data-request", () => {
     expect(localStorage.getItem("wedin_a11y")).toBe("dark");
   });
 
+  it("eraseGuestLocalData borra la preferencia de idioma (i18nextLng) en ambos storages", () => {
+    localStorage.setItem("i18nextLng", "fr-CA");
+    sessionStorage.setItem("i18nextLng", "fr-CA");
+    eraseGuestLocalData("abc");
+    expect(localStorage.getItem("i18nextLng")).toBeNull();
+    expect(sessionStorage.getItem("i18nextLng")).toBeNull();
+  });
+
   it("eraseGuestLocalData removes legacy keys and generic invite prefixes", () => {
     localStorage.setItem("wedin_invite_token", "abc");
     localStorage.setItem("wedin_invite_cache", "legacy");
