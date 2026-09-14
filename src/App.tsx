@@ -18,7 +18,6 @@ import { useOptionalInviteToken } from "./contexts/useConfig";
 const CookieConsent = lazy(() => import("./components/CookieConsent"));
 const DataRequestModal = lazy(() => import("./components/DataRequestModal"));
 const LanguageSwitcher = lazy(() => import("./components/LanguageSwitcher"));
-const GoogleTranslateToggle = lazy(() => import("./components/GoogleTranslateToggle"));
 const Fireflies = lazy(() => import("./components/Fireflies"));
 import { useFocusTrap, useEscapeKey } from "./hooks/useFocusTrap";
 
@@ -336,9 +335,6 @@ function AppShell() {
             <div className="app-footer__left">
               <Suspense fallback={null}>
                 <LanguageSwitcher />
-              </Suspense>
-              <Suspense fallback={null}>
-                <GoogleTranslateToggle />
               </Suspense>
               <button
                 type="button"
