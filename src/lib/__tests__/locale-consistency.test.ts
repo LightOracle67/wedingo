@@ -32,7 +32,13 @@ describe("Locale consistency", () => {
       "ar-SA", "fa", "he", "ur", "tl", "sw", "am", "ha", "yo", "zu", "af-ZA",
       "fr-CA", "pt-BR",
     ];
-    const expected = new Set(["es", "en", ...enVariants, ...continental]);
+    const expected = new Set([
+      "es", "en",
+      // Alias base para detección de navegadores con código sin región
+      // (pt/zh/ar/af): copias del contenido regional por defecto.
+      "pt", "zh", "ar", "af",
+      ...enVariants, ...continental,
+    ]);
     const unexpected = names.filter((n) => !expected.has(n));
     expect(unexpected).toEqual([]);
   });

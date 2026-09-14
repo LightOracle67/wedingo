@@ -31,8 +31,12 @@ i18n
     // recurso: con "languageOnly" se pedía /locales/pt.json que no existe y
     // las variantes de región se caían a es. Ahora pt-BR carga pt-BR.json.
     load: "all",
-    // es-US se resuelve a es (evita peticiones a locales inexistentes).
-    nonExplicitSupportedLngs: true,
+    // OJO: NO usar nonExplicitSupportedLngs — con él i18next NO carga los
+    // bundles con región (pt-BR/pt-PT/ar-SA/…) y se resuelve a `es` (bug en
+    // vivo: portugués en español y dir=ltr). Con false, un navegador que
+    // reporte es-US/zh/etc. cae a fallbackLng o al fichero base (ver alias
+    // pt.json/zh.json/ar.json/af.json creados para detección pura).
+    nonExplicitSupportedLngs: false,
     // `?lang=xx` es prioritario (enlaces compartibles + hreflang), luego la
     // preferencia guardada y, por último, el idioma del navegador.
     detection: {
