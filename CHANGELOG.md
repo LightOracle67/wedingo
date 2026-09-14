@@ -2,6 +2,12 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.30 — 2026-09-15
+- **Fix selector/idiomas**: se elimina `nonExplicitSupportedLngs`, que impedía cargar los idiomas con región (`pt-BR`, `pt-PT`, `ar-SA`… ahora sí cargan su idioma real, no caían a español) y se corrige `dir=rtl` para árabe.
+- **Alias base de detección**: `pt`, `zh`, `ar`, `af` (para navegadores que reportan idioma sin región).
+- **Limpieza legal**: se eliminan las menciones al widget de Google Translate (CSP y textos legales), que ya no existe, con re-traducción de `cookiesPolicy`/`privacyPolicy` en todos los locales.
+- Test de regresión de runtime multilingüe (portugués/árabe/tagalo/alemán).
+
 ## 2.192.29 — 2026-09-14
 - **SEO multiidioma**: enlaces `hreflang` alternativos + `canonical` dinámicos y soporte de `?lang=<code>` (URLs compartibles por idioma).
 - **RGPD**: «eliminar mis datos» borra también la preferencia de idioma del selector.
