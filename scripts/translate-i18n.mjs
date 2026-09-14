@@ -117,7 +117,6 @@ function toNested(m) {
   return out;
 }
 
-let lastErrorFromModel = null;
 async function callOllama(promptItems, lang, extra = "") {
   const langName = LANG_NAMES[lang] || lang;
   const prompt = `Traduce al idioma "${langName}" (código ISO "${lang}") manteniendo el tono de una invitación de boda.\n` +
@@ -153,7 +152,6 @@ async function callOllama(promptItems, lang, extra = "") {
   if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) {
     throw new Error("respuesta no-objeto de ollama");
   }
-  lastErrorFromModel = null;
   return parsed;
 }
 
@@ -163,13 +161,12 @@ async function translateBatch(items, lang, extra = "") {
   async function rec(seg, offset, depth) {
     if (seg.length === 0) return;
     let parsed = null;
-    let lastErr = null;
     for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
       try {
         parsed = await callOllama(seg, lang, extra);
         break;
-      } catch (e) {
-        lastErr = e;
+      } catch {
+        /* reintento */
       }
     }
     if (parsed) {
