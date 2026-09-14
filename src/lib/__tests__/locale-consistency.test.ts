@@ -16,9 +16,25 @@ function hasArrayValue(obj: unknown): boolean {
 describe("Locale consistency", () => {
   const entries = Object.entries(localeModules);
 
-  it("only ships the supported locales (es and en)", () => {
-    const names = entries.map(([key]) => key.split("/").pop()).sort();
-    expect(names).toEqual(["en.json", "es.json"]);
+  it("ships the supported locales (es, en + catálogo continental y variantes en-*)", () => {
+    const names = entries.map(([key]) => (key.split("/").pop() || "").replace(".json", "")).sort();
+    // es y en son la base obligatoria.
+    expect(names).toContain("es");
+    expect(names).toContain("en");
+    // Todos los locales deben pertenecer al catálogo esperado (nada inesperado).
+    const enVariants = [
+      "en-AU", "en-CA", "en-GB", "en-HK", "en-IE", "en-IN", "en-JM", "en-MY",
+      "en-NG", "en-NZ", "en-PH", "en-SG", "en-US", "en-ZA",
+    ];
+    const continental = [
+      "fr", "de", "it", "pt-PT", "nl", "ru", "uk", "pl", "tr", "el",
+      "zh-CN", "ja", "ko", "hi", "bn", "ta", "id", "ms", "th", "vi",
+      "ar-SA", "fa", "he", "ur", "tl", "sw", "am", "ha", "yo", "zu", "af-ZA",
+      "fr-CA", "pt-BR",
+    ];
+    const expected = new Set(["es", "en", ...enVariants, ...continental]);
+    const unexpected = names.filter((n) => !expected.has(n));
+    expect(unexpected).toEqual([]);
   });
 
   it("all locale files share a common set of top-level keys", () => {

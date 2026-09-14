@@ -29,6 +29,36 @@
   display: inline-flex;
   gap: 0.4rem;
 }
+
+/* Desplegable de idiomas (v2.193+: 33 idiomas continental-generales). */
+.lang-select {
+  display: inline-flex;
+}
+.lang-select__control {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--setup-title);
+  background: color-mix(in srgb, var(--setup-accent) 18%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--setup-accent) 35%, transparent);
+  border-radius: var(--radius-md);
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--setup-accent) 12%, transparent);
+  transition:
+    background 200ms,
+    border-color 200ms,
+    box-shadow 200ms;
+  max-width: min(72vw, 16rem);
+}
+.lang-select__control:hover {
+  background: color-mix(in srgb, var(--setup-accent) 28%, transparent);
+  border-color: color-mix(in srgb, var(--setup-accent) 55%, transparent);
+}
+.lang-select__control:focus-visible {
+  outline: 2px solid var(--setup-accent);
+  outline-offset: 2px;
+}
 .lang-trigger--active {
   background: color-mix(in srgb, var(--setup-accent) 42%, transparent);
   border-color: var(--setup-accent);

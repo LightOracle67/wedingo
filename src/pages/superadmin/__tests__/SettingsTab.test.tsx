@@ -6,7 +6,10 @@ const mockClearSession = vi.fn();
 const mockLogout = vi.fn();
 
 vi.mock("react-i18next", () => ({
-  useTranslation: () => ({ t: (key: string) => key, i18n: { language: "en" } }),
+  useTranslation: () => ({
+    t: (key: string) => key,
+    i18n: { language: "en", resolvedLanguage: "en", changeLanguage: () => {}, on: () => {}, off: () => {} },
+  }),
 }));
 
 vi.mock("../../../lib/superadmin", () => ({
