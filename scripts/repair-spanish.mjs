@@ -20,6 +20,7 @@ const CONCURRENCY = Number(process.env.CONCURRENCIA || 3);
 /** --relaxed: acepta cualquier traducción distinta de es (útil para pt/vi,
  *  cuyas ortografías usan acentos similares a los españoles). */
 const RELAXED = process.argv.includes("--relaxed");
+const SKIP = new Set((process.argv.find((a) => a.startsWith("--skip=")) || "").split("=")[1]?.split(",").map((x) => x.trim()).filter(Boolean) || []);
 
 const LANG_NAMES = {
   fr: "francés", de: "alemán", it: "italiano", "pt-PT": "portugués de Portugal", nl: "neerlandés",
@@ -50,15 +51,25 @@ const ph = (s) => (String(s).match(/\{\{\s*[\w-]+\s*\}\}/g) || []).sort().join("
 
 // Claves candidatas: errors.*/legal.* idénticas a es con caracteres españoles
 // y texto largo (no URLs/nombres).
+// Palabras inequívocamente españolas (no cognados) para reducir falsos positivos
+// en idiomas que comparten vocabulario con el español (pt, it, fr...).
+const esSolo = /\b(el|la|los|las|un|una|unos|unas|y|o|de|del|que|con|para|por|en|no|es|son|está|puede|ser|más|menos|todos|todas|nuestros|nuestras|tu|su|sus|mi|mis|este|esta|como|porque|siempre|invitación|invitados|asistencia|confirmar|confirmación|guardar|eliminar|cargando|por favor|muchas gracias|fecha|horario|lugar|dirección|número|nombre|apellidos)[a-záéíóúñ]*\b/i;
+
 function findSuspicious(fd) {
-  return Object.keys(fd).filter(
-    (k) =>
-      /^(errors|legal)\./.test(k) &&
-      fd[k] === fe[k] &&
-      typeof fe[k] === "string" &&
-      fe[k].length > 20 &&
-      spanishRe.test(fe[k]),
-  );
+  const out = [];
+  for (const [k, v] of Object.entries(fd)) {
+    const src = fe[k];
+    if (
+      v === src &&
+      typeof src === "string" &&
+      src.length > 10 &&
+      !/https?:|\{\{|@/.test(src) &&
+      esSolo.test(src)
+    ) {
+      out.push(k);
+    }
+  }
+  return out;
 }
 
 async function translate(lang, items) {
@@ -80,6 +91,7 @@ async function translate(lang, items) {
 async function processLocale(file) {
   const lang = file.replace(".json", "");
   if (lang === "es" || lang === "en") return;
+  if (SKIP.has(lang)) return;
   const doc = JSON.parse(readFileSync(join(localesDir, file), "utf8"));
   const fd = flat(doc);
   const keys = findSuspicious(fd);

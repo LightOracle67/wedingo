@@ -645,7 +645,7 @@
     "linkCopied": "ሊንክ ተቅዶ።",
     "messageCopied": "የተገለበጠ መልእክት።",
     "messageHint": "ለግብዣው የሚላከውን መልእክት ያብበሉ።",
-    "qrCode": "Código QR",
+    "qrCode": "የኪዩአር ኮድ",
     "qrCodeAlt": "የ {{url}} የQR ኮድ",
     "qrError": "የ QR ኮድ መፍጠር አልተቻለም።",
     "copyQr": "QR ይቅዳሉ",

@@ -1346,7 +1346,7 @@
   },
   "lang": {
     "triggerLabel": "Change language",
-    "auto": "Auto (detectar idioma)",
+    "auto": "Auto (detect language)",
     "group": {
       "default": "Default",
       "europe": "Europe",

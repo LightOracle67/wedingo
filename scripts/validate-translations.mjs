@@ -111,14 +111,19 @@ for (const file of files) {
     phSamples.forEach((s) => console.error(`   - ${s}`));
   }
 
-  // Sin traducir (warnings, no bloquea): idéntico a es, con texto real.
+  // Sin traducir (warnings, no bloquea): SOLO sospechosos reales — idéntico
+  // a es con palabras inequívocamente españolas y texto largo (evita marcar
+  // cognados legítimos de pt/it/fr o URLs/nombres).
+  const esSolo =
+    /\b(el|la|los|las|un|una|unos|unas|y|o|de|del|que|con|para|por|en|no|es|son|está|puede|ser|más|menos|todos|todas|nuestros|nuestras|tu|su|sus|mi|mis|este|esta|como|porque|siempre|invitación|invitados|asistencia|confirmar|confirmación|guardar|eliminar|cargando|por favor|muchas gracias|fecha|horario|lugar|dirección|número|nombre|apellidos)[a-záéíóúñ]*\b/i;
   const untrans = keys.filter(
     (k) =>
       k in es &&
       String(flatLoc[k]) === String(es[k]) &&
-      flatLoc[k] !== "" &&
-      /[A-Za-záéíóúñÁÉÍÓÚÑ]{4,}/.test(String(flatLoc[k])) &&
-      !es[k].includes("{{"),
+      typeof es[k] === "string" &&
+      es[k].length > 10 &&
+      !/https?:|\{\{|@/.test(es[k]) &&
+      esSolo.test(es[k]),
   );
   if (untrans.length) {
     warn(`⚠️ ${untrans.length} cadenas idénticas a es (revisar si es un campo legítimo):`);

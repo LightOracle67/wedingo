@@ -650,7 +650,7 @@
     "qrError": "Could not generate the QR code.",
     "copyQr": "Copiar QR",
     "copyQrDone": "QR copiado.",
-    "copyQrFailed": "No se pudo copiar el QR."
+    "copyQrFailed": "Ko le ni iṣẹ-kọ QR."
   },
   "access": {
     "description": "Uwa ninu ki lati ṣe iṣiro nipa rẹ̀. Iṣiro tẹlifọ̀n naa kún fún ìṣe.",
@@ -1126,26 +1126,26 @@
     "row4Retention": "Session duration",
     "row4Recipients": "Google Cloud (Firestore sessions)",
     "row5Activity": "Superadmin audit",
-    "row5Data": "Acciones de superadmin, tokens usados, invitaciones eliminadas",
+    "row5Data": "Àṣàkóso àti àkọ ètò, oṣùgbọ̀n tí a lo, àwọn ìkíni tí a mú",
     "row5Basis": "Legal obligation (Art. 6.1.c GDPR)",
-    "row5Purpose": "Registro de actividades administrativas",
+    "row5Purpose": "Ìtàn àṣàkóso àti ìgbàgbọ́",
     "row5Retention": "3 years",
     "row5Recipients": "Google Cloud (Firestore auditLog)",
     "internationalTitle": "Transferencias internacionales",
     "internationalText": "Data is stored on Google Cloud servers in the eur3 region (Frankfurt, Germany). Google LLC (USA) acts as the data processor under DPA according to Art. 28 GDPR. Transfers to the USA are covered by:",
     "scc": "Standard Contractual Clauses (SCC) - Decision 2021/914",
-    "dpf": "Data Privacy Framework (DPF) UE-EE.UU., UK-EE.UU. y Suiza-EE.UU.",
+    "dpf": "Data Privacy Framework (DPF) EU-US, UK-US, àti Switzerland-US.",
     "measuresTitle": "Technical and organizational measures",
     "measureEncryption": "AES-256-GCM encryption of images and sensitive data (PBKDF2)",
     "measureTls": "HTTPS connection (TLS 1.3) throughout the platform",
-    "measureFirestore": "Reglas de seguridad en Firestore (control de acceso basado en sesiones)",
+    "measureFirestore": "Òfin àṣẹ ní Firestore (ìṣàkóso ìwọ̀n tí ó dá lórí ètò)",
     "measureStorage": "Minimum local storage and only with consent",
     "measureRetention": "Retention policy: 12 months post-event for guest data",
-    "measureSuperadmin": "Superadmin protegido por Firebase Authentication + ruta oculta",
+    "measureSuperadmin": "Àṣàkóso tí ó ní ìgbọṣẹ̀ lórí Firebase Authentication + ọ̀nà tí ó kún",
     "templatesTitle": "Privacy clause templates by country",
     "templatesHelp": "Summaries ready to adapt and copy into the policy of each invitation.",
     "copyTemplate": "Copiar",
-    "tableTitle": "Registro de actividad y consentimiento"
+    "tableTitle": "Ìtàn ìṣe àti ìgbàgbọ́"
   },
   "a11y": {
     "title": "Accesibilidad",
@@ -1158,20 +1158,20 @@
     "lineNormal": "Normal",
     "lineWide": "Amplio",
     "lineVeryWide": "Muy amplio",
-    "highContrast": "Alto contraste",
+    "highContrast": "Àkọ̀kan tí ó ní ìgbàgbọ́",
     "reducedMotion": "Reducir animaciones",
-    "dyslexiaFont": "Fuente OpenDyslexic",
-    "moreSpacing": "Mayor espaciado de letras",
-    "underlineLinks": "Subrayar todos los enlaces",
+    "dyslexiaFont": "Àkọ̀kan OpenDyslexic",
+    "moreSpacing": "Ìgbàgbọ́ ọ̀rọ̀ tí ó jù",
+    "underlineLinks": "Ṣí àwọn ìlànà gbogbo",
     "bigCursor": "Cursor grande",
-    "desaturate": "Escala de grises",
-    "strongFocus": "Indicadores de foco visibles",
+    "desaturate": "Àkọ̀kan ìwàrá",
+    "strongFocus": "Àwọn núkọ̀n ìfọkọ́ tí ó rí",
     "fontHuge": "Muy grande",
-    "narrationTitle": "Leer en voz alta",
+    "narrationTitle": "Kí sílẹ̀ ní èdè",
     "narrate": "Read the invitation aloud",
     "stopNarrate": "Stop narration",
     "narrating": "Reading the invitation...",
-    "narrationUnsupported": "Tu navegador no soporta la lectura por voz.",
+    "narrationUnsupported": "Bẹ́ẹ̀rẹ̀ tí ìwọ̀n rẹ kò dá àyànmọ́ sí èdè kíkún.",
     "animationsTitle": "Àkànṣẹ̀",
     "animationsHint": "Ṣe ìkìlọ̀ àkànṣẹ̀ kan pàtàkì ní àkọsílẹ̀ rẹ. Àwọn ogún ìgbéléjì ni a dá ìbẹ̀rẹ̀; o lè ṣí àkànṣẹ̀ mìíràn (ma ṣí àkànṣẹ̀ tí wọ́n ti ṣí)."
   },
@@ -1589,7 +1589,7 @@
     "generateReminder": "Ṣe ìròyìn",
     "reminderGenerated": "¡Hola! Nos casamos y nos encantaría que estuvierais. Todavía no nos habéis confirmado si podréis venir (quedan {{count}} personas sin confirmar). ¿Podéis confirmar vuestra asistencia en la invitación? Un abrazo.",
     "pendingConfirm": "Quedan {{count}} persona(s) sin confirmar.",
-    "expectedGuests": "Invitados esperados",
+    "expectedGuests": "Àwọn ọkonni tí a máa rí",
     "expectedHelp": "Kọ ẹkọ́ nípa awọn ẹlẹgbẹ ti o nífẹ̀ẹràn: panel naa n ṣakọye awọn iṣọ̀kan ati awọn ti ṣẹlẹ̀ láti kọja lati nọmba yìí.",
     "expectedGuestsMax": "Maximum 1000 guests.",
     "saveGuests": "Ṣe",
@@ -1811,12 +1811,12 @@
         "hint": "Ìrònú ìkíní yóò wọ̀n àkọlé ìkọ̀wé tí ó ṣìdé nígbà tí ó ń kọjá."
       },
       "music-card-open": {
-        "name": "Apertura del reproductor",
+        "name": "Kí ayàwó sílẹ̀",
         "hint": "The music player panel unfolds with a soft scale when the button is pressed."
       },
       "music-icon-bounce": {
         "name": "Music icon bounce",
-        "hint": "El icono de la nota musical rebota al abrir o cerrar el reproductor."
+        "hint": "Àkọ̀kan ìgbàgbọ́ nọ́ta máa rí ìgbàgbọ́ nígbà tí a máa ṣí ayàwó tàbí kí a ṣí."
       },
       "music-fab-shift": {
         "name": "Music button displacement",
@@ -1824,7 +1824,7 @@
       },
       "music-dot-blink": {
         "name": "Music notification point",
-        "hint": "El punto que avisa de un error o del estado del audio parpadea suavemente."
+        "hint": "Ìpín tí ó nfi ìhìn nípa ìṣe àwọ̀ tàbí ìwàgbójú ohùn máa rí ìhìn."
       },
       "music-play-glow": {
         "name": "Play button halo",
@@ -1843,27 +1843,27 @@
         "hint": "The loading error message shakes to draw attention."
       },
       "hero-photo-ring": {
-        "name": "Anillo dorado de la foto",
-        "hint": "Un anillo dorado pulsa alrededor de la foto de la pareja en la portada."
+        "name": "Àkọ̀kan oògùn sí ìwàgbójú ohun ọ̀rọ̀",
+        "hint": "Àkọ̀kan oògùn máa rí ìgbàgbọ́ níwájú ohun ọ̀rọ̀ àwọn ẹbí lórí ìwé ìkọ̀wé."
       },
       "hero-godparent-glow": {
-        "name": "Resplandor de los padrinos",
+        "name": "Ìgbàgbọ́ àwọn ẹbí",
         "hint": "The text with the godparents' names emits a warm, pulsing glow."
       },
       "hero-photo-fade": {
-        "name": "Fundido de la foto al cargar",
-        "hint": "La foto de la portada aparece con un fundido suave cuando termina de cargar."
+        "name": "Ìṣe ìkọ̀wé ohun ọ̀rọ̀ nígbà tí ó ń loád.",
+        "hint": "Ohun ọ̀rọ̀ ìwé ìkọ̀wé máa rí ìṣe ìkọ̀wé tí ó dị nígbà tí ó bá kọjá."
       },
       "countdown-tick": {
-        "name": "Cuenta regresiva en directo",
+        "name": "Àkókò tí ó wà ní àkókò",
         "hint": "The remaining time counter updates every second. When deactivated, the initial static value is shown."
       },
       "loading-spinner": {
-        "name": "Ruedas de carga",
-        "hint": "Las ruedas giratorias que aparecen mientras cargan la foto de la portada y otros contenidos."
+        "name": "Àwọn ìròyìn loád",
+        "hint": "Àwọn ìròyìn tí ó ń wọ̀n nígbà tí wọ́n ń loád ohun ọ̀rọ̀ ìwé ìkọ̀wé àti ohun mìíràn."
       },
       "gallery-blur": {
-        "name": "Cambio de foto con desenfoque",
+        "name": "Ìyípadà ohun ọ̀rọ̀ pẹ̀lú ìrẹ̀wọ̀n",
         "hint": "When browsing the gallery, the previous photo blurs while the new one enters sharply."
       },
       "gallery-caption": {
@@ -1871,11 +1871,11 @@
         "hint": "The description of each photo appears with a small upward slide."
       },
       "gallery-lightbox": {
-        "name": "Apertura del visor de fotos",
+        "name": "Kí ayàwó ìwé ìkọ̀wé sílẹ̀",
         "hint": "The full-screen gallery viewer appears with an entrance fade."
       },
       "gallery-thumb-hover": {
-        "name": "Escala de las miniaturas",
+        "name": "Ìwọ̀n àwọn ìkọ̀wé",
         "hint": "The gallery thumbnails slightly enlarge when the mouse hovers over them."
       },
       "gallery-nav-hover": {
@@ -1891,23 +1891,23 @@
         "hint": "The buttons on the invitation (RSVP, share, send...) are slightly elevated with a shadow when the mouse hovers over them."
       },
       "reaction-hover": {
-        "name": "Escala de las reacciones",
+        "name": "Ìwọ̀n àwọn ìdáhùn",
         "hint": "The reaction buttons (❤️ 🎉 😂) slightly enlarge when the mouse hovers over them."
       },
       "theme-glow-depth": {
-        "name": "Resplandor del fondo",
+        "name": "Ìgbàgbọ́ ìwé ìkọ̀wé",
         "hint": "A glow of light slowly crosses the background of the invitation, giving a sense of depth."
       },
       "landing-pulse": {
-        "name": "Pulso de las pantallas de carga",
-        "hint": "El fondo de las pantallas de carga, error y mantenimiento pulsa suavemente."
+        "name": "Ìgbàgbọ́ àwọn ìwé loád",
+        "hint": "Ìgbàgbọ́ ìwé ìkọ̀wé, ìkọ̀wé, àti ìṣe máa rí ìgbàgbọ́."
       },
       "toast-animations": {
         "name": "Avisos flotantes",
-        "hint": "Los avisos breves (confirmaciones, errores...) aparecen y desaparecen con un deslizamiento."
+        "hint": "Àwọn ìkọ̀rọ̀ tí ó kún (ìgbàgbọ́, ìkọ̀wé...) máa rí ìgbàgbọ́ àti ìyípadà."
       }
     },
-    "allOffLabel": "Desactivar todas las animaciones",
+    "allOffLabel": "Ṣí gbogbo ìṣe ìkọ̀wé",
     "allOffHint": "When activated, the invitation is shown without any animation: the envelope does not appear, there is no confetti or transitions. When deactivated, your individual preferences return.",
     "allOffActive": "Bẹ̀rẹ̀ sí ìdánilá ní àtúnṣe gbogbo.",
     "groupOffActive": "Bẹ̀rẹ̀ sí ìdánilá ní àtúnṣe ìkànlẹ̀."

@@ -1118,7 +1118,7 @@
     "row3Basis": "Consent (Art. 6.1.a GDPR)",
     "row3Purpose": "Photo gallery in the invitation",
     "row3Retention": "12 months after the event",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": "கூகிள் கிளவுட் (ஃபீஸ்டோர் துணை சேகரிப்பு)",
     "row4Activity": "Authentication and sessions",
     "row4Data": "{{...}}",
     "row4Basis": "{{...}}",
@@ -1455,7 +1455,7 @@
     "seatsWord": "மணமக்களை வாழ்த்துக் கூறும் செய்தி"
   },
   "welcomeVideo": {
-    "title": "Mensaje de los novios"
+    "title": "மணமகன் மற்றும் மணமகள் செய்தி"
   },
   "seo": {
     "inviteFallback": "{{names}} te invitan a su boda."

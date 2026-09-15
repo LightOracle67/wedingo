@@ -1118,7 +1118,7 @@
     "row3Basis": "Toestemming (Art. 6.1.a GDPR)",
     "row3Purpose": "Fotogalerie in die uitnodiging",
     "row3Retention": "12 maande na die geleentheid",
-    "row3Recipients": "Google Cloud (Firestore subcollection)",
+    "row3Recipients": "Google Cloud (Firestore subverzameling)",
     "row4Activity": "Werksgegee en sessies",
     "row4Data": "Sessie-token, gebruikersnaam admin",
     "row4Basis": "Legitieme belang (Art. 6.1.f GDPR)",

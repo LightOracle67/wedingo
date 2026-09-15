@@ -650,7 +650,7 @@
     "qrError": "Could not generate the QR code.",
     "copyQr": "Copiar QR",
     "copyQrDone": "QR copiado.",
-    "copyQrFailed": "No se pudo copiar el QR."
+    "copyQrFailed": "Akusasa ukukopisha i-QR."
   },
   "access": {
     "description": "Ubhukela le ndawo lokwakha ikhompyutha. Ikhodi elidlulelwa ngeziwi izoba kungenakukusebenza.",
@@ -1126,26 +1126,26 @@
     "row4Retention": "Session duration",
     "row4Recipients": "Google Cloud (Firestore sessions)",
     "row5Activity": "Superadmin audit",
-    "row5Data": "Acciones de superadmin, tokens usados, invitaciones eliminadas",
+    "row5Data": "Izenzo zama-superadmin, ama-token asetshenziswa, izindeni zizilahlwa",
     "row5Basis": "Legal obligation (Art. 6.1.c GDPR)",
-    "row5Purpose": "Registro de actividades administrativas",
+    "row5Purpose": "Ukubhobeka kwezenzo zama-admin",
     "row5Retention": "3 years",
     "row5Recipients": "Google Cloud (Firestore auditLog)",
     "internationalTitle": "Transferencias internacionales",
     "internationalText": "Data is stored on Google Cloud servers in the eur3 region (Frankfurt, Germany). Google LLC (USA) acts as the data processor under DPA according to Art. 28 GDPR. Transfers to the USA are covered by:",
     "scc": "Standard Contractual Clauses (SCC) - Decision 2021/914",
-    "dpf": "Data Privacy Framework (DPF) UE-EE.UU., UK-EE.UU. y Suiza-EE.UU.",
+    "dpf": "Data Privacy Framework (DPF) EU-US, UK-US kanye neSwitzerland-US.",
     "measuresTitle": "Technical and organizational measures",
     "measureEncryption": "AES-256-GCM encryption of images and sensitive data (PBKDF2)",
     "measureTls": "HTTPS connection (TLS 1.3) throughout the platform",
-    "measureFirestore": "Reglas de seguridad en Firestore (control de acceso basado en sesiones)",
+    "measureFirestore": "Imikhawulo yokuphepha ku-Firestore (ukuhlola ukufika okwaziwa ngama-session)",
     "measureStorage": "Minimum local storage and only with consent",
     "measureRetention": "Retention policy: 12 months post-event for guest data",
-    "measureSuperadmin": "Superadmin protegido por Firebase Authentication + ruta oculta",
+    "measureSuperadmin": "Superadmin evikelwe ngu-Firebase Authentication + uhlamba olishayile",
     "templatesTitle": "Privacy clause templates by country",
     "templatesHelp": "Summaries ready to adapt and copy into the privacy policy of each invitation.",
     "copyTemplate": "Copiar",
-    "tableTitle": "Registro de actividad y consentimiento"
+    "tableTitle": "Ukubhobeka kwezenzo kanye nokuzozi"
   },
   "a11y": {
     "title": "Accesibilidad",
@@ -1158,20 +1158,20 @@
     "lineNormal": "Normal",
     "lineWide": "Amplio",
     "lineVeryWide": "Muy amplio",
-    "highContrast": "Alto contraste",
+    "highContrast": "Ikhala elikhulu",
     "reducedMotion": "Reducir animaciones",
-    "dyslexiaFont": "Fuente OpenDyslexic",
-    "moreSpacing": "Mayor espaciado de letras",
-    "underlineLinks": "Subrayar todos los enlaces",
+    "dyslexiaFont": "Ulwazi lwe-OpenDyslexic",
+    "moreSpacing": "Isikhala esikhulu sezifundo",
+    "underlineLinks": "Ukubeka isigqi ku-link konke",
     "bigCursor": "Cursor grande",
-    "desaturate": "Escala de grises",
-    "strongFocus": "Indicadores de foco visibles",
+    "desaturate": "Ikhala elibomvu",
+    "strongFocus": "Izindikisho zokukhetha okubonakalayo",
     "fontHuge": "Muy grande",
-    "narrationTitle": "Leer en voz alta",
+    "narrationTitle": "Ukufunda ngolukhala",
     "narrate": "Read the invitation aloud",
     "stopNarrate": "Stop narration",
     "narrating": "Reading the invitation...",
-    "narrationUnsupported": "Tu navegador no soporta la lectura por voz.",
+    "narrationUnsupported": "Ibhairi yako ayikwazi ukufunda ngolukhala.",
     "animationsTitle": "Ukuchazamazana",
     "animationsHint": "Yenza ukuzungezela ukuchazamazana ku-device yakho. Abantu abathanda ukuhlanza iqembu; wenza ukuzungezela okuningi (ungakwenza ukuzungezela okungakwenzeka yabo)."
   },
@@ -1572,7 +1572,7 @@
     "bannerPlaceholder": "Ulimi lwe-isaziso (maintenance, legal…)",
     "blockedUrls": "I-blacklist ye-URLs",
     "blockedUrlsHelp": "Izindlela ze-URL ezivunyelwe (ziyahlukaniswa nge-comma).",
-    "blockedUrlsPlaceholder": "ej. youtube.com, ejemplo-peligroso.com",
+    "blockedUrlsPlaceholder": "mis. youtube.com, ejemplo-peligroso.com",
     "blockedTokens": "I-blacklist ye-tokens",
     "blockedTokensHelp": "I-tokens ye-invitation ezivunyelwe (ziyahlukaniswa nge-comma): akubonakali.",
     "blockedTokensPlaceholder": "ej. AbCdEf1234, XyZq9876ab",
@@ -1811,12 +1811,12 @@
         "hint": "Isibane esingqopha sivukela isikhundleni esingqopha semculo lapho sidlala."
       },
       "music-card-open": {
-        "name": "Apertura del reproductor",
+        "name": "Ukovuleka kwe-player",
         "hint": "The music player panel unfolds with a soft scale when the button is pressed."
       },
       "music-icon-bounce": {
         "name": "Music icon bounce",
-        "hint": "El icono de la nota musical rebota al abrir o cerrar el reproductor."
+        "hint": "Ikonu ye-nota yomculo iqhubeka ngokubuka lapho i-player ivuleka noma iqala."
       },
       "music-fab-shift": {
         "name": "Music button displacement",
@@ -1824,7 +1824,7 @@
       },
       "music-dot-blink": {
         "name": "Music notification point",
-        "hint": "El punto que avisa de un error o del estado del audio parpadea suavemente."
+        "hint": "Iqalo elikhombisa iphutha noma isimo somculo likhanya lapho lilanda."
       },
       "music-play-glow": {
         "name": "Play button halo",
@@ -1843,27 +1843,27 @@
         "hint": "The loading error message shakes to draw attention."
       },
       "hero-photo-ring": {
-        "name": "Anillo dorado de la foto",
-        "hint": "Un anillo dorado pulsa alrededor de la foto de la pareja en la portada."
+        "name": "Ikhala elinombala ojemilelo lokubhuku",
+        "hint": "Ikhala elinombala ojemilelo liqhubeka ngaphakathi komfana nomfazi ku-cover."
       },
       "hero-godparent-glow": {
-        "name": "Resplandor de los padrinos",
+        "name": "Ukukhanya kwe-best man",
         "hint": "The text with the groomsmen's names emits a warm, pulsing glow."
       },
       "hero-photo-fade": {
-        "name": "Fundido de la foto al cargar",
-        "hint": "La foto de la portada aparece con un fundido suave cuando termina de cargar."
+        "name": "Ukuguqula komfanekiso lapho kuqala ukufaka",
+        "hint": "Ikhadi elinomfanekiso likhonza nokuqala kokufaka lapho likugcina ukufaka."
       },
       "countdown-tick": {
-        "name": "Cuenta regresiva en directo",
+        "name": "Isikhangiso esihlale sikhona",
         "hint": "The remaining time counter updates every second. When deactivated, the static initial value is shown."
       },
       "loading-spinner": {
-        "name": "Ruedas de carga",
-        "hint": "Las ruedas giratorias que aparecen mientras cargan la foto de la portada y otros contenidos."
+        "name": "Izimvukela zokulanda",
+        "hint": "Izimvukela zokuhamba ezibonakala lapho kutholwa imfanekiso elikhonza kanye nezinye izinto."
       },
       "gallery-blur": {
-        "name": "Cambio de foto con desenfoque",
+        "name": "Ukuguqula komfanekiso nokuphulula",
         "hint": "When navigating the gallery, the previous photo blurs while the new one enters sharply."
       },
       "gallery-caption": {
@@ -1871,11 +1871,11 @@
         "hint": "The description of each photo appears with a small upward slide."
       },
       "gallery-lightbox": {
-        "name": "Apertura del visor de fotos",
+        "name": "Ukovuleka kwe-photo viewer",
         "hint": "The full-screen gallery viewer appears with an entrance fade."
       },
       "gallery-thumb-hover": {
-        "name": "Escala de las miniaturas",
+        "name": "Ukuhalo kwe-thumbnails",
         "hint": "Gallery thumbnails slightly enlarge when hovered over."
       },
       "gallery-nav-hover": {
@@ -1891,23 +1891,23 @@
         "hint": "The invitation buttons (RSVP, share, send...) lift slightly with a shadow when hovered over."
       },
       "reaction-hover": {
-        "name": "Escala de las reacciones",
+        "name": "Ukuhalo kwezimvivo",
         "hint": "The reaction buttons (❤️ 🎉 😂) slightly enlarge when hovering over them."
       },
       "theme-glow-depth": {
-        "name": "Resplandor del fondo",
+        "name": "Ukukhanya komhlaba",
         "hint": "A glow of light slowly runs across the background of the invitation, giving a sense of depth."
       },
       "landing-pulse": {
-        "name": "Pulso de las pantallas de carga",
-        "hint": "El fondo de las pantallas de carga, error y mantenimiento pulsa suavemente."
+        "name": "Ukugcwaliswa kwezibonelo zokulanda",
+        "hint": "Umhlaba wezibonelo zokulanda, yaphutha, kanye nokulawula uqhubeka ngokubuka lapho lukhuluma."
       },
       "toast-animations": {
         "name": "Avisos flotantes",
-        "hint": "Los avisos breves (confirmaciones, errores...) aparecen y desaparecen con un deslizamiento."
+        "hint": "Izibonelo ezifushane (okuhlonishwa, iphutha...) zibonakala futhi zizisola nge-swipe."
       }
     },
-    "allOffLabel": "Desactivar todas las animaciones",
+    "allOffLabel": "Phazamisa zonke izimigama`)_`",
     "allOffHint": "When activated, the invitation is displayed without any animation: the envelope does not appear, there is no confetti or transitions. When deactivated, your individual preferences return.",
     "allOffActive": "Ikuqalalwe ngenxa yokulawula okuqhele.",
     "groupOffActive": "Ikuqalalwe ngenxa yokulawula kwigxenye."
