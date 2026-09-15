@@ -14,25 +14,24 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
     return resolveLanguageCode(lng);
   }, [i18n]);
 
-  const [value, setValue] = useState<string>(resolve());
-
+  // El valor del <select> se DERIVA del i18n en cada render: nada de estado
+  // manual que pueda quedarse con el último elegido. El tick fuerza re-render
+  // cuando i18n emite languageChanged.
+  const [, setTick] = useState(0);
   useEffect(() => {
-    // i18next v21+: `on` devuelve el emitter y para desuscribir se usa `off`.
-    const handler = () => setValue(resolve());
+    const handler = () => setTick((x) => x + 1);
     i18n.on("languageChanged", handler);
     return () => i18n.off("languageChanged", handler);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i18n]);
 
-  // Mantener lang/dir del <html> sincronizados también aquí (respaldo por si
-  // el listener global de i18n no estuviera activo).
+  const value = resolve();
+
+  // Mantener lang/dir del <html> sincronizados aquí (respaldo al listener global).
   useEffect(() => {
-    const lng = resolve();
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = lng;
-      document.documentElement.dir = (/^(ar|fa|he|ur)/.test(lng || "") ? "rtl" : "ltr");
-    }
-  }, [value, resolve]);
+    if (typeof document === "undefined") return;
+    document.documentElement.lang = value;
+    document.documentElement.dir = (/^(ar|fa|he|ur)/.test(value || "") ? "rtl" : "ltr");
+  }, [value]);
 
   const onChange = useCallback(
     (code: string) => {
@@ -44,14 +43,12 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
           /* almacenamiento no disponible */
         }
         i18n.changeLanguage(undefined as unknown as string);
-        setValue(resolve());
         if (typeof document !== "undefined") window.location.reload();
         return;
       }
       i18n.changeLanguage(code);
-      setValue(code);
     },
-    [i18n, resolve],
+    [i18n],
   );
 
   return (
