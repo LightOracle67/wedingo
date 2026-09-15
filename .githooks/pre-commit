@@ -4,4 +4,4 @@
 set -e
 echo "⏳ pre-commit · lint + validación de traducciones…"
 npm run lint --silent
-node scripts/validate-translations.mjs
+node scripts/validate-translations.mjs --quiet

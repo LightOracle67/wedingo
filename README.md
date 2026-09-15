@@ -203,6 +203,14 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 - **SEO**: hreflang alternativos + `canonical` dinámicos y URLs `?lang=<code>`.
 - **Quality gates**: `translations:check` (claves en uso) y `validate-translations.mjs` (estructura/placeholders/residuo español) se ejecutan en `preready`, CI y pre-commit (`core.hooksPath .githooks`). Generador y auditor: `scripts/translate-i18n.mjs` y `scripts/audit-language.mjs`.
 
+#### Añadir / regenerar idiomas (pipelines)
+
+1. **Generar todo**: `node scripts/translate-i18n.mjs` (Ollama local, `gemma4`, lotes de 50; `--langs=fr,de` para un subconjunto, `--force` para re-hacer). Escribe `src/i18n/locales/<lang>.json` con las 1658+ claves garantizadas.
+2. **Reparar un lote de claves concretas** (p.ej. textos legales o labels): `node scripts/retranslate-legal.mjs clave1,clave2 [--langs=específicos]` — re-traduce esas claves desde `es.json` en todos los locales.
+3. **Quitar residuo de español**: `node scripts/repair-spanish.mjs [--relaxed]` — re-traduce los `errors.*/legal.*` que quedaron idénticos a es (base para pt/vi cuyos acentos son legítimos).
+4. **Auditar por idioma**: `node scripts/audit-language.mjs <lang>` (muestreo de calidad + residuo).
+5. **Validar y commitear**: `node scripts/validate-translations.mjs --quiet`, `npm run lint`, `npm run typecheck`, `npx vitest run`. El pre-commit corre lint + validación automáticamente.
+
 ---
 
 ## Almacenamiento de imágenes

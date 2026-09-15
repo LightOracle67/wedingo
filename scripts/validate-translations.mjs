@@ -27,6 +27,7 @@ import { fileURLToPath } from "node:url";
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const localesDir = join(root, "src", "i18n", "locales");
 
+const QUIET = process.argv.includes("--quiet");
 const only = process.argv[2];
 const placeholderRe = /\{\{\s*[\w-]+\s*\}\}/g;
 
@@ -39,6 +40,9 @@ function flat(o, prefix = "", out = {}) {
   return out;
 }
 
+// Log verbose (se suprime con --quiet para pre-commit/CI).
+function log(msg){ if(!QUIET) console.log(msg); }
+function warn(msg){ if(!QUIET) console.warn(msg); }
 function placeholders(str) {
   const s = String(str);
   return (s.match(placeholderRe) || []).sort();
@@ -64,7 +68,7 @@ let hadError = false;
 for (const file of files) {
   if (!file.endsWith(".json")) continue;
   const lang = file.replace(".json", "");
-  console.log(`\n═══ ${lang} ═══`);
+  log(`\n═══ ${lang} ═══`);
   let doc;
   try {
     doc = JSON.parse(readFileSync(join(localesDir, file), "utf8"));
@@ -117,12 +121,12 @@ for (const file of files) {
       !es[k].includes("{{"),
   );
   if (untrans.length) {
-    console.warn(`⚠️ ${untrans.length} cadenas idénticas a es (revisar si es un campo legítimo):`);
-    console.warn(`   ${untrans.slice(0, 6).join(", ")}${untrans.length > 6 ? "…" : ""}`);
+    warn(`⚠️ ${untrans.length} cadenas idénticas a es (revisar si es un campo legítimo):`);
+    warn(`   ${untrans.slice(0, 6).join(", ")}${untrans.length > 6 ? "…" : ""}`);
   }
 
   if (!missing.length && !extra.length && !phBroken) {
-    console.log(`✅ ${lang}: ${keys.length}/${esKeys.size} claves · placeholders OK`);
+    log(`✅ ${lang}: ${keys.length}/${esKeys.size} claves · placeholders OK`);
   }
 }
 

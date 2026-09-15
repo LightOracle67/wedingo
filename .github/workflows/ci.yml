@@ -46,10 +46,40 @@ jobs:
         run: node scripts/check-translations.js
 
       - name: Traducciones estructurales (validador de locales)
-        run: node scripts/validate-translations.mjs
+        run: node scripts/validate-translations.mjs --quiet
 
       - name: Changelog y versión coherentes
         run: node scripts/check-changelog.js
 
       - name: Auditoría de dependencias de producción (0 vulns)
         run: npm audit --omit=dev
+
+  e2e-i18n:
+    name: e2e multilingüe (Playwright, chromium)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Install Playwright (chromium)
+        run: npx playwright install --with-deps chromium
+
+      # El spec i18n es autocontenido (selector, ?lang y RTL) y el build del
+      # preview requiere las credenciales web de Firebase (se usan dummy).
+      - name: Run e2e i18n (selector, ?lang, RTL)
+        run: npx playwright test --config e2e/playwright.config.ts i18n.spec.ts
+        env:
+          VITE_FIREBASE_API_KEY: placeholder
+          VITE_FIREBASE_AUTH_DOMAIN: placeholder.firebaseapp.com
+          VITE_FIREBASE_PROJECT_ID: placeholder
+          VITE_FIREBASE_STORAGE_BUCKET: placeholder.appspot.com
+          VITE_FIREBASE_MESSAGING_SENDER_ID: "000000000000"
+          VITE_FIREBASE_APP_ID: "1:000:web:000"
