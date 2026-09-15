@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.31 — 2026-09-15
+- **Pulido visual RTL**: toggle-switch espejo, empujes y separaciones inline, alineación de etiquetas/tablas y tabs del admin para idiomas de derecha a izquierda (árabe, hebreo, urdu, persa).
+
 ## 2.192.30 — 2026-09-15
 - **Fix selector/idiomas**: se elimina `nonExplicitSupportedLngs`, que impedía cargar los idiomas con región (`pt-BR`, `pt-PT`, `ar-SA`… ahora sí cargan su idioma real, no caían a español) y se corrige `dir=rtl` para árabe.
 - **Alias base de detección**: `pt`, `zh`, `ar`, `af` (para navegadores que reportan idioma sin región).
