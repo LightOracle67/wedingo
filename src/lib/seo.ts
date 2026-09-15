@@ -175,11 +175,19 @@ export function resetSocialMeta() {
 const HREFLANG_MARK = "data-wedin-i18n-seo";
 const HREFLANG_CODES = LANGUAGE_GROUPS.flatMap((g) => g.languages.map((l) => l.code));
 
-/** Reemplaza los enlaces hreflang alternativos del documento. */
+/** Reemplaza los enlaces hreflang alternativos del documento. Se respetan los
+ *  que ya existan (p.ej. los estáticos de index.html para la landing) para no
+ *  duplicarlos: solo se añaden los códigos que faltan y el x-default si no. */
 export function applyHreflangLinks(): void {
   if (typeof document === "undefined" || typeof window === "undefined") return;
   const head = document.head;
   head.querySelectorAll(`link[${HREFLANG_MARK}]`).forEach((el) => el.remove());
+
+  const existing = new Set(
+    Array.from(head.querySelectorAll('link[rel="alternate"][hreflang]')).map(
+      (el) => el.getAttribute("hreflang") || "",
+    ),
+  );
 
   const url = new URL(window.location.href);
   url.searchParams.delete("lang");
@@ -187,6 +195,7 @@ export function applyHreflangLinks(): void {
 
   const frag = document.createDocumentFragment();
   for (const code of HREFLANG_CODES) {
+    if (existing.has(code)) continue;
     const link = document.createElement("link");
     link.rel = "alternate";
     link.hreflang = code;
@@ -196,11 +205,13 @@ export function applyHreflangLinks(): void {
     link.setAttribute(HREFLANG_MARK, "");
     frag.appendChild(link);
   }
-  const xDefault = document.createElement("link");
-  xDefault.rel = "alternate";
-  xDefault.hreflang = "x-default";
-  xDefault.href = base;
-  xDefault.setAttribute(HREFLANG_MARK, "");
-  frag.appendChild(xDefault);
+  if (!existing.has("x-default")) {
+    const xDefault = document.createElement("link");
+    xDefault.rel = "alternate";
+    xDefault.hreflang = "x-default";
+    xDefault.href = base;
+    xDefault.setAttribute(HREFLANG_MARK, "");
+    frag.appendChild(xDefault);
+  }
   head.appendChild(frag);
 }
