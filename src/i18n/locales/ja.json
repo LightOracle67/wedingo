@@ -710,7 +710,8 @@
     "versionPrefix": "Versión {{version}}",
     "updatedAtPrefix": "Actualizada el {{date}}",
     "sectionCookies": "Cookies y almacenamiento",
-    "cookiesPolicy": "このプラットフォームは、以下のクッキーおよびストレージ技術を使用します：\n\n• 厳密に必要なストレージ：言語とアクセシビリティの好み、および設定/管理者セッション（sessionStorage）。同意がない限り、ブラウザに個人データは保存されません。\n\n• ローカルストレージ（localStorage）およびIndexedDB：招待状の内容（テキスト、画像、AES-GCMで暗号化された音声）を一時的に保存し、より高速に読み込み、オフラインでも参照できるようにします。これらは、ストレージに同意した場合にのみ使用されます。同意しない場合、招待状はセッションモード（永続化なし）で表示され、既に保存されたデータは削除されます。\n\n• サードパーティサービス（同意後のみ）：Google AnalyticsおよびSentry（統計およびエラー診断）。Sentryのセッション再生は、分析に同意した場合にのみセッションを記録し、認証情報は記録しません。\n\n• オンデマンドアクション（事前の同意なし、クリック時）：招待状の地図を表示するためにGoogle Mapsを使用します。これを使用すると、Googleの独自のポリシーに従ってデータがそのサービスに送信されます。\n\n• Service worker：オフラインでアプリが機能するために必要な静的リソースをキャッシュし、個人データは含まれません。\n\nいつでもクッキー通知から同意の設定または取り消しができます。期間：指定された目的のために必要な期間（招待状のデータは、結婚式から12か月後、またはそれより前に要求された場合に削除されます）。"
+    "cookiesPolicy": "このプラットフォームは、以下のクッキーおよびストレージ技術を使用します：\n\n• 厳密に必要なストレージ：言語とアクセシビリティの好み、および設定/管理者セッション（sessionStorage）。同意がない限り、ブラウザに個人データは保存されません。\n\n• ローカルストレージ（localStorage）およびIndexedDB：招待状の内容（テキスト、画像、AES-GCMで暗号化された音声）を一時的に保存し、より高速に読み込み、オフラインでも参照できるようにします。これらは、ストレージに同意した場合にのみ使用されます。同意しない場合、招待状はセッションモード（永続化なし）で表示され、既に保存されたデータは削除されます。\n\n• サードパーティサービス（同意後のみ）：Google AnalyticsおよびSentry（統計およびエラー診断）。Sentryのセッション再生は、分析に同意した場合にのみセッションを記録し、認証情報は記録しません。\n\n• オンデマンドアクション（事前の同意なし、クリック時）：招待状の地図を表示するためにGoogle Mapsを使用します。これを使用すると、Googleの独自のポリシーに従ってデータがそのサービスに送信されます。\n\n• Service worker：オフラインでアプリが機能するために必要な静的リソースをキャッシュし、個人データは含まれません。\n\nいつでもクッキー通知から同意の設定または取り消しができます。期間：指定された目的のために必要な期間（招待状のデータは、結婚式から12か月後、またはそれより前に要求された場合に削除されます）。",
+    "autoTranslatedNote": "注記：このテキストは自動翻訳で表示されています。法的な目的では、スペイン語版が優先されます。"
   },
   "errors": {
     "alreadySaving": "保存中です。しばらくお待ちください。",
@@ -727,7 +728,7 @@
     "minuteInvalid": "Los minutos deben estar entre 00 y 59.",
     "dateNotValid": "入力された日付は無効です（例：2月30日は存在しません）。",
     "dateBeforeToday": "La fecha de la boda no puede ser anterior a hoy.",
-    "yearTooFar": "El año no puede ser mayor a {{year}}.",
+    "yearTooFar": "{{year}}より大きい年は設定できません。",
     "themeInvalid": "有効なテーマを選択してください。",
     "sectionOrderInvalid": "セクションの順序が無効です。",
     "hiddenSectionsInvalid": "非表示のセクションは無効です。",
@@ -738,7 +739,7 @@
     "sectionOrderMismatch": "El orden de secciones tiene {{actual}} elementos, se esperaban {{expected}}.",
     "messageTooLong": "招待状のメッセージは500文字を超えることはできません。",
     "dressCodeCustomRequired": "服装規定として「その他」を選択した場合、カスタムメッセージを入力してください。",
-    "dressCodeCustomTooLong": "El mensaje personalizado del código de vestimenta no puede superar los {{max}} caracteres.",
+    "dressCodeCustomTooLong": "ドレスコードのカスタムメッセージは{{max}}文字を超えることはできません。",
     "sectionsDeactivated": "Se han desactivado las secciones sin contenido: {{sections}}.",
     "scheduleEventTimeInvalid": "旅程のイベント時間が無効です。",
     "storyTooLong": "La historia no puede superar los 2000 caracteres.",

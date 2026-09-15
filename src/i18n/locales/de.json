@@ -710,7 +710,8 @@
     "versionPrefix": "Versión {{version}}",
     "updatedAtPrefix": "Actualizada el {{date}}",
     "sectionCookies": "Cookies y almacenamiento",
-    "cookiesPolicy": "Diese Plattform verwendet die folgenden Cookies und Speichertechnologien:\n\n• Streng notwendiger Speicher: Ihre Spracheinstellung und Barrierefreiheit sowie die Konfigurations-/Admin-Sitzung (sessionStorage). Ohne Ihre Zustimmung werden keine personenbezogenen Daten im Browser gespeichert.\n\n• Lokaler Speicher (localStorage) und IndexedDB: Sie speichern temporär den Inhalt der Einladung (Texte, Bilder und AES-GCM-verschlüsselte Audioinhalte), damit diese schneller geladen und offline einsehbar sind. Sie werden nur verwendet, wenn Sie die Speicherung akzeptieren; lehnen Sie dies ab, wird die Einladung im Sitzungsmodus (ohne Persistenz) angezeigt und die bereits gespeicherten Daten werden gelöscht.\n\n• Drittanbieterdienste (nur mit Ihrer Zustimmung): Google Analytics und Sentry (Statistik und Fehlerdiagnose). Der Session Replay von Sentry zeichnet die Sitzung nur auf, wenn Sie die Analytik akzeptieren, und erfasst Ihre Anmeldeinformationen nicht.\n\n• On-Demand-Aktionen (ohne vorherige Zustimmung, durch Ihren Klick): Google Maps, um die Karte der Einladung anzuzeigen. Bei der Nutzung werden Ihre Daten an diesen Dienst gemäß dessen eigener Richtlinie gesendet.\n\n• Service Worker: Cachen die statischen Ressourcen, die für den Offline-Betrieb der App erforderlich sind, ohne personenbezogene Daten. \n\nSie können Ihre Zustimmung jederzeit in der Cookie-Benachrichtigung konfigurieren oder widerrufen. Dauer: so lange wie für die angegebenen Zwecke erforderlich (die Einladungsdaten werden 12 Monate nach der Hochzeit gelöscht oder früher, falls beantragt).\n"
+    "cookiesPolicy": "Diese Plattform verwendet die folgenden Cookies und Speichertechnologien:\n\n• Streng notwendiger Speicher: Ihre Spracheinstellung und Barrierefreiheit sowie die Konfigurations-/Admin-Sitzung (sessionStorage). Ohne Ihre Zustimmung werden keine personenbezogenen Daten im Browser gespeichert.\n\n• Lokaler Speicher (localStorage) und IndexedDB: Sie speichern temporär den Inhalt der Einladung (Texte, Bilder und AES-GCM-verschlüsselte Audioinhalte), damit diese schneller geladen und offline einsehbar sind. Sie werden nur verwendet, wenn Sie die Speicherung akzeptieren; lehnen Sie dies ab, wird die Einladung im Sitzungsmodus (ohne Persistenz) angezeigt und die bereits gespeicherten Daten werden gelöscht.\n\n• Drittanbieterdienste (nur mit Ihrer Zustimmung): Google Analytics und Sentry (Statistik und Fehlerdiagnose). Der Session Replay von Sentry zeichnet die Sitzung nur auf, wenn Sie die Analytik akzeptieren, und erfasst Ihre Anmeldeinformationen nicht.\n\n• On-Demand-Aktionen (ohne vorherige Zustimmung, durch Ihren Klick): Google Maps, um die Karte der Einladung anzuzeigen. Bei der Nutzung werden Ihre Daten an diesen Dienst gemäß dessen eigener Richtlinie gesendet.\n\n• Service Worker: Cachen die statischen Ressourcen, die für den Offline-Betrieb der App erforderlich sind, ohne personenbezogene Daten. \n\nSie können Ihre Zustimmung jederzeit in der Cookie-Benachrichtigung konfigurieren oder widerrufen. Dauer: so lange wie für die angegebenen Zwecke erforderlich (die Einladungsdaten werden 12 Monate nach der Hochzeit gelöscht oder früher, falls beantragt).\n",
+    "autoTranslatedNote": "Hinweis: Dieser Text wird in einer automatischen Übersetzung angezeigt. Für rechtliche Zwecke gilt die spanische Version."
   },
   "errors": {
     "alreadySaving": "Es wird gespeichert. Bitte warten Sie einen Moment.",
@@ -727,7 +728,7 @@
     "minuteInvalid": "Los minutos deben estar entre 00 y 59.",
     "dateNotValid": "Das eingegebene Datum ist ungültig (z. B. der 30. Februar existiert nicht).",
     "dateBeforeToday": "La fecha de la boda no puede ser anterior a hoy.",
-    "yearTooFar": "El año no puede ser mayor a {{year}}.",
+    "yearTooFar": "Das Jahr kann nicht größer als {{year}} sein.",
     "themeInvalid": "Wählen Sie ein gültiges Thema.",
     "sectionOrderInvalid": "Die Reihenfolge der Abschnitte ist ungültig.",
     "hiddenSectionsInvalid": "Die versteckten Abschnitte sind ungültig.",
@@ -738,7 +739,7 @@
     "sectionOrderMismatch": "El orden de secciones tiene {{actual}} elementos, se esperaban {{expected}}.",
     "messageTooLong": "Die Einladungstextnachricht darf 500 Zeichen nicht überschreiten.",
     "dressCodeCustomRequired": "Wenn Sie 'Andere' als Kleiderordnung wählen, schreiben Sie bitte eine persönliche Nachricht.",
-    "dressCodeCustomTooLong": "El mensaje personalizado del código de vestimenta no puede superar los {{max}} caracteres.",
+    "dressCodeCustomTooLong": "Die benutzerdefinierte Kleiderordnungsmeldung darf {{max}} Zeichen nicht überschreiten.",
     "sectionsDeactivated": "Se han desactivado las secciones sin contenido: {{sections}}.",
     "scheduleEventTimeInvalid": "Die Uhrzeit einer Etappe im Programm ist ungültig.",
     "storyTooLong": "La historia no puede superar los 2000 caracteres.",

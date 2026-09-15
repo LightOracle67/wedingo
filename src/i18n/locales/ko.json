@@ -710,7 +710,8 @@
     "versionPrefix": "Versión {{version}}",
     "updatedAtPrefix": "Actualizada el {{date}}",
     "sectionCookies": "보존 기간: 초대자 데이터는 이벤트 날짜로부터 12개월 동안 보존됩니다. 이 기간이 지나면 서비스 관리자(패널에서 정리 기능 보유)에 의해 초대자 데이터가 삭제되며, 어떠한 경우에도 12개월 이상 보존되지 않습니다. 또한 조기 삭제를 요청할 수 있습니다. adriancl2001@gmail.com으로 이메일을 보내 언제든지 조기 삭제를 요청할 수 있습니다. 생성자 구성 데이터는 이벤트 날짜로부터 12개월 또는 계정이 활성한 기간 중 더 빠른 기간까지 보존되며, 서비스 관리자가 삭제를 실행합니다.",
-    "cookiesPolicy": "이 플랫폼은 다음 쿠키 및 저장 기술을 사용합니다:\n\n• 필수 저장: 언어 및 접근성 기본 설정, 그리고 설정/관리자 세션(sessionStorage)을 저장합니다. 귀하의 동의 없이는 브라우저에 개인 식별 데이터가 저장되지 않습니다.\n\n• 로컬 저장소(localStorage) 및 IndexedDB: 초대장 콘텐츠(텍스트, 이미지 및 AES-GCM 암호화 오디오)를 임시로 저장하여 더 빠르게 로드하고 오프라인에서도 조회할 수 있도록 합니다. 저장 기능을 수락한 경우에만 사용됩니다. 거부할 경우, 초대장은 세션 모드(비영구)로 표시되며 이미 저장된 데이터는 삭제됩니다.\n\n• 제3자 서비스(동의 후만): Google Analytics 및 Sentry(통계 및 오류 진단). Sentry의 세션 리플레이는 분석에 동의한 경우에만 세션을 기록하며 귀하의 자격 증명은 기록하지 않습니다.\n\n• 요청 기반 동작(사전 동의 없이, 클릭 시): 초대장의 지도를 표시하기 위해 Google Maps를 사용합니다. 이를 사용하면 자체 정책에 따라 귀하의 데이터가 해당 서비스로 전송됩니다.\n\n• 서비스 워커: 오프라인에서 앱이 작동하는 데 필요한 정적 리소스를 캐시하며, 개인 데이터는 포함하지 않습니다.\n\n쿠키 알림에서 언제든지 동의를 설정하거나 철회할 수 있습니다. 기간: 명시된 목적에 필요한 기간(초대장 데이터는 결혼식 후 12개월 또는 요청 시 삭제됩니다)."
+    "cookiesPolicy": "이 플랫폼은 다음 쿠키 및 저장 기술을 사용합니다:\n\n• 필수 저장: 언어 및 접근성 기본 설정, 그리고 설정/관리자 세션(sessionStorage)을 저장합니다. 귀하의 동의 없이는 브라우저에 개인 식별 데이터가 저장되지 않습니다.\n\n• 로컬 저장소(localStorage) 및 IndexedDB: 초대장 콘텐츠(텍스트, 이미지 및 AES-GCM 암호화 오디오)를 임시로 저장하여 더 빠르게 로드하고 오프라인에서도 조회할 수 있도록 합니다. 저장 기능을 수락한 경우에만 사용됩니다. 거부할 경우, 초대장은 세션 모드(비영구)로 표시되며 이미 저장된 데이터는 삭제됩니다.\n\n• 제3자 서비스(동의 후만): Google Analytics 및 Sentry(통계 및 오류 진단). Sentry의 세션 리플레이는 분석에 동의한 경우에만 세션을 기록하며 귀하의 자격 증명은 기록하지 않습니다.\n\n• 요청 기반 동작(사전 동의 없이, 클릭 시): 초대장의 지도를 표시하기 위해 Google Maps를 사용합니다. 이를 사용하면 자체 정책에 따라 귀하의 데이터가 해당 서비스로 전송됩니다.\n\n• 서비스 워커: 오프라인에서 앱이 작동하는 데 필요한 정적 리소스를 캐시하며, 개인 데이터는 포함하지 않습니다.\n\n쿠키 알림에서 언제든지 동의를 설정하거나 철회할 수 있습니다. 기간: 명시된 목적에 필요한 기간(초대장 데이터는 결혼식 후 12개월 또는 요청 시 삭제됩니다).",
+    "autoTranslatedNote": "참고: 이 텍스트는 자동 번역으로 표시됩니다. 법적 효력은 스페인어 버전이 우선합니다."
   },
   "errors": {
     "alreadySaving": "동의 철회권: 언제든지 동의를 철회할 수 있습니다. 철회는 사전 동의에 기반한 처리의 적법성에 영향을 미치지 않습니다.",
@@ -727,7 +728,7 @@
     "minuteInvalid": "보안 유출 대응 계획: 개인 데이터 유출이 발생할 경우, Wedingo는 최대 72시간 이내에 관할 감독 당국에 통지할 것입니다(GDPR 제33조). 유출이 정보 주체의 권리와 자유에 높은 위험을 초래하는 경우, 지체 없이 통지될 것입니다(GDPR 제34조). 통지는 제공된 연락처 이메일로 이루어집니다.",
     "dateNotValid": "로컬 저장소: 이 사이트는 로컬 스토리지를 사용합니다. 귀하의 동의나 행동 없이 타사 쿠키 또는 추적기는 사용하지 않습니다: 지도는 클릭할 때만, 번역은 클릭할 때만 활성화됩니다. 로컬 저장소: 이 사이트는 필수 기능(세션 유지 및 초대장 설정 캐싱)을 위해 로컬 저장소(localStorage 및 sessionStorage)를 사용합니다. 타사 쿠키나 추적기는 사용하지 않습니다. 계속 탐색하면 이 필수 기술 저장소 사용에 동의하는 것입니다.",
     "dateBeforeToday": "기술 저장소 및 캐시 (PWA): Wedingo는 서비스 워커(/sw.js)를 사용하여 애플리케이션 리소스(JavaScript, CSS 및 글꼴)를 사전 로드하여 로딩 속도를 높이고 오프라인 기본 사용을 가능하게 합니다. 이 리소스는 장치 브라우저 캐시에 저장되며 귀하의 개인 데이터는 포함하지 않습니다. 언제든지 브라우저 설정에서 이 캐시를 지울 수 있습니다.",
-    "yearTooFar": "El año no puede ser mayor a {{year}}.",
+    "yearTooFar": "{{year}}보다 클 수는 없습니다.",
     "themeInvalid": "번역: ‘번역’ 기능은 Google의 무료 위젯(Google LLC)을 사용하며, 사용자가 요청할 때만 활성화됩니다. 초대장 텍스트는 해당 순간에만 Google으로 전송됩니다(SCC 및 DPF로 보호되는 처리자).",
     "sectionOrderInvalid": "선택적 연락처: 초대자가 승인한 경우(특정 체크박스), 이벤트 물류를 위해 전화번호 또는 이메일이 저장되며 주최자만 볼 수 있습니다. 언제든지 삭제를 요청할 수 있습니다.",
     "hiddenSectionsInvalid": "Wedingo를 사용하는 것은 본 약관에 동의하는 것을 의미합니다. Wedingo는 결혼식 초대장을 만들고 관리하는 플랫폼입니다.",
@@ -736,9 +737,9 @@
     "menuRequired": "당사는 본 약관을 수정할 권리를 보유합니다. 변경 사항은 플랫폼을 통해 통지됩니다.",
     "ibanInvalid": "캘리포니아 거주자의 경우: 본 약관과 CCPA 간에 충돌이 발생하는 경우, CCPA가 부여하는 권리가 우선합니다.",
     "sectionOrderMismatch": "El orden de secciones tiene {{actual}} elementos, se esperaban {{expected}}.",
-    "messageTooLong": "El mensaje de invitación no puede superar los 500 caracteres.",
-    "dressCodeCustomRequired": "Si eliges 'Otro' como código de vestimenta, escribe un mensaje personalizado.",
-    "dressCodeCustomTooLong": "El mensaje personalizado del código de vestimenta no puede superar los {{max}} caracteres.",
+    "messageTooLong": "초대 메시지는 500자를 초과할 수 없습니다.",
+    "dressCodeCustomRequired": "드레스 코드로 '기타'를 선택한 경우, 맞춤 메시지를 작성해 주세요.",
+    "dressCodeCustomTooLong": "드레스 코드 맞춤 메시지는 {{max}}자를 초과할 수 없습니다.",
     "sectionsDeactivated": "Se han desactivado las secciones sin contenido: {{sections}}.",
     "scheduleEventTimeInvalid": "지금 저장 중입니다. 잠시 기다려 주십시오.",
     "storyTooLong": "저장하기 전에 액세스 코드를 확인하십시오.",

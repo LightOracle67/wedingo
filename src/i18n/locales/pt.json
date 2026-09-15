@@ -710,7 +710,8 @@
     "versionPrefix": "Versión {{version}}",
     "updatedAtPrefix": "Actualizada el {{date}}",
     "sectionCookies": "Cookies y almacenamiento",
-    "cookiesPolicy": "Esta plataforma utiliza as seguintes cookies e tecnologias de armazenamento:\n\n• Armazenamento estritamente necessário: a sua preferência de idioma e de acessibilidade, e a sessão de configuração/admin (sessionStorage). Sem o seu consentimento, nenhum dado de caráter pessoal é guardado no navegador.\n\n• Armazenamento local (localStorage) e IndexedDB: guardam temporariamente o conteúdo do convite (textos, imagens e áudio encriptados AES-GCM) para que seja carregado mais rápido e consultável sem ligação. Só são usados se aceitar o armazenamento; se recusar, o convite é exibido em modo sessão (sem persistência) e os dados já guardados são eliminados.\n\n• Serviços de terceiros (apenas após o seu consentimento): Google Analytics e Sentry (estatística e diagnóstico de erros). O *session replay* do Sentry grava a sessão apenas se aceitar a analítica e não regista as suas credenciais.\n\n• Ações sob demanda (sem consentimento prévio, por um clique seu): Google Maps para mostrar o mapa do convite. Ao utilizá-lo, os seus dados são enviados para esse serviço de acordo com a sua própria política.\n\n• Service worker: cacheia os recursos estáticos necessários para que a aplicação funcione sem ligação, sem dados pessoais.\n\nPode configurar ou retirar o seu consentimento a qualquer momento no aviso de cookies. Duração: o necessário para as finalidades indicadas (os dados do convite são eliminados 12 meses após o casamento ou antes, se for solicitado.)"
+    "cookiesPolicy": "Esta plataforma utiliza as seguintes cookies e tecnologias de armazenamento:\n\n• Armazenamento estritamente necessário: a sua preferência de idioma e de acessibilidade, e a sessão de configuração/admin (sessionStorage). Sem o seu consentimento, nenhum dado de caráter pessoal é guardado no navegador.\n\n• Armazenamento local (localStorage) e IndexedDB: guardam temporariamente o conteúdo do convite (textos, imagens e áudio encriptados AES-GCM) para que seja carregado mais rápido e consultável sem ligação. Só são usados se aceitar o armazenamento; se recusar, o convite é exibido em modo sessão (sem persistência) e os dados já guardados são eliminados.\n\n• Serviços de terceiros (apenas após o seu consentimento): Google Analytics e Sentry (estatística e diagnóstico de erros). O *session replay* do Sentry grava a sessão apenas se aceitar a analítica e não regista as suas credenciais.\n\n• Ações sob demanda (sem consentimento prévio, por um clique seu): Google Maps para mostrar o mapa do convite. Ao utilizá-lo, os seus dados são enviados para esse serviço de acordo com a sua própria política.\n\n• Service worker: cacheia os recursos estáticos necessários para que a aplicação funcione sem ligação, sem dados pessoais.\n\nPode configurar ou retirar o seu consentimento a qualquer momento no aviso de cookies. Duração: o necessário para as finalidades indicadas (os dados do convite são eliminados 12 meses após o casamento ou antes, se for solicitado.)",
+    "autoTranslatedNote": "Nota: este texto é exibido numa tradução automática. Para efeitos legais, prevalece a versão em espanhol."
   },
   "errors": {
     "alreadySaving": "Saving now. Please wait.",
@@ -727,7 +728,7 @@
     "minuteInvalid": "Los minutos deben estar entre 00 y 59.",
     "dateNotValid": "The entered date is not valid (e.g., February 30 does not exist).",
     "dateBeforeToday": "La fecha de la boda no puede ser anterior a hoy.",
-    "yearTooFar": "El año no puede ser mayor a {{year}}.",
+    "yearTooFar": "O ano não pode ser maior que {{year}}.",
     "themeInvalid": "Select a valid theme.",
     "sectionOrderInvalid": "The order of sections is not valid.",
     "hiddenSectionsInvalid": "Hidden sections are not valid.",
@@ -738,7 +739,7 @@
     "sectionOrderMismatch": "El orden de secciones tiene {{actual}} elementos, se esperaban {{expected}}.",
     "messageTooLong": "The invitation message cannot exceed 500 characters.",
     "dressCodeCustomRequired": "If you choose 'Other' as the dress code, write a personalized message.",
-    "dressCodeCustomTooLong": "El mensaje personalizado del código de vestimenta no puede superar los {{max}} caracteres.",
+    "dressCodeCustomTooLong": "A mensagem personalizada do código de vestimenta não pode exceder os {{max}} caracteres.",
     "sectionsDeactivated": "Se han desactivado las secciones sin contenido: {{sections}}.",
     "scheduleEventTimeInvalid": "The time for an itinerary event is not valid.",
     "storyTooLong": "La historia no puede superar los 2000 caracteres.",

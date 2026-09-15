@@ -710,7 +710,8 @@
     "versionPrefix": "Versión {{version}}",
     "updatedAtPrefix": "Actualizada el {{date}}",
     "sectionCookies": "Cookies y almacenamiento",
-    "cookiesPolicy": "Ta platforma używa następujących plików cookie i technologii przechowywania danych:\n\n• Przechowywanie ściśle niezbędne: Twoje preferencje językowe i dostępności oraz sesja konfiguracyjna/administracyjna (sessionStorage). Bez Twojej zgody nie są zapisywane żadne dane osobowe w przeglądarce.\n\n• Przechowywanie lokalne (localStorage) i IndexedDB: tymczasowo przechowują zawartość zaproszenia (teksty, obrazy i zaszyfrowany audio AES-GCM), aby ładowanie było szybsze i dostępne offline. Używane są tylko za Twoją zgodą na przechowywanie; jeśli ją odrzekniesz, zaproszenie wyświetli się w trybie sesji (bez trwałości), a zapisane dane zostaną usunięte.\n\n• Usługi stron trzecich (tylko po Twojej zgodzie): Google Analytics i Sentry (statystyka i diagnostyka błędów). Replay sesji Sentry rejestruje sesję tylko wtedy, gdy akceptujesz analitykę i nie rejestruje Twoich poświadczeń.\n\n• Akcje na żądanie (bez wcześniejszej zgody, po kliknięciu): Google Maps do wyświetlenia mapy zaproszenia. Użycie tego serwisu oznacza wysłanie Twoich danych do tego serwisu zgodnie z jego własną polityką.\n\n• Service worker: buforuje statyczne zasoby niezbędne do działania aplikacji offline, bez danych osobowych.\n\nMożesz skonfigurować lub wycofać swoją zgodę w dowolnym momencie w powiadomieniu o plikach cookie. Okres ważności: niezbędny do celów wskazanych (dane zaproszenia zostaną usunięte 12 miesięcy po ślubie lub wcześniej, jeśli zostanie o to poproszono.)"
+    "cookiesPolicy": "Ta platforma używa następujących plików cookie i technologii przechowywania danych:\n\n• Przechowywanie ściśle niezbędne: Twoje preferencje językowe i dostępności oraz sesja konfiguracyjna/administracyjna (sessionStorage). Bez Twojej zgody nie są zapisywane żadne dane osobowe w przeglądarce.\n\n• Przechowywanie lokalne (localStorage) i IndexedDB: tymczasowo przechowują zawartość zaproszenia (teksty, obrazy i zaszyfrowany audio AES-GCM), aby ładowanie było szybsze i dostępne offline. Używane są tylko za Twoją zgodą na przechowywanie; jeśli ją odrzekniesz, zaproszenie wyświetli się w trybie sesji (bez trwałości), a zapisane dane zostaną usunięte.\n\n• Usługi stron trzecich (tylko po Twojej zgodzie): Google Analytics i Sentry (statystyka i diagnostyka błędów). Replay sesji Sentry rejestruje sesję tylko wtedy, gdy akceptujesz analitykę i nie rejestruje Twoich poświadczeń.\n\n• Akcje na żądanie (bez wcześniejszej zgody, po kliknięciu): Google Maps do wyświetlenia mapy zaproszenia. Użycie tego serwisu oznacza wysłanie Twoich danych do tego serwisu zgodnie z jego własną polityką.\n\n• Service worker: buforuje statyczne zasoby niezbędne do działania aplikacji offline, bez danych osobowych.\n\nMożesz skonfigurować lub wycofać swoją zgodę w dowolnym momencie w powiadomieniu o plikach cookie. Okres ważności: niezbędny do celów wskazanych (dane zaproszenia zostaną usunięte 12 miesięcy po ślubie lub wcześniej, jeśli zostanie o to poproszono.)",
+    "autoTranslatedNote": "Uwaga: ten tekst jest wyświetlany w tłumaczeniu automatycznym. W celach prawnych obowiązuje wersja w języku hiszpańskim."
   },
   "errors": {
     "alreadySaving": "Zapisywanie trwa. Proszę czekać.",
@@ -727,7 +728,7 @@
     "minuteInvalid": "Los minutos deben estar entre 00 y 59.",
     "dateNotValid": "Podana data nie jest ważna (np. 30 lutego nie istnieje).",
     "dateBeforeToday": "La fecha de la boda no puede ser anterior a hoy.",
-    "yearTooFar": "El año no puede ser mayor a {{year}}.",
+    "yearTooFar": "Rok nie może być większy niż {{year}}.\n",
     "themeInvalid": "Wybierz ważny motyw.",
     "sectionOrderInvalid": "Kolejność sekcji jest nieprawidłowa.",
     "hiddenSectionsInvalid": "Sekcje ukryte nie są ważne.",
@@ -738,7 +739,7 @@
     "sectionOrderMismatch": "El orden de secciones tiene {{actual}} elementos, se esperaban {{expected}}.",
     "messageTooLong": "Treść zaproszenia nie może przekroczyć 500 znaków.",
     "dressCodeCustomRequired": "Jeśli wybierasz 'Inne' jako dress code, napisz spersonalizowaną wiadomość.",
-    "dressCodeCustomTooLong": "El mensaje personalizado del código de vestimenta no puede superar los {{max}} caracteres.",
+    "dressCodeCustomTooLong": "Spersonalizowane komunikaty dotyczące dress code nie mogą przekroczyć {{max}} znaków.",
     "sectionsDeactivated": "Se han desactivado las secciones sin contenido: {{sections}}.",
     "scheduleEventTimeInvalid": "Godzina wydarzenia w planie nie jest ważna.",
     "storyTooLong": "La historia no puede superar los 2000 caracteres.",

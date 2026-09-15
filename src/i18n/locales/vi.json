@@ -710,7 +710,8 @@
     "versionPrefix": "Versión {{version}}",
     "updatedAtPrefix": "Actualizada el {{date}}",
     "sectionCookies": "Cookies y almacenamiento",
-    "cookiesPolicy": "Nền tảng này sử dụng các cookie và công nghệ lưu trữ sau: \n\n• Lưu trữ cần thiết: tùy chọn ngôn ngữ và khả năng tiếp cận của bạn, và phiên cấu hình/quản trị (sessionStorage). Không có sự đồng ý của bạn, không có dữ liệu cá nhân nào được lưu trữ trên trình duyệt.\n\n• Lưu trữ cục bộ (localStorage) và IndexedDB: lưu trữ tạm thời nội dung thiệp mời (văn bản, hình ảnh và âm thanh được mã hóa AES-GCM) để tải nhanh hơn và có thể truy cập ngoại tuyến. Chỉ được sử dụng nếu bạn chấp nhận lưu trữ; nếu bạn từ chối, thiệp mời sẽ được hiển thị ở chế độ phiên (không có tính bền vững) và dữ liệu đã lưu sẽ bị xóa.\n\n• Dịch vụ của bên thứ ba (chỉ sau khi bạn đồng ý): Google Analytics và Sentry (thống kê và chẩn đoán lỗi). Tính năng ghi lại phiên của Sentry chỉ ghi lại phiên nếu bạn chấp nhận phân tích và không ghi lại thông tin đăng nhập của bạn.\n\n• Hành động theo yêu cầu (không cần sự đồng ý trước, theo cú nhấp của bạn): Google Maps để hiển thị bản đồ thiệp mời. Khi sử dụng, dữ liệu của bạn sẽ được gửi đến dịch vụ đó theo chính sách của họ.\n\n• Service worker: lưu bộ nhớ đệm các tài nguyên tĩnh cần thiết để ứng dụng hoạt động ngoại tuyến, không chứa dữ liệu cá nhân.\n\nBạn có thể cấu hình hoặc rút lại sự đồng ý của mình bất cứ lúc nào từ thông báo cookie. Thời hạn: cần thiết cho các mục đích được chỉ định (dữ liệu thiệp mời sẽ bị xóa 12 tháng sau đám cưới hoặc sớm hơn nếu được yêu cầu)."
+    "cookiesPolicy": "Nền tảng này sử dụng các cookie và công nghệ lưu trữ sau: \n\n• Lưu trữ cần thiết: tùy chọn ngôn ngữ và khả năng tiếp cận của bạn, và phiên cấu hình/quản trị (sessionStorage). Không có sự đồng ý của bạn, không có dữ liệu cá nhân nào được lưu trữ trên trình duyệt.\n\n• Lưu trữ cục bộ (localStorage) và IndexedDB: lưu trữ tạm thời nội dung thiệp mời (văn bản, hình ảnh và âm thanh được mã hóa AES-GCM) để tải nhanh hơn và có thể truy cập ngoại tuyến. Chỉ được sử dụng nếu bạn chấp nhận lưu trữ; nếu bạn từ chối, thiệp mời sẽ được hiển thị ở chế độ phiên (không có tính bền vững) và dữ liệu đã lưu sẽ bị xóa.\n\n• Dịch vụ của bên thứ ba (chỉ sau khi bạn đồng ý): Google Analytics và Sentry (thống kê và chẩn đoán lỗi). Tính năng ghi lại phiên của Sentry chỉ ghi lại phiên nếu bạn chấp nhận phân tích và không ghi lại thông tin đăng nhập của bạn.\n\n• Hành động theo yêu cầu (không cần sự đồng ý trước, theo cú nhấp của bạn): Google Maps để hiển thị bản đồ thiệp mời. Khi sử dụng, dữ liệu của bạn sẽ được gửi đến dịch vụ đó theo chính sách của họ.\n\n• Service worker: lưu bộ nhớ đệm các tài nguyên tĩnh cần thiết để ứng dụng hoạt động ngoại tuyến, không chứa dữ liệu cá nhân.\n\nBạn có thể cấu hình hoặc rút lại sự đồng ý của mình bất cứ lúc nào từ thông báo cookie. Thời hạn: cần thiết cho các mục đích được chỉ định (dữ liệu thiệp mời sẽ bị xóa 12 tháng sau đám cưới hoặc sớm hơn nếu được yêu cầu).",
+    "autoTranslatedNote": "Lưu ý: văn bản này được hiển thị bằng bản dịch tự động. Đối với các mục đích pháp lý, phiên bản tiếng Tây Ban Nha được ưu tiên."
   },
   "errors": {
     "alreadySaving": "Đang lưu. Vui lòng đợi một chút.",
@@ -727,7 +728,7 @@
     "minuteInvalid": "Los minutos deben estar entre 00 y 59.",
     "dateNotValid": "Ngày đã nhập không hợp lệ (ví dụ: 30 tháng 2 không tồn tại).",
     "dateBeforeToday": "La fecha de la boda no puede ser anterior a hoy.",
-    "yearTooFar": "El año no puede ser mayor a {{year}}.",
+    "yearTooFar": "Năm không thể lớn hơn {{year}}.",
     "themeInvalid": "Vui lòng chọn một chủ đề hợp lệ.",
     "sectionOrderInvalid": "Thứ tự các phần không hợp lệ.",
     "hiddenSectionsInvalid": "Các phần ẩn không hợp lệ.",
@@ -738,7 +739,7 @@
     "sectionOrderMismatch": "El orden de secciones tiene {{actual}} elementos, se esperaban {{expected}}.",
     "messageTooLong": "Tin nhắn mời không được vượt quá 500 ký tự.",
     "dressCodeCustomRequired": "Nếu bạn chọn 'Khác' làm quy định về trang phục, vui lòng viết một tin nhắn tùy chỉnh.",
-    "dressCodeCustomTooLong": "El mensaje personalizado del código de vestimenta no puede superar los {{max}} caracteres.",
+    "dressCodeCustomTooLong": "Thông báo tùy chỉnh về quy tắc trang phục không được vượt quá {{max}} ký tự.",
     "sectionsDeactivated": "Se han desactivado las secciones sin contenido: {{sections}}.",
     "scheduleEventTimeInvalid": "Giờ của một sự kiện trong hành trình không hợp lệ.",
     "storyTooLong": "La historia no puede superar los 2000 caracteres.",
