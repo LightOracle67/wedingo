@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.33 — 2026-09-15
+- **Selector de idiomas**: refleja SIEMPRE el idioma actual (derivado de `i18n`, no del último elegido). Test de regresión con i18n real.
+
 ## 2.192.32 — 2026-09-15
 - **Selector de idiomas**: las etiquetas de grupo (Auto, Default, Europe, Asia, Middle East, Africa, Americas) ahora se **traducen al idioma de la UI** en los 49 locales.
 - **RTL solo en el texto**: al elegir un idioma RTL se espejan solo letras/párrafos/títulos; el **layout y los componentes ya no se invierten**.
