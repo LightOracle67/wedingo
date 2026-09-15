@@ -2,6 +2,9 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.38 — 2026-09-16
+- **Calidad i18n**: repair generalizado de español residual en TODAS las claves (compliance.*, misc.); residuo real = 0; `zu` reparada y `am` (QR) a amárico; validador `--quiet` con detección solo de sospechosos.
+- **Rendimiento/LCP**: verificación post-build — falla si un chunk `vendor-*` importa estáticamente un `lazy-*` (auth/storage/analytics); documentado el peaje real de vendor-firebase (~155 KB gz, core de Firestore).
 ## 2.192.37 — 2026-09-16
 - **CI**: job e2e multilingüe (Playwright/chromium) en GitHub Actions; validador de traducciones con `--quiet` (pre-commit y CI con logs limpios).
 - **i18n**: eliminada la clave huérfana `common.translate` (selector Google antiguo) de los 53 locales.
