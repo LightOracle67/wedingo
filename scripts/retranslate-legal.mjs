@@ -50,7 +50,12 @@ function getPath(o, path) {
 function setPath(o, path, value) {
   const parts = path.split(".");
   let cur = o;
-  for (let i = 0; i < parts.length - 1; i++) cur = cur[parts[i]];
+  for (let i = 0; i < parts.length - 1; i++) {
+    const p = parts[i];
+    // Crear los tramos intermedios si no existen (o son hojas que chocan).
+    if (cur[p] === undefined || cur[p] === null || typeof cur[p] !== "object") cur[p] = {};
+    cur = cur[p];
+  }
   cur[parts[parts.length - 1]] = value;
 }
 const ph = (s) => (String(s).match(/\{\{\s*[\w-]+\s*\}\}/g) || []).sort().join("|");
