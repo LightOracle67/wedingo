@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.36 — 2026-09-16
+- **SEO**: hreflang estatito en index.html (35 idiomas + x-default) para la landing sin JS; `applyHreflangLinks` deduplica con los dinámicos.
+- **A11y**: test de accesibilidad con axe-core sobre el selector de idiomas.
+- **E2E multilingüe**: spec Playwright que valida `?lang=`, el selector (re-render de la UI) y `dir=rtl` para árabe/hebreo.
 ## 2.192.35 — 2026-09-16
 - **Calidad i18n**: reparado el residuo de español en `errors.*`/`legal.*` de varios locales (ru/ja/ko/ar/pl/pt/vi…); validador sobre los 51 locales con "CERO residuo".
 - **Aviso legal**: el modal legal muestra la nota "traducción automática; prevalece la versión en español" en idiomas ≠ es.
