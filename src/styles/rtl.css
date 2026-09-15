@@ -1,178 +1,69 @@
-[dir="rtl"] .modal-close {
-  right: auto;
-  left: 1rem;
+/* ── RTL SOLO EN EL TEXTO (v2.192.32) ─────────────────────────────────────
+   Al elegir un idioma RTL (árabe, hebreo, urdu, persa) SOLO debe cambiar el
+   texto (letras, párrafos, títulos); el layout y los componentes NO se espejan.
+   Para lograrlo:
+     1. Los contenedores estructurales conservan `direction: ltr` → la UI no
+        se invierte (flex/grid/posiciones quedan igual que en LTR).
+     2. Solo los portadores de TEXTO fluyen `rtl`.
+   No se fuerza `text-align` sobre los portadores para no romper títulos
+   centrados (con `direction: rtl`, `start` ya es la derecha). */
+
+/* 1) Contenedores estructurales: LTR (no espejar componentes). */
+[dir="rtl"] body,
+[dir="rtl"] .app-shell,
+[dir="rtl"] main,
+[dir="rtl"] .app-header,
+[dir="rtl"] .app-footer,
+[dir="rtl"] .app-bar,
+[dir="rtl"] header,
+[dir="rtl"] footer,
+[dir="rtl"] section,
+[dir="rtl"] .hero,
+[dir="rtl"] .story-panel,
+[dir="rtl"] .setup-card,
+[dir="rtl"] .setup-background-panel,
+[dir="rtl"] .admin-grid,
+[dir="rtl"] .admin-flex,
+[dir="rtl"] .admin-toolbar,
+[dir="rtl"] .admin-tabs,
+[dir="rtl"] .admin-panel,
+[dir="rtl"] form,
+[dir="rtl"] .modal-card,
+[dir="rtl"] .toast-container,
+[dir="rtl"] .gallery-thumb,
+[dir="rtl"] .music-player {
+  direction: ltr;
 }
 
-[dir="rtl"] .gallery-nav--prev {
-  left: auto;
-  right: 0.5rem;
-}
-
-[dir="rtl"] .gallery-nav--next {
-  right: auto;
-  left: 0.5rem;
-}
-
-[dir="rtl"] .music-player__card {
-  right: auto;
-  left: 0;
-}
-
-[dir="rtl"] .music-player__fab {
-  right: auto;
-  left: 1rem;
-}
-
-[dir="rtl"] .app-footer__left {
-  order: 2;
-}
-
-[dir="rtl"] .app-footer__right {
-  order: 1;
-}
-
-[dir="rtl"] .envelope-overlay {
+/* 2) Portadores de TEXTO: fluyen de derecha a izquierda. */
+[dir="rtl"] :is(h1, h2, h3, h4, h5, h6, p, li, td, th, blockquote, figcaption, label, button, a) {
   direction: rtl;
 }
-[dir="rtl"] .story-panel,
-[dir="rtl"] .setup-card {
+
+/* Campos de formulario: el texto interno también RTL (y alineado a la derecha). */
+[dir="rtl"] :is(input, textarea) {
   direction: rtl;
   text-align: right;
 }
-[dir="rtl"] .story-title {
-  text-align: center;
+
+/* Selects del admin/setup: texto a la derecha en RTL. */
+[dir="rtl"] .setup-input[type="select"],
+[dir="rtl"] select.setup-input {
+  text-align: right;
 }
 
-/* Gallery RTL */
-[dir="rtl"] .gallery-lightbox__nav--prev {
-  left: auto;
-  right: 1.5rem;
-}
-[dir="rtl"] .gallery-lightbox__nav--next {
-  right: auto;
-  left: 1.5rem;
-}
-
-/* Music player RTL */
-[dir="rtl"] .music-player {
-  right: auto;
-  left: 0.75rem;
-}
-[dir="rtl"] .music-player__fab--shifted {
-  transform: translateX(13.5rem);
-}
-[dir="rtl"] .music-player__fab--shifted:hover {
-  transform: translateX(13.5rem) scale(1.08);
-}
-[dir="rtl"] .music-player__fab--shifted:active {
-  transform: translateX(13.5rem) scale(0.92);
-}
-
-/* Envelope RTL */
-[dir="rtl"] .envelope__stamp {
-  right: auto;
-  left: 12px;
-}
-[dir="rtl"] .envelope__address-line {
-  direction: rtl;
-}
-
-/* Setup form RTL */
-[dir="rtl"] .setup-background-panel__header {
-  flex-direction: row-reverse;
-}
-[dir="rtl"] .setup-name-grid {
-  direction: rtl;
-}
-
-/* Toast RTL */
-[dir="rtl"] .toast-container {
-  left: 1rem;
-  right: auto;
-}
-[dir="rtl"] .toast__close {
-  right: auto;
-  left: 0.5rem;
-}
-
-/* Envelope RTL */
-[dir="rtl"] .envelope__address {
-  direction: rtl;
-}
-[dir="rtl"] .envelope__letter {
-  direction: rtl;
-}
-[dir="rtl"] .envelope__letter-names {
-  direction: rtl;
-}
-[dir="rtl"] .envelope__letter-message {
-  direction: rtl;
-}
+/* El sobre (pre-invitación) es decorativo: solo su TEXTO se espeja. */
+[dir="rtl"] .envelope__address,
+[dir="rtl"] .envelope__address-line,
+[dir="rtl"] .envelope__letter,
+[dir="rtl"] .envelope__letter-names,
+[dir="rtl"] .envelope__letter-message,
 [dir="rtl"] .envelope__hint {
   direction: rtl;
 }
 
-/* Accessibility panel RTL */
-[dir="rtl"] .a11y-label {
-  text-align: right;
-}
-[dir="rtl"] .a11y-section {
-  text-align: right;
-}
-
-/* Selector del admin en RTL: la flecha se ancla a la izquierda. */
-[dir="rtl"] .setup-input[type="select"],
-[dir="rtl"] select.setup-input {
-  background-position: left 0.75rem center;
-  text-align: right;
-}
-
-/* El mapa (iframe embebido) conserva la alineación del texto en RTL. */
-[dir="rtl"] .story-map {
-  text-align: right;
-}
-
-/* ── Pulido RTL v2.192.31 ─────────────────────────────────────────────── */
-/* Toggle-switch: el knob y el desplazamiento se espejan en RTL. */
-[dir="rtl"] .setup-toggle::before {
-  left: auto;
-  right: 0.15rem;
-}
-[dir="rtl"] .setup-toggle:checked::before {
-  transform: translateX(-1.1rem);
-}
-[dir="rtl"] .setup-toggle-row {
+/* Selector de idioma: el propio control respeta el texto RTL sin invertir su caja. */
+[dir="rtl"] .lang-select__control {
   direction: rtl;
-}
-
-/* Empujes y separaciones inline → espejo (inline-end). */
-[dir="rtl"] .table-actions-bar__buttons {
-  margin-left: 0;
-  margin-right: auto;
-}
-[dir="rtl"] .character-counter {
-  margin-left: 0;
-  margin-right: 0.4rem;
-}
-[dir="rtl"] .section-order-item__badge {
-  margin-left: 0;
-  margin-right: 0.35rem;
-}
-
-/* Formularios y tablas del admin/setup: texto fluye a la derecha en RTL. */
-[dir="rtl"] .setup-label,
-[dir="rtl"] .admin-table th,
-[dir="rtl"] .admin-table td {
   text-align: right;
-}
-
-/* Pestañas del admin: en móvil el scroll empieza por el final en RTL. */
-@media (max-width: 720px) {
-  [dir="rtl"] .admin-tabs {
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
-  }
-  [dir="rtl"] .admin-tab {
-    flex-shrink: 0;
-  }
 }
