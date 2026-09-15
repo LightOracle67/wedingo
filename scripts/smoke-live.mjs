@@ -12,11 +12,6 @@
  *
  * Exit 0 = OK · 1 = algo roto.
  */
-import { existsSync, readdirSync } from "node:fs";
-import { join, dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = process.argv[2] || "https://wedingo-6c26a.web.app";
 
 function fail(msg) {
@@ -53,17 +48,19 @@ try {
   fail(`cabeceras: ${e.message}`);
 }
 
-// Assets con cache inmutable (si hay dist local, se comprueba uno real).
+// Assets con cache inmutable: se extrae un asset REAL del index.html servido
+// (no del dist local, que puede divergir del deploy).
 try {
-  const assetsDir = join(root, "dist", "assets");
-  const js = existsSync(assetsDir) ? readdirSync(assetsDir).find((f) => f.endsWith(".js")) : null;
-  if (js) {
-    const r = await fetch(`${BASE}/assets/${js}`, { method: "GET" });
+  const indexRes = await fetch(`${BASE}/`);
+  const html = await indexRes.text();
+  const asset = (html.match(/\/assets\/[^"]+\.js/) || [null])[0];
+  if (asset) {
+    const r = await fetch(`${BASE}${asset}`, { method: "GET" });
     const cc = r.headers.get("cache-control") || "";
-    if (cc.includes("immutable")) ok(`asset ${js} → immutable OK`);
-    else fail(`asset ${js} → cache-control: ${cc}`);
+    if (cc.includes("immutable")) ok(`asset ${asset} → immutable OK`);
+    else fail(`asset ${asset} → cache-control: ${cc}`);
   } else {
-    ok("dist ausente (no se valida cache de assets)");
+    fail("no se encontró ningún asset en el index servido");
   }
 } catch (e) {
   fail(`asset: ${e.message}`);
