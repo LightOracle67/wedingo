@@ -149,6 +149,22 @@ function pwaPrecache() {
         );
         writeFileSync(preloadHtmlPath, nextHtml);
       }
+
+      // Verificación post-build de LCP (la prometía el comentario de v2.185):
+      // ningún chunk vendor-* debe importar ESTÁTICAMENTE un chunk lazy-*
+      // (auth/storage/analytics). Si ocurre, el SDK se cuela en la ruta
+      // crítica del invitado y el LCP sube decenas de KB gz. Fallo del build.
+      const lazyChunks = new Set(readdirSync(assetsDir).filter((f) => f.startsWith("lazy-")));
+      for (const f of readdirSync(assetsDir).filter((x) => x.startsWith("vendor-"))) {
+        const text = readFileSync(join(assetsDir, f), "utf8");
+        for (const lz of lazyChunks) {
+          if (text.includes(lz)) {
+            throw new Error(
+              `[build] ${f} importa estáticamente el chunk lazy "${lz}": el SDK salió de la ruta crítica. Revisa rolldownOptions.output.codeSplitting.groups.`,
+            );
+          }
+        }
+      }
     },
   };
 }

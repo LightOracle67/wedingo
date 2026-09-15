@@ -211,6 +211,9 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 4. **Auditar por idioma**: `node scripts/audit-language.mjs <lang>` (muestreo de calidad + residuo).
 5. **Validar y commitear**: `node scripts/validate-translations.mjs --quiet`, `npm run lint`, `npm run typecheck`, `npx vitest run`. El pre-commit corre lint + validación automáticamente.
 
+#### Rendimiento / LCP
+La ruta crítica del invitado arranca en paralelo con `modulepreload` de `vendor-firebase`/`providers`/rutas (inyección post-build en `vite.config.js`). Un **guard de build** falla si algún chunk `vendor-*` importa estáticamente un `lazy-*` (auth/storage/analytics) — evita que el SDK vuelva a la ruta crítica y suba el LCP. `vendor-firebase` (≈155 KB gz) es el core de Firestore: es el peaje real del producto, sin margen de recorte razonable.
+
 ---
 
 ## Almacenamiento de imágenes
