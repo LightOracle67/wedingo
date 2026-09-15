@@ -121,7 +121,7 @@ const LegalModal = memo(function LegalModal({ section, onClose }: { section: str
           </div>
         ))}
       </div>
-      {!String(i18n.language || "es").toLowerCase().startsWith("es") ? (
+      {!String(i18n?.language || "es").toLowerCase().startsWith("es") ? (
         <p
           className="setup-help"
           role="note"

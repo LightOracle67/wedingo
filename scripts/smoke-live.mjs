@@ -12,7 +12,7 @@
  *
  * Exit 0 = OK · 1 = algo roto.
  */
-import { readFileSync, existsSync, readdirSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
