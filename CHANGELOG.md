@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.35 — 2026-09-16
+- **Calidad i18n**: reparado el residuo de español en `errors.*`/`legal.*` de varios locales (ru/ja/ko/ar/pl/pt/vi…); validador sobre los 51 locales con "CERO residuo".
+- **Aviso legal**: el modal legal muestra la nota "traducción automática; prevalece la versión en español" en idiomas ≠ es.
+- **Tooling/calidad**: smoke de producción (`scripts/smoke-live.mjs`), CI en GitHub Actions (lint, typecheck, tests+gates de cobertura, guards, audit), pre-commit (`core.hooksPath .githooks`) con lint+validación de traducciones, y docs i18n/RTL al día.
 ## 2.192.34 — 2026-09-16
 - **RTL en esquinas decorativas**: en idiomas de oriente medio el conjunto de esquinas se refleja en horizontal para que la variante sin espejo quede en la esquina de lectura (igual percepción que LTR).
 ## 2.192.33 — 2026-09-15
