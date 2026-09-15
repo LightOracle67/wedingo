@@ -2,6 +2,10 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.37 — 2026-09-16
+- **CI**: job e2e multilingüe (Playwright/chromium) en GitHub Actions; validador de traducciones con `--quiet` (pre-commit y CI con logs limpios).
+- **i18n**: eliminada la clave huérfana `common.translate` (selector Google antiguo) de los 53 locales.
+- **Docs**: README con el pipeline completo "añadir/regenerar idiomas".
 ## 2.192.36 — 2026-09-16
 - **SEO**: hreflang estatito en index.html (35 idiomas + x-default) para la landing sin JS; `applyHreflangLinks` deduplica con los dinámicos.
 - **A11y**: test de accesibilidad con axe-core sobre el selector de idiomas.
