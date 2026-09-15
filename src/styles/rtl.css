@@ -67,3 +67,12 @@
   direction: rtl;
   text-align: right;
 }
+/* Esquinas decorativas (invite-corner y wedding-decoration): se fijan con
+   posiciones y transform FÍSICOS para que NUNCA se espejen en RTL (solo el
+   texto cambia de orientación). */
+[dir="rtl"] .invite-corner--tl { left: 0.35rem; right: auto; transform: none; }
+[dir="rtl"] .invite-corner--tr { right: 0.35rem; left: auto; transform: scaleX(-1); }
+[dir="rtl"] .invite-corner--bl { left: 0.35rem; right: auto; transform: scaleY(-1); }
+[dir="rtl"] .invite-corner--br { right: 0.35rem; left: auto; transform: scale(-1, -1); }
+[dir="rtl"] .wedding-decoration--left { left: -0.35rem; right: auto; top: 0; transform: var(--wedding-decoration-left-transform, scale(-1, -1) scale(1.02)); }
+[dir="rtl"] .wedding-decoration--right { right: 0; bottom: 0; left: auto; transform: var(--wedding-decoration-right-transform, none); }
