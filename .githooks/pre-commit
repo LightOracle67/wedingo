@@ -1,0 +1,7 @@
+#!/bin/sh
+# Pre-commit de Wedingo: bloquea commits que ensucien lint o traducciones.
+# Se activa con: git config core.hooksPath .githooks
+set -e
+echo "⏳ pre-commit · lint + validación de traducciones…"
+npm run lint --silent
+node scripts/validate-translations.mjs

@@ -6,7 +6,7 @@ import { PRIVACY_POLICY_VERSION } from "../lib/constants";
 import "../styles/modals.css";
 
 const LegalModal = memo(function LegalModal({ section, onClose }: { section: string; onClose: () => void }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(section || "");
 
   // Cabecera de la política CON su versión (coherente con el re-consentimiento:
@@ -121,6 +121,15 @@ const LegalModal = memo(function LegalModal({ section, onClose }: { section: str
           </div>
         ))}
       </div>
+      {!String(i18n.language || "es").toLowerCase().startsWith("es") ? (
+        <p
+          className="setup-help"
+          role="note"
+          style={{ marginTop: "0.75rem", fontSize: "0.78rem", marginBottom: 0 }}
+        >
+          {t("legal.autoTranslatedNote")}
+        </p>
+      ) : null}
     </Modal>
   );
 });

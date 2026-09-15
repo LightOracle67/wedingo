@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: lint + typecheck + tests + guards
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint:ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Typecheck e2e
+        run: npm run typecheck:e2e
+
+      # Los umbrales de cobertura del comité viven en vite.config.js (test.coverage)
+      # y hacen fallar el run si la cobertura baja: es el gate real.
+      - name: Tests + cobertura (gates)
+        run: npx vitest run --coverage
+
+      - name: Guard anti-xlsx en runtime
+        run: node scripts/check-no-runtime-xlsx.mjs
+
+      - name: Traducciones coherentes (claves en uso)
+        run: node scripts/check-translations.js
+
+      - name: Traducciones estructurales (validador de locales)
+        run: node scripts/validate-translations.mjs
+
+      - name: Changelog y versión coherentes
+        run: node scripts/check-changelog.js
+
+      - name: Auditoría de dependencias de producción (0 vulns)
+        run: npm audit --omit=dev

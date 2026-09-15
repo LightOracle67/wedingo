@@ -1,12 +1,12 @@
 # ARCHITECTURE — Wedingo
 
-App de invitaciones de boda (React 19 + TypeScript + Vite + Firebase: Firestore/Auth/Hosting). i18n es/en (i18next, carga diferida por locale).
+App de invitaciones de boda (React 19 + TypeScript + Vite + Firebase: Firestore/Auth/Hosting). i18n multiidioma (35 locales seleccionables + variantes/aliases, i18next, carga diferida; RTL solo en el texto).
 
 ## Capas
 
 ```
 src/
-├── i18n/               # instancia i18next + locales JSON (carga lazy)
+├── i18n/               # instancia i18next + registro de idiomas (languages.ts) + locales JSON (carga lazy)
 ├── lib/                # núcleo sin React
 │   ├── firebase.ts     # init + refs tipadas (invitationDocRef, rsvpResponseRef…)
 │   ├── safe-error.ts   # safeLogError/toSafeErrorMessage (redacta token SIEMPRE)

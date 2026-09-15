@@ -195,8 +195,13 @@ Plataforma web para crear y gestionar invitaciones de boda personalizadas.
 
 ### Idiomas
 
-100 idiomas vía `react-i18next` + `i18next-browser-languagedetector`.  
-Selector en el pie de página y barra de admin. Carga bajo demanda con `i18next-resources-to-backend`.
+**35 idiomas seleccionables** (es, en + 33 continental-generales: Europa, Asia, Oriente Medio, África y Américas) con `react-i18next` + `i18next-browser-languagedetector`. Además hay variantes regionales del inglés (`en-GB/US/AU/…`) y aliases base de detección (`pt`, `zh`, `ar`, `af`) para navegadores que reporten idioma sin región.
+
+- **Selector** agrupado por continente, data-driven (`src/i18n/languages.ts`), en el pie de página y en la barra de superadmin, con entrada **Auto** (detección del navegador) y **etiquetas traducidas** al idioma activo.
+- Carga bajo demanda con `i18next-resources-to-backend` (un chunk por idioma).
+- **RTL solo en el texto** (árabe, hebreo, urdu, persa): los componentes y el layout NO se espejan, solo letras/párrafos/títulos.
+- **SEO**: hreflang alternativos + `canonical` dinámicos y URLs `?lang=<code>`.
+- **Quality gates**: `translations:check` (claves en uso) y `validate-translations.mjs` (estructura/placeholders/residuo español) se ejecutan en `preready`, CI y pre-commit (`core.hooksPath .githooks`). Generador y auditor: `scripts/translate-i18n.mjs` y `scripts/audit-language.mjs`.
 
 ---
 
