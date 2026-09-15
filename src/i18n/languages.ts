@@ -20,7 +20,8 @@ export interface AvailableLanguage {
 }
 
 export interface LanguageGroup {
-  label: string;
+  /** Clave i18n del nombre de grupo (p.ej. "lang.group.europe"). */
+  key: string;
   languages: AvailableLanguage[];
 }
 
@@ -28,14 +29,14 @@ const RTL_BASES = new Set(["ar", "fa", "he", "ur"]);
 
 export const LANGUAGE_GROUPS: LanguageGroup[] = [
   {
-    label: "Default",
+    key: "lang.group.default",
     languages: [
       { code: "es", nativeName: "Español" },
       { code: "en", nativeName: "English" },
     ],
   },
   {
-    label: "Europe",
+    key: "lang.group.europe",
     languages: [
       { code: "fr", nativeName: "Français" },
       { code: "de", nativeName: "Deutsch" },
@@ -50,7 +51,7 @@ export const LANGUAGE_GROUPS: LanguageGroup[] = [
     ],
   },
   {
-    label: "Asia",
+    key: "lang.group.asia",
     languages: [
       { code: "zh-CN", nativeName: "中文（简体）" },
       { code: "ja", nativeName: "日本語" },
@@ -66,7 +67,7 @@ export const LANGUAGE_GROUPS: LanguageGroup[] = [
     ],
   },
   {
-    label: "Middle East",
+    key: "lang.group.middleEast",
     languages: [
       { code: "ar-SA", nativeName: "العربية", rtl: true },
       { code: "fa", nativeName: "فارسی", rtl: true },
@@ -75,7 +76,7 @@ export const LANGUAGE_GROUPS: LanguageGroup[] = [
     ],
   },
   {
-    label: "Africa",
+    key: "lang.group.africa",
     languages: [
       { code: "sw", nativeName: "Kiswahili" },
       { code: "am", nativeName: "አማርኛ" },
@@ -86,7 +87,7 @@ export const LANGUAGE_GROUPS: LanguageGroup[] = [
     ],
   },
   {
-    label: "Americas",
+    key: "lang.group.americas",
     languages: [
       { code: "pt-BR", nativeName: "Português (Brasil)" },
       { code: "fr-CA", nativeName: "Français (Canada)" },

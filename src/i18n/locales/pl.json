@@ -1345,7 +1345,16 @@
     "titleInvitation": "Zaproszenie"
   },
   "lang": {
-    "triggerLabel": "Zmień język"
+    "triggerLabel": "Zmień język",
+    "auto": "Auto (wykryj język)",
+    "group": {
+      "default": "Domyślne",
+      "europe": "Europa",
+      "asia": "Azja",
+      "middleEast": "Bliski Wschód",
+      "africa": "Afryka",
+      "americas": "Ameryka"
+    }
   },
   "transport": {
     "sectionLabel": "Transport",

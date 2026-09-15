@@ -1345,7 +1345,16 @@
     "titleInvitation": "Jemputan"
   },
   "lang": {
-    "triggerLabel": "Tukar bahasa"
+    "triggerLabel": "Tukar bahasa",
+    "auto": "Auto (mengesan bahasa)",
+    "group": {
+      "default": "Lalai",
+      "europe": "Eropah",
+      "asia": "Asia",
+      "middleEast": "Timur Tengah",
+      "africa": "Afrika",
+      "americas": "Amerika"
+    }
   },
   "transport": {
     "sectionLabel": "Pengangkutan",

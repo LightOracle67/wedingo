@@ -1345,7 +1345,16 @@
     "titleInvitation": "请柬"
   },
   "lang": {
-    "triggerLabel": "更改语言"
+    "triggerLabel": "更改语言",
+    "auto": "自动 (检测语言)",
+    "group": {
+      "default": "默认",
+      "europe": "欧洲",
+      "asia": "亚洲",
+      "middleEast": "中东",
+      "africa": "非洲",
+      "americas": "美洲"
+    }
   },
   "transport": {
     "sectionLabel": "交通",

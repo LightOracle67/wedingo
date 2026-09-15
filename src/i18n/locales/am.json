@@ -1345,7 +1345,16 @@
     "titleInvitation": "ግብዣ"
   },
   "lang": {
-    "triggerLabel": "ቋንቋ መቀየር"
+    "triggerLabel": "ቋንቋ መቀየር",
+    "auto": "አውቶ (ቋንቋን መለየት)",
+    "group": {
+      "default": "ቅድመ ምርጫ",
+      "europe": "አውሮፓ",
+      "asia": "አ እስያ",
+      "middleEast": "የ中 ምስራቅ",
+      "africa": "አፍሪካ",
+      "americas": "አሜሪካ"
+    }
   },
   "transport": {
     "sectionLabel": "ትራንስፖርት",

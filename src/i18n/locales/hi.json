@@ -1345,7 +1345,16 @@
     "titleInvitation": "निमंत्रण"
   },
   "lang": {
-    "triggerLabel": "भाषा बदलें"
+    "triggerLabel": "भाषा बदलें",
+    "auto": "ऑटो (भाषा का पता लगाएं)",
+    "group": {
+      "default": "डिफ़ॉल्ट",
+      "europe": "यूरोप",
+      "asia": "एशिया",
+      "middleEast": "मध्य पूर्व",
+      "africa": "अफ्रीका",
+      "americas": "अमेरिका"
+    }
   },
   "transport": {
     "sectionLabel": "परिवहन",

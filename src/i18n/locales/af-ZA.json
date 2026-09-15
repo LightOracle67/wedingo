@@ -1345,7 +1345,16 @@
     "titleInvitation": "Uitnodiging"
   },
   "lang": {
-    "triggerLabel": "Taal verander"
+    "triggerLabel": "Taal verander",
+    "auto": "Auto (spelet taal)",
+    "group": {
+      "default": "Standaard",
+      "europe": "Europa",
+      "asia": "Asië",
+      "middleEast": "Mid-Ooste",
+      "africa": "Afrika",
+      "americas": "Amerika"
+    }
   },
   "transport": {
     "sectionLabel": "Vervoer",

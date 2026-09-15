@@ -1345,7 +1345,16 @@
     "titleInvitation": "招待状"
   },
   "lang": {
-    "triggerLabel": "言語の変更"
+    "triggerLabel": "言語の変更",
+    "auto": "自動（言語を検出）",
+    "group": {
+      "default": "デフォルト",
+      "europe": "ヨーロッパ",
+      "asia": "アジア",
+      "middleEast": "中東",
+      "africa": "アフリカ",
+      "americas": "アメリカ"
+    }
   },
   "transport": {
     "sectionLabel": "交通機関",

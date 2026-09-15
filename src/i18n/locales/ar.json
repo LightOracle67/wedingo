@@ -1345,7 +1345,16 @@
     "titleInvitation": "الدعوة"
   },
   "lang": {
-    "triggerLabel": "تغيير اللغة"
+    "triggerLabel": "تغيير اللغة",
+    "auto": "أوتو (اكتشاف اللغة)",
+    "group": {
+      "default": "افتراضي",
+      "europe": "أوروبا",
+      "asia": "آسيا",
+      "middleEast": "الشرق الأوسط",
+      "africa": "أفريقيا",
+      "americas": "الأمريكت"
+    }
   },
   "transport": {
     "sectionLabel": "النقل",

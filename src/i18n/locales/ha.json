@@ -1345,7 +1345,16 @@
     "titleInvitation": "Takaitaccen takaitaccen"
   },
   "lang": {
-    "triggerLabel": "Canza harshe"
+    "triggerLabel": "Canza harshe",
+    "auto": "Auto (gano harshen)",
+    "group": {
+      "default": "Matsari",
+      "europe": "Europe",
+      "asia": "Asiya",
+      "middleEast": "Tsakiya Tsakiya",
+      "africa": "Afirika",
+      "americas": "Amurika"
+    }
   },
   "transport": {
     "sectionLabel": "Samfuran tafiya",

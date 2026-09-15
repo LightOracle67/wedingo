@@ -31,8 +31,8 @@ describe("LanguageSwitcher", () => {
     const select = screen.getByRole("combobox") as HTMLSelectElement;
     expect(select).toBeDefined();
     const opts = Array.from(select.options).map((o) => o.textContent);
-    // Auto + grupo Default (es, en) + los 33 continentales = 36.
-    expect(opts).toContain("🌐 Auto");
+    // Auto (vía t → en tests devuelve la clave) + grupo Default (es, en) + los 33 continentales = 36.
+    expect(opts).toContain("lang.auto");
     expect(opts).toContain("Español");
     expect(opts).toContain("Deutsch");
     expect(opts).toContain("中文（简体）");

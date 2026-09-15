@@ -1345,7 +1345,16 @@
     "titleInvitation": "دعوت"
   },
   "lang": {
-    "triggerLabel": "زبان تبدیل کریں"
+    "triggerLabel": "زبان تبدیل کریں",
+    "auto": "آٹو (زبان کا پتہ لگائیں)",
+    "group": {
+      "default": "ڈیفالٹ",
+      "europe": "یورپ",
+      "asia": "ایشیا",
+      "middleEast": "مشرق وسطیٰ",
+      "africa": "افریقہ",
+      "americas": "امریکہ"
+    }
   },
   "transport": {
     "sectionLabel": "نقل و حمل",

@@ -1345,7 +1345,16 @@
     "titleInvitation": "ההזמנה"
   },
   "lang": {
-    "triggerLabel": "שנה שפה"
+    "triggerLabel": "שנה שפה",
+    "auto": "אוטומטי (איתור שפה)",
+    "group": {
+      "default": "ברירת מחדל",
+      "europe": "אירופה",
+      "asia": "אסיה",
+      "middleEast": "מזרח התיכון",
+      "africa": "אפריקה",
+      "americas": "אמריקה"
+    }
   },
   "transport": {
     "sectionLabel": "תחבורה",

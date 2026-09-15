@@ -1345,7 +1345,16 @@
     "titleInvitation": "초대장"
   },
   "lang": {
-    "triggerLabel": "언어 변경"
+    "triggerLabel": "언어 변경",
+    "auto": "자동 (언어 감지)",
+    "group": {
+      "default": "기본값",
+      "europe": "유럽",
+      "asia": "아시아",
+      "middleEast": "중동",
+      "africa": "아프리카",
+      "americas": "미주"
+    }
   },
   "transport": {
     "sectionLabel": "교통",

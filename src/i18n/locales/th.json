@@ -1345,7 +1345,16 @@
     "titleInvitation": "คำเชิญ"
   },
   "lang": {
-    "triggerLabel": "เปลี่ยนภาษา"
+    "triggerLabel": "เปลี่ยนภาษา",
+    "auto": "รถยนต์ (ตรวจจับภาษา)",
+    "group": {
+      "default": "ค่าเริ่มต้น",
+      "europe": "ยุโรป",
+      "asia": "เอเชีย",
+      "middleEast": "ตะวันออกกลาง",
+      "africa": "แอฟริกา",
+      "americas": "อเมริกา"
+    }
   },
   "transport": {
     "sectionLabel": "การเดินทาง",

@@ -1345,7 +1345,16 @@
     "titleInvitation": "دعوت‌نامه"
   },
   "lang": {
-    "triggerLabel": "تغییر زبان"
+    "triggerLabel": "تغییر زبان",
+    "auto": "خودکار (تشخیص زبان)",
+    "group": {
+      "default": "پیش‌فرض",
+      "europe": "اروپا",
+      "asia": "آسیا",
+      "middleEast": "خاورمیانه",
+      "africa": "افریقا",
+      "americas": "آمریکا"
+    }
   },
   "transport": {
     "sectionLabel": "حمل و نقل",

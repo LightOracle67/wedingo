@@ -1345,7 +1345,16 @@
     "titleInvitation": "Undangan"
   },
   "lang": {
-    "triggerLabel": "Ubah Bahasa"
+    "triggerLabel": "Ubah Bahasa",
+    "auto": "Otomatis (deteksi bahasa)",
+    "group": {
+      "default": "Default",
+      "europe": "Eropa",
+      "asia": "Asia",
+      "middleEast": "Timur Tengah",
+      "africa": "Afrika",
+      "americas": "Amerika"
+    }
   },
   "transport": {
     "sectionLabel": "Transportasi",

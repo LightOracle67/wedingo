@@ -1345,7 +1345,16 @@
     "titleInvitation": "Umgidi"
   },
   "lang": {
-    "triggerLabel": "Ukuguqula ulimi"
+    "triggerLabel": "Ukuguqula ulimi",
+    "auto": "Auto (detecta ulimi)",
+    "group": {
+      "default": "Okulalandelayo",
+      "europe": "Yuropha",
+      "asia": "Asia",
+      "middleEast": "Ilwandle LaseMathweni",
+      "africa": "Afrika",
+      "americas": "America"
+    }
   },
   "transport": {
     "sectionLabel": "Ukuhambela",

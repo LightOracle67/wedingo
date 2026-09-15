@@ -1345,7 +1345,16 @@
     "titleInvitation": "Kiingilio"
   },
   "lang": {
-    "triggerLabel": "Badilisha lugha"
+    "triggerLabel": "Badilisha lugha",
+    "auto": "Gari (tambua lugha)",
+    "group": {
+      "default": "Kiima",
+      "europe": "Ulaya",
+      "asia": "Asia",
+      "middleEast": "Mashariki ya Kati",
+      "africa": "Afrika",
+      "americas": "Amerika"
+    }
   },
   "transport": {
     "sectionLabel": "Usafiri",

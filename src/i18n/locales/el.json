@@ -1345,7 +1345,16 @@
     "titleInvitation": "Βάση"
   },
   "lang": {
-    "triggerLabel": "Αλλαγή γλώσσας"
+    "triggerLabel": "Αλλαγή γλώσσας",
+    "auto": "Auto (detectar idioma)",
+    "group": {
+      "default": "Προεπιλεγμένο",
+      "europe": "Ευρώπη",
+      "asia": "Ασία",
+      "middleEast": "Μέση Ανατολή",
+      "africa": "Αφρική",
+      "americas": "Αμερική"
+    }
   },
   "transport": {
     "sectionLabel": "Μεταφορά",

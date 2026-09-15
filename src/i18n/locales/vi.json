@@ -1345,7 +1345,16 @@
     "titleInvitation": "Thiệp mời"
   },
   "lang": {
-    "triggerLabel": "Thay đổi ngôn ngữ"
+    "triggerLabel": "Thay đổi ngôn ngữ",
+    "auto": "Tự động (phát hiện ngôn ngữ)",
+    "group": {
+      "default": "Mặc định",
+      "europe": "Châu Âu",
+      "asia": "Châu Á",
+      "middleEast": "Trung Đông",
+      "africa": "Châu Phi",
+      "americas": "Châu Mỹ"
+    }
   },
   "transport": {
     "sectionLabel": "Phương tiện đi lại",

@@ -1345,7 +1345,16 @@
     "titleInvitation": "Davetiye"
   },
   "lang": {
-    "triggerLabel": "Dil Değiştir"
+    "triggerLabel": "Dil Değiştir",
+    "auto": "Otomatik (dil algıla)",
+    "group": {
+      "default": "Varsayılan",
+      "europe": "Avrupa",
+      "asia": "Asya",
+      "middleEast": "Orta Doğu",
+      "africa": "Afrika",
+      "americas": "Amerika"
+    }
   },
   "transport": {
     "sectionLabel": "Ulaşım",

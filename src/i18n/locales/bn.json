@@ -1345,7 +1345,16 @@
     "titleInvitation": "আমন্ত্রণ"
   },
   "lang": {
-    "triggerLabel": "ভাষা পরিবর্তন করুন"
+    "triggerLabel": "ভাষা পরিবর্তন করুন",
+    "auto": "অটো (ভাষা সনাক্ত করুন)",
+    "group": {
+      "default": "ডিফল্ট",
+      "europe": "ইউরোপা",
+      "asia": "এশিয়া",
+      "middleEast": "মধ্যপ্রাচ্য",
+      "africa": "আফ্রিকা",
+      "americas": "আমেরিকা"
+    }
   },
   "transport": {
     "sectionLabel": "পরিবহন",

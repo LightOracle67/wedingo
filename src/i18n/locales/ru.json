@@ -1345,7 +1345,16 @@
     "titleInvitation": "Приглашение"
   },
   "lang": {
-    "triggerLabel": "Сменить язык"
+    "triggerLabel": "Сменить язык",
+    "auto": "Авто (определить язык)",
+    "group": {
+      "default": "По умолчанию",
+      "europe": "Европа",
+      "asia": "Азия",
+      "middleEast": "Ближний Восток",
+      "africa": "Африка",
+      "americas": "Америка"
+    }
   },
   "transport": {
     "sectionLabel": "Транспорт",

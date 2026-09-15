@@ -1345,7 +1345,16 @@
     "titleInvitation": "Imbitasyon"
   },
   "lang": {
-    "triggerLabel": "Palitan ang Wika"
+    "triggerLabel": "Palitan ang Wika",
+    "auto": "Auto (detect ang wika)",
+    "group": {
+      "default": "Default",
+      "europe": "Europa",
+      "asia": "Asya",
+      "middleEast": "Gitnang Silangan",
+      "africa": "Aprika",
+      "americas": "Amerika"
+    }
   },
   "transport": {
     "sectionLabel": "Transportasyon",

@@ -1345,7 +1345,16 @@
     "titleInvitation": "Ìwé Ìkọ́kọ́"
   },
   "lang": {
-    "triggerLabel": "Yí àwọ̀ orílẹ̀-èdè"
+    "triggerLabel": "Yí àwọ̀ orílẹ̀-èdè",
+    "auto": "Àtẹ̀wọ́n",
+    "group": {
+      "default": "Àtẹ̀nà",
+      "europe": "Yuróòpù",
+      "asia": "Esíà",
+      "middleEast": "Ìlà Oòrùn",
+      "africa": "Áfíríkà",
+      "americas": "Amẹ́ríkà"
+    }
   },
   "transport": {
     "sectionLabel": "Ògun",

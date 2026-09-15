@@ -63,9 +63,9 @@ const LanguageSwitcher = memo(function LanguageSwitcher() {
           value={value}
           onChange={(e) => onChange(e.target.value)}
         >
-          <option value={AUTO}>🌐 Auto</option>
+          <option value={AUTO}>{t("lang.auto")}</option>
           {LANGUAGE_GROUPS.map((group) => (
-            <optgroup key={group.label} label={group.label}>
+            <optgroup key={group.key} label={t(group.key)}>
               {group.languages.map((lang) => (
                 <option key={lang.code} value={lang.code} lang={lang.code}>
                   {lang.nativeName}

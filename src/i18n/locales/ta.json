@@ -1345,7 +1345,16 @@
     "titleInvitation": "அழைப்பிதழ்"
   },
   "lang": {
-    "triggerLabel": "மொழியை மாற்று"
+    "triggerLabel": "மொழியை மாற்று",
+    "auto": "ஆட்டோ (மொழியை கண்டறியவும்)",
+    "group": {
+      "default": "இயல்புநிலை",
+      "europe": "ஐரோப்பா",
+      "asia": "ஆசியா",
+      "middleEast": "மத்திய கிழக்கு",
+      "africa": "ஆப்பிரிக்கா",
+      "americas": "அமெரிக்கா"
+    }
   },
   "transport": {
     "sectionLabel": "போக்குவரத்து",
