@@ -2,6 +2,8 @@
 
 Historial de versiones de Wedingo. Este fichero vive en GitHub y la aplicación lo muestra descargándolo desde raw.githubusercontent.com (con caché local).
 
+## 2.192.34 — 2026-09-16
+- **RTL en esquinas decorativas**: en idiomas de oriente medio el conjunto de esquinas se refleja en horizontal para que la variante sin espejo quede en la esquina de lectura (igual percepción que LTR).
 ## 2.192.33 — 2026-09-15
 - **Selector de idiomas**: refleja SIEMPRE el idioma actual (derivado de `i18n`, no del último elegido). Test de regresión con i18n real.
 
