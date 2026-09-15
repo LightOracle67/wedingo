@@ -36,7 +36,6 @@
     "updateAvailable": "Доступна новая версия Wedingo.",
     "reload": "Обновить",
     "goHome": "Вернуться на главную",
-    "translate": "Перевести",
     "cancel": "Отмена",
     "confirm": "Подтвердить",
     "requireText": "Введите {{text}}, чтобы подтвердить",

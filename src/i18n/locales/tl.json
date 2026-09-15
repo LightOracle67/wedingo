@@ -36,7 +36,6 @@
     "updateAvailable": "There is a new version of Wedingo available.",
     "reload": "Update",
     "goHome": "Back to home",
-    "translate": "Translate",
     "cancel": "Cancel",
     "confirm": "Confirm",
     "requireText": "Type {{text}} to confirm",
