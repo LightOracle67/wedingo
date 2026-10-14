@@ -39,7 +39,7 @@
     "translations:validate": "node scripts/validate-translations.mjs"
   },
   "dependencies": {
-    "@sentry/react": "^10.71.0",
+    "@sentry/react": "^11.6.0",
     "firebase": "^12.18.0",
     "i18next": "^26.4.0",
     "i18next-browser-languagedetector": "^8.2.1",
@@ -54,7 +54,7 @@
   "devDependencies": {
     "@firebase/rules-unit-testing": "^5.0.1",
     "@playwright/test": "^1.62.0",
-    "@sentry/vite-plugin": "^5.4.0",
+    "@sentry/vite-plugin": "^5.4.1",
     "@tailwindcss/vite": "^4.3.2",
     "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/react": "^16.3.2",
